@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/constants";
+import SectionHeader from "../ui/section-header";
 
 export function Products() {
   return (
@@ -10,9 +11,10 @@ export function Products() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
             For Every Cat Household
-          </div>
+          </div> */}
+          <SectionHeader text="For Every Cat Household" />
           <h2 className="text-4xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
             Choose Your Perfect Size
           </h2>

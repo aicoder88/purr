@@ -19,6 +19,8 @@
     --secondary: 90 40% 89%;
     --secondary-foreground: 0 0% 20%;
 
+    --secondary-text: #3ba4fd;
+
     --muted: 14 30% 95%;
     --muted-foreground: 14 10% 45%;
 
@@ -73,4 +75,14 @@
   body {
     @apply bg-background text-foreground;
   }
+    .bg-gradient-primary {
+      @apply bg-gradient-to-t from-[#FB6A43] to-[#FB6A43]/40;
+    }
+    .bg-gradient-secondary {
+      @apply bg-gradient-to-t from-[#ffaa2f] to-[#ffaa2f]/40;
+    }
+    .paw {
+      @apply w-2 h-2 bg-black absolute  -translate-x-1/2 -translate-y-1/2
+    }
+  
 }

@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { FEATURES } from "@/lib/constants";
 import { Zap, Heart, Clock, Check, Leaf, DollarSign } from "lucide-react";
+import SectionHeader from "../ui/section-header";
 
 const iconMap = {
   Zap: Zap,
@@ -19,9 +20,10 @@ export function Features() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
             The Purrify Difference
-          </div>
+          </div> */}
+          <SectionHeader text="The Purrify Difference" />
           <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
             Why do Cats and Pet Parents Love Purrify?
           </h2>
