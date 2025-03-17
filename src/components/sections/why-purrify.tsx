@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Check } from "lucide-react";
+import SectionHeader from "../ui/section-header";
 
 export function WhyPurrify() {
   const reasons = [
@@ -27,9 +28,10 @@ export function WhyPurrify() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 font-medium text-sm mb-4">
             The Science Behind Purrify
-          </div>
+          </div> */}
+          <SectionHeader text="The Science Behind Purrify" />
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
             Why Purrify?
           </h2>
@@ -94,7 +96,7 @@ export function WhyPurrify() {
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#6A43FB]/20 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col items-center">
               <img
-                src="/purrify-logo.svg"
+                src="/purrify-logo-icon.png"
                 alt="Purrify Logo"
                 className="h-16 mb-4"
               />

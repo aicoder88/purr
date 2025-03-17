@@ -1,10 +1,60 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
+import SectionHeader from "../ui/section-header";
+import { FaPaw } from "react-icons/fa";
+import { scrollToSection } from "@/lib/utils";
 
 export function Hero() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [paws, setPaws] = useState<
+    { x: number; y: number; id: number; rotation: number }[]
+  >([]);
+  const idRef = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const delay = 100; // delay in milliseconds
+    let lastTime = 0;
+    let prevPos = { x: 0, y: 0 };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const now = Date.now();
+      const { clientX: x, clientY: y } = event;
+      if (now - lastTime >= delay) {
+        const dx = x - prevPos.x;
+        const dy = y - prevPos.y;
+
+        let rotation = 0;
+
+        // Determine dominant direction
+        if (Math.abs(dx) > Math.abs(dy)) {
+          rotation = dx > 0 ? 90 : 270; // Right or Left
+        } else {
+          rotation = dy > 0 ? 180 : 0; // Down or Up
+        }
+
+        setPaws((prev) => [...prev, { x, y, rotation, id: idRef.current++ }]);
+
+        prevPos = { x, y };
+        lastTime = now;
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPaws((prev) => prev.slice(-2)); // Keep last 10 paws
+    }, 200); // Adjust based on how long you want them to stay
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,7 +64,20 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+    <section className="relative container py-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+      {paws.map((paw) => (
+        <span
+          key={paw.id}
+          className="absolute gap-[10px] pointer-events-none transition-transform duration-300 ease-out -translate-x-1/2 -translate-y-1/2"
+          style={{
+            top: paw.y,
+            left: paw.x,
+            transform: `translate(-50%, -50%) rotate(${paw.rotation}deg)`,
+          }}
+        >
+          <FaPaw className="text-[#FB6A43] w-4 h-4 opacity-50 -translate-x-1/2 -translate-y-1/2" />
+        </span>
+      ))}
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FB6A43]/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl"></div>
@@ -23,15 +86,15 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-2">
-              Revolutionary Cat Litter Additive
-            </div>
+            <SectionHeader text="Revolutionary Cat Litter Additive" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="block">Attention</span>
               <span className="block bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
                 Cat Owners!
               </span>
-              <span className="block text-[#6A43FB]">Purrify Traps Odors</span>
+              <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#3ba4fd] to-[#3ba4fd]/40 -">
+                Purrify Traps Odors
+              </span>
               <span className="block">Before They Escape</span>
             </h1>
             <p className="text-xl text-[#333333] font-light">
@@ -39,19 +102,29 @@ export function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
+              
                 size="lg"
-                className="bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/90 hover:from-[#FB6A43]/90 hover:to-[#FB6A43] text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
               >
                 ORDER NOW
               </Button>
               <Button
+              onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
-                className="border-[#6A43FB] text-[#6A43FB] hover:bg-[#FFFFF5] font-medium rounded-xl"
+                className="bg-gradient-secondary  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
               >
                 SEE FEEDBACK
               </Button>
             </div>
+            <Button
+            onClick={() => scrollToSection("calculator")}
+              size="lg"
+              variant="outline"
+              className="bg-gradient-to-t from-[#8cc637] to-[#8cc637]/40  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
+            >
+              CHECKOUT OUR CALCULATOR
+            </Button>
           </div>
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FB6A43]/20 to-[#6A43FB]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
@@ -77,7 +150,7 @@ export function Hero() {
                         </svg>
                       ))}
                   </div>
-                  <p className="text-[#6A43FB] font-medium line-clamp-2">
+                  <p className="text-[#3ba4fd] font-medium line-clamp-2">
                     "{TESTIMONIALS[currentTestimonial].text.split(".")[0]}."
                   </p>
                   <p className="text-sm text-[#333333]">
@@ -92,11 +165,11 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
-        <p className="text-sm text-[#6A43FB] mb-2 bg-white/80 px-3 py-1 rounded-full">
+        <p className="text-sm text-[#3ba4fd] mb-2 bg-white/80 px-3 py-1 rounded-full">
           Scroll to discover
         </p>
         <svg
-          className="w-6 h-6 text-[#6A43FB] animate-bounce bg-white/80 rounded-full p-1"
+          className="w-6 h-6 text-[#3ba4fd] animate-bounce bg-white/80 rounded-full p-1"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

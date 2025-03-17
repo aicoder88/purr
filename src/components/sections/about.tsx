@@ -1,14 +1,14 @@
 import { Container } from "@/components/ui/container";
+import SectionHeader from "../ui/section-header";
 
 export function About() {
   return (
     <section className="py-12 bg-white" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
-            The Science Behind Freshness
-          </div>
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
+          <SectionHeader text="The Science Behind Freshness" />
+          
+          <h2 className="text-6xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
             What is Purrify?
           </h2>
           <p className="text-3xl font-semibold text-[#333333] mb-6">
@@ -64,7 +64,9 @@ export function About() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transform hover:scale-105 transition-all duration-300 flex flex-col items-center">
+          
+        </div>
+        <div className="bg-gradient-to-br w-max mx-auto from-[#FFFFFF] to-[#FFFFF5] p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transform mt-4 transition-all duration-300 flex flex-col items-center">
             <div className="flex items-start space-x-4 mb-6 w-full">
               <div className="bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 p-3 rounded-full shadow-md">
                 <svg
@@ -101,14 +103,13 @@ export function About() {
                   className="w-full h-auto object-cover transform hover:scale-110 transition duration-500"
                 />
                 <div className="absolute bottom-0 right-0 p-2 bg-white/80 backdrop-blur-sm rounded-tl-lg">
-                  <p className="text-xs font-medium text-[#6A43FB]">
+                  <p className="text-xs font-medium text-secondary-text">
                     Simple to use
                   </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         {/* Floating particles */}
         <div className="relative mt-16">

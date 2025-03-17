@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
+import SectionHeader from "../ui/section-header";
 
 export function Testimonials() {
   const colorClasses = [
@@ -30,9 +31,10 @@ export function Testimonials() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
             Customer Love
-          </div>
+          </div> */}
+          <SectionHeader text=" Customer Love" />
           <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
             Litters of Love From The Pet Parent Community
           </h2>

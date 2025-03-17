@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import SectionHeader from "../ui/section-header";
 
 export function Benefits() {
   return (
@@ -8,9 +9,10 @@ export function Benefits() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          <SectionHeader text="Why Choose Purrify" />
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
             Why Choose Purrify
-          </div>
+          </div> */}
           <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
             Benefits of Purrify
           </h2>

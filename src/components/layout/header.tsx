@@ -12,68 +12,72 @@ export function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7] bg-[#FFFFFF]/95 backdrop-blur-md supports-[backdrop-filter]:bg-[#FFFFFF]/80 shadow-sm">
       <Container>
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <div className="h-10 w-auto mr-2">
+            <Link to="/" className="group">
+              <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                 <img
-                  src="/purrify-logo.svg"
+                  src="/purrify-logo-icon.png"
                   alt="Purrify Logo"
                   className="h-full w-auto"
                 />
-              </div>
-              <span className="text-3xl font-extrabold bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent group-hover:from-[#FB6A43]/90 group-hover:to-[#FB6A43] transition-all duration-300">
-                {SITE_NAME}
-              </span>
+                 <img
+                  src="/purrify-logo-text.png"
+                  alt="Purrify Logo"
+                  className="h-full w-auto"
+                />
+              </div>            
             </Link>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
+            <a
+              href="/"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Home
-            </Link>
-            <Link
-              to="/#products"
+            </a>
+            <a
+              href="/#products"
+              // onClick={}
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Products
-            </Link>
-            <Link
-              to="/#features"
+            </a>
+            <a
+              href="/#features"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Features
-            </Link>
-            <Link
-              to="/#benefits"
+            </a>
+            <a
+              href="/#benefits"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Benefits
-            </Link>
-            <Link
-              to="/#calculator"
+            </a>
+            <a
+              href="/#calculator"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Savings Calculator
-            </Link>
-            <Link
-              to="/#testimonials"
+            </a>
+            <a
+              href="/#testimonials"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Testimonials
-            </Link>
-            <Link
-              to="/#contact"
+            </a>
+            <a
+              href="/#contact"
               className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
             >
               Contact
-            </Link>
+            </a>
             <Button
               variant="outline"
               size="icon"
