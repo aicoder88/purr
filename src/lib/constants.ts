@@ -8,8 +8,7 @@ export const PRODUCTS = [
     name: "Purrify 15g",
     description: "Perfect for kittens",
     price: 9.99,
-    image:
-      "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=800&q=80",
+    image: "../public/20g.png",
     size: "15g",
   },
   {
@@ -17,8 +16,7 @@ export const PRODUCTS = [
     name: "Purrify 65g",
     description: "Ideal for one cat",
     price: 19.99,
-    image:
-      "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=800&q=80",
+    image: "../public/60g.png",
     size: "65g",
   },
   {
@@ -26,8 +24,7 @@ export const PRODUCTS = [
     name: "Purrify 120g",
     description: "Perfect for two cats",
     price: 29.99,
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80",
+    image: "../public/60g.png",
     size: "120g",
   },
 ];

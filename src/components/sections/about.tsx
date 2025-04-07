@@ -21,16 +21,16 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1612094497465-695aefd77e0b?w=400&q=80"
+                  src="../public/three_bags_no_bg.png"
                   alt="65g bag of activated carbon"
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1635439028672-f7deae3e9d1d?w=400&q=80"
+                  src="../public/micropores_magnified_view.jpeg"
                   alt="Micropore magnified view of activated carbon"
-                  className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
+                  className="w-full h-48 object-cover transform hover:scale-90 transition duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">

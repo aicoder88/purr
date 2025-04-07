@@ -35,7 +35,14 @@ export function Hero() {
           rotation = dy > 0 ? 180 : 0; // Down or Up
         }
 
-        setPaws((prev) => [...prev, { x, y, rotation, id: idRef.current++ }]);
+        // Adjust position to be slightly offset (1-3mm) from the cursor
+        const offsetX = Math.random() * 3 - 1.5; // Random offset between -1.5 and 1.5
+        const offsetY = Math.random() * 3 - 1.5;
+
+        setPaws((prev) => [
+          ...prev,
+          { x: x + offsetX, y: y + offsetY, rotation, id: idRef.current++ },
+        ]);
 
         prevPos = { x, y };
         lastTime = now;
@@ -103,7 +110,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
               >
                 ORDER NOW
               </Button>
@@ -111,7 +118,7 @@ export function Hero() {
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
-                className="bg-gradient-secondary  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
               >
                 SEE FEEDBACK
               </Button>
