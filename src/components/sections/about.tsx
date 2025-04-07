@@ -28,9 +28,9 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="./micropores_magnified_view.jpeg"
+                  src="./carbon_magnified_image.png"
                   alt="Micropore magnified view of activated carbon"
-                  className="w-full h-48 object-cover transform hover:scale-90 transition duration-500"
+                  className="w-full h-48 object-contain transform hover:scale-90 transition duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">

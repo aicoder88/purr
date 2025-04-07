@@ -33,6 +33,21 @@ export function FAQ() {
       answer:
         "Unlike scented products that mask odors, Purrify uses activated carbon technology to actually trap and neutralize odor molecules at the source. It doesn't add any scent to your home - it simply eliminates the bad ones.",
     },
+    {
+      question: "How does this differ from regular baking soda?",
+      answer:
+        "While baking soda can help with some odors through chemical reactions, our activated carbon works through physical adsorption - trapping odor molecules in its extensive network of microscopic pores. The surface area of Purrify is 1,150 square meters per gram compared to baking soda's approximately 0.2 square meters per gram, making it far more effective at capturing a wider range of odor molecules.",
+    },
+    {
+      question: "Will my cat have any reaction to this?",
+      answer:
+        "Activated carbon is biologically inert and widely used in water filtration, air purification, and medical applications. Most cats show no signs of avoiding or reacting to the product when properly introduced. As with any new addition to the litter box, we recommend monitoring your cat's behavior during initial use.",
+    },
+    {
+      question: "How soon will I notice results?",
+      answer:
+        "Many customers report noticing an improvement within hours of first application. The effect becomes more pronounced as the carbon fully integrates with your existing litter. For best results, apply a thin, even layer across the surface of clean litter.",
+    },
   ];
 
   return (

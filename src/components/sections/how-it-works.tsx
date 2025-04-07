@@ -5,24 +5,26 @@ export function HowItWorks() {
   const steps = [
     {
       number: "01",
-      title: "Sprinkle",
-      description:
-        "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
+      title: "Open the Bag",
+      description: "Pull off the label and unzip the bag",
       icon: "✨",
+      image: "./panel_1.png",
     },
     {
       number: "02",
-      title: "Mix",
+      title: "Sprinkle on top of your cat litter",
       description:
-        "Gently mix it into the top layer of the litter for maximum effectiveness.",
+        "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
       icon: "🔄",
+      image: "./panel_2.png",
     },
     {
       number: "03",
-      title: "Enjoy",
+      title: "Mix & enjoy freshness!",
       description:
-        "That's it! Enjoy a fresh-smelling home without any additional effort.",
+        "Gently mix it into the top layer of the litter for maximum effectiveness.",
       icon: "😌",
+      image: "./panel_3.png",
     },
   ];
 
@@ -68,7 +70,13 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div className="text-center mt-6">
-                  <div className="text-6xl mb-4">{step.icon}</div>
+                  <div className="overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={step.image}
+                      alt={`${step.title} image`}
+                      className="w-full aspect-[1/2] object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
                   <h3
                     className={`font-bold text-3xl mb-4 ${
                       index === 0
@@ -99,7 +107,7 @@ export function HowItWorks() {
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      CLAY
+                      CLUMPING
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg">
@@ -129,7 +137,7 @@ export function HowItWorks() {
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      CLUMPING
+                      CLAY
                     </div>
                   </div>
                 </div>
