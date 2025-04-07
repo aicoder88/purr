@@ -37,7 +37,7 @@ export function HowItWorks() {
             Simple as 1-2-3
           </div> */}
           <SectionHeader text="Simple as 1-2-3" />
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
+          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             How Purrify Works
           </h2>
           <p className="text-gray-600 text-lg">
@@ -47,7 +47,7 @@ export function HowItWorks() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#4B3F72]/30 to-[#E0EFC7] hidden md:block"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#5B2EFF]/30 to-[#E0EFC7] hidden md:block"></div>
 
           {steps.map((step, index) => (
             <div
@@ -61,7 +61,7 @@ export function HowItWorks() {
                     index === 0
                       ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
                       : index === 1
-                      ? "bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80"
+                      ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
                       : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
                   } text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
                 >
@@ -74,7 +74,7 @@ export function HowItWorks() {
                       index === 0
                         ? "text-[#FF3131]"
                         : index === 1
-                        ? "text-[#4B3F72]"
+                        ? "text-[#5B2EFF]"
                         : "text-[#03E46A]"
                     }`}
                   >
@@ -118,7 +118,7 @@ export function HowItWorks() {
                       alt="Natural cat litter"
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#4B3F72]/80 text-white text-xs font-bold px-2 py-1 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       NATURAL
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export function HowItWorks() {
                   ].map((type) => (
                     <span
                       key={type}
-                      className="px-3 py-1 bg-[#E0EFC7] text-[#4B3F72] rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-[#E0EFC7] text-[#5B2EFF] rounded-full text-sm font-medium"
                     >
                       {type}
                     </span>

@@ -11,10 +11,10 @@ export function Testimonials() {
       icon: "#FF3131",
     },
     {
-      bg: "bg-[#4B3F72]/10",
-      border: "border-[#4B3F72]/30",
-      text: "text-[#4B3F72]",
-      icon: "#4B3F72",
+      bg: "bg-[#5B2EFF]/10",
+      border: "border-[#5B2EFF]/30",
+      text: "text-[#5B2EFF]",
+      icon: "#5B2EFF",
     },
     {
       bg: "bg-[#03E46A]/10",
@@ -35,7 +35,7 @@ export function Testimonials() {
             Customer Love
           </div> */}
           <SectionHeader text=" Customer Love" />
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             Litters of Love From The Pet Parent Community
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
@@ -125,7 +125,7 @@ export function Testimonials() {
         <div className="mt-16 text-center">
           <a
             href="#"
-            className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#4B3F72] hover:text-[#4B3F72]/80 font-medium transition-all duration-300 group"
+            className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group"
           >
             Read More Reviews
             <svg

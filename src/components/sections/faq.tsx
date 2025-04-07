@@ -45,7 +45,7 @@ export function FAQ() {
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Common Questions
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#4B3F72]">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF]">
             Frequently Asked Questions
           </h2>
           <p className="text-gray-600 text-lg">
@@ -62,7 +62,7 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="border-b border-[#E0EFC7] last:border-0"
               >
-                <AccordionTrigger className="text-left font-bold text-lg hover:text-[#4B3F72] transition-colors py-3 flex items-center">
+                <AccordionTrigger className="text-left font-bold text-lg hover:text-[#5B2EFF] transition-colors py-3 flex items-center">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 leading-relaxed text-base pb-4">
@@ -78,7 +78,7 @@ export function FAQ() {
             Still have questions?{" "}
             <a
               href="#contact"
-              className="text-[#4B3F72] font-medium hover:text-[#4B3F72]/80 transition-colors"
+              className="text-[#5B2EFF] font-medium hover:text-[#5B2EFF]/80 transition-colors"
             >
               Contact our team
             </a>{" "}

@@ -13,7 +13,7 @@ export function Benefits() {
           {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Why Choose Purrify
           </div> */}
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             Benefits of Purrify
           </h2>
           <p className="text-gray-600 text-xl">
@@ -52,7 +52,7 @@ export function Benefits() {
           </div>
 
           <div className="bg-[#FFFFFF]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/70 hover:-translate-y-2 group">
-            <div className="bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80 p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-10 w-10 text-white"
@@ -68,7 +68,7 @@ export function Benefits() {
                 />
               </svg>
             </div>
-            <h3 className="font-bold text-xl mb-4 text-[#4B3F72]">Simple</h3>
+            <h3 className="font-bold text-xl mb-4 text-[#5B2EFF]">Simple</h3>
             <p className="text-gray-600 leading-relaxed">
               Purrify is formulated with simple coconut shells, activated to
               soak up odor. You can trust that you're providing your cat with a

@@ -18,13 +18,21 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <img
-                src="/purrify-logo.svg"
-                alt="Purrify Logo"
-                className="h-8 w-auto"
-              />
-              <h3 className="text-lg font-bold text-[#FF3131]">{SITE_NAME}</h3>
+            <div className="flex items-center">
+              <Link to="/" className="group">
+                <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
+                  <img
+                    src="/purrify-logo-icon.png"
+                    alt="Purrify Logo"
+                    className="h-full w-auto"
+                  />
+                  <img
+                    src="/purrify-logo-text.png"
+                    alt="Purrify Logo"
+                    className="h-full w-auto"
+                  />
+                </div>
+              </Link>
             </div>
             <p className="text-sm text-[#333333]/80">
               Activated carbon cat litter additive that eliminates odors at the

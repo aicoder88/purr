@@ -5,7 +5,7 @@ export function Newsletter() {
   return (
     <section className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#4B3F72]/20 rounded-full blur-3xl"></div>
+      <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#5B2EFF]/20 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#03E46A]/20 rounded-full blur-3xl"></div>
 
       <Container className="relative z-10">
@@ -14,7 +14,7 @@ export function Newsletter() {
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
               Stay Updated
             </div>
-            <h2 className="text-4xl font-bold mb-4 text-[#4B3F72]">
+            <h2 className="text-4xl font-bold mb-4 text-[#5B2EFF]">
               Join Our Cat-Loving Community
             </h2>
             <p className="text-gray-600 text-lg">
@@ -27,10 +27,10 @@ export function Newsletter() {
             <input
               type="email"
               placeholder="Your email address"
-              className="flex-grow px-5 py-4 rounded-xl border border-[#E0EFC7] focus:ring-[#4B3F72] focus:border-[#4B3F72] shadow-sm transition-all duration-300"
+              className="flex-grow px-5 py-4 rounded-xl border border-[#E0EFC7] focus:ring-[#5B2EFF] focus:border-[#5B2EFF] shadow-sm transition-all duration-300"
               required
             />
-            <Button className="bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80 hover:from-[#4B3F72]/90 hover:to-[#4B3F72] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap">
+            <Button className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 hover:from-[#5B2EFF]/90 hover:to-[#5B2EFF] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap">
               Subscribe Now
             </Button>
           </form>
@@ -38,7 +38,7 @@ export function Newsletter() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
             <div className="flex items-center">
               <svg
-                className="w-5 h-5 text-[#4B3F72] mr-2"
+                className="w-5 h-5 text-[#5B2EFF] mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

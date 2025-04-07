@@ -147,8 +147,8 @@ export const TESTIMONIALS = [
 ];
 
 export const CONTACT_INFO = {
-  address: "3455 Chem. de la Côte-Sainte-Catherine, Montréal, QC H3T 1C7",
-  phone: "+1 (438) 256-4612",
+  address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
+  phone: "+1 438-931-7345",
   email: "hello@purrify.ca",
   hours: {
     monday: "08:00 am - 8:00 pm",

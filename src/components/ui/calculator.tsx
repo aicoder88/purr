@@ -3,6 +3,28 @@ import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
 import { Leaf, Car, TreePine, Cat, DollarSign, Clock } from "lucide-react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface CostCalculatorProps {
   className?: string;
@@ -91,6 +113,52 @@ export function CostCalculator({ className }: CostCalculatorProps) {
   const savingsData = generateSavingsData();
   const maxSavings = savingsData[savingsData.length - 1].savings;
 
+  const generateSavingsChartData = () => {
+    return {
+      labels: savingsData.map((data) => `${data.year}yr`),
+      datasets: [
+        {
+          label: "Savings ($)",
+          data: savingsData.map((data) => data.savings),
+          borderColor: "#5B2EFF",
+          backgroundColor: "rgba(91, 46, 255, 0.2)",
+          tension: 0.4,
+          pointRadius: 5,
+          pointBackgroundColor: "#03E46A",
+        },
+      ],
+    };
+  };
+
+  const savingsChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => `$${context.raw.toFixed(2)}`,
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Years",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Savings ($)",
+        },
+        beginAtZero: true,
+      },
+    },
+  };
+
   const yearlyImpactMetrics = [
     {
       title: "Carbon Saved",
@@ -166,7 +234,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       className={`bg-[#FFFFFF]/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#E0EFC7] ${className}`}
     >
       <motion.h3
-        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#4B3F72] to-[#03E46A] bg-clip-text text-transparent"
+        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] bg-clip-text text-transparent"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -181,10 +249,12 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
+            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50 flex flex-col justify-between"
           >
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <Cat className="h-4 w-4 text-[#4B3F72]" />
+            <div className="flex justify-center mb-2">
+              <Cat className="h-5 w-5 text-[#5B2EFF]" />
+            </div>
+            <label className="block text-sm font-medium text-gray-700 text-center">
               Number of Cats: {catsCount}
             </label>
             <Slider
@@ -193,7 +263,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               min={1}
               step={1}
               onValueChange={(value) => setCatsCount(value[0])}
-              className="my-4"
+              className="mt-auto"
             />
           </motion.div>
 
@@ -201,10 +271,12 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
-            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
+            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50 flex flex-col justify-between"
           >
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-[#03E46A]" />
+            <div className="flex justify-center mb-2">
+              <DollarSign className="h-5 w-5 text-[#03E46A]" />
+            </div>
+            <label className="block text-sm font-medium text-gray-700 text-center">
               Cost of Litter per Change: ${litterCost}
             </label>
             <Slider
@@ -213,7 +285,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               min={5}
               step={1}
               onValueChange={(value) => setLitterCost(value[0])}
-              className="my-4"
+              className="mt-5"
             />
           </motion.div>
 
@@ -221,10 +293,12 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
+            className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50 flex flex-col justify-between"
           >
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <Clock className="h-4 w-4 text-[#FF3131]" />
+            <div className="flex justify-center mb-2">
+              <Clock className="h-5 w-5 text-[#FF3131]" />
+            </div>
+            <label className="block text-sm font-medium text-gray-700 text-center">
               Days Between Litter Changes: {changeFrequency}
             </label>
             <Slider
@@ -233,7 +307,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               min={3}
               step={1}
               onValueChange={(value) => setChangeFrequency(value[0])}
-              className="my-4"
+              className="mt-auto"
             />
           </motion.div>
         </div>
@@ -243,9 +317,9 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="p-6 bg-gradient-to-r from-[#4B3F72]/10 to-[#03E46A]/10 rounded-xl"
+          className="p-6 bg-gradient-to-r from-[#5B2EFF]/10 to-[#03E46A]/10 rounded-xl"
         >
-          <h4 className="text-xl font-bold mb-4 text-center text-[#4B3F72]">
+          <h4 className="text-xl font-bold mb-4 text-center text-[#5B2EFF]">
             Financial Impact
           </h4>
 
@@ -257,7 +331,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               </p>
               <div className="flex items-center justify-center mb-2">
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#4B3F72] to-[#03E46A] flex items-center justify-center text-white text-xl font-bold"
+                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] flex items-center justify-center text-white text-xl font-bold"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
@@ -314,39 +388,11 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             <p className="text-sm font-medium text-gray-700 mb-3 text-center">
               10-Year Savings Projection
             </p>
-            <div className="h-48 bg-white/70 rounded-lg p-4 border border-[#E0EFC7]/50 relative">
-              {/* Y-axis */}
-              <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col justify-between items-end pr-2 text-xs text-gray-500">
-                <span>${maxSavings.toFixed(0)}</span>
-                <span>${(maxSavings * 0.75).toFixed(0)}</span>
-                <span>${(maxSavings * 0.5).toFixed(0)}</span>
-                <span>${(maxSavings * 0.25).toFixed(0)}</span>
-                <span>$0</span>
-              </div>
-
-              {/* Graph area */}
-              <div className="ml-12 h-full flex items-end">
-                <div className="w-full h-full flex items-end justify-between">
-                  {savingsData.map((data, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                      <motion.div
-                        className="w-6 bg-gradient-to-t from-[#4B3F72] to-[#03E46A] rounded-t-sm"
-                        style={{
-                          height: `${(data.savings / maxSavings) * 100}%`,
-                        }}
-                        initial={{ height: 0 }}
-                        animate={{
-                          height: `${(data.savings / maxSavings) * 100}%`,
-                        }}
-                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                      />
-                      <span className="text-xs text-gray-500 mt-1">
-                        {data.year}yr
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="bg-white/70 rounded-lg p-4 border border-[#E0EFC7]">
+              <Line
+                data={generateSavingsChartData()}
+                options={savingsChartOptions}
+              />
             </div>
           </div>
         </motion.div>
@@ -356,7 +402,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="p-6 bg-gradient-to-r from-[#03E46A]/10 to-[#4B3F72]/10 rounded-xl"
+          className="p-6 bg-gradient-to-r from-[#03E46A]/10 to-[#5B2EFF]/10 rounded-xl"
         >
           <h4 className="text-xl font-bold mb-4 text-center text-[#03E46A]">
             Environmental Impact
@@ -364,7 +410,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-white/70 p-4 rounded-lg shadow-sm border border-[#E0EFC7]/50">
-              <h5 className="text-center font-semibold text-[#4B3F72] mb-3 flex items-center justify-center gap-2">
+              <h5 className="text-center font-semibold text-[#5B2EFF] mb-3 flex items-center justify-center gap-2">
                 <Clock className="h-4 w-4" /> Yearly Impact
               </h5>
               <div className="grid grid-cols-2 gap-3">
@@ -380,7 +426,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                     <h6 className="text-xs font-medium text-gray-700">
                       {metric.title}
                     </h6>
-                    <p className="text-lg font-bold text-[#4B3F72]">
+                    <p className="text-lg font-bold text-[#5B2EFF]">
                       {metric.value}
                       {metric.unit}
                     </p>
@@ -434,16 +480,16 @@ export function CostCalculator({ className }: CostCalculatorProps) {
 
           {/* Cat-Themed Special Callout */}
           <motion.div
-            className="mt-6 bg-gradient-to-r from-[#4B3F72]/20 to-[#FF3131]/20 p-5 rounded-lg flex items-center gap-4"
+            className="mt-6 bg-gradient-to-r from-[#5B2EFF]/20 to-[#FF3131]/20 p-5 rounded-lg flex items-center gap-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <div className="bg-white/80 rounded-full p-3 shadow-md">
-              <Cat className="h-12 w-12 text-[#4B3F72]" />
+              <Cat className="h-12 w-12 text-[#5B2EFF]" />
             </div>
             <div>
-              <h5 className="font-bold text-lg text-[#4B3F72] mb-1">
+              <h5 className="font-bold text-lg text-[#5B2EFF] mb-1">
                 Purrfect Impact: Help {tenYearEnvironmentalImpact.catsSaved}{" "}
                 Shelter Cats!
               </h5>
@@ -464,7 +510,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <Button className="w-full bg-gradient-to-r from-[#03E46A] to-[#4B3F72] hover:from-[#03E46A]/90 hover:to-[#4B3F72]/90 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg">
+          <Button className="w-full bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] hover:from-[#03E46A]/90 hover:to-[#5B2EFF]/90 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg">
             START SAVING NOW
           </Button>
         </motion.div>

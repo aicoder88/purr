@@ -59,7 +59,7 @@ export function BlogPreview() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#4B3F72]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={post.image}
@@ -72,7 +72,7 @@ export function BlogPreview() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-3 text-[#4B3F72] group-hover:text-[#4B3F72]/80 transition-colors">
+                <h3 className="font-bold text-xl mb-3 text-[#5B2EFF] group-hover:text-[#5B2EFF]/80 transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">

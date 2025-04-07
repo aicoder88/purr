@@ -81,7 +81,7 @@ export function Hero() {
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl"></div>
-      <div className="absolute top-40 right-20 w-20 h-20 bg-[#4B3F72]/20 rounded-full blur-xl"></div>
+      <div className="absolute top-40 right-20 w-20 h-20 bg-[#5B2EFF]/20 rounded-full blur-xl"></div>
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -126,7 +126,7 @@ export function Hero() {
             </Button>
           </div>
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#4B3F72]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <img
                 src="https://images.unsplash.com/photo-1570824104453-508955ab713e?w=800&q=80"
