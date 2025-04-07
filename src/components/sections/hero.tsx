@@ -93,19 +93,31 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <SectionHeader text="Revolutionary Cat Litter Additive" />
+            <SectionHeader text="Attention Cat Owners!" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              <span className="block">Attention</span>
-              <span className="block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-                Cat Owners!
+              <span
+                className="block"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                Science-Backed
               </span>
-              <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#0072CE] to-[#0072CE]/40 -">
-                Purrify Traps Odors
+              <span className=" block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
+                Odor Elimination
               </span>
-              <span className="block">Before They Escape</span>
+              {/* <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#0072CE] to-[#0072CE]/40 -">
+                Experience
+              </span> */}
+              {/* <span className="block">Before They Escape</span> */}
             </h1>
             <p className="text-xl text-[#333333] font-light">
-              No Sprays. No Chemicals. No Hassle. Just Pure Freshness.
+              Montreal's premium activated carbon cat litter additive with an
+              incredible 1,150 m²/gm surface area to capture odors at the
+              molecular level.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
