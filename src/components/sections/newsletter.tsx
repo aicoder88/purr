@@ -5,16 +5,16 @@ export function Newsletter() {
   return (
     <section className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#6A43FB]/20 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#43FBB4]/20 rounded-full blur-3xl"></div>
+      <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#4B3F72]/20 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#03E46A]/20 rounded-full blur-3xl"></div>
 
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-[#E0EFC7]">
           <div className="text-center mb-8">
-            <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+            <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
               Stay Updated
             </div>
-            <h2 className="text-4xl font-bold mb-4 text-[#6A43FB]">
+            <h2 className="text-4xl font-bold mb-4 text-[#4B3F72]">
               Join Our Cat-Loving Community
             </h2>
             <p className="text-gray-600 text-lg">
@@ -27,10 +27,10 @@ export function Newsletter() {
             <input
               type="email"
               placeholder="Your email address"
-              className="flex-grow px-5 py-4 rounded-xl border border-[#E0EFC7] focus:ring-[#6A43FB] focus:border-[#6A43FB] shadow-sm transition-all duration-300"
+              className="flex-grow px-5 py-4 rounded-xl border border-[#E0EFC7] focus:ring-[#4B3F72] focus:border-[#4B3F72] shadow-sm transition-all duration-300"
               required
             />
-            <Button className="bg-gradient-to-r from-[#6A43FB] to-[#6A43FB]/80 hover:from-[#6A43FB]/90 hover:to-[#6A43FB] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap">
+            <Button className="bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80 hover:from-[#4B3F72]/90 hover:to-[#4B3F72] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap">
               Subscribe Now
             </Button>
           </form>
@@ -38,7 +38,7 @@ export function Newsletter() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
             <div className="flex items-center">
               <svg
-                className="w-5 h-5 text-[#6A43FB] mr-2"
+                className="w-5 h-5 text-[#4B3F72] mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -54,7 +54,7 @@ export function Newsletter() {
             </div>
             <div className="flex items-center">
               <svg
-                className="w-5 h-5 text-[#43FBB4] mr-2"
+                className="w-5 h-5 text-[#03E46A] mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -70,7 +70,7 @@ export function Newsletter() {
             </div>
             <div className="flex items-center">
               <svg
-                className="w-5 h-5 text-[#FB6A43] mr-2"
+                className="w-5 h-5 text-[#FF3131] mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

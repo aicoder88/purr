@@ -166,7 +166,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       className={`bg-[#FFFFFF]/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#E0EFC7] ${className}`}
     >
       <motion.h3
-        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#6A43FB] to-[#43FBB4] bg-clip-text text-transparent"
+        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#4B3F72] to-[#03E46A] bg-clip-text text-transparent"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -184,7 +184,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
           >
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <Cat className="h-4 w-4 text-[#6A43FB]" />
+              <Cat className="h-4 w-4 text-[#4B3F72]" />
               Number of Cats: {catsCount}
             </label>
             <Slider
@@ -204,7 +204,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
           >
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-[#43FBB4]" />
+              <DollarSign className="h-4 w-4 text-[#03E46A]" />
               Cost of Litter per Change: ${litterCost}
             </label>
             <Slider
@@ -224,7 +224,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             className="bg-white/50 p-4 rounded-xl shadow-sm border border-[#E0EFC7]/50"
           >
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <Clock className="h-4 w-4 text-[#FB6A43]" />
+              <Clock className="h-4 w-4 text-[#FF3131]" />
               Days Between Litter Changes: {changeFrequency}
             </label>
             <Slider
@@ -243,9 +243,9 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="p-6 bg-gradient-to-r from-[#6A43FB]/10 to-[#43FBB4]/10 rounded-xl"
+          className="p-6 bg-gradient-to-r from-[#4B3F72]/10 to-[#03E46A]/10 rounded-xl"
         >
-          <h4 className="text-xl font-bold mb-4 text-center text-[#6A43FB]">
+          <h4 className="text-xl font-bold mb-4 text-center text-[#4B3F72]">
             Financial Impact
           </h4>
 
@@ -257,7 +257,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               </p>
               <div className="flex items-center justify-center mb-2">
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#6A43FB] to-[#43FBB4] flex items-center justify-center text-white text-xl font-bold"
+                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#4B3F72] to-[#03E46A] flex items-center justify-center text-white text-xl font-bold"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
@@ -270,7 +270,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                   ${Math.round(annualSavings)}
                 </motion.div>
               </div>
-              <p className="text-2xl font-bold text-[#43FBB4]">
+              <p className="text-2xl font-bold text-[#03E46A]">
                 ${annualSavings.toFixed(2)}
               </p>
               <p className="text-xs text-gray-500 mt-1">
@@ -286,7 +286,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               </p>
               <div className="flex items-center justify-center mb-2">
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 flex items-center justify-center text-white text-xl font-bold"
+                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 flex items-center justify-center text-white text-xl font-bold"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
@@ -299,7 +299,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                   ${Math.round(tenYearSavings)}
                 </motion.div>
               </div>
-              <p className="text-2xl font-bold text-[#FB6A43]">
+              <p className="text-2xl font-bold text-[#FF3131]">
                 ${tenYearSavings.toFixed(2)}
               </p>
               <p className="text-xs text-gray-500 mt-1">
@@ -330,7 +330,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                   {savingsData.map((data, index) => (
                     <div key={index} className="flex flex-col items-center">
                       <motion.div
-                        className="w-6 bg-gradient-to-t from-[#6A43FB] to-[#43FBB4] rounded-t-sm"
+                        className="w-6 bg-gradient-to-t from-[#4B3F72] to-[#03E46A] rounded-t-sm"
                         style={{
                           height: `${(data.savings / maxSavings) * 100}%`,
                         }}
@@ -356,15 +356,15 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="p-6 bg-gradient-to-r from-[#43FBB4]/10 to-[#6A43FB]/10 rounded-xl"
+          className="p-6 bg-gradient-to-r from-[#03E46A]/10 to-[#4B3F72]/10 rounded-xl"
         >
-          <h4 className="text-xl font-bold mb-4 text-center text-[#43FBB4]">
+          <h4 className="text-xl font-bold mb-4 text-center text-[#03E46A]">
             Environmental Impact
           </h4>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-white/70 p-4 rounded-lg shadow-sm border border-[#E0EFC7]/50">
-              <h5 className="text-center font-semibold text-[#6A43FB] mb-3 flex items-center justify-center gap-2">
+              <h5 className="text-center font-semibold text-[#4B3F72] mb-3 flex items-center justify-center gap-2">
                 <Clock className="h-4 w-4" /> Yearly Impact
               </h5>
               <div className="grid grid-cols-2 gap-3">
@@ -380,7 +380,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                     <h6 className="text-xs font-medium text-gray-700">
                       {metric.title}
                     </h6>
-                    <p className="text-lg font-bold text-[#6A43FB]">
+                    <p className="text-lg font-bold text-[#4B3F72]">
                       {metric.value}
                       {metric.unit}
                     </p>
@@ -398,7 +398,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             </div>
 
             <div className="bg-white/70 p-4 rounded-lg shadow-sm border border-[#E0EFC7]/50">
-              <h5 className="text-center font-semibold text-[#FB6A43] mb-3 flex items-center justify-center gap-2">
+              <h5 className="text-center font-semibold text-[#FF3131] mb-3 flex items-center justify-center gap-2">
                 <Clock className="h-4 w-4" /> 10-Year Impact
               </h5>
               <div className="grid grid-cols-2 gap-3">
@@ -414,7 +414,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                     <h6 className="text-xs font-medium text-gray-700">
                       {metric.title}
                     </h6>
-                    <p className="text-lg font-bold text-[#FB6A43]">
+                    <p className="text-lg font-bold text-[#FF3131]">
                       {metric.value}
                       {metric.unit}
                     </p>
@@ -434,22 +434,22 @@ export function CostCalculator({ className }: CostCalculatorProps) {
 
           {/* Cat-Themed Special Callout */}
           <motion.div
-            className="mt-6 bg-gradient-to-r from-[#6A43FB]/20 to-[#FB6A43]/20 p-5 rounded-lg flex items-center gap-4"
+            className="mt-6 bg-gradient-to-r from-[#4B3F72]/20 to-[#FF3131]/20 p-5 rounded-lg flex items-center gap-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <div className="bg-white/80 rounded-full p-3 shadow-md">
-              <Cat className="h-12 w-12 text-[#6A43FB]" />
+              <Cat className="h-12 w-12 text-[#4B3F72]" />
             </div>
             <div>
-              <h5 className="font-bold text-lg text-[#6A43FB] mb-1">
+              <h5 className="font-bold text-lg text-[#4B3F72] mb-1">
                 Purrfect Impact: Help {tenYearEnvironmentalImpact.catsSaved}{" "}
                 Shelter Cats!
               </h5>
               <p className="text-sm text-gray-700">
                 Your 10-year savings with Purrify could help approximately{" "}
-                <span className="font-bold text-[#FB6A43]">
+                <span className="font-bold text-[#FF3131]">
                   {tenYearEnvironmentalImpact.catsSaved}
                 </span>{" "}
                 shelter cats get the care they need. That's a lot of happy
@@ -464,7 +464,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <Button className="w-full bg-gradient-to-r from-[#43FBB4] to-[#6A43FB] hover:from-[#43FBB4]/90 hover:to-[#6A43FB]/90 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg">
+          <Button className="w-full bg-gradient-to-r from-[#03E46A] to-[#4B3F72] hover:from-[#03E46A]/90 hover:to-[#4B3F72]/90 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg">
             START SAVING NOW
           </Button>
         </motion.div>

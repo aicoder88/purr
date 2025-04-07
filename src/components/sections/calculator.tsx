@@ -9,7 +9,7 @@ export function Calculator() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#43FBB4] to-[#6A43FB] bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#03E46A] to-[#4B3F72] bg-clip-text text-transparent">
             Save Money While Keeping Your Home Fresh
           </h2>
           <p className="text-gray-600">

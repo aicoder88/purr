@@ -32,7 +32,7 @@ export function WhyPurrify() {
             The Science Behind Purrify
           </div> */}
           <SectionHeader text="The Science Behind Purrify" />
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
+          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
             Why Purrify?
           </h2>
           <p className="text-gray-600 text-lg">
@@ -51,12 +51,24 @@ export function WhyPurrify() {
             >
               <div className="flex items-center mb-6">
                 <div
-                  className={`p-4 rounded-full shadow-md mr-4 group-hover:scale-110 transition-transform duration-300 ${index === 0 ? "bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80" : index === 1 ? "bg-gradient-to-r from-[#6A43FB] to-[#6A43FB]/80" : "bg-gradient-to-r from-[#43FBB4] to-[#43FBB4]/80"}`}
+                  className={`p-4 rounded-full shadow-md mr-4 group-hover:scale-110 transition-transform duration-300 ${
+                    index === 0
+                      ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
+                      : index === 1
+                      ? "bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80"
+                      : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
+                  }`}
                 >
                   <Check className="h-8 w-8 text-white" />
                 </div>
                 <h3
-                  className={`font-bold text-2xl ${index === 0 ? "text-[#FB6A43]" : index === 1 ? "text-[#6A43FB]" : "text-[#43FBB4]"}`}
+                  className={`font-bold text-2xl ${
+                    index === 0
+                      ? "text-[#FF3131]"
+                      : index === 1
+                      ? "text-[#4B3F72]"
+                      : "text-[#03E46A]"
+                  }`}
                 >
                   {reason.title}
                 </h3>
@@ -68,7 +80,13 @@ export function WhyPurrify() {
               <div className="mt-6 pt-6 border-t border-orange-100">
                 <a
                   href="#"
-                  className={`font-medium flex items-center transition-colors ${index === 0 ? "text-[#FB6A43] group-hover:text-[#FB6A43]/80" : index === 1 ? "text-[#6A43FB] group-hover:text-[#6A43FB]/80" : "text-[#43FBB4] group-hover:text-[#43FBB4]/80"}`}
+                  className={`font-medium flex items-center transition-colors ${
+                    index === 0
+                      ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
+                      : index === 1
+                      ? "text-[#4B3F72] group-hover:text-[#4B3F72]/80"
+                      : "text-[#03E46A] group-hover:text-[#03E46A]/80"
+                  }`}
                 >
                   Learn more
                   <svg
@@ -91,22 +109,22 @@ export function WhyPurrify() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="relative bg-gradient-to-r from-[#FB6A43]/10 to-[#6A43FB]/10 px-12 py-10 rounded-3xl shadow-xl border-2 border-[#FB6A43]/30 max-w-4xl mx-auto overflow-hidden">
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FB6A43]/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#6A43FB]/20 rounded-full blur-3xl"></div>
+          <div className="relative bg-gradient-to-r from-[#FF3131]/10 to-[#4B3F72]/10 px-12 py-10 rounded-3xl shadow-xl border-2 border-[#FF3131]/30 max-w-4xl mx-auto overflow-hidden">
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#4B3F72]/20 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col items-center">
               <img
                 src="/purrify-logo-icon.png"
                 alt="Purrify Logo"
                 className="h-16 mb-4"
               />
-              <p className="text-3xl font-bold text-[#6A43FB] mb-4">
+              <p className="text-3xl font-bold text-[#4B3F72] mb-4">
                 Experience the difference for yourself and make every day a
                 breath of fresh air with Purrify.
               </p>
               <a
                 href="#products"
-                className="mt-4 inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-[#FB6A43]/90 hover:to-[#FB6A43] transition-all duration-300 group"
+                className="mt-4 inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-[#FF3131]/90 hover:to-[#FF3131] transition-all duration-300 group"
               >
                 Try Purrify Today
                 <svg

@@ -75,13 +75,13 @@ export function Hero() {
             transform: `translate(-50%, -50%) rotate(${paw.rotation}deg)`,
           }}
         >
-          <FaPaw className="text-[#FB6A43] w-4 h-4 opacity-50 -translate-x-1/2 -translate-y-1/2" />
+          <FaPaw className="text-[#FF3131] w-4 h-4 opacity-50 -translate-x-1/2 -translate-y-1/2" />
         </span>
       ))}
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-[#FB6A43]/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl"></div>
-      <div className="absolute top-40 right-20 w-20 h-20 bg-[#6A43FB]/20 rounded-full blur-xl"></div>
+      <div className="absolute top-40 right-20 w-20 h-20 bg-[#4B3F72]/20 rounded-full blur-xl"></div>
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -89,10 +89,10 @@ export function Hero() {
             <SectionHeader text="Revolutionary Cat Litter Additive" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="block">Attention</span>
-              <span className="block bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
                 Cat Owners!
               </span>
-              <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#3ba4fd] to-[#3ba4fd]/40 -">
+              <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#0072CE] to-[#0072CE]/40 -">
                 Purrify Traps Odors
               </span>
               <span className="block">Before They Escape</span>
@@ -102,14 +102,13 @@ export function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
-              
                 size="lg"
                 className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
               >
                 ORDER NOW
               </Button>
               <Button
-              onClick={() => scrollToSection("testimonials")}
+                onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
                 className="bg-gradient-secondary  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
@@ -118,16 +117,16 @@ export function Hero() {
               </Button>
             </div>
             <Button
-            onClick={() => scrollToSection("calculator")}
+              onClick={() => scrollToSection("calculator")}
               size="lg"
               variant="outline"
-              className="bg-gradient-to-t from-[#8cc637] to-[#8cc637]/40  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-t from-[#03E46A] to-[#008541]/40  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
             >
-              CHECKOUT OUR CALCULATOR
+              CHECKOUT OUR CAT LITTER SAVINGS CALCULATOR
             </Button>
           </div>
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#FB6A43]/20 to-[#6A43FB]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#4B3F72]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <img
                 src="https://images.unsplash.com/photo-1570824104453-508955ab713e?w=800&q=80"
@@ -150,7 +149,7 @@ export function Hero() {
                         </svg>
                       ))}
                   </div>
-                  <p className="text-[#3ba4fd] font-medium line-clamp-2">
+                  <p className="text-[#0072CE] font-medium line-clamp-2">
                     "{TESTIMONIALS[currentTestimonial].text.split(".")[0]}."
                   </p>
                   <p className="text-sm text-[#333333]">
@@ -165,11 +164,11 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
-        <p className="text-sm text-[#3ba4fd] mb-2 bg-white/80 px-3 py-1 rounded-full">
+        <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
           Scroll to discover
         </p>
         <svg
-          className="w-6 h-6 text-[#3ba4fd] animate-bounce bg-white/80 rounded-full p-1"
+          className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

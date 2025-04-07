@@ -33,11 +33,11 @@ export function HowItWorks() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Simple as 1-2-3
           </div> */}
           <SectionHeader text="Simple as 1-2-3" />
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
+          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
             How Purrify Works
           </h2>
           <p className="text-gray-600 text-lg">
@@ -47,7 +47,7 @@ export function HowItWorks() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#6A43FB]/30 to-[#E0EFC7] hidden md:block"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#4B3F72]/30 to-[#E0EFC7] hidden md:block"></div>
 
           {steps.map((step, index) => (
             <div
@@ -55,18 +55,28 @@ export function HowItWorks() {
               className="relative group"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-             
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 z-10 relative">
-        
                 <div
-                  className={`absolute -top-6 left-1/2 -translate-x-1/2 ${index === 0 ? "bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80" : index === 1 ? "bg-gradient-to-r from-[#6A43FB] to-[#6A43FB]/80" : "bg-gradient-to-r from-[#43FBB4] to-[#43FBB4]/80"} text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
+                  className={`absolute -top-6 left-1/2 -translate-x-1/2 ${
+                    index === 0
+                      ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
+                      : index === 1
+                      ? "bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80"
+                      : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
+                  } text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
                 >
                   {step.number}
                 </div>
                 <div className="text-center mt-6">
                   <div className="text-6xl mb-4">{step.icon}</div>
                   <h3
-                    className={`font-bold text-3xl mb-4 ${index === 0 ? "text-[#FB6A43]" : index === 1 ? "text-[#6A43FB]" : "text-[#43FBB4]"}`}
+                    className={`font-bold text-3xl mb-4 ${
+                      index === 0
+                        ? "text-[#FF3131]"
+                        : index === 1
+                        ? "text-[#4B3F72]"
+                        : "text-[#03E46A]"
+                    }`}
                   >
                     {step.title}
                   </h3>
@@ -88,7 +98,7 @@ export function HowItWorks() {
                       alt="Clay cat litter"
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#43FBB4]/80 text-white text-xs font-bold px-2 py-1 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CLAY
                     </div>
                   </div>
@@ -98,7 +108,7 @@ export function HowItWorks() {
                       alt="Crystal cat litter"
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#FB6A43]/80 text-white text-xs font-bold px-2 py-1 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CRYSTAL
                     </div>
                   </div>
@@ -108,7 +118,7 @@ export function HowItWorks() {
                       alt="Natural cat litter"
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#6A43FB]/80 text-white text-xs font-bold px-2 py-1 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#4B3F72]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       NATURAL
                     </div>
                   </div>
@@ -118,7 +128,7 @@ export function HowItWorks() {
                       alt="Clumping cat litter"
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#43FBB4]/80 text-white text-xs font-bold px-2 py-1 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CLUMPING
                     </div>
                   </div>
@@ -145,7 +155,7 @@ export function HowItWorks() {
                   ].map((type) => (
                     <span
                       key={type}
-                      className="px-3 py-1 bg-[#E0EFC7] text-[#6A43FB] rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-[#E0EFC7] text-[#4B3F72] rounded-full text-sm font-medium"
                     >
                       {type}
                     </span>

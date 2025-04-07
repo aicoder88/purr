@@ -11,10 +11,10 @@ export function Contact() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Get In Touch
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#6A43FB]">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#4B3F72]">
             Contact Us
           </h2>
           <p className="text-gray-600 text-lg">
@@ -26,11 +26,11 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
                 <MapPin className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#FB6A43]">
+                <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
                   Our Location
                 </h3>
                 <p className="text-gray-600">{CONTACT_INFO.address}</p>
@@ -38,11 +38,11 @@ export function Contact() {
             </div>
 
             <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#6A43FB] to-[#6A43FB]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
                 <Phone className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#6A43FB]">
+                <h3 className="font-bold text-xl mb-2 text-[#4B3F72]">
                   Phone Number
                 </h3>
                 <p className="text-gray-600">{CONTACT_INFO.phone}</p>
@@ -50,11 +50,11 @@ export function Contact() {
             </div>
 
             <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#43FBB4] to-[#43FBB4]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
                 <Mail className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#43FBB4]">
+                <h3 className="font-bold text-xl mb-2 text-[#03E46A]">
                   Email Address
                 </h3>
                 <p className="text-gray-600">{CONTACT_INFO.email}</p>
@@ -62,11 +62,11 @@ export function Contact() {
             </div>
 
             <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
                 <Clock className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#FB6A43]">
+                <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
                   Opening Hours
                 </h3>
                 <ul className="text-gray-600 space-y-2">
@@ -100,7 +100,7 @@ export function Contact() {
           </div>
 
           <div className="bg-[#FFFFFF]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/50">
-            <h3 className="font-bold text-2xl mb-6 text-[#6A43FB]">
+            <h3 className="font-bold text-2xl mb-6 text-[#4B3F72]">
               Send us a Message
             </h3>
             <form className="space-y-6">
@@ -114,7 +114,7 @@ export function Contact() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#6A43FB] focus:border-[#6A43FB] bg-white/50 backdrop-blur-sm transition-all duration-300"
+                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#4B3F72] focus:border-[#4B3F72] bg-white/50 backdrop-blur-sm transition-all duration-300"
                   placeholder="John Doe"
                 />
               </div>
@@ -129,7 +129,7 @@ export function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#6A43FB] focus:border-[#6A43FB] bg-white/50 backdrop-blur-sm transition-all duration-300"
+                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#4B3F72] focus:border-[#4B3F72] bg-white/50 backdrop-blur-sm transition-all duration-300"
                   placeholder="john@example.com"
                 />
               </div>
@@ -144,12 +144,12 @@ export function Contact() {
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#6A43FB] focus:border-[#6A43FB] bg-white/50 backdrop-blur-sm transition-all duration-300"
+                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#4B3F72] focus:border-[#4B3F72] bg-white/50 backdrop-blur-sm transition-all duration-300"
                   placeholder="How can we help you?"
                 ></textarea>
               </div>
 
-              <Button className="w-full bg-gradient-to-r from-[#6A43FB] to-[#6A43FB]/80 hover:from-[#6A43FB]/90 hover:to-[#6A43FB] text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+              <Button className="w-full bg-gradient-to-r from-[#4B3F72] to-[#4B3F72]/80 hover:from-[#4B3F72]/90 hover:to-[#4B3F72] text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0">
                 Send Message
               </Button>
               <p className="text-xs text-center text-gray-500 mt-2">

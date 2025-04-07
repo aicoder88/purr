@@ -24,7 +24,7 @@ export function Footer() {
                 alt="Purrify Logo"
                 className="h-8 w-auto"
               />
-              <h3 className="text-lg font-bold text-[#FB6A43]">{SITE_NAME}</h3>
+              <h3 className="text-lg font-bold text-[#FF3131]">{SITE_NAME}</h3>
             </div>
             <p className="text-sm text-[#333333]/80">
               Activated carbon cat litter additive that eliminates odors at the
@@ -33,19 +33,19 @@ export function Footer() {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-[#333333]/70 hover:text-[#FB6A43] transition-colors duration-300"
+                className="text-[#333333]/70 hover:text-[#FF3131] transition-colors duration-300"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-[#333333]/70 hover:text-[#FB6A43] transition-colors duration-300"
+                className="text-[#333333]/70 hover:text-[#FF3131] transition-colors duration-300"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-[#333333]/70 hover:text-[#FB6A43] transition-colors duration-300"
+                className="text-[#333333]/70 hover:text-[#FF3131] transition-colors duration-300"
               >
                 <Twitter className="h-5 w-5" />
               </a>
@@ -60,7 +60,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Home
                 </Link>
@@ -68,7 +68,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#products"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Products
                 </Link>
@@ -76,7 +76,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#features"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Features
                 </Link>
@@ -84,7 +84,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#benefits"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Benefits
                 </Link>
@@ -92,7 +92,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#calculator"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Savings Calculator
                 </Link>
@@ -100,7 +100,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#faq"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   FAQ
                 </Link>
@@ -108,7 +108,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#blog"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Blog
                 </Link>
@@ -116,7 +116,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/#testimonials"
-                  className="text-[#333333]/80 hover:text-[#FB6A43] transition-colors duration-300"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Testimonials
                 </Link>
@@ -146,7 +146,7 @@ export function Footer() {
               <p>
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="hover:text-[#FB6A43] transition-colors duration-300"
+                  className="hover:text-[#FF3131] transition-colors duration-300"
                 >
                   {CONTACT_INFO.email}
                 </a>
@@ -158,7 +158,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
           <p className="text-center text-xs text-[#333333]/80">
             © {currentYear}{" "}
-            <span className="text-[#FB6A43] font-medium">{SITE_NAME}</span> |
+            <span className="text-[#FF3131] font-medium">{SITE_NAME}</span> |
             All Rights Reserved
           </p>
         </div>

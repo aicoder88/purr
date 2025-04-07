@@ -39,10 +39,10 @@ export function BlogPreview() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Cat Care Tips & Insights
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#43FBB4]">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
             From Our Blog
           </h2>
           <p className="text-gray-600 text-lg">
@@ -59,7 +59,7 @@ export function BlogPreview() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#43FBB4]/20 to-[#6A43FB]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#4B3F72]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={post.image}
@@ -67,19 +67,19 @@ export function BlogPreview() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#43FBB4] to-[#43FBB4]/80 px-3 py-1 rounded-full shadow-md text-xs text-white font-medium">
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 px-3 py-1 rounded-full shadow-md text-xs text-white font-medium">
                   New Post
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-3 text-[#6A43FB] group-hover:text-[#6A43FB]/80 transition-colors">
+                <h3 className="font-bold text-xl mb-3 text-[#4B3F72] group-hover:text-[#4B3F72]/80 transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {post.excerpt}
                 </p>
                 <div className="flex justify-between items-center text-sm">
-                  <span className="text-[#43FBB4] font-medium">
+                  <span className="text-[#03E46A] font-medium">
                     {post.author}
                   </span>
                   <span className="text-gray-500">{post.date}</span>
@@ -88,7 +88,7 @@ export function BlogPreview() {
               <div className="px-6 pb-6 pt-0">
                 <a
                   href="#"
-                  className="text-[#43FBB4] font-medium flex items-center hover:text-[#43FBB4]/80 transition-colors"
+                  className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                 >
                   Read full article
                   <svg
@@ -111,7 +111,7 @@ export function BlogPreview() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button className="bg-gradient-to-r from-[#43FBB4] to-[#43FBB4]/80 hover:from-[#43FBB4]/90 hover:to-[#43FBB4] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+          <Button className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0">
             View All Articles
           </Button>
         </div>

@@ -12,7 +12,6 @@ export function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7] bg-[#FFFFFF]/95 backdrop-blur-md supports-[backdrop-filter]:bg-[#FFFFFF]/80 shadow-sm">
       <Container>
@@ -25,56 +24,56 @@ export function Header() {
                   alt="Purrify Logo"
                   className="h-full w-auto"
                 />
-                 <img
+                <img
                   src="/purrify-logo-text.png"
                   alt="Purrify Logo"
                   className="h-full w-auto"
                 />
-              </div>            
+              </div>
             </Link>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="/"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Home
             </a>
             <a
               href="/#products"
               // onClick={}
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Products
             </a>
             <a
               href="/#features"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Features
             </a>
             <a
               href="/#benefits"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Benefits
             </a>
             <a
               href="/#calculator"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Savings Calculator
             </a>
             <a
               href="/#testimonials"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Testimonials
             </a>
             <a
               href="/#contact"
-              className="text-sm font-medium transition-colors hover:text-[#FB6A43] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FB6A43] after:transition-all after:duration-300"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Contact
             </a>
@@ -83,8 +82,8 @@ export function Header() {
               size="icon"
               className="relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 ml-2"
             >
-              <ShoppingCart className="h-5 w-5 text-[#FB6A43]" />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 text-xs text-white shadow-sm">
+              <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
                 0
               </span>
             </Button>
@@ -96,8 +95,8 @@ export function Header() {
               size="icon"
               className="mr-3 relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300"
             >
-              <ShoppingCart className="h-5 w-5 text-[#FB6A43]" />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 text-xs text-white shadow-sm">
+              <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
                 0
               </span>
             </Button>
@@ -108,9 +107,9 @@ export function Header() {
               className="hover:bg-[#FFFFF5]"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-[#FB6A43]" />
+                <X className="h-6 w-6 text-[#FF3131]" />
               ) : (
-                <Menu className="h-6 w-6 text-[#FB6A43]" />
+                <Menu className="h-6 w-6 text-[#FF3131]" />
               )}
             </Button>
           </div>
@@ -122,49 +121,49 @@ export function Header() {
           <div className="space-y-4 px-6 py-6">
             <Link
               to="/"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/#products"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Products
             </Link>
             <Link
               to="/#features"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
             </Link>
             <Link
               to="/#benefits"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Benefits
             </Link>
             <Link
               to="/#calculator"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Savings Calculator
             </Link>
             <Link
               to="/#testimonials"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Testimonials
             </Link>
             <Link
               to="/#contact"
-              className="block text-sm font-medium transition-colors hover:text-[#FB6A43] py-2"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

@@ -5,22 +5,22 @@ import SectionHeader from "../ui/section-header";
 export function Testimonials() {
   const colorClasses = [
     {
-      bg: "bg-[#FB6A43]/10",
-      border: "border-[#FB6A43]/30",
-      text: "text-[#FB6A43]",
-      icon: "#FB6A43",
+      bg: "bg-[#FF3131]/10",
+      border: "border-[#FF3131]/30",
+      text: "text-[#FF3131]",
+      icon: "#FF3131",
     },
     {
-      bg: "bg-[#6A43FB]/10",
-      border: "border-[#6A43FB]/30",
-      text: "text-[#6A43FB]",
-      icon: "#6A43FB",
+      bg: "bg-[#4B3F72]/10",
+      border: "border-[#4B3F72]/30",
+      text: "text-[#4B3F72]",
+      icon: "#4B3F72",
     },
     {
-      bg: "bg-[#43FBB4]/10",
-      border: "border-[#43FBB4]/30",
-      text: "text-[#43FBB4]",
-      icon: "#43FBB4",
+      bg: "bg-[#03E46A]/10",
+      border: "border-[#03E46A]/30",
+      text: "text-[#03E46A]",
+      icon: "#03E46A",
     },
   ];
 
@@ -31,11 +31,11 @@ export function Testimonials() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Customer Love
           </div> */}
           <SectionHeader text=" Customer Love" />
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FB6A43] to-[#6A43FB] bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#4B3F72] bg-clip-text text-transparent">
             Litters of Love From The Pet Parent Community
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
@@ -60,7 +60,15 @@ export function Testimonials() {
                     className={`rounded-full border-4 border-white bg-white shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <img
-                      src={`https://randomuser.me/api/portraits/${testimonial.name.includes("Jean") || testimonial.name.includes("François") || testimonial.name.includes("Mathieu") || testimonial.name.includes("Robert") || testimonial.name.includes("Stéphane") ? "men" : "women"}/${index + 1}.jpg`}
+                      src={`https://randomuser.me/api/portraits/${
+                        testimonial.name.includes("Jean") ||
+                        testimonial.name.includes("François") ||
+                        testimonial.name.includes("Mathieu") ||
+                        testimonial.name.includes("Robert") ||
+                        testimonial.name.includes("Stéphane")
+                          ? "men"
+                          : "women"
+                      }/${index + 1}.jpg`}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />
@@ -117,7 +125,7 @@ export function Testimonials() {
         <div className="mt-16 text-center">
           <a
             href="#"
-            className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#6A43FB] hover:text-[#6A43FB]/80 font-medium transition-all duration-300 group"
+            className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#4B3F72] hover:text-[#4B3F72]/80 font-medium transition-all duration-300 group"
           >
             Read More Reviews
             <svg

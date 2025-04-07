@@ -5,7 +5,7 @@ export function CTA() {
   return (
     <section className="py-12 relative overflow-hidden">
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#6A43FB] to-[#43FBB4] opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#4B3F72] to-[#03E46A] opacity-90"></div>
 
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -67,7 +67,7 @@ export function CTA() {
           <div className="flex flex-col gap-4 min-w-[200px]">
             <Button
               size="lg"
-              className="bg-white text-[#6A43FB] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              className="bg-white text-[#4B3F72] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
             >
               ORDER NOW
             </Button>

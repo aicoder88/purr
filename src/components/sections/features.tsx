@@ -20,11 +20,11 @@ export function Features() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FB6A43] font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             The Purrify Difference
           </div> */}
           <SectionHeader text="The Purrify Difference" />
-          <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FB6A43] to-[#FB6A43]/80 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
             Why do Cats and Pet Parents Love Purrify?
           </h2>
           <p className="text-gray-600 leading-relaxed text-lg">
@@ -53,12 +53,24 @@ export function Features() {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div
-                  className={`bg-gradient-to-r ${index % 3 === 0 ? "from-[#FB6A43] to-[#FB6A43]/80" : index % 3 === 1 ? "from-[#6A43FB] to-[#6A43FB]/80" : "from-[#43FBB4] to-[#43FBB4]/80"} p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
+                  className={`bg-gradient-to-r ${
+                    index % 3 === 0
+                      ? "from-[#FF3131] to-[#FF3131]/80"
+                      : index % 3 === 1
+                      ? "from-[#4B3F72] to-[#4B3F72]/80"
+                      : "from-[#03E46A] to-[#03E46A]/80"
+                  } p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
                   <IconComponent className="h-8 w-8 text-white" />
                 </div>
                 <h3
-                  className={`font-bold text-xl mb-4 ${index % 3 === 0 ? "text-[#FB6A43]" : index % 3 === 1 ? "text-[#6A43FB]" : "text-[#43FBB4]"}`}
+                  className={`font-bold text-xl mb-4 ${
+                    index % 3 === 0
+                      ? "text-[#FF3131]"
+                      : index % 3 === 1
+                      ? "text-[#4B3F72]"
+                      : "text-[#03E46A]"
+                  }`}
                 >
                   {feature.title}
                 </h3>
@@ -69,7 +81,13 @@ export function Features() {
                 <div className="mt-6 pt-6 border-t border-[#E0EFC7]">
                   <a
                     href="#"
-                    className={`font-medium flex items-center transition-colors ${index % 3 === 0 ? "text-[#FB6A43] group-hover:text-[#FB6A43]/80" : index % 3 === 1 ? "text-[#6A43FB] group-hover:text-[#6A43FB]/80" : "text-[#43FBB4] group-hover:text-[#43FBB4]/80"}`}
+                    className={`font-medium flex items-center transition-colors ${
+                      index % 3 === 0
+                        ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
+                        : index % 3 === 1
+                        ? "text-[#4B3F72] group-hover:text-[#4B3F72]/80"
+                        : "text-[#03E46A] group-hover:text-[#03E46A]/80"
+                    }`}
                   >
                     Learn more
                     <svg
