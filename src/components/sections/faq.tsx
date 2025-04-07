@@ -16,7 +16,7 @@ export function FAQ() {
     {
       question: "Is Purrify safe for my cat?",
       answer:
-        "Absolutely! Purrify is made from natural activated coconut carbon and contains no harmful chemicals or fragrances that could irritate your cat or affect their litter box habits.",
+        "Purrify is made from the same natural activated coconut carbon used worldwide in indoor air and drinking water filtration systems! It contains no harmful chemicals or fragrances that could irritate your cat or affect their litter box habits.",
     },
     {
       question: "How long does one container of Purrify last?",

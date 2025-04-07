@@ -8,7 +8,7 @@ export function Newsletter() {
       <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#5B2EFF]/20 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#03E46A]/20 rounded-full blur-3xl"></div>
 
-      <Container className="relative z-10">
+      <Container className="hidden relative z-10">
         <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-[#E0EFC7]">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
