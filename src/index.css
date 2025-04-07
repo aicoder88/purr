@@ -84,5 +84,9 @@
     .paw {
       @apply w-2 h-2 bg-black absolute  -translate-x-1/2 -translate-y-1/2
     }
+    /* Hide elements related to ordering in info-only mode */
+    .hide-for-info-mode {
+      display: none !important;
+    }
   
 }

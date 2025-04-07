@@ -59,10 +59,10 @@ export function Products() {
                   <p className="text-gray-600">{product.description}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent hide-for-info-mode">
                     ${product.price.toFixed(2)}
                   </span>
-                  <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+                  <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 hide-for-info-mode">
                     Add to Cart
                   </Button>
                 </div>
@@ -72,7 +72,7 @@ export function Products() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg">
+          <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg hide-for-info-mode">
             VIEW ALL PRODUCTS
           </Button>
         </div>

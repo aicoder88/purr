@@ -60,14 +60,14 @@ export function CTA() {
                 </div>
               </div>
               <p className="text-white/90 text-sm font-medium">
-                Joined by 10,000+ happy cat owners
+                Join 1,000+ Happy cat Families - Visit your local store
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-4 min-w-[200px]">
             <Button
               size="lg"
-              className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg hide-for-info-mode"
             >
               ORDER NOW
             </Button>

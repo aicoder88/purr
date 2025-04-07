@@ -20,8 +20,8 @@ function Home() {
       <Hero />
       <About />
       <HowItWorks />
-      <Features />
-      <Benefits />
+      {/* <Features /> */}
+      {/* <Benefits /> */}
       <Calculator />
       <WhyPurrify />
       <Products />

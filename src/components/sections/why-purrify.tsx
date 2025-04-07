@@ -1,29 +1,58 @@
 import { Container } from "@/components/ui/container";
-import { Check } from "lucide-react";
+import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import SectionHeader from "../ui/section-header";
 
 export function WhyPurrify() {
   const reasons = [
     {
+      icon: Wind,
       title: "ODOR ELIMINATION",
-      description:
-        "Purrify's advanced formula effectively eliminates unpleasant litter odors at their source. Say goodbye to lingering smells that permeate your home and welcome a fresher, more inviting environment for both you and your furry friend.",
+      description: "Effectively eliminates unpleasant litter odors at their source. Say goodbye to lingering smells and welcome a fresher home.",
+      image: "/micropores_magnified_view.jpeg" // Use local image
     },
     {
+      icon: Cat,
       title: "CAT-FRIENDLY",
-      description:
-        "The more sensitive the nose, the more your entire family will appreciate Purrify. Designed with your cat's well-being in mind, it's safe, gentle, and completely pet-friendly.",
+      description: "Designed with your cat's sensitive nose in mind. Completely pet-friendly for worry-free use.", // Revised description
+      image: "/natural-cat-litter.webp" // Changed image
     },
     {
+      icon: Clock,
       title: "LONG-LASTING FRESHNESS",
-      description:
-        "A single sprinkle keeps your home odor-free for days. Enjoy continuous freshness without the need for constant upkeep.",
+      description: "A single application keeps the litter box odor-free for days. Enjoy continuous freshness without constant scooping or additives.",
+      image: "/panel_1.png" // Changed image
+    },
+    {
+      icon: Layers,
+      title: "WORKS WITH ANY LITTER",
+      description: "Compatible with clay, silica, pine, corn, or any litter type. No need to switch from what your cat already prefers.",
+      image: "/clay-cat-litter.webp" // Use local image
+    },
+    {
+      icon: Sparkles, // Changed icon
+      title: "HIGH-PURITY CARBON", // Changed title
+      description: "Uses the same high-purity activated carbon trusted in water and air purification systems worldwide.", // Revised description
+      image: "/carbon_magnified_image.png" // Use local image
+    },
+    {
+      icon: PiggyBank,
+      title: "COST-EFFECTIVE",
+      description: "Extends the life of your cat litter by preventing odor buildup, saving you money and reducing overall waste.",
+      image: "/three_bags_no_bg.png" // Use local image
     },
   ];
 
+  // Define color themes to cycle through
+  const colorThemes = [
+    { bgGradient: "from-[#FF3131] to-[#FF3131]/80", textClass: "text-[#FF3131]", shadow: "shadow-red-200/50", border: "border-red-100" },
+    { bgGradient: "from-[#5B2EFF] to-[#5B2EFF]/80", textClass: "text-[#5B2EFF]", shadow: "shadow-purple-200/50", border: "border-purple-100" },
+    { bgGradient: "from-[#03E46A] to-[#03E46A]/80", textClass: "text-[#03E46A]", shadow: "shadow-green-200/50", border: "border-green-100" },
+  ];
+
+
   return (
     <section
-      className="py-12 bg-gradient-to-br from-orange-50 to-white"
+      className="py-12 bg-gradient-to-br from-orange-50 to-white mb-16"
       id="why-purrify"
     >
       <Container>
@@ -43,69 +72,44 @@ export function WhyPurrify() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
-            <div
-              key={index}
-              className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-orange-100 transition-all duration-500 hover:shadow-orange-200/50 hover:-translate-y-2 group"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center mb-6">
+          {reasons.map((reason, index) => { // Remove the outer map and parenthesis
+              const theme = colorThemes[index % 3]; // Cycle through themes
+              const IconComponent = reason.icon;
+              return (
                 <div
-                  className={`p-4 rounded-full shadow-md mr-4 group-hover:scale-110 transition-transform duration-300 ${
-                    index === 0
-                      ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
-                      : index === 1
-                      ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
-                      : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
-                  }`}
+                  key={index}
+                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`} // Added overflow-hidden and flex
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <Check className="h-8 w-8 text-white" />
-                </div>
-                <h3
-                  className={`font-bold text-2xl ${
-                    index === 0
-                      ? "text-[#FF3131]"
-                      : index === 1
-                      ? "text-[#5B2EFF]"
-                      : "text-[#03E46A]"
-                  }`}
-                >
-                  {reason.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed">
-                {reason.description}
-              </p>
-
-              <div className="mt-6 pt-6 border-t border-orange-100">
-                <a
-                  href="#"
-                  className={`font-medium flex items-center transition-colors ${
-                    index === 0
-                      ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
-                      : index === 1
-                      ? "text-[#5B2EFF] group-hover:text-[#5B2EFF]/80"
-                      : "text-[#03E46A] group-hover:text-[#03E46A]/80"
-                  }`}
-                >
-                  Learn more
-                  <svg
-                    className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  {/* Image Section */}
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={reason.image}
+                      alt={reason.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ))}
+                  </div>
+                  {/* Content Section */}
+                  <div className="p-6 flex flex-col flex-grow"> {/* Added padding and flex-grow */}
+                    <div className="flex items-center mb-4"> {/* Reduced bottom margin */}
+                      <div
+                        className={`p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`} // Reduced padding and margin
+                      >
+                        <IconComponent className="h-6 w-6 text-white" /> {/* Reduced icon size */}
+                      </div>
+                      <h3 className={`font-bold text-xl ${theme.textClass}`}> {/* Reduced title size */}
+                        {reason.title}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm flex-grow"> {/* Reduced text size, added flex-grow */}
+                      {reason.description}
+                    </p>
+                    {/* Learn more link section is completely removed */}
+                  </div>
+                </div>
+              );
+            })}
+          {/* Remove the extra closing parenthesis and bracket */}
         </div>
 
         <div className="mt-16 text-center">
