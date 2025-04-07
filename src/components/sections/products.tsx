@@ -16,7 +16,7 @@ export function Products() {
           </div> */}
           <SectionHeader text="For Every Cat Household" />
           <h2 className="text-4xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-            Choose Your Perfect Size
+            Choose Your Purrfect Size
           </h2>
           <p className="text-gray-600 text-lg">
             Whether you have a kitten or multiple cats, we have the perfect
@@ -33,12 +33,12 @@ export function Products() {
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/10 to-[#E0EFC7]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="aspect-square overflow-hidden h-64">
+                <div className="aspect-square overflow-hidden h-72">
                   <div className="relative">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
                       <p className="text-white font-bold text-sm">
@@ -53,7 +53,7 @@ export function Products() {
               </div>
               <div className="p-8">
                 <div className="mb-6">
-                  <h3 className="font-bold text-xl mb-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+                  <h3 className="font-bold text-xl mb-2 bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent">
                     {product.name}
                   </h3>
                   <p className="text-gray-600">{product.description}</p>

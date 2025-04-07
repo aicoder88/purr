@@ -4,27 +4,27 @@ export const SITE_DESCRIPTION =
 
 export const PRODUCTS = [
   {
-    id: "purrify-15g",
-    name: "Purrify 15g",
+    id: "purrify-20g",
+    name: "Purrify 20g",
     description: "Perfect for kittens",
     price: 9.99,
-    image: "../public/20g.png",
-    size: "15g",
+    image: "./20g.png",
+    size: "20g",
   },
   {
-    id: "purrify-65g",
-    name: "Purrify 65g",
+    id: "purrify-60g",
+    name: "Purrify 60g",
     description: "Ideal for one cat",
     price: 19.99,
-    image: "../public/60g.png",
-    size: "65g",
+    image: "./60g.png",
+    size: "60g",
   },
   {
     id: "purrify-120g",
     name: "Purrify 120g",
     description: "Perfect for two cats",
     price: 29.99,
-    image: "../public/60g.png",
+    image: "./60g.png",
     size: "120g",
   },
 ];
