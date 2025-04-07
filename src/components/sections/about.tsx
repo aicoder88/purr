@@ -21,14 +21,14 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="../public/three_bags_no_bg.png"
+                  src="./three_bags_no_bg.png"
                   alt="65g bag of activated carbon"
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="../public/micropores_magnified_view.jpeg"
+                  src="./micropores_magnified_view.jpeg"
                   alt="Micropore magnified view of activated carbon"
                   className="w-full h-48 object-cover transform hover:scale-90 transition duration-500"
                 />
