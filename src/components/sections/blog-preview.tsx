@@ -1,36 +1,40 @@
+import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
 export function BlogPreview() {
-  const blogPosts = [
-    {
-      title: "7 Hidden Secrets to Banish Litter Box Stink Forever",
-      excerpt:
-        "Discover top-secret, easy-to-implement litter box smell hacks that actually work! Our experts share their best tips.",
-      author: "Drago",
-      date: "March 9, 2025",
-      image:
-        "https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=800&q=80",
-    },
-    {
-      title: "Why Your Cat Deserves Better Than Scented Litter",
-      excerpt:
-        "Learn about the potential health risks of scented litters and why natural alternatives like Purrify are better for your feline friend.",
-      author: "Cat Health Team",
-      date: "February 15, 2025",
-      image:
-        "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&q=80",
-    },
-    {
-      title: "The Science Behind Activated Carbon Technology",
-      excerpt:
-        "Understand how activated carbon works at a molecular level to trap and eliminate odors rather than just masking them.",
-      author: "Science Team",
-      date: "January 22, 2025",
-      image:
-        "https://images.unsplash.com/photo-1501820488136-72669149e0d4?w=800&q=80",
-    },
-  ];
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchBlogPosts() {
+      try {
+        console.log("this is getting bolgs");
+        const response = await fetch(
+          "https://clientlio.com/purrify/wp-json/wp/v2/posts?_embed"
+        );
+        const data = await response.json();
+        console.log("this is the data", data);
+
+        debugger;
+        const formattedPosts = data.map((post: any) => ({
+          title: post.title.rendered,
+          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""), // Strip HTML tags
+          author: post._embedded?.author?.[0]?.name || "Unknown",
+          date: new Date(post.date).toLocaleDateString(),
+          image:
+            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+            "https://via.placeholder.com/800",
+          link: post.link,
+        }));
+        console.log("this is the formatted posts", formattedPosts);
+        setBlogPosts(formattedPosts);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
+    }
+
+    fetchBlogPosts();
+  }, []);
 
   return (
     <section
@@ -87,7 +91,9 @@ export function BlogPreview() {
               </div>
               <div className="px-6 pb-6 pt-0">
                 <a
-                  href="#"
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                 >
                   Read full article
@@ -111,7 +117,12 @@ export function BlogPreview() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+          <Button
+            className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+            onClick={() =>
+              (window.location.href = "https://clientlio.com/purrify/blog")
+            }
+          >
             View All Articles
           </Button>
         </div>
