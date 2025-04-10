@@ -27,7 +27,7 @@ function Home() {
       <Products />
       <Testimonials />
       <FAQ />
-      <BlogPreview />
+      {/* <BlogPreview /> */}
       <Newsletter />
       <CTA />
       <Contact />
