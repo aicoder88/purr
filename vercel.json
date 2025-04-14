@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      {
+        "source": "/blog/:match*",
+        "destination": "https://clientlio.com/purrify/:match*"
+      }
+    ]
+  }
