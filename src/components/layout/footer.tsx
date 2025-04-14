@@ -171,6 +171,7 @@ export function Footer() {
           </p>
         </div>
       </Container>
+      <div dangerouslySetInnerHTML={{ __html: '<script src="https://app.simplebotinstall.com/js/chat_plugin.js" data-bot-id="40892"></script>' }} />
     </footer>
   );
 }
