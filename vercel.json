@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/blog/:match*",
-        "destination": "https://clientlio.com/purrify/:match*"
+        "destination": "https://clientlio.com/purrify/blog/:match*"
       }
     ]
   }
