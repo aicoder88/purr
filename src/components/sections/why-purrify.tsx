@@ -60,7 +60,7 @@ export function WhyPurrify() {
           {/* <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 font-medium text-sm mb-4">
             The Science Behind Purrify
           </div> */}
-          <SectionHeader text="The Science Behind Purrify" />
+        
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             Why Purrify?
           </h2>

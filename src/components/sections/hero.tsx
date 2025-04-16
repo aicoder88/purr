@@ -93,7 +93,7 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <SectionHeader text="Attention Cat Owners!" />
+            <SectionHeader text="STOP CAT ODORS FOREVER!" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <span
                 className="block"
@@ -107,7 +107,7 @@ export function Hero() {
                 Science-Backed
               </span>
               <span className=" block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
-                Odor Elimination
+                Odor ELIMINATION that works
               </span>
               {/* <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#0072CE] to-[#0072CE]/40 -">
                 Experience
@@ -115,9 +115,7 @@ export function Hero() {
               {/* <span className="block">Before They Escape</span> */}
             </h1>
             <p className="text-xl text-[#333333] font-light">
-              Montreal's premium activated carbon cat litter additive with an
-              incredible 1,150 m²/gm surface area to capture odors at the
-              molecular level.
+            A cat litter additive that CAPTURES odors at the molecular level, not just masks them
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
@@ -132,7 +130,7 @@ export function Hero() {
                 variant="outline"
                 className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
               >
-                SEE FEEDBACK
+                SEE 5-STAR REVIEWS
               </Button>
             </div>
             <Button
@@ -141,7 +139,7 @@ export function Hero() {
               variant="outline"
               className="bg-gradient-to-t from-[#03E46A] to-[#008541]/40  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
             >
-              CHECKOUT OUR CAT LITTER SAVINGS CALCULATOR
+              CALCULATE YOUR LITTER SAVINGS NOW
             </Button>
           </div>
           <div className="relative group">
@@ -184,7 +182,7 @@ export function Hero() {
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
         <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
-          Scroll to discover
+        Scroll to discover why Purrify works when everything else fails 
         </p>
         <svg
           className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"

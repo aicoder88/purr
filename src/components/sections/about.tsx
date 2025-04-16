@@ -6,13 +6,13 @@ export function About() {
     <section className="py-12 bg-white" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text="The Science Behind Freshness" />
+          <SectionHeader text="The Science of Fresh Air" />
 
           <h2 className="text-6xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-            What is Purrify?
+          What Makes Purrify Different?
           </h2>
           <p className="text-3xl font-semibold text-[#333333] mb-6">
-            "Activated" Coconut Shells!
+          Nature's Secret Weapon: Activated Coconut Shells!
           </p>
         </div>
 
@@ -44,23 +44,18 @@ export function About() {
           </div>
           <div className="space-y-6">
             <p className="text-gray-700 leading-relaxed text-lg">
-              Imagine a home that stays fresh and odor-free without relying on
-              harsh chemicals or artificial fragrances.
+            Tired of your home smelling like a litter box? Imagine walking through your door to PURE FRESHNESS every day - without harsh chemicals or fake fragrances!
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Traditional solutions? Sprays and scented litters just cover the
-              smell, and harsh chemicals probably aren't great for your cat or
-              your home.
+            Those sprays and scented litters? They just MASK odors temporarily while exposing your precious cat to questionable substances.
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
               <span className="font-bold text-[#FF3131]">
-                Purrify fixes this at the source.
+              Purrify ELIMINATES odors at the source.
               </span>
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Our activated coconut carbon technology absorbs odor molecules
-              before they take over your nose, keeping your home fresh and clean
-              without sprays, chemicals, or effort.
+            Our revolutionary activated coconut carbon doesn't just cover up smells - it TRAPS and DESTROYS odor molecules before they escape the litter box, keeping your home naturally fresh without any extra effort from you.
             </p>
           </div>
         </div>
