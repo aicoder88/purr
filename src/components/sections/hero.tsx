@@ -130,7 +130,7 @@ export function Hero() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <img
-                src="public/Carbon sktech.png"
+                src="Carbon sktech.png"
                 alt="Happy cat with Purrify"
                 className="w-[600px] h-[400px] object-cover group-hover:scale-105 transition duration-700"
               />
