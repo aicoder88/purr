@@ -123,8 +123,7 @@ export function WhyPurrify() {
                 className="h-16 mb-4"
               />
               <p className="text-3xl font-bold text-[#5B2EFF] mb-4">
-                Experience the difference for yourself and make every day a
-                breath of fresh air with Purrify.
+                Make every day a breath of fresh air with Purrify.
               </p>
               <a
                 href="#products"
