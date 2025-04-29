@@ -104,8 +104,7 @@ export function Hero() {
                   color: "transparent",
                 }}
               >
-                Science-Backed
-              </span>
+Cat Litter           </span>
               <span className=" block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
                 Odor ELIMINATION that works
               </span>
