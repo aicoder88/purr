@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
+import { useInterval } from "@/lib/utils";
 import { FaPaw } from "react-icons/fa";
 import { scrollToSection } from "@/lib/utils";
 
@@ -95,16 +96,7 @@ export function Hero() {
           <div className="space-y-8">
             <SectionHeader text="STOP CAT ODORS FOREVER!" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              <span
-                className="block"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-Cat Litter           </span>
+              <RotatingText texts={["Cat Litter", "Rabbit Litter", "Fridge smells", "Ferret cage"]} />
               <span className=" block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
                 Odor ELIMINATION that works
               </span>
@@ -132,22 +124,15 @@ Cat Litter           </span>
                 SEE 5-STAR REVIEWS
               </Button>
             </div>
-            <Button
-              onClick={() => scrollToSection("calculator")}
-              size="lg"
-              variant="outline"
-              className="bg-gradient-to-t from-[#03E46A] to-[#008541]/40  hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300"
-            >
-              CALCULATE YOUR LITTER SAVINGS NOW
-            </Button>
+            
           </div>
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <img
-                src="https://images.unsplash.com/photo-1570824104453-508955ab713e?w=800&q=80"
+                src="public/Carbon sktech.png"
                 alt="Happy cat with Purrify"
-                className="w-full h-auto object-cover group-hover:scale-105 transition duration-700"
+                className="w-[600px] h-[400px] object-cover group-hover:scale-105 transition duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -177,7 +162,7 @@ Cat Litter           </span>
           </div>
         </div>
       </Container>
-
+      
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
         <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
@@ -199,5 +184,27 @@ Cat Litter           </span>
         </svg>
       </div>
     </section>
+  );
+}
+
+function RotatingText({ texts }: { texts: string[] }) {
+  const [index, setIndex] = useState(0);
+
+  useInterval(() => {
+    setIndex((index + 1) % texts.length);
+  }, 2000);
+
+  return (
+    <span
+      className="block"
+      style={{
+        background:
+          "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
+        WebkitBackgroundClip: "text",
+        color: "transparent",
+      }}
+    >
+      {texts[index]}
+    </span>
   );
 }

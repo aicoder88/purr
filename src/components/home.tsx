@@ -22,7 +22,7 @@ function Home() {
       <HowItWorks />
       {/* <Features /> */}
       {/* <Benefits /> */}
-      <Calculator />
+      {/* <Calculator /> */}
       <WhyPurrify />
       <Products />
       <Testimonials />
