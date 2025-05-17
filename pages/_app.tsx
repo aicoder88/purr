@@ -7,7 +7,12 @@ import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const canonicalUrl = process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL}/` : '/';
+  // Dynamically determine the canonical URL
+  const canonicalUrl = typeof window !== 'undefined' ?
+    `${window.location.origin}/` :
+    process.env.VERCEL_URL ?
+      `https://${process.env.VERCEL_URL}/` :
+      '/';
   
   return (
     <>
@@ -27,8 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/images/icon-128.png" type="image/png" sizes="128x128" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         
-        {/* Preconnect to important domains */}
-        {process.env.NEXT_PUBLIC_SITE_URL && <link rel="preconnect" href={process.env.NEXT_PUBLIC_SITE_URL} />}
+        {/* Preconnect to important domains - will be handled automatically by the browser */}
         <link rel="preconnect" href="https://api.dicebear.com" />
       </Head>
       
@@ -46,7 +50,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           description: SITE_DESCRIPTION,
           images: [
             {
-              url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`,
+              url: typeof window !== 'undefined' ?
+                `${window.location.origin}/purrify-logo.png` :
+                process.env.VERCEL_URL ?
+                  `https://${process.env.VERCEL_URL}/purrify-logo.png` :
+                  '/purrify-logo.png',
               width: 1200,
               height: 630,
               alt: SITE_NAME,
@@ -114,7 +122,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             '@type': 'Organization',
             name: SITE_NAME,
             url: canonicalUrl,
-            logo: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`,
+            logo: typeof window !== 'undefined' ?
+              `${window.location.origin}/purrify-logo.png` :
+              process.env.VERCEL_URL ?
+                `https://${process.env.VERCEL_URL}/purrify-logo.png` :
+                '/purrify-logo.png',
             sameAs: [
               'https://facebook.com/purrify',
               'https://instagram.com/purrify',

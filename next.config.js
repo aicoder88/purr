@@ -60,7 +60,8 @@ const nextConfig = {
   },
   
   // Optimize asset loading
-  assetPrefix: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_SITE_URL || '' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ?
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') : '',
   
   // Configure headers for security and caching
   async headers() {

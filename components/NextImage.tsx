@@ -113,7 +113,12 @@ export default function NextImage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ImageObject',
-              contentUrl: isExternal ? imageSrc : `${process.env.NEXT_PUBLIC_SITE_URL || ''}${imageSrc}`,
+              contentUrl: isExternal ? imageSrc :
+                typeof window !== 'undefined' ?
+                  `${window.location.origin}${imageSrc}` :
+                  process.env.VERCEL_URL ?
+                    `https://${process.env.VERCEL_URL}${imageSrc}` :
+                    imageSrc,
               name: caption || filename || safeAlt,
               description: safeAlt,
               width: width,

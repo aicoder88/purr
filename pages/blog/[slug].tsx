@@ -80,22 +80,42 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
+        <meta property="og:url" content={typeof window !== 'undefined' ?
+          `${window.location.origin}${post.link}` :
+          process.env.VERCEL_URL ?
+            `https://${process.env.VERCEL_URL}${post.link}` :
+            post.link} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`} />
+        <meta property="og:image" content={typeof window !== 'undefined' ?
+          `${window.location.origin}${post.image}` :
+          process.env.VERCEL_URL ?
+            `https://${process.env.VERCEL_URL}${post.image}` :
+            post.image} />
         <meta property="article:published_time" content={new Date(post.date).toISOString()} />
         <meta property="article:author" content={post.author} />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
+        <meta property="twitter:url" content={typeof window !== 'undefined' ?
+          `${window.location.origin}${post.link}` :
+          process.env.VERCEL_URL ?
+            `https://${process.env.VERCEL_URL}${post.link}` :
+            post.link} />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.excerpt} />
-        <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`} />
+        <meta property="twitter:image" content={typeof window !== 'undefined' ?
+          `${window.location.origin}${post.image}` :
+          process.env.VERCEL_URL ?
+            `https://${process.env.VERCEL_URL}${post.image}` :
+            post.image} />
         
         {/* Canonical Link */}
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
+        <link rel="canonical" href={typeof window !== 'undefined' ?
+          `${window.location.origin}${post.link}` :
+          process.env.VERCEL_URL ?
+            `https://${process.env.VERCEL_URL}${post.link}` :
+            post.link} />
 
         {/* Structured Data / JSON-LD */}
         <script
@@ -105,7 +125,11 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               '@context': 'https://schema.org',
               '@type': 'BlogPosting',
               'headline': post.title,
-              'image': [`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`],
+              'image': [typeof window !== 'undefined' ?
+                `${window.location.origin}${post.image}` :
+                process.env.VERCEL_URL ?
+                  `https://${process.env.VERCEL_URL}${post.image}` :
+                  post.image],
               'datePublished': post.date,
               'dateModified': post.date,
               'author': {
@@ -117,13 +141,21 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 'name': SITE_NAME,
                 'logo': {
                   '@type': 'ImageObject',
-                  'url': `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`
+                  'url': typeof window !== 'undefined' ?
+                    `${window.location.origin}/purrify-logo.png` :
+                    process.env.VERCEL_URL ?
+                      `https://${process.env.VERCEL_URL}/purrify-logo.png` :
+                      '/purrify-logo.png'
                 }
               },
               'description': post.excerpt,
               'mainEntityOfPage': {
                 '@type': 'WebPage',
-                '@id': `${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`
+                '@id': typeof window !== 'undefined' ?
+                  `${window.location.origin}${post.link}` :
+                  process.env.VERCEL_URL ?
+                    `https://${process.env.VERCEL_URL}${post.link}` :
+                    post.link
               }
             })
           }}
@@ -183,7 +215,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 <h3 className="text-xl font-bold mb-4 text-[#5B2EFF]">Share this article</h3>
                 <div className="flex space-x-4">
                   <a
-                    href={`https://twitter.com/intent/tweet?url=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}&text=${post.title}`}
+                    href={`https://twitter.com/intent/tweet?url=${typeof window !== 'undefined' ? window.location.href : ''}&text=${post.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#1DA1F2] text-white p-3 rounded-full hover:bg-[#1DA1F2]/80 transition-colors"
@@ -193,7 +225,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                     </svg>
                   </a>
                   <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`}
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? window.location.href : ''}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#1877F2] text-white p-3 rounded-full hover:bg-[#1877F2]/80 transition-colors"
@@ -203,7 +235,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                     </svg>
                   </a>
                   <a
-                    href={`https://www.linkedin.com/shareArticle?mini=true&url=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}&title=${post.title}`}
+                    href={`https://www.linkedin.com/shareArticle?mini=true&url=${typeof window !== 'undefined' ? window.location.href : ''}&title=${post.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#0A66C2] text-white p-3 rounded-full hover:bg-[#0A66C2]/80 transition-colors"
