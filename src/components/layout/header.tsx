@@ -48,28 +48,22 @@ export function Header() {
               Home
             </Link>
             <Link
-              href="/#products"
+              href="/#how-it-works"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Products
+              How
             </Link>
             <Link
-              href="/#features"
+              href="/#about"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Features
+              Wow
             </Link>
             <Link
-              href="/#benefits"
+              href="/#why-purrify"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Benefits
-            </Link>
-            <Link
-              href="/#calculator"
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-            >
-              Savings Calculator
+              Why
             </Link>
             <Link
               href="/#testimonials"
@@ -133,32 +127,25 @@ export function Header() {
               Home
             </Link>
             <Link
-              href="/#products"
+              href="/#how-it-works"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Products
+              How
             </Link>
             <Link
-              href="/#features"
+              href="/#about"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Features
+              Wow
             </Link>
             <Link
-              href="/#benefits"
+              href="/#why-purrify"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Benefits
-            </Link>
-            <Link
-              href="/#calculator"
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Savings Calculator
+              Why
             </Link>
             <Link
               href="/#testimonials"
