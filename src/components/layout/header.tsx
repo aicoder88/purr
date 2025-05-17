@@ -19,21 +19,21 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="group">
-              <div className="h-9 w-auto mr-2 flex space-x-2 items-center">
+              <div className="flex items-center space-x-2">
                 <NextImage
                   src="/images/icon-64.png"
                   alt="Purrify Logo"
-                  width={36}
-                  height={36}
-                  className="h-8 w-auto"
+                  width={64}
+                  height={64}
+                  className="h-8 w-8 object-contain"
                   priority={true}
                 />
                 <NextImage
                   src="/images/logo-text-120.png"
-                  alt="Purrify Logo"
-                  width={108}
-                  height={36}
-                  className="h-8 w-auto"
+                  alt="Purrify Logo Text"
+                  width={120}
+                  height={24}
+                  className="h-6 w-[120px] object-contain"
                   priority={true}
                 />
               </div>

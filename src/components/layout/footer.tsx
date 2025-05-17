@@ -21,20 +21,20 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Link href="/" className="group">
-                <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
+                <div className="flex items-center space-x-2">
                   <NextImage
                     src="/images/icon-64.png"
                     alt="Purrify Logo"
-                    width={40}
-                    height={40}
-                    className="h-full w-auto"
+                    width={64}
+                    height={64}
+                    className="h-10 w-10 object-contain"
                   />
                   <NextImage
-                    src="/images/logo-text-120.png"
-                    alt="Purrify Logo"
-                    width={120}
-                    height={40}
-                    className="h-full w-auto"
+                    src="/images/logo-text-180.png"
+                    alt="Purrify Logo Text"
+                    width={180}
+                    height={36}
+                    className="h-9 w-[180px] object-contain"
                   />
                 </div>
               </Link>
@@ -80,50 +80,34 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/#how-it-works"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  How
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#about"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  Wow
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#why-purrify"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  Why
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/#products"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#features"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#benefits"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  Benefits
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#calculator"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  Savings Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#faq"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#blog"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  Blog
+                  Try
                 </Link>
               </li>
               <li>
@@ -132,6 +116,14 @@ export function Footer() {
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#contact"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  Contact
                 </Link>
               </li>
             </ul>
