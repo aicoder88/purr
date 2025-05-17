@@ -24,7 +24,9 @@ build
 out
 
 # Local env files
+.env
 .env*.local
+!.env.production
 
 # Editor directories and files
 .vscode/*
