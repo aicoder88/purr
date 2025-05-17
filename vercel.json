@@ -1,10 +1,8 @@
 {
-<<<<<<< Updated upstream
-  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/blog/:match*",
-      "destination": "/blog/[match]"
+      "destination": "https://clientlio.com/purrify/blog/:match*"
     }
   ],
   "headers": [
@@ -34,16 +32,8 @@
         }
       ]
     }
-  ]
-=======
-  "rewrites": [
-    {
-      "source": "/blog/:match*",
-      "destination": "https://clientlio.com/purrify/blog/:match*"
-    }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite"
->>>>>>> Stashed changes
 }
