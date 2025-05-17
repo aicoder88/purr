@@ -21,20 +21,16 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Link href="/" className="group">
-                <div className="flex items-center space-x-2">
-                  <NextImage
-                    src="/images/icon-64.png"
+                <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
+                  <img
+                    src="/purrify-logo-icon.png"
                     alt="Purrify Logo"
-                    width={64}
-                    height={64}
-                    className="h-10 w-10 object-contain"
+                    className="h-full w-auto"
                   />
-                  <NextImage
-                    src="/images/logo-text-180.png"
-                    alt="Purrify Logo Text"
-                    width={180}
-                    height={36}
-                    className="h-9 w-[180px] object-contain"
+                  <img
+                    src="/purrify-logo-text.png"
+                    alt="Purrify Logo"
+                    className="h-full w-auto"
                   />
                 </div>
               </Link>
