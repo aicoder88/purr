@@ -2,32 +2,26 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  image: string;
+  link: string;
+}
+
 export function BlogPreview() {
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
-        console.log("this is getting bolgs");
         const response = await fetch(
           "/api/blog-posts"
         );
         const data = await response.json();
-        console.log("this is the data", data);
-
-        debugger;
-        const formattedPosts = data.map((post: any) => ({
-          title: post.title.rendered,
-          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""), // Strip HTML tags
-          author: post._embedded?.author?.[0]?.name || "Unknown",
-          date: new Date(post.date).toLocaleDateString(),
-          image:
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-            "https://via.placeholder.com/800",
-          link: post.link,
-        }));
-        console.log("this is the formatted posts", formattedPosts);
-        setBlogPosts(formattedPosts);
+        setBlogPosts(data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       }
