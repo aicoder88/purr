@@ -3,11 +3,19 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
+<<<<<<< Updated upstream
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
+=======
+    "dev": "vite",
+    "build": "vite build",
+    "build-no-errors": "vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+>>>>>>> Stashed changes
     "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts"
   },
   "dependencies": {

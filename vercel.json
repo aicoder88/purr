@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "framework": "nextjs",
   "rewrites": [
     {
@@ -34,4 +35,15 @@
       ]
     }
   ]
+=======
+  "rewrites": [
+    {
+      "source": "/blog/:match*",
+      "destination": "https://clientlio.com/purrify/blog/:match*"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+>>>>>>> Stashed changes
 }
