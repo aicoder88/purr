@@ -81,7 +81,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative container py-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+    <section className="relative container pt-4 pb-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
       {/* Render paws only if animation is enabled */}
       {isPawAnimationEnabled && paws.map((paw) => (
         <span
@@ -139,11 +139,11 @@ export function Hero() {
               <NextImage
                 src="/Carbon sktech.png"
                 alt="Happy cat with Purrify"
-                width={600}
-                height={400}
+                width={550}
+                height={370}
                 priority={true}
-                className="w-full h-auto object-cover group-hover:scale-105 transition duration-700"
-                sizes="(max-width: 768px) 100vw, 600px"
+                className="w-11/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
+                sizes="(max-width: 768px) 100vw, 550px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
