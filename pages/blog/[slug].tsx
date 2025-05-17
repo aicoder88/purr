@@ -6,25 +6,13 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
-
-type BlogPost = {
-  title: string;
-  excerpt: string;
-  author: string;
-  date: string;
-  image: string;
-  link: string;
-  content?: string;
-};
+import type { BlogPost } from '../../src/data/blog-posts';
+import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 
 // This function gets called at build time to generate static paths
-export async function getStaticPaths() {
-  // Fetch all blog posts
-  const response = await fetch('https://purrify.ca/api/blog-posts');
-  const posts = await response.json();
-  
+export function getStaticPaths() {
   // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post: BlogPost) => ({
+  const paths = sampleBlogPosts.map((post) => ({
     params: { slug: post.link.split('/').pop() },
   }));
   
@@ -34,19 +22,11 @@ export async function getStaticPaths() {
 }
 
 // This function gets called at build time on server-side
-export async function getStaticProps({ params }: { params: { slug: string } }) {
+export function getStaticProps({ params }: { params: { slug: string } }) {
   try {
-    // Fetch all blog posts
-    // In development, use absolute URL with localhost
-    const baseUrl = process.env.NODE_ENV === 'production'
-      ? 'https://purrify.ca'
-      : 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/blog-posts`);
-    const posts = await response.json();
-    
     // Find the post that matches the slug
-    const foundPost = posts.find((p: BlogPost) =>
-      p.link.includes(params.slug)
+    const foundPost = sampleBlogPosts.find((post) =>
+      post.link.includes(params.slug)
     );
     
     if (!foundPost) {
@@ -55,37 +35,16 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       };
     }
     
+    // Create a copy of the post to avoid modifying the original
+    const post = { ...foundPost };
+    
     // Add content to the post
-    foundPost.content = `
-      <p>Activated carbon is a remarkable material with a unique ability to eliminate odors at the molecular level. Unlike traditional odor control products that simply mask smells with fragrances, activated carbon actually captures and traps odor molecules through a process called adsorption.</p>
-      <h2>How Activated Carbon Works</h2>
-      <p>The secret to activated carbon's effectiveness lies in its structure. When carbon is "activated" through a special heating process, it develops millions of microscopic pores, creating an enormous surface area. Just one gram of activated carbon can have a surface area equivalent to several tennis courts!</p>
-      <p>These micropores act like tiny magnets for odor molecules, pulling them in and trapping them so they can no longer reach your nose. This is particularly effective for ammonia and sulfur compounds - the primary culprits behind cat litter box odors.</p>
-      <h2>Why Purrify's Activated Carbon is Different</h2>
-      <p>Not all activated carbon is created equal. Purrify uses a premium coconut shell-derived activated carbon that offers several advantages:</p>
-      <ul>
-        <li>Higher adsorption capacity than coal-based carbon</li>
-        <li>More micropores for capturing smaller odor molecules</li>
-        <li>Environmentally sustainable source material</li>
-        <li>No harmful additives or fragrances</li>
-      </ul>
-      <p>Our specialized activation process creates the optimal pore structure specifically designed to target pet odor molecules.</p>
-      <h2>The Science of Odor Elimination</h2>
-      <p>When you add Purrify to your cat's litter, the activated carbon immediately begins working to capture odor molecules before they can escape into the air. The process happens in three stages:</p>
-      <ol>
-        <li><strong>Attraction:</strong> Odor molecules are drawn to the carbon's surface</li>
-        <li><strong>Adsorption:</strong> Molecules bind to the carbon through van der Waals forces</li>
-        <li><strong>Retention:</strong> Molecules remain trapped within the carbon's structure</li>
-      </ol>
-      <p>This process is entirely physical rather than chemical, making it safe for your pets and home.</p>
-      <h2>Conclusion</h2>
-      <p>Understanding the science behind activated carbon helps explain why Purrify is so effective at eliminating cat litter odors. By targeting odors at the molecular level rather than masking them, Purrify provides a truly fresh-smelling home without the need for artificial fragrances or harsh chemicals.</p>
-    `;
+    post.content = getBlogPostContent(params.slug);
     
     // Return the post data as props
     return {
       props: {
-        post: foundPost,
+        post,
       },
       // Re-generate the page at most once per day
       revalidate: 86400,

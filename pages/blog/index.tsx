@@ -5,42 +5,19 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
-
-type BlogPost = {
-  title: string;
-  excerpt: string;
-  author: string;
-  date: string;
-  image: string;
-  link: string;
-};
+import type { BlogPost } from '../../src/data/blog-posts';
+import { sampleBlogPosts } from '../../src/data/blog-posts';
 
 // This function gets called at build time on server-side
-export async function getStaticProps() {
-  try {
-    // Fetch blog posts at build time
-    // In development, use absolute URL with localhost
-    const baseUrl = process.env.NODE_ENV === 'production'
-      ? 'https://purrify.ca'
-      : 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/blog-posts`);
-    const blogPosts = await response.json();
-    
-    return {
-      props: {
-        blogPosts,
-      },
-      // Re-generate the page at most once per day
-      revalidate: 86400,
-    };
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    return {
-      props: {
-        blogPosts: [],
-      },
-    };
-  }
+export function getStaticProps() {
+  // Use the sample blog posts directly
+  return {
+    props: {
+      blogPosts: sampleBlogPosts,
+    },
+    // Re-generate the page at most once per day
+    revalidate: 86400,
+  };
 }
 
 export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
