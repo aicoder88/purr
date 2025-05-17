@@ -4,27 +4,43 @@ import { DefaultSeo } from 'next-seo';
 import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const canonicalUrl = 'https://purrify.ca/';
+  
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#FF3131" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        {/* Favicon and App Icons */}
+        <link rel="icon" href="/images/favicon.png" type="image/png" />
+        <link rel="icon" href="/images/icon-32.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/images/icon-64.png" type="image/png" sizes="64x64" />
+        <link rel="icon" href="/images/icon-128.png" type="image/png" sizes="128x128" />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+        
+        {/* Preconnect to important domains */}
+        <link rel="preconnect" href="https://purrify.ca" />
+        <link rel="preconnect" href="https://api.dicebear.com" />
       </Head>
       
       <DefaultSeo
         titleTemplate={`%s | ${SITE_NAME}`}
         defaultTitle={`${SITE_NAME} - Activated Carbon Cat Litter Additive`}
         description={SITE_DESCRIPTION}
-        canonical="https://purrify.ca/"
+        canonical={canonicalUrl}
         openGraph={{
           type: 'website',
           locale: 'en_CA',
-          url: 'https://purrify.ca/',
+          url: canonicalUrl,
           siteName: SITE_NAME,
           title: `${SITE_NAME} - Activated Carbon Cat Litter Additive`,
           description: SITE_DESCRIPTION,
@@ -34,6 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               width: 1200,
               height: 630,
               alt: SITE_NAME,
+              type: 'image/png',
             },
           ],
         }}
@@ -45,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination',
+            content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies',
           },
           {
             name: 'author',
@@ -55,13 +72,66 @@ function MyApp({ Component, pageProps }: AppProps) {
             name: 'application-name',
             content: SITE_NAME,
           },
+          {
+            property: 'og:site_name',
+            content: SITE_NAME,
+          },
+          {
+            name: 'apple-mobile-web-app-title',
+            content: SITE_NAME,
+          },
         ]}
         additionalLinkTags={[
           {
             rel: 'manifest',
             href: '/manifest.json',
           },
+          {
+            rel: 'alternate',
+            hrefLang: 'en',
+            href: canonicalUrl,
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'fr',
+            href: `${canonicalUrl}fr/`,
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'x-default',
+            href: canonicalUrl,
+          },
         ]}
+      />
+      
+      {/* Organization Schema Markup */}
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: SITE_NAME,
+            url: canonicalUrl,
+            logo: 'https://purrify.ca/purrify-logo.png',
+            sameAs: [
+              'https://facebook.com/purrify',
+              'https://instagram.com/purrify',
+              'https://twitter.com/purrify'
+            ],
+            contactPoint: [
+              {
+                '@type': 'ContactPoint',
+                telephone: '+1-438-931-7345',
+                contactType: 'customer service',
+                email: 'hello@purrify.ca',
+                areaServed: 'CA',
+                availableLanguage: ['English', 'French'],
+              },
+            ],
+          })
+        }}
       />
       
       <Component {...pageProps} />

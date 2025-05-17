@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface BlogPost {
   title: string;
@@ -84,10 +85,8 @@ export function BlogPreview() {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <a
+                <Link
                   href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                 >
                   Read full article
@@ -104,7 +103,7 @@ export function BlogPreview() {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

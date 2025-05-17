@@ -15,25 +15,35 @@ type BlogPost = {
   link: string;
 };
 
-export default function Blog() {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+// This function gets called at build time on server-side
+export async function getStaticProps() {
+  try {
+    // Fetch blog posts at build time
+    // In development, use absolute URL with localhost
+    const baseUrl = process.env.NODE_ENV === 'production'
+      ? 'https://purrify.ca'
+      : 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/blog-posts`);
+    const blogPosts = await response.json();
+    
+    return {
+      props: {
+        blogPosts,
+      },
+      // Re-generate the page at most once per day
+      revalidate: 86400,
+    };
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return {
+      props: {
+        blogPosts: [],
+      },
+    };
+  }
+}
 
-  useEffect(() => {
-    async function fetchBlogPosts() {
-      try {
-        const response = await fetch('/api/blog-posts');
-        const data = await response.json();
-        setBlogPosts(data);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchBlogPosts();
-  }, []);
+export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
 
   return (
     <>
@@ -76,9 +86,9 @@ export default function Blog() {
               </p>
             </div>
 
-            {isLoading ? (
-              <div className="flex justify-center items-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3131]"></div>
+            {blogPosts.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-gray-600">No blog posts found. Check back soon!</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,6 +127,7 @@ export default function Blog() {
                       <Link
                         href={post.link}
                         className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
+                        prefetch={true}
                       >
                         Read full article
                         <svg
