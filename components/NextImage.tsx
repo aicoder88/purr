@@ -44,7 +44,7 @@ export default function NextImage({
   };
 
   // Handle image load complete
-  const handleLoadingComplete = () => {
+  const handleLoad = () => {
     setIsLoading(false);
   };
 
@@ -63,7 +63,7 @@ export default function NextImage({
         style={style}
         loading={priority ? 'eager' : 'lazy'}
         onError={handleError}
-        onLoadingComplete={handleLoadingComplete}
+        onLoad={handleLoad}
         {...rest}
       />
     </div>
