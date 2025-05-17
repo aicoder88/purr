@@ -5,8 +5,10 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Favicon and App Icons */}
-        <link rel="icon" href="/purrify-logo-icon.png" />
-        <link rel="apple-touch-icon" href="/purrify-logo-icon.png" />
+        <link rel="icon" href="/images/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         
         {/* Theme and Colors */}
         <meta name="theme-color" content="#ffffff" />

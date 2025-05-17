@@ -19,9 +19,9 @@ node_modules
 next-env.d.ts
 
 # Build
-dist
-dist-ssr
 build
+.next
+out
 
 # Local env files
 .env*.local
@@ -32,14 +32,15 @@ build
 .idea
 .DS_Store
 *.suo
-*.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-!node_modules/.vite
+# TypeScript
+*.tsbuildinfo
 
-**/tempobook/dynamic/
-**/tempobook/storyboards/
+# Vercel
+.vercel
 
-core
+# Testing
+/coverage

@@ -3,12 +3,17 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
+import { Toaster } from '@/components/ui/toaster';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       
       <DefaultSeo
@@ -46,10 +51,21 @@ function MyApp({ Component, pageProps }: AppProps) {
             name: 'author',
             content: SITE_NAME,
           },
+          {
+            name: 'application-name',
+            content: SITE_NAME,
+          },
+        ]}
+        additionalLinkTags={[
+          {
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
         ]}
       />
       
       <Component {...pageProps} />
+      <Toaster />
     </>
   );
 }

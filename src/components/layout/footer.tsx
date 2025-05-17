@@ -23,14 +23,14 @@ export function Footer() {
               <Link href="/" className="group">
                 <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                   <NextImage
-                    src="/purrify-logo-icon.png"
+                    src="/images/icon-64.png"
                     alt="Purrify Logo"
                     width={40}
                     height={40}
                     className="h-full w-auto"
                   />
                   <NextImage
-                    src="/purrify-logo-text.png"
+                    src="/images/logo-text-120.png"
                     alt="Purrify Logo"
                     width={120}
                     height={40}
