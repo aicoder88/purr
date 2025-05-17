@@ -1,11 +1,9 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
-import { useInterval } from "@/lib/utils";
-import { FaPaw } from "react-icons/fa";
-import { scrollToSection } from "@/lib/utils";
+import { useInterval, scrollToSection } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
 // Dynamically import NextImage to reduce initial bundle size
@@ -15,61 +13,6 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 
 export function Hero() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [paws, setPaws] = useState<
-    { x: number; y: number; id: number; rotation: number }[]
-  >([]);
-  const idRef = useRef(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [isPawAnimationEnabled, setIsPawAnimationEnabled] = useState(true);
-  
-  // Performance optimization - disable paw animation on mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsPawAnimationEnabled(window.innerWidth > 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
-  // Memoize the mouse move handler to prevent unnecessary re-renders
-  const handleMouseMove = useCallback((event: MouseEvent) => {
-    if (!isPawAnimationEnabled) return;
-    
-    const now = Date.now();
-    const { clientX: x, clientY: y } = event;
-    
-    // Throttle the event handling
-    if (timeoutRef.current) return;
-    
-    timeoutRef.current = setTimeout(() => {
-      timeoutRef.current = null;
-      
-      // Calculate rotation based on mouse movement
-      const rotation = Math.floor(Math.random() * 360);
-      
-      // Limit the number of paws to improve performance
-      setPaws((prev) => {
-        const newPaws = [...prev, { x, y, rotation, id: idRef.current++ }];
-        return newPaws.slice(-5); // Only keep the last 5 paws
-      });
-    }, 100);
-  }, [isPawAnimationEnabled]);
-
-  useEffect(() => {
-    if (isPawAnimationEnabled) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-    
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [handleMouseMove, isPawAnimationEnabled]);
 
   // Testimonial rotation
   useEffect(() => {
@@ -81,21 +24,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative container pt-4 pb-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
-      {/* Render paws only if animation is enabled */}
-      {isPawAnimationEnabled && paws.map((paw) => (
-        <span
-          key={paw.id}
-          className="absolute gap-[10px] pointer-events-none transition-transform duration-300 ease-out -translate-x-1/2 -translate-y-1/2"
-          style={{
-            top: paw.y,
-            left: paw.x,
-            transform: `translate(-50%, -50%) rotate(${paw.rotation}deg)`,
-          }}
-        >
-          <FaPaw className="text-[#FF3131] w-4 h-4 opacity-50 -translate-x-1/2 -translate-y-1/2" />
-        </span>
-      ))}
+    <section className="relative container pt-20 pb-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
       
       {/* Decorative elements - using CSS variables for better performance */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
@@ -117,12 +46,6 @@ export function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300 active:scale-95 shadow-lg border-0"
-              >
-                ORDER NOW
-              </Button>
-              <Button
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
@@ -133,17 +56,17 @@ export function Hero() {
             </div>
           </div>
           
-          <div className="relative group">
+          <div className="relative group flex flex-col items-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <NextImage
                 src="/Carbon sktech.png"
                 alt="Happy cat with Purrify"
-                width={550}
-                height={370}
+                width={500}
+                height={340}
                 priority={true}
-                className="w-11/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
-                sizes="(max-width: 768px) 100vw, 550px"
+                className="w-10/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
+                sizes="(max-width: 768px) 100vw, 500px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -171,31 +94,33 @@ export function Hero() {
                 </div>
               </div>
             </div>
+            
+            {/* Scroll indicator moved directly under the image */}
+            <div className="mt-4 flex flex-col items-center">
+              <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
+                Scroll to discover why Purrify works when everything else fails
+              </p>
+              <svg
+                className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </Container>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
-        <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
-          Scroll to discover why Purrify works when everything else fails
-        </p>
-        <svg
-          className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </div>
+      {/* Removed the absolute positioned scroll indicator as it's now under the image */}
     </section>
   );
 }
@@ -210,9 +135,14 @@ function RotatingText({ texts }: { texts: string[] }) {
 
   return (
     <span
-      className="block bg-clip-text text-transparent"
+      className="block bg-clip-text text-transparent pb-2"
       style={{
         backgroundImage: "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
+        lineHeight: "1.3",
+        minHeight: "1.4em",
+        display: "flex",
+        alignItems: "center",
+        fontSize: "98%"
       }}
     >
       {texts[index]}
