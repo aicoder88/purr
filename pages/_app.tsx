@@ -7,12 +7,8 @@ import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // Dynamically determine the canonical URL
-  const canonicalUrl = typeof window !== 'undefined' ?
-    `${window.location.origin}/` :
-    process.env.VERCEL_URL ?
-      `https://${process.env.VERCEL_URL}/` :
-      '/';
+  // Use relative URL for canonical
+  const canonicalUrl = '/';
   
   return (
     <>
@@ -50,11 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           description: SITE_DESCRIPTION,
           images: [
             {
-              url: typeof window !== 'undefined' ?
-                `${window.location.origin}/purrify-logo.png` :
-                process.env.VERCEL_URL ?
-                  `https://${process.env.VERCEL_URL}/purrify-logo.png` :
-                  '/purrify-logo.png',
+              url: '/purrify-logo.png',
               width: 1200,
               height: 630,
               alt: SITE_NAME,
@@ -122,11 +114,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             '@type': 'Organization',
             name: SITE_NAME,
             url: canonicalUrl,
-            logo: typeof window !== 'undefined' ?
-              `${window.location.origin}/purrify-logo.png` :
-              process.env.VERCEL_URL ?
-                `https://${process.env.VERCEL_URL}/purrify-logo.png` :
-                '/purrify-logo.png',
+            logo: '/purrify-logo.png',
             sameAs: [
               'https://facebook.com/purrify',
               'https://instagram.com/purrify',

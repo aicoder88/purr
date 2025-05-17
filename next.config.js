@@ -59,9 +59,8 @@ const nextConfig = {
     scrollRestoration: true,
   },
   
-  // Optimize asset loading
-  assetPrefix: process.env.NODE_ENV === 'production' ?
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') : '',
+  // Optimize asset loading - don't use assetPrefix as it can cause issues
+  assetPrefix: '',
   
   // Configure headers for security and caching
   async headers() {

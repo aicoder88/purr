@@ -12,20 +12,21 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Automatic URL Detection
+## Simplified URL Approach
 
-This project automatically detects the correct URLs for assets and links in both development and production environments:
+This project uses relative URLs for all assets and links, which ensures compatibility across all environments:
 
-- In the browser, it uses `window.location.origin` to get the current domain
-- In server-side rendering on Vercel, it uses the `VERCEL_URL` environment variable
-- As a fallback, it uses relative URLs when neither is available
+- Works in local development
+- Works in production deployments
+- Works in preview deployments
+- No environment variables needed
 
-This approach ensures that the site works correctly in all environments without requiring manual configuration of environment variables.
+This approach ensures that the site works correctly in all environments without requiring any configuration.
 
 ## Troubleshooting
 
 If you encounter styling or asset loading issues in production:
 
 1. Ensure there are no hardcoded domain references in the codebase
-2. Check that the Vercel deployment has access to the `VERCEL_URL` environment variable
+2. Check that all URLs are relative (starting with `/`) rather than absolute
 3. Clear the Vercel cache and redeploy if necessary
