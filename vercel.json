@@ -3,12 +3,6 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "rewrites": [
-    {
-      "source": "/blog/:match*",
-      "destination": "https://clientlio.com/purrify/blog/:match*"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -106,8 +106,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               '@type': 'BlogPosting',
               'headline': post.title,
               'image': [`https://purrify.ca${post.image}`],
-              'datePublished': new Date(post.date).toISOString(),
-              'dateModified': new Date(post.date).toISOString(),
+              'datePublished': post.date,
+              'dateModified': post.date,
               'author': {
                 '@type': 'Person',
                 'name': post.author
