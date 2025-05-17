@@ -8,7 +8,9 @@ export function cn(...inputs: ClassValue[]) {
 
   export const scrollToSection  = (id:string) => {
     if(!id) return
-    const sectionTop = document.getElementById(id).offsetTop
+    const element = document.getElementById(id)
+    if(!element) return
+    const sectionTop = element.offsetTop
     window.scroll({
       top: sectionTop,
       behavior: "smooth"
