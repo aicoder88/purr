@@ -7,10 +7,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
-dist
-dist-ssr
-*.local
+.pnp
+.pnp.js
+
+# Next.js
+/.next/
+/out/
+.next/
+next-env.d.ts
+
+# Build
+build
+.next
+out
+
+# Local env files
+.env
+.env*.local
+!.env.production
 
 # Editor directories and files
 .vscode/*
@@ -18,14 +34,15 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
-*.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-!node_modules/.vite
+# TypeScript
+*.tsbuildinfo
 
-**/tempobook/dynamic/
-**/tempobook/storyboards/
+# Vercel
+.vercel
 
-core
+# Testing
+/coverage

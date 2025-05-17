@@ -1,46 +1,14 @@
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
 import { CONTACT_INFO } from "@/lib/constants";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { useState } from "react";
-import emailjs from "emailjs-com";
+import dynamic from "next/dynamic";
+
+// Dynamically import the ContactForm component
+const ContactForm = dynamic(() => import("../../../components/ContactForm"), {
+  ssr: true,
+});
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    emailjs
-      .send(
-        "service_i5c914v", // Replace with your EmailJS service ID
-        "template_chvt6zi", // Replace with your EmailJS template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: `Message: ${formData.message}\n\nSender Email: ${formData.email}`,
-        },
-        "b5f9jd_V0OJxCRWyf" // Replace with your EmailJS user ID (public key)
-      )
-      .then(
-        () => {
-          setSuccessMessage("Your message has been sent successfully!");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          console.error("Failed to send message:", error);
-        }
-      )
-      .finally(() => setIsSubmitting(false));
-  };
-
   return (
     <section
       className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5]"
@@ -140,85 +108,10 @@ export function Contact() {
             <h3 className="font-bold text-2xl mb-6 text-[#5B2EFF]">
               Send us a Message
             </h3>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#5B2EFF] focus:border-[#5B2EFF] bg-white/50 backdrop-blur-sm transition-all duration-300"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#5B2EFF] focus:border-[#5B2EFF] bg-white/50 backdrop-blur-sm transition-all duration-300"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-[#E0EFC7] rounded-xl focus:ring-[#5B2EFF] focus:border-[#5B2EFF] bg-white/50 backdrop-blur-sm transition-all duration-300"
-                  placeholder="How can we help you?"
-                  required
-                ></textarea>
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 hover:from-[#5B2EFF]/90 hover:to-[#5B2EFF] text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 ${
-                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-              {successMessage && (
-                <p className="text-sm text-center text-green-500 mt-2">
-                  {successMessage}
-                </p>
-              )}
-              <p className="text-xs text-center text-gray-500 mt-2">
-                We'll get back to you within 24 hours
-              </p>
-            </form>
+            <ContactForm />
+            <p className="text-xs text-center text-gray-500 mt-4">
+              We'll get back to you within 24 hours
+            </p>
           </div>
         </div>
       </Container>

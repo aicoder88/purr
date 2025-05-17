@@ -8,7 +8,7 @@ export const PRODUCTS = [
     name: "Purrify 20g",
     description: "Perfect for kittens",
     price: 9.99,
-    image: "./20g.png",
+    image: "/20g.png",
     size: "20g",
   },
   {
@@ -16,7 +16,7 @@ export const PRODUCTS = [
     name: "Purrify 60g",
     description: "Ideal for one cat",
     price: 19.99,
-    image: "./60g.png",
+    image: "/60g.png",
     size: "60g",
   },
   {
@@ -24,7 +24,7 @@ export const PRODUCTS = [
     name: "Purrify 120g",
     description: "Perfect for two cats",
     price: 29.99,
-    image: "./60g.png",
+    image: "/60g.png",
     size: "120g",
   },
 ];

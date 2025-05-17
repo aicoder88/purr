@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+  <url>
+    <loc>https://purrify.ca/test</loc>
+    <lastmod>2025-05-17T04:43:17.334Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://purrify.ca/</loc>
+    <lastmod>2025-05-17T04:43:17.334Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://purrify.ca/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://purrify.ca/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://purrify.ca/" />
+    <image:image>
+      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://purrify.ca/404</loc>
+    <lastmod>2025-05-17T04:43:17.334Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://purrify.ca/blog/</loc>
+    <lastmod>2025-05-17T04:43:17.334Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://purrify.ca/blog/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://purrify.ca/blog/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://purrify.ca/blog/" />
+  </url>
+</urlset>

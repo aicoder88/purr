@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { Container } from "@/components/ui/container";
-import { SITE_NAME, CONTACT_INFO } from "@/lib/constants";
+import Link from "next/link";
+import { Container } from "../../components/ui/container";
+import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
+import NextImage from "../../../components/NextImage";
 import {
   Facebook,
   Instagram,
@@ -19,7 +20,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Link to="/" className="group">
+              <Link href="/" className="group">
                 <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                   <img
                     src="/purrify-logo-icon.png"
@@ -67,7 +68,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/"
+                  href="/"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Home
@@ -75,58 +76,50 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#products"
+                  href="/#how-it-works"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Products
+                  How
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/#features"
+                  href="/#about"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Features
+                  Wow
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/#benefits"
+                  href="/#why-purrify"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Benefits
+                  Why
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/#calculator"
+                  href="/#products"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Savings Calculator
+                  Try
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/#faq"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#blog"
-                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#testimonials"
+                  href="/#testimonials"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#contact"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  Contact
                 </Link>
               </li>
             </ul>

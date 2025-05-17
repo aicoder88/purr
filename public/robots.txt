@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/*
+Disallow: /admin/*
+
+# Host
+Host: https://purrify.ca
+
+# Sitemaps
+Sitemap: https://purrify.ca/sitemap.xml
+Sitemap: https://purrify.ca/server-sitemap.xml

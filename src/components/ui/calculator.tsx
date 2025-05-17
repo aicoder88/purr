@@ -13,6 +13,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  TooltipItem,
 } from "chart.js";
 
 // Register Chart.js components
@@ -138,7 +139,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       },
       tooltip: {
         callbacks: {
-          label: (context) => `$${context.raw.toFixed(2)}`,
+          label: (tooltipItem: TooltipItem<"line">) => `$${tooltipItem.raw as number}`,
         },
       },
     },

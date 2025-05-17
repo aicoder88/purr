@@ -1,11 +1,17 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
 import { useInterval } from "@/lib/utils";
 import { FaPaw } from "react-icons/fa";
 import { scrollToSection } from "@/lib/utils";
+import dynamic from "next/dynamic";
+
+// Dynamically import NextImage to reduce initial bundle size
+const NextImage = dynamic(() => import("../../../components/NextImage"), {
+  ssr: true,
+});
 
 export function Hero() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -14,66 +20,70 @@ export function Hero() {
   >([]);
   const idRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPawAnimationEnabled, setIsPawAnimationEnabled] = useState(true);
+  
+  // Performance optimization - disable paw animation on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsPawAnimationEnabled(window.innerWidth > 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  // Memoize the mouse move handler to prevent unnecessary re-renders
+  const handleMouseMove = useCallback((event: MouseEvent) => {
+    if (!isPawAnimationEnabled) return;
+    
+    const now = Date.now();
+    const { clientX: x, clientY: y } = event;
+    
+    // Throttle the event handling
+    if (timeoutRef.current) return;
+    
+    timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = null;
+      
+      // Calculate rotation based on mouse movement
+      const rotation = Math.floor(Math.random() * 360);
+      
+      // Limit the number of paws to improve performance
+      setPaws((prev) => {
+        const newPaws = [...prev, { x, y, rotation, id: idRef.current++ }];
+        return newPaws.slice(-5); // Only keep the last 5 paws
+      });
+    }, 100);
+  }, [isPawAnimationEnabled]);
 
   useEffect(() => {
-    const delay = 100; // delay in milliseconds
-    let lastTime = 0;
-    let prevPos = { x: 0, y: 0 };
-
-    const handleMouseMove = (event: MouseEvent) => {
-      const now = Date.now();
-      const { clientX: x, clientY: y } = event;
-      if (now - lastTime >= delay) {
-        const dx = x - prevPos.x;
-        const dy = y - prevPos.y;
-
-        let rotation = 0;
-
-        // Determine dominant direction
-        if (Math.abs(dx) > Math.abs(dy)) {
-          rotation = dx > 0 ? 90 : 270; // Right or Left
-        } else {
-          rotation = dy > 0 ? 180 : 0; // Down or Up
-        }
-
-        // Adjust position to be slightly offset (1-3mm) from the cursor
-        const offsetX = Math.random() * 3 - 1.5; // Random offset between -1.5 and 1.5
-        const offsetY = Math.random() * 3 - 1.5;
-
-        setPaws((prev) => [
-          ...prev,
-          { x: x + offsetX, y: y + offsetY, rotation, id: idRef.current++ },
-        ]);
-
-        prevPos = { x, y };
-        lastTime = now;
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
+    if (isPawAnimationEnabled) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
+    
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, []);
+  }, [handleMouseMove, isPawAnimationEnabled]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPaws((prev) => prev.slice(-2)); // Keep last 10 paws
-    }, 200); // Adjust based on how long you want them to stay
-    return () => clearInterval(interval);
-  }, []);
-
+  // Testimonial rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 3000);
+    }, 5000); // Increased to 5 seconds for better readability
+    
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="relative container py-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
-      {paws.map((paw) => (
+      {/* Render paws only if animation is enabled */}
+      {isPawAnimationEnabled && paws.map((paw) => (
         <span
           key={paw.id}
           className="absolute gap-[10px] pointer-events-none transition-transform duration-300 ease-out -translate-x-1/2 -translate-y-1/2"
@@ -86,7 +96,8 @@ export function Hero() {
           <FaPaw className="text-[#FF3131] w-4 h-4 opacity-50 -translate-x-1/2 -translate-y-1/2" />
         </span>
       ))}
-      {/* Decorative elements */}
+      
+      {/* Decorative elements - using CSS variables for better performance */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl"></div>
       <div className="absolute top-40 right-20 w-20 h-20 bg-[#5B2EFF]/20 rounded-full blur-xl"></div>
@@ -97,21 +108,17 @@ export function Hero() {
             <SectionHeader text="STOP CAT ODORS FOREVER!" />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <RotatingText texts={["Cat Litter", "Rabbit Litter", "Fridge smells", "Ferret cage"]} />
-              <span className=" block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
                 Odor ELIMINATION that works
               </span>
-              {/* <span className="block bg-clip-text bg-gradient-to-r text-transparent from-[#0072CE] to-[#0072CE]/40 -">
-                Experience
-              </span> */}
-              {/* <span className="block">Before They Escape</span> */}
             </h1>
             <p className="text-xl text-[#333333] font-light">
-            A cat litter additive that CAPTURES odors at the molecular level, not just masks them
+              A cat litter additive that CAPTURES odors at the molecular level, not just masks them
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0 hide-for-info-mode"
+                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:bg-[#FFFFF5] font-bold rounded-xl py-6 px-8 hover:shadow-xl transition-all duration-300 active:scale-95 shadow-lg border-0"
               >
                 ORDER NOW
               </Button>
@@ -119,20 +126,24 @@ export function Hero() {
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
-                className="bg-gradient-primary active:scale-75  text-white font-bold py-6 px-8 rounded-xl bg-gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0"
               >
                 SEE 5-STAR REVIEWS
               </Button>
             </div>
-            
           </div>
+          
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
-              <img
-                src="Carbon sktech.png"
+              <NextImage
+                src="/Carbon sktech.png"
                 alt="Happy cat with Purrify"
-                className="w-[600px] h-[400px] object-cover group-hover:scale-105 transition duration-700"
+                width={600}
+                height={400}
+                priority={true}
+                className="w-full h-auto object-cover group-hover:scale-105 transition duration-700"
+                sizes="(max-width: 768px) 100vw, 600px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -145,6 +156,7 @@ export function Hero() {
                           key={i}
                           className="w-4 h-4 text-yellow-400 fill-current"
                           viewBox="0 0 24 24"
+                          aria-hidden="true"
                         >
                           <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
                         </svg>
@@ -166,7 +178,7 @@ export function Hero() {
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
         <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
-        Scroll to discover why Purrify works when everything else fails 
+          Scroll to discover why Purrify works when everything else fails
         </p>
         <svg
           className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
@@ -174,6 +186,7 @@ export function Hero() {
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -187,21 +200,19 @@ export function Hero() {
   );
 }
 
+// Memoized rotating text component to prevent unnecessary re-renders
 function RotatingText({ texts }: { texts: string[] }) {
   const [index, setIndex] = useState(0);
 
   useInterval(() => {
-    setIndex((index + 1) % texts.length);
+    setIndex((prevIndex) => (prevIndex + 1) % texts.length);
   }, 2000);
 
   return (
     <span
-      className="block"
+      className="block bg-clip-text text-transparent"
       style={{
-        background:
-          "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
-        WebkitBackgroundClip: "text",
-        color: "transparent",
+        backgroundImage: "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
       }}
     >
       {texts[index]}

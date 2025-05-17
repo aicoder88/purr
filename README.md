@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Purrify Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the official website for Purrify, an activated carbon cat litter additive that eliminates odors at the source.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the development server:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Simplified URL Approach
+
+This project uses relative URLs for all assets and links, which ensures compatibility across all environments:
+
+- Works in local development
+- Works in production deployments
+- Works in preview deployments
+- No environment variables needed
+
+This approach ensures that the site works correctly in all environments without requiring any configuration.
+
+## Troubleshooting
+
+If you encounter styling or asset loading issues in production:
+
+1. Ensure there are no hardcoded domain references in the codebase
+2. Check that all URLs are relative (starting with `/`) rather than absolute
+3. Clear the Vercel cache and redeploy if necessary

@@ -1,33 +1,28 @@
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  image: string;
+  link: string;
+}
 
 export function BlogPreview() {
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
-        console.log("this is getting bolgs");
         const response = await fetch(
-          "https://clientlio.com/purrify/wp-json/wp/v2/posts?_embed"
+          "/api/blog-posts"
         );
         const data = await response.json();
-        console.log("this is the data", data);
-
-        debugger;
-        const formattedPosts = data.map((post: any) => ({
-          title: post.title.rendered,
-          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""), // Strip HTML tags
-          author: post._embedded?.author?.[0]?.name || "Unknown",
-          date: new Date(post.date).toLocaleDateString(),
-          image:
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-            "https://via.placeholder.com/800",
-          link: post.link,
-        }));
-        console.log("this is the formatted posts", formattedPosts);
-        setBlogPosts(formattedPosts);
+        setBlogPosts(data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       }
@@ -90,10 +85,8 @@ export function BlogPreview() {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <a
+                <Link
                   href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                 >
                   Read full article
@@ -110,7 +103,7 @@ export function BlogPreview() {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -120,7 +113,7 @@ export function BlogPreview() {
           <Button
             className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
             onClick={() =>
-              (window.location.href = "https://clientlio.com/purrify/blog")
+              (window.location.href = "/blog")
             }
           >
             View All Articles

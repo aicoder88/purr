@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import SectionHeader from "../ui/section-header";
+import NextImage from "../../../components/NextImage";
 
 export function WhyPurrify() {
   const reasons = [
@@ -117,10 +118,12 @@ export function WhyPurrify() {
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#5B2EFF]/20 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col items-center">
-              <img
-                src="/purrify-logo-icon.png"
+              <NextImage
+                src="/images/icon-128.png"
                 alt="Purrify Logo"
-                className="h-16 mb-4"
+                width={64}
+                height={64}
+                className="h-16 w-auto mb-4"
               />
               <p className="text-3xl font-bold text-[#5B2EFF] mb-4">
                 Make every day a breath of fresh air with Purrify.
