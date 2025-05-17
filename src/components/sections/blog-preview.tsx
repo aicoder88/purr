@@ -10,7 +10,7 @@ export function BlogPreview() {
       try {
         console.log("this is getting bolgs");
         const response = await fetch(
-          "https://clientlio.com/purrify/wp-json/wp/v2/posts?_embed"
+          "/api/blog-posts"
         );
         const data = await response.json();
         console.log("this is the data", data);
@@ -120,7 +120,7 @@ export function BlogPreview() {
           <Button
             className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
             onClick={() =>
-              (window.location.href = "https://clientlio.com/purrify/blog")
+              (window.location.href = "/blog")
             }
           >
             View All Articles

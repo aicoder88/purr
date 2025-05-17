@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
+import NextImage from "../../../components/NextImage";
 
 export function Products() {
   return (
@@ -35,9 +36,11 @@ export function Products() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/10 to-[#E0EFC7]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="aspect-square overflow-hidden h-72">
                   <div className="relative">
-                    <img
+                    <NextImage
                       src={product.image}
                       alt={product.name}
+                      width={300}
+                      height={300}
                       className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">

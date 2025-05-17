@@ -1,8 +1,37 @@
 {
-    "rewrites": [
-      {
-        "source": "/blog/:match*",
-        "destination": "https://clientlio.com/purrify/blog/:match*"
-      }
-    ]
-  }
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/blog/:match*",
+      "destination": "/blog/[match]"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(jpg|jpeg|png|webp|svg|gif)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

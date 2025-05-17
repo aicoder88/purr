@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { SITE_NAME } from "@/lib/constants";
+import { Button } from "../../components/ui/button";
+import { Container } from "../../components/ui/container";
+import { SITE_NAME } from "../../lib/constants";
+import NextImage from "../../../components/NextImage";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,16 +18,20 @@ export function Header() {
       <Container>
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
-            <Link to="/" className="group">
+            <Link href="/" className="group">
               <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
-                <img
+                <NextImage
                   src="/purrify-logo-icon.png"
                   alt="Purrify Logo"
+                  width={40}
+                  height={40}
                   className="h-full w-auto"
                 />
-                <img
+                <NextImage
                   src="/purrify-logo-text.png"
                   alt="Purrify Logo"
+                  width={120}
+                  height={40}
                   className="h-full w-auto"
                 />
               </div>
@@ -34,49 +39,48 @@ export function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <a
+            <Link
               href="/"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#products"
-              // onClick={}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Products
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#features"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Features
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#benefits"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Benefits
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#calculator"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Savings Calculator
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#testimonials"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Testimonials
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#contact"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Contact
-            </a>
+            </Link>
             <Button
               variant="outline"
               size="icon"
@@ -120,49 +124,49 @@ export function Header() {
         <div className="md:hidden bg-[#FFFFFF]/95 backdrop-blur-md border-t border-[#E0EFC7] shadow-lg">
           <div className="space-y-4 px-6 py-6">
             <Link
-              to="/"
+              href="/"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
-              to="/#products"
+              href="/#products"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Products
             </Link>
             <Link
-              to="/#features"
+              href="/#features"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
             </Link>
             <Link
-              to="/#benefits"
+              href="/#benefits"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Benefits
             </Link>
             <Link
-              to="/#calculator"
+              href="/#calculator"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Savings Calculator
             </Link>
             <Link
-              to="/#testimonials"
+              href="/#testimonials"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Testimonials
             </Link>
             <Link
-              to="/#contact"
+              href="/#contact"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >

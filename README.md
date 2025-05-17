@@ -1,30 +1,82 @@
-# React + TypeScript + Vite
+# Purrify - Next.js Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the official website for Purrify, a cat litter additive that eliminates odors at the source. The website is built with Next.js and optimized for SEO.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **SEO Optimized**: Meta tags, structured data, sitemap, and robots.txt
+- **Responsive Design**: Works on all devices
+- **Performance Optimized**: Fast loading with Next.js Image optimization
+- **Contact Form**: API route for form submissions
+- **Vercel Deployment**: Ready to deploy on Vercel
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js 18.x or later
+- npm or yarn
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/purrify.git
+   cd purrify
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Create a `.env.local` file in the root directory with the following variables:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   NEXT_PUBLIC_SITE_URL=https://purrify.ca
+   ```
+
+### Development
+
+Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+### Build
+
+Build the application for production:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Deployment
+
+The application is configured for deployment on Vercel. Simply push to your repository and Vercel will automatically deploy your changes.
+
+## Project Structure
+
+- `/pages`: Next.js pages and API routes
+- `/components`: Reusable React components
+- `/public`: Static assets
+- `/styles`: CSS and styling files
+- `/lib`: Utility functions and constants
+
+## SEO Features
+
+- Meta tags for each page
+- Open Graph and Twitter card support
+- JSON-LD structured data
+- Sitemap generation
+- Robots.txt configuration

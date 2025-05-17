@@ -6,6 +6,7 @@ import SectionHeader from "../ui/section-header";
 import { useInterval } from "@/lib/utils";
 import { FaPaw } from "react-icons/fa";
 import { scrollToSection } from "@/lib/utils";
+import NextImage from "../../../components/NextImage";
 
 export function Hero() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -129,9 +130,11 @@ export function Hero() {
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
-              <img
-                src="Carbon sktech.png"
+              <NextImage
+                src="/Carbon sktech.png"
                 alt="Happy cat with Purrify"
+                width={600}
+                height={400}
                 className="w-[600px] h-[400px] object-cover group-hover:scale-105 transition duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

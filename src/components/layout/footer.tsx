@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { Container } from "@/components/ui/container";
-import { SITE_NAME, CONTACT_INFO } from "@/lib/constants";
+import Link from "next/link";
+import { Container } from "../../components/ui/container";
+import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
+import NextImage from "../../../components/NextImage";
 import {
   Facebook,
   Instagram,
@@ -19,16 +20,20 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Link to="/" className="group">
+              <Link href="/" className="group">
                 <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
-                  <img
+                  <NextImage
                     src="/purrify-logo-icon.png"
                     alt="Purrify Logo"
+                    width={40}
+                    height={40}
                     className="h-full w-auto"
                   />
-                  <img
+                  <NextImage
                     src="/purrify-logo-text.png"
                     alt="Purrify Logo"
+                    width={120}
+                    height={40}
                     className="h-full w-auto"
                   />
                 </div>
@@ -67,7 +72,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/"
+                  href="/"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Home
@@ -75,7 +80,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#products"
+                  href="/#products"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Products
@@ -83,7 +88,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#features"
+                  href="/#features"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Features
@@ -91,7 +96,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#benefits"
+                  href="/#benefits"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Benefits
@@ -99,7 +104,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#calculator"
+                  href="/#calculator"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Savings Calculator
@@ -107,7 +112,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#faq"
+                  href="/#faq"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   FAQ
@@ -115,7 +120,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#blog"
+                  href="/#blog"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Blog
@@ -123,7 +128,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#testimonials"
+                  href="/#testimonials"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Testimonials
