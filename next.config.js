@@ -60,7 +60,7 @@ const nextConfig = {
   },
   
   // Optimize asset loading
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://purrify.ca' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_SITE_URL || '' : '',
   
   // Configure headers for security and caching
   async headers() {

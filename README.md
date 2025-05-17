@@ -1,82 +1,58 @@
-# Purrify - Next.js Website
+# Purrify Website
 
-This is the official website for Purrify, a cat litter additive that eliminates odors at the source. The website is built with Next.js and optimized for SEO.
+This is the official website for Purrify, an activated carbon cat litter additive that eliminates odors at the source.
 
-## Features
+## Development
 
-- **SEO Optimized**: Meta tags, structured data, sitemap, and robots.txt
-- **Responsive Design**: Works on all devices
-- **Performance Optimized**: Fast loading with Next.js Image optimization
-- **Contact Form**: API route for form submissions
-- **Vercel Deployment**: Ready to deploy on Vercel
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or later
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/purrify.git
-   cd purrify
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
-
-3. Create a `.env.local` file in the root directory with the following variables:
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-   NEXT_PUBLIC_SITE_URL=https://purrify.ca
-   ```
-
-### Development
-
-Run the development server:
+To run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Build
+## Environment Variables
 
-Build the application for production:
+This project uses environment variables for configuration. Make sure to set these up properly for both development and production environments.
+
+### Required Environment Variables
+
+- `NEXT_PUBLIC_SITE_URL`: The base URL of the site (e.g., `https://purrify.ca` or `https://your-preview-url.vercel.app`)
+
+### Setting Up Environment Variables
+
+#### Local Development
+
+Create a `.env.local` file in the root directory with:
+
+```
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+#### Vercel Deployment
+
+When deploying to Vercel, you need to set the `NEXT_PUBLIC_SITE_URL` environment variable in the Vercel dashboard:
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to "Settings" > "Environment Variables"
+3. Add a new variable:
+   - Name: `NEXT_PUBLIC_SITE_URL`
+   - Value: Your site's URL (e.g., `https://purrify.ca` or the preview URL)
+4. Set the environment to "Production" (and optionally "Preview" if you want to use preview URLs)
+5. Save the changes
+6. Redeploy your site
+
+For preview deployments, Vercel automatically sets the `VERCEL_URL` environment variable. You can use this to dynamically set the `NEXT_PUBLIC_SITE_URL` in your Vercel build settings by adding a build command that exports this variable:
 
 ```bash
-npm run build
-# or
-yarn build
+export NEXT_PUBLIC_SITE_URL=https://$VERCEL_URL && npm run build
 ```
 
-### Deployment
+## Troubleshooting
 
-The application is configured for deployment on Vercel. Simply push to your repository and Vercel will automatically deploy your changes.
+If you encounter styling or asset loading issues in production:
 
-## Project Structure
-
-- `/pages`: Next.js pages and API routes
-- `/components`: Reusable React components
-- `/public`: Static assets
-- `/styles`: CSS and styling files
-- `/lib`: Utility functions and constants
-
-## SEO Features
-
-- Meta tags for each page
-- Open Graph and Twitter card support
-- JSON-LD structured data
-- Sitemap generation
-- Robots.txt configuration
+1. Check that the `NEXT_PUBLIC_SITE_URL` environment variable is correctly set in Vercel
+2. Ensure there are no hardcoded domain references in the codebase
+3. Clear the Vercel cache and redeploy if necessary

@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const canonicalUrl = 'https://purrify.ca/';
+  const canonicalUrl = process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL}/` : '/';
   
   return (
     <>
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         
         {/* Preconnect to important domains */}
-        <link rel="preconnect" href="https://purrify.ca" />
+        {process.env.NEXT_PUBLIC_SITE_URL && <link rel="preconnect" href={process.env.NEXT_PUBLIC_SITE_URL} />}
         <link rel="preconnect" href="https://api.dicebear.com" />
       </Head>
       
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           description: SITE_DESCRIPTION,
           images: [
             {
-              url: 'https://purrify.ca/purrify-logo.png',
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`,
               width: 1200,
               height: 630,
               alt: SITE_NAME,
@@ -114,7 +114,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             '@type': 'Organization',
             name: SITE_NAME,
             url: canonicalUrl,
-            logo: 'https://purrify.ca/purrify-logo.png',
+            logo: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`,
             sameAs: [
               'https://facebook.com/purrify',
               'https://instagram.com/purrify',

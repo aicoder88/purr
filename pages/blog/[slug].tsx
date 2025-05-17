@@ -80,22 +80,22 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://purrify.ca${post.link}`} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={`https://purrify.ca${post.image}`} />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`} />
         <meta property="article:published_time" content={new Date(post.date).toISOString()} />
         <meta property="article:author" content={post.author} />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`https://purrify.ca${post.link}`} />
+        <meta property="twitter:url" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.excerpt} />
-        <meta property="twitter:image" content={`https://purrify.ca${post.image}`} />
+        <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`} />
         
         {/* Canonical Link */}
-        <link rel="canonical" href={`https://purrify.ca${post.link}`} />
+        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`} />
 
         {/* Structured Data / JSON-LD */}
         <script
@@ -105,7 +105,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               '@context': 'https://schema.org',
               '@type': 'BlogPosting',
               'headline': post.title,
-              'image': [`https://purrify.ca${post.image}`],
+              'image': [`${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.image}`],
               'datePublished': post.date,
               'dateModified': post.date,
               'author': {
@@ -117,13 +117,13 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 'name': SITE_NAME,
                 'logo': {
                   '@type': 'ImageObject',
-                  'url': 'https://purrify.ca/purrify-logo.png'
+                  'url': `${process.env.NEXT_PUBLIC_SITE_URL || ''}/purrify-logo.png`
                 }
               },
               'description': post.excerpt,
               'mainEntityOfPage': {
                 '@type': 'WebPage',
-                '@id': `https://purrify.ca${post.link}`
+                '@id': `${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`
               }
             })
           }}
@@ -182,8 +182,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
                 <h3 className="text-xl font-bold mb-4 text-[#5B2EFF]">Share this article</h3>
                 <div className="flex space-x-4">
-                  <a 
-                    href={`https://twitter.com/intent/tweet?url=https://purrify.ca${post.link}&text=${post.title}`}
+                  <a
+                    href={`https://twitter.com/intent/tweet?url=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}&text=${post.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#1DA1F2] text-white p-3 rounded-full hover:bg-[#1DA1F2]/80 transition-colors"
@@ -192,8 +192,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                       <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                     </svg>
                   </a>
-                  <a 
-                    href={`https://www.facebook.com/sharer/sharer.php?u=https://purrify.ca${post.link}`}
+                  <a
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#1877F2] text-white p-3 rounded-full hover:bg-[#1877F2]/80 transition-colors"
@@ -202,8 +202,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                   </a>
-                  <a 
-                    href={`https://www.linkedin.com/shareArticle?mini=true&url=https://purrify.ca${post.link}&title=${post.title}`}
+                  <a
+                    href={`https://www.linkedin.com/shareArticle?mini=true&url=${process.env.NEXT_PUBLIC_SITE_URL || ''}${post.link}&title=${post.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#0A66C2] text-white p-3 rounded-full hover:bg-[#0A66C2]/80 transition-colors"

@@ -113,7 +113,7 @@ export default function NextImage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ImageObject',
-              contentUrl: isExternal ? imageSrc : `https://purrify.ca${imageSrc}`,
+              contentUrl: isExternal ? imageSrc : `${process.env.NEXT_PUBLIC_SITE_URL || ''}${imageSrc}`,
               name: caption || filename || safeAlt,
               description: safeAlt,
               width: width,
