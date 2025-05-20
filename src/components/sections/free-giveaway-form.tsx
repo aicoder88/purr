@@ -191,7 +191,7 @@ export function FreeGiveawayForm() {
           className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white font-medium py-2.5"
           aria-busy={isSubmitting}
         >
-          {isSubmitting ? 'Submitting...' : 'Claim Your Free Bag'}
+          {isSubmitting ? 'Submitting...' : 'GET MY FREE BAG NOW'}
         </Button>
         
         <p className="text-xs text-center text-gray-500 mt-4">
