@@ -60,12 +60,12 @@ export function Hero() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <video
-                poster="/cat_rose_thumbnail.jpg"
+                poster="/optimized/cat_rose_thumbnail.webp"
                 className="w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto"
                 autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label="Cat with rose video"
                 title="Purrify Cat Litter Additive Demo"
                 role="presentation"

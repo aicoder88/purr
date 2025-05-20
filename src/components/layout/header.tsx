@@ -21,14 +21,18 @@ export function Header() {
             <Link href="/" className="group" aria-label="Purrify Home">
               <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                 <img
-                  src="/purrify-logo-icon.png"
+                  src="/optimized/purrify-logo-icon.webp"
                   alt="Purrify Logo Icon"
                   className="h-full w-auto"
+                  width={757}
+                  height={896}
                 />
                 <img
-                  src="/purrify-logo-text.png"
+                  src="/optimized/purrify-logo-text.webp"
                   alt="Purrify Logo Text"
                   className="h-full w-auto"
+                  width={209}
+                  height={96}
                 />
               </div>
             </Link>

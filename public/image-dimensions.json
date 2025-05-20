@@ -20,6 +20,27 @@
     "avif": "optimized/panel_3.avif",
     "optimized": "optimized/panel_3.png"
   },
+  "panel_1.png": {
+    "width": 512,
+    "height": 1024,
+    "webp": "optimized/panel_1.webp",
+    "avif": "optimized/panel_1.avif",
+    "optimized": "optimized/panel_1.png"
+  },
+  "icon-64.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/icon-64.webp",
+    "avif": "optimized/icon-64.avif",
+    "optimized": "optimized/icon-64.png"
+  },
+  "logo-text-240.png": {
+    "width": 240,
+    "height": 80,
+    "webp": "optimized/logo-text-240.webp",
+    "avif": "optimized/logo-text-240.avif",
+    "optimized": "optimized/logo-text-240.png"
+  },
   "panel_2.png": {
     "width": 512,
     "height": 1024,
@@ -27,12 +48,47 @@
     "avif": "optimized/panel_2.avif",
     "optimized": "optimized/panel_2.png"
   },
-  "panel_1.png": {
-    "width": 512,
-    "height": 1024,
-    "webp": "optimized/panel_1.webp",
-    "avif": "optimized/panel_1.avif",
-    "optimized": "optimized/panel_1.png"
+  "logo-text-180.png": {
+    "width": 180,
+    "height": 60,
+    "webp": "optimized/logo-text-180.webp",
+    "avif": "optimized/logo-text-180.avif",
+    "optimized": "optimized/logo-text-180.png"
+  },
+  "logo-text-120.png": {
+    "width": 120,
+    "height": 40,
+    "webp": "optimized/logo-text-120.webp",
+    "avif": "optimized/logo-text-120.avif",
+    "optimized": "optimized/logo-text-120.png"
+  },
+  "favicon.png": {
+    "width": 16,
+    "height": 16,
+    "webp": "optimized/favicon.webp",
+    "avif": "optimized/favicon.avif",
+    "optimized": "optimized/favicon.png"
+  },
+  "icon-128.png": {
+    "width": 128,
+    "height": 128,
+    "webp": "optimized/icon-128.webp",
+    "avif": "optimized/icon-128.avif",
+    "optimized": "optimized/icon-128.png"
+  },
+  "icon-32.png": {
+    "width": 32,
+    "height": 32,
+    "webp": "optimized/icon-32.webp",
+    "avif": "optimized/icon-32.avif",
+    "optimized": "optimized/icon-32.png"
+  },
+  "cat_rose_thumbnail.jpg": {
+    "width": 500,
+    "height": 340,
+    "webp": "optimized/cat_rose_thumbnail.webp",
+    "avif": "optimized/cat_rose_thumbnail.avif",
+    "optimized": "optimized/cat_rose_thumbnail.jpg"
   },
   "micropores_magnified_view.jpeg": {
     "width": 886,
@@ -41,12 +97,12 @@
     "avif": "optimized/micropores_magnified_view.avif",
     "optimized": "optimized/micropores_magnified_view.jpeg"
   },
-  "cat_rose_thumbnail.jpg": {
-    "width": 500,
-    "height": 340,
-    "webp": "optimized/cat_rose_thumbnail.webp",
-    "avif": "optimized/cat_rose_thumbnail.avif",
-    "optimized": "optimized/cat_rose_thumbnail.jpg"
+  "apple-touch-icon.png": {
+    "width": 180,
+    "height": 180,
+    "webp": "optimized/apple-touch-icon.webp",
+    "avif": "optimized/apple-touch-icon.avif",
+    "optimized": "optimized/apple-touch-icon.png"
   },
   "free purrify.png": {
     "width": 1024,
@@ -69,12 +125,12 @@
     "avif": "optimized/20g.avif",
     "optimized": "optimized/20g.png"
   },
-  "Carbon sktech.png": {
+  "fresh.png": {
     "width": 1024,
-    "height": 1024,
-    "webp": "optimized/Carbon sktech.webp",
-    "avif": "optimized/Carbon sktech.avif",
-    "optimized": "optimized/Carbon sktech.png"
+    "height": 1536,
+    "webp": "optimized/fresh.webp",
+    "avif": "optimized/fresh.avif",
+    "optimized": "optimized/fresh.png"
   },
   "cost effective.png": {
     "width": 1024,
@@ -83,13 +139,6 @@
     "avif": "optimized/cost effective.avif",
     "optimized": "optimized/cost effective.png"
   },
-  "samplebag.jpg": {
-    "width": 1920,
-    "height": 2560,
-    "webp": "optimized/samplebag.webp",
-    "avif": "optimized/samplebag.avif",
-    "optimized": "optimized/samplebag.jpg"
-  },
   "before after.png": {
     "width": 1536,
     "height": 1024,
@@ -97,12 +146,33 @@
     "avif": "optimized/before after.avif",
     "optimized": "optimized/before after.png"
   },
+  "Carbon sktech.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/Carbon sktech.webp",
+    "avif": "optimized/Carbon sktech.avif",
+    "optimized": "optimized/Carbon sktech.png"
+  },
+  "samplebag.jpg": {
+    "width": 1920,
+    "height": 2560,
+    "webp": "optimized/samplebag.webp",
+    "avif": "optimized/samplebag.avif",
+    "optimized": "optimized/samplebag.jpg"
+  },
   "three_bags_no_bg.png": {
     "width": 1920,
     "height": 1629,
     "webp": "optimized/three_bags_no_bg.webp",
     "avif": "optimized/three_bags_no_bg.avif",
     "optimized": "optimized/three_bags_no_bg.png"
+  },
+  "140g.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/140g.webp",
+    "avif": "optimized/140g.avif",
+    "optimized": "optimized/140g.png"
   },
   "20g_o.png": {
     "width": 1696,

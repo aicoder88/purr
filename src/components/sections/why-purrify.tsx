@@ -21,7 +21,7 @@ export function WhyPurrify() {
       icon: Clock,
       title: "LONG-LASTING FRESHNESS",
       description: "A single application keeps the litter box odor-free for days. Enjoy continuous freshness without constant scooping or additives.",
-      image: "/images/fresh.png" // Using the specified image for long-lasting freshness
+      image: "/optimized/fresh.webp" // Using the optimized webp version
     },
     {
       icon: Layers,
@@ -84,9 +84,15 @@ export function WhyPurrify() {
                 >
                   {/* Image Section */}
                   <div className="aspect-video overflow-hidden">
-                    <img
-                      src={reason.image}
+                    <NextImage
+                      src={reason.image.replace('/images/fresh.png', '/optimized/fresh.webp')
+                            .replace('/cost effective.png', '/optimized/cost effective.webp')
+                            .replace('/carbon_magnified_image.png', '/optimized/carbon_magnified_image.webp')
+                            .replace('/micropores_magnified_view.jpeg', '/optimized/micropores_magnified_view.webp')}
                       alt={reason.title}
+                      width={400}
+                      height={225}
+                      loading="lazy"
                       className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
                         reason.title === "LONG-LASTING FRESHNESS"
                           ? "object-contain p-2" // Use object-contain for the fresh.png image

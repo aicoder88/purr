@@ -39,24 +39,33 @@ export function About() {
           <div className="hidden md:block">
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src="./three_bags_no_bg.png"
+                <NextImage
+                  src="/optimized/three_bags_no_bg.webp"
                   alt="65g bag of activated carbon"
+                  width={400}
+                  height={300}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src="./carbon_magnified_image.png"
+                <NextImage
+                  src="/optimized/carbon_magnified_image.webp"
                   alt="Micropore magnified view of activated carbon"
+                  width={400}
+                  height={300}
                   className="w-full h-48 object-contain transform hover:scale-90 transition duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
-                <img
+                <NextImage
                   src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80"
                   alt="Cat in clean environment"
+                  width={800}
+                  height={400}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
+                  loading="lazy"
                 />
               </div>
             </div>

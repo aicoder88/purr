@@ -110,15 +110,22 @@ export default function NextImage({
     // Check if we have an optimized version
     const baseName = imageSrc.split('/').pop()?.split('.')[0];
     if (baseName) {
-      const optimizedWebP = `/optimized/${baseName}.webp`;
-      
-      // Use WebP format by default for better compression
-      imageSrc = optimizedWebP;
+      // First check if the path already includes optimized
+      if (!imageSrc.includes('/optimized/')) {
+        const optimizedWebP = `/optimized/${baseName}.webp`;
+        
+        // Use WebP format by default for better compression
+        imageSrc = optimizedWebP;
+      }
     }
   }
 
   // Determine appropriate loading strategy
+  // Always use lazy loading for images below the fold
   const loading = loadingProp || (priority ? 'eager' : 'lazy');
+  
+  // Use fetchPriority to give the browser more hints about image importance
+  const finalFetchPriority = priority ? 'high' : fetchPriority;
 
   // Handle image load error
   const handleError = () => {
@@ -173,7 +180,7 @@ export default function NextImage({
         fill={fill}
         style={style}
         loading={loading}
-        fetchPriority={fetchPriority}
+        fetchPriority={finalFetchPriority}
         decoding={decoding}
         onError={handleError}
         onLoad={handleLoad}
