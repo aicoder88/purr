@@ -100,7 +100,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#products"
+                  href="/free"
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   Try
