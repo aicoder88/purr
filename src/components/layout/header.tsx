@@ -60,7 +60,7 @@ export function Header() {
               Why
             </Link>
             <Link
-              href="/#products"
+              href="/free"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
               Try
@@ -148,7 +148,7 @@ export function Header() {
               Why
             </Link>
             <Link
-              href="/#products"
+              href="/free"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
