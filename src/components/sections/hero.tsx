@@ -24,7 +24,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative container pt-20 pb-20 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+    <section className="relative container pt-20 pb-0 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
       
       {/* Decorative elements - using CSS variables for better performance */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
@@ -59,68 +59,82 @@ export function Hero() {
           <div className="relative group flex flex-col items-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
-              <NextImage
-                src="/Carbon sktech.png"
-                alt="Happy cat with Purrify"
-                width={500}
-                height={340}
-                priority={true}
-                className="w-10/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
-                sizes="(max-width: 768px) 100vw, 500px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="bg-[#FFFFFF]/90 backdrop-blur-sm rounded-xl p-4 transition-all duration-500">
-                  <div className="flex mb-1">
-                    {Array(5)
-                      .fill(0)
-                      .map((_, i) => (
-                        <svg
-                          key={i}
-                          className="w-4 h-4 text-yellow-400 fill-current"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-                      ))}
-                  </div>
-                  <p className="text-[#0072CE] font-medium line-clamp-2">
-                    "{TESTIMONIALS[currentTestimonial].text.split(".")[0]}."
-                  </p>
-                  <p className="text-sm text-[#333333]">
-                    - {TESTIMONIALS[currentTestimonial].name}
-                  </p>
+              <video
+                poster="/cat_rose_thumbnail.jpg"
+                className="w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto"
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                aria-label="Cat with rose video"
+                title="Purrify Cat Litter Additive Demo"
+                role="presentation"
+                loop
+                tabIndex={-1}
+                itemScope
+                itemType="https://schema.org/VideoObject"
+              >
+                <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
+                <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
+                <meta itemProp="name" content="Purrify Cat Litter Additive Demo" />
+                <meta itemProp="description" content="A demonstration of Purrify activated carbon cat litter additive that eliminates odors at the molecular level" />
+                <meta itemProp="thumbnailUrl" content="/cat_rose_thumbnail.jpg" />
+                <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
+                <meta itemProp="duration" content="PT30S" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            {/* Testimonials moved below the video but above scroll indicator */}
+            <div className="mt-8 mb-6 w-full">
+              <div className="bg-[#FFFFFF]/90 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-[#E0EFC7]/30 transition-all duration-500 max-w-md mx-auto hover:shadow-[#E0EFC7]/50 hover:-translate-y-1">
+                <div className="flex mb-1">
+                  {Array(5)
+                    .fill(0)
+                    .map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-4 h-4 text-yellow-400 fill-current"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                      </svg>
+                    ))}
                 </div>
+                <p className="text-[#0072CE] font-medium line-clamp-2 text-lg italic">
+                  "{TESTIMONIALS[currentTestimonial].text.split(".")[0]}."
+                </p>
+                <p className="text-sm text-[#333333] font-semibold mt-1">
+                  - {TESTIMONIALS[currentTestimonial].name}
+                </p>
               </div>
             </div>
             
-            {/* Scroll indicator moved directly under the image */}
-            <div className="mt-4 flex flex-col items-center">
-              <p className="text-sm text-[#0072CE] mb-2 bg-white/80 px-3 py-1 rounded-full">
-                Scroll to discover why Purrify works when everything else fails
-              </p>
-              <svg
-                className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </div>
+            {/* Empty div to maintain spacing */}
+            <div className="mt-4"></div>
           </div>
         </div>
       </Container>
       
-      {/* Removed the absolute positioned scroll indicator as it's now under the image */}
+      {/* Full width scroll indicator arrow only */}
+      <div className="w-full -mt-4 text-center flex flex-col items-center">
+        <svg
+          className="w-6 h-6 text-[#0072CE] animate-bounce bg-white/80 rounded-full p-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

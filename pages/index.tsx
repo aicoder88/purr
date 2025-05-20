@@ -60,6 +60,29 @@ export default function Home() {
               alt: SITE_NAME,
               type: 'image/png',
             },
+            {
+              url: 'https://purrify.ca/cat_rose_thumbnail.jpg',
+              width: 500,
+              height: 340,
+              alt: 'Cat with rose - Purrify',
+              type: 'image/jpeg',
+            },
+          ],
+          videos: [
+            {
+              url: 'https://purrify.ca/videos/cat_rose_optimized.mp4',
+              width: 1280,
+              height: 720,
+              type: 'video/mp4',
+              alt: 'Purrify Cat Litter Additive Demo',
+            },
+            {
+              url: 'https://purrify.ca/videos/cat_rose_optimized.webm',
+              width: 1280,
+              height: 720,
+              type: 'video/webm',
+              alt: 'Purrify Cat Litter Additive Demo',
+            }
           ],
         }}
         twitter={{
@@ -70,11 +93,35 @@ export default function Home() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies',
+            content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies, cat video',
           },
           {
             name: 'robots',
             content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+          },
+          {
+            name: 'video:duration',
+            content: '30',
+          },
+          {
+            name: 'video:release_date',
+            content: '2023-09-01T08:00:00+08:00',
+          },
+          {
+            property: 'og:video:secure_url',
+            content: 'https://purrify.ca/videos/cat_rose_optimized.mp4',
+          },
+          {
+            property: 'og:video:type',
+            content: 'video/mp4',
+          },
+          {
+            property: 'og:video:width',
+            content: '1280',
+          },
+          {
+            property: 'og:video:height',
+            content: '720',
           },
         ]}
       />
@@ -106,7 +153,7 @@ export default function Home() {
         images={[
           'https://purrify.ca/20g.png',
           'https://purrify.ca/60g.png',
-          'https://purrify.ca/three_bags_no_bg.png',
+          'https://purrify.ca/cat_rose_thumbnail.jpg',
         ]}
         description={SITE_DESCRIPTION}
         brand="Purrify"
@@ -154,7 +201,7 @@ export default function Home() {
         }}
         images={[
           'https://purrify.ca/purrify-logo.png',
-          'https://purrify.ca/three_bags_no_bg.png',
+          'https://purrify.ca/cat_rose_thumbnail.jpg',
         ]}
         openingHours={[
           {
@@ -196,6 +243,31 @@ export default function Home() {
                 'item': 'https://purrify.ca/'
               }
             ]
+          })
+        }}
+      />
+      
+      {/* VideoObject Schema for Hero Video */}
+      <Script
+        id="video-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            'name': 'Purrify Cat Litter Additive Demo',
+            'description': 'A demonstration of Purrify activated carbon cat litter additive that eliminates odors at the molecular level',
+            'thumbnailUrl': 'https://purrify.ca/cat_rose_thumbnail.jpg',
+            'uploadDate': '2023-09-01T08:00:00+08:00',
+            'contentUrl': 'https://purrify.ca/videos/cat_rose_optimized.mp4',
+            'embedUrl': 'https://purrify.ca/',
+            'duration': 'PT30S',
+            'interactionStatistic': {
+              '@type': 'InteractionCounter',
+              'interactionType': { '@type': 'WatchAction' },
+              'userInteractionCount': 5000
+            },
+            'regionsAllowed': 'CA,US'
           })
         }}
       />

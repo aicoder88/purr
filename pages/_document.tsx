@@ -62,6 +62,7 @@ export default function Document() {
         <meta name="googlebot" content="index, follow" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="referrer" content="origin-when-cross-origin" />
+        <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
         
         {/* PWA Support */}
         <meta name="application-name" content="Purrify" />

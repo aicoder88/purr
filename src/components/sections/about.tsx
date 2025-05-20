@@ -1,5 +1,11 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
+import dynamic from "next/dynamic";
+
+// Dynamically import NextImage to reduce initial bundle size
+const NextImage = dynamic(() => import("../../../components/NextImage"), {
+  ssr: true,
+});
 
 export function About() {
   return (
@@ -7,10 +13,23 @@ export function About() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text="The Science of Fresh Air" />
-
-          <h2 className="text-6xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-          What Makes Purrify Different?
-          </h2>
+          
+          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">What Makes Purrify Different?</h2>
+          
+          <div className="relative group flex flex-col items-center my-8">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
+              <NextImage
+                src="/Carbon sktech.png"
+                alt="Carbon sketch illustration"
+                width={500}
+                height={340}
+                className="w-10/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
+                sizes="(max-width: 768px) 100vw, 500px"
+              />
+            </div>
+          </div>
+          
           <p className="text-3xl font-semibold text-[#333333] mb-6">
           Nature's Secret Weapon: Activated Coconut Shells!
           </p>

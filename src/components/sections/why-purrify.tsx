@@ -53,7 +53,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="py-12 bg-gradient-to-br from-orange-50 to-white mb-16"
+      className="pt-2 pb-12 bg-gradient-to-br from-orange-50 to-white mb-16"
       id="why-purrify"
     >
       <Container>
