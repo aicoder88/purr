@@ -21,7 +21,7 @@ export function WhyPurrify() {
       icon: Clock,
       title: "LONG-LASTING FRESHNESS",
       description: "A single application keeps the litter box odor-free for days. Enjoy continuous freshness without constant scooping or additives.",
-      image: "/panel_1.png" // Changed image
+      image: "/images/fresh.png" // Using the specified image for long-lasting freshness
     },
     {
       icon: Layers,
@@ -87,7 +87,11 @@ export function WhyPurrify() {
                     <img
                       src={reason.image}
                       alt={reason.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                        reason.title === "LONG-LASTING FRESHNESS"
+                          ? "object-contain p-2" // Use object-contain for the fresh.png image
+                          : "object-cover" // Keep object-cover for other images
+                      }`}
                     />
                   </div>
                   {/* Content Section */}

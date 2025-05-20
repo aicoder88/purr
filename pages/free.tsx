@@ -4,23 +4,33 @@ import Head from "next/head";
 import { FreeGiveawayForm } from "@/components/sections/free-giveaway-form";
 import { Container } from "@/components/ui/container";
 import { SITE_NAME } from "@/lib/constants";
-import Image from "next/image";
+import NextImage from "../components/NextImage";
 import { PawPrint } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const FreePage: NextPage = () => {
-  // State for countdown timer
+  // State for countdown timer - initialize with zeros to avoid hydration mismatch
   const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number }>({
-    hours: Math.floor(Math.random() * 24),
-    minutes: Math.floor(Math.random() * 60),
-    seconds: Math.floor(Math.random() * 60)
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   });
   
-  // Random number of claimed bags between 205 and 440
-  const [claimedBags] = useState<number>(Math.floor(Math.random() * (440 - 205 + 1)) + 205);
+  // Random number of claimed bags - initialize with a fixed value to avoid hydration mismatch
+  const [claimedBags, setClaimedBags] = useState<number>(205);
   
-  // Update countdown timer every second
+  // Initialize values on client-side only to avoid hydration mismatch
   useEffect(() => {
+    // Set initial random values only on client-side
+    setTimeLeft({
+      hours: Math.floor(Math.random() * 24),
+      minutes: Math.floor(Math.random() * 60),
+      seconds: Math.floor(Math.random() * 60)
+    });
+    
+    setClaimedBags(Math.floor(Math.random() * (440 - 205 + 1)) + 205);
+    
+    // Update countdown timer every second
     const timer = setInterval(() => {
       setTimeLeft(prevTime => {
         const newSeconds = prevTime.seconds - 1;
@@ -77,9 +87,9 @@ const FreePage: NextPage = () => {
               <div className="md:w-1/2 transform transition-transform duration-500 hover:scale-105">
                 <div className="relative">
                   <div className="absolute inset-0 bg-indigo-600/10 rounded-lg blur-xl"></div>
-                  <Image
+                  <NextImage
                     src="/free purrify.png"
-                    alt="Free Bag of Purrify"
+                    alt="Free Trial Bag of Purrify Cat Litter Additive"
                     width={400}
                     height={300}
                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
@@ -101,9 +111,9 @@ const FreePage: NextPage = () => {
                     </div>
                     
                     <div className="flex justify-center my-4">
-                      <Image
+                      <NextImage
                         src="/samplebag.jpg"
-                        alt="Sample Bag of Purrify"
+                        alt="Sample Trial Size Bag of Purrify Cat Litter Additive"
                         width={120}
                         height={90}
                         className="rounded-md shadow-lg border-2 border-indigo-200 transform transition-all duration-300 hover:scale-110"
@@ -160,6 +170,17 @@ const FreePage: NextPage = () => {
               
               <div className="relative z-10">
                 <div className="mb-8">
+                  <div className="mb-6 flex justify-center">
+                    <NextImage
+                      src="/before after.png"
+                      alt="Comparison showing litter box before and after using Purrify - demonstrating odor elimination results"
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-md border border-indigo-200"
+                      useModernFormat={true}
+                      quality={85}
+                    />
+                  </div>
                   <h3 className="text-xl font-bold text-indigo-800 mb-4">What You Get Absolutely FREE:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">

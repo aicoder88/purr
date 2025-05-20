@@ -18,16 +18,16 @@ export function Header() {
       <Container>
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="group">
+            <Link href="/" className="group" aria-label="Purrify Home">
               <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                 <img
                   src="/purrify-logo-icon.png"
-                  alt="Purrify Logo"
+                  alt="Purrify Logo Icon"
                   className="h-full w-auto"
                 />
                 <img
                   src="/purrify-logo-text.png"
-                  alt="Purrify Logo"
+                  alt="Purrify Logo Text"
                   className="h-full w-auto"
                 />
               </div>
@@ -44,26 +44,30 @@ export function Header() {
             <Link
               href="/#how-it-works"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              aria-label="How It Works"
             >
-              How
+              How It Works
             </Link>
             <Link
               href="/#about"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              aria-label="About Purrify"
             >
-              Wow
+              About
             </Link>
             <Link
               href="/#why-purrify"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              aria-label="Why Choose Purrify"
             >
-              Why
+              Why Purrify
             </Link>
             <Link
               href="/free"
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              aria-label="Try Free Sample"
             >
-              Try
+              Try Free
             </Link>
             <Link
               href="/#testimonials"
@@ -81,6 +85,7 @@ export function Header() {
               variant="outline"
               size="icon"
               className="relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 ml-2 hide-for-info-mode"
+              aria-label="Shopping Cart"
             >
               <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
               <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
@@ -94,6 +99,7 @@ export function Header() {
               variant="outline"
               size="icon"
               className="mr-3 relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 hide-for-info-mode"
+              aria-label="Shopping Cart"
             >
               <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
               <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
@@ -105,6 +111,8 @@ export function Header() {
               size="icon"
               onClick={toggleMenu}
               className="hover:bg-[#FFFFF5]"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6 text-[#FF3131]" />
@@ -130,29 +138,33 @@ export function Header() {
               href="/#how-it-works"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="How It Works"
             >
-              How
+              How It Works
             </Link>
             <Link
               href="/#about"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="About Purrify"
             >
-              Wow
+              About
             </Link>
             <Link
               href="/#why-purrify"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Why Choose Purrify"
             >
-              Why
+              Why Purrify
             </Link>
             <Link
               href="/free"
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Try Free Sample"
             >
-              Try
+              Try Free
             </Link>
             <Link
               href="/#testimonials"

@@ -1,0 +1,107 @@
+{
+  "purrify-logo-text.png": {
+    "width": 209,
+    "height": 96,
+    "webp": "optimized/purrify-logo-text.webp",
+    "avif": "optimized/purrify-logo-text.avif",
+    "optimized": "optimized/purrify-logo-text.png"
+  },
+  "panel_3.png": {
+    "width": 512,
+    "height": 1024,
+    "webp": "optimized/panel_3.webp",
+    "avif": "optimized/panel_3.avif",
+    "optimized": "optimized/panel_3.png"
+  },
+  "purrify-logo-icon.png": {
+    "width": 757,
+    "height": 896,
+    "webp": "optimized/purrify-logo-icon.webp",
+    "avif": "optimized/purrify-logo-icon.avif",
+    "optimized": "optimized/purrify-logo-icon.png"
+  },
+  "panel_2.png": {
+    "width": 512,
+    "height": 1024,
+    "webp": "optimized/panel_2.webp",
+    "avif": "optimized/panel_2.avif",
+    "optimized": "optimized/panel_2.png"
+  },
+  "panel_1.png": {
+    "width": 512,
+    "height": 1024,
+    "webp": "optimized/panel_1.webp",
+    "avif": "optimized/panel_1.avif",
+    "optimized": "optimized/panel_1.png"
+  },
+  "carbon_magnified_image.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/carbon_magnified_image.webp",
+    "avif": "optimized/carbon_magnified_image.avif",
+    "optimized": "optimized/carbon_magnified_image.png"
+  },
+  "micropores_magnified_view.jpeg": {
+    "width": 886,
+    "height": 886,
+    "webp": "optimized/micropores_magnified_view.webp",
+    "avif": "optimized/micropores_magnified_view.avif",
+    "optimized": "optimized/micropores_magnified_view.jpeg"
+  },
+  "20g.png": {
+    "width": 424,
+    "height": 652,
+    "webp": "optimized/20g.webp",
+    "avif": "optimized/20g.avif",
+    "optimized": "optimized/20g.png"
+  },
+  "free purrify.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/free purrify.webp",
+    "avif": "optimized/free purrify.avif",
+    "optimized": "optimized/free purrify.png"
+  },
+  "Carbon sktech.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/Carbon sktech.webp",
+    "avif": "optimized/Carbon sktech.avif",
+    "optimized": "optimized/Carbon sktech.png"
+  },
+  "before after.png": {
+    "width": 1536,
+    "height": 1024,
+    "webp": "optimized/before after.webp",
+    "avif": "optimized/before after.avif",
+    "optimized": "optimized/before after.png"
+  },
+  "three_bags_no_bg.png": {
+    "width": 1920,
+    "height": 1629,
+    "webp": "optimized/three_bags_no_bg.webp",
+    "avif": "optimized/three_bags_no_bg.avif",
+    "optimized": "optimized/three_bags_no_bg.png"
+  },
+  "20g_o.png": {
+    "width": 1696,
+    "height": 2607,
+    "webp": "optimized/20g_o.webp",
+    "avif": "optimized/20g_o.avif",
+    "optimized": "optimized/20g_o.png"
+  },
+  "samplebag.jpg": {
+    "width": 1920,
+    "height": 2560,
+    "webp": "optimized/samplebag.webp",
+    "avif": "optimized/samplebag.avif",
+    "optimized": "optimized/samplebag.jpg"
+  },
+  "60g.png": {
+    "width": 1920,
+    "height": 3088,
+    "webp": "optimized/60g.webp",
+    "avif": "optimized/60g.avif",
+    "optimized": "optimized/60g.png"
+  }
+}

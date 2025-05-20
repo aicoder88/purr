@@ -1,17 +1,99 @@
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 
-async function optimizeImages() {
-  const outputDir = path.join(__dirname, '../public/images');
-  
-  // Create output directory if it doesn't exist
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+// Configuration
+const QUALITY = 80;
+const MAX_WIDTH = 1920; // Maximum width for large images
+const PUBLIC_DIR = path.join(__dirname, '../public');
+const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
+const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
+
+// Create directories if they don't exist
+function ensureDirectoryExists(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
   }
+}
+
+// Get image dimensions
+async function getImageDimensions(filePath) {
+  try {
+    const metadata = await sharp(filePath).metadata();
+    return { width: metadata.width, height: metadata.height };
+  } catch (error) {
+    console.error(`Error getting dimensions for ${filePath}:`, error);
+    return { width: 800, height: 600 }; // Default fallback
+  }
+}
+
+// Optimize a single image
+async function optimizeImage(filePath) {
+  try {
+    const filename = path.basename(filePath);
+    const ext = path.extname(filename).toLowerCase();
+    const baseName = path.basename(filename, ext);
+    
+    // Skip already optimized images
+    if (filePath.includes('/optimized/') || filePath.includes('/images/')) {
+      return;
+    }
+    
+    // Get image dimensions
+    const dimensions = await getImageDimensions(filePath);
+    let { width, height } = dimensions;
+    
+    // Calculate new dimensions if image is too large
+    if (width > MAX_WIDTH) {
+      const ratio = MAX_WIDTH / width;
+      width = MAX_WIDTH;
+      height = Math.round(height * ratio);
+    }
+    
+    // Create WebP version
+    const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
+    await sharp(filePath)
+      .resize(width, height)
+      .webp({ quality: QUALITY })
+      .toFile(webpOutputPath);
+    
+    // Create AVIF version (higher quality for better appearance)
+    const avifOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.avif`);
+    await sharp(filePath)
+      .resize(width, height)
+      .avif({ quality: QUALITY })
+      .toFile(avifOutputPath);
+    
+    // Create optimized version in original format with proper dimensions
+    const optimizedOriginalPath = path.join(OPTIMIZED_DIR, filename);
+    await sharp(filePath)
+      .resize(width, height)
+      .toFile(optimizedOriginalPath);
+    
+    console.log(`Optimized: ${filename} → WebP, AVIF, and optimized original`);
+    
+    // Return the dimensions for the image dimensions JSON file
+    return {
+      original: filename,
+      webp: `${baseName}.webp`,
+      avif: `${baseName}.avif`,
+      width,
+      height
+    };
+  } catch (error) {
+    console.error(`Error optimizing ${filePath}:`, error);
+    return null;
+  }
+}
+
+// Process all icons (special case for favicons and logos)
+async function processIcons() {
+  const outputDir = path.join(PUBLIC_DIR, 'images');
+  ensureDirectoryExists(outputDir);
   
   // Optimize icon logo
-  const iconPath = path.join(__dirname, '../public/purrify-logo-icon.png');
+  const iconPath = path.join(PUBLIC_DIR, 'purrify-logo-icon.png');
   
   // Create favicon (16x16)
   await sharp(iconPath)
@@ -39,7 +121,7 @@ async function optimizeImages() {
     .toFile(path.join(outputDir, 'apple-touch-icon.png'));
   
   // Optimize text logo
-  const textPath = path.join(__dirname, '../public/purrify-logo-text.png');
+  const textPath = path.join(PUBLIC_DIR, 'purrify-logo-text.png');
   
   // Create small text logo (120x40)
   await sharp(textPath)
@@ -55,11 +137,66 @@ async function optimizeImages() {
   await sharp(textPath)
     .resize(240, 80)
     .toFile(path.join(outputDir, 'logo-text-240.png'));
-    
-  console.log('Images optimized successfully!');
 }
 
-optimizeImages().catch(err => {
+// Main function to optimize all images
+async function optimizeAllImages() {
+  try {
+    // Ensure directories exist
+    ensureDirectoryExists(OPTIMIZED_DIR);
+    ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
+    
+    // Process icons first
+    await processIcons();
+    
+    // Find all images in the public directory
+    const imageFiles = glob.sync(`${PUBLIC_DIR}/**/*.{png,jpg,jpeg,gif}`, {
+      ignore: [
+        `${PUBLIC_DIR}/images/**`,
+        `${PUBLIC_DIR}/optimized/**`,
+        `${PUBLIC_DIR}/original-images/**`
+      ]
+    });
+    
+    console.log(`Found ${imageFiles.length} images to optimize`);
+    
+    // Process each image and collect dimension data
+    const imageDimensions = {};
+    const optimizationPromises = imageFiles.map(async (filePath) => {
+      const result = await optimizeImage(filePath);
+      if (result) {
+        const relativePath = path.relative(PUBLIC_DIR, filePath);
+        imageDimensions[relativePath] = {
+          width: result.width,
+          height: result.height,
+          webp: `optimized/${result.webp}`,
+          avif: `optimized/${result.avif}`,
+          optimized: `optimized/${result.original}`
+        };
+        
+        // Move original to backup directory
+        const backupPath = path.join(ORIGINAL_IMAGES_DIR, path.basename(filePath));
+        fs.copyFileSync(filePath, backupPath);
+      }
+    });
+    
+    await Promise.all(optimizationPromises);
+    
+    // Write image dimensions to a JSON file for reference
+    fs.writeFileSync(
+      path.join(PUBLIC_DIR, 'image-dimensions.json'),
+      JSON.stringify(imageDimensions, null, 2)
+    );
+    
+    console.log('All images optimized successfully!');
+  } catch (error) {
+    console.error('Error in image optimization process:', error);
+    process.exit(1);
+  }
+}
+
+// Run the optimization
+optimizeAllImages().catch(err => {
   console.error('Error optimizing images:', err);
   process.exit(1);
 });
