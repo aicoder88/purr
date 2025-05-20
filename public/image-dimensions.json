@@ -6,19 +6,19 @@
     "avif": "optimized/purrify-logo-text.avif",
     "optimized": "optimized/purrify-logo-text.png"
   },
-  "panel_3.png": {
-    "width": 512,
-    "height": 1024,
-    "webp": "optimized/panel_3.webp",
-    "avif": "optimized/panel_3.avif",
-    "optimized": "optimized/panel_3.png"
-  },
   "purrify-logo-icon.png": {
     "width": 757,
     "height": 896,
     "webp": "optimized/purrify-logo-icon.webp",
     "avif": "optimized/purrify-logo-icon.avif",
     "optimized": "optimized/purrify-logo-icon.png"
+  },
+  "panel_3.png": {
+    "width": 512,
+    "height": 1024,
+    "webp": "optimized/panel_3.webp",
+    "avif": "optimized/panel_3.avif",
+    "optimized": "optimized/panel_3.png"
   },
   "panel_2.png": {
     "width": 512,
@@ -34,13 +34,6 @@
     "avif": "optimized/panel_1.avif",
     "optimized": "optimized/panel_1.png"
   },
-  "carbon_magnified_image.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/carbon_magnified_image.webp",
-    "avif": "optimized/carbon_magnified_image.avif",
-    "optimized": "optimized/carbon_magnified_image.png"
-  },
   "micropores_magnified_view.jpeg": {
     "width": 886,
     "height": 886,
@@ -48,12 +41,12 @@
     "avif": "optimized/micropores_magnified_view.avif",
     "optimized": "optimized/micropores_magnified_view.jpeg"
   },
-  "20g.png": {
-    "width": 424,
-    "height": 652,
-    "webp": "optimized/20g.webp",
-    "avif": "optimized/20g.avif",
-    "optimized": "optimized/20g.png"
+  "cat_rose_thumbnail.jpg": {
+    "width": 500,
+    "height": 340,
+    "webp": "optimized/cat_rose_thumbnail.webp",
+    "avif": "optimized/cat_rose_thumbnail.avif",
+    "optimized": "optimized/cat_rose_thumbnail.jpg"
   },
   "free purrify.png": {
     "width": 1024,
@@ -62,12 +55,40 @@
     "avif": "optimized/free purrify.avif",
     "optimized": "optimized/free purrify.png"
   },
+  "carbon_magnified_image.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/carbon_magnified_image.webp",
+    "avif": "optimized/carbon_magnified_image.avif",
+    "optimized": "optimized/carbon_magnified_image.png"
+  },
+  "20g.png": {
+    "width": 424,
+    "height": 652,
+    "webp": "optimized/20g.webp",
+    "avif": "optimized/20g.avif",
+    "optimized": "optimized/20g.png"
+  },
   "Carbon sktech.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/Carbon sktech.webp",
     "avif": "optimized/Carbon sktech.avif",
     "optimized": "optimized/Carbon sktech.png"
+  },
+  "cost effective.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/cost effective.webp",
+    "avif": "optimized/cost effective.avif",
+    "optimized": "optimized/cost effective.png"
+  },
+  "samplebag.jpg": {
+    "width": 1920,
+    "height": 2560,
+    "webp": "optimized/samplebag.webp",
+    "avif": "optimized/samplebag.avif",
+    "optimized": "optimized/samplebag.jpg"
   },
   "before after.png": {
     "width": 1536,
@@ -89,13 +110,6 @@
     "webp": "optimized/20g_o.webp",
     "avif": "optimized/20g_o.avif",
     "optimized": "optimized/20g_o.png"
-  },
-  "samplebag.jpg": {
-    "width": 1920,
-    "height": 2560,
-    "webp": "optimized/samplebag.webp",
-    "avif": "optimized/samplebag.avif",
-    "optimized": "optimized/samplebag.jpg"
   },
   "60g.png": {
     "width": 1920,

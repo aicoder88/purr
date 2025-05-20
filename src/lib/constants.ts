@@ -119,7 +119,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Mei L., Outremont",
-    text: "Super impressed with this sustainable solution! 🌱 As someone who tries to minimize their environmental impact, I love that it's just activated charcoal—no chemicals or artificial fragrances. Plus, it extends the life of my organic litter, so less waste overall! 🐱🌍",
+    text: "Super impressed with this sustainable solution! As someone who tries to minimize their environmental impact, I love love love that it's just activated charcoal—no chemicals or artificial fragrances",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=mei",
     stars: 5,
   },
