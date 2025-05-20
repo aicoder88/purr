@@ -4,17 +4,17 @@ export const SITE_DESCRIPTION =
 
 export const PRODUCTS = [
   {
-    id: "purrify-20g",
-    name: "Purrify 20g",
-    description: "Perfect for kittens",
+    id: "purrify-17g",
+    name: "Purrify 17g",
+    description: "Perfect for New Kittens\nThe perfect trial size - good for one litter change.",
     price: 9.99,
     image: "/20g.png",
-    size: "20g",
+    size: "17g",
   },
   {
     id: "purrify-60g",
     name: "Purrify 60g",
-    description: "Ideal for one cat",
+    description: "Ideal for One Cat\nOur most popular size for single-cat homes.\nOne month of freshness!",
     price: 19.99,
     image: "/60g.png",
     size: "60g",
@@ -22,9 +22,9 @@ export const PRODUCTS = [
   {
     id: "purrify-120g",
     name: "Purrify 120g",
-    description: "Perfect for two cats",
+    description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control.",
     price: 29.99,
-    image: "/60g.png",
+    image: "/images/140g.png",
     size: "120g",
   },
 ];

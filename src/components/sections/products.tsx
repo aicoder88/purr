@@ -15,13 +15,13 @@ export function Products() {
           {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             For Every Cat Household
           </div> */}
-          <SectionHeader text="For Every Cat Household" />
+          <SectionHeader text="FOR EVERY CAT HOUSEHOLD" />
           <h2 className="text-4xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-            Choose Your Purrfect Size
+            PICK YOUR PURRIFY POWER LEVEL
           </h2>
           <p className="text-gray-600 text-lg">
-            Whether you have a kitten or multiple cats, we have the perfect
-            Purrify size for your home.
+            Whether you have one kitten or multiple cats,
+            we have the ideal Purrify size for your home.
           </p>
         </div>
 
@@ -41,11 +41,11 @@ export function Products() {
                       alt={product.name}
                       width={300}
                       height={300}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-contain mx-auto transition-transform duration-700 group-hover:scale-105 flex items-center justify-center"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
                       <p className="text-white font-bold text-sm">
-                        Perfect for {product.description.toLowerCase()}
+                        {product.description.split('\n')[0]}
                       </p>
                     </div>
                   </div>
@@ -59,7 +59,7 @@ export function Products() {
                   <h3 className="font-bold text-xl mb-2 bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600">{product.description}</p>
+                  <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent hide-for-info-mode">

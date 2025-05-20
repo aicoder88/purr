@@ -39,7 +39,7 @@ export function WhyPurrify() {
       icon: PiggyBank,
       title: "COST-EFFECTIVE",
       description: "Extends the life of your cat litter by preventing odor buildup, saving you money and reducing overall waste.",
-      image: "/three_bags_no_bg.png" // Use local image
+      image: "/cost effective.png" // Updated image
     },
   ];
 
@@ -90,7 +90,9 @@ export function WhyPurrify() {
                       className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
                         reason.title === "LONG-LASTING FRESHNESS"
                           ? "object-contain p-2" // Use object-contain for the fresh.png image
-                          : "object-cover" // Keep object-cover for other images
+                          : reason.title === "COST-EFFECTIVE"
+                            ? "object-cover object-center" // Ensure the cost effective image is centered and covers properly
+                            : "object-cover" // Keep object-cover for other images
                       }`}
                     />
                   </div>
