@@ -9,8 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { promisify } = require('util');
-const rimraf = promisify(require('rimraf'));
+const { rimraf } = require('rimraf');
 
 // Paths to webpack cache directories
 const cacheDirs = [
@@ -29,7 +28,7 @@ async function clearWebpackCache() {
     // Check if directory exists
     if (fs.existsSync(fullPath)) {
       try {
-        await rimraf(`${fullPath}/*`);
+        await rimraf(fullPath);
         console.log(`✓ Cleared ${dir}`);
       } catch (error) {
         console.error(`✗ Failed to clear ${dir}: ${error.message}`);
