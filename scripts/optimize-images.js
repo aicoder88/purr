@@ -20,6 +20,7 @@ function ensureDirectoryExists(directory) {
 // Get image dimensions
 async function getImageDimensions(filePath) {
   try {
+    console.log(`Processing image: ${filePath}`);
     const metadata = await sharp(filePath).metadata();
     return { width: metadata.width, height: metadata.height };
   } catch (error) {

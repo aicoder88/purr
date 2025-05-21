@@ -6,33 +6,19 @@
     "avif": "optimized/purrify-logo-text.avif",
     "optimized": "optimized/purrify-logo-text.png"
   },
+  "panel_1.png": {
+    "width": 388,
+    "height": 1021,
+    "webp": "optimized/panel_1.webp",
+    "avif": "optimized/panel_1.avif",
+    "optimized": "optimized/panel_1.png"
+  },
   "purrify-logo-icon.png": {
     "width": 757,
     "height": 896,
     "webp": "optimized/purrify-logo-icon.webp",
     "avif": "optimized/purrify-logo-icon.avif",
     "optimized": "optimized/purrify-logo-icon.png"
-  },
-  "panel_3.png": {
-    "width": 512,
-    "height": 1024,
-    "webp": "optimized/panel_3.webp",
-    "avif": "optimized/panel_3.avif",
-    "optimized": "optimized/panel_3.png"
-  },
-  "panel_1.png": {
-    "width": 512,
-    "height": 1024,
-    "webp": "optimized/panel_1.webp",
-    "avif": "optimized/panel_1.avif",
-    "optimized": "optimized/panel_1.png"
-  },
-  "icon-64.png": {
-    "width": 64,
-    "height": 64,
-    "webp": "optimized/icon-64.webp",
-    "avif": "optimized/icon-64.avif",
-    "optimized": "optimized/icon-64.png"
   },
   "logo-text-240.png": {
     "width": 240,
@@ -41,12 +27,12 @@
     "avif": "optimized/logo-text-240.avif",
     "optimized": "optimized/logo-text-240.png"
   },
-  "panel_2.png": {
+  "panel_3.png": {
     "width": 512,
     "height": 1024,
-    "webp": "optimized/panel_2.webp",
-    "avif": "optimized/panel_2.avif",
-    "optimized": "optimized/panel_2.png"
+    "webp": "optimized/panel_3.webp",
+    "avif": "optimized/panel_3.avif",
+    "optimized": "optimized/panel_3.png"
   },
   "logo-text-180.png": {
     "width": 180,
@@ -62,12 +48,33 @@
     "avif": "optimized/logo-text-120.avif",
     "optimized": "optimized/logo-text-120.png"
   },
+  "icon-64.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/icon-64.webp",
+    "avif": "optimized/icon-64.avif",
+    "optimized": "optimized/icon-64.png"
+  },
+  "panel_2.png": {
+    "width": 465,
+    "height": 1024,
+    "webp": "optimized/panel_2.webp",
+    "avif": "optimized/panel_2.avif",
+    "optimized": "optimized/panel_2.png"
+  },
   "favicon.png": {
     "width": 16,
     "height": 16,
     "webp": "optimized/favicon.webp",
     "avif": "optimized/favicon.avif",
     "optimized": "optimized/favicon.png"
+  },
+  "icon-32.png": {
+    "width": 32,
+    "height": 32,
+    "webp": "optimized/icon-32.webp",
+    "avif": "optimized/icon-32.avif",
+    "optimized": "optimized/icon-32.png"
   },
   "icon-128.png": {
     "width": 128,
@@ -76,12 +83,12 @@
     "avif": "optimized/icon-128.avif",
     "optimized": "optimized/icon-128.png"
   },
-  "icon-32.png": {
-    "width": 32,
-    "height": 32,
-    "webp": "optimized/icon-32.webp",
-    "avif": "optimized/icon-32.avif",
-    "optimized": "optimized/icon-32.png"
+  "apple-touch-icon.png": {
+    "width": 180,
+    "height": 180,
+    "webp": "optimized/apple-touch-icon.webp",
+    "avif": "optimized/apple-touch-icon.avif",
+    "optimized": "optimized/apple-touch-icon.png"
   },
   "cat_rose_thumbnail.jpg": {
     "width": 500,
@@ -96,13 +103,6 @@
     "webp": "optimized/micropores_magnified_view.webp",
     "avif": "optimized/micropores_magnified_view.avif",
     "optimized": "optimized/micropores_magnified_view.jpeg"
-  },
-  "apple-touch-icon.png": {
-    "width": 180,
-    "height": 180,
-    "webp": "optimized/apple-touch-icon.webp",
-    "avif": "optimized/apple-touch-icon.avif",
-    "optimized": "optimized/apple-touch-icon.png"
   },
   "free purrify.png": {
     "width": 1024,
