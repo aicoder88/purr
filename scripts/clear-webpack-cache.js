@@ -9,7 +9,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { rimraf } = require('rimraf');
+// Import rimraf correctly for v5
+const rimraf = require('rimraf');
 
 // Paths to webpack cache directories
 const cacheDirs = [
@@ -28,6 +29,7 @@ async function clearWebpackCache() {
     // Check if directory exists
     if (fs.existsSync(fullPath)) {
       try {
+        // Use rimraf correctly for v5
         await rimraf(fullPath);
         console.log(`✓ Cleared ${dir}`);
       } catch (error) {
