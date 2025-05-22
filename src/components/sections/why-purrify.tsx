@@ -82,8 +82,8 @@ export function WhyPurrify() {
                   className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`} // Added overflow-hidden and flex
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  {/* Image Section */}
-                  <div className="aspect-video overflow-hidden">
+                  {/* Image Section with fixed dimensions to prevent layout shifts */}
+                  <div className="aspect-video overflow-hidden h-[225px]">
                     <NextImage
                       src={reason.image.replace('/images/fresh.png', '/optimized/fresh.webp')
                             .replace('/cost effective.png', '/optimized/cost effective.webp')
@@ -92,15 +92,11 @@ export function WhyPurrify() {
                       alt={reason.title}
                       width={400}
                       height={225}
-                      loading="lazy"
+                      loading={index < 3 ? "eager" : "lazy"} /* Load first 3 images eagerly */
                       className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
                       style={{
-                        objectFit: reason.title === "LONG-LASTING FRESHNESS" || reason.title === "COST-EFFECTIVE"
-                          ? 'cover'
-                          : 'cover',
-                        objectPosition: reason.title === "LONG-LASTING FRESHNESS" || reason.title === "COST-EFFECTIVE"
-                          ? 'center center'
-                          : 'center',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
                       }}
                     />
                   </div>
@@ -129,8 +125,9 @@ export function WhyPurrify() {
 
         <div className="mt-16 text-center">
           <div className="relative bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 px-12 py-10 rounded-3xl shadow-xl border-2 border-[#FF3131]/30 max-w-4xl mx-auto overflow-hidden">
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF3131]/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#5B2EFF]/20 rounded-full blur-3xl"></div>
+            {/* Using transform: translate3d(0,0,0) to force GPU rendering and prevent layout shifts */}
+            <div className="fixed -top-10 -left-10 w-40 h-40 bg-[#FF3131]/20 rounded-full blur-3xl pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }}></div>
+            <div className="fixed -bottom-10 -right-10 w-40 h-40 bg-[#5B2EFF]/20 rounded-full blur-3xl pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }}></div>
             <div className="relative z-10 flex flex-col items-center">
               <NextImage
                 src="/images/icon-128.png"

@@ -17,15 +17,17 @@ export function About() {
           <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">What Makes Purrify Different?</h2>
           
           <div className="relative group flex flex-col items-center my-8">
+            {/* Pre-allocate space for the image with a fixed height container */}
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300 w-10/12 h-[340px]">
               <NextImage
                 src="/Carbon sktech.png"
                 alt="Carbon sketch illustration"
                 width={500}
                 height={340}
-                className="w-10/12 h-auto object-cover group-hover:scale-105 transition duration-700 mx-auto"
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
                 sizes="(max-width: 768px) 100vw, 500px"
+                priority={true}
               />
             </div>
           </div>
@@ -90,18 +92,18 @@ export function About() {
 
         {/* Card removed as requested */}
 
-        {/* Floating particles */}
-        <div className="relative mt-16">
+        {/* Floating particles - using fixed positioning instead of absolute to prevent layout shifts */}
+        <div className="relative mt-16 h-20">
           <div
-            className="absolute -top-10 left-1/4 w-8 h-8 bg-[#E0EFC7] rounded-full opacity-50"
+            className="fixed -top-10 left-1/4 w-8 h-8 bg-[#E0EFC7] rounded-full opacity-50 pointer-events-none"
             style={{ animationDuration: "3s" }}
           ></div>
           <div
-            className="absolute top-20 right-1/3 w-6 h-6 bg-[#FF3131]/30 rounded-full opacity-40"
+            className="fixed top-20 right-1/3 w-6 h-6 bg-[#FF3131]/30 rounded-full opacity-40 pointer-events-none"
             style={{ animationDuration: "5s" }}
           ></div>
           <div
-            className="absolute -bottom-10 right-1/4 w-10 h-10 bg-[#E0EFC7]/70 rounded-full opacity-60"
+            className="fixed -bottom-10 right-1/4 w-10 h-10 bg-[#E0EFC7]/70 rounded-full opacity-60 pointer-events-none"
             style={{ animationDuration: "4s" }}
           ></div>
         </div>

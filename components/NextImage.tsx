@@ -243,19 +243,34 @@ export default function NextImage({
   const finalHeight = height || (fill ? undefined : 100);
 
   return (
-    <figure className={`relative ${isLoading ? 'animate-pulse bg-gray-200/30' : ''}`}>
+    <figure className={`relative`}>
+      {/* Placeholder div to reserve space while image loads */}
+      {isLoading && !fill && (
+        <div
+          className="bg-gray-200/30"
+          style={{
+            width: finalWidth,
+            height: finalHeight,
+            aspectRatio: finalWidth && finalHeight ? `${finalWidth}/${finalHeight}` : undefined
+          }}
+        />
+      )}
       <Image
         ref={imageRef}
         src={imgSrc}
         alt={safeAlt}
         width={finalWidth}
         height={finalHeight}
-        className={`${className || ''} ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+        className={`${className || ''}`}
         priority={priority}
         quality={quality}
         sizes={sizes}
         fill={fill}
-        style={style}
+        style={{
+          ...style,
+          opacity: isLoading ? 0 : 1,
+          transition: 'opacity 0.5s',
+        }}
         loading={loading}
         fetchPriority={finalFetchPriority}
         decoding={decoding}

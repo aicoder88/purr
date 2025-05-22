@@ -71,13 +71,14 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div className="text-center mt-6">
-                  <div className="overflow-hidden rounded-lg mb-4">
+                  <div className="overflow-hidden rounded-lg mb-4 h-[400px]">
                     <NextImage
                       src={step.image}
                       alt={`${step.title} image`}
                       width={400}
                       height={800}
-                      className="w-full aspect-[1/2] object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index === 0} /* Load first image with priority */
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
                   <h3
@@ -103,49 +104,53 @@ export function HowItWorks() {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="w-full md:w-1/2 overflow-hidden rounded-xl">
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
                       src="/clay-cat-litter.webp"
                       alt="Clay cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CLUMPING
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
                       src="/crystal-cat-litter.webp"
                       alt="Crystal cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CRYSTAL
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
                       src="/natural-cat-litter.webp"
                       alt="Natural cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       NATURAL
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
                       src="/clamping-cat-litter.webp"
                       alt="Clumping cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       CLAY
