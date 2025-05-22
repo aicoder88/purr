@@ -2,7 +2,7 @@
 export const EMAILJS_CONFIG = {
   // EmailJS credentials (using the newer public/private key approach)
   PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
-  PRIVATE_KEY: process.env.NEXT_PUBLIC_EMAILJS_PRIVATE_KEY || "",
+  // Private key is not included in client-side code for security reasons
   SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
   TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
   // Service name for logging

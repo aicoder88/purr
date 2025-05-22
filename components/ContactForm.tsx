@@ -112,13 +112,15 @@ export default function ContactForm() {
               date: new Date().toLocaleString(),
             };
             
+            // Send email using only the public key for client-side operations
+            // The private key should only be used in server-side environments
             const emailjsResponse = await emailjs.send(
               EMAILJS_CONFIG.SERVICE_ID,
               EMAILJS_CONFIG.TEMPLATE_ID,
               templateParams,
               {
                 publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
-                privateKey: EMAILJS_CONFIG.PRIVATE_KEY, // Optional, provides extra security
+                // Private key is not included here for security reasons
               }
             );
             

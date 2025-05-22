@@ -44,14 +44,22 @@ The contact form uses [EmailJS](https://www.emailjs.com/) to send emails directl
 
 ### 5. Update Environment Variables
 
-Update the following environment variables in your `.env.production` file:
+Update your environment variables securely:
+
+1. For local development, update the following in your `.env.production` file:
 
 ```
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
-NEXT_PUBLIC_EMAILJS_PRIVATE_KEY=your_private_key_here
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id_here
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
 ```
+
+2. **IMPORTANT SECURITY NOTE**: Never add private keys to files that might be committed to version control!
+
+3. For production deployment, add your environment variables directly to your hosting platform:
+   - Vercel: Add them in the project settings under "Environment Variables"
+   - Netlify: Add them in the site settings under "Build & deploy" > "Environment variables"
+   - Other platforms: Refer to their documentation for adding environment variables
 
 ## Testing
 
@@ -67,11 +75,11 @@ After setting up EmailJS, you should test the contact form to ensure it's workin
 If the contact form is not working:
 
 1. Check the browser console for any errors
-2. Verify that the EmailJS credentials are correct in your `.env.production` file:
+2. Verify that the EmailJS credentials are correct:
    - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` should match your EmailJS public key
-   - `NEXT_PUBLIC_EMAILJS_PRIVATE_KEY` should match your EmailJS private key
    - `NEXT_PUBLIC_EMAILJS_SERVICE_ID` should start with "service_" and match your configured service
    - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` should start with "template_" and match your template
+   - For production, ensure your private key is securely added to your hosting platform's environment variables
 3. Make sure the template variables match the ones used in the code:
    - `{{name}}`, `{{email}}`, `{{message}}`, `{{subject}}`, and `{{date}}`
 4. Check the EmailJS dashboard for any failed email attempts:
@@ -91,6 +99,22 @@ If you see a Git-related error like "rm -f .git/index.lock" when deploying:
 2. It indicates a Git lock file issue during deployment
 3. You can safely ignore this message if your site deploys successfully
 4. If deployment fails, run the command `rm -f .git/index.lock` in your project directory to remove the lock file
+
+## Secure Deployment with Vercel
+
+To securely deploy your application with sensitive environment variables:
+
+1. Log in to your [Vercel dashboard](https://vercel.com/dashboard)
+2. Select your project
+3. Go to "Settings" > "Environment Variables"
+4. Add the following environment variables:
+   - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`: Your EmailJS public key
+   - `NEXT_PUBLIC_EMAILJS_SERVICE_ID`: Your EmailJS service ID
+   - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`: Your EmailJS template ID
+5. Click "Save"
+6. Redeploy your application to apply the new environment variables
+
+This approach keeps your sensitive information secure and separate from your codebase.
 
 ## Security Considerations
 
