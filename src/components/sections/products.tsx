@@ -55,7 +55,15 @@ export function Products() {
                       alt={product.name}
                       width={300}
                       height={300}
-                      className="w-full h-full object-contain mx-auto transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full mx-auto transition-transform duration-700 group-hover:scale-110"
+                      style={{
+                        objectFit: product.image.includes('fresh') || product.image.includes('cost effective')
+                          ? 'cover'
+                          : 'contain',
+                        objectPosition: product.image.includes('fresh') || product.image.includes('cost effective')
+                          ? 'center center'
+                          : 'center'
+                      }}
                       loading="lazy"
                       fetchPriority="auto"
                     />

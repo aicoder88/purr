@@ -93,13 +93,15 @@ export function WhyPurrify() {
                       width={400}
                       height={225}
                       loading="lazy"
-                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
-                        reason.title === "LONG-LASTING FRESHNESS"
-                          ? "object-contain p-2" // Use object-contain for the fresh.png image
-                          : reason.title === "COST-EFFECTIVE"
-                            ? "object-cover object-center" // Ensure the cost effective image is centered and covers properly
-                            : "object-cover" // Keep object-cover for other images
-                      }`}
+                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
+                      style={{
+                        objectFit: reason.title === "LONG-LASTING FRESHNESS" || reason.title === "COST-EFFECTIVE"
+                          ? 'cover'
+                          : 'cover',
+                        objectPosition: reason.title === "LONG-LASTING FRESHNESS" || reason.title === "COST-EFFECTIVE"
+                          ? 'center center'
+                          : 'center',
+                      }}
                     />
                   </div>
                   {/* Content Section */}

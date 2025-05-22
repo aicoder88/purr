@@ -133,9 +133,16 @@ export default function NextImage({
           imageSrc = optimizedWebP;
         }
         
-        // Log for debugging
+        // Enhanced logging for debugging
         if (typeof window !== 'undefined') {
           console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
+          console.log(`Image path resolution:
+            - Original src: ${src}
+            - Resolved src: ${imageSrc}
+            - Base name: ${baseName}
+            - Contains spaces: ${baseName.includes(' ')}
+            - Path includes optimized: ${imageSrc.includes('/optimized/')}
+          `);
           if (baseName.includes(' ')) {
             console.log(`Using sanitized filename for image with spaces: ${sanitizedBaseName}`);
           }

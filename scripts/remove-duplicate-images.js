@@ -4,7 +4,7 @@ const path = require('path');
 // Configuration
 const PUBLIC_DIR = path.join(__dirname, '../public');
 const IMAGE_DIMENSIONS_PATH = path.join(PUBLIC_DIR, 'image-dimensions.json');
-const DRY_RUN = false; // Set to false to actually delete files
+const DRY_RUN = false; // Set to false to actually delete files - we want to delete duplicates
 
 // Load image dimensions data
 let imageDimensions;

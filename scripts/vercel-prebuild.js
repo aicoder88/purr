@@ -29,6 +29,11 @@ const imageDimensionsExists = fs.existsSync(imageDimensionsPath);
 console.log(`image-dimensions.json exists: ${imageDimensionsExists}`);
 
 try {
+  // Remove duplicate images first
+  console.log('🧹 Removing duplicate images...');
+  execSync('node scripts/remove-duplicate-images.js', { stdio: 'inherit' });
+  console.log('✅ Duplicate images removed');
+  
   // Run the image optimization script
   console.log('🖼️ Optimizing all images...');
   execSync('node scripts/optimize-all-images.js', { stdio: 'inherit' });

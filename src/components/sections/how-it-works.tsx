@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
+import NextImage from "../../../components/NextImage";
 
 export function HowItWorks() {
   const steps = [
@@ -8,7 +9,7 @@ export function HowItWorks() {
       title: "Open the Bag",
       description: "Pull off the label and unzip the bag",
       icon: "✨",
-      image: "./panel_1.png",
+      image: "/panel_1.png", // Changed from relative to absolute path
     },
     {
       number: "02",
@@ -16,7 +17,7 @@ export function HowItWorks() {
       description:
         "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
       icon: "🔄",
-      image: "./panel_2.png",
+      image: "/panel_2.png", // Changed from relative to absolute path
     },
     {
       number: "03",
@@ -24,7 +25,7 @@ export function HowItWorks() {
       description:
         "Gently mix it into the top layer of the litter for maximum effectiveness.",
       icon: "😌",
-      image: "./panel_3.png",
+      image: "/panel_3.png", // Changed from relative to absolute path
     },
   ];
 
@@ -71,9 +72,11 @@ export function HowItWorks() {
                 </div>
                 <div className="text-center mt-6">
                   <div className="overflow-hidden rounded-lg mb-4">
-                    <img
+                    <NextImage
                       src={step.image}
                       alt={`${step.title} image`}
+                      width={400}
+                      height={800}
                       className="w-full aspect-[1/2] object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
@@ -101,9 +104,11 @@ export function HowItWorks() {
               <div className="w-full md:w-1/2 overflow-hidden rounded-xl">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      src="./clay-cat-litter.webp"
+                    <NextImage
+                      src="/clay-cat-litter.webp"
                       alt="Clay cat litter"
+                      width={200}
+                      height={150}
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
@@ -111,9 +116,11 @@ export function HowItWorks() {
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      src="./crystal-cat-litter.webp"
+                    <NextImage
+                      src="/crystal-cat-litter.webp"
                       alt="Crystal cat litter"
+                      width={200}
+                      height={150}
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
@@ -121,9 +128,11 @@ export function HowItWorks() {
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      src="./natural-cat-litter.webp"
+                    <NextImage
+                      src="/natural-cat-litter.webp"
                       alt="Natural cat litter"
+                      width={200}
+                      height={150}
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
@@ -131,9 +140,11 @@ export function HowItWorks() {
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      src="./clamping-cat-litter.webp"
+                    <NextImage
+                      src="/clamping-cat-litter.webp"
                       alt="Clumping cat litter"
+                      width={200}
+                      height={150}
                       className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">

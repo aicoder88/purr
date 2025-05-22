@@ -19,7 +19,8 @@
     "analyze": "ANALYZE=true next build",
     "analyze-js": "node scripts/analyze-js.js",
     "find-unused-deps": "npx depcheck",
-    "clear-cache": "node scripts/clear-webpack-cache.js"
+    "clear-cache": "node scripts/clear-webpack-cache.js",
+    "purge-vercel-cache": "node scripts/purge-vercel-cache.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
