@@ -19,7 +19,7 @@ export function BlogPreview() {
     async function fetchBlogPosts() {
       try {
         const response = await fetch(
-          "/api/blog-posts"
+          "/api/blog-posts?limit=2"
         );
         const data = await response.json();
         setBlogPosts(data);
@@ -50,7 +50,7 @@ export function BlogPreview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.map((post, index) => (
             <div
               key={index}

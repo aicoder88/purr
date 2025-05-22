@@ -13,7 +13,7 @@ export const sampleBlogPosts: BlogPost[] = [
   {
     title: "How Activated Carbon Eliminates Cat Litter Odors",
     excerpt: "Learn the science behind how activated carbon effectively eliminates cat litter odors at the molecular level, rather than just masking them.",
-    author: "Dr. Feline Expert",
+    author: "Dr. Nathan Hale",
     date: new Date().toISOString().split('T')[0],
     image: "/carbon_magnified_image.png",
     link: "/blog/activated-carbon-science"
@@ -21,7 +21,7 @@ export const sampleBlogPosts: BlogPost[] = [
   {
     title: "5 Tips for a Fresher Home with Multiple Cats",
     excerpt: "Living with multiple cats doesn't mean your home has to smell like it. Discover practical tips for maintaining a fresh-smelling home.",
-    author: "Cat Care Specialist",
+    author: "Monica Keller",
     date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
     image: "/three_bags_no_bg.png",
     link: "/blog/fresh-home-multiple-cats"

@@ -85,6 +85,12 @@ export function Header() {
             >
               Contact
             </Link>
+            <Link
+              href="/blog"
+              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+            >
+              Blog
+            </Link>
             <Button
               variant="outline"
               size="icon"
@@ -184,6 +190,29 @@ export function Header() {
             >
               Contact
             </Link>
+            <Link
+              href="/blog"
+              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <div className="border-t border-[#E0EFC7] my-2 pt-2">
+              <Link
+                href="/privacy-policy"
+                className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       )}

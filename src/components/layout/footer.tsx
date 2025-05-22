@@ -126,6 +126,14 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -161,6 +169,26 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
+            <Link
+              href="/privacy-policy"
+              className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/blog"
+              className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
+            >
+              Blog
+            </Link>
+          </div>
           <p className="text-center text-xs text-[#333333]/80">
             © {currentYear}{" "}
             <span className="text-[#FF3131] font-medium">{SITE_NAME}</span> |

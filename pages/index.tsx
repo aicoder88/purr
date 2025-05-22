@@ -11,6 +11,7 @@ import { FAQ } from '../src/components/sections/faq';
 import { Newsletter } from '../src/components/sections/newsletter';
 import { CTA } from '../src/components/sections/cta';
 import { Contact } from '../src/components/sections/contact';
+import { BlogPreview } from '../src/components/sections/blog-preview';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../src/lib/constants';
 
 // Define FAQ items for structured data
@@ -279,6 +280,7 @@ export default function Home() {
         <WhyPurrify />
         <Products />
         <Testimonials />
+        <BlogPreview />
         <FAQ />
         <Newsletter />
         <CTA />

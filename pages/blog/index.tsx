@@ -9,15 +9,60 @@ import type { BlogPost } from '../../src/data/blog-posts';
 import { sampleBlogPosts } from '../../src/data/blog-posts';
 
 // This function gets called at build time on server-side
-export function getStaticProps() {
-  // Use the sample blog posts directly
-  return {
-    props: {
-      blogPosts: sampleBlogPosts,
-    },
-    // Re-generate the page at most once per day
-    revalidate: 86400,
-  };
+export async function getStaticProps() {
+  try {
+    // WordPress API URL - replace with your WordPress site URL
+    const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
+    
+    // Check if WordPress API URL is configured
+    if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
+      // If WordPress is not configured yet, use sample data
+      console.log('WordPress API not configured, using sample data');
+      return {
+        props: {
+          blogPosts: sampleBlogPosts,
+        },
+        // Re-generate the page at most once per day
+        revalidate: 86400,
+      };
+    }
+    
+    // Fetch posts from WordPress
+    const response = await fetch(`${wpApiUrl}/posts?_embed&per_page=10`);
+    
+    if (!response.ok) {
+      throw new Error(`WordPress API error: ${response.status}`);
+    }
+    
+    const wpPosts = await response.json();
+    
+    // Transform WordPress posts to match our BlogPost interface
+    const blogPosts: BlogPost[] = wpPosts.map((post: any) => ({
+      title: post.title.rendered,
+      excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      author: post._embedded?.author?.[0]?.name || "Purrify Team",
+      date: new Date(post.date).toISOString().split('T')[0],
+      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      link: `/blog/${post.slug}`,
+    }));
+    
+    return {
+      props: {
+        blogPosts,
+      },
+      // Re-generate the page at most once per hour
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error('Error fetching WordPress posts:', error);
+    // Fallback to sample data in case of error
+    return {
+      props: {
+        blogPosts: sampleBlogPosts,
+      },
+      revalidate: 86400,
+    };
+  }
 }
 
 export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {

@@ -22,38 +22,108 @@ export function getStaticPaths() {
 }
 
 // This function gets called at build time on server-side
-export function getStaticProps({ params }: { params: { slug: string } }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
   try {
-    // Find the post that matches the slug
-    const foundPost = sampleBlogPosts.find((post) =>
-      post.link.includes(params.slug)
-    );
+    // WordPress API URL - replace with your WordPress site URL
+    const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
     
-    if (!foundPost) {
+    // Check if WordPress API URL is configured
+    if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
+      // If WordPress is not configured yet, use sample data
+      console.log('WordPress API not configured, using sample data');
+      
+      // Find the post that matches the slug
+      const foundPost = sampleBlogPosts.find((post) =>
+        post.link.includes(params.slug)
+      );
+      
+      if (!foundPost) {
+        return {
+          notFound: true, // This will show the 404 page
+        };
+      }
+      
+      // Create a copy of the post to avoid modifying the original
+      const post = { ...foundPost };
+      
+      // Add content to the post
+      post.content = getBlogPostContent(params.slug);
+      
+      // Return the post data as props
       return {
-        notFound: true, // This will show the 404 page
+        props: {
+          post,
+        },
+        // Re-generate the page at most once per day
+        revalidate: 86400,
       };
     }
     
-    // Create a copy of the post to avoid modifying the original
-    const post = { ...foundPost };
+    // Fetch post from WordPress by slug
+    const response = await fetch(`${wpApiUrl}/posts?slug=${params.slug}&_embed`);
     
-    // Add content to the post
-    post.content = getBlogPostContent(params.slug);
+    if (!response.ok) {
+      throw new Error(`WordPress API error: ${response.status}`);
+    }
+    
+    const wpPosts = await response.json();
+    
+    if (wpPosts.length === 0) {
+      return {
+        notFound: true,
+      };
+    }
+    
+    const wpPost = wpPosts[0];
+    
+    // Transform WordPress post to match our BlogPost interface
+    const post: BlogPost = {
+      title: wpPost.title.rendered,
+      excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
+      date: new Date(wpPost.date).toISOString().split('T')[0],
+      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      link: `/blog/${wpPost.slug}`,
+      content: wpPost.content.rendered
+    };
     
     // Return the post data as props
     return {
       props: {
         post,
       },
-      // Re-generate the page at most once per day
-      revalidate: 86400,
+      // Re-generate the page at most once per hour
+      revalidate: 3600,
     };
   } catch (error) {
     console.error('Error fetching blog post:', error);
-    return {
-      notFound: true,
-    };
+    
+    // Fallback to sample data in case of error
+    try {
+      const foundPost = sampleBlogPosts.find((post) =>
+        post.link.includes(params.slug)
+      );
+      
+      if (!foundPost) {
+        return {
+          notFound: true,
+        };
+      }
+      
+      const post = { ...foundPost };
+      post.content = getBlogPostContent(params.slug);
+      
+      return {
+        props: {
+          post,
+        },
+        revalidate: 86400,
+      };
+    } catch (fallbackError) {
+      return {
+        notFound: true,
+      };
+    }
   }
 }
 
