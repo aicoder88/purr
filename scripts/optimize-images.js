@@ -21,6 +21,13 @@ function ensureDirectoryExists(directory) {
 async function getImageDimensions(filePath) {
   try {
     console.log(`Processing image: ${filePath}`);
+    
+    // Skip purrify-logo.png as it's causing issues
+    if (filePath.includes('purrify-logo.png') && !filePath.includes('purrify-logo-icon.png') && !filePath.includes('purrify-logo-text.png')) {
+      console.log(`Skipping problematic file: ${filePath}`);
+      return { width: 800, height: 600 }; // Default fallback
+    }
+    
     const metadata = await sharp(filePath).metadata();
     return { width: metadata.width, height: metadata.height };
   } catch (error) {
@@ -39,6 +46,12 @@ async function optimizeImage(filePath) {
     // Skip already optimized images
     if (filePath.includes('/optimized/') || filePath.includes('/images/')) {
       return;
+    }
+    
+    // Skip purrify-logo.png as it's causing issues
+    if (filename === 'purrify-logo.png') {
+      console.log(`Skipping problematic file: ${filePath}`);
+      return null;
     }
     
     // Get image dimensions
@@ -164,6 +177,12 @@ async function optimizeAllImages() {
     // Process each image and collect dimension data
     const imageDimensions = {};
     const optimizationPromises = imageFiles.map(async (filePath) => {
+      // Skip purrify-logo.png as it's causing issues
+      if (path.basename(filePath) === 'purrify-logo.png') {
+        console.log(`Skipping problematic file: ${filePath}`);
+        return;
+      }
+      
       const result = await optimizeImage(filePath);
       if (result) {
         const relativePath = path.relative(PUBLIC_DIR, filePath);

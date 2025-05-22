@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 // Import rimraf correctly for v5
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 
 // Paths to webpack cache directories
 const cacheDirs = [
