@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../src/components/ui/button';
+import emailjs from 'emailjs-com';
+import { EMAILJS_CONFIG } from '../src/lib/emailjs-config';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -34,12 +36,28 @@ export default function ContactForm() {
     },
   });
 
+  // EmailJS configuration
+  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
+  
+  useEffect(() => {
+    // Initialize EmailJS with your user ID from config
+    emailjs.init(EMAILJS_CONFIG.USER_ID);
+    setEmailjsInitialized(true);
+  }, []);
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus({});
 
     try {
-      // Add CSRF token if you have one
+      // Log the submission attempt for debugging
+      console.log('Attempting to submit contact form:', {
+        name: data.name,
+        email: data.email,
+        messageLength: data.message.length
+      });
+      
+      // First, validate with the API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -49,24 +67,83 @@ export default function ContactForm() {
       });
 
       const responseData = await response.json();
+      console.log('API response:', responseData);
 
       if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: responseData.message || 'Message sent successfully!',
-        });
-        // Reset form on success
-        reset();
+        // If API validation is successful, send email using EmailJS
+        if (emailjsInitialized) {
+          try {
+            console.log('EmailJS initialized, attempting to send email with:', {
+              service: EMAILJS_CONFIG.SERVICE_NAME,
+              serviceId: EMAILJS_CONFIG.SERVICE_ID,
+              templateId: EMAILJS_CONFIG.TEMPLATE_ID,
+              userId: EMAILJS_CONFIG.USER_ID.substring(0, 4) + '...' // Log partial ID for security
+            });
+            
+            // Use the configuration from emailjs-config.ts
+            const emailjsResponse = await emailjs.send(
+              EMAILJS_CONFIG.SERVICE_ID,
+              EMAILJS_CONFIG.TEMPLATE_ID,
+              {
+                name: data.name,
+                email: data.email,
+                message: data.message,
+                // Add any additional template variables needed
+                subject: `Contact form submission from ${data.name}`,
+                date: new Date().toLocaleString(),
+              }
+            );
+            
+            console.log('EmailJS response:', emailjsResponse);
+            
+            if (emailjsResponse.status === 200) {
+              setSubmitStatus({
+                success: true,
+                message: 'Message sent successfully! We\'ll get back to you soon.',
+              });
+              // Reset form on success
+              reset();
+            } else {
+              throw new Error(`Failed to send email: Status ${emailjsResponse.status}`);
+            }
+          } catch (emailError) {
+            console.error('EmailJS error:', emailError);
+            
+            // Check if it's a network error
+            const errorMessage = emailError instanceof Error
+              ? emailError.message
+              : 'Unknown error';
+              
+            const isNetworkError = errorMessage.toLowerCase().includes('network') ||
+                                  errorMessage.toLowerCase().includes('connection');
+            
+            setSubmitStatus({
+              success: false,
+              message: isNetworkError
+                ? 'Network error. Please check your internet connection and try again.'
+                : 'Failed to send email. Please try again or contact us directly at hello@purrify.ca.',
+            });
+          }
+        } else {
+          console.error('EmailJS not initialized');
+          setSubmitStatus({
+            success: false,
+            message: 'Email service not initialized. Please try again later or contact us directly at hello@purrify.ca.',
+          });
+        }
       } else {
+        console.error('API validation failed:', responseData);
         setSubmitStatus({
           success: false,
           message: responseData.message || 'Failed to send message. Please try again.',
         });
       }
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      console.error('Form submission error:', errorMessage);
       setSubmitStatus({
         success: false,
-        message: 'An error occurred. Please try again later.',
+        message: 'An error occurred. Please try again later or contact us directly at hello@purrify.ca.',
       });
     } finally {
       setIsSubmitting(false);
