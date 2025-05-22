@@ -114,15 +114,31 @@ export default function NextImage({
       if (!imageSrc.includes('/optimized/')) {
         // Try to use the original extension first as a fallback
         const ext = imageSrc.split('.').pop()?.toLowerCase() || 'jpg';
-        const optimizedOriginal = `/optimized/${baseName}.${ext}`;
-        const optimizedWebP = `/optimized/${baseName}.webp`;
         
-        // Use WebP format by default for better compression, but have a fallback
-        imageSrc = optimizedWebP;
+        // Create both encoded and sanitized versions of the basename
+        const encodedBaseName = encodeURIComponent(baseName);
+        const sanitizedBaseName = baseName.replace(/\s+/g, '-');
+        
+        // Create paths for different formats and naming conventions
+        const optimizedWebP = `/optimized/${encodedBaseName}.webp`;
+        const optimizedSanitizedWebP = `/optimized/${sanitizedBaseName}.webp`;
+        const optimizedJpg = `/optimized/${encodedBaseName}.jpg`;
+        const optimizedOriginal = `/optimized/${encodedBaseName}.${ext}`;
+        
+        // Try to use WebP format first, then fallback to JPG
+        // Prefer sanitized filenames for better compatibility
+        if (baseName.includes(' ')) {
+          imageSrc = optimizedSanitizedWebP;
+        } else {
+          imageSrc = optimizedWebP;
+        }
         
         // Log for debugging
         if (typeof window !== 'undefined') {
           console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
+          if (baseName.includes(' ')) {
+            console.log(`Using sanitized filename for image with spaces: ${sanitizedBaseName}`);
+          }
         }
       }
     }
@@ -139,11 +155,47 @@ export default function NextImage({
   const handleError = () => {
     setError(true);
     
-    // If the optimized version failed, try the original
+    // If the optimized version failed, try alternatives before falling back to original
     if (imageSrc.includes('/optimized/') && !isExternal) {
+      // Extract the base filename and extension
+      const baseName = imageSrc.split('/').pop()?.split('.')[0];
+      const ext = imageSrc.split('.').pop()?.toLowerCase();
+      
+      // Try different fallback strategies
+      if (baseName && ext) {
+        // If using WebP, try JPG
+        if (ext === 'webp') {
+          const jpgPath = imageSrc.replace('.webp', '.jpg');
+          console.log(`WebP failed, trying JPG: ${jpgPath}`);
+          setImgSrc(jpgPath);
+          return; // Exit early to try this fallback first
+        }
+        
+        // If using a sanitized filename, try the original encoded version
+        if (!baseName.includes('-') && baseName.includes('%20')) {
+          const originalName = decodeURIComponent(baseName);
+          const sanitizedName = originalName.replace(/\s+/g, '-');
+          const sanitizedPath = imageSrc.replace(baseName, sanitizedName);
+          console.log(`Encoded name failed, trying sanitized: ${sanitizedPath}`);
+          setImgSrc(sanitizedPath);
+          return; // Exit early to try this fallback first
+        }
+        
+        // If using an encoded name with spaces, try the sanitized version
+        if (baseName.includes('%20')) {
+          const decodedName = decodeURIComponent(baseName);
+          const sanitizedName = decodedName.replace(/\s+/g, '-');
+          const sanitizedPath = imageSrc.replace(baseName, sanitizedName);
+          console.log(`Encoded name failed, trying sanitized: ${sanitizedPath}`);
+          setImgSrc(sanitizedPath);
+          return; // Exit early to try this fallback first
+        }
+      }
+      
+      // If all optimized versions fail, fall back to the original
       const originalSrc = src.startsWith('/') ? src : `/${src}`;
       setImgSrc(originalSrc);
-      console.error(`Optimized image failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
+      console.error(`All optimized versions failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
       
       // Add more detailed logging for debugging
       console.error(`Image error details:
@@ -152,6 +204,7 @@ export default function NextImage({
         - Fallback src: ${originalSrc}
         - Is external: ${isExternal}
         - Environment: ${typeof window !== 'undefined' ? 'client' : 'server'}
+        - URL encoded version: ${encodeURIComponent(imageSrc)}
       `);
     } else {
       setImgSrc(fallbackSrc);

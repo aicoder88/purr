@@ -45,21 +45,64 @@ try {
   console.log(`Created ${webpFiles.length} WebP files`);
   console.log('WebP files:', webpFiles.slice(0, 5).join(', ') + (webpFiles.length > 5 ? '...' : ''));
   
-  // Copy JPG files to WebP if WebP files don't exist
+  // Convert JPG files to WebP if WebP files don't exist
   if (webpFiles.length === 0) {
-    console.log('⚠️ No WebP files found, creating fallbacks from JPG files...');
+    console.log('⚠️ No WebP files found, converting JPG files to WebP...');
     const jpgFiles = optimizedFilesAfter.filter(file => file.endsWith('.jpg'));
     
-    jpgFiles.forEach(jpgFile => {
-      const baseName = jpgFile.replace('.jpg', '');
-      const webpFile = `${baseName}.webp`;
-      const jpgPath = path.join(optimizedDir, jpgFile);
-      const webpPath = path.join(optimizedDir, webpFile);
+    try {
+      // Check if sharp is available
+      const sharp = require('sharp');
       
-      // Copy the JPG file to a WebP file
-      fs.copyFileSync(jpgPath, webpPath);
-      console.log(`Created fallback WebP file: ${webpFile}`);
-    });
+      // Process each JPG file
+      const conversionPromises = jpgFiles.map(jpgFile => {
+        return new Promise((resolve, reject) => {
+          const baseName = jpgFile.replace('.jpg', '');
+          const webpFile = `${baseName}.webp`;
+          const jpgPath = path.join(optimizedDir, jpgFile);
+          const webpPath = path.join(optimizedDir, webpFile);
+          
+          // Convert JPG to WebP using sharp
+          sharp(jpgPath)
+            .webp({ quality: 80 })
+            .toFile(webpPath)
+            .then(() => {
+              console.log(`Converted ${jpgFile} to WebP: ${webpFile}`);
+              resolve();
+            })
+            .catch(err => {
+              console.error(`Error converting ${jpgFile} to WebP:`, err);
+              // Fallback to copy if conversion fails
+              fs.copyFileSync(jpgPath, webpPath);
+              console.log(`Fallback: Copied ${jpgFile} to ${webpFile}`);
+              resolve();
+            });
+        });
+      });
+      
+      // Wait for all conversions to complete
+      Promise.all(conversionPromises)
+        .then(() => {
+          console.log(`✅ Converted ${jpgFiles.length} JPG files to WebP`);
+        })
+        .catch(err => {
+          console.error('Error during WebP conversion:', err);
+        });
+    } catch (error) {
+      console.error('Error loading sharp module:', error);
+      
+      // Fallback to copying if sharp is not available
+      jpgFiles.forEach(jpgFile => {
+        const baseName = jpgFile.replace('.jpg', '');
+        const webpFile = `${baseName}.webp`;
+        const jpgPath = path.join(optimizedDir, jpgFile);
+        const webpPath = path.join(optimizedDir, webpFile);
+        
+        // Copy the JPG file to a WebP file as fallback
+        fs.copyFileSync(jpgPath, webpPath);
+        console.log(`Fallback: Copied ${jpgFile} to ${webpFile}`);
+      });
+    }
   }
   
   console.log('🚀 Vercel prebuild process complete!');

@@ -65,19 +65,44 @@ async function optimizeImage(filePath) {
       height = Math.round(height * ratio);
     }
     
-    // Create WebP version
+    // Handle spaces in filenames by creating sanitized versions
+    const sanitizedBaseName = baseName.replace(/\s+/g, '-');
+    
+    // Create WebP version (both with original filename and sanitized filename)
     const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
+    const sanitizedWebpOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.webp`);
+    
     await sharp(filePath)
       .resize(width, height)
       .webp({ quality: QUALITY })
       .toFile(webpOutputPath);
+      
+    // Create a sanitized copy if the filename has spaces
+    if (baseName !== sanitizedBaseName) {
+      await sharp(filePath)
+        .resize(width, height)
+        .webp({ quality: QUALITY })
+        .toFile(sanitizedWebpOutputPath);
+      console.log(`Created sanitized WebP version: ${sanitizedBaseName}.webp`);
+    }
     
     // Create AVIF version (higher quality for better appearance)
     const avifOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.avif`);
+    const sanitizedAvifOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.avif`);
+    
     await sharp(filePath)
       .resize(width, height)
       .avif({ quality: QUALITY })
       .toFile(avifOutputPath);
+      
+    // Create a sanitized copy if the filename has spaces
+    if (baseName !== sanitizedBaseName) {
+      await sharp(filePath)
+        .resize(width, height)
+        .avif({ quality: QUALITY })
+        .toFile(sanitizedAvifOutputPath);
+      console.log(`Created sanitized AVIF version: ${sanitizedBaseName}.avif`);
+    }
     
     // Create optimized version in original format with proper dimensions
     const optimizedOriginalPath = path.join(OPTIMIZED_DIR, filename);
@@ -186,11 +211,17 @@ async function optimizeAllImages() {
       const result = await optimizeImage(filePath);
       if (result) {
         const relativePath = path.relative(PUBLIC_DIR, filePath);
+        // Handle spaces in filenames for image dimensions
+        const sanitizedWebp = result.webp.replace(/\s+/g, '-');
+        const sanitizedAvif = result.avif.replace(/\s+/g, '-');
+        
         imageDimensions[relativePath] = {
           width: result.width,
           height: result.height,
           webp: `optimized/${result.webp}`,
+          webpSanitized: `optimized/${sanitizedWebp}`,
           avif: `optimized/${result.avif}`,
+          avifSanitized: `optimized/${sanitizedAvif}`,
           optimized: `optimized/${result.original}`
         };
         
