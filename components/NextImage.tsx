@@ -112,10 +112,18 @@ export default function NextImage({
     if (baseName) {
       // First check if the path already includes optimized
       if (!imageSrc.includes('/optimized/')) {
+        // Try to use the original extension first as a fallback
+        const ext = imageSrc.split('.').pop()?.toLowerCase() || 'jpg';
+        const optimizedOriginal = `/optimized/${baseName}.${ext}`;
         const optimizedWebP = `/optimized/${baseName}.webp`;
         
-        // Use WebP format by default for better compression
+        // Use WebP format by default for better compression, but have a fallback
         imageSrc = optimizedWebP;
+        
+        // Log for debugging
+        if (typeof window !== 'undefined') {
+          console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
+        }
       }
     }
   }
@@ -135,10 +143,19 @@ export default function NextImage({
     if (imageSrc.includes('/optimized/') && !isExternal) {
       const originalSrc = src.startsWith('/') ? src : `/${src}`;
       setImgSrc(originalSrc);
-      console.warn(`Optimized image failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
+      console.error(`Optimized image failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
+      
+      // Add more detailed logging for debugging
+      console.error(`Image error details:
+        - Original src: ${src}
+        - Attempted optimized src: ${imageSrc}
+        - Fallback src: ${originalSrc}
+        - Is external: ${isExternal}
+        - Environment: ${typeof window !== 'undefined' ? 'client' : 'server'}
+      `);
     } else {
       setImgSrc(fallbackSrc);
-      console.warn(`Image load failed for: ${src}. Using fallback.`);
+      console.error(`Image load failed for: ${src}. Using fallback.`);
     }
   };
 

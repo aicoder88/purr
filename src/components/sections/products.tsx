@@ -51,9 +51,7 @@ export function Products() {
                 <div className="aspect-square overflow-hidden h-72 bg-gradient-to-b from-white to-[#FFFFF5]">
                   <div className="relative h-full flex items-center justify-center p-6">
                     <NextImage
-                      src={product.image.replace('/20g.png', '/optimized/20g.webp')
-                              .replace('/60g.png', '/optimized/60g.webp')
-                              .replace('/images/140g.png', '/optimized/140g.webp')}
+                      src={product.image}
                       alt={product.name}
                       width={300}
                       height={300}
