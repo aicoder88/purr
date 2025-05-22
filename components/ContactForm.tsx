@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../src/components/ui/button';
-import emailjs from 'emailjs-com';
-import { EMAILJS_CONFIG } from '../src/lib/emailjs-config';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG, isEmailJSConfigured } from '../src/lib/emailjs-config';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -38,11 +38,24 @@ export default function ContactForm() {
 
   // EmailJS configuration
   const [emailjsInitialized, setEmailjsInitialized] = useState(false);
+  const [configValid, setConfigValid] = useState(false);
   
   useEffect(() => {
-    // Initialize EmailJS with your user ID from config
-    emailjs.init(EMAILJS_CONFIG.USER_ID);
-    setEmailjsInitialized(true);
+    // Check if EmailJS is properly configured
+    const isConfigured = isEmailJSConfigured();
+    setConfigValid(isConfigured);
+    
+    // Only initialize if configuration is valid
+    if (isConfigured && EMAILJS_CONFIG.PUBLIC_KEY) {
+      try {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+        setEmailjsInitialized(true);
+        console.log('EmailJS initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize EmailJS:', error);
+        setEmailjsInitialized(false);
+      }
+    }
   }, []);
 
   const onSubmit = async (data: ContactFormData) => {
@@ -71,26 +84,41 @@ export default function ContactForm() {
 
       if (response.ok) {
         // If API validation is successful, send email using EmailJS
+        if (!configValid) {
+          console.error('EmailJS configuration is invalid');
+          setSubmitStatus({
+            success: false,
+            message: 'Email service is not properly configured. Please contact us directly at hello@purrify.ca.',
+          });
+          return;
+        }
+        
         if (emailjsInitialized) {
           try {
             console.log('EmailJS initialized, attempting to send email with:', {
               service: EMAILJS_CONFIG.SERVICE_NAME,
               serviceId: EMAILJS_CONFIG.SERVICE_ID,
               templateId: EMAILJS_CONFIG.TEMPLATE_ID,
-              userId: EMAILJS_CONFIG.USER_ID.substring(0, 4) + '...' // Log partial ID for security
+              publicKey: EMAILJS_CONFIG.PUBLIC_KEY.substring(0, 4) + '...' // Log partial key for security
             });
             
-            // Use the configuration from emailjs-config.ts
+            // Use the configuration from emailjs-config.ts with the newer API
+            const templateParams = {
+              name: data.name,
+              email: data.email,
+              message: data.message,
+              // Add any additional template variables needed
+              subject: `Contact form submission from ${data.name}`,
+              date: new Date().toLocaleString(),
+            };
+            
             const emailjsResponse = await emailjs.send(
               EMAILJS_CONFIG.SERVICE_ID,
               EMAILJS_CONFIG.TEMPLATE_ID,
+              templateParams,
               {
-                name: data.name,
-                email: data.email,
-                message: data.message,
-                // Add any additional template variables needed
-                subject: `Contact form submission from ${data.name}`,
-                date: new Date().toLocaleString(),
+                publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
+                privateKey: EMAILJS_CONFIG.PRIVATE_KEY, // Optional, provides extra security
               }
             );
             
@@ -104,7 +132,7 @@ export default function ContactForm() {
               // Reset form on success
               reset();
             } else {
-              throw new Error(`Failed to send email: Status ${emailjsResponse.status}`);
+              throw new Error(`Failed to send email: Status ${emailjsResponse.status}. Please check the EmailJS configuration.`);
             }
           } catch (emailError) {
             console.error('EmailJS error:', emailError);
@@ -121,7 +149,8 @@ export default function ContactForm() {
               success: false,
               message: isNetworkError
                 ? 'Network error. Please check your internet connection and try again.'
-                : 'Failed to send email. Please try again or contact us directly at hello@purrify.ca.',
+                : 'Failed to send email. Please try again or contact us directly at hello@purrify.ca. Error: ' +
+                  (errorMessage.length > 100 ? errorMessage.substring(0, 100) + '...' : errorMessage),
             });
           }
         } else {
