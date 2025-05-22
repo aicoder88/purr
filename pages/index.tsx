@@ -141,7 +141,6 @@ export default function Home() {
           {
             telephone: CONTACT_INFO.phone,
             contactType: 'customer service',
-            email: CONTACT_INFO.email,
             areaServed: 'CA',
             availableLanguage: ['English', 'French'],
           },

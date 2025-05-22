@@ -88,7 +88,7 @@ export default function ContactForm() {
           console.error('EmailJS configuration is invalid');
           setSubmitStatus({
             success: false,
-            message: 'Email service is not properly configured. Please contact us directly at hello@purrify.ca.',
+            message: 'Email service is not properly configured. Please try again later.',
           });
           return;
         }
@@ -151,7 +151,7 @@ export default function ContactForm() {
               success: false,
               message: isNetworkError
                 ? 'Network error. Please check your internet connection and try again.'
-                : 'Failed to send email. Please try again or contact us directly at hello@purrify.ca. Error: ' +
+                : 'Failed to send email. Please try again later. Error: ' +
                   (errorMessage.length > 100 ? errorMessage.substring(0, 100) + '...' : errorMessage),
             });
           }
@@ -159,7 +159,7 @@ export default function ContactForm() {
           console.error('EmailJS not initialized');
           setSubmitStatus({
             success: false,
-            message: 'Email service not initialized. Please try again later or contact us directly at hello@purrify.ca.',
+            message: 'Email service not initialized. Please try again later.',
           });
         }
       } else {
@@ -174,7 +174,7 @@ export default function ContactForm() {
       console.error('Form submission error:', errorMessage);
       setSubmitStatus({
         success: false,
-        message: 'An error occurred. Please try again later or contact us directly at hello@purrify.ca.',
+        message: 'An error occurred. Please try again later.',
       });
     } finally {
       setIsSubmitting(false);

@@ -156,14 +156,6 @@ export function Footer() {
             <address className="not-italic space-y-2 text-sm text-[#333333]/80">
               <p>{CONTACT_INFO.address}</p>
               <p>{CONTACT_INFO.phone}</p>
-              <p>
-                <a
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  className="hover:text-[#FF3131] transition-colors duration-300"
-                >
-                  {CONTACT_INFO.email}
-                </a>
-              </p>
             </address>
           </div>
         </div>

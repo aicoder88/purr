@@ -54,17 +54,6 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Mail className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-xl mb-2 text-[#03E46A]">
-                  Email Address
-                </h3>
-                <p className="text-gray-600">{CONTACT_INFO.email}</p>
-              </div>
-            </div>
 
             <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">

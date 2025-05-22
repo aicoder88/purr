@@ -125,7 +125,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 '@type': 'ContactPoint',
                 telephone: '+1-438-931-7345',
                 contactType: 'customer service',
-                email: 'hello@purrify.ca',
                 areaServed: 'CA',
                 availableLanguage: ['English', 'French'],
               },
