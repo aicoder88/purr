@@ -8,7 +8,6 @@ import NextImage from "../../components/NextImage";
 import { PawPrint } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/lib/translation-context";
-import { GetStaticProps } from "next";
 
 const FreePage: NextPage = () => {
   const { t } = useTranslation();
@@ -56,12 +55,12 @@ const FreePage: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>URGENT: Échantillon GRATUIT de Purrify | {t.siteName}</title>
-        <meta name="description" content="Réclamez votre échantillon GRATUIT d'additif de litière pour chat Purrify. Zéro coût. Zéro risque. Zéro odeur de litière." />
+        <title>URGENT: Essai GRATUIT de Purrify | {SITE_NAME}</title>
+        <meta name="description" content="Réclamez votre sac d'essai GRATUIT d'additif de litière pour chat Purrify. Zéro coût. Zéro risque. Zéro odeur de litière." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://purrify.ca/fr/free" />
-        <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
         <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free" />
+        <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
       </Head>
       
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] relative overflow-hidden">
@@ -96,7 +95,7 @@ const FreePage: NextPage = () => {
                   <div className="absolute inset-0 bg-indigo-600/10 rounded-lg blur-xl"></div>
                   <NextImage
                     src="/free purrify.png"
-                    alt="Échantillon gratuit d'additif de litière pour chat Purrify"
+                    alt="Sac d'essai gratuit d'additif de litière pour chat Purrify"
                     width={400}
                     height={300}
                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
@@ -113,14 +112,14 @@ const FreePage: NextPage = () => {
                   <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight md:text-left leading-tight">
                     <div className="flex items-center my-2">
                       <span className="bg-gradient-to-r from-[#4338CA] to-[#6366F1] bg-clip-text text-transparent">
-                        Réclamez Votre Échantillon GRATUIT
+                        Réclamez Votre Essai GRATUIT de Purrify
                       </span>
                     </div>
                     
                     <div className="flex justify-center my-4">
                       <NextImage
                         src="/samplebag.jpg"
-                        alt="Échantillon d'additif de litière pour chat Purrify"
+                        alt="Sac d'essai de taille échantillon de l'additif de litière pour chat Purrify"
                         width={120}
                         height={90}
                         className="rounded-md shadow-lg border-2 border-indigo-200 transform transition-all duration-300 hover:scale-110"
@@ -132,7 +131,7 @@ const FreePage: NextPage = () => {
                       <div className="border-t-2 border-b-2 border-indigo-200/50 py-3">
                         <span className="text-3xl font-extrabold bg-gradient-to-r from-pink-600 via-indigo-700 to-purple-700 bg-clip-text text-transparent tracking-wide animate-pulse-slow transform transition-all duration-300 hover:scale-105 inline-block"
                               style={{ textShadow: "0px 0px 1px rgba(79, 70, 229, 0.2)" }}>
-                          Zéro Coût. Zéro Risque. Zéro Odeur.
+                          Zéro Coût. Zéro Risque. Zéro Odeur de Litière.
                         </span>
                       </div>
                     </div>
@@ -140,7 +139,7 @@ const FreePage: NextPage = () => {
                   
                   <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
                     <p className="text-indigo-800 font-medium">
-                      Offre à durée limitée : Obtenez votre échantillon gratuit de notre formule naturelle anti-odeurs pendant que les stocks durent !
+                      Offre à durée limitée : Obtenez votre sac d'essai gratuit de notre formule naturelle anti-odeurs pendant que les stocks durent !
                     </p>
                   </div>
                 </div>
@@ -158,10 +157,10 @@ const FreePage: NextPage = () => {
                     Voici l'offre : Nous sommes tellement convaincus que Purrify transformera votre maison en un sanctuaire frais et sans odeur que nous faisons quelque chose de fou...
                   </p>
                   <p className="text-lg text-[#333333] mb-6 leading-relaxed">
-                    Nous offrons des <strong className="text-red-600">échantillons GRATUITS aux 500 premiers propriétaires de chats</strong> qui les réclament.
+                    Nous offrons des <strong className="text-red-600">sacs d'essai GRATUITS aux 500 premiers propriétaires de chats</strong> qui les réclament.
                   </p>
                   <p className="text-lg text-[#333333] leading-relaxed">
-                    Pourquoi ferions-nous cela ? Parce qu'une fois que vous aurez expérimenté ce que c'est que de recevoir des invités SANS vous inquiéter de "cette odeur"... une fois que vous aurez ressenti le soulagement de ne jamais retenir votre souffle en passant devant la litière... une fois que vous aurez découvert la joie d'une maison vraiment fraîche...
+                    Pourquoi ferions-nous cela ? Parce qu'une fois que vous aurez expérimenté ce que c'est que de recevoir des invités SANS vous inquiéter de "cette odeur"... une fois que vous ressentirez le soulagement de ne jamais retenir votre souffle lorsque vous passez devant la litière... une fois que vous découvrirez la joie d'une maison vraiment fraîche...
                     <strong className="text-indigo-700"> Vous deviendrez un client Purrify à vie.</strong>
                   </p>
                 </div>
@@ -192,11 +191,11 @@ const FreePage: NextPage = () => {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>Un échantillon à usage unique de notre formule naturelle anti-odeurs</span>
+                      <span>Sac d'essai à usage unique de notre formule naturelle anti-odeurs</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>Élimination instantanée des odeurs - fonctionne avec TOUTES les litières que vous utilisez actuellement</span>
+                      <span>Élimination instantanée des odeurs - fonctionne avec TOUTE litière que vous utilisez actuellement</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
@@ -227,11 +226,11 @@ const FreePage: NextPage = () => {
                   </div>
                   <p className="text-center text-red-800 font-medium">Limité aux 500 premiers propriétaires de chats seulement.</p>
                   <p className="text-center text-red-800 font-medium">Déjà réclamés : {claimedBags} sur 500</p>
-                  <p className="text-center font-bold mt-2">Votre échantillon gratuit vous attend - mais seulement si vous agissez maintenant.</p>
+                  <p className="text-center font-bold mt-2">Votre sac gratuit vous attend - mais seulement si vous agissez maintenant.</p>
                 </div>
                 
                 <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4">Ce que disent nos testeurs :</h3>
+                  <h3 className="text-xl font-bold text-indigo-800 mb-4">Ce que disent nos testeurs bêta :</h3>
                   <div className="space-y-4">
                     <div className="bg-white p-3 rounded-md shadow-sm">
                       <p className="italic">"Je n'arrivais pas à y croire. En quelques HEURES, toute ma maison sentait à nouveau le frais. J'ai même invité ma belle-mère pour la première fois depuis des mois !"</p>
@@ -247,17 +246,17 @@ const FreePage: NextPage = () => {
                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
                   <div className="flex items-center justify-center mb-4">
                     <PawPrint className="h-8 w-8 text-red-600 mr-3" />
-                    <h2 className="text-3xl font-bold text-red-600 text-center">RÉCLAMEZ VOTRE ÉCHANTILLON GRATUIT</h2>
+                    <h2 className="text-3xl font-bold text-red-600 text-center">RÉCLAMEZ VOTRE SAC GRATUIT MAINTENANT</h2>
                   </div>
                   <p className="text-center text-red-800 mb-2">
-                    <span className="font-bold">⚠️ ATTENTION :</span> En raison de la forte demande, nous ne pouvons pas garantir la disponibilité après l'expiration du compte à rebours.
+                    <span className="font-bold">⚠️ ATTENTION :</span> En raison de la forte demande, nous ne pouvons pas garantir la disponibilité après l'expiration du minuteur.
                   </p>
                 </div>
                 <FreeGiveawayForm />
                 
                 <p className="text-xs text-center text-gray-500 mt-6">
                   100% Gratuit. Aucune carte de crédit requise.<br />
-                  Offre à durée limitée. Un échantillon gratuit par foyer. Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment.
+                  Offre à durée limitée. Un sac gratuit par foyer. Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment.
                 </p>
               </div>
             </div>
@@ -266,14 +265,6 @@ const FreePage: NextPage = () => {
       </section>
     </Layout>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      locale: 'fr',
-    },
-  };
 };
 
 export default FreePage;

@@ -110,6 +110,43 @@ try {
     }
   }
   
+  // Log information about the Next.js build environment
+  console.log('🔍 Checking Next.js build environment...');
+  try {
+    const nextConfigPath = path.join(__dirname, '../next.config.js');
+    if (fs.existsSync(nextConfigPath)) {
+      console.log('✅ next.config.js exists');
+      
+      // Check if pages directory exists and list its contents
+      const pagesDir = path.join(__dirname, '../pages');
+      if (fs.existsSync(pagesDir)) {
+        console.log('✅ pages directory exists');
+        const pagesDirContents = fs.readdirSync(pagesDir, { withFileTypes: true });
+        
+        console.log('📄 Pages directory contents:');
+        pagesDirContents.forEach(dirent => {
+          if (dirent.isDirectory()) {
+            console.log(`  📁 ${dirent.name}/`);
+            // List contents of subdirectories
+            const subDirPath = path.join(pagesDir, dirent.name);
+            const subDirContents = fs.readdirSync(subDirPath);
+            subDirContents.forEach(file => {
+              console.log(`    - ${file}`);
+            });
+          } else {
+            console.log(`  - ${dirent.name}`);
+          }
+        });
+      } else {
+        console.log('❌ pages directory does not exist');
+      }
+    } else {
+      console.log('❌ next.config.js does not exist');
+    }
+  } catch (err) {
+    console.error('❌ Error checking Next.js build environment:', err);
+  }
+  
   console.log('🚀 Vercel prebuild process complete!');
 } catch (error) {
   console.error('❌ Error during Vercel prebuild process:', error);

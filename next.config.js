@@ -62,6 +62,25 @@ const nextConfig = {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
     localeDetection: false,
+    // Specify domain-specific locales if needed
+    domains: [
+      {
+        domain: 'purrify.ca',
+        defaultLocale: 'en',
+      },
+      {
+        domain: 'fr.purrify.ca',
+        defaultLocale: 'fr',
+      },
+    ],
+  },
+  
+  // Add debug logging for build process
+  onDemandEntries: {
+    // period (in ms) where the server will keep pages in the buffer
+    maxInactiveAge: 25 * 1000,
+    // number of pages that should be kept simultaneously without being disposed
+    pagesBufferLength: 2,
   },
   
   // No trailing slash for consistent URLs
