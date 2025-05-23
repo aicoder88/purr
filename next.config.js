@@ -5,6 +5,7 @@ const withBundleAnalyzer = process.env.ANALYZE === 'true'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'standalone',
   
   // Enhanced image optimization
   images: {
@@ -63,8 +64,8 @@ const nextConfig = {
     localeDetection: false,
   },
   
-  // Trailing slash for consistent URLs
-  trailingSlash: true,
+  // No trailing slash for consistent URLs
+  trailingSlash: false,
   
   // Optimize for Core Web Vitals
   experimental: {

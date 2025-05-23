@@ -55,6 +55,9 @@ const FreePage: NextPage = () => {
         <title>URGENT: FREE Purrify Trial Bag Giveaway | {SITE_NAME}</title>
         <meta name="description" content="Claim your FREE trial-size bag of Purrify cat litter additive. Zero cost. Zero risk. Zero more litter box smell." />
         <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://purrify.ca/free" />
+        <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
+        <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free" />
       </Head>
       
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] relative overflow-hidden">

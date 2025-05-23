@@ -8,6 +8,7 @@
     "build": "npx update-browserslist-db@latest && next build",
     "start": "next start",
     "lint": "next lint",
+    "check-types": "node scripts/check-types.js",
     "postbuild": "next-sitemap && npm run generate-enhanced-sitemap",
     "optimize-images": "node scripts/optimize-images.js",
     "optimize-all-images": "node scripts/optimize-all-images.js",

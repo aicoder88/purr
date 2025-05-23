@@ -59,9 +59,9 @@ const FreePage: NextPage = () => {
         <title>URGENT: Échantillon GRATUIT de Purrify | {t.siteName}</title>
         <meta name="description" content="Réclamez votre échantillon GRATUIT d'additif de litière pour chat Purrify. Zéro coût. Zéro risque. Zéro odeur de litière." />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://purrify.ca/fr/free/" />
-        <link rel="alternate" hrefLang="en" href="https://purrify.ca/free/" />
-        <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free/" />
+        <link rel="canonical" href="https://purrify.ca/fr/free" />
+        <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
+        <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free" />
       </Head>
       
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] relative overflow-hidden">

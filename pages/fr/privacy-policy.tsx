@@ -8,7 +8,7 @@ import { GetStaticProps } from 'next';
 export default function PrivacyPolicy() {
   const { t } = useTranslation();
   const pageTitle = `Politique de confidentialité | ${t.siteName}`;
-  const canonicalUrl = 'https://purrify.ca/fr/privacy-policy/';
+  const canonicalUrl = 'https://purrify.ca/fr/privacy-policy';
 
   return (
     <>

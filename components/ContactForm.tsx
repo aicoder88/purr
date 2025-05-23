@@ -190,7 +190,7 @@ export default function ContactForm() {
           htmlFor="name"
           className="block text-sm font-medium text-[#333333]"
         >
-          {t.contact.form.name}
+          {t.contact.form?.name || "Name"}
         </label>
         <input
           type="text"
@@ -212,7 +212,7 @@ export default function ContactForm() {
           htmlFor="email"
           className="block text-sm font-medium text-[#333333]"
         >
-          {t.contact.form.email}
+          {t.contact.form?.email || "Email"}
         </label>
         <input
           type="email"
@@ -234,7 +234,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-[#333333]"
         >
-          {t.contact.form.message}
+          {t.contact.form?.message || "Message"}
         </label>
         <textarea
           id="message"
@@ -271,7 +271,7 @@ export default function ContactForm() {
         className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90"
         aria-busy={isSubmitting}
       >
-        {isSubmitting ? t.freeGiveaway.submitting : t.contact.form.submit}
+        {isSubmitting ? t.freeGiveaway?.submitting || "Submitting..." : t.contact.form?.submit || "Send"}
       </Button>
     </form>
   );

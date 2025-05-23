@@ -8,7 +8,7 @@ import { GetStaticProps } from 'next';
 export default function Terms() {
   const { t } = useTranslation();
   const pageTitle = `Conditions d'utilisation | ${t.siteName}`;
-  const canonicalUrl = 'https://purrify.ca/fr/terms/';
+  const canonicalUrl = 'https://purrify.ca/fr/terms';
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Terms() {
         languageAlternates={[
           {
             hrefLang: 'en',
-            href: 'https://purrify.ca/terms/',
+            href: 'https://purrify.ca/terms',
           },
           {
             hrefLang: 'fr',
