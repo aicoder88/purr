@@ -7,6 +7,7 @@ import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { sampleBlogPosts } from '../../src/data/blog-posts';
+import { useTranslation } from '../../src/lib/translation-context';
 
 // This function gets called at build time on server-side
 export async function getStaticProps() {
@@ -66,6 +67,7 @@ export async function getStaticProps() {
 }
 
 export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
+  const { t } = useTranslation();
 
   return (
     <>
@@ -97,14 +99,13 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
           <Container>
             <div className="max-w-3xl mx-auto text-center mb-16">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-                Cat Care Tips & Insights
+                {t.blogSection.catCareTips}
               </div>
               <h1 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
                 Purrify Blog
               </h1>
               <p className="text-gray-600 text-lg">
-                Tips, tricks, and insights for cat owners who want a fresh-smelling
-                home and happy, healthy cats.
+                {t.blogSection.description}
               </p>
             </div>
 
@@ -151,7 +152,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                         className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                         prefetch={true}
                       >
-                        Read full article
+                        {t.blogSection.readFullArticle}
                         <svg
                           className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                           fill="none"

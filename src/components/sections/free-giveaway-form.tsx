@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PlusCircle } from 'lucide-react';
+import { useTranslation } from '@/lib/translation-context';
 
 // Define validation schema with Zod
 const freeGiveawayFormSchema = z.object({
@@ -20,6 +21,7 @@ const freeGiveawayFormSchema = z.object({
 type FreeGiveawayFormData = z.infer<typeof freeGiveawayFormSchema>;
 
 export function FreeGiveawayForm() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     success?: boolean;
@@ -72,20 +74,20 @@ export function FreeGiveawayForm() {
       if (response.ok) {
         setSubmitStatus({
           success: true,
-          message: responseData.message || 'Your free bag request has been submitted successfully!',
+          message: responseData.message || (t.freeGiveaway?.successMessage || 'Your free bag request has been submitted successfully!'),
         });
         // Reset form on success
         reset();
       } else {
         setSubmitStatus({
           success: false,
-          message: responseData.message || 'Failed to submit your request. Please try again.',
+          message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
         });
       }
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: 'An error occurred. Please try again later.',
+        message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',
       });
     } finally {
       setIsSubmitting(false);
@@ -94,7 +96,7 @@ export function FreeGiveawayForm() {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8 border border-[#E0EFC7]">
-      <h2 className="text-2xl font-bold text-[#1E1B4B] mb-6">Enter Your Details</h2>
+      <h2 className="text-2xl font-bold text-[#1E1B4B] mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
         <div>
@@ -102,7 +104,7 @@ export function FreeGiveawayForm() {
             htmlFor="name"
             className="block text-sm font-medium text-[#333333]"
           >
-            Full Name <span className="text-[#FF3131]">*</span>
+            {t.freeGiveaway?.fullName || "Full Name"} <span className="text-[#FF3131]">*</span>
           </label>
           <Input
             type="text"
@@ -124,7 +126,7 @@ export function FreeGiveawayForm() {
             htmlFor="email"
             className="block text-sm font-medium text-[#333333]"
           >
-            Email Address <span className="text-[#FF3131]">*</span>
+            {t.freeGiveaway?.emailAddress || "Email Address"} <span className="text-[#FF3131]">*</span>
           </label>
           <Input
             type="email"
@@ -144,14 +146,14 @@ export function FreeGiveawayForm() {
 
         <div>
           <label className="block text-sm font-medium text-[#333333] mb-2">
-            Names of Your Cats
+            {t.freeGiveaway?.catNames || "Names of Your Cats"}
           </label>
           
           <div className="space-y-3">
             {fields.map((field, index) => (
               <div key={field.id}>
                 <Input
-                  placeholder={`Name of Cat ${index + 1}`}
+                  placeholder={t.freeGiveaway?.catNamePlaceholder?.replace('{index}', (index + 1).toString()) || `Name of Cat ${index + 1}`}
                   {...register(`catNames.${index}.value` as const)}
                   className="border-[#E0EFC7] focus:border-[#FF3131] focus:ring-[#FF3131]"
                 />
@@ -167,7 +169,7 @@ export function FreeGiveawayForm() {
             className="mt-3 text-[#0072CE] border-[#E0EFC7] hover:bg-[#E0EFC7]/20"
           >
             <PlusCircle className="mr-1 h-4 w-4" />
-            Add Another Cat
+            {t.freeGiveaway?.addAnotherCat || "Add Another Cat"}
           </Button>
         </div>
 
@@ -191,12 +193,11 @@ export function FreeGiveawayForm() {
           className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white font-medium py-2.5"
           aria-busy={isSubmitting}
         >
-          {isSubmitting ? 'Submitting...' : 'GET MY FREE BAG NOW'}
+          {isSubmitting ? (t.freeGiveaway?.submitting || 'Submitting...') : (t.freeGiveaway?.submitButton || 'GET MY FREE BAG NOW')}
         </Button>
         
         <p className="text-xs text-center text-gray-500 mt-4">
-          By submitting this form, you're allowing us to contact you about your free Purrify sample.
-          We respect your privacy and will never share your information with third parties.
+          {t.freeGiveaway?.privacyNotice || "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."}
         </p>
       </form>
     </div>

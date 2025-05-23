@@ -1,7 +1,9 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "../../lib/translation-context";
 
 export function CTA() {
+  const { t } = useTranslation();
   return (
     <section className="py-12 relative overflow-hidden">
       {/* Background with gradient overlay */}
@@ -27,13 +29,10 @@ export function CTA() {
           />
           <div className="text-white max-w-2xl bg-black/30 backdrop-blur-sm p-6 rounded-xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              Ready to Say Goodbye to Litter Box Odors{" "}
-              <span className="italic">Forever</span>?
+              {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
             <p className="text-white/90 text-lg">
-              Join thousands of happy cat owners who have transformed their
-              homes with Purrify. Try it risk-free with our 30-day satisfaction
-              guarantee.
+              {t.cta?.subtitle || "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
             </p>
             <div className="mt-8 flex items-center space-x-4">
               <div className="flex -space-x-4">
@@ -60,7 +59,7 @@ export function CTA() {
                 </div>
               </div>
               <p className="text-white/90 text-sm font-medium">
-                Join 1,000+ Happy cat Families - Visit your local store
+                {t.cta?.joinText || "Join 1,000+ Happy cat Families - Visit your local store"}
               </p>
             </div>
           </div>
@@ -69,11 +68,11 @@ export function CTA() {
               size="lg"
               className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg hide-for-info-mode"
             >
-              ORDER NOW
+              {t.cta?.buttonText || "ORDER NOW"}
             </Button>
 
             <p className="text-white/80 text-xs text-center mt-2">
-              30-day money-back guarantee
+              {t.cta?.guarantee || "30-day money-back guarantee"}
             </p>
           </div>
         </div>

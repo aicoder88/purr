@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
+import { useTranslation } from "../../lib/translation-context";
 
 export function Products() {
+  const { t } = useTranslation();
+  
   return (
     <section
       className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]"
@@ -12,13 +15,12 @@ export function Products() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <SectionHeader text="FOR EVERY CAT HOUSEHOLD" />
+          <SectionHeader text={t.productsSection?.forEveryCatHousehold || "FOR EVERY CAT HOUSEHOLD"} />
           <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-            PICK YOUR PURRIFY POWER LEVEL
+            {t.productsSection?.pickYourPowerLevel || "PICK YOUR PURRIFY POWER LEVEL"}
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Whether you have one kitten or multiple cats,
-            we have the ideal Purrify size for your home.
+            {t.productsSection?.subtitle || "Whether you have one kitten or multiple cats, we have the ideal Purrify size for your home."}
           </p>
         </div>
 
@@ -26,9 +28,15 @@ export function Products() {
         <div className="relative max-w-4xl mx-auto mb-12 px-4">
           <div className="h-3 bg-gradient-to-r from-[#E0EFC7] via-[#FF3131]/60 to-[#FF3131] rounded-full"></div>
           <div className="flex justify-between mt-2">
-            <span className="text-sm font-medium text-gray-600">Kitten Power</span>
-            <span className="text-sm font-medium text-gray-600">Standard Power</span>
-            <span className="text-sm font-medium text-gray-600">Maximum Power</span>
+            <span className="text-sm font-medium text-gray-600">
+              {t.productsSection?.powerLevels?.kittenPower || "Kitten Power"}
+            </span>
+            <span className="text-sm font-medium text-gray-600">
+              {t.productsSection?.powerLevels?.standardPower || "Standard Power"}
+            </span>
+            <span className="text-sm font-medium text-gray-600">
+              {t.productsSection?.powerLevels?.maximumPower || "Maximum Power"}
+            </span>
           </div>
         </div>
 
@@ -42,7 +50,7 @@ export function Products() {
               {/* Highlight for recommended product */}
               {index === 1 && (
                 <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#FF3131] text-white font-bold text-sm rounded-full shadow-lg z-10">
-                  MOST POPULAR
+                  {t.productsSection?.mostPopular || "MOST POPULAR"}
                 </div>
               )}
               
@@ -101,7 +109,7 @@ export function Products() {
                     ${product.price.toFixed(2)}
                   </span>
                   <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 hide-for-info-mode">
-                    Add to Cart
+                    {t.productsSection?.addToCart || "Add to Cart"}
                   </Button>
                 </div>
               </div>
@@ -111,7 +119,7 @@ export function Products() {
 
         <div className="mt-16 text-center">
           <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg hide-for-info-mode">
-            VIEW ALL PRODUCTS
+            {t.productsSection?.viewAllProducts || "VIEW ALL PRODUCTS"}
           </Button>
         </div>
       </Container>

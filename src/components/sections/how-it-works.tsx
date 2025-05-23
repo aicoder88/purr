@@ -1,15 +1,40 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
+import { useTranslation } from "../../lib/translation-context";
 
 export function HowItWorks() {
-  const steps = [
+  const { t } = useTranslation();
+  
+  const steps = t.howItWorks?.steps ? [
+    {
+      number: t.howItWorks.steps[0].number,
+      title: t.howItWorks.steps[0].title,
+      description: t.howItWorks.steps[0].description,
+      icon: "✨",
+      image: "/panel_1.png", // Changed from relative to absolute path
+    },
+    {
+      number: t.howItWorks.steps[1].number,
+      title: t.howItWorks.steps[1].title,
+      description: t.howItWorks.steps[1].description,
+      icon: "🔄",
+      image: "/panel_2.png", // Changed from relative to absolute path
+    },
+    {
+      number: t.howItWorks.steps[2].number,
+      title: t.howItWorks.steps[2].title,
+      description: t.howItWorks.steps[2].description,
+      icon: "😌",
+      image: "/panel_3.png", // Changed from relative to absolute path
+    },
+  ] : [
     {
       number: "01",
       title: "Open the Bag",
       description: "Pull off the label and unzip the bag",
       icon: "✨",
-      image: "/panel_1.png", // Changed from relative to absolute path
+      image: "/panel_1.png",
     },
     {
       number: "02",
@@ -17,7 +42,7 @@ export function HowItWorks() {
       description:
         "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
       icon: "🔄",
-      image: "/panel_2.png", // Changed from relative to absolute path
+      image: "/panel_2.png",
     },
     {
       number: "03",
@@ -25,7 +50,7 @@ export function HowItWorks() {
       description:
         "Gently mix it into the top layer of the litter for maximum effectiveness.",
       icon: "😌",
-      image: "/panel_3.png", // Changed from relative to absolute path
+      image: "/panel_3.png",
     },
   ];
 
@@ -39,12 +64,12 @@ export function HowItWorks() {
           {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Simple as 1-2-3
           </div> */}
-          <SectionHeader text="Simple as 1-2-3" />
+          <SectionHeader text={t.howItWorks?.simpleAs123 || "Simple as 1-2-3"} />
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-            How Purrify Works
+            {t.nav.howItWorks}
           </h2>
           <p className="text-gray-600 text-lg">
-            No fuss, no mess! Using Purrify is incredibly simple and effective.
+            {t.features.worksWithAnyLitter.description}
           </p>
         </div>
 
@@ -114,7 +139,7 @@ export function HowItWorks() {
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      CLUMPING
+                      {t.howItWorks?.litterTypes?.clumping || "CLUMPING"}
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
@@ -127,7 +152,7 @@ export function HowItWorks() {
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      CRYSTAL
+                      {t.howItWorks?.litterTypes?.crystal || "CRYSTAL"}
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
@@ -140,7 +165,7 @@ export function HowItWorks() {
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      NATURAL
+                      {t.howItWorks?.litterTypes?.natural || "NATURAL"}
                     </div>
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
@@ -153,29 +178,25 @@ export function HowItWorks() {
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      CLAY
+                      {t.howItWorks?.litterTypes?.clay || "CLAY"}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-1/2">
                 <h3 className="font-bold text-xl mb-4 text-[#333333]">
-                  Works with any litter!
+                  {t.features.worksWithAnyLitter.title}
                 </h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Purrify is compatible with all types of cat litter - clay,
-                  crystal, natural, clumping, or non-clumping. No need to change
-                  your cat's preferred litter type. Our activated carbon
-                  technology works universally to trap odors at the molecular
-                  level.
+                  {t.features.worksWithAnyLitter.description} {t.features.odorElimination.description}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {[
-                    "Clay",
-                    "Crystal",
-                    "Natural",
-                    "Clumping",
-                    "Non-Clumping",
+                    t.howItWorks?.litterTypes?.clay || "Clay",
+                    t.howItWorks?.litterTypes?.crystal || "Crystal",
+                    t.howItWorks?.litterTypes?.natural || "Natural",
+                    t.howItWorks?.litterTypes?.clumping || "Clumping",
+                    t.howItWorks?.litterTypes?.nonClumping || "Non-Clumping",
                   ].map((type) => (
                     <span
                       key={type}

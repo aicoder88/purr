@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "../../components/ui/container";
 import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
+import { useTranslation } from "../../lib/translation-context";
 import {
   Facebook,
   Instagram,
@@ -13,6 +14,7 @@ import {
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t, locale } = useTranslation();
 
   return (
     <footer className="bg-[#FFFFF5] border-t border-[#E0EFC7] py-12">
@@ -20,7 +22,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Link href="/" className="group">
+              <Link href={locale === 'fr' ? "/fr/" : "/"} className="group">
                 <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
                   <img
                     src="/optimized/purrify-logo-icon.webp"
@@ -40,8 +42,7 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-sm text-[#333333]/80">
-              Activated carbon cat litter additive that eliminates odors at the
-              source.
+              {t.siteDescription}
             </p>
             <div className="flex space-x-4">
               <a
@@ -67,71 +68,71 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333]">
-              Quick Links
+              {locale === 'fr' ? 'Liens rapides' : 'Quick Links'}
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/"
+                  href={locale === 'fr' ? "/fr/" : "/"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Home
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#how-it-works"
+                  href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  How
+                  {t.nav.howItWorks}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#about"
+                  href={locale === 'fr' ? "/fr/#about" : "/#about"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Wow
+                  {t.nav.about}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#why-purrify"
+                  href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Why
+                  {t.nav.whyPurrify}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/free"
+                  href={locale === 'fr' ? "/fr/free" : "/free"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Try
+                  {t.nav.tryFree}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#testimonials"
+                  href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Testimonials
+                  {t.nav.testimonials}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#contact"
+                  href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Contact
+                  {t.nav.contact}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/blog"
+                  href={locale === 'fr' ? "/fr/blog" : "/blog"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
-                  Blog
+                  {t.nav.blog}
                 </Link>
               </li>
             </ul>
@@ -139,23 +140,27 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333]">
-              Opening Hours
+              {locale === 'fr' ? 'Heures d\'ouverture' : 'Opening Hours'}
             </h3>
             <ul className="space-y-2 text-sm text-[#333333]/80">
-              <li>Mon - Fri: {CONTACT_INFO.hours.monday}</li>
-              <li>Saturday: {CONTACT_INFO.hours.saturday}</li>
-              <li>Sunday: {CONTACT_INFO.hours.sunday}</li>
+              <li>{locale === 'fr' ? 'Lun - Ven' : 'Mon - Fri'}: {t.contact.hours.monday}</li>
+              <li>{locale === 'fr' ? 'Samedi' : 'Saturday'}: {t.contact.hours.saturday}</li>
+              <li>{locale === 'fr' ? 'Dimanche' : 'Sunday'}: {t.contact.hours.sunday}</li>
             </ul>
             <p className="text-sm text-[#333333]/80">
-              Our AI support is available to help you 24 hours a day.
+              {locale === 'fr'
+                ? 'Notre support IA est disponible pour vous aider 24 heures sur 24.'
+                : 'Our AI support is available to help you 24 hours a day.'}
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-[#333333]">Contact Us</h3>
+            <h3 className="text-sm font-semibold text-[#333333]">
+              {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
+            </h3>
             <address className="not-italic space-y-2 text-sm text-[#333333]/80">
-              <p>{CONTACT_INFO.address}</p>
-              <p>{CONTACT_INFO.phone}</p>
+              <p>{t.contact.address}</p>
+              <p>{t.contact.phone}</p>
             </address>
           </div>
         </div>
@@ -163,28 +168,28 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
           <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
             <Link
-              href="/privacy-policy"
+              href={locale === 'fr' ? "/fr/privacy-policy" : "/privacy-policy"}
               className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
             >
-              Privacy Policy
+              {t.nav.privacyPolicy}
             </Link>
             <Link
-              href="/terms"
+              href={locale === 'fr' ? "/fr/terms" : "/terms"}
               className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
             >
-              Terms of Service
+              {t.nav.termsOfService}
             </Link>
             <Link
-              href="/blog"
+              href={locale === 'fr' ? "/fr/blog" : "/blog"}
               className="text-xs text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
             >
-              Blog
+              {t.nav.blog}
             </Link>
           </div>
           <p className="text-center text-xs text-[#333333]/80">
             © {currentYear}{" "}
-            <span className="text-[#FF3131] font-medium">{SITE_NAME}</span> |
-            All Rights Reserved
+            <span className="text-[#FF3131] font-medium">{t.siteName}</span> |
+            {locale === 'fr' ? 'Tous droits réservés' : 'All Rights Reserved'}
           </p>
         </div>
       </Container>

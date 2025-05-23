@@ -5,9 +5,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useTranslation } from "../../lib/translation-context";
 
 export function FAQ() {
-  const faqs = [
+  const { t } = useTranslation();
+  
+  // Use the FAQ items from translations if available, otherwise use the hardcoded ones
+  const faqs = t.faq?.items || [
     {
       question: "How often should I use Purrify?",
       answer:
@@ -58,14 +62,13 @@ export function FAQ() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            Common Questions
+            {t.faq?.commonQuestions || "Common Questions"}
           </div>
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF]">
-            Frequently Asked Questions
+            {t.faq?.title || "Frequently Asked Questions"}
           </h2>
           <p className="text-gray-600 text-lg">
-            Have questions about Purrify? Find answers to our most commonly
-            asked questions below.
+            {t.faq?.subtitle || "Have questions about Purrify? Find answers to our most commonly asked questions below."}
           </p>
         </div>
 
@@ -90,14 +93,14 @@ export function FAQ() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-600">
-            Still have questions?{" "}
+            {t.faq?.stillHaveQuestions || "Still have questions?"}{" "}
             <a
               href="#contact"
               className="text-[#5B2EFF] font-medium hover:text-[#5B2EFF]/80 transition-colors"
             >
-              Contact our team
+              {t.faq?.contactTeam || "Contact our team"}
             </a>{" "}
-            for more information.
+            {t.faq?.forMoreInfo || "for more information."}
           </p>
         </div>
       </Container>

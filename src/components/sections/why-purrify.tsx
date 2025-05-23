@@ -2,43 +2,46 @@ import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
+import { useTranslation } from "../../lib/translation-context";
 
 export function WhyPurrify() {
+  const { t } = useTranslation();
+  
   const reasons = [
     {
       icon: Wind,
-      title: "ODOR ELIMINATION",
-      description: "Effectively eliminates unpleasant litter odors at their source. Say goodbye to lingering smells and welcome a fresher home.",
+      title: t.features.odorElimination.title.toUpperCase(),
+      description: t.features.odorElimination.description,
       image: "/micropores_magnified_view.jpeg" // Use local image
     },
     {
       icon: Cat,
-      title: "CAT-FRIENDLY",
-      description: "Designed with your cat's sensitive nose in mind. Completely pet-friendly for worry-free use.", // Revised description
+      title: t.features.catFriendly.title.toUpperCase(),
+      description: t.features.catFriendly.description,
       image: "/natural-cat-litter.webp" // Changed image
     },
     {
       icon: Clock,
-      title: "LONG-LASTING FRESHNESS",
-      description: "A single application keeps the litter box odor-free for days. Enjoy continuous freshness without constant scooping or additives.",
+      title: t.features.longLastingFreshness.title.toUpperCase(),
+      description: t.features.longLastingFreshness.description,
       image: "/optimized/fresh.webp" // Using the optimized webp version
     },
     {
       icon: Layers,
-      title: "WORKS WITH ANY LITTER",
-      description: "Compatible with clay, silica, pine, corn, or any litter type. No need to switch from what your cat already prefers.",
+      title: t.features.worksWithAnyLitter.title.toUpperCase(),
+      description: t.features.worksWithAnyLitter.description,
       image: "/clay-cat-litter.webp" // Use local image
     },
     {
       icon: Sparkles, // Changed icon
-      title: "HIGH-PURITY CARBON", // Changed title
-      description: "Uses the same high-purity activated carbon trusted in water and air purification systems worldwide.", // Revised description
+      title: t.features.safeAndNatural.title.toUpperCase(),
+      description: t.features.safeAndNatural.description,
       image: "/carbon_magnified_image.png" // Use local image
     },
     {
       icon: PiggyBank,
-      title: "COST-EFFECTIVE",
-      description: "Extends the life of your cat litter by preventing odor buildup, saving you money and reducing overall waste.",
+      title: t.features.costEffective.title.toUpperCase(),
+      description: t.features.costEffective.description,
       image: "/cost effective.png" // Updated image
     },
   ];
@@ -63,12 +66,10 @@ export function WhyPurrify() {
           </div> */}
         
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-            Why Purrify?
+            {t.nav.whyPurrify}
           </h2>
           <p className="text-gray-600 text-lg">
-            With the Odour-Adsorbing Power of Purrify, you can finally say
-            goodbye to unwanted odours and hello to a cleaner, more enjoyable
-            living space for you and your beloved pets.
+            {t.siteDescription}
           </p>
         </div>
 
@@ -137,13 +138,13 @@ export function WhyPurrify() {
                 className="h-16 w-auto mb-4"
               />
               <p className="text-3xl font-bold text-[#5B2EFF] mb-4">
-                Make every day a breath of fresh air with Purrify.
+                {t.structuredData.video.description}
               </p>
               <a
                 href="#products"
                 className="mt-4 inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-[#FF3131]/90 hover:to-[#FF3131] transition-all duration-300 group"
               >
-                Try Purrify Today
+                {t.nav.tryFree}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"

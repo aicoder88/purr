@@ -5,9 +5,12 @@ import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { SITE_NAME } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
+import { LanguageSwitcher } from "../../components/ui/language-switcher";
+import { useTranslation } from "../../lib/translation-context";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t, locale } = useTranslation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,71 +43,77 @@ export function Header() {
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="/"
+              href={locale === 'fr' ? "/fr/" : "/"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Home
+              {t.nav.home}
             </Link>
             <Link
-              href="/#how-it-works"
+              href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="How It Works"
             >
-              How It Works
+              {t.nav.howItWorks}
             </Link>
             <Link
-              href="/#about"
+              href={locale === 'fr' ? "/fr/#about" : "/#about"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="About Purrify"
             >
-              About
+              {t.nav.about}
             </Link>
             <Link
-              href="/#why-purrify"
+              href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="Why Choose Purrify"
             >
-              Why Purrify
+              {t.nav.whyPurrify}
             </Link>
             <Link
-              href="/free"
+              href={locale === 'fr' ? "/fr/free" : "/free"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="Try Free Sample"
             >
-              Try Free
+              {t.nav.tryFree}
             </Link>
             <Link
-              href="/#testimonials"
+              href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Testimonials
+              {t.nav.testimonials}
             </Link>
             <Link
-              href="/#contact"
+              href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Contact
+              {t.nav.contact}
             </Link>
             <Link
-              href="/blog"
+              href={locale === 'fr' ? "/fr/blog" : "/blog"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
             >
-              Blog
+              {t.nav.blog}
             </Link>
-            <Button
-              variant="outline"
-              size="icon"
-              className="relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 ml-2 hide-for-info-mode"
-              aria-label="Shopping Cart"
-            >
-              <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
-                0
-              </span>
-            </Button>
+            <div className="flex items-center space-x-2">
+              <LanguageSwitcher />
+              <Button
+                variant="outline"
+                size="icon"
+                className="relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 ml-2 hide-for-info-mode"
+                aria-label="Shopping Cart"
+              >
+                <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
+                  0
+                </span>
+              </Button>
+            </div>
           </nav>
 
           <div className="md:hidden flex items-center">
+            <div className="flex items-center mr-3">
+              <LanguageSwitcher />
+            </div>
             <Button
               variant="outline"
               size="icon"
@@ -138,79 +147,79 @@ export function Header() {
         <div className="md:hidden bg-[#FFFFFF]/95 backdrop-blur-md border-t border-[#E0EFC7] shadow-lg">
           <div className="space-y-4 px-6 py-6">
             <Link
-              href="/"
+              href={locale === 'fr' ? "/fr/" : "/"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              {t.nav.home}
             </Link>
             <Link
-              href="/#how-it-works"
+              href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="How It Works"
             >
-              How It Works
+              {t.nav.howItWorks}
             </Link>
             <Link
-              href="/#about"
+              href={locale === 'fr' ? "/fr/#about" : "/#about"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="About Purrify"
             >
-              About
+              {t.nav.about}
             </Link>
             <Link
-              href="/#why-purrify"
+              href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Why Choose Purrify"
             >
-              Why Purrify
+              {t.nav.whyPurrify}
             </Link>
             <Link
-              href="/free"
+              href={locale === 'fr' ? "/fr/free" : "/free"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Try Free Sample"
             >
-              Try Free
+              {t.nav.tryFree}
             </Link>
             <Link
-              href="/#testimonials"
+              href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Testimonials
+              {t.nav.testimonials}
             </Link>
             <Link
-              href="/#contact"
+              href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              {t.nav.contact}
             </Link>
             <Link
-              href="/blog"
+              href={locale === 'fr' ? "/fr/blog" : "/blog"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Blog
+              {t.nav.blog}
             </Link>
             <div className="border-t border-[#E0EFC7] my-2 pt-2">
               <Link
-                href="/privacy-policy"
+                href={locale === 'fr' ? "/fr/privacy-policy" : "/privacy-policy"}
                 className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Privacy Policy
+                {t.nav.privacyPolicy}
               </Link>
               <Link
-                href="/terms"
+                href={locale === 'fr' ? "/fr/terms" : "/terms"}
                 className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Terms of Service
+                {t.nav.termsOfService}
               </Link>
             </div>
           </div>

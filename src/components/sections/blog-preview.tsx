@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useTranslation } from "@/lib/translation-context";
 
 interface BlogPost {
   title: string;
@@ -13,6 +14,7 @@ interface BlogPost {
 }
 
 export function BlogPreview() {
+  const { t } = useTranslation();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
@@ -39,14 +41,13 @@ export function BlogPreview() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            Cat Care Tips & Insights
+            {t.blogSection.catCareTips}
           </div>
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
-            From Our Blog
+            {t.blogSection.fromOurBlog}
           </h2>
           <p className="text-gray-600 text-lg">
-            Tips, tricks, and insights for cat owners who want a fresh-smelling
-            home and happy, healthy cats.
+            {t.blogSection.description}
           </p>
         </div>
 
@@ -67,7 +68,7 @@ export function BlogPreview() {
                   />
                 </div>
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 px-3 py-1 rounded-full shadow-md text-xs text-white font-medium">
-                  New Post
+                  {t.blogSection.newPost}
                 </div>
               </div>
               <div className="p-6">
@@ -89,7 +90,7 @@ export function BlogPreview() {
                   href={post.link}
                   className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors"
                 >
-                  Read full article
+                  {t.blogSection.readFullArticle}
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
@@ -116,7 +117,7 @@ export function BlogPreview() {
               (window.location.href = "/blog")
             }
           >
-            View All Articles
+            {t.blogSection.viewAllArticles}
           </Button>
         </div>
       </Container>

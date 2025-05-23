@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../src/components/ui/button';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, isEmailJSConfigured } from '../src/lib/emailjs-config';
+import { useTranslation } from '../src/lib/translation-context';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -16,6 +17,7 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     success?: boolean;
@@ -188,7 +190,7 @@ export default function ContactForm() {
           htmlFor="name"
           className="block text-sm font-medium text-[#333333]"
         >
-          Name
+          {t.contact.form.name}
         </label>
         <input
           type="text"
@@ -210,7 +212,7 @@ export default function ContactForm() {
           htmlFor="email"
           className="block text-sm font-medium text-[#333333]"
         >
-          Email
+          {t.contact.form.email}
         </label>
         <input
           type="email"
@@ -232,7 +234,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-[#333333]"
         >
-          Message
+          {t.contact.form.message}
         </label>
         <textarea
           id="message"
@@ -269,7 +271,7 @@ export default function ContactForm() {
         className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90"
         aria-busy={isSubmitting}
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? t.freeGiveaway.submitting : t.contact.form.submit}
       </Button>
     </form>
   );

@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { CONTACT_INFO } from "@/lib/constants";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useTranslation } from "@/lib/translation-context";
 
 // Dynamically import the ContactForm component
 const ContactForm = dynamic(() => import("../../../components/ContactForm"), {
@@ -9,6 +10,7 @@ const ContactForm = dynamic(() => import("../../../components/ContactForm"), {
 });
 
 export function Contact() {
+  const { t } = useTranslation();
   return (
     <section
       className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5]"
@@ -17,14 +19,13 @@ export function Contact() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            Get In Touch
+            {t.contactSection.getInTouch}
           </div>
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF]">
-            Contact Us
+            {t.contact.title}
           </h2>
           <p className="text-gray-600 text-lg">
-            Have questions or want to share your Purrify experience? We'd love
-            to hear from you!
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -36,7 +37,7 @@ export function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
-                  Our Location
+                  {t.contactSection.ourLocation}
                 </h3>
                 <p className="text-gray-600">{CONTACT_INFO.address}</p>
               </div>
@@ -48,7 +49,7 @@ export function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-xl mb-2 text-[#5B2EFF]">
-                  Phone Number
+                  {t.contactSection.phoneNumber}
                 </h3>
                 <p className="text-gray-600">{CONTACT_INFO.phone}</p>
               </div>
@@ -61,32 +62,32 @@ export function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
-                  Opening Hours
+                  {t.contactSection.openingHours}
                 </h3>
                 <ul className="text-gray-600 space-y-2">
                   <li className="flex justify-between">
-                    <span>Mon - Fri:</span>
+                    <span>{t.contactSection.weekdays}</span>
                     <span className="font-medium">
-                      {CONTACT_INFO.hours.monday}
+                      {t.contact.hours.monday}
                     </span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Saturday:</span>
+                    <span>{t.contactSection.saturday}</span>
                     <span className="font-medium">
-                      {CONTACT_INFO.hours.saturday}
+                      {t.contact.hours.saturday}
                     </span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Sunday:</span>
+                    <span>{t.contactSection.sunday}</span>
                     <span className="font-medium">
-                      {CONTACT_INFO.hours.sunday}
+                      {t.contact.hours.sunday}
                     </span>
                   </li>
                 </ul>
                 <div className="mt-4 pt-4 border-t border-[#E0EFC7] flex items-center">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
                   <p className="text-sm text-gray-500">
-                    Our AI support is available 24/7
+                    {t.contactSection.aiSupport}
                   </p>
                 </div>
               </div>
@@ -95,11 +96,11 @@ export function Contact() {
 
           <div className="bg-[#FFFFFF]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/50">
             <h3 className="font-bold text-2xl mb-6 text-[#5B2EFF]">
-              Send us a Message
+              {t.contactSection.sendMessage}
             </h3>
             <ContactForm />
             <p className="text-xs text-center text-gray-500 mt-4">
-              We'll get back to you within 24 hours
+              {t.contactSection.replyTime}
             </p>
           </div>
         </div>

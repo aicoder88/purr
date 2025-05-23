@@ -5,6 +5,7 @@ import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
 import { useInterval, scrollToSection } from "@/lib/utils";
 import dynamic from "next/dynamic";
+import { useTranslation } from "../../lib/translation-context";
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../../../components/NextImage"), {
@@ -12,6 +13,7 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 });
 
 export function Hero() {
+  const { t } = useTranslation();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   // Testimonial rotation
@@ -34,15 +36,15 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <SectionHeader text="STOP CAT ODORS FOREVER!" />
+            <SectionHeader text={t.seo.keywords.split(',')[1]} />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <RotatingText texts={["Cat Litter", "Rabbit Litter", "Fridge smells", "Ferret cage"]} />
               <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
-                Odor ELIMINATION that works
+                {t.features.odorElimination.title} {t.features.worksWithAnyLitter.title.split(' ')[0]}
               </span>
             </h1>
             <p className="text-xl text-[#333333] font-light">
-              A cat litter additive that CAPTURES odors at the molecular level, not just masks them
+              {t.siteDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
@@ -51,7 +53,7 @@ export function Hero() {
                 variant="outline"
                 className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0"
               >
-                SEE 5-STAR REVIEWS
+                {t.nav.testimonials}
               </Button>
             </div>
           </div>

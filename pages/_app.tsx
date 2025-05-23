@@ -5,13 +5,18 @@ import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
+import { TranslationProvider } from '../src/lib/translation-context';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const { locale } = router;
+  
   // Use relative URL for canonical
   const canonicalUrl = '/';
   
   return (
-    <>
+    <TranslationProvider>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -39,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         canonical={canonicalUrl}
         openGraph={{
           type: 'website',
-          locale: 'en_CA',
+          locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
           url: canonicalUrl,
           siteName: SITE_NAME,
           title: `${SITE_NAME} - Activated Carbon Cat Litter Additive`,
@@ -135,7 +140,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       
       <Component {...pageProps} />
       <Toaster />
-    </>
+    </TranslationProvider>
   );
 }
 

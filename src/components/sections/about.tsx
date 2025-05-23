@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import dynamic from "next/dynamic";
+import { useTranslation } from "../../lib/translation-context";
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../../../components/NextImage"), {
@@ -8,13 +9,14 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 });
 
 export function About() {
+  const { t } = useTranslation();
   return (
     <section className="py-12 bg-white" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text="The Science of Fresh Air" />
+          <SectionHeader text={t.features.longLastingFreshness.title} />
           
-          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">What Makes Purrify Different?</h2>
+          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">{t.nav.whyPurrify}?</h2>
           
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
@@ -33,7 +35,7 @@ export function About() {
           </div>
           
           <p className="text-3xl font-semibold text-[#333333] mb-6">
-          Nature's Secret Weapon: Activated Coconut Shells!
+          {t.features.safeAndNatural.description}
           </p>
         </div>
 
@@ -74,18 +76,18 @@ export function About() {
           </div>
           <div className="space-y-6">
             <p className="text-gray-700 leading-relaxed text-lg">
-            Tired of your home smelling like a litter box? Imagine walking through your door to PURE FRESHNESS every day - without harsh chemicals or fake fragrances!
+            {t.features.odorElimination.description}
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
-            Those sprays and scented litters? They just MASK odors temporarily while exposing your precious cat to questionable substances.
+            {t.features.catFriendly.description}
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
               <span className="font-bold text-[#FF3131]">
-              Purrify ELIMINATES odors at the source.
+              {t.siteName} {t.features.odorElimination.title}.
               </span>
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
-            Our revolutionary activated coconut carbon doesn't just cover up smells - it TRAPS and DESTROYS odor molecules before they escape the litter box, keeping your home naturally fresh without any extra effort from you.
+            {t.features.longLastingFreshness.description} {t.features.worksWithAnyLitter.description}
             </p>
           </div>
         </div>
