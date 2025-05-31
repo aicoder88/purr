@@ -10,12 +10,18 @@ type TranslationContextType = {
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
-export function TranslationProvider({ children }: { children: ReactNode }) {
+export function TranslationProvider({
+  children,
+  language,
+}: {
+  children: ReactNode;
+  language: string; // receives from _app.tsx
+}) {
   const router = useRouter();
-  const { locale, pathname, asPath, query } = router;
-  
-  // Default to 'en' if locale is not supported
-  const currentLocale = (locale as Locale) || 'en';
+  const { pathname, asPath, query } = router;
+
+  // Use provided language prop instead of router.locale directly
+  const currentLocale = (language as Locale) || 'en';
   const t = translations[currentLocale] || translations.en;
 
   const changeLocale = (newLocale: Locale) => {
