@@ -53,6 +53,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "caniuse-lite": "^1.0.30001720",
     "chart.js": "^4.4.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
