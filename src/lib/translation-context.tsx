@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { translations, Locale } from '../translations';
 
@@ -22,14 +22,23 @@ export function TranslationProvider({
 
   // Use provided language prop instead of router.locale directly
   const currentLocale = (language as Locale) || 'en';
-  const t = translations[currentLocale] || translations.en;
+
+  const [locale, setLocale] = useState<Locale>(currentLocale);
+  const [t, setT] = useState(translations[currentLocale] || translations.en);
+
+  // 🔄 Update translation when language changes
+  useEffect(() => {
+    const newLocale = (language as Locale) || 'en';
+    setLocale(newLocale);
+    setT(translations[newLocale] || translations.en);
+  }, [language]);
 
   const changeLocale = (newLocale: Locale) => {
     router.push({ pathname, query }, asPath, { locale: newLocale });
   };
 
   return (
-    <TranslationContext.Provider value={{ t, locale: currentLocale, changeLocale }}>
+    <TranslationContext.Provider value={{ t, locale, changeLocale }}>
       {children}
     </TranslationContext.Provider>
   );
