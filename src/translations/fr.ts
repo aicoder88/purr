@@ -60,6 +60,14 @@ export const fr = {
       description: "Prolonge la durée de vie de la litière de votre chat en empêchant l'accumulation d'odeurs, vous faisant économiser de l'argent et réduisant les déchets."
     }
   },
+
+  // Hero Section
+  hero: {
+    catLitter: "Litière pour chats",
+    rabbitLitter: "Litière pour lapins",
+    fridgeSmells: "Odeurs de frigo",
+    ferretCage: "Cage de furet"
+  },
   
   // How It Works
   howItWorks: {

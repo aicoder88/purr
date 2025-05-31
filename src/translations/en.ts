@@ -32,6 +32,14 @@ export const en = {
       description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control."
     }
   },
+
+  // Hero Section
+  hero: {
+    catLitter: "Cat Litter",
+    rabbitLitter: "Rabbit Litter",
+    fridgeSmells: "Fridge smells",
+    ferretCage: "Ferret cage"
+  },
   
   // Features
   features: {

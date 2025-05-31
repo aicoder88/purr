@@ -38,7 +38,7 @@ export function Hero() {
           <div className="space-y-8">
             <SectionHeader text={t.seo.keywords.split(',')[1]} />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              <RotatingText texts={["Cat Litter", "Rabbit Litter", "Fridge smells", "Ferret cage"]} />
+              <RotatingText texts={[t.hero.catLitter,t.hero.rabbitLitter,t.hero.fridgeSmells,t.hero.ferretCage]} />
               <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 bg-clip-text text-transparent">
                 {t.features.odorElimination.title} {t.features.worksWithAnyLitter.title.split(' ')[0]}
               </span>
