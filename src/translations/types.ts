@@ -16,6 +16,13 @@ export interface TranslationType {
     privacyPolicy: string;
     termsOfService: string;
   };
+  // Hero section
+  hero: {
+    catLitter: string;
+    rabbitLitter: string;
+    fridgeSmells: string;
+    ferretCage: string;
+  };
   
   // Products
   products: {
@@ -60,6 +67,8 @@ export interface TranslationType {
       description: string;
     };
   };
+
+  
   
   // How It Works
   howItWorks?: {
