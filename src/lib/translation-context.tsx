@@ -34,7 +34,9 @@ export function TranslationProvider({
   }, [language]);
 
   const changeLocale = (newLocale: Locale) => {
-    router.push({ pathname, query }, asPath, { locale: newLocale });
+    router.push({ pathname, query }, asPath, {
+      locale: newLocale === 'en' ? false : newLocale,
+    });
   };
 
   return (
