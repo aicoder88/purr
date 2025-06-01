@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/constants";
-import SectionHeader from "../ui/section-header";
+// import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 

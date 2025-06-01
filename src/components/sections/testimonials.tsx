@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
-import SectionHeader from "../ui/section-header";
+// import SectionHeader from "../ui/section-header";
 
 export function Testimonials() {
   const colorClasses = [
