@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/container";
-// import SectionHeader from "../ui/section-header";
+import SectionHeader from "../ui/section-header";
 
 export function Benefits() {
   return (
