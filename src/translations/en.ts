@@ -9,7 +9,7 @@ export const en = {
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
-    tryFree: "Try Free",
+    //tryFree: "Try Free",
     testimonials: "Testimonials",
     contact: "Contact",
     blog: "Blog",

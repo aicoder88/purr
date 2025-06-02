@@ -9,7 +9,7 @@ export const fr = {
     howItWorks: "Comment ça marche",
     about: "À propos",
     whyPurrify: "Pourquoi Purrify",
-    tryFree: "Essai gratuit",
+    //tryFree: "Essai gratuit",
     testimonials: "Témoignages",
     contact: "Contact",
     blog: "Blog",
