@@ -67,19 +67,19 @@ export function Header() {
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="Why Choose Purrify"
             >
-              {/* {t.nav.whyPurrify}
+              {t.nav.whyPurrify}
             </Link>
             <Link
               href={locale === 'fr' ? "/fr/free" : "/free"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="Try Free Sample"
-            > */}
-              {t.nav.tryFree}
+            >
+              {/* {t.nav.tryFree}
             </Link>
             <Link
               href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-            >
+            > */}
               {t.nav.testimonials}
             </Link>
             <Link

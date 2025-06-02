@@ -9,7 +9,6 @@ export interface TranslationType {
     howItWorks: string;
     about: string;
     whyPurrify: string;
-    tryFree: string;
     testimonials: string;
     contact: string;
     blog: string;
