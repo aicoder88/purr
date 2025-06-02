@@ -70,7 +70,7 @@ export function LanguageSwitcher() {
     }
     
     // Navigate to the new path
-    window.location.href = newPath;
+    changeLocale(newLocale);
     
     closeDropdown();
   };

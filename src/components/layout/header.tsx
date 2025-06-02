@@ -74,12 +74,12 @@ export function Header() {
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
               aria-label="Try Free Sample"
             >
-              {t.nav.tryFree}
+              {/* {t.nav.tryFree}
             </Link>
             <Link
               href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-            >
+            > */}
               {t.nav.testimonials}
             </Link>
             <Link
@@ -177,14 +177,14 @@ export function Header() {
             >
               {t.nav.whyPurrify}
             </Link>
-            <Link
+            {/* <Link
               href={locale === 'fr' ? "/fr/free" : "/free"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Try Free Sample"
             >
               {t.nav.tryFree}
-            </Link>
+            </Link> */}
             <Link
               href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"

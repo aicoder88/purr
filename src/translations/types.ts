@@ -9,12 +9,18 @@ export interface TranslationType {
     howItWorks: string;
     about: string;
     whyPurrify: string;
-    tryFree: string;
     testimonials: string;
     contact: string;
     blog: string;
     privacyPolicy: string;
     termsOfService: string;
+  };
+  // Hero section
+  hero: {
+    catLitter: string;
+    rabbitLitter: string;
+    fridgeSmells: string;
+    ferretCage: string;
   };
   
   // Products
@@ -60,6 +66,8 @@ export interface TranslationType {
       description: string;
     };
   };
+
+  
   
   // How It Works
   howItWorks?: {

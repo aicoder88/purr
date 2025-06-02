@@ -9,7 +9,7 @@ export const en = {
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
-    tryFree: "Try Free",
+    //tryFree: "Try Free",
     testimonials: "Testimonials",
     contact: "Contact",
     blog: "Blog",
@@ -31,6 +31,14 @@ export const en = {
       name: "Purrify 120g",
       description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control."
     }
+  },
+
+  // Hero Section
+  hero: {
+    catLitter: "Cat Litter",
+    rabbitLitter: "Rabbit Litter",
+    fridgeSmells: "Fridge smells",
+    ferretCage: "Ferret cage"
   },
   
   // Features

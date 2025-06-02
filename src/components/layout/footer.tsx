@@ -103,14 +103,14 @@ export function Footer() {
                   {t.nav.whyPurrify}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href={locale === 'fr' ? "/fr/free" : "/free"}
                   className="text-[#333333]/80 hover:text-[#FF3131] transition-colors duration-300"
                 >
                   {t.nav.tryFree}
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
