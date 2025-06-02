@@ -144,7 +144,7 @@ export function WhyPurrify() {
                 href="#products"
                 className="mt-4 inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-[#FF3131]/90 hover:to-[#FF3131] transition-all duration-300 group"
               >
-                {t.nav.tryFree}
+                {/* {t.nav.tryFree} */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
