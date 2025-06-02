@@ -177,14 +177,14 @@ export function Header() {
             >
               {t.nav.whyPurrify}
             </Link>
-            <Link
+            {/* <Link
               href={locale === 'fr' ? "/fr/free" : "/free"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Try Free Sample"
             >
               {t.nav.tryFree}
-            </Link>
+            </Link> */}
             <Link
               href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
               className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
