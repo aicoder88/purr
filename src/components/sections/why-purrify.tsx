@@ -160,7 +160,7 @@ export function WhyPurrify() {
               </a>
             </div>
           </div>
-        </div>
+        </div> 
       </Container>
     </section>
   );
