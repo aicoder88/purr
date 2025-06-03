@@ -84,7 +84,7 @@ export function WhyPurrify() {
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   {/* Image Section with fixed dimensions to prevent layout shifts */}
-                  <div className="aspect-video overflow-hidden h-[225px]">
+                  <div className="overflow-hidden">
                     <NextImage
                       src={reason.image.replace('/images/fresh.png', '/optimized/fresh.webp')
                             .replace('/cost effective.png', '/optimized/cost effective.webp')
@@ -94,7 +94,7 @@ export function WhyPurrify() {
                       width={400}
                       height={225}
                       loading={index < 3 ? "eager" : "lazy"} /* Load first 3 images eagerly */
-                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
+                      className="w-auto h-auto"
                       style={{
                         objectFit: 'cover',
                         objectPosition: 'center',
