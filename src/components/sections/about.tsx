@@ -27,7 +27,7 @@ export function About() {
                 alt="Carbon sketch illustration"
                 width={500}
                 height={340}
-                className="w-auto h-auto max-w-full transition duration-700"
+                className="mx-auto max-w-[500px] h-auto transition duration-700"
                 sizes="(max-width: 768px) 100vw, 500px"
                 priority={true}
               />
