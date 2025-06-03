@@ -23,12 +23,13 @@ export function About() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300 w-10/12 h-[340px]">
               <NextImage
-                src="/Carbon sketch.png"
+                src="/Carbon sktech.png"
                 alt="Carbon sketch illustration"
-                width={0}
-                height={0}
+                width={500}
+                height={340}
+                className="w-auto h-auto max-w-full transition duration-700"
                 sizes="(max-width: 768px) 100vw, 500px"
-                className="w-full h-auto transition duration-700"
+                priority={true}
               />
             </div>
           </div>
