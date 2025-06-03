@@ -135,7 +135,7 @@ export function HowItWorks() {
                       alt="Clay cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-auto h-auto transition-transform duration-500"
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
@@ -148,7 +148,7 @@ export function HowItWorks() {
                       alt="Crystal cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-auto h-auto transition-transform duration-500"
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
@@ -161,8 +161,8 @@ export function HowItWorks() {
                       alt="Natural cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager" /* Load above-the-fold images eagerly */
+                      className="w-auto h-auto transition-transform duration-500"
+                      loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       {t.howItWorks?.litterTypes?.natural || "NATURAL"}
@@ -174,7 +174,7 @@ export function HowItWorks() {
                       alt="Clumping cat litter"
                       width={200}
                       height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-auto h-auto transition-transform duration-500"
                       loading="eager" /* Load above-the-fold images eagerly */
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
