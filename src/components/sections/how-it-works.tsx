@@ -155,13 +155,14 @@ export function HowItWorks() {
                       {t.howItWorks?.litterTypes?.crystal || "CRYSTAL"}
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg" style={{ width: 380, height: 185.25 }}>
+                  <div className="relative overflow-hidden rounded-lg h-48">
                     <NextImage
                       src="/natural-cat-litter.webp"
-                      alt="Cat-friendly"
-                      width={380}
-                      height={185}
-                      className="w-full h-full object-cover"
+                      alt="Natural cat litter"
+                      width={200}
+                      height={150}
+                      className="w-auto h-auto"
+                      style={{ objectFit: 'contain' }}
                       loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">

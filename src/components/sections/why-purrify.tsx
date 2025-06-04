@@ -80,11 +80,11 @@ export function WhyPurrify() {
               return (
                 <div
                   key={index}
-                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`} // Added overflow-hidden and flex
+                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col h-[500px]`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   {/* Image Section with fixed dimensions to prevent layout shifts */}
-                  <div className="overflow-hidden">
+                  <div className={`overflow-hidden ${reason.image === "/natural-cat-litter.webp" ? "bg-blue-50" : "bg-gray-50"} h-64`}>
                     <NextImage
                       src={reason.image.replace('/images/fresh.png', '/optimized/fresh.webp')
                             .replace('/cost effective.png', '/optimized/cost effective.webp')
@@ -92,13 +92,9 @@ export function WhyPurrify() {
                             .replace('/micropores_magnified_view.jpeg', '/optimized/micropores_magnified_view.webp')}
                       alt={reason.title}
                       width={400}
-                      height={225}
+                      height={300}
                       loading={index < 3 ? "eager" : "lazy"} /* Load first 3 images eagerly */
-                      className="w-auto h-auto"
-                      style={{
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                      }}
+                      className="w-auto h-auto object-contain p-2"
                     />
                   </div>
                   {/* Content Section */}
@@ -116,7 +112,6 @@ export function WhyPurrify() {
                     <p className="text-gray-600 leading-relaxed text-sm flex-grow"> {/* Reduced text size, added flex-grow */}
                       {reason.description}
                     </p>
-                    {/* Learn more link section is completely removed */}
                   </div>
                 </div>
               );
