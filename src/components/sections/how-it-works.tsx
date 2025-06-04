@@ -159,9 +159,14 @@ export function HowItWorks() {
                     <NextImage
                       src="/natural-cat-litter.webp"
                       alt="Natural cat litter"
-                      width={200}
-                      height={150}
-                      className="w-auto h-auto transition-transform duration-500"
+                      width={400}
+                      height={225}
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 60vw, (max-width: 1280px) 50vw, 33vw"
+                      className="w-auto h-auto"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                      }}
                       loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
