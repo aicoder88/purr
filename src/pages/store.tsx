@@ -1,6 +1,7 @@
 import ProductCard from "@/components/store/ProductCard";
 import { Product } from "@/context/CartContext";
 
+
 const products: Product[] = [
   { id: "140g", name: "Purrify 140g", price: 24.99, image: "/140g.png" },
   { id: "60g", name: "Purrify 60g", price: 14.99, image: "/60g.png" },
