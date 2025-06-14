@@ -12,21 +12,21 @@ export function HowItWorks() {
       title: t.howItWorks.steps[0].title,
       description: t.howItWorks.steps[0].description,
       icon: "✨",
-      image: "/panel_1.png", // Changed from relative to absolute path
+      image: "/optimized/panel_1.webp",
     },
     {
       number: t.howItWorks.steps[1].number,
       title: t.howItWorks.steps[1].title,
       description: t.howItWorks.steps[1].description,
       icon: "🔄",
-      image: "/panel_2.png", // Changed from relative to absolute path
+      image: "/optimized/panel_2.webp",
     },
     {
       number: t.howItWorks.steps[2].number,
       title: t.howItWorks.steps[2].title,
       description: t.howItWorks.steps[2].description,
       icon: "😌",
-      image: "/panel_3.png", // Changed from relative to absolute path
+      image: "/optimized/panel_3.webp",
     },
   ] : [
     {
@@ -34,7 +34,7 @@ export function HowItWorks() {
       title: "Open the Bag",
       description: "Pull off the label and unzip the bag",
       icon: "✨",
-      image: "/panel_1.png",
+      image: "/optimized/panel_1.webp",
     },
     {
       number: "02",
@@ -42,7 +42,7 @@ export function HowItWorks() {
       description:
         "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
       icon: "🔄",
-      image: "/panel_2.png",
+      image: "/optimized/panel_2.webp",
     },
     {
       number: "03",
@@ -50,7 +50,7 @@ export function HowItWorks() {
       description:
         "Gently mix it into the top layer of the litter for maximum effectiveness.",
       icon: "😌",
-      image: "/panel_3.png",
+      image: "/optimized/panel_3.webp",
     },
   ];
 
@@ -96,14 +96,16 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div className="text-center mt-6">
-                  <div className="overflow-hidden rounded-lg mb-4 h-[250px] sm:h-[400px]">
+                  <div className="overflow-hidden rounded-lg mb-4 h-[250px] sm:h-[400px] flex items-center justify-center">
                     <NextImage
                       src={step.image}
                       alt={`${step.title} image`}
                       width={400}
-                      height={800}
-                      priority={index === 0}
+                      height={400}
+                      priority={true}
+                      quality={90}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                   <h3
