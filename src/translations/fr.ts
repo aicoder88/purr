@@ -1,80 +1,103 @@
 export const fr = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Additif de litière pour chat au charbon actif qui élimine les odeurs à la source.",
+  siteDescription: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
   
   // Navigation
   nav: {
     home: "Accueil",
-    howItWorks: "Comment ça marche",
-    about: "À propos",
+    howItWorks: "Comment Ça Marche",
+    about: "À Propos",
     whyPurrify: "Pourquoi Purrify",
-    //tryFree: "Essai gratuit",
     testimonials: "Témoignages",
     contact: "Contact",
     blog: "Blog",
-    privacyPolicy: "Politique de confidentialité",
-    termsOfService: "Conditions d'utilisation"
+    privacyPolicy: "Politique de Confidentialité",
+    termsOfService: "Conditions d'Utilisation"
   },
   
   // Products
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "Parfait pour les nouveaux chatons\nLa taille d'essai parfaite - idéal pour un changement de litière."
+      description: "Parfait pour les Nouveaux Chaton\nLa taille d'essai idéale - suffisant pour un changement de litière."
     },
     "purrify-60g": {
       name: "Purrify 60g",
-      description: "Idéal pour un chat\nNotre format le plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur!"
+      description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
     },
     "purrify-120g": {
       name: "Purrify 120g",
-      description: "Parfait pour deux chats\nDouble puissance pour les foyers avec plusieurs chats.\nContrôle maximal des odeurs."
+      description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
   
   // Features
   features: {
     odorElimination: {
-      title: "Élimination des odeurs",
-      description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de la litière à leur source."
+      title: "Élimination des Odeurs",
+      description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de la litière à la source."
     },
     catFriendly: {
-      title: "Respectueux des chats",
-      description: "Conçu en pensant au bien-être de votre chat, il est sûr, doux et totalement adapté aux animaux."
+      title: "Respectueux des Chats",
+      description: "Conçu en pensant au bien-être de votre chat, il est doux et respectueux des animaux."
     },
     longLastingFreshness: {
-      title: "Fraîcheur longue durée",
-      description: "Une seule pincée garde votre maison sans odeur pendant des jours. Profitez d'une fraîcheur continue sans entretien constant."
+      title: "Fraîcheur Longue Durée",
+      description: "Une seule application garde votre maison sans odeur pendant des jours. Profitez d'une fraîcheur continue sans entretien constant."
     },
     worksWithAnyLitter: {
-      title: "Fonctionne avec toute litière",
-      description: "Compatible avec tout type de litière, vous n'avez donc pas à changer ce que votre chat aime déjà."
+      title: "Fonctionne avec Toute Litière",
+      description: "Compatible avec tous les types de litière, vous n'avez pas besoin de changer ce que votre chat aime déjà."
     },
     natural: {
       title: "Naturel",
-      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle pour la santé de votre chat."
+      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle car la santé de votre chat passe en premier."
     },
     costEffective: {
       title: "Économique",
-      description: "Prolonge la durée de vie de la litière de votre chat en empêchant l'accumulation d'odeurs, vous faisant économiser de l'argent et réduisant les déchets."
+      description: "Prolonge la durée de vie de la litière de votre chat en prévenant l'accumulation d'odeurs, vous faisant économiser de l'argent et réduisant les déchets."
     },
     freePurrify: {
       title: "Purrify Gratuit",
-      description: "Essayez Purrify gratuitement et découvrez la différence par vous-même."
+      description: "Obtenez un échantillon gratuit de Purrify avec votre première commande."
     },
     beforeAfter: {
-      title: "Avant/Après",
-      description: "Voyez la différence que Purrify peut faire dans votre maison."
+      title: "Avant & Après",
+      description: "Voyez la différence que Purrify fait dans la litière de votre chat."
+    }
+  },
+
+  // Benefits
+  benefits: {
+    molecular: {
+      title: "Élimination au Niveau Moléculaire",
+      description: "Purrify élimine les odeurs au niveau moléculaire, assurant une fraîcheur complète et durable."
+    },
+    sevenDayFreshness: {
+      title: "7 Jours de Fraîcheur",
+      description: "Une seule application garde votre litière fraîche pendant une semaine entière."
+    },
+    natural: {
+      title: "100% Naturel",
+      description: "Fabriqué à partir de charbon actif naturel, sans produits chimiques nocifs."
+    },
+    universalFit: {
+      title: "Adapté à Toutes les Litières",
+      description: "Fonctionne avec tous les types de litière pour chat, y compris l'argile, l'agglomérante et le cristal."
+    },
+    highlyRated: {
+      title: "Hautement Apprécié",
+      description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
     }
   },
 
   // Hero Section
   hero: {
-    catLitter: "Litière pour chats",
-    rabbitLitter: "Litière pour lapins",
-    fridgeSmells: "Odeurs de frigo",
-    ferretCage: "Cage de furet"
+    catLitter: "Litière pour Chat",
+    rabbitLitter: "Litière pour Lapin",
+    fridgeSmells: "Odeurs de Frigo",
+    ferretCage: "Cage de Furet"
   },
   
   // How It Works
@@ -83,17 +106,17 @@ export const fr = {
     steps: [
       {
         number: "01",
-        title: "Ouvrez le sac",
-        description: "Retirez l'étiquette et dézippez le sac"
+        title: "Ouvrez le Sachet",
+        description: "Retirez l'étiquette et dézippez le sachet"
       },
       {
         number: "02",
-        title: "Saupoudrez sur la litière de votre chat",
+        title: "Saupoudrez sur la litière",
         description: "Saupoudrez simplement une fine couche de Purrify sur la litière propre de votre chat."
       },
       {
         number: "03",
-        title: "Mélangez et profitez de la fraîcheur!",
+        title: "Mélangez et profitez de la fraîcheur !",
         description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
       }
     ],
@@ -108,63 +131,63 @@ export const fr = {
   
   // Products Section
   productsSection: {
-    forEveryCatHousehold: "POUR TOUS LES FOYERS AVEC CHATS",
+    forEveryCatHousehold: "POUR CHAQUE FOYER DE CHAT",
     pickYourPowerLevel: "CHOISISSEZ VOTRE NIVEAU DE PUISSANCE PURRIFY",
-    subtitle: "Que vous ayez un chaton ou plusieurs chats, nous avons la taille idéale de Purrify pour votre maison.",
+    subtitle: "Que vous ayez un chaton ou plusieurs chats, nous avons la taille Purrify idéale pour votre maison.",
     powerLevels: {
       kittenPower: "Puissance Chaton",
       standardPower: "Puissance Standard",
       maximumPower: "Puissance Maximale"
     },
     mostPopular: "LE PLUS POPULAIRE",
-    addToCart: "Ajouter au panier",
+    addToCart: "Ajouter au Panier",
     viewAllProducts: "VOIR TOUS LES PRODUITS"
   },
   
   // Call to Action
   cta: {
-    title: "Portées d'amour",
-    subtitle: "Obtenez votre Purrify dès aujourd'hui",
-    buttonText: "ACHETER MAINTENANT",
-    joinText: "Rejoignez plus de 1 000 familles de chats heureuses - Visitez votre magasin local",
+    title: "Prêt à Dire Adieu aux Odeurs de Litière pour Toujours ?",
+    subtitle: "Rejoignez des milliers de propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le sans risque avec notre garantie de satisfaction de 30 jours.",
+    buttonText: "COMMANDER MAINTENANT",
+    joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
     guarantee: "Garantie de remboursement de 30 jours"
   },
   
   // FAQ
   faq: {
-    title: "Foire aux questions",
-    commonQuestions: "Questions fréquentes",
-    subtitle: "Vous avez des questions sur Purrify? Trouvez les réponses à nos questions les plus fréquemment posées ci-dessous.",
-    stillHaveQuestions: "Vous avez encore des questions?",
+    title: "Questions Fréquemment Posées",
+    commonQuestions: "Questions Courantes",
+    subtitle: "Vous avez des questions sur Purrify ? Trouvez les réponses à nos questions les plus fréquemment posées ci-dessous.",
+    stillHaveQuestions: "Vous avez encore des questions ?",
     contactTeam: "Contactez notre équipe",
     forMoreInfo: "pour plus d'informations.",
     items: [
       {
-        question: "Qu'est-ce que Purrify?",
-        answer: "Purrify est un additif de litière pour chat au charbon actif qui élimine les odeurs à la source, plutôt que de les masquer avec des parfums."
+        question: "Qu'est-ce que Purrify ?",
+        answer: "Purrify est un additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source, plutôt que de les masquer avec des parfums."
       },
       {
-        question: "Comment fonctionne Purrify?",
-        answer: "Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur par adsorption, éliminant efficacement les odeurs de litière pour chat au niveau moléculaire."
+        question: "Comment fonctionne Purrify ?",
+        answer: "Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur par adsorption, éliminant efficacement les odeurs de litière au niveau moléculaire."
       },
       {
-        question: "Combien de temps dure Purrify?",
+        question: "Combien de temps dure Purrify ?",
         answer: "Une seule application de Purrify peut garder votre litière sans odeur jusqu'à 7 jours, selon l'utilisation et le nombre de chats."
       },
       {
-        question: "Purrify peut-il être utilisé avec n'importe quel type de litière pour chat?",
-        answer: "Oui, Purrify fonctionne avec tous les types de litière pour chat, y compris l'argile, les litières agglomérantes, les cristaux et les litières naturelles."
+        question: "Purrify peut-il être utilisé avec n'importe quel type de litière ?",
+        answer: "Oui, Purrify fonctionne avec tous les types de litière, y compris l'argile, l'agglomérante, le cristal et les litières naturelles."
       },
       {
-        question: "À quelle fréquence dois-je utiliser Purrify?",
-        answer: "Pour de meilleurs résultats, saupoudrez Purrify sur la litière de votre chat chaque fois que vous changez ou ajoutez de la litière fraîche. Une fine couche suffit pour un contrôle continu des odeurs."
+        question: "À quelle fréquence dois-je utiliser Purrify ?",
+        answer: "Pour de meilleurs résultats, saupoudrez Purrify sur la litière de votre chat chaque fois que vous changez ou ajoutez de la litière fraîche. Une fine couche est tout ce dont vous avez besoin pour un contrôle continu des odeurs."
       },
       {
-        question: "Combien de temps dure un contenant de Purrify?",
-        answer: "Cela dépend du nombre de chats que vous avez et de la fréquence à laquelle vous changez leur litière. En moyenne, notre contenant de 65g dure environ 1 à 2 mois pour un foyer avec un seul chat et des changements réguliers de litière."
+        question: "Combien de temps dure un contenant de Purrify ?",
+        answer: "Cela dépend du nombre de chats que vous avez et de la fréquence à laquelle vous changez leur litière. En moyenne, notre contenant de 65g dure environ 1-2 mois pour un foyer avec un seul chat et des changements réguliers de litière."
       },
       {
-        question: "En quoi Purrify est-il différent des litières parfumées ou des désodorisants?",
+        question: "En quoi Purrify est-il différent des litières parfumées ou des désodorisants ?",
         answer: "Contrairement aux produits parfumés qui masquent les odeurs, Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur à la source. Il n'ajoute aucun parfum à votre maison - il élimine simplement les mauvaises odeurs."
       }
     ]
@@ -172,24 +195,24 @@ export const fr = {
   
   // Contact
   contact: {
-    title: "Contactez-nous",
+    title: "Contactez-Nous",
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: "+1 438-931-7345",
-    email: "bonjour@purrify.ca",
+    email: "hello@purrify.ca",
     hours: {
-      title: "Heures d'ouverture",
-      monday: "08h00 - 20h00",
-      tuesday: "08h00 - 20h00",
-      wednesday: "08h00 - 20h00",
-      thursday: "08h00 - 20h00",
-      friday: "08h00 - 20h00",
-      saturday: "09h00 - 20h00",
+      title: "Heures d'Ouverture",
+      monday: "08:00 am - 8:00 pm",
+      tuesday: "08:00 am - 8:00 pm",
+      wednesday: "08:00 am - 8:00 pm",
+      thursday: "08:00 am - 8:00 pm",
+      friday: "08:00 am - 8:00 pm",
+      saturday: "09:00 am - 8:00 pm",
       sunday: "Fermé"
     },
     form: {
       name: "Nom",
-      email: "Courriel",
+      email: "Email",
       message: "Message",
       submit: "Envoyer"
     }
@@ -197,36 +220,36 @@ export const fr = {
   
   // Newsletter
   newsletter: {
-    title: "Abonnez-vous à notre infolettre",
+    title: "Abonnez-vous à notre newsletter",
     subtitle: "Restez informé des dernières nouvelles et promotions",
-    placeholder: "Votre adresse courriel",
+    placeholder: "Votre adresse email",
     buttonText: "S'abonner",
-    successMessage: "Merci de vous être abonné!",
+    successMessage: "Merci de vous être abonné !",
     errorMessage: "Une erreur s'est produite. Veuillez réessayer."
   },
   
   // Free Giveaway Form
   freeGiveaway: {
-    formTitle: "Entrez vos coordonnées",
-    fullName: "Nom complet",
-    emailAddress: "Adresse courriel",
-    catNames: "Noms de vos chats",
-    catNamePlaceholder: "Nom du chat {index}",
-    addAnotherCat: "Ajouter un autre chat",
-    submitting: "Soumission en cours...",
+    formTitle: "Entrez Vos Coordonnées",
+    fullName: "Nom Complet",
+    emailAddress: "Adresse Email",
+    catNames: "Noms de Vos Chats",
+    catNamePlaceholder: "Nom du Chat {index}",
+    addAnotherCat: "Ajouter un Autre Chat",
+    submitting: "Envoi en cours...",
     submitButton: "OBTENIR MON SAC GRATUIT MAINTENANT",
-    successMessage: "Votre demande d'échantillon gratuit a été soumise avec succès!",
+    successMessage: "Votre demande de sac gratuit a été soumise avec succès !",
     errorMessage: "Échec de la soumission de votre demande. Veuillez réessayer.",
     errorGeneric: "Une erreur s'est produite. Veuillez réessayer plus tard.",
-    privacyNotice: "En soumettant ce formulaire, vous nous autorisez à vous contacter au sujet de votre échantillon gratuit de Purrify. Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers."
+    privacyNotice: "En soumettant ce formulaire, vous nous autorisez à vous contacter concernant votre échantillon gratuit de Purrify. Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers."
   },
   
   // SEO
   seo: {
-    keywords: "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animaux, élimination des odeurs de chat, litière écologique, contrôle naturel des odeurs, soins pour chat, fournitures pour animaux, vidéo de chat",
+    keywords: "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animal, élimination des odeurs de chat, litière écologique pour chat, contrôle naturel des odeurs, soins des chats, fournitures pour animaux, vidéo de chat",
     openGraph: {
-      title: "Purrify - Additif de litière pour chat au charbon actif",
-      description: "Additif de litière pour chat au charbon actif qui élimine les odeurs à la source."
+      title: "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
+      description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
     }
   },
   
@@ -242,13 +265,12 @@ export const fr = {
       }
     },
     product: {
-      name: "Additif de litière pour chat au charbon actif Purrify",
-      description: "Additif de litière pour chat au charbon actif qui élimine les odeurs à la source."
+      name: "Additif de Litière pour Chat à Base de Charbon Actif Purrify",
+      description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
     },
     localBusiness: {
-      type: "AnimaleriePourAnimauxDeCompagnie",
-      name: "Purrify",
-      description: "Additif de litière pour chat au charbon actif qui élimine les odeurs à la source."
+      type: "Animalerie",
+      name: "Purrify"
     },
     breadcrumb: {
       home: "Accueil"
@@ -285,11 +307,11 @@ export const fr = {
 
   // Footer
   footer: {
-    quickLinks: "Liens rapides",
-    openingHours: "Heures d'ouverture",
-    contactUs: "Contactez-nous",
-    allRightsReserved: "Tous droits réservés",
-    aiSupport: "Notre support IA est disponible 24 heures sur 24"
+    quickLinks: "Liens Rapides",
+    openingHours: "Heures d'Ouverture",
+    aiSupport: "Support IA Disponible 24/7",
+    contactUs: "Contactez-Nous",
+    allRightsReserved: "Tous Droits Réservés"
   },
 
   // Free Trial

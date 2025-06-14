@@ -74,7 +74,29 @@ export interface TranslationType {
     };
   };
 
-  
+  // Benefits
+  benefits: {
+    molecular: {
+      title: string;
+      description: string;
+    };
+    sevenDayFreshness: {
+      title: string;
+      description: string;
+    };
+    natural: {
+      title: string;
+      description: string;
+    };
+    universalFit: {
+      title: string;
+      description: string;
+    };
+    highlyRated: {
+      title: string;
+      description: string;
+    };
+  };
   
   // How It Works
   howItWorks?: {

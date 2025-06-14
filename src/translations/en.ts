@@ -9,7 +9,6 @@ export const en = {
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
-    //tryFree: "Try Free",
     testimonials: "Testimonials",
     contact: "Contact",
     blog: "Blog",
@@ -19,15 +18,15 @@ export const en = {
   
   // Products
   products: {
-    purrify17g: {
+    "purrify-17g": {
       name: "Purrify 17g",
       description: "Perfect for New Kittens\nThe perfect trial size - good for one litter change."
     },
-    purrify60g: {
+    "purrify-60g": {
       name: "Purrify 60g",
       description: "Ideal for One Cat\nOur most popular size for single-cat homes.\nOne month of freshness!"
     },
-    purrify120g: {
+    "purrify-120g": {
       name: "Purrify 120g",
       description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control."
     }
@@ -69,12 +68,12 @@ export const en = {
     },
     freePurrify: {
       title: "Free Purrify",
-      description: "Get a free Purrify sample with your first order.",
+      description: "Get a free Purrify sample with your first order."
     },
     beforeAfter: {
       title: "Before & After",
-      description: "See the difference Purrify makes in your cat's litter box.",
-    },
+      description: "See the difference Purrify makes in your cat's litter box."
+    }
   },
   
   // How It Works
@@ -254,32 +253,73 @@ export const en = {
       home: "Home"
     },
     video: {
-      name: "",
-      description: ""
+      name: "Purrify Cat Litter Additive Effectiveness Demonstration",
+      description: "See how Purrify effectively eliminates cat litter odors at the source."
     }
   },
 
   // Blog Section
   blogSection: {
-    catCareTips: "Cat Care Tips & Insights",
+    catCareTips: "Cat Care Tips",
     fromOurBlog: "From Our Blog",
-    description: "Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats.",
+    description: "Expert advice and tips for cat owners",
     newPost: "New Post",
-    readFullArticle: "Read full article",
     viewAllArticles: "View All Articles"
   },
 
   // Contact Section
   contactSection: {
-    getInTouch: "Get In Touch",
+    getInTouch: "Get in Touch",
     ourLocation: "Our Location",
     phoneNumber: "Phone Number",
     openingHours: "Opening Hours",
-    weekdays: "Mon - Fri:",
-    saturday: "Saturday:",
-    sunday: "Sunday:",
-    aiSupport: "Our AI support is available 24/7",
-    sendMessage: "Send us a Message",
-    replyTime: "We'll get back to you within 24 hours"
+    weekdays: "Weekdays",
+    saturday: "Saturday",
+    sunday: "Sunday",
+    aiSupport: "AI Support Available 24/7",
+    sendMessage: "Send Message",
+    replyTime: "We'll reply within 24 hours"
+  },
+
+  // Benefits
+  benefits: {
+    molecular: {
+      title: "Molecular Level",
+      description: "Eliminates odors at the source"
+    },
+    sevenDayFreshness: {
+      title: "7-Day Freshness",
+      description: "Long-lasting odor control"
+    },
+    natural: {
+      title: "100% Natural",
+      description: "Cat and environmentally friendly"
+    },
+    universalFit: {
+      title: "Universal Fit",
+      description: "Works with all litter types"
+    },
+    highlyRated: {
+      title: "Highly Rated",
+      description: "30-day money-back guarantee\nFree shipping in Canada"
+    }
+  },
+
+  about: {
+    naturalAndEffective: "Natural & Effective"
+  },
+
+  footer: {
+    quickLinks: "Quick Links",
+    openingHours: "Opening Hours",
+    contactUs: "Contact Us",
+    allRightsReserved: "All Rights Reserved",
+    aiSupport: "AI Support Available 24/7"
+  },
+
+  // Free Trial
+  freeTrial: {
+    urgentBanner: "Limited Time Offer",
+    free: "Free"
   }
 };

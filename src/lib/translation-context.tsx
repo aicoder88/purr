@@ -1,9 +1,10 @@
 import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { translations, Locale } from '../translations';
+import { TranslationType } from '../translations/types';
 
 type TranslationContextType = {
-  t: typeof translations.en;
+  t: TranslationType;
   locale: Locale;
   changeLocale: (locale: Locale) => void;
 };

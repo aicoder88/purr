@@ -105,8 +105,8 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1">Molecular Level</h3>
-                    <p className="text-xs text-gray-600">Eliminates odors at their source</p>
+                    <h3 className="text-base font-semibold mb-1">{t.benefits.molecular.title}</h3>
+                    <p className="text-xs text-gray-600">{t.benefits.molecular.description}</p>
                   </div>
 
                   {/* Feature 2 */}
@@ -116,30 +116,41 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1">7-Day Freshness</h3>
-                    <p className="text-xs text-gray-600">Long-lasting odor control</p>
+                    <h3 className="text-base font-semibold mb-1">{t.benefits.sevenDayFreshness.title}</h3>
+                    <p className="text-xs text-gray-600">{t.benefits.sevenDayFreshness.description}</p>
                   </div>
 
                   {/* Feature 3 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1">100% Natural</h3>
-                    <p className="text-xs text-gray-600">Safe for cats & environment</p>
+                    <h3 className="text-base font-semibold mb-1">{t.benefits.natural.title}</h3>
+                    <p className="text-xs text-gray-600">{t.benefits.natural.description}</p>
                   </div>
 
                   {/* Feature 4 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#5B2EFF]/5 to-[#FF3131]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#5B2EFF]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1">Universal Fit</h3>
-                    <p className="text-xs text-gray-600">Works with any litter type</p>
+                    <h3 className="text-base font-semibold mb-1">{t.benefits.universalFit.title}</h3>
+                    <p className="text-xs text-gray-600">{t.benefits.universalFit.description}</p>
+                  </div>
+
+                  {/* Feature 5 */}
+                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center" aria-hidden="true">
+                      <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </div>
+                    <h3 className="text-base font-semibold mb-1">{t.benefits.highlyRated.title}</h3>
+                    <p className="text-xs text-gray-600">{t.benefits.highlyRated.description}</p>
                   </div>
                 </div>
 
