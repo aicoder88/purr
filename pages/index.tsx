@@ -254,8 +254,8 @@ export default function Home() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'VideoObject',
-            'name': 'Purrify Cat Litter Additive Demo',
-            'description': 'A demonstration of Purrify activated carbon cat litter additive that eliminates odors at the molecular level',
+            'name': '',
+            'description': '',
             'thumbnailUrl': 'https://purrify.ca/cat_rose_thumbnail.jpg',
             'uploadDate': '2023-09-01T08:00:00+08:00',
             'contentUrl': 'https://purrify.ca/videos/cat_rose_optimized.mp4',

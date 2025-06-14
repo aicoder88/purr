@@ -254,8 +254,8 @@ export const en = {
       home: "Home"
     },
     video: {
-      name: "Purrify Cat Litter Additive Demo",
-      description: "A demonstration of Purrify activated carbon cat litter additive that eliminates odors at the molecular level"
+      name: "",
+      description: ""
     }
   },
 

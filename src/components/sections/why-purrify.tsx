@@ -88,7 +88,7 @@ export function WhyPurrify() {
             {t.nav.whyPurrify}
           </h2>
           <p className="text-gray-600 text-lg">
-            {t.siteDescription}
+            Discover why thousands of cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export function WhyPurrify() {
                   className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="aspect-video overflow-hidden h-[225px]">
+                  <div className="aspect-video overflow-hidden h-[225px] flex items-center justify-center">
                     <NextImage
                       src={reason.image}
                       alt={reason.title}
@@ -113,6 +113,9 @@ export function WhyPurrify() {
                       style={{
                         objectFit: 'cover',
                         objectPosition: 'center',
+                        transform: reason.title.includes('LONG-LASTING FRESHNESS') || reason.title.includes('COST-EFFECTIVE')
+                          ? 'scale(1.2)'
+                          : 'none'
                       }}
                     />
                   </div>

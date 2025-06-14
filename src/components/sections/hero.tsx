@@ -62,24 +62,29 @@ export function Hero() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300">
               <video
-                poster="/optimized/cat_rose_thumbnail.webp"
+                poster="/cat_rose_thumbnail.jpg"
                 className="w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto"
                 autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 aria-label="Cat with rose video"
-                title="Purrify Cat Litter Additive Demo"
                 role="presentation"
                 loop
                 tabIndex={-1}
                 itemScope
                 itemType="https://schema.org/VideoObject"
+                onError={(e) => {
+                  console.error('Video playback error:', e);
+                  const video = e.target as HTMLVideoElement;
+                  video.style.display = 'none';
+                }}
+                onLoadedData={(e) => {
+                  console.log('Video loaded successfully');
+                }}
               >
-                <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
-                <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
-                <meta itemProp="name" content="Purrify Cat Litter Additive Demo" />
-                <meta itemProp="description" content="A demonstration of Purrify activated carbon cat litter additive that eliminates odors at the molecular level" />
+                <source src="https://purrify.ca/videos/cat_rose_optimized.webm" type="video/webm" />
+                <source src="https://purrify.ca/videos/cat_rose_optimized.mp4" type="video/mp4" />
                 <meta itemProp="thumbnailUrl" content="/cat_rose_thumbnail.jpg" />
                 <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
                 <meta itemProp="duration" content="PT30S" />
@@ -87,29 +92,76 @@ export function Hero() {
               </video>
             </div>
             
-            {/* Testimonials moved below the video but above scroll indicator */}
+            {/* Feature Showcase */}
             <div className="mt-8 mb-6 w-full">
-              <div className="bg-[#FFFFFF]/90 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-[#E0EFC7]/30 transition-all duration-500 max-w-md mx-auto hover:shadow-[#E0EFC7]/50 hover:-translate-y-1">
-                <div className="flex mb-1">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => (
-                      <svg
-                        key={i}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+              <div className="bg-[#FFFFFF]/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-[#E0EFC7]/30 transition-all duration-500 max-w-2xl mx-auto hover:shadow-[#E0EFC7]/50 hover:-translate-y-1">
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Feature 1 */}
+                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
-                    ))}
+                    </div>
+                    <h3 className="text-base font-semibold mb-1">Molecular Level</h3>
+                    <p className="text-xs text-gray-600">Eliminates odors at their source</p>
+                  </div>
+
+                  {/* Feature 2 */}
+                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#5B2EFF]/5 to-[#FF3131]/5">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-[#5B2EFF]/10 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-base font-semibold mb-1">7-Day Freshness</h3>
+                    <p className="text-xs text-gray-600">Long-lasting odor control</p>
+                  </div>
+
+                  {/* Feature 3 */}
+                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-base font-semibold mb-1">100% Natural</h3>
+                    <p className="text-xs text-gray-600">Safe for cats & environment</p>
+                  </div>
+
+                  {/* Feature 4 */}
+                  <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#5B2EFF]/5 to-[#FF3131]/5">
+                    <div className="w-10 h-10 mb-2 rounded-full bg-[#5B2EFF]/10 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    </div>
+                    <h3 className="text-base font-semibold mb-1">Universal Fit</h3>
+                    <p className="text-xs text-gray-600">Works with any litter type</p>
+                  </div>
                 </div>
-                <p className="text-[#0072CE] font-medium line-clamp-2 text-lg italic">
-                  "{TESTIMONIALS[currentTestimonial].text.split(".")[0]}."
-                </p>
-                <p className="text-sm text-[#333333] font-semibold mt-1">
-                  - {TESTIMONIALS[currentTestimonial].name}
-                </p>
+
+                {/* Trust Indicators */}
+                <div className="mt-4 flex justify-center items-center space-x-6 text-xs text-gray-500">
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span>4.9/5 Rating</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>30-Day Guarantee</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-blue-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
+                    </svg>
+                    <span>Free Shipping</span>
+                  </div>
+                </div>
               </div>
             </div>
             
