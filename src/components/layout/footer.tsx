@@ -68,7 +68,7 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333]">
-              {locale === 'fr' ? 'Liens rapides' : 'Quick Links'}
+              {t.footer.quickLinks}
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
@@ -140,7 +140,7 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333]">
-              {locale === 'fr' ? 'Heures d\'ouverture' : 'Opening Hours'}
+              {t.footer.openingHours}
             </h3>
             <ul className="space-y-2 text-sm text-[#333333]/80">
               <li>{locale === 'fr' ? 'Lun - Ven' : 'Mon - Fri'}: {t.contact.hours.monday}</li>
@@ -148,15 +148,13 @@ export function Footer() {
               <li>{locale === 'fr' ? 'Dimanche' : 'Sunday'}: {t.contact.hours.sunday}</li>
             </ul>
             <p className="text-sm text-[#333333]/80">
-              {locale === 'fr'
-                ? 'Notre support IA est disponible pour vous aider 24 heures sur 24.'
-                : 'Our AI support is available to help you 24 hours a day.'}
+              {t.footer.aiSupport}
             </p>
           </div>
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333]">
-              {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
+              {t.footer.contactUs}
             </h3>
             <address className="not-italic space-y-2 text-sm text-[#333333]/80">
               <p>{t.contact.address}</p>
@@ -189,7 +187,7 @@ export function Footer() {
           <p className="text-center text-xs text-[#333333]/80">
             © {currentYear}{" "}
             <span className="text-[#FF3131] font-medium">{t.siteName}</span> |
-            {locale === 'fr' ? 'Tous droits réservés' : 'All Rights Reserved'}
+            {t.footer.allRightsReserved}
           </p>
         </div>
       </Container>

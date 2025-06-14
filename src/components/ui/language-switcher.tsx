@@ -88,22 +88,22 @@ export function LanguageSwitcher() {
         <img 
           src={currentLanguage.flag} 
           alt={currentLanguage.alt} 
-          className="w-5 h-5 rounded-full object-cover"
+          className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
-        <span className="text-sm font-medium">{currentLanguage.name}</span>
-        <ChevronDown className="h-4 w-4 text-[#FF3131]" />
+        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.name}</span>
+        <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-[#FF3131]" />
       </Button>
 
       {isOpen && (
         <div 
-          className="absolute right-0 mt-1 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
+          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
           onMouseLeave={closeDropdown}
         >
           <div className="py-1" role="menu" aria-orientation="vertical">
             {languages.map((language) => (
               <button
                 key={language.locale}
-                className={`flex items-center px-4 py-2 text-sm w-full text-left ${
+                className={`flex items-center px-3 py-2 text-sm w-full text-left ${
                   locale === language.locale
                     ? 'bg-[#FFFFF5] text-[#FF3131] font-medium'
                     : 'text-gray-700 hover:bg-[#FFFFF5] hover:text-[#FF3131]'
@@ -114,7 +114,7 @@ export function LanguageSwitcher() {
                 <img 
                   src={language.flag} 
                   alt={language.alt} 
-                  className="w-5 h-5 rounded-full object-cover mr-3"
+                  className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover mr-2 sm:mr-3"
                 />
                 {language.name}
               </button>

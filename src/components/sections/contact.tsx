@@ -29,42 +29,41 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="h-5 w-5 text-white" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
+          <div className="space-y-4 sm:space-y-8">
+            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
+              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131]">
                   {t.contactSection.ourLocation}
                 </h3>
-                <p className="text-gray-600">{CONTACT_INFO.address}</p>
+                <p className="text-gray-600 text-sm sm:text-base">{CONTACT_INFO.address}</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-5 w-5 text-white" />
+            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
+              <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#5B2EFF]">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#5B2EFF]">
                   {t.contactSection.phoneNumber}
                 </h3>
-                <p className="text-gray-600">{CONTACT_INFO.phone}</p>
+                <p className="text-gray-600 text-sm sm:text-base">{CONTACT_INFO.phone}</p>
               </div>
             </div>
 
-
-            <div className="flex items-start space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Clock className="h-5 w-5 text-white" />
+            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
+              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+                <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-2 text-[#FF3131]">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131]">
                   {t.contactSection.openingHours}
                 </h3>
-                <ul className="text-gray-600 space-y-2">
+                <ul className="text-gray-600 text-sm sm:text-base space-y-1 sm:space-y-2">
                   <li className="flex justify-between">
                     <span>{t.contactSection.weekdays}</span>
                     <span className="font-medium">
@@ -84,9 +83,9 @@ export function Contact() {
                     </span>
                   </li>
                 </ul>
-                <div className="mt-4 pt-4 border-t border-[#E0EFC7] flex items-center">
+                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#E0EFC7] flex items-center">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {t.contactSection.aiSupport}
                   </p>
                 </div>
@@ -94,12 +93,12 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="bg-[#FFFFFF]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/50">
-            <h3 className="font-bold text-2xl mb-6 text-[#5B2EFF]">
+          <div className="bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/50">
+            <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6 text-[#5B2EFF]">
               {t.contactSection.sendMessage}
             </h3>
             <ContactForm />
-            <p className="text-xs text-center text-gray-500 mt-4">
+            <p className="text-xs text-center text-gray-500 mt-3 sm:mt-4">
               {t.contactSection.replyTime}
             </p>
           </div>

@@ -85,7 +85,7 @@ const FreePage: NextPage = () => {
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
                 <div className="bg-red-600 text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
-                  URGENT: L'OFFRE GRATUITE SE TERMINE BIENTÔT
+                  {t.freeTrial.urgentBanner}
                 </div>
               </div>
               
@@ -101,7 +101,7 @@ const FreePage: NextPage = () => {
                     priority
                   />
                   <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
-                    GRATUIT
+                    {t.freeTrial.free}
                   </div>
                 </div>
               </div>

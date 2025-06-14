@@ -96,18 +96,18 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div className="text-center mt-6">
-                  <div className="overflow-hidden rounded-lg mb-4 h-[400px]">
+                  <div className="overflow-hidden rounded-lg mb-4 h-[250px] sm:h-[400px]">
                     <NextImage
                       src={step.image}
                       alt={`${step.title} image`}
                       width={400}
                       height={800}
-                      priority={index === 0} /* Load first image with priority */
+                      priority={index === 0}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
                   <h3
-                    className={`font-bold text-3xl mb-4 ${
+                    className={`font-bold text-2xl sm:text-3xl mb-3 sm:mb-4 ${
                       index === 0
                         ? "text-[#FF3131]"
                         : index === 1
@@ -117,65 +117,65 @@ export function HowItWorks() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 text-lg">{step.description}</p>
+                  <p className="text-gray-700 text-base sm:text-lg">{step.description}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-20 flex justify-center">
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] w-full transform transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        <div className="mt-12 sm:mt-20 flex justify-center">
+          <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] w-full transform transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group overflow-hidden">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-8">
               <div className="w-full md:w-1/2 overflow-hidden rounded-xl">
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="relative overflow-hidden rounded-lg h-32">
+                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
                     <NextImage
                       src="/optimized/clay-cat-litter.webp"
                       alt="Clay cat litter"
                       width={200}
                       height={150}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager" /* Load above-the-fold images eagerly */
+                      loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       {t.howItWorks?.litterTypes?.clumping || "CLUMPING"}
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg h-32">
+                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
                     <NextImage
                       src="/optimized/crystal-cat-litter.webp"
                       alt="Crystal cat litter"
                       width={200}
                       height={150}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager" /* Load above-the-fold images eagerly */
+                      loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       {t.howItWorks?.litterTypes?.crystal || "CRYSTAL"}
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg h-32">
+                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
                     <NextImage
                       src="/optimized/natural-cat-litter.webp"
                       alt="Natural cat litter"
                       width={200}
                       height={150}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager" /* Load above-the-fold images eagerly */
+                      loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       {t.howItWorks?.litterTypes?.natural || "NATURAL"}
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-lg h-32">
+                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
                     <NextImage
                       src="/optimized/clamping-cat-litter.webp"
                       alt="Clumping cat litter"
                       width={200}
                       height={150}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager" /* Load above-the-fold images eagerly */
+                      loading="eager"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
                       {t.howItWorks?.litterTypes?.clay || "CLAY"}

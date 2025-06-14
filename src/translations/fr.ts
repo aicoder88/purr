@@ -19,15 +19,15 @@ export const fr = {
   
   // Products
   products: {
-    purrify17g: {
+    "purrify-17g": {
       name: "Purrify 17g",
       description: "Parfait pour les nouveaux chatons\nLa taille d'essai parfaite - idéal pour un changement de litière."
     },
-    purrify60g: {
+    "purrify-60g": {
       name: "Purrify 60g",
       description: "Idéal pour un chat\nNotre format le plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur!"
     },
-    purrify120g: {
+    "purrify-120g": {
       name: "Purrify 120g",
       description: "Parfait pour deux chats\nDouble puissance pour les foyers avec plusieurs chats.\nContrôle maximal des odeurs."
     }
@@ -281,5 +281,25 @@ export const fr = {
     aiSupport: "Notre support IA est disponible 24/7",
     sendMessage: "Envoyez-nous un message",
     replyTime: "Nous vous répondrons dans les 24 heures"
+  },
+
+  // Footer
+  footer: {
+    quickLinks: "Liens rapides",
+    openingHours: "Heures d'ouverture",
+    contactUs: "Contactez-nous",
+    allRightsReserved: "Tous droits réservés",
+    aiSupport: "Notre support IA est disponible 24 heures sur 24"
+  },
+
+  // Free Trial
+  freeTrial: {
+    urgentBanner: "URGENT: L'OFFRE GRATUITE SE TERMINE BIENTÔT",
+    free: "GRATUIT"
+  },
+
+  // About Section
+  about: {
+    naturalAndEffective: "Naturel & Efficace"
   }
 };

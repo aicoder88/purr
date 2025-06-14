@@ -60,25 +60,25 @@ export function BlogPreview() {
             >
               <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-video overflow-hidden h-[200px] sm:h-[250px]">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain scale-85' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                   />
                 </div>
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 px-3 py-1 rounded-full shadow-md text-xs text-white font-medium">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white font-medium">
                   {t.blogSection.newPost}
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-bold text-xl mb-3 text-[#5B2EFF] group-hover:text-[#5B2EFF]/80 transition-colors">
+              <div className="p-4 sm:p-6">
+                <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#5B2EFF] group-hover:text-[#5B2EFF]/80 transition-colors">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-3">
                   {post.excerpt}
                 </p>
-                <div className="flex justify-between items-center text-sm">
+                <div className="flex justify-between items-center text-xs sm:text-sm">
                   <span className="text-[#03E46A] font-medium">
                     {post.author}
                   </span>

@@ -16,19 +16,19 @@ export function About() {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t.features.longLastingFreshness.title} />
           
-          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">Natural & Effective</h2>
+          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
           
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300 w-10/12 h-[340px]">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300 w-10/12 h-[400px]">
               <NextImage
                 src="/optimized/Carbon sktech.webp"
                 alt="Carbon sketch illustration"
-                width={500}
-                height={340}
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                sizes="(max-width: 768px) 100vw, 500px"
+                width={800}
+                height={400}
+                className="w-full h-[120%] object-cover object-top -mt-[10%] group-hover:scale-105 transition duration-700"
+                sizes="(max-width: 768px) 100vw, 800px"
                 priority={true}
               />
             </div>
@@ -58,7 +58,7 @@ export function About() {
                   alt="Micropore magnified view of activated carbon"
                   width={400}
                   height={300}
-                  className="w-full h-48 object-contain transform hover:scale-90 transition duration-500"
+                  className="w-full h-48 object-contain scale-85 transform hover:scale-90 transition duration-500"
                   loading="lazy"
                 />
               </div>

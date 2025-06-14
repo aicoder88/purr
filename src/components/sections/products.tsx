@@ -79,7 +79,7 @@ export function Products() {
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#FF3131]/20 to-transparent p-4">
                       <p className="text-white font-bold text-base drop-shadow-md">
-                        {product.description.split('\n')[0]}
+                        {t.products[product.id]?.description.split('\n')[0]}
                       </p>
                     </div>
                   </div>
@@ -92,12 +92,12 @@ export function Products() {
               <div className="p-8">
                 <div className="mb-6">
                   <h3 className="font-bold text-2xl mb-3 bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent">
-                    {product.name}
+                    {t.products[product.id]?.name || product.name}
                   </h3>
                   
                   {/* Feature bullets from description */}
                   <div className="space-y-2 mb-4">
-                    {product.description.split('\n').map((line, i) => (
+                    {(t.products[product.id]?.description || product.description).split('\n').map((line, i) => (
                       <div key={i} className="flex items-start">
                         {i > 0 && <div className="text-[#FF3131] mr-2 mt-1">•</div>}
                         <p className={`text-gray-700 ${i === 0 ? 'font-medium text-lg' : ''}`}>{line}</p>

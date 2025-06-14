@@ -49,7 +49,7 @@ export function Features() {
             return (
               <div
                 key={index}
-                className="bg-[#FFFFFF]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/70 hover:-translate-y-2 group"
+                className="bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/70 hover:-translate-y-2 group"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div
@@ -59,12 +59,12 @@ export function Features() {
                       : index % 3 === 1
                       ? "from-[#5B2EFF] to-[#5B2EFF]/80"
                       : "from-[#03E46A] to-[#03E46A]/80"
-                  } p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
+                  } p-3 sm:p-4 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <IconComponent className="h-8 w-8 text-white" />
+                  <IconComponent className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
                 <h3
-                  className={`font-bold text-xl mb-4 ${
+                  className={`font-bold text-lg sm:text-xl mb-3 sm:mb-4 ${
                     index % 3 === 0
                       ? "text-[#FF3131]"
                       : index % 3 === 1
@@ -74,7 +74,7 @@ export function Features() {
                 >
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {feature.description}
                 </p>
 

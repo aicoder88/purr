@@ -37,6 +37,7 @@ export function Header() {
                 width={120}
                 height={40}
                 className="h-8 w-auto"
+                priority
               />
             </Link>
           </div>
@@ -74,10 +75,10 @@ export function Header() {
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
             <Button
               onClick={scrollToProducts}
-              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               Buy Now!
@@ -86,15 +87,13 @@ export function Header() {
             <ShoppingCart />
           </div>
 
-          <div className="md:hidden flex items-center">
-            <div className="flex items-center mr-3">
-              <LanguageSwitcher />
-            </div>
+          <div className="flex md:hidden items-center space-x-2">
+            <LanguageSwitcher />
             <ShoppingCart />
             <Button
               variant="ghost"
               size="icon"
-              className="ml-2"
+              className="ml-1"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -109,7 +108,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden border-t border-[#E0EFC7]">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 href="/#how-it-works"

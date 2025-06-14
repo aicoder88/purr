@@ -9,12 +9,19 @@ export interface TranslationType {
     howItWorks: string;
     about: string;
     whyPurrify: string;
+    tryFree?: string;
     testimonials: string;
     contact: string;
     blog: string;
     privacyPolicy: string;
     termsOfService: string;
   };
+
+  // About Section
+  about: {
+    naturalAndEffective: string;
+  };
+
   // Hero section
   hero: {
     catLitter: string;
@@ -25,15 +32,7 @@ export interface TranslationType {
   
   // Products
   products: {
-    purrify17g: {
-      name: string;
-      description: string;
-    };
-    purrify60g: {
-      name: string;
-      description: string;
-    };
-    purrify120g: {
+    [key: string]: {
       name: string;
       description: string;
     };
@@ -243,5 +242,20 @@ export interface TranslationType {
     aiSupport: string;
     sendMessage: string;
     replyTime: string;
+  };
+
+  // Footer
+  footer: {
+    quickLinks: string;
+    openingHours: string;
+    contactUs: string;
+    allRightsReserved: string;
+    aiSupport: string;
+  };
+
+  // Free Trial
+  freeTrial: {
+    urgentBanner: string;
+    free: string;
   };
 }

@@ -230,13 +230,12 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               </div>
             </div>
             
-            <div className="rounded-2xl overflow-hidden mb-10 shadow-xl">
+            <div className="relative h-[500px] mb-8">
               <NextImage
                 src={post.image}
                 alt={post.title}
-                width={1200}
-                height={675}
-                className="w-full h-auto object-cover"
+                fill
+                className="object-contain scale-75"
               />
             </div>
             

@@ -102,7 +102,7 @@ export function WhyPurrify() {
                   className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="aspect-video overflow-hidden h-[225px] flex items-center justify-center">
+                  <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center">
                     <NextImage
                       src={reason.image}
                       alt={reason.title}
@@ -119,18 +119,18 @@ export function WhyPurrify() {
                       }}
                     />
                   </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center mb-4">
+                  <div className="p-4 sm:p-6 flex flex-col flex-grow">
+                    <div className="flex items-center mb-3 sm:mb-4">
                       <div
-                        className={`p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
+                        className={`p-2 sm:p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
                       >
-                        <IconComponent className="h-6 w-6 text-white" />
+                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className={`font-bold text-xl ${theme.textClass}`}>
+                      <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass}`}>
                         {reason.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm flex-grow">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base flex-grow">
                       {reason.description}
                     </p>
                   </div>
