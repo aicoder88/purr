@@ -264,6 +264,7 @@ export const en = {
     fromOurBlog: "From Our Blog",
     description: "Expert advice and tips for cat owners",
     newPost: "New Post",
+    readFullArticle: "Read Full Article",
     viewAllArticles: "View All Articles"
   },
 

@@ -270,7 +270,8 @@ export const fr = {
     },
     localBusiness: {
       type: "Animalerie",
-      name: "Purrify"
+      name: "Purrify",
+      description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
     },
     breadcrumb: {
       home: "Accueil"
