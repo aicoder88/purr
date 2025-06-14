@@ -57,11 +57,19 @@ export interface TranslationType {
       title: string;
       description: string;
     };
-    safeAndNatural: {
+    natural: {
       title: string;
       description: string;
     };
     costEffective: {
+      title: string;
+      description: string;
+    };
+    freePurrify: {
+      title: string;
+      description: string;
+    };
+    beforeAfter: {
       title: string;
       description: string;
     };

@@ -49,7 +49,7 @@ export const en = {
     },
     catFriendly: {
       title: "Cat-Friendly",
-      description: "Designed with your cat's well-being in mind, it's safe, gentle, and completely pet-friendly."
+      description: "Designed with your cat's well-being in mind, it's gentle, and completely pet-friendly."
     },
     longLastingFreshness: {
       title: "Long-Lasting Freshness",
@@ -59,14 +59,22 @@ export const en = {
       title: "Works with Any Litter",
       description: "Compatible with any litter type, so you don't have to switch what your cat already loves."
     },
-    safeAndNatural: {
-      title: "Safe & Natural",
+    natural: {
+      title: "Natural",
       description: "Made from activated coconut shells, providing a natural solution because your cat's health comes first."
     },
     costEffective: {
       title: "Cost-Effective",
       description: "Extends the life of your cat's litter by preventing odor buildup, saving you money and reducing waste."
-    }
+    },
+    freePurrify: {
+      title: "Free Purrify",
+      description: "Get a free Purrify sample with your first order.",
+    },
+    beforeAfter: {
+      title: "Before & After",
+      description: "See the difference Purrify makes in your cat's litter box.",
+    },
   },
   
   // How It Works

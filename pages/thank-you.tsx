@@ -85,7 +85,7 @@ const ThankYouPage = () => {
         <div className="max-w-2xl mx-auto text-center py-16">
           <div className="mb-8">
             <NextImage
-              src="/images/thank-you.png"
+              src="/optimized/thank-you.webp"
               alt="Thank You"
               width={200}
               height={200}

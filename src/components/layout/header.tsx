@@ -32,7 +32,7 @@ export function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="/purrify-logo-text.png"
+                src="/optimized/purrify-logo-text.webp"
                 alt="Purrify"
                 width={120}
                 height={40}
@@ -53,12 +53,6 @@ export function Header() {
               className="text-gray-600 hover:text-[#FF3131] transition-colors font-medium"
             >
               {t.nav?.about || "About"}
-            </Link>
-            <Link
-              href="/#why-purrify"
-              className="text-gray-600 hover:text-[#FF3131] transition-colors font-medium"
-            >
-              {t.nav?.whyPurrify || "Why Purrify"}
             </Link>
             <Link
               href="/#testimonials"
@@ -130,13 +124,6 @@ export function Header() {
                 onClick={toggleMenu}
               >
                 {t.nav?.about || "About"}
-              </Link>
-              <Link
-                href="/#why-purrify"
-                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors font-medium"
-                onClick={toggleMenu}
-              >
-                {t.nav?.whyPurrify || "Why Purrify"}
               </Link>
               <Link
                 href="/#testimonials"

@@ -12,37 +12,57 @@ export function WhyPurrify() {
       icon: Wind,
       title: t.features.odorElimination.title.toUpperCase(),
       description: t.features.odorElimination.description,
-      image: "/micropores_magnified_view.jpeg" // Use local image
+      image: "/optimized/micropores_magnified_view.webp"
     },
     {
       icon: Cat,
       title: t.features.catFriendly.title.toUpperCase(),
       description: t.features.catFriendly.description,
-      image: "/natural-cat-litter.webp" // Changed image
+      image: "/optimized/natural-cat-litter.webp"
     },
     {
       icon: Clock,
       title: t.features.longLastingFreshness.title.toUpperCase(),
       description: t.features.longLastingFreshness.description,
-      image: "/optimized/fresh.webp" // Using the optimized webp version
+      image: "/optimized/fresh.webp"
     },
     {
       icon: Layers,
       title: t.features.worksWithAnyLitter.title.toUpperCase(),
       description: t.features.worksWithAnyLitter.description,
-      image: "/clay-cat-litter.webp" // Use local image
+      image: "/optimized/clay-cat-litter.webp"
     },
     {
-      icon: Sparkles, // Changed icon
-      title: t.features.safeAndNatural.title.toUpperCase(),
-      description: t.features.safeAndNatural.description,
-      image: "/carbon_magnified_image.png" // Use local image
+      icon: Sparkles,
+      title: t.features.natural.title.toUpperCase(),
+      description: t.features.natural.description,
+      image: "/optimized/Carbon-sktech.webp",
+      color: "bg-[#E8F5E9]",
+      textColor: "text-[#2E7D32]",
     },
     {
       icon: PiggyBank,
       title: t.features.costEffective.title.toUpperCase(),
       description: t.features.costEffective.description,
-      image: "/cost effective.png" // Updated image
+      image: "/optimized/cost-effective.webp",
+      color: "bg-[#FFF3E0]",
+      textColor: "text-[#E65100]",
+    },
+    {
+      icon: Sparkles,
+      title: t.features.freePurrify.title.toUpperCase(),
+      description: t.features.freePurrify.description,
+      image: "/optimized/free-purrify.webp",
+      color: "bg-[#E3F2FD]",
+      textColor: "text-[#1565C0]",
+    },
+    {
+      icon: Sparkles,
+      title: t.features.beforeAfter.title.toUpperCase(),
+      description: t.features.beforeAfter.description,
+      image: "/optimized/before-after.webp",
+      color: "bg-[#F3E5F5]",
+      textColor: "text-[#7B1FA2]",
     },
   ];
 
@@ -52,7 +72,6 @@ export function WhyPurrify() {
     { bgGradient: "from-[#5B2EFF] to-[#5B2EFF]/80", textClass: "text-[#5B2EFF]", shadow: "shadow-purple-200/50", border: "border-purple-100" },
     { bgGradient: "from-[#03E46A] to-[#03E46A]/80", textClass: "text-[#03E46A]", shadow: "shadow-green-200/50", border: "border-green-100" },
   ];
-
 
   return (
     <section
@@ -74,26 +93,22 @@ export function WhyPurrify() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => { // Remove the outer map and parenthesis
-              const theme = colorThemes[index % 3]; // Cycle through themes
+          {reasons.map((reason, index) => {
+              const theme = colorThemes[index % 3];
               const IconComponent = reason.icon;
               return (
                 <div
                   key={index}
-                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`} // Added overflow-hidden and flex
+                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  {/* Image Section with fixed dimensions to prevent layout shifts */}
                   <div className="aspect-video overflow-hidden h-[225px]">
                     <NextImage
-                      src={reason.image.replace('/images/fresh.png', '/optimized/fresh.webp')
-                            .replace('/cost effective.png', '/optimized/cost effective.webp')
-                            .replace('/carbon_magnified_image.png', '/optimized/carbon_magnified_image.webp')
-                            .replace('/micropores_magnified_view.jpeg', '/optimized/micropores_magnified_view.webp')}
+                      src={reason.image}
                       alt={reason.title}
                       width={400}
                       height={225}
-                      loading={index < 3 ? "eager" : "lazy"} /* Load first 3 images eagerly */
+                      loading={index < 3 ? "eager" : "lazy"}
                       className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
                       style={{
                         objectFit: 'cover',
@@ -101,37 +116,33 @@ export function WhyPurrify() {
                       }}
                     />
                   </div>
-                  {/* Content Section */}
-                  <div className="p-6 flex flex-col flex-grow"> {/* Added padding and flex-grow */}
-                    <div className="flex items-center mb-4"> {/* Reduced bottom margin */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-center mb-4">
                       <div
-                        className={`p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`} // Reduced padding and margin
+                        className={`p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
                       >
-                        <IconComponent className="h-6 w-6 text-white" /> {/* Reduced icon size */}
+                        <IconComponent className="h-6 w-6 text-white" />
                       </div>
-                      <h3 className={`font-bold text-xl ${theme.textClass}`}> {/* Reduced title size */}
+                      <h3 className={`font-bold text-xl ${theme.textClass}`}>
                         {reason.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm flex-grow"> {/* Reduced text size, added flex-grow */}
+                    <p className="text-gray-600 leading-relaxed text-sm flex-grow">
                       {reason.description}
                     </p>
-                    {/* Learn more link section is completely removed */}
                   </div>
                 </div>
               );
             })}
-          {/* Remove the extra closing parenthesis and bracket */}
         </div>
 
         <div className="mt-16 text-center">
           <div className="relative bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 px-12 py-10 rounded-3xl shadow-xl border-2 border-[#FF3131]/30 max-w-4xl mx-auto overflow-hidden">
-            {/* Using transform: translate3d(0,0,0) to force GPU rendering and prevent layout shifts */}
             <div className="fixed -top-10 -left-10 w-40 h-40 bg-[#FF3131]/20 rounded-full blur-3xl pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }}></div>
             <div className="fixed -bottom-10 -right-10 w-40 h-40 bg-[#5B2EFF]/20 rounded-full blur-3xl pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }}></div>
             <div className="relative z-10 flex flex-col items-center">
               <NextImage
-                src="/images/icon-128.png"
+                src="/optimized/icon-128.webp"
                 alt="Purrify Logo"
                 width={64}
                 height={64}
@@ -144,7 +155,6 @@ export function WhyPurrify() {
                 href="#products"
                 className="mt-4 inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-[#FF3131]/90 hover:to-[#FF3131] transition-all duration-300 group"
               >
-                {/* {t.nav.tryFree} */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"

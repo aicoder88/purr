@@ -8,7 +8,7 @@ export const PRODUCTS = [
     name: "Purrify 17g",
     description: "Perfect for New Kittens\nThe perfect trial size - good for one litter change.",
     price: 9.99,
-    image: "/20g.png",
+    image: "/optimized/20g.webp",
     size: "17g",
   },
   {
@@ -16,7 +16,7 @@ export const PRODUCTS = [
     name: "Purrify 60g",
     description: "Ideal for One Cat\nOur most popular size for single-cat homes.\nOne month of freshness!",
     price: 19.99,
-    image: "/60g.png",
+    image: "/optimized/60g.webp",
     size: "60g",
   },
   {
@@ -24,7 +24,7 @@ export const PRODUCTS = [
     name: "Purrify 120g",
     description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control.",
     price: 29.99,
-    image: "/images/140g.png",
+    image: "/optimized/140g.webp",
     size: "120g",
   },
 ];
@@ -39,7 +39,7 @@ export const FEATURES = [
   {
     title: "Cat-Friendly",
     description:
-      "Designed with your cat's well-being in mind, it's safe, gentle, and completely pet-friendly.",
+      "Designed with your cat's well-being in mind, it's gentle, and completely pet-friendly.",
     icon: "Heart",
   },
   {
@@ -53,12 +53,6 @@ export const FEATURES = [
     description:
       "Compatible with any litter type, so you don't have to switch what your cat already loves.",
     icon: "Check",
-  },
-  {
-    title: "Safe & Natural",
-    description:
-      "Made from activated coconut shells, providing a natural solution because your cat's health comes first.",
-    icon: "Leaf",
   },
   {
     title: "Cost-Effective",

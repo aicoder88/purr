@@ -48,7 +48,7 @@ const NotFoundPage: NextPage = () => {
         <div className="py-16 px-4 text-center max-w-3xl mx-auto">
           <div className="mb-8 flex justify-center">
             <NextImage
-              src="/purrify-logo-icon.png"
+              src="/optimized/purrify-logo-icon.webp"
               alt="Purrify Logo"
               width={80}
               height={80}

@@ -131,7 +131,7 @@ export function HowItWorks() {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
-                      src="/clay-cat-litter.webp"
+                      src="/optimized/clay-cat-litter.webp"
                       alt="Clay cat litter"
                       width={200}
                       height={150}
@@ -144,7 +144,7 @@ export function HowItWorks() {
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
-                      src="/crystal-cat-litter.webp"
+                      src="/optimized/crystal-cat-litter.webp"
                       alt="Crystal cat litter"
                       width={200}
                       height={150}
@@ -157,7 +157,7 @@ export function HowItWorks() {
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
-                      src="/natural-cat-litter.webp"
+                      src="/optimized/natural-cat-litter.webp"
                       alt="Natural cat litter"
                       width={200}
                       height={150}
@@ -170,7 +170,7 @@ export function HowItWorks() {
                   </div>
                   <div className="relative overflow-hidden rounded-lg h-32">
                     <NextImage
-                      src="/clamping-cat-litter.webp"
+                      src="/optimized/clamping-cat-litter.webp"
                       alt="Clumping cat litter"
                       width={200}
                       height={150}

@@ -10,7 +10,9 @@ const nextConfig = {
   // Add allowed development origins
   allowedDevOrigins: [
     'localhost:3000',
-    '192.168.0.146:3000'
+    'localhost:3003',
+    '192.168.0.146:3000',
+    '192.168.0.146:3003'
   ],
   
   // Enhanced image optimization

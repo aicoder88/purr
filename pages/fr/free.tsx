@@ -93,7 +93,7 @@ const FreePage: NextPage = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-indigo-600/10 rounded-lg blur-xl"></div>
                   <NextImage
-                    src="/free purrify.png"
+                    src="/optimized/free-purrify.webp"
                     alt="Sac d'essai gratuit d'additif de litière pour chat Purrify"
                     width={400}
                     height={300}
@@ -117,7 +117,7 @@ const FreePage: NextPage = () => {
                     
                     <div className="flex justify-center my-4">
                       <NextImage
-                        src="/samplebag.jpg"
+                        src="/optimized/samplebag.webp"
                         alt="Sac d'essai de taille échantillon de l'additif de litière pour chat Purrify"
                         width={120}
                         height={90}
@@ -177,7 +177,7 @@ const FreePage: NextPage = () => {
                 <div className="mb-8">
                   <div className="mb-6 flex justify-center">
                     <NextImage
-                      src="/before after.png"
+                      src="/optimized/before-after.webp"
                       alt="Comparaison montrant la litière avant et après l'utilisation de Purrify - démontrant les résultats d'élimination des odeurs"
                       width={600}
                       height={400}
