@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout/layout";
+import { Container } from '@/components/ui/container';
 import { NextPage } from "next";
 import Head from "next/head";
 import { SITE_NAME } from "@/lib/constants";
@@ -18,7 +18,7 @@ const HomePage: NextPage = () => {
   const { t } = useTranslation();
   
   return (
-    <Layout>
+    <Container>
       <Head>
         <title>{SITE_NAME} - {t.siteDescription}</title>
         <meta name="description" content={t.siteDescription} />
@@ -52,7 +52,7 @@ const HomePage: NextPage = () => {
       <CTA />
       <BlogPreview />
       <Contact />
-    </Layout>
+    </Container>
   );
 };
 

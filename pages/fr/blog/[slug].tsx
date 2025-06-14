@@ -1,4 +1,3 @@
-import { Layout } from "@/components/layout/layout";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import Head from "next/head";
 import { Container } from "@/components/ui/container";
@@ -17,7 +16,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
   const { t } = useTranslation();
   
   return (
-    <Layout>
+    <>
       <Head>
         <title>{post.title} | Blog | {SITE_NAME}</title>
         <meta name="description" content={post.excerpt} />
@@ -69,7 +68,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
           </div>
         </Container>
       </section>
-    </Layout>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import { NextSeo, OrganizationJsonLd, ProductJsonLd, FAQPageJsonLd, LocalBusinessJsonLd } from 'next-seo';
 import Script from 'next/script';
-import { Layout } from '../src/components/layout/layout';
 import { Hero } from '../src/components/sections/hero';
 import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
@@ -272,19 +271,17 @@ export default function Home() {
         }}
       />
 
-      <Layout>
-        <Hero />
-        <About />
-        <HowItWorks />
-        <WhyPurrify />
-        <Products />
-        <Testimonials />
-        <BlogPreview />
-        <FAQ />
-        <Newsletter />
-        <CTA />
-        <Contact />
-      </Layout>
+      <Hero />
+      <About />
+      <HowItWorks />
+      <WhyPurrify />
+      <Products />
+      <Testimonials />
+      <BlogPreview />
+      <FAQ />
+      <Newsletter />
+      <CTA />
+      <Contact />
     </>
   );
 }

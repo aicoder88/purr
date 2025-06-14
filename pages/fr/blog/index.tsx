@@ -1,4 +1,3 @@
-import { Layout } from "@/components/layout/layout";
 import { NextPage } from "next";
 import Head from "next/head";
 import { Container } from "@/components/ui/container";
@@ -12,7 +11,7 @@ const BlogPage: NextPage = () => {
   const { t } = useTranslation();
   
   return (
-    <Layout>
+    <>
       <Head>
         <title>Blog | {SITE_NAME}</title>
         <meta name="description" content="Conseils, astuces et informations pour les propriétaires de chats qui souhaitent une maison fraîche et des chats heureux et en bonne santé." />
@@ -55,7 +54,7 @@ const BlogPage: NextPage = () => {
           </div>
         </Container>
       </section>
-    </Layout>
+    </>
   );
 };
 

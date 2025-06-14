@@ -4,9 +4,11 @@ import { PRODUCTS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
+import { useCart } from "../../lib/cart-context";
 
 export function Products() {
   const { t } = useTranslation();
+  const { addToCart } = useCart();
   
   return (
     <section
@@ -105,10 +107,13 @@ export function Products() {
                 </div>
                 
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent hide-for-info-mode">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
                     ${product.price.toFixed(2)}
                   </span>
-                  <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 hide-for-info-mode">
+                  <Button 
+                    className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                    onClick={() => addToCart(product.id)}
+                  >
                     {t.productsSection?.addToCart || "Add to Cart"}
                   </Button>
                 </div>
@@ -118,7 +123,10 @@ export function Products() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg hide-for-info-mode">
+          <Button 
+            className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg"
+            onClick={() => window.location.href = '/#products'}
+          >
             {t.productsSection?.viewAllProducts || "VIEW ALL PRODUCTS"}
           </Button>
         </div>

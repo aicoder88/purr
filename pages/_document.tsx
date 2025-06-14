@@ -5,26 +5,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Character Set */}
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        
-        {/* Favicon and App Icons - Comprehensive set for all platforms */}
-        <link rel="icon" href="/images/favicon.png" type="image/png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
-        <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
-        <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
-        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-        <link rel="mask-icon" href="/images/icon-128.png" color="#FF3131" />
-        <meta name="msapplication-TileImage" content="/images/icon-128.png" />
-        
-        {/* Theme and Colors */}
-        <meta name="theme-color" content="#FF3131" />
-        <meta name="msapplication-TileColor" content="#FF3131" />
-        <meta name="msapplication-navbutton-color" content="#FF3131" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        
         {/* Preload critical fonts for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -52,30 +32,10 @@ export default function Document() {
           type="image/webp"
         />
         
-        {/* Preload critical CSS - removed since path is dynamic */}
-        
-        {/* Resource hints for performance */}
-        <link rel="preconnect" href="https://purrify.ca" crossOrigin="anonymous" />
-        
         {/* Enhanced SEO */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
-        
-        {/* PWA Support */}
-        <meta name="application-name" content="Purrify" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="Purrify" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="manifest" href="/manifest.json" />
-        
-        {/* DNS Prefetch and Preconnect for Performance */}
-        <link rel="dns-prefetch" href="https://api.dicebear.com" />
-        <link rel="preconnect" href="https://api.dicebear.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         
         {/* Reduce CLS with font display settings */}
         <style dangerouslySetInnerHTML={{ __html: `
@@ -102,10 +62,10 @@ export default function Document() {
           }
         `}} />
         
-        {/* Google Tag Manager - Strategy: afterInteractive for better performance */}
+        {/* Google Tag Manager */}
         <Script
           id="gtm-script"
-          strategy="lazyOnload" // Changed from afterInteractive to lazyOnload for better performance
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -138,7 +98,7 @@ export default function Document() {
         <Main />
         <NextScript />
         
-        {/* Chat plugin - Strategy: lazyOnload for better performance */}
+        {/* Chat plugin */}
         <Script
           id="chat-plugin"
           src="https://app.simplebotinstall.com/js/chat_plugin.js"

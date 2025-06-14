@@ -66,7 +66,7 @@ export function CTA() {
           <div className="flex flex-col gap-4 min-w-[200px]">
             <Button
               size="lg"
-              className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg hide-for-info-mode"
+              className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
             >
               {t.cta?.buttonText || "ORDER NOW"}
             </Button>

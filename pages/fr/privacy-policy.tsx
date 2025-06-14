@@ -1,7 +1,6 @@
-import { Layout } from "@/components/layout/layout";
+import { Container } from '@/components/ui/container';
 import { NextPage } from "next";
 import Head from "next/head";
-import { Container } from "@/components/ui/container";
 import { SITE_NAME } from "@/lib/constants";
 import { useTranslation } from "@/lib/translation-context";
 
@@ -9,7 +8,7 @@ const PrivacyPolicyPage: NextPage = () => {
   const { t } = useTranslation();
   
   return (
-    <Layout>
+    <>
       <Head>
         <title>Politique de confidentialité | {SITE_NAME}</title>
         <meta name="description" content="Politique de confidentialité de Purrify - Additif de litière pour chat au charbon actif qui élimine les odeurs à la source." />
@@ -88,7 +87,7 @@ const PrivacyPolicyPage: NextPage = () => {
           </div>
         </Container>
       </section>
-    </Layout>
+    </>
   );
 };
 

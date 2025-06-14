@@ -1,8 +1,7 @@
-import { Layout } from "@/components/layout/layout";
+import { Container } from '@/components/ui/container';
 import { NextPage } from "next";
 import Head from "next/head";
 import { FreeGiveawayForm } from "@/components/sections/free-giveaway-form";
-import { Container } from "@/components/ui/container";
 import { SITE_NAME } from "@/lib/constants";
 import NextImage from "../../components/NextImage";
 import { PawPrint } from "lucide-react";
@@ -53,7 +52,7 @@ const FreePage: NextPage = () => {
   }, []);
   
   return (
-    <Layout>
+    <>
       <Head>
         <title>URGENT: Essai GRATUIT de Purrify | {SITE_NAME}</title>
         <meta name="description" content="Réclamez votre sac d'essai GRATUIT d'additif de litière pour chat Purrify. Zéro coût. Zéro risque. Zéro odeur de litière." />
@@ -263,7 +262,7 @@ const FreePage: NextPage = () => {
           </div>
         </Container>
       </section>
-    </Layout>
+    </>
   );
 };
 

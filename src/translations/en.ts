@@ -140,10 +140,6 @@ export const en = {
         answer: "Purrify uses activated carbon technology to trap and neutralize odor molecules through adsorption, effectively eliminating cat litter odors at the molecular level."
       },
       {
-        question: "Is Purrify safe for my cat?",
-        answer: "Yes, Purrify is completely safe for cats. It's made from natural activated carbon derived from coconut shells with no harmful chemicals or fragrances."
-      },
-      {
         question: "How long does Purrify last?",
         answer: "A single application of Purrify can keep your litter box odor-free for up to 7 days, depending on usage and the number of cats."
       },

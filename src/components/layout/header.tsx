@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { SITE_NAME } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
 import { useTranslation } from "../../lib/translation-context";
+import { ShoppingCart } from "../../components/ui/shopping-cart";
+import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,212 +21,134 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7] bg-[#FFFFFF]/95 backdrop-blur-md supports-[backdrop-filter]:bg-[#FFFFFF]/80 shadow-sm">
       <Container>
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="group" aria-label="Purrify Home">
-              <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
-                <img
-                  src="/optimized/purrify-logo-icon.webp"
-                  alt="Purrify Logo Icon"
-                  className="h-full w-auto"
-                  width={757}
-                  height={896}
-                />
-                <img
-                  src="/optimized/purrify-logo-text.webp"
-                  alt="Purrify Logo Text"
-                  className="h-full w-auto"
-                  width={209}
-                  height={96}
-                />
-              </div>
+            <Link href="/" className="flex items-center space-x-2">
+              <Image
+                src="/purrify-logo-text.png"
+                alt="Purrify"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
             </Link>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href={locale === 'fr' ? "/fr/" : "/"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              href="/#how-it-works"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {t.nav.home}
+              {t.nav?.howItWorks || "How It Works"}
             </Link>
             <Link
-              href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-              aria-label="How It Works"
+              href="/#about"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {t.nav.howItWorks}
+              {t.nav?.about || "About"}
             </Link>
             <Link
-              href={locale === 'fr' ? "/fr/#about" : "/#about"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-              aria-label="About Purrify"
+              href="/#why-purrify"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {t.nav.about}
+              {t.nav?.whyPurrify || "Why Purrify"}
             </Link>
             <Link
-              href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-              aria-label="Why Choose Purrify"
+              href="/#testimonials"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {t.nav.whyPurrify}
+              {t.nav?.testimonials || "Testimonials"}
             </Link>
             <Link
-              href={locale === 'fr' ? "/fr/free" : "/free"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-              aria-label="Try Free Sample"
+              href="/#contact"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {/* {t.nav.tryFree}
+              {t.nav?.contact || "Contact"}
             </Link>
             <Link
-              href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-            > */}
-              {t.nav.testimonials}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
+              href="/blog"
+              className="text-gray-600 hover:text-[#FF3131] transition-colors"
             >
-              {t.nav.contact}
+              {t.nav?.blog || "Blog"}
             </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/blog" : "/blog"}
-              className="text-sm font-medium transition-colors hover:text-[#FF3131] relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-[#FF3131] after:transition-all after:duration-300"
-            >
-              {t.nav.blog}
-            </Link>
-            <div className="flex items-center space-x-2">
-              <LanguageSwitcher />
-              <Button
-                variant="outline"
-                size="icon"
-                className="relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 ml-2 hide-for-info-mode"
-                aria-label="Shopping Cart"
-              >
-                <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
-                  0
-                </span>
-              </Button>
-            </div>
           </nav>
+
+          <div className="flex items-center space-x-2">
+            <LanguageSwitcher />
+            <ShoppingCart />
+          </div>
 
           <div className="md:hidden flex items-center">
             <div className="flex items-center mr-3">
               <LanguageSwitcher />
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              className="mr-3 relative bg-[#FFFFFF]/90 border-[#E0EFC7] hover:bg-[#FFFFF5] hover:border-[#E0EFC7] transition-all duration-300 hide-for-info-mode"
-              aria-label="Shopping Cart"
-            >
-              <ShoppingCart className="h-5 w-5 text-[#FF3131]" />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-xs text-white shadow-sm">
-                0
-              </span>
-            </Button>
+            <ShoppingCart />
             <Button
               variant="ghost"
               size="icon"
+              className="ml-2"
               onClick={toggleMenu}
-              className="hover:bg-[#FFFFF5]"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-[#FF3131]" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6 text-[#FF3131]" />
+                <Menu className="h-6 w-6" />
               )}
             </Button>
           </div>
         </div>
-      </Container>
 
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#FFFFFF]/95 backdrop-blur-md border-t border-[#E0EFC7] shadow-lg">
-          <div className="space-y-4 px-6 py-6">
-            <Link
-              href={locale === 'fr' ? "/fr/" : "/"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.nav.home}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="How It Works"
-            >
-              {t.nav.howItWorks}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/#about" : "/#about"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="About Purrify"
-            >
-              {t.nav.about}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Why Choose Purrify"
-            >
-              {t.nav.whyPurrify}
-            </Link>
-            {/* <Link
-              href={locale === 'fr' ? "/fr/free" : "/free"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Try Free Sample"
-            >
-              {t.nav.tryFree}
-            </Link> */}
-            <Link
-              href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.nav.testimonials}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.nav.contact}
-            </Link>
-            <Link
-              href={locale === 'fr' ? "/fr/blog" : "/blog"}
-              className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.nav.blog}
-            </Link>
-            <div className="border-t border-[#E0EFC7] my-2 pt-2">
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
-                href={locale === 'fr' ? "/fr/privacy-policy" : "/privacy-policy"}
-                className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-                onClick={() => setIsMenuOpen(false)}
+                href="/#how-it-works"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
               >
-                {t.nav.privacyPolicy}
+                {t.nav?.howItWorks || "How It Works"}
               </Link>
               <Link
-                href={locale === 'fr' ? "/fr/terms" : "/terms"}
-                className="block text-sm font-medium transition-colors hover:text-[#FF3131] py-2"
-                onClick={() => setIsMenuOpen(false)}
+                href="/#about"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
               >
-                {t.nav.termsOfService}
+                {t.nav?.about || "About"}
+              </Link>
+              <Link
+                href="/#why-purrify"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
+              >
+                {t.nav?.whyPurrify || "Why Purrify"}
+              </Link>
+              <Link
+                href="/#testimonials"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
+              >
+                {t.nav?.testimonials || "Testimonials"}
+              </Link>
+              <Link
+                href="/#contact"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
+              >
+                {t.nav?.contact || "Contact"}
+              </Link>
+              <Link
+                href="/blog"
+                className="block px-3 py-2 text-gray-600 hover:text-[#FF3131] transition-colors"
+                onClick={toggleMenu}
+              >
+                {t.nav?.blog || "Blog"}
               </Link>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </Container>
     </header>
   );
 }

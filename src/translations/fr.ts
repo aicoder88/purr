@@ -140,10 +140,6 @@ export const fr = {
         answer: "Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur par adsorption, éliminant efficacement les odeurs de litière pour chat au niveau moléculaire."
       },
       {
-        question: "Purrify est-il sans danger pour mon chat?",
-        answer: "Oui, Purrify est totalement sans danger pour les chats. Il est fabriqué à partir de charbon actif naturel dérivé de coques de noix de coco, sans produits chimiques nocifs ni parfums."
-      },
-      {
         question: "Combien de temps dure Purrify?",
         answer: "Une seule application de Purrify peut garder votre litière sans odeur jusqu'à 7 jours, selon l'utilisation et le nombre de chats."
       },
