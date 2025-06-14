@@ -51,13 +51,21 @@ export const fr = {
       title: "Fonctionne avec toute litière",
       description: "Compatible avec tout type de litière, vous n'avez donc pas à changer ce que votre chat aime déjà."
     },
-    safeAndNatural: {
-      title: "Sûr et naturel",
-      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle car la santé de votre chat passe avant tout."
+    natural: {
+      title: "Naturel",
+      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle pour la santé de votre chat."
     },
     costEffective: {
       title: "Économique",
       description: "Prolonge la durée de vie de la litière de votre chat en empêchant l'accumulation d'odeurs, vous faisant économiser de l'argent et réduisant les déchets."
+    },
+    freePurrify: {
+      title: "Purrify Gratuit",
+      description: "Essayez Purrify gratuitement et découvrez la différence par vous-même."
+    },
+    beforeAfter: {
+      title: "Avant/Après",
+      description: "Voyez la différence que Purrify peut faire dans votre maison."
     }
   },
 
