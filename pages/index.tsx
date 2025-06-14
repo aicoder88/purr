@@ -12,6 +12,8 @@ import { CTA } from '../src/components/sections/cta';
 import { Contact } from '../src/components/sections/contact';
 import { BlogPreview } from '../src/components/sections/blog-preview';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../src/lib/constants';
+import { SkipNav } from '../src/components/ui/skip-nav';
+import { ErrorBoundary } from '../src/components/ui/error-boundary';
 
 // Define FAQ items for structured data
 const faqItems = [
@@ -43,6 +45,7 @@ export default function Home() {
   
   return (
     <>
+      <SkipNav />
       <NextSeo
         title={pageTitle}
         description={SITE_DESCRIPTION}
@@ -57,14 +60,14 @@ export default function Home() {
               url: 'https://purrify.ca/purrify-logo.png',
               width: 1200,
               height: 630,
-              alt: SITE_NAME,
+              alt: `${SITE_NAME} - Premium Cat Litter Odor Control Solution`,
               type: 'image/png',
             },
             {
               url: 'https://purrify.ca/cat_rose_thumbnail.jpg',
               width: 500,
               height: 340,
-              alt: 'Cat with rose - Purrify',
+              alt: 'Purrify Cat Litter Additive in Action - Before and After Demonstration',
               type: 'image/jpeg',
             },
           ],
@@ -74,14 +77,14 @@ export default function Home() {
               width: 1280,
               height: 720,
               type: 'video/mp4',
-              alt: 'Purrify Cat Litter Additive Demo',
+              alt: 'Purrify Cat Litter Additive Effectiveness Demonstration',
             },
             {
               url: 'https://purrify.ca/videos/cat_rose_optimized.webm',
               width: 1280,
               height: 720,
               type: 'video/webm',
-              alt: 'Purrify Cat Litter Additive Demo',
+              alt: 'Purrify Cat Litter Additive Effectiveness Demonstration',
             }
           ],
         }}
@@ -93,7 +96,7 @@ export default function Home() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies, cat video',
+            content: 'cat litter odor control, activated carbon cat litter, natural cat litter additive, eco-friendly pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada',
           },
           {
             name: 'robots',
@@ -122,6 +125,10 @@ export default function Home() {
           {
             property: 'og:video:height',
             content: '720',
+          },
+          {
+            name: 'description',
+            content: 'Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by thousands of cat owners across Canada.',
           },
         ]}
       />
@@ -271,17 +278,51 @@ export default function Home() {
         }}
       />
 
-      <Hero />
-      <About />
-      <HowItWorks />
-      <WhyPurrify />
-      <Products />
-      <Testimonials />
-      <BlogPreview />
-      <FAQ />
-      <Newsletter />
-      <CTA />
-      <Contact />
+      <main id="main-content" role="main">
+        <ErrorBoundary>
+          <Hero />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <About />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <HowItWorks />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <WhyPurrify />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Products />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Testimonials />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <FAQ />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Newsletter />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <CTA />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Contact />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <BlogPreview />
+        </ErrorBoundary>
+      </main>
     </>
   );
 }
