@@ -10,8 +10,10 @@ const nextConfig = {
   // Add allowed development origins
   allowedDevOrigins: [
     'localhost:3000',
+    'localhost:3001',
     'localhost:3003',
     '192.168.0.146:3000',
+    '192.168.0.146:3001',
     '192.168.0.146:3003'
   ],
   
@@ -69,7 +71,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
-    localeDetection: false,
+    localeDetection: true,
     // Specify domain-specific locales if needed
     domains: [
       {
@@ -247,6 +249,19 @@ const nextConfig = {
       };
     }
     
+    // Add rule for handling TypeScript files
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+          },
+        },
+      ],
+    });
+
     return config;
   },
 };

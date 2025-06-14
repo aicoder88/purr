@@ -15,7 +15,7 @@ export const sampleBlogPosts: BlogPost[] = [
     excerpt: "Learn the science behind how activated carbon effectively eliminates cat litter odors at the molecular level, rather than just masking them.",
     author: "Dr. Nathan Hale",
     date: new Date().toISOString().split('T')[0],
-    image: "/carbon_magnified_image.png",
+    image: "/optimized/carbon_magnified_image.webp",
     link: "/blog/activated-carbon-science"
   },
   {
@@ -23,7 +23,7 @@ export const sampleBlogPosts: BlogPost[] = [
     excerpt: "Living with multiple cats doesn't mean your home has to smell like it. Discover practical tips for maintaining a fresh-smelling home.",
     author: "Monica Keller",
     date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    image: "/three_bags_no_bg.png",
+    image: "/optimized/three_bags_no_bg.webp",
     link: "/blog/fresh-home-multiple-cats"
   },
   {
@@ -31,7 +31,7 @@ export const sampleBlogPosts: BlogPost[] = [
     excerpt: "Most cat litter odor products only mask smells temporarily. Find out why Purrify's approach is fundamentally different and more effective.",
     author: "Environmental Scientist",
     date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    image: "/micropores_magnified_view.jpeg",
+    image: "/optimized/micropores_magnified_view.webp",
     link: "/blog/beyond-masking-odors"
   }
 ];

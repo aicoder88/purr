@@ -9,6 +9,12 @@ import { useRouter } from 'next/router';
 import { useTranslation } from '../src/lib/translation-context';
 import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin } from 'lucide-react';
 import { PRODUCTS } from '../src/lib/constants';
+import dynamic from "next/dynamic";
+
+// Dynamically import NextImage to reduce initial bundle size
+const NextImage = dynamic(() => import("../components/NextImage"), {
+  ssr: true,
+});
 
 interface CheckoutFormData {
   email: string;
@@ -169,8 +175,14 @@ const CheckoutPage: NextPage = () => {
             return (
               <div key={item.id} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white rounded-md p-1">
-                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                  <div className="w-24 h-24 relative">
+                    <NextImage
+                      src={product.image}
+                      alt={product.name}
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="font-medium text-gray-800">{product.name}</p>

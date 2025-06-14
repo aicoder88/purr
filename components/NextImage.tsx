@@ -105,6 +105,11 @@ export default function NextImage({
   // For local images, ensure they start with a slash
   let imageSrc = !isExternal && !src.startsWith('/') ? `/${src}` : src;
 
+  // Detect iOS Chrome
+  const isIOSChrome = typeof window !== 'undefined' && 
+    /CriOS/.test(navigator.userAgent) && 
+    /iPhone|iPad|iPod/.test(navigator.userAgent);
+
   // Use optimized image formats if available and requested
   if (!isExternal && useModernFormat) {
     // Check if we have an optimized version
@@ -120,32 +125,34 @@ export default function NextImage({
         const sanitizedBaseName = baseName.replace(/\s+/g, '-');
         
         // Create paths for different formats and naming conventions
+        const optimizedJpg = `/optimized/${encodedBaseName}.jpg`;
+        const optimizedSanitizedJpg = `/optimized/${sanitizedBaseName}.jpg`;
+        const optimizedPng = `/optimized/${encodedBaseName}.png`;
+        const optimizedSanitizedPng = `/optimized/${sanitizedBaseName}.png`;
         const optimizedWebP = `/optimized/${encodedBaseName}.webp`;
         const optimizedSanitizedWebP = `/optimized/${sanitizedBaseName}.webp`;
-        const optimizedJpg = `/optimized/${encodedBaseName}.jpg`;
         const optimizedOriginal = `/optimized/${encodedBaseName}.${ext}`;
         
-        // Try to use WebP format first, then fallback to JPG
-        // Prefer sanitized filenames for better compatibility
-        if (baseName.includes(' ')) {
-          imageSrc = optimizedSanitizedWebP;
+        // For iOS Chrome, use PNG or JPG format for better compatibility
+        if (isIOSChrome) {
+          if (baseName.includes(' ')) {
+            imageSrc = optimizedSanitizedPng;
+          } else {
+            imageSrc = optimizedPng;
+          }
         } else {
-          imageSrc = optimizedWebP;
+          // For other browsers, use JPG as default
+          if (baseName.includes(' ')) {
+            imageSrc = optimizedSanitizedJpg;
+          } else {
+            imageSrc = optimizedJpg;
+          }
         }
         
         // Enhanced logging for debugging
         if (typeof window !== 'undefined') {
           console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
-          console.log(`Image path resolution:
-            - Original src: ${src}
-            - Resolved src: ${imageSrc}
-            - Base name: ${baseName}
-            - Contains spaces: ${baseName.includes(' ')}
-            - Path includes optimized: ${imageSrc.includes('/optimized/')}
-          `);
-          if (baseName.includes(' ')) {
-            console.log(`Using sanitized filename for image with spaces: ${sanitizedBaseName}`);
-          }
+          console.log(`Browser: ${navigator.userAgent}`);
         }
       }
     }
@@ -170,12 +177,34 @@ export default function NextImage({
       
       // Try different fallback strategies
       if (baseName && ext) {
-        // If using WebP, try JPG
-        if (ext === 'webp') {
-          const jpgPath = imageSrc.replace('.webp', '.jpg');
-          console.log(`WebP failed, trying JPG: ${jpgPath}`);
-          setImgSrc(jpgPath);
-          return; // Exit early to try this fallback first
+        // For iOS Chrome, try this fallback chain: PNG -> JPG -> Original
+        if (isIOSChrome) {
+          if (ext === 'png') {
+            const jpgPath = imageSrc.replace('.png', '.jpg');
+            console.log(`PNG failed on iOS Chrome, trying JPG: ${jpgPath}`);
+            setImgSrc(jpgPath);
+            return;
+          }
+          if (ext === 'jpg') {
+            const originalPath = imageSrc.replace('.jpg', `.${src.split('.').pop()}`);
+            console.log(`JPG failed on iOS Chrome, trying original: ${originalPath}`);
+            setImgSrc(originalPath);
+            return;
+          }
+        } else {
+          // For other browsers: JPG -> WebP -> Original
+          if (ext === 'jpg') {
+            const webpPath = imageSrc.replace('.jpg', '.webp');
+            console.log(`JPG failed, trying WebP: ${webpPath}`);
+            setImgSrc(webpPath);
+            return;
+          }
+          if (ext === 'webp') {
+            const originalPath = imageSrc.replace('.webp', `.${src.split('.').pop()}`);
+            console.log(`WebP failed, trying original: ${originalPath}`);
+            setImgSrc(originalPath);
+            return;
+          }
         }
         
         // If using a sanitized filename, try the original encoded version
@@ -185,17 +214,17 @@ export default function NextImage({
           const sanitizedPath = imageSrc.replace(baseName, sanitizedName);
           console.log(`Encoded name failed, trying sanitized: ${sanitizedPath}`);
           setImgSrc(sanitizedPath);
-          return; // Exit early to try this fallback first
+          return;
         }
         
-        // If using an encoded name with spaces, try the sanitized version
-        if (baseName.includes('%20')) {
-          const decodedName = decodeURIComponent(baseName);
-          const sanitizedName = decodedName.replace(/\s+/g, '-');
-          const sanitizedPath = imageSrc.replace(baseName, sanitizedName);
-          console.log(`Encoded name failed, trying sanitized: ${sanitizedPath}`);
-          setImgSrc(sanitizedPath);
-          return; // Exit early to try this fallback first
+        // If using a sanitized filename with hyphens, try the original with spaces
+        if (baseName.includes('-')) {
+          const originalName = baseName.replace(/-/g, ' ');
+          const encodedName = encodeURIComponent(originalName);
+          const encodedPath = imageSrc.replace(baseName, encodedName);
+          console.log(`Sanitized name failed, trying encoded: ${encodedPath}`);
+          setImgSrc(encodedPath);
+          return;
         }
       }
       
@@ -203,16 +232,6 @@ export default function NextImage({
       const originalSrc = src.startsWith('/') ? src : `/${src}`;
       setImgSrc(originalSrc);
       console.error(`All optimized versions failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
-      
-      // Add more detailed logging for debugging
-      console.error(`Image error details:
-        - Original src: ${src}
-        - Attempted optimized src: ${imageSrc}
-        - Fallback src: ${originalSrc}
-        - Is external: ${isExternal}
-        - Environment: ${typeof window !== 'undefined' ? 'client' : 'server'}
-        - URL encoded version: ${encodeURIComponent(imageSrc)}
-      `);
     } else {
       setImgSrc(fallbackSrc);
       console.error(`Image load failed for: ${src}. Using fallback.`);
@@ -239,51 +258,57 @@ export default function NextImage({
     : '';
 
   // Ensure we have width and height for proper layout
-  const finalWidth = width || (fill ? undefined : 100);
-  const finalHeight = height || (fill ? undefined : 100);
+  const finalWidth = fill ? undefined : (width || 100);
+  const finalHeight = fill ? undefined : (height || 100);
 
   return (
-    <figure className={`relative`}>
-      {/* Placeholder div to reserve space while image loads */}
-      {isLoading && !fill && (
-        <div
-          className="bg-gray-200/30"
+    <div className={`relative ${className || ''}`} style={style}>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 animate-pulse">
+          <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
+      )}
+      
+      {error ? (
+        <div className="relative w-full h-full flex items-center justify-center bg-gray-100">
+          <div className="text-center p-4">
+            <div className="w-16 h-16 mx-auto mb-4 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <p className="text-sm text-gray-500">Failed to load image</p>
+          </div>
+        </div>
+      ) : (
+        <Image
+          ref={imageRef}
+          src={imgSrc}
+          alt={safeAlt}
+          width={finalWidth}
+          height={finalHeight}
+          className={`${className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+          priority={priority}
+          quality={quality}
+          sizes={sizes || (fill ? "100vw" : undefined)}
+          fill={fill}
           style={{
-            width: finalWidth,
-            height: finalHeight,
-            aspectRatio: finalWidth && finalHeight ? `${finalWidth}/${finalHeight}` : undefined
+            ...style,
+            objectFit: fill ? 'cover' : 'contain'
           }}
+          onError={handleError}
+          onLoad={handleLoad}
+          fetchPriority={finalFetchPriority}
+          decoding={decoding}
+          loading={loading}
+          {...rest}
         />
       )}
-      <Image
-        ref={imageRef}
-        src={imgSrc}
-        alt={safeAlt}
-        width={finalWidth}
-        height={finalHeight}
-        className={`${className || ''}`}
-        priority={priority}
-        quality={quality}
-        sizes={sizes}
-        fill={fill}
-        style={{
-          ...style,
-          opacity: isLoading ? 0 : 1,
-          transition: 'opacity 0.5s',
-        }}
-        loading={loading}
-        fetchPriority={finalFetchPriority}
-        decoding={decoding}
-        onError={handleError}
-        onLoad={handleLoad}
-        {...(error ? { 'aria-hidden': 'true' } : {})}
-        {...rest}
-      />
       
-      {caption && (
-        <figcaption className="mt-2 text-sm text-center text-gray-500 italic">
+      {caption && !error && (
+        <div className="mt-2 text-sm text-gray-600 text-center">
           {caption}
-        </figcaption>
+        </div>
       )}
       
       {/* Structured data for the image */}
@@ -303,6 +328,6 @@ export default function NextImage({
           }}
         />
       )}
-    </figure>
+    </div>
   );
 }

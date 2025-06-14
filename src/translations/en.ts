@@ -323,4 +323,4 @@ export const en = {
     urgentBanner: "Limited Time Offer",
     free: "Free"
   }
-};
+}; 

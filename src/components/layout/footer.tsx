@@ -21,22 +21,15 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="flex items-center">
+            <div className="flex items-center mb-4">
               <Link href={locale === 'fr' ? "/fr/" : "/"} className="group">
-                <div className="h-10 w-auto mr-2 flex space-x-2 items-center">
-                  <img
-                    src="/optimized/purrify-logo-icon.webp"
-                    alt="Purrify Logo"
-                    className="h-full w-auto"
-                    width={757}
-                    height={896}
-                  />
-                  <img
+                <div className="h-6 w-auto mr-2 flex items-center">
+                  <NextImage
                     src="/optimized/purrify-logo-text.webp"
                     alt="Purrify Logo"
+                    width={70}
+                    height={24}
                     className="h-full w-auto"
-                    width={209}
-                    height={96}
                   />
                 </div>
               </Link>

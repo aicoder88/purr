@@ -12,31 +12,31 @@ export function WhyPurrify() {
       icon: Wind,
       title: t.features.odorElimination.title.toUpperCase(),
       description: t.features.odorElimination.description,
-      image: "/optimized/micropores_magnified_view.webp"
+      image: "/micropores_magnified_view.jpeg"
     },
     {
       icon: Cat,
       title: t.features.catFriendly.title.toUpperCase(),
       description: t.features.catFriendly.description,
-      image: "/optimized/natural-cat-litter.webp"
+      image: "/natural-cat-litter.webp"
     },
     {
       icon: Clock,
       title: t.features.longLastingFreshness.title.toUpperCase(),
       description: t.features.longLastingFreshness.description,
-      image: "/optimized/fresh.webp"
+      image: "/fresh.png"
     },
     {
       icon: Layers,
       title: t.features.worksWithAnyLitter.title.toUpperCase(),
       description: t.features.worksWithAnyLitter.description,
-      image: "/optimized/clay-cat-litter.webp"
+      image: "/clay-cat-litter.webp"
     },
     {
       icon: Sparkles,
       title: t.features.natural.title.toUpperCase(),
       description: t.features.natural.description,
-      image: "/optimized/Carbon-sktech.webp",
+      image: "/Carbon sktech.png",
       color: "bg-[#E8F5E9]",
       textColor: "text-[#2E7D32]",
     },
@@ -44,7 +44,7 @@ export function WhyPurrify() {
       icon: PiggyBank,
       title: t.features.costEffective.title.toUpperCase(),
       description: t.features.costEffective.description,
-      image: "/optimized/cost-effective.webp",
+      image: "/cost effective.png",
       color: "bg-[#FFF3E0]",
       textColor: "text-[#E65100]",
     },
@@ -52,7 +52,7 @@ export function WhyPurrify() {
       icon: Sparkles,
       title: t.features.freePurrify.title.toUpperCase(),
       description: t.features.freePurrify.description,
-      image: "/optimized/free-purrify.webp",
+      image: "/free purrify.png",
       color: "bg-[#E3F2FD]",
       textColor: "text-[#1565C0]",
     },
@@ -60,7 +60,7 @@ export function WhyPurrify() {
       icon: Sparkles,
       title: t.features.beforeAfter.title.toUpperCase(),
       description: t.features.beforeAfter.description,
-      image: "/optimized/before-after.webp",
+      image: "/before after.png",
       color: "bg-[#F3E5F5]",
       textColor: "text-[#7B1FA2]",
     },

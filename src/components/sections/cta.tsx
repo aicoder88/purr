@@ -1,6 +1,12 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "../../lib/translation-context";
+import dynamic from "next/dynamic";
+
+// Dynamically import NextImage to reduce initial bundle size
+const NextImage = dynamic(() => import("../../../components/NextImage"), {
+  ssr: true,
+});
 
 export function CTA() {
   const { t } = useTranslation();

@@ -3,6 +3,12 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslation } from "@/lib/translation-context";
+import dynamic from "next/dynamic";
+
+// Dynamically import NextImage to reduce initial bundle size
+const NextImage = dynamic(() => import("../../../components/NextImage"), {
+  ssr: true,
+});
 
 interface BlogPost {
   title: string;
@@ -60,11 +66,15 @@ export function BlogPreview() {
             >
               <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="aspect-video overflow-hidden h-[200px] sm:h-[250px]">
-                  <img
+                <div className="relative w-full h-[200px] sm:h-[250px]">
+                  <NextImage
                     src={post.image}
                     alt={post.title}
-                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain scale-85' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
+                    priority={index === 0}
+                    quality={85}
                   />
                 </div>
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white font-medium">
