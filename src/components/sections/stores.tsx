@@ -7,77 +7,92 @@ const STORES = [
   {
     name: "Pattes et Griffes - Sainte- Thérèse",
     location: "Sainte-Thérèse, QC",
-    address: "190 Bd du Curé-Labelle suite 1b"
+    address: "190 Bd du Curé-Labelle suite 1b",
+    phone: "450-818-1310"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Thérèse",
     location: "Sainte-Thérèse, QC", 
-    address: "95 Bd du Curé-Labelle Suite 8"
+    address: "95 Bd du Curé-Labelle Suite 8",
+    phone: "450-965-3906"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Marthe-sur-le-Lac",
     location: "Sainte-Marthe-Sur-Le-Lac, QC",
-    address: "2860 B Boul. des Promenades"
+    address: "2860 B Boul. des Promenades",
+    phone: "450-598-2860"
   },
   {
     name: "Animal Shop Animal GIGI",
     location: "Saint-Eustache, QC",
-    address: "356 Bd Arthur-Sauvé"
+    address: "356 Bd Arthur-Sauvé",
+    phone: "450-598-3444"
   },
   {
     name: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
     location: "Laval, QC",
-    address: "4511 Bd Arthur-Sauvé"
+    address: "4511 Bd Arthur-Sauvé",
+    phone: "450-314-2442"
   },
   {
     name: "Pattes et Griffes - Cartier Ouest",
     location: "Laval, QC",
-    address: "293 Bd Cartier Ouest"
+    address: "293 Bd Cartier Ouest",
+    phone: "450-490-1414"
   },
   {
     name: "Pitou Minou & Compagnons Kirkland",
     location: "Kirkland, QC",
-    address: "16936 Route Transcanadienne"
+    address: "16936 Route Transcanadienne",
+    phone: "514-695-5005"
   },
   {
     name: "Chico - Boutique d'animaux | Boul. St-Laurent (Montreal)",
     location: "Montreal, QC",
-    address: "7001 Boul. Saint-Laurent"
+    address: "7001 Boul. Saint-Laurent",
+    phone: "514-657-5813"
   },
   {
     name: "Doghaus",
     location: "Montreal, QC",
-    address: "5671 Rue Sherbrooke O"
+    address: "5671 Rue Sherbrooke O",
+    phone: "514-483-3555"
   },
   {
     name: "KONG ANIMALERIE",
     location: "Montreal, QC",
-    address: "5555 Bd Decarie"
+    address: "5555 Bd Decarie",
+    phone: "514-662-8373"
   },
   {
     name: "Coquette et Finegueule Animalerie avec toilettage - Pet store with grooming",
     location: "Verdun, QC",
-    address: "5203 Av Bannantyne"
+    address: "5203 Av Bannantyne",
+    phone: "514-761-4221"
   },
   {
     name: "Pitou Minou & Compagnons Verdun | Global Pet Foods Verdun",
     location: "Verdun, QC",
-    address: "4100 Rue Wellington"
+    address: "4100 Rue Wellington",
+    phone: "514-732-0555"
   },
   {
     name: "Chico - Boutique d'animaux | Mont-Royal E",
     location: "Montreal, QC",
-    address: "2016 Avenue du Mont-Royal E"
+    address: "2016 Avenue du Mont-Royal E",
+    phone: "514-521-0201"
   },
   {
     name: "Chico - Boutique d'animaux | Mont-Royal E",
     location: "Chico - Boutique d'animaux | Rue Ontario E",
-    address: "3911 Rue Ontario E"
+    address: "3911 Rue Ontario E",
+    phone: "514-527-1371"
   },
   {
     name: "Pattes et Griffes - Marche Centrale",
     location: "Montreal, QC",
-    address: "9185 Bd de l'Acadie"
+    address: "9185 Bd de l'Acadie",
+    phone: "514-389-0090"
   },
 ];
 
