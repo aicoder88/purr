@@ -5,6 +5,7 @@ import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
+import { Stores } from '../src/components/sections/stores';
 import { Testimonials } from '../src/components/sections/testimonials';
 import { FAQ } from '../src/components/sections/faq';
 import { Newsletter } from '../src/components/sections/newsletter';
@@ -297,6 +298,10 @@ export default function Home() {
         
         <ErrorBoundary>
           <Products />
+        </ErrorBoundary>
+        
+        <ErrorBoundary>
+          <Stores />
         </ErrorBoundary>
         
         <ErrorBoundary>
