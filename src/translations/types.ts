@@ -130,6 +130,15 @@ export interface TranslationType {
     viewAllProducts: string;
   };
   
+  // Stores Section
+  storesSection?: {
+    availableInStores: string;
+    soldInFollowingStores: string;
+    subtitle: string;
+    requestStoreAvailability: string;
+    dontSeeLocalStore: string;
+  };
+  
   // Call to Action
   cta?: {
     title: string;

@@ -7,6 +7,7 @@ import { Hero } from "@/components/sections/hero";
 import { Features } from "@/components/sections/features";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Products } from "@/components/sections/products";
+import { Stores } from "@/components/sections/stores";
 import { WhyPurrify } from "@/components/sections/why-purrify";
 import { Testimonials } from "@/components/sections/testimonials";
 import { FAQ } from "@/components/sections/faq";
@@ -46,6 +47,7 @@ const HomePage: NextPage = () => {
       <Features />
       <HowItWorks />
       <Products />
+      <Stores />
       <WhyPurrify />
       <Testimonials />
       <FAQ />

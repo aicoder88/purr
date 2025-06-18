@@ -91,12 +91,12 @@ export function Stores() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <SectionHeader text="AVAILABLE IN STORES" />
+          <SectionHeader text={t.storesSection?.availableInStores || "AVAILABLE IN STORES"} />
           <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-            SOLD IN THE FOLLOWING STORES
+            {t.storesSection?.soldInFollowingStores || "SOLD IN THE FOLLOWING STORES"}
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive.
+            {t.storesSection?.subtitle || "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive."}
           </p>
         </div>
 
@@ -143,13 +143,13 @@ export function Stores() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-600 mb-4">
-            Don't see your local store? Contact us to request Purrify at your favorite pet store!
+            {t.storesSection?.dontSeeLocalStore || "Don't see your local store? Contact us to request Purrify at your favorite pet store!"}
           </p>
           <button 
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Request Store Availability
+            {t.storesSection?.requestStoreAvailability || "Request Store Availability"}
           </button>
         </div>
       </Container>

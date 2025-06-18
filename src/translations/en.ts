@@ -120,6 +120,15 @@ export const en = {
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
   
+  // Stores Section
+  storesSection: {
+    availableInStores: "AVAILABLE IN STORES",
+    soldInFollowingStores: "SOLD IN THE FOLLOWING STORES",
+    subtitle: "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive.",
+    requestStoreAvailability: "Request Store Availability",
+    dontSeeLocalStore: "Don't see your local store? Contact us to request Purrify at your favorite pet store!"
+  },
+  
   // Call to Action
   cta: {
     title: "Ready to Say Goodbye to Litter Box Odors Forever?",
