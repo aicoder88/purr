@@ -161,7 +161,7 @@ export function Stores() {
                       />
                     ) : store.name.includes('GIGI') ? (
                       <img
-                        src="/gigi.png"
+                        src="https://animalgigi.com/img/logo.png"
                         alt="Animalerie GIGI Logo"
                         className="w-12 h-12 object-contain"
                       />
