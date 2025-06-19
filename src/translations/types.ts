@@ -137,6 +137,7 @@ export interface TranslationType {
     subtitle: string;
     requestStoreAvailability: string;
     dontSeeLocalStore: string;
+    callStore: string;
   };
   
   // Call to Action

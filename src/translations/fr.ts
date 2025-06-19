@@ -150,7 +150,8 @@ export const fr = {
     soldInFollowingStores: "VENDU DANS LES MAGASINS SUIVANTS",
     subtitle: "Trouvez Purrify dans vos magasins d'animaux préférés à travers le Canada. Visitez l'un de ces emplacements pour acheter notre additif de litière pour chat premium.",
     requestStoreAvailability: "Demander la Disponibilité en Magasin",
-    dontSeeLocalStore: "Vous ne voyez pas votre magasin local ? Contactez-nous pour demander Purrify dans votre magasin d'animaux préféré !"
+    dontSeeLocalStore: "Vous ne voyez pas votre magasin local ? Contactez-nous pour demander Purrify dans votre magasin d'animaux préféré !",
+    callStore: "Appeler le Magasin"
   },
   
   // Call to Action

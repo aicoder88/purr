@@ -147,9 +147,30 @@ export function Stores() {
                   <p className="text-[#FF3131] font-medium text-sm mb-1">
                     {store.location}
                   </p>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm mb-2">
                     {store.address}
                   </p>
+                  {store.phone && (
+                    <a 
+                      href={`tel:${store.phone}`}
+                      className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200"
+                    >
+                      <svg 
+                        className="w-4 h-4 mr-1" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
+                        />
+                      </svg>
+                      {store.phone}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -126,7 +126,8 @@ export const en = {
     soldInFollowingStores: "SOLD IN THE FOLLOWING STORES",
     subtitle: "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive.",
     requestStoreAvailability: "Request Store Availability",
-    dontSeeLocalStore: "Don't see your local store? Contact us to request Purrify at your favorite pet store!"
+    dontSeeLocalStore: "Don't see your local store? Contact us to request Purrify at your favorite pet store!",
+    callStore: "Call Store"
   },
   
   // Call to Action
