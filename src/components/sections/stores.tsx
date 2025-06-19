@@ -65,21 +65,21 @@ const STORES = [
     location: "Montreal, QC",
     address: "5671 Rue Sherbrooke O",
     phone: "514-483-3555",
-    url: "https://doghaus.ca/"
+    url: "https://www.doghausmtl.com/"
   },
   {
     name: "KONG ANIMALERIE",
     location: "Montreal, QC",
     address: "5555 Bd Decarie",
     phone: "514-662-8373",
-    url: "https://konganimalerie.com/"
+    url: "https://www.facebook.com/konganimalerie/"
   },
   {
     name: "Coquette et Finegueule Animalerie avec toilettage - Pet store with grooming",
     location: "Verdun, QC",
     address: "5203 Av Bannantyne",
     phone: "514-761-4221",
-    url: "https://www.facebook.com/CoquetteetFinegueule/"
+    url: "https://coquetteetfinegueule.com/"
   },
   {
     name: "Pitou Minou & Compagnons Verdun | Global Pet Foods Verdun",
