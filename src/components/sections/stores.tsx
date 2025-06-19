@@ -8,91 +8,106 @@ const STORES = [
     name: "Pattes et Griffes - Sainte- Thérèse",
     location: "Sainte-Thérèse, QC",
     address: "190 Bd du Curé-Labelle suite 1b",
-    phone: "450-818-1310"
+    phone: "450-818-1310",
+    url: "https://pattesgriffes.com/storelocator.html"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Thérèse",
     location: "Sainte-Thérèse, QC", 
     address: "95 Bd du Curé-Labelle Suite 8",
-    phone: "450-965-3906"
+    phone: "450-965-3906",
+    url: "https://www.chico.ca/boutique/chico-sainte-therese/"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Marthe-sur-le-Lac",
     location: "Sainte-Marthe-Sur-Le-Lac, QC",
     address: "2860 B Boul. des Promenades",
-    phone: "450-598-2860"
+    phone: "450-598-2860",
+    url: "https://www.chico.ca/boutique/chico-ste-marthe/"
   },
   {
     name: "Animal Shop Animal GIGI",
     location: "Saint-Eustache, QC",
     address: "356 Bd Arthur-Sauvé",
-    phone: "450-598-3444"
+    phone: "450-598-3444",
+    url: "https://www.animaleriegigi.com/"
   },
   {
     name: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
     location: "Laval, QC",
     address: "4511 Bd Arthur-Sauvé",
-    phone: "450-314-2442"
+    phone: "450-314-2442",
+    url: "https://www.chico.ca/boutique/chico-laval-ouest/"
   },
   {
     name: "Pattes et Griffes - Cartier Ouest",
     location: "Laval, QC",
     address: "293 Bd Cartier Ouest",
-    phone: "450-490-1414"
+    phone: "450-490-1414",
+    url: "https://pattesgriffes.com/storelocator.html"
   },
   {
     name: "Pitou Minou & Compagnons Kirkland",
     location: "Kirkland, QC",
     address: "16936 Route Transcanadienne",
-    phone: "514-695-5005"
+    phone: "514-695-5005",
+    url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/"
   },
   {
     name: "Chico - Boutique d'animaux | Boul. St-Laurent (Montreal)",
     location: "Montreal, QC",
     address: "7001 Boul. Saint-Laurent",
-    phone: "514-657-5813"
+    phone: "514-657-5813",
+    url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/"
   },
   {
     name: "Doghaus",
     location: "Montreal, QC",
     address: "5671 Rue Sherbrooke O",
-    phone: "514-483-3555"
+    phone: "514-483-3555",
+    url: "https://doghaus.ca/"
   },
   {
     name: "KONG ANIMALERIE",
     location: "Montreal, QC",
     address: "5555 Bd Decarie",
-    phone: "514-662-8373"
+    phone: "514-662-8373",
+    url: "https://konganimalerie.com/"
   },
   {
     name: "Coquette et Finegueule Animalerie avec toilettage - Pet store with grooming",
     location: "Verdun, QC",
     address: "5203 Av Bannantyne",
-    phone: "514-761-4221"
+    phone: "514-761-4221",
+    url: "https://www.facebook.com/CoquetteetFinegueule/"
   },
   {
     name: "Pitou Minou & Compagnons Verdun | Global Pet Foods Verdun",
     location: "Verdun, QC",
     address: "4100 Rue Wellington",
-    phone: "514-732-0555"
+    phone: "514-732-0555",
+    url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/"
   },
   {
     name: "Chico - Boutique d'animaux | Mont-Royal E",
     location: "Montreal, QC",
     address: "2016 Avenue du Mont-Royal E",
-    phone: "514-521-0201"
+    phone: "514-521-0201",
+    url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/"
   },
   {
-    name: "Chico - Boutique d'animaux | Mont-Royal E",
-    location: "Chico - Boutique d'animaux | Rue Ontario E",
+    name: "Chico - Boutique d'animaux | Rue Ontario E",
+    location: "Montreal, QC",
     address: "3911 Rue Ontario E",
-    phone: "514-527-1371"
+    phone: "514-527-1371",
+    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/"
   },
   {
     name: "Pattes et Griffes - Marche Centrale",
     location: "Montreal, QC",
     address: "9185 Bd de l'Acadie",
-    phone: "514-389-0090"
+    phone: "514-389-0090",
+    url: "https://pattesgriffes.com/storelocator.html"
   },
 ];
 
@@ -153,7 +168,7 @@ export function Stores() {
                   {store.phone && (
                     <a 
                       href={`tel:${store.phone}`}
-                      className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200"
+                      className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200 mb-1"
                     >
                       <svg 
                         className="w-4 h-4 mr-1" 
@@ -169,6 +184,29 @@ export function Stores() {
                         />
                       </svg>
                       {store.phone}
+                    </a>
+                  )}
+                  {store.url && (
+                    <a
+                      href={store.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200 ml-2"
+                    >
+                      <svg
+                        className="w-4 h-4 mr-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v1m0 14v1m8-8h-1M5 12H4m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                      </svg>
+                      Website
                     </a>
                   )}
                 </div>
