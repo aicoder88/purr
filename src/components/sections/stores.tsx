@@ -142,7 +142,7 @@ export function Stores() {
                   <div
                     className={
                       "w-12 h-12 rounded-full flex items-center justify-center " +
-                      (store.name.includes('Chico') || store.name.includes('Pattes et Griffes') || store.name.includes('GIGI')
+                      (store.name.includes('Chico') || store.name.includes('Pattes et Griffes') || store.name.includes('GIGI') || store.name.includes('Pitou Minou') || store.name.includes('Doghaus') || store.name.includes('KONG') || store.name.includes('Coquette')
                         ? "bg-white"
                         : "bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80")
                     }
@@ -161,9 +161,33 @@ export function Stores() {
                       />
                     ) : store.name.includes('GIGI') ? (
                       <img
-                        src="https://animalgigi.com/img/logo.png"
+                        src="/gigi.png"
                         alt="Animalerie GIGI Logo"
-                        className="w-12 h-12 object-contain"
+                        className="w-15 h-15 object-contain"
+                      />
+                    ) : store.name.includes('Pitou Minou') ? (
+                      <img
+                        src="/pitou-minou.png"
+                        alt="Pitou Minou & Compagnons Logo"
+                        className="w-15 h-15 object-contain"
+                      />
+                    ) : store.name.includes('Doghaus') ? (
+                      <img
+                        src="/doghaus.png"
+                        alt="Doghaus Logo"
+                        className="w-15 h-15 object-contain"
+                      />
+                    ) : store.name.includes('KONG') ? (
+                      <img
+                        src="/kong-animalerie.jpg"
+                        alt="KONG Animalerie Logo"
+                        className="w-15 h-15 object-contain"
+                      />
+                    ) : store.name.includes('Coquette') ? (
+                      <img
+                        src="/coquette-finegueule.png"
+                        alt="Coquette et Finegueule Logo"
+                        className="w-15 h-15 object-contain"
                       />
                     ) : (
                       <svg 
