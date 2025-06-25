@@ -104,7 +104,7 @@ const nextConfig = {
     // Scroll restoration for better UX
     scrollRestoration: true,
     // Enable optimizeCss for better CSS optimization
-    optimizeCss: false,
+    optimizeCss: true,
     // Enable gzip compression
     gzipSize: true,
   },
@@ -137,6 +137,19 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          // Add security headers for better Core Web Vitals
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'require-corp',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin',
+          },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'same-origin',
           },
         ],
       },
@@ -185,6 +198,20 @@ const nextConfig = {
           },
         ],
       },
+      // Add specific headers for video files
+      {
+        source: '/videos/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+        ],
+      },
     ];
   },
   
@@ -202,7 +229,7 @@ const nextConfig = {
     
     // Only apply optimizations in production builds
     if (!dev) {
-      // Split chunks more aggressively
+      // Split chunks more aggressively for better performance
       config.optimization.splitChunks = {
         chunks: 'all',
         maxInitialRequests: 25,
@@ -216,6 +243,7 @@ const nextConfig = {
             test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
             priority: 40,
             chunks: 'all',
+            enforce: true,
           },
           // Create a commons chunk for frequently used modules
           commons: {
@@ -241,6 +269,16 @@ const nextConfig = {
                 return 'react-icons';
               }
               
+              // Group Framer Motion together
+              if (packageName.startsWith('framer-motion')) {
+                return 'framer-motion';
+              }
+              
+              // Group Chart.js together
+              if (packageName.startsWith('chart.js') || packageName.startsWith('react-chartjs')) {
+                return 'charts';
+              }
+              
               // Return a chunk name based on the package name
               return `npm.${packageName.replace('@', '')}`;
             },
@@ -248,8 +286,23 @@ const nextConfig = {
             minChunks: 2,
             reuseExistingChunk: true,
           },
+          // Create a critical chunk for above-the-fold content
+          critical: {
+            name: 'critical',
+            test: /[\\/]src[\\/]components[\\/]sections[\\/]hero/,
+            priority: 50,
+            chunks: 'all',
+            enforce: true,
+          },
         },
       };
+      
+      // Enable tree shaking for better bundle size
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
+      
+      // Enable module concatenation for better performance
+      config.optimization.concatenateModules = true;
     }
     
     // Add rule for handling TypeScript files

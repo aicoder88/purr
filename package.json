@@ -12,6 +12,7 @@
     "postbuild": "next-sitemap && npm run generate-enhanced-sitemap",
     "optimize-images": "node scripts/optimize-images.js",
     "optimize-all-images": "node scripts/optimize-all-images.js",
+    "optimize-performance": "node scripts/optimize-performance.js",
     "add-image-dimensions": "node scripts/add-image-dimensions.js",
     "types:supabase": "echo '// Placeholder for Supabase types' > src/types/supabase.ts",
     "update-deps": "npx update-browserslist-db@latest",
