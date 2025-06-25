@@ -1,7 +1,64 @@
+import { useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "../../lib/translation-context";
 
 export function Newsletter() {
+  const { t } = useTranslation();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success?: boolean;
+    message?: string;
+  }>({});
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setSubmitStatus({
+        success: false,
+        message: "Please enter your email address."
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({});
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          success: true,
+          message: responseData.message || (t.newsletter?.successMessage || "Thank you for subscribing!")
+        });
+        setEmail(""); // Clear the form on success
+      } else {
+        setSubmitStatus({
+          success: false,
+          message: responseData.message || (t.newsletter?.errorMessage || "An error occurred. Please try again.")
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        success: false,
+        message: t.newsletter?.errorMessage || "An error occurred. Please try again."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] relative overflow-hidden">
       {/* Decorative elements */}
@@ -23,17 +80,39 @@ export function Newsletter() {
             </p>
           </div>
 
-          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
             <input
               type="email"
-              placeholder="Your email address"
+              placeholder={t.newsletter?.placeholder || "Your email address"}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="flex-grow px-5 py-4 rounded-xl border border-[#E0EFC7] focus:ring-[#5B2EFF] focus:border-[#5B2EFF] shadow-sm transition-all duration-300"
               required
+              disabled={isSubmitting}
             />
-            <Button className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 hover:from-[#5B2EFF]/90 hover:to-[#5B2EFF] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap">
-              Subscribe Now
+            <Button 
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 hover:from-[#5B2EFF]/90 hover:to-[#5B2EFF] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Subscribing..." : (t.newsletter?.buttonText || "Subscribe Now")}
             </Button>
           </form>
+
+          {/* Status message */}
+          {submitStatus.message && (
+            <div
+              className={`mt-4 p-4 rounded-lg text-center ${
+                submitStatus.success
+                  ? 'bg-green-50 text-green-800 border border-green-200'
+                  : 'bg-red-50 text-red-800 border border-red-200'
+              }`}
+              role="alert"
+              aria-live="polite"
+            >
+              {submitStatus.message}
+            </div>
+          )}
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
             <div className="flex items-center">
