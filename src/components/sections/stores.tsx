@@ -117,49 +117,49 @@ const getStoreLogo = (storeName: string) => {
     return {
       src: "https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg",
       alt: "Chico Logo",
-      className: "w-10 h-10"
+      className: "w-16 h-16"
     };
   }
   if (storeName.includes('Pattes et Griffes')) {
     return {
       src: "https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg",
       alt: "Pattes et Griffes Logo",
-      className: "w-12 h-12 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   if (storeName.includes('GIGI')) {
     return {
       src: "/gigi.png",
       alt: "Animalerie GIGI Logo",
-      className: "w-15 h-15 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   if (storeName.includes('Pitou Minou')) {
     return {
       src: "/pitou-minou.png",
       alt: "Pitou Minou & Compagnons Logo",
-      className: "w-15 h-15 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   if (storeName.includes('Doghaus')) {
     return {
       src: "/doghaus.png",
       alt: "Doghaus Logo",
-      className: "w-15 h-15 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   if (storeName.includes('KONG')) {
     return {
       src: "/kong-animalerie.jpg",
       alt: "KONG Animalerie Logo",
-      className: "w-15 h-15 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   if (storeName.includes('Coquette')) {
     return {
       src: "/coquette-finegueule.png",
       alt: "Coquette et Finegueule Logo",
-      className: "w-15 h-15 object-contain"
+      className: "w-18 h-18 object-contain"
     };
   }
   return null;
@@ -210,7 +210,7 @@ export function Stores() {
                   <div className="flex-shrink-0">
                     <div
                       className={
-                        "w-12 h-12 rounded-full flex items-center justify-center " +
+                        "w-20 h-20 rounded-full flex items-center justify-center " +
                         (shouldUseWhiteBg ? "bg-white" : "bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80")
                       }
                     >
