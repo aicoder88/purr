@@ -61,7 +61,7 @@ export function Features() {
                       : "from-[#03E46A] to-[#03E46A]/80"
                   } p-3 sm:p-4 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <IconComponent className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                  <IconComponent className="h-7 w-7 text-white" />
                 </div>
                 <h3
                   className={`font-bold text-lg sm:text-xl mb-3 sm:mb-4 ${

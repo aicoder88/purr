@@ -33,7 +33,7 @@ export function Contact() {
           <div className="space-y-4 sm:space-y-8">
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                <MapPin className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131]">
@@ -45,7 +45,7 @@ export function Contact() {
 
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                <Phone className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#5B2EFF]">
@@ -57,7 +57,7 @@ export function Contact() {
 
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] transition-all duration-300 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                <Clock className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131]">

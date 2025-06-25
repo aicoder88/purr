@@ -124,7 +124,7 @@ export function WhyPurrify() {
                       <div
                         className={`p-2 sm:p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
                       >
-                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <IconComponent className="h-5 w-5 text-white" />
                       </div>
                       <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass}`}>
                         {reason.title}

@@ -101,7 +101,7 @@ const nextConfig = {
     // Scroll restoration for better UX
     scrollRestoration: true,
     // Enable optimizeCss for better CSS optimization
-    optimizeCss: true,
+    optimizeCss: false,
     // Enable gzip compression
     gzipSize: true,
   },
