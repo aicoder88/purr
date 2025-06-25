@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://purrify.ca/sitemap-0.xml</loc></sitemap>
-<sitemap><loc>https://purrify.ca/server-sitemap.xml</loc></sitemap>
-<sitemap><loc>https://purrify.ca/sitemap-0.xml</loc></sitemap>
+  <sitemap>
+    <loc>https://purrify.ca/sitemap-0.xml</loc>
+    <lastmod>2025-06-25T02:09:44.344Z</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://purrify.ca/server-sitemap.xml</loc>
+    <lastmod>2025-06-25T02:09:44.344Z</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://purrify.ca/sitemap-blog.xml</loc>
+    <lastmod>2025-06-25T02:09:44.344Z</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://purrify.ca/sitemap-products.xml</loc>
+    <lastmod>2025-06-25T02:09:44.344Z</lastmod>
+  </sitemap>
 </sitemapindex>

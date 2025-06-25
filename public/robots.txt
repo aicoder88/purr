@@ -13,6 +13,4 @@ Disallow: /static/*
 Host: https://purrify.ca
 
 # Sitemaps
-Sitemap: https://purrify.ca/sitemap.xml
-Sitemap: https://purrify.ca/server-sitemap.xml
-Sitemap: https://purrify.ca/sitemap-0.xml
+Sitemap: https://purrify.ca/sitemap-comprehensive.xml
