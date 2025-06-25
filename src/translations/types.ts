@@ -11,6 +11,7 @@ export interface TranslationType {
     whyPurrify: string;
     tryFree?: string;
     testimonials: string;
+    leaveReview: string;
     contact: string;
     blog: string;
     privacyPolicy: string;

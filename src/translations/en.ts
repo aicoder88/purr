@@ -10,6 +10,7 @@ export const en = {
     about: "About",
     whyPurrify: "Why Purrify",
     testimonials: "Testimonials",
+    leaveReview: "Leave a Review",
     contact: "Contact",
     blog: "Blog",
     privacyPolicy: "Privacy Policy",
