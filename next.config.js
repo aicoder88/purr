@@ -14,7 +14,10 @@ const nextConfig = {
     'localhost:3003',
     '192.168.0.146:3000',
     '192.168.0.146:3001',
-    '192.168.0.146:3003'
+    '192.168.0.146:3003',
+    '192.168.0.152:3000',
+    '192.168.0.152:3001',
+    '192.168.0.152:3003'
   ],
   
   // Enhanced image optimization
@@ -71,7 +74,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
-    localeDetection: true,
+    localeDetection: false,
     // Specify domain-specific locales if needed
     domains: [
       {

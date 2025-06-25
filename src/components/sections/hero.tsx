@@ -94,11 +94,11 @@ export function Hero() {
               </video>
             </div>
             
-            {/* Feature Showcase */}
+            {/* Feature Showcase - HIDDEN */}
+            {/*
             <div className="mt-8 mb-6 w-full">
               <div className="bg-[#FFFFFF]/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-[#E0EFC7]/30 transition-all duration-500 max-w-2xl mx-auto hover:shadow-[#E0EFC7]/50 hover:-translate-y-1">
                 <div className="grid grid-cols-2 gap-4">
-                  {/* Feature 1 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +109,6 @@ export function Hero() {
                     <p className="text-xs text-gray-600">{t.benefits.molecular.description}</p>
                   </div>
 
-                  {/* Feature 2 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#5B2EFF]/5 to-[#FF3131]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#5B2EFF]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +119,6 @@ export function Hero() {
                     <p className="text-xs text-gray-600">{t.benefits.sevenDayFreshness.description}</p>
                   </div>
 
-                  {/* Feature 3 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,7 +129,6 @@ export function Hero() {
                     <p className="text-xs text-gray-600">{t.benefits.natural.description}</p>
                   </div>
 
-                  {/* Feature 4 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#5B2EFF]/5 to-[#FF3131]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#5B2EFF]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +139,6 @@ export function Hero() {
                     <p className="text-xs text-gray-600">{t.benefits.universalFit.description}</p>
                   </div>
 
-                  {/* Feature 5 */}
                   <div className="flex flex-col items-center text-center p-3 rounded-xl bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5">
                     <div className="w-10 h-10 mb-2 rounded-full bg-[#FF3131]/10 flex items-center justify-center" aria-hidden="true">
                       <svg className="w-5 h-5 text-[#FF3131]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +150,6 @@ export function Hero() {
                   </div>
                 </div>
 
-                {/* Trust Indicators */}
                 <div className="mt-4 flex justify-center items-center space-x-6 text-xs text-gray-500">
                   <div className="flex items-center">
                     <svg className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -177,6 +172,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
+            */}
             
             {/* Empty div to maintain spacing */}
             <div className="mt-4"></div>
