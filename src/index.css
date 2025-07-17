@@ -38,33 +38,35 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
 
-    --primary: 210 40% 98%;
+    --primary: 14 92% 62%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 213 31% 91%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --secondary-text: #3694FF;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 213 31% 91%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 213 31% 91%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 14 92% 62%;
   }
 }
 
@@ -72,21 +74,71 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
-    .bg-gradient-primary {
-      @apply bg-gradient-to-t from-[#FF3131] to-[#FF3131]/40;
-    }
-    .bg-gradient-secondary {
-      @apply bg-gradient-to-t from-[#ffaa2f] to-[#ffaa2f]/40;
-    }
-    .paw {
-      @apply w-2 h-2 bg-black absolute  -translate-x-1/2 -translate-y-1/2
-    }
-    /* Hide elements related to ordering in info-only mode */
-    .hide-for-info-mode {
-      display: none !important;
-    }
   
+  html {
+    @apply antialiased;
+  }
+  
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-t from-[#FF3131] to-[#FF3131]/40 dark:from-[#FF5050] dark:to-[#FF5050]/40;
+  }
+  
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-t from-[#ffaa2f] to-[#ffaa2f]/40 dark:from-[#ffcc2f] dark:to-[#ffcc2f]/40;
+  }
+  
+  .paw {
+    @apply w-2 h-2 bg-black dark:bg-white absolute -translate-x-1/2 -translate-y-1/2;
+  }
+  
+  /* Hide elements related to ordering in info-only mode */
+  .hide-for-info-mode {
+    display: none !important;
+  }
+  
+  /* Dark mode specific styles */
+  .dark .dark-glass {
+    @apply bg-black/30 backdrop-blur-lg border border-white/10;
+  }
+  
+  .light-glass {
+    @apply bg-white/70 backdrop-blur-lg border border-black/10;
+  }
+}
+
+/* Smooth transitions for theme switching */
+.theme-transition {
+  @apply transition-all duration-300;
+}
+
+/* Dark mode image adjustments */
+.dark img:not([src*=".svg"]) {
+  @apply brightness-90 contrast-100;
+}
+
+/* Dark mode card styles */
+.dark .card-hover {
+  @apply hover:bg-accent/50 transition-colors duration-200;
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-accent rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent/80;
 }
