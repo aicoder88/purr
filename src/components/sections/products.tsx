@@ -1,10 +1,13 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/constants";
-import SectionHeader from "../ui/section-header";
+import dynamic from "next/dynamic";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
+
+// Dynamically import SectionHeader to reduce initial bundle size
+const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
 
 export function Products() {
   const { t } = useTranslation();
