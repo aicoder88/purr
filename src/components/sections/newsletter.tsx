@@ -60,21 +60,21 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] dark:from-gray-900 dark:to-gray-950 relative overflow-hidden transition-colors duration-300">
       {/* Decorative elements */}
       <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#5B2EFF]/20 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#03E46A]/20 rounded-full blur-3xl"></div>
 
       <Container className="relative z-10">
-        <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-[#E0EFC7]">
+        <div className="max-w-3xl mx-auto bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800">
           <div className="text-center mb-8">
-            <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+            <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#3694FF]/20 rounded-full text-[#FF3131] dark:text-[#3694FF] font-medium text-sm mb-4">
               Stay Updated
             </div>
-            <h2 className="text-4xl font-bold mb-4 text-[#5B2EFF]">
+            <h2 className="text-4xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
               Join Our Cat-Loving Community
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-lg dark:text-gray-300">
               Subscribe to our newsletter for exclusive offers, cat care tips,
               and be the first to know about new Purrify products.
             </p>

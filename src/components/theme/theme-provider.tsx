@@ -14,7 +14,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: "dark",
   setTheme: () => null,
 };
 
@@ -22,7 +22,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "dark",
   storageKey = "purrify-ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -30,7 +30,10 @@ export function ThemeProvider({
     // Check if we're in the browser environment
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem(storageKey) as Theme;
-      return storedTheme || defaultTheme;
+      if (storedTheme) return storedTheme;
+      // If no stored theme, use system preference
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return prefersDark ? "dark" : "light";
     }
     return defaultTheme;
   });

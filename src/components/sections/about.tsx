@@ -11,12 +11,12 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 export function About() {
   const { t } = useTranslation();
   return (
-    <section className="py-12 bg-white" id="about">
+    <section className="py-12 bg-background transition-colors duration-300" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t.features.longLastingFreshness.title} />
           
-          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
+          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
           
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
@@ -34,7 +34,7 @@ export function About() {
             </div>
           </div>
           
-          <p className="text-3xl font-semibold text-[#333333] mb-6">
+          <p className="text-3xl font-semibold text-foreground mb-6">
           {t.features.natural.description}
           </p>
         </div>
@@ -75,18 +75,18 @@ export function About() {
             </div>
           </div>
           <div className="space-y-6">
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
             {t.features.odorElimination.description}
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
             {t.features.catFriendly.description}
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              <span className="font-bold text-[#FF3131]">
+            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
+              <span className="font-bold text-[#FF3131] dark:text-[#FF5050]">
               {t.siteName} {t.features.odorElimination.title}.
               </span>
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
             {t.features.longLastingFreshness.description} {t.features.worksWithAnyLitter.description}
             </p>
           </div>

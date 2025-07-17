@@ -15,7 +15,7 @@ const iconMap = {
 export function Features() {
   return (
     <section
-      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF]"
+      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="features"
     >
       <Container>
@@ -24,20 +24,20 @@ export function Features() {
             The Purrify Difference
           </div> */}
           <SectionHeader text="The Purrify Difference" />
-          <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             Why do Cats and Pet Parents Love Purrify?
           </h2>
-          <p className="text-gray-600 leading-relaxed text-lg">
+          <p className="text-gray-600 leading-relaxed text-lg dark:text-gray-300">
             You love your cat, but let's be real—litter box odor is a problem.
             You've tried scented litter, air fresheners, and baking soda—but
             they only mask the problem, not fix it.
           </p>
-          <p className="text-gray-600 leading-relaxed mt-4 text-lg">
+          <p className="text-gray-600 leading-relaxed mt-4 text-lg dark:text-gray-300">
             Imagine walking into your home and smelling… nothing. Just clean
             air, no lingering odors, and no embarrassing smells when guests
             visit.
           </p>
-          <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl">
+          <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl dark:text-foreground">
             That's exactly what Purrify does...
           </p>
         </div>

@@ -8,28 +8,28 @@ export function Testimonials() {
   
   const colorClasses = [
     {
-      bg: "bg-[#FF3131]/10",
-      border: "border-[#FF3131]/30",
-      text: "text-[#FF3131]",
+      bg: "bg-[#FF3131]/10 dark:bg-[#FF5050]/10",
+      border: "border-[#FF3131]/30 dark:border-[#FF5050]/30",
+      text: "text-[#FF3131] dark:text-[#FF5050]",
       icon: "#FF3131",
     },
     {
-      bg: "bg-[#5B2EFF]/10",
-      border: "border-[#5B2EFF]/30",
-      text: "text-[#5B2EFF]",
+      bg: "bg-[#5B2EFF]/10 dark:bg-[#3694FF]/10",
+      border: "border-[#5B2EFF]/30 dark:border-[#3694FF]/30",
+      text: "text-[#5B2EFF] dark:text-[#3694FF]",
       icon: "#5B2EFF",
     },
     {
-      bg: "bg-[#03E46A]/10",
-      border: "border-[#03E46A]/30",
-      text: "text-[#03E46A]",
+      bg: "bg-[#03E46A]/10 dark:bg-[#03E46A]/20",
+      border: "border-[#03E46A]/30 dark:border-[#03E46A]/40",
+      text: "text-[#03E46A] dark:text-[#03E46A]",
       icon: "#03E46A",
     },
   ];
 
   return (
     <section
-      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF]"
+      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="testimonials"
     >
       <Container>

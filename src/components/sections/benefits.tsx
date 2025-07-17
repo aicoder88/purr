@@ -4,7 +4,7 @@ import SectionHeader from "../ui/section-header";
 export function Benefits() {
   return (
     <section
-      className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5]"
+      className="py-12 bg-gradient-to-br from-[#FFFFFF] to-[#FFFFF5] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="benefits"
     >
       <Container>
@@ -13,10 +13,10 @@ export function Benefits() {
           {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Why Choose Purrify
           </div> */}
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
             Benefits of Purrify
           </h2>
-          <p className="text-gray-600 text-xl">
+          <p className="text-gray-600 text-xl dark:text-gray-300">
             Discover why Purrify is the perfect solution for cat owners who want
             a fresh-smelling home.
           </p>

@@ -56,7 +56,7 @@ export function HowItWorks() {
 
   return (
     <section
-      className="pb-20 bg-gradient-to-br from-white to-orange-50"
+      className="pb-20 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="how-it-works"
     >
       <Container>
@@ -83,7 +83,7 @@ export function HowItWorks() {
               className="relative group"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 z-10 relative">
+              <div className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
                 <div
                   className={`absolute -top-6 left-1/2 -translate-x-1/2 ${
                     index === 0
@@ -127,7 +127,7 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-12 sm:mt-20 flex justify-center">
-          <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] w-full transform transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-1 group overflow-hidden">
+          <div className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800 w-full transform transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group overflow-hidden">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-8">
               <div className="w-full md:w-1/2 overflow-hidden rounded-xl">
                 <div className="grid grid-cols-2 gap-2">

@@ -11,9 +11,9 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 export function CTA() {
   const { t } = useTranslation();
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] opacity-90 transition-colors duration-300">
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] opacity-90"></div>
 
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -27,13 +27,13 @@ export function CTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white/10 rounded-3xl p-10 border border-white/20 shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white/10 dark:bg-black/30 rounded-3xl p-10 border border-white/20 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80"
             alt="Happy cat"
             className="absolute top-0 right-0 w-1/3 h-full object-cover opacity-20 rounded-r-3xl"
           />
-          <div className="text-white max-w-2xl bg-black/30 backdrop-blur-sm p-6 rounded-xl">
+          <div className="text-white max-w-2xl bg-black/30 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
               {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
@@ -72,7 +72,7 @@ export function CTA() {
           <div className="flex flex-col gap-4 min-w-[200px]">
             <Button
               size="lg"
-              className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              className="bg-white text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
             >
               {t.cta?.buttonText || "ORDER NOW"}
             </Button>

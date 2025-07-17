@@ -181,16 +181,16 @@ export function Stores() {
   
   return (
     <section
-      className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]"
+      className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-colors duration-300"
       id="stores"
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <SectionHeader text={t.storesSection?.availableInStores || "AVAILABLE IN STORES"} />
-          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-100">
             {t.storesSection?.soldInFollowingStores || "SOLD IN THE FOLLOWING STORES"}
           </h2>
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
             {t.storesSection?.subtitle || "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive."}
           </p>
         </div>
@@ -203,7 +203,7 @@ export function Stores() {
             return (
               <div
                 key={`${store.name}-${store.location}`}
-                className="bg-white rounded-2xl p-6 shadow-lg border border-[#E0EFC7] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-start space-x-4">
@@ -211,7 +211,7 @@ export function Stores() {
                     <div
                       className={
                         "w-20 h-20 rounded-full flex items-center justify-center " +
-                        (shouldUseWhiteBg ? "bg-white" : "bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80")
+                        (shouldUseWhiteBg ? "bg-white dark:bg-gray-900" : "bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80")
                       }
                     >
                       {logoConfig ? (
@@ -238,13 +238,13 @@ export function Stores() {
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
                       {store.name}
                     </h3>
                     <p className="text-[#FF3131] font-medium text-sm mb-1">
                       {store.location}
                     </p>
-                    <p className="text-gray-600 text-sm mb-2">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                       {store.address}
                     </p>
                     {store.phone && (
@@ -299,7 +299,7 @@ export function Stores() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
             {t.storesSection?.dontSeeLocalStore || "Don't see your local store? Contact us to request Purrify at your favorite pet store!"}
           </p>
           <button 

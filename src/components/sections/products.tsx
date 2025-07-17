@@ -12,16 +12,16 @@ export function Products() {
   
   return (
     <section
-      className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]"
+      className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-colors duration-300"
       id="products"
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <SectionHeader text={t.productsSection?.forEveryCatHousehold || "FOR EVERY CAT HOUSEHOLD"} />
-          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             {t.productsSection?.pickYourPowerLevel || "PICK YOUR PURRIFY POWER LEVEL"}
           </h2>
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-600 text-xl max-w-2xl mx-auto dark:text-gray-300">
             {t.productsSection?.subtitle || "Whether you have one kitten or multiple cats, we have the ideal Purrify size for your home."}
           </p>
         </div>
@@ -30,13 +30,13 @@ export function Products() {
         <div className="relative max-w-4xl mx-auto mb-12 px-4">
           <div className="h-3 bg-gradient-to-r from-[#E0EFC7] via-[#FF3131]/60 to-[#FF3131] rounded-full"></div>
           <div className="flex justify-between mt-2">
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
               {t.productsSection?.powerLevels?.kittenPower || "Kitten Power"}
             </span>
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
               {t.productsSection?.powerLevels?.standardPower || "Standard Power"}
             </span>
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
               {t.productsSection?.powerLevels?.maximumPower || "Maximum Power"}
             </span>
           </div>
@@ -46,7 +46,7 @@ export function Products() {
           {PRODUCTS.map((product, index) => (
             <div
               key={product.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative"
+              className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-800 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Highlight for recommended product */}
@@ -58,7 +58,7 @@ export function Products() {
               
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/10 to-[#E0EFC7]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="aspect-square overflow-hidden h-72 bg-gradient-to-b from-white to-[#FFFFF5]">
+                <div className="aspect-square overflow-hidden h-72 bg-gradient-to-b from-white to-[#FFFFF5] dark:from-gray-900 dark:to-gray-950 dark:bg-gray-900">
                   <div className="relative h-full flex items-center justify-center p-6">
                     <NextImage
                       src={product.image}
@@ -100,7 +100,7 @@ export function Products() {
                     {(t.products[product.id]?.description || product.description).split('\n').map((line, i) => (
                       <div key={i} className="flex items-start">
                         {i > 0 && <div className="text-[#FF3131] mr-2 mt-1">•</div>}
-                        <p className={`text-gray-700 ${i === 0 ? 'font-medium text-lg' : ''}`}>{line}</p>
+                        <p className={`text-gray-700 dark:text-gray-300 ${i === 0 ? 'font-medium text-lg' : ''}`}>{line}</p>
                       </div>
                     ))}
                   </div>

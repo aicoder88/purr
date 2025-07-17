@@ -95,14 +95,14 @@ export function FreeGiveawayForm() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8 border border-[#E0EFC7]">
-      <h2 className="text-2xl font-bold text-[#1E1B4B] mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
+      <h2 className="text-2xl font-bold text-[#1E1B4B] dark:text-white mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-[#333333]"
+            className="block text-sm font-medium text-[#333333] dark:text-gray-200"
           >
             {t.freeGiveaway?.fullName || "Full Name"} <span className="text-[#FF3131]">*</span>
           </label>
@@ -124,7 +124,7 @@ export function FreeGiveawayForm() {
         <div className="py-2">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-[#333333]"
+            className="block text-sm font-medium text-[#333333] dark:text-gray-200"
           >
             {t.freeGiveaway?.emailAddress || "Email Address"} <span className="text-[#FF3131]">*</span>
           </label>
@@ -145,7 +145,7 @@ export function FreeGiveawayForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#333333] mb-2">
+          <label className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
             {t.freeGiveaway?.catNames || "Names of Your Cats"}
           </label>
           

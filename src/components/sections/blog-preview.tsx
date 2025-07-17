@@ -41,7 +41,7 @@ export function BlogPreview() {
 
   return (
     <section
-      className="py-12 bg-gradient-to-br from-orange-50 to-white"
+      className="py-12 bg-gradient-to-br from-orange-50 to-white dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="blog"
     >
       <Container>
@@ -49,10 +49,10 @@ export function BlogPreview() {
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             {t.blogSection.catCareTips}
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
+          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
             {t.blogSection.fromOurBlog}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg dark:text-gray-300">
             {t.blogSection.description}
           </p>
         </div>

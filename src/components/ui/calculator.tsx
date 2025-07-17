@@ -232,10 +232,10 @@ export function CostCalculator({ className }: CostCalculatorProps) {
 
   return (
     <div
-      className={`bg-[#FFFFFF]/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#E0EFC7] ${className}`}
+      className={`bg-[#FFFFFF]/95 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#E0EFC7] dark:border-gray-800 ${className}`}
     >
       <motion.h3
-        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] bg-clip-text text-transparent"
+        className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] bg-clip-text text-transparent"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -255,7 +255,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             <div className="flex justify-center mb-2">
               <Cat className="h-5 w-5 text-[#5B2EFF]" />
             </div>
-            <label className="block text-sm font-medium text-gray-700 text-center">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 text-center">
               Number of Cats: {catsCount}
             </label>
             <Slider

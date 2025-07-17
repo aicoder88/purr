@@ -27,7 +27,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative container pt-20 pb-0 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300">
+    <section className="relative w-full pt-20 pb-0 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300">
       
       {/* Decorative elements - using CSS variables for better performance */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 dark:bg-[#FF5050]/10 rounded-full blur-3xl"></div>

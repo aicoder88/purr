@@ -75,7 +75,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="pt-2 pb-12 bg-gradient-to-br from-orange-50 to-white mb-16"
+      className="relative pt-2 pb-12 bg-gradient-to-br from-orange-50 to-[#F5F5F5] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="why-purrify"
     >
       <Container>
@@ -84,10 +84,10 @@ export function WhyPurrify() {
             The Science Behind Purrify
           </div> */}
         
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
             {t.nav.whyPurrify}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg dark:text-gray-300">
             Discover why thousands of cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
           </p>
         </div>
@@ -99,7 +99,7 @@ export function WhyPurrify() {
               return (
                 <div
                   key={index}
-                  className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
+                  className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center">
@@ -126,11 +126,11 @@ export function WhyPurrify() {
                       >
                         <IconComponent className="h-5 w-5 text-white" />
                       </div>
-                      <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass}`}>
+                      <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass} text-gray-900 dark:text-gray-100`}>
                         {reason.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base flex-grow">
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base flex-grow">
                       {reason.description}
                     </p>
                   </div>
@@ -139,6 +139,24 @@ export function WhyPurrify() {
             })}
         </div>
       </Container>
+      {/* Downward-facing arrow to encourage scrolling */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-0 z-20 flex justify-center w-full">
+        <svg
+          className="w-10 h-10 drop-shadow-md animate-bounce mb-[-20px]"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 9l6 6 6-6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-gray-400 dark:text-gray-500"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
