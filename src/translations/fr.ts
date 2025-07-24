@@ -194,8 +194,8 @@ export const fr = {
         answer: "Pour de meilleurs résultats, saupoudrez Purrify sur la litière de votre chat chaque fois que vous changez ou ajoutez de la litière fraîche. Une fine couche est tout ce dont vous avez besoin pour un contrôle continu des odeurs."
       },
       {
-        question: "Combien de temps dure un contenant de Purrify ?",
-        answer: "Cela dépend du nombre de chats que vous avez et de la fréquence à laquelle vous changez leur litière. En moyenne, notre contenant de 65g dure environ 1-2 mois pour un foyer avec un seul chat et des changements réguliers de litière."
+        question: "Combien de temps dure un sac de Purrify ?",
+        answer: "Cela dépend du nombre de chats que vous avez et de la fréquence à laquelle vous changez leur litière. En moyenne, notre sac de 65g dure environ 1-2 mois pour un foyer avec un seul chat et des changements réguliers de litière."
       },
       {
         question: "En quoi Purrify est-il différent des litières parfumées ou des désodorisants ?",
