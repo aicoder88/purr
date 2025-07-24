@@ -21,7 +21,7 @@ export const en = {
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "Perfect for New Kittens\nThe perfect trial size - good for one litter change."
+      description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
     },
     "purrify-60g": {
       name: "Purrify 60g",
@@ -185,7 +185,7 @@ export const en = {
     title: "Contact Us",
     subtitle: "We're here to help",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "+1 438-931-7345",
+    phone: "+1 514 961 9386",
     email: "hello@purrify.ca",
     hours: {
       title: "Opening Hours",
@@ -245,7 +245,7 @@ export const en = {
     organization: {
       name: "Purrify",
       contactPoint: {
-        telephone: "+1 438-931-7345",
+        telephone: "+1 514 961 9386",
         contactType: "customer service",
         areaServed: "CA",
         availableLanguage: ["English", "French"]

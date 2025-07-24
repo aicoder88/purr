@@ -6,8 +6,8 @@ export const PRODUCTS = [
   {
     id: "purrify-17g",
     name: "Purrify 17g",
-    description: "Perfect for New Kittens\nThe perfect trial size - good for one litter change.",
-    price: 9.99,
+    description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
+    price: 6.99,
     image: "/optimized/20g.webp",
     size: "17g",
   },
@@ -139,7 +139,7 @@ export const TESTIMONIALS = [
 
 export const CONTACT_INFO = {
   address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-  phone: "+1 438-931-7345",
+  phone: "+1 514 961 9386",
   email: "hello@purrify.ca",
   hours: {
     monday: "08:00 am - 8:00 pm",

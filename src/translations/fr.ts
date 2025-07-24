@@ -21,7 +21,7 @@ export const fr = {
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "Parfait pour les Nouveaux Chaton\nLa taille d'essai idéale - suffisant pour un changement de litière."
+      description: "Parfait pour les Nouveaux Chaton\nTaille d'essai : Suffisant uniquement pour un seul changement de litière. Idéal pour essayer Purrify avant de choisir un format plus grand."
     },
     "purrify-60g": {
       name: "Purrify 60g",
@@ -209,7 +209,7 @@ export const fr = {
     title: "Contactez-Nous",
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "+1 438-931-7345",
+    phone: "+1 514 961 9386",
     email: "hello@purrify.ca",
     hours: {
       title: "Heures d'Ouverture",
@@ -269,7 +269,7 @@ export const fr = {
     organization: {
       name: "Purrify",
       contactPoint: {
-        telephone: "+1 438-931-7345",
+        telephone: "+1 514 961 9386",
         contactType: "service client",
         areaServed: "CA",
         availableLanguage: ["Anglais", "Français"]
