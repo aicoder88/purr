@@ -25,9 +25,9 @@ export function ShoppingCart() {
           <Button
             variant="outline"
             size="icon"
-            className="relative rounded-full bg-white shadow-md hover:bg-gray-50"
+            className="relative rounded-full bg-white shadow-md hover:bg-gray-50 h-9 w-9 sm:h-10 sm:w-10 md:h-9 md:w-9 p-0 sm:p-0 md:p-0 active:scale-95 transition-transform duration-100"
           >
-            <ShoppingCartIcon className="h-5 w-5" />
+            <ShoppingCartIcon className="h-6 w-6 sm:h-5 sm:w-5" />
             {items.length > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white">
                 {items.length}

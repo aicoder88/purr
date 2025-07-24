@@ -39,7 +39,19 @@ export function Hero() {
           <div className="space-y-8">
             <SectionHeader text={t.seo.keywords.split(',')[1]} />
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              <RotatingText texts={[t.hero.catLitter,t.hero.rabbitLitter,t.hero.fridgeSmells,t.hero.ferretCage]} />
+              <span
+                className="block bg-clip-text text-transparent pb-2"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
+                  lineHeight: "1.3",
+                  minHeight: "1.4em",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "98%"
+                }}
+              >
+                {t.hero.catLitter}
+              </span>
               <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 {t.features.odorElimination.title}
               </span>

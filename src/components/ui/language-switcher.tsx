@@ -90,13 +90,13 @@ export function LanguageSwitcher() {
           alt={currentLanguage.alt} 
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
-        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.name}</span>
+        <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100">{currentLanguage.name}</span>
         <ChevronDown className="h-4 w-4 text-[#FF3131]" />
       </Button>
 
       {isOpen && (
         <div 
-          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
+          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black ring-opacity-5 z-50"
           onMouseLeave={closeDropdown}
         >
           <div className="py-1" role="menu" aria-orientation="vertical">
@@ -105,8 +105,8 @@ export function LanguageSwitcher() {
                 key={language.locale}
                 className={`flex items-center px-3 py-2 text-sm w-full text-left ${
                   locale === language.locale
-                    ? 'bg-[#FFFFF5] text-[#FF3131] font-medium'
-                    : 'text-gray-700 hover:bg-[#FFFFF5] hover:text-[#FF3131]'
+                    ? 'bg-[#FFFFF5] dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-medium'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-800 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                 }`}
                 onClick={() => handleLanguageChange(language.locale)}
                 role="menuitem"
