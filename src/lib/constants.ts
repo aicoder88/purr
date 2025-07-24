@@ -89,7 +89,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Mathieu G., Verdun",
-    text: "Avant, je vidais la litière aux 3-4 jours juste pour éviter les mauvaises odeurs. Maintenant, avec Purrify, je la garde fraîche bien plus longtemps. J'achète moins de litière, je sauve du cash, pis ça fait moins de déchets. Un no-brainer!",
+    text: "Avant, je vidais la litière aux 3-4 jours juste pour éviter les mauvaises odeurs. Maintenant, avec Purrify, je la garde fraîche bien plus longtemps. J'achète moins de litière, je sauve du cash, pis ça fait moins de déchets. Un no-brainer! (Le sac dure longtemps.)",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=mathieu",
     stars: 5,
   },
