@@ -170,8 +170,8 @@ export const en = {
         answer: "For best results, sprinkle Purrify on top of your cat's litter each time you change or add fresh litter. A thin layer is all you need for continuous odor control."
       },
       {
-        question: "How long does one container of Purrify last?",
-        answer: "This depends on how many cats you have and how often you change their litter. On average, our 65g container lasts about 1-2 months for a single cat household with regular litter changes."
+        question: "How long does one bag of Purrify last?",
+        answer: "This depends on how many cats you have and how often you change their litter. On average, our 65g bag lasts about 1-2 months for a single cat household with regular litter changes."
       },
       {
         question: "How is Purrify different from scented litters or deodorizers?",
