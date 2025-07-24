@@ -77,7 +77,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Maria D., Saint-Laurent",
-    text: "Listen, when you've got 3 cats in a condo, you get desperate. I've tried EVERYTHING. The fancy automatic boxes, the crystal stuff, those plug-in air fresheners… nothing worked. But this little bag? Complete lifesaver. My mother-in-law even complimented how fresh my place smells (and she never compliments anything 😅).",
+    text: "Works great, I love it. No smell anymore.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
     stars: 5,
   },
