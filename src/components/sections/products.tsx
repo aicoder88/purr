@@ -113,25 +113,27 @@ export function Products() {
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
                     ${product.price.toFixed(2)}
                   </span>
-                  <Button 
-                    className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
-                    onClick={() => addToCart(product.id)}
-                  >
-                    {t.productsSection?.addToCart || "Add to Cart"}
-                  </Button>
+                  {product.id === "purrify-17g" ? (
+                    <a
+                      href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
+                    >
+                      Buy Now
+                    </a>
+                  ) : (
+                    <Button 
+                      className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                      onClick={() => addToCart(product.id)}
+                    >
+                      {t.productsSection?.addToCart || "Add to Cart"}
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <Button 
-            className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-6 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 text-lg"
-            onClick={() => window.location.href = '/#products'}
-          >
-            {t.productsSection?.viewAllProducts || "VIEW ALL PRODUCTS"}
-          </Button>
         </div>
       </Container>
     </section>

@@ -16,9 +16,11 @@ export function WhyPurrify() {
     },
     {
       icon: Cat,
-      title: t.features.catFriendly.title.toUpperCase(),
-      description: t.features.catFriendly.description,
-      image: "/natural-cat-litter.webp"
+      title: `${t.features.catFriendly.title.toUpperCase()} & ${t.features.natural.title.toUpperCase()}`,
+      description: `${t.features.catFriendly.description}\n${t.features.natural.description}`,
+      image: "/Carbon sktech.png",
+      color: "bg-[#E8F5E9]",
+      textColor: "text-[#2E7D32]",
     },
     {
       icon: Clock,
@@ -33,28 +35,12 @@ export function WhyPurrify() {
       image: "/clay-cat-litter.webp"
     },
     {
-      icon: Sparkles,
-      title: t.features.natural.title.toUpperCase(),
-      description: t.features.natural.description,
-      image: "/Carbon sktech.png",
-      color: "bg-[#E8F5E9]",
-      textColor: "text-[#2E7D32]",
-    },
-    {
       icon: PiggyBank,
       title: t.features.costEffective.title.toUpperCase(),
       description: t.features.costEffective.description,
       image: "/cost effective.png",
       color: "bg-[#FFF3E0]",
       textColor: "text-[#E65100]",
-    },
-    {
-      icon: Sparkles,
-      title: t.features.freePurrify.title.toUpperCase(),
-      description: t.features.freePurrify.description,
-      image: "/free purrify.png",
-      color: "bg-[#E3F2FD]",
-      textColor: "text-[#1565C0]",
     },
     {
       icon: Sparkles,
@@ -131,7 +117,9 @@ export function WhyPurrify() {
                       </h3>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base flex-grow">
-                      {reason.description}
+                      {reason.description.split('\n').map((line, i) => (
+                        <span key={i} className="block mb-1">{line}</span>
+                      ))}
                     </p>
                   </div>
                 </div>

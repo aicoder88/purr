@@ -143,7 +143,7 @@ export function Testimonials() {
                         </svg>
                       ))}
                   </div>
-                  <p className="text-gray-600 italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6">
+                  <p className="text-gray-800 dark:text-gray-100 italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6">
                     "{testimonial.text}"
                   </p>
                   <div className="flex items-center justify-between">

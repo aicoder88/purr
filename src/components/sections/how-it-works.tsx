@@ -127,88 +127,38 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-12 sm:mt-20 flex justify-center">
-          <div className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800 w-full transform transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-8">
-              <div className="w-full md:w-1/2 overflow-hidden rounded-xl">
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
-                    <NextImage
-                      src="/optimized/clay-cat-litter.webp"
-                      alt="Clay cat litter"
-                      width={200}
-                      height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      {t.howItWorks?.litterTypes?.clumping || "CLUMPING"}
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
-                    <NextImage
-                      src="/optimized/crystal-cat-litter.webp"
-                      alt="Crystal cat litter"
-                      width={200}
-                      height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#FF3131]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      {t.howItWorks?.litterTypes?.crystal || "CRYSTAL"}
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
-                    <NextImage
-                      src="/optimized/natural-cat-litter.webp"
-                      alt="Natural cat litter"
-                      width={200}
-                      height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#5B2EFF]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      {t.howItWorks?.litterTypes?.natural || "NATURAL"}
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg h-24 sm:h-32">
-                    <NextImage
-                      src="/optimized/clamping-cat-litter.webp"
-                      alt="Clumping cat litter"
-                      width={200}
-                      height={150}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="eager"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#03E46A]/80 text-white text-xs font-bold px-2 py-1 text-center">
-                      {t.howItWorks?.litterTypes?.clay || "CLAY"}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-1/2">
-                <h3 className="font-bold text-xl mb-4 text-[#333333]">
-                  {t.features.worksWithAnyLitter.title}
-                </h3>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {t.features.worksWithAnyLitter.description} {t.features.odorElimination.description}
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {[
-                    t.howItWorks?.litterTypes?.clay || "Clay",
-                    t.howItWorks?.litterTypes?.crystal || "Crystal",
-                    t.howItWorks?.litterTypes?.natural || "Natural",
-                    t.howItWorks?.litterTypes?.clumping || "Clumping",
-                    t.howItWorks?.litterTypes?.nonClumping || "Non-Clumping",
-                  ].map((type) => (
-                    <span
-                      key={type}
-                      className="px-3 py-1 bg-[#E0EFC7] text-[#5B2EFF] rounded-full text-sm font-medium"
-                    >
-                      {type}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
+            <div className="w-full flex justify-center mb-6">
+              <NextImage
+                src="/optimized/three_bags_no_bg.webp"
+                alt="Purrify works with any litter"
+                width={340}
+                height={180}
+                className="rounded-xl object-cover shadow-md"
+                loading="eager"
+              />
+            </div>
+            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-white">
+              {t.features.worksWithAnyLitter.title}
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">
+              {t.features.worksWithAnyLitter.description}
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mt-2">
+              {[
+                t.howItWorks?.litterTypes?.clay || "Clay",
+                t.howItWorks?.litterTypes?.crystal || "Crystal",
+                t.howItWorks?.litterTypes?.natural || "Natural",
+                t.howItWorks?.litterTypes?.clumping || "Clumping",
+                t.howItWorks?.litterTypes?.nonClumping || "Non-Clumping",
+              ].map((type) => (
+                <span
+                  key={type}
+                  className="px-3 py-1 bg-[#E0EFC7] text-[#5B2EFF] rounded-full text-sm font-medium shadow-sm border border-[#E0EFC7]/60 dark:border-[#5B2EFF]/30"
+                >
+                  {type}
+                </span>
+              ))}
             </div>
           </div>
         </div>
