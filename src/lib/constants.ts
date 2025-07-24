@@ -94,8 +94,8 @@ export const TESTIMONIALS = [
     stars: 5,
   },
   {
-    name: "Amanda White, RVT, Côte-des-Neiges",
-    text: "Finally, Something That Actually Works! As a veterinary assistant, I've heard every trick in the book for managing litter box odors. Most are just marketing hype. But this activated carbon product is different—it's based on actual science, not gimmicks. I would recommend it to all my cat-owning clients.",
+    name: "Amanda White, Côte-des-Neiges",
+    text: "Finally, something that actually works. No more litter box smell.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=amanda",
     stars: 5,
   },
