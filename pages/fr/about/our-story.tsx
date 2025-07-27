@@ -22,19 +22,19 @@ import {
 const OurStoryPage: NextPage = () => {
   const milestones = [
     {
-      year: "2019",
+      year: "2008",
       title: "Le Problème Découvert",
       description: "Notre fondatrice, propriétaire de plusieurs chats, luttait contre les odeurs persistantes du bac à litière malgré avoir essayé tous les produits sur le marché.",
       icon: Lightbulb
     },
     {
-      year: "2020",
+      year: "2008-2009",
       title: "Recherche et Développement",
       description: "Partenariat avec des scientifiques des matériaux pour développer une formule de charbon actif spécialement conçue pour l'élimination des odeurs de litière pour chat.",
       icon: Target
     },
     {
-      year: "2021",
+      year: "2009",
       title: "Premier Prototype",
       description: "Création du premier prototype Purrify et test avec des propriétaires de chats locaux. Les résultats ont dépassé toutes les attentes avec 95% de réduction d'odeurs.",
       icon: Zap
@@ -84,9 +84,9 @@ const OurStoryPage: NextPage = () => {
 
   const team = [
     {
-      name: "Sarah Chen",
-      role: "Fondatrice et PDG",
-      bio: "Amoureuse des chats depuis toujours avec une formation en sciences environnementales. La lutte personnelle de Sarah contre les odeurs de litière a mené à la création de Purrify.",
+      name: "Mark Smith",
+      role: "Fondateur et PDG",
+      bio: "Amoureux des chats depuis toujours avec une formation en sciences environnementales. La lutte personnelle de Mark contre les odeurs de litière a mené à la création de Purrify.",
       location: "Toronto, ON"
     },
     {

@@ -6,7 +6,7 @@ export const PRODUCTS = [
   {
     id: "purrify-17g",
     name: "Purrify 17g",
-    description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
+    description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
     price: 6.99,
     image: "/optimized/20g.webp",
     size: "17g",
@@ -24,7 +24,7 @@ export const PRODUCTS = [
     name: "Purrify 120g",
     description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control.",
     price: 29.99,
-    image: "/optimized/140g.webp",
+    image: "/optimized/120g.webp",
     size: "120g",
   },
 ];

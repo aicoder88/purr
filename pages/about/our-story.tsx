@@ -25,19 +25,19 @@ const OurStoryPage: NextPage = () => {
 
   const milestones = [
     {
-      year: "2019",
+      year: "2008",
       title: "The Problem Discovered",
       description: "Our founder, a cat owner with multiple pets, struggled with persistent litter box odors despite trying every product on the market.",
       icon: Lightbulb
     },
     {
-      year: "2020",
+      year: "2008-2009",
       title: "Research & Development",
       description: "Partnered with material scientists to develop an activated carbon formula specifically designed for cat litter odor elimination.",
       icon: Target
     },
     {
-      year: "2021",
+      year: "2009",
       title: "First Prototype",
       description: "Created the first Purrify prototype and tested it with local cat owners. Results exceeded all expectations with 95% odor reduction.",
       icon: Zap
@@ -87,9 +87,9 @@ const OurStoryPage: NextPage = () => {
 
   const team = [
     {
-      name: "Sarah Chen",
+      name: "Mark Smith",
       role: "Founder & CEO",
-      bio: "A lifelong cat lover with a background in environmental science. Sarah's personal struggle with litter box odors led to the creation of Purrify.",
+      bio: "A lifelong cat lover with a background in environmental science. Mark's personal struggle with litter box odors led to the creation of Purrify.",
       location: "Toronto, ON"
     },
     {
@@ -99,7 +99,7 @@ const OurStoryPage: NextPage = () => {
       location: "Vancouver, BC"
     },
     {
-      name: "Emma Thompson",
+      name: "Anthony Thambiah",
       role: "Head of Customer Experience",
       bio: "Former veterinary technician passionate about improving the lives of pets and their families through better products.",
       location: "Montreal, QC"
@@ -114,7 +114,7 @@ const OurStoryPage: NextPage = () => {
 
   const stats = [
     {
-      number: "50,000+",
+      number: "1,000+",
       label: "Happy Customers",
       description: "Cat owners across Canada and internationally"
     },
@@ -124,12 +124,12 @@ const OurStoryPage: NextPage = () => {
       description: "Customers who would recommend Purrify"
     },
     {
-      number: "2M+",
+      number: "10k+",
       label: "Litter Changes Improved",
       description: "Estimated litter box changes made better"
     },
     {
-      number: "500T",
+      number: "50T",
       label: "CO2 Offset",
       description: "Through carbon-neutral shipping program"
     }
@@ -404,7 +404,9 @@ const OurStoryPage: NextPage = () => {
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
                     Try Purrify Today - $6.99
-                    <ChevronRight className="w-5 h-5 ml-2" />
+                    Trial size - Single Use Sample
+
+<ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>

@@ -46,7 +46,7 @@ const ProductComparePage: NextPage = () => {
     },
     {
       id: 'small',
-      name: '50g Small Size',
+      name: '60g Regular Size',
       subtitle: 'Great for Single Cat Households',
       price: '$19.99',
       originalPrice: '$22.99',
@@ -69,7 +69,7 @@ const ProductComparePage: NextPage = () => {
     },
     {
       id: 'large',
-      name: '150g Large Size',
+      name: '120g Large Size',
       subtitle: 'Best Value for Multi-Cat Homes',
       price: '$29.99',
       originalPrice: '$34.99',
@@ -360,8 +360,8 @@ const ProductComparePage: NextPage = () => {
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Feature</th>
                       <th className="px-6 py-4 text-center font-bold">17g Trial</th>
-                      <th className="px-6 py-4 text-center font-bold">50g Small</th>
-                      <th className="px-6 py-4 text-center font-bold">150g Large</th>
+                      <th className="px-6 py-4 text-center font-bold">60g Regular</th>
+                      <th className="px-6 py-4 text-center font-bold">120g Large</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -420,8 +420,8 @@ const ProductComparePage: NextPage = () => {
                       <th className="px-6 py-4 text-left font-bold">Number of Cats</th>
                       <th className="px-6 py-4 text-center font-bold">Typical Changes</th>
                       <th className="px-6 py-4 text-center font-bold">17g Trial</th>
-                      <th className="px-6 py-4 text-center font-bold">50g Small</th>
-                      <th className="px-6 py-4 text-center font-bold">150g Large</th>
+                      <th className="px-6 py-4 text-center font-bold">60g Regular</th>
+                      <th className="px-6 py-4 text-center font-bold">120g Large</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -23,7 +23,7 @@ export const en = {
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
+      description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
     },
     "purrify-60g": {
       name: "Purrify 60g",

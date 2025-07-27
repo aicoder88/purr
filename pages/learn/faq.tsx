@@ -92,7 +92,7 @@ const FAQPage: NextPage = () => {
       id: 7,
       category: 'product',
       question: 'What sizes are available?',
-      answer: 'We offer three sizes: 17g Trial Size ($4.99) for first-time users, 50g Small Size ($12.99) for single-cat households, and 150g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.',
+      answer: 'We offer three sizes: 17g Trial Size ($6.99) for first-time users, 60g Regular Size ($19.99) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.',
       popular: false,
       tags: ['sizes', 'pricing', 'value']
     },
@@ -148,7 +148,7 @@ const FAQPage: NextPage = () => {
       id: 14,
       category: 'product',
       question: 'Can Purrify help with multiple cats?',
-      answer: 'Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 150g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.',
+      answer: 'Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.',
       popular: false,
       tags: ['multiple cats', 'multi-cat', 'large size']
     },

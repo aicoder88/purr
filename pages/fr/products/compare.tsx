@@ -43,7 +43,7 @@ const ProductComparePage: NextPage = () => {
     },
     {
       id: 'small',
-      name: 'Petite Taille 50g',
+      name: 'Taille Moyenne 60g',
       subtitle: 'Idéal pour les Foyers à Un Chat',
       price: '12,99$',
       originalPrice: '15,99$',
@@ -66,7 +66,7 @@ const ProductComparePage: NextPage = () => {
     },
     {
       id: 'large',
-      name: 'Grande Taille 150g',
+      name: 'Grande Taille 120g',
       subtitle: 'Meilleure Valeur pour Foyers Multi-Chats',
       price: '29,99$',
       originalPrice: '39,99$',
@@ -358,8 +358,8 @@ const ProductComparePage: NextPage = () => {
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Caractéristique</th>
                       <th className="px-6 py-4 text-center font-bold">Essai 17g</th>
-                      <th className="px-6 py-4 text-center font-bold">Petit 50g</th>
-                      <th className="px-6 py-4 text-center font-bold">Grand 150g</th>
+                      <th className="px-6 py-4 text-center font-bold">Moyen 60g</th>
+                      <th className="px-6 py-4 text-center font-bold">Grand 120g</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -418,8 +418,8 @@ const ProductComparePage: NextPage = () => {
                       <th className="px-6 py-4 text-left font-bold">Nombre de Chats</th>
                       <th className="px-6 py-4 text-center font-bold">Changements Typiques</th>
                       <th className="px-6 py-4 text-center font-bold">Essai 17g</th>
-                      <th className="px-6 py-4 text-center font-bold">Petit 50g</th>
-                      <th className="px-6 py-4 text-center font-bold">Grand 150g</th>
+                      <th className="px-6 py-4 text-center font-bold">Moyen 60g</th>
+                      <th className="px-6 py-4 text-center font-bold">Grand 120g</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -30,7 +30,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 1,
       duration: "6 months",
       challenge: "Strong odors in small apartment",
-      solution: "Started with trial size, now uses 50g monthly",
+      solution: "Started with 17g trial size, now uses 60g monthly",
       results: [
         "95% reduction in litter box odors",
         "Extended litter life from 1 week to 3 weeks",
@@ -43,7 +43,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Daily complaints from neighbors, frequent litter changes, expensive odor sprays",
         after: "Odor-free apartment, 3x longer litter life, happy neighbors"
       },
-      productUsed: "50g Small Size",
+      productUsed: "60g Regular Size",
       satisfaction: 5
     },
     {
@@ -53,7 +53,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 3,
       duration: "1 year",
       challenge: "Managing odors with 3 cats in busy household",
-      solution: "Uses 150g large size every 6 weeks",
+      solution: "Uses 120g large size every 6 weeks",
       results: [
         "Eliminated need for multiple litter boxes",
         "Reduced litter changes from daily to weekly",
@@ -66,7 +66,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Multiple litter boxes, daily cleaning, overwhelming odors, social isolation",
         after: "Single litter box, weekly maintenance, odor-free home, active social life"
       },
-      productUsed: "150g Large Size",
+      productUsed: "120g Large Size",
       satisfaction: 5
     },
     {
@@ -76,7 +76,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 1,
       duration: "8 months",
       challenge: "Senior cat with health issues causing stronger odors",
-      solution: "Regular use of 50g size with veterinary approval",
+      solution: "Regular use of 60g size with veterinary approval",
       results: [
         "Better monitoring of cat's health through cleaner environment",
         "Reduced stress for both cat and owner",
@@ -89,7 +89,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Constant odors affecting quality of life, difficult health monitoring",
         after: "Clean environment supporting health management and comfort"
       },
-      productUsed: "50g Small Size",
+      productUsed: "60g Regular Size",
       satisfaction: 5
     },
     {
@@ -112,7 +112,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Children's allergies, harsh chemicals, potential pet rehoming",
         after: "Healthy environment, natural solutions, happy family with pets"
       },
-      productUsed: "50g Small Size (2 units)",
+      productUsed: "60g Regular Size (2 units)",
       satisfaction: 5
     }
   ];

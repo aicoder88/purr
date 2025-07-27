@@ -27,7 +27,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 1,
       duration: "6 mois",
       challenge: "Odeurs fortes dans un petit appartement",
-      solution: "A commencé avec la taille d'essai, utilise maintenant 50g mensuellement",
+      solution: "A commencé avec la taille d'essai 17g, utilise maintenant 60g mensuellement",
       results: [
         "95% de réduction des odeurs du bac à litière",
         "Vie de la litière prolongée de 1 semaine à 3 semaines",
@@ -40,7 +40,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Plaintes quotidiennes des voisins, changements fréquents de litière, vaporisateurs d'odeur coûteux",
         after: "Appartement sans odeur, litière qui dure 3x plus longtemps, voisins heureux"
       },
-      productUsed: "Petite Taille 50g",
+      productUsed: "Taille Moyenne 60g",
       satisfaction: 5
     },
     {
@@ -50,7 +50,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 3,
       duration: "1 an",
       challenge: "Gérer les odeurs avec 3 chats dans un foyer occupé",
-      solution: "Utilise la grande taille 150g toutes les 6 semaines",
+      solution: "Utilise la grande taille 120g toutes les 6 semaines",
       results: [
         "Éliminé le besoin de plusieurs bacs à litière",
         "Réduit les changements de litière de quotidien à hebdomadaire",
@@ -63,7 +63,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Plusieurs bacs à litière, nettoyage quotidien, odeurs accablantes, isolement social",
         after: "Un seul bac à litière, entretien hebdomadaire, maison sans odeur, vie sociale active"
       },
-      productUsed: "Grande Taille 150g",
+      productUsed: "Grande Taille 120g",
       satisfaction: 5
     },
     {
@@ -73,7 +73,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 1,
       duration: "8 mois",
       challenge: "Chat senior avec problèmes de santé causant des odeurs plus fortes",
-      solution: "Utilisation régulière de la taille 50g avec approbation vétérinaire",
+      solution: "Utilisation régulière de la taille 60g avec approbation vétérinaire",
       results: [
         "Meilleur suivi de la santé du chat grâce à un environnement plus propre",
         "Stress réduit pour le chat et le propriétaire",
@@ -86,7 +86,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Odeurs constantes affectant la qualité de vie, surveillance de santé difficile",
         after: "Environnement propre soutenant la gestion de la santé et le confort"
       },
-      productUsed: "Petite Taille 50g",
+      productUsed: "Taille Moyenne 60g",
       satisfaction: 5
     },
     {
@@ -109,7 +109,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Allergies des enfants, produits chimiques agressifs, relogement potentiel des animaux",
         after: "Environnement sain, solutions naturelles, famille heureuse avec animaux"
       },
-      productUsed: "Petite Taille 50g (2 unités)",
+      productUsed: "Taille Moyenne 60g (2 unités)",
       satisfaction: 5
     }
   ];

@@ -91,7 +91,7 @@ const FAQPage: NextPage = () => {
       id: 7,
       category: 'product',
       question: 'Quelles tailles sont disponibles ?',
-      answer: 'Nous offrons trois tailles : Format d\'essai 17g (4,99$), Petit format 50g (12,99$), et Grand format 150g (29,99$). Le grand format offre la meilleure valeur.',
+      answer: 'Nous offrons trois tailles : Format d\'essai 17g (6,99$), Format moyen 60g (19,99$), et Grand format 120g (29,99$). Le grand format offre la meilleure valeur.',
       popular: false,
       tags: ['tailles', 'prix']
     },
@@ -147,7 +147,7 @@ const FAQPage: NextPage = () => {
       id: 14,
       category: 'product',
       question: 'Purrify peut-il aider avec plusieurs chats ?',
-      answer: 'Absolument ! Purrify est particulièrement efficace dans les foyers multi-chats. Nous recommandons notre Grand format 150g pour les foyers avec 2-3 chats.',
+      answer: 'Absolument ! Purrify est particulièrement efficace dans les foyers multi-chats. Nous recommandons notre Grand format 120g pour les foyers avec 2-3 chats.',
       popular: false,
       tags: ['plusieurs chats', 'multi-chats']
     },
