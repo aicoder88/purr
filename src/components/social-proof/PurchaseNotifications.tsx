@@ -95,16 +95,46 @@ const SAMPLE_PURCHASES: PurchaseNotification[] = [
 
 export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   position = 'bottom-left',
-  showInterval = 8000,
+  showInterval = 55000, // Default to 55 seconds (middle of 20-90 range)
   autoHide = true,
   hideDelay = 5000
 }) => {
   const [currentNotification, setCurrentNotification] = useState<PurchaseNotification | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [notificationIndex, setNotificationIndex] = useState(0);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  // Function to get random interval between 20-90 seconds
+  const getRandomInterval = () => {
+    return Math.floor(Math.random() * (90000 - 20000 + 1)) + 20000; // 20-90 seconds in milliseconds
+  };
 
   useEffect(() => {
-    const showNotification = () => {
+    const scheduleNextNotification = () => {
+      const randomInterval = getRandomInterval();
+      const timeout = setTimeout(() => {
+        const notification = SAMPLE_PURCHASES[notificationIndex];
+        setCurrentNotification(notification);
+        setIsVisible(true);
+
+        if (autoHide) {
+          setTimeout(() => {
+            setIsVisible(false);
+          }, hideDelay);
+        }
+
+        setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
+        
+        // Schedule the next notification
+        scheduleNextNotification();
+      }, randomInterval);
+      
+      setTimeoutId(timeout);
+    };
+
+    // Show first notification after initial delay (15-30 seconds)
+    const initialDelay = Math.floor(Math.random() * 15000) + 15000;
+    const initialTimeout = setTimeout(() => {
       const notification = SAMPLE_PURCHASES[notificationIndex];
       setCurrentNotification(notification);
       setIsVisible(true);
@@ -116,19 +146,18 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
       }
 
       setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-    };
-
-    // Show first notification after initial delay
-    const initialTimeout = setTimeout(showNotification, 3000);
-
-    // Set up recurring notifications
-    const interval = setInterval(showNotification, showInterval);
+      
+      // Start the random scheduling after first notification
+      scheduleNextNotification();
+    }, initialDelay);
 
     return () => {
       clearTimeout(initialTimeout);
-      clearInterval(interval);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     };
-  }, [notificationIndex, showInterval, autoHide, hideDelay]);
+  }, [autoHide, hideDelay]);
 
   const handleClose = () => {
     setIsVisible(false);

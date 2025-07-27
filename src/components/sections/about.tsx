@@ -12,7 +12,7 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 export function About() {
   const { t, locale } = useTranslation();
   return (
-    <section className="py-12 bg-background transition-colors duration-300" id="about">
+    <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t.features.longLastingFreshness.title} />
