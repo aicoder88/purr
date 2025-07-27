@@ -3,6 +3,7 @@ import { Container } from "../../components/ui/container";
 import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
+import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
   Facebook,
   Instagram,
@@ -17,8 +18,20 @@ export function Footer() {
   const { t, locale } = useTranslation();
 
   return (
-    <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 py-12 transition-colors duration-300">
+    <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <Container>
+        {/* Newsletter Signup */}
+        <div className="py-12 border-b border-[#E0EFC7] dark:border-gray-800">
+          <NewsletterSignup 
+            variant="footer"
+            showBenefits={false}
+            discount={10}
+            className=""
+          />
+        </div>
+        
+        {/* Main Footer Content */}
+        <div className="py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
@@ -74,7 +87,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/#how-it-works" : "/#how-it-works"}
+                  href={locale === 'fr' ? "/fr/learn/how-it-works" : "/learn/how-it-works"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
                   {t.nav.howItWorks}
@@ -90,23 +103,15 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/#why-purrify" : "/#why-purrify"}
+                  href={locale === 'fr' ? "/fr/products/trial-size" : "/products/trial-size"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
-                  {t.nav.whyPurrify}
+                  Trial Size
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  href={locale === 'fr' ? "/fr/free" : "/free"}
-                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                >
-                  {t.nav.tryFree}
-                </Link>
-              </li> */}
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/#testimonials" : "/#testimonials"}
+                  href={locale === 'fr' ? "/fr/customers/testimonials" : "/customers/testimonials"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
                   {t.nav.testimonials}
@@ -114,7 +119,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/#contact" : "/#contact"}
+                  href={locale === 'fr' ? "/fr/support/contact" : "/support/contact"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
                   {t.nav.contact}
@@ -182,6 +187,7 @@ export function Footer() {
             <span className="text-[#FF3131] dark:text-[#FF5050] font-medium">{t.siteName}</span> |
             {t.footer.allRightsReserved}
           </p>
+        </div>
         </div>
       </Container>
       <div dangerouslySetInnerHTML={{ __html: '<script src="https://app.simplebotinstall.com/js/chat_plugin.js" data-bot-id="40892"></script>' }} />

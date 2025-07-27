@@ -1,5 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
+import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
+import { PerformanceMonitor } from '../src/components/performance/PerformanceMonitor';
+import { CacheOptimizer } from '../src/components/performance/CacheOptimizer';
 
 export default function Document() {
   return (
@@ -128,6 +131,20 @@ export default function Document() {
             title="Google Tag Manager"
           />
         </noscript>
+        
+        {/* Global Structured Data */}
+        <PurrifyStructuredData />
+        
+        {/* Performance Monitoring */}
+        <PerformanceMonitor enabled={true} sampleRate={0.1} />
+        
+        {/* Cache Optimization */}
+        <CacheOptimizer 
+          enabled={true}
+          preloadRoutes={['/products/trial-size', '/customers/testimonials', '/learn/how-it-works']}
+          warmupDelay={3000}
+          maxCacheSize={15728640}
+        />
         
         {/* Skip to content link for accessibility */}
         <a

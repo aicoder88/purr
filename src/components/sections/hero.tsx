@@ -7,6 +7,7 @@ import { useInterval, scrollToSection } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import { useTranslation } from "../../lib/translation-context";
 import { RotatingText } from "../ui/rotating-text";
+import Link from "next/link";
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../../../components/NextImage"), {
@@ -14,8 +15,10 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 });
 
 export function Hero() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Testimonial rotation
   useEffect(() => {
@@ -24,6 +27,11 @@ export function Hero() {
     }, 5000); // Increased to 5 seconds for better readability
     
     return () => clearInterval(interval);
+  }, []);
+
+  // Fade in animation on mount
+  useEffect(() => {
+    setIsVisible(true);
   }, []);
 
   return (
@@ -57,14 +65,14 @@ export function Hero() {
               </span>
             </h1>
             <p className="text-xl text-[#333333] dark:text-gray-300 font-light">
-              {t.siteDescription}
+              {t.siteDescription} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn how it works</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">try our 17g trial size</Link> risk-free.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className={`flex flex-col sm:flex-row gap-4 pt-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <Button
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
-                className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0"
+                className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1"
                 aria-label="View customer testimonials"
               >
                 {t.nav.testimonials}
@@ -73,7 +81,7 @@ export function Hero() {
                 onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
                 size="lg"
                 variant="outline"
-                className="bg-white dark:bg-gray-800 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] dark:border-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white"
+                className="bg-white dark:bg-gray-800 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] dark:border-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white transform hover:-translate-y-1"
                 aria-label="Leave a Google review"
               >
                 <svg
@@ -95,26 +103,32 @@ export function Hero() {
           <div className="relative group flex flex-col items-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition duration-300">
+              {!isVideoLoaded && (
+                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-3xl flex items-center justify-center">
+                  <div className="text-gray-500 dark:text-gray-400">Loading video...</div>
+                </div>
+              )}
               <video
                 poster="/cat_rose_thumbnail.jpg"
-                className="w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100"
+                className={`w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label="Purrify Cat Litter Additive Effectiveness Demonstration"
                 role="presentation"
                 loop
                 tabIndex={-1}
                 itemScope
                 itemType="https://schema.org/VideoObject"
+                onLoadedData={() => {
+                  setIsVideoLoaded(true);
+                  console.log('Video loaded successfully');
+                }}
                 onError={(e) => {
                   console.error('Video playback error:', e);
                   const video = e.target as HTMLVideoElement;
                   video.style.display = 'none';
-                }}
-                onLoadedData={(e) => {
-                  console.log('Video loaded successfully');
                 }}
               >
                 <source src="https://purrify.ca/videos/cat_rose_optimized.webm" type="video/webm" />

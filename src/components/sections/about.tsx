@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import dynamic from "next/dynamic";
 import { useTranslation } from "../../lib/translation-context";
+import Link from "next/link";
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../../../components/NextImage"), {
@@ -9,7 +10,7 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 });
 
 export function About() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   return (
     <section className="py-12 bg-background transition-colors duration-300" id="about">
       <Container>
@@ -35,7 +36,7 @@ export function About() {
           </div>
           
           <p className="text-3xl font-semibold text-foreground mb-6">
-          {t.features.natural.description}
+          {t.features.natural.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Discover the science</Link> behind our <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">activated carbon formula</Link>.
           </p>
         </div>
 

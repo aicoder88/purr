@@ -6,6 +6,8 @@ export interface TranslationType {
   // Navigation
   nav: {
     home: string;
+    products: string;
+    learn: string;
     howItWorks: string;
     about: string;
     whyPurrify: string;

@@ -5,6 +5,11 @@ import dynamic from "next/dynamic";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
+import { ReviewSystem } from '../reviews/ReviewSystem';
+import { TouchGallery } from '../mobile/TouchGallery';
+import { ecommerceEvents } from '../../lib/gtm-events';
+import { useState, useEffect } from 'react';
+import { ShoppingCart, Star, Check } from 'lucide-react';
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
@@ -12,6 +17,44 @@ const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true 
 export function Products() {
   const { t } = useTranslation();
   const { addToCart } = useCart();
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  const [addingToCart, setAddingToCart] = useState<string | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('products');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleAddToCart = async (product: any) => {
+    setAddingToCart(product.id);
+    try {
+      await addToCart(product);
+      // Track ecommerce event
+      ecommerceEvents.addToCart({
+        item_id: product.id,
+        item_name: product.name,
+        category: 'cat-litter-additive',
+        price: product.price,
+        quantity: 1
+      });
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+    } finally {
+      setTimeout(() => setAddingToCart(null), 1000);
+    }
+  };
   
   return (
     <section
@@ -45,12 +88,18 @@ export function Products() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {PRODUCTS.map((product, index) => (
             <div
               key={product.id}
               className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-800 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative"
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                opacity: isVisible ? 1 : 0
+              }}
+              onMouseEnter={() => setHoveredProduct(product.id)}
+              onMouseLeave={() => setHoveredProduct(null)}
             >
               {/* Highlight for recommended product */}
               {index === 1 && (
@@ -134,6 +183,15 @@ export function Products() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Customer Reviews Section */}
+        <div className="mt-16">
+          <ReviewSystem 
+            compact={true}
+            maxReviews={3}
+            showFilters={false}
+          />
         </div>
       </Container>
     </section>

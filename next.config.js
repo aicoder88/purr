@@ -20,7 +20,7 @@ const nextConfig = {
     '192.168.0.152:3003'
   ],
   
-  // Enhanced image optimization
+  // Enhanced image optimization with advanced performance settings
   images: {
     remotePatterns: [
       {
@@ -38,15 +38,53 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'randomuser.me',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.purrify.ca',
       }
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 86400, // 24 hours cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    unoptimized: false // Ensure all images are optimized
+    unoptimized: false,
+    loader: 'default'
+  },
+  
+  // Advanced compression and optimization
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    webpackBuildWorker: true,
+    // Advanced caching optimizations
+    isrMemoryCacheSize: 52428800, // 50MB
+    incrementalCacheHandlerPath: require.resolve('./src/lib/cache-handler.js'),
+    // Edge runtime optimizations
+    runtime: 'nodejs',
+    serverComponentsExternalPackages: ['sharp'],
+    // Memory and performance optimizations
+    memoryBasedWorkersCount: true,
+    caseSensitiveRoutes: true,
+    // Static generation optimizations
+    staticPageGenerationTimeout: 120,
+    // Bundle optimization
+    bundlePagesRouterDependencies: true,
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   
   // Improve performance
@@ -186,6 +224,108 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/manifest.json',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400', // 24 hours
+          },
+        ],
+      },
+      {
+        source: '/sw.js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate', // Always check for updates
+          },
+        ],
+      },
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600', // 1 hour
+          },
+        ],
+      },
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400', // 24 hours
+          },
+        ],
+      },
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, s-maxage=600', // 5 min browser, 10 min CDN
+          },
+          {
+            key: 'Vary',
+            value: 'Accept-Encoding, Accept-Language',
+          },
+        ],
+      },
+      {
+        source: '/api/products',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=7200', // 1 hour browser, 2 hours CDN
+          },
+        ],
+      },
+      {
+        source: '/api/testimonials',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=1800, s-maxage=3600', // 30 min browser, 1 hour CDN
+          },
+        ],
+      },
+      {
+        source: '/fonts/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/:path*\\.(css|js|woff|woff2|ttf|eot)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:path*\\.(jpg|jpeg|png|gif|ico|svg|webp|avif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000', // 30 days
+          },
+          {
+            key: 'Vary',
+            value: 'Accept',
           },
         ],
       },

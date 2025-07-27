@@ -6,6 +6,8 @@ export const en = {
   // Navigation
   nav: {
     home: "Home",
+    products: "Products",
+    learn: "Learn",
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",

@@ -15,6 +15,9 @@ import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
+import { PurchaseNotifications } from '../src/components/social-proof/PurchaseNotifications';
+import { TrustBadges } from '../src/components/social-proof/TrustBadges';
+import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
   const pageTitle = `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
@@ -194,6 +197,13 @@ export default function Home() {
           <Products />
         </ErrorBoundary>
         
+        {/* Trust Badges for Customer Confidence */}
+        <section className="py-8 bg-gray-50 dark:bg-gray-900/50">
+          <div className="container mx-auto px-4">
+            <TrustBadges variant="grid" showIcons={true} />
+          </div>
+        </section>
+        
         <ErrorBoundary>
           <Stores />
         </ErrorBoundary>
@@ -222,6 +232,14 @@ export default function Home() {
           <BlogPreview />
         </ErrorBoundary>
       </main>
+      
+      {/* Social Proof Components */}
+      <PurchaseNotifications 
+        position="bottom-left"
+        showInterval={20000}
+        autoHide={true}
+        hideDelay={8000}
+      />
     </>
   );
 }
