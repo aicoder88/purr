@@ -8,7 +8,7 @@ import {
   Smartphone, 
   Shield, 
   Zap, 
-  TouchIcon as Touch, 
+  TouchpadIcon as Touch, 
   CreditCard, 
   Star,
   CheckCircle,

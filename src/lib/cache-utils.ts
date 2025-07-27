@@ -10,13 +10,14 @@ export interface CacheConfig {
   compression?: boolean;
 }
 
-export interface CacheItem<T = any> {
+// Define interfaces for cache items
+export interface CacheItem<T> {
   data: T;
   timestamp: number;
   expires: number;
   hits: number;
   size: number;
-  compressed?: boolean;
+  compressed: boolean;
 }
 
 // Cache strategies for different content types
@@ -79,12 +80,13 @@ export class AdvancedCache<T = any> {
   // Get item from cache
   get(key: string): T | null {
     const item = this.cache.get(key);
+    if (!item) {
+      return null;
+    }
     
-    if (!item) return null;
-    
-    // Check expiration
+    // Check if expired
     if (Date.now() > item.expires) {
-      this.delete(key);
+      this.cache.delete(key);
       return null;
     }
     
@@ -92,8 +94,8 @@ export class AdvancedCache<T = any> {
     item.hits++;
     this.updateAccessOrder(key);
     
-    // Decompress if needed
-    return item.compressed ? this.decompress(item.data) : item.data;
+    // Return the cached data
+    return item.data;
   }
 
   // Set item in cache
@@ -102,22 +104,37 @@ export class AdvancedCache<T = any> {
       // Ensure space
       this.ensureSpace();
       
-      // Compress if configured
-      const processedData = this.config.compression ? this.compress(data) : data;
-      const size = this.calculateSize(processedData);
+      // Handle compression if needed
+      let item: CacheItem<T>;
       
-      const item: CacheItem<T> = {
-        data: processedData,
-        timestamp: Date.now(),
-        expires: Date.now() + this.config.ttl,
-        hits: 0,
-        size,
-        compressed: this.config.compression
-      };
+      if (this.config.compression) {
+        const compressedData = this.compress(data);
+        const size = this.calculateSize(compressedData);
+        
+        // Store the compressed data with proper typing
+        item = {
+          data: JSON.parse(compressedData) as T, // Parse back to ensure type safety
+          timestamp: Date.now(),
+          expires: Date.now() + this.config.ttl,
+          hits: 0,
+          size,
+          compressed: true
+        };
+      } else {
+        const size = this.calculateSize(data);
+        
+        item = {
+          data,
+          timestamp: Date.now(),
+          expires: Date.now() + this.config.ttl,
+          hits: 0,
+          size,
+          compressed: false
+        };
+      }
       
       this.cache.set(key, item);
       this.updateAccessOrder(key);
-      
       return true;
     } catch (error) {
       console.warn('Cache set error:', error);
@@ -226,8 +243,8 @@ export class AdvancedCache<T = any> {
   }
 
   // Simple decompression
-  private decompress(data: any): T {
-    return typeof data === 'string' ? JSON.parse(data) : data;
+  private decompress(data: string): T {
+    return JSON.parse(data) as T;
   }
 
   // Calculate approximate size

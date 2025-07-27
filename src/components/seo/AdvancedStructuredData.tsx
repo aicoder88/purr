@@ -87,9 +87,39 @@ interface ArticleStructuredDataProps {
   };
 }
 
+// Define the structure of our product data with TypeScript interfaces
+interface ProductStructuredData {
+  "@context": string;
+  "@type": string;
+  name: string;
+  description: string;
+  image: string;
+  brand: { "@type": string; name: string };
+  category: string;
+  sku: string;
+  mpn: string;
+  gtin?: string;
+  offers: {
+    "@type": string;
+    price: string;
+    priceCurrency: string;
+    availability: string;
+    itemCondition: string;
+    url: string;
+    seller: { "@type": string; name: string };
+  };
+  aggregateRating?: {
+    "@type": string;
+    ratingValue: string;
+    reviewCount: string;
+    bestRating: string;
+    worstRating: string;
+  };
+}
+
 // Product Structured Data
 export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ product }) => {
-  const structuredData = {
+  const structuredData: ProductStructuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": product.name,

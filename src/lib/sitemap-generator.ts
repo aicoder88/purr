@@ -28,8 +28,6 @@ class SitemapGenerator {
 
   constructor(config: SitemapConfig) {
     this.config = {
-      defaultChangefreq: 'weekly',
-      defaultPriority: 0.5,
       includeAlternates: true,
       ...config
     };

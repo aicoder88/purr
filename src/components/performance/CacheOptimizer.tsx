@@ -52,12 +52,103 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
     const CACHE_KEY = 'purrify_cache';
     const STATS_KEY = 'purrify_cache_stats';
     
+    // Helper functions
+    const updateStats = (type: 'hit' | 'miss'): void => {
+      try {
+        const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
+        stats[type === 'hit' ? 'hits' : 'misses']++;
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+      } catch (error) {
+        console.warn('Stats update error:', error);
+      }
+    };
+    
+    const getCurrentCacheSize = (): number => {
+      let totalSize = 0;
+      const keys = Object.keys(localStorage);
+      
+      keys.forEach(key => {
+        if (key.startsWith(CACHE_KEY)) {
+          try {
+            const item = localStorage.getItem(key);
+            if (item) {
+              const entry = JSON.parse(item);
+              totalSize += entry.size || 0;
+            }
+          } catch (error) {
+            // Invalid entry, remove it
+            localStorage.removeItem(key);
+          }
+        }
+      });
+      
+      return totalSize;
+    };
+    
+    const updateCacheStats = (): void => {
+      const keys = Object.keys(localStorage);
+      let totalSize = 0;
+      let entryCount = 0;
+      
+      keys.forEach(key => {
+        if (key.startsWith(CACHE_KEY)) {
+          try {
+            const item = localStorage.getItem(key);
+            if (item) {
+              const entry = JSON.parse(item);
+              totalSize += entry.size || 0;
+              entryCount++;
+            }
+          } catch (error) {
+            localStorage.removeItem(key);
+          }
+        }
+      });
+      
+      const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
+      const totalRequests = stats.hits + stats.misses;
+      const hitRate = totalRequests > 0 ? (stats.hits / totalRequests) * 100 : 0;
+      
+      setCacheStats({
+        totalSize,
+        entryCount,
+        hitRate,
+        totalHits: stats.hits,
+        totalMisses: stats.misses
+      });
+    };
+    
+    const evictLeastUsed = (): void => {
+      const keys = Object.keys(localStorage);
+      let leastUsedKey = '';
+      let leastHits = Infinity;
+      
+      keys.forEach(key => {
+        if (key.startsWith(CACHE_KEY)) {
+          try {
+            const entry = JSON.parse(localStorage.getItem(key) || '{}');
+            if (entry.hits < leastHits) {
+              leastHits = entry.hits;
+              leastUsedKey = key;
+            }
+          } catch (error) {
+            // Invalid entry, remove it
+            localStorage.removeItem(key);
+          }
+        }
+      });
+      
+      if (leastUsedKey) {
+        localStorage.removeItem(leastUsedKey);
+      }
+    };
+    
     return {
       get: (key: string): any => {
         try {
           const cached = localStorage.getItem(`${CACHE_KEY}_${key}`);
           if (!cached) {
-            this.updateStats('miss');
+            updateStats('miss');
             return null;
           }
           
@@ -66,14 +157,14 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           // Check expiration
           if (Date.now() > entry.expires) {
             localStorage.removeItem(`${CACHE_KEY}_${key}`);
-            this.updateStats('miss');
+            updateStats('miss');
             return null;
           }
           
           // Update hit count
           entry.hits++;
           localStorage.setItem(`${CACHE_KEY}_${key}`, JSON.stringify(entry));
-          this.updateStats('hit');
+          updateStats('hit');
           
           return entry.data;
         } catch (error) {
@@ -88,8 +179,8 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           const size = new Blob([serialized]).size;
           
           // Check if adding this would exceed max cache size
-          if (this.getCurrentCacheSize() + size > maxCacheSize) {
-            this.evictLeastUsed();
+          if (getCurrentCacheSize() + size > maxCacheSize) {
+            evictLeastUsed();
           }
           
           const entry: CacheEntry = {
@@ -101,7 +192,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           };
           
           localStorage.setItem(`${CACHE_KEY}_${key}`, JSON.stringify(entry));
-          this.updateCacheStats();
+          updateCacheStats();
           
           return true;
         } catch (error) {
@@ -112,7 +203,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
       
       delete: (key: string): void => {
         localStorage.removeItem(`${CACHE_KEY}_${key}`);
-        this.updateCacheStats();
+        updateCacheStats();
       },
       
       clear: (): void => {
@@ -122,27 +213,10 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
             localStorage.removeItem(key);
           }
         });
-        this.updateCacheStats();
+        updateCacheStats();
       },
       
-      getCurrentCacheSize: (): number => {
-        let totalSize = 0;
-        const keys = Object.keys(localStorage);
-        
-        keys.forEach(key => {
-          if (key.startsWith(CACHE_KEY)) {
-            try {
-              const entry = JSON.parse(localStorage.getItem(key) || '{}');
-              totalSize += entry.size || 0;
-            } catch (error) {
-              // Invalid entry, remove it
-              localStorage.removeItem(key);
-            }
-          }
-        });
-        
-        return totalSize;
-      },
+
       
       evictLeastUsed: (): void => {
         const keys = Object.keys(localStorage);
@@ -152,10 +226,13 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         keys.forEach(key => {
           if (key.startsWith(CACHE_KEY)) {
             try {
-              const entry = JSON.parse(localStorage.getItem(key) || '{}');
-              if (entry.hits < leastHits) {
-                leastHits = entry.hits;
-                leastUsedKey = key;
+              const item = localStorage.getItem(key);
+              if (item) {
+                const entry = JSON.parse(item);
+                if (entry.hits < leastHits) {
+                  leastHits = entry.hits;
+                  leastUsedKey = key;
+                }
               }
             } catch (error) {
               // Invalid entry, remove it
@@ -169,45 +246,8 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         }
       },
       
-      updateStats: (type: 'hit' | 'miss'): void => {
-        try {
-          const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
-          stats[type === 'hit' ? 'hits' : 'misses']++;
-          localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-        } catch (error) {
-          console.warn('Stats update error:', error);
-        }
-      },
-      
-      updateCacheStats: (): void => {
-        const keys = Object.keys(localStorage);
-        let totalSize = 0;
-        let entryCount = 0;
-        
-        keys.forEach(key => {
-          if (key.startsWith(CACHE_KEY)) {
-            try {
-              const entry = JSON.parse(localStorage.getItem(key) || '{}');
-              totalSize += entry.size || 0;
-              entryCount++;
-            } catch (error) {
-              localStorage.removeItem(key);
-            }
-          }
-        });
-        
-        const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
-        const totalRequests = stats.hits + stats.misses;
-        const hitRate = totalRequests > 0 ? (stats.hits / totalRequests) * 100 : 0;
-        
-        setCacheStats({
-          totalSize,
-          entryCount,
-          hitRate,
-          totalHits: stats.hits,
-          totalMisses: stats.misses
-        });
-      }
+      updateCacheStats: updateCacheStats,
+      getCurrentCacheSize: getCurrentCacheSize
     };
   }, [maxCacheSize]);
 
@@ -248,7 +288,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         gtmEvent('cache_preload', {
           route,
           success: false,
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error occurred'
         });
       }
     }
