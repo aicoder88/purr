@@ -149,6 +149,8 @@ export const zh = {
     },
     mostPopular: "最受欢迎",
     addToCart: "加入购物车",
+    buyNow: "立即购买",
+    adding: "添加中...",
     viewAllProducts: "查看所有产品"
   },
   
@@ -329,5 +331,135 @@ export const zh = {
   freeTrial: {
     urgentBanner: "限时优惠",
     free: "免费"
+  },
+
+  // Enhanced Product Comparison
+  enhancedProductComparison: {
+    compareAndSave: "比较并节省",
+    chooseYourPerfectSize: "选择您的完美尺寸",
+    subtitle: "所有尺寸都提供相同的强效异味消除。根据您的家庭规模和使用频率选择。",
+    trial: "试用装",
+    mostPopular: "最受欢迎",
+    bestValue: "最佳价值",
+    premium: "高级装",
+    perfectForFirstTime: "首次使用者的完美选择",
+    idealForSingleCat: "单猫家庭的理想选择",
+    perfectForMultiCat: "多猫家庭的完美选择",
+    duration: "持续时间",
+    coverage: "覆盖范围",
+    odorControl: "7天异味控制",
+    naturalIngredients: "100%天然成分",
+    easyApplication: "易于使用",
+    moneyBackGuarantee: "30天退款保证",
+    freeShipping: "免费配送",
+    bulkDiscount: "批量折扣",
+    prioritySupport: "优先客户支持",
+    bonusGuide: "赠送猫咪护理指南",
+    tryRiskFree: "无风险试用",
+    chooseThisSize: "选择此尺寸",
+    chosenByCustomers: "🔥 68%的客户选择",
+    whyChoosePurrify: "为什么选择Purrify？",
+    joinThousands: "加入数千名信任Purrify的猫主人",
+    happyCustomers: "满意客户",
+    averageRating: "平均评分",
+    satisfactionRate: "满意度",
+    odorFreeGuarantee: "无异味保证",
+    moneyBackGuaranteeText: "30天退款保证 - 无风险试用！"
+  },
+
+  // Subscription Offer
+  subscriptionOffer: {
+    subscribeAndSave: "订阅并节省",
+    neverRunOut: "永不缺货，节省更多",
+    subtitle: "设置自动配送，享受独家折扣和便利。随时取消。",
+    monthly: "每月",
+    everyTwoMonths: "每两个月",
+    quarterly: "每季度",
+    save: "节省",
+    mostFlexible: "最灵活",
+    bestValue: "最佳价值",
+    maxSavings: "最大节省",
+    oneTimePurchase: "一次性购买",
+    subscriptionBenefits: "订阅优势",
+    freeShipping: "所有订单免费配送",
+    exclusiveDiscounts: "独家订阅者折扣",
+    prioritySupport: "优先客户支持",
+    flexibleSchedule: "灵活的配送计划",
+    cancelAnytime: "随时取消",
+    bonusGuide: "免费猫咪护理指南",
+    startSubscription: "开始订阅",
+    selectPlan: "选择计划",
+    popularChoice: "热门选择"
+  },
+
+  // Urgency Banner
+  urgencyBanner: {
+    limitedTime: "限时优惠",
+    saveToday: "今日节省",
+    onAllOrders: "所有订单",
+    freeShipping: "+ 免费配送",
+    hurryOffer: "抓紧时间！优惠即将结束",
+    claimDiscount: "领取折扣",
+    timeLeft: "剩余时间",
+    days: "天",
+    hours: "小时",
+    minutes: "分钟",
+    seconds: "秒",
+    onlyLeft: "仅剩",
+    inStock: "库存",
+    orderNow: "立即订购"
+  },
+
+  // Email Capture Popup
+  emailCapture: {
+    waitDontGo: "等等！别走！",
+    exclusiveOffer: "获得独家优惠",
+    subtitle: "在您离开之前，获取15%的首次订单折扣",
+    emailPlaceholder: "输入您的邮箱地址",
+    claimDiscount: "领取15%折扣",
+    noThanks: "不，谢谢",
+    instantAccess: "立即获取您的折扣码",
+    limitedTime: "限时优惠 - 不要错过！",
+    successMessage: "成功！请查看您的邮箱获取折扣码。",
+    errorMessage: "出现错误，请重试。"
+  },
+
+  // Reviews Section
+  reviewsSection: {
+    customerReviews: "客户评价",
+    realStories: "真实故事来自快乐的猫主人",
+    verifiedReviews: "已验证评价",
+    averageRating: "平均评分",
+    readMore: "阅读更多",
+    writeReview: "写评价",
+    helpful: "有帮助",
+    verified: "已验证",
+    productUsed: "使用产品",
+    catsOwned: "猫咪数量",
+    useCase: "使用场景"
+  },
+
+  // Case Studies
+  caseStudies: {
+    customerSuccess: "客户成功案例",
+    realResults: "真实客户的真实结果",
+    detailedStories: "发现Purrify如何通过详细案例研究改变加拿大各地的家庭",
+    averageOdorReduction: "平均异味减少",
+    timeToSeeResults: "见效时间",
+    customerSatisfaction: "客户满意度",
+    catsPerStudy: "每项研究的猫咪数",
+    theChallenge: "挑战",
+    theSolution: "解决方案",
+    theResults: "结果",
+    longTermOutcome: "长期结果",
+    keyPainPoints: "关键痛点",
+    implementation: "实施方案",
+    writeYourStory: "准备写下您自己的成功故事？",
+    joinSatisfied: "加入数千名用Purrify改变家庭的满意客户。",
+    shopPurrify: "购买Purrify",
+    tryFreeSample: "试用免费样品",
+    moreCustomerStories: "更多客户故事",
+    videoTestimonials: "视频见证",
+    productComparison: "产品比较"
   }
 };

@@ -54,26 +54,33 @@ export function LanguageSwitcher() {
     // Remove any existing locale prefix to get the base path
     let basePath = currentPath;
     if (currentPath.startsWith('/fr/')) {
-      basePath = currentPath.replace('/fr', '');
+      basePath = currentPath.replace('/fr/', '/').replace('/fr', '/');
     } else if (currentPath.startsWith('/zh/')) {
-      basePath = currentPath.replace('/zh', '');
+      basePath = currentPath.replace('/zh/', '/').replace('/zh', '/');
     }
-    if (basePath === '') basePath = '/';
+    
+    // Ensure basePath starts with /
+    if (!basePath.startsWith('/')) {
+      basePath = '/' + basePath;
+    }
+    if (basePath === '//') basePath = '/';
     
     // Determine the new path based on the selected locale
     let newPath;
     
     if (newLocale === 'fr') {
-      newPath = basePath === '/' ? '/fr/' : `/fr${basePath}`;
+      newPath = basePath === '/' ? '/fr' : `/fr${basePath}`;
     } else if (newLocale === 'zh') {
-      newPath = basePath === '/' ? '/zh/' : `/zh${basePath}`;
+      newPath = basePath === '/' ? '/zh' : `/zh${basePath}`;
     } else {
       // English (default locale)
       newPath = basePath;
     }
     
-    // Navigate to the new path
+    // Update locale context first
     changeLocale(newLocale);
+    
+    // Navigate to the new path
     window.location.href = newPath;
     
     closeDropdown();

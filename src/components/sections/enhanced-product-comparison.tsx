@@ -2,12 +2,27 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { useTranslation } from "../../lib/translation-context";
-import { Check, X, Star, TrendingUp, Award, Zap } from 'lucide-react';
+import { useCart } from "../../lib/cart-context";
+import { Check, X, Star, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
 import NextImage from "../../../components/NextImage";
+import { PRODUCTS } from "@/lib/constants";
 
 export function EnhancedProductComparison() {
   const { t } = useTranslation();
+  const { addToCart } = useCart();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  const [addingToCart, setAddingToCart] = useState<string | null>(null);
+
+  const handleAddToCart = async (productId: string) => {
+    setAddingToCart(productId);
+    try {
+      addToCart(productId);
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+    } finally {
+      setTimeout(() => setAddingToCart(null), 1000);
+    }
+  };
 
   const products = [
     {
@@ -99,7 +114,7 @@ export function EnhancedProductComparison() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -203,15 +218,43 @@ export function EnhancedProductComparison() {
                   </div>
 
                   {/* CTA Button */}
-                  <Button 
-                    className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
-                      product.popularity === 3
-                        ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl'
-                        : 'bg-gray-100 hover:bg-[#FF3131] hover:text-white text-gray-800 border-2 border-gray-200 hover:border-[#FF3131]'
-                    }`}
-                  >
-                    {product.id === 'purrify-17g' ? 'Try Risk-Free' : 'Choose This Size'}
-                  </Button>
+                  {product.id === 'purrify-17g' ? (
+                    <a
+                      href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full py-4 text-lg font-bold transition-all duration-300 inline-flex items-center justify-center rounded-md ${
+                        product.popularity === 3
+                          ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl'
+                          : 'bg-gray-100 hover:bg-[#FF3131] hover:text-white text-gray-800 border-2 border-gray-200 hover:border-[#FF3131]'
+                      }`}
+                    >
+                      <ShoppingCart className="w-5 h-5 mr-2" />
+                      Try Risk-Free
+                    </a>
+                  ) : (
+                    <Button 
+                      className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
+                        product.popularity === 3
+                          ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl'
+                          : 'bg-gray-100 hover:bg-[#FF3131] hover:text-white text-gray-800 border-2 border-gray-200 hover:border-[#FF3131]'
+                      }`}
+                      onClick={() => handleAddToCart(product.id)}
+                      disabled={addingToCart === product.id}
+                    >
+                      {addingToCart === product.id ? (
+                        <div className="flex items-center">
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Adding...
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          <ShoppingCart className="w-5 h-5 mr-2" />
+                          Choose This Size
+                        </div>
+                      )}
+                    </Button>
+                  )}
 
                   {/* Urgency for popular product */}
                   {product.popularity === 3 && (

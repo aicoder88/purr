@@ -120,6 +120,8 @@ export const en = {
     },
     mostPopular: "MOST POPULAR",
     addToCart: "Add to Cart",
+    buyNow: "Buy Now",
+    adding: "Adding...",
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
   
