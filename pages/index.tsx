@@ -4,6 +4,10 @@ import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
+import { EnhancedProductComparison } from '../src/components/sections/enhanced-product-comparison';
+import { SubscriptionOffer } from '../src/components/sections/subscription-offer';
+import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
+import { EmailCapturePopup } from '../src/components/sections/email-capture-popup';
 import { Stores } from '../src/components/sections/stores';
 import { Testimonials } from '../src/components/sections/testimonials';
 import { FAQ } from '../src/components/sections/faq';
@@ -176,6 +180,9 @@ export default function Home() {
       {/* Enhanced Structured Data */}
       <EnhancedStructuredData pageType="home" />
 
+      {/* Urgency Banner at the top */}
+      <UrgencyBanner />
+      
       <main id="main-content" role="main">
         <ErrorBoundary>
           <Hero />
@@ -193,8 +200,14 @@ export default function Home() {
           <WhyPurrify />
         </ErrorBoundary>
         
+        {/* Enhanced Product Comparison for better conversions */}
         <ErrorBoundary>
-          <Products />
+          <EnhancedProductComparison />
+        </ErrorBoundary>
+        
+        {/* Subscription Offer for recurring revenue */}
+        <ErrorBoundary>
+          <SubscriptionOffer />
         </ErrorBoundary>
         
         {/* Trust Badges for Customer Confidence */}
@@ -232,6 +245,12 @@ export default function Home() {
           <BlogPreview />
         </ErrorBoundary>
       </main>
+      
+      {/* Email Capture Popup for lead generation */}
+      <EmailCapturePopup />
+      
+      {/* Sticky Urgency Bar for persistent conversion pressure */}
+      <StickyUrgencyBar />
       
       {/* Social Proof Components */}
       <PurchaseNotifications 
