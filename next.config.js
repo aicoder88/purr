@@ -110,7 +110,7 @@ const nextConfig = {
   
   // i18n configuration for multiple languages
   i18n: {
-    locales: ['en', 'fr'],
+    locales: ['en', 'fr', 'zh'],
     defaultLocale: 'en',
     localeDetection: false,
     // Specify domain-specific locales if needed
@@ -122,6 +122,10 @@ const nextConfig = {
       {
         domain: 'fr.purrify.ca',
         defaultLocale: 'fr',
+      },
+      {
+        domain: 'zh.purrify.ca',
+        defaultLocale: 'zh',
       },
     ],
   },

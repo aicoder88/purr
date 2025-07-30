@@ -24,6 +24,12 @@ const languages: LanguageOption[] = [
     name: 'Français',
     flag: '/flags/fr.svg',
     alt: 'French Flag'
+  },
+  {
+    locale: 'zh',
+    name: '中文',
+    flag: '/flags/zh.svg',
+    alt: 'Chinese Flag'
   }
 ];
 
@@ -45,32 +51,30 @@ export function LanguageSwitcher() {
     // Get the current path
     const currentPath = window.location.pathname;
     
+    // Remove any existing locale prefix to get the base path
+    let basePath = currentPath;
+    if (currentPath.startsWith('/fr/')) {
+      basePath = currentPath.replace('/fr', '');
+    } else if (currentPath.startsWith('/zh/')) {
+      basePath = currentPath.replace('/zh', '');
+    }
+    if (basePath === '') basePath = '/';
+    
     // Determine the new path based on the selected locale
     let newPath;
     
     if (newLocale === 'fr') {
-      // If switching to French, add /fr/ prefix if not already present
-      if (!currentPath.startsWith('/fr/')) {
-        if (currentPath === '/') {
-          newPath = '/fr/';
-        } else {
-          newPath = `/fr${currentPath}`;
-        }
-      } else {
-        newPath = currentPath;
-      }
+      newPath = basePath === '/' ? '/fr/' : `/fr${basePath}`;
+    } else if (newLocale === 'zh') {
+      newPath = basePath === '/' ? '/zh/' : `/zh${basePath}`;
     } else {
-      // If switching to English, remove /fr/ prefix if present
-      if (currentPath.startsWith('/fr/')) {
-        newPath = currentPath.replace('/fr', '');
-        if (newPath === '') newPath = '/';
-      } else {
-        newPath = currentPath;
-      }
+      // English (default locale)
+      newPath = basePath;
     }
     
     // Navigate to the new path
     changeLocale(newLocale);
+    window.location.href = newPath;
     
     closeDropdown();
   };
