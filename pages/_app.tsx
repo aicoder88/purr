@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
+import { Analytics } from '@vercel/analytics/next';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -161,6 +162,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </Layout>
           <Toaster />
+          <Analytics />
         </TranslationProvider>
       </CartProvider>
     </ThemeProvider>

@@ -4,8 +4,8 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../src/lib/constants';
 
 export default function Montreal() {
-  const pageTitle = 'Cat Litter Deodorizer Montreal - Purrify Available at Local Stores';
-  const pageDescription = 'Find Purrify cat litter deodorizer in Montreal stores. Available at Mondou, PetSmart locations across Montreal. Natural odor control made in Canada.';
+  const pageTitle = 'Cat Litter Deodorizer Montreal Stores - Where to Buy Purrify Canada';
+  const pageDescription = 'Find Purrify cat litter deodorizer at Montreal stores including Mondou, PetSmart. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
   const canonicalUrl = 'https://purrify.ca/montreal';
 
   const structuredData = {

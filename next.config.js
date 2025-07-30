@@ -449,18 +449,7 @@ const nextConfig = {
       config.optimization.concatenateModules = true;
     }
     
-    // Add rule for handling TypeScript files
-    config.module.rules.push({
-      test: /\.tsx?$/,
-      use: [
-        {
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
-          },
-        },
-      ],
-    });
+    // TypeScript is handled natively by Next.js, no need for ts-loader
 
     return config;
   },
