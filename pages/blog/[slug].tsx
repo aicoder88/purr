@@ -11,9 +11,13 @@ import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 // This function gets called at build time to generate static paths
 export function getStaticPaths() {
   // Get the paths we want to pre-render based on posts
-  const paths = sampleBlogPosts.map((post) => ({
-    params: { slug: post.link.split('/').pop() },
-  }));
+  const paths = sampleBlogPosts.map((post) => {
+    // Remove any language prefix from the link
+    const slug = post.link.replace(/^\/(en|fr|zh)\//, '').replace(/^\//, '');
+    return {
+      params: { slug },
+    };
+  });
   
   // We'll pre-render only these paths at build time
   // { fallback: 'blocking' } means other routes will be rendered at request time
@@ -31,12 +35,15 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       // If WordPress is not configured yet, use sample data
       console.log('WordPress API not configured, using sample data');
       
-      // Find the post that matches the slug
-      const foundPost = sampleBlogPosts.find((post) =>
-        post.link.includes(params.slug)
-      );
+      // Find the post that matches the slug, handling language prefixes
+      const foundPost = sampleBlogPosts.find((post) => {
+        // Remove language prefix from the post link for comparison
+        const postSlug = post.link.replace(/^\/(en|fr|zh)\//, '').replace(/^\//, '');
+        return postSlug === `blog/${params.slug}` || postSlug.endsWith(`/${params.slug}`);
+      });
       
       if (!foundPost) {
+        console.error(`Blog post not found for slug: ${params.slug}`);
         return {
           notFound: true, // This will show the 404 page
         };

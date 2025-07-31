@@ -9,32 +9,55 @@ export type BlogPost = {
   content?: string;
 };
 
-export const sampleBlogPosts: BlogPost[] = [
-  {
-    title: "How Activated Carbon Eliminates Cat Litter Odors",
-    excerpt: "Learn the science behind how activated carbon effectively eliminates cat litter odors at the molecular level, rather than just masking them.",
-    author: "Dr. Nathan Hale",
-    date: new Date().toISOString().split('T')[0],
-    image: "/optimized/carbon_magnified_image.webp",
-    link: "/blog/activated-carbon-science"
-  },
-  {
-    title: "5 Tips for a Fresher Home with Multiple Cats",
-    excerpt: "Living with multiple cats doesn't mean your home has to smell like it. Discover practical tips for maintaining a fresh-smelling home.",
-    author: "Monica Keller",
-    date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    image: "/optimized/three_bags_no_bg.webp",
-    link: "/blog/fresh-home-multiple-cats"
-  },
-  {
-    title: "Why Traditional Odor Control Products Fall Short",
-    excerpt: "Most cat litter odor products only mask smells temporarily. Find out why Purrify's approach is fundamentally different and more effective.",
-    author: "Environmental Scientist",
-    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    image: "/optimized/micropores_magnified_view.webp",
-    link: "/blog/beyond-masking-odors"
-  }
-];
+// Generate dynamic blog posts based on actual blog pages
+function generateLatestBlogPosts(): BlogPost[] {
+  const now = Date.now();
+  
+  return [
+    {
+      title: "The Complete Guide to Cat Litter Deodorizers: How to Use Them Effectively",
+      excerpt: "Master the art of using cat litter deodorizers with our comprehensive guide. Learn proper application techniques, timing, and maintenance tips for maximum odor control.",
+      author: "Dr. Sarah Mitchell",
+      date: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
+      image: "/optimized/60g.webp",
+      link: "/blog/how-to-use-cat-litter-deodorizer"
+    },
+    {
+      title: "Purrify vs Arm & Hammer: The Ultimate Cat Litter Additive Comparison",
+      excerpt: "Discover how Purrify's activated carbon technology compares to Arm & Hammer's baking soda approach. See which solution provides superior odor control for your home.",
+      author: "Pet Care Expert Team",
+      date: new Date(now - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
+      image: "/optimized/140g.webp",
+      link: "/blog/purrify-vs-arm-hammer"
+    },
+    {
+      title: "Is Purrify Safe for Kittens? A Veterinarian's Complete Safety Guide",
+      excerpt: "Learn everything about using Purrify with kittens, including safety considerations, proper usage guidelines, and expert veterinary advice for young cats.",
+      author: "Dr. Emily Rodriguez, DVM",
+      date: new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week ago
+      image: "/optimized/20g.webp",
+      link: "/blog/safe-for-kittens"
+    },
+    {
+      title: "Best Cat Litter Odor Remover for Small Apartments: Space-Saving Solutions",
+      excerpt: "Living in a small apartment with cats? Discover the most effective odor control strategies and products specifically designed for compact living spaces.",
+      author: "Urban Pet Living Specialist",
+      date: new Date(now - 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 10 days ago
+      image: "/optimized/carbon_magnified_image.webp",
+      link: "/blog/best-litter-odor-remover-small-apartments"
+    },
+    {
+      title: "Activated Carbon Cat Litter Additive Benefits: The Science Behind Odor Elimination",
+      excerpt: "Explore the scientific benefits of activated carbon in cat litter additives. Learn how this natural solution provides superior odor control compared to traditional methods.",
+      author: "Dr. Nathan Hale, Environmental Scientist",
+      date: new Date(now - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 weeks ago
+      image: "/optimized/micropores_magnified_view.webp",
+      link: "/blog/activated-carbon-litter-additive-benefits"
+    }
+  ];
+}
+
+export const sampleBlogPosts: BlogPost[] = generateLatestBlogPosts();
 
 // Function to get blog post content
 export function getBlogPostContent(slug: string): string {

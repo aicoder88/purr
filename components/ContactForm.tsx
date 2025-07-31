@@ -60,124 +60,100 @@ export default function ContactForm() {
     }
   }, []);
 
+  // Helper function to validate API response
+  const validateWithAPI = async (data: ContactFormData) => {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+    console.log('API response:', responseData);
+
+    if (!response.ok) {
+      throw new Error(responseData.message || 'API validation failed');
+    }
+
+    return responseData;
+  };
+
+  // Helper function to send email via EmailJS
+  const sendEmailViaEmailJS = async (data: ContactFormData) => {
+    if (!configValid) {
+      throw new Error('Email service is not properly configured. Please try again later.');
+    }
+
+    if (!emailjsInitialized) {
+      throw new Error('Email service not initialized. Please try again later.');
+    }
+
+    const templateParams = {
+      name: data.name,
+      email: data.email,
+      message: data.message,
+      subject: `Contact form submission from ${data.name}`,
+      date: new Date().toLocaleString(),
+    };
+
+    console.log('Sending email via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
+    
+    const result = await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      templateParams
+    );
+
+    console.log('EmailJS send result:', result);
+    return result;
+  };
+
+  // Helper function to handle submission success
+  const handleSubmissionSuccess = () => {
+    setSubmitStatus({
+      success: true,
+      message: 'Message sent successfully! We\'ll get back to you soon.',
+    });
+    reset();
+  };
+
+  // Helper function to handle submission errors
+  const handleSubmissionError = (error: unknown) => {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Form submission error:', errorMessage);
+    
+    setSubmitStatus({
+      success: false,
+      message: error instanceof Error && error.message.includes('configured') 
+        ? error.message
+        : 'An error occurred. Please try again later.',
+    });
+  };
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus({});
 
     try {
-      // Log the submission attempt for debugging
       console.log('Attempting to submit contact form:', {
         name: data.name,
         email: data.email,
         messageLength: data.message.length
       });
       
-      // First, validate with the API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const responseData = await response.json();
-      console.log('API response:', responseData);
-
-      if (response.ok) {
-        // If API validation is successful, send email using EmailJS
-        if (!configValid) {
-          console.error('EmailJS configuration is invalid');
-          setSubmitStatus({
-            success: false,
-            message: 'Email service is not properly configured. Please try again later.',
-          });
-          return;
-        }
-        
-        if (emailjsInitialized) {
-          try {
-            console.log('EmailJS initialized, attempting to send email with:', {
-              service: EMAILJS_CONFIG.SERVICE_NAME,
-              serviceId: EMAILJS_CONFIG.SERVICE_ID,
-              templateId: EMAILJS_CONFIG.TEMPLATE_ID,
-              publicKey: EMAILJS_CONFIG.PUBLIC_KEY.substring(0, 4) + '...' // Log partial key for security
-            });
-            
-            // Use the configuration from emailjs-config.ts with the newer API
-            const templateParams = {
-              name: data.name,
-              email: data.email,
-              message: data.message,
-              // Add any additional template variables needed
-              subject: `Contact form submission from ${data.name}`,
-              date: new Date().toLocaleString(),
-            };
-            
-            // Send email using only the public key for client-side operations
-            // The private key should only be used in server-side environments
-            const emailjsResponse = await emailjs.send(
-              EMAILJS_CONFIG.SERVICE_ID,
-              EMAILJS_CONFIG.TEMPLATE_ID,
-              templateParams,
-              {
-                publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
-                // Private key is not included here for security reasons
-              }
-            );
-            
-            console.log('EmailJS response:', emailjsResponse);
-            
-            if (emailjsResponse.status === 200) {
-              setSubmitStatus({
-                success: true,
-                message: 'Message sent successfully! We\'ll get back to you soon.',
-              });
-              // Reset form on success
-              reset();
-            } else {
-              throw new Error(`Failed to send email: Status ${emailjsResponse.status}. Please check the EmailJS configuration.`);
-            }
-          } catch (emailError) {
-            console.error('EmailJS error:', emailError);
-            
-            // Check if it's a network error
-            const errorMessage = emailError instanceof Error
-              ? emailError.message
-              : 'Unknown error';
-              
-            const isNetworkError = errorMessage.toLowerCase().includes('network') ||
-                                  errorMessage.toLowerCase().includes('connection');
-            
-            setSubmitStatus({
-              success: false,
-              message: isNetworkError
-                ? 'Network error. Please check your internet connection and try again.'
-                : 'Failed to send email. Please try again later. Error: ' +
-                  (errorMessage.length > 100 ? errorMessage.substring(0, 100) + '...' : errorMessage),
-            });
-          }
-        } else {
-          console.error('EmailJS not initialized');
-          setSubmitStatus({
-            success: false,
-            message: 'Email service not initialized. Please try again later.',
-          });
-        }
-      } else {
-        console.error('API validation failed:', responseData);
-        setSubmitStatus({
-          success: false,
-          message: responseData.message || 'Failed to send message. Please try again.',
-        });
-      }
+      // Step 1: Validate with API
+      await validateWithAPI(data);
+      
+      // Step 2: Send email via EmailJS
+      await sendEmailViaEmailJS(data);
+      
+      // Step 3: Handle success
+      handleSubmissionSuccess();
+      
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      console.error('Form submission error:', errorMessage);
-      setSubmitStatus({
-        success: false,
-        message: 'An error occurred. Please try again later.',
-      });
+      handleSubmissionError(error);
     } finally {
       setIsSubmitting(false);
     }

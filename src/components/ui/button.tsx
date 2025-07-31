@@ -44,11 +44,21 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, loading = false, loadingText, children, disabled, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    const isDisabled = disabled || loading
+    const isDisabled = disabled || loading;
+    
+    if (asChild) {
+      const child = React.Children.only(children) as React.ReactElement;
+      return React.cloneElement(child, {
+        className: cn(buttonVariants({ variant, size, className }), child.props.className),
+        disabled: isDisabled,
+        'aria-disabled': isDisabled,
+        ref,
+        ...props,
+      });
+    }
     
     return (
-      <Comp
+      <button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         disabled={isDisabled}
@@ -78,8 +88,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         )}
         {loading ? (loadingText || 'Loading...') : children}
-      </Comp>
-    )
+      </button>
+    );
   }
 )
 Button.displayName = "Button"
