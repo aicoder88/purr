@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useTranslation } from "../../lib/translation-context";
-import { X, Gift, Star, Mail, ArrowRight } from 'lucide-react';
+import { X, Gift, Star, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NextImage from "../../../components/NextImage";
 
 export function EmailCapturePopup() {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     // Show popup after 30 seconds or when user tries to leave
     const timer = setTimeout(() => {
-      const hasSeenPopup = localStorage.getItem('purrify-email-popup-seen');
+      const hasSeenPopup = localStorage.getItem("purrify-email-popup-seen");
       if (!hasSeenPopup) {
         setIsVisible(true);
       }
@@ -23,18 +23,18 @@ export function EmailCapturePopup() {
     // Exit intent detection
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
-        const hasSeenPopup = localStorage.getItem('purrify-email-popup-seen');
+        const hasSeenPopup = localStorage.getItem("purrify-email-popup-seen");
         if (!hasSeenPopup) {
           setIsVisible(true);
         }
       }
     };
 
-    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -44,16 +44,16 @@ export function EmailCapturePopup() {
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setIsSubmitted(true);
-      localStorage.setItem('purrify-email-popup-seen', 'true');
-      
+      localStorage.setItem("purrify-email-popup-seen", "true");
+
       // Auto-close after success
       setTimeout(() => {
         setIsVisible(false);
       }, 3000);
     } catch (error) {
-      console.error('Email submission failed:', error);
+      console.error("Email submission failed:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -61,7 +61,7 @@ export function EmailCapturePopup() {
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem('purrify-email-popup-seen', 'true');
+    localStorage.setItem("purrify-email-popup-seen", "true");
   };
 
   if (!isVisible) return null;
@@ -69,7 +69,7 @@ export function EmailCapturePopup() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={handleClose}
       ></div>
@@ -89,17 +89,23 @@ export function EmailCapturePopup() {
             {/* Header with Gift */}
             <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0 bg-repeat"
-                     style={{ 
-                       backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M30 30m-20 0a20,20 0 1,1 40,0a20,20 0 1,1 -40,0'/%3E%3C/g%3E%3C/svg%3E\")",
-                       backgroundSize: '60px 60px'
-                     }}
+                <div
+                  className="absolute inset-0 bg-repeat"
+                  style={{
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M30 30m-20 0a20,20 0 1,1 40,0a20,20 0 1,1 -40,0'/%3E%3C/g%3E%3C/svg%3E\")",
+                    backgroundSize: "60px 60px",
+                  }}
                 ></div>
               </div>
               <div className="relative z-10">
                 <Gift className="w-12 h-12 mx-auto mb-3 animate-bounce" />
-                <h2 className="text-2xl font-bold mb-2">Get 20% OFF Your First Order!</h2>
-                <p className="text-white/90">Plus exclusive cat care tips & early access to new products</p>
+                <h2 className="text-2xl font-bold mb-2">
+                  Get 20% OFF Your First Order!
+                </h2>
+                <p className="text-white/90">
+                  Plus exclusive cat care tips & early access to new products
+                </p>
               </div>
             </div>
 
@@ -108,12 +114,18 @@ export function EmailCapturePopup() {
               <div className="text-center mb-6">
                 <div className="flex justify-center items-center space-x-1 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                    />
                   ))}
-                  <span className="ml-2 text-gray-600 font-medium">4.9/5 from 2,847 reviews</span>
+                  <span className="ml-2 text-gray-600 font-medium">
+                    4.9/5 from 2,847 reviews
+                  </span>
                 </div>
                 <p className="text-gray-600 text-sm">
-                  Join 10,000+ happy cat parents who get exclusive deals and expert tips!
+                  Join 10,000+ happy cat parents who get exclusive deals and
+                  expert tips!
                 </p>
               </div>
 
@@ -178,13 +190,17 @@ export function EmailCapturePopup() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Gift className="w-8 h-8 text-green-600" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome to the Purrify Family!</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              Welcome to the Purrify Family!
+            </h3>
             <p className="text-gray-600 mb-4">
-              Check your email for your 20% discount code and exclusive cat care guide.
+              Check your email for your 20% discount code and exclusive cat care
+              guide.
             </p>
             <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-4">
               <p className="text-[#FF3131] font-medium text-sm">
-                🎉 Your discount code: <span className="font-bold">WELCOME20</span>
+                🎉 Your discount code:{" "}
+                <span className="font-bold">WELCOME20</span>
               </p>
             </div>
           </div>

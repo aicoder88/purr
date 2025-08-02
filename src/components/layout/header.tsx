@@ -28,9 +28,9 @@ export function Header() {
   };
 
   const scrollToProducts = () => {
-    const productsSection = document.getElementById('products');
+    const productsSection = document.getElementById("products");
     if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth' });
+      productsSection.scrollIntoView({ behavior: "smooth" });
     }
     closeMenu();
   };
@@ -43,42 +43,57 @@ export function Header() {
       setIsLearnDropdownOpen(false);
     };
 
-    router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on("routeChangeStart", handleRouteChange);
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off("routeChangeStart", handleRouteChange);
     };
   }, [router.events]);
 
   // Navigation items for better organization
   const navigationItems = [
     {
-      label: t.nav?.products || 'Products',
-      href: `${locale === 'fr' ? '/fr' : ''}/#products`,
+      label: t.nav?.products || "Products",
+      href: `${locale === "fr" ? "/fr" : ""}/#products`,
       hasDropdown: true,
       dropdownItems: [
-        { label: '17g Trial Size', href: `${locale === 'fr' ? '/fr' : ''}/products/trial-size` },
-        { label: 'Compare Sizes', href: `${locale === 'fr' ? '/fr' : ''}/products/compare` },
-        { label: 'View All Products', href: `${locale === 'fr' ? '/fr' : ''}/#products` }
-      ]
+        {
+          label: "17g Trial Size",
+          href: `${locale === "fr" ? "/fr" : ""}/products/trial-size`,
+        },
+        {
+          label: "Compare Sizes",
+          href: `${locale === "fr" ? "/fr" : ""}/products/compare`,
+        },
+        {
+          label: "View All Products",
+          href: `${locale === "fr" ? "/fr" : ""}/#products`,
+        },
+      ],
     },
     {
-      label: t.nav?.learn || 'Learn',
-      href: `${locale === 'fr' ? '/fr' : ''}/learn`,
+      label: t.nav?.learn || "Learn",
+      href: `${locale === "fr" ? "/fr" : ""}/learn`,
       hasDropdown: true,
       dropdownItems: [
-        { label: 'How It Works', href: `${locale === 'fr' ? '/fr' : ''}/learn/how-it-works` },
-        { label: 'FAQ', href: `${locale === 'fr' ? '/fr' : ''}/learn/faq` },
-        { label: 'Science', href: `${locale === 'fr' ? '/fr' : ''}/learn/science` }
-      ]
+        {
+          label: "How It Works",
+          href: `${locale === "fr" ? "/fr" : ""}/learn/how-it-works`,
+        },
+        { label: "FAQ", href: `${locale === "fr" ? "/fr" : ""}/learn/faq` },
+        {
+          label: "Science",
+          href: `${locale === "fr" ? "/fr" : ""}/learn/science`,
+        },
+      ],
     },
     {
-      label: t.nav?.about || 'About',
-      href: `${locale === 'fr' ? '/fr' : ''}/about/our-story`
+      label: t.nav?.about || "About",
+      href: `${locale === "fr" ? "/fr" : ""}/about/our-story`,
     },
     {
-      label: t.nav?.contact || 'Contact',
-      href: `${locale === 'fr' ? '/fr' : ''}/support/contact`
-    }
+      label: t.nav?.contact || "Contact",
+      href: `${locale === "fr" ? "/fr" : ""}/support/contact`,
+    },
   ];
 
   return (
@@ -106,46 +121,59 @@ export function Header() {
                     <button
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors font-medium"
                       onMouseEnter={() => {
-                        if (item.label === 'Products') setIsProductsDropdownOpen(true);
-                        if (item.label === 'Learn') setIsLearnDropdownOpen(true);
+                        if (item.label === "Products")
+                          setIsProductsDropdownOpen(true);
+                        if (item.label === "Learn")
+                          setIsLearnDropdownOpen(true);
                       }}
                       onClick={() => {
-                        if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
-                        if (item.label === 'Learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                        if (item.label === "Products")
+                          setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                        if (item.label === "Learn")
+                          setIsLearnDropdownOpen(!isLearnDropdownOpen);
                       }}
                     >
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
-                    {((item.label === 'Products' && isProductsDropdownOpen) || 
-                      (item.label === 'Learn' && isLearnDropdownOpen)) && (
-                      <div 
+                    {((item.label === "Products" && isProductsDropdownOpen) ||
+                      (item.label === "Learn" && isLearnDropdownOpen)) && (
+                      <div
                         className="absolute top-full left-0 mt-1 w-48 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200/50 dark:border-gray-600/50 z-50"
                         onMouseEnter={() => {
-                          if (item.label === 'Products') setIsProductsDropdownOpen(true);
-                          if (item.label === 'Learn') setIsLearnDropdownOpen(true);
+                          if (item.label === "Products")
+                            setIsProductsDropdownOpen(true);
+                          if (item.label === "Learn")
+                            setIsLearnDropdownOpen(true);
                         }}
                         onMouseLeave={(e) => {
                           // Add delay to prevent premature closing
                           setTimeout(() => {
                             const relatedTarget = e.relatedTarget as Element;
-                            if (!relatedTarget || !relatedTarget.closest('[data-dropdown]')) {
-                              if (item.label === 'Products') setIsProductsDropdownOpen(false);
-                              if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                            if (
+                              !relatedTarget ||
+                              !relatedTarget.closest("[data-dropdown]")
+                            ) {
+                              if (item.label === "Products")
+                                setIsProductsDropdownOpen(false);
+                              if (item.label === "Learn")
+                                setIsLearnDropdownOpen(false);
                             }
                           }, 100);
                         }}
                         data-dropdown
                       >
-                        {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                          <Link
-                            key={dropdownIndex}
-                            href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-1"
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ))}
+                        {item.dropdownItems?.map(
+                          (dropdownItem, dropdownIndex) => (
+                            <Link
+                              key={dropdownIndex}
+                              href={dropdownItem.href}
+                              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-1"
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ),
+                        )}
                       </div>
                     )}
                   </>
@@ -205,16 +233,18 @@ export function Header() {
                       <div className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                         {item.label}
                       </div>
-                      {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                        <Link
-                          key={dropdownIndex}
-                          href={dropdownItem.href}
-                          className="block px-6 py-2 text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
-                          onClick={closeMenu}
-                        >
-                          {dropdownItem.label}
-                        </Link>
-                      ))}
+                      {item.dropdownItems?.map(
+                        (dropdownItem, dropdownIndex) => (
+                          <Link
+                            key={dropdownIndex}
+                            href={dropdownItem.href}
+                            className="block px-6 py-2 text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                            onClick={closeMenu}
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        ),
+                      )}
                     </>
                   ) : (
                     <Link
@@ -227,7 +257,7 @@ export function Header() {
                   )}
                 </div>
               ))}
-              
+
               {/* Quick Actions */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <Button

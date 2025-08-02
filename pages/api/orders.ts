@@ -1,13 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { prisma } from '../../src/lib/prisma';
-import { getSession } from 'next-auth/react';
+import { NextApiRequest, NextApiResponse } from "next";
+import { prisma } from "../../src/lib/prisma";
+import { getSession } from "next-auth/react";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
@@ -18,7 +18,7 @@ export default async function handler(
     const order = await prisma.order.create({
       data: {
         total,
-        status: 'PENDING',
+        status: "PENDING",
         customer: {
           create: {
             email: customer.email,
@@ -44,7 +44,7 @@ export default async function handler(
 
     return res.status(200).json({ orderId: order.id });
   } catch (error) {
-    console.error('Error creating order:', error);
-    return res.status(500).json({ message: 'Error creating order' });
+    console.error("Error creating order:", error);
+    return res.status(500).json({ message: "Error creating order" });
   }
-} 
+}

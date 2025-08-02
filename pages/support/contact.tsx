@@ -1,13 +1,22 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { Input } from '../../src/components/ui/input';
-import { Textarea } from '../../src/components/ui/textarea';
-import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
-import Link from 'next/link';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { Input } from "../../src/components/ui/input";
+import { Textarea } from "../../src/components/ui/textarea";
+import { useTranslation } from "../../src/lib/translation-context";
+import { SITE_NAME } from "../../src/lib/constants";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Mail,
+  Phone,
+  Clock,
+  MapPin,
+  MessageCircle,
+  Send,
+  CheckCircle,
+} from "lucide-react";
+import { useState } from "react";
 
 export default function ContactPage() {
   const { t, locale } = useTranslation();
@@ -16,28 +25,29 @@ export default function ContactPage() {
     success?: boolean;
     message?: string;
   }>({});
-  
+
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/support/contact`;
+  const pageDescription =
+    "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
+  const canonicalUrl = `https://purrify.ca${locale === "fr" ? "/fr" : ""}/support/contact`;
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    orderNumber: '',
-    contactReason: 'general'
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    orderNumber: "",
+    contactReason: "general",
   });
 
   const contactReasons = [
-    { value: 'general', label: 'General Question' },
-    { value: 'product', label: 'Product Information' },
-    { value: 'order', label: 'Order Support' },
-    { value: 'shipping', label: 'Shipping Question' },
-    { value: 'return', label: 'Return/Refund' },
-    { value: 'wholesale', label: 'Wholesale Inquiry' },
-    { value: 'feedback', label: 'Feedback/Review' }
+    { value: "general", label: "General Question" },
+    { value: "product", label: "Product Information" },
+    { value: "order", label: "Order Support" },
+    { value: "shipping", label: "Shipping Question" },
+    { value: "return", label: "Return/Refund" },
+    { value: "wholesale", label: "Wholesale Inquiry" },
+    { value: "feedback", label: "Feedback/Review" },
   ];
 
   const contactMethods = [
@@ -47,7 +57,7 @@ export default function ContactPage() {
       value: "support@purrify.ca",
       description: "Get detailed help via email",
       responseTime: "Usually within 24 hours",
-      action: "mailto:support@purrify.ca"
+      action: "mailto:support@purrify.ca",
     },
     {
       icon: Phone,
@@ -55,7 +65,7 @@ export default function ContactPage() {
       value: "+1 514 961 9386",
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
-      action: "tel:+15149619386"
+      action: "tel:+15149619386",
     },
     {
       icon: MessageCircle,
@@ -63,34 +73,42 @@ export default function ContactPage() {
       value: "Available Now",
       description: "Instant help for quick questions",
       responseTime: "Average response: 2 minutes",
-      action: "#"
-    }
+      action: "#",
+    },
   ];
 
   const faqs = [
     {
       question: "How quickly will I see results with Purrify?",
-      answer: "Most customers notice a significant reduction in odors within the first few hours of application. The activated carbon begins trapping odor molecules immediately upon contact."
+      answer:
+        "Most customers notice a significant reduction in odors within the first few hours of application. The activated carbon begins trapping odor molecules immediately upon contact.",
     },
     {
       question: "What's your return policy?",
-      answer: "We offer a 30-day money-back guarantee. If you're not completely satisfied with Purrify, contact us for a full refund."
+      answer:
+        "We offer a 30-day money-back guarantee. If you're not completely satisfied with Purrify, contact us for a full refund.",
     },
     {
       question: "Do you offer bulk pricing for multiple cats?",
-      answer: "Yes! Our 500g bulk size offers the best value for multi-cat households. We also have wholesale pricing available for pet stores and veterinarians."
+      answer:
+        "Yes! Our 500g bulk size offers the best value for multi-cat households. We also have wholesale pricing available for pet stores and veterinarians.",
     },
     {
       question: "Is Purrify safe if my cat accidentally ingests it?",
-      answer: "Absolutely. Activated carbon is completely safe for cats and is actually used in veterinary medicine. However, Purrify is designed to stay mixed with the litter."
-    }
+      answer:
+        "Absolutely. Activated carbon is completely safe for cats and is actually used in veterinary medicine. However, Purrify is designed to stay mixed with the litter.",
+    },
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -101,26 +119,28 @@ export default function ContactPage() {
 
     try {
       // Simulate form submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       setSubmitStatus({
         success: true,
-        message: "Thank you for contacting us! We'll get back to you within 24 hours."
+        message:
+          "Thank you for contacting us! We'll get back to you within 24 hours.",
       });
-      
+
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        orderNumber: '',
-        contactReason: 'general'
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        orderNumber: "",
+        contactReason: "general",
       });
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: "Sorry, there was an error sending your message. Please try again or contact us directly."
+        message:
+          "Sorry, there was an error sending your message. Please try again or contact us directly.",
       });
     } finally {
       setIsSubmitting(false);
@@ -137,15 +157,15 @@ export default function ContactPage() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'website',
+          type: "website",
           images: [
             {
-              url: 'https://purrify.ca/customer-support-hero.jpg',
+              url: "https://purrify.ca/customer-support-hero.jpg",
               width: 1200,
               height: 630,
-              alt: 'Purrify Customer Support Team'
-            }
-          ]
+              alt: "Purrify Customer Support Team",
+            },
+          ],
         }}
       />
 
@@ -155,8 +175,11 @@ export default function ContactPage() {
           <nav className="py-4 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.nav?.home || 'Home'}
+                <Link
+                  href={locale === "fr" ? "/fr" : "/"}
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
+                  {t.nav?.home || "Home"}
                 </Link>
               </li>
               <li>/</li>
@@ -166,7 +189,9 @@ export default function ContactPage() {
                 </span>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Contact</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                Contact
+              </li>
             </ol>
           </nav>
         </Container>
@@ -179,8 +204,9 @@ export default function ContactPage() {
                 We're Here to Help
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-                Have questions about Purrify? Need help with your order? Our friendly customer support team 
-                is ready to assist you with expert advice and solutions.
+                Have questions about Purrify? Need help with your order? Our
+                friendly customer support team is ready to assist you with
+                expert advice and solutions.
               </p>
             </div>
           </Container>
@@ -200,7 +226,10 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {contactMethods.map((method, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
+                >
                   <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
                     <method.icon className="w-8 h-8 text-white" />
                   </div>
@@ -216,12 +245,14 @@ export default function ContactPage() {
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
-                  <Button 
+                  <Button
                     className="w-full"
                     onClick={() => {
-                      if (method.action.startsWith('#')) {
+                      if (method.action.startsWith("#")) {
                         // Handle live chat
-                        alert('Live chat feature coming soon! Please use email or phone for now.');
+                        alert(
+                          "Live chat feature coming soon! Please use email or phone for now.",
+                        );
                       } else {
                         window.location.href = method.action;
                       }
@@ -244,18 +275,23 @@ export default function ContactPage() {
                   Send Us a Message
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  Fill out the form below and we'll get back to you within 24 hours
+                  Fill out the form below and we'll get back to you within 24
+                  hours
                 </p>
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
                 {submitStatus.message && (
-                  <div className={`mb-6 p-4 rounded-lg flex items-center ${
-                    submitStatus.success 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
-                      : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
-                  }`}>
-                    {submitStatus.success && <CheckCircle className="w-5 h-5 mr-2" />}
+                  <div
+                    className={`mb-6 p-4 rounded-lg flex items-center ${
+                      submitStatus.success
+                        ? "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800"
+                        : "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800"
+                    }`}
+                  >
+                    {submitStatus.success && (
+                      <CheckCircle className="w-5 h-5 mr-2" />
+                    )}
                     {submitStatus.message}
                   </div>
                 )}
@@ -263,7 +299,10 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Full Name *
                       </label>
                       <Input
@@ -278,7 +317,10 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Email Address *
                       </label>
                       <Input
@@ -296,7 +338,10 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="contactReason"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Reason for Contact
                       </label>
                       <select
@@ -314,7 +359,10 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="orderNumber"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Order Number (if applicable)
                       </label>
                       <Input
@@ -330,7 +378,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Subject *
                     </label>
                     <Input
@@ -346,7 +397,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Message *
                     </label>
                     <Textarea
@@ -399,7 +453,10 @@ export default function ContactPage() {
 
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+                >
                   <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {faq.question}
                   </h3>
@@ -414,7 +471,7 @@ export default function ContactPage() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Don't see your question answered here?
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#faq`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/#faq`}>
                 <Button variant="outline" size="lg">
                   View Full FAQ
                 </Button>
@@ -435,21 +492,31 @@ export default function ContactPage() {
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Monday - Friday</p>
-                      <p className="text-gray-600 dark:text-gray-300">9:00 AM - 5:00 PM EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Monday - Friday
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        9:00 AM - 5:00 PM EST
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Saturday</p>
-                      <p className="text-gray-600 dark:text-gray-300">10:00 AM - 2:00 PM EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Saturday
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        10:00 AM - 2:00 PM EST
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Sunday</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Sunday
+                      </p>
                       <p className="text-gray-600 dark:text-gray-300">Closed</p>
                     </div>
                   </div>
@@ -464,14 +531,19 @@ export default function ContactPage() {
                   <div className="flex items-center justify-center md:justify-start">
                     <MapPin className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Purrify Canada</p>
-                      <p className="text-gray-600 dark:text-gray-300">Montreal, Quebec</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Purrify Canada
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        Montreal, Quebec
+                      </p>
                       <p className="text-gray-600 dark:text-gray-300">Canada</p>
                     </div>
                   </div>
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      We ship across Canada and offer local pickup in the Montreal area.
+                      We ship across Canada and offer local pickup in the
+                      Montreal area.
                     </p>
                   </div>
                 </div>
@@ -484,7 +556,7 @@ export default function ContactPage() {
         <section className="py-8">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#contact`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/#contact`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to Homepage

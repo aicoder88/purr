@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Circle } from 'lucide-react';
-import NextImage from '../../../components/NextImage';
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Circle } from "lucide-react";
+import NextImage from "../../../components/NextImage";
 
 interface TouchGalleryProps {
   images: {
@@ -21,7 +21,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
   autoPlayInterval = 5000,
   showDots = true,
   showArrows = true,
-  className = ''
+  className = "",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay);
@@ -95,24 +95,26 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         goToPrevious();
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         goToNext();
-      } else if (e.key === ' ') {
+      } else if (e.key === " ") {
         e.preventDefault();
         setIsAutoPlaying(!isAutoPlaying);
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isAutoPlaying]);
 
   if (images.length === 0) return null;
 
   return (
-    <div className={`relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 ${className}`}
+    >
       {/* Main Gallery Container */}
       <div
         ref={galleryRef}
@@ -182,8 +184,8 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
               onClick={() => goToSlide(index)}
               className={`w-2 h-2 rounded-full transition-colors ${
                 index === currentIndex
-                  ? 'bg-[#5B2EFF]'
-                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                  ? "bg-[#5B2EFF]"
+                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
@@ -201,15 +203,23 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
         <button
           onClick={() => setIsAutoPlaying(!isAutoPlaying)}
           className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
-          aria-label={isAutoPlaying ? 'Pause slideshow' : 'Play slideshow'}
+          aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
         >
           {isAutoPlaying ? (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
             </svg>
           ) : (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                clipRule="evenodd"
+              />
             </svg>
           )}
         </button>
@@ -223,11 +233,11 @@ export const ProductGallery: React.FC<{
   productImages: string[];
   productName: string;
   className?: string;
-}> = ({ productImages, productName, className = '' }) => {
+}> = ({ productImages, productName, className = "" }) => {
   const galleryImages = productImages.map((src, index) => ({
     src,
     alt: `${productName} - Image ${index + 1}`,
-    caption: index === 0 ? `${productName} - Main Product Image` : undefined
+    caption: index === 0 ? `${productName} - Main Product Image` : undefined,
   }));
 
   return (

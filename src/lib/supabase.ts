@@ -8,7 +8,7 @@ export const supabase = {
     signOut: () => Promise.resolve({ error: null }),
     session: () => null,
   },
-  
+
   // Database methods
   from: (table: string) => ({
     select: () => ({
@@ -32,7 +32,7 @@ export const supabase = {
       error: null,
     }),
   }),
-  
+
   // Storage methods
   storage: {
     from: () => ({

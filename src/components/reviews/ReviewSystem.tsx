@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Star, ThumbsUp, ThumbsDown, User, Calendar, CheckCircle, Filter, SortAsc } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Container } from '../ui/container';
+import React, { useState, useEffect } from "react";
+import {
+  Star,
+  ThumbsUp,
+  ThumbsDown,
+  User,
+  Calendar,
+  CheckCircle,
+  Filter,
+  SortAsc,
+} from "lucide-react";
+import { Button } from "../ui/button";
+import { Container } from "../ui/container";
 
 interface Review {
   id: string;
@@ -15,7 +24,7 @@ interface Review {
   verified: boolean;
   helpful: number;
   notHelpful: number;
-  productSize: '17g' | '60g' | '120g';
+  productSize: "17g" | "60g" | "120g";
   catCount: number;
   usageDuration: string;
   wouldRecommend: boolean;
@@ -31,123 +40,134 @@ interface ReviewSystemProps {
 
 const SAMPLE_REVIEWS: Review[] = [
   {
-    id: '1',
-    userId: 'user1',
-    userName: 'Sarah M.',
+    id: "1",
+    userId: "user1",
+    userName: "Sarah M.",
     rating: 5,
-    title: 'Life-changing for my multi-cat household!',
-    content: 'I have 3 cats and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within hours. I can\'t believe how well this works! My guests don\'t even know I have cats anymore.',
-    date: '2024-01-15',
+    title: "Life-changing for my multi-cat household!",
+    content:
+      "I have 3 cats and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within hours. I can't believe how well this works! My guests don't even know I have cats anymore.",
+    date: "2024-01-15",
     verified: true,
     helpful: 24,
     notHelpful: 1,
-    productSize: '120g',
+    productSize: "120g",
     catCount: 3,
-    usageDuration: '6 months',
-    wouldRecommend: true
+    usageDuration: "6 months",
+    wouldRecommend: true,
   },
   {
-    id: '2',
-    userId: 'user2',
-    userName: 'Mike R.',
+    id: "2",
+    userId: "user2",
+    userName: "Mike R.",
     rating: 5,
-    title: 'Skeptical at first, now a believer',
-    content: 'I was doubtful about activated carbon making such a difference, but wow! The science really works. My apartment stays fresh all week instead of needing daily litter changes.',
-    date: '2024-01-12',
+    title: "Skeptical at first, now a believer",
+    content:
+      "I was doubtful about activated carbon making such a difference, but wow! The science really works. My apartment stays fresh all week instead of needing daily litter changes.",
+    date: "2024-01-12",
     verified: true,
     helpful: 18,
     notHelpful: 0,
-    productSize: '60g',
+    productSize: "60g",
     catCount: 1,
-    usageDuration: '3 months',
-    wouldRecommend: true
+    usageDuration: "3 months",
+    wouldRecommend: true,
   },
   {
-    id: '3',
-    userId: 'user3',
-    userName: 'Jennifer L.',
+    id: "3",
+    userId: "user3",
+    userName: "Jennifer L.",
     rating: 4,
-    title: 'Great product, wish I found it sooner',
-    content: 'Works exactly as advertised. The trial size convinced me to buy the large size. Only wish is that it came in even larger quantities for bulk savings.',
-    date: '2024-01-10',
+    title: "Great product, wish I found it sooner",
+    content:
+      "Works exactly as advertised. The trial size convinced me to buy the large size. Only wish is that it came in even larger quantities for bulk savings.",
+    date: "2024-01-10",
     verified: true,
     helpful: 15,
     notHelpful: 2,
-    productSize: '17g',
+    productSize: "17g",
     catCount: 2,
-    usageDuration: '2 months',
-    wouldRecommend: true
+    usageDuration: "2 months",
+    wouldRecommend: true,
   },
   {
-    id: '4',
-    userId: 'user4',
-    userName: 'David K.',
+    id: "4",
+    userId: "user4",
+    userName: "David K.",
     rating: 5,
-    title: 'Perfect for automatic litter boxes',
-    content: 'I use this with my Litter-Robot and it\'s a perfect combination. The activated carbon doesn\'t interfere with the mechanism and keeps everything odor-free.',
-    date: '2024-01-08',
+    title: "Perfect for automatic litter boxes",
+    content:
+      "I use this with my Litter-Robot and it's a perfect combination. The activated carbon doesn't interfere with the mechanism and keeps everything odor-free.",
+    date: "2024-01-08",
     verified: true,
     helpful: 12,
     notHelpful: 0,
-    productSize: '120g',
+    productSize: "120g",
     catCount: 2,
-    usageDuration: '4 months',
-    wouldRecommend: true
+    usageDuration: "4 months",
+    wouldRecommend: true,
   },
   {
-    id: '5',
-    userId: 'user5',
-    userName: 'Amanda T.',
+    id: "5",
+    userId: "user5",
+    userName: "Amanda T.",
     rating: 4,
-    title: 'Good value for money',
-    content: 'Makes my litter last much longer, so it pays for itself. The 120g size is definitely the best value. Easy to use and effective.',
-    date: '2024-01-05',
+    title: "Good value for money",
+    content:
+      "Makes my litter last much longer, so it pays for itself. The 120g size is definitely the best value. Easy to use and effective.",
+    date: "2024-01-05",
     verified: true,
     helpful: 9,
     notHelpful: 1,
-    productSize: '120g',
+    productSize: "120g",
     catCount: 1,
-    usageDuration: '5 months',
-    wouldRecommend: true
+    usageDuration: "5 months",
+    wouldRecommend: true,
   },
   {
-    id: '6',
-    userId: 'user6',
-    userName: 'Robert H.',
+    id: "6",
+    userId: "user6",
+    userName: "Robert H.",
     rating: 5,
-    title: 'Veterinarian approved!',
-    content: 'As a vet, I\'m always cautious about new products. Purrify is safe, effective, and I now recommend it to all my clients with odor concerns.',
-    date: '2024-01-03',
+    title: "Veterinarian approved!",
+    content:
+      "As a vet, I'm always cautious about new products. Purrify is safe, effective, and I now recommend it to all my clients with odor concerns.",
+    date: "2024-01-03",
     verified: true,
     helpful: 31,
     notHelpful: 0,
-    productSize: '60g',
+    productSize: "60g",
     catCount: 2,
-    usageDuration: '8 months',
-    wouldRecommend: true
-  }
+    usageDuration: "8 months",
+    wouldRecommend: true,
+  },
 ];
 
-export const ReviewSystem: React.FC<ReviewSystemProps> = ({ 
-  productId, 
-  showFilters = true, 
-  maxReviews, 
-  compact = false 
+export const ReviewSystem: React.FC<ReviewSystemProps> = ({
+  productId,
+  showFilters = true,
+  maxReviews,
+  compact = false,
 }) => {
   const [reviews, setReviews] = useState<Review[]>(SAMPLE_REVIEWS);
-  const [filteredReviews, setFilteredReviews] = useState<Review[]>(SAMPLE_REVIEWS);
-  const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful'>('newest');
+  const [filteredReviews, setFilteredReviews] =
+    useState<Review[]>(SAMPLE_REVIEWS);
+  const [sortBy, setSortBy] = useState<
+    "newest" | "oldest" | "highest" | "lowest" | "helpful"
+  >("newest");
   const [filterRating, setFilterRating] = useState<number | null>(null);
   const [filterSize, setFilterSize] = useState<string | null>(null);
   const [showWriteReview, setShowWriteReview] = useState(false);
 
   // Calculate review statistics
   const totalReviews = reviews.length;
-  const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
-  const ratingDistribution = [5, 4, 3, 2, 1].map(rating => ({
+  const averageRating =
+    reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+  const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
     rating,
-    count: reviews.filter(r => r.rating === rating).length,
-    percentage: (reviews.filter(r => r.rating === rating).length / totalReviews) * 100
+    count: reviews.filter((r) => r.rating === rating).length,
+    percentage:
+      (reviews.filter((r) => r.rating === rating).length / totalReviews) * 100,
   }));
 
   // Filter and sort reviews
@@ -156,26 +176,26 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
     // Apply rating filter
     if (filterRating) {
-      filtered = filtered.filter(review => review.rating === filterRating);
+      filtered = filtered.filter((review) => review.rating === filterRating);
     }
 
     // Apply size filter
     if (filterSize) {
-      filtered = filtered.filter(review => review.productSize === filterSize);
+      filtered = filtered.filter((review) => review.productSize === filterSize);
     }
 
     // Apply sorting
     filtered.sort((a, b) => {
       switch (sortBy) {
-        case 'newest':
+        case "newest":
           return new Date(b.date).getTime() - new Date(a.date).getTime();
-        case 'oldest':
+        case "oldest":
           return new Date(a.date).getTime() - new Date(b.date).getTime();
-        case 'highest':
+        case "highest":
           return b.rating - a.rating;
-        case 'lowest':
+        case "lowest":
           return a.rating - b.rating;
-        case 'helpful':
+        case "helpful":
           return b.helpful - a.helpful;
         default:
           return 0;
@@ -190,11 +210,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     setFilteredReviews(filtered);
   }, [reviews, sortBy, filterRating, filterSize, maxReviews]);
 
-  const renderStars = (rating: number, size: 'sm' | 'md' | 'lg' = 'md') => {
+  const renderStars = (rating: number, size: "sm" | "md" | "lg" = "md") => {
     const sizeClasses = {
-      sm: 'w-4 h-4',
-      md: 'w-5 h-5',
-      lg: 'w-6 h-6'
+      sm: "w-4 h-4",
+      md: "w-5 h-5",
+      lg: "w-6 h-6",
     };
 
     return (
@@ -203,9 +223,9 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           <Star
             key={star}
             className={`${sizeClasses[size]} ${
-              star <= rating 
-                ? 'text-yellow-400 fill-current' 
-                : 'text-gray-300 dark:text-gray-600'
+              star <= rating
+                ? "text-yellow-400 fill-current"
+                : "text-gray-300 dark:text-gray-600"
             }`}
           />
         ))}
@@ -214,10 +234,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -241,10 +261,13 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
         <div className="space-y-4">
           {filteredReviews.slice(0, 3).map((review) => (
-            <div key={review.id} className="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-b-0">
+            <div
+              key={review.id}
+              className="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-b-0"
+            >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center space-x-2">
-                  {renderStars(review.rating, 'sm')}
+                  {renderStars(review.rating, "sm")}
                   <span className="font-semibold text-gray-900 dark:text-gray-100">
                     {review.userName}
                   </span>
@@ -267,8 +290,8 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         </div>
 
         <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="w-full border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white"
           >
             View All Reviews
@@ -290,16 +313,25 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 {averageRating.toFixed(1)}
               </span>
               <div>
-                {renderStars(averageRating, 'lg')}
+                {renderStars(averageRating, "lg")}
                 <p className="text-gray-600 dark:text-gray-300 mt-1">
                   Based on {totalReviews} reviews
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-600 dark:text-gray-400">
-              <span>{Math.round((reviews.filter(r => r.wouldRecommend).length / totalReviews) * 100)}% would recommend</span>
+              <span>
+                {Math.round(
+                  (reviews.filter((r) => r.wouldRecommend).length /
+                    totalReviews) *
+                    100,
+                )}
+                % would recommend
+              </span>
               <span>•</span>
-              <span>{reviews.filter(r => r.verified).length} verified purchases</span>
+              <span>
+                {reviews.filter((r) => r.verified).length} verified purchases
+              </span>
             </div>
           </div>
 
@@ -311,7 +343,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   {rating}★
                 </span>
                 <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div 
+                  <div
                     className="bg-yellow-400 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${percentage}%` }}
                   />
@@ -325,7 +357,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-          <Button 
+          <Button
             onClick={() => setShowWriteReview(true)}
             className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white"
           >
@@ -343,8 +375,12 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               <div className="flex items-center space-x-2">
                 <Filter className="w-4 h-4 text-gray-500" />
                 <select
-                  value={filterRating || ''}
-                  onChange={(e) => setFilterRating(e.target.value ? parseInt(e.target.value) : null)}
+                  value={filterRating || ""}
+                  onChange={(e) =>
+                    setFilterRating(
+                      e.target.value ? parseInt(e.target.value) : null,
+                    )
+                  }
                   className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
                   <option value="">All Ratings</option>
@@ -358,7 +394,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
               {/* Size Filter */}
               <select
-                value={filterSize || ''}
+                value={filterSize || ""}
                 onChange={(e) => setFilterSize(e.target.value || null)}
                 className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
@@ -391,7 +427,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
       {/* Reviews List */}
       <div className="space-y-6">
         {filteredReviews.map((review) => (
-          <div key={review.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+          <div
+            key={review.id}
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700"
+          >
             {/* Review Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
@@ -411,17 +450,19 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     )}
                   </div>
                   <div className="flex items-center space-x-2 mt-1">
-                    {renderStars(review.rating, 'sm')}
+                    {renderStars(review.rating, "sm")}
                     <span className="text-sm text-gray-500 dark:text-gray-400">
                       {formatDate(review.date)}
                     </span>
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-right text-sm text-gray-500 dark:text-gray-400">
                 <div>Size: {review.productSize}</div>
-                <div>{review.catCount} cat{review.catCount > 1 ? 's' : ''}</div>
+                <div>
+                  {review.catCount} cat{review.catCount > 1 ? "s" : ""}
+                </div>
                 <div>Using for {review.usageDuration}</div>
               </div>
             </div>
@@ -448,11 +489,13 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   <span className="text-sm">({review.notHelpful})</span>
                 </button>
               </div>
-              
+
               {review.wouldRecommend && (
                 <div className="flex items-center space-x-1 text-green-600">
                   <CheckCircle className="w-4 h-4" />
-                  <span className="text-sm font-medium">Recommends this product</span>
+                  <span className="text-sm font-medium">
+                    Recommends this product
+                  </span>
                 </div>
               )}
             </div>
@@ -463,8 +506,8 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
       {/* Load More Button */}
       {filteredReviews.length < reviews.length && (
         <div className="text-center">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white"
           >
             Load More Reviews

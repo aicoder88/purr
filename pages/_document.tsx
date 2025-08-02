@@ -1,15 +1,17 @@
-import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
-import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
-import { PerformanceMonitor } from '../src/components/performance/PerformanceMonitor';
-import { CacheOptimizer } from '../src/components/performance/CacheOptimizer';
+import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
+import { PurrifyStructuredData } from "../src/components/seo/AdvancedStructuredData";
+import { PerformanceMonitor } from "../src/components/performance/PerformanceMonitor";
+import { CacheOptimizer } from "../src/components/performance/CacheOptimizer";
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
         {/* Critical CSS inline to improve Core Web Vitals */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           /* Critical CSS for above-the-fold content */
           * { box-sizing: border-box; }
           body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333333; background-color: #FFFFFF; }
@@ -40,21 +42,27 @@ export default function Document() {
           .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
           @media (max-width: 640px) { .container { padding: 0 0.75rem; } .hero-title { font-size: 2.5rem; } .hero-subtitle { font-size: 1.125rem; } }
           @media print { .hero-decoration, .hero-video { display: none; } .hero-section { background: white; min-height: auto; } }
-        `}} />
-        
+        `,
+          }}
+        />
+
         {/* Preload critical fonts for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
           rel="stylesheet"
           media="print"
           onLoad={(e) => {
             const target = e.currentTarget as HTMLLinkElement;
-            target.media = 'all';
+            target.media = "all";
           }}
         />
-        
+
         {/* Preload critical assets */}
         <link
           rel="preload"
@@ -68,7 +76,7 @@ export default function Document() {
           as="image"
           type="image/webp"
         />
-        
+
         {/* Preload hero video poster for better LCP */}
         <link
           rel="preload"
@@ -76,14 +84,22 @@ export default function Document() {
           as="image"
           type="image/webp"
         />
-        
+
         {/* Enhanced SEO */}
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <meta name="googlebot" content="index, follow" />
-        <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
-        
+        <meta
+          name="video-description"
+          content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level"
+        />
+
         {/* Reduce CLS with font display settings */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           @font-face {
             font-family: 'Inter';
             font-style: normal;
@@ -105,8 +121,10 @@ export default function Document() {
             font-display: swap;
             src: local('Inter Bold'), local('Inter-Bold');
           }
-        `}} />
-        
+        `,
+          }}
+        />
+
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -116,7 +134,7 @@ export default function Document() {
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-T8WZ5D7R');`
+            })(window,document,'script','dataLayer','GTM-T8WZ5D7R');`,
           }}
         />
       </Head>
@@ -127,25 +145,29 @@ export default function Document() {
             src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
             title="Google Tag Manager"
           />
         </noscript>
-        
+
         {/* Global Structured Data */}
         <PurrifyStructuredData />
-        
+
         {/* Performance Monitoring */}
         <PerformanceMonitor enabled={true} sampleRate={0.1} />
-        
+
         {/* Cache Optimization */}
-        <CacheOptimizer 
+        <CacheOptimizer
           enabled={true}
-          preloadRoutes={['/products/trial-size', '/customers/testimonials', '/learn/how-it-works']}
+          preloadRoutes={[
+            "/products/trial-size",
+            "/customers/testimonials",
+            "/learn/how-it-works",
+          ]}
           warmupDelay={3000}
           maxCacheSize={15728640}
         />
-        
+
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
@@ -153,10 +175,10 @@ export default function Document() {
         >
           Skip to content
         </a>
-        
+
         <Main />
         <NextScript />
-        
+
         {/* Chat plugin */}
         <Script
           id="chat-plugin"
@@ -165,7 +187,7 @@ export default function Document() {
           strategy="lazyOnload"
           defer
         />
-        
+
         {/* Preload interaction script */}
         <Script id="interaction-observer" strategy="afterInteractive">
           {`

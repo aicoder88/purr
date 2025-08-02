@@ -2,7 +2,7 @@ export const zh = {
   // Common
   siteName: "Purrify",
   siteDescription: "活性炭猫砂添加剂，从源头消除异味。",
-  
+
   // Navigation
   nav: {
     home: "首页",
@@ -16,23 +16,26 @@ export const zh = {
     contact: "联系我们",
     blog: "博客",
     privacyPolicy: "隐私政策",
-    termsOfService: "服务条款"
+    termsOfService: "服务条款",
   },
-  
+
   // Products
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "试用装 - 单次使用样品\n试用装：仅够一次猫砂更换使用。适合在购买大包装前试用Purrify。"
+      description:
+        "试用装 - 单次使用样品\n试用装：仅够一次猫砂更换使用。适合在购买大包装前试用Purrify。",
     },
     "purrify-60g": {
       name: "Purrify 60g",
-      description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
+      description:
+        "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！",
     },
     "purrify-120g": {
       name: "Purrify 120g",
-      description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
-    }
+      description:
+        "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。",
+    },
   },
 
   // Hero Section
@@ -40,74 +43,74 @@ export const zh = {
     catLitter: "猫砂",
     rabbitLitter: "兔砂",
     fridgeSmells: "冰箱异味",
-    ferretCage: "雪貂笼"
+    ferretCage: "雪貂笼",
   },
-  
+
   // About Section
   about: {
-    naturalAndEffective: "天然有效"
+    naturalAndEffective: "天然有效",
   },
-  
+
   // Features
   features: {
     odorElimination: {
       title: "异味消除",
-      description: "Purrify的先进配方有效地从源头消除令人不快的猫砂盒异味。"
+      description: "Purrify的先进配方有效地从源头消除令人不快的猫砂盒异味。",
     },
     catFriendly: {
       title: "对猫咪友好",
-      description: "采用天然成分制成，对您的猫咪完全安全。"
+      description: "采用天然成分制成，对您的猫咪完全安全。",
     },
     longLastingFreshness: {
       title: "持久清新",
-      description: "提供长达7天的持续清新效果。"
+      description: "提供长达7天的持续清新效果。",
     },
     worksWithAnyLitter: {
       title: "适用于任何猫砂",
-      description: "与所有类型的猫砂兼容，包括结团砂、水晶砂和天然砂。"
+      description: "与所有类型的猫砂兼容，包括结团砂、水晶砂和天然砂。",
     },
     natural: {
       title: "天然成分",
-      description: "采用100%天然活性炭制成，无有害化学物质。"
+      description: "采用100%天然活性炭制成，无有害化学物质。",
     },
     costEffective: {
       title: "经济实惠",
-      description: "延长猫砂使用寿命，为您节省金钱。"
+      description: "延长猫砂使用寿命，为您节省金钱。",
     },
     freePurrify: {
       title: "免费Purrify",
-      description: "立即获取免费样品。"
+      description: "立即获取免费样品。",
     },
     beforeAfter: {
       title: "使用前后对比",
-      description: "查看Purrify的惊人效果。"
-    }
+      description: "查看Purrify的惊人效果。",
+    },
   },
 
   // Benefits
   benefits: {
     molecular: {
       title: "分子级异味控制",
-      description: "在分子级别捕获和中和异味。"
+      description: "在分子级别捕获和中和异味。",
     },
     sevenDayFreshness: {
       title: "7天清新保证",
-      description: "一次使用，享受一周的清新环境。"
+      description: "一次使用，享受一周的清新环境。",
     },
     natural: {
       title: "100%天然",
-      description: "采用天然活性炭，对宠物和家庭安全。"
+      description: "采用天然活性炭，对宠物和家庭安全。",
     },
     universalFit: {
       title: "通用兼容",
-      description: "适用于所有品牌和类型的猫砂。"
+      description: "适用于所有品牌和类型的猫砂。",
     },
     highlyRated: {
       title: "高度评价",
-      description: "获得数千名满意客户的五星好评。"
-    }
+      description: "获得数千名满意客户的五星好评。",
+    },
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "简单三步骤",
@@ -115,28 +118,28 @@ export const zh = {
       {
         number: "1",
         title: "撒入",
-        description: "将Purrify撒在干净的猫砂上"
+        description: "将Purrify撒在干净的猫砂上",
       },
       {
         number: "2",
         title: "混合",
-        description: "轻轻搅拌确保均匀分布"
+        description: "轻轻搅拌确保均匀分布",
       },
       {
         number: "3",
         title: "享受",
-        description: "享受7天的清新无异味环境"
-      }
+        description: "享受7天的清新无异味环境",
+      },
     ],
     litterTypes: {
       clumping: "结团砂",
       crystal: "水晶砂",
       natural: "天然砂",
       clay: "粘土砂",
-      nonClumping: "非结团砂"
-    }
+      nonClumping: "非结团砂",
+    },
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "适合每个猫咪家庭",
@@ -145,15 +148,15 @@ export const zh = {
     powerLevels: {
       kittenPower: "小猫功效",
       standardPower: "标准功效",
-      maximumPower: "最大功效"
+      maximumPower: "最大功效",
     },
     mostPopular: "最受欢迎",
     addToCart: "加入购物车",
     buyNow: "立即购买",
     adding: "添加中...",
-    viewAllProducts: "查看所有产品"
+    viewAllProducts: "查看所有产品",
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "门店有售",
@@ -161,18 +164,18 @@ export const zh = {
     subtitle: "在您附近的宠物用品店寻找Purrify",
     requestStoreAvailability: "申请门店供货",
     dontSeeLocalStore: "没看到您当地的门店？",
-    callStore: "致电门店"
+    callStore: "致电门店",
   },
-  
+
   // Call to Action
   cta: {
     title: "准备好体验差异了吗？",
     subtitle: "加入数千名满意的猫主人，今天就试试Purrify",
     buttonText: "立即订购",
     joinText: "加入Purrify家族",
-    guarantee: "30天退款保证"
+    guarantee: "30天退款保证",
   },
-  
+
   // FAQ
   faq: {
     title: "常见问题",
@@ -184,27 +187,31 @@ export const zh = {
     items: [
       {
         question: "Purrify如何工作？",
-        answer: "Purrify使用活性炭技术在分子级别捕获和中和异味，提供持久的清新效果。"
+        answer:
+          "Purrify使用活性炭技术在分子级别捕获和中和异味，提供持久的清新效果。",
       },
       {
         question: "Purrify对我的猫咪安全吗？",
-        answer: "是的！Purrify采用100%天然活性炭制成，对猫咪完全安全无毒。"
+        answer: "是的！Purrify采用100%天然活性炭制成，对猫咪完全安全无毒。",
       },
       {
         question: "我需要多久使用一次Purrify？",
-        answer: "每次更换猫砂时使用一次Purrify，通常每周一次，即可享受持续的异味控制。"
+        answer:
+          "每次更换猫砂时使用一次Purrify，通常每周一次，即可享受持续的异味控制。",
       },
       {
         question: "Purrify适用于所有类型的猫砂吗？",
-        answer: "是的！Purrify与所有类型的猫砂兼容，包括结团砂、水晶砂、天然砂和粘土砂。"
+        answer:
+          "是的！Purrify与所有类型的猫砂兼容，包括结团砂、水晶砂、天然砂和粘土砂。",
       },
       {
         question: "一包Purrify能用多久？",
-        answer: "这取决于包装大小和使用频率。60g包装通常可供单猫家庭使用一个月。"
-      }
-    ]
+        answer:
+          "这取决于包装大小和使用频率。60g包装通常可供单猫家庭使用一个月。",
+      },
+    ],
   },
-  
+
   // Contact
   contact: {
     title: "联系我们",
@@ -220,16 +227,16 @@ export const zh = {
       thursday: "周四：上午9点 - 下午5点",
       friday: "周五：上午9点 - 下午5点",
       saturday: "周六：上午10点 - 下午2点",
-      sunday: "周日：休息"
+      sunday: "周日：休息",
     },
     form: {
       name: "姓名",
       email: "邮箱",
       message: "留言",
-      submit: "发送消息"
-    }
+      submit: "发送消息",
+    },
   },
-  
+
   // Newsletter
   newsletter: {
     title: "订阅我们的通讯",
@@ -237,9 +244,9 @@ export const zh = {
     placeholder: "输入您的邮箱地址",
     buttonText: "订阅",
     successMessage: "感谢您的订阅！",
-    errorMessage: "订阅失败，请重试。"
+    errorMessage: "订阅失败，请重试。",
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "获取免费Purrify样品",
@@ -253,18 +260,18 @@ export const zh = {
     successMessage: "成功！您的免费样品正在路上。",
     errorMessage: "提交失败，请重试。",
     errorGeneric: "出现错误，请稍后重试。",
-    privacyNotice: "我们尊重您的隐私，绝不会分享您的信息。"
+    privacyNotice: "我们尊重您的隐私，绝不会分享您的信息。",
   },
-  
+
   // SEO
   seo: {
     keywords: "猫砂添加剂, 异味控制, 活性炭, 宠物护理, 猫咪产品",
     openGraph: {
       title: "Purrify - 活性炭猫砂添加剂",
-      description: "使用Purrify活性炭添加剂消除猫砂盒异味。天然、安全、有效。"
-    }
+      description: "使用Purrify活性炭添加剂消除猫砂盒异味。天然、安全、有效。",
+    },
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -273,25 +280,25 @@ export const zh = {
         telephone: "+1-514-961-9386",
         contactType: "客户服务",
         areaServed: "加拿大",
-        availableLanguage: ["英语", "法语", "中文"]
-      }
+        availableLanguage: ["英语", "法语", "中文"],
+      },
     },
     product: {
       name: "Purrify活性炭猫砂添加剂",
-      description: "天然活性炭猫砂添加剂，有效消除异味"
+      description: "天然活性炭猫砂添加剂，有效消除异味",
     },
     localBusiness: {
       type: "宠物用品店",
       name: "Purrify",
-      description: "优质猫砂添加剂和宠物护理产品"
+      description: "优质猫砂添加剂和宠物护理产品",
     },
     breadcrumb: {
-      home: "首页"
+      home: "首页",
     },
     video: {
       name: "Purrify工作原理",
-      description: "了解Purrify如何消除猫砂盒异味"
-    }
+      description: "了解Purrify如何消除猫砂盒异味",
+    },
   },
 
   // Blog Section
@@ -301,7 +308,7 @@ export const zh = {
     description: "获取专家建议和技巧，让您的猫咪保持健康快乐",
     newPost: "新文章",
     readFullArticle: "阅读全文",
-    viewAllArticles: "查看所有文章"
+    viewAllArticles: "查看所有文章",
   },
 
   // Contact Section
@@ -315,7 +322,7 @@ export const zh = {
     sunday: "周日：休息",
     aiSupport: "AI客服支持",
     sendMessage: "发送消息",
-    replyTime: "我们通常在24小时内回复"
+    replyTime: "我们通常在24小时内回复",
   },
 
   // Footer
@@ -324,20 +331,21 @@ export const zh = {
     openingHours: "营业时间",
     contactUs: "联系我们",
     allRightsReserved: "版权所有",
-    aiSupport: "AI客服支持"
+    aiSupport: "AI客服支持",
   },
 
   // Free Trial
   freeTrial: {
     urgentBanner: "限时优惠",
-    free: "免费"
+    free: "免费",
   },
 
   // Enhanced Product Comparison
   enhancedProductComparison: {
     compareAndSave: "比较并节省",
     chooseYourPerfectSize: "选择您的完美尺寸",
-    subtitle: "所有尺寸都提供相同的强效异味消除。根据您的家庭规模和使用频率选择。",
+    subtitle:
+      "所有尺寸都提供相同的强效异味消除。根据您的家庭规模和使用频率选择。",
     trial: "试用装",
     mostPopular: "最受欢迎",
     bestValue: "最佳价值",
@@ -364,7 +372,7 @@ export const zh = {
     averageRating: "平均评分",
     satisfactionRate: "满意度",
     odorFreeGuarantee: "无异味保证",
-    moneyBackGuaranteeText: "30天退款保证 - 无风险试用！"
+    moneyBackGuaranteeText: "30天退款保证 - 无风险试用！",
   },
 
   // Subscription Offer
@@ -389,7 +397,7 @@ export const zh = {
     bonusGuide: "免费猫咪护理指南",
     startSubscription: "开始订阅",
     selectPlan: "选择计划",
-    popularChoice: "热门选择"
+    popularChoice: "热门选择",
   },
 
   // Urgency Banner
@@ -407,7 +415,7 @@ export const zh = {
     seconds: "秒",
     onlyLeft: "仅剩",
     inStock: "库存",
-    orderNow: "立即订购"
+    orderNow: "立即订购",
   },
 
   // Email Capture Popup
@@ -421,7 +429,7 @@ export const zh = {
     instantAccess: "立即获取您的折扣码",
     limitedTime: "限时优惠 - 不要错过！",
     successMessage: "成功！请查看您的邮箱获取折扣码。",
-    errorMessage: "出现错误，请重试。"
+    errorMessage: "出现错误，请重试。",
   },
 
   // Reviews Section
@@ -436,7 +444,7 @@ export const zh = {
     verified: "已验证",
     productUsed: "使用产品",
     catsOwned: "猫咪数量",
-    useCase: "使用场景"
+    useCase: "使用场景",
   },
 
   // Case Studies
@@ -460,6 +468,6 @@ export const zh = {
     tryFreeSample: "试用免费样品",
     moreCustomerStories: "更多客户故事",
     videoTestimonials: "视频见证",
-    productComparison: "产品比较"
-  }
+    productComparison: "产品比较",
+  },
 };

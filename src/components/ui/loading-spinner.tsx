@@ -1,16 +1,20 @@
-import React from 'react';
+import React from "react";
 
 interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   className?: string;
   text?: string;
 }
 
-export function LoadingSpinner({ size = 'md', className = '', text }: LoadingSpinnerProps) {
+export function LoadingSpinner({
+  size = "md",
+  className = "",
+  text,
+}: LoadingSpinnerProps) {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12'
+    sm: "w-4 h-4",
+    md: "w-8 h-8",
+    lg: "w-12 h-12",
   };
 
   return (
@@ -47,15 +51,21 @@ export function LoadingSpinner({ size = 'md', className = '', text }: LoadingSpi
 }
 
 // Skeleton loader for content
-export function SkeletonLoader({ className = '', lines = 3 }: { className?: string; lines?: number }) {
+export function SkeletonLoader({
+  className = "",
+  lines = 3,
+}: {
+  className?: string;
+  lines?: number;
+}) {
   return (
     <div className={`animate-pulse ${className}`}>
       {Array.from({ length: lines }).map((_, index) => (
         <div
           key={index}
           className={`bg-gray-200 dark:bg-gray-700 rounded h-4 ${
-            index === lines - 1 ? 'w-3/4' : 'w-full'
-          } ${index > 0 ? 'mt-2' : ''}`}
+            index === lines - 1 ? "w-3/4" : "w-full"
+          } ${index > 0 ? "mt-2" : ""}`}
         />
       ))}
     </div>

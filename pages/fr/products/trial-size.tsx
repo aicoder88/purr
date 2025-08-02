@@ -1,38 +1,46 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
-import { useTranslation } from '../../../src/lib/translation-context';
-import { SITE_NAME } from '../../../src/lib/constants';
-import NextImage from '../../../components/NextImage';
-import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../../src/components/ui/container";
+import { Button } from "../../../src/components/ui/button";
+import { useTranslation } from "../../../src/lib/translation-context";
+import { SITE_NAME } from "../../../src/lib/constants";
+import NextImage from "../../../components/NextImage";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Check,
+  Star,
+  ShoppingCart,
+  Heart,
+  Users,
+} from "lucide-react";
 
 export default function TrialSizePageFR() {
   const { t, locale } = useTranslation();
-  
+
   const pageTitle = `${SITE_NAME} Format d'Essai - Additif de Charbon Activé 17g pour Litière`;
-  const pageDescription = "Essayez Purrify sans risque avec notre format d'essai de 17g. Parfait pour un changement de litière. Découvrez pourquoi des milliers de propriétaires de chats adorent le pouvoir d'élimination des odeurs de Purrify.";
-  const canonicalUrl = 'https://purrify.ca/fr/products/trial-size';
+  const pageDescription =
+    "Essayez Purrify sans risque avec notre format d'essai de 17g. Parfait pour un changement de litière. Découvrez pourquoi des milliers de propriétaires de chats adorent le pouvoir d'élimination des odeurs de Purrify.";
+  const canonicalUrl = "https://purrify.ca/fr/products/trial-size";
 
   const benefits = [
     "Parfait pour tester avec votre chat",
     "Suffisant pour un changement complet de litière",
     "Façon sans risque d'expérimenter Purrify",
     "Même formule puissante que les produits pleine grandeur",
-    "Expédition rapide - essayez-le cette semaine"
+    "Expédition rapide - essayez-le cette semaine",
   ];
 
   const testimonials = [
     {
       name: "Marie L.",
       text: "Le format d'essai m'a convaincue immédiatement. J'ai commandé le format économique le lendemain!",
-      rating: 5
+      rating: 5,
     },
     {
-      name: "Jean-Pierre R.", 
+      name: "Jean-Pierre R.",
       text: "Sceptique au début, mais l'essai a prouvé que ça fonctionne. Plus d'odeurs de litière.",
-      rating: 5
-    }
+      rating: 5,
+    },
   ];
 
   return (
@@ -45,15 +53,15 @@ export default function TrialSizePageFR() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'product',
+          type: "product",
           images: [
             {
-              url: 'https://purrify.ca/purrify-trial-17g.jpg',
+              url: "https://purrify.ca/purrify-trial-17g.jpg",
               width: 1200,
               height: 630,
-              alt: 'Purrify Format d\'Essai 17g'
-            }
-          ]
+              alt: "Purrify Format d'Essai 17g",
+            },
+          ],
         }}
       />
 
@@ -63,18 +71,26 @@ export default function TrialSizePageFR() {
           <nav className="py-4 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href="/fr" className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link
+                  href="/fr"
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
                   Accueil
                 </Link>
               </li>
               <li>/</li>
               <li>
-                <Link href="/fr/#products" className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link
+                  href="/fr/#products"
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
                   Produits
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Format d'Essai</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                Format d'Essai
+              </li>
             </ol>
           </nav>
         </Container>
@@ -112,10 +128,15 @@ export default function TrialSizePageFR() {
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        />
                       ))}
                     </div>
-                    <span className="text-gray-600 dark:text-gray-400">(127 avis)</span>
+                    <span className="text-gray-600 dark:text-gray-400">
+                      (127 avis)
+                    </span>
                   </div>
                   <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-6">
                     4,99$ CAD
@@ -127,21 +148,23 @@ export default function TrialSizePageFR() {
                   {benefits.map((benefit, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <Check className="w-5 h-5 text-[#03E46A] flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {benefit}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA Buttons */}
                 <div className="space-y-4">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Acheter le Format d'Essai
                   </Button>
-                  
+
                   <div className="flex space-x-3">
                     <Button variant="outline" size="lg" className="flex-1">
                       <Heart className="w-5 h-5 mr-2" />
@@ -184,7 +207,8 @@ export default function TrialSizePageFR() {
                 Comment Fonctionne le Format d'Essai
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Parfait pour les nouveaux utilisateurs qui veulent tester l'efficacité de Purrify
+                Parfait pour les nouveaux utilisateurs qui veulent tester
+                l'efficacité de Purrify
               </p>
             </div>
 
@@ -193,29 +217,37 @@ export default function TrialSizePageFR() {
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Commandez l'Essai</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  Commandez l'Essai
+                </h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Recevez votre format d'essai de 17g livré à votre porte
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">2</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Testez et Expérimentez</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  Testez et Expérimentez
+                </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Utilisez pour un changement complet de litière et voyez la différence
+                  Utilisez pour un changement complet de litière et voyez la
+                  différence
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Adorez et Recommandez</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  Adorez et Recommandez
+                </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Rejoignez des milliers de clients satisfaits avec une commande pleine grandeur
+                  Rejoignez des milliers de clients satisfaits avec une commande
+                  pleine grandeur
                 </p>
               </div>
             </div>
@@ -241,14 +273,24 @@ export default function TrialSizePageFR() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+                >
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      />
                     ))}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-100">- {testimonial.name}</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    "{testimonial.text}"
+                  </p>
+                  <p className="font-semibold text-gray-900 dark:text-gray-100">
+                    - {testimonial.name}
+                  </p>
                 </div>
               ))}
             </div>
@@ -271,22 +313,35 @@ export default function TrialSizePageFR() {
                 Prêt pour Plus?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Passez à nos produits pleine grandeur pour un contrôle continu des odeurs
+                Passez à nos produits pleine grandeur pour un contrôle continu
+                des odeurs
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Format Standard</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">100g - Parfait pour usage régulier</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">12,99$</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  Format Standard
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  100g - Parfait pour usage régulier
+                </p>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">
+                  12,99$
+                </div>
                 <Button className="w-full">Voir Format Standard</Button>
               </div>
-              
+
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Format Économique</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">500g - Meilleure valeur pour plusieurs chats</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">39,99$</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  Format Économique
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  500g - Meilleure valeur pour plusieurs chats
+                </p>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">
+                  39,99$
+                </div>
                 <Button className="w-full">Voir Format Économique</Button>
               </div>
             </div>

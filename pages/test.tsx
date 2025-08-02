@@ -1,6 +1,6 @@
-import { NextPage } from 'next';
-import { Container } from '../src/components/ui/container';
-import { NextSeo } from 'next-seo';
+import { NextPage } from "next";
+import { Container } from "../src/components/ui/container";
+import { NextSeo } from "next-seo";
 
 const TestPage: NextPage = () => {
   return (
@@ -16,7 +16,8 @@ const TestPage: NextPage = () => {
           If you can see this page, the routing is working correctly.
         </p>
         <p className="mb-4">
-          This is a simple test page created to verify that the Next.js routing is functioning properly.
+          This is a simple test page created to verify that the Next.js routing
+          is functioning properly.
         </p>
       </Container>
     </>

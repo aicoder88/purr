@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import { Container } from '../src/components/ui/container';
-import { Button } from '../src/components/ui/button';
-import { Input } from '../src/components/ui/input';
-import { CheckCircle, Share2, Mail, Gift, Loader2, Copy } from 'lucide-react';
-import { Twitter, Facebook } from 'lucide-react';
-import NextImage from '../components/NextImage';
-import Head from 'next/head';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
+import { Container } from "../src/components/ui/container";
+import { Button } from "../src/components/ui/button";
+import { Input } from "../src/components/ui/input";
+import { CheckCircle, Share2, Mail, Gift, Loader2, Copy } from "lucide-react";
+import { Twitter, Facebook } from "lucide-react";
+import NextImage from "../components/NextImage";
+import Head from "next/head";
+import Link from "next/link";
 
 const ThankYouPage = () => {
   const router = useRouter();
@@ -16,7 +16,7 @@ const ThankYouPage = () => {
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [friendEmail, setFriendEmail] = useState('');
+  const [friendEmail, setFriendEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -31,9 +31,9 @@ const ThankYouPage = () => {
         // const res = await fetch(`/api/referrals/by-session?session_id=${session_id}`);
         // const data = await res.json();
         // setReferralCode(data.code);
-        setReferralCode('ABC123'); // Mocked
+        setReferralCode("ABC123"); // Mocked
       } catch (err) {
-        setError('Could not fetch referral code.');
+        setError("Could not fetch referral code.");
       } finally {
         setLoading(false);
       }
@@ -42,26 +42,30 @@ const ThankYouPage = () => {
   }, [session_id]);
 
   const handleShare = (platform: string) => {
-    const url = encodeURIComponent(window.location.origin + '/?ref=' + referralCode);
-    const text = encodeURIComponent('Get a discount on Purrify with my referral code!');
-    let shareUrl = '';
-    if (platform === 'twitter') {
+    const url = encodeURIComponent(
+      window.location.origin + "/?ref=" + referralCode,
+    );
+    const text = encodeURIComponent(
+      "Get a discount on Purrify with my referral code!",
+    );
+    let shareUrl = "";
+    if (platform === "twitter") {
       shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-    } else if (platform === 'facebook') {
+    } else if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    } else if (platform === 'email') {
+    } else if (platform === "email") {
       shareUrl = `mailto:?subject=Get%20Purrify%20with%20my%20referral%20code!&body=${text}%20${url}`;
     }
-    window.open(shareUrl, '_blank');
+    window.open(shareUrl, "_blank");
   };
 
   const handleReferralSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Here you would typically make an API call to your backend
     // For now, we'll simulate a successful submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSuccess(true);
     setIsSubmitting(false);
   };
@@ -78,7 +82,10 @@ const ThankYouPage = () => {
     <>
       <Head>
         <title>Thank You - Your Order Has Been Received</title>
-        <meta name="description" content="Thank you for your order. We appreciate your business and will process your order shortly." />
+        <meta
+          name="description"
+          content="Thank you for your order. We appreciate your business and will process your order shortly."
+        />
       </Head>
 
       <Container>
@@ -99,11 +106,12 @@ const ThankYouPage = () => {
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-4">What's Next?</h2>
             <p className="mb-4">
-              You will receive an email confirmation shortly with your order details.
-              Our team will begin processing your order right away.
+              You will receive an email confirmation shortly with your order
+              details. Our team will begin processing your order right away.
             </p>
             <p className="mb-4">
-              If you have any questions about your order, please don't hesitate to contact us.
+              If you have any questions about your order, please don't hesitate
+              to contact us.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -121,7 +129,9 @@ const ThankYouPage = () => {
             </Link>
           </div>
           <div className="mt-12">
-            <h3 className="text-lg font-semibold mb-4">Share Your Experience</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              Share Your Experience
+            </h3>
             <div className="flex justify-center gap-4">
               <a
                 href="https://twitter.com/intent/tweet?text=I%20just%20ordered%20from%20Purrify%20and%20I%20can%27t%20wait%20to%20try%20their%20products!%20%23Purrify"
@@ -147,4 +157,4 @@ const ThankYouPage = () => {
   );
 };
 
-export default ThankYouPage; 
+export default ThankYouPage;

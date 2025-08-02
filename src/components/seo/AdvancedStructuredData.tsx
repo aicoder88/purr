@@ -1,5 +1,5 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
 interface ProductStructuredDataProps {
   product: {
@@ -11,8 +11,8 @@ interface ProductStructuredDataProps {
     image: string;
     brand?: string;
     category?: string;
-    availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
-    condition?: 'NewCondition' | 'UsedCondition' | 'RefurbishedCondition';
+    availability?: "InStock" | "OutOfStock" | "PreOrder";
+    condition?: "NewCondition" | "UsedCondition" | "RefurbishedCondition";
     gtin?: string;
     mpn?: string;
     sku?: string;
@@ -118,43 +118,45 @@ interface ProductStructuredData {
 }
 
 // Product Structured Data
-export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ product }) => {
+export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({
+  product,
+}) => {
   const structuredData: ProductStructuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "name": product.name,
-    "description": product.description,
-    "image": product.image,
-    "brand": {
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    brand: {
       "@type": "Brand",
-      "name": product.brand || "Purrify"
+      name: product.brand || "Purrify",
     },
-    "category": product.category || "Pet Supplies",
-    "sku": product.sku || product.id,
-    "mpn": product.mpn || product.id,
-    "gtin": product.gtin,
-    "offers": {
+    category: product.category || "Pet Supplies",
+    sku: product.sku || product.id,
+    mpn: product.mpn || product.id,
+    gtin: product.gtin,
+    offers: {
       "@type": "Offer",
-      "price": product.price.toString(),
-      "priceCurrency": product.currency || "CAD",
-      "availability": `https://schema.org/${product.availability || 'InStock'}`,
-      "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,
-      "url": `https://purrify.ca/products/${product.id}`,
-      "seller": {
+      price: product.price.toString(),
+      priceCurrency: product.currency || "CAD",
+      availability: `https://schema.org/${product.availability || "InStock"}`,
+      itemCondition: `https://schema.org/${product.condition || "NewCondition"}`,
+      url: `https://purrify.ca/products/${product.id}`,
+      seller: {
         "@type": "Organization",
-        "name": "Purrify"
-      }
-    }
+        name: "Purrify",
+      },
+    },
   };
 
   // Add review data if available
   if (product.reviews && product.reviews.reviewCount > 0) {
     structuredData.aggregateRating = {
       "@type": "AggregateRating",
-      "ratingValue": product.reviews.rating.toString(),
-      "reviewCount": product.reviews.reviewCount.toString(),
-      "bestRating": "5",
-      "worstRating": "1"
+      ratingValue: product.reviews.rating.toString(),
+      reviewCount: product.reviews.reviewCount.toString(),
+      bestRating: "5",
+      worstRating: "1",
     };
   }
 
@@ -169,29 +171,35 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
 };
 
 // Organization Structured Data
-export const OrganizationStructuredData: React.FC<OrganizationStructuredDataProps> = ({ organization }) => {
+export const OrganizationStructuredData: React.FC<
+  OrganizationStructuredDataProps
+> = ({ organization }) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": organization.name,
-    "url": organization.url,
-    "logo": organization.logo,
-    "description": organization.description,
-    "address": organization.address ? {
-      "@type": "PostalAddress",
-      "streetAddress": organization.address.streetAddress,
-      "addressLocality": organization.address.addressLocality,
-      "addressRegion": organization.address.addressRegion,
-      "postalCode": organization.address.postalCode,
-      "addressCountry": organization.address.addressCountry
-    } : undefined,
-    "contactPoint": organization.contactPoint ? {
-      "@type": "ContactPoint",
-      "telephone": organization.contactPoint.telephone,
-      "contactType": organization.contactPoint.contactType,
-      "email": organization.contactPoint.email
-    } : undefined,
-    "sameAs": organization.socialMedia || []
+    name: organization.name,
+    url: organization.url,
+    logo: organization.logo,
+    description: organization.description,
+    address: organization.address
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: organization.address.streetAddress,
+          addressLocality: organization.address.addressLocality,
+          addressRegion: organization.address.addressRegion,
+          postalCode: organization.address.postalCode,
+          addressCountry: organization.address.addressCountry,
+        }
+      : undefined,
+    contactPoint: organization.contactPoint
+      ? {
+          "@type": "ContactPoint",
+          telephone: organization.contactPoint.telephone,
+          contactType: organization.contactPoint.contactType,
+          email: organization.contactPoint.email,
+        }
+      : undefined,
+    sameAs: organization.socialMedia || [],
   };
 
   return (
@@ -205,21 +213,25 @@ export const OrganizationStructuredData: React.FC<OrganizationStructuredDataProp
 };
 
 // Website Structured Data
-export const WebsiteStructuredData: React.FC<WebsiteStructuredDataProps> = ({ website }) => {
+export const WebsiteStructuredData: React.FC<WebsiteStructuredDataProps> = ({
+  website,
+}) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": website.name,
-    "url": website.url,
-    "description": website.description,
-    "potentialAction": website.searchAction ? {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": website.searchAction.target
-      },
-      "query-input": website.searchAction.queryInput
-    } : undefined
+    name: website.name,
+    url: website.url,
+    description: website.description,
+    potentialAction: website.searchAction
+      ? {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: website.searchAction.target,
+          },
+          "query-input": website.searchAction.queryInput,
+        }
+      : undefined,
   };
 
   return (
@@ -233,16 +245,18 @@ export const WebsiteStructuredData: React.FC<WebsiteStructuredDataProps> = ({ we
 };
 
 // Breadcrumb Structured Data
-export const BreadcrumbStructuredData: React.FC<BreadcrumbStructuredDataProps> = ({ breadcrumbs }) => {
+export const BreadcrumbStructuredData: React.FC<
+  BreadcrumbStructuredDataProps
+> = ({ breadcrumbs }) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": breadcrumbs.map((breadcrumb, index) => ({
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": breadcrumb.name,
-      "item": breadcrumb.url
-    }))
+      position: index + 1,
+      name: breadcrumb.name,
+      item: breadcrumb.url,
+    })),
   };
 
   return (
@@ -256,18 +270,20 @@ export const BreadcrumbStructuredData: React.FC<BreadcrumbStructuredDataProps> =
 };
 
 // FAQ Structured Data
-export const FAQStructuredData: React.FC<FAQStructuredDataProps> = ({ faqs }) => {
+export const FAQStructuredData: React.FC<FAQStructuredDataProps> = ({
+  faqs,
+}) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 
   return (
@@ -281,28 +297,30 @@ export const FAQStructuredData: React.FC<FAQStructuredDataProps> = ({ faqs }) =>
 };
 
 // Article Structured Data
-export const ArticleStructuredData: React.FC<ArticleStructuredDataProps> = ({ article }) => {
+export const ArticleStructuredData: React.FC<ArticleStructuredDataProps> = ({
+  article,
+}) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": article.headline,
-    "description": article.description,
-    "image": article.image,
-    "author": {
+    headline: article.headline,
+    description: article.description,
+    image: article.image,
+    author: {
       "@type": "Person",
-      "name": article.author
+      name: article.author,
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": article.publisher.name,
-      "logo": {
+      name: article.publisher.name,
+      logo: {
         "@type": "ImageObject",
-        "url": article.publisher.logo
-      }
+        url: article.publisher.logo,
+      },
     },
-    "datePublished": article.datePublished,
-    "dateModified": article.dateModified || article.datePublished,
-    "url": article.url
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    url: article.url,
   };
 
   return (
@@ -339,24 +357,26 @@ export const LocalBusinessStructuredData: React.FC<{
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": business.name,
-    "address": {
+    name: business.name,
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": business.address.streetAddress,
-      "addressLocality": business.address.addressLocality,
-      "addressRegion": business.address.addressRegion,
-      "postalCode": business.address.postalCode,
-      "addressCountry": business.address.addressCountry
+      streetAddress: business.address.streetAddress,
+      addressLocality: business.address.addressLocality,
+      addressRegion: business.address.addressRegion,
+      postalCode: business.address.postalCode,
+      addressCountry: business.address.addressCountry,
     },
-    "telephone": business.telephone,
-    "url": business.url,
-    "openingHours": business.openingHours,
-    "priceRange": business.priceRange,
-    "geo": business.geo ? {
-      "@type": "GeoCoordinates",
-      "latitude": business.geo.latitude,
-      "longitude": business.geo.longitude
-    } : undefined
+    telephone: business.telephone,
+    url: business.url,
+    openingHours: business.openingHours,
+    priceRange: business.priceRange,
+    geo: business.geo
+      ? {
+          "@type": "GeoCoordinates",
+          latitude: business.geo.latitude,
+          longitude: business.geo.longitude,
+        }
+      : undefined,
   };
 
   return (
@@ -382,25 +402,25 @@ export const ReviewStructuredData: React.FC<{
     };
   }>;
 }> = ({ reviews }) => {
-  const structuredData = reviews.map(review => ({
+  const structuredData = reviews.map((review) => ({
     "@context": "https://schema.org",
     "@type": "Review",
-    "author": {
+    author: {
       "@type": "Person",
-      "name": review.author
+      name: review.author,
     },
-    "reviewRating": {
+    reviewRating: {
       "@type": "Rating",
-      "ratingValue": review.rating,
-      "bestRating": 5,
-      "worstRating": 1
+      ratingValue: review.rating,
+      bestRating: 5,
+      worstRating: 1,
     },
-    "reviewBody": review.reviewBody,
-    "datePublished": review.datePublished,
-    "itemReviewed": {
+    reviewBody: review.reviewBody,
+    datePublished: review.datePublished,
+    itemReviewed: {
       "@type": review.itemReviewed.type,
-      "name": review.itemReviewed.name
-    }
+      name: review.itemReviewed.name,
+    },
   }));
 
   return (
@@ -422,34 +442,36 @@ export const PurrifyStructuredData: React.FC = () => {
     name: "Purrify",
     url: "https://purrify.ca",
     logo: "https://purrify.ca/optimized/purrify-logo-icon.webp",
-    description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
+    description:
+      "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
     address: {
       streetAddress: "123 Pet Care Avenue",
       addressLocality: "Toronto",
       addressRegion: "ON",
       postalCode: "M5V 3A8",
-      addressCountry: "CA"
+      addressCountry: "CA",
     },
     contactPoint: {
       telephone: "+1-800-PURRIFY",
       contactType: "Customer Service",
-      email: "support@purrify.ca"
+      email: "support@purrify.ca",
     },
     socialMedia: [
       "https://facebook.com/purrify",
       "https://instagram.com/purrify",
-      "https://twitter.com/purrify"
-    ]
+      "https://twitter.com/purrify",
+    ],
   };
 
   const websiteData = {
     name: "Purrify - Cat Litter Odor Control",
     url: "https://purrify.ca",
-    description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level.",
+    description:
+      "Premium activated carbon cat litter additive that eliminates odors at the molecular level.",
     searchAction: {
       target: "https://purrify.ca/search?q={search_term_string}",
-      queryInput: "required name=search_term_string"
-    }
+      queryInput: "required name=search_term_string",
+    },
   };
 
   return (
@@ -469,5 +491,5 @@ export default {
   ArticleStructuredData,
   LocalBusinessStructuredData,
   ReviewStructuredData,
-  PurrifyStructuredData
+  PurrifyStructuredData,
 };

@@ -5,24 +5,27 @@ const throttle = (func: Function, limit: number) => {
   let inThrottle: boolean;
   let lastFunc: ReturnType<typeof setTimeout>;
   let lastRan: number;
-  
-  return function(this: any, ...args: any[]) {
+
+  return function (this: any, ...args: any[]) {
     if (!inThrottle) {
       func.apply(this, args);
       lastRan = Date.now();
       inThrottle = true;
-      
+
       setTimeout(() => {
         inThrottle = false;
       }, limit);
     } else {
       clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if (Date.now() - lastRan >= limit) {
-          func.apply(this, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
+      lastFunc = setTimeout(
+        () => {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(this, args);
+            lastRan = Date.now();
+          }
+        },
+        limit - (Date.now() - lastRan),
+      );
     }
   };
 };
@@ -40,26 +43,33 @@ export default function ScrollToTopButton() {
 
   // Check for reduced motion preference
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     try {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       setIsReducedMotion(prefersReducedMotion);
-      
-      const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
-      
+
+      const mediaQueryList = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+
       const handleMotionPreferenceChange = (e: MediaQueryListEvent) => {
         setIsReducedMotion(e.matches);
       };
-      
+
       // Modern event listener for mediaQueryList if available
       if (mediaQueryList.addEventListener) {
-        mediaQueryList.addEventListener('change', handleMotionPreferenceChange);
+        mediaQueryList.addEventListener("change", handleMotionPreferenceChange);
       }
-      
+
       return () => {
         if (mediaQueryList.removeEventListener) {
-          mediaQueryList.removeEventListener('change', handleMotionPreferenceChange);
+          mediaQueryList.removeEventListener(
+            "change",
+            handleMotionPreferenceChange,
+          );
         }
       };
     } catch (error) {
@@ -70,31 +80,31 @@ export default function ScrollToTopButton() {
   // Throttled scroll handler
   const toggleVisibility = useCallback(
     throttle(() => {
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         setIsVisible(window.scrollY > 300);
       }
     }, 100),
-    []
+    [],
   );
 
   // Set up scroll listener with passive option for better performance
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     window.addEventListener("scroll", toggleVisibility, { passive: true });
-    
+
     // Initial check
     toggleVisibility();
-    
+
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, [toggleVisibility]);
 
   // Scroll to top with or without smooth behavior based on user preferences
   const scrollToTop = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.scrollTo({
         top: 0,
-        behavior: isReducedMotion ? 'auto' : 'smooth'
+        behavior: isReducedMotion ? "auto" : "smooth",
       });
     }
   };
@@ -108,7 +118,7 @@ export default function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       aria-label="Scroll to top"
     >

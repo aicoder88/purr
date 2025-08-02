@@ -35,10 +35,12 @@ export function CTA() {
           />
           <div className="text-white max-w-2xl bg-black/30 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
+              {t.cta?.title ||
+                "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
             <p className="text-white/90 text-lg">
-              {t.cta?.subtitle || "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
+              {t.cta?.subtitle ||
+                "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
             </p>
             <div className="mt-8 flex items-center space-x-4">
               <div className="flex -space-x-4">
@@ -65,7 +67,8 @@ export function CTA() {
                 </div>
               </div>
               <p className="text-white/90 text-sm font-medium">
-                {t.cta?.joinText || "Join 1,000+ Happy cat Families - Visit your local store"}
+                {t.cta?.joinText ||
+                  "Join 1,000+ Happy cat Families - Visit your local store"}
               </p>
             </div>
           </div>

@@ -39,7 +39,9 @@ export function Contact() {
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
                   {t.contactSection.ourLocation}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{CONTACT_INFO.address}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                  {CONTACT_INFO.address}
+                </p>
               </div>
             </div>
 
@@ -51,7 +53,9 @@ export function Contact() {
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#5B2EFF] dark:text-[#3694FF]">
                   {t.contactSection.phoneNumber}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{CONTACT_INFO.phone}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                  {CONTACT_INFO.phone}
+                </p>
               </div>
             </div>
 
@@ -65,16 +69,28 @@ export function Contact() {
                 </h3>
                 <ul className="text-gray-600 dark:text-gray-300 text-sm sm:text-base space-y-1 sm:space-y-2">
                   <li className="flex justify-between gap-x-4">
-                    <span className="min-w-0 truncate">{t.contactSection.weekdays}</span>
-                    <span className="font-medium whitespace-nowrap">{t.contact.hours.monday}</span>
+                    <span className="min-w-0 truncate">
+                      {t.contactSection.weekdays}
+                    </span>
+                    <span className="font-medium whitespace-nowrap">
+                      {t.contact.hours.monday}
+                    </span>
                   </li>
                   <li className="flex justify-between gap-x-4">
-                    <span className="min-w-0 truncate">{t.contactSection.saturday}</span>
-                    <span className="font-medium whitespace-nowrap">{t.contact.hours.saturday}</span>
+                    <span className="min-w-0 truncate">
+                      {t.contactSection.saturday}
+                    </span>
+                    <span className="font-medium whitespace-nowrap">
+                      {t.contact.hours.saturday}
+                    </span>
                   </li>
                   <li className="flex justify-between gap-x-4">
-                    <span className="min-w-0 truncate">{t.contactSection.sunday}</span>
-                    <span className="font-medium whitespace-nowrap">{t.contact.hours.sunday}</span>
+                    <span className="min-w-0 truncate">
+                      {t.contactSection.sunday}
+                    </span>
+                    <span className="font-medium whitespace-nowrap">
+                      {t.contact.hours.sunday}
+                    </span>
                   </li>
                 </ul>
                 <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#E0EFC7] flex items-center">

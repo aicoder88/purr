@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import { usePerformanceTracking } from './PerformanceMonitor';
+import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { usePerformanceTracking } from "./PerformanceMonitor";
 
 interface OptimizedImageProps {
   src: string;
@@ -9,7 +9,7 @@ interface OptimizedImageProps {
   height?: number;
   priority?: boolean;
   quality?: number;
-  placeholder?: 'blur' | 'empty';
+  placeholder?: "blur" | "empty";
   blurDataURL?: string;
   sizes?: string;
   fill?: boolean;
@@ -32,11 +32,11 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   height,
   priority = false,
   quality = 85,
-  placeholder = 'empty',
+  placeholder = "empty",
   blurDataURL,
   sizes,
   fill = false,
-  className = '',
+  className = "",
   style,
   onLoad,
   onError,
@@ -56,55 +56,62 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const loadStartTime = useRef<number>(Date.now());
 
   // Generate responsive sizes if not provided
-  const responsiveSizes = sizes || (responsive ? 
-    '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' : 
-    undefined
-  );
+  const responsiveSizes =
+    sizes ||
+    (responsive
+      ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      : undefined);
 
   // Generate optimized quality based on image type and priority
-  const optimizedQuality = criticalResource ? Math.min(quality + 10, 100) : quality;
+  const optimizedQuality = criticalResource
+    ? Math.min(quality + 10, 100)
+    : quality;
 
   // Generate blur placeholder if not provided
   const generateBlurDataURL = (width: number, height: number): string => {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
-    const ctx = canvas.getContext('2d');
-    
+    const ctx = canvas.getContext("2d");
+
     if (ctx) {
       // Create a simple gradient blur placeholder
       const gradient = ctx.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, '#f3f4f6');
-      gradient.addColorStop(1, '#e5e7eb');
+      gradient.addColorStop(0, "#f3f4f6");
+      gradient.addColorStop(1, "#e5e7eb");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     }
-    
+
     return canvas.toDataURL();
   };
 
   const handleLoad = () => {
     const endTime = Date.now();
     const duration = endTime - loadStartTime.current;
-    
+
     setIsLoaded(true);
     setLoadTime(duration);
-    
+
     if (trackPerformance) {
-      trackCustomMetric('image_load_time', duration, 'ms');
-      trackCustomMetric('image_size', imageRef.current?.naturalWidth || 0, 'px');
+      trackCustomMetric("image_load_time", duration, "ms");
+      trackCustomMetric(
+        "image_size",
+        imageRef.current?.naturalWidth || 0,
+        "px",
+      );
     }
-    
+
     onLoad?.();
   };
 
   const handleError = () => {
     setHasError(true);
-    
+
     if (trackPerformance) {
-      trackCustomMetric('image_load_error', 1, 'count');
+      trackCustomMetric("image_load_error", 1, "count");
     }
-    
+
     onError?.();
   };
 
@@ -116,12 +123,16 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            trackCustomMetric('image_viewport_entry', Date.now() - loadStartTime.current, 'ms');
+            trackCustomMetric(
+              "image_viewport_entry",
+              Date.now() - loadStartTime.current,
+              "ms",
+            );
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (imageRef.current) {
@@ -133,13 +144,13 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   // Preload critical images
   useEffect(() => {
-    if (criticalResource && typeof window !== 'undefined') {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
+    if (criticalResource && typeof window !== "undefined") {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
       link.href = src;
       document.head.appendChild(link);
-      
+
       return () => {
         document.head.removeChild(link);
       };
@@ -152,18 +163,21 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     quality: optimizedQuality,
     priority: priority || criticalResource,
     placeholder,
-    blurDataURL: blurDataURL || (placeholder === 'blur' && width && height ? 
-      generateBlurDataURL(width, height) : undefined),
+    blurDataURL:
+      blurDataURL ||
+      (placeholder === "blur" && width && height
+        ? generateBlurDataURL(width, height)
+        : undefined),
     sizes: responsiveSizes,
-    className: `${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`,
+    className: `${className} ${isLoaded ? "opacity-100" : "opacity-0"} transition-opacity duration-300`,
     style: {
       ...style,
-      ...(hasError ? { display: 'none' } : {})
+      ...(hasError ? { display: "none" } : {}),
     },
     onLoad: handleLoad,
     onError: handleError,
     ref: imageRef,
-    ...props
+    ...props,
   };
 
   // Add width/height or fill prop
@@ -177,23 +191,27 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <div className="relative">
       <Image {...imageProps} />
-      
+
       {/* Loading indicator */}
       {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
       )}
-      
+
       {/* Error fallback */}
       {hasError && (
         <div className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-400">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            <path
+              fillRule="evenodd"
+              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+              clipRule="evenodd"
+            />
           </svg>
         </div>
       )}
-      
+
       {/* Performance debug info (development only) */}
-      {process.env.NODE_ENV === 'development' && loadTime && (
+      {process.env.NODE_ENV === "development" && loadTime && (
         <div className="absolute top-0 right-0 bg-black bg-opacity-75 text-white text-xs p-1 rounded">
           {loadTime}ms
         </div>
@@ -203,7 +221,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 };
 
 // Specialized components for common use cases
-export const HeroImage: React.FC<Omit<OptimizedImageProps, 'priority' | 'criticalResource'>> = (props) => (
+export const HeroImage: React.FC<
+  Omit<OptimizedImageProps, "priority" | "criticalResource">
+> = (props) => (
   <OptimizedImage
     {...props}
     priority={true}
@@ -236,7 +256,7 @@ export const BackgroundImage: React.FC<OptimizedImageProps> = (props) => (
     {...props}
     fill={true}
     quality={80}
-    style={{ objectFit: 'cover', ...props.style }}
+    style={{ objectFit: "cover", ...props.style }}
   />
 );
 
@@ -246,16 +266,19 @@ export const imageOptimizationUtils = {
   generateSizes: (breakpoints: Record<string, string>): string => {
     return Object.entries(breakpoints)
       .map(([breakpoint, size]) => `(max-width: ${breakpoint}) ${size}`)
-      .join(', ');
+      .join(", ");
   },
 
   // Calculate optimal quality based on image type
-  calculateOptimalQuality: (imageType: string, isRetina: boolean = false): number => {
+  calculateOptimalQuality: (
+    imageType: string,
+    isRetina: boolean = false,
+  ): number => {
     const baseQuality: Record<string, number> = {
-      'image/jpeg': 85,
-      'image/webp': 80,
-      'image/avif': 75,
-      'image/png': 95
+      "image/jpeg": 85,
+      "image/webp": 80,
+      "image/avif": 75,
+      "image/png": 95,
     };
 
     const quality = baseQuality[imageType] || 85;
@@ -263,11 +286,11 @@ export const imageOptimizationUtils = {
   },
 
   // Generate blur data URL for placeholder
-  generateBlurDataURL: (color: string = '#f3f4f6'): string => {
+  generateBlurDataURL: (color: string = "#f3f4f6"): string => {
     return `data:image/svg+xml;base64,${btoa(
       `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
         <rect width="100" height="100" fill="${color}"/>
-      </svg>`
+      </svg>`,
     )}`;
   },
 
@@ -291,16 +314,18 @@ export const imageOptimizationUtils = {
         checkComplete();
       };
       webp.onerror = checkComplete;
-      webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      webp.src =
+        "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 
       avif.onload = () => {
         results.avif = true;
         checkComplete();
       };
       avif.onerror = checkComplete;
-      avif.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+      avif.src =
+        "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=";
     });
-  }
+  },
 };
 
 export default OptimizedImage;

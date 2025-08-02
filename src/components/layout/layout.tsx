@@ -7,8 +7,13 @@ interface LayoutProps {
 }
 
 // Dynamically import PawCursor and ScrollToTopButton for better code splitting
-const PawCursor = dynamic(() => import("../ui/paw-cursor").then(mod => ({ default: mod.PawCursor })), { ssr: false });
-const ScrollToTopButton = dynamic(() => import("../ui/scroll-to-top"), { ssr: false });
+const PawCursor = dynamic(
+  () => import("../ui/paw-cursor").then((mod) => ({ default: mod.PawCursor })),
+  { ssr: false },
+);
+const ScrollToTopButton = dynamic(() => import("../ui/scroll-to-top"), {
+  ssr: false,
+});
 
 export function Layout({ children }: LayoutProps) {
   return (

@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import Script from 'next/script';
+import React, { useEffect } from "react";
+import Script from "next/script";
 
 interface HeatmapIntegrationProps {
   hotjarId?: string;
   microsoftClarityId?: string;
   fullstoryOrgId?: string;
   enabled?: boolean;
-  environment?: 'development' | 'staging' | 'production';
+  environment?: "development" | "staging" | "production";
 }
 
 export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
@@ -14,10 +14,12 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
   microsoftClarityId = process.env.NEXT_PUBLIC_CLARITY_ID,
   fullstoryOrgId = process.env.NEXT_PUBLIC_FULLSTORY_ORG_ID,
   enabled = true,
-  environment = 'production'
+  environment = "production",
 }) => {
   // Only load in production or when explicitly enabled
-  const shouldLoad = enabled && (environment === 'production' || process.env.NODE_ENV === 'development');
+  const shouldLoad =
+    enabled &&
+    (environment === "production" || process.env.NODE_ENV === "development");
 
   useEffect(() => {
     if (!shouldLoad) return;
@@ -30,30 +32,34 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
         '[data-heatmap="product-card"]',
         '[data-heatmap="navigation"]',
         '[data-heatmap="form-field"]',
-        '[data-heatmap="social-proof"]'
+        '[data-heatmap="social-proof"]',
       ];
 
-      criticalElements.forEach(selector => {
+      criticalElements.forEach((selector) => {
         const elements = document.querySelectorAll(selector);
-        elements.forEach(element => {
-          element.addEventListener('click', (e) => {
+        elements.forEach((element) => {
+          element.addEventListener("click", (e) => {
             // Send custom event to heatmap tools
-            if (typeof window !== 'undefined') {
+            if (typeof window !== "undefined") {
               // Hotjar event
               if ((window as any).hj) {
-                (window as any).hj('event', 'critical_interaction');
+                (window as any).hj("event", "critical_interaction");
               }
-              
+
               // Microsoft Clarity event
               if ((window as any).clarity) {
-                (window as any).clarity('set', 'critical_interaction', selector);
+                (window as any).clarity(
+                  "set",
+                  "critical_interaction",
+                  selector,
+                );
               }
-              
+
               // FullStory event
               if ((window as any).FS) {
-                (window as any).FS.event('Critical Interaction', {
+                (window as any).FS.event("Critical Interaction", {
                   element: selector,
-                  page: window.location.pathname
+                  page: window.location.pathname,
                 });
               }
             }
@@ -63,14 +69,14 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
     };
 
     // Initialize after DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', trackHeatmapEvents);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", trackHeatmapEvents);
     } else {
       trackHeatmapEvents();
     }
 
     return () => {
-      document.removeEventListener('DOMContentLoaded', trackHeatmapEvents);
+      document.removeEventListener("DOMContentLoaded", trackHeatmapEvents);
     };
   }, [shouldLoad]);
 
@@ -93,7 +99,7 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
                 r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                 a.appendChild(r);
               })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-            `
+            `,
           }}
         />
       )}
@@ -110,7 +116,7 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "${microsoftClarityId}");
-            `
+            `,
           }}
         />
       )}
@@ -144,7 +150,7 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
                 if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
                 g._v="1.3.0";
               })(window,document,window['_fs_namespace'],'script','user');
-            `
+            `,
           }}
         />
       )}
@@ -154,10 +160,15 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
 
 // Helper component to mark elements for heatmap tracking
 export const HeatmapTracker: React.FC<{
-  type: 'cta-button' | 'product-card' | 'navigation' | 'form-field' | 'social-proof';
+  type:
+    | "cta-button"
+    | "product-card"
+    | "navigation"
+    | "form-field"
+    | "social-proof";
   children: React.ReactNode;
   className?: string;
-}> = ({ type, children, className = '' }) => {
+}> = ({ type, children, className = "" }) => {
   return (
     <div data-heatmap={type} className={className}>
       {children}
@@ -168,16 +179,16 @@ export const HeatmapTracker: React.FC<{
 // Hook for programmatic heatmap events
 export const useHeatmapTracking = () => {
   const trackEvent = (eventName: string, properties?: Record<string, any>) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     // Hotjar
     if ((window as any).hj) {
-      (window as any).hj('event', eventName);
+      (window as any).hj("event", eventName);
     }
 
     // Microsoft Clarity
     if ((window as any).clarity) {
-      (window as any).clarity('set', eventName, properties || {});
+      (window as any).clarity("set", eventName, properties || {});
     }
 
     // FullStory
@@ -186,12 +197,15 @@ export const useHeatmapTracking = () => {
     }
   };
 
-  const identifyUser = (userId: string, userProperties?: Record<string, any>) => {
-    if (typeof window === 'undefined') return;
+  const identifyUser = (
+    userId: string,
+    userProperties?: Record<string, any>,
+  ) => {
+    if (typeof window === "undefined") return;
 
     // Hotjar
     if ((window as any).hj) {
-      (window as any).hj('identify', userId, userProperties || {});
+      (window as any).hj("identify", userId, userProperties || {});
     }
 
     // FullStory
@@ -201,12 +215,12 @@ export const useHeatmapTracking = () => {
   };
 
   const setUserProperties = (properties: Record<string, any>) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     // Microsoft Clarity
     if ((window as any).clarity) {
       Object.entries(properties).forEach(([key, value]) => {
-        (window as any).clarity('set', key, value);
+        (window as any).clarity("set", key, value);
       });
     }
 
@@ -219,7 +233,7 @@ export const useHeatmapTracking = () => {
   return {
     trackEvent,
     identifyUser,
-    setUserProperties
+    setUserProperties,
   };
 };
 

@@ -1,11 +1,19 @@
-import { useState } from 'react';
-import { X, Plus, Minus, ShoppingCart as ShoppingCartIcon, Package, Trash2, ArrowRight } from 'lucide-react';
-import { Button } from './button';
-import { useCart } from '../../lib/cart-context';
-import { PRODUCTS } from '../../lib/constants';
-import { useRouter } from 'next/router';
-import { useTranslation } from '../../lib/translation-context';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from './sheet';
+import { useState } from "react";
+import {
+  X,
+  Plus,
+  Minus,
+  ShoppingCart as ShoppingCartIcon,
+  Package,
+  Trash2,
+  ArrowRight,
+} from "lucide-react";
+import { Button } from "./button";
+import { useCart } from "../../lib/cart-context";
+import { PRODUCTS } from "../../lib/constants";
+import { useRouter } from "next/router";
+import { useTranslation } from "../../lib/translation-context";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./sheet";
 
 export function ShoppingCart() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +23,7 @@ export function ShoppingCart() {
 
   const handleCheckout = () => {
     setIsOpen(false);
-    router.push('/checkout');
+    router.push("/checkout");
   };
 
   return (
@@ -35,7 +43,10 @@ export function ShoppingCart() {
             )}
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-full sm:w-[400px] p-0 flex flex-col">
+        <SheetContent
+          side="right"
+          className="w-full sm:w-[400px] p-0 flex flex-col"
+        >
           <div className="flex-1 flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-lg font-semibold">Shopping Cart</h2>
@@ -50,7 +61,9 @@ export function ShoppingCart() {
                 <div className="flex flex-col items-center justify-center h-full text-center p-8">
                   <Package className="h-12 w-12 text-gray-400 mb-4" />
                   <p className="text-gray-500">Your cart is empty</p>
-                  <p className="text-sm text-gray-400 mt-2">Add some products to your cart</p>
+                  <p className="text-sm text-gray-400 mt-2">
+                    Add some products to your cart
+                  </p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -73,22 +86,30 @@ export function ShoppingCart() {
                           <h3 className="font-medium text-gray-900 truncate">
                             {product.name}
                           </h3>
-                          <p className="text-sm text-gray-500">{product.size}</p>
+                          <p className="text-sm text-gray-500">
+                            {product.size}
+                          </p>
                           <div className="flex items-center gap-2 mt-2">
                             <Button
                               variant="outline"
                               size="icon"
                               className="h-8 w-8"
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              onClick={() =>
+                                updateQuantity(item.id, item.quantity - 1)
+                              }
                             >
                               <Minus className="h-4 w-4" />
                             </Button>
-                            <span className="w-8 text-center">{item.quantity}</span>
+                            <span className="w-8 text-center">
+                              {item.quantity}
+                            </span>
                             <Button
                               variant="outline"
                               size="icon"
                               className="h-8 w-8"
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              onClick={() =>
+                                updateQuantity(item.id, item.quantity + 1)
+                              }
                             >
                               <Plus className="h-4 w-4" />
                             </Button>
@@ -135,4 +156,4 @@ export function ShoppingCart() {
       </Sheet>
     </>
   );
-} 
+}

@@ -12,13 +12,18 @@ const NextImage = dynamic(() => import("../../../components/NextImage"), {
 export function About() {
   const { t, locale } = useTranslation();
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
+    <section
+      className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
+      id="about"
+    >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t.features.longLastingFreshness.title} />
-          
-          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
-          
+
+          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
+            {t.about.naturalAndEffective}
+          </h2>
+
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
@@ -34,9 +39,23 @@ export function About() {
               />
             </div>
           </div>
-          
+
           <p className="text-3xl font-semibold text-foreground mb-6">
-          {t.features.natural.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Discover the science</Link> behind our <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">activated carbon formula</Link>.
+            {t.features.natural.description}{" "}
+            <Link
+              href={`${locale === "fr" ? "/fr" : ""}/learn/science`}
+              className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium"
+            >
+              Discover the science
+            </Link>{" "}
+            behind our{" "}
+            <Link
+              href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+              className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium"
+            >
+              activated carbon formula
+            </Link>
+            .
           </p>
         </div>
 
@@ -77,18 +96,19 @@ export function About() {
           </div>
           <div className="space-y-6">
             <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
-            {t.features.odorElimination.description}
+              {t.features.odorElimination.description}
             </p>
             <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
-            {t.features.catFriendly.description}
+              {t.features.catFriendly.description}
             </p>
             <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
               <span className="font-bold text-[#FF3131] dark:text-[#FF5050]">
-              {t.siteName} {t.features.odorElimination.title}.
+                {t.siteName} {t.features.odorElimination.title}.
               </span>
             </p>
             <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
-            {t.features.longLastingFreshness.description} {t.features.worksWithAnyLitter.description}
+              {t.features.longLastingFreshness.description}{" "}
+              {t.features.worksWithAnyLitter.description}
             </p>
           </div>
         </div>

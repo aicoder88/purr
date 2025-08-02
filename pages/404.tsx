@@ -1,28 +1,44 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { NextSeo } from 'next-seo';
-import { Container } from '../src/components/ui/container';
-import NextImage from '../components/NextImage';
-import { SITE_NAME } from '../src/lib/constants';
+import { NextPage } from "next";
+import Link from "next/link";
+import { useEffect } from "react";
+import { NextSeo } from "next-seo";
+import { Container } from "../src/components/ui/container";
+import NextImage from "../components/NextImage";
+import { SITE_NAME } from "../src/lib/constants";
 
 // Suggested pages for common user journeys
 const suggestedPages = [
-  { title: 'Home', path: '/', description: 'Return to our homepage' },
-  { title: 'Products', path: '/#products', description: 'Browse our cat litter additives' },
-  { title: 'How It Works', path: '/#how-it-works', description: 'Learn how Purrify eliminates odors' },
-  { title: 'Blog', path: '/blog', description: 'Read our latest articles on cat care' },
-  { title: 'Contact', path: '/#contact', description: 'Get in touch with our team' },
+  { title: "Home", path: "/", description: "Return to our homepage" },
+  {
+    title: "Products",
+    path: "/#products",
+    description: "Browse our cat litter additives",
+  },
+  {
+    title: "How It Works",
+    path: "/#how-it-works",
+    description: "Learn how Purrify eliminates odors",
+  },
+  {
+    title: "Blog",
+    path: "/blog",
+    description: "Read our latest articles on cat care",
+  },
+  {
+    title: "Contact",
+    path: "/#contact",
+    description: "Get in touch with our team",
+  },
 ];
 
 const NotFoundPage: NextPage = () => {
   // Log 404 errors to analytics
   useEffect(() => {
     // This would connect to your analytics platform in production
-    console.error('404 error occurred', {
-      url: typeof window !== 'undefined' ? window.location.href : '',
-      referrer: typeof document !== 'undefined' ? document.referrer : '',
-      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+    console.error("404 error occurred", {
+      url: typeof window !== "undefined" ? window.location.href : "",
+      referrer: typeof document !== "undefined" ? document.referrer : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
       timestamp: new Date().toISOString(),
     });
   }, []);
@@ -40,7 +56,7 @@ const NotFoundPage: NextPage = () => {
           noimageindex: true,
           noarchive: true,
           maxSnippet: -1,
-          maxImagePreview: 'none',
+          maxImagePreview: "none",
           maxVideoPreview: -1,
         }}
       />
@@ -55,21 +71,21 @@ const NotFoundPage: NextPage = () => {
               className="animate-bounce"
             />
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#5B2EFF]">
             404 - Page Not Found
           </h1>
-          
+
           <p className="text-xl mb-8 text-gray-600">
             Oops! The page you are looking for might have been moved, deleted,
             or perhaps never existed.
           </p>
-          
+
           <div className="mb-12 p-4 bg-[#FFFFF5] rounded-lg border border-[#E0EFC7] shadow-sm">
             <h2 className="text-xl font-semibold mb-4 text-[#03E46A]">
               You might be looking for:
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {suggestedPages.map((page, index) => (
                 <Link
@@ -77,13 +93,17 @@ const NotFoundPage: NextPage = () => {
                   href={page.path}
                   className="p-4 border border-[#E0EFC7] rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
-                  <span className="font-medium text-[#5B2EFF]">{page.title}</span>
-                  <span className="text-sm text-gray-500">{page.description}</span>
+                  <span className="font-medium text-[#5B2EFF]">
+                    {page.title}
+                  </span>
+                  <span className="text-sm text-gray-500">
+                    {page.description}
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
-          
+
           <Link
             href="/"
             className="inline-block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]/70 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"

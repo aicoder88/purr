@@ -2,7 +2,7 @@ export interface TranslationType {
   // Common
   siteName: string;
   siteDescription: string;
-  
+
   // Navigation
   nav: {
     home: string;
@@ -32,7 +32,7 @@ export interface TranslationType {
     fridgeSmells: string;
     ferretCage: string;
   };
-  
+
   // Products
   products: {
     [key: string]: {
@@ -40,7 +40,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // Features
   features: {
     odorElimination: {
@@ -100,7 +100,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
@@ -117,7 +117,7 @@ export interface TranslationType {
       nonClumping: string;
     };
   };
-  
+
   // Products Section
   productsSection?: {
     forEveryCatHousehold: string;
@@ -134,7 +134,7 @@ export interface TranslationType {
     adding: string;
     viewAllProducts: string;
   };
-  
+
   // Stores Section
   storesSection?: {
     availableInStores: string;
@@ -144,7 +144,7 @@ export interface TranslationType {
     dontSeeLocalStore: string;
     callStore: string;
   };
-  
+
   // Call to Action
   cta?: {
     title: string;
@@ -153,7 +153,7 @@ export interface TranslationType {
     joinText: string;
     guarantee: string;
   };
-  
+
   // FAQ
   faq: {
     title?: string;
@@ -167,7 +167,7 @@ export interface TranslationType {
       answer: string;
     }[];
   };
-  
+
   // Contact
   contact: {
     title?: string;
@@ -192,7 +192,7 @@ export interface TranslationType {
       submit: string;
     };
   };
-  
+
   // Newsletter
   newsletter?: {
     title: string;
@@ -202,7 +202,7 @@ export interface TranslationType {
     successMessage: string;
     errorMessage: string;
   };
-  
+
   // Free Giveaway Form
   freeGiveaway?: {
     formTitle: string;
@@ -218,7 +218,7 @@ export interface TranslationType {
     errorGeneric: string;
     privacyNotice: string;
   };
-  
+
   // SEO
   seo: {
     keywords: string;
@@ -227,7 +227,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // Structured Data
   structuredData: {
     organization: {

@@ -1,13 +1,13 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { useTranslation } from '../../src/lib/translation-context';
-import { 
-  Truck, 
-  Clock, 
-  MapPin, 
+import { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { useTranslation } from "../../src/lib/translation-context";
+import {
+  Truck,
+  Clock,
+  MapPin,
   Package,
   Shield,
   CreditCard,
@@ -18,8 +18,8 @@ import {
   Home,
   Plane,
   Calendar,
-  DollarSign
-} from 'lucide-react';
+  DollarSign,
+} from "lucide-react";
 
 const ShippingPage: NextPage = () => {
   const { t, locale } = useTranslation();
@@ -32,7 +32,7 @@ const ShippingPage: NextPage = () => {
       time: "5-7 business days",
       description: "Reliable Canada Post delivery to your door",
       icon: Truck,
-      popular: true
+      popular: true,
     },
     {
       name: "Express Shipping",
@@ -41,7 +41,7 @@ const ShippingPage: NextPage = () => {
       time: "2-3 business days",
       description: "Faster delivery via Canada Post Expedited",
       icon: Plane,
-      popular: false
+      popular: false,
     },
     {
       name: "Priority Shipping",
@@ -50,8 +50,8 @@ const ShippingPage: NextPage = () => {
       time: "1-2 business days",
       description: "Next-day delivery to major cities",
       icon: Clock,
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   const provinces = [
@@ -67,7 +67,7 @@ const ShippingPage: NextPage = () => {
     { name: "PEI", time: "6-8 days", express: "3-4 days" },
     { name: "Northwest Territories", time: "10-14 days", express: "5-7 days" },
     { name: "Nunavut", time: "14-21 days", express: "7-10 days" },
-    { name: "Yukon", time: "10-14 days", express: "5-7 days" }
+    { name: "Yukon", time: "10-14 days", express: "5-7 days" },
   ];
 
   const internationalCountries = [
@@ -75,53 +75,77 @@ const ShippingPage: NextPage = () => {
     { name: "United Kingdom", time: "10-21 days", cost: "$19.99" },
     { name: "European Union", time: "10-21 days", cost: "$19.99" },
     { name: "Australia", time: "14-28 days", cost: "$24.99" },
-    { name: "Other Countries", time: "14-35 days", cost: "Contact us" }
+    { name: "Other Countries", time: "14-35 days", cost: "Contact us" },
   ];
 
   const faqItems = [
     {
       question: "When will my order ship?",
-      answer: "Orders placed before 2 PM EST Monday-Friday ship the same day. Weekend orders ship the following Monday."
+      answer:
+        "Orders placed before 2 PM EST Monday-Friday ship the same day. Weekend orders ship the following Monday.",
     },
     {
       question: "How can I track my package?",
-      answer: "You'll receive a tracking number via email once your order ships. Track your package directly on the Canada Post website."
+      answer:
+        "You'll receive a tracking number via email once your order ships. Track your package directly on the Canada Post website.",
     },
     {
       question: "What if my package is damaged?",
-      answer: "We package all orders carefully, but if damage occurs during shipping, contact us within 48 hours for a free replacement."
+      answer:
+        "We package all orders carefully, but if damage occurs during shipping, contact us within 48 hours for a free replacement.",
     },
     {
       question: "Can I change my shipping address?",
-      answer: "Contact us immediately if you need to change your address. Once shipped, we cannot modify the delivery location."
+      answer:
+        "Contact us immediately if you need to change your address. Once shipped, we cannot modify the delivery location.",
     },
     {
       question: "Do you ship to PO boxes?",
-      answer: "Yes, we ship to PO boxes within Canada using Canada Post services."
+      answer:
+        "Yes, we ship to PO boxes within Canada using Canada Post services.",
     },
     {
       question: "What about customs fees?",
-      answer: "Canadian orders have no additional fees. International customers may be responsible for customs duties and taxes."
-    }
+      answer:
+        "Canadian orders have no additional fees. International customers may be responsible for customs duties and taxes.",
+    },
   ];
 
   return (
     <>
       <Head>
-        <title>Shipping Information - Fast & Reliable Delivery Across Canada | Purrify</title>
-        <meta 
-          name="description" 
-          content="Learn about Purrify shipping options, delivery times, and costs. Free shipping on orders $25+. Fast delivery across Canada and international shipping available." 
+        <title>
+          Shipping Information - Fast & Reliable Delivery Across Canada |
+          Purrify
+        </title>
+        <meta
+          name="description"
+          content="Learn about Purrify shipping options, delivery times, and costs. Free shipping on orders $25+. Fast delivery across Canada and international shipping available."
         />
-        <meta name="keywords" content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
-        
+        <meta
+          name="keywords"
+          content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery"
+        />
+        <link
+          rel="canonical"
+          href={`https://purrify.com${locale === "fr" ? "/fr" : ""}/support/shipping`}
+        />
+
         {/* Open Graph */}
-        <meta property="og:title" content="Shipping Information - Fast & Reliable Delivery" />
-        <meta property="og:description" content="Fast and reliable Purrify delivery across Canada. Free shipping on orders $25+. International shipping available." />
+        <meta
+          property="og:title"
+          content="Shipping Information - Fast & Reliable Delivery"
+        />
+        <meta
+          property="og:description"
+          content="Fast and reliable Purrify delivery across Canada. Free shipping on orders $25+. International shipping available."
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
-        
+        <meta
+          property="og:url"
+          content={`https://purrify.com${locale === "fr" ? "/fr" : ""}/support/shipping`}
+        />
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -129,10 +153,11 @@ const ShippingPage: NextPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": "Shipping Information",
-              "description": "Purrify shipping options, delivery times, and costs for Canada and international delivery.",
-              "url": `https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`
-            })
+              name: "Shipping Information",
+              description:
+                "Purrify shipping options, delivery times, and costs for Canada and international delivery.",
+              url: `https://purrify.com${locale === "fr" ? "/fr" : ""}/support/shipping`,
+            }),
           }}
         />
       </Head>
@@ -142,11 +167,17 @@ const ShippingPage: NextPage = () => {
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
             <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link
+                href={locale === "fr" ? "/fr" : "/"}
+                className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link
+                href={`${locale === "fr" ? "/fr" : ""}/support/contact`}
+                className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
                 Support
               </Link>
               <span>/</span>
@@ -168,7 +199,8 @@ const ShippingPage: NextPage = () => {
               </p>
               <div className="bg-white/10 rounded-lg p-4 inline-block">
                 <p className="text-lg font-semibold">
-                  🚚 Free shipping on orders $25+ • 📦 Same-day processing • 🇨🇦 Canada-wide delivery
+                  🚚 Free shipping on orders $25+ • 📦 Same-day processing • 🇨🇦
+                  Canada-wide delivery
                 </p>
               </div>
             </div>
@@ -189,12 +221,12 @@ const ShippingPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {shippingOptions.map((option, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-2 ${
-                    option.popular 
-                      ? 'border-[#FF3131] dark:border-[#FF5050]' 
-                      : 'border-[#E0EFC7] dark:border-gray-700'
+                    option.popular
+                      ? "border-[#FF3131] dark:border-[#FF5050]"
+                      : "border-[#E0EFC7] dark:border-gray-700"
                   } hover:shadow-xl transition-shadow`}
                 >
                   {option.popular && (
@@ -204,16 +236,16 @@ const ShippingPage: NextPage = () => {
                       </span>
                     </div>
                   )}
-                  
+
                   <div className="text-center">
                     <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                       <option.icon className="w-8 h-8 text-white" />
                     </div>
-                    
+
                     <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                       {option.name}
                     </h3>
-                    
+
                     <div className="mb-4">
                       <p className="text-2xl font-bold text-[#FF3131] mb-1">
                         {option.price}
@@ -224,12 +256,12 @@ const ShippingPage: NextPage = () => {
                         </p>
                       )}
                     </div>
-                    
+
                     <div className="flex items-center justify-center mb-4 text-gray-600 dark:text-gray-300">
                       <Clock className="w-4 h-4 mr-2" />
                       <span className="font-semibold">{option.time}</span>
                     </div>
-                    
+
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
                       {option.description}
                     </p>
@@ -257,14 +289,23 @@ const ShippingPage: NextPage = () => {
                 <table className="w-full">
                   <thead className="bg-[#5B2EFF] text-white">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">Province/Territory</th>
-                      <th className="px-6 py-4 text-center font-bold">Standard Shipping</th>
-                      <th className="px-6 py-4 text-center font-bold">Express Shipping</th>
+                      <th className="px-6 py-4 text-left font-bold">
+                        Province/Territory
+                      </th>
+                      <th className="px-6 py-4 text-center font-bold">
+                        Standard Shipping
+                      </th>
+                      <th className="px-6 py-4 text-center font-bold">
+                        Express Shipping
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {provinces.map((province, index) => (
-                      <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
+                      <tr
+                        key={index}
+                        className={`${index % 2 === 0 ? "bg-gray-50 dark:bg-gray-700/50" : "bg-white dark:bg-gray-800"}`}
+                      >
                         <td className="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">
                           {province.name}
                         </td>
@@ -297,22 +338,33 @@ const ShippingPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {internationalCountries.map((country, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700"
+                >
                   <div className="flex items-center mb-4">
                     <Globe className="w-6 h-6 text-[#5B2EFF] mr-3" />
                     <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
                       {country.name}
                     </h3>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Delivery Time:</span>
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">{country.time}</span>
+                      <span className="text-gray-600 dark:text-gray-300">
+                        Delivery Time:
+                      </span>
+                      <span className="font-semibold text-gray-900 dark:text-gray-100">
+                        {country.time}
+                      </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Shipping Cost:</span>
-                      <span className="font-semibold text-[#FF3131]">{country.cost}</span>
+                      <span className="text-gray-600 dark:text-gray-300">
+                        Shipping Cost:
+                      </span>
+                      <span className="font-semibold text-[#FF3131]">
+                        {country.cost}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -327,10 +379,22 @@ const ShippingPage: NextPage = () => {
                     International Shipping Notes:
                   </h4>
                   <ul className="text-yellow-700 dark:text-yellow-300 space-y-1 text-sm">
-                    <li>• Customs duties and taxes may apply and are the customer's responsibility</li>
-                    <li>• Delivery times are estimates and may vary due to customs processing</li>
-                    <li>• Some countries may have import restrictions on certain products</li>
-                    <li>• Contact us for shipping quotes to countries not listed above</li>
+                    <li>
+                      • Customs duties and taxes may apply and are the
+                      customer's responsibility
+                    </li>
+                    <li>
+                      • Delivery times are estimates and may vary due to customs
+                      processing
+                    </li>
+                    <li>
+                      • Some countries may have import restrictions on certain
+                      products
+                    </li>
+                    <li>
+                      • Contact us for shipping quotes to countries not listed
+                      above
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -395,7 +459,8 @@ const ShippingPage: NextPage = () => {
                   Delivered
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Safe delivery to your door with signature confirmation if required
+                  Safe delivery to your door with signature confirmation if
+                  required
                 </p>
               </div>
             </div>
@@ -416,7 +481,10 @@ const ShippingPage: NextPage = () => {
 
             <div className="max-w-3xl mx-auto space-y-6">
               {faqItems.map((item, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700"
+                >
                   <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {item.question}
                   </h3>
@@ -437,17 +505,27 @@ const ShippingPage: NextPage = () => {
                 Ready to Order Purrify?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Get fast, reliable delivery right to your door. Free shipping on orders $25+.
+                Get fast, reliable delivery right to your door. Free shipping on
+                orders $25+.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+                >
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold"
+                  >
                     Order Trial Size - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                <Link href={`${locale === "fr" ? "/fr" : ""}/#products`}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors"
+                  >
                     View All Products
                   </Button>
                 </Link>
@@ -464,37 +542,49 @@ const ShippingPage: NextPage = () => {
                 Need More Information?
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="group">
+              <Link
+                href={`${locale === "fr" ? "/fr" : ""}/support/contact`}
+                className="group"
+              >
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Contact Support
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Have questions about shipping? Our customer service team is here to help.
+                    Have questions about shipping? Our customer service team is
+                    here to help.
                   </p>
                 </div>
               </Link>
-              
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="group">
+
+              <Link
+                href={`${locale === "fr" ? "/fr" : ""}/products/compare`}
+                className="group"
+              >
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Compare Products
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Find the perfect Purrify size for your household and shipping needs.
+                    Find the perfect Purrify size for your household and
+                    shipping needs.
                   </p>
                 </div>
               </Link>
-              
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
+
+              <Link
+                href={`${locale === "fr" ? "/fr" : ""}/customers/testimonials`}
+                className="group"
+              >
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Reviews
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    See what customers across Canada are saying about their Purrify experience.
+                    See what customers across Canada are saying about their
+                    Purrify experience.
                   </p>
                 </div>
               </Link>

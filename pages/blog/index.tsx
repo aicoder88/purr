@@ -1,23 +1,29 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { Container } from '../../src/components/ui/container';
-import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
-import Link from 'next/link';
-import type { BlogPost } from '../../src/data/blog-posts';
-import { sampleBlogPosts } from '../../src/data/blog-posts';
-import { useTranslation } from '../../src/lib/translation-context';
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { Container } from "../../src/components/ui/container";
+import { SITE_NAME, SITE_DESCRIPTION } from "../../src/lib/constants";
+import NextImage from "../../components/NextImage";
+import Link from "next/link";
+import type { BlogPost } from "../../src/data/blog-posts";
+import { sampleBlogPosts } from "../../src/data/blog-posts";
+import { useTranslation } from "../../src/lib/translation-context";
 
 // This function gets called at build time on server-side
 export async function getStaticProps() {
   try {
     // WordPress API URL - replace with your WordPress site URL
-    const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
-    
+    const wpApiUrl =
+      process.env.WORDPRESS_API_URL ||
+      "https://your-wordpress-site.com/wp-json/wp/v2";
+
     // Check if WordPress API URL is configured
-    if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
+    if (
+      !process.env.WORDPRESS_API_URL ||
+      process.env.WORDPRESS_API_URL ===
+        "https://your-wordpress-site.com/wp-json/wp/v2"
+    ) {
       // If WordPress is not configured yet, use sample data
-      console.log('WordPress API not configured, using sample data');
+      console.log("WordPress API not configured, using sample data");
       return {
         props: {
           blogPosts: sampleBlogPosts,
@@ -26,26 +32,30 @@ export async function getStaticProps() {
         revalidate: 86400,
       };
     }
-    
+
     // Fetch posts from WordPress
     const response = await fetch(`${wpApiUrl}/posts?_embed&per_page=10`);
-    
+
     if (!response.ok) {
       throw new Error(`WordPress API error: ${response.status}`);
     }
-    
+
     const wpPosts = await response.json();
-    
+
     // Transform WordPress posts to match our BlogPost interface
     const blogPosts: BlogPost[] = wpPosts.map((post: any) => ({
       title: post.title.rendered,
-      excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      excerpt:
+        post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) +
+        "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
-      date: new Date(post.date).toISOString().split('T')[0],
-      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      date: new Date(post.date).toISOString().split("T")[0],
+      image:
+        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+        "/purrify-logo.png",
       link: `/blog/${post.slug}`,
     }));
-    
+
     return {
       props: {
         blogPosts,
@@ -54,7 +64,7 @@ export async function getStaticProps() {
       revalidate: 3600,
     };
   } catch (error) {
-    console.error('Error fetching WordPress posts:', error);
+    console.error("Error fetching WordPress posts:", error);
     // Fallback to sample data in case of error
     return {
       props: {
@@ -72,23 +82,44 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
     <>
       <Head>
         <title>Blog | {SITE_NAME} - Cat Care Tips & Insights</title>
-        <meta name="description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
+        <meta
+          name="description"
+          content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://purrify.ca/blog" />
-        <meta property="og:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
-        <meta property="og:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="og:image" content="https://purrify.ca/purrify-logo.png" />
-        
+        <meta
+          property="og:title"
+          content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}
+        />
+        <meta
+          property="og:description"
+          content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`}
+        />
+        <meta
+          property="og:image"
+          content="https://purrify.ca/purrify-logo.png"
+        />
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://purrify.ca/blog" />
-        <meta property="twitter:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
-        <meta property="twitter:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="twitter:image" content="https://purrify.ca/purrify-logo.png" />
-        
+        <meta
+          property="twitter:title"
+          content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}
+        />
+        <meta
+          property="twitter:description"
+          content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`}
+        />
+        <meta
+          property="twitter:image"
+          content="https://purrify.ca/purrify-logo.png"
+        />
+
         {/* Canonical Link */}
         <link rel="canonical" href="https://purrify.ca/blog" />
       </Head>
@@ -102,14 +133,14 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
             <h1 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
               Purrify Blog
             </h1>
-            <p className="text-gray-600 text-lg">
-              {t.blogSection.description}
-            </p>
+            <p className="text-gray-600 text-lg">{t.blogSection.description}</p>
           </div>
 
           {blogPosts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-gray-600">No blog posts found. Check back soon!</p>
+              <p className="text-gray-600">
+                No blog posts found. Check back soon!
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -1,26 +1,34 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
-import Link from 'next/link';
-import { ArrowLeft, Star, Quote, Heart, Users, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { useTranslation } from "../../src/lib/translation-context";
+import { SITE_NAME } from "../../src/lib/constants";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Star,
+  Quote,
+  Heart,
+  Users,
+  ChevronRight,
+} from "lucide-react";
+import { useState } from "react";
 
 export default function TestimonialsPage() {
   const { t, locale } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
   const pageTitle = `Customer Testimonials - ${SITE_NAME} Reviews & Success Stories`;
-  const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why thousands trust Purrify.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/testimonials`;
+  const pageDescription =
+    "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why thousands trust Purrify.";
+  const canonicalUrl = `https://purrify.ca${locale === "fr" ? "/fr" : ""}/customers/testimonials`;
 
   const categories = [
-    { id: 'all', name: 'All Reviews', count: 127 },
-    { id: 'trial', name: 'Trial Users', count: 43 },
-    { id: 'multiple-cats', name: 'Multiple Cats', count: 38 },
-    { id: 'sensitive-cats', name: 'Sensitive Cats', count: 22 },
-    { id: 'long-term', name: 'Long-term Users', count: 24 }
+    { id: "all", name: "All Reviews", count: 127 },
+    { id: "trial", name: "Trial Users", count: 43 },
+    { id: "multiple-cats", name: "Multiple Cats", count: 38 },
+    { id: "sensitive-cats", name: "Sensitive Cats", count: 22 },
+    { id: "long-term", name: "Long-term Users", count: 24 },
   ];
 
   const testimonials = [
@@ -30,13 +38,13 @@ export default function TestimonialsPage() {
       location: "Côte-des-Neiges, QC",
       catNames: ["Ziggy"],
       rating: 5,
-      category: ['trial'],
+      category: ["trial"],
       date: "2024-01-15",
       title: "Trial size convinced me immediately!",
       text: "Started with the 17g trial for my kitten Ziggy. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
       verified: true,
       helpful: 28,
-      productUsed: "17g Trial → 60g Regular"
+      productUsed: "17g Trial → 60g Regular",
     },
     {
       id: 2,
@@ -44,13 +52,13 @@ export default function TestimonialsPage() {
       location: "Saint-Laurent, QC",
       catNames: ["Mochi", "Noodle"],
       rating: 5,
-      category: ['multiple-cats'],
+      category: ["multiple-cats"],
       date: "2023-11-08",
       title: "Game changer for two cats!",
       text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
       verified: true,
       helpful: 18,
-      productUsed: "Standard Size"
+      productUsed: "Standard Size",
     },
     {
       id: 3,
@@ -58,13 +66,13 @@ export default function TestimonialsPage() {
       location: "Calgary, AB",
       catNames: ["Mittens", "Boots", "Socks"],
       rating: 5,
-      category: ['multiple-cats', 'long-term'],
+      category: ["multiple-cats", "long-term"],
       date: "2023-09-22",
       title: "Three cats, zero odors!",
       text: "With three indoor cats, our house was starting to smell no matter how often I cleaned the litter boxes. A friend recommended Purrify and I'm so grateful! I use it in all three boxes and the difference is night and day. Even my mother-in-law, who has the most sensitive nose, can't tell we have cats when she visits.",
       verified: true,
       helpful: 31,
-      productUsed: "Bulk Size"
+      productUsed: "Bulk Size",
     },
     {
       id: 4,
@@ -72,13 +80,13 @@ export default function TestimonialsPage() {
       location: "Montreal, QC",
       catNames: ["Ginger"],
       rating: 5,
-      category: ['trial'],
+      category: ["trial"],
       date: "2024-02-03",
       title: "Skeptic turned believer",
       text: "I'll be honest - I thought this was just another gimmick. But my wife insisted we try the trial size after reading reviews online. I'm eating my words now! The science actually works. You can literally smell the difference within the first day. We're customers for life now.",
       verified: true,
       helpful: 15,
-      productUsed: "Trial Size"
+      productUsed: "Trial Size",
     },
     {
       id: 5,
@@ -86,13 +94,13 @@ export default function TestimonialsPage() {
       location: "Ottawa, ON",
       catNames: ["Cleo"],
       rating: 5,
-      category: ['sensitive-cats'],
+      category: ["sensitive-cats"],
       date: "2024-01-28",
       title: "No more embarrassing odors",
       text: "I work from home and was so embarrassed when clients would come over because of the litter box smell. Cleo is very sensitive to fragrances, so most products were out of the question. Purrify has been a game-changer - completely natural, no fragrances, and it actually works! I can have meetings at home again without worry.",
       verified: true,
       helpful: 27,
-      productUsed: "Standard Size"
+      productUsed: "Standard Size",
     },
     {
       id: 6,
@@ -100,13 +108,13 @@ export default function TestimonialsPage() {
       location: "Edmonton, AB",
       catNames: ["Max", "Ruby"],
       rating: 5,
-      category: ['multiple-cats', 'long-term'],
+      category: ["multiple-cats", "long-term"],
       date: "2023-08-14",
       title: "Best investment for cat owners",
       text: "After 6 months of using Purrify, I can confidently say it's the best money I've spent on cat supplies. Two cats in a small apartment used to mean constant odor management. Now I just sprinkle Purrify when I change the litter and forget about odors completely. My apartment actually smells fresh again!",
       verified: true,
       helpful: 19,
-      productUsed: "Standard Size"
+      productUsed: "Standard Size",
     },
     {
       id: 7,
@@ -114,13 +122,13 @@ export default function TestimonialsPage() {
       location: "Halifax, NS",
       catNames: ["Smokey"],
       rating: 5,
-      category: ['trial', 'long-term'],
+      category: ["trial", "long-term"],
       date: "2023-12-10",
       title: "From trial to loyal customer",
       text: "Started with the trial size just to test it out. Smokey can be finicky about changes to his routine, but he didn't mind Purrify at all. The odor control was so impressive that I immediately ordered the bulk size. Eight months later, I'm still amazed at how well it works. Will never go back to regular litter alone.",
       verified: true,
       helpful: 22,
-      productUsed: "Trial Size → Bulk Size"
+      productUsed: "Trial Size → Bulk Size",
     },
     {
       id: 8,
@@ -128,25 +136,28 @@ export default function TestimonialsPage() {
       location: "Winnipeg, MB",
       catNames: ["Luna", "Star"],
       rating: 5,
-      category: ['multiple-cats'],
+      category: ["multiple-cats"],
       date: "2024-01-05",
       title: "Finally found something that works",
       text: "I've tried everything - different litters, air purifiers, baking soda, you name it. Nothing worked for our two-cat household until Purrify. The activated carbon technology actually traps the odor molecules instead of just masking them. It's science that works! Our house finally smells like a home, not a litter box.",
       verified: true,
       helpful: 25,
-      productUsed: "Standard Size"
-    }
+      productUsed: "Standard Size",
+    },
   ];
 
-  const filteredTestimonials = selectedCategory === 'all' 
-    ? testimonials 
-    : testimonials.filter(testimonial => testimonial.category.includes(selectedCategory));
+  const filteredTestimonials =
+    selectedCategory === "all"
+      ? testimonials
+      : testimonials.filter((testimonial) =>
+          testimonial.category.includes(selectedCategory),
+        );
 
   const stats = [
     { number: "4.9/5", label: "Average Rating", icon: Star },
     { number: "127+", label: "Verified Reviews", icon: Users },
     { number: "98%", label: "Would Recommend", icon: Heart },
-    { number: "24hrs", label: "Average Results Time", icon: Quote }
+    { number: "24hrs", label: "Average Results Time", icon: Quote },
   ];
 
   return (
@@ -159,15 +170,15 @@ export default function TestimonialsPage() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'website',
+          type: "website",
           images: [
             {
-              url: 'https://purrify.ca/customer-testimonials-hero.jpg',
+              url: "https://purrify.ca/customer-testimonials-hero.jpg",
               width: 1200,
               height: 630,
-              alt: 'Happy Purrify Customers and Their Cats'
-            }
-          ]
+              alt: "Happy Purrify Customers and Their Cats",
+            },
+          ],
         }}
       />
 
@@ -177,8 +188,11 @@ export default function TestimonialsPage() {
           <nav className="py-4 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.nav?.home || 'Home'}
+                <Link
+                  href={locale === "fr" ? "/fr" : "/"}
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
+                  {t.nav?.home || "Home"}
                 </Link>
               </li>
               <li>/</li>
@@ -188,7 +202,9 @@ export default function TestimonialsPage() {
                 </span>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Testimonials</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                Testimonials
+              </li>
             </ol>
           </nav>
         </Container>
@@ -201,8 +217,9 @@ export default function TestimonialsPage() {
                 Real Stories, Real Results
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-                Discover why thousands of cat owners trust Purrify to eliminate litter box odors. 
-                Read authentic testimonials from customers who've experienced the difference.
+                Discover why thousands of cat owners trust Purrify to eliminate
+                litter box odors. Read authentic testimonials from customers
+                who've experienced the difference.
               </p>
 
               {/* Stats Grid */}
@@ -235,8 +252,8 @@ export default function TestimonialsPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-[#FF3131] text-white shadow-lg'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-[#FF3131]/10 dark:hover:bg-[#FF5050]/10 border border-gray-200 dark:border-gray-700'
+                      ? "bg-[#FF3131] text-white shadow-lg"
+                      : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-[#FF3131]/10 dark:hover:bg-[#FF5050]/10 border border-gray-200 dark:border-gray-700"
                   }`}
                 >
                   {category.name} ({category.count})
@@ -251,13 +268,19 @@ export default function TestimonialsPage() {
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredTestimonials.map((testimonial) => (
-                <div key={testimonial.id} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div
+                  key={testimonial.id}
+                  className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex-1">
                       <div className="flex items-center mb-2">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                          <Star
+                            key={i}
+                            className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                          />
                         ))}
                       </div>
                       <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-1">
@@ -286,7 +309,7 @@ export default function TestimonialsPage() {
                   <div className="border-t pt-4 space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600 dark:text-gray-400">
-                        Cat(s): {testimonial.catNames.join(', ')}
+                        Cat(s): {testimonial.catNames.join(", ")}
                       </span>
                       <span className="text-gray-500 dark:text-gray-500">
                         {new Date(testimonial.date).toLocaleDateString()}
@@ -315,17 +338,27 @@ export default function TestimonialsPage() {
                 Ready to Join Our Happy Customers?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Experience the same odor elimination results that our customers rave about
+                Experience the same odor elimination results that our customers
+                rave about
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+                >
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold"
+                  >
                     Start with Trial Size - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                <Link href={`${locale === "fr" ? "/fr" : ""}/#products`}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors"
+                  >
                     View All Products
                   </Button>
                 </Link>
@@ -342,9 +375,10 @@ export default function TestimonialsPage() {
                 Share Your Purrify Story
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Have you experienced great results with Purrify? We'd love to hear from you!
+                Have you experienced great results with Purrify? We'd love to
+                hear from you!
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/support/contact`}>
                 <Button size="lg" variant="outline">
                   Submit Your Review
                 </Button>
@@ -357,7 +391,7 @@ export default function TestimonialsPage() {
         <section className="py-8">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#testimonials`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/#testimonials`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to Homepage

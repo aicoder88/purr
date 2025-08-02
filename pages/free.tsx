@@ -15,10 +15,10 @@
 //     minutes: 0,
 //     seconds: 0
 //   });
-  
+
 //   // Random number of claimed bags - initialize with a fixed value to avoid hydration mismatch
 //   const [claimedBags, setClaimedBags] = useState<number>(205);
-  
+
 //   // Initialize values on client-side only to avoid hydration mismatch
 //   useEffect(() => {
 //     // Set initial random values only on client-side
@@ -27,16 +27,16 @@
 //       minutes: Math.floor(Math.random() * 60),
 //       seconds: Math.floor(Math.random() * 60)
 //     });
-    
+
 //     setClaimedBags(Math.floor(Math.random() * (440 - 205 + 1)) + 205);
-    
+
 //     // Update countdown timer every second
 //     const timer = setInterval(() => {
 //       setTimeLeft(prevTime => {
 //         const newSeconds = prevTime.seconds - 1;
 //         const newMinutes = newSeconds < 0 ? prevTime.minutes - 1 : prevTime.minutes;
 //         const newHours = newMinutes < 0 ? prevTime.hours - 1 : prevTime.hours;
-        
+
 //         return {
 //           hours: newHours < 0 ? 23 : newHours,
 //           minutes: newMinutes < 0 ? 59 : newMinutes,
@@ -44,11 +44,11 @@
 //         };
 //       });
 //     }, 1000);
-    
+
 //     // Clean up timer
 //     return () => clearInterval(timer);
 //   }, []);
-  
+
 //   return (
 //     <Layout>
 //       <Head>
@@ -59,7 +59,7 @@
 //         <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
 //         <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free" />
 //       </Head>
-      
+
 //       <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] relative overflow-hidden">
 //         {/* Subtle background pattern with paw prints */}
 //         <div className="absolute inset-0 opacity-5 pointer-events-none">
@@ -67,7 +67,7 @@
 //                style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
 //           ></div>
 //         </div>
-        
+
 //         {/* Decorative paw prints */}
 //         <div className="absolute top-20 right-10 text-indigo-200 opacity-30 transform rotate-12">
 //           <PawPrint size={60} />
@@ -75,7 +75,7 @@
 //         <div className="absolute bottom-20 left-10 text-indigo-200 opacity-30 transform -rotate-12">
 //           <PawPrint size={40} />
 //         </div>
-        
+
 //         <Container>
 //           <div className="max-w-4xl mx-auto">
 //             {/* Image and headline in a flex container */}
@@ -86,7 +86,7 @@
 //                   URGENT: FREE BAG GIVEAWAY ENDS SOON
 //                 </div>
 //               </div>
-              
+
 //               <div className="md:w-1/2 transform transition-transform duration-500 hover:scale-105">
 //                 <div className="relative">
 //                   <div className="absolute inset-0 bg-indigo-600/10 rounded-lg blur-xl"></div>
@@ -103,7 +103,7 @@
 //                   </div>
 //                 </div>
 //               </div>
-              
+
 //               <div className="md:w-1/2 flex items-center">
 //                 <div>
 //                   <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight md:text-left leading-tight">
@@ -112,7 +112,7 @@
 //                         Claim Your FREE Purrify Trial
 //                       </span>
 //                     </div>
-                    
+
 //                     <div className="flex justify-center my-4">
 //                       <NextImage
 //                         src="/samplebag.jpg"
@@ -122,7 +122,7 @@
 //                         className="rounded-md shadow-lg border-2 border-indigo-200 transform transition-all duration-300 hover:scale-110"
 //                       />
 //                     </div>
-                    
+
 //                     <div className="block mt-3 mb-6 relative py-4 px-2">
 //                       <div className="absolute -inset-1 bg-gradient-to-r from-indigo-100/70 via-purple-100/70 to-pink-100/70 rounded-lg -z-10 blur-sm"></div>
 //                       <div className="border-t-2 border-b-2 border-indigo-200/50 py-3">
@@ -133,7 +133,7 @@
 //                       </div>
 //                     </div>
 //                   </h1>
-                  
+
 //                   <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
 //                     <p className="text-indigo-800 font-medium">
 //                       Limited time offer: Get your free trial-size bag of our natural odor-trapping formula while supplies last!
@@ -142,7 +142,7 @@
 //                 </div>
 //               </div>
 //             </div>
-            
+
 //             <div className="mb-12 bg-white/90 p-8 rounded-xl shadow-lg border-l-4 border-red-600 border-t border-r border-b border-indigo-100/50">
 //               <div className="flex items-start space-x-4">
 //                 <PawPrint className="h-6 w-6 text-red-600 mt-1 flex-shrink-0" />
@@ -163,14 +163,14 @@
 //                 </div>
 //               </div>
 //             </div>
-            
+
 //             <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl shadow-xl border-2 border-indigo-200 transform transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
 //               {/* Subtle paw print background for form */}
 //               <div className="absolute inset-0 opacity-5 pointer-events-none">
 //                 <PawPrint className="absolute top-5 right-5 h-20 w-20" />
 //                 <PawPrint className="absolute bottom-5 left-5 h-20 w-20" />
 //               </div>
-              
+
 //               <div className="relative z-10">
 //                 <div className="mb-8">
 //                   <div className="mb-6 flex justify-center">
@@ -208,7 +208,7 @@
 //                     </li>
 //                   </ul>
 //                 </div>
-                
+
 //                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
 //                   <h3 className="text-xl font-bold text-red-600 mb-2">WARNING: This Offer Disappears in:</h3>
 //                   <div className="flex justify-center space-x-4 mb-2">
@@ -225,7 +225,7 @@
 //                   <p className="text-center text-red-800 font-medium">Already claimed: {claimedBags} out of 500</p>
 //                   <p className="text-center font-bold mt-2">Your free bag is waiting - but only if you act now.</p>
 //                 </div>
-                
+
 //                 <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
 //                   <h3 className="text-xl font-bold text-indigo-800 mb-4">What Our Beta Testers Are Saying:</h3>
 //                   <div className="space-y-4">
@@ -239,7 +239,7 @@
 //                     </div>
 //                   </div>
 //                 </div>
-                
+
 //                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
 //                   <div className="flex items-center justify-center mb-4">
 //                     <PawPrint className="h-8 w-8 text-red-600 mr-3" />
@@ -250,7 +250,7 @@
 //                   </p>
 //                 </div>
 //                 <FreeGiveawayForm />
-                
+
 //                 <p className="text-xs text-center text-gray-500 mt-6">
 //                   100% Free. No Credit Card Required.<br />
 //                   Limited time offer. One free bag per household. Shipping restrictions may apply. We reserve the right to end this promotion at any time.
@@ -266,14 +266,14 @@
 
 // export default FreePage;
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function FreeRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/');
+    router.push("/");
   }, [router]);
 
   return null;

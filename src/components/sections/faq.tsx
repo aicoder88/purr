@@ -9,7 +9,7 @@ import { useTranslation } from "../../lib/translation-context";
 
 export function FAQ() {
   const { t } = useTranslation();
-  
+
   // Use the FAQ items from translations if available, otherwise use the hardcoded ones
   const faqs = t.faq?.items || [
     {
@@ -68,7 +68,8 @@ export function FAQ() {
             {t.faq?.title || "Frequently Asked Questions"}
           </h2>
           <p className="text-gray-600 text-lg dark:text-gray-300">
-            {t.faq?.subtitle || "Have questions about Purrify? Find answers to our most commonly asked questions below."}
+            {t.faq?.subtitle ||
+              "Have questions about Purrify? Find answers to our most commonly asked questions below."}
           </p>
         </div>
 
@@ -76,7 +77,7 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, '-').toLowerCase()}-${index}`}
+                key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}-${index}`}
                 value={`item-${index}`}
                 className="border-b border-[#E0EFC7] last:border-0"
               >

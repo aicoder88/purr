@@ -26,9 +26,7 @@ export function BlogPreview() {
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
-        const response = await fetch(
-          "/api/blog-posts?limit=2"
-        );
+        const response = await fetch("/api/blog-posts?limit=2");
         const data = await response.json();
         setBlogPosts(data);
       } catch (error) {
@@ -72,7 +70,7 @@ export function BlogPreview() {
                     alt={post.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
+                    className={`w-full h-full ${post.image.includes("carbon_magnified") ? "object-contain" : "object-cover"} transition-transform duration-700 group-hover:scale-110`}
                     priority={index === 0}
                     quality={85}
                   />
@@ -92,12 +90,14 @@ export function BlogPreview() {
                   <span className="text-[#03E46A] font-medium">
                     {post.author}
                   </span>
-                  <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
+                  <span className="text-gray-500 dark:text-gray-400">
+                    {post.date}
+                  </span>
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
                 <Link
-                  href={`/blog/${post.link.split('/').pop()}`}
+                  href={`/blog/${post.link.split("/").pop()}`}
                   className="text-[#03E46A] dark:text-[#5B2EFF] font-medium flex items-center hover:text-[#03E46A]/80 dark:hover:text-[#5B2EFF]/80 transition-colors"
                 >
                   {t.blogSection.readFullArticle}
@@ -125,9 +125,7 @@ export function BlogPreview() {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href="/blog">
-              {t.blogSection.viewAllArticles}
-            </Link>
+            <Link href="/blog">{t.blogSection.viewAllArticles}</Link>
           </Button>
         </div>
       </Container>

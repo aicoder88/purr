@@ -1,63 +1,80 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
-import Link from 'next/link';
-import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, CheckCircle } from 'lucide-react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { useTranslation } from "../../src/lib/translation-context";
+import { SITE_NAME } from "../../src/lib/constants";
+import NextImage from "../../components/NextImage";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Atom,
+  Zap,
+  Shield,
+  Microscope,
+  FlaskConical,
+  CheckCircle,
+} from "lucide-react";
 
 export default function SciencePage() {
   const { t, locale } = useTranslation();
-  
+
   const pageTitle = `The Science Behind ${SITE_NAME} - Activated Carbon Technology`;
-  const pageDescription = "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
+  const pageDescription =
+    "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";
+  const canonicalUrl = `https://purrify.ca${locale === "fr" ? "/fr" : ""}/learn/science`;
 
   const scienceFacts = [
     {
       icon: Atom,
       title: "Molecular Adsorption",
-      description: "Activated carbon has millions of microscopic pores that trap odor molecules through physical and chemical adsorption, removing them from the air permanently."
+      description:
+        "Activated carbon has millions of microscopic pores that trap odor molecules through physical and chemical adsorption, removing them from the air permanently.",
     },
     {
       icon: Microscope,
       title: "Surface Area Power",
-      description: "Just one gram of activated carbon has a surface area of 500-1500 square meters - equivalent to 6-18 tennis courts of odor-fighting power."
+      description:
+        "Just one gram of activated carbon has a surface area of 500-1500 square meters - equivalent to 6-18 tennis courts of odor-fighting power.",
     },
     {
       icon: Zap,
       title: "Instant Action",
-      description: "Unlike masking agents that cover smells, activated carbon physically captures and holds odor molecules, providing immediate and lasting results."
+      description:
+        "Unlike masking agents that cover smells, activated carbon physically captures and holds odor molecules, providing immediate and lasting results.",
     },
     {
       icon: Shield,
       title: "Safe & Natural",
-      description: "Made from coconut shells through controlled heating, our activated carbon is completely safe for cats and humans while being environmentally friendly."
-    }
+      description:
+        "Made from coconut shells through controlled heating, our activated carbon is completely safe for cats and humans while being environmentally friendly.",
+    },
   ];
 
   const processSteps = [
     {
       step: "1",
       title: "Odor Molecules Released",
-      description: "When cats use the litter box, ammonia and other odor compounds are released into the air."
+      description:
+        "When cats use the litter box, ammonia and other odor compounds are released into the air.",
     },
     {
-      step: "2", 
+      step: "2",
       title: "Carbon Activation",
-      description: "Purrify's activated carbon particles immediately begin attracting these odor molecules to their porous surface."
+      description:
+        "Purrify's activated carbon particles immediately begin attracting these odor molecules to their porous surface.",
     },
     {
       step: "3",
       title: "Molecular Capture",
-      description: "Odor molecules are trapped in the carbon's microscopic pores through van der Waals forces and chemical bonds."
+      description:
+        "Odor molecules are trapped in the carbon's microscopic pores through van der Waals forces and chemical bonds.",
     },
     {
       step: "4",
       title: "Permanent Elimination",
-      description: "Once captured, odor molecules remain locked in the carbon structure, eliminating smells rather than masking them."
-    }
+      description:
+        "Once captured, odor molecules remain locked in the carbon structure, eliminating smells rather than masking them.",
+    },
   ];
 
   return (
@@ -70,13 +87,13 @@ export default function SciencePage() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'article',
+          type: "article",
           images: [
             {
-              url: 'https://purrify.ca/optimized/science-hero.webp',
+              url: "https://purrify.ca/optimized/science-hero.webp",
               width: 1200,
               height: 630,
-              alt: 'Purrify Activated Carbon Science',
+              alt: "Purrify Activated Carbon Science",
             },
           ],
         }}
@@ -88,18 +105,26 @@ export default function SciencePage() {
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/`}
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
                   Home
                 </Link>
               </li>
               <li>/</li>
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/learn/how-it-works`}
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
                   Learn
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Science</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                Science
+              </li>
             </ol>
           </nav>
         </Container>
@@ -115,11 +140,17 @@ export default function SciencePage() {
                 The Science Behind Purrify
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Discover how activated carbon technology eliminates odors at the molecular level, 
-                providing superior odor control that's both safe and effective for your feline friends.
+                Discover how activated carbon technology eliminates odors at the
+                molecular level, providing superior odor control that's both
+                safe and effective for your feline friends.
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300">
+              <Link
+                href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+              >
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   Try the Science - $6.99
                 </Button>
               </Link>
@@ -135,13 +166,14 @@ export default function SciencePage() {
                 How Activated Carbon Works
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Understanding the molecular science that makes Purrify so effective at eliminating odors.
+                Understanding the molecular science that makes Purrify so
+                effective at eliminating odors.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {scienceFacts.map((fact, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
                 >
@@ -174,7 +206,8 @@ export default function SciencePage() {
                 The Odor Elimination Process
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Follow the journey of odor molecules from release to permanent elimination.
+                Follow the journey of odor molecules from release to permanent
+                elimination.
               </p>
             </div>
 
@@ -184,11 +217,13 @@ export default function SciencePage() {
 
               <div className="space-y-12">
                 {processSteps.map((step, index) => (
-                  <div 
+                  <div
                     key={index}
-                    className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col`}
+                    className={`flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-col`}
                   >
-                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+                    <div
+                      className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}
+                    >
                       <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
                         <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
                           {step.title}
@@ -220,8 +255,9 @@ export default function SciencePage() {
                 Proven by Science, Loved by Cats
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-                Our activated carbon formula has been tested and proven effective in eliminating 
-                ammonia, hydrogen sulfide, and other common litter box odors.
+                Our activated carbon formula has been tested and proven
+                effective in eliminating ammonia, hydrogen sulfide, and other
+                common litter box odors.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
@@ -235,18 +271,31 @@ export default function SciencePage() {
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold mb-2">24/7</div>
-                  <div className="text-lg opacity-90">Continuous Protection</div>
+                  <div className="text-lg opacity-90">
+                    Continuous Protection
+                  </div>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+                >
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold"
+                  >
                     Experience the Science
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#5B2EFF] transition-colors">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/learn/how-it-works`}
+                >
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-[#5B2EFF] transition-colors"
+                  >
                     Learn More
                   </Button>
                 </Link>
@@ -258,8 +307,8 @@ export default function SciencePage() {
         {/* Back to Learn */}
         <section className="py-8 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <Link 
-              href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}
+            <Link
+              href={`${locale === "fr" ? "/fr" : ""}/learn/how-it-works`}
               className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />

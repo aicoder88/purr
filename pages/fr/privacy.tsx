@@ -1,2 +1,2 @@
 import PrivacyPolicy from "./privacy-policy";
-export default PrivacyPolicy; 
+export default PrivacyPolicy;

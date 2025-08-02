@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { z } from 'zod';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { z } from "zod";
 
 // Define validation schema with Zod
 const newsletterSchema = z.object({
@@ -20,20 +20,22 @@ const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse<ResponseData>,
 ) {
   // Set security headers
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Content-Security-Policy', "default-src 'self'");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("Content-Security-Policy", "default-src 'self'");
 
   // Only allow POST method
-  if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, message: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res
+      .status(405)
+      .json({ success: false, message: "Method not allowed" });
   }
 
   // Apply rate limiting
-  const clientIp = req.headers['x-forwarded-for'] as string || 'unknown';
+  const clientIp = (req.headers["x-forwarded-for"] as string) || "unknown";
   const now = Date.now();
   const ipData = ipRequestCounts.get(clientIp);
 
@@ -42,35 +44,41 @@ export default async function handler(
       if (ipData.count >= MAX_REQUESTS_PER_WINDOW) {
         return res.status(429).json({
           success: false,
-          message: 'Too many requests. Please try again later.',
+          message: "Too many requests. Please try again later.",
         });
       }
       ipData.count += 1;
     } else {
-      ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+      ipRequestCounts.set(clientIp, {
+        count: 1,
+        resetTime: now + RATE_LIMIT_WINDOW,
+      });
     }
   } else {
-    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    ipRequestCounts.set(clientIp, {
+      count: 1,
+      resetTime: now + RATE_LIMIT_WINDOW,
+    });
   }
 
   try {
     // Validate form data with Zod
     const validationResult = newsletterSchema.safeParse(req.body);
-    
+
     if (!validationResult.success) {
       return res.status(400).json({
         success: false,
-        message: 'Please enter a valid email address.',
+        message: "Please enter a valid email address.",
       });
     }
 
     const { email } = validationResult.data;
 
     // Log the newsletter subscription for demonstration purposes
-    console.log('Newsletter subscription:', {
+    console.log("Newsletter subscription:", {
       email,
       timestamp: new Date().toISOString(),
-      ip: clientIp
+      ip: clientIp,
     });
 
     // In a real implementation, you would:
@@ -89,13 +97,16 @@ export default async function handler(
     // Return success response
     return res.status(200).json({
       success: true,
-      message: 'Thank you for subscribing to our newsletter!'
+      message: "Thank you for subscribing to our newsletter!",
     });
   } catch (error) {
-    console.error('Error processing newsletter subscription:', error instanceof Error ? error.message : 'Unknown error');
+    console.error(
+      "Error processing newsletter subscription:",
+      error instanceof Error ? error.message : "Unknown error",
+    );
     return res.status(500).json({
       success: false,
-      message: 'An error occurred while processing your subscription'
+      message: "An error occurred while processing your subscription",
     });
   }
-} 
+}

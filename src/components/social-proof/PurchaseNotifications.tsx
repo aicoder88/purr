@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ShoppingBag, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ShoppingBag, MapPin, Clock, Star, CheckCircle } from "lucide-react";
 
 interface PurchaseNotification {
   id: string;
@@ -12,7 +12,7 @@ interface PurchaseNotification {
 }
 
 interface PurchaseNotificationsProps {
-  position?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+  position?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
   showInterval?: number; // milliseconds
   autoHide?: boolean;
   hideDelay?: number; // milliseconds
@@ -20,86 +20,87 @@ interface PurchaseNotificationsProps {
 
 const SAMPLE_PURCHASES: PurchaseNotification[] = [
   {
-    id: '1',
-    customerName: 'Priya S.',
-    location: 'Saint-Laurent, QC',
-    product: 'Purrify 120g Large',
-    timeAgo: '3 minutes ago',
+    id: "1",
+    customerName: "Priya S.",
+    location: "Saint-Laurent, QC",
+    product: "Purrify 120g Large",
+    timeAgo: "3 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '2',
-    customerName: 'Kenji T.',
-    location: 'Verdun, QC',
-    product: 'Purrify 60g Regular',
-    timeAgo: '12 minutes ago',
+    id: "2",
+    customerName: "Kenji T.",
+    location: "Verdun, QC",
+    product: "Purrify 60g Regular",
+    timeAgo: "12 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '3',
-    customerName: 'Fatima R.',
-    location: 'Côte-des-Neiges, QC',
-    product: 'Purrify 17g Trial',
-    timeAgo: '18 minutes ago',
+    id: "3",
+    customerName: "Fatima R.",
+    location: "Côte-des-Neiges, QC",
+    product: "Purrify 17g Trial",
+    timeAgo: "18 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '4',
-    customerName: 'Zara K.',
-    location: 'Plateau, QC',
-    product: 'Purrify 60g Regular',
-    timeAgo: '28 minutes ago',
+    id: "4",
+    customerName: "Zara K.",
+    location: "Plateau, QC",
+    product: "Purrify 60g Regular",
+    timeAgo: "28 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '5',
-    customerName: 'François B.',
-    location: 'Rosemont, QC',
-    product: 'Purrify 120g Large',
-    timeAgo: '35 minutes ago',
+    id: "5",
+    customerName: "François B.",
+    location: "Rosemont, QC",
+    product: "Purrify 120g Large",
+    timeAgo: "35 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '6',
-    customerName: 'Dr. Amara Chen',
-    location: 'Westmount, QC',
-    product: 'Purrify 60g Regular',
-    timeAgo: '42 minutes ago',
+    id: "6",
+    customerName: "Dr. Amara Chen",
+    location: "Westmount, QC",
+    product: "Purrify 60g Regular",
+    timeAgo: "42 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '7',
-    customerName: 'River K.',
-    location: 'Hochelaga, QC',
-    product: 'Purrify 17g Trial',
-    timeAgo: '55 minutes ago',
+    id: "7",
+    customerName: "River K.",
+    location: "Hochelaga, QC",
+    product: "Purrify 17g Trial",
+    timeAgo: "55 minutes ago",
     verified: true,
-    rating: 5
+    rating: 5,
   },
   {
-    id: '8',
-    customerName: 'Kai L.',
-    location: 'Outremont, QC',
-    product: 'Purrify 120g Large',
-    timeAgo: '1 hour ago',
+    id: "8",
+    customerName: "Kai L.",
+    location: "Outremont, QC",
+    product: "Purrify 120g Large",
+    timeAgo: "1 hour ago",
     verified: true,
-    rating: 5
-  }
+    rating: 5,
+  },
 ];
 
 export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
-  position = 'bottom-left',
+  position = "bottom-left",
   showInterval = 55000, // Default to 55 seconds (middle of 20-90 range)
   autoHide = true,
-  hideDelay = 5000
+  hideDelay = 5000,
 }) => {
-  const [currentNotification, setCurrentNotification] = useState<PurchaseNotification | null>(null);
+  const [currentNotification, setCurrentNotification] =
+    useState<PurchaseNotification | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [notificationIndex, setNotificationIndex] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
@@ -124,11 +125,11 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
         }
 
         setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-        
+
         // Schedule the next notification
         scheduleNextNotification();
       }, randomInterval);
-      
+
       setTimeoutId(timeout);
     };
 
@@ -146,7 +147,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
       }
 
       setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-      
+
       // Start the random scheduling after first notification
       scheduleNextNotification();
     }, initialDelay);
@@ -164,17 +165,17 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   };
 
   const positionClasses = {
-    'bottom-left': 'bottom-4 left-4',
-    'bottom-right': 'bottom-4 right-4',
-    'top-left': 'top-4 left-4',
-    'top-right': 'top-4 right-4'
+    "bottom-left": "bottom-4 left-4",
+    "bottom-right": "bottom-4 right-4",
+    "top-left": "top-4 left-4",
+    "top-right": "top-4 right-4",
   };
 
   const slideClasses = {
-    'bottom-left': 'translate-x-0',
-    'bottom-right': 'translate-x-0',
-    'top-left': 'translate-x-0',
-    'top-right': 'translate-x-0'
+    "bottom-left": "translate-x-0",
+    "bottom-right": "translate-x-0",
+    "top-left": "translate-x-0",
+    "top-right": "translate-x-0",
   };
 
   if (!currentNotification) return null;
@@ -182,9 +183,9 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   return (
     <div
       className={`fixed ${positionClasses[position]} z-50 transition-all duration-500 ease-in-out transform ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
-      style={{ maxWidth: '320px' }}
+      style={{ maxWidth: "320px" }}
     >
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-4 m-4">
         {/* Header */}
@@ -202,8 +203,18 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
             className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             aria-label="Close notification"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -225,7 +236,10 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
           </div>
 
           <div className="text-sm text-gray-600 dark:text-gray-300">
-            purchased <span className="font-medium text-[#5B2EFF]">{currentNotification.product}</span>
+            purchased{" "}
+            <span className="font-medium text-[#5B2EFF]">
+              {currentNotification.product}
+            </span>
           </div>
 
           {currentNotification.rating && (
@@ -235,8 +249,8 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
                   key={i}
                   className={`w-3 h-3 ${
                     i < currentNotification.rating!
-                      ? 'text-yellow-400 fill-current'
-                      : 'text-gray-300 dark:text-gray-600'
+                      ? "text-yellow-400 fill-current"
+                      : "text-gray-300 dark:text-gray-600"
                   }`}
                 />
               ))}
@@ -265,7 +279,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
               className="bg-[#5B2EFF] h-1 rounded-full transition-all duration-100 ease-linear"
               style={{
                 animation: `shrink ${hideDelay}ms linear`,
-                width: '100%'
+                width: "100%",
               }}
             />
           </div>

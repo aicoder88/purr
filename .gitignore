@@ -24,9 +24,13 @@ build
 out
 
 # Local env files
+# Ignore all environment files
 .env
-.env*.local
-!.env.production
+.env.*
+!.env.example
+!.env.production.example
+# Except the example files (with .example extension)
+!*.example
 
 # Editor directories and files
 .vscode/*

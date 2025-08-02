@@ -1,13 +1,22 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
-import { Input } from '../../../src/components/ui/input';
-import { Textarea } from '../../../src/components/ui/textarea';
-import { useTranslation } from '../../../src/lib/translation-context';
-import { SITE_NAME } from '../../../src/lib/constants';
-import Link from 'next/link';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../../src/components/ui/container";
+import { Button } from "../../../src/components/ui/button";
+import { Input } from "../../../src/components/ui/input";
+import { Textarea } from "../../../src/components/ui/textarea";
+import { useTranslation } from "../../../src/lib/translation-context";
+import { SITE_NAME } from "../../../src/lib/constants";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Mail,
+  Phone,
+  Clock,
+  MapPin,
+  MessageCircle,
+  Send,
+  CheckCircle,
+} from "lucide-react";
+import { useState } from "react";
 
 export default function ContactPageFR() {
   const { t, locale } = useTranslation();
@@ -16,28 +25,29 @@ export default function ContactPageFR() {
     success?: boolean;
     message?: string;
   }>({});
-  
+
   const pageTitle = `Contactez-Nous - ${SITE_NAME} Support Client & Aide`;
-  const pageDescription = "Contactez l'équipe de support client de Purrify. Nous sommes là pour vous aider avec les questions sur les produits, les commandes, et les conseils de contrôle des odeurs de litière.";
-  const canonicalUrl = 'https://purrify.ca/fr/support/contact';
+  const pageDescription =
+    "Contactez l'équipe de support client de Purrify. Nous sommes là pour vous aider avec les questions sur les produits, les commandes, et les conseils de contrôle des odeurs de litière.";
+  const canonicalUrl = "https://purrify.ca/fr/support/contact";
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    orderNumber: '',
-    contactReason: 'general'
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    orderNumber: "",
+    contactReason: "general",
   });
 
   const contactReasons = [
-    { value: 'general', label: 'Question Générale' },
-    { value: 'product', label: 'Information Produit' },
-    { value: 'order', label: 'Support Commande' },
-    { value: 'shipping', label: 'Question Livraison' },
-    { value: 'return', label: 'Retour/Remboursement' },
-    { value: 'wholesale', label: 'Demande Grossiste' },
-    { value: 'feedback', label: 'Commentaire/Avis' }
+    { value: "general", label: "Question Générale" },
+    { value: "product", label: "Information Produit" },
+    { value: "order", label: "Support Commande" },
+    { value: "shipping", label: "Question Livraison" },
+    { value: "return", label: "Retour/Remboursement" },
+    { value: "wholesale", label: "Demande Grossiste" },
+    { value: "feedback", label: "Commentaire/Avis" },
   ];
 
   const contactMethods = [
@@ -47,7 +57,7 @@ export default function ContactPageFR() {
       value: "support@purrify.ca",
       description: "Obtenez de l'aide détaillée par email",
       responseTime: "Habituellement dans les 24 heures",
-      action: "mailto:support@purrify.ca"
+      action: "mailto:support@purrify.ca",
     },
     {
       icon: Phone,
@@ -55,7 +65,7 @@ export default function ContactPageFR() {
       value: "+1 514 961 9386",
       description: "Parlez directement avec notre équipe",
       responseTime: "Lun-Ven, 9h-17h EST",
-      action: "tel:+15149619386"
+      action: "tel:+15149619386",
     },
     {
       icon: MessageCircle,
@@ -63,34 +73,42 @@ export default function ContactPageFR() {
       value: "Disponible Maintenant",
       description: "Aide instantanée pour questions rapides",
       responseTime: "Réponse moyenne: 2 minutes",
-      action: "#"
-    }
+      action: "#",
+    },
   ];
 
   const faqs = [
     {
       question: "À quelle vitesse verrai-je des résultats avec Purrify?",
-      answer: "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact."
+      answer:
+        "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact.",
     },
     {
       question: "Quelle est votre politique de retour?",
-      answer: "Nous offrons une garantie de remboursement de 30 jours. Si vous n'êtes pas complètement satisfait de Purrify, contactez-nous pour un remboursement complet."
+      answer:
+        "Nous offrons une garantie de remboursement de 30 jours. Si vous n'êtes pas complètement satisfait de Purrify, contactez-nous pour un remboursement complet.",
     },
     {
       question: "Offrez-vous des prix de gros pour plusieurs chats?",
-      answer: "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
+      answer:
+        "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires.",
     },
     {
       question: "Purrify est-il sûr si mon chat l'ingère accidentellement?",
-      answer: "Absolument. Le charbon activé est complètement sûr pour les chats et est même utilisé en médecine vétérinaire. Cependant, Purrify est conçu pour rester mélangé avec la litière."
-    }
+      answer:
+        "Absolument. Le charbon activé est complètement sûr pour les chats et est même utilisé en médecine vétérinaire. Cependant, Purrify est conçu pour rester mélangé avec la litière.",
+    },
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -101,26 +119,28 @@ export default function ContactPageFR() {
 
     try {
       // Simulate form submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       setSubmitStatus({
         success: true,
-        message: "Merci de nous avoir contactés! Nous vous répondrons dans les 24 heures."
+        message:
+          "Merci de nous avoir contactés! Nous vous répondrons dans les 24 heures.",
       });
-      
+
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        orderNumber: '',
-        contactReason: 'general'
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        orderNumber: "",
+        contactReason: "general",
       });
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: "Désolé, il y a eu une erreur en envoyant votre message. Veuillez réessayer ou nous contacter directement."
+        message:
+          "Désolé, il y a eu une erreur en envoyant votre message. Veuillez réessayer ou nous contacter directement.",
       });
     } finally {
       setIsSubmitting(false);
@@ -137,15 +157,15 @@ export default function ContactPageFR() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'website',
+          type: "website",
           images: [
             {
-              url: 'https://purrify.ca/customer-support-hero.jpg',
+              url: "https://purrify.ca/customer-support-hero.jpg",
               width: 1200,
               height: 630,
-              alt: 'Équipe de Support Client Purrify'
-            }
-          ]
+              alt: "Équipe de Support Client Purrify",
+            },
+          ],
         }}
       />
 
@@ -155,7 +175,10 @@ export default function ContactPageFR() {
           <nav className="py-4 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href="/fr" className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link
+                  href="/fr"
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
                   Accueil
                 </Link>
               </li>
@@ -166,7 +189,9 @@ export default function ContactPageFR() {
                 </span>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Contact</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                Contact
+              </li>
             </ol>
           </nav>
         </Container>
@@ -179,8 +204,9 @@ export default function ContactPageFR() {
                 Nous Sommes Là Pour Vous Aider
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-                Avez-vous des questions sur Purrify? Besoin d'aide avec votre commande? Notre équipe de support client 
-                amicale est prête à vous assister avec des conseils d'experts et des solutions.
+                Avez-vous des questions sur Purrify? Besoin d'aide avec votre
+                commande? Notre équipe de support client amicale est prête à
+                vous assister avec des conseils d'experts et des solutions.
               </p>
             </div>
           </Container>
@@ -200,7 +226,10 @@ export default function ContactPageFR() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {contactMethods.map((method, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
+                >
                   <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
                     <method.icon className="w-8 h-8 text-white" />
                   </div>
@@ -216,12 +245,14 @@ export default function ContactPageFR() {
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
-                  <Button 
+                  <Button
                     className="w-full"
                     onClick={() => {
-                      if (method.action.startsWith('#')) {
+                      if (method.action.startsWith("#")) {
                         // Handle live chat
-                        alert('Fonctionnalité de chat en direct bientôt disponible! Veuillez utiliser email ou téléphone pour le moment.');
+                        alert(
+                          "Fonctionnalité de chat en direct bientôt disponible! Veuillez utiliser email ou téléphone pour le moment.",
+                        );
                       } else {
                         window.location.href = method.action;
                       }
@@ -244,18 +275,23 @@ export default function ContactPageFR() {
                   Envoyez-Nous un Message
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures
+                  Remplissez le formulaire ci-dessous et nous vous répondrons
+                  dans les 24 heures
                 </p>
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
                 {submitStatus.message && (
-                  <div className={`mb-6 p-4 rounded-lg flex items-center ${
-                    submitStatus.success 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
-                      : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
-                  }`}>
-                    {submitStatus.success && <CheckCircle className="w-5 h-5 mr-2" />}
+                  <div
+                    className={`mb-6 p-4 rounded-lg flex items-center ${
+                      submitStatus.success
+                        ? "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800"
+                        : "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800"
+                    }`}
+                  >
+                    {submitStatus.success && (
+                      <CheckCircle className="w-5 h-5 mr-2" />
+                    )}
                     {submitStatus.message}
                   </div>
                 )}
@@ -263,7 +299,10 @@ export default function ContactPageFR() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Nom Complet *
                       </label>
                       <Input
@@ -278,7 +317,10 @@ export default function ContactPageFR() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Adresse Email *
                       </label>
                       <Input
@@ -296,7 +338,10 @@ export default function ContactPageFR() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="contactReason"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Raison du Contact
                       </label>
                       <select
@@ -314,7 +359,10 @@ export default function ContactPageFR() {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label
+                        htmlFor="orderNumber"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
                         Numéro de Commande (si applicable)
                       </label>
                       <Input
@@ -330,7 +378,10 @@ export default function ContactPageFR() {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Sujet *
                     </label>
                     <Input
@@ -346,7 +397,10 @@ export default function ContactPageFR() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Message *
                     </label>
                     <Textarea
@@ -399,7 +453,10 @@ export default function ContactPageFR() {
 
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+                >
                   <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {faq.question}
                   </h3>
@@ -435,21 +492,31 @@ export default function ContactPageFR() {
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Lundi - Vendredi</p>
-                      <p className="text-gray-600 dark:text-gray-300">9h00 - 17h00 EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Lundi - Vendredi
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        9h00 - 17h00 EST
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Samedi</p>
-                      <p className="text-gray-600 dark:text-gray-300">10h00 - 14h00 EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Samedi
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        10h00 - 14h00 EST
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Dimanche</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Dimanche
+                      </p>
                       <p className="text-gray-600 dark:text-gray-300">Fermé</p>
                     </div>
                   </div>
@@ -464,14 +531,19 @@ export default function ContactPageFR() {
                   <div className="flex items-center justify-center md:justify-start">
                     <MapPin className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Purrify Canada</p>
-                      <p className="text-gray-600 dark:text-gray-300">Montréal, Québec</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                        Purrify Canada
+                      </p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        Montréal, Québec
+                      </p>
                       <p className="text-gray-600 dark:text-gray-300">Canada</p>
                     </div>
                   </div>
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Nous expédions partout au Canada et offrons la collecte locale dans la région de Montréal.
+                      Nous expédions partout au Canada et offrons la collecte
+                      locale dans la région de Montréal.
                     </p>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] focus-visible:ring-offset-2 dark:focus-visible:ring-[#FF5050] disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
@@ -17,7 +17,8 @@ const buttonVariants = cva(
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg transition-transform duration-200",
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg transition-transform duration-200",
-        ghost: "hover:bg-accent hover:text-accent-foreground hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg transition-transform duration-200",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg transition-transform duration-200",
         link: "text-primary underline-offset-4 hover:underline hover:scale-105 focus-visible:scale-105 transition-transform duration-200",
       },
       size: {
@@ -31,32 +32,48 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  loading?: boolean
-  loadingText?: string
+  asChild?: boolean;
+  loading?: boolean;
+  loadingText?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading = false, loadingText, children, disabled, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      loadingText,
+      children,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
     const isDisabled = disabled || loading;
-    
+
     if (asChild) {
       const child = React.Children.only(children) as React.ReactElement;
       return React.cloneElement(child, {
-        className: cn(buttonVariants({ variant, size, className }), child.props.className),
+        className: cn(
+          buttonVariants({ variant, size, className }),
+          child.props.className,
+        ),
         disabled: isDisabled,
-        'aria-disabled': isDisabled,
+        "aria-disabled": isDisabled,
         ref,
         ...props,
       });
     }
-    
+
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}
@@ -87,11 +104,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             />
           </svg>
         )}
-        {loading ? (loadingText || 'Loading...') : children}
+        {loading ? loadingText || "Loading..." : children}
       </button>
     );
-  }
-)
-Button.displayName = "Button"
+  },
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

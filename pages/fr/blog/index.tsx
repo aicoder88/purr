@@ -9,27 +9,35 @@ import NextImage from "../../../components/NextImage";
 
 const BlogPage: NextPage = () => {
   const { t } = useTranslation();
-  
+
   return (
     <>
       <Head>
         <title>Blog | {SITE_NAME}</title>
-        <meta name="description" content="Conseils, astuces et informations pour les propriétaires de chats qui souhaitent une maison fraîche et des chats heureux et en bonne santé." />
+        <meta
+          name="description"
+          content="Conseils, astuces et informations pour les propriétaires de chats qui souhaitent une maison fraîche et des chats heureux et en bonne santé."
+        />
         <link rel="canonical" href="https://purrify.ca/fr/blog" />
         <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/blog" />
         <link rel="alternate" hrefLang="en" href="https://purrify.ca/blog" />
       </Head>
-      
+
       <section className="py-16 md:py-24 bg-gradient-to-b from-white to-indigo-50">
         <Container>
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.blogSection.catCareTips}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t.blogSection.catCareTips}
+            </h1>
             <p className="text-lg text-gray-600">{t.blogSection.description}</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sampleBlogPosts.map((post) => (
-              <div key={post.link} className="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div
+                key={post.link}
+                className="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
                 <div className="relative h-48">
                   <NextImage
                     src={post.image}
@@ -44,7 +52,10 @@ const BlogPage: NextPage = () => {
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-500">{post.date}</span>
-                    <Link href={post.link} className="text-indigo-600 font-medium hover:text-indigo-800">
+                    <Link
+                      href={post.link}
+                      className="text-indigo-600 font-medium hover:text-indigo-800"
+                    >
                       {t.blogSection.readFullArticle}
                     </Link>
                   </div>

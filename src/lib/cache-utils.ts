@@ -6,7 +6,7 @@
 export interface CacheConfig {
   ttl: number;
   maxSize?: number;
-  strategy: 'lru' | 'fifo' | 'lfu';
+  strategy: "lru" | "fifo" | "lfu";
   compression?: boolean;
 }
 
@@ -25,44 +25,44 @@ export const CACHE_STRATEGIES = {
   // Static assets - long cache
   static: {
     ttl: 31536000000, // 1 year
-    strategy: 'lru' as const,
-    compression: true
+    strategy: "lru" as const,
+    compression: true,
   },
-  
+
   // API responses - medium cache
   api: {
     ttl: 300000, // 5 minutes
-    strategy: 'lfu' as const,
-    compression: true
+    strategy: "lfu" as const,
+    compression: true,
   },
-  
+
   // Product data - longer cache
   products: {
     ttl: 3600000, // 1 hour
-    strategy: 'lru' as const,
-    compression: true
+    strategy: "lru" as const,
+    compression: true,
   },
-  
+
   // Testimonials - medium cache
   testimonials: {
     ttl: 1800000, // 30 minutes
-    strategy: 'lru' as const,
-    compression: false
+    strategy: "lru" as const,
+    compression: false,
   },
-  
+
   // User preferences - persistent
   preferences: {
     ttl: 86400000, // 24 hours
-    strategy: 'lru' as const,
-    compression: false
+    strategy: "lru" as const,
+    compression: false,
   },
-  
+
   // Images - long cache
   images: {
     ttl: 2592000000, // 30 days
-    strategy: 'lru' as const,
-    compression: false
-  }
+    strategy: "lru" as const,
+    compression: false,
+  },
 } as const;
 
 // Advanced cache class with multiple strategies
@@ -83,17 +83,17 @@ export class AdvancedCache<T = any> {
     if (!item) {
       return null;
     }
-    
+
     // Check if expired
     if (Date.now() > item.expires) {
       this.cache.delete(key);
       return null;
     }
-    
+
     // Update access patterns
     item.hits++;
     this.updateAccessOrder(key);
-    
+
     // Return the cached data
     return item.data;
   }
@@ -103,14 +103,14 @@ export class AdvancedCache<T = any> {
     try {
       // Ensure space
       this.ensureSpace();
-      
+
       // Handle compression if needed
       let item: CacheItem<T>;
-      
+
       if (this.config.compression) {
         const compressedData = this.compress(data);
         const size = this.calculateSize(compressedData);
-        
+
         // Store the compressed data with proper typing
         item = {
           data: JSON.parse(compressedData) as T, // Parse back to ensure type safety
@@ -118,26 +118,26 @@ export class AdvancedCache<T = any> {
           expires: Date.now() + this.config.ttl,
           hits: 0,
           size,
-          compressed: true
+          compressed: true,
         };
       } else {
         const size = this.calculateSize(data);
-        
+
         item = {
           data,
           timestamp: Date.now(),
           expires: Date.now() + this.config.ttl,
           hits: 0,
           size,
-          compressed: false
+          compressed: false,
         };
       }
-      
+
       this.cache.set(key, item);
       this.updateAccessOrder(key);
       return true;
     } catch (error) {
-      console.warn('Cache set error:', error);
+      console.warn("Cache set error:", error);
       return false;
     }
   }
@@ -145,7 +145,7 @@ export class AdvancedCache<T = any> {
   // Delete item from cache
   delete(key: string): boolean {
     const deleted = this.cache.delete(key);
-    this.accessOrder = this.accessOrder.filter(k => k !== key);
+    this.accessOrder = this.accessOrder.filter((k) => k !== key);
     return deleted;
   }
 
@@ -160,14 +160,14 @@ export class AdvancedCache<T = any> {
     const items = Array.from(this.cache.values());
     const totalSize = items.reduce((sum, item) => sum + item.size, 0);
     const totalHits = items.reduce((sum, item) => sum + item.hits, 0);
-    
+
     return {
       size: this.cache.size,
       totalSize,
       totalHits,
       strategy: this.config.strategy,
       ttl: this.config.ttl,
-      compression: this.config.compression
+      compression: this.config.compression,
     };
   }
 
@@ -181,21 +181,21 @@ export class AdvancedCache<T = any> {
   // Evict item based on strategy
   private evictItem(): void {
     let keyToEvict: string | null = null;
-    
+
     switch (this.config.strategy) {
-      case 'lru':
+      case "lru":
         keyToEvict = this.accessOrder[0] || null;
         break;
-        
-      case 'fifo':
+
+      case "fifo":
         keyToEvict = this.getOldestKey();
         break;
-        
-      case 'lfu':
+
+      case "lfu":
         keyToEvict = this.getLeastFrequentKey();
         break;
     }
-    
+
     if (keyToEvict) {
       this.delete(keyToEvict);
     }
@@ -205,14 +205,14 @@ export class AdvancedCache<T = any> {
   private getOldestKey(): string | null {
     let oldestKey: string | null = null;
     let oldestTime = Date.now();
-    
+
     for (const [key, item] of this.cache.entries()) {
       if (item.timestamp < oldestTime) {
         oldestTime = item.timestamp;
         oldestKey = key;
       }
     }
-    
+
     return oldestKey;
   }
 
@@ -220,20 +220,20 @@ export class AdvancedCache<T = any> {
   private getLeastFrequentKey(): string | null {
     let leastUsedKey: string | null = null;
     let leastHits = Infinity;
-    
+
     for (const [key, item] of this.cache.entries()) {
       if (item.hits < leastHits) {
         leastHits = item.hits;
         leastUsedKey = key;
       }
     }
-    
+
     return leastUsedKey;
   }
 
   // Update access order for LRU
   private updateAccessOrder(key: string): void {
-    this.accessOrder = this.accessOrder.filter(k => k !== key);
+    this.accessOrder = this.accessOrder.filter((k) => k !== key);
     this.accessOrder.push(key);
   }
 
@@ -256,7 +256,7 @@ export class AdvancedCache<T = any> {
 // Cache manager for different content types
 export class CacheManager {
   private caches = new Map<string, AdvancedCache>();
-  
+
   constructor() {
     // Initialize caches for different content types
     Object.entries(CACHE_STRATEGIES).forEach(([type, config]) => {
@@ -271,43 +271,43 @@ export class CacheManager {
 
   // Convenience methods for common operations
   cacheProduct(id: string, product: any): boolean {
-    const cache = this.getCache('products');
+    const cache = this.getCache("products");
     return cache ? cache.set(`product_${id}`, product) : false;
   }
 
   getProduct(id: string): any | null {
-    const cache = this.getCache('products');
+    const cache = this.getCache("products");
     return cache ? cache.get(`product_${id}`) : null;
   }
 
   cacheTestimonials(testimonials: any[]): boolean {
-    const cache = this.getCache('testimonials');
-    return cache ? cache.set('all_testimonials', testimonials) : false;
+    const cache = this.getCache("testimonials");
+    return cache ? cache.set("all_testimonials", testimonials) : false;
   }
 
   getTestimonials(): any[] | null {
-    const cache = this.getCache('testimonials');
-    return cache ? cache.get('all_testimonials') : null;
+    const cache = this.getCache("testimonials");
+    return cache ? cache.get("all_testimonials") : null;
   }
 
   cacheApiResponse(endpoint: string, data: any): boolean {
-    const cache = this.getCache('api');
+    const cache = this.getCache("api");
     return cache ? cache.set(`api_${endpoint}`, data) : false;
   }
 
   getApiResponse(endpoint: string): any | null {
-    const cache = this.getCache('api');
+    const cache = this.getCache("api");
     return cache ? cache.get(`api_${endpoint}`) : null;
   }
 
   // Get overall statistics
   getAllStats() {
     const stats: Record<string, any> = {};
-    
+
     for (const [type, cache] of this.caches.entries()) {
       stats[type] = cache.getStats();
     }
-    
+
     return stats;
   }
 
@@ -335,28 +335,34 @@ export const globalCacheManager = new CacheManager();
 // Cache decorators for functions
 export function cached<T extends (...args: any[]) => any>(
   type: keyof typeof CACHE_STRATEGIES,
-  keyGenerator?: (...args: Parameters<T>) => string
+  keyGenerator?: (...args: Parameters<T>) => string,
 ) {
-  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
-    
-    descriptor.value = function(...args: Parameters<T>) {
+
+    descriptor.value = function (...args: Parameters<T>) {
       const cache = globalCacheManager.getCache(type);
       if (!cache) return originalMethod.apply(this, args);
-      
-      const key = keyGenerator ? keyGenerator(...args) : `${propertyKey}_${JSON.stringify(args)}`;
-      
+
+      const key = keyGenerator
+        ? keyGenerator(...args)
+        : `${propertyKey}_${JSON.stringify(args)}`;
+
       // Try to get from cache
       const cached = cache.get(key);
       if (cached !== null) return cached;
-      
+
       // Execute original method and cache result
       const result = originalMethod.apply(this, args);
       cache.set(key, result);
-      
+
       return result;
     };
-    
+
     return descriptor;
   };
 }
@@ -364,12 +370,12 @@ export function cached<T extends (...args: any[]) => any>(
 // React hook for cache management
 export function useCache(type: keyof typeof CACHE_STRATEGIES) {
   const cache = globalCacheManager.getCache(type);
-  
+
   return {
     get: (key: string) => cache?.get(key) || null,
     set: (key: string, data: any) => cache?.set(key, data) || false,
     delete: (key: string) => cache?.delete(key) || false,
     clear: () => cache?.clear(),
-    stats: () => cache?.getStats()
+    stats: () => cache?.getStats(),
   };
 }

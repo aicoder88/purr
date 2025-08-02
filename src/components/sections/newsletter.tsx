@@ -9,7 +9,7 @@ export function Newsletter() {
     <section id="newsletter" className="py-16 bg-[#FFFFF5] dark:bg-gray-900">
       <Container>
         <div className="max-w-4xl mx-auto">
-          <NewsletterSignup 
+          <NewsletterSignup
             variant="default"
             showBenefits={true}
             discount={10}

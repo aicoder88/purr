@@ -1,241 +1,92 @@
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import { Button } from '../src/components/ui/button';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG, isEmailJSConfigured } from '../src/lib/emailjs-config';
 import { useTranslation } from '../src/lib/translation-context';
-
-// Define validation schema with Zod
-const contactFormSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters' }).max(50),
-  email: z.string().email({ message: 'Please enter a valid email address' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters' }).max(1000),
-});
-
-type ContactFormData = z.infer<typeof contactFormSchema>;
+import { useContactForm, type ContactFormData } from '../hooks/useContactForm';
+import { InputField, TextareaField } from './FormField';
+import { useRouter } from 'next/router';
 
 export default function ContactForm() {
   const { t } = useTranslation();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success?: boolean;
-    message?: string;
-  }>({});
-
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
-  });
+    isSubmitting,
+    submitStatus,
+    onSubmit,
+    initializeEmailJS,
+  } = useContactForm();
 
-  // EmailJS configuration
-  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
-  const [configValid, setConfigValid] = useState(false);
-  
+  // Initialize EmailJS on component mount
   useEffect(() => {
-    // Check if EmailJS is properly configured
-    const isConfigured = isEmailJSConfigured();
-    setConfigValid(isConfigured);
-    
-    // Only initialize if configuration is valid
-    if (isConfigured && EMAILJS_CONFIG.PUBLIC_KEY) {
-      try {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        setEmailjsInitialized(true);
-        console.log('EmailJS initialized successfully');
-      } catch (error) {
-        console.error('Failed to initialize EmailJS:', error);
-        setEmailjsInitialized(false);
-      }
-    }
-  }, []);
+    initializeEmailJS();
+  }, [initializeEmailJS]);
 
-  // Helper function to validate API response
-  const validateWithAPI = async (data: ContactFormData) => {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+  const router = useRouter();
+  const { locale = 'en' } = router;
 
-    const responseData = await response.json();
-    console.log('API response:', responseData);
-
-    if (!response.ok) {
-      throw new Error(responseData.message || 'API validation failed');
-    }
-
-    return responseData;
+  // Get translated labels with fallbacks
+  const getTranslatedLabel = (key: keyof ContactFormData) => {
+    // Use the form translations if available, otherwise use the key as a fallback
+    return t.contact?.form?.[key] || 
+      (key === 'name' ? 'Name' : 
+       key === 'email' ? 'Email' : 
+       key === 'message' ? 'Message' : '');
   };
 
-  // Helper function to send email via EmailJS
-  const sendEmailViaEmailJS = async (data: ContactFormData) => {
-    if (!configValid) {
-      throw new Error('Email service is not properly configured. Please try again later.');
-    }
-
-    if (!emailjsInitialized) {
-      throw new Error('Email service not initialized. Please try again later.');
-    }
-
-    const templateParams = {
-      name: data.name,
-      email: data.email,
-      message: data.message,
-      subject: `Contact form submission from ${data.name}`,
-      date: new Date().toLocaleString(),
-    };
-
-    console.log('Sending email via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
-    
-    const result = await emailjs.send(
-      EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATE_ID,
-      templateParams
-    );
-
-    console.log('EmailJS send result:', result);
-    return result;
-  };
-
-  // Helper function to handle submission success
-  const handleSubmissionSuccess = () => {
-    setSubmitStatus({
-      success: true,
-      message: 'Message sent successfully! We\'ll get back to you soon.',
-    });
-    reset();
-  };
-
-  // Helper function to handle submission errors
-  const handleSubmissionError = (error: unknown) => {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    console.error('Form submission error:', errorMessage);
-    
-    setSubmitStatus({
-      success: false,
-      message: error instanceof Error && error.message.includes('configured') 
-        ? error.message
-        : 'An error occurred. Please try again later.',
-    });
-  };
-
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
-    setSubmitStatus({});
-
-    try {
-      console.log('Attempting to submit contact form:', {
-        name: data.name,
-        email: data.email,
-        messageLength: data.message.length
-      });
-      
-      // Step 1: Validate with API
-      await validateWithAPI(data);
-      
-      // Step 2: Send email via EmailJS
-      await sendEmailViaEmailJS(data);
-      
-      // Step 3: Handle success
-      handleSubmissionSuccess();
-      
-    } catch (error) {
-      handleSubmissionError(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+  // Get translated placeholders with fallbacks
+  const getPlaceholder = (key: keyof ContactFormData) => {
+    // For now, use simple English placeholders since they're not in the translation files
+    return key === 'name' ? 'Your name' :
+           key === 'email' ? 'your.email@example.com' :
+           'Your message...';
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Contact form">
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-[#333333]"
-        >
-          {t.contact.form?.name || "Name"}
-        </label>
-        <input
-          type="text"
-          id="name"
-          {...register('name')}
-          aria-invalid={errors.name ? 'true' : 'false'}
-          aria-describedby={errors.name ? 'name-error' : undefined}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] bg-white px-3 py-2 text-sm text-[#333333] shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
-        />
-        {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-red-600">
-            {errors.name.message}
-          </p>
-        )}
-      </div>
+    <form 
+      onSubmit={onSubmit} 
+      className="space-y-6" 
+      aria-label={t.contactSection?.getInTouch || 'Contact Form'}
+      noValidate
+    >
+      <InputField
+        label={getTranslatedLabel('name')}
+        name="name"
+        register={register}
+        error={errors.name}
+        required
+        placeholder={getPlaceholder('name')}
+      />
 
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-[#333333]"
-        >
-          {t.contact.form?.email || "Email"}
-        </label>
-        <input
-          type="email"
-          id="email"
-          {...register('email')}
-          aria-invalid={errors.email ? 'true' : 'false'}
-          aria-describedby={errors.email ? 'email-error' : undefined}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] bg-white px-3 py-2 text-sm text-[#333333] shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
-        />
-        {errors.email && (
-          <p id="email-error" className="mt-1 text-sm text-red-600">
-            {errors.email.message}
-          </p>
-        )}
-      </div>
+      <InputField
+        label={getTranslatedLabel('email')}
+        name="email"
+        type="email"
+        register={register}
+        error={errors.email}
+        required
+        placeholder={getPlaceholder('email')}
+      />
 
-      <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-[#333333]"
-        >
-          {t.contact.form?.message || "Message"}
-        </label>
-        <textarea
-          id="message"
-          {...register('message')}
-          aria-invalid={errors.message ? 'true' : 'false'}
-          aria-describedby={errors.message ? 'message-error' : undefined}
-          rows={4}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] bg-white px-3 py-2 text-sm text-[#333333] shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
-        />
-        {errors.message && (
-          <p id="message-error" className="mt-1 text-sm text-red-600">
-            {errors.message.message}
-          </p>
-        )}
-      </div>
+      <TextareaField
+        label={getTranslatedLabel('message')}
+        name="message"
+        register={register}
+        error={errors.message}
+        required
+        rows={4}
+        placeholder={getPlaceholder('message')}
+      />
 
       {submitStatus.message && (
         <div
           className={`rounded-md p-4 ${
             submitStatus.success
-              ? 'bg-green-50 text-green-800'
-              : 'bg-red-50 text-red-800'
+              ? 'bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-200'
+              : 'bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-200'
           }`}
           role="alert"
-          aria-live="polite"
+          aria-live={submitStatus.success ? 'polite' : 'assertive'}
         >
           {submitStatus.message}
         </div>
@@ -244,10 +95,12 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90"
+        className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 focus:ring-2 focus:ring-offset-2 focus:ring-[#FF3131]"
         aria-busy={isSubmitting}
       >
-        {isSubmitting ? t.freeGiveaway?.submitting || "Submitting..." : t.contact.form?.submit || "Send"}
+        {isSubmitting 
+          ? t.freeGiveaway?.submitting || 'Submitting...' 
+          : t.contact?.form?.submit || 'Send Message'}
       </Button>
     </form>
   );

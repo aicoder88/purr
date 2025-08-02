@@ -6,24 +6,27 @@ const throttle = (func: Function, limit: number) => {
   let inThrottle: boolean;
   let lastFunc: ReturnType<typeof setTimeout>;
   let lastRan: number;
-  
-  return function(this: any, ...args: any[]) {
+
+  return function (this: any, ...args: any[]) {
     if (!inThrottle) {
       func.apply(this, args);
       lastRan = Date.now();
       inThrottle = true;
-      
+
       setTimeout(() => {
         inThrottle = false;
       }, limit);
     } else {
       clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if (Date.now() - lastRan >= limit) {
-          func.apply(this, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
+      lastFunc = setTimeout(
+        () => {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(this, args);
+            lastRan = Date.now();
+          }
+        },
+        limit - (Date.now() - lastRan),
+      );
     }
   };
 };
@@ -35,41 +38,47 @@ export function PawCursor() {
   const idRef = useRef(0);
   const [isPawAnimationEnabled, setIsPawAnimationEnabled] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  
+
   // Check for reduced motion preference and device capabilities
   useEffect(() => {
     // Safely check if window exists (for SSR)
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     try {
       // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       setIsReducedMotion(prefersReducedMotion);
-      
+
       // Disable on mobile and if reduced motion is preferred
       const checkCapabilities = () => {
         const isMobile = window.innerWidth <= 768;
         const shouldEnable = !isMobile && !prefersReducedMotion;
         setIsPawAnimationEnabled(shouldEnable);
       };
-      
+
       checkCapabilities();
-      
+
       // Use passive event listener for better performance
-      const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const resizeObserver = new ResizeObserver(throttle(checkCapabilities, 250));
-      
+      const mediaQueryList = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const resizeObserver = new ResizeObserver(
+        throttle(checkCapabilities, 250),
+      );
+
       // Modern event listener for mediaQueryList if available
       if (mediaQueryList.addEventListener) {
-        mediaQueryList.addEventListener('change', checkCapabilities);
+        mediaQueryList.addEventListener("change", checkCapabilities);
       }
-      
+
       // Observe document body size changes instead of window resize
       resizeObserver.observe(document.body);
-      
+
       return () => {
         if (mediaQueryList.removeEventListener) {
-          mediaQueryList.removeEventListener('change', checkCapabilities);
+          mediaQueryList.removeEventListener("change", checkCapabilities);
         }
         resizeObserver.disconnect();
       };
@@ -84,28 +93,36 @@ export function PawCursor() {
     throttle((event: MouseEvent) => {
       // Early return if animation is disabled
       if (!isPawAnimationEnabled || isReducedMotion) return;
-      
+
       try {
         // Safely access event properties
-        if (!event || typeof event.clientX !== 'number' || typeof event.clientY !== 'number') return;
-        
+        if (
+          !event ||
+          typeof event.clientX !== "number" ||
+          typeof event.clientY !== "number"
+        )
+          return;
+
         const { clientX: x, clientY: y } = event;
-        
+
         // Calculate rotation based on mouse movement
         const rotation = Math.floor(Math.random() * 360);
-        
+
         // Add small random offset to make paws appear more natural
         const offsetX = Math.random() * 20 - 10; // Random offset between -10 and 10
         const offsetY = Math.random() * 20 - 10; // Random offset between -10 and 10
-        
+
         // Use functional update to avoid closure issues
         setPaws((prev) => {
-          const newPaws = [...prev, {
-            x: x + offsetX,
-            y: y + offsetY,
-            rotation,
-            id: idRef.current++
-          }];
+          const newPaws = [
+            ...prev,
+            {
+              x: x + offsetX,
+              y: y + offsetY,
+              rotation,
+              id: idRef.current++,
+            },
+          ];
           // Only keep the last 3 paws for better performance
           return newPaws.slice(-3);
         });
@@ -115,20 +132,22 @@ export function PawCursor() {
         setIsPawAnimationEnabled(false);
       }
     }, 150), // Increased throttle time for better performance
-    [isPawAnimationEnabled, isReducedMotion]
+    [isPawAnimationEnabled, isReducedMotion],
   );
 
   // Set up and clean up event listeners
   useEffect(() => {
     // Safely check if window exists (for SSR)
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     try {
       if (isPawAnimationEnabled && !isReducedMotion) {
         // Use passive event listener for better performance
-        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        window.addEventListener("mousemove", handleMouseMove, {
+          passive: true,
+        });
       }
-      
+
       return () => {
         window.removeEventListener("mousemove", handleMouseMove);
       };
@@ -139,10 +158,14 @@ export function PawCursor() {
   }, [handleMouseMove, isPawAnimationEnabled, isReducedMotion]);
 
   // Only render if we're in a browser environment and animation is enabled
-  if (typeof window === 'undefined' || !isPawAnimationEnabled || isReducedMotion) {
+  if (
+    typeof window === "undefined" ||
+    !isPawAnimationEnabled ||
+    isReducedMotion
+  ) {
     return null;
   }
-  
+
   return (
     <>
       {/* Use React.Fragment to avoid unnecessary DOM nodes */}

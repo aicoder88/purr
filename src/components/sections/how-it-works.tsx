@@ -6,54 +6,56 @@ import Link from "next/link";
 
 export function HowItWorks() {
   const { t, locale } = useTranslation();
-  
-  const steps = t.howItWorks?.steps ? [
-    {
-      number: t.howItWorks.steps[0].number,
-      title: t.howItWorks.steps[0].title,
-      description: t.howItWorks.steps[0].description,
-      icon: "✨",
-      image: "/optimized/panel_1.webp",
-    },
-    {
-      number: t.howItWorks.steps[1].number,
-      title: t.howItWorks.steps[1].title,
-      description: t.howItWorks.steps[1].description,
-      icon: "🔄",
-      image: "/optimized/panel_2.webp",
-    },
-    {
-      number: t.howItWorks.steps[2].number,
-      title: t.howItWorks.steps[2].title,
-      description: t.howItWorks.steps[2].description,
-      icon: "😌",
-      image: "/optimized/panel_3.webp",
-    },
-  ] : [
-    {
-      number: "01",
-      title: "Open the Bag",
-      description: "Pull off the label and unzip the bag",
-      icon: "✨",
-      image: "/optimized/panel_1.webp",
-    },
-    {
-      number: "02",
-      title: "Sprinkle on top of your cat litter",
-      description:
-        "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
-      icon: "🔄",
-      image: "/optimized/panel_2.webp",
-    },
-    {
-      number: "03",
-      title: "Mix & enjoy freshness!",
-      description:
-        "Gently mix it into the top layer of the litter for maximum effectiveness.",
-      icon: "😌",
-      image: "/optimized/panel_3.webp",
-    },
-  ];
+
+  const steps = t.howItWorks?.steps
+    ? [
+        {
+          number: t.howItWorks.steps[0].number,
+          title: t.howItWorks.steps[0].title,
+          description: t.howItWorks.steps[0].description,
+          icon: "✨",
+          image: "/optimized/panel_1.webp",
+        },
+        {
+          number: t.howItWorks.steps[1].number,
+          title: t.howItWorks.steps[1].title,
+          description: t.howItWorks.steps[1].description,
+          icon: "🔄",
+          image: "/optimized/panel_2.webp",
+        },
+        {
+          number: t.howItWorks.steps[2].number,
+          title: t.howItWorks.steps[2].title,
+          description: t.howItWorks.steps[2].description,
+          icon: "😌",
+          image: "/optimized/panel_3.webp",
+        },
+      ]
+    : [
+        {
+          number: "01",
+          title: "Open the Bag",
+          description: "Pull off the label and unzip the bag",
+          icon: "✨",
+          image: "/optimized/panel_1.webp",
+        },
+        {
+          number: "02",
+          title: "Sprinkle on top of your cat litter",
+          description:
+            "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
+          icon: "🔄",
+          image: "/optimized/panel_2.webp",
+        },
+        {
+          number: "03",
+          title: "Mix & enjoy freshness!",
+          description:
+            "Gently mix it into the top layer of the litter for maximum effectiveness.",
+          icon: "😌",
+          image: "/optimized/panel_3.webp",
+        },
+      ];
 
   return (
     <section
@@ -65,12 +67,28 @@ export function HowItWorks() {
           {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
             Simple as 1-2-3
           </div> */}
-          <SectionHeader text={t.howItWorks?.simpleAs123 || "Simple as 1-2-3"} />
+          <SectionHeader
+            text={t.howItWorks?.simpleAs123 || "Simple as 1-2-3"}
+          />
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             {t.nav.howItWorks}
           </h2>
           <p className="text-gray-600 text-lg">
-            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">compare our sizes</Link> to find what works best for you.
+            {t.features.worksWithAnyLitter.description}{" "}
+            <Link
+              href={`${locale === "fr" ? "/fr" : ""}/learn/science`}
+              className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium"
+            >
+              Learn the science
+            </Link>{" "}
+            or{" "}
+            <Link
+              href={`${locale === "fr" ? "/fr" : ""}/products/compare`}
+              className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium"
+            >
+              compare our sizes
+            </Link>{" "}
+            to find what works best for you.
           </p>
         </div>
 
@@ -90,8 +108,8 @@ export function HowItWorks() {
                     index === 0
                       ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
                       : index === 1
-                      ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
-                      : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
+                        ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
+                        : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
                   } text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
                 >
                   {step.number}
@@ -114,13 +132,15 @@ export function HowItWorks() {
                       index === 0
                         ? "text-[#FF3131]"
                         : index === 1
-                        ? "text-[#5B2EFF]"
-                        : "text-[#03E46A]"
+                          ? "text-[#5B2EFF]"
+                          : "text-[#03E46A]"
                     }`}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 text-base sm:text-lg">{step.description}</p>
+                  <p className="text-gray-700 text-base sm:text-lg">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             </div>

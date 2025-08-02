@@ -1,12 +1,12 @@
-import { en } from './en';
-import { fr } from './fr';
-import { zh } from './zh';
-import { TranslationType } from './types';
+import { en } from "./en";
+import { fr } from "./fr";
+import { zh } from "./zh";
+import { TranslationType } from "./types";
 
 export const translations: Record<string, TranslationType> = {
   en,
   fr,
-  zh
+  zh,
 };
 
 export type Locale = keyof typeof translations;

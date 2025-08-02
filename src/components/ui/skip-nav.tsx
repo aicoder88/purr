@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function SkipNav() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
+      if (e.key === "Tab") {
         setIsVisible(true);
       }
     };
@@ -14,12 +14,12 @@ export function SkipNav() {
       setIsVisible(false);
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('click', handleClick);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("click", handleClick);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("click", handleClick);
     };
   }, []);
 
@@ -34,4 +34,4 @@ export function SkipNav() {
       Skip to main content
     </a>
   );
-} 
+}

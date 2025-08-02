@@ -24,7 +24,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 interface CostCalculatorProps {
@@ -139,7 +139,8 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       },
       tooltip: {
         callbacks: {
-          label: (tooltipItem: TooltipItem<"line">) => `$${tooltipItem.raw as number}`,
+          label: (tooltipItem: TooltipItem<"line">) =>
+            `$${tooltipItem.raw as number}`,
         },
       },
     },

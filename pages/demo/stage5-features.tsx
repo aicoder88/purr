@@ -1,125 +1,131 @@
-import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { Badge } from '../../src/components/ui/badge';
-import { useState } from 'react';
-import { 
-  Smartphone, 
-  Shield, 
-  Zap, 
-  TouchpadIcon as Touch, 
-  CreditCard, 
+import { NextPage } from "next";
+import { NextSeo } from "next-seo";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { Badge } from "../../src/components/ui/badge";
+import { useState } from "react";
+import {
+  Smartphone,
+  Shield,
+  Zap,
+  TouchpadIcon as Touch,
+  CreditCard,
   Star,
   CheckCircle,
   ArrowRight,
   Globe,
-  Wifi
-} from 'lucide-react';
+  Wifi,
+} from "lucide-react";
 
 // Import all Stage 5 components
-import { PurchaseNotifications } from '../../src/components/social-proof/PurchaseNotifications';
-import { TrustBadges } from '../../src/components/social-proof/TrustBadges';
-import { TouchGallery } from '../../src/components/mobile/TouchGallery';
-import { MobilePayment, ExpressCheckoutButtons } from '../../src/components/mobile/MobilePayment';
-import { FastCheckout } from '../../src/components/mobile/FastCheckout';
+import { PurchaseNotifications } from "../../src/components/social-proof/PurchaseNotifications";
+import { TrustBadges } from "../../src/components/social-proof/TrustBadges";
+import { TouchGallery } from "../../src/components/mobile/TouchGallery";
+import {
+  MobilePayment,
+  ExpressCheckoutButtons,
+} from "../../src/components/mobile/MobilePayment";
+import { FastCheckout } from "../../src/components/mobile/FastCheckout";
 
 const Stage5DemoPage: NextPage = () => {
-  const [activeDemo, setActiveDemo] = useState<string>('overview');
+  const [activeDemo, setActiveDemo] = useState<string>("overview");
   const [showNotifications, setShowNotifications] = useState(true);
 
   // Sample product images for TouchGallery demo
   const sampleImages = [
     {
-      src: '/optimized/purrify-product-1.webp',
-      alt: 'Purrify 17g Trial Size',
-      caption: 'Perfect for trying Purrify'
+      src: "/optimized/purrify-product-1.webp",
+      alt: "Purrify 17g Trial Size",
+      caption: "Perfect for trying Purrify",
     },
     {
-      src: '/optimized/purrify-product-2.webp', 
-      alt: 'Purrify 150g Regular Size',
-      caption: 'Our most popular size'
+      src: "/optimized/purrify-product-2.webp",
+      alt: "Purrify 150g Regular Size",
+      caption: "Our most popular size",
     },
     {
-      src: '/optimized/purrify-product-3.webp',
-      alt: 'Purrify 300g Family Size', 
-      caption: 'Best value for multiple cats'
-    }
+      src: "/optimized/purrify-product-3.webp",
+      alt: "Purrify 300g Family Size",
+      caption: "Best value for multiple cats",
+    },
   ];
 
   const features = [
     {
-      id: 'social-proof',
-      title: 'Social Proof Widgets',
-      description: 'Real-time purchase notifications and trust badges',
+      id: "social-proof",
+      title: "Social Proof Widgets",
+      description: "Real-time purchase notifications and trust badges",
       icon: Star,
-      color: 'bg-yellow-500'
+      color: "bg-yellow-500",
     },
     {
-      id: 'mobile-payments',
-      title: 'Mobile Payment Options',
-      description: 'Apple Pay, Google Pay integration with device detection',
+      id: "mobile-payments",
+      title: "Mobile Payment Options",
+      description: "Apple Pay, Google Pay integration with device detection",
       icon: CreditCard,
-      color: 'bg-green-500'
+      color: "bg-green-500",
     },
     {
-      id: 'fast-checkout',
-      title: 'Fast Mobile Checkout',
-      description: 'Streamlined checkout with auto-fill and validation',
+      id: "fast-checkout",
+      title: "Fast Mobile Checkout",
+      description: "Streamlined checkout with auto-fill and validation",
       icon: Zap,
-      color: 'bg-blue-500'
+      color: "bg-blue-500",
     },
     {
-      id: 'touch-gallery',
-      title: 'Touch Gesture Gallery',
-      description: 'Swipe navigation for product images',
+      id: "touch-gallery",
+      title: "Touch Gesture Gallery",
+      description: "Swipe navigation for product images",
       icon: Touch,
-      color: 'bg-purple-500'
+      color: "bg-purple-500",
     },
     {
-      id: 'pwa-features',
-      title: 'PWA Capabilities',
-      description: 'Offline support, app shortcuts, push notifications',
+      id: "pwa-features",
+      title: "PWA Capabilities",
+      description: "Offline support, app shortcuts, push notifications",
       icon: Smartphone,
-      color: 'bg-indigo-500'
+      color: "bg-indigo-500",
     },
     {
-      id: 'trust-badges',
-      title: 'Trust & Security',
-      description: 'Security badges and satisfaction guarantees',
+      id: "trust-badges",
+      title: "Trust & Security",
+      description: "Security badges and satisfaction guarantees",
       icon: Shield,
-      color: 'bg-red-500'
-    }
+      color: "bg-red-500",
+    },
   ];
 
   const renderDemo = () => {
     switch (activeDemo) {
-      case 'social-proof':
+      case "social-proof":
         return (
           <div className="space-y-8">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Social Proof Widgets</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Build customer confidence with real-time purchase notifications and trust badges
+                Build customer confidence with real-time purchase notifications
+                and trust badges
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold">Purchase Notifications</h4>
+                <h4 className="text-lg font-semibold">
+                  Purchase Notifications
+                </h4>
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 relative min-h-[200px]">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     Real-time notifications appear in the bottom-left corner
                   </p>
-                  <Button 
+                  <Button
                     onClick={() => setShowNotifications(!showNotifications)}
                     variant="outline"
                   >
-                    {showNotifications ? 'Hide' : 'Show'} Notifications
+                    {showNotifications ? "Hide" : "Show"} Notifications
                   </Button>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold">Trust Badges</h4>
                 <TrustBadges variant="compact" showIcons={true} maxBadges={3} />
@@ -128,28 +134,32 @@ const Stage5DemoPage: NextPage = () => {
           </div>
         );
 
-      case 'mobile-payments':
+      case "mobile-payments":
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Mobile Payment Options</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Mobile Payment Options
+              </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Seamless payment experience with Apple Pay and Google Pay
               </p>
             </div>
-            
+
             <div className="max-w-md mx-auto">
-              <MobilePayment 
+              <MobilePayment
                 amount={29.99}
                 currency="CAD"
-                onPaymentSuccess={(data) => console.log('Payment success:', data)}
-                onPaymentError={(error) => console.log('Payment error:', error)}
+                onPaymentSuccess={(data) =>
+                  console.log("Payment success:", data)
+                }
+                onPaymentError={(error) => console.log("Payment error:", error)}
               />
             </div>
           </div>
         );
 
-      case 'fast-checkout':
+      case "fast-checkout":
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -158,15 +168,17 @@ const Stage5DemoPage: NextPage = () => {
                 Complete purchases in under 60 seconds with smart auto-fill
               </p>
             </div>
-            
-            <FastCheckout 
+
+            <FastCheckout
               cartTotal={29.99}
-              onCheckoutComplete={(data) => console.log('Checkout complete:', data)}
+              onCheckoutComplete={(data) =>
+                console.log("Checkout complete:", data)
+              }
             />
           </div>
         );
 
-      case 'touch-gallery':
+      case "touch-gallery":
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -175,9 +187,9 @@ const Stage5DemoPage: NextPage = () => {
                 Swipe through product images with smooth touch gestures
               </p>
             </div>
-            
+
             <div className="max-w-lg mx-auto">
-              <TouchGallery 
+              <TouchGallery
                 images={sampleImages}
                 autoPlay={true}
                 showDots={true}
@@ -190,7 +202,7 @@ const Stage5DemoPage: NextPage = () => {
           </div>
         );
 
-      case 'pwa-features':
+      case "pwa-features":
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -199,7 +211,7 @@ const Stage5DemoPage: NextPage = () => {
                 App-like experience with offline support and native features
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
@@ -213,7 +225,7 @@ const Stage5DemoPage: NextPage = () => {
                   <li>• Service worker optimization</li>
                 </ul>
               </div>
-              
+
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <Globe className="w-6 h-6 text-purple-600" />
@@ -227,7 +239,7 @@ const Stage5DemoPage: NextPage = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="text-center">
               <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
                 <Smartphone className="w-4 h-4 mr-2" />
@@ -240,27 +252,36 @@ const Stage5DemoPage: NextPage = () => {
           </div>
         );
 
-      case 'trust-badges':
+      case "trust-badges":
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Trust & Security Badges</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Trust & Security Badges
+              </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Build customer confidence with security and satisfaction guarantees
+                Build customer confidence with security and satisfaction
+                guarantees
               </p>
             </div>
-            
+
             <div className="space-y-8">
               <div>
                 <h4 className="text-lg font-semibold mb-4">Grid Layout</h4>
                 <TrustBadges variant="grid" showIcons={true} />
               </div>
-              
+
               <div>
-                <h4 className="text-lg font-semibold mb-4">Horizontal Layout</h4>
-                <TrustBadges variant="horizontal" showIcons={true} maxBadges={4} />
+                <h4 className="text-lg font-semibold mb-4">
+                  Horizontal Layout
+                </h4>
+                <TrustBadges
+                  variant="horizontal"
+                  showIcons={true}
+                  maxBadges={4}
+                />
               </div>
-              
+
               <div>
                 <h4 className="text-lg font-semibold mb-4">Compact Layout</h4>
                 <TrustBadges variant="compact" showIcons={true} maxBadges={3} />
@@ -273,12 +294,15 @@ const Stage5DemoPage: NextPage = () => {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Stage 5: Advanced Features Overview</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Stage 5: Advanced Features Overview
+              </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Explore the latest social proof and mobile experience enhancements
+                Explore the latest social proof and mobile experience
+                enhancements
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature) => (
                 <div
@@ -287,7 +311,9 @@ const Stage5DemoPage: NextPage = () => {
                   onClick={() => setActiveDemo(feature.id)}
                 >
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className={`w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center`}>
+                    <div
+                      className={`w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center`}
+                    >
                       <feature.icon className="w-5 h-5 text-white" />
                     </div>
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100">
@@ -316,7 +342,7 @@ const Stage5DemoPage: NextPage = () => {
         description="Explore the latest social proof and mobile experience enhancements"
         noindex={true}
       />
-      
+
       <Container>
         <div className="py-12">
           {/* Header */}
@@ -328,26 +354,30 @@ const Stage5DemoPage: NextPage = () => {
               Advanced Features Demo
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Experience the latest social proof widgets, mobile payment options, 
-              PWA capabilities, and enhanced mobile checkout flow.
+              Experience the latest social proof widgets, mobile payment
+              options, PWA capabilities, and enhanced mobile checkout flow.
             </p>
           </div>
 
           {/* Navigation */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
-              variant={activeDemo === 'overview' ? 'default' : 'outline'}
-              onClick={() => setActiveDemo('overview')}
-              className={activeDemo === 'overview' ? 'bg-[#5B2EFF] text-white' : ''}
+              variant={activeDemo === "overview" ? "default" : "outline"}
+              onClick={() => setActiveDemo("overview")}
+              className={
+                activeDemo === "overview" ? "bg-[#5B2EFF] text-white" : ""
+              }
             >
               Overview
             </Button>
             {features.map((feature) => (
               <Button
                 key={feature.id}
-                variant={activeDemo === feature.id ? 'default' : 'outline'}
+                variant={activeDemo === feature.id ? "default" : "outline"}
                 onClick={() => setActiveDemo(feature.id)}
-                className={activeDemo === feature.id ? 'bg-[#5B2EFF] text-white' : ''}
+                className={
+                  activeDemo === feature.id ? "bg-[#5B2EFF] text-white" : ""
+                }
               >
                 {feature.title}
               </Button>
@@ -366,21 +396,48 @@ const Stage5DemoPage: NextPage = () => {
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Completed Features:</h4>
+                <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
+                  Completed Features:
+                </h4>
                 <ul className="space-y-1 text-blue-700 dark:text-blue-300">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Social proof widgets</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Trust badges</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Touch gesture gallery</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Mobile payment components</li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Social proof
+                    widgets
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Trust badges
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Touch gesture
+                    gallery
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Mobile payment
+                    components
+                  </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Enhanced Features:</h4>
+                <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
+                  Enhanced Features:
+                </h4>
                 <ul className="space-y-1 text-blue-700 dark:text-blue-300">
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Fast mobile checkout</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> PWA manifest & service worker</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Offline page support</li>
-                  <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Integrated on homepage & checkout</li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Fast mobile
+                    checkout
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> PWA manifest &
+                    service worker
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Offline page
+                    support
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" /> Integrated on
+                    homepage & checkout
+                  </li>
                 </ul>
               </div>
             </div>
@@ -390,7 +447,7 @@ const Stage5DemoPage: NextPage = () => {
 
       {/* Social Proof Notifications */}
       {showNotifications && (
-        <PurchaseNotifications 
+        <PurchaseNotifications
           position="bottom-left"
           showInterval={8000}
           autoHide={true}

@@ -13,24 +13,24 @@
 export function loadScriptOnInteraction(
   selector: string,
   scriptLoader: () => Promise<any>,
-  eventType: string = 'click',
-  options: AddEventListenerOptions = { once: true }
+  eventType: string = "click",
+  options: AddEventListenerOptions = { once: true },
 ): void {
   // Only run in browser environment
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
 
   // Function to handle the interaction
   const handleInteraction = async () => {
     try {
       await scriptLoader();
     } catch (error) {
-      console.error('Error loading script:', error);
+      console.error("Error loading script:", error);
     }
   };
 
   // Wait for DOM to be ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupListeners);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupListeners);
   } else {
     setupListeners();
   }
@@ -38,13 +38,13 @@ export function loadScriptOnInteraction(
   // Set up the event listeners
   function setupListeners() {
     const elements = document.querySelectorAll(selector);
-    
+
     if (elements.length === 0) {
       console.warn(`No elements found matching selector: ${selector}`);
       return;
     }
-    
-    elements.forEach(element => {
+
+    elements.forEach((element) => {
       element.addEventListener(eventType, handleInteraction, options);
     });
   }
@@ -59,24 +59,24 @@ export function loadScriptOnInteraction(
 export function loadScriptOnVisible(
   selector: string,
   scriptLoader: () => Promise<any>,
-  options: IntersectionObserverInit = { 
-    rootMargin: '200px', 
-    threshold: 0.1 
-  }
+  options: IntersectionObserverInit = {
+    rootMargin: "200px",
+    threshold: 0.1,
+  },
 ): void {
   // Only run in browser environment
-  if (typeof window === 'undefined') return;
-  
+  if (typeof window === "undefined") return;
+
   // Check if IntersectionObserver is supported
-  if (!('IntersectionObserver' in window)) {
+  if (!("IntersectionObserver" in window)) {
     // Fallback for browsers that don't support IntersectionObserver
     scriptLoader();
     return;
   }
 
   // Wait for DOM to be ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupObserver);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupObserver);
   } else {
     setupObserver();
   }
@@ -84,17 +84,17 @@ export function loadScriptOnVisible(
   // Set up the intersection observer
   function setupObserver() {
     const elements = document.querySelectorAll(selector);
-    
+
     if (elements.length === 0) {
       console.warn(`No elements found matching selector: ${selector}`);
       return;
     }
-    
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           scriptLoader()
-            .catch(error => console.error('Error loading script:', error))
+            .catch((error) => console.error("Error loading script:", error))
             .finally(() => {
               // Disconnect the observer once the script is loaded
               observer.disconnect();
@@ -102,8 +102,8 @@ export function loadScriptOnVisible(
         }
       });
     }, options);
-    
-    elements.forEach(element => {
+
+    elements.forEach((element) => {
       observer.observe(element);
     });
   }
@@ -114,12 +114,14 @@ export function loadScriptOnVisible(
  * @param importFn Function that imports the module
  * @returns A function that will load the module when called
  */
-export function createDynamicImport<T>(importFn: () => Promise<{ default: T }>): () => Promise<T> {
+export function createDynamicImport<T>(
+  importFn: () => Promise<{ default: T }>,
+): () => Promise<T> {
   let modulePromise: Promise<T> | null = null;
-  
+
   return () => {
     if (!modulePromise) {
-      modulePromise = importFn().then(module => module.default);
+      modulePromise = importFn().then((module) => module.default);
     }
     return modulePromise;
   };

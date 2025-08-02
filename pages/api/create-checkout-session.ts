@@ -1,17 +1,17 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import Stripe from 'stripe';
-import { prisma } from '../../src/lib/prisma';
+import { NextApiRequest, NextApiResponse } from "next";
+import Stripe from "stripe";
+import { prisma } from "../../src/lib/prisma";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-05-28.basil',
+  apiVersion: "2025-05-28.basil",
 });
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
@@ -30,15 +30,15 @@ export default async function handler(
     });
 
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return res.status(404).json({ message: "Order not found" });
     }
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ["card"],
       line_items: order.items.map((item: any) => ({
         price_data: {
-          currency: 'usd',
+          currency: "usd",
           product_data: {
             name: item.product.name,
             description: item.product.description,
@@ -48,12 +48,12 @@ export default async function handler(
         },
         quantity: item.quantity,
       })),
-      mode: 'payment',
+      mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout`,
       customer_email: customer.email,
       shipping_address_collection: {
-        allowed_countries: ['CA'],
+        allowed_countries: ["CA"],
       },
       metadata: {
         orderId: order.id,
@@ -62,7 +62,7 @@ export default async function handler(
 
     return res.status(200).json({ sessionId: session.id });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    return res.status(500).json({ message: 'Error creating checkout session' });
+    console.error("Error creating checkout session:", error);
+    return res.status(500).json({ message: "Error creating checkout session" });
   }
-} 
+}

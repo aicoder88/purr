@@ -1,87 +1,108 @@
-import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
-import Link from 'next/link';
-import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
+import { NextSeo } from "next-seo";
+import { Container } from "../../src/components/ui/container";
+import { Button } from "../../src/components/ui/button";
+import { useTranslation } from "../../src/lib/translation-context";
+import { SITE_NAME } from "../../src/lib/constants";
+import NextImage from "../../components/NextImage";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Microscope,
+  Zap,
+  Shield,
+  Leaf,
+  ChevronRight,
+} from "lucide-react";
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
-  
+
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
-  const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`;
+  const pageDescription =
+    "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
+  const canonicalUrl = `https://purrify.ca${locale === "fr" ? "/fr" : ""}/learn/how-it-works`;
 
   const sciencePoints = [
     {
       icon: Microscope,
       title: "Activated Carbon Structure",
-      description: "Our activated carbon contains millions of microscopic pores that create an enormous surface area - up to 1,500 square meters per gram.",
-      detail: "These pores are specifically sized to trap odor molecules while allowing air to flow freely through your cat's litter box."
+      description:
+        "Our activated carbon contains millions of microscopic pores that create an enormous surface area - up to 1,500 square meters per gram.",
+      detail:
+        "These pores are specifically sized to trap odor molecules while allowing air to flow freely through your cat's litter box.",
     },
     {
       icon: Zap,
       title: "Molecular Adsorption",
-      description: "Odor molecules are physically trapped within the carbon's pore structure through a process called adsorption.",
-      detail: "Unlike air fresheners that mask odors, Purrify actually captures and holds odor molecules, preventing them from reaching your nose."
+      description:
+        "Odor molecules are physically trapped within the carbon's pore structure through a process called adsorption.",
+      detail:
+        "Unlike air fresheners that mask odors, Purrify actually captures and holds odor molecules, preventing them from reaching your nose.",
     },
     {
       icon: Shield,
       title: "Long-Lasting Protection",
-      description: "Once trapped, odor molecules remain locked in the carbon structure until the litter is changed.",
-      detail: "This provides continuous odor control without the need for frequent reapplication or chemical additives."
+      description:
+        "Once trapped, odor molecules remain locked in the carbon structure until the litter is changed.",
+      detail:
+        "This provides continuous odor control without the need for frequent reapplication or chemical additives.",
     },
     {
       icon: Leaf,
       title: "Natural & Safe",
-      description: "Made from coconut shells, our activated carbon is completely natural and safe for cats and humans.",
-      detail: "No chemicals, fragrances, or artificial additives - just pure activated carbon doing what nature intended."
-    }
+      description:
+        "Made from coconut shells, our activated carbon is completely natural and safe for cats and humans.",
+      detail:
+        "No chemicals, fragrances, or artificial additives - just pure activated carbon doing what nature intended.",
+    },
   ];
 
   const steps = [
     {
       number: "1",
       title: "Sprinkle Purrify",
-      description: "Add a thin layer of Purrify on top of fresh or existing litter",
+      description:
+        "Add a thin layer of Purrify on top of fresh or existing litter",
       image: "/optimized/panel_1.webp",
-      tip: "A little goes a long way - just 1-2 teaspoons per litter box change"
+      tip: "A little goes a long way - just 1-2 teaspoons per litter box change",
     },
     {
-      number: "2", 
+      number: "2",
       title: "Mix Gently",
       description: "Lightly mix Purrify into the top layer of litter",
       image: "/optimized/panel_2.webp",
-      tip: "No need to completely blend - surface coverage is most effective"
+      tip: "No need to completely blend - surface coverage is most effective",
     },
     {
       number: "3",
       title: "Enjoy Freshness",
       description: "Experience immediate and long-lasting odor control",
       image: "/optimized/panel_3.webp",
-      tip: "Reapply when adding fresh litter or doing a complete change"
-    }
+      tip: "Reapply when adding fresh litter or doing a complete change",
+    },
   ];
 
   const faqs = [
     {
       question: "How quickly does Purrify start working?",
-      answer: "Purrify begins trapping odor molecules immediately upon contact. Most customers notice a significant reduction in odors within the first few hours of application."
+      answer:
+        "Purrify begins trapping odor molecules immediately upon contact. Most customers notice a significant reduction in odors within the first few hours of application.",
     },
     {
       question: "Is activated carbon safe if my cat ingests it?",
-      answer: "Yes, activated carbon is completely safe for cats. It's actually used in veterinary medicine to treat poisoning. However, Purrify is designed to stay in the litter, not be consumed."
+      answer:
+        "Yes, activated carbon is completely safe for cats. It's actually used in veterinary medicine to treat poisoning. However, Purrify is designed to stay in the litter, not be consumed.",
     },
     {
       question: "How does this compare to baking soda?",
-      answer: "While baking soda neutralizes acids, activated carbon physically traps a much wider range of odor molecules. Carbon is more effective and longer-lasting than baking soda."
+      answer:
+        "While baking soda neutralizes acids, activated carbon physically traps a much wider range of odor molecules. Carbon is more effective and longer-lasting than baking soda.",
     },
     {
       question: "Will this affect my cat's litter box habits?",
-      answer: "No, Purrify is odorless and doesn't change the texture or feel of your cat's litter. Most cats don't even notice it's there."
-    }
+      answer:
+        "No, Purrify is odorless and doesn't change the texture or feel of your cat's litter. Most cats don't even notice it's there.",
+    },
   ];
 
   return (
@@ -94,15 +115,15 @@ export default function HowItWorksPage() {
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
-          type: 'article',
+          type: "article",
           images: [
             {
-              url: 'https://purrify.ca/micropores_magnified_view.jpeg',
+              url: "https://purrify.ca/micropores_magnified_view.jpeg",
               width: 1200,
               height: 630,
-              alt: 'Activated Carbon Micropores Under Magnification'
-            }
-          ]
+              alt: "Activated Carbon Micropores Under Magnification",
+            },
+          ],
         }}
       />
 
@@ -112,8 +133,11 @@ export default function HowItWorksPage() {
           <nav className="py-4 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.nav?.home || 'Home'}
+                <Link
+                  href={locale === "fr" ? "/fr" : "/"}
+                  className="hover:text-[#FF3131] dark:hover:text-[#FF5050]"
+                >
+                  {t.nav?.home || "Home"}
                 </Link>
               </li>
               <li>/</li>
@@ -123,7 +147,9 @@ export default function HowItWorksPage() {
                 </span>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">How It Works</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                How It Works
+              </li>
             </ol>
           </nav>
         </Container>
@@ -136,8 +162,9 @@ export default function HowItWorksPage() {
                 The Science Behind Purrify
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Discover how activated carbon technology eliminates odors at the molecular level, 
-                providing superior odor control for your cat's litter box.
+                Discover how activated carbon technology eliminates odors at the
+                molecular level, providing superior odor control for your cat's
+                litter box.
               </p>
               <div className="relative max-w-2xl mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
@@ -166,13 +193,17 @@ export default function HowItWorksPage() {
                 How Activated Carbon Works
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Understanding the molecular science that makes Purrify so effective
+                Understanding the molecular science that makes Purrify so
+                effective
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {sciencePoints.map((point, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-xl flex items-center justify-center">
@@ -211,11 +242,18 @@ export default function HowItWorksPage() {
 
             <div className="space-y-16">
               {steps.map((step, index) => (
-                <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-                  <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                <div
+                  key={index}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
+                >
+                  <div
+                    className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}
+                  >
                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">{step.number}</span>
+                        <span className="text-white font-bold text-2xl">
+                          {step.number}
+                        </span>
                       </div>
                       <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                         {step.title}
@@ -230,7 +268,7 @@ export default function HowItWorksPage() {
                       </p>
                     </div>
                   </div>
-                  <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                  <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
                     <div className="relative">
                       <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                       <div className="relative">
@@ -264,7 +302,10 @@ export default function HowItWorksPage() {
 
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+                >
                   <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {faq.question}
                   </h3>
@@ -279,7 +320,7 @@ export default function HowItWorksPage() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Have more questions about how Purrify works?
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/support/contact`}>
                 <Button size="lg" variant="outline">
                   Contact Our Experts
                 </Button>
@@ -296,17 +337,27 @@ export default function HowItWorksPage() {
                 Ready to Experience the Science?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Try Purrify's activated carbon technology risk-free with our trial size
+                Try Purrify's activated carbon technology risk-free with our
+                trial size
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                <Link
+                  href={`${locale === "fr" ? "/fr" : ""}/products/trial-size`}
+                >
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold"
+                  >
                     Try Trial Size - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                <Link href={`${locale === "fr" ? "/fr" : ""}/#products`}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors"
+                  >
                     View All Products
                   </Button>
                 </Link>
@@ -319,7 +370,7 @@ export default function HowItWorksPage() {
         <section className="py-8">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#how-it-works`}>
+              <Link href={`${locale === "fr" ? "/fr" : ""}/#how-it-works`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to Homepage

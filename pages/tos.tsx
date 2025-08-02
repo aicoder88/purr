@@ -1,2 +1,2 @@
 import Terms from "./terms";
-export default Terms; 
+export default Terms;
