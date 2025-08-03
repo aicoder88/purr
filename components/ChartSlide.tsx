@@ -27,7 +27,6 @@ interface ChartSlideProps {
 }
 
 export default function ChartSlide({ content }: ChartSlideProps) {
-  if (typeof window === 'undefined') return null;
   const [hasMounted, setHasMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   
@@ -55,7 +54,8 @@ export default function ChartSlide({ content }: ChartSlideProps) {
     
     return () => observer.disconnect();
   }, []);
-  if (!hasMounted) return null;
+  
+  if (typeof window === 'undefined' || !hasMounted) return null;
 
   // Runtime validation for content.data
   if (!content?.data || !Array.isArray(content.data) || content.data.length === 0) {
