@@ -121,16 +121,13 @@ export function EnhancedProductComparison() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-6 py-2 rounded-full mb-6">
               <TrendingUp className="w-5 h-5 mr-2" />
-              <span className="font-bold">COMPARE & SAVE</span>
+              <span className="font-bold">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Choose Your Perfect{' '}
-              <span className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-                Purrify Size
-              </span>
+              {t.enhancedProductComparison?.chooseYourPerfectSize || "Choose Your Perfect Purrify Size"}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.
+              {t.enhancedProductComparison?.subtitle || "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency."}
             </p>
           </div>
 

@@ -48,42 +48,12 @@ export function LanguageSwitcher() {
   };
 
   const handleLanguageChange = (newLocale: Locale) => {
-    // Get the current path
-    const currentPath = window.location.pathname;
-    
-    // Remove any existing locale prefix to get the base path
-    let basePath = currentPath;
-    if (currentPath.startsWith('/fr/')) {
-      basePath = currentPath.replace('/fr/', '/').replace('/fr', '/');
-    } else if (currentPath.startsWith('/zh/')) {
-      basePath = currentPath.replace('/zh/', '/').replace('/zh', '/');
-    }
-    
-    // Ensure basePath starts with /
-    if (!basePath.startsWith('/')) {
-      basePath = '/' + basePath;
-    }
-    if (basePath === '//') basePath = '/';
-    
-    // Determine the new path based on the selected locale
-    let newPath;
-    
-    if (newLocale === 'fr') {
-      newPath = basePath === '/' ? '/fr' : `/fr${basePath}`;
-    } else if (newLocale === 'zh') {
-      newPath = basePath === '/' ? '/zh' : `/zh${basePath}`;
-    } else {
-      // English (default locale)
-      newPath = basePath;
-    }
-    
-    // Update locale context first
-    changeLocale(newLocale);
-    
-    // Navigate to the new path
-    window.location.href = newPath;
-    
+    // Close dropdown immediately for better UX
     closeDropdown();
+    
+    // Use the changeLocale function from context which handles routing properly
+    // This will trigger Next.js router navigation and update the translation context
+    changeLocale(newLocale);
   };
 
   return (

@@ -11,6 +11,7 @@ export const zh = {
     howItWorks: "工作原理",
     about: "关于我们",
     whyPurrify: "为什么选择Purrify",
+    tryFree: "免费试用",
     testimonials: "用户评价",
     leaveReview: "留下评价",
     contact: "联系我们",
@@ -183,24 +184,32 @@ export const zh = {
     forMoreInfo: "获取更多信息",
     items: [
       {
+        question: "什么是Purrify？",
+        answer: "Purrify是一种活性炭猫砂添加剂，从源头消除异味，而不是用香料掩盖异味。"
+      },
+      {
         question: "Purrify如何工作？",
-        answer: "Purrify使用活性炭技术在分子级别捕获和中和异味，提供持久的清新效果。"
+        answer: "Purrify使用活性炭技术通过吸附捕获和中和异味分子，在分子级别有效消除猫砂异味。"
       },
       {
-        question: "Purrify对我的猫咪安全吗？",
-        answer: "是的！Purrify采用100%天然活性炭制成，对猫咪完全安全无毒。"
+        question: "Purrify能持续多久？",
+        answer: "一次使用Purrify可以让您的猫砂盒保持无异味状态长达7天，具体取决于使用情况和猫咪数量。"
       },
       {
-        question: "我需要多久使用一次Purrify？",
-        answer: "每次更换猫砂时使用一次Purrify，通常每周一次，即可享受持续的异味控制。"
+        question: "Purrify可以与任何类型的猫砂一起使用吗？",
+        answer: "是的，Purrify适用于所有类型的猫砂，包括粘土砂、结团砂、水晶砂和天然砂。"
       },
       {
-        question: "Purrify适用于所有类型的猫砂吗？",
-        answer: "是的！Purrify与所有类型的猫砂兼容，包括结团砂、水晶砂、天然砂和粘土砂。"
+        question: "我应该多久使用一次Purrify？",
+        answer: "为获得最佳效果，每次更换或添加新猫砂时都要在猫砂上撒一层Purrify。只需薄薄一层即可持续控制异味。"
       },
       {
         question: "一包Purrify能用多久？",
-        answer: "这取决于包装大小和使用频率。60g包装通常可供单猫家庭使用一个月。"
+        answer: "这取决于您有多少只猫以及更换猫砂的频率。平均而言，我们的65g包装对于定期更换猫砂的单猫家庭可以使用约1-2个月。"
+      },
+      {
+        question: "Purrify与香味猫砂或除臭剂有什么不同？",
+        answer: "与掩盖异味的香味产品不同，Purrify使用活性炭技术实际捕获和中和源头的异味分子。它不会为您的家增添任何香味，只是消除难闻的气味。"
       }
     ]
   },
@@ -461,5 +470,78 @@ export const zh = {
     moreCustomerStories: "更多客户故事",
     videoTestimonials: "视频见证",
     productComparison: "产品比较"
+  },
+
+  // Additional Subscription Offer Translations
+  subscriptionOfferExtended: {
+    neverRunOutAgain: "永不断货",
+    subscribeAndSaveUpTo: "订阅并节省高达",
+    thirtySixPercent: "36%",
+    joinThousandsHappyCatParents: "加入数千名快乐的猫主人，再也不用担心异味问题。",
+    getPurrifyDelivered: "自动配送Purrify，每月节省更多费用。",
+    monthlyDelivery: "月度配送",
+    quarterlyDelivery: "季度配送",
+    biAnnualDelivery: "半年配送",
+    perfectForSingleCat: "单猫家庭的完美选择",
+    mostPopularMultiCat: "多猫家庭最受欢迎",
+    bestValueLargeFamilies: "大家庭的最佳价值",
+    freeShippingEveryMonth: "每月免费配送",
+    freeShippingEveryThreeMonths: "每3个月免费配送",
+    freeShippingEverySixMonths: "每6个月免费配送",
+    skipOrCancelAnytime: "随时跳过或取消",
+    twentyPercentSavings: "比单次购买节省20%",
+    thirtyPercentSavings: "比单次购买节省30%",
+    thirtySixPercentSavings: "比单次购买节省36%",
+    priorityCustomerSupport: "优先客户支持",
+    bonusFreeCatCareGuide: "赠品：免费猫咪护理指南",
+    bonusFreeCatToys: "赠品：免费猫咪玩具",
+    mostPopular: "最受欢迎",
+    save: "节省",
+    month: "月",
+    months: "月",
+    selectPlan: "选择计划",
+    joinThePurrifyFamily: "加入Purrify大家庭"
+  },
+
+  // Payment Security
+  paymentSecurity: {
+    securePayment: "安全支付",
+    sslEncrypted: "256位SSL",
+    sslEncryptedCheckout: "Stripe SSL加密结账"
+  },
+
+  // Testimonials Section
+  testimonialsSection: {
+    customerLove: "客户喜爱",
+    littersOfLove: "来自宠物主人社区的满满爱意",
+    dontJustTakeOurWord: "不要只听我们的一面之词。这里是我们的客户对Purrify的评价。",
+    readMoreReviews: "阅读更多评价"
+  },
+
+  // Common UI Elements
+  ui: {
+    // Review System
+    allRatings: "所有评分",
+    allSizes: "所有规格",
+    newestFirst: "最新优先",
+    oldestFirst: "最旧优先",
+    highestRated: "评分最高",
+    lowestRated: "评分最低",
+    mostHelpful: "最有帮助",
+    verifiedPurchase: "已验证购买",
+    
+    // Payment & Cart
+    securePayment: "安全支付",
+    shoppingCart: "购物车",
+    
+    // General
+    happyCustomers: "满意客户",
+    moneyBack: "退款保证",
+    averageRating: "平均评分",
+    satisfactionRate: "满意度",
+    freeShipping: "免费配送",
+    skipAnytime: "随时跳过",
+    highlyRated: "高度评价",
+    errorDetails: "错误详情"
   }
 };

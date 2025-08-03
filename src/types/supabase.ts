@@ -3,17 +3,9 @@
 
 export type Database = {
   public: {
-    Tables: {
-      // Empty placeholder tables
-    };
-    Views: {
-      // Empty placeholder views
-    };
-    Functions: {
-      // Empty placeholder functions
-    };
-    Enums: {
-      // Empty placeholder enums
-    };
+    Tables: Record<string, unknown>;
+    Views: Record<string, unknown>;
+    Functions: Record<string, unknown>;
+    Enums: Record<string, unknown>;
   };
 };

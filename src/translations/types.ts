@@ -425,4 +425,77 @@ export interface TranslationType {
     videoTestimonials: string;
     productComparison: string;
   };
+
+  // Additional Subscription Offer Translations
+  subscriptionOfferExtended: {
+    neverRunOutAgain: string;
+    subscribeAndSaveUpTo: string;
+    thirtySixPercent: string;
+    joinThousandsHappyCatParents: string;
+    getPurrifyDelivered: string;
+    monthlyDelivery: string;
+    quarterlyDelivery: string;
+    biAnnualDelivery: string;
+    perfectForSingleCat: string;
+    mostPopularMultiCat: string;
+    bestValueLargeFamilies: string;
+    freeShippingEveryMonth: string;
+    freeShippingEveryThreeMonths: string;
+    freeShippingEverySixMonths: string;
+    skipOrCancelAnytime: string;
+    twentyPercentSavings: string;
+    thirtyPercentSavings: string;
+    thirtySixPercentSavings: string;
+    priorityCustomerSupport: string;
+    bonusFreeCatCareGuide: string;
+    bonusFreeCatToys: string;
+    mostPopular: string;
+    save: string;
+    month: string;
+    months: string;
+    selectPlan: string;
+    joinThePurrifyFamily: string;
+  };
+
+  // Payment Security
+  paymentSecurity: {
+    securePayment: string;
+    sslEncrypted: string;
+    sslEncryptedCheckout: string;
+  };
+
+  // Testimonials Section
+  testimonialsSection: {
+    customerLove: string;
+    littersOfLove: string;
+    dontJustTakeOurWord: string;
+    readMoreReviews: string;
+  };
+
+  // Common UI Elements
+  ui: {
+    // Review System
+    allRatings: string;
+    allSizes: string;
+    newestFirst: string;
+    oldestFirst: string;
+    highestRated: string;
+    lowestRated: string;
+    mostHelpful: string;
+    verifiedPurchase: string;
+    
+    // Payment & Cart
+    securePayment: string;
+    shoppingCart: string;
+    
+    // General
+    happyCustomers: string;
+    moneyBack: string;
+    averageRating: string;
+    satisfactionRate: string;
+    freeShipping: string;
+    skipAnytime: string;
+    highlyRated: string;
+    errorDetails: string;
+  };
 }

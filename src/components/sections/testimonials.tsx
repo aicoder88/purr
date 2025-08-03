@@ -39,11 +39,10 @@ export function Testimonials() {
           </div> */}
           <SectionHeader text=" Customer Love" />
           <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-            Litters of Love From The Pet Parent Community
+            {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our customers have to
-            say about Purrify.
+            {t.testimonialsSection?.dontJustTakeOurWord || "Don't just take our word for it. Here's what our customers have to say about Purrify."}
           </p>
           
           {/* Action Buttons */}
@@ -166,7 +165,7 @@ export function Testimonials() {
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group"
           >
-            Read More Reviews
+            {t.testimonialsSection?.readMoreReviews || "Read More Reviews"}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"

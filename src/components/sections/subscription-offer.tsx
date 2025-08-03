@@ -12,50 +12,50 @@ export function SubscriptionOffer() {
   const subscriptionPlans = [
     {
       id: 'monthly',
-      name: 'Monthly Delivery',
+      name: t.subscriptionOfferExtended?.monthlyDelivery || 'Monthly Delivery',
       price: 19.99,
       originalPrice: 24.99,
       savings: 20,
-      interval: 'month',
-      description: 'Perfect for single-cat households',
+      interval: t.subscriptionOfferExtended?.month || 'month',
+      description: t.subscriptionOfferExtended?.perfectForSingleCat || 'Perfect for single-cat households',
       features: [
-        'Free shipping every month',
-        'Skip or cancel anytime',
-        '20% savings vs one-time purchase',
-        'Priority customer support'
+        t.subscriptionOfferExtended?.freeShippingEveryMonth || 'Free shipping every month',
+        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
+        t.subscriptionOfferExtended?.twentyPercentSavings || '20% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'
       ]
     },
     {
       id: 'quarterly',
-      name: 'Quarterly Delivery',
+      name: t.subscriptionOfferExtended?.quarterlyDelivery || 'Quarterly Delivery',
       price: 52.99,
       originalPrice: 74.97,
       savings: 30,
-      interval: '3 months',
-      description: 'Most popular for multi-cat homes',
+      interval: `3 ${t.subscriptionOfferExtended?.months || 'months'}`,
+      description: t.subscriptionOfferExtended?.mostPopularMultiCat || 'Most popular for multi-cat homes',
       features: [
-        'Free shipping every 3 months',
-        'Skip or cancel anytime',
-        '30% savings vs one-time purchase',
-        'Priority customer support',
-        'Bonus: Free cat care guide'
+        t.subscriptionOfferExtended?.freeShippingEveryThreeMonths || 'Free shipping every 3 months',
+        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
+        t.subscriptionOfferExtended?.thirtyPercentSavings || '30% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
+        t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide'
       ],
       popular: true
     },
     {
       id: 'biannual',
-      name: 'Bi-Annual Delivery',
+      name: t.subscriptionOfferExtended?.biAnnualDelivery || 'Bi-Annual Delivery',
       price: 95.99,
       originalPrice: 149.94,
       savings: 36,
-      interval: '6 months',
-      description: 'Maximum savings for dedicated users',
+      interval: `6 ${t.subscriptionOfferExtended?.months || 'months'}`,
+      description: t.subscriptionOfferExtended?.bestValueLargeFamilies || 'Best value for large families',
       features: [
-        'Free shipping every 6 months',
-        'Skip or cancel anytime',
-        '36% savings vs one-time purchase',
-        'VIP customer support',
-        'Bonus: Free cat care guide + consultation call'
+        t.subscriptionOfferExtended?.freeShippingEverySixMonths || 'Free shipping every 6 months',
+        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
+        t.subscriptionOfferExtended?.thirtySixPercentSavings || '36% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
+        t.subscriptionOfferExtended?.bonusFreeCatToys || 'Bonus: Free cat toys'
       ]
     }
   ];
@@ -68,17 +68,17 @@ export function SubscriptionOffer() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-6 py-2 rounded-full mb-6">
               <Zap className="w-5 h-5 mr-2" />
-              <span className="font-bold">NEVER RUN OUT AGAIN</span>
+              <span className="font-bold">{t.subscriptionOfferExtended?.neverRunOutAgain || "NEVER RUN OUT AGAIN"}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Subscribe & Save Up to{' '}
+              {t.subscriptionOfferExtended?.subscribeAndSaveUpTo || "Subscribe & Save Up to"}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80">
-                36%
+                {t.subscriptionOfferExtended?.thirtySixPercent || "36%"}
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join thousands of happy cat parents who never worry about odors again. 
-              Get Purrify delivered automatically and save money every month.
+              {t.subscriptionOfferExtended?.joinThousandsHappyCatParents || "Join thousands of happy cat parents who never worry about odors again."} {' '}
+              {t.subscriptionOfferExtended?.getPurrifyDelivered || "Get Purrify delivered automatically and save money every month."}
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function SubscriptionOffer() {
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-6 py-2 rounded-full text-sm font-bold">
-                      MOST POPULAR
+                      {t.subscriptionOfferExtended?.mostPopular || "MOST POPULAR"}
                     </div>
                   </div>
                 )}
@@ -112,7 +112,7 @@ export function SubscriptionOffer() {
                       <div className="flex items-center justify-center space-x-2">
                         <span className="text-gray-400 line-through">${plan.originalPrice}</span>
                         <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-medium">
-                          Save {plan.savings}%
+                          {t.subscriptionOfferExtended?.save || "Save"} {plan.savings}%
                         </span>
                       </div>
                     </div>
@@ -135,7 +135,7 @@ export function SubscriptionOffer() {
                     }`}
                     onClick={() => setSelectedPlan(plan.id)}
                   >
-                    {plan.popular ? 'Start Saving Now' : 'Choose Plan'}
+                    {plan.popular ? (t.subscriptionOfferExtended?.selectPlan || 'Select Plan') : (t.subscriptionOfferExtended?.selectPlan || 'Select Plan')}
                   </Button>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, Calendar, CheckCircle, Filter, SortAsc } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
+import { useTranslation } from '../../lib/translation-context';
 
 interface Review {
   id: string;

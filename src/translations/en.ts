@@ -337,5 +337,113 @@ export const en = {
   freeTrial: {
     urgentBanner: "Limited Time Offer",
     free: "Free"
+  },
+
+  // Enhanced Product Comparison
+  enhancedProductComparison: {
+    compareAndSave: "COMPARE & SAVE",
+    chooseYourPerfect: "Choose Your Perfect",
+    purrifySize: "Purrify Size",
+    subtitle: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
+    trial: "TRIAL",
+    mostPopular: "MOST POPULAR",
+    bestValue: "BEST VALUE",
+    premium: "Premium",
+    perfectForFirstTime: "Perfect for first-time users",
+    idealForSingleCat: "Ideal for single-cat homes",
+    perfectForMultiCat: "Perfect for multi-cat households",
+    duration: "Duration",
+    coverage: "Coverage",
+    odorControl: "7-Day Odor Control",
+    naturalIngredients: "100% Natural Ingredients",
+    easyApplication: "Easy Application",
+    moneyBackGuarantee: "30-Day Money Back Guarantee",
+    freeShipping: "Free Shipping",
+    bulkDiscount: "Bulk Discount Available",
+    prioritySupport: "Priority Customer Support",
+    bonusGuide: "Bonus Cat Care Guide",
+    tryRiskFree: "Try Risk-Free",
+    chooseThisSize: "Choose This Size",
+    chosenByCustomers: "🔥 68% of customers choose",
+    whyChoosePurrify: "Why Choose Purrify?",
+    joinThousands: "Join thousands of cat owners who trust Purrify",
+    happyCustomers: "Happy Customers",
+    averageRating: "Average Rating",
+    satisfactionRate: "Satisfaction Rate",
+    odorFreeGuarantee: "Odor-Free Guarantee",
+    moneyBackGuaranteeText: "30-day money-back guarantee - Try risk-free!"
+  },
+
+  // Additional Subscription Offer Translations
+  subscriptionOfferExtended: {
+    neverRunOutAgain: "NEVER RUN OUT AGAIN",
+    subscribeAndSaveUpTo: "Subscribe & Save Up to",
+    thirtySixPercent: "36%",
+    joinThousandsHappyCatParents: "Join thousands of happy cat parents who never worry about odors again.",
+    getPurrifyDelivered: "Get Purrify delivered automatically and save money every month.",
+    monthlyDelivery: "Monthly Delivery",
+    quarterlyDelivery: "Quarterly Delivery",
+    biAnnualDelivery: "Bi-Annual Delivery",
+    perfectForSingleCat: "Perfect for single-cat households",
+    mostPopularMultiCat: "Most popular for multi-cat homes",
+    bestValueLargeFamilies: "Best value for large families",
+    freeShippingEveryMonth: "Free shipping every month",
+    freeShippingEveryThreeMonths: "Free shipping every 3 months",
+    freeShippingEverySixMonths: "Free shipping every 6 months",
+    skipOrCancelAnytime: "Skip or cancel anytime",
+    twentyPercentSavings: "20% savings vs one-time purchase",
+    thirtyPercentSavings: "30% savings vs one-time purchase",
+    thirtySixPercentSavings: "36% savings vs one-time purchase",
+    priorityCustomerSupport: "Priority customer support",
+    bonusFreeCatCareGuide: "Bonus: Free cat care guide",
+    bonusFreeCatToys: "Bonus: Free cat toys",
+    mostPopular: "MOST POPULAR",
+    save: "Save",
+    month: "month",
+    months: "months",
+    selectPlan: "Select Plan",
+    joinThePurrifyFamily: "Join the Purrify Family"
+  },
+
+  // Payment Security
+  paymentSecurity: {
+    securePayment: "Secure Payment",
+    sslEncrypted: "256-bit SSL",
+    sslEncryptedCheckout: "SSL encrypted checkout with Stripe"
+  },
+
+  // Testimonials Section
+  testimonialsSection: {
+    customerLove: "Customer Love",
+    littersOfLove: "Litters of Love From The Pet Parent Community",
+    dontJustTakeOurWord: "Don't just take our word for it. Here's what our customers have to say about Purrify.",
+    readMoreReviews: "Read More Reviews"
+  },
+
+  // Common UI Elements
+  ui: {
+    // Review System
+    allRatings: "All Ratings",
+    allSizes: "All Sizes",
+    newestFirst: "Newest First",
+    oldestFirst: "Oldest First",
+    highestRated: "Highest Rated",
+    lowestRated: "Lowest Rated",
+    mostHelpful: "Most Helpful",
+    verifiedPurchase: "Verified Purchase",
+    
+    // Payment & Cart
+    securePayment: "Secure Payment",
+    shoppingCart: "Shopping Cart",
+    
+    // General
+    happyCustomers: "Happy Customers",
+    moneyBack: "Money Back",
+    averageRating: "Average Rating",
+    satisfactionRate: "Satisfaction Rate",
+    freeShipping: "Free Shipping",
+    skipAnytime: "Skip Anytime",
+    highlyRated: "Highly Rated",
+    errorDetails: "Error Details"
   }
 }; 

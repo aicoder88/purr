@@ -6,12 +6,13 @@ import { PRODUCTS } from '../../lib/constants';
 import { useRouter } from 'next/router';
 import { useTranslation } from '../../lib/translation-context';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './sheet';
+import Image from 'next/image';
 
 export function ShoppingCart() {
   const [isOpen, setIsOpen] = useState(false);
   const { items, updateQuantity, removeFromCart, getTotalPrice } = useCart();
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t: _t } = useTranslation();
 
   const handleCheckout = () => {
     setIsOpen(false);
@@ -63,9 +64,11 @@ export function ShoppingCart() {
                         className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-100"
                       >
                         <div className="w-16 h-16 bg-white rounded-md p-1">
-                          <img
+                          <Image
                             src={product.image}
                             alt={product.name}
+                            width={64}
+                            height={64}
                             className="w-full h-full object-contain"
                           />
                         </div>

@@ -9,6 +9,7 @@ import {
 } from "../components/ui/navigation-menu";
 
 import { MoonIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 const meta = {
   title: "ui/NavigationMenu",
@@ -224,9 +225,9 @@ export const Base = {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <a href="/docs">
+            <Link href="/docs">
               <NavigationMenuLink>Documentation</NavigationMenuLink>
-            </a>
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

@@ -11,6 +11,7 @@ export const fr = {
     howItWorks: "Comment Ça Marche",
     about: "À Propos",
     whyPurrify: "Pourquoi Purrify",
+    tryFree: "Essai Gratuit",
     testimonials: "Témoignages",
     leaveReview: "Laisser un Avis",
     contact: "Contact",
@@ -469,5 +470,78 @@ export const fr = {
   // About Section
   about: {
     naturalAndEffective: "Naturel & Efficace"
+  },
+
+  // Additional Subscription Offer Translations
+  subscriptionOfferExtended: {
+    neverRunOutAgain: "PLUS JAMAIS EN RUPTURE",
+    subscribeAndSaveUpTo: "Abonnez-vous et économisez jusqu'à",
+    thirtySixPercent: "36%",
+    joinThousandsHappyCatParents: "Rejoignez des milliers de propriétaires de chats heureux qui ne s'inquiètent plus jamais des odeurs.",
+    getPurrifyDelivered: "Recevez Purrify automatiquement et économisez de l'argent chaque mois.",
+    monthlyDelivery: "Livraison Mensuelle",
+    quarterlyDelivery: "Livraison Trimestrielle",
+    biAnnualDelivery: "Livraison Semestrielle",
+    perfectForSingleCat: "Parfait pour les foyers à un chat",
+    mostPopularMultiCat: "Le plus populaire pour les foyers multi-chats",
+    bestValueLargeFamilies: "Meilleure valeur pour les grandes familles",
+    freeShippingEveryMonth: "Livraison gratuite chaque mois",
+    freeShippingEveryThreeMonths: "Livraison gratuite tous les 3 mois",
+    freeShippingEverySixMonths: "Livraison gratuite tous les 6 mois",
+    skipOrCancelAnytime: "Suspendre ou annuler à tout moment",
+    twentyPercentSavings: "20% d'économies vs achat unique",
+    thirtyPercentSavings: "30% d'économies vs achat unique",
+    thirtySixPercentSavings: "36% d'économies vs achat unique",
+    priorityCustomerSupport: "Support client prioritaire",
+    bonusFreeCatCareGuide: "Bonus : Guide gratuit de soins pour chats",
+    bonusFreeCatToys: "Bonus : Jouets gratuits pour chats",
+    mostPopular: "LE PLUS POPULAIRE",
+    save: "Économiser",
+    month: "mois",
+    months: "mois",
+    selectPlan: "Sélectionner le Plan",
+    joinThePurrifyFamily: "Rejoignez la Famille Purrify"
+  },
+
+  // Payment Security
+  paymentSecurity: {
+    securePayment: "Paiement Sécurisé",
+    sslEncrypted: "SSL 256-bit",
+    sslEncryptedCheckout: "Paiement crypté SSL avec Stripe"
+  },
+
+  // Testimonials Section
+  testimonialsSection: {
+    customerLove: "Amour des Clients",
+    littersOfLove: "Des Portées d'Amour de la Communauté des Propriétaires d'Animaux",
+    dontJustTakeOurWord: "Ne nous croyez pas sur parole. Voici ce que nos clients disent de Purrify.",
+    readMoreReviews: "Lire Plus d'Avis"
+  },
+
+  // Common UI Elements
+  ui: {
+    // Review System
+    allRatings: "Toutes les Notes",
+    allSizes: "Toutes les Tailles",
+    newestFirst: "Plus Récent d'Abord",
+    oldestFirst: "Plus Ancien d'Abord",
+    highestRated: "Mieux Noté",
+    lowestRated: "Moins Bien Noté",
+    mostHelpful: "Plus Utile",
+    verifiedPurchase: "Achat Vérifié",
+    
+    // Payment & Cart
+    securePayment: "Paiement Sécurisé",
+    shoppingCart: "Panier d'Achat",
+    
+    // General
+    happyCustomers: "Clients Satisfaits",
+    moneyBack: "Remboursement",
+    averageRating: "Note Moyenne",
+    satisfactionRate: "Taux de Satisfaction",
+    freeShipping: "Livraison Gratuite",
+    skipAnytime: "Ignorer à Tout Moment",
+    highlyRated: "Très Bien Noté",
+    errorDetails: "Détails de l'Erreur"
   }
 };
