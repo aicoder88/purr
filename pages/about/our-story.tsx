@@ -17,7 +17,7 @@ import {
   MapPin,
   Mail,
   Shield,
-  Zap
+  Zap 
 } from 'lucide-react';
 
 const OurStoryPage: NextPage = () => {
