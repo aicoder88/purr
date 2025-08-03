@@ -13,7 +13,6 @@ import {
   Leaf,
   ChevronRight,
   Home,
-  Calendar,
   MapPin,
   Mail,
   Shield,
