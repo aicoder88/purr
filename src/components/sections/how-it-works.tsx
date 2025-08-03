@@ -2,9 +2,10 @@ import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
+import Link from "next/link";
 
 export function HowItWorks() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   
   const steps = t.howItWorks?.steps ? [
     {
@@ -69,7 +70,7 @@ export function HowItWorks() {
             {t.nav.howItWorks}
           </h2>
           <p className="text-gray-600 text-lg">
-            {t.features.worksWithAnyLitter.description}
+            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">compare our sizes</Link> to find what works best for you.
           </p>
         </div>
 

@@ -31,9 +31,8 @@ export function ThemeProvider({
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem(storageKey) as Theme;
       if (storedTheme) return storedTheme;
-      // If no stored theme, use system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      return prefersDark ? "dark" : "light";
+      // If no stored theme, use defaultTheme (dark mode)
+      return defaultTheme;
     }
     return defaultTheme;
   });

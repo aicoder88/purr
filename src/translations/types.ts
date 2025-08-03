@@ -6,6 +6,8 @@ export interface TranslationType {
   // Navigation
   nav: {
     home: string;
+    products: string;
+    learn: string;
     howItWorks: string;
     about: string;
     whyPurrify: string;
@@ -128,6 +130,8 @@ export interface TranslationType {
     };
     mostPopular: string;
     addToCart: string;
+    buyNow: string;
+    adding: string;
     viewAllProducts: string;
   };
   
@@ -290,5 +294,135 @@ export interface TranslationType {
   freeTrial: {
     urgentBanner: string;
     free: string;
+  };
+
+  // Enhanced Product Comparison
+  enhancedProductComparison?: {
+    compareAndSave: string;
+    chooseYourPerfectSize: string;
+    subtitle: string;
+    trial: string;
+    mostPopular: string;
+    bestValue: string;
+    premium: string;
+    perfectForFirstTime: string;
+    idealForSingleCat: string;
+    perfectForMultiCat: string;
+    duration: string;
+    coverage: string;
+    odorControl: string;
+    naturalIngredients: string;
+    easyApplication: string;
+    moneyBackGuarantee: string;
+    freeShipping: string;
+    bulkDiscount: string;
+    prioritySupport: string;
+    bonusGuide: string;
+    tryRiskFree: string;
+    chooseThisSize: string;
+    chosenByCustomers: string;
+    whyChoosePurrify: string;
+    joinThousands: string;
+    happyCustomers: string;
+    averageRating: string;
+    satisfactionRate: string;
+    odorFreeGuarantee: string;
+    moneyBackGuaranteeText: string;
+  };
+
+  // Subscription Offer
+  subscriptionOffer?: {
+    subscribeAndSave: string;
+    neverRunOut: string;
+    subtitle: string;
+    monthly: string;
+    everyTwoMonths: string;
+    quarterly: string;
+    save: string;
+    mostFlexible: string;
+    bestValue: string;
+    maxSavings: string;
+    oneTimePurchase: string;
+    subscriptionBenefits: string;
+    freeShipping: string;
+    exclusiveDiscounts: string;
+    prioritySupport: string;
+    flexibleSchedule: string;
+    cancelAnytime: string;
+    bonusGuide: string;
+    startSubscription: string;
+    selectPlan: string;
+    popularChoice: string;
+  };
+
+  // Urgency Banner
+  urgencyBanner?: {
+    limitedTime: string;
+    saveToday: string;
+    onAllOrders: string;
+    freeShipping: string;
+    hurryOffer: string;
+    claimDiscount: string;
+    timeLeft: string;
+    days: string;
+    hours: string;
+    minutes: string;
+    seconds: string;
+    onlyLeft: string;
+    inStock: string;
+    orderNow: string;
+  };
+
+  // Email Capture Popup
+  emailCapture?: {
+    waitDontGo: string;
+    exclusiveOffer: string;
+    subtitle: string;
+    emailPlaceholder: string;
+    claimDiscount: string;
+    noThanks: string;
+    instantAccess: string;
+    limitedTime: string;
+    successMessage: string;
+    errorMessage: string;
+  };
+
+  // Reviews Section
+  reviewsSection?: {
+    customerReviews: string;
+    realStories: string;
+    verifiedReviews: string;
+    averageRating: string;
+    readMore: string;
+    writeReview: string;
+    helpful: string;
+    verified: string;
+    productUsed: string;
+    catsOwned: string;
+    useCase: string;
+  };
+
+  // Case Studies
+  caseStudies?: {
+    customerSuccess: string;
+    realResults: string;
+    detailedStories: string;
+    averageOdorReduction: string;
+    timeToSeeResults: string;
+    customerSatisfaction: string;
+    catsPerStudy: string;
+    theChallenge: string;
+    theSolution: string;
+    theResults: string;
+    longTermOutcome: string;
+    keyPainPoints: string;
+    implementation: string;
+    writeYourStory: string;
+    joinSatisfied: string;
+    shopPurrify: string;
+    tryFreeSample: string;
+    moreCustomerStories: string;
+    videoTestimonials: string;
+    productComparison: string;
   };
 }

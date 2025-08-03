@@ -76,7 +76,7 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, '-').toLowerCase()}-${index}`}
                 value={`item-${index}`}
                 className="border-b border-[#E0EFC7] last:border-0"
               >

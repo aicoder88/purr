@@ -88,7 +88,7 @@ export function Testimonials() {
 
             return (
               <div
-                key={index}
+                key={`testimonial-${testimonial.name.replace(/\s+/g, '-').toLowerCase()}-${index}`}
                 className={`${colors.bg} backdrop-blur-sm p-8 rounded-2xl shadow-xl border ${colors.border} relative transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >

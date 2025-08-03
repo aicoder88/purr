@@ -6,6 +6,8 @@ export const en = {
   // Navigation
   nav: {
     home: "Home",
+    products: "Products",
+    learn: "Learn",
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
@@ -21,7 +23,7 @@ export const en = {
   products: {
     "purrify-17g": {
       name: "Purrify 17g",
-      description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
+      description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
     },
     "purrify-60g": {
       name: "Purrify 60g",
@@ -118,6 +120,8 @@ export const en = {
     },
     mostPopular: "MOST POPULAR",
     addToCart: "Add to Cart",
+    buyNow: "Buy Now",
+    adding: "Adding...",
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
   

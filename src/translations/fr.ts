@@ -6,6 +6,8 @@ export const fr = {
   // Navigation
   nav: {
     home: "Accueil",
+    products: "Produits",
+    learn: "Apprendre",
     howItWorks: "Comment Ça Marche",
     about: "À Propos",
     whyPurrify: "Pourquoi Purrify",
@@ -142,6 +144,8 @@ export const fr = {
     },
     mostPopular: "LE PLUS POPULAIRE",
     addToCart: "Ajouter au Panier",
+    buyNow: "Acheter Maintenant",
+    adding: "Ajout en cours...",
     viewAllProducts: "VOIR TOUS LES PRODUITS"
   },
   
@@ -330,6 +334,136 @@ export const fr = {
   freeTrial: {
     urgentBanner: "URGENT: L'OFFRE GRATUITE SE TERMINE BIENTÔT",
     free: "GRATUIT"
+  },
+
+  // Enhanced Product Comparison
+  enhancedProductComparison: {
+    compareAndSave: "Comparer et Économiser",
+    chooseYourPerfectSize: "Choisissez Votre Taille Parfaite",
+    subtitle: "Toutes les tailles offrent le même contrôle puissant des odeurs. Choisissez en fonction de la taille de votre foyer et de la fréquence d'utilisation.",
+    trial: "Essai",
+    mostPopular: "Le Plus Populaire",
+    bestValue: "Meilleure Valeur",
+    premium: "Premium",
+    perfectForFirstTime: "Parfait pour les Premiers Essais",
+    idealForSingleCat: "Idéal pour un Chat",
+    perfectForMultiCat: "Parfait pour Plusieurs Chats",
+    duration: "Durée",
+    coverage: "Couverture",
+    odorControl: "Contrôle des Odeurs 7 Jours",
+    naturalIngredients: "100% Ingrédients Naturels",
+    easyApplication: "Application Facile",
+    moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
+    freeShipping: "Livraison Gratuite",
+    bulkDiscount: "Remise en Gros",
+    prioritySupport: "Support Client Prioritaire",
+    bonusGuide: "Guide Gratuit de Soins pour Chats",
+    tryRiskFree: "Essayez Sans Risque",
+    chooseThisSize: "Choisir Cette Taille",
+    chosenByCustomers: "🔥 68% des clients choisissent",
+    whyChoosePurrify: "Pourquoi Choisir Purrify ?",
+    joinThousands: "Rejoignez des milliers de propriétaires de chats qui font confiance à Purrify",
+    happyCustomers: "Clients Satisfaits",
+    averageRating: "Note Moyenne",
+    satisfactionRate: "Taux de Satisfaction",
+    odorFreeGuarantee: "Garantie Sans Odeur",
+    moneyBackGuaranteeText: "Garantie de remboursement 30 jours - Essayez sans risque !"
+  },
+
+  // Subscription Offer
+  subscriptionOffer: {
+    subscribeAndSave: "Abonnez-vous et Économisez",
+    neverRunOut: "Ne Manquez Jamais, Économisez Plus",
+    subtitle: "Configurez la livraison automatique pour des remises exclusives et la commodité. Annulez à tout moment.",
+    monthly: "Mensuel",
+    everyTwoMonths: "Tous les Deux Mois",
+    quarterly: "Trimestriel",
+    save: "Économisez",
+    mostFlexible: "Le Plus Flexible",
+    bestValue: "Meilleure Valeur",
+    maxSavings: "Économies Maximales",
+    oneTimePurchase: "Achat Unique",
+    subscriptionBenefits: "Avantages de l'Abonnement",
+    freeShipping: "Livraison gratuite sur toutes les commandes",
+    exclusiveDiscounts: "Remises exclusives aux abonnés",
+    prioritySupport: "Support client prioritaire",
+    flexibleSchedule: "Calendrier de livraison flexible",
+    cancelAnytime: "Annulez à tout moment",
+    bonusGuide: "Guide gratuit de soins pour chats",
+    startSubscription: "Commencer l'Abonnement",
+    selectPlan: "Sélectionner le Plan",
+    popularChoice: "Choix Populaire"
+  },
+
+  // Urgency Banner
+  urgencyBanner: {
+    limitedTime: "Offre Limitée",
+    saveToday: "Économisez Aujourd'hui",
+    onAllOrders: "sur toutes les commandes",
+    freeShipping: "+ Livraison Gratuite",
+    hurryOffer: "Dépêchez-vous ! L'offre se termine bientôt",
+    claimDiscount: "Réclamer la Remise",
+    timeLeft: "Temps Restant",
+    days: "jours",
+    hours: "heures",
+    minutes: "minutes",
+    seconds: "secondes",
+    onlyLeft: "seulement restant",
+    inStock: "en stock",
+    orderNow: "Commander Maintenant"
+  },
+
+  // Email Capture Popup
+  emailCapture: {
+    waitDontGo: "Attendez ! Ne Partez Pas !",
+    exclusiveOffer: "Obtenez une Offre Exclusive",
+    subtitle: "Avant de partir, obtenez 15% de réduction sur votre première commande",
+    emailPlaceholder: "Entrez votre adresse email",
+    claimDiscount: "Réclamer 15% de Réduction",
+    noThanks: "Non merci",
+    instantAccess: "Accès instantané à votre code de réduction",
+    limitedTime: "Offre limitée - Ne la manquez pas !",
+    successMessage: "Succès ! Vérifiez votre email pour le code de réduction.",
+    errorMessage: "Une erreur s'est produite, veuillez réessayer."
+  },
+
+  // Reviews Section
+  reviewsSection: {
+    customerReviews: "Avis Clients",
+    realStories: "Vraies histoires de propriétaires de chats heureux",
+    verifiedReviews: "Avis Vérifiés",
+    averageRating: "Note Moyenne",
+    readMore: "Lire Plus",
+    writeReview: "Écrire un Avis",
+    helpful: "Utile",
+    verified: "Vérifié",
+    productUsed: "Produit Utilisé",
+    catsOwned: "Chats Possédés",
+    useCase: "Cas d'Usage"
+  },
+
+  // Case Studies
+  caseStudies: {
+    customerSuccess: "Études de Cas de Succès Client",
+    realResults: "Vrais résultats de vrais clients",
+    detailedStories: "Découvrez comment Purrify transforme les foyers à travers le Canada grâce à des études de cas détaillées",
+    averageOdorReduction: "Réduction Moyenne des Odeurs",
+    timeToSeeResults: "Temps pour Voir les Résultats",
+    customerSatisfaction: "Satisfaction Client",
+    catsPerStudy: "Chats par Étude",
+    theChallenge: "Le Défi",
+    theSolution: "La Solution",
+    theResults: "Les Résultats",
+    longTermOutcome: "Résultat à Long Terme",
+    keyPainPoints: "Points de Douleur Clés",
+    implementation: "Mise en Œuvre",
+    writeYourStory: "Prêt à écrire votre propre histoire de succès ?",
+    joinSatisfied: "Rejoignez des milliers de clients satisfaits qui transforment leurs foyers avec Purrify.",
+    shopPurrify: "Acheter Purrify",
+    tryFreeSample: "Essayer un Échantillon Gratuit",
+    moreCustomerStories: "Plus d'Histoires de Clients",
+    videoTestimonials: "Témoignages Vidéo",
+    productComparison: "Comparaison de Produits"
   },
 
   // About Section

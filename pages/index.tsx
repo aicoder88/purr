@@ -4,6 +4,10 @@ import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
+import { EnhancedProductComparison } from '../src/components/sections/enhanced-product-comparison';
+import { SubscriptionOffer } from '../src/components/sections/subscription-offer';
+import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
+import { EmailCapturePopup } from '../src/components/sections/email-capture-popup';
 import { Stores } from '../src/components/sections/stores';
 import { Testimonials } from '../src/components/sections/testimonials';
 import { FAQ } from '../src/components/sections/faq';
@@ -15,6 +19,9 @@ import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
+import { PurchaseNotifications } from '../src/components/social-proof/PurchaseNotifications';
+import { TrustBadges } from '../src/components/social-proof/TrustBadges';
+import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
   const pageTitle = `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
@@ -173,6 +180,9 @@ export default function Home() {
       {/* Enhanced Structured Data */}
       <EnhancedStructuredData pageType="home" />
 
+      {/* Urgency Banner at the top */}
+      <UrgencyBanner />
+      
       <main id="main-content" role="main">
         <ErrorBoundary>
           <Hero />
@@ -190,9 +200,22 @@ export default function Home() {
           <WhyPurrify />
         </ErrorBoundary>
         
+        {/* Enhanced Product Comparison for better conversions */}
         <ErrorBoundary>
-          <Products />
+          <EnhancedProductComparison />
         </ErrorBoundary>
+        
+        {/* Subscription Offer for recurring revenue */}
+        <ErrorBoundary>
+          <SubscriptionOffer />
+        </ErrorBoundary>
+        
+        {/* Trust Badges for Customer Confidence */}
+        <section className="py-8 bg-gray-50 dark:bg-gray-900/50">
+          <div className="container mx-auto px-4">
+            <TrustBadges variant="grid" showIcons={true} />
+          </div>
+        </section>
         
         <ErrorBoundary>
           <Stores />
@@ -222,6 +245,20 @@ export default function Home() {
           <BlogPreview />
         </ErrorBoundary>
       </main>
+      
+      {/* Email Capture Popup for lead generation */}
+      <EmailCapturePopup />
+      
+      {/* Sticky Urgency Bar for persistent conversion pressure */}
+      <StickyUrgencyBar />
+      
+      {/* Social Proof Components */}
+      <PurchaseNotifications 
+        position="bottom-left"
+        showInterval={20000}
+        autoHide={true}
+        hideDelay={8000}
+      />
     </>
   );
 }

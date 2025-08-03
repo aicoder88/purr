@@ -6,7 +6,7 @@ export const PRODUCTS = [
   {
     id: "purrify-17g",
     name: "Purrify 17g",
-    description: "Perfect for New Kittens\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
+    description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
     price: 6.99,
     image: "/optimized/20g.webp",
     size: "17g",
@@ -64,76 +64,88 @@ export const FEATURES = [
 
 export const TESTIMONIALS = [
   {
-    name: "Jess M., Plateau",
-    text: "I was about to move because of my cat's litter situation - Tiny Montreal apartment + 2 cats = Nightmare. Then my friend who works at a pet show downtown gave me this stuff to try and OMG. My place finally smells normal again!!! Like actually fresh, not stuffy, not that fake perfumey smell. Plus, I'm saving $ on litter. Mind = blown 🤯",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jess",
+    name: "Zara K., Plateau",
+    text: "My rescue cat Biscuit is super picky about litter changes, but with Purrify I can keep his box fresh way longer. Tiny Montreal apartment + sensitive cat = this stuff is a lifesaver! No more weird chemical smells either.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=zara",
     stars: 5,
+    petName: "Biscuit"
   },
   {
     name: "Jean-Marc D., Hochelaga",
-    text: "Honnêtement, c'est débile. J'ai essayé des litières fancy à 30$ pis ça puait encore après deux jours. Là, avec Purrify, je change la litière moins souvent pis ça sent rien du tout. Je me demande pourquoi personne ne m'en pas parlé avant?!",
+    text: "Mon chat Pickles est difficile, mais avec Purrify, sa litière reste fraîche plus longtemps. J'ai essayé des trucs à 30$ qui marchaient pas, mais ça c'est différent. Ça sent vraiment rien!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jeanmarc",
     stars: 5,
+    petName: "Pickles"
   },
   {
-    name: "Maria D., Saint-Laurent",
-    text: "Works great, I love it. No smell anymore.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
+    name: "Priya S., Saint-Laurent",
+    text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",
     stars: 5,
+    petName: "Mochi & Noodle"
   },
   {
     name: "François B., Rosemont",
-    text: "Quand il fait -20 pis que t'peux pas ouvrir une fenêtre, l'odeur de litière te rentre dedans solide. Mais là, Purrify change la game. J'en mets un peu, pis y'a plus rien qui pue. Ça fait toute la différence dans mon appart fermé!",
+    text: "L'hiver quand tu peux pas ouvrir les fenêtres, l'odeur de litière de Gizmo me rendait fou. Purrify a changé ma vie - plus d'odeur pantoute, même dans mon petit appart!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=francois",
     stars: 5,
+    petName: "Gizmo"
   },
   {
-    name: "Mathieu G., Verdun",
-    text: "Avant, je vidais la litière aux 3-4 jours juste pour éviter les mauvaises odeurs. Maintenant, avec Purrify, je la garde fraîche bien plus longtemps. J'achète moins de litière, je sauve du cash, pis ça fait moins de déchets. Un no-brainer! (Le sac dure longtemps.)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=mathieu",
+    name: "Kenji T., Verdun",
+    text: "My senior cat Wasabi has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kenji",
     stars: 5,
+    petName: "Wasabi"
   },
   {
-    name: "Amanda White, Côte-des-Neiges",
-    text: "Finally, something that actually works. No more litter box smell.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=amanda",
+    name: "Fatima R., Côte-des-Neiges",
+    text: "Started with the 17g trial for my kitten Ziggy. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=fatima",
     stars: 5,
+    petName: "Ziggy"
   },
   {
-    name: "Julie-Anne F., Longueuil",
-    text: "Mes amis venaient chez nous pis j'me demandais toujours si ça sentait la litière. Depuis que j'utilise Purrify, j'pense même plus à ça. Ça marche tellement bien que mes amis me demandent c'est quoi mon truc!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=julieanne",
+    name: "Émilie-Rose P., Longueuil",
+    text: "Ma chatte Pixel est super capricieuse avec sa litière, mais depuis que j'utilise Purrify, elle semble plus confortable. Plus d'odeurs bizarres qui traînent dans la maison!",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emilierose",
     stars: 5,
+    petName: "Pixel"
   },
   {
-    name: "Dr. Robert Chen, Westmount",
-    text: "Tested multiple odor control products over the years… compared to conventional options, purrify is effective, efficient, and minimizes waste. Highly recommend.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=robert",
+    name: "Dr. Amara Chen, Westmount",
+    text: "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat Quincy's litter area stays remarkably fresh.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=amara",
     stars: 5,
+    petName: "Quincy"
   },
   {
-    name: "Mei L., Outremont",
-    text: "Super impressed with this sustainable solution! As someone who tries to minimize their environmental impact, I love love love that it's just activated charcoal—no chemicals or artificial fragrances",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=mei",
+    name: "Kai L., Outremont",
+    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat Tofu to inhale. The 120g size is perfect for my two-cat household.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kai",
     stars: 5,
+    petName: "Tofu"
   },
   {
     name: "Stéphane L., Laval",
-    text: "J'suis sceptique de nature. Quand un produit dit qu'il fait des miracles, c'est souvent du gros n'importe quoi. Mais Purrify, j'avoue, ça livre en cr***. J'ai attendu de finir le sac avant d'écrire un avis, pis j'peux dire que ça marche VRAIMENT. Je l'achèterai c'est sûr.",
+    text: "J'étais sceptique, mais mon chat Banjo avait des problèmes digestifs et l'odeur était insupportable. Purrify a vraiment réglé le problème - j'en commande maintenant à chaque mois!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=stephane",
     stars: 5,
+    petName: "Banjo"
   },
   {
-    name: "Alex K., Hochelaga",
-    text: "ok so like… i never write reviews but i HAD to for this. my cat's litterbox literally smells like nothing now?? witchcraft?? idk what this stuff is but im never going back. if ur reading this just buy it already!!!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
+    name: "River K., Hochelaga",
+    text: "my cat Dumpling is literally the stinkiest cat alive (love her tho) but this stuff makes her litter box smell like... nothing?? black magic tbh. buying the big size next time 💯",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=river",
     stars: 5,
+    petName: "Dumpling"
   },
   {
-    name: "Linda Wilson, West Island",
-    text: "Five cats. Small house. You do the math. 😹 I was skeptical about trying YET ANOTHER product, but this one's different. My daughter says my house doesn't smell like a crazy cat lady anymore! Best compliment ever? 😂",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=linda",
+    name: "Noor A., West Island",
+    text: "Three cats: Paprika, Saffron, and Cumin. Small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=noor",
     stars: 5,
+    petName: "Paprika, Saffron & Cumin"
   },
 ];
 

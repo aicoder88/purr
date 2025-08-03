@@ -22,7 +22,12 @@
     "analyze-js": "node scripts/analyze-js.js",
     "find-unused-deps": "npx depcheck",
     "clear-cache": "node scripts/clear-webpack-cache.js",
-    "purge-vercel-cache": "node scripts/purge-vercel-cache.js"
+    "purge-vercel-cache": "node scripts/purge-vercel-cache.js",
+    "build:production": "node scripts/build-production.js",
+    "seo:optimize": "node scripts/seo-optimization.js",
+    "bundle:analyze": "node scripts/bundle-analysis.js",
+    "cache:optimize": "node scripts/cache-optimization.js",
+    "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -55,6 +60,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@vercel/analytics": "^1.5.0",
     "chart.js": "^4.4.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -100,7 +106,6 @@
     "sharp": "^0.34.1",
     "source-map-explorer": "^2.5.3",
     "tailwindcss": "3.4.1",
-    "ts-loader": "^9.5.2",
     "typescript": "^5.8.3"
   }
 }

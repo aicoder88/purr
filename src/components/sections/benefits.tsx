@@ -43,7 +43,7 @@ export function Benefits() {
             <h3 className="font-bold text-xl mb-4 text-[#03E46A]">
               Odor Elimination
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Purrify's advanced formula effectively eliminates unpleasant
               litter box odors at their source. Say goodbye to the lingering
               smells that can permeate your home and welcome a fresher, more
@@ -69,7 +69,7 @@ export function Benefits() {
               </svg>
             </div>
             <h3 className="font-bold text-xl mb-4 text-[#5B2EFF]">Simple</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Purrify is formulated with simple coconut shells, activated to
               soak up odor. You can trust that you're providing your cat with a
               clean smelling box environment without exposing them to chemicals
@@ -97,7 +97,7 @@ export function Benefits() {
             <h3 className="font-bold text-xl mb-4 text-[#FF3131]">
               Cost-Effective
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Purrify helps extend the life of your cat's litter by preventing
               odor buildup, which means you'll need to change the litter less
               frequently. This not only saves you money but also reduces waste,

@@ -5,6 +5,11 @@ import dynamic from "next/dynamic";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
+import { ReviewSystem } from '../reviews/ReviewSystem';
+import { TouchGallery } from '../mobile/TouchGallery';
+import { ecommerceEvents } from '../../lib/gtm-events';
+import { useState, useEffect } from 'react';
+import { ShoppingCart, Star, Check } from 'lucide-react';
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
@@ -12,6 +17,44 @@ const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true 
 export function Products() {
   const { t } = useTranslation();
   const { addToCart } = useCart();
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  const [addingToCart, setAddingToCart] = useState<string | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('products');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleAddToCart = async (product: any) => {
+    setAddingToCart(product.id);
+    try {
+      await addToCart(product);
+      // Track ecommerce event
+      ecommerceEvents.addToCart({
+        item_id: product.id,
+        item_name: product.name,
+        category: 'cat-litter-additive',
+        price: product.price,
+        quantity: 1
+      });
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+    } finally {
+      setTimeout(() => setAddingToCart(null), 1000);
+    }
+  };
   
   return (
     <section
@@ -45,12 +88,18 @@ export function Products() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {PRODUCTS.map((product, index) => (
             <div
               key={product.id}
               className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-800 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative"
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                opacity: isVisible ? 1 : 0
+              }}
+              onMouseEnter={() => setHoveredProduct(product.id)}
+              onMouseLeave={() => setHoveredProduct(null)}
             >
               {/* Highlight for recommended product */}
               {index === 1 && (
@@ -60,35 +109,33 @@ export function Products() {
               )}
               
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/10 to-[#E0EFC7]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="aspect-square overflow-hidden h-72 bg-gradient-to-b from-white to-[#FFFFF5] dark:from-gray-900 dark:to-gray-950 dark:bg-gray-900">
-                  <div className="relative h-full flex items-center justify-center p-6">
-                    <NextImage
-                      src={product.image}
-                      alt={product.name}
-                      width={300}
-                      height={300}
-                      className="w-full h-full mx-auto transition-transform duration-700 group-hover:scale-110"
-                      style={{
-                        objectFit: product.image.includes('fresh') || product.image.includes('cost effective')
-                          ? 'cover'
-                          : 'contain',
-                        objectPosition: product.image.includes('fresh') || product.image.includes('cost effective')
-                          ? 'center center'
-                          : 'center'
-                      }}
-                      loading="lazy"
-                      fetchPriority="auto"
-                    />
+                <div className="relative bg-gradient-to-br from-[#FFFFF5] to-[#F8F9FA] dark:from-gray-800 dark:to-gray-700 rounded-t-2xl overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+                  <div className="relative h-72 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FF3131]/5 to-[#FF3131]/10 z-10"></div>
+                    <div className="relative h-full flex items-center justify-center p-8">
+                      <NextImage
+                        src={product.image}
+                        alt={`${product.name} - ${product.description.split('\n')[0]}`}
+                        width={180}
+                        height={180}
+                        className="max-w-[180px] max-h-[180px] mx-auto transition-transform duration-700 group-hover:scale-110"
+                        style={{
+                          objectFit: 'contain',
+                          objectPosition: 'center'
+                        }}
+                        loading="lazy"
+                        fetchPriority="auto"
+                      />
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#FF3131]/20 to-transparent p-4">
-                      <p className="text-white font-bold text-base drop-shadow-md">
+                      <p className="text-white font-bold text-sm drop-shadow-md line-clamp-2">
                         {t.products[product.id]?.description.split('\n')[0]}
                       </p>
                     </div>
                   </div>
-                </div>
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-5 py-2 rounded-full shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                  <span className="text-white font-bold text-lg">{product.size}</span>
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-5 py-2 rounded-full shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">{product.size}</span>
+                  </div>
                 </div>
               </div>
               
@@ -120,20 +167,40 @@ export function Products() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
                     >
-                      Buy Now
+                      {t.productsSection?.buyNow || "Buy Now"}
                     </a>
                   ) : (
                     <Button 
                       className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
-                      onClick={() => addToCart(product.id)}
+                      onClick={() => handleAddToCart(product)}
+                      disabled={addingToCart === product.id}
                     >
-                      {t.productsSection?.addToCart || "Add to Cart"}
+                      {addingToCart === product.id ? (
+                        <div className="flex items-center">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          {t.productsSection?.adding || "Adding..."}
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          <ShoppingCart className="w-4 h-4 mr-2" />
+                          {t.productsSection?.addToCart || "Add to Cart"}
+                        </div>
+                      )}
                     </Button>
                   )}
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Customer Reviews Section */}
+        <div className="mt-16">
+          <ReviewSystem 
+            compact={true}
+            maxReviews={3}
+            showFilters={false}
+          />
         </div>
       </Container>
     </section>

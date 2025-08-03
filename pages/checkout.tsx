@@ -10,6 +10,9 @@ import { useTranslation } from '../src/lib/translation-context';
 import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin } from 'lucide-react';
 import { PRODUCTS } from '../src/lib/constants';
 import dynamic from "next/dynamic";
+import { FastCheckout } from '../src/components/mobile/FastCheckout';
+import { ExpressCheckoutButtons } from '../src/components/mobile/MobilePayment';
+import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../components/NextImage"), {
@@ -418,6 +421,41 @@ const CheckoutPage: NextPage = () => {
       <Container>
         <div className="max-w-3xl mx-auto py-12">
           <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Checkout</h1>
+          
+          {/* Mobile-Optimized Fast Checkout */}
+          <div className="md:hidden mb-8">
+            <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 rounded-xl p-6 border border-[#5B2EFF]/20 mb-6">
+              <h2 className="text-lg font-semibold text-center mb-2">⚡ Fast Mobile Checkout</h2>
+              <p className="text-sm text-gray-600 text-center mb-4">Complete your purchase in under 60 seconds</p>
+              
+              <FastCheckout 
+                cartTotal={getTotalPrice()}
+                onCheckoutComplete={(data) => {
+                  console.log('Fast checkout completed:', data);
+                  // Handle fast checkout completion
+                  setIsProcessing(true);
+                  setTimeout(() => {
+                    clearCart();
+                    router.push('/thank-you');
+                  }, 2000);
+                }}
+              />
+            </div>
+            
+            <div className="text-center mb-6">
+              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                <div className="flex-1 h-px bg-gray-300"></div>
+                <span>or use traditional checkout</span>
+                <div className="flex-1 h-px bg-gray-300"></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Trust Badges */}
+          <div className="mb-8">
+            <TrustBadges variant="horizontal" showIcons={true} maxBadges={4} />
+          </div>
+          
           {renderStepIndicator()}
           <form onSubmit={handleSubmit} className="space-y-8">
             {renderStep()}
