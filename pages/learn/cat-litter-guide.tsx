@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 const CatLitterGuidePage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  // const { t, locale } = useTranslation();
 
   const litterTypes = [
     {

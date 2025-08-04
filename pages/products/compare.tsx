@@ -8,7 +8,7 @@ import {
   CheckCircle, 
   Package, 
   Clock, 
-  DollarSign, 
+  // DollarSign, 
   Users,
   ChevronRight,
   Home,
@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 const ProductComparePage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   const products = [
     {

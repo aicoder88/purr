@@ -3,12 +3,12 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+// import NextImage from '../components/NextImage';
 import Link from 'next/link';
-import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical } from 'lucide-react';
 
 export default function SciencePage() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   
   const pageTitle = `The Science Behind ${SITE_NAME} - Activated Carbon Technology`;
   const pageDescription = "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";

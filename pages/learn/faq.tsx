@@ -17,7 +17,7 @@ import {
   Home,
   Filter,
   Tag,
-  Clock,
+  // Clock,
   Users,
   Package,
   Truck,
@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 
 const FAQPage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);

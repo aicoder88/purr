@@ -7,22 +7,21 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { 
   Truck, 
   Clock, 
-  MapPin, 
+  // MapPin, 
   Package,
   Shield,
   CreditCard,
   Globe,
-  CheckCircle,
   AlertCircle,
   ChevronRight,
   Home,
   Plane,
-  Calendar,
-  DollarSign
+  // Calendar,
+  // DollarSign
 } from 'lucide-react';
 
 const ShippingPage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   const shippingOptions = [
     {

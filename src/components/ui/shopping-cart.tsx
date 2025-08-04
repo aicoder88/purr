@@ -12,7 +12,7 @@ export function ShoppingCart() {
   const [isOpen, setIsOpen] = useState(false);
   const { items, updateQuantity, removeFromCart, getTotalPrice } = useCart();
   const router = useRouter();
-  const { t: _t } = useTranslation();
+  // const { t: _t } = useTranslation();
 
   const handleCheckout = () => {
     setIsOpen(false);
