@@ -4,7 +4,7 @@ import { Button } from './button';
 import { useCart } from '../../lib/cart-context';
 import { PRODUCTS } from '../../lib/constants';
 import { useRouter } from 'next/router';
-import { useTranslation } from '../../lib/translation-context';
+// import { useTranslation } from '../../lib/translation-context';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './sheet';
 import Image from 'next/image';
 

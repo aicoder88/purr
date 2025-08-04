@@ -12,6 +12,7 @@ const TermsPage: NextPage = () => {
       <Head>
         <title>服务条款 | {SITE_NAME}</title>
         <meta name="description" content="Purrify服务条款 - 了解使用我们产品和服务的条款和条件。" />
+        <meta name="language" content={locale} />
         <link rel="canonical" href="https://purrify.ca/zh/terms" />
         <link rel="alternate" hrefLang="zh" href="https://purrify.ca/zh/terms" />
         <link rel="alternate" hrefLang="en" href="https://purrify.ca/terms" />
