@@ -8,7 +8,7 @@ const contactFormSchema = z.object({
   message: z.string().min(10).max(1000).trim(),
 });
 
-type ContactFormData = z.infer<typeof contactFormSchema>;
+
 
 type ResponseData = {
   success: boolean;

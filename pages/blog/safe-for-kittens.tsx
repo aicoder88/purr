@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
@@ -92,11 +93,12 @@ export default function SafeForKittens() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <img 
+              <Image 
                 src="/optimized/gigi.webp" 
                 alt="Adorable kitten in clean litter box environment showing safe litter practices"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                loading="lazy"
+                width={1200}
+                height={384}
               />
               <p className="text-sm text-gray-500 text-center mt-2">
                 Keeping kittens safe while maintaining a fresh, odor-free environment

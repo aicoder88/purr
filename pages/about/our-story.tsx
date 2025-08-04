@@ -204,10 +204,10 @@ const OurStoryPage: NextPage = () => {
                 Our Story
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Born from a cat owner's frustration, grown into a mission to help families everywhere
+                Born from a cat owner&apos;s frustration, grown into a mission to help families everywhere
               </p>
               <p className="text-lg opacity-80 max-w-2xl mx-auto">
-                What started as one person's struggle with persistent litter box odors has become a Canadian success story, 
+                What started as one person&apos;s struggle with persistent litter box odors has become a Canadian success story, 
                 helping over 50,000 cat owners create fresher, cleaner homes.
               </p>
             </div>
@@ -227,9 +227,9 @@ const OurStoryPage: NextPage = () => {
               </p>
               <div className="bg-[#E0EFC7]/30 dark:bg-gray-800/50 rounded-xl p-8">
                 <p className="text-lg text-gray-700 dark:text-gray-300 italic">
-                  "We believe every cat deserves a clean, comfortable environment, and every family deserves to enjoy 
-                  their home without compromise. That's why we're dedicated to creating products that work better, 
-                  last longer, and respect our planet."
+                  &quot;We believe every cat deserves a clean, comfortable environment, and every family deserves to enjoy 
+                  their home without compromise. That&apos;s why we&apos;re dedicated to creating products that work better, 
+                  last longer, and respect our planet.&quot;
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
                   — Sarah Chen, Founder & CEO
@@ -330,7 +330,7 @@ const OurStoryPage: NextPage = () => {
                 Meet Our Team
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                The passionate people behind Purrify's success
+                The passionate people behind Purrify&apos;s success
               </p>
             </div>
 
@@ -367,7 +367,7 @@ const OurStoryPage: NextPage = () => {
                 Our Impact
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                The difference we've made together
+                The difference we&apos;ve made together
               </p>
             </div>
 
@@ -479,7 +479,7 @@ const OurStoryPage: NextPage = () => {
                     Customer Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Read real experiences from cat owners who've transformed their homes with Purrify.
+                    Read real experiences from cat owners who&apos;ve transformed their homes with Purrify.
                   </p>
                 </div>
               </Link>

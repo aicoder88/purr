@@ -94,7 +94,7 @@ const nextConfig = {
     webpackBuildWorker: true,
     // Advanced caching optimizations
     isrMemoryCacheSize: 52428800, // 50MB
-    incrementalCacheHandlerPath: require.resolve('./src/lib/cache-handler.js'),
+    // incrementalCacheHandlerPath: require.resolve('./src/lib/cache-handler.js'),
     // Edge runtime optimizations
     runtime: 'nodejs',
     serverComponentsExternalPackages: ['sharp'],

@@ -9,7 +9,7 @@ const freeGiveawayFormSchema = z.object({
   catNames: z.array(z.string().optional()).optional(),
 });
 
-type FreeGiveawayFormData = z.infer<typeof freeGiveawayFormSchema>;
+
 
 type ResponseData = {
   success: boolean;
@@ -160,83 +160,5 @@ export default async function handler(
       success: false,
       message: 'An error occurred while processing your request'
     });
-  }
-}
-
-async function appendToGoogleSheet(data: {
-  name: string;
-  email: string;
-  catNames: (string | undefined)[];
-}) {
-  try {
-    // This function requires proper setup with Google Sheets API
-    // You'll need to set up service account credentials and configure the spreadsheet
-    
-    // Load the credentials from environment variables
-    const credentials = {
-      client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    };
-
-    // Use the provided spreadsheet ID that's editable by anyone with the link
-    const spreadsheetId = '1UmhLcFjcG9SjlLyJsY9Dv-WaUDyGu6rHySAnjDoMGQY';
-    
-    // For this demo with a public spreadsheet, we'll use a simplified approach
-    // In a production environment, you would use proper service account credentials
-    if (!credentials.client_email || !credentials.private_key) {
-      // If credentials aren't available, we'll use a direct approach for this demo
-      // This is only for demonstration purposes with a public spreadsheet
-      console.log('Using simplified approach for demo with public spreadsheet');
-      
-      // Log the data that would be sent to the spreadsheet
-      console.log('Form submission data:', {
-        name: data.name,
-        email: data.email,
-        catNames: data.catNames || [],
-        timestamp: new Date().toISOString()
-      });
-      
-      return true;
-    }
-
-    // Authenticate with Google
-    const auth = new google.auth.JWT({
-      email: credentials.client_email,
-      key: credentials.private_key,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-
-    // Format the data for Google Sheets
-    // Filter out undefined values and join cat names with commas
-    const catNamesString = data.catNames
-      .filter((name): name is string => typeof name === 'string' && name.trim() !== '')
-      .join(', ');
-
-    // Prepare the row data
-    const values = [
-      [
-        data.name,
-        data.email,
-        catNamesString,
-        new Date().toISOString(), // Timestamp
-      ],
-    ];
-
-    // Append the data to the sheet
-    await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range: 'Sheet1!A:D', // Adjust the range as needed
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values,
-      },
-    });
-
-    return true;
-  } catch (error) {
-    console.error('Error in appendToGoogleSheet:', error);
-    throw error;
   }
 }

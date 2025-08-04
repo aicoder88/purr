@@ -5,6 +5,7 @@ import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { Toaster } from '../src/components/ui/toaster';
 import Script from 'next/script';
+
 import { TranslationProvider } from '../src/lib/translation-context';
 import { useRouter } from 'next/router';
 import { Layout } from '../src/components/layout/layout';
@@ -12,7 +13,7 @@ import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Analytics } from '@vercel/analytics/next';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<any>) {
   const router = useRouter();
   const { locale } = router;
   

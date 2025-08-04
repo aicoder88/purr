@@ -1,6 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { sampleBlogPosts, BlogPost } from '../../src/data/blog-posts';
 
+interface WpPost {
+  title: {
+    rendered: string;
+  };
+  excerpt: {
+    rendered: string;
+  };
+  _embedded?: {
+    author?: { name: string }[];
+    'wp:featuredmedia'?: { source_url: string }[];
+  };
+  date: string;
+  slug: string;
+  content: {
+    rendered: string;
+  };
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<BlogPost[]>
@@ -31,7 +49,7 @@ export default async function handler(
     const wpPosts = await response.json();
     
     // Transform WordPress posts to match our BlogPost interface
-    const posts: BlogPost[] = wpPosts.map((post: any) => ({
+        const posts: BlogPost[] = wpPosts.map((post: WpPost) => ({
       title: post.title.rendered,
       excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",

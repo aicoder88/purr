@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME } from '../src/lib/constants';
 import Link from 'next/link';
@@ -255,10 +256,12 @@ export default function CaseStudies() {
                         </div>
                       </div>
                       <div className="mt-6 md:mt-0 md:ml-8">
-                        <img 
+                        <Image 
                           src={study.image} 
                           alt={`Purrify product used in ${study.customer} case study`}
                           className="w-32 h-32 object-contain"
+                          width={128}
+                          height={128}
                         />
                       </div>
                     </div>

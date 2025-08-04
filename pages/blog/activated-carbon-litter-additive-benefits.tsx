@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
@@ -92,11 +93,12 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <img 
+              <Image 
                 src="/optimized/carbon_magnified_image.webp" 
                 alt="Magnified view of activated carbon showing microporous structure for odor adsorption"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                loading="lazy"
+                width={1200}
+                height={384}
               />
               <p className="text-sm text-gray-500 text-center mt-2">
                 Microscopic view of activated carbon's porous structure that traps odor molecules

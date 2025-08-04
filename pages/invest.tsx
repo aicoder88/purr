@@ -254,10 +254,12 @@ function TeamSlide({ content }: { content: TeamSlideContent }) {
           return (
             <div key={i} className="flex flex-col items-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 w-64">
               {!hasAvatarError ? (
-                <img
+                <Image
                   src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${avatarSeed}`}
                   alt={`${name} avatar`}
                   className="w-24 h-24 rounded-full mb-4 border-2 border-[#5B2EFF]"
+                  width={96}
+                  height={96}
                   onError={() => handleAvatarError(i)}
                 />
               ) : (

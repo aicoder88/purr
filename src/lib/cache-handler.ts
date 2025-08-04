@@ -3,10 +3,18 @@
  * Implements intelligent caching strategies with Redis fallback and memory optimization
  */
 
-const { IncrementalCache } = require('next/dist/server/lib/incremental-cache');
+import { IncrementalCache } from 'next/dist/server/lib/incremental-cache';
 
 class PurrifyIncrementalCacheHandler extends IncrementalCache {
-  constructor(options) {
+  memoryCache: Map<string, any>;
+  maxMemorySize: number;
+  currentMemorySize: number;
+  hitCount: number;
+  missCount: number;
+  lastCleanup: number;
+  cleanupInterval: number;
+
+    constructor(options: any) {
     super(options);
     this.memoryCache = new Map();
     this.maxMemorySize = 52428800; // 50MB
@@ -18,7 +26,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Enhanced get method with memory optimization
-  async get(key, ctx = {}) {
+    async get(key: string, ctx: any = {}) {
     // Check memory cache first
     const memoryResult = this.getFromMemory(key);
     if (memoryResult) {
@@ -44,7 +52,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Enhanced set method with intelligent storage
-  async set(key, data, ctx = {}) {
+    async set(key: string, data: any, ctx: any = {}) {
     // Set in memory cache
     this.setInMemory(key, data);
     
@@ -53,7 +61,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Memory cache operations
-  getFromMemory(key) {
+    getFromMemory(key: string) {
     const cached = this.memoryCache.get(key);
     if (!cached) return null;
 
@@ -69,7 +77,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
     return cached.data;
   }
 
-  setInMemory(key, data) {
+    setInMemory(key: string, data: any) {
     const serialized = JSON.stringify(data);
     const size = Buffer.byteLength(serialized, 'utf8');
     
@@ -92,7 +100,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Intelligent expiration based on content type
-  calculateExpiration(key) {
+    calculateExpiration(key: string) {
     const now = Date.now();
     
     // Static assets - 1 hour
@@ -120,7 +128,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Memory management
-  ensureMemorySpace(requiredSize) {
+    ensureMemorySpace(requiredSize: number) {
     while (this.currentMemorySize + requiredSize > this.maxMemorySize) {
       this.evictLeastRecentlyUsed();
     }
@@ -181,7 +189,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 
   // Enhanced revalidation with smart invalidation
-  async revalidateTag(tag) {
+    async revalidateTag(tag: string) {
     // Smart invalidation based on tag patterns
     const keysToInvalidate = [];
     
@@ -204,7 +212,7 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
     return super.revalidateTag(tag);
   }
 
-  shouldInvalidateForTag(key, tag) {
+    shouldInvalidateForTag(key: string, tag: string) {
     // Product-related invalidation
     if (tag === 'products' && (key.includes('/products') || key.includes('/api/products'))) {
       return true;
@@ -224,4 +232,4 @@ class PurrifyIncrementalCacheHandler extends IncrementalCache {
   }
 }
 
-module.exports = PurrifyIncrementalCacheHandler;
+export default PurrifyIncrementalCacheHandler;

@@ -2,6 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../src/lib/prisma';
 import { getSession } from 'next-auth/react';
 
+interface CartItem {
+  id: string;
+  quantity: number;
+  price: number;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -32,7 +38,7 @@ export default async function handler(
           },
         },
         items: {
-          create: items.map((item: any) => ({
+                    create: items.map((item: CartItem) => ({
             productId: item.id,
             quantity: item.quantity,
             price: item.price,

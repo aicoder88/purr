@@ -6,7 +6,7 @@ const newsletterSchema = z.object({
   email: z.string().email().trim().toLowerCase(),
 });
 
-type NewsletterData = z.infer<typeof newsletterSchema>;
+
 
 interface ResponseData {
   success: boolean;

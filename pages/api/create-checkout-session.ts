@@ -6,6 +6,16 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-05-28.basil',
 });
 
+interface OrderItemWithProduct {
+  price: number;
+  quantity: number;
+  product: {
+    name: string;
+    description: string;
+    image: string;
+  };
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -15,7 +25,7 @@ export default async function handler(
   }
 
   try {
-    const { orderId, items, customer } = req.body;
+        const { orderId, customer } = req.body;
 
     // Get order from database
     const order = await prisma.order.findUnique({
@@ -36,7 +46,7 @@ export default async function handler(
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: order.items.map((item: any) => ({
+            line_items: order.items.map((item: OrderItemWithProduct) => ({
         price_data: {
           currency: 'usd',
           product_data: {
