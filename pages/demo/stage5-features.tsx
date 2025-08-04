@@ -392,7 +392,6 @@ const Stage5DemoPage: NextPage = () => {
       {showNotifications && (
         <PurchaseNotifications 
           position="bottom-left"
-          showInterval={8000}
           autoHide={true}
           hideDelay={5000}
         />

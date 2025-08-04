@@ -53,7 +53,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       const post = { ...foundPost };
       
       // Add content to the post
-      post.content = getBlogPostContent(params.slug);
+      post.content = getBlogPostContent();
       
       // Return the post data as props
       return {
@@ -117,7 +117,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       }
       
       const post = { ...foundPost };
-      post.content = getBlogPostContent(params.slug);
+      post.content = getBlogPostContent();
       
       return {
         props: {

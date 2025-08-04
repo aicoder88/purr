@@ -178,7 +178,7 @@ export default function Home() {
       />
 
       {/* Enhanced Structured Data */}
-      <EnhancedStructuredData pageType="home" />
+      <EnhancedStructuredData />
 
       {/* Urgency Banner at the top */}
       <UrgencyBanner />
@@ -255,9 +255,8 @@ export default function Home() {
       {/* Social Proof Components */}
       <PurchaseNotifications 
         position="bottom-left"
-        showInterval={20000}
         autoHide={true}
-        hideDelay={8000}
+        hideDelay={5000}
       />
     </>
   );

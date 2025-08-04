@@ -40,7 +40,7 @@ export const Link = {
   },
 };
 export const Loading = {
-  render: (args: any) => (
+  render: (args: ButtonProps) => (
     <Button {...args}>
       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       Button
@@ -51,7 +51,7 @@ export const Loading = {
   },
 };
 export const WithIcon = {
-  render: (args: any) => (
+  render: (args: ButtonProps) => (
     <Button {...args}>
       <Mail className="mr-2 h-4 w-4" /> Login with Email Button
     </Button>

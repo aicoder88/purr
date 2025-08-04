@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
   
-  const content = getBlogPostContent(slug);
+  const content = getBlogPostContent();
   
   return {
     props: {

@@ -46,9 +46,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isDisabled = disabled || loading;
     
     if (asChild) {
-      const child = React.Children.only(children) as React.ReactElement;
+      const child = React.Children.only(children) as React.ReactElement<any>;
       return React.cloneElement(child, {
-        className: cn(buttonVariants({ variant, size, className }), child.props.className),
+        className: cn(buttonVariants({ variant, size, className }), child.props?.className),
         disabled: isDisabled,
         'aria-disabled': isDisabled,
         ref,

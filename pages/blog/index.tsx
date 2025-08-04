@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
@@ -7,6 +7,17 @@ import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { sampleBlogPosts } from '../../src/data/blog-posts';
 import { useTranslation } from '../../src/lib/translation-context';
+
+interface WpPost {
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  _embedded?: {
+    author?: { name: string }[];
+    'wp:featuredmedia'?: { source_url: string }[];
+  };
+  date: string;
+  slug: string;
+}
 
 // This function gets called at build time on server-side
 export async function getStaticProps() {
@@ -37,7 +48,7 @@ export async function getStaticProps() {
     const wpPosts = await response.json();
     
     // Transform WordPress posts to match our BlogPost interface
-    const blogPosts: BlogPost[] = wpPosts.map((post: any) => ({
+    const blogPosts: BlogPost[] = wpPosts.map((post: WpPost) => ({
       title: post.title.rendered,
       excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",

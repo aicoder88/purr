@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { useTranslation } from '../../src/lib/translation-context';
 
 export default function PurrifyVsArmHammer() {
   // const { t } = useTranslation();

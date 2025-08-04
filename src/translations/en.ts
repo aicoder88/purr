@@ -342,7 +342,7 @@ export const en = {
   // Enhanced Product Comparison
   enhancedProductComparison: {
     compareAndSave: "COMPARE & SAVE",
-    chooseYourPerfect: "Choose Your Perfect",
+    chooseYourPerfectSize: "Choose Your Perfect Size",
     purrifySize: "Purrify Size",
     subtitle: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
     trial: "TRIAL",
