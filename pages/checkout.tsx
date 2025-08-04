@@ -47,7 +47,7 @@ const CheckoutPage: NextPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const { items, getTotalPrice, clearCart } = useCart();
   const router = useRouter();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [referralCode, setReferralCode] = useState('');
   const [referralStatus, setReferralStatus] = useState<'idle' | 'validating' | 'valid' | 'invalid'>('idle');
   const [referralMessage, setReferralMessage] = useState('');

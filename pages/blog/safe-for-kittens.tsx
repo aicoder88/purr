@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 
 export default function SafeForKittens() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <>

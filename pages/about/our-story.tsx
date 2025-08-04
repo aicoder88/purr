@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 
 const OurStoryPage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  // Translation hook available if needed in the future
+  // const { t, locale } = useTranslation();
 
   const milestones = [
     {
