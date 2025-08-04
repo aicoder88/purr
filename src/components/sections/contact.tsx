@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { CONTACT_INFO } from "@/lib/constants";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useTranslation } from "@/lib/translation-context";
 

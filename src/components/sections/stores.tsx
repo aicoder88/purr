@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import Image from "next/image";
 import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 
@@ -117,49 +118,63 @@ const getStoreLogo = (storeName: string) => {
     return {
       src: "https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg",
       alt: "Chico Logo",
-      className: "w-16 h-16"
+      className: "w-16 h-16",
+      width: 64,
+      height: 64
     };
   }
   if (storeName.includes('Pattes et Griffes')) {
     return {
       src: "https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg",
       alt: "Pattes et Griffes Logo",
-      className: "w-18 h-18 object-contain"
+      className: "w-18 h-18 object-contain",
+      width: 72,
+      height: 72
     };
   }
   if (storeName.includes('GIGI')) {
     return {
-      src: "/gigi.png",
-      alt: "Animalerie GIGI Logo",
-      className: "w-18 h-18 object-contain"
+      src: "https://www.animaleriegigi.com/images/logo.png",
+      alt: "Animal GIGI Logo",
+      className: "w-18 h-18 object-contain",
+      width: 72,
+      height: 72
     };
   }
   if (storeName.includes('Pitou Minou')) {
     return {
-      src: "/pitou-minou.png",
+      src: "https://pitou-minou.ca/wp-content/uploads/2021/11/logo-pitou-minou-compagnons.svg",
       alt: "Pitou Minou & Compagnons Logo",
-      className: "w-18 h-18 object-contain"
+      className: "w-20 h-20",
+      width: 80,
+      height: 80
     };
   }
   if (storeName.includes('Doghaus')) {
     return {
-      src: "/doghaus.png",
+      src: "https://www.doghausmtl.com/wp-content/uploads/2022/02/logo-black.svg",
       alt: "Doghaus Logo",
-      className: "w-18 h-18 object-contain"
+      className: "w-24 h-24 object-contain",
+      width: 96,
+      height: 96
     };
   }
   if (storeName.includes('KONG')) {
     return {
-      src: "/kong-animalerie.jpg",
-      alt: "KONG Animalerie Logo",
-      className: "w-18 h-18 object-contain"
+      src: "https://scontent.fymq2-1.fna.fbcdn.net/v/t39.30808-6/302229598_485891393543881_591483935535254206_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yv8g3X3J-rAQ7kNvgEGT5BE&_nc_ht=scontent.fymq2-1.fna&oh=00_AYBq_sR_t_x-e9g-Z-v-c-gQJz5aXzK9Xw9c8bY9Yw9Q&oe=665B17B5",
+      alt: "KONG ANIMALERIE Logo",
+      className: "w-24 h-24",
+      width: 96,
+      height: 96
     };
   }
   if (storeName.includes('Coquette')) {
     return {
-      src: "/coquette-finegueule.png",
+      src: "https://coquetteetfinegueule.com/cdn/shop/files/Coquette-Fine-Gueule-Logo-01_260x.png?v=1614324310",
       alt: "Coquette et Finegueule Logo",
-      className: "w-18 h-18 object-contain"
+      className: "w-24 h-24",
+      width: 96,
+      height: 96
     };
   }
   return null;
@@ -215,11 +230,7 @@ export function Stores() {
                       }
                     >
                       {logoConfig ? (
-                        <img
-                          src={logoConfig.src}
-                          alt={logoConfig.alt}
-                          className={logoConfig.className}
-                        />
+                        <Image {...logoConfig} />
                       ) : (
                         <svg 
                           className="w-6 h-6 text-white" 

@@ -460,7 +460,7 @@ export const PurrifyStructuredData: React.FC = () => {
   );
 };
 
-export default {
+const AdvancedStructuredData = {
   ProductStructuredData,
   OrganizationStructuredData,
   WebsiteStructuredData,
@@ -471,3 +471,6 @@ export default {
   ReviewStructuredData,
   PurrifyStructuredData
 };
+
+export default AdvancedStructuredData;
+

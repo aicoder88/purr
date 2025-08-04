@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 
 interface PurchaseNotification {
@@ -13,7 +13,6 @@ interface PurchaseNotification {
 
 interface PurchaseNotificationsProps {
   position?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
-  showInterval?: number; // milliseconds
   autoHide?: boolean;
   hideDelay?: number; // milliseconds
 }
@@ -95,7 +94,6 @@ const SAMPLE_PURCHASES: PurchaseNotification[] = [
 
 export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   position = 'bottom-left',
-  showInterval = 55000, // Default to 55 seconds (middle of 20-90 range)
   autoHide = true,
   hideDelay = 5000
 }) => {
@@ -104,51 +102,39 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   const [notificationIndex, setNotificationIndex] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
-  // Function to get random interval between 20-90 seconds
   const getRandomInterval = () => {
-    return Math.floor(Math.random() * (90000 - 20000 + 1)) + 20000; // 20-90 seconds in milliseconds
+    return Math.floor(Math.random() * (90000 - 20000 + 1)) + 20000;
   };
 
+  const showNextNotification = useCallback(() => {
+    const notification = SAMPLE_PURCHASES[notificationIndex];
+    setCurrentNotification(notification);
+    setIsVisible(true);
+
+    if (autoHide) {
+      const hideTimeout = setTimeout(() => {
+        setIsVisible(false);
+      }, hideDelay);
+      setTimeoutId(hideTimeout);
+    }
+
+    setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
+  }, [notificationIndex, autoHide, hideDelay]);
+
   useEffect(() => {
-    const scheduleNextNotification = () => {
+    const schedule = () => {
       const randomInterval = getRandomInterval();
-      const timeout = setTimeout(() => {
-        const notification = SAMPLE_PURCHASES[notificationIndex];
-        setCurrentNotification(notification);
-        setIsVisible(true);
-
-        if (autoHide) {
-          setTimeout(() => {
-            setIsVisible(false);
-          }, hideDelay);
-        }
-
-        setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-        
-        // Schedule the next notification
-        scheduleNextNotification();
+      const newTimeout = setTimeout(() => {
+        showNextNotification();
+        schedule();
       }, randomInterval);
-      
-      setTimeoutId(timeout);
+      setTimeoutId(newTimeout);
     };
 
-    // Show first notification after initial delay (15-30 seconds)
     const initialDelay = Math.floor(Math.random() * 15000) + 15000;
     const initialTimeout = setTimeout(() => {
-      const notification = SAMPLE_PURCHASES[notificationIndex];
-      setCurrentNotification(notification);
-      setIsVisible(true);
-
-      if (autoHide) {
-        setTimeout(() => {
-          setIsVisible(false);
-        }, hideDelay);
-      }
-
-      setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-      
-      // Start the random scheduling after first notification
-      scheduleNextNotification();
+      showNextNotification();
+      schedule();
     }, initialDelay);
 
     return () => {
@@ -157,10 +143,11 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
         clearTimeout(timeoutId);
       }
     };
-  }, [autoHide, hideDelay]);
+  }, [showNextNotification, timeoutId]);
 
   const handleClose = () => {
     setIsVisible(false);
+    if (timeoutId) clearTimeout(timeoutId);
   };
 
   const positionClasses = {
@@ -168,13 +155,6 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
     'bottom-right': 'bottom-4 right-4',
     'top-left': 'top-4 left-4',
     'top-right': 'top-4 right-4'
-  };
-
-  const slideClasses = {
-    'bottom-left': 'translate-x-0',
-    'bottom-right': 'translate-x-0',
-    'top-left': 'translate-x-0',
-    'top-right': 'translate-x-0'
   };
 
   if (!currentNotification) return null;
@@ -187,7 +167,6 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
       style={{ maxWidth: '320px' }}
     >
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-4 m-4">
-        {/* Header */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
@@ -208,7 +187,6 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
           </button>
         </div>
 
-        {/* Content */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="font-medium text-gray-900 dark:text-gray-100">
@@ -258,7 +236,6 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
           </div>
         </div>
 
-        {/* Progress bar */}
         {autoHide && (
           <div className="mt-3 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1">
             <div

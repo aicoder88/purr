@@ -28,8 +28,8 @@ export function Features() {
             Why do Cats and Pet Parents Love Purrify?
           </h2>
           <p className="text-gray-600 leading-relaxed text-lg dark:text-gray-300">
-            You love your cat, but let's be real—litter box odor is a problem.
-            You've tried scented litter, air fresheners, and baking soda—but
+            You love your cat, but let&apos;s be real—litter box odor is a problem.
+            You&apos;ve tried scented litter, air fresheners, and baking soda—but
             they only mask the problem, not fix it.
           </p>
           <p className="text-gray-600 leading-relaxed mt-4 text-lg dark:text-gray-300">
@@ -38,7 +38,7 @@ export function Features() {
             visit.
           </p>
           <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl dark:text-foreground">
-            That's exactly what Purrify does...
+            That&apos;s exactly what Purrify does...
           </p>
         </div>
 

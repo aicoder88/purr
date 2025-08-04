@@ -1,23 +1,7 @@
 import Script from 'next/script';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../../lib/constants';
 
-interface EnhancedStructuredDataProps {
-  pageType?: 'home' | 'product' | 'blog' | 'contact';
-  productId?: string;
-  blogPost?: {
-    title: string;
-    description: string;
-    publishedAt: string;
-    author: string;
-    image: string;
-  };
-}
-
-export function EnhancedStructuredData({ 
-  pageType = 'home', 
-  productId,
-  blogPost 
-}: EnhancedStructuredDataProps) {
+export function EnhancedStructuredData() {
   const baseUrl = 'https://purrify.ca';
   
   // Organization Schema

@@ -1,12 +1,8 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "../../lib/translation-context";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../../../components/NextImage"), {
-  ssr: true,
-});
 
 export function CTA() {
   const { t } = useTranslation();
@@ -28,9 +24,11 @@ export function CTA() {
 
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white/10 dark:bg-black/30 rounded-3xl p-10 border border-white/20 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80"
             alt="Happy cat"
+            width={800}
+            height={800}
             className="absolute top-0 right-0 w-1/3 h-full object-cover opacity-20 rounded-r-3xl"
           />
           <div className="text-white max-w-2xl bg-black/30 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
@@ -43,23 +41,29 @@ export function CTA() {
             <div className="mt-8 flex items-center space-x-4">
               <div className="flex -space-x-4">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
-                  <img
+                  <Image
                     src="https://randomuser.me/api/portraits/women/32.jpg"
                     alt="User"
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
-                  <img
+                  <Image
                     src="https://randomuser.me/api/portraits/men/45.jpg"
                     alt="User"
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
-                  <img
+                  <Image
                     src="https://randomuser.me/api/portraits/women/68.jpg"
                     alt="User"
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
                   />
                 </div>

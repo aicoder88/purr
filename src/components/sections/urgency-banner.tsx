@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from "../../lib/translation-context";
-import { Clock, Flame, Users, TrendingUp } from 'lucide-react';
+
+import { Flame, Users, TrendingUp } from 'lucide-react';
 
 export function UrgencyBanner() {
-  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number }>({
     hours: 0,
     minutes: 0,

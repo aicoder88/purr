@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from "../../lib/translation-context";
 import { X, Gift, Star, Mail, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import NextImage from "../../../components/NextImage";
 
 export function EmailCapturePopup() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);

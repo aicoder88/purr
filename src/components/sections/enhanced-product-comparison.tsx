@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
-import { Check, X, Star, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
+import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
 import NextImage from "../../../components/NextImage";
-import { PRODUCTS } from "@/lib/constants";
+
 
 export function EnhancedProductComparison() {
   const { t } = useTranslation();

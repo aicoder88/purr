@@ -1,33 +1,23 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { TESTIMONIALS } from "@/lib/constants";
+
 import SectionHeader from "../ui/section-header";
-import { useInterval, scrollToSection } from "@/lib/utils";
-import dynamic from "next/dynamic";
+import { scrollToSection } from "@/lib/utils";
+
 import { useTranslation } from "../../lib/translation-context";
-import { RotatingText } from "../ui/rotating-text";
+
 import Link from "next/link";
 
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../../../components/NextImage"), {
-  ssr: true,
-});
+
 
 export function Hero() {
   const { t, locale } = useTranslation();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Testimonial rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000); // Increased to 5 seconds for better readability
-    
-    return () => clearInterval(interval);
-  }, []);
+
 
   // Fade in animation on mount
   useEffect(() => {

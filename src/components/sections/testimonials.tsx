@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
+import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
 
 export function Testimonials() {
@@ -95,9 +96,8 @@ export function Testimonials() {
                   <div
                     className={`rounded-full border-4 border-white bg-white shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <img
-                      src={`https://randomuser.me/api/portraits/${
-                        testimonial.name.includes("Jean") ||
+                    <Image
+                      src={`https://randomuser.me/api/portraits/${testimonial.name.includes("Jean") ||
                         testimonial.name.includes("François") ||
                         testimonial.name.includes("Mathieu") ||
                         testimonial.name.includes("Robert") ||
@@ -106,6 +106,8 @@ export function Testimonials() {
                           : "women"
                       }/${index + 1}.jpg`}
                       alt={testimonial.name}
+                      width={64}
+                      height={64}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -143,7 +145,7 @@ export function Testimonials() {
                       ))}
                   </div>
                   <p className="text-gray-800 dark:text-gray-100 italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6">
-                    "{testimonial.text}"
+                    &quot;{testimonial.text}&quot;
                   </p>
                   <div className="flex items-center justify-between">
                     <p

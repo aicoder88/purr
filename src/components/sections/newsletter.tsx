@@ -3,7 +3,7 @@ import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import { useTranslation } from "../../lib/translation-context";
 
 export function Newsletter() {
-  const { t, locale } = useTranslation();
+  useTranslation();
 
   return (
     <section id="newsletter" className="py-16 bg-[#FFFFF5] dark:bg-gray-900">

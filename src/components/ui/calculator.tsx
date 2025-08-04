@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
@@ -58,7 +58,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       carsRemoved: 0,
       catsSaved: 0,
     });
-  const chartRef = useRef<HTMLDivElement>(null);
+
 
   // Calculate savings and environmental impact
   useEffect(() => {
@@ -112,7 +112,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
   };
 
   const savingsData = generateSavingsData();
-  const maxSavings = savingsData[savingsData.length - 1].savings;
+
 
   const generateSavingsChartData = () => {
     return {
@@ -349,7 +349,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                 ${annualSavings.toFixed(2)}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                That's like getting {Math.round(annualSavings / litterCost)}{" "}
+                That&apos;s like getting {Math.round(annualSavings / litterCost)}{" "}
                 free litter changes per year!
               </p>
             </div>
@@ -378,7 +378,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                 ${tenYearSavings.toFixed(2)}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                Over a decade, that's {Math.round(tenYearSavings / litterCost)}{" "}
+                Over a decade, that&apos;s {Math.round(tenYearSavings / litterCost)}{" "}
                 litter changes saved!
               </p>
             </div>
@@ -499,7 +499,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
                 <span className="font-bold text-[#FF3131]">
                   {tenYearEnvironmentalImpact.catsSaved}
                 </span>{" "}
-                shelter cats get the care they need. That's a lot of happy
+                shelter cats get the care they need. That&apos;s a lot of happy
                 purrs!
               </p>
             </div>

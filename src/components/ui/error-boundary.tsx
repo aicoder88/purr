@@ -37,7 +37,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
               Oops! Something went wrong
             </h2>
             <p className="text-red-600 dark:text-red-300 mb-4">
-              We apologize for the inconvenience. This error has been logged and we're working to fix it.
+              We apologize for the inconvenience. This error has been logged and we&apos;re working to fix it.
             </p>
             <button
               onClick={() => window.location.reload()}

@@ -60,7 +60,7 @@ function generateLatestBlogPosts(): BlogPost[] {
 export const sampleBlogPosts: BlogPost[] = generateLatestBlogPosts();
 
 // Function to get blog post content
-export function getBlogPostContent(slug: string): string {
+export function getBlogPostContent(): string {
   // For now, we'll just return the same content for all posts
   // In a real app, you would have different content for each post
   return `

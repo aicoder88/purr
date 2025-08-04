@@ -1,13 +1,13 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+
 import { useTranslation } from "../../lib/translation-context";
 import { Check, Star, Truck, Shield, Clock, Zap } from 'lucide-react';
-import NextImage from "../../../components/NextImage";
+
 
 export function SubscriptionOffer() {
   const { t } = useTranslation();
-  const [selectedPlan, setSelectedPlan] = useState('monthly');
+  
 
   const subscriptionPlans = [
     {
@@ -133,7 +133,7 @@ export function SubscriptionOffer() {
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl' 
                         : 'bg-gray-100 hover:bg-gray-200 text-gray-800 border-2 border-gray-200 hover:border-[#FF3131]/30'
                     }`}
-                    onClick={() => setSelectedPlan(plan.id)}
+                    
                   >
                     {plan.popular ? (t.subscriptionOfferExtended?.selectPlan || 'Select Plan') : (t.subscriptionOfferExtended?.selectPlan || 'Select Plan')}
                   </Button>
@@ -187,7 +187,7 @@ export function SubscriptionOffer() {
               <span className="ml-2 text-gray-700 font-medium">4.9/5 from 2,847 reviews</span>
             </div>
             <p className="text-sm text-gray-500 italic">
-              "I've saved over $200 this year with my subscription, and my cats' litter box never smells!" - Sarah M.
+              &quot;I&apos;ve saved over $200 this year with my subscription, and my cats&apos; litter box never smells!&quot; - Sarah M.
             </p>
           </div>
         </div>

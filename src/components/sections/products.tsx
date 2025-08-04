@@ -6,19 +6,26 @@ import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
 import { ReviewSystem } from '../reviews/ReviewSystem';
-import { TouchGallery } from '../mobile/TouchGallery';
 import { ecommerceEvents } from '../../lib/gtm-events';
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Star, Check } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  size: string;
+}
 
 export function Products() {
   const { t } = useTranslation();
   const { addToCart } = useCart();
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
 
   useEffect(() => {
@@ -37,10 +44,10 @@ export function Products() {
     return () => observer.disconnect();
   }, []);
 
-  const handleAddToCart = async (product: any) => {
+    const handleAddToCart = async (product: Product) => {
     setAddingToCart(product.id);
     try {
-      await addToCart(product);
+      await addToCart(product.id);
       // Track ecommerce event
       ecommerceEvents.addToCart({
         item_id: product.id,
@@ -98,8 +105,7 @@ export function Products() {
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 opacity: isVisible ? 1 : 0
               }}
-              onMouseEnter={() => setHoveredProduct(product.id)}
-              onMouseLeave={() => setHoveredProduct(null)}
+              
             >
               {/* Highlight for recommended product */}
               {index === 1 && (

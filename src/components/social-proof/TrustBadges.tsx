@@ -1,9 +1,9 @@
 import React from 'react';
-import { Shield, Award, RefreshCw, Truck, CreditCard, Users, CheckCircle, Star } from 'lucide-react';
+import { Shield, Award, RefreshCw, Truck, Users, Star } from 'lucide-react';
 
 interface TrustBadge {
   id: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   highlight?: string;

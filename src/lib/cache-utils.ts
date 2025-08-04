@@ -3,6 +3,22 @@
  * Advanced caching helpers and strategies
  */
 
+// Define structured types for cached data
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  avatar: string;
+  testimonial: string;
+}
+
 export interface CacheConfig {
   ttl: number;
   maxSize?: number;
@@ -248,7 +264,7 @@ export class AdvancedCache<T = any> {
   }
 
   // Calculate approximate size
-  private calculateSize(data: any): number {
+  private calculateSize(data: unknown): number {
     return new Blob([JSON.stringify(data)]).size;
   }
 }
@@ -270,32 +286,32 @@ export class CacheManager {
   }
 
   // Convenience methods for common operations
-  cacheProduct(id: string, product: any): boolean {
+  cacheProduct(id: string, product: Product): boolean {
     const cache = this.getCache('products');
     return cache ? cache.set(`product_${id}`, product) : false;
   }
 
-  getProduct(id: string): any | null {
+  getProduct(id: string): Product | null {
     const cache = this.getCache('products');
     return cache ? cache.get(`product_${id}`) : null;
   }
 
-  cacheTestimonials(testimonials: any[]): boolean {
+  cacheTestimonials(testimonials: Testimonial[]): boolean {
     const cache = this.getCache('testimonials');
     return cache ? cache.set('all_testimonials', testimonials) : false;
   }
 
-  getTestimonials(): any[] | null {
+  getTestimonials(): Testimonial[] | null {
     const cache = this.getCache('testimonials');
     return cache ? cache.get('all_testimonials') : null;
   }
 
-  cacheApiResponse(endpoint: string, data: any): boolean {
+  cacheApiResponse<T>(endpoint: string, data: T): boolean {
     const cache = this.getCache('api');
     return cache ? cache.set(`api_${endpoint}`, data) : false;
   }
 
-  getApiResponse(endpoint: string): any | null {
+  getApiResponse<T>(endpoint: string): T | null {
     const cache = this.getCache('api');
     return cache ? cache.get(`api_${endpoint}`) : null;
   }
@@ -333,11 +349,11 @@ export class CacheManager {
 export const globalCacheManager = new CacheManager();
 
 // Cache decorators for functions
-export function cached<T extends (...args: any[]) => any>(
+export function cached<T extends (...args: unknown[]) => unknown>(
   type: keyof typeof CACHE_STRATEGIES,
   keyGenerator?: (...args: Parameters<T>) => string
 ) {
-  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  return function(target: unknown, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     
     descriptor.value = function(...args: Parameters<T>) {
@@ -367,7 +383,7 @@ export function useCache(type: keyof typeof CACHE_STRATEGIES) {
   
   return {
     get: (key: string) => cache?.get(key) || null,
-    set: (key: string, data: any) => cache?.set(key, data) || false,
+    set: <T>(key: string, data: T) => cache?.set(key, data) || false,
     delete: (key: string) => cache?.delete(key) || false,
     clear: () => cache?.clear(),
     stats: () => cache?.getStats()

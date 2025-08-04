@@ -21,7 +21,7 @@ import {
 
 const OurStoryPage: NextPage = () => {
   // Translation hook available if needed in the future
-  // const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   const milestones = [
     {

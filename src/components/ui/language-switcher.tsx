@@ -1,5 +1,6 @@
 // import Link from 'next/link';
 import { useState } from 'react';
+import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './button';
 import { useTranslation } from '../../lib/translation-context';
@@ -66,9 +67,11 @@ export function LanguageSwitcher() {
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <img 
+        <Image 
           src={currentLanguage.flag} 
           alt={currentLanguage.alt} 
+          width={20}
+          height={20}
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
         <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100">{currentLanguage.name}</span>
@@ -92,9 +95,11 @@ export function LanguageSwitcher() {
                 onClick={() => handleLanguageChange(language.locale)}
                 role="menuitem"
               >
-                <img 
+                <Image 
                   src={language.flag} 
                   alt={language.alt} 
+                  width={20}
+                  height={20}
                   className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover mr-2 sm:mr-3"
                 />
                 {language.name}

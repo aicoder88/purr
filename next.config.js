@@ -42,6 +42,34 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.purrify.ca',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.chico.ca',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pattesgriffes.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pitou-minou.ca',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.doghausmtl.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent.fymq2-1.fna.fbcdn.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'coquetteetfinegueule.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.animaleriegigi.com',
       }
     ],
     formats: ['image/avif', 'image/webp'],

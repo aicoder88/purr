@@ -130,17 +130,15 @@ const SAMPLE_REVIEWS: Review[] = [
 ];
 
 export const ReviewSystem: React.FC<ReviewSystemProps> = ({ 
-  productId, 
   showFilters = true, 
   maxReviews, 
   compact = false 
 }) => {
-  const [reviews, setReviews] = useState<Review[]>(SAMPLE_REVIEWS);
+  const [reviews] = useState<Review[]>(SAMPLE_REVIEWS);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>(SAMPLE_REVIEWS);
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful'>('newest');
   const [filterRating, setFilterRating] = useState<number | null>(null);
   const [filterSize, setFilterSize] = useState<string | null>(null);
-  const [showWriteReview, setShowWriteReview] = useState(false);
 
   // Calculate review statistics
   const totalReviews = reviews.length;
@@ -325,14 +323,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-          <Button 
-            onClick={() => setShowWriteReview(true)}
-            className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white"
-          >
-            Write a Review
-          </Button>
-        </div>
+
       </div>
 
       {/* Filters and Sorting */}

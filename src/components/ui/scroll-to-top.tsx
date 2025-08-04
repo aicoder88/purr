@@ -1,12 +1,15 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 
 // Throttle function to limit how often a function can be called
-const throttle = (func: Function, limit: number) => {
+const throttle = <T extends (...args: unknown[]) => void>(
+  func: T,
+  limit: number
+) => {
   let inThrottle: boolean;
   let lastFunc: ReturnType<typeof setTimeout>;
   let lastRan: number;
-  
-  return function(this: any, ...args: any[]) {
+
+  return function (this: unknown, ...args: Parameters<T>) {
     if (!inThrottle) {
       func.apply(this, args);
       lastRan = Date.now();
@@ -67,14 +70,17 @@ export default function ScrollToTopButton() {
     }
   }, []);
 
-  // Throttled scroll handler
-  const toggleVisibility = useCallback(
-    throttle(() => {
-      if (typeof window !== 'undefined') {
-        setIsVisible(window.scrollY > 300);
-      }
-    }, 100),
-    []
+  // Define the scroll handler using useCallback
+  const handleScroll = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      setIsVisible(window.scrollY > 300);
+    }
+  }, []); // setIsVisible is stable
+
+  // Create a memoized throttled version of the scroll handler
+  const toggleVisibility = useMemo(
+    () => throttle(handleScroll, 100),
+    [handleScroll]
   );
 
   // Set up scroll listener with passive option for better performance

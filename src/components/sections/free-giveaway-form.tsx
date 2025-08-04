@@ -84,7 +84,7 @@ export function FreeGiveawayForm() {
           message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
         });
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
         message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',

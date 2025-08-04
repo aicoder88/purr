@@ -40,18 +40,18 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
             // Send custom event to heatmap tools
             if (typeof window !== 'undefined') {
               // Hotjar event
-              if ((window as any).hj) {
-                (window as any).hj('event', 'critical_interaction');
+              if (window.hj) {
+                window.hj('event', 'critical_interaction');
               }
               
               // Microsoft Clarity event
-              if ((window as any).clarity) {
-                (window as any).clarity('set', 'critical_interaction', selector);
+              if (window.clarity) {
+                window.clarity('set', 'critical_interaction', selector);
               }
               
               // FullStory event
-              if ((window as any).FS) {
-                (window as any).FS.event('Critical Interaction', {
+              if (window.FS) {
+                window.FS.event('Critical Interaction', {
                   element: selector,
                   page: window.location.pathname
                 });
@@ -167,52 +167,53 @@ export const HeatmapTracker: React.FC<{
 
 // Hook for programmatic heatmap events
 export const useHeatmapTracking = () => {
-  const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+  const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
     if (typeof window === 'undefined') return;
 
     // Hotjar
-    if ((window as any).hj) {
-      (window as any).hj('event', eventName);
+    if (window.hj) {
+      window.hj('event', eventName);
     }
 
     // Microsoft Clarity
-    if ((window as any).clarity) {
-      (window as any).clarity('set', eventName, properties || {});
+    if (window.clarity) {
+      window.clarity('set', eventName, properties || {});
     }
 
     // FullStory
-    if ((window as any).FS) {
-      (window as any).FS.event(eventName, properties || {});
+    if (window.FS) {
+      window.FS.event(eventName, properties || {});
     }
   };
 
-  const identifyUser = (userId: string, userProperties?: Record<string, any>) => {
+  const identifyUser = (userId: string, userProperties?: Record<string, unknown>) => {
     if (typeof window === 'undefined') return;
 
     // Hotjar
-    if ((window as any).hj) {
-      (window as any).hj('identify', userId, userProperties || {});
+    if (window.hj) {
+      window.hj('identify', userId, userProperties || {});
     }
 
     // FullStory
-    if ((window as any).FS) {
-      (window as any).FS.identify(userId, userProperties || {});
+    if (window.FS) {
+      window.FS.identify(userId, userProperties || {});
     }
   };
 
-  const setUserProperties = (properties: Record<string, any>) => {
+  const setUserProperties = (properties: Record<string, unknown>) => {
     if (typeof window === 'undefined') return;
 
     // Microsoft Clarity
-    if ((window as any).clarity) {
+    if (window.clarity) {
+      const clarity = window.clarity;
       Object.entries(properties).forEach(([key, value]) => {
-        (window as any).clarity('set', key, value);
+        clarity('set', key, value);
       });
     }
 
     // FullStory
-    if ((window as any).FS) {
-      (window as any).FS.setUserVars(properties);
+    if (window.FS) {
+      window.FS.setUserVars(properties);
     }
   };
 

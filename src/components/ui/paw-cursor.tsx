@@ -1,18 +1,21 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { FaPaw } from "react-icons/fa";
 
 // Throttle function to limit how often a function can be called
-const throttle = (func: Function, limit: number) => {
+const throttle = <T extends (...args: any[]) => void>(
+  func: T,
+  limit: number
+) => {
   let inThrottle: boolean;
   let lastFunc: ReturnType<typeof setTimeout>;
   let lastRan: number;
-  
-  return function(this: any, ...args: any[]) {
+
+  return function (this: unknown, ...args: Parameters<T>) {
     if (!inThrottle) {
       func.apply(this, args);
       lastRan = Date.now();
       inThrottle = true;
-      
+
       setTimeout(() => {
         inThrottle = false;
       }, limit);
@@ -79,43 +82,41 @@ export function PawCursor() {
     }
   }, []);
 
-  // Memoize and throttle the mouse move handler
   const handleMouseMove = useCallback(
-    throttle((event: MouseEvent) => {
-      // Early return if animation is disabled
+    (event: MouseEvent) => {
       if (!isPawAnimationEnabled || isReducedMotion) return;
-      
+
       try {
-        // Safely access event properties
         if (!event || typeof event.clientX !== 'number' || typeof event.clientY !== 'number') return;
-        
+
         const { clientX: x, clientY: y } = event;
-        
-        // Calculate rotation based on mouse movement
         const rotation = Math.floor(Math.random() * 360);
-        
-        // Add small random offset to make paws appear more natural
-        const offsetX = Math.random() * 20 - 10; // Random offset between -10 and 10
-        const offsetY = Math.random() * 20 - 10; // Random offset between -10 and 10
-        
-        // Use functional update to avoid closure issues
+        const offsetX = Math.random() * 20 - 10;
+        const offsetY = Math.random() * 20 - 10;
+
         setPaws((prev) => {
-          const newPaws = [...prev, {
-            x: x + offsetX,
-            y: y + offsetY,
-            rotation,
-            id: idRef.current++
-          }];
-          // Only keep the last 3 paws for better performance
+          const newPaws = [
+            ...prev,
+            {
+              x: x + offsetX,
+              y: y + offsetY,
+              rotation,
+              id: idRef.current++,
+            },
+          ];
           return newPaws.slice(-3);
         });
       } catch (error) {
         console.error("Error in PawCursor mouse handler:", error);
-        // Disable animation if there's an error
         setIsPawAnimationEnabled(false);
       }
-    }, 150), // Increased throttle time for better performance
+    },
     [isPawAnimationEnabled, isReducedMotion]
+  );
+
+  const throttledMouseMove = useMemo(
+    () => throttle(handleMouseMove, 150),
+    [handleMouseMove]
   );
 
   // Set up and clean up event listeners
@@ -126,17 +127,17 @@ export function PawCursor() {
     try {
       if (isPawAnimationEnabled && !isReducedMotion) {
         // Use passive event listener for better performance
-        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        window.addEventListener("mousemove", throttledMouseMove, { passive: true });
       }
       
       return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mousemove", throttledMouseMove);
       };
     } catch (error) {
       console.error("Error in PawCursor effect:", error);
       setIsPawAnimationEnabled(false);
     }
-  }, [handleMouseMove, isPawAnimationEnabled, isReducedMotion]);
+  }, [throttledMouseMove, isPawAnimationEnabled, isReducedMotion]);
 
   // Only render if we're in a browser environment and animation is enabled
   if (typeof window === 'undefined' || !isPawAnimationEnabled || isReducedMotion) {
