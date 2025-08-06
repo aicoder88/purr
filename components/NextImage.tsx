@@ -60,21 +60,6 @@ export default function NextImage({
   const [height, setHeight] = useState<number | undefined>(propHeight);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  // Reset states when src changes
-  useEffect(() => {
-    setImgSrc(src);
-    setIsLoading(true);
-    setError(false);
-    
-    // Try to get dimensions from the optimized images data
-    if (!propWidth || !propHeight) {
-      tryGetImageDimensions();
-    } else {
-      setWidth(propWidth);
-      setHeight(propHeight);
-    }
-  }, [src, propWidth, propHeight, tryGetImageDimensions]);
-
   // Try to get image dimensions from the optimized images data
   const tryGetImageDimensions = useCallback(() => {
     // Skip for external images or if dimensions are already provided
@@ -98,6 +83,21 @@ export default function NextImage({
       console.warn(`Could not determine dimensions for ${src}`, error);
     }
   }, [src, propWidth, propHeight, width, height]);
+
+  // Reset states when src changes
+  useEffect(() => {
+    setImgSrc(src);
+    setIsLoading(true);
+    setError(false);
+    
+    // Try to get dimensions from the optimized images data
+    if (!propWidth || !propHeight) {
+      tryGetImageDimensions();
+    } else {
+      setWidth(propWidth);
+      setHeight(propHeight);
+    }
+  }, [src, propWidth, propHeight, tryGetImageDimensions]);
 
   // Handle external URLs and local images
   const isExternal = src.startsWith('http') || src.startsWith('https');

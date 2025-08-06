@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Circle } from 'lucide-react';
 import NextImage from '../../../components/NextImage';
 
@@ -79,13 +79,13 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
     touchEndX.current = null;
   };
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -107,7 +107,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, goToNext, goToPrevious]);
 
   if (images.length === 0) return null;
 

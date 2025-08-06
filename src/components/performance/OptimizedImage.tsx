@@ -129,7 +129,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [trackPerformance]);
+  }, [trackPerformance, trackCustomMetric]);
 
   // Preload critical images
   useEffect(() => {

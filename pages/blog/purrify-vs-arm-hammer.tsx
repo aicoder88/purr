@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
@@ -116,10 +117,12 @@ export default function PurrifyVsArmHammer() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <img 
+              <Image 
                 src="/optimized/three_bags_no_bg.webp" 
                 alt="Purrify product lineup showing different sizes for comprehensive odor control"
                 className="w-full h-64 md:h-96 object-contain rounded-2xl shadow-xl bg-gray-50"
+                width={800}
+                height={400}
                 loading="lazy"
               />
               <p className="text-sm text-gray-500 text-center mt-2">
