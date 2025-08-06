@@ -215,7 +215,7 @@ export const fr = {
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: "+1 514 961 9386",
-    email: "hello@purrify.ca",
+    courriel: "hello@purrify.ca",
     hours: {
       title: "Heures d'Ouverture",
       monday: "08:00 am - 8:00 pm",
@@ -228,7 +228,7 @@ export const fr = {
     },
     form: {
       name: "Nom",
-      email: "Email",
+      courriel: "Courriel",
       message: "Message",
       submit: "Envoyer"
     }
@@ -236,9 +236,9 @@ export const fr = {
   
   // Newsletter
   newsletter: {
-    title: "Abonnez-vous à notre newsletter",
+    title: "Abonnez-vous à notre infolettre",
     subtitle: "Restez informé des dernières nouvelles et promotions",
-    placeholder: "Votre adresse email",
+    placeholder: "Votre adresse courriel",
     buttonText: "S'abonner",
     successMessage: "Merci de vous être abonné !",
     errorMessage: "Une erreur s'est produite. Veuillez réessayer."
@@ -248,7 +248,7 @@ export const fr = {
   freeGiveaway: {
     formTitle: "Entrez Vos Coordonnées",
     fullName: "Nom Complet",
-    emailAddress: "Adresse Email",
+    emailAddress: "Adresse Courriel",
     catNames: "Noms de Vos Chats",
     catNamePlaceholder: "Nom du Chat {index}",
     addAnotherCat: "Ajouter un Autre Chat",
@@ -419,12 +419,12 @@ export const fr = {
     waitDontGo: "Attendez ! Ne Partez Pas !",
     exclusiveOffer: "Obtenez une Offre Exclusive",
     subtitle: "Avant de partir, obtenez 15% de réduction sur votre première commande",
-    emailPlaceholder: "Entrez votre adresse email",
+    emailPlaceholder: "Entrez votre adresse courriel",
     claimDiscount: "Réclamer 15% de Réduction",
     noThanks: "Non merci",
     instantAccess: "Accès instantané à votre code de réduction",
     limitedTime: "Offre limitée - Ne la manquez pas !",
-    successMessage: "Succès ! Vérifiez votre email pour le code de réduction.",
+    successMessage: "Succès ! Vérifiez votre courriel pour le code de réduction.",
     errorMessage: "Une erreur s'est produite, veuillez réessayer."
   },
 
@@ -627,7 +627,7 @@ export const fr = {
     ],
     form: {
       fullName: "Nom Complet",
-      emailAddress: "Adresse Email", 
+      emailAddress: "Adresse Courriel", 
       subject: "Sujet",
       message: "Message",
       contactReason: "Raison du Contact",
@@ -841,7 +841,7 @@ export const fr = {
       }
     ],
     contactInfo: {
-      email: "hello@purrify.ca",
+      courriel: "hello@purrify.ca",
       phone: "+1 514 961 9386",
       address: "Montréal, Canada"
     }

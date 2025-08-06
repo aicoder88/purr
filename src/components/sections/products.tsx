@@ -8,7 +8,7 @@ import { useCart } from "../../lib/cart-context";
 import { ReviewSystem } from '../reviews/ReviewSystem';
 import { ecommerceEvents } from '../../lib/gtm-events';
 import { useState, useEffect } from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Plus, Minus } from 'lucide-react';
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
@@ -24,9 +24,10 @@ interface Product {
 
 export function Products() {
   const { t } = useTranslation();
-  const { addToCart } = useCart();
+  const { addToCart, updateQuantity, items } = useCart();
   const [isVisible, setIsVisible] = useState(false);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
+  const [quantities, setQuantities] = useState<{[key: string]: number}>({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,23 +45,38 @@ export function Products() {
     return () => observer.disconnect();
   }, []);
 
-    const handleAddToCart = async (product: Product) => {
+  const handleAddToCart = async (product: Product) => {
     setAddingToCart(product.id);
+    const quantity = quantities[product.id] || 1;
     try {
-      await addToCart(product.id);
+      // Add the specified quantity
+      for (let i = 0; i < quantity; i++) {
+        addToCart(product.id);
+      }
       // Track ecommerce event
       ecommerceEvents.addToCart({
         item_id: product.id,
         item_name: product.name,
         category: 'cat-litter-additive',
         price: product.price,
-        quantity: 1
+        quantity: quantity
       });
     } catch (error) {
       console.error('Failed to add to cart:', error);
     } finally {
       setTimeout(() => setAddingToCart(null), 1000);
     }
+  };
+
+  const getCartQuantity = (productId: string) => {
+    const cartItem = items.find(item => item.id === productId);
+    return cartItem?.quantity || 0;
+  };
+
+  const updateProductQuantity = (productId: string, delta: number) => {
+    const currentQty = quantities[productId] || 1;
+    const newQty = Math.max(1, currentQty + delta);
+    setQuantities(prev => ({ ...prev, [productId]: newQty }));
   };
   
   return (
@@ -167,37 +183,66 @@ export function Products() {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
-                  <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
-                    ${product.price.toFixed(2)}
-                  </span>
+                <div className="space-y-3 pt-3 sm:pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 bg-clip-text text-transparent">
+                      ${product.price.toFixed(2)}
+                    </span>
+                    {getCartQuantity(product.id) > 0 && (
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        {getCartQuantity(product.id)} in cart
+                      </span>
+                    )}
+                  </div>
+                  
                   {product.id === "purrify-17g" ? (
                     <a
                       href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
+                      className="w-full inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
                     >
                       {t.productsSection?.buyNow || "Buy Now"}
                     </a>
                   ) : (
-                    <Button 
-                      className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
-                      onClick={() => handleAddToCart(product)}
-                      disabled={addingToCart === product.id}
-                    >
-                      {addingToCart === product.id ? (
-                        <div className="flex items-center">
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                          {t.productsSection?.adding || "Adding..."}
-                        </div>
-                      ) : (
-                        <div className="flex items-center">
-                          <ShoppingCart className="w-4 h-4 mr-2" />
-                          {t.productsSection?.addToCart || "Add to Cart"}
-                        </div>
-                      )}
-                    </Button>
+                    <div className="space-y-2">
+                      {/* Quantity Controls */}
+                      <div className="flex items-center justify-center space-x-3">
+                        <button
+                          onClick={() => updateProductQuantity(product.id, -1)}
+                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
+                        >
+                          <Minus className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                        </button>
+                        <span className="text-lg font-semibold min-w-[2rem] text-center text-gray-900 dark:text-gray-100">
+                          {quantities[product.id] || 1}
+                        </span>
+                        <button
+                          onClick={() => updateProductQuantity(product.id, 1)}
+                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
+                        >
+                          <Plus className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                        </button>
+                      </div>
+                      
+                      <Button 
+                        className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                        onClick={() => handleAddToCart(product)}
+                        disabled={addingToCart === product.id}
+                      >
+                        {addingToCart === product.id ? (
+                          <div className="flex items-center">
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            {t.productsSection?.adding || "Adding..."}
+                          </div>
+                        ) : (
+                          <div className="flex items-center">
+                            <ShoppingCart className="w-4 h-4 mr-2" />
+                            {t.productsSection?.addToCart || "Add to Cart"}
+                          </div>
+                        )}
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>

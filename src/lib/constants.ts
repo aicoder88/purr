@@ -64,9 +64,9 @@ export const FEATURES = [
 
 export const TESTIMONIALS = [
   {
-    name: "Zara K., Plateau",
+    name: "Aisha M., Mile End",
     text: "My rescue cat Biscuit is super picky about litter changes, but with Purrify I can keep his box fresh way longer. Tiny Montreal apartment + sensitive cat = this stuff is a lifesaver! No more weird chemical smells either.",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=zara",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=aisha",
     stars: 5,
     petName: "Biscuit"
   },
@@ -106,9 +106,9 @@ export const TESTIMONIALS = [
     petName: "Ziggy"
   },
   {
-    name: "Émilie-Rose P., Longueuil",
+    name: "Maria C., Longueuil",
     text: "Ma chatte Pixel est super capricieuse avec sa litière, mais depuis que j'utilise Purrify, elle semble plus confortable. Plus d'odeurs bizarres qui traînent dans la maison!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emilierose",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
     stars: 5,
     petName: "Pixel"
   },
@@ -127,16 +127,16 @@ export const TESTIMONIALS = [
     petName: "Tofu"
   },
   {
-    name: "Stéphane L., Laval",
+    name: "Samuel I., Laval",
     text: "J'étais sceptique, mais mon chat Banjo avait des problèmes digestifs et l'odeur était insupportable. Purrify a vraiment réglé le problème - j'en commande maintenant à chaque mois!",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=stephane",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=samuel",
     stars: 5,
     petName: "Banjo"
   },
   {
-    name: "River K., Hochelaga",
-    text: "my cat Dumpling is literally the stinkiest cat alive (love her tho) but this stuff makes her litter box smell like... nothing?? black magic tbh. buying the big size next time 💯",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=river",
+    name: "Alex J., Hochelaga",
+    text: "My cat Dumpling has some serious digestive issues, but this stuff makes the litter box completely odorless. It's honestly like magic! Already ordering the larger size for next month.",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
     stars: 5,
     petName: "Dumpling"
   },

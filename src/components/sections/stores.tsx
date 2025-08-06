@@ -3,8 +3,72 @@ import Image from "next/image";
 import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 
-// Store data - Main pet stores carrying Purrify
+// Store data - Complete list of pet stores carrying Purrify
 const STORES = [
+  {
+    name: "Pattes et Griffes - Sainte-Thérèse",
+    location: "Sainte-Thérèse, QC",
+    address: "190 Bd du Curé-Labelle suite 1b",
+    phone: "450-818-1310",
+    url: "https://pattesgriffes.com/storelocator.html",
+    description: "Complete pet care and supplies"
+  },
+  {
+    name: "Chico - Boutique d'animaux | Sainte-Thérèse",
+    location: "Sainte-Thérèse, QC", 
+    address: "95 Bd du Curé-Labelle Suite 8",
+    phone: "450-965-3906",
+    url: "https://www.chico.ca/boutique/chico-sainte-therese/",
+    description: "Premium pet boutique"
+  },
+  {
+    name: "Chico - Boutique d'animaux | Sainte-Marthe-sur-le-Lac",
+    location: "Sainte-Marthe-Sur-Le-Lac, QC",
+    address: "2860 B Boul. des Promenades",
+    phone: "450-598-2860",
+    url: "https://www.chico.ca/boutique/chico-ste-marthe/",
+    description: "Premium pet boutique"
+  },
+  {
+    name: "Animal Shop Animal GIGI",
+    location: "Saint-Eustache, QC",
+    address: "356 Bd Arthur-Sauvé",
+    phone: "450-598-3444",
+    url: "https://www.animaleriegigi.com/",
+    description: "Family-owned pet store"
+  },
+  {
+    name: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
+    location: "Laval, QC",
+    address: "4511 Bd Arthur-Sauvé",
+    phone: "450-314-2442",
+    url: "https://www.chico.ca/boutique/chico-laval-ouest/",
+    description: "Premium pet boutique"
+  },
+  {
+    name: "Pattes et Griffes - Cartier Ouest",
+    location: "Laval, QC",
+    address: "293 Bd Cartier Ouest",
+    phone: "450-490-1414",
+    url: "https://pattesgriffes.com/storelocator.html",
+    description: "Complete pet care and supplies"
+  },
+  {
+    name: "Pitou Minou & Compagnons Kirkland",
+    location: "Kirkland, QC",
+    address: "16936 Route Transcanadienne",
+    phone: "514-695-5005",
+    url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/",
+    description: "Global Pet Foods location"
+  },
+  {
+    name: "Chico - Boutique d'animaux | Boul. St-Laurent (Montreal)",
+    location: "Montreal, QC",
+    address: "7001 Boul. Saint-Laurent",
+    phone: "514-657-5813",
+    url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
+    description: "Premium pet boutique"
+  },
   {
     name: "Doghaus",
     location: "Montreal, QC",
@@ -15,14 +79,14 @@ const STORES = [
   },
   {
     name: "KONG ANIMALERIE",
-    location: "Montreal, QC", 
+    location: "Montreal, QC",
     address: "5555 Bd Decarie",
     phone: "514-662-8373",
     url: "https://www.facebook.com/konganimalerie/",
     description: "Full-service pet store"
   },
   {
-    name: "Coquette et Finegueule",
+    name: "Coquette et Finegueule Animalerie avec toilettage",
     location: "Verdun, QC",
     address: "5203 Av Bannantyne",
     phone: "514-761-4221",
@@ -30,33 +94,85 @@ const STORES = [
     description: "Pet store with grooming services"
   },
   {
-    name: "Pitou Minou & Compagnons Kirkland",
-    location: "Kirkland, QC",
-    address: "16936 Route Transcanadienne",
-    phone: "514-695-5005",
-    url: "https://pitou-minou.ca/en/",
-    description: "Global Pet Foods location"
-  },
-  {
     name: "Pitou Minou & Compagnons Verdun",
     location: "Verdun, QC",
     address: "4100 Rue Wellington",
     phone: "514-732-0555",
-    url: "https://pitou-minou.ca/en/",
+    url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
     description: "Global Pet Foods location"
   },
   {
-    name: "Animal Shop GIGI",
-    location: "Saint-Eustache, QC",
-    address: "356 Bd Arthur-Sauvé",
-    phone: "450-598-3444",
-    url: "https://www.animaleriegigi.com/",
-    description: "Family-owned pet store"
+    name: "Chico - Boutique d'animaux | Mont-Royal E",
+    location: "Montreal, QC",
+    address: "2016 Avenue du Mont-Royal E",
+    phone: "514-521-0201",
+    url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
+    description: "Premium pet boutique"
+  },
+  {
+    name: "Chico - Boutique d'animaux | Rue Ontario E",
+    location: "Montreal, QC",
+    address: "3911 Rue Ontario E",
+    phone: "514-527-1371",
+    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
+    description: "Premium pet boutique"
+  },
+  {
+    name: "Pattes et Griffes - Marche Centrale",
+    location: "Montreal, QC",
+    address: "9185 Bd de l'Acadie",
+    phone: "514-389-0090",
+    url: "https://pattesgriffes.com/storelocator.html",
+    description: "Complete pet care and supplies"
+  },
+  {
+    name: "Mondou - Multiple Locations",
+    location: "Quebec, QC",
+    address: "Various locations across Quebec",
+    phone: "1-800-363-3777",
+    url: "https://www.mondou.com/en-ca/store-locator",
+    description: "Quebec's largest pet store chain"
   }
 ];
 
-// Helper function to get store logo configuration using local optimized images
+// Helper function to get store logo configuration using local and external images
 const getStoreLogo = (storeName: string) => {
+  if (storeName.includes('Chico')) {
+    return {
+      src: "https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg",
+      alt: "Chico - Boutique d'animaux Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('Pattes et Griffes')) {
+    return {
+      src: "https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg",
+      alt: "Pattes et Griffes Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('GIGI')) {
+    return {
+      src: "/optimized/gigi.webp",
+      alt: "Animal Shop GIGI - Pet Store Logo", 
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('Pitou Minou')) {
+    return {
+      src: "/optimized/pitou-minou.webp",
+      alt: "Pitou Minou & Compagnons - Pet Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   if (storeName.includes('Doghaus')) {
     return {
       src: "/optimized/doghaus.webp",
@@ -78,25 +194,16 @@ const getStoreLogo = (storeName: string) => {
   if (storeName.includes('Coquette')) {
     return {
       src: "/optimized/coquette-finegueule.webp",
-      alt: "Coquette et Finegueule - Verdun Pet Store with Grooming Logo", 
+      alt: "Coquette et Finegueule - Pet Store with Grooming Logo", 
       className: "w-16 h-16 object-contain",
       width: 64,
       height: 64
     };
   }
-  if (storeName.includes('Pitou Minou')) {
+  if (storeName.includes('Mondou')) {
     return {
-      src: "/optimized/pitou-minou.webp",
-      alt: "Pitou Minou & Compagnons - Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('GIGI')) {
-    return {
-      src: "/optimized/gigi.webp",
-      alt: "Animal Shop GIGI - Pet Store Logo", 
+      src: "https://www.mondou.com/on/demandware.static/-/Sites-Mondou-Library/default/dw35c4e6a5/images/mondou-logo.svg",
+      alt: "Mondou - Quebec Pet Store Chain Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
       height: 64
@@ -107,11 +214,14 @@ const getStoreLogo = (storeName: string) => {
 
 // Helper function to check if store should have white background
 const hasWhiteBackground = (storeName: string) => {
-  return storeName.includes('GIGI') || 
+  return storeName.includes('Chico') || 
+         storeName.includes('Pattes et Griffes') || 
+         storeName.includes('GIGI') || 
          storeName.includes('Pitou Minou') || 
          storeName.includes('Doghaus') || 
          storeName.includes('KONG') || 
-         storeName.includes('Coquette');
+         storeName.includes('Coquette') ||
+         storeName.includes('Mondou');
 };
 
 export function Stores() {

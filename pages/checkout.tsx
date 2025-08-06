@@ -46,6 +46,15 @@ const CheckoutPage: NextPage = () => {
   const [formData, setFormData] = useState<CheckoutFormData>(initialFormData);
   const [isProcessing, setIsProcessing] = useState(false);
   const { items, getTotalPrice, clearCart } = useCart();
+  
+  const getShippingCost = () => {
+    const subtotal = getTotalPrice();
+    return subtotal >= 50 ? 0 : 30;
+  };
+  
+  const getTotalWithShipping = () => {
+    return getTotalPrice() + getShippingCost();
+  };
   const router = useRouter();
   // const { t } = useTranslation();
   const [referralCode, setReferralCode] = useState('');
@@ -93,7 +102,9 @@ const CheckoutPage: NextPage = () => {
         body: JSON.stringify({
           items,
           customer: formData,
-          total: getTotalPrice(),
+          subtotal: getTotalPrice(),
+          shipping: getShippingCost(),
+          total: getTotalWithShipping(),
           referralCode: referralStatus === 'valid' ? referralCode : undefined,
         }),
       });
@@ -199,10 +210,29 @@ const CheckoutPage: NextPage = () => {
               </div>
             );
           })}
-          <div className="pt-4 border-t border-gray-200">
-            <div className="flex justify-between font-bold text-lg">
+          <div className="pt-4 border-t border-gray-200 space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-600">Subtotal</span>
+              <span className="text-gray-800">${getTotalPrice().toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-600">Shipping</span>
+              <span className="text-gray-800">
+                {getShippingCost() === 0 ? (
+                  <span className="text-green-600">Free</span>
+                ) : (
+                  `$${getShippingCost().toFixed(2)}`
+                )}
+              </span>
+            </div>
+            {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
+              <div className="text-xs text-blue-600 bg-blue-50 p-2 rounded">
+                Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!
+              </div>
+            )}
+            <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-200">
               <span className="text-gray-800">Total</span>
-              <span className="text-[#FF3131]">${getTotalPrice().toFixed(2)}</span>
+              <span className="text-[#FF3131]">${getTotalWithShipping().toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -397,11 +427,22 @@ const CheckoutPage: NextPage = () => {
                 </div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">Calculated at checkout</span>
+                  <span className="font-medium">
+                    {getShippingCost() === 0 ? (
+                      <span className="text-green-600">Free</span>
+                    ) : (
+                      `$${getShippingCost().toFixed(2)}`
+                    )}
+                  </span>
                 </div>
+                {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
+                  <div className="text-xs text-blue-600 bg-blue-100 p-2 rounded mb-2">
+                    Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!
+                  </div>
+                )}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-200">
                   <span className="font-bold text-gray-800">Total</span>
-                  <span className="font-bold text-[#FF3131]">${getTotalPrice().toFixed(2)}</span>
+                  <span className="font-bold text-[#FF3131]">${getTotalWithShipping().toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -429,7 +470,7 @@ const CheckoutPage: NextPage = () => {
               <p className="text-sm text-gray-600 text-center mb-4">Complete your purchase in under 60 seconds</p>
               
               <FastCheckout 
-                cartTotal={getTotalPrice()}
+                cartTotal={getTotalWithShipping()}
                 onCheckoutComplete={(data) => {
                   console.log('Fast checkout completed:', data);
                   // Handle fast checkout completion

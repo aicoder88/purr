@@ -27,13 +27,22 @@ export function EmailCapturePopup() {
       }
     };
 
+    // ESC key handler
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isVisible) {
+        handleClose();
+      }
+    };
+
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       clearTimeout(timer);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isVisible]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,13 +81,17 @@ export function EmailCapturePopup() {
       ></div>
 
       {/* Popup Content */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-in zoom-in-95 duration-300">
+      <div 
+        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-in zoom-in-95 duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white rounded-full p-2 transition-colors duration-200"
+          className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white rounded-full p-2 transition-colors duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#FF3131] focus:ring-opacity-50"
+          aria-label="Close popup"
         >
-          <X className="w-5 h-5 text-gray-600" />
+          <X className="w-5 h-5 text-gray-600 hover:text-gray-800" />
         </button>
 
         {!isSubmitted ? (

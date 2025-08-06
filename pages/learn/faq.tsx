@@ -446,16 +446,7 @@ const FAQPage: NextPage = () => {
                   </Link>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
-                  <MessageCircle className="w-8 h-8 text-[#FF3131] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Live Chat</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Chat with us in real-time
-                  </p>
-                  <Button size="sm" variant="outline" className="border-[#FF3131] text-[#FF3131] hover:bg-[#FF3131] hover:text-white">
-                    Start Chat
-                  </Button>
-                </div>
+{/* Live Chat temporarily disabled */}
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />

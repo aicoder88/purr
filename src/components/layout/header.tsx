@@ -105,9 +105,19 @@ export function Header() {
                   <>
                     <button
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors font-medium"
+                      data-dropdown
                       onMouseEnter={() => {
                         if (item.label === 'Products') setIsProductsDropdownOpen(true);
                         if (item.label === 'Learn') setIsLearnDropdownOpen(true);
+                      }}
+                      onMouseLeave={(e) => {
+                        const relatedTarget = e.relatedTarget as Element;
+                        if (!relatedTarget?.closest('[data-dropdown]')) {
+                          setTimeout(() => {
+                            if (item.label === 'Products') setIsProductsDropdownOpen(false);
+                            if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                          }, 150);
+                        }
                       }}
                       onClick={() => {
                         if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
@@ -126,14 +136,13 @@ export function Header() {
                           if (item.label === 'Learn') setIsLearnDropdownOpen(true);
                         }}
                         onMouseLeave={(e) => {
-                          // Add delay to prevent premature closing
-                          setTimeout(() => {
-                            const relatedTarget = e.relatedTarget as Element;
-                            if (!relatedTarget || !relatedTarget.closest('[data-dropdown]')) {
+                          const relatedTarget = e.relatedTarget as Element;
+                          if (!relatedTarget?.closest('button') && !relatedTarget?.closest('[data-dropdown]')) {
+                            setTimeout(() => {
                               if (item.label === 'Products') setIsProductsDropdownOpen(false);
                               if (item.label === 'Learn') setIsLearnDropdownOpen(false);
-                            }
-                          }, 100);
+                            }, 150);
+                          }
                         }}
                         data-dropdown
                       >
