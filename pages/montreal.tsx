@@ -87,103 +87,174 @@ export default function Montreal() {
         {/* Store Locations */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Where to Buy Purrify in Montreal
+            Where to Buy Purrify in Montreal Area
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* Mondou Locations */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+            {/* Doghaus */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <OptimizedImage
-                  src="/images/mondou-logo.png"
-                  alt="Mondou"
-                  width={60}
-                  height={40}
-                  className="mr-3"
-                />
-                <h3 className="text-xl font-semibold">Mondou Locations</h3>
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/doghaus.webp"
+                    alt="Doghaus Montreal - Premium Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Doghaus</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet products & supplies</p>
+                </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Mondou Plateau Mont-Royal</strong><br />
-                  4381 Rue Saint-Denis<br />
-                  Montreal, QC H2J 2L1<br />
-                  <span className="text-blue-600">(514) 844-2652</span>
-                </div>
-                <div>
-                  <strong>Mondou Westmount</strong><br />
-                  4915 Rue Sherbrooke O<br />
-                  Westmount, QC H3Z 1H7<br />
-                  <span className="text-blue-600">(514) 489-7600</span>
-                </div>
-                <div>
-                  <strong>Mondou Rosemont</strong><br />
-                  6555 Rue Saint-Hubert<br />
-                  Montreal, QC H2S 2M2<br />
-                  <span className="text-blue-600">(514) 277-7387</span>
+                  <strong>Doghaus Montreal</strong><br />
+                  5671 Rue Sherbrooke O<br />
+                  Montreal, QC H4A 1X4<br />
+                  <span className="text-blue-600">(514) 483-3555</span><br />
+                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>
 
-            {/* PetSmart Locations */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            {/* KONG ANIMALERIE */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <OptimizedImage
-                  src="/images/petsmart-logo.png"
-                  alt="PetSmart"
-                  width={60}
-                  height={40}
-                  className="mr-3"
-                />
-                <h3 className="text-xl font-semibold">PetSmart Locations</h3>
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/kong-animalerie.webp"
+                    alt="KONG ANIMALERIE Montreal Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">KONG ANIMALERIE</h3>
+                  <p className="text-gray-500 text-xs italic">Full-service pet store</p>
+                </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>PetSmart Downtown</strong><br />
-                  1500 Rue Atwater<br />
-                  Montreal, QC H3H 2S8<br />
-                  <span className="text-blue-600">(514) 939-8885</span>
-                </div>
-                <div>
-                  <strong>PetSmart Anjou</strong><br />
-                  7999 Bd les Galeries d'Anjou<br />
-                  Anjou, QC H1M 1W6<br />
-                  <span className="text-blue-600">(514) 354-0745</span>
-                </div>
-                <div>
-                  <strong>PetSmart Pointe-Claire</strong><br />
-                  6815 Autoroute Transcanadienne<br />
-                  Pointe-Claire, QC H9R 5J2<br />
-                  <span className="text-blue-600">(514) 426-8424</span>
+                  <strong>KONG ANIMALERIE</strong><br />
+                  5555 Bd Decarie<br />
+                  Montreal, QC H3X 2H9<br />
+                  <span className="text-blue-600">(514) 662-8373</span><br />
+                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Facebook Page</a>
                 </div>
               </div>
             </div>
 
-            {/* Independent Stores */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            {/* Coquette et Finegueule */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-2xl">🏪</span>
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/coquette-finegueule.webp"
+                    alt="Coquette et Finegueule - Verdun Pet Store with Grooming Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold">Independent Stores</h3>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Coquette et Finegueule</h3>
+                  <p className="text-gray-500 text-xs italic">Pet store with grooming services</p>
+                </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Animalerie Pierrefonds</strong><br />
-                  15555 Boul Gouin O<br />
-                  Pierrefonds, QC H9H 1C7<br />
-                  <span className="text-blue-600">(514) 626-5551</span>
+                  <strong>Coquette et Finegueule</strong><br />
+                  5203 Av Bannantyne<br />
+                  Verdun, QC H4H 1J8<br />
+                  <span className="text-blue-600">(514) 761-4221</span><br />
+                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pitou Minou & Compagnons Kirkland */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/pitou-minou.webp"
+                    alt="Pitou Minou & Compagnons Montreal Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
                 </div>
                 <div>
-                  <strong>Safari Animalerie</strong><br />
-                  Multiple locations across Montreal<br />
-                  <span className="text-blue-600">Call to confirm availability</span>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
+                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pitou Minou Kirkland</strong><br />
+                  16936 Route Transcanadienne<br />
+                  Kirkland, QC H9H 4M7<br />
+                  <span className="text-blue-600">(514) 695-5005</span><br />
+                  <a href="https://pitou-minou.ca/en/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pitou Minou & Compagnons Verdun */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/pitou-minou.webp"
+                    alt="Pitou Minou & Compagnons Montreal Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
                 </div>
                 <div>
-                  <strong>Boutique d'Animaux Chico</strong><br />
-                  6192 Rue Saint-Hubert<br />
-                  Montreal, QC H2S 2L7<br />
-                  <span className="text-blue-600">(514) 276-0444</span>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
+                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pitou Minou Verdun</strong><br />
+                  4100 Rue Wellington<br />
+                  Verdun, QC H4G 1V7<br />
+                  <span className="text-blue-600">(514) 732-0555</span><br />
+                  <a href="https://pitou-minou.ca/en/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Animal Shop GIGI */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/gigi.webp"
+                    alt="Animal Shop GIGI Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Animal Shop GIGI</h3>
+                  <p className="text-gray-500 text-xs italic">Family-owned pet store</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Animal Shop GIGI</strong><br />
+                  356 Bd Arthur-Sauvé<br />
+                  Saint-Eustache, QC J7P 5B7<br />
+                  <span className="text-blue-600">(450) 598-3444</span><br />
+                  <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>

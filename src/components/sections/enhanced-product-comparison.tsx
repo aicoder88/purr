@@ -114,99 +114,109 @@ export function EnhancedProductComparison() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-6 py-2 rounded-full mb-6">
-              <TrendingUp className="w-5 h-5 mr-2" />
-              <span className="font-bold">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
+            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6">
+              <TrendingUp className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
+              <span className="font-bold text-sm sm:text-base">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4 leading-tight">
               {t.enhancedProductComparison?.chooseYourPerfectSize || "Choose Your Perfect Purrify Size"}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               {t.enhancedProductComparison?.subtitle || "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency."}
             </p>
           </div>
 
           {/* Product Comparison Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl ${
-                  hoveredProduct === product.id ? 'scale-105 z-10' : ''
-                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 scale-105' : ''}`}
+                className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden ${
+                  hoveredProduct === product.id ? 'scale-[1.02] z-20' : 'z-10'
+                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 scale-[1.02]' : ''}`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {/* Badge */}
-                <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white px-6 py-2 rounded-full text-sm font-bold`}>
+                <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white px-6 py-2 rounded-full text-sm font-bold z-30 shadow-lg`}>
                   {product.badge}
                 </div>
 
                 {/* Popularity Indicator */}
                 {product.popularity === 3 && (
-                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white p-2 rounded-full">
+                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white p-2 rounded-full z-30 shadow-lg">
                     <Award className="w-5 h-5" />
                   </div>
                 )}
 
-                <div className="p-6">
-                  {/* Product Image */}
-                  <div className="text-center mb-6 min-h-[180px] flex flex-col justify-end">
-                    <div className="relative w-32 h-32 mx-auto mb-4">
-                      <NextImage
-                        src={product.image}
-                        alt={product.name}
-                        width={128}
-                        height={128}
-                        className="rounded-lg shadow-md object-contain"
-                        style={{ maxWidth: '100%', height: 'auto' }}
-                      />
+                <div className="p-4 sm:p-6">
+                  {/* Product Image Section */}
+                  <div className="text-center mb-6">
+                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-4 min-h-[160px] flex items-center justify-center">
+                      <div className="relative w-24 h-24 sm:w-32 sm:h-32">
+                        <NextImage
+                          src={product.image}
+                          alt={product.name}
+                          width={128}
+                          height={128}
+                          className="rounded-lg shadow-md object-contain"
+                          style={{ maxWidth: '100%', height: 'auto' }}
+                        />
+                        {/* Size Badge Overlay - Properly positioned and styled */}
+                        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-3 py-1 rounded-full shadow-lg z-10">
+                          <span className="text-white font-bold text-sm sm:text-base">{product.name.split(' ')[1]}</span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">{product.name}</h3>
-                    <p className="text-[#FF3131] font-medium mb-2">{product.subtitle}</p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{product.description}</p>
+                    
+                    {/* Product Info */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">{product.name}</h3>
+                      <p className="text-[#FF3131] font-medium">{product.subtitle}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">{product.description}</p>
+                    </div>
                   </div>
 
                   {/* Pricing */}
-                  <div className="text-center mb-6">
+                  <div className="text-center mb-4 sm:mb-6">
                     <div className="flex items-center justify-center mb-2">
-                      <span className="text-3xl font-bold text-[#FF3131]">${product.price}</span>
-                      <span className="text-gray-400 dark:text-gray-500 line-through ml-2">${product.originalPrice}</span>
+                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131]">${product.price}</span>
+                      <span className="text-gray-400 dark:text-gray-500 line-through ml-2 text-lg sm:text-xl">${product.originalPrice}</span>
                     </div>
-                    <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium inline-block">
+                    <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-xs sm:text-sm font-medium inline-block">
                       Save {product.savings}%
                     </div>
                   </div>
 
                   {/* Key Stats */}
-                  <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                     <div className="text-center">
-                      <div className="font-bold text-[#FF3131]">{product.duration}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Duration</div>
+                      <div className="font-bold text-[#FF3131] text-sm sm:text-base">{product.duration}</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Duration</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-bold text-[#FF3131]">{product.coverage}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Coverage</div>
+                      <div className="font-bold text-[#FF3131] text-sm sm:text-base">{product.coverage}</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Coverage</div>
                     </div>
                   </div>
 
                   {/* Features */}
-                  <div className="space-y-3 mb-6 max-h-[300px] overflow-y-auto pr-2">
+                  <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 max-h-[280px] sm:max-h-[300px] overflow-y-auto pr-1 sm:pr-2">
                     {Object.entries(featureLabels).map(([key, label]) => {
                       const isIncluded = product.features[key as keyof typeof product.features];
                       return (
                         <div key={key} className="flex items-start">
                           {isIncluded ? (
-                            <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                            <Check className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                           ) : (
-                            <X className="w-5 h-5 text-gray-300 dark:text-gray-600 mr-3 mt-0.5 flex-shrink-0" />
+                            <X className="w-4 sm:w-5 h-4 sm:h-5 text-gray-300 dark:text-gray-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                           )}
-                          <span className={`text-sm leading-tight ${isIncluded ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500'}`}>
+                          <span className={`text-xs sm:text-sm leading-tight ${isIncluded ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500'}`}>
                             {label}
                           </span>
                         </div>
@@ -218,7 +228,7 @@ export function EnhancedProductComparison() {
                   {product.id === 'purrify-17g' ? (
                     <Button
                       asChild
-                      className="w-full py-4 text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl"
+                      className="w-full py-3 sm:py-4 text-base sm:text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl"
                     >
                       <a
                         href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
@@ -226,13 +236,13 @@ export function EnhancedProductComparison() {
                         rel="noopener noreferrer"
                         className="w-full h-full flex items-center justify-center"
                       >
-                        <ShoppingCart className="w-5 h-5 mr-2" />
+                        <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
                         Try Risk-Free
                       </a>
                     </Button>
                   ) : (
                     <Button
-                      className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
+                      className={`w-full py-3 sm:py-4 text-base sm:text-lg font-bold transition-all duration-300 ${
                         product.popularity === 3
                           ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl'
                           : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white text-gray-800 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131]'
@@ -242,12 +252,12 @@ export function EnhancedProductComparison() {
                     >
                       {addingToCart === product.id ? (
                         <div className="flex items-center">
-                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          <div className="animate-spin rounded-full h-4 sm:h-5 w-4 sm:w-5 border-b-2 border-white mr-2"></div>
                           Adding...
                         </div>
                       ) : (
                         <div className="flex items-center">
-                          <ShoppingCart className="w-5 h-5 mr-2" />
+                          <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
                           Choose This Size
                         </div>
                       )}
@@ -256,8 +266,8 @@ export function EnhancedProductComparison() {
 
                   {/* Urgency for popular product */}
                   {product.popularity === 3 && (
-                    <div className="mt-4 text-center">
-                      <p className="text-sm text-[#FF3131] font-medium">
+                    <div className="mt-3 sm:mt-4 text-center">
+                      <p className="text-xs sm:text-sm text-[#FF3131] font-medium">
                         🔥 Chosen by 68% of customers
                       </p>
                     </div>

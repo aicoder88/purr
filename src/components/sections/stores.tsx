@@ -3,178 +3,103 @@ import Image from "next/image";
 import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 
-// Store data - you can modify this list as needed
+// Store data - Main pet stores carrying Purrify
 const STORES = [
   {
-    name: "Pattes et Griffes - Sainte- Thérèse",
-    location: "Sainte-Thérèse, QC",
-    address: "190 Bd du Curé-Labelle suite 1b",
-    phone: "450-818-1310",
-    url: "https://pattesgriffes.com/storelocator.html"
+    name: "Doghaus",
+    location: "Montreal, QC",
+    address: "5671 Rue Sherbrooke O",
+    phone: "514-483-3555",
+    url: "https://www.doghausmtl.com/",
+    description: "Premium pet products & supplies"
   },
   {
-    name: "Chico - Boutique d'animaux | Sainte-Thérèse",
-    location: "Sainte-Thérèse, QC", 
-    address: "95 Bd du Curé-Labelle Suite 8",
-    phone: "450-965-3906",
-    url: "https://www.chico.ca/boutique/chico-sainte-therese/"
+    name: "KONG ANIMALERIE",
+    location: "Montreal, QC", 
+    address: "5555 Bd Decarie",
+    phone: "514-662-8373",
+    url: "https://www.facebook.com/konganimalerie/",
+    description: "Full-service pet store"
   },
   {
-    name: "Chico - Boutique d'animaux | Sainte-Marthe-sur-le-Lac",
-    location: "Sainte-Marthe-Sur-Le-Lac, QC",
-    address: "2860 B Boul. des Promenades",
-    phone: "450-598-2860",
-    url: "https://www.chico.ca/boutique/chico-ste-marthe/"
-  },
-  {
-    name: "Animal Shop Animal GIGI",
-    location: "Saint-Eustache, QC",
-    address: "356 Bd Arthur-Sauvé",
-    phone: "450-598-3444",
-    url: "https://www.animaleriegigi.com/"
-  },
-  {
-    name: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
-    location: "Laval, QC",
-    address: "4511 Bd Arthur-Sauvé",
-    phone: "450-314-2442",
-    url: "https://www.chico.ca/boutique/chico-laval-ouest/"
-  },
-  {
-    name: "Pattes et Griffes - Cartier Ouest",
-    location: "Laval, QC",
-    address: "293 Bd Cartier Ouest",
-    phone: "450-490-1414",
-    url: "https://pattesgriffes.com/storelocator.html"
+    name: "Coquette et Finegueule",
+    location: "Verdun, QC",
+    address: "5203 Av Bannantyne",
+    phone: "514-761-4221",
+    url: "https://coquetteetfinegueule.com/",
+    description: "Pet store with grooming services"
   },
   {
     name: "Pitou Minou & Compagnons Kirkland",
     location: "Kirkland, QC",
     address: "16936 Route Transcanadienne",
     phone: "514-695-5005",
-    url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/"
+    url: "https://pitou-minou.ca/en/",
+    description: "Global Pet Foods location"
   },
   {
-    name: "Chico - Boutique d'animaux | Boul. St-Laurent (Montreal)",
-    location: "Montreal, QC",
-    address: "7001 Boul. Saint-Laurent",
-    phone: "514-657-5813",
-    url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/"
-  },
-  {
-    name: "Doghaus",
-    location: "Montreal, QC",
-    address: "5671 Rue Sherbrooke O",
-    phone: "514-483-3555",
-    url: "https://www.doghausmtl.com/"
-  },
-  {
-    name: "KONG ANIMALERIE",
-    location: "Montreal, QC",
-    address: "5555 Bd Decarie",
-    phone: "514-662-8373",
-    url: "https://www.facebook.com/konganimalerie/"
-  },
-  {
-    name: "Coquette et Finegueule Animalerie avec toilettage - Pet store with grooming",
-    location: "Verdun, QC",
-    address: "5203 Av Bannantyne",
-    phone: "514-761-4221",
-    url: "https://coquetteetfinegueule.com/"
-  },
-  {
-    name: "Pitou Minou & Compagnons Verdun | Global Pet Foods Verdun",
+    name: "Pitou Minou & Compagnons Verdun",
     location: "Verdun, QC",
     address: "4100 Rue Wellington",
     phone: "514-732-0555",
-    url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/"
+    url: "https://pitou-minou.ca/en/",
+    description: "Global Pet Foods location"
   },
   {
-    name: "Chico - Boutique d'animaux | Mont-Royal E",
-    location: "Montreal, QC",
-    address: "2016 Avenue du Mont-Royal E",
-    phone: "514-521-0201",
-    url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/"
-  },
-  {
-    name: "Chico - Boutique d'animaux | Rue Ontario E",
-    location: "Montreal, QC",
-    address: "3911 Rue Ontario E",
-    phone: "514-527-1371",
-    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/"
-  },
-  {
-    name: "Pattes et Griffes - Marche Centrale",
-    location: "Montreal, QC",
-    address: "9185 Bd de l'Acadie",
-    phone: "514-389-0090",
-    url: "https://pattesgriffes.com/storelocator.html"
-  },
+    name: "Animal Shop GIGI",
+    location: "Saint-Eustache, QC",
+    address: "356 Bd Arthur-Sauvé",
+    phone: "450-598-3444",
+    url: "https://www.animaleriegigi.com/",
+    description: "Family-owned pet store"
+  }
 ];
 
-// Helper function to get store logo configuration
+// Helper function to get store logo configuration using local optimized images
 const getStoreLogo = (storeName: string) => {
-  if (storeName.includes('Chico')) {
+  if (storeName.includes('Doghaus')) {
     return {
-      src: "https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg",
-      alt: "Chico Logo",
-      className: "w-16 h-16",
+      src: "/optimized/doghaus.webp",
+      alt: "Doghaus Montreal - Premium Pet Store Logo",
+      className: "w-16 h-16 object-contain",
       width: 64,
       height: 64
     };
   }
-  if (storeName.includes('Pattes et Griffes')) {
-    return {
-      src: "https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg",
-      alt: "Pattes et Griffes Logo",
-      className: "w-18 h-18 object-contain",
-      width: 72,
-      height: 72
-    };
-  }
-  if (storeName.includes('GIGI')) {
-    return {
-      src: "https://www.animaleriegigi.com/images/logo.png",
-      alt: "Animal GIGI Logo",
-      className: "w-18 h-18 object-contain",
-      width: 72,
-      height: 72
-    };
-  }
-  if (storeName.includes('Pitou Minou')) {
-    return {
-      src: "https://pitou-minou.ca/wp-content/uploads/2021/11/logo-pitou-minou-compagnons.svg",
-      alt: "Pitou Minou & Compagnons Logo",
-      className: "w-20 h-20",
-      width: 80,
-      height: 80
-    };
-  }
-  if (storeName.includes('Doghaus')) {
-    return {
-      src: "https://www.doghausmtl.com/wp-content/uploads/2022/02/logo-black.svg",
-      alt: "Doghaus Logo",
-      className: "w-24 h-24 object-contain",
-      width: 96,
-      height: 96
-    };
-  }
   if (storeName.includes('KONG')) {
     return {
-      src: "https://scontent.fymq2-1.fna.fbcdn.net/v/t39.30808-6/302229598_485891393543881_591483935535254206_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yv8g3X3J-rAQ7kNvgEGT5BE&_nc_ht=scontent.fymq2-1.fna&oh=00_AYBq_sR_t_x-e9g-Z-v-c-gQJz5aXzK9Xw9c8bY9Yw9Q&oe=665B17B5",
-      alt: "KONG ANIMALERIE Logo",
-      className: "w-24 h-24",
-      width: 96,
-      height: 96
+      src: "/optimized/kong-animalerie.webp", 
+      alt: "KONG ANIMALERIE - Montreal Pet Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
     };
   }
   if (storeName.includes('Coquette')) {
     return {
-      src: "https://coquetteetfinegueule.com/cdn/shop/files/Coquette-Fine-Gueule-Logo-01_260x.png?v=1614324310",
-      alt: "Coquette et Finegueule Logo",
-      className: "w-24 h-24",
-      width: 96,
-      height: 96
+      src: "/optimized/coquette-finegueule.webp",
+      alt: "Coquette et Finegueule - Verdun Pet Store with Grooming Logo", 
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('Pitou Minou')) {
+    return {
+      src: "/optimized/pitou-minou.webp",
+      alt: "Pitou Minou & Compagnons - Pet Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('GIGI')) {
+    return {
+      src: "/optimized/gigi.webp",
+      alt: "Animal Shop GIGI - Pet Store Logo", 
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
     };
   }
   return null;
@@ -182,9 +107,7 @@ const getStoreLogo = (storeName: string) => {
 
 // Helper function to check if store should have white background
 const hasWhiteBackground = (storeName: string) => {
-  return storeName.includes('Chico') || 
-         storeName.includes('Pattes et Griffes') || 
-         storeName.includes('GIGI') || 
+  return storeName.includes('GIGI') || 
          storeName.includes('Pitou Minou') || 
          storeName.includes('Doghaus') || 
          storeName.includes('KONG') || 
@@ -258,9 +181,15 @@ export function Stores() {
                     <p className="text-[#FF3131] font-medium text-sm mb-1">
                       {store.location}
                     </p>
+                    {store.description && (
+                      <p className="text-gray-500 dark:text-gray-400 text-xs mb-2 italic">
+                        {store.description}
+                      </p>
+                    )}
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                       {store.address}
                     </p>
+                    <div className="flex flex-wrap gap-2 items-center">
                     {store.phone && (
                       <a 
                         href={`tel:${store.phone}`}
@@ -305,6 +234,7 @@ export function Stores() {
                         Website
                       </a>
                     )}
+                    </div>
                   </div>
                 </div>
               </div>
