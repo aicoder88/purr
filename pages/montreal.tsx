@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 import { Layout } from '../src/components/layout/layout';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../src/lib/constants';
@@ -193,12 +194,12 @@ export default function Montreal() {
             <p className="text-yellow-700 mb-4">
               Ask your store manager to order Purrify! Many stores are happy to stock products their customers request.
             </p>
-            <a 
+            <Link 
               href="/support/contact" 
               className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
               Contact Us for Store Requests
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -392,18 +393,18 @@ export default function Montreal() {
               and independent pet stores throughout the Greater Montreal Area.
             </p>
             <div className="space-x-4">
-              <a 
+              <Link 
                 href="/support/contact" 
                 className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Find Nearest Store
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/products" 
                 className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 View All Products
-              </a>
+              </Link>
             </div>
           </div>
         </section>

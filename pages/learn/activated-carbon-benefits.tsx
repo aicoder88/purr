@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../../src/lib/constants';
@@ -249,18 +250,18 @@ export default function ActivatedCarbonBenefits() {
               Try Purrify's premium activated carbon litter additive and discover why thousands of cat owners trust our natural odor elimination solution.
             </p>
             <div className="space-x-4">
-              <a 
+              <Link 
                 href="/products/trial-size" 
                 className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Try 17g Trial Size - $6.99
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/products" 
                 className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 View All Sizes
-              </a>
+              </Link>
             </div>
           </div>
         </div>

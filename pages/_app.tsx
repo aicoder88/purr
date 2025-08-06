@@ -13,7 +13,12 @@ import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Analytics } from '@vercel/analytics/next';
 
-function MyApp({ Component, pageProps }: AppProps<any>) {
+interface PageProps {
+  // Add your page props here if needed
+  [key: string]: unknown;
+}
+
+function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
   const { locale } = router;
   

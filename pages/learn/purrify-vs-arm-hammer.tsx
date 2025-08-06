@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { SITE_NAME } from '../../src/lib/constants';
 
@@ -399,18 +400,18 @@ export default function PurrifyVsArmHammer() {
               Safe for all cats, longer-lasting, and better value than traditional deodorizers.
             </p>
             <div className="space-x-4">
-              <a 
+              <Link 
                 href="/products/trial-size" 
                 className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
               >
                 Try Purrify Risk-Free - $6.99
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/learn/activated-carbon-benefits" 
                 className="inline-block border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
               >
                 Learn More About Activated Carbon
-              </a>
+              </Link>
             </div>
           </div>
         </div>
