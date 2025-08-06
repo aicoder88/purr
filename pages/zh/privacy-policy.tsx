@@ -31,7 +31,7 @@ const PrivacyPolicyPage: NextPage = () => {
                 {t.privacyPolicy.sections[0].content}
               </p>
               <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-                {t.privacyPolicy.sections[0].items.map((item, index) => (
+                {t.privacyPolicy.sections[0].items?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

@@ -420,6 +420,336 @@ export const en = {
     readMoreReviews: "Read More Reviews"
   },
 
+  // Free Trial Page
+  freeTrialPage: {
+    urgentBanner: "LIMITED TIME OFFER",
+    free: "FREE",
+    claimTrial: "Claim Your FREE Purrify Trial",
+    whatYouGet: "What You Get:",
+    freeTrialBag: "17g Purrify Trial Size worth $4.99",
+    freeShippingDoor: "Free shipping to your door",
+    expertTips: "Expert cat care tips and guides",
+    zeroCommitment: "Zero commitment - this is our gift to you",
+    attention: "ATTENTION: For cat owners tired of holding their breath",
+    limitedQuantity: "Limited to first 500 cat owners only",
+    alreadyClaimed: "Already claimed",
+    countdownLabels: {
+      hours: "HOURS",
+      minutes: "MINS",
+      seconds: "SECS"
+    },
+    testimonials: [
+      {
+        text: "I couldn't believe it. Within HOURS, my entire house smelled fresh again. I even had my mother-in-law over for the first time in months!",
+        author: "Jennifer M., Montreal"
+      },
+      {
+        text: "My husband thought I had completely thrown out the litter. The smell had just... vanished.",
+        author: "Lisa K., Mirabel, QC"
+      }
+    ],
+    testimonialsTestUsers: "What our beta testers say:",
+    claimNow: "CLAIM YOUR FREE TRIAL NOW",
+    warningHighDemand: "⚠️ WARNING: Due to high demand, we cannot guarantee availability after the timer expires.",
+    privacyNotice: "100% Free. No credit card required.",
+    zeroCommitmentGift: "Zero commitment - this is our gift to you",
+    instantOdorElimination: "Experience instant odor elimination magic",
+    completeInstructions: "Complete instructions for best results",
+    noShippingFees: "No shipping fees, no hidden costs, no catch",
+    disappearsIn: "WARNING: This offer disappears in:",
+    limitedTo500: "Limited to first 500 cat owners only.",
+    yourFreeTrialWaits: "Your free trial awaits - but only if you act now.",
+    betaTestersHeader: "What our beta testers say:",
+    claimFreeTrialNow: "CLAIM YOUR FREE TRIAL NOW",
+    attention100Free: "100% Free. No credit card required.",
+    noCreditCard: "No credit card required.",
+    limitedTimeOffer: "Limited time offer. One free sample per household.",
+    restrictionsApply: "Shipping restrictions may apply. We reserve the right to end this promotion at any time.",
+    highDemandWarning: "Due to high demand, we cannot guarantee availability after the timer expires",
+    disclaimer: "100% Free. No credit card required. Limited time offer. One free sample per household. Shipping restrictions may apply. We reserve the right to end this promotion at any time."
+  },
+
+  // Contact Page
+  contactPage: {
+    title: "We're Here to Help",
+    subtitle: "Our friendly customer support team is ready to assist you with expert advice and solutions.",
+    chooseContactMethod: "Choose How to Contact Us",
+    contactReasons: [
+      { value: "general", label: "General Question" },
+      { value: "order", label: "Order Status" },
+      { value: "product", label: "Product Question" },
+      { value: "shipping", label: "Shipping Issue" },
+      { value: "return", label: "Return/Exchange" },
+      { value: "other", label: "Other" }
+    ],
+    contactMethods: [
+      {
+        title: "Email Support",
+        description: "Get detailed help with your questions",
+        responseTime: "Response within 24 hours"
+      },
+      {
+        title: "Phone Support", 
+        description: "Speak directly with our team",
+        responseTime: "Mon-Fri 9AM-5PM EST"
+      },
+      {
+        title: "Live Chat",
+        description: "Chat with us in real-time",
+        responseTime: "Available Now"
+      }
+    ],
+    form: {
+      fullName: "Full Name",
+      emailAddress: "Email Address", 
+      subject: "Subject",
+      message: "Message",
+      contactReason: "Contact Reason",
+      orderNumber: "Order Number (if applicable)",
+      submit: "Send Message",
+      submitting: "Sending...",
+      successMessage: "Thank you for contacting us! We'll respond within 24 hours.",
+      errorMessage: "Sorry, there was an error sending your message. Please try again or contact us directly.",
+      sendingMessage: "Sending Message...",
+      sendMessage: "Send Message",
+      subjectPlaceholder: "Brief description of your request",
+      messagePlaceholder: "Please provide details about your question or concern...",
+      orderNumberPlaceholder: "e.g. PUR-12345",
+      contactNow: "Contact Now"
+    },
+    faqs: [
+      {
+        question: "How long does shipping take?",
+        answer: "Standard shipping takes 3-5 business days within Canada. We also offer expedited shipping options."
+      },
+      {
+        question: "Is Purrify safe for my cat?", 
+        answer: "Yes! Purrify is made with 100% natural activated carbon and is completely safe for cats and other pets."
+      },
+      {
+        question: "How do I use Purrify?",
+        answer: "Simply sprinkle 1-2 tablespoons of Purrify over your existing litter after cleaning. It works with all litter types."
+      }
+    ],
+    businessHours: {
+      title: "Business Hours",
+      weekdays: "Monday - Friday: 9:00 AM - 5:00 PM EST",
+      saturday: "Saturday: 10:00 AM - 2:00 PM EST",
+      sunday: "Sunday: Closed",
+      closed: "Closed"
+    },
+    location: {
+      title: "Our Location",
+      address: "Montreal, Quebec, Canada",
+      shippingNote: "We ship across Canada and offer local pickup in the Montreal area."
+    },
+    frequentlyAskedQuestions: "Frequently Asked Questions",
+    quickAnswersCommon: "Quick answers to common questions",
+    dontSeeQuestion: "Don't see your question here?",
+    viewCompleteFAQ: "View Complete FAQ",
+    backToHome: "Back to Home"
+  },
+
+  // Product Comparison
+  productComparison: {
+    title: "Choose Your Perfect Size",
+    subtitle: "Find the ideal Purrify size for your household",
+    findPerfectSize: "Find your perfect size based on your needs",
+    products: [
+      {
+        id: "trial",
+        name: "Trial Size",
+        subtitle: "Perfect for first-time users",
+        duration: "1-2 weeks",
+        cats: "1-2 cats",
+        features: ["17g activated carbon", "Risk-free trial", "Perfect introduction"],
+        bestFor: "New customers wanting to try Purrify",
+        cta: "Try Risk-Free"
+      },
+      {
+        id: "standard", 
+        name: "Standard Size",
+        subtitle: "Most popular choice",
+        duration: "4-6 weeks",
+        cats: "1-3 cats",
+        features: ["75g activated carbon", "Best value", "Most popular"],
+        bestFor: "Regular households with 1-3 cats",
+        cta: "Choose This Size"
+      },
+      {
+        id: "large",
+        name: "Large Size", 
+        subtitle: "Best value for multi-cat homes",
+        duration: "8-12 weeks",
+        cats: "3+ cats",
+        features: ["150g activated carbon", "Maximum savings", "Bulk discount"],
+        bestFor: "Multi-cat households and heavy users",
+        cta: "Get Best Value"
+      }
+    ],
+    comparisonFeatures: [
+      { feature: "Odor elimination" },
+      { feature: "Safe for cats" },
+      { feature: "Works with all litters" },
+      { feature: "Natural ingredients" },
+      { feature: "Money-back guarantee" }
+    ],
+    usageCalculator: {
+      title: "Usage Calculator",
+      subtitle: "Calculate how long each size will last",
+      numberOfCats: "Number of cats:",
+      typicalChanges: "Litter changes per week:",
+      estimateDuration: "Estimated duration:"
+    },
+    stillUnsure: "Still unsure which size is right for you?",
+    getPersonalizedAdvice: "Get personalized advice from our team",
+    tryRiskFree: "Try Risk-Free",
+    learnMoreAboutPurrify: "Learn more about how Purrify works",
+    featuresComparison: "Features Comparison",
+    seeHowProductsCompare: "See how our products compare",
+    howLongWillEachSizeLast: "How long will each size last?",
+    popular: "POPULAR",
+    bestValue: "BEST VALUE", 
+    perfectForFirstTime: "Perfect for first-time users",
+    idealForSingleCat: "Ideal for single cat households",
+    perfectForMultiCat: "Perfect for multi-cat households",
+    economicChoice: "Most economic choice for large families",
+    maxValuePerGram: "Maximum value per gram",
+    bulkSavingsIncluded: "Bulk savings included",
+    sustainableSupply: "Sustainable supply for heavy users",
+    freeShippingIncluded: "Free shipping included",
+    features: "Features",
+    idealFor: "Ideal For",
+    duration: "Duration",
+    saveMoney: "Save Money",
+    getBestValue: "Get Best Value",
+    chooseThisSize: "Choose This Size",
+    tryWithoutRisk: "Try Without Risk",
+    chooseSmallSize: "Choose Small Size"
+  },
+
+  // Privacy Policy
+  privacyPolicy: {
+    title: "Privacy Policy",
+    lastUpdated: "Last updated: January 2025",
+    sections: [
+      {
+        title: "Information We Collect",
+        content: "We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.",
+        items: [
+          "Personal information (name, email address, phone number)",
+          "Payment information (processed securely through Stripe)",
+          "Shipping and billing addresses",
+          "Communication preferences and customer service interactions"
+        ]
+      },
+      {
+        title: "How We Use Your Information", 
+        content: "We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you."
+      },
+      {
+        title: "Information Sharing",
+        content: "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy."
+      },
+      {
+        title: "Data Security",
+        content: "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+      },
+      {
+        title: "Contact Us",
+        content: "If you have any questions about this Privacy Policy, please contact us using the information below."
+      }
+    ],
+    contactInfo: {
+      email: "Email",
+      phone: "Phone", 
+      address: "Purrify Canada, Montreal, Quebec, Canada"
+    }
+  },
+
+  // FAQ Items
+  faqItems: [
+    {
+      id: 1,
+      category: "product",
+      question: "What is Purrify made of?",
+      answer: "Purrify is made of 100% natural activated carbon derived from coconut shells. It contains no chemicals, fragrances, or artificial additives.",
+      popular: true,
+      tags: ["ingredients", "natural", "safe"]
+    },
+    {
+      id: 2,
+      category: "usage",
+      question: "How do I use Purrify?",
+      answer: "Simply sprinkle 1-2 tablespoons of Purrify evenly over your clean litter after each cleaning. It works with all types of litter.",
+      popular: true,
+      tags: ["instructions", "how-to", "application"]
+    },
+    {
+      id: 3,
+      category: "product", 
+      question: "Is Purrify safe for my cat?",
+      answer: "Yes! Purrify is completely safe for cats, kittens, and other pets. It's made from natural activated carbon with no harmful chemicals.",
+      popular: true,
+      tags: ["safety", "cats", "pets", "natural"]
+    },
+    {
+      id: 4,
+      category: "usage",
+      question: "How long does one bag last?",
+      answer: "Duration depends on the size: Trial (1-2 weeks), Standard (4-6 weeks), Large (8-12 weeks), based on average usage with 1-2 cats.",
+      popular: true,
+      tags: ["duration", "usage", "value"]
+    },
+    {
+      id: 5,
+      category: "shipping",
+      question: "How long does shipping take?",
+      answer: "Standard shipping takes 3-5 business days within Canada. Express shipping (1-2 days) is available for an additional fee.",
+      popular: false,
+      tags: ["shipping", "delivery", "timing"]
+    }
+  ],
+
+  // FAQ Categories
+  faqCategories: [
+    { id: "all", name: "All Categories", count: 25 },
+    { id: "product", name: "Product Information", count: 8 },
+    { id: "usage", name: "Usage & Application", count: 6 },
+    { id: "shipping", name: "Shipping & Delivery", count: 4 },
+    { id: "payment", name: "Payment & Orders", count: 4 },
+    { id: "support", name: "Customer Support", count: 3 }
+  ],
+
+  // FAQ Page
+  faqPage: {
+    title: "Frequently Asked Questions",
+    subtitle: "Find answers to common questions about Purrify",
+    searchPlaceholder: "Search questions...",
+    popularQuestions: "Most Popular Questions",
+    quickAnswers: "Quick answers to the most frequently asked questions",
+    categories: "Categories",
+    questionsFound: "questions found",
+    clearSearch: "Clear Search",
+    noQuestionsFound: "No questions found",
+    adjustSearchTerms: "Try adjusting your search terms or browse categories",
+    stillHaveQuestions: "Still Have Questions?",
+    cantFindWhatLooking: "Can't find what you're looking for?",
+    customerSupportReady: "Our customer support team is ready to help",
+    emailSupport: "Email Support",
+    detailedEmailHelp: "Get detailed help via email",
+    liveChat: "Live Chat",
+    realTimeChatHelp: "Chat with us in real-time",
+    phoneSupport: "Phone Support", 
+    speakDirectlyTeam: "Speak directly with our team",
+    contactUs: "Contact Us",
+    startChat: "Start Chat",
+    callNow: "Call Now",
+    readyToTryPurrify: "Ready to Try Purrify?",
+    startWithRiskFreeTrial: "Start with our risk-free trial and experience the difference yourself",
+    compareAllSizes: "Compare All Sizes"
+  },
+
   // Common UI Elements
   ui: {
     // Review System
