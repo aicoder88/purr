@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Shield, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -98,11 +98,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
 
-  useEffect(() => {
-    checkPaymentAvailability();
-  }, []);
-
-  const checkPaymentAvailability = () => {
+  const checkPaymentAvailability = useCallback(() => {
     const payments: PaymentMethod[] = [
       {
         id: 'apple-pay',
@@ -128,7 +124,11 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     ];
 
     setAvailablePayments(payments);
-  };
+  }, []);
+
+  useEffect(() => {
+    checkPaymentAvailability();
+  }, [checkPaymentAvailability]);
 
   const checkApplePayAvailability = (): boolean => {
     if (typeof window === 'undefined') return false;
@@ -405,12 +405,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   const [showApplePay, setShowApplePay] = useState(false);
   const [showGooglePay, setShowGooglePay] = useState(false);
 
-  useEffect(() => {
-    setShowApplePay(checkApplePayAvailability());
-    setShowGooglePay(checkGooglePayAvailability());
-  }, []);
-
-  const checkApplePayAvailability = (): boolean => {
+  const checkApplePayAvailability = useCallback((): boolean => {
     if (typeof window === 'undefined') return false;
     const applePayWindow = window as unknown as { 
       ApplePaySession?: {
@@ -423,9 +418,9 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
     };
     return !!(applePayWindow.ApplePaySession && 
              applePayWindow.ApplePaySession.canMakePayments());
-  };
+  }, []);
 
-  const checkGooglePayAvailability = (): boolean => {
+  const checkGooglePayAvailability = useCallback((): boolean => {
     if (typeof window === 'undefined') return false;
     const googleWindow = window as unknown as { 
       google?: { 
@@ -435,7 +430,12 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       } 
     };
     return !!(googleWindow.google?.payments?.api);
-  };
+  }, []);
+
+  useEffect(() => {
+    setShowApplePay(checkApplePayAvailability());
+    setShowGooglePay(checkGooglePayAvailability());
+  }, [checkApplePayAvailability, checkGooglePayAvailability]);
 
   if (!showApplePay && !showGooglePay) return null;
 

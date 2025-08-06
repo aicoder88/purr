@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 // Define the image dimensions type from the JSON file
 interface ImageDimensions {
@@ -73,10 +73,10 @@ export default function NextImage({
       setWidth(propWidth);
       setHeight(propHeight);
     }
-  }, [src, propWidth, propHeight]);
+  }, [src, propWidth, propHeight, tryGetImageDimensions]);
 
   // Try to get image dimensions from the optimized images data
-  const tryGetImageDimensions = () => {
+  const tryGetImageDimensions = useCallback(() => {
     // Skip for external images or if dimensions are already provided
     if (src.startsWith('http') || src.startsWith('https') || (propWidth && propHeight)) {
       return;
@@ -97,7 +97,7 @@ export default function NextImage({
     } catch (error) {
       console.warn(`Could not determine dimensions for ${src}`, error);
     }
-  };
+  }, [src, propWidth, propHeight, width, height]);
 
   // Handle external URLs and local images
   const isExternal = src.startsWith('http') || src.startsWith('https');

@@ -215,6 +215,7 @@ export const fr = {
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: "+1 514 961 9386",
+    email: "hello@purrify.ca",
     courriel: "hello@purrify.ca",
     hours: {
       title: "Heures d'Ouverture",
@@ -841,7 +842,7 @@ export const fr = {
       }
     ],
     contactInfo: {
-      courriel: "hello@purrify.ca",
+      email: "hello@purrify.ca",
       phone: "+1 514 961 9386",
       address: "Montréal, Canada"
     }
