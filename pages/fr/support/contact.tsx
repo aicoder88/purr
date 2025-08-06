@@ -30,61 +30,16 @@ export default function ContactPageFR() {
     contactReason: 'general'
   });
 
-  const contactReasons = [
-    { value: 'general', label: 'Question Générale' },
-    { value: 'product', label: 'Information Produit' },
-    { value: 'order', label: 'Support Commande' },
-    { value: 'shipping', label: 'Question Livraison' },
-    { value: 'return', label: 'Retour/Remboursement' },
-    { value: 'wholesale', label: 'Demande Grossiste' },
-    { value: 'feedback', label: 'Commentaire/Avis' }
-  ];
+  const contactReasons = t.contactPage.contactReasons;
 
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: "Support Email",
-      value: "support@purrify.ca",
-      description: "Obtenez de l'aide détaillée par email",
-      responseTime: "Habituellement dans les 24 heures",
-      action: "mailto:support@purrify.ca"
-    },
-    {
-      icon: Phone,
-      title: "Support Téléphonique",
-      value: "+1 514 961 9386",
-      description: "Parlez directement avec notre équipe",
-      responseTime: "Lun-Ven, 9h-17h EST",
-      action: "tel:+15149619386"
-    },
-    {
-      icon: MessageCircle,
-      title: "Chat en Direct",
-      value: "Disponible Maintenant",
-      description: "Aide instantanée pour questions rapides",
-      responseTime: "Réponse moyenne: 2 minutes",
-      action: "#"
-    }
-  ];
+  const contactMethods = t.contactPage.contactMethods.map((method, index) => ({
+    icon: index === 0 ? Mail : index === 1 ? Phone : MessageCircle,
+    ...method,
+    value: index === 0 ? "support@purrify.ca" : index === 1 ? "+1 514 961 9386" : "Disponible Maintenant",
+    action: index === 0 ? "mailto:support@purrify.ca" : index === 1 ? "tel:+15149619386" : "#"
+  }));
 
-  const faqs = [
-    {
-      question: "À quelle vitesse verrai-je des résultats avec Purrify?",
-      answer: "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact."
-    },
-    {
-      question: "Quelle est votre politique de retour?",
-      answer: "Nous offrons une garantie de remboursement de 30 jours. Si vous n'êtes pas complètement satisfait de Purrify, contactez-nous pour un remboursement complet."
-    },
-    {
-      question: "Offrez-vous des prix de gros pour plusieurs chats?",
-      answer: "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
-    },
-    {
-      question: "Purrify est-il sûr si mon chat l'ingère accidentellement?",
-      answer: "Absolument. Le charbon activé est complètement sûr pour les chats et est même utilisé en médecine vétérinaire. Cependant, Purrify est conçu pour rester mélangé avec la litière."
-    }
-  ];
+  const faqs = t.contactPage.faqs;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -221,13 +176,13 @@ export default function ContactPageFR() {
                     onClick={() => {
                       if (method.action.startsWith('#')) {
                         // Handle live chat
-                        alert('Fonctionnalité de chat en direct bientôt disponible! Veuillez utiliser email ou téléphone pour le moment.');
+                        alert(t.contactPage.form.errorMessage);
                       } else {
                         window.location.href = method.action;
                       }
                     }}
                   >
-                    Contacter Maintenant
+                    {t.contactPage.form.contactNow}
                   </Button>
                 </div>
               ))}
@@ -241,10 +196,10 @@ export default function ContactPageFR() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  Envoyez-Nous un Message
+                  {t.contactPage.form.sendMessage}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures
+                  {t.contactPage.subtitle}
                 </p>
               </div>
 
@@ -264,7 +219,7 @@ export default function ContactPageFR() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Nom Complet *
+                        {t.contactPage.form.fullName} *
                       </label>
                       <Input
                         id="name"
@@ -273,13 +228,13 @@ export default function ContactPageFR() {
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Votre nom complet"
+                        placeholder={t.contactPage.form.fullName}
                         className="w-full"
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Adresse Email *
+                        {t.contactPage.form.emailAddress} *
                       </label>
                       <Input
                         id="email"
@@ -288,7 +243,7 @@ export default function ContactPageFR() {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="votre.email@exemple.com"
+                        placeholder={t.contactPage.form.emailAddress}
                         className="w-full"
                       />
                     </div>

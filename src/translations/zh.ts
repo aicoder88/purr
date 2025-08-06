@@ -543,5 +543,366 @@ export const zh = {
     skipAnytime: "随时跳过",
     highlyRated: "高度评价",
     errorDetails: "错误详情"
+  },
+
+  // Free Trial Page
+  freeTrialPage: {
+    urgentBanner: "限时优惠",
+    free: "免费",
+    claimTrial: "获取您的免费Purrify试用装",
+    whatYouGet: "您将获得：",
+    freeTrialBag: "价值$4.99的17g Purrify试用装",
+    freeShippingDoor: "免费送货到您家门口",
+    expertTips: "专家猫咪护理技巧和指南",
+    zeroCommitment: "零承诺 - 这是我们送给您的礼物",
+    attention: "注意：对于厌倦了憋气的猫主人",
+    limitedQuantity: "仅限前500名猫主人",
+    alreadyClaimed: "已领取",
+    countdownLabels: {
+      hours: "小时",
+      minutes: "分钟",
+      seconds: "秒"
+    },
+    testimonials: [
+      {
+        text: "我简直不敢相信。几个小时内，我的整个房子又恢复了清新。我甚至几个月来第一次邀请了婆婆过来！",
+        author: "张女士，多伦多"
+      },
+      {
+        text: "我丈夫以为我把猫砂全部扔掉了。异味就这样...消失了。",
+        author: "李女士，温哥华"
+      }
+    ],
+    testimonialsTestUsers: "我们的测试用户怎么说：",
+    claimNow: "立即领取您的免费试用装",
+    warningHighDemand: "⚠️ 注意：由于需求量大，我们无法保证倒计时结束后仍有库存。",
+    privacyNotice: "100%免费。无需信用卡。",
+    zeroCommitmentGift: "零承诺 - 这是我们送给您的礼物",
+    instantOdorElimination: "体验神奇的异味消除效果",
+    completeInstructions: "完整的使用说明以获得最佳效果",
+    noShippingFees: "无运费，无隐藏费用，无陷阱",
+    disappearsIn: "注意：此优惠将在以下时间后消失：",
+    limitedTo500: "仅限前500名猫主人。",
+    yourFreeTrialWaits: "您的免费试用装正在等待 - 但只有现在行动才能获得。",
+    betaTestersHeader: "我们的测试用户怎么说：",
+    claimFreeTrialNow: "立即领取您的免费试用装",
+    attention100Free: "100%免费。无需信用卡。",
+    noCreditCard: "无需信用卡。",
+    limitedTimeOffer: "限时优惠。每户限领一份。",
+    restrictionsApply: "可能适用运费限制。我们保留随时终止此促销活动的权利。",
+    highDemandWarning: "由于需求量大，我们无法保证倒计时结束后仍有库存",
+    disclaimer: "100%免费。无需信用卡。限时优惠。每户限领一份。可能适用运费限制。我们保留随时终止此促销活动的权利"
+  },
+
+  // Contact Page
+  contactPage: {
+    title: "我们随时为您提供帮助",
+    subtitle: "我们友好的客户支持团队随时准备为您提供专业建议和解决方案。",
+    chooseContactMethod: "选择联系我们的方式",
+    contactReasons: [
+      { value: "general", label: "一般问题" },
+      { value: "product", label: "产品信息" },
+      { value: "order", label: "订单支持" },
+      { value: "shipping", label: "运输问题" },
+      { value: "return", label: "退货/退款" },
+      { value: "wholesale", label: "批发咨询" },
+      { value: "feedback", label: "意见反馈" }
+    ],
+    contactMethods: [
+      {
+        title: "邮件支持",
+        description: "通过邮件获得详细帮助",
+        responseTime: "通常在24小时内"
+      },
+      {
+        title: "电话支持",
+        description: "直接与我们的团队交谈",
+        responseTime: "周一至周五，上午9点-下午5点"
+      },
+      {
+        title: "在线客服",
+        description: "快速问题的即时帮助",
+        responseTime: "平均响应时间：2分钟"
+      }
+    ],
+    form: {
+      fullName: "全名",
+      emailAddress: "邮箱地址",
+      subject: "主题",
+      message: "留言",
+      contactReason: "联系原因",
+      orderNumber: "订单号（如适用）",
+      submit: "发送消息",
+      submitting: "发送中...",
+      successMessage: "感谢您联系我们！我们将在24小时内回复您。",
+      errorMessage: "抱歉，发送消息时出现错误。请重试或直接联系我们。",
+      sendingMessage: "发送中...",
+      sendMessage: "发送消息",
+      subjectPlaceholder: "简要描述您的请求",
+      messagePlaceholder: "请提供关于您的问题或疑虑的详细信息...",
+      orderNumberPlaceholder: "例如：PUR-12345",
+      contactNow: "立即联系"
+    },
+    faqs: [
+      {
+        question: "使用Purrify多快能看到效果？",
+        answer: "大多数客户在使用后的几小时内就能注意到异味显著减少。活性炭一接触就开始捕获异味分子。"
+      },
+      {
+        question: "你们的退货政策是什么？",
+        answer: "我们提供30天退款保证。如果您对Purrify不完全满意，请联系我们获得全额退款。"
+      },
+      {
+        question: "多猫家庭有批发价吗？",
+        answer: "是的！我们的500g经济装为多猫家庭提供最佳价值。我们还为宠物店和兽医提供批发价。"
+      },
+      {
+        question: "如果我的猫意外摄入Purrify安全吗？",
+        answer: "绝对安全。活性炭对猫咪完全安全，甚至在兽医学中也有使用。不过，Purrify是设计用来与猫砂混合使用的。"
+      }
+    ],
+    businessHours: {
+      title: "营业时间",
+      weekdays: "上午9:00 - 下午5:00 EST",
+      saturday: "上午10:00 - 下午2:00 EST",
+      sunday: "休息",
+      closed: "休息"
+    },
+    location: {
+      title: "我们的位置",
+      address: "蒙特利尔，魁北克省，加拿大",
+      shippingNote: "我们向全加拿大发货，并在蒙特利尔地区提供本地取货。"
+    },
+    frequentlyAskedQuestions: "常见问题",
+    quickAnswersCommon: "常见问题的快速答案",
+    dontSeeQuestion: "没有看到您的问题？",
+    viewCompleteFAQ: "查看完整FAQ",
+    backToHome: "返回首页"
+  },
+
+  // Product Comparison
+  productComparison: {
+    title: "比较Purrify产品",
+    subtitle: "为您的家庭找到完美尺寸 - 从试用装到批量节省",
+    findPerfectSize: "为您的家庭找到完美尺寸",
+    products: [
+      {
+        id: "trial",
+        name: "试用装 17g",
+        subtitle: "新用户的完美选择",
+        duration: "1次猫砂更换",
+        cats: "1只猫",
+        features: [
+          "先试用再承诺",
+          "无风险介绍",
+          "完美分量",
+          "相同强效配方",
+          "退款保证"
+        ],
+        bestFor: "想要测试Purrify的新客户",
+        cta: "开始试用"
+      },
+      {
+        id: "small",
+        name: "中等装 60g", 
+        subtitle: "单猫家庭的理想选择",
+        duration: "3-4次猫砂更换",
+        cats: "1只猫",
+        features: [
+          "经济选择",
+          "延长猫砂寿命3-4倍",
+          "完全消除异味",
+          "适用于任何猫砂",
+          "环保配方"
+        ],
+        bestFor: "寻求价值的单猫主人",
+        cta: "选择小装"
+      },
+      {
+        id: "large",
+        name: "大装 120g",
+        subtitle: "多猫家庭的最佳价值",
+        duration: "8-10次猫砂更换",
+        cats: "2-3只猫",
+        features: [
+          "每克最大价值",
+          "包含批量节省",
+          "适合多只猫",
+          "可持续供应",
+          "包含免费运送"
+        ],
+        bestFor: "寻求最大价值的多猫家庭",
+        cta: "获取最佳价值"
+      }
+    ],
+    comparisonFeatures: [
+      { feature: "异味消除" },
+      { feature: "适用于任何猫砂" },
+      { feature: "延长猫砂寿命" },
+      { feature: "退款保证" },
+      { feature: "免费运送" },
+      { feature: "批量节省" },
+      { feature: "适合多猫" }
+    ],
+    usageCalculator: {
+      title: "每种尺寸能持续多长时间？",
+      subtitle: "根据您家庭规模估算持续时间",
+      numberOfCats: "猫咪数量",
+      typicalChanges: "典型更换",
+      estimateDuration: "根据您家庭规模估算持续时间"
+    },
+    stillUnsure: "仍然不确定选择哪种尺寸？",
+    getPersonalizedAdvice: "获取个性化建议",
+    tryRiskFree: "无风险试用 - $4.99",
+    learnMoreAboutPurrify: "了解更多关于Purrify",
+    featuresComparison: "功能比较",
+    seeHowProductsCompare: "看看我们的产品如何并排比较",
+    howLongWillEachSizeLast: "每种尺寸能持续多长时间？",
+    popular: "热门",
+    bestValue: "最佳价值",
+    perfectForFirstTime: "新用户的完美选择",
+    idealForSingleCat: "单猫家庭的理想选择",
+    perfectForMultiCat: "多猫家庭的完美选择",
+    economicChoice: "经济选择",
+    maxValuePerGram: "每克最大价值",
+    bulkSavingsIncluded: "包含批量节省",
+    sustainableSupply: "可持续供应",
+    freeShippingIncluded: "包含免费运送",
+    features: "特点",
+    idealFor: "适合",
+    duration: "持续时间",
+    saveMoney: "节省",
+    getBestValue: "获取最佳价值",
+    chooseThisSize: "选择此尺寸",
+    tryWithoutRisk: "无风险试用",
+    chooseSmallSize: "选择小装"
+  },
+
+  // Privacy Policy
+  privacyPolicy: {
+    title: "隐私政策",
+    lastUpdated: "最后更新：2024年6月",
+    sections: [
+      {
+        title: "信息收集",
+        content: "我们收集您在使用我们网站和服务时提供的信息，包括：",
+        items: [
+          "姓名和联系信息",
+          "邮寄地址（用于产品配送）",
+          "电子邮件地址",
+          "宠物信息（如猫咪姓名）",
+          "网站使用数据和偏好"
+        ]
+      },
+      {
+        title: "信息使用",
+        content: "我们使用收集的信息用于：",
+        items: [
+          "处理和配送您的订单",
+          "提供客户支持",
+          "发送产品更新和护理技巧",
+          "改善我们的产品和服务",
+          "遵守法律要求"
+        ]
+      },
+      {
+        title: "信息保护",
+        content: "我们采用行业标准的安全措施来保护您的个人信息，包括加密传输和安全存储。",
+        items: []
+      },
+      {
+        title: "信息共享",
+        content: "我们不会向第三方出售、交易或转让您的个人信息，除非：",
+        items: [
+          "获得您的明确同意",
+          "为了完成您的订单（如配送服务）",
+          "法律要求或保护我们的权利"
+        ]
+      },
+      {
+        title: "Cookie和跟踪技术",
+        content: "我们使用Cookie和类似技术来改善您的浏览体验、分析网站使用情况并提供个性化内容。",
+        items: []
+      },
+      {
+        title: "您的权利",
+        content: "您有权：",
+        items: [
+          "访问您的个人信息",
+          "更正不准确的信息",
+          "请求删除您的信息",
+          "取消订阅营销通讯"
+        ]
+      },
+      {
+        title: "联系我们",
+        content: "如果您对本隐私政策有任何问题，请通过以下方式联系我们：",
+        items: []
+      }
+    ],
+    contactInfo: {
+      email: "hello@purrify.ca",
+      phone: "+1 514 961 9386",
+      address: "加拿大蒙特利尔"
+    }
+  },
+
+  // FAQ Items
+  faqItems: [
+    {
+      id: 1,
+      category: "product",
+      question: "什么是Purrify，它是如何工作的？",
+      answer: "Purrify是一种活性炭猫砂添加剂，在分子级别消除异味。活性炭具有数百万个微观孔隙，可以捕获和中和引起异味的化合物。",
+      popular: true,
+      tags: ["活性炭", "异味控制"]
+    },
+    {
+      id: 2,
+      category: "product", 
+      question: "Purrify对猫和人类安全吗？",
+      answer: "是的，Purrify完全安全。我们的活性炭是食品级且无毒的。它已经过广泛测试，由天然材料制成。",
+      popular: true,
+      tags: ["安全", "无毒"]
+    }
+  ],
+
+  // FAQ Categories
+  faqCategories: [
+    { id: "all", name: "所有问题", count: 16 },
+    { id: "product", name: "产品信息", count: 6 },
+    { id: "usage", name: "使用和应用", count: 4 },
+    { id: "shipping", name: "运输和配送", count: 3 },
+    { id: "payment", name: "付款和账单", count: 2 },
+    { id: "support", name: "客户支持", count: 1 }
+  ],
+
+  // FAQ Page
+  faqPage: {
+    title: "常见问题",
+    subtitle: "关于Purrify您需要知道的一切",
+    searchPlaceholder: "搜索答案...",
+    popularQuestions: "最受欢迎的问题",
+    quickAnswers: "最常见问题的快速答案",
+    categories: "分类",
+    questionsFound: "找到问题",
+    clearSearch: "清除搜索",
+    noQuestionsFound: "未找到问题",
+    adjustSearchTerms: "尝试调整您的搜索词或类别过滤器",
+    stillHaveQuestions: "还有问题？",
+    cantFindWhatLooking: "找不到您要找的内容？我们的客户支持团队随时为您提供帮助！",
+    customerSupportReady: "我们的客户支持团队随时为您提供帮助！",
+    emailSupport: "邮件支持",
+    detailedEmailHelp: "通过邮件获得详细答案",
+    liveChat: "在线客服",
+    realTimeChatHelp: "与我们实时聊天",
+    phoneSupport: "电话支持",
+    speakDirectlyTeam: "直接与我们的团队交谈",
+    contactUs: "联系我们",
+    startChat: "开始聊天",
+    callNow: "立即致电",
+    readyToTryPurrify: "准备试试Purrify？",
+    startWithRiskFreeTrial: "从我们的无风险试用装开始，亲自体验差异。",
+    compareAllSizes: "比较所有尺寸"
   }
 };

@@ -296,6 +296,218 @@ export interface TranslationType {
     free: string;
   };
 
+  // Free Trial Page
+  freeTrialPage: {
+    urgentBanner: string;
+    free: string;
+    claimTrial: string;
+    whatYouGet: string;
+    freeTrialBag: string;
+    freeShippingDoor: string;
+    expertTips: string;
+    zeroCommitment: string;
+    attention: string;
+    limitedQuantity: string;
+    alreadyClaimed: string;
+    countdownLabels: {
+      hours: string;
+      minutes: string;
+      seconds: string;
+    };
+    testimonials: Array<{
+      text: string;
+      author: string;
+    }>;
+    testimonialsTestUsers: string;
+    claimNow: string;
+    warningHighDemand: string;
+    privacyNotice: string;
+    zeroCommitmentGift: string;
+    instantOdorElimination: string;
+    completeInstructions: string;
+    noShippingFees: string;
+    disappearsIn: string;
+    limitedTo500: string;
+    yourFreeTrialWaits: string;
+    betaTestersHeader: string;
+    claimFreeTrialNow: string;
+    attention100Free: string;
+    noCreditCard: string;
+    limitedTimeOffer: string;
+    restrictionsApply: string;
+    highDemandWarning: string;
+    disclaimer: string;
+  };
+
+  // Contact Page
+  contactPage: {
+    title: string;
+    subtitle: string;
+    chooseContactMethod: string;
+    contactReasons: Array<{
+      value: string;
+      label: string;
+    }>;
+    contactMethods: Array<{
+      title: string;
+      description: string;
+      responseTime: string;
+    }>;
+    form: {
+      fullName: string;
+      emailAddress: string;
+      subject: string;
+      message: string;
+      contactReason: string;
+      orderNumber: string;
+      submit: string;
+      submitting: string;
+      successMessage: string;
+      errorMessage: string;
+      sendingMessage: string;
+      sendMessage: string;
+      subjectPlaceholder: string;
+      messagePlaceholder: string;
+      orderNumberPlaceholder: string;
+      contactNow: string;
+    };
+    faqs: Array<{
+      question: string;
+      answer: string;
+    }>;
+    businessHours: {
+      title: string;
+      weekdays: string;
+      saturday: string;
+      sunday: string;
+      closed: string;
+    };
+    location: {
+      title: string;
+      address: string;
+      shippingNote: string;
+    };
+    frequentlyAskedQuestions: string;
+    quickAnswersCommon: string;
+    dontSeeQuestion: string;
+    viewCompleteFAQ: string;
+    backToHome: string;
+  };
+
+  // Product Comparison
+  productComparison: {
+    title: string;
+    subtitle: string;
+    findPerfectSize: string;
+    products: Array<{
+      id: string;
+      name: string;
+      subtitle: string;
+      duration: string;
+      cats: string;
+      features: string[];
+      bestFor: string;
+      cta: string;
+    }>;
+    comparisonFeatures: Array<{
+      feature: string;
+    }>;
+    usageCalculator: {
+      title: string;
+      subtitle: string;
+      numberOfCats: string;
+      typicalChanges: string;
+      estimateDuration: string;
+    };
+    stillUnsure: string;
+    getPersonalizedAdvice: string;
+    tryRiskFree: string;
+    learnMoreAboutPurrify: string;
+    featuresComparison: string;
+    seeHowProductsCompare: string;
+    howLongWillEachSizeLast: string;
+    popular: string;
+    bestValue: string;
+    perfectForFirstTime: string;
+    idealForSingleCat: string;
+    perfectForMultiCat: string;
+    economicChoice: string;
+    maxValuePerGram: string;
+    bulkSavingsIncluded: string;
+    sustainableSupply: string;
+    freeShippingIncluded: string;
+    features: string;
+    idealFor: string;
+    duration: string;
+    saveMoney: string;
+    getBestValue: string;
+    chooseThisSize: string;
+    tryWithoutRisk: string;
+    chooseSmallSize: string;
+  };
+
+  // Privacy Policy
+  privacyPolicy: {
+    title: string;
+    lastUpdated: string;
+    sections: Array<{
+      title: string;
+      content: string;
+      items?: string[];
+    }>;
+    contactInfo: {
+      email: string;
+      phone: string;
+      address: string;
+    };
+  };
+
+  // FAQ Items
+  faqItems: Array<{
+    id: number;
+    category: string;
+    question: string;
+    answer: string;
+    popular: boolean;
+    tags: string[];
+  }>;
+
+  // FAQ Categories
+  faqCategories: Array<{
+    id: string;
+    name: string;
+    count: number;
+  }>;
+
+  // FAQ Page
+  faqPage: {
+    title: string;
+    subtitle: string;
+    searchPlaceholder: string;
+    popularQuestions: string;
+    quickAnswers: string;
+    categories: string;
+    questionsFound: string;
+    clearSearch: string;
+    noQuestionsFound: string;
+    adjustSearchTerms: string;
+    stillHaveQuestions: string;
+    cantFindWhatLooking: string;
+    customerSupportReady: string;
+    emailSupport: string;
+    detailedEmailHelp: string;
+    liveChat: string;
+    realTimeChatHelp: string;
+    phoneSupport: string;
+    speakDirectlyTeam: string;
+    contactUs: string;
+    startChat: string;
+    callNow: string;
+    readyToTryPurrify: string;
+    startWithRiskFreeTrial: string;
+    compareAllSizes: string;
+  };
+
   // Enhanced Product Comparison
   enhancedProductComparison?: {
     compareAndSave: string;

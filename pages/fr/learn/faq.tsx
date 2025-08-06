@@ -29,145 +29,17 @@ const FAQPage: NextPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
 
-  const categories = [
-    { id: 'all', name: 'Toutes les Questions', icon: HelpCircle, count: 16 },
-    { id: 'product', name: 'Informations Produit', icon: Package, count: 6 },
-    { id: 'usage', name: 'Usage et Application', icon: Users, count: 4 },
-    { id: 'shipping', name: 'Expédition et Livraison', icon: Truck, count: 3 },
-    { id: 'payment', name: 'Paiement et Facturation', icon: CreditCard, count: 2 },
-    { id: 'support', name: 'Support Client', icon: MessageCircle, count: 1 }
-  ];
+  const categories = t.faqCategories.map(cat => ({
+    ...cat,
+    icon: cat.id === 'all' ? HelpCircle :
+          cat.id === 'product' ? Package :
+          cat.id === 'usage' ? Users :
+          cat.id === 'shipping' ? Truck :
+          cat.id === 'payment' ? CreditCard :
+          MessageCircle
+  }));
 
-  const faqItems = [
-    {
-      id: 1,
-      category: 'product',
-      question: 'Qu\'est-ce que Purrify et comment ça fonctionne ?',
-      answer: 'Purrify est un additif au charbon actif pour litière qui élimine les odeurs au niveau moléculaire. Le charbon actif possède des millions de pores microscopiques qui piègent et neutralisent les composés responsables des odeurs.',
-      popular: true,
-      tags: ['charbon actif', 'contrôle odeurs']
-    },
-    {
-      id: 2,
-      category: 'product',
-      question: 'Purrify est-il sécuritaire pour les chats et les humains ?',
-      answer: 'Oui, Purrify est complètement sécuritaire. Notre charbon actif est de qualité alimentaire et non-toxique. Il a été testé extensivement et est fait de matériaux naturels.',
-      popular: true,
-      tags: ['sécurité', 'non-toxique']
-    },
-    {
-      id: 3,
-      category: 'usage',
-      question: 'Quelle quantité de Purrify dois-je utiliser ?',
-      answer: 'Pour des résultats optimaux, utilisez environ 1-2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le bien avec votre litière existante lors d\'un changement complet.',
-      popular: true,
-      tags: ['dosage', 'application']
-    },
-    {
-      id: 4,
-      category: 'product',
-      question: 'Purrify fonctionne-t-il avec tous les types de litière ?',
-      answer: 'Oui ! Purrify est conçu pour fonctionner avec tout type de litière - argile, agglomérante, cristal, naturelle ou biodégradable.',
-      popular: true,
-      tags: ['compatibilité', 'tous types']
-    },
-    {
-      id: 5,
-      category: 'usage',
-      question: 'Combien de temps dure Purrify ?',
-      answer: 'Purrify prolonge la vie de votre litière de 2-3 fois. Au lieu de changer la litière chaque semaine, vous pouvez généralement aller 2-3 semaines avec la même litière.',
-      popular: false,
-      tags: ['durée', 'économies']
-    },
-    {
-      id: 6,
-      category: 'shipping',
-      question: 'Quelle est la rapidité de l\'expédition ?',
-      answer: 'Nous offrons l\'expédition standard gratuite (5-7 jours ouvrables) sur les commandes de plus de 25$. L\'expédition express (2-3 jours) est disponible pour 9,99$.',
-      popular: true,
-      tags: ['vitesse expédition', 'délais']
-    },
-    {
-      id: 7,
-      category: 'product',
-      question: 'Quelles tailles sont disponibles ?',
-      answer: 'Nous offrons trois tailles : Format d\'essai 17g (6,99$), Format moyen 60g (19,99$), et Grand format 120g (29,99$). Le grand format offre la meilleure valeur.',
-      popular: false,
-      tags: ['tailles', 'prix']
-    },
-    {
-      id: 8,
-      category: 'usage',
-      question: 'Puis-je utiliser Purrify avec des bacs à litière automatiques ?',
-      answer: 'Oui, Purrify fonctionne excellemment avec les bacs à litière automatiques. Le charbon actif n\'interférera pas avec les mécanismes automatiques.',
-      popular: false,
-      tags: ['bac automatique', 'compatibilité']
-    },
-    {
-      id: 9,
-      category: 'payment',
-      question: 'Quels modes de paiement acceptez-vous ?',
-      answer: 'Nous acceptons toutes les cartes de crédit principales (Visa, MasterCard, American Express), PayPal, Apple Pay et Google Pay. Toutes les transactions sont sécurisées.',
-      popular: false,
-      tags: ['modes paiement', 'sécurité']
-    },
-    {
-      id: 10,
-      category: 'shipping',
-      question: 'Expédiez-vous à l\'international ?',
-      answer: 'Oui, nous expédions dans plusieurs pays. Les coûts varient selon la destination : États-Unis (12,99$), Royaume-Uni/UE (19,99$), Australie (24,99$).',
-      popular: false,
-      tags: ['expédition internationale', 'mondial']
-    },
-    {
-      id: 11,
-      category: 'product',
-      question: 'Y a-t-il une garantie de remboursement ?',
-      answer: 'Oui ! Nous offrons une garantie de remboursement de 30 jours. Si vous n\'êtes pas complètement satisfait, contactez-nous pour un remboursement complet.',
-      popular: true,
-      tags: ['garantie', 'remboursement']
-    },
-    {
-      id: 12,
-      category: 'usage',
-      question: 'Comment savoir si Purrify fonctionne ?',
-      answer: 'Vous remarquerez la différence en quelques heures ! Le signe le plus évident est la réduction dramatique des odeurs du bac à litière.',
-      popular: false,
-      tags: ['efficacité', 'résultats']
-    },
-    {
-      id: 13,
-      category: 'support',
-      question: 'Comment puis-je contacter le support client ?',
-      answer: 'Vous pouvez nous joindre par courriel à hello@purrify.com, via notre formulaire de contact, ou par téléphone durant les heures d\'affaires.',
-      popular: false,
-      tags: ['contact', 'support']
-    },
-    {
-      id: 14,
-      category: 'product',
-      question: 'Purrify peut-il aider avec plusieurs chats ?',
-      answer: 'Absolument ! Purrify est particulièrement efficace dans les foyers multi-chats. Nous recommandons notre Grand format 120g pour les foyers avec 2-3 chats.',
-      popular: false,
-      tags: ['plusieurs chats', 'multi-chats']
-    },
-    {
-      id: 15,
-      category: 'shipping',
-      question: 'Puis-je suivre ma commande ?',
-      answer: 'Oui ! Une fois votre commande expédiée, vous recevrez un numéro de suivi par courriel. Vous pouvez suivre votre colis sur le site de Postes Canada.',
-      popular: false,
-      tags: ['suivi', 'statut commande']
-    },
-    {
-      id: 16,
-      category: 'payment',
-      question: 'Offrez-vous des remises pour les commandes en gros ?',
-      answer: 'Nous offrons des prix dégressifs sur les grandes quantités. Contactez-nous directement pour discuter des options de commandes en gros et des remises disponibles.',
-      popular: false,
-      tags: ['remises', 'commandes gros']
-    }
-  ];
+  const faqItems = t.faqItems;
 
   const toggleItem = (id: number) => {
     setOpenItems(prev => 
@@ -246,17 +118,17 @@ const FAQPage: NextPage = () => {
             <div className="text-center text-white max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Foire Aux Questions
+                {t.faqPage.title}
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Tout ce que vous devez savoir sur Purrify
+                {t.faqPage.subtitle}
               </p>
               
               <div className="max-w-2xl mx-auto relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Rechercher des réponses..."
+                  placeholder={t.faqPage.searchPlaceholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
@@ -405,10 +277,10 @@ const FAQPage: NextPage = () => {
                   <div className="text-center py-12">
                     <HelpCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
-                      Aucune question trouvée
+                      {t.faqPage.noQuestionsFound}
                     </h3>
                     <p className="text-gray-500 dark:text-gray-500">
-                      Essayez d'ajuster vos termes de recherche ou le filtre de catégorie
+                      {t.faqPage.adjustSearchTerms}
                     </p>
                   </div>
                 )}
@@ -422,29 +294,29 @@ const FAQPage: NextPage = () => {
           <Container>
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Vous Avez Encore Des Questions ?
+                {t.faqPage.stillHaveQuestions}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Vous ne trouvez pas ce que vous cherchez ? Notre équipe de support client est là pour vous aider !
+                {t.faqPage.cantFindWhatLooking}
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Mail className="w-8 h-8 text-[#5B2EFF] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Support par Courriel</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{t.faqPage.emailSupport}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Obtenez des réponses détaillées par courriel
+                    {t.faqPage.detailedEmailHelp}
                   </p>
                   <Link href="/fr/support/contact">
                     <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
-                      Nous Contacter
+                      {t.faqPage.contactUs}
                     </Button>
                   </Link>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <MessageCircle className="w-8 h-8 text-[#FF3131] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Chat en Direct</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{t.faqPage.liveChat}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Chattez avec nous en temps réel
                   </p>

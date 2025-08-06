@@ -54,8 +54,8 @@ const FreePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>URGENT: Essai GRATUIT de Purrify | {SITE_NAME}</title>
-        <meta name="description" content="Réclamez votre sac d'essai GRATUIT d'additif de litière pour chat Purrify. Zéro coût. Zéro risque. Zéro odeur de litière." />
+        <title>{t.freeTrialPage.urgentBanner}: {t.freeTrialPage.claimTrial} | {SITE_NAME}</title>
+        <meta name="description" content={t.freeTrialPage.instantOdorElimination} />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://purrify.ca/fr/free" />
         <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr/free" />
@@ -85,7 +85,7 @@ const FreePage: NextPage = () => {
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
                 <div className="bg-red-600 text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
-                  {t.freeTrial.urgentBanner}
+                  {t.freeTrialPage.urgentBanner}
                 </div>
               </div>
               
@@ -94,14 +94,14 @@ const FreePage: NextPage = () => {
                   <div className="absolute inset-0 bg-indigo-600/10 rounded-lg blur-xl"></div>
                   <NextImage
                     src="/optimized/free-purrify.webp"
-                    alt="Sac d'essai gratuit d'additif de litière pour chat Purrify"
+                    alt={t.freeTrialPage.freeTrialBag}
                     width={400}
                     height={300}
                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
                     priority
                   />
                   <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
-                    {t.freeTrial.free}
+                    {t.freeTrialPage.free}
                   </div>
                 </div>
               </div>
@@ -111,14 +111,14 @@ const FreePage: NextPage = () => {
                   <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight md:text-left leading-tight">
                     <div className="flex items-center my-2">
                       <span className="bg-gradient-to-r from-[#4338CA] to-[#6366F1] bg-clip-text text-transparent">
-                        Réclamez Votre Essai GRATUIT de Purrify
+                        {t.freeTrialPage.claimTrial}
                       </span>
                     </div>
                     
                     <div className="flex justify-center my-4">
                       <NextImage
                         src="/optimized/samplebag.webp"
-                        alt="Sac d'essai de taille échantillon de l'additif de litière pour chat Purrify"
+                        alt={t.freeTrialPage.freeTrialBag}
                         width={120}
                         height={90}
                         className="rounded-md shadow-lg border-2 border-indigo-200 transform transition-all duration-300 hover:scale-110"
@@ -130,7 +130,7 @@ const FreePage: NextPage = () => {
                       <div className="border-t-2 border-b-2 border-indigo-200/50 py-3">
                         <span className="text-3xl font-extrabold bg-gradient-to-r from-pink-600 via-indigo-700 to-purple-700 bg-clip-text text-transparent tracking-wide animate-pulse-slow transform transition-all duration-300 hover:scale-105 inline-block"
                               style={{ textShadow: "0px 0px 1px rgba(79, 70, 229, 0.2)" }}>
-                          Zéro Coût. Zéro Risque. Zéro Odeur de Litière.
+                          {t.freeTrialPage.zeroCommitmentGift}
                         </span>
                       </div>
                     </div>
@@ -138,7 +138,7 @@ const FreePage: NextPage = () => {
                   
                   <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
                     <p className="text-indigo-800 font-medium">
-                      Offre à durée limitée : Obtenez votre sac d'essai gratuit de notre formule naturelle anti-odeurs pendant que les stocks durent !
+                      {t.freeTrialPage.limitedTimeOffer}
                     </p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ const FreePage: NextPage = () => {
                 <PawPrint className="h-6 w-6 text-red-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-lg text-[#333333] mb-6 leading-relaxed">
-                    <strong className="text-red-600 text-xl">ATTENTION PROPRIÉTAIRES DE CHATS QUI EN ONT ASSEZ DE RETENIR LEUR SOUFFLE :</strong> Et si, dans les prochaines 24 heures, vous pouviez complètement éliminer cette odeur embarrassante de litière qui vous fait grimacer chaque fois que quelqu'un visite votre maison ?
+                    <strong className="text-red-600 text-xl">{t.freeTrialPage.attention}</strong> {t.freeTrialPage.instantOdorElimination}
                   </p>
                   <p className="text-lg text-[#333333] mb-6 leading-relaxed">
                     Voici l'offre : Nous sommes tellement convaincus que Purrify transformera votre maison en un sanctuaire frais et sans odeur que nous faisons quelque chose de fou...
@@ -186,19 +186,19 @@ const FreePage: NextPage = () => {
                       quality={85}
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4">Ce que vous obtenez GRATUITEMENT :</h3>
+                  <h3 className="text-xl font-bold text-indigo-800 mb-4">{t.freeTrialPage.whatYouGet}</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>Sac d'essai à usage unique de notre formule naturelle anti-odeurs</span>
+                      <span>{t.freeTrialPage.freeTrialBag}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>Élimination instantanée des odeurs - fonctionne avec TOUTE litière que vous utilisez actuellement</span>
+                      <span>{t.freeTrialPage.instantOdorElimination}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>Instructions complètes pour des résultats de fraîcheur maximale</span>
+                      <span>{t.freeTrialPage.completeInstructions}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
