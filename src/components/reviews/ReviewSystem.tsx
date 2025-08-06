@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, Calendar, CheckCircle, Filter, SortAsc } from 'lucide-react';
+
+type SortOption = 'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful';
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
 import { useTranslation } from '../../lib/translation-context';
@@ -136,7 +138,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 }) => {
   const [reviews] = useState<Review[]>(SAMPLE_REVIEWS);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>(SAMPLE_REVIEWS);
-  const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful'>('newest');
+  const [sortBy, setSortBy] = useState<SortOption>('newest');
   const [filterRating, setFilterRating] = useState<number | null>(null);
   const [filterSize, setFilterSize] = useState<string | null>(null);
 
@@ -366,7 +368,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               <SortAsc className="w-4 h-4 text-gray-500" />
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
                 className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option value="newest">Newest First</option>

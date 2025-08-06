@@ -97,13 +97,13 @@ const ThankYouPage = () => {
             Your order has been received and is being processed.
           </p>
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold mb-4">What's Next?</h2>
+            <h2 className="text-2xl font-semibold mb-4">What&apos;s Next?</h2>
             <p className="mb-4">
-              You will receive an email confirmation shortly with your order details.
+              You will receive an email confirmation shortly with your order details.&nbsp;
               Our team will begin processing your order right away.
             </p>
             <p className="mb-4">
-              If you have any questions about your order, please don't hesitate to contact us.
+              If you have any questions about your order, please don&apos;t hesitate to contact us.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -13,7 +13,7 @@ interface ImageDimensions {
 }
 
 // Load image dimensions from the JSON file (will only be used server-side)
-let imageDimensionsCache: ImageDimensions | null = null;
+const imageDimensionsCache: ImageDimensions | null = null;
 
 interface NextImageProps extends Omit<ImageProps, 'src' | 'alt' | 'onError'> {
   src: string;

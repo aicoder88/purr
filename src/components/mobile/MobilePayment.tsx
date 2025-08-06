@@ -1,6 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { CreditCard, Smartphone, Shield, CheckCircle } from 'lucide-react';
+import { Shield, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
+
+// Type declarations for Apple Pay and Google Pay
+declare global {
+  interface ApplePayPaymentRequest {
+    countryCode: string;
+    currencyCode: string;
+    supportedNetworks: string[];
+    merchantCapabilities: string[];
+    total: {
+      label: string;
+      amount: string;
+    };
+  }
+
+  interface ApplePayPaymentToken {
+    paymentData: unknown;
+    paymentMethod: unknown;
+    transactionIdentifier: string;
+  }
+
+  interface ApplePayPayment {
+    token: ApplePayPaymentToken;
+    billingContact?: unknown;
+    shippingContact?: unknown;
+  }
+
+  interface ApplePayPaymentAuthorizedEvent extends Event {
+    payment: ApplePayPayment;
+  }
+
+  interface ApplePayValidateMerchantEvent extends Event {
+    validationURL: string;
+  }
+
+  interface Window {
+    ApplePaySession?: {
+      canMakePayments: () => boolean;
+      supportsVersion: (version: number) => boolean;
+      STATUS_SUCCESS: number;
+      STATUS_FAILURE: number;
+      new (version: number, paymentRequest: ApplePayPaymentRequest): {
+        onvalidatemerchant: (event: ApplePayValidateMerchantEvent) => void;
+        onpaymentauthorized: (event: ApplePayPaymentAuthorizedEvent) => void;
+        oncancel: () => void;
+        begin: () => void;
+        completePayment: (status: number) => void;
+        completeMerchantValidation: (merchantSession: unknown) => void;
+        abort: () => void;
+      };
+    };
+    google?: {
+      payments: {
+        api: {
+          PaymentsClient: new (config: { environment: string }) => {
+            isReadyToPay: (request: unknown) => Promise<{ result: boolean }>;
+            loadPaymentData: (paymentRequest: unknown) => Promise<{ paymentMethodData: unknown }>;
+          };
+        };
+      };
+    };
+  }
+}
 
 interface PaymentMethod {
   id: string;
@@ -10,11 +72,18 @@ interface PaymentMethod {
   description: string;
 }
 
+interface PaymentResult extends Record<string, unknown> {
+  success: boolean;
+  transactionId?: string;
+  error?: string;
+  method?: string;
+}
+
 interface MobilePaymentProps {
   amount: number;
   currency?: string;
-  onPaymentSuccess?: (paymentData: any) => void;
-  onPaymentError?: (error: any) => void;
+  onPaymentSuccess?: (paymentData: Record<string, unknown>) => void;
+  onPaymentError?: (error: Record<string, unknown>) => void;
   className?: string;
 }
 
@@ -65,16 +134,15 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     if (typeof window === 'undefined') return false;
     
     // Check if Apple Pay is available
-    return !!(window as any).ApplePaySession && 
-           (window as any).ApplePaySession.canMakePayments();
+    return !!(window.ApplePaySession && 
+             window.ApplePaySession.canMakePayments());
   };
 
   const checkGooglePayAvailability = (): boolean => {
     if (typeof window === 'undefined') return false;
     
     // Check if Google Pay is available
-    return !!(window as any).google && 
-           !!(window as any).google.payments;
+    return !!(window.google?.payments?.api);
   };
 
   const handleApplePay = async () => {
@@ -87,45 +155,65 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     setSelectedMethod('apple-pay');
 
     try {
-      const ApplePaySession = (window as any).ApplePaySession;
+      if (!window.ApplePaySession) {
+        throw new Error('Apple Pay is not available');
+      }
       
-      const request = {
+      const paymentRequest: ApplePayPaymentRequest = {
         countryCode: 'CA',
         currencyCode: currency,
         supportedNetworks: ['visa', 'masterCard', 'amex'],
         merchantCapabilities: ['supports3DS'],
         total: {
           label: 'Purrify',
-          amount: amount.toFixed(2)
+          amount: amount.toString()
         }
       };
 
-      const session = new ApplePaySession(3, request);
+      const session = new window.ApplePaySession(3, paymentRequest);
 
-      session.onvalidatemerchant = async (event: any) => {
+      session.onvalidatemerchant = async (event: ApplePayValidateMerchantEvent) => {
         // In production, validate with your payment processor
-        console.log('Validating merchant:', event.validationURL);
+        try {
+          // Simulate merchant validation
+          console.log('Validating merchant:', event.validationURL);
+          // In a real app, you would call your backend to validate the merchant
+          // const merchantSession = await validateMerchant(event.validationURL);
+          // session.completeMerchantValidation(merchantSession);
+          // For now, complete with empty object to proceed to payment
+          session.completeMerchantValidation({});
+        } catch (error) {
+          console.error('Merchant validation failed:', error);
+          if ('abort' in session) {
+            session.abort();
+          }
+        }
       };
 
-      session.onpaymentauthorized = (event: any) => {
-        const payment = event.payment;
-        
-        // Process payment with your backend
-        processPayment(payment, 'apple-pay')
+      session.onpaymentauthorized = (event: ApplePayPaymentAuthorizedEvent) => {
+        processPayment(event.payment, 'apple-pay')
           .then((result) => {
-            session.completePayment(ApplePaySession.STATUS_SUCCESS);
+            session.completePayment(window.ApplePaySession?.STATUS_SUCCESS || 0);
             onPaymentSuccess?.(result);
           })
           .catch((error) => {
-            session.completePayment(ApplePaySession.STATUS_FAILURE);
-            onPaymentError?.(error);
+            console.error('Payment processing failed:', error);
+            session.completePayment(window.ApplePaySession?.STATUS_FAILURE || 1);
+            onPaymentError?.({ 
+              success: false, 
+              message: error instanceof Error ? error.message : 'Payment processing failed' 
+            });
           });
+      };
+
+      session.oncancel = () => {
+        onPaymentError?.({ success: false, message: 'Payment was cancelled' });
       };
 
       session.begin();
     } catch (error) {
       console.error('Apple Pay error:', error);
-      onPaymentError?.(error);
+      onPaymentError?.(error as Record<string, unknown>);
     } finally {
       setIsProcessing(false);
       setSelectedMethod(null);
@@ -134,7 +222,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 
   const handleGooglePay = async () => {
     if (!checkGooglePayAvailability()) {
-      onPaymentError?.({ message: 'Google Pay not available' });
+      onPaymentError?.({ success: false, message: 'Google Pay not available' });
       return;
     }
 
@@ -142,64 +230,66 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     setSelectedMethod('google-pay');
 
     try {
-      const paymentsClient = new (window as any).google.payments.api.PaymentsClient({
-        environment: 'TEST' // Change to 'PRODUCTION' for live
+      if (!window.google?.payments?.api) {
+        throw new Error('Google Pay API not available');
+      }
+
+      const paymentsClient = new window.google.payments.api.PaymentsClient({
+        environment: 'TEST' // or 'PRODUCTION'
       });
 
       const paymentDataRequest = {
         apiVersion: 2,
         apiVersionMinor: 0,
-        allowedPaymentMethods: [{
-          type: 'CARD',
-          parameters: {
-            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-            allowedCardNetworks: ['MASTERCARD', 'VISA', 'AMEX']
-          },
-          tokenizationSpecification: {
-            type: 'PAYMENT_GATEWAY',
+        allowedPaymentMethods: [
+          {
+            type: 'CARD',
             parameters: {
-              gateway: 'stripe',
-              gatewayMerchantId: 'your-stripe-merchant-id'
+              allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+              allowedCardNetworks: ['VISA', 'MASTERCARD', 'AMEX']
+            },
+            tokenizationSpecification: {
+              type: 'PAYMENT_GATEWAY',
+              parameters: {
+                gateway: 'example',
+                gatewayMerchantId: 'exampleGatewayMerchantId'
+              }
             }
           }
-        }],
+        ],
         merchantInfo: {
-          merchantId: 'your-google-merchant-id',
+          merchantId: 'BCR2DN4T7T2W4K2T',
           merchantName: 'Purrify'
         },
         transactionInfo: {
           totalPriceStatus: 'FINAL',
-          totalPrice: amount.toFixed(2),
-          currencyCode: currency
+          totalPrice: amount.toString(),
+          currencyCode: currency,
+          countryCode: 'CA'
         }
       };
 
       const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
-      
-      // Process payment with your backend
       const result = await processPayment(paymentData, 'google-pay');
       onPaymentSuccess?.(result);
     } catch (error) {
       console.error('Google Pay error:', error);
-      onPaymentError?.(error);
+      onPaymentError?.({
+        success: false,
+        message: error instanceof Error ? error.message : 'Google Pay processing failed'
+      });
     } finally {
       setIsProcessing(false);
       setSelectedMethod(null);
     }
   };
 
-  const processPayment = async (paymentData: any, method: string) => {
+  const processPayment = async (paymentData: ApplePayPayment | unknown, method: string): Promise<PaymentResult> => {
     // Simulate payment processing
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.1) { // 90% success rate for demo
-          resolve({
-            success: true,
-            transactionId: `txn_${Date.now()}`,
-            method,
-            amount,
-            currency
-          });
+          resolve({ success: true, transactionId: `test_${Date.now()}`, method, amount, currency } as PaymentResult);
         } else {
           reject(new Error('Payment processing failed'));
         }
@@ -301,11 +391,17 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 };
 
 // Express Checkout Button Component
-export const ExpressCheckoutButtons: React.FC<{
+interface ExpressCheckoutButtonsProps {
   amount: number;
-  onPaymentSuccess?: (data: any) => void;
+  onPaymentSuccess?: (data: PaymentResult) => void;
   className?: string;
-}> = ({ amount, onPaymentSuccess, className = '' }) => {
+}
+
+const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
+  amount,
+  onPaymentSuccess,
+  className = '',
+}) => {
   const [showApplePay, setShowApplePay] = useState(false);
   const [showGooglePay, setShowGooglePay] = useState(false);
 
@@ -316,14 +412,29 @@ export const ExpressCheckoutButtons: React.FC<{
 
   const checkApplePayAvailability = (): boolean => {
     if (typeof window === 'undefined') return false;
-    return !!(window as any).ApplePaySession && 
-           (window as any).ApplePaySession.canMakePayments();
+    const applePayWindow = window as unknown as { 
+      ApplePaySession?: {
+        canMakePayments: () => boolean;
+        supportsVersion: (version: number) => boolean;
+        STATUS_SUCCESS: number;
+        STATUS_FAILURE: number;
+        new (version: number, paymentRequest: ApplePayPaymentRequest): unknown;
+      } 
+    };
+    return !!(applePayWindow.ApplePaySession && 
+             applePayWindow.ApplePaySession.canMakePayments());
   };
 
   const checkGooglePayAvailability = (): boolean => {
     if (typeof window === 'undefined') return false;
-    return !!(window as any).google && 
-           !!(window as any).google.payments;
+    const googleWindow = window as unknown as { 
+      google?: { 
+        payments?: { 
+          api?: unknown 
+        } 
+      } 
+    };
+    return !!(googleWindow.google?.payments?.api);
   };
 
   if (!showApplePay && !showGooglePay) return null;
@@ -360,5 +471,8 @@ export const ExpressCheckoutButtons: React.FC<{
     </div>
   );
 };
+
+// Export ExpressCheckoutButtons as a named export
+export { ExpressCheckoutButtons };
 
 export default MobilePayment;

@@ -12,8 +12,12 @@ const meta= {
 };
 export default meta;
 
+import { ComponentProps } from 'react';
+
+type ResizablePanelGroupProps = ComponentProps<typeof ResizablePanelGroup>;
+
 export const Base = {
-  render: (args: any) => (
+  render: (args: ResizablePanelGroupProps) => (
     <ResizablePanelGroup
       {...args}
       direction="horizontal"

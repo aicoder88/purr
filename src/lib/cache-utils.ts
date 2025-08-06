@@ -82,7 +82,7 @@ export const CACHE_STRATEGIES = {
 } as const;
 
 // Advanced cache class with multiple strategies
-export class AdvancedCache<T = any> {
+export class AdvancedCache<T = unknown> {
   private cache = new Map<string, CacheItem<T>>();
   private accessOrder: string[] = [];
   private config: CacheConfig;
@@ -293,7 +293,7 @@ export class CacheManager {
 
   getProduct(id: string): Product | null {
     const cache = this.getCache('products');
-    return cache ? cache.get(`product_${id}`) : null;
+    return cache ? cache.get(`product_${id}`) as Product | null : null;
   }
 
   cacheTestimonials(testimonials: Testimonial[]): boolean {
@@ -303,7 +303,7 @@ export class CacheManager {
 
   getTestimonials(): Testimonial[] | null {
     const cache = this.getCache('testimonials');
-    return cache ? cache.get('all_testimonials') : null;
+    return cache ? cache.get('all_testimonials') as Testimonial[] | null : null;
   }
 
   cacheApiResponse<T>(endpoint: string, data: T): boolean {
@@ -313,12 +313,12 @@ export class CacheManager {
 
   getApiResponse<T>(endpoint: string): T | null {
     const cache = this.getCache('api');
-    return cache ? cache.get(`api_${endpoint}`) : null;
+    return cache ? cache.get(`api_${endpoint}`) as T | null : null;
   }
 
   // Get overall statistics
   getAllStats() {
-    const stats: Record<string, any> = {};
+    const stats: Record<string, unknown> = {};
     
     for (const [type, cache] of this.caches.entries()) {
       stats[type] = cache.getStats();

@@ -1,4 +1,4 @@
-// [build] library: 'shadcn'
+import { ComponentProps } from 'react';
 import {
   Sheet,
   SheetContent,
@@ -7,6 +7,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../components/ui/sheet";
+
+type SheetProps = ComponentProps<typeof Sheet> & {
+  side?: 'top' | 'right' | 'bottom' | 'left';
+};
 
 const meta = {
   title: "ui/Sheet",
@@ -17,7 +21,7 @@ const meta = {
 export default meta;
 
 export const Default = {
-  render: (args: any) => {
+  render: (args: SheetProps) => {
     return (
       <Sheet>
         <SheetTrigger>Open Right</SheetTrigger>
@@ -39,7 +43,7 @@ export const Default = {
 };
 
 export const Left = {
-  render: (args: any) => {
+  render: (args: SheetProps) => {
     return (
       <Sheet>
         <SheetTrigger>Open Left</SheetTrigger>
@@ -61,7 +65,7 @@ export const Left = {
 };
 
 export const Top = {
-  render: (args: any) => {
+  render: (args: SheetProps) => {
     return (
       <Sheet>
         <SheetTrigger>Open Top</SheetTrigger>
@@ -83,7 +87,7 @@ export const Top = {
 };
 
 export const Bottom = {
-  render: (args: any) => {
+  render: (args: SheetProps) => {
     return (
       <Sheet>
         <SheetTrigger>Open Bottom</SheetTrigger>

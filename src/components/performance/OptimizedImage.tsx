@@ -166,17 +166,18 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     ...props
   };
 
-  // Add width/height or fill prop
-  if (fill) {
-    (imageProps as any).fill = true;
-  } else if (width && height) {
-    (imageProps as any).width = width;
-    (imageProps as any).height = height;
-  }
+  // Add width/height or fill prop with proper typing
+  const imagePropsWithDimensions = {
+    ...imageProps,
+    ...(fill ? { fill: true } : width && height ? { width, height } : {})
+  };
 
   return (
     <div className="relative">
-      <Image {...imageProps} />
+      <Image 
+        {...imagePropsWithDimensions}
+        alt={alt || ''} // Ensure alt prop is always provided
+      />
       
       {/* Loading indicator */}
       {!isLoaded && !hasError && (
@@ -274,9 +275,9 @@ export const imageOptimizationUtils = {
   // Check if browser supports modern image formats
   checkImageFormatSupport: (): Promise<{ webp: boolean; avif: boolean }> => {
     return new Promise((resolve) => {
-      const webp = new (window as any).Image();
-      const avif = new (window as any).Image();
-      let results = { webp: false, avif: false };
+      const webp = new (window as Window & { Image: new () => HTMLImageElement }).Image();
+      const avif = new (window as Window & { Image: new () => HTMLImageElement }).Image();
+      const results = { webp: false, avif: false };
       let completed = 0;
 
       const checkComplete = () => {

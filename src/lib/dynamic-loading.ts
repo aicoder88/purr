@@ -12,7 +12,7 @@
  */
 export function loadScriptOnInteraction(
   selector: string,
-  scriptLoader: () => Promise<any>,
+  scriptLoader: () => Promise<unknown>,
   eventType: string = 'click',
   options: AddEventListenerOptions = { once: true }
 ): void {
@@ -58,7 +58,7 @@ export function loadScriptOnInteraction(
  */
 export function loadScriptOnVisible(
   selector: string,
-  scriptLoader: () => Promise<any>,
+  scriptLoader: () => Promise<unknown>,
   options: IntersectionObserverInit = { 
     rootMargin: '200px', 
     threshold: 0.1 

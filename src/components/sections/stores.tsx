@@ -230,7 +230,10 @@ export function Stores() {
                       }
                     >
                       {logoConfig ? (
-                        <Image {...logoConfig} />
+                        <Image 
+                          {...logoConfig} 
+                          alt={logoConfig.alt || store.name || 'Store logo'} 
+                        />
                       ) : (
                         <svg 
                           className="w-6 h-6 text-white" 

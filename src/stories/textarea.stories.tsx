@@ -1,7 +1,9 @@
-// [build] library: 'shadcn'
+import { ComponentProps } from 'react';
 import { Button } from "../components/ui/button";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
+
+type TextareaProps = ComponentProps<typeof Textarea>;
 
 const meta = {
   title: "ui/Textarea",
@@ -12,14 +14,14 @@ const meta = {
 export default meta;
 
 export const Default = {
-  render: (args: any) => <Textarea {...args} />,
+  render: (args: TextareaProps) => <Textarea {...args} />,
   args: {
     placeholder: "Type your message here.",
   },
 };
 
 export const Disabled = {
-  render: (args: any) => <Textarea {...args} />,
+  render: (args: TextareaProps) => <Textarea {...args} />,
   args: {
     ...Default.args,
     disabled: true,
@@ -27,7 +29,7 @@ export const Disabled = {
 };
 
 export const WithLabel = {
-  render: (args: any) => (
+  render: (args: TextareaProps) => (
     <div className="grid w-full gap-1.5">
       <Label htmlFor="message">Your message</Label>
       <Textarea {...args} id="message" />
@@ -37,7 +39,7 @@ export const WithLabel = {
 };
 
 export const WithText = {
-  render: (args: any) => (
+  render: (args: TextareaProps) => (
     <div className="grid w-full gap-1.5">
       <Label htmlFor="message-2">Your Message</Label>
       <Textarea {...args} id="message-2" />
@@ -50,7 +52,7 @@ export const WithText = {
 };
 
 export const WithButton = {
-  render: (args: any) => (
+  render: (args: TextareaProps) => (
     <div className="grid w-full gap-2">
       <Textarea {...args} />
       <Button>Send message</Button>

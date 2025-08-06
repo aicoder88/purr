@@ -11,7 +11,7 @@ import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, Map
 import { PRODUCTS } from '../src/lib/constants';
 import dynamic from "next/dynamic";
 import { FastCheckout } from '../src/components/mobile/FastCheckout';
-import { ExpressCheckoutButtons } from '../src/components/mobile/MobilePayment';
+import ExpressCheckoutButtons from '../src/components/mobile/MobilePayment';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 
 // Dynamically import NextImage to reduce initial bundle size

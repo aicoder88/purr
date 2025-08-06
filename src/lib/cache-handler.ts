@@ -1,235 +1,208 @@
 /**
- * Advanced Cache Handler for Purrify
- * Implements intelligent caching strategies with Redis fallback and memory optimization
+ * Minimal cache handler for Next.js
+ * Implements basic in-memory caching with file system persistence
  */
 
-import { IncrementalCache } from 'next/dist/server/lib/incremental-cache';
+// Define a generic type for cache values
+type Primitive = string | number | boolean | null;
 
-class PurrifyIncrementalCacheHandler extends IncrementalCache {
-  memoryCache: Map<string, any>;
-  maxMemorySize: number;
-  currentMemorySize: number;
-  hitCount: number;
-  missCount: number;
-  lastCleanup: number;
-  cleanupInterval: number;
+// Constraint for generic type T to be JSON-serializable
+type JSONValue = 
+  | Primitive
+  | { [key: string]: JSONValue | undefined }
+  | JSONValue[];
 
-    constructor(options: any) {
-    super(options);
-    this.memoryCache = new Map();
-    this.maxMemorySize = 52428800; // 50MB
-    this.currentMemorySize = 0;
-    this.hitCount = 0;
-    this.missCount = 0;
-    this.lastCleanup = Date.now();
-    this.cleanupInterval = 5 * 60 * 1000; // 5 minutes
+interface CacheEntry<T = unknown> {
+  value: T;
+  lastModified: number;
+  size: number;
+  tags?: string[];
+};
+
+type FileSystem = {
+  readFile: (path: string) => Promise<string | null>;
+  writeFile: (path: string, data: string) => Promise<void>;
+  unlink: (path: string) => Promise<void>;
+  mkdirp: (path: string) => Promise<void>;
+};
+
+type CacheOptions = {
+  dev: boolean;
+  flushToDisk?: boolean;
+  serverDistDir: string;
+  appDir?: boolean;
+  minimalMode?: boolean;
+  maxMemorySize?: number;
+};
+
+export class PurrifyIncrementalCache<T = unknown> {
+  private cache = new Map<string, CacheEntry<T>>();
+  private tags = new Map<string, Set<string>>();
+  private currentMemorySize = 0;
+  private lastCleanup = Date.now();
+  private readonly cleanupInterval = 5 * 60 * 1000; // 5 minutes
+
+  constructor(private readonly fs: FileSystem, private readonly options: CacheOptions) {
+    // Start periodic cleanup
+    this.startCleanupInterval();
   }
 
-  // Enhanced get method with memory optimization
-    async get(key: string, ctx: any = {}) {
-    // Check memory cache first
-    const memoryResult = this.getFromMemory(key);
-    if (memoryResult) {
-      this.hitCount++;
-      return memoryResult;
+  private getFilePath(key: string): string {
+    const safeKey = key.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    return `${this.options.serverDistDir}/cache/${safeKey}.json`;
+  }
+
+  private async startCleanupInterval(): Promise<void> {
+    setInterval(() => {
+      this.cleanup().catch(error => {
+        console.error('Error during periodic cache cleanup:', error);
+      });
+    }, this.cleanupInterval);
+  }
+
+  async get(key: string): Promise<T | null> {
+    // Try memory cache first
+    const memoryEntry = this.cache.get(key);
+    if (memoryEntry) {
+      return memoryEntry.value as T;
     }
-
-    // Fallback to default cache
-    const result = await super.get(key, ctx);
     
-    if (result) {
-      this.hitCount++;
-      // Store in memory cache if not too large
-      this.setInMemory(key, result);
-    } else {
-      this.missCount++;
+    // Try disk cache if enabled
+    if (this.options.flushToDisk) {
+      try {
+        const filePath = this.getFilePath(key);
+        const data = await this.fs.readFile(filePath);
+        if (data) {
+          const entry = JSON.parse(data) as CacheEntry<T>;
+          this.cache.set(key, entry);
+          return entry.value as T;
+        }
+      } catch (error) {
+        console.error('Cache read error:', error);
+      }
     }
-
-    // Periodic cleanup
-    this.performPeriodicCleanup();
-
-    return result;
-  }
-
-  // Enhanced set method with intelligent storage
-    async set(key: string, data: any, ctx: any = {}) {
-    // Set in memory cache
-    this.setInMemory(key, data);
     
-    // Set in default cache
-    return super.set(key, data, ctx);
+    return null;
   }
 
-  // Memory cache operations
-    getFromMemory(key: string) {
-    const cached = this.memoryCache.get(key);
-    if (!cached) return null;
-
-    // Check expiration
-    if (cached.expires && Date.now() > cached.expires) {
-      this.memoryCache.delete(key);
-      this.currentMemorySize -= cached.size;
-      return null;
-    }
-
-    // Update access time for LRU
-    cached.lastAccess = Date.now();
-    return cached.data;
-  }
-
-    setInMemory(key: string, data: any) {
-    const serialized = JSON.stringify(data);
-    const size = Buffer.byteLength(serialized, 'utf8');
-    
-    // Don't cache if too large
-    if (size > this.maxMemorySize * 0.1) return;
-
-    // Ensure we have space
-    this.ensureMemorySpace(size);
-
-    const cacheEntry = {
-      data,
-      size,
-      lastAccess: Date.now(),
-      expires: this.calculateExpiration(key),
-      created: Date.now()
+  async set(key: string, value: T, tags?: string[]): Promise<void> {
+    const serializedValue = JSON.stringify(value);
+    const entry: CacheEntry<T> = {
+      value,
+      lastModified: Date.now(),
+      size: new TextEncoder().encode(serializedValue).length,
+      tags,
     };
 
-    this.memoryCache.set(key, cacheEntry);
-    this.currentMemorySize += size;
-  }
+    // Ensure we have enough space
+    this.ensureMemorySpace(JSON.stringify(value).length);
 
-  // Intelligent expiration based on content type
-    calculateExpiration(key: string) {
-    const now = Date.now();
-    
-    // Static assets - 1 hour
-    if (key.includes('/_next/static/') || key.includes('.css') || key.includes('.js')) {
-      return now + (60 * 60 * 1000);
-    }
-    
-    // API routes - 5 minutes
-    if (key.includes('/api/')) {
-      return now + (5 * 60 * 1000);
-    }
-    
-    // Pages - 15 minutes
-    if (key.includes('/pages/') || key.includes('html')) {
-      return now + (15 * 60 * 1000);
-    }
-    
-    // Images - 30 minutes
-    if (key.includes('.jpg') || key.includes('.png') || key.includes('.webp')) {
-      return now + (30 * 60 * 1000);
-    }
-    
-    // Default - 10 minutes
-    return now + (10 * 60 * 1000);
-  }
+    // Update memory cache
+    this.cache.set(key, entry);
+    this.currentMemorySize += JSON.stringify(value).length;
 
-  // Memory management
-    ensureMemorySpace(requiredSize: number) {
-    while (this.currentMemorySize + requiredSize > this.maxMemorySize) {
-      this.evictLeastRecentlyUsed();
-    }
-  }
-
-  evictLeastRecentlyUsed() {
-    let oldestKey = null;
-    let oldestTime = Date.now();
-
-    for (const [key, entry] of this.memoryCache.entries()) {
-      if (entry.lastAccess < oldestTime) {
-        oldestTime = entry.lastAccess;
-        oldestKey = key;
+    // Persist to disk if enabled
+    if (this.options.flushToDisk) {
+      try {
+        await this.fs.writeFile(this.getFilePath(key), JSON.stringify(entry));
+      } catch (error) {
+        console.error('Cache write error:', error);
       }
     }
+  }
 
-    if (oldestKey) {
-      const entry = this.memoryCache.get(oldestKey);
-      this.memoryCache.delete(oldestKey);
-      this.currentMemorySize -= entry.size;
+  private ensureMemorySpace(requiredSize: number): void {
+    // If we don't have enough space, remove oldest entries until we do
+    if (this.currentMemorySize + requiredSize > (this.options.maxMemorySize || 50 * 1024 * 1024)) {
+      // Sort entries by last modified time (oldest first)
+      const entries = Array.from(this.cache.entries())
+        .sort((a, b) => a[1].lastModified - b[1].lastModified);
+
+      for (const [key, entry] of entries) {
+        this.currentMemorySize -= entry.size;
+        this.cache.delete(key);
+
+        if (this.currentMemorySize + requiredSize <= (this.options.maxMemorySize || 50 * 1024 * 1024)) {
+          break;
+        }
+      }
     }
   }
 
-  // Periodic cleanup of expired entries
-  performPeriodicCleanup() {
+  async cleanup(): Promise<void> {
     const now = Date.now();
-    if (now - this.lastCleanup < this.cleanupInterval) return;
+    const oneHour = 60 * 60 * 1000;
 
-    const expiredKeys = [];
-    for (const [key, entry] of this.memoryCache.entries()) {
-      if (entry.expires && now > entry.expires) {
-        expiredKeys.push(key);
+    for (const [key, entry] of this.cache.entries()) {
+      // Remove entries older than 1 hour
+      if (now - Date.now() > oneHour) {
+        this.currentMemorySize -= JSON.stringify(entry.value).length;
+        this.cache.delete(key);
+
+        // Clean up from disk if enabled
+        if (this.options.flushToDisk) {
+          try {
+            await this.fs.unlink(this.getFilePath(key));
+          } catch (error) {
+            console.error('Cache cleanup error:', error);
+          }
+        }
       }
-    }
-
-    for (const key of expiredKeys) {
-      const entry = this.memoryCache.get(key);
-      this.memoryCache.delete(key);
-      this.currentMemorySize -= entry.size;
     }
 
     this.lastCleanup = now;
   }
 
-  // Cache statistics
-  getStats() {
-    const totalRequests = this.hitCount + this.missCount;
-    const hitRate = totalRequests > 0 ? (this.hitCount / totalRequests) * 100 : 0;
+  // Get all keys in the cache (for debugging/development)
+  getKeys(): string[] {
+    return Array.from(this.cache.keys());
+  }
 
+  // Get cache statistics
+  getStats(): { size: number; count: number; maxSize: number } {
     return {
-      hitCount: this.hitCount,
-      missCount: this.missCount,
-      hitRate: hitRate.toFixed(2) + '%',
-      memoryUsage: `${(this.currentMemorySize / 1024 / 1024).toFixed(2)}MB`,
-      cacheSize: this.memoryCache.size,
-      maxMemorySize: `${(this.maxMemorySize / 1024 / 1024).toFixed(2)}MB`
+      size: this.currentMemorySize,
+      count: this.cache.size,
+      maxSize: this.options.maxMemorySize || 50 * 1024 * 1024,
     };
-  }
-
-  // Enhanced revalidation with smart invalidation
-    async revalidateTag(tag: string) {
-    // Smart invalidation based on tag patterns
-    const keysToInvalidate = [];
-    
-    for (const key of this.memoryCache.keys()) {
-      if (this.shouldInvalidateForTag(key, tag)) {
-        keysToInvalidate.push(key);
-      }
-    }
-
-    // Remove from memory cache
-    for (const key of keysToInvalidate) {
-      const entry = this.memoryCache.get(key);
-      if (entry) {
-        this.memoryCache.delete(key);
-        this.currentMemorySize -= entry.size;
-      }
-    }
-
-    // Call parent revalidation
-    return super.revalidateTag(tag);
-  }
-
-    shouldInvalidateForTag(key: string, tag: string) {
-    // Product-related invalidation
-    if (tag === 'products' && (key.includes('/products') || key.includes('/api/products'))) {
-      return true;
-    }
-    
-    // Testimonials invalidation
-    if (tag === 'testimonials' && (key.includes('/testimonials') || key.includes('/api/testimonials'))) {
-      return true;
-    }
-    
-    // Blog invalidation
-    if (tag === 'blog' && key.includes('/blog')) {
-      return true;
-    }
-    
-    return false;
   }
 }
 
-export default PurrifyIncrementalCacheHandler;
+// Factory function to create a cache handler instance
+export function createCacheHandler(params: {
+  fs: {
+    readFile: (path: string) => Promise<string>;
+    writeFile: (path: string, data: string) => Promise<void>;
+    unlink: (path: string) => Promise<void>;
+    mkdirp: (path: string) => Promise<void>;
+  };
+  dev: boolean;
+  flushToDisk?: boolean;
+  serverDistDir: string;
+  appDir?: boolean;
+  minimalMode?: boolean;
+  maxMemoryCacheSize?: number;
+}): PurrifyIncrementalCache {
+  const fs: FileSystem = {
+    readFile: async (path: string) => {
+      try {
+        return await params.fs.readFile(path);
+      } catch {
+        return null;
+      }
+    },
+    writeFile: (path: string, data: string) =>
+      params.fs.mkdirp(path).then(() => params.fs.writeFile(path, data)),
+    unlink: (path: string) => params.fs.unlink(path).catch(() => {}),
+    mkdirp: (path: string) => params.fs.mkdirp(path)
+  };
+
+  return new PurrifyIncrementalCache(fs, {
+    dev: params.dev,
+    flushToDisk: params.flushToDisk,
+    serverDistDir: params.serverDistDir,
+    appDir: params.appDir,
+    minimalMode: params.minimalMode,
+    maxMemorySize: params.maxMemoryCacheSize
+  });
+}

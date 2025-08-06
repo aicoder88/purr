@@ -21,7 +21,7 @@ import {
 import { PurchaseNotifications } from '../../src/components/social-proof/PurchaseNotifications';
 import { TrustBadges } from '../../src/components/social-proof/TrustBadges';
 import { TouchGallery } from '../../src/components/mobile/TouchGallery';
-import { MobilePayment, ExpressCheckoutButtons } from '../../src/components/mobile/MobilePayment';
+import MobilePayment, { ExpressCheckoutButtons } from '../../src/components/mobile/MobilePayment';
 import { FastCheckout } from '../../src/components/mobile/FastCheckout';
 
 const Stage5DemoPage: NextPage = () => {

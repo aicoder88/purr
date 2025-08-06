@@ -80,7 +80,7 @@ const TermsPage: NextPage = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. 免责声明</h2>
               <p className="text-gray-700 mb-4">
-                我们的产品按"现状"提供。我们不对产品的特定结果或效果做出保证。使用我们的产品需自担风险。
+                我们的产品按&quot;现状&quot;提供。我们不对产品的特定结果或效果做出保证。使用我们的产品需自担风险。
               </p>
             </section>
 

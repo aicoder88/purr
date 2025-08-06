@@ -2,30 +2,31 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { FaPaw } from "react-icons/fa";
 
 // Throttle function to limit how often a function can be called
-const throttle = <T extends (...args: any[]) => void>(
+const throttle = <T extends (event: MouseEvent) => void>(
   func: T,
   limit: number
-) => {
-  let inThrottle: boolean;
-  let lastFunc: ReturnType<typeof setTimeout>;
-  let lastRan: number;
+): ((event: MouseEvent) => void) => {
+  let inThrottle = false;
+  let lastFunc: ReturnType<typeof setTimeout> | null = null;
+  let lastRan = 0;
 
-  return function (this: unknown, ...args: Parameters<T>) {
+  return function (this: Window, event: MouseEvent) {
     if (!inThrottle) {
-      func.apply(this, args);
+      func.call(this, event);
       lastRan = Date.now();
       inThrottle = true;
 
       setTimeout(() => {
         inThrottle = false;
       }, limit);
-    } else {
-      clearTimeout(lastFunc);
+    } else if (lastFunc === null) {
+      // Only set a new timeout if we don't have one pending
       lastFunc = setTimeout(() => {
         if (Date.now() - lastRan >= limit) {
-          func.apply(this, args);
+          func.call(this, event);
           lastRan = Date.now();
         }
+        lastFunc = null;
       }, limit - (Date.now() - lastRan));
     }
   };
@@ -60,7 +61,16 @@ export function PawCursor() {
       
       // Use passive event listener for better performance
       const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const resizeObserver = new ResizeObserver(throttle(checkCapabilities, 250));
+      
+      // Create a throttled version of checkCapabilities that matches ResizeObserverCallback
+      const throttledCheckCapabilities = throttle(() => {
+        checkCapabilities();
+      }, 250);
+      
+      // Create ResizeObserver with properly typed callback
+      const resizeObserver = new ResizeObserver(() => {
+        throttledCheckCapabilities(new MouseEvent('resize'));
+      });
       
       // Modern event listener for mediaQueryList if available
       if (mediaQueryList.addEventListener) {
@@ -83,16 +93,14 @@ export function PawCursor() {
   }, []);
 
   const handleMouseMove = useCallback(
-    (event: MouseEvent) => {
+    (e: MouseEvent) => {
       if (!isPawAnimationEnabled || isReducedMotion) return;
-
+      
       try {
-        if (!event || typeof event.clientX !== 'number' || typeof event.clientY !== 'number') return;
-
-        const { clientX: x, clientY: y } = event;
-        const rotation = Math.floor(Math.random() * 360);
+        const { clientX: x, clientY: y } = e;
         const offsetX = Math.random() * 20 - 10;
         const offsetY = Math.random() * 20 - 10;
+        const rotation = Math.random() * 30 - 15;
 
         setPaws((prev) => {
           const newPaws = [

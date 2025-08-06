@@ -16,7 +16,7 @@ interface CacheOptimizerProps {
 }
 
 interface CacheEntry {
-  data: any;
+  data: unknown;
   timestamp: number;
   expires: number;
   size: number;
@@ -144,7 +144,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
     };
     
     return {
-      get: (key: string): any => {
+      get: (key: string): unknown => {
         try {
           const cached = localStorage.getItem(`${CACHE_KEY}_${key}`);
           if (!cached) {
@@ -173,7 +173,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         }
       },
       
-      set: (key: string, data: any, ttl: number = 300000): boolean => {
+      set: (key: string, data: unknown, ttl: number = 300000): boolean => {
         try {
           const serialized = JSON.stringify(data);
           const size = new Blob([serialized]).size;

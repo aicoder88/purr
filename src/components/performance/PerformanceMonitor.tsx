@@ -24,7 +24,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
   useEffect(() => {
     if (!enabled || Math.random() > sampleRate) return;
 
-    let metrics: PerformanceMetrics = {};
+    const metrics: PerformanceMetrics = {};
     let reportTimeout: NodeJS.Timeout;
 
     // Core Web Vitals monitoring
@@ -34,7 +34,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
         try {
           const lcpObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
-            const lastEntry = entries[entries.length - 1] as any;
+            const lastEntry = entries[entries.length - 1] as PerformanceEntry & { startTime: number };
             metrics.lcp = lastEntry.startTime;
             
             gtmEvent('web_vitals', {
@@ -50,7 +50,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
           // First Contentful Paint (FCP)
           const fcpObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
-            const lastEntry = entries[entries.length - 1] as any;
+            const lastEntry = entries[entries.length - 1] as PerformanceEntry & { startTime: number };
             metrics.fcp = lastEntry.startTime;
             
             gtmEvent('web_vitals', {
@@ -66,7 +66,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
           // Cumulative Layout Shift (CLS)
           const clsObserver = new PerformanceObserver((list) => {
             let clsValue = 0;
-            for (const entry of list.getEntries() as any[]) {
+            for (const entry of list.getEntries() as (PerformanceEntry & { value: number; hadRecentInput: boolean })[]) {
               if (!entry.hadRecentInput) {
                 clsValue += entry.value;
               }
@@ -89,7 +89,7 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
           // First Input Delay (FID)
           const fidObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
-            const lastEntry = entries[entries.length - 1] as any;
+            const lastEntry = entries[entries.length - 1] as PerformanceEntry & { processingStart: number; startTime: number };
             metrics.fid = lastEntry.processingStart - lastEntry.startTime;
             
             gtmEvent('web_vitals', {
@@ -177,27 +177,28 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
     // Memory Usage (if available)
     const observeMemoryUsage = () => {
       if ('memory' in performance) {
-        const memory = (performance as any).memory;
+        const memory = (performance as Performance & { memory?: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } }).memory;
         
-        gtmEvent('memory_usage', {
-          used_heap: Math.round(memory.usedJSHeapSize / 1024 / 1024), // MB
-          total_heap: Math.round(memory.totalJSHeapSize / 1024 / 1024), // MB
-          heap_limit: Math.round(memory.jsHeapSizeLimit / 1024 / 1024), // MB
-          page_path: window.location.pathname
-        });
+        if (memory) {
+          gtmEvent('memory_usage', {
+            used_heap: Math.round(memory.usedJSHeapSize / 1024 / 1024), // MB
+            total_heap: Math.round(memory.totalJSHeapSize / 1024 / 1024), // MB
+            heap_limit: Math.round(memory.jsHeapSizeLimit / 1024 / 1024), // MB
+            page_path: window.location.pathname
+          });
+        }
       }
     };
 
     // Connection Quality
     const observeConnectionQuality = () => {
       if ('connection' in navigator) {
-        const connection = (navigator as any).connection;
+        const connection = (navigator as Navigator & { connection?: { effectiveType?: string; rtt?: number; saveData?: boolean } }).connection;
         
         gtmEvent('connection_quality', {
-          effective_type: connection.effectiveType,
-          downlink: connection.downlink,
-          rtt: connection.rtt,
-          save_data: connection.saveData,
+          effective_type: connection?.effectiveType || 'unknown',
+          rtt: connection?.rtt,
+          save_data: connection?.saveData,
           page_path: window.location.pathname
         });
       }
@@ -208,31 +209,28 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       let score = 100;
       
       // CPU cores
-      const cores = navigator.hardwareConcurrency || 1;
+      const cores = (navigator as Navigator & { hardwareConcurrency?: number }).hardwareConcurrency || 4;
       if (cores < 4) score -= 20;
       else if (cores >= 8) score += 10;
       
       // Memory (if available)
       if ('deviceMemory' in navigator) {
-        const memory = (navigator as any).deviceMemory;
-        if (memory < 4) score -= 30;
-        else if (memory >= 8) score += 10;
+        const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+        if (memory && memory < 4) score -= 30;
+        else if (memory && memory >= 8) score += 10;
       }
       
-      // Connection
-      if ('connection' in navigator) {
-        const connection = (navigator as any).connection;
-        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+      const connection = (navigator as Navigator & { connection?: { effectiveType?: string } }).connection || (navigator as Navigator & { mozConnection?: { effectiveType?: string } }).mozConnection || (navigator as Navigator & { webkitConnection?: { effectiveType?: string } }).webkitConnection;
+        if (connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g') {
           score -= 40;
-        } else if (connection.effectiveType === '4g') {
+        } else if (connection?.effectiveType === '4g') {
           score += 10;
         }
-      }
       
       gtmEvent('device_performance', {
         device_score: Math.max(0, Math.min(100, score)),
         cpu_cores: cores,
-        device_memory: (navigator as any).deviceMemory || 'unknown',
+        device_memory: (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 'unknown',
         page_path: window.location.pathname
       });
     };

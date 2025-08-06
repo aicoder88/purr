@@ -160,11 +160,11 @@ const FreePage: NextPage = () => {
                   <h3 className="text-xl font-bold text-indigo-800 mb-4">我们的测试用户怎么说：</h3>
                   <div className="space-y-4">
                     <div className="bg-white p-3 rounded-md shadow-sm">
-                      <p className="italic">"我简直不敢相信。几个小时内，我的整个房子又恢复了清新。我甚至几个月来第一次邀请了婆婆过来！"</p>
+                      <p className="italic">&quot;我简直不敢相信。几个小时内，我的整个房子又恢复了清新。我甚至几个月来第一次邀请了婆婆过来！&quot;</p>
                       <p className="text-right font-medium text-indigo-600">- 张女士，多伦多</p>
                     </div>
                     <div className="bg-white p-3 rounded-md shadow-sm">
-                      <p className="italic">"我丈夫以为我把猫砂全部扔掉了。异味就这样...消失了。"</p>
+                      <p className="italic">&quot;我丈夫以为我把猫砂全部扔掉了。异味就这样...消失了。&quot;</p>
                       <p className="text-right font-medium text-indigo-600">- 李女士，温哥华</p>
                     </div>
                   </div>

@@ -3,8 +3,8 @@
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: Record<string, unknown>[];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -14,7 +14,7 @@ if (typeof window !== 'undefined' && !window.dataLayer) {
 }
 
 // Helper function to push events to dataLayer
-export const gtmEvent = (eventName: string, parameters: Record<string, any> = {}) => {
+export const gtmEvent = (eventName: string, parameters: Record<string, unknown> = {}) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push({
       event: eventName,
@@ -92,7 +92,7 @@ export const ecommerceEvents = {
   },
 
   // Begin Checkout
-  beginCheckout: (items: any[], value: number, currency = 'CAD') => {
+  beginCheckout: (items: Record<string, unknown>[], value: number, currency = 'CAD') => {
     gtmEvent('begin_checkout', {
       currency,
       value,
@@ -101,7 +101,7 @@ export const ecommerceEvents = {
   },
 
   // Purchase
-  purchase: (transactionId: string, items: any[], value: number, currency = 'CAD') => {
+  purchase: (transactionId: string, items: Record<string, unknown>[], value: number, currency = 'CAD') => {
     gtmEvent('purchase', {
       transaction_id: transactionId,
       currency,
@@ -111,7 +111,7 @@ export const ecommerceEvents = {
   },
 
   // View Cart
-  viewCart: (items: any[], value: number, currency = 'CAD') => {
+  viewCart: (items: Record<string, unknown>[], value: number, currency = 'CAD') => {
     gtmEvent('view_cart', {
       currency,
       value,
@@ -386,7 +386,7 @@ export const performanceEvents = {
   }
 };
 
-export default {
+const gtmEventsExport = {
   gtmEvent,
   ecommerceEvents,
   engagementEvents,
@@ -397,3 +397,5 @@ export default {
   errorEvents,
   performanceEvents
 };
+
+export default gtmEventsExport;
