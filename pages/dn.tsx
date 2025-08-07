@@ -84,7 +84,7 @@ export default function DriverNetworkPresentation() {
         </nav>
 
         {/* Main Content */}
-        <main className="py-12">
+        <main className="py-12 pb-32">
           <Container>
             {/* Executive Summary - Only shown once */}
             <section className="mb-16">
@@ -1132,18 +1132,52 @@ export default function DriverNetworkPresentation() {
           </Container>
         </main>
 
-        {/* Footer */}
-        <footer className="bg-black text-white py-8 mt-16">
+        {/* Large Navigation Buttons */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
           <Container>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-2">Driver Network Inc.</h3>
-              <p className="text-gray-300 mb-4">Delivering excellence through customizable logistics solutions since 2012</p>
-              <div className="text-[#276EF1] font-semibold">
-                Ready to scale Uber Freight's delivery network with proven logistics expertise
+            <div className="flex justify-between items-center py-6">
+              <button
+                onClick={() => {
+                  const tabs = ['overview', 'performance', 'capabilities', 'expansion', 'proposal'];
+                  const currentIndex = tabs.indexOf(activeTab);
+                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                  setActiveTab(tabs[prevIndex]);
+                }}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#276EF1] to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                <span className="text-2xl mr-3">←</span>
+                Previous
+              </button>
+              
+              <div className="text-center">
+                <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">Section Navigation</div>
+                <div className="flex space-x-2">
+                  {['overview', 'performance', 'capabilities', 'expansion', 'proposal'].map((tab, index) => (
+                    <div
+                      key={tab}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        activeTab === tab ? 'bg-[#276EF1] w-6' : 'bg-gray-300 dark:bg-gray-600'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
+              
+              <button
+                onClick={() => {
+                  const tabs = ['overview', 'performance', 'capabilities', 'expansion', 'proposal'];
+                  const currentIndex = tabs.indexOf(activeTab);
+                  const nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                  setActiveTab(tabs[nextIndex]);
+                }}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-[#276EF1] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                Next
+                <span className="text-2xl ml-3">→</span>
+              </button>
             </div>
           </Container>
-        </footer>
+        </div>
       </div>
     </>
   );

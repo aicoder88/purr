@@ -13,11 +13,11 @@ export default function InvestorRelations() {
     <>
       <NextSeo
         title="Investor Relations - Purrify"
-        description="Investment opportunity in Purrify, Canada's leading activated carbon cat litter additive company. Raising CAD $50K @ $1M pre-money valuation."
+        description="Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising CAD $50K @ $1M pre-money valuation."
         canonical="https://purrify.ca/invest"
         openGraph={{
           title: 'Investor Relations - Purrify',
-          description: 'Investment opportunity in Purrify, Canada\'s leading activated carbon cat litter additive company.',
+          description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company.',
           url: 'https://purrify.ca/invest',
           siteName: 'Purrify',
           images: [
@@ -53,12 +53,12 @@ export default function InvestorRelations() {
                 />
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-                Revolutionary Activated Carbon Product Solves Odor Control for 8.1 Million North American Cat Owners
+              <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
+                Revolutionary Odor Solution for 52 Million North American Cat Owners
               </h1>
               
               <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
-                Building Canada's leading pet care innovation company with molecular-level odor elimination technology
+                Growing pet care innovation company with molecular-level odor elimination technology
               </p>
               
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
@@ -117,7 +117,7 @@ export default function InvestorRelations() {
 
         {/* Content Sections */}
         <Container>
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto pb-32">
             
             {/* Executive Summary */}
             {activeTab === 'overview' && (
@@ -221,7 +221,7 @@ export default function InvestorRelations() {
                     <div>
                       <BarChart
                         data={[
-                          { label: 'Cat Owners (Millions)', value: 8.1, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
+                          { label: 'Cat Owners (Millions)', value: 52, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
                           { label: 'Market Size ($M CAD)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
                           { label: 'Online CAGR (%)', value: 6.2, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                         ]}
@@ -231,7 +231,7 @@ export default function InvestorRelations() {
                       
                       <div className="grid grid-cols-3 gap-3">
                         <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
-                          <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">8.1M</div>
+                          <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">52M</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">Cat Owners</div>
                         </div>
                         <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
@@ -495,31 +495,31 @@ export default function InvestorRelations() {
                         <table className="w-full">
                           <tbody>
                             <tr className="bg-gray-50 dark:bg-gray-700">
-                              <td className="px-4 py-3 font-medium">Wholesale Price</td>
+                              <td className="px-4 py-3 font-medium text-gray-800 dark:text-white">Wholesale Price</td>
                               <td className="px-4 py-3 text-right font-bold text-[#FF3131]">$2.25</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3">Raw Materials</td>
-                              <td className="px-4 py-3 text-right">$0.60</td>
+                              <td className="px-4 py-3 text-gray-700 dark:text-gray-200">Raw Materials</td>
+                              <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-200">$0.60</td>
                             </tr>
                             <tr className="bg-gray-50 dark:bg-gray-700">
-                              <td className="px-4 py-3">Packaging</td>
-                              <td className="px-4 py-3 text-right">$0.14</td>
+                              <td className="px-4 py-3 text-gray-700 dark:text-gray-200">Packaging</td>
+                              <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-200">$0.14</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3">Labor</td>
-                              <td className="px-4 py-3 text-right">$0.12</td>
+                              <td className="px-4 py-3 text-gray-700 dark:text-gray-200">Labor</td>
+                              <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-200">$0.12</td>
                             </tr>
                             <tr className="bg-gray-50 dark:bg-gray-700">
-                              <td className="px-4 py-3">Fixed Costs</td>
-                              <td className="px-4 py-3 text-right">$0.13</td>
+                              <td className="px-4 py-3 text-gray-700 dark:text-gray-200">Fixed Costs</td>
+                              <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-200">$0.13</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3">Marketing & Admin</td>
-                              <td className="px-4 py-3 text-right">$0.20</td>
+                              <td className="px-4 py-3 text-gray-700 dark:text-gray-200">Marketing & Admin</td>
+                              <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-200">$0.20</td>
                             </tr>
                             <tr className="bg-[#FF3131]/10 dark:bg-red-900/20 border-t-2 border-[#FF3131]">
-                              <td className="px-4 py-3 font-bold">GROSS PROFIT</td>
+                              <td className="px-4 py-3 font-bold text-gray-800 dark:text-white">GROSS PROFIT</td>
                               <td className="px-4 py-3 text-right font-bold text-[#FF3131]">$1.06 (47%)</td>
                             </tr>
                           </tbody>
@@ -569,22 +569,22 @@ export default function InvestorRelations() {
                     <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Growth Projections</h3>
                     <div className="grid md:grid-cols-4 gap-6 text-center">
                       <div>
-                        <div className="text-lg font-bold mb-1">2025</div>
+                        <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2025</div>
                         <div className="text-2xl font-bold text-[#FF3131] mb-1">$480K</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
                       </div>
                       <div>
-                        <div className="text-lg font-bold mb-1">2026</div>
+                        <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2026</div>
                         <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$2.4M</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
                       </div>
                       <div>
-                        <div className="text-lg font-bold mb-1">2027</div>
+                        <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2027</div>
                         <div className="text-2xl font-bold text-[#FF3131] mb-1">$8.5M</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
                       </div>
                       <div>
-                        <div className="text-lg font-bold mb-1">2028</div>
+                        <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2028</div>
                         <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$24M</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">Target Exit</div>
                       </div>
@@ -819,6 +819,53 @@ export default function InvestorRelations() {
 
           </div>
         </Container>
+
+        {/* Large Navigation Buttons */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
+          <Container>
+            <div className="flex justify-between items-center py-6">
+              <button
+                onClick={() => {
+                  const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
+                  const currentIndex = tabs.indexOf(activeTab);
+                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                  setActiveTab(tabs[prevIndex]);
+                }}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                <span className="text-2xl mr-3">←</span>
+                Previous
+              </button>
+              
+              <div className="text-center">
+                <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">Slide Navigation</div>
+                <div className="flex space-x-2">
+                  {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
+                    <div
+                      key={tab}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        activeTab === tab ? 'bg-[#FF3131] w-6' : 'bg-gray-300 dark:bg-gray-600'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              <button
+                onClick={() => {
+                  const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
+                  const currentIndex = tabs.indexOf(activeTab);
+                  const nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                  setActiveTab(tabs[nextIndex]);
+                }}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                Next
+                <span className="text-2xl ml-3">→</span>
+              </button>
+            </div>
+          </Container>
+        </div>
       </div>
     </>
   );
