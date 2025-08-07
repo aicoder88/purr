@@ -331,8 +331,7 @@ export const zh = {
     quickLinks: "快速链接",
     openingHours: "营业时间",
     contactUs: "联系我们",
-    allRightsReserved: "版权所有",
-    aiSupport: "AI客服支持"
+    allRightsReserved: "版权所有"
   },
 
   // Free Trial

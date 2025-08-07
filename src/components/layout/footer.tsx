@@ -145,9 +145,6 @@ export function Footer() {
               <li>{locale === 'fr' ? 'Samedi' : 'Saturday'}: {t.contact.hours.saturday}</li>
               <li>{locale === 'fr' ? 'Dimanche' : 'Sunday'}: {t.contact.hours.sunday}</li>
             </ul>
-            <p className="text-sm text-[#333333]/80 dark:text-gray-300">
-              {t.footer.aiSupport}
-            </p>
           </div>
 
           <div className="space-y-4">

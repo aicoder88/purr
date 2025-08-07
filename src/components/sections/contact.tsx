@@ -77,12 +77,6 @@ export function Contact() {
                     <span className="font-medium whitespace-nowrap">{t.contact.hours.sunday}</span>
                   </li>
                 </ul>
-                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#E0EFC7] flex items-center">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                    {t.contactSection.aiSupport}
-                  </p>
-                </div>
               </div>
             </div>
           </div>
