@@ -4,6 +4,7 @@ import { Button } from '../src/components/ui/button';
 import NextImage from '../components/NextImage';
 import { useState } from 'react';
 import Link from 'next/link';
+import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
 
 export default function InvestorRelations() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -30,7 +31,13 @@ export default function InvestorRelations() {
         }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-30 dark:opacity-20">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-[#FF3131]/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#5B2EFF]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
         
         {/* Hero Section */}
         <section className="py-20 lg:py-32">
@@ -47,26 +54,29 @@ export default function InvestorRelations() {
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-                Building Canada's Leading Pet Care Innovation Company
+                Revolutionary Activated Carbon Product Solves Odor Control for 8.1 Million North American Cat Owners
               </h1>
               
               <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
-                Revolutionary activated carbon technology solving odor control for 8.1 million Canadian cat owners
+                Building Canada's leading pet care innovation company with molecular-level odor elimination technology
               </p>
               
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12 border border-[#E0EFC7] dark:border-gray-700">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
                 <div className="grid md:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-[#FF3131] mb-2">CAD $50K</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Current Round</div>
+                  <div className="relative">
+                    <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">CAD $50K</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Current Round</div>
+                    <ProgressRing percentage={75} label="Target Progress" color="#FF3131" size={80} className="mt-4" />
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-[#5B2EFF] mb-2">$1M</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Pre-Money Valuation</div>
+                  <div className="relative">
+                    <div className="text-3xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm">$1M</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Pre-Money Valuation</div>
+                    <ProgressRing percentage={100} label="Validated" color="#5B2EFF" size={80} className="mt-4" />
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-[#FF3131] mb-2">16</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Retail Partners</div>
+                  <div className="relative">
+                    <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">16</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Retail Partners</div>
+                    <ProgressRing percentage={68} label="Reorder Rate" color="#2ed573" size={80} className="mt-4" />
                   </div>
                 </div>
               </div>
@@ -76,29 +86,31 @@ export default function InvestorRelations() {
 
         {/* Navigation Tabs */}
         <Container>
-          <div className="mb-12">
-            <div className="flex flex-wrap justify-center gap-4 border-b border-gray-200 dark:border-gray-700">
-              {[
-                { id: 'overview', label: 'Executive Summary' },
-                { id: 'problem', label: 'Market Opportunity' },
-                { id: 'solution', label: 'Our Solution' },
-                { id: 'traction', label: 'Traction' },
-                { id: 'financials', label: 'Unit Economics' },
-                { id: 'team', label: 'Team' },
-                { id: 'investment', label: 'Investment Terms' }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 font-medium transition-colors duration-300 border-b-2 ${
-                    activeTab === tab.id
-                      ? 'border-[#FF3131] text-[#FF3131] dark:text-[#FF5050]'
-                      : 'border-transparent text-gray-600 dark:text-gray-400 hover:text-[#333333] dark:hover:text-white'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+          <div className="mb-12 relative z-10">
+            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-2">
+              <div className="flex flex-wrap justify-center gap-2">
+                {[
+                  { id: 'overview', label: 'Executive Summary' },
+                  { id: 'problem', label: 'Market Opportunity' },
+                  { id: 'solution', label: 'Our Solution' },
+                  { id: 'traction', label: 'Traction' },
+                  { id: 'financials', label: 'Unit Economics' },
+                  { id: 'team', label: 'Team' },
+                  { id: 'investment', label: 'Investment Terms' }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-6 py-3 font-medium transition-all duration-300 rounded-xl ${
+                      activeTab === tab.id
+                        ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white shadow-lg transform scale-105'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </Container>
@@ -109,134 +121,165 @@ export default function InvestorRelations() {
             
             {/* Executive Summary */}
             {activeTab === 'overview' && (
-              <section className="space-y-12">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Executive Summary</h2>
+              <section className="space-y-12 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
                   
-                  <div className="grid lg:grid-cols-2 gap-8">
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">The Opportunity</h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Opportunity</h3>
+                      <p className="text-gray-600 dark:text-gray-200 mb-6 leading-relaxed">
                         Purrify addresses the #1 pain point of urban cat owners: persistent litter box odor. Our premium activated carbon additive provides molecular-level odor elimination, creating a new product category in the $160M Canadian pet care market.
                       </p>
                       
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Competitive Advantages</h3>
-                      <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Competitive Advantages</h3>
+                      <ul className="space-y-2 text-gray-600 dark:text-gray-200">
                         <li className="flex items-start">
-                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span className="text-[#FF3131] mr-2 font-bold">✓</span>
                           First dedicated carbon additive in Canadian market
                         </li>
                         <li className="flex items-start">
-                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span className="text-[#FF3131] mr-2 font-bold">✓</span>
                           50%+ gross margins with retailer-friendly economics
                         </li>
                         <li className="flex items-start">
-                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span className="text-[#FF3131] mr-2 font-bold">✓</span>
                           Proven traction: 16 Montreal stores, 4 reorders this week
                         </li>
                         <li className="flex items-start">
-                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span className="text-[#FF3131] mr-2 font-bold">✓</span>
                           Superior coconut shell carbon technology
                         </li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Financial Highlights</h3>
-                      <div className="space-y-4">
-                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
-                          <div className="text-2xl font-bold text-[#333333] dark:text-white">47%</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Gross Margin (Medium SKU)</div>
+                      <PieChart
+                        data={[
+                          { label: 'Gross Margin', value: 47, color: '#FF3131' },
+                          { label: 'Cost of Goods', value: 53, color: '#E0EFC7' }
+                        ]}
+                        title="Unit Economics Breakdown"
+                        className="mb-6"
+                      />
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                          <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">$3K+</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-300">Early Revenue</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">Zero Paid Ads</div>
                         </div>
-                        <div className="bg-[#FF3131]/10 dark:bg-gray-700/50 rounded-xl p-4">
-                          <div className="text-2xl font-bold text-[#333333] dark:text-white">$3K+</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Early Revenue (Zero Paid Ads)</div>
-                        </div>
-                        <div className="bg-[#5B2EFF]/10 dark:bg-gray-700/50 rounded-xl p-4">
-                          <div className="text-2xl font-bold text-[#333333] dark:text-white">18 Months</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Projected Path to EBITDA+</div>
+                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                          <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">18M</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-300">To EBITDA+</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">Months</div>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  {/* Growth trajectory visualization */}
+                  <LineChart
+                    data={[
+                      { label: '2024', value: 3000 },
+                      { label: '2025', value: 480000 },
+                      { label: '2026', value: 2400000 },
+                      { label: '2027', value: 8500000 },
+                      { label: '2028', value: 24000000 }
+                    ]}
+                    title="Revenue Growth Projection"
+                  />
                 </div>
               </section>
             )}
 
             {/* Market Opportunity */}
             {activeTab === 'problem' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Market Opportunity</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Opportunity</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">The Problem</h3>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Problem</h3>
                       <div className="space-y-4">
-                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
-                          <h4 className="font-semibold mb-2">Urban Cat Owners' #1 Complaint</h4>
-                          <p className="text-gray-600 dark:text-gray-300">Persistent litter box odor in small apartments with no escape</p>
+                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Urban Cat Owners' #1 Complaint</h4>
+                          <p className="text-gray-600 dark:text-gray-200">Persistent litter box odor in small apartments with no escape</p>
                         </div>
-                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
-                          <h4 className="font-semibold mb-2">Inadequate Solutions</h4>
-                          <p className="text-gray-600 dark:text-gray-300">Existing products only mask odors or require constant maintenance</p>
+                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Inadequate Solutions</h4>
+                          <p className="text-gray-600 dark:text-gray-200">Existing products only mask odors or require constant maintenance</p>
                         </div>
-                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
-                          <h4 className="font-semibold mb-2">Multi-Cat Households</h4>
-                          <p className="text-gray-600 dark:text-gray-300">Problem multiplies with multiple cats, demanding better solutions</p>
+                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Multi-Cat Households</h4>
+                          <p className="text-gray-600 dark:text-gray-200">Problem multiplies with multiple cats, demanding better solutions</p>
                         </div>
                       </div>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Market Size</h3>
-                      <div className="space-y-4">
-                        <div className="text-center">
-                          <div className="text-4xl font-bold text-[#FF3131] mb-2">8.1M</div>
-                          <div className="text-gray-600 dark:text-gray-400">Canadian Cat Owners</div>
+                      <BarChart
+                        data={[
+                          { label: 'Cat Owners (Millions)', value: 8.1, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
+                          { label: 'Market Size ($M CAD)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                          { label: 'Online CAGR (%)', value: 6.2, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
+                        ]}
+                        title="Canadian Market Overview"
+                        className="mb-6"
+                      />
+                      
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                          <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">8.1M</div>
+                          <div className="text-xs text-gray-600 dark:text-gray-300">Cat Owners</div>
                         </div>
-                        <div className="text-center">
-                          <div className="text-4xl font-bold text-[#5B2EFF] mb-2">CAD $160M</div>
-                          <div className="text-gray-600 dark:text-gray-400">Canadian TAM</div>
+                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                          <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">$160M</div>
+                          <div className="text-xs text-gray-600 dark:text-gray-300">TAM</div>
                         </div>
-                        <div className="text-center">
-                          <div className="text-4xl font-bold text-[#FF3131] mb-2">6.2%</div>
-                          <div className="text-gray-600 dark:text-gray-400">Online Channel CAGR</div>
+                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                          <div className="text-2xl font-bold text-[#2ed573] drop-shadow-sm">6.2%</div>
+                          <div className="text-xs text-gray-600 dark:text-gray-300">CAGR</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-6">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Market Drivers</h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span className="font-medium">Pet Humanization</span>
+                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4 drop-shadow-sm">Market Drivers</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                          <span className="text-[#FF3131] text-xl mr-3 font-bold">✓</span>
+                          <div>
+                            <span className="font-medium text-gray-800 dark:text-white">Pet Humanization</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">76% consider cats family members</p>
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">76% consider cats family members</p>
+                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                          <span className="text-[#5B2EFF] text-xl mr-3 font-bold">✓</span>
+                          <div>
+                            <span className="font-medium text-gray-800 dark:text-white">Premium Shift</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Medium-high price segment dominates (35.2%)</p>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span className="font-medium">Premium Shift</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                          <span className="text-[#2ed573] text-xl mr-3 font-bold">✓</span>
+                          <div>
+                            <span className="font-medium text-gray-800 dark:text-white">Sustainability Focus</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Eco-products grow 9.63% faster</p>
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Medium-high price segment dominates (35.2%)</p>
-                      </div>
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span className="font-medium">Sustainability Focus</span>
+                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                          <span className="text-[#FF3131] text-xl mr-3 font-bold">✓</span>
+                          <div>
+                            <span className="font-medium text-gray-800 dark:text-white">Urban Density</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Apartment living drives demand for odor solutions</p>
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Eco-products grow 9.63% faster</p>
-                      </div>
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span className="font-medium">Urban Density</span>
-                        </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Apartment living drives demand for odor solutions</p>
                       </div>
                     </div>
                   </div>
@@ -246,9 +289,9 @@ export default function InvestorRelations() {
 
             {/* Solution */}
             {activeTab === 'solution' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Our Solution</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Our Solution</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
@@ -291,26 +334,35 @@ export default function InvestorRelations() {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Product Line Strategy</h3>
+                      <BarChart
+                        data={[
+                          { label: 'Trial Size (17g)', value: 28, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
+                          { label: 'Medium (60g)', value: 47, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                          { label: 'Large (140g)', value: 40, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
+                        ]}
+                        title="Product Line Margins (%)"
+                        className="mb-6"
+                      />
+                      
                       <div className="space-y-4">
-                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold">Trial Size (17g)</h4>
-                            <span className="text-[#FF3131] font-bold">28% margin</span>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Trial Size (17g)</h4>
+                            <span className="text-[#FF3131] font-bold drop-shadow-sm">28% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Perfect impulse buy, proves efficacy fast</p>
                         </div>
-                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold">Medium (60g)</h4>
-                            <span className="text-[#FF3131] font-bold">47% margin</span>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Medium (60g)</h4>
+                            <span className="text-[#5B2EFF] font-bold drop-shadow-sm">47% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Most popular, ideal for single-cat homes</p>
                         </div>
-                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold">Large (140g)</h4>
-                            <span className="text-[#FF3131] font-bold">40% margin</span>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Large (140g)</h4>
+                            <span className="text-[#2ed573] font-bold drop-shadow-sm">40% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Multi-cat powerhouse, best value</p>
                         </div>
@@ -343,31 +395,46 @@ export default function InvestorRelations() {
 
             {/* Traction */}
             {activeTab === 'traction' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Market Traction</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Traction</h2>
                   
                   <div className="grid md:grid-cols-4 gap-6 mb-8">
-                    <div className="text-center bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-6">
-                      <div className="text-4xl font-bold text-[#FF3131] mb-2">16</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Montreal Stores</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Onboarded</div>
+                    <div className="text-center bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                      <ProgressRing percentage={100} label="Stores Onboarded" color="#FF3131" size={60} />
+                      <div className="text-4xl font-bold text-[#FF3131] mb-2 drop-shadow-sm mt-4">16</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Montreal Stores</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Onboarded</div>
                     </div>
-                    <div className="text-center bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-6">
-                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2">4</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Stores Reordered</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">This Week</div>
+                    <div className="text-center bg-white/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                      <ProgressRing percentage={25} label="Reorder Rate" color="#5B2EFF" size={60} />
+                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">4</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Stores Reordered</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">This Week</div>
                     </div>
-                    <div className="text-center bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-6">
-                      <div className="text-4xl font-bold text-[#FF3131] mb-2">$3K+</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Early Revenue</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Zero Paid Ads</div>
+                    <div className="text-center bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                      <ProgressRing percentage={85} label="Revenue Growth" color="#2ed573" size={60} />
+                      <div className="text-4xl font-bold text-[#2ed573] mb-2 drop-shadow-sm mt-4">$3K+</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Early Revenue</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Zero Paid Ads</div>
                     </div>
-                    <div className="text-center bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-6">
-                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2">68%</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Choose Medium</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Highest Margin</div>
+                    <div className="text-center bg-white/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                      <ProgressRing percentage={68} label="Product Mix" color="#5B2EFF" size={60} />
+                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">68%</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Choose Medium</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Highest Margin</div>
                     </div>
+                  </div>
+
+                  <div className="mb-8">
+                    <BarChart
+                      data={[
+                        { label: 'Stores Onboarded', value: 16, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
+                        { label: 'Reorders This Week', value: 4, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                        { label: 'Revenue ($K)', value: 3, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
+                      ]}
+                      title="Current Traction Metrics"
+                    />
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-8">
@@ -417,9 +484,9 @@ export default function InvestorRelations() {
 
             {/* Unit Economics */}
             {activeTab === 'financials' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Unit Economics</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Unit Economics</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
@@ -461,7 +528,20 @@ export default function InvestorRelations() {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Scale Economics</h3>
+                      <PieChart
+                        data={[
+                          { label: 'Gross Profit', value: 47, color: '#FF3131' },
+                          { label: 'Raw Materials', value: 26.7, color: '#5B2EFF' },
+                          { label: 'Packaging', value: 6.2, color: '#2ed573' },
+                          { label: 'Labor', value: 5.3, color: '#FF6B47' },
+                          { label: 'Fixed Costs', value: 5.8, color: '#3694FF' },
+                          { label: 'Marketing & Admin', value: 8.9, color: '#7bed9f' }
+                        ]}
+                        title="Cost Breakdown (Medium SKU)"
+                        className="mb-6"
+                      />
+                      
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
                       <div className="space-y-4">
                         <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
                           <h4 className="font-semibold mb-2">Current Scale (1K bags/month)</h4>
@@ -516,9 +596,9 @@ export default function InvestorRelations() {
 
             {/* Team */}
             {activeTab === 'team' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Leadership Team</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Leadership Team</h2>
                   
                   <div className="grid lg:grid-cols-3 gap-8">
                     <div className="text-center">
@@ -627,9 +707,9 @@ export default function InvestorRelations() {
 
             {/* Investment Terms */}
             {activeTab === 'investment' && (
-              <section className="space-y-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Investment Terms</h2>
+              <section className="space-y-8 relative z-10">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Investment Terms</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
@@ -660,7 +740,17 @@ export default function InvestorRelations() {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Investment Highlights</h3>
+                      <PieChart
+                        data={[
+                          { label: 'Marketing & Growth', value: 65, color: '#FF3131' },
+                          { label: 'Inventory Scale-up', value: 20, color: '#5B2EFF' },
+                          { label: 'Working Capital', value: 15, color: '#2ed573' }
+                        ]}
+                        title="Use of Funds Breakdown"
+                        className="mb-6"
+                      />
+                      
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Investment Highlights</h3>
                       <div className="space-y-4">
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
                           <h4 className="font-semibold mb-2">18-Month Runway</h4>
