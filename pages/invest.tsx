@@ -1,408 +1,735 @@
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import { NextSeo } from 'next-seo';
+import { Container } from '../src/components/ui/container';
+import { Button } from '../src/components/ui/button';
+import NextImage from '../components/NextImage';
 import { useState } from 'react';
+import Link from 'next/link';
 
-const ChartSlide = dynamic(() => import('../components/ChartSlide'), { ssr: false });
+export default function InvestorRelations() {
+  const [activeTab, setActiveTab] = useState('overview');
 
-// TypeScript interfaces for slide content
-interface TitleSlideContent {
-  title: string;
-  subtitle: string;
-}
-
-interface TextSlideContent {
-  title: string;
-  points?: string[];
-  content?: string;
-}
-
-interface ImageSlideContent {
-  title: string;
-  subtitle?: string;
-  imageUrl?: string;
-}
-
-interface TeamSlideContent {
-  title: string;
-  content: string[];
-}
-
-interface RoadmapSlideContent {
-  title: string;
-  content: string[];
-}
-
-interface TableSlideContent {
-  title: string;
-  tableData: {
-    headers: string[];
-    rows: string[][];
-  };
-}
-
-interface ChartSlideContent {
-  title: string;
-  chartType: string;
-  data: Array<{
-    name: string;
-    value: number;
-    fill: string;
-  }>;
-}
-
-// Slide type definitions
-interface BaseSlide {
-  id: string;
-  type: string;
-  notes?: string;
-}
-
-interface TitleSlideType extends BaseSlide {
-  type: 'title';
-  content: TitleSlideContent;
-}
-
-interface TextSlideType extends BaseSlide {
-  type: 'text';
-  content: TextSlideContent;
-}
-
-interface ChartSlideType extends BaseSlide {
-  type: 'chart';
-  content: ChartSlideContent;
-}
-
-interface ImageSlideType extends BaseSlide {
-  type: 'image';
-  content: ImageSlideContent;
-}
-
-interface TeamSlideType extends BaseSlide {
-  type: 'team';
-  content: TeamSlideContent;
-}
-
-interface RoadmapSlideType extends BaseSlide {
-  type: 'roadmap';
-  content: RoadmapSlideContent;
-}
-
-interface TableSlideType extends BaseSlide {
-  type: 'table';
-  content: TableSlideContent;
-}
-
-type Slide = TitleSlideType | TextSlideType | ChartSlideType | ImageSlideType | TeamSlideType | RoadmapSlideType | TableSlideType;
-
-const slides: Slide[] = [
-  {
-    id: "1",
-    type: "title",
-    content: {
-      title: "Purrify — The Future of Cat Litter Odor Control",
-      subtitle: "Raising CAD $200k SAFE @ $2M pre-money",
-    },
-    notes:
-      "Welcome to our pitch for Purrify. We're revolutionizing cat litter odor control with our innovative carbon additive solution.",
-  },
-  {
-    id: "2",
-    type: "text",
-    content: {
-      title: "The Problem",
-      points: [
-        "#1 complaint of urban cat owners? Litter box odor.",
-        "Existing 'fixes' just mask smell or demand frequent litter changes.",
-      ],
-    },
-    notes:
-      "Cat owners consistently rank litter box odor as their top complaint. Current solutions only mask the smell temporarily or require constant maintenance.",
-  },
-  {
-    id: "3",
-    type: "chart",
-    content: {
-      title: "Market Opportunity",
-      chartType: "pie",
-      data: [
-        { name: "Canada TAM", value: 160, fill: "#8884d8" },
-        { name: "US Expansion", value: 1200, fill: "#82ca9d" },
-      ],
-    },
-    notes:
-      "Our total addressable market in Canada is CAD $160M, with potential for USD $1.2B with US expansion.",
-  },
-  // Add more slides here if you have them in your full deck
-];
-
-function TitleSlide({ content }: { content: TitleSlideContent }) {
-  const [logoError, setLogoError] = useState(false);
-
-  return (
-    <section className="py-24 flex flex-col items-center justify-center min-h-[60vh] bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-gray-900 dark:to-gray-950 text-center">
-      {!logoError ? (
-        <Image 
-          src="/purrify-logo.png" 
-          alt="Purrify Logo" 
-          width={160} 
-          height={160} 
-          className="mx-auto mb-6"
-          onError={() => setLogoError(true)}
-        />
-      ) : (
-        <div className="w-40 h-40 mx-auto mb-6 bg-gradient-to-br from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-2xl">P</span>
-        </div>
-      )}
-      <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-        {content.title}
-      </h1>
-      <p className="text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-        {content.subtitle}
-      </p>
-    </section>
-  );
-}
-
-function TextSlide({ content }: { content: TextSlideContent }) {
-  return (
-    <section className="py-20 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#FF3131]">{content.title}</h2>
-      <div className="max-w-2xl mx-auto">
-        {content.points && (
-          <ul className="text-xl text-gray-700 dark:text-gray-300 mb-8 space-y-4">
-            {content.points.map((point: string, i: number) => (
-              <li key={i}>{point.replace(/^#/, '')}</li>
-            ))}
-          </ul>
-        )}
-        {content.content && (
-          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">{content.content}</p>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function ImageSlide({ content }: { content: ImageSlideContent }) {
-  const [imageError, setImageError] = useState(false);
-
-  return (
-    <section className="py-20 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#5B2EFF]">{content.title}</h2>
-      {content.subtitle && <p className="mb-4 text-lg text-gray-500 dark:text-gray-300">{content.subtitle}</p>}
-      <div className="flex justify-center">
-        {content.imageUrl && !imageError ? (
-          <Image 
-            src={content.imageUrl} 
-            alt={content.title} 
-            width={320} 
-            height={320} 
-            className="rounded-xl shadow-lg"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="w-80 h-80 bg-gray-200 dark:bg-gray-700 rounded-xl shadow-lg flex items-center justify-center">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto mb-4 bg-[#5B2EFF]/20 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-[#5B2EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-gray-500 dark:text-gray-400 text-sm">
-                {content.imageUrl ? 'Image not available' : 'No image provided'}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function TeamSlide({ content }: { content: TeamSlideContent }) {
-  const [avatarErrors, setAvatarErrors] = useState<Set<number>>(new Set());
-
-  const handleAvatarError = (index: number) => {
-    setAvatarErrors(prev => new Set([...prev, index]));
-  };
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-gray-900 dark:to-gray-950 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-[#5B2EFF]">{content.title}</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {content.content.map((member: string, i: number) => {
-          // Robust parsing with error handling
-          let name = 'Unknown';
-          let role = 'Team Member';
-          
-          try {
-            const parts = member.split(' — ');
-            if (parts.length >= 2) {
-              name = parts[0]?.trim() || 'Unknown';
-              role = parts[1]?.trim() || 'Team Member';
-            } else if (parts.length === 1) {
-              name = parts[0]?.trim() || 'Unknown';
-            }
-          } catch (error) {
-            console.warn(`Failed to parse team member string: "${member}"`, error);
-          }
-          
-          const avatarSeed = name.toLowerCase().replace(/\s/g, '') || `member${i}`;
-          const hasAvatarError = avatarErrors.has(i);
-          
-          return (
-            <div key={i} className="flex flex-col items-center bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 w-64">
-              {!hasAvatarError ? (
-                <Image
-                  src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${avatarSeed}`}
-                  alt={`${name} avatar`}
-                  className="w-24 h-24 rounded-full mb-4 border-2 border-[#5B2EFF]"
-                  width={96}
-                  height={96}
-                  onError={() => handleAvatarError(i)}
-                />
-              ) : (
-                <div className="w-24 h-24 rounded-full mb-4 border-2 border-[#5B2EFF] bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">{name.charAt(0).toUpperCase()}</span>
-                </div>
-              )}
-              <h3 className="text-xl font-bold text-[#5B2EFF] mb-1">{name}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{role}</p>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function RoadmapSlide({ content }: { content: RoadmapSlideContent }) {
-  return (
-    <section className="py-20 bg-gradient-to-br from-[#E0EFC7]/30 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-900 border-b border-gray-100 dark:border-gray-800 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-[#FF3131]">{content.title}</h2>
-      <div className="flex flex-col items-center gap-6">
-        {content.content.map((item: string, i: number) => {
-          // Robust parsing for roadmap items
-          let title = item;
-          let description = '';
-          
-          try {
-            const parts = item.split(' — ');
-            if (parts.length >= 2) {
-              title = parts[0]?.trim() || item;
-              description = parts[1]?.trim() || '';
-            }
-          } catch (error) {
-            console.warn(`Failed to parse roadmap item: "${item}"`, error);
-          }
-          
-          return (
-            <div key={i} className="bg-white dark:bg-gray-800 rounded-xl shadow p-4 w-full max-w-xl">
-              <span className="text-lg font-semibold text-[#5B2EFF]">{title}</span>
-              {description && <p className="text-gray-600 dark:text-gray-300">{description}</p>}
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function TableSlide({ content }: { content: TableSlideContent }) {
-  return (
-    <section className="py-20 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-[#5B2EFF]">{content.title}</h2>
-      <div className="overflow-x-auto flex justify-center">
-        <table className="min-w-[400px] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
-          <thead className="bg-[#5B2EFF]/10">
-            <tr>
-              {content.tableData.headers.map((header: string, i: number) => (
-                <th key={i} className="px-6 py-3 text-left text-xs font-medium text-[#5B2EFF] uppercase tracking-wider">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {content.tableData.rows.map((row: string[], i: number) => (
-              <tr key={i} className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-                {row.map((cell: string, j: number) => (
-                  <td key={j} className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-200">
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
-}
-
-const slideComponents = {
-  title: TitleSlide,
-  text: TextSlide,
-  chart: ChartSlide,
-  image: ImageSlide,
-  team: TeamSlide,
-  roadmap: RoadmapSlide,
-  table: TableSlide,
-} as const;
-
-type SlideType = keyof typeof slideComponents;
-
-export default function Invest() {
   return (
     <>
-      {slides.map((slide) => {
-        switch (slide.type) {
-          case 'title':
-            return <TitleSlide key={slide.id} content={slide.content} />;
-          case 'text':
-            return <TextSlide key={slide.id} content={slide.content} />;
-          case 'chart':
-            return <ChartSlide key={slide.id} content={slide.content} />;
-          case 'image':
-            return <ImageSlide key={slide.id} content={slide.content} />;
-          case 'team':
-            return <TeamSlide key={slide.id} content={slide.content} />;
-          case 'roadmap':
-            return <RoadmapSlide key={slide.id} content={slide.content} />;
-          case 'table':
-            return <TableSlide key={slide.id} content={slide.content} />;
-          default: {
-            // Handle unknown slide types with proper typing
-            const unknownSlide = slide as BaseSlide;
-            return (
-              <article 
-                key={unknownSlide.id} 
-                className="py-20 text-center bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400"
-                role="alert"
-                aria-live="polite"
-              >
-                <div className="max-w-2xl mx-auto px-4">
-                  <h2 className="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-                    Unsupported Slide Type
-                  </h2>
-                  <p className="text-yellow-700 dark:text-yellow-300">
-                    The slide type "{unknownSlide.type}" is not currently supported. Please check the slide configuration.
-                  </p>
-                  <details className="mt-4 text-left">
-                    <summary className="cursor-pointer text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-200">
-                      Show slide data
-                    </summary>
-                    <pre className="mt-2 p-3 bg-yellow-100 dark:bg-yellow-900/40 rounded text-xs overflow-auto">
-                      {JSON.stringify(unknownSlide, null, 2)}
-                    </pre>
-                  </details>
+      <NextSeo
+        title="Investor Relations - Purrify"
+        description="Investment opportunity in Purrify, Canada's leading activated carbon cat litter additive company. Raising CAD $50K @ $1M pre-money valuation."
+        canonical="https://purrify.ca/invest"
+        openGraph={{
+          title: 'Investor Relations - Purrify',
+          description: 'Investment opportunity in Purrify, Canada\'s leading activated carbon cat litter additive company.',
+          url: 'https://purrify.ca/invest',
+          siteName: 'Purrify',
+          images: [
+            {
+              url: 'https://purrify.ca/purrify-logo-text.png',
+              width: 1200,
+              height: 630,
+              alt: 'Purrify Logo',
+            }
+          ],
+        }}
+      />
+
+      <div className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        
+        {/* Hero Section */}
+        <section className="py-20 lg:py-32">
+          <Container>
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="mb-8">
+                <NextImage
+                  src="/optimized/purrify-logo-text.webp"
+                  alt="Purrify Logo"
+                  width={200}
+                  height={80}
+                  className="mx-auto mb-6"
+                />
+              </div>
+              
+              <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+                Building Canada's Leading Pet Care Innovation Company
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
+                Revolutionary activated carbon technology solving odor control for 8.1 million Canadian cat owners
+              </p>
+              
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12 border border-[#E0EFC7] dark:border-gray-700">
+                <div className="grid md:grid-cols-3 gap-6 text-center">
+                  <div>
+                    <div className="text-3xl font-bold text-[#FF3131] mb-2">CAD $50K</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Current Round</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-[#5B2EFF] mb-2">$1M</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Pre-Money Valuation</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-[#FF3131] mb-2">16</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Retail Partners</div>
+                  </div>
                 </div>
-              </article>
-            );
-          }
-        }
-      })}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Navigation Tabs */}
+        <Container>
+          <div className="mb-12">
+            <div className="flex flex-wrap justify-center gap-4 border-b border-gray-200 dark:border-gray-700">
+              {[
+                { id: 'overview', label: 'Executive Summary' },
+                { id: 'problem', label: 'Market Opportunity' },
+                { id: 'solution', label: 'Our Solution' },
+                { id: 'traction', label: 'Traction' },
+                { id: 'financials', label: 'Unit Economics' },
+                { id: 'team', label: 'Team' },
+                { id: 'investment', label: 'Investment Terms' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-3 font-medium transition-colors duration-300 border-b-2 ${
+                    activeTab === tab.id
+                      ? 'border-[#FF3131] text-[#FF3131] dark:text-[#FF5050]'
+                      : 'border-transparent text-gray-600 dark:text-gray-400 hover:text-[#333333] dark:hover:text-white'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </Container>
+
+        {/* Content Sections */}
+        <Container>
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Executive Summary */}
+            {activeTab === 'overview' && (
+              <section className="space-y-12">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Executive Summary</h2>
+                  
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">The Opportunity</h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Purrify addresses the #1 pain point of urban cat owners: persistent litter box odor. Our premium activated carbon additive provides molecular-level odor elimination, creating a new product category in the $160M Canadian pet care market.
+                      </p>
+                      
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Competitive Advantages</h3>
+                      <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          First dedicated carbon additive in Canadian market
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          50%+ gross margins with retailer-friendly economics
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          Proven traction: 16 Montreal stores, 4 reorders this week
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          Superior coconut shell carbon technology
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Financial Highlights</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="text-2xl font-bold text-[#333333] dark:text-white">47%</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Gross Margin (Medium SKU)</div>
+                        </div>
+                        <div className="bg-[#FF3131]/10 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="text-2xl font-bold text-[#333333] dark:text-white">$3K+</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Early Revenue (Zero Paid Ads)</div>
+                        </div>
+                        <div className="bg-[#5B2EFF]/10 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="text-2xl font-bold text-[#333333] dark:text-white">18 Months</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">Projected Path to EBITDA+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Market Opportunity */}
+            {activeTab === 'problem' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Market Opportunity</h2>
+                  
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">The Problem</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <h4 className="font-semibold mb-2">Urban Cat Owners' #1 Complaint</h4>
+                          <p className="text-gray-600 dark:text-gray-300">Persistent litter box odor in small apartments with no escape</p>
+                        </div>
+                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <h4 className="font-semibold mb-2">Inadequate Solutions</h4>
+                          <p className="text-gray-600 dark:text-gray-300">Existing products only mask odors or require constant maintenance</p>
+                        </div>
+                        <div className="bg-[#FF3131]/5 dark:bg-red-900/20 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <h4 className="font-semibold mb-2">Multi-Cat Households</h4>
+                          <p className="text-gray-600 dark:text-gray-300">Problem multiplies with multiple cats, demanding better solutions</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Market Size</h3>
+                      <div className="space-y-4">
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-[#FF3131] mb-2">8.1M</div>
+                          <div className="text-gray-600 dark:text-gray-400">Canadian Cat Owners</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-[#5B2EFF] mb-2">CAD $160M</div>
+                          <div className="text-gray-600 dark:text-gray-400">Canadian TAM</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-[#FF3131] mb-2">6.2%</div>
+                          <div className="text-gray-600 dark:text-gray-400">Online Channel CAGR</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Market Drivers</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span className="font-medium">Pet Humanization</span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">76% consider cats family members</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span className="font-medium">Premium Shift</span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Medium-high price segment dominates (35.2%)</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span className="font-medium">Sustainability Focus</span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Eco-products grow 9.63% faster</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span className="font-medium">Urban Density</span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">Apartment living drives demand for odor solutions</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Solution */}
+            {activeTab === 'solution' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Our Solution</h2>
+                  
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Purrify Activated Carbon Additive</h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Premium coconut shell activated carbon that adsorbs odor molecules at the molecular level. Unlike competitors who mask odors with chemicals, we eliminate them completely through proven scientific principles.
+                      </p>
+                      
+                      <h4 className="text-lg font-semibold text-[#5B2EFF] mb-3">Key Benefits</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <div>
+                            <span className="font-medium">Molecular Odor Elimination</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Activated carbon adsorbs odor molecules permanently</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <div>
+                            <span className="font-medium">Universal Compatibility</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Works with any litter type - no switching required</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <div>
+                            <span className="font-medium">100% Natural & Safe</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Food-grade coconut shell carbon, completely pet-safe</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <div>
+                            <span className="font-medium">Simple Application</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Sprinkle, mix, done - immediate results</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Product Line Strategy</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="flex justify-between items-center mb-2">
+                            <h4 className="font-semibold">Trial Size (17g)</h4>
+                            <span className="text-[#FF3131] font-bold">28% margin</span>
+                          </div>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Perfect impulse buy, proves efficacy fast</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="flex justify-between items-center mb-2">
+                            <h4 className="font-semibold">Medium (60g)</h4>
+                            <span className="text-[#FF3131] font-bold">47% margin</span>
+                          </div>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Most popular, ideal for single-cat homes</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4">
+                          <div className="flex justify-between items-center mb-2">
+                            <h4 className="font-semibold">Large (140g)</h4>
+                            <span className="text-[#FF3131] font-bold">40% margin</span>
+                          </div>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Multi-cat powerhouse, best value</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Competitive Differentiation</h3>
+                    <div className="grid md:grid-cols-3 gap-6 text-center">
+                      <div>
+                        <div className="text-lg font-bold text-[#FF3131] mb-2">Competitors</div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Chemical fragrances that mask odors temporarily</p>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-[#5B2EFF] mb-2">VS</div>
+                        <div className="w-8 h-8 mx-auto bg-[#5B2EFF] rounded-full flex items-center justify-center">
+                          <span className="text-white text-xl">⚡</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold text-[#FF3131] mb-2">Purrify</div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Scientific molecular adsorption that eliminates odors permanently</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Traction */}
+            {activeTab === 'traction' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Market Traction</h2>
+                  
+                  <div className="grid md:grid-cols-4 gap-6 mb-8">
+                    <div className="text-center bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-6">
+                      <div className="text-4xl font-bold text-[#FF3131] mb-2">16</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Montreal Stores</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Onboarded</div>
+                    </div>
+                    <div className="text-center bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-6">
+                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2">4</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Stores Reordered</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">This Week</div>
+                    </div>
+                    <div className="text-center bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-6">
+                      <div className="text-4xl font-bold text-[#FF3131] mb-2">$3K+</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Early Revenue</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Zero Paid Ads</div>
+                    </div>
+                    <div className="text-center bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-6">
+                      <div className="text-4xl font-bold text-[#5B2EFF] mb-2">68%</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Choose Medium</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Highest Margin</div>
+                    </div>
+                  </div>
+
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Customer Testimonials</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <p className="italic mb-2">"My customers keep asking when you're restocking Purrify. They say it's the first thing that actually works!"</p>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">— Chico Pet Store, Montreal</div>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF]">
+                          <p className="italic mb-2">"Finally, a product that eliminates odor instead of just covering it up. My apartment stays fresh for days."</p>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">— Verified Customer Review</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Foundation Built</h3>
+                      <div className="space-y-3">
+                        <div className="flex items-center">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span>Brand & packaging perfected</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span>Website & SEO optimized</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span>Supply chain tested & proven</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span>Customer testimonials flowing in</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="text-[#FF3131] text-xl mr-3">✓</span>
+                          <span>Retailer relationships established</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Unit Economics */}
+            {activeTab === 'financials' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Unit Economics</h2>
+                  
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (60g)</h3>
+                      <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
+                        <table className="w-full">
+                          <tbody>
+                            <tr className="bg-gray-50 dark:bg-gray-700">
+                              <td className="px-4 py-3 font-medium">Wholesale Price</td>
+                              <td className="px-4 py-3 text-right font-bold text-[#FF3131]">$2.25</td>
+                            </tr>
+                            <tr>
+                              <td className="px-4 py-3">Raw Materials</td>
+                              <td className="px-4 py-3 text-right">$0.60</td>
+                            </tr>
+                            <tr className="bg-gray-50 dark:bg-gray-700">
+                              <td className="px-4 py-3">Packaging</td>
+                              <td className="px-4 py-3 text-right">$0.14</td>
+                            </tr>
+                            <tr>
+                              <td className="px-4 py-3">Labor</td>
+                              <td className="px-4 py-3 text-right">$0.12</td>
+                            </tr>
+                            <tr className="bg-gray-50 dark:bg-gray-700">
+                              <td className="px-4 py-3">Fixed Costs</td>
+                              <td className="px-4 py-3 text-right">$0.13</td>
+                            </tr>
+                            <tr>
+                              <td className="px-4 py-3">Marketing & Admin</td>
+                              <td className="px-4 py-3 text-right">$0.20</td>
+                            </tr>
+                            <tr className="bg-[#FF3131]/10 dark:bg-red-900/20 border-t-2 border-[#FF3131]">
+                              <td className="px-4 py-3 font-bold">GROSS PROFIT</td>
+                              <td className="px-4 py-3 text-right font-bold text-[#FF3131]">$1.06 (47%)</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Scale Economics</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
+                          <h4 className="font-semibold mb-2">Current Scale (1K bags/month)</h4>
+                          <div className="text-2xl font-bold text-[#5B2EFF] mb-1">47%</div>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Gross Margin</p>
+                        </div>
+                        <div className="bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-4">
+                          <h4 className="font-semibold mb-2">Target Scale (100K bags/month)</h4>
+                          <div className="text-2xl font-bold text-[#FF3131] mb-1">55%+</div>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Gross Margin (Fixed costs drop to $0.05/bag)</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/30 dark:bg-gray-700/50 rounded-xl p-4">
+                          <h4 className="font-semibold mb-2">Cash Efficiency</h4>
+                          <div className="text-sm space-y-1 text-gray-600 dark:text-gray-300">
+                            <div>• Retailers pay on delivery</div>
+                            <div>• Suppliers on COD</div>
+                            <div>• Tight working capital cycle</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Growth Projections</h3>
+                    <div className="grid md:grid-cols-4 gap-6 text-center">
+                      <div>
+                        <div className="text-lg font-bold mb-1">2025</div>
+                        <div className="text-2xl font-bold text-[#FF3131] mb-1">$480K</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold mb-1">2026</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$2.4M</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold mb-1">2027</div>
+                        <div className="text-2xl font-bold text-[#FF3131] mb-1">$8.5M</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
+                      </div>
+                      <div>
+                        <div className="text-lg font-bold mb-1">2028</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$24M</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">Target Exit</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Team */}
+            {activeTab === 'team' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Leadership Team</h2>
+                  
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="text-center">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-2xl">D</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#FF3131] mb-2">Drago - CEO</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Marketing Genius</p>
+                      <div className="text-left space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span>Built manufacturing company from scratch twice</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span>Growth marketer + direct response copywriter</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#FF3131] mr-2">•</span>
+                          <span>Deep activated-carbon knowledge</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
+                        <div className="text-xs font-semibold text-[#FF3131]">SUPERPOWER</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Turns marketing into profit machines</div>
+                      </div>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-2xl">A</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#5B2EFF] mb-2">Anthony - COO</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Operations Machine</p>
+                      <div className="text-left space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="text-[#5B2EFF] mr-2">•</span>
+                          <span>Supply chain optimization expert</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#5B2EFF] mr-2">•</span>
+                          <span>Sales & customer relations master</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#5B2EFF] mr-2">•</span>
+                          <span>Backend systems architect</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
+                        <div className="text-xs font-semibold text-[#5B2EFF]">SUPERPOWER</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Makes impossible things happen</div>
+                      </div>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#2ed573] to-[#7bed9f] rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-2xl">K</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#2ed573] mb-2">Key Advisor</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">Ex-P&G Brand Manager</p>
+                      <div className="text-left space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="text-[#2ed573] mr-2">•</span>
+                          <span>CPG discipline & merchandising</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#2ed573] mr-2">•</span>
+                          <span>Retail partnership expertise</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="text-[#2ed573] mr-2">•</span>
+                          <span>Scale-up guidance</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 p-3 bg-[#2ed573]/10 dark:bg-green-900/20 rounded-lg">
+                        <div className="text-xs font-semibold text-[#2ed573]">SUPERPOWER</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Knows how to dominate retail</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Strategic Roadmap</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-semibold text-[#FF3131] mb-3">Near Term (2025)</h4>
+                        <div className="space-y-2 text-sm">
+                          <div>• Quebec → Ontario expansion via rep network</div>
+                          <div>• Amazon Canada launch with keyword domination</div>
+                          <div>• British Columbia distributor partnerships</div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-[#5B2EFF] mb-3">Medium Term (2026-2028)</h4>
+                        <div className="space-y-2 text-sm">
+                          <div>• Amazon US expansion + Chewy onboarding</div>
+                          <div>• Major chain discussions and rollout</div>
+                          <div>• Strategic acquisition opportunities</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Investment Terms */}
+            {activeTab === 'investment' && (
+              <section className="space-y-8">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-[#E0EFC7] dark:border-gray-700">
+                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6">Investment Terms</h2>
+                  
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-2xl p-6 mb-6">
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-[#FF3131] mb-2">CAD $50K</div>
+                          <div className="text-lg text-gray-600 dark:text-gray-400 mb-4">Current Round</div>
+                          <div className="text-2xl font-bold text-[#5B2EFF] mb-2">$1M Pre-Money</div>
+                          <div className="text-lg text-gray-600 dark:text-gray-400">SAFE Agreement</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Use of Funds</h3>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
+                          <span>Marketing & Growth</span>
+                          <span className="font-bold">65% ($32.5K)</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
+                          <span>Inventory Scale-up</span>
+                          <span className="font-bold">20% ($10K)</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-[#E0EFC7]/30 dark:bg-gray-700/50 rounded-lg">
+                          <span>Working Capital</span>
+                          <span className="font-bold">15% ($7.5K)</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Investment Highlights</h3>
+                      <div className="space-y-4">
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <h4 className="font-semibold mb-2">18-Month Runway</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Path to EBITDA positive with efficient cash use</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF]">
+                          <h4 className="font-semibold mb-2">Proven Demand</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">16 stores onboarded, 4 reorders this week</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
+                          <h4 className="font-semibold mb-2">Experienced Team</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">5+ years in category, proven track record</p>
+                        </div>
+                        <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF]">
+                          <h4 className="font-semibold mb-2">Multiple Exit Paths</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">Strategic acquisition or dividend machine</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6 mb-8">
+                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4 text-center">Why Invest Now?</h3>
+                    <div className="grid md:grid-cols-3 gap-6 text-center">
+                      <div>
+                        <div className="text-2xl mb-2">🚀</div>
+                        <h4 className="font-semibold mb-2">First Mover Advantage</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">No direct competitors in Canadian market</p>
+                      </div>
+                      <div>
+                        <div className="text-2xl mb-2">📈</div>
+                        <h4 className="font-semibold mb-2">Proven Unit Economics</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">47% gross margins scaling to 55%+</p>
+                      </div>
+                      <div>
+                        <div className="text-2xl mb-2">💰</div>
+                        <h4 className="font-semibold mb-2">Clear Exit Strategy</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Target valuation: $150M - $300M</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                      Ready to join us in revolutionizing pet care?
+                    </p>
+                    <div className="space-y-4">
+                      <Button
+                        onClick={() => window.open('https://calendly.com/copywriting', '_blank')}
+                        size="lg"
+                        className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      >
+                        Schedule Investor Call
+                      </Button>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        Or contact us directly: <a href="mailto:hello@purrify.ca" className="text-[#FF3131] hover:underline">hello@purrify.ca</a> • <a href="tel:+12504329352" className="text-[#FF3131] hover:underline">+1 250 432 9352</a>
+                      </div>
+                      <div className="text-xs text-gray-400 dark:text-gray-500">
+                        Incorporated: BC1318076 | All financial projections are forward-looking statements
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+          </div>
+        </Container>
+      </div>
     </>
   );
-} 
+}
