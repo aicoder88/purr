@@ -276,7 +276,6 @@ export interface TranslationType {
     weekdays: string;
     saturday: string;
     sunday: string;
-    aiSupport: string;
     sendMessage: string;
     replyTime: string;
   };
@@ -287,7 +286,6 @@ export interface TranslationType {
     openingHours: string;
     contactUs: string;
     allRightsReserved: string;
-    aiSupport: string;
   };
 
   // Free Trial

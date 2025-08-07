@@ -292,7 +292,6 @@ export const en = {
     weekdays: "Weekdays",
     saturday: "Saturday",
     sunday: "Sunday",
-    aiSupport: "AI Support Available 24/7",
     sendMessage: "Send Message",
     replyTime: "We'll reply within 24 hours"
   },
@@ -329,8 +328,7 @@ export const en = {
     quickLinks: "Quick Links",
     openingHours: "Opening Hours",
     contactUs: "Contact Us",
-    allRightsReserved: "All Rights Reserved",
-    aiSupport: "AI Support Available 24/7"
+    allRightsReserved: "All Rights Reserved"
   },
 
   // Free Trial
@@ -415,7 +413,7 @@ export const en = {
   // Testimonials Section
   testimonialsSection: {
     customerLove: "Customer Love",
-    littersOfLove: "Litters of Love From The Pet Parent Community",
+    littersOfLove: "Real Results From Happy Cat Parents",
     dontJustTakeOurWord: "Don't just take our word for it. Here's what our customers have to say about Purrify.",
     readMoreReviews: "Read More Reviews"
   },

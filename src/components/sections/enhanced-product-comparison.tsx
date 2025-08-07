@@ -114,20 +114,20 @@ export function EnhancedProductComparison() {
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6">
+            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6 shadow-lg">
               <TrendingUp className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
               <span className="font-bold text-sm sm:text-base">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4 leading-tight">
-              {t.enhancedProductComparison?.chooseYourPerfectSize || "Choose Your Perfect Purrify Size"}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">
+              Choose Your Perfect Size
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              {t.enhancedProductComparison?.subtitle || "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency."}
+              All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.
             </p>
           </div>
 
@@ -136,9 +136,9 @@ export function EnhancedProductComparison() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden ${
+                className={`relative bg-white dark:bg-gray-800 dark:border dark:border-gray-700 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/20 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/30 overflow-hidden ${
                   hoveredProduct === product.id ? 'scale-[1.02] z-20' : 'z-10'
-                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 scale-[1.02]' : ''}`}
+                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/40 scale-[1.02]' : ''}`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -157,7 +157,7 @@ export function EnhancedProductComparison() {
                 <div className="p-4 sm:p-6">
                   {/* Product Image Section */}
                   <div className="text-center mb-6">
-                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-4 min-h-[160px] flex items-center justify-center">
+                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-4 min-h-[160px] flex items-center justify-center overflow-visible">
                       <div className="relative w-24 h-24 sm:w-32 sm:h-32">
                         <NextImage
                           src={product.image}
@@ -167,10 +167,10 @@ export function EnhancedProductComparison() {
                           className="rounded-lg shadow-md object-contain"
                           style={{ maxWidth: '100%', height: 'auto' }}
                         />
-                        {/* Size Badge Overlay - Properly positioned and styled */}
-                        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-3 py-1 rounded-full shadow-lg z-10">
-                          <span className="text-white font-bold text-sm sm:text-base">{product.name.split(' ')[1]}</span>
-                        </div>
+                      </div>
+                      {/* Size Badge Overlay - Properly positioned outside image container */}
+                      <div className="absolute top-2 right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-3 py-1 rounded-full shadow-lg z-10">
+                        <span className="text-white font-bold text-sm sm:text-base">{product.name.split(' ')[1]}</span>
                       </div>
                     </div>
                     

@@ -318,7 +318,6 @@ export const fr = {
     weekdays: "Lun - Ven:",
     saturday: "Samedi:",
     sunday: "Dimanche:",
-    aiSupport: "Notre support IA est disponible 24/7",
     sendMessage: "Envoyez-nous un message",
     replyTime: "Nous vous répondrons dans les 24 heures"
   },
@@ -327,7 +326,6 @@ export const fr = {
   footer: {
     quickLinks: "Liens Rapides",
     openingHours: "Heures d'Ouverture",
-    aiSupport: "Support IA Disponible 24/7",
     contactUs: "Contactez-Nous",
     allRightsReserved: "Tous Droits Réservés"
   },

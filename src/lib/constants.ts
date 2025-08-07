@@ -65,87 +65,75 @@ export const FEATURES = [
 export const TESTIMONIALS = [
   {
     name: "Aisha M., Mile End",
-    text: "My rescue cat Biscuit is super picky about litter changes, but with Purrify I can keep his box fresh way longer. Tiny Montreal apartment + sensitive cat = this stuff is a lifesaver! No more weird chemical smells either.",
+    text: "My rescue cat is super picky about litter changes, but with Purrify I can keep his box fresh way longer. Tiny Montreal apartment + sensitive cat = this stuff is a lifesaver! No more weird chemical smells either.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=aisha",
-    stars: 5,
-    petName: "Biscuit"
+    stars: 5
   },
   {
     name: "Jean-Marc D., Hochelaga",
-    text: "Mon chat Pickles est difficile, mais avec Purrify, sa litière reste fraîche plus longtemps. J'ai essayé des trucs à 30$ qui marchaient pas, mais ça c'est différent. Ça sent vraiment rien!",
+    text: "Mon chat est difficile, mais avec Purrify, sa litière reste fraîche plus longtemps. J'ai essayé des trucs à 30$ qui marchaient pas, mais ça c'est différent. Ça sent vraiment rien!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jeanmarc",
-    stars: 5,
-    petName: "Pickles"
+    stars: 5
   },
   {
     name: "Priya S., Saint-Laurent",
-    text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
+    text: "My cats used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",
-    stars: 5,
-    petName: "Mochi & Noodle"
+    stars: 5
   },
   {
     name: "François B., Rosemont",
-    text: "L'hiver quand tu peux pas ouvrir les fenêtres, l'odeur de litière de Gizmo me rendait fou. Purrify a changé ma vie - plus d'odeur pantoute, même dans mon petit appart!",
+    text: "L'hiver quand tu peux pas ouvrir les fenêtres, l'odeur de litière me rendait fou. Purrify a changé ma vie - plus d'odeur pantoute, même dans mon petit appart!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=francois",
-    stars: 5,
-    petName: "Gizmo"
+    stars: 5
   },
   {
     name: "Kenji T., Verdun",
-    text: "My senior cat Wasabi has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+    text: "My senior cat has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kenji",
-    stars: 5,
-    petName: "Wasabi"
+    stars: 5
   },
   {
     name: "Fatima R., Côte-des-Neiges",
-    text: "Started with the 17g trial for my kitten Ziggy. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+    text: "Started with the 17g trial for my kitten. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=fatima",
-    stars: 5,
-    petName: "Ziggy"
+    stars: 5
   },
   {
     name: "Maria C., Longueuil",
-    text: "Ma chatte Pixel est super capricieuse avec sa litière, mais depuis que j'utilise Purrify, elle semble plus confortable. Plus d'odeurs bizarres qui traînent dans la maison!",
+    text: "Ma chatte est super capricieuse avec sa litière, mais depuis que j'utilise Purrify, elle semble plus confortable. Plus d'odeurs bizarres qui traînent dans la maison!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
-    stars: 5,
-    petName: "Pixel"
+    stars: 5
   },
   {
     name: "Dr. Amara Chen, Westmount",
-    text: "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat Quincy's litter area stays remarkably fresh.",
+    text: "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat's litter area stays remarkably fresh.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=amara",
-    stars: 5,
-    petName: "Quincy"
+    stars: 5
   },
   {
     name: "Kai L., Outremont",
-    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat Tofu to inhale. The 120g size is perfect for my two-cat household.",
+    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat to inhale. The 120g size is perfect for my two-cat household.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kai",
-    stars: 5,
-    petName: "Tofu"
+    stars: 5
   },
   {
     name: "Samuel I., Laval",
-    text: "J'étais sceptique, mais mon chat Banjo avait des problèmes digestifs et l'odeur était insupportable. Purrify a vraiment réglé le problème - j'en commande maintenant à chaque mois!",
+    text: "J'étais sceptique, mais mon chat avait des problèmes digestifs et l'odeur était insupportable. Purrify a vraiment réglé le problème - j'en commande maintenant à chaque mois!",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=samuel",
-    stars: 5,
-    petName: "Banjo"
+    stars: 5
   },
   {
     name: "Alex J., Hochelaga",
-    text: "My cat Dumpling has some serious digestive issues, but this stuff makes the litter box completely odorless. It's honestly like magic! Already ordering the larger size for next month.",
+    text: "My cat has some serious digestive issues, but this stuff makes the litter box completely odorless. It's honestly like magic! Already ordering the larger size for next month.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
-    stars: 5,
-    petName: "Dumpling"
+    stars: 5
   },
   {
     name: "Noor A., West Island",
-    text: "Three cats: Paprika, Saffron, and Cumin. Small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+    text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=noor",
-    stars: 5,
-    petName: "Paprika, Saffron & Cumin"
+    stars: 5
   },
 ];
 

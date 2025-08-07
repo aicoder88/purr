@@ -322,7 +322,6 @@ export const zh = {
     weekdays: "工作日：上午9点 - 下午5点",
     saturday: "周六：上午10点 - 下午2点",
     sunday: "周日：休息",
-    aiSupport: "AI客服支持",
     sendMessage: "发送消息",
     replyTime: "我们通常在24小时内回复"
   },

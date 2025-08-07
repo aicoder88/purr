@@ -111,6 +111,8 @@ export function Hero() {
                 tabIndex={-1}
                 itemScope
                 itemType="https://schema.org/VideoObject"
+                webkit-playsinline="true"
+                x-webkit-airplay="allow"
                 onLoadedData={() => {
                   setIsVideoLoaded(true);
                   console.log('Video loaded successfully');
@@ -119,6 +121,17 @@ export function Hero() {
                   console.error('Video playback error:', e);
                   const video = e.target as HTMLVideoElement;
                   video.style.display = 'none';
+                }}
+                onCanPlay={(e) => {
+                  // Ensure video plays on mobile devices
+                  const video = e.target as HTMLVideoElement;
+                  const playPromise = video.play();
+                  if (playPromise !== undefined) {
+                    playPromise.catch((error) => {
+                      console.log('Video autoplay failed:', error);
+                      // On mobile, user interaction might be required
+                    });
+                  }
                 }}
               >
                 <source src="https://purrify.ca/videos/cat_rose_optimized.webm" type="video/webm" />
