@@ -14,12 +14,13 @@ const ScrollToTopButton = dynamic(() => import("../ui/scroll-to-top"), { ssr: fa
 export function Layout({ children }: LayoutProps) {
   const router = useRouter();
   const hideFooter = router.pathname === '/invest' || router.pathname === '/dn';
+  const hideHeader = router.pathname === '/dn';
 
   return (
     <div className="flex flex-col min-h-screen">
       <PawCursor />
       <ScrollToTopButton />
-      <Header />
+      {!hideHeader && <Header />}
       <main className="flex-grow">{children}</main>
       {!hideFooter && <Footer />}
     </div>

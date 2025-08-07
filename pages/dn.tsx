@@ -9,6 +9,25 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 export default function DriverNetworkPresentation() {
   const [activeTab, setActiveTab] = useState('overview');
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateTab = (direction: 'prev' | 'next') => {
+    const tabs = ['overview', 'performance', 'capabilities', 'expansion', 'proposal'];
+    const currentIndex = tabs.indexOf(activeTab);
+    let newIndex;
+    
+    if (direction === 'prev') {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+    } else {
+      newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+    }
+    
+    setActiveTab(tabs[newIndex]);
+    scrollToTop();
+  };
+
   const stats = [
     { label: 'Contracted Drivers', value: '1,000+', description: 'Across multiple industries' },
     { label: 'Active Markets', value: '19', description: 'Major North American cities' },
@@ -39,81 +58,76 @@ export default function DriverNetworkPresentation() {
       />
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
-        {/* Header */}
-        <header className="bg-black text-white py-8">
+        {/* Header Navigation Buttons */}
+        <div className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/20">
           <Container>
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-4xl font-bold mb-2">Driver Network Inc.</h1>
-                <p className="text-xl text-gray-300">Comprehensive Logistics Solutions</p>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-semibold text-[#276EF1]">Partnership Proposal</div>
-                <div className="text-sm text-gray-300">Uber Freight Division</div>
-              </div>
-            </div>
-          </Container>
-        </header>
-
-        {/* Navigation */}
-        <nav className="backdrop-blur-md bg-white/30 py-4 sticky top-0 z-10 border-b border-white/20">
-          <Container>
-            <div className="flex justify-center space-x-8">
-              {[
-                { id: 'overview', label: 'Overview', icon: '📊' },
-                { id: 'performance', label: 'Performance', icon: '🚀' },
-                { id: 'capabilities', label: 'Capabilities', icon: '⚙️' },
-                { id: 'expansion', label: 'Expansion', icon: '🌍' },
-                { id: 'proposal', label: 'Proposal', icon: '🤝' }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                    activeTab === tab.id
-                      ? 'bg-[#276EF1] text-white shadow-lg transform scale-105'
-                      : 'bg-white/50 text-gray-700 hover:bg-white/70 hover:scale-105'
-                  }`}
-                >
-                  <span>{tab.icon}</span>
-                  <span>{tab.label}</span>
-                </button>
-              ))}
-            </div>
-          </Container>
-        </nav>
-
-        {/* Main Content */}
-        <main className="py-12 pb-32">
-          <Container>
-            {/* Executive Summary - Only shown once */}
-            <section className="mb-16">
-              <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
-                <div className="text-center mb-8">
-                  <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                    Proven Scale. Proven Results.
-                  </h2>
-                  <p className="text-xl text-gray-200 max-w-4xl mx-auto">
-                    Driver Network Inc. delivers customizable logistics solutions with over 1,000 contracted drivers 
-                    across 19 major North American markets, providing the scale and reliability Uber Freight requires.
-                  </p>
+            <div className="flex justify-between items-center py-6">
+              <button
+                onClick={() => navigateTab('prev')}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#276EF1] to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                <span className="text-2xl mr-3">←</span>
+                Previous
+              </button>
+              
+              <div className="text-center">
+                <div className="text-white mb-2">
+                  <h1 className="text-2xl font-bold">Driver Network Inc.</h1>
+                  <p className="text-sm text-gray-300">Partnership Proposal - Uber Freight</p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  {stats.map((stat, index) => (
-                    <div key={index} className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
-                      <div className="text-4xl font-bold text-[#276EF1] mb-3 bg-gradient-to-br from-[#276EF1] to-blue-400 bg-clip-text text-transparent">
-                        {stat.value}
-                      </div>
-                      <div className="font-bold mb-2 text-lg">{stat.label}</div>
-                      <div className="text-sm text-gray-300">{stat.description}</div>
-                    </div>
+                <div className="flex space-x-2">
+                  {['overview', 'performance', 'capabilities', 'expansion', 'proposal'].map((tab, index) => (
+                    <div
+                      key={tab}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        activeTab === tab ? 'bg-[#276EF1] w-6' : 'bg-gray-400'
+                      }`}
+                    />
                   ))}
                 </div>
               </div>
-            </section>
+              
+              <button
+                onClick={() => navigateTab('next')}
+                className="flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-[#276EF1] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+              >
+                Next
+                <span className="text-2xl ml-3">→</span>
+              </button>
+            </div>
+          </Container>
+        </div>
+
+
+        {/* Main Content */}
+        <main className="pt-32 pb-32">
+          <Container>
 
             {activeTab === 'overview' && (
               <section className="space-y-12">
+                {/* Executive Summary - Only on overview tab */}
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
+                  <div className="text-center mb-8">
+                    <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                      Proven Scale. Proven Results.
+                    </h2>
+                    <p className="text-xl text-gray-200 max-w-4xl mx-auto">
+                      Driver Network Inc. delivers customizable logistics solutions with over 1,000 contracted drivers 
+                      across 19 major North American markets, providing the scale and reliability Uber Freight requires.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {stats.map((stat, index) => (
+                      <div key={index} className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                        <div className="text-4xl font-bold text-[#276EF1] mb-3 bg-gradient-to-br from-[#276EF1] to-blue-400 bg-clip-text text-transparent">
+                          {stat.value}
+                        </div>
+                        <div className="font-bold mb-2 text-lg">{stat.label}</div>
+                        <div className="text-sm text-gray-300">{stat.description}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 {/* Company Evolution Visualization */}
                 <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
@@ -1137,12 +1151,7 @@ export default function DriverNetworkPresentation() {
           <Container>
             <div className="flex justify-between items-center py-6">
               <button
-                onClick={() => {
-                  const tabs = ['overview', 'performance', 'capabilities', 'expansion', 'proposal'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
-                  setActiveTab(tabs[prevIndex]);
-                }}
+                onClick={() => navigateTab('prev')}
                 className="flex items-center px-8 py-4 bg-gradient-to-r from-[#276EF1] to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
               >
                 <span className="text-2xl mr-3">←</span>
@@ -1164,12 +1173,7 @@ export default function DriverNetworkPresentation() {
               </div>
               
               <button
-                onClick={() => {
-                  const tabs = ['overview', 'performance', 'capabilities', 'expansion', 'proposal'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  const nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
-                  setActiveTab(tabs[nextIndex]);
-                }}
+                onClick={() => navigateTab('next')}
                 className="flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-[#276EF1] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
               >
                 Next

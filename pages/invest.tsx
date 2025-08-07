@@ -9,6 +9,25 @@ import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/u
 export default function InvestorRelations() {
   const [activeTab, setActiveTab] = useState('overview');
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateTab = (direction: 'prev' | 'next') => {
+    const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
+    const currentIndex = tabs.indexOf(activeTab);
+    let newIndex;
+    
+    if (direction === 'prev') {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+    } else {
+      newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+    }
+    
+    setActiveTab(tabs[newIndex]);
+    scrollToTop();
+  };
+
   return (
     <>
       <NextSeo
@@ -39,54 +58,10 @@ export default function InvestorRelations() {
           <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
         
-        {/* Hero Section */}
-        <section className="py-20 lg:py-32">
-          <Container>
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="mb-8">
-                <NextImage
-                  src="/optimized/purrify-logo-text.webp"
-                  alt="Purrify Logo"
-                  width={200}
-                  height={80}
-                  className="mx-auto mb-6"
-                />
-              </div>
-              
-              <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
-                Revolutionary Odor Solution for 52 Million North American Cat Owners
-              </h1>
-              
-              <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
-                Growing pet care innovation company with molecular-level odor elimination technology
-              </p>
-              
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
-                <div className="grid md:grid-cols-3 gap-6 text-center">
-                  <div className="relative">
-                    <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">CAD $50K</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Current Round</div>
-                    <ProgressRing percentage={75} label="Target Progress" color="#FF3131" size={80} className="mt-4" />
-                  </div>
-                  <div className="relative">
-                    <div className="text-3xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm">$1M</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Pre-Money Valuation</div>
-                    <ProgressRing percentage={100} label="Validated" color="#5B2EFF" size={80} className="mt-4" />
-                  </div>
-                  <div className="relative">
-                    <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">16</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Retail Partners</div>
-                    <ProgressRing percentage={68} label="Reorder Rate" color="#2ed573" size={80} className="mt-4" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
 
         {/* Navigation Tabs */}
         <Container>
-          <div className="mb-12 relative z-10">
+          <div className="pt-20 mb-12 relative z-10">
             <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-2">
               <div className="flex flex-wrap justify-center gap-2">
                 {[
@@ -100,7 +75,10 @@ export default function InvestorRelations() {
                 ].map((tab) => (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      scrollToTop();
+                    }}
                     className={`px-6 py-3 font-medium transition-all duration-300 rounded-xl ${
                       activeTab === tab.id
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white shadow-lg transform scale-105'
@@ -115,6 +93,42 @@ export default function InvestorRelations() {
           </div>
         </Container>
 
+        {/* Middle Navigation Buttons */}
+        <Container>
+          <div className="flex justify-center mb-8 relative z-10">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-4">
+              <div className="flex items-center space-x-6">
+                <button
+                  onClick={() => navigateTab('prev')}
+                  className="flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <span className="text-lg mr-2">←</span>
+                  Previous
+                </button>
+                
+                <div className="flex space-x-1">
+                  {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
+                    <div
+                      key={tab}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        activeTab === tab ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  onClick={() => navigateTab('next')}
+                  className="flex items-center px-6 py-3 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Next
+                  <span className="text-lg ml-2">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </Container>
+
         {/* Content Sections */}
         <Container>
           <div className="max-w-6xl mx-auto pb-32">
@@ -122,6 +136,46 @@ export default function InvestorRelations() {
             {/* Executive Summary */}
             {activeTab === 'overview' && (
               <section className="space-y-12 relative z-10">
+                {/* Hero Section - Only on overview tab */}
+                <div className="text-center max-w-4xl mx-auto mb-16">
+                  <div className="mb-8">
+                    <NextImage
+                      src="/optimized/purrify-logo-text.webp"
+                      alt="Purrify Logo"
+                      width={200}
+                      height={80}
+                      className="mx-auto mb-6"
+                    />
+                  </div>
+                  
+                  <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
+                    Revolutionary Odor Solution for 52 Million North American Cat Owners
+                  </h1>
+                  
+                  <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
+                    Growing pet care innovation company with molecular-level odor elimination technology
+                  </p>
+                  
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
+                    <div className="grid md:grid-cols-3 gap-6 text-center">
+                      <div className="relative">
+                        <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">CAD $50K</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Current Round</div>
+                        <ProgressRing percentage={75} label="Target Progress" color="#FF3131" size={80} className="mt-4" />
+                      </div>
+                      <div className="relative">
+                        <div className="text-3xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm">$1M</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Pre-Money Valuation</div>
+                        <ProgressRing percentage={100} label="Validated" color="#5B2EFF" size={80} className="mt-4" />
+                      </div>
+                      <div className="relative">
+                        <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">16</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">Retail Partners</div>
+                        <ProgressRing percentage={68} label="Reorder Rate" color="#2ed573" size={80} className="mt-4" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
                   
@@ -825,12 +879,7 @@ export default function InvestorRelations() {
           <Container>
             <div className="flex justify-between items-center py-6">
               <button
-                onClick={() => {
-                  const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
-                  setActiveTab(tabs[prevIndex]);
-                }}
+                onClick={() => navigateTab('prev')}
                 className="flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
               >
                 <span className="text-2xl mr-3">←</span>
@@ -852,12 +901,7 @@ export default function InvestorRelations() {
               </div>
               
               <button
-                onClick={() => {
-                  const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  const nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
-                  setActiveTab(tabs[nextIndex]);
-                }}
+                onClick={() => navigateTab('next')}
                 className="flex items-center px-8 py-4 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
               >
                 Next
