@@ -229,7 +229,7 @@ export const fr = {
     },
     form: {
       name: "Nom",
-      courriel: "Courriel",
+      email: "Courriel",
       message: "Message",
       submit: "Envoyer"
     }
