@@ -131,7 +131,7 @@ export default function InvestorRelations() {
 
         {/* Content Sections */}
         <Container>
-          <div className="max-w-6xl mx-auto pb-32">
+          <div className="max-w-6xl mx-auto pb-16">
             
             {/* Executive Summary */}
             {activeTab === 'overview' && (
@@ -874,42 +874,6 @@ export default function InvestorRelations() {
           </div>
         </Container>
 
-        {/* Large Navigation Buttons */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
-          <Container>
-            <div className="flex justify-between items-center py-6">
-              <button
-                onClick={() => navigateTab('prev')}
-                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
-              >
-                <span className="text-2xl mr-3">←</span>
-                Previous
-              </button>
-              
-              <div className="text-center">
-                <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">Slide Navigation</div>
-                <div className="flex space-x-2">
-                  {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
-                    <div
-                      key={tab}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        activeTab === tab ? 'bg-[#FF3131] w-6' : 'bg-gray-300 dark:bg-gray-600'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              <button
-                onClick={() => navigateTab('next')}
-                className="flex items-center px-8 py-4 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
-              >
-                Next
-                <span className="text-2xl ml-3">→</span>
-              </button>
-            </div>
-          </Container>
-        </div>
       </div>
     </>
   );
