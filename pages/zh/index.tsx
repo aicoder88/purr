@@ -1,8 +1,8 @@
 import { Container } from '@/components/ui/container';
 import { NextPage } from "next";
-import Head from "next/head";
 import { SITE_NAME } from "@/lib/constants";
 import { useTranslation } from "@/lib/translation-context";
+import { LocalizedMeta } from "@/components/seo/LocalizedMeta";
 import { Hero } from "@/components/sections/hero";
 import { Features } from "@/components/sections/features";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -23,29 +23,15 @@ const HomePage: NextPage = () => {
   
   return (
     <Container>
-      <Head>
-        <title>{SITE_NAME} - {t.siteDescription}</title>
-        <meta name="description" content={t.siteDescription} />
-        <meta name="keywords" content={t.seo.keywords} />
-        <link rel="canonical" href="https://purrify.ca/zh" />
-        <link rel="alternate" hrefLang="zh" href="https://purrify.ca/zh" />
-        <link rel="alternate" hrefLang="en" href="https://purrify.ca" />
-        <link rel="alternate" hrefLang="fr" href="https://purrify.ca/fr" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://purrify.ca/zh" />
-        <meta property="og:title" content={t.seo.openGraph.title} />
-        <meta property="og:description" content={t.seo.openGraph.description} />
-        <meta property="og:image" content="https://purrify.ca/purrify-logo-text.png" />
-        
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://purrify.ca/zh" />
-        <meta property="twitter:title" content={t.seo.openGraph.title} />
-        <meta property="twitter:description" content={t.seo.openGraph.description} />
-        <meta property="twitter:image" content="https://purrify.ca/purrify-logo-text.png" />
-      </Head>
+      <LocalizedMeta
+        title={`${SITE_NAME} - ${t.siteDescription}`}
+        description={t.siteDescription}
+        keywords={t.seo.keywords}
+        canonicalPath=""
+        ogTitle={t.seo.openGraph.title}
+        ogDescription={t.seo.openGraph.description}
+        ogImage="https://purrify.ca/purrify-logo-text.png"
+      />
       
       <UrgencyBanner />
       <Hero />

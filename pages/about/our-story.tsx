@@ -1,218 +1,73 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { LocalizedMeta } from '../../src/components/seo/LocalizedMeta';
+import { PageLayout } from '../../src/components/layout/PageLayout';
+import { Breadcrumbs } from '../../src/components/layout/Breadcrumbs';
+import { HeroSection } from '../../src/components/layout/HeroSection';
+import { TimelineSection } from '../../src/components/sections/timeline/TimelineSection';
+import { GridSection } from '../../src/components/sections/grid/GridSection';
+import { enStoryData } from '../../src/lib/page-data';
 import { 
   Heart, 
   Users, 
-  Award, 
-  Target,
-  Lightbulb,
-  Leaf,
   ChevronRight,
-  Home,
   MapPin,
-  Mail,
-  Shield,
-  Zap 
+  Mail
 } from 'lucide-react';
 
 const OurStoryPage: NextPage = () => {
-  // Translation hook available if needed in the future
   const { locale } = useTranslation();
+  const { milestones, values, team, stats } = enStoryData;
 
-  const milestones = [
-    {
-      year: "2008",
-      title: "The Problem Discovered",
-      description: "Our founder, a cat owner with multiple pets, struggled with persistent litter box odors despite trying every product on the market.",
-      icon: Lightbulb
-    },
-    {
-      year: "2008-2009",
-      title: "Research & Development",
-      description: "Partnered with material scientists to develop an activated carbon formula specifically designed for cat litter odor elimination.",
-      icon: Target
-    },
-    {
-      year: "2009",
-      title: "First Prototype",
-      description: "Created the first Purrify prototype and tested it with local cat owners. Results exceeded all expectations with 95% odor reduction.",
-      icon: Zap
-    },
-    {
-      year: "2022",
-      title: "Product Launch",
-      description: "Officially launched Purrify across Canada, helping thousands of cat owners create fresher, cleaner homes.",
-      icon: Award
-    },
-    {
-      year: "2023",
-      title: "Expansion & Growth",
-      description: "Expanded product line with multiple sizes and began international shipping to serve cat owners worldwide.",
-      icon: Users
-    },
-    {
-      year: "2024",
-      title: "Sustainability Focus",
-      description: "Launched eco-friendly packaging and carbon-neutral shipping, reinforcing our commitment to environmental responsibility.",
-      icon: Leaf
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Our Story",
+    "description": "The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.",
+    "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/about/our-story`,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Purrify",
+      "description": "Canadian company creating innovative cat litter additives for odor elimination",
+      "foundingDate": "2019",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Sarah Chen"
+        }
+      ]
     }
-  ];
-
-  const values = [
-    {
-      icon: Heart,
-      title: "Pet-First Philosophy",
-      description: "Every decision we make considers the health and happiness of cats and their families first."
-    },
-    {
-      icon: Shield,
-      title: "Safety & Quality",
-      description: "All products undergo rigorous testing to ensure they're safe for pets, families, and the environment."
-    },
-    {
-      icon: Leaf,
-      title: "Environmental Responsibility",
-      description: "We're committed to sustainable practices and reducing our environmental footprint at every step."
-    },
-    {
-      icon: Users,
-      title: "Customer Success",
-      description: "Our success is measured by the satisfaction and improved quality of life of our customers and their pets."
-    }
-  ];
-
-  const team = [
-    {
-      name: "Mark Smith",
-      role: "Founder & CEO",
-      bio: "A lifelong cat lover with a background in environmental science. Mark's personal struggle with litter box odors led to the creation of Purrify.",
-      location: "Toronto, ON"
-    },
-    {
-      name: "Dr. Michael Rodriguez",
-      role: "Chief Science Officer",
-      bio: "Materials scientist with 15+ years experience in activated carbon technology. Leads our product development and quality assurance.",
-      location: "Vancouver, BC"
-    },
-    {
-      name: "Anthony Thambiah",
-      role: "Head of Customer Experience",
-      bio: "Former veterinary technician passionate about improving the lives of pets and their families through better products.",
-      location: "Montreal, QC"
-    },
-    {
-      name: "David Kim",
-      role: "Operations Director",
-      bio: "Supply chain expert ensuring every Purrify order is processed quickly and delivered reliably across Canada and beyond.",
-      location: "Calgary, AB"
-    }
-  ];
-
-  const stats = [
-    {
-      number: "1,000+",
-      label: "Happy Customers",
-      description: "Cat owners across Canada and internationally"
-    },
-    {
-      number: "98%",
-      label: "Satisfaction Rate",
-      description: "Customers who would recommend Purrify"
-    },
-    {
-      number: "10k+",
-      label: "Litter Changes Improved",
-      description: "Estimated litter box changes made better"
-    },
-    {
-      number: "50T",
-      label: "CO2 Offset",
-      description: "Through carbon-neutral shipping program"
-    }
-  ];
+  };
 
   return (
     <>
-      <Head>
-        <title>Our Story - The Mission Behind Purrify Cat Litter Additive | Purrify</title>
-        <meta 
-          name="description" 
-          content="Learn about Purrify's founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment." 
-        />
-        <meta name="keywords" content="Purrify story, company mission, cat litter innovation, pet care, environmental responsibility, Canadian company" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/about/our-story`} />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Our Story - The Mission Behind Purrify" />
-        <meta property="og:description" content="Discover the story behind Purrify and our mission to help cat owners create fresher, cleaner homes." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/about/our-story`} />
-        
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "AboutPage",
-              "name": "Our Story",
-              "description": "The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.",
-              "url": `https://purrify.com${locale === 'fr' ? '/fr' : ''}/about/our-story`,
-              "mainEntity": {
-                "@type": "Organization",
-                "name": "Purrify",
-                "description": "Canadian company creating innovative cat litter additives for odor elimination",
-                "foundingDate": "2019",
-                "founders": [
-                  {
-                    "@type": "Person",
-                    "name": "Sarah Chen"
-                  }
-                ]
-              }
-            })
-          }}
-        />
-      </Head>
+      <LocalizedMeta
+        title="Our Story - The Mission Behind Purrify Cat Litter Additive | Purrify"
+        description="Learn about Purrify's founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment."
+        keywords="Purrify story, company mission, cat litter innovation, pet care, environmental responsibility, Canadian company"
+        canonicalPath="/about/our-story"
+        ogTitle="Our Story - The Mission Behind Purrify"
+        ogDescription="Discover the story behind Purrify and our mission to help cat owners create fresher, cleaner homes."
+        structuredData={structuredData}
+      />
 
-      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
-        {/* Breadcrumb Navigation */}
-        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
-          <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                <Home className="w-4 h-4" />
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">About</span>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">Our Story</span>
-            </nav>
-          </Container>
-        </section>
+      <PageLayout>
+        <Breadcrumbs 
+          items={[
+            { label: "About" },
+            { label: "Our Story" }
+          ]} 
+        />
 
-        {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
-          <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
-              <Heart className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Our Story
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Born from a cat owner&apos;s frustration, grown into a mission to help families everywhere
-              </p>
-              <p className="text-lg opacity-80 max-w-2xl mx-auto">
-                What started as one person&apos;s struggle with persistent litter box odors has become a Canadian success story, 
-                helping over 50,000 cat owners create fresher, cleaner homes.
-              </p>
-            </div>
-          </Container>
-        </section>
+        <HeroSection
+          icon={Heart}
+          title="Our Story"
+          subtitle="Born from a cat owner's frustration, grown into a mission to help families everywhere"
+          description="What started as one person's struggle with persistent litter box odors has become a Canadian success story, helping over 50,000 cat owners create fresher, cleaner homes."
+        />
 
         {/* Mission Statement */}
         <section className="py-16">
@@ -497,7 +352,7 @@ const OurStoryPage: NextPage = () => {
             </div>
           </Container>
         </section>
-      </main>
+      </PageLayout>
     </>
   );
 };
