@@ -61,9 +61,9 @@ export default function InvestorRelations() {
 
         {/* Navigation Tabs */}
         <Container>
-          <div className="pt-20 mb-12 relative z-10">
-            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-2">
-              <div className="flex flex-wrap justify-center gap-2">
+          <div className="pt-8 mb-4 relative z-10">
+            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
+              <div className="flex flex-wrap justify-center gap-1">
                 {[
                   { id: 'overview', label: 'Executive Summary' },
                   { id: 'problem', label: 'Market Opportunity' },
@@ -79,7 +79,7 @@ export default function InvestorRelations() {
                       setActiveTab(tab.id);
                       scrollToTop();
                     }}
-                    className={`px-6 py-3 font-medium transition-all duration-300 rounded-xl ${
+                    className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${
                       activeTab === tab.id
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white shadow-lg transform scale-105'
                         : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
@@ -95,14 +95,14 @@ export default function InvestorRelations() {
 
         {/* Middle Navigation Buttons */}
         <Container>
-          <div className="flex justify-center mb-8 relative z-10">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 p-4">
-              <div className="flex items-center space-x-6">
+          <div className="flex justify-center mb-4 relative z-10">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
+              <div className="flex items-center space-x-3">
                 <button
                   onClick={() => navigateTab('prev')}
-                  className="flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
-                  <span className="text-lg mr-2">←</span>
+                  <span className="text-sm mr-1">←</span>
                   Previous
                 </button>
                 
@@ -110,7 +110,7 @@ export default function InvestorRelations() {
                   {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
                     <div
                       key={tab}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                         activeTab === tab ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
                       }`}
                     />
@@ -119,10 +119,10 @@ export default function InvestorRelations() {
                 
                 <button
                   onClick={() => navigateTab('next')}
-                  className="flex items-center px-6 py-3 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Next
-                  <span className="text-lg ml-2">→</span>
+                  <span className="text-sm ml-1">→</span>
                 </button>
               </div>
             </div>
@@ -359,28 +359,28 @@ export default function InvestorRelations() {
                         <div className="flex items-start">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
                           <div>
-                            <span className="font-medium">Molecular Odor Elimination</span>
+                            <span className="font-medium text-gray-800 dark:text-white">Molecular Odor Elimination</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Activated carbon adsorbs odor molecules permanently</p>
                           </div>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
                           <div>
-                            <span className="font-medium">Universal Compatibility</span>
+                            <span className="font-medium text-gray-800 dark:text-white">Universal Compatibility</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Works with any litter type - no switching required</p>
                           </div>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
                           <div>
-                            <span className="font-medium">100% Natural & Safe</span>
+                            <span className="font-medium text-gray-800 dark:text-white">100% Natural & Safe</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Food-grade coconut shell carbon, completely pet-safe</p>
                           </div>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
                           <div>
-                            <span className="font-medium">Simple Application</span>
+                            <span className="font-medium text-gray-800 dark:text-white">Simple Application</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Sprinkle, mix, done - immediate results</p>
                           </div>
                         </div>
@@ -496,11 +496,11 @@ export default function InvestorRelations() {
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Customer Testimonials</h3>
                       <div className="space-y-4">
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
-                          <p className="italic mb-2">"My customers keep asking when you're restocking Purrify. They say it's the first thing that actually works!"</p>
+                          <p className="italic mb-2 text-gray-700 dark:text-gray-200">"My customers keep asking when you're restocking Purrify. They say it's the first thing that actually works!"</p>
                           <div className="text-sm text-gray-600 dark:text-gray-400">— Chico Pet Store, Montreal</div>
                         </div>
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF]">
-                          <p className="italic mb-2">"Finally, a product that eliminates odor instead of just covering it up. My apartment stays fresh for days."</p>
+                          <p className="italic mb-2 text-gray-700 dark:text-gray-200">"Finally, a product that eliminates odor instead of just covering it up. My apartment stays fresh for days."</p>
                           <div className="text-sm text-gray-600 dark:text-gray-400">— Verified Customer Review</div>
                         </div>
                       </div>
@@ -511,23 +511,23 @@ export default function InvestorRelations() {
                       <div className="space-y-3">
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span>Brand & packaging perfected</span>
+                          <span className="text-gray-700 dark:text-gray-200">Brand & packaging perfected</span>
                         </div>
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span>Website & SEO optimized</span>
+                          <span className="text-gray-700 dark:text-gray-200">Website & SEO optimized</span>
                         </div>
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span>Supply chain tested & proven</span>
+                          <span className="text-gray-700 dark:text-gray-200">Supply chain tested & proven</span>
                         </div>
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span>Customer testimonials flowing in</span>
+                          <span className="text-gray-700 dark:text-gray-200">Customer testimonials flowing in</span>
                         </div>
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
-                          <span>Retailer relationships established</span>
+                          <span className="text-gray-700 dark:text-gray-200">Retailer relationships established</span>
                         </div>
                       </div>
                     </div>
@@ -598,21 +598,21 @@ export default function InvestorRelations() {
                       <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
                       <div className="space-y-4">
                         <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
-                          <h4 className="font-semibold mb-2">Current Scale (1K bags/month)</h4>
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Current Scale (1K bags/month)</h4>
                           <div className="text-2xl font-bold text-[#5B2EFF] mb-1">47%</div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Gross Margin</p>
                         </div>
                         <div className="bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-4">
-                          <h4 className="font-semibold mb-2">Target Scale (100K bags/month)</h4>
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Target Scale (100K bags/month)</h4>
                           <div className="text-2xl font-bold text-[#FF3131] mb-1">55%+</div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Gross Margin (Fixed costs drop to $0.05/bag)</p>
                         </div>
                         <div className="bg-[#E0EFC7]/30 dark:bg-gray-700/50 rounded-xl p-4">
-                          <h4 className="font-semibold mb-2">Cash Efficiency</h4>
+                          <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Cash Efficiency</h4>
                           <div className="text-sm space-y-1 text-gray-600 dark:text-gray-300">
-                            <div>• Retailers pay on delivery</div>
-                            <div>• Suppliers on COD</div>
-                            <div>• Tight working capital cycle</div>
+                            <div className="text-gray-600 dark:text-gray-300">• Retailers pay on delivery</div>
+                            <div className="text-gray-600 dark:text-gray-300">• Suppliers on COD</div>
+                            <div className="text-gray-600 dark:text-gray-300">• Tight working capital cycle</div>
                           </div>
                         </div>
                       </div>
@@ -664,15 +664,15 @@ export default function InvestorRelations() {
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
                           <span className="text-[#FF3131] mr-2">•</span>
-                          <span>Built manufacturing company from scratch twice</span>
+                          <span className="text-gray-700 dark:text-gray-200">Built manufacturing company from scratch twice</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#FF3131] mr-2">•</span>
-                          <span>Growth marketer + direct response copywriter</span>
+                          <span className="text-gray-700 dark:text-gray-200">Growth marketer + direct response copywriter</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#FF3131] mr-2">•</span>
-                          <span>Deep activated-carbon knowledge</span>
+                          <span className="text-gray-700 dark:text-gray-200">Deep activated-carbon knowledge</span>
                         </div>
                       </div>
                       <div className="mt-4 p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
@@ -690,15 +690,15 @@ export default function InvestorRelations() {
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
                           <span className="text-[#5B2EFF] mr-2">•</span>
-                          <span>Supply chain optimization expert</span>
+                          <span className="text-gray-700 dark:text-gray-200">Supply chain optimization expert</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#5B2EFF] mr-2">•</span>
-                          <span>Sales & customer relations master</span>
+                          <span className="text-gray-700 dark:text-gray-200">Sales & customer relations master</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#5B2EFF] mr-2">•</span>
-                          <span>Backend systems architect</span>
+                          <span className="text-gray-700 dark:text-gray-200">Backend systems architect</span>
                         </div>
                       </div>
                       <div className="mt-4 p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
@@ -716,15 +716,15 @@ export default function InvestorRelations() {
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
                           <span className="text-[#2ed573] mr-2">•</span>
-                          <span>CPG discipline & merchandising</span>
+                          <span className="text-gray-700 dark:text-gray-200">CPG discipline & merchandising</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#2ed573] mr-2">•</span>
-                          <span>Retail partnership expertise</span>
+                          <span className="text-gray-700 dark:text-gray-200">Retail partnership expertise</span>
                         </div>
                         <div className="flex items-start">
                           <span className="text-[#2ed573] mr-2">•</span>
-                          <span>Scale-up guidance</span>
+                          <span className="text-gray-700 dark:text-gray-200">Scale-up guidance</span>
                         </div>
                       </div>
                       <div className="mt-4 p-3 bg-[#2ed573]/10 dark:bg-green-900/20 rounded-lg">
@@ -740,17 +740,17 @@ export default function InvestorRelations() {
                       <div>
                         <h4 className="font-semibold text-[#FF3131] mb-3">Near Term (2025)</h4>
                         <div className="space-y-2 text-sm">
-                          <div>• Quebec → Ontario expansion via rep network</div>
-                          <div>• Amazon Canada launch with keyword domination</div>
-                          <div>• British Columbia distributor partnerships</div>
+                          <div className="text-gray-600 dark:text-gray-300">• Quebec → Ontario expansion via rep network</div>
+                          <div className="text-gray-600 dark:text-gray-300">• Amazon Canada launch with keyword domination</div>
+                          <div className="text-gray-600 dark:text-gray-300">• British Columbia distributor partnerships</div>
                         </div>
                       </div>
                       <div>
                         <h4 className="font-semibold text-[#5B2EFF] mb-3">Medium Term (2026-2028)</h4>
                         <div className="space-y-2 text-sm">
-                          <div>• Amazon US expansion + Chewy onboarding</div>
-                          <div>• Major chain discussions and rollout</div>
-                          <div>• Strategic acquisition opportunities</div>
+                          <div className="text-gray-600 dark:text-gray-300">• Amazon US expansion + Chewy onboarding</div>
+                          <div className="text-gray-600 dark:text-gray-300">• Major chain discussions and rollout</div>
+                          <div className="text-gray-600 dark:text-gray-300">• Strategic acquisition opportunities</div>
                         </div>
                       </div>
                     </div>
@@ -779,15 +779,15 @@ export default function InvestorRelations() {
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Use of Funds</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
-                          <span>Marketing & Growth</span>
+                          <span className="text-gray-700 dark:text-gray-200">Marketing & Growth</span>
                           <span className="font-bold">65% ($32.5K)</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
-                          <span>Inventory Scale-up</span>
+                          <span className="text-gray-700 dark:text-gray-200">Inventory Scale-up</span>
                           <span className="font-bold">20% ($10K)</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-[#E0EFC7]/30 dark:bg-gray-700/50 rounded-lg">
-                          <span>Working Capital</span>
+                          <span className="text-gray-700 dark:text-gray-200">Working Capital</span>
                           <span className="font-bold">15% ($7.5K)</span>
                         </div>
                       </div>
