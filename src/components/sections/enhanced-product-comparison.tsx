@@ -138,51 +138,55 @@ export function EnhancedProductComparison() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 overflow-hidden min-h-[580px] sm:min-h-[620px] lg:min-h-[660px] ${
-                  hoveredProduct === product.id ? 'scale-[1.02] z-20' : 'z-10'
+                className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
+                  hoveredProduct === product.id ? 'scale-[1.02]' : ''
                 } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
-                {/* Badge */}
-                <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold z-30 shadow-lg`}>
-                  {product.badge}
+                {/* Top Section with Badge and Popular Indicator */}
+                <div className="relative px-4 sm:px-6 pt-6 pb-2">
+                  {/* Badge */}
+                  <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg`}>
+                    {product.badge}
+                  </div>
+
+                  {/* Popularity Indicator */}
+                  {product.popularity === 3 && (
+                    <div className="absolute top-2 right-2 bg-[#FF3131] text-white p-2 rounded-full shadow-lg">
+                      <Award className="w-5 h-5" />
+                    </div>
+                  )}
                 </div>
 
-                {/* Popularity Indicator */}
-                {product.popularity === 3 && (
-                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white p-2 rounded-full z-30 shadow-lg">
-                    <Award className="w-5 h-5" />
-                  </div>
-                )}
-
-                <div className="p-4 sm:p-6 h-full flex flex-col">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex-1 flex flex-col">
                   {/* Product Image Section */}
                   <div className="text-center mb-6">
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 min-h-[160px] sm:min-h-[180px] flex items-center justify-center shadow-inner relative">
-                      {/* White background for better image contrast in dark mode */}
-                      <div className="absolute inset-4 bg-white/95 dark:bg-white/98 rounded-lg"></div>
-                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 z-10">
+                    {/* Size Badge - Positioned above image */}
+                    <div className="flex justify-center mb-3">
+                      <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
+                        <span className="text-white font-bold text-xs sm:text-sm drop-shadow-sm">{product.name.split(' ')[1]}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Image Container - NO absolute positioning */}
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
+                      <div className="bg-white/95 dark:bg-white/98 rounded-lg p-4">
                         <NextImage
                           src={product.image}
                           alt={product.name}
                           width={128}
                           height={128}
-                          className="rounded-lg shadow-sm object-contain drop-shadow-sm w-full h-full"
-                          style={{ maxWidth: '100%', height: 'auto' }}
+                          className="rounded-lg shadow-sm object-contain w-full h-auto max-h-[120px] sm:max-h-[140px] mx-auto"
                         />
-                      </div>
-                      {/* Size Badge - Positioned inside the image container */}
-                      <div className="absolute top-2 right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg z-20 border-2 border-white dark:border-gray-800">
-                        <span className="text-white font-bold text-xs sm:text-sm drop-shadow-sm">{product.name.split(' ')[1]}</span>
                       </div>
                     </div>
                     
-                    {/* Product Info */}
-                    <div className="space-y-2 mb-4">
+                    {/* Product Info - Clear separation */}
+                    <div className="space-y-3">
                       <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white leading-tight">{product.name}</h3>
                       <p className="text-[#FF3131] dark:text-[#FF5555] font-semibold text-sm sm:text-base">{product.subtitle}</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed px-2">{product.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-[280px] mx-auto">{product.description}</p>
                     </div>
                   </div>
 
