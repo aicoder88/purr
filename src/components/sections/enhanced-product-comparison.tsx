@@ -18,7 +18,9 @@ export function EnhancedProductComparison() {
     try {
       addToCart(productId);
     } catch (error) {
-      console.error('Failed to add to cart:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Failed to add to cart:', error);
+      }
     } finally {
       setTimeout(() => setAddingToCart(null), 1000);
     }
@@ -136,9 +138,9 @@ export function EnhancedProductComparison() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`relative bg-white dark:bg-gray-800 dark:border dark:border-gray-700 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/20 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/30 overflow-hidden ${
+                className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 overflow-hidden ${
                   hoveredProduct === product.id ? 'scale-[1.02] z-20' : 'z-10'
-                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/40 scale-[1.02]' : ''}`}
+                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -156,52 +158,54 @@ export function EnhancedProductComparison() {
 
                 <div className="p-4 sm:p-6">
                   {/* Product Image Section */}
-                  <div className="text-center mb-6">
-                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-4 min-h-[160px] flex items-center justify-center overflow-visible">
-                      <div className="relative w-24 h-24 sm:w-32 sm:h-32">
+                  <div className="text-center mb-6 relative">
+                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 min-h-[180px] flex items-center justify-center shadow-inner">
+                      {/* White background for better image contrast in dark mode */}
+                      <div className="absolute inset-4 bg-white/95 dark:bg-white/98 rounded-lg"></div>
+                      <div className="relative w-28 h-28 sm:w-36 sm:h-36 z-10">
                         <NextImage
                           src={product.image}
                           alt={product.name}
-                          width={128}
-                          height={128}
-                          className="rounded-lg shadow-md object-contain"
+                          width={144}
+                          height={144}
+                          className="rounded-lg shadow-sm object-contain drop-shadow-sm"
                           style={{ maxWidth: '100%', height: 'auto' }}
                         />
                       </div>
-                      {/* Size Badge Overlay - Properly positioned outside image container */}
-                      <div className="absolute top-2 right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 px-3 py-1 rounded-full shadow-lg z-10">
-                        <span className="text-white font-bold text-sm sm:text-base">{product.name.split(' ')[1]}</span>
-                      </div>
+                    </div>
+                    {/* Size Badge - Positioned outside and above the image container */}
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg z-20 border-2 border-white dark:border-gray-800">
+                      <span className="text-white font-bold text-sm sm:text-base drop-shadow-sm">{product.name.split(' ')[1]}</span>
                     </div>
                     
                     {/* Product Info */}
                     <div className="space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">{product.name}</h3>
-                      <p className="text-[#FF3131] font-medium">{product.subtitle}</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">{product.description}</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{product.name}</h3>
+                      <p className="text-[#FF3131] dark:text-[#FF5555] font-semibold">{product.subtitle}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{product.description}</p>
                     </div>
                   </div>
 
                   {/* Pricing */}
                   <div className="text-center mb-4 sm:mb-6">
                     <div className="flex items-center justify-center mb-2">
-                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131]">${product.price}</span>
-                      <span className="text-gray-400 dark:text-gray-500 line-through ml-2 text-lg sm:text-xl">${product.originalPrice}</span>
+                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">${product.price}</span>
+                      <span className="text-gray-500 dark:text-gray-400 line-through ml-2 text-lg sm:text-xl">${product.originalPrice}</span>
                     </div>
-                    <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-xs sm:text-sm font-medium inline-block">
+                    <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold inline-block border border-green-200 dark:border-green-700">
                       Save {product.savings}%
                     </div>
                   </div>
 
                   {/* Key Stats */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/70 rounded-lg border border-gray-100 dark:border-gray-600">
                     <div className="text-center">
-                      <div className="font-bold text-[#FF3131] text-sm sm:text-base">{product.duration}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Duration</div>
+                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base">{product.duration}</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium">Duration</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-bold text-[#FF3131] text-sm sm:text-base">{product.coverage}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Coverage</div>
+                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base">{product.coverage}</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium">Coverage</div>
                     </div>
                   </div>
 
@@ -216,7 +220,7 @@ export function EnhancedProductComparison() {
                           ) : (
                             <X className="w-4 sm:w-5 h-4 sm:h-5 text-gray-300 dark:text-gray-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                           )}
-                          <span className={`text-xs sm:text-sm leading-tight ${isIncluded ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500'}`}>
+                          <span className={`text-xs sm:text-sm leading-tight font-medium ${isIncluded ? 'text-gray-800 dark:text-gray-200' : 'text-gray-400 dark:text-gray-500'}`}>
                             {label}
                           </span>
                         </div>
@@ -244,8 +248,8 @@ export function EnhancedProductComparison() {
                     <Button
                       className={`w-full py-3 sm:py-4 text-base sm:text-lg font-bold transition-all duration-300 ${
                         product.popularity === 3
-                          ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl'
-                          : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white text-gray-800 dark:text-gray-200 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131]'
+                          ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl border-2 border-transparent'
+                          : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-500 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
                       }`}
                       onClick={() => handleAddToCart(product.id)}
                       disabled={!!addingToCart}
@@ -278,28 +282,28 @@ export function EnhancedProductComparison() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-[#FF3131]/10 dark:to-[#FF3131]/20 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-[#FF3131]/30">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Why Choose Purrify?</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Why Choose Purrify?</h3>
               <p className="text-gray-600 dark:text-gray-300">Join thousands of satisfied cat parents who trust Purrify</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-[#FF3131] mb-1">10,000+</div>
-                <div className="text-gray-600 dark:text-gray-300">Happy Customers</div>
+                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">10,000+</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Customers</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#FF3131] mb-1">4.9/5</div>
-                <div className="text-gray-600 dark:text-gray-300">Average Rating</div>
+                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">4.9/5</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">Average Rating</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#FF3131] mb-1">99%</div>
-                <div className="text-gray-600 dark:text-gray-300">Satisfaction Rate</div>
+                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">99%</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">Satisfaction Rate</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#FF3131] mb-1">7 Days</div>
-                <div className="text-gray-600 dark:text-gray-300">Odor-Free Guarantee</div>
+                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">7 Days</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">Odor-Free Guarantee</div>
               </div>
             </div>
           </div>

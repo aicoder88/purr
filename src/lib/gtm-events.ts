@@ -1,12 +1,7 @@
 // Google Tag Manager Event Tracking for Purrify
 // This file contains all the dataLayer events for comprehensive tracking
 
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-    gtag: (...args: unknown[]) => void;
-  }
-}
+// Using global declarations from window.d.ts
 
 // Initialize dataLayer if it doesn't exist
 if (typeof window !== 'undefined' && !window.dataLayer) {

@@ -1,35 +1,67 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 import { Layout } from '../src/components/layout/layout';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../src/lib/constants';
+import { MONTREAL_STRUCTURED_DATA, MONTREAL_SEO_CONFIG, QUEBEC_LEGAL_COMPLIANCE } from '../src/lib/montreal-seo-config';
+import { useTranslation } from '../src/lib/translation-context';
+import { Container } from '../src/components/ui/container';
+import { Button } from '../src/components/ui/button';
+import { MapPin, Phone, Clock, Truck, Shield, Star, ChevronRight } from 'lucide-react';
 
 export default function Montreal() {
-  const pageTitle = 'Cat Litter Deodorizer Montreal Stores - Where to Buy Purrify Canada';
-  const pageDescription = 'Find Purrify cat litter deodorizer at Montreal stores including Mondou, PetSmart. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
-  const canonicalUrl = 'https://purrify.ca/montreal';
+  const { t, locale } = useTranslation();
+  
+  const pageTitle = locale === 'fr' 
+    ? 'Désodorisant Litière Chat Montréal - Où Acheter Purrify Québec'
+    : 'Cat Litter Deodorizer Montreal Stores - Where to Buy Purrify Canada';
+    
+  const pageDescription = locale === 'fr'
+    ? 'Trouvez le désodorisant pour litière de chat Purrify dans les magasins de Montréal: Mondou, PetSmart. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
+    : 'Find Purrify cat litter deodorizer at Montreal stores including Mondou, PetSmart. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
+    
+  const canonicalUrl = `https://purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
 
+  // Montreal stores data with bilingual content
+  const montrealStores = [
+    {
+      name: "Mondou Plateau Mont-Royal",
+      nameEn: "Mondou Plateau Mont-Royal", 
+      address: "1485 Avenue du Mont-Royal E, Montréal, QC H2J 1Z6",
+      phone: "(514) 522-1555",
+      hours: locale === 'fr' ? "Lun-Ven 9h-21h, Sam-Dim 9h-18h" : "Mon-Fri 9AM-9PM, Sat-Sun 9AM-6PM",
+      coordinates: { lat: 45.5227, lng: -73.5794 },
+      neighborhood: locale === 'fr' ? "Plateau Mont-Royal" : "Plateau Mont-Royal",
+      specialties: locale === 'fr' ? ["Produits naturels", "Conseil expert"] : ["Natural products", "Expert advice"]
+    },
+    {
+      name: "PetSmart Centre-Ville",
+      nameEn: "PetSmart Downtown",
+      address: "1500 Atwater Ave, Montreal, QC H3Z 1X5", 
+      phone: "(514) 932-7000",
+      hours: locale === 'fr' ? "Lun-Sam 9h-21h, Dim 10h-18h" : "Mon-Sat 9AM-9PM, Sun 10AM-6PM",
+      coordinates: { lat: 45.4894, lng: -73.5850 },
+      neighborhood: locale === 'fr' ? "Centre-Ville" : "Downtown",
+      specialties: locale === 'fr' ? ["Vaste sélection", "Prix compétitifs"] : ["Wide selection", "Competitive prices"]
+    },
+    {
+      name: "Safari Animalerie Westmount", 
+      nameEn: "Safari Pet Store Westmount",
+      address: "4898 Sherbrooke St W, Westmount, QC H3Z 1H1",
+      phone: "(514) 486-6666",
+      hours: locale === 'fr' ? "Lun-Ven 9h-19h, Sam-Dim 9h-17h" : "Mon-Fri 9AM-7PM, Sat-Sun 9AM-5PM",
+      coordinates: { lat: 45.4825, lng: -73.5917 },
+      neighborhood: "Westmount",
+      specialties: locale === 'fr' ? ["Service personnalisé", "Produits premium"] : ["Personal service", "Premium products"]
+    }
+  ];
+  
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Purrify Montreal",
-    "description": "Premium activated carbon cat litter additive available at Montreal pet stores",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Montreal",
-      "addressRegion": "QC",
-      "addressCountry": "CA"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 45.5017,
-      "longitude": -73.5673
-    },
-    "url": "https://purrify.ca/montreal",
-    "telephone": "+1-514-XXX-XXXX",
-    "priceRange": "$6.99-$29.99",
-    "paymentAccepted": "Cash, Credit Card, Debit",
-    "currenciesAccepted": "CAD"
+    ...MONTREAL_STRUCTURED_DATA,
+    "name": locale === 'fr' ? "Purrify - Désodorisant Litière Chat Montréal" : "Purrify - Cat Litter Deodorizer Montreal",
+    "description": pageDescription,
+    "url": canonicalUrl
   };
 
   return (
