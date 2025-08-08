@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
-import { Layout } from '../src/components/layout/layout';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../src/lib/constants';
 import { MONTREAL_STRUCTURED_DATA, MONTREAL_SEO_CONFIG, QUEBEC_LEGAL_COMPLIANCE } from '../src/lib/montreal-seo-config';
@@ -121,7 +120,7 @@ export default function Montreal() {
   const allStructuredData = [baseStructuredData, ...storeStructuredData];
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -262,7 +261,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -290,7 +289,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -318,7 +317,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -346,7 +345,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Animal Shop GIGI</h3>
-                  <p className="text-gray-500 text-xs italic">Family-owned pet store</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie familiale' : 'Family-owned pet store'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -374,7 +373,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -402,7 +401,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -430,7 +429,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -458,7 +457,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -514,7 +513,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">KONG ANIMALERIE</h3>
-                  <p className="text-gray-500 text-xs italic">Full-service pet store</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie à service complet' : 'Full-service pet store'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -542,7 +541,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Coquette et Finegueule</h3>
-                  <p className="text-gray-500 text-xs italic">Pet store with grooming services</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie avec services de toilettage' : 'Pet store with grooming services'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -570,7 +569,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -598,7 +597,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -626,7 +625,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -654,7 +653,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
+                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -1211,6 +1210,6 @@ export default function Montreal() {
           </div>
         </section>
       </div>
-    </Layout>
+    </>
   );
 }
