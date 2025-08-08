@@ -153,7 +153,9 @@ export class AdvancedCache<T = unknown> {
       this.updateAccessOrder(key);
       return true;
     } catch (error) {
-      console.warn('Cache set error:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Cache set error:', error);
+      }
       return false;
     }
   }

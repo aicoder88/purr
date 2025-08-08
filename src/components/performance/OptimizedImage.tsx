@@ -144,6 +144,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         document.head.removeChild(link);
       };
     }
+    // Return undefined explicitly for TypeScript
+    return undefined;
   }, [criticalResource, src]);
 
   const imageProps = {

@@ -131,11 +131,11 @@ export class PurrifyIncrementalCache<T = unknown> {
 
   async cleanup(): Promise<void> {
     const now = Date.now();
-    const oneHour = 60 * 60 * 1000;
+    const CACHE_CLEANUP_THRESHOLD_MS = 60 * 60 * 1000; // 1 hour in milliseconds
 
     for (const [key, entry] of this.cache.entries()) {
       // Remove entries older than 1 hour
-      if (now - Date.now() > oneHour) {
+      if (now - entry.lastModified > CACHE_CLEANUP_THRESHOLD_MS) {
         this.currentMemorySize -= JSON.stringify(entry.value).length;
         this.cache.delete(key);
 

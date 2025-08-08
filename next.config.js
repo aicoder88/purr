@@ -94,7 +94,6 @@ const nextConfig = {
     webpackBuildWorker: true,
     // Advanced caching optimizations
     isrMemoryCacheSize: 52428800, // 50MB
-    // incrementalCacheHandlerPath: require.resolve('./src/lib/cache-handler.js'),
     // Edge runtime optimizations
     runtime: 'nodejs',
     serverComponentsExternalPackages: ['sharp'],
@@ -105,6 +104,10 @@ const nextConfig = {
     staticPageGenerationTimeout: 120,
     // Bundle optimization
     bundlePagesRouterDependencies: true,
+    // Scroll restoration for better UX
+    scrollRestoration: true,
+    // Enable gzip compression
+    gzipSize: true,
     turbo: {
       rules: {
         '*.svg': {
@@ -129,12 +132,6 @@ const nextConfig = {
   
   // Set the output directory that Vercel expects
   distDir: '.next',
-  
-  // Optimize for SEO
-  poweredByHeader: false,
-  
-  // Compression for better performance
-  compress: true,
   
   // i18n configuration for multiple languages
   i18n: {
@@ -169,16 +166,6 @@ const nextConfig = {
   // No trailing slash for consistent URLs
   trailingSlash: false,
   
-  // Optimize for Core Web Vitals
-  experimental: {
-    // Scroll restoration for better UX
-    scrollRestoration: true,
-    // Enable optimizeCss for better CSS optimization
-    optimizeCss: true,
-    // Enable gzip compression
-    gzipSize: true,
-  },
-  
   // Optimize asset loading - don't use assetPrefix as it can cause issues
   assetPrefix: '',
   
@@ -208,10 +195,10 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
-          // Add security headers for better Core Web Vitals
+          // Add security headers for better Core Web Vitals  
           {
             key: 'Cross-Origin-Embedder-Policy',
-            value: 'require-corp',
+            value: 'unsafe-none',
           },
           {
             key: 'Cross-Origin-Opener-Policy',
@@ -475,9 +462,52 @@ const nextConfig = {
       
       // Enable module concatenation for better performance
       config.optimization.concatenateModules = true;
+      
+      // Add performance hints
+      config.performance = {
+        hints: 'warning',
+        maxEntrypointSize: 512000, // 500KB
+        maxAssetSize: 512000, // 500KB
+      };
     }
     
-    // TypeScript is handled natively by Next.js, no need for ts-loader
+    // Optimize module resolution
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': require('path').resolve(process.cwd(), 'src'),
+    };
+    
+    // Add babel plugins for production optimization
+    if (!dev) {
+      config.module = config.module || {};
+      config.module.rules = config.module.rules || [];
+      
+      // Add rule for optimizing SVGs
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgo: true,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'removeViewBox',
+                    active: false,
+                  },
+                  {
+                    name: 'removeDimensions',
+                    active: true,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      });
+    }
 
     return config;
   },

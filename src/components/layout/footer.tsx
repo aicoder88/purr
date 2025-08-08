@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { Container } from "../../components/ui/container";
 import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
@@ -187,7 +188,14 @@ export function Footer() {
         </div>
         </div>
       </Container>
-      <div dangerouslySetInnerHTML={{ __html: '<script src="https://app.simplebotinstall.com/js/chat_plugin.js" data-bot-id="40892"></script>' }} />
+      
+      {/* Chat Plugin */}
+      <Script
+        src="https://app.simplebotinstall.com/js/chat_plugin.js"
+        data-bot-id="40892"
+        strategy="lazyOnload"
+        defer
+      />
     </footer>
   );
 }

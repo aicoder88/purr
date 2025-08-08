@@ -1,0 +1,20 @@
+Contact: security@purrify.ca
+Contact: https://purrify.ca/support/contact
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en, fr
+Canonical: https://purrify.ca/.well-known/security.txt
+Policy: https://purrify.ca/privacy-policy
+Hiring: https://purrify.ca/about/careers
+
+# Security Information for Purrify.ca
+# This file provides security contact information
+# for responsible disclosure of security vulnerabilities.
+
+# Please report any security issues to:
+# security@purrify.ca
+
+# Our security policy can be found at:
+# https://purrify.ca/privacy-policy
+
+# We appreciate responsible disclosure and will
+# respond to legitimate security reports promptly.

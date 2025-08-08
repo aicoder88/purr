@@ -20,7 +20,11 @@ export const gtmEvent = (eventName: string, parameters: Record<string, unknown> 
       event: eventName,
       ...parameters
     });
-    console.log('GTM Event:', eventName, parameters);
+    
+    // Only log in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('GTM Event:', eventName, parameters);
+    }
   }
 };
 
