@@ -18,33 +18,13 @@ export default function Montreal() {
     : 'Cat Litter Deodorizer Montreal Stores - Where to Buy Purrify Canada';
     
   const pageDescription = locale === 'fr'
-    ? 'Trouvez le désodorisant pour litière de chat Purrify dans les magasins de Montréal: Mondou, PetSmart. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
-    : 'Find Purrify cat litter deodorizer at Montreal stores including Mondou, PetSmart. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
+    ? 'Trouvez le désodorisant pour litière de chat Purrify dans les boutiques d\'animaux indépendantes de Montréal. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
+    : 'Find Purrify cat litter deodorizer at independent pet stores throughout Montreal. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
     
   const canonicalUrl = `https://purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
 
   // Montreal stores data with bilingual content
   const montrealStores = [
-    {
-      name: "Mondou Plateau Mont-Royal",
-      nameEn: "Mondou Plateau Mont-Royal", 
-      address: "1485 Avenue du Mont-Royal E, Montréal, QC H2J 1Z6",
-      phone: "(514) 522-1555",
-      hours: locale === 'fr' ? "Lun-Ven 9h-21h, Sam-Dim 9h-18h" : "Mon-Fri 9AM-9PM, Sat-Sun 9AM-6PM",
-      coordinates: { lat: 45.5227, lng: -73.5794 },
-      neighborhood: locale === 'fr' ? "Plateau Mont-Royal" : "Plateau Mont-Royal",
-      specialties: locale === 'fr' ? ["Produits naturels", "Conseil expert"] : ["Natural products", "Expert advice"]
-    },
-    {
-      name: "PetSmart Centre-Ville",
-      nameEn: "PetSmart Downtown",
-      address: "1500 Atwater Ave, Montreal, QC H3Z 1X5", 
-      phone: "(514) 932-7000",
-      hours: locale === 'fr' ? "Lun-Sam 9h-21h, Dim 10h-18h" : "Mon-Sat 9AM-9PM, Sun 10AM-6PM",
-      coordinates: { lat: 45.4894, lng: -73.5850 },
-      neighborhood: locale === 'fr' ? "Centre-Ville" : "Downtown",
-      specialties: locale === 'fr' ? ["Vaste sélection", "Prix compétitifs"] : ["Wide selection", "Competitive prices"]
-    },
     {
       name: "Safari Animalerie Westmount", 
       nameEn: "Safari Pet Store Westmount",
@@ -87,7 +67,7 @@ export default function Montreal() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, Mondou Purrify',
+            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, independent pet stores',
           },
         ]}
       />
@@ -110,7 +90,7 @@ export default function Montreal() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
             <h2 className="text-2xl font-semibold text-blue-900 mb-3">Now Available in Montreal!</h2>
             <p className="text-blue-800">
-              Visit your local Mondou, PetSmart, or independent pet store to find Purrify. 
+              Visit your local independent pet store to find Purrify. 
               Call ahead to confirm availability at your preferred location.
             </p>
           </div>
@@ -123,142 +103,86 @@ export default function Montreal() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
-            {/* Doghaus */}
+            {/* Pattes et Griffes - Sainte-Thérèse */}
             <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
-                    src="/optimized/doghaus.webp"
-                    alt="Doghaus Montreal - Premium Pet Store Logo"
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
                     width={64}
                     height={64}
                     className="object-contain rounded"
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold">Doghaus</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet products & supplies</p>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
+                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Doghaus Montreal</strong><br />
-                  5671 Rue Sherbrooke O<br />
-                  Montreal, QC H4A 1X4<br />
-                  <span className="text-blue-600">(514) 483-3555</span><br />
-                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <strong>Pattes et Griffes - Sainte-Thérèse</strong><br />
+                  190 Bd du Curé-Labelle suite 1b<br />
+                  Sainte-Thérèse, QC<br />
+                  <span className="text-blue-600">(450) 818-1310</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>
 
-            {/* KONG ANIMALERIE */}
+            {/* Chico - Sainte-Thérèse */}
             <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
-                    src="/optimized/kong-animalerie.webp"
-                    alt="KONG ANIMALERIE Montreal Pet Store Logo"
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
                     width={64}
                     height={64}
                     className="object-contain rounded"
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold">KONG ANIMALERIE</h3>
-                  <p className="text-gray-500 text-xs italic">Full-service pet store</p>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>KONG ANIMALERIE</strong><br />
-                  5555 Bd Decarie<br />
-                  Montreal, QC H3X 2H9<br />
-                  <span className="text-blue-600">(514) 662-8373</span><br />
-                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Facebook Page</a>
+                  <strong>Chico - Sainte-Thérèse</strong><br />
+                  95 Bd du Curé-Labelle Suite 8<br />
+                  Sainte-Thérèse, QC<br />
+                  <span className="text-blue-600">(450) 965-3906</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>
 
-            {/* Coquette et Finegueule */}
+            {/* Chico - Sainte-Marthe-sur-le-Lac */}
             <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
-                    src="/optimized/coquette-finegueule.webp"
-                    alt="Coquette et Finegueule - Verdun Pet Store with Grooming Logo"
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
                     width={64}
                     height={64}
                     className="object-contain rounded"
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold">Coquette et Finegueule</h3>
-                  <p className="text-gray-500 text-xs italic">Pet store with grooming services</p>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Coquette et Finegueule</strong><br />
-                  5203 Av Bannantyne<br />
-                  Verdun, QC H4H 1J8<br />
-                  <span className="text-blue-600">(514) 761-4221</span><br />
-                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
-                </div>
-              </div>
-            </div>
-
-            {/* Pitou Minou & Compagnons Kirkland */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
-                  <OptimizedImage
-                    src="/optimized/pitou-minou.webp"
-                    alt="Pitou Minou & Compagnons Montreal Pet Store Logo"
-                    width={64}
-                    height={64}
-                    className="object-contain rounded"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
-                </div>
-              </div>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <strong>Pitou Minou Kirkland</strong><br />
-                  16936 Route Transcanadienne<br />
-                  Kirkland, QC H9H 4M7<br />
-                  <span className="text-blue-600">(514) 695-5005</span><br />
-                  <a href="https://pitou-minou.ca/en/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
-                </div>
-              </div>
-            </div>
-
-            {/* Pitou Minou & Compagnons Verdun */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
-                  <OptimizedImage
-                    src="/optimized/pitou-minou.webp"
-                    alt="Pitou Minou & Compagnons Montreal Pet Store Logo"
-                    width={64}
-                    height={64}
-                    className="object-contain rounded"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
-                </div>
-              </div>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <strong>Pitou Minou Verdun</strong><br />
-                  4100 Rue Wellington<br />
-                  Verdun, QC H4G 1V7<br />
-                  <span className="text-blue-600">(514) 732-0555</span><br />
-                  <a href="https://pitou-minou.ca/en/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <strong>Chico - Sainte-Marthe-sur-le-Lac</strong><br />
+                  2860 B Boul. des Promenades<br />
+                  Sainte-Marthe-Sur-Le-Lac, QC<br />
+                  <span className="text-blue-600">(450) 598-2860</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>
@@ -284,9 +208,317 @@ export default function Montreal() {
                 <div>
                   <strong>Animal Shop GIGI</strong><br />
                   356 Bd Arthur-Sauvé<br />
-                  Saint-Eustache, QC J7P 5B7<br />
+                  Saint-Eustache, QC<br />
                   <span className="text-blue-600">(450) 598-3444</span><br />
                   <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Chico - Laval */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Chico - Bd Arthur-Sauvé, Laval</strong><br />
+                  4511 Bd Arthur-Sauvé<br />
+                  Laval, QC<br />
+                  <span className="text-blue-600">(450) 314-2442</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pattes et Griffes - Cartier Ouest */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
+                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pattes et Griffes - Cartier Ouest</strong><br />
+                  293 Bd Cartier Ouest<br />
+                  Laval, QC<br />
+                  <span className="text-blue-600">(450) 490-1414</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pitou Minou & Compagnons Kirkland */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/pitou-minou.webp"
+                    alt="Pitou Minou & Compagnons - Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
+                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pitou Minou Kirkland</strong><br />
+                  16936 Route Transcanadienne<br />
+                  Kirkland, QC<br />
+                  <span className="text-blue-600">(514) 695-5005</span><br />
+                  <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Chico - Boul. St-Laurent (Montreal) */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Chico - Boul. St-Laurent (Montreal)</strong><br />
+                  7001 Boul. Saint-Laurent<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 657-5813</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Doghaus */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/doghaus.webp"
+                    alt="Doghaus Montreal - Premium Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Doghaus</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet products & supplies</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Doghaus</strong><br />
+                  5671 Rue Sherbrooke O<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 483-3555</span><br />
+                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* KONG ANIMALERIE */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/kong-animalerie.webp"
+                    alt="KONG ANIMALERIE - Montreal Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">KONG ANIMALERIE</h3>
+                  <p className="text-gray-500 text-xs italic">Full-service pet store</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>KONG ANIMALERIE</strong><br />
+                  5555 Bd Decarie<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 662-8373</span><br />
+                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Coquette et Finegueule */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/coquette-finegueule.webp"
+                    alt="Coquette et Finegueule - Pet Store with Grooming Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Coquette et Finegueule</h3>
+                  <p className="text-gray-500 text-xs italic">Pet store with grooming services</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Coquette et Finegueule</strong><br />
+                  5203 Av Bannantyne<br />
+                  Verdun, QC<br />
+                  <span className="text-blue-600">(514) 761-4221</span><br />
+                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pitou Minou & Compagnons Verdun */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="/optimized/pitou-minou.webp"
+                    alt="Pitou Minou & Compagnons - Pet Store Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
+                  <p className="text-gray-500 text-xs italic">Global Pet Foods location</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pitou Minou Verdun</strong><br />
+                  4100 Rue Wellington<br />
+                  Verdun, QC<br />
+                  <span className="text-blue-600">(514) 732-0555</span><br />
+                  <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Chico - Mont-Royal E */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Chico - Mont-Royal E</strong><br />
+                  2016 Avenue du Mont-Royal E<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 521-0201</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Chico - Rue Ontario E */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
+                    alt="Chico - Boutique d'animaux Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
+                  <p className="text-gray-500 text-xs italic">Premium pet boutique</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Chico - Rue Ontario E</strong><br />
+                  3911 Rue Ontario E<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 527-1371</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pattes et Griffes - Marche Centrale */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
+                    width={64}
+                    height={64}
+                    className="object-contain rounded"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
+                  <p className="text-gray-500 text-xs italic">Complete pet care and supplies</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <strong>Pattes et Griffes - Marche Centrale</strong><br />
+                  9185 Bd de l'Acadie<br />
+                  Montreal, QC<br />
+                  <span className="text-blue-600">(514) 389-0090</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
                 </div>
               </div>
             </div>
@@ -366,7 +598,7 @@ export default function Montreal() {
               </div>
               <p className="text-gray-700 italic mb-3">
                 "Living in a small apartment with my cat Biscuit, odor control is essential. 
-                Purrify from Mondou has been a game-changer - no more embarrassing smells when guests visit!"
+                Purrify has been a game-changer - no more embarrassing smells when guests visit!"
               </p>
               <div className="text-yellow-400">★★★★★</div>
             </div>
@@ -383,7 +615,7 @@ export default function Montreal() {
               </div>
               <p className="text-gray-700 italic mb-3">
                 "My two cats Pickles and Mochi love their litter box, and I love that Purrify keeps 
-                our condo fresh all winter long. Found it at the Rosemont Mondou - highly recommend!"
+                our condo fresh all winter long. Found it at our local pet store - highly recommend!"
               </p>
               <div className="text-yellow-400">★★★★★</div>
             </div>
@@ -417,23 +649,21 @@ export default function Montreal() {
             <h3 className="text-xl font-semibold mb-4">From Downtown Montreal (Crescent Street Area)</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">To Mondou Plateau (Closest Location)</h4>
+                <h4 className="font-semibold text-blue-600 mb-2">To Local Pet Stores</h4>
                 <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Head east on Rue Sherbrooke</li>
-                  <li>• Turn left on Rue Saint-Denis</li>
-                  <li>• Continue north to 4381 Rue Saint-Denis</li>
-                  <li>• <strong>Distance:</strong> 3.2 km (8 minutes by car)</li>
-                  <li>• <strong>Metro:</strong> Mont-Royal station (Orange line)</li>
+                  <li>• Multiple independent pet stores throughout Montreal</li>
+                  <li>• Call ahead to confirm Purrify availability</li>
+                  <li>• Ask stores to order if not in stock</li>
+                  <li>• <strong>Metro:</strong> Accessible by public transport</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-green-600 mb-2">To PetSmart Downtown</h4>
+                <h4 className="font-semibold text-green-600 mb-2">To Independent Pet Stores</h4>
                 <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Head southwest on Rue Atwater</li>
-                  <li>• Continue to 1500 Rue Atwater</li>
-                  <li>• <strong>Distance:</strong> 2.1 km (6 minutes by car)</li>
-                  <li>• <strong>Metro:</strong> Atwater station (Green line)</li>
-                  <li>• <strong>Parking:</strong> Available on-site</li>
+                  <li>• Visit any of the listed independent pet stores</li>
+                  <li>• Call ahead to confirm Purrify availability</li>
+                  <li>• Most locations accessible by public transport</li>
+                  <li>• <strong>Support:</strong> Local businesses with personalized service</li>
                 </ul>
               </div>
             </div>
@@ -492,8 +722,8 @@ export default function Montreal() {
               Visit Your Local Montreal Pet Store Today
             </h2>
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Experience the difference Purrify makes in your home. Available now at Mondou, PetSmart, 
-              and independent pet stores throughout the Greater Montreal Area.
+              Experience the difference Purrify makes in your home. Available now at 
+              independent pet stores throughout the Greater Montreal Area.
             </p>
             <div className="space-x-4">
               <Link 

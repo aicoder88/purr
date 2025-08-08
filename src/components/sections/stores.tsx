@@ -125,14 +125,6 @@ const STORES = [
     url: "https://pattesgriffes.com/storelocator.html",
     description: "Complete pet care and supplies"
   },
-  {
-    name: "Mondou - Multiple Locations",
-    location: "Quebec, QC",
-    address: "Various locations across Quebec",
-    phone: "1-800-363-3777",
-    url: "https://www.mondou.com/en-ca/store-locator",
-    description: "Quebec's largest pet store chain"
-  }
 ];
 
 // Helper function to get store logo configuration using local and external images
@@ -200,15 +192,6 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
-  if (storeName.includes('Mondou')) {
-    return {
-      src: "https://www.mondou.com/on/demandware.static/-/Sites-Mondou-Library/default/dw35c4e6a5/images/mondou-logo.svg",
-      alt: "Mondou - Quebec Pet Store Chain Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
   return null;
 };
 
@@ -221,7 +204,7 @@ const hasWhiteBackground = (storeName: string) => {
          storeName.includes('Doghaus') || 
          storeName.includes('KONG') || 
          storeName.includes('Coquette') ||
-         storeName.includes('Mondou');
+         storeName.includes('Coquette');
 };
 
 export function Stores() {
