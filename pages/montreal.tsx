@@ -6,7 +6,6 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../src/lib/constants';
 import { MONTREAL_STRUCTURED_DATA, MONTREAL_SEO_CONFIG, QUEBEC_LEGAL_COMPLIANCE } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
-import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import { MapPin, Phone, Clock, Truck, Shield, Star, ChevronRight } from 'lucide-react';
 
@@ -272,7 +271,7 @@ export default function Montreal() {
                   190 Bd du Curé-Labelle suite 1b<br />
                   Sainte-Thérèse, QC<br />
                   <span className="text-blue-600">(450) 818-1310</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -300,7 +299,7 @@ export default function Montreal() {
                   95 Bd du Curé-Labelle Suite 8<br />
                   Sainte-Thérèse, QC<br />
                   <span className="text-blue-600">(450) 965-3906</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -328,7 +327,7 @@ export default function Montreal() {
                   2860 B Boul. des Promenades<br />
                   Sainte-Marthe-Sur-Le-Lac, QC<br />
                   <span className="text-blue-600">(450) 598-2860</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -356,7 +355,7 @@ export default function Montreal() {
                   356 Bd Arthur-Sauvé<br />
                   Saint-Eustache, QC<br />
                   <span className="text-blue-600">(450) 598-3444</span><br />
-                  <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -384,7 +383,7 @@ export default function Montreal() {
                   4511 Bd Arthur-Sauvé<br />
                   Laval, QC<br />
                   <span className="text-blue-600">(450) 314-2442</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -412,7 +411,7 @@ export default function Montreal() {
                   293 Bd Cartier Ouest<br />
                   Laval, QC<br />
                   <span className="text-blue-600">(450) 490-1414</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -440,7 +439,7 @@ export default function Montreal() {
                   16936 Route Transcanadienne<br />
                   Kirkland, QC<br />
                   <span className="text-blue-600">(514) 695-5005</span><br />
-                  <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -468,7 +467,7 @@ export default function Montreal() {
                   7001 Boul. Saint-Laurent<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 657-5813</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -496,7 +495,7 @@ export default function Montreal() {
                   5671 Rue Sherbrooke O<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 483-3555</span><br />
-                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -524,7 +523,7 @@ export default function Montreal() {
                   5555 Bd Decarie<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 662-8373</span><br />
-                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -552,7 +551,7 @@ export default function Montreal() {
                   5203 Av Bannantyne<br />
                   Verdun, QC<br />
                   <span className="text-blue-600">(514) 761-4221</span><br />
-                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -580,7 +579,7 @@ export default function Montreal() {
                   4100 Rue Wellington<br />
                   Verdun, QC<br />
                   <span className="text-blue-600">(514) 732-0555</span><br />
-                  <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -608,7 +607,7 @@ export default function Montreal() {
                   2016 Avenue du Mont-Royal E<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 521-0201</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -636,7 +635,7 @@ export default function Montreal() {
                   3911 Rue Ontario E<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 527-1371</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -664,22 +663,33 @@ export default function Montreal() {
                   9185 Bd de l'Acadie<br />
                   Montreal, QC<br />
                   <span className="text-blue-600">(514) 389-0090</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Visit Website</a>
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-yellow-800 mb-2">Can't Find Purrify at Your Local Store?</h3>
+            <h3 className="text-lg font-semibold text-yellow-800 mb-2">
+              {locale === 'fr' 
+                ? 'Vous ne trouvez pas Purrify dans votre magasin local?'
+                : 'Can\'t Find Purrify at Your Local Store?'
+              }
+            </h3>
             <p className="text-yellow-700 mb-4">
-              Ask your store manager to order Purrify! Many stores are happy to stock products their customers request.
+              {locale === 'fr'
+                ? 'Demandez à votre gérant de magasin de commander Purrify! Plusieurs magasins sont heureux de stocker des produits que leurs clients demandent.'
+                : 'Ask your store manager to order Purrify! Many stores are happy to stock products their customers request.'
+              }
             </p>
             <Link 
               href="/support/contact" 
               className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
-              Contact Us for Store Requests
+              {locale === 'fr'
+                ? 'Contactez-nous pour Demandes de Magasin'
+                : 'Contact Us for Store Requests'
+              }
             </Link>
           </div>
         </section>
@@ -834,8 +844,10 @@ export default function Montreal() {
                 </div>
               </div>
               <p className="text-gray-700 italic mb-3">
-                "Living in a small apartment with my cat Biscuit, odor control is essential. 
-                Purrify has been a game-changer - no more embarrassing smells when guests visit!"
+                {locale === 'fr'
+                  ? '"Vivant dans un petit appartement avec mon chat Biscuit, le contrôle des odeurs est essentiel. Purrify a été révolutionnaire - plus d\'odeurs embarrassantes quand les invités arrivent!"'
+                  : '"Living in a small apartment with my cat Biscuit, odor control is essential. Purrify has been a game-changer - no more embarrassing smells when guests visit!"'
+                }
               </p>
               <div className="text-yellow-400">★★★★★</div>
             </div>
@@ -851,8 +863,10 @@ export default function Montreal() {
                 </div>
               </div>
               <p className="text-gray-700 italic mb-3">
-                "My two cats Pickles and Mochi love their litter box, and I love that Purrify keeps 
-                our condo fresh all winter long. Found it at our local pet store - highly recommend!"
+                {locale === 'fr'
+                  ? '"Mes deux chats Cornichon et Mochi adorent leur litière, et j\'adore que Purrify garde notre condo frais tout l\'hiver. Trouvé dans notre animalerie locale - je le recommande fortement!"'
+                  : '"My two cats Pickles and Mochi love their litter box, and I love that Purrify keeps our condo fresh all winter long. Found it at our local pet store - highly recommend!"'
+                }
               </p>
               <div className="text-yellow-400">★★★★★</div>
             </div>
@@ -868,8 +882,10 @@ export default function Montreal() {
                 </div>
               </div>
               <p className="text-gray-700 italic mb-3">
-                "As a veterinary technician in Montreal, I recommend Purrify to all my clients. 
-                It's natural, effective, and safe for cats of all ages. My own cat Noodle approves!"
+                {locale === 'fr'
+                  ? '"En tant que technicienne vétérinaire à Montréal, je recommande Purrify à tous mes clients. C\'est naturel, efficace et sécuritaire pour les chats de tous âges. Mon propre chat Nouille approuve!"'
+                  : '"As a veterinary technician in Montreal, I recommend Purrify to all my clients. It\'s natural, effective, and safe for cats of all ages. My own cat Noodle approves!"'
+                }
               </p>
               <div className="text-yellow-400">★★★★★</div>
             </div>
@@ -879,28 +895,84 @@ export default function Montreal() {
         {/* Directions from Crescent Street */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Getting to Montreal Pet Stores
+            {locale === 'fr'
+              ? 'Se Rendre aux Animaleries de Montréal'
+              : 'Getting to Montreal Pet Stores'
+            }
           </h2>
           
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-8">
-            <h3 className="text-xl font-semibold mb-4">From Downtown Montreal (Crescent Street Area)</h3>
+            <h3 className="text-xl font-semibold mb-4">
+              {locale === 'fr' 
+                ? 'Depuis le centre-ville de Montréal (secteur rue Crescent)'
+                : 'From Downtown Montreal (Crescent Street Area)'
+              }
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">To Local Pet Stores</h4>
+                <h4 className="font-semibold text-blue-600 mb-2">
+                  {locale === 'fr' ? 'Vers les Animaleries Locales' : 'To Local Pet Stores'}
+                </h4>
                 <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Multiple independent pet stores throughout Montreal</li>
-                  <li>• Call ahead to confirm Purrify availability</li>
-                  <li>• Ask stores to order if not in stock</li>
-                  <li>• <strong>Metro:</strong> Accessible by public transport</li>
+                  <li>
+                    {locale === 'fr' 
+                      ? '• Multiples animaleries indépendantes à travers Montréal'
+                      : '• Multiple independent pet stores throughout Montreal'
+                    }
+                  </li>
+                  <li>
+                    {locale === 'fr'
+                      ? '• Appelez à l\'avance pour confirmer la disponibilité de Purrify'
+                      : '• Call ahead to confirm Purrify availability'
+                    }
+                  </li>
+                  <li>
+                    {locale === 'fr'
+                      ? '• Demandez aux magasins de commander si pas en stock'
+                      : '• Ask stores to order if not in stock'
+                    }
+                  </li>
+                  <li>
+                    <strong>{locale === 'fr' ? 'Métro:' : 'Metro:'}</strong>
+                    {' '}
+                    {locale === 'fr'
+                      ? 'Accessible par transport en commun'
+                      : 'Accessible by public transport'
+                    }
+                  </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-green-600 mb-2">To Independent Pet Stores</h4>
+                <h4 className="font-semibold text-green-600 mb-2">
+                  {locale === 'fr' ? 'Vers les Animaleries Indépendantes' : 'To Independent Pet Stores'}
+                </h4>
                 <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Visit any of the listed independent pet stores</li>
-                  <li>• Call ahead to confirm Purrify availability</li>
-                  <li>• Most locations accessible by public transport</li>
-                  <li>• <strong>Support:</strong> Local businesses with personalized service</li>
+                  <li>
+                    {locale === 'fr'
+                      ? '• Visitez n\'importe laquelle des animaleries indépendantes listées'
+                      : '• Visit any of the listed independent pet stores'
+                    }
+                  </li>
+                  <li>
+                    {locale === 'fr'
+                      ? '• Appelez à l\'avance pour confirmer la disponibilité de Purrify'
+                      : '• Call ahead to confirm Purrify availability'
+                    }
+                  </li>
+                  <li>
+                    {locale === 'fr'
+                      ? '• La plupart des emplacements accessibles par transport en commun'
+                      : '• Most locations accessible by public transport'
+                    }
+                  </li>
+                  <li>
+                    <strong>{locale === 'fr' ? 'Soutien:' : 'Support:'}</strong>
+                    {' '}
+                    {locale === 'fr'
+                      ? 'Entreprises locales avec service personnalisé'
+                      : 'Local businesses with personalized service'
+                    }
+                  </li>
                 </ul>
               </div>
             </div>
@@ -984,38 +1056,74 @@ export default function Montreal() {
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">17g Trial Size</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">$6.99 CAD</div>
-              <p className="text-gray-600 mb-4">Perfect for trying Purrify or travel</p>
+              <h3 className="text-xl font-semibold mb-3">
+                {locale === 'fr' ? 'Format d\'Essai 17g' : '17g Trial Size'}
+              </h3>
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
+              </div>
+              <p className="text-gray-600 mb-4">
+                {locale === 'fr' ? 'Parfait pour essayer Purrify ou voyager' : 'Perfect for trying Purrify or travel'}
+              </p>
               <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
-                <li>• 2-3 weeks of odor control</li>
-                <li>• Ideal for 1 cat household</li>
-                <li>• Risk-free trial size</li>
+                <li>
+                  {locale === 'fr' ? '• 2-3 semaines de contrôle des odeurs' : '• 2-3 weeks of odor control'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Idéal pour foyer à 1 chat' : '• Ideal for 1 cat household'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Format d\'essai sans risque' : '• Risk-free trial size'}
+                </li>
               </ul>
             </div>
 
             <div className="bg-blue-50 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                Most Popular
+                {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>
-              <h3 className="text-xl font-semibold mb-3">60g Regular Size</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">$19.99 CAD</div>
-              <p className="text-gray-600 mb-4">Best value for most cat owners</p>
+              <h3 className="text-xl font-semibold mb-3">
+                {locale === 'fr' ? 'Format Régulier 60g' : '60g Regular Size'}
+              </h3>
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
+              </div>
+              <p className="text-gray-600 mb-4">
+                {locale === 'fr' ? 'Meilleur rapport qualité-prix pour la plupart des propriétaires de chats' : 'Best value for most cat owners'}
+              </p>
               <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
-                <li>• 6-8 weeks of odor control</li>
-                <li>• Perfect for 1-2 cats</li>
-                <li>• Most economical choice</li>
+                <li>
+                  {locale === 'fr' ? '• 6-8 semaines de contrôle des odeurs' : '• 6-8 weeks of odor control'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Parfait pour 1-2 chats' : '• Perfect for 1-2 cats'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Choix le plus économique' : '• Most economical choice'}
+                </li>
               </ul>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">120g Large Size</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">$29.99 CAD</div>
-              <p className="text-gray-600 mb-4">Maximum value for multi-cat homes</p>
+              <h3 className="text-xl font-semibold mb-3">
+                {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
+              </h3>
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}
+              </div>
+              <p className="text-gray-600 mb-4">
+                {locale === 'fr' ? 'Valeur maximale pour foyers multi-chats' : 'Maximum value for multi-cat homes'}
+              </p>
               <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
-                <li>• 10-12 weeks of odor control</li>
-                <li>• Great for 2+ cats</li>
-                <li>• Best long-term value</li>
+                <li>
+                  {locale === 'fr' ? '• 10-12 semaines de contrôle des odeurs' : '• 10-12 weeks of odor control'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Parfait pour 2+ chats' : '• Great for 2+ cats'}
+                </li>
+                <li>
+                  {locale === 'fr' ? '• Meilleure valeur à long terme' : '• Best long-term value'}
+                </li>
               </ul>
             </div>
           </div>
