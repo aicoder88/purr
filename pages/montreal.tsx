@@ -37,12 +37,89 @@ export default function Montreal() {
     }
   ];
   
-  const structuredData = {
+  // Enhanced structured data for better SEO
+  const baseStructuredData = {
     ...MONTREAL_STRUCTURED_DATA,
     "name": locale === 'fr' ? "Purrify - Désodorisant Litière Chat Montréal" : "Purrify - Cat Litter Deodorizer Montreal",
     "description": pageDescription,
     "url": canonicalUrl
   };
+
+  // Local business structured data for each store location
+  const storeStructuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Purrify at Montreal Pet Stores",
+      "description": "Find Purrify cat litter deodorizer at independent pet stores throughout Montreal and surrounding areas.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montreal",
+        "addressRegion": "QC",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "45.5017",
+        "longitude": "-73.5673"
+      },
+      "areaServed": [
+        "Montreal", "Laval", "Longueuil", "Verdun", "Kirkland", "Saint-Eustache", "Sainte-Thérèse", "Sainte-Marthe-sur-le-Lac"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Purrify"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Purrify Cat Litter Products",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Purrify Cat Litter Deodorizer",
+              "description": "Premium activated carbon cat litter additive for natural odor control",
+              "brand": "Purrify",
+              "category": "Pet Supplies"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where can I buy Purrify in Montreal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Purrify is available at independent pet stores throughout Montreal, including locations in Verdun, Kirkland, Saint-Eustache, Sainte-Thérèse, and Laval. Visit any of our listed partner stores or call ahead to confirm availability."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "What makes Purrify ideal for Montreal cat owners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Purrify is made in Canada with premium activated carbon, perfect for Montreal's long winters when windows stay closed. It provides natural odor control without harsh chemicals, ideal for apartments and small spaces common in Montreal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Purrify cost in Montreal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Purrify is available in three sizes: 17g trial size for $6.99 CAD, 60g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer."
+          }
+        }
+      ]
+    }
+  ];
+
+  const allStructuredData = [baseStructuredData, ...storeStructuredData];
 
   return (
     <Layout>
@@ -67,31 +144,91 @@ export default function Montreal() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, independent pet stores',
+            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, independent pet stores, activated carbon cat litter, pet stores Montreal, cat supplies Montreal, litter box odor control',
           },
+          {
+            name: 'geo.region',
+            content: 'CA-QC'
+          },
+          {
+            name: 'geo.placename', 
+            content: 'Montreal, Quebec, Canada'
+          },
+          {
+            name: 'geo.position',
+            content: '45.5017;-73.5673'
+          },
+          {
+            name: 'ICBM',
+            content: '45.5017, -73.5673'
+          },
+          {
+            name: 'author',
+            content: 'Purrify Canada'
+          },
+          {
+            name: 'robots',
+            content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+          },
+          {
+            property: 'article:modified_time',
+            content: new Date().toISOString()
+          },
+          {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            name: 'twitter:site',
+            content: '@PurrifyCanada'
+          },
+          {
+            name: 'twitter:title',
+            content: pageTitle
+          },
+          {
+            name: 'twitter:description',
+            content: pageDescription
+          },
+          {
+            name: 'twitter:image',
+            content: 'https://purrify.ca/images/montreal-stores.jpg'
+          }
         ]}
       />
       
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {allStructuredData.map((data, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
 
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Cat Litter Deodorizer Montreal
+            {locale === 'fr' 
+              ? 'Désodorisant pour Litière de Chat Montréal | Purrify Canada' 
+              : 'Cat Litter Deodorizer Montreal | Where to Buy Purrify in Quebec'
+            }
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Find Purrify's premium activated carbon cat litter additive at Montreal pet stores. 
-            Natural odor control made in Canada, available throughout the Greater Montreal Area.
+            {locale === 'fr'
+              ? 'Découvrez Purrify, l’additif au charbon activé premium pour litière de chat. Contrôle naturel des odeurs fabriqué au Canada, disponible dans les animaleries de Montréal et région.'
+              : 'Discover Purrify’s premium activated carbon cat litter additive at Montreal area pet stores. Natural odor control made in Canada, available throughout Greater Montreal, Laval, and surrounding communities.'
+            }
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-semibold text-blue-900 mb-3">Now Available in Montreal!</h2>
+            <h2 className="text-2xl font-semibold text-blue-900 mb-3">
+              {locale === 'fr' ? 'Maintenant Disponible à Montréal!' : 'Now Available in Montreal & Surrounding Areas!'}
+            </h2>
             <p className="text-blue-800">
-              Visit your local independent pet store to find Purrify. 
-              Call ahead to confirm availability at your preferred location.
+              {locale === 'fr'
+                ? 'Visitez votre animalerie locale indépendante pour trouver Purrify. Appelez à l’avance pour confirmer la disponibilité dans votre magasin préféré.'
+                : 'Visit your local independent pet store to find Purrify. Call ahead to confirm availability at your preferred location in Montreal, Laval, Verdun, or surrounding areas.'
+              }
             </p>
           </div>
         </section>
@@ -99,8 +236,17 @@ export default function Montreal() {
         {/* Store Locations */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Where to Buy Purrify in Montreal Area
+            {locale === 'fr' 
+              ? 'Où Acheter Purrify dans la Région de Montréal | Magasins Partenaires'
+              : 'Where to Buy Purrify in Montreal Area | Pet Store Locations'
+            }
           </h2>
+          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+            {locale === 'fr'
+              ? 'Trouvez Purrify dans ces animaleries de confiance à travers Montréal, Laval, Verdun et les communautés avoisinantes. Chaque magasin offre un service personnalisé et des conseils d’experts pour vos animaux de compagnie.'
+              : 'Find Purrify at these trusted pet stores across Montreal, Laval, Verdun, and surrounding communities. Each location offers personalized service and expert advice for your pets.'
+            }
+          </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {/* Pattes et Griffes - Sainte-Thérèse */}
@@ -541,12 +687,23 @@ export default function Montreal() {
         {/* Why Choose Purrify in Montreal */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Why Montreal Cat Owners Choose Purrify
+            {locale === 'fr'
+              ? 'Pourquoi les Propriétaires de Chats de Montréal Choisissent Purrify'
+              : 'Why Montreal Cat Owners Choose Purrify | Premium Odor Control'
+            }
           </h2>
+          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+            {locale === 'fr'
+              ? 'Découvrez pourquoi des milliers de familles montréalaises font confiance à Purrify pour garder leur maison fraîche et accueillante toute l’année.'
+              : 'Discover why thousands of Montreal families trust Purrify to keep their homes fresh and welcoming year-round, especially during Quebec’s long winter months.'
+            }
+          </p>
           
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">🍁 Made in Canada</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-3">
+                {locale === 'fr' ? '🍁 Fabriqué au Canada' : '🍁 Made in Canada | Quebec Pride'}
+              </h3>
               <p className="text-blue-800">
                 Proudly manufactured in Canada with premium activated carbon. Supporting local business 
                 while providing superior odor control for Montreal's cat families.
@@ -554,7 +711,9 @@ export default function Montreal() {
             </div>
 
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-900 mb-3">❄️ Perfect for Montreal Winters</h3>
+              <h3 className="text-xl font-semibold text-green-900 mb-3">
+                {locale === 'fr' ? '❄️ Parfait pour les Hivers de Montréal' : '❄️ Perfect for Montreal Winters | Long-Lasting Freshness'}
+              </h3>
               <p className="text-green-800">
                 When windows stay closed during long Montreal winters, Purrify keeps your home fresh. 
                 Natural odor elimination without harsh chemicals or overpowering fragrances.
@@ -562,7 +721,9 @@ export default function Montreal() {
             </div>
 
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-purple-900 mb-3">🏠 Ideal for Small Apartments</h3>
+              <h3 className="text-xl font-semibold text-purple-900 mb-3">
+                {locale === 'fr' ? '🏠 Idéal pour les Petits Appartements' : '🏠 Ideal for Montreal Apartments | Compact Living Solutions'}
+              </h3>
               <p className="text-purple-800">
                 Many Montreal cat owners live in smaller spaces where litter box odors can be problematic. 
                 Purrify provides powerful odor control perfect for apartments and condos.
@@ -570,7 +731,9 @@ export default function Montreal() {
             </div>
 
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-orange-900 mb-3">🌿 Natural & Safe</h3>
+              <h3 className="text-xl font-semibold text-orange-900 mb-3">
+                {locale === 'fr' ? '🌿 Naturel et Sécuritaire' : '🌿 Natural & Safe | Family-Friendly Formula'}
+              </h3>
               <p className="text-orange-800">
                 Fragrance-free and non-toxic formula is safe for cats, kittens, and families. 
                 No synthetic chemicals - just pure activated carbon odor elimination.
@@ -579,10 +742,84 @@ export default function Montreal() {
           </div>
         </section>
 
+        {/* FAQ Section for SEO */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            {locale === 'fr' 
+              ? 'Questions Fréquentes | Purrify à Montréal'
+              : 'Frequently Asked Questions | Purrify in Montreal'
+            }
+          </h2>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {locale === 'fr' 
+                  ? 'Où puis-je acheter Purrify à Montréal?'
+                  : 'Where can I buy Purrify in Montreal?'
+                }
+              </h3>
+              <p className="text-gray-700">
+                {locale === 'fr'
+                  ? 'Purrify est disponible dans les animaleries indépendantes à travers Montréal, incluant des emplacements à Verdun, Kirkland, Saint-Eustache, Sainte-Thérèse, et Laval. Visitez n\'importe lequel de nos magasins partenaires listés ci-dessus ou appelez à l\'avance pour confirmer la disponibilité.'
+                  : 'Purrify is available at independent pet stores throughout Montreal, including locations in Verdun, Kirkland, Saint-Eustache, Sainte-Thérèse, and Laval. Visit any of our listed partner stores above or call ahead to confirm availability at your preferred location.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {locale === 'fr'
+                  ? 'Qu\'est-ce qui rend Purrify idéal pour les propriétaires de chats de Montréal?'
+                  : 'What makes Purrify ideal for Montreal cat owners?'
+                }
+              </h3>
+              <p className="text-gray-700">
+                {locale === 'fr'
+                  ? 'Purrify est fabriqué au Canada avec du charbon activé premium, parfait pour les longs hivers de Montréal quand les fenêtres restent fermées. Il fournit un contrôle naturel des odeurs sans produits chimiques agressifs, idéal pour les appartements et petits espaces communs à Montréal.'
+                  : 'Purrify is made in Canada with premium activated carbon, perfect for Montreal\'s long winters when windows stay closed. It provides natural odor control without harsh chemicals, ideal for apartments and small spaces common in Montreal.'
+                }
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {locale === 'fr'
+                  ? 'Combien coûte Purrify à Montréal?'
+                  : 'How much does Purrify cost in Montreal?'
+                }
+              </h3>
+              <p className="text-gray-700">
+                {locale === 'fr'
+                  ? 'Purrify est disponible en trois formats: format d\'essai de 17g pour 6,99$ CAD, format régulier de 60g pour 19,99$ CAD, et grand format de 120g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
+                  : 'Purrify is available in three sizes: 17g trial size for $6.99 CAD, 60g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer.'
+                }
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {locale === 'fr'
+                  ? 'Purrify est-il sécuritaire pour les chats et les chatons?'
+                  : 'Is Purrify safe for cats and kittens?'
+                }
+              </h3>
+              <p className="text-gray-700">
+                {locale === 'fr'
+                  ? 'Oui! Purrify est complètement sécuritaire pour les chats, chatons et familles. Notre formule naturelle sans parfum ne contient aucun produit chimique synthétique - seulement du charbon activé pur pour l\'élimination des odeurs.'
+                  : 'Yes! Purrify is completely safe for cats, kittens, and families. Our natural, fragrance-free formula contains no synthetic chemicals - just pure activated carbon for odor elimination.'
+                }
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Local Testimonials */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            What Montreal Cat Owners Say
+            {locale === 'fr' 
+              ? 'Témoignages de Propriétaires de Chats de Montréal'
+              : 'What Montreal Cat Owners Say | Customer Reviews'
+            }
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -670,11 +907,80 @@ export default function Montreal() {
           </div>
         </section>
 
+        {/* Local Coverage Area */}
+        <section className="mb-16 bg-gray-50 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            {locale === 'fr'
+              ? 'Zones de Service | Purrify dans le Grand Montréal'
+              : 'Service Areas | Purrify Coverage in Greater Montreal'
+            }
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="text-center">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+                {locale === 'fr' ? 'Montréal' : 'Montreal'}
+              </h3>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>Plateau Mont-Royal</li>
+                <li>Ville-Marie</li>
+                <li>Hochelaga-Maisonneuve</li>
+                <li>Rosemont</li>
+              </ul>
+            </div>
+            <div className="text-center">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900">Laval</h3>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>Sainte-Thérèse</li>
+                <li>Sainte-Marthe-sur-le-Lac</li>
+                <li>Cartier Ouest</li>
+                <li>Arthur-Sauvé</li>
+              </ul>
+            </div>
+            <div className="text-center">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+                {locale === 'fr' ? 'Banlieues Sud' : 'South Shore'}
+              </h3>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>Verdun</li>
+                <li>Saint-Eustache</li>
+                <li>Westmount</li>
+                <li>NDG</li>
+              </ul>
+            </div>
+            <div className="text-center">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+                {locale === 'fr' ? 'Banlieues Ouest' : 'West Island'}
+              </h3>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>Kirkland</li>
+                <li>Dollard-des-Ormeaux</li>
+                <li>Pierrefonds</li>
+                <li>Beaconsfield</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-center text-gray-600 mt-6 max-w-3xl mx-auto">
+            {locale === 'fr'
+              ? 'Purrify dessert fièrement toute la région métropolitaine de Montréal. Si vous ne voyez pas votre quartier listé, contactez-nous pour connaître le magasin le plus près de chez vous.'
+              : 'Purrify proudly serves the entire Greater Montreal metropolitan area. If you don\'t see your neighborhood listed, contact us to find the nearest store location to you.'
+            }
+          </p>
+        </section>
+
         {/* Product Information */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Purrify Products Available in Montreal
+            {locale === 'fr'
+              ? 'Produits Purrify Disponibles à Montréal | Prix et Formats'
+              : 'Purrify Products Available in Montreal | Sizes and Pricing'
+            }
           </h2>
+          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+            {locale === 'fr'
+              ? 'Choisissez le format parfait pour votre famille de chats. Tous les produits Purrify sont disponibles dans nos magasins partenaires à travers Montréal.'
+              : 'Choose the perfect size for your cat family. All Purrify products are available at our partner stores throughout Montreal.'
+            }
+          </p>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
@@ -715,28 +1021,83 @@ export default function Montreal() {
           </div>
         </section>
 
+        {/* Montreal Summary for SEO */}
+        <section className="mb-16 bg-blue-50 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            {locale === 'fr'
+              ? 'Purrify Montréal : Contrôle d\'Odeur Premium pour Chats'
+              : 'Purrify Montreal: Premium Cat Odor Control Made in Canada'
+            }
+          </h2>
+          <div className="max-w-4xl mx-auto text-gray-700 space-y-4">
+            <p className="text-lg">
+              {locale === 'fr'
+                ? 'Purrify révolutionne le contrôle des odeurs de litière pour chat à Montréal avec son charbon activé premium fabriqué au Canada. Nos 15 magasins partenaires à travers la région métropolitaine offrent des solutions naturelles et sécuritaires pour garder votre maison fraîche pendant les longs hivers québécois.'
+                : 'Purrify is revolutionizing cat litter odor control in Montreal with premium activated carbon made in Canada. Our 15 partner stores across the metropolitan area offer natural, safe solutions to keep your home fresh during Quebec\'s long winters.'
+              }
+            </p>
+            <p>
+              {locale === 'fr'
+                ? 'Que vous viviez dans un appartement du Plateau Mont-Royal, un condo à Verdun, ou une maison à Kirkland, Purrify s\'adapte parfaitement aux espaces de vie montréalais. Notre formule sans parfum élimine naturellement les odeurs sans produits chimiques agressifs.'
+                : 'Whether you live in a Plateau Mont-Royal apartment, a Verdun condo, or a Kirkland house, Purrify is perfectly suited for Montreal living spaces. Our fragrance-free formula naturally eliminates odors without harsh chemicals.'
+              }
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 mt-6">
+              <div className="text-center p-4 bg-white rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">
+                  {locale === 'fr' ? '15+ Magasins' : '15+ Store Locations'}
+                </h4>
+                <p className="text-sm">
+                  {locale === 'fr' ? 'À travers le Grand Montréal' : 'Across Greater Montreal'}
+                </p>
+              </div>
+              <div className="text-center p-4 bg-white rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">
+                  {locale === 'fr' ? '100% Canadien' : '100% Canadian Made'}
+                </h4>
+                <p className="text-sm">
+                  {locale === 'fr' ? 'Charbon activé premium' : 'Premium activated carbon'}
+                </p>
+              </div>
+              <div className="text-center p-4 bg-white rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">
+                  {locale === 'fr' ? '3 Formats' : '3 Size Options'}
+                </h4>
+                <p className="text-sm">
+                  {locale === 'fr' ? 'De 6,99$ à 29,99$ CAD' : 'From $6.99 to $29.99 CAD'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Call to Action */}
         <section className="text-center">
           <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Visit Your Local Montreal Pet Store Today
+              {locale === 'fr'
+                ? 'Visitez Votre Animalerie Locale à Montréal Aujourd\'hui'
+                : 'Visit Your Local Montreal Pet Store Today'
+              }
             </h2>
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Experience the difference Purrify makes in your home. Available now at 
-              independent pet stores throughout the Greater Montreal Area.
+              {locale === 'fr'
+                ? 'Découvrez la différence que Purrify fait dans votre maison. Disponible maintenant dans les animaleries indépendantes à travers la région du Grand Montréal.'
+                : 'Experience the difference Purrify makes in your home. Available now at independent pet stores throughout the Greater Montreal Area.'
+              }
             </p>
             <div className="space-x-4">
               <Link 
                 href="/support/contact" 
                 className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
-                Find Nearest Store
+                {locale === 'fr' ? 'Trouver le Magasin le Plus Près' : 'Find Nearest Store'}
               </Link>
               <Link 
                 href="/products" 
                 className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
-                View All Products
+                {locale === 'fr' ? 'Voir Tous les Produits' : 'View All Products'}
               </Link>
             </div>
           </div>
