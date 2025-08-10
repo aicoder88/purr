@@ -116,7 +116,7 @@ export function Header() {
                           setTimeout(() => {
                             if (item.label === 'Products') setIsProductsDropdownOpen(false);
                             if (item.label === 'Learn') setIsLearnDropdownOpen(false);
-                          }, 150);
+                          }, 500);
                         }
                       }}
                       onClick={() => {
@@ -141,7 +141,7 @@ export function Header() {
                             setTimeout(() => {
                               if (item.label === 'Products') setIsProductsDropdownOpen(false);
                               if (item.label === 'Learn') setIsLearnDropdownOpen(false);
-                            }, 150);
+                            }, 500);
                           }
                         }}
                         data-dropdown

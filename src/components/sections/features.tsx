@@ -74,7 +74,7 @@ export function Features() {
                 >
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                   {feature.description}
                 </p>
 

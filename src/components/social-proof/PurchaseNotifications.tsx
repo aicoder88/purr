@@ -103,7 +103,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   const getRandomInterval = () => {
-    return Math.floor(Math.random() * (120000 - 90000 + 1)) + 90000; // 90-120 seconds
+    return Math.floor(Math.random() * (240000 - 180000 + 1)) + 180000; // 180-240 seconds (3-4 minutes)
   };
 
   const showNextNotification = useCallback(() => {
@@ -131,7 +131,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
       setTimeoutId(newTimeout);
     };
 
-    const initialDelay = Math.floor(Math.random() * 30000) + 60000; // 60-90 seconds initial delay
+    const initialDelay = Math.floor(Math.random() * 60000) + 120000; // 120-180 seconds initial delay
     const initialTimeout = setTimeout(() => {
       showNextNotification();
       schedule();

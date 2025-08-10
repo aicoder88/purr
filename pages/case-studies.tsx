@@ -399,7 +399,7 @@ export default function CaseStudies() {
                   <h4 className="font-bold text-gray-900 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 text-sm">Watch real customers share their experiences</p>
                 </Link>
-                <Link href="/blog/purrify-vs-arm-hammer" className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <TrendingUp className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 text-sm">See how Purrify outperforms competitors</p>

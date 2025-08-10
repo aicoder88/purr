@@ -50,8 +50,8 @@ export function ShoppingCart() {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center p-8">
                   <Package className="h-12 w-12 text-gray-400 mb-4" />
-                  <p className="text-gray-500">Your cart is empty</p>
-                  <p className="text-sm text-gray-400 mt-2">Add some products to your cart</p>
+                  <p className="text-gray-500 dark:text-gray-400">Your cart is empty</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">Add some products to your cart</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -73,10 +73,10 @@ export function ShoppingCart() {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-gray-900 truncate">
+                          <h3 className="font-medium text-gray-900 dark:text-gray-100 truncate">
                             {product.name}
                           </h3>
-                          <p className="text-sm text-gray-500">{product.size}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">{product.size}</p>
                           <div className="flex items-center gap-2 mt-2">
                             <Button
                               variant="outline"
@@ -98,13 +98,13 @@ export function ShoppingCart() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-gray-900">
+                          <p className="font-medium text-gray-900 dark:text-gray-100">
                             ${(product.price * item.quantity).toFixed(2)}
                           </p>
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-8 w-8 text-gray-400 hover:text-gray-600"
+                            className="h-8 w-8 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                             onClick={() => removeFromCart(item.id)}
                           >
                             <Trash2 className="h-4 w-4" />
@@ -119,7 +119,7 @@ export function ShoppingCart() {
             {items.length > 0 && (
               <div className="border-t p-4 bg-white">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-gray-600">Total</span>
+                  <span className="text-gray-600 dark:text-gray-300">Total</span>
                   <span className="text-xl font-bold text-[#FF3131]">
                     ${getTotalPrice().toFixed(2)}
                   </span>

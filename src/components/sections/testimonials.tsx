@@ -42,7 +42,7 @@ export function Testimonials() {
           <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
           </h2>
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
             {t.testimonialsSection?.dontJustTakeOurWord || "Don't just take our word for it. Here's what our customers have to say about Purrify."}
           </p>
           

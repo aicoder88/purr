@@ -141,7 +141,7 @@ export function LivePurchaseNotifications({
 
     const interval = setInterval(() => {
       showNotification();
-    }, 15000 + Math.random() * 10000); // Show every 15-25 seconds
+    }, 45000 + Math.random() * 30000); // Show every 45-75 seconds
 
     return () => {
       clearTimeout(initialTimer);

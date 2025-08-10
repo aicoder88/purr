@@ -69,7 +69,7 @@ export function HowItWorks() {
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             {t.nav.howItWorks}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
             {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">compare our sizes</Link> to find what works best for you.
           </p>
         </div>
@@ -120,7 +120,7 @@ export function HowItWorks() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 text-base sm:text-lg">{step.description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg">{step.description}</p>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ export function HowItWorks() {
             <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-white">
               {t.features.worksWithAnyLitter.title}
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">
               {t.features.worksWithAnyLitter.description}
             </p>
             <div className="flex flex-wrap justify-center gap-2 mt-2">

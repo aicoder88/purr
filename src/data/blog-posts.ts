@@ -23,12 +23,12 @@ function generateLatestBlogPosts(): BlogPost[] {
       link: "/blog/how-to-use-cat-litter-deodorizer"
     },
     {
-      title: "Purrify vs Arm & Hammer: The Ultimate Cat Litter Additive Comparison",
-      excerpt: "Discover how Purrify's activated carbon technology compares to Arm & Hammer's baking soda approach. See which solution provides superior odor control for your home.",
+      title: "Activated Carbon vs Baking Soda Cat Litter Additives: Complete Comparison",
+      excerpt: "Discover how Purrify's activated carbon technology compares to traditional baking soda approaches. See which solution provides superior odor control for your home.",
       author: "Pet Care Expert Team",
       date: new Date(now - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
       image: "/optimized/140g.webp",
-      link: "/blog/purrify-vs-arm-hammer"
+      link: "/blog/activated-carbon-vs-baking-soda-additives"
     },
     {
       title: "Is Purrify Safe for Kittens? A Veterinarian's Complete Safety Guide",
