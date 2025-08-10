@@ -93,14 +93,15 @@ export function LivePurchaseNotifications({
   const [notifications, setNotifications] = useState<PurchaseNotification[]>([]);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Use the constant purchase data
-  const purchaseData = PURCHASE_DATA;
+  // Use the constant purchase data directly to avoid dependency warnings
 
   useEffect(() => {
     if (!enabled) return;
 
+    const timeouts = new Set<NodeJS.Timeout>();
+
     const showNotification = () => {
-      const randomNotification = purchaseData[Math.floor(Math.random() * purchaseData.length)];
+      const randomNotification = PURCHASE_DATA[Math.floor(Math.random() * PURCHASE_DATA.length)];
       
       // Create a unique notification with updated timestamp
       const newNotification: PurchaseNotification = {
@@ -124,10 +125,13 @@ export function LivePurchaseNotifications({
         return updated;
       });
 
-      // Auto-remove notification after 8 seconds
-      setTimeout(() => {
+      // Auto-remove notification after 8 seconds - track the timeout
+      const removeTimeout = setTimeout(() => {
         setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
+        timeouts.delete(removeTimeout);
       }, 8000);
+      
+      timeouts.add(removeTimeout);
     };
 
     // Wait 3 seconds after page load before showing first notification
@@ -143,8 +147,11 @@ export function LivePurchaseNotifications({
     return () => {
       clearTimeout(initialTimer);
       clearInterval(interval);
+      // Clean up all notification removal timeouts
+      timeouts.forEach(timeout => clearTimeout(timeout));
+      timeouts.clear();
     };
-  }, [enabled, maxNotifications, purchaseData]);
+  }, [enabled, maxNotifications]);
 
   const getRandomTimeAgo = () => {
     const options = [

@@ -5,9 +5,13 @@ import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
 import { EnhancedProductComparison } from '../src/components/sections/enhanced-product-comparison';
-import { SubscriptionOffer } from '../src/components/sections/subscription-offer';
-import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
-import { EmailCapturePopup } from '../src/components/sections/email-capture-popup';
+import dynamic from 'next/dynamic';
+
+// Dynamically import heavy components to improve initial page load
+const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
+const UrgencyBanner = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.UrgencyBanner })), { ssr: false });
+const StickyUrgencyBar = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.StickyUrgencyBar })), { ssr: false });
+const EmailCapturePopup = dynamic(() => import('../src/components/sections/email-capture-popup').then(mod => ({ default: mod.EmailCapturePopup })), { ssr: false });
 import { Stores } from '../src/components/sections/stores';
 import { Testimonials } from '../src/components/sections/testimonials';
 import { FAQ } from '../src/components/sections/faq';

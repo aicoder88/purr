@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { PRODUCTS } from './constants';
 
 interface CartItem {
@@ -164,9 +164,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setItems([]);
   };
 
-  const getTotalItems = () => {
+  const getTotalItems = useCallback(() => {
     return items.reduce((total, item) => total + item.quantity, 0);
-  };
+  }, [items]);
 
 
   return (

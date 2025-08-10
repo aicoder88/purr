@@ -184,6 +184,7 @@ export function useExitIntent(enabled: boolean = true) {
     if (!enabled || hasShown || typeof window === 'undefined') return;
 
     let exitIntentTriggered = false;
+    const timeouts: NodeJS.Timeout[] = [];
 
     const handleMouseLeave = (e: MouseEvent) => {
       // Only trigger if mouse is leaving from the top of the viewport
@@ -218,14 +219,15 @@ export function useExitIntent(enabled: boolean = true) {
       }
     };
 
-    // Add event listeners
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // Add event listeners with passive option for better performance
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
 
     // Cleanup
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      timeouts.forEach(timeout => clearTimeout(timeout));
     };
   }, [enabled, hasShown]);
 

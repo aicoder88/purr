@@ -180,12 +180,14 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <Component {...pageProps} />
           </Layout>
           
-          {/* Conversion Optimization System */}
-          <ConversionOptimizer 
-            enabled={process.env.NODE_ENV === 'production'}
-            pageType={pageType}
-            productId={pathname.includes('/trial-size') ? '20g' : undefined}
-          />
+          {/* Conversion Optimization System - Only in production */}
+          {process.env.NODE_ENV === 'production' && (
+            <ConversionOptimizer 
+              enabled={true}
+              pageType={pageType}
+              productId={pathname.includes('/trial-size') ? '20g' : undefined}
+            />
+          )}
           
           <Toaster />
           <Analytics />
