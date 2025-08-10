@@ -361,83 +361,21 @@ const nextConfig = {
       maxAge: 86400000, // 24 hours
     };
     
-    // Only apply optimizations in production builds
+    // Only apply safe optimizations that don't break React components
     if (!dev) {
-      // Split chunks more aggressively for better performance
+      // Use Next.js default chunk splitting with minor adjustments
       config.optimization.splitChunks = {
-        chunks: 'all',
-        maxInitialRequests: 25,
-        minSize: 20000,
+        ...config.optimization.splitChunks,
+        maxSize: 500000, // 500KB limit per chunk
         cacheGroups: {
-          default: false,
-          vendors: false,
-          // Create a framework chunk for shared dependencies
-          framework: {
-            name: 'framework',
-            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-            priority: 40,
-            chunks: 'all',
-            enforce: true,
-          },
-          // Create separate chunks for large libraries
-          largeLibs: {
-            test: /[\\/]node_modules[\\/](next|@next|stripe|prisma|lucide-react)[\\/]/,
-            name: 'large-libs',
-            priority: 30,
-            chunks: 'all',
-            maxSize: 400000, // 400KB max
-            reuseExistingChunk: true,
-          },
-          // Create a commons chunk for frequently used modules
+          ...config.optimization.splitChunks?.cacheGroups,
           commons: {
             name: 'commons',
-            minChunks: 5, // Increase threshold to reduce commons bundle size
-            priority: 20,
-            maxSize: 500000, // Limit commons chunk to 500KB
-            reuseExistingChunk: true,
-          },
-          // Create a lib chunk for third-party libraries
-          lib: {
-            test: /[\\/]node_modules[\\/]/,
-            name(module) {
-              // Get the name of the package
-              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-              
-              // Group Radix UI components together
-              if (packageName.startsWith('@radix-ui')) {
-                return 'radix';
-              }
-              
-              // Group React Icons together
-              if (packageName.startsWith('react-icons')) {
-                return 'react-icons';
-              }
-              
-              // Group Framer Motion together
-              if (packageName.startsWith('framer-motion')) {
-                return 'framer-motion';
-              }
-              
-              // Group Chart.js together
-              if (packageName.startsWith('chart.js') || packageName.startsWith('react-chartjs')) {
-                return 'charts';
-              }
-              
-              // Return a chunk name based on the package name
-              return `npm.${packageName.replace('@', '')}`;
-            },
-            priority: 10,
-            minChunks: 2,
-            maxSize: 300000, // 300KB max per lib chunk
-            reuseExistingChunk: true,
-          },
-          // Create a critical chunk for above-the-fold content
-          critical: {
-            name: 'critical',
-            test: /[\\/]src[\\/]components[\\/]sections[\\/]hero/,
-            priority: 50,
             chunks: 'all',
-            enforce: true,
+            minChunks: 2,
+            priority: -10,
+            reuseExistingChunk: true,
+            maxSize: 500000,
           },
         },
       };
