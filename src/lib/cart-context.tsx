@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { PRODUCTS } from './constants';
+import { safeTrackEvent } from './analytics';
 
 interface CartItem {
   id: string;
@@ -88,13 +89,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       });
 
       // Track cart abandonment
-      if (window.gtag) {
-        window.gtag('event', 'cart_abandoned', {
-          event_category: 'ecommerce',
-          event_label: recoveryType,
-          value: getTotalPrice()
-        });
-      }
+      safeTrackEvent('cart_abandoned', {
+        event_category: 'ecommerce',
+        event_label: recoveryType,
+        value: getTotalPrice()
+      });
     } catch (error) {
       console.error('Cart recovery failed:', error);
     }
@@ -122,7 +121,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         triggerCartRecovery('1h');
       }, 60 * 60 * 1000); // 1 hour
     }
-  }, [items, checkoutStarted, triggerCartRecovery]);
+  }, [items, checkoutStarted]); // Remove triggerCartRecovery from deps to prevent infinite loops
 
   // Track checkout started state
   useEffect(() => {

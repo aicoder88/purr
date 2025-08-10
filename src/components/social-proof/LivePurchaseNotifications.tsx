@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ShoppingBag, MapPin, Clock, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { safeTrackEvent } from '@/lib/analytics';
 
 interface PurchaseNotification {
   id: string;
@@ -114,13 +115,11 @@ export function LivePurchaseNotifications({
         const updated = [newNotification, ...prev].slice(0, maxNotifications);
         
         // Track social proof impression
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'social_proof_shown', {
-            event_category: 'conversion',
-            event_label: 'purchase_notification',
-            value: 1
-          });
-        }
+        safeTrackEvent('social_proof_shown', {
+          event_category: 'conversion',
+          event_label: 'purchase_notification',
+          value: 1
+        });
         
         return updated;
       });
@@ -171,13 +170,11 @@ export function LivePurchaseNotifications({
 
   const handleNotificationClick = (notification: PurchaseNotification) => {
     // Track click on social proof
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'social_proof_clicked', {
-        event_category: 'conversion',
-        event_label: 'purchase_notification',
-        value: 1
-      });
-    }
+    safeTrackEvent('social_proof_clicked', {
+      event_category: 'conversion',
+      event_label: 'purchase_notification',
+      value: 1
+    });
 
     // Redirect to products page
     window.location.href = '/products/compare';

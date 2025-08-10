@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, Gift, Clock, Star } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useTranslation } from '@/lib/translation-context';
@@ -106,20 +106,20 @@ export function ExitIntentPopup({
               {currentOffer.icon}
             </div>
 
-            {/* Main Headline */}
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            {/* Main Headline - Use DialogTitle for accessibility */}
+            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white">
               {currentOffer.title}
-            </h2>
+            </DialogTitle>
 
             {/* Subtitle */}
             <h3 className="text-xl font-semibold text-orange-600 dark:text-orange-400">
               {currentOffer.subtitle}
             </h3>
 
-            {/* Description */}
-            <p className="text-gray-600 dark:text-gray-300">
+            {/* Description - Use DialogDescription for accessibility */}
+            <DialogDescription className="text-gray-600 dark:text-gray-300">
               {currentOffer.description}
-            </p>
+            </DialogDescription>
 
             {/* Social Proof */}
             <div className="flex items-center justify-center space-x-1 text-sm text-gray-500">
