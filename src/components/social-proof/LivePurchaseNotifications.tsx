@@ -17,6 +17,74 @@ interface LivePurchaseNotificationsProps {
   maxNotifications?: number;
 }
 
+// Realistic purchase data that cycles through - moved outside component to prevent re-creation
+const PURCHASE_DATA: PurchaseNotification[] = [
+  {
+    id: '1',
+    customerName: 'Sarah M.',
+    location: 'Toronto, ON',
+    product: '3x Purrify 140g Bundle',
+    timeAgo: '2 minutes ago',
+    verified: true
+  },
+  {
+    id: '2',
+    customerName: 'Mike R.',
+    location: 'Vancouver, BC',
+    product: 'Purrify Premium Bundle',
+    timeAgo: '7 minutes ago',
+    verified: true
+  },
+  {
+    id: '3',
+    customerName: 'Lisa K.',
+    location: 'Montreal, QC',
+    product: 'Purrify Trial Size',
+    timeAgo: '12 minutes ago',
+    verified: false
+  },
+  {
+    id: '4',
+    customerName: 'David S.',
+    location: 'Calgary, AB',
+    product: 'Purrify 60g Standard',
+    timeAgo: '18 minutes ago',
+    verified: true
+  },
+  {
+    id: '5',
+    customerName: 'Jennifer L.',
+    location: 'Ottawa, ON',
+    product: '2x Purrify Family Size',
+    timeAgo: '23 minutes ago',
+    verified: true
+  },
+  {
+    id: '6',
+    customerName: 'Thomas W.',
+    location: 'Winnipeg, MB',
+    product: 'Purrify Complete Kit',
+    timeAgo: '31 minutes ago',
+    verified: false
+  },
+  {
+    id: '7',
+    customerName: 'Rachel F.',
+    location: 'Halifax, NS',
+    product: 'Purrify Trial Size',
+    timeAgo: '38 minutes ago',
+    verified: false
+  },
+  {
+    id: '8',
+    customerName: 'Alex P.',
+    location: 'Edmonton, AB',
+    product: 'Purrify + Enzyme Cleaner',
+    timeAgo: '44 minutes ago',
+    verified: true
+  }
+];
+
 export function LivePurchaseNotifications({ 
   enabled = true,
   position = 'bottom-left',
@@ -25,73 +93,8 @@ export function LivePurchaseNotifications({
   const [notifications, setNotifications] = useState<PurchaseNotification[]>([]);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Realistic purchase data that cycles through
-  const purchaseData: PurchaseNotification[] = [
-    {
-      id: '1',
-      customerName: 'Sarah M.',
-      location: 'Toronto, ON',
-      product: '3x Purrify 140g Bundle',
-      timeAgo: '2 minutes ago',
-      verified: true
-    },
-    {
-      id: '2',
-      customerName: 'Mike R.',
-      location: 'Vancouver, BC',
-      product: 'Purrify Premium Bundle',
-      timeAgo: '7 minutes ago',
-      verified: true
-    },
-    {
-      id: '3',
-      customerName: 'Lisa K.',
-      location: 'Montreal, QC',
-      product: '2x Purrify 60g',
-      timeAgo: '12 minutes ago',
-      verified: false
-    },
-    {
-      id: '4',
-      customerName: 'David L.',
-      location: 'Calgary, AB',
-      product: 'Purrify Starter Kit',
-      timeAgo: '18 minutes ago',
-      verified: true
-    },
-    {
-      id: '5',
-      customerName: 'Emma W.',
-      location: 'Ottawa, ON',
-      product: 'Purrify 140g + Free Scoop',
-      timeAgo: '25 minutes ago',
-      verified: true
-    },
-    {
-      id: '6',
-      customerName: 'James T.',
-      location: 'Winnipeg, MB',
-      product: '5x Purrify Multi-Pack',
-      timeAgo: '31 minutes ago',
-      verified: true
-    },
-    {
-      id: '7',
-      customerName: 'Rachel F.',
-      location: 'Halifax, NS',
-      product: 'Purrify Trial Size',
-      timeAgo: '38 minutes ago',
-      verified: false
-    },
-    {
-      id: '8',
-      customerName: 'Alex P.',
-      location: 'Edmonton, AB',
-      product: 'Purrify + Enzyme Cleaner',
-      timeAgo: '44 minutes ago',
-      verified: true
-    }
-  ];
+  // Use the constant purchase data
+  const purchaseData = PURCHASE_DATA;
 
   useEffect(() => {
     if (!enabled) return;
@@ -141,7 +144,7 @@ export function LivePurchaseNotifications({
       clearTimeout(initialTimer);
       clearInterval(interval);
     };
-  }, [enabled, maxNotifications]);
+  }, [enabled, maxNotifications, purchaseData]);
 
   const getRandomTimeAgo = () => {
     const options = [

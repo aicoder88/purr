@@ -486,7 +486,7 @@ export function usePredictiveLoading(config?: Partial<PredictiveLoadingConfig>) 
         instance.clearPrefetchQueue();
       }
     };
-  }, []);
+  }, [config]);
 
   return {
     prefetchProduct: loader?.prefetchProduct.bind(loader),

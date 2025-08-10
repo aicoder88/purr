@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ShoppingCart, Star, Gift, Zap, Users, Home, Crown, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -285,7 +285,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
   const [hoveredBundle, setHoveredBundle] = useState<string | null>(null);
   const { addToCart } = useCart();
 
-  const smartSortBundles = (bundles: Bundle[], profile: typeof userProfile): Bundle[] => {
+  const smartSortBundles = useCallback((bundles: Bundle[], profile: typeof userProfile): Bundle[] => {
     return bundles.sort((a, b) => {
       let scoreA = 0;
       let scoreB = 0;
@@ -320,7 +320,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
 
       return scoreB - scoreA;
     });
-  };
+  }, []);
 
   useEffect(() => {
     // Smart bundle recommendation based on user profile

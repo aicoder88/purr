@@ -212,7 +212,7 @@ export class UltimateConversionOptimizer {
     ];
 
     // Track funnel progression
-    this.trackFunnelStep = (step: string, data: any = {}) => {
+    this.trackFunnelStep = (step: string, data: Record<string, unknown> = {}) => {
       const stepIndex = funnelSteps.indexOf(step);
       if (stepIndex === -1) return;
 
@@ -458,11 +458,11 @@ export class UltimateConversionOptimizer {
   }
 
   // Helper methods
-  private trackFunnelStep: (step: string, data?: any) => void = () => {};
+  private trackFunnelStep: (step: string, data?: Record<string, unknown>) => void = () => {};
 
   private debounce(func: Function, wait: number) {
     let timeout: NodeJS.Timeout;
-    return (...args: any[]) => {
+    return (...args: unknown[]) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => func.apply(this, args), wait);
     };
@@ -493,7 +493,7 @@ export class UltimateConversionOptimizer {
 
   private getFunnelPath(): string[] {
     const funnelHistory = this.sessionData.get('funnelHistory') || [];
-    return funnelHistory.map((step: any) => step.step);
+    return funnelHistory.map((step: { step: string }) => step.step);
   }
 
   private generateTransactionId(): string {
@@ -516,7 +516,7 @@ export class UltimateConversionOptimizer {
     // Remove from irrelevant audiences (e.g., remove from "prospects" after purchase)
   }
 
-  private optimizeBasedOnFunnelData(step: string, data: any) {
+  private optimizeBasedOnFunnelData(step: string, data: Record<string, unknown>) {
     // Real-time funnel optimization logic
   }
 

@@ -806,7 +806,14 @@ async function generateProblemSolutionPages() {
   return totalPages;
 }
 
-async function generateProblemPage(problem: any, baseDir: string) {
+interface ProblemData {
+  problem: string;
+  title: string;
+  description: string;
+  solution: string;
+}
+
+async function generateProblemPage(problem: ProblemData, baseDir: string) {
   const pageContent = `import { NextSeo } from 'next-seo';
 import { ProductsSection } from '../../src/components/sections/products';
 import { TestimonialsSection } from '../../src/components/sections/testimonials';
@@ -977,7 +984,14 @@ async function generateComparisonPages() {
   return totalPages;
 }
 
-async function generateComparisonPage(competitor: any, baseDir: string) {
+interface CompetitorData {
+  competitor: string;
+  name: string;
+  weaknesses: string[];
+  advantages: string[];
+}
+
+async function generateComparisonPage(competitor: CompetitorData, baseDir: string) {
   const pageContent = `import { NextSeo } from 'next-seo';
 import { ProductsSection } from '../../src/components/sections/products';
 

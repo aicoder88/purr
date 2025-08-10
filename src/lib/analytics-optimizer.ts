@@ -525,9 +525,9 @@ export class UltimateAnalyticsOptimizer {
   }
 
   // Helper methods (implementation would be more detailed in production)
-  private debounce(func: Function, wait: number): (...args: any[]) => void {
+  private debounce(func: (...args: unknown[]) => void, wait: number): (...args: unknown[]) => void {
     let timeout: NodeJS.Timeout;
-    return (...args: any[]) => {
+    return (...args: unknown[]) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => func.apply(this, args), wait);
     };
@@ -627,18 +627,18 @@ interface MontrealAnalyticsReport {
   };
   experiments: {
     active: ExperimentConfig[];
-    results: any[];
-    recommendations: any[];
+    results: unknown[];
+    recommendations: string[];
   };
   optimization: {
-    appliedOptimizations: any[];
-    potentialOptimizations: any[];
+    appliedOptimizations: string[];
+    potentialOptimizations: string[];
     costSavings: number;
   };
   predictions: {
     nextMonthRevenue: number;
-    seasonalOpportunities: any[];
-    growthAreas: any[];
+    seasonalOpportunities: string[];
+    growthAreas: string[];
   };
 }
 

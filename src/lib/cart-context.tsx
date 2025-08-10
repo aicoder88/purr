@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { PRODUCTS } from './constants';
 
 interface CartItem {
@@ -49,37 +49,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    localStorage.setItem('cart', JSON.stringify(items));
-    
-    // Update last activity
-    const now = new Date();
-    setLastActivity(now);
-    localStorage.setItem('lastActivity', now.toISOString());
-    
-    // Reset abandonment timer
-    if (abandonmentTimerRef.current) {
-      clearTimeout(abandonmentTimerRef.current);
-    }
-    
-    // Set up cart abandonment detection (1 hour)
-    if (items.length > 0 && !checkoutStarted) {
-      abandonmentTimerRef.current = setTimeout(() => {
-        setCartAbandoned(true);
-        triggerCartRecovery('1h');
-      }, 60 * 60 * 1000); // 1 hour
-    }
-  }, [items, checkoutStarted]);
+  // Define getTotalPrice function before it's used
+  const getTotalPrice = useCallback(() => {
+    return items.reduce((total, item) => {
+      const product = PRODUCTS.find(p => p.id === item.id);
+      return total + (product?.price || 0) * item.quantity;
+    }, 0);
+  }, [items]);
 
-  // Track checkout started state
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    localStorage.setItem('checkoutStarted', checkoutStarted.toString());
-  }, [checkoutStarted]);
-
-  const triggerCartRecovery = async (recoveryType: '1h' | '24h' | '72h') => {
+  // Define triggerCartRecovery function before it's used
+  const triggerCartRecovery = useCallback(async (recoveryType: '1h' | '24h' | '72h') => {
     if (typeof window === 'undefined' || items.length === 0) return;
 
     try {
@@ -119,7 +98,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Cart recovery failed:', error);
     }
-  };
+  }, [items, lastActivity, getTotalPrice]);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem('cart', JSON.stringify(items));
+    
+    // Update last activity
+    const now = new Date();
+    setLastActivity(now);
+    localStorage.setItem('lastActivity', now.toISOString());
+    
+    // Reset abandonment timer
+    if (abandonmentTimerRef.current) {
+      clearTimeout(abandonmentTimerRef.current);
+    }
+    
+    // Set up cart abandonment detection (1 hour)
+    if (items.length > 0 && !checkoutStarted) {
+      abandonmentTimerRef.current = setTimeout(() => {
+        setCartAbandoned(true);
+        triggerCartRecovery('1h');
+      }, 60 * 60 * 1000); // 1 hour
+    }
+  }, [items, checkoutStarted, triggerCartRecovery]);
+
+  // Track checkout started state
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem('checkoutStarted', checkoutStarted.toString());
+  }, [checkoutStarted]);
 
   const addToCart = (productId: string) => {
     setItems(currentItems => {
@@ -159,12 +168,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return items.reduce((total, item) => total + item.quantity, 0);
   };
 
-  const getTotalPrice = () => {
-    return items.reduce((total, item) => {
-      const product = PRODUCTS.find(p => p.id === item.id);
-      return total + (product?.price || 0) * item.quantity;
-    }, 0);
-  };
 
   return (
     <CartContext.Provider

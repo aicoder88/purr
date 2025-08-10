@@ -172,8 +172,9 @@ export class UltimatePerformanceOptimizer {
     // Track FID (First Input Delay)  
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
-      entries.forEach((entry: any) => {
-        this.metrics.fid = entry.processingStart - entry.startTime;
+      entries.forEach((entry) => {
+        const eventTiming = entry as PerformanceEventTiming;
+        this.metrics.fid = eventTiming.processingStart - eventTiming.startTime;
         
         // Auto-optimize if FID > 100ms
         if (this.metrics.fid > 100) {
@@ -185,9 +186,10 @@ export class UltimatePerformanceOptimizer {
     // Track CLS (Cumulative Layout Shift)
     let clsValue = 0;
     new PerformanceObserver((entryList) => {
-      entryList.getEntries().forEach((entry: any) => {
-        if (!entry.hadRecentInput) {
-          clsValue += entry.value;
+      entryList.getEntries().forEach((entry) => {
+        const layoutShift = entry as PerformanceEntry & { hadRecentInput?: boolean; value: number };
+        if (!layoutShift.hadRecentInput) {
+          clsValue += layoutShift.value;
           this.metrics.cls = clsValue;
           
           // Auto-optimize if CLS > 0.1
