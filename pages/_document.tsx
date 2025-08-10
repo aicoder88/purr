@@ -50,27 +50,7 @@ export default function Document() {
           rel="stylesheet"
         />
         
-        {/* Preload critical assets */}
-        <link
-          rel="preload"
-          href="/optimized/purrify-logo-icon.webp"
-          as="image"
-          type="image/webp"
-        />
-        <link
-          rel="preload"
-          href="/optimized/purrify-logo-text.webp"
-          as="image"
-          type="image/webp"
-        />
-        
-        {/* Preload hero video poster for better LCP */}
-        <link
-          rel="preload"
-          href="/optimized/cat_rose_thumbnail.webp"
-          as="image"
-          type="image/webp"
-        />
+        {/* Remove global preloads - each page will preload what it needs */}
         
         {/* Enhanced SEO */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

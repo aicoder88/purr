@@ -106,25 +106,25 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
     return Math.floor(Math.random() * (240000 - 180000 + 1)) + 180000; // 180-240 seconds (3-4 minutes)
   };
 
-  const showNextNotification = useCallback(() => {
-    setNotificationIndex((prevIndex) => {
-      const notification = SAMPLE_PURCHASES[prevIndex];
-      setCurrentNotification(notification);
-      setIsVisible(true);
-
-      if (autoHide) {
-        const hideTimeout = setTimeout(() => {
-          setIsVisible(false);
-        }, hideDelay);
-        setTimeoutId(hideTimeout);
-      }
-
-      return (prevIndex + 1) % SAMPLE_PURCHASES.length;
-    });
-  }, [autoHide, hideDelay]);
-
   useEffect(() => {
     let currentTimeout: NodeJS.Timeout;
+    
+    const showNextNotification = () => {
+      setNotificationIndex((prevIndex) => {
+        const notification = SAMPLE_PURCHASES[prevIndex];
+        setCurrentNotification(notification);
+        setIsVisible(true);
+
+        if (autoHide) {
+          const hideTimeout = setTimeout(() => {
+            setIsVisible(false);
+          }, hideDelay);
+          setTimeoutId(hideTimeout);
+        }
+
+        return (prevIndex + 1) % SAMPLE_PURCHASES.length;
+      });
+    };
     
     const schedule = () => {
       const randomInterval = getRandomInterval();
@@ -145,7 +145,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
         clearTimeout(currentTimeout);
       }
     };
-  }, [showNextNotification]);
+  }, [autoHide, hideDelay]); // Remove showNextNotification from deps, include autoHide and hideDelay directly
 
   const handleClose = () => {
     setIsVisible(false);

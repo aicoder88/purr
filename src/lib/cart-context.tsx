@@ -116,12 +116,56 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     
     // Set up cart abandonment detection (1 hour)
     if (items.length > 0 && !checkoutStarted) {
+      const currentLastActivity = now; // Capture the current time for the timeout
       abandonmentTimerRef.current = setTimeout(() => {
         setCartAbandoned(true);
-        triggerCartRecovery('1h');
+        // Call triggerCartRecovery directly to avoid dependency issues
+        (async () => {
+          if (typeof window === 'undefined' || items.length === 0) return;
+
+          try {
+            const email = localStorage.getItem('userEmail');
+            if (!email) return;
+
+            const cartData = items.map(item => {
+              const product = PRODUCTS.find(p => p.id === item.id);
+              return {
+                productId: item.id,
+                productName: product?.name || 'Unknown Product',
+                quantity: item.quantity,
+                price: product?.price || 0
+              };
+            });
+
+            const totalPrice = items.reduce((total, item) => {
+              const product = PRODUCTS.find(p => p.id === item.id);
+              return total + (product?.price || 0) * item.quantity;
+            }, 0);
+
+            await fetch('/api/cart-recovery', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                email,
+                cartItems: cartData,
+                abandonedAt: currentLastActivity.toISOString(),
+                recoveryType: '1h',
+                discount: { code: 'SAVE10', percentage: 10 }
+              })
+            });
+
+            safeTrackEvent('cart_abandoned', {
+              event_category: 'ecommerce',
+              event_label: '1h',
+              value: totalPrice
+            });
+          } catch (error) {
+            console.error('Cart recovery failed:', error);
+          }
+        })();
       }, 60 * 60 * 1000); // 1 hour
     }
-  }, [items, checkoutStarted, triggerCartRecovery]);
+  }, [items, checkoutStarted]); // Dependencies are now stable
 
   // Track checkout started state
   useEffect(() => {
