@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { PRODUCTS } from './constants';
 
 interface CartItem {
@@ -14,25 +14,112 @@ interface CartContextType {
   clearCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
+  // New conversion optimization features
+  cartAbandoned: boolean;
+  checkoutStarted: boolean;
+  setCheckoutStarted: (started: boolean) => void;
+  lastActivity: Date | null;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [checkoutStarted, setCheckoutStarted] = useState(false);
+  const [lastActivity, setLastActivity] = useState<Date | null>(null);
+  const [cartAbandoned, setCartAbandoned] = useState(false);
+  const abandonmentTimerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // Load cart from localStorage on mount
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const savedCart = localStorage.getItem('cart');
+    const savedCheckoutStarted = localStorage.getItem('checkoutStarted');
+    const savedLastActivity = localStorage.getItem('lastActivity');
+    
     if (savedCart) {
       setItems(JSON.parse(savedCart));
+    }
+    if (savedCheckoutStarted === 'true') {
+      setCheckoutStarted(true);
+    }
+    if (savedLastActivity) {
+      setLastActivity(new Date(savedLastActivity));
     }
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     localStorage.setItem('cart', JSON.stringify(items));
-  }, [items]);
+    
+    // Update last activity
+    const now = new Date();
+    setLastActivity(now);
+    localStorage.setItem('lastActivity', now.toISOString());
+    
+    // Reset abandonment timer
+    if (abandonmentTimerRef.current) {
+      clearTimeout(abandonmentTimerRef.current);
+    }
+    
+    // Set up cart abandonment detection (1 hour)
+    if (items.length > 0 && !checkoutStarted) {
+      abandonmentTimerRef.current = setTimeout(() => {
+        setCartAbandoned(true);
+        triggerCartRecovery('1h');
+      }, 60 * 60 * 1000); // 1 hour
+    }
+  }, [items, checkoutStarted]);
+
+  // Track checkout started state
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem('checkoutStarted', checkoutStarted.toString());
+  }, [checkoutStarted]);
+
+  const triggerCartRecovery = async (recoveryType: '1h' | '24h' | '72h') => {
+    if (typeof window === 'undefined' || items.length === 0) return;
+
+    try {
+      const email = localStorage.getItem('userEmail'); // Assume we capture email somewhere
+      if (!email) return;
+
+      const cartData = items.map(item => {
+        const product = PRODUCTS.find(p => p.id === item.id);
+        return {
+          productId: item.id,
+          productName: product?.name || 'Unknown Product',
+          quantity: item.quantity,
+          price: product?.price || 0
+        };
+      });
+
+      await fetch('/api/cart-recovery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          cartItems: cartData,
+          abandonedAt: lastActivity?.toISOString(),
+          recoveryType,
+          discount: recoveryType === '1h' ? { code: 'SAVE10', percentage: 10 } : undefined
+        })
+      });
+
+      // Track cart abandonment
+      if ((window as any).gtag) {
+        (window as any).gtag('event', 'cart_abandoned', {
+          event_category: 'ecommerce',
+          event_label: recoveryType,
+          value: getTotalPrice()
+        });
+      }
+    } catch (error) {
+      console.error('Cart recovery failed:', error);
+    }
+  };
 
   const addToCart = (productId: string) => {
     setItems(currentItems => {
@@ -89,6 +176,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         clearCart,
         getTotalItems,
         getTotalPrice,
+        cartAbandoned,
+        checkoutStarted,
+        setCheckoutStarted,
+        lastActivity,
       }}
     >
       {children}

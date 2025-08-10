@@ -111,3 +111,38 @@ Key models: User, Product, Order, Customer, OrderItem, Referral
 
 ## Testing
 No formal test framework is currently set up. The project uses TypeScript for type safety and ESLint for code quality.
+
+## Additional Development Commands
+
+### Dependencies & Analysis
+- `npm run find-unused-deps` - Check for unused dependencies using depcheck
+- `npm run update-deps` - Update browserslist database
+- `npm run analyze-js` - Analyze JavaScript bundle composition
+- `npm run bundle:analyze` - Advanced bundle analysis
+- `npm run cache:optimize` - Optimize cache configuration
+
+### Image & Asset Management
+- `npm run add-image-dimensions` - Add dimensions to image metadata
+- `npm run types:supabase` - Generate Supabase types placeholder
+
+## Important Notes
+
+### Pages Router vs App Router
+This project uses Next.js **Pages Router**, not the newer App Router. All pages are in the `pages/` directory, not `app/`.
+
+### Image Optimization Pipeline
+- Original images go in `public/original-images/`
+- Optimized images are auto-generated in `public/optimized/` 
+- Uses Sharp for AVIF, WebP, and JPG formats
+- Run image optimization scripts after adding new images
+
+### Stripe Integration
+- Checkout sessions created via `/api/create-checkout-session`
+- Webhooks handled at `/api/webhooks/stripe`
+- Test payments use Stripe test mode
+
+### Translation System
+- Custom translation context in `src/lib/translation-context.tsx`
+- Translation files: `src/translations/{en,fr,zh}.ts`
+- Use `useTranslation` hook for accessing translations
+- Domain-based routing: `purrify.ca` (en), `fr.purrify.ca` (fr), `zh.purrify.ca` (zh)

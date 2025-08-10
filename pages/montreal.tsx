@@ -203,26 +203,26 @@ export default function Montreal() {
         />
       ))}
 
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {locale === 'fr' 
               ? 'Désodorisant pour Litière de Chat Montréal | Purrify Canada' 
               : 'Cat Litter Deodorizer Montreal | Where to Buy Purrify in Quebec'
             }
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
             {locale === 'fr'
               ? 'Découvrez Purrify, l’additif au charbon activé premium pour litière de chat. Contrôle naturel des odeurs fabriqué au Canada, disponible dans les animaleries de Montréal et région.'
               : 'Discover Purrify’s premium activated carbon cat litter additive at Montreal area pet stores. Natural odor control made in Canada, available throughout Greater Montreal, Laval, and surrounding communities.'
             }
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-semibold text-blue-900 mb-3">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">
               {locale === 'fr' ? 'Maintenant Disponible à Montréal!' : 'Now Available in Montreal & Surrounding Areas!'}
             </h2>
-            <p className="text-blue-800">
+            <p className="text-blue-800 dark:text-blue-200">
               {locale === 'fr'
                 ? 'Visitez votre animalerie locale indépendante pour trouver Purrify. Appelez à l’avance pour confirmer la disponibilité dans votre magasin préféré.'
                 : 'Visit your local independent pet store to find Purrify. Call ahead to confirm availability at your preferred location in Montreal, Laval, Verdun, or surrounding areas.'
@@ -233,13 +233,13 @@ export default function Montreal() {
 
         {/* Store Locations */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr' 
               ? 'Où Acheter Purrify dans la Région de Montréal | Magasins Partenaires'
               : 'Where to Buy Purrify in Montreal Area | Pet Store Locations'
             }
           </h2>
-          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
             {locale === 'fr'
               ? 'Trouvez Purrify dans ces animaleries de confiance à travers Montréal, Laval, Verdun et les communautés avoisinantes. Chaque magasin offre un service personnalisé et des conseils d’experts pour vos animaux de compagnie.'
               : 'Find Purrify at these trusted pet stores across Montreal, Laval, Verdun, and surrounding communities. Each location offers personalized service and expert advice for your pets.'
@@ -248,9 +248,9 @@ export default function Montreal() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {/* Pattes et Griffes - Sainte-Thérèse */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
                     alt="Pattes et Griffes Logo"
@@ -276,9 +276,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Sainte-Thérèse */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -304,9 +304,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Sainte-Marthe-sur-le-Lac */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -332,9 +332,9 @@ export default function Montreal() {
             </div>
 
             {/* Animal Shop GIGI */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/gigi.webp"
                     alt="Animal Shop GIGI Pet Store Logo"
@@ -360,9 +360,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Laval */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -388,9 +388,9 @@ export default function Montreal() {
             </div>
 
             {/* Pattes et Griffes - Cartier Ouest */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
                     alt="Pattes et Griffes Logo"
@@ -416,9 +416,9 @@ export default function Montreal() {
             </div>
 
             {/* Pitou Minou & Compagnons Kirkland */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/pitou-minou.webp"
                     alt="Pitou Minou & Compagnons - Pet Store Logo"
@@ -444,9 +444,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Boul. St-Laurent (Montreal) */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -472,9 +472,9 @@ export default function Montreal() {
             </div>
 
             {/* Doghaus */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/doghaus.webp"
                     alt="Doghaus Montreal - Premium Pet Store Logo"
@@ -500,9 +500,9 @@ export default function Montreal() {
             </div>
 
             {/* KONG ANIMALERIE */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/kong-animalerie.webp"
                     alt="KONG ANIMALERIE - Montreal Pet Store Logo"
@@ -528,9 +528,9 @@ export default function Montreal() {
             </div>
 
             {/* Coquette et Finegueule */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/coquette-finegueule.webp"
                     alt="Coquette et Finegueule - Pet Store with Grooming Logo"
@@ -556,9 +556,9 @@ export default function Montreal() {
             </div>
 
             {/* Pitou Minou & Compagnons Verdun */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="/optimized/pitou-minou.webp"
                     alt="Pitou Minou & Compagnons - Pet Store Logo"
@@ -584,9 +584,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Mont-Royal E */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -612,9 +612,9 @@ export default function Montreal() {
             </div>
 
             {/* Chico - Rue Ontario E */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg"
                     alt="Chico - Boutique d'animaux Logo"
@@ -640,9 +640,9 @@ export default function Montreal() {
             </div>
 
             {/* Pattes et Griffes - Marche Centrale */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
                   <OptimizedImage
                     src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
                     alt="Pattes et Griffes Logo"
@@ -668,14 +668,14 @@ export default function Montreal() {
             </div>
           </div>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-yellow-800 mb-2">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 text-center">
+            <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-100 mb-2">
               {locale === 'fr' 
                 ? 'Vous ne trouvez pas Purrify dans votre magasin local?'
                 : 'Can\'t Find Purrify at Your Local Store?'
               }
             </h3>
-            <p className="text-yellow-700 mb-4">
+            <p className="text-yellow-700 dark:text-yellow-200 mb-4">
               {locale === 'fr'
                 ? 'Demandez à votre gérant de magasin de commander Purrify! Plusieurs magasins sont heureux de stocker des produits que leurs clients demandent.'
                 : 'Ask your store manager to order Purrify! Many stores are happy to stock products their customers request.'
@@ -695,13 +695,13 @@ export default function Montreal() {
 
         {/* Why Choose Purrify in Montreal */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr'
               ? 'Pourquoi les Propriétaires de Chats de Montréal Choisissent Purrify'
               : 'Why Montreal Cat Owners Choose Purrify | Premium Odor Control'
             }
           </h2>
-          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
             {locale === 'fr'
               ? 'Découvrez pourquoi des milliers de familles montréalaises font confiance à Purrify pour garder leur maison fraîche et accueillante toute l’année.'
               : 'Discover why thousands of Montreal families trust Purrify to keep their homes fresh and welcoming year-round, especially during Quebec’s long winter months.'
@@ -709,41 +709,41 @@ export default function Montreal() {
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">
                 {locale === 'fr' ? '🍁 Fabriqué au Canada' : '🍁 Made in Canada | Quebec Pride'}
               </h3>
-              <p className="text-blue-800">
+              <p className="text-blue-800 dark:text-blue-200">
                 Proudly manufactured in Canada with premium activated carbon. Supporting local business 
                 while providing superior odor control for Montreal's cat families.
               </p>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-900 mb-3">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-green-900 dark:text-green-100 mb-3">
                 {locale === 'fr' ? '❄️ Parfait pour les Hivers de Montréal' : '❄️ Perfect for Montreal Winters | Long-Lasting Freshness'}
               </h3>
-              <p className="text-green-800">
+              <p className="text-green-800 dark:text-green-200">
                 When windows stay closed during long Montreal winters, Purrify keeps your home fresh. 
                 Natural odor elimination without harsh chemicals or overpowering fragrances.
               </p>
             </div>
 
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-purple-900 mb-3">
+            <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-purple-900 dark:text-purple-100 mb-3">
                 {locale === 'fr' ? '🏠 Idéal pour les Petits Appartements' : '🏠 Ideal for Montreal Apartments | Compact Living Solutions'}
               </h3>
-              <p className="text-purple-800">
+              <p className="text-purple-800 dark:text-purple-200">
                 Many Montreal cat owners live in smaller spaces where litter box odors can be problematic. 
                 Purrify provides powerful odor control perfect for apartments and condos.
               </p>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-orange-900 mb-3">
+            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-orange-900 dark:text-orange-100 mb-3">
                 {locale === 'fr' ? '🌿 Naturel et Sécuritaire' : '🌿 Natural & Safe | Family-Friendly Formula'}
               </h3>
-              <p className="text-orange-800">
+              <p className="text-orange-800 dark:text-orange-200">
                 Fragrance-free and non-toxic formula is safe for cats, kittens, and families. 
                 No synthetic chemicals - just pure activated carbon odor elimination.
               </p>
@@ -753,21 +753,21 @@ export default function Montreal() {
 
         {/* FAQ Section for SEO */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr' 
               ? 'Questions Fréquentes | Purrify à Montréal'
               : 'Frequently Asked Questions | Purrify in Montreal'
             }
           </h2>
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {locale === 'fr' 
                   ? 'Où puis-je acheter Purrify à Montréal?'
                   : 'Where can I buy Purrify in Montreal?'
                 }
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
                   ? 'Purrify est disponible dans les animaleries indépendantes à travers Montréal, incluant des emplacements à Verdun, Kirkland, Saint-Eustache, Sainte-Thérèse, et Laval. Visitez n\'importe lequel de nos magasins partenaires listés ci-dessus ou appelez à l\'avance pour confirmer la disponibilité.'
                   : 'Purrify is available at independent pet stores throughout Montreal, including locations in Verdun, Kirkland, Saint-Eustache, Sainte-Thérèse, and Laval. Visit any of our listed partner stores above or call ahead to confirm availability at your preferred location.'
@@ -775,14 +775,14 @@ export default function Montreal() {
               </p>
             </div>
             
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {locale === 'fr'
                   ? 'Qu\'est-ce qui rend Purrify idéal pour les propriétaires de chats de Montréal?'
                   : 'What makes Purrify ideal for Montreal cat owners?'
                 }
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
                   ? 'Purrify est fabriqué au Canada avec du charbon activé premium, parfait pour les longs hivers de Montréal quand les fenêtres restent fermées. Il fournit un contrôle naturel des odeurs sans produits chimiques agressifs, idéal pour les appartements et petits espaces communs à Montréal.'
                   : 'Purrify is made in Canada with premium activated carbon, perfect for Montreal\'s long winters when windows stay closed. It provides natural odor control without harsh chemicals, ideal for apartments and small spaces common in Montreal.'
@@ -790,14 +790,14 @@ export default function Montreal() {
               </p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {locale === 'fr'
                   ? 'Combien coûte Purrify à Montréal?'
                   : 'How much does Purrify cost in Montreal?'
                 }
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
                   ? 'Purrify est disponible en trois formats: format d\'essai de 17g pour 6,99$ CAD, format régulier de 60g pour 19,99$ CAD, et grand format de 120g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
                   : 'Purrify is available in three sizes: 17g trial size for $6.99 CAD, 60g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer.'
@@ -805,14 +805,14 @@ export default function Montreal() {
               </p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {locale === 'fr'
                   ? 'Purrify est-il sécuritaire pour les chats et les chatons?'
                   : 'Is Purrify safe for cats and kittens?'
                 }
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
                   ? 'Oui! Purrify est complètement sécuritaire pour les chats, chatons et familles. Notre formule naturelle sans parfum ne contient aucun produit chimique synthétique - seulement du charbon activé pur pour l\'élimination des odeurs.'
                   : 'Yes! Purrify is completely safe for cats, kittens, and families. Our natural, fragrance-free formula contains no synthetic chemicals - just pure activated carbon for odor elimination.'
@@ -824,7 +824,7 @@ export default function Montreal() {
 
         {/* Local Testimonials */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr' 
               ? 'Témoignages de Propriétaires de Chats de Montréal'
               : 'What Montreal Cat Owners Say | Customer Reviews'
@@ -832,17 +832,17 @@ export default function Montreal() {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-blue-600">MF</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Marie Fournier</h4>
-                  <p className="text-sm text-gray-600">Plateau Mont-Royal</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Plateau Mont-Royal</p>
                 </div>
               </div>
-              <p className="text-gray-700 italic mb-3">
+              <p className="text-gray-700 dark:text-gray-300 italic mb-3">
                 {locale === 'fr'
                   ? '"Vivant dans un petit appartement avec mon chat Biscuit, le contrôle des odeurs est essentiel. Purrify a été révolutionnaire - plus d\'odeurs embarrassantes quand les invités arrivent!"'
                   : '"Living in a small apartment with my cat Biscuit, odor control is essential. Purrify has been a game-changer - no more embarrassing smells when guests visit!"'
@@ -851,17 +851,17 @@ export default function Montreal() {
               <div className="text-yellow-400">★★★★★</div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-green-600">JT</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Jean Tremblay</h4>
-                  <p className="text-sm text-gray-600">Rosemont</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Rosemont</p>
                 </div>
               </div>
-              <p className="text-gray-700 italic mb-3">
+              <p className="text-gray-700 dark:text-gray-300 italic mb-3">
                 {locale === 'fr'
                   ? '"Mes deux chats Cornichon et Mochi adorent leur litière, et j\'adore que Purrify garde notre condo frais tout l\'hiver. Trouvé dans notre animalerie locale - je le recommande fortement!"'
                   : '"My two cats Pickles and Mochi love their litter box, and I love that Purrify keeps our condo fresh all winter long. Found it at our local pet store - highly recommend!"'
@@ -870,17 +870,17 @@ export default function Montreal() {
               <div className="text-yellow-400">★★★★★</div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-purple-600">SL</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Sophie Lavoie</h4>
-                  <p className="text-sm text-gray-600">Westmount</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Westmount</p>
                 </div>
               </div>
-              <p className="text-gray-700 italic mb-3">
+              <p className="text-gray-700 dark:text-gray-300 italic mb-3">
                 {locale === 'fr'
                   ? '"En tant que technicienne vétérinaire à Montréal, je recommande Purrify à tous mes clients. C\'est naturel, efficace et sécuritaire pour les chats de tous âges. Mon propre chat Nouille approuve!"'
                   : '"As a veterinary technician in Montreal, I recommend Purrify to all my clients. It\'s natural, effective, and safe for cats of all ages. My own cat Noodle approves!"'
@@ -893,14 +893,14 @@ export default function Montreal() {
 
         {/* Directions from Crescent Street */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr'
               ? 'Se Rendre aux Animaleries de Montréal'
               : 'Getting to Montreal Pet Stores'
             }
           </h2>
           
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8">
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
             <h3 className="text-xl font-semibold mb-4">
               {locale === 'fr' 
                 ? 'Depuis le centre-ville de Montréal (secteur rue Crescent)'
@@ -912,7 +912,7 @@ export default function Montreal() {
                 <h4 className="font-semibold text-blue-600 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Locales' : 'To Local Pet Stores'}
                 </h4>
-                <ul className="text-sm space-y-1 text-gray-700">
+                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>
                     {locale === 'fr' 
                       ? '• Multiples animaleries indépendantes à travers Montréal'
@@ -945,7 +945,7 @@ export default function Montreal() {
                 <h4 className="font-semibold text-green-600 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Indépendantes' : 'To Independent Pet Stores'}
                 </h4>
-                <ul className="text-sm space-y-1 text-gray-700">
+                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>
                     {locale === 'fr'
                       ? '• Visitez n\'importe laquelle des animaleries indépendantes listées'
@@ -979,8 +979,8 @@ export default function Montreal() {
         </section>
 
         {/* Local Coverage Area */}
-        <section className="mb-16 bg-gray-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+        <section className="mb-16 bg-gray-50 dark:bg-gray-900 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr'
               ? 'Zones de Service | Purrify dans le Grand Montréal'
               : 'Service Areas | Purrify Coverage in Greater Montreal'
@@ -988,10 +988,10 @@ export default function Montreal() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <div className="text-center">
-              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Montréal' : 'Montreal'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                 <li>Plateau Mont-Royal</li>
                 <li>Ville-Marie</li>
                 <li>Hochelaga-Maisonneuve</li>
@@ -999,8 +999,8 @@ export default function Montreal() {
               </ul>
             </div>
             <div className="text-center">
-              <h3 className="font-semibold text-lg mb-3 text-blue-900">Laval</h3>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">Laval</h3>
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                 <li>Sainte-Thérèse</li>
                 <li>Sainte-Marthe-sur-le-Lac</li>
                 <li>Cartier Ouest</li>
@@ -1008,10 +1008,10 @@ export default function Montreal() {
               </ul>
             </div>
             <div className="text-center">
-              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Banlieues Sud' : 'South Shore'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                 <li>Verdun</li>
                 <li>Saint-Eustache</li>
                 <li>Westmount</li>
@@ -1019,10 +1019,10 @@ export default function Montreal() {
               </ul>
             </div>
             <div className="text-center">
-              <h3 className="font-semibold text-lg mb-3 text-blue-900">
+              <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Banlieues Ouest' : 'West Island'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                 <li>Kirkland</li>
                 <li>Dollard-des-Ormeaux</li>
                 <li>Pierrefonds</li>
@@ -1030,7 +1030,7 @@ export default function Montreal() {
               </ul>
             </div>
           </div>
-          <p className="text-center text-gray-600 mt-6 max-w-3xl mx-auto">
+          <p className="text-center text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
             {locale === 'fr'
               ? 'Purrify dessert fièrement toute la région métropolitaine de Montréal. Si vous ne voyez pas votre quartier listé, contactez-nous pour connaître le magasin le plus près de chez vous.'
               : 'Purrify proudly serves the entire Greater Montreal metropolitan area. If you don\'t see your neighborhood listed, contact us to find the nearest store location to you.'
@@ -1040,13 +1040,13 @@ export default function Montreal() {
 
         {/* Product Information */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr'
               ? 'Produits Purrify Disponibles à Montréal | Prix et Formats'
               : 'Purrify Products Available in Montreal | Sizes and Pricing'
             }
           </h2>
-          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
             {locale === 'fr'
               ? 'Choisissez le format parfait pour votre famille de chats. Tous les produits Purrify sont disponibles dans nos magasins partenaires à travers Montréal.'
               : 'Choose the perfect size for your cat family. All Purrify products are available at our partner stores throughout Montreal.'
@@ -1054,17 +1054,17 @@ export default function Montreal() {
           </p>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Format d\'Essai 17g' : '17g Trial Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 mb-2">
                 {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
               </div>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Parfait pour essayer Purrify ou voyager' : 'Perfect for trying Purrify or travel'}
               </p>
-              <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 2-3 semaines de contrôle des odeurs' : '• 2-3 weeks of odor control'}
                 </li>
@@ -1077,7 +1077,7 @@ export default function Montreal() {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                 {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>
@@ -1087,10 +1087,10 @@ export default function Montreal() {
               <div className="text-3xl font-bold text-blue-600 mb-2">
                 {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
               </div>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Meilleur rapport qualité-prix pour la plupart des propriétaires de chats' : 'Best value for most cat owners'}
               </p>
-              <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 6-8 semaines de contrôle des odeurs' : '• 6-8 weeks of odor control'}
                 </li>
@@ -1103,17 +1103,17 @@ export default function Montreal() {
               </ul>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 mb-2">
                 {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}
               </div>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Valeur maximale pour foyers multi-chats' : 'Maximum value for multi-cat homes'}
               </p>
-              <ul className="text-sm text-gray-700 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 10-12 semaines de contrôle des odeurs' : '• 10-12 weeks of odor control'}
                 </li>
@@ -1129,14 +1129,14 @@ export default function Montreal() {
         </section>
 
         {/* Montreal Summary for SEO */}
-        <section className="mb-16 bg-blue-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        <section className="mb-16 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
             {locale === 'fr'
               ? 'Purrify Montréal : Contrôle d\'Odeur Premium pour Chats'
               : 'Purrify Montreal: Premium Cat Odor Control Made in Canada'
             }
           </h2>
-          <div className="max-w-4xl mx-auto text-gray-700 space-y-4">
+          <div className="max-w-4xl mx-auto text-gray-700 dark:text-gray-300 space-y-4">
             <p className="text-lg">
               {locale === 'fr'
                 ? 'Purrify révolutionne le contrôle des odeurs de litière pour chat à Montréal avec son charbon activé premium fabriqué au Canada. Nos 15 magasins partenaires à travers la région métropolitaine offrent des solutions naturelles et sécuritaires pour garder votre maison fraîche pendant les longs hivers québécois.'
@@ -1150,24 +1150,24 @@ export default function Montreal() {
               }
             </p>
             <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className="text-center p-4 bg-white rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-2">
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
                   {locale === 'fr' ? '15+ Magasins' : '15+ Store Locations'}
                 </h4>
                 <p className="text-sm">
                   {locale === 'fr' ? 'À travers le Grand Montréal' : 'Across Greater Montreal'}
                 </p>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-2">
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
                   {locale === 'fr' ? '100% Canadien' : '100% Canadian Made'}
                 </h4>
                 <p className="text-sm">
                   {locale === 'fr' ? 'Charbon activé premium' : 'Premium activated carbon'}
                 </p>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-2">
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
                   {locale === 'fr' ? '3 Formats' : '3 Size Options'}
                 </h4>
                 <p className="text-sm">
@@ -1180,14 +1180,14 @@ export default function Montreal() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 dark:border-blue-800 rounded-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               {locale === 'fr'
                 ? 'Visitez Votre Animalerie Locale à Montréal Aujourd\'hui'
                 : 'Visit Your Local Montreal Pet Store Today'
               }
             </h2>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
               {locale === 'fr'
                 ? 'Découvrez la différence que Purrify fait dans votre maison. Disponible maintenant dans les animaleries indépendantes à travers la région du Grand Montréal.'
                 : 'Experience the difference Purrify makes in your home. Available now at independent pet stores throughout the Greater Montreal Area.'
@@ -1202,7 +1202,7 @@ export default function Montreal() {
               </Link>
               <Link 
                 href="/products" 
-                className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir Tous les Produits' : 'View All Products'}
               </Link>

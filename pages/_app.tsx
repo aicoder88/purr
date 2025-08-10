@@ -12,6 +12,7 @@ import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Analytics } from '@vercel/analytics/next';
+import { ConversionOptimizer } from '../src/components/conversion/ConversionOptimizer';
 
 interface PageProps {
   // Add your page props here if needed
@@ -20,10 +21,21 @@ interface PageProps {
 
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
-  const { locale } = router;
+  const { locale, pathname } = router;
   
   // Use relative URL for canonical
   const canonicalUrl = '/';
+  
+  // Determine page type for conversion optimization
+  const getPageType = (path: string): 'homepage' | 'product' | 'checkout' | 'cart' => {
+    if (path === '/') return 'homepage';
+    if (path.includes('/products/') || path.includes('/trial-size')) return 'product';
+    if (path === '/checkout') return 'checkout';
+    if (path.includes('/cart')) return 'cart';
+    return 'homepage';
+  };
+  
+  const pageType = getPageType(pathname);
   
   return (
     <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
@@ -167,6 +179,14 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          
+          {/* Conversion Optimization System */}
+          <ConversionOptimizer 
+            enabled={process.env.NODE_ENV === 'production'}
+            pageType={pageType}
+            productId={pathname.includes('/trial-size') ? '20g' : undefined}
+          />
+          
           <Toaster />
           <Analytics />
         </TranslationProvider>
