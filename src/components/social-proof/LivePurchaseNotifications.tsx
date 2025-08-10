@@ -96,6 +96,37 @@ export function LivePurchaseNotifications({
   useEffect(() => {
     if (!enabled) return;
 
+    const showNotification = () => {
+      const randomNotification = purchaseData[Math.floor(Math.random() * purchaseData.length)];
+      
+      // Create a unique notification with updated timestamp
+      const newNotification: PurchaseNotification = {
+        ...randomNotification,
+        id: `${randomNotification.id}-${Date.now()}`,
+        timeAgo: getRandomTimeAgo()
+      };
+
+      setNotifications(prev => {
+        const updated = [newNotification, ...prev].slice(0, maxNotifications);
+        
+        // Track social proof impression
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'social_proof_shown', {
+            event_category: 'conversion',
+            event_label: 'purchase_notification',
+            value: 1
+          });
+        }
+        
+        return updated;
+      });
+
+      // Auto-remove notification after 8 seconds
+      setTimeout(() => {
+        setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
+      }, 8000);
+    };
+
     // Wait 3 seconds after page load before showing first notification
     const initialTimer = setTimeout(() => {
       setIsVisible(true);
@@ -110,38 +141,7 @@ export function LivePurchaseNotifications({
       clearTimeout(initialTimer);
       clearInterval(interval);
     };
-  }, [enabled]);
-
-  const showNotification = () => {
-    const randomNotification = purchaseData[Math.floor(Math.random() * purchaseData.length)];
-    
-    // Create a unique notification with updated timestamp
-    const newNotification: PurchaseNotification = {
-      ...randomNotification,
-      id: `${randomNotification.id}-${Date.now()}`,
-      timeAgo: getRandomTimeAgo()
-    };
-
-    setNotifications(prev => {
-      const updated = [newNotification, ...prev].slice(0, maxNotifications);
-      
-      // Track social proof impression
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'social_proof_shown', {
-          event_category: 'conversion',
-          event_label: 'purchase_notification',
-          value: 1
-        });
-      }
-      
-      return updated;
-    });
-
-    // Auto-remove notification after 8 seconds
-    setTimeout(() => {
-      setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
-    }, 8000);
-  };
+  }, [enabled, maxNotifications]);
 
   const getRandomTimeAgo = () => {
     const options = [
@@ -161,8 +161,8 @@ export function LivePurchaseNotifications({
 
   const handleNotificationClick = (notification: PurchaseNotification) => {
     // Track click on social proof
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'social_proof_clicked', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'social_proof_clicked', {
         event_category: 'conversion',
         event_label: 'purchase_notification',
         value: 1

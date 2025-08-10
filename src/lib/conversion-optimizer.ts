@@ -533,9 +533,16 @@ export class UltimateConversionOptimizer {
 export const conversionOptimizer = new UltimateConversionOptimizer();
 
 // Global conversion tracking function
+declare global {
+  interface Window {
+    trackPurrifyConversion?: (type: string, action: string, value?: number) => void;
+  }
+}
+
 if (typeof window !== 'undefined') {
-  (window as any).trackPurrifyConversion = (type: string, action: string, value?: number) => {
-    conversionOptimizer.trackConversion(type as any, action, value);
+  window.trackPurrifyConversion = (type: string, action: string, value?: number) => {
+    const validType = ['primary', 'secondary', 'micro'].includes(type) ? type as 'primary' | 'secondary' | 'micro' : 'micro';
+    conversionOptimizer.trackConversion(validType, action, value);
   };
 }
 

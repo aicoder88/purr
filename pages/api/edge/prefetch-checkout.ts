@@ -121,7 +121,7 @@ async function getProductData(productId: string) {
   return products[productId as keyof typeof products] || null;
 }
 
-function calculatePricing(product: any, quantity: number, location?: string) {
+function calculatePricing(product: { price: number; taxable?: boolean }, quantity: number, location?: string) {
   const subtotal = product.price * quantity;
   
   // Calculate shipping (free over $35 in Canada)
@@ -163,7 +163,7 @@ function calculatePricing(product: any, quantity: number, location?: string) {
   };
 }
 
-async function prepareStripeData(product: any, quantity: number, pricing: any) {
+async function prepareStripeData(product: { id: string; name: string; price: number }, quantity: number, pricing: { subtotal: number; taxes: number; total: number; shipping: number }) {
   // Prepare Stripe checkout session data for ultra-fast creation
   return {
     mode: 'payment',
@@ -212,7 +212,7 @@ function generateCacheKey(productId: string, quantity: number, location?: string
   return location ? `${baseKey}:${location}` : baseKey;
 }
 
-async function storeInEdgeCache(key: string, data: any) {
+async function storeInEdgeCache(key: string, data: Record<string, unknown>) {
   // In production, this would use Vercel's Edge Config or similar
   // For now, we'll simulate with a simple in-memory approach
   
@@ -228,14 +228,14 @@ async function storeInEdgeCache(key: string, data: any) {
   return true;
 }
 
-async function trackPrefetchEvent(data: any) {
+async function trackPrefetchEvent(data: Record<string, unknown>) {
   // Track prefetch analytics for optimization
   const event = {
     type: 'checkout_prefetch',
     timestamp: data.timestamp,
     product_id: data.productId,
     quantity: data.quantity,
-    user_agent: data.userAgent?.substring(0, 100), // Truncate for privacy
+    user_agent: typeof data.userAgent === 'string' ? data.userAgent.substring(0, 100) : 'unknown', // Truncate for privacy
     location: data.location,
     edge_region: process.env.VERCEL_REGION || 'unknown'
   };

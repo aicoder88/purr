@@ -165,8 +165,8 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
       setTimeout(() => setCopiedLink(false), 2000);
       
       // Track copy event
-      if ((window as any).gtag) {
-        (window as any).gtag('event', 'referral_link_copied', {
+      if (window.gtag) {
+        window.gtag('event', 'referral_link_copied', {
           event_category: 'referral',
           event_label: 'clipboard'
         });
@@ -195,7 +195,8 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         copyToClipboard(fullText + '\n\n' + SOCIAL_TEMPLATES.instagram.hashtags.map(h => h).join(' '));
         return;
       case 'email':
-        shareUrl = `mailto:?subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(template.text + ' ' + referralLink)}`;
+        const emailTemplate = SOCIAL_TEMPLATES.email;
+        shareUrl = `mailto:?subject=${encodeURIComponent(emailTemplate.subject)}&body=${encodeURIComponent(emailTemplate.text + ' ' + referralLink)}`;
         break;
     }
 
@@ -204,8 +205,8 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     }
 
     // Track social share
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'referral_shared', {
+    if (window.gtag) {
+      window.gtag('event', 'referral_shared', {
         event_category: 'referral',
         event_label: platform
       });

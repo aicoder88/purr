@@ -40,8 +40,8 @@ export function ConversionOptimizer({
       }
 
       // Track email capture
-      if ((window as any).gtag) {
-        (window as any).gtag('event', 'email_capture', {
+      if (window.gtag) {
+        window.gtag('event', 'email_capture', {
           event_category: 'conversion',
           event_label: 'exit_intent',
           value: 1
@@ -142,34 +142,35 @@ export function useConversionTests() {
   useEffect(() => {
     // Simple A/B test implementation
     const savedVariant = localStorage.getItem('conversionVariant');
+    let activeVariant: 'control' | 'aggressive' | 'subtle';
     
-    if (savedVariant) {
-      setVariant(savedVariant as any);
+    if (savedVariant && ['control', 'aggressive', 'subtle'].includes(savedVariant)) {
+      activeVariant = savedVariant as 'control' | 'aggressive' | 'subtle';
+      setVariant(activeVariant);
     } else {
       const random = Math.random();
-      let newVariant: 'control' | 'aggressive' | 'subtle';
       
       if (random < 0.33) {
-        newVariant = 'control';
+        activeVariant = 'control';
       } else if (random < 0.66) {
-        newVariant = 'aggressive';
+        activeVariant = 'aggressive';
       } else {
-        newVariant = 'subtle';
+        activeVariant = 'subtle';
       }
       
-      setVariant(newVariant);
-      localStorage.setItem('conversionVariant', newVariant);
+      setVariant(activeVariant);
+      localStorage.setItem('conversionVariant', activeVariant);
     }
 
     // Track A/B test assignment
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'ab_test_assigned', {
+    if (window.gtag) {
+      window.gtag('event', 'ab_test_assigned', {
         event_category: 'experiment',
         event_label: 'conversion_optimizer',
-        custom_parameter_1: variant
+        custom_parameter_1: activeVariant
       });
     }
-  }, [variant]);
+  }, []); // Remove variant from dependencies since we're setting it inside
 
   const getSettings = () => {
     switch (variant) {

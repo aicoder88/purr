@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface PredictiveLoadingConfig {
   enableHoverPrefetch: boolean;
   enableScrollPrefetch: boolean;
@@ -6,11 +8,24 @@ interface PredictiveLoadingConfig {
   maxPrefetches: number;
 }
 
+interface UserInteraction {
+  type: string;
+  element: string;
+  timestamp: number;
+  path: string;
+}
+
+interface CartEvent {
+  type: string;
+  productId: string;
+  timestamp: number;
+}
+
 interface UserBehavior {
   pageViews: string[];
   timeOnPage: Record<string, number>;
-  interactions: string[];
-  cartEvents: string[];
+  interactions: UserInteraction[];
+  cartEvents: CartEvent[];
   lastActivity: number;
 }
 
@@ -179,7 +194,7 @@ class PredictiveLoader {
         element: clickedElement.tagName.toLowerCase(),
         timestamp: Date.now(),
         path: window.location.pathname
-      } as any);
+      });
 
       this.userBehavior.lastActivity = Date.now();
       this.saveUserBehavior();
@@ -191,7 +206,7 @@ class PredictiveLoader {
         type: event.detail.type,
         productId: event.detail.productId,
         timestamp: Date.now()
-      } as any);
+      });
 
       // Prefetch checkout when items added to cart
       if (event.detail.type === 'add' && this.userBehavior.cartEvents.length >= 1) {
@@ -330,7 +345,7 @@ class PredictiveLoader {
     return href.includes('/products/') || href.includes('/trial-size');
   }
 
-  private async prefetchPage(href: string): Promise<void> {
+  public async prefetchPage(href: string): Promise<void> {
     try {
       const url = new URL(href, window.location.origin);
       
@@ -413,8 +428,8 @@ class PredictiveLoader {
 
   private trackPrefetch(path: string, type: 'page' | 'checkout-data'): void {
     // Track prefetch analytics
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'prefetch', {
+    if (window.gtag) {
+      window.gtag('event', 'prefetch', {
         event_category: 'performance',
         event_label: type,
         custom_parameter_1: path

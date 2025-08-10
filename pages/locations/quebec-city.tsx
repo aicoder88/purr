@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 
 export default function quebeccityPage() {
   const city = {
@@ -64,12 +65,12 @@ export default function quebeccityPage() {
               </ul>
               
               <div className="mt-6">
-                <a 
+                <Link 
                   href="/products/trial-size"
                   className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
                 >
                   Try Purrify in {city.name}
-                </a>
+                </Link>
               </div>
             </div>
           </div>

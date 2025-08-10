@@ -71,9 +71,17 @@ export default async function handler(
     const discountAmount = discount ? (cartTotal * discount.percentage) / 100 : 0;
     const finalTotal = cartTotal - discountAmount;
 
+    // Transform cart items to match email template format
+    const transformedCartItems = cartItems.map(item => ({
+      id: item.productId,
+      name: getProductName(item.productId),
+      price: item.price,
+      quantity: item.quantity
+    }));
+
     // Get email template based on recovery type
     const emailTemplate = getEmailTemplate(recoveryType, {
-      cartItems,
+      cartItems: transformedCartItems,
       cartTotal,
       discount,
       discountAmount,
@@ -84,10 +92,15 @@ export default async function handler(
     // Send email (using EmailJS or your preferred service)
     await sendRecoveryEmail(email, emailTemplate);
 
-    // Log the cart recovery attempt
+    // Log the cart recovery attempt (using original cartItems format)
     await logCartRecovery({
       email,
-      cartItems,
+      cartItems: cartItems.map(item => ({
+        id: item.productId,
+        name: getProductName(item.productId),
+        price: item.price,
+        quantity: item.quantity
+      })),
       cartTotal,
       recoveryType,
       recoveryToken,
@@ -120,6 +133,17 @@ export default async function handler(
   }
 }
 
+function getProductName(productId: string): string {
+  const productNames: Record<string, string> = {
+    '20g': 'Purrify 20g Trial Size',
+    '60g': 'Purrify 60g Standard',
+    '140g': 'Purrify 140g Family Size',
+    'bundle-starter': 'Starter Bundle',
+    'bundle-premium': 'Premium Bundle'
+  };
+  return productNames[productId] || 'Purrify Product';
+}
+
 function generateRecoveryToken(): string {
   return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
 }
@@ -127,7 +151,7 @@ function generateRecoveryToken(): string {
 function getEmailTemplate(
   recoveryType: string,
   data: {
-    cartItems: any[];
+    cartItems: Array<{ id: string; name: string; price: number; quantity: number }>;
     cartTotal: number;
     discount?: { code: string; percentage: number };
     discountAmount: number;
@@ -152,7 +176,7 @@ function getEmailTemplate(
             <h3>Your Cart:</h3>
             ${cartItems.map(item => `
               <div style="display: flex; justify-content: space-between; margin: 10px 0;">
-                <span>${item.productName || `Product ${item.productId}`} (x${item.quantity})</span>
+                <span>${item.name || `Product ${item.id}`} (x${item.quantity})</span>
                 <span>$${(item.price * item.quantity).toFixed(2)}</span>
               </div>
             `).join('')}
@@ -190,7 +214,7 @@ function getEmailTemplate(
             <h3>Your Cart (with discount):</h3>
             ${cartItems.map(item => `
               <div style="display: flex; justify-content: space-between; margin: 10px 0;">
-                <span>${item.productName || `Product ${item.productId}`} (x${item.quantity})</span>
+                <span>${item.name || `Product ${item.id}`} (x${item.quantity})</span>
                 <span>$${(item.price * item.quantity).toFixed(2)}</span>
               </div>
             `).join('')}
@@ -324,7 +348,7 @@ async function sendRecoveryEmail(email: string, template: EmailTemplate) {
 
 async function logCartRecovery(data: {
   email: string;
-  cartItems: any[];
+  cartItems: Array<{ id: string; name: string; price: number; quantity: number }>;
   cartTotal: number;
   recoveryType: string;
   recoveryToken: string;

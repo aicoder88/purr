@@ -18,6 +18,40 @@ interface ScarcityIndicatorProps {
   showRecentSales?: boolean;
 }
 
+// Simulated inventory data - moved outside component to prevent recreation on every render
+const INVENTORY_DATA: InventoryData = {
+  '20g': {
+    stock: 23,
+    lowStockThreshold: 30,
+    reserved: 7,
+    lastUpdated: new Date().toISOString()
+  },
+  '60g': {
+    stock: 12,
+    lowStockThreshold: 20,
+    reserved: 3,
+    lastUpdated: new Date().toISOString()
+  },
+  '140g': {
+    stock: 8,
+    lowStockThreshold: 15,
+    reserved: 2,
+    lastUpdated: new Date().toISOString()
+  },
+  'bundle-starter': {
+    stock: 31,
+    lowStockThreshold: 40,
+    reserved: 5,
+    lastUpdated: new Date().toISOString()
+  },
+  'bundle-premium': {
+    stock: 6,
+    lowStockThreshold: 10,
+    reserved: 1,
+    lastUpdated: new Date().toISOString()
+  }
+};
+
 export function ScarcityIndicator({ 
   productId, 
   className,
@@ -27,42 +61,8 @@ export function ScarcityIndicator({
   const [inventory, setInventory] = useState<InventoryData>({});
   const [recentSales, setRecentSales] = useState(0);
 
-  // Simulated inventory data - in production, this would come from your API
-  const inventoryData: InventoryData = {
-    '20g': {
-      stock: 23,
-      lowStockThreshold: 30,
-      reserved: 7,
-      lastUpdated: new Date().toISOString()
-    },
-    '60g': {
-      stock: 12,
-      lowStockThreshold: 20,
-      reserved: 3,
-      lastUpdated: new Date().toISOString()
-    },
-    '140g': {
-      stock: 8,
-      lowStockThreshold: 15,
-      reserved: 2,
-      lastUpdated: new Date().toISOString()
-    },
-    'bundle-starter': {
-      stock: 31,
-      lowStockThreshold: 40,
-      reserved: 5,
-      lastUpdated: new Date().toISOString()
-    },
-    'bundle-premium': {
-      stock: 6,
-      lowStockThreshold: 10,
-      reserved: 1,
-      lastUpdated: new Date().toISOString()
-    }
-  };
-
   useEffect(() => {
-    setInventory(inventoryData);
+    setInventory(INVENTORY_DATA);
     
     // Simulate recent sales activity
     const salesCount = 12 + Math.floor(Math.random() * 8);
@@ -120,8 +120,8 @@ export function ScarcityIndicator({
 
   const handleClick = () => {
     // Track scarcity indicator interaction
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'scarcity_indicator_clicked', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'scarcity_indicator_clicked', {
         event_category: 'conversion',
         event_label: productId,
         value: 1

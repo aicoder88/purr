@@ -152,8 +152,8 @@ export function SubscriptionPlans({
 
   const handleSelectPlan = (plan: SubscriptionPlan) => {
     // Track subscription selection
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'subscription_plan_selected', {
+    if (window.gtag) {
+      window.gtag('event', 'subscription_plan_selected', {
         event_category: 'subscription',
         event_label: plan.name,
         value: plan.price

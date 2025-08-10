@@ -160,7 +160,7 @@ export class UltimatePerformanceOptimizer {
     // Track LCP (Largest Contentful Paint)
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
-      const lastEntry = entries[entries.length - 1] as any;
+      const lastEntry = entries[entries.length - 1] as PerformanceEntry;
       this.metrics.lcp = lastEntry.startTime;
       
       // Auto-optimize if LCP > 2.5s
@@ -385,7 +385,7 @@ export class UltimatePerformanceOptimizer {
 
   private chunkJavaScriptExecution() {
     // Break up long-running tasks using scheduler.postTask or setTimeout
-    if ('scheduler' in window && 'postTask' in (window as any).scheduler) {
+    if ('scheduler' in window && (window as { scheduler?: { postTask?: unknown } }).scheduler?.postTask) {
       // Use Scheduler API when available
     } else {
       // Fallback to setTimeout chunking

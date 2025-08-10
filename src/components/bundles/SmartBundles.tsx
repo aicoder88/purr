@@ -285,14 +285,6 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
   const [hoveredBundle, setHoveredBundle] = useState<string | null>(null);
   const { addToCart } = useCart();
 
-  useEffect(() => {
-    // Smart bundle recommendation based on user profile
-    if (userProfile) {
-      const smartSorted = smartSortBundles(INTELLIGENT_BUNDLES, userProfile);
-      setRecommendedBundles(smartSorted);
-    }
-  }, [userProfile]);
-
   const smartSortBundles = (bundles: Bundle[], profile: typeof userProfile): Bundle[] => {
     return bundles.sort((a, b) => {
       let scoreA = 0;
@@ -330,10 +322,18 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
     });
   };
 
+  useEffect(() => {
+    // Smart bundle recommendation based on user profile
+    if (userProfile) {
+      const smartSorted = smartSortBundles(INTELLIGENT_BUNDLES, userProfile);
+      setRecommendedBundles(smartSorted);
+    }
+  }, [userProfile, smartSortBundles]);
+
   const handleBundleSelect = (bundle: Bundle) => {
     // Track bundle selection
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'bundle_selected', {
+    if (window.gtag) {
+      window.gtag('event', 'bundle_selected', {
         event_category: 'ecommerce',
         event_label: bundle.name,
         value: bundle.bundlePrice
@@ -352,8 +352,8 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
     });
 
     // Track bundle add to cart
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'add_to_cart', {
+    if (window.gtag) {
+      window.gtag('event', 'add_to_cart', {
         event_category: 'ecommerce',
         event_label: bundle.name,
         value: bundle.bundlePrice,

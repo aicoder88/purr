@@ -59,8 +59,8 @@ export function ExitIntentPopup({
     
     try {
       // Track exit intent email capture
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'exit_intent_email_capture', {
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'exit_intent_email_capture', {
           event_category: 'conversion',
           event_label: offer,
           value: 1
@@ -83,8 +83,8 @@ export function ExitIntentPopup({
 
   const handleClose = () => {
     // Track exit intent dismissal
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'exit_intent_dismissed', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'exit_intent_dismissed', {
         event_category: 'conversion',
         event_label: offer
       });
@@ -193,8 +193,8 @@ export function useExitIntent(enabled: boolean = true) {
         setHasShown(true);
         
         // Track exit intent trigger
-        if ((window as any).gtag) {
-          (window as any).gtag('event', 'exit_intent_triggered', {
+        if (window.gtag) {
+          window.gtag('event', 'exit_intent_triggered', {
             event_category: 'user_behavior',
             event_label: 'mouse_leave'
           });
@@ -209,8 +209,8 @@ export function useExitIntent(enabled: boolean = true) {
         setHasShown(true);
         
         // Track exit intent trigger
-        if ((window as any).gtag) {
-          (window as any).gtag('event', 'exit_intent_triggered', {
+        if (window.gtag) {
+          window.gtag('event', 'exit_intent_triggered', {
             event_category: 'user_behavior',
             event_label: 'tab_blur'
           });

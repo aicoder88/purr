@@ -7,19 +7,6 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   
-  // Add allowed development origins
-  allowedDevOrigins: [
-    'localhost:3000',
-    'localhost:3001',
-    'localhost:3003',
-    '192.168.0.146:3000',
-    '192.168.0.146:3001',
-    '192.168.0.146:3003',
-    '192.168.0.152:3000',
-    '192.168.0.152:3001',
-    '192.168.0.152:3003'
-  ],
-  
   // Enhanced image optimization with advanced performance settings
   images: {
     remotePatterns: [
@@ -89,31 +76,19 @@ const nextConfig = {
   
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    webpackBuildWorker: true,
-    // Advanced caching optimizations
-    isrMemoryCacheSize: 52428800, // 50MB
-    // Edge runtime optimizations
-    runtime: 'nodejs',
-    serverComponentsExternalPackages: ['sharp'],
-    // Memory and performance optimizations
-    memoryBasedWorkersCount: true,
-    caseSensitiveRoutes: true,
-    // Static generation optimizations
-    staticPageGenerationTimeout: 120,
-    // Bundle optimization
-    bundlePagesRouterDependencies: true,
-    // Scroll restoration for better UX
-    scrollRestoration: true,
-    // Enable gzip compression
-    gzipSize: true,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  
+  // Move deprecated options out of experimental
+  serverExternalPackages: ['sharp'],
+  staticPageGenerationTimeout: 120,
+  
+  // Move turbo config to turbopack
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },

@@ -109,8 +109,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       });
 
       // Track cart abandonment
-      if ((window as any).gtag) {
-        (window as any).gtag('event', 'cart_abandoned', {
+      if (window.gtag) {
+        window.gtag('event', 'cart_abandoned', {
           event_category: 'ecommerce',
           event_label: recoveryType,
           value: getTotalPrice()
