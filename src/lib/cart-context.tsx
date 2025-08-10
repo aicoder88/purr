@@ -121,7 +121,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         triggerCartRecovery('1h');
       }, 60 * 60 * 1000); // 1 hour
     }
-  }, [items, checkoutStarted]); // Remove triggerCartRecovery from deps to prevent infinite loops
+  }, [items, checkoutStarted, triggerCartRecovery]);
 
   // Track checkout started state
   useEffect(() => {

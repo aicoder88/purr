@@ -379,11 +379,21 @@ const nextConfig = {
             chunks: 'all',
             enforce: true,
           },
+          // Create separate chunks for large libraries
+          largeLibs: {
+            test: /[\\/]node_modules[\\/](next|@next|stripe|prisma|lucide-react)[\\/]/,
+            name: 'large-libs',
+            priority: 30,
+            chunks: 'all',
+            maxSize: 400000, // 400KB max
+            reuseExistingChunk: true,
+          },
           // Create a commons chunk for frequently used modules
           commons: {
             name: 'commons',
-            minChunks: 3,
+            minChunks: 5, // Increase threshold to reduce commons bundle size
             priority: 20,
+            maxSize: 500000, // Limit commons chunk to 500KB
             reuseExistingChunk: true,
           },
           // Create a lib chunk for third-party libraries
@@ -418,6 +428,7 @@ const nextConfig = {
             },
             priority: 10,
             minChunks: 2,
+            maxSize: 300000, // 300KB max per lib chunk
             reuseExistingChunk: true,
           },
           // Create a critical chunk for above-the-fold content
