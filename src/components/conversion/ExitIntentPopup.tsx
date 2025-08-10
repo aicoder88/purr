@@ -4,6 +4,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useTranslation } from '@/lib/translation-context';
+import { safeTrackEvent } from '@/lib/analytics';
 
 interface ExitIntentPopupProps {
   isOpen: boolean;
@@ -59,13 +60,11 @@ export function ExitIntentPopup({
     
     try {
       // Track exit intent email capture
-      if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', 'exit_intent_email_capture', {
-          event_category: 'conversion',
-          event_label: offer,
-          value: 1
-        });
-      }
+      safeTrackEvent('exit_intent_email_capture', {
+        event_category: 'conversion',
+        event_label: offer,
+        value: 1
+      });
 
       await onEmailCapture(email);
       
@@ -83,12 +82,10 @@ export function ExitIntentPopup({
 
   const handleClose = () => {
     // Track exit intent dismissal
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'exit_intent_dismissed', {
-        event_category: 'conversion',
-        event_label: offer
-      });
-    }
+    safeTrackEvent('exit_intent_dismissed', {
+      event_category: 'conversion',
+      event_label: offer
+    });
     onClose();
   };
 
@@ -194,12 +191,10 @@ export function useExitIntent(enabled: boolean = true) {
         setHasShown(true);
         
         // Track exit intent trigger
-        if (window.gtag) {
-          window.gtag('event', 'exit_intent_triggered', {
-            event_category: 'user_behavior',
-            event_label: 'mouse_leave'
-          });
-        }
+        safeTrackEvent('exit_intent_triggered', {
+          event_category: 'user_behavior',
+          event_label: 'mouse_leave'
+        });
       }
     };
 
@@ -210,12 +205,10 @@ export function useExitIntent(enabled: boolean = true) {
         setHasShown(true);
         
         // Track exit intent trigger
-        if (window.gtag) {
-          window.gtag('event', 'exit_intent_triggered', {
-            event_category: 'user_behavior',
-            event_label: 'tab_blur'
-          });
-        }
+        safeTrackEvent('exit_intent_triggered', {
+          event_category: 'user_behavior',
+          event_label: 'tab_blur'
+        });
       }
     };
 

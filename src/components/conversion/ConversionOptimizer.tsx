@@ -3,6 +3,7 @@ import { useCart } from '@/lib/cart-context';
 import { ExitIntentPopup, useExitIntent } from './ExitIntentPopup';
 import { LivePurchaseNotifications, LiveVisitorCounter } from '../social-proof/LivePurchaseNotifications';
 import { ScarcityIndicator } from '../urgency/ScarcityIndicators';
+import { safeTrackEvent } from '@/lib/analytics';
 
 interface ConversionOptimizerProps {
   enabled?: boolean;
@@ -40,13 +41,11 @@ export function ConversionOptimizer({
       }
 
       // Track email capture
-      if (window.gtag) {
-        window.gtag('event', 'email_capture', {
-          event_category: 'conversion',
-          event_label: 'exit_intent',
-          value: 1
-        });
-      }
+      safeTrackEvent('email_capture', {
+        event_category: 'conversion',
+        event_label: 'exit_intent',
+        value: 1
+      });
 
       // Send welcome email with discount code
       await fetch('/api/newsletter', {
@@ -163,13 +162,11 @@ export function useConversionTests() {
     }
 
     // Track A/B test assignment
-    if (window.gtag) {
-      window.gtag('event', 'ab_test_assigned', {
-        event_category: 'experiment',
-        event_label: 'conversion_optimizer',
-        custom_parameter_1: activeVariant
-      });
-    }
+    safeTrackEvent('ab_test_assigned', {
+      event_category: 'experiment',
+      event_label: 'conversion_optimizer',
+      custom_parameter_1: activeVariant
+    });
   }, []); // Remove variant from dependencies since we're setting it inside
 
   const getSettings = () => {
