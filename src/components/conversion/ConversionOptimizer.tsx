@@ -137,15 +137,18 @@ export function ConversionOptimizer({
 // Hook for A/B testing different conversion strategies
 export function useConversionTests() {
   const [variant, setVariant] = useState<'control' | 'aggressive' | 'subtle'>('control');
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    // Prevent multiple initializations and SSR issues
+    if (isInitialized || typeof window === 'undefined') return;
+
     // Simple A/B test implementation
     const savedVariant = localStorage.getItem('conversionVariant');
     let activeVariant: 'control' | 'aggressive' | 'subtle';
     
     if (savedVariant && ['control', 'aggressive', 'subtle'].includes(savedVariant)) {
       activeVariant = savedVariant as 'control' | 'aggressive' | 'subtle';
-      setVariant(activeVariant);
     } else {
       const random = Math.random();
       
@@ -157,9 +160,11 @@ export function useConversionTests() {
         activeVariant = 'subtle';
       }
       
-      setVariant(activeVariant);
       localStorage.setItem('conversionVariant', activeVariant);
     }
+    
+    setVariant(activeVariant);
+    setIsInitialized(true);
 
     // Track A/B test assignment
     safeTrackEvent('ab_test_assigned', {
@@ -167,7 +172,7 @@ export function useConversionTests() {
       event_label: 'conversion_optimizer',
       custom_parameter_1: activeVariant
     });
-  }, []); // Remove variant from dependencies since we're setting it inside
+  }, [isInitialized]); // Include isInitialized to prevent re-runs
 
   const getSettings = () => {
     switch (variant) {
