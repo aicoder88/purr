@@ -361,37 +361,14 @@ const nextConfig = {
       maxAge: 86400000, // 24 hours
     };
     
-    // Only apply safe optimizations that don't break React components
+    // Keep Next.js defaults for stability and performance
     if (!dev) {
-      // Use Next.js default chunk splitting with minor adjustments
-      config.optimization.splitChunks = {
-        ...config.optimization.splitChunks,
-        maxSize: 500000, // 500KB limit per chunk
-        cacheGroups: {
-          ...config.optimization.splitChunks?.cacheGroups,
-          commons: {
-            name: 'commons',
-            chunks: 'all',
-            minChunks: 2,
-            priority: -10,
-            reuseExistingChunk: true,
-            maxSize: 500000,
-          },
-        },
-      };
-      
-      // Enable tree shaking for better bundle size
+      // Only add basic optimizations that don't affect chunking
       config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
       
-      // Enable module concatenation for better performance
-      config.optimization.concatenateModules = true;
-      
-      // Add performance hints
+      // Add performance hints but don't break the build
       config.performance = {
-        hints: 'warning',
-        maxEntrypointSize: 512000, // 500KB
-        maxAssetSize: 512000, // 500KB
+        hints: false, // Disable performance warnings that can break site
       };
     }
     

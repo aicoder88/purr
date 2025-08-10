@@ -107,43 +107,45 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
   };
 
   const showNextNotification = useCallback(() => {
-    const notification = SAMPLE_PURCHASES[notificationIndex];
-    setCurrentNotification(notification);
-    setIsVisible(true);
+    setNotificationIndex((prevIndex) => {
+      const notification = SAMPLE_PURCHASES[prevIndex];
+      setCurrentNotification(notification);
+      setIsVisible(true);
 
-    if (autoHide) {
-      const hideTimeout = setTimeout(() => {
-        setIsVisible(false);
-      }, hideDelay);
-      setTimeoutId(hideTimeout);
-    }
+      if (autoHide) {
+        const hideTimeout = setTimeout(() => {
+          setIsVisible(false);
+        }, hideDelay);
+        setTimeoutId(hideTimeout);
+      }
 
-    setNotificationIndex((prev) => (prev + 1) % SAMPLE_PURCHASES.length);
-  }, [notificationIndex, autoHide, hideDelay]);
+      return (prevIndex + 1) % SAMPLE_PURCHASES.length;
+    });
+  }, [autoHide, hideDelay]);
 
   useEffect(() => {
+    let currentTimeout: NodeJS.Timeout;
+    
     const schedule = () => {
       const randomInterval = getRandomInterval();
-      const newTimeout = setTimeout(() => {
+      currentTimeout = setTimeout(() => {
         showNextNotification();
         schedule();
       }, randomInterval);
-      setTimeoutId(newTimeout);
     };
 
     const initialDelay = Math.floor(Math.random() * 60000) + 120000; // 120-180 seconds initial delay
-    const initialTimeout = setTimeout(() => {
+    currentTimeout = setTimeout(() => {
       showNextNotification();
       schedule();
     }, initialDelay);
 
     return () => {
-      clearTimeout(initialTimeout);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
       }
     };
-  }, [showNextNotification, timeoutId]);
+  }, [showNextNotification]);
 
   const handleClose = () => {
     setIsVisible(false);
