@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useCart } from '../src/lib/cart-context';
 import { useRouter } from 'next/router';
 import { useTranslation } from '../src/lib/translation-context';
-import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin } from 'lucide-react';
+import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Award } from 'lucide-react';
 import { PRODUCTS } from '../src/lib/constants';
 import dynamic from "next/dynamic";
 import { FastCheckout } from '../src/components/mobile/FastCheckout';
@@ -177,49 +177,56 @@ const CheckoutPage: NextPage = () => {
   );
 
   const renderCartSummary = () => (
-    <div className="bg-gradient-to-r from-[#FFFFF5] to-white rounded-lg p-6 mb-8 border border-gray-100">
-      <h3 className="font-semibold mb-4 text-gray-800">Order Summary</h3>
+    <div className="bg-gradient-to-r from-[#FFFFF5] to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 mb-8 border border-gray-100 dark:border-gray-700 shadow-sm">
+      <div className="flex items-center gap-2 mb-4">
+        <Package className="h-5 w-5 text-[#FF3131]" />
+        <h3 className="font-semibold text-gray-800 dark:text-gray-200">Order Summary</h3>
+        <span className="ml-auto text-sm text-gray-500 dark:text-gray-400">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
+      </div>
       {items.length === 0 ? (
-        <div className="text-gray-500">Your cart is empty.</div>
+        <div className="text-gray-500 dark:text-gray-400 text-center py-8">
+          <Package className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+          <p>Your cart is empty.</p>
+        </div>
       ) : (
         <div className="space-y-3">
           {items.map(item => {
             const product = PRODUCTS.find(p => p.id === item.id);
             if (!product) return null;
             return (
-              <div key={item.id} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
+              <div key={item.id} className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700 last:border-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-24 h-24 relative">
+                  <div className="w-20 h-20 relative bg-gray-50 dark:bg-gray-700 rounded-lg p-2">
                     <NextImage
                       src={product.image}
                       alt={product.name}
-                      width={96}
-                      height={96}
+                      width={80}
+                      height={80}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">{product.name}</p>
-                    <p className="text-sm text-gray-500">{product.size}</p>
+                    <p className="font-medium text-gray-800 dark:text-gray-200">{product.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full inline-block">{product.size}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-500">x{item.quantity}</p>
-                  <p className="font-medium text-gray-800">${(product.price * item.quantity).toFixed(2)}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">x{item.quantity}</p>
+                  <p className="font-semibold text-[#FF3131]">${(product.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
             );
           })}
           <div className="pt-4 border-t border-gray-200 space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Subtotal</span>
-              <span className="text-gray-800">${getTotalPrice().toFixed(2)}</span>
+              <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
+              <span className="text-gray-800 dark:text-gray-200 font-medium">${getTotalPrice().toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Shipping</span>
-              <span className="text-gray-800">
+              <span className="text-gray-600 dark:text-gray-400">Shipping</span>
+              <span className="text-gray-800 dark:text-gray-200 font-medium">
                 {getShippingCost() === 0 ? (
-                  <span className="text-green-600">Free</span>
+                  <span className="text-green-600 dark:text-green-400 font-semibold">Free</span>
                 ) : (
                   `$${getShippingCost().toFixed(2)}`
                 )}
@@ -230,9 +237,9 @@ const CheckoutPage: NextPage = () => {
                 Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!
               </div>
             )}
-            <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-200">
-              <span className="text-gray-800">Total</span>
-              <span className="text-[#FF3131]">${getTotalWithShipping().toFixed(2)}</span>
+            <div className="flex justify-between font-bold text-lg pt-3 border-t border-gray-200 dark:border-gray-700">
+              <span className="text-gray-800 dark:text-gray-200">Total</span>
+              <span className="text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -246,13 +253,13 @@ const CheckoutPage: NextPage = () => {
         return (
           <div className="space-y-6 transition-opacity duration-300">
             {renderCartSummary()}
-            <div className="bg-white rounded-lg p-6 border border-gray-100">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
               <div className="flex items-center gap-2 mb-6">
                 <User className="w-5 h-5 text-[#FF3131]" />
-                <h2 className="text-2xl font-bold text-gray-800">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Contact Information</h2>
               </div>
               <div className="mb-6">
-                <label className="block font-medium mb-2 text-gray-700">Referral Code (optional)</label>
+                <label className="block font-medium mb-2 text-gray-700 dark:text-gray-300">Referral Code (optional)</label>
                 <div className="flex gap-2">
                   <Input
                     type="text"
@@ -293,7 +300,7 @@ const CheckoutPage: NextPage = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
                   <Input
                     type="email"
                     name="email"
@@ -305,7 +312,7 @@ const CheckoutPage: NextPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
                   <Input
                     type="tel"
                     name="phone"
@@ -319,7 +326,7 @@ const CheckoutPage: NextPage = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name</label>
                   <Input
                     type="text"
                     name="firstName"
@@ -331,7 +338,7 @@ const CheckoutPage: NextPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name</label>
                   <Input
                     type="text"
                     name="lastName"
@@ -349,14 +356,14 @@ const CheckoutPage: NextPage = () => {
       case 2:
         return (
           <div className="space-y-6 transition-opacity duration-300">
-            <div className="bg-white rounded-lg p-6 border border-gray-100">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
               <div className="flex items-center gap-2 mb-6">
                 <MapPin className="w-5 h-5 text-[#FF3131]" />
-                <h2 className="text-2xl font-bold text-gray-800">Shipping Information</h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Shipping Information</h2>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Address</label>
                   <Input
                     type="text"
                     name="address"
@@ -369,7 +376,7 @@ const CheckoutPage: NextPage = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">City</label>
                     <Input
                       type="text"
                       name="city"
@@ -381,7 +388,7 @@ const CheckoutPage: NextPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Province</label>
                     <Input
                       type="text"
                       name="province"
@@ -394,7 +401,7 @@ const CheckoutPage: NextPage = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Postal Code</label>
                   <Input
                     type="text"
                     name="postalCode"
@@ -412,24 +419,27 @@ const CheckoutPage: NextPage = () => {
       case 3:
         return (
           <div className="space-y-6 transition-opacity duration-300">
-            <div className="bg-white rounded-lg p-6 border border-gray-100">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
               <div className="flex items-center gap-2 mb-6">
                 <CreditCard className="w-5 h-5 text-[#FF3131]" />
-                <h2 className="text-2xl font-bold text-gray-800">Payment Information</h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Payment Information</h2>
               </div>
-              <p className="text-gray-600 mb-4">
-                You will be redirected to our secure payment processor to complete your purchase.
-              </p>
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="flex items-center gap-2 mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <p className="text-sm text-green-700 dark:text-green-300 font-medium">
+                  Secure checkout powered by Stripe. Your payment information is encrypted and protected.
+                </p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">${getTotalPrice().toFixed(2)}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">${getTotalPrice().toFixed(2)}</span>
                 </div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">
+                  <span className="text-gray-600 dark:text-gray-400">Shipping</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {getShippingCost() === 0 ? (
-                      <span className="text-green-600">Free</span>
+                      <span className="text-green-600 dark:text-green-400 font-semibold">Free</span>
                     ) : (
                       `$${getShippingCost().toFixed(2)}`
                     )}
@@ -441,8 +451,8 @@ const CheckoutPage: NextPage = () => {
                   </div>
                 )}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-200">
-                  <span className="font-bold text-gray-800">Total</span>
-                  <span className="font-bold text-[#FF3131]">${getTotalWithShipping().toFixed(2)}</span>
+                  <span className="font-bold text-gray-800 dark:text-gray-200">Total</span>
+                  <span className="font-bold text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -461,13 +471,25 @@ const CheckoutPage: NextPage = () => {
       />
       <Container>
         <div className="max-w-3xl mx-auto py-12">
-          <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Checkout</h1>
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">Secure Checkout</h1>
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-1">
+                <Shield className="h-4 w-4 text-green-600" />
+                <span>SSL Encrypted</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Award className="h-4 w-4 text-blue-600" />
+                <span>Trusted by 10,000+ customers</span>
+              </div>
+            </div>
+          </div>
           
           {/* Mobile-Optimized Fast Checkout */}
           <div className="md:hidden mb-8">
-            <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 rounded-xl p-6 border border-[#5B2EFF]/20 mb-6">
-              <h2 className="text-lg font-semibold text-center mb-2">⚡ Fast Mobile Checkout</h2>
-              <p className="text-sm text-gray-600 text-center mb-4">Complete your purchase in under 60 seconds</p>
+            <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 border border-[#5B2EFF]/20 dark:border-[#5B2EFF]/30 mb-6">
+              <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">Complete your purchase in under 60 seconds</p>
               
               <FastCheckout 
                 cartTotal={getTotalWithShipping()}
@@ -484,10 +506,10 @@ const CheckoutPage: NextPage = () => {
             </div>
             
             <div className="text-center mb-6">
-              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                <div className="flex-1 h-px bg-gray-300"></div>
+              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
                 <span>or use traditional checkout</span>
-                <div className="flex-1 h-px bg-gray-300"></div>
+                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
               </div>
             </div>
           </div>

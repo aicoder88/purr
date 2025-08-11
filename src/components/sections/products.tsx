@@ -8,7 +8,7 @@ import { useCart } from "../../lib/cart-context";
 import { ReviewSystem } from '../reviews/ReviewSystem';
 import { ecommerceEvents } from '../../lib/gtm-events';
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Plus, Minus } from 'lucide-react';
+import { ShoppingCart, Plus, Minus, Check } from 'lucide-react';
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
@@ -27,6 +27,7 @@ export function Products() {
   const { addToCart, updateQuantity, items } = useCart();
   const [isVisible, setIsVisible] = useState(false);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
+  const [addedToCart, setAddedToCart] = useState<string | null>(null);
   const [quantities, setQuantities] = useState<{[key: string]: number}>({});
 
   useEffect(() => {
@@ -61,10 +62,18 @@ export function Products() {
         price: product.price,
         quantity: quantity
       });
+      
+      // Show success state
+      setAddingToCart(null);
+      setAddedToCart(product.id);
+      
+      // Reset to normal state after 2 seconds
+      setTimeout(() => {
+        setAddedToCart(null);
+      }, 2000);
     } catch (error) {
       console.error('Failed to add to cart:', error);
-    } finally {
-      setTimeout(() => setAddingToCart(null), 1000);
+      setAddingToCart(null);
     }
   };
 
@@ -189,7 +198,7 @@ export function Products() {
                       ${product.price.toFixed(2)}
                     </span>
                     {getCartQuantity(product.id) > 0 && (
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full">
                         {getCartQuantity(product.id)} in cart
                       </span>
                     )}
@@ -226,14 +235,23 @@ export function Products() {
                       </div>
                       
                       <Button 
-                        className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                        className={`w-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 ${
+                          addedToCart === product.id 
+                            ? 'bg-green-600 hover:bg-green-700 text-white'
+                            : 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white'
+                        }`}
                         onClick={() => handleAddToCart(product)}
-                        disabled={addingToCart === product.id}
+                        disabled={addingToCart === product.id || addedToCart === product.id}
                       >
                         {addingToCart === product.id ? (
                           <div className="flex items-center">
                             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                             {t.productsSection?.adding || "Adding..."}
+                          </div>
+                        ) : addedToCart === product.id ? (
+                          <div className="flex items-center">
+                            <Check className="w-4 h-4 mr-2" />
+                            Added to Cart!
                           </div>
                         ) : (
                           <div className="flex items-center">
