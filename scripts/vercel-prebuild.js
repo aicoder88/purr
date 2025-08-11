@@ -4,6 +4,16 @@ const path = require('path');
 
 console.log('🚀 Starting Vercel prebuild process...');
 
+// First, validate dark mode compliance
+console.log('🌙 Validating dark mode compliance...');
+try {
+  execSync('node scripts/dark-mode-validator.js', { stdio: 'inherit' });
+  console.log('✅ Dark mode validation passed');
+} catch (error) {
+  console.error('❌ Dark mode validation failed');
+  process.exit(1);
+}
+
 // Create optimized directory if it doesn't exist
 const optimizedDir = path.join(__dirname, '../public/optimized');
 if (!fs.existsSync(optimizedDir)) {

@@ -255,6 +255,60 @@ This project uses Next.js **Pages Router**, not the newer App Router. All pages 
 
 **If ANY element is hard to read or invisible in dark mode, it MUST be fixed before deployment.**
 
+### AUTOMATED ENFORCEMENT SYSTEM
+
+**🚨 CRITICAL: The build process will now FAIL if dark mode violations are detected!**
+
+#### Validation Commands
+- `npm run validate-dark-mode` - Run dark mode validation manually
+- Validation automatically runs during `npm run build` - **build will FAIL if violations found**
+
+#### What Gets Validated
+The automated system checks for these critical patterns:
+- ❌ `text-gray-[1-9]00` without `dark:` variant
+- ❌ `text-white` without `dark:` variant  
+- ❌ `text-red-[1-9]00` without `dark:` variant
+- ❌ `text-green-[1-9]00` without `dark:` variant
+- ❌ `text-blue-[1-9]00` without `dark:` variant
+- ❌ All color classes without dark mode variants
+
+#### Preventing Future Mistakes
+**BEFORE creating any new component or editing existing ones:**
+1. **Run validation**: `npm run validate-dark-mode`
+2. **Fix ALL errors** before continuing
+3. **Build will fail** if any dark mode violations exist
+4. **No exceptions** - every text element MUST have dark variants
+
+#### How to Ensure You Never Make This Mistake Again
+
+**Step 1: Always Use This Checklist**
+When writing ANY className with text colors:
+- [ ] Did I add a `dark:` variant?
+- [ ] Is the dark variant readable on dark backgrounds?
+- [ ] Does it meet WCAG contrast requirements?
+
+**Step 2: Use These Safe Patterns**
+Copy-paste these EXACT patterns - don't modify:
+```
+text-gray-900 dark:text-gray-50    // Headings
+text-gray-800 dark:text-gray-100   // Subheadings  
+text-gray-700 dark:text-gray-200   // Body text
+text-gray-600 dark:text-gray-300   // Secondary text
+text-gray-500 dark:text-gray-400   // Subtle text
+```
+
+**Step 3: Test Immediately**
+After adding ANY text element:
+1. Switch browser to dark mode
+2. Verify the text is clearly visible
+3. Run `npm run validate-dark-mode`
+
+**Step 4: No Shortcuts**
+- ❌ Never think "I'll add dark mode later"
+- ❌ Never assume existing colors will work
+- ❌ Never skip the validation step
+- ✅ ALWAYS add dark variants immediately
+
 ### UX Interaction Guidelines
 
 **Dropdown Menus:**

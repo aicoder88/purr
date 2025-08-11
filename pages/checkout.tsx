@@ -333,11 +333,11 @@ const CheckoutPage: NextPage = () => {
       <div className="flex items-center gap-2 mb-4">
         <Package className="h-5 w-5 text-[#FF3131]" />
         <h3 className="font-semibold text-gray-800 dark:text-gray-200">Order Summary</h3>
-        <span className="ml-auto text-sm text-gray-500 dark:text-gray-400">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
+        <span className="ml-auto text-sm text-gray-500 dark:text-gray-300">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
       </div>
       {items.length === 0 ? (
-        <div className="text-gray-500 dark:text-gray-400 text-center py-8">
-          <Package className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+        <div className="text-gray-500 dark:text-gray-300 text-center py-8">
+          <Package className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-2" />
           <p>Your cart is empty.</p>
         </div>
       ) : (
@@ -461,13 +461,13 @@ const CheckoutPage: NextPage = () => {
                   </Button>
                 </div>
                 {referralStatus === 'valid' && (
-                  <div className="text-green-600 text-sm mt-2 flex items-center gap-1">
+                  <div className="text-green-600 dark:text-green-400 text-sm mt-2 flex items-center gap-1">
                     <CheckCircle className="w-4 h-4" />
                     {referralMessage}
                   </div>
                 )}
                 {referralStatus === 'invalid' && (
-                  <div className="text-red-600 text-sm mt-2">{referralMessage}</div>
+                  <div className="text-red-600 dark:text-red-400 text-sm mt-2">{referralMessage}</div>
                 )}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -683,15 +683,15 @@ const CheckoutPage: NextPage = () => {
             {/* Trust indicators */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-green-600" />
+                <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
                 <span>256-bit SSL Encrypted</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-blue-600" />
+                <Users className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <span>10,000+ Happy Customers</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                <Star className="h-4 w-4 text-yellow-500 dark:text-yellow-400 fill-current" />
                 <span>4.9/5 Rating</span>
               </div>
             </div>
@@ -707,7 +707,7 @@ const CheckoutPage: NextPage = () => {
           <div className="md:hidden mb-8">
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 border border-[#5B2EFF]/20 dark:border-[#5B2EFF]/30 mb-6">
               <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">Complete your purchase in under 60 seconds</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">Complete your purchase in under 60 seconds</p>
               
               <FastCheckout 
                 cartTotal={getTotalWithShipping()}
@@ -724,7 +724,7 @@ const CheckoutPage: NextPage = () => {
             </div>
             
             <div className="text-center mb-6">
-              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-300">
                 <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
                 <span>or use traditional checkout</span>
                 <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>

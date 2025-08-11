@@ -30,7 +30,8 @@
     "seo:optimize": "node scripts/seo-optimization.js",
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",
-    "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize"
+    "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize",
+    "validate-dark-mode": "node scripts/dark-mode-validator.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
