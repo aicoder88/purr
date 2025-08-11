@@ -7,7 +7,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
 // Color classes that MUST have dark mode variants
 const CRITICAL_PATTERNS = [
@@ -31,13 +30,32 @@ const CRITICAL_PATTERNS = [
   /bg-gray-50(?!\s+dark:)/g,
 ];
 
-// Files to check
-const FILE_PATTERNS = [
-  'pages/**/*.tsx',
-  'pages/**/*.ts', 
-  'src/components/**/*.tsx',
-  'src/components/**/*.ts'
-];
+// Helper function to recursively find files
+function findFiles(dir, extensions = ['.tsx', '.ts']) {
+  const files = [];
+  
+  function scanDirectory(currentDir) {
+    if (!fs.existsSync(currentDir)) return;
+    
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      
+      if (entry.isDirectory()) {
+        scanDirectory(fullPath);
+      } else if (entry.isFile() && extensions.some(ext => entry.name.endsWith(ext))) {
+        files.push(fullPath);
+      }
+    }
+  }
+  
+  scanDirectory(dir);
+  return files;
+}
+
+// Directories to check
+const DIRECTORIES_TO_CHECK = ['pages', 'src/components'];
 
 let totalErrors = 0;
 let filesWithErrors = 0;
@@ -69,8 +87,8 @@ function validateDarkMode() {
   console.log('🌙 Starting Dark Mode Validation...\n');
   
   const allFiles = [];
-  FILE_PATTERNS.forEach(pattern => {
-    const files = glob.sync(pattern);
+  DIRECTORIES_TO_CHECK.forEach(dir => {
+    const files = findFiles(dir);
     allFiles.push(...files);
   });
   
