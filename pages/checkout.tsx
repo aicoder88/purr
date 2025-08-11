@@ -256,12 +256,12 @@ const CheckoutPage: NextPage = () => {
                 <Heart className="h-5 w-5 text-red-500" />
                 <span className="font-bold text-2xl text-gray-900 dark:text-gray-100">10,000+</span>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Happy Cat Owners</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200 font-medium">Happy Cat Owners</p>
               <div className="flex justify-center mt-2">
                 {Array(5).fill(0).map((_, i) => (
                   <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                 ))}
-                <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">4.9/5</span>
+                <span className="ml-2 text-sm text-gray-700 dark:text-gray-200">4.9/5</span>
               </div>
             </div>
           </div>
@@ -286,7 +286,7 @@ const CheckoutPage: NextPage = () => {
                       <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="text-sm text-gray-700 dark:text-gray-300 italic mb-4 leading-relaxed">
+                  <blockquote className="text-sm text-gray-700 dark:text-gray-200 italic mb-4 leading-relaxed">
                     "{testimonial.text}"
                   </blockquote>
                   <div className="flex items-center gap-3">
@@ -294,7 +294,7 @@ const CheckoutPage: NextPage = () => {
                       <User className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-gray-900 dark:text-gray-100">
+                      <p className="font-semibold text-sm text-gray-900 dark:text-gray-50">
                         {testimonial.name}
                       </p>
                     </div>
@@ -359,11 +359,11 @@ const CheckoutPage: NextPage = () => {
                   </div>
                   <div>
                     <p className="font-medium text-gray-800 dark:text-gray-200">{product.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full inline-block">{product.size}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 px-2 py-1 rounded-full inline-block">{product.size}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">x{item.quantity}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">x{item.quantity}</p>
                   <p className="font-semibold text-[#FF3131]">${(product.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
@@ -371,12 +371,12 @@ const CheckoutPage: NextPage = () => {
           })}
           <div className="pt-4 border-t border-gray-200 space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-              <span className="text-gray-800 dark:text-gray-200 font-medium">${getTotalPrice().toFixed(2)}</span>
+              <span className="text-gray-600 dark:text-gray-300">Subtotal</span>
+              <span className="text-gray-800 dark:text-gray-100 font-medium">${getTotalPrice().toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Shipping</span>
-              <span className="text-gray-800 dark:text-gray-200 font-medium">
+              <span className="text-gray-600 dark:text-gray-300">Shipping</span>
+              <span className="text-gray-800 dark:text-gray-100 font-medium">
                 {getShippingCost() === 0 ? (
                   <span className="text-green-600 dark:text-green-400 font-semibold">Free</span>
                 ) : (
@@ -399,7 +399,7 @@ const CheckoutPage: NextPage = () => {
               </div>
             </div>
             <div className="flex justify-between font-bold text-lg pt-3 border-t border-gray-200 dark:border-gray-700">
-              <span className="text-gray-800 dark:text-gray-200">Total</span>
+              <span className="text-gray-800 dark:text-gray-100">Total</span>
               <span className="text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>
             </div>
           </div>
@@ -422,10 +422,10 @@ const CheckoutPage: NextPage = () => {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Contact Information</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Step 1 of 3 - We'll use this to send you order updates</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Step 1 of 3 - We'll use this to send you order updates</p>
                   </div>
                 </div>
-                <div className="text-xs text-gray-400 dark:text-gray-500">
+                <div className="text-xs text-gray-500 dark:text-gray-400">
                   <Shield className="h-4 w-4 inline mr-1" />
                   Secure & Private
                 </div>
@@ -536,10 +536,10 @@ const CheckoutPage: NextPage = () => {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Shipping Information</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Step 2 of 3 - Where should we send your Purrify?</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Step 2 of 3 - Where should we send your Purrify?</p>
                   </div>
                 </div>
-                <div className="text-xs text-gray-400 dark:text-gray-500">
+                <div className="text-xs text-gray-500 dark:text-gray-400">
                   <Truck className="h-4 w-4 inline mr-1" />
                   Fast Delivery
                 </div>
@@ -610,10 +610,10 @@ const CheckoutPage: NextPage = () => {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Secure Payment</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Step 3 of 3 - Your information is protected with 256-bit SSL</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Step 3 of 3 - Your information is protected with 256-bit SSL</p>
                   </div>
                 </div>
-                <div className="text-xs text-gray-400 dark:text-gray-500">
+                <div className="text-xs text-gray-500 dark:text-gray-400">
                   <Shield className="h-4 w-4 inline mr-1" />
                   Stripe Secured
                 </div>
@@ -626,12 +626,12 @@ const CheckoutPage: NextPage = () => {
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">${getTotalPrice().toFixed(2)}</span>
+                  <span className="text-gray-600 dark:text-gray-300">Subtotal</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-50">${getTotalPrice().toFixed(2)}</span>
                 </div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-600 dark:text-gray-400">Shipping</span>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">
+                  <span className="text-gray-600 dark:text-gray-300">Shipping</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-50">
                     {getShippingCost() === 0 ? (
                       <span className="text-green-600 dark:text-green-400 font-semibold">Free</span>
                     ) : (
@@ -640,12 +640,12 @@ const CheckoutPage: NextPage = () => {
                   </span>
                 </div>
                 {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
-                  <div className="text-xs text-blue-600 bg-blue-100 p-2 rounded mb-2">
+                  <div className="text-xs text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/20 p-2 rounded mb-2 border border-blue-200 dark:border-blue-800">
                     Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!
                   </div>
                 )}
-                <div className="flex items-center justify-between pt-2 border-t border-gray-200">
-                  <span className="font-bold text-gray-800 dark:text-gray-200">Total</span>
+                <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-600">
+                  <span className="font-bold text-gray-800 dark:text-gray-100">Total</span>
                   <span className="font-bold text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>
                 </div>
               </div>
@@ -676,12 +676,12 @@ const CheckoutPage: NextPage = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-4">
               Complete Your Order
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
               Join thousands of happy cat parents who trust Purrify for odor-free litter boxes
             </p>
             
             {/* Trust indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-green-600" />
                 <span>256-bit SSL Encrypted</span>

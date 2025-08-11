@@ -150,24 +150,110 @@ This project uses Next.js **Pages Router**, not the newer App Router. All pages 
 ## Development Best Practices
 
 ### Dark Mode Compliance (CRITICAL)
-**ALWAYS ensure dark mode compatibility when adding or modifying text colors:**
+**ALWAYS ensure dark mode compatibility when creating new sections, pages, or modifying existing content:**
 
 **Required Pattern:**
 - ❌ NEVER use: `text-gray-600`, `text-gray-700`, `text-gray-800`, `text-gray-900` alone
 - ✅ ALWAYS use: `text-gray-600 dark:text-gray-300`, `text-gray-700 dark:text-gray-200`, etc.
 
-**Color Mapping Guidelines:**
-- `text-gray-900` → `text-gray-900 dark:text-gray-100` (high contrast text)
-- `text-gray-800` → `text-gray-800 dark:text-gray-200` (headings)
-- `text-gray-700` → `text-gray-700 dark:text-gray-300` (body text)
-- `text-gray-600` → `text-gray-600 dark:text-gray-300` (secondary text)
-- `text-gray-500` → `text-gray-500 dark:text-gray-400` (subtle text)
-- `text-gray-400` → `text-gray-400 dark:text-gray-500` (very subtle text)
+**Complete Dark Mode Color System:**
+
+#### Text Colors (CRITICAL - MUST ALWAYS INCLUDE DARK VARIANTS)
+- `text-gray-900` → `text-gray-900 dark:text-gray-50` (primary headings, highest contrast)
+- `text-gray-800` → `text-gray-800 dark:text-gray-100` (secondary headings)
+- `text-gray-700` → `text-gray-700 dark:text-gray-200` (body text, important content)
+- `text-gray-600` → `text-gray-600 dark:text-gray-300` (secondary text, labels)
+- `text-gray-500` → `text-gray-500 dark:text-gray-400` (subtle text, metadata)
+- `text-gray-400` → `text-gray-400 dark:text-gray-500` (very subtle text, placeholders)
+
+#### Background Colors
+- `bg-white` → `bg-white dark:bg-gray-800` (cards, modals)
+- `bg-gray-50` → `bg-gray-50 dark:bg-gray-900` (page backgrounds)
+- `bg-gray-100` → `bg-gray-100 dark:bg-gray-700` (input backgrounds)
+- `bg-gray-200` → `bg-gray-200 dark:bg-gray-600` (dividers, borders)
+
+#### Border Colors
+- `border-gray-100` → `border-gray-100 dark:border-gray-700` (card borders)
+- `border-gray-200` → `border-gray-200 dark:border-gray-600` (input borders)
+- `border-gray-300` → `border-gray-300 dark:border-gray-500` (emphasized borders)
+
+#### Special Cases for Better Readability
+- For critical text that must be highly visible: `text-gray-900 dark:text-gray-50`
+- For body text that needs good readability: `text-gray-700 dark:text-gray-200`
+- For secondary information: `text-gray-600 dark:text-gray-300`
+- For metadata/timestamps: `text-gray-500 dark:text-gray-400`
 
 **Testing Requirement:**
 - Test every new component in both light AND dark modes
 - Use browser dev tools or theme toggle to verify readability
 - Ensure minimum WCAG AA contrast ratios in both modes
+
+### Creating New Sections & Pages (MANDATORY DARK MODE CHECKLIST)
+
+**When creating any new page or section component, follow this checklist:**
+
+#### 1. Text Readability Checklist
+- [ ] **Primary headings**: Use `text-gray-900 dark:text-gray-50`
+- [ ] **Secondary headings**: Use `text-gray-800 dark:text-gray-100` 
+- [ ] **Body text**: Use `text-gray-700 dark:text-gray-200`
+- [ ] **Secondary text/labels**: Use `text-gray-600 dark:text-gray-300`
+- [ ] **Metadata/subtle text**: Use `text-gray-500 dark:text-gray-400`
+- [ ] **Very subtle text**: Use `text-gray-400 dark:text-gray-500`
+
+#### 2. Background & Container Checklist
+- [ ] **Page backgrounds**: Use `bg-gray-50 dark:bg-gray-900`
+- [ ] **Card/section backgrounds**: Use `bg-white dark:bg-gray-800`
+- [ ] **Input backgrounds**: Use `bg-gray-100 dark:bg-gray-700`
+- [ ] **Hover states**: Add dark variants (e.g., `hover:bg-gray-100 dark:hover:bg-gray-700`)
+
+#### 3. Border & Divider Checklist
+- [ ] **Card borders**: Use `border-gray-100 dark:border-gray-700`
+- [ ] **Input borders**: Use `border-gray-200 dark:border-gray-600`
+- [ ] **Dividers**: Use `border-gray-200 dark:border-gray-600`
+
+#### 4. Interactive Elements Checklist
+- [ ] **Button text**: Must have appropriate contrast in both modes
+- [ ] **Link colors**: Ensure visibility in both light/dark backgrounds  
+- [ ] **Icon colors**: Match surrounding text colors with dark variants
+- [ ] **Focus states**: Visible in both modes with proper contrast
+
+#### 5. Special Components Checklist
+- [ ] **Forms**: All labels, inputs, and helper text have dark variants
+- [ ] **Tables**: Headers, borders, and alternating rows work in dark mode
+- [ ] **Cards**: Shadows, borders, and content all have dark variants
+- [ ] **Modals/Overlays**: Background overlays and content readable in dark mode
+
+#### 6. Testing Protocol (MANDATORY)
+1. **Build the component in light mode first**
+2. **Switch to dark mode and verify**:
+   - All text is clearly readable
+   - No elements disappear or become invisible
+   - Contrast meets WCAG AA standards (4.5:1 for normal text, 3:1 for large text)
+3. **Test interactions in both modes**:
+   - Hover states
+   - Focus states  
+   - Active states
+4. **Mobile testing**: Verify both modes work on mobile devices
+
+#### 7. Common Dark Mode Mistakes to Avoid
+- ❌ Using single gray classes without dark variants
+- ❌ Hardcoding white/black colors without considering dark mode
+- ❌ Assuming icons will be visible on dark backgrounds
+- ❌ Not testing form inputs and placeholders in dark mode
+- ❌ Forgetting hover/focus states for dark mode
+- ❌ Using low-contrast colors that become invisible in dark mode
+
+#### 8. Quick Dark Mode Validation
+**Before committing any new section/page, run this quick check:**
+```bash
+# 1. Switch browser to dark mode
+# 2. Navigate to your new section/page
+# 3. Verify you can read ALL text elements
+# 4. Check that no UI elements are invisible
+# 5. Test any interactive elements (buttons, links, forms)
+```
+
+**If ANY element is hard to read or invisible in dark mode, it MUST be fixed before deployment.**
 
 ### UX Interaction Guidelines
 
