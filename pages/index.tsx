@@ -11,7 +11,6 @@ import dynamic from 'next/dynamic';
 const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
 const UrgencyBanner = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.UrgencyBanner })), { ssr: false });
 const StickyUrgencyBar = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.StickyUrgencyBar })), { ssr: false });
-const EmailCapturePopup = dynamic(() => import('../src/components/sections/email-capture-popup').then(mod => ({ default: mod.EmailCapturePopup })), { ssr: false });
 import { Stores } from '../src/components/sections/stores';
 import { Testimonials } from '../src/components/sections/testimonials';
 import { FAQ } from '../src/components/sections/faq';
@@ -250,8 +249,6 @@ export default function Home() {
         </ErrorBoundary>
       </main>
       
-      {/* Email Capture Popup for lead generation */}
-      <EmailCapturePopup />
       
       {/* Sticky Urgency Bar for persistent conversion pressure */}
       <StickyUrgencyBar />

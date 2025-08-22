@@ -9,7 +9,6 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { EnhancedProductComparison } from "@/components/sections/enhanced-product-comparison";
 import { SubscriptionOffer } from "@/components/sections/subscription-offer";
 import { UrgencyBanner, StickyUrgencyBar } from "@/components/sections/urgency-banner";
-import { EmailCapturePopup } from "@/components/sections/email-capture-popup";
 import { Stores } from "@/components/sections/stores";
 import { WhyPurrify } from "@/components/sections/why-purrify";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -46,7 +45,6 @@ const HomePage: NextPage = () => {
       <CTA />
       <BlogPreview />
       <Contact />
-      <EmailCapturePopup />
       <StickyUrgencyBar />
     </Container>
   );
