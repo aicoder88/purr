@@ -301,7 +301,7 @@ export interface TranslationType {
     claimTrial: string;
     whatYouGet: string;
     freeTrialBag: string;
-    freeShippingDoor: string;
+    // freeShippingDoor: string; // TODO: Restore when free shipping is available
     expertTips: string;
     zeroCommitment: string;
     attention: string;
@@ -433,7 +433,7 @@ export interface TranslationType {
     maxValuePerGram: string;
     bulkSavingsIncluded: string;
     sustainableSupply: string;
-    freeShippingIncluded: string;
+    // freeShippingIncluded: string; // TODO: Restore when free shipping is available
     features: string;
     idealFor: string;
     duration: string;
@@ -524,7 +524,7 @@ export interface TranslationType {
     naturalIngredients: string;
     easyApplication: string;
     moneyBackGuarantee: string;
-    freeShipping: string;
+    // freeShipping: string; // TODO: Restore when free shipping is available
     bulkDiscount: string;
     prioritySupport: string;
     bonusGuide: string;
@@ -554,7 +554,7 @@ export interface TranslationType {
     maxSavings: string;
     oneTimePurchase: string;
     subscriptionBenefits: string;
-    freeShipping: string;
+    // freeShipping: string; // TODO: Restore when free shipping is available
     exclusiveDiscounts: string;
     prioritySupport: string;
     flexibleSchedule: string;
@@ -570,7 +570,7 @@ export interface TranslationType {
     limitedTime: string;
     saveToday: string;
     onAllOrders: string;
-    freeShipping: string;
+    // freeShipping: string; // TODO: Restore when free shipping is available
     hurryOffer: string;
     claimDiscount: string;
     timeLeft: string;
@@ -640,7 +640,7 @@ export interface TranslationType {
   subscriptionOfferExtended: {
     neverRunOutAgain: string;
     subscribeAndSaveUpTo: string;
-    thirtySixPercent: string;
+    seventyTwoPercent: string;
     joinThousandsHappyCatParents: string;
     getPurrifyDelivered: string;
     monthlyDelivery: string;
@@ -649,13 +649,13 @@ export interface TranslationType {
     perfectForSingleCat: string;
     mostPopularMultiCat: string;
     bestValueLargeFamilies: string;
-    freeShippingEveryMonth: string;
-    freeShippingEveryThreeMonths: string;
-    freeShippingEverySixMonths: string;
+    // freeShippingEveryMonth: string; // TODO: Restore when free shipping is available
+    // freeShippingEveryThreeMonths: string; // TODO: Restore when free shipping is available
+    // freeShippingEverySixMonths: string; // TODO: Restore when free shipping is available
     skipOrCancelAnytime: string;
-    twentyPercentSavings: string;
-    thirtyPercentSavings: string;
-    thirtySixPercentSavings: string;
+    fortyPercentSavings: string;
+    sixtyPercentSavings: string;
+    seventyTwoPercentSavings: string;
     priorityCustomerSupport: string;
     bonusFreeCatCareGuide: string;
     bonusFreeCatToys: string;
@@ -703,7 +703,7 @@ export interface TranslationType {
     moneyBack: string;
     averageRating: string;
     satisfactionRate: string;
-    freeShipping: string;
+    // freeShipping: string; // TODO: Restore when free shipping is available
     skipAnytime: string;
     highlyRated: string;
     errorDetails: string;

@@ -12,7 +12,6 @@ import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Analytics } from '@vercel/analytics/next';
-import { ConversionOptimizer } from '../src/components/conversion/ConversionOptimizer';
 
 interface PageProps {
   // Add your page props here if needed
@@ -26,16 +25,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   // Use relative URL for canonical
   const canonicalUrl = '/';
   
-  // Determine page type for conversion optimization
-  const getPageType = (path: string): 'homepage' | 'product' | 'checkout' | 'cart' => {
-    if (path === '/') return 'homepage';
-    if (path.includes('/products/') || path.includes('/trial-size')) return 'product';
-    if (path === '/checkout') return 'checkout';
-    if (path.includes('/cart')) return 'cart';
-    return 'homepage';
-  };
-  
-  const pageType = getPageType(pathname);
   
   return (
     <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
@@ -166,7 +155,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 contactPoint: [
                   {
                     '@type': 'ContactPoint',
-                    telephone: '+1-438-931-7345',
+                    telephone: '+1-250-432-9352',
                     contactType: 'customer service',
                     areaServed: 'CA',
                     availableLanguage: ['English', 'French'],
@@ -180,14 +169,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <Component {...pageProps} />
           </Layout>
           
-          {/* Conversion Optimization System - Only in production */}
-          {process.env.NODE_ENV === 'production' && (
-            <ConversionOptimizer 
-              enabled={true}
-              pageType={pageType}
-              productId={pathname.includes('/trial-size') ? '20g' : undefined}
-            />
-          )}
           
           <Toaster />
           <Analytics />

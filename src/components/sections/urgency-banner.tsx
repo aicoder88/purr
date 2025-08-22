@@ -32,10 +32,16 @@ export function UrgencyBanner() {
           </div>
 
           {/* Center - Free Shipping */}
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <TrendingUp className="w-4 h-4" />
             <span className="text-sm font-medium">
               Free shipping on orders over <span className="font-bold text-yellow-300">$50</span>
+            </span>
+          </div> */} {/* TODO: Restore when free shipping is available */}
+          <div className="flex items-center space-x-2">
+            <TrendingUp className="w-4 h-4" />
+            <span className="text-sm font-medium">
+              Fast delivery Canada-wide
             </span>
           </div>
 

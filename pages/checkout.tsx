@@ -384,12 +384,12 @@ const CheckoutPage: NextPage = () => {
                 )}
               </span>
             </div>
-            {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
+            {/* {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
               <div className="text-xs text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800 flex items-center gap-2">
                 <Truck className="h-4 w-4" />
                 <span className="font-medium">Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!</span>
               </div>
-            )}
+            )} */} {/* TODO: Restore when free shipping is available */}
             
             {/* Urgency messaging */}
             <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-3 rounded-lg border border-orange-200 dark:border-orange-800 mt-2">
@@ -639,11 +639,11 @@ const CheckoutPage: NextPage = () => {
                     )}
                   </span>
                 </div>
-                {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
+                {/* {getTotalPrice() >= 40 && getTotalPrice() < 50 && (
                   <div className="text-xs text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/20 p-2 rounded mb-2 border border-blue-200 dark:border-blue-800">
                     Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!
                   </div>
-                )}
+                )} */} {/* TODO: Restore when free shipping is available */}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-600">
                   <span className="font-bold text-gray-800 dark:text-gray-100">Total</span>
                   <span className="font-bold text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>

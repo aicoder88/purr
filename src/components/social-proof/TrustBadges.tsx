@@ -37,8 +37,10 @@ const TRUST_BADGES: TrustBadge[] = [
   {
     id: 'fast-shipping',
     icon: Truck,
-    title: 'Fast & Free Shipping',
-    description: 'Free shipping on orders over $25',
+    title: 'Fast Shipping',
+    description: 'Quick and reliable delivery',
+    // title: 'Fast & Free Shipping', // TODO: Restore when free shipping is available
+    // description: 'Free shipping on orders over $25', // TODO: Restore when free shipping is available
     highlight: 'Same Day Processing',
     color: 'text-purple-600'
   },

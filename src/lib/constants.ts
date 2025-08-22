@@ -139,7 +139,7 @@ export const TESTIMONIALS = [
 
 export const CONTACT_INFO = {
   address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-  phone: "+1 514 961 9386",
+  phone: "+1 250 432 9352",
   email: "hello@purrify.ca",
   hours: {
     monday: "08:00 am - 8:00 pm",

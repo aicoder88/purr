@@ -13,30 +13,30 @@ export function SubscriptionOffer() {
     {
       id: 'monthly',
       name: t.subscriptionOfferExtended?.monthlyDelivery || 'Monthly Delivery',
-      price: 19.99,
+      price: 14.99,
       originalPrice: 24.99,
-      savings: 20,
+      savings: 40,
       interval: t.subscriptionOfferExtended?.month || 'month',
       description: t.subscriptionOfferExtended?.perfectForSingleCat || 'Perfect for single-cat households',
       features: [
-        t.subscriptionOfferExtended?.freeShippingEveryMonth || 'Free shipping every month',
+        // t.subscriptionOfferExtended?.freeShippingEveryMonth || 'Free shipping every month', // TODO: Restore when free shipping is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.twentyPercentSavings || '20% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.fortyPercentSavings || '40% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'
       ]
     },
     {
       id: 'quarterly',
       name: t.subscriptionOfferExtended?.quarterlyDelivery || 'Quarterly Delivery',
-      price: 52.99,
+      price: 29.99,
       originalPrice: 74.97,
-      savings: 30,
+      savings: 60,
       interval: `3 ${t.subscriptionOfferExtended?.months || 'months'}`,
       description: t.subscriptionOfferExtended?.mostPopularMultiCat || 'Most popular for multi-cat homes',
       features: [
-        t.subscriptionOfferExtended?.freeShippingEveryThreeMonths || 'Free shipping every 3 months',
+        // t.subscriptionOfferExtended?.freeShippingEveryThreeMonths || 'Free shipping every 3 months', // TODO: Restore when free shipping is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.thirtyPercentSavings || '30% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.sixtyPercentSavings || '60% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
         t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide'
       ],
@@ -45,15 +45,15 @@ export function SubscriptionOffer() {
     {
       id: 'biannual',
       name: t.subscriptionOfferExtended?.biAnnualDelivery || 'Bi-Annual Delivery',
-      price: 95.99,
+      price: 41.98,
       originalPrice: 149.94,
-      savings: 36,
+      savings: 72,
       interval: `6 ${t.subscriptionOfferExtended?.months || 'months'}`,
       description: t.subscriptionOfferExtended?.bestValueLargeFamilies || 'Best value for large families',
       features: [
-        t.subscriptionOfferExtended?.freeShippingEverySixMonths || 'Free shipping every 6 months',
+        // t.subscriptionOfferExtended?.freeShippingEverySixMonths || 'Free shipping every 6 months', // TODO: Restore when free shipping is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.thirtySixPercentSavings || '36% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.seventyTwoPercentSavings || '72% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
         t.subscriptionOfferExtended?.bonusFreeCatToys || 'Bonus: Free cat toys'
       ]
@@ -73,7 +73,7 @@ export function SubscriptionOffer() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               {t.subscriptionOfferExtended?.subscribeAndSaveUpTo || "Subscribe & Save Up to"}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80">
-                {t.subscriptionOfferExtended?.thirtySixPercent || "36%"}
+                {t.subscriptionOfferExtended?.seventyTwoPercent || "72%"}
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -148,8 +148,10 @@ export function SubscriptionOffer() {
               <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
                 <Truck className="w-8 h-8 text-[#FF3131]" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-1">Free Shipping</h4>
-              <p className="text-gray-600 text-sm">On all subscription orders</p>
+              {/* <h4 className="font-bold text-gray-900 mb-1">Free Shipping</h4>
+              <p className="text-gray-600 text-sm">On all subscription orders</p> */}
+              <h4 className="font-bold text-gray-900 mb-1">Fast Delivery</h4>
+              <p className="text-gray-600 text-sm">Quick and reliable shipping</p>
             </div>
             
             <div className="flex flex-col items-center">

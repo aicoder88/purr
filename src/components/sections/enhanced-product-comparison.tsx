@@ -69,7 +69,7 @@ export function EnhancedProductComparison() {
         naturalIngredients: true,
         easyApplication: true,
         moneyBackGuarantee: true,
-        freeShipping: true,
+        // freeShipping: true, // TODO: Restore when free shipping is available
         bulkDiscount: false,
         prioritySupport: true,
         bonusGuide: true
@@ -94,7 +94,7 @@ export function EnhancedProductComparison() {
         naturalIngredients: true,
         easyApplication: true,
         moneyBackGuarantee: true,
-        freeShipping: true,
+        // freeShipping: true, // TODO: Restore when free shipping is available
         bulkDiscount: true,
         prioritySupport: true,
         bonusGuide: true
@@ -109,7 +109,7 @@ export function EnhancedProductComparison() {
     naturalIngredients: '100% Natural Ingredients',
     easyApplication: 'Easy Application',
     moneyBackGuarantee: '30-Day Money Back Guarantee',
-    freeShipping: 'Free Shipping',
+    // freeShipping: 'Free Shipping', // TODO: Restore when free shipping is available
     bulkDiscount: 'Bulk Discount Available',
     prioritySupport: 'Priority Customer Support',
     bonusGuide: 'Bonus Cat Care Guide'

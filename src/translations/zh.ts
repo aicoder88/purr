@@ -219,7 +219,7 @@ export const zh = {
     title: "联系我们",
     subtitle: "我们很乐意听到您的声音",
     address: "加拿大蒙特利尔",
-    phone: "+1 514 961 9386",
+    phone: "+1 250 432 9352",
     email: "hello@purrify.ca",
     hours: {
       title: "营业时间",
@@ -279,7 +279,7 @@ export const zh = {
     organization: {
       name: "Purrify",
       contactPoint: {
-        telephone: "+1-514-961-9386",
+        telephone: "+1-250-432-9352",
         contactType: "客户服务",
         areaServed: "加拿大",
         availableLanguage: ["英语", "法语", "中文"]
@@ -358,7 +358,7 @@ export const zh = {
     naturalIngredients: "100%天然成分",
     easyApplication: "易于使用",
     moneyBackGuarantee: "30天退款保证",
-    freeShipping: "免费配送",
+    // freeShipping: "免费配送", // TODO: Restore when free shipping is available
     bulkDiscount: "批量折扣",
     prioritySupport: "优先客户支持",
     bonusGuide: "赠送猫咪护理指南",
@@ -388,7 +388,7 @@ export const zh = {
     maxSavings: "最大节省",
     oneTimePurchase: "一次性购买",
     subscriptionBenefits: "订阅优势",
-    freeShipping: "所有订单免费配送",
+    // freeShipping: "所有订单免费配送", // TODO: Restore when free shipping is available
     exclusiveDiscounts: "独家订阅者折扣",
     prioritySupport: "优先客户支持",
     flexibleSchedule: "灵活的配送计划",
@@ -404,7 +404,7 @@ export const zh = {
     limitedTime: "限时优惠",
     saveToday: "今日节省",
     onAllOrders: "所有订单",
-    freeShipping: "+ 免费配送",
+    // freeShipping: "+ 免费配送", // TODO: Restore when free shipping is available
     hurryOffer: "抓紧时间！优惠即将结束",
     claimDiscount: "领取折扣",
     timeLeft: "剩余时间",
@@ -474,7 +474,7 @@ export const zh = {
   subscriptionOfferExtended: {
     neverRunOutAgain: "永不断货",
     subscribeAndSaveUpTo: "订阅并节省高达",
-    thirtySixPercent: "36%",
+    seventyTwoPercent: "72%",
     joinThousandsHappyCatParents: "加入数千名快乐的猫主人，再也不用担心异味问题。",
     getPurrifyDelivered: "自动配送Purrify，每月节省更多费用。",
     monthlyDelivery: "月度配送",
@@ -483,13 +483,13 @@ export const zh = {
     perfectForSingleCat: "单猫家庭的完美选择",
     mostPopularMultiCat: "多猫家庭最受欢迎",
     bestValueLargeFamilies: "大家庭的最佳价值",
-    freeShippingEveryMonth: "每月免费配送",
-    freeShippingEveryThreeMonths: "每3个月免费配送",
-    freeShippingEverySixMonths: "每6个月免费配送",
+    // freeShippingEveryMonth: "每月免费配送", // TODO: Restore when free shipping is available
+    // freeShippingEveryThreeMonths: "每3个月免费配送", // TODO: Restore when free shipping is available
+    // freeShippingEverySixMonths: "每6个月免费配送", // TODO: Restore when free shipping is available
     skipOrCancelAnytime: "随时跳过或取消",
-    twentyPercentSavings: "比单次购买节省20%",
-    thirtyPercentSavings: "比单次购买节省30%",
-    thirtySixPercentSavings: "比单次购买节省36%",
+    fortyPercentSavings: "比单次购买节省40%",
+    sixtyPercentSavings: "比单次购买节省60%",
+    seventyTwoPercentSavings: "比单次购买节省72%",
     priorityCustomerSupport: "优先客户支持",
     bonusFreeCatCareGuide: "赠品：免费猫咪护理指南",
     bonusFreeCatToys: "赠品：免费猫咪玩具",
@@ -537,7 +537,7 @@ export const zh = {
     moneyBack: "退款保证",
     averageRating: "平均评分",
     satisfactionRate: "满意度",
-    freeShipping: "免费配送",
+    // freeShipping: "免费配送", // TODO: Restore when free shipping is available
     skipAnytime: "随时跳过",
     highlyRated: "高度评价",
     errorDetails: "错误详情"
@@ -550,7 +550,7 @@ export const zh = {
     claimTrial: "获取您的免费Purrify试用装",
     whatYouGet: "您将获得：",
     freeTrialBag: "价值$4.99的17g Purrify试用装",
-    freeShippingDoor: "免费送货到您家门口",
+    // freeShippingDoor: "免费送货到您家门口", // TODO: Restore when free shipping is available
     expertTips: "专家猫咪护理技巧和指南",
     zeroCommitment: "零承诺 - 这是我们送给您的礼物",
     attention: "注意：对于厌倦了憋气的猫主人",
@@ -727,7 +727,7 @@ export const zh = {
           "包含批量节省",
           "适合多只猫",
           "可持续供应",
-          "包含免费运送"
+          // "包含免费运送" // TODO: Restore when free shipping is available
         ],
         bestFor: "寻求最大价值的多猫家庭",
         cta: "获取最佳价值"
@@ -738,7 +738,7 @@ export const zh = {
       { feature: "适用于任何猫砂" },
       { feature: "延长猫砂寿命" },
       { feature: "退款保证" },
-      { feature: "免费运送" },
+      // { feature: "免费运送" }, // TODO: Restore when free shipping is available
       { feature: "批量节省" },
       { feature: "适合多猫" }
     ],
@@ -765,7 +765,7 @@ export const zh = {
     maxValuePerGram: "每克最大价值",
     bulkSavingsIncluded: "包含批量节省",
     sustainableSupply: "可持续供应",
-    freeShippingIncluded: "包含免费运送",
+    // freeShippingIncluded: "包含免费运送", // TODO: Restore when free shipping is available
     features: "特点",
     idealFor: "适合",
     duration: "持续时间",
@@ -840,7 +840,7 @@ export const zh = {
     ],
     contactInfo: {
       email: "hello@purrify.ca",
-      phone: "+1 514 961 9386",
+      phone: "+1 250 432 9352",
       address: "加拿大蒙特利尔"
     }
   },

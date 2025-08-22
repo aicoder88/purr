@@ -189,7 +189,7 @@ export const en = {
     title: "Contact Us",
     subtitle: "We're here to help",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "+1 514 961 9386",
+    phone: "+1 250 432 9352",
     email: "hello@purrify.ca",
     hours: {
       title: "Opening Hours",
@@ -249,7 +249,7 @@ export const en = {
     organization: {
       name: "Purrify",
       contactPoint: {
-        telephone: "+1 514 961 9386",
+        telephone: "+1 250 432 9352",
         contactType: "customer service",
         areaServed: "CA",
         availableLanguage: ["English", "French"]
@@ -356,7 +356,7 @@ export const en = {
     naturalIngredients: "100% Natural Ingredients",
     easyApplication: "Easy Application",
     moneyBackGuarantee: "30-Day Money Back Guarantee",
-    freeShipping: "Free Shipping",
+    // freeShipping: "Free Shipping", // TODO: Restore when free shipping is available
     bulkDiscount: "Bulk Discount Available",
     prioritySupport: "Priority Customer Support",
     bonusGuide: "Bonus Cat Care Guide",
@@ -376,7 +376,7 @@ export const en = {
   subscriptionOfferExtended: {
     neverRunOutAgain: "NEVER RUN OUT AGAIN",
     subscribeAndSaveUpTo: "Subscribe & Save Up to",
-    thirtySixPercent: "36%",
+    seventyTwoPercent: "72%",
     joinThousandsHappyCatParents: "Join thousands of happy cat parents who never worry about odors again.",
     getPurrifyDelivered: "Get Purrify delivered automatically and save money every month.",
     monthlyDelivery: "Monthly Delivery",
@@ -385,13 +385,13 @@ export const en = {
     perfectForSingleCat: "Perfect for single-cat households",
     mostPopularMultiCat: "Most popular for multi-cat homes",
     bestValueLargeFamilies: "Best value for large families",
-    freeShippingEveryMonth: "Free shipping every month",
-    freeShippingEveryThreeMonths: "Free shipping every 3 months",
-    freeShippingEverySixMonths: "Free shipping every 6 months",
+    // freeShippingEveryMonth: "Free shipping every month", // TODO: Restore when free shipping is available
+    // freeShippingEveryThreeMonths: "Free shipping every 3 months", // TODO: Restore when free shipping is available
+    // freeShippingEverySixMonths: "Free shipping every 6 months", // TODO: Restore when free shipping is available
     skipOrCancelAnytime: "Skip or cancel anytime",
-    twentyPercentSavings: "20% savings vs one-time purchase",
-    thirtyPercentSavings: "30% savings vs one-time purchase",
-    thirtySixPercentSavings: "36% savings vs one-time purchase",
+    fortyPercentSavings: "40% savings vs one-time purchase",
+    sixtyPercentSavings: "60% savings vs one-time purchase",
+    seventyTwoPercentSavings: "72% savings vs one-time purchase",
     priorityCustomerSupport: "Priority customer support",
     bonusFreeCatCareGuide: "Bonus: Free cat care guide",
     bonusFreeCatToys: "Bonus: Free cat toys",
@@ -425,7 +425,7 @@ export const en = {
     claimTrial: "Claim Your FREE Purrify Trial",
     whatYouGet: "What You Get:",
     freeTrialBag: "17g Purrify Trial Size worth $4.99",
-    freeShippingDoor: "Free shipping to your door",
+    // freeShippingDoor: "Free shipping to your door", // TODO: Restore when free shipping is available
     expertTips: "Expert cat care tips and guides",
     zeroCommitment: "Zero commitment - this is our gift to you",
     attention: "ATTENTION: For cat owners tired of holding their breath",
@@ -615,7 +615,7 @@ export const en = {
     maxValuePerGram: "Maximum value per gram",
     bulkSavingsIncluded: "Bulk savings included",
     sustainableSupply: "Sustainable supply for heavy users",
-    freeShippingIncluded: "Free shipping included",
+    // freeShippingIncluded: "Free shipping included", // TODO: Restore when free shipping is available
     features: "Features",
     idealFor: "Ideal For",
     duration: "Duration",
@@ -769,7 +769,7 @@ export const en = {
     moneyBack: "Money Back",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
-    freeShipping: "Free Shipping",
+    // freeShipping: "Free Shipping", // TODO: Restore when free shipping is available
     skipAnytime: "Skip Anytime",
     highlyRated: "Highly Rated",
     errorDetails: "Error Details"

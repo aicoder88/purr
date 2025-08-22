@@ -214,7 +214,7 @@ export const fr = {
     title: "Contactez-Nous",
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "+1 514 961 9386",
+    phone: "+1 250 432 9352",
     email: "hello@purrify.ca",
     courriel: "hello@purrify.ca",
     hours: {
@@ -275,7 +275,7 @@ export const fr = {
     organization: {
       name: "Purrify",
       contactPoint: {
-        telephone: "+1 514 961 9386",
+        telephone: "+1 250 432 9352",
         contactType: "service client",
         areaServed: "CA",
         availableLanguage: ["Anglais", "Français"]
@@ -354,7 +354,7 @@ export const fr = {
     naturalIngredients: "100% Ingrédients Naturels",
     easyApplication: "Application Facile",
     moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
-    freeShipping: "Livraison Gratuite",
+    // freeShipping: "Livraison Gratuite", // TODO: Restore when free shipping is available
     bulkDiscount: "Remise en Gros",
     prioritySupport: "Support Client Prioritaire",
     bonusGuide: "Guide Gratuit de Soins pour Chats",
@@ -384,7 +384,7 @@ export const fr = {
     maxSavings: "Économies Maximales",
     oneTimePurchase: "Achat Unique",
     subscriptionBenefits: "Avantages de l'Abonnement",
-    freeShipping: "Livraison gratuite sur toutes les commandes",
+    // freeShipping: "Livraison gratuite sur toutes les commandes", // TODO: Restore when free shipping is available
     exclusiveDiscounts: "Remises exclusives aux abonnés",
     prioritySupport: "Support client prioritaire",
     flexibleSchedule: "Calendrier de livraison flexible",
@@ -400,7 +400,7 @@ export const fr = {
     limitedTime: "Offre Limitée",
     saveToday: "Économisez Aujourd'hui",
     onAllOrders: "sur toutes les commandes",
-    freeShipping: "+ Livraison Gratuite",
+    // freeShipping: "+ Livraison Gratuite", // TODO: Restore when free shipping is available
     hurryOffer: "Dépêchez-vous ! L'offre se termine bientôt",
     claimDiscount: "Réclamer la Remise",
     timeLeft: "Temps Restant",
@@ -475,7 +475,7 @@ export const fr = {
   subscriptionOfferExtended: {
     neverRunOutAgain: "PLUS JAMAIS EN RUPTURE",
     subscribeAndSaveUpTo: "Abonnez-vous et économisez jusqu'à",
-    thirtySixPercent: "36%",
+    seventyTwoPercent: "72%",
     joinThousandsHappyCatParents: "Rejoignez des milliers de propriétaires de chats heureux qui ne s'inquiètent plus jamais des odeurs.",
     getPurrifyDelivered: "Recevez Purrify automatiquement et économisez de l'argent chaque mois.",
     monthlyDelivery: "Livraison Mensuelle",
@@ -484,13 +484,13 @@ export const fr = {
     perfectForSingleCat: "Parfait pour les foyers à un chat",
     mostPopularMultiCat: "Le plus populaire pour les foyers multi-chats",
     bestValueLargeFamilies: "Meilleure valeur pour les grandes familles",
-    freeShippingEveryMonth: "Livraison gratuite chaque mois",
-    freeShippingEveryThreeMonths: "Livraison gratuite tous les 3 mois",
-    freeShippingEverySixMonths: "Livraison gratuite tous les 6 mois",
+    // freeShippingEveryMonth: "Livraison gratuite chaque mois", // TODO: Restore when free shipping is available
+    // freeShippingEveryThreeMonths: "Livraison gratuite tous les 3 mois", // TODO: Restore when free shipping is available
+    // freeShippingEverySixMonths: "Livraison gratuite tous les 6 mois", // TODO: Restore when free shipping is available
     skipOrCancelAnytime: "Suspendre ou annuler à tout moment",
-    twentyPercentSavings: "20% d'économies vs achat unique",
-    thirtyPercentSavings: "30% d'économies vs achat unique",
-    thirtySixPercentSavings: "36% d'économies vs achat unique",
+    fortyPercentSavings: "40% d'économies vs achat unique",
+    sixtyPercentSavings: "60% d'économies vs achat unique",
+    seventyTwoPercentSavings: "72% d'économies vs achat unique",
     priorityCustomerSupport: "Support client prioritaire",
     bonusFreeCatCareGuide: "Bonus : Guide gratuit de soins pour chats",
     bonusFreeCatToys: "Bonus : Jouets gratuits pour chats",
@@ -538,7 +538,7 @@ export const fr = {
     moneyBack: "Remboursement",
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
-    freeShipping: "Livraison Gratuite",
+    // freeShipping: "Livraison Gratuite", // TODO: Restore when free shipping is available
     skipAnytime: "Ignorer à Tout Moment",
     highlyRated: "Très Bien Noté",
     errorDetails: "Détails de l'Erreur"
@@ -551,7 +551,7 @@ export const fr = {
     claimTrial: "Réclamez Votre Essai GRATUIT de Purrify",
     whatYouGet: "Ce que vous obtenez GRATUITEMENT :",
     freeTrialBag: "Sac d'essai à usage unique de notre formule naturelle anti-odeurs",
-    freeShippingDoor: "Livraison gratuite à votre porte",
+    // freeShippingDoor: "Livraison gratuite à votre porte", // TODO: Restore when free shipping is available
     expertTips: "Conseils d'experts en soins pour chats et guides",
     zeroCommitment: "Zéro engagement - c'est notre cadeau pour vous",
     attention: "ATTENTION PROPRIÉTAIRES DE CHATS QUI EN ONT ASSEZ DE RETENIR LEUR SOUFFLE :",
@@ -728,7 +728,7 @@ export const fr = {
           "Économies en vrac incluses",
           "Parfait pour plusieurs chats",
           "Approvisionnement durable",
-          "Livraison gratuite incluse"
+          // "Livraison gratuite incluse" // TODO: Restore when free shipping is available
         ],
         bestFor: "Foyers multi-chats recherchant la valeur maximale",
         cta: "Obtenir la Meilleure Valeur"
@@ -766,7 +766,7 @@ export const fr = {
     maxValuePerGram: "Valeur maximale par gramme",
     bulkSavingsIncluded: "Économies en vrac incluses",
     sustainableSupply: "Approvisionnement durable",
-    freeShippingIncluded: "Livraison gratuite incluse",
+    // freeShippingIncluded: "Livraison gratuite incluse", // TODO: Restore when free shipping is available
     features: "Caractéristiques",
     idealFor: "Idéal Pour",
     duration: "Durée",
@@ -841,7 +841,7 @@ export const fr = {
     ],
     contactInfo: {
       email: "hello@purrify.ca",
-      phone: "+1 514 961 9386",
+      phone: "+1 250 432 9352",
       address: "Montréal, Canada"
     }
   },
