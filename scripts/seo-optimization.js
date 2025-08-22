@@ -31,12 +31,13 @@ class SEOOptimizer {
     this.log('Generating sitemap...');
     
     try {
-      const { generatePurrifySitemap } = require('../src/lib/sitemap-generator');
-      await generatePurrifySitemap();
+      // Use the working sitemap generation script
+      const { execSync } = require('child_process');
+      execSync('npm run generate-enhanced-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
       this.log('Sitemap generated successfully', 'success');
     } catch (error) {
       this.log(`Sitemap generation failed: ${error.message}`, 'error');
-      throw error;
+      // Don't throw - continue with other optimizations
     }
   }
 

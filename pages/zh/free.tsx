@@ -126,7 +126,7 @@ const FreePage: NextPage = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
-                      <span>{t.freeTrialPage.freeShippingDoor}</span>
+                      <span>快速配送</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>

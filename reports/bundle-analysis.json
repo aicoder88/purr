@@ -1,0 +1,1633 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-22T11:58:51.953Z",
+    "projectName": "Purrify",
+    "nodeVersion": "v22.14.0",
+    "nextVersion": "^15.4.5"
+  },
+  "performanceScore": {
+    "score": 76,
+    "grade": "C",
+    "issues": [
+      "3 oversized chunks (-9 points)",
+      "129 large images (-15 points)"
+    ]
+  },
+  "buildAnalysis": {
+    "timestamp": "2025-08-22T11:58:45.470Z",
+    "totalPages": 3,
+    "totalChunks": 10,
+    "largestChunks": [
+      {
+        "name": "main.js",
+        "size": 6522367,
+        "sizeKB": "6369.5"
+      },
+      {
+        "name": "_pages-dir-browser_src_components_ui_paw-cursor_tsx.js",
+        "size": 4446223,
+        "sizeKB": "4342.0"
+      },
+      {
+        "name": "_pages-dir-browser_components_ContactForm_tsx.js",
+        "size": 1770037,
+        "sizeKB": "1728.6"
+      },
+      {
+        "name": "webpack.js",
+        "size": 129382,
+        "sizeKB": "126.3"
+      },
+      {
+        "name": "polyfills.js",
+        "size": 112594,
+        "sizeKB": "110.0"
+      },
+      {
+        "name": "_pages-dir-browser_src_components_sections_subscription-offer_tsx.js",
+        "size": 80510,
+        "sizeKB": "78.6"
+      },
+      {
+        "name": "react-refresh.js",
+        "size": 79415,
+        "sizeKB": "77.6"
+      },
+      {
+        "name": "_pages-dir-browser_src_components_sections_urgency-banner_tsx.js",
+        "size": 30323,
+        "sizeKB": "29.6"
+      },
+      {
+        "name": "_pages-dir-browser_src_components_ui_scroll-to-top_tsx.js",
+        "size": 22137,
+        "sizeKB": "21.6"
+      },
+      {
+        "name": "pages",
+        "size": 160,
+        "sizeKB": "0.2"
+      }
+    ],
+    "firstLoadJS": 0,
+    "warnings": [
+      {
+        "type": "LARGE_CHUNK",
+        "message": "Chunk main.js (6369.5KB) exceeds recommended 200.0KB",
+        "severity": "medium"
+      },
+      {
+        "type": "LARGE_CHUNK",
+        "message": "Chunk _pages-dir-browser_src_components_ui_paw-cursor_tsx.js (4342.0KB) exceeds recommended 200.0KB",
+        "severity": "medium"
+      },
+      {
+        "type": "LARGE_CHUNK",
+        "message": "Chunk _pages-dir-browser_components_ContactForm_tsx.js (1728.6KB) exceeds recommended 200.0KB",
+        "severity": "medium"
+      }
+    ],
+    "recommendations": []
+  },
+  "dependencyAnalysis": {
+    "totalDependencies": 57,
+    "totalDevDependencies": 20,
+    "heavyDependencies": [
+      {
+        "name": "react",
+        "version": "^19.1.1"
+      },
+      {
+        "name": "react-dom",
+        "version": "^19.1.1"
+      },
+      {
+        "name": "@radix-ui/react-dialog",
+        "version": "^1.1.14"
+      },
+      {
+        "name": "lucide-react",
+        "version": "^0.536.0"
+      }
+    ],
+    "unusedDependencies": [
+      "@emailjs/browser",
+      "chart.js",
+      "critters",
+      "embla-carousel-react",
+      "react-dom",
+      "@swc/core",
+      "autoprefixer",
+      "depcheck",
+      "glob",
+      "postcss"
+    ],
+    "duplicateDependencies": [],
+    "securityIssues": []
+  },
+  "imageAnalysis": {
+    "totalImages": 277,
+    "totalSize": 176024883,
+    "largeImages": [
+      {
+        "path": "140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg"
+      },
+      {
+        "path": "140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png"
+      },
+      {
+        "path": "20g.png",
+        "size": 497313,
+        "sizeKB": "485.7",
+        "format": "png"
+      },
+      {
+        "path": "20g_o.png",
+        "size": 5603701,
+        "sizeKB": "5472.4",
+        "format": "png"
+      },
+      {
+        "path": "60g.png",
+        "size": 8399413,
+        "sizeKB": "8202.6",
+        "format": "png"
+      },
+      {
+        "path": "Carbon sktech.png",
+        "size": 2170521,
+        "sizeKB": "2119.6",
+        "format": "png"
+      },
+      {
+        "path": "before after.png",
+        "size": 3436873,
+        "sizeKB": "3356.3",
+        "format": "png"
+      },
+      {
+        "path": "carbon_magnified_image.png",
+        "size": 2216300,
+        "sizeKB": "2164.4",
+        "format": "png"
+      },
+      {
+        "path": "clamping-cat-litter.webp",
+        "size": 282782,
+        "sizeKB": "276.2",
+        "format": "webp"
+      },
+      {
+        "path": "clay-cat-litter.webp",
+        "size": 420698,
+        "sizeKB": "410.8",
+        "format": "webp"
+      },
+      {
+        "path": "coquette-finegueule.png",
+        "size": 211785,
+        "sizeKB": "206.8",
+        "format": "png"
+      },
+      {
+        "path": "cost effective.png",
+        "size": 3520680,
+        "sizeKB": "3438.2",
+        "format": "png"
+      },
+      {
+        "path": "free purrify.png",
+        "size": 2604034,
+        "sizeKB": "2543.0",
+        "format": "png"
+      },
+      {
+        "path": "fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg"
+      },
+      {
+        "path": "fresh.png",
+        "size": 3227168,
+        "sizeKB": "3151.5",
+        "format": "png"
+      },
+      {
+        "path": "images/140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg"
+      },
+      {
+        "path": "images/140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png"
+      },
+      {
+        "path": "images/fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg"
+      },
+      {
+        "path": "images/natural_cat_litter.webp",
+        "size": 134596,
+        "sizeKB": "131.4",
+        "format": "webp"
+      },
+      {
+        "path": "micropores_magnified_view.jpeg",
+        "size": 239407,
+        "sizeKB": "233.8",
+        "format": "jpeg"
+      },
+      {
+        "path": "natural-cat-litter.webp",
+        "size": 113256,
+        "sizeKB": "110.6",
+        "format": "webp"
+      },
+      {
+        "path": "natural_cat_litter.webp",
+        "size": 134596,
+        "sizeKB": "131.4",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/140g.avif",
+        "size": 265466,
+        "sizeKB": "259.2",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/140g.jpg",
+        "size": 252835,
+        "sizeKB": "246.9",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/140g.png",
+        "size": 2548674,
+        "sizeKB": "2488.9",
+        "format": "png"
+      },
+      {
+        "path": "optimized/140g.webp",
+        "size": 182660,
+        "sizeKB": "178.4",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/20g.png",
+        "size": 580131,
+        "sizeKB": "566.5",
+        "format": "png"
+      },
+      {
+        "path": "optimized/20g.webp",
+        "size": 236842,
+        "sizeKB": "231.3",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/20g_o.avif",
+        "size": 550494,
+        "sizeKB": "537.6",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/20g_o.jpg",
+        "size": 722846,
+        "sizeKB": "705.9",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/20g_o.png",
+        "size": 7609288,
+        "sizeKB": "7430.9",
+        "format": "png"
+      },
+      {
+        "path": "optimized/20g_o.webp",
+        "size": 496116,
+        "sizeKB": "484.5",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/60g.avif",
+        "size": 706920,
+        "sizeKB": "690.4",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/60g.jpg",
+        "size": 926720,
+        "sizeKB": "905.0",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/60g.png",
+        "size": 10652603,
+        "sizeKB": "10402.9",
+        "format": "png"
+      },
+      {
+        "path": "optimized/60g.webp",
+        "size": 3730870,
+        "sizeKB": "3643.4",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/Carbon sktech.avif",
+        "size": 234776,
+        "sizeKB": "229.3",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/Carbon sktech.jpg",
+        "size": 222337,
+        "sizeKB": "217.1",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/Carbon sktech.png",
+        "size": 2385958,
+        "sizeKB": "2330.0",
+        "format": "png"
+      },
+      {
+        "path": "optimized/Carbon sktech.webp",
+        "size": 300112,
+        "sizeKB": "293.1",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/Carbon-sktech.avif",
+        "size": 234776,
+        "sizeKB": "229.3",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/Carbon-sktech.webp",
+        "size": 300112,
+        "sizeKB": "293.1",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/before after.avif",
+        "size": 521342,
+        "sizeKB": "509.1",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/before after.jpg",
+        "size": 407663,
+        "sizeKB": "398.1",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/before after.png",
+        "size": 4354180,
+        "sizeKB": "4252.1",
+        "format": "png"
+      },
+      {
+        "path": "optimized/before after.webp",
+        "size": 358172,
+        "sizeKB": "349.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/before-after.avif",
+        "size": 521342,
+        "sizeKB": "509.1",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/before-after.webp",
+        "size": 358172,
+        "sizeKB": "349.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.avif",
+        "size": 322621,
+        "sizeKB": "315.1",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.jpg",
+        "size": 283803,
+        "sizeKB": "277.2",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.png",
+        "size": 2359097,
+        "sizeKB": "2303.8",
+        "format": "png"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.webp",
+        "size": 236442,
+        "sizeKB": "230.9",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/clamping-cat-litter.avif",
+        "size": 340805,
+        "sizeKB": "332.8",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/clamping-cat-litter.jpg",
+        "size": 367407,
+        "sizeKB": "358.8",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/clamping-cat-litter.webp",
+        "size": 282782,
+        "sizeKB": "276.2",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/clay-cat-litter.avif",
+        "size": 516079,
+        "sizeKB": "504.0",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/clay-cat-litter.jpg",
+        "size": 627825,
+        "sizeKB": "613.1",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/clay-cat-litter.webp",
+        "size": 420698,
+        "sizeKB": "410.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/coquette-finegueule.png",
+        "size": 211851,
+        "sizeKB": "206.9",
+        "format": "png"
+      },
+      {
+        "path": "optimized/cost effective.avif",
+        "size": 528726,
+        "sizeKB": "516.3",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/cost effective.jpg",
+        "size": 406129,
+        "sizeKB": "396.6",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/cost effective.png",
+        "size": 4303769,
+        "sizeKB": "4202.9",
+        "format": "png"
+      },
+      {
+        "path": "optimized/cost effective.webp",
+        "size": 383746,
+        "sizeKB": "374.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/cost-effective.avif",
+        "size": 528726,
+        "sizeKB": "516.3",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/cost-effective.webp",
+        "size": 383746,
+        "sizeKB": "374.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/free purrify.avif",
+        "size": 199121,
+        "sizeKB": "194.5",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/free purrify.jpg",
+        "size": 234200,
+        "sizeKB": "228.7",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/free purrify.png",
+        "size": 3651955,
+        "sizeKB": "3566.4",
+        "format": "png"
+      },
+      {
+        "path": "optimized/free purrify.webp",
+        "size": 123654,
+        "sizeKB": "120.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/free-purrify.avif",
+        "size": 199121,
+        "sizeKB": "194.5",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/free-purrify.webp",
+        "size": 123654,
+        "sizeKB": "120.8",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/fresh.avif",
+        "size": 442440,
+        "sizeKB": "432.1",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/fresh.jpg",
+        "size": 335467,
+        "sizeKB": "327.6",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/fresh.png",
+        "size": 4129268,
+        "sizeKB": "4032.5",
+        "format": "png"
+      },
+      {
+        "path": "optimized/fresh.webp",
+        "size": 283786,
+        "sizeKB": "277.1",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.avif",
+        "size": 142808,
+        "sizeKB": "139.5",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.jpeg",
+        "size": 138934,
+        "sizeKB": "135.7",
+        "format": "jpeg"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.jpg",
+        "size": 142618,
+        "sizeKB": "139.3",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.webp",
+        "size": 104626,
+        "sizeKB": "102.2",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/natural-cat-litter.avif",
+        "size": 133975,
+        "sizeKB": "130.8",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/natural-cat-litter.jpg",
+        "size": 179320,
+        "sizeKB": "175.1",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/natural-cat-litter.webp",
+        "size": 113256,
+        "sizeKB": "110.6",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/natural_cat_litter.webp",
+        "size": 134596,
+        "sizeKB": "131.4",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/panel_1.png",
+        "size": 674351,
+        "sizeKB": "658.5",
+        "format": "png"
+      },
+      {
+        "path": "optimized/panel_2.png",
+        "size": 815164,
+        "sizeKB": "796.1",
+        "format": "png"
+      },
+      {
+        "path": "optimized/panel_3.png",
+        "size": 902952,
+        "sizeKB": "881.8",
+        "format": "png"
+      },
+      {
+        "path": "optimized/samplebag.avif",
+        "size": 485578,
+        "sizeKB": "474.2",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/samplebag.jpg",
+        "size": 647326,
+        "sizeKB": "632.2",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/samplebag.webp",
+        "size": 342200,
+        "sizeKB": "334.2",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.avif",
+        "size": 475965,
+        "sizeKB": "464.8",
+        "format": "avif"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.jpg",
+        "size": 509173,
+        "sizeKB": "497.2",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.png",
+        "size": 5047385,
+        "sizeKB": "4929.1",
+        "format": "png"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.webp",
+        "size": 401580,
+        "sizeKB": "392.2",
+        "format": "webp"
+      },
+      {
+        "path": "original-images/140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png"
+      },
+      {
+        "path": "original-images/20g.png",
+        "size": 497313,
+        "sizeKB": "485.7",
+        "format": "png"
+      },
+      {
+        "path": "original-images/20g_o.jpg",
+        "size": 739310,
+        "sizeKB": "722.0",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/20g_o.png",
+        "size": 5603701,
+        "sizeKB": "5472.4",
+        "format": "png"
+      },
+      {
+        "path": "original-images/60g.jpg",
+        "size": 954269,
+        "sizeKB": "931.9",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/60g.png",
+        "size": 8399413,
+        "sizeKB": "8202.6",
+        "format": "png"
+      },
+      {
+        "path": "original-images/Carbon sktech.jpg",
+        "size": 227574,
+        "sizeKB": "222.2",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/Carbon sktech.png",
+        "size": 2170521,
+        "sizeKB": "2119.6",
+        "format": "png"
+      },
+      {
+        "path": "original-images/before after.jpg",
+        "size": 420937,
+        "sizeKB": "411.1",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/before after.png",
+        "size": 3436873,
+        "sizeKB": "3356.3",
+        "format": "png"
+      },
+      {
+        "path": "original-images/carbon_magnified_image.jpg",
+        "size": 290811,
+        "sizeKB": "284.0",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/carbon_magnified_image.png",
+        "size": 2216300,
+        "sizeKB": "2164.4",
+        "format": "png"
+      },
+      {
+        "path": "original-images/clamping-cat-litter.jpg",
+        "size": 374266,
+        "sizeKB": "365.5",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/clay-cat-litter.jpg",
+        "size": 637550,
+        "sizeKB": "622.6",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/coquette-finegueule.png",
+        "size": 211785,
+        "sizeKB": "206.8",
+        "format": "png"
+      },
+      {
+        "path": "original-images/cost effective.jpg",
+        "size": 421788,
+        "sizeKB": "411.9",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/cost effective.png",
+        "size": 3520680,
+        "sizeKB": "3438.2",
+        "format": "png"
+      },
+      {
+        "path": "original-images/free purrify.jpg",
+        "size": 240524,
+        "sizeKB": "234.9",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/free purrify.png",
+        "size": 2604034,
+        "sizeKB": "2543.0",
+        "format": "png"
+      },
+      {
+        "path": "original-images/fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/fresh.png",
+        "size": 3227168,
+        "sizeKB": "3151.5",
+        "format": "png"
+      },
+      {
+        "path": "original-images/micropores_magnified_view.jpeg",
+        "size": 239407,
+        "sizeKB": "233.8",
+        "format": "jpeg"
+      },
+      {
+        "path": "original-images/micropores_magnified_view.jpg",
+        "size": 146795,
+        "sizeKB": "143.4",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/natural-cat-litter.jpg",
+        "size": 187416,
+        "sizeKB": "183.0",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/panel_1.png",
+        "size": 663356,
+        "sizeKB": "647.8",
+        "format": "png"
+      },
+      {
+        "path": "original-images/panel_2.png",
+        "size": 819541,
+        "sizeKB": "800.3",
+        "format": "png"
+      },
+      {
+        "path": "original-images/panel_3.png",
+        "size": 838304,
+        "sizeKB": "818.7",
+        "format": "png"
+      },
+      {
+        "path": "original-images/samplebag.jpg",
+        "size": 673384,
+        "sizeKB": "657.6",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/three_bags_no_bg.jpg",
+        "size": 514884,
+        "sizeKB": "502.8",
+        "format": "jpg"
+      },
+      {
+        "path": "original-images/three_bags_no_bg.png",
+        "size": 7278843,
+        "sizeKB": "7108.2",
+        "format": "png"
+      },
+      {
+        "path": "panel_1.png",
+        "size": 663356,
+        "sizeKB": "647.8",
+        "format": "png"
+      },
+      {
+        "path": "panel_2.png",
+        "size": 819541,
+        "sizeKB": "800.3",
+        "format": "png"
+      },
+      {
+        "path": "panel_3.png",
+        "size": 838304,
+        "sizeKB": "818.7",
+        "format": "png"
+      },
+      {
+        "path": "samplebag.jpg",
+        "size": 673384,
+        "sizeKB": "657.6",
+        "format": "jpg"
+      },
+      {
+        "path": "three_bags_no_bg.png",
+        "size": 7278843,
+        "sizeKB": "7108.2",
+        "format": "png"
+      }
+    ],
+    "unoptimizedImages": [
+      {
+        "path": "140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "20g.png",
+        "size": 497313,
+        "sizeKB": "485.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "20g_o.png",
+        "size": 5603701,
+        "sizeKB": "5472.4",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "60g.png",
+        "size": 8399413,
+        "sizeKB": "8202.6",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "Carbon sktech.png",
+        "size": 2170521,
+        "sizeKB": "2119.6",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "before after.png",
+        "size": 3436873,
+        "sizeKB": "3356.3",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "carbon_magnified_image.png",
+        "size": 2216300,
+        "sizeKB": "2164.4",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "coquette-finegueule.png",
+        "size": 211785,
+        "sizeKB": "206.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "cost effective.png",
+        "size": 3520680,
+        "sizeKB": "3438.2",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "doghaus.png",
+        "size": 61210,
+        "sizeKB": "59.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "free purrify.png",
+        "size": 2604034,
+        "sizeKB": "2543.0",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "fresh.png",
+        "size": 3227168,
+        "sizeKB": "3151.5",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "images/140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "images/140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "images/fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "kong-animalerie.jpg",
+        "size": 100643,
+        "sizeKB": "98.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "micropores_magnified_view.jpeg",
+        "size": 239407,
+        "sizeKB": "233.8",
+        "format": "jpeg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/140g.jpg",
+        "size": 252835,
+        "sizeKB": "246.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/140g.png",
+        "size": 2548674,
+        "sizeKB": "2488.9",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/20g.jpg",
+        "size": 74267,
+        "sizeKB": "72.5",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/20g.png",
+        "size": 580131,
+        "sizeKB": "566.5",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/20g_o.jpg",
+        "size": 722846,
+        "sizeKB": "705.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/20g_o.png",
+        "size": 7609288,
+        "sizeKB": "7430.9",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/60g.jpg",
+        "size": 926720,
+        "sizeKB": "905.0",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/60g.png",
+        "size": 10652603,
+        "sizeKB": "10402.9",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/Carbon sktech.jpg",
+        "size": 222337,
+        "sizeKB": "217.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/Carbon sktech.png",
+        "size": 2385958,
+        "sizeKB": "2330.0",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/before after.jpg",
+        "size": 407663,
+        "sizeKB": "398.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/before after.png",
+        "size": 4354180,
+        "sizeKB": "4252.1",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.jpg",
+        "size": 283803,
+        "sizeKB": "277.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/carbon_magnified_image.png",
+        "size": 2359097,
+        "sizeKB": "2303.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/clamping-cat-litter.jpg",
+        "size": 367407,
+        "sizeKB": "358.8",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/clay-cat-litter.jpg",
+        "size": 627825,
+        "sizeKB": "613.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/coquette-finegueule.png",
+        "size": 211851,
+        "sizeKB": "206.9",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/cost effective.jpg",
+        "size": 406129,
+        "sizeKB": "396.6",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/cost effective.png",
+        "size": 4303769,
+        "sizeKB": "4202.9",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/free purrify.jpg",
+        "size": 234200,
+        "sizeKB": "228.7",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/free purrify.png",
+        "size": 3651955,
+        "sizeKB": "3566.4",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/fresh.jpg",
+        "size": 335467,
+        "sizeKB": "327.6",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/fresh.png",
+        "size": 4129268,
+        "sizeKB": "4032.5",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/kong-animalerie.jpg",
+        "size": 84832,
+        "sizeKB": "82.8",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.jpeg",
+        "size": 138934,
+        "sizeKB": "135.7",
+        "format": "jpeg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/micropores_magnified_view.jpg",
+        "size": 142618,
+        "sizeKB": "139.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/natural-cat-litter.jpg",
+        "size": 179320,
+        "sizeKB": "175.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/panel_1.png",
+        "size": 674351,
+        "sizeKB": "658.5",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/panel_2.jpg",
+        "size": 68301,
+        "sizeKB": "66.7",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/panel_2.png",
+        "size": 815164,
+        "sizeKB": "796.1",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/panel_3.jpg",
+        "size": 67677,
+        "sizeKB": "66.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/panel_3.png",
+        "size": 902952,
+        "sizeKB": "881.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/purrify-logo-icon.jpg",
+        "size": 64748,
+        "sizeKB": "63.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/samplebag.jpg",
+        "size": 647326,
+        "sizeKB": "632.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.jpg",
+        "size": 509173,
+        "sizeKB": "497.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/three_bags_no_bg.png",
+        "size": 5047385,
+        "sizeKB": "4929.1",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/140g.jpg",
+        "size": 256153,
+        "sizeKB": "250.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/140g.png",
+        "size": 2408140,
+        "sizeKB": "2351.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/20g.jpg",
+        "size": 75653,
+        "sizeKB": "73.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/20g.png",
+        "size": 497313,
+        "sizeKB": "485.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/20g_o.jpg",
+        "size": 739310,
+        "sizeKB": "722.0",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/20g_o.png",
+        "size": 5603701,
+        "sizeKB": "5472.4",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/60g.jpg",
+        "size": 954269,
+        "sizeKB": "931.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/60g.png",
+        "size": 8399413,
+        "sizeKB": "8202.6",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/Carbon sktech.jpg",
+        "size": 227574,
+        "sizeKB": "222.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/Carbon sktech.png",
+        "size": 2170521,
+        "sizeKB": "2119.6",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/before after.jpg",
+        "size": 420937,
+        "sizeKB": "411.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/before after.png",
+        "size": 3436873,
+        "sizeKB": "3356.3",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/carbon_magnified_image.jpg",
+        "size": 290811,
+        "sizeKB": "284.0",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/carbon_magnified_image.png",
+        "size": 2216300,
+        "sizeKB": "2164.4",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/clamping-cat-litter.jpg",
+        "size": 374266,
+        "sizeKB": "365.5",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/clay-cat-litter.jpg",
+        "size": 637550,
+        "sizeKB": "622.6",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/coquette-finegueule.png",
+        "size": 211785,
+        "sizeKB": "206.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/cost effective.jpg",
+        "size": 421788,
+        "sizeKB": "411.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/cost effective.png",
+        "size": 3520680,
+        "sizeKB": "3438.2",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/doghaus.png",
+        "size": 61210,
+        "sizeKB": "59.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/free purrify.jpg",
+        "size": 240524,
+        "sizeKB": "234.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/free purrify.png",
+        "size": 2604034,
+        "sizeKB": "2543.0",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/fresh.jpg",
+        "size": 348569,
+        "sizeKB": "340.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/fresh.png",
+        "size": 3227168,
+        "sizeKB": "3151.5",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/kong-animalerie.jpg",
+        "size": 100643,
+        "sizeKB": "98.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/micropores_magnified_view.jpeg",
+        "size": 239407,
+        "sizeKB": "233.8",
+        "format": "jpeg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/micropores_magnified_view.jpg",
+        "size": 146795,
+        "sizeKB": "143.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/natural-cat-litter.jpg",
+        "size": 187416,
+        "sizeKB": "183.0",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_1.jpg",
+        "size": 51660,
+        "sizeKB": "50.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_1.png",
+        "size": 663356,
+        "sizeKB": "647.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_2.jpg",
+        "size": 69809,
+        "sizeKB": "68.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_2.png",
+        "size": 819541,
+        "sizeKB": "800.3",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_3.jpg",
+        "size": 69701,
+        "sizeKB": "68.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/panel_3.png",
+        "size": 838304,
+        "sizeKB": "818.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/purrify-logo-icon.jpg",
+        "size": 64918,
+        "sizeKB": "63.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/samplebag.jpg",
+        "size": 673384,
+        "sizeKB": "657.6",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/three_bags_no_bg.jpg",
+        "size": 514884,
+        "sizeKB": "502.8",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "original-images/three_bags_no_bg.png",
+        "size": 7278843,
+        "sizeKB": "7108.2",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "panel_1.png",
+        "size": 663356,
+        "sizeKB": "647.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "panel_2.png",
+        "size": 819541,
+        "sizeKB": "800.3",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "panel_3.png",
+        "size": 838304,
+        "sizeKB": "818.7",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "samplebag.jpg",
+        "size": 673384,
+        "sizeKB": "657.6",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "three_bags_no_bg.png",
+        "size": 7278843,
+        "sizeKB": "7108.2",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      }
+    ],
+    "recommendations": [
+      {
+        "type": "LARGE_IMAGES",
+        "message": "Found 129 images larger than 100.0KB",
+        "action": "Consider compressing or using Next.js Image optimization"
+      },
+      {
+        "type": "UNOPTIMIZED_FORMATS",
+        "message": "Found 98 images that could be optimized",
+        "action": "Convert to modern formats (WebP/AVIF) and use responsive images"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "category": "Dependencies",
+      "priority": "medium",
+      "title": "Remove Unused Dependencies",
+      "description": "Several dependencies appear to be unused",
+      "actions": [
+        "Review and remove unused packages",
+        "Use bundle analyzer to identify heavy dependencies",
+        "Consider lighter alternatives for heavy packages"
+      ]
+    },
+    {
+      "category": "Image Optimization",
+      "priority": "high",
+      "title": "Optimize Large Images",
+      "description": "Several images are larger than recommended",
+      "actions": [
+        "Use Next.js Image component for automatic optimization",
+        "Convert images to modern formats (WebP, AVIF)",
+        "Implement responsive images with proper sizes",
+        "Compress images before uploading"
+      ]
+    }
+  ]
+}

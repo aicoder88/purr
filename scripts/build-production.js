@@ -44,8 +44,7 @@ class ProductionBuilder {
     
     // Generate sitemap
     try {
-      const { generatePurrifySitemap } = require('../src/lib/sitemap-generator');
-      await generatePurrifySitemap();
+      execSync('npm run generate-enhanced-sitemap', { stdio: 'inherit' });
       this.log('Sitemap generated', 'success');
     } catch (error) {
       this.log(`Sitemap generation failed: ${error.message}`, 'warning');

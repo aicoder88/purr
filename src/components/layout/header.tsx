@@ -190,7 +190,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="ml-1"
+              className="ml-1 h-11 w-11 p-0"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -218,7 +218,7 @@ export function Header() {
                         <Link
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-6 py-2 text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                          className="block px-6 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                           onClick={closeMenu}
                         >
                           {dropdownItem.label}
@@ -228,7 +228,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
                       {item.label}

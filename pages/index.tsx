@@ -4,20 +4,32 @@ import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
-import { EnhancedProductComparison } from '../src/components/sections/enhanced-product-comparison';
 import dynamic from 'next/dynamic';
 
-// Dynamically import heavy components to improve initial page load
+// Dynamically import components to improve initial page load
+const EnhancedProductComparison = dynamic(() => import('../src/components/sections/enhanced-product-comparison').then(mod => ({ default: mod.EnhancedProductComparison })), { 
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+});
 const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
 const UrgencyBanner = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.UrgencyBanner })), { ssr: false });
 const StickyUrgencyBar = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.StickyUrgencyBar })), { ssr: false });
-import { Stores } from '../src/components/sections/stores';
-import { Testimonials } from '../src/components/sections/testimonials';
-import { FAQ } from '../src/components/sections/faq';
-import { Newsletter } from '../src/components/sections/newsletter';
-import { CTA } from '../src/components/sections/cta';
-import { Contact } from '../src/components/sections/contact';
-import { BlogPreview } from '../src/components/sections/blog-preview';
+const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), { 
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+});
+const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), { 
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+});
+const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), { 
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+});
+const Newsletter = dynamic(() => import('../src/components/sections/newsletter').then(mod => ({ default: mod.Newsletter })), { ssr: false });
+const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), { ssr: false });
+const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), { ssr: false });
+const BlogPreview = dynamic(() => import('../src/components/sections/blog-preview').then(mod => ({ default: mod.BlogPreview })), { ssr: false });
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';

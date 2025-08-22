@@ -77,10 +77,43 @@
   
   html {
     @apply antialiased;
+    /* Improve iOS scroll performance */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    /* Improve touch performance */
+    touch-action: manipulation;
+  }
+
+  /* Mobile-first optimizations */
+  @media (max-width: 768px) {
+    /* Ensure minimum touch target size */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Improve tap responsiveness */
+    button, a, [role="button"], input, select, textarea {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+      -webkit-touch-callout: none;
+    }
+    
+    /* Prevent zoom on input focus */
+    input, select, textarea {
+      font-size: 16px;
+    }
+    
+    /* Improve scrolling */
+    .overflow-y-auto, .overflow-y-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
   }
   
   .bg-gradient-primary {
@@ -89,6 +122,31 @@
   
   .bg-gradient-secondary {
     @apply bg-gradient-to-t from-[#ffaa2f] to-[#ffaa2f]/40 dark:from-[#ffcc2f] dark:to-[#ffcc2f]/40;
+  }
+
+  /* Performance optimizations for animations and transitions */
+  .animate-pulse, .animate-spin, .animate-bounce {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+
+  /* Optimize heavy blur effects */
+  [class*="blur-"] {
+    transform: translateZ(0);
+    will-change: auto;
+  }
+
+  /* Improve text rendering */
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize gradients for performance */
+  [style*="gradient"] {
+    transform: translateZ(0);
   }
   
   .paw {
