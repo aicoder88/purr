@@ -265,12 +265,12 @@ export default function Home() {
       {/* Sticky Urgency Bar for persistent conversion pressure */}
       <StickyUrgencyBar />
       
-      {/* Social Proof Components */}
-      <PurchaseNotifications 
+      {/* Social Proof Components - Temporarily disabled */}
+      {/* <PurchaseNotifications 
         position="bottom-left"
         autoHide={true}
         hideDelay={5000}
-      />
+      /> */}
     </>
   );
 }

@@ -388,14 +388,14 @@ const Stage5DemoPage: NextPage = () => {
         </div>
       </Container>
 
-      {/* Social Proof Notifications */}
-      {showNotifications && (
+      {/* Social Proof Notifications - Temporarily disabled */}
+      {/* {showNotifications && (
         <PurchaseNotifications 
           position="bottom-left"
           autoHide={true}
           hideDelay={5000}
         />
-      )}
+      )} */}
     </>
   );
 };
