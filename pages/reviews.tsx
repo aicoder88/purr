@@ -152,7 +152,7 @@ export default function Reviews() {
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
                 <li>/</li>
                 <li className="text-[#FF3131]">Reviews</li>
@@ -164,10 +164,10 @@ export default function Reviews() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
                 Customer Reviews
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Real Stories from Happy Cat Owners
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
                 See why thousands of Canadian cat owners trust Purrify to eliminate litter box odors naturally. 
                 Read verified reviews from real customers across Canada.
               </p>
@@ -181,8 +181,8 @@ export default function Reviews() {
                       <div className="inline-flex items-center justify-center w-12 h-12 bg-[#FF3131]/10 rounded-full mb-3">
                         <IconComponent className="h-6 w-6 text-[#FF3131]" />
                       </div>
-                      <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-                      <div className="text-sm text-gray-600">{stat.label}</div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-gray-50">{stat.value}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">{stat.label}</div>
                     </div>
                   );
                 })}
@@ -192,7 +192,7 @@ export default function Reviews() {
             {/* Reviews Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {reviews.map((review) => (
-                <div key={review.id} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+                <div key={review.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-2">
@@ -202,15 +202,15 @@ export default function Reviews() {
                         </span>
                       </div>
                       <div>
-                        <div className="font-semibold text-gray-900">{review.name}</div>
-                        <div className="flex items-center text-sm text-gray-500">
+                        <div className="font-semibold text-gray-900 dark:text-gray-50">{review.name}</div>
+                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                           <MapPin className="h-3 w-3 mr-1" />
                           {review.location}
                         </div>
                       </div>
                     </div>
                     {review.verified && (
-                      <div className="flex items-center text-green-600 text-xs">
+                      <div className="flex items-center text-green-600 dark:text-green-400 text-xs">
                         <CheckCircle className="h-4 w-4 mr-1" />
                         Verified
                       </div>
@@ -227,22 +227,22 @@ export default function Reviews() {
                         }`}
                       />
                     ))}
-                    <span className="ml-2 text-sm text-gray-600">{review.date}</span>
+                    <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">{review.date}</span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-semibold text-gray-900 mb-3">{review.title}</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-3">{review.title}</h3>
 
                   {/* Review */}
                   <div className="relative mb-4">
                     <Quote className="absolute -top-2 -left-2 h-6 w-6 text-[#FF3131]/20" />
-                    <p className="text-gray-700 text-sm leading-relaxed pl-4">
+                    <p className="text-gray-700 dark:text-gray-200 text-sm leading-relaxed pl-4">
                       {review.review}
                     </p>
                   </div>
 
                   {/* Product Details */}
-                  <div className="border-t border-gray-100 pt-4 space-y-2 text-xs text-gray-600">
+                  <div className="border-t border-gray-100 pt-4 space-y-2 text-xs text-gray-600 dark:text-gray-300">
                     <div><strong>Product:</strong> {review.productUsed}</div>
                     <div><strong>Cats:</strong> {review.catsOwned}</div>
                     <div><strong>Use Case:</strong> {review.useCase}</div>
@@ -257,17 +257,17 @@ export default function Reviews() {
                 <h2 className="text-2xl font-bold text-blue-900 mb-4">Why Customers Trust Purrify</h2>
                 <div className="grid md:grid-cols-3 gap-6 text-blue-800">
                   <div className="text-center">
-                    <CheckCircle className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                    <CheckCircle className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">Verified Reviews</h3>
                     <p className="text-sm">All reviews are from verified purchasers who have used Purrify products.</p>
                   </div>
                   <div className="text-center">
-                    <Star className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                    <Star className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">4.9/5 Rating</h3>
                     <p className="text-sm">Consistently high ratings across all product sizes and customer types.</p>
                   </div>
                   <div className="text-center">
-                    <Users className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                    <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">2,000+ Customers</h3>
                     <p className="text-sm">Growing community of satisfied cat owners across Canada.</p>
                   </div>
@@ -278,17 +278,17 @@ export default function Reviews() {
             {/* Call to Action */}
             <div className="text-center">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Join Thousands of Happy Cat Owners
                 </h2>
-                <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+                <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
                   Experience the same results as our verified customers. Try Purrify risk-free 
                   and see why it's Canada's most trusted natural cat litter deodorizer.
                 </p>
                 <div className="space-x-4">
                   <Link 
                     href="/products" 
-                    className="inline-block bg-[#FF3131] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                    className="inline-block bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Now
                   </Link>
@@ -303,24 +303,24 @@ export default function Reviews() {
             </div>
 
             {/* Related Links */}
-            <div className="mt-16 pt-8 border-t border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Learn More About Purrify</h3>
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
               <div className="grid md:grid-cols-4 gap-4">
-                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 mb-2">Product Comparison</h4>
-                  <p className="text-gray-600 text-sm">See how Purrify compares</p>
+                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares</p>
                 </Link>
-                <Link href="/customers/case-studies" className="block p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 mb-2">Case Studies</h4>
-                  <p className="text-gray-600 text-sm">Detailed success stories</p>
+                <Link href="/customers/case-studies" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Detailed success stories</p>
                 </Link>
-                <Link href="/blog/safe-for-kittens" className="block p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 mb-2">Safety Information</h4>
-                  <p className="text-gray-600 text-sm">Safe for cats and kittens</p>
+                <Link href="/blog/safe-for-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Safety Information</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Safe for cats and kittens</p>
                 </Link>
-                <Link href="/montreal" className="block p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 mb-2">Store Locations</h4>
-                  <p className="text-gray-600 text-sm">Find Purrify near you</p>
+                <Link href="/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Store Locations</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Find Purrify near you</p>
                 </Link>
               </div>
             </div>

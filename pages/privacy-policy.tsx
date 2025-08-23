@@ -20,7 +20,7 @@ const PrivacyPolicy = () => (
     <h2 className="text-xl font-semibold mt-8 mb-2">How We Protect Your Information</h2>
     <p className="mb-4">We implement reasonable security measures to protect your data. However, no method of transmission over the Internet is 100% secure.</p>
     <h2 className="text-xl font-semibold mt-8 mb-2">Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@purrify.ca" className="text-blue-600 underline">info@purrify.ca</a>.</p>
+    <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@purrify.ca" className="text-blue-600 dark:text-blue-400 underline">info@purrify.ca</a>.</p>
   </main>
 );
 

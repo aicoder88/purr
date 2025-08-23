@@ -96,7 +96,7 @@ const ThankYouPage = () => {
           <p className="text-xl mb-8">
             Your order has been received and is being processed.
           </p>
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-4">What&apos;s Next?</h2>
             <p className="mb-4">
               You will receive an email confirmation shortly with your order details.&nbsp;
@@ -109,13 +109,13 @@ const ThankYouPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#03E46A] hover:bg-[#02C55A]"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-white bg-[#03E46A] hover:bg-[#02C55A]"
             >
               Return to Home
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:bg-gray-900"
             >
               Contact Us
             </Link>
@@ -127,7 +127,7 @@ const ThankYouPage = () => {
                 href="https://twitter.com/intent/tweet?text=I%20just%20ordered%20from%20Purrify%20and%20I%20can%27t%20wait%20to%20try%20their%20products!%20%23Purrify"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#03E46A]"
+                className="text-gray-600 dark:text-gray-300 hover:text-[#03E46A]"
               >
                 <Twitter className="w-6 h-6" />
               </a>
@@ -135,7 +135,7 @@ const ThankYouPage = () => {
                 href="https://www.facebook.com/sharer/sharer.php?u=https://purrify.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#03E46A]"
+                className="text-gray-600 dark:text-gray-300 hover:text-[#03E46A]"
               >
                 <Facebook className="w-6 h-6" />
               </a>

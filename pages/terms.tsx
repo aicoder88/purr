@@ -39,12 +39,12 @@ export default function Terms() {
               <h1 className="text-4xl font-bold tracking-tight mb-4 text-[#03E46A]">
                 Terms of Service
               </h1>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Last Updated: May 22, 2025
               </p>
             </div>
             
-            <div className="prose prose-lg max-w-none text-gray-700">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200">
               <p>
                 Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://purrify.ca website (the "Service") operated by {SITE_NAME} ("us", "we", or "our").
               </p>

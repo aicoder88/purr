@@ -261,7 +261,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -269,8 +269,8 @@ export default function Montreal() {
                   <strong>Pattes et Griffes - Sainte-Thérèse</strong><br />
                   190 Bd du Curé-Labelle suite 1b<br />
                   Sainte-Thérèse, QC<br />
-                  <span className="text-blue-600">(450) 818-1310</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 818-1310</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -297,8 +297,8 @@ export default function Montreal() {
                   <strong>Chico - Sainte-Thérèse</strong><br />
                   95 Bd du Curé-Labelle Suite 8<br />
                   Sainte-Thérèse, QC<br />
-                  <span className="text-blue-600">(450) 965-3906</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 965-3906</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -325,8 +325,8 @@ export default function Montreal() {
                   <strong>Chico - Sainte-Marthe-sur-le-Lac</strong><br />
                   2860 B Boul. des Promenades<br />
                   Sainte-Marthe-Sur-Le-Lac, QC<br />
-                  <span className="text-blue-600">(450) 598-2860</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 598-2860</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -345,7 +345,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Animal Shop GIGI</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie familiale' : 'Family-owned pet store'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Animalerie familiale' : 'Family-owned pet store'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -353,8 +353,8 @@ export default function Montreal() {
                   <strong>Animal Shop GIGI</strong><br />
                   356 Bd Arthur-Sauvé<br />
                   Saint-Eustache, QC<br />
-                  <span className="text-blue-600">(450) 598-3444</span><br />
-                  <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 598-3444</span><br />
+                  <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -373,7 +373,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -381,8 +381,8 @@ export default function Montreal() {
                   <strong>Chico - Bd Arthur-Sauvé, Laval</strong><br />
                   4511 Bd Arthur-Sauvé<br />
                   Laval, QC<br />
-                  <span className="text-blue-600">(450) 314-2442</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 314-2442</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -401,7 +401,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -409,8 +409,8 @@ export default function Montreal() {
                   <strong>Pattes et Griffes - Cartier Ouest</strong><br />
                   293 Bd Cartier Ouest<br />
                   Laval, QC<br />
-                  <span className="text-blue-600">(450) 490-1414</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(450) 490-1414</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -429,7 +429,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -437,8 +437,8 @@ export default function Montreal() {
                   <strong>Pitou Minou Kirkland</strong><br />
                   16936 Route Transcanadienne<br />
                   Kirkland, QC<br />
-                  <span className="text-blue-600">(514) 695-5005</span><br />
-                  <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 695-5005</span><br />
+                  <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -457,7 +457,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -465,8 +465,8 @@ export default function Montreal() {
                   <strong>Chico - Boul. St-Laurent (Montreal)</strong><br />
                   7001 Boul. Saint-Laurent<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 657-5813</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 657-5813</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -485,7 +485,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Doghaus</h3>
-                  <p className="text-gray-500 text-xs italic">Premium pet products & supplies</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">Premium pet products & supplies</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -493,8 +493,8 @@ export default function Montreal() {
                   <strong>Doghaus</strong><br />
                   5671 Rue Sherbrooke O<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 483-3555</span><br />
-                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 483-3555</span><br />
+                  <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -513,7 +513,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">KONG ANIMALERIE</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie à service complet' : 'Full-service pet store'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Animalerie à service complet' : 'Full-service pet store'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -521,8 +521,8 @@ export default function Montreal() {
                   <strong>KONG ANIMALERIE</strong><br />
                   5555 Bd Decarie<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 662-8373</span><br />
-                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 662-8373</span><br />
+                  <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -541,7 +541,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Coquette et Finegueule</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Animalerie avec services de toilettage' : 'Pet store with grooming services'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Animalerie avec services de toilettage' : 'Pet store with grooming services'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -549,8 +549,8 @@ export default function Montreal() {
                   <strong>Coquette et Finegueule</strong><br />
                   5203 Av Bannantyne<br />
                   Verdun, QC<br />
-                  <span className="text-blue-600">(514) 761-4221</span><br />
-                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 761-4221</span><br />
+                  <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -569,7 +569,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pitou Minou & Compagnons</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Succursale Global Pet Foods' : 'Global Pet Foods location'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -577,8 +577,8 @@ export default function Montreal() {
                   <strong>Pitou Minou Verdun</strong><br />
                   4100 Rue Wellington<br />
                   Verdun, QC<br />
-                  <span className="text-blue-600">(514) 732-0555</span><br />
-                  <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 732-0555</span><br />
+                  <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -597,7 +597,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -605,8 +605,8 @@ export default function Montreal() {
                   <strong>Chico - Mont-Royal E</strong><br />
                   2016 Avenue du Mont-Royal E<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 521-0201</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 521-0201</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -625,7 +625,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Chico - Boutique d'animaux</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Boutique premium pour animaux' : 'Premium pet boutique'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -633,8 +633,8 @@ export default function Montreal() {
                   <strong>Chico - Rue Ontario E</strong><br />
                   3911 Rue Ontario E<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 527-1371</span><br />
-                  <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 527-1371</span><br />
+                  <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -653,7 +653,7 @@ export default function Montreal() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
-                  <p className="text-gray-500 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs italic">{locale === 'fr' ? 'Soins et fournitures complètes pour animaux' : 'Complete pet care and supplies'}</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -661,8 +661,8 @@ export default function Montreal() {
                   <strong>Pattes et Griffes - Marche Centrale</strong><br />
                   9185 Bd de l'Acadie<br />
                   Montreal, QC<br />
-                  <span className="text-blue-600">(514) 389-0090</span><br />
-                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
+                  <span className="text-blue-600 dark:text-blue-400">(514) 389-0090</span><br />
+                  <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
               </div>
             </div>
@@ -683,7 +683,7 @@ export default function Montreal() {
             </p>
             <Link 
               href="/support/contact" 
-              className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
+              className="inline-block bg-yellow-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
               {locale === 'fr'
                 ? 'Contactez-nous pour Demandes de Magasin'
@@ -835,7 +835,7 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="font-bold text-blue-600">MF</span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400">MF</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Marie Fournier</h4>
@@ -854,7 +854,7 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="font-bold text-green-600">JT</span>
+                  <span className="font-bold text-green-600 dark:text-green-400">JT</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Jean Tremblay</h4>
@@ -873,7 +873,7 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="font-bold text-purple-600">SL</span>
+                  <span className="font-bold text-purple-600 dark:text-purple-400">SL</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Sophie Lavoie</h4>
@@ -909,7 +909,7 @@ export default function Montreal() {
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">
+                <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Locales' : 'To Local Pet Stores'}
                 </h4>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
@@ -942,7 +942,7 @@ export default function Montreal() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-green-600 mb-2">
+                <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Indépendantes' : 'To Independent Pet Stores'}
                 </h4>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
@@ -1058,7 +1058,7 @@ export default function Montreal() {
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Format d\'Essai 17g' : '17g Trial Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -1078,13 +1078,13 @@ export default function Montreal() {
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
                 {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Format Régulier 60g' : '60g Regular Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -1107,7 +1107,7 @@ export default function Montreal() {
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -1196,7 +1196,7 @@ export default function Montreal() {
             <div className="space-x-4">
               <Link 
                 href="/support/contact" 
-                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="inline-block bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 {locale === 'fr' ? 'Trouver le Magasin le Plus Près' : 'Find Nearest Store'}
               </Link>

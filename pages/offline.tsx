@@ -26,7 +26,7 @@ const OfflinePage: NextPage = () => {
             {/* Offline Icon */}
             <div className="mb-8">
               <div className="w-24 h-24 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
-                <WifiOff className="w-12 h-12 text-gray-400" />
+                <WifiOff className="w-12 h-12 text-gray-400 dark:text-gray-500" />
               </div>
             </div>
             
@@ -44,7 +44,7 @@ const OfflinePage: NextPage = () => {
             <div className="space-y-4">
               <Button
                 onClick={handleRetry}
-                className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white"
+                className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Try Again

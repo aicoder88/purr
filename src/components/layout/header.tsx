@@ -174,7 +174,7 @@ export function Header() {
             <ThemeToggle />
             <Button
               onClick={scrollToProducts}
-              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               Buy Now!
@@ -244,7 +244,7 @@ export function Header() {
                     scrollToProducts();
                     closeMenu();
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   Buy Now!
