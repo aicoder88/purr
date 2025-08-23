@@ -8,39 +8,17 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Critical CSS inline to improve Core Web Vitals */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          /* Critical CSS for above-the-fold content */
-          * { box-sizing: border-box; }
-          body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333333; background-color: #FFFFFF; }
-          .hero-section { position: relative; overflow: hidden; background: linear-gradient(135deg, #FFFFFF 0%, #FFFFF5 50%, #FFFFFF 100%); min-height: 100vh; display: flex; align-items: center; }
-          .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-          @media (min-width: 1024px) { .hero-container { grid-template-columns: 1fr 1fr; gap: 3rem; } }
-          .hero-content { z-index: 10; }
-          .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: #1E1B4B; }
-          .hero-subtitle { font-size: 1.25rem; color: #333333; font-weight: 300; margin-bottom: 2rem; line-height: 1.6; }
-          .hero-buttons { display: flex; flex-direction: column; gap: 1rem; }
-          @media (min-width: 640px) { .hero-buttons { flex-direction: row; } }
-          .hero-button { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-weight: 700; font-size: 1rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; min-height: 3rem; }
-          .hero-button-primary { background: linear-gradient(135deg, #FF3131 0%, #FF3131 100%); color: white; box-shadow: 0 4px 6px -1px rgba(255, 49, 49, 0.1), 0 2px 4px -1px rgba(255, 49, 49, 0.06); }
-          .hero-button-primary:hover { box-shadow: 0 10px 15px -3px rgba(255, 49, 49, 0.1), 0 4px 6px -2px rgba(255, 49, 49, 0.05); transform: translateY(-1px); }
-          .hero-button-secondary { background: white; color: #5B2EFF; border: 2px solid #5B2EFF; }
-          .hero-button-secondary:hover { background: #5B2EFF; color: white; }
-          .hero-video-container { position: relative; display: flex; flex-direction: column; align-items: center; }
-          .hero-video-wrapper { position: relative; overflow: hidden; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transition: all 0.3s ease; }
-          .hero-video { width: 100%; max-width: 500px; height: auto; display: block; object-fit: cover; }
-          .hero-decoration { position: absolute; border-radius: 50%; filter: blur(3rem); opacity: 0.7; transition: opacity 0.7s ease; }
-          .hero-decoration-1 { top: 5rem; left: 2.5rem; width: 16rem; height: 16rem; background: rgba(255, 49, 49, 0.2); }
-          .hero-decoration-2 { bottom: 5rem; right: 2.5rem; width: 20rem; height: 20rem; background: rgba(224, 239, 199, 0.3); }
-          .hero-decoration-3 { top: 10rem; right: 5rem; width: 5rem; height: 5rem; background: rgba(91, 46, 255, 0.2); filter: blur(1.5rem); }
-          .hero-skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
-          @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-          .skip-nav { position: absolute; top: -40px; left: 6px; background: #FF3131; color: white; padding: 8px; text-decoration: none; border-radius: 4px; z-index: 1000; transition: top 0.3s; }
-          .skip-nav:focus { top: 6px; }
-          .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-          @media (max-width: 640px) { .container { padding: 0 0.75rem; } .hero-title { font-size: 2.5rem; } .hero-subtitle { font-size: 1.125rem; } }
-          @media print { .hero-decoration, .hero-video { display: none; } .hero-section { background: white; min-height: auto; } }
-        `}} />
+        {/* Critical CSS from external file for better caching */}
+        <link
+          rel="preload"
+          href="/critical.css"
+          as="style"
+          onLoad={() => {}}
+        />
+        <link rel="stylesheet" href="/critical.css" />
+        <noscript>
+          <link rel="stylesheet" href="/critical.css" />
+        </noscript>
         
         {/* Preload critical fonts for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -95,7 +73,7 @@ export default function Document() {
           }}
         />
       </Head>
-      <body className="antialiased text-gray-900 bg-white">
+      <body className="antialiased text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-900">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -124,7 +102,7 @@ export default function Document() {
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white focus:z-50 focus:text-[#FF3131] focus:top-0 focus:left-0"
+          className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white dark:focus:bg-gray-800 focus:z-50 focus:text-[#FF3131] dark:focus:text-[#FF3131] focus:top-0 focus:left-0"
         >
           Skip to content
         </a>

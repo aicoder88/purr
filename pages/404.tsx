@@ -60,12 +60,12 @@ const NotFoundPage: NextPage = () => {
             404 - Page Not Found
           </h1>
           
-          <p className="text-xl mb-8 text-gray-600">
+          <p className="text-xl mb-8 text-gray-600 dark:text-gray-300">
             Oops! The page you are looking for might have been moved, deleted,
             or perhaps never existed.
           </p>
           
-          <div className="mb-12 p-4 bg-[#FFFFF5] rounded-lg border border-[#E0EFC7] shadow-sm">
+          <div className="mb-12 p-4 bg-[#FFFFF5] dark:bg-gray-800 rounded-lg border border-[#E0EFC7] dark:border-gray-600 shadow-sm">
             <h2 className="text-xl font-semibold mb-4 text-[#03E46A]">
               You might be looking for:
             </h2>
@@ -75,10 +75,10 @@ const NotFoundPage: NextPage = () => {
                 <Link
                   key={index}
                   href={page.path}
-                  className="p-4 border border-[#E0EFC7] rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 text-left flex flex-col"
+                  className="p-4 border border-[#E0EFC7] dark:border-gray-600 rounded-lg hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
                   <span className="font-medium text-[#5B2EFF]">{page.title}</span>
-                  <span className="text-sm text-gray-500">{page.description}</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
                 </Link>
               ))}
             </div>
@@ -86,7 +86,7 @@ const NotFoundPage: NextPage = () => {
           
           <Link
             href="/"
-            className="inline-block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]/70 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            className="inline-block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]/70 text-white dark:text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Return to Home Page
           </Link>

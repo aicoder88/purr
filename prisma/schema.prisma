@@ -16,11 +16,17 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLoginAt   DateTime?
   accounts      Account[]
   sessions      Session[]
   orders        Order[]
   referrals     Referral[] @relation("Referrer")
   referredBy    Referral[] @relation("Referee")
+
+  @@index([email])
+  @@index([createdAt])
 }
 
 model Account {
@@ -70,30 +76,51 @@ model Product {
 }
 
 model Order {
-  id        String      @id @default(cuid())
-  total     Float
-  status    String
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  userId    String?
-  user      User?       @relation(fields: [userId], references: [id])
-  customer  Customer?
-  items     OrderItem[]
-  referral  Referral?
+  id          String      @id @default(cuid())
+  totalAmount Float       @map("total") // Renamed for clarity
+  status      OrderStatus @default(PENDING) // Use enum for better type safety
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  userId      String?
+  stripeSessionId String? @unique // Track Stripe sessions
+  user        User?       @relation(fields: [userId], references: [id])
+  customer    Customer?
+  items       OrderItem[]
+  referral    Referral?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([stripeSessionId])
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
 }
 
 model Customer {
-  id         String  @id @default(cuid())
-  email      String
-  firstName  String
-  lastName   String
-  address    String
-  city       String
+  id         String   @id @default(cuid())
+  email      String   // Should be encrypted at application level
+  firstName  String   // Should be encrypted at application level  
+  lastName   String   // Should be encrypted at application level
+  address    String   // Should be encrypted at application level
+  city       String   // Should be encrypted at application level
   province   String
-  postalCode String
-  phone      String
-  order      Order   @relation(fields: [orderId], references: [id])
-  orderId    String  @unique
+  postalCode String   // Should be encrypted at application level
+  phone      String?  // Should be encrypted at application level
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  order      Order    @relation(fields: [orderId], references: [id])
+  orderId    String   @unique
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("customers") // Use consistent table naming
 }
 
 model OrderItem {
@@ -107,13 +134,64 @@ model OrderItem {
 }
 
 model Referral {
-  id        String   @id @default(cuid())
-  code      String   @unique
-  createdAt DateTime @default(now())
-  order     Order    @relation(fields: [orderId], references: [id])
-  orderId   String   @unique
-  referrer  User     @relation("Referrer", fields: [referrerId], references: [id])
-  referrerId String
-  referee   User     @relation("Referee", fields: [refereeId], references: [id])
-  refereeId String
+  id           String           @id @default(cuid())
+  code         String           @unique
+  status       ReferralStatus   @default(ACTIVE)
+  createdAt    DateTime         @default(now())
+  expiresAt    DateTime?        // Optional expiration
+  usageCount   Int              @default(0)
+  maxUsages    Int?             // Optional usage limit
+  commission   Float?           // Commission amount/percentage
+  order        Order            @relation(fields: [orderId], references: [id])
+  orderId      String           @unique
+  referrer     User             @relation("Referrer", fields: [referrerId], references: [id])
+  referrerId   String
+  referee      User             @relation("Referee", fields: [refereeId], references: [id])
+  refereeId    String
+
+  @@index([code])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum ReferralStatus {
+  ACTIVE
+  EXPIRED
+  DISABLED
+  USED
+}
+
+model AuditLog {
+  id          String      @id @default(cuid())
+  action      AuditAction
+  entity      String      // Table name (users, orders, etc.)
+  entityId    String      // Record ID
+  userId      String?     // User who performed the action
+  ipAddress   String?     // IP address for security
+  userAgent   String?     // Browser info
+  changes     Json?       // JSON of what changed
+  createdAt   DateTime    @default(now())
+  
+  @@index([action])
+  @@index([entity, entityId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+enum AuditAction {
+  USER_CREATED
+  USER_UPDATED
+  USER_DELETED
+  ORDER_CREATED
+  ORDER_UPDATED
+  ORDER_CANCELLED
+  PAYMENT_PROCESSED
+  CUSTOMER_DATA_ACCESSED
+  CUSTOMER_DATA_UPDATED
+  REFERRAL_CREATED
+  REFERRAL_USED
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  PASSWORD_RESET
 } 

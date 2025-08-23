@@ -361,14 +361,79 @@ const nextConfig = {
       maxAge: 86400000, // 24 hours
     };
     
-    // Keep Next.js defaults for stability and performance
-    if (!dev) {
-      // Only add basic optimizations that don't affect chunking
-      config.optimization.usedExports = true;
+    // Enhanced bundle splitting for better performance
+    if (!dev && !isServer) {
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+        sideEffects: false,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          chunks: 'all',
+          minSize: 20000,
+          maxSize: 244000,
+          cacheGroups: {
+            // Separate vendors into different chunks for better caching
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+              priority: 20,
+              enforce: true,
+            },
+            // Large libraries get their own chunks
+            react: {
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              name: 'react',
+              chunks: 'all',
+              priority: 30,
+              enforce: true,
+            },
+            stripe: {
+              test: /[\\/]node_modules[\\/](@stripe|stripe)[\\/]/,
+              name: 'stripe',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            icons: {
+              test: /[\\/]node_modules[\\/](lucide-react|react-icons)[\\/]/,
+              name: 'icons',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            // Common UI libraries
+            ui: {
+              test: /[\\/]node_modules[\\/](@radix-ui|framer-motion|embla-carousel)[\\/]/,
+              name: 'ui',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            // Charts and analytics
+            analytics: {
+              test: /[\\/]node_modules[\\/](recharts|chart\.js|@vercel\/analytics)[\\/]/,
+              name: 'analytics',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            // Default for other node_modules
+            default: {
+              minChunks: 2,
+              priority: 10,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
       
-      // Add performance hints but don't break the build
+      // Add performance monitoring without breaking build
       config.performance = {
-        hints: false, // Disable performance warnings that can break site
+        hints: 'warning',
+        maxEntrypointSize: 512000, // 500kb
+        maxAssetSize: 512000,
       };
     }
     
