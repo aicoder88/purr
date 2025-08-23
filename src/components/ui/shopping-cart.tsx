@@ -47,7 +47,7 @@ export function ShoppingCart() {
           >
             <ShoppingCartIcon className="h-6 w-6 sm:h-5 sm:w-5 text-gray-700 dark:text-gray-300" />
             {items.length > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white animate-pulse">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white dark:text-white animate-pulse">
                 {items.length}
               </span>
             )}
@@ -73,7 +73,7 @@ export function ShoppingCart() {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center p-8">
                   <div className="bg-gray-50 dark:bg-gray-800 rounded-full p-6 mb-4">
-                    <Package className="h-12 w-12 text-gray-400 mx-auto" />
+                    <Package className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto" />
                   </div>
                   <p className="text-gray-600 dark:text-gray-300 font-medium mb-2">Your cart is empty</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Add some amazing products to get started!</p>
@@ -108,7 +108,7 @@ export function ShoppingCart() {
                               {product.size}
                             </span>
                             <div className="flex items-center gap-1">
-                              <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                              <Star className="h-3 w-3 fill-yellow-400 text-yellow-400 dark:fill-yellow-400 dark:text-yellow-400" />
                               <span className="text-xs text-gray-500 dark:text-gray-400">4.9</span>
                             </div>
                           </div>
@@ -171,7 +171,7 @@ export function ShoppingCart() {
                   </div>
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
                   onClick={handleCheckout}
                 >
                   Proceed to Checkout

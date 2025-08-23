@@ -64,8 +64,9 @@ export default async function handler(
         });
 
         if (order?.user && order.user.orders.length === 1) {
-          // Generate unique referral code
-          const referralCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+          // Generate cryptographically secure referral code
+          const { randomBytes } = await import('crypto');
+          const referralCode = randomBytes(3).toString('hex').toUpperCase();
 
           await prisma.referral.create({
             data: {

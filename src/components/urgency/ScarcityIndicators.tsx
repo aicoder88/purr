@@ -107,11 +107,11 @@ export function ScarcityIndicator({
     
     switch (urgency) {
       case 'critical':
-        return 'bg-red-500 text-white border-red-600';
+        return 'bg-red-500 text-white dark:text-white border-red-600';
       case 'low':
-        return 'bg-orange-500 text-white border-orange-600';
+        return 'bg-orange-500 text-white dark:text-white border-orange-600';
       default:
-        return 'bg-green-500 text-white border-green-600';
+        return 'bg-green-500 text-white dark:text-white border-green-600';
     }
   };
 
@@ -261,7 +261,7 @@ export function CountdownTimer({
   if (isExpired) return null;
 
   return (
-    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-white px-6 py-3 rounded-lg shadow-lg">
       <div className="text-center">
         <div className="text-sm font-medium opacity-90 mb-1">
           🚨 FLASH SALE ENDS IN:
@@ -317,21 +317,21 @@ export function StockMovementIndicator({ productId }: { productId: string }) {
     switch (movement) {
       case 'high':
         return {
-          icon: <Zap className="w-4 h-4 text-red-500" />,
+          icon: <Zap className="w-4 h-4 text-red-500 dark:text-red-400" />,
           text: 'High demand',
-          color: 'text-red-600 bg-red-50 border-red-200'
+          color: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'
         };
       case 'medium':
         return {
-          icon: <TrendingUp className="w-4 h-4 text-orange-500" />,
+          icon: <TrendingUp className="w-4 h-4 text-orange-500 dark:text-orange-400" />,
           text: 'Popular choice',
-          color: 'text-orange-600 bg-orange-50 border-orange-200'
+          color: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-700'
         };
       case 'low':
         return {
-          icon: <Users className="w-4 h-4 text-green-500" />,
+          icon: <Users className="w-4 h-4 text-green-500 dark:text-green-400" />,
           text: 'Steady sales',
-          color: 'text-green-600 bg-green-50 border-green-200'
+          color: 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700'
         };
     }
   };

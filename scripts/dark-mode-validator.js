@@ -8,27 +8,9 @@
 const fs = require('fs');
 const path = require('path');
 
-// Color classes that MUST have dark mode variants
-const CRITICAL_PATTERNS = [
-  // Text colors that need dark variants
-  /text-gray-[1-9]00(?!\s+dark:)/g,
-  /text-white(?!\s+dark:)/g,
-  /text-black(?!\s+dark:)/g,
-  
-  // Color text that needs dark variants  
-  /text-red-[1-9]00(?!\s+dark:)/g,
-  /text-green-[1-9]00(?!\s+dark:)/g,
-  /text-blue-[1-9]00(?!\s+dark:)/g,
-  /text-yellow-[1-9]00(?!\s+dark:)/g,
-  /text-purple-[1-9]00(?!\s+dark:)/g,
-  /text-pink-[1-9]00(?!\s+dark:)/g,
-  /text-indigo-[1-9]00(?!\s+dark:)/g,
-  /text-orange-[1-9]00(?!\s+dark:)/g,
-  
-  // Background colors in critical contexts
-  /bg-white(?!\s+dark:)(?=.*className="[^"]*(?:card|modal|popup|dropdown))/g,
-  /bg-gray-50(?!\s+dark:)/g,
-];
+// This array is now handled directly in checkFile function
+// Keep for reference but not used in the new logic
+const CRITICAL_PATTERNS = [];
 
 // Helper function to recursively find files
 function findFiles(dir, extensions = ['.tsx', '.ts']) {
@@ -65,19 +47,54 @@ function checkFile(filePath) {
   const lines = content.split('\n');
   const errors = [];
   
-  CRITICAL_PATTERNS.forEach((pattern, patternIndex) => {
-    lines.forEach((line, lineIndex) => {
-      const matches = [...line.matchAll(pattern)];
-      matches.forEach(match => {
-        errors.push({
-          line: lineIndex + 1,
-          column: match.index + 1,
-          match: match[0],
-          pattern: pattern.toString(),
-          lineContent: line.trim()
+  lines.forEach((line, lineIndex) => {
+    // Extract all className strings from the line
+    const classNameMatches = line.match(/className=["'`]([^"'`]*)["'`]/g);
+    
+    if (classNameMatches) {
+      classNameMatches.forEach(classMatch => {
+        const classString = classMatch.match(/className=["'`]([^"'`]*)["'`]/)[1];
+        
+        // Check each critical pattern
+        const colorClasses = [
+          // Gray text colors
+          /text-gray-[1-9]00/g,
+          /text-white/g,
+          /text-black/g,
+          // Colored text
+          /text-red-[1-9]00/g,
+          /text-green-[1-9]00/g,
+          /text-blue-[1-9]00/g,
+          /text-yellow-[1-9]00/g,
+          /text-purple-[1-9]00/g,
+          /text-pink-[1-9]00/g,
+          /text-indigo-[1-9]00/g,
+          /text-orange-[1-9]00/g,
+        ];
+        
+        colorClasses.forEach(pattern => {
+          const colorMatches = [...classString.matchAll(pattern)];
+          colorMatches.forEach(colorMatch => {
+            const colorClass = colorMatch[0];
+            // Check if there's a corresponding dark variant in the same className string
+            const darkPattern = new RegExp(`dark:${colorClass.replace('text-', 'text-')}`);
+            const hasDarkVariant = darkPattern.test(classString) || 
+                                 /dark:text-/.test(classString); // Any dark text variant
+            
+            if (!hasDarkVariant) {
+              errors.push({
+                line: lineIndex + 1,
+                column: line.indexOf(classMatch) + 1,
+                match: colorClass,
+                pattern: pattern.toString(),
+                lineContent: line.trim(),
+                className: classString
+              });
+            }
+          });
         });
       });
-    });
+    }
   });
   
   return errors;

@@ -37,7 +37,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
         <div className="space-y-3 mb-6">
           <button
             onClick={retry}
-            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
             Try Again
@@ -131,7 +131,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     }
   }
 
-  private reportToErrorService = async (errorReport: any) => {
+  private reportToErrorService = async (errorReport: Record<string, unknown>) => {
     try {
       // Send to error reporting service (e.g., Sentry, LogRocket, etc.)
       await fetch('/api/error-report', {

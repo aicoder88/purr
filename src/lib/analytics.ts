@@ -172,7 +172,7 @@ export function updateConsent(consentSettings: Record<ConsentType, boolean>) {
     
     // Update gtag consent
     if (window.gtag) {
-      (window.gtag as Function)('consent', 'update', {
+      (window.gtag as (...args: unknown[]) => void)('consent', 'update', {
         analytics_storage: consentSettings[ConsentType.ANALYTICS] ? 'granted' : 'denied',
         ad_storage: consentSettings[ConsentType.MARKETING] ? 'granted' : 'denied',
         functionality_storage: consentSettings[ConsentType.PREFERENCES] ? 'granted' : 'denied',
@@ -196,7 +196,7 @@ export function initializeConsent() {
   try {
     // Set default consent state (denied until user chooses)
     if (window.gtag) {
-      (window.gtag as Function)('consent', 'default', {
+      (window.gtag as (...args: unknown[]) => void)('consent', 'default', {
         analytics_storage: 'denied',
         ad_storage: 'denied',
         functionality_storage: 'denied',
