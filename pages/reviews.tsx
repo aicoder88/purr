@@ -223,7 +223,7 @@ export default function Reviews() {
                       <Star
                         key={i}
                         className={`h-4 w-4 ${
-                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
                         }`}
                       />
                     ))}

@@ -848,7 +848,7 @@ export default function Montreal() {
                   : '"Living in a small apartment with my cat Biscuit, odor control is essential. Purrify has been a game-changer - no more embarrassing smells when guests visit!"'
                 }
               </p>
-              <div className="text-yellow-400">★★★★★</div>
+              <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
@@ -867,7 +867,7 @@ export default function Montreal() {
                   : '"My two cats Pickles and Mochi love their litter box, and I love that Purrify keeps our condo fresh all winter long. Found it at our local pet store - highly recommend!"'
                 }
               </p>
-              <div className="text-yellow-400">★★★★★</div>
+              <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
@@ -886,7 +886,7 @@ export default function Montreal() {
                   : '"As a veterinary technician in Montreal, I recommend Purrify to all my clients. It\'s natural, effective, and safe for cats of all ages. My own cat Noodle approves!"'
                 }
               </p>
-              <div className="text-yellow-400">★★★★★</div>
+              <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
             </div>
           </div>
         </section>

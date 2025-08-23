@@ -181,7 +181,7 @@ export default function CaseStudies() {
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/customers" className="hover:text-[#FF3131]">Customers</Link></li>
@@ -195,10 +195,10 @@ export default function CaseStudies() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
                 Customer Success Stories
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Real Results from Real Customers
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
                 Discover how Purrify transformed homes across Canada with detailed case studies 
                 showing measurable results, challenges overcome, and lasting success.
               </p>
@@ -207,19 +207,19 @@ export default function CaseStudies() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">95%</div>
-                  <div className="text-sm text-gray-600">Average Odor Reduction</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Average Odor Reduction</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">24hrs</div>
-                  <div className="text-sm text-gray-600">Time to See Results</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Time to See Results</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">100%</div>
-                  <div className="text-sm text-gray-600">Customer Satisfaction</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Customer Satisfaction</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">7+</div>
-                  <div className="text-sm text-gray-600">Cats per Study</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Cats per Study</div>
                 </div>
               </div>
             </div>
@@ -227,16 +227,16 @@ export default function CaseStudies() {
             {/* Case Studies */}
             <div className="space-y-16">
               {caseStudies.map((study, index) => (
-                <div key={study.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                <div key={study.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-lg">
                   {/* Header */}
                   <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#E0EFC7]/50 p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                       <div className="flex-1">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                           {study.title}
                         </h2>
-                        <p className="text-lg text-gray-600 mb-4">{study.subtitle}</p>
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{study.subtitle}</p>
+                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
                           <div className="flex items-center">
                             <Users className="h-4 w-4 mr-1" />
                             {study.customer}
@@ -272,19 +272,19 @@ export default function CaseStudies() {
                     <div className="grid md:grid-cols-2 gap-8 mb-8">
                       {/* Challenge */}
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                           <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                            <span className="text-red-600 font-bold text-sm">1</span>
+                            <span className="text-red-600 dark:text-red-400 font-bold text-sm">1</span>
                           </div>
                           The Challenge
                         </h3>
-                        <p className="text-gray-700 mb-4">{study.challenge.description}</p>
+                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.challenge.description}</p>
                         <div className="space-y-2">
-                          <h4 className="font-semibold text-gray-900">Key Pain Points:</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-gray-50">Key Pain Points:</h4>
                           <ul className="space-y-1">
                             {study.challenge.painPoints.map((point, i) => (
-                              <li key={i} className="text-gray-600 text-sm flex items-start">
-                                <span className="text-red-500 mr-2 mt-1">•</span>
+                              <li key={i} className="text-gray-600 dark:text-gray-300 text-sm flex items-start">
+                                <span className="text-red-500 dark:text-red-400 mr-2 mt-1">•</span>
                                 {point}
                               </li>
                             ))}
@@ -294,19 +294,19 @@ export default function CaseStudies() {
 
                       {/* Solution */}
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                            <span className="text-blue-600 font-bold text-sm">2</span>
+                            <span className="text-blue-600 dark:text-blue-400 font-bold text-sm">2</span>
                           </div>
                           The Solution
                         </h3>
-                        <p className="text-gray-700 mb-4">{study.solution.description}</p>
+                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.solution.description}</p>
                         <div className="space-y-2">
-                          <h4 className="font-semibold text-gray-900">Implementation:</h4>
+                          <h4 className="font-semibold text-gray-900 dark:text-gray-50">Implementation:</h4>
                           <ul className="space-y-1">
                             {study.solution.implementation.map((step, i) => (
-                              <li key={i} className="text-gray-600 text-sm flex items-start">
-                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                              <li key={i} className="text-gray-600 dark:text-gray-300 text-sm flex items-start">
+                                <CheckCircle className="h-4 w-4 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                                 {step}
                               </li>
                             ))}
@@ -319,7 +319,7 @@ export default function CaseStudies() {
                     <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
                       <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center">
                         <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-green-600 font-bold text-sm">3</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold text-sm">3</span>
                         </div>
                         The Results
                       </h3>
@@ -330,7 +330,7 @@ export default function CaseStudies() {
                           <div key={i} className="text-center">
                             <div className="text-2xl font-bold text-green-700 mb-1">{metric.value}</div>
                             <div className="text-sm font-medium text-green-800">{metric.label}</div>
-                            <div className="text-xs text-green-600">{metric.timeframe}</div>
+                            <div className="text-xs text-green-600 dark:text-green-400">{metric.timeframe}</div>
                           </div>
                         ))}
                       </div>
@@ -338,18 +338,18 @@ export default function CaseStudies() {
 
                     {/* Quote */}
                     <div className="bg-[#FF3131]/5 border-l-4 border-[#FF3131] p-6 mb-6">
-                      <blockquote className="text-gray-800 italic text-lg mb-3">
+                      <blockquote className="text-gray-800 dark:text-gray-100 italic text-lg mb-3">
                         "{study.quote}"
                       </blockquote>
-                      <cite className="text-gray-600 font-medium">— {study.customer}</cite>
+                      <cite className="text-gray-600 dark:text-gray-300 font-medium">— {study.customer}</cite>
                     </div>
 
                     {/* Outcome */}
                     <div className="flex items-start">
                       <TrendingUp className="h-6 w-6 text-[#FF3131] mr-3 mt-1 flex-shrink-0" />
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Long-term Outcome</h4>
-                        <p className="text-gray-700">{study.outcome}</p>
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-2">Long-term Outcome</h4>
+                        <p className="text-gray-700 dark:text-gray-200">{study.outcome}</p>
                       </div>
                     </div>
                   </div>
@@ -360,17 +360,17 @@ export default function CaseStudies() {
             {/* Call to Action */}
             <div className="mt-16 text-center">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Ready to Write Your Own Success Story?
                 </h2>
-                <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+                <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
                   Join thousands of satisfied customers who have transformed their homes with Purrify. 
                   Start your journey to odor-free living today.
                 </p>
                 <div className="space-x-4">
                   <Link 
                     href="/products" 
-                    className="inline-flex items-center bg-[#FF3131] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                    className="inline-flex items-center bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Purrify
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -386,23 +386,23 @@ export default function CaseStudies() {
             </div>
 
             {/* Related Content */}
-            <div className="mt-16 pt-8 border-t border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">More Customer Stories</h3>
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/reviews" className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <Users className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Customer Reviews</h4>
-                  <p className="text-gray-600 text-sm">Read verified reviews from 500+ customers</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Read verified reviews from 500+ customers</p>
                 </Link>
-                <Link href="/customers/testimonials" className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/customers/testimonials" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <CheckCircle className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Video Testimonials</h4>
-                  <p className="text-gray-600 text-sm">Watch real customers share their experiences</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>
                 </Link>
-                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <TrendingUp className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Product Comparison</h4>
-                  <p className="text-gray-600 text-sm">See how Purrify outperforms competitors</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify outperforms competitors</p>
                 </Link>
               </div>
             </div>

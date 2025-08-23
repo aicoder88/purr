@@ -64,16 +64,16 @@ export default function DriverNetworkPresentation() {
             <div className="flex justify-between items-center py-3">
               <button
                 onClick={() => navigateTab('prev')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#276EF1] to-blue-600 text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#276EF1] to-blue-600 text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
               >
                 <span className="text-sm mr-2">←</span>
                 Previous
               </button>
               
               <div className="text-center">
-                <div className="text-white mb-1">
+                <div className="text-white dark:text-white mb-1">
                   <h1 className="text-lg font-bold">Driver Network Inc.</h1>
-                  <p className="text-xs text-gray-300">Partnership Proposal - Uber Freight</p>
+                  <p className="text-xs text-gray-300 dark:text-gray-600">Partnership Proposal - Uber Freight</p>
                 </div>
                 <div className="flex space-x-2">
                   {['overview', 'performance', 'capabilities', 'expansion', 'proposal'].map((tab, index) => (
@@ -89,7 +89,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={() => navigateTab('next')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-blue-600 to-[#276EF1] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-blue-600 to-[#276EF1] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
               >
                 Next
                 <span className="text-sm ml-2">→</span>
@@ -106,7 +106,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'overview' && (
               <section className="space-y-12">
                 {/* Executive Summary - Only on overview tab */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-white p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
                   <div className="text-center mb-8">
                     <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                       Proven Scale. Proven Results.
@@ -118,18 +118,18 @@ export default function DriverNetworkPresentation() {
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
-                      <div key={index} className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                      <div key={index} className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                         <div className="text-4xl font-bold text-[#276EF1] mb-3 bg-gradient-to-br from-[#276EF1] to-blue-400 bg-clip-text text-transparent">
                           {stat.value}
                         </div>
                         <div className="font-bold mb-2 text-lg">{stat.label}</div>
-                        <div className="text-sm text-gray-300">{stat.description}</div>
+                        <div className="text-sm text-gray-300 dark:text-gray-600">{stat.description}</div>
                       </div>
                     ))}
                   </div>
                 </div>
                 {/* Company Evolution Visualization */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🚀 Company Evolution Journey
                   </h2>
@@ -180,10 +180,10 @@ export default function DriverNetworkPresentation() {
                         { year: '2023-Present', title: 'National Scale', icon: '🌎', desc: 'Nationwide Expansion', metric: '19+', detail: 'major metropolitan areas', color: 'from-orange-500 to-red-500' }
                       ].map((phase, index) => (
                         <div key={index} className="relative">
-                          <div className="absolute -left-24 w-8 h-8 bg-white rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg">
+                          <div className="absolute -left-24 w-8 h-8 bg-white dark:bg-gray-800 rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg">
                             {phase.icon}
                           </div>
-                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300`}>
+                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-white shadow-xl transform hover:scale-105 transition-all duration-300`}>
                             <div className="flex justify-between items-start mb-3">
                               <div>
                                 <h4 className="text-xl font-bold mb-1">{phase.title}</h4>
@@ -203,7 +203,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Service Divisions Pie Chart */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🎯 Service Division Distribution
                   </h2>
@@ -268,7 +268,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'performance' && (
               <section className="space-y-12">
                 {/* Performance Metrics Dashboard */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     📈 Performance Excellence Metrics
                   </h2>
@@ -276,22 +276,22 @@ export default function DriverNetworkPresentation() {
                   {/* Key Performance Indicators */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                     <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 text-center">
-                      <div className="text-4xl font-bold text-green-600 mb-2">100%</div>
+                      <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">100%</div>
                       <div className="text-green-800 dark:text-green-200 font-semibold">On-Time Delivery</div>
                       <div className="text-sm text-green-700 dark:text-green-300 mt-1">🚚 Instacart Partnership</div>
                     </div>
                     <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 text-center">
-                      <div className="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
+                      <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">99.9%</div>
                       <div className="text-blue-800 dark:text-blue-200 font-semibold">Damage-Free Rate</div>
                       <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">🚗 Automotive Transport</div>
                     </div>
                     <div className="backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30 text-center">
-                      <div className="text-4xl font-bold text-purple-600 mb-2">18+</div>
+                      <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">18+</div>
                       <div className="text-purple-800 dark:text-purple-200 font-semibold">Months Zero Incidents</div>
                       <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">🏥 Medical Courier</div>
                     </div>
                     <div className="backdrop-blur-sm bg-orange-500/20 p-6 rounded-2xl border border-orange-300/30 text-center">
-                      <div className="text-4xl font-bold text-orange-600 mb-2">$50M+</div>
+                      <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">$50M+</div>
                       <div className="text-orange-800 dark:text-orange-200 font-semibold">Value Transported</div>
                       <div className="text-sm text-orange-700 dark:text-orange-300 mt-1">💼 High-Value Cargo</div>
                     </div>
@@ -372,8 +372,8 @@ export default function DriverNetworkPresentation() {
                       ]
                     }
                   ].map((case_, index) => (
-                    <div key={index} className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
-                      <div className={`bg-gradient-to-r ${case_.gradient} p-6 rounded-2xl text-white mb-6`}>
+                    <div key={index} className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                      <div className={`bg-gradient-to-r ${case_.gradient} p-6 rounded-2xl text-white dark:text-white mb-6`}>
                         <div className="flex items-center mb-4">
                           <span className="text-4xl mr-4">{case_.icon}</span>
                           <h3 className="text-3xl font-bold">{case_.title}</h3>
@@ -438,7 +438,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'capabilities' && (
               <section className="space-y-12">
                 {/* Driver Quality Metrics */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     👥 Driver Excellence Program
                   </h2>
@@ -514,7 +514,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Technology Stack Visualization */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     📱 Technology Integration Ecosystem
                   </h2>
@@ -530,7 +530,7 @@ export default function DriverNetworkPresentation() {
                           { name: 'Slack', description: 'Real-time Communication', status: 'Active' },
                           { name: 'Custom APIs', description: 'Bespoke Integrations', status: 'Available' }
                         ].map((platform, index) => (
-                          <div key={index} className="bg-white/50 p-4 rounded-lg flex justify-between items-center">
+                          <div key={index} className="bg-white dark:bg-gray-800/50 p-4 rounded-lg flex justify-between items-center">
                             <div>
                               <div className="font-bold text-purple-900 dark:text-purple-100">{platform.name}</div>
                               <div className="text-sm text-purple-700 dark:text-purple-300">{platform.description}</div>
@@ -553,7 +553,7 @@ export default function DriverNetworkPresentation() {
                           { feature: 'Auto Dispatch', capability: 'AI Route Planning' },
                           { feature: 'Analytics', capability: 'Custom Dashboards' }
                         ].map((item, index) => (
-                          <div key={index} className="bg-white/50 p-4 rounded-lg">
+                          <div key={index} className="bg-white dark:bg-gray-800/50 p-4 rounded-lg">
                             <div className="font-bold text-teal-900 dark:text-teal-100 mb-1">• {item.feature}</div>
                             <div className="text-sm text-teal-700 dark:text-teal-300">{item.capability}</div>
                           </div>
@@ -571,8 +571,8 @@ export default function DriverNetworkPresentation() {
                           { metric: 'Response Time', value: '<2min' },
                           { metric: 'Client Satisfaction', value: '98%' }
                         ].map((benefit, index) => (
-                          <div key={index} className="bg-white/50 p-4 rounded-lg text-center">
-                            <div className="text-2xl font-bold text-orange-600">{benefit.value}</div>
+                          <div key={index} className="bg-white dark:bg-gray-800/50 p-4 rounded-lg text-center">
+                            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">{benefit.value}</div>
                             <div className="text-sm text-orange-800 dark:text-orange-200 font-medium">{benefit.metric}</div>
                           </div>
                         ))}
@@ -582,7 +582,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Client Portfolio Showcase */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🏢 Strategic Partnership Portfolio
                   </h2>
@@ -620,18 +620,18 @@ export default function DriverNetworkPresentation() {
                       }
                     ].map((partner, index) => (
                       <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${partner.gradient} p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                        <div className="text-center text-white">
+                        <div className="text-center text-white dark:text-white">
                           <div className="text-4xl mb-3">{partner.icon}</div>
                           <h4 className="text-xl font-bold mb-2">{partner.name}</h4>
-                          <Badge variant="secondary" className="mb-3 bg-white/30 text-white border-white/50">
+                          <Badge variant="secondary" className="mb-3 bg-white dark:bg-gray-800/30 text-white dark:text-white border-white/50">
                             {partner.category}
                           </Badge>
                           {partner.markets && (
-                            <Badge variant="secondary" className="mb-3 ml-2 bg-white/30 text-white border-white/50">
+                            <Badge variant="secondary" className="mb-3 ml-2 bg-white dark:bg-gray-800/30 text-white dark:text-white border-white/50">
                               {partner.markets} Markets
                             </Badge>
                           )}
-                          <p className="text-sm font-medium bg-white/20 p-2 rounded-lg">
+                          <p className="text-sm font-medium bg-white dark:bg-gray-800/20 p-2 rounded-lg">
                             {partner.achievement}
                           </p>
                         </div>
@@ -673,14 +673,14 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'expansion' && (
               <section className="space-y-12">
                 {/* Rapid Deployment Dashboard */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🚀 Rapid Deployment Engine
                   </h2>
                   
                   <div className="grid md:grid-cols-3 gap-8 mb-12">
                     <div className="backdrop-blur-sm bg-green-500/20 p-8 rounded-2xl border border-green-300/30 text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="text-6xl font-bold text-green-600 mb-4">7</div>
+                      <div className="text-6xl font-bold text-green-600 dark:text-green-400 mb-4">7</div>
                       <div className="text-2xl font-bold text-green-800 mb-2">Days</div>
                       <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-100">Market Entry</h3>
                       <p className="text-green-700 dark:text-green-300">20-30 drivers onboarded per new city within one week</p>
@@ -690,7 +690,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                     
                     <div className="backdrop-blur-sm bg-blue-500/20 p-8 rounded-2xl border border-blue-300/30 text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="text-6xl font-bold text-blue-600 mb-4">19+</div>
+                      <div className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-4">19+</div>
                       <div className="text-2xl font-bold text-blue-800 mb-2">Markets</div>
                       <h3 className="text-xl font-semibold mb-3 text-blue-900 dark:text-blue-100">Active Operations</h3>
                       <p className="text-blue-700 dark:text-blue-300">Major North American cities with established networks</p>
@@ -700,7 +700,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                     
                     <div className="backdrop-blur-sm bg-purple-500/20 p-8 rounded-2xl border border-purple-300/30 text-center transform hover:scale-105 transition-all duration-300">
-                      <div className="text-6xl font-bold text-purple-600 mb-4">3</div>
+                      <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-4">3</div>
                       <div className="text-2xl font-bold text-purple-800 mb-2">Verticals</div>
                       <h3 className="text-xl font-semibold mb-3 text-purple-900 dark:text-purple-100">Industry Coverage</h3>
                       <p className="text-purple-700 dark:text-purple-300">Proven scalability across different industry sectors</p>
@@ -741,7 +741,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Geographic Coverage Map */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🗺️ National Coverage Network
                   </h2>
@@ -862,7 +862,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'proposal' && (
               <section className="space-y-12">
                 {/* Strategic Partnership Header */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white p-12 rounded-3xl border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-white p-12 rounded-3xl border border-white/10 shadow-2xl">
                   <div className="text-center mb-8">
                     <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                       🤝 Strategic Partnership Proposal
@@ -873,31 +873,31 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <div className="grid md:grid-cols-4 gap-6">
-                    <div className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🎯</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Single Vendor</div>
-                      <div className="text-gray-300">Unified Solution</div>
+                      <div className="text-gray-300 dark:text-gray-600">Unified Solution</div>
                     </div>
-                    <div className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🚀</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Proven Scale</div>
-                      <div className="text-gray-300">1,000+ Drivers</div>
+                      <div className="text-gray-300 dark:text-gray-600">1,000+ Drivers</div>
                     </div>
-                    <div className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">⚙️</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Tech Ready</div>
-                      <div className="text-gray-300">API Integration</div>
+                      <div className="text-gray-300 dark:text-gray-600">API Integration</div>
                     </div>
-                    <div className="text-center backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🌍</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">19+ Markets</div>
-                      <div className="text-gray-300">National Coverage</div>
+                      <div className="text-gray-300 dark:text-gray-600">National Coverage</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Value Proposition Matrix */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     📊 Competitive Advantage Matrix
                   </h2>
@@ -959,7 +959,7 @@ export default function DriverNetworkPresentation() {
                       }
                     ].map((diff, index) => (
                       <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${diff.gradient} p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                        <div className="text-white text-center">
+                        <div className="text-white dark:text-white text-center">
                           <div className="text-4xl mb-4">{diff.icon}</div>
                           <h4 className="text-xl font-bold mb-3">{diff.title}</h4>
                           <p className="text-sm opacity-90">{diff.desc}</p>
@@ -970,7 +970,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Service Integration Options */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🔄 Uber Freight Integration Services
                   </h2>
@@ -999,7 +999,7 @@ export default function DriverNetworkPresentation() {
                         gradient: 'from-purple-500 to-pink-500'
                       }
                     ].map((service, index) => (
-                      <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${service.gradient} p-8 rounded-2xl text-white shadow-xl transform hover:scale-105 transition-all duration-300`}>
+                      <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${service.gradient} p-8 rounded-2xl text-white dark:text-white shadow-xl transform hover:scale-105 transition-all duration-300`}>
                         <div className="text-center mb-6">
                           <div className="text-5xl mb-4">{service.icon}</div>
                           <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
@@ -1008,8 +1008,8 @@ export default function DriverNetworkPresentation() {
                         
                         <div className="space-y-3">
                           {service.features.map((feature, i) => (
-                            <div key={i} className="flex items-center bg-white/20 p-3 rounded-lg">
-                              <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            <div key={i} className="flex items-center bg-white dark:bg-gray-800/20 p-3 rounded-lg">
+                              <div className="w-2 h-2 bg-white dark:bg-gray-800 rounded-full mr-3"></div>
                               <span className="font-medium">{feature}</span>
                             </div>
                           ))}
@@ -1020,7 +1020,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* ROI Projection */}
-                <div className="backdrop-blur-lg bg-white/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     📈 Partnership ROI Projection
                   </h2>
@@ -1089,18 +1089,18 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Contact & Next Steps */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-[#276EF1]/90 to-indigo-600/90 text-white p-12 rounded-3xl border border-white/20 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-[#276EF1]/90 to-indigo-600/90 text-white dark:text-white p-12 rounded-3xl border border-white/20 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center">
                     🚀 Ready to Transform Uber Freight Operations
                   </h2>
                   
                   <div className="grid md:grid-cols-2 gap-12">
-                    <div className="backdrop-blur-sm bg-white/20 p-8 rounded-2xl border border-white/30">
+                    <div className="backdrop-blur-sm bg-white dark:bg-gray-800/20 p-8 rounded-2xl border border-white/30">
                       <h3 className="text-3xl font-bold mb-6 text-center">📞 Direct Contact</h3>
-                      <div className="bg-white text-gray-900 p-6 rounded-xl">
+                      <div className="bg-white text-gray-900 dark:text-gray-50 p-6 rounded-xl">
                         <div className="text-center">
                           <div className="text-2xl font-bold text-[#276EF1] mb-2">Nathan Fakhouri</div>
-                          <div className="text-lg font-semibold text-gray-700 mb-4">Business Development Director</div>
+                          <div className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Business Development Director</div>
                           <div className="space-y-3">
                             <div className="flex items-center justify-center">
                               <span className="text-2xl mr-3">📧</span>
@@ -1115,7 +1115,7 @@ export default function DriverNetworkPresentation() {
                       </div>
                     </div>
                     
-                    <div className="backdrop-blur-sm bg-white/20 p-8 rounded-2xl border border-white/30">
+                    <div className="backdrop-blur-sm bg-white dark:bg-gray-800/20 p-8 rounded-2xl border border-white/30">
                       <h3 className="text-3xl font-bold mb-6 text-center">🎯 Consultation Includes</h3>
                       <div className="grid gap-4">
                         {[
@@ -1126,7 +1126,7 @@ export default function DriverNetworkPresentation() {
                           'Transparent pricing structure',
                           'Performance guarantees and SLAs'
                         ].map((item, index) => (
-                          <div key={index} className="flex items-center bg-white/20 p-3 rounded-lg">
+                          <div key={index} className="flex items-center bg-white dark:bg-gray-800/20 p-3 rounded-lg">
                             <div className="w-3 h-3 bg-green-400 rounded-full mr-4"></div>
                             <span className="font-medium">{item}</span>
                           </div>
@@ -1136,7 +1136,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <div className="text-center mt-8">
-                    <div className="text-xl font-semibold bg-white/20 p-4 rounded-xl inline-block">
+                    <div className="text-xl font-semibold bg-white dark:bg-gray-800/20 p-4 rounded-xl inline-block">
                       ✨ Schedule your strategic consultation today and accelerate Uber Freight's growth trajectory ✨
                     </div>
                   </div>

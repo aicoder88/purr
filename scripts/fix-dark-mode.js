@@ -39,6 +39,20 @@ const DARK_MODE_MAPPINGS = {
   
   // White text (usually fine but validator complains)
   'text-white': 'text-white dark:text-white',
+  
+  // Additional color variants discovered in validation
+  'text-gray-300': 'text-gray-300 dark:text-gray-600',
+  'text-gray-100': 'text-gray-100 dark:text-gray-800',
+  
+  // Colored text variants
+  'text-red-300': 'text-red-300 dark:text-red-600',
+  'text-red-500': 'text-red-500 dark:text-red-400',
+  'text-green-500': 'text-green-500 dark:text-green-400',
+  'text-orange-500': 'text-orange-500 dark:text-orange-400',
+  'text-orange-600': 'text-orange-600 dark:text-orange-400',
+  'text-green-600': 'text-green-600 dark:text-green-400',
+  'text-yellow-400': 'text-yellow-400 dark:text-yellow-300',
+  'text-black': 'text-black dark:text-white',
 };
 
 // High priority files to fix first
@@ -135,7 +149,7 @@ function main() {
   );
   
   // Process in batches to avoid overwhelming
-  const BATCH_SIZE = 10;
+  const BATCH_SIZE = 20;
   for (let i = 0; i < Math.min(remainingFiles.length, BATCH_SIZE); i++) {
     const file = remainingFiles[i];
     const fixes = fixDarkModeInFile(file);

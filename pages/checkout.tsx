@@ -182,10 +182,10 @@ const CheckoutPage: NextPage = () => {
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
               stepNumber === step
-                ? 'bg-[#FF3131] text-white'
+                ? 'bg-[#FF3131] text-white dark:text-white'
                 : stepNumber < step
-                ? 'bg-green-500 text-white'
-                : 'bg-gray-200 text-gray-500'
+                ? 'bg-green-500 text-white dark:text-white'
+                : 'bg-gray-200 text-gray-500 dark:text-gray-400'
             }`}
           >
             {stepNumber < step ? (
@@ -197,7 +197,7 @@ const CheckoutPage: NextPage = () => {
           {stepNumber < 3 && (
             <div
               className={`w-16 h-1 transition-colors duration-200 ${
-                stepNumber < step ? 'bg-green-500' : 'bg-gray-200'
+                stepNumber < step ? 'bg-green-500' : 'bg-gray-200 dark:bg-gray-600'
               }`}
             />
           )}
@@ -253,13 +253,13 @@ const CheckoutPage: NextPage = () => {
           <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800">
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-3">
-                <Heart className="h-5 w-5 text-red-500" />
+                <Heart className="h-5 w-5 text-red-500 dark:text-red-400" />
                 <span className="font-bold text-2xl text-gray-900 dark:text-gray-100">10,000+</span>
               </div>
               <p className="text-sm text-gray-700 dark:text-gray-200 font-medium">Happy Cat Owners</p>
               <div className="flex justify-center mt-2">
                 {Array(5).fill(0).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                  <Star key={i} className="h-4 w-4 text-yellow-400 dark:text-yellow-300 fill-current" />
                 ))}
                 <span className="ml-2 text-sm text-gray-700 dark:text-gray-200">4.9/5</span>
               </div>
@@ -269,7 +269,7 @@ const CheckoutPage: NextPage = () => {
           {/* Testimonial carousel */}
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
             <div className="flex items-center gap-2 mb-4">
-              <Star className="h-5 w-5 text-yellow-400 fill-current" />
+              <Star className="h-5 w-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               <h3 className="font-bold text-gray-900 dark:text-gray-100">Customer Love</h3>
             </div>
             
@@ -283,7 +283,7 @@ const CheckoutPage: NextPage = () => {
                 >
                   <div className="flex mb-2">
                     {Array(testimonial.stars || 5).fill(0).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                      <Star key={i} className="h-4 w-4 text-yellow-400 dark:text-yellow-300 fill-current" />
                     ))}
                   </div>
                   <blockquote className="text-sm text-gray-700 dark:text-gray-200 italic mb-4 leading-relaxed">
@@ -369,7 +369,7 @@ const CheckoutPage: NextPage = () => {
               </div>
             );
           })}
-          <div className="pt-4 border-t border-gray-200 space-y-2">
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-600 space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-gray-600 dark:text-gray-300">Subtotal</span>
               <span className="text-gray-800 dark:text-gray-100 font-medium">${getTotalPrice().toFixed(2)}</span>
@@ -418,7 +418,7 @@ const CheckoutPage: NextPage = () => {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
-                    <User className="w-6 h-6 text-white" />
+                    <User className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Contact Information</h2>
@@ -532,7 +532,7 @@ const CheckoutPage: NextPage = () => {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
+                    <MapPin className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Shipping Information</h2>
@@ -606,7 +606,7 @@ const CheckoutPage: NextPage = () => {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
-                    <CreditCard className="w-6 h-6 text-white" />
+                    <CreditCard className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Secure Payment</h2>
@@ -691,7 +691,7 @@ const CheckoutPage: NextPage = () => {
                 <span>10,000+ Happy Customers</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-yellow-500 dark:text-yellow-400 fill-current" />
+                <Star className="h-4 w-4 text-yellow-500 dark:text-yellow-400 dark:text-yellow-300 fill-current" />
                 <span>4.9/5 Rating</span>
               </div>
             </div>
@@ -759,7 +759,7 @@ const CheckoutPage: NextPage = () => {
                     (step === 1 && !isContactStepValid()) ||
                     (step === 2 && !isShippingStepValid())
                   }
-                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white"
+                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
                 >
                   Continue
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -768,7 +768,7 @@ const CheckoutPage: NextPage = () => {
                 <Button
                   type="submit"
                   disabled={isProcessing}
-                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white"
+                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
                 >
                   {isProcessing ? (
                     <>

@@ -81,7 +81,7 @@ export default function InvestorRelations() {
                     }}
                     className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${
                       activeTab === tab.id
-                        ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white shadow-lg transform scale-105'
+                        ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white shadow-lg transform scale-105'
                         : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
                     }`}
                   >
@@ -100,7 +100,7 @@ export default function InvestorRelations() {
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => navigateTab('prev')}
-                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   <span className="text-sm mr-1">←</span>
                   Previous
@@ -119,7 +119,7 @@ export default function InvestorRelations() {
                 
                 <button
                   onClick={() => navigateTab('next')}
-                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Next
                   <span className="text-sm ml-1">→</span>
@@ -434,7 +434,7 @@ export default function InvestorRelations() {
                       <div>
                         <div className="text-lg font-bold text-[#5B2EFF] mb-2">VS</div>
                         <div className="w-8 h-8 mx-auto bg-[#5B2EFF] rounded-full flex items-center justify-center">
-                          <span className="text-white text-xl">⚡</span>
+                          <span className="text-white dark:text-white text-xl">⚡</span>
                         </div>
                       </div>
                       <div>
@@ -657,7 +657,7 @@ export default function InvestorRelations() {
                   <div className="grid lg:grid-cols-3 gap-8">
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">D</span>
+                        <span className="text-white dark:text-white font-bold text-2xl">D</span>
                       </div>
                       <h3 className="text-xl font-bold text-[#FF3131] mb-2">Drago - CEO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Marketing Genius</p>
@@ -683,7 +683,7 @@ export default function InvestorRelations() {
                     
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">A</span>
+                        <span className="text-white dark:text-white font-bold text-2xl">A</span>
                       </div>
                       <h3 className="text-xl font-bold text-[#5B2EFF] mb-2">Anthony - COO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Operations Machine</p>
@@ -709,7 +709,7 @@ export default function InvestorRelations() {
                     
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#2ed573] to-[#7bed9f] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">K</span>
+                        <span className="text-white dark:text-white font-bold text-2xl">K</span>
                       </div>
                       <h3 className="text-xl font-bold text-[#2ed573] mb-2">Key Advisor</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">Ex-P&G Brand Manager</p>
@@ -855,7 +855,7 @@ export default function InvestorRelations() {
                       <Button
                         onClick={() => window.open('https://calendly.com/copywriting', '_blank')}
                         size="lg"
-                        className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="bg-gradient-primary text-white dark:text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         Schedule Investor Call
                       </Button>
