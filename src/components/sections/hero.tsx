@@ -16,6 +16,8 @@ export function Hero() {
 
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [showPlayButton, setShowPlayButton] = useState(false);
+  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
 
 
 
@@ -98,6 +100,26 @@ export function Hero() {
                   <div className="text-gray-500 dark:text-gray-400">Loading video...</div>
                 </div>
               )}
+              {showPlayButton && (
+                <div 
+                  className="absolute inset-0 bg-black/20 rounded-3xl flex items-center justify-center cursor-pointer z-10"
+                  onClick={() => {
+                    if (videoRef) {
+                      videoRef.play().then(() => {
+                        setShowPlayButton(false);
+                      }).catch((error) => {
+                        console.log('Manual video play failed:', error);
+                      });
+                    }
+                  }}
+                >
+                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-full p-4 shadow-lg hover:scale-110 transition-transform">
+                    <svg className="w-8 h-8 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              )}
               <video
                 poster="/cat_rose_thumbnail.jpg"
                 className={`w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -111,26 +133,47 @@ export function Hero() {
                 tabIndex={-1}
                 itemScope
                 itemType="https://schema.org/VideoObject"
-                webkit-playsinline="true"
-                x-webkit-airplay="allow"
+                controls={false}
+                disablePictureInPicture
+                disableRemotePlayback
+                ref={(el) => setVideoRef(el)}
                 onLoadedData={() => {
                   setIsVideoLoaded(true);
                   console.log('Video loaded successfully');
                 }}
-                onError={(e) => {
-                  console.error('Video playback error:', e);
+                onLoadedMetadata={(e) => {
                   const video = e.target as HTMLVideoElement;
-                  video.style.display = 'none';
-                }}
-                onCanPlay={(e) => {
-                  // Ensure video plays on mobile devices
-                  const video = e.target as HTMLVideoElement;
+                  // Force play on mobile after metadata loads
                   const playPromise = video.play();
                   if (playPromise !== undefined) {
                     playPromise.catch((error) => {
-                      console.log('Video autoplay failed:', error);
-                      // On mobile, user interaction might be required
+                      console.log('Video autoplay prevented:', error);
+                      setShowPlayButton(true);
                     });
+                  }
+                }}
+                onError={(e) => {
+                  console.error('Video playback error:', e);
+                  const video = e.target as HTMLVideoElement;
+                  // Fallback to poster image
+                  video.style.background = `url(${video.poster}) center/cover no-repeat`;
+                  video.style.minHeight = '300px';
+                  setShowPlayButton(true);
+                }}
+                onPlay={() => {
+                  setShowPlayButton(false);
+                }}
+                onCanPlay={(e) => {
+                  const video = e.target as HTMLVideoElement;
+                  // Enhanced mobile video play logic
+                  if (video.paused) {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                      playPromise.catch((error) => {
+                        console.log('Video autoplay failed, will play on user interaction:', error);
+                        setShowPlayButton(true);
+                      });
+                    }
                   }
                 }}
               >
