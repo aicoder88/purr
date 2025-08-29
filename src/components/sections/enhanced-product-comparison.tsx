@@ -121,11 +121,11 @@ export function EnhancedProductComparison() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6 shadow-lg">
+            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6 shadow-lg">
               <TrendingUp className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
               <span className="font-bold text-sm sm:text-base">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-3 sm:mb-4 leading-tight">
               Choose Your Perfect Size
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
@@ -147,13 +147,13 @@ export function EnhancedProductComparison() {
                 {/* Top Section with Badge and Popular Indicator */}
                 <div className="relative px-4 sm:px-6 pt-6 pb-2">
                   {/* Badge */}
-                  <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg`}>
+                  <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white dark:text-gray-100 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg`}>
                     {product.badge}
                   </div>
 
                   {/* Popularity Indicator */}
                   {product.popularity === 3 && (
-                    <div className="absolute top-2 right-2 bg-[#FF3131] text-white p-2 rounded-full shadow-lg">
+                    <div className="absolute top-2 right-2 bg-[#FF3131] text-white dark:text-gray-100 p-2 rounded-full shadow-lg">
                       <Award className="w-5 h-5" />
                     </div>
                   )}
@@ -165,13 +165,13 @@ export function EnhancedProductComparison() {
                     {/* Size Badge - Positioned above image */}
                     <div className="flex justify-center mb-3">
                       <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
-                        <span className="text-white font-bold text-xs sm:text-sm drop-shadow-sm">{product.name.split(' ')[1]}</span>
+                        <span className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-sm">{product.name.split(' ')[1]}</span>
                       </div>
                     </div>
                     
                     {/* Image Container - NO absolute positioning */}
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
-                      <div className="bg-white/95 dark:bg-white/98 rounded-lg p-4">
+                      <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
                         <NextImage
                           src={product.image}
                           alt={product.name}
@@ -184,7 +184,7 @@ export function EnhancedProductComparison() {
                     
                     {/* Product Info - Clear separation */}
                     <div className="space-y-3">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white leading-tight">{product.name}</h3>
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 leading-tight">{product.name}</h3>
                       <p className="text-[#FF3131] dark:text-[#FF5555] font-semibold text-sm sm:text-base">{product.subtitle}</p>
                       <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-[280px] mx-auto">{product.description}</p>
                     </div>
@@ -220,7 +220,7 @@ export function EnhancedProductComparison() {
                       return (
                         <div key={key} className="flex items-start gap-2 sm:gap-3">
                           {isIncluded ? (
-                            <Check className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <Check className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                           ) : (
                             <X className="w-4 sm:w-5 h-4 sm:h-5 text-gray-300 dark:text-gray-500 mt-0.5 flex-shrink-0" />
                           )}
@@ -237,7 +237,7 @@ export function EnhancedProductComparison() {
                     {product.id === 'purrify-17g' ? (
                       <Button
                         asChild
-                        className="w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl"
+                        className="w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl"
                       >
                         <a
                           href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
@@ -253,8 +253,8 @@ export function EnhancedProductComparison() {
                       <Button
                         className={`w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 ${
                           product.popularity === 3
-                            ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white shadow-lg hover:shadow-xl border-2 border-transparent'
-                            : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-500 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
+                            ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl border-2 border-transparent'
+                            : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white dark:text-gray-100 border-2 border-gray-200 dark:border-gray-500 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
                         }`}
                         onClick={() => handleAddToCart(product.id)}
                         disabled={!!addingToCart}
@@ -290,7 +290,7 @@ export function EnhancedProductComparison() {
           {/* Trust Indicators */}
           <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-[#FF3131]/10 dark:to-[#FF3131]/20 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-[#FF3131]/30">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Why Choose Purrify?</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-2">Why Choose Purrify?</h3>
               <p className="text-gray-600 dark:text-gray-300">Join thousands of satisfied cat parents who trust Purrify</p>
             </div>
             

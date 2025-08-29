@@ -32,7 +32,7 @@ export default function Terms() {
         <link rel="canonical" href={canonicalUrl} />
       </Head>
 
-      <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+      <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">

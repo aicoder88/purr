@@ -65,14 +65,14 @@ export function WhyPurrify() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 dark:text-orange-400 font-medium text-sm mb-4">
             The Science Behind Purrify
           </div> */}
         
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
             {t.nav.whyPurrify}
           </h2>
-          <p className="text-gray-600 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
             Discover why thousands of cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
           </p>
         </div>
@@ -84,7 +84,7 @@ export function WhyPurrify() {
               return (
                 <div
                   key={index}
-                  className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
+                  className={`bg-white dark:bg-gray-800/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center">
@@ -109,7 +109,7 @@ export function WhyPurrify() {
                       <div
                         className={`p-2 sm:p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
                       >
-                        <IconComponent className="h-5 w-5 text-white" />
+                        <IconComponent className="h-5 w-5 text-white dark:text-gray-100" />
                       </div>
                       <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass} text-gray-900 dark:text-gray-100`}>
                         {reason.title}

@@ -203,7 +203,7 @@ const Stage5DemoPage: NextPage = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Wifi className="w-6 h-6 text-blue-600" />
+                  <Wifi className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
                   <h4 className="text-lg font-semibold">Offline Support</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -216,7 +216,7 @@ const Stage5DemoPage: NextPage = () => {
               
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Globe className="w-6 h-6 text-purple-600" />
+                  <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   <h4 className="text-lg font-semibold">App Features</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -229,11 +229,11 @@ const Stage5DemoPage: NextPage = () => {
             </div>
             
             <div className="text-center">
-              <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+              <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
                 <Smartphone className="w-4 h-4 mr-2" />
                 Install Purrify App
               </Button>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                 Available on mobile browsers that support PWA
               </p>
             </div>
@@ -288,7 +288,7 @@ const Stage5DemoPage: NextPage = () => {
                 >
                   <div className="flex items-center space-x-3 mb-4">
                     <div className={`w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center`}>
-                      <feature.icon className="w-5 h-5 text-white" />
+                      <feature.icon className="w-5 h-5 text-white dark:text-white dark:text-gray-100" />
                     </div>
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                       {feature.title}
@@ -321,7 +321,7 @@ const Stage5DemoPage: NextPage = () => {
         <div className="py-12">
           {/* Header */}
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-[#5B2EFF] text-white">
+            <Badge className="mb-4 bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100">
               Stage 5 Features
             </Badge>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -338,7 +338,7 @@ const Stage5DemoPage: NextPage = () => {
             <Button
               variant={activeDemo === 'overview' ? 'default' : 'outline'}
               onClick={() => setActiveDemo('overview')}
-              className={activeDemo === 'overview' ? 'bg-[#5B2EFF] text-white' : ''}
+              className={activeDemo === 'overview' ? 'bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100' : ''}
             >
               Overview
             </Button>
@@ -347,7 +347,7 @@ const Stage5DemoPage: NextPage = () => {
                 key={feature.id}
                 variant={activeDemo === feature.id ? 'default' : 'outline'}
                 onClick={() => setActiveDemo(feature.id)}
-                className={activeDemo === feature.id ? 'bg-[#5B2EFF] text-white' : ''}
+                className={activeDemo === feature.id ? 'bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100' : ''}
               >
                 {feature.title}
               </Button>
@@ -361,7 +361,7 @@ const Stage5DemoPage: NextPage = () => {
 
           {/* Implementation Notes */}
           <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
-            <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">
+            <h3 className="font-semibold text-blue-900 dark:text-blue-100 dark:text-blue-200 mb-3">
               🚀 Implementation Status
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm">

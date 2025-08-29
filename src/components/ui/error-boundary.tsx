@@ -37,7 +37,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
         <div className="space-y-3 mb-6">
           <button
             onClick={retry}
-            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white dark:text-gray-100 font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
             Try Again
@@ -46,7 +46,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
           <div className="flex gap-3">
             <button
               onClick={() => window.location.href = '/'}
-              className="flex-1 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
               Home
@@ -54,7 +54,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
             
             <button
               onClick={() => window.location.href = '/support/contact'}
-              className="flex-1 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Support

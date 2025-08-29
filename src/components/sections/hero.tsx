@@ -64,7 +64,7 @@ export function Hero() {
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
-                className="bg-gradient-primary text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1"
+                className="bg-gradient-primary text-white dark:text-gray-100 font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1"
                 aria-label="View customer testimonials"
               >
                 {t.nav.testimonials}
@@ -73,7 +73,7 @@ export function Hero() {
                 onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
                 size="lg"
                 variant="outline"
-                className="bg-white dark:bg-gray-800 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] dark:border-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white transform hover:-translate-y-1"
+                className="bg-white dark:bg-gray-800 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] dark:border-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white dark:text-gray-100 transform hover:-translate-y-1"
                 aria-label="Leave a Google review"
               >
                 <svg
@@ -113,7 +113,7 @@ export function Hero() {
                     }
                   }}
                 >
-                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-full p-4 shadow-lg hover:scale-110 transition-transform">
+                  <div className="bg-white dark:bg-gray-800/90 dark:bg-gray-800/90 rounded-full p-4 shadow-lg hover:scale-110 transition-transform">
                     <svg className="w-8 h-8 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -198,7 +198,7 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1 dark:text-white">{t.benefits.molecular.title}</h3>
+                    <h3 className="text-base font-semibold mb-1 dark:text-white dark:text-gray-100">{t.benefits.molecular.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-300">{t.benefits.molecular.description}</p>
                   </div>
 
@@ -208,7 +208,7 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1 dark:text-white">{t.benefits.sevenDayFreshness.title}</h3>
+                    <h3 className="text-base font-semibold mb-1 dark:text-white dark:text-gray-100">{t.benefits.sevenDayFreshness.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-300">{t.benefits.sevenDayFreshness.description}</p>
                   </div>
 
@@ -218,7 +218,7 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1 dark:text-white">{t.benefits.natural.title}</h3>
+                    <h3 className="text-base font-semibold mb-1 dark:text-white dark:text-gray-100">{t.benefits.natural.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-300">{t.benefits.natural.description}</p>
                   </div>
 
@@ -228,7 +228,7 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1 dark:text-white">{t.benefits.universalFit.title}</h3>
+                    <h3 className="text-base font-semibold mb-1 dark:text-white dark:text-gray-100">{t.benefits.universalFit.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-300">{t.benefits.universalFit.description}</p>
                   </div>
 
@@ -238,26 +238,26 @@ export function Hero() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <h3 className="text-base font-semibold mb-1 dark:text-white">{t.benefits.highlyRated.title}</h3>
+                    <h3 className="text-base font-semibold mb-1 dark:text-white dark:text-gray-100">{t.benefits.highlyRated.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-300">{t.benefits.highlyRated.description}</p>
                   </div>
                 </div>
 
                 <div className="mt-4 flex justify-center items-center space-x-6 text-xs text-gray-500 dark:text-gray-400">
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <svg className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     <span>Highly Rated</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <svg className="w-4 h-4 text-green-500 dark:text-green-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span>30-Day Money-Back Guarantee</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-500 dark:text-blue-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <svg className="w-4 h-4 text-blue-500 dark:text-blue-400 dark:text-blue-300 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
                     </svg>
                     <span>Free Shipping in Canada</span>
@@ -276,7 +276,7 @@ export function Hero() {
       {/* Full width scroll indicator arrow only */}
       <div className="w-full -mt-4 text-center flex flex-col items-center">
         <svg
-          className="w-6 h-6 text-[#0072CE] dark:text-[#3694FF] animate-bounce bg-white/80 dark:bg-gray-800/80 rounded-full p-1"
+          className="w-6 h-6 text-[#0072CE] dark:text-[#3694FF] animate-bounce bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 rounded-full p-1"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

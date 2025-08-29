@@ -174,9 +174,9 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
         <div key={stepName} className="flex items-center">
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
             step === stepName 
-              ? 'bg-[#5B2EFF] text-white' 
+              ? 'bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100' 
               : index < ['contact', 'shipping', 'review'].indexOf(step)
-              ? 'bg-green-500 text-white'
+              ? 'bg-green-500 text-white dark:text-white dark:text-gray-100'
               : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
           }`}>
             {index < ['contact', 'shipping', 'review'].indexOf(step) ? (
@@ -230,7 +230,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1 flex items-center">
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1 flex items-center">
                   <AlertCircle className="w-4 h-4 mr-1" />
                   {errors.email}
                 </p>
@@ -250,7 +250,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.firstName && (
-                  <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.firstName}</p>
                 )}
               </div>
               <div>
@@ -265,7 +265,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.lastName && (
-                  <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.lastName}</p>
                 )}
               </div>
             </div>
@@ -281,7 +281,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               />
             </div>
 
-            <Button onClick={handleNext} className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+            <Button onClick={handleNext} className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
               Continue to Shipping
             </Button>
           </div>
@@ -309,7 +309,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.address && (
-                <p className="text-red-500 text-sm mt-1 flex items-center">
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1 flex items-center">
                   <AlertCircle className="w-4 h-4 mr-1" />
                   {errors.address}
                 </p>
@@ -329,7 +329,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.city && (
-                  <p className="text-red-500 text-xs mt-1">{errors.city}</p>
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.city}</p>
                 )}
               </div>
               <div>
@@ -349,7 +349,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   ))}
                 </select>
                 {errors.province && (
-                  <p className="text-red-500 text-xs mt-1">{errors.province}</p>
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.province}</p>
                 )}
               </div>
             </div>
@@ -367,7 +367,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.postalCode && (
-                <p className="text-red-500 text-sm mt-1 flex items-center">
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1 flex items-center">
                   <AlertCircle className="w-4 h-4 mr-1" />
                   {errors.postalCode}
                 </p>
@@ -384,7 +384,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               </Button>
               <Button 
                 onClick={handleNext} 
-                className="flex-1 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white"
+                className="flex-1 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100"
               >
                 Review Order
               </Button>
@@ -410,7 +410,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Shipping:</span>
-                <span className="font-medium text-green-600">Free</span>
+                <span className="font-medium text-green-600 dark:text-green-400">Free</span>
               </div>
               <div className="border-t pt-2 flex justify-between font-bold text-lg">
                 <span>Total:</span>
@@ -445,7 +445,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <Button 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">

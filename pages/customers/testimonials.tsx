@@ -210,7 +210,7 @@ export default function TestimonialsPage() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-8 h-8 text-white" />
+                      <stat.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                     </div>
                     <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {stat.number}
@@ -226,7 +226,7 @@ export default function TestimonialsPage() {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-8 bg-white dark:bg-gray-800/50 dark:bg-gray-800/50">
           <Container>
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category) => (
@@ -235,7 +235,7 @@ export default function TestimonialsPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-[#FF3131] text-white shadow-lg'
+                      ? 'bg-[#FF3131] text-white dark:text-gray-100 shadow-lg'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-[#FF3131]/10 dark:hover:bg-[#FF5050]/10 border border-gray-200 dark:border-gray-700'
                   }`}
                 >
@@ -257,7 +257,7 @@ export default function TestimonialsPage() {
                     <div className="flex-1">
                       <div className="flex items-center mb-2">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />
                         ))}
                       </div>
                       <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-1">
@@ -268,7 +268,7 @@ export default function TestimonialsPage() {
                       </p>
                     </div>
                     {testimonial.verified && (
-                      <div className="bg-[#03E46A] text-white px-2 py-1 rounded-full text-xs font-medium">
+                      <div className="bg-[#03E46A] text-white dark:text-gray-100 px-2 py-1 rounded-full text-xs font-medium">
                         Verified
                       </div>
                     )}
@@ -308,9 +308,9 @@ export default function TestimonialsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-800/50 dark:bg-gray-800/50">
           <Container>
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-white dark:text-gray-100">
               <h2 className="text-4xl font-bold mb-4">
                 Ready to Join Our Happy Customers?
               </h2>
@@ -319,13 +319,13 @@ export default function TestimonialsPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
                     Start with Trial Size - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white dark:bg-gray-800 hover:text-gray-900 dark:text-gray-50 transition-colors">
                     View All Products
                   </Button>
                 </Link>

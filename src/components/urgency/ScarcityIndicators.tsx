@@ -107,11 +107,11 @@ export function ScarcityIndicator({
     
     switch (urgency) {
       case 'critical':
-        return 'bg-red-500 text-white dark:text-white border-red-600';
+        return 'bg-red-500 text-white dark:text-white dark:text-gray-100 border-red-600';
       case 'low':
-        return 'bg-orange-500 text-white dark:text-white border-orange-600';
+        return 'bg-orange-500 text-white dark:text-white dark:text-gray-100 border-orange-600';
       default:
-        return 'bg-green-500 text-white dark:text-white border-green-600';
+        return 'bg-green-500 text-white dark:text-white dark:text-gray-100 border-green-600';
     }
   };
 
@@ -162,9 +162,9 @@ export function ScarcityIndicator({
         </div>
         
         {/* Progress bar showing stock level */}
-        <div className="mt-3 bg-white/20 rounded-full h-2">
+        <div className="mt-3 bg-white dark:bg-gray-800/20 rounded-full h-2">
           <div 
-            className="bg-white rounded-full h-2 transition-all duration-1000"
+            className="bg-white dark:bg-gray-800 rounded-full h-2 transition-all duration-1000"
             style={{ 
               width: `${Math.max(10, (availableStock / product.lowStockThreshold) * 100)}%` 
             }}
@@ -205,8 +205,8 @@ export function ScarcityIndicator({
     >
       {/* Pulsing dot */}
       <div className="relative">
-        <div className="w-2 h-2 bg-white rounded-full"></div>
-        <div className="absolute top-0 left-0 w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
+        <div className="w-2 h-2 bg-white dark:bg-gray-800 rounded-full"></div>
+        <div className="absolute top-0 left-0 w-2 h-2 bg-white dark:bg-gray-800 rounded-full animate-ping opacity-75"></div>
       </div>
       
       <span>{urgencyMessage}</span>
@@ -261,7 +261,7 @@ export function CountdownTimer({
   if (isExpired) return null;
 
   return (
-    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-white px-6 py-3 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-white dark:text-gray-100 px-6 py-3 rounded-lg shadow-lg">
       <div className="text-center">
         <div className="text-sm font-medium opacity-90 mb-1">
           🚨 FLASH SALE ENDS IN:

@@ -84,7 +84,7 @@ export function HowItWorks() {
               className="relative group"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
+              <div className="bg-white dark:bg-gray-800/80 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
                 <div
                   className={`absolute -top-6 left-1/2 -translate-x-1/2 ${
                     index === 0
@@ -92,7 +92,7 @@ export function HowItWorks() {
                       : index === 1
                       ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
                       : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
-                  } text-white w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
+                  } text-white dark:text-gray-100 w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
                 >
                   {step.number}
                 </div>
@@ -128,7 +128,7 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-12 sm:mt-20 flex justify-center">
-          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
+          <div className="bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
             <div className="w-full flex justify-center mb-6">
               <NextImage
                 src="/optimized/three_bags_no_bg.webp"
@@ -139,7 +139,7 @@ export function HowItWorks() {
                 loading="eager"
               />
             </div>
-            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-white">
+            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-white dark:text-gray-100">
               {t.features.worksWithAnyLitter.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">

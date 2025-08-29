@@ -157,7 +157,7 @@ export default function ContactPageFR() {
               {contactMethods.map((method, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
-                    <method.icon className="w-8 h-8 text-white" />
+                    <method.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                     {method.title}
@@ -207,7 +207,7 @@ export default function ContactPageFR() {
                 {submitStatus.message && (
                   <div className={`mb-6 p-4 rounded-lg flex items-center ${
                     submitStatus.success 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 dark:text-green-400 border border-green-200 dark:border-green-800'
                       : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
                   }`}>
                     {submitStatus.success && <CheckCircle className="w-5 h-5 mr-2" />}
@@ -320,7 +320,7 @@ export default function ContactPageFR() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white font-bold"
+                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100 font-bold"
                   >
                     {isSubmitting ? (
                       <>

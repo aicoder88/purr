@@ -332,9 +332,9 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                     : 'border-gray-200 dark:border-gray-700 hover:border-[#5B2EFF]/50'
                 } ${
                   payment.id === 'apple-pay' 
-                    ? 'bg-black hover:bg-gray-800 text-white' 
+                    ? 'bg-black hover:bg-gray-800 text-white dark:text-white dark:text-gray-100' 
                     : payment.id === 'google-pay'
-                    ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white'
+                    ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-white dark:text-gray-100'
                     : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'
                 }`}
                 variant="outline"
@@ -377,7 +377,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
           <Shield className="w-5 h-5" />
           <span className="font-semibold">Secure Payment</span>
         </div>
-        <p className="text-green-700 dark:text-green-300 text-sm mt-1">
+        <p className="text-green-700 dark:text-green-300 dark:text-green-400 text-sm mt-1">
           Your payment information is encrypted and secure. We never store your payment details.
         </p>
       </div>
@@ -447,7 +447,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       
       {showApplePay && (
         <button
-          className="w-full bg-black text-white rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
+          className="w-full bg-black text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
           onClick={() => {/* Apple Pay handler */}}
         >
           <span>🍎</span>
@@ -457,7 +457,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       
       {showGooglePay && (
         <button
-          className="w-full bg-[#4285f4] text-white rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
+          className="w-full bg-[#4285f4] text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
           onClick={() => {/* Google Pay handler */}}
         >
           <span>🟢</span>

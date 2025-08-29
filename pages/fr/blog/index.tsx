@@ -44,7 +44,7 @@ const BlogPage: NextPage = () => {
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-500">{post.date}</span>
-                    <Link href={post.link} className="text-indigo-600 font-medium hover:text-indigo-800">
+                    <Link href={post.link} className="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:text-indigo-300">
                       {t.blogSection.readFullArticle}
                     </Link>
                   </div>

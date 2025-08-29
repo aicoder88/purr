@@ -84,7 +84,7 @@ const FreePage: NextPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50">
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                <div className="bg-red-600 text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
+                <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
                   {t.freeTrialPage.urgentBanner}
                 </div>
               </div>
@@ -100,7 +100,7 @@ const FreePage: NextPage = () => {
                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
                     priority
                   />
-                  <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
+                  <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
                     {t.freeTrialPage.free}
                   </div>
                 </div>
@@ -137,7 +137,7 @@ const FreePage: NextPage = () => {
                   </h1>
                   
                   <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
-                    <p className="text-indigo-800 font-medium">
+                    <p className="text-indigo-800 dark:text-indigo-300 font-medium">
                       {t.freeTrialPage.limitedTimeOffer}
                     </p>
                   </div>
@@ -186,7 +186,7 @@ const FreePage: NextPage = () => {
                       quality={85}
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4">{t.freeTrialPage.whatYouGet}</h3>
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-300 mb-4">{t.freeTrialPage.whatYouGet}</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <span className="text-green-600 font-bold mr-2">✓</span>
@@ -214,9 +214,9 @@ const FreePage: NextPage = () => {
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
                   <h3 className="text-xl font-bold text-red-600 mb-2">ATTENTION : Cette offre disparaît dans :</h3>
                   <div className="flex justify-center space-x-4 mb-2">
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
                   </div>
                   <div className="flex justify-center text-xs text-gray-600 space-x-16 mb-4">
                     <span>HEURES</span>
@@ -229,15 +229,15 @@ const FreePage: NextPage = () => {
                 </div>
                 
                 <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4">Ce que disent nos testeurs bêta :</h3>
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-300 mb-4">Ce que disent nos testeurs bêta :</h3>
                   <div className="space-y-4">
                     <div className="bg-white p-3 rounded-md shadow-sm">
                       <p className="italic">"Je n'arrivais pas à y croire. En quelques HEURES, toute ma maison sentait à nouveau le frais. J'ai même invité ma belle-mère pour la première fois depuis des mois !"</p>
-                      <p className="text-right font-medium text-indigo-600">- Jennifer M., Montréal</p>
+                      <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- Jennifer M., Montréal</p>
                     </div>
                     <div className="bg-white p-3 rounded-md shadow-sm">
                       <p className="italic">"Mon mari pensait que j'avais complètement jeté la litière. L'odeur avait simplement... disparu."</p>
-                      <p className="text-right font-medium text-indigo-600">- Lisa K., Mirabel, QC</p>
+                      <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- Lisa K., Mirabel, QC</p>
                     </div>
                   </div>
                 </div>

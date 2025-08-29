@@ -149,7 +149,7 @@ export default function HowItWorksPageFR() {
                     height={400}
                     className="w-full h-auto rounded-2xl shadow-2xl"
                   />
-                  <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-lg text-sm">
+                  <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
                     Micropores grossis 1000x
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function HowItWorksPageFR() {
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-xl flex items-center justify-center">
-                        <point.icon className="w-6 h-6 text-white" />
+                        <point.icon className="w-6 h-6 text-white dark:text-white dark:text-gray-100" />
                       </div>
                     </div>
                     <div className="flex-1">
@@ -215,7 +215,7 @@ export default function HowItWorksPageFR() {
                   <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">{step.number}</span>
+                        <span className="text-white dark:text-white dark:text-gray-100 font-bold text-2xl">{step.number}</span>
                       </div>
                       <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                         {step.title}
@@ -291,7 +291,7 @@ export default function HowItWorksPageFR() {
         {/* CTA Section */}
         <section className="py-16">
           <Container>
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-white dark:text-gray-100">
               <h2 className="text-4xl font-bold mb-4">
                 Prêt à Expérimenter la Science?
               </h2>
@@ -306,7 +306,7 @@ export default function HowItWorksPageFR() {
                   </Button>
                 </Link>
                 <Link href="/fr/#products">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Voir Tous Les Produits
                   </Button>
                 </Link>

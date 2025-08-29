@@ -76,18 +76,18 @@ export function About() {
             </div>
           </div>
           <div className="space-y-6">
-            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
             {t.features.odorElimination.description}
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
             {t.features.catFriendly.description}
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
               <span className="font-bold text-[#FF3131] dark:text-[#FF5050]">
               {t.siteName} {t.features.odorElimination.title}.
               </span>
             </p>
-            <p className="text-gray-700 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
             {t.features.longLastingFreshness.description} {t.features.worksWithAnyLitter.description}
             </p>
           </div>

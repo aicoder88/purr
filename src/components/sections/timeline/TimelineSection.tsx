@@ -49,7 +49,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#5B2EFF] rounded-full flex items-center justify-center mr-4">
-                        <item.icon className="w-6 h-6 text-white" />
+                        <item.icon className="w-6 h-6 text-white dark:text-white dark:text-gray-100" />
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-[#FF3131]">{item.year}</div>

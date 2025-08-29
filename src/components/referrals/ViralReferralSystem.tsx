@@ -260,9 +260,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <Users className="w-8 h-8 mx-auto mb-2 text-blue-500" />
+              <Users className="w-8 h-8 mx-auto mb-2 text-blue-500 dark:text-blue-400 dark:text-blue-300" />
               <p className="text-2xl font-bold">{stats.totalReferrals}</p>
-              <p className="text-sm text-gray-500">Total Referrals</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Total Referrals</p>
             </div>
           </CardContent>
         </Card>
@@ -270,9 +270,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <DollarSign className="w-8 h-8 mx-auto mb-2 text-green-500" />
+              <DollarSign className="w-8 h-8 mx-auto mb-2 text-green-500 dark:text-green-400" />
               <p className="text-2xl font-bold">${stats.totalEarnings}</p>
-              <p className="text-sm text-gray-500">Total Earned</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Total Earned</p>
             </div>
           </CardContent>
         </Card>
@@ -280,9 +280,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <Gift className="w-8 h-8 mx-auto mb-2 text-purple-500" />
+              <Gift className="w-8 h-8 mx-auto mb-2 text-purple-500 dark:text-purple-400" />
               <p className="text-2xl font-bold">${stats.pendingEarnings}</p>
-              <p className="text-sm text-gray-500">Pending</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Pending</p>
             </div>
           </CardContent>
         </Card>
@@ -290,11 +290,11 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className={`w-8 h-8 mx-auto mb-2 rounded-full bg-gradient-to-r ${currentTier.color} flex items-center justify-center text-white`}>
+              <div className={`w-8 h-8 mx-auto mb-2 rounded-full bg-gradient-to-r ${currentTier.color} flex items-center justify-center text-white dark:text-white dark:text-gray-100`}>
                 {currentTier.icon}
               </div>
               <p className="text-lg font-bold">{currentTier.badge} {currentTier.name}</p>
-              <p className="text-sm text-gray-500">{currentTier.commission}% commission</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{currentTier.commission}% commission</p>
             </div>
           </CardContent>
         </Card>
@@ -317,10 +317,10 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
               </div>
               <Progress value={progress} className="h-3" />
               <div className="text-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   {nextTier.requiresReferrals - stats.totalReferrals} more referrals to unlock:
                 </p>
-                <ul className="text-sm text-green-600 mt-2">
+                <ul className="text-sm text-green-600 dark:text-green-400 mt-2">
                   {nextTier.perks.map((perk, index) => (
                     <li key={index}>• {perk}</li>
                   ))}
@@ -365,10 +365,10 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                 </div>
                 
                 <div className="text-center">
-                  <p className="text-lg font-semibold text-green-600 mb-2">
+                  <p className="text-lg font-semibold text-green-600 dark:text-green-400 mb-2">
                     Your Code: {referralCode}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Friends get 25% OFF • You earn ${(50 * currentTier.commission / 100).toFixed(2)} per sale
                   </p>
                 </div>
@@ -379,31 +379,31 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             <Card>
               <CardHeader>
                 <h3 className="text-xl font-bold">Share on Social Media</h3>
-                <p className="text-sm text-gray-600">Pre-written posts for maximum engagement</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Pre-written posts for maximum engagement</p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <Button 
                     onClick={() => shareToSocial('instagram')}
-                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white"
+                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white dark:text-white dark:text-gray-100"
                   >
                     📷 Instagram
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('facebook')}
-                    className="bg-blue-600 text-white"
+                    className="bg-blue-600 text-white dark:text-white dark:text-gray-100"
                   >
                     📘 Facebook
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('twitter')}
-                    className="bg-sky-500 text-white"
+                    className="bg-sky-500 text-white dark:text-white dark:text-gray-100"
                   >
                     🐦 Twitter
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('email')}
-                    className="bg-gray-600 text-white"
+                    className="bg-gray-600 text-white dark:text-white dark:text-gray-100"
                   >
                     ✉️ Email
                   </Button>
@@ -451,19 +451,19 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                     entry.name === 'You' ? 'bg-orange-50 dark:bg-orange-900/20 border border-orange-200' : 'bg-gray-50 dark:bg-gray-800'
                   }`}>
                     <div className="flex items-center">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-3 ${
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold mr-3 ${
                         entry.rank <= 3 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' : 'bg-gray-400'
                       }`}>
                         {entry.rank}
                       </div>
                       <div>
                         <p className="font-semibold">{entry.name}</p>
-                        <p className="text-sm text-gray-600">{entry.tier}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{entry.tier}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="font-bold">{entry.referrals} referrals</p>
-                      <p className="text-sm text-green-600">${entry.earnings} earned</p>
+                      <p className="text-sm text-green-600 dark:text-green-400">${entry.earnings} earned</p>
                     </div>
                   </div>
                 ))}
@@ -481,8 +481,8 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             <CardContent>
               {stats.recentReferrals.length === 0 ? (
                 <div className="text-center py-8">
-                  <Users className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                  <p className="text-gray-500">No referrals yet. Start sharing to earn money!</p>
+                  <Users className="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-500" />
+                  <p className="text-gray-500 dark:text-gray-400">No referrals yet. Start sharing to earn money!</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -490,10 +490,10 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                     <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                       <div>
                         <p className="font-semibold">{referral.name}</p>
-                        <p className="text-sm text-gray-600">{referral.date}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{referral.date}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-green-600">+${referral.earnings}</p>
+                        <p className="font-bold text-green-600 dark:text-green-400">+${referral.earnings}</p>
                         <Badge variant={referral.status === 'paid' ? 'default' : referral.status === 'pending' ? 'secondary' : 'outline'}>
                           {referral.status}
                         </Badge>
@@ -516,16 +516,16 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${tier.color} flex items-center justify-center text-white mr-3`}>
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${tier.color} flex items-center justify-center text-white dark:text-gray-100 mr-3`}>
                         {tier.icon}
                       </div>
                       <div>
                         <h3 className="font-bold">{tier.badge} {tier.name}</h3>
-                        <p className="text-sm text-gray-600">{tier.commission}% commission</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{tier.commission}% commission</p>
                       </div>
                     </div>
                     {tier.name === currentTier.name && (
-                      <Badge className="bg-orange-500 text-white">Current</Badge>
+                      <Badge className="bg-orange-500 text-white dark:text-white dark:text-gray-100">Current</Badge>
                     )}
                   </div>
                 </CardHeader>
@@ -536,7 +536,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                     </p>
                     <div className="space-y-1">
                       {tier.perks.map((perk, perkIndex) => (
-                        <p key={perkIndex} className="text-sm text-gray-600">• {perk}</p>
+                        <p key={perkIndex} className="text-sm text-gray-600 dark:text-gray-300">• {perk}</p>
                       ))}
                     </div>
                   </div>

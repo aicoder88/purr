@@ -162,7 +162,7 @@ export default async function handler(
     }
 
     // Verify order hasn't already been paid
-    if (order.status === 'paid') {
+    if (order.status === 'PAID') {
       return res.status(400).json({
         error: 'Order already paid',
         orderId: orderId

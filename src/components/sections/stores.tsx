@@ -252,7 +252,7 @@ export function Stores() {
                         />
                       ) : (
                         <svg 
-                          className="w-6 h-6 text-white" 
+                          className="w-6 h-6 text-white dark:text-white dark:text-gray-100" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -309,7 +309,7 @@ export function Stores() {
                         href={store.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200 ml-2"
+                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 transition-colors duration-200 ml-2"
                       >
                         <svg
                           className="w-4 h-4 mr-1"
@@ -340,7 +340,7 @@ export function Stores() {
             {t.storesSection?.dontSeeLocalStore || "Don't see your local store? Contact us to request Purrify at your favorite pet store!"}
           </p>
           <button 
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             {t.storesSection?.requestStoreAvailability || "Request Store Availability"}

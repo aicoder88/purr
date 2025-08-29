@@ -30,7 +30,7 @@ export function ExitIntentPopup({
       description: 'Join 10,000+ happy cat owners who eliminated litter box odors forever',
       cta: 'CLAIM MY 15% DISCOUNT',
       urgency: 'Limited time offer - expires in 10 minutes!',
-      icon: <Gift className="w-8 h-8 text-green-500" />
+      icon: <Gift className="w-8 h-8 text-green-500 dark:text-green-400" />
     },
     shipping: {
       title: '🚚 FREE SHIPPING Alert!',
@@ -38,7 +38,7 @@ export function ExitIntentPopup({
       description: 'No minimum purchase required. Your cats deserve odor-free litter delivered free!',
       cta: 'GET FREE SHIPPING',
       urgency: 'Today only - FREE shipping to your door!',
-      icon: <Star className="w-8 h-8 text-blue-500" />
+      icon: <Star className="w-8 h-8 text-blue-500 dark:text-blue-400 dark:text-blue-300" />
     },
     bundle: {
       title: '🎁 EXCLUSIVE Bundle Deal!',
@@ -46,7 +46,7 @@ export function ExitIntentPopup({
       description: '3x Purrify bags + Premium Scoop + Odor Guide',
       cta: 'GRAB THE BUNDLE',
       urgency: 'Only 12 bundles left at this price!',
-      icon: <Clock className="w-8 h-8 text-orange-500" />
+      icon: <Clock className="w-8 h-8 text-orange-500 dark:text-orange-400" />
     }
   };
 
@@ -107,7 +107,7 @@ export function ExitIntentPopup({
             </div>
 
             {/* Main Headline - Use DialogTitle for accessibility */}
-            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white">
+            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100">
               {currentOffer.title}
             </DialogTitle>
 
@@ -122,10 +122,10 @@ export function ExitIntentPopup({
             </DialogDescription>
 
             {/* Social Proof */}
-            <div className="flex items-center justify-center space-x-1 text-sm text-gray-500">
+            <div className="flex items-center justify-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex">
                 {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />
                 ))}
               </div>
               <span>4.8/5 from 247+ reviews</span>
@@ -145,7 +145,7 @@ export function ExitIntentPopup({
               <Button 
                 type="submit" 
                 disabled={isSubmitting || !email}
-                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 {isSubmitting ? 'CLAIMING...' : currentOffer.cta}
               </Button>
@@ -160,7 +160,7 @@ export function ExitIntentPopup({
             </div>
 
             {/* Trust Signals */}
-            <div className="flex justify-center items-center space-x-4 text-xs text-gray-500">
+            <div className="flex justify-center items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">
               <span>✓ No spam</span>
               <span>✓ Unsubscribe anytime</span>
               <span>✓ Canadian company</span>

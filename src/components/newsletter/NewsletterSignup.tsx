@@ -77,7 +77,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ${className}`}>
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
           <button 
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+            className="absolute top-4 right-4 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600"
             onClick={() => {/* Handle close */}}
           >
             <X className="w-6 h-6" />
@@ -85,7 +85,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           
           <div className="text-center mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8 text-white" />
+              <Mail className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Get {discount}% Off Your First Order!
@@ -97,7 +97,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
               <input
                 type="email"
                 value={email}
@@ -111,7 +111,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
             <Button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] hover:from-[#5B2EFF]/90 hover:to-[#FF3131]/90 text-white font-semibold py-3"
+              className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] hover:from-[#5B2EFF]/90 hover:to-[#FF3131]/90 text-white dark:text-gray-100 font-semibold py-3"
             >
               {status === 'loading' && (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
@@ -121,7 +121,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
             </Button>
 
             {status === 'error' && (
-              <p className="text-red-600 text-sm text-center">{errorMessage}</p>
+              <p className="text-red-600 dark:text-red-400 text-sm text-center">{errorMessage}</p>
             )}
           </form>
 
@@ -158,7 +158,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
             <Button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white px-6"
+              className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100 px-6"
             >
               {status === 'loading' && (
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -170,7 +170,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         </div>
         
         {status === 'error' && (
-          <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+          <p className="text-red-600 dark:text-red-400 text-sm mt-2">{errorMessage}</p>
         )}
       </div>
     );
@@ -204,7 +204,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           <Button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
-            className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white font-semibold"
+            className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100 font-semibold"
           >
             {status === 'loading' && (
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
@@ -214,7 +214,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           </Button>
 
           {status === 'error' && (
-            <p className="text-red-600 text-sm text-center">{errorMessage}</p>
+            <p className="text-red-600 dark:text-red-400 text-sm text-center">{errorMessage}</p>
           )}
         </form>
       </div>
@@ -225,7 +225,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   return (
     <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-[#E0EFC7] dark:border-gray-700 overflow-hidden ${className}`}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] p-6 text-white text-center">
+      <div className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] p-6 text-white dark:text-gray-100 text-center">
         <Mail className="w-12 h-12 mx-auto mb-4 opacity-90" />
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
           Join the Purrify Family
@@ -262,7 +262,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className="p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <input
               type="email"
               value={email}
@@ -276,7 +276,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           <Button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
-            className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] hover:from-[#5B2EFF]/90 hover:to-[#FF3131]/90 text-white font-semibold py-3"
+            className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] hover:from-[#5B2EFF]/90 hover:to-[#FF3131]/90 text-white dark:text-gray-100 font-semibold py-3"
           >
             {status === 'loading' && (
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
@@ -286,7 +286,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           </Button>
 
           {status === 'error' && (
-            <p className="text-red-600 text-sm text-center">{errorMessage}</p>
+            <p className="text-red-600 dark:text-red-400 text-sm text-center">{errorMessage}</p>
           )}
         </form>
 
@@ -294,7 +294,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           <p className="text-xs text-gray-500 dark:text-gray-400">
             Join 10,000+ happy cat owners • No spam, unsubscribe anytime
           </p>
-          <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-400">
+          <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-400 dark:text-gray-500">
             <span>✓ Weekly tips</span>
             <span>✓ Exclusive offers</span>
             <span>✓ Early access</span>

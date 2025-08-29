@@ -38,7 +38,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
     <div key={index} className={itemClassName}>
       {item.icon && (
         <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-          <item.icon className="w-8 h-8 text-white" />
+          <item.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
         </div>
       )}
       <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">

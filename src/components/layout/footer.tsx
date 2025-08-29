@@ -74,7 +74,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-[#333333] dark:text-white">
+            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
               {t.footer.quickLinks}
             </h3>
             <ul className="space-y-2 text-sm">
@@ -138,7 +138,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-[#333333] dark:text-white">
+            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
               {t.footer.openingHours}
             </h3>
             <ul className="space-y-2 text-sm text-[#333333]/80 dark:text-gray-300">
@@ -149,7 +149,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-[#333333] dark:text-white">
+            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
               {t.footer.contactUs}
             </h3>
             <address className="not-italic space-y-2 text-sm text-[#333333]/80 dark:text-gray-300">

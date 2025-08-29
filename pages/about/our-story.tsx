@@ -120,7 +120,7 @@ const OurStoryPage: NextPage = () => {
                       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                         <div className="flex items-center mb-4">
                           <div className="w-12 h-12 bg-[#5B2EFF] rounded-full flex items-center justify-center mr-4">
-                            <milestone.icon className="w-6 h-6 text-white" />
+                            <milestone.icon className="w-6 h-6 text-white dark:text-gray-100" />
                           </div>
                           <div>
                             <div className="text-2xl font-bold text-[#FF3131]">{milestone.year}</div>
@@ -163,7 +163,7 @@ const OurStoryPage: NextPage = () => {
               {values.map((value, index) => (
                 <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <value.icon className="w-8 h-8 text-white" />
+                    <value.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {value.title}
@@ -193,7 +193,7 @@ const OurStoryPage: NextPage = () => {
               {team.map((member, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-10 h-10 text-white" />
+                    <Users className="w-10 h-10 text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-gray-100">
                     {member.name}
@@ -247,7 +247,7 @@ const OurStoryPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Join Our Story
               </h2>
@@ -257,7 +257,7 @@ const OurStoryPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
                     Try Purrify Today - $6.99
                     Trial size - Single Use Sample
 
@@ -265,7 +265,7 @@ const OurStoryPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white dark:bg-gray-800 hover:text-gray-900 dark:text-gray-50 transition-colors">
                     Get in Touch
                   </Button>
                 </Link>
@@ -297,7 +297,7 @@ const OurStoryPage: NextPage = () => {
                   We typically respond within 24 hours
                 </p>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                  <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+                  <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
                     Contact Us
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>

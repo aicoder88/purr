@@ -147,7 +147,7 @@ export default function Reviews() {
         </script>
       </Head>
 
-      <div className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+      <div className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
@@ -254,8 +254,8 @@ export default function Reviews() {
             {/* Trust Indicators */}
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-16">
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-blue-900 mb-4">Why Customers Trust Purrify</h2>
-                <div className="grid md:grid-cols-3 gap-6 text-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
+                <div className="grid md:grid-cols-3 gap-6 text-blue-800 dark:text-blue-200">
                   <div className="text-center">
                     <CheckCircle className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
                     <h3 className="font-semibold mb-2">Verified Reviews</h3>
@@ -288,7 +288,7 @@ export default function Reviews() {
                 <div className="space-x-4">
                   <Link 
                     href="/products" 
-                    className="inline-block bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                    className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Now
                   </Link>

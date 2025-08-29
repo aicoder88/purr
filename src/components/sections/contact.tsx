@@ -24,7 +24,7 @@ export function Contact() {
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
             {t.contact.title}
           </h2>
-          <p className="text-gray-600 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
             {t.contact.subtitle}
           </p>
         </div>
@@ -33,7 +33,7 @@ export function Contact() {
           <div className="space-y-4 sm:space-y-8">
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="h-5 w-5 text-white" />
+                <MapPin className="h-5 w-5 text-white dark:text-white dark:text-gray-100" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
@@ -45,7 +45,7 @@ export function Contact() {
 
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-5 w-5 text-white" />
+                <Phone className="h-5 w-5 text-white dark:text-white dark:text-gray-100" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#5B2EFF] dark:text-[#3694FF]">
@@ -57,7 +57,7 @@ export function Contact() {
 
             <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
               <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Clock className="h-5 w-5 text-white" />
+                <Clock className="h-5 w-5 text-white dark:text-white dark:text-gray-100" />
               </div>
               <div>
                 <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">

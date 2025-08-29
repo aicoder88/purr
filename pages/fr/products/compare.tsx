@@ -226,7 +226,7 @@ const ProductComparePage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Comparer les Produits Purrify
@@ -253,7 +253,7 @@ const ProductComparePage: NextPage = () => {
                 >
                   {/* Popular Badge */}
                   {product.popular && (
-                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-green-500 text-white dark:text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Star className="w-4 h-4 mr-1" />
                       Populaire
                     </div>
@@ -261,14 +261,14 @@ const ProductComparePage: NextPage = () => {
                   
                   {/* Recommended Badge */}
                   {product.recommended && (
-                    <div className="absolute top-4 right-4 bg-[#FF3131] text-white px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Award className="w-4 h-4 mr-1" />
                       Meilleure Valeur
                     </div>
                   )}
 
                   {/* Header */}
-                  <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
+                  <div className={`bg-gradient-to-r ${product.color} p-6 text-white dark:text-white dark:text-gray-100`}>
                     <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
                     <p className="opacity-90 mb-4">{product.subtitle}</p>
                     <div className="flex items-baseline">
@@ -324,8 +324,8 @@ const ProductComparePage: NextPage = () => {
                         size="lg" 
                         className={`w-full ${
                           product.recommended 
-                            ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white' 
-                            : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
+                            ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-white dark:text-gray-100' 
+                            : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100'
                         }`}
                       >
                         {product.cta}
@@ -354,7 +354,7 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-[#5B2EFF] text-white">
+                  <thead className="bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Caractéristique</th>
                       <th className="px-6 py-4 text-center font-bold">Essai 17g</th>
@@ -413,7 +413,7 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white">
+                  <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Nombre de Chats</th>
                       <th className="px-6 py-4 text-center font-bold">Changements Typiques</th>
@@ -452,7 +452,7 @@ const ProductComparePage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Toujours Pas Sûr de la Taille à Choisir?
@@ -468,7 +468,7 @@ const ProductComparePage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/support/contact">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Obtenez des Conseils Personnalisés
                   </Button>
                 </Link>

@@ -88,7 +88,7 @@ export default async function handler(
         if (orderId) {
           await prisma.order.update({
             where: { id: orderId },
-            data: { status: 'EXPIRED' },
+            data: { status: 'CANCELLED' },
           });
         }
         break;

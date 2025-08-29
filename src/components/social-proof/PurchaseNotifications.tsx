@@ -186,7 +186,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
         {showDisclosure && !currentNotification.isReal && (
           <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
             <div className="flex items-center space-x-2">
-              <Info className="w-3 h-3 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+              <Info className="w-3 h-3 text-blue-600 dark:text-blue-400 dark:text-blue-300 flex-shrink-0" />
               <span className="text-xs text-blue-700 dark:text-blue-300">
                 Sample customer activity shown for demonstration
               </span>
@@ -205,7 +205,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600 transition-colors"
             aria-label="Close notification"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -221,7 +221,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
             </span>
             {currentNotification.verified && currentNotification.isReal && (
               <div className="flex items-center space-x-1">
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                 <span className="text-xs text-green-600 dark:text-green-400 font-medium">
                   Verified
                 </span>
@@ -241,7 +241,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
                   key={i}
                   className={`w-3 h-3 ${
                     i < currentNotification.rating!
-                      ? 'text-yellow-400 fill-current'
+                      ? 'text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current'
                       : 'text-gray-300 dark:text-gray-600'
                   }`}
                 />

@@ -187,7 +187,7 @@ export function SubscriptionPlans({
           </p>
           
           {/* Trust indicators */}
-          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 mb-8">
+          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 mb-8">
             <div className="flex items-center">
               <Truck className="w-4 h-4 mr-2" />
               Free shipping
@@ -227,7 +227,7 @@ export function SubscriptionPlans({
               {/* Badge */}
               {plan.badge && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Badge className={`bg-gradient-to-r ${plan.color} text-white px-4 py-1 text-sm font-bold`}>
+                  <Badge className={`bg-gradient-to-r ${plan.color} text-white dark:text-gray-100 px-4 py-1 text-sm font-bold`}>
                     {plan.badge}
                   </Badge>
                 </div>
@@ -235,7 +235,7 @@ export function SubscriptionPlans({
 
               <CardHeader className="text-center pb-4">
                 {/* Icon */}
-                <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center text-white`}>
+                <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center text-white dark:text-gray-100`}>
                   {plan.icon}
                 </div>
 
@@ -247,24 +247,24 @@ export function SubscriptionPlans({
                 <div className="mb-4">
                   <div className="flex items-center justify-center mb-2">
                     <span className="text-4xl font-bold">${plan.price}</span>
-                    <span className="text-gray-500 ml-2">CAD</span>
+                    <span className="text-gray-500 dark:text-gray-400 ml-2">CAD</span>
                   </div>
                   
                   {plan.originalPrice && (
                     <div className="flex items-center justify-center space-x-2">
-                      <span className="text-lg text-gray-400 line-through">
+                      <span className="text-lg text-gray-400 dark:text-gray-500 line-through">
                         ${plan.originalPrice}
                       </span>
-                      <Badge variant="secondary" className="bg-green-100 text-green-800">
+                      <Badge variant="secondary" className="bg-green-100 text-green-800 dark:text-green-200">
                         Save {plan.discount}%
                       </Badge>
                     </div>
                   )}
                   
-                  <p className="text-sm text-gray-500 mt-2">{plan.intervalLabel}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{plan.intervalLabel}</p>
                   
                   {showAnnualSavings && (
-                    <p className="text-lg font-semibold text-green-600 mt-2">
+                    <p className="text-lg font-semibold text-green-600 dark:text-green-400 mt-2">
                       {plan.savings}
                     </p>
                   )}
@@ -276,7 +276,7 @@ export function SubscriptionPlans({
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <Check className="w-5 h-5 text-green-500 dark:text-green-400 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -312,9 +312,9 @@ export function SubscriptionPlans({
                   </div>
                   <div className="border-t pt-2 mt-2 font-semibold flex justify-between">
                     <span>Total Value:</span>
-                    <span className="text-green-600">${plan.totalValue.toFixed(2)}</span>
+                    <span className="text-green-600 dark:text-green-400">${plan.totalValue.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-sm text-purple-600">
+                  <div className="flex justify-between text-sm text-purple-600 dark:text-purple-400">
                     <span>You Pay:</span>
                     <span>${plan.price.toFixed(2)}</span>
                   </div>
@@ -322,7 +322,7 @@ export function SubscriptionPlans({
 
                 {/* CTA Button */}
                 <Button
-                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-bold py-3 transition-all transform ${
+                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all transform ${
                     hoveredPlan === plan.id ? 'scale-105' : ''
                   }`}
                   onClick={(e) => {
@@ -346,7 +346,7 @@ export function SubscriptionPlans({
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Truck className="w-6 h-6 text-blue-600" />
+                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
               </div>
               <h4 className="font-semibold mb-2">Never Run Out</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -356,7 +356,7 @@ export function SubscriptionPlans({
             
             <div className="text-center">
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Gift className="w-6 h-6 text-green-600" />
+                <Gift className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
               <h4 className="font-semibold mb-2">Member Perks</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -366,7 +366,7 @@ export function SubscriptionPlans({
             
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Zap className="w-6 h-6 text-purple-600" />
+                <Zap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
               <h4 className="font-semibold mb-2">Total Flexibility</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -376,7 +376,7 @@ export function SubscriptionPlans({
             
             <div className="text-center">
               <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Star className="w-6 h-6 text-orange-600" />
+                <Star className="w-6 h-6 text-orange-600 dark:text-orange-400" />
               </div>
               <h4 className="font-semibold mb-2">Premium Support</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -391,7 +391,7 @@ export function SubscriptionPlans({
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">
@@ -404,7 +404,7 @@ export function SubscriptionPlans({
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">

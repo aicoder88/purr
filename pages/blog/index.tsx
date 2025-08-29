@@ -104,7 +104,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
         <link rel="canonical" href="https://purrify.ca/blog" />
       </Head>
 
-      <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+      <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
@@ -113,21 +113,21 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
             <h1 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
               Purrify Blog
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 dark:text-gray-300 text-lg">
               {t.blogSection.description}
             </p>
           </div>
 
           {blogPosts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-gray-600">No blog posts found. Check back soon!</p>
+              <p className="text-gray-600 dark:text-gray-300">No blog posts found. Check back soon!</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {blogPosts.map((post, index) => (
                 <div
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group"
+                  className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
                 >
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -142,17 +142,17 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h2 className="font-bold text-xl mb-3 text-[#5B2EFF] group-hover:text-[#5B2EFF]/80 transition-colors">
+                    <h2 className="font-bold text-xl mb-3 text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80 transition-colors">
                       {post.title}
                     </h2>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-[#03E46A] font-medium">
                         {post.author}
                       </span>
-                      <span className="text-gray-500">{post.date}</span>
+                      <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
                     </div>
                   </div>
                   <div className="px-6 pb-6 pt-0">

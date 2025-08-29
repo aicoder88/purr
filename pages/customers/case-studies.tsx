@@ -210,7 +210,7 @@ const CaseStudiesPage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <User className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Real Customer Case Studies
@@ -220,7 +220,7 @@ const CaseStudiesPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
                     Start Your Success Story - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
@@ -246,7 +246,7 @@ const CaseStudiesPage: NextPage = () => {
               {metrics.map((metric, index) => (
                 <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <metric.icon className="w-8 h-8 text-white" />
+                    <metric.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                   </div>
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">{metric.value}</div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
@@ -271,7 +271,7 @@ const CaseStudiesPage: NextPage = () => {
                   <div className="lg:w-1/3">
                     <div className="bg-gradient-to-br from-[#5B2EFF]/10 to-[#FF3131]/10 rounded-2xl p-8 text-center">
                       <div className="w-24 h-24 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <User className="w-12 h-12 text-white" />
+                        <User className="w-12 h-12 text-white dark:text-white dark:text-gray-100" />
                       </div>
                       <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                         {study.name}
@@ -286,7 +286,7 @@ const CaseStudiesPage: NextPage = () => {
                       </div>
                       <div className="flex justify-center">
                         {[...Array(study.satisfaction)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                          <Star key={i} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
                         ))}
                       </div>
                     </div>
@@ -320,7 +320,7 @@ const CaseStudiesPage: NextPage = () => {
                         <ul className="space-y-2">
                           {study.results.map((result, i) => (
                             <li key={i} className="flex items-center text-gray-600 dark:text-gray-300">
-                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400 mr-3 flex-shrink-0" />
                               {result}
                             </li>
                           ))}
@@ -343,7 +343,7 @@ const CaseStudiesPage: NextPage = () => {
                         </div>
                         <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
                           <h5 className="font-bold text-green-700 dark:text-green-400 mb-2">After Purrify:</h5>
-                          <p className="text-sm text-green-600 dark:text-green-300">{study.beforeAfter.after}</p>
+                          <p className="text-sm text-green-600 dark:text-green-300 dark:text-green-400">{study.beforeAfter.after}</p>
                         </div>
                       </div>
 
@@ -371,7 +371,7 @@ const CaseStudiesPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Write Your Own Success Story?
               </h2>
@@ -380,13 +380,13 @@ const CaseStudiesPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
                     Start Your Trial - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white dark:bg-gray-800 hover:text-gray-900 dark:text-gray-50 transition-colors">
                     Compare All Sizes
                   </Button>
                 </Link>
@@ -406,7 +406,7 @@ const CaseStudiesPage: NextPage = () => {
                 Have you experienced amazing results with Purrify? We'd love to feature your success story and help other cat owners discover the difference.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
                   Submit Your Story
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>

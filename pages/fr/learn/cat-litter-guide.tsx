@@ -163,7 +163,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
               <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Le Guide Complet de Litière pour Chat
@@ -259,7 +259,7 @@ const CatLitterGuidePage: NextPage = () => {
               {maintenanceTips.map((tip, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <tip.icon className="w-8 h-8 text-white" />
+                    <tip.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                     {tip.title}
@@ -311,7 +311,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Prêt à Améliorer Votre Expérience de Bac à Litière?
               </h2>
@@ -326,7 +326,7 @@ const CatLitterGuidePage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/customers/testimonials">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Lire les Témoignages
                   </Button>
                 </Link>

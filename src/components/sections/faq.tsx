@@ -67,7 +67,7 @@ export function FAQ() {
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
             {t.faq?.title || "Frequently Asked Questions"}
           </h2>
-          <p className="text-gray-600 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
             {t.faq?.subtitle || "Have questions about Purrify? Find answers to our most commonly asked questions below."}
           </p>
         </div>
@@ -83,7 +83,7 @@ export function FAQ() {
                 <AccordionTrigger className="text-left font-bold text-lg text-gray-900 dark:text-gray-100 hover:text-[#5B2EFF] dark:hover:text-[#3694FF] transition-colors py-3 flex items-center">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed text-base pb-4 dark:text-gray-300">
+                <AccordionContent className="text-gray-600 dark:text-gray-300 leading-relaxed text-base pb-4 dark:text-gray-300">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

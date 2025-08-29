@@ -94,7 +94,7 @@ export default function TrialSizePageFR() {
                     height={400}
                     className="w-full h-auto object-contain"
                   />
-                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">
                     FORMAT D'ESSAI
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function TrialSizePageFR() {
                 <div className="space-y-4">
                   <Button 
                     size="lg" 
-                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Acheter le Format d'Essai
@@ -191,7 +191,7 @@ export default function TrialSizePageFR() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">1</span>
+                  <span className="text-white dark:text-white dark:text-gray-100 font-bold text-xl">1</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Commandez l'Essai</h3>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -201,7 +201,7 @@ export default function TrialSizePageFR() {
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">2</span>
+                  <span className="text-white dark:text-white dark:text-gray-100 font-bold text-xl">2</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Testez et Expérimentez</h3>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -211,7 +211,7 @@ export default function TrialSizePageFR() {
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">3</span>
+                  <span className="text-white dark:text-white dark:text-gray-100 font-bold text-xl">3</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Adorez et Recommandez</h3>
                 <p className="text-gray-600 dark:text-gray-300">

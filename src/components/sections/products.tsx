@@ -99,7 +99,7 @@ export function Products() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent leading-tight">
             {t.productsSection?.pickYourPowerLevel || "PICK YOUR PURRIFY POWER LEVEL"}
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto dark:text-gray-300 leading-relaxed">
             {t.productsSection?.subtitle || "Whether you have one kitten or multiple cats, we have the ideal Purrify size for your home."}
           </p>
         </div>
@@ -134,7 +134,7 @@ export function Products() {
             >
               {/* Highlight for recommended product */}
               {index === 1 && (
-                <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#FF3131] text-white font-bold text-sm rounded-full shadow-lg z-30">
+                <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#FF3131] text-white dark:text-gray-100 font-bold text-sm rounded-full shadow-lg z-30">
                   {t.productsSection?.mostPopular || "MOST POPULAR"}
                 </div>
               )}
@@ -162,7 +162,7 @@ export function Products() {
                     
                     {/* Bottom description overlay with better contrast */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 sm:p-4 z-20">
-                      <p className="text-white font-bold text-xs sm:text-sm drop-shadow-lg line-clamp-2">
+                      <p className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-lg line-clamp-2">
                         {t.products[product.id]?.description.split('\n')[0]}
                       </p>
                     </div>
@@ -170,7 +170,7 @@ export function Products() {
                   
                   {/* Size badge with improved positioning and contrast */}
                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300 z-30">
-                    <span className="text-white font-bold text-sm sm:text-lg drop-shadow-md">{product.size}</span>
+                    <span className="text-white dark:text-gray-100 font-bold text-sm sm:text-lg drop-shadow-md">{product.size}</span>
                   </div>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export function Products() {
                       href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
+                      className="w-full inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-md px-6 py-3 text-lg"
                     >
                       {t.productsSection?.buyNow || "Buy Now"}
                     </a>
@@ -237,8 +237,8 @@ export function Products() {
                       <Button 
                         className={`w-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-0 ${
                           addedToCart === product.id 
-                            ? 'bg-green-600 hover:bg-green-700 text-white'
-                            : 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white'
+                            ? 'bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100'
+                            : 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100'
                         }`}
                         onClick={() => handleAddToCart(product)}
                         disabled={addingToCart === product.id || addedToCart === product.id}

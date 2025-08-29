@@ -210,7 +210,7 @@ export default function TestimonialsPageFR() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-8 h-8 text-white" />
+                      <stat.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                     </div>
                     <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {stat.number}
@@ -235,7 +235,7 @@ export default function TestimonialsPageFR() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-[#FF3131] text-white shadow-lg'
+                      ? 'bg-[#FF3131] text-white dark:text-white dark:text-gray-100 shadow-lg'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-[#FF3131]/10 dark:hover:bg-[#FF5050]/10 border border-gray-200 dark:border-gray-700'
                   }`}
                 >
@@ -268,7 +268,7 @@ export default function TestimonialsPageFR() {
                       </p>
                     </div>
                     {testimonial.verified && (
-                      <div className="bg-[#03E46A] text-white px-2 py-1 rounded-full text-xs font-medium">
+                      <div className="bg-[#03E46A] text-white dark:text-white dark:text-gray-100 px-2 py-1 rounded-full text-xs font-medium">
                         Vérifié
                       </div>
                     )}
@@ -310,7 +310,7 @@ export default function TestimonialsPageFR() {
         {/* CTA Section */}
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-white dark:text-gray-100">
               <h2 className="text-4xl font-bold mb-4">
                 Prêt à Rejoindre Nos Clients Heureux?
               </h2>
@@ -325,7 +325,7 @@ export default function TestimonialsPageFR() {
                   </Button>
                 </Link>
                 <Link href="/fr/#products">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Voir Tous les Produits
                   </Button>
                 </Link>

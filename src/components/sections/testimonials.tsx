@@ -55,14 +55,14 @@ export function Testimonials() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
               aria-label="View customer testimonials"
             >
               {t.nav.testimonials}
             </button>
             <button
               onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
-              className="inline-flex items-center px-6 py-3 bg-white text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white"
+              className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100"
               aria-label="Leave a Google review"
             >
               <svg
@@ -94,7 +94,7 @@ export function Testimonials() {
               >
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
                   <div
-                    className={`rounded-full border-4 border-white bg-white shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300`}
+                    className={`rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Image
                       src={`https://randomuser.me/api/portraits/${testimonial.name.includes("Jean") ||
@@ -137,7 +137,7 @@ export function Testimonials() {
                       .map((_, i) => (
                         <svg
                           key={i}
-                          className="w-4 h-4 text-yellow-400 fill-current"
+                          className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current"
                           viewBox="0 0 24 24"
                         >
                           <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
@@ -165,7 +165,7 @@ export function Testimonials() {
             href="https://g.page/r/CUB8bZ_ibMbwEBM/review"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group"
+            className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group"
           >
             {t.testimonialsSection?.readMoreReviews || "Read More Reviews"}
             <svg

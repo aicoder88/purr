@@ -52,7 +52,7 @@ export function BlogPreview() {
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
             {t.blogSection.fromOurBlog}
           </h2>
-          <p className="text-gray-600 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
             {t.blogSection.description}
           </p>
         </div>
@@ -61,7 +61,7 @@ export function BlogPreview() {
           {blogPosts.map((post, index) => (
             <div
               key={post.link || `blog-post-${index}`}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group"
+              className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
@@ -77,7 +77,7 @@ export function BlogPreview() {
                     quality={85}
                   />
                 </div>
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white font-medium">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white dark:text-gray-100 font-medium">
                   {t.blogSection.newPost}
                 </div>
               </div>
@@ -123,7 +123,7 @@ export function BlogPreview() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+            className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
             <Link href="/blog">
               {t.blogSection.viewAllArticles}

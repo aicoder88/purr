@@ -316,20 +316,20 @@ export default function CaseStudies() {
                     </div>
 
                     {/* Results */}
-                    <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
-                      <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center">
-                        <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                    <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-6 mb-6">
+                      <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4 flex items-center">
+                        <div className="w-8 h-8 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center mr-3">
                           <span className="text-green-600 dark:text-green-400 font-bold text-sm">3</span>
                         </div>
                         The Results
                       </h3>
-                      <p className="text-green-800 mb-6">{study.results.description}</p>
+                      <p className="text-green-800 dark:text-green-200 mb-6">{study.results.description}</p>
                       
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {study.results.metrics.map((metric, i) => (
                           <div key={i} className="text-center">
-                            <div className="text-2xl font-bold text-green-700 mb-1">{metric.value}</div>
-                            <div className="text-sm font-medium text-green-800">{metric.label}</div>
+                            <div className="text-2xl font-bold text-green-700 dark:text-green-300 mb-1">{metric.value}</div>
+                            <div className="text-sm font-medium text-green-800 dark:text-green-200">{metric.label}</div>
                             <div className="text-xs text-green-600 dark:text-green-400">{metric.timeframe}</div>
                           </div>
                         ))}
@@ -370,7 +370,7 @@ export default function CaseStudies() {
                 <div className="space-x-4">
                   <Link 
                     href="/products" 
-                    className="inline-flex items-center bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                    className="inline-flex items-center bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Purrify
                     <ArrowRight className="ml-2 h-4 w-4" />

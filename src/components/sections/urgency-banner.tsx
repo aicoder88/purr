@@ -22,7 +22,7 @@ export function UrgencyBanner() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4 relative overflow-hidden">
+    <div className="bg-gradient-to-r from-green-600 to-green-500 text-white dark:text-gray-100 py-3 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 text-center md:text-left">
           {/* Left side - Natural Message */}
@@ -35,7 +35,7 @@ export function UrgencyBanner() {
           {/* <div className="flex items-center space-x-2">
             <TrendingUp className="w-4 h-4" />
             <span className="text-sm font-medium">
-              Free shipping on orders over <span className="font-bold text-yellow-300">$50</span>
+              Free shipping on orders over <span className="font-bold text-yellow-300 dark:text-yellow-400">$50</span>
             </span>
           </div> */} {/* TODO: Restore when free shipping is available */}
           <div className="flex items-center space-x-2">
@@ -49,7 +49,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <Users className="w-4 h-4" />
             <span className="text-sm">
-              <span className="font-bold text-yellow-300">{recentPurchases}</span> orders this week
+              <span className="font-bold text-yellow-300 dark:text-yellow-400">{recentPurchases}</span> orders this week
             </span>
           </div>
         </div>

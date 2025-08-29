@@ -208,7 +208,7 @@ const CaseStudiesPage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
               <User className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Vraies Études de Cas Clients
@@ -244,7 +244,7 @@ const CaseStudiesPage: NextPage = () => {
               {metrics.map((metric, index) => (
                 <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <metric.icon className="w-8 h-8 text-white" />
+                    <metric.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
                   </div>
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">{metric.value}</div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
@@ -269,7 +269,7 @@ const CaseStudiesPage: NextPage = () => {
                   <div className="lg:w-1/3">
                     <div className="bg-gradient-to-br from-[#5B2EFF]/10 to-[#FF3131]/10 rounded-2xl p-8 text-center">
                       <div className="w-24 h-24 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <User className="w-12 h-12 text-white" />
+                        <User className="w-12 h-12 text-white dark:text-white dark:text-gray-100" />
                       </div>
                       <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                         {study.name}
@@ -341,7 +341,7 @@ const CaseStudiesPage: NextPage = () => {
                         </div>
                         <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
                           <h5 className="font-bold text-green-700 dark:text-green-400 mb-2">Après Purrify:</h5>
-                          <p className="text-sm text-green-600 dark:text-green-300">{study.beforeAfter.after}</p>
+                          <p className="text-sm text-green-600 dark:text-green-300 dark:text-green-400">{study.beforeAfter.after}</p>
                         </div>
                       </div>
 
@@ -369,7 +369,7 @@ const CaseStudiesPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Prêt à Écrire Votre Propre Histoire de Succès?
               </h2>
@@ -384,7 +384,7 @@ const CaseStudiesPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/products/compare">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Comparer Toutes les Tailles
                   </Button>
                 </Link>
@@ -404,7 +404,7 @@ const CaseStudiesPage: NextPage = () => {
                 Avez-vous vécu des résultats incroyables avec Purrify? Nous aimerions présenter votre histoire de succès et aider d'autres propriétaires de chats à découvrir la différence.
               </p>
               <Link href="/fr/support/contact">
-                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
                   Soumettez Votre Histoire
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>

@@ -24,7 +24,7 @@ const TRUST_BADGES: TrustBadge[] = [
     title: '30-Day Money Back',
     description: 'Not satisfied? Get a full refund within 30 days',
     highlight: '100% Guaranteed',
-    color: 'text-green-600'
+    color: 'text-green-600 dark:text-green-400'
   },
   {
     id: 'secure-payment',
@@ -32,7 +32,7 @@ const TRUST_BADGES: TrustBadge[] = [
     title: 'Secure Payment',
     description: 'SSL encrypted checkout with Stripe',
     highlight: '256-bit SSL',
-    color: 'text-blue-600'
+    color: 'text-blue-600 dark:text-blue-400 dark:text-blue-300'
   },
   {
     id: 'fast-shipping',
@@ -42,7 +42,7 @@ const TRUST_BADGES: TrustBadge[] = [
     // title: 'Fast & Free Shipping', // TODO: Restore when free shipping is available
     // description: 'Free shipping on orders over $25', // TODO: Restore when free shipping is available
     highlight: 'Same Day Processing',
-    color: 'text-purple-600'
+    color: 'text-purple-600 dark:text-purple-400'
   },
   {
     id: 'customer-satisfaction',
@@ -50,7 +50,7 @@ const TRUST_BADGES: TrustBadge[] = [
     title: '4.9/5 Customer Rating',
     description: 'Based on 2,500+ verified reviews',
     highlight: '98% Satisfaction',
-    color: 'text-yellow-600'
+    color: 'text-yellow-600 dark:text-yellow-400'
   },
   {
     id: 'trusted-customers',
@@ -58,7 +58,7 @@ const TRUST_BADGES: TrustBadge[] = [
     title: '10,000+ Happy Customers',
     description: 'Trusted by cat owners across Canada',
     highlight: 'Since 2019',
-    color: 'text-indigo-600'
+    color: 'text-indigo-600 dark:text-indigo-400'
   },
   {
     id: 'quality-guarantee',
@@ -66,7 +66,7 @@ const TRUST_BADGES: TrustBadge[] = [
     title: 'Premium Quality',
     description: 'Food-grade activated carbon, lab tested',
     highlight: 'Certified Safe',
-    color: 'text-red-600'
+    color: 'text-red-600 dark:text-red-400'
   }
 ];
 
@@ -205,7 +205,7 @@ export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ classNam
             <div className="font-semibold text-green-800 dark:text-green-200 text-sm">
               {badge.title}
             </div>
-            <div className="text-green-700 dark:text-green-300 text-xs">
+            <div className="text-green-700 dark:text-green-300 dark:text-green-400 text-xs">
               {badge.description}
             </div>
           </div>

@@ -118,7 +118,7 @@ const OurStoryPage: NextPage = () => {
             return (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-10 h-10 text-white" />
+                  <Users className="w-10 h-10 text-white dark:text-white dark:text-gray-100" />
                 </div>
                 <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-gray-100">
                   {teamMember.name}
@@ -164,7 +164,7 @@ const OurStoryPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Rejoignez Notre Histoire
               </h2>
@@ -180,7 +180,7 @@ const OurStoryPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/support/contact">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Contactez-Nous
                   </Button>
                 </Link>
@@ -212,7 +212,7 @@ const OurStoryPage: NextPage = () => {
                   Nous répondons généralement dans les 24 heures
                 </p>
                 <Link href="/fr/support/contact">
-                  <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+                  <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
                     Contactez-Nous
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>

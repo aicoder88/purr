@@ -380,7 +380,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
           </p>
           
           {/* Trust indicators */}
-          <div className="flex justify-center items-center space-x-8 text-sm text-gray-500">
+          <div className="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center">
               <Gift className="w-4 h-4 mr-2" />
               Free bonus items
@@ -399,7 +399,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
         {/* Smart recommendation notice */}
         {userProfile && (
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4 mb-8 text-center">
-            <Zap className="w-5 h-5 inline mr-2 text-blue-600" />
+            <Zap className="w-5 h-5 inline mr-2 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
             <span className="text-blue-800 dark:text-blue-300 font-medium">
               Smart recommendations based on your profile: 
               {!userProfile.hasPurchased && ' First-time buyer'}
@@ -423,7 +423,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
               {/* Badge */}
               {bundle.badge && (
                 <div className="absolute top-4 right-4 z-10">
-                  <Badge className={`bg-gradient-to-r ${bundle.color} text-white px-3 py-1 font-bold`}>
+                  <Badge className={`bg-gradient-to-r ${bundle.color} text-white dark:text-gray-100 px-3 py-1 font-bold`}>
                     {bundle.badge}
                   </Badge>
                 </div>
@@ -441,7 +441,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
               <CardHeader className="pb-4">
                 {/* Icon and Title */}
                 <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${bundle.color} flex items-center justify-center text-white mr-4`}>
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${bundle.color} flex items-center justify-center text-white dark:text-gray-100 mr-4`}>
                     {bundle.icon}
                   </div>
                   <div>
@@ -455,21 +455,21 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                   <div className="flex items-center justify-between mb-2">
                     <div>
                       <span className="text-3xl font-bold">${bundle.bundlePrice}</span>
-                      <span className="text-gray-500 ml-2">CAD</span>
+                      <span className="text-gray-500 dark:text-gray-400 ml-2">CAD</span>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg text-gray-400 line-through">${bundle.regularPrice}</p>
-                      <Badge className="bg-green-100 text-green-800">
+                      <p className="text-lg text-gray-400 dark:text-gray-500 line-through">${bundle.regularPrice}</p>
+                      <Badge className="bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 dark:text-green-200">
                         Save ${bundle.savings}
                       </Badge>
                     </div>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-green-600 font-semibold">
+                    <span className="text-green-600 dark:text-green-400 font-semibold">
                       {bundle.discount}% OFF Bundle Price
                     </span>
                     <div className="flex items-center">
-                      <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                      <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 mr-1" />
                       <span>Popularity: {bundle.popularity}%</span>
                     </div>
                   </div>
@@ -482,14 +482,14 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                   <h4 className="font-semibold mb-3">What's Included:</h4>
                   <div className="space-y-3">
                     {bundle.products.map((product, productIndex) => (
-                      <div key={productIndex} className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <div key={productIndex} className="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                         <div className="flex items-center flex-1">
-                          <div className="w-12 h-12 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg mr-3 flex items-center justify-center">
                             <span className="text-xs font-bold">{product.quantity}x</span>
                           </div>
                           <div className="flex-1">
                             <p className="font-medium text-sm">{product.name}</p>
-                            <p className="text-xs text-gray-500">{product.description}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{product.description}</p>
                             {product.badges && (
                               <div className="flex gap-1 mt-1">
                                 {product.badges.map((badge, badgeIndex) => (
@@ -503,14 +503,14 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                         </div>
                         <div className="text-right">
                           {product.bundlePrice === 0 ? (
-                            <span className="text-green-600 font-bold text-sm">FREE</span>
+                            <span className="text-green-600 dark:text-green-400 font-bold text-sm">FREE</span>
                           ) : (
                             <>
                               {product.bundlePrice && (
                                 <p className="font-semibold text-sm">${product.bundlePrice}</p>
                               )}
                               {!product.bundlePrice && (
-                                <p className="text-gray-400 line-through text-sm">${product.regularPrice}</p>
+                                <p className="text-gray-400 dark:text-gray-500 line-through text-sm">${product.regularPrice}</p>
                               )}
                             </>
                           )}
@@ -542,7 +542,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                   <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                     <div className="flex items-center mb-2">
                       {[...Array(bundle.testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                        <Star key={i} className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
                       ))}
                     </div>
                     <p className="text-sm italic mb-2">"{bundle.testimonial.text}"</p>
@@ -554,7 +554,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                 <div className="flex space-x-3">
                   <Button
                     onClick={() => handleBundleSelect(bundle)}
-                    className={`flex-1 bg-gradient-to-r ${bundle.color} hover:opacity-90 text-white font-bold py-3 transition-all`}
+                    className={`flex-1 bg-gradient-to-r ${bundle.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all`}
                   >
                     Choose This Bundle
                   </Button>
@@ -568,7 +568,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                 </div>
 
                 {/* Target audience */}
-                <p className="text-xs text-gray-500 text-center mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
                   Perfect for: {bundle.targetAudience}
                 </p>
               </CardContent>
@@ -582,24 +582,24 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Gift className="w-6 h-6 text-green-600" />
+                <Gift className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
               <h4 className="font-semibold mb-2">30-Day Money Back</h4>
-              <p className="text-sm text-gray-600">Not happy? Return everything for a full refund</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Not happy? Return everything for a full refund</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Truck className="w-6 h-6 text-blue-600" />
+                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
               </div>
               <h4 className="font-semibold mb-2">Free Shipping</h4>
-              <p className="text-sm text-gray-600">All bundles ship free across Canada</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">All bundles ship free across Canada</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Star className="w-6 h-6 text-purple-600" />
+                <Star className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
               <h4 className="font-semibold mb-2">Quality Guarantee</h4>
-              <p className="text-sm text-gray-600">Premium products, carefully selected</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Premium products, carefully selected</p>
             </div>
           </div>
         </div>

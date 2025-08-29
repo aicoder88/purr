@@ -205,7 +205,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             key={star}
             className={`${sizeClasses[size]} ${
               star <= rating 
-                ? 'text-yellow-400 fill-current' 
+                ? 'text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current' 
                 : 'text-gray-300 dark:text-gray-600'
             }`}
           />
@@ -250,7 +250,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     {review.userName}
                   </span>
                   {review.verified && (
-                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                   )}
                 </div>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -270,7 +270,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
           <Button 
             variant="outline" 
-            className="w-full border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white"
+            className="w-full border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-white dark:text-gray-100"
           >
             View All Reviews
           </Button>
@@ -335,7 +335,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             <div className="flex flex-wrap gap-4">
               {/* Rating Filter */}
               <div className="flex items-center space-x-2">
-                <Filter className="w-4 h-4 text-gray-500" />
+                <Filter className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                 <select
                   value={filterRating || ''}
                   onChange={(e) => setFilterRating(e.target.value ? parseInt(e.target.value) : null)}
@@ -365,7 +365,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
             {/* Sort Options */}
             <div className="flex items-center space-x-2">
-              <SortAsc className="w-4 h-4 text-gray-500" />
+              <SortAsc className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
@@ -390,7 +390,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-[#5B2EFF] rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-white" />
+                  <User className="w-5 h-5 text-white dark:text-white dark:text-gray-100" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-2">
@@ -398,7 +398,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                       {review.userName}
                     </span>
                     {review.verified && (
-                      <div className="flex items-center space-x-1 text-green-600">
+                      <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                         <CheckCircle className="w-4 h-4" />
                         <span className="text-xs">Verified Purchase</span>
                       </div>
@@ -433,18 +433,18 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             {/* Review Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
               <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 transition-colors">
+                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:text-green-400 transition-colors">
                   <ThumbsUp className="w-4 h-4" />
                   <span className="text-sm">Helpful ({review.helpful})</span>
                 </button>
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 transition-colors">
+                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:text-red-400 transition-colors">
                   <ThumbsDown className="w-4 h-4" />
                   <span className="text-sm">({review.notHelpful})</span>
                 </button>
               </div>
               
               {review.wouldRecommend && (
-                <div className="flex items-center space-x-1 text-green-600">
+                <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                   <CheckCircle className="w-4 h-4" />
                   <span className="text-sm font-medium">Recommends this product</span>
                 </div>
@@ -459,7 +459,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="text-center">
           <Button 
             variant="outline" 
-            className="border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white"
+            className="border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-white dark:text-gray-100"
           >
             Load More Reviews
           </Button>

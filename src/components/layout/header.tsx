@@ -82,7 +82,7 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -130,7 +130,7 @@ export function Header() {
                     {((item.label === 'Products' && isProductsDropdownOpen) || 
                       (item.label === 'Learn' && isLearnDropdownOpen)) && (
                       <div 
-                        className="absolute top-full left-0 mt-1 w-48 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200/50 dark:border-gray-600/50 z-50"
+                        className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 dark:border-gray-600/50 z-50"
                         onMouseEnter={() => {
                           if (item.label === 'Products') setIsProductsDropdownOpen(true);
                           if (item.label === 'Learn') setIsLearnDropdownOpen(true);
@@ -150,7 +150,7 @@ export function Header() {
                           <Link
                             key={dropdownIndex}
                             href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-1"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-1"
                           >
                             {dropdownItem.label}
                           </Link>
@@ -174,7 +174,7 @@ export function Header() {
             <ThemeToggle />
             <Button
               onClick={scrollToProducts}
-              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               Buy Now!
@@ -205,7 +205,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+          <div className="md:hidden border-t border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item, index) => (
                 <div key={index}>
@@ -218,7 +218,7 @@ export function Header() {
                         <Link
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-6 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                          className="block px-6 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                           onClick={closeMenu}
                         >
                           {dropdownItem.label}
@@ -228,7 +228,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
                       {item.label}
@@ -244,7 +244,7 @@ export function Header() {
                     scrollToProducts();
                     closeMenu();
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   Buy Now!

@@ -8,14 +8,14 @@ export function BarChart({ data, title, className = "" }: BarChartProps) {
   const maxValue = Math.max(...data.map(d => d.value));
   
   return (
-    <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">{title}</h3>
+    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="relative">
             <div className="flex justify-between items-center mb-1">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</span>
-              <span className="text-sm font-bold text-gray-900 dark:text-white">{item.value.toLocaleString()}</span>
+              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">{item.value.toLocaleString()}</span>
             </div>
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
               <div
@@ -44,8 +44,8 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
   const range = maxValue - minValue;
   
   return (
-    <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">{title}</h3>
+    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="relative h-48">
         <svg className="w-full h-full" viewBox="0 0 400 180">
           <defs>
@@ -99,7 +99,7 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
           {data.map((point, index) => (
             <div key={index} className="text-center">
               <div className="text-xs text-gray-600 dark:text-gray-400">{point.label}</div>
-              <div className="text-sm font-bold text-gray-900 dark:text-white">
+              <div className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">
                 ${point.value.toLocaleString()}
               </div>
             </div>
@@ -121,8 +121,8 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
   let currentAngle = 0;
   
   return (
-    <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">{title}</h3>
+    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="flex items-center justify-center space-x-8">
         <div className="relative">
           <svg width="150" height="150" className="transform -rotate-90">
@@ -158,7 +158,7 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
                 style={{ backgroundColor: item.color }}
               />
               <span className="text-sm text-gray-700 dark:text-gray-300">{item.label}</span>
-              <span className="text-sm font-bold text-gray-900 dark:text-white">
+              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">
                 {((item.value / total) * 100).toFixed(1)}%
               </span>
             </div>
@@ -208,7 +208,7 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white">{percentage}%</span>
+          <span className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100">{percentage}%</span>
         </div>
       </div>
       <span className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300 text-center">{label}</span>

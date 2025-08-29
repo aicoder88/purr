@@ -65,7 +65,7 @@ export function SkeletonLoader({ className = '', lines = 3 }: { className?: stri
 // Page loading overlay
 export function PageLoader() {
   return (
-    <div className="fixed inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-white dark:bg-gray-800/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center">
       <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
         <LoadingSpinner size="lg" text="Loading..." />
       </div>

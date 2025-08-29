@@ -47,7 +47,7 @@ export function ShoppingCart() {
           >
             <ShoppingCartIcon className="h-6 w-6 sm:h-5 sm:w-5 text-gray-700 dark:text-gray-300" />
             {items.length > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white dark:text-white animate-pulse">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white dark:text-white dark:text-gray-100 animate-pulse">
                 {items.length}
               </span>
             )}
@@ -64,7 +64,7 @@ export function ShoppingCart() {
                 </div>
               </div>
               <SheetClose asChild>
-                <Button variant="ghost" size="icon" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                <Button variant="ghost" size="icon" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 dark:text-gray-300">
                   <X className="h-4 w-4" />
                 </Button>
               </SheetClose>
@@ -140,7 +140,7 @@ export function ShoppingCart() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="h-7 px-2 text-xs text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
+                              className="h-7 px-2 text-xs text-gray-500 dark:text-gray-400 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
                               onClick={() => removeFromCart(item.id)}
                             >
                               <Trash2 className="h-3 w-3 mr-1" />
@@ -171,7 +171,7 @@ export function ShoppingCart() {
                   </div>
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
                   onClick={handleCheckout}
                 >
                   Proceed to Checkout

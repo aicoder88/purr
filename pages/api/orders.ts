@@ -23,7 +23,7 @@ export default async function handler(
     // Create order in database
     const order = await prisma.order.create({
       data: {
-        total,
+        totalAmount: total,
         status: 'PENDING',
         customer: {
           create: {
