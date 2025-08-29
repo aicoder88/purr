@@ -246,7 +246,7 @@ const CaseStudiesPage: NextPage = () => {
               {metrics.map((metric, index) => (
                 <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <metric.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                    <metric.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
                   <div className="text-3xl font-bold text-[#FF3131] mb-2">{metric.value}</div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
@@ -271,7 +271,7 @@ const CaseStudiesPage: NextPage = () => {
                   <div className="lg:w-1/3">
                     <div className="bg-gradient-to-br from-[#5B2EFF]/10 to-[#FF3131]/10 rounded-2xl p-8 text-center">
                       <div className="w-24 h-24 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <User className="w-12 h-12 text-white dark:text-white dark:text-gray-100" />
+                        <User className="w-12 h-12 text-white dark:text-gray-100" />
                       </div>
                       <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                         {study.name}
@@ -286,7 +286,7 @@ const CaseStudiesPage: NextPage = () => {
                       </div>
                       <div className="flex justify-center">
                         {[...Array(study.satisfaction)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
+                          <Star key={i} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 fill-current" />
                         ))}
                       </div>
                     </div>
@@ -343,7 +343,7 @@ const CaseStudiesPage: NextPage = () => {
                         </div>
                         <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
                           <h5 className="font-bold text-green-700 dark:text-green-400 mb-2">After Purrify:</h5>
-                          <p className="text-sm text-green-600 dark:text-green-300 dark:text-green-400">{study.beforeAfter.after}</p>
+                          <p className="text-sm text-green-600 dark:text-green-300">{study.beforeAfter.after}</p>
                         </div>
                       </div>
 
@@ -406,7 +406,7 @@ const CaseStudiesPage: NextPage = () => {
                 Have you experienced amazing results with Purrify? We'd love to feature your success story and help other cat owners discover the difference.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
+                <Button size="lg" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
                   Submit Your Story
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>

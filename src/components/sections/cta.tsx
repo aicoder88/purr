@@ -7,7 +7,7 @@ import Image from "next/image";
 export function CTA() {
   const { t } = useTranslation();
   return (
-    <section className="py-12 relative overflow-hidden bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] opacity-90 transition-colors duration-300">
+    <section className="py-12 relative overflow-hidden bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] opacity-90 dark:opacity-95 transition-colors duration-300">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] opacity-90"></div>
 
@@ -23,7 +23,7 @@ export function CTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-black/30 rounded-3xl p-10 border border-white/20 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-white/20 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80"
             alt="Happy cat"
@@ -35,7 +35,7 @@ export function CTA() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
               {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
-            <p className="text-white dark:text-white dark:text-gray-100/90 text-lg">
+            <p className="text-white dark:text-gray-100/90 text-lg">
               {t.cta?.subtitle || "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
             </p>
             <div className="mt-8 flex items-center space-x-4">
@@ -68,7 +68,7 @@ export function CTA() {
                   />
                 </div>
               </div>
-              <p className="text-white dark:text-white dark:text-gray-100/90 text-sm font-medium">
+              <p className="text-white dark:text-gray-100/90 text-sm font-medium">
                 {t.cta?.joinText || "Join 1,000+ Happy cat Families - Visit your local store"}
               </p>
             </div>

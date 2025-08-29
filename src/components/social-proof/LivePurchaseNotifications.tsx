@@ -215,14 +215,14 @@ export function LivePurchaseNotifications({
             {/* Product Icon */}
             <div className="flex-shrink-0">
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                <ShoppingBag className="w-5 h-5 text-white dark:text-white dark:text-gray-100" />
+                <ShoppingBag className="w-5 h-5 text-white dark:text-gray-100" />
               </div>
             </div>
 
             {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center space-x-1 mb-1">
-                <p className="text-sm font-medium text-gray-900 dark:text-white dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                   {notification.customerName}
                 </p>
                 {notification.verified && (
@@ -254,7 +254,7 @@ export function LivePurchaseNotifications({
                 e.stopPropagation();
                 setNotifications(prev => prev.filter(n => n.id !== notification.id));
               }}
-              className="flex-shrink-0 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:text-gray-300 transition-colors"
+              className="flex-shrink-0 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />

@@ -156,7 +156,7 @@ const ShippingPage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Truck className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Information d'Expédition
@@ -197,7 +197,7 @@ const ShippingPage: NextPage = () => {
                 >
                   {option.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold">
+                      <span className="bg-[#FF3131] text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold">
                         Plus Populaire
                       </span>
                     </div>
@@ -205,7 +205,7 @@ const ShippingPage: NextPage = () => {
                   
                   <div className="text-center">
                     <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <option.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                      <option.icon className="w-8 h-8 text-white dark:text-gray-100" />
                     </div>
                     
                     <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
@@ -253,7 +253,7 @@ const ShippingPage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100">
+                  <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Province/Territoire</th>
                       <th className="px-6 py-4 text-center font-bold">Expédition Standard</th>
@@ -351,7 +351,7 @@ const ShippingPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CreditCard className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                  <CreditCard className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Commande Passée
@@ -363,7 +363,7 @@ const ShippingPage: NextPage = () => {
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Package className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                  <Package className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Traitement
@@ -375,7 +375,7 @@ const ShippingPage: NextPage = () => {
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Truck className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                  <Truck className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Expédié
@@ -387,7 +387,7 @@ const ShippingPage: NextPage = () => {
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#FFB800] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                  <Shield className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Livré
@@ -430,7 +430,7 @@ const ShippingPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Prêt à Commander Purrify?
               </h2>

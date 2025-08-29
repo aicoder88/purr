@@ -332,9 +332,9 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                     : 'border-gray-200 dark:border-gray-700 hover:border-[#5B2EFF]/50'
                 } ${
                   payment.id === 'apple-pay' 
-                    ? 'bg-black hover:bg-gray-800 text-white dark:text-white dark:text-gray-100' 
+                    ? 'bg-black hover:bg-gray-800 text-white dark:text-gray-100' 
                     : payment.id === 'google-pay'
-                    ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-white dark:text-gray-100'
+                    ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-gray-100'
                     : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'
                 }`}
                 variant="outline"

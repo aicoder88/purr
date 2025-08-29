@@ -163,7 +163,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Le Guide Complet de Litière pour Chat
@@ -206,7 +206,7 @@ const CatLitterGuidePage: NextPage = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'}`} 
+                          className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 dark:text-yellow-300 fill-current' : 'text-gray-300 dark:text-gray-600'}`} 
                         />
                       ))}
                     </div>
@@ -218,7 +218,7 @@ const CatLitterGuidePage: NextPage = () => {
                       <ul className="space-y-1">
                         {litter.pros.map((pro, i) => (
                           <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                             {pro}
                           </li>
                         ))}
@@ -230,7 +230,7 @@ const CatLitterGuidePage: NextPage = () => {
                       <ul className="space-y-1">
                         {litter.cons.map((con, i) => (
                           <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <XCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
+                            <XCircle className="w-4 h-4 text-red-500 dark:text-red-400 mr-2 flex-shrink-0" />
                             {con}
                           </li>
                         ))}
@@ -259,7 +259,7 @@ const CatLitterGuidePage: NextPage = () => {
               {maintenanceTips.map((tip, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <tip.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                    <tip.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                     {tip.title}
@@ -311,7 +311,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Prêt à Améliorer Votre Expérience de Bac à Litière?
               </h2>
@@ -326,7 +326,7 @@ const CatLitterGuidePage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/customers/testimonials">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Lire les Témoignages
                   </Button>
                 </Link>

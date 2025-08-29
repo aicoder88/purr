@@ -174,9 +174,9 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
         <div key={stepName} className="flex items-center">
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
             step === stepName 
-              ? 'bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100' 
+              ? 'bg-[#5B2EFF] text-white dark:text-gray-100' 
               : index < ['contact', 'shipping', 'review'].indexOf(step)
-              ? 'bg-green-500 text-white dark:text-white dark:text-gray-100'
+              ? 'bg-green-500 text-white dark:text-gray-100'
               : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
           }`}>
             {index < ['contact', 'shipping', 'review'].indexOf(step) ? (
@@ -281,7 +281,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               />
             </div>
 
-            <Button onClick={handleNext} className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
+            <Button onClick={handleNext} className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
               Continue to Shipping
             </Button>
           </div>
@@ -384,7 +384,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               </Button>
               <Button 
                 onClick={handleNext} 
-                className="flex-1 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100"
+                className="flex-1 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100"
               >
                 Review Order
               </Button>
@@ -445,7 +445,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <Button 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white dark:text-gray-100"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">

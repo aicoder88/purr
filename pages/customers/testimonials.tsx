@@ -210,7 +210,7 @@ export default function TestimonialsPage() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+                      <stat.icon className="w-8 h-8 text-white dark:text-gray-100" />
                     </div>
                     <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {stat.number}
@@ -257,7 +257,7 @@ export default function TestimonialsPage() {
                     <div className="flex-1">
                       <div className="flex items-center mb-2">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
                         ))}
                       </div>
                       <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-1">
@@ -288,7 +288,7 @@ export default function TestimonialsPage() {
                       <span className="text-gray-600 dark:text-gray-400">
                         Cat(s): {testimonial.catNames.join(', ')}
                       </span>
-                      <span className="text-gray-500 dark:text-gray-500">
+                      <span className="text-gray-500 dark:text-gray-400">
                         {new Date(testimonial.date).toLocaleDateString()}
                       </span>
                     </div>
@@ -296,7 +296,7 @@ export default function TestimonialsPage() {
                       <span className="text-[#5B2EFF] dark:text-[#3694FF] font-medium">
                         Used: {testimonial.productUsed}
                       </span>
-                      <span className="text-gray-500 dark:text-gray-500">
+                      <span className="text-gray-500 dark:text-gray-400">
                         {testimonial.helpful} found helpful
                       </span>
                     </div>
@@ -310,7 +310,7 @@ export default function TestimonialsPage() {
         {/* CTA Section */}
         <section className="py-16 bg-white dark:bg-gray-800/50 dark:bg-gray-800/50">
           <Container>
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-white dark:text-gray-100">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-gray-100">
               <h2 className="text-4xl font-bold mb-4">
                 Ready to Join Our Happy Customers?
               </h2>

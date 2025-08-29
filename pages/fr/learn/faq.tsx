@@ -115,7 +115,7 @@ const FAQPage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 {t.faqPage.title}
@@ -125,13 +125,13 @@ const FAQPage: NextPage = () => {
               </p>
               
               <div className="max-w-2xl mx-auto relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                   type="text"
                   placeholder={t.faqPage.searchPlaceholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 dark:text-gray-100 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
                 />
               </div>
             </div>
@@ -189,7 +189,7 @@ const FAQPage: NextPage = () => {
                       onClick={() => setSelectedCategory(category.id)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                         selectedCategory === category.id
-                          ? 'bg-[#5B2EFF] text-white dark:text-white dark:text-gray-100'
+                          ? 'bg-[#5B2EFF] text-white dark:text-gray-100'
                           : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
@@ -199,7 +199,7 @@ const FAQPage: NextPage = () => {
                       </div>
                       <span className={`text-sm px-2 py-1 rounded-full ${
                         selectedCategory === category.id
-                          ? 'bg-white/20 text-white dark:text-white dark:text-gray-100'
+                          ? 'bg-white/20 text-white dark:text-gray-100'
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
                       }`}>
                         {category.count}
@@ -248,9 +248,9 @@ const FAQPage: NextPage = () => {
                           </div>
                         </div>
                         {openItems.includes(item.id) ? (
-                          <ChevronUp className="w-5 h-5 text-gray-400" />
+                          <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400" />
+                          <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                         )}
                       </button>
                       
@@ -279,7 +279,7 @@ const FAQPage: NextPage = () => {
                     <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
                       {t.faqPage.noQuestionsFound}
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-500">
+                    <p className="text-gray-500 dark:text-gray-400">
                       {t.faqPage.adjustSearchTerms}
                     </p>
                   </div>
@@ -308,7 +308,7 @@ const FAQPage: NextPage = () => {
                     {t.faqPage.detailedEmailHelp}
                   </p>
                   <Link href="/fr/support/contact">
-                    <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white dark:text-gray-100">
+                    <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
                       {t.faqPage.contactUs}
                     </Button>
                   </Link>
@@ -320,7 +320,7 @@ const FAQPage: NextPage = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Chattez avec nous en temps réel
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#FF3131] text-[#FF3131] hover:bg-[#FF3131] hover:text-white dark:text-white dark:text-gray-100">
+                  <Button size="sm" variant="outline" className="border-[#FF3131] text-[#FF3131] hover:bg-[#FF3131] hover:text-white dark:text-gray-100">
                     Commencer Chat
                   </Button>
                 </div>
@@ -331,7 +331,7 @@ const FAQPage: NextPage = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Parlez directement avec notre équipe
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-white dark:text-gray-100">
+                  <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100">
                     Appeler Maintenant
                   </Button>
                 </div>
@@ -343,7 +343,7 @@ const FAQPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white dark:text-white dark:text-gray-100 max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Prêt à Essayer Purrify ?
               </h2>
@@ -358,7 +358,7 @@ const FAQPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href="/fr/products/compare">
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
                     Comparer Toutes Les Tailles
                   </Button>
                 </Link>

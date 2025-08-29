@@ -459,7 +459,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                     </div>
                     <div className="text-right">
                       <p className="text-lg text-gray-400 dark:text-gray-500 line-through">${bundle.regularPrice}</p>
-                      <Badge className="bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 dark:text-green-200">
+                      <Badge className="bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200">
                         Save ${bundle.savings}
                       </Badge>
                     </div>
@@ -469,7 +469,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                       {bundle.discount}% OFF Bundle Price
                     </span>
                     <div className="flex items-center">
-                      <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 mr-1" />
+                      <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 mr-1" />
                       <span>Popularity: {bundle.popularity}%</span>
                     </div>
                   </div>
@@ -542,7 +542,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                   <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                     <div className="flex items-center mb-2">
                       {[...Array(bundle.testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
+                        <Star key={i} className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current" />
                       ))}
                     </div>
                     <p className="text-sm italic mb-2">"{bundle.testimonial.text}"</p>

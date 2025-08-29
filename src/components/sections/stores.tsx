@@ -252,7 +252,7 @@ export function Stores() {
                         />
                       ) : (
                         <svg 
-                          className="w-6 h-6 text-white dark:text-white dark:text-gray-100" 
+                          className="w-6 h-6 text-white dark:text-gray-100" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -309,7 +309,7 @@ export function Stores() {
                         href={store.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 transition-colors duration-200 ml-2"
+                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
                       >
                         <svg
                           className="w-4 h-4 mr-1"

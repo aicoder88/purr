@@ -62,7 +62,7 @@ const FreePage: NextPage = () => {
         <link rel="alternate" hrefLang="en" href="https://purrify.ca/free" />
       </Head>
       
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 relative overflow-hidden">
         {/* Subtle background pattern with paw prints */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-repeat"
@@ -71,20 +71,20 @@ const FreePage: NextPage = () => {
         </div>
         
         {/* Decorative paw prints */}
-        <div className="absolute top-20 right-10 text-indigo-200 opacity-30 transform rotate-12">
+        <div className="absolute top-20 right-10 text-indigo-200 dark:text-indigo-300 opacity-30 transform rotate-12">
           <PawPrint size={60} />
         </div>
-        <div className="absolute bottom-20 left-10 text-indigo-200 opacity-30 transform -rotate-12">
+        <div className="absolute bottom-20 left-10 text-indigo-200 dark:text-indigo-300 opacity-30 transform -rotate-12">
           <PawPrint size={40} />
         </div>
         
         <Container>
           <div className="max-w-4xl mx-auto">
             {/* Image and headline in a flex container */}
-            <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50">
+            <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white/80 dark:bg-gray-800/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50 dark:border-gray-700/50">
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
+                <div className="bg-red-600 text-white dark:text-gray-100 text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
                   {t.freeTrialPage.urgentBanner}
                 </div>
               </div>
@@ -100,7 +100,7 @@ const FreePage: NextPage = () => {
                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
                     priority
                   />
-                  <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
+                  <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
                     {t.freeTrialPage.free}
                   </div>
                 </div>
@@ -136,7 +136,7 @@ const FreePage: NextPage = () => {
                     </div>
                   </h1>
                   
-                  <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                  <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg border border-indigo-100 dark:border-indigo-700">
                     <p className="text-indigo-800 dark:text-indigo-300 font-medium">
                       {t.freeTrialPage.limitedTimeOffer}
                     </p>
@@ -145,28 +145,28 @@ const FreePage: NextPage = () => {
               </div>
             </div>
             
-            <div className="mb-12 bg-white/90 p-8 rounded-xl shadow-lg border-l-4 border-red-600 border-t border-r border-b border-indigo-100/50">
+            <div className="mb-12 bg-white/90 dark:bg-gray-800/90 p-8 rounded-xl shadow-lg border-l-4 border-red-600 border-t border-r border-b border-indigo-100/50 dark:border-gray-700/50">
               <div className="flex items-start space-x-4">
-                <PawPrint className="h-6 w-6 text-red-600 mt-1 flex-shrink-0" />
+                <PawPrint className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-lg text-[#333333] mb-6 leading-relaxed">
-                    <strong className="text-red-600 text-xl">{t.freeTrialPage.attention}</strong> {t.freeTrialPage.instantOdorElimination}
+                  <p className="text-lg text-[#333333] dark:text-gray-200 mb-6 leading-relaxed">
+                    <strong className="text-red-600 dark:text-red-400 text-xl">{t.freeTrialPage.attention}</strong> {t.freeTrialPage.instantOdorElimination}
                   </p>
-                  <p className="text-lg text-[#333333] mb-6 leading-relaxed">
+                  <p className="text-lg text-[#333333] dark:text-gray-200 mb-6 leading-relaxed">
                     Voici l'offre : Nous sommes tellement convaincus que Purrify transformera votre maison en un sanctuaire frais et sans odeur que nous faisons quelque chose de fou...
                   </p>
-                  <p className="text-lg text-[#333333] mb-6 leading-relaxed">
-                    Nous offrons des <strong className="text-red-600">sacs d'essai GRATUITS aux 500 premiers propriétaires de chats</strong> qui les réclament.
+                  <p className="text-lg text-[#333333] dark:text-gray-200 mb-6 leading-relaxed">
+                    Nous offrons des <strong className="text-red-600 dark:text-red-400">sacs d'essai GRATUITS aux 500 premiers propriétaires de chats</strong> qui les réclament.
                   </p>
-                  <p className="text-lg text-[#333333] leading-relaxed">
+                  <p className="text-lg text-[#333333] dark:text-gray-200 leading-relaxed">
                     Pourquoi ferions-nous cela ? Parce qu'une fois que vous aurez expérimenté ce que c'est que de recevoir des invités SANS vous inquiéter de "cette odeur"... une fois que vous ressentirez le soulagement de ne jamais retenir votre souffle lorsque vous passez devant la litière... une fois que vous découvrirez la joie d'une maison vraiment fraîche...
-                    <strong className="text-indigo-700"> Vous deviendrez un client Purrify à vie.</strong>
+                    <strong className="text-indigo-700 dark:text-indigo-300"> Vous deviendrez un client Purrify à vie.</strong>
                   </p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl shadow-xl border-2 border-indigo-200 transform transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-8 rounded-xl shadow-xl border-2 border-indigo-200 dark:border-indigo-700 transform transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
               {/* Subtle paw print background for form */}
               <div className="absolute inset-0 opacity-5 pointer-events-none">
                 <PawPrint className="absolute top-5 right-5 h-20 w-20" />
@@ -181,7 +181,7 @@ const FreePage: NextPage = () => {
                       alt="Comparaison montrant la litière avant et après l'utilisation de Purrify - démontrant les résultats d'élimination des odeurs"
                       width={600}
                       height={400}
-                      className="rounded-lg shadow-md border border-indigo-200"
+                      className="rounded-lg shadow-md border border-indigo-200 dark:border-indigo-700"
                       useModernFormat={true}
                       quality={85}
                     />
@@ -189,71 +189,71 @@ const FreePage: NextPage = () => {
                   <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-300 mb-4">{t.freeTrialPage.whatYouGet}</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.freeTrialBag}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.instantOdorElimination}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.completeInstructions}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>Pas de frais d'expédition, pas de coûts cachés, pas de piège</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>Zéro engagement - c'est notre cadeau pour vous</span>
                     </li>
                   </ul>
                 </div>
                 
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-                  <h3 className="text-xl font-bold text-red-600 mb-2">ATTENTION : Cette offre disparaît dans :</h3>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-4 mb-8">
+                  <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">ATTENTION : Cette offre disparaît dans :</h3>
                   <div className="flex justify-center space-x-4 mb-2">
-                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white dark:text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
                   </div>
-                  <div className="flex justify-center text-xs text-gray-600 space-x-16 mb-4">
+                  <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 space-x-16 mb-4">
                     <span>HEURES</span>
                     <span>MINS</span>
                     <span>SECS</span>
                   </div>
-                  <p className="text-center text-red-800 font-medium">Limité aux 500 premiers propriétaires de chats seulement.</p>
-                  <p className="text-center text-red-800 font-medium">Déjà réclamés : {claimedBags} sur 500</p>
+                  <p className="text-center text-red-800 dark:text-red-300 font-medium">Limité aux 500 premiers propriétaires de chats seulement.</p>
+                  <p className="text-center text-red-800 dark:text-red-300 font-medium">Déjà réclamés : {claimedBags} sur 500</p>
                   <p className="text-center font-bold mt-2">Votre sac gratuit vous attend - mais seulement si vous agissez maintenant.</p>
                 </div>
                 
-                <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
+                <div className="mb-8 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-700 rounded-lg p-4">
                   <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-300 mb-4">Ce que disent nos testeurs bêta :</h3>
                   <div className="space-y-4">
-                    <div className="bg-white p-3 rounded-md shadow-sm">
+                    <div className="bg-white dark:bg-gray-800 p-3 rounded-md shadow-sm">
                       <p className="italic">"Je n'arrivais pas à y croire. En quelques HEURES, toute ma maison sentait à nouveau le frais. J'ai même invité ma belle-mère pour la première fois depuis des mois !"</p>
                       <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- Jennifer M., Montréal</p>
                     </div>
-                    <div className="bg-white p-3 rounded-md shadow-sm">
+                    <div className="bg-white dark:bg-gray-800 p-3 rounded-md shadow-sm">
                       <p className="italic">"Mon mari pensait que j'avais complètement jeté la litière. L'odeur avait simplement... disparu."</p>
                       <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- Lisa K., Mirabel, QC</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
+                <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
                   <div className="flex items-center justify-center mb-4">
-                    <PawPrint className="h-8 w-8 text-red-600 mr-3" />
-                    <h2 className="text-3xl font-bold text-red-600 text-center">RÉCLAMEZ VOTRE SAC GRATUIT MAINTENANT</h2>
+                    <PawPrint className="h-8 w-8 text-red-600 dark:text-red-400 mr-3" />
+                    <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 text-center">RÉCLAMEZ VOTRE SAC GRATUIT MAINTENANT</h2>
                   </div>
-                  <p className="text-center text-red-800 mb-2">
+                  <p className="text-center text-red-800 dark:text-red-300 mb-2">
                     <span className="font-bold">⚠️ ATTENTION :</span> En raison de la forte demande, nous ne pouvons pas garantir la disponibilité après l'expiration du minuteur.
                   </p>
                 </div>
                 <FreeGiveawayForm />
                 
-                <p className="text-xs text-center text-gray-500 mt-6">
+                <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-6">
                   100% Gratuit. Aucune carte de crédit requise.<br />
                   Offre à durée limitée. Un sac gratuit par foyer. Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment.
                 </p>

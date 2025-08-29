@@ -227,7 +227,7 @@ export function SubscriptionPlans({
               {/* Badge */}
               {plan.badge && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Badge className={`bg-gradient-to-r ${plan.color} text-white dark:text-gray-100 px-4 py-1 text-sm font-bold`}>
+                  <Badge className={`bg-gradient-to-r ${plan.color} text-white px-4 py-1 text-sm font-bold shadow-lg`}>
                     {plan.badge}
                   </Badge>
                 </div>
@@ -235,7 +235,7 @@ export function SubscriptionPlans({
 
               <CardHeader className="text-center pb-4">
                 {/* Icon */}
-                <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center text-white dark:text-gray-100`}>
+                <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center text-white`}>
                   {plan.icon}
                 </div>
 
@@ -255,7 +255,7 @@ export function SubscriptionPlans({
                       <span className="text-lg text-gray-400 dark:text-gray-500 line-through">
                         ${plan.originalPrice}
                       </span>
-                      <Badge variant="secondary" className="bg-green-100 text-green-800 dark:text-green-200">
+                      <Badge variant="secondary" className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200">
                         Save {plan.discount}%
                       </Badge>
                     </div>
@@ -346,7 +346,7 @@ export function SubscriptionPlans({
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
+                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-300" />
               </div>
               <h4 className="font-semibold mb-2">Never Run Out</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -391,7 +391,7 @@ export function SubscriptionPlans({
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">
@@ -404,7 +404,7 @@ export function SubscriptionPlans({
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">

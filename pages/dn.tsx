@@ -64,16 +64,16 @@ export default function DriverNetworkPresentation() {
             <div className="flex justify-between items-center py-3">
               <button
                 onClick={() => navigateTab('prev')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#276EF1] to-blue-600 text-white dark:text-white dark:text-gray-100 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#276EF1] to-blue-600 text-white dark:text-gray-100 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
               >
                 <span className="text-sm mr-2">←</span>
                 Previous
               </button>
               
               <div className="text-center">
-                <div className="text-white dark:text-white dark:text-gray-100 mb-1">
+                <div className="text-white dark:text-gray-100 mb-1">
                   <h1 className="text-lg font-bold">Driver Network Inc.</h1>
-                  <p className="text-xs text-gray-300 dark:text-gray-600">Partnership Proposal - Uber Freight</p>
+                  <p className="text-xs text-gray-300 dark:text-gray-400">Partnership Proposal - Uber Freight</p>
                 </div>
                 <div className="flex space-x-2">
                   {['overview', 'performance', 'capabilities', 'expansion', 'proposal'].map((tab, index) => (
@@ -89,7 +89,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={() => navigateTab('next')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-blue-600 to-[#276EF1] text-white dark:text-white dark:text-gray-100 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-blue-600 to-[#276EF1] text-white dark:text-gray-100 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 min-w-[120px]"
               >
                 Next
                 <span className="text-sm ml-2">→</span>
@@ -106,7 +106,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'overview' && (
               <section className="space-y-12">
                 {/* Executive Summary - Only on overview tab */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-gray-100 p-12 rounded-3xl mb-8 border border-white/10 shadow-2xl">
                   <div className="text-center mb-8">
                     <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                       Proven Scale. Proven Results.
@@ -123,7 +123,7 @@ export default function DriverNetworkPresentation() {
                           {stat.value}
                         </div>
                         <div className="font-bold mb-2 text-lg">{stat.label}</div>
-                        <div className="text-sm text-gray-300 dark:text-gray-600">{stat.description}</div>
+                        <div className="text-sm text-gray-300 dark:text-gray-400">{stat.description}</div>
                       </div>
                     ))}
                   </div>
@@ -136,7 +136,7 @@ export default function DriverNetworkPresentation() {
                   
                   {/* Revenue Growth Chart */}
                   <div className="mb-12">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100">📈 Revenue Growth Timeline</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">📈 Revenue Growth Timeline</h3>
                     <div className="h-80 w-full">
                       <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={[
@@ -180,10 +180,10 @@ export default function DriverNetworkPresentation() {
                         { year: '2023-Present', title: 'National Scale', icon: '🌎', desc: 'Nationwide Expansion', metric: '19+', detail: 'major metropolitan areas', color: 'from-orange-500 to-red-500' }
                       ].map((phase, index) => (
                         <div key={index} className="relative">
-                          <div className="absolute -left-24 w-8 h-8 bg-white dark:bg-gray-800 rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg">
+                          <div className="absolute -left-24 w-8 h-8 bg-white dark:bg-gray-700 rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg">
                             {phase.icon}
                           </div>
-                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
+                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
                             <div className="flex justify-between items-start mb-3">
                               <div>
                                 <h4 className="text-xl font-bold mb-1">{phase.title}</h4>
@@ -244,17 +244,17 @@ export default function DriverNetworkPresentation() {
                       </ResponsiveContainer>
                     </div>
                     <div className="space-y-4">
-                      <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30">
+                      <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-700/30">
                         <h4 className="text-xl font-bold text-blue-800 dark:text-blue-200 mb-2">🚗 Valet & Traffic Management</h4>
                         <p className="text-blue-700 dark:text-blue-300">24/7 operations, accounting, traffic control</p>
                         <div className="text-2xl font-bold text-blue-600 dark:text-blue-200 mt-2">35% Revenue Share</div>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30">
+                      <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-700/30">
                         <h4 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">🚛 Automotive Transport</h4>
-                        <p className="text-green-700 dark:text-green-300 dark:text-green-400">100+ vehicles daily, GPS tracking, full documentation</p>
+                        <p className="text-green-700 dark:text-green-300">100+ vehicles daily, GPS tracking, full documentation</p>
                         <div className="text-2xl font-bold text-green-600 dark:text-green-200 mt-2">40% Revenue Share</div>
                       </div>
-                      <div className="backdrop-blur-sm bg-amber-500/20 p-6 rounded-2xl border border-amber-300/30">
+                      <div className="backdrop-blur-sm bg-amber-500/20 p-6 rounded-2xl border border-amber-300/30 dark:border-amber-700/30">
                         <h4 className="text-xl font-bold text-amber-800 dark:text-amber-200 mb-2">📦 Courier & Last-Mile</h4>
                         <p className="text-amber-700 dark:text-amber-300">Same-day, scheduled, temperature-controlled delivery</p>
                         <div className="text-2xl font-bold text-amber-600 dark:text-amber-200 mt-2">25% Revenue Share</div>
@@ -278,10 +278,10 @@ export default function DriverNetworkPresentation() {
                     <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 text-center">
                       <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">100%</div>
                       <div className="text-green-800 dark:text-green-200 font-semibold">On-Time Delivery</div>
-                      <div className="text-sm text-green-700 dark:text-green-300 dark:text-green-400 mt-1">🚚 Instacart Partnership</div>
+                      <div className="text-sm text-green-700 dark:text-green-300 mt-1">🚚 Instacart Partnership</div>
                     </div>
                     <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 text-center">
-                      <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-300 mb-2">99.9%</div>
+                      <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">99.9%</div>
                       <div className="text-blue-800 dark:text-blue-200 font-semibold">Damage-Free Rate</div>
                       <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">🚗 Automotive Transport</div>
                     </div>
@@ -299,7 +299,7 @@ export default function DriverNetworkPresentation() {
 
                   {/* Performance Comparison Chart */}
                   <div className="h-80 mb-8">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100">🎯 Industry Performance Comparison</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">🎯 Industry Performance Comparison</h3>
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={[
                         { metric: 'On-Time Delivery', 'Driver Network': 100, 'Industry Average': 85, 'Top Competitor': 92 },
@@ -373,7 +373,7 @@ export default function DriverNetworkPresentation() {
                     }
                   ].map((case_, index) => (
                     <div key={index} className="backdrop-blur-lg bg-white dark:bg-gray-800/20 p-8 rounded-3xl border border-white/30 shadow-2xl">
-                      <div className={`bg-gradient-to-r ${case_.gradient} p-6 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-6`}>
+                      <div className={`bg-gradient-to-r ${case_.gradient} p-6 rounded-2xl text-white dark:text-gray-100 mb-6`}>
                         <div className="flex items-center mb-4">
                           <span className="text-4xl mr-4">{case_.icon}</span>
                           <h3 className="text-3xl font-bold">{case_.title}</h3>
@@ -480,7 +480,7 @@ export default function DriverNetworkPresentation() {
                       </ResponsiveContainer>
                       <div className="text-center mt-4">
                         <div className="text-4xl font-bold text-[#276EF1]">68%</div>
-                        <div className="text-xl font-semibold text-gray-800 dark:text-white dark:text-gray-100">Referral-Based Hiring</div>
+                        <div className="text-xl font-semibold text-gray-800 dark:text-gray-100">Referral-Based Hiring</div>
                         <div className="text-gray-600 dark:text-gray-400">Indicates exceptional driver satisfaction</div>
                       </div>
                     </div>
@@ -620,14 +620,14 @@ export default function DriverNetworkPresentation() {
                       }
                     ].map((partner, index) => (
                       <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${partner.gradient} p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                        <div className="text-center text-white dark:text-white dark:text-gray-100">
+                        <div className="text-center text-white dark:text-gray-100">
                           <div className="text-4xl mb-3">{partner.icon}</div>
                           <h4 className="text-xl font-bold mb-2">{partner.name}</h4>
-                          <Badge variant="secondary" className="mb-3 bg-white dark:bg-gray-800/30 text-white dark:text-white dark:text-gray-100 border-white/50">
+                          <Badge variant="secondary" className="mb-3 bg-white dark:bg-gray-700/30 text-gray-900 dark:text-gray-100 border-white/50 dark:border-gray-600/50">
                             {partner.category}
                           </Badge>
                           {partner.markets && (
-                            <Badge variant="secondary" className="mb-3 ml-2 bg-white dark:bg-gray-800/30 text-white dark:text-white dark:text-gray-100 border-white/50">
+                            <Badge variant="secondary" className="mb-3 ml-2 bg-white dark:bg-gray-700/30 text-gray-900 dark:text-gray-100 border-white/50 dark:border-gray-600/50">
                               {partner.markets} Markets
                             </Badge>
                           )}
@@ -641,7 +641,7 @@ export default function DriverNetworkPresentation() {
                   
                   {/* Client Satisfaction Chart */}
                   <div className="mt-12 h-64">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100 text-center">📊 Client Satisfaction Scores</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">📊 Client Satisfaction Scores</h3>
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={[
                         { client: 'Instacart', satisfaction: 98 },
@@ -712,7 +712,7 @@ export default function DriverNetworkPresentation() {
                   
                   {/* Deployment Timeline */}
                   <div className="h-64 mb-8">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100 text-center">📅 Market Deployment Timeline</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">📅 Market Deployment Timeline</h3>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={[
                         { day: 'Day 1', drivers: 0, markets: 0 },
@@ -749,7 +749,7 @@ export default function DriverNetworkPresentation() {
                   <div className="grid md:grid-cols-2 gap-12">
                     {/* Active Markets */}
                     <div>
-                      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100">🎆 Active Metropolitan Areas</h3>
+                      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">🎆 Active Metropolitan Areas</h3>
                       <div className="grid grid-cols-2 gap-4">
                         {[
                           { city: 'Chicago', drivers: 180, status: 'Primary Hub' },
@@ -777,7 +777,7 @@ export default function DriverNetworkPresentation() {
                     
                     {/* Expansion Strategy */}
                     <div>
-                      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100">📊 Strategic Expansion Plan</h3>
+                      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">📊 Strategic Expansion Plan</h3>
                       <div className="space-y-6">
                         <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30">
                           <div className="flex items-center mb-4">
@@ -820,7 +820,7 @@ export default function DriverNetworkPresentation() {
                   
                   {/* Market Growth Projection */}
                   <div className="mt-12 h-64">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white dark:text-gray-100 text-center">📈 Market Expansion Projection</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">📈 Market Expansion Projection</h3>
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={[
                         { month: 'Current', markets: 19, drivers: 1000 },
@@ -862,7 +862,7 @@ export default function DriverNetworkPresentation() {
             {activeTab === 'proposal' && (
               <section className="space-y-12">
                 {/* Strategic Partnership Header */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 text-white dark:text-gray-100 p-12 rounded-3xl border border-white/10 shadow-2xl">
                   <div className="text-center mb-8">
                     <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                       🤝 Strategic Partnership Proposal
@@ -876,22 +876,22 @@ export default function DriverNetworkPresentation() {
                     <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🎯</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Single Vendor</div>
-                      <div className="text-gray-300 dark:text-gray-600">Unified Solution</div>
+                      <div className="text-gray-300 dark:text-gray-400">Unified Solution</div>
                     </div>
                     <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🚀</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Proven Scale</div>
-                      <div className="text-gray-300 dark:text-gray-600">1,000+ Drivers</div>
+                      <div className="text-gray-300 dark:text-gray-400">1,000+ Drivers</div>
                     </div>
                     <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">⚙️</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">Tech Ready</div>
-                      <div className="text-gray-300 dark:text-gray-600">API Integration</div>
+                      <div className="text-gray-300 dark:text-gray-400">API Integration</div>
                     </div>
                     <div className="text-center backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20">
                       <div className="text-4xl mb-3">🌍</div>
                       <div className="text-2xl font-bold text-[#276EF1] mb-2">19+ Markets</div>
-                      <div className="text-gray-300 dark:text-gray-600">National Coverage</div>
+                      <div className="text-gray-300 dark:text-gray-400">National Coverage</div>
                     </div>
                   </div>
                 </div>
@@ -959,7 +959,7 @@ export default function DriverNetworkPresentation() {
                       }
                     ].map((diff, index) => (
                       <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${diff.gradient} p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                        <div className="text-white dark:text-white dark:text-gray-100 text-center">
+                        <div className="text-white dark:text-gray-100 text-center">
                           <div className="text-4xl mb-4">{diff.icon}</div>
                           <h4 className="text-xl font-bold mb-3">{diff.title}</h4>
                           <p className="text-sm opacity-90">{diff.desc}</p>
@@ -999,7 +999,7 @@ export default function DriverNetworkPresentation() {
                         gradient: 'from-purple-500 to-pink-500'
                       }
                     ].map((service, index) => (
-                      <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${service.gradient} p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
+                      <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${service.gradient} p-8 rounded-2xl text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
                         <div className="text-center mb-6">
                           <div className="text-5xl mb-4">{service.icon}</div>
                           <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
@@ -1089,7 +1089,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 {/* Contact & Next Steps */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-[#276EF1]/90 to-indigo-600/90 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl border border-white/20 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-[#276EF1]/90 to-indigo-600/90 text-white dark:text-gray-100 p-12 rounded-3xl border border-white/20 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center">
                     🚀 Ready to Transform Uber Freight Operations
                   </h2>

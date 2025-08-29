@@ -111,7 +111,7 @@ export function SubscriptionOffer() {
                       </div>
                       <div className="flex items-center justify-center space-x-2">
                         <span className="text-gray-400 dark:text-gray-500 line-through">${plan.originalPrice}</span>
-                        <span className="bg-green-100 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-sm font-medium">
+                        <span className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-sm font-medium">
                           {t.subscriptionOfferExtended?.save || "Save"} {plan.savings}%
                         </span>
                       </div>
@@ -184,7 +184,7 @@ export function SubscriptionOffer() {
             <p className="text-gray-600 dark:text-gray-300 mb-4">Join over 10,000 satisfied customers:</p>
             <div className="flex justify-center items-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />
+                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
               ))}
               <span className="ml-2 text-gray-700 dark:text-gray-200 font-medium">4.9/5 from 2,847 reviews</span>
             </div>

@@ -49,7 +49,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <Users className="w-4 h-4" />
             <span className="text-sm">
-              <span className="font-bold text-yellow-300 dark:text-yellow-400">{recentPurchases}</span> orders this week
+              <span className="font-bold text-yellow-300 dark:text-yellow-200">{recentPurchases}</span> orders this week
             </span>
           </div>
         </div>

@@ -77,7 +77,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ${className}`}>
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
           <button 
-            className="absolute top-4 right-4 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600"
+            className="absolute top-4 right-4 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
             onClick={() => {/* Handle close */}}
           >
             <X className="w-6 h-6" />
@@ -85,7 +85,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           
           <div className="text-center mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+              <Mail className="w-8 h-8 text-white dark:text-gray-100" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Get {discount}% Off Your First Order!
@@ -180,7 +180,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
     return (
       <div className={`bg-gradient-to-br from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 ${className}`}>
         <div className="text-center mb-6">
-          <Mail className="w-12 h-12 text-[#5B2EFF] mx-auto mb-4" />
+          <Mail className="w-12 h-12 text-[#5B2EFF] dark:text-[#3694FF] mx-auto mb-4" />
           <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             Join the Purrify Community
           </h3>

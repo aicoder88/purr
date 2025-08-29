@@ -85,7 +85,7 @@ const FreePage: NextPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50">
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full shadow-lg transform -rotate-1">
+                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white dark:text-gray-100 px-6 py-2 rounded-full shadow-lg transform -rotate-1">
                   <span className="font-bold text-sm uppercase tracking-wide">{t.freeTrialPage.urgentBanner}</span>
                 </div>
               </div>
@@ -102,7 +102,7 @@ const FreePage: NextPage = () => {
               
               <div className="text-center md:text-left">
                 <div className="mb-4">
-                  <span className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-full text-xl font-bold shadow-lg">
+                  <span className="bg-gradient-to-r from-green-600 to-green-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-xl font-bold shadow-lg">
                     {t.freeTrialPage.free}
                   </span>
                 </div>
@@ -121,32 +121,32 @@ const FreePage: NextPage = () => {
                   <h3 className="text-lg font-bold text-green-800 mb-2">{t.freeTrialPage.whatYouGet}</h3>
                   <ul className="text-green-700 space-y-1">
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.freeTrialBag}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>快速配送</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.expertTips}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
+                      <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.zeroCommitment}</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-                  <h3 className="text-xl font-bold text-red-600 mb-2">{t.freeTrialPage.disappearsIn}</h3>
+                  <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">{t.freeTrialPage.disappearsIn}</h3>
                   <div className="flex justify-center space-x-4 mb-2">
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                    <div className="bg-red-600 text-white px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                    <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
                   </div>
-                  <div className="flex justify-center text-xs text-gray-600 space-x-16 mb-4">
+                  <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 space-x-16 mb-4">
                     <span>{t.freeTrialPage.countdownLabels.hours}</span>
                     <span>{t.freeTrialPage.countdownLabels.minutes}</span>
                     <span>{t.freeTrialPage.countdownLabels.seconds}</span>
@@ -173,7 +173,7 @@ const FreePage: NextPage = () => {
                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
                   <div className="flex items-center justify-center mb-4">
                     <PawPrint className="h-8 w-8 text-red-600 mr-3" />
-                    <h2 className="text-3xl font-bold text-red-600 text-center">{t.freeTrialPage.claimNow}</h2>
+                    <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 text-center">{t.freeTrialPage.claimNow}</h2>
                   </div>
                   <p className="text-center text-red-800 mb-2">
                     <span className="font-bold">⚠️ {t.freeTrialPage.attention}：</span> {t.freeTrialPage.highDemandWarning}
@@ -181,7 +181,7 @@ const FreePage: NextPage = () => {
                 </div>
                 <FreeGiveawayForm />
                 
-                <p className="text-xs text-center text-gray-500 mt-6">
+                <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-6">
                   {t.freeTrialPage.disclaimer}
                 </p>
               </div>

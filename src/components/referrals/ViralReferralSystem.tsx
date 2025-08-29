@@ -290,7 +290,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className={`w-8 h-8 mx-auto mb-2 rounded-full bg-gradient-to-r ${currentTier.color} flex items-center justify-center text-white dark:text-white dark:text-gray-100`}>
+              <div className={`w-8 h-8 mx-auto mb-2 rounded-full bg-gradient-to-r ${currentTier.color} flex items-center justify-center text-white dark:text-gray-100`}>
                 {currentTier.icon}
               </div>
               <p className="text-lg font-bold">{currentTier.badge} {currentTier.name}</p>
@@ -385,25 +385,25 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                 <div className="grid grid-cols-2 gap-3">
                   <Button 
                     onClick={() => shareToSocial('instagram')}
-                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white dark:text-white dark:text-gray-100"
+                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white dark:text-gray-100"
                   >
                     📷 Instagram
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('facebook')}
-                    className="bg-blue-600 text-white dark:text-white dark:text-gray-100"
+                    className="bg-blue-600 text-white dark:text-gray-100"
                   >
                     📘 Facebook
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('twitter')}
-                    className="bg-sky-500 text-white dark:text-white dark:text-gray-100"
+                    className="bg-sky-500 text-white dark:text-gray-100"
                   >
                     🐦 Twitter
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('email')}
-                    className="bg-gray-600 text-white dark:text-white dark:text-gray-100"
+                    className="bg-gray-600 text-white dark:text-gray-100"
                   >
                     ✉️ Email
                   </Button>
@@ -525,7 +525,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                       </div>
                     </div>
                     {tier.name === currentTier.name && (
-                      <Badge className="bg-orange-500 text-white dark:text-white dark:text-gray-100">Current</Badge>
+                      <Badge className="bg-orange-500 text-white dark:text-gray-100">Current</Badge>
                     )}
                   </div>
                 </CardHeader>

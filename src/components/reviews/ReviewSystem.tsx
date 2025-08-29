@@ -270,7 +270,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
           <Button 
             variant="outline" 
-            className="w-full border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-white dark:text-gray-100"
+            className="w-full border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
           >
             View All Reviews
           </Button>
@@ -390,7 +390,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-[#5B2EFF] rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-white dark:text-white dark:text-gray-100" />
+                  <User className="w-5 h-5 text-white dark:text-gray-100" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-2">
@@ -433,11 +433,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             {/* Review Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
               <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:text-green-400 transition-colors">
+                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                   <ThumbsUp className="w-4 h-4" />
                   <span className="text-sm">Helpful ({review.helpful})</span>
                 </button>
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:text-red-400 transition-colors">
+                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
                   <ThumbsDown className="w-4 h-4" />
                   <span className="text-sm">({review.notHelpful})</span>
                 </button>
@@ -459,7 +459,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="text-center">
           <Button 
             variant="outline" 
-            className="border-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-white dark:text-gray-100"
+            className="border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
           >
             Load More Reviews
           </Button>

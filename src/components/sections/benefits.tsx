@@ -27,7 +27,7 @@ export function Benefits() {
             <div className="bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 text-white dark:text-white dark:text-gray-100"
+                className="h-10 w-10 text-white dark:text-gray-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -55,7 +55,7 @@ export function Benefits() {
             <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 text-white dark:text-white dark:text-gray-100"
+                className="h-10 w-10 text-white dark:text-gray-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -81,7 +81,7 @@ export function Benefits() {
             <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 text-white dark:text-white dark:text-gray-100"
+                className="h-10 w-10 text-white dark:text-gray-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

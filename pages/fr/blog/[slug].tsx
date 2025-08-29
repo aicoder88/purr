@@ -34,7 +34,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
             
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
             
-            <div className="flex items-center text-gray-600 mb-8">
+            <div className="flex items-center text-gray-600 dark:text-gray-300 mb-8">
               <span>Par {post.author}</span>
               <span className="mx-2">•</span>
               <span>{post.date}</span>
@@ -51,7 +51,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
             
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
             
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
               <h3 className="text-xl font-bold mb-4">Partagez cet article</h3>
               <div className="flex space-x-4">
                 <a href={`https://twitter.com/intent/tweet?url=https://purrify.ca${post.link}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 dark:text-blue-300 hover:text-blue-600 dark:text-blue-400">
