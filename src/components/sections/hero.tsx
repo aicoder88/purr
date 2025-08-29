@@ -126,7 +126,7 @@ export function Hero() {
                 autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 aria-label="Purrify Cat Litter Additive Effectiveness Demonstration"
                 role="presentation"
                 loop
@@ -136,6 +136,7 @@ export function Hero() {
                 controls={false}
                 disablePictureInPicture
                 disableRemotePlayback
+                crossOrigin="anonymous"
                 ref={(el) => setVideoRef(el)}
                 onLoadedData={() => {
                   setIsVideoLoaded(true);
@@ -177,8 +178,8 @@ export function Hero() {
                   }
                 }}
               >
-                <source src="https://purrify.ca/videos/cat_rose_optimized.webm" type="video/webm" />
-                <source src="https://purrify.ca/videos/cat_rose_optimized.mp4" type="video/mp4" />
+                <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
+                <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
                 <meta itemProp="thumbnailUrl" content="/cat_rose_thumbnail.jpg" />
                 <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
                 <meta itemProp="duration" content="PT30S" />
