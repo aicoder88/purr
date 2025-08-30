@@ -22,33 +22,34 @@ export function Hero() {
 
 
 
-  // Video play handler
-  const handleVideoPlay = useCallback(async () => {
+  // Initialize component and video on mount
+  useEffect(() => {
+    setIsVisible(true);
+    setIsVideoLoaded(true); // Show video immediately
+  }, []);
+
+  // Handle video play attempts
+  const handleVideoPlay = async () => {
     const video = videoRef.current;
-    if (!video || hasAttemptedPlay) return;
-    
-    setHasAttemptedPlay(true);
+    if (!video) return;
     
     try {
       await video.play();
       setShowPlayButton(false);
     } catch (error) {
-      console.log('Video autoplay prevented:', error);
+      console.log('Video autoplay prevented, showing play button:', error);
       setShowPlayButton(true);
     }
-  }, [hasAttemptedPlay]);
+  };
 
-  // Initialize video on mount
+  // Handle video events
   useEffect(() => {
-    setIsVisible(true);
-    
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlayThrough = () => {
-      setIsVideoLoaded(true);
-      // Only attempt autoplay once when video is ready
+    const handleCanPlay = () => {
       if (!hasAttemptedPlay) {
+        setHasAttemptedPlay(true);
         handleVideoPlay();
       }
     };
@@ -56,20 +57,16 @@ export function Hero() {
     const handleError = () => {
       console.error('Video failed to load');
       setShowPlayButton(true);
-      setIsVideoLoaded(true); // Show fallback state
     };
 
-    video.addEventListener('canplaythrough', handleCanPlayThrough);
+    video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('error', handleError);
 
-    // Load the video
-    video.load();
-
     return () => {
-      video.removeEventListener('canplaythrough', handleCanPlayThrough);
+      video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
     };
-  }, [handleVideoPlay, hasAttemptedPlay]);
+  }, [hasAttemptedPlay]);
 
   return (
     <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300" style={{ willChange: 'auto' }}>
@@ -140,11 +137,6 @@ export function Hero() {
           <div className="relative group flex flex-col items-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition duration-300">
-              {!isVideoLoaded && (
-                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-3xl flex items-center justify-center">
-                  <div className="text-gray-500 dark:text-gray-400">Loading video...</div>
-                </div>
-              )}
               {showPlayButton && (
                 <div 
                   className="absolute inset-0 bg-black/20 rounded-3xl flex items-center justify-center cursor-pointer z-10"
@@ -170,10 +162,11 @@ export function Hero() {
               <video
                 ref={videoRef}
                 poster="/cat_rose_thumbnail.jpg"
-                className={`w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className="w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100"
+                autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 aria-label="Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application"
                 role="img"
                 loop
