@@ -24,12 +24,12 @@ export default function naturalcatlitteradditivePage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               Natural Cat Litter Additive
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
+            <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
               Complete solution for natural cat litter additive
             </p>
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-green-600">The Purrify Solution</h2>
+              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
               <p className="text-lg mb-6">100% natural activated carbon thats safe for cats and humans</p>
               
               <div className="grid md:grid-cols-3 gap-4 mb-8">
@@ -49,7 +49,7 @@ export default function naturalcatlitteradditivePage() {
               
               <Link 
                 href="/products/trial-size"
-                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
               >
                 Try Purrify Risk-Free
               </Link>
@@ -92,7 +92,7 @@ export default function naturalcatlitteradditivePage() {
             <p className="text-xl mb-8">Join thousands of satisfied cat owners</p>
             <Link 
               href="/products/compare"
-              className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all text-lg"
+              className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all text-lg"
             >
               Shop Purrify Now
             </Link>

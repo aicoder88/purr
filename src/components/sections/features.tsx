@@ -27,7 +27,7 @@ export function Features() {
           <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             Why do Cats and Pet Parents Love Purrify?
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">
             You love your cat, but let&apos;s be real—litter box odor is a problem.
             You&apos;ve tried scented litter, air fresheners, and baking soda—but
             they only mask the problem, not fix it.
@@ -61,7 +61,7 @@ export function Features() {
                       : "from-[#03E46A] to-[#03E46A]/80"
                   } p-3 sm:p-4 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <IconComponent className="h-7 w-7 text-white dark:text-gray-100" />
+                  <IconComponent className="h-7 w-7 text-white dark:text-gray-100 dark:text-gray-100" />
                 </div>
                 <h3
                   className={`font-bold text-lg sm:text-xl mb-3 sm:mb-4 ${

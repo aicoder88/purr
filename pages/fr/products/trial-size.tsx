@@ -94,7 +94,7 @@ export default function TrialSizePageFR() {
                     height={400}
                     className="w-full h-auto object-contain"
                   />
-                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">
                     FORMAT D'ESSAI
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function TrialSizePageFR() {
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
                       ))}
                     </div>
                     <span className="text-gray-600 dark:text-gray-400">(127 avis)</span>
@@ -244,7 +244,7 @@ export default function TrialSizePageFR() {
                 <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
                     ))}
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>

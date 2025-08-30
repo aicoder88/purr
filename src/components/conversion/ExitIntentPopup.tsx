@@ -107,7 +107,7 @@ export function ExitIntentPopup({
             </div>
 
             {/* Main Headline - Use DialogTitle for accessibility */}
-            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100">
+            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-white dark:text-gray-100 dark:text-gray-100">
               {currentOffer.title}
             </DialogTitle>
 
@@ -117,12 +117,12 @@ export function ExitIntentPopup({
             </h3>
 
             {/* Description - Use DialogDescription for accessibility */}
-            <DialogDescription className="text-gray-600 dark:text-gray-300">
+            <DialogDescription className="text-gray-600 dark:text-gray-300 dark:text-gray-300">
               {currentOffer.description}
             </DialogDescription>
 
             {/* Social Proof */}
-            <div className="flex items-center justify-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center justify-center space-x-1 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
               <div className="flex">
                 {[1,2,3,4,5].map((star) => (
                   <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />

@@ -32,6 +32,7 @@ export function Testimonials() {
     <section
       className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="testimonials"
+      aria-labelledby="testimonials-heading"
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -39,7 +40,7 @@ export function Testimonials() {
             Customer Love
           </div> */}
           <SectionHeader text=" Customer Love" />
-          <h2 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+          <h2 id="testimonials-heading" className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
@@ -105,7 +106,7 @@ export function Testimonials() {
                           ? "men"
                           : "women"
                       }/${index + 1}.jpg`}
-                      alt={testimonial.name}
+                      alt={`Profile photo of ${testimonial.name}, satisfied Purrify customer`}
                       width={64}
                       height={64}
                       className="w-full h-full object-cover"

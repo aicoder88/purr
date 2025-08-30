@@ -6,6 +6,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
+import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
@@ -105,12 +106,29 @@ export default function HowItWorksPage() {
           ]
         }}
       />
+      
+      {/* Advanced JSON-LD Schema for Article */}
+      <ArticleSchema
+        title={pageTitle}
+        description={pageDescription}
+        path='/learn/how-it-works'
+        locale={locale as 'en' | 'fr' | 'zh'}
+        options={{
+          category: 'Pet Care Science',
+          keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
+          datePublished: '2024-01-20T10:00:00Z',
+          dateModified: new Date().toISOString(),
+          wordCount: 2200,
+          readingTime: 10,
+          image: 'https://purrify.ca/images/how-purrify-works-science.jpg'
+        }}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
         <Container>
           <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <li>
                 <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   {t.nav?.home || 'Home'}
@@ -149,7 +167,7 @@ export default function HowItWorksPage() {
                     height={400}
                     className="w-full h-auto rounded-2xl shadow-2xl"
                   />
-                  <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-lg text-sm">
+                  <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
                     Micropores magnified 1000x
                   </div>
                 </div>
@@ -162,7 +180,7 @@ export default function HowItWorksPage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 How Activated Carbon Works
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -176,11 +194,11 @@ export default function HowItWorksPage() {
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-xl flex items-center justify-center">
-                        <point.icon className="w-6 h-6 text-white" />
+                        <point.icon className="w-6 h-6 text-white dark:text-gray-100" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                         {point.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -201,7 +219,7 @@ export default function HowItWorksPage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 How to Use Purrify
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -217,7 +235,7 @@ export default function HowItWorksPage() {
                       <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
                         <span className="text-white font-bold text-2xl">{step.number}</span>
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
                         {step.title}
                       </h3>
                     </div>
@@ -225,7 +243,7 @@ export default function HowItWorksPage() {
                       {step.description}
                     </p>
                     <div className="bg-[#E0EFC7]/50 dark:bg-gray-700/50 p-4 rounded-xl">
-                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300">
                         💡 <strong>Pro Tip:</strong> {step.tip}
                       </p>
                     </div>
@@ -254,7 +272,7 @@ export default function HowItWorksPage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Common Questions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -265,7 +283,7 @@ export default function HowItWorksPage() {
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {faq.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -291,7 +309,7 @@ export default function HowItWorksPage() {
         {/* CTA Section */}
         <section className="py-16">
           <Container>
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white">
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-gray-100">
               <h2 className="text-4xl font-bold mb-4">
                 Ready to Experience the Science?
               </h2>
@@ -306,7 +324,7 @@ export default function HowItWorksPage() {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
                     View All Products
                   </Button>
                 </Link>

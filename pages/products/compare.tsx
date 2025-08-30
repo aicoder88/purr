@@ -211,7 +211,7 @@ const ProductComparePage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
@@ -220,7 +220,7 @@ const ProductComparePage: NextPage = () => {
                 Products
               </Link>
               <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">Compare</span>
+              <span className="text-gray-900 dark:text-gray-50 dark:text-gray-100">Compare</span>
             </nav>
           </Container>
         </section>
@@ -228,7 +228,7 @@ const ProductComparePage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Compare Purrify Products
@@ -255,7 +255,7 @@ const ProductComparePage: NextPage = () => {
                 >
                   {/* Popular Badge */}
                   {product.popular && (
-                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Star className="w-4 h-4 mr-1" />
                       Popular
                     </div>
@@ -263,7 +263,7 @@ const ProductComparePage: NextPage = () => {
                   
                   {/* Recommended Badge */}
                   {product.recommended && (
-                    <div className="absolute top-4 right-4 bg-[#FF3131] text-white px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Award className="w-4 h-4 mr-1" />
                       Best Value
                     </div>
@@ -271,7 +271,7 @@ const ProductComparePage: NextPage = () => {
 
                   {/* Header */}
                   <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
-                    <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
+                    <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
                     <p className="opacity-90 mb-4">{product.subtitle}</p>
                     <div className="flex items-baseline">
                       <span className="text-4xl font-bold">{product.price}</span>
@@ -302,11 +302,11 @@ const ProductComparePage: NextPage = () => {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="font-bold mb-3 text-gray-900 dark:text-gray-100">Features:</h4>
+                      <h3 className="font-bold mb-3 text-gray-900 dark:text-gray-100">Features:</h3>
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 dark:text-green-400 mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -356,7 +356,7 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-[#5B2EFF] text-white">
+                  <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Feature</th>
                       <th className="px-6 py-4 text-center font-bold">17g Trial</th>
@@ -372,23 +372,23 @@ const ProductComparePage: NextPage = () => {
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.trial ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
                           ) : (
-                            <span className="text-gray-400">—</span>
+                            <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.small ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
                           ) : (
-                            <span className="text-gray-400">—</span>
+                            <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.large ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
                           ) : (
-                            <span className="text-gray-400">—</span>
+                            <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
                         </td>
                       </tr>
@@ -415,7 +415,7 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white">
+                  <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">Number of Cats</th>
                       <th className="px-6 py-4 text-center font-bold">Typical Changes</th>
@@ -454,7 +454,7 @@ const ProductComparePage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Still Not Sure Which Size to Choose?

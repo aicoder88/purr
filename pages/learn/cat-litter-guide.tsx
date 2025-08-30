@@ -148,7 +148,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
@@ -165,7 +165,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 The Complete Cat Litter Guide
@@ -189,10 +189,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Cat Litter Types Compared
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
                 Not all litters are created equal. Here's how different types stack up against each other.
               </p>
             </div>
@@ -201,7 +201,7 @@ const CatLitterGuidePage: NextPage = () => {
               {litterTypes.map((litter, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
                       {litter.name}
                     </h3>
                     <div className="flex">
@@ -216,11 +216,11 @@ const CatLitterGuidePage: NextPage = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Pros:</h4>
+                      <h4 className="font-semibold text-green-600 dark:text-green-400 dark:text-green-400 dark:text-green-400 mb-2">Pros:</h4>
                       <ul className="space-y-1">
                         {litter.pros.map((pro, i) => (
-                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 dark:text-green-400 mr-2 flex-shrink-0" />
                             {pro}
                           </li>
                         ))}
@@ -228,11 +228,11 @@ const CatLitterGuidePage: NextPage = () => {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Cons:</h4>
+                      <h4 className="font-semibold text-red-600 dark:text-red-400 dark:text-red-400 mb-2">Cons:</h4>
                       <ul className="space-y-1">
                         {litter.cons.map((con, i) => (
-                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <XCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">
+                            <XCircle className="w-4 h-4 text-red-500 dark:text-red-400 mr-2 flex-shrink-0" />
                             {con}
                           </li>
                         ))}
@@ -249,10 +249,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Essential Maintenance Tips
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
                 Keep your litter box fresh and your cat happy with these proven maintenance practices.
               </p>
             </div>
@@ -261,9 +261,9 @@ const CatLitterGuidePage: NextPage = () => {
               {maintenanceTips.map((tip, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <tip.icon className="w-8 h-8 text-white" />
+                    <tip.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {tip.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -279,10 +279,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Common Problems & Solutions
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
                 Facing litter box issues? Here are the most common problems and their proven solutions.
               </p>
             </div>
@@ -290,11 +290,11 @@ const CatLitterGuidePage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {commonProblems.map((item, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-xl font-bold mb-3 text-red-600 dark:text-red-400">
+                  <h3 className="text-xl font-bold mb-3 text-red-600 dark:text-red-400 dark:text-red-400">
                     Problem: {item.problem}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    <span className="font-semibold text-green-600 dark:text-green-400">Solution:</span> {item.solution}
+                    <span className="font-semibold text-green-600 dark:text-green-400 dark:text-green-400 dark:text-green-400">Solution:</span> {item.solution}
                   </p>
                   {item.link && (
                     <Link href={`${locale === 'fr' ? '/fr' : ''}${item.link}`}>
@@ -313,7 +313,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Upgrade Your Litter Box Experience?
               </h2>
@@ -328,7 +328,7 @@ const CatLitterGuidePage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
                     Read Success Stories
                   </Button>
                 </Link>
@@ -341,7 +341,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Related Articles
               </h2>
             </div>
@@ -349,7 +349,7 @@ const CatLitterGuidePage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     How Purrify Works
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -360,7 +360,7 @@ const CatLitterGuidePage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Success Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -371,7 +371,7 @@ const CatLitterGuidePage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Need Help?
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

@@ -218,10 +218,10 @@ export function Stores() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <SectionHeader text={t.storesSection?.availableInStores || "AVAILABLE IN STORES"} />
-          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-100">
+          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-50 dark:text-gray-100">
             {t.storesSection?.soldInFollowingStores || "SOLD IN THE FOLLOWING STORES"}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-xl max-w-2xl mx-auto">
             {t.storesSection?.subtitle || "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive."}
           </p>
         </div>
@@ -252,7 +252,7 @@ export function Stores() {
                         />
                       ) : (
                         <svg 
-                          className="w-6 h-6 text-white dark:text-gray-100" 
+                          className="w-6 h-6 text-white dark:text-gray-100 dark:text-gray-100" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -275,7 +275,7 @@ export function Stores() {
                       {store.location}
                     </p>
                     {store.description && (
-                      <p className="text-gray-500 dark:text-gray-400 text-xs mb-2 italic">
+                      <p className="text-gray-500 dark:text-gray-400 dark:text-gray-400 text-xs mb-2 italic">
                         {store.description}
                       </p>
                     )}
@@ -309,7 +309,7 @@ export function Stores() {
                         href={store.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
+                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
                       >
                         <svg
                           className="w-4 h-4 mr-1"

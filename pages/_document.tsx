@@ -73,7 +73,7 @@ export default function Document() {
           }}
         />
       </Head>
-      <body className="antialiased text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-900">
+      <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

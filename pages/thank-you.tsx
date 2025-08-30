@@ -109,13 +109,13 @@ const ThankYouPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-white bg-[#03E46A] hover:bg-[#02C55A]"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-white dark:text-gray-100 bg-[#03E46A] hover:bg-[#02C55A]"
             >
               Return to Home
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:bg-gray-900"
+              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:bg-gray-900"
             >
               Contact Us
             </Link>
@@ -127,7 +127,7 @@ const ThankYouPage = () => {
                 href="https://twitter.com/intent/tweet?text=I%20just%20ordered%20from%20Purrify%20and%20I%20can%27t%20wait%20to%20try%20their%20products!%20%23Purrify"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-[#03E46A]"
+                className="text-gray-600 dark:text-gray-300 dark:text-gray-300 hover:text-[#03E46A]"
               >
                 <Twitter className="w-6 h-6" />
               </a>

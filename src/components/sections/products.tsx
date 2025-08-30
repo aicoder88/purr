@@ -92,11 +92,12 @@ export function Products() {
     <section
       className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-colors duration-300"
       id="products"
+      aria-labelledby="products-heading"
     >
       <Container>
         <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 lg:mb-16 px-4">
           <SectionHeader text={t.productsSection?.forEveryCatHousehold || "FOR EVERY CAT HOUSEHOLD"} />
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent leading-tight">
+          <h2 id="products-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent leading-tight">
             {t.productsSection?.pickYourPowerLevel || "PICK YOUR PURRIFY POWER LEVEL"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto dark:text-gray-300 leading-relaxed">
@@ -150,7 +151,7 @@ export function Products() {
                       <div className="relative max-w-[140px] sm:max-w-[180px] max-h-[140px] sm:max-h-[180px]">
                         <NextImage
                           src={product.image}
-                          alt={`${product.name} - ${product.description.split('\n')[0]}`}
+                          alt={`${product.name} activated carbon cat litter additive package showing ${product.size} size for odor elimination`}
                           width={180}
                           height={180}
                           className="w-full h-full mx-auto transition-transform duration-700 group-hover:scale-110 object-contain"
@@ -198,7 +199,7 @@ export function Products() {
                       ${product.price.toFixed(2)}
                     </span>
                     {getCartQuantity(product.id) > 0 && (
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full">
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full" aria-live="polite">
                         {getCartQuantity(product.id)} in cart
                       </span>
                     )}
@@ -219,16 +220,19 @@ export function Products() {
                       <div className="flex items-center justify-center space-x-3">
                         <button
                           onClick={() => updateProductQuantity(product.id, -1)}
-                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
+                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-gray-200 dark:focus:bg-gray-600 rounded-full flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2"
+                          aria-label={`Decrease quantity for ${product.name}`}
+                          disabled={quantities[product.id] === 1}
                         >
                           <Minus className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                         </button>
-                        <span className="text-lg font-semibold min-w-[2rem] text-center text-gray-900 dark:text-gray-100">
+                        <span className="text-lg font-semibold min-w-[2rem] text-center text-gray-900 dark:text-gray-100" aria-live="polite" aria-label={`Current quantity: ${quantities[product.id] || 1}`}>
                           {quantities[product.id] || 1}
                         </span>
                         <button
                           onClick={() => updateProductQuantity(product.id, 1)}
-                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
+                          className="w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-gray-200 dark:focus:bg-gray-600 rounded-full flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2"
+                          aria-label={`Increase quantity for ${product.name}`}
                         >
                           <Plus className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                         </button>

@@ -38,34 +38,34 @@ export default function SafeForKittens() {
 
       <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">
             Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             Get expert answers about kitten safety with litter deodorizers. Learn which products are safe, 
             what to avoid, and how to protect your young cat's health.
           </p>
         </header>
 
         <div className="prose prose-lg max-w-none">
-          <div className="bg-green-50 border-l-4 border-green-400 p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-green-900 mb-3">Quick Answer</h2>
-            <p className="text-green-800 mb-4">
+          <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 mb-8">
+            <h2 className="text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Answer</h2>
+            <p className="text-green-800 dark:text-green-200 mb-4">
               <strong>Yes, natural activated carbon cat litter deodorizers are safe for kittens.</strong> 
               However, avoid products with synthetic fragrances, chemicals, or clay dust that can harm 
               developing respiratory systems. Always choose fragrance-free, non-toxic options.
             </p>
-            <div className="text-sm text-green-700">
+            <div className="text-sm text-green-700 dark:text-green-300">
               <strong>Recommended age:</strong> Safe from 8 weeks old when kittens start using litter boxes independently.
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What Makes a Deodorizer Safe for Kittens?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">What Makes a Deodorizer Safe for Kittens?</h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-800 mb-4">✓ Safe Ingredients</h3>
-              <ul className="space-y-2 text-green-700">
+              <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-4">✓ Safe Ingredients</h3>
+              <ul className="space-y-2 text-green-700 dark:text-green-300">
                 <li>• <strong>Activated carbon</strong> - Natural and non-toxic</li>
                 <li>• <strong>Baking soda</strong> - Food-grade sodium bicarbonate</li>
                 <li>• <strong>Natural minerals</strong> - Zeolite, diatomaceous earth</li>
@@ -73,9 +73,9 @@ export default function SafeForKittens() {
               </ul>
             </div>
 
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-red-800 mb-4">❌ Ingredients to Avoid</h3>
-              <ul className="space-y-2 text-red-700">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-red-800 dark:text-red-200 mb-4">❌ Ingredients to Avoid</h3>
+              <ul className="space-y-2 text-red-700 dark:text-red-300">
                 <li>• <strong>Synthetic fragrances</strong> - Can cause respiratory irritation</li>
                 <li>• <strong>Essential oils</strong> - Many are toxic to cats</li>
                 <li>• <strong>Chemical additives</strong> - Artificial colors, preservatives</li>
@@ -84,50 +84,50 @@ export default function SafeForKittens() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Why Kittens Need Special Consideration</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Why Kittens Need Special Consideration</h2>
 
           <div className="space-y-6 mb-8">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-6">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Developing Respiratory System</h3>
-              <p className="text-blue-800">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-6">
+              <h3 className="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Developing Respiratory System</h3>
+              <p className="text-blue-800 dark:text-blue-200">
                 Kittens have smaller, more sensitive airways than adult cats. Dust, fragrances, and chemicals 
                 can cause irritation, coughing, or breathing difficulties that may not affect older cats.
               </p>
             </div>
 
             <div className="bg-purple-50 border-l-4 border-purple-400 p-6">
-              <h3 className="text-xl font-semibold text-purple-900 mb-3">Higher Sensitivity to Toxins</h3>
-              <p className="text-purple-800">
+              <h3 className="text-xl font-semibold text-purple-900 dark:text-purple-100 mb-3">Higher Sensitivity to Toxins</h3>
+              <p className="text-purple-800 dark:text-purple-200">
                 Young cats process toxins less efficiently than adults. Their liver and kidneys are still 
                 developing, making them more vulnerable to chemical exposure from litter additives.
               </p>
             </div>
 
             <div className="bg-orange-50 border-l-4 border-orange-400 p-6">
-              <h3 className="text-xl font-semibold text-orange-900 mb-3">Increased Grooming Behavior</h3>
-              <p className="text-orange-800">
+              <h3 className="text-xl font-semibold text-orange-900 dark:text-orange-100 mb-3">Increased Grooming Behavior</h3>
+              <p className="text-orange-800 dark:text-orange-200">
                 Kittens spend more time grooming and may ingest litter particles on their paws. 
                 This makes non-toxic ingredients even more critical for their safety.
               </p>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Veterinary Safety Guidelines</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Veterinary Safety Guidelines</h2>
 
           <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8 mb-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">What Veterinarians Recommend</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">What Veterinarians Recommend</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-green-800 mb-3">Age Guidelines</h4>
-                <ul className="space-y-2 text-gray-700">
+                <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 mb-3">Age Guidelines</h4>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-200">
                   <li>• <strong>8+ weeks:</strong> Safe to introduce natural deodorizers</li>
                   <li>• <strong>12+ weeks:</strong> Can use standard amounts</li>
                   <li>• <strong>6+ months:</strong> Adult-strength products acceptable</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-blue-800 mb-3">Application Tips</h4>
-                <ul className="space-y-2 text-gray-700">
+                <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">Application Tips</h4>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                   <li>• Start with half the recommended amount</li>
                   <li>• Monitor for any behavioral changes</li>
                   <li>• Increase gradually if well-tolerated</li>
@@ -136,12 +136,12 @@ export default function SafeForKittens() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Signs Your Kitten May Be Sensitive</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Signs Your Kitten May Be Sensitive</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="border border-yellow-200 bg-yellow-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-yellow-800 mb-3">⚠️ Watch for These Signs</h3>
-              <ul className="space-y-2 text-yellow-700">
+              <h3 className="text-xl font-semibold text-yellow-800 dark:text-yellow-200 mb-3">⚠️ Watch for These Signs</h3>
+              <ul className="space-y-2 text-yellow-700 dark:text-yellow-300">
                 <li>• Sneezing or coughing near litter box</li>
                 <li>• Avoiding the litter box</li>
                 <li>• Excessive pawing at nose or face</li>
@@ -152,8 +152,8 @@ export default function SafeForKittens() {
             </div>
 
             <div className="border border-green-200 bg-green-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-800 mb-3">✓ What to Do</h3>
-              <ul className="space-y-2 text-green-700">
+              <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 dark:text-green-200 mb-3">✓ What to Do</h3>
+              <ul className="space-y-2 text-green-700 dark:text-green-300">
                 <li>• Remove deodorizer immediately</li>
                 <li>• Clean litter box thoroughly</li>
                 <li>• Provide fresh, unscented litter</li>
@@ -164,16 +164,16 @@ export default function SafeForKittens() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Safe Application for Kittens</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Safe Application for Kittens</h2>
 
           <div className="space-y-6 mb-8">
             <div className="flex items-start space-x-6 p-6 bg-blue-50 rounded-lg">
-              <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-blue-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 1
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-3">Start Small</h3>
-                <p className="text-blue-800">
+                <h3 className="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Start Small</h3>
+                <p className="text-blue-800 dark:text-blue-200">
                   Use only 1/2 tablespoon for kittens under 4 months. This provides effective odor control 
                   while minimizing exposure to any new substance.
                 </p>
@@ -181,12 +181,12 @@ export default function SafeForKittens() {
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-green-50 rounded-lg">
-              <div className="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-green-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 2
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-green-900 mb-3">Monitor Closely</h3>
-                <p className="text-green-800">
+                <h3 className="text-xl font-semibold text-green-900 dark:text-green-100 mb-3">Monitor Closely</h3>
+                <p className="text-green-800 dark:text-green-200">
                   Watch your kitten's behavior for the first 24-48 hours after introducing any new litter additive. 
                   Look for normal litter box usage and no signs of irritation.
                 </p>
@@ -194,12 +194,12 @@ export default function SafeForKittens() {
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-purple-50 rounded-lg">
-              <div className="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-purple-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 3
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-purple-900 mb-3">Gradual Introduction</h3>
-                <p className="text-purple-800">
+                <h3 className="text-xl font-semibold text-purple-900 dark:text-purple-100 mb-3">Gradual Introduction</h3>
+                <p className="text-purple-800 dark:text-purple-200">
                   If your kitten tolerates the initial amount well, you can gradually increase to the full 
                   recommended dose over 1-2 weeks.
                 </p>
@@ -207,7 +207,7 @@ export default function SafeForKittens() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Why Activated Carbon is Ideal for Kittens</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Why Activated Carbon is Ideal for Kittens</h2>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 mb-8">
             <div className="grid md:grid-cols-3 gap-6">
@@ -216,26 +216,26 @@ export default function SafeForKittens() {
                   <span className="text-2xl">🌿</span>
                 </div>
                 <h3 className="font-semibold mb-2">100% Natural</h3>
-                <p className="text-sm text-gray-600">Made from coconut shells or wood - no synthetic chemicals</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Made from coconut shells or wood - no synthetic chemicals</p>
               </div>
               <div className="text-center">
                 <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🚫</span>
                 </div>
                 <h3 className="font-semibold mb-2">Fragrance-Free</h3>
-                <p className="text-sm text-gray-600">No artificial scents that can irritate sensitive kitten airways</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">No artificial scents that can irritate sensitive kitten airways</p>
               </div>
               <div className="text-center">
                 <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">✅</span>
                 </div>
                 <h3 className="font-semibold mb-2">Non-Toxic</h3>
-                <p className="text-sm text-gray-600">Safe if accidentally ingested during grooming</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Safe if accidentally ingested during grooming</p>
               </div>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-6 mb-8">
             <div className="border-b border-gray-200 pb-4">
@@ -264,37 +264,37 @@ export default function SafeForKittens() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Expert Recommendations</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Expert Recommendations</h2>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-8">
-            <h3 className="text-xl font-semibold text-blue-900 mb-4">Dr. Sarah Chen, DVM - Feline Specialist</h3>
-            <blockquote className="text-blue-800 italic mb-4">
+            <h3 className="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-4">Dr. Sarah Chen, DVM - Feline Specialist</h3>
+            <blockquote className="text-blue-800 dark:text-blue-200 italic mb-4">
               "I regularly recommend activated carbon litter additives for households with kittens. Unlike synthetic deodorizers, 
               natural activated carbon provides excellent odor control without the respiratory risks associated with fragranced products. 
               The key is choosing a high-quality, dust-free product and introducing it gradually."
             </blockquote>
-            <div className="text-sm text-blue-700">
+            <div className="text-sm text-blue-700 dark:text-blue-300">
               <strong>Key advice:</strong> Always prioritize your kitten's health over odor control. A slightly smellier litter box 
               is better than a sick kitten.
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Kitten-Safe Odor Control</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Kitten-Safe Odor Control</h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-6">
               Purrify's activated carbon formula is specifically designed to be safe for kittens, cats, and families. 
               Natural, fragrance-free, and veterinarian-recommended.
             </p>
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                className="inline-block bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
               >
                 Try Kitten-Safe Formula - $6.99
               </Link>
               <Link 
                 href="/learn/how-to-use-deodorizer" 
-                className="inline-block border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                className="inline-block border border-green-600 text-green-600 dark:text-green-400 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
               >
                 Usage Guide
               </Link>

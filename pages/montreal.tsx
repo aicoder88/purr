@@ -669,7 +669,7 @@ export default function Montreal() {
           </div>
 
           <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 text-center">
-            <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-100 mb-2">
+            <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200 dark:text-yellow-100 mb-2">
               {locale === 'fr' 
                 ? 'Vous ne trouvez pas Purrify dans votre magasin local?'
                 : 'Can\'t Find Purrify at Your Local Store?'
@@ -835,7 +835,7 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="font-bold text-blue-600 dark:text-blue-400">MF</span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">MF</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Marie Fournier</h4>
@@ -854,7 +854,7 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="font-bold text-green-600 dark:text-green-400">JT</span>
+                  <span className="font-bold text-green-600 dark:text-green-400 dark:text-green-400">JT</span>
                 </div>
                 <div>
                   <h4 className="font-semibold">Jean Tremblay</h4>
@@ -909,10 +909,10 @@ export default function Montreal() {
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                <h4 className="font-semibold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Locales' : 'To Local Pet Stores'}
                 </h4>
-                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                   <li>
                     {locale === 'fr' 
                       ? '• Multiples animaleries indépendantes à travers Montréal'
@@ -942,10 +942,10 @@ export default function Montreal() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">
+                <h4 className="font-semibold text-green-600 dark:text-green-400 dark:text-green-400 mb-2">
                   {locale === 'fr' ? 'Vers les Animaleries Indépendantes' : 'To Independent Pet Stores'}
                 </h4>
-                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+                <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                   <li>
                     {locale === 'fr'
                       ? '• Visitez n\'importe laquelle des animaleries indépendantes listées'
@@ -991,7 +991,7 @@ export default function Montreal() {
               <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Montréal' : 'Montreal'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                 <li>Plateau Mont-Royal</li>
                 <li>Ville-Marie</li>
                 <li>Hochelaga-Maisonneuve</li>
@@ -1000,7 +1000,7 @@ export default function Montreal() {
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">Laval</h3>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                 <li>Sainte-Thérèse</li>
                 <li>Sainte-Marthe-sur-le-Lac</li>
                 <li>Cartier Ouest</li>
@@ -1011,7 +1011,7 @@ export default function Montreal() {
               <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Banlieues Sud' : 'South Shore'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                 <li>Verdun</li>
                 <li>Saint-Eustache</li>
                 <li>Westmount</li>
@@ -1022,7 +1022,7 @@ export default function Montreal() {
               <h3 className="font-semibold text-lg mb-3 text-blue-900 dark:text-blue-100">
                 {locale === 'fr' ? 'Banlieues Ouest' : 'West Island'}
               </h3>
-              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-200 dark:text-gray-300">
                 <li>Kirkland</li>
                 <li>Dollard-des-Ormeaux</li>
                 <li>Pierrefonds</li>
@@ -1058,13 +1058,13 @@ export default function Montreal() {
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Format d\'Essai 17g' : '17g Trial Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Parfait pour essayer Purrify ou voyager' : 'Perfect for trying Purrify or travel'}
               </p>
-              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-200 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 2-3 semaines de contrôle des odeurs' : '• 2-3 weeks of odor control'}
                 </li>
@@ -1084,13 +1084,13 @@ export default function Montreal() {
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Format Régulier 60g' : '60g Regular Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Meilleur rapport qualité-prix pour la plupart des propriétaires de chats' : 'Best value for most cat owners'}
               </p>
-              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-200 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 6-8 semaines de contrôle des odeurs' : '• 6-8 weeks of odor control'}
                 </li>
@@ -1107,13 +1107,13 @@ export default function Montreal() {
               <h3 className="text-xl font-semibold mb-3">
                 {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
               </h3>
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Valeur maximale pour foyers multi-chats' : 'Maximum value for multi-cat homes'}
               </p>
-              <ul className="text-sm text-gray-700 dark:text-gray-300 text-left space-y-1 mb-4">
+              <ul className="text-sm text-gray-700 dark:text-gray-200 dark:text-gray-300 text-left space-y-1 mb-4">
                 <li>
                   {locale === 'fr' ? '• 10-12 semaines de contrôle des odeurs' : '• 10-12 weeks of odor control'}
                 </li>
@@ -1136,7 +1136,7 @@ export default function Montreal() {
               : 'Purrify Montreal: Premium Cat Odor Control Made in Canada'
             }
           </h2>
-          <div className="max-w-4xl mx-auto text-gray-700 dark:text-gray-300 space-y-4">
+          <div className="max-w-4xl mx-auto text-gray-700 dark:text-gray-200 dark:text-gray-300 space-y-4">
             <p className="text-lg">
               {locale === 'fr'
                 ? 'Purrify révolutionne le contrôle des odeurs de litière pour chat à Montréal avec son charbon activé premium fabriqué au Canada. Nos 15 magasins partenaires à travers la région métropolitaine offrent des solutions naturelles et sécuritaires pour garder votre maison fraîche pendant les longs hivers québécois.'
@@ -1202,7 +1202,7 @@ export default function Montreal() {
               </Link>
               <Link 
                 href="/products" 
-                className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
+                className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir Tous les Produits' : 'View All Products'}
               </Link>

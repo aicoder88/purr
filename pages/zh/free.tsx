@@ -72,10 +72,10 @@ const FreePage: NextPage = () => {
         </div>
         
         {/* Decorative paw prints */}
-        <div className="absolute top-20 right-10 text-indigo-200 opacity-30 transform rotate-12">
+        <div className="absolute top-20 right-10 text-indigo-200 dark:text-indigo-400 opacity-30 transform rotate-12">
           <PawPrint size={60} />
         </div>
-        <div className="absolute bottom-20 left-10 text-indigo-200 opacity-30 transform -rotate-12">
+        <div className="absolute bottom-20 left-10 text-indigo-200 dark:text-indigo-400 opacity-30 transform -rotate-12">
           <PawPrint size={40} />
         </div>
         
@@ -85,7 +85,7 @@ const FreePage: NextPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50">
               {/* Pre-headline banner */}
               <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white dark:text-gray-100 px-6 py-2 rounded-full shadow-lg transform -rotate-1">
+                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white dark:text-gray-100 dark:text-gray-100 px-6 py-2 rounded-full shadow-lg transform -rotate-1">
                   <span className="font-bold text-sm uppercase tracking-wide">{t.freeTrialPage.urgentBanner}</span>
                 </div>
               </div>
@@ -106,20 +106,20 @@ const FreePage: NextPage = () => {
                     {t.freeTrialPage.free}
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-4 leading-tight">
                   {t.freeTrialPage.claimTrial.split('免费')[0]}<br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     免费{t.freeTrialPage.claimTrial.split('免费')[1]}
                   </span>
                 </h1>
-                <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-200 mb-6 leading-relaxed">
                   {t.freeTrialPage.instantOdorElimination}<br />
-                  <span className="font-semibold text-indigo-600">{t.freeTrialPage.zeroCommitmentGift}</span>
+                  <span className="font-semibold text-indigo-600 dark:text-indigo-400">{t.freeTrialPage.zeroCommitmentGift}</span>
                 </p>
                 
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                  <h3 className="text-lg font-bold text-green-800 mb-2">{t.freeTrialPage.whatYouGet}</h3>
-                  <ul className="text-green-700 space-y-1">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-4 mb-6">
+                  <h3 className="text-lg font-bold text-green-800 dark:text-green-200 dark:text-green-200 mb-2">{t.freeTrialPage.whatYouGet}</h3>
+                  <ul className="text-green-700 dark:text-green-300 space-y-1">
                     <li className="flex items-start">
                       <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
                       <span>{t.freeTrialPage.freeTrialBag}</span>
@@ -139,49 +139,49 @@ const FreePage: NextPage = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-                  <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">{t.freeTrialPage.disappearsIn}</h3>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4 mb-8">
+                  <h3 className="text-xl font-bold text-red-600 dark:text-red-400 dark:text-red-400 mb-2">{t.freeTrialPage.disappearsIn}</h3>
                   <div className="flex justify-center space-x-4 mb-2">
                     <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
                     <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
                     <div className="bg-red-600 text-white dark:text-gray-100 px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
                   </div>
-                  <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 space-x-16 mb-4">
+                  <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 dark:text-gray-300 space-x-16 mb-4">
                     <span>{t.freeTrialPage.countdownLabels.hours}</span>
                     <span>{t.freeTrialPage.countdownLabels.minutes}</span>
                     <span>{t.freeTrialPage.countdownLabels.seconds}</span>
                   </div>
-                  <p className="text-center text-red-800 font-medium">{t.freeTrialPage.limitedTo500}</p>
-                  <p className="text-center text-red-800 font-medium">{t.freeTrialPage.alreadyClaimed}：{claimedBags} / 500</p>
+                  <p className="text-center text-red-800 dark:text-red-200 font-medium">{t.freeTrialPage.limitedTo500}</p>
+                  <p className="text-center text-red-800 dark:text-red-200 font-medium">{t.freeTrialPage.alreadyClaimed}：{claimedBags} / 500</p>
                   <p className="text-center font-bold mt-2">{t.freeTrialPage.yourFreeTrialWaits}</p>
                 </div>
                 
                 <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4">{t.freeTrialPage.testimonialsTestUsers}</h3>
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">{t.freeTrialPage.testimonialsTestUsers}</h3>
                   <div className="space-y-4">
                     <div className="bg-white p-3 rounded-md shadow-sm">
                       <p className="italic">&quot;{t.freeTrialPage.testimonials[0].text}&quot;</p>
-                      <p className="text-right font-medium text-indigo-600">- {t.freeTrialPage.testimonials[0].author}</p>
+                      <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- {t.freeTrialPage.testimonials[0].author}</p>
                     </div>
                     <div className="bg-white p-3 rounded-md shadow-sm">
                       <p className="italic">&quot;{t.freeTrialPage.testimonials[1].text}&quot;</p>
-                      <p className="text-right font-medium text-indigo-600">- {t.freeTrialPage.testimonials[1].author}</p>
+                      <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- {t.freeTrialPage.testimonials[1].author}</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
                   <div className="flex items-center justify-center mb-4">
-                    <PawPrint className="h-8 w-8 text-red-600 mr-3" />
+                    <PawPrint className="h-8 w-8 text-red-600 dark:text-red-400 mr-3" />
                     <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 text-center">{t.freeTrialPage.claimNow}</h2>
                   </div>
-                  <p className="text-center text-red-800 mb-2">
+                  <p className="text-center text-red-800 dark:text-red-200 mb-2">
                     <span className="font-bold">⚠️ {t.freeTrialPage.attention}：</span> {t.freeTrialPage.highDemandWarning}
                   </p>
                 </div>
                 <FreeGiveawayForm />
                 
-                <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-6">
+                <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-6">
                   {t.freeTrialPage.disclaimer}
                 </p>
               </div>

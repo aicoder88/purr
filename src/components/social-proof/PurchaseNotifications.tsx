@@ -184,9 +184,9 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-4 m-4">
         {/* Disclosure for synthetic data */}
         {showDisclosure && !currentNotification.isReal && (
-          <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+          <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
             <div className="flex items-center space-x-2">
-              <Info className="w-3 h-3 text-blue-600 dark:text-blue-400 dark:text-blue-300 flex-shrink-0" />
+              <Info className="w-3 h-3 text-blue-600 dark:text-blue-400 dark:text-blue-400 dark:text-blue-300 flex-shrink-0" />
               <span className="text-xs text-blue-700 dark:text-blue-300">
                 Sample customer activity shown for demonstration
               </span>
@@ -197,15 +197,15 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-              <ShoppingBag className="w-4 h-4 text-green-600 dark:text-green-400" />
+              <ShoppingBag className="w-4 h-4 text-green-600 dark:text-green-400 dark:text-green-400" />
             </div>
-            <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <span className="text-sm font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
               {currentNotification.isReal ? 'Recent Purchase' : 'Customer Activity'}
             </span>
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600 transition-colors"
+            className="text-gray-400 dark:text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600 dark:text-gray-300 transition-colors"
             aria-label="Close notification"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

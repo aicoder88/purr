@@ -89,7 +89,7 @@ export function Header() {
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/optimized/purrify-logo-text.webp"
-                alt="Purrify"
+                alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}
                 className="h-8 w-auto dark:brightness-125 dark:contrast-110 filter drop-shadow-sm"
@@ -104,8 +104,10 @@ export function Header() {
                 {item.hasDropdown ? (
                   <>
                     <button
-                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors font-medium"
+                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
+                      aria-expanded={(item.label === 'Products' && isProductsDropdownOpen) || (item.label === 'Learn' && isLearnDropdownOpen) ? 'true' : 'false'}
+                      aria-haspopup="true"
                       onMouseEnter={() => {
                         if (item.label === 'Products') setIsProductsDropdownOpen(true);
                         if (item.label === 'Learn') setIsLearnDropdownOpen(true);
@@ -123,6 +125,17 @@ export function Header() {
                         if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
                         if (item.label === 'Learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                          if (item.label === 'Learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                        }
+                        if (e.key === 'Escape') {
+                          if (item.label === 'Products') setIsProductsDropdownOpen(false);
+                          if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                        }
+                      }}
                     >
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
@@ -131,6 +144,8 @@ export function Header() {
                       (item.label === 'Learn' && isLearnDropdownOpen)) && (
                       <div 
                         className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 dark:border-gray-600/50 z-50"
+                        role="menu"
+                        aria-labelledby={`dropdown-${item.label.toLowerCase()}`}
                         onMouseEnter={() => {
                           if (item.label === 'Products') setIsProductsDropdownOpen(true);
                           if (item.label === 'Learn') setIsLearnDropdownOpen(true);
@@ -150,7 +165,8 @@ export function Header() {
                           <Link
                             key={dropdownIndex}
                             href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-1"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-1 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
+                            role="menuitem"
                           >
                             {dropdownItem.label}
                           </Link>

@@ -530,7 +530,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
               Trusted by {Math.floor(city.population / 1000).toLocaleString()}+ cat owners across {city.province}
             </p>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
@@ -562,22 +562,22 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
               Better Than Local {city.name} Pet Stores
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+              <div className="bg-red-50 dark:bg-red-900/20 dark:bg-red-900/20 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-red-700 dark:text-red-400 mb-4">
                   Local Pet Stores (${city.competitors?.join(', ')})
                 </h3>
-                <ul className="space-y-2 text-red-600 dark:text-red-300">
+                <ul className="space-y-2 text-red-600 dark:text-red-400 dark:text-red-300">
                   <li>❌ Limited product selection</li>
                   <li>❌ Higher prices due to overhead</li>
                   <li>❌ Chemical-based deodorizers</li>
                   <li>❌ No satisfaction guarantee</li>
                 </ul>
               </div>
-              <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+              <div className="bg-green-50 dark:bg-green-900/20 dark:bg-green-900/20 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-green-700 dark:text-green-400 mb-4">
                   Purrify Direct to {city.name}
                 </h3>
-                <ul className="space-y-2 text-green-600 dark:text-green-300">
+                <ul className="space-y-2 text-green-600 dark:text-green-400 dark:text-green-300">
                   <li>✅ 100% natural activated carbon</li>
                   <li>✅ Direct pricing, no middleman</li>
                   <li>✅ Eliminates odors permanently</li>
@@ -747,7 +747,7 @@ export default function ${province.slug.replace(/-/g, '')}Page({ province }: Pro
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               >
                 <h2 className="text-2xl font-bold mb-2">{city.name}</h2>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400">
                   {city.population.toLocaleString()} residents
                 </p>
                 <p className="text-orange-600 hover:text-orange-800 font-semibold mt-2">
@@ -875,7 +875,7 @@ export default function ${problem.problem.replace(/-/g, '')}Page() {
               
               <a 
                 href="/products/compare" 
-                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105"
+                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105"
               >
                 Try Purrify Risk-Free
               </a>
@@ -1171,7 +1171,7 @@ export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage
             >
               Try Purrify Risk-Free Today
             </a>
-            <p className="text-sm text-gray-500 mt-4">30-day money-back guarantee</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">30-day money-back guarantee</p>
           </div>
         </section>
       </div>

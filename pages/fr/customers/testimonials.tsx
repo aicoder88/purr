@@ -175,7 +175,7 @@ export default function TestimonialsPageFR() {
         {/* Breadcrumb Navigation */}
         <Container>
           <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <li>
                 <Link href="/fr" className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   Accueil
@@ -210,9 +210,9 @@ export default function TestimonialsPageFR() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-8 h-8 text-white dark:text-gray-100" />
+                      <stat.icon className="w-8 h-8 text-white dark:text-gray-100 dark:text-gray-100" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    <div className="text-3xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
                       {stat.number}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -277,7 +277,7 @@ export default function TestimonialsPageFR() {
                   {/* Quote */}
                   <div className="relative mb-6">
                     <Quote className="absolute -top-2 -left-2 w-8 h-8 text-[#FF3131]/20 dark:text-[#FF5050]/20" />
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed pl-6">
+                    <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 leading-relaxed pl-6">
                       "{testimonial.text}"
                     </p>
                   </div>
@@ -288,7 +288,7 @@ export default function TestimonialsPageFR() {
                       <span className="text-gray-600 dark:text-gray-400">
                         Chat(s): {testimonial.catNames.join(', ')}
                       </span>
-                      <span className="text-gray-500 dark:text-gray-400">
+                      <span className="text-gray-500 dark:text-gray-400 dark:text-gray-400">
                         {new Date(testimonial.date).toLocaleDateString('fr-CA')}
                       </span>
                     </div>

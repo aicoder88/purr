@@ -69,10 +69,10 @@
 //         </div>
         
 //         {/* Decorative paw prints */}
-//         <div className="absolute top-20 right-10 text-indigo-200 opacity-30 transform rotate-12">
+//         <div className="absolute top-20 right-10 text-indigo-200 dark:text-indigo-400 dark:text-indigo-300 opacity-30 transform rotate-12">
 //           <PawPrint size={60} />
 //         </div>
-//         <div className="absolute bottom-20 left-10 text-indigo-200 opacity-30 transform -rotate-12">
+//         <div className="absolute bottom-20 left-10 text-indigo-200 dark:text-indigo-400 dark:text-indigo-300 opacity-30 transform -rotate-12">
 //           <PawPrint size={40} />
 //         </div>
         
@@ -82,7 +82,7 @@
 //             <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-white dark:bg-gray-800/80 p-8 rounded-xl backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-2xl border border-indigo-100/50">
 //               {/* Pre-headline banner */}
 //               <div className="absolute -top-4 left-0 right-0 flex justify-center">
-//                 <div className="bg-red-600 text-white dark:text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
+//                 <div className="bg-red-600 text-white dark:text-gray-100 dark:text-white dark:text-gray-100 text-sm font-bold px-6 py-2 rounded-full shadow-lg animate-pulse">
 //                   URGENT: FREE BAG GIVEAWAY ENDS SOON
 //                 </div>
 //               </div>
@@ -98,7 +98,7 @@
 //                     className="rounded-lg shadow-lg border-2 border-indigo-100 relative z-10"
 //                     priority
 //                   />
-//                   <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:text-white px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
+//                   <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white dark:text-gray-100 dark:text-white dark:text-gray-100 px-4 py-1 rounded-full text-sm font-bold shadow-md z-20 animate-pulse">
 //                     FREE
 //                   </div>
 //                 </div>
@@ -135,7 +135,7 @@
 //                   </h1>
                   
 //                   <div className="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
-//                     <p className="text-indigo-800 font-medium">
+//                     <p className="text-indigo-800 dark:text-indigo-200 font-medium">
 //                       Limited time offer: Get your free trial-size bag of our natural odor-trapping formula while supplies last!
 //                     </p>
 //                   </div>
@@ -145,7 +145,7 @@
             
 //             <div className="mb-12 bg-white dark:bg-gray-800/90 p-8 rounded-xl shadow-lg border-l-4 border-red-600 border-t border-r border-b border-indigo-100/50">
 //               <div className="flex items-start space-x-4">
-//                 <PawPrint className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+//                 <PawPrint className="h-6 w-6 text-red-600 dark:text-red-400 dark:text-red-400 dark:text-red-400 mt-1 flex-shrink-0" />
 //                 <div>
 //                   <p className="text-lg text-[#333333] mb-6 leading-relaxed">
 //                     <strong className="text-red-600 dark:text-red-400 text-xl">ATTENTION CAT OWNERS WHO ARE TIRED OF HOLDING THEIR BREATH:</strong> What if, in the next 24 hours, you could completely eliminate that embarrassing litter box stench that makes you cringe every time someone visits your home?
@@ -184,7 +184,7 @@
 //                       quality={85}
 //                     />
 //                   </div>
-//                   <h3 className="text-xl font-bold text-indigo-800 mb-4">What You Get Absolutely FREE:</h3>
+//                   <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">What You Get Absolutely FREE:</h3>
 //                   <ul className="space-y-2">
 //                     <li className="flex items-start">
 //                       <span className="text-green-600 dark:text-green-400 font-bold mr-2">✓</span>
@@ -209,49 +209,49 @@
 //                   </ul>
 //                 </div>
                 
-//                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-//                   <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">WARNING: This Offer Disappears in:</h3>
+//                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4 mb-8">
+//                   <h3 className="text-xl font-bold text-red-600 dark:text-red-400 dark:text-red-400 mb-2">WARNING: This Offer Disappears in:</h3>
 //                   <div className="flex justify-center space-x-4 mb-2">
-//                     <div className="bg-red-600 text-white dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
-//                     <div className="bg-red-600 text-white dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-//                     <div className="bg-red-600 text-white dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+//                     <div className="bg-red-600 text-white dark:text-gray-100 dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
+//                     <div className="bg-red-600 text-white dark:text-gray-100 dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+//                     <div className="bg-red-600 text-white dark:text-gray-100 dark:text-white px-3 py-2 rounded-md font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
 //                   </div>
-//                   <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 space-x-16 mb-4">
+//                   <div className="flex justify-center text-xs text-gray-600 dark:text-gray-300 dark:text-gray-300 dark:text-gray-300 space-x-16 mb-4">
 //                     <span>HOURS</span>
 //                     <span>MINS</span>
 //                     <span>SECS</span>
 //                   </div>
-//                   <p className="text-center text-red-800 font-medium">Limited to first 500 cat owners only.</p>
-//                   <p className="text-center text-red-800 font-medium">Already claimed: {claimedBags} out of 500</p>
+//                   <p className="text-center text-red-800 dark:text-red-200 dark:text-red-200 font-medium">Limited to first 500 cat owners only.</p>
+//                   <p className="text-center text-red-800 dark:text-red-200 font-medium">Already claimed: {claimedBags} out of 500</p>
 //                   <p className="text-center font-bold mt-2">Your free bag is waiting - but only if you act now.</p>
 //                 </div>
                 
 //                 <div className="mb-8 bg-indigo-50 border border-indigo-100 rounded-lg p-4">
-//                   <h3 className="text-xl font-bold text-indigo-800 mb-4">What Our Beta Testers Are Saying:</h3>
+//                   <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">What Our Beta Testers Are Saying:</h3>
 //                   <div className="space-y-4">
 //                     <div className="bg-white dark:bg-gray-800 p-3 rounded-md shadow-sm">
 //                       <p className="italic">"I couldn't believe it. Within HOURS, my entire house smelled fresh again. I actually invited my mother-in-law over for the first time in months!"</p>
-//                       <p className="text-right font-medium text-indigo-600">- Jennifer M., Montreal</p>
+//                       <p className="text-right font-medium text-indigo-600 dark:text-indigo-400 dark:text-indigo-400">- Jennifer M., Montreal</p>
 //                     </div>
 //                     <div className="bg-white dark:bg-gray-800 p-3 rounded-md shadow-sm">
 //                       <p className="italic">"My husband thought I'd thrown out the litter box entirely. The smell was just... gone."</p>
-//                       <p className="text-right font-medium text-indigo-600">- Lisa K., Mirabel, QC</p>
+//                       <p className="text-right font-medium text-indigo-600 dark:text-indigo-400">- Lisa K., Mirabel, QC</p>
 //                     </div>
 //                   </div>
 //                 </div>
                 
 //                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
 //                   <div className="flex items-center justify-center mb-4">
-//                     <PawPrint className="h-8 w-8 text-red-600 dark:text-red-400 mr-3" />
-//                     <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 text-center">CLAIM YOUR FREE BAG NOW</h2>
+//                     <PawPrint className="h-8 w-8 text-red-600 dark:text-red-400 dark:text-red-400 mr-3" />
+//                     <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 dark:text-red-400 text-center">CLAIM YOUR FREE BAG NOW</h2>
 //                   </div>
-//                   <p className="text-center text-red-800 mb-2">
+//                   <p className="text-center text-red-800 dark:text-red-200 mb-2">
 //                     <span className="font-bold">⚠️ WARNING:</span> Due to high demand, we cannot guarantee availability after the timer expires.
 //                   </p>
 //                 </div>
 //                 <FreeGiveawayForm />
                 
-//                 <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-6">
+//                 <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 dark:text-gray-400 mt-6">
 //                   100% Free. No Credit Card Required.<br />
 //                   Limited time offer. One free bag per household. Shipping restrictions may apply. We reserve the right to end this promotion at any time.
 //                 </p>

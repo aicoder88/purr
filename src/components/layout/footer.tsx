@@ -40,7 +40,7 @@ export function Footer() {
                 <div className="h-6 w-auto mr-2 flex items-center">
                   <NextImage
                     src="/optimized/purrify-logo-text.webp"
-                    alt="Purrify Logo"
+                    alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                     width={70}
                     height={24}
                     className="h-full w-auto dark:brightness-110 dark:contrast-100"
@@ -55,18 +55,21 @@ export function Footer() {
               <a
                 href="#"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
                 href="#"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on Instagram"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
                 href="#"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>

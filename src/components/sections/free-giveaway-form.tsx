@@ -96,7 +96,7 @@ export function FreeGiveawayForm() {
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
-      <h2 className="text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
+      <h2 className="text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
         <div>
@@ -115,7 +115,7 @@ export function FreeGiveawayForm() {
             className="mt-1 block w-full border-[#E0EFC7] focus:border-[#FF3131] focus:ring-[#FF3131]"
           />
           {errors.name && (
-            <p id="name-error" className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p id="name-error" className="mt-1 text-sm text-red-600 dark:text-red-400 dark:text-red-400">
               {errors.name.message}
             </p>
           )}
@@ -196,7 +196,7 @@ export function FreeGiveawayForm() {
           {isSubmitting ? (t.freeGiveaway?.submitting || 'Submitting...') : (t.freeGiveaway?.submitButton || 'GET MY FREE BAG NOW')}
         </Button>
         
-        <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
+        <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-4">
           {t.freeGiveaway?.privacyNotice || "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."}
         </p>
       </form>

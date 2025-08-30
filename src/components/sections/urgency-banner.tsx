@@ -22,7 +22,7 @@ export function UrgencyBanner() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-green-600 to-green-500 text-white dark:text-gray-100 py-3 px-4 relative overflow-hidden">
+    <div className="bg-gradient-to-r from-green-600 to-green-500 text-white dark:text-gray-100 dark:text-gray-100 py-3 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 text-center md:text-left">
           {/* Left side - Natural Message */}

@@ -99,7 +99,7 @@ const Stage5DemoPage: NextPage = () => {
           <div className="space-y-8">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Social Proof Widgets</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+              <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 mb-6">
                 Build customer confidence with real-time purchase notifications and trust badges
               </p>
             </div>
@@ -203,7 +203,7 @@ const Stage5DemoPage: NextPage = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Wifi className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <Wifi className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-400" />
                   <h4 className="text-lg font-semibold">Offline Support</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -229,11 +229,11 @@ const Stage5DemoPage: NextPage = () => {
             </div>
             
             <div className="text-center">
-              <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
+              <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100 dark:text-gray-100">
                 <Smartphone className="w-4 h-4 mr-2" />
                 Install Purrify App
               </Button>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-2">
                 Available on mobile browsers that support PWA
               </p>
             </div>
@@ -290,7 +290,7 @@ const Stage5DemoPage: NextPage = () => {
                     <div className={`w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center`}>
                       <feature.icon className="w-5 h-5 text-white dark:text-gray-100" />
                     </div>
-                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
                       {feature.title}
                     </h4>
                   </div>
@@ -360,13 +360,13 @@ const Stage5DemoPage: NextPage = () => {
           </div>
 
           {/* Implementation Notes */}
-          <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
-            <h3 className="font-semibold text-blue-900 dark:text-blue-100 dark:text-blue-200 mb-3">
+          <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+            <h3 className="font-semibold text-blue-900 dark:text-blue-100 dark:text-blue-100 dark:text-blue-200 mb-3">
               🚀 Implementation Status
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Completed Features:</h4>
+                <h4 className="font-medium text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-2">Completed Features:</h4>
                 <ul className="space-y-1 text-blue-700 dark:text-blue-300">
                   <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Social proof widgets</li>
                   <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Trust badges</li>

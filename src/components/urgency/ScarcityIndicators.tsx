@@ -261,7 +261,7 @@ export function CountdownTimer({
   if (isExpired) return null;
 
   return (
-    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-white dark:text-gray-100 px-6 py-3 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-white dark:text-gray-100 dark:text-gray-100 px-6 py-3 rounded-lg shadow-lg">
       <div className="text-center">
         <div className="text-sm font-medium opacity-90 mb-1">
           🚨 FLASH SALE ENDS IN:

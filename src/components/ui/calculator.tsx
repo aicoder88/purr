@@ -255,7 +255,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             <div className="flex justify-center mb-2">
               <Cat className="h-5 w-5 text-[#5B2EFF]" />
             </div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 text-center">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-200 text-center">
               Number of Cats: {catsCount}
             </label>
             <Slider
@@ -327,12 +327,12 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Annual Savings */}
             <div className="bg-white dark:bg-gray-800/70 p-4 rounded-lg shadow-sm border border-[#E0EFC7]/50 text-center">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-2">
                 Annual Savings
               </p>
               <div className="flex items-center justify-center mb-2">
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] flex items-center justify-center text-white dark:text-gray-100 text-xl font-bold"
+                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] flex items-center justify-center text-white dark:text-gray-100 dark:text-gray-100 text-xl font-bold"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
@@ -348,7 +348,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               <p className="text-2xl font-bold text-[#03E46A]">
                 ${annualSavings.toFixed(2)}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-1">
                 That&apos;s like getting {Math.round(annualSavings / litterCost)}{" "}
                 free litter changes per year!
               </p>

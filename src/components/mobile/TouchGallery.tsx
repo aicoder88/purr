@@ -139,7 +139,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               {image.caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white dark:text-gray-100 p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white dark:text-gray-100 dark:text-gray-100 p-4">
                   <p className="text-sm">{image.caption}</p>
                 </div>
               )}

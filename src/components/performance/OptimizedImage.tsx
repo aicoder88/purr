@@ -188,7 +188,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       
       {/* Error fallback */}
       {hasError && (
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-500">
+        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-500 dark:text-gray-400">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
           </svg>
@@ -197,7 +197,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       
       {/* Performance debug info (development only) */}
       {process.env.NODE_ENV === 'development' && loadTime && (
-        <div className="absolute top-0 right-0 bg-black bg-opacity-75 text-white dark:text-gray-100 text-xs p-1 rounded">
+        <div className="absolute top-0 right-0 bg-black bg-opacity-75 text-white dark:text-gray-100 dark:text-gray-100 text-xs p-1 rounded">
           {loadTime}ms
         </div>
       )}

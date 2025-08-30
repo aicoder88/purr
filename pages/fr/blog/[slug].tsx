@@ -28,13 +28,13 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
       <section className="py-16 md:py-24">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <Link href="/fr/blog" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:text-indigo-300 mb-6 inline-block">
+            <Link href="/fr/blog" className="text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 hover:text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 mb-6 inline-block">
               &larr; Retour aux articles
             </Link>
             
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
             
-            <div className="flex items-center text-gray-600 dark:text-gray-300 mb-8">
+            <div className="flex items-center text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-8">
               <span>Par {post.author}</span>
               <span className="mx-2">•</span>
               <span>{post.date}</span>
@@ -54,13 +54,13 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post, content }) => {
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
               <h3 className="text-xl font-bold mb-4">Partagez cet article</h3>
               <div className="flex space-x-4">
-                <a href={`https://twitter.com/intent/tweet?url=https://purrify.ca${post.link}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 dark:text-blue-300 hover:text-blue-600 dark:text-blue-400">
+                <a href={`https://twitter.com/intent/tweet?url=https://purrify.ca${post.link}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 dark:text-blue-300 hover:text-blue-600 dark:text-blue-400 dark:text-blue-400">
                   Twitter
                 </a>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=https://purrify.ca${post.link}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:text-blue-200">
+                <a href={`https://www.facebook.com/sharer/sharer.php?u=https://purrify.ca${post.link}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:text-blue-200 dark:text-blue-200">
                   Facebook
                 </a>
-                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://purrify.ca${post.link}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.excerpt)}`} target="_blank" rel="noopener noreferrer" className="text-blue-800 dark:text-blue-200 hover:text-blue-900">
+                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://purrify.ca${post.link}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.excerpt)}`} target="_blank" rel="noopener noreferrer" className="text-blue-800 dark:text-blue-200 hover:text-blue-900 dark:text-blue-100">
                   LinkedIn
                 </a>
               </div>

@@ -41,7 +41,7 @@ export default function quebeccityPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
               Trusted by {Math.floor(city.population / 1000).toLocaleString()}+ cat owners across {city.province}
             </p>
             
@@ -50,16 +50,16 @@ export default function quebeccityPage() {
               <ul className="text-left space-y-2">
                 {city.keyFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
+                    <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
                     Perfect for {feature.toLowerCase()}
                   </li>
                 ))}
                 <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
                   Free shipping across {city.province}
                 </li>
                 <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
                   Works with any litter brand
                 </li>
               </ul>
@@ -67,7 +67,7 @@ export default function quebeccityPage() {
               <div className="mt-6">
                 <Link 
                   href="/products/trial-size"
-                  className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                  className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
                 >
                   Try Purrify in {city.name}
                 </Link>
@@ -84,10 +84,10 @@ export default function quebeccityPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-red-700 mb-4">
+                <h3 className="text-xl font-bold text-red-700 dark:text-red-300 mb-4">
                   Local Pet Stores ({city.competitors.join(', ')})
                 </h3>
-                <ul className="space-y-2 text-red-600">
+                <ul className="space-y-2 text-red-600 dark:text-red-400">
                   <li>❌ Limited product selection</li>
                   <li>❌ Higher prices due to overhead</li>
                   <li>❌ Chemical-based deodorizers</li>
@@ -95,10 +95,10 @@ export default function quebeccityPage() {
                 </ul>
               </div>
               <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-green-700 mb-4">
+                <h3 className="text-xl font-bold text-green-700 dark:text-green-300 mb-4">
                   Purrify Direct to {city.name}
                 </h3>
-                <ul className="space-y-2 text-green-600">
+                <ul className="space-y-2 text-green-600 dark:text-green-400">
                   <li>✅ 100% natural activated carbon</li>
                   <li>✅ Direct pricing, no middleman</li>
                   <li>✅ Eliminates odors permanently</li>
@@ -119,7 +119,7 @@ export default function quebeccityPage() {
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
                   {[1,2,3,4,5].map((star) => (
-                    <span key={star} className="text-yellow-400">⭐</span>
+                    <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
                 <p className="italic mb-4">
@@ -131,7 +131,7 @@ export default function quebeccityPage() {
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
                   {[1,2,3,4,5].map((star) => (
-                    <span key={star} className="text-yellow-400">⭐</span>
+                    <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
                 <p className="italic mb-4">

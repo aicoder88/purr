@@ -127,8 +127,8 @@ export function Hero() {
                 muted
                 playsInline
                 preload="auto"
-                aria-label="Purrify Cat Litter Additive Effectiveness Demonstration"
-                role="presentation"
+                aria-label="Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application"
+                role="img"
                 loop
                 tabIndex={-1}
                 itemScope
@@ -183,7 +183,8 @@ export function Hero() {
                 <meta itemProp="thumbnailUrl" content="/cat_rose_thumbnail.jpg" />
                 <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
                 <meta itemProp="duration" content="PT30S" />
-                Your browser does not support the video tag.
+                <track kind="descriptions" src="/videos/cat_rose_description.vtt" srclang="en" label="English Descriptions" />
+                Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.
               </video>
             </div>
             

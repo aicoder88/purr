@@ -375,12 +375,12 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
             Smart Bundles Curated For You
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-6">
             Save money with intelligently designed product combinations
           </p>
           
           {/* Trust indicators */}
-          <div className="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
             <div className="flex items-center">
               <Gift className="w-4 h-4 mr-2" />
               Free bonus items
@@ -399,8 +399,8 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
         {/* Smart recommendation notice */}
         {userProfile && (
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4 mb-8 text-center">
-            <Zap className="w-5 h-5 inline mr-2 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
-            <span className="text-blue-800 dark:text-blue-300 font-medium">
+            <Zap className="w-5 h-5 inline mr-2 text-blue-600 dark:text-blue-400 dark:text-blue-400 dark:text-blue-300" />
+            <span className="text-blue-800 dark:text-blue-200 dark:text-blue-300 font-medium">
               Smart recommendations based on your profile: 
               {!userProfile.hasPurchased && ' First-time buyer'}
               {userProfile.catCount > 1 && ` ${userProfile.catCount} cats`}
@@ -459,13 +459,13 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                     </div>
                     <div className="text-right">
                       <p className="text-lg text-gray-400 dark:text-gray-500 line-through">${bundle.regularPrice}</p>
-                      <Badge className="bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200">
+                      <Badge className="bg-green-100 text-green-800 dark:text-green-200 dark:bg-green-800 dark:text-green-200">
                         Save ${bundle.savings}
                       </Badge>
                     </div>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-green-600 dark:text-green-400 font-semibold">
+                    <span className="text-green-600 dark:text-green-400 dark:text-green-400 font-semibold">
                       {bundle.discount}% OFF Bundle Price
                     </span>
                     <div className="flex items-center">
@@ -539,7 +539,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
 
                 {/* Testimonial */}
                 {bundle.testimonial && (
-                  <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 dark:bg-blue-900/20 p-4 rounded-lg">
                     <div className="flex items-center mb-2">
                       {[...Array(bundle.testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current" />

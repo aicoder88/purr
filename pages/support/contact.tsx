@@ -156,7 +156,7 @@ export default function ContactPage() {
         {/* Breadcrumb Navigation */}
         <Container>
           <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <li>
                 <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   {t.nav?.home || 'Home'}
@@ -181,7 +181,7 @@ export default function ContactPage() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
                 We're Here to Help
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-12 leading-relaxed">
                 Have questions about Purrify? Need help with your order? Our friendly customer support team 
                 is ready to assist you with expert advice and solutions.
               </p>
@@ -193,10 +193,10 @@ export default function ContactPage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Choose How to Reach Us
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
                 Pick the contact method that works best for you
               </p>
             </div>
@@ -205,9 +205,9 @@ export default function ContactPage() {
               {contactMethods.map((method, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
-                    <method.icon className="w-8 h-8 text-white" />
+                    <method.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {method.title}
                   </h3>
                   <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
@@ -216,7 +216,7 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {method.description}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
                   <Button 
@@ -243,10 +243,10 @@ export default function ContactPage() {
           <Container>
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                   Send Us a Message
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-300">
+                <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
                   Fill out the form below and we'll get back to you within 24 hours
                 </p>
               </div>
@@ -255,8 +255,8 @@ export default function ContactPage() {
                 {submitStatus.message && (
                   <div className={`mb-6 p-4 rounded-lg flex items-center ${
                     submitStatus.success 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
-                      : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 dark:text-green-300 border border-green-200 dark:border-green-800'
+                      : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 dark:text-red-300 border border-red-200 dark:border-red-800'
                   }`}>
                     {submitStatus.success && <CheckCircle className="w-5 h-5 mr-2" />}
                     {submitStatus.message}
@@ -266,7 +266,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                         Full Name *
                       </label>
                       <Input
@@ -277,11 +277,11 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your full name"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                         Email Address *
                       </label>
                       <Input
@@ -292,14 +292,14 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                         Reason for Contact
                       </label>
                       <select
@@ -307,7 +307,7 @@ export default function ContactPage() {
                         name="contactReason"
                         value={formData.contactReason}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
                       >
                         {contactReasons.map((reason) => (
                           <option key={reason.value} value={reason.value}>
@@ -317,7 +317,7 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                         Order Number (if applicable)
                       </label>
                       <Input
@@ -327,13 +327,13 @@ export default function ContactPage() {
                         value={formData.orderNumber}
                         onChange={handleInputChange}
                         placeholder="e.g., PUR-12345"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                       Subject *
                     </label>
                     <Input
@@ -344,12 +344,12 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="Brief description of your inquiry"
-                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
                       Message *
                     </label>
                     <Textarea
@@ -360,7 +360,7 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       placeholder="Please provide details about your question or concern..."
                       rows={6}
-                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                     />
                   </div>
 
@@ -368,7 +368,7 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white font-bold"
+                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-bold"
                   >
                     {isSubmitting ? (
                       <>
@@ -392,10 +392,10 @@ export default function ContactPage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
                 Quick answers to common questions
               </p>
             </div>
@@ -403,7 +403,7 @@ export default function ContactPage() {
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {faq.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -431,28 +431,28 @@ export default function ContactPage() {
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                   Business Hours
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Monday - Friday</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Monday - Friday</p>
                       <p className="text-gray-600 dark:text-gray-300">9:00 AM - 5:00 PM EST</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Saturday</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Saturday</p>
                       <p className="text-gray-600 dark:text-gray-300">10:00 AM - 2:00 PM EST</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Sunday</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Sunday</p>
                       <p className="text-gray-600 dark:text-gray-300">Closed</p>
                     </div>
                   </div>
@@ -460,20 +460,20 @@ export default function ContactPage() {
               </div>
 
               <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                   Our Location
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
                     <MapPin className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Purrify Canada</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Purrify Canada</p>
                       <p className="text-gray-600 dark:text-gray-300">Montreal, Quebec</p>
                       <p className="text-gray-600 dark:text-gray-300">Canada</p>
                     </div>
                   </div>
                   <div className="mt-6">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
                       We ship across Canada and offer local pickup in the Montreal area.
                     </p>
                   </div>

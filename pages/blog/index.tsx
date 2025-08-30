@@ -113,7 +113,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
             <h1 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
               Purrify Blog
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-lg">
+            <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-lg">
               {t.blogSection.description}
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                       <span className="text-[#03E46A] font-medium">
                         {post.author}
                       </span>
-                      <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
+                      <span className="text-gray-500 dark:text-gray-400 dark:text-gray-400">{post.date}</span>
                     </div>
                   </div>
                   <div className="px-6 pb-6 pt-0">

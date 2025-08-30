@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { 
   Search,
   ChevronDown,
@@ -26,9 +27,13 @@ import {
 
 const FAQPage: NextPage = () => {
   const { locale } = useTranslation();
+  const { generateBreadcrumbs } = useStructuredData();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
+  
+  // Generate breadcrumbs for FAQ page
+  const breadcrumbs = generateBreadcrumbs('/learn/faq');
 
   const categories = [
     { id: 'all', name: 'All Questions', icon: HelpCircle, count: 24 },
@@ -205,7 +210,7 @@ const FAQPage: NextPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
-        {/* Structured Data */}
+        {/* Legacy Structured Data - keeping for backwards compatibility */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -224,12 +229,27 @@ const FAQPage: NextPage = () => {
           }}
         />
       </Head>
+      
+      {/* Comprehensive FAQ Structured Data */}
+      <ComprehensiveStructuredData 
+        pageType="faq" 
+        pageData={{
+          title: "Frequently Asked Questions - Everything About Purrify",
+          description: "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
+          url: `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+          faqs: faqItems.map(item => ({
+            question: item.question,
+            answer: item.answer
+          })),
+          breadcrumbs: breadcrumbs
+        }}
+      />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
               <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
@@ -246,7 +266,7 @@ const FAQPage: NextPage = () => {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-4xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Frequently Asked Questions
@@ -257,13 +277,13 @@ const FAQPage: NextPage = () => {
               
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                   type="text"
                   placeholder="Search for answers..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
                 />
               </div>
             </div>
@@ -274,7 +294,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Most Popular Questions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -285,7 +305,7 @@ const FAQPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {popularFAQs.map((item) => (
                 <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {item.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -310,7 +330,7 @@ const FAQPage: NextPage = () => {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Categories Sidebar */}
               <div className="lg:w-1/4">
-                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100 flex items-center">
                   <Filter className="w-5 h-5 mr-2" />
                   Categories
                 </h3>
@@ -321,8 +341,8 @@ const FAQPage: NextPage = () => {
                       onClick={() => setSelectedCategory(category.id)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                         selectedCategory === category.id
-                          ? 'bg-[#5B2EFF] text-white'
-                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          ? 'bg-[#5B2EFF] text-white dark:text-gray-100'
+                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
                       <div className="flex items-center">
@@ -331,8 +351,8 @@ const FAQPage: NextPage = () => {
                       </div>
                       <span className={`text-sm px-2 py-1 rounded-full ${
                         selectedCategory === category.id
-                          ? 'bg-white/20 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                          ? 'bg-white/20 text-white dark:text-gray-100'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 dark:text-gray-400'
                       }`}>
                         {category.count}
                       </span>
@@ -344,7 +364,7 @@ const FAQPage: NextPage = () => {
               {/* FAQ Items */}
               <div className="lg:w-3/4">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {filteredFAQs.length} Question{filteredFAQs.length !== 1 ? 's' : ''} Found
                   </h3>
                   {searchTerm && (
@@ -365,7 +385,7 @@ const FAQPage: NextPage = () => {
                         className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                       >
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
                             {item.question}
                           </h4>
                           <div className="flex flex-wrap gap-2">
@@ -380,9 +400,9 @@ const FAQPage: NextPage = () => {
                           </div>
                         </div>
                         {openItems.includes(item.id) ? (
-                          <ChevronUp className="w-5 h-5 text-gray-400" />
+                          <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400" />
+                          <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                         )}
                       </button>
                       
@@ -408,7 +428,7 @@ const FAQPage: NextPage = () => {
                 {filteredFAQs.length === 0 && (
                   <div className="text-center py-12">
                     <HelpCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-300 dark:text-gray-400 mb-2">
                       No questions found
                     </h3>
                     <p className="text-gray-500 dark:text-gray-500">
@@ -425,7 +445,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Still Have Questions?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
@@ -435,12 +455,12 @@ const FAQPage: NextPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Mail className="w-8 h-8 text-[#5B2EFF] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Email Support</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Email Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Get detailed answers via email
                   </p>
                   <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                    <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white">
+                    <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
                       Contact Us
                     </Button>
                   </Link>
@@ -450,11 +470,11 @@ const FAQPage: NextPage = () => {
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Phone Support</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Phone Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Speak with our team directly
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white">
+                  <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100">
                     Call Now
                   </Button>
                 </div>
@@ -466,7 +486,7 @@ const FAQPage: NextPage = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white max-w-3xl mx-auto">
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Try Purrify?
               </h2>
@@ -481,7 +501,7 @@ const FAQPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
                     Compare All Sizes
                   </Button>
                 </Link>
@@ -494,7 +514,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                 Learn More About Purrify
               </h2>
             </div>
@@ -502,7 +522,7 @@ const FAQPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     How It Works
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -513,7 +533,7 @@ const FAQPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Cat Litter Guide
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -524,7 +544,7 @@ const FAQPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

@@ -86,7 +86,7 @@ export default function SciencePage() {
         {/* Breadcrumb Navigation */}
         <Container className="pt-8">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300 dark:text-gray-400">
               <li>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   Home
@@ -109,17 +109,17 @@ export default function SciencePage() {
           <Container>
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full mb-6">
-                <FlaskConical className="w-8 h-8 text-white" />
+                <FlaskConical className="w-8 h-8 text-white dark:text-gray-100 dark:text-gray-100" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
                 The Science Behind Purrify
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-8 leading-relaxed">
                 Discover how activated carbon technology eliminates odors at the molecular level, 
                 providing superior odor control that's both safe and effective for your feline friends.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">
                   Try the Science - $6.99
                 </Button>
               </Link>
@@ -131,10 +131,10 @@ export default function SciencePage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-50 dark:text-white">
                 How Activated Carbon Works
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
                 Understanding the molecular science that makes Purrify so effective at eliminating odors.
               </p>
             </div>
@@ -148,11 +148,11 @@ export default function SciencePage() {
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-lg flex items-center justify-center">
-                        <fact.icon className="w-6 h-6 text-white" />
+                        <fact.icon className="w-6 h-6 text-white dark:text-gray-100" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-white">
                         {fact.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -170,10 +170,10 @@ export default function SciencePage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-white">
                 The Odor Elimination Process
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
                 Follow the journey of odor molecules from release to permanent elimination.
               </p>
             </div>
@@ -190,7 +190,7 @@ export default function SciencePage() {
                   >
                     <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                       <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-white">
                           {step.title}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -200,7 +200,7 @@ export default function SciencePage() {
                     </div>
 
                     {/* Step number */}
-                    <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-10 my-4 md:my-0">
+                    <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg z-10 my-4 md:my-0">
                       {step.step}
                     </div>
 
@@ -215,7 +215,7 @@ export default function SciencePage() {
         {/* Research & Testing */}
         <section className="py-16 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131]">
           <Container>
-            <div className="text-center text-white">
+            <div className="text-center text-white dark:text-gray-100">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Proven by Science, Loved by Cats
               </h2>
@@ -246,7 +246,7 @@ export default function SciencePage() {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#5B2EFF] transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white hover:text-[#5B2EFF] transition-colors">
                     Learn More
                   </Button>
                 </Link>
@@ -260,7 +260,7 @@ export default function SciencePage() {
           <Container>
             <Link 
               href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}
-              className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              className="inline-flex items-center text-gray-600 dark:text-gray-300 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Learn

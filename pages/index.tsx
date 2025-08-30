@@ -34,6 +34,8 @@ import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
+import { ComprehensiveStructuredData, useStructuredData } from '../src/components/seo/comprehensive-structured-data';
+import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { PurchaseNotifications } from '../src/components/social-proof/PurchaseNotifications';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
@@ -41,6 +43,10 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 export default function Home() {
   const pageTitle = `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
   const canonicalUrl = 'https://purrify.ca/';
+  const { generateBreadcrumbs } = useStructuredData();
+  
+  // Generate breadcrumbs for home page
+  const breadcrumbs = generateBreadcrumbs('/');
   
   return (
     <>
@@ -194,6 +200,20 @@ export default function Home() {
 
       {/* Enhanced Structured Data */}
       <EnhancedStructuredData />
+      
+      {/* Comprehensive Structured Data */}
+      <ComprehensiveStructuredData 
+        pageType="home" 
+        pageData={{
+          title: pageTitle,
+          description: SITE_DESCRIPTION,
+          url: canonicalUrl,
+          breadcrumbs: breadcrumbs
+        }}
+      />
+      
+      {/* Advanced JSON-LD Schema for Homepage */}
+      <HomepageSchema locale='en' />
 
       {/* Urgency Banner at the top */}
       <UrgencyBanner />
