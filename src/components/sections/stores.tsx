@@ -4,7 +4,7 @@ import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 
 // Store data - Complete list of pet stores carrying Purrify
-const getStoresWithTranslations = (t: any) => [
+const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/translation-context').useTranslation>['t']) => [
   {
     name: "Pattes et Griffes - Sainte-Thérèse",
     location: "Sainte-Thérèse, QC",

@@ -35,6 +35,31 @@ export const fr = {
       description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
+
+  // Hero Section
+  hero: {
+    catLitter: "Litière pour Chat",
+    rabbitLitter: "Litière pour Lapin",
+    fridgeSmells: "Odeurs de réfrigérateur",
+    ferretCage: "Cage de furet",
+    eliminateCatOdors: "Éliminez les Odeurs de Chat",
+    instantly: "Instantanément",
+    description: "La technologie avancée au carbone activé neutralise l'ammoniac et les odeurs 3x plus rapidement que les solutions traditionnelles. Transformez votre litière de malodorante à fraîche en quelques secondes.",
+    socialProof: {
+      trustNumber: "50 000+",
+      trustText: "propriétaires de chats font confiance à Purrify",
+      ratingText: "4,8/5 sur 12 000+ avis"
+    },
+    buttons: {
+      shopNow: "🛒 Acheter - 24,95 $",
+      reviews: "⭐ 247+ Avis"
+    },
+    ariaLabels: {
+      shopNow: "Acheter les produits Purrify maintenant",
+      reviews: "Lire 247+ avis clients",
+      playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat"
+    }
+  },
   
   // Features
   features: {
@@ -94,14 +119,6 @@ export const fr = {
       title: "Hautement Apprécié",
       description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
     }
-  },
-
-  // Hero Section
-  hero: {
-    catLitter: "Litière pour Chat",
-    rabbitLitter: "Litière pour Lapin",
-    fridgeSmells: "Odeurs de Frigo",
-    ferretCage: "Cage de Furet"
   },
   
   // How It Works
@@ -276,7 +293,8 @@ export const fr = {
     openGraph: {
       title: "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
       description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
-    }
+    },
+    metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par des milliers de propriétaires de chats au Canada."
   },
   
   // Structured Data

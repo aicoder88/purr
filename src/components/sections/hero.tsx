@@ -82,7 +82,7 @@ export function Hero() {
             <SectionHeader text={t.seo.keywords.split(',')[1]} />
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Eliminate Cat Odors
+                {t.hero.eliminateCatOdors}
               </span>
               <span
                 className="block bg-clip-text text-transparent"
@@ -91,12 +91,11 @@ export function Hero() {
                   lineHeight: "1.3"
                 }}
               >
-                Instantly
+                {t.hero.instantly}
               </span>
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-2xl">
-              Advanced activated carbon technology neutralizes ammonia and odors 3x faster 
-              than traditional solutions. Transform your litter box from smelly to fresh in seconds.
+              {t.hero.description}
             </p>
             
             {/* Social Proof Section */}
@@ -114,8 +113,8 @@ export function Hero() {
                   </div>
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-300">
-                  <span className="font-semibold text-gray-900 dark:text-gray-50">50,000+</span>
-                  <br />cat owners trust Purrify
+                  <span className="font-semibold text-gray-900 dark:text-gray-50">{t.hero.socialProof.trustNumber}</span>
+                  <br />{t.hero.socialProof.trustText}
                 </div>
               </div>
               
@@ -124,7 +123,7 @@ export function Hero() {
                   ★★★★★
                 </div>
                 <span className="text-sm text-gray-600 dark:text-gray-300 ml-2">
-                  4.8/5 from 12,000+ reviews
+                  {t.hero.socialProof.ratingText}
                 </span>
               </div>
             </div>
@@ -133,18 +132,18 @@ export function Hero() {
                 onClick={() => scrollToSection("products")}
                 size="lg"
                 className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] hover:from-[#E02B2B] hover:to-[#FF4040] text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1 min-w-[200px]"
-                aria-label="Shop Purrify products now"
+                aria-label={t.hero.ariaLabels.shopNow}
               >
-                🛒 Shop Now - $24.95
+                {t.hero.buttons.shopNow}
               </Button>
               <Button
                 onClick={() => scrollToSection("testimonials")}
                 size="lg"
                 variant="outline"
                 className="bg-white dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#FF3131] dark:border-[#FF5050] hover:bg-[#FF3131] dark:hover:bg-[#FF5050] hover:text-white dark:hover:text-white transform hover:-translate-y-1 min-w-[200px]"
-                aria-label="Read 247+ customer reviews"
+                aria-label={t.hero.ariaLabels.reviews}
               >
-                ⭐ 247+ Reviews
+                {t.hero.buttons.reviews}
               </Button>
             </div>
           </div>
@@ -166,7 +165,7 @@ export function Hero() {
                       console.log('Manual video play failed:', error);
                     }
                   }}
-                  aria-label="Play demonstration video showing Purrify eliminating cat litter odors"
+                  aria-label={t.hero.ariaLabels.playVideo}
                   type="button"
                 >
                   <div className="bg-white dark:bg-gray-800/90 rounded-full p-4 shadow-lg hover:scale-110 transition-transform">

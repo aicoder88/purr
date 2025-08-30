@@ -31,6 +31,23 @@ export interface TranslationType {
     rabbitLitter: string;
     fridgeSmells: string;
     ferretCage: string;
+    eliminateCatOdors: string;
+    instantly: string;
+    description: string;
+    socialProof: {
+      trustNumber: string;
+      trustText: string;
+      ratingText: string;
+    };
+    buttons: {
+      shopNow: string;
+      reviews: string;
+    };
+    ariaLabels: {
+      shopNow: string;
+      reviews: string;
+      playVideo: string;
+    };
   };
   
   // Products
@@ -235,6 +252,7 @@ export interface TranslationType {
       title: string;
       description: string;
     };
+    metaDescription: string;
   };
   
   // Structured Data

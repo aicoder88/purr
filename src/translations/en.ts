@@ -40,7 +40,24 @@ export const en = {
     catLitter: "Cat Litter",
     rabbitLitter: "Rabbit Litter",
     fridgeSmells: "Fridge smells",
-    ferretCage: "Ferret cage"
+    ferretCage: "Ferret cage",
+    eliminateCatOdors: "Eliminate Cat Odors",
+    instantly: "Instantly",
+    description: "Advanced activated carbon technology neutralizes ammonia and odors 3x faster than traditional solutions. Transform your litter box from smelly to fresh in seconds.",
+    socialProof: {
+      trustNumber: "50,000+",
+      trustText: "cat owners trust Purrify",
+      ratingText: "4.8/5 from 12,000+ reviews"
+    },
+    buttons: {
+      shopNow: "🛒 Shop Now - $24.95",
+      reviews: "⭐ 247+ Reviews"
+    },
+    ariaLabels: {
+      shopNow: "Shop Purrify products now",
+      reviews: "Read 247+ customer reviews",
+      playVideo: "Play demonstration video showing Purrify eliminating cat litter odors"
+    }
   },
   
   // Features
@@ -250,7 +267,8 @@ export const en = {
     openGraph: {
       title: "Purrify - Activated Carbon Cat Litter Additive",
       description: "Activated carbon cat litter additive that eliminates odors at the source."
-    }
+    },
+    metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by thousands of cat owners across Canada."
   },
   
   // Structured Data

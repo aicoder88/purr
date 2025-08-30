@@ -31,6 +31,7 @@ const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => (
 const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), { ssr: false });
 const BlogPreview = dynamic(() => import('../src/components/sections/blog-preview').then(mod => ({ default: mod.BlogPreview })), { ssr: false });
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
+import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
@@ -41,6 +42,7 @@ import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
+  const { t } = useTranslation();
   const pageTitle = `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
   const canonicalUrl = 'https://purrify.ca/';
   const { generateBreadcrumbs } = useStructuredData();
@@ -133,7 +135,7 @@ export default function Home() {
           },
           {
             name: 'description',
-            content: 'Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by thousands of cat owners across Canada.',
+            content: t.seo.metaDescription,
           },
           // Additional SEO meta tags for better performance
           {
