@@ -17,7 +17,15 @@ export const zh = {
     contact: "联系我们",
     blog: "博客",
     privacyPolicy: "隐私政策",
-    termsOfService: "服务条款"
+    termsOfService: "服务条款",
+    // Dropdown items
+    trialSize: "17g 试用装",
+    compareSizes: "比较规格",
+    viewAllProducts: "查看所有产品",
+    howItWorksPage: "工作原理",
+    faq: "常见问题",
+    science: "科学原理",
+    buyNow: "立即购买！"
   },
   
   // Products

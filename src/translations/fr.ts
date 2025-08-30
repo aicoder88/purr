@@ -17,7 +17,15 @@ export const fr = {
     contact: "Contact",
     blog: "Blog",
     privacyPolicy: "Politique de Confidentialité",
-    termsOfService: "Conditions d'Utilisation"
+    termsOfService: "Conditions d'Utilisation",
+    // Dropdown items
+    trialSize: "Taille d'Essai 17g",
+    compareSizes: "Comparer les Tailles",
+    viewAllProducts: "Voir Tous les Produits",
+    howItWorksPage: "Comment Ça Marche",
+    faq: "FAQ",
+    science: "Science",
+    buyNow: "Acheter Maintenant !"
   },
   
   // Products

@@ -52,32 +52,36 @@ export function Header() {
   // Navigation items for better organization
   const navigationItems = [
     {
+      id: 'products',
       label: t.nav?.products || 'Products',
-      href: `${locale === 'fr' ? '/fr' : ''}/#products`,
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products`,
       hasDropdown: true,
       dropdownItems: [
-        { label: '17g Trial Size', href: `${locale === 'fr' ? '/fr' : ''}/products/trial-size` },
-        { label: 'Compare Sizes', href: `${locale === 'fr' ? '/fr' : ''}/products/compare` },
-        { label: 'View All Products', href: `${locale === 'fr' ? '/fr' : ''}/#products` }
+        { label: t.nav?.trialSize || '17g Trial Size', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size` },
+        { label: t.nav?.compareSizes || 'Compare Sizes', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/compare` },
+        { label: t.nav?.viewAllProducts || 'View All Products', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products` }
       ]
     },
     {
+      id: 'learn',
       label: t.nav?.learn || 'Learn',
-      href: `${locale === 'fr' ? '/fr' : ''}/learn`,
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn`,
       hasDropdown: true,
       dropdownItems: [
-        { label: 'How It Works', href: `${locale === 'fr' ? '/fr' : ''}/learn/how-it-works` },
-        { label: 'FAQ', href: `${locale === 'fr' ? '/fr' : ''}/learn/faq` },
-        { label: 'Science', href: `${locale === 'fr' ? '/fr' : ''}/learn/science` }
+        { label: t.nav?.howItWorksPage || 'How It Works', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-it-works` },
+        { label: t.nav?.faq || 'FAQ', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/faq` },
+        { label: t.nav?.science || 'Science', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/science` }
       ]
     },
     {
+      id: 'about',
       label: t.nav?.about || 'About',
-      href: `${locale === 'fr' ? '/fr' : ''}/about/our-story`
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/about/our-story`
     },
     {
+      id: 'contact',
       label: t.nav?.contact || 'Contact',
-      href: `${locale === 'fr' ? '/fr' : ''}/support/contact`
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/support/contact`
     }
   ];
 
@@ -106,56 +110,56 @@ export function Header() {
                     <button
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
-                      aria-expanded={(item.label === 'Products' && isProductsDropdownOpen) || (item.label === 'Learn' && isLearnDropdownOpen) ? 'true' : 'false'}
+                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={() => {
-                        if (item.label === 'Products') setIsProductsDropdownOpen(true);
-                        if (item.label === 'Learn') setIsLearnDropdownOpen(true);
+                        if (item.id === 'products') setIsProductsDropdownOpen(true);
+                        if (item.id === 'learn') setIsLearnDropdownOpen(true);
                       }}
                       onMouseLeave={(e) => {
                         const relatedTarget = e.relatedTarget as Element;
                         if (!relatedTarget?.closest('[data-dropdown]')) {
                           setTimeout(() => {
-                            if (item.label === 'Products') setIsProductsDropdownOpen(false);
-                            if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                            if (item.id === 'products') setIsProductsDropdownOpen(false);
+                            if (item.id === 'learn') setIsLearnDropdownOpen(false);
                           }, 500);
                         }
                       }}
                       onClick={() => {
-                        if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
-                        if (item.label === 'Learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                        if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                        if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault();
-                          if (item.label === 'Products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
-                          if (item.label === 'Learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                          if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                          if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
                         }
                         if (e.key === 'Escape') {
-                          if (item.label === 'Products') setIsProductsDropdownOpen(false);
-                          if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                          if (item.id === 'products') setIsProductsDropdownOpen(false);
+                          if (item.id === 'learn') setIsLearnDropdownOpen(false);
                         }
                       }}
                     >
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
-                    {((item.label === 'Products' && isProductsDropdownOpen) || 
-                      (item.label === 'Learn' && isLearnDropdownOpen)) && (
+                    {((item.id === 'products' && isProductsDropdownOpen) || 
+                      (item.id === 'learn' && isLearnDropdownOpen)) && (
                       <div 
                         className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 dark:border-gray-600/50 z-50"
                         role="menu"
-                        aria-labelledby={`dropdown-${item.label.toLowerCase()}`}
+                        aria-labelledby={`dropdown-${item.id}`}
                         onMouseEnter={() => {
-                          if (item.label === 'Products') setIsProductsDropdownOpen(true);
-                          if (item.label === 'Learn') setIsLearnDropdownOpen(true);
+                          if (item.id === 'products') setIsProductsDropdownOpen(true);
+                          if (item.id === 'learn') setIsLearnDropdownOpen(true);
                         }}
                         onMouseLeave={(e) => {
                           const relatedTarget = e.relatedTarget as Element;
                           if (!relatedTarget?.closest('button') && !relatedTarget?.closest('[data-dropdown]')) {
                             setTimeout(() => {
-                              if (item.label === 'Products') setIsProductsDropdownOpen(false);
-                              if (item.label === 'Learn') setIsLearnDropdownOpen(false);
+                              if (item.id === 'products') setIsProductsDropdownOpen(false);
+                              if (item.id === 'learn') setIsLearnDropdownOpen(false);
                             }, 500);
                           }
                         }}
@@ -193,7 +197,7 @@ export function Header() {
               className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
-              Buy Now!
+              {t.nav?.buyNow || 'Buy Now!'}
             </Button>
             <LanguageSwitcher />
             <ShoppingCart />
@@ -263,7 +267,7 @@ export function Header() {
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
-                  Buy Now!
+                  {t.nav?.buyNow || 'Buy Now!'}
                 </Button>
               </div>
             </div>

@@ -18,6 +18,14 @@ export interface TranslationType {
     blog: string;
     privacyPolicy: string;
     termsOfService: string;
+    // Dropdown items
+    trialSize: string;
+    compareSizes: string;
+    viewAllProducts: string;
+    howItWorksPage: string;
+    faq: string;
+    science: string;
+    buyNow: string;
   };
 
   // About Section

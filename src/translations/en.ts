@@ -18,7 +18,15 @@ export const en = {
     contact: "Contact",
     blog: "Blog",
     privacyPolicy: "Privacy Policy",
-    termsOfService: "Terms of Service"
+    termsOfService: "Terms of Service",
+    // Dropdown items
+    trialSize: "17g Trial Size",
+    compareSizes: "Compare Sizes", 
+    viewAllProducts: "View All Products",
+    howItWorksPage: "How It Works",
+    faq: "FAQ",
+    science: "Science",
+    buyNow: "Buy Now!"
   },
   
   // Products
