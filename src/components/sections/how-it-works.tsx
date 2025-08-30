@@ -69,7 +69,7 @@ export function HowItWorks() {
           <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
             {t.nav.howItWorks}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-lg">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
             {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">compare our sizes</Link> to find what works best for you.
           </p>
         </div>
@@ -84,7 +84,7 @@ export function HowItWorks() {
               className="relative group"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="bg-white dark:bg-gray-800/80 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
+              <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
                 <div
                   className={`absolute -top-6 left-1/2 -translate-x-1/2 ${
                     index === 0
@@ -100,7 +100,7 @@ export function HowItWorks() {
                   <div className="overflow-hidden rounded-lg mb-4 h-[250px] sm:h-[400px] flex items-center justify-center">
                     <NextImage
                       src={step.image}
-                      alt={`${step.title} image`}
+                      alt={`Step ${step.number}: ${step.title} - ${step.description}`}
                       width={400}
                       height={400}
                       priority={true}
@@ -120,7 +120,7 @@ export function HowItWorks() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 text-base sm:text-lg">{step.description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg">{step.description}</p>
                 </div>
               </div>
             </div>
@@ -128,18 +128,18 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-12 sm:mt-20 flex justify-center">
-          <div className="bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
+          <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
             <div className="w-full flex justify-center mb-6">
               <NextImage
                 src="/optimized/three_bags_no_bg.webp"
-                alt="Purrify works with any litter"
+                alt="Three Purrify packages demonstrating universal compatibility with all types of cat litter"
                 width={340}
                 height={180}
                 className="rounded-xl object-cover shadow-md"
                 loading="eager"
               />
             </div>
-            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-white dark:text-gray-100 dark:text-gray-100">
+            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-gray-100">
               {t.features.worksWithAnyLitter.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">

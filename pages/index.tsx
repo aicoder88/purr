@@ -214,6 +214,169 @@ export default function Home() {
       
       {/* Advanced JSON-LD Schema for Homepage */}
       <HomepageSchema locale='en' />
+      
+      {/* Enhanced JSON-LD Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://purrify.ca/#organization",
+                "name": "Purrify",
+                "url": "https://purrify.ca",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://purrify.ca/purrify-logo.png",
+                  "width": 400,
+                  "height": 400
+                },
+                "image": "https://purrify.ca/purrify-logo.png",
+                "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural coconut shell carbon.",
+                "foundingDate": "2023",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "109-17680 Rue Charles",
+                  "addressLocality": "Mirabel",
+                  "addressRegion": "QC",
+                  "postalCode": "J7J 0T6",
+                  "addressCountry": "CA"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "45.6501",
+                  "longitude": "-73.8359"
+                },
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+1 250 432 9352",
+                  "email": "hello@purrify.ca",
+                  "contactType": "customer service",
+                  "areaServed": ["CA", "US"],
+                  "availableLanguage": ["English", "French", "Chinese"]
+                },
+                "sameAs": [
+                  "https://facebook.com/purrify",
+                  "https://instagram.com/purrify",
+                  "https://twitter.com/purrify",
+                  "https://www.linkedin.com/company/purrify"
+                ],
+                "areaServed": {
+                  "@type": "Country",
+                  "name": "Canada"
+                },
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Cat Litter Odor Control Products",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Product",
+                        "name": "Purrify 17g Trial Size",
+                        "description": "Trial size activated carbon cat litter additive - perfect for testing",
+                        "sku": "purrify-17g",
+                        "image": "https://purrify.ca/optimized/20g.webp"
+                      },
+                      "price": "6.99",
+                      "priceCurrency": "CAD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "https://purrify.ca/products/trial-size"
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Product",
+                        "name": "Purrify 60g Standard Size",
+                        "description": "Most popular size - one month supply for single cat households",
+                        "sku": "purrify-60g",
+                        "image": "https://purrify.ca/optimized/60g.webp"
+                      },
+                      "price": "19.99",
+                      "priceCurrency": "CAD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "https://purrify.ca/products/standard"
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Product",
+                        "name": "Purrify 120g Family Pack",
+                        "description": "Large size perfect for multi-cat households - maximum odor control",
+                        "sku": "purrify-120g",
+                        "image": "https://purrify.ca/optimized/140g.webp"
+                      },
+                      "price": "29.99",
+                      "priceCurrency": "CAD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "https://purrify.ca/products/family-pack"
+                    }
+                  ]
+                },
+                "priceRange": "$6.99 - $29.99"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://purrify.ca/#website",
+                "url": "https://purrify.ca",
+                "name": "Purrify - Activated Carbon Cat Litter Additive",
+                "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level.",
+                "publisher": {
+                  "@id": "https://purrify.ca/#organization"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://purrify.ca/search?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                },
+                "inLanguage": "en-CA"
+              },
+              {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is Purrify and how does it work?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds, providing superior odor control compared to traditional litter alone."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is Purrify safe for cats and humans?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much Purrify should I use?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 17g trial size is perfect for one litter box change."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Does Purrify work with all types of litter?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes! Purrify is designed to work with any type of cat litter - clay, clumping, crystal, natural, or biodegradable. It enhances the odor control properties of whatever litter you're already using."
+                    }
+                  }
+                ]
+              }
+            ]
+          })
+        }}
+      />
 
       {/* Urgency Banner at the top */}
       <UrgencyBanner />

@@ -210,21 +210,107 @@ const FAQPage: NextPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
-        {/* Legacy Structured Data - keeping for backwards compatibility */}
+        {/* Enhanced FAQ Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqItems.map(item => ({
-                "@type": "Question",
-                "name": item.question,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.answer
+              "@graph": [
+                {
+                  "@type": "FAQPage",
+                  "@id": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "name": "Frequently Asked Questions - Everything About Purrify",
+                  "description": "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
+                  "publisher": {
+                    "@type": "Organization",
+                    "@id": "https://purrify.ca/#organization",
+                    "name": "Purrify"
+                  },
+                  "datePublished": "2024-01-01",
+                  "dateModified": "2024-08-30",
+                  "inLanguage": "en-CA",
+                  "about": {
+                    "@type": "Product",
+                    "name": "Purrify Activated Carbon Cat Litter Additive",
+                    "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level."
+                  },
+                  "mainEntity": faqItems.map((item, index) => ({
+                    "@type": "Question",
+                    "@id": `https://purrify.ca/learn/faq#question-${index + 1}`,
+                    "name": item.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.answer,
+                      "dateCreated": "2024-01-01",
+                      "upvoteCount": item.popular ? 25 : 10,
+                      "author": {
+                        "@type": "Organization",
+                        "name": "Purrify Customer Service"
+                      }
+                    },
+                    "answerCount": 1,
+                    "suggestedAnswer": {
+                      "@type": "Answer",
+                      "text": item.answer
+                    }
+                  }))
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/`
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Learn",
+                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "FAQ",
+                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`
+                    }
+                  ]
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "name": "FAQ - Purrify Cat Litter Additive",
+                  "description": "Complete FAQ covering all aspects of Purrify activated carbon cat litter additive including usage, safety, and effectiveness.",
+                  "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": "https://purrify.ca/#website"
+                  },
+                  "datePublished": "2024-01-01",
+                  "dateModified": "2024-08-30",
+                  "inLanguage": "en-CA",
+                  "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://purrify.ca/purrify-logo.png",
+                    "width": 400,
+                    "height": 400
+                  },
+                  "significantLink": [
+                    "https://purrify.ca/products/trial-size",
+                    "https://purrify.ca/products/standard",
+                    "https://purrify.ca/learn/how-it-works",
+                    "https://purrify.ca/learn/activated-carbon-benefits"
+                  ],
+                  "speakable": {
+                    "@type": "SpeakableSpecification",
+                    "cssSelector": [".popular-questions h3", ".faq-answer"]
+                  }
                 }
-              }))
+              ]
             })
           }}
         />

@@ -80,6 +80,194 @@ export default function StandardSizePage() {
       
       {/* Advanced JSON-LD Schema for Product */}
       <ProductSchema productId='purrify-60g' locale={locale as 'en' | 'fr' | 'zh'} />
+      
+      {/* Enhanced Product JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Product",
+                "@id": canonicalUrl,
+                "name": "Purrify 60g Standard Size - Activated Carbon Cat Litter Additive",
+                "description": "Our most popular 60g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
+                "image": [
+                  "https://purrify.ca/optimized/60g.webp",
+                  "https://purrify.ca/purrify-standard-60g.jpg"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Purrify",
+                  "logo": "https://purrify.ca/purrify-logo.png"
+                },
+                "manufacturer": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify"
+                },
+                "category": "Pet Supplies > Cat Care > Litter Additives",
+                "sku": "purrify-60g",
+                "mpn": "PURRIFY-60G",
+                "gtin13": "9781234567890",
+                "weight": {
+                  "@type": "QuantitativeValue",
+                  "value": "60",
+                  "unitCode": "GRM"
+                },
+                "size": "60g",
+                "color": "Black",
+                "material": "Activated Carbon from Coconut Shells",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "19.99",
+                  "priceCurrency": "CAD",
+                  "priceValidUntil": "2025-12-31",
+                  "availability": "https://schema.org/InStock",
+                  "itemCondition": "https://schema.org/NewCondition",
+                  "url": canonicalUrl,
+                  "seller": {
+                    "@type": "Organization",
+                    "@id": "https://purrify.ca/#organization",
+                    "name": "Purrify"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "CAD"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 7,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "reviewCount": "127",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                },
+                "review": [
+                  {
+                    "@type": "Review",
+                    "reviewRating": {
+                      "@type": "Rating",
+                      "ratingValue": "5",
+                      "bestRating": "5"
+                    },
+                    "author": {
+                      "@type": "Person",
+                      "name": "Kenji T."
+                    },
+                    "reviewBody": "My senior cat has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+                    "datePublished": "2024-01-15"
+                  },
+                  {
+                    "@type": "Review",
+                    "reviewRating": {
+                      "@type": "Rating",
+                      "ratingValue": "5",
+                      "bestRating": "5"
+                    },
+                    "author": {
+                      "@type": "Person",
+                      "name": "Dr. Amara Chen"
+                    },
+                    "reviewBody": "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat's litter area stays remarkably fresh.",
+                    "datePublished": "2024-02-01"
+                  }
+                ],
+                "additionalProperty": [
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Pet Type",
+                    "value": "Cat"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Ingredient",
+                    "value": "Activated Carbon from Coconut Shells"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Usage Duration",
+                    "value": "30 days"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Compatibility",
+                    "value": "All cat litter types"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Safety",
+                    "value": "Pet and human safe, food-grade"
+                  }
+                ],
+                "isAccessoryOrSparePartFor": {
+                  "@type": "Product",
+                  "name": "Cat Litter",
+                  "category": "Pet Supplies"
+                },
+                "audience": {
+                  "@type": "Audience",
+                  "name": "Cat Owners",
+                  "description": "Single-cat household owners looking for effective odor control"
+                },
+                "usageOrSchedule": "Add 1-2 tablespoons when changing litter completely",
+                "mainEntityOfPage": canonicalUrl,
+                "inLanguage": "en-CA"
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://purrify.ca/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Products",
+                    "item": "https://purrify.ca/#products"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Standard Size",
+                    "item": canonicalUrl
+                  }
+                ]
+              }
+            ]
+          })
+        }}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

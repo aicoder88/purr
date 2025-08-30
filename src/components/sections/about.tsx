@@ -25,7 +25,7 @@ export function About() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 transition duration-300 w-10/12 h-[400px]">
               <NextImage
                 src="/optimized/Carbon sktech.webp"
-                alt="Carbon sketch illustration"
+                alt="Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules"
                 width={800}
                 height={400}
                 className="w-full h-[120%] object-cover object-top -mt-[10%] group-hover:scale-105 transition duration-700"
@@ -46,7 +46,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <NextImage
                   src="/optimized/three_bags_no_bg.webp"
-                  alt="65g bag of activated carbon"
+                  alt="Three Purrify product packages showing different sizes: 17g trial, 60g standard, and 120g family pack"
                   width={400}
                   height={300}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
@@ -56,7 +56,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <NextImage
                   src="/optimized/carbon_magnified_image.webp"
-                  alt="Micropore magnified view of activated carbon"
+                  alt="Microscopic view of activated carbon showing porous structure that captures odor molecules"
                   width={400}
                   height={300}
                   className="w-full h-48 object-contain scale-85 transform hover:scale-90 transition duration-500"
@@ -66,7 +66,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <NextImage
                   src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80"
-                  alt="Cat in clean environment"
+                  alt="Happy cat resting peacefully in a fresh, odor-free home environment"
                   width={800}
                   height={400}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"

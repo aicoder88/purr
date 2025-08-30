@@ -31,29 +31,155 @@ export default function ActivatedCarbonBenefits() {
         {/* Canonical */}
         <link rel="canonical" href="https://purrify.ca/blog/activated-carbon-litter-additive-benefits" />
         
-        {/* Schema.org structured data */}
+        {/* Enhanced Article Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Activated Carbon Litter Additive Benefits: Science-Backed Odor Control",
-            "description": "Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source, creating a fresher home environment.",
-            "author": {
-              "@type": "Organization",
-              "name": "Purrify"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Purrify",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://purrify.ca/purrify-logo.png"
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits",
+                "headline": "Activated Carbon Litter Additive Benefits: Science-Backed Odor Control",
+                "description": "Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source, creating a fresher home environment.",
+                "image": {
+                  "@type": "ImageObject",
+                  "url": "https://purrify.ca/optimized/carbon_magnified_image.webp",
+                  "width": 1200,
+                  "height": 384,
+                  "caption": "Microscopic view of activated carbon's porous structure that traps odor molecules"
+                },
+                "author": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify",
+                  "url": "https://purrify.ca"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://purrify.ca/purrify-logo.png",
+                    "width": 400,
+                    "height": 400
+                  }
+                },
+                "datePublished": "2024-01-15T08:00:00-05:00",
+                "dateModified": "2024-08-30T10:00:00-05:00",
+                "url": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                },
+                "articleSection": "Science & Education",
+                "articleBody": "Learn about the science behind activated carbon and how it eliminates cat litter odors through molecular adsorption. Discover why coconut shell carbon is superior and how it provides health benefits beyond odor control.",
+                "wordCount": 1847,
+                "timeRequired": "PT8M",
+                "keywords": "activated carbon litter additive benefits, cat litter deodorizer, odor control science, molecular adsorption, natural cat litter additive, coconut shell carbon",
+                "inLanguage": "en-CA",
+                "about": [
+                  {
+                    "@type": "Thing",
+                    "name": "Activated Carbon",
+                    "description": "Porous carbon material used for adsorption and odor control"
+                  },
+                  {
+                    "@type": "Thing",
+                    "name": "Cat Litter Odor Control",
+                    "description": "Methods and products for eliminating cat litter box odors"
+                  },
+                  {
+                    "@type": "Thing",
+                    "name": "Molecular Adsorption",
+                    "description": "Scientific process by which odor molecules are trapped and neutralized"
+                  }
+                ],
+                "mentions": [
+                  {
+                    "@type": "Product",
+                    "name": "Purrify Activated Carbon Cat Litter Additive",
+                    "url": "https://purrify.ca/products/standard"
+                  },
+                  {
+                    "@type": "Organization",
+                    "name": "Purrify",
+                    "url": "https://purrify.ca"
+                  }
+                ],
+                "citation": [
+                  {
+                    "@type": "CreativeWork",
+                    "name": "Activated Carbon Science Research",
+                    "description": "Scientific studies on activated carbon effectiveness for odor control"
+                  }
+                ],
+                "isPartOf": {
+                  "@type": "Blog",
+                  "@id": "https://purrify.ca/blog",
+                  "name": "Purrify Blog - Cat Care & Odor Control"
+                },
+                "potentialAction": {
+                  "@type": "ReadAction",
+                  "target": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                },
+                "speakable": {
+                  "@type": "SpeakableSpecification",
+                  "cssSelector": ["h1", "h2", "h3", ".key-points"]
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://purrify.ca/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://purrify.ca/blog/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Activated Carbon Benefits",
+                    "item": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                  }
+                ]
+              },
+              {
+                "@type": "HowTo",
+                "name": "How to Maximize Activated Carbon Effectiveness",
+                "description": "Best practices for using activated carbon cat litter additive",
+                "image": "https://purrify.ca/optimized/carbon_magnified_image.webp",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Proper Application",
+                    "text": "Sprinkle evenly throughout the litter box when doing a complete litter change"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Regular Maintenance",
+                    "text": "Add fresh carbon additive with each litter change for optimal results"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Ensure Ventilation",
+                    "text": "Maintain good airflow around the litter area for enhanced effectiveness"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Choose Quality",
+                    "text": "Use premium coconut shell activated carbon for superior odor elimination"
+                  }
+                ]
               }
-            },
-            "datePublished": "2024-01-15",
-            "dateModified": "2024-01-15",
-            "image": "https://purrify.ca/optimized/carbon_magnified_image.webp",
-            "url": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+            ]
           })}
         </script>
       </Head>

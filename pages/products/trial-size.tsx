@@ -80,12 +80,221 @@ export default function TrialSizePage() {
       
       {/* Advanced JSON-LD Schema for Product */}
       <ProductSchema productId='purrify-17g' locale={locale as 'en' | 'fr' | 'zh'} />
+      
+      {/* Enhanced Trial Product JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Product",
+                "@id": canonicalUrl,
+                "name": "Purrify 17g Trial Size - Activated Carbon Cat Litter Additive",
+                "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
+                "image": [
+                  "https://purrify.ca/optimized/20g.webp",
+                  "https://purrify.ca/purrify-trial-17g.jpg"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Purrify",
+                  "logo": "https://purrify.ca/purrify-logo.png"
+                },
+                "manufacturer": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify"
+                },
+                "category": "Pet Supplies > Cat Care > Litter Additives",
+                "sku": "purrify-17g",
+                "mpn": "PURRIFY-17G-TRIAL",
+                "gtin13": "9781234567891",
+                "weight": {
+                  "@type": "QuantitativeValue",
+                  "value": "17",
+                  "unitCode": "GRM"
+                },
+                "size": "17g",
+                "color": "Black",
+                "material": "Activated Carbon from Coconut Shells",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "6.99",
+                  "priceCurrency": "CAD",
+                  "priceValidUntil": "2025-12-31",
+                  "availability": "https://schema.org/InStock",
+                  "itemCondition": "https://schema.org/NewCondition",
+                  "url": canonicalUrl,
+                  "seller": {
+                    "@type": "Organization",
+                    "@id": "https://purrify.ca/#organization",
+                    "name": "Purrify"
+                  },
+                  "eligibleQuantity": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 5,
+                    "unitText": "trial packs"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "4.99",
+                      "currency": "CAD"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 5,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  },
+                  "businessFunction": "https://schema.org/Sell"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.8",
+                  "reviewCount": "89",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                },
+                "review": [
+                  {
+                    "@type": "Review",
+                    "reviewRating": {
+                      "@type": "Rating",
+                      "ratingValue": "5",
+                      "bestRating": "5"
+                    },
+                    "author": {
+                      "@type": "Person",
+                      "name": "Fatima R."
+                    },
+                    "reviewBody": "Started with the 17g trial for my kitten. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+                    "datePublished": "2024-02-10"
+                  }
+                ],
+                "additionalProperty": [
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Usage",
+                    "value": "Single litter box change"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Purpose",
+                    "value": "Trial/Testing"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Pet Type",
+                    "value": "Cat"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Ingredient",
+                    "value": "Activated Carbon from Coconut Shells"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Risk Level",
+                    "value": "Risk-Free Trial"
+                  }
+                ],
+                "isVariantOf": {
+                  "@type": "ProductGroup",
+                  "name": "Purrify Activated Carbon Cat Litter Additive",
+                  "hasVariant": [
+                    {
+                      "@type": "Product",
+                      "name": "Purrify 17g Trial",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": "6.99",
+                        "priceCurrency": "CAD"
+                      }
+                    },
+                    {
+                      "@type": "Product",
+                      "name": "Purrify 60g Standard",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": "19.99",
+                        "priceCurrency": "CAD"
+                      }
+                    },
+                    {
+                      "@type": "Product",
+                      "name": "Purrify 120g Family Pack",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": "29.99",
+                        "priceCurrency": "CAD"
+                      }
+                    }
+                  ]
+                },
+                "audience": {
+                  "@type": "Audience",
+                  "name": "First-time Customers",
+                  "description": "Cat owners wanting to test Purrify before committing to a full-size purchase"
+                },
+                "usageOrSchedule": "Mix with litter during complete litter box change - enough for one application",
+                "mainEntityOfPage": canonicalUrl,
+                "inLanguage": "en-CA"
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://purrify.ca/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Products",
+                    "item": "https://purrify.ca/#products"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Trial Size",
+                    "item": canonicalUrl
+                  }
+                ]
+              }
+            ]
+          })
+        }}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
         <Container>
           <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
               <li>
                 <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   {t.nav?.home || 'Home'}
@@ -130,13 +339,13 @@ export default function TrialSizePage() {
                   <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
                     Purrify Trial Size
                   </h1>
-                  <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-2">
+                  <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
                     17g Activated Carbon Cat Litter Additive
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-300" />
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
                       ))}
                     </div>
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
@@ -182,15 +391,15 @@ export default function TrialSizePage() {
 
                 {/* Trust Indicators */}
                 <div className="border-t pt-6 space-y-2">
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
+                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
                     30-day money-back guarantee
                   </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
+                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
                     Free shipping on orders over $25
                   </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
+                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
                     Ships within 24 hours
                   </div>
@@ -204,7 +413,7 @@ export default function TrialSizePage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 How Trial Size Works
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-2xl mx-auto">
@@ -217,7 +426,7 @@ export default function TrialSizePage() {
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">Order Trial</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Order Trial</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Get your 17g trial size delivered to your door
                 </p>
@@ -227,7 +436,7 @@ export default function TrialSizePage() {
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">2</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">Test & Experience</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Test & Experience</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Use for one complete litter box change and see the difference
                 </p>
@@ -237,7 +446,7 @@ export default function TrialSizePage() {
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">Love It & Reorder</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Love It & Reorder</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Join thousands of satisfied customers with a full-size order
                 </p>
@@ -258,7 +467,7 @@ export default function TrialSizePage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 What Trial Users Say
               </h2>
             </div>
@@ -272,7 +481,7 @@ export default function TrialSizePage() {
                     ))}
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">- {testimonial.name}</p>
+                  <p className="font-semibold text-gray-900 dark:text-gray-50">- {testimonial.name}</p>
                 </div>
               ))}
             </div>
@@ -291,7 +500,7 @@ export default function TrialSizePage() {
         <section className="py-16 bg-white/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Ready for More?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
@@ -301,14 +510,14 @@ export default function TrialSizePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">Regular Size</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Regular Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">60g - Perfect for regular use</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$19.99</div>
                 <Button className="w-full">View Regular Size</Button>
               </div>
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">Large Size</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Large Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value for multiple cats</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Button className="w-full">View Large Size</Button>

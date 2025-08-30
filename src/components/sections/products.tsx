@@ -148,7 +148,7 @@ export function Products() {
                     
                     {/* Product image container with proper containment */}
                     <div className="relative h-full flex items-center justify-center p-4 sm:p-8 z-20">
-                      <div className="relative max-w-[140px] sm:max-w-[180px] max-h-[140px] sm:max-h-[180px]">
+                      <div className="relative max-w-[140px] sm:max-w-[180px] max-h-[140px] sm:max-h-[180px] mx-auto">
                         <NextImage
                           src={product.image}
                           alt={`${product.name} activated carbon cat litter additive package showing ${product.size} size for odor elimination`}
@@ -157,6 +157,13 @@ export function Products() {
                           className="w-full h-full mx-auto transition-transform duration-700 group-hover:scale-110 object-contain"
                           loading="lazy"
                           fetchPriority="auto"
+                          priority={index === 0}
+                          style={{
+                            aspectRatio: '1/1',
+                            width: '100%',
+                            height: 'auto'
+                          }}
+                          sizes="(max-width: 640px) 140px, (max-width: 1024px) 160px, 180px"
                         />
                       </div>
                     </div>

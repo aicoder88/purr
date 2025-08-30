@@ -30,34 +30,191 @@ export default function PurrifyVsArmHammer() {
         {/* Canonical */}
         <link rel="canonical" href="https://purrify.ca/blog/purrify-vs-arm-hammer" />
         
-        {/* Schema.org structured data */}
+        {/* Enhanced Comparison Review Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Review",
-            "itemReviewed": {
-              "@type": "Product",
-              "name": "Cat Litter Deodorizers Comparison"
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "4.8",
-              "bestRating": "5"
-            },
-            "author": {
-              "@type": "Organization",
-              "name": "Purrify"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Purrify",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://purrify.ca/purrify-logo.png"
+            "@graph": [
+              {
+                "@type": "Review",
+                "@id": "https://purrify.ca/blog/purrify-vs-arm-hammer",
+                "headline": "Purrify vs Arm & Hammer Cat Deodorizer: Honest Comparison Review",
+                "description": "Detailed side-by-side comparison of Purrify vs Arm & Hammer cat deodorizer including ingredients, effectiveness, pricing, and real-world performance.",
+                "reviewBody": "Comprehensive comparison of two popular cat litter deodorizers examining activated carbon technology vs traditional baking soda approaches.",
+                "itemReviewed": [
+                  {
+                    "@type": "Product",
+                    "name": "Purrify Activated Carbon Cat Litter Additive",
+                    "brand": {
+                      "@type": "Brand",
+                      "name": "Purrify"
+                    },
+                    "category": "Pet Supplies > Cat Care > Litter Additives",
+                    "description": "Premium activated carbon cat litter additive made from coconut shells"
+                  },
+                  {
+                    "@type": "Product",
+                    "name": "Traditional Baking Soda Cat Deodorizer",
+                    "category": "Pet Supplies > Cat Care > Litter Additives",
+                    "description": "Conventional baking soda-based cat litter deodorizer"
+                  }
+                ],
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "4.8",
+                  "bestRating": "5",
+                  "worstRating": "1",
+                  "ratingExplanation": "Based on effectiveness, safety, duration, and value comparison"
+                },
+                "author": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify",
+                  "url": "https://purrify.ca"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "@id": "https://purrify.ca/#organization",
+                  "name": "Purrify",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://purrify.ca/purrify-logo.png",
+                    "width": 400,
+                    "height": 400
+                  }
+                },
+                "datePublished": "2024-02-05T09:00:00-05:00",
+                "dateModified": "2024-08-30T10:00:00-05:00",
+                "url": "https://purrify.ca/blog/purrify-vs-arm-hammer",
+                "image": {
+                  "@type": "ImageObject",
+                  "url": "https://purrify.ca/optimized/three_bags_no_bg.webp",
+                  "width": 1200,
+                  "height": 630,
+                  "caption": "Side-by-side comparison of cat litter deodorizer products"
+                },
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://purrify.ca/blog/purrify-vs-arm-hammer"
+                },
+                "articleSection": "Product Comparison",
+                "wordCount": 2156,
+                "timeRequired": "PT12M",
+                "keywords": "Purrify vs Arm & Hammer review, cat deodorizer comparison, best cat litter odor eliminator, activated carbon vs baking soda",
+                "inLanguage": "en-CA",
+                "about": [
+                  {
+                    "@type": "Thing",
+                    "name": "Cat Litter Deodorizer Comparison",
+                    "description": "Comparative analysis of different cat odor control products"
+                  }
+                ],
+                "mentions": [
+                  {
+                    "@type": "Product",
+                    "name": "Purrify",
+                    "url": "https://purrify.ca/products/standard"
+                  }
+                ],
+                "positiveNotes": {
+                  "@type": "ItemList",
+                  "name": "Purrify Advantages",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Superior molecular-level odor elimination"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Natural coconut shell activated carbon"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "Longer lasting effectiveness - 7+ days"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 4,
+                      "name": "No added fragrances or chemicals"
+                    }
+                  ]
+                },
+                "negativeNotes": {
+                  "@type": "ItemList",
+                  "name": "Traditional Deodorizer Limitations",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Surface-level odor masking only"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Shorter effectiveness duration"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "May contain artificial fragrances"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "ComparisonEntity",
+                "name": "Cat Deodorizer Comparison Table",
+                "description": "Side-by-side comparison of key features between products",
+                "comparisonProperty": [
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Technology",
+                    "value": "Activated Carbon vs Baking Soda"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Effectiveness Duration",
+                    "value": "7+ days vs 2-3 days"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Safety",
+                    "value": "Food-grade vs Standard"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "name": "Environmental Impact",
+                    "value": "Renewable Coconut vs Mined Sodium"
+                  }
+                ]
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://purrify.ca/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://purrify.ca/blog/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Product Comparison",
+                    "item": "https://purrify.ca/blog/purrify-vs-arm-hammer"
+                  }
+                ]
               }
-            },
-            "datePublished": "2024-02-05",
-            "headline": "Purrify vs Arm & Hammer Cat Deodorizer: Honest Comparison Review"
+            ]
           })}
         </script>
       </Head>
