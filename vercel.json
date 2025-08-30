@@ -2,7 +2,6 @@
   "buildCommand": "npm run prebuild && npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "regions": ["iad1", "sfo1"],
   "functions": {
     "pages/api/create-checkout-session.ts": {
       "maxDuration": 30
