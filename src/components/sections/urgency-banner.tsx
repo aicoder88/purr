@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Users, TrendingUp, Leaf } from 'lucide-react';
+import { useTranslation } from '../../lib/translation-context';
 
 export function UrgencyBanner() {
+  const { t } = useTranslation();
   const [recentPurchases, setRecentPurchases] = useState<number>(23);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function UrgencyBanner() {
           {/* Left side - Natural Message */}
           <div className="flex items-center space-x-3">
             <Leaf className="w-5 h-5" />
-            <span className="font-bold text-lg">100% Natural • Made in Canada</span>
+            <span className="font-bold text-lg">{t.homepage.socialProof.nationalDelivery}</span>
           </div>
 
           {/* Center - Free Shipping */}
@@ -41,7 +43,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <TrendingUp className="w-4 h-4" />
             <span className="text-sm font-medium">
-              Fast delivery Canada-wide
+              {t.homepage.socialProof.fastDelivery}
             </span>
           </div>
 
@@ -49,7 +51,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <Users className="w-4 h-4" />
             <span className="text-sm">
-              <span className="font-bold text-yellow-300 dark:text-yellow-200">{recentPurchases}</span> orders this week
+              <span className="font-bold text-yellow-300 dark:text-yellow-200">{recentPurchases}</span> {t.homepage.socialProof.recentOrders}
             </span>
           </div>
         </div>

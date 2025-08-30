@@ -43,7 +43,7 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
   const { t } = useTranslation();
-  const pageTitle = `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
+  const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const canonicalUrl = 'https://purrify.ca/';
   const { generateBreadcrumbs } = useStructuredData();
   
@@ -67,14 +67,14 @@ export default function Home() {
               url: 'https://purrify.ca/purrify-logo.png',
               width: 1200,
               height: 630,
-              alt: `${SITE_NAME} - Premium Cat Litter Odor Control Solution`,
+              alt: `${SITE_NAME} - ${t.homepage.seo.openGraphImageAlt}`,
               type: 'image/png',
             },
             {
               url: 'https://purrify.ca/optimized/cat_rose_thumbnail.webp',
               width: 500,
               height: 340,
-              alt: 'Purrify Cat Litter Additive in Action - Before and After Demonstration',
+              alt: t.homepage.seo.videoDescription,
               type: 'image/webp',
             },
           ],
@@ -84,14 +84,14 @@ export default function Home() {
               width: 1280,
               height: 720,
               type: 'video/mp4',
-              alt: 'Purrify Cat Litter Additive Effectiveness Demonstration',
+              alt: t.homepage.seo.videoEffectivenessDemo,
             },
             {
               url: 'https://purrify.ca/videos/cat_rose_optimized.webm',
               width: 1280,
               height: 720,
               type: 'video/webm',
-              alt: 'Purrify Cat Litter Additive Effectiveness Demonstration',
+              alt: t.homepage.seo.videoEffectivenessDemo,
             }
           ],
         }}
@@ -103,7 +103,7 @@ export default function Home() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter odor control, activated carbon cat litter, natural cat litter additive, eco-friendly pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada',
+            content: t.homepage.seo.keywords,
           },
           {
             name: 'robots',

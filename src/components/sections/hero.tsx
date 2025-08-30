@@ -191,7 +191,7 @@ export function Hero() {
                   muted
                   playsInline
                   preload="metadata"
-                  aria-label="Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application"
+                  aria-label={t.homepage.hero.videoAriaLabel}
                   role="img"
                   loop
                   tabIndex={-1}
@@ -208,8 +208,8 @@ export function Hero() {
                   <meta itemProp="thumbnailUrl" content="/optimized/cat_rose_thumbnail.webp" />
                   <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
                   <meta itemProp="duration" content="PT30S" />
-                  <track kind="descriptions" src="/videos/cat_rose_description.vtt" srcLang="en" label="English Descriptions" />
-                  Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.
+                  <track kind="descriptions" src="/videos/cat_rose_description.vtt" srcLang="en" label={t.homepage.hero.videoDescriptions} />
+                  {t.homepage.hero.videoFallbackText}
                 </video>
               </div>
             </div>
@@ -275,19 +275,19 @@ export function Hero() {
                     <svg className="w-4 h-4 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
-                    <span>Highly Rated</span>
+                    <span>{t.homepage.hero.highlyRated}</span>
                   </div>
                   <div className="flex items-center">
                     <svg className="w-4 h-4 text-green-500 dark:text-green-400 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span>30-Day Money-Back Guarantee</span>
+                    <span>{t.homepage.hero.moneyBackGuarantee}</span>
                   </div>
                   <div className="flex items-center">
                     <svg className="w-4 h-4 text-blue-500 dark:text-blue-400 dark:text-blue-300 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
                     </svg>
-                    <span>Free Shipping in Canada</span>
+                    <span>{t.homepage.hero.freeShippingCanada}</span>
                   </div>
                 </div>
               </div>

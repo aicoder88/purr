@@ -987,5 +987,49 @@ export const zh = {
     readyToTryPurrify: "准备试试Purrify？",
     startWithRiskFreeTrial: "从我们的无风险试用装开始，亲自体验差异。",
     compareAllSizes: "比较所有尺寸"
+  },
+
+  // Homepage specific translations
+  homepage: {
+    seo: {
+      pageTitle: "活性炭猫砂添加剂",
+      keywords: "猫砂除臭控制，活性炭猫砂，天然猫砂添加剂，环保宠物除臭控制，猫砂除臭剂，宠物除臭消除，猫咪护理产品，天然除臭控制，猫砂解决方案，加拿大宠物用品",
+      openGraphImageAlt: "优质猫砂除臭控制解决方案",
+      videoAlt: "Purrify猫砂添加剂效果演示",
+      videoDescription: "Purrify猫砂添加剂实际应用 - 前后对比演示",
+      videoEffectivenessDemo: "Purrify猫砂添加剂效果演示"
+    },
+    trustBadges: {
+      securePayment: {
+        title: "安全支付",
+        description: "256位SSL",
+        detail: "通过Stripe进行SSL加密结账"
+      }
+    },
+    socialProof: {
+      nationalDelivery: "100%天然 • 加拿大制造",
+      fastDelivery: "全加拿大快速配送",
+      recentOrders: "本周订单"
+    },
+    hero: {
+      videoAriaLabel: "演示视频显示Purrify活性炭猫砂添加剂在应用前后消除猫砂异味",
+      videoFallbackText: "您的浏览器不支持视频标签。此视频演示了Purrify活性炭猫砂添加剂在应用到猫砂前后消除异味的效果。",
+      videoDescriptions: "中文描述",
+      highlyRated: "高评分",
+      moneyBackGuarantee: "30天退款保证",
+      freeShippingCanada: "加拿大免费配送"
+    },
+    enhancedComparison: {
+      duration: "持续时间",
+      coverage: "覆盖范围",
+      whyChoosePurrify: "为什么选择Purrify？",
+      joinThousands: "加入数千名信任Purrify的满意猫主人",
+      happyCustomers: "满意客户",
+      averageRating: "平均评分",
+      satisfactionRate: "满意率",
+      odorFreeGuarantee: "无异味保证",
+      tryRiskFree: "无风险试用",
+      chooseThisSize: "选择此尺寸"
+    }
   }
 };

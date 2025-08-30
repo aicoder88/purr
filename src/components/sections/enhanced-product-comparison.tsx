@@ -205,11 +205,11 @@ export function EnhancedProductComparison() {
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/70 rounded-lg border border-gray-100 dark:border-gray-600">
                     <div className="text-center">
                       <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.duration}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">Duration</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.duration}</div>
                     </div>
                     <div className="text-center">
                       <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.coverage}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">Coverage</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.coverage}</div>
                     </div>
                   </div>
 
@@ -246,7 +246,7 @@ export function EnhancedProductComparison() {
                           className="w-full h-full flex items-center justify-center gap-2"
                         >
                           <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5" />
-                          Try Risk-Free
+                          {t.homepage.enhancedComparison.tryRiskFree}
                         </a>
                       </Button>
                     ) : (
@@ -267,7 +267,7 @@ export function EnhancedProductComparison() {
                         ) : (
                           <div className="flex items-center gap-2">
                             <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5" />
-                            Choose This Size
+                            {t.homepage.enhancedComparison.chooseThisSize}
                           </div>
                         )}
                       </Button>
@@ -290,26 +290,26 @@ export function EnhancedProductComparison() {
           {/* Trust Indicators */}
           <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-[#FF3131]/10 dark:to-[#FF3131]/20 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-[#FF3131]/30">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-2">Why Choose Purrify?</h3>
-              <p className="text-gray-600 dark:text-gray-300">Join thousands of satisfied cat parents who trust Purrify</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-2">{t.homepage.enhancedComparison.whyChoosePurrify}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{t.homepage.enhancedComparison.joinThousands}</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">10,000+</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Customers</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.happyCustomers}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">4.9/5</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">Average Rating</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.averageRating}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">99%</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">Satisfaction Rate</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.satisfactionRate}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">7 Days</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">Odor-Free Guarantee</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.odorFreeGuarantee}</div>
               </div>
             </div>
           </div>

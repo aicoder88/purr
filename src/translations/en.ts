@@ -860,5 +860,49 @@ export const en = {
     skipAnytime: "Skip Anytime",
     highlyRated: "Highly Rated",
     errorDetails: "Error Details"
+  },
+
+  // Homepage specific translations
+  homepage: {
+    seo: {
+      pageTitle: "Activated Carbon Cat Litter Additive",
+      keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, eco-friendly pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada",
+      openGraphImageAlt: "Premium Cat Litter Odor Control Solution",
+      videoAlt: "Purrify Cat Litter Additive Effectiveness Demonstration",
+      videoDescription: "Purrify Cat Litter Additive in Action - Before and After Demonstration",
+      videoEffectivenessDemo: "Purrify Cat Litter Additive Effectiveness Demonstration"
+    },
+    trustBadges: {
+      securePayment: {
+        title: "Secure Payment",
+        description: "256-bit SSL",
+        detail: "SSL encrypted checkout with Stripe"
+      }
+    },
+    socialProof: {
+      nationalDelivery: "100% Natural • Made in Canada",
+      fastDelivery: "Fast delivery Canada-wide",
+      recentOrders: "orders this week"
+    },
+    hero: {
+      videoAriaLabel: "Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application",
+      videoFallbackText: "Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.",
+      videoDescriptions: "English Descriptions",
+      highlyRated: "Highly Rated",
+      moneyBackGuarantee: "30-Day Money-Back Guarantee",
+      freeShippingCanada: "Free Shipping in Canada"
+    },
+    enhancedComparison: {
+      duration: "Duration",
+      coverage: "Coverage",
+      whyChoosePurrify: "Why Choose Purrify?",
+      joinThousands: "Join thousands of satisfied cat parents who trust Purrify",
+      happyCustomers: "Happy Customers",
+      averageRating: "Average Rating",
+      satisfactionRate: "Satisfaction Rate",
+      odorFreeGuarantee: "Odor-Free Guarantee",
+      tryRiskFree: "Try Risk-Free",
+      chooseThisSize: "Choose This Size"
+    }
   }
 }; 

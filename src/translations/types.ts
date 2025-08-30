@@ -779,4 +779,48 @@ export interface TranslationType {
     highlyRated: string;
     errorDetails: string;
   };
+
+  // Homepage specific translations
+  homepage: {
+    seo: {
+      pageTitle: string;
+      keywords: string;
+      openGraphImageAlt: string;
+      videoAlt: string;
+      videoDescription: string;
+      videoEffectivenessDemo: string;
+    };
+    trustBadges: {
+      securePayment: {
+        title: string;
+        description: string;
+        detail: string;
+      };
+    };
+    socialProof: {
+      nationalDelivery: string;
+      fastDelivery: string;
+      recentOrders: string;
+    };
+    hero: {
+      videoAriaLabel: string;
+      videoFallbackText: string;
+      videoDescriptions: string;
+      highlyRated: string;
+      moneyBackGuarantee: string;
+      freeShippingCanada: string;
+    };
+    enhancedComparison: {
+      duration: string;
+      coverage: string;
+      whyChoosePurrify: string;
+      joinThousands: string;
+      happyCustomers: string;
+      averageRating: string;
+      satisfactionRate: string;
+      odorFreeGuarantee: string;
+      tryRiskFree: string;
+      chooseThisSize: string;
+    };
+  };
 }

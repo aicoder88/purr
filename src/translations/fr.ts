@@ -988,5 +988,49 @@ export const fr = {
     readyToTryPurrify: "Prêt à Essayer Purrify ?",
     startWithRiskFreeTrial: "Commencez avec notre format d'essai sans risque et découvrez la différence par vous-même.",
     compareAllSizes: "Comparer Toutes Les Tailles"
+  },
+
+  // Homepage specific translations
+  homepage: {
+    seo: {
+      pageTitle: "Additif de Litière pour Chat au Charbon Actif",
+      keywords: "contrôle des odeurs de litière pour chat, litière pour chat au charbon actif, additif naturel pour litière de chat, contrôle d'odeur écologique pour animaux, désodorisant pour litière de chat, élimination d'odeur d'animaux, produits de soins pour chats, contrôle d'odeur naturel, solution de litière pour chat, fournitures pour animaux Canada",
+      openGraphImageAlt: "Solution Premium de Contrôle d'Odeur de Litière pour Chat",
+      videoAlt: "Démonstration d'Efficacité de l'Additif Purrify pour Litière de Chat",
+      videoDescription: "Additif Purrify pour Litière de Chat en Action - Démonstration Avant et Après",
+      videoEffectivenessDemo: "Démonstration d'Efficacité de l'Additif Purrify pour Litière de Chat"
+    },
+    trustBadges: {
+      securePayment: {
+        title: "Paiement Sécurisé",
+        description: "SSL 256 bits",
+        detail: "Paiement crypté SSL avec Stripe"
+      }
+    },
+    socialProof: {
+      nationalDelivery: "100% Naturel • Fabriqué au Canada",
+      fastDelivery: "Livraison rapide partout au Canada",
+      recentOrders: "commandes cette semaine"
+    },
+    hero: {
+      videoAriaLabel: "Vidéo de démonstration montrant l'additif Purrify au charbon actif éliminant les odeurs de litière pour chat avant et après application",
+      videoFallbackText: "Votre navigateur ne prend pas en charge la balise vidéo. Cette vidéo démontre l'additif Purrify au charbon actif éliminant les odeurs avant et après application à la litière pour chat.",
+      videoDescriptions: "Descriptions en Français",
+      highlyRated: "Très Bien Noté",
+      moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
+      freeShippingCanada: "Livraison Gratuite au Canada"
+    },
+    enhancedComparison: {
+      duration: "Durée",
+      coverage: "Couverture",
+      whyChoosePurrify: "Pourquoi Choisir Purrify ?",
+      joinThousands: "Rejoignez des milliers de parents de chats satisfaits qui font confiance à Purrify",
+      happyCustomers: "Clients Satisfaits",
+      averageRating: "Note Moyenne",
+      satisfactionRate: "Taux de Satisfaction",
+      odorFreeGuarantee: "Garantie Sans Odeur",
+      tryRiskFree: "Essayer Sans Risque",
+      chooseThisSize: "Choisir Cette Taille"
+    }
   }
 };
