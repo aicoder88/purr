@@ -259,10 +259,14 @@ export interface TranslationType {
   structuredData: {
     organization: {
       name: string;
+      description: string;
+      foundingDate: string;
+      areaServed: string;
       contactPoint: {
         telephone: string;
+        email: string;
         contactType: string;
-        areaServed: string;
+        areaServed: string[];
         availableLanguage: string[];
       };
     };
@@ -281,6 +285,38 @@ export interface TranslationType {
     video: {
       name: string;
       description: string;
+    };
+    website: {
+      name: string;
+      description: string;
+      inLanguage: string;
+    };
+    offerCatalog: {
+      name: string;
+      priceRange: string;
+      products: {
+        trial: {
+          name: string;
+          description: string;
+          sku: string;
+        };
+        standard: {
+          name: string;
+          description: string;
+          sku: string;
+        };
+        family: {
+          name: string;
+          description: string;
+          sku: string;
+        };
+      };
+    };
+    faqPage: {
+      questions: Array<{
+        question: string;
+        answer: string;
+      }>;
     };
   };
 

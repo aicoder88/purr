@@ -227,7 +227,7 @@ export default function Home() {
               {
                 "@type": "Organization",
                 "@id": "https://purrify.ca/#organization",
-                "name": "Purrify",
+                "name": t.structuredData.organization.name,
                 "url": "https://purrify.ca",
                 "logo": {
                   "@type": "ImageObject",
@@ -236,8 +236,8 @@ export default function Home() {
                   "height": 400
                 },
                 "image": "https://purrify.ca/purrify-logo.png",
-                "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural coconut shell carbon.",
-                "foundingDate": "2023",
+                "description": t.structuredData.organization.description,
+                "foundingDate": t.structuredData.organization.foundingDate,
                 "address": {
                   "@type": "PostalAddress",
                   "streetAddress": "109-17680 Rue Charles",
@@ -253,11 +253,11 @@ export default function Home() {
                 },
                 "contactPoint": {
                   "@type": "ContactPoint",
-                  "telephone": "+1 250 432 9352",
-                  "email": "hello@purrify.ca",
-                  "contactType": "customer service",
-                  "areaServed": ["CA", "US"],
-                  "availableLanguage": ["English", "French", "Chinese"]
+                  "telephone": t.structuredData.organization.contactPoint.telephone,
+                  "email": t.structuredData.organization.contactPoint.email,
+                  "contactType": t.structuredData.organization.contactPoint.contactType,
+                  "areaServed": t.structuredData.organization.contactPoint.areaServed,
+                  "availableLanguage": t.structuredData.organization.contactPoint.availableLanguage
                 },
                 "sameAs": [
                   "https://facebook.com/purrify",
@@ -267,19 +267,19 @@ export default function Home() {
                 ],
                 "areaServed": {
                   "@type": "Country",
-                  "name": "Canada"
+                  "name": t.structuredData.organization.areaServed
                 },
                 "hasOfferCatalog": {
                   "@type": "OfferCatalog",
-                  "name": "Cat Litter Odor Control Products",
+                  "name": t.structuredData.offerCatalog.name,
                   "itemListElement": [
                     {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Product",
-                        "name": "Purrify 17g Trial Size",
-                        "description": "Trial size activated carbon cat litter additive - perfect for testing",
-                        "sku": "purrify-17g",
+                        "name": t.structuredData.offerCatalog.products.trial.name,
+                        "description": t.structuredData.offerCatalog.products.trial.description,
+                        "sku": t.structuredData.offerCatalog.products.trial.sku,
                         "image": "https://purrify.ca/optimized/20g.webp"
                       },
                       "price": "6.99",
@@ -291,9 +291,9 @@ export default function Home() {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Product",
-                        "name": "Purrify 60g Standard Size",
-                        "description": "Most popular size - one month supply for single cat households",
-                        "sku": "purrify-60g",
+                        "name": t.structuredData.offerCatalog.products.standard.name,
+                        "description": t.structuredData.offerCatalog.products.standard.description,
+                        "sku": t.structuredData.offerCatalog.products.standard.sku,
                         "image": "https://purrify.ca/optimized/60g.webp"
                       },
                       "price": "19.99",
@@ -305,9 +305,9 @@ export default function Home() {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Product",
-                        "name": "Purrify 120g Family Pack",
-                        "description": "Large size perfect for multi-cat households - maximum odor control",
-                        "sku": "purrify-120g",
+                        "name": t.structuredData.offerCatalog.products.family.name,
+                        "description": t.structuredData.offerCatalog.products.family.description,
+                        "sku": t.structuredData.offerCatalog.products.family.sku,
                         "image": "https://purrify.ca/optimized/140g.webp"
                       },
                       "price": "29.99",
@@ -317,14 +317,14 @@ export default function Home() {
                     }
                   ]
                 },
-                "priceRange": "$6.99 - $29.99"
+                "priceRange": t.structuredData.offerCatalog.priceRange
               },
               {
                 "@type": "WebSite",
                 "@id": "https://purrify.ca/#website",
                 "url": "https://purrify.ca",
-                "name": "Purrify - Activated Carbon Cat Litter Additive",
-                "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level.",
+                "name": t.structuredData.website.name,
+                "description": t.structuredData.website.description,
                 "publisher": {
                   "@id": "https://purrify.ca/#organization"
                 },
@@ -336,44 +336,18 @@ export default function Home() {
                   },
                   "query-input": "required name=search_term_string"
                 },
-                "inLanguage": "en-CA"
+                "inLanguage": t.structuredData.website.inLanguage
               },
               {
                 "@type": "FAQPage",
-                "mainEntity": [
-                  {
-                    "@type": "Question",
-                    "name": "What is Purrify and how does it work?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds, providing superior odor control compared to traditional litter alone."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Is Purrify safe for cats and humans?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "How much Purrify should I use?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 17g trial size is perfect for one litter box change."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Does Purrify work with all types of litter?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Yes! Purrify is designed to work with any type of cat litter - clay, clumping, crystal, natural, or biodegradable. It enhances the odor control properties of whatever litter you're already using."
-                    }
+                "mainEntity": t.structuredData.faqPage.questions.map((faq: { question: string; answer: string }) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
                   }
-                ]
+                }))
               }
             ]
           })

@@ -301,12 +301,16 @@ export const fr = {
   structuredData: {
     organization: {
       name: "Purrify",
+      description: "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec du charbon de coque de coco naturel.",
+      foundingDate: "2023",
       contactPoint: {
         telephone: "+1 250 432 9352",
+        email: "hello@purrify.ca",
         contactType: "service client",
-        areaServed: "CA",
-        availableLanguage: ["Anglais", "Français"]
-      }
+        areaServed: ["CA", "US"],
+        availableLanguage: ["Anglais", "Français", "Chinois"]
+      },
+      areaServed: "Canada"
     },
     product: {
       name: "Additif de Litière pour Chat à Base de Charbon Actif Purrify",
@@ -322,7 +326,53 @@ export const fr = {
     },
     video: {
       name: "Démonstration de l'additif de litière pour chat Purrify",
-      description: "Une démonstration de l'additif de litière pour chat au charbon actif Purrify qui élimine les odeurs au niveau moléculaire"
+      description: "Voir comment Purrify élimine efficacement les odeurs de litière pour chat à la source."
+    },
+    website: {
+      name: "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
+      description: "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire.",
+      inLanguage: "fr-CA"
+    },
+    offerCatalog: {
+      name: "Produits de Contrôle d'Odeurs de Litière pour Chat",
+      products: {
+        trial: {
+          name: "Purrify 17g Taille d'Essai",
+          description: "Taille d'essai - additif de litière pour chat à base de charbon actif parfait pour tester",
+          sku: "purrify-17g"
+        },
+        standard: {
+          name: "Purrify 60g Taille Standard", 
+          description: "Taille la plus populaire - approvisionnement d'un mois pour les foyers à un seul chat",
+          sku: "purrify-60g"
+        },
+        family: {
+          name: "Purrify 120g Pack Familial",
+          description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs", 
+          sku: "purrify-120g"
+        }
+      },
+      priceRange: "6,99 $ - 29,99 $"
+    },
+    faqPage: {
+      questions: [
+        {
+          question: "Qu'est-ce que Purrify et comment ça fonctionne?",
+          answer: "Purrify est un additif de charbon actif pour litière de chat qui élimine les odeurs au niveau moléculaire. Le charbon actif possède des millions de pores microscopiques qui piègent et neutralisent les composés générateurs d'odeurs, offrant un contrôle des odeurs supérieur par rapport à la litière traditionnelle seule."
+        },
+        {
+          question: "Purrify est-il sûr pour les chats et les humains?",
+          answer: "Oui, Purrify est complètement sûr pour les chats et les humains. Notre charbon actif est de qualité alimentaire et non toxique. Il a été testé de manière approfondie et est fait de matériaux naturels. De nombreux filtres à eau et purificateurs d'air utilisent le même type de charbon actif."
+        },
+        {
+          question: "Combien de Purrify dois-je utiliser?",
+          answer: "Pour des résultats optimaux, utilisez environ 1-2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le soigneusement avec votre litière existante lorsque vous effectuez un changement complet. La taille d'essai de 17g est parfaite pour un changement de bac à litière."
+        },
+        {
+          question: "Purrify fonctionne-t-il avec tous les types de litière?",
+          answer: "Oui! Purrify est conçu pour fonctionner avec tout type de litière pour chat - argile, agglomérante, cristal, naturelle ou biodégradable. Il améliore les propriétés de contrôle des odeurs de la litière que vous utilisez déjà."
+        }
+      ]
     }
   },
 

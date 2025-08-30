@@ -305,28 +305,78 @@ export const zh = {
   structuredData: {
     organization: {
       name: "Purrify",
+      description: "优质活性炭猫砂添加剂，在分子水平上消除异味。采用天然椰壳炭在加拿大制造。",
+      foundingDate: "2023",
       contactPoint: {
-        telephone: "+1-250-432-9352",
+        telephone: "+1 250 432 9352",
+        email: "hello@purrify.ca",
         contactType: "客户服务",
-        areaServed: "加拿大",
+        areaServed: ["CA", "US"],
         availableLanguage: ["英语", "法语", "中文"]
-      }
+      },
+      areaServed: "加拿大"
     },
     product: {
       name: "Purrify活性炭猫砂添加剂",
-      description: "天然活性炭猫砂添加剂，有效消除异味"
+      description: "活性炭猫砂添加剂，从根源消除异味。"
     },
     localBusiness: {
       type: "宠物用品店",
       name: "Purrify",
-      description: "优质猫砂添加剂和宠物护理产品"
+      description: "活性炭猫砂添加剂，从根源消除异味。"
     },
     breadcrumb: {
       home: "首页"
     },
     video: {
-      name: "Purrify工作原理",
-      description: "了解Purrify如何消除猫砂盒异味"
+      name: "Purrify猫砂添加剂有效性演示",
+      description: "了解Purrify如何有效消除猫砂异味。"
+    },
+    website: {
+      name: "Purrify - 活性炭猫砂添加剂",
+      description: "优质活性炭猫砂添加剂，在分子水平上消除异味。",
+      inLanguage: "zh-CN"
+    },
+    offerCatalog: {
+      name: "猫砂异味控制产品",
+      products: {
+        trial: {
+          name: "Purrify 17g 试用装",
+          description: "试用装活性炭猫砂添加剂 - 完美的测试选择",
+          sku: "purrify-17g"
+        },
+        standard: {
+          name: "Purrify 60g 标准装", 
+          description: "最受欢迎的规格 - 单猫家庭一个月用量",
+          sku: "purrify-60g"
+        },
+        family: {
+          name: "Purrify 120g 家庭装",
+          description: "大容量装，非常适合多猫家庭 - 最大程度控制异味", 
+          sku: "purrify-120g"
+        }
+      },
+      priceRange: "$6.99 - $29.99"
+    },
+    faqPage: {
+      questions: [
+        {
+          question: "什么是Purrify，它是如何工作的？",
+          answer: "Purrify是一种猫砂活性炭添加剂，在分子水平上消除异味。活性炭拥有数百万个微孔，可以捕获和中和产生异味的化合物，相比传统猫砂提供更优异的异味控制效果。"
+        },
+        {
+          question: "Purrify对猫和人类安全吗？",
+          answer: "是的，Purrify对猫和人类完全安全。我们的活性炭是食品级且无毒的。经过广泛测试，采用天然材料制成。许多净水器和空气净化器都使用相同类型的活性炭。"
+        },
+        {
+          question: "我应该使用多少Purrify？",
+          answer: "为获得最佳效果，每个标准猫砂盆使用大约1-2汤匙Purrify。在完全更换猫砂时将其与现有猫砂充分混合。17g试用装正好适合一次猫砂盆更换。"
+        },
+        {
+          question: "Purrify适用于所有类型的猫砂吗？",
+          answer: "是的！Purrify设计用于任何类型的猫砂 - 粘土、结团、水晶、天然或可生物降解的。它增强您已经在使用的猫砂的异味控制特性。"
+        }
+      ]
     }
   },
 
