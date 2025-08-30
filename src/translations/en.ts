@@ -132,7 +132,16 @@ export const en = {
     subtitle: "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive.",
     requestStoreAvailability: "Request Store Availability",
     dontSeeLocalStore: "Don't see your local store? Contact us to request Purrify at your favorite pet store!",
-    callStore: "Call Store"
+    callStore: "Call Store",
+    storeDescriptions: {
+      completePetCareAndSupplies: "Complete pet care and supplies",
+      premiumPetBoutique: "Premium pet boutique", 
+      familyOwnedPetStore: "Family-owned pet store",
+      globalPetFoodsLocation: "Global Pet Foods location",
+      premiumPetProductsAndSupplies: "Premium pet products & supplies",
+      fullServicePetStore: "Full-service pet store",
+      petStoreWithGroomingServices: "Pet store with grooming services"
+    }
   },
   
   // Call to Action

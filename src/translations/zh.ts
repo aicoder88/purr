@@ -158,11 +158,20 @@ export const zh = {
   // Stores Section
   storesSection: {
     availableInStores: "门店有售",
-    soldInFollowingStores: "在以下门店有售",
+    soldInFollowingStores: "在以下门店有售", 
     subtitle: "在您附近的宠物用品店寻找Purrify",
     requestStoreAvailability: "申请门店供货",
     dontSeeLocalStore: "没看到您当地的门店？",
-    callStore: "致电门店"
+    callStore: "致电门店",
+    storeDescriptions: {
+      completePetCareAndSupplies: "完整的宠物护理和用品",
+      premiumPetBoutique: "高端宠物精品店",
+      familyOwnedPetStore: "家庭经营的宠物店",
+      globalPetFoodsLocation: "Global Pet Foods门店",
+      premiumPetProductsAndSupplies: "高端宠物产品和用品",
+      fullServicePetStore: "全方位服务宠物店",
+      petStoreWithGroomingServices: "提供美容服务的宠物店"
+    }
   },
   
   // Call to Action

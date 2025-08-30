@@ -4,14 +4,14 @@ import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 
 // Store data - Complete list of pet stores carrying Purrify
-const STORES = [
+const getStoresWithTranslations = (t: any) => [
   {
     name: "Pattes et Griffes - Sainte-Thérèse",
     location: "Sainte-Thérèse, QC",
     address: "190 Bd du Curé-Labelle suite 1b",
     phone: "450-818-1310",
     url: "https://pattesgriffes.com/storelocator.html",
-    description: "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Thérèse",
@@ -19,7 +19,7 @@ const STORES = [
     address: "95 Bd du Curé-Labelle Suite 8",
     phone: "450-965-3906",
     url: "https://www.chico.ca/boutique/chico-sainte-therese/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Chico - Boutique d'animaux | Sainte-Marthe-sur-le-Lac",
@@ -27,7 +27,7 @@ const STORES = [
     address: "2860 B Boul. des Promenades",
     phone: "450-598-2860",
     url: "https://www.chico.ca/boutique/chico-ste-marthe/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Animal Shop Animal GIGI",
@@ -35,7 +35,7 @@ const STORES = [
     address: "356 Bd Arthur-Sauvé",
     phone: "450-598-3444",
     url: "https://www.animaleriegigi.com/",
-    description: "Family-owned pet store"
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
   },
   {
     name: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
@@ -43,7 +43,7 @@ const STORES = [
     address: "4511 Bd Arthur-Sauvé",
     phone: "450-314-2442",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Pattes et Griffes - Cartier Ouest",
@@ -51,7 +51,7 @@ const STORES = [
     address: "293 Bd Cartier Ouest",
     phone: "450-490-1414",
     url: "https://pattesgriffes.com/storelocator.html",
-    description: "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
     name: "Pitou Minou & Compagnons Kirkland",
@@ -59,7 +59,7 @@ const STORES = [
     address: "16936 Route Transcanadienne",
     phone: "514-695-5005",
     url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/",
-    description: "Global Pet Foods location"
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
     name: "Chico - Boutique d'animaux | Boul. St-Laurent (Montreal)",
@@ -67,7 +67,7 @@ const STORES = [
     address: "7001 Boul. Saint-Laurent",
     phone: "514-657-5813",
     url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Doghaus",
@@ -75,7 +75,7 @@ const STORES = [
     address: "5671 Rue Sherbrooke O",
     phone: "514-483-3555",
     url: "https://www.doghausmtl.com/",
-    description: "Premium pet products & supplies"
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
   },
   {
     name: "KONG ANIMALERIE",
@@ -83,7 +83,7 @@ const STORES = [
     address: "5555 Bd Decarie",
     phone: "514-662-8373",
     url: "https://www.facebook.com/konganimalerie/",
-    description: "Full-service pet store"
+    description: t.storesSection?.storeDescriptions?.fullServicePetStore || "Full-service pet store"
   },
   {
     name: "Coquette et Finegueule Animalerie avec toilettage",
@@ -91,7 +91,7 @@ const STORES = [
     address: "5203 Av Bannantyne",
     phone: "514-761-4221",
     url: "https://coquetteetfinegueule.com/",
-    description: "Pet store with grooming services"
+    description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || "Pet store with grooming services"
   },
   {
     name: "Pitou Minou & Compagnons Verdun",
@@ -99,7 +99,7 @@ const STORES = [
     address: "4100 Rue Wellington",
     phone: "514-732-0555",
     url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
-    description: "Global Pet Foods location"
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
     name: "Chico - Boutique d'animaux | Mont-Royal E",
@@ -107,7 +107,7 @@ const STORES = [
     address: "2016 Avenue du Mont-Royal E",
     phone: "514-521-0201",
     url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Chico - Boutique d'animaux | Rue Ontario E",
@@ -115,7 +115,7 @@ const STORES = [
     address: "3911 Rue Ontario E",
     phone: "514-527-1371",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Pattes et Griffes - Marche Centrale",
@@ -123,7 +123,7 @@ const STORES = [
     address: "9185 Bd de l'Acadie",
     phone: "514-389-0090",
     url: "https://pattesgriffes.com/storelocator.html",
-    description: "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
 ];
 
@@ -209,6 +209,7 @@ const hasWhiteBackground = (storeName: string) => {
 
 export function Stores() {
   const { t } = useTranslation();
+  const stores = getStoresWithTranslations(t);
   
   return (
     <section
@@ -227,7 +228,7 @@ export function Stores() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {STORES.map((store, index) => {
+          {stores.map((store, index) => {
             const logoConfig = getStoreLogo(store.name);
             const shouldUseWhiteBg = hasWhiteBackground(store.name);
             

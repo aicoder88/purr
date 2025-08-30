@@ -143,6 +143,15 @@ export interface TranslationType {
     requestStoreAvailability: string;
     dontSeeLocalStore: string;
     callStore: string;
+    storeDescriptions: {
+      completePetCareAndSupplies: string;
+      premiumPetBoutique: string;
+      familyOwnedPetStore: string;
+      globalPetFoodsLocation: string;
+      premiumPetProductsAndSupplies: string;
+      fullServicePetStore: string;
+      petStoreWithGroomingServices: string;
+    };
   };
   
   // Call to Action
