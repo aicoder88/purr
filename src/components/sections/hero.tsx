@@ -79,7 +79,7 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <SectionHeader text={t.seo.keywords.split(',')[1]} />
+            <SectionHeader text={t.seo.keywords.split(',')[1]?.trim() || 'odor control'} />
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="block bg-gradient-to-r from-[#1E1B4B] to-[#1E1B4B]/80 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 {t.hero.eliminateCatOdors}

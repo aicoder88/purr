@@ -1,3 +1,5 @@
+import { COMMON_DESCRIPTIONS, FEATURE_DESCRIPTIONS } from './common';
+
 export const en = {
   // Common
   siteName: "Purrify",
