@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 import SectionHeader from "../ui/section-header";
 import { scrollToSection } from "@/lib/utils";
@@ -17,14 +17,59 @@ export function Hero() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [showPlayButton, setShowPlayButton] = useState(false);
-  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasAttemptedPlay, setHasAttemptedPlay] = useState(false);
 
 
 
-  // Fade in animation on mount
+  // Video play handler
+  const handleVideoPlay = useCallback(async () => {
+    const video = videoRef.current;
+    if (!video || hasAttemptedPlay) return;
+    
+    setHasAttemptedPlay(true);
+    
+    try {
+      await video.play();
+      setShowPlayButton(false);
+    } catch (error) {
+      console.log('Video autoplay prevented:', error);
+      setShowPlayButton(true);
+    }
+  }, [hasAttemptedPlay]);
+
+  // Initialize video on mount
   useEffect(() => {
     setIsVisible(true);
-  }, []);
+    
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlayThrough = () => {
+      setIsVideoLoaded(true);
+      // Only attempt autoplay once when video is ready
+      if (!hasAttemptedPlay) {
+        handleVideoPlay();
+      }
+    };
+
+    const handleError = () => {
+      console.error('Video failed to load');
+      setShowPlayButton(true);
+      setIsVideoLoaded(true); // Show fallback state
+    };
+
+    video.addEventListener('canplaythrough', handleCanPlayThrough);
+    video.addEventListener('error', handleError);
+
+    // Load the video
+    video.load();
+
+    return () => {
+      video.removeEventListener('canplaythrough', handleCanPlayThrough);
+      video.removeEventListener('error', handleError);
+    };
+  }, [handleVideoPlay, hasAttemptedPlay]);
 
   return (
     <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300" style={{ willChange: 'auto' }}>
@@ -103,13 +148,15 @@ export function Hero() {
               {showPlayButton && (
                 <div 
                   className="absolute inset-0 bg-black/20 rounded-3xl flex items-center justify-center cursor-pointer z-10"
-                  onClick={() => {
-                    if (videoRef) {
-                      videoRef.play().then(() => {
-                        setShowPlayButton(false);
-                      }).catch((error) => {
-                        console.log('Manual video play failed:', error);
-                      });
+                  onClick={async () => {
+                    const video = videoRef.current;
+                    if (!video) return;
+                    
+                    try {
+                      await video.play();
+                      setShowPlayButton(false);
+                    } catch (error) {
+                      console.log('Manual video play failed:', error);
                     }
                   }}
                 >
@@ -121,12 +168,12 @@ export function Hero() {
                 </div>
               )}
               <video
+                ref={videoRef}
                 poster="/cat_rose_thumbnail.jpg"
                 className={`w-10/12 h-auto object-contain group-hover:scale-105 transition duration-700 mx-auto dark:brightness-90 dark:contrast-100 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label="Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application"
                 role="img"
                 loop
@@ -137,46 +184,7 @@ export function Hero() {
                 disablePictureInPicture
                 disableRemotePlayback
                 crossOrigin="anonymous"
-                ref={(el) => setVideoRef(el)}
-                onLoadedData={() => {
-                  setIsVideoLoaded(true);
-                  console.log('Video loaded successfully');
-                }}
-                onLoadedMetadata={(e) => {
-                  const video = e.target as HTMLVideoElement;
-                  // Force play on mobile after metadata loads
-                  const playPromise = video.play();
-                  if (playPromise !== undefined) {
-                    playPromise.catch((error) => {
-                      console.log('Video autoplay prevented:', error);
-                      setShowPlayButton(true);
-                    });
-                  }
-                }}
-                onError={(e) => {
-                  console.error('Video playback error:', e);
-                  const video = e.target as HTMLVideoElement;
-                  // Fallback to poster image
-                  video.style.background = `url(${video.poster}) center/cover no-repeat`;
-                  video.style.minHeight = '300px';
-                  setShowPlayButton(true);
-                }}
-                onPlay={() => {
-                  setShowPlayButton(false);
-                }}
-                onCanPlay={(e) => {
-                  const video = e.target as HTMLVideoElement;
-                  // Enhanced mobile video play logic
-                  if (video.paused) {
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                      playPromise.catch((error) => {
-                        console.log('Video autoplay failed, will play on user interaction:', error);
-                        setShowPlayButton(true);
-                      });
-                    }
-                  }
-                }}
+                onPlay={() => setShowPlayButton(false)}
               >
                 <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
                 <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
