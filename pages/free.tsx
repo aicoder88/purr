@@ -158,7 +158,7 @@
 //                   </p>
 //                   <p className="text-lg text-[#333333] leading-relaxed">
 //                     Why would we do this? Because once you experience what it's like to have guests over WITHOUT worrying about "that smell"... once you feel the relief of never holding your breath when you walk past the litter box... once you discover the joy of a truly fresh-smelling home...
-//                     <strong className="text-indigo-700"> You'll become a Purrify customer for life.</strong>
+//                     <strong className="text-indigo-700 dark:text-indigo-400"> You'll become a Purrify customer for life.</strong>
 //                   </p>
 //                 </div>
 //               </div>

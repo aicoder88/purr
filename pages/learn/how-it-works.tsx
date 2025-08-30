@@ -233,7 +233,7 @@ export default function HowItWorksPage() {
                   <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">{step.number}</span>
+                        <span className="text-white dark:text-gray-100 font-bold text-2xl">{step.number}</span>
                       </div>
                       <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
                         {step.title}

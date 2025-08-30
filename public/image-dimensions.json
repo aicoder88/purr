@@ -35,41 +35,14 @@
     "avifSanitized": "optimized/panel_3.avif",
     "optimized": "optimized/panel_3.png"
   },
-  "panel_1.png": {
-    "width": 388,
-    "height": 1021,
-    "webp": "optimized/panel_1.webp",
-    "webpSanitized": "optimized/panel_1.webp",
-    "avif": "optimized/panel_1.avif",
-    "avifSanitized": "optimized/panel_1.avif",
-    "optimized": "optimized/panel_1.png"
-  },
-  "logo-text-240.png": {
+  "logo-text-240.jpg": {
     "width": 240,
     "height": 80,
     "webp": "optimized/logo-text-240.webp",
     "webpSanitized": "optimized/logo-text-240.webp",
     "avif": "optimized/logo-text-240.avif",
     "avifSanitized": "optimized/logo-text-240.avif",
-    "optimized": "optimized/logo-text-240.png"
-  },
-  "logo-text-180.png": {
-    "width": 180,
-    "height": 60,
-    "webp": "optimized/logo-text-180.webp",
-    "webpSanitized": "optimized/logo-text-180.webp",
-    "avif": "optimized/logo-text-180.avif",
-    "avifSanitized": "optimized/logo-text-180.avif",
-    "optimized": "optimized/logo-text-180.png"
-  },
-  "logo-text-120.png": {
-    "width": 120,
-    "height": 40,
-    "webp": "optimized/logo-text-120.webp",
-    "webpSanitized": "optimized/logo-text-120.webp",
-    "avif": "optimized/logo-text-120.avif",
-    "avifSanitized": "optimized/logo-text-120.avif",
-    "optimized": "optimized/logo-text-120.png"
+    "optimized": "optimized/logo-text-240.jpg"
   },
   "logo-text-180.jpg": {
     "width": 180,
@@ -80,6 +53,42 @@
     "avifSanitized": "optimized/logo-text-180.avif",
     "optimized": "optimized/logo-text-180.jpg"
   },
+  "panel_2.png": {
+    "width": 465,
+    "height": 1024,
+    "webp": "optimized/panel_2.webp",
+    "webpSanitized": "optimized/panel_2.webp",
+    "avif": "optimized/panel_2.avif",
+    "avifSanitized": "optimized/panel_2.avif",
+    "optimized": "optimized/panel_2.png"
+  },
+  "logo-text-240.png": {
+    "width": 240,
+    "height": 80,
+    "webp": "optimized/logo-text-240.webp",
+    "webpSanitized": "optimized/logo-text-240.webp",
+    "avif": "optimized/logo-text-240.avif",
+    "avifSanitized": "optimized/logo-text-240.avif",
+    "optimized": "optimized/logo-text-240.png"
+  },
+  "logo-text-120.png": {
+    "width": 120,
+    "height": 40,
+    "webp": "optimized/logo-text-120.webp",
+    "webpSanitized": "optimized/logo-text-120.webp",
+    "avif": "optimized/logo-text-120.avif",
+    "avifSanitized": "optimized/logo-text-120.avif",
+    "optimized": "optimized/logo-text-120.png"
+  },
+  "logo-text-180.png": {
+    "width": 180,
+    "height": 60,
+    "webp": "optimized/logo-text-180.webp",
+    "webpSanitized": "optimized/logo-text-180.webp",
+    "avif": "optimized/logo-text-180.avif",
+    "avifSanitized": "optimized/logo-text-180.avif",
+    "optimized": "optimized/logo-text-180.png"
+  },
   "logo-text-120.jpg": {
     "width": 120,
     "height": 40,
@@ -88,33 +97,6 @@
     "avif": "optimized/logo-text-120.avif",
     "avifSanitized": "optimized/logo-text-120.avif",
     "optimized": "optimized/logo-text-120.jpg"
-  },
-  "logo-text-240.jpg": {
-    "width": 240,
-    "height": 80,
-    "webp": "optimized/logo-text-240.webp",
-    "webpSanitized": "optimized/logo-text-240.webp",
-    "avif": "optimized/logo-text-240.avif",
-    "avifSanitized": "optimized/logo-text-240.avif",
-    "optimized": "optimized/logo-text-240.jpg"
-  },
-  "icon-32.png": {
-    "width": 32,
-    "height": 32,
-    "webp": "optimized/icon-32.webp",
-    "webpSanitized": "optimized/icon-32.webp",
-    "avif": "optimized/icon-32.avif",
-    "avifSanitized": "optimized/icon-32.avif",
-    "optimized": "optimized/icon-32.png"
-  },
-  "icon-64.png": {
-    "width": 64,
-    "height": 64,
-    "webp": "optimized/icon-64.webp",
-    "webpSanitized": "optimized/icon-64.webp",
-    "avif": "optimized/icon-64.avif",
-    "avifSanitized": "optimized/icon-64.avif",
-    "optimized": "optimized/icon-64.png"
   },
   "icon-64.jpg": {
     "width": 64,
@@ -125,14 +107,23 @@
     "avifSanitized": "optimized/icon-64.avif",
     "optimized": "optimized/icon-64.jpg"
   },
-  "icon-128.png": {
-    "width": 128,
-    "height": 128,
-    "webp": "optimized/icon-128.webp",
-    "webpSanitized": "optimized/icon-128.webp",
-    "avif": "optimized/icon-128.avif",
-    "avifSanitized": "optimized/icon-128.avif",
-    "optimized": "optimized/icon-128.png"
+  "micropores_magnified_view.jpeg": {
+    "width": 886,
+    "height": 886,
+    "webp": "optimized/micropores_magnified_view.webp",
+    "webpSanitized": "optimized/micropores_magnified_view.webp",
+    "avif": "optimized/micropores_magnified_view.avif",
+    "avifSanitized": "optimized/micropores_magnified_view.avif",
+    "optimized": "optimized/micropores_magnified_view.jpeg"
+  },
+  "icon-32.png": {
+    "width": 32,
+    "height": 32,
+    "webp": "optimized/icon-32.webp",
+    "webpSanitized": "optimized/icon-32.webp",
+    "avif": "optimized/icon-32.avif",
+    "avifSanitized": "optimized/icon-32.avif",
+    "optimized": "optimized/icon-32.png"
   },
   "icon-32.jpg": {
     "width": 32,
@@ -143,6 +134,15 @@
     "avifSanitized": "optimized/icon-32.avif",
     "optimized": "optimized/icon-32.jpg"
   },
+  "icon-64.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/icon-64.webp",
+    "webpSanitized": "optimized/icon-64.webp",
+    "avif": "optimized/icon-64.avif",
+    "avifSanitized": "optimized/icon-64.avif",
+    "optimized": "optimized/icon-64.png"
+  },
   "icon-128.jpg": {
     "width": 128,
     "height": 128,
@@ -152,23 +152,14 @@
     "avifSanitized": "optimized/icon-128.avif",
     "optimized": "optimized/icon-128.jpg"
   },
-  "micropores_magnified_view.jpeg": {
-    "width": 886,
-    "height": 886,
-    "webp": "optimized/micropores_magnified_view.webp",
-    "webpSanitized": "optimized/micropores_magnified_view.webp",
-    "avif": "optimized/micropores_magnified_view.avif",
-    "avifSanitized": "optimized/micropores_magnified_view.avif",
-    "optimized": "optimized/micropores_magnified_view.jpeg"
-  },
-  "favicon.png": {
-    "width": 16,
-    "height": 16,
-    "webp": "optimized/favicon.webp",
-    "webpSanitized": "optimized/favicon.webp",
-    "avif": "optimized/favicon.avif",
-    "avifSanitized": "optimized/favicon.avif",
-    "optimized": "optimized/favicon.png"
+  "icon-128.png": {
+    "width": 128,
+    "height": 128,
+    "webp": "optimized/icon-128.webp",
+    "webpSanitized": "optimized/icon-128.webp",
+    "avif": "optimized/icon-128.avif",
+    "avifSanitized": "optimized/icon-128.avif",
+    "optimized": "optimized/icon-128.png"
   },
   "gigi.png": {
     "width": 553,
@@ -179,6 +170,15 @@
     "avifSanitized": "optimized/gigi.avif",
     "optimized": "optimized/gigi.png"
   },
+  "favicon.png": {
+    "width": 16,
+    "height": 16,
+    "webp": "optimized/favicon.webp",
+    "webpSanitized": "optimized/favicon.webp",
+    "avif": "optimized/favicon.avif",
+    "avifSanitized": "optimized/favicon.avif",
+    "optimized": "optimized/favicon.png"
+  },
   "favicon.jpg": {
     "width": 16,
     "height": 16,
@@ -187,6 +187,15 @@
     "avif": "optimized/favicon.avif",
     "avifSanitized": "optimized/favicon.avif",
     "optimized": "optimized/favicon.jpg"
+  },
+  "panel_1.png": {
+    "width": 388,
+    "height": 1021,
+    "webp": "optimized/panel_1.webp",
+    "webpSanitized": "optimized/panel_1.webp",
+    "avif": "optimized/panel_1.avif",
+    "avifSanitized": "optimized/panel_1.avif",
+    "optimized": "optimized/panel_1.png"
   },
   "doghaus.png": {
     "width": 600,
@@ -197,14 +206,14 @@
     "avifSanitized": "optimized/doghaus.avif",
     "optimized": "optimized/doghaus.png"
   },
-  "panel_2.png": {
-    "width": 465,
-    "height": 1024,
-    "webp": "optimized/panel_2.webp",
-    "webpSanitized": "optimized/panel_2.webp",
-    "avif": "optimized/panel_2.avif",
-    "avifSanitized": "optimized/panel_2.avif",
-    "optimized": "optimized/panel_2.png"
+  "coquette-finegueule.png": {
+    "width": 712,
+    "height": 500,
+    "webp": "optimized/coquette-finegueule.webp",
+    "webpSanitized": "optimized/coquette-finegueule.webp",
+    "avif": "optimized/coquette-finegueule.avif",
+    "avifSanitized": "optimized/coquette-finegueule.avif",
+    "optimized": "optimized/coquette-finegueule.png"
   },
   "kong-animalerie.jpg": {
     "width": 960,
@@ -215,15 +224,6 @@
     "avifSanitized": "optimized/kong-animalerie.avif",
     "optimized": "optimized/kong-animalerie.jpg"
   },
-  "cat_rose_thumbnail.jpg": {
-    "width": 500,
-    "height": 340,
-    "webp": "optimized/cat_rose_thumbnail.webp",
-    "webpSanitized": "optimized/cat_rose_thumbnail.webp",
-    "avif": "optimized/cat_rose_thumbnail.avif",
-    "avifSanitized": "optimized/cat_rose_thumbnail.avif",
-    "optimized": "optimized/cat_rose_thumbnail.jpg"
-  },
   "apple-touch-icon.png": {
     "width": 180,
     "height": 180,
@@ -233,15 +233,6 @@
     "avifSanitized": "optimized/apple-touch-icon.avif",
     "optimized": "optimized/apple-touch-icon.png"
   },
-  "coquette-finegueule.png": {
-    "width": 712,
-    "height": 500,
-    "webp": "optimized/coquette-finegueule.webp",
-    "webpSanitized": "optimized/coquette-finegueule.webp",
-    "avif": "optimized/coquette-finegueule.avif",
-    "avifSanitized": "optimized/coquette-finegueule.avif",
-    "optimized": "optimized/coquette-finegueule.png"
-  },
   "apple-touch-icon.jpg": {
     "width": 180,
     "height": 180,
@@ -250,6 +241,15 @@
     "avif": "optimized/apple-touch-icon.avif",
     "avifSanitized": "optimized/apple-touch-icon.avif",
     "optimized": "optimized/apple-touch-icon.jpg"
+  },
+  "cat_rose_thumbnail.jpg": {
+    "width": 500,
+    "height": 340,
+    "webp": "optimized/cat_rose_thumbnail.webp",
+    "webpSanitized": "optimized/cat_rose_thumbnail.webp",
+    "avif": "optimized/cat_rose_thumbnail.avif",
+    "avifSanitized": "optimized/cat_rose_thumbnail.avif",
+    "optimized": "optimized/cat_rose_thumbnail.jpg"
   },
   "fresh.jpg": {
     "width": 1024,
@@ -278,6 +278,15 @@
     "avifSanitized": "optimized/20g.avif",
     "optimized": "optimized/20g.png"
   },
+  "fresh.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/fresh.webp",
+    "webpSanitized": "optimized/fresh.webp",
+    "avif": "optimized/fresh.avif",
+    "avifSanitized": "optimized/fresh.avif",
+    "optimized": "optimized/fresh.png"
+  },
   "140g.jpg": {
     "width": 1024,
     "height": 1536,
@@ -296,14 +305,14 @@
     "avifSanitized": "optimized/samplebag.avif",
     "optimized": "optimized/samplebag.jpg"
   },
-  "fresh.png": {
+  "140g.png": {
     "width": 1024,
     "height": 1536,
-    "webp": "optimized/fresh.webp",
-    "webpSanitized": "optimized/fresh.webp",
-    "avif": "optimized/fresh.avif",
-    "avifSanitized": "optimized/fresh.avif",
-    "optimized": "optimized/fresh.png"
+    "webp": "optimized/140g.webp",
+    "webpSanitized": "optimized/140g.webp",
+    "avif": "optimized/140g.avif",
+    "avifSanitized": "optimized/140g.avif",
+    "optimized": "optimized/140g.png"
   },
   "three_bags_no_bg.png": {
     "width": 1920,
@@ -314,15 +323,6 @@
     "avifSanitized": "optimized/three_bags_no_bg.avif",
     "optimized": "optimized/three_bags_no_bg.png"
   },
-  "140g.png": {
-    "width": 1024,
-    "height": 1536,
-    "webp": "optimized/140g.webp",
-    "webpSanitized": "optimized/140g.webp",
-    "avif": "optimized/140g.avif",
-    "avifSanitized": "optimized/140g.avif",
-    "optimized": "optimized/140g.png"
-  },
   "20g_o.png": {
     "width": 1696,
     "height": 2607,
@@ -332,14 +332,14 @@
     "avifSanitized": "optimized/20g_o.avif",
     "optimized": "optimized/20g_o.png"
   },
-  "free purrify.png": {
-    "width": 1024,
-    "height": 1536,
-    "webp": "optimized/free purrify.webp",
-    "webpSanitized": "optimized/free-purrify.webp",
-    "avif": "optimized/free purrify.avif",
-    "avifSanitized": "optimized/free-purrify.avif",
-    "optimized": "optimized/free purrify.png"
+  "60g.png": {
+    "width": 1920,
+    "height": 3088,
+    "webp": "optimized/60g.webp",
+    "webpSanitized": "optimized/60g.webp",
+    "avif": "optimized/60g.avif",
+    "avifSanitized": "optimized/60g.avif",
+    "optimized": "optimized/60g.png"
   },
   "Carbon sktech.png": {
     "width": 1024,
@@ -350,14 +350,14 @@
     "avifSanitized": "optimized/Carbon-sktech.avif",
     "optimized": "optimized/Carbon sktech.png"
   },
-  "60g.png": {
-    "width": 1920,
-    "height": 3088,
-    "webp": "optimized/60g.webp",
-    "webpSanitized": "optimized/60g.webp",
-    "avif": "optimized/60g.avif",
-    "avifSanitized": "optimized/60g.avif",
-    "optimized": "optimized/60g.png"
+  "free purrify.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/free purrify.webp",
+    "webpSanitized": "optimized/free-purrify.webp",
+    "avif": "optimized/free purrify.avif",
+    "avifSanitized": "optimized/free-purrify.avif",
+    "optimized": "optimized/free purrify.png"
   },
   "before after.png": {
     "width": 1536,

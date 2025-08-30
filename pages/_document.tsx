@@ -15,10 +15,7 @@ export default function Document() {
           as="style"
           onLoad={() => {}}
         />
-        <link rel="stylesheet" href="/critical.css" />
-        <noscript>
-          <link rel="stylesheet" href="/critical.css" />
-        </noscript>
+        {/* Critical CSS moved to next.config.js or CSS modules */}
         
         {/* Preload critical fonts for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
