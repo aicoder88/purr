@@ -1,12 +1,13 @@
 import React from 'react';
 import { Shield, Award, RefreshCw, Truck, Users, Star } from 'lucide-react';
+import { useTranslation } from '../../lib/translation-context';
 
 interface TrustBadge {
   id: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  title: string;
-  description: string;
-  highlight?: string;
+  titleKey: string;
+  descriptionKey: string;
+  highlightKey?: string;
   color: string;
 }
 
@@ -21,51 +22,49 @@ const TRUST_BADGES: TrustBadge[] = [
   {
     id: 'money-back',
     icon: RefreshCw,
-    title: '30-Day Money Back',
-    description: 'Not satisfied? Get a full refund within 30 days',
-    highlight: '100% Guaranteed',
+    titleKey: 'moneyBack',
+    descriptionKey: 'moneyBack',
+    highlightKey: 'moneyBack',
     color: 'text-green-600 dark:text-green-400'
   },
   {
     id: 'secure-payment',
     icon: Shield,
-    title: 'Secure Payment',
-    description: 'SSL encrypted checkout with Stripe',
-    highlight: '256-bit SSL',
+    titleKey: 'securePayment',
+    descriptionKey: 'securePayment',
+    highlightKey: 'securePayment',
     color: 'text-blue-600 dark:text-blue-400 dark:text-blue-300'
   },
   {
     id: 'fast-shipping',
     icon: Truck,
-    title: 'Fast Shipping',
-    description: 'Quick and reliable delivery',
-    // title: 'Fast & Free Shipping', // TODO: Restore when free shipping is available
-    // description: 'Free shipping on orders over $25', // TODO: Restore when free shipping is available
-    highlight: 'Same Day Processing',
+    titleKey: 'fastShipping',
+    descriptionKey: 'fastShipping',
+    highlightKey: 'fastShipping',
     color: 'text-purple-600 dark:text-purple-400'
   },
   {
     id: 'customer-satisfaction',
     icon: Star,
-    title: '4.9/5 Customer Rating',
-    description: 'Based on 2,500+ verified reviews',
-    highlight: '98% Satisfaction',
+    titleKey: 'customerRating',
+    descriptionKey: 'customerRating',
+    highlightKey: 'customerRating',
     color: 'text-yellow-600 dark:text-yellow-400'
   },
   {
     id: 'trusted-customers',
     icon: Users,
-    title: '10,000+ Happy Customers',
-    description: 'Trusted by cat owners across Canada',
-    highlight: 'Since 2019',
+    titleKey: 'happyCustomers',
+    descriptionKey: 'happyCustomers',
+    highlightKey: 'happyCustomers',
     color: 'text-indigo-600 dark:text-indigo-400'
   },
   {
     id: 'quality-guarantee',
     icon: Award,
-    title: 'Premium Quality',
-    description: 'Food-grade activated carbon, lab tested',
-    highlight: 'Certified Safe',
+    titleKey: 'premiumQuality',
+    descriptionKey: 'premiumQuality',
+    highlightKey: 'premiumQuality',
     color: 'text-red-600 dark:text-red-400'
   }
 ];
@@ -76,7 +75,16 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
   maxBadges,
   className = ''
 }) => {
+  const { t } = useTranslation();
   const badges = maxBadges ? TRUST_BADGES.slice(0, maxBadges) : TRUST_BADGES;
+
+  const getTrustBadgeText = (badge: TrustBadge, textType: 'title' | 'description' | 'highlight') => {
+    const trustBadge = t.trustBadges?.[badge.titleKey as keyof typeof t.trustBadges];
+    if (trustBadge && typeof trustBadge === 'object') {
+      return trustBadge[textType] || '';
+    }
+    return '';
+  };
 
   const getLayoutClasses = () => {
     switch (variant) {
@@ -112,11 +120,11 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
             )}
             <div className="text-left">
               <div className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
-                {badge.title}
+                {getTrustBadgeText(badge, 'title')}
               </div>
-              {badge.highlight && (
+              {badge.highlightKey && (
                 <div className={`text-xs font-medium ${badge.color}`}>
-                  {badge.highlight}
+                  {getTrustBadgeText(badge, 'highlight')}
                 </div>
               )}
             </div>
@@ -137,15 +145,15 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
               </div>
             )}
             <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
-              {badge.title}
+              {getTrustBadgeText(badge, 'title')}
             </h3>
-            {badge.highlight && (
+            {badge.highlightKey && (
               <div className={`text-sm font-semibold ${badge.color} mb-2`}>
-                {badge.highlight}
+                {getTrustBadgeText(badge, 'highlight')}
               </div>
             )}
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              {badge.description}
+              {getTrustBadgeText(badge, 'description')}
             </p>
           </div>
         ))}
@@ -164,15 +172,15 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
             </div>
           )}
           <div className="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">
-            {badge.title}
+            {getTrustBadgeText(badge, 'title')}
           </div>
-          {badge.highlight && (
+          {badge.highlightKey && (
             <div className={`text-xs font-medium ${badge.color} mb-2`}>
-              {badge.highlight}
+              {getTrustBadgeText(badge, 'highlight')}
             </div>
           )}
           <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-            {badge.description}
+            {getTrustBadgeText(badge, 'description')}
           </p>
         </div>
       ))}
@@ -190,9 +198,18 @@ export const SecurityBadges: React.FC<{ className?: string }> = ({ className = '
 );
 
 export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const { t } = useTranslation();
   const checkoutBadges = TRUST_BADGES.filter(badge => 
     ['money-back', 'secure-payment', 'fast-shipping'].includes(badge.id)
   );
+
+  const getTrustBadgeText = (badge: TrustBadge, textType: 'title' | 'description' | 'highlight') => {
+    const trustBadge = t.trustBadges?.[badge.titleKey as keyof typeof t.trustBadges];
+    if (trustBadge && typeof trustBadge === 'object') {
+      return trustBadge[textType] || '';
+    }
+    return '';
+  };
 
   return (
     <div className={`flex flex-col space-y-3 ${className}`}>
@@ -203,10 +220,10 @@ export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ classNam
           </div>
           <div>
             <div className="font-semibold text-green-800 dark:text-green-200 text-sm">
-              {badge.title}
+              {getTrustBadgeText(badge, 'title')}
             </div>
             <div className="text-green-700 dark:text-green-300 dark:text-green-400 text-xs">
-              {badge.description}
+              {getTrustBadgeText(badge, 'description')}
             </div>
           </div>
         </div>
@@ -216,9 +233,18 @@ export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ classNam
 };
 
 export const SocialProofBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const { t } = useTranslation();
   const socialBadges = TRUST_BADGES.filter(badge => 
     ['customer-satisfaction', 'trusted-customers', 'quality-guarantee'].includes(badge.id)
   );
+
+  const getTrustBadgeText = (badge: TrustBadge, textType: 'title' | 'description' | 'highlight') => {
+    const trustBadge = t.trustBadges?.[badge.titleKey as keyof typeof t.trustBadges];
+    if (trustBadge && typeof trustBadge === 'object') {
+      return trustBadge[textType] || '';
+    }
+    return '';
+  };
 
   return (
     <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${className}`}>
@@ -228,10 +254,10 @@ export const SocialProofBadges: React.FC<{ className?: string }> = ({ className 
             <badge.icon className="w-full h-full" />
           </div>
           <div className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-            {badge.highlight}
+            {getTrustBadgeText(badge, 'highlight')}
           </div>
           <div className="text-sm text-gray-600 dark:text-gray-300">
-            {badge.title}
+            {getTrustBadgeText(badge, 'title')}
           </div>
         </div>
       ))}

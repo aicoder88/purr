@@ -280,7 +280,70 @@ export const zh = {
     placeholder: "输入您的邮箱地址",
     buttonText: "订阅",
     successMessage: "感谢您的订阅！",
-    errorMessage: "订阅失败，请重试。"
+    errorMessage: "订阅失败，请重试。",
+    joinFamily: {
+      title: "加入Purrify大家庭",
+      subtitle: "首单享10%折扣，获得专属猫咪护理技巧",
+      benefits: {
+        firstOrder: "首单10%折扣",
+        firstOrderDesc: "新订阅者专属折扣",
+        catCareTips: "猫咪护理技巧",
+        catCareTipsDesc: "每周专家建议和猫砂技巧",
+        earlyAccess: "抢先体验",
+        earlyAccessDesc: "第一时间了解新产品",
+        communityStories: "社区故事",
+        communityStoriesDesc: "其他猫主人的成功故事"
+      },
+      emailPlaceholder: "输入您的邮箱地址",
+      ctaButton: "首单享10%折扣",
+      joinText: "加入10,000+快乐猫主人 • 无垃圾邮件，随时退订",
+      features: {
+        weeklyTips: "✓ 每周技巧",
+        exclusiveOffers: "✓ 专属优惠",
+        earlyAccessProducts: "✓ 抢先体验"
+      }
+    }
+  },
+
+  // Trust Badges
+  trustBadges: {
+    moneyBack: {
+      title: "30天退款保障",
+      description: "不满意？30天内获得全额退款",
+      highlight: "100%保障"
+    },
+    securePayment: {
+      title: "安全支付",
+      description: "SSL加密结账与Stripe",
+      highlight: "256位SSL"
+    },
+    fastShipping: {
+      title: "快速配送",
+      description: "快速可靠的配送",
+      highlight: "当天处理"
+    },
+    customerRating: {
+      title: "4.9/5客户评分",
+      description: "基于2,500+真实评价",
+      highlight: "98%满意度"
+    },
+    happyCustomers: {
+      title: "10,000+满意客户",
+      description: "全加拿大猫主人的信赖之选",
+      highlight: "自2019年"
+    },
+    premiumQuality: {
+      title: "优质产品",
+      description: "食品级活性炭，实验室测试",
+      highlight: "安全认证"
+    }
+  },
+
+  // Payment Security
+  paymentSecurity: {
+    securePayment: "安全支付",
+    sslEncrypted: "256位SSL",
+    sslEncryptedCheckout: "您的支付信息经过加密且安全。我们绝不存储您的支付详情。"
   },
   
   // Free Giveaway Form
@@ -586,12 +649,6 @@ export const zh = {
     joinThePurrifyFamily: "加入Purrify大家庭"
   },
 
-  // Payment Security
-  paymentSecurity: {
-    securePayment: "安全支付",
-    sslEncrypted: "256位SSL",
-    sslEncryptedCheckout: "Stripe SSL加密结账"
-  },
 
   // Testimonials Section
   testimonialsSection: {

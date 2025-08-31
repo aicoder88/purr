@@ -235,6 +235,28 @@ export interface TranslationType {
     buttonText: string;
     successMessage: string;
     errorMessage: string;
+    joinFamily?: {
+      title: string;
+      subtitle: string;
+      benefits: {
+        firstOrder: string;
+        firstOrderDesc: string;
+        catCareTips: string;
+        catCareTipsDesc: string;
+        earlyAccess: string;
+        earlyAccessDesc: string;
+        communityStories: string;
+        communityStoriesDesc: string;
+      };
+      emailPlaceholder: string;
+      ctaButton: string;
+      joinText: string;
+      features: {
+        weeklyTips: string;
+        exclusiveOffers: string;
+        earlyAccessProducts: string;
+      };
+    };
   };
   
   // Free Giveaway Form
@@ -751,6 +773,40 @@ export interface TranslationType {
     littersOfLove: string;
     dontJustTakeOurWord: string;
     readMoreReviews: string;
+  };
+
+  // Trust Badges
+  trustBadges?: {
+    moneyBack: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
+    securePayment: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
+    fastShipping: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
+    customerRating: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
+    happyCustomers: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
+    premiumQuality: {
+      title: string;
+      description: string;
+      highlight: string;
+    };
   };
 
   // Common UI Elements

@@ -252,7 +252,29 @@ export const en = {
     placeholder: "Your email address",
     buttonText: "Subscribe",
     successMessage: "Thank you for subscribing!",
-    errorMessage: "An error occurred. Please try again."
+    errorMessage: "An error occurred. Please try again.",
+    joinFamily: {
+      title: "Join the Purrify Family",
+      subtitle: "Get 10% off your first order plus exclusive cat care tips",
+      benefits: {
+        firstOrder: "10% Off First Order",
+        firstOrderDesc: "Exclusive discount for new subscribers",
+        catCareTips: "Cat Care Tips", 
+        catCareTipsDesc: "Weekly expert advice and litter tips",
+        earlyAccess: "Early Access",
+        earlyAccessDesc: "Be first to know about new products",
+        communityStories: "Community Stories",
+        communityStoriesDesc: "Success stories from other cat owners"
+      },
+      emailPlaceholder: "Enter your email address",
+      ctaButton: "Get 10% Off Your First Order",
+      joinText: "Join 10,000+ happy cat owners • No spam, unsubscribe anytime",
+      features: {
+        weeklyTips: "✓ Weekly tips",
+        exclusiveOffers: "✓ Exclusive offers", 
+        earlyAccessProducts: "✓ Early access"
+      }
+    }
   },
   
   // Free Giveaway Form
@@ -503,6 +525,40 @@ export const en = {
     littersOfLove: "Real Results From Happy Cat Parents",
     dontJustTakeOurWord: "Don't just take our word for it. Here's what our customers have to say about Purrify.",
     readMoreReviews: "Read More Reviews"
+  },
+
+  // Trust Badges
+  trustBadges: {
+    moneyBack: {
+      title: "30-Day Money Back",
+      description: "Not satisfied? Get a full refund within 30 days",
+      highlight: "100% Guaranteed"
+    },
+    securePayment: {
+      title: "Secure Payment",
+      description: "SSL encrypted checkout with Stripe",
+      highlight: "256-bit SSL"
+    },
+    fastShipping: {
+      title: "Fast Shipping",
+      description: "Quick and reliable delivery",
+      highlight: "Same Day Processing"
+    },
+    customerRating: {
+      title: "4.9/5 Customer Rating",
+      description: "Based on 2,500+ verified reviews",
+      highlight: "98% Satisfaction"
+    },
+    happyCustomers: {
+      title: "10,000+ Happy Customers",
+      description: "Trusted by cat owners across Canada",
+      highlight: "Since 2019"
+    },
+    premiumQuality: {
+      title: "Premium Quality",
+      description: "Food-grade activated carbon, lab tested",
+      highlight: "Certified Safe"
+    }
   },
 
   // Free Trial Page

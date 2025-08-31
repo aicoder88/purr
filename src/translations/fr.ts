@@ -276,7 +276,29 @@ export const fr = {
     placeholder: "Votre adresse courriel",
     buttonText: "S'abonner",
     successMessage: "Merci de vous être abonné !",
-    errorMessage: "Une erreur s'est produite. Veuillez réessayer."
+    errorMessage: "Une erreur s'est produite. Veuillez réessayer.",
+    joinFamily: {
+      title: "Rejoignez la Famille Purrify",
+      subtitle: "Obtenez 10% de réduction sur votre première commande plus des conseils exclusifs pour chats",
+      benefits: {
+        firstOrder: "10% de Réduction Première Commande",
+        firstOrderDesc: "Remise exclusive pour les nouveaux abonnés",
+        catCareTips: "Conseils de Soins pour Chats",
+        catCareTipsDesc: "Conseils d'experts hebdomadaires et astuces pour litière",
+        earlyAccess: "Accès Anticipé",
+        earlyAccessDesc: "Soyez le premier à connaître les nouveaux produits",
+        communityStories: "Histoires de la Communauté",
+        communityStoriesDesc: "Histoires de succès d'autres propriétaires de chats"
+      },
+      emailPlaceholder: "Entrez votre adresse courriel",
+      ctaButton: "Obtenez 10% de Réduction sur Votre Première Commande",
+      joinText: "Rejoignez 10 000+ propriétaires de chats heureux • Aucun spam, se désabonner à tout moment",
+      features: {
+        weeklyTips: "✓ Conseils hebdomadaires",
+        exclusiveOffers: "✓ Offres exclusives",
+        earlyAccessProducts: "✓ Accès anticipé"
+      }
+    }
   },
   
   // Free Giveaway Form
@@ -600,6 +622,40 @@ export const fr = {
     littersOfLove: "Des Portées d'Amour de la Communauté des Propriétaires d'Animaux",
     dontJustTakeOurWord: "Ne nous croyez pas sur parole. Voici ce que nos clients disent de Purrify.",
     readMoreReviews: "Lire Plus d'Avis"
+  },
+
+  // Trust Badges
+  trustBadges: {
+    moneyBack: {
+      title: "Remboursement 30 Jours",
+      description: "Pas satisfait ? Obtenez un remboursement complet sous 30 jours",
+      highlight: "100% Garantie"
+    },
+    securePayment: {
+      title: "Paiement Sécurisé",
+      description: "Paiement crypté SSL avec Stripe",
+      highlight: "SSL 256-bit"
+    },
+    fastShipping: {
+      title: "Livraison Rapide",
+      description: "Livraison rapide et fiable",
+      highlight: "Traitement le Jour Même"
+    },
+    customerRating: {
+      title: "Note Client 4,9/5",
+      description: "Basé sur 2 500+ avis vérifiés",
+      highlight: "98% de Satisfaction"
+    },
+    happyCustomers: {
+      title: "10 000+ Clients Satisfaits",
+      description: "Fait confiance par les propriétaires de chats à travers le Canada",
+      highlight: "Depuis 2019"
+    },
+    premiumQuality: {
+      title: "Qualité Premium",
+      description: "Charbon actif de qualité alimentaire, testé en laboratoire",
+      highlight: "Certifié Sécuritaire"
+    }
   },
 
   // Common UI Elements

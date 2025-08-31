@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Check, X, Gift, Sparkles, Bell, Users } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useTranslation } from '../../lib/translation-context';
 
 interface NewsletterSignupProps {
   variant?: 'default' | 'popup' | 'inline' | 'footer';
@@ -15,6 +16,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   discount = 10,
   className = ''
 }) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -52,23 +54,23 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   const benefits = [
     {
       icon: Gift,
-      title: `${discount}% Off First Order`,
-      description: 'Exclusive discount for new subscribers'
+      title: t.newsletter?.joinFamily?.benefits?.firstOrder || `${discount}% Off First Order`,
+      description: t.newsletter?.joinFamily?.benefits?.firstOrderDesc || 'Exclusive discount for new subscribers'
     },
     {
       icon: Sparkles,
-      title: 'Cat Care Tips',
-      description: 'Weekly expert advice and litter tips'
+      title: t.newsletter?.joinFamily?.benefits?.catCareTips || 'Cat Care Tips',
+      description: t.newsletter?.joinFamily?.benefits?.catCareTipsDesc || 'Weekly expert advice and litter tips'
     },
     {
       icon: Bell,
-      title: 'Early Access',
-      description: 'Be first to know about new products'
+      title: t.newsletter?.joinFamily?.benefits?.earlyAccess || 'Early Access',
+      description: t.newsletter?.joinFamily?.benefits?.earlyAccessDesc || 'Be first to know about new products'
     },
     {
       icon: Users,
-      title: 'Community Stories',
-      description: 'Success stories from other cat owners'
+      title: t.newsletter?.joinFamily?.benefits?.communityStories || 'Community Stories',
+      description: t.newsletter?.joinFamily?.benefits?.communityStoriesDesc || 'Success stories from other cat owners'
     }
   ];
 
@@ -102,7 +104,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 disabled={status === 'loading'}
               />
@@ -195,7 +197,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
+              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               disabled={status === 'loading'}
             />
@@ -228,10 +230,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       <div className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] p-6 text-white dark:text-gray-100 text-center">
         <Mail className="w-12 h-12 mx-auto mb-4 opacity-90" />
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          Join the Purrify Family
+          {t.newsletter?.joinFamily?.title || 'Join the Purrify Family'}
         </h2>
         <p className="text-lg opacity-90">
-          Get {discount}% off your first order plus exclusive cat care tips
+          {t.newsletter?.joinFamily?.subtitle || `Get ${discount}% off your first order plus exclusive cat care tips`}
         </p>
       </div>
 
@@ -267,7 +269,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
+              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               disabled={status === 'loading'}
             />
@@ -282,7 +284,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
             )}
             {status === 'success' && <Check className="w-5 h-5 mr-2" />}
-            {status === 'success' ? 'Welcome to Purrify!' : `Get ${discount}% Off Your First Order`}
+            {status === 'success' ? 'Welcome to Purrify!' : (t.newsletter?.joinFamily?.ctaButton || `Get ${discount}% Off Your First Order`)}
           </Button>
 
           {status === 'error' && (
@@ -292,12 +294,12 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
 
         <div className="mt-4 text-center">
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Join 10,000+ happy cat owners • No spam, unsubscribe anytime
+            {t.newsletter?.joinFamily?.joinText || 'Join 10,000+ happy cat owners • No spam, unsubscribe anytime'}
           </p>
           <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-400 dark:text-gray-500">
-            <span>✓ Weekly tips</span>
-            <span>✓ Exclusive offers</span>
-            <span>✓ Early access</span>
+            <span>{t.newsletter?.joinFamily?.features?.weeklyTips || '✓ Weekly tips'}</span>
+            <span>{t.newsletter?.joinFamily?.features?.exclusiveOffers || '✓ Exclusive offers'}</span>
+            <span>{t.newsletter?.joinFamily?.features?.earlyAccessProducts || '✓ Early access'}</span>
           </div>
         </div>
       </div>

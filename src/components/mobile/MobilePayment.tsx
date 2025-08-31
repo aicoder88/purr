@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Shield, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useTranslation } from '../../lib/translation-context';
 
 // Type declarations for Apple Pay and Google Pay
 declare global {
@@ -94,6 +95,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   onPaymentError,
   className = ''
 }) => {
+  const { t } = useTranslation();
   const [availablePayments, setAvailablePayments] = useState<PaymentMethod[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
@@ -375,10 +377,10 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
         <div className="flex items-center space-x-2 text-green-800 dark:text-green-200 dark:text-green-200">
           <Shield className="w-5 h-5" />
-          <span className="font-semibold">Secure Payment</span>
+          <span className="font-semibold">{t.paymentSecurity?.securePayment || 'Secure Payment'}</span>
         </div>
         <p className="text-green-700 dark:text-green-300 dark:text-green-400 text-sm mt-1">
-          Your payment information is encrypted and secure. We never store your payment details.
+          {t.paymentSecurity?.sslEncryptedCheckout || 'Your payment information is encrypted and secure. We never store your payment details.'}
         </p>
       </div>
 
