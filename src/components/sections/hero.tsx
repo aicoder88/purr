@@ -175,17 +175,16 @@ export function Hero() {
                   </div>
                 </button>
               )}
-              <div className="relative w-10/12 mx-auto" style={{ aspectRatio: '16/9' }}>
+              <div className="relative w-full max-w-2xl mx-auto">
                 <video
                   ref={videoRef}
                   poster="/optimized/cat_rose_thumbnail.webp"
-                  className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition duration-700 dark:brightness-90 dark:contrast-100"
+                  className="w-full h-auto rounded-2xl object-contain group-hover:scale-105 transition duration-700 dark:brightness-90 dark:contrast-100"
                   width={640}
                   height={360}
                   style={{
                     aspectRatio: '16/9',
-                    maxWidth: '100%',
-                    height: 'auto'
+                    maxWidth: '100%'
                   }}
                   autoPlay
                   muted
