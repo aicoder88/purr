@@ -909,6 +909,7 @@ export const en = {
     adjustSearchTerms: "Try adjusting your search terms or category filter",
     stillHaveQuestions: "Still Have Questions?",
     cantFindWhatLooking: "Can't find what you're looking for? Our customer support team is here to help!",
+    customerSupportReady: "Our customer support team is ready to help!",
     emailSupport: "Email Support",
     detailedEmailHelp: "Get detailed answers via email",
     liveChat: "Live Chat",
