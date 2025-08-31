@@ -989,19 +989,20 @@ export const zh = {
     compareAllSizes: "比较所有尺寸"
   },
 
+  
   // Homepage specific translations
   homepage: {
     seo: {
-      pageTitle: "活性炭猫砂添加剂",
-      keywords: "猫砂除臭控制，活性炭猫砂，天然猫砂添加剂，环保宠物除臭控制，猫砂除臭剂，宠物除臭消除，猫咪护理产品，天然除臭控制，猫砂解决方案，加拿大宠物用品",
-      openGraphImageAlt: "优质猫砂除臭控制解决方案",
-      videoAlt: "Purrify猫砂添加剂效果演示",
-      videoDescription: "Purrify猫砂添加剂实际应用 - 前后对比演示",
-      videoEffectivenessDemo: "Purrify猫砂添加剂效果演示"
+      pageTitle: "天然猫砂添加剂瞬间消除猫异味",
+      keywords: "猫砂添加剂,异味控制,活性炭,天然除臭剂,猫砂清新,加拿大猫产品",
+      openGraphImageAlt: "Purrify - 消除猫异味的天然猫砂添加剂",
+      videoAlt: "Purrify消除猫砂异味演示",
+      videoDescription: "展示Purrify消除猫砂异味效果的视频",
+      videoEffectivenessDemo: "Purrify对猫砂异味的有效性演示"
     },
     trustBadges: {
       securePayment: {
-        title: "安全支付",
+        title: "安全付款",
         description: "256位SSL",
         detail: "通过Stripe进行SSL加密结账"
       }

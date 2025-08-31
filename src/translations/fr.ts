@@ -990,15 +990,16 @@ export const fr = {
     compareAllSizes: "Comparer Toutes Les Tailles"
   },
 
+  
   // Homepage specific translations
   homepage: {
     seo: {
-      pageTitle: "Additif de Litière pour Chat au Charbon Actif",
-      keywords: "contrôle des odeurs de litière pour chat, litière pour chat au charbon actif, additif naturel pour litière de chat, contrôle d'odeur écologique pour animaux, désodorisant pour litière de chat, élimination d'odeur d'animaux, produits de soins pour chats, contrôle d'odeur naturel, solution de litière pour chat, fournitures pour animaux Canada",
-      openGraphImageAlt: "Solution Premium de Contrôle d'Odeur de Litière pour Chat",
-      videoAlt: "Démonstration d'Efficacité de l'Additif Purrify pour Litière de Chat",
-      videoDescription: "Additif Purrify pour Litière de Chat en Action - Démonstration Avant et Après",
-      videoEffectivenessDemo: "Démonstration d'Efficacité de l'Additif Purrify pour Litière de Chat"
+      pageTitle: "Additif naturel pour litière qui élimine les odeurs de chat instantanément",
+      keywords: "additif litière chat, contrôle odeur, charbon actif, éliminateur odeur naturel, fraîcheur litière, produit chat Canada",
+      openGraphImageAlt: "Purrify - Additif naturel pour litière de chat qui élimine les odeurs",
+      videoAlt: "Démonstration de Purrify éliminant les odeurs de litière pour chat",
+      videoDescription: "Vidéo montrant l'efficacité de Purrify pour éliminer les odeurs de litière pour chat",
+      videoEffectivenessDemo: "Démonstration de l'efficacité de Purrify contre les odeurs de litière pour chat"
     },
     trustBadges: {
       securePayment: {
