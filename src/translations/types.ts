@@ -842,6 +842,11 @@ export interface TranslationType {
       fullControlDeliveries: string;
       lovedByCustomers: string;
       joinSatisfiedCustomers: string;
+      thirtyDayGuarantee: string;
+      moneyBackPromise: string;
+      fiveStarRated: string;
+      reviewsRating: string;
+      testimonialQuote: string;
     };
   };
 }

@@ -29,16 +29,16 @@ export function EnhancedProductComparison() {
   const products = [
     {
       id: 'purrify-17g',
-      name: 'Purrify 17g',
-      subtitle: 'Trial Size',
+      name: t.products?.['purrify-17g']?.name || 'Purrify 17g',
+      subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
       price: 6.99,
       originalPrice: 9.99,
       image: '/optimized/20g.webp',
-      badge: 'TRIAL',
+      badge: t.enhancedProductComparison?.trial || 'TRIAL',
       badgeColor: 'bg-blue-500',
-      description: 'Perfect for first-time users',
-      duration: '1 week',
-      coverage: '1 cat',
+      description: t.enhancedProductComparison?.perfectForFirstTime || 'Perfect for first-time users',
+      duration: t.productComparison?.products?.[0]?.duration || '1-2 weeks',
+      coverage: t.productComparison?.products?.[0]?.cats || '1-2 cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -54,16 +54,16 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-60g',
-      name: 'Purrify 60g',
-      subtitle: 'Most Popular',
+      name: t.products?.['purrify-60g']?.name || 'Purrify 60g',
+      subtitle: t.enhancedProductComparison?.mostPopular || 'Most Popular',
       price: 19.99,
       originalPrice: 24.99,
       image: '/optimized/60g.webp',
-      badge: 'BEST VALUE',
+      badge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
       badgeColor: 'bg-green-500',
-      description: 'Ideal for single-cat households',
-      duration: '1 month',
-      coverage: '1-2 cats',
+      description: t.enhancedProductComparison?.idealForSingleCat || 'Ideal for single-cat households',
+      duration: t.productComparison?.products?.[1]?.duration || '4-6 weeks',
+      coverage: t.productComparison?.products?.[1]?.cats || '1-3 cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -79,16 +79,16 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-120g',
-      name: 'Purrify 120g',
-      subtitle: 'Maximum Power',
+      name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
+      subtitle: t.productsSection?.powerLevels?.maximumPower || 'Maximum Power',
       price: 29.99,
       originalPrice: 39.99,
       image: '/optimized/140g.webp',
-      badge: 'PREMIUM',
+      badge: t.enhancedProductComparison?.premium || 'PREMIUM',
       badgeColor: 'bg-purple-500',
-      description: 'Perfect for multi-cat households',
-      duration: '2 months',
-      coverage: '2-4 cats',
+      description: t.enhancedProductComparison?.perfectForMultiCat || 'Perfect for multi-cat households',
+      duration: t.productComparison?.products?.[2]?.duration || '8-12 weeks',
+      coverage: t.productComparison?.products?.[2]?.cats || '3+ cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -105,14 +105,14 @@ export function EnhancedProductComparison() {
   ];
 
   const featureLabels = {
-    odorControl: '7-Day Odor Control',
-    naturalIngredients: '100% Natural Ingredients',
-    easyApplication: 'Easy Application',
-    moneyBackGuarantee: '30-Day Money Back Guarantee',
-    // freeShipping: 'Free Shipping', // TODO: Restore when free shipping is available
-    bulkDiscount: 'Bulk Discount Available',
-    prioritySupport: 'Priority Customer Support',
-    bonusGuide: 'Bonus Cat Care Guide'
+    odorControl: t.enhancedProductComparison?.odorControl || '7-Day Odor Control',
+    naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
+    easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
+    moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
+    // freeShipping: t.enhancedProductComparison?.freeShipping || 'Free Shipping', // TODO: Restore when free shipping is available
+    bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
+    prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support',
+    bonusGuide: t.enhancedProductComparison?.bonusGuide || 'Bonus Cat Care Guide'
   };
 
   return (
@@ -197,7 +197,7 @@ export function EnhancedProductComparison() {
                       <span className="text-gray-500 dark:text-gray-400 line-through text-lg sm:text-xl">${product.originalPrice}</span>
                     </div>
                     <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold inline-block border border-green-200 dark:border-green-700 shadow-sm">
-                      Save {product.savings}%
+                      {t.subscriptionOfferExtended?.save || 'Save'} {product.savings}%
                     </div>
                   </div>
 
@@ -262,7 +262,7 @@ export function EnhancedProductComparison() {
                         {addingToCart === product.id ? (
                           <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 sm:h-5 w-4 sm:w-5 border-b-2 border-white"></div>
-                            Adding...
+                            {t.productsSection?.adding || 'Adding...'}
                           </div>
                         ) : (
                           <div className="flex items-center gap-2">
@@ -277,7 +277,7 @@ export function EnhancedProductComparison() {
                     {product.popularity === 3 && (
                       <div className="mt-3 sm:mt-4 text-center">
                         <p className="text-xs sm:text-sm text-[#FF3131] dark:text-[#FF5555] font-medium">
-                          🔥 Chosen by 68% of customers
+                          {t.enhancedProductComparison?.chosenByCustomers || '🔥 68% of customers choose'}
                         </p>
                       </div>
                     )}
@@ -318,7 +318,7 @@ export function EnhancedProductComparison() {
           <div className="mt-12 text-center">
             <div className="inline-flex items-center bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-6 py-3 rounded-full">
               <Zap className="w-5 h-5 mr-2" />
-              <span className="font-bold">30-Day Money-Back Guarantee - Try Risk-Free!</span>
+              <span className="font-bold">{t.enhancedProductComparison?.moneyBackGuaranteeText || '30-Day Money-Back Guarantee - Try Risk-Free!'}</span>
             </div>
           </div>
         </div>

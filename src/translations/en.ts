@@ -923,7 +923,12 @@ export const en = {
       skipAnytime: "Skip Anytime",
       fullControlDeliveries: "Full control over deliveries",
       lovedByCustomers: "Loved by 10,000+ customers",
-      joinSatisfiedCustomers: "Join over 10,000 satisfied customers:"
+      joinSatisfiedCustomers: "Join over 10,000 satisfied customers:",
+      thirtyDayGuarantee: "30-Day Guarantee",
+      moneyBackPromise: "100% money-back promise",
+      fiveStarRated: "5-Star Rated",
+      reviewsRating: "4.9/5 from 2,847 reviews",
+      testimonialQuote: "\"I've saved over $200 this year with my subscription, and my cats' litter box never smells!\" - Sarah M."
     }
   }
 }; 

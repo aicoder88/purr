@@ -158,8 +158,8 @@ export function SubscriptionOffer() {
               <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
                 <Shield className="w-8 h-8 text-[#FF3131]" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">30-Day Guarantee</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">100% money-back promise</p>
+              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.thirtyDayGuarantee}</h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.moneyBackPromise}</p>
             </div>
             
             <div className="flex flex-col items-center">
@@ -174,7 +174,7 @@ export function SubscriptionOffer() {
               <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
                 <Star className="w-8 h-8 text-[#FF3131]" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">5-Star Rated</h4>
+              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.fiveStarRated}</h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.lovedByCustomers}</p>
             </div>
           </div>
@@ -186,10 +186,10 @@ export function SubscriptionOffer() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
               ))}
-              <span className="ml-2 text-gray-700 dark:text-gray-200 font-medium">4.9/5 from 2,847 reviews</span>
+              <span className="ml-2 text-gray-700 dark:text-gray-200 font-medium">{t.homepage.subscription.reviewsRating}</span>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-              &quot;I&apos;ve saved over $200 this year with my subscription, and my cats&apos; litter box never smells!&quot; - Sarah M.
+              {t.homepage.subscription.testimonialQuote}
             </p>
           </div>
         </div>

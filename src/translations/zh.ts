@@ -1050,7 +1050,12 @@ export const zh = {
       skipAnytime: "随时跳过",
       fullControlDeliveries: "对配送全面控制",
       lovedByCustomers: "深受超过10,000客户的喜爱",
-      joinSatisfiedCustomers: "加入超过10,000满意客户的行列："
+      joinSatisfiedCustomers: "加入超过10,000满意客户的行列：",
+      thirtyDayGuarantee: "30天保证",
+      moneyBackPromise: "100%退款承诺",
+      fiveStarRated: "五星评级",
+      reviewsRating: "2,847条评价中4.9/5星",
+      testimonialQuote: "\"今年通过订阅我节省了超过200美元，我的猫咪猫砂盒从不异味！\" - Sarah M."
     }
   }
 };

@@ -1051,7 +1051,12 @@ export const fr = {
       skipAnytime: "Ignorer À Tout Moment",
       fullControlDeliveries: "Contrôle total sur les livraisons",
       lovedByCustomers: "Aimé par plus de 10 000 clients",
-      joinSatisfiedCustomers: "Rejoignez plus de 10 000 clients satisfaits :"
+      joinSatisfiedCustomers: "Rejoignez plus de 10 000 clients satisfaits :",
+      thirtyDayGuarantee: "Garantie 30 Jours",
+      moneyBackPromise: "Promesse de remboursement à 100%",
+      fiveStarRated: "Classé 5 Étoiles",
+      reviewsRating: "4,9/5 sur 2 847 avis",
+      testimonialQuote: "\"J'ai économisé plus de 200$ cette année avec mon abonnement, et la litière de mes chats ne sent jamais !\" - Sarah M."
     }
   }
 };
