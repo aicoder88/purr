@@ -3,11 +3,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
+import { useTranslation } from '../../../src/lib/translation-context';
 import { 
   CheckCircle, 
   Package, 
   Clock, 
-  DollarSign, 
   Users,
   ChevronRight,
   Home,
@@ -17,163 +17,66 @@ import {
 } from 'lucide-react';
 
 const ProductComparePage: NextPage = () => {
-  const products = [
-    {
-      id: 'trial',
-      name: 'Taille d\'Essai 17g',
-      subtitle: 'Parfait pour les Nouveaux Utilisateurs',
-      price: '4,99$',
-      originalPrice: null,
-      savings: null,
-      duration: '1 changement de litière',
-      cats: '1 chat',
-      features: [
-        'Essayez avant de vous engager',
-        'Introduction sans risque',
-        'Portion parfaite',
-        'Même formule puissante',
-        'Garantie de remboursement'
-      ],
-      bestFor: 'Nouveaux clients qui veulent tester Purrify',
-      popular: false,
-      recommended: false,
-      cta: 'Commencer l\'Essai',
-      ctaLink: '/products/trial-size',
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
-      id: 'small',
-      name: 'Taille Moyenne 60g',
-      subtitle: 'Idéal pour les Foyers à Un Chat',
-      price: '12,99$',
-      originalPrice: '15,99$',
-      savings: '3,00$',
-      duration: '3-4 changements de litière',
-      cats: '1 chat',
-      features: [
-        'Choix économique',
-        'Prolonge la vie de la litière 3-4x',
-        'Élimine complètement les odeurs',
-        'Fonctionne avec toute litière',
-        'Formule écologique'
-      ],
-      bestFor: 'Propriétaires d\'un chat recherchant la valeur',
-      popular: true,
-      recommended: false,
-      cta: 'Choisir Petite Taille',
-      ctaLink: '/#products',
-      color: 'from-green-500 to-green-600'
-    },
-    {
-      id: 'large',
-      name: 'Grande Taille 120g',
-      subtitle: 'Meilleure Valeur pour Foyers Multi-Chats',
-      price: '29,99$',
-      originalPrice: '39,99$',
-      savings: '10,00$',
-      duration: '8-10 changements de litière',
-      cats: '2-3 chats',
-      features: [
-        'Valeur maximale par gramme',
-        'Économies en vrac incluses',
-        'Parfait pour plusieurs chats',
-        'Approvisionnement durable',
-        'Livraison gratuite incluse'
-      ],
-      bestFor: 'Foyers multi-chats recherchant la valeur maximale',
-      popular: false,
-      recommended: true,
-      cta: 'Obtenir la Meilleure Valeur',
-      ctaLink: '/#products',
-      color: 'from-purple-500 to-purple-600'
-    }
-  ];
+  const { locale, t } = useTranslation();
 
-  const comparisonFeatures = [
-    {
-      feature: 'Élimination d\'Odeurs',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Fonctionne avec Toute Litière',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Prolonge la Vie de la Litière',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Garantie de Remboursement',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Livraison Gratuite',
-      trial: false,
-      small: false,
-      large: true
-    },
-    {
-      feature: 'Économies en Vrac',
-      trial: false,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Convient Multi-Chats',
-      trial: false,
-      small: true,
-      large: true
-    }
-  ];
+  const products = t.productComparison.products.map((product, index) => ({
+    ...product,
+    price: product.id === 'trial' ? '$6.99' : product.id === 'small' ? '$19.99' : '$29.99',
+    originalPrice: product.id === 'trial' ? null : product.id === 'small' ? '$22.99' : '$34.99',
+    savings: product.id === 'trial' ? null : product.id === 'small' ? '$3.00' : '$5.00',
+    popular: product.id === 'small',
+    recommended: product.id === 'large',
+    ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
+    color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'small' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
+  }));
+
+  const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
+    feature: item.feature,
+    trial: index < 4,
+    small: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
+    large: true
+  }));
 
   const usageCalculator = [
     {
       cats: 1,
-      litterChanges: 'Hebdomadaire',
-      trial: '1 semaine',
-      small: '3-4 semaines',
-      large: '8-10 semaines'
+      litterChanges: locale === 'fr' ? 'Hebdomadaire' : 'Weekly',
+      trial: locale === 'fr' ? '1 semaine' : '1 week',
+      small: locale === 'fr' ? '3-4 semaines' : '3-4 weeks',
+      large: locale === 'fr' ? '8-10 semaines' : '8-10 weeks'
     },
     {
       cats: 2,
-      litterChanges: '2x par semaine',
-      trial: '3-4 jours',
-      small: '1,5-2 semaines',
-      large: '4-5 semaines'
+      litterChanges: locale === 'fr' ? '2x par semaine' : '2x per week',
+      trial: locale === 'fr' ? '3-4 jours' : '3-4 days',
+      small: locale === 'fr' ? '1,5-2 semaines' : '1.5-2 weeks',
+      large: locale === 'fr' ? '4-5 semaines' : '4-5 weeks'
     },
     {
       cats: 3,
-      litterChanges: '3x par semaine',
-      trial: '2-3 jours',
-      small: '1 semaine',
-      large: '2,5-3 semaines'
+      litterChanges: locale === 'fr' ? '3x par semaine' : '3x per week',
+      trial: locale === 'fr' ? '2-3 jours' : '2-3 days',
+      small: locale === 'fr' ? '1 semaine' : '1 week',
+      large: locale === 'fr' ? '2,5-3 semaines' : '2.5-3 weeks'
     }
   ];
 
   return (
     <>
       <Head>
-        <title>Comparer les Produits Purrify - Trouvez la Taille Parfaite | Purrify</title>
+        <title>{t.productComparison.title} - {locale === 'fr' ? 'Trouvez la Taille Parfaite' : 'Find the Perfect Size'} | Purrify</title>
         <meta 
           name="description" 
-          content="Comparez toutes les tailles d'additif de litière au charbon actif Purrify. Trouvez l'option parfaite pour votre foyer - de la taille d'essai aux économies en vrac." 
+          content={t.productComparison.subtitle} 
         />
-        <meta name="keywords" content="comparaison Purrify, tailles additif litière chat, taille essai, économies vrac, multi-chat, comparaison produits" />
-        <link rel="canonical" href="https://purrify.com/fr/products/compare" />
+        <meta name="keywords" content={locale === 'fr' ? "comparaison Purrify, tailles additif litière chat, taille essai, économies vrac, multi-chat, comparaison produits" : "Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison"} />
+        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`} />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Comparer les Produits Purrify - Trouvez la Taille Parfaite" />
-        <meta property="og:description" content="Comparez toutes les tailles Purrify et trouvez l'additif de litière au charbon actif parfait pour vos besoins." />
+        <meta property="og:title" content={`${t.productComparison.title} - ${locale === 'fr' ? 'Trouvez la Taille Parfaite' : 'Find the Perfect Size'}`} />
+        <meta property="og:description" content={t.productComparison.subtitle} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://purrify.com/fr/products/compare" />
+        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`} />
         
         {/* Structured Data */}
         <script
@@ -182,10 +85,10 @@ const ProductComparePage: NextPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": "Comparer les Produits Purrify",
-              "description": "Comparez toutes les tailles d'additif de litière au charbon actif Purrify et trouvez l'option parfaite pour votre foyer.",
-              "url": "https://purrify.com/fr/products/compare",
-              "inLanguage": "fr",
+              "name": t.productComparison.title,
+              "description": t.productComparison.subtitle,
+              "url": `https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`,
+              "inLanguage": locale,
               "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": products.map((product, index) => ({
@@ -196,7 +99,7 @@ const ProductComparePage: NextPage = () => {
                   "offers": {
                     "@type": "Offer",
                     "price": product.price.replace('$', '').replace(',', '.'),
-                    "priceCurrency": "CAD"
+                    "priceCurrency": "USD"
                   }
                 }))
               }
@@ -210,15 +113,15 @@ const ProductComparePage: NextPage = () => {
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
             <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href="/fr/" className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href="/fr/#products" className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Produits
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                {t.nav.products}
               </Link>
               <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">Comparer</span>
+              <span className="text-gray-900 dark:text-gray-100">{t.nav.compareSizes}</span>
             </nav>
           </Container>
         </section>
@@ -229,10 +132,10 @@ const ProductComparePage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Comparer les Produits Purrify
+                {t.productComparison.title}
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Trouvez la taille parfaite pour votre foyer - de l'essai aux économies en vrac
+                {t.productComparison.subtitle}
               </p>
             </div>
           </Container>
@@ -255,7 +158,7 @@ const ProductComparePage: NextPage = () => {
                   {product.popular && (
                     <div className="absolute top-4 right-4 bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Star className="w-4 h-4 mr-1" />
-                      Populaire
+                      {t.productComparison.popular}
                     </div>
                   )}
                   
@@ -263,7 +166,7 @@ const ProductComparePage: NextPage = () => {
                   {product.recommended && (
                     <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Award className="w-4 h-4 mr-1" />
-                      Meilleure Valeur
+                      {t.productComparison.bestValue}
                     </div>
                   )}
 
@@ -278,7 +181,7 @@ const ProductComparePage: NextPage = () => {
                       )}
                     </div>
                     {product.savings && (
-                      <p className="text-sm mt-1 opacity-90">Économisez {product.savings}</p>
+                      <p className="text-sm mt-1 opacity-90">{locale === 'fr' ? 'Économisez' : 'Save'} {product.savings}</p>
                     )}
                   </div>
 
@@ -288,19 +191,19 @@ const ProductComparePage: NextPage = () => {
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="text-center">
                         <Clock className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Durée</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.duration}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
                       </div>
                       <div className="text-center">
                         <Users className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Idéal Pour</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.idealFor}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.cats}</p>
                       </div>
                     </div>
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="font-bold mb-3 text-gray-900 dark:text-gray-100">Caractéristiques:</h4>
+                      <h4 className="font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h4>
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
@@ -314,12 +217,12 @@ const ProductComparePage: NextPage = () => {
                     {/* Best For */}
                     <div className="mb-6 p-4 bg-[#E0EFC7]/30 dark:bg-gray-700/30 rounded-lg">
                       <p className="text-sm text-gray-600 dark:text-gray-300">
-                        <span className="font-semibold">Idéal pour:</span> {product.bestFor}
+                        <span className="font-semibold">{t.productComparison.idealFor}:</span> {product.bestFor}
                       </p>
                     </div>
 
                     {/* CTA Button */}
-                    <Link href={`/fr${product.ctaLink}`}>
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}${product.ctaLink}`}>
                       <Button 
                         size="lg" 
                         className={`w-full ${
@@ -344,10 +247,10 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Comparaison des Caractéristiques
+                {t.productComparison.featuresComparison}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Voyez comment nos produits se comparent côte à côte
+                {t.productComparison.seeHowProductsCompare}
               </p>
             </div>
 
@@ -356,10 +259,10 @@ const ProductComparePage: NextPage = () => {
                 <table className="w-full">
                   <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">Caractéristique</th>
-                      <th className="px-6 py-4 text-center font-bold">Essai 17g</th>
-                      <th className="px-6 py-4 text-center font-bold">Moyen 60g</th>
-                      <th className="px-6 py-4 text-center font-bold">Grand 120g</th>
+                      <th className="px-6 py-4 text-left font-bold">{locale === 'fr' ? 'Caractéristique' : 'Feature'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : '17g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : '60g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -403,10 +306,10 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Combien de Temps Chaque Taille Durera-t-elle?
+                {t.productComparison.howLongWillEachSizeLast}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Estimez la durée selon la taille de votre foyer
+                {t.productComparison.usageCalculator.subtitle}
               </p>
             </div>
 
@@ -415,18 +318,18 @@ const ProductComparePage: NextPage = () => {
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">Nombre de Chats</th>
-                      <th className="px-6 py-4 text-center font-bold">Changements Typiques</th>
-                      <th className="px-6 py-4 text-center font-bold">Essai 17g</th>
-                      <th className="px-6 py-4 text-center font-bold">Moyen 60g</th>
-                      <th className="px-6 py-4 text-center font-bold">Grand 120g</th>
+                      <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : '17g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : '60g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {usageCalculator.map((row, index) => (
                       <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
                         <td className="px-6 py-4 font-bold text-[#5B2EFF]">
-                          {row.cats} Chat{row.cats > 1 ? 's' : ''}
+                          {row.cats} {locale === 'fr' ? `Chat${row.cats > 1 ? 's' : ''}` : `Cat${row.cats > 1 ? 's' : ''}`}
                         </td>
                         <td className="px-6 py-4 text-center text-gray-600 dark:text-gray-300">
                           {row.litterChanges}
@@ -455,21 +358,21 @@ const ProductComparePage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Toujours Pas Sûr de la Taille à Choisir?
+                {t.productComparison.stillUnsure}
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Commencez avec notre taille d'essai sans risque et découvrez la différence Purrify par vous-même.
+                {locale === 'fr' ? 'Commencez avec notre taille d\'essai sans risque et découvrez la différence Purrify par vous-même.' : 'Start with our risk-free trial size and experience the Purrify difference for yourself.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/fr/products/trial-size">
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
-                    Essayez Sans Risque - 4,99$
+                    {t.productComparison.tryRiskFree}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href="/fr/support/contact">
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
                   <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white hover:text-gray-900 transition-colors">
-                    Obtenez des Conseils Personnalisés
+                    {t.productComparison.getPersonalizedAdvice}
                   </Button>
                 </Link>
               </div>
@@ -482,40 +385,40 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                En Savoir Plus sur Purrify
+                {t.productComparison.learnMoreAboutPurrify}
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href="/fr/learn/how-it-works" className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Comment Ça Fonctionne
+                    {t.nav.howItWorksPage}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.
+                    {locale === 'fr' ? 'Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.' : 'Discover the science behind our activated carbon technology and why it\'s so effective.'}
                   </p>
                 </div>
               </Link>
               
-              <Link href="/fr/customers/testimonials" className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Avis Clients
+                    {locale === 'fr' ? 'Avis Clients' : 'Customer Reviews'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Voyez ce que des milliers de clients satisfaits disent de leur expérience avec Purrify.
+                    {locale === 'fr' ? 'Voyez ce que des milliers de clients satisfaits disent de leur expérience avec Purrify.' : 'See what thousands of satisfied customers are saying about their Purrify experience.'}
                   </p>
                 </div>
               </Link>
               
-              <Link href="/fr/learn/cat-litter-guide" className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Guide de Litière
+                    {locale === 'fr' ? 'Guide de Litière' : 'Cat Litter Guide'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.
+                    {locale === 'fr' ? 'Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.' : 'Learn about different litter types and how to choose the best option for your cat.'}
                   </p>
                 </div>
               </Link>

@@ -18,156 +18,57 @@ import {
 } from 'lucide-react';
 
 const ProductComparePage: NextPage = () => {
-  const { locale } = useTranslation();
+  const { locale, t } = useTranslation();
 
-  const products = [
-    {
-      id: 'trial',
-      name: '17g Trial Size',
-      subtitle: 'Perfect for First-Time Users',
-      price: '$6.99',
-      originalPrice: null,
-      savings: null,
-      duration: '1 litter box change',
-      cats: '1 cat',
-      features: [
-        'Try before you commit',
-        'Risk-free introduction',
-        'Perfect portion size',
-        'Same powerful formula',
-        'Money-back guarantee'
-      ],
-      bestFor: 'New customers who want to test Purrify',
-      popular: false,
-      recommended: false,
-      cta: 'Start Your Trial',
-      ctaLink: '/products/trial-size',
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
-      id: 'small',
-      name: '60g Regular Size',
-      subtitle: 'Great for Single Cat Households',
-      price: '$19.99',
-      originalPrice: '$22.99',
-      savings: '$3.00',
-      duration: '3-4 litter box changes',
-      cats: '1 cat',
-      features: [
-        'Economical choice',
-        'Extends litter life 3-4x',
-        'Eliminates odors completely',
-        'Works with any litter',
-        'Eco-friendly formula'
-      ],
-      bestFor: 'Single cat owners looking for value',
-      popular: true,
-      recommended: false,
-      cta: 'Choose Small Size',
-      ctaLink: '/#products',
-      color: 'from-green-500 to-green-600'
-    },
-    {
-      id: 'large',
-      name: '120g Large Size',
-      subtitle: 'Best Value for Multi-Cat Homes',
-      price: '$29.99',
-      originalPrice: '$34.99',
-      savings: '$5.00',
-      duration: '8-10 litter box changes',
-      cats: '2-3 cats',
-      features: [
-        'Maximum value per gram',
-        'Bulk savings included',
-        'Perfect for multiple cats',
-        'Long-lasting supply',
-        'Free shipping included'
-      ],
-      bestFor: 'Multi-cat households seeking maximum value',
-      popular: false,
-      recommended: true,
-      cta: 'Get Best Value',
-      ctaLink: '/#products',
-      color: 'from-purple-500 to-purple-600'
-    }
-  ];
+  const products = t.productComparison.products.map((product, index) => ({
+    ...product,
+    price: product.id === 'trial' ? '$6.99' : product.id === 'small' ? '$19.99' : '$29.99',
+    originalPrice: product.id === 'trial' ? null : product.id === 'small' ? '$22.99' : '$34.99',
+    savings: product.id === 'trial' ? null : product.id === 'small' ? '$3.00' : '$5.00',
+    popular: product.id === 'small',
+    recommended: product.id === 'large',
+    ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
+    color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'small' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
+  }));
 
-  const comparisonFeatures = [
-    {
-      feature: 'Odor Elimination',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Works with Any Litter',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Extends Litter Life',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Money-Back Guarantee',
-      trial: true,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Free Shipping',
-      trial: false,
-      small: false,
-      large: true
-    },
-    {
-      feature: 'Bulk Savings',
-      trial: false,
-      small: true,
-      large: true
-    },
-    {
-      feature: 'Multi-Cat Suitable',
-      trial: false,
-      small: true,
-      large: true
-    }
-  ];
+  const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
+    feature: item.feature,
+    trial: index < 4,
+    small: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
+    large: true
+  }));
 
   const usageCalculator = [
     {
       cats: 1,
-      litterChanges: 'Weekly',
-      trial: '1 week',
-      small: '3-4 weeks',
-      large: '8-10 weeks'
+      litterChanges: locale === 'fr' ? 'Hebdomadaire' : locale === 'zh' ? '每周' : 'Weekly',
+      trial: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
+      small: locale === 'fr' ? '3-4 semaines' : locale === 'zh' ? '3-4周' : '3-4 weeks',
+      large: locale === 'fr' ? '8-10 semaines' : locale === 'zh' ? '8-10周' : '8-10 weeks'
     },
     {
       cats: 2,
-      litterChanges: '2x per week',
-      trial: '3-4 days',
-      small: '1.5-2 weeks',
-      large: '4-5 weeks'
+      litterChanges: locale === 'fr' ? '2x par semaine' : locale === 'zh' ? '每周2次' : '2x per week',
+      trial: locale === 'fr' ? '3-4 jours' : locale === 'zh' ? '3-4天' : '3-4 days',
+      small: locale === 'fr' ? '1,5-2 semaines' : locale === 'zh' ? '1.5-2周' : '1.5-2 weeks',
+      large: locale === 'fr' ? '4-5 semaines' : locale === 'zh' ? '4-5周' : '4-5 weeks'
     },
     {
       cats: 3,
-      litterChanges: '3x per week',
-      trial: '2-3 days',
-      small: '1 week',
-      large: '2.5-3 weeks'
+      litterChanges: locale === 'fr' ? '3x par semaine' : locale === 'zh' ? '每周3次' : '3x per week',
+      trial: locale === 'fr' ? '2-3 jours' : locale === 'zh' ? '2-3天' : '2-3 days',
+      small: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
+      large: locale === 'fr' ? '2,5-3 semaines' : locale === 'zh' ? '2.5-3周' : '2.5-3 weeks'
     }
   ];
 
   return (
     <>
       <Head>
-        <title>Compare Purrify Products - Find the Perfect Size for Your Needs | Purrify</title>
+        <title>{`${t.productComparison.title} - ${locale === 'fr' ? 'Trouvez la Taille Parfaite' : locale === 'zh' ? '找到完美尺寸' : 'Find the Perfect Size'} | Purrify`}</title>
         <meta 
           name="description" 
-          content="Compare all Purrify activated carbon litter additive sizes. Find the perfect option for your household - from trial size to bulk savings for multi-cat homes." 
+          content={t.productComparison.subtitle} 
         />
         <meta name="keywords" content="Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison" />
         <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`} />
@@ -212,15 +113,15 @@ const ProductComparePage: NextPage = () => {
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
             <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Products
+              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                {t.nav.products}
               </Link>
               <span>/</span>
-              <span className="text-gray-900 dark:text-gray-50 dark:text-gray-100">Compare</span>
+              <span className="text-gray-900 dark:text-gray-50 dark:text-gray-100">{t.nav.compareSizes}</span>
             </nav>
           </Container>
         </section>
@@ -231,10 +132,10 @@ const ProductComparePage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Compare Purrify Products
+                {t.productComparison.title}
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Find the perfect size for your household - from trial to bulk savings
+                {t.productComparison.subtitle}
               </p>
             </div>
           </Container>
@@ -257,7 +158,7 @@ const ProductComparePage: NextPage = () => {
                   {product.popular && (
                     <div className="absolute top-4 right-4 bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Star className="w-4 h-4 mr-1" />
-                      Popular
+                      {t.productComparison.popular}
                     </div>
                   )}
                   
@@ -265,7 +166,7 @@ const ProductComparePage: NextPage = () => {
                   {product.recommended && (
                     <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Award className="w-4 h-4 mr-1" />
-                      Best Value
+                      {t.productComparison.bestValue}
                     </div>
                   )}
 
@@ -290,19 +191,19 @@ const ProductComparePage: NextPage = () => {
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="text-center">
                         <Clock className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Duration</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.duration}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
                       </div>
                       <div className="text-center">
                         <Users className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Best For</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.idealFor}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.cats}</p>
                       </div>
                     </div>
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h3 className="font-bold mb-3 text-gray-900 dark:text-gray-100">Features:</h3>
+                      <h3 className="font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h3>
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
@@ -316,7 +217,7 @@ const ProductComparePage: NextPage = () => {
                     {/* Best For */}
                     <div className="mb-6 p-4 bg-[#E0EFC7]/30 dark:bg-gray-700/30 rounded-lg">
                       <p className="text-sm text-gray-600 dark:text-gray-300">
-                        <span className="font-semibold">Best for:</span> {product.bestFor}
+                        <span className="font-semibold">{t.productComparison.idealFor}:</span> {product.bestFor}
                       </p>
                     </div>
 
@@ -346,10 +247,10 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Feature Comparison
+                {t.productComparison.featuresComparison}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                See how our products compare side by side
+                {t.productComparison.seeHowProductsCompare}
               </p>
             </div>
 
@@ -358,10 +259,10 @@ const ProductComparePage: NextPage = () => {
                 <table className="w-full">
                   <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">Feature</th>
-                      <th className="px-6 py-4 text-center font-bold">17g Trial</th>
-                      <th className="px-6 py-4 text-center font-bold">60g Regular</th>
-                      <th className="px-6 py-4 text-center font-bold">120g Large</th>
+                      <th className="px-6 py-4 text-left font-bold">{locale === 'fr' ? 'Caractéristique' : locale === 'zh' ? '特性' : 'Feature'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : locale === 'zh' ? '17g 试用' : '17g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : locale === 'zh' ? '60g 标准' : '60g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -405,10 +306,10 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                How Long Will Each Size Last?
+                {t.productComparison.howLongWillEachSizeLast}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Estimate duration based on your household size
+                {t.productComparison.usageCalculator.subtitle}
               </p>
             </div>
 
@@ -417,18 +318,18 @@ const ProductComparePage: NextPage = () => {
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">Number of Cats</th>
-                      <th className="px-6 py-4 text-center font-bold">Typical Changes</th>
-                      <th className="px-6 py-4 text-center font-bold">17g Trial</th>
-                      <th className="px-6 py-4 text-center font-bold">60g Regular</th>
-                      <th className="px-6 py-4 text-center font-bold">120g Large</th>
+                      <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : locale === 'zh' ? '17g 试用' : '17g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : locale === 'zh' ? '60g 标准' : '60g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {usageCalculator.map((row, index) => (
                       <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
                         <td className="px-6 py-4 font-bold text-[#5B2EFF]">
-                          {row.cats} Cat{row.cats > 1 ? 's' : ''}
+                          {row.cats} {locale === 'fr' ? `Chat${row.cats > 1 ? 's' : ''}` : locale === 'zh' ? '只猫' : `Cat${row.cats > 1 ? 's' : ''}`}
                         </td>
                         <td className="px-6 py-4 text-center text-gray-600 dark:text-gray-300">
                           {row.litterChanges}
@@ -457,21 +358,21 @@ const ProductComparePage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Still Not Sure Which Size to Choose?
+                {t.productComparison.stillUnsure}
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Start with our risk-free trial size and experience the Purrify difference for yourself.
+                {locale === 'fr' ? 'Commencez avec notre taille d\'essai sans risque et découvrez la différence Purrify par vous-même.' : locale === 'zh' ? '从我们的无风险试用装开始，亲身体验 Purrify 的不同。' : 'Start with our risk-free trial size and experience the Purrify difference for yourself.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
-                    Try Risk-Free - $6.99
+                    {t.productComparison.tryRiskFree}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+                <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/support/contact`}>
                   <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
-                    Get Personal Advice
+                    {t.productComparison.getPersonalizedAdvice}
                   </Button>
                 </Link>
               </div>
@@ -484,40 +385,40 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Learn More About Purrify
+                {t.productComparison.learnMoreAboutPurrify}
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    How It Works
+                    {t.nav.howItWorksPage}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Discover the science behind our activated carbon technology and why it's so effective.
+                    {locale === 'fr' ? 'Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.' : locale === 'zh' ? '发现我们活性炭技术背后的科学及其如此有效的原因。' : 'Discover the science behind our activated carbon technology and why it\'s so effective.'}
                   </p>
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Customer Reviews
+                    {locale === 'fr' ? 'Avis Clients' : locale === 'zh' ? '客户评价' : 'Customer Reviews'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    See what thousands of satisfied customers are saying about their Purrify experience.
+                    {locale === 'fr' ? 'Voyez ce que des milliers de clients satisfaits disent de leur expérience avec Purrify.' : locale === 'zh' ? '看看数千名满意客户对他们 Purrify 体验的评价。' : 'See what thousands of satisfied customers are saying about their Purrify experience.'}
                   </p>
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Cat Litter Guide
+                    {locale === 'fr' ? 'Guide de Litière' : locale === 'zh' ? '猫砂指南' : 'Cat Litter Guide'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Learn about different litter types and how to choose the best option for your cat.
+                    {locale === 'fr' ? 'Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.' : locale === 'zh' ? '了解不同类型的猫砂，以及如何为您的猫咪选择最佳选项。' : 'Learn about different litter types and how to choose the best option for your cat.'}
                   </p>
                 </div>
               </Link>
