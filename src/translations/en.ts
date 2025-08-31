@@ -51,17 +51,17 @@ export const en = {
     rabbitLitter: "Rabbit Litter",
     fridgeSmells: "Fridge smells",
     ferretCage: "Ferret cage",
-    eliminateCatOdors: "Eliminate Cat Odors",
-    instantly: "Instantly",
-    description: "Advanced activated carbon technology neutralizes ammonia and odors 3x faster than traditional solutions. Transform your litter box from smelly to fresh in seconds.",
+    eliminateCatOdors: "Stop Hiding Your Litter Box",
+    instantly: "From Everyone",
+    description: "Military-Grade Coconut Carbon Odor Elimination. One sprinkle = 7 days of air so fresh, guests won't believe you own cats. Same grade used in military gas masks - destroys ammonia molecules instantly.",
     socialProof: {
       trustNumber: "50,000+",
       trustText: "cat owners trust Purrify",
       ratingText: "4.8/5 from 12,000+ reviews"
     },
     buttons: {
-      shopNow: "🛒 Shop Now - $24.95",
-      reviews: "⭐ 247+ Reviews"
+      shopNow: "Try 17g Risk-Free - $24.95",
+      reviews: "⚗️ See the Science"
     },
     ariaLabels: {
       shopNow: "Shop Purrify products now",
@@ -757,82 +757,184 @@ export const en = {
     {
       id: 1,
       category: "product",
-      question: "What is Purrify made of?",
-      answer: "Purrify is made of 100% natural activated carbon derived from coconut shells. It contains no chemicals, fragrances, or artificial additives.",
+      question: "What is Purrify and how does it work?",
+      answer: "Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds, providing superior odor control compared to traditional litter alone.",
       popular: true,
-      tags: ["ingredients", "natural", "safe"]
+      tags: ["activated carbon", "odor control", "how it works"]
     },
     {
       id: 2,
-      category: "usage",
-      question: "How do I use Purrify?",
-      answer: "Simply sprinkle 1-2 tablespoons of Purrify evenly over your clean litter after each cleaning. It works with all types of litter.",
+      category: "product",
+      question: "Is Purrify safe for cats and humans?",
+      answer: "Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon.",
       popular: true,
-      tags: ["instructions", "how-to", "application"]
+      tags: ["safety", "non-toxic", "food-grade"]
     },
     {
       id: 3,
-      category: "product", 
-      question: "Is Purrify safe for my cat?",
-      answer: "Yes! Purrify is completely safe for cats, kittens, and other pets. It's made from natural activated carbon with no harmful chemicals.",
+      category: "usage",
+      question: "How much Purrify should I use?",
+      answer: "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 17g trial size is perfect for one litter box change.",
       popular: true,
-      tags: ["safety", "cats", "pets", "natural"]
+      tags: ["dosage", "application", "mixing"]
     },
     {
       id: 4,
-      category: "usage",
-      question: "How long does one bag last?",
-      answer: "Duration depends on the size: Trial (1-2 weeks), Standard (4-6 weeks), Large (8-12 weeks), based on average usage with 1-2 cats.",
+      category: "product",
+      question: "Does Purrify work with all types of litter?",
+      answer: "Yes! Purrify is designed to work with any type of cat litter - clay, clumping, crystal, natural, or biodegradable. It enhances the odor control properties of whatever litter you're already using.",
       popular: true,
-      tags: ["duration", "usage", "value"]
+      tags: ["compatibility", "all litter types", "enhancement"]
     },
     {
       id: 5,
-      category: "shipping",
-      question: "How long does shipping take?",
-      answer: "Standard shipping takes 3-5 business days within Canada. Express shipping (1-2 days) is available for an additional fee.",
+      category: "usage",
+      question: "How long does Purrify last?",
+      answer: "Purrify extends the life of your litter by 2-3 times. Instead of changing litter weekly, you can typically go 2-3 weeks with the same litter when using Purrify, depending on the number of cats and usage frequency.",
       popular: false,
-      tags: ["shipping", "delivery", "timing"]
+      tags: ["duration", "litter life", "cost savings"]
+    },
+    {
+      id: 6,
+      category: "shipping",
+      question: "How fast is shipping?",
+      answer: "We offer free standard shipping (5-7 business days) on orders over $25. Express shipping (2-3 days) is available for $9.99, and priority shipping (1-2 days) for $14.99. Orders placed before 2 PM EST ship the same day.",
+      popular: true,
+      tags: ["shipping speed", "delivery times", "same day"]
+    },
+    {
+      id: 7,
+      category: "product",
+      question: "What sizes are available?",
+      answer: "We offer three sizes: 17g Trial Size ($6.99) for first-time users, 60g Regular Size ($19.99) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
+      popular: false,
+      tags: ["sizes", "pricing", "value"]
+    },
+    {
+      id: 8,
+      category: "usage",
+      question: "Can I use Purrify with automatic litter boxes?",
+      answer: "Yes, Purrify works excellently with automatic litter boxes. Simply mix it with your litter as usual. The activated carbon won't interfere with the automatic mechanisms and will provide superior odor control.",
+      popular: false,
+      tags: ["automatic litter box", "compatibility", "mechanisms"]
+    },
+    {
+      id: 9,
+      category: "payment",
+      question: "What payment methods do you accept?",
+      answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay. All transactions are processed securely through Stripe with 256-bit SSL encryption.",
+      popular: false,
+      tags: ["payment methods", "security", "credit cards"]
+    },
+    {
+      id: 10,
+      category: "shipping",
+      question: "Do you ship internationally?",
+      answer: "Yes, we ship to many countries worldwide. Shipping costs vary by destination: USA ($12.99), UK/EU ($19.99), Australia ($24.99). Delivery times range from 7-35 days depending on location. Customs duties may apply.",
+      popular: false,
+      tags: ["international shipping", "worldwide", "customs"]
+    },
+    {
+      id: 11,
+      category: "product",
+      question: "Is there a money-back guarantee?",
+      answer: "Yes! We offer a 30-day money-back guarantee. If you're not completely satisfied with Purrify, contact us within 30 days of purchase for a full refund. We stand behind our product 100%.",
+      popular: true,
+      tags: ["guarantee", "refund", "30 days"]
+    },
+    {
+      id: 12,
+      category: "usage",
+      question: "How do I know if Purrify is working?",
+      answer: "You'll notice the difference within hours! The most obvious sign is dramatically reduced odor from the litter box. You'll also find that your litter stays fresher longer, requiring less frequent complete changes.",
+      popular: false,
+      tags: ["effectiveness", "results", "timeline"]
+    },
+    {
+      id: 13,
+      category: "support",
+      question: "How can I contact customer support?",
+      answer: "You can reach us via email at hello@purrify.com, through our contact form, or by phone during business hours. We typically respond to emails within 24 hours and are always happy to help with any questions.",
+      popular: false,
+      tags: ["contact", "support", "response time"]
+    },
+    {
+      id: 14,
+      category: "product",
+      question: "Can Purrify help with multiple cats?",
+      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
+      popular: false,
+      tags: ["multiple cats", "multi-cat", "large size"]
+    },
+    {
+      id: 15,
+      category: "usage",
+      question: "Do I need to change how I clean the litter box?",
+      answer: "No changes needed! Continue your normal scooping routine. Purrify works in the background to eliminate odors. You may find you can go longer between complete litter changes, saving you time and money.",
+      popular: false,
+      tags: ["cleaning routine", "scooping", "maintenance"]
+    },
+    {
+      id: 16,
+      category: "shipping",
+      question: "Can I track my order?",
+      answer: "Yes! Once your order ships, you'll receive a tracking number via email. You can track your package directly on the Canada Post website or through our order tracking system.",
+      popular: false,
+      tags: ["tracking", "order status", "Canada Post"]
     }
   ],
 
   // FAQ Categories
   faqCategories: [
-    { id: "all", name: "All Categories", count: 25 },
+    { id: "all", name: "All Questions", count: 24 },
     { id: "product", name: "Product Information", count: 8 },
     { id: "usage", name: "Usage & Application", count: 6 },
-    { id: "shipping", name: "Shipping & Delivery", count: 4 },
-    { id: "payment", name: "Payment & Orders", count: 4 },
-    { id: "support", name: "Customer Support", count: 3 }
+    { id: "shipping", name: "Shipping & Delivery", count: 5 },
+    { id: "payment", name: "Payment & Billing", count: 3 },
+    { id: "support", name: "Customer Support", count: 2 }
   ],
 
   // FAQ Page
   faqPage: {
     title: "Frequently Asked Questions",
-    subtitle: "Find answers to common questions about Purrify",
-    searchPlaceholder: "Search questions...",
+    subtitle: "Everything you need to know about Purrify",
+    searchPlaceholder: "Search for answers...",
     popularQuestions: "Most Popular Questions",
-    quickAnswers: "Quick answers to the most frequently asked questions",
+    quickAnswers: "Quick answers to what customers ask most",
     categories: "Categories",
-    questionsFound: "questions found",
+    questionsFound: "Question",
+    questionsFoundPlural: "Questions Found",
     clearSearch: "Clear Search",
     noQuestionsFound: "No questions found",
-    adjustSearchTerms: "Try adjusting your search terms or browse categories",
+    adjustSearchTerms: "Try adjusting your search terms or category filter",
     stillHaveQuestions: "Still Have Questions?",
-    cantFindWhatLooking: "Can't find what you're looking for?",
-    customerSupportReady: "Our customer support team is ready to help",
+    cantFindWhatLooking: "Can't find what you're looking for? Our customer support team is here to help!",
     emailSupport: "Email Support",
-    detailedEmailHelp: "Get detailed help via email",
+    detailedEmailHelp: "Get detailed answers via email",
     liveChat: "Live Chat",
     realTimeChatHelp: "Chat with us in real-time",
     phoneSupport: "Phone Support", 
-    speakDirectlyTeam: "Speak directly with our team",
+    speakDirectlyTeam: "Speak with our team directly",
     contactUs: "Contact Us",
     startChat: "Start Chat",
     callNow: "Call Now",
     readyToTryPurrify: "Ready to Try Purrify?",
-    startWithRiskFreeTrial: "Start with our risk-free trial and experience the difference yourself",
-    compareAllSizes: "Compare All Sizes"
+    startWithRiskFreeTrial: "Start with our risk-free trial size and experience the difference for yourself.",
+    compareAllSizes: "Compare All Sizes",
+    tryRiskFree: "Try Risk-Free - $4.99",
+    learnMoreAboutPurrify: "Learn More About Purrify",
+    howItWorks: "How It Works",
+    learnScience: "Learn the science behind our activated carbon technology and why it's so effective.",
+    catLitterGuide: "Cat Litter Guide",
+    completeGuide: "Complete guide to cat litter types, maintenance tips, and best practices.",
+    customerStories: "Customer Stories",
+    realExperiences: "Read real experiences from cat owners who transformed their homes with Purrify.",
+    popularTag: "Popular",
+    breadcrumbs: {
+      home: "Home",
+      learn: "Learn",
+      faq: "FAQ"
+    }
   },
 
   // Common UI Elements
