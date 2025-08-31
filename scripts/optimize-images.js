@@ -1,3 +1,9 @@
+// Skip sharp operations on Vercel/CI to avoid Node.js compatibility issues
+if (process.env.VERCEL || process.env.CI) {
+  console.log('Skipping image optimization on CI/Vercel environment');
+  process.exit(0);
+}
+
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
