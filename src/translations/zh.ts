@@ -1022,6 +1022,8 @@ export const zh = {
     enhancedComparison: {
       duration: "持续时间",
       coverage: "覆盖范围",
+      chooseYourPerfectSize: "选择您的完美尺寸",
+      allSizesDeliver: "所有尺寸都提供相同的强大除臭效果。根据您的家庭规模和使用频率进行选择。",
       whyChoosePurrify: "为什么选择Purrify？",
       joinThousands: "加入数千名信任Purrify的满意猫主人",
       happyCustomers: "满意客户",
@@ -1030,6 +1032,25 @@ export const zh = {
       odorFreeGuarantee: "无异味保证",
       tryRiskFree: "无风险试用",
       chooseThisSize: "选择此尺寸"
+    },
+    altText: {
+      scientificDiagram: "科学图表显示活性炭分子结构，具有捕获异味分子的微孔",
+      productPackages: "三个Purrify产品包装展示不同尺寸：17g试用装、60g标准装和120g家庭装",
+      microscopicView: "活性炭的微观视图，显示捕获异味分子的多孔结构",
+      happyCat: "快乐的猫咪在清新无异味的家庭环境中安静休息",
+      happyCatAlt: "快乐的猫咪",
+      userAvatar: "用户",
+      customerTestimonials: "查看客户评价",
+      leaveGoogleReview: "留下Google评价",
+      litterCompatibility: "三个Purrify包装展示与所有类型猫砂的通用兼容性"
+    },
+    subscription: {
+      fastDelivery: "快速配送",
+      quickReliableShipping: "快速可靠的配送",
+      skipAnytime: "随时跳过",
+      fullControlDeliveries: "对配送全面控制",
+      lovedByCustomers: "深受超过10,000客户的喜爱",
+      joinSatisfiedCustomers: "加入超过10,000满意客户的行列："
     }
   }
 };

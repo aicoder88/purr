@@ -895,6 +895,8 @@ export const en = {
     enhancedComparison: {
       duration: "Duration",
       coverage: "Coverage",
+      chooseYourPerfectSize: "Choose Your Perfect Size",
+      allSizesDeliver: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
       whyChoosePurrify: "Why Choose Purrify?",
       joinThousands: "Join thousands of satisfied cat parents who trust Purrify",
       happyCustomers: "Happy Customers",
@@ -903,6 +905,25 @@ export const en = {
       odorFreeGuarantee: "Odor-Free Guarantee",
       tryRiskFree: "Try Risk-Free",
       chooseThisSize: "Choose This Size"
+    },
+    altText: {
+      scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
+      productPackages: "Three Purrify product packages showing different sizes: 17g trial, 60g standard, and 120g family pack",
+      microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
+      happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
+      happyCatAlt: "Happy cat",
+      userAvatar: "User",
+      customerTestimonials: "View customer testimonials",
+      leaveGoogleReview: "Leave a Google review",
+      litterCompatibility: "Three Purrify packages demonstrating universal compatibility with all types of cat litter"
+    },
+    subscription: {
+      fastDelivery: "Fast Delivery",
+      quickReliableShipping: "Quick and reliable shipping",
+      skipAnytime: "Skip Anytime",
+      fullControlDeliveries: "Full control over deliveries",
+      lovedByCustomers: "Loved by 10,000+ customers",
+      joinSatisfiedCustomers: "Join over 10,000 satisfied customers:"
     }
   }
 }; 

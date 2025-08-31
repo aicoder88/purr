@@ -57,14 +57,14 @@ export function Testimonials() {
                 }
               }}
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
-              aria-label="View customer testimonials"
+              aria-label={t.homepage.altText.customerTestimonials}
             >
               {t.nav.testimonials}
             </button>
             <button
               onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
               className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100"
-              aria-label="Leave a Google review"
+              aria-label={t.homepage.altText.leaveGoogleReview}
             >
               <svg
                 className="w-5 h-5 mr-2"

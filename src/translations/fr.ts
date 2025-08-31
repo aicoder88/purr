@@ -1023,6 +1023,8 @@ export const fr = {
     enhancedComparison: {
       duration: "Durée",
       coverage: "Couverture",
+      chooseYourPerfectSize: "Choisissez Votre Taille Parfaite",
+      allSizesDeliver: "Toutes les tailles offrent la même élimination puissante des odeurs. Choisissez en fonction de la taille de votre foyer et de la fréquence d'utilisation.",
       whyChoosePurrify: "Pourquoi Choisir Purrify ?",
       joinThousands: "Rejoignez des milliers de parents de chats satisfaits qui font confiance à Purrify",
       happyCustomers: "Clients Satisfaits",
@@ -1031,6 +1033,25 @@ export const fr = {
       odorFreeGuarantee: "Garantie Sans Odeur",
       tryRiskFree: "Essayer Sans Risque",
       chooseThisSize: "Choisir Cette Taille"
+    },
+    altText: {
+      scientificDiagram: "Diagramme scientifique montrant la structure moléculaire du charbon actif avec des micropores qui piègent les molécules d'odeur",
+      productPackages: "Trois emballages Purrify montrant différentes tailles : essai 17g, standard 60g et pack famille 120g",
+      microscopicView: "Vue microscopique du charbon actif montrant la structure poreuse qui capture les molécules d'odeur",
+      happyCat: "Chat heureux se reposant paisiblement dans un environnement domestique frais et sans odeur",
+      happyCatAlt: "Chat heureux",
+      userAvatar: "Utilisateur",
+      customerTestimonials: "Voir les témoignages clients",
+      leaveGoogleReview: "Laisser un avis Google",
+      litterCompatibility: "Trois emballages Purrify démontrant la compatibilité universelle avec tous les types de litière pour chat"
+    },
+    subscription: {
+      fastDelivery: "Livraison Rapide",
+      quickReliableShipping: "Expédition rapide et fiable",
+      skipAnytime: "Ignorer À Tout Moment",
+      fullControlDeliveries: "Contrôle total sur les livraisons",
+      lovedByCustomers: "Aimé par plus de 10 000 clients",
+      joinSatisfiedCustomers: "Rejoignez plus de 10 000 clients satisfaits :"
     }
   }
 };

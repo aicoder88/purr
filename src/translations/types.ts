@@ -813,6 +813,8 @@ export interface TranslationType {
     enhancedComparison: {
       duration: string;
       coverage: string;
+      chooseYourPerfectSize: string;
+      allSizesDeliver: string;
       whyChoosePurrify: string;
       joinThousands: string;
       happyCustomers: string;
@@ -821,6 +823,25 @@ export interface TranslationType {
       odorFreeGuarantee: string;
       tryRiskFree: string;
       chooseThisSize: string;
+    };
+    altText: {
+      scientificDiagram: string;
+      productPackages: string;
+      microscopicView: string;
+      happyCat: string;
+      happyCatAlt: string;
+      userAvatar: string;
+      customerTestimonials: string;
+      leaveGoogleReview: string;
+      litterCompatibility: string;
+    };
+    subscription: {
+      fastDelivery: string;
+      quickReliableShipping: string;
+      skipAnytime: string;
+      fullControlDeliveries: string;
+      lovedByCustomers: string;
+      joinSatisfiedCustomers: string;
     };
   };
 }

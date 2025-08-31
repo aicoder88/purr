@@ -150,8 +150,8 @@ export function SubscriptionOffer() {
               </div>
               {/* <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">Free Shipping</h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm">On all subscription orders</p> */}
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">Fast Delivery</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">Quick and reliable shipping</p>
+              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.fastDelivery}</h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.quickReliableShipping}</p>
             </div>
             
             <div className="flex flex-col items-center">
@@ -166,8 +166,8 @@ export function SubscriptionOffer() {
               <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
                 <Clock className="w-8 h-8 text-[#FF3131]" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">Skip Anytime</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">Full control over deliveries</p>
+              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.skipAnytime}</h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.fullControlDeliveries}</p>
             </div>
             
             <div className="flex flex-col items-center">
@@ -175,13 +175,13 @@ export function SubscriptionOffer() {
                 <Star className="w-8 h-8 text-[#FF3131]" />
               </div>
               <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">5-Star Rated</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">Loved by 10,000+ customers</p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.lovedByCustomers}</p>
             </div>
           </div>
 
           {/* Social Proof */}
           <div className="mt-12 text-center">
-            <p className="text-gray-600 dark:text-gray-300 mb-4">Join over 10,000 satisfied customers:</p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{t.homepage.subscription.joinSatisfiedCustomers}</p>
             <div className="flex justify-center items-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />

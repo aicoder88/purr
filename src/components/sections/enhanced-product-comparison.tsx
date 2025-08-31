@@ -126,10 +126,10 @@ export function EnhancedProductComparison() {
               <span className="font-bold text-sm sm:text-base">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-3 sm:mb-4 leading-tight">
-              Choose Your Perfect Size
+              {t.homepage.enhancedComparison.chooseYourPerfectSize}
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.
+              {t.homepage.enhancedComparison.allSizesDeliver}
             </p>
           </div>
 

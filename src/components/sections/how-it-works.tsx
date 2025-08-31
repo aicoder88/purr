@@ -132,7 +132,7 @@ export function HowItWorks() {
             <div className="w-full flex justify-center mb-6">
               <NextImage
                 src="/optimized/three_bags_no_bg.webp"
-                alt="Three Purrify packages demonstrating universal compatibility with all types of cat litter"
+                alt={t.homepage.altText.litterCompatibility}
                 width={340}
                 height={180}
                 className="rounded-xl object-cover shadow-md"
