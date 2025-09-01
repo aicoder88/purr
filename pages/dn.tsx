@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../src/components/ui/card';
 import { Button } from '../src/components/ui/button';
 import { Badge } from '../src/components/ui/badge';
@@ -38,13 +38,33 @@ export default function DriverNetworkPresentation() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const tabs = [
+  const tabs = useMemo(() => [
     'agenda-overview', 'executive-summary', 'company-evolution', 'service-divisions',
     'performance-metrics', 'case-study-instacart', 'case-study-tesla', 'case-study-medical', 'case-study-bmw',
     'driver-excellence', 'technology-integration', 'client-portfolio',
     'rapid-deployment', 'geographic-coverage',
     'partnership-proposal', 'competitive-advantage', 'service-integration', 'roi-projection', 'next-steps'
-  ];
+  ], []);
+
+  // Analytics tracking functions
+  const trackSlideView = useCallback((slideId: string) => {
+    setAnalytics(prev => ({
+      ...prev,
+      slideViews: {
+        ...prev.slideViews,
+        [slideId]: (prev.slideViews[slideId] || 0) + 1
+      }
+    }));
+  }, []);
+
+  const trackNavigation = useCallback((method: 'keyboard' | 'touch' | 'click') => {
+    setAnalytics(prev => ({
+      ...prev,
+      navigationActions: prev.navigationActions + 1,
+      ...(method === 'keyboard' && { keyboardShortcuts: prev.keyboardShortcuts + 1 }),
+      ...(method === 'touch' && { touchGestures: prev.touchGestures + 1 })
+    }));
+  }, []);
 
   const navigateTab = useCallback((direction: 'prev' | 'next', method: 'keyboard' | 'touch' | 'click' = 'click') => {
     const currentIndex = tabs.indexOf(activeTab);
@@ -120,7 +140,7 @@ export default function DriverNetworkPresentation() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [navigateTab, goToSlide, showThumbnails]);
+  }, [navigateTab, goToSlide, showThumbnails, showSearch, showSpeakerNotes]);
 
   // Load saved progress
   useEffect(() => {
@@ -262,6 +282,29 @@ export default function DriverNetworkPresentation() {
     }
   };
 
+  // Search content mapping for slides
+  const slideContent: { [key: string]: string[] } = useMemo(() => ({
+    'agenda-overview': ['agenda', 'overview', 'presentation', 'driver network', 'strategic partnership', 'uber freight'],
+    'executive-summary': ['proven scale', 'proven results', '1000 drivers', '19 markets', 'logistics solutions'],
+    'company-evolution': ['revenue growth', 'evolution', '12 years', 'timeline', 'expansion'],
+    'service-divisions': ['automotive transport', 'courier', 'last mile', 'medical logistics'],
+    'performance-metrics': ['100% on-time', '99.9% damage-free', 'safety record', 'performance'],
+    'case-study-instacart': ['instacart', 'gig economy', 'grocery delivery', 'zero delays'],
+    'case-study-tesla': ['tesla', 'automotive', 'electric vehicles', 'premium transport'],
+    'case-study-medical': ['medical', 'healthcare', 'zero incidents', 'temperature controlled'],
+    'case-study-bmw': ['bmw', 'luxury vehicles', 'white glove service', 'premium'],
+    'driver-excellence': ['driver training', 'excellence', 'certification', 'background checks'],
+    'technology-integration': ['API integration', 'real-time tracking', 'technology stack'],
+    'client-portfolio': ['partnerships', 'enterprise clients', 'portfolio'],
+    'rapid-deployment': ['deployment', 'scaling', 'rapid expansion'],
+    'geographic-coverage': ['coverage map', 'markets', 'locations', 'geographic'],
+    'partnership-proposal': ['partnership', 'proposal', 'strategic alliance', 'mutual benefit'],
+    'competitive-advantage': ['competitive', 'advantage', 'differentiators', 'unique value'],
+    'service-integration': ['integration', 'workflow', 'seamless', 'API'],
+    'roi-projection': ['ROI', 'return on investment', 'financial projections', 'cost savings'],
+    'next-steps': ['next steps', 'implementation', 'timeline', 'action plan']
+  }), []);
+
   // Search functionality
   const performSearch = useCallback((query: string) => {
     if (!query.trim()) {
@@ -331,17 +374,6 @@ export default function DriverNetworkPresentation() {
     }
   };
 
-  // Analytics tracking functions
-  const trackSlideView = useCallback((slideId: string) => {
-    setAnalytics(prev => ({
-      ...prev,
-      slideViews: {
-        ...prev.slideViews,
-        [slideId]: (prev.slideViews[slideId] || 0) + 1
-      }
-    }));
-  }, []);
-
   const trackTimeOnSlide = useCallback((slideId: string, timeSpent: number) => {
     setAnalytics(prev => ({
       ...prev,
@@ -349,15 +381,6 @@ export default function DriverNetworkPresentation() {
         ...prev.timeOnSlide,
         [slideId]: (prev.timeOnSlide[slideId] || 0) + timeSpent
       }
-    }));
-  }, []);
-
-  const trackNavigation = useCallback((method: 'keyboard' | 'touch' | 'click') => {
-    setAnalytics(prev => ({
-      ...prev,
-      navigationActions: prev.navigationActions + 1,
-      ...(method === 'keyboard' && { keyboardShortcuts: prev.keyboardShortcuts + 1 }),
-      ...(method === 'touch' && { touchGestures: prev.touchGestures + 1 })
     }));
   }, []);
 
@@ -404,29 +427,6 @@ export default function DriverNetworkPresentation() {
     { name: 'BMW', category: 'Automotive', achievement: 'White-glove service' },
     { name: 'SDSRX Medical', category: 'Healthcare', achievement: '18+ months zero incidents' }
   ];
-
-  // Search content mapping for slides
-  const slideContent: { [key: string]: string[] } = {
-    'agenda-overview': ['agenda', 'overview', 'presentation', 'driver network', 'strategic partnership', 'uber freight'],
-    'executive-summary': ['proven scale', 'proven results', '1000 drivers', '19 markets', 'logistics solutions'],
-    'company-evolution': ['revenue growth', 'evolution', '12 years', 'timeline', 'expansion'],
-    'service-divisions': ['automotive transport', 'courier', 'last mile', 'medical logistics'],
-    'performance-metrics': ['100% on-time', '99.9% damage-free', 'safety record', 'performance'],
-    'case-study-instacart': ['instacart', 'gig economy', 'grocery delivery', 'zero delays'],
-    'case-study-tesla': ['tesla', 'automotive', 'electric vehicles', 'premium transport'],
-    'case-study-medical': ['medical', 'healthcare', 'zero incidents', 'temperature controlled'],
-    'case-study-bmw': ['bmw', 'luxury vehicles', 'white glove service', 'premium'],
-    'driver-excellence': ['driver training', 'excellence', 'certification', 'background checks'],
-    'technology-integration': ['API integration', 'real-time tracking', 'technology stack'],
-    'client-portfolio': ['partnerships', 'enterprise clients', 'portfolio'],
-    'rapid-deployment': ['deployment', 'scaling', 'rapid expansion'],
-    'geographic-coverage': ['coverage map', 'markets', 'locations', 'geographic'],
-    'partnership-proposal': ['partnership', 'proposal', 'strategic alliance', 'mutual benefit'],
-    'competitive-advantage': ['competitive', 'advantage', 'differentiators', 'unique value'],
-    'service-integration': ['integration', 'workflow', 'seamless', 'API'],
-    'roi-projection': ['ROI', 'return on investment', 'financial projections', 'cost savings'],
-    'next-steps': ['next steps', 'implementation', 'timeline', 'action plan']
-  };
 
   const speakerNotes: { [key: string]: string[] } = {
     'agenda-overview': [
@@ -766,7 +766,7 @@ export default function DriverNetworkPresentation() {
                       <div className="flex items-center space-x-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
                           activeTab === tab 
-                            ? 'bg-blue-600 text-white' 
+                            ? 'bg-blue-600 text-white dark:text-white' 
                             : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
                         }`}>
                           {index + 1}
@@ -792,7 +792,7 @@ export default function DriverNetworkPresentation() {
         {/* Fullscreen Presentation Controls */}
         {isFullscreen && (
           <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 dark:bg-gray-900/90 backdrop-blur-lg rounded-full px-6 py-3 border border-white/20 dark:border-gray-600/30 no-print">
-            <div className="flex items-center space-x-4 text-white dark:text-gray-200">
+            <div className="flex items-center space-x-4 text-white dark:text-white dark:text-gray-200">
               <button
                 onClick={() => navigateTab('prev')}
                 className="p-2 hover:bg-white/20 rounded-full transition-all"
@@ -866,9 +866,9 @@ export default function DriverNetworkPresentation() {
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-[#276EF1] rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">DN</span>
+                    <span className="text-white dark:text-white dark:text-white dark:text-white font-bold text-sm">DN</span>
                   </div>
-                  <div className="text-white dark:text-gray-50">
+                  <div className="text-white dark:text-white dark:text-gray-50">
                     <div className="text-sm font-bold">Driver Network Inc.</div>
                     <div className="text-xs text-gray-300 dark:text-gray-400">Partnership Proposal</div>
                   </div>
@@ -877,14 +877,14 @@ export default function DriverNetworkPresentation() {
                 <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1">
                   <button
                     onClick={() => navigateTab('prev')}
-                    className="p-2 text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Previous slide (←)"
                   >
                     ←
                   </button>
                   <button
                     onClick={() => navigateTab('next')}
-                    className="p-2 text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Next slide (→)"
                   >
                     →
@@ -895,7 +895,7 @@ export default function DriverNetworkPresentation() {
               {/* Center - Slide Progress */}
               <div className="flex-1 max-w-lg mx-8">
                 <div className="text-center mb-2">
-                  <div className="flex items-center justify-center space-x-4 text-sm text-white dark:text-gray-200">
+                  <div className="flex items-center justify-center space-x-4 text-sm text-white dark:text-white dark:text-gray-200">
                     <span>Slide {tabs.indexOf(activeTab) + 1} of {tabs.length}</span>
                     {presentationStartTime && (
                       <div className="flex items-center space-x-1">
@@ -913,7 +913,7 @@ export default function DriverNetworkPresentation() {
                     style={{ 
                       width: `${((tabs.indexOf(activeTab) + 1) / tabs.length) * 100}%`,
                       '--progress-width': `${((tabs.indexOf(activeTab) + 1) / tabs.length) * 100}%`
-                    } as any}
+                    } as React.CSSProperties}
                   />
                 </div>
                 
@@ -942,7 +942,7 @@ export default function DriverNetworkPresentation() {
                   onClick={() => setShowThumbnails(!showThumbnails)}
                   className={`p-2 rounded transition-all ${showThumbnails 
                     ? 'bg-blue-500/20 text-blue-300' 
-                    : 'text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle thumbnails (T)"
                 >
                   ⊞
@@ -952,7 +952,7 @@ export default function DriverNetworkPresentation() {
                   onClick={() => setShowSpeakerNotes(!showSpeakerNotes)}
                   className={`p-2 rounded transition-all ${showSpeakerNotes 
                     ? 'bg-yellow-500/20 text-yellow-300' 
-                    : 'text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle speaker notes (N)"
                 >
                   📝
@@ -962,7 +962,7 @@ export default function DriverNetworkPresentation() {
                   onClick={() => setShowSearch(!showSearch)}
                   className={`p-2 rounded transition-all ${showSearch 
                     ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
                   title="Search slides (S)"
                 >
                   🔍
@@ -972,7 +972,7 @@ export default function DriverNetworkPresentation() {
                   onClick={() => setShowAnalytics(!showAnalytics)}
                   className={`p-2 rounded transition-all ${showAnalytics 
                     ? 'bg-purple-500/20 text-purple-300' 
-                    : 'text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
                   title="View analytics"
                 >
                   📊
@@ -982,7 +982,7 @@ export default function DriverNetworkPresentation() {
                   onClick={toggleFullscreen}
                   className={`p-2 rounded transition-all ${isFullscreen 
                     ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle fullscreen (F11)"
                 >
                   ⛶
@@ -990,7 +990,7 @@ export default function DriverNetworkPresentation() {
                 
                 <div className="relative group">
                   <button
-                    className="px-3 py-1.5 text-xs bg-gray-600 dark:bg-gray-700 text-white rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-600 transition-all flex items-center"
+                    className="px-3 py-1.5 text-xs bg-gray-600 dark:bg-gray-700 text-white dark:text-white rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-600 transition-all flex items-center"
                     title="Export options"
                   >
                     {isExporting ? '⏳' : '📤'} Export
@@ -1024,7 +1024,7 @@ export default function DriverNetworkPresentation() {
                 
                 <button
                   onClick={startPresentation}
-                  className="px-3 py-1.5 text-xs bg-gradient-to-r from-[#276EF1] to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+                  className="px-3 py-1.5 text-xs bg-gradient-to-r from-[#276EF1] to-blue-600 text-white dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all"
                   title="Start presentation"
                 >
                   ▶ Start
@@ -1104,7 +1104,7 @@ export default function DriverNetworkPresentation() {
                             <div className="flex items-center space-x-3">
                               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
                                 activeTab === slideId 
-                                  ? 'bg-blue-600 text-white' 
+                                  ? 'bg-blue-600 text-white dark:text-white' 
                                   : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
                               }`}>
                                 {tabs.indexOf(slideId) + 1}
@@ -1187,7 +1187,7 @@ export default function DriverNetworkPresentation() {
 
             {activeTab === 'agenda-overview' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-blue-600/90 to-indigo-700/90 dark:from-blue-800/95 dark:to-indigo-900/95 text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-blue-300/30 dark:border-blue-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-blue-600/90 to-indigo-700/90 dark:from-blue-800/95 dark:to-indigo-900/95 text-white dark:text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-blue-300/30 dark:border-blue-600/30 shadow-2xl">
                   <div className="text-center mb-12">
                     <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
                       Driver Network Inc.
@@ -1203,7 +1203,7 @@ export default function DriverNetworkPresentation() {
                   <div className="grid md:grid-cols-2 gap-12">
                     {/* Presentation Agenda */}
                     <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-800/20 p-8 rounded-2xl border border-white/20 dark:border-gray-600/30">
-                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-gray-50 flex items-center">
+                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-white dark:text-gray-50 flex items-center">
                         <span className="mr-3">📋</span>
                         Presentation Agenda
                       </h3>
@@ -1219,7 +1219,7 @@ export default function DriverNetworkPresentation() {
                           <div key={index} className="flex items-center justify-between p-3 bg-white/5 dark:bg-gray-700/20 rounded-lg">
                             <div className="flex items-center">
                               <span className="text-xl mr-3">{item.icon}</span>
-                              <span className="text-white dark:text-gray-100">{item.section}</span>
+                              <span className="text-white dark:text-white dark:text-gray-100">{item.section}</span>
                             </div>
                             <span className="text-blue-200 dark:text-blue-300 text-sm font-medium">{item.time}</span>
                           </div>
@@ -1229,7 +1229,7 @@ export default function DriverNetworkPresentation() {
                     
                     {/* Key Value Propositions */}
                     <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-800/20 p-8 rounded-2xl border border-white/20 dark:border-gray-600/30">
-                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-gray-50 flex items-center">
+                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-white dark:text-gray-50 flex items-center">
                         <span className="mr-3">🌟</span>
                         Key Value Propositions
                       </h3>
@@ -1242,7 +1242,7 @@ export default function DriverNetworkPresentation() {
                           { value: "Flexible Integration", detail: "Seamless API and workflow adoption" }
                         ].map((item, index) => (
                           <div key={index} className="p-3 bg-white/5 dark:bg-gray-700/20 rounded-lg">
-                            <div className="text-white dark:text-gray-100 font-semibold">{item.value}</div>
+                            <div className="text-white dark:text-white dark:text-gray-100 font-semibold">{item.value}</div>
                             <div className="text-blue-200 dark:text-blue-300 text-sm">{item.detail}</div>
                           </div>
                         ))}
@@ -1269,7 +1269,7 @@ export default function DriverNetworkPresentation() {
 
             {activeTab === 'executive-summary' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 dark:from-gray-800/95 dark:to-gray-900/95 text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-white/10 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 dark:from-gray-800/95 dark:to-gray-900/95 text-white dark:text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-white/10 dark:border-gray-600/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100 mb-8">
                     <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                       Proven Scale. Proven Results.
@@ -1291,12 +1291,12 @@ export default function DriverNetworkPresentation() {
                           <div className="text-4xl font-bold text-[#276EF1] mb-3 bg-gradient-to-br from-[#276EF1] to-blue-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                             {stat.value}
                           </div>
-                          <div className="font-bold mb-2 text-lg text-white dark:text-gray-100 group-hover:text-blue-200 transition-colors duration-300">{stat.label}</div>
+                          <div className="font-bold mb-2 text-lg text-white dark:text-white dark:text-gray-100 group-hover:text-blue-200 transition-colors duration-300">{stat.label}</div>
                           <div className="text-sm text-gray-600 dark:text-gray-300 group-hover:text-blue-300 transition-colors duration-300">{stat.description}</div>
                         </div>
                         
                         {/* Tooltip */}
-                        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black/90 dark:bg-gray-900/95 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
+                        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black/90 dark:bg-gray-900/95 text-white dark:text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
                           Click for details
                         </div>
                       </div>
@@ -1344,7 +1344,7 @@ export default function DriverNetworkPresentation() {
                               padding: '12px 16px'
                             }}
                             labelStyle={{ color: '#1f2937', fontWeight: 'bold', marginBottom: '8px' }}
-                            formatter={(value: any, name: string) => {
+                            formatter={(value: number, name: string) => {
                               if (name === 'revenue') return [`$${value}K`, 'Revenue'];
                               if (name === 'drivers') return [value, 'Drivers'];
                               if (name === 'locations') return [value, 'Locations'];
@@ -1374,7 +1374,7 @@ export default function DriverNetworkPresentation() {
                           <div className="absolute -left-24 w-8 h-8 bg-white dark:bg-gray-700 rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg text-gray-600 dark:text-gray-300">
                             {phase.icon}
                           </div>
-                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
+                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
                             <div className="flex justify-between items-start mb-3">
                               <div>
                                 <h4 className="text-xl text-gray-700 dark:text-gray-200 font-bold mb-1">{phase.title}</h4>
@@ -1436,7 +1436,7 @@ export default function DriverNetworkPresentation() {
                               padding: '12px 16px'
                             }}
                             labelStyle={{ color: '#1f2937', fontWeight: 'bold', marginBottom: '8px' }}
-                            formatter={(value: any, name: string) => {
+                            formatter={(value: number, name: string) => {
                               if (name === 'revenue') return [`$${value}K`, 'Revenue'];
                               if (name === 'drivers') return [value, 'Drivers'];
                               if (name === 'locations') return [value, 'Locations'];
@@ -1488,7 +1488,7 @@ export default function DriverNetworkPresentation() {
                         <div className="text-green-800 dark:text-green-200 font-semibold group-hover:text-green-900 dark:group-hover:text-green-100 transition-colors duration-300">On-Time Delivery</div>
                         <div className="text-sm text-green-700 dark:text-green-300 mt-1">🚚 Instacart Partnership</div>
                       </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
                         Perfect delivery record
                       </div>
                     </div>
@@ -1499,7 +1499,7 @@ export default function DriverNetworkPresentation() {
                         <div className="text-blue-800 dark:text-blue-200 font-semibold group-hover:text-blue-900 dark:group-hover:text-blue-100 transition-colors duration-300">Damage-Free Rate</div>
                         <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">🚗 Automotive Transport</div>
                       </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
                         Industry-leading safety
                       </div>
                     </div>
@@ -1510,7 +1510,7 @@ export default function DriverNetworkPresentation() {
                         <div className="text-purple-800 dark:text-purple-200 font-semibold group-hover:text-purple-900 dark:group-hover:text-purple-100 transition-colors duration-300">Months Zero Incidents</div>
                         <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">🏥 Medical Courier</div>
                       </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
                         Flawless medical record
                       </div>
                     </div>
@@ -1521,7 +1521,7 @@ export default function DriverNetworkPresentation() {
                         <div className="text-orange-800 dark:text-orange-200 font-semibold group-hover:text-orange-900 dark:group-hover:text-orange-100 transition-colors duration-300">Value Transported</div>
                         <div className="text-sm text-orange-700 dark:text-orange-300 mt-1">💼 High-Value Cargo</div>
                       </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
                         Trusted with premium cargo
                       </div>
                     </div>
@@ -1561,7 +1561,7 @@ export default function DriverNetworkPresentation() {
             {/* Case Study: Instacart */}
             {activeTab === 'case-study-instacart' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🏆 SUCCESS STORY: INSTACART
@@ -1573,19 +1573,19 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  {/* Enhanced Header with Client Info */}
-                  <div className="bg-gradient-to-r from-green-600 to-emerald-400 p-8 rounded-2xl text-white dark:text-gray-100 mb-8">
+                  {/* Enhanced Header with Client Info - Fixed Instacart Brand Colors */}
+                  <div className="bg-gradient-to-r from-[#43B02A] to-[#37A322] p-8 rounded-2xl text-white dark:text-white mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
-                        <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">🛒</span>
+                        <span className="text-5xl text-white dark:text-white mr-6">🛒</span>
                         <div>
-                          <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">Instacart: Multi-Market Expansion Success</h3>
-                          <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">E-Commerce Logistics Partnership • 6 Metropolitan Areas • $2.3M Annual Contract</p>
+                          <h3 className="text-4xl text-white dark:text-white font-bold mb-2">Instacart: Multi-Market Expansion Success</h3>
+                          <p className="text-xl text-white dark:text-white opacity-90 font-medium">E-Commerce Logistics Partnership • 6 Metropolitan Areas • $2.3M Annual Contract</p>
                         </div>
                       </div>
-                      <div className="text-right text-gray-800 dark:text-gray-100">
-                        <div className="text-lg text-gray-600 dark:text-gray-300 font-bold mb-1">18-month partnership (2022-2024)</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300 opacity-80">Chicago, Milwaukee, Detroit, Indianapolis, Cleveland, Columbus</div>
+                      <div className="text-right text-white dark:text-white">
+                        <div className="text-lg text-white dark:text-white font-bold mb-1">18-month partnership (2022-2024)</div>
+                        <div className="text-sm text-white dark:text-white opacity-80">Chicago, Milwaukee, Detroit, Indianapolis, Cleveland, Columbus</div>
                       </div>
                     </div>
 
@@ -1618,11 +1618,11 @@ export default function DriverNetworkPresentation() {
                         </h4>
                         <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Deployed 180+ rigorously trained drivers with Instacart-certified protocols. Implemented real-time API integration with their dispatch system, established dedicated surge capacity pools, and created market-specific operational centers. Each driver underwent 40-hour training on Instacart standards, customer interaction protocols, and temperature-sensitive delivery requirements.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-[#43B02A]/20 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">🎯</span>Results
                         </h4>
-                        <ul className="text-green-100 dark:text-green-200 space-y-2">
+                        <ul className="text-gray-800 dark:text-gray-200 space-y-2">
                           {[
                             '100% on-time delivery rate across all 6 markets (industry benchmark: 87%)',
                             '$847K annual cost reduction through optimized routing and driver utilization',
@@ -1632,8 +1632,8 @@ export default function DriverNetworkPresentation() {
                             '68,000+ successful deliveries in Year 1, 94,000+ in Year 2'
                           ].map((result, i) => (
                             <li key={i} className="flex items-start">
-                              <span className="text-green-300 dark:text-green-400 mr-2 text-lg">•</span>
-                              <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{result}</span>
+                              <span className="text-[#43B02A] dark:text-[#43B02A] mr-2 text-lg">•</span>
+                              <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{result}</span>
                             </li>
                           ))}
                         </ul>
@@ -1657,8 +1657,8 @@ export default function DriverNetworkPresentation() {
                         ]}>
                           <defs>
                             <linearGradient id="gradient-instacart" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#276EF1" stopOpacity={0.8}/>
-                              <stop offset="95%" stopColor="#276EF1" stopOpacity={0.1}/>
+                              <stop offset="5%" stopColor="#43B02A" stopOpacity={0.8}/>
+                              <stop offset="95%" stopColor="#43B02A" stopOpacity={0.1}/>
                             </linearGradient>
                           </defs>
                           <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
@@ -1703,13 +1703,41 @@ export default function DriverNetworkPresentation() {
                     </div>
                   </div>
                 </div>
+                
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
+                  <button
+                    onClick={() => navigateTab('prev')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>←</span>
+                    <span>Previous</span>
+                  </button>
+                  
+                  <div className="text-center">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Slide {tabs.indexOf(activeTab) + 1} of {tabs.length}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-500">
+                      {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/-/g, ' ')}
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={() => navigateTab('next')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-[#276EF1] hover:bg-[#1E5DD6] dark:bg-[#276EF1] dark:hover:bg-[#1E5DD6] text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>Next</span>
+                    <span>→</span>
+                  </button>
+                </div>
               </section>
             )}
 
             {/* Case Study: Tesla */}
             {activeTab === 'case-study-tesla' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🏆 SUCCESS STORY: TESLA
@@ -1721,18 +1749,18 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  <div className="bg-gradient-to-r from-red-500 to-orange-400 p-8 rounded-2xl text-white dark:text-gray-100 mb-8">
+                  <div className="bg-gradient-to-r from-[#E31937] to-[#CC1530] p-8 rounded-2xl text-white dark:text-white mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
-                        <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">⚡</span>
+                        <span className="text-5xl text-white dark:text-white mr-6">⚡</span>
                         <div>
-                          <h3 className="text-4xl text-gray-900 dark:text-gray-50 font-bold mb-2">Tesla: Precision Automotive Transport Excellence</h3>
-                          <p className="text-xl text-gray-700 dark:text-gray-200 opacity-90 font-medium">Luxury Vehicle Transport • White-Glove Service • $1.8M Annual Contract</p>
+                          <h3 className="text-4xl text-white dark:text-white font-bold mb-2">Tesla: Precision Automotive Transport Excellence</h3>
+                          <p className="text-xl text-white dark:text-white opacity-90 font-medium">Luxury Vehicle Transport • White-Glove Service • $1.8M Annual Contract</p>
                         </div>
                       </div>
-                      <div className="text-right text-gray-800 dark:text-gray-100">
-                        <div className="text-lg text-gray-600 dark:text-gray-300 font-bold mb-1">3-year exclusive partnership (2021-2024)</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300 opacity-80">Chicago hub serving 8-state distribution network</div>
+                      <div className="text-right text-white dark:text-white">
+                        <div className="text-lg text-white dark:text-white font-bold mb-1">3-year exclusive partnership (2021-2024)</div>
+                        <div className="text-sm text-white dark:text-white opacity-80">Chicago hub serving 8-state distribution network</div>
                       </div>
                     </div>
 
@@ -1763,11 +1791,11 @@ export default function DriverNetworkPresentation() {
                         </h4>
                         <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Recruited and trained 25 elite automotive transport specialists with clean 10-year driving records. Invested in specialized enclosed trailers, GPS tracking systems, and comprehensive photo documentation protocols. Implemented Tesla-specific loading/unloading procedures, battery safety protocols, and real-time damage prevention systems.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-[#E31937]/20 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">🎯</span>Results
                         </h4>
-                        <ul className="text-green-100 dark:text-green-200 space-y-2">
+                        <ul className="text-gray-800 dark:text-gray-200 space-y-2">
                           {[
                             '99.97% damage-free delivery record (3 minor incidents in 12,000+ transports)',
                             '$2.1M+ in damage prevention vs. industry standard performance',
@@ -1777,8 +1805,8 @@ export default function DriverNetworkPresentation() {
                             '12,847 vehicles transported safely with full documentation'
                           ].map((result, i) => (
                             <li key={i} className="flex items-start">
-                              <span className="text-green-300 dark:text-green-400 mr-2 text-lg">•</span>
-                              <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{result}</span>
+                              <span className="text-[#E31937] dark:text-[#E31937] mr-2 text-lg">•</span>
+                              <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{result}</span>
                             </li>
                           ))}
                         </ul>
@@ -1832,13 +1860,41 @@ export default function DriverNetworkPresentation() {
                     </div>
                   </div>
                 </div>
+                
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
+                  <button
+                    onClick={() => navigateTab('prev')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>←</span>
+                    <span>Previous</span>
+                  </button>
+                  
+                  <div className="text-center">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Slide {tabs.indexOf(activeTab) + 1} of {tabs.length}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-500">
+                      {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/-/g, ' ')}
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={() => navigateTab('next')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-[#276EF1] hover:bg-[#1E5DD6] dark:bg-[#276EF1] dark:hover:bg-[#1E5DD6] text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>Next</span>
+                    <span>→</span>
+                  </button>
+                </div>
               </section>
             )}
 
             {/* Case Study: Medical */}
             {activeTab === 'case-study-medical' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🏆 SUCCESS STORY: SDSRX MEDICAL
@@ -1850,7 +1906,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-2xl text-white dark:text-gray-100 mb-8">
+                  <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
                         <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">🏥</span>
@@ -1967,7 +2023,7 @@ export default function DriverNetworkPresentation() {
             {/* Case Study: BMW */}
             {activeTab === 'case-study-bmw' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🏆 SUCCESS STORY: BMW GROUP
@@ -1979,7 +2035,7 @@ export default function DriverNetworkPresentation() {
                 </div>
 
                 <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-500 p-8 rounded-2xl text-white dark:text-gray-100 mb-8">
+                  <div className="bg-gradient-to-r from-indigo-600 to-purple-500 p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
                         <span className="text-5xl text-gray-900 dark:text-gray-50 mr-6">🏁</span>
@@ -2294,7 +2350,7 @@ export default function DriverNetworkPresentation() {
                       }
                     ].map((partner, index) => (
                       <div key={index} className={`backdrop-blur-sm bg-gradient-to-br ${partner.gradient} p-6 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                        <div className="text-center text-white dark:text-gray-100">
+                        <div className="text-center text-white dark:text-white dark:text-gray-100">
                           <div className="text-4xl text-gray-900 dark:text-gray-50 mb-3">{partner.icon}</div>
                           <h4 className="text-xl text-gray-700 dark:text-gray-200 font-bold mb-2">{partner.name}</h4>
                           <Badge variant="secondary" className="mb-3 bg-white dark:bg-gray-700/30 text-gray-900 dark:text-gray-100 border-white/50 dark:border-gray-600/50">
@@ -2502,7 +2558,7 @@ export default function DriverNetworkPresentation() {
             {/* Partnership Proposal Slide */}
             {activeTab === 'partnership-proposal' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🤝 STRATEGIC PARTNERSHIP PROPOSAL
@@ -2570,7 +2626,7 @@ export default function DriverNetworkPresentation() {
                   <div className="overflow-x-auto mb-8">
                     <table className="w-full bg-white dark:bg-gray-800/50 rounded-2xl shadow-xl">
                       <thead>
-                        <tr className="bg-gradient-to-r from-[#276EF1] to-indigo-600 text-white dark:text-gray-100">
+                        <tr className="bg-gradient-to-r from-[#276EF1] to-indigo-600 text-white dark:text-white dark:text-gray-100">
                           <th className="p-4 text-left text-gray-100 dark:text-gray-50 font-bold">Capability</th>
                           <th className="p-4 text-center text-gray-100 dark:text-gray-50 font-bold">Driver Network</th>
                           <th className="p-4 text-center text-gray-100 dark:text-gray-50 font-bold">Traditional 3PL</th>
@@ -2844,7 +2900,7 @@ export default function DriverNetworkPresentation() {
             {/* Next Steps Slide */}
             {activeTab === 'next-steps' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
                   <div className="text-center text-gray-800 dark:text-gray-100">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
                       🚀 READY TO TRANSFORM LOGISTICS?
@@ -2917,16 +2973,45 @@ export default function DriverNetworkPresentation() {
                       </div>
                     </div>
                     
-                    <div className="text-center p-6 bg-gradient-to-r from-[#276EF1] to-indigo-600 rounded-2xl text-white dark:text-gray-100">
+                    <div className="text-center p-6 bg-gradient-to-r from-[#276EF1] to-indigo-600 rounded-2xl text-white dark:text-white dark:text-gray-100">
                       <h4 className="text-2xl font-bold text-gray-100 dark:text-gray-50 mb-2">Ready to Partner?</h4>
                       <p className="text-blue-100 dark:text-blue-200 mb-4">Let's transform freight delivery together</p>
                       <div className="space-y-2 text-blue-100 dark:text-blue-200">
-                        <div className="font-semibold">Contact: Business Development Team</div>
-                        <div>partnerships@drivernetwork.com</div>
-                        <div>Direct: +1 (312) 555-0123</div>
+                        <div className="font-semibold">Contact: Driver Network Inc.</div>
+                        <div>info@driversnet.io</div>
+                        <div>Web: driversnet.io</div>
+                        <div>Serving: United States</div>
                       </div>
                     </div>
                   </div>
+                </div>
+                
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
+                  <button
+                    onClick={() => navigateTab('prev')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>←</span>
+                    <span>Previous</span>
+                  </button>
+                  
+                  <div className="text-center">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                      Slide {tabs.indexOf(activeTab) + 1} of {tabs.length}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-500">
+                      End of Presentation
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={() => goToSlide('agenda-overview')}
+                    className="flex items-center space-x-2 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    <span>🔄</span>
+                    <span>Restart</span>
+                  </button>
                 </div>
               </section>
             )}

@@ -228,4 +228,18 @@ className="text-gray-700 dark:text-gray-200"
 - **SEO problems**: Run `npm run seo:optimize` and check sitemap
 - **Performance issues**: Run `npm run performance:audit`
 
+## Coding Standards
+
+- Do not use `any` type in TypeScript. Always use the correct type:
+  - DOM events → `KeyboardEvent`, `MouseEvent`, etc.
+  - React events → `React.KeyboardEvent<HTMLElement>`, `React.MouseEvent<HTMLButtonElement>`, etc.
+  - Data → define interfaces/types (`interface SlideMeta { ... }`) instead of `any`.
+
+- React Hooks must always follow lint rules:
+  - If a value is used inside `useEffect` or `useCallback`, include it in the dependency array.
+  - If that value is expensive to create (like `tabs` or `slideContent` arrays), wrap it in `useMemo`.
+  - If you only need previous state inside a setter, use functional updates (`setState(prev => ...)`) instead of depending on the state variable.
+
+- All code must pass `eslint --max-warnings=0` and TypeScript checks with **no errors**.
+- Assume build will run with `eslint-config-next` and `@typescript-eslint` enabled. Never output code that would trigger `react-hooks/exhaustive-deps` or `no-explicit-any` errors.
 ---

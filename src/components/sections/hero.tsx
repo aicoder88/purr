@@ -102,13 +102,13 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-center gap-6 mb-8">
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-2">
-                  <div className="w-10 h-10 rounded-full bg-purple-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-10 h-10 rounded-full bg-purple-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white dark:text-white text-sm font-bold">
                     MJ
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-blue-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-10 h-10 rounded-full bg-blue-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
                     SK
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-green-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-10 h-10 rounded-full bg-green-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
                     TC
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export function Hero() {
               </div>
               
               <div className="flex items-center gap-1">
-                <div className="flex text-yellow-400">
+                <div className="flex text-yellow-400 dark:text-yellow-400">
                   ★★★★★
                 </div>
                 <span className="text-sm text-gray-600 dark:text-gray-300 ml-2">
@@ -131,7 +131,7 @@ export function Hero() {
               <Button
                 onClick={() => scrollToSection("products")}
                 size="lg"
-                className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] hover:from-[#E02B2B] hover:to-[#FF4040] text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1 min-w-[200px]"
+                className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] hover:from-[#E02B2B] hover:to-[#FF4040] text-white dark:text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1 min-w-[200px]"
                 aria-label={t.hero.ariaLabels.shopNow}
               >
                 {t.hero.buttons.shopNow}
