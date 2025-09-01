@@ -1186,214 +1186,342 @@ export default function DriverNetworkPresentation() {
           <Container>
 
             {activeTab === 'agenda-overview' && (
-              <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-blue-600/90 to-indigo-700/90 dark:from-blue-800/95 dark:to-indigo-900/95 text-white dark:text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-blue-300/30 dark:border-blue-600/30 shadow-2xl">
-                  <div className="text-center mb-12">
-                    <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                      Driver Network Inc.
-                    </h1>
-                    <p className="text-2xl text-blue-100 dark:text-blue-100 mb-2">Strategic Partnership Proposal</p>
-                    <p className="text-xl text-blue-200 dark:text-blue-200">Uber Freight Expansion Initiative</p>
-                    <div className="mt-6 text-blue-200 dark:text-blue-200">
-                      <p>📅 {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                      <p className="mt-1">⏰ Estimated Duration: 25 minutes</p>
+              <section className="min-h-screen flex flex-col justify-center space-y-24">
+                {/* Hero Section */}
+                <div className="text-center space-y-8">
+                  <div className="space-y-6">
+                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+                      Strategic Partnership Opportunity
                     </div>
+                    <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent leading-tight">
+                      The Last Mile
+                      <br />
+                      <span className="text-blue-600 dark:text-blue-400">Solved</span>
+                    </h1>
+                    <p className="text-3xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+                      How Driver Network Inc. delivers what others promise
+                      <br />
+                      <strong className="text-gray-900 dark:text-gray-100">1,000+ drivers. 19 markets. Zero excuses.</strong>
+                    </p>
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-12">
-                    {/* Presentation Agenda */}
-                    <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-800/20 p-8 rounded-2xl border border-white/20 dark:border-gray-600/30">
-                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-white dark:text-gray-50 flex items-center">
-                        <span className="mr-3">📋</span>
-                        Presentation Agenda
-                      </h3>
-                      <div className="space-y-4">
-                        {[
-                          { truth: "Customer expectations changed overnight", impact: "Stakes got higher", icon: "🎯" },
-                          { truth: "Traditional logistics became liability", impact: "Winners emerged", icon: "🚀" },
-                          { truth: "Speed became the only currency", impact: "Proof of survival", icon: "📈" },
-                          { truth: "Infrastructure couldn't keep up", impact: "New solutions", icon: "💪" },
-                          { truth: "Geography meant nothing", impact: "Reach everywhere", icon: "🗺️" },
-                          { truth: "Partnership became survival", impact: "Join or die", icon: "🤝" }
-                        ].map((item, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-white/5 dark:bg-gray-700/20 rounded-lg">
-                            <div className="flex items-center">
-                              <span className="text-xl mr-3">{item.icon}</span>
-                              <div>
-                                <span className="text-white dark:text-gray-100 font-medium">{item.truth}</span>
-                                <p className="text-orange-200 dark:text-orange-300 text-sm">{item.impact}</p>
-                              </div>
-                            </div>
-                            <span className="text-orange-200 dark:text-orange-300 text-sm font-bold">CRITICAL</span>
-                          </div>
-                        ))}
-                      </div>
+                  {/* Visual Impact Stats */}
+                  <div className="flex justify-center items-center space-x-16 mt-16">
+                    <div className="text-center">
+                      <div className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
+                      <div className="text-xl text-gray-600 dark:text-gray-300">On-time delivery</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-6xl font-bold text-green-600 dark:text-green-400 mb-2">$50M+</div>
+                      <div className="text-xl text-gray-600 dark:text-gray-300">Value delivered</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-2">0</div>
+                      <div className="text-xl text-gray-600 dark:text-gray-300">Major incidents</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Problem Preview */}
+                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200/50 dark:border-red-700/50 shadow-2xl">
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-red-800 dark:text-red-200 mb-6">
+                      The $2.8 Trillion Problem
+                    </h2>
+                    <p className="text-xl text-red-600 dark:text-red-300 max-w-3xl mx-auto">
+                      Every day, freight companies lose millions because they can't deliver what customers expect
+                    </p>
+                  </div>
+                  
+                  {/* Cost of Inaction Visualization */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                      <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">73%</div>
+                      <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Fail Within 2 Years</div>
+                      <div className="text-red-600 dark:text-red-300">Companies attempting to build logistics networks</div>
                     </div>
                     
-                    {/* The Stakes */}
-                    <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-800/20 p-8 rounded-2xl border border-white/20 dark:border-gray-600/30">
-                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-gray-50 flex items-center">
-                        <span className="mr-3">⚡</span>
-                        What's At Stake
-                      </h3>
-                      <div className="space-y-4">
-                        {[
-                          { risk: "Competitors move faster", consequence: "You lose market share forever" },
-                          { risk: "Customers expect same-day", consequence: "Late means lost" },
-                          { risk: "Supply chains break", consequence: "Reputation dies in real-time" },
-                          { risk: "Infrastructure costs explode", consequence: "Margins disappear overnight" },
-                          { risk: "Geographic limitations", consequence: "Revenue ceiling hits hard" }
-                        ].map((item, index) => (
-                          <div key={index} className="p-3 bg-red-500/10 dark:bg-red-700/20 rounded-lg border border-red-300/20 dark:border-red-600/30">
-                            <div className="text-white dark:text-gray-100 font-semibold">{item.risk}</div>
-                            <div className="text-red-200 dark:text-red-300 text-sm font-medium">{item.consequence}</div>
-                          </div>
-                        ))}
-                      </div>
+                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                      <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">18mo</div>
+                      <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Average Build Time</div>
+                      <div className="text-red-600 dark:text-red-300">While competitors capture market share</div>
+                    </div>
+                    
+                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                      <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">$2M+</div>
+                      <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Minimum Investment</div>
+                      <div className="text-red-600 dark:text-red-300">Before seeing any meaningful results</div>
                     </div>
                   </div>
                   
-                  <div className="text-center mt-12 pt-8 border-t border-white/20 dark:border-gray-600/30">
-                    <p className="text-orange-200 dark:text-orange-200 mb-4 text-xl font-bold">And they prepared for what came next...</p>
-                    <div className="flex justify-center items-center space-x-6">
-                      <div className="text-center bg-orange-500/20 dark:bg-orange-700/30 px-4 py-2 rounded-lg">
-                        <div className="text-sm text-orange-200 dark:text-orange-300 font-medium">Navigate the truth</div>
-                        <div className="text-xs text-orange-300 dark:text-orange-400">← → Space Home End</div>
-                      </div>
-                      <div className="text-center bg-orange-500/20 dark:bg-orange-700/30 px-4 py-2 rounded-lg">
-                        <div className="text-sm text-orange-200 dark:text-orange-300 font-medium">Swipe to survive</div>
-                        <div className="text-xs text-orange-300 dark:text-orange-400">Swipe left/right</div>
-                      </div>
+                  
+                  {/* Call to Action */}
+                  <div className="text-center mt-16 pt-8 border-t border-red-200 dark:border-red-700">
+                    <p className="text-2xl font-bold text-red-800 dark:text-red-200 mb-6">
+                      But there's a different path...
+                    </p>
+                    <p className="text-lg text-red-600 dark:text-red-300 mb-8">
+                      One that doesn't require years of building, millions in investment, or prayers that it works
+                    </p>
+                    
+                    <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 text-white dark:text-gray-50 px-8 py-4 rounded-full font-semibold text-xl">
+                      <span>See the solution</span>
+                      <span className="text-2xl">→</span>
                     </div>
+                  </div>
+                </div>
+                
+                {/* Navigation Hint */}
+                <div className="text-center space-y-4">
+                  <p className="text-gray-500 dark:text-gray-400">Navigate with keyboard arrows, space, or swipe</p>
+                  <div className="flex justify-center space-x-2">
+                    <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
                   </div>
                 </div>
               </section>
             )}
 
             {activeTab === 'executive-summary' && (
-              <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-800/90 to-gray-900/90 dark:from-gray-800/95 dark:to-gray-900/95 text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-gray-500/30 dark:border-gray-600/30 shadow-2xl">
-                  <div className="text-center mb-8">
-                    <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-                      The Struggle Is Real
-                    </h2>
-                    <p className="text-xl text-gray-200 dark:text-gray-200 max-w-4xl mx-auto">
-                      Every freight company faces the same brutal truth: customers want it faster, cheaper, and perfect. 
-                      The old playbook doesn't work. Infrastructure takes years. Trust takes decades. 
-                      <strong className="text-white dark:text-gray-50">Most companies die trying to build what already exists.</strong>
+              <section className="min-h-screen flex flex-col justify-center space-y-20">
+                {/* Problem Statement Hero */}
+                <div className="text-center space-y-12">
+                  <div className="space-y-6">
+                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-700 dark:to-orange-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+                      The Brutal Reality
+                    </div>
+                    <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+                      Everyone Wants
+                      <br />
+                      <span className="text-red-600 dark:text-red-400">Everything</span>
+                      <br />
+                      <span className="text-gray-600 dark:text-gray-400 text-5xl">Yesterday</span>
+                    </h1>
+                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+                      Customers demand same-day delivery, zero damage, perfect tracking, 
+                      and prices that make no economic sense
+                      <br />
+                      <strong className="text-red-600 dark:text-red-400">Welcome to modern logistics</strong>
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    {struggleMetrics.map((metric, index) => (
+                  
+                  {/* Interactive Pain Point Calculator */}
+                  <div className="bg-white dark:bg-gray-800 p-12 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">
+                      Calculate Your Reality Check
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                      <div className="space-y-4">
+                        <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Customer Expectations</div>
+                        <div className="text-6xl font-bold text-blue-600 dark:text-blue-400">↑ 400%</div>
+                        <div className="text-gray-600 dark:text-gray-300">Since 2020</div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Infrastructure Costs</div>
+                        <div className="text-6xl font-bold text-red-600 dark:text-red-400">↑ 250%</div>
+                        <div className="text-gray-600 dark:text-gray-300">Same period</div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Your Profit Margin</div>
+                        <div className="text-6xl font-bold text-orange-600 dark:text-orange-400">↓ 60%</div>
+                        <div className="text-gray-600 dark:text-gray-300">If you're lucky</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* The Math Doesn't Work */}
+                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200/50 dark:border-red-700/50 shadow-2xl">
+                  <div className="text-center mb-12">
+                    <h2 className="text-5xl font-bold text-red-800 dark:text-red-200 mb-6">
+                      The Math Doesn't Work
+                    </h2>
+                    <p className="text-xl text-red-600 dark:text-red-300 max-w-3xl mx-auto">
+                      Here's what happens when companies try to solve this themselves
+                    </p>
+                  </div>
+                  
+                  {/* Failure Metrics with Visual Impact */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[
+                      { 
+                        label: 'Companies That Fail', 
+                        value: '73%', 
+                        description: 'Within first 2 years of expansion',
+                        icon: '💀',
+                        color: 'red'
+                      },
+                      { 
+                        label: 'Average Build Time', 
+                        value: '18mo', 
+                        description: 'To establish reliable network',
+                        icon: '⏱️',
+                        color: 'orange'
+                      },
+                      { 
+                        label: 'Infrastructure Cost', 
+                        value: '$2M+', 
+                        description: 'Minimum viable network investment',
+                        icon: '💸',
+                        color: 'yellow'
+                      },
+                      { 
+                        label: 'Market Share Lost', 
+                        value: '45%', 
+                        description: 'While building internal capabilities',
+                        icon: '📉',
+                        color: 'red'
+                      }
+                    ].map((metric, index) => (
                       <div 
                         key={index} 
-                        className="group text-center backdrop-blur-sm bg-red-900/20 dark:bg-red-800/20 p-6 rounded-2xl border border-red-500/30 dark:border-red-600/30 hover:bg-red-800/30 dark:hover:bg-red-700/30 hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden"
-                        title={`${metric.label}: ${metric.value} - ${metric.description}`}
+                        className="group text-center bg-white/90 dark:bg-gray-800/90 p-8 rounded-2xl border border-red-200 dark:border-red-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative z-10">
-                          <div className="text-4xl font-bold text-red-400 dark:text-red-300 mb-3 group-hover:scale-110 transition-transform duration-300">
-                            {metric.value}
-                          </div>
-                          <div className="font-bold mb-2 text-lg text-gray-200 dark:text-gray-100 group-hover:text-red-200 transition-colors duration-300">{metric.label}</div>
-                          <div className="text-sm text-gray-400 dark:text-gray-300 group-hover:text-red-300 transition-colors duration-300">{metric.description}</div>
+                        <div className="text-6xl mb-4">{metric.icon}</div>
+                        <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-3">
+                          {metric.value}
                         </div>
-                        
-                        {/* Tooltip */}
-                        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black/90 dark:bg-gray-900/95 text-white dark:text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
-                          Click for details
-                        </div>
+                        <div className="font-bold mb-2 text-lg text-gray-800 dark:text-gray-200">{metric.label}</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">{metric.description}</div>
                       </div>
                     ))}
+                  </div>
+                  
+                  {/* The Bottom Line */}
+                  <div className="text-center mt-16 pt-12 border-t border-red-200 dark:border-red-700">
+                    <h3 className="text-4xl font-bold text-red-800 dark:text-red-200 mb-6">
+                      The Bottom Line
+                    </h3>
+                    <p className="text-2xl text-red-600 dark:text-red-300 max-w-4xl mx-auto font-light leading-relaxed">
+                      Building a logistics network from scratch is like 
+                      <strong className="font-bold"> reinventing the wheel </strong>
+                      while your competitors are driving Formula 1 cars
+                    </p>
+                    
+                    <div className="mt-12 inline-flex items-center space-x-4 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-700 dark:to-emerald-700 text-white dark:text-gray-50 px-8 py-4 rounded-full font-semibold text-xl">
+                      <span>But what if there was another way?</span>
+                      <span className="text-2xl">🤔</span>
+                    </div>
                   </div>
                 </div>
               </section>
             )}
 
             {activeTab === 'company-evolution' && (
-              <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
-                    🚀 Company Evolution Journey
-                  </h2>
+              <section className="min-h-screen flex flex-col justify-center space-y-20">
+                {/* Solution Hero */}
+                <div className="text-center space-y-12">
+                  <div className="space-y-6">
+                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-700 dark:to-emerald-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+                      The Solution Already Exists
+                    </div>
+                    <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+                      We Built
+                      <br />
+                      <span className="text-green-600 dark:text-green-400">What You Need</span>
+                      <br />
+                      <span className="text-gray-600 dark:text-gray-400 text-5xl">12 Years Ago</span>
+                    </h1>
+                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+                      While others struggle to build logistics networks, we perfected one
+                      <br />
+                      <strong className="text-green-600 dark:text-green-400">1,000+ drivers. 19 markets. Battle-tested and ready.</strong>
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Interactive Growth Visualization */}
+                <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                      Growth That Compounds
+                    </h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300">
+                      12 years of relentless execution, not promises
+                    </p>
+                  </div>
                   
-                  {/* Revenue Growth Chart */}
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">📈 Revenue Growth Timeline</h3>
-                    <div className="h-80 w-full">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={[
-                          { year: '2012', revenue: 100, drivers: 5, locations: 1 },
-                          { year: '2015', revenue: 350, drivers: 25, locations: 15 },
-                          { year: '2018', revenue: 2100, drivers: 150, locations: 50 },
-                          { year: '2020', revenue: 3800, drivers: 400, locations: 75 },
-                          { year: '2023', revenue: 8500, drivers: 1000, locations: 100 }
-                        ]}>
-                          <defs>
-                            <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#276EF1" stopOpacity={0.8}/>
-                              <stop offset="95%" stopColor="#276EF1" stopOpacity={0.2}/>
-                            </linearGradient>
-                          </defs>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-                          <XAxis dataKey="year" stroke="#4b5563" />
-                          <YAxis stroke="#4b5563" />
-                          <Tooltip 
-                            contentStyle={{ 
-                              backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                              border: 'none', 
-                              borderRadius: '12px',
-                              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                              backdropFilter: 'blur(10px)',
-                              padding: '12px 16px'
-                            }}
-                            labelStyle={{ color: '#1f2937', fontWeight: 'bold', marginBottom: '8px' }}
-                            formatter={(value: number, name: string) => {
-                              if (name === 'revenue') return [`$${value}K`, 'Revenue'];
-                              if (name === 'drivers') return [value, 'Drivers'];
-                              if (name === 'locations') return [value, 'Locations'];
-                              if (name === 'onTime') return [`${value}%`, 'On-Time Delivery'];
-                              if (name === 'satisfaction') return [`${value}%`, 'Customer Satisfaction'];
-                              if (name === 'safety') return [`${value}%`, 'Safety Score'];
-                              return [value, name];
-                            }}
-                          />
-                          <Area type="monotone" dataKey="revenue" stroke="#276EF1" fillOpacity={1} fill="url(#revenueGradient)" strokeWidth={3} />
-                        </AreaChart>
-                      </ResponsiveContainer>
+                  {/* Growth Metrics Visual */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                    <div className="text-center space-y-4">
+                      <div className="text-8xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                        85x
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Revenue Growth</div>
+                      <div className="text-gray-600 dark:text-gray-300">From $100K to $8.5M annually</div>
+                    </div>
+                    
+                    <div className="text-center space-y-4">
+                      <div className="text-8xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
+                        200x
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Driver Network</div>
+                      <div className="text-gray-600 dark:text-gray-300">From 5 to 1,000+ drivers</div>
+                    </div>
+                    
+                    <div className="text-center space-y-4">
+                      <div className="text-8xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 dark:from-purple-400 dark:to-violet-400 bg-clip-text text-transparent">
+                        19
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">Major Markets</div>
+                      <div className="text-gray-600 dark:text-gray-300">Coast-to-coast coverage</div>
                     </div>
                   </div>
-
-                  {/* Timeline Visualization */}
-                  <div className="relative">
-                    <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-[#276EF1] to-indigo-600 rounded-full"></div>
-                    <div className="space-y-8 ml-20">
-                      {[
-                        { year: '2012-2017', title: 'Foundation Era', icon: '🏢', desc: 'Valet & Parking Operations', metric: '5→50+', detail: 'locations in Chicagoland', color: 'from-blue-500 to-cyan-500' },
-                        { year: '2018', title: 'Expansion Breakthrough', icon: '🚗', desc: 'Automotive Transport Launch', metric: '+500%', detail: 'revenue growth in Year 1', color: 'from-green-500 to-emerald-500' },
-                        { year: '2019', title: 'Platform Evolution', icon: '📦', desc: 'Courier Services Launch', metric: 'Multi-Industry', detail: 'logistics platform', color: 'from-purple-500 to-violet-500' },
-                        { year: '2023-Present', title: 'National Scale', icon: '🌎', desc: 'Nationwide Expansion', metric: '19+', detail: 'major metropolitan areas', color: 'from-orange-500 to-red-500' }
-                      ].map((phase, index) => (
-                        <div key={index} className="relative">
-                          <div className="absolute -left-24 w-8 h-8 bg-white dark:bg-gray-700 rounded-full border-4 border-[#276EF1] shadow-lg flex items-center justify-center text-lg text-gray-600 dark:text-gray-300">
-                            {phase.icon}
-                          </div>
-                          <div className={`backdrop-blur-sm bg-gradient-to-r ${phase.color} p-6 rounded-2xl text-white dark:text-white dark:text-gray-100 shadow-xl transform hover:scale-105 transition-all duration-300`}>
-                            <div className="flex justify-between items-start mb-3">
-                              <div>
-                                <h4 className="text-xl text-gray-700 dark:text-gray-200 font-bold mb-1">{phase.title}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-300 opacity-90">{phase.year}</p>
-                              </div>
-                              <div className="text-right text-gray-800 dark:text-gray-100">
-                                <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{phase.metric}</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-300 opacity-80">{phase.detail}</div>
-                              </div>
-                            </div>
-                            <p className="text-lg text-gray-600 dark:text-gray-300 font-medium">{phase.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  
+                  {/* Visual Growth Chart */}
+                  <div className="h-80 w-full mb-12">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={[
+                        { year: '2012', revenue: 100, drivers: 5, markets: 1 },
+                        { year: '2015', revenue: 350, drivers: 25, markets: 3 },
+                        { year: '2018', revenue: 2100, drivers: 150, markets: 8 },
+                        { year: '2020', revenue: 3800, drivers: 400, markets: 12 },
+                        { year: '2024', revenue: 8500, drivers: 1000, markets: 19 }
+                      ]}>
+                        <defs>
+                          <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#10B981" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="#10B981" stopOpacity={0.1}/>
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-600" />
+                        <XAxis dataKey="year" stroke="#6b7280" className="dark:stroke-gray-400" />
+                        <YAxis stroke="#6b7280" className="dark:stroke-gray-400" />
+                        <Tooltip 
+                          contentStyle={{ 
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)', 
+                            border: 'none', 
+                            borderRadius: '12px',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                            backdropFilter: 'blur(10px)',
+                            padding: '16px 20px'
+                          }}
+                          labelStyle={{ color: '#1f2937', fontWeight: 'bold', marginBottom: '8px', fontSize: '16px' }}
+                          formatter={(value: number, name: string) => {
+                            if (name === 'revenue') return [`$${value}K`, 'Annual Revenue'];
+                            if (name === 'drivers') return [value, 'Active Drivers'];
+                            if (name === 'markets') return [value, 'Major Markets'];
+                            return [value, name];
+                          }}
+                        />
+                        <Area type="monotone" dataKey="revenue" stroke="#10B981" fillOpacity={1} fill="url(#growthGradient)" strokeWidth={4} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                  
+                  {/* Key Insight */}
+                  <div className="text-center p-8 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl border border-green-200 dark:border-green-700">
+                    <h3 className="text-3xl font-bold text-green-800 dark:text-green-200 mb-4">
+                      The Insight That Changes Everything
+                    </h3>
+                    <p className="text-xl text-green-600 dark:text-green-300 max-w-3xl mx-auto">
+                      Every company building from scratch makes the same mistakes we made 12 years ago. 
+                      <strong className="font-bold"> You don't have to. </strong>
+                      Our infrastructure, expertise, and network are available today.
+                    </p>
                   </div>
                 </div>
               </section>
@@ -1477,86 +1605,140 @@ export default function DriverNetworkPresentation() {
 
             {/* Performance Metrics Slide */}
             {activeTab === 'performance-metrics' && (
-              <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
-                    📈 Performance Excellence Metrics
-                  </h2>
+              <section className="min-h-screen flex flex-col justify-center space-y-20">
+                {/* Proof Hero */}
+                <div className="text-center space-y-12">
+                  <div className="space-y-6">
+                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white dark:text-gray-50 rounded-full font-semibold text-lg">
+                      Battle-Tested Results
+                    </div>
+                    <h1 className="text-7xl md:text-8xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+                      Numbers
+                      <br />
+                      <span className="text-indigo-600 dark:text-indigo-400">Don't Lie</span>
+                    </h1>
+                    <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+                      When Fortune 500 companies trust us with their most critical deliveries,
+                      <br />
+                      <strong className="text-indigo-600 dark:text-indigo-400">the proof is in the performance</strong>
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Social Proof Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 text-center hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
+                    <div className="text-7xl font-bold text-green-600 dark:text-green-400 mb-4">100%</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Perfect Delivery</div>
+                    <div className="text-gray-600 dark:text-gray-300 mb-4">6 Markets, 18 Months</div>
+                    <div className="inline-flex items-center space-x-2 bg-green-100 dark:bg-green-900/30 px-4 py-2 rounded-full">
+                      <span className="text-3xl">🥕</span>
+                      <span className="text-green-800 dark:text-green-200 font-semibold">Instacart</span>
+                    </div>
+                  </div>
                   
-                  {/* Key Performance Indicators */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                    <div className="group backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 text-center text-gray-800 dark:text-gray-100 hover:bg-green-500/30 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10">
-                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">100%</div>
-                        <div className="text-green-800 dark:text-green-200 font-semibold group-hover:text-green-900 dark:group-hover:text-green-100 transition-colors duration-300">On-Time Delivery</div>
-                        <div className="text-sm text-green-700 dark:text-green-300 mt-1">🚚 Instacart Partnership</div>
-                      </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                        Perfect delivery record
+                  <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 text-center hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
+                    <div className="text-7xl font-bold text-blue-600 dark:text-blue-400 mb-4">99.9%</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Damage-Free</div>
+                    <div className="text-gray-600 dark:text-gray-300 mb-4">$2.5M+ Vehicles</div>
+                    <div className="inline-flex items-center space-x-2 bg-blue-100 dark:bg-blue-900/30 px-4 py-2 rounded-full">
+                      <span className="text-3xl">⚡</span>
+                      <span className="text-blue-800 dark:text-blue-200 font-semibold">Tesla</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 text-center hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
+                    <div className="text-7xl font-bold text-purple-600 dark:text-purple-400 mb-4">24mo</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Zero Incidents</div>
+                    <div className="text-gray-600 dark:text-gray-300 mb-4">Critical Medical</div>
+                    <div className="inline-flex items-center space-x-2 bg-purple-100 dark:bg-purple-900/30 px-4 py-2 rounded-full">
+                      <span className="text-3xl">🏥</span>
+                      <span className="text-purple-800 dark:text-purple-200 font-semibold">SDSRX</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 text-center hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
+                    <div className="text-7xl font-bold text-orange-600 dark:text-orange-400 mb-4">$50M+</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Value Delivered</div>
+                    <div className="text-gray-600 dark:text-gray-300 mb-4">Premium Cargo</div>
+                    <div className="inline-flex items-center space-x-2 bg-orange-100 dark:bg-orange-900/30 px-4 py-2 rounded-full">
+                      <span className="text-3xl">🚗</span>
+                      <span className="text-orange-800 dark:text-orange-200 font-semibold">BMW</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Interactive Performance Calculator */}
+                <div className="bg-white dark:bg-gray-800 p-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                      What This Means for You
+                    </h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300">
+                      Calculate your risk reduction with our proven performance
+                    </p>
+                  </div>
+                  
+                  {/* Risk vs Reward Comparison */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div className="space-y-6">
+                      <h3 className="text-3xl font-bold text-red-600 dark:text-red-400 text-center mb-8">Build Internal Network</h3>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <span className="text-red-800 dark:text-red-200 font-semibold">Time to Market</span>
+                          <span className="text-red-600 dark:text-red-400 font-bold">18+ months</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <span className="text-red-800 dark:text-red-200 font-semibold">Success Rate</span>
+                          <span className="text-red-600 dark:text-red-400 font-bold">27%</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <span className="text-red-800 dark:text-red-200 font-semibold">Investment Required</span>
+                          <span className="text-red-600 dark:text-red-400 font-bold">$2M+</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <span className="text-red-800 dark:text-red-200 font-semibold">Reliability Risk</span>
+                          <span className="text-red-600 dark:text-red-400 font-bold">HIGH</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="group backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 text-center text-gray-800 dark:text-gray-100 hover:bg-blue-500/30 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10">
-                        <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
-                        <div className="text-blue-800 dark:text-blue-200 font-semibold group-hover:text-blue-900 dark:group-hover:text-blue-100 transition-colors duration-300">Damage-Free Rate</div>
-                        <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">🚗 Automotive Transport</div>
-                      </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                        Industry-leading safety
-                      </div>
-                    </div>
-                    <div className="group backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30 text-center text-gray-800 dark:text-gray-100 hover:bg-purple-500/30 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10">
-                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">18+</div>
-                        <div className="text-purple-800 dark:text-purple-200 font-semibold group-hover:text-purple-900 dark:group-hover:text-purple-100 transition-colors duration-300">Months Zero Incidents</div>
-                        <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">🏥 Medical Courier</div>
-                      </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                        Flawless medical record
-                      </div>
-                    </div>
-                    <div className="group backdrop-blur-sm bg-orange-500/20 p-6 rounded-2xl border border-orange-300/30 text-center text-gray-800 dark:text-gray-100 hover:bg-orange-500/30 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10">
-                        <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">$50M+</div>
-                        <div className="text-orange-800 dark:text-orange-200 font-semibold group-hover:text-orange-900 dark:group-hover:text-orange-100 transition-colors duration-300">Value Transported</div>
-                        <div className="text-sm text-orange-700 dark:text-orange-300 mt-1">💼 High-Value Cargo</div>
-                      </div>
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white dark:text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                        Trusted with premium cargo
+                    
+                    <div className="space-y-6">
+                      <h3 className="text-3xl font-bold text-green-600 dark:text-green-400 text-center mb-8">Partner with Us</h3>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <span className="text-green-800 dark:text-green-200 font-semibold">Time to Market</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold">30 days</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <span className="text-green-800 dark:text-green-200 font-semibold">Success Rate</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold">100%</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <span className="text-green-800 dark:text-green-200 font-semibold">Investment Required</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold">$0</span>
+                        </div>
+                        <div className="flex justify-between items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <span className="text-green-800 dark:text-green-200 font-semibold">Reliability Risk</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold">NONE</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Performance Comparison Chart */}
-                  <div className="h-80 mb-8">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">🎯 Industry Performance Comparison</h3>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={[
-                        { metric: 'On-Time Delivery', 'Driver Network': 100, 'Industry Average': 85, 'Top Competitor': 92 },
-                        { metric: 'Damage-Free Rate', 'Driver Network': 99.9, 'Industry Average': 94.2, 'Top Competitor': 96.8 },
-                        { metric: 'Customer Satisfaction', 'Driver Network': 98, 'Industry Average': 87, 'Top Competitor': 91 },
-                        { metric: 'Driver Retention', 'Driver Network': 68, 'Industry Average': 45, 'Top Competitor': 52 }
-                      ]}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-                        <XAxis dataKey="metric" stroke="#4b5563" />
-                        <YAxis stroke="#4b5563" />
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                            border: 'none', 
-                            borderRadius: '12px',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-                          }} 
-                        />
-                        <Bar dataKey="Driver Network" fill="#276EF1" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="Industry Average" fill="#94A3B8" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="Top Competitor" fill="#F59E0B" radius={[4, 4, 0, 0]} />
-                      </BarChart>
-                    </ResponsiveContainer>
+                  
+                  {/* Call to Action */}
+                  <div className="text-center mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                      The Choice Is Clear
+                    </h3>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                      Why gamble with an 18-month build when you can leverage 12 years of proven infrastructure?
+                    </p>
+                    
+                    <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white dark:text-gray-50 px-10 py-6 rounded-full font-semibold text-2xl">
+                      <span>Let's talk partnership</span>
+                      <span className="text-3xl">🤝</span>
+                    </div>
                   </div>
                 </div>
               </section>
