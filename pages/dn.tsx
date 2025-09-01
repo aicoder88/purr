@@ -414,11 +414,11 @@ export default function DriverNetworkPresentation() {
     return report;
   }, [analytics]);
 
-  const stats = [
-    { label: 'Contracted Drivers', value: '1,000+', description: 'Across multiple industries' },
-    { label: 'Active Markets', value: '19', description: 'Major North American cities' },
-    { label: 'Years Operating', value: '12+', description: 'Since 2012' },
-    { label: 'Vehicles Transported', value: '$50M+', description: 'In vehicle value safely delivered' }
+  const struggleMetrics = [
+    { label: 'Companies that fail', value: '73%', description: 'Within first 2 years of expansion' },
+    { label: 'Average build time', value: '18mo', description: 'To establish reliable network' },
+    { label: 'Infrastructure cost', value: '$2M+', description: 'Minimum viable network investment' },
+    { label: 'Market share lost', value: '45%', description: 'While building internal capabilities' }
   ];
 
   const partnerships = [
@@ -1209,41 +1209,44 @@ export default function DriverNetworkPresentation() {
                       </h3>
                       <div className="space-y-4">
                         {[
-                          { section: "Executive Summary", time: "3 min", icon: "🎯" },
-                          { section: "Company Evolution & Services", time: "5 min", icon: "🚀" },
-                          { section: "Performance Metrics & Case Studies", time: "8 min", icon: "📈" },
-                          { section: "Capabilities & Portfolio", time: "4 min", icon: "💪" },
-                          { section: "Geographic Coverage", time: "2 min", icon: "🗺️" },
-                          { section: "Partnership Proposal", time: "3 min", icon: "🤝" }
+                          { truth: "Customer expectations changed overnight", impact: "Stakes got higher", icon: "🎯" },
+                          { truth: "Traditional logistics became liability", impact: "Winners emerged", icon: "🚀" },
+                          { truth: "Speed became the only currency", impact: "Proof of survival", icon: "📈" },
+                          { truth: "Infrastructure couldn't keep up", impact: "New solutions", icon: "💪" },
+                          { truth: "Geography meant nothing", impact: "Reach everywhere", icon: "🗺️" },
+                          { truth: "Partnership became survival", impact: "Join or die", icon: "🤝" }
                         ].map((item, index) => (
                           <div key={index} className="flex items-center justify-between p-3 bg-white/5 dark:bg-gray-700/20 rounded-lg">
                             <div className="flex items-center">
                               <span className="text-xl mr-3">{item.icon}</span>
-                              <span className="text-white dark:text-white dark:text-gray-100">{item.section}</span>
+                              <div>
+                                <span className="text-white dark:text-gray-100 font-medium">{item.truth}</span>
+                                <p className="text-orange-200 dark:text-orange-300 text-sm">{item.impact}</p>
+                              </div>
                             </div>
-                            <span className="text-blue-200 dark:text-blue-300 text-sm font-medium">{item.time}</span>
+                            <span className="text-orange-200 dark:text-orange-300 text-sm font-bold">CRITICAL</span>
                           </div>
                         ))}
                       </div>
                     </div>
                     
-                    {/* Key Value Propositions */}
+                    {/* The Stakes */}
                     <div className="backdrop-blur-sm bg-white/10 dark:bg-gray-800/20 p-8 rounded-2xl border border-white/20 dark:border-gray-600/30">
-                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-white dark:text-gray-50 flex items-center">
-                        <span className="mr-3">🌟</span>
-                        Key Value Propositions
+                      <h3 className="text-2xl font-bold mb-6 text-white dark:text-gray-50 flex items-center">
+                        <span className="mr-3">⚡</span>
+                        What's At Stake
                       </h3>
                       <div className="space-y-4">
                         {[
-                          { value: "1,000+ Contracted Drivers", detail: "Immediate scale across 19 markets" },
-                          { value: "100% On-Time Delivery", detail: "Proven with Instacart partnership" },
-                          { value: "99.9% Damage-Free Rate", detail: "Industry-leading safety record" },
-                          { value: "12+ Years Experience", detail: "Deep logistics expertise" },
-                          { value: "Flexible Integration", detail: "Seamless API and workflow adoption" }
+                          { risk: "Competitors move faster", consequence: "You lose market share forever" },
+                          { risk: "Customers expect same-day", consequence: "Late means lost" },
+                          { risk: "Supply chains break", consequence: "Reputation dies in real-time" },
+                          { risk: "Infrastructure costs explode", consequence: "Margins disappear overnight" },
+                          { risk: "Geographic limitations", consequence: "Revenue ceiling hits hard" }
                         ].map((item, index) => (
-                          <div key={index} className="p-3 bg-white/5 dark:bg-gray-700/20 rounded-lg">
-                            <div className="text-white dark:text-white dark:text-gray-100 font-semibold">{item.value}</div>
-                            <div className="text-blue-200 dark:text-blue-300 text-sm">{item.detail}</div>
+                          <div key={index} className="p-3 bg-red-500/10 dark:bg-red-700/20 rounded-lg border border-red-300/20 dark:border-red-600/30">
+                            <div className="text-white dark:text-gray-100 font-semibold">{item.risk}</div>
+                            <div className="text-red-200 dark:text-red-300 text-sm font-medium">{item.consequence}</div>
                           </div>
                         ))}
                       </div>
@@ -1251,15 +1254,15 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <div className="text-center mt-12 pt-8 border-t border-white/20 dark:border-gray-600/30">
-                    <p className="text-blue-200 dark:text-blue-200 mb-4">Ready to begin your journey to expanded freight capabilities?</p>
+                    <p className="text-orange-200 dark:text-orange-200 mb-4 text-xl font-bold">And they prepared for what came next...</p>
                     <div className="flex justify-center items-center space-x-6">
-                      <div className="text-center">
-                        <div className="text-sm text-blue-300 dark:text-blue-300">Use keyboard navigation</div>
-                        <div className="text-xs text-blue-400 dark:text-blue-400">← → Space Home End</div>
+                      <div className="text-center bg-orange-500/20 dark:bg-orange-700/30 px-4 py-2 rounded-lg">
+                        <div className="text-sm text-orange-200 dark:text-orange-300 font-medium">Navigate the truth</div>
+                        <div className="text-xs text-orange-300 dark:text-orange-400">← → Space Home End</div>
                       </div>
-                      <div className="text-center">
-                        <div className="text-sm text-blue-300 dark:text-blue-300">Mobile gestures</div>
-                        <div className="text-xs text-blue-400 dark:text-blue-400">Swipe left/right</div>
+                      <div className="text-center bg-orange-500/20 dark:bg-orange-700/30 px-4 py-2 rounded-lg">
+                        <div className="text-sm text-orange-200 dark:text-orange-300 font-medium">Swipe to survive</div>
+                        <div className="text-xs text-orange-300 dark:text-orange-400">Swipe left/right</div>
                       </div>
                     </div>
                   </div>
@@ -1269,30 +1272,31 @@ export default function DriverNetworkPresentation() {
 
             {activeTab === 'executive-summary' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-black/80 to-gray-900/80 dark:from-gray-800/95 dark:to-gray-900/95 text-white dark:text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-white/10 dark:border-gray-600/30 shadow-2xl">
-                  <div className="text-center text-gray-800 dark:text-gray-100 mb-8">
-                    <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                      Proven Scale. Proven Results.
+                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-800/90 to-gray-900/90 dark:from-gray-800/95 dark:to-gray-900/95 text-white dark:text-gray-50 p-12 rounded-3xl mb-8 border border-gray-500/30 dark:border-gray-600/30 shadow-2xl">
+                  <div className="text-center mb-8">
+                    <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+                      The Struggle Is Real
                     </h2>
                     <p className="text-xl text-gray-200 dark:text-gray-200 max-w-4xl mx-auto">
-                      Driver Network Inc. delivers customizable logistics solutions with over 1,000 contracted drivers 
-                      across 19 major North American markets, providing the scale and reliability Uber Freight requires.
+                      Every freight company faces the same brutal truth: customers want it faster, cheaper, and perfect. 
+                      The old playbook doesn't work. Infrastructure takes years. Trust takes decades. 
+                      <strong className="text-white dark:text-gray-50">Most companies die trying to build what already exists.</strong>
                     </p>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    {stats.map((stat, index) => (
+                    {struggleMetrics.map((metric, index) => (
                       <div 
                         key={index} 
-                        className="group text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white dark:bg-gray-800/10 p-6 rounded-2xl border border-white/20 dark:border-gray-600/30 hover:bg-white/20 dark:hover:bg-gray-700/20 hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden"
-                        title={`${stat.label}: ${stat.value} - ${stat.description}`}
+                        className="group text-center backdrop-blur-sm bg-red-900/20 dark:bg-red-800/20 p-6 rounded-2xl border border-red-500/30 dark:border-red-600/30 hover:bg-red-800/30 dark:hover:bg-red-700/30 hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden"
+                        title={`${metric.label}: ${metric.value} - ${metric.description}`}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#276EF1]/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div className="relative z-10">
-                          <div className="text-4xl font-bold text-[#276EF1] mb-3 bg-gradient-to-br from-[#276EF1] to-blue-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                            {stat.value}
+                          <div className="text-4xl font-bold text-red-400 dark:text-red-300 mb-3 group-hover:scale-110 transition-transform duration-300">
+                            {metric.value}
                           </div>
-                          <div className="font-bold mb-2 text-lg text-white dark:text-white dark:text-gray-100 group-hover:text-blue-200 transition-colors duration-300">{stat.label}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-300 group-hover:text-blue-300 transition-colors duration-300">{stat.description}</div>
+                          <div className="font-bold mb-2 text-lg text-gray-200 dark:text-gray-100 group-hover:text-red-200 transition-colors duration-300">{metric.label}</div>
+                          <div className="text-sm text-gray-400 dark:text-gray-300 group-hover:text-red-300 transition-colors duration-300">{metric.description}</div>
                         </div>
                         
                         {/* Tooltip */}
@@ -1561,25 +1565,26 @@ export default function DriverNetworkPresentation() {
             {/* Case Study: Instacart */}
             {activeTab === 'case-study-instacart' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-gray-900/95 to-black/95 text-white dark:text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-white/10 dark:border-gray-700/30 shadow-2xl">
-                  <div className="text-center text-gray-800 dark:text-gray-100 mb-12">
-                    <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                      🏆 SUCCESS STORY: INSTACART
+                <div className="backdrop-blur-lg bg-gradient-to-r from-green-800/90 to-emerald-900/90 dark:from-green-800/95 dark:to-emerald-900/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-green-300/30 dark:border-green-600/30 shadow-2xl">
+                  <div className="text-center mb-12">
+                    <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent">
+                      🚀 THE SOLUTION IN ACTION
                     </h2>
-                    <p className="text-2xl text-gray-700 dark:text-gray-200 max-w-5xl mx-auto">
-                      Multi-Market Expansion Success • E-Commerce Logistics Partnership • 6 Metropolitan Areas • $2.3M Annual Contract
+                    <p className="text-2xl text-green-100 dark:text-green-200 max-w-5xl mx-auto font-medium">
+                      When Instacart faced the same struggle, they didn't build. They partnered. 
+                      <br/><span className="text-green-200 dark:text-green-300">In 30 days, not 30 months.</span>
                     </p>
                   </div>
                 </div>
 
                 <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
-                  {/* Enhanced Header with Client Info - Fixed Instacart Brand Colors */}
-                  <div className="bg-gradient-to-r from-[#43B02A] to-[#37A322] p-8 rounded-2xl text-white dark:text-white mb-8">
+                  {/* The Solution Story */}
+                  <div className="bg-gradient-to-r from-emerald-600 to-green-700 dark:from-emerald-700 dark:to-green-800 p-8 rounded-2xl text-white dark:text-gray-50 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
-                        <span className="text-5xl text-white dark:text-white mr-6">🛒</span>
+                        <span className="text-5xl text-white dark:text-gray-50 mr-6">⚡</span>
                         <div>
-                          <h3 className="text-4xl text-white dark:text-white font-bold mb-2">Instacart: Multi-Market Expansion Success</h3>
+                          <h3 className="text-4xl text-white dark:text-gray-50 font-bold mb-2">The Day Everything Changed</h3>
                           <p className="text-xl text-white dark:text-white opacity-90 font-medium">E-Commerce Logistics Partnership • 6 Metropolitan Areas • $2.3M Annual Contract</p>
                         </div>
                       </div>
