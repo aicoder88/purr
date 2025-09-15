@@ -93,7 +93,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               Get {discount}% Off Your First Order!
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Join thousands of happy cat owners and get exclusive tips, discounts, and early access to new products.
+              Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.
             </p>
           </div>
 
@@ -294,7 +294,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
 
         <div className="mt-4 text-center">
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            {t.newsletter?.joinFamily?.joinText || 'Join 10,000+ happy cat owners • No spam, unsubscribe anytime'}
+            {t.newsletter?.joinFamily?.joinText || 'Join 1,000+ happy customers • No spam, unsubscribe anytime'}
           </p>
           <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-400 dark:text-gray-500">
             <span>{t.newsletter?.joinFamily?.features?.weeklyTips || '✓ Weekly tips'}</span>

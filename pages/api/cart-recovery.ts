@@ -237,7 +237,7 @@ function getEmailTemplate(
             Claim My 10% Discount
           </a>
           
-          <p><strong>Why 2,500+ cat owners choose Purrify:</strong></p>
+          <p><strong>Why 1,000+ cat owners choose Purrify:</strong></p>
           <ul>
             <li>✅ Works with ANY litter you currently use</li>
             <li>✅ Eliminates odors at the source (not just masking)</li>
@@ -271,7 +271,7 @@ function getEmailTemplate(
             <li>❌ You lose your 10% discount (save $${(cartTotal * 0.1).toFixed(2)})</li>
             <li>❌ Your cats continue to suffer from litter odors</li>
             <li>❌ Your home keeps smelling like a litter box</li>
-            <li>❌ You miss out on joining 2,500+ happy cat owners</li>
+            <li>❌ You miss out on joining 1,000+ happy cat owners</li>
           </ul>
           
           <p><em>"I wish I had found Purrify sooner! It completely eliminated the smell from our 3-cat household." - Sarah M., Toronto</em></p>

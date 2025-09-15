@@ -376,7 +376,7 @@ const CaseStudiesPage: NextPage = () => {
                 Ready to Write Your Own Success Story?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Join thousands of satisfied customers who have transformed their homes with Purrify.
+                Join 1,000+ satisfied customers who have transformed their homes with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>

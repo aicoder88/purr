@@ -35,7 +35,7 @@ const OurStoryPage: NextPage = () => {
       "founders": [
         {
           "@type": "Person",
-          "name": "Sarah Chen"
+          "name": "Mark Archer"
         }
       ]
     }
@@ -65,7 +65,7 @@ const OurStoryPage: NextPage = () => {
           icon={Heart}
           title="Notre Histoire"
           subtitle="Née de la frustration d'un propriétaire de chat, devenue une mission pour aider les familles partout"
-          description="Ce qui a commencé comme la lutte d'une personne contre les odeurs persistantes de bac à litière est devenu une histoire de succès canadienne, aidant plus de 50 000 propriétaires de chats à créer des maisons plus fraîches et propres."
+          description="Ce qui a commencé comme la lutte d'une personne contre les odeurs persistantes de bac à litière est devenu une histoire de succès canadienne, aidant plus de 1 000 propriétaires de chats à créer des maisons plus fraîches et propres."
         />
 
         {/* Mission Statement */}
@@ -87,7 +87,7 @@ const OurStoryPage: NextPage = () => {
                   fonctionnent mieux, durent plus longtemps, et respectent notre planète."
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                  — Sarah Chen, Fondatrice et PDG
+                  — Mark Archer, Fondateur et PDG
                 </p>
               </div>
             </div>

@@ -61,7 +61,7 @@ export const enStoryData = {
     {
       year: "2022",
       title: "Product Launch",
-      description: "Officially launched Purrify across Canada, helping thousands of cat owners create fresher, cleaner homes.",
+      description: "Officially launched Purrify across Canada, helping 1,000+ cat owners create fresher, cleaner homes.",
       icon: Award
     },
     {
@@ -103,7 +103,7 @@ export const enStoryData = {
 
   team: [
     {
-      name: "Mark Smith",
+      name: "Mark Archer",
       role: "Founder & CEO",
       bio: "A lifelong cat lover with a background in environmental science. Mark's personal struggle with litter box odors led to the creation of Purrify.",
       location: "Toronto, ON"
@@ -176,7 +176,7 @@ export const frStoryData = {
     {
       year: "2022",
       title: "Lancement du Produit",
-      description: "Lancement officiel de Purrify à travers le Canada, aidant des milliers de propriétaires de chats à créer des maisons plus fraîches et propres.",
+      description: "Lancement officiel de Purrify à travers le Canada, aidant plus de 1 000 propriétaires de chats à créer des maisons plus fraîches et propres.",
       icon: Award
     },
     {
@@ -218,7 +218,7 @@ export const frStoryData = {
 
   team: [
     {
-      name: "Mark Smith",
+      name: "Mark Archer",
       role: "Fondateur et PDG",
       bio: "Amoureux des chats depuis toujours avec une formation en sciences environnementales. La lutte personnelle de Mark contre les odeurs de litière a mené à la création de Purrify.",
       location: "Toronto, ON"
@@ -245,7 +245,7 @@ export const frStoryData = {
 
   stats: [
     {
-      number: "50 000+",
+      number: "1 000+",
       label: "Clients Satisfaits",
       description: "Propriétaires de chats à travers le Canada et internationalement"
     },

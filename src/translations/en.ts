@@ -51,13 +51,13 @@ export const en = {
     rabbitLitter: "Rabbit Litter",
     fridgeSmells: "Fridge smells",
     ferretCage: "Ferret cage",
-    eliminateCatOdors: "Stop Hiding Your Litter Box",
-    instantly: "From Everyone",
+    eliminateCatOdors: "Purrify - a litter box so fresh…",
+    instantly: "even YOU could purr!",
     description: "Military-Grade Coconut Carbon Odor Elimination. One sprinkle = 7 days of air so fresh, guests won't believe you own cats. Same grade used in military gas masks - destroys ammonia molecules instantly.",
     socialProof: {
-      trustNumber: "50,000+",
+      trustNumber: "1,000+",
       trustText: "cat owners trust Purrify",
-      ratingText: "4.8/5 from 12,000+ reviews"
+      ratingText: "4.8/5 from 138 reviews"
     },
     buttons: {
       shopNow: "Try 17g Risk-Free - $24.95",
@@ -65,7 +65,7 @@ export const en = {
     },
     ariaLabels: {
       shopNow: "Shop Purrify products now",
-      reviews: "Read 247+ customer reviews",
+      reviews: "Read 138+ customer reviews",
       playVideo: "Play demonstration video showing Purrify eliminating cat litter odors"
     }
   },
@@ -174,7 +174,7 @@ export const en = {
   // Call to Action
   cta: {
     title: "Ready to Say Goodbye to Litter Box Odors Forever?",
-    subtitle: "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee.",
+    subtitle: "Join 1,000+ happy customers who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee.",
     buttonText: "ORDER NOW",
     joinText: "Join 1,000+ Happy cat Families - Visit your local store",
     guarantee: "30-day money-back guarantee"
@@ -268,7 +268,7 @@ export const en = {
       },
       emailPlaceholder: "Enter your email address",
       ctaButton: "Get 10% Off Your First Order",
-      joinText: "Join 10,000+ happy cat owners • No spam, unsubscribe anytime",
+      joinText: "Join 1,000+ happy customers • No spam, unsubscribe anytime",
       features: {
         weeklyTips: "✓ Weekly tips",
         exclusiveOffers: "✓ Exclusive offers", 
@@ -300,7 +300,7 @@ export const en = {
       title: "Purrify - Activated Carbon Cat Litter Additive",
       description: "Activated carbon cat litter additive that eliminates odors at the source."
     },
-    metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by thousands of cat owners across Canada."
+    metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by 1,000+ cat owners across Canada."
   },
   
   // Structured Data
@@ -473,7 +473,7 @@ export const en = {
     chooseThisSize: "Choose This Size",
     chosenByCustomers: "🔥 68% of customers choose",
     whyChoosePurrify: "Why Choose Purrify?",
-    joinThousands: "Join thousands of cat owners who trust Purrify",
+    joinThousands: "Join 1,000+ cat owners who trust Purrify",
     happyCustomers: "Happy Customers",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
@@ -486,7 +486,7 @@ export const en = {
     neverRunOutAgain: "NEVER RUN OUT AGAIN",
     subscribeAndSaveUpTo: "Subscribe & Save Up to",
     seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "Join thousands of happy cat parents who never worry about odors again.",
+    joinThousandsHappyCatParents: "Join 1,000+ happy cat parents who never worry about odors again.",
     getPurrifyDelivered: "Get Purrify delivered automatically and save money every month.",
     monthlyDelivery: "Monthly Delivery",
     quarterlyDelivery: "Quarterly Delivery",
@@ -546,11 +546,11 @@ export const en = {
     },
     customerRating: {
       title: "4.9/5 Customer Rating",
-      description: "Based on 2,500+ verified reviews",
+      description: "Based on 138 verified reviews",
       highlight: "98% Satisfaction"
     },
     happyCustomers: {
-      title: "10,000+ Happy Customers",
+      title: "1,000+ Happy Customers",
       description: "Trusted by cat owners across Canada",
       highlight: "Since 2019"
     },
@@ -1057,7 +1057,7 @@ export const en = {
       chooseYourPerfectSize: "Choose Your Perfect Size",
       allSizesDeliver: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
       whyChoosePurrify: "Why Choose Purrify?",
-      joinThousands: "Join thousands of satisfied cat parents who trust Purrify",
+      joinThousands: "Join 1,000+ satisfied cat parents who trust Purrify",
       happyCustomers: "Happy Customers",
       averageRating: "Average Rating",
       satisfactionRate: "Satisfaction Rate",
@@ -1081,12 +1081,12 @@ export const en = {
       quickReliableShipping: "Quick and reliable shipping",
       skipAnytime: "Skip Anytime",
       fullControlDeliveries: "Full control over deliveries",
-      lovedByCustomers: "Loved by 10,000+ customers",
-      joinSatisfiedCustomers: "Join over 10,000 satisfied customers:",
+      lovedByCustomers: "Loved by 1,000+ customers",
+      joinSatisfiedCustomers: "Join over 1,000 satisfied customers:",
       thirtyDayGuarantee: "30-Day Guarantee",
       moneyBackPromise: "100% money-back promise",
       fiveStarRated: "5-Star Rated",
-      reviewsRating: "4.9/5 from 2,847 reviews",
+      reviewsRating: "4.9/5 from 138 reviews",
       testimonialQuote: "\"I've saved over $200 this year with my subscription, and my cats' litter box never smells!\" - Sarah M."
     }
   }

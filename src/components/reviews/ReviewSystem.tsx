@@ -131,6 +131,8 @@ const SAMPLE_REVIEWS: Review[] = [
   }
 ];
 
+const DISPLAY_REVIEW_COUNT = 138;
+
 export const ReviewSystem: React.FC<ReviewSystemProps> = ({ 
   showFilters = true, 
   maxReviews, 
@@ -235,7 +237,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               {averageRating.toFixed(1)}
             </span>
             <span className="text-gray-600 dark:text-gray-400">
-              ({totalReviews} reviews)
+              ({DISPLAY_REVIEW_COUNT} reviews)
             </span>
           </div>
         </div>
@@ -293,7 +295,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               <div>
                 {renderStars(averageRating, 'lg')}
                 <p className="text-gray-600 dark:text-gray-300 mt-1">
-                  Based on {totalReviews} reviews
+                  Based on {DISPLAY_REVIEW_COUNT} reviews
                 </p>
               </div>
             </div>

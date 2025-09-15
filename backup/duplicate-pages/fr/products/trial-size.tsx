@@ -11,7 +11,7 @@ export default function TrialSizePageFR() {
   const { t, locale } = useTranslation();
   
   const pageTitle = `${SITE_NAME} Format d'Essai - Additif de Charbon Activé 17g pour Litière`;
-  const pageDescription = "Essayez Purrify sans risque avec notre format d'essai de 17g. Parfait pour un changement de litière. Découvrez pourquoi des milliers de propriétaires de chats adorent le pouvoir d'élimination des odeurs de Purrify.";
+  const pageDescription = "Essayez Purrify sans risque avec notre format d'essai de 17g. Parfait pour un changement de litière. Découvrez pourquoi 1 000+ propriétaires de chats adorent le pouvoir d'élimination des odeurs de Purrify.";
   const canonicalUrl = 'https://purrify.ca/fr/products/trial-size';
 
   const benefits = [
@@ -215,7 +215,7 @@ export default function TrialSizePageFR() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Adorez et Recommandez</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Rejoignez des milliers de clients satisfaits avec une commande pleine grandeur
+                  Rejoignez 1 000+ clients satisfaits avec une commande pleine grandeur
                 </p>
               </div>
             </div>

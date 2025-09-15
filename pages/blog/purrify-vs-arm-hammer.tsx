@@ -599,7 +599,7 @@ export default function PurrifyVsArmHammer() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience the difference? <Link href="/products" className="text-[#FF3131] hover:underline font-medium">
-                Try Purrify today</Link> and join thousands of satisfied cat owners who've made the switch 
+                Try Purrify today</Link> and join 1,000+ satisfied cat owners who've made the switch 
                 to superior odor control.
               </p>
             </div>

@@ -54,17 +54,17 @@ export const zh = {
     instantly: "瞬间见效",
     description: "先进的活性炭技术中和氨气和异味的速度比传统解决方案快3倍。几秒钟内将您的猫砂盒从有异味变为清新。",
     socialProof: {
-      trustNumber: "50,000+",
+      trustNumber: "1,000+",
       trustText: "猫主人信任Purrify",
-      ratingText: "12,000+ 评论中获得4.8/5评分"
+      ratingText: "来自 138 条评论的 4.8/5 评分"
     },
     buttons: {
       shopNow: "🛒 立即购买 - $24.95",
-      reviews: "⭐ 247+ 评论"
+      reviews: "⭐ 138+ 评论"
     },
     ariaLabels: {
       shopNow: "立即购买Purrify产品",
-      reviews: "阅读247+顾客评论",
+      reviews: "阅读138+顾客评论",
       playVideo: "播放演示视频，展示Purrify消除猫砂异味的效果"
     }
   },
@@ -130,7 +130,7 @@ export const zh = {
     },
     highlyRated: {
       title: "高度评价",
-      description: "获得数千名满意客户的五星好评。"
+      description: "获得 1,000+ 满意客户的五星好评。"
     }
   },
   
@@ -202,7 +202,7 @@ export const zh = {
   // Call to Action
   cta: {
     title: "准备好体验差异了吗？",
-    subtitle: "加入数千名满意的猫主人，今天就试试Purrify",
+    subtitle: "加入 1,000+ 满意的猫主人，今天就试试 Purrify",
     buttonText: "立即订购",
     joinText: "加入Purrify家族",
     guarantee: "30天退款保证"
@@ -296,7 +296,7 @@ export const zh = {
       },
       emailPlaceholder: "输入您的邮箱地址",
       ctaButton: "首单享10%折扣",
-      joinText: "加入10,000+快乐猫主人 • 无垃圾邮件，随时退订",
+      joinText: "加入 1,000+ 快乐客户 • 无垃圾邮件，随时退订",
       features: {
         weeklyTips: "✓ 每周技巧",
         exclusiveOffers: "✓ 专属优惠",
@@ -324,11 +324,11 @@ export const zh = {
     },
     customerRating: {
       title: "4.9/5客户评分",
-      description: "基于2,500+真实评价",
+      description: "基于 138 条真实评价",
       highlight: "98%满意度"
     },
     happyCustomers: {
-      title: "10,000+满意客户",
+      title: "1,000+满意客户",
       description: "全加拿大猫主人的信赖之选",
       highlight: "自2019年"
     },
@@ -369,7 +369,7 @@ export const zh = {
       title: "Purrify - 活性炭猫砂添加剂",
       description: "使用Purrify活性炭添加剂消除猫砂盒异味。天然、安全、有效。"
     },
-    metaDescription: "Purrify是一款优质的活性炭猫砂添加剂，可在分子水平上消除异味。采用天然椰壳炭制成，提供7天清新效果，适用于所有类型的猫砂。深受加拿大数千名猫主人的信赖。"
+    metaDescription: "Purrify是一款优质的活性炭猫砂添加剂，可在分子水平上消除异味。采用天然椰壳炭制成，提供7天清新效果，适用于所有类型的猫砂。深受加拿大 1,000+ 猫主人的信赖。"
   },
   
   // Structured Data
@@ -514,7 +514,7 @@ export const zh = {
     chooseThisSize: "选择此尺寸",
     chosenByCustomers: "🔥 68%的客户选择",
     whyChoosePurrify: "为什么选择Purrify？",
-    joinThousands: "加入数千名信任Purrify的猫主人",
+    joinThousands: "加入 1,000+ 名信任 Purrify 的猫主人",
     happyCustomers: "满意客户",
     averageRating: "平均评分",
     satisfactionRate: "满意度",
@@ -610,7 +610,7 @@ export const zh = {
     keyPainPoints: "关键痛点",
     implementation: "实施方案",
     writeYourStory: "准备写下您自己的成功故事？",
-    joinSatisfied: "加入数千名用Purrify改变家庭的满意客户。",
+    joinSatisfied: "加入 1,000+ 名用 Purrify 改变家庭的满意客户。",
     shopPurrify: "购买Purrify",
     tryFreeSample: "试用免费样品",
     moreCustomerStories: "更多客户故事",
@@ -623,7 +623,7 @@ export const zh = {
     neverRunOutAgain: "永不断货",
     subscribeAndSaveUpTo: "订阅并节省高达",
     seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "加入数千名快乐的猫主人，再也不用担心异味问题。",
+    joinThousandsHappyCatParents: "加入 1,000+ 名快乐的猫主人，再也不用担心异味问题。",
     getPurrifyDelivered: "自动配送Purrify，每月节省更多费用。",
     monthlyDelivery: "月度配送",
     quarterlyDelivery: "季度配送",
@@ -1083,7 +1083,7 @@ export const zh = {
       chooseYourPerfectSize: "选择您的完美尺寸",
       allSizesDeliver: "所有尺寸都提供相同的强大除臭效果。根据您的家庭规模和使用频率进行选择。",
       whyChoosePurrify: "为什么选择Purrify？",
-      joinThousands: "加入数千名信任Purrify的满意猫主人",
+      joinThousands: "加入 1,000+ 名信任 Purrify 的满意猫主人",
       happyCustomers: "满意客户",
       averageRating: "平均评分",
       satisfactionRate: "满意率",
@@ -1107,12 +1107,12 @@ export const zh = {
       quickReliableShipping: "快速可靠的配送",
       skipAnytime: "随时跳过",
       fullControlDeliveries: "对配送全面控制",
-      lovedByCustomers: "深受超过10,000客户的喜爱",
-      joinSatisfiedCustomers: "加入超过10,000满意客户的行列：",
+      lovedByCustomers: "深受 1,000+ 客户的喜爱",
+      joinSatisfiedCustomers: "加入超过 1,000 满意客户的行列：",
       thirtyDayGuarantee: "30天保证",
       moneyBackPromise: "100%退款承诺",
       fiveStarRated: "五星评级",
-      reviewsRating: "2,847条评价中4.9/5星",
+      reviewsRating: "138 条评价中 4.9/5 星",
       testimonialQuote: "\"今年通过订阅我节省了超过200美元，我的猫咪猫砂盒从不异味！\" - Sarah M."
     }
   }

@@ -659,7 +659,7 @@ export default function InvestorRelations() {
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white font-bold text-2xl">D</span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#FF3131] mb-2">Drago - CEO</h3>
+                      <h3 className="text-xl font-bold text-[#FF3131] mb-2">Mark Archer - CEO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Marketing Genius</p>
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">

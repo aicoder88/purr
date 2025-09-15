@@ -54,17 +54,17 @@ export const fr = {
     instantly: "Instantanément",
     description: "La technologie avancée au carbone activé neutralise l'ammoniac et les odeurs 3x plus rapidement que les solutions traditionnelles. Transformez votre litière de malodorante à fraîche en quelques secondes.",
     socialProof: {
-      trustNumber: "50 000+",
+      trustNumber: "1 000+",
       trustText: "propriétaires de chats font confiance à Purrify",
-      ratingText: "4,8/5 sur 12 000+ avis"
+      ratingText: "4,8/5 sur 138 avis"
     },
     buttons: {
       shopNow: "🛒 Acheter - 24,95 $",
-      reviews: "⭐ 247+ Avis"
+      reviews: "⭐ 138+ Avis"
     },
     ariaLabels: {
       shopNow: "Acheter les produits Purrify maintenant",
-      reviews: "Lire 247+ avis clients",
+      reviews: "Lire 138+ avis clients",
       playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat"
     }
   },
@@ -197,7 +197,7 @@ export const fr = {
   // Call to Action
   cta: {
     title: "Prêt à Dire Adieu aux Odeurs de Litière pour Toujours ?",
-    subtitle: "Rejoignez des milliers de propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le sans risque avec notre garantie de satisfaction de 30 jours.",
+    subtitle: "Rejoignez 1 000+ propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le sans risque avec notre garantie de satisfaction de 30 jours.",
     buttonText: "COMMANDER MAINTENANT",
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
     guarantee: "Garantie de remboursement de 30 jours"
@@ -292,7 +292,7 @@ export const fr = {
       },
       emailPlaceholder: "Entrez votre adresse courriel",
       ctaButton: "Obtenez 10% de Réduction sur Votre Première Commande",
-      joinText: "Rejoignez 10 000+ propriétaires de chats heureux • Aucun spam, se désabonner à tout moment",
+      joinText: "Rejoignez 1 000+ clients heureux • Aucun spam, se désabonner à tout moment",
       features: {
         weeklyTips: "✓ Conseils hebdomadaires",
         exclusiveOffers: "✓ Offres exclusives",
@@ -324,7 +324,7 @@ export const fr = {
       title: "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
       description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
     },
-    metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par des milliers de propriétaires de chats au Canada."
+    metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par plus de 1 000 propriétaires de chats au Canada."
   },
   
   // Structured Data
@@ -469,7 +469,7 @@ export const fr = {
     chooseThisSize: "Choisir Cette Taille",
     chosenByCustomers: "🔥 68% des clients choisissent",
     whyChoosePurrify: "Pourquoi Choisir Purrify ?",
-    joinThousands: "Rejoignez des milliers de propriétaires de chats qui font confiance à Purrify",
+    joinThousands: "Rejoignez 1 000+ propriétaires de chats qui font confiance à Purrify",
     happyCustomers: "Clients Satisfaits",
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
@@ -565,7 +565,7 @@ export const fr = {
     keyPainPoints: "Points de Douleur Clés",
     implementation: "Mise en Œuvre",
     writeYourStory: "Prêt à écrire votre propre histoire de succès ?",
-    joinSatisfied: "Rejoignez des milliers de clients satisfaits qui transforment leurs foyers avec Purrify.",
+    joinSatisfied: "Rejoignez 1 000+ clients satisfaits qui transforment leurs foyers avec Purrify.",
     shopPurrify: "Acheter Purrify",
     tryFreeSample: "Essayer un Échantillon Gratuit",
     moreCustomerStories: "Plus d'Histoires de Clients",
@@ -583,7 +583,7 @@ export const fr = {
     neverRunOutAgain: "PLUS JAMAIS EN RUPTURE",
     subscribeAndSaveUpTo: "Abonnez-vous et économisez jusqu'à",
     seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "Rejoignez des milliers de propriétaires de chats heureux qui ne s'inquiètent plus jamais des odeurs.",
+    joinThousandsHappyCatParents: "Rejoignez 1 000+ propriétaires de chats heureux qui ne s'inquiètent plus jamais des odeurs.",
     getPurrifyDelivered: "Recevez Purrify automatiquement et économisez de l'argent chaque mois.",
     monthlyDelivery: "Livraison Mensuelle",
     quarterlyDelivery: "Livraison Trimestrielle",
@@ -643,11 +643,11 @@ export const fr = {
     },
     customerRating: {
       title: "Note Client 4,9/5",
-      description: "Basé sur 2 500+ avis vérifiés",
+      description: "Basé sur 138 avis vérifiés",
       highlight: "98% de Satisfaction"
     },
     happyCustomers: {
-      title: "10 000+ Clients Satisfaits",
+      title: "1 000+ Clients Satisfaits",
       description: "Fait confiance par les propriétaires de chats à travers le Canada",
       highlight: "Depuis 2019"
     },
@@ -1083,7 +1083,7 @@ export const fr = {
       chooseYourPerfectSize: "Choisissez Votre Taille Parfaite",
       allSizesDeliver: "Toutes les tailles offrent la même élimination puissante des odeurs. Choisissez en fonction de la taille de votre foyer et de la fréquence d'utilisation.",
       whyChoosePurrify: "Pourquoi Choisir Purrify ?",
-      joinThousands: "Rejoignez des milliers de parents de chats satisfaits qui font confiance à Purrify",
+      joinThousands: "Rejoignez 1 000+ parents de chats satisfaits qui font confiance à Purrify",
       happyCustomers: "Clients Satisfaits",
       averageRating: "Note Moyenne",
       satisfactionRate: "Taux de Satisfaction",
@@ -1107,12 +1107,12 @@ export const fr = {
       quickReliableShipping: "Expédition rapide et fiable",
       skipAnytime: "Ignorer À Tout Moment",
       fullControlDeliveries: "Contrôle total sur les livraisons",
-      lovedByCustomers: "Aimé par plus de 10 000 clients",
-      joinSatisfiedCustomers: "Rejoignez plus de 10 000 clients satisfaits :",
+      lovedByCustomers: "Aimé par plus de 1 000 clients",
+      joinSatisfiedCustomers: "Rejoignez plus de 1 000 clients satisfaits :",
       thirtyDayGuarantee: "Garantie 30 Jours",
       moneyBackPromise: "Promesse de remboursement à 100%",
       fiveStarRated: "Classé 5 Étoiles",
-      reviewsRating: "4,9/5 sur 2 847 avis",
+      reviewsRating: "4,9/5 sur 138 avis",
       testimonialQuote: "\"J'ai économisé plus de 200$ cette année avec mon abonnement, et la litière de mes chats ne sent jamais !\" - Sarah M."
     }
   }

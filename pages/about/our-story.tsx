@@ -36,7 +36,7 @@ const OurStoryPage: NextPage = () => {
       "founders": [
         {
           "@type": "Person",
-          "name": "Sarah Chen"
+          "name": "Mark Archer"
         }
       ]
     }
@@ -66,7 +66,7 @@ const OurStoryPage: NextPage = () => {
           icon={Heart}
           title="Our Story"
           subtitle="Born from a cat owner's frustration, grown into a mission to help families everywhere"
-          description="What started as one person's struggle with persistent litter box odors has become a Canadian success story, helping over 50,000 cat owners create fresher, cleaner homes."
+          description="What started as one person's struggle with persistent litter box odors has become a Canadian success story, helping 1,000+ cat owners create fresher, cleaner homes."
         />
 
         {/* Mission Statement */}
@@ -87,7 +87,7 @@ const OurStoryPage: NextPage = () => {
                   last longer, and respect our planet.&quot;
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                  — Sarah Chen, Founder & CEO
+                  — Mark Archer, Founder & CEO
                 </p>
               </div>
             </div>

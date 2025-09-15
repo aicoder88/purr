@@ -703,8 +703,8 @@ export default function Montreal() {
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
             {locale === 'fr'
-              ? 'Découvrez pourquoi des milliers de familles montréalaises font confiance à Purrify pour garder leur maison fraîche et accueillante toute l’année.'
-              : 'Discover why thousands of Montreal families trust Purrify to keep their homes fresh and welcoming year-round, especially during Quebec’s long winter months.'
+              ? 'Découvrez pourquoi plus de 1 000 familles montréalaises font confiance à Purrify pour garder leur maison fraîche et accueillante toute l’année.'
+              : 'Discover why 1,000+ Montreal families trust Purrify to keep their homes fresh and welcoming year-round, especially during Quebec’s long winter months.'
             }
           </p>
           

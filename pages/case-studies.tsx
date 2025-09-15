@@ -364,7 +364,7 @@ export default function CaseStudies() {
                   Ready to Write Your Own Success Story?
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                  Join thousands of satisfied customers who have transformed their homes with Purrify. 
+                  Join 1,000+ satisfied customers who have transformed their homes with Purrify. 
                   Start your journey to odor-free living today.
                 </p>
                 <div className="space-x-4">

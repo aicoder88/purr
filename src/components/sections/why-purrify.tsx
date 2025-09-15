@@ -73,7 +73,7 @@ export function WhyPurrify() {
             {t.nav.whyPurrify}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-lg dark:text-gray-300">
-            Discover why thousands of cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
+            Discover why 1,000+ cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
           </p>
         </div>
 

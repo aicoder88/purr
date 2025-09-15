@@ -266,7 +266,7 @@ export default function ActivatedCarbonBenefits() {
           <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Experience the Benefits?</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
-              Try Purrify's premium activated carbon litter additive and discover why thousands of cat owners trust our natural odor elimination solution.
+              Try Purrify's premium activated carbon litter additive and discover why 1,000+ cat owners trust our natural odor elimination solution.
             </p>
             <div className="space-x-4">
               <Link 

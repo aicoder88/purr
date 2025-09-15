@@ -407,7 +407,7 @@ const ProductComparePage: NextPage = () => {
                     {locale === 'fr' ? 'Avis Clients' : 'Customer Reviews'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    {locale === 'fr' ? 'Voyez ce que des milliers de clients satisfaits disent de leur expérience avec Purrify.' : 'See what thousands of satisfied customers are saying about their Purrify experience.'}
+                    {locale === 'fr' ? 'Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.' : 'See what 1,000+ satisfied customers are saying about their Purrify experience.'}
                   </p>
                 </div>
               </Link>

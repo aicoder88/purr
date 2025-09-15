@@ -407,7 +407,7 @@ const ProductComparePage: NextPage = () => {
                     {locale === 'fr' ? 'Avis Clients' : locale === 'zh' ? '客户评价' : 'Customer Reviews'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    {locale === 'fr' ? 'Voyez ce que des milliers de clients satisfaits disent de leur expérience avec Purrify.' : locale === 'zh' ? '看看数千名满意客户对他们 Purrify 体验的评价。' : 'See what thousands of satisfied customers are saying about their Purrify experience.'}
+                    {locale === 'fr' ? 'Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.' : locale === 'zh' ? '看看 1,000+ 名满意客户对他们的 Purrify 体验的评价。' : 'See what 1,000+ satisfied customers are saying about their Purrify experience.'}
                   </p>
                 </div>
               </Link>

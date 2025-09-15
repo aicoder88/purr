@@ -77,7 +77,7 @@ export function SubscriptionOffer() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.subscriptionOfferExtended?.joinThousandsHappyCatParents || "Join thousands of happy cat parents who never worry about odors again."} {' '}
+              {t.subscriptionOfferExtended?.joinThousandsHappyCatParents || "Join 1,000+ happy cat parents who never worry about odors again."} {' '}
               {t.subscriptionOfferExtended?.getPurrifyDelivered || "Get Purrify delivered automatically and save money every month."}
             </p>
           </div>

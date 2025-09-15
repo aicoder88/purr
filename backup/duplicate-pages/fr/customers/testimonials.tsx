@@ -12,7 +12,7 @@ export default function TestimonialsPageFR() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   
   const pageTitle = `Témoignages Clients - ${SITE_NAME} Avis & Histoires de Succès`;
-  const pageDescription = "Lisez de vrais témoignages clients et histoires de succès de propriétaires de chats qui ont expérimenté le pouvoir d'élimination des odeurs de Purrify. Voyez pourquoi des milliers font confiance à Purrify.";
+  const pageDescription = "Lisez de vrais témoignages clients et histoires de succès de propriétaires de chats qui ont expérimenté le pouvoir d'élimination des odeurs de Purrify. Voyez pourquoi 1 000+ font confiance à Purrify.";
   const canonicalUrl = 'https://purrify.ca/fr/customers/testimonials';
 
   const categories = [
@@ -201,7 +201,7 @@ export default function TestimonialsPageFR() {
                 Vraies Histoires, Vrais Résultats
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-                Découvrez pourquoi des milliers de propriétaires de chats font confiance à Purrify pour éliminer les odeurs de litière. 
+                Découvrez pourquoi 1 000+ propriétaires de chats font confiance à Purrify pour éliminer les odeurs de litière. 
                 Lisez des témoignages authentiques de clients qui ont expérimenté la différence.
               </p>
 

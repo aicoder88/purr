@@ -12,7 +12,7 @@ export default function TestimonialsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   
   const pageTitle = `Customer Testimonials - ${SITE_NAME} Reviews & Success Stories`;
-  const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why thousands trust Purrify.";
+  const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why 1,000+ trust Purrify.";
   const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/testimonials`;
 
   const categories = [
@@ -201,7 +201,7 @@ export default function TestimonialsPage() {
                 Real Stories, Real Results
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-                Discover why thousands of cat owners trust Purrify to eliminate litter box odors. 
+                Discover why 1,000+ cat owners trust Purrify to eliminate litter box odors. 
                 Read authentic testimonials from customers who've experienced the difference.
               </p>
 

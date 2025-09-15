@@ -997,7 +997,7 @@ import { ProductsSection } from '../../src/components/sections/products';
 
 export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage() {
   const seoTitle = \`Purrify vs \${competitor.name} | Cat Litter Comparison\`;
-  const seoDescription = \`Compare Purrify activated carbon to \${competitor.name}. See why thousands choose Purrify for superior odor elimination and value.\`;
+  const seoDescription = \`Compare Purrify activated carbon to \${competitor.name}. See why 1,000+ choose Purrify for superior odor elimination and value.\`;
   
   return (
     <>
@@ -1163,7 +1163,7 @@ export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Make the Switch?</h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-              Join thousands of cat owners who chose Purrify over {competitor.name}
+              Join 1,000+ cat owners who chose Purrify over {competitor.name}
             </p>
             <a 
               href="/products/trial-size" 

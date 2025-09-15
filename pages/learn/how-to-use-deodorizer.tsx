@@ -44,7 +44,7 @@ export default function HowToUseDeodorizer() {
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed">
             Master the proper technique for using cat litter deodorizer additive to achieve maximum odor control. 
-            Follow our proven method used by thousands of satisfied cat owners.
+            Follow our proven method used by 1,000+ satisfied cat owners.
           </p>
         </header>
 

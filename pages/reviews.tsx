@@ -88,8 +88,8 @@ export default function Reviews() {
 
   const stats = [
     { label: "Average Rating", value: "4.9/5", icon: Star },
-    { label: "Verified Reviews", value: "500+", icon: CheckCircle },
-    { label: "Happy Customers", value: "2,000+", icon: Users },
+    { label: "Verified Reviews", value: "138", icon: CheckCircle },
+    { label: "Happy Customers", value: "1,000+", icon: Users },
     { label: "Months in Market", value: "18", icon: Calendar }
   ];
 
@@ -110,7 +110,7 @@ export default function Reviews() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Purrify Reviews - Real Customer Success Stories" />
-        <meta name="twitter:description" content="See why 2,000+ Canadian cat owners choose Purrify for natural odor elimination." />
+        <meta name="twitter:description" content="See why 1,000+ Canadian cat owners choose Purrify for natural odor elimination." />
         <meta name="twitter:image" content="https://purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Canonical */}
@@ -168,7 +168,7 @@ export default function Reviews() {
                 Real Stories from Happy Cat Owners
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                See why thousands of Canadian cat owners trust Purrify to eliminate litter box odors naturally. 
+                See why 1,000+ Canadian cat owners trust Purrify to eliminate litter box odors naturally. 
                 Read verified reviews from real customers across Canada.
               </p>
               
@@ -268,7 +268,7 @@ export default function Reviews() {
                   </div>
                   <div className="text-center">
                     <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">2,000+ Customers</h3>
+                    <h3 className="font-semibold mb-2">1,000+ Customers</h3>
                     <p className="text-sm">Growing community of satisfied cat owners across Canada.</p>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ export default function Reviews() {
             <div className="text-center">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                  Join Thousands of Happy Cat Owners
+                  Join 1,000+ Happy Cat Owners
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
                   Experience the same results as our verified customers. Try Purrify risk-free 

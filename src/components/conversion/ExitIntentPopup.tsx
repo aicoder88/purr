@@ -27,7 +27,7 @@ export function ExitIntentPopup({
     discount: {
       title: '🚨 WAIT! Don\'t Let Odors Win!',
       subtitle: 'Get 15% OFF Your First Purrify Order',
-      description: 'Join 10,000+ happy cat owners who eliminated litter box odors forever',
+      description: 'Join 1,000+ happy customers who eliminated litter box odors forever',
       cta: 'CLAIM MY 15% DISCOUNT',
       urgency: 'Limited time offer - expires in 10 minutes!',
       icon: <Gift className="w-8 h-8 text-green-500 dark:text-green-400" />
@@ -128,7 +128,7 @@ export function ExitIntentPopup({
                   <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:text-yellow-300 dark:text-yellow-400" />
                 ))}
               </div>
-              <span>4.8/5 from 247+ reviews</span>
+              <span>4.8/5 from 138 reviews</span>
             </div>
 
             {/* Email Capture Form */}

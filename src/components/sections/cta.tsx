@@ -36,7 +36,7 @@ export function CTA() {
               {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
             <p className="text-white dark:text-gray-100/90 text-lg">
-              {t.cta?.subtitle || "Join thousands of happy cat owners who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
+              {t.cta?.subtitle || "Join 1,000+ happy customers who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
             </p>
             <div className="mt-8 flex items-center space-x-4">
               <div className="flex -space-x-4">

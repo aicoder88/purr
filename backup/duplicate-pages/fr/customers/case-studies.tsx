@@ -374,7 +374,7 @@ const CaseStudiesPage: NextPage = () => {
                 Prêt à Écrire Votre Propre Histoire de Succès?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Rejoignez des milliers de clients satisfaits qui ont transformé leurs maisons avec Purrify.
+                Rejoignez 1 000+ clients satisfaits qui ont transformé leurs maisons avec Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/fr/products/trial-size">

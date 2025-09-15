@@ -433,7 +433,7 @@ export default function ${componentName}Page() {
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-8">Ready to Solve Your ${problem.title}?</h2>
-            <p className="text-xl mb-8">Join thousands of satisfied cat owners</p>
+            <p className="text-xl mb-8">Join 1,000+ satisfied cat owners</p>
             <a 
               href="/products/compare"
               className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all text-lg"

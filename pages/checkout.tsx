@@ -254,9 +254,9 @@ const CheckoutPage: NextPage = () => {
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-3">
                 <Heart className="h-5 w-5 text-red-500 dark:text-red-400" />
-                <span className="font-bold text-2xl text-gray-900 dark:text-gray-100">10,000+</span>
+                <span className="font-bold text-2xl text-gray-900 dark:text-gray-100">1,000+</span>
               </div>
-              <p className="text-sm text-gray-700 dark:text-gray-200 font-medium">Happy Cat Owners</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200 font-medium">Happy Customers</p>
               <div className="flex justify-center mt-2">
                 {Array(5).fill(0).map((_, i) => (
                   <Star key={i} className="h-4 w-4 text-yellow-400 dark:text-yellow-300 fill-current" />
@@ -677,7 +677,7 @@ const CheckoutPage: NextPage = () => {
               Complete Your Order
             </h1>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
-              Join thousands of happy cat parents who trust Purrify for odor-free litter boxes
+              Join 1,000+ happy cat parents who trust Purrify for odor-free litter boxes
             </p>
             
             {/* Trust indicators */}
@@ -688,7 +688,7 @@ const CheckoutPage: NextPage = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                <span>10,000+ Happy Customers</span>
+                <span>1,000+ Happy Customers</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="h-4 w-4 text-yellow-500 dark:text-yellow-400 dark:text-yellow-300 fill-current" />

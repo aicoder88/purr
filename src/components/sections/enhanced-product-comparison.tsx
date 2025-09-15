@@ -296,7 +296,7 @@ export function EnhancedProductComparison() {
             
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">10,000+</div>
+                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">1,000+</div>
                 <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.happyCustomers}</div>
               </div>
               <div>

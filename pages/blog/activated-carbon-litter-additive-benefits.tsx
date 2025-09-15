@@ -368,7 +368,7 @@ export default function ActivatedCarbonBenefits() {
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience the difference that science-backed odor control can make? 
                 <Link href="/products" className="text-[#FF3131] hover:underline font-medium"> Explore our Purrify products</Link> 
-                and discover why thousands of cat owners trust activated carbon for superior litter box freshness.
+                and discover why 1,000+ cat owners trust activated carbon for superior litter box freshness.
               </p>
             </div>
 

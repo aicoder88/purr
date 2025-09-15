@@ -14,7 +14,7 @@ export default function TrialSizePage() {
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
   
   const pageTitle = `${SITE_NAME} Trial Size - 17g Activated Carbon Cat Litter Additive`;
-  const pageDescription = "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why thousands of cat owners love Purrify's odor elimination power.";
+  const pageDescription = "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
   const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`;
   
   // Generate structured data for this product
@@ -448,7 +448,7 @@ export default function TrialSizePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Love It & Reorder</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Join thousands of satisfied customers with a full-size order
+                  Join 1,000+ satisfied customers with a full-size order
                 </p>
               </div>
             </div>
