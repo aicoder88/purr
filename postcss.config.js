@@ -1,18 +1,17 @@
-const plugins = [];
+// Next.js requires PostCSS plugins to be specified as strings, not functions
+// See: https://nextjs.org/docs/messages/postcss-shape
+const plugins = {};
 
 try {
-  // Tailwind should be present during builds
-  // If it's missing, let the build fail so it can be fixed explicitly
-  // eslint-disable-next-line import/no-extraneous-dependencies
-  plugins.push(require('tailwindcss'));
+  require.resolve('tailwindcss');
+  plugins['tailwindcss'] = {};
 } catch (e) {
-  console.warn('Tailwind not installed. CSS may fail to compile.');
+  console.warn('tailwindcss not installed. CSS may fail to compile.');
 }
 
 try {
-  // Load autoprefixer if available; skip instead of crashing if absent
-  // eslint-disable-next-line import/no-extraneous-dependencies
-  plugins.push(require('autoprefixer'));
+  require.resolve('autoprefixer');
+  plugins['autoprefixer'] = {};
 } catch (e) {
   console.warn('autoprefixer not installed; skipping vendor prefixing.');
 }
