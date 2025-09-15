@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
-import CryptoJS from 'crypto-js';
+import * as CryptoJS from 'crypto-js';
 import { PRODUCTS } from './constants';
 import { safeTrackEvent } from './analytics';
 
