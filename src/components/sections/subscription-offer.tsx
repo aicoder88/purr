@@ -61,7 +61,7 @@ export function SubscriptionOffer() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-[#FF3131]/5 via-[#FFFFF5] to-[#FF3131]/10">
+    <section className="py-16 bg-gradient-to-br from-[#FF3131]/5 via-[#FFFFF5] to-[#FF3131]/10 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
       <Container>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
