@@ -16,10 +16,32 @@ const PUBLIC_DIR = path.join(__dirname, '../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
 
+// Reduce memory footprint
+try {
+  sharp.cache(false);
+  // Limit concurrency to reduce peak memory usage
+  sharp.concurrency(2);
+} catch (_) {}
+
 // Create directories if they don't exist
 function ensureDirectoryExists(directory) {
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });
+  }
+}
+
+// Check if outputs are up to date relative to source
+function needsUpdate(src, outputs) {
+  try {
+    const srcStat = fs.statSync(src);
+    for (const out of outputs) {
+      if (!fs.existsSync(out)) return true;
+      const outStat = fs.statSync(out);
+      if (outStat.mtimeMs < srcStat.mtimeMs) return true;
+    }
+    return false;
+  } catch {
+    return true;
   }
 }
 
@@ -74,47 +96,40 @@ async function optimizeImage(filePath) {
     // Handle spaces in filenames by creating sanitized versions
     const sanitizedBaseName = baseName.replace(/\s+/g, '-');
     
-    // Create WebP version (both with original filename and sanitized filename)
     const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
     const sanitizedWebpOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.webp`);
-    
-    await sharp(filePath)
-      .resize(width, height)
-      .webp({ quality: QUALITY })
-      .toFile(webpOutputPath);
-      
-    // Create a sanitized copy if the filename has spaces
-    if (baseName !== sanitizedBaseName) {
-      await sharp(filePath)
-        .resize(width, height)
-        .webp({ quality: QUALITY })
-        .toFile(sanitizedWebpOutputPath);
-      console.log(`Created sanitized WebP version: ${sanitizedBaseName}.webp`);
-    }
-    
-    // Create AVIF version (higher quality for better appearance)
     const avifOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.avif`);
     const sanitizedAvifOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.avif`);
-    
-    await sharp(filePath)
-      .resize(width, height)
-      .avif({ quality: QUALITY })
-      .toFile(avifOutputPath);
-      
-    // Create a sanitized copy if the filename has spaces
+    const optimizedOriginalPath = path.join(OPTIMIZED_DIR, filename);
+
+    const outputs = [webpOutputPath, avifOutputPath, optimizedOriginalPath];
+    if (!needsUpdate(filePath, outputs)) {
+      // Up to date; no work needed
+      return {
+        original: filename,
+        webp: `${baseName}.webp`,
+        avif: `${baseName}.avif`,
+        width,
+        height,
+      };
+    }
+
+    // Create WebP
+    await sharp(filePath).resize(width, height).webp({ quality: QUALITY }).toFile(webpOutputPath);
     if (baseName !== sanitizedBaseName) {
-      await sharp(filePath)
-        .resize(width, height)
-        .avif({ quality: QUALITY })
-        .toFile(sanitizedAvifOutputPath);
+      await sharp(filePath).resize(width, height).webp({ quality: QUALITY }).toFile(sanitizedWebpOutputPath);
+      console.log(`Created sanitized WebP version: ${sanitizedBaseName}.webp`);
+    }
+
+    // Create AVIF
+    await sharp(filePath).resize(width, height).avif({ quality: QUALITY }).toFile(avifOutputPath);
+    if (baseName !== sanitizedBaseName) {
+      await sharp(filePath).resize(width, height).avif({ quality: QUALITY }).toFile(sanitizedAvifOutputPath);
       console.log(`Created sanitized AVIF version: ${sanitizedBaseName}.avif`);
     }
-    
-    // Create optimized version in original format with proper dimensions
-    const optimizedOriginalPath = path.join(OPTIMIZED_DIR, filename);
-    await sharp(filePath)
-      .resize(width, height)
-      .toFile(optimizedOriginalPath);
+
+    // Optimized original
+    await sharp(filePath).resize(width, height).toFile(optimizedOriginalPath);
     
     console.log(`Optimized: ${filename} → WebP, AVIF, and optimized original`);
     
@@ -141,47 +156,47 @@ async function processIcons() {
   const iconPath = path.join(PUBLIC_DIR, 'purrify-logo-icon.png');
   
   // Create favicon (16x16)
-  await sharp(iconPath)
-    .resize(16, 16)
-    .toFile(path.join(outputDir, 'favicon.png'));
+  const writeIcon = async (size, name) => {
+    const dest = path.join(outputDir, name);
+    const srcStat = fs.statSync(iconPath);
+    const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
+    if (needs) {
+      await sharp(iconPath).resize(size, size).toFile(dest);
+    }
+  };
     
   // Create small icon (32x32)
-  await sharp(iconPath)
-    .resize(32, 32)
-    .toFile(path.join(outputDir, 'icon-32.png'));
+  await writeIcon(16, 'favicon.png');
+  await writeIcon(32, 'icon-32.png');
     
   // Create medium icon (64x64)
-  await sharp(iconPath)
-    .resize(64, 64)
-    .toFile(path.join(outputDir, 'icon-64.png'));
+  await writeIcon(64, 'icon-64.png');
     
   // Create large icon (128x128)
-  await sharp(iconPath)
-    .resize(128, 128)
-    .toFile(path.join(outputDir, 'icon-128.png'));
+  await writeIcon(128, 'icon-128.png');
     
   // Create apple touch icon (180x180)
-  await sharp(iconPath)
-    .resize(180, 180)
-    .toFile(path.join(outputDir, 'apple-touch-icon.png'));
+  await writeIcon(180, 'apple-touch-icon.png');
   
   // Optimize text logo
   const textPath = path.join(PUBLIC_DIR, 'purrify-logo-text.png');
   
   // Create small text logo (120x40)
-  await sharp(textPath)
-    .resize(120, 40)
-    .toFile(path.join(outputDir, 'logo-text-120.png'));
+  const writeTextLogo = async (w, h, name) => {
+    const dest = path.join(outputDir, name);
+    const srcStat = fs.statSync(textPath);
+    const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
+    if (needs) {
+      await sharp(textPath).resize(w, h).toFile(dest);
+    }
+  };
     
   // Create medium text logo (180x60)
-  await sharp(textPath)
-    .resize(180, 60)
-    .toFile(path.join(outputDir, 'logo-text-180.png'));
+  await writeTextLogo(120, 40, 'logo-text-120.png');
+  await writeTextLogo(180, 60, 'logo-text-180.png');
     
   // Create large text logo (240x80)
-  await sharp(textPath)
-    .resize(240, 80)
-    .toFile(path.join(outputDir, 'logo-text-240.png'));
+  await writeTextLogo(240, 80, 'logo-text-240.png');
 }
 
 // Main function to optimize all images
@@ -207,11 +222,11 @@ async function optimizeAllImages() {
     
     // Process each image and collect dimension data
     const imageDimensions = {};
-    const optimizationPromises = imageFiles.map(async (filePath) => {
+    for (const filePath of imageFiles) {
       // Skip purrify-logo.png as it's causing issues
       if (path.basename(filePath) === 'purrify-logo.png') {
         console.log(`Skipping problematic file: ${filePath}`);
-        return;
+        continue;
       }
       
       const result = await optimizeImage(filePath);
@@ -233,12 +248,12 @@ async function optimizeAllImages() {
         
         // Move original to backup directory
         const backupPath = path.join(ORIGINAL_IMAGES_DIR, path.basename(filePath));
-        fs.copyFileSync(filePath, backupPath);
+        if (!fs.existsSync(backupPath)) {
+          fs.copyFileSync(filePath, backupPath);
+        }
       }
-    });
-    
-    await Promise.all(optimizationPromises);
-    
+    }
+
     // Write image dimensions to a JSON file for reference
     fs.writeFileSync(
       path.join(PUBLIC_DIR, 'image-dimensions.json'),

@@ -18,35 +18,15 @@ function ensureDirectoryExists(directory) {
 // Main function to optimize all images
 async function optimizeAllImages() {
   try {
+    // Skip entirely on CI/Vercel to avoid extra work and FS churn
+    if (process.env.VERCEL || process.env.CI) {
+      console.log('CI/Vercel detected: skipping optimize-all-images.');
+      return;
+    }
+
     // Ensure directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
-    
-    console.log('🔍 Finding all images in public directory...');
-    
-    // Find all images in the public directory
-    const imageFiles = glob.sync(`${PUBLIC_DIR}/**/*.{png,jpg,jpeg,gif,webp}`, {
-      ignore: [
-        `${PUBLIC_DIR}/optimized/**`,
-        `${PUBLIC_DIR}/original-images/**`
-      ]
-    });
-    
-    console.log(`Found ${imageFiles.length} images to process`);
-    
-    // Copy all images to the public root for optimization
-    for (const filePath of imageFiles) {
-      if (filePath.includes('/images/') || !filePath.includes(PUBLIC_DIR)) {
-        const filename = path.basename(filePath);
-        const destPath = path.join(PUBLIC_DIR, filename);
-        
-        // Skip if the file already exists in the root
-        if (!fs.existsSync(destPath)) {
-          console.log(`Copying ${filePath} to ${destPath}`);
-          fs.copyFileSync(filePath, destPath);
-        }
-      }
-    }
     
     // Run the image optimization script
     console.log('🖼️ Optimizing all images...');
