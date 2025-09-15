@@ -1,6 +1,4 @@
-import { getServerSideSitemap } from 'next-sitemap';
-
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = async ({ res }) => {
   // Fetch data from external API
   const response = await fetch('https://purrify.ca/api/blog-posts');
   const posts = await response.json();
@@ -38,7 +36,22 @@ export const getServerSideProps = async (ctx) => {
   // Combine all fields
   const allFields = [...fields, ...productFields];
 
-  return getServerSideSitemap(ctx, allFields);
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    allFields.map((f) => (
+      `  <url>\n` +
+      `    <loc>${f.loc}</loc>\n` +
+      (f.lastmod ? `    <lastmod>${f.lastmod}</lastmod>\n` : '') +
+      (f.changefreq ? `    <changefreq>${f.changefreq}</changefreq>\n` : '') +
+      (f.priority != null ? `    <priority>${f.priority}</priority>\n` : '') +
+      `  </url>`
+    )).join('\n') +
+    `\n</urlset>`;
+
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(xml);
+  res.end();
+  return { props: {} };
 };
 
 // Default export to prevent next.js errors
