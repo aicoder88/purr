@@ -3,6 +3,7 @@ name: Vercel Deploy Monitor
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,4 +28,3 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
         run: |
           bash .github/scripts/wait-for-vercel.sh
-
