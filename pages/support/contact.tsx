@@ -52,10 +52,10 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone Support",
-      value: "+1 514 961 9386",
+      value: "+1 250 432 9352",
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
-      action: "tel:+15149619386"
+      action: "tel:+12504329352"
     }
     // Live chat temporarily disabled
     /*
@@ -468,13 +468,14 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Purrify Canada</p>
-                      <p className="text-gray-600 dark:text-gray-300">Montreal, Quebec</p>
+                      <p className="text-gray-600 dark:text-gray-300">109-17680 Rue Charles</p>
+                      <p className="text-gray-600 dark:text-gray-300">Mirabel, QC J7J 0T6</p>
                       <p className="text-gray-600 dark:text-gray-300">Canada</p>
                     </div>
                   </div>
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
-                      We ship across Canada and offer local pickup in the Montreal area.
+                      We ship across Canada and offer local pickup in the Mirabel area.
                     </p>
                   </div>
                 </div>
