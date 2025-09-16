@@ -15,6 +15,14 @@ function generateLatestBlogPosts(): BlogPost[] {
   
   return [
     {
+      title: "Best Multi-Cat Litter Deodorizer: Ultimate Odor Control Guide 2024",
+      excerpt: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
+      author: "Multi-Cat Specialist Team",
+      date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
+      image: "/optimized/80g.webp",
+      link: "/blog/multi-cat-litter-deodorizer-guide"
+    },
+    {
       title: "The Complete Guide to Cat Litter Deodorizers: How to Use Them Effectively",
       excerpt: "Master the art of using cat litter deodorizers with our comprehensive guide. Learn proper application techniques, timing, and maintenance tips for maximum odor control.",
       author: "Dr. Sarah Mitchell",
