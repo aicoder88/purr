@@ -190,7 +190,7 @@ export default function Reviews() {
             </div>
 
             {/* Reviews Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 cv-auto cis-960">
               {reviews.map((review) => (
                 <div key={review.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
                   {/* Header */}
@@ -252,7 +252,7 @@ export default function Reviews() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-16">
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-16 cv-auto cis-480">
               <div className="text-center">
                 <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
                 <div className="grid md:grid-cols-3 gap-6 text-blue-800 dark:text-blue-200">
@@ -276,7 +276,7 @@ export default function Reviews() {
             </div>
 
             {/* Call to Action */}
-            <div className="text-center">
+            <div className="text-center cv-auto cis-480">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Join 1,000+ Happy Cat Owners
@@ -303,7 +303,7 @@ export default function Reviews() {
             </div>
 
             {/* Related Links */}
-            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
               <div className="grid md:grid-cols-4 gap-4">
                 <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">

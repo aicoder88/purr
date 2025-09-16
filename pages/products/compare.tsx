@@ -142,7 +142,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* Product Comparison Cards */}
-        <section className="py-16">
+        <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {products.map((product) => (
@@ -243,7 +243,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* Feature Comparison Table */}
-        <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
+        <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
@@ -302,7 +302,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* Usage Calculator */}
-        <section className="py-16">
+        <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
@@ -353,7 +353,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] cv-auto cis-720">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
@@ -381,7 +381,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16">
+        <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">

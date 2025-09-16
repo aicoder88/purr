@@ -123,7 +123,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
               <p className="text-gray-600 dark:text-gray-300">No blog posts found. Check back soon!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cv-auto cis-960">
               {blogPosts.map((post, index) => (
                 <div
                   key={index}

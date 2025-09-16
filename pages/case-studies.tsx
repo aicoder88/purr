@@ -225,7 +225,7 @@ export default function CaseStudies() {
             </div>
 
             {/* Case Studies */}
-            <div className="space-y-16">
+            <div className="space-y-16 cv-auto cis-960">
               {caseStudies.map((study, index) => (
                 <div key={study.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-lg">
                   {/* Header */}
@@ -358,7 +358,7 @@ export default function CaseStudies() {
             </div>
 
             {/* Call to Action */}
-            <div className="mt-16 text-center">
+            <div className="mt-16 text-center cv-auto cis-480">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Ready to Write Your Own Success Story?
@@ -386,7 +386,7 @@ export default function CaseStudies() {
             </div>
 
             {/* Related Content */}
-            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">

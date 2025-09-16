@@ -389,7 +389,7 @@ export default function StandardSizePage() {
         </section>
 
         {/* Value Proposition Section */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
@@ -435,7 +435,7 @@ export default function StandardSizePage() {
         </section>
 
         {/* Customer Testimonials */}
-        <section className="py-16">
+        <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
@@ -468,7 +468,7 @@ export default function StandardSizePage() {
         </section>
 
         {/* Size Comparison */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
@@ -512,7 +512,7 @@ export default function StandardSizePage() {
         </section>
 
         {/* Back to Products */}
-        <section className="py-8">
+        <section className="py-8 cv-auto cis-480">
           <Container>
             <div className="text-center">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
