@@ -116,6 +116,7 @@ export default function FamilyPackPage() {
                     alt="Purrify 120g Family Pack"
                     width={400}
                     height={400}
+                    sizes="(max-width: 1024px) 100vw, 400px"
                     className="w-full h-auto object-contain"
                   />
                   <div className="absolute top-4 right-4 bg-[#03E46A] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">

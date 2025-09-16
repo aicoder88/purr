@@ -280,6 +280,7 @@ export default function PurrifyVsArmHammer() {
                 className="w-full h-64 md:h-96 object-contain rounded-2xl shadow-xl bg-gray-50 dark:bg-gray-900"
                 width={800}
                 height={400}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 800px"
                 loading="lazy"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">

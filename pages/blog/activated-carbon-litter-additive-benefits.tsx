@@ -225,6 +225,7 @@ export default function ActivatedCarbonBenefits() {
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
                 width={1200}
                 height={384}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Microscopic view of activated carbon's porous structure that traps odor molecules

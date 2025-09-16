@@ -147,6 +147,46 @@ const nextConfig = {
   
   // No trailing slash for consistent URLs
   trailingSlash: false,
+
+  // Add redirects to fix broken URLs and canonicalization
+  async redirects() {
+    return [
+      // Redirect old blog URLs that might be broken
+      {
+        source: '/blog/purrify-vs-arm-hammer',
+        destination: '/blog/activated-carbon-vs-baking-soda-comparison',
+        permanent: true,
+      },
+      // Redirect any URLs with double slashes
+      {
+        source: '//(.*)',
+        destination: '/$1',
+        permanent: true,
+      },
+      // Redirect old product URLs
+      {
+        source: '/products/purrify-20g',
+        destination: '/products/trial-size',
+        permanent: true,
+      },
+      {
+        source: '/products/purrify-60g',
+        destination: '/products/medium-size',
+        permanent: true,
+      },
+      {
+        source: '/products/purrify-120g',
+        destination: '/products/large-size',
+        permanent: true,
+      },
+      // Redirect old demo URLs
+      {
+        source: '/demo/:path*',
+        destination: '/',
+        permanent: false,
+      },
+    ];
+  },
   
   // Optimize asset loading - don't use assetPrefix as it can cause issues
   assetPrefix: '',

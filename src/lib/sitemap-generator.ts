@@ -81,10 +81,20 @@ class SitemapGenerator {
         changefreq: 'daily',
         priority: 1.0
       },
-      
-      // Product pages
+
+      // Product pages (using current canonical URLs only)
       {
         loc: '/products/trial-size',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        loc: '/products/medium-size',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        loc: '/products/large-size',
         changefreq: 'weekly',
         priority: 0.9
       },
@@ -157,26 +167,14 @@ class SitemapGenerator {
 
   // Generate dynamic pages (products, blog posts, etc.)
   generateDynamicPages(): void {
-    // Add product pages
-    const products = [
-      { id: 'purrify-17g', priority: 0.9 },
-      { id: 'purrify-150g', priority: 0.8 },
-      { id: 'purrify-300g', priority: 0.8 }
-    ];
+    // Skip old product URLs - they're now handled in static pages with proper canonical URLs
 
-    products.forEach(product => {
-      this.addUrl({
-        loc: `/products/${product.id}`,
-        changefreq: 'weekly',
-        priority: product.priority
-      });
-    });
-
-    // Add blog posts (example - would be dynamic in real implementation)
+    // Add current blog posts (canonical URLs only)
     const blogPosts = [
-      { slug: 'ultimate-cat-litter-guide', date: '2024-01-15' },
-      { slug: 'odor-control-science', date: '2024-01-10' },
-      { slug: 'cat-health-tips', date: '2024-01-05' }
+      { slug: 'activated-carbon-litter-additive-benefits', date: '2024-01-15' },
+      { slug: 'how-to-use-cat-litter-deodorizer', date: '2024-01-10' },
+      { slug: 'best-litter-odor-remover-small-apartments', date: '2024-01-08' },
+      { slug: 'safe-for-kittens', date: '2024-01-05' }
     ];
 
     blogPosts.forEach(post => {
