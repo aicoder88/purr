@@ -78,7 +78,7 @@ export const en = {
     },
     catFriendly: {
       title: "Cat-Friendly",
-      description: "Designed with your cat's well-being in mind, it's gentle, and completely pet-friendly."
+      description: "Designed with cats in mind and made without added fragrances or dyes."
     },
     longLastingFreshness: {
       title: "Long-Lasting Freshness",
@@ -295,7 +295,7 @@ export const en = {
   
   // SEO
   seo: {
-    keywords: "cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies, cat video",
+    keywords: "cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies, cat video",
     openGraph: {
       title: "Purrify - Activated Carbon Cat Litter Additive",
       description: "Activated carbon cat litter additive that eliminates odors at the source."
@@ -367,8 +367,8 @@ export const en = {
           answer: "Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds, providing superior odor control compared to traditional litter alone."
         },
         {
-          question: "Is Purrify safe for cats and humans?",
-          answer: "Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon."
+          question: "Can Purrify be used around cats and people?",
+          answer: "Purrify uses the same type of activated carbon commonly found in household water and air filtration. It contains no added fragrances or dyes."
         },
         {
           question: "How much Purrify should I use?",
@@ -417,7 +417,7 @@ export const en = {
     },
     natural: {
       title: "100% Natural",
-      description: "Cat and environmentally friendly"
+      description: "No added fragrances; coconut shell activated carbon"
     },
     universalFit: {
       title: "Universal Fit",
@@ -556,8 +556,8 @@ export const en = {
     },
     premiumQuality: {
       title: "Premium Quality",
-      description: "Food-grade activated carbon, lab tested",
-      highlight: "Certified Safe"
+      description: "Filtration-grade activated carbon used in water and air filters",
+      highlight: "Fragrance-Free"
     }
   },
 
@@ -664,8 +664,8 @@ export const en = {
         answer: "Standard shipping takes 3-5 business days within Canada. We also offer expedited shipping options."
       },
       {
-        question: "Is Purrify safe for my cat?", 
-        answer: "Yes! Purrify is made with 100% natural activated carbon and is completely safe for cats and other pets."
+        question: "Can I use Purrify around my cat?", 
+        answer: "Purrify uses the same type of activated carbon found in many home water filters and contains no added fragrances or dyes."
       },
       {
         question: "How do I use Purrify?",
@@ -730,7 +730,7 @@ export const en = {
     ],
     comparisonFeatures: [
       { feature: "Odor elimination" },
-      { feature: "Safe for cats" },
+      { feature: "Fragrance-free" },
       { feature: "Works with all litters" },
       { feature: "Natural ingredients" },
       { feature: "Money-back guarantee" }
@@ -821,10 +821,10 @@ export const en = {
     {
       id: 2,
       category: "product",
-      question: "Is Purrify safe for cats and humans?",
-      answer: "Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon.",
+      question: "Can Purrify be used around cats and people?",
+      answer: "Purrify uses the same type of activated carbon commonly used in household water filters and air purifiers. It contains no added fragrances or dyes.",
       popular: true,
-      tags: ["safety", "non-toxic", "food-grade"]
+      tags: ["usage", "filtration-grade", "fragrance-free"]
     },
     {
       id: 3,
@@ -1025,7 +1025,7 @@ export const en = {
   homepage: {
     seo: {
       pageTitle: "Activated Carbon Cat Litter Additive",
-      keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, eco-friendly pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada",
+      keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, fragrance-free pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada",
       openGraphImageAlt: "Premium Cat Litter Odor Control Solution",
       videoAlt: "Purrify Cat Litter Additive Effectiveness Demonstration",
       videoDescription: "Purrify Cat Litter Additive in Action - Before and After Demonstration",

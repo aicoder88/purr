@@ -242,7 +242,7 @@ function getEmailTemplate(
             <li>✅ Works with ANY litter you currently use</li>
             <li>✅ Eliminates odors at the source (not just masking)</li>
             <li>✅ 100% natural activated carbon</li>
-            <li>✅ Safe for cats, kittens, and humans</li>
+            <li>✅ Fragrance-free; commonly used around cats and people</li>
             <li>✅ Money-back guarantee</li>
           </ul>
         </div>

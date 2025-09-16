@@ -71,12 +71,12 @@ export default function CaseStudies() {
         implementation: [
           "Used 2 teaspoons per litter box weekly",
           "Staggered application across different boxes",
-          "Educated children about the natural, safe formula",
+          "Educated children about the fragrance-free formula",
           "Tracked usage and effectiveness over 3 months"
         ]
       },
       results: {
-        description: "The family achieved consistent odor control across all litter areas while maintaining a safe environment for their children.",
+        description: "The family achieved consistent odor control across all litter areas while maintaining a comfortable environment for their children.",
         metrics: [
           { label: "Household Odor Control", value: "90%", timeframe: "2 weeks" },
           { label: "Cost Reduction", value: "35%", timeframe: "vs previous routine" },
@@ -84,7 +84,7 @@ export default function CaseStudies() {
           { label: "Family Satisfaction", value: "100%", timeframe: "ongoing" }
         ]
       },
-      quote: "As parents, we needed something that was both effective and safe around our kids. Purrify gave us peace of mind while actually solving our odor problem better than anything else we tried.",
+      quote: "As parents, we needed something that was both effective and comfortable to use around our kids. Purrify gave us peace of mind while actually solving our odor problem better than anything else we tried.",
       outcome: "The Johnson family has become brand advocates, sharing their success story with their veterinarian and local pet store."
     },
     {
@@ -116,7 +116,7 @@ export default function CaseStudies() {
         ]
       },
       results: {
-        description: "The senior cat showed no adverse reactions while achieving excellent odor control, giving Dr. Wong confidence in the product's safety and effectiveness.",
+        description: "The senior cat showed no adverse reactions while achieving excellent odor control, giving Dr. Wong confidence in the product's approach and effectiveness.",
         metrics: [
           { label: "Respiratory Health", value: "No reactions", timeframe: "60 days" },
           { label: "Odor Control", value: "85%", timeframe: "1 week" },
@@ -124,7 +124,7 @@ export default function CaseStudies() {
           { label: "Senior Cat Comfort", value: "Maintained", timeframe: "ongoing" }
         ]
       },
-      quote: "As a veterinarian, I'm very cautious about what I use with my senior cat. Purrify's natural activated carbon formula is exactly what I look for - effective, safe, and scientifically sound.",
+      quote: "As a veterinarian, I'm very cautious about what I use with my senior cat. Purrify's natural activated carbon formula is exactly what I look for — effective, fragrance-free, and scientifically grounded.",
       outcome: "Dr. Wong now recommends Purrify to clients with senior cats or pets with respiratory sensitivities."
     }
   ];

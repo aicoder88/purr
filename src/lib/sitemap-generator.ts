@@ -35,30 +35,37 @@ class SitemapGenerator {
 
   // Add a URL to the sitemap
   addUrl(url: SitemapUrl): void {
+    // Use canonical www domain
+    const canonicalBaseUrl = this.config.baseUrl.replace('https://purrify.ca', 'https://www.purrify.ca');
+
     const fullUrl = {
       ...url,
-      loc: url.loc.startsWith('http') ? url.loc : `${this.config.baseUrl}${url.loc}`,
+      loc: url.loc.startsWith('http') ? url.loc : `${canonicalBaseUrl}${url.loc}`,
       changefreq: url.changefreq || this.config.defaultChangefreq,
       priority: url.priority || this.config.defaultPriority,
       lastmod: url.lastmod || new Date().toISOString().split('T')[0]
     };
 
-    // Add bilingual alternates if enabled
+    // Add multilingual alternates if enabled - using domain-based i18n
     if (this.config.includeAlternates && !url.alternates) {
-      const path = url.loc.replace(this.config.baseUrl, '');
-      if (!path.startsWith('/fr/')) {
+      const path = url.loc.replace(canonicalBaseUrl, '').replace(this.config.baseUrl, '');
+      if (!path.startsWith('/fr/') && !path.startsWith('/zh/')) {
         fullUrl.alternates = [
           {
-            hreflang: 'en',
-            href: `${this.config.baseUrl}${path}`
+            hreflang: 'en-CA',
+            href: `https://www.purrify.ca${path}`
           },
           {
-            hreflang: 'fr',
-            href: `${this.config.baseUrl}/fr${path}`
+            hreflang: 'fr-CA',
+            href: `https://fr.purrify.ca${path}`
+          },
+          {
+            hreflang: 'zh-CN',
+            href: `https://zh.purrify.ca${path}`
           },
           {
             hreflang: 'x-default',
-            href: `${this.config.baseUrl}${path}`
+            href: `https://www.purrify.ca${path}`
           }
         ];
       }
@@ -89,12 +96,12 @@ class SitemapGenerator {
         priority: 0.9
       },
       {
-        loc: '/products/medium-size',
+        loc: '/products/standard',
         changefreq: 'weekly',
         priority: 0.9
       },
       {
-        loc: '/products/large-size',
+        loc: '/products/family-pack',
         changefreq: 'weekly',
         priority: 0.9
       },
@@ -174,7 +181,8 @@ class SitemapGenerator {
       { slug: 'activated-carbon-litter-additive-benefits', date: '2024-01-15' },
       { slug: 'how-to-use-cat-litter-deodorizer', date: '2024-01-10' },
       { slug: 'best-litter-odor-remover-small-apartments', date: '2024-01-08' },
-      { slug: 'safe-for-kittens', date: '2024-01-05' }
+      { slug: 'safe-for-kittens', date: '2024-01-05' },
+      { slug: 'activated-carbon-vs-baking-soda-comparison', date: '2024-01-15' }
     ];
 
     blogPosts.forEach(post => {
@@ -197,6 +205,16 @@ class SitemapGenerator {
       },
       {
         loc: '/fr/products/trial-size',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        loc: '/fr/products/standard',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        loc: '/fr/products/family-pack',
         changefreq: 'weekly',
         priority: 0.9
       },
@@ -312,29 +330,31 @@ class SitemapGenerator {
 
   // Generate robots.txt
   generateRobotsTxt(): string {
-    const baseUrl = this.config.baseUrl;
-    
+    // Use canonical domain with www for consistency
+    const canonicalBaseUrl = this.config.baseUrl.replace('https://purrify.ca', 'https://www.purrify.ca');
+
     return `User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: ${baseUrl}/sitemap.xml
+# Block private areas and API endpoints
+Disallow: /api/*
+Disallow: /admin/*
+Disallow: /_next/*
+Disallow: /static/*
+Disallow: /demo/*
 
-# Block admin and private areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /demo/
+# Allow specific SEO endpoints
+Allow: /api/og/*
 
-# Allow specific API endpoints for SEO
-Allow: /api/og/
+# Host (canonical domain)
+Host: ${canonicalBaseUrl}
 
-# Crawl delay (optional)
+# Sitemaps (using canonical domain)
+Sitemap: ${canonicalBaseUrl}/sitemap.xml
+Sitemap: ${canonicalBaseUrl}/server-sitemap.xml
+
+# Crawl delay for better server performance
 Crawl-delay: 1
-
-# Block specific bots if needed
-# User-agent: BadBot
-# Disallow: /
 `;
   }
 

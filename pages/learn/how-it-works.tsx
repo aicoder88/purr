@@ -36,9 +36,9 @@ export default function HowItWorksPage() {
     },
     {
       icon: Leaf,
-      title: "Natural & Safe",
-      description: "Made from coconut shells, our activated carbon is completely natural and safe for cats and humans.",
-      detail: "No chemicals, fragrances, or artificial additives - just pure activated carbon doing what nature intended."
+      title: "Natural & Fragrance-Free",
+      description: "Made from coconut shells, our activated carbon is the same type used in household water and air filters.",
+      detail: "No added fragrances or dyes — just pure activated carbon doing the work."
     }
   ];
 
@@ -72,8 +72,8 @@ export default function HowItWorksPage() {
       answer: "Purrify begins trapping odor molecules immediately upon contact. Most customers notice a significant reduction in odors within the first few hours of application."
     },
     {
-      question: "Is activated carbon safe if my cat ingests it?",
-      answer: "Yes, activated carbon is completely safe for cats. It's actually used in veterinary medicine to treat poisoning. However, Purrify is designed to stay in the litter, not be consumed."
+      question: "What if my cat ingests some activated carbon?",
+      answer: "Activated carbon used in household filtration is biologically inert. Purrify is designed to stay in the litter; monitor your cat as usual and consult your veterinarian if you have concerns."
     },
     {
       question: "How does this compare to baking soda?",

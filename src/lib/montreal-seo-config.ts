@@ -37,7 +37,7 @@ export const MONTREAL_SEO_CONFIG: MontrealSEOConfig = {
       "where to buy cat deodorizer montreal",
       "natural cat litter additive old port montreal",
       "cat litter smell solution montreal apartment",
-      "eco-friendly cat litter montreal pet stores",
+      "fragrance-free cat litter products montreal",
       "cat odor eliminator delivery montreal",
       
       // Neighborhood-specific
@@ -65,7 +65,7 @@ export const MONTREAL_SEO_CONFIG: MontrealSEOConfig = {
       "où acheter désodorisant chat montréal",
       "additif litière naturel vieux-port montréal",
       "solution odeur litière appartement montréal",
-      "désodorisant écologique chat magasins montréal",
+      "désodorisant sans parfum pour chat magasins montréal",
       "éliminer odeur chat livraison montréal",
       
       // Quebec-specific cultural terms
@@ -239,7 +239,7 @@ export const MONTREAL_GOOGLE_ADS_STRUCTURE = {
       ],
       descriptions: [
         "Natural activated carbon. Works with any litter. Made in Canada.",
-        "Eco-friendly odor elimination. Free trial available.",
+        "Fragrance-free odor elimination. Free trial available.",
         "Recommended by Montreal veterinarians. Fast delivery."
       ]
     }

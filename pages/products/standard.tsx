@@ -232,7 +232,7 @@ export default function StandardSizePage() {
                   {
                     "@type": "PropertyValue",
                     "name": "Safety",
-                    "value": "Pet and human safe, food-grade"
+                    "value": "Fragrance-free; uses filtration-grade activated carbon"
                   }
                 ],
                 "isAccessoryOrSparePartFor": {

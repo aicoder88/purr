@@ -123,7 +123,7 @@ const nextConfig = {
     // Specify domain-specific locales if needed
     domains: [
       {
-        domain: 'purrify.ca',
+        domain: 'www.purrify.ca',
         defaultLocale: 'en',
       },
       {
@@ -151,6 +151,39 @@ const nextConfig = {
   // Add redirects to fix broken URLs and canonicalization
   async redirects() {
     return [
+      // Force canonical www domain for all purrify.ca URLs (fix 307 redirects)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'purrify.ca',
+          },
+        ],
+        destination: 'https://www.purrify.ca/:path*',
+        permanent: true,
+        locale: false,
+      },
+      // Force HTTPS for http requests
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'header',
+            key: 'x-forwarded-proto',
+            value: 'http',
+          },
+        ],
+        destination: 'https://www.purrify.ca/:path*',
+        permanent: true,
+        locale: false,
+      },
+      // Redirect old blog URLs (legal compliance - remove competitor brand names)
+      {
+        source: '/blog/purrify-vs-arm-hammer',
+        destination: '/blog/activated-carbon-vs-baking-soda-comparison',
+        permanent: true,
+      },
       // Redirect any URLs with double slashes
       {
         source: '//(.*)',
@@ -190,6 +223,24 @@ const nextConfig = {
       {
         source: '/demo/:path*',
         destination: '/',
+        permanent: false,
+      },
+      // Redirect contact to support/contact
+      {
+        source: '/contact',
+        destination: '/support/contact',
+        permanent: true,
+      },
+      // Redirect customers to case-studies
+      {
+        source: '/customers',
+        destination: '/case-studies',
+        permanent: true,
+      },
+      // Create products index redirect
+      {
+        source: '/products',
+        destination: '/products/compare',
         permanent: false,
       },
     ];

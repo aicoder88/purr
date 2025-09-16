@@ -73,7 +73,7 @@ export const enStoryData = {
     {
       year: "2024",
       title: "Sustainability Focus",
-      description: "Launched eco-friendly packaging and carbon-neutral shipping, reinforcing our commitment to environmental responsibility.",
+      description: "Introduced recyclable-forward packaging and efficiency improvements in shipping.",
       icon: Leaf
     }
   ],
@@ -87,12 +87,12 @@ export const enStoryData = {
     {
       icon: Shield,
       title: "Safety & Quality",
-      description: "All products undergo rigorous testing to ensure they're safe for pets, families, and the environment."
+      description: "All products undergo quality checks and contain no added fragrances or dyes."
     },
     {
       icon: Leaf,
       title: "Environmental Responsibility",
-      description: "We're committed to sustainable practices and reducing our environmental footprint at every step."
+      description: "We continually evaluate packaging and operations to reduce waste where feasible."
     },
     {
       icon: Users,
@@ -145,9 +145,9 @@ export const enStoryData = {
       description: "Estimated litter box changes made better"
     },
     {
-      number: "50T",
-      label: "CO2 Offset",
-      description: "Through carbon-neutral shipping program"
+      number: "10k+",
+      label: "Orders Fulfilled",
+      description: "Across Canada and internationally"
     }
   ]
 };
@@ -188,7 +188,7 @@ export const frStoryData = {
     {
       year: "2024",
       title: "Focus sur la Durabilité",
-      description: "Lancement d'emballages écologiques et d'expédition neutre en carbone, renforçant notre engagement envers la responsabilité environnementale.",
+      description: "Introduction d'emballages davantage recyclables et d'améliorations d'efficience en expédition.",
       icon: Leaf
     }
   ],
@@ -202,12 +202,12 @@ export const frStoryData = {
     {
       icon: Shield,
       title: "Sécurité et Qualité",
-      description: "Tous les produits subissent des tests rigoureux pour s'assurer qu'ils sont sécuritaires pour les animaux, les familles et l'environnement."
+      description: "Tous les produits font l'objet de contrôles qualité et ne contiennent pas de parfums ni de colorants ajoutés."
     },
     {
       icon: Leaf,
       title: "Responsabilité Environnementale",
-      description: "Nous nous engageons à des pratiques durables et à réduire notre empreinte environnementale à chaque étape."
+      description: "Nous évaluons continuellement les emballages et les opérations pour réduire les déchets lorsque c'est possible."
     },
     {
       icon: Users,
@@ -260,9 +260,9 @@ export const frStoryData = {
       description: "Changements de bac à litière estimés rendus meilleurs"
     },
     {
-      number: "500T",
-      label: "CO2 Compensé",
-      description: "Grâce au programme d'expédition neutre en carbone"
+      number: "10k+",
+      label: "Commandes traitées",
+      description: "À travers le Canada et à l'international"
     }
   ]
 };

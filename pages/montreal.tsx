@@ -741,11 +741,11 @@ export default function Montreal() {
 
             <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-orange-900 dark:text-orange-100 mb-3">
-                {locale === 'fr' ? '🌿 Naturel et Sécuritaire' : '🌿 Natural & Safe | Family-Friendly Formula'}
+                {locale === 'fr' ? '🌿 Naturel & Sans Parfum' : '🌿 Natural & Fragrance-Free | Family-Friendly Formula'}
               </h3>
               <p className="text-orange-800 dark:text-orange-200">
-                Fragrance-free and non-toxic formula is safe for cats, kittens, and families. 
-                No synthetic chemicals - just pure activated carbon odor elimination.
+                Fragrance-free formula that uses the same type of activated carbon found in many water and air filters. 
+                No added fragrances or dyes — just activated carbon odor elimination.
               </p>
             </div>
           </div>
@@ -808,14 +808,14 @@ export default function Montreal() {
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {locale === 'fr'
-                  ? 'Purrify est-il sécuritaire pour les chats et les chatons?'
-                  : 'Is Purrify safe for cats and kittens?'
+                  ? 'Peut-on utiliser Purrify près des chats et des chatons?'
+                  : 'Can Purrify be used around cats and kittens?'
                 }
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
-                  ? 'Oui! Purrify est complètement sécuritaire pour les chats, chatons et familles. Notre formule naturelle sans parfum ne contient aucun produit chimique synthétique - seulement du charbon activé pur pour l\'élimination des odeurs.'
-                  : 'Yes! Purrify is completely safe for cats, kittens, and families. Our natural, fragrance-free formula contains no synthetic chemicals - just pure activated carbon for odor elimination.'
+                  ? 'Purrify utilise le même type de charbon activé qu\'on trouve couramment dans les filtres à eau et à air domestiques et ne contient aucun parfum ni colorant ajouté.'
+                  : 'Purrify uses the same type of activated carbon commonly found in household water and air filters and contains no added fragrances or dyes.'
                 }
               </p>
             </div>
@@ -882,8 +882,8 @@ export default function Montreal() {
               </div>
               <p className="text-gray-700 dark:text-gray-300 italic mb-3">
                 {locale === 'fr'
-                  ? '"En tant que technicienne vétérinaire à Montréal, je recommande Purrify à tous mes clients. C\'est naturel, efficace et sécuritaire pour les chats de tous âges. Mon propre chat Nouille approuve!"'
-                  : '"As a veterinary technician in Montreal, I recommend Purrify to all my clients. It\'s natural, effective, and safe for cats of all ages. My own cat Noodle approves!"'
+                  ? '"En tant que technicienne vétérinaire à Montréal, je recommande Purrify à mes clients. C\'est naturel, efficace et sans parfum — mon propre chat Nouille approuve!"'
+                  : '"As a veterinary technician in Montreal, I recommend Purrify to my clients. It\'s natural, effective, and fragrance-free — my own cat Noodle approves!"'
                 }
               </p>
               <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
@@ -1139,8 +1139,8 @@ export default function Montreal() {
           <div className="max-w-4xl mx-auto text-gray-700 dark:text-gray-200 dark:text-gray-300 space-y-4">
             <p className="text-lg">
               {locale === 'fr'
-                ? 'Purrify révolutionne le contrôle des odeurs de litière pour chat à Montréal avec son charbon activé premium fabriqué au Canada. Nos 15 magasins partenaires à travers la région métropolitaine offrent des solutions naturelles et sécuritaires pour garder votre maison fraîche pendant les longs hivers québécois.'
-                : 'Purrify is revolutionizing cat litter odor control in Montreal with premium activated carbon made in Canada. Our 15 partner stores across the metropolitan area offer natural, safe solutions to keep your home fresh during Quebec\'s long winters.'
+                ? 'Purrify révolutionne le contrôle des odeurs de litière pour chat à Montréal avec son charbon activé premium fabriqué au Canada. Nos 15 magasins partenaires à travers la région métropolitaine offrent des solutions naturelles et sans parfum pour garder votre maison fraîche pendant les longs hivers québécois.'
+                : 'Purrify is revolutionizing cat litter odor control in Montreal with premium activated carbon made in Canada. Our 15 partner stores across the metropolitan area offer natural, fragrance-free solutions to help keep your home fresh during Quebec\'s long winters.'
               }
             </p>
             <p>

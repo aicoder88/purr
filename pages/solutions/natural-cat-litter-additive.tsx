@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function naturalcatlitteradditivePage() {
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify Activated Carbon';
-  const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon thats safe for cats and humans. Works with any litter brand.';
+  const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';
   
   return (
     <>
@@ -30,7 +30,7 @@ export default function naturalcatlitteradditivePage() {
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
               <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
-              <p className="text-lg mb-6">100% natural activated carbon thats safe for cats and humans</p>
+              <p className="text-lg mb-6">100% natural activated carbon with no added fragrances or dyes</p>
               
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="text-center">

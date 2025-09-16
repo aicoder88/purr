@@ -32,8 +32,8 @@ export default function SciencePage() {
     },
     {
       icon: Shield,
-      title: "Safe & Natural",
-      description: "Made from coconut shells through controlled heating, our activated carbon is completely safe for cats and humans while being environmentally friendly."
+      title: "Fragrance-Free & Natural",
+      description: "Made from coconut shells through controlled heating, our activated carbon is the same type used in household water and air filters, with no added fragrances or dyes."
     }
   ];
 
@@ -116,7 +116,7 @@ export default function SciencePage() {
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-8 leading-relaxed">
                 Discover how activated carbon technology eliminates odors at the molecular level, 
-                providing superior odor control that's both safe and effective for your feline friends.
+                providing superior odor control that's both fragrance-free and effective for your feline friends.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                 <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">

@@ -119,7 +119,7 @@ const SAMPLE_REVIEWS: Review[] = [
     userName: 'Robert H.',
     rating: 5,
     title: 'Veterinarian approved!',
-    content: 'As a vet, I\'m always cautious about new products. Purrify is safe, effective, and I now recommend it to all my clients with odor concerns.',
+    content: 'As a vet, I\'m always cautious about new products. Purrify\'s fragrance-free, activated carbon approach is effective, and I now recommend it to clients seeking an odor-control option.',
     date: '2024-01-03',
     verified: true,
     helpful: 31,

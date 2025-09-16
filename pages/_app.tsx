@@ -95,7 +95,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             additionalMetaTags={[
               {
                 name: 'keywords',
-                content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, eco-friendly cat litter, natural odor control, cat care, pet supplies',
+                content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies',
               },
               {
                 name: 'author',

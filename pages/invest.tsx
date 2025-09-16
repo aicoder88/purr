@@ -373,8 +373,8 @@ export default function InvestorRelations() {
                         <div className="flex items-start">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
                           <div>
-                            <span className="font-medium text-gray-800 dark:text-white">100% Natural & Safe</span>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">Food-grade coconut shell carbon, completely pet-safe</p>
+                            <span className="font-medium text-gray-800 dark:text-white">100% Natural & Fragrance-Free</span>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Filtration-grade coconut shell carbon; no added fragrances or dyes</p>
                           </div>
                         </div>
                         <div className="flex items-start">

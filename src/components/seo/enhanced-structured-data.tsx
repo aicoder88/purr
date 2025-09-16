@@ -209,10 +209,10 @@ export function EnhancedStructuredData() {
       },
       {
         '@type': 'Question',
-        name: 'Is Purrify safe for my cat?',
+        name: 'Can I use Purrify around my cat?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, Purrify is completely safe for cats. It\'s made from natural activated carbon derived from coconut shells with no harmful chemicals or fragrances.'
+          text: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration and contains no added fragrances or dyes.'
         }
       },
       {
@@ -241,10 +241,10 @@ export function EnhancedStructuredData() {
       },
       {
         '@type': 'Question',
-        name: 'Is Purrify eco-friendly?',
+        name: 'What is Purrify made of?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, Purrify is made from natural activated carbon derived from sustainable coconut shells and contains no harmful chemicals or artificial fragrances.'
+          text: 'Activated carbon derived from coconut shells, with no added fragrances or dyes.'
         }
       }
     ]

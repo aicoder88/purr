@@ -477,7 +477,7 @@ export default function BestForSmallApartments() {
                 Finding the <strong>best cat litter odor remover for small apartments</strong> requires 
                 balancing effectiveness, space efficiency, and neighbor consideration. Activated carbon 
                 litter additives like Purrify offer the perfect solution - maximum odor control in 
-                minimal space, with natural ingredients that are safe for enclosed environments.
+                minimal space, using fragrance-free ingredients suitable for enclosed environments.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200">

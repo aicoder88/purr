@@ -38,12 +38,12 @@ export default function Reviews() {
       location: "Vancouver, BC",
       rating: 5,
       date: "March 2024",
-      title: "Safe for my sensitive kitten",
-      review: "My 4-month-old kitten has respiratory sensitivities, so I was worried about using any additives. Purrify is completely fragrance-free and natural - no reactions at all. It's gentle but incredibly effective. I wish I had found this sooner!",
+      title: "Worked well for my sensitive kitten",
+      review: "My 4-month-old kitten has respiratory sensitivities, so I was cautious about additives. Purrify is fragrance-free — no issues noticed after a gradual intro. Gentle approach and very effective.",
       verified: true,
       productUsed: "17g Trial Size",
       catsOwned: 1,
-      useCase: "Kitten safety"
+      useCase: "Use with kittens"
     },
     {
       id: 4,
@@ -64,12 +64,12 @@ export default function Reviews() {
       location: "Ottawa, ON",
       rating: 5,
       date: "January 2024",
-      title: "Eco-friendly and effective",
-      review: "Love that it's made from coconut shells and completely natural. As someone who tries to buy sustainable products, Purrify checks all the boxes - effective, eco-friendly, and Canadian-made. My cats don't mind the change at all.",
+      title: "Simple and effective",
+      review: "Made from coconut-shell activated carbon and completely fragrance-free. Works really well and I like how straightforward it is. My cats didn’t mind the change at all.",
       verified: true,
       productUsed: "60g Regular Size",
       catsOwned: 2,
-      useCase: "Eco-conscious choice"
+      useCase: "Fragrance-free choice"
     },
     {
       id: 6,
@@ -316,7 +316,7 @@ export default function Reviews() {
                 </Link>
                 <Link href="/blog/safe-for-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Safety Information</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Safe for cats and kittens</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Using around cats and kittens</p>
                 </Link>
                 <Link href="/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Store Locations</h4>

@@ -56,10 +56,10 @@ const FAQPage: NextPage = () => {
     {
       id: 2,
       category: 'product',
-      question: 'Is Purrify safe for cats and humans?',
-      answer: 'Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic. It has been tested extensively and is made from natural materials. Many water filters and air purifiers use the same type of activated carbon.',
+      question: 'Can Purrify be used around cats and people?',
+      answer: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration. It contains no added fragrances or dyes.',
       popular: true,
-      tags: ['safety', 'non-toxic', 'food-grade']
+      tags: ['usage', 'filtration-grade', 'fragrance-free']
     },
     {
       id: 3,

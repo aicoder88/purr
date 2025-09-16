@@ -18,9 +18,9 @@ export function FAQ() {
         "For best results, sprinkle Purrify on top of your cat's litter each time you change or add fresh litter. A thin layer is all you need for continuous odor control.",
     },
     {
-      question: "Is Purrify safe for my cat?",
+      question: "Can I use Purrify around my cat?",
       answer:
-        "Purrify is made from the same natural activated coconut carbon used worldwide in indoor air and drinking water filtration systems! It contains no harmful chemicals or fragrances that could irritate your cat or affect their litter box habits.",
+        "Purrify uses the same type of coconut-shell activated carbon used widely in home water and air filtration. It contains no added fragrances or dyes.",
     },
     {
       question: "How long does one container of Purrify last?",

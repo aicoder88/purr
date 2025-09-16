@@ -24,7 +24,7 @@ const CatLitterGuidePage: NextPage = () => {
     {
       name: "Clay Litter",
       pros: ["Affordable", "Good absorption", "Easy to find"],
-      cons: ["Dusty", "Heavy", "Not eco-friendly", "Poor odor control"],
+      cons: ["Dusty", "Heavy", "Not biodegradable", "Poor odor control"],
       rating: 2
     },
     {
@@ -41,13 +41,13 @@ const CatLitterGuidePage: NextPage = () => {
     },
     {
       name: "Natural/Biodegradable",
-      pros: ["Eco-friendly", "Low dust", "Flushable options"],
+      pros: ["Plant- or paper-based", "Low dust", "Flushable options"],
       cons: ["More expensive", "Variable quality", "May need frequent changes"],
       rating: 4
     },
     {
       name: "Any Litter + Purrify",
-      pros: ["Superior odor elimination", "Extends litter life", "Works with any type", "Eco-friendly additive"],
+      pros: ["Superior odor elimination", "Extends litter life", "Works with any type", "Fragrance-free additive"],
       cons: ["Additional cost (but saves money overall)"],
       rating: 5
     }

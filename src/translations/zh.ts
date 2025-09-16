@@ -82,7 +82,7 @@ export const zh = {
     },
     catFriendly: {
       title: "对猫咪友好",
-      description: "采用天然成分制成，对您的猫咪完全安全。"
+      description: "采用天然成分制成，无添加香精或染料。"
     },
     longLastingFreshness: {
       title: "持久清新",
@@ -122,7 +122,7 @@ export const zh = {
     },
     natural: {
       title: "100%天然",
-      description: "采用天然活性炭，对宠物和家庭安全。"
+      description: "采用天然活性炭；不添加香精或染料。"
     },
     universalFit: {
       title: "通用兼容",
@@ -334,8 +334,8 @@ export const zh = {
     },
     premiumQuality: {
       title: "优质产品",
-      description: "食品级活性炭，实验室测试",
-      highlight: "安全认证"
+      description: "滤材级活性炭，常用于水/空气过滤",
+      highlight: "无添加香精"
     }
   },
 
@@ -367,7 +367,7 @@ export const zh = {
     keywords: "猫砂添加剂, 异味控制, 活性炭, 宠物护理, 猫咪产品",
     openGraph: {
       title: "Purrify - 活性炭猫砂添加剂",
-      description: "使用Purrify活性炭添加剂消除猫砂盒异味。天然、安全、有效。"
+      description: "使用Purrify活性炭添加剂消除猫砂盒异味。天然、无香、有效。"
     },
     metaDescription: "Purrify是一款优质的活性炭猫砂添加剂，可在分子水平上消除异味。采用天然椰壳炭制成，提供7天清新效果，适用于所有类型的猫砂。深受加拿大 1,000+ 猫主人的信赖。"
   },
@@ -436,8 +436,8 @@ export const zh = {
           answer: "Purrify是一种猫砂活性炭添加剂，在分子水平上消除异味。活性炭拥有数百万个微孔，可以捕获和中和产生异味的化合物，相比传统猫砂提供更优异的异味控制效果。"
         },
         {
-          question: "Purrify对猫和人类安全吗？",
-          answer: "是的，Purrify对猫和人类完全安全。我们的活性炭是食品级且无毒的。经过广泛测试，采用天然材料制成。许多净水器和空气净化器都使用相同类型的活性炭。"
+          question: "Purrify可以在猫和人周围使用吗？",
+          answer: "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭，不添加香精或染料。"
         },
         {
           question: "我应该使用多少Purrify？",
@@ -797,8 +797,8 @@ export const zh = {
         answer: "是的！我们的500g经济装为多猫家庭提供最佳价值。我们还为宠物店和兽医提供批发价。"
       },
       {
-        question: "如果我的猫意外摄入Purrify安全吗？",
-        answer: "绝对安全。活性炭对猫咪完全安全，甚至在兽医学中也有使用。不过，Purrify是设计用来与猫砂混合使用的。"
+        question: "如果我的猫不小心吃到一些怎么办？",
+        answer: "家用过滤中常见的活性炭属于惰性材料。Purrify设计为与猫砂混合使用；如少量摄入一般按常规观察即可，如摄入较多或有担忧请咨询兽医。"
       }
     ],
     businessHours: {
@@ -853,7 +853,7 @@ export const zh = {
           "延长猫砂寿命3-4倍",
           "完全消除异味",
           "适用于任何猫砂",
-          "环保配方"
+          "无香配方"
         ],
         bestFor: "寻求价值的单猫主人",
         cta: "选择小装"
@@ -1000,10 +1000,10 @@ export const zh = {
     {
       id: 2,
       category: "product", 
-      question: "Purrify对猫和人类安全吗？",
-      answer: "是的，Purrify完全安全。我们的活性炭是食品级且无毒的。它已经过广泛测试，由天然材料制成。",
+      question: "Purrify可以在猫和人周围使用吗？",
+      answer: "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭，不添加香精或染料。",
       popular: true,
-      tags: ["安全", "无毒"]
+      tags: ["使用", "滤材级", "无香"]
     }
   ],
 

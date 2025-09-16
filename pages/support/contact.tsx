@@ -84,8 +84,8 @@ export default function ContactPage() {
       answer: "Yes! Our 500g bulk size offers the best value for multi-cat households. We also have wholesale pricing available for pet stores and veterinarians."
     },
     {
-      question: "Is Purrify safe if my cat accidentally ingests it?",
-      answer: "Absolutely. Activated carbon is completely safe for cats and is actually used in veterinary medicine. However, Purrify is designed to stay mixed with the litter."
+      question: "What if my cat accidentally ingests some?",
+      answer: "Activated carbon used in household filtration is biologically inert. Purrify is designed to stay mixed with the litter; monitor as usual and contact your veterinarian with any concerns."
     }
   ];
 

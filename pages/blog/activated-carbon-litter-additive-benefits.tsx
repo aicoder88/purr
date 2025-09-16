@@ -277,7 +277,7 @@ export default function ActivatedCarbonBenefits() {
                   <ul className="text-green-800 dark:text-green-200 space-y-2">
                     <li>• Higher density of micropores</li>
                     <li>• Superior odor adsorption capacity</li>
-                    <li>• Renewable and sustainable source</li>
+                    <li>• Coconut shell source material</li>
                     <li>• Lower ash content</li>
                     <li>• Longer lasting effectiveness</li>
                   </ul>
@@ -327,7 +327,7 @@ export default function ActivatedCarbonBenefits() {
               <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
                 <li><strong>Improved Air Quality:</strong> Removes harmful volatile compounds from the air</li>
                 <li><strong>Reduced Allergens:</strong> Captures airborne particles that can trigger allergies</li>
-                <li><strong>Safer Environment:</strong> Non-toxic, chemical-free odor control</li>
+                <li><strong>No Added Fragrances:</strong> Fragrance- and dye-free odor control</li>
                 <li><strong>Respiratory Health:</strong> Cleaner air is better for both cats and humans</li>
               </ul>
 
@@ -348,8 +348,8 @@ export default function ActivatedCarbonBenefits() {
                 <h4 className="font-bold text-[#FF3131] mb-3">🏆 Why Choose Purrify?</h4>
                 <p className="text-gray-700 dark:text-gray-200">
                   Purrify's activated carbon litter additive is made from premium coconut shell carbon, 
-                  providing superior odor elimination that lasts up to 7 days. Our natural, fragrance-free 
-                  formula is safe for cats and humans while delivering professional-grade odor control.
+                  providing superior odor elimination that lasts up to 7 days. Our fragrance-free 
+                  formula uses the same type of activated carbon found in many water and air filters.
                 </p>
                 <Link href="/products" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
                   Shop Purrify Products →
@@ -382,8 +382,8 @@ export default function ActivatedCarbonBenefits() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Step-by-step guide to proper application</p>
                 </Link>
                 <Link href="/blog/safe-for-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Is Litter Deodorizer Safe for Kittens?</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Safety information for young cats</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Using with Kittens</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Guidance for households with young cats</p>
                 </Link>
                 <Link href="/blog/purrify-vs-arm-hammer" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Purrify vs Arm & Hammer</h4>

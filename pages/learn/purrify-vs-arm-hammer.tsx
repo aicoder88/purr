@@ -158,7 +158,7 @@ export default function PurrifyVsArmHammer() {
                   <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>• <strong>Activated Carbon:</strong> Physically traps odor molecules in microscopic pores</li>
-                    <li>• <strong>Natural Source:</strong> Made from coconut shells or sustainable wood</li>
+                    <li>• <strong>Source Material:</strong> Made from coconut shells or wood</li>
                     <li>• <strong>No Additives:</strong> Pure carbon with no synthetic chemicals</li>
                     <li>• <strong>Mechanism:</strong> Adsorption removes odors permanently</li>
                   </ul>
@@ -293,13 +293,13 @@ export default function PurrifyVsArmHammer() {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                  <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Safety Profile</h4>
+                  <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Profile</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>✓ <strong>Fragrance-free:</strong> No respiratory irritation</li>
-                    <li>✓ <strong>Non-toxic:</strong> Safe if ingested during grooming</li>
-                    <li>✓ <strong>Kitten-safe:</strong> Suitable from 8 weeks old</li>
+                    <li>✓ <strong>Biologically inert:</strong> Activated carbon used widely in filtration</li>
+                    <li>✓ <strong>Young cats:</strong> Often introduced gradually from ~8+ weeks</li>
                     <li>✓ <strong>Hypoallergenic:</strong> Won't trigger sensitivities</li>
-                    <li>✓ <strong>Dust-free:</strong> No respiratory concerns</li>
+                    <li>✓ <strong>Low dust:</strong> Minimal airborne particles</li>
                   </ul>
                 </div>
 
@@ -309,7 +309,7 @@ export default function PurrifyVsArmHammer() {
                     <li>⚠ <strong>Synthetic fragrances:</strong> May irritate sensitive cats</li>
                     <li>⚠ <strong>Respiratory concerns:</strong> Scented products can trigger asthma</li>
                     <li>⚠ <strong>Kitten caution:</strong> Fragrances not recommended for young cats</li>
-                    <li>✓ <strong>Baking soda base:</strong> Generally safe ingredient</li>
+                    <li>✓ <strong>Baking soda base:</strong> Common household ingredient</li>
                     <li>⚠ <strong>Dust potential:</strong> Some formulations may be dusty</li>
                   </ul>
                 </div>
@@ -317,7 +317,7 @@ export default function PurrifyVsArmHammer() {
 
               <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
-                  <strong>Winner: Purrify</strong> - Significantly safer for cats with respiratory sensitivities, 
+                  <strong>Winner: Purrify</strong> - Fragrance-free and a simpler profile for cats with respiratory sensitivities,
                   kittens, and multi-cat households.
                 </p>
               </div>

@@ -51,7 +51,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <Users className="w-4 h-4" />
             <span className="text-sm">
-              <span className="font-bold text-yellow-300 dark:text-yellow-200 inline-block min-w-[2ch] text-center" style={{ fontVariantNumeric: 'tabular-nums' as any }}>{recentPurchases}</span> {t.homepage.socialProof.recentOrders}
+              <span className="font-bold text-yellow-300 dark:text-yellow-200 inline-block min-w-[2ch] text-center" style={{ fontVariantNumeric: 'tabular-nums' as const }}>{recentPurchases}</span> {t.homepage.socialProof.recentOrders}
             </span>
           </div>
         </div>

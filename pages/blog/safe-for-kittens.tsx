@@ -11,21 +11,21 @@ export default function SafeForKittens() {
   return (
     <>
       <Head>
-        <title>Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide | {SITE_NAME}</title>
-        <meta name="description" content="Learn about kitten safety with cat litter deodorizers. Discover which ingredients are safe, when to introduce deodorizers, and how to protect young cats." />
-        <meta name="keywords" content="is cat litter deodorizer safe for kittens, kitten litter safety, natural cat litter additive, non-toxic cat deodorizer, kitten health" />
+        <title>Using Cat Litter Deodorizers with Kittens: A Care Guide | {SITE_NAME}</title>
+        <meta name="description" content="Learn how households use fragrance-free, activated carbon deodorizers around kittens. See what to consider, when to introduce, and how to minimize exposure." />
+        <meta name="keywords" content="cat litter deodorizer kittens, kitten litter care, natural cat litter additive, fragrance-free cat deodorizer, kitten health" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide" />
-        <meta property="og:description" content="Complete safety guide for using cat litter deodorizers with kittens. Learn about safe ingredients and proper introduction." />
+        <meta property="og:title" content="Using Cat Litter Deodorizers with Kittens: A Care Guide" />
+        <meta property="og:description" content="Guidance on introducing fragrance-free deodorizers around kittens — what to consider and when to start." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://purrify.ca/blog/safe-for-kittens" />
         <meta property="og:image" content="https://purrify.ca/optimized/gigi.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Is Cat Litter Deodorizer Safe for Kittens?" />
-        <meta name="twitter:description" content="Complete safety guide for using cat litter deodorizers with kittens and young cats." />
+        <meta name="twitter:title" content="Using Cat Litter Deodorizers with Kittens" />
+        <meta name="twitter:description" content="How and when households introduce fragrance-free deodorizers around kittens." />
         <meta name="twitter:image" content="https://purrify.ca/optimized/gigi.webp" />
         
         {/* Canonical */}
@@ -36,8 +36,8 @@ export default function SafeForKittens() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide",
-            "description": "Learn about kitten safety with cat litter deodorizers. Discover which ingredients are safe, when to introduce deodorizers, and how to protect young cats.",
+            "headline": "Using Cat Litter Deodorizers with Kittens: A Care Guide",
+            "description": "How households use fragrance-free, activated carbon deodorizers around kittens, with considerations for timing and introduction.",
             "author": {
               "@type": "Organization",
               "name": "Purrify"
@@ -68,21 +68,21 @@ export default function SafeForKittens() {
                 <li>/</li>
                 <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">Kitten Safety</li>
+                <li className="text-[#FF3131]">Kitten Care</li>
               </ol>
             </nav>
 
             {/* Article Header */}
             <header className="mb-12 text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-                Kitten Safety & Health
+                Kitten Care & Health
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
-                Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide
+                Using Cat Litter Deodorizers with Kittens: A Care Guide
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Everything you need to know about using cat litter deodorizers safely with kittens. 
-                Learn about safe ingredients, proper timing, and how to protect your young cat's health.
+                Everything you need to know about using fragrance-free deodorizers around kittens.
+                Learn what to consider, timing, and how to minimize exposure for young cats.
               </p>
               <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
                 <span>Published January 25, 2024</span>
@@ -95,14 +95,14 @@ export default function SafeForKittens() {
             <div className="mb-12">
               <Image 
                 src="/optimized/gigi.webp" 
-                alt="Adorable kitten in clean litter box environment showing safe litter practices"
+                alt="Adorable kitten in a clean litter box setup with recommended practices for young cats"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
                 width={1200}
                 height={384}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
-                Keeping kittens safe while maintaining a fresh, odor-free environment
+                Keeping kittens comfortable while maintaining a fresh, odor-controlled environment
               </p>
             </div>
 
@@ -110,12 +110,12 @@ export default function SafeForKittens() {
             <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-12">
               <h2 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Quick Answer</h2>
               <p className="text-green-800 dark:text-green-200 mb-4">
-                <strong>Yes, natural activated carbon cat litter deodorizers are generally safe for kittens when used properly.</strong> 
-                However, timing, ingredients, and application method are crucial factors to consider.
+                <strong>Many households introduce fragrance-free, activated carbon deodorizers once kittens reliably use the litter box (typically ~8+ weeks).</strong>
+                Always start small, introduce gradually, and monitor your kitten’s behavior.
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-green-800 dark:text-green-200 text-sm">
                 <div>
-                  <strong>Safe Age:</strong> 8+ weeks old
+                  <strong>Typical Age:</strong> 8+ weeks old
                 </div>
                 <div>
                   <strong>Safe Ingredients:</strong> Activated carbon, natural minerals
@@ -135,8 +135,7 @@ export default function SafeForKittens() {
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Kittens have developing respiratory and digestive systems that make them more sensitive 
-                to environmental factors than adult cats. When considering whether <strong>cat litter deodorizer 
-                is safe for kittens</strong>, it's essential to understand these unique vulnerabilities.
+                to environmental factors than adult cats. When considering <strong>using cat litter deodorizers around kittens</strong>, it's helpful to understand these unique vulnerabilities.
               </p>
 
               <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
@@ -149,25 +148,24 @@ export default function SafeForKittens() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Safe vs. Unsafe Ingredients</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Commonly Used vs. Ingredients to Avoid</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Not all <strong>cat litter deodorizers</strong> are created equal when it comes to kitten safety. 
-                Here's what to look for and what to avoid:
+                Not all <strong>cat litter deodorizers</strong> are the same. Here's what many households use, and what to avoid:
               </p>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ SAFE Ingredients</h3>
+                  <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Commonly Used Ingredients</h3>
                   <ul className="text-green-800 dark:text-green-200 space-y-3">
                     <li>
-                      <strong>Activated Carbon:</strong> Natural, non-toxic odor absorber
+                      <strong>Activated Carbon:</strong> Commonly used odor absorber in water and air filtration
                     </li>
                     <li>
                       <strong>Natural Clay Minerals:</strong> Bentonite, zeolite (unscented)
                     </li>
                     <li>
-                      <strong>Baking Soda:</strong> Food-grade sodium bicarbonate
+                      <strong>Baking Soda:</strong> Household sodium bicarbonate (use sparingly)
                     </li>
                     <li>
                       <strong>Corn-based Additives:</strong> Natural, biodegradable options
@@ -196,8 +194,8 @@ export default function SafeForKittens() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">When to Introduce Deodorizers</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Timing is crucial when introducing <strong>natural cat litter odor eliminators</strong> to kittens. 
-                Follow this age-based guide for safe introduction:
+                Timing matters when introducing <strong>fragrance-free litter deodorizers</strong> around kittens. 
+                Follow this age-based guide for a gradual introduction:
               </p>
 
               <div className="space-y-6 mb-8">
@@ -216,19 +214,19 @@ export default function SafeForKittens() {
                   </p>
                 </div>
                 <div className="border-l-4 border-green-400 pl-6">
-                  <h4 className="font-bold text-green-900 dark:text-green-100 mb-2">✅ 8+ Weeks: Safe Introduction Window</h4>
+                  <h4 className="font-bold text-green-900 dark:text-green-100 mb-2">✅ 8+ Weeks: Typical Introduction Window</h4>
                   <p className="text-green-800 dark:text-green-200">
-                    Respiratory system is more developed. Can safely introduce natural, 
-                    fragrance-free deodorizers with gradual application.
+                    Respiratory system is more developed. Many households start introducing 
+                    fragrance-free deodorizers gradually at this stage.
                   </p>
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Safe Introduction Protocol</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Gradual Introduction Protocol</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 When your kitten reaches 8+ weeks and is comfortable with their litter routine, 
-                follow this step-by-step protocol for safe deodorizer introduction:
+                follow this step-by-step protocol for a gradual deodorizer introduction:
               </p>
 
               <div className="space-y-6 mb-8">
@@ -273,7 +271,7 @@ export default function SafeForKittens() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Warning Signs to Watch For</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Even with safe products, individual kittens may have sensitivities. 
+                Even with gentle formulations, individual kittens may have sensitivities.
                 Watch for these warning signs and discontinue use immediately if they occur:
               </p>
 
@@ -315,15 +313,15 @@ export default function SafeForKittens() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Purrify is Kitten-Safe</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Many Households Use Purrify Around Kittens</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                <strong>Purrify activated carbon litter additive</strong> is specifically formulated 
-                with kitten safety in mind. Here's why it's a trusted choice for young cats:
+                <strong>Purrify activated carbon litter additive</strong> is formulated to be fragrance-free and simple, 
+                which is why many households choose it around young cats:
               </p>
 
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-[#FF3131] mb-4">🏆 Purrify Safety Features</h3>
+                <h3 className="text-xl font-bold text-[#FF3131] mb-4">🏆 Purrify Features</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-gray-700 dark:text-gray-200">
                   <div>
                     <strong>100% Natural:</strong> Made from coconut shell activated carbon
@@ -332,31 +330,31 @@ export default function SafeForKittens() {
                     <strong>Fragrance-Free:</strong> No artificial scents or chemicals
                   </div>
                   <div>
-                    <strong>Non-Toxic:</strong> Safe if accidentally ingested during grooming
+                    <strong>Biologically Inert:</strong> Commonly used in household filtration
                   </div>
                   <div>
-                    <strong>Dust-Free:</strong> Minimal respiratory irritation risk
+                    <strong>Low-Dust:</strong> Minimal airborne particles
                   </div>
                   <div>
                     <strong>pH Neutral:</strong> Won't irritate sensitive paws
                   </div>
                   <div>
-                    <strong>Veterinarian Approved:</strong> Recommended by pet health professionals
+                    <strong>Veterinary-Informed:</strong> Guidance from pet health professionals
                   </div>
                 </div>
                 <Link href="/products" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
-                  Shop Kitten-Safe Products →
+                  Shop Fragrance-Free Products →
                 </Link>
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Veterinarian Recommendations</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Leading veterinarians recommend the following guidelines for <strong>kitten litter safety</strong>:
+                Leading veterinarians recommend the following guidelines for <strong>kitten litter care</strong>:
               </p>
 
               <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
-                <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-3">👩‍⚕️ Vet-Approved Guidelines</h3>
+                <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-3">👩‍⚕️ Veterinary Guidance</h3>
                 <ul className="text-blue-800 dark:text-blue-200 space-y-2">
                   <li>• Wait until 8+ weeks before introducing any additives</li>
                   <li>• Choose natural, fragrance-free products only</li>
@@ -409,15 +407,15 @@ export default function SafeForKittens() {
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Q: Can I use baking soda with kittens?</h4>
                   <p className="text-gray-700 dark:text-gray-200">
-                    A: Food-grade baking soda is generally safe for kittens 8+ weeks old when used sparingly. 
-                    However, activated carbon is more effective and safer for regular use.
+                    A: Many households use small amounts of baking soda (sodium bicarbonate) once kittens reliably use the litter box (~8+ weeks). 
+                    Activated carbon is typically more effective for ongoing odor control.
                   </p>
                 </div>
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Q: What if my kitten eats the deodorizer?</h4>
                   <p className="text-gray-700 dark:text-gray-200">
-                    A: Natural activated carbon is non-toxic if small amounts are ingested during grooming. 
-                    However, contact your vet if large amounts are consumed.
+                    A: Activated carbon used in household filtration is biologically inert. If a small amount is ingested during grooming, monitor as usual.
+                    Contact your veterinarian if a large amount is consumed or if you have any concerns.
                   </p>
                 </div>
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
@@ -432,17 +430,15 @@ export default function SafeForKittens() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
               
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                <strong>Cat litter deodorizers can be safe for kittens</strong> when you choose the right 
-                product and follow proper introduction protocols. Natural, fragrance-free options like 
-                activated carbon are your best bet for maintaining a fresh environment while protecting 
-                your kitten's developing health.
+                Many households use fragrance-free, activated carbon deodorizers around kittens after a gradual introduction.
+                Natural, fragrance-free options like activated carbon help maintain a fresh environment while you monitor your kitten’s comfort.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, every kitten is unique. When in doubt, consult with your veterinarian and 
                 always prioritize your kitten's health over convenience. 
                 <Link href="/products" className="text-[#FF3131] hover:underline font-medium">
-                Choose Purrify for kitten-safe odor control</Link> that you can trust.
+                Choose Purrify for fragrance-free odor control</Link> many households use around kittens.
               </p>
             </div>
 

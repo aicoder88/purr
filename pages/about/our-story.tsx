@@ -77,8 +77,7 @@ const OurStoryPage: NextPage = () => {
                 Our Mission
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                To revolutionize the cat ownership experience by creating innovative, safe, and environmentally responsible 
-                products that eliminate odors, reduce waste, and strengthen the bond between cats and their families.
+                To revolutionize the cat ownership experience by creating innovative, fragrance-free products designed for use around pets that eliminate odors, reduce waste, and strengthen the bond between cats and their families.
               </p>
               <div className="bg-[#E0EFC7]/30 dark:bg-gray-800/50 rounded-xl p-8">
                 <p className="text-lg text-gray-700 dark:text-gray-300 italic">

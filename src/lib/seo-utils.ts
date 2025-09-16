@@ -24,7 +24,7 @@ export const SEO_TRANSLATIONS = {
       'cat litter odor control',
       'activated carbon cat litter',
       'natural cat litter additive',
-      'eco-friendly pet odor control',
+      'fragrance-free pet odor control',
       'cat litter deodorizer',
       'pet odor elimination',
       'molecular odor control',
@@ -34,7 +34,7 @@ export const SEO_TRANSLATIONS = {
       'contrôle des odeurs de litière pour chat',
       'litière pour chat au charbon actif',
       'additif naturel pour litière de chat',
-      'contrôle des odeurs d\'animaux écologique',
+      "contrôle des odeurs sans parfum pour animaux",
       'désodorisant pour litière de chat',
       'élimination des odeurs d\'animaux',
       'contrôle moléculaire des odeurs',
@@ -44,7 +44,7 @@ export const SEO_TRANSLATIONS = {
       '猫砂异味控制',
       '活性炭猫砂',
       '天然猫砂添加剂',
-      '环保宠物异味控制',
+      '无香宠物异味控制',
       '猫砂除臭剂',
       '宠物异味消除',
       '分子级异味控制',
@@ -98,14 +98,14 @@ export const generateLocalizedFAQs = (locale: 'en' | 'fr' | 'zh') => {
     },
     {
       question: {
-        en: 'Is Purrify safe for cats and humans?',
-        fr: 'Purrify est-il sûr pour les chats et les humains ?',
-        zh: 'Purrify对猫咪和人类安全吗？'
+        en: 'Can Purrify be used around cats and people?',
+        fr: 'Peut-on utiliser Purrify près des chats et des personnes ?',
+        zh: 'Purrify可以在猫和人周围使用吗？'
       },
       answer: {
-        en: 'Yes, Purrify is completely safe for both cats and humans. Our activated carbon is food-grade and non-toxic, made from natural coconut shells with no harmful chemicals or fragrances.',
-        fr: 'Oui, Purrify est complètement sûr pour les chats et les humains. Notre charbon actif est de qualité alimentaire et non toxique, fabriqué à partir de coques de noix de coco naturelles sans produits chimiques nocifs ni parfums.',
-        zh: '是的，Purrify对猫咪和人类完全安全。我们的活性炭是食品级和无毒的，由天然椰子壳制成，不含有害化学物质或香料。'
+        en: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration and contains no added fragrances or dyes.',
+        fr: 'Purrify utilise le même type de charbon actif que l’on retrouve couramment dans les filtres à eau et à air domestiques, sans parfums ni colorants ajoutés.',
+        zh: 'Purrify采用与家用净水和空气过滤中常见的同类活性炭，不添加香精或染料。'
       }
     },
     {

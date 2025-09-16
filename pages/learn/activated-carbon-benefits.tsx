@@ -71,7 +71,7 @@ export default function ActivatedCarbonBenefits() {
             <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Answer</h2>
             <p className="text-blue-800 dark:text-blue-200">
               Activated carbon litter additive benefits include superior odor elimination through molecular adsorption, 
-              natural and non-toxic composition, long-lasting effectiveness, and compatibility with all litter types. 
+              natural and fragrance-free composition, long-lasting effectiveness, and compatibility with all litter types. 
               Unlike masking fragrances, activated carbon actually removes odor molecules from the air.
             </p>
           </div>
@@ -124,8 +124,8 @@ export default function ActivatedCarbonBenefits() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">2. Natural & Non-Toxic</h3>
-              <p>Made from coconut shells or wood, activated carbon is completely safe for cats, kittens, and humans. No synthetic fragrances or harmful chemicals.</p>
+              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">2. Natural & Fragrance-Free</h3>
+              <p>Made from coconut shells or wood, activated carbon contains no added fragrances or dyes and is widely used in household filtration.</p>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6">
@@ -149,13 +149,13 @@ export default function ActivatedCarbonBenefits() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">7. Dust-Free Application</h3>
-              <p>High-quality activated carbon produces minimal dust, making it safe for cats with respiratory sensitivities.</p>
+              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">7. Low-Dust Application</h3>
+              <p>High-quality activated carbon produces minimal dust, a consideration for cats with respiratory sensitivities.</p>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">8. Environmentally Friendly</h3>
-              <p>Biodegradable and made from renewable resources. Used carbon can be composted or disposed of safely.</p>
+              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">8. Practical Disposal</h3>
+              <p>Dispose of used litter and carbon according to local guidelines. Avoid drains and follow municipal waste instructions.</p>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ export default function ActivatedCarbonBenefits() {
                   <th className="border border-gray-300 px-4 py-3 text-left">Method</th>
                   <th className="border border-gray-300 px-4 py-3 text-left">How It Works</th>
                   <th className="border border-gray-300 px-4 py-3 text-left">Effectiveness</th>
-                  <th className="border border-gray-300 px-4 py-3 text-left">Safety</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left">Considerations</th>
                 </tr>
               </thead>
               <tbody>
@@ -176,13 +176,13 @@ export default function ActivatedCarbonBenefits() {
                   <td className="border border-gray-300 px-4 py-3 font-semibold">Activated Carbon</td>
                   <td className="border border-gray-300 px-4 py-3">Adsorbs and traps odor molecules</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Excellent (99%+)</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Very Safe</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Fragrance-free; biologically inert</td>
                 </tr>
                 <tr className="bg-gray-50">
                   <td className="border border-gray-300 px-4 py-3 font-semibold">Baking Soda</td>
                   <td className="border border-gray-300 px-4 py-3">Neutralizes acids</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-yellow-600 dark:text-yellow-400">Moderate</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Safe</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Common household use</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 px-4 py-3 font-semibold">Fragrances</td>
@@ -194,22 +194,22 @@ export default function ActivatedCarbonBenefits() {
                   <td className="border border-gray-300 px-4 py-3 font-semibold">Enzymes</td>
                   <td className="border border-gray-300 px-4 py-3">Break down organic matter</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-yellow-600 dark:text-yellow-400">Good for specific odors</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Generally safe</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Common household use</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Safety for Cats and Kittens</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Completely Safe for All Cats</h3>
+            <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Fragrance-Free & Widely Used</h3>
             <ul className="space-y-2 text-green-700 dark:text-green-300">
-              <li>• <strong>Non-toxic:</strong> Won't harm cats if accidentally ingested</li>
-              <li>• <strong>Kitten-safe:</strong> Gentle enough for young cats</li>
-              <li>• <strong>No respiratory irritation:</strong> Dust-free formulations available</li>
-              <li>• <strong>Fragrance-free:</strong> Won't trigger scent sensitivities</li>
-              <li>• <strong>Vet-approved:</strong> Recommended by veterinarians worldwide</li>
+              <li>• <strong>Biologically inert:</strong> Commonly used in household filtration</li>
+              <li>• <strong>Gentle approach:</strong> Often introduced gradually for young cats</li>
+              <li>• <strong>Low-dust options:</strong> A consideration for sensitive cats</li>
+              <li>• <strong>Fragrance-free:</strong> Won't add scents that some cats dislike</li>
+              <li>• <strong>Veterinary guidance:</strong> Consult your vet for specific medical advice</li>
             </ul>
           </div>
 
@@ -243,8 +243,8 @@ export default function ActivatedCarbonBenefits() {
 
           <div className="space-y-6 mb-8">
             <div className="border-b border-gray-200 pb-4">
-              <h3 className="text-lg font-semibold mb-2">Is activated carbon safe for kittens?</h3>
-              <p>Yes, activated carbon is completely safe for kittens. It's non-toxic, fragrance-free, and won't cause respiratory issues. Many veterinarians recommend it for households with young cats.</p>
+              <h3 className="text-lg font-semibold mb-2">Can activated carbon be used around kittens?</h3>
+              <p>Activated carbon is widely used in household filtration and is fragrance-free. Many households introduce it gradually once kittens reliably use the litter box. Consult your veterinarian for specific advice.</p>
             </div>
 
             <div className="border-b border-gray-200 pb-4">

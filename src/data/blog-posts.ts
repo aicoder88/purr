@@ -31,8 +31,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       link: "/blog/activated-carbon-vs-baking-soda-additives"
     },
     {
-      title: "Is Purrify Safe for Kittens? A Veterinarian's Complete Safety Guide",
-      excerpt: "Learn everything about using Purrify with kittens, including safety considerations, proper usage guidelines, and expert veterinary advice for young cats.",
+      title: "Using Litter Deodorizers with Kittens: A Care Guide",
+      excerpt: "Learn how households use Purrify around kittens, including key considerations, gradual introduction guidelines, and practical veterinary-informed tips for young cats.",
       author: "Dr. Emily Rodriguez, DVM",
       date: new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week ago
       image: "/optimized/20g.webp",
@@ -73,7 +73,7 @@ export function getBlogPostContent(): string {
     <ul>
       <li>Higher adsorption capacity than coal-based carbon</li>
       <li>More micropores for capturing smaller odor molecules</li>
-      <li>Environmentally sustainable source material</li>
+      <li>Coconut shell source material</li>
       <li>No harmful additives or fragrances</li>
     </ul>
     <p>Our specialized activation process creates the optimal pore structure specifically designed to target pet odor molecules.</p>
@@ -84,7 +84,7 @@ export function getBlogPostContent(): string {
       <li><strong>Adsorption:</strong> Molecules bind to the carbon through van der Waals forces</li>
       <li><strong>Retention:</strong> Molecules remain trapped within the carbon's structure</li>
     </ol>
-    <p>This process is entirely physical rather than chemical, making it safe for your pets and home.</p>
+    <p>This process is entirely physical rather than chemical and relies on the same type of activated carbon commonly used in household water and air filtration.</p>
     <h2>Conclusion</h2>
     <p>Understanding the science behind activated carbon helps explain why Purrify is so effective at eliminating cat litter odors. By targeting odors at the molecular level rather than masking them, Purrify provides a truly fresh-smelling home without the need for artificial fragrances or harsh chemicals.</p>
   `;

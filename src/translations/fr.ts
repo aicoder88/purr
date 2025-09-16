@@ -653,8 +653,8 @@ export const fr = {
     },
     premiumQuality: {
       title: "Qualité Premium",
-      description: "Charbon actif de qualité alimentaire, testé en laboratoire",
-      highlight: "Certifié Sécuritaire"
+      description: "Charbon actif de qualité filtration utilisé dans les filtres à eau et à air",
+      highlight: "Sans parfum"
     }
   },
 
@@ -1000,10 +1000,10 @@ export const fr = {
     {
       id: 2, 
       category: "product",
-      question: "Purrify est-il sécuritaire pour les chats et les humains ?",
-      answer: "Oui, Purrify est complètement sécuritaire. Notre charbon actif est de qualité alimentaire et non-toxique. Il a été testé extensivement et est fait de matériaux naturels.",
+      question: "Peut-on utiliser Purrify près des chats et des personnes ?",
+      answer: "Purrify utilise le même type de charbon actif que l’on retrouve couramment dans les filtres à eau et à air domestiques. Sans parfums ni colorants ajoutés.",
       popular: true,
-      tags: ["sécurité", "non-toxique"]
+      tags: ["utilisation", "qualité filtration", "sans parfum"]
     }
   ],
 
