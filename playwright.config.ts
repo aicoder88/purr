@@ -13,10 +13,11 @@ const config: PlaywrightTestConfig = {
     trace: 'off',
   },
   webServer: {
-    command: 'npx next start -p 3010',
+    // Use standalone output to match production server in CI
+    command: 'PORT=3010 node .next/standalone/server.js',
     port: 3010,
     reuseExistingServer: true,
-    timeout: 120_000,
+    timeout: 180_000,
   },
   reporter: [['list']],
 };
