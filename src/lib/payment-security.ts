@@ -1,411 +1,143 @@
-import crypto from 'crypto';
-
-export interface RiskAssessment {
-  riskScore: number;
-  riskLevel: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-  flags: SecurityFlag[];
-  recommendation: 'APPROVE' | 'REVIEW' | 'DECLINE' | 'BLOCK';
-  explanation: string;
-}
-
-export interface SecurityFlag {
-  type: 'VELOCITY' | 'AMOUNT' | 'LOCATION' | 'DEVICE' | 'EMAIL' | 'BEHAVIORAL';
-  severity: 'LOW' | 'MEDIUM' | 'HIGH';
+export interface RiskSignal {
+  type: string;
   message: string;
   score: number;
 }
 
-export interface TransactionContext {
-  email: string;
-  amount: number;
-  currency: string;
-  ipAddress?: string;
-  userAgent?: string;
-  fingerprint?: string;
-  countryCode?: string;
-  timestamp: Date;
-  sessionDuration?: number;
-  referrer?: string;
+export interface RiskAssessment {
+  totalScore: number;
+  signals: RiskSignal[];
+  recommendation: 'approve' | 'review' | 'decline';
 }
 
+export interface PaymentContext {
+  amountCents: number;
+  currency: string;
+  email?: string;
+  ip?: string;
+  userAgent?: string;
+  country?: string;
+  velocity?: { lastHour: number; lastDay: number };
+}
+
+const SUSPICIOUS_EMAIL_DOMAINS = new Set([
+  'tempmail.org', '10minutemail.com', 'guerrillamail.com', 'mailinator.com',
+]);
+
+/**
+ * Lightweight fraud and abuse assessment to complement payment validation.
+ * Purely heuristic, designed to be fast and dependency‑free.
+ */
+export function assessPaymentRisk(ctx: PaymentContext): RiskAssessment {
+  const signals: RiskSignal[] = [];
+
+  // Normalize amount to USD for thresholding (rough, avoids external deps)
+  const usd = normalizeToUSD(ctx.amountCents, ctx.currency);
+  if (usd > 50_000) {
+    signals.push({ type: 'amount.high', message: 'High-value transaction', score: 30 });
+  } else if (usd > 20_000) {
+    signals.push({ type: 'amount.medium', message: 'Medium-value transaction', score: 15 });
+  }
+
+  // Email domain reputation
+  const domain = (ctx.email?.split('@')[1] || '').toLowerCase();
+  if (domain && SUSPICIOUS_EMAIL_DOMAINS.has(domain)) {
+    signals.push({ type: 'email.disposable', message: 'Disposable email domain', score: 20 });
+  }
+
+  // Velocity checks (simple thresholds)
+  if (ctx.velocity) {
+    if (ctx.velocity.lastHour > 3) {
+      signals.push({ type: 'velocity.hour', message: 'Multiple recent attempts (1h)', score: 15 });
+    }
+    if (ctx.velocity.lastDay > 10) {
+      signals.push({ type: 'velocity.day', message: 'High daily volume', score: 10 });
+    }
+  }
+
+  // User-Agent checks
+  if (ctx.userAgent && isSuspiciousUA(ctx.userAgent)) {
+    signals.push({ type: 'ua.suspicious', message: 'Suspicious user agent', score: 10 });
+  }
+
+  // Geo/IP coarse check (placeholder; enrich with IP data in backend)
+  if (ctx.country && !['CA', 'US'].includes(ctx.country.toUpperCase())) {
+    signals.push({ type: 'geo.foreign', message: 'Foreign country for business', score: 10 });
+  }
+
+  const totalScore = signals.reduce((s, x) => s + x.score, 0);
+  const recommendation: RiskAssessment['recommendation'] = totalScore >= 50 ? 'decline' : totalScore >= 25 ? 'review' : 'approve';
+
+  return { totalScore, signals, recommendation };
+}
+
+function normalizeToUSD(amountCents: number, currency: string): number {
+  const c = currency.toUpperCase();
+  const rate = c === 'CAD' ? 0.74 : c === 'USD' ? 1 : 1; // coarse default
+  return amountCents * rate;
+}
+
+function isSuspiciousUA(ua: string): boolean {
+  return /(bot|crawler|spider|curl|wget|python-requests)/i.test(ua);
+}
+
+// Backward-compatible service facade used by API routes
 export class PaymentSecurityService {
-  private static readonly VELOCITY_LIMITS = {
-    EMAIL_HOUR: 5,
-    IP_HOUR: 10,
-    EMAIL_DAY: 20,
-    IP_DAY: 50,
-  };
+  static async assessRisk(input: {
+    email: string;
+    amount: number;
+    currency: string;
+    ipAddress?: string;
+    userAgent?: string;
+    countryCode?: string;
+    sessionDuration?: number;
+  }): Promise<{
+    riskScore: number;
+    riskLevel: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+    recommendation: 'ALLOW' | 'REVIEW' | 'BLOCK';
+    explanation: string;
+    flags: Array<{ type: string; severity: 'LOW' | 'MEDIUM' | 'HIGH'; message: string }>;
+  }> {
+    const velocity = { lastHour: 0, lastDay: 0 }; // Placeholder; integrate with DB if needed
+    const assessment = assessPaymentRisk({
+      email: input.email,
+      amountCents: Math.round(input.amount * 100),
+      currency: input.currency,
+      ip: input.ipAddress,
+      userAgent: input.userAgent,
+      country: input.countryCode,
+      velocity,
+    });
 
-  private static readonly AMOUNT_THRESHOLDS = {
-    MEDIUM_RISK: 100,
-    HIGH_RISK: 500,
-    CRITICAL_RISK: 1000,
-  };
-
-  private static readonly SUSPICIOUS_EMAIL_PATTERNS = [
-    /temp.*mail/i,
-    /disposable/i,
-    /fake.*mail/i,
-    /test.*email/i,
-    /spam.*box/i,
-  ];
-
-  private static readonly SUSPICIOUS_DOMAINS = [
-    'tempmail.org',
-    '10minutemail.com',
-    'guerrillamail.com',
-    'mailinator.com',
-    'throwaway.email',
-  ];
-
-  static async assessRisk(context: TransactionContext): Promise<RiskAssessment> {
-    const flags: SecurityFlag[] = [];
-    let totalScore = 0;
-
-    const velocityFlags = await this.checkVelocityLimits(context);
-    flags.push(...velocityFlags);
-    totalScore += velocityFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const amountFlags = this.checkAmountRisk(context);
-    flags.push(...amountFlags);
-    totalScore += amountFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const emailFlags = this.checkEmailRisk(context);
-    flags.push(...emailFlags);
-    totalScore += emailFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const deviceFlags = this.checkDeviceRisk(context);
-    flags.push(...deviceFlags);
-    totalScore += deviceFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const behavioralFlags = this.checkBehavioralRisk(context);
-    flags.push(...behavioralFlags);
-    totalScore += behavioralFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const locationFlags = await this.checkLocationRisk(context);
-    flags.push(...locationFlags);
-    totalScore += locationFlags.reduce((sum, flag) => sum + flag.score, 0);
-
-    const { riskLevel, recommendation, explanation } = this.calculateOverallRisk(totalScore, flags);
+    const riskLevel = assessment.totalScore >= 70 ? 'CRITICAL' : assessment.totalScore >= 50 ? 'HIGH' : assessment.totalScore >= 25 ? 'MEDIUM' : 'LOW';
+    const recommendation = assessment.recommendation === 'decline' ? 'BLOCK' : assessment.recommendation === 'review' ? 'REVIEW' : 'ALLOW';
 
     return {
-      riskScore: Math.min(totalScore, 100),
+      riskScore: assessment.totalScore,
       riskLevel,
-      flags,
       recommendation,
-      explanation,
+      explanation: 'Automated heuristic risk assessment',
+      flags: assessment.signals.map(s => ({
+        type: s.type,
+        severity: s.score >= 20 ? 'HIGH' : s.score >= 10 ? 'MEDIUM' : 'LOW',
+        message: s.message,
+      })),
     };
   }
 
-  private static async checkVelocityLimits(context: TransactionContext): Promise<SecurityFlag[]> {
-    const flags: SecurityFlag[] = [];
-
-    try {
-      if (context.email) {
-        const emailCountHour = await this.getTransactionCount(context.email, 'email', 1);
-        const emailCountDay = await this.getTransactionCount(context.email, 'email', 24);
-
-        if (emailCountHour > this.VELOCITY_LIMITS.EMAIL_HOUR) {
-          flags.push({
-            type: 'VELOCITY',
-            severity: 'HIGH',
-            message: `Email exceeded hourly limit: ${emailCountHour} transactions`,
-            score: 25,
-          });
-        }
-
-        if (emailCountDay > this.VELOCITY_LIMITS.EMAIL_DAY) {
-          flags.push({
-            type: 'VELOCITY',
-            severity: 'HIGH',
-            message: `Email exceeded daily limit: ${emailCountDay} transactions`,
-            score: 30,
-          });
-        }
-      }
-
-      if (context.ipAddress) {
-        const ipCountHour = await this.getTransactionCount(context.ipAddress, 'ip', 1);
-        const ipCountDay = await this.getTransactionCount(context.ipAddress, 'ip', 24);
-
-        if (ipCountHour > this.VELOCITY_LIMITS.IP_HOUR) {
-          flags.push({
-            type: 'VELOCITY',
-            severity: 'MEDIUM',
-            message: `IP address exceeded hourly limit: ${ipCountHour} transactions`,
-            score: 20,
-          });
-        }
-
-        if (ipCountDay > this.VELOCITY_LIMITS.IP_DAY) {
-          flags.push({
-            type: 'VELOCITY',
-            severity: 'HIGH',
-            message: `IP address exceeded daily limit: ${ipCountDay} transactions`,
-            score: 25,
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Velocity check failed:', error);
+  static generateFingerprint(ctx: { email?: string; ipAddress?: string; userAgent?: string }): string {
+    const raw = `${(ctx.email || '').toLowerCase()}|${ctx.ipAddress || ''}|${ctx.userAgent || ''}`;
+    let hash = 0;
+    for (let i = 0; i < raw.length; i++) {
+      const chr = raw.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0;
     }
-
-    return flags;
+    return `fp_${Math.abs(hash).toString(36)}`;
   }
 
-  private static checkAmountRisk(context: TransactionContext): SecurityFlag[] {
-    const flags: SecurityFlag[] = [];
-    const amountCAD = context.currency === 'USD' ? context.amount * 1.35 : context.amount;
-
-    if (amountCAD >= this.AMOUNT_THRESHOLDS.CRITICAL_RISK) {
-      flags.push({
-        type: 'AMOUNT',
-        severity: 'HIGH',
-        message: `Critical amount: $${amountCAD.toFixed(2)} CAD`,
-        score: 20,
-      });
-    } else if (amountCAD >= this.AMOUNT_THRESHOLDS.HIGH_RISK) {
-      flags.push({
-        type: 'AMOUNT',
-        severity: 'MEDIUM',
-        message: `High amount: $${amountCAD.toFixed(2)} CAD`,
-        score: 15,
-      });
-    } else if (amountCAD >= this.AMOUNT_THRESHOLDS.MEDIUM_RISK) {
-      flags.push({
-        type: 'AMOUNT',
-        severity: 'LOW',
-        message: `Medium amount: $${amountCAD.toFixed(2)} CAD`,
-        score: 5,
-      });
-    }
-
-    return flags;
-  }
-
-  private static checkEmailRisk(context: TransactionContext): SecurityFlag[] {
-    const flags: SecurityFlag[] = [];
-
-    if (!context.email) return flags;
-
-    const domain = context.email.split('@')[1]?.toLowerCase();
-    
-    if (this.SUSPICIOUS_DOMAINS.includes(domain)) {
-      flags.push({
-        type: 'EMAIL',
-        severity: 'HIGH',
-        message: `Suspicious email domain: ${domain}`,
-        score: 30,
-      });
-    }
-
-    if (this.SUSPICIOUS_EMAIL_PATTERNS.some(pattern => pattern.test(context.email))) {
-      flags.push({
-        type: 'EMAIL',
-        severity: 'MEDIUM',
-        message: 'Email matches suspicious pattern',
-        score: 15,
-      });
-    }
-
-    if (!domain || domain.length < 4) {
-      flags.push({
-        type: 'EMAIL',
-        severity: 'MEDIUM',
-        message: 'Invalid or suspicious email format',
-        score: 20,
-      });
-    }
-
-    const emailParts = context.email.split('@')[0];
-    if (emailParts && emailParts.length > 50) {
-      flags.push({
-        type: 'EMAIL',
-        severity: 'LOW',
-        message: 'Unusually long email address',
-        score: 5,
-      });
-    }
-
-    return flags;
-  }
-
-  private static checkDeviceRisk(context: TransactionContext): SecurityFlag[] {
-    const flags: SecurityFlag[] = [];
-
-    if (!context.userAgent) return flags;
-
-    const suspiciousAgents = [
-      /bot/i, /crawler/i, /spider/i, /curl/i, /wget/i, 
-      /python-requests/i, /postman/i, /insomnia/i
-    ];
-
-    if (suspiciousAgents.some(pattern => pattern.test(context.userAgent!))) {
-      flags.push({
-        type: 'DEVICE',
-        severity: 'HIGH',
-        message: 'Suspicious user agent detected',
-        score: 35,
-      });
-    }
-
-    if (context.userAgent.length < 20 || context.userAgent.length > 500) {
-      flags.push({
-        type: 'DEVICE',
-        severity: 'MEDIUM',
-        message: 'Unusual user agent length',
-        score: 10,
-      });
-    }
-
-    return flags;
-  }
-
-  private static checkBehavioralRisk(context: TransactionContext): SecurityFlag[] {
-    const flags: SecurityFlag[] = [];
-
-    if (context.sessionDuration !== undefined) {
-      if (context.sessionDuration < 10) {
-        flags.push({
-          type: 'BEHAVIORAL',
-          severity: 'MEDIUM',
-          message: `Very short session: ${context.sessionDuration}s`,
-          score: 15,
-        });
-      }
-
-      if (context.sessionDuration > 3600) {
-        flags.push({
-          type: 'BEHAVIORAL',
-          severity: 'LOW',
-          message: `Very long session: ${Math.round(context.sessionDuration / 60)}m`,
-          score: 5,
-        });
-      }
-    }
-
-    if (context.referrer) {
-      const suspiciousReferrers = ['facebook.com', 'vk.com', 'telegram.org'];
-      const referrerDomain = new URL(context.referrer).hostname.toLowerCase();
-      
-      if (suspiciousReferrers.some(domain => referrerDomain.includes(domain))) {
-        flags.push({
-          type: 'BEHAVIORAL',
-          severity: 'LOW',
-          message: `Traffic from social media: ${referrerDomain}`,
-          score: 3,
-        });
-      }
-    }
-
-    return flags;
-  }
-
-  private static async checkLocationRisk(context: TransactionContext): Promise<SecurityFlag[]> {
-    const flags: SecurityFlag[] = [];
-
-    if (!context.countryCode) return flags;
-
-    const highRiskCountries = ['CN', 'RU', 'BD', 'NG', 'PK'];
-    const mediumRiskCountries = ['VN', 'PH', 'ID', 'IN'];
-
-    if (highRiskCountries.includes(context.countryCode)) {
-      flags.push({
-        type: 'LOCATION',
-        severity: 'HIGH',
-        message: `High-risk country: ${context.countryCode}`,
-        score: 25,
-      });
-    } else if (mediumRiskCountries.includes(context.countryCode)) {
-      flags.push({
-        type: 'LOCATION',
-        severity: 'MEDIUM',
-        message: `Medium-risk country: ${context.countryCode}`,
-        score: 10,
-      });
-    }
-
-    return flags;
-  }
-
-  private static calculateOverallRisk(score: number, flags: SecurityFlag[]): {
-    riskLevel: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-    recommendation: 'APPROVE' | 'REVIEW' | 'DECLINE' | 'BLOCK';
-    explanation: string;
-  } {
-    const highSeverityCount = flags.filter(f => f.severity === 'HIGH').length;
-    
-    if (score >= 70 || highSeverityCount >= 3) {
-      return {
-        riskLevel: 'CRITICAL',
-        recommendation: 'BLOCK',
-        explanation: 'Multiple high-risk indicators detected. Transaction blocked.',
-      };
-    } else if (score >= 50 || highSeverityCount >= 2) {
-      return {
-        riskLevel: 'HIGH',
-        recommendation: 'DECLINE',
-        explanation: 'High risk score with significant security concerns.',
-      };
-    } else if (score >= 25 || highSeverityCount >= 1) {
-      return {
-        riskLevel: 'MEDIUM',
-        recommendation: 'REVIEW',
-        explanation: 'Medium risk transaction requiring manual review.',
-      };
-    } else {
-      return {
-        riskLevel: 'LOW',
-        recommendation: 'APPROVE',
-        explanation: 'Low risk transaction approved automatically.',
-      };
-    }
-  }
-
-  static generateFingerprint(context: TransactionContext): string {
-    const data = [
-      context.ipAddress || '',
-      context.userAgent || '',
-      context.email,
-      context.countryCode || '',
-    ].join('|');
-
-    return crypto.createHash('sha256').update(data).digest('hex');
-  }
-
-  private static async getTransactionCount(
-    identifier: string, 
-    type: 'email' | 'ip', 
-    hours: number
-  ): Promise<number> {
-    return 0;
-  }
-
-  static async logSecurityEvent(
-    eventType: 'RISK_ASSESSMENT' | 'BLOCKED_TRANSACTION' | 'SUSPICIOUS_ACTIVITY',
-    context: TransactionContext,
-    assessment?: RiskAssessment
-  ): Promise<void> {
-    try {
-      const logData = {
-        timestamp: new Date().toISOString(),
-        eventType,
-        email: context.email,
-        amount: context.amount,
-        currency: context.currency,
-        ipAddress: context.ipAddress,
-        userAgent: context.userAgent,
-        countryCode: context.countryCode,
-        riskScore: assessment?.riskScore,
-        riskLevel: assessment?.riskLevel,
-        recommendation: assessment?.recommendation,
-        flags: assessment?.flags?.map(f => f.message),
-      };
-
-      console.log('Security Event:', JSON.stringify(logData, null, 2));
-      
-    } catch (error) {
-      console.error('Failed to log security event:', error);
-    }
+  static async logSecurityEvent(type: string, context: Record<string, unknown>, result?: unknown): Promise<void> {
+    // eslint-disable-next-line no-console
+    console.log(`[security:${type}]`, { context, result });
   }
 }
