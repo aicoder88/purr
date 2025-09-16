@@ -20,9 +20,9 @@ const pages = [
   { url: '/fr/free', priority: '0.8', changefreq: 'weekly' },
   
   // Product pages
-  { url: '/products/purrify-20g', priority: '0.9', changefreq: 'weekly' },
-  { url: '/products/purrify-60g', priority: '0.9', changefreq: 'weekly' },
-  { url: '/products/purrify-120g', priority: '0.9', changefreq: 'weekly' },
+  { url: '/products/trial-size', priority: '0.9', changefreq: 'weekly' },
+  { url: '/products/standard', priority: '0.9', changefreq: 'weekly' },
+  { url: '/products/family-pack', priority: '0.9', changefreq: 'weekly' },
   
   // Legal pages
   { url: '/privacy-policy', priority: '0.4', changefreq: 'monthly' },
@@ -140,9 +140,9 @@ function generateProductSitemap(baseUrl = 'https://purrify.ca') {
   const now = new Date().toISOString();
   
   const products = [
-    { url: '/products/purrify-20g', name: 'Purrify 20g' },
-    { url: '/products/purrify-60g', name: 'Purrify 60g' },
-    { url: '/products/purrify-120g', name: 'Purrify 120g' },
+    { url: '/products/trial-size', name: 'Purrify 17g Trial' },
+    { url: '/products/standard', name: 'Purrify 60g Standard' },
+    { url: '/products/family-pack', name: 'Purrify 120g Family' },
   ];
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

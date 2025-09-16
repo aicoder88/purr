@@ -26,8 +26,8 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
   const { locale, pathname } = router;
   
-  // Use relative URL for canonical
-  const canonicalUrl = '/';
+  // Canonical site URL
+  const canonicalUrl = 'https://purrify.ca';
   
   
   return (
@@ -68,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <DefaultSeo
             titleTemplate={`%s | ${SITE_NAME}`}
             defaultTitle={`${SITE_NAME} - Activated Carbon Cat Litter Additive`}
-            description={SITE_DESCRIPTION}
+            // Use per-page descriptions to avoid duplicates
             canonical={canonicalUrl}
             openGraph={{
               type: 'website',
@@ -115,25 +115,10 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               },
             ]}
             additionalLinkTags={[
-              {
-                rel: 'manifest',
-                href: '/manifest.json',
-              },
-              {
-                rel: 'alternate',
-                hrefLang: 'en',
-                href: canonicalUrl,
-              },
-              {
-                rel: 'alternate',
-                hrefLang: 'fr',
-                href: `${canonicalUrl}fr/`,
-              },
-              {
-                rel: 'alternate',
-                hrefLang: 'x-default',
-                href: canonicalUrl,
-              },
+              { rel: 'manifest', href: '/manifest.json' },
+              { rel: 'alternate', hrefLang: 'en', href: 'https://purrify.ca/' },
+              { rel: 'alternate', hrefLang: 'fr', href: 'https://purrify.ca/fr/' },
+              { rel: 'alternate', hrefLang: 'x-default', href: 'https://purrify.ca/' },
             ]}
           />
           

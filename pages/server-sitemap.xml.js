@@ -13,24 +13,9 @@ export const getServerSideProps = async ({ res }) => {
 
   // Add product pages
   const productFields = [
-    {
-      loc: 'https://purrify.ca/products/purrify-20g',
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.9,
-    },
-    {
-      loc: 'https://purrify.ca/products/purrify-60g',
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.9,
-    },
-    {
-      loc: 'https://purrify.ca/products/purrify-120g',
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.9,
-    },
+    { loc: 'https://purrify.ca/products/trial-size', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: 'https://purrify.ca/products/standard', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: 'https://purrify.ca/products/family-pack', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
   ];
 
   // Combine all fields

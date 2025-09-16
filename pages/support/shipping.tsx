@@ -113,13 +113,13 @@ const ShippingPage: NextPage = () => {
           content="Learn about Purrify shipping options, delivery times, and costs. Free shipping on orders $25+. Fast delivery across Canada and international shipping available." 
         />
         <meta name="keywords" content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
+        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Shipping Information - Fast & Reliable Delivery" />
         <meta property="og:description" content="Fast and reliable Purrify delivery across Canada. Free shipping on orders $25+. International shipping available." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
+        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
         
         {/* Structured Data */}
         <script

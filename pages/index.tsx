@@ -135,17 +135,14 @@ export default function Home() {
             content: '720',
           },
           {
-            name: 'description',
-            content: t.seo.metaDescription,
+            // Removed duplicate description to avoid multiple meta description tags
+            name: 'application-name',
+            content: SITE_NAME,
           },
           // Additional SEO meta tags for better performance
           {
+            content: SITE_NAME,
             name: 'author',
-            content: SITE_NAME,
-          },
-          {
-            name: 'application-name',
-            content: SITE_NAME,
           },
           {
             property: 'og:site_name',
@@ -188,9 +185,9 @@ export default function Home() {
           // Preload critical resources
           {
             rel: 'preload',
-            href: '/optimized/cat_rose_thumbnail.webp',
+            href: '/optimized/cat_rose_thumbnail.avif',
             as: 'image',
-            type: 'image/webp',
+            type: 'image/avif',
           },
         ]}
       />

@@ -202,13 +202,13 @@ const FAQPage: NextPage = () => {
           content="Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ." 
         />
         <meta name="keywords" content="Purrify FAQ, cat litter questions, activated carbon safety, usage instructions, shipping info" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
+        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Frequently Asked Questions - Everything About Purrify" />
         <meta property="og:description" content="Get answers to all your Purrify questions about usage, safety, shipping, and more." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
+        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
         {/* Enhanced FAQ Schema */}
         <script

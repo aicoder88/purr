@@ -153,13 +153,13 @@ const CaseStudiesPage: NextPage = () => {
           content="Read detailed case studies of how Purrify transformed real customers' lives. See before and after results, cost savings, and life improvements." 
         />
         <meta name="keywords" content="Purrify case studies, customer success stories, before after results, cat litter odor solutions, testimonials" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
+        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Customer Case Studies - Real Purrify Success Stories" />
         <meta property="og:description" content="Discover how Purrify transformed real customers' lives with detailed case studies showing before and after results." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
+        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
         
         {/* Structured Data */}
         <script
@@ -179,7 +179,7 @@ const CaseStudiesPage: NextPage = () => {
                 "name": "Purrify",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://purrify.com/optimized/purrify-logo-text.webp"
+                  "url": "https://purrify.ca/optimized/purrify-logo-text.webp"
                 }
               },
               "datePublished": "2024-01-01",

@@ -151,12 +151,6 @@ const nextConfig = {
   // Add redirects to fix broken URLs and canonicalization
   async redirects() {
     return [
-      // Redirect old blog URLs that might be broken
-      {
-        source: '/blog/purrify-vs-arm-hammer',
-        destination: '/blog/activated-carbon-vs-baking-soda-comparison',
-        permanent: true,
-      },
       // Redirect any URLs with double slashes
       {
         source: '//(.*)',
@@ -171,13 +165,26 @@ const nextConfig = {
       },
       {
         source: '/products/purrify-60g',
-        destination: '/products/medium-size',
+        destination: '/products/standard',
         permanent: true,
       },
       {
         source: '/products/purrify-120g',
-        destination: '/products/large-size',
+        destination: '/products/family-pack',
         permanent: true,
+      },
+      // Redirect legacy product slugs
+      {
+        source: '/products/medium-size',
+        destination: '/products/standard',
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: '/products/large-size',
+        destination: '/products/family-pack',
+        permanent: true,
+        locale: false,
       },
       // Redirect old demo URLs
       {

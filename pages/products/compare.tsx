@@ -71,13 +71,13 @@ const ProductComparePage: NextPage = () => {
           content={t.productComparison.subtitle} 
         />
         <meta name="keywords" content="Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`} />
+        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Compare Purrify Products - Find the Perfect Size" />
         <meta property="og:description" content="Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`} />
+        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
         
         {/* Structured Data */}
         <script
@@ -88,7 +88,7 @@ const ProductComparePage: NextPage = () => {
               "@type": "WebPage",
               "name": "Compare Purrify Products",
               "description": "Compare all Purrify activated carbon litter additive sizes and find the perfect option for your household.",
-              "url": `https://purrify.com${locale === 'fr' ? '/fr' : ''}/products/compare`,
+              "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`,
               "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": products.map((product, index) => ({

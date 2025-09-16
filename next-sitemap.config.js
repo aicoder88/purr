@@ -107,25 +107,10 @@ module.exports = {
       priority: 0.4,
       lastmod: new Date().toISOString(),
     },
-    // Product pages
-    {
-      loc: '/products/purrify-20g',
-      changefreq: 'weekly',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/products/purrify-60g',
-      changefreq: 'weekly',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/products/purrify-120g',
-      changefreq: 'weekly',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
+    // Product pages (canonical slugs)
+    { loc: '/products/trial-size', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    { loc: '/products/standard', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
     // Custom transformation for specific pages

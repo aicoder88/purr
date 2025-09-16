@@ -104,10 +104,10 @@ export function Hero() {
   return (
     <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300" style={{ willChange: 'auto' }}>
       
-      {/* Decorative elements - optimized for GPU acceleration */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 dark:bg-[#FF5050]/10 rounded-full blur-3xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 dark:bg-[#3694FF]/10 rounded-full blur-3xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
-      <div className="absolute top-40 right-20 w-20 h-20 bg-[#5B2EFF]/20 dark:bg-[#5B2EFF]/10 rounded-full blur-xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
+      {/* Decorative elements - reduce paint on mobile */}
+      <div className="hidden md:block absolute top-20 left-10 w-64 h-64 bg-[#FF3131]/20 dark:bg-[#FF5050]/10 rounded-full blur-3xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
+      <div className="hidden md:block absolute bottom-20 right-10 w-80 h-80 bg-[#E0EFC7]/30 dark:bg-[#3694FF]/10 rounded-full blur-3xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
+      <div className="hidden md:block absolute top-40 right-20 w-20 h-20 bg-[#5B2EFF]/20 dark:bg-[#5B2EFF]/10 rounded-full blur-xl" style={{ transform: 'translateZ(0)', willChange: 'auto' }}></div>
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -210,12 +210,12 @@ export function Hero() {
               <div ref={mediaContainerRef} className="relative w-full max-w-2xl mx-auto" style={{ aspectRatio: '16/9', maxWidth: '100%' }}>
                 {showPoster && (
                   <HeroImage
-                    src="/optimized/cat_rose_thumbnail.webp"
+                    src="/optimized/cat_rose_thumbnail.avif"
                     alt={t.homepage.seo.videoDescription}
                     width={1280}
                     height={720}
                     className="w-full h-auto rounded-2xl object-contain"
-                    sizes="(max-width: 1024px) 100vw, 960px"
+                    sizes="(max-width: 480px) 100vw, (max-width: 1024px) 90vw, 960px"
                   />
                 )}
 

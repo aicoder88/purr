@@ -108,13 +108,13 @@ const CatLitterGuidePage: NextPage = () => {
           content="Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer." 
         />
         <meta name="keywords" content="cat litter guide, litter types, cat care, odor control, litter maintenance, Purrify" />
-        <link rel="canonical" href={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
+        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Complete Cat Litter Guide - Types, Tips & Best Practices" />
         <meta property="og:description" content="Everything you need to know about cat litter - from choosing the right type to maintenance tips and problem-solving." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://purrify.com${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
+        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
         
         {/* Structured Data */}
         <script
@@ -134,7 +134,7 @@ const CatLitterGuidePage: NextPage = () => {
                 "name": "Purrify",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://purrify.com/optimized/purrify-logo-text.webp"
+                  "url": "https://purrify.ca/optimized/purrify-logo-text.webp"
                 }
               },
               "datePublished": "2024-01-01",
