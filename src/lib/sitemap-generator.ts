@@ -181,7 +181,7 @@ class SitemapGenerator {
       { slug: 'activated-carbon-litter-additive-benefits', date: '2024-01-15' },
       { slug: 'how-to-use-cat-litter-deodorizer', date: '2024-01-10' },
       { slug: 'best-litter-odor-remover-small-apartments', date: '2024-01-08' },
-      { slug: 'safe-for-kittens', date: '2024-01-05' },
+      { slug: 'using-deodorizers-with-kittens', date: '2024-01-05' },
       { slug: 'activated-carbon-vs-baking-soda-comparison', date: '2024-01-15' }
     ];
 

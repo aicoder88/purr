@@ -905,4 +905,23 @@ export interface TranslationType {
       testimonialQuote: string;
     };
   };
+
+  // Blog
+  blog: {
+    multiCat: {
+      title: string;
+      description: string;
+      category: string;
+      publishDate: string;
+      readTime: string;
+      breadcrumb: string;
+      stats: {
+        title: string;
+        strongerOdors: string;
+        litterBoxes: string;
+        moreDeodorizer: string;
+        maintenance: string;
+      };
+    };
+  };
 }

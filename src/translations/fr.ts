@@ -1115,5 +1115,24 @@ export const fr = {
       reviewsRating: "4,9/5 sur 138 avis",
       testimonialQuote: "\"J'ai économisé plus de 200$ cette année avec mon abonnement, et la litière de mes chats ne sent jamais !\" - Sarah M."
     }
+  },
+
+  // Blog
+  blog: {
+    multiCat: {
+      title: "Meilleur Désodorisant pour Litière Multi-Chats : Guide Ultime de Contrôle des Odeurs 2024",
+      description: "Découvrez le désodorisant le plus efficace pour les foyers multi-chats. Solutions expertes pour éliminer les odeurs fortes de plusieurs chats utilisant la technologie au charbon actif éprouvée.",
+      category: "Guide Foyer Multi-Chats",
+      publishDate: "Publié le 16 septembre 2024",
+      readTime: "12 min de lecture",
+      breadcrumb: "Solutions Multi-Chats",
+      stats: {
+        title: "Statistiques Foyer Multi-Chats",
+        strongerOdors: "Odeurs plus fortes vs un seul chat",
+        litterBoxes: "Bacs à litière par chat minimum",
+        moreDeodorizer: "Plus de désodorisant nécessaire",
+        maintenance: "Entretien requis"
+      }
+    }
   }
 };

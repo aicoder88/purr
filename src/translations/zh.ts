@@ -1115,5 +1115,24 @@ export const zh = {
       reviewsRating: "138 条评价中 4.9/5 星",
       testimonialQuote: "\"今年通过订阅我节省了超过200美元，我的猫咪猫砂盒从不异味！\" - Sarah M."
     }
+  },
+
+  // Blog
+  blog: {
+    multiCat: {
+      title: "最佳多猫猫砂除臭剂：2024年终极气味控制指南",
+      description: "发现多猫家庭最有效的猫砂除臭剂。使用经过验证的活性炭技术的专家解决方案，消除多只猫产生的强烈异味。",
+      category: "多猫家庭指南",
+      publishDate: "发布于 2024年9月16日",
+      readTime: "12分钟阅读",
+      breadcrumb: "多猫解决方案",
+      stats: {
+        title: "多猫家庭统计",
+        strongerOdors: "比单猫更强烈的异味",
+        litterBoxes: "每只猫最少猫砂盒数量",
+        moreDeodorizer: "需要更多除臭剂",
+        maintenance: "所需维护"
+      }
+    }
   }
 };

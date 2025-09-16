@@ -1089,5 +1089,24 @@ export const en = {
       reviewsRating: "4.9/5 from 138 reviews",
       testimonialQuote: "\"I've saved over $200 this year with my subscription, and my cats' litter box never smells!\" - Sarah M."
     }
+  },
+
+  // Blog
+  blog: {
+    multiCat: {
+      title: "Best Multi-Cat Litter Deodorizer: Ultimate Odor Control Guide 2024",
+      description: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
+      category: "Multi-Cat Household Guide",
+      publishDate: "Published September 16, 2024",
+      readTime: "12 min read",
+      breadcrumb: "Multi-Cat Solutions",
+      stats: {
+        title: "Multi-Cat Household Stats",
+        strongerOdors: "Stronger odors vs single cat",
+        litterBoxes: "Litter boxes per cat minimum",
+        moreDeodorizer: "More deodorizer needed",
+        maintenance: "Maintenance required"
+      }
+    }
   }
 }; 

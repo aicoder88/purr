@@ -54,7 +54,7 @@ function generateBasicSitemap(req: NextApiRequest): string {
     { loc: '/blog/activated-carbon-litter-additive-benefits', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/how-to-use-cat-litter-deodorizer', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/best-litter-odor-remover-small-apartments', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/safe-for-kittens', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/using-deodorizers-with-kittens', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/activated-carbon-vs-baking-soda-comparison', priority: '0.6', changefreq: 'monthly' },
     { loc: '/case-studies', priority: '0.6', changefreq: 'monthly' },
     { loc: '/customers/testimonials', priority: '0.7', changefreq: 'weekly' }

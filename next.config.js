@@ -184,6 +184,17 @@ const nextConfig = {
         destination: '/blog/activated-carbon-vs-baking-soda-comparison',
         permanent: true,
       },
+      // Redirect away from "safe" slugs to compliant phrasing
+      {
+        source: '/blog/safe-for-kittens',
+        destination: '/blog/using-deodorizers-with-kittens',
+        permanent: true,
+      },
+      {
+        source: '/learn/safe-for-kittens',
+        destination: '/learn/using-deodorizers-with-kittens',
+        permanent: true,
+      },
       // Redirect any URLs with double slashes
       {
         source: '//(.*)',

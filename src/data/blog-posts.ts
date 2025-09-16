@@ -19,7 +19,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
       author: "Multi-Cat Specialist Team",
       date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
-      image: "/optimized/80g.webp",
+      image: "/optimized/140g.webp",
       link: "/blog/multi-cat-litter-deodorizer-guide"
     },
     {
@@ -44,7 +44,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       author: "Dr. Emily Rodriguez, DVM",
       date: new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week ago
       image: "/optimized/20g.webp",
-      link: "/blog/safe-for-kittens"
+      link: "/blog/using-deodorizers-with-kittens"
     },
     {
       title: "Best Cat Litter Odor Remover for Small Apartments: Space-Saving Solutions",
