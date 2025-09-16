@@ -64,23 +64,22 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   // Generate optimized quality based on image type and priority
   const optimizedQuality = criticalResource ? Math.min(quality + 10, 100) : quality;
 
-  // Generate blur placeholder if not provided
+  // Generate blur placeholder if not provided (SSR-safe)
   const generateBlurDataURL = (width: number, height: number): string => {
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext('2d');
-    
-    if (ctx) {
-      // Create a simple gradient blur placeholder
-      const gradient = ctx.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, '#f3f4f6');
-      gradient.addColorStop(1, '#e5e7eb');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3f4f6"/><stop offset="100%" stop-color="#e5e7eb"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>`;
+    try {
+      if (typeof window === 'undefined') {
+        // Node/SSR
+        // eslint-disable-next-line no-undef
+        return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
+      }
+      // Browser
+      // eslint-disable-next-line no-undef
+      return `data:image/svg+xml;base64,${btoa(svg)}`;
+    } catch {
+      // Fallback to encoded SVG without base64
+      return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
     }
-    
-    return canvas.toDataURL();
   };
 
   const handleLoad = () => {

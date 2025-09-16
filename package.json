@@ -31,10 +31,10 @@
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",
     "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize",
-    "validate-dark-mode": "node scripts/dark-mode-validator.js"
+    "validate-dark-mode": "node scripts/dark-mode-validator.js",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.19",
     "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "6.16.1",
@@ -67,6 +67,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@types/crypto-js": "^4.2.2",
     "@vercel/analytics": "^1.5.0",
+    "autoprefixer": "^10.4.19",
     "chalk": "^5.6.0",
     "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",
@@ -101,6 +102,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.3",
+    "@playwright/test": "^1.55.0",
     "@swc/core": "^1.13.3",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.9",
