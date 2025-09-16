@@ -20,13 +20,13 @@ export default function MultiCatLitterDeodorizerGuide() {
         <meta property="og:description" content={t.blog.multiCat.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
-        <meta property="og:image" content="https://purrify.ca/optimized/140g.webp" />
+        <meta property="og:image" content="https://purrify.ca/multi-cat-household.jpg" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.blog.multiCat.title} />
         <meta name="twitter:description" content={t.blog.multiCat.description} />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/140g.webp" />
+        <meta name="twitter:image" content="https://purrify.ca/multi-cat-household.jpg" />
 
         {/* Canonical */}
         <link rel="canonical" href="https://purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
@@ -52,7 +52,7 @@ export default function MultiCatLitterDeodorizerGuide() {
             },
             "datePublished": "2024-09-16",
             "dateModified": "2024-09-16",
-            "image": "https://purrify.ca/optimized/140g.webp",
+            "image": "https://purrify.ca/multi-cat-household.jpg",
             "url": "https://purrify.ca/blog/multi-cat-litter-deodorizer-guide",
             "mainEntityOfPage": {
               "@type": "WebPage",
