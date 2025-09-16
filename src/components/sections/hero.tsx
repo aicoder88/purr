@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { HeroImage } from "@/components/performance/OptimizedImage";
 
 import { scrollToSection } from "@/lib/utils";
 
@@ -18,6 +19,9 @@ export function Hero() {
   const [showPlayButton, setShowPlayButton] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasAttemptedPlay, setHasAttemptedPlay] = useState(false);
+  const [showPoster, setShowPoster] = useState(true);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const mediaContainerRef = useRef<HTMLDivElement>(null);
 
 
 
@@ -53,19 +57,49 @@ export function Hero() {
       }
     };
 
+    const handlePlaying = () => {
+      setShowPoster(false);
+    };
+
     const handleError = () => {
       console.error('Video failed to load');
       setShowPlayButton(true);
     };
 
     video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('playing', handlePlaying);
     video.addEventListener('error', handleError);
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('playing', handlePlaying);
       video.removeEventListener('error', handleError);
     };
   }, [hasAttemptedPlay]);
+
+  // Load video sources only when in viewport (reduce LCP pressure)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const el = mediaContainerRef.current;
+    if (!el) {
+      // Fallback: if no ref, load immediately
+      setShouldLoadVideo(true);
+      return;
+    }
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry && entry.isIntersecting) {
+          setShouldLoadVideo(true);
+          io.disconnect();
+        }
+      }, { threshold: 0.25 });
+      io.observe(el);
+      return () => io.disconnect();
+    } else {
+      setShouldLoadVideo(true);
+    }
+  }, []);
 
   return (
     <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300" style={{ willChange: 'auto' }}>
@@ -173,41 +207,50 @@ export function Hero() {
                   </div>
                 </button>
               )}
-              <div className="relative w-full max-w-2xl mx-auto">
-                <video
-                  ref={videoRef}
-                  poster="/optimized/cat_rose_thumbnail.webp"
-                  className="w-full h-auto rounded-2xl object-contain group-hover:scale-105 transition duration-700 dark:brightness-90 dark:contrast-100"
-                  width={640}
-                  height={360}
-                  style={{
-                    aspectRatio: '16/9',
-                    maxWidth: '100%'
-                  }}
-                  autoPlay
-                  muted
-                  playsInline
-                  preload="metadata"
-                  aria-label={t.homepage.hero.videoAriaLabel}
-                  role="img"
-                  loop
-                  tabIndex={-1}
-                  itemScope
-                  itemType="https://schema.org/VideoObject"
-                  controls={false}
-                  disablePictureInPicture
-                  disableRemotePlayback
-                  crossOrigin="anonymous"
-                  onPlay={() => setShowPlayButton(false)}
-                >
-                  <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
-                  <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
-                  <meta itemProp="thumbnailUrl" content="/optimized/cat_rose_thumbnail.webp" />
-                  <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
-                  <meta itemProp="duration" content="PT30S" />
-                  <track kind="descriptions" src="/videos/cat_rose_description.vtt" srcLang="en" label={t.homepage.hero.videoDescriptions} />
-                  {t.homepage.hero.videoFallbackText}
-                </video>
+              <div ref={mediaContainerRef} className="relative w-full max-w-2xl mx-auto" style={{ aspectRatio: '16/9', maxWidth: '100%' }}>
+                {showPoster && (
+                  <HeroImage
+                    src="/optimized/cat_rose_thumbnail.webp"
+                    alt={t.homepage.seo.videoDescription}
+                    width={1280}
+                    height={720}
+                    className="w-full h-auto rounded-2xl object-contain"
+                    sizes="(max-width: 1024px) 100vw, 960px"
+                  />
+                )}
+
+                {shouldLoadVideo && (
+                  <video
+                    ref={videoRef}
+                    poster="/optimized/cat_rose_thumbnail.webp"
+                    className="w-full h-full rounded-2xl object-contain group-hover:scale-105 transition duration-700 dark:brightness-90 dark:contrast-100"
+                    width={1280}
+                    height={720}
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label={t.homepage.hero.videoAriaLabel}
+                    role="img"
+                    loop
+                    tabIndex={-1}
+                    itemScope
+                    itemType="https://schema.org/VideoObject"
+                    controls={false}
+                    disablePictureInPicture
+                    disableRemotePlayback
+                    crossOrigin="anonymous"
+                    onPlay={() => setShowPlayButton(false)}
+                  >
+                    <source src="/videos/cat_rose_optimized.webm" type="video/webm" />
+                    <source src="/videos/cat_rose_optimized.mp4" type="video/mp4" />
+                    <meta itemProp="thumbnailUrl" content="/optimized/cat_rose_thumbnail.webp" />
+                    <meta itemProp="uploadDate" content="2023-09-01T08:00:00+08:00" />
+                    <meta itemProp="duration" content="PT30S" />
+                    <track kind="descriptions" src="/videos/cat_rose_description.vtt" srcLang="en" label={t.homepage.hero.videoDescriptions} />
+                    {t.homepage.hero.videoFallbackText}
+                  </video>
+                )}
               </div>
             </div>
             

@@ -97,7 +97,6 @@ export function Header() {
                 width={120}
                 height={40}
                 className="h-8 w-auto dark:brightness-125 dark:contrast-110 filter drop-shadow-sm"
-                priority
               />
             </Link>
           </div>

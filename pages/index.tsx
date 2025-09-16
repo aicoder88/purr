@@ -6,23 +6,24 @@ import { WhyPurrify } from '../src/components/sections/why-purrify';
 import { Products } from '../src/components/sections/products';
 import dynamic from 'next/dynamic';
 
-// Dynamically import components to improve initial page load
-const EnhancedProductComparison = dynamic(() => import('../src/components/sections/enhanced-product-comparison').then(mod => ({ default: mod.EnhancedProductComparison })), { 
+// Above-the-fold banner should be SSR to avoid CLS
+import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
+
+// Dynamically import below-the-fold sections to improve initial page load
+const EnhancedProductComparison = dynamic(() => import('../src/components/sections/enhanced-product-comparison').then(mod => ({ default: mod.EnhancedProductComparison })), {
   ssr: false,
   loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
 });
 const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
-const UrgencyBanner = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.UrgencyBanner })), { ssr: false });
-const StickyUrgencyBar = dynamic(() => import('../src/components/sections/urgency-banner').then(mod => ({ default: mod.StickyUrgencyBar })), { ssr: false });
-const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), { 
+const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), {
   ssr: false,
   loading: () => <div className="h-64 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
 });
-const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), { 
+const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), {
   ssr: false,
   loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
 });
-const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), { 
+const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), {
   ssr: false,
   loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
 });
@@ -191,12 +192,6 @@ export default function Home() {
             as: 'image',
             type: 'image/webp',
           },
-          {
-            rel: 'preload',
-            href: '/videos/cat_rose_optimized.webm',
-            as: 'video',
-            type: 'video/webm',
-          },
         ]}
       />
 
@@ -362,62 +357,86 @@ export default function Home() {
           <Hero />
         </ErrorBoundary>
         
-        <ErrorBoundary>
-          <About />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <About />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <HowItWorks />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <HowItWorks />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <WhyPurrify />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <WhyPurrify />
+          </ErrorBoundary>
+        </div>
         
         {/* Enhanced Product Comparison for better conversions */}
-        <ErrorBoundary>
-          <EnhancedProductComparison />
-        </ErrorBoundary>
+        <div className="cv-auto cis-960">
+          <ErrorBoundary>
+            <EnhancedProductComparison />
+          </ErrorBoundary>
+        </div>
         
         {/* Subscription Offer for recurring revenue */}
-        <ErrorBoundary>
-          <SubscriptionOffer />
-        </ErrorBoundary>
+        <div className="cv-auto cis-480">
+          <ErrorBoundary>
+            <SubscriptionOffer />
+          </ErrorBoundary>
+        </div>
         
         {/* Trust Badges for Customer Confidence */}
-        <section className="py-8 bg-gray-50 dark:bg-gray-900/50">
+        <section className="py-8 bg-gray-50 dark:bg-gray-900/50 cv-auto cis-480">
           <div className="container mx-auto px-4">
             <TrustBadges variant="grid" showIcons={true} />
           </div>
         </section>
         
-        <ErrorBoundary>
-          <Stores />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <Stores />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <Testimonials />
-        </ErrorBoundary>
+        <div className="cv-auto cis-960">
+          <ErrorBoundary>
+            <Testimonials />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <FAQ />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <FAQ />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <Newsletter />
-        </ErrorBoundary>
+        <div className="cv-auto cis-480">
+          <ErrorBoundary>
+            <Newsletter />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <CTA />
-        </ErrorBoundary>
+        <div className="cv-auto cis-480">
+          <ErrorBoundary>
+            <CTA />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <Contact />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <Contact />
+          </ErrorBoundary>
+        </div>
         
-        <ErrorBoundary>
-          <BlogPreview />
-        </ErrorBoundary>
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <BlogPreview />
+          </ErrorBoundary>
+        </div>
       </main>
       
       

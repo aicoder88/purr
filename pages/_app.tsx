@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { DefaultSeo } from 'next-seo';
 import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
@@ -56,12 +57,9 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <link rel="mask-icon" href="/images/icon-128.png" color="#FF3131" />
             <link rel="manifest" href="/manifest.json" />
             
-            {/* DNS Prefetch and Preconnect */}
+            {/* DNS Prefetch only for non-critical third-parties */}
             <link rel="dns-prefetch" href="https://api.dicebear.com" />
-            <link rel="preconnect" href="https://api.dicebear.com" crossOrigin="anonymous" />
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-            <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-            <link rel="preconnect" href="https://purrify.ca" crossOrigin="anonymous" />
           </Head>
           
           <DefaultSeo
@@ -168,6 +166,43 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <Layout>
             <Component {...pageProps} />
           </Layout>
+
+          {/* Idle-load chat plugin to avoid blocking TTI */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(){
+                  if (window.__purrifyChatLoaded) return;
+                  function loadChat(){
+                    if (window.__purrifyChatLoaded) return; 
+                    window.__purrifyChatLoaded = true;
+                    var s = document.createElement('script');
+                    s.src = 'https://app.simplebotinstall.com/js/chat_plugin.js';
+                    s.defer = true;
+                    s.setAttribute('data-bot-id','40892');
+                    document.body.appendChild(s);
+                  }
+                  var scheduled = false;
+                  function schedule(){
+                    if (scheduled) return; scheduled = true;
+                    if ('requestIdleCallback' in window) {
+                      requestIdleCallback(function(){ setTimeout(loadChat, 0); }, { timeout: 4000 });
+                    } else {
+                      window.addEventListener('load', function(){ setTimeout(loadChat, 3000); });
+                    }
+                  }
+                  // Load on idle, or on first interaction if earlier
+                  ['mousemove','touchstart','scroll','keydown'].forEach(function(evt){
+                    window.addEventListener(evt, function handler(){
+                      window.removeEventListener(evt, handler, { passive: true } as any);
+                      loadChat();
+                    }, { passive: true, once: true });
+                  });
+                  schedule();
+                })();
+              `
+            }}
+          />
           
           
           <Toaster />

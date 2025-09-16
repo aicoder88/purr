@@ -168,6 +168,14 @@
   }
 }
 
+@layer utilities {
+  /* Reduce initial rendering cost for below-the-fold sections */
+  .cv-auto { content-visibility: auto; }
+  .cis-480 { contain-intrinsic-size: 480px; }
+  .cis-720 { contain-intrinsic-size: 720px; }
+  .cis-960 { contain-intrinsic-size: 960px; }
+}
+
 /* Smooth transitions for theme switching */
 .theme-transition {
   @apply transition-all duration-300;

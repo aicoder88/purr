@@ -107,14 +107,7 @@ export default function Document() {
         <Main />
         <NextScript />
         
-        {/* Chat plugin */}
-        <Script
-          id="chat-plugin"
-          src="https://app.simplebotinstall.com/js/chat_plugin.js"
-          data-bot-id="40892"
-          strategy="lazyOnload"
-          defer
-        />
+        {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
         
         {/* Preload interaction script */}
         <Script id="interaction-observer" strategy="afterInteractive">
