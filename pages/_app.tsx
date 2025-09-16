@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { DefaultSeo } from 'next-seo';
@@ -18,6 +19,8 @@ interface PageProps {
   // Add your page props here if needed
   [key: string]: unknown;
 }
+
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400','500','700'] });
 
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
@@ -163,9 +166,11 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             }}
           />
           
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <div className={inter.variable}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </div>
 
           {/* Idle-load chat plugin to avoid blocking TTI */}
           <script

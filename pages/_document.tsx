@@ -8,22 +8,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Critical CSS from external file for better caching */}
-        <link
-          rel="preload"
-          href="/critical.css"
-          as="style"
-          onLoad={() => {}}
-        />
-        {/* Critical CSS moved to next.config.js or CSS modules */}
-        
-        {/* Preload critical fonts for better performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
+        {/* Self-host fonts via next/font; remove external font CSS/preconnect to avoid blocking */}
         
         {/* Remove global preloads - each page will preload what it needs */}
         
@@ -32,30 +17,7 @@ export default function Document() {
         <meta name="googlebot" content="index, follow" />
         <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
         
-        {/* Reduce CLS with font display settings */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: local('Inter Regular'), local('Inter-Regular');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: local('Inter Medium'), local('Inter-Medium');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: local('Inter Bold'), local('Inter-Bold');
-          }
-        `}} />
+        {/* Font-face rules handled by next/font */}
         
         {/* Google Tag Manager */}
         <Script
@@ -88,11 +50,11 @@ export default function Document() {
         {/* Performance Monitoring */}
         <PerformanceMonitor enabled={true} sampleRate={0.1} />
         
-        {/* Cache Optimization */}
+        {/* Cache Optimization - defer in favor of Core Web Vitals */}
         <CacheOptimizer 
-          enabled={true}
-          preloadRoutes={['/products/trial-size', '/customers/testimonials', '/learn/how-it-works']}
-          warmupDelay={3000}
+          enabled={false}
+          preloadRoutes={[]}
+          warmupDelay={8000}
           maxCacheSize={15728640}
         />
         
@@ -108,33 +70,7 @@ export default function Document() {
         <NextScript />
         
         {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
-        
-        {/* Preload interaction script */}
-        <Script id="interaction-observer" strategy="afterInteractive">
-          {`
-            // Lazy load images that are offscreen
-            if ('IntersectionObserver' in window) {
-              const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-              const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    if (src) {
-                      img.setAttribute('src', src);
-                      img.removeAttribute('data-src');
-                    }
-                    imageObserver.unobserve(img);
-                  }
-                });
-              });
-              
-              lazyImages.forEach(image => {
-                imageObserver.observe(image);
-              });
-            }
-          `}
-        </Script>
+        {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
       </body>
     </Html>
   );

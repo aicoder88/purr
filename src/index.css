@@ -89,6 +89,8 @@
     overflow-x: hidden;
     /* Improve touch performance */
     touch-action: manipulation;
+    /* Use self-hosted Inter via next/font */
+    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   }
 
   /* Mobile-first optimizations */
