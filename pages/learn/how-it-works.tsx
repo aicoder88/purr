@@ -160,13 +160,14 @@ export default function HowItWorksPage() {
               <div className="relative max-w-2xl mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative">
-                  <NextImage
-                    src="/micropores_magnified_view.jpeg"
-                    alt="Activated Carbon Micropores Under Magnification"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
+                        <NextImage
+                          src="/optimized/micropores_magnified_view.webp"
+                          alt="Activated Carbon Micropores Under Magnification"
+                          width={600}
+                          height={400}
+                          sizes="(max-width: 768px) 100vw, 600px"
+                          className="w-full h-auto rounded-2xl shadow-2xl"
+                        />
                   <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
                     Micropores magnified 1000x
                   </div>

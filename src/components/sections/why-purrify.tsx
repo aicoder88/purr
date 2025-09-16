@@ -11,13 +11,13 @@ export function WhyPurrify() {
       icon: Wind,
       title: t.features.odorElimination.title.toUpperCase(),
       description: t.features.odorElimination.description,
-      image: "/micropores_magnified_view.jpeg"
+      image: "/optimized/micropores_magnified_view.webp"
     },
     {
       icon: Cat,
       title: `${t.features.catFriendly.title.toUpperCase()} & ${t.features.natural.title.toUpperCase()}`,
       description: `${t.features.catFriendly.description}\n${t.features.natural.description}`,
-      image: "/Carbon sktech.png",
+      image: "/optimized/Carbon sktech.webp",
       color: "bg-[#E8F5E9]",
       textColor: "text-[#2E7D32]",
     },
@@ -25,19 +25,19 @@ export function WhyPurrify() {
       icon: Clock,
       title: t.features.longLastingFreshness.title.toUpperCase(),
       description: t.features.longLastingFreshness.description,
-      image: "/fresh.png"
+      image: "/optimized/fresh.webp"
     },
     {
       icon: Layers,
       title: t.features.worksWithAnyLitter.title.toUpperCase(),
       description: t.features.worksWithAnyLitter.description,
-      image: "/clay-cat-litter.webp"
+      image: "/optimized/clay-cat-litter.webp"
     },
     {
       icon: PiggyBank,
       title: t.features.costEffective.title.toUpperCase(),
       description: t.features.costEffective.description,
-      image: "/cost effective.png",
+      image: "/optimized/cost effective.webp",
       color: "bg-[#FFF3E0]",
       textColor: "text-[#E65100]",
     },
@@ -45,7 +45,7 @@ export function WhyPurrify() {
       icon: Sparkles,
       title: t.features.beforeAfter.title.toUpperCase(),
       description: t.features.beforeAfter.description,
-      image: "/before after.png",
+      image: "/optimized/before after.webp",
       color: "bg-[#F3E5F5]",
       textColor: "text-[#7B1FA2]",
     },
@@ -93,6 +93,7 @@ export function WhyPurrify() {
                       alt={reason.title}
                       width={400}
                       height={225}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                       loading={index < 3 ? "eager" : "lazy"}
                       className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
                       style={{
