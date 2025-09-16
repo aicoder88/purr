@@ -137,17 +137,16 @@ export const TESTIMONIALS = [
   },
 ];
 
+// Import centralized business profile for NAP consistency
+import { getFormattedAddress, getPhoneNumber, getEmailAddress, getFormattedBusinessHours } from './business-profile';
+
 export const CONTACT_INFO = {
-  address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-  phone: "+1 250 432 9352",
-  email: "hello@purrify.ca",
-  hours: {
-    monday: "08:00 am - 8:00 pm",
-    tuesday: "08:00 am - 8:00 pm",
-    wednesday: "08:00 am - 8:00 pm",
-    thursday: "08:00 am - 8:00 pm",
-    friday: "08:00 am - 8:00 pm",
-    saturday: "09:00 am - 8:00 pm",
-    sunday: "Closed",
-  },
+  address: getFormattedAddress(),
+  phone: getPhoneNumber(),
+  email: getEmailAddress(),
+  hours: getFormattedBusinessHours('en').reduce((acc, item) => {
+    const dayKey = item.day.toLowerCase();
+    acc[dayKey] = item.hours;
+    return acc;
+  }, {} as Record<string, string>),
 };

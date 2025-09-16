@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, Calendar, CheckCircle, Filter, SortAsc } from 'lucide-react';
+import Script from 'next/script';
 
 type SortOption = 'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful';
 import { Button } from '../ui/button';
@@ -224,9 +225,62 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     });
   };
 
+  // Generate structured data for reviews
+  const reviewsStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': 'https://purrify.ca/products/purrify-cat-litter-additive',
+    name: 'Purrify Activated Carbon Cat Litter Additive',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: averageRating.toFixed(1),
+      reviewCount: DISPLAY_REVIEW_COUNT.toString(),
+      bestRating: '5',
+      worstRating: '1'
+    },
+    review: filteredReviews.slice(0, 10).map(review => ({
+      '@type': 'Review',
+      '@id': `https://purrify.ca/reviews/${review.id}`,
+      author: {
+        '@type': 'Person',
+        name: review.userName
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating.toString(),
+        bestRating: '5',
+        worstRating: '1'
+      },
+      name: review.title,
+      reviewBody: review.content,
+      datePublished: review.date,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Purrify'
+      },
+      positiveNotes: review.wouldRecommend ? 'Customer recommends this product' : undefined,
+      itemReviewed: {
+        '@type': 'Product',
+        name: 'Purrify Activated Carbon Cat Litter Additive',
+        brand: {
+          '@type': 'Brand',
+          name: 'Purrify'
+        }
+      }
+    }))
+  };
+
   if (compact) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+      <>
+        <Script
+          id="reviews-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(reviewsStructuredData)
+          }}
+        />
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
             Customer Reviews
@@ -278,11 +332,20 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           </Button>
         </div>
       </div>
+      </>
     );
   }
 
   return (
-    <div className="space-y-8">
+    <>
+      <Script
+        id="reviews-structured-data-full"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(reviewsStructuredData)
+        }}
+      />
+      <div className="space-y-8">
       {/* Review Summary */}
       <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -467,7 +530,8 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           </Button>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

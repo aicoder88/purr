@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useTranslation } from "../../lib/translation-context";
+import Script from 'next/script';
 
 export function FAQ() {
   const { t } = useTranslation();
@@ -54,11 +55,40 @@ export function FAQ() {
     },
   ];
 
+  // Generate structured data for FAQ
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': 'https://purrify.ca/faq',
+    mainEntity: faqs.map((faq, index) => ({
+      '@type': 'Question',
+      '@id': `https://purrify.ca/faq#question-${index + 1}`,
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+        author: {
+          '@type': 'Organization',
+          name: 'Purrify',
+          url: 'https://purrify.ca'
+        }
+      }
+    }))
+  };
+
   return (
-    <section
-      className="py-12 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
-      id="faq"
-    >
+    <>
+      <Script
+        id="faq-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData)
+        }}
+      />
+      <section
+        className="py-12 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
+        id="faq"
+      >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#3694FF]/20 rounded-full text-[#FF3131] dark:text-[#3694FF] font-medium text-sm mb-4">
@@ -104,6 +134,7 @@ export function FAQ() {
           </p>
         </div>
       </Container>
-    </section>
+      </section>
+    </>
   );
 }
