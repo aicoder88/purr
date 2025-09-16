@@ -57,10 +57,18 @@ export default function StandardSizePage() {
           type: 'product',
           images: [
             {
+              url: 'https://purrify.ca/optimized/60g.webp',
+              width: 1200,
+              height: 630,
+              alt: 'Purrify 60g Standard Size Package (WebP)',
+              type: 'image/webp'
+            },
+            {
               url: 'https://purrify.ca/purrify-standard-60g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 60g Standard Size Package'
+              alt: 'Purrify 60g Standard Size Package',
+              type: 'image/jpeg'
             }
           ]
         }}

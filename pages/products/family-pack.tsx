@@ -57,10 +57,18 @@ export default function FamilyPackPage() {
           type: 'product',
           images: [
             {
+              url: 'https://purrify.ca/optimized/140g.webp',
+              width: 1200,
+              height: 630,
+              alt: 'Purrify 120g Family Pack Package (WebP)',
+              type: 'image/webp'
+            },
+            {
               url: 'https://purrify.ca/purrify-family-120g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 120g Family Pack Package'
+              alt: 'Purrify 120g Family Pack Package',
+              type: 'image/jpeg'
             }
           ]
         }}

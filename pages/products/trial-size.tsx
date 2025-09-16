@@ -57,10 +57,18 @@ export default function TrialSizePage() {
           type: 'product',
           images: [
             {
+              url: 'https://purrify.ca/optimized/20g.webp',
+              width: 1200,
+              height: 630,
+              alt: 'Purrify 17g Trial Size Package (WebP)',
+              type: 'image/webp'
+            },
+            {
               url: 'https://purrify.ca/purrify-trial-17g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 17g Trial Size Package'
+              alt: 'Purrify 17g Trial Size Package',
+              type: 'image/jpeg'
             }
           ]
         }}
