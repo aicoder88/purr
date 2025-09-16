@@ -71,6 +71,24 @@
     "avifSanitized": "optimized/panel_1.avif",
     "optimized": "optimized/panel_1.png"
   },
+  "multiple-cats-together.jpg": {
+    "width": 1200,
+    "height": 600,
+    "webp": "optimized/multiple-cats-together.webp",
+    "webpSanitized": "optimized/multiple-cats-together.webp",
+    "avif": "optimized/multiple-cats-together.avif",
+    "avifSanitized": "optimized/multiple-cats-together.avif",
+    "optimized": "optimized/multiple-cats-together.jpg"
+  },
+  "multi-cat-household.jpg": {
+    "width": 1200,
+    "height": 800,
+    "webp": "optimized/multi-cat-household.webp",
+    "webpSanitized": "optimized/multi-cat-household.webp",
+    "avif": "optimized/multi-cat-household.avif",
+    "avifSanitized": "optimized/multi-cat-household.avif",
+    "optimized": "optimized/multi-cat-household.jpg"
+  },
   "micropores_magnified_view.jpeg": {
     "width": 886,
     "height": 886,
