@@ -25,9 +25,48 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-int
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
   const { locale, pathname } = router;
-  
+
   // Canonical site URL
   const canonicalUrl = 'https://purrify.ca';
+
+  // Service Worker registration
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      const registerSW = async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js', {
+            scope: '/',
+            updateViaCache: 'none'
+          });
+
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // New content is available, prompt user to refresh
+                  if (confirm('New content is available! Click OK to refresh.')) {
+                    window.location.reload();
+                  }
+                }
+              });
+            }
+          });
+
+          console.log('SW registered successfully');
+        } catch (error) {
+          console.warn('SW registration failed:', error);
+        }
+      };
+
+      // Register after page load to avoid blocking
+      if (document.readyState === 'complete') {
+        registerSW();
+      } else {
+        window.addEventListener('load', registerSW);
+      }
+    }
+  }, []);
   
   
   return (

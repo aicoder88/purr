@@ -1,22 +1,30 @@
 // Purrify Service Worker for PWA functionality
-const CACHE_NAME = 'purrify-v1.0.0';
-const STATIC_CACHE = 'purrify-static-v1';
-const DYNAMIC_CACHE = 'purrify-dynamic-v1';
+const CACHE_VERSION = '2025.01.17';
+const STATIC_CACHE = `purrify-static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `purrify-dynamic-${CACHE_VERSION}`;
+const IMAGE_CACHE = `purrify-images-${CACHE_VERSION}`;
 
-// Assets to cache for offline functionality
+// Critical assets to cache immediately
 const STATIC_ASSETS = [
   '/',
-  '/offline',
   '/manifest.json',
   '/optimized/purrify-logo-icon.webp',
-  // Add critical CSS and JS files
-  '/_next/static/css/',
-  '/_next/static/js/',
-  // Critical pages
+  '/optimized/17g.webp',
+  '/optimized/60g.webp',
+  '/optimized/120g.webp',
+  // Critical pages for offline access
   '/products/trial-size',
+  '/products/standard',
   '/learn/how-it-works',
   '/support/contact'
 ];
+
+// Cache strategies
+const CACHE_STRATEGIES = {
+  CACHE_FIRST: 'cache-first',
+  NETWORK_FIRST: 'network-first',
+  STALE_WHILE_REVALIDATE: 'stale-while-revalidate'
+};
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
@@ -40,81 +48,149 @@ self.addEventListener('install', (event) => {
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   console.log('Service Worker: Activating...');
-  
+
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
-            console.log('Service Worker: Deleting old cache', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      // Clean up old caches
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (!cacheName.includes(CACHE_VERSION)) {
+              console.log('Service Worker: Deleting old cache', cacheName);
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      }),
+      // Take control of all pages immediately
+      self.clients.claim()
+    ])
   );
-  
-  // Take control of all pages immediately
-  self.clients.claim();
 });
 
-// Fetch event - serve cached content when offline
+// Optimized fetch handler with intelligent caching strategies
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+
+  // Skip non-GET requests and external requests
+  if (request.method !== 'GET' || !url.origin.includes(self.location.origin)) {
     return;
   }
-  
-  // Skip external requests
-  if (!url.origin.includes(self.location.origin)) {
-    return;
+
+  // Determine cache strategy based on request type
+  if (url.pathname.startsWith('/optimized/') || url.pathname.match(/\.(jpg|jpeg|png|gif|webp|avif|svg)$/)) {
+    // Images: Cache first strategy for long-term caching
+    event.respondWith(handleImageRequest(request));
+  } else if (url.pathname.startsWith('/api/')) {
+    // API: Network first for fresh data
+    event.respondWith(handleApiRequest(request));
+  } else if (url.pathname.startsWith('/_next/static/')) {
+    // Static assets: Cache first with long-term caching
+    event.respondWith(handleStaticAssetRequest(request));
+  } else {
+    // Pages: Stale while revalidate for good UX
+    event.respondWith(handlePageRequest(request));
   }
-  
-  event.respondWith(
-    caches.match(request)
-      .then((cachedResponse) => {
-        // Return cached version if available
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        
-        // Otherwise fetch from network
-        return fetch(request)
-          .then((response) => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-            
-            // Clone the response
-            const responseToCache = response.clone();
-            
-            // Cache dynamic content
-            caches.open(DYNAMIC_CACHE)
-              .then((cache) => {
-                cache.put(request, responseToCache);
-              });
-            
-            return response;
-          })
-          .catch(() => {
-            // If both cache and network fail, show offline page for navigation requests
-            if (request.destination === 'document') {
-              return caches.match('/offline');
-            }
-            
-            // For other requests, you might want to return a default response
-            return new Response('Offline', {
-              status: 503,
-              statusText: 'Service Unavailable'
-            });
-          });
-      })
-  );
 });
+
+// Cache-first strategy for images
+async function handleImageRequest(request) {
+  try {
+    const cache = await caches.open(IMAGE_CACHE);
+    const cachedResponse = await cache.match(request);
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.warn('Image cache error:', error);
+    return new Response('Image not available offline', { status: 503 });
+  }
+}
+
+// Network-first strategy for API requests
+async function handleApiRequest(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(DYNAMIC_CACHE);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    const cache = await caches.open(DYNAMIC_CACHE);
+    const cachedResponse = await cache.match(request);
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    return new Response('API unavailable offline', { status: 503 });
+  }
+}
+
+// Cache-first for static assets
+async function handleStaticAssetRequest(request) {
+  try {
+    const cache = await caches.open(STATIC_CACHE);
+    const cachedResponse = await cache.match(request);
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    return new Response('Asset not available offline', { status: 503 });
+  }
+}
+
+// Stale-while-revalidate for pages
+async function handlePageRequest(request) {
+  try {
+    const cache = await caches.open(DYNAMIC_CACHE);
+    const cachedResponse = await cache.match(request);
+
+    // Fetch fresh version in background
+    const fetchPromise = fetch(request).then(response => {
+      if (response.ok) {
+        cache.put(request, response.clone());
+      }
+      return response;
+    }).catch(() => null);
+
+    // Return cached version immediately if available
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    // Otherwise wait for network
+    const response = await fetchPromise;
+    if (response) {
+      return response;
+    }
+
+    // Fallback to offline page
+    return cache.match('/') || new Response('Page not available offline', {
+      status: 503,
+      headers: { 'Content-Type': 'text/html' }
+    });
+  } catch (error) {
+    console.warn('Page cache error:', error);
+    return new Response('Page not available offline', { status: 503 });
+  }
+}
 
 // Background sync for form submissions when offline
 self.addEventListener('sync', (event) => {
