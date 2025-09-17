@@ -43,26 +43,34 @@ import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
+  const pageDescription = t.siteDescription || SITE_DESCRIPTION;
   const canonicalUrl = 'https://purrify.ca/';
   const { generateBreadcrumbs } = useStructuredData();
-  
+
   // Generate breadcrumbs for home page
   const breadcrumbs = generateBreadcrumbs('/');
-  
+
   return (
     <>
       <SkipNav />
       <NextSeo
         title={pageTitle}
-        description={SITE_DESCRIPTION}
+        description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={[
+          { hrefLang: 'en', href: 'https://purrify.ca/' },
+          { hrefLang: 'fr', href: 'https://purrify.ca/fr/' },
+          { hrefLang: 'zh', href: 'https://purrify.ca/zh/' },
+          { hrefLang: 'x-default', href: 'https://purrify.ca/' },
+        ]}
         openGraph={{
           type: 'website',
           url: canonicalUrl,
           title: pageTitle,
-          description: SITE_DESCRIPTION,
+          description: pageDescription,
+          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
               url: 'https://purrify.ca/purrify-logo.png',

@@ -12,10 +12,10 @@ import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
-  
-  const pageTitle = `${SITE_NAME} Standard Size - 60g Activated Carbon Cat Litter Additive`;
-  const pageDescription = "Perfect for single-cat homes. One month of freshness with Purrify's 60g standard size activated carbon cat litter additive. Most popular size.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/standard`;
+
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 60g Activated Carbon Cat Litter Additive`;
+  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 60g standard size activated carbon cat litter additive. Most popular size.";
+  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/standard`;
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-60g');
@@ -50,11 +50,18 @@ export default function StandardSizePage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={[
+          { hrefLang: 'en', href: 'https://purrify.ca/products/standard' },
+          { hrefLang: 'fr', href: 'https://purrify.ca/fr/products/standard' },
+          { hrefLang: 'zh', href: 'https://purrify.ca/zh/products/standard' },
+          { hrefLang: 'x-default', href: 'https://purrify.ca/products/standard' },
+        ]}
         openGraph={{
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
           type: 'product',
+          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
               url: 'https://purrify.ca/optimized/60g.webp',

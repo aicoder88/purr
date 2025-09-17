@@ -12,10 +12,10 @@ import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
-  
-  const pageTitle = `${SITE_NAME} Trial Size - 17g Activated Carbon Cat Litter Additive`;
-  const pageDescription = "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`;
+
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 17g Activated Carbon Cat Litter Additive`;
+  const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
+  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`;
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-17g');
@@ -50,11 +50,18 @@ export default function TrialSizePage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={[
+          { hrefLang: 'en', href: 'https://purrify.ca/products/trial-size' },
+          { hrefLang: 'fr', href: 'https://purrify.ca/fr/products/trial-size' },
+          { hrefLang: 'zh', href: 'https://purrify.ca/zh/products/trial-size' },
+          { hrefLang: 'x-default', href: 'https://purrify.ca/products/trial-size' },
+        ]}
         openGraph={{
           title: pageTitle,
           description: pageDescription,
           url: canonicalUrl,
           type: 'product',
+          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
               url: 'https://purrify.ca/optimized/20g.webp',
