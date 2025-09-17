@@ -69,7 +69,7 @@ export function BlogPreview() {
                 <div className="relative w-full h-[200px] sm:h-[250px]">
                   <NextImage
                     src={post.image}
-                    alt={post.title}
+                    alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}

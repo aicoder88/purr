@@ -106,7 +106,7 @@ export function Testimonials() {
                           ? "men"
                           : "women"
                       }/${index + 1}.jpg`}
-                      alt={`${testimonial.name}`}
+                      alt={`Portrait photo of ${testimonial.name}, satisfied Purrify customer`}
                       width={64}
                       height={64}
                       className="w-full h-full object-cover"
