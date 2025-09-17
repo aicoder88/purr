@@ -374,9 +374,18 @@ export const generateFAQSchema = (locale: 'en' | 'fr' | 'zh') => {
   };
 };
 
+// Product interface for type safety
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  size: string;
+}
+
 // Generate enhanced product offer schema
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const generateOfferSchema = (product: any, locale: 'en' | 'fr' | 'zh') => {
+export const generateOfferSchema = (product: Product, locale: 'en' | 'fr' | 'zh') => {
   const localizedUrl = getLocalizedUrl(`/products/${product.id}`, locale);
   
   return {

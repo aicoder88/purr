@@ -416,7 +416,7 @@ export default function Stockists() {
                             </span>
                             {stockist.verified && (
                               <div className="flex items-center gap-1">
-                                <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                                <Star className="h-4 w-4 text-yellow-500 dark:text-yellow-400 fill-current" />
                                 <span className="text-xs text-gray-600 dark:text-gray-400">
                                   {locale === 'fr' ? 'Vérifié' : 'Verified'}
                                 </span>

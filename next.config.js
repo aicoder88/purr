@@ -81,9 +81,20 @@ const nextConfig = {
   
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      '@radix-ui/react-icons',
+      'framer-motion',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      'recharts'
+    ],
     optimizeCss: true,
     scrollRestoration: true,
+    // Enable modern bundling
+    esmExternals: true,
+    // Improve tree shaking
+    swcMinify: true,
   },
   
   // Move deprecated options out of experimental
@@ -487,24 +498,49 @@ const nextConfig = {
           ...config.optimization.splitChunks,
           chunks: 'all',
           minSize: 20000,
-          maxSize: 244000,
+          maxSize: 150000, // Reduced from 244000 to create smaller chunks
           cacheGroups: {
-            // Separate vendors into different chunks for better caching
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-              priority: 20,
-              enforce: true,
-            },
-            // Large libraries get their own chunks
+            // React core - highest priority
             react: {
               test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
               name: 'react',
               chunks: 'all',
+              priority: 40,
+              enforce: true,
+            },
+            // Next.js framework code
+            framework: {
+              test: /[\\/]node_modules[\\/](next)[\\/]/,
+              name: 'framework',
+              chunks: 'all',
+              priority: 35,
+              enforce: true,
+            },
+            // Icons - split into separate chunk due to size
+            icons: {
+              test: /[\\/]node_modules[\\/](lucide-react|react-icons|@radix-ui\/react-icons)[\\/]/,
+              name: 'icons',
+              chunks: 'all',
               priority: 30,
               enforce: true,
             },
+            // UI libraries - often change together
+            ui: {
+              test: /[\\/]node_modules[\\/](@radix-ui|framer-motion|embla-carousel|class-variance-authority|clsx|tailwind-merge)[\\/]/,
+              name: 'ui',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            // Analytics and tracking
+            analytics: {
+              test: /[\\/]node_modules[\\/](recharts|chart\.js|@vercel\/analytics|gtag|google-analytics)[\\/]/,
+              name: 'analytics',
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            // Stripe payment processing
             stripe: {
               test: /[\\/]node_modules[\\/](@stripe|stripe)[\\/]/,
               name: 'stripe',
@@ -512,34 +548,41 @@ const nextConfig = {
               priority: 25,
               enforce: true,
             },
-            icons: {
-              test: /[\\/]node_modules[\\/](lucide-react|react-icons)[\\/]/,
-              name: 'icons',
+            // Large utility libraries
+            utils: {
+              test: /[\\/]node_modules[\\/](lodash|ramda|date-fns|moment)[\\/]/,
+              name: 'utils',
               chunks: 'all',
-              priority: 25,
+              priority: 20,
               enforce: true,
             },
-            // Common UI libraries
-            ui: {
-              test: /[\\/]node_modules[\\/](@radix-ui|framer-motion|embla-carousel)[\\/]/,
-              name: 'ui',
+            // General vendor code
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name(module) {
+                // Create multiple vendor chunks based on package name
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)?.[1];
+                return `vendors-${packageName?.replace(/[@/]/g, '-').toLowerCase() || 'misc'}`;
+              },
               chunks: 'all',
-              priority: 25,
-              enforce: true,
+              priority: 15,
+              minChunks: 1,
+              maxSize: 100000, // Smaller vendor chunks
             },
-            // Charts and analytics
-            analytics: {
-              test: /[\\/]node_modules[\\/](recharts|chart\.js|@vercel\/analytics)[\\/]/,
-              name: 'analytics',
-              chunks: 'all',
-              priority: 25,
-              enforce: true,
-            },
-            // Default for other node_modules
-            default: {
+            // Common code from src
+            common: {
+              test: /[\\/]src[\\/]/,
+              name: 'common',
               minChunks: 2,
               priority: 10,
               reuseExistingChunk: true,
+            },
+            // Default fallback
+            default: {
+              minChunks: 2,
+              priority: 5,
+              reuseExistingChunk: true,
+              maxSize: 100000,
             },
           },
         },
