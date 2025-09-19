@@ -26,6 +26,10 @@ export interface TranslationType {
     faq: string;
     science: string;
     buyNow: string;
+    retailers: string;
+    wholesalePricing: string;
+    becomePartner: string;
+    marketingSupport: string;
   };
 
   // About Section
@@ -50,11 +54,24 @@ export interface TranslationType {
     buttons: {
       shopNow: string;
       reviews: string;
+      learnMore?: string;
     };
     ariaLabels: {
       shopNow: string;
       reviews: string;
       playVideo: string;
+    };
+    dualPath?: {
+      consumer: {
+        title: string;
+        description: string;
+        cta: string;
+      };
+      retailer: {
+        title: string;
+        description: string;
+        cta: string;
+      };
     };
   };
   
@@ -922,6 +939,108 @@ export interface TranslationType {
         moreDeodorizer: string;
         maintenance: string;
       };
+    };
+  };
+
+  // Retailers & B2B
+  retailers?: {
+    seo: {
+      pageTitle: string;
+      description: string;
+    };
+    hero: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: {
+        primary: string;
+        secondary: string;
+      };
+    };
+    benefits: {
+      pricing: {
+        title: string;
+        description: string;
+      };
+      marketing: {
+        title: string;
+        description: string;
+      };
+      proven: {
+        title: string;
+        description: string;
+      };
+      highDemand: {
+        title: string;
+        description: string;
+      };
+      highMargins: {
+        title: string;
+        description: string;
+      };
+      easyStocking: {
+        title: string;
+        description: string;
+      };
+      marketingSupport: {
+        title: string;
+        description: string;
+      };
+      customerLoyalty: {
+        title: string;
+        description: string;
+      };
+      fastMoving: {
+        title: string;
+        description: string;
+      };
+      title: string;
+      description: string;
+      success: {
+        title: string;
+      };
+    };
+    pricing: {
+      title: string;
+      description: string;
+      tiers: {
+        starter: {
+          name: string;
+          description: string;
+        };
+        growth: {
+          name: string;
+          description: string;
+        };
+        enterprise: {
+          name: string;
+          description: string;
+        };
+      };
+      additional: {
+        title: string;
+        description: string;
+      };
+    };
+    marketing: {
+      title: string;
+      description: string;
+      coop: {
+        title: string;
+        description: string;
+      };
+    };
+    testimonials: {
+      title: string;
+      description: string;
+      metrics: {
+        title: string;
+      };
+    };
+    contact: {
+      title: string;
+      description: string;
     };
   };
 }

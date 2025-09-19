@@ -35,8 +35,8 @@ export default function ContactPageFR() {
   const contactMethods = t.contactPage.contactMethods.map((method, index) => ({
     icon: index === 0 ? Mail : index === 1 ? Phone : MessageCircle,
     ...method,
-    value: index === 0 ? "support@purrify.ca" : index === 1 ? "+1 514 961 9386" : "Disponible Maintenant",
-    action: index === 0 ? "mailto:support@purrify.ca" : index === 1 ? "tel:+15149619386" : "#"
+    value: index === 0 ? "support@purrify.ca" : index === 1 ? "1-250-432-9352" : "Disponible Maintenant",
+    action: index === 0 ? "mailto:support@purrify.ca" : index === 1 ? "tel:+12504329352" : "#"
   }));
 
   const faqs = t.contactPage.faqs;

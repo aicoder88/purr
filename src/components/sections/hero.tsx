@@ -159,24 +159,73 @@ export function Hero() {
                 </span>
               </div>
             </div>
-            <div className={`flex flex-col sm:flex-row gap-4 pt-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <Button
-                onClick={() => scrollToSection("products")}
-                size="lg"
-                className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] hover:from-[#E02B2B] hover:to-[#FF4040] text-white dark:text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-1 min-w-[200px]"
-                aria-label={t.hero.ariaLabels.shopNow}
-              >
-                {t.hero.buttons.shopNow}
-              </Button>
-              <Button
-                onClick={() => scrollToSection("testimonials")}
-                size="lg"
-                variant="outline"
-                className="bg-white dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#FF3131] dark:border-[#FF5050] hover:bg-[#FF3131] dark:hover:bg-[#FF5050] hover:text-white dark:hover:text-white transform hover:-translate-y-1 min-w-[200px]"
-                aria-label={t.hero.ariaLabels.reviews}
-              >
-                {t.hero.buttons.reviews}
-              </Button>
+            {/* Dual Path CTA Section */}
+            <div className="space-y-6 pt-4">
+              {/* Path Selection Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                {/* Consumer Path */}
+                <div className="bg-gradient-to-br from-[#FF3131]/5 to-[#FF5050]/10 dark:from-[#FF5050]/10 dark:to-[#FF3131]/5 border-2 border-[#FF3131]/20 dark:border-[#FF5050]/30 rounded-xl p-6 hover:border-[#FF3131]/40 dark:hover:border-[#FF5050]/50 transition-all duration-300 hover:shadow-lg group">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 bg-[#FF3131]/10 dark:bg-[#FF5050]/20 rounded-lg flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-gray-50">{t.hero.dualPath?.consumer?.title || 'For Your Cat'}</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{t.hero.dualPath?.consumer?.description || 'Individual cat owners - instant checkout, direct delivery'}</p>
+                  <Button
+                    onClick={() => scrollToSection("products")}
+                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF5050] hover:from-[#E02B2B] hover:to-[#FF4040] text-white dark:text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 border-0 transform group-hover:-translate-y-0.5"
+                    aria-label={t.hero.ariaLabels.shopNow}
+                  >
+                    {t.hero.dualPath?.consumer?.cta || 'Buy Now for Your Cat'}
+                  </Button>
+                </div>
+
+                {/* Retailer Path */}
+                <div className="bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/10 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/5 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30 rounded-xl p-6 hover:border-[#5B2EFF]/40 dark:hover:border-[#3694FF]/50 transition-all duration-300 hover:shadow-lg group">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 bg-[#5B2EFF]/10 dark:bg-[#3694FF]/20 rounded-lg flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-[#5B2EFF] dark:text-[#3694FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-gray-50">{t.hero.dualPath?.retailer?.title || 'Pet Stores & Retailers'}</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{t.hero.dualPath?.retailer?.description || 'Wholesale pricing, bulk orders, marketing support'}</p>
+                  <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`}>
+                    <Button
+                      className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 border-0 transform group-hover:-translate-y-0.5"
+                      aria-label="Learn about wholesale opportunities"
+                    >
+                      {t.hero.dualPath?.retailer?.cta || 'Wholesale Portal'}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Secondary Actions */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button
+                  onClick={() => scrollToSection("testimonials")}
+                  size="lg"
+                  variant="outline"
+                  className="bg-white dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 border-2 border-[#FF3131] dark:border-[#FF5050] hover:bg-[#FF3131] dark:hover:bg-[#FF5050] hover:text-white dark:hover:text-white transform hover:-translate-y-1"
+                  aria-label={t.hero.ariaLabels.reviews}
+                >
+                  {t.hero.buttons.reviews}
+                </Button>
+                <Button
+                  onClick={() => scrollToSection("how-it-works")}
+                  size="lg"
+                  variant="ghost"
+                  className="text-gray-700 dark:text-gray-200 font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95 transform hover:-translate-y-1"
+                  aria-label="Learn how Purrify works"
+                >
+                  {t.hero.buttons.learnMore || 'How It Works'}
+                </Button>
+              </div>
             </div>
           </div>
           

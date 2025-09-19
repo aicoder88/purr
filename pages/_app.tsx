@@ -180,7 +180,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 contactPoint: [
                   {
                     '@type': 'ContactPoint',
-                    telephone: '+1-250-432-9352',
+                    telephone: '1-250-432-9352',
                     contactType: 'customer service',
                     areaServed: 'CA',
                     availableLanguage: ['English', 'French'],

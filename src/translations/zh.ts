@@ -25,7 +25,11 @@ export const zh = {
     howItWorksPage: "工作原理",
     faq: "常见问题",
     science: "科学原理",
-    buyNow: "立即购买！"
+    buyNow: "立即购买！",
+    retailers: "零售商",
+    wholesalePricing: "批发价格",
+    becomePartner: "成为合作伙伴",
+    marketingSupport: "营销支持"
   },
   
   // Products
@@ -253,7 +257,7 @@ export const zh = {
     title: "联系我们",
     subtitle: "我们很乐意听到您的声音",
     address: "加拿大蒙特利尔",
-    phone: "+1 250 432 9352",
+    phone: "1-250-432-9352",
     email: "hello@purrify.ca",
     hours: {
       title: "营业时间",
@@ -379,7 +383,7 @@ export const zh = {
       description: "优质活性炭猫砂添加剂，在分子水平上消除异味。采用天然椰壳炭在加拿大制造。",
       foundingDate: "2023",
       contactPoint: {
-        telephone: "+1 250 432 9352",
+        telephone: "1-250-432-9352",
         email: "hello@purrify.ca",
         contactType: "客户服务",
         areaServed: ["CA", "US"],
@@ -982,7 +986,7 @@ export const zh = {
     ],
     contactInfo: {
       email: "hello@purrify.ca",
-      phone: "+1 250 432 9352",
+      phone: "1-250-432-9352",
       address: "加拿大蒙特利尔"
     }
   },

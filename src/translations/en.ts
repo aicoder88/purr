@@ -26,7 +26,11 @@ export const en = {
     howItWorksPage: "How It Works",
     faq: "FAQ",
     science: "Science",
-    buyNow: "Buy Now!"
+    buyNow: "Buy Now!",
+    retailers: "For Retailers",
+    wholesalePricing: "Wholesale Pricing",
+    becomePartner: "Become a Partner",
+    marketingSupport: "Marketing Support"
   },
   
   // Products
@@ -61,12 +65,25 @@ export const en = {
     },
     buttons: {
       shopNow: "Try 17g Risk-Free - $24.95",
-      reviews: "⚗️ See the Science"
+      reviews: "⚗️ See the Science",
+      learnMore: "How It Works"
     },
     ariaLabels: {
       shopNow: "Shop Purrify products now",
       reviews: "Read 138+ customer reviews",
       playVideo: "Play demonstration video showing Purrify eliminating cat litter odors"
+    },
+    dualPath: {
+      consumer: {
+        title: "For Your Cat",
+        description: "Individual cat owners - instant checkout, direct delivery",
+        cta: "Buy Now for Your Cat"
+      },
+      retailer: {
+        title: "Pet Stores & Retailers",
+        description: "Wholesale pricing, bulk orders, marketing support",
+        cta: "Wholesale Portal"
+      }
     }
   },
   
@@ -225,7 +242,7 @@ export const en = {
     title: "Contact Us",
     subtitle: "We're here to help",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "+1 250 432 9352",
+    phone: "1-250-432-9352",
     email: "hello@purrify.ca",
     hours: {
       title: "Opening Hours",
@@ -310,7 +327,7 @@ export const en = {
       description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural coconut shell carbon.",
       foundingDate: "2023",
       contactPoint: {
-        telephone: "+1 250 432 9352",
+        telephone: "1-250-432-9352",
         email: "hello@purrify.ca",
         contactType: "customer service",
         areaServed: ["CA", "US"],
@@ -1107,6 +1124,108 @@ export const en = {
         moreDeodorizer: "More deodorizer needed",
         maintenance: "Maintenance required"
       }
+    }
+  },
+
+  // Retailers & B2B
+  retailers: {
+    seo: {
+      pageTitle: "Wholesale & Retail Partners",
+      description: "Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada."
+    },
+    hero: {
+      badge: "Business Partnership",
+      title: "Partner with Purrify",
+      subtitle: "Wholesale Success",
+      description: "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support included.",
+      cta: {
+        primary: "View Wholesale Pricing",
+        secondary: "Become a Partner"
+      }
+    },
+    benefits: {
+      pricing: {
+        title: "Wholesale Pricing",
+        description: "Up to 50% margins with volume discounts"
+      },
+      marketing: {
+        title: "Marketing Support",
+        description: "POS materials, training, co-op advertising"
+      },
+      proven: {
+        title: "Proven Product",
+        description: "4.8/5 stars, high repeat purchase rate"
+      },
+      highDemand: {
+        title: "High Customer Demand",
+        description: "Pet owners actively seek odor solutions. Purrify addresses the #1 complaint about cat ownership - litter box odors."
+      },
+      highMargins: {
+        title: "Premium Margins",
+        description: "Small, lightweight product with high perceived value. Better margins than traditional heavy cat litter products."
+      },
+      easyStocking: {
+        title: "Easy to Stock",
+        description: "Compact packaging saves shelf space. No refrigeration required. Long shelf life with no expiration concerns."
+      },
+      marketingSupport: {
+        title: "Complete Marketing Support",
+        description: "We provide everything you need: shelf displays, product training, customer education materials, and co-op advertising."
+      },
+      customerLoyalty: {
+        title: "Builds Customer Loyalty",
+        description: "When Purrify solves their odor problem, customers become loyal to your store. They return monthly and recommend to friends."
+      },
+      fastMoving: {
+        title: "Fast-Moving Inventory",
+        description: "Unlike slow-moving pet accessories, Purrify is a consumable product with predictable monthly reorders."
+      },
+      title: "Why Retailers Choose Purrify",
+      description: "Join hundreds of successful pet stores and retailers who have added Purrify to their product lineup with outstanding results.",
+      success: {
+        title: "Real Success Stories"
+      }
+    },
+    pricing: {
+      title: "Wholesale Pricing Tiers",
+      description: "Flexible pricing options designed to maximize your margins while providing exceptional value to your customers.",
+      tiers: {
+        starter: {
+          name: "Starter",
+          description: "Perfect for small pet stores"
+        },
+        growth: {
+          name: "Growth",
+          description: "Most popular for established stores"
+        },
+        enterprise: {
+          name: "Enterprise",
+          description: "For chains and large retailers"
+        }
+      },
+      additional: {
+        title: "Volume Discounts Available",
+        description: "Looking for larger quantities? We offer custom pricing for chains, distributors, and high-volume retailers. Contact us for a personalized quote."
+      }
+    },
+    marketing: {
+      title: "Complete Marketing Support",
+      description: "We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we've got you covered.",
+      coop: {
+        title: "Co-op Advertising Program",
+        description: "Qualify for advertising credits to promote Purrify in your local market. We'll help cover costs for newspaper ads, radio spots, and local marketing campaigns."
+      }
+    },
+    testimonials: {
+      title: "What Our Retail Partners Say",
+      description: "Real feedback from successful pet store owners and managers across Canada.",
+      metrics: {
+        title: "Proven Business Results"
+      }
+    },
+    contact: {
+      title: "Become a Purrify Retail Partner",
+      description: "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours."
     }
   }
 }; 

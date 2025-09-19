@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
   const { t, locale } = useTranslation();
   const router = useRouter();
@@ -40,6 +41,7 @@ export function Header() {
     const handleRouteChange = () => {
       setIsMenuOpen(false);
       setIsProductsDropdownOpen(false);
+      setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
     };
 
@@ -60,6 +62,17 @@ export function Header() {
         { label: t.nav?.trialSize || '17g Trial Size', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size` },
         { label: t.nav?.compareSizes || 'Compare Sizes', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/compare` },
         { label: t.nav?.viewAllProducts || 'View All Products', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products` }
+      ]
+    },
+    {
+      id: 'retailers',
+      label: t.nav?.retailers || 'For Retailers',
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`,
+      hasDropdown: true,
+      dropdownItems: [
+        { label: t.nav?.wholesalePricing || 'Wholesale Pricing', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#wholesale-pricing` },
+        { label: t.nav?.becomePartner || 'Become a Partner', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#retailer-contact` },
+        { label: t.nav?.marketingSupport || 'Marketing Support', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#marketing-support` }
       ]
     },
     {
@@ -109,10 +122,11 @@ export function Header() {
                     <button
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
-                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
+                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={() => {
                         if (item.id === 'products') setIsProductsDropdownOpen(true);
+                        if (item.id === 'retailers') setIsRetailersDropdownOpen(true);
                         if (item.id === 'learn') setIsLearnDropdownOpen(true);
                       }}
                       onMouseLeave={(e) => {
@@ -120,22 +134,26 @@ export function Header() {
                         if (!relatedTarget?.closest('[data-dropdown]')) {
                           setTimeout(() => {
                             if (item.id === 'products') setIsProductsDropdownOpen(false);
+                            if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
                             if (item.id === 'learn') setIsLearnDropdownOpen(false);
                           }, 500);
                         }
                       }}
                       onClick={() => {
                         if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                        if (item.id === 'retailers') setIsRetailersDropdownOpen(!isRetailersDropdownOpen);
                         if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault();
                           if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
+                          if (item.id === 'retailers') setIsRetailersDropdownOpen(!isRetailersDropdownOpen);
                           if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
                         }
                         if (e.key === 'Escape') {
                           if (item.id === 'products') setIsProductsDropdownOpen(false);
+                          if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
                           if (item.id === 'learn') setIsLearnDropdownOpen(false);
                         }
                       }}
@@ -143,7 +161,8 @@ export function Header() {
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
-                    {((item.id === 'products' && isProductsDropdownOpen) || 
+                    {((item.id === 'products' && isProductsDropdownOpen) ||
+                      (item.id === 'retailers' && isRetailersDropdownOpen) ||
                       (item.id === 'learn' && isLearnDropdownOpen)) && (
                       <div 
                         className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 dark:border-gray-600/50 z-50"
@@ -151,6 +170,7 @@ export function Header() {
                         aria-labelledby={`dropdown-${item.id}`}
                         onMouseEnter={() => {
                           if (item.id === 'products') setIsProductsDropdownOpen(true);
+                          if (item.id === 'retailers') setIsRetailersDropdownOpen(true);
                           if (item.id === 'learn') setIsLearnDropdownOpen(true);
                         }}
                         onMouseLeave={(e) => {
@@ -158,6 +178,7 @@ export function Header() {
                           if (!relatedTarget?.closest('button') && !relatedTarget?.closest('[data-dropdown]')) {
                             setTimeout(() => {
                               if (item.id === 'products') setIsProductsDropdownOpen(false);
+                              if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
                               if (item.id === 'learn') setIsLearnDropdownOpen(false);
                             }, 500);
                           }

@@ -105,7 +105,7 @@ const TermsPage: NextPage = () => {
               </p>
               <p className="text-gray-700 dark:text-gray-200">
                 电子邮件：hello@purrify.ca<br />
-                电话：+1 514 961 9386<br />
+                电话：1-250-432-9352<br />
                 地址：加拿大蒙特利尔
               </p>
             </section>

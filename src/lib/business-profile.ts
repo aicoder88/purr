@@ -72,7 +72,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
         postalCode: 'J7J 0T6',
         addressCountry: 'CA'
       },
-      phone: '+1-250-432-9352',
+      phone: '1-250-432-9352',
       email: 'hello@purrify.ca',
       website: 'https://purrify.ca',
       geo: {

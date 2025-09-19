@@ -4,242 +4,240 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-Purrify is a Next.js 15 e-commerce website for activated carbon cat litter additive. Production system with strict requirements for dark mode compliance, multi-language support, and payment processing integrity.
+Purrify is a Next.js 15 e-commerce website for activated carbon cat litter additive. Production system requiring dark mode compliance, multi-language support, and secure payment processing.
 
 **Critical Constraints:**
-- Pages Router (NOT App Router)
-- Dark mode mandatory on ALL text elements
-- Multi-language: en (default), fr, zh
-- Stripe payments cannot be broken
-- No competitor brand names in content
+- Pages Router (NOT App Router) 
+- Dark mode mandatory on ALL elements
+- Multi-language: en, fr, zh
+- Stripe payments protected
+- No competitor brand names
 
-## Tech Stack & Architecture
+## Tech Stack
 
-### Core Technologies
-- **Framework**: Next.js 15 (Pages Router)
-- **Language**: TypeScript (strict mode)
-- **Styling**: Tailwind CSS + shadcn/ui
-- **State**: React Context (CartProvider, TranslationProvider)  
-- **Database**: PostgreSQL + Prisma ORM
-- **Authentication**: NextAuth.js
-- **Payments**: Stripe integration
-- **Deployment**: Vercel
+**Core**: Next.js 15 (Pages Router) + TypeScript + Tailwind CSS + shadcn/ui  
+**State**: React Context (Cart, Translation)  
+**Database**: PostgreSQL + Prisma  
+**Payments**: Stripe + NextAuth.js  
+**Deploy**: Vercel
 
-### Directory Structure
+### Key Architecture
+
+**State Management:**
+- Cart: React Context with encrypted localStorage (`src/lib/cart-context.tsx`)
+- i18n: React Context with Next.js i18n (`src/lib/translation-context.tsx`)
+- Theme: Built-in Next.js theme system with automatic persistence
+
+**Key Structure:**
 ```
-pages/                    # Next.js routing (Pages Router)
-src/components/
-  ├── sections/          # Page sections (hero, testimonials)
-  ├── ui/                # shadcn/ui components
-  ├── layout/            # Header, footer
-  └── theme/             # Theme provider/toggle
-src/lib/                 # Utilities and configurations
-src/translations/        # i18n files (en.ts, fr.ts, zh.ts)
-scripts/                 # Build and optimization
-prisma/                  # Database schema
+pages/                    # Next.js Pages Router
+├── api/                 # API routes (Stripe, webhooks, analytics)
+├── [locale]/            # Internationalized pages
+src/
+├── components/
+│   ├── sections/        # Page sections (Hero, About, etc.)
+│   ├── ui/              # shadcn/ui components
+│   ├── layout/          # Header, Footer
+│   ├── social-proof/    # Trust badges, notifications
+│   └── seo/             # Structured data, JSON-LD
+├── lib/                 # Core business logic
+├── translations/        # i18n JSON files (en/fr/zh)
+└── types/               # TypeScript definitions
+scripts/                 # Build/optimization scripts
 ```
 
-### Key Models (Prisma)
-```prisma
-User, Product, Order, Customer, OrderItem, Referral
-// NextAuth.js integration
-// Stripe webhook integration
-```
+**Page Types:**
+- Landing pages: `pages/index.tsx`, product pages
+- Learn pages: `/learn/*` (FAQ, How-it-works, Science)
+- Location pages: `/locations/*` for local SEO
+- Blog: Dynamic routes with SEO optimization
 
-## Development Commands
+## Essential Commands
 
-### Essential Workflow
 ```bash
 # Development
 npm run dev                    # Start dev server
-npm run predev                 # Clear webpack cache first
+npm run predev                 # Clear cache first
 
 # Pre-commit (MANDATORY)
 npm run lint                   # ESLint
 npm run check-types           # TypeScript validation
-npm run validate-dark-mode    # Dark mode compliance check
+npm run validate-dark-mode    # Dark mode compliance
+
+# Testing
+npm run test:e2e              # Playwright end-to-end tests
 
 # Build & Deploy
 npm run build                 # Production build
-npm run start                 # Production server
-```
+npm run start                 # Start production server
+npm run analyze               # Bundle analysis
 
-### Performance & Optimization
-```bash
-npm run optimize-images       # Individual image optimization
-npm run optimize-all-images   # Bulk image optimization  
-npm run performance:audit     # Complete performance audit
-npm run analyze              # Bundle analysis
-npm run generate-enhanced-sitemap  # SEO sitemap
+# Optimization
+npm run optimize-images       # Image optimization
+npm run optimize-all-images   # Optimize all images
+npm run performance:audit     # Performance check (SEO + bundle + cache)
+npm run seo:optimize         # SEO optimizations
+npm run bundle:analyze       # Bundle size analysis
+
+# Cache Management
+npm run clear-cache          # Clear webpack cache
+npm run purge-vercel-cache   # Purge Vercel edge cache
 ```
 
 ## Critical Requirements
 
-### Dark Mode Compliance (MANDATORY)
-**Every text element must have dark: variant. Build will fail without compliance.**
+### Dark Mode Compliance (BUILD FAILS WITHOUT)
+**Every text element needs dark: variant:**
 
-**Required Patterns:**
 ```css
 /* Headings */
 text-gray-900 dark:text-gray-50
 text-gray-800 dark:text-gray-100
 
-/* Body Text */
+/* Body */
 text-gray-700 dark:text-gray-200
 text-gray-600 dark:text-gray-300
-
-/* Secondary/Metadata */
-text-gray-500 dark:text-gray-400
-text-gray-400 dark:text-gray-500
 
 /* Backgrounds */
 bg-white dark:bg-gray-800
 bg-gray-50 dark:bg-gray-900
-bg-gray-100 dark:bg-gray-700
-
-/* Borders */
-border-gray-100 dark:border-gray-700
-border-gray-200 dark:border-gray-600
 ```
-
-**Validation Command:** `npm run validate-dark-mode`
 
 ### Protected Systems
-- **Stripe Checkout**: `/api/create-checkout-session` (DO NOT MODIFY)
-- **Webhooks**: `/api/webhooks/stripe` (CRITICAL FOR PAYMENTS)
-- **Payment Flow**: Must remain functional
+- `/api/create-checkout-session` (Stripe payments)
+- `/api/webhooks/stripe` (Payment webhooks)
+- `/api/cart-recovery` (Encrypted cart data)
+- `/api/analytics/*` (Conversion tracking)
+- Payment flow integrity
+- Cart data encrypted with CryptoJS
 
-### Content Legal Requirements
-- **NO competitor brand names** in any content
-- Use technology/ingredient comparisons only
-- Blog format: "Tech A vs Tech B" not "Brand A vs Brand B"
-- Example: "Activated Carbon vs Baking Soda" not "Purrify vs Arm & Hammer"
+### Content Rules
+- NO competitor brand names
+- Use tech comparisons: "Activated Carbon vs Baking Soda" NOT "Purrify vs Brand X"
+- All text via `useTranslation` hook
 
-### Internationalization Rules
-- Domain-based routing: `purrify.ca` (en), `fr.purrify.ca` (fr), `zh.purrify.ca` (zh)
-- All strings in `src/translations/{locale}.ts`
-- Use `useTranslation` hook for text
-- Currency/date formatting per locale
+## Development Standards
 
-## Component Development Standards
-
-### New Component Checklist
+### TypeScript (Strict Mode)
 ```typescript
-// MANDATORY: Every text element needs dark variant
-className="text-gray-700 dark:text-gray-200"
+// ❌ Never use 'any'
+const handleEvent = (e: any) => { }
 
-// Test in both modes before commit
-// Check accessibility (WCAG AA contrast)
-// Verify mobile responsiveness
+// ✅ Use proper types
+const handleEvent = (e: React.MouseEvent<HTMLButtonElement>) => { }
+
+// ✅ Define interfaces
+interface SlideMeta {
+  title: string;
+  duration: number;
+}
 ```
 
-### UX Interaction Standards
-- **Dropdown delays**: Minimum 500ms `onMouseLeave`
-- **Social proof notifications**: 45-75 second intervals, max 3 concurrent
-- **Animation timing**: 200-400ms for transitions
-- **Touch targets**: Minimum 44px on mobile
+### React Hooks Compliance
+```typescript
+// ✅ Memoize expensive arrays/objects
+const slideContent = useMemo(() => [
+  { title: "Slide 1", duration: 5000 }
+], []);
 
-### Image Optimization Pipeline
-- Original images: `public/original-images/`
-- Optimized output: `public/optimized/`
-- Formats: AVIF → WebP → JPG fallback
-- Run optimization after adding new images
+// ✅ Include dependencies
+useEffect(() => {
+  // Use slideContent
+}, [slideContent]);
 
-## Known Issues (Current State)
+// ✅ Functional updates when only needing previous state
+setState(prev => prev + 1);
+```
 
-### Critical Issues Requiring Attention
-1. **Dark mode violations** across multiple components (validation temporarily disabled)
-2. **Dropdown menu timing** needs 500ms minimum delay
-3. **Social proof frequency** needs 45-75s spacing (currently too fast)
-4. **Brand name mentions** in some content need removal
+### Component Checklist
+- [ ] Every text has `dark:` variant
+- [ ] TypeScript strict compliance
+- [ ] Mobile responsive (44px+ touch targets)
+- [ ] Keyboard navigation
+- [ ] WCAG AA contrast ratios
 
-### Testing Protocol
+## Performance Standards
+
+**Targets:**
+- Lighthouse: 90+ all categories
+- Bundle: <250KB gzipped
+- Core Web Vitals: Green
+
+**UX Timing:**
+- Dropdown delays: 500ms minimum `onMouseLeave`
+- Transitions: 200-400ms
+- Social proof: 45-75s intervals, max 3 concurrent
+
+## Build Requirements
+
+**Must pass before commit:**
 ```bash
-# Before any commit:
-1. npm run lint && npm run check-types
-2. npm run validate-dark-mode  
-3. Test component in light/dark modes
-4. Verify mobile responsiveness
-5. Check keyboard navigation
+eslint --max-warnings=0     # Zero warnings
+tsc --noEmit               # Zero TypeScript errors
+npm run validate-dark-mode  # All elements compliant
 ```
 
-## Performance Targets
-- **Lighthouse**: 90+ all categories
-- **Bundle size**: <250KB gzipped  
-- **Core Web Vitals**: Green scores
-- **Image formats**: WebP/AVIF with fallbacks
+**Common lint rules:**
+- `react-hooks/exhaustive-deps`: Include all dependencies
+- `@typescript-eslint/no-explicit-any`: No `any` types
+- `@next/next/no-img-element`: Use Next.js `Image`
 
-## API Routes & Integration
-```
-/api/create-checkout-session   # Stripe checkout (PROTECTED)
-/api/webhooks/stripe          # Payment webhooks (PROTECTED)
-/api/auth/[...nextauth]       # NextAuth.js routes
-```
+## Emergency Protocols
 
-## SEO Implementation
-- Next SEO for metadata
-- Structured data (Organization, Product schemas)
-- Auto-generated sitemap
-- Google Tag Manager integration
-- Vercel Analytics
+**Build failures:** Usually dark mode violations or TypeScript errors  
+**Payment issues:** Check Stripe dashboard/webhooks  
+**Performance:** Run `npm run performance:audit`
 
-## Changelog Requirements (MANDATORY)
+## Changelog (MANDATORY)
+Document every session in `/CHANGELOG.md`:
 ```markdown
-## [YYYY-MM-DD] - [Brief Description]
+## [YYYY-MM-DD] - [Brief Description]  
 ### Issues Found
-- [Specific technical problem]
-### Changes Made
+- [Technical problem]
+### Changes Made  
 - [File]: [Change] - [Reason]
 ### Testing Done
-- [Validation steps completed]
+- [Validation completed]
 ```
 
-**Log every development session in `/CHANGELOG.md`**
-
-## Development Best Practices
-
-### TypeScript Standards
-- Strict mode enabled
-- Type all props and state
-- Use proper type imports
-- Avoid `any` types
-
-### React Patterns
-- Functional components with hooks
-- Context for global state
-- Proper cleanup in useEffect
-- Error boundaries for critical sections
-
-### Performance Considerations
-- Image optimization mandatory
-- Code splitting with dynamic imports
-- Caching headers for static assets
-- Bundle analysis before deployment
-
-### Accessibility Requirements
-- ARIA labels on interactive elements
-- Keyboard navigation support
-- Screen reader compatibility
-- WCAG AA contrast ratios (both light/dark modes)
-
-## Emergency Contacts & Critical Paths
-- **Payment issues**: Check Stripe dashboard and webhook logs
-- **Build failures**: Usually dark mode violations or TypeScript errors  
-- **SEO problems**: Run `npm run seo:optimize` and check sitemap
-- **Performance issues**: Run `npm run performance:audit`
-
-## Coding Standards
-
-- Do not use `any` type in TypeScript. Always use the correct type:
-  - DOM events → `KeyboardEvent`, `MouseEvent`, etc.
-  - React events → `React.KeyboardEvent<HTMLElement>`, `React.MouseEvent<HTMLButtonElement>`, etc.
-  - Data → define interfaces/types (`interface SlideMeta { ... }`) instead of `any`.
-
-- React Hooks must always follow lint rules:
-  - If a value is used inside `useEffect` or `useCallback`, include it in the dependency array.
-  - If that value is expensive to create (like `tabs` or `slideContent` arrays), wrap it in `useMemo`.
-  - If you only need previous state inside a setter, use functional updates (`setState(prev => ...)`) instead of depending on the state variable.
-
-- All code must pass `eslint --max-warnings=0` and TypeScript checks with **no errors**.
-- Assume build will run with `eslint-config-next` and `@typescript-eslint` enabled. Never output code that would trigger `react-hooks/exhaustive-deps` or `no-explicit-any` errors.
 ---
+
+## Business Requirements
+
+### B2B vs B2C Path Strategy
+**Current State:** Single consumer-focused e-commerce site
+**Required:** Dual-path experience for retailers vs consumers
+
+**Implementation Approach:**
+- Header navigation: Add "For Retailers" vs "Shop Now" paths
+- Retailer portal: Wholesale pricing, minimum orders, marketing support
+- Consumer path: Direct checkout, individual pricing
+- Conditional component rendering based on user type
+- Separate checkout flows and pricing logic
+
+### Customer Segmentation
+- **B2C**: Individual cat owners, direct Stripe checkout
+- **B2B**: Pet stores, retailers, wholesale accounts
+- **Target Markets**: Canada (primary), US expansion planned
+
+## Critical API Endpoints
+
+```typescript
+// Stripe Integration
+/api/create-checkout-session     # Consumer checkout
+/api/webhooks/stripe            # Payment processing
+/api/payment-validation         # Security validation
+
+// Business Logic
+/api/cart-recovery             # Abandoned cart emails
+/api/analytics/conversion-metrics  # Performance tracking
+/api/trial-conversion          # Trial to full conversion
+
+// Content Management
+/api/blog-posts               # Dynamic blog content
+/api/newsletter              # Email subscriptions
+```
+
+---
+
+**Code Quality Promise:** All code output will be production-ready with zero lint warnings, complete TypeScript compliance, full dark mode coverage, and performance optimized.
