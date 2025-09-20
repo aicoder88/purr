@@ -15,7 +15,7 @@ export default function TrialSizePage() {
 
   const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 17g Activated Carbon Cat Litter Additive`;
   const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`;
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-17g');
@@ -51,10 +51,10 @@ export default function TrialSizePage() {
         description={pageDescription}
         canonical={canonicalUrl}
         languageAlternates={[
-          { hrefLang: 'en', href: 'https://purrify.ca/products/trial-size' },
-          { hrefLang: 'fr', href: 'https://purrify.ca/fr/products/trial-size' },
-          { hrefLang: 'zh', href: 'https://purrify.ca/zh/products/trial-size' },
-          { hrefLang: 'x-default', href: 'https://purrify.ca/products/trial-size' },
+          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/products/trial-size' },
+          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/products/trial-size' },
+          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/products/trial-size' },
+          { hrefLang: 'x-default', href: 'https://www.purrify.ca/products/trial-size' },
         ]}
         openGraph={{
           title: pageTitle,
@@ -64,14 +64,14 @@ export default function TrialSizePage() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://purrify.ca/optimized/20g.webp',
+              url: 'https://www.purrify.ca/optimized/20g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify 17g Trial Size Package (WebP)',
               type: 'image/webp'
             },
             {
-              url: 'https://purrify.ca/purrify-trial-17g.jpg',
+              url: 'https://www.purrify.ca/purrify-trial-17g.jpg',
               width: 1200,
               height: 630,
               alt: 'Purrify 17g Trial Size Package',
@@ -109,17 +109,17 @@ export default function TrialSizePage() {
                 "name": "Purrify 17g Trial Size - Activated Carbon Cat Litter Additive",
                 "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
                 "image": [
-                  "https://purrify.ca/optimized/20g.webp",
-                  "https://purrify.ca/purrify-trial-17g.jpg"
+                  "https://www.purrify.ca/optimized/20g.webp",
+                  "https://www.purrify.ca/purrify-trial-17g.jpg"
                 ],
                 "brand": {
                   "@type": "Brand",
                   "name": "Purrify",
-                  "logo": "https://purrify.ca/purrify-logo.png"
+                  "logo": "https://www.purrify.ca/purrify-logo.png"
                 },
                 "manufacturer": {
                   "@type": "Organization",
-                  "@id": "https://purrify.ca/#organization",
+                  "@id": "https://www.purrify.ca/#organization",
                   "name": "Purrify"
                 },
                 "category": "Pet Supplies > Cat Care > Litter Additives",
@@ -144,7 +144,7 @@ export default function TrialSizePage() {
                   "url": canonicalUrl,
                   "seller": {
                     "@type": "Organization",
-                    "@id": "https://purrify.ca/#organization",
+                    "@id": "https://www.purrify.ca/#organization",
                     "name": "Purrify"
                   },
                   "eligibleQuantity": {
@@ -284,13 +284,13 @@ export default function TrialSizePage() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://purrify.ca/"
+                    "item": "https://www.purrify.ca/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Products",
-                    "item": "https://purrify.ca/#products"
+                    "item": "https://www.purrify.ca/#products"
                   },
                   {
                     "@type": "ListItem",

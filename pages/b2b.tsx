@@ -35,7 +35,7 @@ export default function B2B() {
     ? 'Devenez partenaire détaillant Purrify. Programme de vente en gros exclusif pour animaleries, boutiques d\'animaux et distributeurs au Canada. Marges attractives et support marketing complet.'
     : 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada. Attractive margins and comprehensive marketing support.';
 
-  const canonicalUrl = `https://purrify.ca/${locale === 'fr' ? 'fr/' : ''}b2b`;
+  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}b2b`;
 
   // Partnership benefits
   const benefits = [
@@ -190,7 +190,7 @@ export default function B2B() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/b2b-partnership.jpg',
+              url: 'https://www.purrify.ca/images/b2b-partnership.jpg',
               width: 1200,
               height: 630,
               alt: 'Purrify B2B retail partnership program for pet stores',

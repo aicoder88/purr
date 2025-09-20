@@ -88,20 +88,20 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://purrify.ca/blog" />
+        <meta property="og:url" content="https://www.purrify.ca/blog" />
         <meta property="og:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
         <meta property="og:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="og:image" content="https://purrify.ca/purrify-logo.png" />
+        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://purrify.ca/blog" />
+        <meta property="twitter:url" content="https://www.purrify.ca/blog" />
         <meta property="twitter:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
         <meta property="twitter:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="twitter:image" content="https://purrify.ca/purrify-logo.png" />
+        <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
         
         {/* Canonical Link */}
-        <link rel="canonical" href="https://purrify.ca/blog" />
+        <link rel="canonical" href="https://www.purrify.ca/blog" />
       </Head>
 
       <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">

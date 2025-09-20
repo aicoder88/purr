@@ -33,15 +33,15 @@ export default function InvestorRelations() {
       <NextSeo
         title="Investor Relations - Purrify"
         description="Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising CAD $50K @ $1M pre-money valuation."
-        canonical="https://purrify.ca/invest"
+        canonical="https://www.purrify.ca/invest"
         openGraph={{
           title: 'Investor Relations - Purrify',
           description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company.',
-          url: 'https://purrify.ca/invest',
+          url: 'https://www.purrify.ca/invest',
           siteName: 'Purrify',
           images: [
             {
-              url: 'https://purrify.ca/purrify-logo-text.png',
+              url: 'https://www.purrify.ca/purrify-logo-text.png',
               width: 1200,
               height: 630,
               alt: 'Purrify Logo',

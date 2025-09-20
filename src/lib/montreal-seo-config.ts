@@ -165,7 +165,7 @@ export const MONTREAL_STRUCTURED_DATA = {
     "addressCountry": "CA",
     "addressRegion": "QC"
   },
-  "url": "https://purrify.ca/montreal",
+  "url": "https://www.purrify.ca/montreal",
   "alternateName": [
     "https://purrify.ca/fr/montreal",
     "https://fr.purrify.ca/montreal"  

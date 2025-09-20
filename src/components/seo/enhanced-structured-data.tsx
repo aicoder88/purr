@@ -3,7 +3,7 @@ import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../../lib/c
 import { BUSINESS_PROFILE, getLocalBusinessStructuredData, getPrimaryLocation } from '../../lib/business-profile';
 
 export function EnhancedStructuredData() {
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const primaryLocation = getPrimaryLocation();
 
   // Organization Schema using centralized business profile

@@ -1,11 +1,11 @@
 export const getServerSideProps = async ({ res }) => {
   // Fetch data from external API
-  const response = await fetch('https://purrify.ca/api/blog-posts');
+  const response = await fetch('https://www.purrify.ca/api/blog-posts');
   const posts = await response.json();
 
   // Generate dynamic sitemap fields from blog posts
   const fields = posts.map((post) => ({
-    loc: `https://purrify.ca${post.link}`,
+    loc: `https://www.purrify.ca${post.link}`,
     lastmod: new Date().toISOString(),
     changefreq: 'weekly',
     priority: 0.8,
@@ -13,9 +13,9 @@ export const getServerSideProps = async ({ res }) => {
 
   // Add product pages
   const productFields = [
-    { loc: 'https://purrify.ca/products/trial-size', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
-    { loc: 'https://purrify.ca/products/standard', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
-    { loc: 'https://purrify.ca/products/family-pack', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: 'https://www.purrify.ca/products/trial-size', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: 'https://www.purrify.ca/products/standard', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: 'https://www.purrify.ca/products/family-pack', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
   ];
 
   // Combine all fields

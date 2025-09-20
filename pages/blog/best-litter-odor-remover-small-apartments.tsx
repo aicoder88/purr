@@ -19,17 +19,17 @@ export default function BestForSmallApartments() {
         <meta property="og:title" content="Best Cat Litter Odor Remover for Small Apartments: Urban Solutions" />
         <meta property="og:description" content="Expert guide to controlling cat litter odors in small apartments and urban living spaces." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://purrify.ca/blog/best-litter-odor-remover-small-apartments" />
-        <meta property="og:image" content="https://purrify.ca/optimized/20g.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/20g.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Cat Litter Odor Remover for Small Apartments" />
         <meta name="twitter:description" content="Expert solutions for controlling cat litter odors in small apartments and urban spaces." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/20g.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/20g.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/blog/best-litter-odor-remover-small-apartments" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
         
         {/* Schema.org structured data */}
         <script type="application/ld+json">
@@ -47,13 +47,13 @@ export default function BestForSmallApartments() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/purrify-logo.png"
               }
             },
             "datePublished": "2024-02-01",
             "dateModified": "2024-02-01",
-            "image": "https://purrify.ca/optimized/20g.webp",
-            "url": "https://purrify.ca/blog/best-litter-odor-remover-small-apartments"
+            "image": "https://www.purrify.ca/optimized/20g.webp",
+            "url": "https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments"
           })}
         </script>
       </Head>

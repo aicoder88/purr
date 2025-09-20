@@ -15,7 +15,7 @@ export default function StandardSizePage() {
 
   const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 60g Activated Carbon Cat Litter Additive`;
   const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 60g standard size activated carbon cat litter additive. Most popular size.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/standard`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/standard`;
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-60g');
@@ -51,10 +51,10 @@ export default function StandardSizePage() {
         description={pageDescription}
         canonical={canonicalUrl}
         languageAlternates={[
-          { hrefLang: 'en', href: 'https://purrify.ca/products/standard' },
-          { hrefLang: 'fr', href: 'https://purrify.ca/fr/products/standard' },
-          { hrefLang: 'zh', href: 'https://purrify.ca/zh/products/standard' },
-          { hrefLang: 'x-default', href: 'https://purrify.ca/products/standard' },
+          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/products/standard' },
+          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/products/standard' },
+          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/products/standard' },
+          { hrefLang: 'x-default', href: 'https://www.purrify.ca/products/standard' },
         ]}
         openGraph={{
           title: pageTitle,
@@ -64,14 +64,14 @@ export default function StandardSizePage() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://purrify.ca/optimized/60g.webp',
+              url: 'https://www.purrify.ca/optimized/60g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify 60g Standard Size Package (WebP)',
               type: 'image/webp'
             },
             {
-              url: 'https://purrify.ca/purrify-standard-60g.jpg',
+              url: 'https://www.purrify.ca/purrify-standard-60g.jpg',
               width: 1200,
               height: 630,
               alt: 'Purrify 60g Standard Size Package',
@@ -109,17 +109,17 @@ export default function StandardSizePage() {
                 "name": "Purrify 60g Standard Size - Activated Carbon Cat Litter Additive",
                 "description": "Our most popular 60g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
                 "image": [
-                  "https://purrify.ca/optimized/60g.webp",
-                  "https://purrify.ca/purrify-standard-60g.jpg"
+                  "https://www.purrify.ca/optimized/60g.webp",
+                  "https://www.purrify.ca/purrify-standard-60g.jpg"
                 ],
                 "brand": {
                   "@type": "Brand",
                   "name": "Purrify",
-                  "logo": "https://purrify.ca/purrify-logo.png"
+                  "logo": "https://www.purrify.ca/purrify-logo.png"
                 },
                 "manufacturer": {
                   "@type": "Organization",
-                  "@id": "https://purrify.ca/#organization",
+                  "@id": "https://www.purrify.ca/#organization",
                   "name": "Purrify"
                 },
                 "category": "Pet Supplies > Cat Care > Litter Additives",
@@ -144,7 +144,7 @@ export default function StandardSizePage() {
                   "url": canonicalUrl,
                   "seller": {
                     "@type": "Organization",
-                    "@id": "https://purrify.ca/#organization",
+                    "@id": "https://www.purrify.ca/#organization",
                     "name": "Purrify"
                   },
                   "shippingDetails": {
@@ -263,13 +263,13 @@ export default function StandardSizePage() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://purrify.ca/"
+                    "item": "https://www.purrify.ca/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Products",
-                    "item": "https://purrify.ca/#products"
+                    "item": "https://www.purrify.ca/#products"
                   },
                   {
                     "@type": "ListItem",

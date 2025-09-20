@@ -27,7 +27,7 @@ const OurStoryPage: NextPage = () => {
     "@type": "AboutPage",
     "name": "Our Story",
     "description": "The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.",
-    "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/about/our-story`,
+    "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/about/our-story`,
     "mainEntity": {
       "@type": "Organization",
       "name": "Purrify",

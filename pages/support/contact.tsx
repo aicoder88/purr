@@ -19,7 +19,7 @@ export default function ContactPage() {
   
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
   const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/support/contact`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/contact`;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -143,7 +143,7 @@ export default function ContactPage() {
           type: 'website',
           images: [
             {
-              url: 'https://purrify.ca/customer-support-hero.jpg',
+              url: 'https://www.purrify.ca/customer-support-hero.jpg',
               width: 1200,
               height: 630,
               alt: 'Purrify Customer Support Team'

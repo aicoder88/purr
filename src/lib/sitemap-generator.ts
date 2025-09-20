@@ -402,7 +402,7 @@ Crawl-delay: 1
 // Main function to generate Purrify sitemap
 export async function generatePurrifySitemap(): Promise<void> {
   const config: SitemapConfig = {
-    baseUrl: 'https://purrify.ca',
+    baseUrl: 'https://www.purrify.ca',
     outputPath: path.join(process.cwd(), 'public', 'sitemap.xml'),
     defaultChangefreq: 'weekly',
     defaultPriority: 0.5,

@@ -46,7 +46,7 @@ export default function Home() {
   const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
-  const canonicalUrl = 'https://purrify.ca/';
+  const canonicalUrl = 'https://www.purrify.ca/';
   const { generateBreadcrumbs } = useStructuredData();
 
   // Generate breadcrumbs for home page
@@ -60,10 +60,10 @@ export default function Home() {
         description={pageDescription}
         canonical={canonicalUrl}
         languageAlternates={[
-          { hrefLang: 'en', href: 'https://purrify.ca/' },
-          { hrefLang: 'fr', href: 'https://purrify.ca/fr/' },
-          { hrefLang: 'zh', href: 'https://purrify.ca/zh/' },
-          { hrefLang: 'x-default', href: 'https://purrify.ca/' },
+          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/' },
+          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/' },
+          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/' },
+          { hrefLang: 'x-default', href: 'https://www.purrify.ca/' },
         ]}
         openGraph={{
           type: 'website',
@@ -73,14 +73,14 @@ export default function Home() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://purrify.ca/purrify-logo.png',
+              url: 'https://www.purrify.ca/purrify-logo.png',
               width: 1200,
               height: 630,
               alt: `${SITE_NAME} - ${t.homepage.seo.openGraphImageAlt}`,
               type: 'image/png',
             },
             {
-              url: 'https://purrify.ca/optimized/cat_rose_thumbnail.webp',
+              url: 'https://www.purrify.ca/optimized/cat_rose_thumbnail.webp',
               width: 500,
               height: 340,
               alt: t.homepage.seo.videoDescription,
@@ -89,14 +89,14 @@ export default function Home() {
           ],
           videos: [
             {
-              url: 'https://purrify.ca/videos/cat_rose_optimized.mp4',
+              url: 'https://www.purrify.ca/videos/cat_rose_optimized.mp4',
               width: 1280,
               height: 720,
               type: 'video/mp4',
               alt: t.homepage.seo.videoEffectivenessDemo,
             },
             {
-              url: 'https://purrify.ca/videos/cat_rose_optimized.webm',
+              url: 'https://www.purrify.ca/videos/cat_rose_optimized.webm',
               width: 1280,
               height: 720,
               type: 'video/webm',
@@ -128,7 +128,7 @@ export default function Home() {
           },
           {
             property: 'og:video:secure_url',
-            content: 'https://purrify.ca/videos/cat_rose_optimized.mp4',
+            content: 'https://www.purrify.ca/videos/cat_rose_optimized.mp4',
           },
           {
             property: 'og:video:type',
@@ -177,18 +177,23 @@ export default function Home() {
           },
           {
             rel: 'alternate',
-            hrefLang: 'en',
-            href: canonicalUrl,
+            hrefLang: 'en-CA',
+            href: 'https://www.purrify.ca/',
           },
           {
             rel: 'alternate',
-            hrefLang: 'fr',
-            href: `${canonicalUrl}fr/`,
+            hrefLang: 'fr-CA',
+            href: 'https://fr.purrify.ca/',
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'zh-CN',
+            href: 'https://zh.purrify.ca/',
           },
           {
             rel: 'alternate',
             hrefLang: 'x-default',
-            href: canonicalUrl,
+            href: 'https://www.purrify.ca/',
           },
           // Preload critical resources
           {

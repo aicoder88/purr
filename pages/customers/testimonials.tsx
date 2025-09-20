@@ -13,7 +13,7 @@ export default function TestimonialsPage() {
   
   const pageTitle = `Customer Testimonials - ${SITE_NAME} Reviews & Success Stories`;
   const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why 1,000+ trust Purrify.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/testimonials`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/testimonials`;
 
   const categories = [
     { id: 'all', name: 'All Reviews', count: 127 },
@@ -162,7 +162,7 @@ export default function TestimonialsPage() {
           type: 'website',
           images: [
             {
-              url: 'https://purrify.ca/customer-testimonials-hero.jpg',
+              url: 'https://www.purrify.ca/customer-testimonials-hero.jpg',
               width: 1200,
               height: 630,
               alt: 'Happy Purrify Customers and Their Cats'

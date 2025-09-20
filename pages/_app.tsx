@@ -26,8 +26,8 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
   const { locale, pathname } = router;
 
-  // Canonical site URL
-  const canonicalUrl = 'https://purrify.ca';
+  // Canonical site URL (use www domain to avoid redirects)
+  const canonicalUrl = 'https://www.purrify.ca';
 
   // Service Worker registration
   useEffect(() => {
@@ -107,8 +107,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <DefaultSeo
             titleTemplate={`%s | ${SITE_NAME}`}
             defaultTitle={`${SITE_NAME} - Activated Carbon Cat Litter Additive`}
-            // Use per-page descriptions to avoid duplicates
-            canonical={canonicalUrl}
             openGraph={{
               type: 'website',
               locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
@@ -155,9 +153,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             ]}
             additionalLinkTags={[
               { rel: 'manifest', href: '/manifest.json' },
-              { rel: 'alternate', hrefLang: 'en', href: 'https://purrify.ca/' },
-              { rel: 'alternate', hrefLang: 'fr', href: 'https://purrify.ca/fr/' },
-              { rel: 'alternate', hrefLang: 'x-default', href: 'https://purrify.ca/' },
             ]}
           />
           

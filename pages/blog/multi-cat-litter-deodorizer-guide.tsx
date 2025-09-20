@@ -19,17 +19,17 @@ export default function MultiCatLitterDeodorizerGuide() {
         <meta property="og:title" content={t.blog.multiCat.title} />
         <meta property="og:description" content={t.blog.multiCat.description} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
-        <meta property="og:image" content="https://purrify.ca/multi-cat-household.jpg" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
+        <meta property="og:image" content="https://www.purrify.ca/multi-cat-household.jpg" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.blog.multiCat.title} />
         <meta name="twitter:description" content={t.blog.multiCat.description} />
-        <meta name="twitter:image" content="https://purrify.ca/multi-cat-household.jpg" />
+        <meta name="twitter:image" content="https://www.purrify.ca/multi-cat-household.jpg" />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
 
         {/* Schema.org structured data */}
         <script type="application/ld+json">
@@ -47,16 +47,16 @@ export default function MultiCatLitterDeodorizerGuide() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/purrify-logo.png"
               }
             },
             "datePublished": "2024-09-16",
             "dateModified": "2024-09-16",
-            "image": "https://purrify.ca/multi-cat-household.jpg",
-            "url": "https://purrify.ca/blog/multi-cat-litter-deodorizer-guide",
+            "image": "https://www.purrify.ca/multi-cat-household.jpg",
+            "url": "https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://purrify.ca/blog/multi-cat-litter-deodorizer-guide"
+              "@id": "https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide"
             }
           })}
         </script>

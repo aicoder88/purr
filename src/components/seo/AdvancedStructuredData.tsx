@@ -139,7 +139,7 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
       "priceCurrency": product.currency || "CAD",
       "availability": `https://schema.org/${product.availability || 'InStock'}`,
       "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,
-      "url": `https://purrify.ca/products/${product.id}`,
+      "url": `https://www.purrify.ca/products/${product.id}`,
       "seller": {
         "@type": "Organization",
         "name": "Purrify"
@@ -420,8 +420,8 @@ export const ReviewStructuredData: React.FC<{
 export const PurrifyStructuredData: React.FC = () => {
   const organizationData = {
     name: "Purrify",
-    url: "https://purrify.ca",
-    logo: "https://purrify.ca/optimized/purrify-logo-icon.webp",
+    url: "https://www.purrify.ca",
+    logo: "https://www.purrify.ca/optimized/purrify-logo-icon.webp",
     description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
     address: {
       streetAddress: "123 Pet Care Avenue",
@@ -444,10 +444,10 @@ export const PurrifyStructuredData: React.FC = () => {
 
   const websiteData = {
     name: "Purrify - Cat Litter Odor Control",
-    url: "https://purrify.ca",
+    url: "https://www.purrify.ca",
     description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level.",
     searchAction: {
-      target: "https://purrify.ca/search?q={search_term_string}",
+      target: "https://www.purrify.ca/search?q={search_term_string}",
       queryInput: "required name=search_term_string"
     }
   };
@@ -473,4 +473,3 @@ const AdvancedStructuredData = {
 };
 
 export default AdvancedStructuredData;
-

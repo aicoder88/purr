@@ -19,17 +19,17 @@ export default function ActivatedCarbonBenefits() {
         <meta property="og:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
         <meta property="og:description" content="Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://purrify.ca/blog/activated-carbon-litter-additive-benefits" />
-        <meta property="og:image" content="https://purrify.ca/optimized/carbon_magnified_image.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/carbon_magnified_image.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
         <meta name="twitter:description" content="Discover the science behind activated carbon litter additives and how molecular adsorption eliminates odors." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/carbon_magnified_image.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/carbon_magnified_image.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/blog/activated-carbon-litter-additive-benefits" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
         
         {/* Enhanced Article Schema */}
         <script type="application/ld+json">
@@ -38,39 +38,39 @@ export default function ActivatedCarbonBenefits() {
             "@graph": [
               {
                 "@type": "Article",
-                "@id": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits",
+            "@id": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
                 "headline": "Activated Carbon Litter Additive Benefits: Science-Backed Odor Control",
                 "description": "Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source, creating a fresher home environment.",
                 "image": {
                   "@type": "ImageObject",
-                  "url": "https://purrify.ca/optimized/carbon_magnified_image.webp",
+                  "url": "https://www.purrify.ca/optimized/carbon_magnified_image.webp",
                   "width": 1200,
                   "height": 384,
                   "caption": "Microscopic view of activated carbon's porous structure that traps odor molecules"
                 },
                 "author": {
                   "@type": "Organization",
-                  "@id": "https://purrify.ca/#organization",
+                  "@id": "https://www.purrify.ca/#organization",
                   "name": "Purrify",
-                  "url": "https://purrify.ca"
+                  "url": "https://www.purrify.ca"
                 },
                 "publisher": {
                   "@type": "Organization",
-                  "@id": "https://purrify.ca/#organization",
+                  "@id": "https://www.purrify.ca/#organization",
                   "name": "Purrify",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://purrify.ca/purrify-logo.png",
+                    "url": "https://www.purrify.ca/purrify-logo.png",
                     "width": 400,
                     "height": 400
                   }
                 },
                 "datePublished": "2024-01-15T08:00:00-05:00",
                 "dateModified": "2024-08-30T10:00:00-05:00",
-                "url": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits",
+            "url": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
                 "mainEntityOfPage": {
                   "@type": "WebPage",
-                  "@id": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                  "@id": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
                 },
                 "articleSection": "Science & Education",
                 "articleBody": "Learn about the science behind activated carbon and how it eliminates cat litter odors through molecular adsorption. Discover why coconut shell carbon is superior and how it provides health benefits beyond odor control.",
@@ -99,12 +99,12 @@ export default function ActivatedCarbonBenefits() {
                   {
                     "@type": "Product",
                     "name": "Purrify Activated Carbon Cat Litter Additive",
-                    "url": "https://purrify.ca/products/standard"
+                  "url": "https://www.purrify.ca/products/standard"
                   },
                   {
                     "@type": "Organization",
                     "name": "Purrify",
-                    "url": "https://purrify.ca"
+                  "url": "https://www.purrify.ca"
                   }
                 ],
                 "citation": [
@@ -116,12 +116,12 @@ export default function ActivatedCarbonBenefits() {
                 ],
                 "isPartOf": {
                   "@type": "Blog",
-                  "@id": "https://purrify.ca/blog",
+                  "@id": "https://www.purrify.ca/blog",
                   "name": "Purrify Blog - Cat Care & Odor Control"
                 },
                 "potentialAction": {
                   "@type": "ReadAction",
-                  "target": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                  "target": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
                 },
                 "speakable": {
                   "@type": "SpeakableSpecification",
@@ -135,19 +135,19 @@ export default function ActivatedCarbonBenefits() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://purrify.ca/"
+                  "item": "https://www.purrify.ca/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Blog",
-                    "item": "https://purrify.ca/blog/"
+                  "item": "https://www.purrify.ca/blog/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Activated Carbon Benefits",
-                    "item": "https://purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                  "item": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
                   }
                 ]
               },

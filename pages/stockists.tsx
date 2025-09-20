@@ -149,7 +149,7 @@ export default function Stockists() {
     ? 'Localisez les magasins qui vendent Purrify près de chez vous. Trouvez des animaleries, boutiques d\'animaux et détaillants à travers le Canada avec notre outil de localisation interactif.'
     : 'Locate stores selling Purrify near you. Find pet stores, animal boutiques, and retailers across Canada with our interactive store locator tool.';
 
-  const canonicalUrl = `https://purrify.ca/${locale === 'fr' ? 'fr/' : ''}stockists`;
+  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}stockists`;
 
   // Filter stockists based on search and filters
   const filteredStockists = useMemo(() => {
@@ -260,7 +260,7 @@ export default function Stockists() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/store-locator.jpg',
+              url: 'https://www.purrify.ca/images/store-locator.jpg',
               width: 1200,
               height: 630,
               alt: 'Find Purrify retailers and stockists near you across Canada',

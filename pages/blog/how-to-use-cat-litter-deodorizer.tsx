@@ -19,17 +19,17 @@ export default function HowToUseLitterDeodorizer() {
         <meta property="og:title" content="How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide" />
         <meta property="og:description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions and expert tips." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
-        <meta property="og:image" content="https://purrify.ca/optimized/before-after.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/before-after.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="How to Use Cat Litter Deodorizer Additive: Complete Guide" />
         <meta name="twitter:description" content="Step-by-step instructions for proper cat litter deodorizer application and maximum odor control." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/before-after.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/before-after.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
         
         {/* Schema.org structured data */}
         <script type="application/ld+json">
@@ -38,7 +38,7 @@ export default function HowToUseLitterDeodorizer() {
             "@type": "HowTo",
             "name": "How to Use Cat Litter Deodorizer Additive",
             "description": "Complete step-by-step guide for using cat litter deodorizer additive for maximum odor control effectiveness.",
-            "image": "https://purrify.ca/optimized/before-after.webp",
+            "image": "https://www.purrify.ca/optimized/before-after.webp",
             "totalTime": "PT5M",
             "estimatedCost": {
               "@type": "MonetaryAmount",
@@ -90,7 +90,7 @@ export default function HowToUseLitterDeodorizer() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/purrify-logo.png"
               }
             }
           })}

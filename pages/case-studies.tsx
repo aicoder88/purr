@@ -140,17 +140,17 @@ export default function CaseStudies() {
         <meta property="og:title" content="Purrify Case Studies - Real Success Stories & Customer Results" />
         <meta property="og:description" content="See detailed case studies showing how Purrify transformed homes across Canada with natural odor elimination." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://purrify.ca/case-studies" />
-        <meta property="og:image" content="https://purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/case-studies" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Purrify Case Studies - Real Customer Transformations" />
         <meta name="twitter:description" content="Detailed success stories showing measurable results from Canadian cat owners." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/case-studies" />
+        <link rel="canonical" href="https://www.purrify.ca/case-studies" />
         
         {/* Schema.org structured data */}
         <script type="application/ld+json">

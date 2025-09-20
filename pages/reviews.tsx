@@ -104,17 +104,17 @@ export default function Reviews() {
         <meta property="og:title" content="Purrify Reviews - Real Customer Testimonials & Success Stories" />
         <meta property="og:description" content="Read verified customer reviews from Canadian cat owners who eliminated litter box odors with Purrify's natural activated carbon formula." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://purrify.ca/reviews" />
-        <meta property="og:image" content="https://purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/reviews" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Purrify Reviews - Real Customer Success Stories" />
         <meta name="twitter:description" content="See why 1,000+ Canadian cat owners choose Purrify for natural odor elimination." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/reviews" />
+        <link rel="canonical" href="https://www.purrify.ca/reviews" />
         
         {/* Schema.org structured data */}
         <script type="application/ld+json">

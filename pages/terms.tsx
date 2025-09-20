@@ -4,7 +4,7 @@ import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants'
 
 export default function Terms() {
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
-  const canonicalUrl = 'https://purrify.ca/terms';
+  const canonicalUrl = 'https://www.purrify.ca/terms';
   const currentYear = new Date().getFullYear();
   
   return (
@@ -19,14 +19,14 @@ export default function Terms() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
-        <meta property="og:image" content="https://purrify.ca/purrify-logo.png" />
+        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={canonicalUrl} />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
-        <meta property="twitter:image" content="https://purrify.ca/purrify-logo.png" />
+        <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
         
         {/* Canonical Link */}
         <link rel="canonical" href={canonicalUrl} />

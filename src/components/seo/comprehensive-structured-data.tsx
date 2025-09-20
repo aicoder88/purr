@@ -53,8 +53,8 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
   pageData = {} 
 }) => {
   const { locale } = useTranslation();
-  const baseUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}`;
-  const mainUrl = 'https://purrify.ca';
+  const baseUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}`;
+  const mainUrl = 'https://www.purrify.ca';
   
   // Base Organization Schema - Used across all pages
   const organizationSchema = {

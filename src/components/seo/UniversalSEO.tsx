@@ -17,16 +17,16 @@ export const UniversalSEO: React.FC<UniversalSEOProps> = ({
   title,
   description,
   canonicalPath,
-  ogImage = 'https://purrify.ca/purrify-logo.png',
+  ogImage = 'https://www.purrify.ca/purrify-logo.png',
   structuredData,
   noIndex = false,
 }) => {
   const { t, locale } = useTranslation();
 
-  // Build localized URLs
-  const baseUrl = 'https://purrify.ca';
+  // Build canonical and alternates using canonical www domain and locale subdomains
+  const canonicalBase = 'https://www.purrify.ca';
   const localizedPath = locale === 'en' ? canonicalPath : `/${locale}${canonicalPath}`;
-  const canonicalUrl = `${baseUrl}${localizedPath}`;
+  const canonicalUrl = `${canonicalBase}${localizedPath}`;
 
   // Fallback content based on page type and locale
   const getLocalizedContent = () => {
@@ -55,10 +55,10 @@ export const UniversalSEO: React.FC<UniversalSEOProps> = ({
         canonical={canonicalUrl}
         noindex={noIndex}
         languageAlternates={[
-          { hrefLang: 'en', href: `${baseUrl}${canonicalPath}` },
-          { hrefLang: 'fr', href: `${baseUrl}/fr${canonicalPath}` },
-          { hrefLang: 'zh', href: `${baseUrl}/zh${canonicalPath}` },
-          { hrefLang: 'x-default', href: `${baseUrl}${canonicalPath}` },
+          { hrefLang: 'en-CA', href: `https://www.purrify.ca${canonicalPath}` },
+          { hrefLang: 'fr-CA', href: `https://fr.purrify.ca${canonicalPath}` },
+          { hrefLang: 'zh-CN', href: `https://zh.purrify.ca${canonicalPath}` },
+          { hrefLang: 'x-default', href: `https://www.purrify.ca${canonicalPath}` },
         ]}
         openGraph={{
           type: pageType === 'product' ? 'product' : 'website',

@@ -16,17 +16,17 @@ export default function UsingDeodorizersWithKittens() {
         <meta property="og:title" content="Using Cat Litter Deodorizers with Kittens: A Care Guide" />
         <meta property="og:description" content="Guidance on introducing fragrance-free deodorizers around kittens — what to consider and when to start." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://purrify.ca/blog/using-deodorizers-with-kittens" />
-        <meta property="og:image" content="https://purrify.ca/optimized/gigi.webp" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/gigi.webp" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Using Cat Litter Deodorizers with Kittens" />
         <meta name="twitter:description" content="How and when households introduce fragrance-free deodorizers around kittens." />
-        <meta name="twitter:image" content="https://purrify.ca/optimized/gigi.webp" />
+        <meta name="twitter:image" content="https://www.purrify.ca/optimized/gigi.webp" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://purrify.ca/blog/using-deodorizers-with-kittens" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
       </Head>
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -143,4 +143,3 @@ export default function UsingDeodorizersWithKittens() {
     </>
   );
 }
-

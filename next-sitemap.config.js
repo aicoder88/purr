@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://purrify.ca',
+  siteUrl: 'https://www.purrify.ca',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -14,24 +14,20 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://purrify.ca/server-sitemap.xml', // For dynamically generated content
-      'https://purrify.ca/sitemap-0.xml', // For static pages
+      'https://www.purrify.ca/server-sitemap.xml', // For dynamically generated content
+      'https://www.purrify.ca/sitemap-0.xml', // For static pages
     ],
-    host: 'https://purrify.ca',
+    host: 'https://www.purrify.ca',
   },
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ['/api/*', '/admin/*', '/404', '/_next/*', '/static/*'],
   alternateRefs: [
-    {
-      href: 'https://purrify.ca',
-      hreflang: 'en',
-    },
-    {
-      href: 'https://purrify.ca/fr',
-      hreflang: 'fr',
-    },
+    { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
+    { href: 'https://fr.purrify.ca', hreflang: 'fr-CA' },
+    { href: 'https://zh.purrify.ca', hreflang: 'zh-CN' },
+    { href: 'https://www.purrify.ca', hreflang: 'x-default' },
   ],
   // Explicitly define all important pages
   additionalPaths: async (config) => [

@@ -66,7 +66,7 @@ export const SEO_TRANSLATIONS = {
 
 // Generate localized URLs
 export const getLocalizedUrl = (path: string, locale: 'en' | 'fr' | 'zh') => {
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   return `${baseUrl}${localePrefix}${path}`;
 };
@@ -157,7 +157,7 @@ export const generateProductStructuredData = (productId: string, locale: 'en' | 
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
 
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl(`/products/${productId}`, locale);
 
   return {
@@ -211,7 +211,7 @@ export const generateArticleStructuredData = (title: string, description: string
     headline: title,
     description: description,
     url: url,
-    image: options?.image || 'https://purrify.ca/purrify-logo.png',
+    image: options?.image || 'https://www.purrify.ca/purrify-logo.png',
     author: {
       '@type': 'Organization',
       name: SITE_NAME
@@ -221,7 +221,7 @@ export const generateArticleStructuredData = (title: string, description: string
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://purrify.ca/purrify-logo.png'
+        url: 'https://www.purrify.ca/purrify-logo.png'
       }
     },
     datePublished: options?.datePublished || new Date().toISOString(),
@@ -238,7 +238,7 @@ export const generateArticleStructuredData = (title: string, description: string
 
 // Generate comprehensive organization schema with localization
 export const generateOrganizationSchema = (locale: 'en' | 'fr' | 'zh') => {
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   
   return {
     '@context': 'https://schema.org',
@@ -330,7 +330,7 @@ export const generateBreadcrumbSchema = (path: string, locale: 'en' | 'fr' | 'zh
 
 // Generate website schema with localization
 export const generateWebsiteSchema = (locale: 'en' | 'fr' | 'zh') => {
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl('', locale);
   
   return {
@@ -450,12 +450,12 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
   return {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'LocalBusiness'],
-    '@id': `https://purrify.ca/#organization-${cityName.toLowerCase()}`,
+    '@id': `https://www.purrify.ca/#organization-${cityName.toLowerCase()}`,
     name: `${SITE_NAME} - ${cityName}`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     url: getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale),
-    logo: 'https://purrify.ca/purrify-logo.png',
-    image: 'https://purrify.ca/purrify-logo.png',
+    logo: 'https://www.purrify.ca/purrify-logo.png',
+    image: 'https://www.purrify.ca/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: cityName,
@@ -471,7 +471,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
       '@type': 'City',
       name: `${cityName}, ${province}`,
       containedInPlace: {
-        '@type': 'Province',
+        '@type': 'AdministrativeArea',
         name: province
       }
     },
@@ -510,7 +510,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 
 // Generate comprehensive homepage schema
 export const generateHomepageSchema = (locale: 'en' | 'fr' | 'zh') => {
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl('', locale);
   
   return {
@@ -554,7 +554,7 @@ export const generateProductPageSchema = (productId: string, locale: 'en' | 'fr'
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
   
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl(`/products/${productId}`, locale);
   
   return {
@@ -644,7 +644,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
   readingTime?: number;
 }) => {
   const url = getLocalizedUrl(path, locale);
-  const baseUrl = 'https://purrify.ca';
+  const baseUrl = 'https://www.purrify.ca';
   
   return {
     '@context': 'https://schema.org',
@@ -727,7 +727,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
         name: `Cat Litter Odor Control Services in ${cityName}`,
         description: `Professional-grade activated carbon cat litter additive delivery in ${cityName}, ${province}`,
         provider: {
-          '@id': `https://purrify.ca/#organization-${cityName.toLowerCase()}`
+          '@id': `https://www.purrify.ca/#organization-${cityName.toLowerCase()}`
         },
         areaServed: {
           '@type': 'City',

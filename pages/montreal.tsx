@@ -19,7 +19,7 @@ export default function Montreal() {
     ? 'Trouvez le désodorisant pour litière de chat Purrify dans les boutiques d\'animaux indépendantes de Montréal. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
     : 'Find Purrify cat litter deodorizer at independent pet stores throughout Montreal. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
     
-  const canonicalUrl = `https://purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
+  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
 
   // Montreal stores data with bilingual content
   const montrealStores = [
@@ -132,7 +132,7 @@ export default function Montreal() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/montreal-stores.jpg',
+              url: 'https://www.purrify.ca/optimized/kong-animalerie.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify cat litter deodorizer available at Montreal pet stores',
@@ -190,7 +190,7 @@ export default function Montreal() {
           },
           {
             name: 'twitter:image',
-            content: 'https://purrify.ca/images/montreal-stores.jpg'
+            content: 'https://www.purrify.ca/optimized/kong-animalerie.webp'
           }
         ]}
       />

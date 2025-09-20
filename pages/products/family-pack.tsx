@@ -15,7 +15,7 @@ export default function FamilyPackPage() {
   
   const pageTitle = `${SITE_NAME} Family Pack - 120g Activated Carbon Cat Litter Additive`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack activated carbon cat litter additive. Best value size.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-120g');
@@ -57,14 +57,14 @@ export default function FamilyPackPage() {
           type: 'product',
           images: [
             {
-              url: 'https://purrify.ca/optimized/140g.webp',
+              url: 'https://www.purrify.ca/optimized/140g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify 120g Family Pack Package (WebP)',
               type: 'image/webp'
             },
             {
-              url: 'https://purrify.ca/purrify-family-120g.jpg',
+              url: 'https://www.purrify.ca/purrify-family-120g.jpg',
               width: 1200,
               height: 630,
               alt: 'Purrify 120g Family Pack Package',

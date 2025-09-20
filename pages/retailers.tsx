@@ -17,7 +17,7 @@ export default function RetailersPage() {
   const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.retailers?.seo?.pageTitle || 'Wholesale & Retail Partners'}`;
   const pageDescription = t.retailers?.seo?.description || 'Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada.';
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`;
 
   return (
     <>
@@ -26,10 +26,10 @@ export default function RetailersPage() {
         description={pageDescription}
         canonical={canonicalUrl}
         languageAlternates={[
-          { hrefLang: 'en', href: 'https://purrify.ca/retailers' },
-          { hrefLang: 'fr', href: 'https://purrify.ca/fr/retailers' },
-          { hrefLang: 'zh', href: 'https://purrify.ca/zh/retailers' },
-          { hrefLang: 'x-default', href: 'https://purrify.ca/retailers' },
+          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/retailers' },
+          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/retailers' },
+          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/retailers' },
+          { hrefLang: 'x-default', href: 'https://www.purrify.ca/retailers' },
         ]}
         openGraph={{
           type: 'website',
@@ -39,7 +39,7 @@ export default function RetailersPage() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://purrify.ca/purrify-logo.png',
+              url: 'https://www.purrify.ca/purrify-logo.png',
               width: 1200,
               height: 630,
               alt: `${SITE_NAME} - Wholesale Partners`,
@@ -62,23 +62,11 @@ export default function RetailersPage() {
       <main className="min-h-screen bg-white dark:bg-gray-900">
         <RetailerHero />
 
-        <div className="py-8">
+        <div className="py-16">
           <WholesalePricing />
         </div>
 
-        <div className="py-8 bg-gray-50 dark:bg-gray-800">
-          <RetailerBenefits />
-        </div>
-
-        <div className="py-8">
-          <MarketingSupport />
-        </div>
-
-        <div className="py-8 bg-gray-50 dark:bg-gray-800">
-          <RetailerTestimonials />
-        </div>
-
-        <div className="py-8">
+        <div className="py-16">
           <RetailerContact />
         </div>
       </main>

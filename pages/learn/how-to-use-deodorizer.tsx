@@ -7,7 +7,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 export default function HowToUseDeodorizer() {
   const pageTitle = 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide';
   const pageDescription = 'Learn how to use cat litter deodorizer additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control effectiveness.';
-  const canonicalUrl = 'https://purrify.ca/learn/how-to-use-deodorizer';
+  const canonicalUrl = 'https://www.purrify.ca/learn/how-to-use-deodorizer';
 
   return (
     <Layout>
@@ -22,7 +22,7 @@ export default function HowToUseDeodorizer() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/how-to-use-guide.jpg',
+              url: 'https://www.purrify.ca/images/how-to-use-guide.jpg',
               width: 1200,
               height: 630,
               alt: 'Step-by-step guide showing how to use cat litter deodorizer additive',
