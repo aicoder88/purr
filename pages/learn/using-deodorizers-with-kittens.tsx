@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function UsingDeodorizersWithKittensLearn() {
   const pageTitle = 'Using Cat Litter Deodorizers with Kittens: A Care Guide';
@@ -79,8 +80,12 @@ export default function UsingDeodorizersWithKittensLearn() {
             </div>
           </div>
         </div>
+        
+        {/* Related Articles */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <RelatedArticles currentPath="/learn/using-deodorizers-with-kittens" />
+        </div>
       </article>
     </Layout>
   );
 }
-

@@ -16,6 +16,7 @@ import {
   BookOpen,
   Star
 } from 'lucide-react';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const CatLitterGuidePage: NextPage = () => {
   const { t, locale } = useTranslation();
@@ -340,46 +341,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Related Articles */}
         <section className="py-16">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                Related Articles
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    How Purrify Works
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Learn the science behind activated carbon and how it eliminates odors at the molecular level.
-                  </p>
-                </div>
-              </Link>
-              
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Customer Success Stories
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Read real experiences from cat owners who transformed their litter boxes with Purrify.
-                  </p>
-                </div>
-              </Link>
-              
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    Need Help?
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Have questions about litter types or Purrify? Our team is here to help you find the perfect solution.
-                  </p>
-                </div>
-              </Link>
-            </div>
+            <RelatedArticles currentPath="/learn/cat-litter-guide" />
           </Container>
         </section>
       </main>

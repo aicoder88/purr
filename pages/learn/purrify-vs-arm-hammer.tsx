@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { SITE_NAME } from '../../src/lib/constants';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function PurrifyVsArmHammer() {
   const pageTitle = 'Purrify vs Arm & Hammer Cat Deodorizer - Honest Comparison Review';
@@ -416,6 +417,13 @@ export default function PurrifyVsArmHammer() {
           </div>
         </div>
       </article>
+      
+      {/* Related Articles */}
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <RelatedArticles currentPath="/learn/purrify-vs-arm-hammer" />
+        </div>
+      </div>
     </Layout>
   );
 }

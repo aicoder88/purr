@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { 
   Search,
@@ -639,6 +640,13 @@ const FAQPage: NextPage = () => {
                 </div>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/learn/faq" />
           </Container>
         </section>
       </main>

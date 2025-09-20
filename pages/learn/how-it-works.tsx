@@ -7,6 +7,7 @@ import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
@@ -353,6 +354,13 @@ export default function HowItWorksPage() {
                 </Button>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/learn/how-it-works" />
           </Container>
         </section>
       </main>

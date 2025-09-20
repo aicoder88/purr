@@ -6,6 +6,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 // import NextImage from '../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical } from 'lucide-react';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function SciencePage() {
   const { locale } = useTranslation();
@@ -252,6 +253,13 @@ export default function SciencePage() {
                 </Link>
               </div>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/learn/science" />
           </Container>
         </section>
 

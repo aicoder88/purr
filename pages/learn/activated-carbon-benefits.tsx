@@ -4,6 +4,7 @@ import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../../src/lib/constants';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ActivatedCarbonBenefits() {
   const pageTitle = 'Activated Carbon Litter Additive Benefits - Complete Science Guide';
@@ -282,6 +283,11 @@ export default function ActivatedCarbonBenefits() {
                 View All Sizes
               </Link>
             </div>
+          </div>
+          
+          {/* Related Articles */}
+          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <RelatedArticles currentPath="/learn/activated-carbon-benefits" />
           </div>
         </div>
       </article>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { SITE_NAME } from '../../src/lib/constants';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function HowToUseDeodorizer() {
   const pageTitle = 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide';
@@ -343,6 +344,11 @@ export default function HowToUseDeodorizer() {
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Related Articles */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
         </div>
       </article>
     </Layout>
