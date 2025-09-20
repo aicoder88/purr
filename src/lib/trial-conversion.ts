@@ -23,7 +23,7 @@ export async function recordTrialConversion(event: Omit<TrialConversionEvent, 'o
   };
 
   // Always log for observability
-  // eslint-disable-next-line no-console
+   
   console.log('[trial-conversion]', normalized);
 
   // Best-effort local persistence for dev analysis

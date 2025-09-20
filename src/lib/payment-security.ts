@@ -137,7 +137,7 @@ export class PaymentSecurityService {
   }
 
   static async logSecurityEvent(type: string, context: Record<string, unknown>, result?: unknown): Promise<void> {
-    // eslint-disable-next-line no-console
+     
     console.log(`[security:${type}]`, { context, result });
   }
 }

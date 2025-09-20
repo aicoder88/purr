@@ -3,51 +3,82 @@ import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "../ui/section-header";
 import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
+import { createColorClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
+import { generateStarRating, generateAvatarUrl, QuoteIcon, createStaggeredAnimation } from "@/lib/component-utils";
+
+interface TestimonialCardProps {
+  testimonial: {
+    name: string;
+    text: string;
+    stars?: number;
+  };
+  index: number;
+  colorScheme: 'red' | 'purple' | 'green';
+}
+
+const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardProps) => {
+  const colors = createColorClasses(colorScheme);
+  const staggerStyle = createStaggeredAnimation(index);
+
+  return (
+    <div
+      className={`${colors.bg} backdrop-blur-sm p-8 rounded-2xl shadow-xl border ${colors.border} relative transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group`}
+      style={staggerStyle}
+    >
+      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300">
+          <Image
+            src={generateAvatarUrl(testimonial.name, index)}
+            alt={`Portrait photo of ${testimonial.name}, satisfied Purrify customer`}
+            width={64}
+            height={64}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+        <QuoteIcon color={colors.iconColor} />
+      </div>
+      <div className="pt-10">
+        <div className="flex mb-2">
+          {generateStarRating(testimonial.stars || 5)}
+        </div>
+        <p className={`${COLORS.text.primary} italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6`}>
+          &quot;{testimonial.text}&quot;
+        </p>
+        <div className="flex items-center justify-between">
+          <p className={`font-bold ${colors.text} text-sm md:text-base`}>
+            {testimonial.name}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export function Testimonials() {
   const { t } = useTranslation();
-  
-  const colorClasses = [
-    {
-      bg: "bg-[#FF3131]/10 dark:bg-[#FF5050]/10",
-      border: "border-[#FF3131]/30 dark:border-[#FF5050]/30",
-      text: "text-[#FF3131] dark:text-[#FF5050]",
-      icon: "#FF3131",
-    },
-    {
-      bg: "bg-[#5B2EFF]/10 dark:bg-[#3694FF]/10",
-      border: "border-[#5B2EFF]/30 dark:border-[#3694FF]/30",
-      text: "text-[#5B2EFF] dark:text-[#3694FF]",
-      icon: "#5B2EFF",
-    },
-    {
-      bg: "bg-[#03E46A]/10 dark:bg-[#03E46A]/20",
-      border: "border-[#03E46A]/30 dark:border-[#03E46A]/40",
-      text: "text-[#03E46A] dark:text-[#03E46A]",
-      icon: "#03E46A",
-    },
-  ];
+
+  const colorSchemes: ('red' | 'purple' | 'green')[] = ['red', 'purple', 'green'];
+
+  const sectionClasses = createSectionClasses('alternate');
 
   return (
     <section
-      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
+      className={sectionClasses}
       id="testimonials"
       aria-labelledby="testimonials-heading"
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            Customer Love
-          </div> */}
           <SectionHeader text=" Customer Love" />
-          <h2 id="testimonials-heading" className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+          <h2 id="testimonials-heading" className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
             {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
+          <p className={`${COLORS.text.tertiary} text-xl max-w-2xl mx-auto`}>
             {t.testimonialsSection?.dontJustTakeOurWord || "Don't just take our word for it. Here's what our customers have to say about Purrify."}
           </p>
-          
-          {/* Action Buttons */}
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <button
               onClick={() => {
@@ -56,14 +87,14 @@ export function Testimonials() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
+              className={`inline-flex items-center px-6 py-3 ${GRADIENTS.background.primary} text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95`}
               aria-label={t.homepage.altText.customerTestimonials}
             >
               {t.nav.testimonials}
             </button>
             <button
               onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
-              className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100"
+              className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100`}
               aria-label={t.homepage.altText.leaveGoogleReview}
             >
               <svg
@@ -84,79 +115,14 @@ export function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TESTIMONIALS.slice(0, 6).map((testimonial, index) => {
-            const colorIndex = index % colorClasses.length;
-            const colors = colorClasses[colorIndex];
-
+            const colorScheme = colorSchemes[index % colorSchemes.length];
             return (
-              <div
+              <TestimonialCard
                 key={`testimonial-${testimonial.name.replace(/\s+/g, '-').toLowerCase()}-${index}`}
-                className={`${colors.bg} backdrop-blur-sm p-8 rounded-2xl shadow-xl border ${colors.border} relative transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
-                  <div
-                    className={"rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300"}
-                  >
-                    <Image
-                      src={`https://randomuser.me/api/portraits/${testimonial.name.includes("Jean") ||
-                        testimonial.name.includes("François") ||
-                        testimonial.name.includes("Mathieu") ||
-                        testimonial.name.includes("Robert") ||
-                        testimonial.name.includes("Stéphane")
-                          ? "men"
-                          : "women"
-                      }/${index + 1}.jpg`}
-                      alt={`Portrait photo of ${testimonial.name}, satisfied Purrify customer`}
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                  <svg
-                    width="60"
-                    height="60"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10 11C10 13.2091 8.20914 15 6 15C3.79086 15 2 13.2091 2 11C2 8.79086 3.79086 7 6 7C8.20914 7 10 8.79086 10 11Z"
-                      fill={colors.icon}
-                    />
-                    <path
-                      d="M22 11C22 13.2091 20.2091 15 18 15C15.7909 15 14 13.2091 14 11C14 8.79086 15.7909 7 18 7C20.2091 7 22 8.79086 22 11Z"
-                      fill={colors.icon}
-                    />
-                  </svg>
-                </div>
-                <div className="pt-10">
-                  <div className="flex mb-2">
-                    {Array(testimonial.stars || 5)
-                      .fill(0)
-                      .map((_, i) => (
-                        <svg
-                          key={i}
-                          className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-                      ))}
-                  </div>
-                  <p className="text-gray-800 dark:text-gray-100 italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6">
-                    &quot;{testimonial.text}&quot;
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <p
-                      className={`font-bold ${colors.text} text-sm md:text-base`}
-                    >
-                      {testimonial.name}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                testimonial={testimonial}
+                index={index}
+                colorScheme={colorScheme}
+              />
             );
           })}
         </div>
@@ -166,7 +132,7 @@ export function Testimonials() {
             href="https://g.page/r/CUB8bZ_ibMbwEBM/review"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group"
+            className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group`}
           >
             {t.testimonialsSection?.readMoreReviews || "Read More Reviews"}
             <svg

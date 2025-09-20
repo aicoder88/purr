@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json({ ok: true, event });
   } catch (err) {
-    // eslint-disable-next-line no-console
+     
     console.error('trial-conversion error', err);
     return res.status(500).json({ error: 'Internal Server Error' });
   }

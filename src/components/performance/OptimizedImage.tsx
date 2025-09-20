@@ -70,11 +70,11 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     try {
       if (typeof window === 'undefined') {
         // Node/SSR
-        // eslint-disable-next-line no-undef
+         
         return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
       }
       // Browser
-      // eslint-disable-next-line no-undef
+       
       return `data:image/svg+xml;base64,${btoa(svg)}`;
     } catch {
       // Fallback to encoded SVG without base64
