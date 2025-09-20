@@ -8,6 +8,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ContactPage() {
   const { t, locale } = useTranslation();
@@ -495,6 +496,13 @@ export default function ContactPage() {
                 </Button>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/support/contact" />
           </Container>
         </section>
       </main>

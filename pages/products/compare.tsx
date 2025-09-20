@@ -16,6 +16,7 @@ import {
   Award,
   Zap
 } from 'lucide-react';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
@@ -423,6 +424,13 @@ const ProductComparePage: NextPage = () => {
                 </div>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/products/compare" />
           </Container>
         </section>
       </main>

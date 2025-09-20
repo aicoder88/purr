@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
@@ -383,6 +384,13 @@ export default function FamilyPackPage() {
                 </Button>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/products/family-pack" />
           </Container>
         </section>
       </main>

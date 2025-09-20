@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
@@ -542,19 +543,26 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
-        {/* Back to Products */}
-        <section className="py-8 cv-auto cis-480">
-          <Container>
-            <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                <Button variant="outline" size="lg">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back to All Products
-                </Button>
-              </Link>
-            </div>
-          </Container>
-        </section>
+      {/* Back to Products */}
+      <section className="py-8 cv-auto cis-480">
+        <Container>
+          <div className="text-center">
+            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+              <Button variant="outline" size="lg">
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Back to All Products
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Related Articles */}
+      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+        <Container>
+          <RelatedArticles currentPath="/products/trial-size" />
+        </Container>
+      </section>
       </main>
     </>
   );

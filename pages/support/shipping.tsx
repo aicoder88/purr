@@ -19,6 +19,7 @@ import {
   // Calendar,
   // DollarSign
 } from 'lucide-react';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const ShippingPage: NextPage = () => {
   const { locale } = useTranslation();
@@ -130,7 +131,7 @@ const ShippingPage: NextPage = () => {
               "@type": "WebPage",
               "name": "Shipping Information",
               "description": "Purrify shipping options, delivery times, and costs for Canada and international delivery.",
-              "url": `https://purrify.com${locale === 'fr' ? '/fr' : ''}/support/shipping`
+              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`
             })
           }}
         />
@@ -498,6 +499,13 @@ const ShippingPage: NextPage = () => {
                 </div>
               </Link>
             </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/support/shipping" />
           </Container>
         </section>
       </main>
