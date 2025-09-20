@@ -37,8 +37,8 @@ export function hasConsent(type: ConsentType): boolean {
       // Fallback: if we can't parse, only allow necessary
       return type === ConsentType.NECESSARY;
     }
-  } catch (error) {
-    console.error('Error checking consent:', error);
+  } catch (err) {
+    console.error('Error checking consent:', err);
     // Fail safely - only allow necessary cookies
     return type === ConsentType.NECESSARY;
   }
@@ -74,9 +74,9 @@ export function safeTrackEvent(
       
       window.gtag('event', action, eventParams);
     }
-  } catch (error) {
+  } catch (err) {
     // Silently fail to prevent breaking the app
-    console.debug('Analytics tracking failed:', error);
+    console.debug('Analytics tracking failed:', err);
   }
 }
 
@@ -102,8 +102,8 @@ export function safeTrackConfig(targetId: string, config: Record<string, unknown
       
       window.gtag('config', targetId, privacyConfig);
     }
-  } catch (error) {
-    console.debug('Analytics config failed:', error);
+  } catch (err) {
+    console.debug('Analytics config failed:', err);
   }
 }
 
@@ -124,8 +124,8 @@ export function safeTrackPageView(url?: string) {
         allow_google_signals: hasConsent(ConsentType.MARKETING),
       });
     }
-  } catch (error) {
-    console.debug('Page view tracking failed:', error);
+  } catch (err) {
+    console.debug('Page view tracking failed:', err);
   }
 }
 
@@ -157,8 +157,8 @@ export function safeTrackPurchase(transactionData: {
         privacy_mode: 'gdpr_compliant',
       });
     }
-  } catch (error) {
-    console.debug('Purchase tracking failed:', error);
+  } catch (err) {
+    console.debug('Purchase tracking failed:', err);
   }
 }
 
@@ -184,8 +184,8 @@ export function updateConsent(consentSettings: Record<ConsentType, boolean>) {
     window.dispatchEvent(new CustomEvent('consentUpdated', { 
       detail: consentSettings 
     }));
-  } catch (error) {
-    console.error('Failed to update consent:', error);
+  } catch (err) {
+    console.error('Failed to update consent:', err);
   }
 }
 
@@ -223,7 +223,7 @@ export function initializeConsent() {
         }
       }
     }
-  } catch (error) {
-    console.error('Failed to initialize consent:', error);
+  } catch (err) {
+    console.error('Failed to initialize consent:', err);
   }
 }
