@@ -660,8 +660,8 @@ const CheckoutPage: NextPage = () => {
   return (
     <>
       <NextSeo
-        title="Checkout - Purrify"
-        description="Complete your Purrify purchase"
+        title="Secure Checkout - Complete Your Purrify Order"
+        description="Fast and secure checkout for your Purrify cat litter deodorizer. Complete your order with trusted payment options and fast shipping across Canada."
       />
       <Container>
         <PurchaseNotification />

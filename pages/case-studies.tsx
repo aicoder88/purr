@@ -132,12 +132,12 @@ export default function CaseStudies() {
   return (
     <>
       <Head>
-        <title>Purrify Case Studies - Real Success Stories & Customer Results | {SITE_NAME}</title>
+        <title>Success Stories - Real Customer Results | {SITE_NAME}</title>
         <meta name="description" content="Detailed case studies showing how Purrify cat litter deodorizer solved real odor problems for Canadian families. See measurable results and customer transformations." />
         <meta name="keywords" content="Purrify case studies, cat odor success stories, customer results, before and after, cat litter deodorizer effectiveness" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Purrify Case Studies - Real Success Stories & Customer Results" />
+        <meta property="og:title" content="Success Stories - Real Customer Results" />
         <meta property="og:description" content="See detailed case studies showing how Purrify transformed homes across Canada with natural odor elimination." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.purrify.ca/case-studies" />
@@ -145,7 +145,7 @@ export default function CaseStudies() {
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Purrify Case Studies - Real Customer Transformations" />
+        <meta name="twitter:title" content="Success Stories - Real Customer Results" />
         <meta name="twitter:description" content="Detailed success stories showing measurable results from Canadian cat owners." />
         <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
