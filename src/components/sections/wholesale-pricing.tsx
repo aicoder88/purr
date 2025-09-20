@@ -169,7 +169,7 @@ export function WholesalePricing() {
               🎯 Ready to Boost Your Revenue?
             </h3>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
-              Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">17 established retailers</strong> already earning high margins with Purrify.
+              Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">17 established Montreal and surrounding-area retailers</strong> already earning high margins with Purrify.
               <br/>Setup takes less than 24 hours.
             </p>
 
@@ -189,7 +189,7 @@ export function WholesalePricing() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span className="font-bold text-gray-800 dark:text-gray-200">24hr Approval</span>
+                <span className="font-bold text-gray-800 dark:text-gray-200">72hr Approval</span>
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
 import { Button } from "../../components/ui/button";
@@ -19,6 +19,7 @@ export function Header() {
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
   const { t, locale } = useTranslation();
   const router = useRouter();
+  const headerRef = useRef<HTMLElement | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,6 +51,20 @@ export function Header() {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, [router.events]);
+
+  // Close any open dropdown when clicking outside the header
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (headerRef.current && !headerRef.current.contains(target)) {
+        setIsProductsDropdownOpen(false);
+        setIsRetailersDropdownOpen(false);
+        setIsLearnDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Navigation items for better organization
   const navigationItems = [
@@ -99,7 +114,7 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
+    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -125,31 +140,77 @@ export function Header() {
                       aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={() => {
-                        if (item.id === 'products') setIsProductsDropdownOpen(true);
-                        if (item.id === 'retailers') setIsRetailersDropdownOpen(true);
-                        if (item.id === 'learn') setIsLearnDropdownOpen(true);
-                      }}
-                      onMouseLeave={(e) => {
-                        const relatedTarget = e.relatedTarget as Element;
-                        if (!relatedTarget?.closest('[data-dropdown]')) {
-                          setTimeout(() => {
-                            if (item.id === 'products') setIsProductsDropdownOpen(false);
-                            if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
-                            if (item.id === 'learn') setIsLearnDropdownOpen(false);
-                          }, 500);
+                        // Open hovered dropdown and close the others to prevent overlap
+                        if (item.id === 'products') {
+                          setIsProductsDropdownOpen(true);
+                          setIsRetailersDropdownOpen(false);
+                          setIsLearnDropdownOpen(false);
+                        }
+                        if (item.id === 'retailers') {
+                          setIsProductsDropdownOpen(false);
+                          setIsRetailersDropdownOpen(true);
+                          setIsLearnDropdownOpen(false);
+                        }
+                        if (item.id === 'learn') {
+                          setIsProductsDropdownOpen(false);
+                          setIsRetailersDropdownOpen(false);
+                          setIsLearnDropdownOpen(true);
                         }
                       }}
+                      // Do not auto-dismiss on mouse leave
                       onClick={() => {
-                        if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
-                        if (item.id === 'retailers') setIsRetailersDropdownOpen(!isRetailersDropdownOpen);
-                        if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                        if (item.id === 'products') {
+                          const next = !isProductsDropdownOpen;
+                          setIsProductsDropdownOpen(next);
+                          if (next) {
+                            setIsRetailersDropdownOpen(false);
+                            setIsLearnDropdownOpen(false);
+                          }
+                        }
+                        if (item.id === 'retailers') {
+                          const next = !isRetailersDropdownOpen;
+                          setIsRetailersDropdownOpen(next);
+                          if (next) {
+                            setIsProductsDropdownOpen(false);
+                            setIsLearnDropdownOpen(false);
+                          }
+                        }
+                        if (item.id === 'learn') {
+                          const next = !isLearnDropdownOpen;
+                          setIsLearnDropdownOpen(next);
+                          if (next) {
+                            setIsProductsDropdownOpen(false);
+                            setIsRetailersDropdownOpen(false);
+                          }
+                        }
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault();
-                          if (item.id === 'products') setIsProductsDropdownOpen(!isProductsDropdownOpen);
-                          if (item.id === 'retailers') setIsRetailersDropdownOpen(!isRetailersDropdownOpen);
-                          if (item.id === 'learn') setIsLearnDropdownOpen(!isLearnDropdownOpen);
+                          if (item.id === 'products') {
+                            const next = !isProductsDropdownOpen;
+                            setIsProductsDropdownOpen(next);
+                            if (next) {
+                              setIsRetailersDropdownOpen(false);
+                              setIsLearnDropdownOpen(false);
+                            }
+                          }
+                          if (item.id === 'retailers') {
+                            const next = !isRetailersDropdownOpen;
+                            setIsRetailersDropdownOpen(next);
+                            if (next) {
+                              setIsProductsDropdownOpen(false);
+                              setIsLearnDropdownOpen(false);
+                            }
+                          }
+                          if (item.id === 'learn') {
+                            const next = !isLearnDropdownOpen;
+                            setIsLearnDropdownOpen(next);
+                            if (next) {
+                              setIsProductsDropdownOpen(false);
+                              setIsRetailersDropdownOpen(false);
+                            }
+                          }
                         }
                         if (e.key === 'Escape') {
                           if (item.id === 'products') setIsProductsDropdownOpen(false);
@@ -165,24 +226,9 @@ export function Header() {
                       (item.id === 'retailers' && isRetailersDropdownOpen) ||
                       (item.id === 'learn' && isLearnDropdownOpen)) && (
                       <div 
-                        className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 dark:border-gray-600/50 z-50"
+                        className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50"
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
-                        onMouseEnter={() => {
-                          if (item.id === 'products') setIsProductsDropdownOpen(true);
-                          if (item.id === 'retailers') setIsRetailersDropdownOpen(true);
-                          if (item.id === 'learn') setIsLearnDropdownOpen(true);
-                        }}
-                        onMouseLeave={(e) => {
-                          const relatedTarget = e.relatedTarget as Element;
-                          if (!relatedTarget?.closest('button') && !relatedTarget?.closest('[data-dropdown]')) {
-                            setTimeout(() => {
-                              if (item.id === 'products') setIsProductsDropdownOpen(false);
-                              if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
-                              if (item.id === 'learn') setIsLearnDropdownOpen(false);
-                            }, 500);
-                          }
-                        }}
                         data-dropdown
                       >
                         {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (

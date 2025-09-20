@@ -82,17 +82,39 @@ export function RetailerContact() {
       `Submitted (ISO): ${submittedAt.toISOString()}`,
     ].join('\n');
 
+    // HTML version for templates that render HTML variables
+    const fullMessageHtml = `
+      <h2 style="margin:0 0 8px 0; font-family:Arial,sans-serif;">Retailer Partnership Application</h2>
+      <hr/>
+      <div style="font-family:Arial,sans-serif; line-height:1.5;">
+        <p><strong>Business Name:</strong> ${formData.businessName || '—'}</p>
+        <p><strong>Contact Name:</strong> ${formData.contactName || '—'}</p>
+        <p><strong>Email:</strong> ${formData.email || '—'}</p>
+        <p><strong>Phone:</strong> ${formData.phone || '—'}</p>
+        <p><strong>Position:</strong> ${formData.position || '—'}</p>
+        <p><strong>Business Type:</strong> ${formData.businessType || '—'}</p>
+        <p><strong>Number of Locations:</strong> ${formData.locations || '—'}</p>
+        <p><strong>Current Products:</strong> ${formData.currentProducts || '—'}</p>
+        <p><strong>Additional Message:</strong><br/>${(formData.message || '—').replace(/\n/g, '<br/>')}</p>
+        <hr/>
+        <p><strong>Submitted (local):</strong> ${submittedAt.toLocaleString()}</p>
+        <p><strong>Submitted (ISO):</strong> ${submittedAt.toISOString()}</p>
+      </div>
+    `;
+
     const templateParams = {
       // Common mappings expected by many EmailJS templates
       subject: `Retailer Partnership Application from ${formData.businessName || 'Unknown Business'}`,
+      // Include both common and alternate key names for maximum template compatibility
+      name: formData.contactName || formData.businessName || 'Retailer Applicant',
       from_name: formData.contactName || formData.businessName || 'Retailer Applicant',
+      email: formData.email || 'noreply@purrify.ca',
       from_email: formData.email || 'noreply@purrify.ca',
       reply_to: formData.email || 'noreply@purrify.ca',
 
       // Individual labeled fields
-      businessName: formData.businessName,
-      contactName: formData.contactName,
-      email: formData.email,
+      businessName: formData.businessName || 'Not provided',
+      contactName: formData.contactName || 'Not provided',
       phone: formData.phone || 'Not provided',
       position: formData.position || 'Not provided',
       businessType: formData.businessType || 'Not provided',
@@ -100,13 +122,17 @@ export function RetailerContact() {
       currentProducts: formData.currentProducts || 'Not provided',
       additionalMessage: formData.message || 'No additional message',
 
-      // Fallback single message body so templates that only output `message` still include everything
+      // Full body content (plain and HTML)
       message: fullMessage,
+      message_html: fullMessageHtml,
 
       // Meta
       date: submittedAt.toLocaleString(),
       date_iso: submittedAt.toISOString(),
-      formType: 'Retailer Partnership Application'
+      formType: 'Retailer Partnership Application',
+
+      // For debugging: include a JSON snapshot
+      form_json: JSON.stringify({ ...formData, submittedAt: submittedAt.toISOString() })
     };
 
     console.log('Sending retailer inquiry via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
@@ -187,7 +213,7 @@ export function RetailerContact() {
             </h2>
             <p className="text-2xl text-gray-700 dark:text-gray-200 mb-8">
               Welcome to the <strong className="text-[#5B2EFF] dark:text-[#3694FF]">Purrify Partner Network!</strong>
-              <br/>We'll contact you within 24 hours.
+              <br/>We will get back to you within 72 hours.
             </p>
 
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
@@ -214,7 +240,7 @@ export function RetailerContact() {
                 <h4 className="font-black text-lg text-gray-900 dark:text-gray-50 mb-3">💰 Expected Timeline to Revenue</h4>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">24hrs</div>
+                    <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">72hrs</div>
                     <div className="text-xs text-gray-600 dark:text-gray-300">Approval</div>
                   </div>
                   <div>
@@ -265,7 +291,7 @@ export function RetailerContact() {
             {/* Urgency & Social Proof */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
               <div className="bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl p-4 border border-[#10B981]/20 dark:border-[#34D399]/30">
-                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">24hrs</div>
+                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">72hrs</div>
                 <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Approval Time</div>
               </div>
               <div className="bg-gradient-to-r from-[#FF6B6B]/10 to-[#FF8E8E]/10 dark:from-[#FF6B6B]/20 dark:to-[#FF8E8E]/20 rounded-2xl p-4 border border-[#FF6B6B]/20 dark:border-[#FF8E8E]/30">

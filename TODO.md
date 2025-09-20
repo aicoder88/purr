@@ -26,3 +26,14 @@ This TODO tracks remaining items from the latest SEMrush crawl after implementin
 - [ ] Internal linking depth: 14 pages with one incoming link; 10 need >3 clicks to reach [content/IA]
   - Action: add Related Articles to Learn pages; add contextual links in product and support pages; ensure footer nav links include key leaf pages.
 
+## Retailers Page & Menu Fixes
+
+- [x] Retailers: After form submit, change confirmation copy to "we will get back to you within 72 hours".
+- [x] Retailers: Update any approval/confirmation timing from 24 hours to 72 hours (e.g., "Approval 24hrs" badges/metrics).
+- [x] Retailers: Change CTA copy to "Join 17 established Montreal and surrounding-area retailers already earning high margins with Purrify." (was "Join 17 established retailers...").
+- [x] Header menu: Keep dropdowns open until user clicks outside or chooses another menu item; do not auto-dismiss too quickly.
+- [x] Header menu: Ensure only one dropdown opens at a time and dropdowns don’t overlap.
+
+## Email Delivery
+
+- [x] Retailers application email: Ensure full, labeled form data is included in the email body (both plain-text and HTML), and add common template keys (`name`, `email`, `message`, `subject`, `date`) for compatibility.
