@@ -182,7 +182,7 @@ export function RetailerContact() {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <div className="w-24 h-24 bg-gradient-to-br from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-12 h-12 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -198,17 +198,17 @@ export function RetailerContact() {
               <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 Your Next Steps</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4">1</div>
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">1</div>
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Application Review</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Our team reviews your store details</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4">2</div>
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">2</div>
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Partnership Call</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Discuss pricing, support & logistics</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4">3</div>
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">3</div>
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Start Selling</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Receive inventory & launch</p>
                 </div>
@@ -288,7 +288,7 @@ export function RetailerContact() {
             <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -467,7 +467,7 @@ export function RetailerContact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
+                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white dark:text-white dark:text-white font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
                 >
                   {isSubmitting ? '⏳ Submitting...' : '🚀 Submit Partnership Application'}
                 </Button>
@@ -485,7 +485,7 @@ export function RetailerContact() {
                 <div className="space-y-6">
                   <div className="bg-white/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white font-black text-lg mr-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
                         🏪
                       </div>
                       <div>
@@ -501,7 +501,7 @@ export function RetailerContact() {
 
                   <div className="bg-white/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white font-black text-lg mr-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
                         🏥
                       </div>
                       <div>
@@ -531,7 +531,7 @@ export function RetailerContact() {
                 <div className="space-y-6">
                   <a href="tel:1-250-432-9352" className="flex items-center p-4 bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl hover:from-[#5B2EFF]/20 hover:to-[#3694FF]/20 dark:hover:from-[#3694FF]/30 dark:hover:to-[#5B2EFF]/30 transition-all duration-300 transform hover:scale-105">
                     <div className="w-14 h-14 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-xl flex items-center justify-center mr-4">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
@@ -543,7 +543,7 @@ export function RetailerContact() {
 
                   <a href="mailto:wholesale@purrify.ca" className="flex items-center p-4 bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl hover:from-[#10B981]/20 hover:to-[#34D399]/20 dark:hover:from-[#10B981]/30 dark:hover:to-[#34D399]/30 transition-all duration-300 transform hover:scale-105">
                     <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>

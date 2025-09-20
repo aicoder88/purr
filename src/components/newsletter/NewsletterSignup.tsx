@@ -92,7 +92,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
 
           <div className="text-center mb-6">
             <div className={`w-16 h-16 ${GRADIENTS.background.purpleToRed} rounded-full flex items-center justify-center mx-auto mb-4`}>
-              <Mail className="w-8 h-8 text-white" />
+              <Mail className="w-8 h-8 text-white dark:text-white" />
             </div>
             <h3 className={`text-2xl font-bold ${COLORS.text.primary} mb-2`}>
               Get {discount}% Off Your First Order!

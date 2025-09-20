@@ -94,8 +94,8 @@ export function WholesalePricing() {
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <span className={`px-4 py-2 rounded-full text-sm font-bold ${
                   tier.highlighted
-                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] text-white'
-                    : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900'
+                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] text-white dark:text-white'
+                    : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-white dark:text-gray-900'
                 }`}>
                   {tier.badge}
                 </span>
@@ -139,7 +139,7 @@ export function WholesalePricing() {
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start text-gray-700 dark:text-gray-200">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#10B981] to-[#34D399] flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -152,8 +152,8 @@ export function WholesalePricing() {
                 onClick={() => scrollToSection("retailer-contact")}
                 className={`w-full py-4 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                   tier.highlighted
-                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white shadow-xl hover:shadow-2xl'
-                    : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl'
+                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white shadow-xl hover:shadow-2xl'
+                    : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl'
                 }`}
               >
                 {tier.highlighted ? '🚀 Start Growing Now' : 'Get Started'}
@@ -177,7 +177,7 @@ export function WholesalePricing() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="flex items-center justify-center space-x-3">
                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -185,7 +185,7 @@ export function WholesalePricing() {
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -193,7 +193,7 @@ export function WholesalePricing() {
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -205,14 +205,14 @@ export function WholesalePricing() {
               <Button
                 onClick={() => scrollToSection("retailer-contact")}
                 size="lg"
-                className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white font-black py-4 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg"
+                className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white font-black py-4 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg"
               >
                 💰 Apply for Partnership
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:text-white dark:hover:text-white dark:text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
               >
                 📞 Call: 1-250-432-9352
               </Button>

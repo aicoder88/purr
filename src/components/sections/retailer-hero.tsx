@@ -64,7 +64,7 @@ export function RetailerHero() {
                 <Button
                   onClick={() => scrollToSection("retailer-contact")}
                   size="lg"
-                  className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white font-black py-6 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-2 text-lg"
+                  className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white dark:text-white dark:text-white font-black py-6 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 active:scale-95 border-0 transform hover:-translate-y-2 text-lg"
                 >
                   🚀 Start Partnership Today
                 </Button>
@@ -72,7 +72,7 @@ export function RetailerHero() {
                   onClick={() => scrollToSection("wholesale-pricing")}
                   size="lg"
                   variant="outline"
-                  className="bg-white/80 dark:bg-gray-800/80 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF]/50 dark:border-[#3694FF]/50 hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white transform hover:-translate-y-2 backdrop-blur-sm"
+                  className="bg-white/80 dark:bg-gray-800/80 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF]/50 dark:border-[#3694FF]/50 hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:text-white dark:hover:text-white dark:text-white transform hover:-translate-y-2 backdrop-blur-sm"
                 >
                   View Pricing
                 </Button>
@@ -95,7 +95,7 @@ export function RetailerHero() {
               <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-xl flex items-center justify-center mr-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                     </svg>
                   </div>
@@ -110,7 +110,7 @@ export function RetailerHero() {
               <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#FF3131] to-[#FF6B6B] rounded-xl flex items-center justify-center mr-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </div>
@@ -125,7 +125,7 @@ export function RetailerHero() {
               <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
