@@ -145,7 +145,7 @@ export function RetailerContact() {
       setIsSubmitted(true);
       setSubmitStatus({
         success: true,
-        message: 'Partnership application sent successfully! We\'ll contact you within 24 hours.',
+        message: 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
       });
 
       // Reset form
