@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for activated carbon science content
+const heroImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
+const scienceImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1600&q=80';
+const coconutImage = 'https://images.unsplash.com/photo-1517080727870-780609473738?auto=format&fit=crop&w=1600&q=80';
+const healthImage = 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?auto=format&fit=crop&w=1600&q=80';
+
 export default function ActivatedCarbonBenefits() {
   // const { t } = useTranslation();
 
@@ -21,13 +27,15 @@ export default function ActivatedCarbonBenefits() {
         <meta property="og:description" content="Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/carbon_magnified_image.webp" />
-        
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
         <meta name="twitter:description" content="Discover the science behind activated carbon litter additives and how molecular adsorption eliminates odors." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/carbon_magnified_image.webp" />
+        <meta name="twitter:image" content={heroImage} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
@@ -220,16 +228,16 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <Image 
-                src="/optimized/carbon_magnified_image.webp" 
-                alt="Magnified view of activated carbon showing microporous structure for odor adsorption"
+              <Image
+                src={heroImage}
+                alt="Laboratory scientist examining activated carbon samples for odor control research"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={384}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
-                Microscopic view of activated carbon's porous structure that traps odor molecules
+                The science behind activated carbon's superior odor elimination properties
               </p>
             </div>
 
@@ -265,10 +273,24 @@ export default function ActivatedCarbonBenefits() {
                 </p>
               </div>
 
+              <div className="mb-8">
+                <Image
+                  src={coconutImage}
+                  alt="Coconut shells being processed into activated carbon for superior odor control"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Coconut shells provide the raw material for premium activated carbon
+                </p>
+              </div>
+
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Why Coconut Shell Carbon is Superior</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Not all activated carbon is created equal. <strong>Purrify uses premium coconut shell activated carbon</strong> 
+                Not all activated carbon is created equal. <strong>Purrify uses premium coconut shell activated carbon</strong>
                 because it offers several advantages over other sources:
               </p>
 
@@ -319,8 +341,22 @@ export default function ActivatedCarbonBenefits() {
                 </div>
               </div>
 
+              <div className="mb-8">
+                <Image
+                  src={healthImage}
+                  alt="Happy healthy cat in clean home environment with fresh air"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Activated carbon provides health benefits beyond just odor control
+                </p>
+              </div>
+
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Health Benefits Beyond Odor Control</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Using an <strong>activated carbon litter additive</strong> provides benefits beyond just odor elimination:
               </p>

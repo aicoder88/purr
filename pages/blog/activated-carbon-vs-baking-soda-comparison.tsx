@@ -5,6 +5,12 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for comparison content
+const heroImage = 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?auto=format&fit=crop&w=1600&q=80';
+const comparisonImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80';
+const scienceImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
+const resultsImage = 'https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?auto=format&fit=crop&w=1600&q=80';
+
 export default function ActivatedCarbonVsBakingSoda() {
   return (
     <>
@@ -18,13 +24,15 @@ export default function ActivatedCarbonVsBakingSoda() {
         <meta property="og:description" content="Scientific comparison of activated carbon vs baking soda technology for cat litter odor control. Discover which approach delivers superior results." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Activated Carbon vs Baking Soda: Which Deodorizer Wins?" />
         <meta name="twitter:description" content="Scientific comparison of two popular odor control technologies for cat litter - see which delivers better results." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
+        <meta name="twitter:image" content={heroImage} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison" />
@@ -67,6 +75,21 @@ export default function ActivatedCarbonVsBakingSoda() {
             </p>
           </header>
 
+          {/* Featured Image */}
+          <div className="mb-12">
+            <Image
+              src={heroImage}
+              alt="Side-by-side comparison of activated carbon and baking soda for odor control testing"
+              className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+              width={1600}
+              height={1067}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+            />
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              Scientific comparison of two leading odor control technologies
+            </p>
+          </div>
+
           <div className="prose prose-lg max-w-none dark:prose-dark">
             <p className="text-gray-700 dark:text-gray-200">
               When it comes to controlling cat litter odors, two main technologies dominate the market: activated carbon and baking soda.
@@ -97,6 +120,20 @@ export default function ActivatedCarbonVsBakingSoda() {
                   compounds, reducing their smell intensity.
                 </p>
               </div>
+            </div>
+
+            <div className="mb-8">
+              <Image
+                src={comparisonImage}
+                alt="Laboratory testing setup comparing odor control effectiveness"
+                className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+              />
+              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                Performance testing reveals significant differences between technologies
+              </p>
             </div>
 
             <h2 className="text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
