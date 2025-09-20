@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG, isEmailJSConfigured } from '../../lib/emailjs-config';
 
 export function RetailerContact() {
   const { t } = useTranslation();
@@ -18,6 +20,31 @@ export function RetailerContact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
+  const [configValid, setConfigValid] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success?: boolean;
+    message?: string;
+  }>({});
+
+  // EmailJS configuration
+  useEffect(() => {
+    // Check if EmailJS is properly configured
+    const isConfigured = isEmailJSConfigured();
+    setConfigValid(isConfigured);
+
+    // Only initialize if configuration is valid
+    if (isConfigured && EMAILJS_CONFIG.PUBLIC_KEY) {
+      try {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+        setEmailjsInitialized(true);
+        console.log('EmailJS initialized successfully for retailer form');
+      } catch (error) {
+        console.error('Failed to initialize EmailJS for retailer form:', error);
+        setEmailjsInitialized(false);
+      }
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -27,38 +54,89 @@ export function RetailerContact() {
     }));
   };
 
+  // Helper function to send email via EmailJS
+  const sendEmailViaEmailJS = async () => {
+    if (!configValid) {
+      throw new Error('Email service is not properly configured. Please try again later.');
+    }
+
+    if (!emailjsInitialized) {
+      throw new Error('Email service not initialized. Please try again later.');
+    }
+
+    const templateParams = {
+      businessName: formData.businessName,
+      contactName: formData.contactName,
+      email: formData.email,
+      phone: formData.phone || 'Not provided',
+      position: formData.position || 'Not provided',
+      businessType: formData.businessType,
+      locations: formData.locations || 'Not provided',
+      currentProducts: formData.currentProducts || 'Not provided',
+      message: formData.message || 'No additional message',
+      subject: `Retailer Partnership Application from ${formData.businessName}`,
+      date: new Date().toLocaleString(),
+      formType: 'Retailer Partnership Application'
+    };
+
+    console.log('Sending retailer inquiry via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
+
+    const result = await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      templateParams
+    );
+
+    console.log('EmailJS send result for retailer form:', result);
+    return result;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus({});
 
     try {
-      const response = await fetch('/api/retailer-inquiry', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      console.log('Attempting to submit retailer form:', {
+        businessName: formData.businessName,
+        contactName: formData.contactName,
+        email: formData.email,
+        businessType: formData.businessType
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setFormData({
-          businessName: '',
-          contactName: '',
-          email: '',
-          phone: '',
-          position: '',
-          businessType: '',
-          locations: '',
-          currentProducts: '',
-          message: ''
-        });
-      } else {
-        throw new Error('Failed to submit form');
-      }
+      // Send email via EmailJS
+      await sendEmailViaEmailJS();
+
+      // Handle success
+      setIsSubmitted(true);
+      setSubmitStatus({
+        success: true,
+        message: 'Partnership application sent successfully! We\'ll contact you within 24 hours.',
+      });
+
+      // Reset form
+      setFormData({
+        businessName: '',
+        contactName: '',
+        email: '',
+        phone: '',
+        position: '',
+        businessType: '',
+        locations: '',
+        currentProducts: '',
+        message: ''
+      });
+
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your inquiry. Please try again or contact us directly.');
+      console.error('Error submitting retailer form:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
+      setSubmitStatus({
+        success: false,
+        message: error instanceof Error && error.message.includes('configured')
+          ? error.message
+          : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -272,6 +350,20 @@ export function RetailerContact() {
                     placeholder="Tell us about your business and wholesale needs..."
                   />
                 </div>
+
+                {submitStatus.message && !isSubmitted && (
+                  <div
+                    className={`rounded-lg p-4 ${
+                      submitStatus.success
+                        ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400'
+                        : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400'
+                    }`}
+                    role="alert"
+                    aria-live="polite"
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
 
                 <Button
                   type="submit"
