@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for cat litter odor control
+const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
+const litterBoxImage = 'https://images.unsplash.com/photo-1559235038-1b0fadf5b93f?auto=format&fit=crop&w=1600&q=80';
+const ventilationImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80';
+const cleaningImage = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80';
+
 export default function HouseSmellsLikeCatLitter() {
   // const { t } = useTranslation();
 
@@ -21,13 +27,15 @@ export default function HouseSmellsLikeCatLitter() {
         <meta property="og:description" content="Stop your house from smelling like cat litter with these 7 proven odor control solutions. Eliminate strong urine smells permanently." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/140g.webp" />
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="House Smells Like Cat Litter? 7 Proven Solutions" />
         <meta name="twitter:description" content="Discover proven methods to eliminate cat litter odors and stop your house from smelling like a litter box." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/140g.webp" />
+        <meta name="twitter:image" content={heroImage} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
@@ -44,10 +52,10 @@ export default function HouseSmellsLikeCatLitter() {
                 "description": "Is your house smelling like cat litter? Discover 7 proven methods to control cat litter smell and eliminate strong urine odors from your litter box permanently.",
                 "image": {
                   "@type": "ImageObject",
-                  "url": "https://www.purrify.ca/optimized/140g.webp",
-                  "width": 1200,
-                  "height": 384,
-                  "caption": "Purrify activated carbon litter additive for odor control"
+                  "url": heroImage,
+                  "width": 1600,
+                  "height": 1067,
+                  "caption": "Cat looking concerned about litter box odors in home environment"
                 },
                 "author": {
                   "@type": "Organization",
@@ -168,15 +176,15 @@ export default function HouseSmellsLikeCatLitter() {
             {/* Featured Image */}
             <div className="mb-12">
               <Image
-                src="/optimized/140g.webp"
-                alt="Purrify activated carbon litter additive for controlling cat litter smell"
+                src={heroImage}
+                alt="Concerned cat near litter box highlighting need for odor control solutions"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={384}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
-                Purrify activated carbon additive eliminates odors at the source
+                Don't let litter box odors take over your home
               </p>
             </div>
 
@@ -224,6 +232,20 @@ export default function HouseSmellsLikeCatLitter() {
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Maintain Proper Litter Box Cleaning Schedule</h3>
 
+              <div className="mb-8">
+                <Image
+                  src={cleaningImage}
+                  alt="Clean and organized pet care supplies for maintaining litter box hygiene"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Consistent cleaning routine is key to odor prevention
+                </p>
+              </div>
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 To prevent <strong>strong urine smell in your cat litter box</strong>, establish a consistent cleaning routine:
               </p>
@@ -236,6 +258,20 @@ export default function HouseSmellsLikeCatLitter() {
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Improve Ventilation Around the Litter Area</h3>
+
+              <div className="mb-8">
+                <Image
+                  src={ventilationImage}
+                  alt="Well-ventilated room with fresh air circulation for odor control"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Proper ventilation helps eliminate odors naturally
+                </p>
+              </div>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Good airflow is crucial for <strong>getting cat litter smell out of your house</strong>. Consider these ventilation improvements:
@@ -262,6 +298,20 @@ export default function HouseSmellsLikeCatLitter() {
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">5. Address Multiple Cat Households</h3>
+
+              <div className="mb-8">
+                <Image
+                  src={litterBoxImage}
+                  alt="Multiple litter boxes setup for multi-cat household odor management"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Multiple cats require strategic litter box placement and management
+                </p>
+              </div>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If your <strong>house smells like litter box</strong> due to multiple cats, you need:
