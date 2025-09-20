@@ -87,20 +87,50 @@ npm run purge-vercel-cache   # Purge Vercel edge cache
 ## Critical Requirements
 
 ### Dark Mode Compliance (BUILD FAILS WITHOUT)
-**Every text element needs dark: variant:**
+**MANDATORY: Every text element MUST have dark: variant - NO EXCEPTIONS**
 
 ```css
 /* Headings */
 text-gray-900 dark:text-gray-50
 text-gray-800 dark:text-gray-100
 
-/* Body */
+/* Body Text */
 text-gray-700 dark:text-gray-200
 text-gray-600 dark:text-gray-300
+
+/* White Text (Common Issue) */
+text-white dark:text-gray-100    /* NEVER use text-white alone */
+
+/* Colored Text */
+text-red-500 dark:text-red-400
+text-green-500 dark:text-green-400
+text-blue-500 dark:text-blue-400
 
 /* Backgrounds */
 bg-white dark:bg-gray-800
 bg-gray-50 dark:bg-gray-900
+```
+
+**CRITICAL DARK MODE RULES:**
+1. **NEVER use `text-white` without `dark:text-gray-100`**
+2. **NEVER use any `text-*` class without corresponding `dark:text-*`**
+3. **ALL colored text needs dark variants** (red, green, blue, etc.)
+4. **Buttons, links, and interactive elements MUST be readable in dark mode**
+5. **Run `npm run validate-dark-mode` BEFORE every commit**
+
+**Common Dark Mode Violations:**
+```css
+/* ❌ WRONG - Will be unreadable in dark mode */
+text-white
+text-red-500
+text-green-600
+className="bg-blue-500 text-white"
+
+/* ✅ CORRECT - Readable in both modes */
+text-white dark:text-gray-100
+text-red-500 dark:text-red-400
+text-green-600 dark:text-green-400
+className="bg-blue-500 text-white dark:text-gray-100"
 ```
 
 ### Protected Systems
@@ -149,12 +179,20 @@ useEffect(() => {
 setState(prev => prev + 1);
 ```
 
-### Component Checklist
-- [ ] Every text has `dark:` variant
+### Component Checklist (MANDATORY BEFORE COMMIT)
+- [ ] **DARK MODE: Every text element has `dark:text-*` variant**
+- [ ] **DARK MODE: All `text-white` includes `dark:text-gray-100`**
+- [ ] **DARK MODE: All colored text has dark variants**
+- [ ] **DARK MODE: `npm run validate-dark-mode` passes with 0 errors**
 - [ ] TypeScript strict compliance
 - [ ] Mobile responsive (44px+ touch targets)
 - [ ] Keyboard navigation
 - [ ] WCAG AA contrast ratios
+
+**Pre-Commit Dark Mode Validation:**
+```bash
+npm run validate-dark-mode  # MUST show 0 errors
+```
 
 ## Performance Standards
 

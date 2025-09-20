@@ -449,7 +449,7 @@ export default function StrongCatUrineSmellGuide() {
               </p>
               <Link
                 href="/products/standard"
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-full bg-[#03E46A] text-white hover:bg-[#03E46A]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#03E46A] dark:focus:ring-offset-gray-900 transition"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-full bg-[#03E46A] text-white dark:text-gray-100 hover:bg-[#03E46A]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#03E46A] dark:focus:ring-offset-gray-900 transition"
               >
                 Shop Purrify Odor Control
               </Link>
