@@ -178,7 +178,7 @@ export function RetailerContact() {
 
   if (isSubmitted) {
     return (
-      <section id="retailer-contact" className="py-20 bg-gradient-to-br from-[#5B2EFF]/5 via-white to-[#3694FF]/5 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
+      <section id="retailer-contact" className="py-16 bg-gradient-to-br from-[#5B2EFF]/5 via-white to-[#3694FF]/5 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <div className="w-24 h-24 bg-gradient-to-br from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
@@ -248,7 +248,7 @@ export function RetailerContact() {
   }
 
   return (
-    <section id="retailer-contact" className="py-20 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section id="retailer-contact" className="py-16 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

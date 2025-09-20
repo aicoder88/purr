@@ -34,6 +34,8 @@ This TODO tracks remaining items from the latest SEMrush crawl after implementin
 - [x] Header menu: Keep dropdowns open until user clicks outside or chooses another menu item; do not auto-dismiss too quickly.
 - [x] Header menu: Ensure only one dropdown opens at a time and dropdowns don’t overlap.
 
+- [x] Retailers: Reduce excessive vertical spacing between sections by removing wrapper padding on the page and tightening section paddings (hero pb-16; wholesale/contact py-16).
+
 ## Email Delivery
 
 - [x] Retailers application email: Ensure full, labeled form data is included in the email body (both plain-text and HTML), and add common template keys (`name`, `email`, `message`, `subject`, `date`) for compatibility.

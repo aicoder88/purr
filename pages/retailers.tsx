@@ -62,13 +62,9 @@ export default function RetailersPage() {
       <main className="min-h-screen bg-white dark:bg-gray-900">
         <RetailerHero />
 
-        <div className="py-16">
-          <WholesalePricing />
-        </div>
+        <WholesalePricing />
 
-        <div className="py-16">
-          <RetailerContact />
-        </div>
+        <RetailerContact />
       </main>
     </>
   );

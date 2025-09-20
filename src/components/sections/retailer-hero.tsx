@@ -7,7 +7,7 @@ export function RetailerHero() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative w-full pt-24 pb-20 overflow-hidden bg-gradient-to-br from-[#5B2EFF]/8 via-white to-[#3694FF]/8 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
+    <section className="relative w-full pt-24 pb-16 overflow-hidden bg-gradient-to-br from-[#5B2EFF]/8 via-white to-[#3694FF]/8 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
 
       {/* Enhanced background decorations */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-[#5B2EFF]/20 to-[#3694FF]/20 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-full blur-3xl animate-pulse"></div>
