@@ -1,4 +1,13 @@
-// Theme utilities for consistent styling across components
+/**
+ * Theme utilities for consistent styling across components.
+ * Provides centralized color, gradient, transition, and animation definitions
+ * to ensure design system consistency throughout the application.
+ */
+
+/**
+ * Color palette with light/dark mode support and semantic color definitions.
+ * All colors include variants for different use cases (background, text, borders).
+ */
 export const COLORS = {
   primary: {
     red: {
@@ -47,6 +56,10 @@ export const COLORS = {
   }
 } as const;
 
+/**
+ * Gradient definitions for backgrounds and text effects.
+ * Includes light/dark mode variants and semantic usage patterns.
+ */
 export const GRADIENTS = {
   background: {
     light: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]',
@@ -61,6 +74,9 @@ export const GRADIENTS = {
   }
 } as const;
 
+/**
+ * Transition and animation timing definitions for consistent motion design.
+ */
 export const TRANSITIONS = {
   default: 'transition-all duration-300',
   slow: 'transition-all duration-500',
@@ -68,12 +84,18 @@ export const TRANSITIONS = {
   colors: 'transition-colors duration-300'
 } as const;
 
+/**
+ * Shadow definitions for depth and hierarchy in the design system.
+ */
 export const SHADOWS = {
   card: 'shadow-xl dark:shadow-gray-800',
   cardHover: 'hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30',
   button: 'shadow-lg hover:shadow-xl'
 } as const;
 
+/**
+ * Animation and transformation classes for interactive elements.
+ */
 export const ANIMATIONS = {
   fadeInUp: 'opacity-100 translate-y-0',
   fadeOutDown: 'opacity-0 translate-y-8',
@@ -84,7 +106,18 @@ export const ANIMATIONS = {
   }
 } as const;
 
-// Utility functions for common styling patterns
+/**
+ * Creates a set of color classes for a given color scheme.
+ *
+ * @param colorScheme - The color scheme to use ('red', 'purple', or 'green')
+ * @returns Object containing background, border, text, and icon color classes
+ *
+ * @example
+ * ```typescript
+ * const redClasses = createColorClasses('red');
+ * // Returns: { bg: 'bg-[#FF3131]/10...', border: '...', text: '...', iconColor: '#FF3131' }
+ * ```
+ */
 export const createColorClasses = (colorScheme: 'red' | 'purple' | 'green') => {
   const color = COLORS.primary[colorScheme];
   return {
@@ -95,6 +128,21 @@ export const createColorClasses = (colorScheme: 'red' | 'purple' | 'green') => {
   };
 };
 
+/**
+ * Creates standardized button classes with consistent styling and hover effects.
+ *
+ * @param variant - The button variant ('primary', 'secondary', or 'outline')
+ * @returns Complete Tailwind CSS class string for the button
+ *
+ * @example
+ * ```typescript
+ * const primaryButton = createButtonClasses('primary');
+ * // Returns: "font-bold py-3 px-6 rounded-lg ... bg-gradient-to-r from-[#FF3131] ..."
+ *
+ * const secondaryButton = createButtonClasses('secondary');
+ * // Returns: "font-bold py-3 px-6 rounded-lg ... bg-white dark:bg-gray-800 ..."
+ * ```
+ */
 export const createButtonClasses = (variant: 'primary' | 'secondary' | 'outline' = 'primary') => {
   const baseClasses = `font-bold py-3 px-6 rounded-lg ${SHADOWS.button} ${TRANSITIONS.default} active:scale-95 border-0`;
 
@@ -110,11 +158,41 @@ export const createButtonClasses = (variant: 'primary' | 'secondary' | 'outline'
   }
 };
 
+/**
+ * Creates standardized card classes with consistent styling, shadows, and optional hover effects.
+ *
+ * @param withHover - Whether to include hover effects and transforms (default: true)
+ * @returns Complete Tailwind CSS class string for the card
+ *
+ * @example
+ * ```typescript
+ * const interactiveCard = createCardClasses(true);
+ * // Returns: "bg-white/90 dark:bg-gray-900/90 ... hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group"
+ *
+ * const staticCard = createCardClasses(false);
+ * // Returns: "bg-white/90 dark:bg-gray-900/90 ... rounded-2xl shadow-xl"
+ * ```
+ */
 export const createCardClasses = (withHover = true) => {
   const baseClasses = `${COLORS.surface.cardAlpha} backdrop-blur-sm p-8 rounded-2xl ${SHADOWS.card} ${COLORS.border.accent} ${TRANSITIONS.slow}`;
   return withHover ? `${baseClasses} ${SHADOWS.cardHover} ${ANIMATIONS.hover.lift} group` : baseClasses;
 };
 
+/**
+ * Creates standardized section classes with consistent background gradients and spacing.
+ *
+ * @param variant - The section variant ('light' or 'alternate')
+ * @returns Complete Tailwind CSS class string for the section
+ *
+ * @example
+ * ```typescript
+ * const lightSection = createSectionClasses('light');
+ * // Returns: "py-12 transition-colors duration-300 bg-gradient-to-br from-[#FFFFFF] ..."
+ *
+ * const alternateSection = createSectionClasses('alternate');
+ * // Returns: "py-12 transition-colors duration-300 bg-gradient-to-br from-[#FFFFF5] ..."
+ * ```
+ */
 export const createSectionClasses = (variant: 'light' | 'alternate' = 'light') => {
   const baseClasses = `py-12 ${TRANSITIONS.colors}`;
   return variant === 'light'

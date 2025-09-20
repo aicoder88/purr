@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/accordion";
 import { useTranslation } from "../../lib/translation-context";
 import Script from 'next/script';
+import { createSectionClasses, createCardClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
+import SectionHeader from "../ui/section-header";
 
 export function FAQ() {
   const { t } = useTranslation();
@@ -76,6 +78,9 @@ export function FAQ() {
     }))
   };
 
+  const sectionClasses = createSectionClasses('light');
+  const cardClasses = createCardClasses('surface');
+
   return (
     <>
       <Script
@@ -86,54 +91,52 @@ export function FAQ() {
         }}
       />
       <section
-        className="py-12 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
+        className={`${sectionClasses} py-12`}
         id="faq"
       >
-      <Container>
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#3694FF]/20 rounded-full text-[#FF3131] dark:text-[#3694FF] font-medium text-sm mb-4">
-            {t.faq?.commonQuestions || "Common Questions"}
+        <Container>
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <SectionHeader text={t.faq?.commonQuestions || "Common Questions"} />
+            <h2 className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.purple} leading-tight`}>
+              {t.faq?.title || "Frequently Asked Questions"}
+            </h2>
+            <p className={`${COLORS.text.tertiary} text-lg`}>
+              {t.faq?.subtitle || "Have questions about Purrify? Find answers to our most commonly asked questions below."}
+            </p>
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
-            {t.faq?.title || "Frequently Asked Questions"}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
-            {t.faq?.subtitle || "Have questions about Purrify? Find answers to our most commonly asked questions below."}
-          </p>
-        </div>
 
-        <div className="max-w-3xl mx-auto bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, '-').toLowerCase()}-${index}`}
-                value={`item-${index}`}
-                className="border-b border-[#E0EFC7] last:border-0"
+          <div className={`max-w-3xl mx-auto ${cardClasses} p-8`}>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, '-').toLowerCase()}-${index}`}
+                  value={`item-${index}`}
+                  className={`border-b ${COLORS.border.accent} last:border-0`}
+                >
+                  <AccordionTrigger className={`text-left font-bold text-lg ${COLORS.text.primary} hover:${COLORS.text.purple} transition-colors py-3 flex items-center`}>
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className={`${COLORS.text.tertiary} leading-relaxed text-base pb-4`}>
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className={COLORS.text.tertiary}>
+              {t.faq?.stillHaveQuestions || "Still have questions?"}{" "}
+              <a
+                href="#contact"
+                className={`${COLORS.text.purple} font-medium hover:opacity-80 transition-colors`}
               >
-                <AccordionTrigger className="text-left font-bold text-lg text-gray-900 dark:text-gray-100 hover:text-[#5B2EFF] dark:hover:text-[#3694FF] transition-colors py-3 flex items-center">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 dark:text-gray-300 leading-relaxed text-base pb-4 dark:text-gray-300">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-gray-600 dark:text-gray-300">
-            {t.faq?.stillHaveQuestions || "Still have questions?"}{" "}
-            <a
-              href="#contact"
-              className="text-[#5B2EFF] font-medium hover:text-[#5B2EFF]/80 transition-colors"
-            >
-              {t.faq?.contactTeam || "Contact our team"}
-            </a>{" "}
-            {t.faq?.forMoreInfo || "for more information."}
-          </p>
-        </div>
-      </Container>
+                {t.faq?.contactTeam || "Contact our team"}
+              </a>{" "}
+              {t.faq?.forMoreInfo || "for more information."}
+            </p>
+          </div>
+        </Container>
       </section>
     </>
   );

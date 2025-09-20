@@ -1,6 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// Common hook for intersection observer with consistent options
+/**
+ * Common utilities and hooks for React components.
+ * Provides reusable functionality for intersection observation, animations,
+ * UI components, and utility functions.
+ */
+
+/**
+ * Custom hook for intersection observer with consistent options.
+ * Triggers a callback when the referenced element enters or exits the viewport.
+ *
+ * @param callback - Function to call when intersection state changes
+ * @param options - IntersectionObserver options (default: { threshold: 0.1 })
+ * @returns Ref to attach to the element you want to observe
+ *
+ * @example
+ * ```typescript
+ * const sectionRef = useIntersectionObserver((isIntersecting) => {
+ *   setIsVisible(isIntersecting);
+ * });
+ *
+ * return <section ref={sectionRef}>Content</section>
+ * ```
+ */
 export const useIntersectionObserver = (
   callback: (isIntersecting: boolean) => void,
   options: IntersectionObserverInit = { threshold: 0.1 }
@@ -25,21 +47,68 @@ export const useIntersectionObserver = (
   return elementRef;
 };
 
-// Staggered animation utility
+/**
+ * Creates staggered animation styles for lists and grids.
+ * Applies increasing delays to create smooth sequential animations.
+ *
+ * @param index - The item index in the list/grid
+ * @param baseDelay - Base delay in milliseconds (default: 100)
+ * @returns CSS-in-JS style object with transition delay
+ *
+ * @example
+ * ```typescript
+ * const items = data.map((item, index) => (
+ *   <div key={item.id} style={createStaggeredAnimation(index)}>
+ *     {item.content}
+ *   </div>
+ * ));
+ * ```
+ */
 export const createStaggeredAnimation = (index: number, baseDelay = 100) => ({
   transitionDelay: `${index * baseDelay}ms`,
   transform: 'translateY(0)',
   opacity: 1
 });
 
-// Generate avatar URL with gender detection
+/**
+ * Generates avatar URLs with gender detection for testimonials and reviews.
+ * Uses randomuser.me API with French name detection logic.
+ *
+ * @param name - The person's name to analyze for gender
+ * @param index - Index for avatar variety (1-99)
+ * @returns Complete URL to the avatar image
+ *
+ * @example
+ * ```typescript
+ * const avatarUrl = generateAvatarUrl('Marie Dubois', 5);
+ * // Returns: "https://randomuser.me/api/portraits/women/6.jpg"
+ *
+ * const maleAvatar = generateAvatarUrl('Jean François', 2);
+ * // Returns: "https://randomuser.me/api/portraits/men/3.jpg"
+ * ```
+ */
 export const generateAvatarUrl = (name: string, index: number) => {
   const maleNames = ['Jean', 'François', 'Mathieu', 'Robert', 'Stéphane', 'Marc', 'Samuel'];
   const gender = maleNames.some(maleName => name.includes(maleName)) ? 'men' : 'women';
   return `https://randomuser.me/api/portraits/${gender}/${index + 1}.jpg`;
 };
 
-// Common star rating component props
+/**
+ * Generates star rating components with consistent styling.
+ * Creates an array of filled star SVG elements.
+ *
+ * @param stars - Number of stars to display (default: 5)
+ * @returns Array of React SVG elements representing stars
+ *
+ * @example
+ * ```typescript
+ * const StarRating = ({ rating }: { rating: number }) => (
+ *   <div className="flex">
+ *     {generateStarRating(rating)}
+ *   </div>
+ * );
+ * ```
+ */
 export const generateStarRating = (stars: number = 5) =>
   Array(stars).fill(0).map((_, i) => {
     return (
@@ -53,7 +122,20 @@ export const generateStarRating = (stars: number = 5) =>
     );
   });
 
-// Common quote icon SVG
+/**
+ * Quote icon SVG component for testimonials and review sections.
+ *
+ * @param props - Configuration object
+ * @param props.color - The fill color for the quote icon
+ * @param props.size - The size of the icon in pixels (default: 60)
+ * @returns React SVG element representing quotation marks
+ *
+ * @example
+ * ```typescript
+ * <QuoteIcon color="#FF3131" size={40} />
+ * <QuoteIcon color="currentColor" />
+ * ```
+ */
 export const QuoteIcon = ({ color, size = 60 }: { color: string; size?: number }) => (
   <svg
     width={size}
@@ -73,7 +155,27 @@ export const QuoteIcon = ({ color, size = 60 }: { color: string; size?: number }
   </svg>
 );
 
-// Debounce hook for performance
+/**
+ * Custom hook for debouncing values to improve performance.
+ * Delays updating the returned value until after the specified delay period.
+ *
+ * @param value - The value to debounce
+ * @param delay - Delay in milliseconds before updating the debounced value
+ * @returns The debounced value
+ *
+ * @example
+ * ```typescript
+ * const [searchTerm, setSearchTerm] = useState('');
+ * const debouncedSearchTerm = useDebounce(searchTerm, 300);
+ *
+ * useEffect(() => {
+ *   // This will only run 300ms after the user stops typing
+ *   if (debouncedSearchTerm) {
+ *     performSearch(debouncedSearchTerm);
+ *   }
+ * }, [debouncedSearchTerm]);
+ * ```
+ */
 export const useDebounce = <T,>(value: T, delay: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
@@ -90,14 +192,61 @@ export const useDebounce = <T,>(value: T, delay: number): T => {
   return debouncedValue;
 };
 
-// Common loading states
+/**
+ * Loading spinner component with customizable size.
+ * Shows an animated spinning border for loading states.
+ *
+ * @param props - Configuration object
+ * @param props.size - Tailwind CSS size classes (default: 'w-4 h-4')
+ * @returns React element with spinning animation
+ *
+ * @example
+ * ```typescript
+ * <LoadingSpinner size="w-6 h-6" />
+ * <LoadingSpinner />  // Uses default w-4 h-4
+ * ```
+ */
 export const LoadingSpinner = ({ size = 'w-4 h-4' }: { size?: string }) => (
   <div className={`animate-spin rounded-full ${size} border-b-2 border-white`} />
 );
 
-// Common success checkmark
+/**
+ * Success checkmark icon component with customizable size.
+ * Shows a checkmark SVG for success states and confirmations.
+ *
+ * @param props - Configuration object
+ * @param props.size - Tailwind CSS size classes (default: 'w-4 h-4')
+ * @returns React SVG element with checkmark
+ *
+ * @example
+ * ```typescript
+ * <CheckIcon size="w-6 h-6" />
+ * <CheckIcon />  // Uses default w-4 h-4
+ * ```
+ */
 export const CheckIcon = ({ size = 'w-4 h-4' }: { size?: string }) => (
   <svg className={size} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 );
+
+/**
+ * Formats a price number as a localized currency string.
+ * Re-exported from utils for convenience in component files.
+ *
+ * @param price - The numeric price value
+ * @param currency - The currency code (default: 'CAD')
+ * @returns Formatted currency string for Canadian locale
+ *
+ * @example
+ * ```typescript
+ * formatPrice(19.99);        // Returns: "CA$19.99"
+ * formatPrice(25.50, 'USD'); // Returns: "$25.50"
+ * ```
+ */
+export const formatPrice = (price: number, currency = 'CAD'): string => {
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: currency
+  }).format(price);
+};
