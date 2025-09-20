@@ -39,3 +39,23 @@ This TODO tracks remaining items from the latest SEMrush crawl after implementin
 ## Email Delivery
 
 - [x] Retailers application email: Ensure full, labeled form data is included in the email body (both plain-text and HTML), and add common template keys (`name`, `email`, `message`, `subject`, `date`) for compatibility.
+
+## Performance Audit Notes & Next Steps
+
+Notes (addressed now):
+- [x] Header: Replaced inline JSX handlers with memoized callbacks to avoid re-creation on every render (JS-0417).
+- [x] Header: Added stable button `id` to match `aria-labelledby` on dropdown, improving a11y.
+- [x] Cache handler: Removed unnecessary `return await` in async wrapper (JS-0111) while preserving error handling.
+- [x] Global: Standardized `catch (err)` naming to avoid shadowing and reduce confusion.
+
+Next steps (proposed):
+- [ ] Products grid: Replace inline handlers in `src/components/sections/products.tsx` with memoized callbacks (JS-0417) [perf].
+- [ ] Blog cards: Replace inline handlers in `src/components/sections/blog-preview.tsx` and `pages/blog/index.tsx` (JS-0417) [perf].
+- [ ] Enable ESLint rules and auto-fixes: `no-return-await`, `react/jsx-no-bind`, `@typescript-eslint/no-unused-vars` (warn first), then clean remaining manually [tooling].
+- [ ] TypeScript: Trial `noUnusedLocals` / `noUnusedParameters` in a branch; measure impact and fix hotspots (JS-0356) [perf].
+- [ ] A11y: Re-scan for interactive-role mismatches; ensure only semantic roles are used and `aria-*` pairs are valid [a11y].
+- [ ] RegExp: Review any flagged `.match/.exec` patterns; prefer `regex.test` for boolean checks and ensure global flags are correct (JS-D007) [perf].
+- [ ] Re-run perf/static analysis after above changes; capture deltas and prioritize any remaining high-count rules [qa].
+
+Context / exclusions:
+- Built assets like `public/sw-optimized.js` may include `return await`—treat as generated code; exclude from lint or address at build step if needed.
