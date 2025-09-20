@@ -102,8 +102,8 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
           
           fidObserver.observe({ entryTypes: ['first-input'] });
 
-        } catch (error) {
-          console.warn('Performance Observer not fully supported:', error);
+        } catch (err) {
+          console.warn('Performance Observer not fully supported:', err);
         }
       }
     };

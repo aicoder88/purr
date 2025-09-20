@@ -53,8 +53,8 @@ export default function ContactForm() {
         emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
         setEmailjsInitialized(true);
         console.log('EmailJS initialized successfully');
-      } catch (error) {
-        console.error('Failed to initialize EmailJS:', error);
+      } catch (err) {
+        console.error('Failed to initialize EmailJS:', err);
         setEmailjsInitialized(false);
       }
     }
@@ -152,8 +152,8 @@ export default function ContactForm() {
       // Step 3: Handle success
       handleSubmissionSuccess();
       
-    } catch (error) {
-      handleSubmissionError(error);
+    } catch (err) {
+      handleSubmissionError(err);
     } finally {
       setIsSubmitting(false);
     }

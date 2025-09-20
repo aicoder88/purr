@@ -54,8 +54,8 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           });
 
           console.log('SW registered successfully');
-        } catch (error) {
-          console.warn('SW registration failed:', error);
+        } catch (err) {
+          console.warn('SW registration failed:', err);
         }
       };
 

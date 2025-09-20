@@ -66,8 +66,8 @@ const fetchRealPurchaseData = async (): Promise<PurchaseNotification[]> => {
       ...(item as object),
       isReal: true
     }));
-  } catch (error) {
-    console.error('Failed to load real purchase data:', error);
+  } catch (err) {
+    console.error('Failed to load real purchase data:', err);
     return [];
   }
 };

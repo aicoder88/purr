@@ -21,8 +21,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.setHeader('Cache-Control', 'public, max-age=3600');
       res.status(200).send(basicSitemap);
     }
-  } catch (error) {
-    console.error('Error serving sitemap:', error);
+  } catch (err) {
+    console.error('Error serving sitemap:', err);
     res.status(500).json({ error: 'Failed to generate sitemap' });
   }
 }

@@ -111,7 +111,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // Apply rate limiting
   try {
     await runMiddleware(req, res, limiter);
-  } catch (error) {
+  } catch (err) {
     return res.status(429).json({
       success: false,
       error: 'Too many requests. Please try again later.'
@@ -143,14 +143,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({
       success: true,
-      message: 'Thank you for your interest! We will contact you within 24 hours to discuss partnership opportunities.'
+      message: 'Thank you for your interest! We will contact you within 72 hours to discuss partnership opportunities.'
     });
 
-  } catch (error) {
-    console.error('Retailer inquiry error:', error);
+  } catch (err) {
+    console.error('Retailer inquiry error:', err);
 
     // Return user-friendly error message
-    const errorMessage = error instanceof Error ? error.message : 'An error occurred processing your inquiry';
+    const errorMessage = err instanceof Error ? err.message : 'An error occurred processing your inquiry';
 
     res.status(400).json({
       success: false,

@@ -65,8 +65,8 @@ export default function ScrollToTopButton() {
           mediaQueryList.removeEventListener('change', handleMotionPreferenceChange);
         }
       };
-    } catch (error) {
-      console.error("Error checking motion preferences:", error);
+    } catch (err) {
+      console.error("Error checking motion preferences:", err);
     }
   }, []);
 

@@ -124,11 +124,11 @@ export default async function handler(
       recoveryToken
     });
 
-  } catch (error) {
-    console.error('Cart recovery error:', error);
+  } catch (err) {
+    console.error('Cart recovery error:', err);
     res.status(500).json({
       error: 'Failed to send recovery email',
-      details: process.env.NODE_ENV === 'development' ? error : undefined
+      details: process.env.NODE_ENV === 'development' ? err : undefined
     });
   }
 }
@@ -340,9 +340,9 @@ async function sendRecoveryEmail(email: string, template: EmailTemplate) {
     // });
     
     return true;
-  } catch (error) {
-    console.error('Failed to send recovery email:', error);
-    throw error;
+  } catch (err) {
+    console.error('Failed to send recovery email:', err);
+    throw err;
   }
 }
 
@@ -374,7 +374,7 @@ async function logCartRecovery(data: {
       cartTotal: data.cartTotal
     });
     
-  } catch (error) {
-    console.error('Failed to log cart recovery:', error);
+  } catch (err) {
+    console.error('Failed to log cart recovery:', err);
   }
 }

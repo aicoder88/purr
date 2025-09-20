@@ -64,8 +64,8 @@ export async function getStaticProps() {
       // Re-generate the page at most once per hour
       revalidate: 3600,
     };
-  } catch (error) {
-    console.error('Error fetching WordPress posts:', error);
+  } catch (err) {
+    console.error('Error fetching WordPress posts:', err);
     // Fallback to sample data in case of error
     return {
       props: {

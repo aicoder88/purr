@@ -71,8 +71,8 @@ export function Products() {
       setTimeout(() => {
         setAddedToCart(null);
       }, 2000);
-    } catch (error) {
-      console.error('Failed to add to cart:', error);
+    } catch (err) {
+      console.error('Failed to add to cart:', err);
       setAddingToCart(null);
     }
   };

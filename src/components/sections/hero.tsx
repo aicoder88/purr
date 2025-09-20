@@ -39,8 +39,8 @@ export function Hero() {
     try {
       await video.play();
       setShowPlayButton(false);
-    } catch (error) {
-      console.log('Video autoplay prevented, showing play button:', error);
+    } catch (err) {
+      console.log('Video autoplay prevented, showing play button:', err);
       setShowPlayButton(true);
     }
   };

@@ -60,9 +60,9 @@ export class PaymentValidator {
         currency: session.currency,
       };
 
-    } catch (error) {
+    } catch (err) {
       result.isValid = false;
-      result.errors.push(`Validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      result.errors.push(`Validation failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
 
     return result;
@@ -101,9 +101,9 @@ export class PaymentValidator {
         receiptEmail: paymentIntent.receipt_email,
       };
 
-    } catch (error) {
+    } catch (err) {
       result.isValid = false;
-      result.errors.push(`Payment intent validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      result.errors.push(`Payment intent validation failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
 
     return result;
@@ -220,9 +220,9 @@ export class PaymentValidator {
         chargeId: refund.charge,
       };
 
-    } catch (error) {
+    } catch (err) {
       result.isValid = false;
-      result.errors.push(`Refund validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      result.errors.push(`Refund validation failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
 
     return result;

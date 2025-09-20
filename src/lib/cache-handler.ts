@@ -54,8 +54,8 @@ export class PurrifyIncrementalCache<T = unknown> {
 
   private async startCleanupInterval(): Promise<void> {
     setInterval(() => {
-      this.cleanup().catch(error => {
-        console.error('Error during periodic cache cleanup:', error);
+      this.cleanup().catch(err => {
+        console.error('Error during periodic cache cleanup:', err);
       });
     }, this.cleanupInterval);
   }
@@ -77,8 +77,8 @@ export class PurrifyIncrementalCache<T = unknown> {
           this.cache.set(key, entry);
           return entry.value as T;
         }
-      } catch (error) {
-        console.error('Cache read error:', error);
+      } catch (err) {
+        console.error('Cache read error:', err);
       }
     }
     
@@ -105,8 +105,8 @@ export class PurrifyIncrementalCache<T = unknown> {
     if (this.options.flushToDisk) {
       try {
         await this.fs.writeFile(this.getFilePath(key), JSON.stringify(entry));
-      } catch (error) {
-        console.error('Cache write error:', error);
+      } catch (err) {
+        console.error('Cache write error:', err);
       }
     }
   }
@@ -143,8 +143,8 @@ export class PurrifyIncrementalCache<T = unknown> {
         if (this.options.flushToDisk) {
           try {
             await this.fs.unlink(this.getFilePath(key));
-          } catch (error) {
-            console.error('Cache cleanup error:', error);
+          } catch (err) {
+            console.error('Cache cleanup error:', err);
           }
         }
       }

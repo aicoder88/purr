@@ -78,8 +78,8 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
         const data = JSON.parse(saved);
         setFormData(prev => ({ ...prev, ...data }));
       }
-    } catch (error) {
-      console.error('Error loading saved data:', error);
+    } catch (err) {
+      console.error('Error loading saved data:', err);
     }
   };
 
@@ -93,8 +93,8 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
         province: data.province
       };
       localStorage.setItem('purrify_checkout_data', JSON.stringify(dataToSave));
-    } catch (error) {
-      console.error('Error saving data:', error);
+    } catch (err) {
+      console.error('Error saving data:', err);
     }
   };
 
@@ -152,8 +152,8 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
       // Simulate checkout process
       await new Promise(resolve => setTimeout(resolve, 2000));
       onCheckoutComplete?.(formData);
-    } catch (error) {
-      console.error('Checkout error:', error);
+    } catch (err) {
+      console.error('Checkout error:', err);
     } finally {
       setIsSubmitting(false);
     }

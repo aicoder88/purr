@@ -83,8 +83,8 @@ export function TranslationProvider({
             scroll: false, // Prevent scroll jump
           }
         );
-      } catch (error) {
-        console.error('Failed to change locale:', error);
+      } catch (err) {
+        console.error('Failed to change locale:', err);
         // Fallback: update state without navigation
         setLocale(newLocale);
       }

@@ -44,7 +44,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       
       // Reset after 3 seconds
       setTimeout(() => setStatus('idle'), 3000);
-    } catch (error) {
+    } catch (err) {
       setStatus('error');
       setErrorMessage('Something went wrong. Please try again.');
       setTimeout(() => setStatus('idle'), 3000);

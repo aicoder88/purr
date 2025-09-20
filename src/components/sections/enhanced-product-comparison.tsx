@@ -17,9 +17,9 @@ export function EnhancedProductComparison() {
     setAddingToCart(productId);
     try {
       addToCart(productId);
-    } catch (error) {
+    } catch (err) {
       if (process.env.NODE_ENV === 'development') {
-        console.error('Failed to add to cart:', error);
+        console.error('Failed to add to cart:', err);
       }
     } finally {
       setTimeout(() => setAddingToCart(null), 1000);

@@ -86,8 +86,8 @@ export function PawCursor() {
         }
         resizeObserver.disconnect();
       };
-    } catch (error) {
-      console.error("Error in PawCursor initialization:", error);
+    } catch (err) {
+      console.error("Error in PawCursor initialization:", err);
       setIsPawAnimationEnabled(false);
     }
   }, []);
@@ -114,8 +114,8 @@ export function PawCursor() {
           ];
           return newPaws.slice(-3);
         });
-      } catch (error) {
-        console.error("Error in PawCursor mouse handler:", error);
+      } catch (err) {
+        console.error("Error in PawCursor mouse handler:", err);
         setIsPawAnimationEnabled(false);
       }
     },
@@ -141,8 +141,8 @@ export function PawCursor() {
       return () => {
         window.removeEventListener("mousemove", throttledMouseMove);
       };
-    } catch (error) {
-      console.error("Error in PawCursor effect:", error);
+    } catch (err) {
+      console.error("Error in PawCursor effect:", err);
       setIsPawAnimationEnabled(false);
     }
   }, [throttledMouseMove, isPawAnimationEnabled, isReducedMotion]);

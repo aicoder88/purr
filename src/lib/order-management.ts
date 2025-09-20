@@ -82,8 +82,8 @@ export class OrderManager {
       });
 
       return this.formatOrderResponse(order);
-    } catch (error) {
-      console.error('Failed to create order:', error);
+    } catch (err) {
+      console.error('Failed to create order:', err);
       throw new Error('Failed to create order');
     }
   }
@@ -120,8 +120,8 @@ export class OrderManager {
       });
 
       return this.formatOrderResponse(order);
-    } catch (error) {
-      console.error('Failed to update order:', error);
+    } catch (err) {
+      console.error('Failed to update order:', err);
       throw new Error('Failed to update order');
     }
   }
@@ -203,8 +203,8 @@ export class OrderManager {
       }
 
       return true;
-    } catch (error) {
-      console.error('Failed to cancel order:', error);
+    } catch (err) {
+      console.error('Failed to cancel order:', err);
       return false;
     }
   }
@@ -263,8 +263,8 @@ export class OrderManager {
         statusBreakdown,
         topProducts,
       };
-    } catch (error) {
-      console.error('Failed to get order analytics:', error);
+    } catch (err) {
+      console.error('Failed to get order analytics:', err);
       throw new Error('Failed to retrieve order analytics');
     }
   }

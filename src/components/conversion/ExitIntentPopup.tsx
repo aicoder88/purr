@@ -73,8 +73,8 @@ export function ExitIntentPopup({
         onClose();
       }, 2000);
       
-    } catch (error) {
-      console.error('Email capture error:', error);
+    } catch (err) {
+      console.error('Email capture error:', err);
     } finally {
       setIsSubmitting(false);
     }

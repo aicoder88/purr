@@ -39,8 +39,8 @@ export function RetailerContact() {
         emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
         setEmailjsInitialized(true);
         console.log('EmailJS initialized successfully for retailer form');
-      } catch (error) {
-        console.error('Failed to initialize EmailJS for retailer form:', error);
+      } catch (err) {
+        console.error('Failed to initialize EmailJS for retailer form:', err);
         setEmailjsInitialized(false);
       }
     }
@@ -161,14 +161,14 @@ export function RetailerContact() {
         message: ''
       });
 
-    } catch (error) {
-      console.error('Error submitting retailer form:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    } catch (err) {
+      console.error('Error submitting retailer form:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
 
       setSubmitStatus({
         success: false,
-        message: error instanceof Error && error.message.includes('configured')
-          ? error.message
+        message: err instanceof Error && err.message.includes('configured')
+          ? err.message
           : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
       });
     } finally {

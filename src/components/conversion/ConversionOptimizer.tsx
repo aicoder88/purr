@@ -66,8 +66,8 @@ export function ConversionOptimizer({
         closeExitIntent();
       }, 2000);
 
-    } catch (error) {
-      console.error('Email capture failed:', error);
+    } catch (err) {
+      console.error('Email capture failed:', err);
     }
   };
 
@@ -245,8 +245,8 @@ export function EmailCaptureForm({
         setIsSuccess(false);
       }, 3000);
 
-    } catch (error) {
-      console.error('Email capture error:', error);
+    } catch (err) {
+      console.error('Email capture error:', err);
     } finally {
       setIsSubmitting(false);
     }

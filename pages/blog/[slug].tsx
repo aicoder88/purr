@@ -102,8 +102,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       // Re-generate the page at most once per hour
       revalidate: 3600,
     };
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
+  } catch (err) {
+    console.error('Error fetching blog post:', err);
     
     // Fallback to sample data in case of error
     try {
@@ -126,7 +126,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         },
         revalidate: 86400,
       };
-    } catch (fallbackError) {
+    } catch (fallbackErr) {
       return {
         notFound: true,
       };

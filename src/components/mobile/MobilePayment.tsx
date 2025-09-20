@@ -184,8 +184,8 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
           // session.completeMerchantValidation(merchantSession);
           // For now, complete with empty object to proceed to payment
           session.completeMerchantValidation({});
-        } catch (error) {
-          console.error('Merchant validation failed:', error);
+        } catch (err) {
+          console.error('Merchant validation failed:', err);
           if ('abort' in session) {
             session.abort();
           }
@@ -198,12 +198,12 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
             session.completePayment(window.ApplePaySession?.STATUS_SUCCESS || 0);
             onPaymentSuccess?.(result);
           })
-          .catch((error) => {
-            console.error('Payment processing failed:', error);
+          .catch((err) => {
+            console.error('Payment processing failed:', err);
             session.completePayment(window.ApplePaySession?.STATUS_FAILURE || 1);
             onPaymentError?.({ 
               success: false, 
-              message: error instanceof Error ? error.message : 'Payment processing failed' 
+              message: err instanceof Error ? err.message : 'Payment processing failed' 
             });
           });
       };
@@ -213,9 +213,9 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       };
 
       session.begin();
-    } catch (error) {
-      console.error('Apple Pay error:', error);
-      onPaymentError?.(error as Record<string, unknown>);
+    } catch (err) {
+      console.error('Apple Pay error:', err);
+      onPaymentError?.(err as Record<string, unknown>);
     } finally {
       setIsProcessing(false);
       setSelectedMethod(null);
@@ -274,11 +274,11 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
       const result = await processPayment(paymentData, 'google-pay');
       onPaymentSuccess?.(result);
-    } catch (error) {
-      console.error('Google Pay error:', error);
+    } catch (err) {
+      console.error('Google Pay error:', err);
       onPaymentError?.({
         success: false,
-        message: error instanceof Error ? error.message : 'Google Pay processing failed'
+        message: err instanceof Error ? err.message : 'Google Pay processing failed'
       });
     } finally {
       setIsProcessing(false);

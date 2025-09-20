@@ -31,7 +31,7 @@ const ENCRYPTION_KEY = process.env.NEXT_PUBLIC_CART_ENCRYPTION_KEY || 'purrify-c
 function encryptData(data: string): string {
   try {
     return CryptoJS.AES.encrypt(data, ENCRYPTION_KEY).toString();
-  } catch (error) {
+  } catch (err) {
     console.warn('Failed to encrypt data, storing unencrypted');
     return data;
   }
@@ -42,7 +42,7 @@ function decryptData(encryptedData: string): string | null {
     const bytes = CryptoJS.AES.decrypt(encryptedData, ENCRYPTION_KEY);
     const decrypted = bytes.toString(CryptoJS.enc.Utf8);
     return decrypted || null;
-  } catch (error) {
+  } catch (err) {
     console.warn('Failed to decrypt data');
     return null;
   }
@@ -55,8 +55,8 @@ const secureStorage = {
     try {
       const encrypted = encryptData(value);
       localStorage.setItem(key, encrypted);
-    } catch (error) {
-      console.error('Failed to save to secure storage:', error);
+    } catch (err) {
+      console.error('Failed to save to secure storage:', err);
     }
   },
   
@@ -66,8 +66,8 @@ const secureStorage = {
       const encrypted = localStorage.getItem(key);
       if (!encrypted) return null;
       return decryptData(encrypted);
-    } catch (error) {
-      console.error('Failed to read from secure storage:', error);
+    } catch (err) {
+      console.error('Failed to read from secure storage:', err);
       return null;
     }
   },
@@ -76,8 +76,8 @@ const secureStorage = {
     if (typeof window === 'undefined') return;
     try {
       localStorage.removeItem(key);
-    } catch (error) {
-      console.error('Failed to remove from secure storage:', error);
+    } catch (err) {
+      console.error('Failed to remove from secure storage:', err);
     }
   }
 };
@@ -115,8 +115,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         if (Array.isArray(parsedCart)) {
           setItems(parsedCart);
         }
-      } catch (error) {
-        console.error('Failed to parse saved cart:', error);
+      } catch (err) {
+        console.error('Failed to parse saved cart:', err);
         // Clear corrupted data
         secureStorage.removeItem('cart');
       }
@@ -129,8 +129,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (savedLastActivity) {
       try {
         setLastActivity(new Date(savedLastActivity));
-      } catch (error) {
-        console.error('Invalid last activity date:', error);
+      } catch (err) {
+        console.error('Invalid last activity date:', err);
       }
     }
   }, []);
@@ -189,8 +189,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           value: getTotalPrice()
         });
       }
-    } catch (error) {
-      console.error('Cart recovery failed:', error);
+    } catch (err) {
+      console.error('Cart recovery failed:', err);
     }
   }, [items, lastActivity, getTotalPrice]);
 

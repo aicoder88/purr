@@ -23,8 +23,8 @@ export function loadScriptOnInteraction(
   const handleInteraction = async () => {
     try {
       await scriptLoader();
-    } catch (error) {
-      console.error('Error loading script:', error);
+    } catch (err) {
+      console.error('Error loading script:', err);
     }
   };
 
@@ -94,7 +94,7 @@ export function loadScriptOnVisible(
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           scriptLoader()
-            .catch(error => console.error('Error loading script:', error))
+            .catch(err => console.error('Error loading script:', err))
             .finally(() => {
               // Disconnect the observer once the script is loaded
               observer.disconnect();

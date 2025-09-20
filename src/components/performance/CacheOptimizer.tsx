@@ -58,8 +58,8 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
         stats[type === 'hit' ? 'hits' : 'misses']++;
         localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-      } catch (error) {
-        console.warn('Stats update error:', error);
+      } catch (err) {
+        console.warn('Stats update error:', err);
       }
     };
     
@@ -75,7 +75,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
               const entry = JSON.parse(item);
               totalSize += entry.size || 0;
             }
-          } catch (error) {
+          } catch (err) {
             // Invalid entry, remove it
             localStorage.removeItem(key);
           }
@@ -99,7 +99,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
               totalSize += entry.size || 0;
               entryCount++;
             }
-          } catch (error) {
+          } catch (err) {
             localStorage.removeItem(key);
           }
         }
@@ -399,7 +399,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
                 if (Date.now() > entry.expires) {
                   localStorage.removeItem(key);
                 }
-              } catch (error) {
+              } catch (err) {
                 localStorage.removeItem(key);
               }
             }

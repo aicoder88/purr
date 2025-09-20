@@ -69,8 +69,8 @@ class PredictiveLoader {
     if (stored) {
       try {
         return JSON.parse(stored);
-      } catch (error) {
-        console.warn('Failed to parse user behavior data:', error);
+      } catch (err) {
+        console.warn('Failed to parse user behavior data:', err);
       }
     }
 
@@ -87,8 +87,8 @@ class PredictiveLoader {
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('purrify_user_behavior', JSON.stringify(this.userBehavior));
-      } catch (error) {
-        console.warn('Failed to save user behavior data:', error);
+      } catch (err) {
+        console.warn('Failed to save user behavior data:', err);
       }
     }
   }
@@ -395,8 +395,8 @@ class PredictiveLoader {
         this.trackPrefetch(productHref, 'checkout-data');
       }
 
-    } catch (error) {
-      console.warn('Failed to prefetch checkout data:', error);
+    } catch (err) {
+      console.warn('Failed to prefetch checkout data:', err);
     }
   }
 

@@ -60,8 +60,8 @@ export default async function handler(
     }));
     
     res.status(200).json(posts);
-  } catch (error) {
-    console.error('Error fetching WordPress posts:', error);
+  } catch (err) {
+    console.error('Error fetching WordPress posts:', err);
     // Fallback to sample data in case of error
     const { limit } = req.query;
     const limitNum = limit ? parseInt(limit as string) : undefined;
