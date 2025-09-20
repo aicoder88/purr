@@ -6,36 +6,36 @@ export function RetailerTestimonials() {
 
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      title: 'Owner, Pet Paradise Vancouver',
-      location: 'Vancouver, BC',
-      quote: 'Purrify has become one of our top-selling products. Customers love it, and the margins are excellent. The support team provides everything we need to succeed.',
-      avatar: 'SC',
+      name: 'Pattes et Griffes – Sainte‑Thérèse',
+      title: 'Store Owner / Manager',
+      location: 'Sainte‑Thérèse, QC',
+      quote: 'Our customers ask for Purrify by name now. It\'s an easy recommendation at the counter and reorders have been consistent month after month.',
+      avatar: 'PG',
       stats: {
-        label: 'Monthly Sales Increase',
-        value: '+180%'
+        label: 'Average Reorder Cycle',
+        value: '30 days'
       }
     },
     {
-      name: 'Mike Rodriguez',
-      title: 'Manager, Furry Friends Pet Store',
-      location: 'Toronto, ON',
-      quote: 'The wholesale program is fantastic. Great margins, fast shipping, and our customers keep coming back. It\'s been a game-changer for our cat product section.',
-      avatar: 'MR',
+      name: 'Chico – Boul. St‑Laurent (Montreal)',
+      title: 'Store Manager',
+      location: 'Montreal, QC',
+      quote: 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.',
+      avatar: 'CH',
       stats: {
-        label: 'Customer Retention',
-        value: '94%'
+        label: 'Shelf Sell‑Through',
+        value: 'High'
       }
     },
     {
-      name: 'Lisa Thompson',
-      title: 'Regional Manager, Pet Supply Chain',
-      location: 'Calgary, AB',
-      quote: 'We\'ve rolled out Purrify across all 23 locations. The training materials and POS support made implementation seamless. Highly recommend to other retailers.',
-      avatar: 'LT',
+      name: 'Doghaus',
+      title: 'Owner',
+      location: 'Montreal, QC',
+      quote: 'Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it\'s delivering results.',
+      avatar: 'DH',
       stats: {
-        label: 'Store Locations',
-        value: '23 stores'
+        label: 'Repeat Purchases',
+        value: 'Strong'
       }
     }
   ];
