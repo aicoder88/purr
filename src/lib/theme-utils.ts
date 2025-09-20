@@ -42,17 +42,22 @@ export const COLORS = {
     light: 'bg-white dark:bg-gray-800',
     lightAlpha: 'bg-white/90 dark:bg-gray-800/90',
     card: 'bg-white dark:bg-gray-900',
-    cardAlpha: 'bg-white/90 dark:bg-gray-900/90'
+    cardAlpha: 'bg-white/90 dark:bg-gray-900/90',
+    muted: 'bg-gray-50 dark:bg-gray-800',
+    purple: 'bg-purple-50 dark:bg-purple-900/20'
   },
   text: {
     primary: 'text-gray-900 dark:text-gray-50',
     secondary: 'text-gray-700 dark:text-gray-200',
     tertiary: 'text-gray-600 dark:text-gray-300',
-    muted: 'text-gray-500 dark:text-gray-400'
+    muted: 'text-gray-500 dark:text-gray-400',
+    error: 'text-red-600 dark:text-red-400',
+    purple: 'text-purple-600 dark:text-purple-400'
   },
   border: {
     default: 'border-gray-100 dark:border-gray-700',
-    accent: 'border-[#E0EFC7] dark:border-gray-800'
+    accent: 'border-[#E0EFC7] dark:border-gray-800',
+    input: 'border-gray-300 dark:border-gray-600 focus:border-[#FF3131] dark:focus:border-[#FF5050]'
   }
 } as const;
 
@@ -65,7 +70,9 @@ export const GRADIENTS = {
     light: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]',
     dark: 'dark:from-gray-900 dark:via-gray-950 dark:to-gray-900',
     primary: 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF]',
-    cta: 'bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050]'
+    cta: 'bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050]',
+    purpleToRed: 'bg-gradient-to-r from-[#5B2EFF] to-[#FF3131]',
+    purpleToRedLight: 'bg-gradient-to-r from-[#5B2EFF]/20 to-[#FF3131]/20'
   },
   text: {
     primary: 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent',

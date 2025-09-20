@@ -392,8 +392,8 @@ test.describe('Retailers Page Comprehensive Testing', () => {
         loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
         firstPaint: paint.find(p => p.name === 'first-paint')?.startTime || 0,
         firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
-        domInteractive: navigation.domInteractive - navigation.navigationStart,
-        domComplete: navigation.domComplete - navigation.navigationStart
+        domInteractive: navigation.domInteractive - navigation.fetchStart,
+        domComplete: navigation.domComplete - navigation.fetchStart
       };
     });
 

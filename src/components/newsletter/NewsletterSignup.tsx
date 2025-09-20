@@ -77,7 +77,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   ];
 
   if (variant === 'popup') {
-    const cardClasses = createCardClasses('surface');
+    const cardClasses = createCardClasses(true);
     const buttonClasses = createButtonClasses('primary');
 
     return (
@@ -141,7 +141,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   }
 
   if (variant === 'footer') {
-    const cardClasses = createCardClasses('muted');
+    const cardClasses = createCardClasses(false);
     const buttonClasses = createButtonClasses('secondary');
 
     return (
@@ -232,7 +232,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   }
 
   // Default variant
-  const cardClasses = createCardClasses('surface');
+  const cardClasses = createCardClasses(true);
   const buttonClasses = createButtonClasses('primary');
 
   return (

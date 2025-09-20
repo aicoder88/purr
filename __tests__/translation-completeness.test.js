@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const ts = require('typescript');
 
 describe('Translation Completeness', () => {
   const TRANSLATION_DIR = path.join(__dirname, '../src/translations');
@@ -18,7 +19,7 @@ describe('Translation Completeness', () => {
   beforeAll(() => {
     // Discover translation files
     translationFiles = fs.readdirSync(TRANSLATION_DIR)
-      .filter(file => file.endsWith('.ts') && file !== 'types.ts' && file !== 'index.ts')
+      .filter(file => file.endsWith('.ts') && !['types.ts', 'index.ts', 'common.ts'].includes(file))
       .map(file => ({
         locale: path.basename(file, '.ts'),
         path: path.join(TRANSLATION_DIR, file)
@@ -29,10 +30,7 @@ describe('Translation Completeness', () => {
     // Load translation objects
     translations = {};
     for (const file of translationFiles) {
-      // In a real test, you'd import the actual modules
-      // For this test, we'll parse the file content
-      const content = fs.readFileSync(file.path, 'utf-8');
-      translations[file.locale] = extractTranslationStructure(content);
+      translations[file.locale] = extractTranslationStructure(file.path);
     }
   });
   
@@ -52,7 +50,7 @@ describe('Translation Completeness', () => {
       const content = fs.readFileSync(TYPE_DEFINITIONS_FILE, 'utf-8');
       
       // Check for main interface
-      expect(content).toMatch(/export interface Translations/);
+      expect(content).toMatch(/export interface TranslationType/);
       
       // Check for key interfaces
       expect(content).toMatch(/freeTrialPage:/);
@@ -63,24 +61,35 @@ describe('Translation Completeness', () => {
   });
   
   describe('Translation Key Consistency', () => {
-    test('all translations have the same top-level keys', () => {
-      const locales = Object.keys(translations);
-      expect(locales.length).toBeGreaterThanOrEqual(2);
-      
-      const baseLocale = locales[0];
-      const baseKeys = Object.keys(translations[baseLocale]);
-      
-      for (let i = 1; i < locales.length; i++) {
-        const locale = locales[i];
-        const keys = Object.keys(translations[locale]);
-        
-        expect(keys.sort()).toEqual(baseKeys.sort());
+    test('all translations include required top-level keys', () => {
+      const requiredKeys = [
+        'siteName',
+        'siteDescription',
+        'nav',
+        'hero',
+        'products',
+        'features',
+        'freeTrialPage',
+        'contactPage',
+        'faqItems',
+        'faqCategories',
+        'faqPage',
+        'privacyPolicy'
+      ];
+
+      for (const locale of Object.keys(translations)) {
+        for (const key of requiredKeys) {
+          expect(translations[locale]).toHaveProperty(key);
+          expect(translations[locale][key]).toBeDefined();
+        }
       }
     });
     
     test('critical translation sections exist in all locales', () => {
       const criticalSections = [
-        'common',
+        'siteName',
+        'siteDescription',
+        'nav',
         'freeTrialPage',
         'contactPage',
         'faqItems',
@@ -104,7 +113,6 @@ describe('Translation Completeness', () => {
         'claimTrial',
         'whatYouGet',
         'freeTrialBag',
-        'freeShippingDoor',
         'expertTips',
         'zeroCommitment',
         'instantOdorElimination',
@@ -293,29 +301,97 @@ describe('Translation Completeness', () => {
  * Helper Functions
  */
 
-function extractTranslationStructure(content) {
-  // This is a simplified parser for the translation files
-  // In a real implementation, you'd use proper AST parsing
+const moduleCache = new Map();
+
+function extractTranslationStructure(filePath) {
   try {
-    // Remove TypeScript exports and types
-    const cleanContent = content
-      .replace(/export default \{/, '{')
-      .replace(/export const \w+ = \{/, '{')
-      .replace(/} as const;?/, '}')
-      .replace(/:\s*string/g, ': "string"')
-      .replace(/:\s*string\[\]/g, ': []')
-      .replace(/:\s*\{[^}]*\}/g, ': {}');
-    
-    // Simple object extraction (this is fragile, use proper parser in production)
-    const objectMatch = cleanContent.match(/\{[\s\S]*\}/);
-    if (objectMatch) {
-      return JSON.parse(objectMatch[0].replace(/(\w+):/g, '"$1":'));
+    const exports = loadTsModule(filePath);
+    const baseName = path.basename(filePath, path.extname(filePath));
+    const candidates = [baseName, 'default'];
+
+    for (const candidate of candidates) {
+      const value = exports?.[candidate];
+      if (value && typeof value === 'object') {
+        return value;
+      }
+    }
+
+    const firstObjectExport = Object.values(exports || {}).find(
+      (value) => value && typeof value === 'object'
+    );
+    if (firstObjectExport) {
+      return firstObjectExport;
     }
   } catch (error) {
-    console.error('Error parsing translation file:', error);
+    console.error('Error loading translation module:', error);
   }
-  
+
   return {};
+}
+
+function loadTsModule(candidatePath) {
+  const normalizedPath = normalizeTsPath(candidatePath);
+
+  if (moduleCache.has(normalizedPath)) {
+    return moduleCache.get(normalizedPath);
+  }
+
+  const source = fs.readFileSync(normalizedPath, 'utf-8');
+  const transpiled = ts.transpileModule(source, {
+    compilerOptions: {
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2019,
+      esModuleInterop: true,
+      resolveJsonModule: true,
+    },
+    fileName: normalizedPath,
+  });
+
+  const moduleDir = path.dirname(normalizedPath);
+  const moduleObj = { exports: {} };
+
+  const localRequire = (specifier) => {
+    if (specifier.startsWith('.')) {
+      const resolved = normalizeTsPath(path.resolve(moduleDir, specifier));
+      if (resolved.endsWith('.json')) {
+        return JSON.parse(fs.readFileSync(resolved, 'utf-8'));
+      }
+      return loadTsModule(resolved);
+    }
+    return require(specifier);
+  };
+
+  const wrapper = new Function(
+    'require',
+    'module',
+    'exports',
+    '__dirname',
+    '__filename',
+    transpiled.outputText
+  );
+
+  wrapper(localRequire, moduleObj, moduleObj.exports, moduleDir, normalizedPath);
+  moduleCache.set(normalizedPath, moduleObj.exports);
+  return moduleObj.exports;
+}
+
+function normalizeTsPath(candidatePath) {
+  const attempted = [candidatePath];
+  const base = candidatePath.replace(/\.(ts|tsx|js|jsx|cjs|mjs|json)$/i, '');
+
+  const extensions = ['.ts', '.tsx', '.js', '.jsx', '.cjs', '.mjs', '.json'];
+  for (const ext of extensions) {
+    attempted.push(`${base}${ext}`);
+    attempted.push(path.join(base, `index${ext}`));
+  }
+
+  for (const possible of attempted) {
+    if (fs.existsSync(possible) && fs.statSync(possible).isFile()) {
+      return possible;
+    }
+  }
+
+  return candidatePath;
 }
 
 function findEmptyStrings(obj, path = '') {

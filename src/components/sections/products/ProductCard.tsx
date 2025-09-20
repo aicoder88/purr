@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { ShoppingCart, Plus, Minus, Check } from 'lucide-react';
 import NextImage from "../../../../components/NextImage";
-import { createButtonClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
+import { createButtonClasses, GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme-utils";
 import { LoadingSpinner, CheckIcon, createStaggeredAnimation } from "@/lib/component-utils";
 import { ecommerceEvents } from '../../../lib/gtm-events';
+import { TranslationType } from '../../../translations/types';
 
 interface Product {
   id: string;
@@ -23,7 +24,7 @@ interface ProductCardProps {
   addedToCart: string | null;
   quantities: {[key: string]: number};
   cartQuantity: number;
-  t: any;
+  t: TranslationType;
   onAddToCart: (product: Product) => void;
   onUpdateQuantity: (productId: string, delta: number) => void;
 }

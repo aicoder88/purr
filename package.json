@@ -32,7 +32,9 @@
     "cache:optimize": "node scripts/cache-optimization.js",
     "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize",
     "validate-dark-mode": "node scripts/dark-mode-validator.js",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test": "npm run test:translations",
+    "test:translations": "jest __tests__/translation-completeness.test.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -111,6 +113,7 @@
     "eslint": "^9.33.0",
     "eslint-config-next": "^15.5.3",
     "glob": "^11.0.3",
+    "jest": "^30.1.3",
     "next": "^15.5.3",
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.6",

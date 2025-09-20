@@ -13,6 +13,7 @@ export const en = {
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
+    tryFree: "Try Free Trial",
     testimonials: "Testimonials",
     leaveReview: "Leave a Review",
     contact: "Contact",
@@ -244,6 +245,7 @@ export const en = {
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: "1-250-432-9352",
     email: "hello@purrify.ca",
+    courriel: "hello@purrify.ca",
     hours: {
       title: "Opening Hours",
       monday: "08:00 am - 8:00 pm",

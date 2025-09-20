@@ -79,7 +79,7 @@ export function FAQ() {
   };
 
   const sectionClasses = createSectionClasses('light');
-  const cardClasses = createCardClasses('surface');
+  const cardClasses = createCardClasses(true);
 
   return (
     <>
