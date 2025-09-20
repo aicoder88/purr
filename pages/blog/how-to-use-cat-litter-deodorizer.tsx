@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for how-to guide content
+const heroImage = 'https://images.unsplash.com/photo-1516750105099-4b8adeaaf824?auto=format&fit=crop&w=1600&q=80';
+const stepByStepImage = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80';
+const applicationImage = 'https://images.unsplash.com/photo-1545529468-42764ef8c85f?auto=format&fit=crop&w=1600&q=80';
+const resultImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
+
 export default function HowToUseLitterDeodorizer() {
   // const { t } = useTranslation();
 
@@ -21,13 +27,15 @@ export default function HowToUseLitterDeodorizer() {
         <meta property="og:description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions and expert tips." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/before-after.webp" />
-        
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="How to Use Cat Litter Deodorizer Additive: Complete Guide" />
         <meta name="twitter:description" content="Step-by-step instructions for proper cat litter deodorizer application and maximum odor control." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/before-after.webp" />
+        <meta name="twitter:image" content={heroImage} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
@@ -133,13 +141,13 @@ export default function HowToUseLitterDeodorizer() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <Image 
-                src="/optimized/before-after.webp" 
-                alt="Before and after comparison showing effective cat litter deodorizer application"
+              <Image
+                src={heroImage}
+                alt="Cat owner properly applying litter deodorizer additive following step-by-step instructions"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={384}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Proper application technique makes all the difference in odor control effectiveness

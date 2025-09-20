@@ -5,6 +5,11 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for kitten care content
+const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80';
+const kittenSafetyImage = 'https://images.unsplash.com/photo-1516139008210-96e45dccd83b?auto=format&fit=crop&w=1600&q=80';
+const gentleCareImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
+
 export default function UsingDeodorizersWithKittens() {
   return (
     <>
@@ -18,13 +23,15 @@ export default function UsingDeodorizersWithKittens() {
         <meta property="og:description" content="Guidance on introducing fragrance-free deodorizers around kittens — what to consider and when to start." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/gigi.webp" />
-        
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Using Cat Litter Deodorizers with Kittens" />
         <meta name="twitter:description" content="How and when households introduce fragrance-free deodorizers around kittens." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/gigi.webp" />
+        <meta name="twitter:image" content={heroImage} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
@@ -62,13 +69,13 @@ export default function UsingDeodorizersWithKittens() {
             </header>
 
             <div className="mb-12">
-              <Image 
-                src="/optimized/gigi.webp" 
-                alt="Adorable kitten in a clean litter box setup with recommended practices for young cats"
+              <Image
+                src={heroImage}
+                alt="Adorable kitten being cared for in a safe, clean environment with gentle odor control"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={384}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Keeping kittens comfortable while maintaining a fresh, odor-controlled environment

@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+// Relevant images for multi-cat household content
+const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
+const multiBoxImage = 'https://images.unsplash.com/photo-1559235038-1b0fadf5b93f?auto=format&fit=crop&w=1600&q=80';
+const cleaningImage = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80';
+const maintenanceImage = 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1600&q=80';
+
 export default function MultiCatLitterDeodorizerGuide() {
   const { t } = useTranslation();
 
@@ -21,13 +27,15 @@ export default function MultiCatLitterDeodorizerGuide() {
         <meta property="og:description" content={t.blog.multiCat.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
-        <meta property="og:image" content="https://www.purrify.ca/multi-cat-household.jpg" />
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.blog.multiCat.title} />
         <meta name="twitter:description" content={t.blog.multiCat.description} />
-        <meta name="twitter:image" content="https://www.purrify.ca/multi-cat-household.jpg" />
+        <meta name="twitter:image" content={heroImage} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
@@ -132,12 +140,12 @@ export default function MultiCatLitterDeodorizerGuide() {
             {/* Featured Image */}
             <div className="mb-12">
               <Image
-                src="/multi-cat-household.jpg"
-                alt="Adorable kitten representing the cats in multi-cat households that need effective litter deodorizing solutions"
+                src={heroImage}
+                alt="Multiple cats in a household demonstrating the need for effective multi-cat litter deodorizing solutions"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={800}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Multi-cat households face unique odor challenges requiring specialized deodorizing solutions
@@ -254,6 +262,20 @@ export default function MultiCatLitterDeodorizerGuide() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="mb-8">
+                <Image
+                  src={multiBoxImage}
+                  alt="Strategic litter box setup for multi-cat household odor management"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Strategic litter box placement is crucial for multi-cat households
+                </p>
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Multi-Cat Litter Box Strategy</h2>
@@ -507,6 +529,20 @@ export default function MultiCatLitterDeodorizerGuide() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="mb-8">
+                <Image
+                  src={maintenanceImage}
+                  alt="Cat owners troubleshooting and maintaining clean multi-cat litter areas"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Proper maintenance prevents common multi-cat odor issues
+                </p>
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Multi-Cat Odor Problems</h2>
