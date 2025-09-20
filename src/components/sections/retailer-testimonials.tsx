@@ -1,5 +1,6 @@
 import { Container } from '../ui/container';
 import { useTranslation } from '../../lib/translation-context';
+import Image from 'next/image';
 
 export function RetailerTestimonials() {
   const { t } = useTranslation();
@@ -9,8 +10,14 @@ export function RetailerTestimonials() {
       name: 'Pattes et Griffes – Sainte‑Thérèse',
       title: 'Store Owner / Manager',
       location: 'Sainte‑Thérèse, QC',
-      quote: 'Our customers ask for Purrify by name now. It\'s an easy recommendation at the counter and reorders have been consistent month after month.',
-      avatar: 'PG',
+      quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+      logo: {
+        src: 'https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg',
+        alt: 'Pattes et Griffes Logo',
+        width: 64,
+        height: 64,
+        whiteBg: true
+      },
       stats: {
         label: 'Average Reorder Cycle',
         value: '30 days'
@@ -21,18 +28,30 @@ export function RetailerTestimonials() {
       title: 'Store Manager',
       location: 'Montreal, QC',
       quote: 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.',
-      avatar: 'CH',
+      logo: {
+        src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
+        alt: "Chico - Boutique d'animaux Logo",
+        width: 64,
+        height: 64,
+        whiteBg: true
+      },
       stats: {
         label: 'Shelf Sell‑Through',
         value: 'High'
       }
     },
     {
-      name: 'Doghaus',
+      name: 'KONG ANIMALERIE',
       title: 'Owner',
       location: 'Montreal, QC',
-      quote: 'Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it\'s delivering results.',
-      avatar: 'DH',
+      quote: "Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
+      logo: {
+        src: '/optimized/kong-animalerie.webp',
+        alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
+        width: 64,
+        height: 64,
+        whiteBg: true
+      },
       stats: {
         label: 'Repeat Purchases',
         value: 'Strong'
@@ -103,8 +122,10 @@ export function RetailerTestimonials() {
               className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center text-white dark:text-white font-bold text-sm mr-4">
-                  {testimonial.avatar}
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mr-4 ${testimonial.logo?.whiteBg ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700' : 'bg-gradient-to-br from-[#5B2EFF] to-[#3694FF]'}`}>
+                  {testimonial.logo && (
+                    <Image src={testimonial.logo.src} alt={testimonial.logo.alt} width={testimonial.logo.width} height={testimonial.logo.height} className="object-contain w-10 h-10" />
+                  )}
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 dark:text-gray-50">{testimonial.name}</h4>
