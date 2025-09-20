@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 
+// Relevant images for small apartment cat odor control
+const heroImage = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80';
+const apartmentImage = 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80';
+const ventilationImage = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=80';
+const spaceImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80';
+
 export default function BestForSmallApartments() {
   // const { t } = useTranslation();
 
@@ -21,13 +27,15 @@ export default function BestForSmallApartments() {
         <meta property="og:description" content="Expert guide to controlling cat litter odors in small apartments and urban living spaces." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/20g.webp" />
-        
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="1067" />
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Cat Litter Odor Remover for Small Apartments" />
         <meta name="twitter:description" content="Expert solutions for controlling cat litter odors in small apartments and urban spaces." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/20g.webp" />
+        <meta name="twitter:image" content={heroImage} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
@@ -94,16 +102,16 @@ export default function BestForSmallApartments() {
 
             {/* Featured Image */}
             <div className="mb-12">
-              <Image 
-                src="/optimized/20g.webp" 
-                alt="Compact Purrify 20g perfect for small apartment litter boxes"
+              <Image
+                src={heroImage}
+                alt="Small apartment living room with cat, showcasing space-efficient odor control"
                 className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1200}
-                height={384}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
+                width={1600}
+                height={1067}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
-                Compact solutions like Purrify 20g are perfect for small apartment living
+                Small apartments require smart odor control solutions
               </p>
             </div>
 
@@ -221,6 +229,21 @@ export default function BestForSmallApartments() {
                   </div>
                 </div>
 
+                {/* Ventilation Image */}
+                <div className="mb-8">
+                  <Image
+                    src={ventilationImage}
+                    alt="Well-ventilated apartment room with strategic airflow for odor control"
+                    className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                    width={1600}
+                    height={1067}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                  />
+                  <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                    Strategic ventilation is crucial for small apartment odor control
+                  </p>
+                </div>
+
                 {/* Solution 3 */}
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
                   <div className="flex items-start space-x-4">
@@ -319,7 +342,21 @@ export default function BestForSmallApartments() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Space-Specific Placement Guide</h2>
-              
+
+              <div className="mb-8">
+                <Image
+                  src={spaceImage}
+                  alt="Modern apartment layout showing optimal litter box placement for odor control"
+                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  width={1600}
+                  height={1067}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                />
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                  Strategic placement maximizes odor control in small spaces
+                </p>
+              </div>
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Where you place your litter box in a small apartment can make or break your odor control strategy:
               </p>

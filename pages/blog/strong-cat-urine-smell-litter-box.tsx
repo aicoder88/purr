@@ -6,7 +6,7 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
-const heroImage = 'https://images.unsplash.com/photo-1541959833400-049d37f97c18?auto=format&fit=crop&w=1600&q=80';
+const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
 const routineImage = 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=1600&q=80';
 const ventilationImage = 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80';
 const hydrationImage = 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1600&q=80';
