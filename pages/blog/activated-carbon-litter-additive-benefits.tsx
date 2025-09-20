@@ -4,6 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ActivatedCarbonBenefits() {
   // const { t } = useTranslation();
@@ -375,21 +376,7 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Related Articles</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/blog/how-to-use-cat-litter-deodorizer" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">How to Use Cat Litter Deodorizer</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Step-by-step guide to proper application</p>
-                </Link>
-                <Link href="/blog/using-deodorizers-with-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Using with Kittens</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Guidance for households with young cats</p>
-                </Link>
-                <Link href="/blog/purrify-vs-arm-hammer" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Purrify vs Arm & Hammer</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Detailed product comparison</p>
-                </Link>
-              </div>
+              <RelatedArticles currentPath="/blog/activated-carbon-litter-additive-benefits" />
             </div>
           </div>
         </Container>

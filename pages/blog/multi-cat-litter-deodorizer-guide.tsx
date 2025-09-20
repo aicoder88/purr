@@ -4,6 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function MultiCatLitterDeodorizerGuide() {
   const { t } = useTranslation();
@@ -673,6 +674,11 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </Link>
               </div>
             </div>
+          </div>
+        </Container>
+          {/* Related Articles */}
+          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <RelatedArticles currentPath="/blog/multi-cat-litter-deodorizer-guide" />
           </div>
         </Container>
       </article>

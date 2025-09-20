@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 
 export default function BestForSmallApartments() {
@@ -490,21 +491,7 @@ export default function BestForSmallApartments() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Related Articles</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/blog/how-to-use-cat-litter-deodorizer" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">How to Use Deodorizer</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Step-by-step application guide</p>
-                </Link>
-                <Link href="/blog/activated-carbon-litter-additive-benefits" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Activated Carbon Benefits</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Science behind superior odor control</p>
-                </Link>
-                <Link href="/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Montreal Store Locations</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Find Purrify near you in Montreal</p>
-                </Link>
-              </div>
+              <RelatedArticles currentPath="/blog/best-litter-odor-remover-small-apartments" />
             </div>
           </div>
         </Container>

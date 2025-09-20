@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 
 // This function gets called at build time to generate static paths
@@ -285,6 +286,10 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                   </svg>
                 </a>
               </div>
+            </div>
+            {/* Related Articles */}
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
+              <RelatedArticles />
             </div>
           </div>
         </Container>

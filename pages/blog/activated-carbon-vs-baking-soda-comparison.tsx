@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
+import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ActivatedCarbonVsBakingSoda() {
   return (
@@ -165,6 +166,11 @@ export default function ActivatedCarbonVsBakingSoda() {
               </Link>
             </p>
           </footer>
+        </article>
+          {/* Related Articles */}
+          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <RelatedArticles currentPath="/blog/activated-carbon-vs-baking-soda-comparison" />
+          </div>
         </article>
       </Container>
     </>
