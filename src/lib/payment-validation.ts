@@ -89,7 +89,7 @@ export class PaymentValidator {
       }
 
       if (paymentIntent.amount_received !== paymentIntent.amount) {
-        result.errors.push(`Amount mismatch in payment intent`);
+        result.errors.push("Amount mismatch in payment intent");
         result.isValid = false;
       }
 

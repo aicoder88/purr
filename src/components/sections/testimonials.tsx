@@ -95,7 +95,7 @@ export function Testimonials() {
               >
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
                   <div
-                    className={`rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300`}
+                    className={"rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300"}
                   >
                     <Image
                       src={`https://randomuser.me/api/portraits/${testimonial.name.includes("Jean") ||

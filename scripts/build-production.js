@@ -202,7 +202,7 @@ class ProductionBuilder {
       buildDuration: `${((Date.now() - this.startTime) / 1000).toFixed(2)}s`
     };
 
-    this.log(`Build Summary:`, 'info');
+    this.log("Build Summary:", 'info');
     this.log(`  Total Size: ${report.totalSize}`);
     this.log(`  File Count: ${report.fileCount}`);
     this.log(`  Avg File Size: ${report.avgFileSize}`);

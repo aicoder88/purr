@@ -214,13 +214,13 @@ console.log(`✅ Applied ${fixCount} comprehensive fixes`);
 
 // Write the enhanced content
 fs.writeFileSync(filePath, content);
-console.log(`\\n💎 Complete dark mode enhancement applied!`);
-console.log(`🎯 All text elements should now have elegant, high-contrast dark mode variants`);
+console.log("\\n💎 Complete dark mode enhancement applied!");
+console.log("🎯 All text elements should now have elegant, high-contrast dark mode variants");
 
-console.log(`\\n🔍 Final validation:`);
+console.log("\\n🔍 Final validation:");
 console.log(`   Run: node scripts/validate-dark-mode.js ${filePath}`);
-console.log(`\\n🎨 Visual testing:`);
-console.log(`   1. npm run dev`);
-console.log(`   2. Toggle between light/dark modes`);
-console.log(`   3. Verify all text is clearly readable`);
-console.log(`   4. Check for consistent, elegant styling`);
+console.log("\\n🎨 Visual testing:");
+console.log("   1. npm run dev");
+console.log("   2. Toggle between light/dark modes");
+console.log("   3. Verify all text is clearly readable");
+console.log("   4. Check for consistent, elegant styling");

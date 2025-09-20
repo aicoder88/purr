@@ -190,7 +190,7 @@ console.log('\n🎉 Comprehensive sitemap generation completed!');
 console.log('\n📊 Sitemap Statistics:');
 console.log(`- Total pages: ${pages.length}`);
 console.log(`- Blog posts: ${blogPosts.length}`);
-console.log(`- Product pages: 3`);
+console.log("- Product pages: 3");
 console.log(`- Total URLs: ${pages.length + blogPosts.length + 3}`);
 
 console.log('\n🔗 Sitemap URLs:');

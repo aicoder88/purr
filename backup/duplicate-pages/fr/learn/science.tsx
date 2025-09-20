@@ -12,7 +12,7 @@ export default function SciencePageFR() {
   
   const pageTitle = `La Science Derrière ${SITE_NAME} - Technologie du Charbon Actif`;
   const pageDescription = "Découvrez comment la technologie du charbon actif de Purrify élimine les odeurs au niveau moléculaire. Apprenez la science qui rend notre additif pour litière si efficace.";
-  const canonicalUrl = `https://purrify.ca/fr/learn/science`;
+  const canonicalUrl = "https://purrify.ca/fr/learn/science";
 
   const scienceFacts = [
     {

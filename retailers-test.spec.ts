@@ -100,7 +100,7 @@ test.describe('Retailers Page Comprehensive Testing', () => {
       const hasAriaLabel = await cta.getAttribute('aria-label');
       const tagName = await cta.evaluate(el => el.tagName.toLowerCase());
 
-      console.log(`🔍 CTA "${ctaText?.slice(0, 30)}...": ${tagName}${hasRole ? ` role="${hasRole}"` : ''}${hasAriaLabel ? ` aria-label` : ''}`);
+      console.log(`🔍 CTA "${ctaText?.slice(0, 30)}...": ${tagName}${hasRole ? ` role="${hasRole}"` : ''}${hasAriaLabel ? " aria-label" : ''}`);
     }
   });
 

@@ -120,7 +120,7 @@ export default async function handler(
       
       // Method 2: Alternative POST approach with different fetch options
       // Still sending JSON data, but with different fetch configuration
-      const getUrl = `https://script.google.com/macros/s/AKfycbyhSXCHntxmO0fb1IImlzs80doIllEWuHpF-eB72p11SgoN5_xUQf2SXU6Cx7h4XtjabA/exec`;
+      const getUrl = "https://script.google.com/macros/s/AKfycbyhSXCHntxmO0fb1IImlzs80doIllEWuHpF-eB72p11SgoN5_xUQf2SXU6Cx7h4XtjabA/exec";
       
       // Using the same JSON data format as Method 1
       const getResponse = await fetch(getUrl, {

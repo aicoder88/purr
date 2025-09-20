@@ -95,7 +95,7 @@ export function WhyPurrify() {
                       height={225}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                       loading={index < 3 ? "eager" : "lazy"}
-                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105`}
+                      className={"w-full h-full transition-transform duration-500 group-hover:scale-105"}
                       style={{
                         objectFit: 'cover',
                         objectPosition: 'center',

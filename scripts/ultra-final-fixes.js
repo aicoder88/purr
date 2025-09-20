@@ -81,10 +81,10 @@ ultraTargets.forEach(fileName => {
   }
 });
 
-console.log(`\n🎯 Ultra-precision operation complete!`);
+console.log("\n🎯 Ultra-precision operation complete!");
 console.log(`📊 Applied ultra fixes to ${ultraFixed} files`);
-console.log(`🎨 Remaining violations may be intentional for brand/design consistency`);
-console.log(`🏆 Achieved maximum practical dark mode compliance!`);
+console.log("🎨 Remaining violations may be intentional for brand/design consistency");
+console.log("🏆 Achieved maximum practical dark mode compliance!");
 
 // Run final validation
 console.log('\n🏁 Final Validation - Maximum Compliance Check...\n');
