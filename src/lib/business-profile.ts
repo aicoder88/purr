@@ -74,7 +74,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
       },
       phone: '1-250-432-9352',
       email: 'hello@purrify.ca',
-      website: 'https://purrify.ca',
+      website: 'https://www.purrify.ca',
       geo: {
         latitude: 45.6501,
         longitude: -73.8359

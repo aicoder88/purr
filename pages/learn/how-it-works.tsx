@@ -98,14 +98,14 @@ export default function HowItWorksPage() {
           type: 'article',
           images: [
             {
-              url: 'https://purrify.ca/optimized/micropores_magnified_view.webp',
+              url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
               width: 1200,
               height: 630,
               alt: 'Activated Carbon Micropores Under Magnification (WebP)',
               type: 'image/webp'
             },
             {
-              url: 'https://purrify.ca/micropores_magnified_view.jpeg',
+              url: 'https://www.purrify.ca/micropores_magnified_view.jpeg',
               width: 1200,
               height: 630,
               alt: 'Activated Carbon Micropores Under Magnification',

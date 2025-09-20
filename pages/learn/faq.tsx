@@ -202,13 +202,13 @@ const FAQPage: NextPage = () => {
           content="Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ." 
         />
         <meta name="keywords" content="Purrify FAQ, cat litter questions, activated carbon safety, usage instructions, shipping info" />
-        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
+        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Frequently Asked Questions - Everything About Purrify" />
         <meta property="og:description" content="Get answers to all your Purrify questions about usage, safety, shipping, and more." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
+        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
         
         {/* Enhanced FAQ Schema */}
         <script
@@ -219,13 +219,13 @@ const FAQPage: NextPage = () => {
               "@graph": [
                 {
                   "@type": "FAQPage",
-                  "@id": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-                  "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "@id": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+                  "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
                   "name": "Frequently Asked Questions - Everything About Purrify",
                   "description": "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
                   "publisher": {
                     "@type": "Organization",
-                    "@id": "https://purrify.ca/#organization",
+                    "@id": "https://www.purrify.ca/#organization",
                     "name": "Purrify"
                   },
                   "datePublished": "2024-01-01",
@@ -238,7 +238,7 @@ const FAQPage: NextPage = () => {
                   },
                   "mainEntity": faqItems.map((item, index) => ({
                     "@type": "Question",
-                    "@id": `https://purrify.ca/learn/faq#question-${index + 1}`,
+                    "@id": `https://www.purrify.ca/learn/faq#question-${index + 1}`,
                     "name": item.question,
                     "acceptedAnswer": {
                       "@type": "Answer",
@@ -288,14 +288,14 @@ const FAQPage: NextPage = () => {
                   "description": "Complete FAQ covering all aspects of Purrify activated carbon cat litter additive including usage, safety, and effectiveness.",
                   "isPartOf": {
                     "@type": "WebSite",
-                    "@id": "https://purrify.ca/#website"
+                    "@id": "https://www.purrify.ca/#website"
                   },
                   "datePublished": "2024-01-01",
                   "dateModified": "2024-08-30",
                   "inLanguage": "en-CA",
                   "primaryImageOfPage": {
                     "@type": "ImageObject",
-                    "url": "https://purrify.ca/purrify-logo.png",
+                    "url": "https://www.purrify.ca/purrify-logo.png",
                     "width": 400,
                     "height": 400
                   },

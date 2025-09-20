@@ -231,16 +231,16 @@ export default function Home() {
             "@graph": [
               {
                 "@type": "Organization",
-                "@id": "https://purrify.ca/#organization",
+                "@id": "https://www.purrify.ca/#organization",
                 "name": t.structuredData.organization.name,
-                "url": "https://purrify.ca",
+                "url": "https://www.purrify.ca",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://purrify.ca/purrify-logo.png",
+                  "url": "https://www.purrify.ca/purrify-logo.png",
                   "width": 400,
                   "height": 400
                 },
-                "image": "https://purrify.ca/purrify-logo.png",
+                "image": "https://www.purrify.ca/purrify-logo.png",
                 "description": t.structuredData.organization.description,
                 "foundingDate": t.structuredData.organization.foundingDate,
                 "address": {
@@ -285,12 +285,12 @@ export default function Home() {
                         "name": t.structuredData.offerCatalog.products.trial.name,
                         "description": t.structuredData.offerCatalog.products.trial.description,
                         "sku": t.structuredData.offerCatalog.products.trial.sku,
-                        "image": "https://purrify.ca/optimized/20g.webp"
+                        "image": "https://www.purrify.ca/optimized/20g.webp"
                       },
                       "price": "6.99",
                       "priceCurrency": "CAD",
                       "availability": "https://schema.org/InStock",
-                      "url": "https://purrify.ca/products/trial-size"
+                      "url": "https://www.purrify.ca/products/trial-size"
                     },
                     {
                       "@type": "Offer",
@@ -299,12 +299,12 @@ export default function Home() {
                         "name": t.structuredData.offerCatalog.products.standard.name,
                         "description": t.structuredData.offerCatalog.products.standard.description,
                         "sku": t.structuredData.offerCatalog.products.standard.sku,
-                        "image": "https://purrify.ca/optimized/60g.webp"
+                        "image": "https://www.purrify.ca/optimized/60g.webp"
                       },
                       "price": "19.99",
                       "priceCurrency": "CAD",
                       "availability": "https://schema.org/InStock",
-                      "url": "https://purrify.ca/products/standard"
+                      "url": "https://www.purrify.ca/products/standard"
                     },
                     {
                       "@type": "Offer",
@@ -313,12 +313,12 @@ export default function Home() {
                         "name": t.structuredData.offerCatalog.products.family.name,
                         "description": t.structuredData.offerCatalog.products.family.description,
                         "sku": t.structuredData.offerCatalog.products.family.sku,
-                        "image": "https://purrify.ca/optimized/140g.webp"
+                        "image": "https://www.purrify.ca/optimized/140g.webp"
                       },
                       "price": "29.99",
                       "priceCurrency": "CAD",
                       "availability": "https://schema.org/InStock",
-                      "url": "https://purrify.ca/products/family-pack"
+                      "url": "https://www.purrify.ca/products/family-pack"
                     }
                   ]
                 },
@@ -326,18 +326,18 @@ export default function Home() {
               },
               {
                 "@type": "WebSite",
-                "@id": "https://purrify.ca/#website",
-                "url": "https://purrify.ca",
+                "@id": "https://www.purrify.ca/#website",
+                "url": "https://www.purrify.ca",
                 "name": t.structuredData.website.name,
                 "description": t.structuredData.website.description,
                 "publisher": {
-                  "@id": "https://purrify.ca/#organization"
+                  "@id": "https://www.purrify.ca/#organization"
                 },
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://purrify.ca/search?q={search_term_string}"
+                    "urlTemplate": "https://www.purrify.ca/search?q={search_term_string}"
                   },
                   "query-input": "required name=search_term_string"
                 },

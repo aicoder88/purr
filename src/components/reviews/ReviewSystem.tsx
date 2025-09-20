@@ -229,7 +229,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   const reviewsStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    '@id': 'https://purrify.ca/products/purrify-cat-litter-additive',
+    '@id': 'https://www.purrify.ca/products/purrify-cat-litter-additive',
     name: 'Purrify Activated Carbon Cat Litter Additive',
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -240,7 +240,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     },
     review: filteredReviews.slice(0, 10).map(review => ({
       '@type': 'Review',
-      '@id': `https://purrify.ca/reviews/${review.id}`,
+      '@id': `https://www.purrify.ca/reviews/${review.id}`,
       author: {
         '@type': 'Person',
         name: review.userName

@@ -59,10 +59,10 @@ export function FAQ() {
   const faqStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': 'https://purrify.ca/faq',
+    '@id': 'https://www.purrify.ca/faq',
     mainEntity: faqs.map((faq, index) => ({
       '@type': 'Question',
-      '@id': `https://purrify.ca/faq#question-${index + 1}`,
+      '@id': `https://www.purrify.ca/faq#question-${index + 1}`,
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
@@ -70,7 +70,7 @@ export function FAQ() {
         author: {
           '@type': 'Organization',
           name: 'Purrify',
-          url: 'https://purrify.ca'
+          url: 'https://www.purrify.ca'
         }
       }
     }))

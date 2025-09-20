@@ -161,7 +161,7 @@ function getEmailTemplate(
 ): EmailTemplate {
   const { cartItems, cartTotal, discount, discountAmount, finalTotal, recoveryToken } = data;
   
-  const recoveryUrl = `${process.env.NEXT_PUBLIC_DOMAIN || 'https://purrify.ca'}/checkout?recovery=${recoveryToken}`;
+  const recoveryUrl = `${process.env.NEXT_PUBLIC_DOMAIN || 'https://www.purrify.ca'}/checkout?recovery=${recoveryToken}`;
   
   const templates = {
     immediate: {

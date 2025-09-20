@@ -134,7 +134,7 @@ const CatLitterGuidePage: NextPage = () => {
                 "name": "Purrify",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://purrify.ca/optimized/purrify-logo-text.webp"
+                  "url": "https://www.purrify.ca/optimized/purrify-logo-text.webp"
                 }
               },
               "datePublished": "2024-01-01",

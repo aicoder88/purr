@@ -175,7 +175,7 @@ async function prepareStripeData(product: { id: string; name: string; price: num
           product_data: {
             name: product.name,
             description: `Activated carbon cat litter additive - ${product.id}`,
-            images: [`https://purrify.ca/optimized/${product.id}.webp`],
+            images: [`https://www.purrify.ca/optimized/${product.id}.webp`],
           },
           unit_amount: Math.round(product.price * 100), // Stripe uses cents
         },
@@ -196,8 +196,8 @@ async function prepareStripeData(product: { id: string; name: string; price: num
       },
     ] : [],
     automatic_tax: { enabled: true },
-    success_url: 'https://purrify.ca/thank-you?session_id={CHECKOUT_SESSION_ID}',
-    cancel_url: 'https://purrify.ca/checkout?cancelled=true',
+    success_url: 'https://www.purrify.ca/thank-you?session_id={CHECKOUT_SESSION_ID}',
+    cancel_url: 'https://www.purrify.ca/checkout?cancelled=true',
     metadata: {
       product_id: product.id,
       quantity: quantity.toString(),

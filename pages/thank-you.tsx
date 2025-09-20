@@ -132,7 +132,7 @@ const ThankYouPage = () => {
                 <Twitter className="w-6 h-6" />
               </a>
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https://purrify.ca"
+                href="https://www.facebook.com/sharer/sharer.php?u=https://www.purrify.ca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-300 hover:text-[#03E46A]"
