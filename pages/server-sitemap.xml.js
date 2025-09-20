@@ -21,17 +21,17 @@ export const getServerSideProps = async ({ res }) => {
   // Combine all fields
   const allFields = [...fields, ...productFields];
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     allFields.map((f) => (
-      `  <url>\n` +
+      "  <url>\n" +
       `    <loc>${f.loc}</loc>\n` +
       (f.lastmod ? `    <lastmod>${f.lastmod}</lastmod>\n` : '') +
       (f.changefreq ? `    <changefreq>${f.changefreq}</changefreq>\n` : '') +
       (f.priority != null ? `    <priority>${f.priority}</priority>\n` : '') +
-      `  </url>`
+      "  </url>"
     )).join('\n') +
-    `\n</urlset>`;
+    "\n</urlset>";
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(xml);

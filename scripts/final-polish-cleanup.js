@@ -97,7 +97,7 @@ remainingFiles.forEach(fileName => {
   }
 });
 
-console.log(`\n🎉 Final polish complete!`);
+console.log("\n🎉 Final polish complete!");
 console.log(`📊 Cleaned ${totalCleaned} files`);
-console.log(`✨ All duplicates removed, critical violations addressed`);
-console.log(`🔍 Ready for final validation...`);
+console.log("✨ All duplicates removed, critical violations addressed");
+console.log("🔍 Ready for final validation...");

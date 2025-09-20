@@ -142,24 +142,24 @@ async function main() {
     runBundleAnalyzer();
     
     // Generate recommendations
-    let recommendations = `# JavaScript Optimization Recommendations\n\n`;
+    let recommendations = "# JavaScript Optimization Recommendations\n\n";
     recommendations += `Generated on: ${new Date().toLocaleString()}\n\n`;
     
     if (unusedDeps.length > 0) {
-      recommendations += `## Unused Dependencies\n\n`;
-      recommendations += `The following dependencies are not being used and can be removed:\n\n`;
+      recommendations += "## Unused Dependencies\n\n";
+      recommendations += "The following dependencies are not being used and can be removed:\n\n";
       unusedDeps.forEach(dep => {
         recommendations += `- \`${dep}\`: Remove with \`npm uninstall ${dep}\`\n`;
       });
-      recommendations += `\n`;
+      recommendations += "\n";
     }
     
-    recommendations += `## General Recommendations\n\n`;
-    recommendations += `1. **Code Splitting**: Ensure dynamic imports are used for large components that aren't needed immediately\n`;
-    recommendations += `2. **Tree Shaking**: Import only what you need from libraries (e.g., \`import { Button } from 'ui-lib'\` instead of \`import UILib from 'ui-lib'\`)\n`;
-    recommendations += `3. **Lazy Loading**: Use \`next/dynamic\` for components that aren't needed for initial render\n`;
-    recommendations += `4. **Optimize Third-Party Scripts**: Load non-critical third-party scripts with the \`strategy="lazyOnload"\` option\n`;
-    recommendations += `5. **Reduce JavaScript Size**: Minify and compress JavaScript files\n`;
+    recommendations += "## General Recommendations\n\n";
+    recommendations += "1. **Code Splitting**: Ensure dynamic imports are used for large components that aren't needed immediately\n";
+    recommendations += "2. **Tree Shaking**: Import only what you need from libraries (e.g., \`import { Button } from 'ui-lib'\` instead of \`import UILib from 'ui-lib'\`)\n";
+    recommendations += "3. **Lazy Loading**: Use \`next/dynamic\` for components that aren't needed for initial render\n";
+    recommendations += '4. **Optimize Third-Party Scripts**: Load non-critical third-party scripts with the \`strategy="lazyOnload"\` option\n';
+    recommendations += "5. **Reduce JavaScript Size**: Minify and compress JavaScript files\n";
     
     // Write recommendations to file
     fs.writeFileSync(recommendationsPath, recommendations);

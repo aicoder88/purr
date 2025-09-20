@@ -133,10 +133,10 @@ precisionTargets.forEach(fileName => {
   }
 });
 
-console.log(`\n🎯 Precision targeting complete!`);
+console.log("\n🎯 Precision targeting complete!");
 console.log(`📊 Applied precision fixes to ${precisionFixed} files`);
-console.log(`🚀 Targeting the most common violation patterns for maximum impact`);
-console.log(`🔍 Ready for final validation check...`);
+console.log("🚀 Targeting the most common violation patterns for maximum impact");
+console.log("🔍 Ready for final validation check...");
 
 // Run final validation
 console.log('\n🔍 Running final validation to show results...\n');

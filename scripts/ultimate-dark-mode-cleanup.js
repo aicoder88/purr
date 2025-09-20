@@ -132,9 +132,9 @@ violatedFiles.forEach(fileName => {
   }
 });
 
-console.log(`\n🎯 Ultimate cleanup complete!`);
+console.log("\n🎯 Ultimate cleanup complete!");
 console.log(`📊 Processed ${totalFixed} files with final optimizations`);
-console.log(`🚀 Ready for final validation check!`);
+console.log("🚀 Ready for final validation check!");
 
 // Run validation to show results
 console.log('\n🔍 Running final validation...\n');

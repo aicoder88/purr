@@ -73,7 +73,7 @@ function main() {
   }
   
   console.log('\n🎉 Dark mode cleanup complete!');
-  console.log(`📊 Summary:`);
+  console.log("📊 Summary:");
   console.log(`   - Files modified: ${filesModified}`);
   console.log(`   - Total duplicates cleaned: ${totalFixes}`);
 }

@@ -158,7 +158,7 @@ class DarkModeValidator {
     console.log(chalk.yellow('📊 DARK MODE VALIDATION REPORT'));
     console.log(chalk.yellow('='.repeat(60)));
     
-    console.log(chalk.blue(`\\n📈 Statistics:`));
+    console.log(chalk.blue("\\n📈 Statistics:"));
     console.log(`  Total text elements: ${this.stats.totalTextElements}`);
     console.log(`  Missing dark variants: ${chalk.red(this.stats.missingDarkVariants)}`);
     console.log(`  Poor contrast issues: ${chalk.red(this.stats.poorContrast)}`);
@@ -197,10 +197,10 @@ class DarkModeValidator {
         });
       }
     } else {
-      console.log(chalk.green(`\\n✅ No dark mode issues found!`));
+      console.log(chalk.green("\\n✅ No dark mode issues found!"));
     }
 
-    console.log(chalk.blue(`\\n🎨 Recommended Color Hierarchy:`));
+    console.log(chalk.blue("\\n🎨 Recommended Color Hierarchy:"));
     console.log(`  Primary Headers: ${chalk.bold('text-gray-900 dark:text-gray-50')}`);
     console.log(`  Secondary Headers: ${chalk.bold('text-gray-800 dark:text-gray-100')}`);
     console.log(`  Body Text: ${chalk.bold('text-gray-700 dark:text-gray-200')}`);

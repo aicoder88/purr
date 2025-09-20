@@ -228,7 +228,7 @@ class TranslationDetective {
         line: 1,
         content: '',
         message: 'File uses translations but missing useTranslation import',
-        suggestion: `Add: import { useTranslation } from '../path/to/translation-context';`
+        suggestion: "Add: import { useTranslation } from '../path/to/translation-context';"
       });
     }
   }
@@ -366,21 +366,21 @@ class TranslationDetective {
     const reportPath = path.join(this.sourceDir, 'translation-detective-report.md');
     fs.writeFileSync(reportPath, reportContent);
     
-    console.log(`📄 Report saved to: translation-detective-report.md`);
+    console.log("📄 Report saved to: translation-detective-report.md");
     
     // Generate JSON report for programmatic use
     const jsonReportPath = path.join(this.sourceDir, 'translation-detective-report.json');
     fs.writeFileSync(jsonReportPath, JSON.stringify(reportData, null, 2));
     
-    console.log(`📄 JSON report saved to: translation-detective-report.json`);
+    console.log("📄 JSON report saved to: translation-detective-report.json");
   }
 
   generateMarkdownReport(reportData) {
-    let markdown = `# Translation Detective Report\n\n`;
+    let markdown = "# Translation Detective Report\n\n";
     markdown += `Generated: ${new Date().toISOString()}\n\n`;
     
     // Summary
-    markdown += `## Summary\n\n`;
+    markdown += "## Summary\n\n";
     markdown += `- **Files Scanned**: ${reportData.summary.filesScanned}\n`;
     markdown += `- **Total Issues Found**: ${reportData.summary.issuesFound}\n`;
     markdown += `- **Hardcoded Text Issues**: ${reportData.summary.hardcodedTextFound}\n`;
@@ -388,7 +388,7 @@ class TranslationDetective {
     markdown += `- **Missing Translation Keys**: ${reportData.summary.missingTranslationKeysFound}\n\n`;
     
     // Issues by severity
-    markdown += `## Issues by Severity\n\n`;
+    markdown += "## Issues by Severity\n\n";
     ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'].forEach(severity => {
       const issues = reportData.issuesBySeverity[severity] || [];
       if (issues.length > 0) {
@@ -406,7 +406,7 @@ class TranslationDetective {
     });
     
     // Most problematic files
-    markdown += `## Most Problematic Files\n\n`;
+    markdown += "## Most Problematic Files\n\n";
     const fileIssuesList = Object.entries(reportData.fileIssues)
       .sort((a, b) => b[1].length - a[1].length)
       .slice(0, 10);
@@ -422,10 +422,10 @@ class TranslationDetective {
     console.log('\n🔧 Generating fix suggestions...');
     
     // Generate fix script
-    let fixScript = `#!/usr/bin/env node\n\n`;
-    fixScript += `// Auto-generated fix script by Translation Detective\n`;
-    fixScript += `// Review each fix before applying!\n\n`;
-    fixScript += `const fs = require('fs');\nconst path = require('path');\n\n`;
+    let fixScript = "#!/usr/bin/env node\n\n";
+    fixScript += "// Auto-generated fix script by Translation Detective\n";
+    fixScript += "// Review each fix before applying!\n\n";
+    fixScript += "const fs = require('fs');\nconst path = require('path');\n\n";
     
     // Group fixes by file
     const fixesByFile = {};
@@ -439,14 +439,14 @@ class TranslationDetective {
     });
     
     fixScript += `const fixes = ${JSON.stringify(fixesByFile, null, 2)};\n\n`;
-    fixScript += `// Apply fixes function would go here\n`;
-    fixScript += `console.log('⚠️  Manual review required before applying fixes');\n`;
+    fixScript += "// Apply fixes function would go here\n";
+    fixScript += "console.log('⚠️  Manual review required before applying fixes');\n";
     
     const fixScriptPath = path.join(this.sourceDir, 'apply-translation-fixes.js');
     fs.writeFileSync(fixScriptPath, fixScript);
     
-    console.log(`🔧 Fix script generated: apply-translation-fixes.js`);
-    console.log(`⚠️  Review the script before running!`);
+    console.log("🔧 Fix script generated: apply-translation-fixes.js");
+    console.log("⚠️  Review the script before running!");
   }
 
   // Priority fix recommendations

@@ -160,7 +160,7 @@ function main() {
   }
   
   console.log('\n🎉 Dark mode fixes complete!');
-  console.log(`📊 Summary:`);
+  console.log("📊 Summary:");
   console.log(`   - Files modified: ${filesModified}`);
   console.log(`   - Total fixes applied: ${totalFixes}`);
   

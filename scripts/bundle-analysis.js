@@ -354,7 +354,7 @@ class BundleAnalyzer {
     // Generate HTML report
     this.generateHTMLReport(report);
 
-    console.log(`\n📋 Report generated:`);
+    console.log("\n📋 Report generated:");
     console.log(`   JSON: ${jsonPath}`);
     console.log(`   HTML: ${path.join(this.outputDir, 'bundle-analysis.html')}`);
 

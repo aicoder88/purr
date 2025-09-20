@@ -17,7 +17,7 @@ async function createThumbnail() {
       .resize(500, 340, { fit: 'cover' })
       .toFile(outputPath);
     
-    console.log(`Created thumbnail: cat_rose_thumbnail.jpg`);
+    console.log("Created thumbnail: cat_rose_thumbnail.jpg");
   } catch (error) {
     console.error('Error creating thumbnail:', error);
     process.exit(1);

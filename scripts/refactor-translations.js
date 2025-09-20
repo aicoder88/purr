@@ -265,7 +265,7 @@ class TranslationRefactorer {
       const baseLocale = locales[0];
       const baseKeys = translations[baseLocale];
       
-      console.log(`\n📊 Translation Completeness Report:`);
+      console.log("\n📊 Translation Completeness Report:");
       console.log(`Base locale (${baseLocale}): ${baseKeys.size} keys\n`);
       
       for (let i = 1; i < locales.length; i++) {

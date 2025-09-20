@@ -198,11 +198,11 @@ while ((matches = textClassRegex.exec(content)) !== null) {
       // Apply intelligent dark variant mapping
       if (color === 'gray' || color === 'slate') {
         const shadeNum = parseInt(shade);
-        if (shadeNum >= 800) darkVariant = `dark:text-gray-100`;
-        else if (shadeNum >= 700) darkVariant = `dark:text-gray-200`;
-        else if (shadeNum >= 600) darkVariant = `dark:text-gray-300`;
-        else if (shadeNum >= 500) darkVariant = `dark:text-gray-400`;
-        else darkVariant = `dark:text-gray-300`;
+        if (shadeNum >= 800) darkVariant = "dark:text-gray-100";
+        else if (shadeNum >= 700) darkVariant = "dark:text-gray-200";
+        else if (shadeNum >= 600) darkVariant = "dark:text-gray-300";
+        else if (shadeNum >= 500) darkVariant = "dark:text-gray-400";
+        else darkVariant = "dark:text-gray-300";
       } else {
         // For colors, use lighter shades in dark mode
         const shadeNum = parseInt(shade);
@@ -228,8 +228,8 @@ fs.writeFileSync(filePath, content);
 console.log(`\\n💾 Enhanced dark mode applied to: ${filePath}`);
 console.log(`🎯 Total improvements: ${fixCount + additionalFixes}`);
 
-console.log(`\\n🚀 Next steps:`);
+console.log("\\n🚀 Next steps:");
 console.log(`   1. Run: node scripts/validate-dark-mode.js ${filePath}`);
-console.log(`   2. Test both light and dark modes visually`);
-console.log(`   3. Check contrast ratios with browser dev tools`);
-console.log(`\\n✨ Your dn.tsx should now have modern, elegant, deal-closing aesthetics!`);
+console.log("   2. Test both light and dark modes visually");
+console.log("   3. Check contrast ratios with browser dev tools");
+console.log("\\n✨ Your dn.tsx should now have modern, elegant, deal-closing aesthetics!");

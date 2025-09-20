@@ -111,11 +111,11 @@ surgicalTargets.forEach(fileName => {
   }
 });
 
-console.log(`\n🔬 Surgical operation complete!`);
+console.log("\n🔬 Surgical operation complete!");
 console.log(`📊 Applied surgical fixes to ${surgicalFixed} files`);
-console.log(`🎯 Targeting exact patterns for maximum compliance`);
-console.log(`🏥 Some violations may be intentionally preserved for design/branding`);
-console.log(`🔍 Running final validation...`);
+console.log("🎯 Targeting exact patterns for maximum compliance");
+console.log("🏥 Some violations may be intentionally preserved for design/branding");
+console.log("🔍 Running final validation...");
 
 // Run final validation
 console.log('\n🔍 Running final validation to show results...\n');
