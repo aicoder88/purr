@@ -64,12 +64,25 @@ export const fr = {
     },
     buttons: {
       shopNow: "🛒 Acheter - 24,95 $",
-      reviews: "⭐ 138+ Avis"
+      reviews: "⭐ 138+ Avis",
+      learnMore: "Comment ça marche"
     },
     ariaLabels: {
       shopNow: "Acheter les produits Purrify maintenant",
       reviews: "Lire 138+ avis clients",
       playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat"
+    },
+    dualPath: {
+      consumer: {
+        title: "Pour votre chat",
+        description: "Propriétaires individuels – paiement instantané, livraison directe",
+        cta: "Acheter pour votre chat"
+      },
+      retailer: {
+        title: "Magasins & détaillants",
+        description: "Tarifs de gros, commandes en volume, support marketing",
+        cta: "Portail grossiste"
+      }
     }
   },
   
@@ -451,6 +464,7 @@ export const fr = {
   enhancedProductComparison: {
     compareAndSave: "Comparer et Économiser",
     chooseYourPerfectSize: "Choisissez Votre Taille Parfaite",
+    purrifySize: "Format Purrify",
     subtitle: "Toutes les tailles offrent le même contrôle puissant des odeurs. Choisissez en fonction de la taille de votre foyer et de la fréquence d'utilisation.",
     trial: "Essai",
     mostPopular: "Le Plus Populaire",
@@ -922,6 +936,108 @@ export const fr = {
     chooseSmallSize: "Choisir Petite Taille"
   },
 
+  // Détaillants & B2B
+  retailers: {
+    seo: {
+      pageTitle: "Partenaires grossistes & détaillants",
+      description: "Rejoignez notre réseau de détaillants. Tarifs de gros, support marketing et produit éprouvé pour les animaleries partout au Canada."
+    },
+    hero: {
+      badge: "Partenariat d'affaires",
+      title: "Devenez partenaire de Purrify",
+      subtitle: "Succès en gros",
+      description: "Rejoignez des centaines d'animaleries qui offrent l'additif au charbon actif #1 au Canada. Ventes prouvées, clients fidèles et support marketing inclus.",
+      cta: {
+        primary: "Voir les tarifs de gros",
+        secondary: "Devenir partenaire"
+      }
+    },
+    benefits: {
+      pricing: {
+        title: "Tarifs de gros",
+        description: "Jusqu'à 50 % de marge avec des remises sur volume"
+      },
+      marketing: {
+        title: "Support marketing",
+        description: "Matériel PLV, formation d'équipe, publicité coopérative"
+      },
+      proven: {
+        title: "Produit éprouvé",
+        description: "4,8/5 étoiles et fort taux de réachat"
+      },
+      highDemand: {
+        title: "Forte demande",
+        description: "Les propriétaires recherchent des solutions d'odeurs. Purrify règle la plainte #1 liée aux litières."
+      },
+      highMargins: {
+        title: "Marges premium",
+        description: "Produit léger à forte valeur perçue. Marges supérieures à la litière traditionnelle."
+      },
+      easyStocking: {
+        title: "Facile à stocker",
+        description: "Emballage compact, pas besoin de réfrigération, longue durée de vie."
+      },
+      marketingSupport: {
+        title: "Support marketing complet",
+        description: "Présentoirs, formation produit, matériel éducatif et publicité coop incluse."
+      },
+      customerLoyalty: {
+        title: "Fidélise la clientèle",
+        description: "Une fois leur problème d'odeur résolu, vos clients reviennent chaque mois et recommandent votre boutique."
+      },
+      fastMoving: {
+        title: "Rotation rapide",
+        description: "Consommable avec réapprovisionnement mensuel prévisible."
+      },
+      title: "Pourquoi les détaillants choisissent Purrify",
+      description: "Rejoignez des animaleries prospères qui ont ajouté Purrify à leur assortiment avec des résultats remarquables.",
+      success: {
+        title: "Histoires de succès réelles"
+      }
+    },
+    pricing: {
+      title: "Paliers de prix de gros",
+      description: "Options flexibles pour maximiser vos marges tout en offrant une valeur exceptionnelle à vos clients.",
+      tiers: {
+        starter: {
+          name: "Départ",
+          description: "Parfait pour les petites animaleries"
+        },
+        growth: {
+          name: "Croissance",
+          description: "Le plus populaire pour les boutiques établies"
+        },
+        enterprise: {
+          name: "Entreprise",
+          description: "Pour les chaînes et grands détaillants"
+        }
+      },
+      additional: {
+        title: "Remises de volume disponibles",
+        description: "Besoin de quantités plus importantes ? Nous offrons des prix sur mesure pour les chaînes, distributeurs et détaillants à fort volume."
+      }
+    },
+    marketing: {
+      title: "Support marketing complet",
+      description: "Nous fournissons tout ce qu'il faut pour vendre Purrify : présentoirs, formation, scripts et contenus prêts à l'emploi.",
+      coop: {
+        title: "Programme de publicité coop",
+        description: "Bénéficiez de crédits publicitaires pour promouvoir Purrify dans votre marché local (imprimé, radio, numérique)."
+      }
+    },
+    testimonials: {
+      title: "Ce que disent nos partenaires",
+      description: "Avis réels de propriétaires et gérants d'animaleries partout au Canada.",
+      metrics: {
+        title: "Résultats commerciaux prouvés"
+      }
+    },
+    contact: {
+      title: "Devenir partenaire Purrify",
+      description: "Prêt à ajouter l'additif #1 au Canada à vos tablettes ? Remplissez le formulaire et nous vous répondrons sous 24 heures."
+    }
+  },
+
   // Privacy Policy
   privacyPolicy: {
     title: "Politique de Confidentialité",
@@ -1029,7 +1145,8 @@ export const fr = {
     popularQuestions: "Questions Les Plus Populaires",
     quickAnswers: "Réponses rapides aux questions les plus fréquentes",
     categories: "Catégories",
-    questionsFound: "Questions Trouvées",
+    questionsFound: "Question trouvée",
+    questionsFoundPlural: "Questions trouvées",
     clearSearch: "Effacer Recherche", 
     noQuestionsFound: "Aucune question trouvée",
     adjustSearchTerms: "Essayez d'ajuster vos termes de recherche ou le filtre de catégorie",
@@ -1047,7 +1164,21 @@ export const fr = {
     callNow: "Appeler Maintenant",
     readyToTryPurrify: "Prêt à Essayer Purrify ?",
     startWithRiskFreeTrial: "Commencez avec notre format d'essai sans risque et découvrez la différence par vous-même.",
-    compareAllSizes: "Comparer Toutes Les Tailles"
+    compareAllSizes: "Comparer Toutes Les Tailles",
+    tryRiskFree: "Essayer sans risque - 4,99 $",
+    learnMoreAboutPurrify: "En savoir plus sur Purrify",
+    howItWorks: "Comment ça marche",
+    learnScience: "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+    catLitterGuide: "Guide de la litière pour chats",
+    completeGuide: "Guide complet des types de litière, des conseils d'entretien et des meilleures pratiques.",
+    customerStories: "Histoires de clients",
+    realExperiences: "Lisez des témoignages réels de propriétaires de chats qui ont transformé leur maison avec Purrify.",
+    popularTag: "Populaire",
+    breadcrumbs: {
+      home: "Accueil",
+      learn: "Apprendre",
+      faq: "FAQ"
+    }
   },
 
   

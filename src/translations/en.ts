@@ -500,6 +500,102 @@ export const en = {
     moneyBackGuaranteeText: "30-day money-back guarantee - Try risk-free!"
   },
 
+  // Subscription Offer
+  subscriptionOffer: {
+    subscribeAndSave: "Subscribe & Save",
+    neverRunOut: "Never Run Out Again",
+    subtitle: "Set up automatic deliveries to lock in exclusive savings. Cancel anytime.",
+    monthly: "Monthly",
+    everyTwoMonths: "Every 2 Months",
+    quarterly: "Quarterly",
+    save: "Save",
+    mostFlexible: "Most Flexible",
+    bestValue: "Best Value",
+    maxSavings: "Maximum Savings",
+    oneTimePurchase: "One-Time Purchase",
+    subscriptionBenefits: "Subscription Benefits",
+    // freeShipping: "Free shipping on every order", // TODO: Restore when free shipping is available
+    exclusiveDiscounts: "Subscriber-only discounts",
+    prioritySupport: "Priority customer support",
+    flexibleSchedule: "Flexible delivery schedule",
+    cancelAnytime: "Cancel anytime",
+    bonusGuide: "Bonus cat care guide",
+    startSubscription: "Start Subscription",
+    selectPlan: "Select Plan",
+    popularChoice: "Popular Choice"
+  },
+
+  // Urgency Banner
+  urgencyBanner: {
+    limitedTime: "Limited Time Offer",
+    saveToday: "Save Today",
+    onAllOrders: "on all orders",
+    // freeShipping: "+ Free Shipping", // TODO: Restore when free shipping is available
+    hurryOffer: "Hurry! This offer ends soon",
+    claimDiscount: "Claim Discount",
+    timeLeft: "Time Left",
+    days: "days",
+    hours: "hours",
+    minutes: "minutes",
+    seconds: "seconds",
+    onlyLeft: "only left",
+    inStock: "in stock",
+    orderNow: "Order Now"
+  },
+
+  // Email Capture Popup
+  emailCapture: {
+    waitDontGo: "Wait! Don't leave yet!",
+    exclusiveOffer: "Unlock an exclusive offer",
+    subtitle: "Before you go, grab 15% off your first order",
+    emailPlaceholder: "Enter your email address",
+    claimDiscount: "Claim 15% Discount",
+    noThanks: "No thanks",
+    instantAccess: "Instant access to your discount code",
+    limitedTime: "Limited-time offer—don't miss out!",
+    successMessage: "Success! Check your inbox for the discount code.",
+    errorMessage: "Something went wrong—please try again."
+  },
+
+  // Reviews Section
+  reviewsSection: {
+    customerReviews: "Customer Reviews",
+    realStories: "Real stories from happy cat parents",
+    verifiedReviews: "Verified Reviews",
+    averageRating: "Average Rating",
+    readMore: "Read More",
+    writeReview: "Write a Review",
+    helpful: "Helpful",
+    verified: "Verified",
+    productUsed: "Product Used",
+    catsOwned: "Cats Owned",
+    useCase: "Use Case"
+  },
+
+  // Case Studies
+  caseStudies: {
+    customerSuccess: "Customer Success Stories",
+    realResults: "Real results from real customers",
+    detailedStories: "See how Purrify transforms homes across Canada through detailed case studies",
+    averageOdorReduction: "Average Odor Reduction",
+    timeToSeeResults: "Time to See Results",
+    customerSatisfaction: "Customer Satisfaction",
+    catsPerStudy: "Cats per Study",
+    theChallenge: "The Challenge",
+    theSolution: "The Solution",
+    theResults: "The Results",
+    longTermOutcome: "Long-Term Outcome",
+    keyPainPoints: "Key Pain Points",
+    implementation: "Implementation",
+    writeYourStory: "Ready to write your own success story?",
+    joinSatisfied: "Join 1,000+ satisfied customers transforming their homes with Purrify.",
+    shopPurrify: "Shop Purrify",
+    tryFreeSample: "Try a Free Sample",
+    moreCustomerStories: "More Customer Stories",
+    videoTestimonials: "Video Testimonials",
+    productComparison: "Product Comparison"
+  },
+
   // Additional Subscription Offer Translations
   subscriptionOfferExtended: {
     neverRunOutAgain: "NEVER RUN OUT AGAIN",

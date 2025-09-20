@@ -64,12 +64,25 @@ export const zh = {
     },
     buttons: {
       shopNow: "🛒 立即购买 - $24.95",
-      reviews: "⭐ 138+ 评论"
+      reviews: "⭐ 138+ 评论",
+      learnMore: "了解工作原理"
     },
     ariaLabels: {
       shopNow: "立即购买Purrify产品",
       reviews: "阅读138+顾客评论",
       playVideo: "播放演示视频，展示Purrify消除猫砂异味的效果"
+    },
+    dualPath: {
+      consumer: {
+        title: "为您的爱猫",
+        description: "个人用户——快速结账，直接送达",
+        cta: "立即为我的猫购买"
+      },
+      retailer: {
+        title: "零售商与分销商",
+        description: "批发价格、大宗订购、营销支持",
+        cta: "访问批发门户"
+      }
     }
   },
   
@@ -259,6 +272,7 @@ export const zh = {
     address: "加拿大蒙特利尔",
     phone: "1-250-432-9352",
     email: "hello@purrify.ca",
+    courriel: "hello@purrify.ca",
     hours: {
       title: "营业时间",
       monday: "周一：上午9点 - 下午5点",
@@ -496,6 +510,7 @@ export const zh = {
   enhancedProductComparison: {
     compareAndSave: "比较并节省",
     chooseYourPerfectSize: "选择您的完美尺寸",
+    purrifySize: "Purrify 规格",
     subtitle: "所有尺寸都提供相同的强效异味消除。根据您的家庭规模和使用频率选择。",
     trial: "试用装",
     mostPopular: "最受欢迎",
@@ -922,6 +937,108 @@ export const zh = {
     chooseSmallSize: "选择小装"
   },
 
+  // 零售与B2B
+  retailers: {
+    seo: {
+      pageTitle: "批发与零售合作伙伴",
+      description: "加入我们的零售网络。提供批发价格、营销支持以及经过验证的热销产品。"
+    },
+    hero: {
+      badge: "商务合作",
+      title: "与Purrify合作",
+      subtitle: "批发成功",
+      description: "加入遍布加拿大的数百家宠物店，共同销售全国最受欢迎的活性炭猫砂添加剂。销量验证、客户忠诚、营销支持一应俱全。",
+      cta: {
+        primary: "查看批发价格",
+        secondary: "成为合作伙伴"
+      }
+    },
+    benefits: {
+      pricing: {
+        title: "批发价格",
+        description: "最高可享50%利润率及阶梯折扣"
+      },
+      marketing: {
+        title: "营销支持",
+        description: "提供终端陈列、团队培训、联合广告资源"
+      },
+      proven: {
+        title: "验证过的产品",
+        description: "4.8/5 评分，重复购买率高"
+      },
+      highDemand: {
+        title: "需求旺盛",
+        description: "猫主人主动寻找异味解决方案，Purrify直击痛点。"
+      },
+      highMargins: {
+        title: "高利润",
+        description: "体积小、价值高，比传统猫砂利润更佳。"
+      },
+      easyStocking: {
+        title: "易于陈列",
+        description: "包装紧凑，无需冷藏，保质期长。"
+      },
+      marketingSupport: {
+        title: "完善营销资料",
+        description: "提供货架展示、产品培训、顾客教育内容与联合广告。"
+      },
+      customerLoyalty: {
+        title: "提升客户忠诚度",
+        description: "当异味问题被解决后，顾客会按月回购并推荐您的门店。"
+      },
+      fastMoving: {
+        title: "动销快速",
+        description: "消耗型产品，补货需求可预测。"
+      },
+      title: "零售商选择Purrify的理由",
+      description: "加入已经引入Purrify并取得突出业绩的成功宠物店网络。",
+      success: {
+        title: "真实成功案例"
+      }
+    },
+    pricing: {
+      title: "批发价格层级",
+      description: "灵活的定价方案，帮助您在为客户提供价值的同时最大化利润。",
+      tiers: {
+        starter: {
+          name: "入门",
+          description: "适合小型宠物店"
+        },
+        growth: {
+          name: "成长",
+          description: "最受成熟门店欢迎"
+        },
+        enterprise: {
+          name: "企业",
+          description: "适用于连锁及大型零售商"
+        }
+      },
+      additional: {
+        title: "提供批量折扣",
+        description: "需要更大量？我们可为连锁、分销商及高销量零售商提供定制报价。"
+      }
+    },
+    marketing: {
+      title: "全方位营销支持",
+      description: "我们提供销售Purrify所需的一切：店内陈列、员工培训、脚本与现成素材。",
+      coop: {
+        title: "联合广告计划",
+        description: "可获得广告补贴，在当地市场（平面、广播、数字）推广Purrify。"
+      }
+    },
+    testimonials: {
+      title: "合作伙伴怎么说",
+      description: "来自加拿大各地宠物店主和店长的真实反馈。",
+      metrics: {
+        title: "经过验证的业务成果"
+      }
+    },
+    contact: {
+      title: "成为Purrify合作伙伴",
+      description: "准备把加拿大最受欢迎的猫砂添加剂放到货架上了吗？填写表单，我们将在24小时内联系您。"
+    }
+  },
+
   // Privacy Policy
   privacyPolicy: {
     title: "隐私政策",
@@ -1029,7 +1146,8 @@ export const zh = {
     popularQuestions: "最受欢迎的问题",
     quickAnswers: "最常见问题的快速答案",
     categories: "分类",
-    questionsFound: "找到问题",
+    questionsFound: "找到的问题",
+    questionsFoundPlural: "找到的问题",
     clearSearch: "清除搜索",
     noQuestionsFound: "未找到问题",
     adjustSearchTerms: "尝试调整您的搜索词或类别过滤器",
@@ -1047,7 +1165,21 @@ export const zh = {
     callNow: "立即致电",
     readyToTryPurrify: "准备试试Purrify？",
     startWithRiskFreeTrial: "从我们的无风险试用装开始，亲自体验差异。",
-    compareAllSizes: "比较所有尺寸"
+    compareAllSizes: "比较所有尺寸",
+    tryRiskFree: "无风险试用 - $4.99",
+    learnMoreAboutPurrify: "进一步了解Purrify",
+    howItWorks: "工作原理",
+    learnScience: "了解我们的活性炭技术为何如此高效。",
+    catLitterGuide: "猫砂指南",
+    completeGuide: "全面介绍猫砂类型、护理技巧与最佳实践。",
+    customerStories: "用户故事",
+    realExperiences: "阅读真实猫主人分享的Purrify体验。",
+    popularTag: "热门",
+    breadcrumbs: {
+      home: "首页",
+      learn: "了解更多",
+      faq: "常见问题"
+    }
   },
 
   
