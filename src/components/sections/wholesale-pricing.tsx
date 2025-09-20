@@ -10,11 +10,9 @@ export function WholesalePricing() {
     {
       name: 'Starter Pack',
       description: 'Perfect for testing the waters',
-      minOrder: '24 units',
-      retailPrice: '$24.99',
-      wholesalePrice: '$12.49',
-      margin: '50%',
-      monthlyRevenue: '$600',
+      minUnits: 24,
+      retailPrice: 24.99,
+      wholesalePrice: 12.49,
       features: [
         'Proven 4.8/5 star product',
         'Lightweight shipping advantage',
@@ -27,11 +25,9 @@ export function WholesalePricing() {
     {
       name: 'Growth Partner',
       description: 'Most popular choice',
-      minOrder: '48 units',
-      retailPrice: '$24.99',
-      wholesalePrice: '$11.24',
-      margin: '55%',
-      monthlyRevenue: '$1,200',
+      minUnits: 48,
+      retailPrice: 24.99,
+      wholesalePrice: 11.24,
       features: [
         'Everything in Starter Pack',
         'Premium counter display',
@@ -45,11 +41,9 @@ export function WholesalePricing() {
     {
       name: 'Scale Success',
       description: 'For serious revenue growth',
-      minOrder: '96 units',
-      retailPrice: '$24.99',
-      wholesalePrice: '$9.99',
-      margin: '60%',
-      monthlyRevenue: '$2,400',
+      minUnits: 96,
+      retailPrice: 24.99,
+      wholesalePrice: 9.99,
       features: [
         'Everything in Growth Partner',
         'Dedicated account manager',
@@ -61,6 +55,8 @@ export function WholesalePricing() {
       badge: '🏆 Enterprise'
     }
   ];
+
+  const formatCurrency = (n: number) => n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
   return (
     <section id="wholesale-pricing" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -81,7 +77,11 @@ export function WholesalePricing() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {pricingTiers.map((tier, index) => (
+          {pricingTiers.map((tier, index) => {
+            const unitProfit = tier.retailPrice - tier.wholesalePrice;
+            const monthlyProfit = tier.minUnits * unitProfit;
+            const marginPct = Math.round((unitProfit / tier.retailPrice) * 100);
+            return (
             <div
               key={index}
               className={`relative rounded-3xl p-8 ${
@@ -110,28 +110,28 @@ export function WholesalePricing() {
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div>
                       <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">You Pay</div>
-                      <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{tier.wholesalePrice}</div>
+                      <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{formatCurrency(tier.wholesalePrice)}</div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">You Sell</div>
-                      <div className="text-2xl font-black text-gray-900 dark:text-gray-50">{tier.retailPrice}</div>
+                      <div className="text-2xl font-black text-gray-900 dark:text-gray-50">{formatCurrency(tier.retailPrice)}</div>
                     </div>
                   </div>
                   <div className="mt-4 text-center">
-                    <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">{tier.margin}</div>
+                    <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">{marginPct}%</div>
                     <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">Profit Margin</div>
                   </div>
                 </div>
 
                 {/* Revenue Projection */}
                 <div className="bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-xl p-4 mb-6">
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">Est. Monthly Revenue</div>
-                  <div className="text-2xl font-black text-[#FF3131] dark:text-[#FF5050]">{tier.monthlyRevenue}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Based on {tier.minOrder} units/month</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">Est. Monthly Profit</div>
+                  <div className="text-2xl font-black text-[#FF3131] dark:text-[#FF5050]">{formatCurrency(monthlyProfit)}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Based on {tier.minUnits} units/month • {formatCurrency(unitProfit)} profit/unit</div>
                 </div>
 
                 <div className="text-lg font-bold text-gray-900 dark:text-gray-50">
-                  Min Order: <span className="text-[#5B2EFF] dark:text-[#3694FF]">{tier.minOrder}</span>
+                  Min Order: <span className="text-[#5B2EFF] dark:text-[#3694FF]">{tier.minUnits} units</span>
                 </div>
               </div>
 
@@ -159,7 +159,7 @@ export function WholesalePricing() {
                 {tier.highlighted ? '🚀 Start Growing Now' : 'Get Started'}
               </Button>
             </div>
-          ))}
+          );})}
         </div>
 
         {/* Risk Reversal & Urgency */}
