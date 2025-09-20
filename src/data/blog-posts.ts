@@ -15,10 +15,26 @@ function generateLatestBlogPosts(): BlogPost[] {
   
   return [
     {
+      title: 'Strong Cat Urine Smell in Litter Box? Proven Home Odor Fixes',
+      excerpt: "Stop saying 'my house smells like cat litter' with this layered guide covering airflow, cleaning routines, and smart litter upgrades for a truly fresh home.",
+      author: 'Clean Home Specialist Team',
+      date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
+      image: 'https://images.unsplash.com/photo-1541959833400-049d37f97c18?auto=format&fit=crop&w=1200&q=80',
+      link: '/blog/strong-cat-urine-smell-litter-box'
+    },
+    {
+      title: "House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell",
+      excerpt: "Is your house smelling like cat litter? Discover 7 proven methods to control cat litter smell and eliminate strong urine odors from your litter box permanently.",
+      author: "Odor Control Specialist Team",
+      date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
+      image: "/optimized/140g.webp",
+      link: "/blog/house-smells-like-cat-litter-solutions"
+    },
+    {
       title: "Best Multi-Cat Litter Deodorizer: Ultimate Odor Control Guide 2024",
       excerpt: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
       author: "Multi-Cat Specialist Team",
-      date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
+      date: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
       image: "/optimized/140g.webp",
       link: "/blog/multi-cat-litter-deodorizer-guide"
     },
@@ -26,7 +42,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "The Complete Guide to Cat Litter Deodorizers: How to Use Them Effectively",
       excerpt: "Master the art of using cat litter deodorizers with our comprehensive guide. Learn proper application techniques, timing, and maintenance tips for maximum odor control.",
       author: "Dr. Sarah Mitchell",
-      date: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
+      date: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days ago
       image: "/optimized/60g.webp",
       link: "/blog/how-to-use-cat-litter-deodorizer"
     },

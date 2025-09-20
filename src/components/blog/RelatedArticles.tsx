@@ -11,6 +11,12 @@ type Article = {
 
 const ALL_ARTICLES: Article[] = [
   {
+    title: 'Strong Cat Urine Smell Solutions',
+    href: '/blog/strong-cat-urine-smell-litter-box',
+    image: 'https://images.unsplash.com/photo-1541959833400-049d37f97c18?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Calm cat resting on a sofa in a bright living room'
+  },
+  {
     title: 'Activated Carbon Litter Additive Benefits',
     href: '/blog/activated-carbon-litter-additive-benefits',
     image: '/optimized/carbon_magnified_image.webp',
@@ -74,4 +80,3 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
 }
 
 export default RelatedArticles;
-
