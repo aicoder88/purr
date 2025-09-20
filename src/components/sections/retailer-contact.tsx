@@ -64,18 +64,48 @@ export function RetailerContact() {
       throw new Error('Email service not initialized. Please try again later.');
     }
 
+    const submittedAt = new Date();
+    const fullMessage = [
+      'Retailer Partnership Application',
+      '--------------------------------',
+      `Business Name: ${formData.businessName || '—'}`,
+      `Contact Name: ${formData.contactName || '—'}`,
+      `Email: ${formData.email || '—'}`,
+      `Phone: ${formData.phone || '—'}`,
+      `Position: ${formData.position || '—'}`,
+      `Business Type: ${formData.businessType || '—'}`,
+      `Number of Locations: ${formData.locations || '—'}`,
+      `Current Products: ${formData.currentProducts || '—'}`,
+      `Additional Message: ${formData.message || '—'}`,
+      '',
+      `Submitted (local): ${submittedAt.toLocaleString()}`,
+      `Submitted (ISO): ${submittedAt.toISOString()}`,
+    ].join('\n');
+
     const templateParams = {
+      // Common mappings expected by many EmailJS templates
+      subject: `Retailer Partnership Application from ${formData.businessName || 'Unknown Business'}`,
+      from_name: formData.contactName || formData.businessName || 'Retailer Applicant',
+      from_email: formData.email || 'noreply@purrify.ca',
+      reply_to: formData.email || 'noreply@purrify.ca',
+
+      // Individual labeled fields
       businessName: formData.businessName,
       contactName: formData.contactName,
       email: formData.email,
       phone: formData.phone || 'Not provided',
       position: formData.position || 'Not provided',
-      businessType: formData.businessType,
+      businessType: formData.businessType || 'Not provided',
       locations: formData.locations || 'Not provided',
       currentProducts: formData.currentProducts || 'Not provided',
-      message: formData.message || 'No additional message',
-      subject: `Retailer Partnership Application from ${formData.businessName}`,
-      date: new Date().toLocaleString(),
+      additionalMessage: formData.message || 'No additional message',
+
+      // Fallback single message body so templates that only output `message` still include everything
+      message: fullMessage,
+
+      // Meta
+      date: submittedAt.toLocaleString(),
+      date_iso: submittedAt.toISOString(),
       formType: 'Retailer Partnership Application'
     };
 
