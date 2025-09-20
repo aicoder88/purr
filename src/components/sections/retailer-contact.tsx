@@ -82,33 +82,14 @@ export function RetailerContact() {
       `Submitted (ISO): ${submittedAt.toISOString()}`,
     ].join('\n');
 
-    // HTML version for templates that render HTML variables
-    const fullMessageHtml = `
-      <h2 style="margin:0 0 8px 0; font-family:Arial,sans-serif;">Retailer Partnership Application</h2>
-      <hr/>
-      <div style="font-family:Arial,sans-serif; line-height:1.5;">
-        <p><strong>Business Name:</strong> ${formData.businessName || '—'}</p>
-        <p><strong>Contact Name:</strong> ${formData.contactName || '—'}</p>
-        <p><strong>Email:</strong> ${formData.email || '—'}</p>
-        <p><strong>Phone:</strong> ${formData.phone || '—'}</p>
-        <p><strong>Position:</strong> ${formData.position || '—'}</p>
-        <p><strong>Business Type:</strong> ${formData.businessType || '—'}</p>
-        <p><strong>Number of Locations:</strong> ${formData.locations || '—'}</p>
-        <p><strong>Current Products:</strong> ${formData.currentProducts || '—'}</p>
-        <p><strong>Additional Message:</strong><br/>${(formData.message || '—').replace(/\n/g, '<br/>')}</p>
-        <hr/>
-        <p><strong>Submitted (local):</strong> ${submittedAt.toLocaleString()}</p>
-        <p><strong>Submitted (ISO):</strong> ${submittedAt.toISOString()}</p>
-      </div>
-    `;
+    // Note: EmailJS templates commonly use {{message}}; we include the full
+    // labeled body in plain text via the `message` param below for reliability.
 
     const templateParams = {
       // Common mappings expected by many EmailJS templates
       subject: `Retailer Partnership Application from ${formData.businessName || 'Unknown Business'}`,
-      // Include both common and alternate key names for maximum template compatibility
-      name: formData.contactName || formData.businessName || 'Retailer Applicant',
+      // Common template keys for compatibility
       from_name: formData.contactName || formData.businessName || 'Retailer Applicant',
-      email: formData.email || 'noreply@purrify.ca',
       from_email: formData.email || 'noreply@purrify.ca',
       reply_to: formData.email || 'noreply@purrify.ca',
 
@@ -122,17 +103,13 @@ export function RetailerContact() {
       currentProducts: formData.currentProducts || 'Not provided',
       additionalMessage: formData.message || 'No additional message',
 
-      // Full body content (plain and HTML)
+      // Full body content (plain text)
       message: fullMessage,
-      message_html: fullMessageHtml,
 
       // Meta
       date: submittedAt.toLocaleString(),
       date_iso: submittedAt.toISOString(),
-      formType: 'Retailer Partnership Application',
-
-      // For debugging: include a JSON snapshot
-      form_json: JSON.stringify({ ...formData, submittedAt: submittedAt.toISOString() })
+      formType: 'Retailer Partnership Application'
     };
 
     console.log('Sending retailer inquiry via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
@@ -140,7 +117,8 @@ export function RetailerContact() {
     const result = await emailjs.send(
       EMAILJS_CONFIG.SERVICE_ID,
       EMAILJS_CONFIG.TEMPLATE_ID,
-      templateParams
+      templateParams,
+      { publicKey: EMAILJS_CONFIG.PUBLIC_KEY, blockHeadless: false }
     );
 
     console.log('EmailJS send result for retailer form:', result);
