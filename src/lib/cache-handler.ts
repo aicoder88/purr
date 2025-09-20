@@ -186,7 +186,8 @@ export function createCacheHandler(params: {
   const fs: FileSystem = {
     readFile: async (path: string) => {
       try {
-        return await params.fs.readFile(path);
+        const result = await params.fs.readFile(path);
+        return result;
       } catch {
         return null;
       }

@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { SITE_NAME } from "../../lib/constants";
-import NextImage from "../../../components/NextImage";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
 import { useTranslation } from "../../lib/translation-context";
 import { ShoppingCart } from "../../components/ui/shopping-cart";
@@ -20,6 +19,56 @@ export function Header() {
   const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
+
+  // Shared handlers to avoid recreating inline functions in JSX
+  const handleNavMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = (e.currentTarget.dataset.menuId as string) || '';
+    if (id === 'products') {
+      setIsProductsDropdownOpen(true);
+      setIsRetailersDropdownOpen(false);
+      setIsLearnDropdownOpen(false);
+    } else if (id === 'retailers') {
+      setIsProductsDropdownOpen(false);
+      setIsRetailersDropdownOpen(true);
+      setIsLearnDropdownOpen(false);
+    } else if (id === 'learn') {
+      setIsProductsDropdownOpen(false);
+      setIsRetailersDropdownOpen(false);
+      setIsLearnDropdownOpen(true);
+    }
+  }, []);
+
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = (e.currentTarget.dataset.menuId as string) || '';
+    if (id === 'products') {
+      const next = !isProductsDropdownOpen;
+      setIsProductsDropdownOpen(next);
+      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); }
+    } else if (id === 'retailers') {
+      const next = !isRetailersDropdownOpen;
+      setIsRetailersDropdownOpen(next);
+      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); }
+    } else if (id === 'learn') {
+      const next = !isLearnDropdownOpen;
+      setIsLearnDropdownOpen(next);
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); }
+    }
+  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen]);
+
+  const handleNavKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const id = (e.currentTarget.dataset.menuId as string) || '';
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      // Delegate to click handler for toggling
+      // Create a synthetic event object compatible with handleNavClick
+      handleNavClick(e as unknown as React.MouseEvent<HTMLButtonElement>);
+    }
+    if (e.key === 'Escape') {
+      if (id === 'products') setIsProductsDropdownOpen(false);
+      if (id === 'retailers') setIsRetailersDropdownOpen(false);
+      if (id === 'learn') setIsLearnDropdownOpen(false);
+    }
+  }, [handleNavClick]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -135,89 +184,16 @@ export function Header() {
                 {item.hasDropdown ? (
                   <>
                     <button
+                      id={`dropdown-${item.id}`}
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
+                      data-menu-id={item.id}
                       aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
-                      onMouseEnter={() => {
-                        // Open hovered dropdown and close the others to prevent overlap
-                        if (item.id === 'products') {
-                          setIsProductsDropdownOpen(true);
-                          setIsRetailersDropdownOpen(false);
-                          setIsLearnDropdownOpen(false);
-                        }
-                        if (item.id === 'retailers') {
-                          setIsProductsDropdownOpen(false);
-                          setIsRetailersDropdownOpen(true);
-                          setIsLearnDropdownOpen(false);
-                        }
-                        if (item.id === 'learn') {
-                          setIsProductsDropdownOpen(false);
-                          setIsRetailersDropdownOpen(false);
-                          setIsLearnDropdownOpen(true);
-                        }
-                      }}
+                      onMouseEnter={handleNavMouseEnter}
                       // Do not auto-dismiss on mouse leave
-                      onClick={() => {
-                        if (item.id === 'products') {
-                          const next = !isProductsDropdownOpen;
-                          setIsProductsDropdownOpen(next);
-                          if (next) {
-                            setIsRetailersDropdownOpen(false);
-                            setIsLearnDropdownOpen(false);
-                          }
-                        }
-                        if (item.id === 'retailers') {
-                          const next = !isRetailersDropdownOpen;
-                          setIsRetailersDropdownOpen(next);
-                          if (next) {
-                            setIsProductsDropdownOpen(false);
-                            setIsLearnDropdownOpen(false);
-                          }
-                        }
-                        if (item.id === 'learn') {
-                          const next = !isLearnDropdownOpen;
-                          setIsLearnDropdownOpen(next);
-                          if (next) {
-                            setIsProductsDropdownOpen(false);
-                            setIsRetailersDropdownOpen(false);
-                          }
-                        }
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          if (item.id === 'products') {
-                            const next = !isProductsDropdownOpen;
-                            setIsProductsDropdownOpen(next);
-                            if (next) {
-                              setIsRetailersDropdownOpen(false);
-                              setIsLearnDropdownOpen(false);
-                            }
-                          }
-                          if (item.id === 'retailers') {
-                            const next = !isRetailersDropdownOpen;
-                            setIsRetailersDropdownOpen(next);
-                            if (next) {
-                              setIsProductsDropdownOpen(false);
-                              setIsLearnDropdownOpen(false);
-                            }
-                          }
-                          if (item.id === 'learn') {
-                            const next = !isLearnDropdownOpen;
-                            setIsLearnDropdownOpen(next);
-                            if (next) {
-                              setIsProductsDropdownOpen(false);
-                              setIsRetailersDropdownOpen(false);
-                            }
-                          }
-                        }
-                        if (e.key === 'Escape') {
-                          if (item.id === 'products') setIsProductsDropdownOpen(false);
-                          if (item.id === 'retailers') setIsRetailersDropdownOpen(false);
-                          if (item.id === 'learn') setIsLearnDropdownOpen(false);
-                        }
-                      }}
+                      onClick={handleNavClick}
+                      onKeyDown={handleNavKeyDown}
                     >
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
