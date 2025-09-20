@@ -675,7 +675,6 @@ export default function MultiCatLitterDeodorizerGuide() {
               </div>
             </div>
           </div>
-        </Container>
           {/* Related Articles */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
             <RelatedArticles currentPath="/blog/multi-cat-litter-deodorizer-guide" />

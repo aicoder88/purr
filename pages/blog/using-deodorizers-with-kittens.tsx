@@ -139,7 +139,6 @@ export default function UsingDeodorizersWithKittens() {
               </p>
             </div>
           </div>
-        </Container>
           {/* Related Articles */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
             <RelatedArticles currentPath="/blog/using-deodorizers-with-kittens" />

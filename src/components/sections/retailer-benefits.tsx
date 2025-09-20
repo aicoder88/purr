@@ -117,8 +117,8 @@ export function RetailerBenefits() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">300+</div>
-                <div className="text-gray-600 dark:text-gray-300">Active Retail Partners</div>
+                <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">17</div>
+                <div className="text-gray-600 dark:text-gray-300">Current Retail Partners</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">$2.3M</div>

@@ -171,7 +171,6 @@ export default function ActivatedCarbonVsBakingSoda() {
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
             <RelatedArticles currentPath="/blog/activated-carbon-vs-baking-soda-comparison" />
           </div>
-        </article>
       </Container>
     </>
   );

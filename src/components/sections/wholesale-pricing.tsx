@@ -169,7 +169,7 @@ export function WholesalePricing() {
               🎯 Ready to Boost Your Revenue?
             </h3>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
-              Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">300+ successful retailers</strong> already earning high margins with Purrify.
+              Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">17 established retailers</strong> already earning high margins with Purrify.
               <br/>Setup takes less than 24 hours.
             </p>
 
