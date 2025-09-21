@@ -1,7 +1,5 @@
 import { NextSeo } from 'next-seo';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../src/components/ui/card';
-import { Button } from '../src/components/ui/button';
 import { Badge } from '../src/components/ui/badge';
 import { Container } from '../src/components/ui/container';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts';

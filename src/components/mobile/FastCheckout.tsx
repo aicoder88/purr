@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, MapPin, CreditCard, Mail, Phone, CheckCircle, AlertCircle } from 'lucide-react';
+import { User, MapPin, Mail, Phone, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ExpressCheckoutButtons } from './MobilePayment';
 
@@ -55,7 +55,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
   const [errors, setErrors] = useState<Partial<CheckoutData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [step, setStep] = useState<'contact' | 'shipping' | 'review'>('contact');
-  const [useAutofill, setUseAutofill] = useState(false);
+  const [, setUseAutofill] = useState(false);
 
   // Auto-fill detection and setup
   useEffect(() => {

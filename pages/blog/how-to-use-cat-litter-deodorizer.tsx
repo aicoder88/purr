@@ -3,17 +3,12 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for how-to guide content
 const heroImage = 'https://images.unsplash.com/photo-1516750105099-4b8adeaaf824?auto=format&fit=crop&w=1600&q=80';
-const stepByStepImage = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80';
-const applicationImage = 'https://images.unsplash.com/photo-1545529468-42764ef8c85f?auto=format&fit=crop&w=1600&q=80';
-const resultImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
 
 export default function HowToUseLitterDeodorizer() {
-  // const { t } = useTranslation();
 
   return (
     <>

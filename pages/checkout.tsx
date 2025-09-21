@@ -3,17 +3,15 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import { Input } from '../src/components/ui/input';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import { useCart } from '../src/lib/cart-context';
 import { useRouter } from 'next/router';
-import { useTranslation } from '../src/lib/translation-context';
-import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Award, Star, Users, Clock, Zap, Heart, CheckSquare } from 'lucide-react';
+import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Star, Users, Clock, Zap, Heart, CheckSquare } from 'lucide-react';
 import { PRODUCTS, TESTIMONIALS } from '../src/lib/constants';
 import dynamic from "next/dynamic";
 import { FastCheckout } from '../src/components/mobile/FastCheckout';
-import ExpressCheckoutButtons from '../src/components/mobile/MobilePayment';
-import { TrustBadges, CheckoutTrustBadges, SocialProofBadges } from '../src/components/social-proof/TrustBadges';
+import { TrustBadges, CheckoutTrustBadges } from '../src/components/social-proof/TrustBadges';
 
 // Dynamically import NextImage to reduce initial bundle size
 const NextImage = dynamic(() => import("../components/NextImage"), {
@@ -141,7 +139,7 @@ const CheckoutPage: NextPage = () => {
 
       if (!orderResponse.ok) throw new Error('Failed to create order');
 
-      const { orderId } = await orderResponse.json();
+      await orderResponse.json();
 
       // For now, just show success and clear cart
       alert('Order placed successfully!');
