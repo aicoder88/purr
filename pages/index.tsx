@@ -10,24 +10,50 @@ import dynamic from 'next/dynamic';
 import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
 import { LazyLoad } from '../src/components/performance/LazyLoad';
 
+const sectionSkeleton = (height: string, rounding: string = 'rounded-2xl') => (
+  <div
+    className={`${height} ${rounding} bg-gray-50 dark:bg-gray-800/70 animate-pulse`}
+    aria-hidden="true"
+  />
+);
+
 // Dynamically import below-the-fold sections to improve initial page load
 const EnhancedProductComparison = dynamic(() => import('../src/components/sections/enhanced-product-comparison').then(mod => ({ default: mod.EnhancedProductComparison })), {
-  ssr: false
+  ssr: false,
+  loading: () => sectionSkeleton('h-96', 'rounded-lg')
 });
-const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
+const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-72')
+});
 const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), {
-  ssr: false
+  ssr: false,
+  loading: () => sectionSkeleton('h-64')
 });
 const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), {
-  ssr: false
+  ssr: false,
+  loading: () => sectionSkeleton('h-96')
 });
 const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), {
-  ssr: false
+  ssr: false,
+  loading: () => sectionSkeleton('h-96')
 });
-const Newsletter = dynamic(() => import('../src/components/sections/newsletter').then(mod => ({ default: mod.Newsletter })), { ssr: false });
-const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), { ssr: false });
-const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), { ssr: false });
-const BlogPreview = dynamic(() => import('../src/components/sections/blog-preview').then(mod => ({ default: mod.BlogPreview })), { ssr: false });
+const Newsletter = dynamic(() => import('../src/components/sections/newsletter').then(mod => ({ default: mod.Newsletter })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-72')
+});
+const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-64')
+});
+const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-80')
+});
+const BlogPreview = dynamic(() => import('../src/components/sections/blog-preview').then(mod => ({ default: mod.BlogPreview })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-80')
+});
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
@@ -386,12 +412,7 @@ export default function Home() {
         <div className="cv-auto cis-960">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-96 rounded-lg bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-96', 'rounded-lg')}
             >
               <EnhancedProductComparison />
             </LazyLoad>
@@ -402,12 +423,7 @@ export default function Home() {
         <div className="cv-auto cis-480">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-72 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-72')}
             >
               <SubscriptionOffer />
             </LazyLoad>
@@ -424,12 +440,7 @@ export default function Home() {
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-64 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-64')}
             >
               <Stores />
             </LazyLoad>
@@ -439,12 +450,7 @@ export default function Home() {
         <div className="cv-auto cis-960">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-96 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-96')}
             >
               <Testimonials />
             </LazyLoad>
@@ -454,12 +460,7 @@ export default function Home() {
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-96 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-96')}
             >
               <FAQ />
             </LazyLoad>
@@ -469,12 +470,7 @@ export default function Home() {
         <div className="cv-auto cis-480">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-72 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-72')}
             >
               <Newsletter />
             </LazyLoad>
@@ -484,12 +480,7 @@ export default function Home() {
         <div className="cv-auto cis-480">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-64 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-64')}
             >
               <CTA />
             </LazyLoad>
@@ -499,12 +490,7 @@ export default function Home() {
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-80 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-80')}
             >
               <Contact />
             </LazyLoad>
@@ -514,12 +500,7 @@ export default function Home() {
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyLoad
-              placeholder={(
-                <div
-                  className="h-80 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
-                  aria-hidden="true"
-                />
-              )}
+              placeholder={sectionSkeleton('h-80')}
             >
               <BlogPreview />
             </LazyLoad>
