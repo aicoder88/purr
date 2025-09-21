@@ -12,9 +12,6 @@ interface ImageDimensions {
   };
 }
 
-// Load image dimensions from the JSON file (will only be used server-side)
-const imageDimensionsCache: ImageDimensions | null = null;
-
 interface NextImageProps extends Omit<ImageProps, 'src' | 'alt' | 'onError'> {
   src: string;
   alt: string;
@@ -125,13 +122,10 @@ export default function NextImage({
         const sanitizedBaseName = baseName.replace(/\s+/g, '-');
         
         // Create paths for different formats and naming conventions
-        const optimizedJpg = `/optimized/${encodedBaseName}.jpg`;
-        const optimizedSanitizedJpg = `/optimized/${sanitizedBaseName}.jpg`;
         const optimizedPng = `/optimized/${encodedBaseName}.png`;
         const optimizedSanitizedPng = `/optimized/${sanitizedBaseName}.png`;
         const optimizedWebP = `/optimized/${encodedBaseName}.webp`;
         const optimizedSanitizedWebP = `/optimized/${sanitizedBaseName}.webp`;
-        const optimizedOriginal = `/optimized/${encodedBaseName}.${ext}`;
         
         // For iOS Chrome, use PNG or JPG format for better compatibility
         if (isIOSChrome) {
@@ -141,11 +135,11 @@ export default function NextImage({
             imageSrc = optimizedPng;
           }
         } else {
-          // For other browsers, use JPG as default
+          // For other browsers, prioritize WebP for better compression
           if (baseName.includes(' ')) {
-            imageSrc = optimizedSanitizedJpg;
+            imageSrc = optimizedSanitizedWebP;
           } else {
-            imageSrc = optimizedJpg;
+            imageSrc = optimizedWebP;
           }
         }
         
@@ -192,15 +186,15 @@ export default function NextImage({
             return;
           }
         } else {
-          // For other browsers: JPG -> WebP -> Original
-          if (ext === 'jpg') {
-            const webpPath = imageSrc.replace('.jpg', '.webp');
-            console.log(`JPG failed, trying WebP: ${webpPath}`);
-            setImgSrc(webpPath);
+          // For other browsers: WebP -> JPG -> Original
+          if (ext === 'webp') {
+            const jpgPath = imageSrc.replace('.webp', '.jpg');
+            console.log(`WebP failed, trying JPG: ${jpgPath}`);
+            setImgSrc(jpgPath);
             return;
           }
-          if (ext === 'webp') {
-            const originalPath = imageSrc.replace('.webp', `.${src.split('.').pop()}`);
+          if (ext === 'jpg') {
+            const originalPath = imageSrc.replace('.jpg', `.${src.split('.').pop()}`);
             console.log(`WebP failed, trying original: ${originalPath}`);
             setImgSrc(originalPath);
             return;

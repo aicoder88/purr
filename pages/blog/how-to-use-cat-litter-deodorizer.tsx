@@ -18,12 +18,12 @@ export default function HowToUseLitterDeodorizer() {
   return (
     <>
       <Head>
-        <title>How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide | {SITE_NAME}</title>
+        <title>How to Use Cat Litter Deodorizer: Step-by-Step Guide | {SITE_NAME}</title>
         <meta name="description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions, common mistakes to avoid, and expert tips." />
         <meta name="keywords" content="how to use cat litter deodorizer additive, litter box odor control, cat litter deodorizer instructions, activated carbon application" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide" />
+        <meta property="og:title" content="How to Use Cat Litter Deodorizer: Step-by-Step Guide" />
         <meta property="og:description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions and expert tips." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
@@ -33,7 +33,7 @@ export default function HowToUseLitterDeodorizer() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="How to Use Cat Litter Deodorizer Additive: Complete Guide" />
+        <meta name="twitter:title" content="How to Use Cat Litter Deodorizer: Complete Guide" />
         <meta name="twitter:description" content="Step-by-step instructions for proper cat litter deodorizer application and maximum odor control." />
         <meta name="twitter:image" content={heroImage} />
         
@@ -230,7 +230,7 @@ export default function HowToUseLitterDeodorizer() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Sprinkle Deodorizer Evenly</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      This is the most critical step. Sprinkle the <strong>activated carbon litter additive</strong> 
+                      This is the most critical step. Sprinkle the <Link href="/learn/activated-carbon-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-semibold">activated carbon litter additive</Link>
                       evenly across the entire litter surface. Use the following amounts:
                     </p>
                     <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 mb-4">
@@ -239,7 +239,7 @@ export default function HowToUseLitterDeodorizer() {
                         <li><strong>Small litter box:</strong> 1 tablespoon</li>
                         <li><strong>Medium litter box:</strong> 1.5 tablespoons</li>
                         <li><strong>Large litter box:</strong> 2 tablespoons</li>
-                        <li><strong>Multiple cats:</strong> Add 0.5 tablespoon per additional cat</li>
+                        <li><strong>Multiple cats:</strong> Add 0.5 tablespoon per additional cat (<Link href="/blog/multi-cat-litter-deodorizer-guide" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">see our multi-cat guide</Link>)</li>
                       </ul>
                     </div>
                   </div>
@@ -359,7 +359,7 @@ export default function HowToUseLitterDeodorizer() {
                   <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💡</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Quality Counts:</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> Choose premium activated carbon products for superior performance.</span>
+                    <span className="text-gray-700 dark:text-gray-200"> Choose <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">premium activated carbon products</Link> for superior performance.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">

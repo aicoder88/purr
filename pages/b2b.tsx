@@ -1,30 +1,22 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
-import { OptimizedImage } from '../src/components/performance/OptimizedImage';
-import { SITE_NAME } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
-import { Button } from '../src/components/ui/button';
 import {
-  Store,
   TrendingUp,
   Users,
   Shield,
   Award,
   Package,
-  Truck,
   DollarSign,
   Phone,
   Mail,
   FileText,
-  CheckCircle,
-  Star,
-  Building
+  CheckCircle
 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function B2B() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const pageTitle = locale === 'fr'

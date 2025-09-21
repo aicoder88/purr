@@ -1,15 +1,11 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
-import { SITE_NAME } from '../src/lib/constants';
-import { MONTREAL_STRUCTURED_DATA, MONTREAL_SEO_CONFIG, QUEBEC_LEGAL_COMPLIANCE } from '../src/lib/montreal-seo-config';
+import { MONTREAL_STRUCTURED_DATA } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
-import { Button } from '../src/components/ui/button';
-import { MapPin, Phone, Clock, Truck, Shield, Star, ChevronRight } from 'lucide-react';
 
 export default function Montreal() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   
   const pageTitle = locale === 'fr' 
     ? 'Désodorisant Litière Chat Montréal - Où Acheter Purrify Québec'
@@ -21,20 +17,6 @@ export default function Montreal() {
     
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
 
-  // Montreal stores data with bilingual content
-  const montrealStores = [
-    {
-      name: "Safari Animalerie Westmount", 
-      nameEn: "Safari Pet Store Westmount",
-      address: "4898 Sherbrooke St W, Westmount, QC H3Z 1H1",
-      phone: "(514) 486-6666",
-      hours: locale === 'fr' ? "Lun-Ven 9h-19h, Sam-Dim 9h-17h" : "Mon-Fri 9AM-7PM, Sat-Sun 9AM-5PM",
-      coordinates: { lat: 45.4825, lng: -73.5917 },
-      neighborhood: "Westmount",
-      specialties: locale === 'fr' ? ["Service personnalisé", "Produits premium"] : ["Personal service", "Premium products"]
-    }
-  ];
-  
   // Enhanced structured data for better SEO
   const baseStructuredData = {
     ...MONTREAL_STRUCTURED_DATA,

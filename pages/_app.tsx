@@ -24,7 +24,7 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-int
 
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
-  const { locale, pathname } = router;
+  const { locale } = router;
 
   // Canonical site URL (use www domain to avoid redirects)
   const canonicalUrl = 'https://www.purrify.ca';

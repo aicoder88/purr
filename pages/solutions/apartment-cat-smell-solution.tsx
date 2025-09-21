@@ -62,7 +62,7 @@ export default function apartmentcatsmellsolutionPage() {
               <div className="text-center">
                 <Link
                   href="/products/trial-size"
-                  className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                  className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                 >
                   Try Purrify Risk-Free - $4.99
                 </Link>
@@ -75,25 +75,25 @@ export default function apartmentcatsmellsolutionPage() {
                 <h3 className="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Apartment Cat Challenges</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-red-500 mr-3">❌</span>
+                    <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
                     <div>
                       <strong>Limited ventilation</strong> - Odors get trapped in small spaces
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-500 mr-3">❌</span>
+                    <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
                     <div>
                       <strong>Close neighbors</strong> - Need to be considerate of shared walls
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-500 mr-3">❌</span>
+                    <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
                     <div>
                       <strong>Small litter areas</strong> - Often located in bathrooms or bedrooms
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-500 mr-3">❌</span>
+                    <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
                     <div>
                       <strong>Frequent guests</strong> - First impressions matter in compact spaces
                     </div>
@@ -105,25 +105,25 @@ export default function apartmentcatsmellsolutionPage() {
                 <h3 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Purrify Solutions</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-3">✅</span>
+                    <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
                     <div>
                       <strong>Activated carbon technology</strong> - Absorbs odors at the molecular level
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-3">✅</span>
+                    <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
                     <div>
                       <strong>Works with any litter</strong> - No need to change your cat's routine
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-3">✅</span>
+                    <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
                     <div>
                       <strong>Long-lasting protection</strong> - Continuous odor elimination
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-500 mr-3">✅</span>
+                    <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
                     <div>
                       <strong>Guest-ready home</strong> - Always prepared for unexpected visitors
                     </div>
@@ -212,7 +212,7 @@ export default function apartmentcatsmellsolutionPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/products/trial-size"
-                  className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                  className="bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                 >
                   Start Your Trial - $4.99
                 </Link>

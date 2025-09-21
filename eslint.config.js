@@ -30,10 +30,20 @@ export default [
     rules: {
       // Disable rules that are too strict for now
       'react/no-unescaped-entities': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn', // Changed from 'off' to 'warn'
       'react-hooks/exhaustive-deps': 'warn',
       'prefer-const': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
+
+      // Performance-related rules
+      'no-return-await': 'error', // Prevent unnecessary return await
+      'react/jsx-no-bind': ['warn', { // Prevent inline function creation in render
+        'ignoreDOMComponents': false,
+        'ignoreRefs': true,
+        'allowArrowFunctions': false,
+        'allowFunctions': false,
+        'allowBind': false
+      }],
     },
   },
   {

@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint .",
     "check-types": "node scripts/check-types.js",
+    "check-types:unused": "node scripts/check-unused-identifiers.js",
     "postbuild": "next-sitemap && npm run generate-enhanced-sitemap",
     "optimize-images": "node scripts/optimize-images.js",
     "optimize-all-images": "node scripts/optimize-all-images.js",
