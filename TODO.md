@@ -140,3 +140,29 @@ Context / exclusions:
 - [ ] Create integration tests for theme utility functions [testing]
 - [ ] Set up accessibility testing for new component patterns [a11y]
 - [ ] Add performance regression testing [testing]
+
+## Code Quality Improvements (From Lint Analysis 2025-01-25)
+
+### 🧹 Immediate Code Cleanup
+- [ ] Clean up unused imports and variables (235+ warnings detected) [cleanup]
+  - Priority files: pages/checkout.tsx, pages/dn.tsx, src/components/mobile/FastCheckout.tsx
+  - Remove unused TypeScript definitions and imports
+  - Clean up abandoned variables from refactoring
+- [ ] Fix JSX arrow function props for better performance [perf]
+  - Replace inline arrow functions with useCallback hooks
+  - Focus on high-frequency components (checkout, mobile, conversion)
+  - Prevent unnecessary re-renders and improve React performance
+- [ ] Run performance audit to check bundle size and optimization [audit]
+  - Analyze current bundle size after recent optimizations
+  - Validate Core Web Vitals remain green
+  - Check for any performance regressions from recent changes
+
+### 🔧 Technical Debt Resolution
+- [ ] Address unused variable patterns consistently [cleanup]
+  - Error handling: 'err', 'error' variables in catch blocks
+  - Component props: 'index', 'id' parameters in map functions
+  - Hook returns: unused destructured values from custom hooks
+- [ ] Optimize import statements across the codebase [perf]
+  - Remove unused shadcn/ui component imports
+  - Clean up icon imports (lucide-react)
+  - Consolidate utility imports where possible
