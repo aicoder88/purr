@@ -232,14 +232,8 @@ export default function Montreal() {
             {/* Pattes et Griffes - Sainte-Thérèse */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
-                  <OptimizedImage
-                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
-                    alt="Pattes et Griffes Logo"
-                    width={64}
-                    height={64}
-                    className="object-contain rounded"
-                  />
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
@@ -248,9 +242,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Pattes et Griffes - Sainte-Thérèse</strong><br />
-                  190 Bd du Curé-Labelle suite 1b<br />
-                  Sainte-Thérèse, QC<br />
+                  <strong>Pattes et Griffes (Sainte‑Thérèse)</strong><br />
+                  190 Bd du Curé‑Labelle, suite 1B<br />
+                  Sainte‑Thérèse, QC J7E 2X5<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 818-1310</span><br />
                   <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -276,9 +270,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Sainte-Thérèse</strong><br />
-                  95 Bd du Curé-Labelle Suite 8<br />
-                  Sainte-Thérèse, QC<br />
+                  <strong>Chico (Sainte‑Thérèse)</strong><br />
+                  95 Bd du Curé‑Labelle, suite 8<br />
+                  Sainte‑Thérèse, QC J7E 2X5<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 965-3906</span><br />
                   <a href="https://www.chico.ca/boutique/chico-sainte-therese/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -304,9 +298,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Sainte-Marthe-sur-le-Lac</strong><br />
-                  2860 B Boul. des Promenades<br />
-                  Sainte-Marthe-Sur-Le-Lac, QC<br />
+                  <strong>Chico (Sainte‑Marthe‑sur‑le‑Lac)</strong><br />
+                  2860 Boul. des Promenades<br />
+                  Sainte‑Marthe‑sur‑le‑Lac, QC J0N 1P0<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 598-2860</span><br />
                   <a href="https://www.chico.ca/boutique/chico-ste-marthe/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -333,8 +327,8 @@ export default function Montreal() {
               <div className="space-y-3 text-sm">
                 <div>
                   <strong>Animal Shop GIGI</strong><br />
-                  356 Bd Arthur-Sauvé<br />
-                  Saint-Eustache, QC<br />
+                  356 Bd Arthur‑Sauvé<br />
+                  Saint‑Eustache, QC J7P 2A3<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 598-3444</span><br />
                   <a href="https://www.animaleriegigi.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -360,9 +354,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Bd Arthur-Sauvé, Laval</strong><br />
-                  4511 Bd Arthur-Sauvé<br />
-                  Laval, QC<br />
+                  <strong>Chico (Laval)</strong><br />
+                  4511 Bd Arthur‑Sauvé<br />
+                  Laval, QC H7R 3X1<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 314-2442</span><br />
                   <a href="https://www.chico.ca/boutique/chico-laval-ouest/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -372,14 +366,8 @@ export default function Montreal() {
             {/* Pattes et Griffes - Cartier Ouest */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
-                  <OptimizedImage
-                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
-                    alt="Pattes et Griffes Logo"
-                    width={64}
-                    height={64}
-                    className="object-contain rounded"
-                  />
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
@@ -388,9 +376,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Pattes et Griffes - Cartier Ouest</strong><br />
+                  <strong>Pattes et Griffes (Laval)</strong><br />
                   293 Bd Cartier Ouest<br />
-                  Laval, QC<br />
+                  Laval, QC H7N 2K3<br />
                   <span className="text-blue-600 dark:text-blue-400">(450) 490-1414</span><br />
                   <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -416,9 +404,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Pitou Minou Kirkland</strong><br />
+                  <strong>Pitou Minou & Compagnons (Kirkland)</strong><br />
                   16936 Route Transcanadienne<br />
-                  Kirkland, QC<br />
+                  Kirkland, QC H9H 5J1<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 695-5005</span><br />
                   <a href="https://pitou-minou.ca/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -444,9 +432,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Boul. St-Laurent (Montreal)</strong><br />
-                  7001 Boul. Saint-Laurent<br />
-                  Montreal, QC<br />
+                  <strong>Chico (Saint‑Laurent)</strong><br />
+                  7001 Boul. Saint‑Laurent<br />
+                  Montreal, QC H2S 3E3<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 657-5813</span><br />
                   <a href="https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -473,8 +461,8 @@ export default function Montreal() {
               <div className="space-y-3 text-sm">
                 <div>
                   <strong>Doghaus</strong><br />
-                  5671 Rue Sherbrooke O<br />
-                  Montreal, QC<br />
+                  5671 Rue Sherbrooke Ouest<br />
+                  Montreal, QC H4A 1W6<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 483-3555</span><br />
                   <a href="https://www.doghausmtl.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -500,9 +488,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>KONG ANIMALERIE</strong><br />
-                  5555 Bd Decarie<br />
-                  Montreal, QC<br />
+                  <strong>Kong Animalerie</strong><br />
+                  5555 Bd Décarie<br />
+                  Montreal, QC H3W 3H8<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 662-8373</span><br />
                   <a href="https://www.facebook.com/konganimalerie/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -529,8 +517,8 @@ export default function Montreal() {
               <div className="space-y-3 text-sm">
                 <div>
                   <strong>Coquette et Finegueule</strong><br />
-                  5203 Av Bannantyne<br />
-                  Verdun, QC<br />
+                  5203 Avenue Bannantyne<br />
+                  Verdun, QC H4H 1E1<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 761-4221</span><br />
                   <a href="https://coquetteetfinegueule.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -558,7 +546,7 @@ export default function Montreal() {
                 <div>
                   <strong>Pitou Minou Verdun</strong><br />
                   4100 Rue Wellington<br />
-                  Verdun, QC<br />
+                  Verdun, QC H4G 1V7<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 732-0555</span><br />
                   <a href="https://www.pitouminou.com/en/global-pet-foods-locations-quebec/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -584,9 +572,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Mont-Royal E</strong><br />
-                  2016 Avenue du Mont-Royal E<br />
-                  Montreal, QC<br />
+                  <strong>Chico (Plateau Mont‑Royal)</strong><br />
+                  2016 Avenue du Mont‑Royal Est<br />
+                  Montreal, QC H2H 1J8<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 521-0201</span><br />
                   <a href="https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -612,9 +600,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Chico - Rue Ontario E</strong><br />
-                  3911 Rue Ontario E<br />
-                  Montreal, QC<br />
+                  <strong>Chico (Hochelaga‑Maisonneuve)</strong><br />
+                  3911 Rue Ontario Est<br />
+                  Montreal, QC H1W 1S5<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 527-1371</span><br />
                   <a href="https://www.chico.ca/boutique/chico-rue-ontario-montreal/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -624,14 +612,8 @@ export default function Montreal() {
             {/* Pattes et Griffes - Marche Centrale */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center mr-3 flex-shrink-0">
-                  <OptimizedImage
-                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
-                    alt="Pattes et Griffes Logo"
-                    width={64}
-                    height={64}
-                    className="object-contain rounded"
-                  />
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
@@ -640,9 +622,9 @@ export default function Montreal() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <strong>Pattes et Griffes - Marche Centrale</strong><br />
+                  <strong>Pattes et Griffes (Marché Central)</strong><br />
                   9185 Bd de l'Acadie<br />
-                  Montreal, QC<br />
+                  Montreal, QC H4N 3C5<br />
                   <span className="text-blue-600 dark:text-blue-400">(514) 389-0090</span><br />
                   <a href="https://pattesgriffes.com/storelocator.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-xs">{locale === 'fr' ? 'Visiter le Site Web' : 'Visit Website'}</a>
                 </div>
@@ -1020,6 +1002,58 @@ export default function Montreal() {
           </p>
         </section>
 
+        {/* Montreal Area Map for SEO */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            {locale === 'fr'
+              ? 'Région de Service | Carte de Montréal et Environs'
+              : 'Service Area | Montreal and Surrounding Regions Map'
+            }
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
+            {locale === 'fr'
+              ? 'Purrify dessert toute la région métropolitaine de Montréal, incluant Laval, la Rive-Sud, et les communautés environnantes. Trouvez un magasin près de chez vous.'
+              : 'Purrify serves the entire Greater Montreal metropolitan area, including Laval, South Shore, and surrounding communities. Find a store near you.'
+            }
+          </p>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d179885.84065830146!2d-73.85493127969524!3d45.50166742063907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a541c64b70d%3A0x654e3138211fefef!2sMontreal%2C%20QC!5e0!3m2!1sen!2sca!4v1704067200000!5m2!1sen!2sca"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={locale === 'fr' ? 'Carte de Montréal - Zone de Service Purrify' : 'Montreal Map - Purrify Service Area'}
+                className="rounded-lg"
+              />
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {locale === 'fr'
+                    ? '🗺️ Région de service Purrify: Montréal, Laval, Longueuil, et communautés environnantes'
+                    : '🗺️ Purrify service area: Montreal, Laval, Longueuil, and surrounding communities'
+                  }
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">
+                    {locale === 'fr' ? 'Montréal' : 'Montreal'}
+                  </span>
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Laval</span>
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Longueuil</span>
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Kirkland</span>
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Verdun</span>
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">
+                    {locale === 'fr' ? 'Sainte-Thérèse' : 'Sainte-Thérèse'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Product Information */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -1162,7 +1196,7 @@ export default function Montreal() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 dark:border-blue-800 rounded-lg p-8">
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               {locale === 'fr'
                 ? 'Visitez Votre Animalerie Locale à Montréal Aujourd\'hui'

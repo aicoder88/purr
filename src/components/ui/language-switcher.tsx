@@ -1,5 +1,5 @@
 // import Link from 'next/link';
-import { useId, useState } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './button';
@@ -41,24 +41,27 @@ export function LanguageSwitcher() {
   const buttonId = `${menuInstanceId}-trigger`;
   const menuId = `${menuInstanceId}-menu`;
 
-  const currentLanguage = languages.find(lang => lang.locale === locale) || languages[0];
+  const currentLanguage = useMemo(
+    () => languages.find(lang => lang.locale === locale) || languages[0],
+    [locale]
+  );
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
-  const closeDropdown = () => {
+  const closeDropdown = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
-  const handleLanguageChange = (newLocale: Locale) => {
-    // Close dropdown immediately for better UX
+  const handleLanguageChange = useCallback((newLocale: Locale) => {
     closeDropdown();
-    
-    // Use the changeLocale function from context which handles routing properly
-    // This will trigger Next.js router navigation and update the translation context
     changeLocale(newLocale);
-  };
+  }, [changeLocale, closeDropdown]);
+
+  const createLanguageClickHandler = useCallback((newLocale: Locale) => () => {
+    handleLanguageChange(newLocale);
+  }, [handleLanguageChange]);
 
   return (
     <div className="relative">
@@ -99,7 +102,7 @@ export function LanguageSwitcher() {
                       ? 'bg-[#FFFFF5] dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-medium'
                       : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-800 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                   }`}
-                  onClick={() => handleLanguageChange(language.locale)}
+                  onClick={createLanguageClickHandler(language.locale)}
                   type="button"
                 >
                   <Image 

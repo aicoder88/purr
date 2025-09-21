@@ -19,6 +19,14 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
     Math.random().toString(36).substring(2, 15), []
   );
 
+  const navigateHome = React.useCallback(() => {
+    window.location.href = '/';
+  }, []);
+
+  const navigateSupport = React.useCallback(() => {
+    window.location.href = '/support/contact';
+  }, []);
+
   return (
     <div className="min-h-[400px] flex items-center justify-center p-4">
       <div className="max-w-lg w-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-8 text-center shadow-lg">
@@ -45,7 +53,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
           
           <div className="flex gap-3">
             <button
-              onClick={() => window.location.href = '/'}
+              onClick={navigateHome}
               className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
@@ -53,7 +61,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
             </button>
             
             <button
-              onClick={() => window.location.href = '/support/contact'}
+              onClick={navigateSupport}
               className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Mail className="w-4 h-4" />

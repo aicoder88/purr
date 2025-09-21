@@ -14,6 +14,8 @@ import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Analytics } from '@vercel/analytics/next';
+import { PerformanceMonitor } from '../src/components/performance/PerformanceMonitor';
+import { CacheOptimizer } from '../src/components/performance/CacheOptimizer';
 
 interface PageProps {
   // Add your page props here if needed
@@ -190,6 +192,9 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               <Component {...pageProps} />
             </Layout>
           </div>
+
+          <PerformanceMonitor enabled sampleRate={0.1} />
+          <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
 
           {/* Idle-load chat plugin to avoid blocking TTI */}
           <script

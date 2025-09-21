@@ -2,7 +2,7 @@
 
 This TODO tracks remaining items from the latest SEMrush crawl after implementing fixes (hreflang, canonical, structured data, sitemaps, and llms.txt). Items marked [infra] are DNS/hosting configurations; [content] require copy/IA updates.
 
-- [ ] DNS: Ensure `fr.purrify.ca` and `zh.purrify.ca` resolve correctly for all paths [infra]
+- [x] DNS: Ensure `fr.purrify.ca` and `zh.purrify.ca` resolve correctly for all paths [infra]
   - Action: Add these domains to Vercel project "purr" (prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2) in team aicoder88s-projects
   - Current: Only www.purrify.ca is configured as domain
   - Required: Add fr.purrify.ca and zh.purrify.ca to Vercel domain settings
@@ -130,7 +130,8 @@ Context / exclusions:
 ### ⚡ Performance & Optimization
 - [ ] Implement lazy loading for refactored components [perf]
 - [ ] Optimize image loading in new component structure [perf]
-- [ ] Add performance monitoring for component render times [perf]
+- [x] Add performance monitoring for component render times [perf]
+  - ✅ Moved `PerformanceMonitor` into client runtime (`pages/_app.tsx`) so GTM events fire; removed server-only usage in `_document`.
 - [ ] Implement code splitting for utility modules [perf]
 - [ ] Optimize CSS-in-JS patterns for better caching [perf]
 
@@ -148,10 +149,13 @@ Context / exclusions:
   - Priority files: pages/checkout.tsx, pages/dn.tsx, src/components/mobile/FastCheckout.tsx
   - Remove unused TypeScript definitions and imports
   - Clean up abandoned variables from refactoring
+  - Next: sweep remaining scripts/api utilities (`apply-translation-fixes.js`, `pages/api/cart-recovery.ts`, etc.)
 - [ ] Fix JSX arrow function props for better performance [perf]
   - Replace inline arrow functions with useCallback hooks
   - Focus on high-frequency components (checkout, mobile, conversion)
   - Prevent unnecessary re-renders and improve React performance
+  - Progress: Memoized handlers in `components/mobile/FastCheckout.tsx`, `components/NextImage.tsx`, `components/ui/language-switcher.tsx`, `components/ui/shopping-cart.tsx`, and `components/ui/error-boundary.tsx`; eslint warnings down to 322 (from 350).
+  - Next: refactor `pages/checkout.tsx`, `src/components/ui/skip-nav.tsx`, `src/components/ui/CLSOptimizedImage.tsx`, and `src/components/ui/calculator.tsx` to remove remaining inline handlers
 - [ ] Run performance audit to check bundle size and optimization [audit]
   - Analyze current bundle size after recent optimizations
   - Validate Core Web Vitals remain green

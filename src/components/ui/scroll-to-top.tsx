@@ -96,14 +96,14 @@ export default function ScrollToTopButton() {
   }, [toggleVisibility]);
 
   // Scroll to top with or without smooth behavior based on user preferences
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     if (typeof window !== 'undefined') {
       window.scrollTo({
         top: 0,
         behavior: isReducedMotion ? 'auto' : 'smooth'
       });
     }
-  };
+  }, [isReducedMotion]);
 
   // Don't render anything during SSR to avoid hydration mismatch
   if (!isClient) {

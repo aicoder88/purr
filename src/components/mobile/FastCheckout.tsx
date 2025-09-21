@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { User, MapPin, Mail, Phone, CheckCircle, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { User, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ExpressCheckoutButtons } from './MobilePayment';
 
@@ -19,6 +19,8 @@ interface FastCheckoutProps {
   onCheckoutComplete?: (data: CheckoutData) => void;
   className?: string;
 }
+
+const AUTO_SAVE_FIELDS = new Set<keyof CheckoutData>(['firstName', 'lastName', 'city', 'province']);
 
 const CANADIAN_PROVINCES = [
   { code: 'AB', name: 'Alberta' },
@@ -57,20 +59,14 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
   const [step, setStep] = useState<'contact' | 'shipping' | 'review'>('contact');
   const [, setUseAutofill] = useState(false);
 
-  // Auto-fill detection and setup
-  useEffect(() => {
-    detectAutofillCapability();
-    loadSavedData();
-  }, []);
-
-  const detectAutofillCapability = () => {
+  const detectAutofillCapability = useCallback(() => {
     // Check if browser supports autofill
     if ('credentials' in navigator) {
       setUseAutofill(true);
     }
-  };
+  }, []);
 
-  const loadSavedData = () => {
+  const loadSavedData = useCallback(() => {
     // Load previously saved checkout data from localStorage
     try {
       const saved = localStorage.getItem('purrify_checkout_data');
@@ -81,9 +77,9 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
     } catch (err) {
       console.error('Error loading saved data:', err);
     }
-  };
+  }, []);
 
-  const saveData = (data: Partial<CheckoutData>) => {
+  const saveData = useCallback((data: CheckoutData) => {
     // Save non-sensitive data to localStorage for future use
     try {
       const dataToSave = {
@@ -96,23 +92,37 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
     } catch (err) {
       console.error('Error saving data:', err);
     }
-  };
+  }, []);
 
-  const handleInputChange = (field: keyof CheckoutData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
-    }
+  // Auto-fill detection and setup
+  useEffect(() => {
+    detectAutofillCapability();
+    loadSavedData();
+  }, [detectAutofillCapability, loadSavedData]);
 
-    // Auto-save non-sensitive data
-    if (['firstName', 'lastName', 'city', 'province'].includes(field)) {
-      saveData({ ...formData, [field]: value });
-    }
-  };
+  const handleInputChange = useCallback((field: keyof CheckoutData, value: string) => {
+    setFormData(prev => {
+      const updated = { ...prev, [field]: value };
 
-  const validateStep = (currentStep: string): boolean => {
+      if (AUTO_SAVE_FIELDS.has(field)) {
+        saveData(updated);
+      }
+
+      return updated;
+    });
+
+    setErrors(prev => {
+      if (!prev[field]) {
+        return prev;
+      }
+
+      const nextErrors = { ...prev };
+      delete nextErrors[field];
+      return nextErrors;
+    });
+  }, [saveData]);
+
+  const validateStep = useCallback((currentStep: string): boolean => {
     const newErrors: Partial<CheckoutData> = {};
 
     if (currentStep === 'contact') {
@@ -135,16 +145,16 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (validateStep(step)) {
       if (step === 'contact') setStep('shipping');
       else if (step === 'shipping') setStep('review');
     }
-  };
+  }, [step, validateStep]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (!validateStep('review')) return;
 
     setIsSubmitting(true);
@@ -157,16 +167,33 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData, onCheckoutComplete, validateStep]);
 
-  const formatPostalCode = (value: string) => {
+  const formatPostalCode = useCallback((value: string) => {
     // Auto-format Canadian postal codes
     const cleaned = value.replace(/\s/g, '').toUpperCase();
     if (cleaned.length >= 3) {
       return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 6)}`;
     }
     return cleaned;
-  };
+  }, []);
+
+  const handleFormChange = useCallback((event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = event.target;
+    if (!name) {
+      return;
+    }
+
+    if (name === 'postalCode') {
+      handleInputChange('postalCode', formatPostalCode(value));
+      return;
+    }
+
+    handleInputChange(name as keyof CheckoutData, value);
+  }, [formatPostalCode, handleInputChange]);
+
+  const goToContactStep = useCallback(() => setStep('contact'), []);
+  const goToShippingStep = useCallback(() => setStep('shipping'), []);
 
   const StepIndicator = () => (
     <div className="flex items-center justify-center space-x-4 mb-6">
@@ -221,9 +248,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             <div>
               <input
                 type="email"
+                name="email"
                 placeholder="Email address"
                 value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
+                onChange={handleFormChange}
                 autoComplete="email"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                   errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -241,9 +269,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <div>
                 <input
                   type="text"
+                  name="firstName"
                   placeholder="First name"
                   value={formData.firstName}
-                  onChange={(e) => handleInputChange('firstName', e.target.value)}
+                  onChange={handleFormChange}
                   autoComplete="given-name"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                     errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -256,9 +285,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <div>
                 <input
                   type="text"
+                  name="lastName"
                   placeholder="Last name"
                   value={formData.lastName}
-                  onChange={(e) => handleInputChange('lastName', e.target.value)}
+                  onChange={handleFormChange}
                   autoComplete="family-name"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                     errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -273,9 +303,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             <div>
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone number (optional)"
                 value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
+                onChange={handleFormChange}
                 autoComplete="tel"
                 className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -300,9 +331,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             <div>
               <input
                 type="text"
+                name="address"
                 placeholder="Street address"
                 value={formData.address}
-                onChange={(e) => handleInputChange('address', e.target.value)}
+                onChange={handleFormChange}
                 autoComplete="street-address"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                   errors.address ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -320,9 +352,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <div>
                 <input
                   type="text"
+                  name="city"
                   placeholder="City"
                   value={formData.city}
-                  onChange={(e) => handleInputChange('city', e.target.value)}
+                  onChange={handleFormChange}
                   autoComplete="address-level2"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                     errors.city ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -334,8 +367,9 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               </div>
               <div>
                 <select
+                  name="province"
                   value={formData.province}
-                  onChange={(e) => handleInputChange('province', e.target.value)}
+                  onChange={handleFormChange}
                   autoComplete="address-level1"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
                     errors.province ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
@@ -357,9 +391,10 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             <div>
               <input
                 type="text"
+                name="postalCode"
                 placeholder="Postal Code (A1A 1A1)"
                 value={formData.postalCode}
-                onChange={(e) => handleInputChange('postalCode', formatPostalCode(e.target.value))}
+                onChange={handleFormChange}
                 autoComplete="postal-code"
                 maxLength={7}
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
@@ -376,7 +411,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
 
             <div className="flex space-x-3">
               <Button 
-                onClick={() => setStep('contact')} 
+                onClick={goToContactStep} 
                 variant="outline" 
                 className="flex-1"
               >
@@ -436,7 +471,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
 
             <div className="flex space-x-3">
               <Button 
-                onClick={() => setStep('shipping')} 
+                onClick={goToShippingStep} 
                 variant="outline" 
                 className="flex-1"
               >

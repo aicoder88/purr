@@ -113,6 +113,7 @@ const CheckoutPage: NextPage = () => {
         setReferralMessage(data.message || 'Invalid referral code.');
       }
     } catch (err) {
+      console.error('Referral validation failed:', err);
       setReferralStatus('invalid');
       setReferralMessage('Could not validate referral code.');
     }

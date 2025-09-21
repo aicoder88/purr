@@ -1,8 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
-import { PerformanceMonitor } from '../src/components/performance/PerformanceMonitor';
-import { CacheOptimizer } from '../src/components/performance/CacheOptimizer';
 
 export default function Document() {
   return (
@@ -46,17 +44,6 @@ export default function Document() {
         
         {/* Global Structured Data */}
         <PurrifyStructuredData />
-        
-        {/* Performance Monitoring */}
-        <PerformanceMonitor enabled={true} sampleRate={0.1} />
-        
-        {/* Cache Optimization - defer in favor of Core Web Vitals */}
-        <CacheOptimizer 
-          enabled={false}
-          preloadRoutes={[]}
-          warmupDelay={8000}
-          maxCacheSize={15728640}
-        />
         
         {/* Skip to content link for accessibility */}
         <a

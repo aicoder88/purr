@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import type { MouseEvent } from 'react';
 import { X, Plus, Minus, ShoppingCart as ShoppingCartIcon, Package, Trash2, ArrowRight, Star } from 'lucide-react';
 import { Button } from './button';
 import { useCart } from '../../lib/cart-context';
@@ -31,10 +32,34 @@ export function ShoppingCart() {
     }
   }, [items, itemAnimations]);
 
-  const handleCheckout = () => {
+  const handleCheckout = useCallback(() => {
     setIsOpen(false);
     router.push('/checkout');
-  };
+  }, [router]);
+
+  const findItemById = useCallback((productId: string) => items.find(item => item.id === productId), [items]);
+
+  const handleQuantityDecrease = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const productId = event.currentTarget.dataset.productId;
+    if (!productId) return;
+    const targetItem = findItemById(productId);
+    if (!targetItem) return;
+    updateQuantity(productId, targetItem.quantity - 1);
+  }, [findItemById, updateQuantity]);
+
+  const handleQuantityIncrease = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const productId = event.currentTarget.dataset.productId;
+    if (!productId) return;
+    const targetItem = findItemById(productId);
+    if (!targetItem) return;
+    updateQuantity(productId, targetItem.quantity + 1);
+  }, [findItemById, updateQuantity]);
+
+  const handleRemoveItem = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const productId = event.currentTarget.dataset.productId;
+    if (!productId) return;
+    removeFromCart(productId);
+  }, [removeFromCart]);
 
   return (
     <>
@@ -117,7 +142,8 @@ export function ShoppingCart() {
                               variant="outline"
                               size="icon"
                               className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              onClick={handleQuantityDecrease}
+                              data-product-id={item.id}
                             >
                               <Minus className="h-3 w-3" />
                             </Button>
@@ -126,7 +152,8 @@ export function ShoppingCart() {
                               variant="outline"
                               size="icon"
                               className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              onClick={handleQuantityIncrease}
+                              data-product-id={item.id}
                             >
                               <Plus className="h-3 w-3" />
                             </Button>
@@ -141,7 +168,8 @@ export function ShoppingCart() {
                               variant="ghost"
                               size="sm"
                               className="h-7 px-2 text-xs text-gray-500 dark:text-gray-400 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
-                              onClick={() => removeFromCart(item.id)}
+                              onClick={handleRemoveItem}
+                              data-product-id={item.id}
                             >
                               <Trash2 className="h-3 w-3 mr-1" />
                               Remove

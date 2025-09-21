@@ -128,14 +128,14 @@ export default function NextImage({
             imageSrc = optimizedWebP;
           }
         }
-        
-        // Enhanced logging for debugging
-        if (typeof window !== 'undefined') {
-          console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
-          console.log(`Browser: ${navigator.userAgent}`);
-        }
-      }
-    }
+       
+       // Enhanced logging for debugging
+       if (typeof window !== 'undefined') {
+         console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
+         console.log(`Browser: ${navigator.userAgent}`);
+       }
+     }
+   }
   }
 
   // Determine appropriate loading strategy
@@ -145,89 +145,94 @@ export default function NextImage({
   // Use fetchPriority to give the browser more hints about image importance
   const finalFetchPriority = priority ? 'high' : fetchPriority;
 
-  // Handle image load error
-  const handleError = () => {
-    setError(true);
-    
-    // If the optimized version failed, try alternatives before falling back to original
-    if (imageSrc.includes('/optimized/') && !isExternal) {
-      // Extract the base filename and extension
-      const baseName = imageSrc.split('/').pop()?.split('.')[0];
-      const ext = imageSrc.split('.').pop()?.toLowerCase();
-      
-      // Try different fallback strategies
-      if (baseName && ext) {
-        // For iOS Chrome, try this fallback chain: PNG -> JPG -> Original
-        if (isIOSChrome) {
-          if (ext === 'png') {
-            const jpgPath = imageSrc.replace('.png', '.jpg');
-            console.log(`PNG failed on iOS Chrome, trying JPG: ${jpgPath}`);
-            setImgSrc(jpgPath);
-            return;
-          }
-          if (ext === 'jpg') {
-            const originalPath = imageSrc.replace('.jpg', `.${src.split('.').pop()}`);
-            console.log(`JPG failed on iOS Chrome, trying original: ${originalPath}`);
-            setImgSrc(originalPath);
-            return;
-          }
-        } else {
-          // For other browsers: WebP -> JPG -> Original
-          if (ext === 'webp') {
-            const jpgPath = imageSrc.replace('.webp', '.jpg');
-            console.log(`WebP failed, trying JPG: ${jpgPath}`);
-            setImgSrc(jpgPath);
-            return;
-          }
-          if (ext === 'jpg') {
-            const originalPath = imageSrc.replace('.jpg', `.${src.split('.').pop()}`);
-            console.log(`WebP failed, trying original: ${originalPath}`);
-            setImgSrc(originalPath);
-            return;
-          }
-        }
-        
-        // If using a sanitized filename, try the original encoded version
-        if (!baseName.includes('-') && baseName.includes('%20')) {
-          const originalName = decodeURIComponent(baseName);
-          const sanitizedName = originalName.replace(/\s+/g, '-');
-          const sanitizedPath = imageSrc.replace(baseName, sanitizedName);
-          console.log(`Encoded name failed, trying sanitized: ${sanitizedPath}`);
-          setImgSrc(sanitizedPath);
-          return;
-        }
-        
-        // If using a sanitized filename with hyphens, try the original with spaces
-        if (baseName.includes('-')) {
-          const originalName = baseName.replace(/-/g, ' ');
-          const encodedName = encodeURIComponent(originalName);
-          const encodedPath = imageSrc.replace(baseName, encodedName);
-          console.log(`Sanitized name failed, trying encoded: ${encodedPath}`);
-          setImgSrc(encodedPath);
-          return;
-        }
-      }
-      
-      // If all optimized versions fail, fall back to the original
-      const originalSrc = src.startsWith('/') ? src : `/${src}`;
-      setImgSrc(originalSrc);
-      console.error(`All optimized versions failed for: ${imageSrc}. Falling back to original: ${originalSrc}`);
-    } else {
-      setImgSrc(fallbackSrc);
-      console.error(`Image load failed for: ${src}. Using fallback.`);
+  const resolveOriginalSrc = useCallback(() => (
+    src.startsWith('/') ? src : `/${src}`
+  ), [src]);
+
+  const attemptOptimizedFallback = useCallback(() => {
+    if (isExternal || !imgSrc.includes('/optimized/')) {
+      return false;
     }
-  };
+
+    const currentExt = imgSrc.split('.').pop()?.toLowerCase();
+    const originalExt = src.split('.').pop();
+    const baseName = imgSrc.split('/').pop()?.split('.')[0] ?? '';
+
+    const candidates: string[] = [];
+
+    if (isIOSChrome) {
+      if (currentExt === 'png') {
+        candidates.push(imgSrc.replace(/\.png$/i, '.jpg'));
+      }
+      if (currentExt === 'jpg' && originalExt) {
+        candidates.push(resolveOriginalSrc());
+      }
+    } else {
+      if (currentExt === 'webp') {
+        candidates.push(imgSrc.replace(/\.webp$/i, '.jpg'));
+      }
+      if (currentExt === 'jpg' && originalExt) {
+        candidates.push(resolveOriginalSrc());
+      }
+    }
+
+    if (baseName.includes('-')) {
+      const originalName = baseName.replace(/-/g, ' ');
+      const encodedName = encodeURIComponent(originalName);
+      candidates.push(imgSrc.replace(baseName, encodedName));
+    } else if (baseName.includes('%20')) {
+      const decodedName = decodeURIComponent(baseName);
+      candidates.push(imgSrc.replace(baseName, decodedName.replace(/\s+/g, '-')));
+    }
+
+    for (const candidate of candidates) {
+      if (candidate && candidate !== imgSrc) {
+        setIsLoading(true);
+        setError(false);
+        setImgSrc(candidate);
+        return true;
+      }
+    }
+
+    return false;
+  }, [imgSrc, isExternal, isIOSChrome, resolveOriginalSrc, src]);
+
+  // Handle image load error
+  const handleError = useCallback(() => {
+    if (attemptOptimizedFallback()) {
+      return;
+    }
+
+    if (!isExternal) {
+      const originalSrc = resolveOriginalSrc();
+      if (imgSrc !== originalSrc) {
+        setIsLoading(true);
+        setError(false);
+        setImgSrc(originalSrc);
+        return;
+      }
+    }
+
+    if (fallbackSrc && imgSrc !== fallbackSrc) {
+      setIsLoading(true);
+      setError(false);
+      setImgSrc(fallbackSrc);
+      return;
+    }
+
+    setError(true);
+    console.error(`Image load failed for: ${src}. No fallback available.`);
+  }, [attemptOptimizedFallback, fallbackSrc, imgSrc, isExternal, resolveOriginalSrc, src]);
 
   // Handle image load complete
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoading(false);
-    
-    // If dimensions weren't provided, try to get them from the loaded image
-    if ((!width || !height) && imageRef.current) {
+
+    if ((!propWidth || !propHeight) && imageRef.current) {
       setWidth(imageRef.current.naturalWidth);
       setHeight(imageRef.current.naturalHeight);
     }
-  };
+  }, [propHeight, propWidth]);
 
   // Generate a descriptive alt text if none provided
   const safeAlt = alt || 'Image';

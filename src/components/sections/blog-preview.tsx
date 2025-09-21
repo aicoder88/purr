@@ -83,7 +83,7 @@ export function BlogPreview() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+          <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#5B2EFF]/30 rounded-full text-[#FF3131] dark:text-[#E0EFC7] font-medium text-sm mb-4">
             {t.blogSection.catCareTips}
           </div>
           <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
