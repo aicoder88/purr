@@ -209,7 +209,7 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Article Header */}
             <header className="mb-12 text-center">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/30 rounded-full text-[#FF3131] dark:text-green-400 font-medium text-sm mb-4">
                 Science & Education
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -265,10 +265,10 @@ export default function ActivatedCarbonBenefits() {
                 <li><strong>Permanent Capture:</strong> Once trapped, odor molecules cannot escape back into the air</li>
               </ul>
 
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-500 p-6 mb-8">
                 <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">💡 Did You Know?</h4>
                 <p className="text-blue-800 dark:text-blue-200">
-                  A single teaspoon of activated carbon has more surface area than a football field! 
+                  A single teaspoon of activated carbon has more surface area than a football field!
                   This incredible surface area is what makes it so effective at capturing odor molecules.
                 </p>
               </div>
@@ -295,7 +295,7 @@ export default function ActivatedCarbonBenefits() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-green-50 p-6 rounded-lg">
+                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-green-900 dark:text-green-100 mb-3">🥥 Coconut Shell Carbon</h4>
                   <ul className="text-green-800 dark:text-green-200 space-y-2">
                     <li>• Higher density of micropores</li>
@@ -323,7 +323,7 @@ export default function ActivatedCarbonBenefits() {
                 Cat litter odors come from several specific compounds that activated carbon effectively targets:
               </p>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-6 mb-8">
                 <h4 className="font-bold text-yellow-900 dark:text-yellow-100 mb-4">🎯 Primary Odor Compounds Eliminated:</h4>
                 <div className="grid md:grid-cols-2 gap-4 text-yellow-800 dark:text-yellow-200">
                   <div>

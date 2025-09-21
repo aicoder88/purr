@@ -106,17 +106,29 @@ text-red-500 dark:text-red-400
 text-green-500 dark:text-green-400
 text-blue-500 dark:text-blue-400
 
-/* Backgrounds */
+/* Backgrounds - MUST HAVE DARK VARIANTS */
 bg-white dark:bg-gray-800
 bg-gray-50 dark:bg-gray-900
+bg-blue-50 dark:bg-blue-900/20
+bg-green-50 dark:bg-green-900/20
+bg-yellow-50 dark:bg-yellow-900/20
+bg-red-50 dark:bg-red-900/20
+
+/* Borders - MUST HAVE DARK VARIANTS */
+border-gray-200 dark:border-gray-700
+border-blue-200 dark:border-blue-700
+border-green-200 dark:border-green-700
+border-yellow-200 dark:border-yellow-700
 ```
 
 **CRITICAL DARK MODE RULES:**
 1. **NEVER use `text-white` without `dark:text-gray-100`**
 2. **NEVER use any `text-*` class without corresponding `dark:text-*`**
 3. **ALL colored text needs dark variants** (red, green, blue, etc.)
-4. **Buttons, links, and interactive elements MUST be readable in dark mode**
-5. **Run `npm run validate-dark-mode` BEFORE every commit**
+4. **ALL colored backgrounds need dark variants** (bg-blue-50, bg-green-50, etc.)
+5. **ALL borders need dark variants** (border-gray-200, border-blue-200, etc.)
+6. **Buttons, links, and interactive elements MUST be readable in dark mode**
+7. **Run `npm run validate-dark-mode` BEFORE every commit**
 
 **Common Dark Mode Violations:**
 ```css
@@ -124,14 +136,26 @@ bg-gray-50 dark:bg-gray-900
 text-white
 text-red-500
 text-green-600
+bg-blue-50                    /* Missing dark variant */
+border-gray-200              /* Missing dark variant */
 className="bg-blue-500 text-white"
 
 /* ✅ CORRECT - Readable in both modes */
 text-white dark:text-gray-100
 text-red-500 dark:text-red-400
 text-green-600 dark:text-green-400
+bg-blue-50 dark:bg-blue-900/20
+border-gray-200 dark:border-gray-700
 className="bg-blue-500 text-white dark:text-gray-100"
 ```
+
+**MANDATORY CHECKLIST - EVERY ELEMENT:**
+- [ ] ALL `text-*` classes have `dark:text-*` variants
+- [ ] ALL `bg-*` classes have `dark:bg-*` variants
+- [ ] ALL `border-*` classes have `dark:border-*` variants
+- [ ] ALL colored backgrounds (blue-50, green-50, etc.) have dark variants
+- [ ] NO standalone `text-white` without `dark:text-gray-100`
+- [ ] Test in both light and dark mode before committing
 
 ### Protected Systems
 - `/api/create-checkout-session` (Stripe payments)
@@ -292,3 +316,117 @@ Document every session in `/CHANGELOG.md`:
 - Include high-converting keywords naturally
 - Remove money-back guarantee language (company policy)
 - "Military-grade" is trust signal only, not SEO keyword
+
+## Deployment Verification Protocol
+
+**MANDATORY: Always verify deployment after pushing changes**
+
+### Step 1: Push and Deploy
+```bash
+git add . && git commit -m "..." && git push
+```
+
+### Step 2: Verify Build Success
+Use Vercel MCP to check deployment status:
+```bash
+# Check latest deployment
+mcp__vercel__list_deployments (get latest ID)
+mcp__vercel__get_deployment (check state: BUILDING -> READY)
+```
+
+### Step 3: Production Validation
+If deployment state = "READY":
+- ✅ Visit production URL to verify changes are live
+- ✅ Test key functionality (forms, navigation, dark mode)
+- ✅ Check mobile responsiveness
+- ✅ Verify SEO meta tags in view source
+
+### Step 4: Handle Build Failures
+If deployment state = "ERROR":
+- Check build logs: `mcp__vercel__get_deployment_build_logs`
+- Fix TypeScript/lint errors locally
+- Re-run `npm run check-types` and `npm run lint`
+- Push fix and repeat verification
+
+## Blog Image Requirements
+
+**MANDATORY: Every blog post needs 3-4 high-quality images**
+
+### Image Sources (Commercial-Use Approved):
+- **Unsplash.com** (primary) - Always use `?auto=format&fit=crop&w=1600&q=80`
+- **Pexels.com** (secondary) - Free commercial use
+- **Pixabay.com** (tertiary) - Check license before use
+
+### Image Selection Criteria:
+- **High Quality**: Minimum 1600x1067 resolution
+- **Contextual Relevance**: Must match blog post topic exactly
+- **Professional Look**: Clean, bright, impressive visuals
+- **Cat-Related**: Prefer images with cats, litter boxes, homes, or pet care
+- **Emotional Appeal**: Images that evoke the pain points or solutions
+
+### Required Images Per Blog Post:
+1. **Hero Image** (main article image for social sharing)
+2. **Section Images** (2-3 supporting visuals throughout content)
+3. **Solution/Result Image** (showing positive outcome)
+
+### Implementation:
+```typescript
+// Always use these variable names and structure:
+const heroImage = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
+const sectionImage1 = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
+const solutionImage = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
+
+// Update all meta tags:
+<meta property="og:image" content={heroImage} />
+<meta name="twitter:image" content={heroImage} />
+```
+
+### Image Testing Protocol:
+After adding images to blog posts, ALWAYS:
+1. Use Playwright MCP to test image loading and display
+2. Verify images fit context and look professional
+3. Check mobile responsiveness of images
+4. Confirm images load fast and don't break layout
+
+### Common Image Keywords for Cat Blog Posts:
+- "cat litter box clean"
+- "happy cat home"
+- "pet care supplies"
+- "apartment with cat"
+- "multiple cats household"
+- "cleaning supplies natural"
+- "fresh home interior"
+
+## Deployment Verification Protocol
+
+### MANDATORY: After Every Commit/Push
+Always verify deployment success using Vercel MCP tools:
+
+```bash
+# 1. Check deployment status
+mcp__vercel__list_deployments (get latest deployment ID)
+mcp__vercel__get_deployment (check state = "READY")
+
+# 2. If deployment fails, check build logs
+mcp__vercel__get_deployment_build_logs (identify errors)
+
+# 3. Verify production site accessibility
+mcp__vercel__web_fetch_vercel_url (test main domain loads)
+```
+
+### Deployment Success Criteria:
+- [ ] State shows "READY" (not "BUILDING", "ERROR", "QUEUED")
+- [ ] Production URL (www.purrify.ca) loads successfully
+- [ ] No build errors in deployment logs
+- [ ] All new features/content visible on live site
+
+### Build Failure Recovery:
+If deployment shows "ERROR" state:
+1. Get build logs: `mcp__vercel__get_deployment_build_logs`
+2. Fix identified issues (usually TypeScript/dark mode violations)
+3. Re-commit and re-verify
+4. Never proceed to next task until deployment is READY
+
+**Project Info for Vercel MCP:**
+- Project ID: `prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2`
+- Team ID: `team_9MD2gEmcma1CnApg7QalkGj8`
