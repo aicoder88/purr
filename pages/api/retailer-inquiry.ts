@@ -111,7 +111,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // Apply rate limiting
   try {
     await runMiddleware(req, res, limiter);
-  } catch (err) {
+  } catch {
     return res.status(429).json({
       success: false,
       error: 'Too many requests. Please try again later.'

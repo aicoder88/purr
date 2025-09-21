@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
@@ -58,6 +58,18 @@ export function CostCalculator({ className }: CostCalculatorProps) {
       carsRemoved: 0,
       catsSaved: 0,
     });
+
+  const handleCatsCountChange = useCallback((value: number[]) => {
+    setCatsCount(value[0]);
+  }, []);
+
+  const handleLitterCostChange = useCallback((value: number[]) => {
+    setLitterCost(value[0]);
+  }, []);
+
+  const handleChangeFrequencyChange = useCallback((value: number[]) => {
+    setChangeFrequency(value[0]);
+  }, []);
 
 
   // Calculate savings and environmental impact
@@ -263,7 +275,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               max={15}
               min={1}
               step={1}
-              onValueChange={(value) => setCatsCount(value[0])}
+              onValueChange={handleCatsCountChange}
               className="mt-auto"
             />
           </motion.div>
@@ -285,7 +297,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               max={50}
               min={5}
               step={1}
-              onValueChange={(value) => setLitterCost(value[0])}
+              onValueChange={handleLitterCostChange}
               className="mt-5"
             />
           </motion.div>
@@ -307,7 +319,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               max={14}
               min={3}
               step={1}
-              onValueChange={(value) => setChangeFrequency(value[0])}
+              onValueChange={handleChangeFrequencyChange}
               className="mt-auto"
             />
           </motion.div>

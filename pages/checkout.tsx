@@ -49,14 +49,14 @@ const CheckoutPage: NextPage = () => {
   const [showPurchaseNotification, setShowPurchaseNotification] = useState(false);
   const { items, getTotalPrice, clearCart } = useCart();
   
-  const getShippingCost = () => {
+  const getShippingCost = useCallback(() => {
     const subtotal = getTotalPrice();
     return subtotal >= 50 ? 0 : 30;
-  };
+  }, [getTotalPrice]);
   
-  const getTotalWithShipping = () => {
+  const getTotalWithShipping = useCallback(() => {
     return getTotalPrice() + getShippingCost();
-  };
+  }, [getShippingCost, getTotalPrice]);
   const router = useRouter();
   // const { t } = useTranslation();
   const [referralCode, setReferralCode] = useState('');
@@ -129,7 +129,7 @@ const CheckoutPage: NextPage = () => {
     };
   }, []);
 
-  const validateReferral = async () => {
+  const validateReferral = useCallback(async () => {
     if (!referralCode) return;
     setReferralStatus('validating');
     setReferralMessage('');
@@ -152,9 +152,9 @@ const CheckoutPage: NextPage = () => {
       setReferralStatus('invalid');
       setReferralMessage('Could not validate referral code.');
     }
-  };
+  }, [referralCode]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
 
@@ -188,7 +188,17 @@ const CheckoutPage: NextPage = () => {
     } finally {
       setIsProcessing(false);
     }
-  };
+  }, [
+    clearCart,
+    formData,
+    getShippingCost,
+    getTotalPrice,
+    getTotalWithShipping,
+    items,
+    referralCode,
+    referralStatus,
+    router
+  ]);
 
   const isContactStepValid = useMemo(() => (
     Boolean(
@@ -741,18 +751,10 @@ const CheckoutPage: NextPage = () => {
               <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
               <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">Complete your purchase in under 60 seconds</p>
               
-              <FastCheckout 
-                cartTotal={getTotalWithShipping()}
-                onCheckoutComplete={(data) => {
-                  console.log('Fast checkout completed:', data);
-                  // Handle fast checkout completion
-                  setIsProcessing(true);
-                  setTimeout(() => {
-                    clearCart();
-                    router.push('/thank-you');
-                  }, 2000);
-                }}
-              />
+          <FastCheckout 
+            cartTotal={getTotalWithShipping()}
+            onCheckoutComplete={handleFastCheckoutComplete}
+          />
             </div>
             
             <div className="text-center mb-6">

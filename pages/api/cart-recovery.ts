@@ -1,8 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
 interface CartRecoveryRequest {
   email: string;
   cartItems: {
@@ -10,7 +6,6 @@ interface CartRecoveryRequest {
     quantity: number;
     price: number;
   }[];
-  abandonedAt: string;
   recoveryType: 'immediate' | '1h' | '24h' | '72h';
   discount?: {
     code: string;
@@ -33,13 +28,12 @@ export default async function handler(
   }
 
   try {
-    const {
-      email,
-      cartItems,
-      abandonedAt,
-      recoveryType,
-      discount
-    }: CartRecoveryRequest = req.body;
+  const {
+    email,
+    cartItems,
+    recoveryType,
+    discount
+  }: CartRecoveryRequest = req.body;
 
     // Validate input
     if (!email || !cartItems || cartItems.length === 0) {
@@ -68,9 +62,6 @@ export default async function handler(
     
     // Calculate cart total
     const cartTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const discountAmount = discount ? (cartTotal * discount.percentage) / 100 : 0;
-    const finalTotal = cartTotal - discountAmount;
-
     // Transform cart items to match email template format
     const transformedCartItems = cartItems.map(item => ({
       id: item.productId,
@@ -83,9 +74,6 @@ export default async function handler(
     const emailTemplate = getEmailTemplate(recoveryType, {
       cartItems: transformedCartItems,
       cartTotal,
-      discount,
-      discountAmount,
-      finalTotal,
       recoveryToken
     });
 
@@ -153,13 +141,10 @@ function getEmailTemplate(
   data: {
     cartItems: Array<{ id: string; name: string; price: number; quantity: number }>;
     cartTotal: number;
-    discount?: { code: string; percentage: number };
-    discountAmount: number;
-    finalTotal: number;
     recoveryToken: string;
   }
 ): EmailTemplate {
-  const { cartItems, cartTotal, discount, discountAmount, finalTotal, recoveryToken } = data;
+  const { cartItems, cartTotal, recoveryToken } = data;
   
   const recoveryUrl = `${process.env.NEXT_PUBLIC_DOMAIN || 'https://www.purrify.ca'}/checkout?recovery=${recoveryToken}`;
   

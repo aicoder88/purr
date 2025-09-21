@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
-import { google } from 'googleapis';
 
 // Define validation schema with Zod
 const freeGiveawayFormSchema = z.object({

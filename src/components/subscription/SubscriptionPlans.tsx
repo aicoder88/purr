@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
+import type { MouseEvent } from 'react';
 import { Check, Star, Zap, Gift, Crown, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/lib/cart-context';
 
 interface SubscriptionPlan {
   id: string;
@@ -139,7 +139,6 @@ export function SubscriptionPlans({
 }: SubscriptionPlansProps) {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
   const [animationDelay, setAnimationDelay] = useState<Record<string, number>>({});
-  const { addToCart } = useCart();
 
   useEffect(() => {
     // Stagger animations for visual appeal
@@ -150,7 +149,10 @@ export function SubscriptionPlans({
     setAnimationDelay(delays);
   }, []);
 
-  const handleSelectPlan = (plan: SubscriptionPlan) => {
+  const handleSelectPlan = useCallback((planId: string) => {
+    const plan = SUBSCRIPTION_PLANS.find(item => item.id === planId);
+    if (!plan) return;
+
     // Track subscription selection
     if (window.gtag) {
       window.gtag('event', 'subscription_plan_selected', {
@@ -161,18 +163,30 @@ export function SubscriptionPlans({
     }
 
     onPlanSelect(plan);
-  };
+  }, [onPlanSelect]);
 
-  const calculateAnnualSavings = (plan: SubscriptionPlan) => {
-    const monthsPerYear = 12;
-    const deliveriesPerYear = plan.interval === 'monthly' ? 12 : 
-                            plan.interval === 'bimonthly' ? 6 : 4;
-    
-    const annualSubscriptionCost = plan.price * deliveriesPerYear;
-    const annualRetailCost = plan.totalValue * deliveriesPerYear;
-    
-    return Math.round(annualRetailCost - annualSubscriptionCost);
-  };
+  const handleCardClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const planId = event.currentTarget.dataset.planId;
+    if (!planId) return;
+    handleSelectPlan(planId);
+  }, [handleSelectPlan]);
+
+  const handleCardMouseEnter = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const planId = event.currentTarget.dataset.planId;
+    if (!planId) return;
+    setHoveredPlan(planId);
+  }, []);
+
+  const handleCardMouseLeave = useCallback(() => {
+    setHoveredPlan(null);
+  }, []);
+
+  const handleButtonClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    const planId = event.currentTarget.dataset.planId;
+    if (!planId) return;
+    handleSelectPlan(planId);
+  }, [handleSelectPlan]);
 
   return (
     <div className="py-16 px-4">
@@ -205,7 +219,7 @@ export function SubscriptionPlans({
 
         {/* Plans Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {SUBSCRIPTION_PLANS.map((plan, index) => (
+          {SUBSCRIPTION_PLANS.map((plan) => (
             <Card
               key={plan.id}
               className={`relative transform transition-all duration-300 hover:scale-105 cursor-pointer ${
@@ -217,12 +231,13 @@ export function SubscriptionPlans({
                   ? 'ring-2 ring-purple-500 shadow-2xl' 
                   : ''
               }`}
+              data-plan-id={plan.id}
               style={{
                 animationDelay: `${animationDelay[plan.id] || 0}ms`
               }}
-              onMouseEnter={() => setHoveredPlan(plan.id)}
-              onMouseLeave={() => setHoveredPlan(null)}
-              onClick={() => handleSelectPlan(plan)}
+              onMouseEnter={handleCardMouseEnter}
+              onMouseLeave={handleCardMouseLeave}
+              onClick={handleCardClick}
             >
               {/* Badge */}
               {plan.badge && (
@@ -325,10 +340,8 @@ export function SubscriptionPlans({
                   className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all transform ${
                     hoveredPlan === plan.id ? 'scale-105' : ''
                   }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSelectPlan(plan);
-                  }}
+                  onClick={handleButtonClick}
+                  data-plan-id={plan.id}
                 >
                   {selectedPlan === plan.id ? 'Selected' : `Choose ${plan.name}`}
                 </Button>

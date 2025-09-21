@@ -53,7 +53,7 @@ const SocialProofAvatars = () => (
 );
 
 const StarRating = () => (
-  <div className="flex text-yellow-400 dark:text-yellow-400">
+  <div className="flex text-yellow-500 dark:text-yellow-300">
     ★★★★★
   </div>
 );
@@ -126,11 +126,11 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
-        <span className={`block ${GRADIENTS.background.light} ${GRADIENTS.background.dark} bg-clip-text text-transparent`}>
+        <span className={`block ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
           {t.hero.eliminateCatOdors}
         </span>
         <span
-          className={`block ${GRADIENTS.text.purple} ${GRADIENTS.text.primaryDark}`}
+          className={`block ${COLORS.text.primary}`}
           style={{
             lineHeight: "1.3"
           }}
@@ -206,7 +206,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
             onClick={() => scrollToSection("how-it-works")}
             size="lg"
             variant="ghost"
-            className={`${COLORS.text.secondary} font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95 transform hover:-translate-y-1`}
+            className={`${COLORS.text.primary} font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95 transform hover:-translate-y-1`}
             aria-label="Learn how Purrify works"
           >
             {t.hero.buttons.learnMore || 'How It Works'}

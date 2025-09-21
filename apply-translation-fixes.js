@@ -3,9 +3,6 @@
 // Auto-generated fix script by Translation Detective
 // Review each fix before applying!
 
-const fs = require('fs');
-const path = require('path');
-
 const fixes = {
   "src/translations/zh.ts": [
     {
@@ -2442,5 +2439,8 @@ const fixes = {
   ]
 };
 
-// Apply fixes function would go here
+const totalIssues = Object.values(fixes).reduce((sum, items) => sum + items.length, 0);
+const affectedFiles = Object.keys(fixes).length;
+
 console.log('⚠️  Manual review required before applying fixes');
+console.log(`   ${totalIssues} potential translation issues detected across ${affectedFiles} files.`);

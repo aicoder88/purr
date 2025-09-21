@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function SkipNav() {
   const [isVisible, setIsVisible] = useState(false);
 
+  const showSkipLinksForKeyboard = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      setIsVisible(true);
+    }
+  }, []);
+
+  const hideSkipLinks = useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        setIsVisible(true);
-      }
-    };
-
-    const handleClick = () => {
-      setIsVisible(false);
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('click', handleClick);
+    document.addEventListener('keydown', showSkipLinksForKeyboard);
+    document.addEventListener('click', hideSkipLinks);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', showSkipLinksForKeyboard);
+      document.removeEventListener('click', hideSkipLinks);
     };
-  }, []);
+  }, [hideSkipLinks, showSkipLinksForKeyboard]);
 
   if (!isVisible) return null;
 
@@ -30,24 +30,24 @@ export function SkipNav() {
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-gray-800 focus:text-black focus:dark:text-white dark:text-gray-100 focus:rounded focus:shadow-lg focus:border-2 focus:border-[#FF3131] dark:focus:border-[#FF5050] font-medium transition-all"
-        onClick={() => setIsVisible(false)}
+        onClick={hideSkipLinks}
       >
         Skip to main content
       </a>
       <a
         href="#products"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-40 focus:z-50 focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-gray-800 focus:text-black focus:dark:text-white dark:text-gray-100 focus:rounded focus:shadow-lg focus:border-2 focus:border-[#FF3131] dark:focus:border-[#FF5050] font-medium transition-all"
-        onClick={() => setIsVisible(false)}
+        onClick={hideSkipLinks}
       >
         Skip to products
       </a>
       <a
         href="#testimonials"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-64 focus:z-50 focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-gray-800 focus:text-black focus:dark:text-white dark:text-gray-100 focus:rounded focus:shadow-lg focus:border-2 focus:border-[#FF3131] dark:focus:border-[#FF5050] font-medium transition-all"
-        onClick={() => setIsVisible(false)}
+        onClick={hideSkipLinks}
       >
         Skip to testimonials
       </a>
     </>
   );
-} 
+}

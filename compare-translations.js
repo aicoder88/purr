@@ -123,9 +123,6 @@ try {
   
   for (const section of homepageRelatedSections) {
     const inEn = enKeys.some(key => key.startsWith(section + '.'));
-    const inFr = frKeys.some(key => key.startsWith(section + '.'));
-    const inZh = zhKeys.some(key => key.startsWith(section + '.'));
-    
     const enCount = enKeys.filter(key => key.startsWith(section + '.')).length;
     const frCount = frKeys.filter(key => key.startsWith(section + '.')).length;
     const zhCount = zhKeys.filter(key => key.startsWith(section + '.')).length;

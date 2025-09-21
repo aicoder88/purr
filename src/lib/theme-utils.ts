@@ -77,7 +77,7 @@ export const GRADIENTS = {
   text: {
     primary: 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent',
     primaryDark: 'dark:from-[#FF5050] dark:to-[#3694FF]',
-    purple: 'bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent'
+    purple: 'bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] dark:from-[#9333EA] dark:via-[#A855F7] dark:to-[#C084FC] bg-clip-text text-transparent'
   }
 } as const;
 

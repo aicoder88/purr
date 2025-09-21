@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ShoppingBag, MapPin, Clock, Star, CheckCircle, Info } from 'lucide-react';
 
 interface PurchaseNotification {
@@ -80,10 +80,10 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
 }) => {
   const [currentNotification, setCurrentNotification] = useState<PurchaseNotification | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [notificationIndex, setNotificationIndex] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const [purchaseData, setPurchaseData] = useState<PurchaseNotification[]>([]);
   const [showDisclosure, setShowDisclosure] = useState(false);
+  const notificationIndexRef = useRef(0);
 
   // Load purchase data based on configuration
   useEffect(() => {
@@ -115,26 +115,24 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
     let currentTimeout: NodeJS.Timeout;
     
     const showNextNotification = () => {
-      setNotificationIndex((prevIndex) => {
-        const notification = purchaseData[prevIndex];
-        setCurrentNotification(notification);
-        setIsVisible(true);
+      const currentIndex = notificationIndexRef.current;
+      const notification = purchaseData[currentIndex];
+      setCurrentNotification(notification);
+      setIsVisible(true);
 
-        // Show disclosure for synthetic data
-        if (!notification.isReal) {
-          setShowDisclosure(true);
-        }
+      if (!notification.isReal) {
+        setShowDisclosure(true);
+      }
 
-        if (autoHide) {
-          const hideTimeout = setTimeout(() => {
-            setIsVisible(false);
-            setShowDisclosure(false);
-          }, hideDelay);
-          setTimeoutId(hideTimeout);
-        }
+      if (autoHide) {
+        const hideTimeout = setTimeout(() => {
+          setIsVisible(false);
+          setShowDisclosure(false);
+        }, hideDelay);
+        setTimeoutId(hideTimeout);
+      }
 
-        return (prevIndex + 1) % purchaseData.length;
-      });
+      notificationIndexRef.current = (currentIndex + 1) % purchaseData.length;
     };
     
     const schedule = () => {
@@ -159,11 +157,11 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
     };
   }, [purchaseData, autoHide, hideDelay]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsVisible(false);
     setShowDisclosure(false);
     if (timeoutId) clearTimeout(timeoutId);
-  };
+  }, [timeoutId]);
 
   const positionClasses = {
     'bottom-left': 'bottom-4 left-4',

@@ -122,7 +122,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
                   <h3 className="text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#03E46A] mt-2">Read more →</p>
+                  <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">Read more →</p>
                 </div>
               </Link>
             </article>

@@ -2,7 +2,7 @@
  * CLS-Optimized Image Component
  * Prevents Cumulative Layout Shift by reserving space during image load
  */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
 
 interface CLSOptimizedImageProps {
@@ -40,15 +40,15 @@ export const CLSOptimizedImage: React.FC<CLSOptimizedImageProps> = ({
   
   const aspectRatio = width / height;
   
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoaded(true);
     onLoad?.();
-  };
+  }, [onLoad]);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setHasError(true);
     onError?.();
-  };
+  }, [onError]);
   
   return (
     <div 

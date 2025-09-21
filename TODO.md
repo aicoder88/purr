@@ -154,8 +154,8 @@ Context / exclusions:
   - Replace inline arrow functions with useCallback hooks
   - Focus on high-frequency components (checkout, mobile, conversion)
   - Prevent unnecessary re-renders and improve React performance
-  - Progress: Memoized handlers in `components/mobile/FastCheckout.tsx`, `components/NextImage.tsx`, `components/ui/language-switcher.tsx`, `components/ui/shopping-cart.tsx`, and `components/ui/error-boundary.tsx`; eslint warnings down to 322 (from 350).
-  - Next: refactor `pages/checkout.tsx`, `src/components/ui/skip-nav.tsx`, `src/components/ui/CLSOptimizedImage.tsx`, and `src/components/ui/calculator.tsx` to remove remaining inline handlers
+  - Progress: Memoized handlers in `components/mobile/FastCheckout.tsx`, `components/NextImage.tsx`, `components/ui/language-switcher.tsx`, `components/ui/shopping-cart.tsx`, `components/ui/error-boundary.tsx`, `src/components/ui/skip-nav.tsx`, `src/components/ui/CLSOptimizedImage.tsx`, `src/components/ui/calculator.tsx`, `components/subscription/SubscriptionPlans.tsx`, `components/social-proof/PurchaseNotifications.tsx`, and key flows in `pages/checkout.tsx` / `pages/b2b.tsx`; eslint warnings down to 275 (from 350).
+  - Next: refactor remaining UI (`pages/demo/stage5-features.tsx`, `pages/customers/testimonials.tsx`, `src/components/urgency/ScarcityIndicators.tsx`, `src/components/sections/wholesale-pricing.tsx`, etc.) for JSX handler compliance
 - [ ] Run performance audit to check bundle size and optimization [audit]
   - Analyze current bundle size after recent optimizations
   - Validate Core Web Vitals remain green

@@ -14,11 +14,12 @@ import {
   FileText,
   CheckCircle
 } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function B2B() {
   const { locale } = useTranslation();
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const handleFormSubmit = useCallback(() => setFormSubmitted(true), []);
 
   const pageTitle = locale === 'fr'
     ? 'Purrify B2B - Partenariat Détaillant et Vente en Gros Canada'
@@ -542,7 +543,7 @@ export default function B2B() {
                   <div className="md:col-span-2">
                     <button
                       type="button"
-                      onClick={() => setFormSubmitted(true)}
+                      onClick={handleFormSubmit}
                       className="w-full bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
                     >
                       {locale === 'fr' ? 'Soumettre la Demande' : 'Submit Application'}

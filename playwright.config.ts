@@ -13,7 +13,7 @@ const config: PlaywrightTestConfig = {
     trace: 'off',
   },
   webServer: {
-    command: 'npx next start -p 3010',
+    command: 'npm run dev -- --port 3010',
     port: 3010,
     reuseExistingServer: true,
     timeout: 180_000,

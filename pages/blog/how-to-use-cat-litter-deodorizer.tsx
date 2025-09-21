@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for how-to guide content
-const heroImage = 'https://images.unsplash.com/photo-1516750105099-4b8adeaaf824?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/before-after.webp';
 
 export default function HowToUseLitterDeodorizer() {
 
