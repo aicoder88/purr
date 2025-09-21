@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 import { Container } from '../../src/components/ui/container';
-import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
+import { SITE_NAME } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
@@ -126,7 +125,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         },
         revalidate: 86400,
       };
-    } catch (fallbackErr) {
+    } catch {
       return {
         notFound: true,
       };

@@ -7,8 +7,6 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for kitten care content
 const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80';
-const kittenSafetyImage = 'https://images.unsplash.com/photo-1516139008210-96e45dccd83b?auto=format&fit=crop&w=1600&q=80';
-const gentleCareImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
 
 export default function UsingDeodorizersWithKittens() {
   return (

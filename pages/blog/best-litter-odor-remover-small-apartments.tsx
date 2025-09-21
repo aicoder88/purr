@@ -4,11 +4,9 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { useTranslation } from '../../src/lib/translation-context';
 
 // Relevant images for small apartment cat odor control
 const heroImage = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80';
-const apartmentImage = 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80';
 const ventilationImage = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=80';
 const spaceImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80';
 

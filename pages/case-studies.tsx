@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME } from '../src/lib/constants';
 import Link from 'next/link';
-import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Home, Cat, DollarSign } from 'lucide-react';
+import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Home, Cat } from 'lucide-react';
 
 export default function CaseStudies() {
   const caseStudies = [
@@ -226,7 +226,7 @@ export default function CaseStudies() {
 
             {/* Case Studies */}
             <div className="space-y-16 cv-auto cis-960">
-              {caseStudies.map((study, index) => (
+              {caseStudies.map((study) => (
                 <div key={study.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-lg">
                   {/* Header */}
                   <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#E0EFC7]/50 p-8">

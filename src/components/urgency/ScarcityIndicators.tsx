@@ -52,14 +52,25 @@ const INVENTORY_DATA: InventoryData = {
   }
 };
 
-export function ScarcityIndicator({ 
-  productId, 
+export function ScarcityIndicator({
+  productId,
   className,
   variant = 'badge',
-  showRecentSales = true 
+  showRecentSales = true
 }: ScarcityIndicatorProps) {
   const [inventory, setInventory] = useState<InventoryData>({});
   const [recentSales, setRecentSales] = useState(0);
+
+  const handleClick = useCallback(() => {
+    // Track scarcity indicator interaction
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'scarcity_indicator_clicked', {
+        event_category: 'conversion',
+        event_label: productId,
+        value: 1
+      });
+    }
+  }, [productId]);
 
   useEffect(() => {
     setInventory(INVENTORY_DATA);
@@ -104,7 +115,7 @@ export function ScarcityIndicator({
 
   const getUrgencyColor = () => {
     const urgency = getUrgencyLevel();
-    
+
     switch (urgency) {
       case 'critical':
         return 'bg-red-500 text-white dark:text-white dark:text-gray-100 border-red-600';
@@ -114,17 +125,6 @@ export function ScarcityIndicator({
         return 'bg-green-500 text-white dark:text-white dark:text-gray-100 border-green-600';
     }
   };
-
-  const handleClick = useCallback(() => {
-    // Track scarcity indicator interaction
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'scarcity_indicator_clicked', {
-        event_category: 'conversion',
-        event_label: productId,
-        value: 1
-      });
-    }
-  }, [productId]);
 
   const urgencyMessage = getUrgencyMessage();
   if (!urgencyMessage) return null;

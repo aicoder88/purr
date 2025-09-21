@@ -7,6 +7,7 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
+import { NextSeo } from 'next-seo';
 import { 
   Search,
   ChevronDown,
@@ -36,6 +37,10 @@ const FAQPage: NextPage = () => {
   // Generate breadcrumbs for FAQ page
   const breadcrumbs = generateBreadcrumbs('/learn/faq');
 
+  const pageTitle = 'Frequently Asked Questions - Purrify Cat Litter Additive';
+  const pageDescription = 'Get answers to common questions about Purrify activated carbon cat litter additive. Learn about usage, shipping, safety, and more.';
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`;
+
   const categories = [
     { id: 'all', name: 'All Questions', icon: HelpCircle, count: 24 },
     { id: 'product', name: 'Product Information', icon: Package, count: 8 },
@@ -48,6 +53,93 @@ const FAQPage: NextPage = () => {
   const faqItems = [
     {
       id: 1,
+      question: 'What is Purrify and how does it work?',
+      answer: 'Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon contains millions of microscopic pores that trap and neutralize odor-causing compounds like ammonia and hydrogen sulfide.',
+      category: 'product',
+      featured: true
+    },
+    {
+      id: 2,
+      question: 'Is Purrify safe for cats and kittens?',
+      answer: 'Yes, Purrify is completely safe for cats of all ages. It\'s made from natural activated carbon derived from coconut shells, contains no chemicals or fragrances, and is the same type of carbon used in water and air filters.',
+      category: 'product',
+      featured: true
+    },
+    {
+      id: 3,
+      question: 'How much Purrify should I use?',
+      answer: 'Use 1-2 tablespoons per standard litter box. For multiple cats or extra odor control, use up to 3 tablespoons. Simply sprinkle evenly over the litter and mix gently.',
+      category: 'usage',
+      featured: true
+    },
+    {
+      id: 4,
+      question: 'How long does Purrify last?',
+      answer: 'Purrify continues working for 2-4 weeks depending on usage and the number of cats. You\'ll know it\'s time to reapply when you notice odors returning.',
+      category: 'usage',
+      featured: false
+    },
+    {
+      id: 5,
+      question: 'Does Purrify work with all types of litter?',
+      answer: 'Yes! Purrify works with all litter types including clay, clumping, crystal, wood, paper, and natural alternatives. It enhances rather than interferes with your current litter.',
+      category: 'product',
+      featured: false
+    },
+    {
+      id: 6,
+      question: 'Will my cat notice the difference?',
+      answer: 'Most cats don\'t notice Purrify since it\'s odorless and doesn\'t significantly change litter texture. Many cats actually prefer the improved odor control environment.',
+      category: 'usage',
+      featured: false
+    },
+    {
+      id: 7,
+      question: 'How quickly does Purrify work?',
+      answer: 'Purrify starts working immediately upon contact with odors. You\'ll notice reduced odors within minutes, with maximum effectiveness achieved within 24 hours.',
+      category: 'product',
+      featured: false
+    },
+    {
+      id: 8,
+      question: 'What sizes are available?',
+      answer: 'Purrify comes in three sizes: 17g Trial Size ($6.99), 60g Standard ($19.99), and 140g Family Pack ($29.99). The trial size is perfect for testing with one litter box change.',
+      category: 'product',
+      featured: false
+    },
+    {
+      id: 9,
+      question: 'Do you offer free shipping?',
+      answer: 'Yes! We offer free shipping on all orders over $25 within Canada. Orders typically arrive within 3-5 business days.',
+      category: 'shipping',
+      featured: false
+    },
+    {
+      id: 10,
+      question: 'Can I return Purrify if I\'m not satisfied?',
+      answer: 'Absolutely! We offer a 30-day satisfaction guarantee. If you\'re not completely satisfied, contact us for a full refund.',
+      category: 'support',
+      featured: false
+    }
+  ];
+
+  // Generate FAQ schema for SEO
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqItems.map(item => ({
+      '@type': 'Question',
+      'name': item.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.answer
+      }
+    }))
+  };
+
+  const moreFaqItems = [
+    {
+      id: 11,
       category: 'product',
       question: 'What is Purrify and how does it work?',
       answer: 'Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds, providing superior odor control compared to traditional litter alone.',
@@ -196,6 +288,29 @@ const FAQPage: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+        openGraph={{
+          type: 'website',
+          url: canonicalUrl,
+          title: pageTitle,
+          description: pageDescription,
+        }}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: 'Purrify FAQ, cat litter additive questions, activated carbon safety, odor control help',
+          },
+        ]}
+      />
+
+      {/* FAQ Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Head>
         <title>Frequently Asked Questions - Everything About Purrify | Purrify</title>
         <meta 

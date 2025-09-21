@@ -8,8 +8,6 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 // Relevant images for comparison content
 const heroImage = 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?auto=format&fit=crop&w=1600&q=80';
 const comparisonImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80';
-const scienceImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
-const resultsImage = 'https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?auto=format&fit=crop&w=1600&q=80';
 
 export default function ActivatedCarbonVsBakingSoda() {
   return (

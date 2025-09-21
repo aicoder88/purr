@@ -128,7 +128,7 @@ Context / exclusions:
 - [ ] Build notification/toast system with theme integration [component]
 
 ### ⚡ Performance & Optimization
-- [ ] Implement lazy loading for refactored components [perf]
+- [x] Implement lazy loading for refactored components [perf]
 - [ ] Optimize image loading in new component structure [perf]
 - [x] Add performance monitoring for component render times [perf]
   - ✅ Moved `PerformanceMonitor` into client runtime (`pages/_app.tsx`) so GTM events fire; removed server-only usage in `_document`.

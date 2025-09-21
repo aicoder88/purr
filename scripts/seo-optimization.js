@@ -138,20 +138,20 @@ Crawl-delay: 1`;
     pages.forEach(page => {
       const content = fs.readFileSync(page, 'utf8');
       
-      // Check for Head component
-      if (!content.includes('import Head from') && !content.includes('<Head>')) {
-        this.log(`${path.relative(this.projectRoot, page)}: Missing Head component`, 'warning');
+      // Check for Head component or NextSeo
+      if (!content.includes('import Head from') && !content.includes('<Head>') && !content.includes('NextSeo')) {
+        this.log(`${path.relative(this.projectRoot, page)}: Missing Head component or NextSeo`, 'warning');
         issues++;
       }
       
       // Check for title
-      if (!content.includes('<title>') && !content.includes('title:')) {
+      if (!content.includes('<title>') && !content.includes('title:') && !content.includes('title=')) {
         this.log(`${path.relative(this.projectRoot, page)}: Missing title tag`, 'warning');
         issues++;
       }
       
       // Check for meta description
-      if (!content.includes('name="description"') && !content.includes('description:')) {
+      if (!content.includes('name="description"') && !content.includes('description:') && !content.includes('description=')) {
         this.log(`${path.relative(this.projectRoot, page)}: Missing meta description`, 'warning');
         issues++;
       }

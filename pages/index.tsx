@@ -8,24 +8,21 @@ import dynamic from 'next/dynamic';
 
 // Above-the-fold banner should be SSR to avoid CLS
 import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
+import { LazyLoad } from '../src/components/performance/LazyLoad';
 
 // Dynamically import below-the-fold sections to improve initial page load
 const EnhancedProductComparison = dynamic(() => import('../src/components/sections/enhanced-product-comparison').then(mod => ({ default: mod.EnhancedProductComparison })), {
-  ssr: false,
-  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+  ssr: false
 });
 const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), { ssr: false });
 const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), {
-  ssr: false,
-  loading: () => <div className="h-64 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+  ssr: false
 });
 const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), {
-  ssr: false,
-  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+  ssr: false
 });
 const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), {
-  ssr: false,
-  loading: () => <div className="h-96 bg-gray-50 dark:bg-gray-800 animate-pulse rounded-lg" />
+  ssr: false
 });
 const Newsletter = dynamic(() => import('../src/components/sections/newsletter').then(mod => ({ default: mod.Newsletter })), { ssr: false });
 const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), { ssr: false });
@@ -388,14 +385,32 @@ export default function Home() {
         {/* Enhanced Product Comparison for better conversions */}
         <div className="cv-auto cis-960">
           <ErrorBoundary>
-            <EnhancedProductComparison />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-96 rounded-lg bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <EnhancedProductComparison />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         {/* Subscription Offer for recurring revenue */}
         <div className="cv-auto cis-480">
           <ErrorBoundary>
-            <SubscriptionOffer />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-72 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <SubscriptionOffer />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
@@ -408,43 +423,106 @@ export default function Home() {
         
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <Stores />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-64 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <Stores />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-960">
           <ErrorBoundary>
-            <Testimonials />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-96 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <Testimonials />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <FAQ />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-96 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <FAQ />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-480">
           <ErrorBoundary>
-            <Newsletter />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-72 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <Newsletter />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-480">
           <ErrorBoundary>
-            <CTA />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-64 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <CTA />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <Contact />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-80 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <Contact />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
         
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <BlogPreview />
+            <LazyLoad
+              placeholder={(
+                <div
+                  className="h-80 rounded-2xl bg-gray-50 dark:bg-gray-800/70 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            >
+              <BlogPreview />
+            </LazyLoad>
           </ErrorBoundary>
         </div>
       </main>

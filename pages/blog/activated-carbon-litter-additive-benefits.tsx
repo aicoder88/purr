@@ -3,12 +3,10 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for activated carbon science content
 const heroImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
-const scienceImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1600&q=80';
 const coconutImage = 'https://images.unsplash.com/photo-1517080727870-780609473738?auto=format&fit=crop&w=1600&q=80';
 const healthImage = 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?auto=format&fit=crop&w=1600&q=80';
 
