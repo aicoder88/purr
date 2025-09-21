@@ -24,7 +24,7 @@ export default function BestForSmallApartments() {
         
         {/* Open Graph */}
         <meta property="og:title" content="Stop Apartment Cat Litter Smell - 5 Ways Neighbors Won't Notice" />
-        <meta property="og:description" content="Small apartment reeking of cat litter? These 5 methods eliminate odors in tiny spaces. Military-grade activated carbon works even with thin walls!" />
+        <meta property="og:description" content="Small apartment reeking of cat litter? These 5 methods eliminate odors in tiny spaces. Water-filter grade activated carbon works even with thin walls!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
         <meta property="og:image" content={heroImage} />

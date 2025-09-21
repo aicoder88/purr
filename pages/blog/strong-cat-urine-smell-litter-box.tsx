@@ -24,7 +24,7 @@ export default function StrongCatUrineSmellGuide() {
         '@id': `${canonicalUrl}#article`,
         headline: 'Stop Embarrassing Cat Urine Smell! 7 Proven Ways to Eliminate Litter Box Odor',
         description:
-          'Tired of guests noticing cat litter smell? These 7 proven methods eliminate strong urine odor in 24 hours. From military-grade activated carbon to simple cleaning hacks - get your fresh-smelling home back today.',
+          'Tired of guests noticing cat litter smell? These 7 proven methods eliminate strong urine odor in 24 hours. From water-filter grade activated carbon to simple cleaning hacks - get your fresh-smelling home back today.',
         image: {
           '@type': 'ImageObject',
           url: heroImage,

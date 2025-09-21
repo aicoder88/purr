@@ -2,8 +2,8 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
 export default function ammoniasmellcatlitterPage() {
-  const seoTitle = 'Stop Embarrassing Ammonia Smell from Cat Litter - Military-Grade Solution | Purrify';
-  const seoDescription = 'Tired of that sharp ammonia smell hitting you when you open the litter box? This military-grade activated carbon destroys ammonia molecules instantly. No more holding your breath!';
+  const seoTitle = 'Stop Embarrassing Ammonia Smell from Cat Litter - Water-Filter Grade Solution | Purrify';
+  const seoDescription = 'Tired of that sharp ammonia smell hitting you when you open the litter box? This water-filter grade activated carbon destroys ammonia molecules instantly. No more holding your breath!';
   
   return (
     <>
@@ -13,7 +13,7 @@ export default function ammoniasmellcatlitterPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'ammonia smell cat litter, litter box stink, cat urine odor, activated carbon deodorizer, eliminate ammonia smell instantly, military grade carbon',
+            content: 'ammonia smell cat litter, litter box stink, cat urine odor, activated carbon deodorizer, eliminate ammonia smell instantly, water-filter grade carbon',
           },
         ]}
       />
@@ -29,7 +29,7 @@ export default function ammoniasmellcatlitterPage() {
             </p>
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Military-Grade Ammonia Destroyer</h2>
+              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Powerful Ammonia Destroyer</h2>
               <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">This isn't your typical air freshener. Purrify uses the same activated carbon grade found in military gas masks to destroy ammonia molecules instantly.</p>
 
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">

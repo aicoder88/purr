@@ -24,7 +24,7 @@ export default function HouseSmellsLikeCatLitter() {
 
         {/* Open Graph */}
         <meta property="og:title" content="Stop Being Embarrassed - 7 Ways to Eliminate Cat Litter Smell" />
-        <meta property="og:description" content="No more apologizing to guests! These 7 proven methods eliminate embarrassing cat litter odors in 24 hours. Military-grade activated carbon destroys ammonia instantly." />
+        <meta property="og:description" content="No more apologizing to guests! These 7 proven methods eliminate embarrassing cat litter odors in 24 hours. Water-filter grade activated carbon destroys ammonia instantly." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
         <meta property="og:image" content={heroImage} />

@@ -3,7 +3,7 @@ import { COMMON_DESCRIPTIONS, FEATURE_DESCRIPTIONS } from './common';
 export const en = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Stop being embarrassed by cat litter smell! Military-grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
+  siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
   
   // Navigation
   nav: {
@@ -58,7 +58,7 @@ export const en = {
     ferretCage: "Ferret Cage Smell Killer",
     eliminateCatOdors: "Finally! A Litter Box That Doesn't Smell…",
     instantly: "Your Guests Will Never Know You Have Cats!",
-    description: "Tired of holding your breath? This military-grade activated carbon destroys ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
+    description: "Tired of holding your breath? This water-filter grade activated carbon destroys ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "cat parents say goodbye to litter box smell",
@@ -92,11 +92,11 @@ export const en = {
   features: {
     odorElimination: {
       title: "Destroys Ammonia Smell Instantly",
-      description: "Military-grade activated carbon doesn't just mask odors - it destroys ammonia molecules at the source. Your nose will thank you!"
+      description: "Water-filter grade activated carbon doesn't just mask odors - it destroys ammonia molecules at the source. Your nose will thank you!"
     },
     catFriendly: {
-      title: "100% Safe for Cats & Kittens",
-      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes. Safe enough for sensitive kittens, powerful enough for multiple cats."
+      title: "Used in Water & Air Filters Worldwide",
+      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes. The same type used in water and air filters around the world, powerful enough for multiple cats."
     },
     longLastingFreshness: {
       title: "7 Days of Fresh Air Guaranteed",
@@ -108,7 +108,7 @@ export const en = {
     },
     natural: {
       title: "Pure Coconut Shell Carbon",
-      description: "The same grade used in military gas masks, but made from sustainable coconut shells. Natural protection for your family and the planet."
+      description: "Used in water and air filters around the world, made from sustainable coconut shells. The same type found in military gas masks for trusted filtration."
     },
     costEffective: {
       title: "Saves Money on Litter",
