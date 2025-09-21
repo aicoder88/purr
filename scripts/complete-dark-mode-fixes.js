@@ -159,10 +159,15 @@ manualFixes.forEach(fix => {
 });
 
 // Handle remaining text elements through intelligent scanning
+const classNamePattern = /className="([^"]*)"/;
+const typographyClassPattern = /text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)/;
+const fontWeightPattern = /font-(thin|light|normal|medium|semibold|bold|extrabold)/;
+
 const lines = content.split('\\n');
 const updatedLines = lines.map((line, index) => {
   // Look for className attributes with text-related classes missing dark variants
-  const classNameMatch = line.match(/className="([^"]*)"/);
+  classNamePattern.lastIndex = 0;
+  const classNameMatch = classNamePattern.exec(line);
   if (classNameMatch) {
     const className = classNameMatch[1];
     
@@ -175,8 +180,8 @@ const updatedLines = lines.map((line, index) => {
     }
     
     // Check for specific text utility classes that need dark variants
-    if (className.match(/text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)/) ||
-        className.match(/font-(thin|light|normal|medium|semibold|bold|extrabold)/) ||
+    if (typographyClassPattern.test(className) ||
+        fontWeightPattern.test(className) ||
         className.includes('text-center') ||
         className.includes('text-left') ||
         className.includes('text-right')) {

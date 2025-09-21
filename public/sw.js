@@ -68,6 +68,8 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+const imageExtensionPattern = /\.(jpg|jpeg|png|gif|webp|avif|svg)$/;
+
 // Optimized fetch handler with intelligent caching strategies
 self.addEventListener('fetch', (event) => {
   const { request } = event;
@@ -79,7 +81,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Determine cache strategy based on request type
-  if (url.pathname.startsWith('/optimized/') || url.pathname.match(/\.(jpg|jpeg|png|gif|webp|avif|svg)$/)) {
+  if (url.pathname.startsWith('/optimized/') || imageExtensionPattern.test(url.pathname)) {
     // Images: Cache first strategy for long-term caching
     event.respondWith(handleImageRequest(request));
   } else if (url.pathname.startsWith('/api/')) {

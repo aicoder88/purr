@@ -18,19 +18,25 @@ function parseViolations(output) {
   const violations = [];
   const lines = output.split('\n');
   let currentFile = null;
-  
-  for (const line of lines) {
+  const violationLinePattern = /Line \d+:\d+ - Missing dark variant for:/;
+  const violationDetailsPattern = /Line (\d+):\d+ - Missing dark variant for: (.+)/;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
     if (line.startsWith('❌ ')) {
       currentFile = line.replace('❌ ', '').trim();
-    } else if (line.match(/Line \d+:\d+ - Missing dark variant for:/)) {
-      const match = line.match(/Line (\d+):\d+ - Missing dark variant for: (.+)/);
-      if (match && currentFile) {
+      continue;
+    }
+
+    if (currentFile && violationLinePattern.test(line)) {
+      const match = violationDetailsPattern.exec(line);
+      if (match) {
         const [, lineNumber, classPattern] = match;
-        const nextLine = lines[lines.indexOf(line) + 1];
+        const nextLine = lines[index + 1];
         if (nextLine && nextLine.trim()) {
           violations.push({
             file: currentFile,
-            line: parseInt(lineNumber),
+            line: parseInt(lineNumber, 10),
             pattern: classPattern.trim(),
             code: nextLine.trim()
           });
@@ -38,7 +44,7 @@ function parseViolations(output) {
       }
     }
   }
-  
+
   return violations;
 }
 

@@ -78,7 +78,9 @@ Next steps (proposed):
 - [x] A11y: Re-scan for interactive-role mismatches; ensure only semantic roles are used and `aria-*` pairs are valid [a11y].
   - ✅ Tightened language switcher semantics with unique ids + list markup; retained keyboard/ARIA wiring.
   - ✅ Added keyboard support + ARIA labelling for live purchase notifications; verified `npm run lint` (warnings only).
-- [ ] RegExp: Review any flagged `.match/.exec` patterns; prefer `regex.test` for boolean checks and ensure global flags are correct (JS-D007) [perf].
+- [x] RegExp: Review any flagged `.match/.exec` patterns; prefer `regex.test` for boolean checks and ensure global flags are correct (JS-D007) [perf].
+  - ✅ Swapped boolean `.match` checks for `.test` in `scripts/fix-remaining-dark-mode.js` + `scripts/complete-dark-mode-fixes.js` with dedicated regex constants.
+  - ✅ Centralized image extension pattern in `public/sw.js` to reuse `.test` guard; reran `npm run lint` (warnings only).
 - [ ] Re-run perf/static analysis after above changes; capture deltas and prioritize any remaining high-count rules [qa].
 
 Context / exclusions:
