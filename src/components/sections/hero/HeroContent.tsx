@@ -130,9 +130,8 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
           {t.hero.eliminateCatOdors}
         </span>
         <span
-          className="block bg-clip-text text-transparent"
+          className={`block ${GRADIENTS.text.purple} ${GRADIENTS.text.primaryDark}`}
           style={{
-            backgroundImage: "linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)",
             lineHeight: "1.3"
           }}
         >

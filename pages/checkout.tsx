@@ -3,8 +3,9 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import { Input } from '../src/components/ui/input';
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import React from 'react';
+import type { ComponentProps, MouseEvent } from 'react';
 import { useCart } from '../src/lib/cart-context';
 import { useRouter } from 'next/router';
 import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Star, Users, Clock, Zap, Heart, CheckSquare } from 'lucide-react';
@@ -62,6 +63,45 @@ const CheckoutPage: NextPage = () => {
   const [referralStatus, setReferralStatus] = useState<'idle' | 'validating' | 'valid' | 'invalid'>('idle');
   const [referralMessage, setReferralMessage] = useState('');
 
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  }, []);
+
+  const handleReferralCodeChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setReferralCode(event.target.value);
+    setReferralStatus('idle');
+    setReferralMessage('');
+  }, []);
+
+  const handleTestimonialIndicatorClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const { index } = event.currentTarget.dataset;
+    if (typeof index === 'undefined') return;
+    const parsedIndex = Number(index);
+    if (!Number.isNaN(parsedIndex)) {
+      setCurrentTestimonial(parsedIndex);
+    }
+  }, []);
+
+  const goToPreviousStep = useCallback(() => {
+    setStep(prev => Math.max(1, prev - 1));
+  }, []);
+
+  const goToNextStep = useCallback(() => {
+    setStep(prev => Math.min(3, prev + 1));
+  }, []);
+
+  type FastCheckoutCompleteHandler = NonNullable<ComponentProps<typeof FastCheckout>['onCheckoutComplete']>;
+
+  const handleFastCheckoutComplete = useCallback<FastCheckoutCompleteHandler>((data) => {
+    console.log('Fast checkout completed:', data);
+    setIsProcessing(true);
+    setTimeout(() => {
+      clearCart();
+      router.push('/thank-you');
+    }, 2000);
+  }, [clearCart, router]);
+
   // Rotating testimonials effect
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -88,11 +128,6 @@ const CheckoutPage: NextPage = () => {
       clearInterval(interval);
     };
   }, []);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
 
   const validateReferral = async () => {
     if (!referralCode) return;
@@ -155,24 +190,24 @@ const CheckoutPage: NextPage = () => {
     }
   };
 
-  const isContactStepValid = () => {
-    return (
+  const isContactStepValid = useMemo(() => (
+    Boolean(
       formData.email &&
       formData.phone &&
       formData.firstName &&
       formData.lastName &&
-      (referralStatus !== 'validating')
-    );
-  };
+      referralStatus !== 'validating'
+    )
+  ), [formData.email, formData.firstName, formData.lastName, formData.phone, referralStatus]);
 
-  const isShippingStepValid = () => {
-    return (
+  const isShippingStepValid = useMemo(() => (
+    Boolean(
       formData.address &&
       formData.city &&
       formData.province &&
       formData.postalCode
-    );
-  };
+    )
+  ), [formData.address, formData.city, formData.postalCode, formData.province]);
 
   const renderStepIndicator = () => (
     <div className="flex items-center justify-center mb-8">
@@ -307,7 +342,9 @@ const CheckoutPage: NextPage = () => {
               {displayTestimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentTestimonial(index)}
+                  type="button"
+                  data-index={index}
+                  onClick={handleTestimonialIndicatorClick}
                   className={`w-2 h-2 rounded-full transition-colors ${
                     index === currentTestimonial 
                       ? 'bg-[#FF3131]' 
@@ -755,8 +792,8 @@ const CheckoutPage: NextPage = () => {
                   type="button"
                   onClick={() => setStep(step + 1)}
                   disabled={
-                    (step === 1 && !isContactStepValid()) ||
-                    (step === 2 && !isShippingStepValid())
+                    (step === 1 && !isContactStepValid) ||
+                    (step === 2 && !isShippingStepValid)
                   }
                   className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
                 >
