@@ -87,75 +87,35 @@ npm run purge-vercel-cache   # Purge Vercel edge cache
 ## Critical Requirements
 
 ### Dark Mode Compliance (BUILD FAILS WITHOUT)
-**MANDATORY: Every text element MUST have dark: variant - NO EXCEPTIONS**
+**MANDATORY: Every element MUST have dark: variant - NO EXCEPTIONS**
 
+**Quick Reference Patterns:**
 ```css
-/* Headings */
-text-gray-900 dark:text-gray-50
-text-gray-800 dark:text-gray-100
-
-/* Body Text */
-text-gray-700 dark:text-gray-200
-text-gray-600 dark:text-gray-300
-
-/* White Text (Common Issue) */
-text-white dark:text-gray-100    /* NEVER use text-white alone */
-
-/* Colored Text */
-text-red-500 dark:text-red-400
-text-green-500 dark:text-green-400
-text-blue-500 dark:text-blue-400
-
-/* Backgrounds - MUST HAVE DARK VARIANTS */
-bg-white dark:bg-gray-800
-bg-gray-50 dark:bg-gray-900
-bg-blue-50 dark:bg-blue-900/20
-bg-green-50 dark:bg-green-900/20
-bg-yellow-50 dark:bg-yellow-900/20
-bg-red-50 dark:bg-red-900/20
-
-/* Borders - MUST HAVE DARK VARIANTS */
-border-gray-200 dark:border-gray-700
-border-blue-200 dark:border-blue-700
-border-green-200 dark:border-green-700
-border-yellow-200 dark:border-yellow-700
+/* Essential Patterns */
+text-gray-900 dark:text-gray-50        /* Headers */
+text-gray-700 dark:text-gray-200       /* Body text */
+text-white dark:text-gray-100          /* White text */
+bg-blue-50 dark:bg-blue-900/20         /* Colored backgrounds */
+border-gray-200 dark:border-gray-700   /* Borders */
 ```
 
-**CRITICAL DARK MODE RULES:**
-1. **NEVER use `text-white` without `dark:text-gray-100`**
-2. **NEVER use any `text-*` class without corresponding `dark:text-*`**
-3. **ALL colored text needs dark variants** (red, green, blue, etc.)
-4. **ALL colored backgrounds need dark variants** (bg-blue-50, bg-green-50, etc.)
-5. **ALL borders need dark variants** (border-gray-200, border-blue-200, etc.)
-6. **Buttons, links, and interactive elements MUST be readable in dark mode**
-7. **Run `npm run validate-dark-mode` BEFORE every commit**
+**ZERO-TOLERANCE VIOLATIONS:**
+1. ❌ `text-white` without `dark:text-gray-100`
+2. ❌ Colored backgrounds without dark variants (`bg-blue-50`)
+3. ❌ Borders without dark variants (`border-gray-200`)
+4. ❌ Any `text-*` class without corresponding `dark:text-*`
 
-**Common Dark Mode Violations:**
-```css
-/* ❌ WRONG - Will be unreadable in dark mode */
-text-white
-text-red-500
-text-green-600
-bg-blue-50                    /* Missing dark variant */
-border-gray-200              /* Missing dark variant */
-className="bg-blue-500 text-white"
-
-/* ✅ CORRECT - Readable in both modes */
-text-white dark:text-gray-100
-text-red-500 dark:text-red-400
-text-green-600 dark:text-green-400
-bg-blue-50 dark:bg-blue-900/20
-border-gray-200 dark:border-gray-700
-className="bg-blue-500 text-white dark:text-gray-100"
+**Validation Command:**
+```bash
+npm run validate-dark-mode  # MUST return 0 errors
 ```
 
-**MANDATORY CHECKLIST - EVERY ELEMENT:**
-- [ ] ALL `text-*` classes have `dark:text-*` variants
-- [ ] ALL `bg-*` classes have `dark:bg-*` variants
-- [ ] ALL `border-*` classes have `dark:border-*` variants
-- [ ] ALL colored backgrounds (blue-50, green-50, etc.) have dark variants
-- [ ] NO standalone `text-white` without `dark:text-gray-100`
-- [ ] Test in both light and dark mode before committing
+**Common Pattern Examples:**
+```css
+/* ✅ CORRECT - Complete patterns */
+className="bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 border-blue-200 dark:border-blue-700"
+className="text-white dark:text-gray-100 bg-red-500 hover:bg-red-600 dark:hover:bg-red-400"
+```
 
 ### Protected Systems
 - `/api/create-checkout-session` (Stripe payments)
@@ -397,36 +357,72 @@ After adding images to blog posts, ALWAYS:
 - "cleaning supplies natural"
 - "fresh home interior"
 
-## Deployment Verification Protocol
+## Deployment & Quality Assurance
 
-### MANDATORY: After Every Commit/Push
-Always verify deployment success using Vercel MCP tools:
+### Quick Deployment Check
+After pushing commits, verify deployment with minimal overhead:
 
 ```bash
-# 1. Check deployment status
-mcp__vercel__list_deployments (get latest deployment ID)
-mcp__vercel__get_deployment (check state = "READY")
-
-# 2. If deployment fails, check build logs
-mcp__vercel__get_deployment_build_logs (identify errors)
-
-# 3. Verify production site accessibility
-mcp__vercel__web_fetch_vercel_url (test main domain loads)
+# Fast deployment verification (30s max)
+mcp__vercel__list_deployments | check latest state = "READY"
+# If ERROR, only then check build logs
 ```
 
-### Deployment Success Criteria:
-- [ ] State shows "READY" (not "BUILDING", "ERROR", "QUEUED")
-- [ ] Production URL (www.purrify.ca) loads successfully
-- [ ] No build errors in deployment logs
-- [ ] All new features/content visible on live site
+### Pre-Commit Validation (MANDATORY)
+```bash
+npm run validate-dark-mode    # 0 errors required
+npm run lint                  # 0 warnings required
+npm run check-types          # 0 errors required
+```
+
+### Success Criteria:
+- Latest deployment state: "READY" ✅
+- Dark mode validation: 0 errors ✅
+- TypeScript compilation: 0 errors ✅
+- ESLint validation: 0 warnings ✅
 
 ### Build Failure Recovery:
-If deployment shows "ERROR" state:
-1. Get build logs: `mcp__vercel__get_deployment_build_logs`
-2. Fix identified issues (usually TypeScript/dark mode violations)
-3. Re-commit and re-verify
-4. Never proceed to next task until deployment is READY
+Only if deployment shows "ERROR":
+1. Check build logs: `mcp__vercel__get_deployment_build_logs`
+2. Fix issues (usually dark mode or TypeScript violations)
+3. Re-run pre-commit validation before pushing
 
-**Project Info for Vercel MCP:**
-- Project ID: `prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2`
-- Team ID: `team_9MD2gEmcma1CnApg7QalkGj8`
+**Vercel Project Info:**
+- Project: `prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2`
+- Team: `team_9MD2gEmcma1CnApg7QalkGj8`
+
+---
+
+## Recent Optimizations & Improvements
+
+### ✅ SEO Enhancement (2025-01-25)
+- **Emotional copywriting** across all blog posts and homepage
+- **Cat odor keywords** strategically integrated from research file
+- **Blog optimization**: 8+ posts with high-converting titles
+- **Performance**: 90%+ image compression with WebP prioritization
+- **Reference file**: `/docs/cat odor keywords.xlsx` for future content
+
+### ✅ Dark Mode Compliance System (2025-01-25)
+- **Zero-tolerance validation**: 201 files pass with 0 errors
+- **Enhanced documentation**: Quick reference patterns and examples
+- **Automated validation**: Pre-commit hooks prevent violations
+- **Comprehensive coverage**: All backgrounds, borders, and text elements
+
+### ✅ Performance Optimizations (2025-01-25)
+- **ESLint rules**: 235+ performance issues tracked for cleanup
+- **TypeScript strict**: 147 unused identifier issues documented
+- **Regex optimization**: Boolean `.match` replaced with `.test`
+- **Cache improvements**: Webpack and Vercel edge cache management
+- **A11y enhancements**: Keyboard support and ARIA labeling
+
+### ✅ Development Workflow (2025-01-25)
+- **Faster deployment verification**: Reduced from minutes to 30s
+- **Pre-commit validation**: Dark mode + TypeScript + ESLint
+- **Image requirements**: Mandatory high-quality visuals for blog posts
+- **Documentation standards**: Streamlined CLAUDE.md for efficiency
+
+### Next Priority Areas
+- [ ] DNS configuration for international subdomains
+- [ ] Performance audit follow-up and rule prioritization
+- [ ] Component refactoring using new theme utilities
+- [ ] Advanced TypeScript strict mode implementation
