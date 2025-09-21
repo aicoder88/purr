@@ -19,7 +19,6 @@ import {
 } from 'lucide-react';
 
 // Import all Stage 5 components
-import { PurchaseNotifications } from '../../src/components/social-proof/PurchaseNotifications';
 import { TrustBadges } from '../../src/components/social-proof/TrustBadges';
 import { TouchGallery } from '../../src/components/mobile/TouchGallery';
 import MobilePayment from '../../src/components/mobile/MobilePayment';
@@ -48,6 +47,18 @@ const Stage5DemoPage: NextPage = () => {
     if (!demoId) return;
     handleSelectDemo(demoId);
   }, [handleSelectDemo]);
+
+  const handleMobilePaymentSuccess = useCallback((data: unknown) => {
+    console.log('Payment success:', data);
+  }, []);
+
+  const handleMobilePaymentError = useCallback((error: unknown) => {
+    console.error('Payment error:', error);
+  }, []);
+
+  const handleDemoCheckoutComplete = useCallback((data: unknown) => {
+    console.log('Checkout complete:', data);
+  }, []);
 
   // Sample product images for TouchGallery demo
   const sampleImages = [
@@ -163,8 +174,8 @@ const Stage5DemoPage: NextPage = () => {
               <MobilePayment 
                 amount={29.99}
                 currency="CAD"
-                onPaymentSuccess={(data) => console.log('Payment success:', data)}
-                onPaymentError={(error) => console.log('Payment error:', error)}
+                onPaymentSuccess={handleMobilePaymentSuccess}
+                onPaymentError={handleMobilePaymentError}
               />
             </div>
           </div>
@@ -182,7 +193,7 @@ const Stage5DemoPage: NextPage = () => {
             
             <FastCheckout 
               cartTotal={29.99}
-              onCheckoutComplete={(data) => console.log('Checkout complete:', data)}
+              onCheckoutComplete={handleDemoCheckoutComplete}
             />
           </div>
         );

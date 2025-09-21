@@ -1,26 +1,70 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
-export default function multiplecatsodorcontrolPage() {
+export default function MultipleCatsOdorControlPage() {
   const seoTitle = 'Multiple Cats Odor Control Solution | Purrify Activated Carbon';
   const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
+  const canonicalUrl = 'https://www.purrify.ca/solutions/multiple-cats-odor-control';
+
+  // SEO optimized images for multi-cat households
+  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Multiple cats together
+  const solutionImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat home
   
   return (
     <>
       <NextSeo
         title={seoTitle}
         description={seoDescription}
+        canonical={canonicalUrl}
+        openGraph={{
+          type: 'article',
+          url: canonicalUrl,
+          title: seoTitle,
+          description: seoDescription,
+          images: [
+            {
+              url: heroImage,
+              width: 1200,
+              height: 630,
+              alt: 'Multiple cats living harmoniously in odor-free home',
+            },
+          ],
+        }}
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'multiple cats odor control, cat odor control, activated carbon, natural solution',
+            content: 'multiple cats odor control, multi-cat household, cat litter many cats, activated carbon multiple cats, large cat family, cat colony odor management',
           },
         ]}
+      />
+
+      <ArticleSchema
+        title={seoTitle}
+        description={seoDescription}
+        path="/solutions/multiple-cats-odor-control"
+        options={{
+          category: 'Multi-Cat Solutions',
+          keywords: ['multiple cats', 'multi-cat household', 'odor control', 'cat colony', 'large cat family'],
+          datePublished: '2024-01-15T11:00:00Z',
+          dateModified: new Date().toISOString(),
+          image: heroImage,
+          wordCount: 750,
+          readingTime: 4
+        }}
       />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <OptimizedImage
+              src={heroImage}
+              alt="Multiple cats living together in clean, odor-free environment"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+            />
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               Multiple Cats Odor Control
             </h1>
@@ -32,6 +76,14 @@ export default function multiplecatsodorcontrolPage() {
               <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
               <p className="text-lg mb-6">Purrify handles multi-cat households with industrial-strength odor elimination</p>
               
+              <OptimizedImage
+                src={solutionImage}
+                alt="Happy multi-cat household with successful odor management"
+                width={500}
+                height={250}
+                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+              />
+
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-3xl mb-2">⚡</div>

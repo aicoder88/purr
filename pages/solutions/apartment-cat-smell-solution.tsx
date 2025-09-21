@@ -1,21 +1,58 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
-export default function apartmentcatsmellsolutionPage() {
+export default function ApartmentCatSmellSolutionPage() {
   const seoTitle = 'Apartment Cat Smell Solution - Activated Carbon Odor Eliminator | Purrify';
   const seoDescription = 'Eliminate apartment cat odors completely with Purrify activated carbon additive. Perfect for small spaces, works with any litter brand. Breathe easy again in your apartment.';
+  const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
+
+  // SEO optimized images
+  const heroImage = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80'; // Modern apartment with cat
+  const solutionImage = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1600&q=80'; // Clean apartment living room
   
   return (
     <>
       <NextSeo
         title={seoTitle}
         description={seoDescription}
+        canonical={canonicalUrl}
+        openGraph={{
+          type: 'article',
+          url: canonicalUrl,
+          title: seoTitle,
+          description: seoDescription,
+          images: [
+            {
+              url: heroImage,
+              width: 1200,
+              height: 630,
+              alt: 'Modern apartment living with cats - odor-free solution',
+            },
+          ],
+        }}
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'apartment cat smell solution, small space cat odor, urban cat litter, activated carbon odor control, apartment living with cats',
+            content: 'apartment cat smell solution, small space cat odor, urban cat litter, activated carbon odor control, apartment living with cats, rental pet policy, cat odor elimination',
           },
         ]}
+      />
+
+      <ArticleSchema
+        title={seoTitle}
+        description={seoDescription}
+        path="/solutions/apartment-cat-smell-solution"
+        options={{
+          category: 'Pet Care Solutions',
+          keywords: ['apartment living', 'cat odor control', 'small space solutions', 'activated carbon'],
+          datePublished: '2024-01-15T10:00:00Z',
+          dateModified: new Date().toISOString(),
+          image: heroImage,
+          wordCount: 800,
+          readingTime: 4
+        }}
       />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
@@ -23,6 +60,13 @@ export default function apartmentcatsmellsolutionPage() {
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
+              <OptimizedImage
+                src={heroImage}
+                alt="Modern apartment with cat - clean, odor-free living space"
+                width={600}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+              />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
                 Apartment Cat Smell Solution
               </h1>
@@ -40,6 +84,14 @@ export default function apartmentcatsmellsolutionPage() {
                 and close quarters with neighbors require discretion. Purrify eliminates odors at the source,
                 giving you the freedom to enjoy apartment living with your feline friends.
               </p>
+
+              <OptimizedImage
+                src={solutionImage}
+                alt="Clean, fresh apartment living room showing successful odor control"
+                width={500}
+                height={250}
+                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-4">

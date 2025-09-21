@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { AlertTriangle, Clock, TrendingUp, Users, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -115,10 +115,7 @@ export function ScarcityIndicator({
     }
   };
 
-  const urgencyMessage = getUrgencyMessage();
-  if (!urgencyMessage) return null;
-
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     // Track scarcity indicator interaction
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'scarcity_indicator_clicked', {
@@ -127,7 +124,10 @@ export function ScarcityIndicator({
         value: 1
       });
     }
-  };
+  }, [productId]);
+
+  const urgencyMessage = getUrgencyMessage();
+  if (!urgencyMessage) return null;
 
   if (variant === 'banner') {
     return (
