@@ -150,7 +150,7 @@ export default function HowToUseLitterDeodorizer() {
             </div>
 
             {/* Quick Summary Box */}
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-12">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-12">
               <h2 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">📋 Quick Application Summary</h2>
               <div className="grid md:grid-cols-2 gap-4 text-green-800 dark:text-green-200">
                 <div>

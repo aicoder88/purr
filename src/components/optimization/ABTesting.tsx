@@ -224,11 +224,11 @@ export function PricingTest({
       weight: 50,
       component: (
         <div className="inline-flex items-center gap-2">
-          <span className="text-lg line-through text-gray-500">${(basePrice * 1.5).toFixed(2)}</span>
+          <span className="text-lg line-through text-gray-500 dark:text-gray-400">${(basePrice * 1.5).toFixed(2)}</span>
           <span className="text-2xl font-bold text-green-600 dark:text-green-400">
             ${basePrice}
           </span>
-          <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">SAVE 33%</span>
+          <span className="bg-red-500 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">SAVE 33%</span>
         </div>
       )
     }

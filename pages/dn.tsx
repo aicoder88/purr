@@ -125,6 +125,18 @@ export default function DriverNetworkPresentation() {
     }
   }, [goToSlide, handleCloseSearch]);
 
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error('Error attempting to enable fullscreen:', err);
+      });
+    } else {
+      document.exitFullscreen().catch(err => {
+        console.error('Error attempting to exit fullscreen:', err);
+      });
+    }
+  }, []);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -205,18 +217,6 @@ export default function DriverNetworkPresentation() {
       return () => clearInterval(timer);
     }
   }, [presentationStartTime]);
-
-  const toggleFullscreen = useCallback(() => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => {
-        console.error('Error attempting to enable fullscreen:', err);
-      });
-    } else {
-      document.exitFullscreen().catch(err => {
-        console.error('Error attempting to exit fullscreen:', err);
-      });
-    }
-  }, []);
 
   // Listen for fullscreen changes
   useEffect(() => {
