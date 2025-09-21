@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
 
 interface MetricValue {
   id: string;
@@ -34,7 +34,6 @@ export function CoreWebVitals({ onMetric, debug = false }: WebVitalsProps) {
       // Send to analytics (Google Analytics 4)
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', metric.name, {
-          custom_map: { metric_id: 'dimension1' },
           metric_id: metric.id,
           metric_value: metric.value,
           metric_delta: metric.delta,
@@ -46,11 +45,11 @@ export function CoreWebVitals({ onMetric, debug = false }: WebVitalsProps) {
     };
 
     // Measure all Core Web Vitals
-    getCLS(reportMetric);
-    getFID(reportMetric);
-    getFCP(reportMetric);
-    getLCP(reportMetric);
-    getTTFB(reportMetric);
+    onCLS(reportMetric);
+    onINP(reportMetric);
+    onFCP(reportMetric);
+    onLCP(reportMetric);
+    onTTFB(reportMetric);
 
   }, [onMetric, debug]);
 
@@ -60,7 +59,7 @@ export function CoreWebVitals({ onMetric, debug = false }: WebVitalsProps) {
 function getMetricRating(name: string, value: number): 'good' | 'needs-improvement' | 'poor' {
   const thresholds = {
     CLS: { good: 0.1, poor: 0.25 },
-    FID: { good: 100, poor: 300 },
+    INP: { good: 200, poor: 500 },
     FCP: { good: 1800, poor: 3000 },
     LCP: { good: 2500, poor: 4000 },
     TTFB: { good: 800, poor: 1800 }
@@ -77,7 +76,8 @@ function getMetricRating(name: string, value: number): 'good' | 'needs-improveme
 function reportToAnalytics(metric: MetricValue) {
   // Report to Vercel Analytics if available
   if (typeof window !== 'undefined' && window.va) {
-    window.va('track', 'Core Web Vitals', {
+    window.va('event', {
+      name: 'Core Web Vitals',
       metric: metric.name,
       value: metric.value,
       rating: getMetricRating(metric.name, metric.value)
@@ -118,7 +118,7 @@ export function usePerformanceMonitoring() {
           console.log('Page Load Metrics:', {
             domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
             loadComplete: navEntry.loadEventEnd - navEntry.loadEventStart,
-            timeToInteractive: navEntry.domInteractive - navEntry.navigationStart
+            timeToInteractive: navEntry.domInteractive - navEntry.startTime
           });
         }
       }
@@ -217,9 +217,9 @@ export function PerformanceBudgetMonitor() {
       };
 
       const metrics = {
-        LCP: navigation.loadEventEnd - navigation.navigationStart,
-        FCP: navigation.domContentLoadedEventEnd - navigation.navigationStart,
-        TTI: navigation.domInteractive - navigation.navigationStart
+        LCP: navigation.loadEventEnd - navigation.startTime,
+        FCP: navigation.domContentLoadedEventEnd - navigation.startTime,
+        TTI: navigation.domInteractive - navigation.startTime
       };
 
       const violations = Object.entries(metrics)
@@ -248,10 +248,3 @@ export function PerformanceBudgetMonitor() {
   return null;
 }
 
-// Global type declarations for analytics
-declare global {
-  interface Window {
-    gtag?: (command: string, ...args: unknown[]) => void;
-    va?: (command: string, ...args: unknown[]) => void;
-  }
-}

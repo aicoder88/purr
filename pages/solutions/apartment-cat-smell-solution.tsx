@@ -2,6 +2,8 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import { HowToVideo, BeforeAfterVideo, TestimonialVideo, ScienceVideo } from '../../src/components/video/SolutionVideos';
+import { getVideoContent } from '../../src/data/video-content';
 
 export default function ApartmentCatSmellSolutionPage() {
   const seoTitle = 'Apartment Cat Smell Solution - Activated Carbon Odor Eliminator | Purrify';

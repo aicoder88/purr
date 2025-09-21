@@ -1,19 +1,10 @@
 import { Container } from "@/components/ui/container";
-import { useState, useEffect } from "react";
 import { useTranslation } from "../../lib/translation-context";
-import { createSectionClasses, GRADIENTS } from "@/lib/theme-utils";
 import { HeroContent } from "./hero/HeroContent";
 import { HeroVideo } from "./hero/HeroVideo";
 
 export function Hero() {
   const { t, locale } = useTranslation();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const sectionClasses = createSectionClasses('light');
 
   return (
     <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300" style={{ willChange: 'auto' }}>

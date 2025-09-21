@@ -17,10 +17,7 @@ interface OptimizedImageProps {
   style?: React.CSSProperties;
   onLoad?: () => void;
   onError?: () => void;
-  lazy?: boolean;
   responsive?: boolean;
-  webpFallback?: boolean;
-  avifSupport?: boolean;
   criticalResource?: boolean;
   trackPerformance?: boolean;
 }
@@ -40,10 +37,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   style,
   onLoad,
   onError,
-  lazy = true,
   responsive = true,
-  webpFallback = true,
-  avifSupport = true,
   criticalResource = false,
   trackPerformance = true,
   ...props
@@ -228,7 +222,6 @@ export const ThumbnailImage: React.FC<OptimizedImageProps> = (props) => (
   <OptimizedImage
     {...props}
     quality={75}
-    lazy={true}
     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 150px"
   />
 );

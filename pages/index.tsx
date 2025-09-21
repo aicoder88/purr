@@ -3,7 +3,6 @@ import { Hero } from '../src/components/sections/hero';
 import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
-import { Products } from '../src/components/sections/products';
 import dynamic from 'next/dynamic';
 
 // Above-the-fold banner should be SSR to avoid CLS
@@ -61,9 +60,7 @@ import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
 import { ComprehensiveStructuredData, useStructuredData } from '../src/components/seo/comprehensive-structured-data';
 import { HomepageSchema } from '../src/components/seo/json-ld-schema';
-import { PurchaseNotifications } from '../src/components/social-proof/PurchaseNotifications';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
-import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 
 export default function Home() {
   const { t, locale } = useTranslation();

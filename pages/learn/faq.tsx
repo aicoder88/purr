@@ -278,13 +278,12 @@ const FAQPage: NextPage = () => {
 
   const filteredFAQs = faqItems.filter(item => {
     const matchesSearch = item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                         item.answer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const popularFAQs = faqItems.filter(item => item.popular).slice(0, 4);
+  const popularFAQs = faqItems.filter(item => item.featured).slice(0, 4);
 
   return (
     <>
@@ -360,7 +359,7 @@ const FAQPage: NextPage = () => {
                       "@type": "Answer",
                       "text": item.answer,
                       "dateCreated": "2024-01-01",
-                      "upvoteCount": item.popular ? 25 : 10,
+                      "upvoteCount": item.featured ? 25 : 10,
                       "author": {
                         "@type": "Organization",
                         "name": "Purrify Customer Service"
@@ -513,13 +512,6 @@ const FAQPage: NextPage = () => {
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {item.answer}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.tags.map((tag, index) => (
-                      <span key={index} className="px-2 py-1 bg-[#E0EFC7]/50 dark:bg-gray-700/50 rounded-full text-xs text-gray-600 dark:text-gray-300">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               ))}
             </div>
@@ -591,7 +583,7 @@ const FAQPage: NextPage = () => {
                             {item.question}
                           </h4>
                           <div className="flex flex-wrap gap-2">
-                            {item.popular && (
+                            {item.featured && (
                               <span className="px-2 py-1 bg-[#FF3131]/10 text-[#FF3131] rounded-full text-xs font-medium">
                                 Popular
                               </span>
@@ -613,14 +605,6 @@ const FAQPage: NextPage = () => {
                           <p className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
                             {item.answer}
                           </p>
-                          <div className="flex flex-wrap gap-2 mt-4">
-                            {item.tags.map((tag, index) => (
-                              <span key={index} className="px-2 py-1 bg-[#E0EFC7]/50 dark:bg-gray-700/50 rounded-full text-xs text-gray-600 dark:text-gray-300">
-                                <Tag className="w-3 h-3 inline mr-1" />
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
                         </div>
                       )}
                     </div>
