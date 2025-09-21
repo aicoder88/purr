@@ -474,11 +474,7 @@ const CheckoutPage: NextPage = () => {
                     name="referralCode"
                     placeholder="Enter referral code"
                     value={referralCode}
-                    onChange={e => {
-                      setReferralCode(e.target.value);
-                      setReferralStatus('idle');
-                      setReferralMessage('');
-                    }}
+                    onChange={handleReferralCodeChange}
                     className="flex-1"
                     disabled={referralStatus === 'validating'}
                   />
@@ -781,7 +777,7 @@ const CheckoutPage: NextPage = () => {
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => setStep(step - 1)}
+                  onClick={goToPreviousStep}
                   className="min-w-[120px]"
                 >
                   Back
@@ -790,7 +786,7 @@ const CheckoutPage: NextPage = () => {
               {step < 3 ? (
                 <Button
                   type="button"
-                  onClick={() => setStep(step + 1)}
+                  onClick={goToNextStep}
                   disabled={
                     (step === 1 && !isContactStepValid) ||
                     (step === 2 && !isShippingStepValid)
