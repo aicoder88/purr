@@ -6,6 +6,7 @@ const withBundleAnalyzer = process.env.ANALYZE === 'true'
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  outputFileTracingRoot: __dirname,
   // Skip ESLint during Vercel builds to avoid CI lint failures
   eslint: {
     ignoreDuringBuilds: true,
@@ -66,6 +67,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 180, 256, 384],
+    qualities: [25, 50, 75, 80, 85, 90, 95, 100],
     minimumCacheTTL: 31536000, // 1 year cache for optimized performance
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -93,8 +95,6 @@ const nextConfig = {
     scrollRestoration: true,
     // Enable modern bundling
     esmExternals: true,
-    // Improve tree shaking
-    swcMinify: true,
   },
   
   // Move deprecated options out of experimental
