@@ -18,13 +18,13 @@ export default function ActivatedCarbonBenefits() {
   return (
     <>
       <Head>
-        <title>Activated Carbon Litter Additive Benefits: Science-Backed Odor Control | {SITE_NAME}</title>
-        <meta name="description" content="Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source, creating a fresher home environment." />
+        <title>Why Activated Carbon Destroys Cat Litter Smell Better Than Baking Soda | {SITE_NAME}</title>
+        <meta name="description" content="Wondering why your baking soda isn't working? Activated carbon destroys ammonia smell 10x better than home remedies. See the shocking science behind instant odor elimination!" />
         <meta name="keywords" content="activated carbon litter additive benefits, cat litter deodorizer, odor control science, molecular adsorption, natural cat litter additive" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
-        <meta property="og:description" content="Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source." />
+        <meta property="og:title" content="Why Activated Carbon Beats Baking Soda for Cat Litter Smell" />
+        <meta property="og:description" content="Baking soda not working? Activated carbon destroys ammonia smell 10x better. See the shocking science that proves why home remedies fail!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
         <meta property="og:image" content={heroImage} />

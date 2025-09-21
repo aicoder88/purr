@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useTranslation } from '../src/lib/translation-context';
 import {

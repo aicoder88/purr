@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
+import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { LocalizedMeta } from '../../src/components/seo/LocalizedMeta';
 import { PageLayout } from '../../src/components/layout/PageLayout';
@@ -10,7 +11,9 @@ import { enStoryData } from '../../src/lib/page-data';
 import { 
   Heart, 
   Users, 
-  ChevronRight
+  ChevronRight,
+  MapPin,
+  Mail
 } from 'lucide-react';
 
 const OurStoryPage: NextPage = () => {

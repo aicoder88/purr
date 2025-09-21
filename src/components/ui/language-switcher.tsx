@@ -1,5 +1,5 @@
 // import Link from 'next/link';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './button';
@@ -37,6 +37,9 @@ const languages: LanguageOption[] = [
 export function LanguageSwitcher() {
   const { locale, changeLocale } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const menuInstanceId = useId();
+  const buttonId = `${menuInstanceId}-trigger`;
+  const menuId = `${menuInstanceId}-menu`;
 
   const currentLanguage = languages.find(lang => lang.locale === locale) || languages[0];
 
@@ -64,8 +67,10 @@ export function LanguageSwitcher() {
         size="sm"
         className="flex items-center space-x-1 px-2 py-1 hover:bg-[#FFFFF5]"
         onClick={toggleDropdown}
+        id={buttonId}
         aria-expanded={isOpen}
-        aria-haspopup="true"
+        aria-haspopup="menu"
+        aria-controls={menuId}
       >
         <Image 
           src={currentLanguage.flag} 
@@ -80,32 +85,35 @@ export function LanguageSwitcher() {
 
       {isOpen && (
         <div 
+          id={menuId}
           className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black ring-opacity-5 z-50"
+          aria-labelledby={buttonId}
           onMouseLeave={closeDropdown}
         >
-          <div className="py-1" role="menu" aria-orientation="vertical">
+          <ul className="py-1" aria-labelledby={buttonId}>
             {languages.map((language) => (
-              <button
-                key={language.locale}
-                className={`flex items-center px-3 py-2 text-sm w-full text-left ${
-                  locale === language.locale
-                    ? 'bg-[#FFFFF5] dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-medium'
-                    : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-800 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
-                }`}
-                onClick={() => handleLanguageChange(language.locale)}
-                role="menuitem"
-              >
-                <Image 
-                  src={language.flag} 
-                  alt={language.alt} 
-                  width={20}
-                  height={20}
-                  className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover mr-2 sm:mr-3"
-                />
-                {language.name}
-              </button>
+              <li key={language.locale}>
+                <button
+                  className={`flex items-center px-3 py-2 text-sm w-full text-left ${
+                    locale === language.locale
+                      ? 'bg-[#FFFFF5] dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-medium'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-800 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                  }`}
+                  onClick={() => handleLanguageChange(language.locale)}
+                  type="button"
+                >
+                  <Image 
+                    src={language.flag} 
+                    alt={language.alt} 
+                    width={20}
+                    height={20}
+                    className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover mr-2 sm:mr-3"
+                  />
+                  {language.name}
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </div>

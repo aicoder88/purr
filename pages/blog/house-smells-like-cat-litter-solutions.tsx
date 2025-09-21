@@ -18,13 +18,13 @@ export default function HouseSmellsLikeCatLitter() {
   return (
     <>
       <Head>
-        <title>House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell | {SITE_NAME}</title>
-        <meta name="description" content="Is your house smelling like cat litter? Discover 7 proven methods to control cat litter smell and eliminate strong urine odors from your litter box permanently." />
+        <title>Embarrassed Your House Smells Like Cat Litter? 7 Ways to Stop the Stink | {SITE_NAME}</title>
+        <meta name="description" content="Tired of guests noticing your house smells like cat litter? These 7 proven methods eliminate embarrassing litter box odors in 24 hours. Get your fresh-smelling home back!" />
         <meta name="keywords" content="house smells like cat litter, control cat litter smell, cat litter urine smell, strong urine smell cat litter box, getting cat litter smell out of house, house smells like litter box" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="House Smells Like Cat Litter? 7 Proven Solutions to Control Odors" />
-        <meta property="og:description" content="Stop your house from smelling like cat litter with these 7 proven odor control solutions. Eliminate strong urine smells permanently." />
+        <meta property="og:title" content="Stop Being Embarrassed - 7 Ways to Eliminate Cat Litter Smell" />
+        <meta property="og:description" content="No more apologizing to guests! These 7 proven methods eliminate embarrassing cat litter odors in 24 hours. Military-grade activated carbon destroys ammonia instantly." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
         <meta property="og:image" content={heroImage} />

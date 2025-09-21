@@ -31,6 +31,17 @@ This TODO tracks remaining items from the latest SEMrush crawl after implementin
 - [x] Internal linking depth: 14 pages with one incoming link; 10 need >3 clicks to reach [content/IA]
   - ✅ Expanded RelatedArticles component with 9 new cross-links, added contextual links within blog content to solutions and learn pages.
 
+- [x] Comprehensive SEO Optimization with Cat Odor Keywords [content/seo]
+  - ✅ Applied emotion-driven copywriting across homepage, product descriptions, and CTA sections
+  - ✅ Enhanced H1 tags with high-converting keywords: "Stop Being Embarrassed", "Military-Grade Solution", "7 Days of Fresh Air"
+  - ✅ Optimized meta descriptions with benefit-focused language targeting cat parent pain points
+  - ✅ Updated blog post titles and descriptions with compelling emotional hooks
+  - ✅ Enhanced solution pages with military-grade positioning and instant results messaging
+  - ✅ Removed money-back guarantee language per company policy
+  - ✅ Applied keywords: ammonia smell, litter box stink, embarrassing odor, fresh air, military-grade carbon
+  - ✅ Added keyword research file to project: `/docs/cat odor keywords.xlsx`
+  - ✅ Created SEO strategy documentation: `/docs/SEO_KEYWORD_STRATEGY.md` for future content reference
+
 ## Retailers Page & Menu Fixes
 
 - [x] Retailers: After form submit, change confirmation copy to "we will get back to you within 72 hours".
@@ -64,7 +75,9 @@ Next steps (proposed):
 - [x] TypeScript: Trial `noUnusedLocals` / `noUnusedParameters` in a branch; measure impact and fix hotspots (JS-0356) [perf].
   - ✅ Added `tsconfig.strict-unused.json` and `npm run check-types:unused` audit (report: `reports/typescript-unused-report.md`).
   - ✅ Cleared unused identifiers across `pages/thank-you.tsx`, `pages/b2b.tsx`, `pages/montreal.tsx`; backlog down to 147 issues / 61 files for follow-up.
-- [ ] A11y: Re-scan for interactive-role mismatches; ensure only semantic roles are used and `aria-*` pairs are valid [a11y].
+- [x] A11y: Re-scan for interactive-role mismatches; ensure only semantic roles are used and `aria-*` pairs are valid [a11y].
+  - ✅ Tightened language switcher semantics with unique ids + list markup; retained keyboard/ARIA wiring.
+  - ✅ Added keyboard support + ARIA labelling for live purchase notifications; verified `npm run lint` (warnings only).
 - [ ] RegExp: Review any flagged `.match/.exec` patterns; prefer `regex.test` for boolean checks and ensure global flags are correct (JS-D007) [perf].
 - [ ] Re-run perf/static analysis after above changes; capture deltas and prioritize any remaining high-count rules [qa].
 

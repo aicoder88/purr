@@ -14,13 +14,13 @@ export default function UsingDeodorizersWithKittens() {
   return (
     <>
       <Head>
-        <title>Using Cat Litter Deodorizers with Kittens: A Care Guide | {SITE_NAME}</title>
-        <meta name="description" content="Learn how households use fragrance-free, activated carbon deodorizers around kittens. See what to consider, when to introduce, and how to minimize exposure." />
+        <title>Is Cat Litter Deodorizer Safe for Kittens? Complete Parent Guide | {SITE_NAME}</title>
+        <meta name="description" content="Worried about kitten safety with litter deodorizers? This complete guide shows exactly when and how to safely eliminate litter box smell with kittens. Military-grade safety for tiny paws!" />
         <meta name="keywords" content="cat litter deodorizer kittens, kitten litter care, natural cat litter additive, fragrance-free cat deodorizer, kitten health" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Using Cat Litter Deodorizers with Kittens: A Care Guide" />
-        <meta property="og:description" content="Guidance on introducing fragrance-free deodorizers around kittens — what to consider and when to start." />
+        <meta property="og:title" content="Is Cat Litter Deodorizer Safe for Kittens? Complete Safety Guide" />
+        <meta property="og:description" content="Worried kitten parents: This guide shows exactly when it's safe to eliminate litter box smell with kittens. Natural, chemical-free protection for tiny paws!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
         <meta property="og:image" content={heroImage} />

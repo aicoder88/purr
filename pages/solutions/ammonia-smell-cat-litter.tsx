@@ -2,8 +2,8 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
 export default function ammoniasmellcatlitterPage() {
-  const seoTitle = 'Ammonia Smell from Cat Litter Solution | Purrify Activated Carbon';
-  const seoDescription = 'Effective solution for ammonia smell from cat litter. Purrify neutralizes ammonia at the source with activated carbon. Works with any litter brand.';
+  const seoTitle = 'Stop Embarrassing Ammonia Smell from Cat Litter - Military-Grade Solution | Purrify';
+  const seoDescription = 'Tired of that sharp ammonia smell hitting you when you open the litter box? This military-grade activated carbon destroys ammonia molecules instantly. No more holding your breath!';
   
   return (
     <>
@@ -13,7 +13,7 @@ export default function ammoniasmellcatlitterPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'ammonia smell cat litter, cat odor control, activated carbon, natural solution',
+            content: 'ammonia smell cat litter, litter box stink, cat urine odor, activated carbon deodorizer, eliminate ammonia smell instantly, military grade carbon',
           },
         ]}
       />
@@ -22,15 +22,15 @@ export default function ammoniasmellcatlitterPage() {
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
-              Ammonia Smell from Cat Litter
+              Stop That Sharp Ammonia Smell!
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
-              Complete solution for ammonia smell from cat litter
+              Finally! A solution that destroys ammonia smell instead of masking it. Your nose (and your guests) will thank you.
             </p>
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
-              <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">Purrify neutralizes ammonia at the source with activated carbon</p>
+              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Military-Grade Ammonia Destroyer</h2>
+              <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">This isn't your typical air freshener. Purrify uses the same activated carbon grade found in military gas masks to destroy ammonia molecules instantly.</p>
 
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">
                 <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why Ammonia Smell Develops</h3>
@@ -62,11 +62,11 @@ export default function ammoniasmellcatlitterPage() {
                 </div>
               </div>
               
-              <Link 
+              <Link
                 href="/products/trial-size"
                 className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
               >
-                Try Purrify Risk-Free
+                Get Purrify Now - Stop The Stink
               </Link>
             </div>
           </div>

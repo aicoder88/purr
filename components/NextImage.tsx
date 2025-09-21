@@ -1,17 +1,6 @@
 import Image, { ImageProps } from 'next/image';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-// Define the image dimensions type from the JSON file
-interface ImageDimensions {
-  [key: string]: {
-    width: number;
-    height: number;
-    webp: string;
-    avif: string;
-    optimized: string;
-  };
-}
-
 interface NextImageProps extends Omit<ImageProps, 'src' | 'alt' | 'onError'> {
   src: string;
   alt: string;
@@ -114,9 +103,6 @@ export default function NextImage({
     if (baseName) {
       // First check if the path already includes optimized
       if (!imageSrc.includes('/optimized/')) {
-        // Try to use the original extension first as a fallback
-        const ext = imageSrc.split('.').pop()?.toLowerCase() || 'jpg';
-        
         // Create both encoded and sanitized versions of the basename
         const encodedBaseName = encodeURIComponent(baseName);
         const sanitizedBaseName = baseName.replace(/\s+/g, '-');

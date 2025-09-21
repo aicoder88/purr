@@ -279,3 +279,16 @@ Document every session in `/CHANGELOG.md`:
 ---
 
 **Code Quality Promise:** All code output will be production-ready with zero lint warnings, complete TypeScript compliance, full dark mode coverage, and performance optimized.
+
+## SEO & Content Creation Guidelines
+
+**ALWAYS reference keyword research before content updates:**
+- Primary file: `/docs/cat odor keywords.xlsx`
+- Strategy guide: `/docs/SEO_KEYWORD_STRATEGY.md`
+
+**Content optimization checklist:**
+- Target emotional pain points (embarrassment, frustration)
+- Use benefit-driven headlines with numbers
+- Include high-converting keywords naturally
+- Remove money-back guarantee language (company policy)
+- "Military-grade" is trust signal only, not SEO keyword

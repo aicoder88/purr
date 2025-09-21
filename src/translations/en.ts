@@ -3,7 +3,7 @@ import { COMMON_DESCRIPTIONS, FEATURE_DESCRIPTIONS } from './common';
 export const en = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Activated carbon cat litter additive that eliminates odors at the source.",
+  siteDescription: "Stop being embarrassed by cat litter smell! Military-grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
   
   // Navigation
   nav: {
@@ -37,37 +37,37 @@ export const en = {
   // Products
   products: {
     "purrify-17g": {
-      name: "Purrify 17g",
-      description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size."
+      name: "Purrify 17g Trial",
+      description: "Skeptical? Try This First!\nJust $4.99 to prove your litter box can smell fresh. See results in 24 hours. Perfect 'try before you buy' size."
     },
     "purrify-60g": {
-      name: "Purrify 60g",
-      description: "Ideal for One Cat\nOur most popular size for single-cat homes.\nOne month of freshness!"
+      name: "Purrify 60g Standard",
+      description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
     },
     "purrify-120g": {
-      name: "Purrify 120g",
-      description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control."
+      name: "Purrify 120g Family Pack",
+      description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },
 
   // Hero Section
   hero: {
-    catLitter: "Cat Litter",
-    rabbitLitter: "Rabbit Litter",
-    fridgeSmells: "Fridge smells",
-    ferretCage: "Ferret cage",
-    eliminateCatOdors: "Purrify - a litter box so fresh…",
-    instantly: "even YOU could purr!",
-    description: "Military-Grade Coconut Carbon Odor Elimination. One sprinkle = 7 days of air so fresh, guests won't believe you own cats. Same grade used in military gas masks - destroys ammonia molecules instantly.",
+    catLitter: "Cat Litter Odor Eliminator",
+    rabbitLitter: "Rabbit Litter Deodorizer",
+    fridgeSmells: "Fridge Odor Control",
+    ferretCage: "Ferret Cage Smell Killer",
+    eliminateCatOdors: "Finally! A Litter Box That Doesn't Smell…",
+    instantly: "Your Guests Will Never Know You Have Cats!",
+    description: "Tired of holding your breath? This military-grade activated carbon destroys ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
     socialProof: {
       trustNumber: "1,000+",
-      trustText: "cat owners trust Purrify",
-      ratingText: "4.8/5 from 138 reviews"
+      trustText: "cat parents say goodbye to litter box smell",
+      ratingText: "4.8/5 stars - 'My apartment doesn't stink anymore!'"
     },
     buttons: {
-      shopNow: "Try 17g Risk-Free - $24.95",
-      reviews: "⚗️ See the Science",
-      learnMore: "How It Works"
+      shopNow: "Stop The Stink - Try Risk-Free $24.95",
+      reviews: "⚗️ Proof It Works",
+      learnMore: "How It Kills Odor"
     },
     ariaLabels: {
       shopNow: "Shop Purrify products now",
@@ -91,28 +91,28 @@ export const en = {
   // Features
   features: {
     odorElimination: {
-      title: "Odor Elimination",
-      description: "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source."
+      title: "Destroys Ammonia Smell Instantly",
+      description: "Military-grade activated carbon doesn't just mask odors - it destroys ammonia molecules at the source. Your nose will thank you!"
     },
     catFriendly: {
-      title: "Cat-Friendly",
-      description: "Designed with cats in mind and made without added fragrances or dyes."
+      title: "100% Safe for Cats & Kittens",
+      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes. Safe enough for sensitive kittens, powerful enough for multiple cats."
     },
     longLastingFreshness: {
-      title: "Long-Lasting Freshness",
-      description: "A single sprinkle keeps your home odor-free for days. Enjoy continuous freshness without constant upkeep."
+      title: "7 Days of Fresh Air Guaranteed",
+      description: "One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy."
     },
     worksWithAnyLitter: {
-      title: "Works with Any Litter",
-      description: "Compatible with any litter type, so you don't have to switch what your cat already loves."
+      title: "Works with Your Cat's Favorite Litter",
+      description: "Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use."
     },
     natural: {
-      title: "Natural",
-      description: "Made from activated coconut shells, providing a natural solution because your cat's health comes first."
+      title: "Pure Coconut Shell Carbon",
+      description: "The same grade used in military gas masks, but made from sustainable coconut shells. Natural protection for your family and the planet."
     },
     costEffective: {
-      title: "Cost-Effective",
-      description: "Extends the life of your cat's litter by preventing odor buildup, saving you money and reducing waste."
+      title: "Saves Money on Litter",
+      description: "Extends litter life by preventing odor buildup. Use less, change less often, breathe easier. Your wallet will love it too."
     },
     freePurrify: {
       title: "Free Purrify",
@@ -126,22 +126,22 @@ export const en = {
   
   // How It Works
   howItWorks: {
-    simpleAs123: "Simple as 1-2-3",
+    simpleAs123: "Fresh Air in 60 Seconds - Simple as 1-2-3",
     steps: [
       {
         number: "01",
-        title: "Open the Bag",
-        description: "Pull off the label and unzip the bag"
+        title: "Open & Pour",
+        description: "Tear open the bag - your nose will immediately notice the difference! No assembly, no complicated instructions."
       },
       {
         number: "02",
-        title: "Sprinkle on top of your cat litter",
-        description: "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter."
+        title: "Sprinkle the Magic",
+        description: "Just sprinkle a thin layer on top of clean litter. Works with ANY brand - clay, crystal, clumping, you name it."
       },
       {
         number: "03",
-        title: "Mix & enjoy freshness!",
-        description: "Gently mix it into the top layer of the litter for maximum effectiveness."
+        title: "Breathe Easy & Smile!",
+        description: "Gently mix and watch (smell?) the magic happen. 7 days of fresh air starts NOW. Your guests will be amazed."
       }
     ],
     litterTypes: {
@@ -191,11 +191,11 @@ export const en = {
   
   // Call to Action
   cta: {
-    title: "Ready to Say Goodbye to Litter Box Odors Forever?",
-    subtitle: "Join 1,000+ happy customers who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee.",
-    buttonText: "ORDER NOW",
-    joinText: "Join 1,000+ Happy cat Families - Visit your local store",
-    guarantee: "30-day money-back guarantee"
+    title: "Stop Being Embarrassed by Cat Litter Smell!",
+    subtitle: "Join 1,000+ cat parents who finally have fresh-smelling homes. No more holding your breath, no more apologizing to guests. Get your confidence back - start breathing easy again.",
+    buttonText: "ELIMINATE THE STINK NOW",
+    joinText: "Join 1,000+ families with odor-free homes - Visit your local store",
+    guarantee: "Proven results you can smell (or can't smell!)"
   },
   
   // FAQ
@@ -1209,8 +1209,8 @@ export const en = {
   // Blog
   blog: {
     multiCat: {
-      title: "Best Multi-Cat Litter Deodorizer: Ultimate Odor Control Guide 2024",
-      description: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
+      title: "Multiple Cats = Litter Box Nightmare? 7 Ways to Stop the Overwhelming Smell",
+      description: "Overwhelmed by multiple cat litter box smell? These 7 proven methods eliminate even the strongest multi-cat ammonia odors. Stop dreading coming home to that awful stink!",
       category: "Multi-Cat Household Guide",
       publishDate: "Published September 16, 2024",
       readTime: "12 min read",

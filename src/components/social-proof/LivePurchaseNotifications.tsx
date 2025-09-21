@@ -210,6 +210,16 @@ export function LivePurchaseNotifications({
             animationDelay: `${index * 100}ms`,
             maxWidth: '320px'
           }}
+          role="button"
+          tabIndex={0}
+          aria-labelledby={`notification-${notification.id}-customer`}
+          aria-describedby={`notification-${notification.id}-product notification-${notification.id}-meta`}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              handleNotificationClick(notification);
+            }
+          }}
         >
           <div className="p-4 flex items-start space-x-3">
             {/* Product Icon */}
@@ -222,7 +232,10 @@ export function LivePurchaseNotifications({
             {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center space-x-1 mb-1">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                <p
+                  id={`notification-${notification.id}-customer`}
+                  className="text-sm font-medium text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                >
                   {notification.customerName}
                 </p>
                 {notification.verified && (
@@ -232,11 +245,17 @@ export function LivePurchaseNotifications({
                 )}
               </div>
               
-              <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-1">
+              <p
+                id={`notification-${notification.id}-product`}
+                className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-1"
+              >
                 purchased <span className="font-medium">{notification.product}</span>
               </p>
               
-              <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400">
+              <div
+                id={`notification-${notification.id}-meta`}
+                className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400"
+              >
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-3 h-3" />
                   <span>{notification.location}</span>

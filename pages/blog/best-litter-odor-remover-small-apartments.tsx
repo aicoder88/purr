@@ -18,13 +18,13 @@ export default function BestForSmallApartments() {
   return (
     <>
       <Head>
-        <title>Best Cat Litter Odor Remover for Small Apartments: Urban Solutions | {SITE_NAME}</title>
-        <meta name="description" content="Discover the most effective cat litter odor removers for small apartments. Expert tips for urban cat owners to maintain fresh air in limited spaces." />
+        <title>Apartment Smells Like Cat Litter? 5 Ways to Stop Neighbors from Noticing | {SITE_NAME}</title>
+        <meta name="description" content="Embarrassed your small apartment reeks of cat litter? These 5 proven methods eliminate odors in tiny spaces. Stop worrying about what neighbors and landlords think!" />
         <meta name="keywords" content="best cat litter odor remover for small apartments, apartment cat odor control, urban cat litter solutions, small space pet odor" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Best Cat Litter Odor Remover for Small Apartments: Urban Solutions" />
-        <meta property="og:description" content="Expert guide to controlling cat litter odors in small apartments and urban living spaces." />
+        <meta property="og:title" content="Stop Apartment Cat Litter Smell - 5 Ways Neighbors Won't Notice" />
+        <meta property="og:description" content="Small apartment reeking of cat litter? These 5 methods eliminate odors in tiny spaces. Military-grade activated carbon works even with thin walls!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
         <meta property="og:image" content={heroImage} />
@@ -45,8 +45,8 @@ export default function BestForSmallApartments() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Best Cat Litter Odor Remover for Small Apartments: Urban Solutions",
-            "description": "Discover the most effective cat litter odor removers for small apartments. Expert tips for urban cat owners to maintain fresh air in limited spaces.",
+            "headline": "Stop Apartment Cat Litter Smell - 5 Ways Neighbors Won't Notice",
+            "description": "Embarrassed your small apartment reeks of cat litter? These 5 proven methods eliminate odors in tiny spaces. Stop worrying about what neighbors and landlords think!",
             "author": {
               "@type": "Organization",
               "name": "Purrify"
