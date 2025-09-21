@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import type { MouseEvent as ReactMouseEvent } from 'react';
 import { Badge } from '../src/components/ui/badge';
 import { Container } from '../src/components/ui/container';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts';
@@ -101,6 +102,29 @@ export default function DriverNetworkPresentation() {
     localStorage.setItem('dn-presentation-slide', slideId);
   }, [trackNavigation, trackSlideView]);
 
+  const handleNavigatePrev = useCallback(() => navigateTab('prev'), [navigateTab]);
+  const handleNavigateNext = useCallback(() => navigateTab('next'), [navigateTab]);
+  const handleHideThumbnails = useCallback(() => setShowThumbnails(false), []);
+  const handleToggleThumbnails = useCallback(() => setShowThumbnails(prev => !prev), []);
+  const handleToggleSpeakerNotes = useCallback(() => setShowSpeakerNotes(prev => !prev), []);
+  const handleCloseSpeakerNotes = useCallback(() => setShowSpeakerNotes(false), []);
+  const handleToggleSearch = useCallback(() => setShowSearch(prev => !prev), []);
+  const handleCloseSearch = useCallback(() => setShowSearch(false), []);
+  const handleToggleAnalytics = useCallback(() => setShowAnalytics(prev => !prev), []);
+  const handleSlideSelect = useCallback((event: ReactMouseEvent<HTMLElement>) => {
+    const { tab } = event.currentTarget.dataset;
+    if (tab) {
+      goToSlide(tab);
+    }
+  }, [goToSlide]);
+  const handleSearchResultSelect = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
+    const { tab } = event.currentTarget.dataset;
+    if (tab) {
+      goToSlide(tab);
+      handleCloseSearch();
+    }
+  }, [goToSlide, handleCloseSearch]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -138,7 +162,7 @@ export default function DriverNetworkPresentation() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [navigateTab, goToSlide, showThumbnails, showSearch, showSpeakerNotes]);
+  }, [navigateTab, goToSlide, showThumbnails, showSearch, showSpeakerNotes, toggleFullscreen]);
 
   // Load saved progress
   useEffect(() => {
@@ -182,7 +206,7 @@ export default function DriverNetworkPresentation() {
     }
   }, [presentationStartTime]);
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(err => {
         console.error('Error attempting to enable fullscreen:', err);
@@ -192,7 +216,7 @@ export default function DriverNetworkPresentation() {
         console.error('Error attempting to exit fullscreen:', err);
       });
     }
-  };
+  }, []);
 
   // Listen for fullscreen changes
   useEffect(() => {
@@ -720,7 +744,7 @@ export default function DriverNetworkPresentation() {
                 </h3>
                 {isMobile && (
                   <button
-                    onClick={() => setShowThumbnails(false)}
+                    onClick={handleHideThumbnails}
                     className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                   >
                     ✕
@@ -754,7 +778,8 @@ export default function DriverNetworkPresentation() {
                   return (
                     <div
                       key={tab}
-                      onClick={() => goToSlide(tab)}
+                      data-tab={tab}
+                      onClick={handleSlideSelect}
                       className={`thumbnail-item p-3 rounded-lg border ${
                         activeTab === tab 
                           ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700 active' 
@@ -792,7 +817,7 @@ export default function DriverNetworkPresentation() {
           <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 dark:bg-gray-900/90 backdrop-blur-lg rounded-full px-6 py-3 border border-white/20 dark:border-gray-600/30 no-print">
             <div className="flex items-center space-x-4 text-white dark:text-white dark:text-gray-200">
               <button
-                onClick={() => navigateTab('prev')}
+                onClick={handleNavigatePrev}
                 className="p-2 hover:bg-white/20 rounded-full transition-all"
                 title="Previous slide"
               >
@@ -804,7 +829,7 @@ export default function DriverNetworkPresentation() {
               </div>
               
               <button
-                onClick={() => navigateTab('next')}
+                onClick={handleNavigateNext}
                 className="p-2 hover:bg-white/20 rounded-full transition-all"
                 title="Next slide"
               >
@@ -814,7 +839,7 @@ export default function DriverNetworkPresentation() {
               <div className="w-px h-6 bg-white/30"></div>
               
               <button
-                onClick={() => setShowThumbnails(!showThumbnails)}
+                onClick={handleToggleThumbnails}
                 className={`p-2 rounded-full transition-all ${showThumbnails ? 'bg-blue-500/30' : 'hover:bg-white/20'}`}
                 title="Toggle thumbnails"
               >
@@ -822,7 +847,7 @@ export default function DriverNetworkPresentation() {
               </button>
               
               <button
-                onClick={() => setShowSpeakerNotes(!showSpeakerNotes)}
+                onClick={handleToggleSpeakerNotes}
                 className={`p-2 rounded-full transition-all ${showSpeakerNotes ? 'bg-yellow-500/30' : 'hover:bg-white/20'}`}
                 title="Toggle speaker notes (N)"
               >
@@ -830,7 +855,7 @@ export default function DriverNetworkPresentation() {
               </button>
               
               <button
-                onClick={() => setShowSearch(!showSearch)}
+                onClick={handleToggleSearch}
                 className={`p-2 rounded-full transition-all ${showSearch ? 'bg-green-500/30' : 'hover:bg-white/20'}`}
                 title="Search slides (S)"
               >
@@ -838,7 +863,7 @@ export default function DriverNetworkPresentation() {
               </button>
               
               <button
-                onClick={() => setShowAnalytics(!showAnalytics)}
+                onClick={handleToggleAnalytics}
                 className={`p-2 rounded-full transition-all ${showAnalytics ? 'bg-purple-500/30' : 'hover:bg-white/20'}`}
                 title="View analytics"
               >
@@ -874,14 +899,14 @@ export default function DriverNetworkPresentation() {
                 
                 <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1">
                   <button
-                    onClick={() => navigateTab('prev')}
+                    onClick={handleNavigatePrev}
                     className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Previous slide (←)"
                   >
                     ←
                   </button>
                   <button
-                    onClick={() => navigateTab('next')}
+                    onClick={handleNavigateNext}
                     className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Next slide (→)"
                   >
@@ -920,7 +945,8 @@ export default function DriverNetworkPresentation() {
                   {tabs.map((tab, index) => (
                     <button
                       key={tab}
-                      onClick={() => goToSlide(tab)}
+                      data-tab={tab}
+                      onClick={handleSlideSelect}
                       className={`w-1.5 h-1.5 rounded-full transition-all duration-300 hover:scale-150 ${
                         activeTab === tab 
                           ? 'bg-[#276EF1] w-4 pulse-indicator' 
@@ -937,7 +963,7 @@ export default function DriverNetworkPresentation() {
               {/* Right Controls */}
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => setShowThumbnails(!showThumbnails)}
+                  onClick={handleToggleThumbnails}
                   className={`p-2 rounded transition-all ${showThumbnails 
                     ? 'bg-blue-500/20 text-blue-300' 
                     : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
@@ -947,7 +973,7 @@ export default function DriverNetworkPresentation() {
                 </button>
                 
                 <button
-                  onClick={() => setShowSpeakerNotes(!showSpeakerNotes)}
+                  onClick={handleToggleSpeakerNotes}
                   className={`p-2 rounded transition-all ${showSpeakerNotes 
                     ? 'bg-yellow-500/20 text-yellow-300' 
                     : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
@@ -957,7 +983,7 @@ export default function DriverNetworkPresentation() {
                 </button>
                 
                 <button
-                  onClick={() => setShowSearch(!showSearch)}
+                  onClick={handleToggleSearch}
                   className={`p-2 rounded transition-all ${showSearch 
                     ? 'bg-green-500/20 text-green-300' 
                     : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
@@ -967,7 +993,7 @@ export default function DriverNetworkPresentation() {
                 </button>
                 
                 <button
-                  onClick={() => setShowAnalytics(!showAnalytics)}
+                  onClick={handleToggleAnalytics}
                   className={`p-2 rounded transition-all ${showAnalytics 
                     ? 'bg-purple-500/20 text-purple-300' 
                     : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
@@ -1042,7 +1068,7 @@ export default function DriverNetworkPresentation() {
                   Search Slides
                 </h3>
                 <button
-                  onClick={() => setShowSearch(false)}
+                  onClick={handleCloseSearch}
                   className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
                 >
                   ✕
@@ -1093,10 +1119,8 @@ export default function DriverNetworkPresentation() {
                         return (
                           <div
                             key={slideId}
-                            onClick={() => {
-                              goToSlide(slideId);
-                              setShowSearch(false);
-                            }}
+                            data-tab={slideId}
+                            onClick={handleSearchResultSelect}
                             className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer transition-colors"
                           >
                             <div className="flex items-center space-x-3">
@@ -1154,7 +1178,7 @@ export default function DriverNetworkPresentation() {
                   Speaker Notes - Slide {tabs.indexOf(activeTab) + 1}
                 </h3>
                 <button
-                  onClick={() => setShowSpeakerNotes(false)}
+                  onClick={handleCloseSpeakerNotes}
                   className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-200 transition-colors"
                 >
                   ✕
@@ -1892,7 +1916,7 @@ export default function DriverNetworkPresentation() {
                 {/* Navigation Buttons */}
                 <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
                   <button
-                    onClick={() => navigateTab('prev')}
+                    onClick={handleNavigatePrev}
                     className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>←</span>
@@ -1909,7 +1933,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <button
-                    onClick={() => navigateTab('next')}
+                    onClick={handleNavigateNext}
                     className="flex items-center space-x-2 px-6 py-3 bg-[#276EF1] hover:bg-[#1E5DD6] dark:bg-[#276EF1] dark:hover:bg-[#1E5DD6] text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>Next</span>
@@ -2049,7 +2073,7 @@ export default function DriverNetworkPresentation() {
                 {/* Navigation Buttons */}
                 <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
                   <button
-                    onClick={() => navigateTab('prev')}
+                    onClick={handleNavigatePrev}
                     className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>←</span>
@@ -2066,7 +2090,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <button
-                    onClick={() => navigateTab('next')}
+                    onClick={handleNavigateNext}
                     className="flex items-center space-x-2 px-6 py-3 bg-[#276EF1] hover:bg-[#1E5DD6] dark:bg-[#276EF1] dark:hover:bg-[#1E5DD6] text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>Next</span>
@@ -3174,7 +3198,7 @@ export default function DriverNetworkPresentation() {
                 {/* Navigation Buttons */}
                 <div className="flex justify-between items-center pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
                   <button
-                    onClick={() => navigateTab('prev')}
+                    onClick={handleNavigatePrev}
                     className="flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>←</span>
@@ -3191,7 +3215,8 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <button
-                    onClick={() => goToSlide('agenda-overview')}
+                    data-tab="agenda-overview"
+                    onClick={handleSlideSelect}
                     className="flex items-center space-x-2 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700 text-white dark:text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
                   >
                     <span>🔄</span>

@@ -137,6 +137,14 @@ export function Footer() {
                   {t.nav.blog}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/customer/portal"
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Customer Portal
+                </Link>
+              </li>
             </ul>
           </div>
 

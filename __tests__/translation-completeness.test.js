@@ -216,7 +216,6 @@ describe('Translation Completeness', () => {
     
     test('placeholder format consistency', () => {
       // Check that placeholders use consistent format across locales
-      const placeholderPattern = /\{\{\s*\w+\s*\}\}/g;
       
       for (const section of ['freeTrialPage', 'contactPage', 'faqPage']) {
         const placeholders = {};

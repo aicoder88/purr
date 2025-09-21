@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 const CaseStudiesPage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   const caseStudies = [
     {
