@@ -112,17 +112,17 @@ export default function HowToUseLitterDeodorizer() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">How to Use Deodorizer</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">How to Use Deodorizer</li>
               </ol>
             </nav>
 
             {/* Article Header */}
             <header className="mb-12 text-center">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 How-To Guide
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -185,7 +185,7 @@ export default function HowToUseLitterDeodorizer() {
               <div className="space-y-8 mb-12">
                 {/* Step 1 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
                     1
                   </div>
                   <div className="flex-1">
@@ -194,7 +194,7 @@ export default function HowToUseLitterDeodorizer() {
                       Begin with a completely clean, empty litter box. Remove all old litter and wash the box 
                       with mild soap and water. Dry thoroughly before proceeding.
                     </p>
-                    <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-600 p-4">
                       <p className="text-blue-800 dark:text-blue-200 text-sm">
                         <strong>Pro Tip:</strong> A clean starting surface ensures maximum contact between 
                         the deodorizer and odor-causing compounds.
@@ -205,7 +205,7 @@ export default function HowToUseLitterDeodorizer() {
 
                 {/* Step 2 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
                     2
                   </div>
                   <div className="flex-1">
@@ -224,7 +224,7 @@ export default function HowToUseLitterDeodorizer() {
 
                 {/* Step 3 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
                     3
                   </div>
                   <div className="flex-1">
@@ -233,7 +233,7 @@ export default function HowToUseLitterDeodorizer() {
                       This is the most critical step. Sprinkle the <strong>activated carbon litter additive</strong> 
                       evenly across the entire litter surface. Use the following amounts:
                     </p>
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                    <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 mb-4">
                       <h4 className="font-bold text-yellow-900 dark:text-yellow-100 mb-2">📏 Recommended Amounts:</h4>
                       <ul className="text-yellow-800 dark:text-yellow-200 space-y-1">
                         <li><strong>Small litter box:</strong> 1 tablespoon</li>
@@ -247,7 +247,7 @@ export default function HowToUseLitterDeodorizer() {
 
                 {/* Step 4 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
                     4
                   </div>
                   <div className="flex-1">
@@ -256,7 +256,7 @@ export default function HowToUseLitterDeodorizer() {
                       Add another 1-2 inches of litter on top of the deodorizer. This creates a "sandwich" 
                       effect that maximizes odor control while keeping the additive in place.
                     </p>
-                    <div className="bg-green-50 border-l-4 border-green-400 p-4">
+                    <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 dark:border-green-600 p-4">
                       <p className="text-green-800 dark:text-green-200 text-sm">
                         <strong>Why This Works:</strong> The layered approach ensures the deodorizer 
                         contacts odors from both above and below, providing 360-degree protection.
@@ -267,7 +267,7 @@ export default function HowToUseLitterDeodorizer() {
 
                 {/* Step 5 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold">
                     5
                   </div>
                   <div className="flex-1">
@@ -285,7 +285,7 @@ export default function HowToUseLitterDeodorizer() {
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes to Avoid</h2>
               
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
                 <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ What NOT to Do</h3>
                 <div className="space-y-4 text-red-800 dark:text-red-200">
                   <div>
@@ -314,7 +314,7 @@ export default function HowToUseLitterDeodorizer() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-blue-50 p-6 rounded-lg">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-3">🔄 Regular Maintenance</h4>
                   <ul className="text-blue-800 dark:text-blue-200 space-y-2">
                     <li>• Reapply with each complete litter change</li>
@@ -323,7 +323,7 @@ export default function HowToUseLitterDeodorizer() {
                     <li>• Adjust amounts based on odor levels</li>
                   </ul>
                 </div>
-                <div className="bg-purple-50 p-6 rounded-lg">
+                <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-purple-900 dark:text-purple-100 mb-3">📅 Timing Guidelines</h4>
                   <ul className="text-purple-800 dark:text-purple-200 space-y-2">
                     <li>• Single cat: Every 7-10 days</li>
@@ -342,28 +342,28 @@ export default function HowToUseLitterDeodorizer() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">💡</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💡</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Storage Matters:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Keep your deodorizer in a cool, dry place in an airtight container.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">💡</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💡</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Ventilation Helps:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Ensure good airflow around the litter box area for best results.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">💡</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💡</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Quality Counts:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Choose premium activated carbon products for superior performance.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">💡</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💡</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Monitor and Adjust:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Increase frequency or amount if odors persist.</span>
@@ -371,14 +371,14 @@ export default function HowToUseLitterDeodorizer() {
                 </div>
               </div>
 
-              <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h4 className="font-bold text-[#FF3131] mb-3">🏆 Why Choose Purrify?</h4>
+              <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
+                <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">🏆 Why Choose Purrify?</h4>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   Purrify's premium coconut shell activated carbon is specifically designed for easy application 
                   and maximum effectiveness. Our fine granules distribute evenly and provide up to 7 days of 
                   superior odor control.
                 </p>
-                <Link href="/products" className="inline-block bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
+                <Link href="/products" className="inline-block bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 dark:hover:bg-[#FF6B6B]/90 transition-colors">
                   Shop Purrify Products →
                 </Link>
               </div>
@@ -420,7 +420,7 @@ export default function HowToUseLitterDeodorizer() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, consistency is key. Regular application and proper technique will give you 
-                the best results. <Link href="/products" className="text-[#FF3131] hover:underline font-medium">
+                the best results. <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
                 Try Purrify today</Link> and experience the difference that proper application can make!
               </p>
             </div>

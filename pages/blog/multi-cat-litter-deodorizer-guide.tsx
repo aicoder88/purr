@@ -111,9 +111,9 @@ export default function MultiCatLitterDeodorizerGuide() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
                 <li className="text-[#FF3131]">{t.blog.multiCat.breadcrumb}</li>
               </ol>
@@ -121,7 +121,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
             {/* Article Header */}
             <header className="mb-12 text-center">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 {t.blog.multiCat.category}
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -239,8 +239,8 @@ export default function MultiCatLitterDeodorizerGuide() {
                 the intensified odors; too much wastes product and can create dust.
               </p>
 
-              <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-[#FF3131] mb-4">📊 Exact Dosage Formula</h3>
+              <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
+                <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">📊 Exact Dosage Formula</h3>
                 <div className="space-y-4">
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
                     <div className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-2">Base Formula:</div>
@@ -581,40 +581,40 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
               </div>
 
-              <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#FF3131] mb-4">🏆 Why Purrify Is the #1 Choice for Multi-Cat Households</h3>
+              <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
+                <h3 className="text-2xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Is the #1 Choice for Multi-Cat Households</h3>
                 <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-200">
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Professional Strength:</strong> Used by catteries and shelters worldwide</div>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Multi-Cat Tested:</strong> Proven effective in 10+ cat environments</div>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Cost-Effective:</strong> 120g size perfect for 2+ cat households</div>
                     </div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Fragrance-Free & Simple:</strong> No added fragrances or dyes; no harsh additives</div>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Easy Application:</strong> Just sprinkle and mix - works with any litter</div>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-[#FF3131] font-bold">✓</span>
+                      <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
                       <div><strong>Satisfaction Guaranteed:</strong> 30-day money-back guarantee</div>
                     </div>
                   </div>
                 </div>
                 <div className="mt-6 text-center">
-                  <Link href="/products/standard" className="inline-block bg-[#FF3131] text-white dark:text-gray-100 px-8 py-3 rounded-lg hover:bg-[#FF3131]/90 transition-colors font-bold text-lg">
+                  <Link href="/products/standard" className="inline-block bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 px-8 py-3 rounded-lg hover:bg-[#FF3131]/90 dark:hover:bg-[#FF6B6B]/90 transition-colors font-bold text-lg">
                     Shop Multi-Cat Sizes →
                   </Link>
                 </div>
@@ -635,7 +635,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">What's the best litter deodorizer for 4+ cats?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     Activated carbon is the only deodorizer type that maintains effectiveness in large multi-cat
-                    households. <Link href="/blog/activated-carbon-litter-additive-benefits" className="text-[#FF3131] hover:underline">
+                    households. <Link href="/blog/activated-carbon-litter-additive-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">
                     Unlike baking soda or scented alternatives</Link>, activated carbon provides superior
                     ammonia absorption without becoming overwhelmed.
                   </p>
@@ -677,7 +677,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-3">🎯 Your Multi-Cat Success Plan</h3>
                 <ol className="text-green-800 dark:text-green-200 space-y-2">
                   <li><strong>1. Calculate your dosage:</strong> 1 teaspoon per cat per box</li>
-                  <li><strong>2. Choose the right size:</strong> <Link href="/products/standard" className="text-[#FF3131] hover:underline">120g for 2+ cats</Link>, perfect for multi-cat households</li>
+                  <li><strong>2. Choose the right size:</strong> <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">120g for 2+ cats</Link>, perfect for multi-cat households</li>
                   <li><strong>3. Establish your routine:</strong> Morning scoop + evening maintenance</li>
                   <li><strong>4. Monitor and adjust:</strong> Increase frequency if needed during high-use periods</li>
                   <li><strong>5. Stay consistent:</strong> Daily maintenance prevents compound odor buildup</li>
@@ -686,7 +686,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience odor-free multi-cat living?
-                <Link href="/products/standard" className="text-[#FF3131] hover:underline font-medium">
+                <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
                 Start with Purrify's 120g multi-cat size</Link> and discover why thousands of multi-cat
                 households trust activated carbon technology for their odor control needs.
               </p>
