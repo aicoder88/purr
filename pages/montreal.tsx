@@ -232,8 +232,14 @@ export default function Montreal() {
             {/* Pattes et Griffes - Sainte-Thérèse */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
+                <div className="w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
+                    width={56}
+                    height={56}
+                    className="w-14 h-14 object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
@@ -366,8 +372,14 @@ export default function Montreal() {
             {/* Pattes et Griffes - Cartier Ouest */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
+                <div className="w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
+                    width={56}
+                    height={56}
+                    className="w-14 h-14 object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>
@@ -612,8 +624,14 @@ export default function Montreal() {
             {/* Pattes et Griffes - Marche Centrale */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-white dark:text-gray-100 font-bold text-sm">P&G</span>
+                <div className="w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <OptimizedImage
+                    src="https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg"
+                    alt="Pattes et Griffes Logo"
+                    width={56}
+                    height={56}
+                    className="w-14 h-14 object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold">Pattes et Griffes</h3>

@@ -10,6 +10,12 @@ export default function HowToUseDeodorizer() {
   const pageDescription = 'Learn how to use cat litter deodorizer additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control effectiveness.';
   const canonicalUrl = 'https://www.purrify.ca/learn/how-to-use-deodorizer';
 
+  // Unique images for how-to guide
+  const heroImage = 'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80'; // Cat owner using litter box
+  const sectionImage1 = 'https://images.unsplash.com/photo-1574231164645-d6f0e8553590?auto=format&fit=crop&w=1600&q=80'; // Clean litter box setup
+  const sectionImage2 = 'https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=1600&q=80'; // Cat using fresh litter
+  const solutionImage = 'https://images.unsplash.com/photo-1570018144715-43110363d70a?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
+
   return (
     <Layout>
       <NextSeo
@@ -23,7 +29,7 @@ export default function HowToUseDeodorizer() {
           description: pageDescription,
           images: [
             {
-              url: 'https://www.purrify.ca/images/how-to-use-guide.jpg',
+              url: heroImage,
               width: 1200,
               height: 630,
               alt: 'Step-by-step guide showing how to use cat litter deodorizer additive',
@@ -50,6 +56,17 @@ export default function HowToUseDeodorizer() {
         </header>
 
         <div className="prose prose-lg max-w-none">
+          {/* Hero Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={heroImage}
+              alt="Cat owner maintaining clean litter box with proper technique"
+              width={800}
+              height={400}
+              className="w-full h-64 object-cover rounded-lg shadow-lg"
+            />
+          </div>
+
           <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Start Guide</h2>
             <p className="text-green-800 dark:text-green-200 mb-4">
@@ -150,6 +167,17 @@ export default function HowToUseDeodorizer() {
             </div>
           </div>
 
+          {/* Section Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={sectionImage1}
+              alt="Clean litter box ready for proper deodorizer application"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
+          </div>
+
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Common Mistakes to Avoid</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -228,6 +256,17 @@ export default function HowToUseDeodorizer() {
                 amounts and adjust based on results.
               </p>
             </div>
+          </div>
+
+          {/* Cat Usage Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={sectionImage2}
+              alt="Cat comfortably using well-maintained litter box"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Compatibility with Different Litter Types</h2>
@@ -321,6 +360,17 @@ export default function HowToUseDeodorizer() {
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Solution Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={solutionImage}
+              alt="Happy cat owner enjoying odor-free home environment"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 text-center">

@@ -3,7 +3,8 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { Badge } from '../../src/components/ui/badge';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import type { MouseEvent } from 'react';
 import { 
   Smartphone, 
   Shield, 
@@ -21,12 +22,32 @@ import {
 import { PurchaseNotifications } from '../../src/components/social-proof/PurchaseNotifications';
 import { TrustBadges } from '../../src/components/social-proof/TrustBadges';
 import { TouchGallery } from '../../src/components/mobile/TouchGallery';
-import MobilePayment, { ExpressCheckoutButtons } from '../../src/components/mobile/MobilePayment';
+import MobilePayment from '../../src/components/mobile/MobilePayment';
 import { FastCheckout } from '../../src/components/mobile/FastCheckout';
 
 const Stage5DemoPage: NextPage = () => {
   const [activeDemo, setActiveDemo] = useState<string>('overview');
   const [showNotifications, setShowNotifications] = useState(true);
+
+  const toggleNotifications = useCallback(() => {
+    setShowNotifications(prev => !prev);
+  }, []);
+
+  const handleSelectDemo = useCallback((demoId: string) => {
+    setActiveDemo(demoId);
+  }, []);
+
+  const handleDemoButtonClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const { demoId } = event.currentTarget.dataset;
+    if (!demoId) return;
+    handleSelectDemo(demoId);
+  }, [handleSelectDemo]);
+
+  const handleCardClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const { demoId } = event.currentTarget.dataset;
+    if (!demoId) return;
+    handleSelectDemo(demoId);
+  }, [handleSelectDemo]);
 
   // Sample product images for TouchGallery demo
   const sampleImages = [
@@ -111,12 +132,12 @@ const Stage5DemoPage: NextPage = () => {
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     Real-time notifications appear in the bottom-left corner
                   </p>
-                  <Button 
-                    onClick={() => setShowNotifications(!showNotifications)}
-                    variant="outline"
-                  >
-                    {showNotifications ? 'Hide' : 'Show'} Notifications
-                  </Button>
+          <Button 
+            onClick={toggleNotifications}
+            variant="outline"
+          >
+            {showNotifications ? 'Hide' : 'Show'} Notifications
+          </Button>
                 </div>
               </div>
               
@@ -284,7 +305,8 @@ const Stage5DemoPage: NextPage = () => {
                 <div
                   key={feature.id}
                   className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => setActiveDemo(feature.id)}
+                  data-demo-id={feature.id}
+                  onClick={handleCardClick}
                 >
                   <div className="flex items-center space-x-3 mb-4">
                     <div className={`w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center`}>
@@ -337,7 +359,8 @@ const Stage5DemoPage: NextPage = () => {
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
               variant={activeDemo === 'overview' ? 'default' : 'outline'}
-              onClick={() => setActiveDemo('overview')}
+              data-demo-id="overview"
+              onClick={handleDemoButtonClick}
               className={activeDemo === 'overview' ? 'bg-[#5B2EFF] text-white dark:text-gray-100' : ''}
             >
               Overview
@@ -346,7 +369,8 @@ const Stage5DemoPage: NextPage = () => {
               <Button
                 key={feature.id}
                 variant={activeDemo === feature.id ? 'default' : 'outline'}
-                onClick={() => setActiveDemo(feature.id)}
+                data-demo-id={feature.id}
+                onClick={handleDemoButtonClick}
                 className={activeDemo === feature.id ? 'bg-[#5B2EFF] text-white dark:text-gray-100' : ''}
               >
                 {feature.title}

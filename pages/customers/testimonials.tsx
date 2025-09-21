@@ -5,11 +5,17 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { ArrowLeft, Star, Quote, Heart, Users, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import type { MouseEvent } from 'react';
 
 export default function TestimonialsPage() {
   const { t, locale } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const handleCategoryButtonClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const { categoryId } = event.currentTarget.dataset;
+    if (!categoryId) return;
+    setSelectedCategory(categoryId);
+  }, []);
   
   const pageTitle = `Customer Testimonials - ${SITE_NAME} Reviews & Success Stories`;
   const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why 1,000+ trust Purrify.";
@@ -232,7 +238,8 @@ export default function TestimonialsPage() {
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
+                  data-category-id={category.id}
+                  onClick={handleCategoryButtonClick}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
                       ? 'bg-[#FF3131] text-white dark:text-gray-100 shadow-lg'

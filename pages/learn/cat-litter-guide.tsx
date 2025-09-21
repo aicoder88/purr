@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { 
   CheckCircle, 
   XCircle, 
@@ -20,6 +21,12 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const CatLitterGuidePage: NextPage = () => {
   const { t, locale } = useTranslation();
+
+  // Unique images for cat litter guide - different from all other posts
+  const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80'; // Modern litter box setup
+  const sectionImage1 = 'https://images.unsplash.com/photo-1615789591457-74a63395c990?auto=format&fit=crop&w=1600&q=80'; // Different litter types
+  const sectionImage2 = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner maintenance
+  const solutionImage = 'https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat household
 
   const litterTypes = [
     {
@@ -116,6 +123,12 @@ const CatLitterGuidePage: NextPage = () => {
         <meta property="og:description" content="Everything you need to know about cat litter - from choosing the right type to maintenance tips and problem-solving." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Complete guide to cat litter types and maintenance tips" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={heroImage} />
         
         {/* Structured Data */}
         <script
@@ -137,6 +150,12 @@ const CatLitterGuidePage: NextPage = () => {
                   "@type": "ImageObject",
                   "url": "https://www.purrify.ca/optimized/purrify-logo-text.webp"
                 }
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": heroImage,
+                "width": 1200,
+                "height": 630
               },
               "datePublished": "2024-01-01",
               "dateModified": "2024-01-01"
@@ -182,6 +201,21 @@ const CatLitterGuidePage: NextPage = () => {
                   </Button>
                 </Link>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Hero Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <OptimizedImage
+                src={heroImage}
+                alt="Modern cat litter box setup showing different litter types and maintenance tools"
+                width={800}
+                height={400}
+                className="w-full h-64 object-cover rounded-lg shadow-lg"
+              />
             </div>
           </Container>
         </section>
@@ -246,6 +280,21 @@ const CatLitterGuidePage: NextPage = () => {
           </Container>
         </section>
 
+        {/* Section Image - Different Litter Types */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <OptimizedImage
+                src={sectionImage1}
+                alt="Various cat litter types displayed for comparison"
+                width={600}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
+            </div>
+          </Container>
+        </section>
+
         {/* Maintenance Tips */}
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
@@ -272,6 +321,21 @@ const CatLitterGuidePage: NextPage = () => {
                   </p>
                 </div>
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Section Image - Cat Owner Maintenance */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <OptimizedImage
+                src={sectionImage2}
+                alt="Cat owner performing proper litter box maintenance routine"
+                width={600}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
             </div>
           </Container>
         </section>
@@ -307,6 +371,21 @@ const CatLitterGuidePage: NextPage = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Solution Image - Happy Multi-Cat Household */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <OptimizedImage
+                src={solutionImage}
+                alt="Happy multi-cat household with clean, odor-free environment"
+                width={600}
+                height={300}
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
             </div>
           </Container>
         </section>

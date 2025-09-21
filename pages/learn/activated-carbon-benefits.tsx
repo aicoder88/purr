@@ -11,6 +11,12 @@ export default function ActivatedCarbonBenefits() {
   const pageDescription = 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination, safety, and why activated carbon is the best cat litter deodorizer.';
   const canonicalUrl = 'https://purrify.ca/learn/activated-carbon-benefits';
 
+  // Unique images for science guide - different from other posts
+  const heroImage = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Microscopic/scientific view
+  const sectionImage1 = 'https://images.unsplash.com/photo-1582719201952-c6832d046536?auto=format&fit=crop&w=1600&q=80'; // Modern laboratory/science
+  const sectionImage2 = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy cats in clean home
+  const solutionImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80'; // Content cat in bright home
+
   return (
     <Layout>
       <NextSeo
@@ -24,7 +30,7 @@ export default function ActivatedCarbonBenefits() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/activated-carbon-science.jpg',
+              url: heroImage,
               width: 1200,
               height: 630,
               alt: 'Activated Carbon Molecular Structure for Cat Litter Odor Control',
@@ -52,7 +58,7 @@ export default function ActivatedCarbonBenefits() {
           dateModified: new Date().toISOString(),
           wordCount: 2800,
           readingTime: 12,
-          image: 'https://purrify.ca/images/activated-carbon-science.jpg'
+          image: heroImage
         }}
       />
       
@@ -68,6 +74,17 @@ export default function ActivatedCarbonBenefits() {
         </header>
 
         <div className="prose prose-lg max-w-none">
+          {/* Hero Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={heroImage}
+              alt="Scientific view of activated carbon molecular structure for odor control"
+              width={800}
+              height={400}
+              className="w-full h-64 object-cover rounded-lg shadow-lg"
+            />
+          </div>
+
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-500 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Answer</h2>
             <p className="text-blue-800 dark:text-blue-200">
@@ -114,6 +131,17 @@ export default function ActivatedCarbonBenefits() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Science Section Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={sectionImage1}
+              alt="Modern laboratory showing scientific research into odor elimination"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Top 8 Activated Carbon Litter Additive Benefits</h2>
@@ -201,6 +229,17 @@ export default function ActivatedCarbonBenefits() {
             </table>
           </div>
 
+          {/* Happy Cats Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={sectionImage2}
+              alt="Multiple cats living happily in clean, odor-free home environment"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
+          </div>
+
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
@@ -262,6 +301,17 @@ export default function ActivatedCarbonBenefits() {
               <h3 className="text-lg font-semibold mb-2">Will my cat notice the difference?</h3>
               <p>Most cats don't notice activated carbon since it's odorless and doesn't change litter texture significantly. Some cats actually prefer the improved odor control.</p>
             </div>
+          </div>
+
+          {/* Solution Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={solutionImage}
+              alt="Content cat in bright, fresh home showcasing successful odor control"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
           </div>
 
           <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8 text-center">

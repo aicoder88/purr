@@ -2,11 +2,17 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
 export default function UsingDeodorizersWithKittensLearn() {
   const pageTitle = 'Using Cat Litter Deodorizers with Kittens: A Care Guide';
   const pageDescription = 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.';
   const canonicalUrl = 'https://purrify.ca/learn/using-deodorizers-with-kittens';
+
+  // Unique images for kitten safety guide - focused on young cats
+  const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Adorable kitten
+  const sectionImage1 = 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1600&q=80'; // Kittens playing safely
+  const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy kitten with owner
 
   return (
     <Layout>
@@ -21,7 +27,7 @@ export default function UsingDeodorizersWithKittensLearn() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/kitten-safety.jpg',
+              url: heroImage,
               width: 1200,
               height: 630,
               alt: 'Kitten using litter box; guidance for households with young cats',
@@ -46,6 +52,17 @@ export default function UsingDeodorizersWithKittensLearn() {
         </header>
 
         <div className="prose prose-lg max-w-none">
+          {/* Hero Image - Adorable Kitten */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={heroImage}
+              alt="Adorable kitten in safe, clean environment"
+              width={800}
+              height={400}
+              className="w-full h-64 object-cover rounded-lg shadow-lg"
+            />
+          </div>
+
           <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Answer</h2>
             <p className="text-green-800 dark:text-green-200 mb-4">
@@ -57,12 +74,34 @@ export default function UsingDeodorizersWithKittensLearn() {
             </div>
           </div>
 
+          {/* Kittens Playing Safely Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={sectionImage1}
+              alt="Young kittens playing safely in clean household environment"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
+          </div>
+
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">What to Consider</h2>
           <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
             <li>Start with small amounts; increase gradually if well-tolerated</li>
             <li>Choose fragrance-free, low-dust options</li>
             <li>Monitor behavior and litter box habits for 24–48 hours</li>
           </ul>
+
+          {/* Happy Kitten with Owner Image */}
+          <div className="mb-8">
+            <OptimizedImage
+              src={solutionImage}
+              alt="Happy kitten with caring owner in safe home environment"
+              width={600}
+              height={300}
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+            />
+          </div>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Odor Control Around Kittens</h2>

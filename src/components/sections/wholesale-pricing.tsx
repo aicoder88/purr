@@ -1,12 +1,14 @@
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
 import { scrollToSection } from '../../lib/utils';
+import { useCallback, useMemo } from 'react';
 
 export function WholesalePricing() {
-  const { t } = useTranslation();
+  const handleScrollToRetailer = useCallback(() => {
+    scrollToSection('retailer-contact');
+  }, []);
 
-  const pricingTiers = [
+  const pricingTiers = useMemo(() => [
     {
       name: 'Starter Pack',
       description: 'Perfect for testing the waters',
@@ -54,7 +56,7 @@ export function WholesalePricing() {
       highlighted: false,
       badge: '🏆 Enterprise'
     }
-  ];
+  ], []);
 
   const formatCurrency = (n: number) => n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
@@ -149,7 +151,7 @@ export function WholesalePricing() {
               </ul>
 
               <Button
-                onClick={() => scrollToSection("retailer-contact")}
+                onClick={handleScrollToRetailer}
                 className={`w-full py-4 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                   tier.highlighted
                     ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white shadow-xl hover:shadow-2xl'
