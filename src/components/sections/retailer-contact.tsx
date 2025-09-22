@@ -494,7 +494,7 @@ export function RetailerContact() {
                       </div>
                     </div>
                     <p className="text-gray-700 dark:text-gray-200 italic mb-3">
-                      "Added $1,800/month revenue in our first quarter. Customers love it and keep coming back!"
+                      "Added $800/month revenue in our first quarter. Customers love it and keep coming back!"
                     </p>
                     <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">+145% sales growth</div>
                   </div>

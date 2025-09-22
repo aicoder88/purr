@@ -70,11 +70,6 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Fetch customer data and orders
-    fetchCustomerData();
-  }, [customerId, fetchCustomerData]);
-
   const fetchCustomerData = useCallback(async () => {
     try {
       setLoading(true);
@@ -181,6 +176,11 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       setLoading(false);
     }
   }, [customerId]);
+
+  useEffect(() => {
+    // Fetch customer data and orders
+    fetchCustomerData();
+  }, [customerId, fetchCustomerData]);
 
   const getStatusColor = (status: string) => {
     const colors = {

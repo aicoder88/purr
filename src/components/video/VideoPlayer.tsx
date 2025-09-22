@@ -329,7 +329,7 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
     setFilter(category);
   }, []);
 
-  const handleVideoSelect = useCallback((video: any) => {
+  const handleVideoSelect = useCallback((video: { id: string; src: string; poster?: string; title: string; description?: string; category?: string }) => {
     setSelectedVideo(video);
   }, []);
 
