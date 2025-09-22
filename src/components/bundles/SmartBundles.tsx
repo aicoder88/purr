@@ -411,7 +411,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
 
         {/* Bundles Grid */}
         <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-12">
-          {recommendedBundles.map((bundle, index) => (
+          {recommendedBundles.map((bundle) => (
             <Card
               key={bundle.id}
               className={`relative overflow-hidden transition-all duration-300 hover:shadow-2xl cursor-pointer ${

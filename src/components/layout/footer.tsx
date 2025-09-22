@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
 import { Container } from "../../components/ui/container";
-import { SITE_NAME, CONTACT_INFO } from "../../lib/constants";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { NewsletterSignup } from "../newsletter/NewsletterSignup";
@@ -11,7 +10,6 @@ import {
   Twitter,
   MapPin,
   Phone,
-  Mail,
 } from "lucide-react";
 
 export function Footer() {

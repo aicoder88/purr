@@ -1,11 +1,8 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
-import { OptimizedImage } from '../src/components/performance/OptimizedImage';
-import { SITE_NAME } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
-import { Button } from '../src/components/ui/button';
-import { MapPin, Phone, Clock, Globe, Star, Search, Navigation } from 'lucide-react';
+import { MapPin, Phone, Globe, Star, Search, Navigation } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 interface StockistLocation {
@@ -136,7 +133,7 @@ const STOCKIST_LOCATIONS: StockistLocation[] = [
 ];
 
 export default function Stockists() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');

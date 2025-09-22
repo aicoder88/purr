@@ -5,7 +5,6 @@ import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants'
 export default function Terms() {
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
   const canonicalUrl = 'https://www.purrify.ca/terms';
-  const currentYear = new Date().getFullYear();
   
   return (
     <>

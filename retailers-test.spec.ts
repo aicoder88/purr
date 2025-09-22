@@ -300,7 +300,6 @@ test.describe('Retailers Page Comprehensive Testing', () => {
     }
 
     // Check for proper heading hierarchy
-    const headings = await page.locator('h1, h2, h3, h4, h5, h6').allTextContents();
     console.log('📋 Heading hierarchy:');
     const headingElements = page.locator('h1, h2, h3, h4, h5, h6');
     const headingCount = await headingElements.count();

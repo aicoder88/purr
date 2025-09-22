@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
 import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
@@ -13,7 +13,7 @@ export function EnhancedProductComparison() {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
 
-  const handleAddToCart = async (productId: string) => {
+  const handleAddToCart = useCallback(async (productId: string) => {
     setAddingToCart(productId);
     try {
       addToCart(productId);
@@ -24,7 +24,19 @@ export function EnhancedProductComparison() {
     } finally {
       setTimeout(() => setAddingToCart(null), 1000);
     }
-  };
+  }, [addToCart]);
+
+  const handleMouseEnter = useCallback((productId: string) => {
+    setHoveredProduct(productId);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredProduct(null);
+  }, []);
+
+  const handleAddToCartClick = useCallback((productId: string) => {
+    handleAddToCart(productId);
+  }, [handleAddToCart]);
 
   const products = [
     {
@@ -141,8 +153,8 @@ export function EnhancedProductComparison() {
                 className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
                   hoveredProduct === product.id ? 'scale-[1.02]' : ''
                 } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
-                onMouseEnter={() => setHoveredProduct(product.id)}
-                onMouseLeave={() => setHoveredProduct(null)}
+                onMouseEnter={() => handleMouseEnter(product.id)}
+                onMouseLeave={handleMouseLeave}
               >
                 {/* Top Section with Badge and Popular Indicator */}
                 <div className="relative px-4 sm:px-6 pt-6 pb-2">
@@ -256,7 +268,7 @@ export function EnhancedProductComparison() {
                             ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl border-2 border-transparent'
                             : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white dark:text-gray-100 border-2 border-gray-200 dark:border-gray-500 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
                         }`}
-                        onClick={() => handleAddToCart(product.id)}
+                        onClick={() => handleAddToCartClick(product.id)}
                         disabled={!!addingToCart}
                       >
                         {addingToCart === product.id ? (

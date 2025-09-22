@@ -52,7 +52,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       author: "Pet Care Expert Team",
       date: new Date(now - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
       image: "/optimized/activated-carbon-vs-baking-soda.webp",
-      link: "/blog/activated-carbon-vs-baking-soda-additives"
+      link: "/blog/activated-carbon-vs-baking-soda-comparison"
     },
     {
       title: "Using Litter Deodorizers with Kittens: A Care Guide",

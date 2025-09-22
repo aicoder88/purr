@@ -36,7 +36,7 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
       criticalElements.forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(element => {
-          element.addEventListener('click', (e) => {
+          element.addEventListener('click', (_e) => {
             // Send custom event to heatmap tools
             if (typeof window !== 'undefined') {
               // Hotjar event

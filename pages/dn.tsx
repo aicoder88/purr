@@ -396,59 +396,9 @@ export default function DriverNetworkPresentation() {
     }
   };
 
-  const trackTimeOnSlide = useCallback((slideId: string, timeSpent: number) => {
-    setAnalytics(prev => ({
-      ...prev,
-      timeOnSlide: {
-        ...prev.timeOnSlide,
-        [slideId]: (prev.timeOnSlide[slideId] || 0) + timeSpent
-      }
-    }));
-  }, []);
 
-  const generateAnalyticsReport = useCallback(() => {
-    const totalViews = Object.values(analytics.slideViews).reduce((sum, views) => sum + views, 0);
-    const totalTimeSpent = Object.values(analytics.timeOnSlide).reduce((sum, time) => sum + time, 0);
-    const sessionDuration = (new Date().getTime() - analytics.sessionStartTime.getTime()) / 1000;
-    
-    const report = {
-      sessionSummary: {
-        sessionDuration: Math.round(sessionDuration),
-        totalSlideViews: totalViews,
-        totalTimeSpent: Math.round(totalTimeSpent),
-        navigationActions: analytics.navigationActions,
-        keyboardShortcuts: analytics.keyboardShortcuts,
-        touchGestures: analytics.touchGestures,
-        searchQueries: analytics.searchQueries.length
-      },
-      slideAnalytics: Object.entries(analytics.slideViews).map(([slideId, views]) => ({
-        slideId,
-        views,
-        timeSpent: Math.round(analytics.timeOnSlide[slideId] || 0),
-        averageTime: Math.round((analytics.timeOnSlide[slideId] || 0) / views)
-      })).sort((a, b) => b.views - a.views),
-      searchAnalytics: {
-        queries: analytics.searchQueries,
-        uniqueQueries: [...new Set(analytics.searchQueries)].length
-      }
-    };
-    
-    return report;
-  }, [analytics]);
 
-  const struggleMetrics = [
-    { label: 'Companies that fail', value: '73%', description: 'Within first 2 years of expansion' },
-    { label: 'Average build time', value: '18mo', description: 'To establish reliable network' },
-    { label: 'Infrastructure cost', value: '$2M+', description: 'Minimum viable network investment' },
-    { label: 'Market share lost', value: '45%', description: 'While building internal capabilities' }
-  ];
 
-  const partnerships = [
-    { name: 'Instacart', markets: 6, achievement: '100% on-time delivery' },
-    { name: 'Tesla', category: 'Automotive', achievement: '99.9% damage-free record' },
-    { name: 'BMW', category: 'Automotive', achievement: 'White-glove service' },
-    { name: 'SDSRX Medical', category: 'Healthcare', achievement: '18+ months zero incidents' }
-  ];
 
   const speakerNotes: { [key: string]: string[] } = {
     'agenda-overview': [

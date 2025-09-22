@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -136,13 +136,29 @@ const FAQPage: NextPage = () => {
     }))
   };
 
-  const toggleItem = (id: number) => {
-    setOpenItems(prev => 
-      prev.includes(id) 
+  const toggleItem = useCallback((id: number) => {
+    setOpenItems(prev =>
+      prev.includes(id)
         ? prev.filter(item => item !== id)
         : [...prev, id]
     );
-  };
+  }, []);
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  }, []);
+
+  const handleCategoryClick = useCallback((categoryId: string) => {
+    setSelectedCategory(categoryId);
+  }, []);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchTerm('');
+  }, []);
+
+  const handleToggleItem = useCallback((id: number) => {
+    toggleItem(id);
+  }, [toggleItem]);
 
   const filteredFAQs = faqItems.filter(item => {
     const matchesSearch = item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -351,7 +367,7 @@ const FAQPage: NextPage = () => {
                   type="text"
                   placeholder="Search for answers..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={handleSearchChange}
                   className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
                 />
               </div>
@@ -400,7 +416,7 @@ const FAQPage: NextPage = () => {
                   {categories.map((category) => (
                     <button
                       key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
+                      onClick={() => handleCategoryClick(category.id)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                         selectedCategory === category.id
                           ? 'bg-[#5B2EFF] text-white dark:text-gray-100'
@@ -431,7 +447,7 @@ const FAQPage: NextPage = () => {
                   </h3>
                   {searchTerm && (
                     <button
-                      onClick={() => setSearchTerm('')}
+                      onClick={handleClearSearch}
                       className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium"
                     >
                       Clear Search
@@ -443,7 +459,7 @@ const FAQPage: NextPage = () => {
                   {filteredFAQs.map((item) => (
                     <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-[#E0EFC7] dark:border-gray-700 overflow-hidden">
                       <button
-                        onClick={() => toggleItem(item.id)}
+                        onClick={() => handleToggleItem(item.id)}
                         className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                       >
                         <div className="flex-1">

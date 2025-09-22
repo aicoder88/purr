@@ -121,7 +121,7 @@ export default function ContactPage() {
         orderNumber: '',
         contactReason: 'general'
       });
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus({
         success: false,
         message: "Sorry, there was an error sending your message. Please try again or contact us directly."

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { NextSeo } from 'next-seo';
 import { CustomerAuth } from '../../src/components/customer/CustomerAuth';
 import { CustomerPortal } from '../../src/components/customer/CustomerPortal';
@@ -39,7 +39,7 @@ export default function CustomerPortalPage() {
     }
   };
 
-  const handleLogin = (customerData: Customer) => {
+  const handleLogin = useCallback((customerData: Customer) => {
     // Store session in localStorage with 24 hour expiry
     const session = {
       customer: customerData,
@@ -55,9 +55,9 @@ export default function CustomerPortalPage() {
         event_label: 'customer_portal'
       });
     }
-  };
+  }, []);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     // Clear session
     localStorage.removeItem('customer_session');
     setCustomer(null);
@@ -69,7 +69,7 @@ export default function CustomerPortalPage() {
         event_label: 'customer_portal'
       });
     }
-  };
+  }, []);
 
   if (loading) {
     return (

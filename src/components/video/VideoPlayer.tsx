@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 interface VideoPlayerProps {
   src: string;
@@ -36,6 +36,9 @@ export function VideoPlayer({
   const [duration, setDuration] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const handleReload = useCallback(() => {
+    window.location.reload();
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -151,7 +154,7 @@ export function VideoPlayer({
             <div className="text-red-500 dark:text-red-400 mb-2">❌</div>
             <p className="text-gray-600 dark:text-gray-300">Failed to load video</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={handleReload}
               className="mt-2 text-blue-600 dark:text-blue-400 hover:underline text-sm"
             >
               Try again
@@ -322,6 +325,14 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
   const [selectedVideo, setSelectedVideo] = useState(videos[0]);
   const [filter, setFilter] = useState<string>('all');
 
+  const handleFilterChange = useCallback((category: string) => {
+    setFilter(category);
+  }, []);
+
+  const handleVideoSelect = useCallback((video: any) => {
+    setSelectedVideo(video);
+  }, []);
+
   const categories = ['all', ...new Set(videos.map(v => v.category).filter(Boolean))] as string[];
   const filteredVideos = filter === 'all'
     ? videos
@@ -335,7 +346,7 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
           {categories.map(category => (
             <button
               key={category}
-              onClick={() => setFilter(category)}
+              onClick={() => handleFilterChange(category)}
               className={cn(
                 'px-4 py-2 rounded-full text-sm font-medium transition-colors',
                 filter === category
@@ -366,7 +377,7 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
           {filteredVideos.map(video => (
             <div
               key={video.id}
-              onClick={() => setSelectedVideo(video)}
+              onClick={() => handleVideoSelect(video)}
               className={cn(
                 'flex space-x-3 p-3 rounded-lg cursor-pointer transition-colors',
                 selectedVideo.id === video.id

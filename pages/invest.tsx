@@ -2,30 +2,47 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import NextImage from '../components/NextImage';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
 
 export default function InvestorRelations() {
   const [activeTab, setActiveTab] = useState('overview');
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
-  const navigateTab = (direction: 'prev' | 'next') => {
+  const navigateTab = useCallback((direction: 'prev' | 'next') => {
     const tabs = ['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'];
     const currentIndex = tabs.indexOf(activeTab);
     let newIndex;
-    
+
     if (direction === 'prev') {
       newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
     } else {
       newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
     }
-    
+
     setActiveTab(tabs[newIndex]);
     scrollToTop();
-  };
+  }, [activeTab, scrollToTop]);
+
+  const handleTabClick = useCallback((tabId: string) => {
+    setActiveTab(tabId);
+    scrollToTop();
+  }, [scrollToTop]);
+
+  const handlePrevClick = useCallback(() => {
+    navigateTab('prev');
+  }, [navigateTab]);
+
+  const handleNextClick = useCallback(() => {
+    navigateTab('next');
+  }, [navigateTab]);
+
+  const handleCalendlyClick = useCallback(() => {
+    window.open('https://calendly.com/copywriting', '_blank');
+  }, []);
 
   return (
     <>
@@ -74,10 +91,7 @@ export default function InvestorRelations() {
                 ].map((tab) => (
                   <button
                     key={tab.id}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      scrollToTop();
-                    }}
+                    onClick={() => handleTabClick(tab.id)}
                     className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${
                       activeTab === tab.id
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white shadow-lg transform scale-105'
@@ -98,7 +112,7 @@ export default function InvestorRelations() {
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
               <div className="flex items-center space-x-3">
                 <button
-                  onClick={() => navigateTab('prev')}
+                  onClick={handlePrevClick}
                   className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   <span className="text-sm mr-1">←</span>
@@ -117,7 +131,7 @@ export default function InvestorRelations() {
                 </div>
                 
                 <button
-                  onClick={() => navigateTab('next')}
+                  onClick={handleNextClick}
                   className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Next
@@ -852,7 +866,7 @@ export default function InvestorRelations() {
                     </p>
                     <div className="space-y-4">
                       <Button
-                        onClick={() => window.open('https://calendly.com/copywriting', '_blank')}
+                        onClick={handleCalendlyClick}
                         size="lg"
                         className="bg-gradient-primary text-white dark:text-white font-bold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >

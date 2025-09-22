@@ -19,12 +19,6 @@ const STATIC_ASSETS = [
   '/support/contact'
 ];
 
-// Cache strategies
-const CACHE_STRATEGIES = {
-  CACHE_FIRST: 'cache-first',
-  NETWORK_FIRST: 'network-first',
-  STALE_WHILE_REVALIDATE: 'stale-while-revalidate'
-};
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
@@ -111,7 +105,7 @@ async function handleImageRequest(request) {
       cache.put(request, response.clone());
     }
     return response;
-  } catch (error) {
+  } catch (_error) {
     console.warn('Image cache error:', error);
     return new Response('Image not available offline', { status: 503 });
   }
@@ -126,7 +120,7 @@ async function handleApiRequest(request) {
       cache.put(request, response.clone());
     }
     return response;
-  } catch (error) {
+  } catch (_error) {
     const cache = await caches.open(DYNAMIC_CACHE);
     const cachedResponse = await cache.match(request);
 
@@ -153,7 +147,7 @@ async function handleStaticAssetRequest(request) {
       cache.put(request, response.clone());
     }
     return response;
-  } catch (error) {
+  } catch (_error) {
     return new Response('Asset not available offline', { status: 503 });
   }
 }
@@ -188,7 +182,7 @@ async function handlePageRequest(request) {
       status: 503,
       headers: { 'Content-Type': 'text/html' }
     });
-  } catch (error) {
+  } catch (_error) {
     console.warn('Page cache error:', error);
     return new Response('Page not available offline', { status: 503 });
   }
@@ -272,12 +266,12 @@ async function syncContactForms() {
           await fetch(request);
           await cache.delete(request);
           console.log('Service Worker: Contact form synced successfully');
-        } catch (error) {
+        } catch (_error) {
           console.error('Service Worker: Failed to sync contact form', error);
         }
       }
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Service Worker: Error syncing contact forms', error);
   }
 }
@@ -293,12 +287,12 @@ async function syncNewsletterSignups() {
           await fetch(request);
           await cache.delete(request);
           console.log('Service Worker: Newsletter signup synced successfully');
-        } catch (error) {
+        } catch (_error) {
           console.error('Service Worker: Failed to sync newsletter signup', error);
         }
       }
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Service Worker: Error syncing newsletter signups', error);
   }
 }

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('Blog Section Debug', () => {
   test('should debug page structure and find blog section', async ({ page }) => {

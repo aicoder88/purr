@@ -128,8 +128,6 @@ export class UltimatePerformanceOptimizer {
     const baseSrc = img.dataset.src;
     if (!baseSrc) return;
 
-    const formats = ['avif', 'webp', 'jpg'];
-
     // Test format support
     const supportedFormat = await this.detectBestImageFormat();
     

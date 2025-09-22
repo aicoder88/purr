@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
-import { SITE_NAME } from "../../lib/constants";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
 import { useTranslation } from "../../lib/translation-context";
 import { ShoppingCart } from "../../components/ui/shopping-cart";

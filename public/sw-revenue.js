@@ -58,7 +58,7 @@ self.addEventListener('install', (event) => {
         
         // Skip waiting to activate immediately
         self.skipWaiting();
-      } catch (error) {
+      } catch (_error) {
         console.error('❌ Service Worker installation failed:', error);
       }
     })()
@@ -83,7 +83,7 @@ self.addEventListener('activate', (event) => {
         await self.clients.claim();
         
         console.log('✅ Service Worker activated successfully');
-      } catch (error) {
+      } catch (_error) {
         console.error('❌ Service Worker activation failed:', error);
       }
     })()
@@ -133,7 +133,7 @@ self.addEventListener('push', (event) => {
     if (data.type === 'cart-reminder') {
       event.waitUntil(showCartReminderNotification(data));
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Push notification error:', error);
   }
 });
@@ -157,7 +157,7 @@ async function cacheFirstStrategy(request, cacheName) {
     }
     
     return networkResponse;
-  } catch (error) {
+  } catch (_error) {
     console.error('Cache-first strategy failed:', error);
     return new Response('Offline - Resource not available', { status: 503 });
   }
@@ -175,7 +175,7 @@ async function networkFirstWithOfflineSupport(request, cacheName) {
     }
     
     throw new Error('Network response not ok');
-  } catch (error) {
+  } catch (_error) {
     // Fallback to cache
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(request);
@@ -218,7 +218,7 @@ async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
     return networkResponse;
-  } catch (error) {
+  } catch (_error) {
     return new Response('Network request failed', { status: 503 });
   }
 }
@@ -265,7 +265,7 @@ async function preloadCriticalData() {
       const cache = await caches.open(DYNAMIC_CACHE);
       await cache.put('/api/testimonials', testimonialsResponse);
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Failed to preload critical data:', error);
   }
 }
@@ -380,11 +380,11 @@ async function retryOfflineCheckouts() {
             tag: 'checkout-success'
           });
         }
-      } catch (error) {
+      } catch (_error) {
         console.error('Failed to retry checkout:', error);
       }
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Retry offline checkouts failed:', error);
   }
 }
@@ -402,11 +402,11 @@ async function syncOfflineAnalytics() {
         }
         
         await removeStoredAnalytic(event.id);
-      } catch (error) {
+      } catch (_error) {
         console.error('Failed to sync analytic event:', error);
       }
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('Sync offline analytics failed:', error);
   }
 }
@@ -445,7 +445,7 @@ async function getStoredCheckouts() {
   return [];
 }
 
-async function removeStoredCheckout(id) {
+async function removeStoredCheckout(_id) {
   // Remove processed checkout from storage
 }
 
@@ -454,7 +454,7 @@ async function getStoredAnalytics() {
   return [];
 }
 
-async function removeStoredAnalytic(id) {
+async function removeStoredAnalytic(_id) {
   // Remove processed analytic event
 }
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { User, Package, Calendar, CreditCard, Settings, LogOut, Bell, Download, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CustomerSupport } from './CustomerSupport';
@@ -73,9 +73,9 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
   useEffect(() => {
     // Fetch customer data and orders
     fetchCustomerData();
-  }, [customerId]);
+  }, [customerId, fetchCustomerData]);
 
-  const fetchCustomerData = async () => {
+  const fetchCustomerData = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -180,7 +180,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [customerId]);
 
   const getStatusColor = (status: string) => {
     const colors = {

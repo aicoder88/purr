@@ -12,8 +12,11 @@ import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 export function getStaticPaths() {
   // Get the paths we want to pre-render based on posts
   const paths = sampleBlogPosts.map((post) => {
-    // Remove any language prefix from the link
-    const slug = post.link.replace(/^\/(en|fr|zh)\//, '').replace(/^\//, '');
+    // Remove locale prefixes, leading slash, and blog segment from the link
+    const slug = post.link
+      .replace(/^\/(en|fr|zh)\//, '')
+      .replace(/^\//, '')
+      .replace(/^blog\//, '');
     return {
       params: { slug },
     };
