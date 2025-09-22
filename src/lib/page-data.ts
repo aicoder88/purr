@@ -7,7 +7,6 @@ import {
   Leaf,
   Shield,
   Zap,
-  MapPin,
   LucideIcon
 } from 'lucide-react';
 

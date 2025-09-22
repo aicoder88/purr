@@ -32,7 +32,7 @@ function encryptData(data: string): string {
   try {
     return CryptoJS.AES.encrypt(data, ENCRYPTION_KEY).toString();
   } catch (err) {
-    console.warn('Failed to encrypt data, storing unencrypted');
+    console.warn('Failed to encrypt data, storing unencrypted', err);
     return data;
   }
 }
@@ -43,7 +43,7 @@ function decryptData(encryptedData: string): string | null {
     const decrypted = bytes.toString(CryptoJS.enc.Utf8);
     return decrypted || null;
   } catch (err) {
-    console.warn('Failed to decrypt data');
+    console.warn('Failed to decrypt data', err);
     return null;
   }
 }

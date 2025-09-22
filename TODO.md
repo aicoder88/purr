@@ -134,6 +134,8 @@ Context / exclusions:
   - ✅ Moved `PerformanceMonitor` into client runtime (`pages/_app.tsx`) so GTM events fire; removed server-only usage in `_document`.
 - [ ] Implement code splitting for utility modules [perf]
 - [ ] Optimize CSS-in-JS patterns for better caching [perf]
+- [ ] Fix lint failure in e2e blog image specs (unused imports and `any` usage) [cleanup]
+- [ ] Resolve remaining `react/jsx-no-bind` warnings across customer/dn pages and shared components [cleanup]
 
 ### 🧪 Testing & Quality Assurance
 - [ ] Set up automated testing for component reusability [testing]

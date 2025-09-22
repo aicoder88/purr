@@ -10,7 +10,7 @@ export const supabase = {
   },
   
   // Database methods
-  from: (_table: string) => ({
+  from: () => ({
     select: () => ({
       eq: () => ({
         data: [],

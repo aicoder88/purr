@@ -301,7 +301,7 @@ export const generateBreadcrumbSchema = (path: string, locale: 'en' | 'fr' | 'zh
 
   let currentPath = '';
   
-  pathSegments.forEach((segment, index) => {
+  pathSegments.forEach((segment) => {
     currentPath += `/${segment}`;
     
     // Get localized name for common segments
@@ -511,7 +511,6 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 // Generate comprehensive homepage schema
 export const generateHomepageSchema = (locale: 'en' | 'fr' | 'zh') => {
   const baseUrl = 'https://www.purrify.ca';
-  const localizedUrl = getLocalizedUrl('', locale);
   
   return {
     '@context': 'https://schema.org',

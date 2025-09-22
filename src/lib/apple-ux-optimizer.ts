@@ -258,12 +258,8 @@ export class AppleUXOptimizer {
    * Add Apple-style touch feedback to elements
    */
   private addAppleTouchFeedback(element: HTMLElement) {
-    let touchStartTime = 0;
-    let animationId: number;
 
     const startFeedback = () => {
-      touchStartTime = Date.now();
-      
       // Visual feedback
       element.style.transform = 'scale(0.95)';
       element.style.transition = 'transform 0.1s cubic-bezier(0.4, 0.0, 0.2, 1)';
@@ -275,8 +271,6 @@ export class AppleUXOptimizer {
     };
 
     const endFeedback = () => {
-      const touchDuration = Date.now() - touchStartTime;
-      
       // Spring-back animation
       element.style.transform = 'scale(1)';
       element.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
@@ -409,7 +403,7 @@ export class AppleUXOptimizer {
     const elements = document.querySelectorAll(selector);
     
     elements.forEach(element => {
-      element.addEventListener(event, (e) => {
+      element.addEventListener(event, () => {
         this.playMicroInteraction(element as HTMLElement, interaction);
       });
     });

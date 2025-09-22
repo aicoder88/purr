@@ -20,7 +20,7 @@ import {
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const CatLitterGuidePage: NextPage = () => {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   // Unique images for cat litter guide - different from all other posts
   const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80'; // Modern litter box setup

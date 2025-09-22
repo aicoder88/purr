@@ -183,7 +183,7 @@ export class UltimateConversionOptimizer {
     };
 
     // Assign user to experiments
-    Object.entries(experiments).forEach(([experimentName, variants]) => {
+    Object.entries(experiments).forEach(([experimentName]) => {
       const hash = this.hashUserId(experimentName);
       const variant = hash % 2 === 0 ? 'control' : 'variant';
       this.sessionData.set(`experiment_${experimentName}`, variant);
@@ -512,15 +512,20 @@ export class UltimateConversionOptimizer {
   }
 
   private updateRetargetingAudiences(action: string) {
+    void action;
     // Add user to appropriate audiences
     // Remove from irrelevant audiences (e.g., remove from "prospects" after purchase)
   }
 
   private optimizeBasedOnFunnelData(step: string, data: Record<string, unknown>) {
+    void step;
+    void data;
     // Real-time funnel optimization logic
   }
 
   private optimizeBasedOnConversion(action: string, value: number) {
+    void action;
+    void value;
     // Real-time conversion optimization logic
   }
 

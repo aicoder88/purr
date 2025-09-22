@@ -21,7 +21,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
 
-  const products = t.productComparison.products.map((product, index) => ({
+  const products = t.productComparison.products.map((product) => ({
     ...product,
     price: product.id === 'trial' ? '$6.99' : product.id === 'small' ? '$19.99' : '$29.99',
     originalPrice: product.id === 'trial' ? null : product.id === 'small' ? '$22.99' : '$34.99',

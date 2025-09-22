@@ -3,15 +3,6 @@
  * Implements basic in-memory caching with file system persistence
  */
 
-// Define a generic type for cache values
-type Primitive = string | number | boolean | null;
-
-// Constraint for generic type T to be JSON-serializable
-type JSONValue = 
-  | Primitive
-  | { [key: string]: JSONValue | undefined }
-  | JSONValue[];
-
 interface CacheEntry<T = unknown> {
   value: T;
   lastModified: number;

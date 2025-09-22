@@ -557,6 +557,7 @@ export class UltimateAnalyticsOptimizer {
   }
 
   private calculateHesitationTime(element: Element): number {
+    void element;
     // Implementation would track time between hover and click
     return 0;
   }
@@ -578,10 +579,18 @@ export class UltimateAnalyticsOptimizer {
   // Additional helper methods would be implemented here...
   private assignUserToSegments() {}
   private enableWinterOptimizations() {}
-  private applyPricingFormat(format: string) {}
-  private applyCTALanguage(language: string) {}
-  private applyUITheme(theme: string) {}
-  private applyOptimization(action: string) {}
+  private applyPricingFormat(format: string) {
+    void format;
+  }
+  private applyCTALanguage(language: string) {
+    void language;
+  }
+  private applyUITheme(theme: string) {
+    void theme;
+  }
+  private applyOptimization(action: string) {
+    void action;
+  }
   private calculateNeighborhoodPerformance() { return {}; }
   private calculateExperimentResults() { return []; }
   private generateExperimentRecommendations() { return []; }

@@ -3,7 +3,6 @@ import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import NextImage from '../components/NextImage';
 import { useState } from 'react';
-import Link from 'next/link';
 import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
 
 export default function InvestorRelations() {

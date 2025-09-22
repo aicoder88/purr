@@ -439,6 +439,7 @@ class PredictiveLoader {
 
   // Public methods for manual control
   public prefetchProduct(productId: string, quantity: number = 1): void {
+    void quantity;
     this.prefetchCheckoutData(`/products/${productId}`);
   }
 

@@ -117,9 +117,10 @@ export function BlogPreview() {
             </>
           )}
           {blogPosts.map((post, index) => (
-            <div
+            <Link
               key={post.link || `blog-post-${index}`}
-              className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group"
+              href={`/blog/${post.link.split('/').pop()}`}
+              className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
@@ -154,10 +155,7 @@ export function BlogPreview() {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <Link
-                  href={`/blog/${post.link.split('/').pop()}`}
-                  className="text-[#03E46A] dark:text-[#5B2EFF] font-medium flex items-center hover:text-[#03E46A]/80 dark:hover:text-[#5B2EFF]/80 transition-colors"
-                >
+                <div className="text-[#03E46A] dark:text-[#5B2EFF] font-medium flex items-center hover:text-[#03E46A]/80 dark:hover:text-[#5B2EFF]/80 transition-colors">
                   {t.blogSection.readFullArticle}
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -172,9 +170,9 @@ export function BlogPreview() {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

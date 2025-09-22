@@ -1,16 +1,10 @@
 import { NextSeo } from 'next-seo';
-import { Container } from '../src/components/ui/container';
-import { Button } from '../src/components/ui/button';
 import { useTranslation } from '../src/lib/translation-context';
 import { SITE_NAME } from '../src/lib/constants';
-import Link from 'next/link';
 
 // Retailer-specific components
 import { RetailerHero } from '../src/components/sections/retailer-hero';
 import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
-import { RetailerBenefits } from '../src/components/sections/retailer-benefits';
-import { MarketingSupport } from '../src/components/sections/marketing-support';
-import { RetailerTestimonials } from '../src/components/sections/retailer-testimonials';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
 
 export default function RetailersPage() {

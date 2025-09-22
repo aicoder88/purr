@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
-import { SITE_NAME } from '../../src/lib/constants';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function PurrifyVsArmHammer() {

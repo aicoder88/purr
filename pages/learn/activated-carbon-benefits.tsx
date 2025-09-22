@@ -2,7 +2,6 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
-import { SITE_NAME } from '../../src/lib/constants';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 

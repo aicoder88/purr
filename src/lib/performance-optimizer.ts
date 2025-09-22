@@ -129,10 +129,9 @@ export class UltimatePerformanceOptimizer {
     if (!baseSrc) return;
 
     const formats = ['avif', 'webp', 'jpg'];
-    const sizes = ['320w', '640w', '1280w', '1920w'];
 
     // Test format support
-    const supportedFormat = await this.detectBestImageFormat(formats);
+    const supportedFormat = await this.detectBestImageFormat();
     
     // Load appropriate size based on viewport
     const optimalSize = this.calculateOptimalImageSize(img);
@@ -330,7 +329,7 @@ export class UltimatePerformanceOptimizer {
   }
 
   // Helper methods (implementation details)
-  private async detectBestImageFormat(formats: string[]): Promise<string> {
+  private async detectBestImageFormat(): Promise<string> {
     // Test AVIF support
     const avifSupported = await this.testImageFormat('data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=');
     if (avifSupported) return 'avif';

@@ -196,7 +196,7 @@ export class OrderManager {
         throw new Error('Cannot cancel shipped or delivered order');
       }
 
-      await this.updateOrderStatus(orderId, { status: 'CANCELLED' });
+      await this.updateOrderStatus(orderId, { status: 'CANCELLED', cancellationReason: reason });
 
       if (order.stripeSessionId && order.status === 'PROCESSING') {
         // Could initiate refund process here if needed
