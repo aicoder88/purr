@@ -61,6 +61,7 @@ import { EnhancedStructuredData } from '../src/components/seo/enhanced-structure
 import { ComprehensiveStructuredData, useStructuredData } from '../src/components/seo/comprehensive-structured-data';
 import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
+import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 
 export default function Home() {
   const { t, locale } = useTranslation();
@@ -453,7 +454,17 @@ export default function Home() {
             </LazyLoad>
           </ErrorBoundary>
         </div>
-        
+
+        {/* Client Locations Map */}
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <ClientLocationsMap
+              className="bg-gray-50 dark:bg-gray-900/50"
+              height="400"
+            />
+          </ErrorBoundary>
+        </div>
+
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyLoad

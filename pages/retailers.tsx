@@ -6,6 +6,7 @@ import { SITE_NAME } from '../src/lib/constants';
 import { RetailerHero } from '../src/components/sections/retailer-hero';
 import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
+import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 
 export default function RetailersPage() {
   const { t, locale } = useTranslation();
@@ -59,6 +60,20 @@ export default function RetailersPage() {
         <WholesalePricing />
 
         <RetailerContact />
+
+        {/* Client Locations Map */}
+        <ClientLocationsMap
+          className="bg-gray-50 dark:bg-gray-900/50"
+          height="400"
+          headerTitle={locale === 'fr'
+            ? 'Nos Partenaires Détaillants et Clients | Réseau Purrify'
+            : 'Our Retail Partners and Clients | Purrify Network'
+          }
+          headerDescription={locale === 'fr'
+            ? 'Découvrez notre réseau grandissant de détaillants et clients satisfaits à travers le Canada. Rejoignez notre famille de partenaires prospères.'
+            : 'Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners.'
+          }
+        />
       </main>
     </>
   );

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { MONTREAL_STRUCTURED_DATA } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
+import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 
 export default function Montreal() {
   const { locale } = useTranslation();
@@ -1020,57 +1021,19 @@ export default function Montreal() {
           </p>
         </section>
 
-        {/* Montreal Area Map for SEO */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            {locale === 'fr'
-              ? 'Région de Service | Carte de Montréal et Environs'
-              : 'Service Area | Montreal and Surrounding Regions Map'
-            }
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-8 max-w-4xl mx-auto">
-            {locale === 'fr'
-              ? 'Purrify dessert toute la région métropolitaine de Montréal, incluant Laval, la Rive-Sud, et les communautés environnantes. Trouvez un magasin près de chez vous.'
-              : 'Purrify serves the entire Greater Montreal metropolitan area, including Laval, South Shore, and surrounding communities. Find a store near you.'
-            }
-          </p>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d179885.84065830146!2d-73.85493127969524!3d45.50166742063907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a541c64b70d%3A0x654e3138211fefef!2sMontreal%2C%20QC!5e0!3m2!1sen!2sca!4v1704067200000!5m2!1sen!2sca"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={locale === 'fr' ? 'Carte de Montréal - Zone de Service Purrify' : 'Montreal Map - Purrify Service Area'}
-                className="rounded-lg"
-              />
-              <div className="mt-4 text-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {locale === 'fr'
-                    ? '🗺️ Région de service Purrify: Montréal, Laval, Longueuil, et communautés environnantes'
-                    : '🗺️ Purrify service area: Montreal, Laval, Longueuil, and surrounding communities'
-                  }
-                </p>
-                <div className="flex flex-wrap justify-center gap-2 mt-2 text-xs text-gray-500 dark:text-gray-400">
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">
-                    {locale === 'fr' ? 'Montréal' : 'Montreal'}
-                  </span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Laval</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Longueuil</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Kirkland</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">Verdun</span>
-                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/20 rounded">
-                    {locale === 'fr' ? 'Sainte-Thérèse' : 'Sainte-Thérèse'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Client Locations Map */}
+        <ClientLocationsMap
+          className="mb-16"
+          height="400"
+          headerTitle={locale === 'fr'
+            ? 'Nos Clients à Montréal et au Québec | Emplacements Purrify'
+            : 'Our Montreal and Quebec Clients | Purrify Locations'
+          }
+          headerDescription={locale === 'fr'
+            ? 'Découvrez où nos clients montréalais et québécois utilisent Purrify pour garder leur maison fraîche. Chaque point représente une famille satisfaite dans la région du Grand Montréal.'
+            : 'See where our Montreal and Quebec clients are using Purrify to keep their homes fresh. Each location represents a satisfied family in the Greater Montreal area.'
+          }
+        />
 
         {/* Product Information */}
         <section className="mb-16">
