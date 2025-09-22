@@ -19,7 +19,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Stop saying 'my house smells like cat litter' with this layered guide covering airflow, cleaning routines, and smart litter upgrades for a truly fresh home.",
       author: 'Clean Home Specialist Team',
       date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
-      image: 'https://images.unsplash.com/photo-1541959833400-049d37f97c18?auto=format&fit=crop&w=1200&q=80',
+      image: '/optimized/multi-cat-household.webp',
       link: '/blog/strong-cat-urine-smell-litter-box'
     },
     {

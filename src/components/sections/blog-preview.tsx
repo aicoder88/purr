@@ -133,6 +133,11 @@ export function BlogPreview() {
                     className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                     priority={index === 0}
                     quality={85}
+                    onError={(e) => {
+                      // Fallback to a guaranteed existing image
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/optimized/140g.webp';
+                    }}
                   />
                 </div>
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white dark:text-gray-100 font-medium">

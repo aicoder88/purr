@@ -63,6 +63,7 @@ npm run predev                 # Clear cache first
 npm run lint                   # ESLint
 npm run check-types           # TypeScript validation
 npm run validate-dark-mode    # Dark mode compliance
+npm run validate-blog-images  # Blog image availability
 
 # Testing
 npm run test:e2e              # Playwright end-to-end tests
@@ -188,6 +189,27 @@ The enhanced validator now catches ALL color violations:
 1. **Pre-commit Hook**: `.husky/pre-commit` blocks commits with violations
 2. **VSCode Snippets**: `.vscode/snippets.code-snippets` provides `darkbg`, `darktext`, `darkbox` shortcuts
 3. **Enhanced Validator**: Catches 496+ violations across background/border/text patterns
+4. **Blog Image Validator**: `npm run validate-blog-images` ensures all blog preview images exist
+
+## Blog Image Requirements
+
+**MANDATORY: All blog posts need accessible preview images**
+
+### Image Standards:
+- **Location**: Store in `/public/optimized/` folder
+- **Format**: `.webp` preferred for best performance
+- **Size**: Minimum 1200x800px for quality previews
+- **Naming**: Use descriptive names (`multi-cat-household.webp`)
+
+### Prevention System:
+```bash
+npm run validate-blog-images  # Check all blog post images exist
+```
+
+**AVOID:** External URLs (Unsplash, etc.) - they can fail to load
+**USE:** Local optimized images in `/public/optimized/` folder
+
+**Fallback System:** NextImage component includes `onError` handler that falls back to `/optimized/140g.webp`
 
 ## Performance Standards
 
