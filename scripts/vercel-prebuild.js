@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 console.log('🚀 Starting Vercel prebuild process...');
+// Force fresh deployment after fixing Next.js static generation cache issues
 
 const isCI = !!(process.env.CI || process.env.VERCEL);
 
