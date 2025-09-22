@@ -209,6 +209,23 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     }).format(amount);
   }, []);
 
+  // Tab change handlers - must be defined before early returns
+  const handleTabChange = useCallback((tabId: string) => {
+    setActiveTab(tabId);
+  }, []);
+
+  const tabs = [
+    { id: 'dashboard', label: 'Dashboard', icon: User },
+    { id: 'orders', label: 'Orders', icon: Package },
+    { id: 'subscriptions', label: 'Subscriptions', icon: Calendar },
+    { id: 'support', label: 'Support', icon: MessageCircle },
+    { id: 'profile', label: 'Profile', icon: Settings }
+  ];
+
+  const handleTabClick = useCallback((tab: typeof tabs[0]) => {
+    return () => handleTabChange(tab.id);
+  }, [handleTabChange]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
@@ -227,22 +244,6 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       </div>
     );
   }
-
-  const tabs = [
-    { id: 'dashboard', label: 'Dashboard', icon: User },
-    { id: 'orders', label: 'Orders', icon: Package },
-    { id: 'subscriptions', label: 'Subscriptions', icon: Calendar },
-    { id: 'support', label: 'Support', icon: MessageCircle },
-    { id: 'profile', label: 'Profile', icon: Settings }
-  ];
-
-  const handleTabChange = useCallback((tabId: string) => {
-    setActiveTab(tabId);
-  }, []);
-
-  const handleTabClick = useCallback((tab: typeof tabs[0]) => {
-    return () => handleTabChange(tab.id);
-  }, [handleTabChange]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
