@@ -7,20 +7,39 @@ import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
+import fs from 'fs';
+import path from 'path';
 
 // This function gets called at build time to generate static paths
 export function getStaticPaths() {
+  const blogDir = path.join(process.cwd(), 'pages', 'blog');
+  const staticPageExtensions = ['.tsx', '.ts', '.jsx', '.js', '.mdx'];
+  const staticSlugSet = new Set(
+    fs
+      .readdirSync(blogDir)
+      .filter((file) => file !== '[slug].tsx' && file !== 'index.tsx')
+      .map((file) => {
+        const matchedExt = staticPageExtensions.find((ext) => file.endsWith(ext));
+        return matchedExt ? file.slice(0, -matchedExt.length) : file;
+      })
+  );
+
   // Get the paths we want to pre-render based on posts
-  const paths = sampleBlogPosts.map((post) => {
-    // Remove locale prefixes, leading slash, and blog segment from the link
-    const slug = post.link
-      .replace(/^\/(en|fr|zh)\//, '')
-      .replace(/^\//, '')
-      .replace(/^blog\//, '');
-    return {
-      params: { slug },
-    };
-  });
+  const paths = sampleBlogPosts
+    .map((post) => {
+      // Remove locale prefixes, leading slash, and blog segment from the link
+      const slug = post.link
+        .replace(/^\/(en|fr|zh)\//, '')
+        .replace(/^\//, '')
+        .replace(/^blog\//, '');
+      if (staticSlugSet.has(slug)) {
+        return null;
+      }
+      return {
+        params: { slug },
+      };
+    })
+    .filter((value): value is { params: { slug: string } } => Boolean(value));
   
   // We'll pre-render only these paths at build time
   // { fallback: 'blocking' } means other routes will be rendered at request time
