@@ -43,6 +43,7 @@ export interface OrderUpdateData {
   trackingNumber?: string;
   estimatedDelivery?: Date;
   shippingAddress?: ShippingAddress;
+  cancellationReason?: string;
 }
 
 export class OrderManager {

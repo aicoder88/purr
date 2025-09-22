@@ -102,7 +102,7 @@ test.describe('Blog Preview Image Audit', () => {
     });
 
     // Find actual duplicates (more than one post using same image)
-    const actualDuplicates = Object.entries(duplicates).filter(([_, posts]) => posts.length > 1);
+    const actualDuplicates = Object.entries(duplicates).filter(([, posts]) => posts.length > 1);
 
     console.log('\n=== BLOG IMAGE AUDIT REPORT ===');
     console.log(`Total blog posts analyzed: ${blogImages.length}`);
@@ -178,6 +178,6 @@ test.describe('Blog Preview Image Audit', () => {
     console.log(JSON.stringify(summary, null, 2));
 
     // Store results in test context for potential use
-    (test as any).blogImageAudit = summary;
+    (test as typeof test & { blogImageAudit?: typeof summary }).blogImageAudit = summary;
   });
 });
