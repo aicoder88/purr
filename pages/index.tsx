@@ -68,6 +68,7 @@ export default function Home() {
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
   const canonicalUrl = 'https://www.purrify.ca/';
+  const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const { generateBreadcrumbs } = useStructuredData();
 
   // Generate breadcrumbs for home page
@@ -94,9 +95,9 @@ export default function Home() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://www.purrify.ca/purrify-logo.png',
+              url: shareImage,
               width: 1200,
-              height: 630,
+              height: 800,
               alt: `${SITE_NAME} - ${t.homepage.seo.openGraphImageAlt}`,
               type: 'image/png',
             },
@@ -107,22 +108,6 @@ export default function Home() {
               alt: t.homepage.seo.videoDescription,
               type: 'image/webp',
             },
-          ],
-          videos: [
-            {
-              url: 'https://www.purrify.ca/videos/cat_rose_optimized.mp4',
-              width: 1280,
-              height: 720,
-              type: 'video/mp4',
-              alt: t.homepage.seo.videoEffectivenessDemo,
-            },
-            {
-              url: 'https://www.purrify.ca/videos/cat_rose_optimized.webm',
-              width: 1280,
-              height: 720,
-              type: 'video/webm',
-              alt: t.homepage.seo.videoEffectivenessDemo,
-            }
           ],
         }}
         twitter={{
@@ -138,30 +123,6 @@ export default function Home() {
           {
             name: 'robots',
             content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-          },
-          {
-            name: 'video:duration',
-            content: '30',
-          },
-          {
-            name: 'video:release_date',
-            content: '2023-09-01T08:00:00+08:00',
-          },
-          {
-            property: 'og:video:secure_url',
-            content: 'https://www.purrify.ca/videos/cat_rose_optimized.mp4',
-          },
-          {
-            property: 'og:video:type',
-            content: 'video/mp4',
-          },
-          {
-            property: 'og:video:width',
-            content: '1280',
-          },
-          {
-            property: 'og:video:height',
-            content: '720',
           },
           {
             // Removed duplicate description to avoid multiple meta description tags
