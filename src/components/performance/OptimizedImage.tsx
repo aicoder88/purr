@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { usePerformanceTracking } from './PerformanceMonitor';
 
@@ -44,19 +44,82 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [prefersReducedData, setPrefersReducedData] = useState(false);
   const [loadTime, setLoadTime] = useState<number | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const { trackCustomMetric } = usePerformanceTracking();
   const loadStartTime = useRef<number>(Date.now());
 
-  // Generate responsive sizes if not provided
-  const responsiveSizes = sizes || (responsive ? 
-    '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' : 
-    undefined
-  );
+  useEffect(() => {
+    if (typeof navigator === 'undefined') {
+      return;
+    }
+
+    const nav = navigator as Navigator & {
+      connection?: {
+        saveData?: boolean;
+        addEventListener?: (type: string, listener: () => void) => void;
+        removeEventListener?: (type: string, listener: () => void) => void;
+      };
+    };
+
+    const connection = nav.connection;
+
+    if (!connection) {
+      return;
+    }
+
+    const updatePreference = () => {
+      setPrefersReducedData(Boolean(connection.saveData));
+    };
+
+    updatePreference();
+
+    if (typeof connection.addEventListener === 'function') {
+      connection.addEventListener('change', updatePreference);
+      return () => connection.removeEventListener?.('change', updatePreference);
+    }
+
+    return undefined;
+  }, []);
+
+  const computedSizes = useMemo(() => {
+    if (sizes) {
+      return sizes;
+    }
+
+    if (fill) {
+      return '100vw';
+    }
+
+    if (!responsive) {
+      return width ? `${width}px` : undefined;
+    }
+
+    if (width) {
+      if (width <= 200) {
+        const smallWidth = Math.min(width * 1.6, 320);
+        return `(max-width: 640px) ${Math.round(smallWidth)}px, ${Math.round(width)}px`;
+      }
+
+      if (width <= 640) {
+        return `(max-width: 640px) 90vw, (max-width: 1024px) ${Math.round(width * 0.75)}px, ${Math.round(width)}px`;
+      }
+
+      return `(max-width: 768px) 90vw, (max-width: 1280px) ${Math.round(width * 0.7)}px, ${Math.round(width)}px`;
+    }
+
+    return '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw';
+  }, [fill, responsive, sizes, width]);
 
   // Generate optimized quality based on image type and priority
-  const optimizedQuality = criticalResource ? Math.min(quality + 10, 100) : quality;
+  const optimizedQuality = useMemo(() => {
+    const baseQuality = criticalResource ? Math.min(quality + 10, 100) : quality;
+    return prefersReducedData ? Math.min(baseQuality, 60) : baseQuality;
+  }, [criticalResource, prefersReducedData, quality]);
+
+  const computedLoading: 'eager' | 'lazy' = (priority || criticalResource) ? 'eager' : 'lazy';
+  const computedFetchPriority: 'auto' | 'high' | 'low' = (priority || criticalResource) ? 'high' : 'auto';
 
   // Generate blur placeholder if not provided (SSR-safe)
   const generateBlurDataURL = (width: number, height: number): string => {
@@ -146,10 +209,12 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     alt,
     quality: optimizedQuality,
     priority: priority || criticalResource,
+    loading: computedLoading,
+    fetchPriority: computedFetchPriority,
     placeholder,
     blurDataURL: blurDataURL || (placeholder === 'blur' && width && height ? 
       generateBlurDataURL(width, height) : undefined),
-    sizes: responsiveSizes,
+    sizes: computedSizes,
     className: `${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`,
     style: {
       ...style,
@@ -158,6 +223,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     onLoad: handleLoad,
     onError: handleError,
     ref: imageRef,
+    decoding: 'async' as const,
     ...props
   };
 

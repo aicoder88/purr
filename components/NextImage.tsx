@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/image';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 interface NextImageProps extends Omit<ImageProps, 'src' | 'alt' | 'onError'> {
   src: string;
@@ -45,6 +45,8 @@ export default function NextImage({
   const [width, setWidth] = useState<number | undefined>(propWidth);
   const [height, setHeight] = useState<number | undefined>(propHeight);
   const imageRef = useRef<HTMLImageElement>(null);
+  const fallbackCandidatesRef = useRef<string[]>([]);
+  const [prefersReducedData, setPrefersReducedData] = useState<boolean>(false);
 
   // Try to get image dimensions from the optimized images data
   const tryGetImageDimensions = useCallback(() => {
@@ -70,132 +72,182 @@ export default function NextImage({
     }
   }, [src, propWidth, propHeight, width, height]);
 
-  // Reset states when src changes
   useEffect(() => {
-    setImgSrc(src);
+    if (typeof navigator === 'undefined') {
+      return;
+    }
+
+    const nav = navigator as Navigator & {
+      connection?: {
+        saveData?: boolean;
+        addEventListener?: (type: string, listener: () => void) => void;
+        removeEventListener?: (type: string, listener: () => void) => void;
+      };
+    };
+    const connection = nav.connection;
+
+    if (!connection) {
+      return;
+    }
+
+    const updateSaveData = () => {
+      setPrefersReducedData(Boolean(connection.saveData));
+    };
+
+    updateSaveData();
+
+    if (typeof connection.addEventListener === 'function') {
+      connection.addEventListener('change', updateSaveData);
+      return () => connection.removeEventListener?.('change', updateSaveData);
+    }
+
+    return undefined;
+  }, []);
+
+  const isExternal = src.startsWith('http') || src.startsWith('https');
+  const isIOSChrome = typeof window !== 'undefined' &&
+    /CriOS/.test(navigator.userAgent) &&
+    /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  // Reset states when src changes and compute optimized candidates
+  useEffect(() => {
+    const normalizedSrc = isExternal ? src : (src.startsWith('/') ? src : `/${src}`);
+
+    const candidateList: string[] = [];
+
+    if (!isExternal) {
+      const fileName = normalizedSrc.split('/').pop();
+      const baseName = fileName ? fileName.replace(/\.[^/.]+$/, '') : '';
+
+      if (baseName) {
+        const encodedBaseName = encodeURIComponent(baseName);
+        const sanitizedBaseName = baseName.replace(/\s+/g, '-');
+        const formatPriority = isIOSChrome
+          ? ['png', 'jpg', 'webp']
+          : useModernFormat
+            ? ['avif', 'webp', 'jpg', 'png']
+            : ['jpg', 'png', 'webp'];
+
+        const addCandidate = (value?: string | null) => {
+          if (!value) {
+            return;
+          }
+          if (candidateList.includes(value)) {
+            return;
+          }
+          candidateList.push(value);
+        };
+
+        if (normalizedSrc.includes('/optimized/')) {
+          const basePath = normalizedSrc.replace(/\.[^/.]+$/, '');
+          formatPriority.forEach((ext) => addCandidate(`${basePath}.${ext}`));
+        } else {
+          formatPriority.forEach((ext) => {
+            addCandidate(`/optimized/${encodedBaseName}.${ext}`);
+            if (sanitizedBaseName && sanitizedBaseName !== encodedBaseName) {
+              addCandidate(`/optimized/${sanitizedBaseName}.${ext}`);
+            }
+          });
+        }
+      }
+    }
+
+    if (!candidateList.includes(normalizedSrc)) {
+      candidateList.push(normalizedSrc);
+    }
+
+    if (fallbackSrc && !candidateList.includes(fallbackSrc)) {
+      candidateList.push(fallbackSrc);
+    }
+
+    const [initialCandidate, ...fallbacks] = candidateList.length
+      ? candidateList
+      : [normalizedSrc];
+
+    setImgSrc(initialCandidate);
+    fallbackCandidatesRef.current = fallbacks;
     setIsLoading(true);
     setError(false);
-    
-    // Try to get dimensions from the optimized images data
+
     if (!propWidth || !propHeight) {
       tryGetImageDimensions();
     } else {
       setWidth(propWidth);
       setHeight(propHeight);
     }
-  }, [src, propWidth, propHeight, tryGetImageDimensions]);
-
-  // Handle external URLs and local images
-  const isExternal = src.startsWith('http') || src.startsWith('https');
+  }, [fallbackSrc, isExternal, isIOSChrome, propHeight, propWidth, src, tryGetImageDimensions, useModernFormat]);
   
-  // For local images, ensure they start with a slash
-  let imageSrc = !isExternal && !src.startsWith('/') ? `/${src}` : src;
+  const resolvedImgSrc = isExternal || imgSrc.startsWith('/') ? imgSrc : `/${imgSrc}`;
 
-  // Detect iOS Chrome
-  const isIOSChrome = typeof window !== 'undefined' && 
-    /CriOS/.test(navigator.userAgent) && 
-    /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const computedSizes = useMemo(() => {
+    if (sizes) {
+      return sizes;
+    }
 
-  // Use optimized image formats if available and requested
-  if (!isExternal && useModernFormat) {
-    // Check if we have an optimized version
-    const baseName = imageSrc.split('/').pop()?.split('.')[0];
-    if (baseName) {
-      // First check if the path already includes optimized
-      if (!imageSrc.includes('/optimized/')) {
-        // Create both encoded and sanitized versions of the basename
-        const encodedBaseName = encodeURIComponent(baseName);
-        const sanitizedBaseName = baseName.replace(/\s+/g, '-');
-        
-        // Create paths for different formats and naming conventions
-        const optimizedPng = `/optimized/${encodedBaseName}.png`;
-        const optimizedSanitizedPng = `/optimized/${sanitizedBaseName}.png`;
-        const optimizedWebP = `/optimized/${encodedBaseName}.webp`;
-        const optimizedSanitizedWebP = `/optimized/${sanitizedBaseName}.webp`;
-        
-        // For iOS Chrome, use PNG or JPG format for better compatibility
-        if (isIOSChrome) {
-          if (baseName.includes(' ')) {
-            imageSrc = optimizedSanitizedPng;
-          } else {
-            imageSrc = optimizedPng;
-          }
-        } else {
-          // For other browsers, prioritize WebP for better compression
-          if (baseName.includes(' ')) {
-            imageSrc = optimizedSanitizedWebP;
-          } else {
-            imageSrc = optimizedWebP;
-          }
-        }
-       
-       // Enhanced logging for debugging
-       if (typeof window !== 'undefined') {
-         console.log(`Using optimized image: ${imageSrc} (original: ${src})`);
-         console.log(`Browser: ${navigator.userAgent}`);
-       }
-     }
-   }
-  }
+    if (fill) {
+      return '100vw';
+    }
 
-  // Determine appropriate loading strategy
-  // Always use lazy loading for images below the fold
-  const loading = loadingProp || (priority ? 'eager' : 'lazy');
-  
-  // Use fetchPriority to give the browser more hints about image importance
-  const finalFetchPriority = priority ? 'high' : fetchPriority;
+    const targetWidth = propWidth ?? width;
 
-  const resolveOriginalSrc = useCallback(() => (
-    src.startsWith('/') ? src : `/${src}`
-  ), [src]);
+    if (!targetWidth) {
+      return '(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw';
+    }
+
+    if (targetWidth <= 180) {
+      const smallViewportWidth = Math.min(targetWidth * 1.6, 320);
+      return `(max-width: 640px) ${Math.round(smallViewportWidth)}px, ${Math.round(targetWidth)}px`;
+    }
+
+    if (targetWidth <= 480) {
+      return `(max-width: 640px) 90vw, (max-width: 1024px) ${Math.round(targetWidth * 0.8)}px, ${Math.round(targetWidth)}px`;
+    }
+
+    return `(max-width: 768px) 90vw, (max-width: 1280px) ${Math.round(targetWidth * 0.75)}px, ${Math.round(targetWidth)}px`;
+  }, [fill, propWidth, sizes, width]);
+
+  const computedLoading = useMemo(() => (
+    loadingProp ?? (priority ? 'eager' : 'lazy')
+  ), [loadingProp, priority]);
+
+  const computedFetchPriority = useMemo(() => {
+    if (priority) {
+      return 'high';
+    }
+
+    if (fetchPriority && fetchPriority !== 'auto') {
+      return fetchPriority;
+    }
+
+    return computedLoading === 'lazy' ? 'low' : 'auto';
+  }, [computedLoading, fetchPriority, priority]);
+
+  const effectiveQuality = useMemo(() => (
+    prefersReducedData ? Math.min(quality, 60) : quality
+  ), [prefersReducedData, quality]);
+
+  const imageStyle = useMemo(() => ({
+    ...style,
+    objectFit: style?.objectFit ?? (fill ? 'cover' : 'contain')
+  }), [fill, style]);
+
+  const structuredDataUrl = isExternal ? resolvedImgSrc : (src.startsWith('/') ? src : `/${src}`);
 
   const attemptOptimizedFallback = useCallback(() => {
-    if (isExternal || !imgSrc.includes('/optimized/')) {
-      return false;
-    }
-
-    const currentExt = imgSrc.split('.').pop()?.toLowerCase();
-    const originalExt = src.split('.').pop();
-    const baseName = imgSrc.split('/').pop()?.split('.')[0] ?? '';
-
-    const candidates: string[] = [];
-
-    if (isIOSChrome) {
-      if (currentExt === 'png') {
-        candidates.push(imgSrc.replace(/\.png$/i, '.jpg'));
+    while (fallbackCandidatesRef.current.length) {
+      const candidate = fallbackCandidatesRef.current.shift();
+      if (!candidate || candidate === imgSrc) {
+        continue;
       }
-      if (currentExt === 'jpg' && originalExt) {
-        candidates.push(resolveOriginalSrc());
-      }
-    } else {
-      if (currentExt === 'webp') {
-        candidates.push(imgSrc.replace(/\.webp$/i, '.jpg'));
-      }
-      if (currentExt === 'jpg' && originalExt) {
-        candidates.push(resolveOriginalSrc());
-      }
-    }
 
-    if (baseName.includes('-')) {
-      const originalName = baseName.replace(/-/g, ' ');
-      const encodedName = encodeURIComponent(originalName);
-      candidates.push(imgSrc.replace(baseName, encodedName));
-    } else if (baseName.includes('%20')) {
-      const decodedName = decodeURIComponent(baseName);
-      candidates.push(imgSrc.replace(baseName, decodedName.replace(/\s+/g, '-')));
-    }
-
-    for (const candidate of candidates) {
-      if (candidate && candidate !== imgSrc) {
-        setIsLoading(true);
-        setError(false);
-        setImgSrc(candidate);
-        return true;
-      }
+      setIsLoading(true);
+      setError(false);
+      setImgSrc(candidate);
+      return true;
     }
 
     return false;
-  }, [imgSrc, isExternal, isIOSChrome, resolveOriginalSrc, src]);
+  }, [imgSrc]);
 
   // Handle image load error
   const handleError = useCallback(() => {
@@ -203,26 +255,9 @@ export default function NextImage({
       return;
     }
 
-    if (!isExternal) {
-      const originalSrc = resolveOriginalSrc();
-      if (imgSrc !== originalSrc) {
-        setIsLoading(true);
-        setError(false);
-        setImgSrc(originalSrc);
-        return;
-      }
-    }
-
-    if (fallbackSrc && imgSrc !== fallbackSrc) {
-      setIsLoading(true);
-      setError(false);
-      setImgSrc(fallbackSrc);
-      return;
-    }
-
     setError(true);
-    console.error(`Image load failed for: ${src}. No fallback available.`);
-  }, [attemptOptimizedFallback, fallbackSrc, imgSrc, isExternal, resolveOriginalSrc, src]);
+    console.error(`Image load failed for ${src} (last attempted: ${imgSrc})`);
+  }, [attemptOptimizedFallback, imgSrc, src]);
 
   // Handle image load complete
   const handleLoad = useCallback(() => {
@@ -243,11 +278,11 @@ export default function NextImage({
     : '';
 
   // Ensure we have width and height for proper layout
-  const finalWidth = fill ? undefined : (width || 100);
-  const finalHeight = fill ? undefined : (height || 100);
+  const finalWidth = fill ? undefined : (width ?? propWidth ?? 100);
+  const finalHeight = fill ? undefined : (height ?? propHeight ?? 100);
 
   return (
-    <div className={`relative ${className || ''}`} style={style}>
+    <div className={`relative${className ? ` ${className}` : ''}`} style={style}>
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 animate-pulse">
           <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
@@ -268,24 +303,21 @@ export default function NextImage({
       ) : (
         <Image
           ref={imageRef}
-          src={imgSrc}
+          src={resolvedImgSrc}
           alt={safeAlt}
           width={finalWidth}
           height={finalHeight}
           className={`${className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
           priority={priority}
-          quality={quality}
-          sizes={sizes || (fill ? "100vw" : undefined)}
+          quality={effectiveQuality}
+          sizes={computedSizes}
           fill={fill}
-          style={{
-            ...style,
-            objectFit: fill ? 'cover' : 'contain'
-          }}
+          style={imageStyle}
           onError={handleError}
           onLoad={handleLoad}
-          fetchPriority={finalFetchPriority}
+          fetchPriority={computedFetchPriority}
           decoding={decoding}
-          loading={loading}
+          loading={computedLoading}
           {...rest}
         />
       )}
@@ -304,7 +336,7 @@ export default function NextImage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ImageObject',
-              contentUrl: isExternal ? imgSrc : imgSrc,
+              contentUrl: structuredDataUrl,
               name: caption || filename || safeAlt,
               description: safeAlt,
               width: finalWidth,

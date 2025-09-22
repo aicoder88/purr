@@ -299,12 +299,20 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     });
   };
 
-  const formatAmount = (amount: number, currency: string) => {
+  const formatAmount = useCallback((amount: number, currency: string) => {
     return new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: currency
     }).format(amount);
-  };
+  }, []);
+
+  const handlePaymentMethodSelect = useCallback((paymentId: string) => {
+    return () => {
+      if (paymentId === 'apple-pay') handleApplePay();
+      else if (paymentId === 'google-pay') handleGooglePay();
+      // For card payments, you'd typically redirect to a form
+    };
+  }, []);
 
   return (
     <div className={`space-y-4 ${className}`}>
@@ -322,11 +330,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
           <div key={payment.id}>
             {payment.available ? (
               <Button
-                onClick={() => {
-                  if (payment.id === 'apple-pay') handleApplePay();
-                  else if (payment.id === 'google-pay') handleGooglePay();
-                  // For card payments, you'd typically redirect to a form
-                }}
+                onClick={handlePaymentMethodSelect(payment.id)}
                 disabled={isProcessing}
                 className={`w-full p-4 h-auto flex items-center justify-between border-2 transition-all ${
                   selectedMethod === payment.id
@@ -439,6 +443,14 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
     setShowGooglePay(checkGooglePayAvailability());
   }, [checkApplePayAvailability, checkGooglePayAvailability]);
 
+  const handleApplePayExpress = useCallback(() => {
+    /* Apple Pay handler */
+  }, []);
+
+  const handleGooglePayExpress = useCallback(() => {
+    /* Google Pay handler */
+  }, []);
+
   if (!showApplePay && !showGooglePay) return null;
 
   return (
@@ -450,7 +462,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       {showApplePay && (
         <button
           className="w-full bg-black text-white dark:text-gray-100 dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
-          onClick={() => {/* Apple Pay handler */}}
+          onClick={handleApplePayExpress}
         >
           <span>🍎</span>
           <span className="font-semibold">Pay with Apple Pay</span>
@@ -460,7 +472,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       {showGooglePay && (
         <button
           className="w-full bg-[#4285f4] text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
-          onClick={() => {/* Google Pay handler */}}
+          onClick={handleGooglePayExpress}
         >
           <span>🟢</span>
           <span className="font-semibold">Pay with Google Pay</span>

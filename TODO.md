@@ -129,7 +129,10 @@ Context / exclusions:
 
 ### ⚡ Performance & Optimization
 - [x] Implement lazy loading for refactored components [perf]
-- [ ] Optimize image loading in new component structure [perf]
+- [x] Optimize image loading in new component structure [perf]
+  - ✅ Centralized AVIF/WebP candidate queue with graceful fallbacks in `components/NextImage.tsx`
+  - ✅ Added data-saver aware quality + responsive `sizes` defaults across NextImage/OptimizedImage
+  - ✅ Tuned fetch priorities and loading hints so above-the-fold assets stay eager and secondary images stay light
 - [x] Add performance monitoring for component render times [perf]
   - ✅ Moved `PerformanceMonitor` into client runtime (`pages/_app.tsx`) so GTM events fire; removed server-only usage in `_document`.
 - [ ] Implement code splitting for utility modules [perf]

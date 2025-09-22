@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, MapPin, Clock, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { safeTrackEvent } from '@/lib/analytics';
@@ -168,7 +168,7 @@ export function LivePurchaseNotifications({
     return options[Math.floor(Math.random() * options.length)];
   };
 
-  const handleNotificationClick = (notification: PurchaseNotification) => {
+  const handleNotificationClick = useCallback((notification: PurchaseNotification) => {
     // Track click on social proof
     safeTrackEvent('social_proof_clicked', {
       event_category: 'conversion',
@@ -178,7 +178,27 @@ export function LivePurchaseNotifications({
 
     // Redirect to products page
     window.location.href = '/products/compare';
-  };
+  }, []);
+
+  const handleNotificationClickCallback = useCallback((notification: PurchaseNotification) => {
+    return () => handleNotificationClick(notification);
+  }, [handleNotificationClick]);
+
+  const handleKeyDownCallback = useCallback((notification: PurchaseNotification) => {
+    return (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        handleNotificationClick(notification);
+      }
+    };
+  }, [handleNotificationClick]);
+
+  const handleCloseNotification = useCallback((notification: PurchaseNotification) => {
+    return (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setNotifications(prev => prev.filter(n => n.id !== notification.id));
+    };
+  }, []);
 
   const getPositionClasses = () => {
     switch (position) {
@@ -204,7 +224,7 @@ export function LivePurchaseNotifications({
       {notifications.map((notification, index) => (
         <div
           key={notification.id}
-          onClick={() => handleNotificationClick(notification)}
+          onClick={handleNotificationClickCallback(notification)}
           className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-in slide-in-from-bottom-2 fade-in-0"
           style={{
             animationDelay: `${index * 100}ms`,
@@ -214,12 +234,7 @@ export function LivePurchaseNotifications({
           tabIndex={0}
           aria-labelledby={`notification-${notification.id}-customer`}
           aria-describedby={`notification-${notification.id}-product notification-${notification.id}-meta`}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault();
-              handleNotificationClick(notification);
-            }
-          }}
+          onKeyDown={handleKeyDownCallback(notification)}
         >
           <div className="p-4 flex items-start space-x-3">
             {/* Product Icon */}
@@ -269,10 +284,7 @@ export function LivePurchaseNotifications({
 
             {/* Close button */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setNotifications(prev => prev.filter(n => n.id !== notification.id));
-              }}
+              onClick={handleCloseNotification(notification)}
               className="flex-shrink-0 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Close notification"
             >

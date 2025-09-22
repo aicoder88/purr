@@ -69,21 +69,26 @@ export function Header() {
     }
   }, [handleNavClick]);
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setIsMenuOpen(!isMenuOpen);
-  };
+  }, [isMenuOpen]);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
+  }, []);
 
-  const scrollToProducts = () => {
+  const scrollToProducts = useCallback(() => {
     const productsSection = document.getElementById('products');
     if (productsSection) {
       productsSection.scrollIntoView({ behavior: 'smooth' });
     }
     closeMenu();
-  };
+  }, [closeMenu]);
+
+  const handleBuyNowMobile = useCallback(() => {
+    scrollToProducts();
+    closeMenu();
+  }, [scrollToProducts, closeMenu]);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -301,10 +306,7 @@ export function Header() {
               {/* Quick Actions */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <Button
-                  onClick={() => {
-                    scrollToProducts();
-                    closeMenu();
-                  }}
+                  onClick={handleBuyNowMobile}
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />

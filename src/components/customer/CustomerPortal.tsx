@@ -182,7 +182,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     fetchCustomerData();
   }, [customerId, fetchCustomerData]);
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = useCallback((status: string) => {
     const colors = {
       processing: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
       shipped: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
@@ -192,22 +192,22 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       paused: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300'
     };
     return colors[status as keyof typeof colors] || 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300';
-  };
+  }, []);
 
-  const formatDate = (dateString: string) => {
+  const formatDate = useCallback((dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-CA', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
-  };
+  }, []);
 
-  const formatCurrency = (amount: number) => {
+  const formatCurrency = useCallback((amount: number) => {
     return new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD'
     }).format(amount);
-  };
+  }, []);
 
   if (loading) {
     return (
@@ -235,6 +235,14 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     { id: 'support', label: 'Support', icon: MessageCircle },
     { id: 'profile', label: 'Profile', icon: Settings }
   ];
+
+  const handleTabChange = useCallback((tabId: string) => {
+    setActiveTab(tabId);
+  }, []);
+
+  const handleTabClick = useCallback((tab: typeof tabs[0]) => {
+    return () => handleTabChange(tab.id);
+  }, [handleTabChange]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -275,7 +283,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={handleTabClick(tab)}
                   className={cn(
                     'flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors',
                     activeTab === tab.id
@@ -421,6 +429,35 @@ function OrdersTab({
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  }, []);
+
+  const handleStatusFilterChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setStatusFilter(e.target.value);
+  }, []);
+
+  const handleClearFilters = useCallback(() => {
+    setSearchTerm('');
+    setStatusFilter('all');
+  }, []);
+
+  const handleReorderItem = useCallback((order: Order, item: Order['items'][0]) => {
+    return () => handleReorder({ ...order, items: [item] });
+  }, []);
+
+  const handleReorderOrder = useCallback((order: Order) => {
+    return () => handleReorder(order);
+  }, []);
+
+  const handleDownloadInvoiceCallback = useCallback((orderNumber: string) => {
+    return () => handleDownloadInvoice(orderNumber);
+  }, []);
+
+  const handleTrackPackageCallback = useCallback((trackingNumber: string) => {
+    return () => handleTrackPackage(trackingNumber);
+  }, []);
+
   useEffect(() => {
     let filtered = orders;
 
@@ -522,7 +559,7 @@ function OrdersTab({
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={handleSearchChange}
               placeholder="Search by order number or product name..."
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
@@ -533,7 +570,7 @@ function OrdersTab({
             </label>
             <select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
+              onChange={handleStatusFilterChange}
               className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Orders ({getOrderStatusCount('all')})</option>
@@ -597,7 +634,7 @@ function OrdersTab({
                         <div className="text-right">
                           <p className="font-medium text-gray-900 dark:text-gray-50">{formatCurrency(item.price)}</p>
                           <button
-                            onClick={() => handleReorder({ ...order, items: [item] })}
+                            onClick={handleReorderItem(order, item)}
                             disabled={loading}
                             className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 disabled:opacity-50"
                           >
@@ -621,7 +658,7 @@ function OrdersTab({
                           )}
                         </div>
                         <button
-                          onClick={() => handleTrackPackage(order.trackingNumber!)}
+                          onClick={handleTrackPackageCallback(order.trackingNumber!)}
                           className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
                         >
                           Track Package →
@@ -633,7 +670,7 @@ function OrdersTab({
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-3">
                     <button
-                      onClick={() => handleReorder(order)}
+                      onClick={handleReorderOrder(order)}
                       disabled={loading}
                       className="px-4 py-2 bg-blue-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
                     >
@@ -651,7 +688,7 @@ function OrdersTab({
                     </button>
 
                     <button
-                      onClick={() => handleDownloadInvoice(order.orderNumber)}
+                      onClick={handleDownloadInvoiceCallback(order.orderNumber)}
                       className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
                     >
                       <Download className="w-4 h-4" />
@@ -684,10 +721,7 @@ function OrdersTab({
               </p>
               {(searchTerm || statusFilter !== 'all') && (
                 <button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setStatusFilter('all');
-                  }}
+                  onClick={handleClearFilters}
                   className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium"
                 >
                   Clear filters
@@ -715,40 +749,6 @@ function SubscriptionsTab({
 }) {
   const [subscriptionList, setSubscriptionList] = useState(subscriptions);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setSubscriptionList(subscriptions);
-  }, [subscriptions]);
-
-  const handleSubscriptionAction = async (subscriptionId: string, action: 'pause' | 'resume' | 'cancel') => {
-    setLoading(true);
-    try {
-      // Mock API call - replace with actual subscription management API
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setSubscriptionList(prev => prev.map(sub =>
-        sub.id === subscriptionId
-          ? {
-              ...sub,
-              status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
-            }
-          : sub
-      ));
-
-      // Track subscription action for analytics
-      if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', 'subscription_action', {
-          event_category: 'subscription',
-          event_label: action,
-          subscription_id: subscriptionId
-        });
-      }
-    } catch (error) {
-      console.error('Subscription action failed:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleFrequencyChange = async (subscriptionId: string, newFrequency: string) => {
     setLoading(true);
@@ -790,6 +790,58 @@ function SubscriptionsTab({
         now.setMonth(now.getMonth() + 1);
     }
     return now.toISOString().split('T')[0];
+  };
+
+  const handleFrequencyChangeCallback = useCallback((subscriptionId: string) => {
+    return (e: React.ChangeEvent<HTMLSelectElement>) => {
+      handleFrequencyChange(subscriptionId, e.target.value);
+    };
+  }, [handleFrequencyChange]);
+
+  const handleSubscriptionPause = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'pause');
+  }, []);
+
+  const handleSubscriptionResume = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'resume');
+  }, []);
+
+  const handleSubscriptionCancel = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'cancel');
+  }, []);
+
+  useEffect(() => {
+    setSubscriptionList(subscriptions);
+  }, [subscriptions]);
+
+  const handleSubscriptionAction = async (subscriptionId: string, action: 'pause' | 'resume' | 'cancel') => {
+    setLoading(true);
+    try {
+      // Mock API call - replace with actual subscription management API
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      setSubscriptionList(prev => prev.map(sub =>
+        sub.id === subscriptionId
+          ? {
+              ...sub,
+              status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
+            }
+          : sub
+      ));
+
+      // Track subscription action for analytics
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'subscription_action', {
+          event_category: 'subscription',
+          event_label: action,
+          subscription_id: subscriptionId
+        });
+      }
+    } catch (error) {
+      console.error('Subscription action failed:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -853,7 +905,7 @@ function SubscriptionsTab({
                           <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Delivery Frequency</p>
                           <select
                             value={subscription.frequency}
-                            onChange={(e) => handleFrequencyChange(subscription.id, e.target.value)}
+                            onChange={handleFrequencyChangeCallback(subscription.id)}
                             disabled={loading || subscription.status === 'cancelled'}
                             className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-50 disabled:opacity-50"
                           >
@@ -873,7 +925,7 @@ function SubscriptionsTab({
                     <div className="flex flex-wrap gap-3">
                       {subscription.status === 'active' ? (
                         <button
-                          onClick={() => handleSubscriptionAction(subscription.id, 'pause')}
+                          onClick={handleSubscriptionPause(subscription.id)}
                           disabled={loading}
                           className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
                         >
@@ -881,7 +933,7 @@ function SubscriptionsTab({
                         </button>
                       ) : subscription.status === 'paused' ? (
                         <button
-                          onClick={() => handleSubscriptionAction(subscription.id, 'resume')}
+                          onClick={handleSubscriptionResume(subscription.id)}
                           disabled={loading}
                           className="px-4 py-2 bg-green-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                         >
@@ -891,7 +943,7 @@ function SubscriptionsTab({
 
                       {subscription.status !== 'cancelled' && (
                         <button
-                          onClick={() => handleSubscriptionAction(subscription.id, 'cancel')}
+                          onClick={handleSubscriptionCancel(subscription.id)}
                           disabled={loading}
                           className="px-4 py-2 bg-red-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
                         >
@@ -949,7 +1001,69 @@ function ProfileTab({ customer }: { customer: Customer }) {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleProfileSave = async () => {
+  const handleProfileFieldChange = useCallback((field: keyof typeof profileData) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      setProfileData(prev => ({ ...prev, [field]: e.target.value }));
+    };
+  }, []);
+
+  const handleAddressFieldChange = useCallback((field: keyof typeof addressData) => {
+    return (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      setAddressData(prev => ({ ...prev, [field]: e.target.value }));
+    };
+  }, []);
+
+  const handlePasswordFieldChange = useCallback((field: keyof typeof passwordData) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      setPasswordData(prev => ({ ...prev, [field]: e.target.value }));
+    };
+  }, []);
+
+  const handlePreferencesChange = useCallback((key: string) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      handlePreferencesUpdate(key, e.target.checked);
+    };
+  }, []);
+
+  const handleEditProfile = useCallback(() => {
+    setEditingProfile(true);
+  }, []);
+
+  const handleCancelProfileEdit = useCallback(() => {
+    setEditingProfile(false);
+    setProfileData({
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+      email: customer.email,
+      phone: customer.phone || ''
+    });
+  }, [customer]);
+
+  const handleEditAddress = useCallback(() => {
+    setEditingAddress(true);
+  }, []);
+
+  const handleCancelAddressEdit = useCallback(() => {
+    setEditingAddress(false);
+    setAddressData({
+      street: customer.address.street,
+      city: customer.address.city,
+      province: customer.address.province,
+      postalCode: customer.address.postalCode,
+      country: customer.address.country
+    });
+  }, [customer]);
+
+  const handleShowPasswordForm = useCallback(() => {
+    setShowPasswordForm(true);
+  }, []);
+
+  const handleCancelPasswordForm = useCallback(() => {
+    setShowPasswordForm(false);
+    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+  }, []);
+
+  const handleProfileSave = useCallback(async () => {
     setLoading(true);
     try {
       // Mock API call - replace with actual profile update
@@ -968,9 +1082,9 @@ function ProfileTab({ customer }: { customer: Customer }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const handleAddressSave = async () => {
+  const handleAddressSave = useCallback(async () => {
     setLoading(true);
     try {
       // Mock API call - replace with actual address update
@@ -981,9 +1095,9 @@ function ProfileTab({ customer }: { customer: Customer }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const handlePasswordChange = async () => {
+  const handlePasswordChange = useCallback(async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
       alert('New passwords do not match');
       return;
@@ -1002,7 +1116,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [passwordData.newPassword, passwordData.confirmPassword]);
 
   const handlePreferencesUpdate = async (key: string, value: boolean) => {
     try {
@@ -1031,7 +1145,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="text"
                   value={profileData.firstName}
-                  onChange={(e) => setProfileData(prev => ({ ...prev, firstName: e.target.value }))}
+                  onChange={handleProfileFieldChange('firstName')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingProfile}
                 />
@@ -1043,7 +1157,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="text"
                   value={profileData.lastName}
-                  onChange={(e) => setProfileData(prev => ({ ...prev, lastName: e.target.value }))}
+                  onChange={handleProfileFieldChange('lastName')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingProfile}
                 />
@@ -1057,7 +1171,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
               <input
                 type="email"
                 value={profileData.email}
-                onChange={(e) => setProfileData(prev => ({ ...prev, email: e.target.value }))}
+                onChange={handleProfileFieldChange('email')}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                 disabled={!editingProfile}
               />
@@ -1070,7 +1184,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
               <input
                 type="tel"
                 value={profileData.phone}
-                onChange={(e) => setProfileData(prev => ({ ...prev, phone: e.target.value }))}
+                onChange={handleProfileFieldChange('phone')}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                 disabled={!editingProfile}
                 placeholder="(555) 123-4567"
@@ -1088,15 +1202,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                     {loading ? 'Saving...' : 'Save Changes'}
                   </button>
                   <button
-                    onClick={() => {
-                      setEditingProfile(false);
-                      setProfileData({
-                        firstName: customer.firstName,
-                        lastName: customer.lastName,
-                        email: customer.email,
-                        phone: customer.phone || ''
-                      });
-                    }}
+                    onClick={handleCancelProfileEdit}
                     className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Cancel
@@ -1104,7 +1210,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 </>
               ) : (
                 <button
-                  onClick={() => setEditingProfile(true)}
+                  onClick={handleEditProfile}
                   className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 transition-colors"
                 >
                   Edit Profile
@@ -1127,7 +1233,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
               <input
                 type="text"
                 value={addressData.street}
-                onChange={(e) => setAddressData(prev => ({ ...prev, street: e.target.value }))}
+                onChange={handleAddressFieldChange('street')}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                 disabled={!editingAddress}
               />
@@ -1141,7 +1247,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="text"
                   value={addressData.city}
-                  onChange={(e) => setAddressData(prev => ({ ...prev, city: e.target.value }))}
+                  onChange={handleAddressFieldChange('city')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                 />
@@ -1152,7 +1258,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 </label>
                 <select
                   value={addressData.province}
-                  onChange={(e) => setAddressData(prev => ({ ...prev, province: e.target.value }))}
+                  onChange={handleAddressFieldChange('province')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                 >
@@ -1181,7 +1287,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="text"
                   value={addressData.postalCode}
-                  onChange={(e) => setAddressData(prev => ({ ...prev, postalCode: e.target.value }))}
+                  onChange={handleAddressFieldChange('postalCode')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                   placeholder="A1A 1A1"
@@ -1193,7 +1299,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 </label>
                 <select
                   value={addressData.country}
-                  onChange={(e) => setAddressData(prev => ({ ...prev, country: e.target.value }))}
+                  onChange={handleAddressFieldChange('country')}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                 >
@@ -1214,16 +1320,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                     {loading ? 'Saving...' : 'Save Address'}
                   </button>
                   <button
-                    onClick={() => {
-                      setEditingAddress(false);
-                      setAddressData({
-                        street: customer.address.street,
-                        city: customer.address.city,
-                        province: customer.address.province,
-                        postalCode: customer.address.postalCode,
-                        country: customer.address.country
-                      });
-                    }}
+                    onClick={handleCancelAddressEdit}
                     className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Cancel
@@ -1231,7 +1328,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 </>
               ) : (
                 <button
-                  onClick={() => setEditingAddress(true)}
+                  onClick={handleEditAddress}
                   className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 transition-colors"
                 >
                   Edit Address
@@ -1257,7 +1354,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                     <p className="text-sm text-gray-500 dark:text-gray-400">Last changed 3 months ago</p>
                   </div>
                   <button
-                    onClick={() => setShowPasswordForm(true)}
+                    onClick={handleShowPasswordForm}
                     className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                   >
                     Change Password
@@ -1282,7 +1379,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   <input
                     type="password"
                     value={passwordData.currentPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                    onChange={handlePasswordFieldChange('currentPassword')}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
                   />
                 </div>
@@ -1293,7 +1390,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   <input
                     type="password"
                     value={passwordData.newPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                    onChange={handlePasswordFieldChange('newPassword')}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
                   />
                 </div>
@@ -1304,7 +1401,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   <input
                     type="password"
                     value={passwordData.confirmPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                    onChange={handlePasswordFieldChange('confirmPassword')}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
                   />
                 </div>
@@ -1317,10 +1414,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                     {loading ? 'Updating...' : 'Update Password'}
                   </button>
                   <button
-                    onClick={() => {
-                      setShowPasswordForm(false);
-                      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
-                    }}
+                    onClick={handleCancelPasswordForm}
                     className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Cancel
@@ -1346,7 +1440,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="checkbox"
                   checked={preferences.emailNotifications}
-                  onChange={(e) => handlePreferencesUpdate('emailNotifications', e.target.checked)}
+                  onChange={handlePreferencesChange('emailNotifications')}
                   className="sr-only peer"
                 />
                 <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -1362,7 +1456,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="checkbox"
                   checked={preferences.smsNotifications}
-                  onChange={(e) => handlePreferencesUpdate('smsNotifications', e.target.checked)}
+                  onChange={handlePreferencesChange('smsNotifications')}
                   className="sr-only peer"
                 />
                 <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -1378,7 +1472,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="checkbox"
                   checked={preferences.marketingEmails}
-                  onChange={(e) => handlePreferencesUpdate('marketingEmails', e.target.checked)}
+                  onChange={handlePreferencesChange('marketingEmails')}
                   className="sr-only peer"
                 />
                 <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -1394,7 +1488,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                 <input
                   type="checkbox"
                   checked={preferences.orderUpdates}
-                  onChange={(e) => handlePreferencesUpdate('orderUpdates', e.target.checked)}
+                  onChange={handlePreferencesChange('orderUpdates')}
                   className="sr-only peer"
                 />
                 <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>

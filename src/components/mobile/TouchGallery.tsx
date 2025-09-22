@@ -50,16 +50,24 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
   }, [isAutoPlaying, autoPlayInterval, images.length]);
 
   // Touch gesture handlers
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     setIsAutoPlaying(false); // Pause auto-play on touch
-  };
+  }, []);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
     touchEndX.current = e.touches[0].clientX;
-  };
+  }, []);
 
-  const handleTouchEnd = () => {
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const handleTouchEnd = useCallback(() => {
     if (touchStartX.current === null || touchEndX.current === null) return;
 
     const deltaX = touchStartX.current - touchEndX.current;
@@ -77,20 +85,20 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
 
     touchStartX.current = null;
     touchEndX.current = null;
-  };
+  }, [goToNext, goToPrevious]);
 
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  }, [images.length]);
-
-  const goToPrevious = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
-
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
-  };
+  }, []);
+
+  const handleSlideClick = useCallback((index: number) => {
+    return () => goToSlide(index);
+  }, [goToSlide]);
+
+  const toggleAutoPlay = useCallback(() => {
+    setIsAutoPlaying(!isAutoPlaying);
+  }, [isAutoPlaying]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -179,7 +187,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
           {images.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index)}
+              onClick={handleSlideClick(index)}
               className={`w-2 h-2 rounded-full transition-colors ${
                 index === currentIndex
                   ? 'bg-[#5B2EFF]'
@@ -199,7 +207,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
       {/* Auto-play Controls */}
       {autoPlay && (
         <button
-          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          onClick={toggleAutoPlay}
           className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white dark:text-gray-100 rounded-full p-2 transition-colors"
           aria-label={isAutoPlaying ? 'Pause slideshow' : 'Play slideshow'}
         >
