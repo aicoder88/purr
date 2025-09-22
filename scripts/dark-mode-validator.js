@@ -70,17 +70,54 @@ function checkFile(filePath) {
           /text-pink-[1-9]00/g,
           /text-indigo-[1-9]00/g,
           /text-orange-[1-9]00/g,
+          /text-teal-[1-9]00/g,
+          // Background colors (CRITICAL for preventing white backgrounds)
+          /bg-white\b/g,
+          /bg-gray-[1-9]00?\b/g,
+          /bg-red-[1-9]00?\b/g,
+          /bg-green-[1-9]00?\b/g,
+          /bg-blue-[1-9]00?\b/g,
+          /bg-yellow-[1-9]00?\b/g,
+          /bg-purple-[1-9]00?\b/g,
+          /bg-pink-[1-9]00?\b/g,
+          /bg-indigo-[1-9]00?\b/g,
+          /bg-orange-[1-9]00?\b/g,
+          /bg-teal-[1-9]00?\b/g,
+          // Border colors
+          /border-gray-[1-9]00/g,
+          /border-red-[1-9]00/g,
+          /border-green-[1-9]00/g,
+          /border-blue-[1-9]00/g,
+          /border-yellow-[1-9]00/g,
+          /border-purple-[1-9]00/g,
+          /border-pink-[1-9]00/g,
+          /border-indigo-[1-9]00/g,
+          /border-orange-[1-9]00/g,
+          /border-teal-[1-9]00/g,
         ];
         
         colorClasses.forEach(pattern => {
           const colorMatches = [...classString.matchAll(pattern)];
           colorMatches.forEach(colorMatch => {
             const colorClass = colorMatch[0];
-            // Check if there's a corresponding dark variant in the same className string
-            const darkPattern = new RegExp(`dark:${colorClass.replace('text-', 'text-')}`);
-            const hasDarkVariant = darkPattern.test(classString) || 
-                                 /dark:text-/.test(classString); // Any dark text variant
-            
+
+            // Determine the expected dark variant pattern
+            let hasDarkVariant = false;
+
+            if (colorClass.startsWith('text-')) {
+              // Text colors need dark:text- variants
+              const darkPattern = new RegExp(`dark:${colorClass}`);
+              hasDarkVariant = darkPattern.test(classString) || /dark:text-/.test(classString);
+            } else if (colorClass.startsWith('bg-')) {
+              // Background colors need dark:bg- variants
+              const darkPattern = new RegExp(`dark:${colorClass}`);
+              hasDarkVariant = darkPattern.test(classString) || /dark:bg-/.test(classString);
+            } else if (colorClass.startsWith('border-')) {
+              // Border colors need dark:border- variants
+              const darkPattern = new RegExp(`dark:${colorClass}`);
+              hasDarkVariant = darkPattern.test(classString) || /dark:border-/.test(classString);
+            }
+
             if (!hasDarkVariant) {
               errors.push({
                 line: lineIndex + 1,
@@ -136,12 +173,19 @@ function validateDarkMode() {
     console.log('\n❌ DARK MODE VALIDATION FAILED!');
     console.log('Fix all missing dark mode variants before deploying.');
     console.log('\nQuick fixes:');
-    console.log('• text-gray-900 → text-gray-900 dark:text-gray-50');  
+    console.log('TEXT COLORS:');
+    console.log('• text-gray-900 → text-gray-900 dark:text-gray-50');
     console.log('• text-gray-800 → text-gray-800 dark:text-gray-100');
     console.log('• text-gray-700 → text-gray-700 dark:text-gray-200');
-    console.log('• text-gray-600 → text-gray-600 dark:text-gray-300');
-    console.log('• text-red-600 → text-red-600 dark:text-red-400');
-    console.log('• text-green-600 → text-green-600 dark:text-green-400');
+    console.log('• text-white → text-white dark:text-gray-100');
+    console.log('BACKGROUND COLORS:');
+    console.log('• bg-white → bg-white dark:bg-gray-900');
+    console.log('• bg-blue-50 → bg-blue-50 dark:bg-blue-900/20');
+    console.log('• bg-green-50 → bg-green-50 dark:bg-green-900/20');
+    console.log('• bg-yellow-50 → bg-yellow-50 dark:bg-yellow-900/20');
+    console.log('BORDER COLORS:');
+    console.log('• border-gray-200 → border-gray-200 dark:border-gray-700');
+    console.log('• border-blue-200 → border-blue-200 dark:border-blue-700');
     
     process.exit(1);
   } else {

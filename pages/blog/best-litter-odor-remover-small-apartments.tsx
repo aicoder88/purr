@@ -81,7 +81,7 @@ export default function BestForSmallApartments() {
 
             {/* Article Header */}
             <header className="mb-12 text-center">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/20 rounded-full text-[#FF3131] dark:text-green-300 font-medium text-sm mb-4">
                 Urban Living Solutions
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -114,7 +114,7 @@ export default function BestForSmallApartments() {
             </div>
 
             {/* Quick Tips Box */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-12">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-12">
               <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🏙️ Small Apartment Quick Tips</h2>
               <div className="grid md:grid-cols-2 gap-4 text-blue-800 dark:text-blue-200">
                 <div>
@@ -142,7 +142,7 @@ export default function BestForSmallApartments() {
                 litter odor remover for small apartments</strong> essential for comfortable living.
               </p>
 
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-500 p-6 mb-8">
                 <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🏢 Urban Living Challenges</h3>
                 <ul className="text-yellow-800 dark:text-yellow-200 space-y-2">
                   <li>• Limited ventilation and air circulation</li>
@@ -173,7 +173,7 @@ export default function BestForSmallApartments() {
                         <strong>Why it's #1:</strong> Maximum odor elimination in minimal space. 
                         Activated carbon provides professional-grade odor control without taking up extra room.
                       </p>
-                      <div className="bg-green-50 p-4 rounded-lg mb-4">
+                      <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
                         <h4 className="font-bold text-green-900 dark:text-green-100 mb-2">✅ Apartment Advantages:</h4>
                         <ul className="text-green-800 dark:text-green-200 space-y-1">
                           <li>• Compact storage - one small container lasts weeks</li>
@@ -206,7 +206,7 @@ export default function BestForSmallApartments() {
                         schedule prevents odor buildup before it becomes noticeable.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-blue-50 p-4 rounded-lg">
+                        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                           <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">📅 Daily Tasks (2 minutes)</h4>
                           <ul className="text-blue-800 dark:text-blue-200 space-y-1 text-sm">
                             <li>• Scoop waste immediately</li>
@@ -214,7 +214,7 @@ export default function BestForSmallApartments() {
                             <li>• Quick visual inspection</li>
                           </ul>
                         </div>
-                        <div className="bg-purple-50 p-4 rounded-lg">
+                        <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
                           <h4 className="font-bold text-purple-900 dark:text-purple-100 mb-2">📅 Weekly Tasks (15 minutes)</h4>
                           <ul className="text-purple-800 dark:text-purple-200 space-y-1 text-sm">
                             <li>• Complete litter change</li>
@@ -291,7 +291,7 @@ export default function BestForSmallApartments() {
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         Supplement your litter deodorizer with space-efficient air purification for complete odor control.
                       </p>
-                      <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+                      <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                         <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">🔍 What to Look For:</h4>
                         <ul className="text-gray-700 dark:text-gray-200 space-y-1">
                           <li>• HEPA filtration for particles and allergens</li>
@@ -317,7 +317,7 @@ export default function BestForSmallApartments() {
                         Multiple cats in small spaces require specialized approaches to maintain air quality.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-orange-50 p-4 rounded-lg">
+                        <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
                           <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">📦 Box Management</h4>
                           <ul className="text-orange-800 dark:text-orange-200 space-y-1 text-sm">
                             <li>• One box per cat + one extra</li>
@@ -325,9 +325,9 @@ export default function BestForSmallApartments() {
                             <li>• Use vertical space with cat trees</li>
                           </ul>
                         </div>
-                        <div className="bg-teal-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-teal-900 mb-2">⚡ Intensive Protocol</h4>
-                          <ul className="text-teal-800 space-y-1 text-sm">
+                        <div className="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg">
+                          <h4 className="font-bold text-teal-900 dark:text-teal-100 mb-2">⚡ Intensive Protocol</h4>
+                          <ul className="text-teal-800 dark:text-teal-200 space-y-1 text-sm">
                             <li>• Double the deodorizer amount</li>
                             <li>• Twice-daily maintenance</li>
                             <li>• Staggered feeding schedules</li>
@@ -360,7 +360,7 @@ export default function BestForSmallApartments() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ BEST Locations</h3>
                   <ul className="text-green-800 dark:text-green-200 space-y-3">
                     <li>
@@ -377,7 +377,7 @@ export default function BestForSmallApartments() {
                     </li>
                   </ul>
                 </div>
-                <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ AVOID These Locations</h3>
                   <ul className="text-red-800 dark:text-red-200 space-y-3">
                     <li>
@@ -403,7 +403,7 @@ export default function BestForSmallApartments() {
                 Here are cost-effective strategies for apartment dwellers:
               </p>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-8">
                 <h3 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">💰 Cost-Effective Approach</h3>
                 <div className="space-y-4 text-blue-800 dark:text-blue-200">
                   <div className="flex justify-between items-center">
@@ -469,7 +469,7 @@ export default function BestForSmallApartments() {
                 Sometimes you need immediate odor control for unexpected situations. Here's your emergency protocol:
               </p>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
                 <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">🚨 Quick Action Plan (Under 30 Minutes)</h3>
                 <ol className="text-red-800 dark:text-red-200 space-y-2">
                   <li><strong>1. Immediate Cleanup:</strong> Remove all waste and soiled litter</li>

@@ -178,6 +178,17 @@ setState(prev => prev + 1);
 npm run validate-dark-mode  # MUST show 0 errors
 ```
 
+**PREVENTION: Enhanced Validation System**
+The enhanced validator now catches ALL color violations:
+- Background colors: `bg-white`, `bg-blue-50`, etc.
+- Border colors: `border-gray-200`, `border-blue-200`, etc.
+- Text colors: `text-white`, `text-gray-900`, etc.
+
+**Auto-Prevention Tools:**
+1. **Pre-commit Hook**: `.husky/pre-commit` blocks commits with violations
+2. **VSCode Snippets**: `.vscode/snippets.code-snippets` provides `darkbg`, `darktext`, `darkbox` shortcuts
+3. **Enhanced Validator**: Catches 496+ violations across background/border/text patterns
+
 ## Performance Standards
 
 **Targets:**
