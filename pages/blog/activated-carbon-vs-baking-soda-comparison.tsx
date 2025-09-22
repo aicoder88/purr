@@ -182,7 +182,7 @@ export default function ActivatedCarbonVsBakingSoda() {
               makes it the preferred choice for serious odor elimination.
             </p>
 
-            <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 my-8">
+            <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 dark:border-green-700 p-6 my-8">
               <h3 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-2">
                 Pro Tip for Cat Owners
               </h3>

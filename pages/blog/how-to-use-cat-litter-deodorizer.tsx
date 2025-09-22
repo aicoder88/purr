@@ -381,21 +381,21 @@ export default function HowToUseLitterDeodorizer() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Common Issues</h2>
               
               <div className="space-y-6 mb-8">
-                <div className="border-l-4 border-orange-400 pl-6">
+                <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Odors still present after application</h4>
                   <p className="text-orange-800 dark:text-orange-200">
                     <strong>Solution:</strong> Increase the amount used, ensure even distribution, 
                     or consider more frequent applications for heavy-use boxes.
                   </p>
                 </div>
-                <div className="border-l-4 border-orange-400 pl-6">
+                <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Cat avoiding the litter box</h4>
                   <p className="text-orange-800 dark:text-orange-200">
                     <strong>Solution:</strong> Reduce the amount used or try mixing less thoroughly. 
                     Some cats are sensitive to texture changes.
                   </p>
                 </div>
-                <div className="border-l-4 border-orange-400 pl-6">
+                <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Deodorizer clumping together</h4>
                   <p className="text-orange-800 dark:text-orange-200">
                     <strong>Solution:</strong> Ensure litter is completely dry before application 

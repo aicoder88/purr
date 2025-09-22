@@ -184,7 +184,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 exponentially stronger odors, not just additive ones.
               </p>
 
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 mb-8">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-700 p-6 mb-8">
                 <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🔬 The Science Behind Multi-Cat Odors</h3>
                 <ul className="text-yellow-800 dark:text-yellow-200 space-y-2">
                   <li>• <strong>Ammonia Concentration:</strong> 2+ cats create 4x stronger ammonia levels</li>
@@ -552,7 +552,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </p>
 
               <div className="space-y-6 mb-8">
-                <div className="border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 p-6">
+                <div className="border-l-4 border-red-500 dark:border-red-700 bg-red-50 dark:bg-red-900/20 p-6">
                   <h3 className="text-lg font-bold text-red-900 dark:text-red-100 mb-3">🔥 Problem: Overwhelming Ammonia Smell</h3>
                   <div className="text-red-800 dark:text-red-200 space-y-2">
                     <div><strong>Cause:</strong> Insufficient deodorizer or overdue box cleaning</div>
@@ -561,7 +561,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 p-6">
+                <div className="border-l-4 border-yellow-500 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20 p-6">
                   <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">⚠️ Problem: One Box Smells Worse Than Others</h3>
                   <div className="text-yellow-800 dark:text-yellow-200 space-y-2">
                     <div><strong>Cause:</strong> Territorial preference or medical issue with one cat</div>
@@ -570,7 +570,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 p-6">
+                <div className="border-l-4 border-blue-500 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-6">
                   <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-3">💙 Problem: Cats Avoiding Certain Boxes</h3>
                   <div className="text-blue-800 dark:text-blue-200 space-y-2">
                     <div><strong>Cause:</strong> Over-deodorizing or using scented products</div>

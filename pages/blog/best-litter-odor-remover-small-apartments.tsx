@@ -418,7 +418,7 @@ export default function BestForSmallApartments() {
                     <span><strong>Reduced air freshener needs:</strong></span>
                     <span className="font-bold">-$20/month</span>
                   </div>
-                  <div className="flex justify-between items-center border-t border-blue-300 pt-2">
+                  <div className="flex justify-between items-center border-t border-blue-300 dark:border-blue-700 pt-2">
                     <span><strong>Net monthly cost:</strong></span>
                     <span className="font-bold text-green-700 dark:text-green-300">Saves $5/month</span>
                   </div>
