@@ -11,7 +11,7 @@ const STATIC_ASSETS = [
   '/optimized/purrify-logo-icon.webp',
   '/optimized/17g.webp',
   '/optimized/60g.webp',
-  '/optimized/120g.webp',
+  '/optimized/140g.webp',
   // Critical pages for offline access
   '/products/trial-size',
   '/products/standard',

@@ -315,7 +315,7 @@ export function EnhancedStructuredData() {
       {
         '@type': 'PropertyValue',
         name: 'Weight Options',
-        value: '17g Trial, 60g Regular, 120g Large'
+        value: '17g Trial, 60g Regular, 140g Large'
       },
       {
         '@type': 'PropertyValue',

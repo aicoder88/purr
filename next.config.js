@@ -224,7 +224,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products/purrify-120g',
+        source: '/products/purrify-140g',
         destination: '/products/family-pack',
         permanent: true,
       },

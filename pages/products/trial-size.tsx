@@ -260,7 +260,7 @@ export default function TrialSizePage() {
                     },
                     {
                       "@type": "Product",
-                      "name": "Purrify 120g Family Pack",
+                      "name": "Purrify 140g Family Pack",
                       "offers": {
                         "@type": "Offer",
                         "price": "29.99",
@@ -535,7 +535,7 @@ export default function TrialSizePage() {
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Large Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value for multiple cats</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">140g - Best value for multiple cats</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Button className="w-full">View Large Size</Button>
               </div>

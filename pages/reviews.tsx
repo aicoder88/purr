@@ -28,7 +28,7 @@ export default function Reviews() {
       title: "Finally found something that works",
       review: "After trying Arm & Hammer, Fresh Step, and countless other deodorizers, Purrify is the only one that actually eliminates odors instead of just masking them. My guests can't even tell I have cats anymore. The activated carbon technology really works.",
       verified: true,
-      productUsed: "120g Large Size",
+      productUsed: "140g Large Size",
       catsOwned: 3,
       useCase: "Multi-cat household"
     },
@@ -80,7 +80,7 @@ export default function Reviews() {
       title: "Veterinarian recommended",
       review: "My vet actually recommended Purrify when I mentioned litter box odors. She said activated carbon is well-established and most effective option for cats - the same type used in water filters. Been using it for 3 months now and couldn't be happier with the results.",
       verified: true,
-      productUsed: "120g Large Size",
+      productUsed: "140g Large Size",
       catsOwned: 2,
       useCase: "Veterinarian recommended"
     }

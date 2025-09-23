@@ -518,7 +518,7 @@ export default function StandardSizePage() {
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">140g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/family-pack`}>
                   <Button variant="outline" className="w-full">View Family Pack</Button>

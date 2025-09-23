@@ -67,7 +67,7 @@ export default function CaseStudies() {
         ]
       },
       solution: {
-        description: "The Johnsons implemented Purrify across all 3 litter boxes using the 120g large size for maximum value and effectiveness.",
+        description: "The Johnsons implemented Purrify across all 3 litter boxes using the 140g large size for maximum value and effectiveness.",
         implementation: [
           "Used 2 teaspoons per litter box weekly",
           "Staggered application across different boxes",

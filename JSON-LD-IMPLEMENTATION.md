@@ -62,7 +62,7 @@ React component for easy schema implementation:
 **Pages Implemented:**
 - `/products/trial-size` - Purrify 17g ($6.99)
 - `/products/standard` - Purrify 60g ($19.99) 
-- `/products/family-pack` - Purrify 120g ($29.99)
+- `/products/family-pack` - Purrify 140g ($29.99)
 - `/products/compare` - Product comparison page
 
 **Schemas per Product Page:**

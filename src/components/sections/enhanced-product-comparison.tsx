@@ -90,8 +90,8 @@ export function EnhancedProductComparison() {
       popularity: 3
     },
     {
-      id: 'purrify-120g',
-      name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
+      id: 'purrify-140g',
+      name: t.products?.['purrify-140g']?.name || 'Purrify 140g',
       subtitle: t.productsSection?.powerLevels?.maximumPower || 'Maximum Power',
       price: 29.99,
       originalPrice: 39.99,

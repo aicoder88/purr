@@ -412,7 +412,7 @@ export default function B2B() {
             <div className="text-center">
               <div className="bg-white dark:bg-gray-700 rounded-lg p-6 mb-4">
                 <h3 className="text-lg font-semibold mb-2">
-                  {locale === 'fr' ? 'Grand Format 120g' : 'Large Size 120g'}
+                  {locale === 'fr' ? 'Grand Format 140g' : 'Large Size 140g'}
                 </h3>
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">$29.99</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">

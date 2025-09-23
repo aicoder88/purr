@@ -42,8 +42,8 @@ export const zh = {
       name: "Purrify 60g",
       description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
     },
-    "purrify-120g": {
-      name: "Purrify 120g",
+    "purrify-140g": {
+      name: "Purrify 140g",
       description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
     }
   },
@@ -440,9 +440,9 @@ export const zh = {
           sku: "purrify-60g"
         },
         family: {
-          name: "Purrify 120g 家庭装",
+          name: "Purrify 140g 家庭装",
           description: "大容量装，非常适合多猫家庭 - 最大程度控制异味", 
-          sku: "purrify-120g"
+          sku: "purrify-140g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -879,7 +879,7 @@ export const zh = {
       },
       {
         id: "large",
-        name: "大装 120g",
+        name: "大装 140g",
         subtitle: "多猫家庭的最佳价值",
         duration: "8-10次猫砂更换",
         cats: "2-3只猫",
@@ -1229,7 +1229,7 @@ export const zh = {
     },
     altText: {
       scientificDiagram: "科学图表显示活性炭分子结构，具有捕获异味分子的微孔",
-      productPackages: "三个Purrify产品包装展示不同尺寸：17g试用装、60g标准装和120g家庭装",
+      productPackages: "三个Purrify产品包装展示不同尺寸：17g试用装、60g标准装和140g家庭装",
       microscopicView: "活性炭的微观视图，显示捕获异味分子的多孔结构",
       happyCat: "快乐的猫咪在清新无异味的家庭环境中安静休息",
       happyCatAlt: "快乐的猫咪",

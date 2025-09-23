@@ -20,12 +20,12 @@ export const PRODUCTS = [
     size: "60g",
   },
   {
-    id: "purrify-120g",
-    name: "Purrify 120g",
+    id: "purrify-140g",
+    name: "Purrify 140g",
     description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control.",
     price: 29.99,
     image: "/optimized/140g.webp",
-    size: "120g",
+    size: "140g",
   },
 ];
 
@@ -77,7 +77,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Priya S., Saint-Laurent",
-    text: "My cats used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
+    text: "My cats used to make the whole basement smell terrible. Started using the 140g size for both of them - game changer! Guests don't even know we have cats now.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",
     stars: 5
   },
@@ -113,7 +113,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Kai L., Outremont",
-    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat to inhale. The 120g size is perfect for my two-cat household.",
+    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat to inhale. The 140g size is perfect for my two-cat household.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kai",
     stars: 5
   },
@@ -131,7 +131,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Noor A., West Island",
-    text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+    text: "Three cats in a small townhouse. You can imagine the chaos! The 140g size handles all three beautifully. My mother-in-law finally visits again! 😂",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=noor",
     stars: 5
   },

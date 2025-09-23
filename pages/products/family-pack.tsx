@@ -14,12 +14,12 @@ export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
   
-  const pageTitle = `${SITE_NAME} Family Pack - 120g Activated Carbon Cat Litter Additive`;
-  const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack activated carbon cat litter additive. Best value size.";
+  const pageTitle = `${SITE_NAME} Family Pack - 140g Activated Carbon Cat Litter Additive`;
+  const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 140g family pack activated carbon cat litter additive. Best value size.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
   
   // Generate structured data for this product
-  const productData = generateProductData('purrify-120g');
+  const productData = generateProductData('purrify-140g');
   const breadcrumbs = generateBreadcrumbs('/products/family-pack');
 
   const benefits = [
@@ -33,13 +33,13 @@ export default function FamilyPackPage() {
   const testimonials = [
     {
       name: "Kai L., Outremont",
-      text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cats to inhale. The 120g size is perfect for my two-cat household.",
+      text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cats to inhale. The 140g size is perfect for my two-cat household.",
       rating: 5,
       petName: "Luna & Shadow"
     },
     {
       name: "Noor A., West Island",
-      text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+      text: "Three cats in a small townhouse. You can imagine the chaos! The 140g size handles all three beautifully. My mother-in-law finally visits again! 😂",
       rating: 5,
       petName: "Muffin, Simba & Cleo"
     }
@@ -61,14 +61,14 @@ export default function FamilyPackPage() {
               url: 'https://www.purrify.ca/optimized/140g.webp',
               width: 1200,
               height: 630,
-              alt: 'Purrify 120g Family Pack Package (WebP)',
+              alt: 'Purrify 140g Family Pack Package (WebP)',
               type: 'image/webp'
             },
             {
-              url: 'https://www.purrify.ca/purrify-family-120g.jpg',
+              url: 'https://www.purrify.ca/purrify-family-140g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 120g Family Pack Package',
+              alt: 'Purrify 140g Family Pack Package',
               type: 'image/jpeg'
             }
           ]
@@ -88,7 +88,7 @@ export default function FamilyPackPage() {
       />
       
       {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-120g' locale={locale as 'en' | 'fr' | 'zh'} />
+      <ProductSchema productId='purrify-140g' locale={locale as 'en' | 'fr' | 'zh'} />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
@@ -122,7 +122,7 @@ export default function FamilyPackPage() {
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <NextImage
                     src="/optimized/140g.webp"
-                    alt="Purrify 120g Family Pack"
+                    alt="Purrify 140g Family Pack"
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -141,7 +141,7 @@ export default function FamilyPackPage() {
                     Purrify Family Pack
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    120g Activated Carbon Cat Litter Additive
+                    140g Activated Carbon Cat Litter Additive
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -226,7 +226,7 @@ export default function FamilyPackPage() {
                 Maximum Value for Multi-Cat Homes
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Our 120g family pack provides unbeatable value and convenience for households with multiple cats
+                Our 140g family pack provides unbeatable value and convenience for households with multiple cats
               </p>
             </div>
 
@@ -281,7 +281,7 @@ export default function FamilyPackPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    One Family Pack (120g)
+                    One Family Pack (140g)
                   </div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
                     $29.99
@@ -365,7 +365,7 @@ export default function FamilyPackPage() {
                   BEST VALUE
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">140g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Button className="w-full">Currently Viewing</Button>
               </div>

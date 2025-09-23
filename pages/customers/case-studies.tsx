@@ -53,7 +53,7 @@ const CaseStudiesPage: NextPage = () => {
       cats: 3,
       duration: "1 year",
       challenge: "Managing odors with 3 cats in busy household",
-      solution: "Uses 120g large size every 6 weeks",
+      solution: "Uses 140g large size every 6 weeks",
       results: [
         "Eliminated need for multiple litter boxes",
         "Reduced litter changes from daily to weekly",
@@ -66,7 +66,7 @@ const CaseStudiesPage: NextPage = () => {
         before: "Multiple litter boxes, daily cleaning, overwhelming odors, social isolation",
         after: "Single litter box, weekly maintenance, odor-free home, active social life"
       },
-      productUsed: "120g Large Size",
+      productUsed: "140g Large Size",
       satisfaction: 5
     },
     {

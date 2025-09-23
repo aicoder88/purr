@@ -25,7 +25,7 @@ const SYNTHETIC_PURCHASES: PurchaseNotification[] = [
     id: '1',
     customerName: 'Priya S.',
     location: 'Saint-Laurent, QC',
-    product: 'Purrify 120g Large',
+    product: 'Purrify 140g Large',
     timeAgo: '3 minutes ago',
     verified: true,
     rating: 5,

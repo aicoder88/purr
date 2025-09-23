@@ -472,7 +472,7 @@ export default function Stockists() {
                             >
                               {product === 'trial' && (locale === 'fr' ? 'Essai 17g' : 'Trial 17g')}
                               {product === 'regular' && (locale === 'fr' ? 'Régulier 60g' : 'Regular 60g')}
-                              {product === 'large' && (locale === 'fr' ? 'Grand 120g' : 'Large 120g')}
+                              {product === 'large' && (locale === 'fr' ? 'Grand 140g' : 'Large 140g')}
                             </span>
                           ))}
                         </div>

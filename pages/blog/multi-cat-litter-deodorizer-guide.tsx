@@ -80,7 +80,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 "name": "How much litter deodorizer do I need for multiple cats?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "For multi-cat households, use 1 teaspoon of activated carbon deodorizer per cat per litter box. With 3 cats and 4 boxes, you'd use approximately 4 teaspoons daily, making a 120g container last about 4-5 weeks."
+                  "text": "For multi-cat households, use 1 teaspoon of activated carbon deodorizer per cat per litter box. With 3 cats and 4 boxes, you'd use approximately 4 teaspoons daily, making a 140g container last about 4-5 weeks."
                 }
               },
               {
@@ -249,15 +249,15 @@ export default function MultiCatLitterDeodorizerGuide() {
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                       <div className="font-bold text-blue-900 dark:text-blue-100">2 Cats, 3 Boxes</div>
-                      <div className="text-blue-800 dark:text-blue-200 text-sm">3 tsp daily = 120g lasts 5-6 weeks</div>
+                      <div className="text-blue-800 dark:text-blue-200 text-sm">3 tsp daily = 140g lasts 5-6 weeks</div>
                     </div>
                     <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
                       <div className="font-bold text-purple-900 dark:text-purple-100">3 Cats, 4 Boxes</div>
-                      <div className="text-purple-800 dark:text-purple-200 text-sm">4 tsp daily = 120g lasts 4-5 weeks</div>
+                      <div className="text-purple-800 dark:text-purple-200 text-sm">4 tsp daily = 140g lasts 4-5 weeks</div>
                     </div>
                     <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
                       <div className="font-bold text-orange-900 dark:text-orange-100">4+ Cats</div>
-                      <div className="text-orange-800 dark:text-orange-200 text-sm">120g size provides best value for large households</div>
+                      <div className="text-orange-800 dark:text-orange-200 text-sm">140g size provides best value for large households</div>
                     </div>
                   </div>
                 </div>
@@ -594,7 +594,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                     </div>
                     <div className="flex items-start space-x-2">
                       <span className="text-[#FF3131] dark:text-[#FF6B6B] font-bold">✓</span>
-                      <div><strong>Cost-Effective:</strong> 120g size perfect for 2+ cat households</div>
+                      <div><strong>Cost-Effective:</strong> 140g size perfect for 2+ cat households</div>
                     </div>
                   </div>
                   <div className="space-y-3">
@@ -626,7 +626,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">How much litter deodorizer do I need for multiple cats?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     Use 1 teaspoon per cat per litter box. For 3 cats with 4 boxes, you'd use approximately
-                    4 teaspoons daily. A 120g container provides about 4-5 weeks of coverage at this rate.
+                    4 teaspoons daily. A 140g container provides about 4-5 weeks of coverage at this rate.
                   </p>
                 </div>
 
@@ -676,7 +676,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-3">🎯 Your Multi-Cat Success Plan</h3>
                 <ol className="text-green-800 dark:text-green-200 space-y-2">
                   <li><strong>1. Calculate your dosage:</strong> 1 teaspoon per cat per box</li>
-                  <li><strong>2. Choose the right size:</strong> <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">120g for 2+ cats</Link>, perfect for multi-cat households</li>
+                  <li><strong>2. Choose the right size:</strong> <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">140g for 2+ cats</Link>, perfect for multi-cat households</li>
                   <li><strong>3. Establish your routine:</strong> Morning scoop + evening maintenance</li>
                   <li><strong>4. Monitor and adjust:</strong> Increase frequency if needed during high-use periods</li>
                   <li><strong>5. Stay consistent:</strong> Daily maintenance prevents compound odor buildup</li>
@@ -686,7 +686,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience odor-free multi-cat living?
                 <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
-                Start with Purrify's 120g multi-cat size</Link> and discover why thousands of multi-cat
+                Start with Purrify's 140g multi-cat size</Link> and discover why thousands of multi-cat
                 households trust activated carbon technology for their odor control needs.
               </p>
             </div>

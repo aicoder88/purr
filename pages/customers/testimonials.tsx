@@ -53,7 +53,7 @@ export default function TestimonialsPage() {
       category: ['multiple-cats'],
       date: "2023-11-08",
       title: "Game changer for two cats!",
-      text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
+      text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 140g size for both of them - game changer! Guests don't even know we have cats now.",
       verified: true,
       helpful: 18,
       productUsed: "Standard Size"

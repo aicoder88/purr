@@ -19,7 +19,7 @@ interface Review {
   verified: boolean;
   helpful: number;
   notHelpful: number;
-  productSize: '17g' | '60g' | '120g';
+  productSize: '17g' | '60g' | '140g';
   catCount: number;
   usageDuration: string;
   wouldRecommend: boolean;
@@ -45,7 +45,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 24,
     notHelpful: 1,
-    productSize: '120g',
+    productSize: '140g',
     catCount: 3,
     usageDuration: '6 months',
     wouldRecommend: true
@@ -93,7 +93,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 12,
     notHelpful: 0,
-    productSize: '120g',
+    productSize: '140g',
     catCount: 2,
     usageDuration: '4 months',
     wouldRecommend: true
@@ -104,12 +104,12 @@ const SAMPLE_REVIEWS: Review[] = [
     userName: 'Amanda T.',
     rating: 4,
     title: 'Good value for money',
-    content: 'Makes my litter last much longer, so it pays for itself. The 120g size is definitely the best value. Easy to use and effective.',
+    content: 'Makes my litter last much longer, so it pays for itself. The 140g size is definitely the best value. Easy to use and effective.',
     date: '2024-01-05',
     verified: true,
     helpful: 9,
     notHelpful: 1,
-    productSize: '120g',
+    productSize: '140g',
     catCount: 1,
     usageDuration: '5 months',
     wouldRecommend: true
@@ -424,7 +424,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 <option value="">All Sizes</option>
                 <option value="17g">17g Trial</option>
                 <option value="60g">60g Regular</option>
-                <option value="120g">120g Large</option>
+                <option value="140g">140g Large</option>
               </select>
             </div>
 

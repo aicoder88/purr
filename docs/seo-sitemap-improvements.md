@@ -38,7 +38,7 @@ Search engines were only finding a handful of indexable pages because the websit
 ### Product Pages (Priority 0.9)
 - `/products/purrify-20g` - 20g Product
 - `/products/purrify-60g` - 60g Product
-- `/products/purrify-120g` - 120g Product
+- `/products/purrify-140g` - 140g Product
 
 ### Legal Pages (Priority 0.4)
 - `/privacy-policy` - Privacy Policy

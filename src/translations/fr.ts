@@ -42,8 +42,8 @@ export const fr = {
       name: "Purrify 60g",
       description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
     },
-    "purrify-120g": {
-      name: "Purrify 120g",
+    "purrify-140g": {
+      name: "Purrify 140g",
       description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
@@ -394,9 +394,9 @@ export const fr = {
           sku: "purrify-60g"
         },
         family: {
-          name: "Purrify 120g Pack Familial",
+          name: "Purrify 140g Pack Familial",
           description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs", 
-          sku: "purrify-120g"
+          sku: "purrify-140g"
         }
       },
       priceRange: "6,99 $ - 29,99 $"
@@ -878,7 +878,7 @@ export const fr = {
       },
       {
         id: "large",
-        name: "Grande Taille 120g",
+        name: "Grande Taille 140g",
         subtitle: "Meilleure Valeur pour Foyers Multi-Chats",
         duration: "8-10 changements de litière",
         cats: "2-3 chats", 
@@ -1228,7 +1228,7 @@ export const fr = {
     },
     altText: {
       scientificDiagram: "Diagramme scientifique montrant la structure moléculaire du charbon actif avec des micropores qui piègent les molécules d'odeur",
-      productPackages: "Trois emballages Purrify montrant différentes tailles : essai 17g, standard 60g et pack famille 120g",
+      productPackages: "Trois emballages Purrify montrant différentes tailles : essai 17g, standard 60g et pack famille 140g",
       microscopicView: "Vue microscopique du charbon actif montrant la structure poreuse qui capture les molécules d'odeur",
       happyCat: "Chat heureux se reposant paisiblement dans un environnement domestique frais et sans odeur",
       happyCatAlt: "Chat heureux",

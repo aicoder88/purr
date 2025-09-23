@@ -44,8 +44,8 @@ export const en = {
       name: "Purrify 60g Standard",
       description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
     },
-    "purrify-120g": {
-      name: "Purrify 120g Family Pack",
+    "purrify-140g": {
+      name: "Purrify 140g Family Pack",
       description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },
@@ -368,9 +368,9 @@ export const en = {
           sku: "purrify-60g"
         },
         family: {
-          name: "Purrify 120g Family Pack",
+          name: "Purrify 140g Family Pack",
           description: "Large size perfect for multi-cat households - maximum odor control", 
-          sku: "purrify-120g"
+          sku: "purrify-140g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -973,7 +973,7 @@ export const en = {
       id: 7,
       category: "product",
       question: "What sizes are available?",
-      answer: "We offer three sizes: 17g Trial Size ($6.99) for first-time users, 60g Regular Size ($19.99) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
+      answer: "We offer three sizes: 17g Trial Size ($6.99) for first-time users, 60g Regular Size ($19.99) for single-cat households, and 140g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
       popular: false,
       tags: ["sizes", "pricing", "value"]
     },
@@ -1029,7 +1029,7 @@ export const en = {
       id: 14,
       category: "product",
       question: "Can Purrify help with multiple cats?",
-      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
+      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 140g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
       popular: false,
       tags: ["multiple cats", "multi-cat", "large size"]
     },
@@ -1178,7 +1178,7 @@ export const en = {
     },
     altText: {
       scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      productPackages: "Three Purrify product packages showing different sizes: 17g trial, 60g standard, and 120g family pack",
+      productPackages: "Three Purrify product packages showing different sizes: 17g trial, 60g standard, and 140g family pack",
       microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
       happyCatAlt: "Happy cat",
