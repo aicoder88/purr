@@ -525,7 +525,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                       </div>
                     </div>
                     {tier.name === currentTier.name && (
-                      <Badge className="bg-orange-500 text-white dark:text-gray-100">Current</Badge>
+                      <Badge className="bg-orange-500 dark:bg-orange-600 text-white dark:text-gray-100">Current</Badge>
                     )}
                   </div>
                 </CardHeader>

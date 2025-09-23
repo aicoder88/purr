@@ -86,7 +86,7 @@ export function SolutionPageCTATest({
           </p>
           <a
             href={productUrl}
-            className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors shadow-lg"
+            className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors shadow-lg"
             onClick={() => trackABTestConversion(testId, 'control')}
           >
             Try Purrify - $6.99
@@ -228,7 +228,7 @@ export function PricingTest({
           <span className="text-2xl font-bold text-green-600 dark:text-green-400">
             ${basePrice}
           </span>
-          <span className="bg-red-500 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">SAVE 33%</span>
+          <span className="bg-red-500 dark:bg-red-600 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">SAVE 33%</span>
         </div>
       )
     }

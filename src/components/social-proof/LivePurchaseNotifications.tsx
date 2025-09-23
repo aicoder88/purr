@@ -337,7 +337,7 @@ export function LiveVisitorCounter() {
   return (
     <div className="fixed bottom-4 right-4 z-40 bg-gradient-to-r from-purple-500 to-pink-500 text-white dark:text-gray-100 px-4 py-2 rounded-full shadow-lg animate-in slide-in-from-bottom-2 fade-in-0">
       <div className="flex items-center space-x-2 text-sm font-medium">
-        <div className="w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full animate-pulse"></div>
+        <div className="w-2 h-2 bg-green-400 dark:bg-green-500 dark:bg-green-600 rounded-full animate-pulse"></div>
         <span>{visitorCount} people viewing this page</span>
       </div>
     </div>

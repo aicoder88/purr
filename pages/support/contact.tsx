@@ -373,7 +373,7 @@ export default function ContactPage() {
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white dark:border-gray-600 mr-2"></div>
                         Sending Message...
                       </>
                     ) : (

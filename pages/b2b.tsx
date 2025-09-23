@@ -249,7 +249,7 @@ export default function B2B() {
             <div className="space-x-4">
               <Link
                 href="#partnership-form"
-                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
               >
                 {locale === 'fr' ? 'Devenir Partenaire' : 'Become a Partner'}
               </Link>
@@ -333,7 +333,7 @@ export default function B2B() {
                   href="#partnership-form"
                   className={`block w-full text-center py-3 rounded-lg font-semibold transition-colors ${
                     tier.highlighted
-                      ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-white hover:bg-blue-700 dark:hover:bg-blue-500'
+                      ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-white hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -544,7 +544,7 @@ export default function B2B() {
                     <button
                       type="button"
                       onClick={handleFormSubmit}
-                      className="w-full bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+                      className="w-full bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
                     >
                       {locale === 'fr' ? 'Soumettre la Demande' : 'Submit Application'}
                     </button>

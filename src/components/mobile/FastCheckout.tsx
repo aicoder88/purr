@@ -203,7 +203,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             step === stepName 
               ? 'bg-[#5B2EFF] text-white dark:text-gray-100' 
               : index < ['contact', 'shipping', 'review'].indexOf(step)
-              ? 'bg-green-500 text-white dark:text-gray-100'
+              ? 'bg-green-500 dark:bg-green-600 text-white dark:text-gray-100'
               : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
           }`}>
             {index < ['contact', 'shipping', 'review'].indexOf(step) ? (
@@ -215,7 +215,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
           {index < 2 && (
             <div className={`w-8 h-0.5 mx-2 ${
               index < ['contact', 'shipping', 'review'].indexOf(step)
-                ? 'bg-green-500'
+                ? 'bg-green-500 dark:bg-green-600'
                 : 'bg-gray-200 dark:bg-gray-700'
             }`} />
           )}
@@ -484,7 +484,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               >
                 {isSubmitting ? (
                   <div className="flex items-center">
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                    <div className="w-4 h-4 border-2 border-white dark:border-gray-600/30 border-t-white rounded-full animate-spin mr-2" />
                     Processing...
                   </div>
                 ) : (

@@ -157,7 +157,7 @@ const ProductComparePage: NextPage = () => {
                 >
                   {/* Popular Badge */}
                   {product.popular && (
-                    <div className="absolute top-4 right-4 bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Star className="w-4 h-4 mr-1" />
                       {t.productComparison.popular}
                     </div>
@@ -366,13 +366,13 @@ const ProductComparePage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {t.productComparison.tryRiskFree}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/support/contact`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     {t.productComparison.getPersonalizedAdvice}
                   </Button>
                 </Link>

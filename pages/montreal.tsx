@@ -1193,7 +1193,7 @@ export default function Montreal() {
             <div className="space-x-4">
               <Link 
                 href="/support/contact" 
-                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
               >
                 {locale === 'fr' ? 'Trouver le Magasin le Plus Près' : 'Find Nearest Store'}
               </Link>

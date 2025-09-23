@@ -242,12 +242,12 @@ export default function SciencePage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     Experience the Science
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
                     Learn More
                   </Button>
                 </Link>

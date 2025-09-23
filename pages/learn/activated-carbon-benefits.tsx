@@ -321,7 +321,7 @@ export default function ActivatedCarbonBenefits() {
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-blue-600 dark:bg-blue-500 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 dark:bg-blue-600 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-500 dark:bg-blue-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 dark:bg-blue-600 transition-colors"
               >
                 Try 17g Trial Size - $6.99
               </Link>
