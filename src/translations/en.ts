@@ -140,7 +140,7 @@ export const en = {
       },
       {
         number: "03",
-        title: "Breathe Easy & Smile!",
+        title: "Mix It In & Breathe Easy!",
         description: "Gently mix and watch (smell?) the magic happen. 7 days of fresh air starts NOW. Your guests will be amazed."
       }
     ],
