@@ -1,0 +1,355 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - button "Scroll to top":
+        - img
+      - banner [ref=e6]:
+        - generic [ref=e8]:
+          - link "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - img "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e11] [cursor=pointer]
+          - navigation [ref=e12]:
+            - button "Products" [ref=e14] [cursor=pointer]:
+              - text: Products
+              - img [ref=e15] [cursor=pointer]
+            - button "For Retailers" [ref=e18] [cursor=pointer]:
+              - text: For Retailers
+              - img [ref=e19] [cursor=pointer]
+            - button "Learn" [ref=e22] [cursor=pointer]:
+              - text: Learn
+              - img [ref=e23] [cursor=pointer]
+            - link "About" [ref=e26] [cursor=pointer]:
+              - /url: /about/our-story
+            - link "Contact" [ref=e28] [cursor=pointer]:
+              - /url: /support/contact
+          - generic [ref=e29]:
+            - button "Toggle theme" [ref=e30] [cursor=pointer]:
+              - img [ref=e31] [cursor=pointer]
+              - generic [ref=e37] [cursor=pointer]: Toggle theme
+            - button "Buy Now!" [ref=e38] [cursor=pointer]:
+              - img [ref=e39] [cursor=pointer]
+              - text: Buy Now!
+            - button "English Flag English" [ref=e43] [cursor=pointer]:
+              - img "English Flag" [ref=e44] [cursor=pointer]
+              - generic [ref=e45] [cursor=pointer]: English
+              - img [ref=e46] [cursor=pointer]
+            - button [ref=e48] [cursor=pointer]:
+              - img [ref=e49] [cursor=pointer]
+      - main [ref=e53]:
+        - article [ref=e54]:
+          - generic [ref=e56]:
+            - navigation [ref=e57]:
+              - list [ref=e58]:
+                - listitem [ref=e59]:
+                  - link "Home" [ref=e60] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e61]: /
+                - listitem [ref=e62]:
+                  - link "Blog" [ref=e63] [cursor=pointer]:
+                    - /url: /blog
+                - listitem [ref=e64]: /
+                - listitem [ref=e65]: How to Use Deodorizer
+            - generic [ref=e66]:
+              - generic [ref=e67]: How-To Guide
+              - 'heading "How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide" [level=1] [ref=e68]'
+              - paragraph [ref=e69]: Master the proper application technique for maximum odor control effectiveness. Learn common mistakes to avoid and expert tips for long-lasting freshness.
+              - generic [ref=e70]:
+                - generic [ref=e71]: Published January 20, 2024
+                - generic [ref=e72]: •
+                - generic [ref=e73]: 5 min read
+            - generic [ref=e74]:
+              - img "Cat owner properly applying litter deodorizer additive following step-by-step instructions" [ref=e75]
+              - paragraph [ref=e76]: Proper application technique makes all the difference in odor control effectiveness
+            - generic [ref=e77]:
+              - heading "📋 Quick Application Summary" [level=2] [ref=e78]
+              - generic [ref=e79]:
+                - generic [ref=e80]:
+                  - strong [ref=e81]: "Application Time:"
+                  - text: 2-3 minutes
+                - generic [ref=e82]:
+                  - strong [ref=e83]: "Frequency:"
+                  - text: With each litter change
+                - generic [ref=e84]:
+                  - strong [ref=e85]: "Amount Needed:"
+                  - text: 1-2 tablespoons per box
+                - generic [ref=e86]:
+                  - strong [ref=e87]: "Effectiveness:"
+                  - text: Up to 7 days
+            - generic [ref=e88]:
+              - heading "Step-by-Step Application Guide" [level=2] [ref=e89]
+              - paragraph [ref=e90]:
+                - text: Using a
+                - strong [ref=e91]: cat litter deodorizer additive
+                - text: correctly is crucial for achieving maximum odor control. Follow this comprehensive guide to ensure you get the best results from your deodorizer.
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - generic [ref=e94]: "1"
+                  - generic [ref=e95]:
+                    - heading "Start with a Clean Litter Box" [level=3] [ref=e96]
+                    - paragraph [ref=e97]: Begin with a completely clean, empty litter box. Remove all old litter and wash the box with mild soap and water. Dry thoroughly before proceeding.
+                    - paragraph [ref=e99]:
+                      - strong [ref=e100]: "Pro Tip:"
+                      - text: A clean starting surface ensures maximum contact between the deodorizer and odor-causing compounds.
+                - generic [ref=e101]:
+                  - generic [ref=e102]: "2"
+                  - generic [ref=e103]:
+                    - heading "Add Base Layer of Litter" [level=3] [ref=e104]
+                    - paragraph [ref=e105]: Pour 2-3 inches of your regular cat litter into the clean box. This creates the foundation layer that will work with your deodorizer additive.
+                    - list [ref=e106]:
+                      - listitem [ref=e107]: Use your cat's preferred litter type
+                      - listitem [ref=e108]: Ensure even distribution across the box
+                      - listitem [ref=e109]: Don't overfill - leave room for mixing
+                - generic [ref=e110]:
+                  - generic [ref=e111]: "3"
+                  - generic [ref=e112]:
+                    - heading "Sprinkle Deodorizer Evenly" [level=3] [ref=e113]
+                    - paragraph [ref=e114]:
+                      - text: This is the most critical step. Sprinkle the
+                      - link "activated carbon litter additive" [ref=e115] [cursor=pointer]:
+                        - /url: /learn/activated-carbon-benefits
+                      - text: "evenly across the entire litter surface. Use the following amounts:"
+                    - generic [ref=e116]:
+                      - heading "📏 Recommended Amounts:" [level=4] [ref=e117]
+                      - list [ref=e118]:
+                        - listitem [ref=e119]:
+                          - strong [ref=e120]: "Small litter box:"
+                          - text: 1 tablespoon
+                        - listitem [ref=e121]:
+                          - strong [ref=e122]: "Medium litter box:"
+                          - text: 1.5 tablespoons
+                        - listitem [ref=e123]:
+                          - strong [ref=e124]: "Large litter box:"
+                          - text: 2 tablespoons
+                        - listitem [ref=e125]:
+                          - strong [ref=e126]: "Multiple cats:"
+                          - text: Add 0.5 tablespoon per additional cat (
+                          - link "see our multi-cat guide" [ref=e127] [cursor=pointer]:
+                            - /url: /blog/multi-cat-litter-deodorizer-guide
+                          - text: )
+                - generic [ref=e128]:
+                  - generic [ref=e129]: "4"
+                  - generic [ref=e130]:
+                    - heading "Add Final Litter Layer" [level=3] [ref=e131]
+                    - paragraph [ref=e132]: Add another 1-2 inches of litter on top of the deodorizer. This creates a "sandwich" effect that maximizes odor control while keeping the additive in place.
+                    - paragraph [ref=e134]:
+                      - strong [ref=e135]: "Why This Works:"
+                      - text: The layered approach ensures the deodorizer contacts odors from both above and below, providing 360-degree protection.
+                - generic [ref=e136]:
+                  - generic [ref=e137]: "5"
+                  - generic [ref=e138]:
+                    - heading "Gentle Mixing (Optional)" [level=3] [ref=e139]
+                    - paragraph [ref=e140]: Lightly mix the top layer with a clean scoop to distribute the deodorizer throughout the litter. Be gentle to avoid creating dust clouds.
+                    - paragraph [ref=e141]: "Note: Some cats prefer unmixed litter, so observe your cat's preferences."
+              - heading "Common Mistakes to Avoid" [level=2] [ref=e142]
+              - generic [ref=e143]:
+                - heading "❌ What NOT to Do" [level=3] [ref=e144]
+                - generic [ref=e145]:
+                  - generic [ref=e146]:
+                    - strong [ref=e147]: "Don't dump it all in one spot:"
+                    - text: Uneven distribution reduces effectiveness significantly.
+                  - generic [ref=e148]:
+                    - strong [ref=e149]: "Don't use too much:"
+                    - text: More isn't always better - follow recommended amounts.
+                  - generic [ref=e150]:
+                    - strong [ref=e151]: "Don't skip the layering:"
+                    - text: Mixing everything together reduces contact time with odors.
+                  - generic [ref=e152]:
+                    - strong [ref=e153]: "Don't apply to wet litter:"
+                    - text: Always start with dry litter for best results.
+                  - generic [ref=e154]:
+                    - strong [ref=e155]: "Don't forget regular maintenance:"
+                    - text: Reapply with each complete litter change.
+              - heading "Maintenance and Reapplication" [level=2] [ref=e156]
+              - paragraph [ref=e157]:
+                - text: To maintain optimal odor control with your
+                - strong [ref=e158]: natural cat litter odor eliminator
+                - text: ", follow these maintenance guidelines:"
+              - generic [ref=e159]:
+                - generic [ref=e160]:
+                  - heading "🔄 Regular Maintenance" [level=4] [ref=e161]
+                  - list [ref=e162]:
+                    - listitem [ref=e163]: • Reapply with each complete litter change
+                    - listitem [ref=e164]: • Spot-treat high-use areas weekly
+                    - listitem [ref=e165]: • Monitor effectiveness daily
+                    - listitem [ref=e166]: • Adjust amounts based on odor levels
+                - generic [ref=e167]:
+                  - heading "📅 Timing Guidelines" [level=4] [ref=e168]
+                  - list [ref=e169]:
+                    - listitem [ref=e170]: "• Single cat: Every 7-10 days"
+                    - listitem [ref=e171]: "• Multiple cats: Every 5-7 days"
+                    - listitem [ref=e172]: "• High-traffic boxes: Every 3-5 days"
+                    - listitem [ref=e173]: "• Senior cats: Every 5-7 days"
+              - heading "Maximizing Effectiveness" [level=2] [ref=e174]
+              - paragraph [ref=e175]:
+                - text: Get the most out of your
+                - strong [ref=e176]: cat litter deodorizer
+                - text: "with these expert tips:"
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - generic [ref=e179]: 💡
+                  - generic [ref=e180]:
+                    - strong [ref=e181]: "Storage Matters:"
+                    - generic [ref=e182]: Keep your deodorizer in a cool, dry place in an airtight container.
+                - generic [ref=e183]:
+                  - generic [ref=e184]: 💡
+                  - generic [ref=e185]:
+                    - strong [ref=e186]: "Ventilation Helps:"
+                    - generic [ref=e187]: Ensure good airflow around the litter box area for best results.
+                - generic [ref=e188]:
+                  - generic [ref=e189]: 💡
+                  - generic [ref=e190]:
+                    - strong [ref=e191]: "Quality Counts:"
+                    - generic [ref=e192]:
+                      - text: Choose
+                      - link "premium activated carbon products" [ref=e193] [cursor=pointer]:
+                        - /url: /blog/activated-carbon-vs-baking-soda-comparison
+                      - text: for superior performance.
+                - generic [ref=e194]:
+                  - generic [ref=e195]: 💡
+                  - generic [ref=e196]:
+                    - strong [ref=e197]: "Monitor and Adjust:"
+                    - generic [ref=e198]: Increase frequency or amount if odors persist.
+              - generic [ref=e199]:
+                - heading "🏆 Why Choose Purrify?" [level=4] [ref=e200]
+                - paragraph [ref=e201]: Purrify's premium coconut shell activated carbon is specifically designed for easy application and maximum effectiveness. Our fine granules distribute evenly and provide up to 7 days of superior odor control.
+                - link "Shop Purrify Products →" [ref=e202] [cursor=pointer]:
+                  - /url: /products
+              - heading "Troubleshooting Common Issues" [level=2] [ref=e203]
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - 'heading "Problem: Odors still present after application" [level=4] [ref=e206]'
+                  - paragraph [ref=e207]:
+                    - strong [ref=e208]: "Solution:"
+                    - text: Increase the amount used, ensure even distribution, or consider more frequent applications for heavy-use boxes.
+                - generic [ref=e209]:
+                  - 'heading "Problem: Cat avoiding the litter box" [level=4] [ref=e210]'
+                  - paragraph [ref=e211]:
+                    - strong [ref=e212]: "Solution:"
+                    - text: Reduce the amount used or try mixing less thoroughly. Some cats are sensitive to texture changes.
+                - generic [ref=e213]:
+                  - 'heading "Problem: Deodorizer clumping together" [level=4] [ref=e214]'
+                  - paragraph [ref=e215]:
+                    - strong [ref=e216]: "Solution:"
+                    - text: Ensure litter is completely dry before application and store deodorizer in a moisture-free environment.
+              - heading "Conclusion" [level=2] [ref=e217]
+              - paragraph [ref=e218]:
+                - text: Proper application of
+                - strong [ref=e219]: cat litter deodorizer additive
+                - text: is the key to achieving professional-grade odor control in your home. By following this step-by-step guide and avoiding common mistakes, you'll enjoy a fresher, more pleasant environment for both you and your feline friends.
+              - paragraph [ref=e220]:
+                - text: Remember, consistency is key. Regular application and proper technique will give you the best results.
+                - link "Try Purrify today" [ref=e221] [cursor=pointer]:
+                  - /url: /products
+                - text: and experience the difference that proper application can make!
+            - region "Related articles" [ref=e223]:
+              - generic [ref=e224]:
+                - heading "Related Articles" [level=2] [ref=e225]
+                - generic [ref=e226]:
+                  - article [ref=e227]:
+                    - link "Calm cat resting on a sofa in a bright living room Strong Cat Urine Smell Solutions Read more →" [ref=e228] [cursor=pointer]:
+                      - /url: /blog/strong-cat-urine-smell-litter-box
+                      - img "Calm cat resting on a sofa in a bright living room" [ref=e230] [cursor=pointer]
+                      - generic [ref=e231] [cursor=pointer]:
+                        - heading "Strong Cat Urine Smell Solutions" [level=3] [ref=e232] [cursor=pointer]
+                        - paragraph [ref=e233] [cursor=pointer]: Read more →
+                  - article [ref=e234]:
+                    - link "Microscopic view of activated carbon's porous structure Activated Carbon Litter Additive Benefits Read more →" [ref=e235] [cursor=pointer]:
+                      - /url: /blog/activated-carbon-litter-additive-benefits
+                      - img "Microscopic view of activated carbon's porous structure" [ref=e237] [cursor=pointer]
+                      - generic [ref=e238] [cursor=pointer]:
+                        - heading "Activated Carbon Litter Additive Benefits" [level=3] [ref=e239] [cursor=pointer]
+                        - paragraph [ref=e240] [cursor=pointer]: Read more →
+                  - article [ref=e241]:
+                    - link "Compact 20g product ideal for small apartments Best Litter Odor Remover for Small Apartments Read more →" [ref=e242] [cursor=pointer]:
+                      - /url: /blog/best-litter-odor-remover-small-apartments
+                      - img "Compact 20g product ideal for small apartments" [ref=e244] [cursor=pointer]
+                      - generic [ref=e245] [cursor=pointer]:
+                        - heading "Best Litter Odor Remover for Small Apartments" [level=3] [ref=e246] [cursor=pointer]
+                        - paragraph [ref=e247] [cursor=pointer]: Read more →
+      - contentinfo [ref=e248]:
+        - generic [ref=e249]:
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - heading "Stay Updated with Purrify" [level=3] [ref=e254]
+              - paragraph [ref=e255]: Get cat care tips and exclusive offers delivered to your inbox.
+            - generic [ref=e256]:
+              - textbox "Your email" [ref=e257]
+              - button "Subscribe" [ref=e258] [cursor=pointer]
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - generic [ref=e261]:
+                - link "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e263] [cursor=pointer]:
+                  - /url: /
+                  - img "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e268] [cursor=pointer]
+                - paragraph [ref=e269]: Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.
+                - generic [ref=e270]:
+                  - link "Follow Purrify on Facebook" [ref=e271] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e272] [cursor=pointer]
+                  - link "Follow Purrify on Instagram" [ref=e274] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e275] [cursor=pointer]
+                  - link "Follow Purrify on Twitter" [ref=e278] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e279] [cursor=pointer]
+              - generic [ref=e281]:
+                - heading "Quick Links" [level=3] [ref=e282]
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - link "Home" [ref=e285] [cursor=pointer]:
+                      - /url: /
+                  - listitem [ref=e286]:
+                    - link "How It Works" [ref=e287] [cursor=pointer]:
+                      - /url: /learn/how-it-works
+                  - listitem [ref=e288]:
+                    - link "About" [ref=e289] [cursor=pointer]:
+                      - /url: /#about
+                  - listitem [ref=e290]:
+                    - link "Trial Size" [ref=e291] [cursor=pointer]:
+                      - /url: /products/trial-size
+                  - listitem [ref=e292]:
+                    - link "Testimonials" [ref=e293] [cursor=pointer]:
+                      - /url: /customers/testimonials
+                  - listitem [ref=e294]:
+                    - link "Contact" [ref=e295] [cursor=pointer]:
+                      - /url: /support/contact
+                  - listitem [ref=e296]:
+                    - link "Blog" [ref=e297] [cursor=pointer]:
+                      - /url: /blog
+                  - listitem [ref=e298]:
+                    - link "Customer Portal" [ref=e299] [cursor=pointer]:
+                      - /url: /customer/portal
+              - generic [ref=e300]:
+                - heading "Opening Hours" [level=3] [ref=e301]
+                - list [ref=e302]:
+                  - listitem [ref=e303]: "Mon - Fri: 08:00 am - 8:00 pm"
+                  - listitem [ref=e304]: "Saturday: 09:00 am - 8:00 pm"
+                  - listitem [ref=e305]: "Sunday: Closed"
+              - generic [ref=e306]:
+                - heading "Contact Us" [level=3] [ref=e307]
+                - generic [ref=e308]:
+                  - paragraph [ref=e309]: 109-17680 Rue Charles, Mirabel, QC J7J 0T6
+                  - paragraph [ref=e310]: 1-250-432-9352
+            - generic [ref=e311]:
+              - generic [ref=e312]:
+                - link "Privacy Policy" [ref=e313] [cursor=pointer]:
+                  - /url: /privacy-policy
+                - link "Terms of Service" [ref=e314] [cursor=pointer]:
+                  - /url: /terms
+                - link "Blog" [ref=e315] [cursor=pointer]:
+                  - /url: /blog
+              - paragraph [ref=e316]:
+                - text: © 2025
+                - generic [ref=e317]: Purrify
+                - text: "|All Rights Reserved"
+    - region "Notifications (F8)":
+      - list
+  - button "Open Next.js Dev Tools" [ref=e323] [cursor=pointer]:
+    - img [ref=e324] [cursor=pointer]
+  - alert [ref=e327]
+```

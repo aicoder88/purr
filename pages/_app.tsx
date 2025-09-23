@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { DefaultSeo } from 'next-seo';
+import dynamic from 'next/dynamic';
 import '../src/index.css';
 import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
-import { Toaster } from '../src/components/ui/toaster';
 import Script from 'next/script';
 
 import { TranslationProvider } from '../src/lib/translation-context';
@@ -13,9 +13,22 @@ import { useRouter } from 'next/router';
 import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
-import { Analytics } from '@vercel/analytics/next';
-import { PerformanceMonitor } from '../src/components/performance/PerformanceMonitor';
-import { CacheOptimizer } from '../src/components/performance/CacheOptimizer';
+
+const Toaster = dynamic(() => import('../src/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
+  ssr: false,
+});
+
+const AnalyticsComponent = dynamic(() => import('@vercel/analytics/next').then(mod => mod.Analytics), {
+  ssr: false,
+});
+
+const PerformanceMonitor = dynamic(() => import('../src/components/performance/PerformanceMonitor').then(mod => mod.PerformanceMonitor), {
+  ssr: false,
+});
+
+const CacheOptimizer = dynamic(() => import('../src/components/performance/CacheOptimizer').then(mod => mod.CacheOptimizer), {
+  ssr: false,
+});
 
 interface PageProps {
   // Add your page props here if needed
@@ -235,7 +248,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           
           
           <Toaster />
-          <Analytics />
+          <AnalyticsComponent />
         </TranslationProvider>
       </CartProvider>
     </ThemeProvider>

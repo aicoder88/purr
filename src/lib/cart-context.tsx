@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
-import * as CryptoJS from 'crypto-js';
+import AES from 'crypto-js/aes';
+import Utf8 from 'crypto-js/enc-utf8';
 import { PRODUCTS } from './constants';
 import { safeTrackEvent } from './analytics';
 
@@ -30,7 +31,7 @@ const ENCRYPTION_KEY = process.env.NEXT_PUBLIC_CART_ENCRYPTION_KEY || 'purrify-c
 
 function encryptData(data: string): string {
   try {
-    return CryptoJS.AES.encrypt(data, ENCRYPTION_KEY).toString();
+    return AES.encrypt(data, ENCRYPTION_KEY).toString();
   } catch (err) {
     console.warn('Failed to encrypt data, storing unencrypted', err);
     return data;
@@ -39,8 +40,8 @@ function encryptData(data: string): string {
 
 function decryptData(encryptedData: string): string | null {
   try {
-    const bytes = CryptoJS.AES.decrypt(encryptedData, ENCRYPTION_KEY);
-    const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+    const bytes = AES.decrypt(encryptedData, ENCRYPTION_KEY);
+    const decrypted = bytes.toString(Utf8);
     return decrypted || null;
   } catch (err) {
     console.warn('Failed to decrypt data', err);
