@@ -459,7 +459,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                     </div>
                     <div className="text-right">
                       <p className="text-lg text-gray-400 dark:text-gray-500 line-through">${bundle.regularPrice}</p>
-                      <Badge className="bg-green-100 text-green-800 dark:text-green-200 dark:bg-green-800 dark:text-green-200">
+                      <Badge className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 dark:bg-green-800 dark:text-green-200">
                         Save ${bundle.savings}
                       </Badge>
                     </div>

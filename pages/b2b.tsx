@@ -249,13 +249,13 @@ export default function B2B() {
             <div className="space-x-4">
               <Link
                 href="#partnership-form"
-                className="inline-block bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 {locale === 'fr' ? 'Devenir Partenaire' : 'Become a Partner'}
               </Link>
               <Link
                 href="#wholesale-pricing"
-                className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir les Prix' : 'View Pricing'}
               </Link>
@@ -297,12 +297,12 @@ export default function B2B() {
             {pricingTiers.map((tier, index) => (
               <div key={index} className={`rounded-lg p-8 ${
                 tier.highlighted
-                  ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 shadow-lg'
+                  ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 dark:border-blue-400 shadow-lg'
                   : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
               }`}>
                 {tier.highlighted && (
                   <div className="text-center mb-4">
-                    <span className="bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
                     </span>
                   </div>
@@ -333,7 +333,7 @@ export default function B2B() {
                   href="#partnership-form"
                   className={`block w-full text-center py-3 rounded-lg font-semibold transition-colors ${
                     tier.highlighted
-                      ? 'bg-blue-600 text-white dark:text-white hover:bg-blue-700'
+                      ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-white hover:bg-blue-700 dark:hover:bg-blue-500'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -544,7 +544,7 @@ export default function B2B() {
                     <button
                       type="button"
                       onClick={handleFormSubmit}
-                      className="w-full bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
+                      className="w-full bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
                     >
                       {locale === 'fr' ? 'Soumettre la Demande' : 'Submit Application'}
                     </button>

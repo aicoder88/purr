@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2025-09-21T10:28:58.603Z",
+    "timestamp": "2025-09-23T17:39:54.062Z",
     "projectName": "Purrify",
     "nodeVersion": "v22.14.0",
     "nextVersion": "^15.5.3"
@@ -9,13 +9,13 @@
     "score": 85,
     "grade": "B",
     "issues": [
-      "129 large images (-15 points)"
+      "138 large images (-15 points)"
     ]
   },
   "buildAnalysis": {
-    "timestamp": "2025-09-21T10:28:54.622Z",
-    "totalPages": 59,
-    "totalChunks": 71,
+    "timestamp": "2025-09-23T17:39:48.629Z",
+    "totalPages": 63,
+    "totalChunks": 72,
     "largestChunks": [
       {
         "name": "react-36598b9c-3b769740b40629d1.js",
@@ -48,14 +48,14 @@
         "sizeKB": "47.1"
       },
       {
+        "name": "common-d87c119a-c77cfabb8d5e7319.js",
+        "size": 47830,
+        "sizeKB": "46.7"
+      },
+      {
         "name": "analytics-2f8e3928-2669ebcf0db1dcd2.js",
         "size": 42079,
         "sizeKB": "41.1"
-      },
-      {
-        "name": "common-f4a6e080-d9a0e855ee245ace.js",
-        "size": 41993,
-        "sizeKB": "41.0"
       },
       {
         "name": "ui-b2caf839-a0a382ba58d6b8a1.js",
@@ -73,7 +73,7 @@
     "recommendations": []
   },
   "dependencyAnalysis": {
-    "totalDependencies": 64,
+    "totalDependencies": 65,
     "totalDevDependencies": 20,
     "heavyDependencies": [
       {
@@ -100,17 +100,17 @@
       "critters",
       "dotenv",
       "embla-carousel-react",
+      "googleapis",
       "node-fetch",
       "react-dom",
-      "@playwright/test",
-      "depcheck"
+      "@playwright/test"
     ],
     "duplicateDependencies": [],
     "securityIssues": []
   },
   "imageAnalysis": {
-    "totalImages": 277,
-    "totalSize": 173025915,
+    "totalImages": 285,
+    "totalSize": 176784952,
     "largeImages": [
       {
         "path": "140g.png",
@@ -353,6 +353,18 @@
         "format": "webp"
       },
       {
+        "path": "optimized/activated-carbon-benefits.webp",
+        "size": 159817,
+        "sizeKB": "156.1",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/activated-carbon-vs-baking-soda.webp",
+        "size": 163818,
+        "sizeKB": "160.0",
+        "format": "webp"
+      },
+      {
         "path": "optimized/before after.avif",
         "size": 521342,
         "sizeKB": "509.1",
@@ -410,6 +422,12 @@
         "path": "optimized/carbon_magnified_image.webp",
         "size": 236442,
         "sizeKB": "230.9",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/cat-litter-deodorizer-guide.webp",
+        "size": 154491,
+        "sizeKB": "150.9",
         "format": "webp"
       },
       {
@@ -491,6 +509,12 @@
         "format": "webp"
       },
       {
+        "path": "optimized/deodorizers-with-kittens.webp",
+        "size": 274841,
+        "sizeKB": "268.4",
+        "format": "webp"
+      },
+      {
         "path": "optimized/free purrify.avif",
         "size": 199121,
         "sizeKB": "194.5",
@@ -551,6 +575,12 @@
         "format": "webp"
       },
       {
+        "path": "optimized/house-smells-cat-litter.webp",
+        "size": 123805,
+        "sizeKB": "120.9",
+        "format": "webp"
+      },
+      {
         "path": "optimized/micropores_magnified_view.avif",
         "size": 142808,
         "sizeKB": "139.5",
@@ -572,6 +602,12 @@
         "path": "optimized/micropores_magnified_view.webp",
         "size": 104626,
         "sizeKB": "102.2",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/multi-cat-deodorizer.webp",
+        "size": 550930,
+        "sizeKB": "538.0",
         "format": "webp"
       },
       {
@@ -638,6 +674,18 @@
         "path": "optimized/samplebag.webp",
         "size": 342200,
         "sizeKB": "334.2",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/small-apartment-odor-control.webp",
+        "size": 228466,
+        "sizeKB": "223.1",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/strong-cat-urine-smell.webp",
+        "size": 398189,
+        "sizeKB": "388.9",
         "format": "webp"
       },
       {
@@ -872,6 +920,12 @@
         "path": "panel_3.png",
         "size": 838304,
         "sizeKB": "818.7",
+        "format": "png"
+      },
+      {
+        "path": "purrify-logo.png",
+        "size": 1704709,
+        "sizeKB": "1664.8",
         "format": "png"
       },
       {
@@ -1589,6 +1643,13 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "purrify-logo.png",
+        "size": 1704709,
+        "sizeKB": "1664.8",
+        "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "samplebag.jpg",
         "size": 673384,
         "sizeKB": "657.6",
@@ -1606,12 +1667,12 @@
     "recommendations": [
       {
         "type": "LARGE_IMAGES",
-        "message": "Found 129 images larger than 100.0KB",
+        "message": "Found 138 images larger than 100.0KB",
         "action": "Consider compressing or using Next.js Image optimization"
       },
       {
         "type": "UNOPTIMIZED_FORMATS",
-        "message": "Found 102 images that could be optimized",
+        "message": "Found 103 images that could be optimized",
         "action": "Convert to modern formats (WebP/AVIF) and use responsive images"
       }
     ]

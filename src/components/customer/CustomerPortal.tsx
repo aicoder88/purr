@@ -229,7 +229,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400"></div>
       </div>
     );
   }
@@ -673,7 +673,7 @@ function OrdersTab({
                     <button
                       onClick={handleReorderOrder(order)}
                       disabled={loading}
-                      className="px-4 py-2 bg-blue-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                      className="px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors disabled:opacity-50 flex items-center gap-2"
                     >
                       {loading ? (
                         <>
@@ -960,7 +960,7 @@ function SubscriptionsTab({
             <div className="text-center py-8">
               <Calendar className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
               <p className="text-gray-500 dark:text-gray-400 mb-4">No subscriptions found</p>
-              <button className="px-6 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 transition-colors">
+              <button className="px-6 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors">
                 Start a Subscription
               </button>
             </div>
@@ -1212,7 +1212,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
               ) : (
                 <button
                   onClick={handleEditProfile}
-                  className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 transition-colors"
+                  className="w-full px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
                 >
                   Edit Profile
                 </button>
@@ -1330,7 +1330,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
               ) : (
                 <button
                   onClick={handleEditAddress}
-                  className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 transition-colors"
+                  className="w-full px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
                 >
                   Edit Address
                 </button>
@@ -1444,7 +1444,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   onChange={handlePreferencesChange('emailNotifications')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
               </label>
             </div>
 
@@ -1460,7 +1460,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   onChange={handlePreferencesChange('smsNotifications')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
               </label>
             </div>
 
@@ -1476,7 +1476,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   onChange={handlePreferencesChange('marketingEmails')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
               </label>
             </div>
 
@@ -1492,7 +1492,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
                   onChange={handlePreferencesChange('orderUpdates')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
               </label>
             </div>
           </div>

@@ -78,7 +78,7 @@ export default function InvestorRelations() {
         {/* Navigation Tabs */}
         <Container>
           <div className="pt-8 mb-4 relative z-10">
-            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
+            <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-800/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
               <div className="flex flex-wrap justify-center gap-1">
                 {[
                   { id: 'overview', label: 'Executive Summary' },
@@ -95,7 +95,7 @@ export default function InvestorRelations() {
                     className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${
                       activeTab === tab.id
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white shadow-lg transform scale-105'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white dark:hover:bg-gray-700/50 dark:hover:bg-gray-700/50'
                     }`}
                   >
                     {tab.label}
@@ -109,7 +109,7 @@ export default function InvestorRelations() {
         {/* Middle Navigation Buttons */}
         <Container>
           <div className="flex justify-center mb-4 relative z-10">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
+            <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
               <div className="flex items-center space-x-3">
                 <button
                   onClick={handlePrevClick}
@@ -169,7 +169,7 @@ export default function InvestorRelations() {
                     Growing pet care innovation company with molecular-level odor elimination technology
                   </p>
                   
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
+                  <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                       <div className="relative">
                         <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">CAD $50K</div>
@@ -189,7 +189,7 @@ export default function InvestorRelations() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
@@ -231,12 +231,12 @@ export default function InvestorRelations() {
                       />
                       
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">$3K+</div>
                           <div className="text-sm text-gray-600 dark:text-gray-300">Early Revenue</div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">Zero Paid Ads</div>
                         </div>
-                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">18M</div>
                           <div className="text-sm text-gray-600 dark:text-gray-300">To EBITDA+</div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">Months</div>
@@ -263,22 +263,22 @@ export default function InvestorRelations() {
             {/* Market Opportunity */}
             {activeTab === 'problem' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Opportunity</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Problem</h3>
                       <div className="space-y-4">
-                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
                           <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Urban Cat Owners' #1 Complaint</h4>
                           <p className="text-gray-600 dark:text-gray-200">Persistent litter box odor in small apartments with no escape</p>
                         </div>
-                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
                           <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Inadequate Solutions</h4>
                           <p className="text-gray-600 dark:text-gray-200">Existing products only mask odors or require constant maintenance</p>
                         </div>
-                        <div className="bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
                           <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Multi-Cat Households</h4>
                           <p className="text-gray-600 dark:text-gray-200">Problem multiplies with multiple cats, demanding better solutions</p>
                         </div>
@@ -297,15 +297,15 @@ export default function InvestorRelations() {
                       />
                       
                       <div className="grid grid-cols-3 gap-3">
-                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                        <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">52M</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">Cat Owners</div>
                         </div>
-                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                        <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">$160M</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">TAM</div>
                         </div>
-                        <div className="text-center bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
+                        <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#2ed573] drop-shadow-sm">6.2%</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300">CAGR</div>
                         </div>
@@ -313,18 +313,18 @@ export default function InvestorRelations() {
                     </div>
                   </div>
 
-                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                  <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-md rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                     <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4 drop-shadow-sm">Market Drivers</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                        <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
                           <span className="text-[#FF3131] text-xl mr-3 font-bold">✓</span>
                           <div>
                             <span className="font-medium text-gray-800 dark:text-white">Pet Humanization</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">76% consider cats family members</p>
                           </div>
                         </div>
-                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                        <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
                           <span className="text-[#5B2EFF] text-xl mr-3 font-bold">✓</span>
                           <div>
                             <span className="font-medium text-gray-800 dark:text-white">Premium Shift</span>
@@ -333,14 +333,14 @@ export default function InvestorRelations() {
                         </div>
                       </div>
                       <div className="space-y-4">
-                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                        <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
                           <span className="text-[#2ed573] text-xl mr-3 font-bold">✓</span>
                           <div>
                             <span className="font-medium text-gray-800 dark:text-white">Sustainability Focus</span>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Eco-products grow 9.63% faster</p>
                           </div>
                         </div>
-                        <div className="flex items-center p-3 bg-white/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
+                        <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
                           <span className="text-[#FF3131] text-xl mr-3 font-bold">✓</span>
                           <div>
                             <span className="font-medium text-gray-800 dark:text-white">Urban Density</span>
@@ -357,7 +357,7 @@ export default function InvestorRelations() {
             {/* Solution */}
             {activeTab === 'solution' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Our Solution</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
@@ -412,21 +412,21 @@ export default function InvestorRelations() {
                       />
                       
                       <div className="space-y-4">
-                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
                             <h4 className="font-semibold text-gray-800 dark:text-white">Trial Size (17g)</h4>
                             <span className="text-[#FF3131] font-bold drop-shadow-sm">28% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Perfect impulse buy, proves efficacy fast</p>
                         </div>
-                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
                             <h4 className="font-semibold text-gray-800 dark:text-white">Medium (60g)</h4>
                             <span className="text-[#5B2EFF] font-bold drop-shadow-sm">47% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Most popular, ideal for single-cat homes</p>
                         </div>
-                        <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
+                        <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
                             <h4 className="font-semibold text-gray-800 dark:text-white">Large (140g)</h4>
                             <span className="text-[#2ed573] font-bold drop-shadow-sm">40% margin</span>
@@ -463,29 +463,29 @@ export default function InvestorRelations() {
             {/* Traction */}
             {activeTab === 'traction' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Traction</h2>
                   
                   <div className="grid md:grid-cols-4 gap-6 mb-8">
-                    <div className="text-center bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                    <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                       <ProgressRing percentage={100} label="Stores Onboarded" color="#FF3131" size={60} />
                       <div className="text-4xl font-bold text-[#FF3131] mb-2 drop-shadow-sm mt-4">16</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Montreal Stores</div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Onboarded</div>
                     </div>
-                    <div className="text-center bg-white/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                    <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                       <ProgressRing percentage={25} label="Reorder Rate" color="#5B2EFF" size={60} />
                       <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">4</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Stores Reordered</div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">This Week</div>
                     </div>
-                    <div className="text-center bg-white/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                    <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                       <ProgressRing percentage={85} label="Revenue Growth" color="#2ed573" size={60} />
                       <div className="text-4xl font-bold text-[#2ed573] mb-2 drop-shadow-sm mt-4">$3K+</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Early Revenue</div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Zero Paid Ads</div>
                     </div>
-                    <div className="text-center bg-white/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
+                    <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                       <ProgressRing percentage={68} label="Product Mix" color="#5B2EFF" size={60} />
                       <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">68%</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Choose Medium</div>
@@ -552,7 +552,7 @@ export default function InvestorRelations() {
             {/* Unit Economics */}
             {activeTab === 'financials' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Unit Economics</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
@@ -664,7 +664,7 @@ export default function InvestorRelations() {
             {/* Team */}
             {activeTab === 'team' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Leadership Team</h2>
                   
                   <div className="grid lg:grid-cols-3 gap-8">
@@ -775,7 +775,7 @@ export default function InvestorRelations() {
             {/* Investment Terms */}
             {activeTab === 'investment' && (
               <section className="space-y-8 relative z-10">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Investment Terms</h2>
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">

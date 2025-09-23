@@ -273,7 +273,7 @@ export default function CaseStudies() {
                       {/* Challenge */}
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
-                          <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                          <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mr-3">
                             <span className="text-red-600 dark:text-red-400 font-bold text-sm">1</span>
                           </div>
                           The Challenge
@@ -295,7 +295,7 @@ export default function CaseStudies() {
                       {/* Solution */}
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
-                          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                          <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3">
                             <span className="text-blue-600 dark:text-blue-400 font-bold text-sm">2</span>
                           </div>
                           The Solution

@@ -65,7 +65,7 @@ export function WhyPurrify() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-orange-100 rounded-full text-orange-600 dark:text-orange-400 font-medium text-sm mb-4">
+          {/* <div className="inline-block px-4 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-orange-600 dark:text-orange-400 font-medium text-sm mb-4">
             The Science Behind Purrify
           </div> */}
         

@@ -64,16 +64,16 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Head-to-Head Comparison</h2>
 
           <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse border border-gray-300">
+            <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
               <thead>
-                <tr className="bg-gray-50">
-                  <th className="border border-gray-300 px-4 py-3 text-left">Feature</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Feature</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <div className="flex items-center justify-center">
                       <span className="font-bold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200">Purrify</span>
                     </div>
                   </th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">
                     <div className="flex items-center justify-center">
                       <span className="font-bold">Arm & Hammer</span>
                     </div>
@@ -82,66 +82,66 @@ export default function PurrifyVsArmHammer() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Main Ingredient</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Main Ingredient</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 dark:text-green-400 font-semibold">✓</span> Activated Carbon
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">Baking Soda</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">Baking Soda</td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Fragrance</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Fragrance</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> Fragrance-Free
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">
                     <span className="text-red-600 dark:text-red-400">✗</span> Synthetic Scents
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Odor Elimination</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Odor Elimination</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> Adsorbs molecules
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">
                     <span className="text-yellow-600 dark:text-yellow-400">~</span> Neutralizes acids only
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Duration</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Duration</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> 2-4 weeks
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">1-2 weeks</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">1-2 weeks</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Safety for Kittens</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Safety for Kittens</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> Completely Safe
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">
                     <span className="text-yellow-600 dark:text-yellow-400">~</span> Caution with fragrances
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Price (per month)</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Price (per month)</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> ~$10 CAD
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">~$12 CAD</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">~$12 CAD</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Availability</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">Pet stores, Online</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Availability</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">Pet stores, Online</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> Everywhere
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Made In</td>
-                  <td className="border border-gray-300 px-4 py-3 text-center bg-green-50">
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Made In</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
                     <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> Canada
                   </td>
-                  <td className="border border-gray-300 px-4 py-3 text-center">USA</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">USA</td>
                 </tr>
               </tbody>
             </table>
@@ -150,11 +150,11 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Detailed Analysis</h2>
 
           <div className="space-y-8 mb-12">
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🧪 Ingredients & Science</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
                   <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>• <strong>Activated Carbon:</strong> Physically traps odor molecules in microscopic pores</li>
@@ -164,7 +164,7 @@ export default function PurrifyVsArmHammer() {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
                   <h4 className="font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Arm & Hammer</h4>
                   <ul className="space-y-2 text-blue-700 dark:text-blue-300 text-sm">
                     <li>• <strong>Baking Soda:</strong> Neutralizes acidic odors through chemical reaction</li>
@@ -175,7 +175,7 @@ export default function PurrifyVsArmHammer() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+              <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 rounded">
                 <p className="text-yellow-800 dark:text-yellow-200 text-sm">
                   <strong>Winner: Purrify</strong> - Activated carbon's adsorption mechanism is more effective 
                   than baking soda's neutralization, especially for complex organic odors.
@@ -183,7 +183,7 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">⚡ Effectiveness Test Results</h3>
               
               <p className="text-gray-700 dark:text-gray-200 dark:text-gray-200 mb-6">
@@ -209,7 +209,7 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm font-semibold">78%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-600 h-2 rounded-full" style={{width: '78%'}}></div>
+                        <div className="bg-blue-600 dark:bg-blue-600 h-2 rounded-full" style={{width: '78%'}}></div>
                       </div>
                     </div>
                   </div>
@@ -233,54 +233,54 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm font-semibold">1.5 weeks</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-600 h-2 rounded-full" style={{width: '37%'}}></div>
+                        <div className="bg-blue-600 dark:bg-blue-600 h-2 rounded-full" style={{width: '37%'}}></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded">
+              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - Superior initial odor reduction and significantly longer-lasting effectiveness.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">💰 Cost Analysis</h3>
               
               <div className="overflow-x-auto mb-6">
-                <table className="w-full border-collapse border border-gray-300">
+                <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
                   <thead>
-                    <tr className="bg-gray-50">
-                      <th className="border border-gray-300 px-4 py-2 text-left">Product</th>
-                      <th className="border border-gray-300 px-4 py-2 text-center">Size</th>
-                      <th className="border border-gray-300 px-4 py-2 text-center">Price</th>
-                      <th className="border border-gray-300 px-4 py-2 text-center">Duration</th>
-                      <th className="border border-gray-300 px-4 py-2 text-center">Cost/Month</th>
+                    <tr className="bg-gray-50 dark:bg-gray-800">
+                      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Product</th>
+                      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">Size</th>
+                      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">Price</th>
+                      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">Duration</th>
+                      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">Cost/Month</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="border border-gray-300 px-4 py-2 font-semibold">Purrify Regular</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">60g</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">$19.99</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">6-8 weeks</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center bg-green-50 font-semibold">$10.00</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 font-semibold">Purrify Regular</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">60g</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">$19.99</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">6-8 weeks</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center bg-green-50 dark:bg-green-900/20 font-semibold">$10.00</td>
                     </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-300 px-4 py-2 font-semibold">Arm & Hammer Super Scoop</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">850g</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">$8.99</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">3 weeks</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">$12.00</td>
+                    <tr className="bg-gray-50 dark:bg-gray-800">
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 font-semibold">Arm & Hammer Super Scoop</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">850g</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">$8.99</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">3 weeks</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">$12.00</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded">
+              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - 20% lower monthly cost due to longer-lasting effectiveness, 
                   despite higher upfront price.
@@ -288,11 +288,11 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🐱 Safety & Health Considerations</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
                   <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Profile</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>✓ <strong>Fragrance-free:</strong> No respiratory irritation</li>
@@ -303,7 +303,7 @@ export default function PurrifyVsArmHammer() {
                   </ul>
                 </div>
 
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 rounded-lg p-6">
                   <h4 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-3">Arm & Hammer Considerations</h4>
                   <ul className="space-y-2 text-yellow-700 dark:text-yellow-300 text-sm">
                     <li>⚠ <strong>Synthetic fragrances:</strong> May irritate sensitive cats</li>
@@ -315,7 +315,7 @@ export default function PurrifyVsArmHammer() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded">
+              <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - Fragrance-free and a simpler profile for cats with respiratory sensitivities,
                   kittens, and multi-cat households.
@@ -327,7 +327,7 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Real User Reviews</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Users Say:</h3>
               <div className="space-y-4 text-sm">
                 <blockquote className="italic text-green-700 dark:text-green-300 dark:text-green-300">
@@ -345,7 +345,7 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Arm & Hammer Users Say:</h3>
               <div className="space-y-4 text-sm">
                 <blockquote className="italic text-blue-700 dark:text-blue-300">
@@ -367,7 +367,7 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Which Should You Choose?</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Choose Purrify If:</h3>
               <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300">
                 <li>✓ You have cats with respiratory sensitivities</li>
@@ -380,7 +380,7 @@ export default function PurrifyVsArmHammer() {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Choose Arm & Hammer If:</h3>
               <ul className="space-y-2 text-blue-700 dark:text-blue-300">
                 <li>• You need immediate availability at any store</li>
@@ -408,7 +408,7 @@ export default function PurrifyVsArmHammer() {
               </Link>
               <Link 
                 href="/learn/activated-carbon-benefits" 
-                className="inline-block border border-green-600 text-green-600 dark:text-green-400 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                className="inline-block border border-green-600 text-green-600 dark:text-green-400 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:bg-green-900/20 transition-colors"
               >
                 Learn More About Activated Carbon
               </Link>

@@ -7,8 +7,19 @@ console.log('🚀 Starting Vercel prebuild process...');
 
 const isCI = !!(process.env.CI || process.env.VERCEL);
 
-// Dark mode validation - temporarily disabled for build
-console.log('⚠️ Dark mode validation temporarily disabled for build');
+// Dark mode validation
+if (!isCI) {
+  console.log('🌙 Running dark mode validation...');
+  try {
+    execSync('npm run validate-dark-mode', { stdio: 'inherit' });
+    console.log('✅ Dark mode validation passed');
+  } catch (e) {
+    console.error('❌ Dark mode validation failed');
+    process.exit(1);
+  }
+} else {
+  console.log('ℹ️ Skipping dark mode validation in CI/Vercel build');
+}
 
 // Ensure output directories exist
 const optimizedDir = path.join(__dirname, '../public/optimized');

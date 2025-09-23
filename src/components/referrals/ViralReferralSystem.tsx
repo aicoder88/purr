@@ -391,7 +391,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('facebook')}
-                    className="bg-blue-600 text-white dark:text-gray-100"
+                    className="bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100"
                   >
                     📘 Facebook
                   </Button>

@@ -40,9 +40,9 @@ export const COLORS = {
   },
   surface: {
     light: 'bg-white dark:bg-gray-800',
-    lightAlpha: 'bg-white/90 dark:bg-gray-800/90',
+    lightAlpha: 'bg-white dark:bg-gray-900/90 dark:bg-gray-800/90',
     card: 'bg-white dark:bg-gray-900',
-    cardAlpha: 'bg-white/90 dark:bg-gray-900/90',
+    cardAlpha: 'bg-white dark:bg-gray-900/90 dark:bg-gray-900/90',
     muted: 'bg-gray-50 dark:bg-gray-800',
     purple: 'bg-purple-50 dark:bg-purple-900/20'
   },
@@ -174,10 +174,10 @@ export const createButtonClasses = (variant: 'primary' | 'secondary' | 'outline'
  * @example
  * ```typescript
  * const interactiveCard = createCardClasses(true);
- * // Returns: "bg-white/90 dark:bg-gray-900/90 ... hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group"
+ * // Returns: "bg-white dark:bg-gray-900/90 dark:bg-gray-900/90 ... hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group"
  *
  * const staticCard = createCardClasses(false);
- * // Returns: "bg-white/90 dark:bg-gray-900/90 ... rounded-2xl shadow-xl"
+ * // Returns: "bg-white dark:bg-gray-900/90 dark:bg-gray-900/90 ... rounded-2xl shadow-xl"
  * ```
  */
 export const createCardClasses = (withHover = true) => {

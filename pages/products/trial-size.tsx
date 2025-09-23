@@ -427,7 +427,7 @@ export default function TrialSizePage() {
         </section>
 
         {/* How It Works Section */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
@@ -514,7 +514,7 @@ export default function TrialSizePage() {
         </section>
 
         {/* Related Products */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50 cv-auto cis-720">
+        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">

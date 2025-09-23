@@ -189,7 +189,7 @@ export default function HowToUseLitterDeodorizer() {
                       Begin with a completely clean, empty litter box. Remove all old litter and wash the box 
                       with mild soap and water. Dry thoroughly before proceeding.
                     </p>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-600 p-4">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-600 dark:border-blue-400 p-4">
                       <p className="text-blue-800 dark:text-blue-200 text-sm">
                         <strong>Pro Tip:</strong> A clean starting surface ensures maximum contact between 
                         the deodorizer and odor-causing compounds.

@@ -817,7 +817,7 @@ export default function Montreal() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">MF</span>
                 </div>
                 <div>
@@ -836,7 +836,7 @@ export default function Montreal() {
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-green-600 dark:text-green-400 dark:text-green-400">JT</span>
                 </div>
                 <div>
@@ -1075,7 +1075,7 @@ export default function Montreal() {
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
                 {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>
               <h3 className="text-xl font-semibold mb-3">
@@ -1193,13 +1193,13 @@ export default function Montreal() {
             <div className="space-x-4">
               <Link 
                 href="/support/contact" 
-                className="inline-block bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 {locale === 'fr' ? 'Trouver le Magasin le Plus Près' : 'Find Nearest Store'}
               </Link>
               <Link 
                 href="/products" 
-                className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
+                className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir Tous les Produits' : 'View All Products'}
               </Link>

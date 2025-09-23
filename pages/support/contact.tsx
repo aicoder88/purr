@@ -191,7 +191,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Methods */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
@@ -390,7 +390,7 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">

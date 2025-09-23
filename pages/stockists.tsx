@@ -372,7 +372,7 @@ export default function Stockists() {
               </p>
               <Link
                 href="/support/contact"
-                className="inline-block bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
               </Link>
@@ -499,7 +499,7 @@ export default function Stockists() {
                             )}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white dark:text-white text-sm font-medium rounded hover:bg-blue-700 transition-colors"
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-white text-sm font-medium rounded hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
                           >
                             <Navigation className="h-4 w-4" />
                             {locale === 'fr' ? 'Itinéraire' : 'Directions'}
@@ -538,13 +538,13 @@ export default function Stockists() {
           <div className="space-x-4">
             <Link
               href="/support/contact"
-              className="inline-block bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
             >
               {locale === 'fr' ? 'Demander à mon magasin' : 'Request for my store'}
             </Link>
             <Link
               href="/b2b"
-              className="inline-block border border-blue-600 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+              className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
               {locale === 'fr' ? 'Devenir détaillant' : 'Become a retailer'}
             </Link>

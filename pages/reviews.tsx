@@ -252,7 +252,7 @@ export default function Reviews() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-16 cv-auto cis-480">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-xl p-8 mb-16 cv-auto cis-480">
               <div className="text-center">
                 <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
                 <div className="grid md:grid-cols-3 gap-6 text-blue-800 dark:text-blue-200">

@@ -74,7 +74,7 @@ export function HowToVideo({
                 key={step.step}
                 className="flex items-start space-x-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
               >
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold text-sm">
+                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold text-sm">
                   {step.step}
                 </div>
 

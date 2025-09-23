@@ -129,7 +129,7 @@ export default function SciencePage() {
         </section>
 
         {/* Science Facts Grid */}
-        <section className="py-16 bg-white/50 dark:bg-gray-800/20">
+        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-50 dark:text-white">
@@ -242,12 +242,12 @@ export default function SciencePage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 font-bold">
                     Experience the Science
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white hover:text-[#5B2EFF] transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
                     Learn More
                   </Button>
                 </Link>

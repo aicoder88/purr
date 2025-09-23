@@ -284,21 +284,21 @@ export default function ApartmentCatSmellSolutionPage() {
             <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">1</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Sprinkle</h3>
                 <p>Add Purrify to your existing litter</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">2</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Activate</h3>
                 <p>Activated carbon absorbs odor molecules</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">3</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Eliminate</h3>

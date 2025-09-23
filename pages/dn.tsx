@@ -681,7 +681,7 @@ export default function DriverNetworkPresentation() {
 
         {/* Thumbnail Navigation Sidebar */}
         {showThumbnails && (
-          <div className={`fixed z-40 thumbnail-nav bg-white/95 dark:bg-gray-900/95 shadow-xl border-gray-200 dark:border-gray-700 overflow-y-auto no-print ${
+          <div className={`fixed z-40 thumbnail-nav bg-white dark:bg-gray-900/95 dark:bg-gray-900/95 shadow-xl border-gray-200 dark:border-gray-700 overflow-y-auto no-print ${
             isMobile 
               ? 'left-0 right-0 bottom-0 h-1/2 border-t' 
               : 'left-0 top-16 bottom-0 w-80 border-r'
@@ -739,7 +739,7 @@ export default function DriverNetworkPresentation() {
                       <div className="flex items-center space-x-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
                           activeTab === tab 
-                            ? 'bg-blue-600 text-white dark:text-white' 
+                            ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-white' 
                             : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
                         }`}>
                           {index + 1}
@@ -768,7 +768,7 @@ export default function DriverNetworkPresentation() {
             <div className="flex items-center space-x-4 text-white dark:text-white dark:text-gray-200">
               <button
                 onClick={handleNavigatePrev}
-                className="p-2 hover:bg-white/20 rounded-full transition-all"
+                className="p-2 hover:bg-white dark:hover:bg-gray-700/20 rounded-full transition-all"
                 title="Previous slide"
               >
                 ←
@@ -780,17 +780,17 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={handleNavigateNext}
-                className="p-2 hover:bg-white/20 rounded-full transition-all"
+                className="p-2 hover:bg-white dark:hover:bg-gray-700/20 rounded-full transition-all"
                 title="Next slide"
               >
                 →
               </button>
               
-              <div className="w-px h-6 bg-white/30"></div>
+              <div className="w-px h-6 bg-white dark:bg-gray-900/30"></div>
               
               <button
                 onClick={handleToggleThumbnails}
-                className={`p-2 rounded-full transition-all ${showThumbnails ? 'bg-blue-500/30' : 'hover:bg-white/20'}`}
+                className={`p-2 rounded-full transition-all ${showThumbnails ? 'bg-blue-500/30 dark:bg-blue-600/30' : 'hover:bg-white dark:hover:bg-gray-700/20'}`}
                 title="Toggle thumbnails"
               >
                 ⊞
@@ -798,7 +798,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={handleToggleSpeakerNotes}
-                className={`p-2 rounded-full transition-all ${showSpeakerNotes ? 'bg-yellow-500/30' : 'hover:bg-white/20'}`}
+                className={`p-2 rounded-full transition-all ${showSpeakerNotes ? 'bg-yellow-500/30 dark:bg-yellow-600/30' : 'hover:bg-white dark:hover:bg-gray-700/20'}`}
                 title="Toggle speaker notes (N)"
               >
                 📝
@@ -806,7 +806,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={handleToggleSearch}
-                className={`p-2 rounded-full transition-all ${showSearch ? 'bg-green-500/30' : 'hover:bg-white/20'}`}
+                className={`p-2 rounded-full transition-all ${showSearch ? 'bg-green-500/30 dark:bg-green-600/30' : 'hover:bg-white dark:hover:bg-gray-700/20'}`}
                 title="Search slides (S)"
               >
                 🔍
@@ -814,7 +814,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={handleToggleAnalytics}
-                className={`p-2 rounded-full transition-all ${showAnalytics ? 'bg-purple-500/30' : 'hover:bg-white/20'}`}
+                className={`p-2 rounded-full transition-all ${showAnalytics ? 'bg-purple-50 dark:bg-purple-900/200/30 dark:bg-purple-600/30' : 'hover:bg-white dark:hover:bg-gray-700/20'}`}
                 title="View analytics"
               >
                 📊
@@ -822,7 +822,7 @@ export default function DriverNetworkPresentation() {
               
               <button
                 onClick={toggleFullscreen}
-                className="p-2 hover:bg-white/20 rounded-full transition-all"
+                className="p-2 hover:bg-white dark:hover:bg-gray-700/20 rounded-full transition-all"
                 title="Exit fullscreen (Esc)"
               >
                 ⛶
@@ -847,17 +847,17 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
                 
-                <div className="flex items-center bg-white/10 dark:bg-gray-700/30 rounded-lg p-1">
+                <div className="flex items-center bg-white dark:bg-gray-900/10 dark:bg-gray-700/30 rounded-lg p-1">
                   <button
                     onClick={handleNavigatePrev}
-                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Previous slide (←)"
                   >
                     ←
                   </button>
                   <button
                     onClick={handleNavigateNext}
-                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50 rounded transition-all"
+                    className="p-2 text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50 rounded transition-all"
                     title="Next slide (→)"
                   >
                     →
@@ -880,7 +880,7 @@ export default function DriverNetworkPresentation() {
                 </div>
                 
                 {/* Progress Bar */}
-                <div className="w-full bg-white/20 dark:bg-gray-700/50 rounded-full h-1.5">
+                <div className="w-full bg-white dark:bg-gray-900/20 dark:bg-gray-700/50 rounded-full h-1.5">
                   <div 
                     className="bg-[#276EF1] h-1.5 rounded-full transition-all duration-500 ease-out slide-progress"
                     style={{ 
@@ -901,8 +901,8 @@ export default function DriverNetworkPresentation() {
                         activeTab === tab 
                           ? 'bg-[#276EF1] w-4 pulse-indicator' 
                           : index <= tabs.indexOf(activeTab)
-                            ? 'bg-white/60 dark:bg-gray-400' 
-                            : 'bg-white/30 dark:bg-gray-600'
+                            ? 'bg-white dark:bg-gray-900/60 dark:bg-gray-400' 
+                            : 'bg-white dark:bg-gray-900/30 dark:bg-gray-600'
                       }`}
                       title={`Go to slide ${index + 1}`}
                     />
@@ -915,8 +915,8 @@ export default function DriverNetworkPresentation() {
                 <button
                   onClick={handleToggleThumbnails}
                   className={`p-2 rounded transition-all ${showThumbnails 
-                    ? 'bg-blue-500/20 text-blue-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    ? 'bg-blue-500/20 dark:bg-blue-600/20 text-blue-300' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle thumbnails (T)"
                 >
                   ⊞
@@ -925,8 +925,8 @@ export default function DriverNetworkPresentation() {
                 <button
                   onClick={handleToggleSpeakerNotes}
                   className={`p-2 rounded transition-all ${showSpeakerNotes 
-                    ? 'bg-yellow-500/20 text-yellow-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    ? 'bg-yellow-500/20 dark:bg-yellow-600/20 text-yellow-300' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle speaker notes (N)"
                 >
                   📝
@@ -935,8 +935,8 @@ export default function DriverNetworkPresentation() {
                 <button
                   onClick={handleToggleSearch}
                   className={`p-2 rounded transition-all ${showSearch 
-                    ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    ? 'bg-green-500/20 dark:bg-green-600/20 text-green-300' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50'}`}
                   title="Search slides (S)"
                 >
                   🔍
@@ -945,8 +945,8 @@ export default function DriverNetworkPresentation() {
                 <button
                   onClick={handleToggleAnalytics}
                   className={`p-2 rounded transition-all ${showAnalytics 
-                    ? 'bg-purple-500/20 text-purple-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    ? 'bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 text-purple-300' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50'}`}
                   title="View analytics"
                 >
                   📊
@@ -955,8 +955,8 @@ export default function DriverNetworkPresentation() {
                 <button
                   onClick={toggleFullscreen}
                   className={`p-2 rounded transition-all ${isFullscreen 
-                    ? 'bg-green-500/20 text-green-300' 
-                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-600/50'}`}
+                    ? 'bg-green-500/20 dark:bg-green-600/20 text-green-300' 
+                    : 'text-white dark:text-white dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700/20 dark:hover:bg-gray-600/50'}`}
                   title="Toggle fullscreen (F11)"
                 >
                   ⛶
@@ -1076,7 +1076,7 @@ export default function DriverNetworkPresentation() {
                             <div className="flex items-center space-x-3">
                               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
                                 activeTab === slideId 
-                                  ? 'bg-blue-600 text-white dark:text-white' 
+                                  ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-white' 
                                   : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
                               }`}>
                                 {tabs.indexOf(slideId) + 1}
@@ -1195,7 +1195,7 @@ export default function DriverNetworkPresentation() {
                 </div>
                 
                 {/* Problem Preview */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200/50 dark:border-red-700/50 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200 dark:border-red-600/50 dark:border-red-700/50 shadow-2xl">
                   <div className="text-center mb-12">
                     <h2 className="text-4xl font-bold text-red-800 dark:text-red-200 mb-6">
                       The $2.8 Trillion Problem
@@ -1207,19 +1207,19 @@ export default function DriverNetworkPresentation() {
                   
                   {/* Cost of Inaction Visualization */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                    <div className="text-center p-8 bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
                       <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">73%</div>
                       <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Fail Within 2 Years</div>
                       <div className="text-red-600 dark:text-red-300">Companies attempting to build logistics networks</div>
                     </div>
                     
-                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                    <div className="text-center p-8 bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
                       <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">18mo</div>
                       <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Average Build Time</div>
                       <div className="text-red-600 dark:text-red-300">While competitors capture market share</div>
                     </div>
                     
-                    <div className="text-center p-8 bg-white/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
+                    <div className="text-center p-8 bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 rounded-2xl border border-red-200 dark:border-red-700">
                       <div className="text-5xl font-bold text-red-600 dark:text-red-400 mb-4">$2M+</div>
                       <div className="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">Minimum Investment</div>
                       <div className="text-red-600 dark:text-red-300">Before seeing any meaningful results</div>
@@ -1306,7 +1306,7 @@ export default function DriverNetworkPresentation() {
                 </div>
                 
                 {/* The Math Doesn't Work */}
-                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200/50 dark:border-red-700/50 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-16 rounded-3xl border border-red-200 dark:border-red-600/50 dark:border-red-700/50 shadow-2xl">
                   <div className="text-center mb-12">
                     <h2 className="text-5xl font-bold text-red-800 dark:text-red-200 mb-6">
                       The Math Doesn't Work
@@ -1350,7 +1350,7 @@ export default function DriverNetworkPresentation() {
                     ].map((metric, index) => (
                       <div 
                         key={index} 
-                        className="group text-center bg-white/90 dark:bg-gray-800/90 p-8 rounded-2xl border border-red-200 dark:border-red-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+                        className="group text-center bg-white dark:bg-gray-900/90 dark:bg-gray-800/90 p-8 rounded-2xl border border-red-200 dark:border-red-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
                       >
                         <div className="text-6xl mb-4">{metric.icon}</div>
                         <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-3">
@@ -1501,7 +1501,7 @@ export default function DriverNetworkPresentation() {
 
             {activeTab === 'service-divisions' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🎯 Service Division Distribution
                   </h2>
@@ -1554,12 +1554,12 @@ export default function DriverNetworkPresentation() {
                       </ResponsiveContainer>
                     </div>
                     <div className="space-y-4">
-                      <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-700/30">
+                      <div className="backdrop-blur-sm bg-blue-500/20 dark:bg-blue-600/20 p-6 rounded-2xl border border-blue-300/3 dark:border-blue-600/30 dark:border-blue-700/30">
                         <h4 className="text-xl font-bold text-blue-800 dark:text-blue-200 mb-2">🚗 Valet & Traffic Management</h4>
                         <p className="text-blue-700 dark:text-blue-300">24/7 operations, accounting, traffic control</p>
                         <div className="text-2xl font-bold text-blue-600 dark:text-blue-200 mt-2">35% Revenue Share</div>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-700/30">
+                      <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-6 rounded-2xl border border-green-300/3 dark:border-green-600/30 dark:border-green-700/30">
                         <h4 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">🚛 Automotive Transport</h4>
                         <p className="text-green-700 dark:text-green-300">100+ vehicles daily, GPS tracking, full documentation</p>
                         <div className="text-2xl font-bold text-green-600 dark:text-green-200 mt-2">40% Revenue Share</div>
@@ -1719,7 +1719,7 @@ export default function DriverNetworkPresentation() {
             {/* Case Study: Instacart */}
             {activeTab === 'case-study-instacart' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-gradient-to-r from-green-800/90 to-emerald-900/90 dark:from-green-800/95 dark:to-emerald-900/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-green-300/30 dark:border-green-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-gradient-to-r from-green-800/90 to-emerald-900/90 dark:from-green-800/95 dark:to-emerald-900/95 text-white dark:text-gray-100 p-12 rounded-3xl mb-12 border border-green-300/3 dark:border-green-600/30 dark:border-green-600/30 shadow-2xl">
                   <div className="text-center mb-12">
                     <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent">
                       🚀 THE SOLUTION IN ACTION
@@ -1731,7 +1731,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
 
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   {/* The Solution Story */}
                   <div className="bg-gradient-to-r from-emerald-600 to-green-700 dark:from-emerald-700 dark:to-green-800 p-8 rounded-2xl text-white dark:text-gray-50 mb-8">
                     <div className="flex items-center justify-between mb-6">
@@ -1756,7 +1756,7 @@ export default function DriverNetworkPresentation() {
                         { key: 'Driver Utilization', value: '89%' },
                         { key: 'Cost Per Delivery', value: '$8.40' }
                       ].map(({ key, value }, i) => (
-                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg">
+                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-3 rounded-lg">
                           <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{value}</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300 opacity-80">{key}</div>
                         </div>
@@ -1765,13 +1765,13 @@ export default function DriverNetworkPresentation() {
 
                     {/* Challenge/Solution/Results Grid */}
                     <div className="grid lg:grid-cols-3 gap-6">
-                      <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-red-500/30 dark:bg-red-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚠️</span>Challenge
                         </h4>
                         <p className="text-red-100 dark:text-red-200 leading-relaxed">Instacart needed to rapidly scale last-mile delivery operations across 6 Midwest markets within 8 months while maintaining their signature delivery speed and reliability. Required 24/7 coverage, peak demand surge capacity (300%+ volume spikes), and seamless integration with their existing dispatch system.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-blue-500/30 dark:bg-blue-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚙️</span>Solution
                         </h4>
@@ -1907,7 +1907,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
 
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <div className="bg-gradient-to-r from-[#E31937] to-[#CC1530] p-8 rounded-2xl text-white dark:text-white mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
@@ -1930,7 +1930,7 @@ export default function DriverNetworkPresentation() {
                         { key: 'Damage Rate', value: '0.03%' },
                         { key: 'Insurance Claims', value: '$4,200 total' }
                       ].map(({ key, value }, i) => (
-                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg">
+                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-3 rounded-lg">
                           <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{value}</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300 opacity-80">{key}</div>
                         </div>
@@ -1938,13 +1938,13 @@ export default function DriverNetworkPresentation() {
                     </div>
 
                     <div className="grid lg:grid-cols-3 gap-6">
-                      <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-red-500/30 dark:bg-red-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚠️</span>Challenge
                         </h4>
                         <p className="text-red-100 dark:text-red-200 leading-relaxed">Tesla required zero-damage transport for high-value vehicles ($40K-$150K each) from their Chicago distribution center to 47 dealer locations across the Midwest. Any damage, scratches, or delays would result in massive financial losses and brand reputation damage. Required specialized equipment, insurance, and meticulous documentation.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-blue-500/30 dark:bg-blue-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚙️</span>Solution
                         </h4>
@@ -2064,7 +2064,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
 
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
@@ -2087,7 +2087,7 @@ export default function DriverNetworkPresentation() {
                         { key: 'Temperature Deviation', value: '0.0%' },
                         { key: 'Security Incidents', value: '0' }
                       ].map(({ key, value }, i) => (
-                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg">
+                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-3 rounded-lg">
                           <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{value}</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300 opacity-80">{key}</div>
                         </div>
@@ -2095,19 +2095,19 @@ export default function DriverNetworkPresentation() {
                     </div>
 
                     <div className="grid lg:grid-cols-3 gap-6">
-                      <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-red-500/30 dark:bg-red-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚠️</span>Challenge
                         </h4>
                         <p className="text-red-100 dark:text-red-200 leading-relaxed">SDSRX needed ultra-reliable medical courier services for time-sensitive laboratory samples, temperature-controlled pharmaceuticals, and confidential patient records. Any security breach, temperature deviation, or delivery delay could compromise patient care and result in massive HIPAA violations and litigation.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-blue-500/30 dark:bg-blue-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚙️</span>Solution
                         </h4>
                         <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Implemented military-grade security protocols with HIPAA-certified drivers, real-time temperature monitoring, blockchain-verified chain-of-custody documentation, and redundant delivery systems. All drivers underwent FBI background checks, 80-hour medical courier certification, and quarterly HIPAA compliance audits.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-green-500/30 dark:bg-green-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">🎯</span>Results
                         </h4>
@@ -2193,7 +2193,7 @@ export default function DriverNetworkPresentation() {
                   </div>
                 </div>
 
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-10 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <div className="bg-gradient-to-r from-indigo-600 to-purple-500 p-8 rounded-2xl text-white dark:text-white dark:text-gray-100 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center">
@@ -2216,7 +2216,7 @@ export default function DriverNetworkPresentation() {
                         { key: 'Customer Rating', value: '4.97/5' },
                         { key: 'Referral Rate', value: '89%' }
                       ].map(({ key, value }, i) => (
-                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg">
+                        <div key={i} className="text-center text-gray-800 dark:text-gray-100 backdrop-blur-sm bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-3 rounded-lg">
                           <div className="text-2xl text-gray-800 dark:text-gray-100 font-bold">{value}</div>
                           <div className="text-xs text-gray-600 dark:text-gray-300 opacity-80">{key}</div>
                         </div>
@@ -2224,19 +2224,19 @@ export default function DriverNetworkPresentation() {
                     </div>
 
                     <div className="grid lg:grid-cols-3 gap-6">
-                      <div className="backdrop-blur-sm bg-red-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-red-500/30 dark:bg-red-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚠️</span>Challenge
                         </h4>
                         <p className="text-red-100 dark:text-red-200 leading-relaxed">BMW required white-glove transport service for their premium and luxury vehicle lineup ($50K-$200K vehicles) with absolute zero tolerance for damage, delays, or customer service issues. Required specialized handling for limited-edition models, customer delivery coordination, and concierge-level service standards.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-blue-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-blue-500/30 dark:bg-blue-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">⚙️</span>Solution
                         </h4>
                         <p className="text-blue-100 dark:text-blue-200 leading-relaxed">Created dedicated BMW-certified driver team with luxury automotive expertise. Implemented concierge delivery protocols, specialized transport equipment, and comprehensive customer communication systems. All drivers trained in BMW brand standards, customer interaction, and premium service delivery.</p>
                       </div>
-                      <div className="backdrop-blur-sm bg-green-500/30 p-6 rounded-xl">
+                      <div className="backdrop-blur-sm bg-green-500/30 dark:bg-green-600/30 p-6 rounded-xl">
                         <h4 className="font-bold text-2xl text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                           <span className="mr-3">🎯</span>Results
                         </h4>
@@ -2319,7 +2319,7 @@ export default function DriverNetworkPresentation() {
             {/* Driver Excellence Slide */}
             {activeTab === 'driver-excellence' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     👥 Driver Excellence Program
                   </h2>
@@ -2367,7 +2367,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                     
                     <div className="space-y-6">
-                      <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30">
+                      <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-600/30">
                         <div className="flex items-center mb-3">
                           <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">✅</span>
                           <h4 className="text-xl font-bold text-green-800 dark:text-green-200">Quality Assurance</h4>
@@ -2379,7 +2379,7 @@ export default function DriverNetworkPresentation() {
                         </ul>
                       </div>
                       
-                      <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30">
+                      <div className="backdrop-blur-sm bg-blue-500/20 dark:bg-blue-600/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-600/30">
                         <div className="flex items-center mb-3">
                           <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">🏆</span>
                           <h4 className="text-xl font-bold text-blue-800 dark:text-blue-200">Performance Excellence</h4>
@@ -2399,14 +2399,14 @@ export default function DriverNetworkPresentation() {
             {/* Technology Integration Slide */}
             {activeTab === 'technology-integration' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     📱 Technology Integration Ecosystem
                   </h2>
                   
                   <div className="grid md:grid-cols-3 gap-8 mb-12">
                     {/* Platform Integration */}
-                    <div className="backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30">
+                    <div className="backdrop-blur-sm bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 p-6 rounded-2xl border border-purple-300/30 dark:border-purple-600/30">
                       <h3 className="text-2xl font-bold text-purple-800 dark:text-purple-200 mb-6 text-center">🔗 Platform Integration</h3>
                       <div className="space-y-4">
                         {[
@@ -2429,7 +2429,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                     
                     {/* Core Features */}
-                    <div className="backdrop-blur-sm bg-teal-500/20 p-6 rounded-2xl border border-teal-300/30">
+                    <div className="backdrop-blur-sm bg-teal-50 dark:bg-teal-900/200/20 dark:bg-teal-600/20 p-6 rounded-2xl border border-teal-300/30 dark:border-teal-600/30">
                       <h3 className="text-2xl font-bold text-teal-800 dark:text-teal-200 mb-6 text-center">⚙️ Core Features</h3>
                       <div className="space-y-4">
                         {[
@@ -2447,7 +2447,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                     
                     {/* Integration Benefits */}
-                    <div className="backdrop-blur-sm bg-orange-500/20 p-6 rounded-2xl border border-orange-300/30">
+                    <div className="backdrop-blur-sm bg-orange-500/20 dark:bg-orange-600/20 p-6 rounded-2xl border border-orange-300/30 dark:border-orange-600/30">
                       <h3 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-6 text-center">📊 Benefits</h3>
                       <div className="space-y-4">
                         {[
@@ -2471,7 +2471,7 @@ export default function DriverNetworkPresentation() {
             {/* Client Portfolio Slide */}
             {activeTab === 'client-portfolio' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🏢 Strategic Partnership Portfolio
                   </h2>
@@ -2520,7 +2520,7 @@ export default function DriverNetworkPresentation() {
                               {partner.markets} Markets
                             </Badge>
                           )}
-                          <p className="text-sm text-gray-600 dark:text-gray-300 font-medium bg-white/95 dark:bg-gray-800/95 p-2 rounded-lg">
+                          <p className="text-sm text-gray-600 dark:text-gray-300 font-medium bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-2 rounded-lg">
                             {partner.achievement}
                           </p>
                         </div>
@@ -2562,13 +2562,13 @@ export default function DriverNetworkPresentation() {
             {/* Rapid Deployment Slide */}
             {activeTab === 'rapid-deployment' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🚀 Rapid Deployment Engine
                   </h2>
                   
                   <div className="grid md:grid-cols-3 gap-8 mb-12">
-                    <div className="backdrop-blur-sm bg-green-500/20 p-8 rounded-2xl border border-green-300/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
+                    <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-8 rounded-2xl border border-green-300/30 dark:border-green-600/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
                       <div className="text-6xl font-bold text-green-600 dark:text-green-400 mb-4">7</div>
                       <div className="text-2xl font-bold text-green-800 dark:text-green-200 mb-2">Days</div>
                       <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-100">Market Entry</h3>
@@ -2578,17 +2578,17 @@ export default function DriverNetworkPresentation() {
                       </div>
                     </div>
                     
-                    <div className="backdrop-blur-sm bg-blue-500/20 p-8 rounded-2xl border border-blue-300/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
+                    <div className="backdrop-blur-sm bg-blue-500/20 dark:bg-blue-600/20 p-8 rounded-2xl border border-blue-300/30 dark:border-blue-600/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
                       <div className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-4">19+</div>
                       <div className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-2">Markets</div>
                       <h3 className="text-xl font-semibold mb-3 text-blue-900 dark:text-blue-100">Active Operations</h3>
                       <p className="text-blue-700 dark:text-blue-300">Major North American cities with established networks</p>
-                      <div className="mt-4 p-3 bg-blue-600/20 rounded-lg">
+                      <div className="mt-4 p-3 bg-blue-600 dark:bg-blue-600/20 rounded-lg">
                         <div className="text-3xl text-gray-800 dark:text-gray-100">🌍</div>
                       </div>
                     </div>
                     
-                    <div className="backdrop-blur-sm bg-purple-500/20 p-8 rounded-2xl border border-purple-300/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
+                    <div className="backdrop-blur-sm bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 p-8 rounded-2xl border border-purple-300/30 dark:border-purple-600/30 text-center text-gray-800 dark:text-gray-100 transform hover:scale-105 transition-all duration-300">
                       <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-4">3</div>
                       <div className="text-2xl font-bold text-purple-800 dark:text-purple-200 mb-2">Verticals</div>
                       <h3 className="text-xl font-semibold mb-3 text-purple-900 dark:text-purple-100">Industry Coverage</h3>
@@ -2634,7 +2634,7 @@ export default function DriverNetworkPresentation() {
             {/* Geographic Coverage Slide */}
             {activeTab === 'geographic-coverage' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🗺️ National Coverage Network
                   </h2>
@@ -2658,7 +2658,7 @@ export default function DriverNetworkPresentation() {
                           { city: 'Seattle', drivers: 45, status: 'Launch Phase' },
                           { city: 'Denver', drivers: 40, status: 'Launch Phase' }
                         ].map((market, index) => (
-                          <div key={index} className="backdrop-blur-sm bg-gradient-to-br from-blue-500/20 to-indigo-500/20 p-4 rounded-xl border border-blue-300/30">
+                          <div key={index} className="backdrop-blur-sm bg-gradient-to-br from-blue-500/20 to-indigo-500/20 p-4 rounded-xl border border-blue-300/30 dark:border-blue-600/30">
                             <div className="font-bold text-blue-900 dark:text-blue-100 mb-1">{market.city}</div>
                             <div className="text-2xl font-bold text-blue-600 dark:text-blue-200">{market.drivers}</div>
                             <div className="text-sm text-blue-700 dark:text-blue-300">Active Drivers</div>
@@ -2672,7 +2672,7 @@ export default function DriverNetworkPresentation() {
                     <div>
                       <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">📊 Strategic Expansion Plan</h3>
                       <div className="space-y-6">
-                        <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30">
+                        <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">⚡</span>
                             <h4 className="text-xl font-bold text-green-800 dark:text-green-200">Rapid Scaling</h4>
@@ -2684,7 +2684,7 @@ export default function DriverNetworkPresentation() {
                           </div>
                         </div>
                         
-                        <div className="backdrop-blur-sm bg-orange-500/20 p-6 rounded-2xl border border-orange-300/30">
+                        <div className="backdrop-blur-sm bg-orange-500/20 dark:bg-orange-600/20 p-6 rounded-2xl border border-orange-300/30 dark:border-orange-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">🔄</span>
                             <h4 className="text-xl font-bold text-orange-800 dark:text-orange-200">Multi-Service Coverage</h4>
@@ -2696,7 +2696,7 @@ export default function DriverNetworkPresentation() {
                           </div>
                         </div>
                         
-                        <div className="backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30">
+                        <div className="backdrop-blur-sm bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 p-6 rounded-2xl border border-purple-300/30 dark:border-purple-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">🏆</span>
                             <h4 className="text-xl font-bold text-purple-800 dark:text-purple-200">Quality Assurance</h4>
@@ -2729,7 +2729,7 @@ export default function DriverNetworkPresentation() {
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-12">
-                  <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                  <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">💼 What We Bring</h3>
                     <div className="space-y-4">
                       {[
@@ -2739,7 +2739,7 @@ export default function DriverNetworkPresentation() {
                         { icon: '📱', title: 'Technology Integration', desc: 'API-ready systems with 99.9% uptime' },
                         { icon: '🏆', title: 'Track Record of Excellence', desc: '12+ years of operations with major brands' }
                       ].map((item, index) => (
-                        <div key={index} className="flex items-start space-x-4 p-4 bg-blue-500/10 rounded-lg">
+                        <div key={index} className="flex items-start space-x-4 p-4 bg-blue-500/10 dark:bg-blue-600/10 rounded-lg">
                           <div className="text-3xl text-gray-800 dark:text-gray-100">{item.icon}</div>
                           <div>
                             <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-1">{item.title}</h4>
@@ -2750,7 +2750,7 @@ export default function DriverNetworkPresentation() {
                     </div>
                   </div>
                   
-                  <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                  <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">🚀 Partnership Benefits</h3>
                     <div className="space-y-4">
                       {[
@@ -2760,7 +2760,7 @@ export default function DriverNetworkPresentation() {
                         { icon: '📊', title: 'Scalable Operations', desc: 'Elastic capacity that grows with your business' },
                         { icon: '🎯', title: 'Quality Assurance', desc: '98%+ customer satisfaction across all verticals' }
                       ].map((benefit, index) => (
-                        <div key={index} className="flex items-start space-x-4 p-4 bg-green-500/10 rounded-lg">
+                        <div key={index} className="flex items-start space-x-4 p-4 bg-green-500/10 dark:bg-green-600/10 rounded-lg">
                           <div className="text-3xl text-gray-800 dark:text-gray-100">{benefit.icon}</div>
                           <div>
                             <h4 className="font-bold text-green-900 dark:text-green-100 mb-1">{benefit.title}</h4>
@@ -2777,7 +2777,7 @@ export default function DriverNetworkPresentation() {
             {/* Competitive Advantage Slide */}
             {activeTab === 'competitive-advantage' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     ⚡ Competitive Advantage Matrix
                   </h2>
@@ -2804,17 +2804,17 @@ export default function DriverNetworkPresentation() {
                           <tr key={index} className={index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/30' : 'bg-white dark:bg-gray-800/30'}>
                             <td className="p-4 font-semibold text-gray-900 dark:text-gray-100">{row.capability}</td>
                             <td className="p-4 text-center">
-                              <div className="bg-green-500/20 px-3 py-2 rounded-lg">
+                              <div className="bg-green-500/20 dark:bg-green-600/20 px-3 py-2 rounded-lg">
                                 <span className="font-bold text-green-800 dark:text-green-200">{row.us}</span>
                               </div>
                             </td>
                             <td className="p-4 text-center">
-                              <div className="bg-yellow-500/20 px-3 py-2 rounded-lg">
+                              <div className="bg-yellow-500/20 dark:bg-yellow-600/20 px-3 py-2 rounded-lg">
                                 <span className="font-medium text-yellow-800 dark:text-yellow-200">{row.traditional}</span>
                               </div>
                             </td>
                             <td className="p-4 text-center">
-                              <div className="bg-red-500/20 px-3 py-2 rounded-lg">
+                              <div className="bg-red-500/20 dark:bg-red-600/20 px-3 py-2 rounded-lg">
                                 <span className="font-medium text-red-800 dark:text-red-200">{row.gig}</span>
                               </div>
                             </td>
@@ -2825,17 +2825,17 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   <div className="grid md:grid-cols-3 gap-6">
-                    <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30 text-center text-gray-800 dark:text-gray-100">
+                    <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-600/30 text-center text-gray-800 dark:text-gray-100">
                       <div className="text-4xl text-gray-800 dark:text-gray-100 mb-3">🏆</div>
                       <h4 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">Market Leadership</h4>
                       <p className="text-green-700 dark:text-green-300">Superior performance across all key metrics</p>
                     </div>
-                    <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30 text-center text-gray-800 dark:text-gray-100">
+                    <div className="backdrop-blur-sm bg-blue-500/20 dark:bg-blue-600/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-600/30 text-center text-gray-800 dark:text-gray-100">
                       <div className="text-4xl text-gray-800 dark:text-gray-100 mb-3">⚡</div>
                       <h4 className="text-xl font-bold text-blue-800 dark:text-blue-200 mb-2">Speed Advantage</h4>
                       <p className="text-blue-700 dark:text-blue-300">10x faster market entry than traditional solutions</p>
                     </div>
-                    <div className="backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30 text-center text-gray-800 dark:text-gray-100">
+                    <div className="backdrop-blur-sm bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 p-6 rounded-2xl border border-purple-300/30 dark:border-purple-600/30 text-center text-gray-800 dark:text-gray-100">
                       <div className="text-4xl text-gray-800 dark:text-gray-100 mb-3">🎯</div>
                       <h4 className="text-xl font-bold text-purple-800 dark:text-purple-200 mb-2">Quality Edge</h4>
                       <p className="text-purple-700 dark:text-purple-300">Highest damage-free and satisfaction rates</p>
@@ -2848,7 +2848,7 @@ export default function DriverNetworkPresentation() {
             {/* Service Integration Slide */}
             {activeTab === 'service-integration' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     🔗 Seamless Uber Freight Integration
                   </h2>
@@ -2858,7 +2858,7 @@ export default function DriverNetworkPresentation() {
                     <div>
                       <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">🏗️ Technical Integration</h3>
                       <div className="space-y-6">
-                        <div className="backdrop-blur-sm bg-blue-500/20 p-6 rounded-2xl border border-blue-300/30">
+                        <div className="backdrop-blur-sm bg-blue-500/20 dark:bg-blue-600/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">📡</span>
                             <h4 className="text-xl font-bold text-blue-800 dark:text-blue-200">API Integration</h4>
@@ -2871,7 +2871,7 @@ export default function DriverNetworkPresentation() {
                           </ul>
                         </div>
                         
-                        <div className="backdrop-blur-sm bg-green-500/20 p-6 rounded-2xl border border-green-300/30">
+                        <div className="backdrop-blur-sm bg-green-500/20 dark:bg-green-600/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">🔄</span>
                             <h4 className="text-xl font-bold text-green-800 dark:text-green-200">Workflow Automation</h4>
@@ -2884,7 +2884,7 @@ export default function DriverNetworkPresentation() {
                           </ul>
                         </div>
                         
-                        <div className="backdrop-blur-sm bg-purple-500/20 p-6 rounded-2xl border border-purple-300/30">
+                        <div className="backdrop-blur-sm bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 p-6 rounded-2xl border border-purple-300/30 dark:border-purple-600/30">
                           <div className="flex items-center mb-4">
                             <span className="text-3xl text-gray-800 dark:text-gray-100 mr-3">📊</span>
                             <h4 className="text-xl font-bold text-purple-800 dark:text-purple-200">Data Analytics</h4>
@@ -2908,22 +2908,22 @@ export default function DriverNetworkPresentation() {
                             tier: 'Essential',
                             price: 'Base Rate',
                             features: ['Standard delivery', 'Basic tracking', '24hr support', 'Standard insurance'],
-                            color: 'border-gray-300',
+                            color: 'border-gray-300 dark:border-gray-600',
                             bgColor: 'bg-gray-500/10'
                           },
                           {
                             tier: 'Professional',
                             price: '+15%',
                             features: ['Priority dispatch', 'Real-time GPS', 'White-glove service', 'Enhanced insurance'],
-                            color: 'border-blue-400',
-                            bgColor: 'bg-blue-500/10'
+                            color: 'border-blue-400 dark:border-blue-500',
+                            bgColor: 'bg-blue-500/10 dark:bg-blue-600/10'
                           },
                           {
                             tier: 'Enterprise',
                             price: '+30%',
                             features: ['Dedicated drivers', 'Custom protocols', 'Account manager', 'Premium insurance'],
-                            color: 'border-purple-400',
-                            bgColor: 'bg-purple-500/10'
+                            color: 'border-purple-400 dark:border-purple-500',
+                            bgColor: 'bg-purple-50 dark:bg-purple-900/200/10 dark:bg-purple-600/10'
                           }
                         ].map((tier, index) => (
                           <div key={index} className={`backdrop-blur-sm ${tier.bgColor} p-6 rounded-2xl border ${tier.color}`}>
@@ -2943,7 +2943,7 @@ export default function DriverNetworkPresentation() {
                         ))}
                       </div>
                       
-                      <div className="mt-6 p-4 bg-gradient-to-r from-[#276EF1]/20 to-indigo-500/20 rounded-xl border border-blue-300/30">
+                      <div className="mt-6 p-4 bg-gradient-to-r from-[#276EF1]/20 to-indigo-500/20 rounded-xl border border-blue-300/30 dark:border-blue-600/30">
                         <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">💡 Custom Solutions Available</h4>
                         <p className="text-blue-700 dark:text-blue-300 text-sm">Bespoke service packages tailored to specific Uber Freight requirements and volume commitments.</p>
                       </div>
@@ -2956,7 +2956,7 @@ export default function DriverNetworkPresentation() {
             {/* ROI Projection Slide */}
             {activeTab === 'roi-projection' && (
               <section className="space-y-12">
-                <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                   <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-[#276EF1] to-indigo-600 bg-clip-text text-transparent">
                     💰 Partnership ROI Projection
                   </h2>
@@ -3008,28 +3008,28 @@ export default function DriverNetworkPresentation() {
                             category: 'Avoided Capital Investment', 
                             amount: '$4.2M', 
                             description: 'Vehicle fleet, technology, infrastructure',
-                            color: 'bg-red-500/20 border-red-300/30',
+                            color: 'bg-red-500/20 dark:bg-red-600/20 border-red-300/30',
                             textColor: 'text-red-800 dark:text-red-200'
                           },
                           { 
                             category: 'Operational Cost Savings', 
                             amount: '$8.8M', 
                             description: 'Hiring, training, management overhead',
-                            color: 'bg-green-500/20 border-green-300/30',
+                            color: 'bg-green-500/20 dark:bg-green-600/20 border-green-300/30 dark:border-green-600/30',
                             textColor: 'text-green-800 dark:text-green-200'
                           },
                           { 
                             category: 'Risk Mitigation Value', 
                             amount: '$2.1M', 
                             description: 'Insurance, compliance, liability coverage',
-                            color: 'bg-blue-500/20 border-blue-300/30',
+                            color: 'bg-blue-500/20 dark:bg-blue-600/20 border-blue-300/30 dark:border-blue-600/30',
                             textColor: 'text-blue-800 dark:text-blue-200'
                           },
                           { 
                             category: 'Faster Market Entry', 
                             amount: '$1.5M', 
                             description: 'Revenue acceleration vs. internal build',
-                            color: 'bg-purple-500/20 border-purple-300/30',
+                            color: 'bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20 border-purple-300/30 dark:border-purple-600/30',
                             textColor: 'text-purple-800 dark:text-purple-200'
                           }
                         ].map((benefit, index) => (
@@ -3043,7 +3043,7 @@ export default function DriverNetworkPresentation() {
                         ))}
                       </div>
                       
-                      <div className="mt-8 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl border border-green-300/30">
+                      <div className="mt-8 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl border border-green-300/30 dark:border-green-600/30">
                         <div className="text-center text-gray-800 dark:text-gray-100">
                           <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">$16.6M</div>
                           <div className="text-xl font-bold text-green-800 dark:text-green-200 mb-1">Total 5-Year Value</div>
@@ -3072,14 +3072,14 @@ export default function DriverNetworkPresentation() {
                 
                 <div className="grid md:grid-cols-2 gap-12">
                   {/* Implementation Timeline */}
-                  <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                  <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">📅 Implementation Timeline</h3>
                     <div className="space-y-6">
                       {[
-                        { phase: 'Week 1-2', title: 'Partnership Agreement', tasks: ['Contract finalization', 'Legal documentation', 'Integration planning'], icon: '📝', color: 'bg-blue-500/20' },
-                        { phase: 'Week 3-4', title: 'Technical Integration', tasks: ['API development', 'System testing', 'Pilot market selection'], icon: '🔧', color: 'bg-green-500/20' },
-                        { phase: 'Week 5-6', title: 'Pilot Launch', tasks: ['Driver onboarding', 'Market activation', 'Performance monitoring'], icon: '🚀', color: 'bg-purple-500/20' },
-                        { phase: 'Week 7+', title: 'Scale & Optimize', tasks: ['Multi-market rollout', 'Performance optimization', 'Continuous improvement'], icon: '📈', color: 'bg-orange-500/20' }
+                        { phase: 'Week 1-2', title: 'Partnership Agreement', tasks: ['Contract finalization', 'Legal documentation', 'Integration planning'], icon: '📝', color: 'bg-blue-500/20 dark:bg-blue-600/20' },
+                        { phase: 'Week 3-4', title: 'Technical Integration', tasks: ['API development', 'System testing', 'Pilot market selection'], icon: '🔧', color: 'bg-green-500/20 dark:bg-green-600/20' },
+                        { phase: 'Week 5-6', title: 'Pilot Launch', tasks: ['Driver onboarding', 'Market activation', 'Performance monitoring'], icon: '🚀', color: 'bg-purple-50 dark:bg-purple-900/200/20 dark:bg-purple-600/20' },
+                        { phase: 'Week 7+', title: 'Scale & Optimize', tasks: ['Multi-market rollout', 'Performance optimization', 'Continuous improvement'], icon: '📈', color: 'bg-orange-500/20 dark:bg-orange-600/20' }
                       ].map((phase, index) => (
                         <div key={index} className={`backdrop-blur-sm ${phase.color} p-6 rounded-2xl border border-white/20 dark:border-gray-700/30`}>
                           <div className="flex items-center mb-4">
@@ -3103,11 +3103,11 @@ export default function DriverNetworkPresentation() {
                   </div>
                   
                   {/* Contact & Next Actions */}
-                  <div className="backdrop-blur-lg bg-white/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
+                  <div className="backdrop-blur-lg bg-white dark:bg-gray-900/95 dark:bg-gray-800/95 p-8 rounded-3xl border border-white/30 dark:border-gray-600/30 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">🤝 Next Actions</h3>
                     
                     <div className="space-y-6 mb-8">
-                      <div className="backdrop-blur-sm bg-gradient-to-r from-[#276EF1]/20 to-indigo-500/20 p-6 rounded-2xl border border-blue-300/30">
+                      <div className="backdrop-blur-sm bg-gradient-to-r from-[#276EF1]/20 to-indigo-500/20 p-6 rounded-2xl border border-blue-300/30 dark:border-blue-600/30">
                         <h4 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-3 flex items-center">
                           <span className="mr-3">📞</span>Immediate Next Steps
                         </h4>
@@ -3119,7 +3119,7 @@ export default function DriverNetworkPresentation() {
                         </ul>
                       </div>
                       
-                      <div className="backdrop-blur-sm bg-gradient-to-r from-green-500/20 to-emerald-500/20 p-6 rounded-2xl border border-green-300/30">
+                      <div className="backdrop-blur-sm bg-gradient-to-r from-green-500/20 to-emerald-500/20 p-6 rounded-2xl border border-green-300/30 dark:border-green-600/30">
                         <h4 className="text-xl font-bold text-green-900 dark:text-green-100 mb-3 flex items-center">
                           <span className="mr-3">⚡</span>Why Act Now
                         </h4>

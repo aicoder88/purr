@@ -45,15 +45,15 @@ export function RetailerHero() {
 
               {/* Key Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+                <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
                   <div className="text-3xl font-black text-[#5B2EFF] dark:text-[#3694FF]">50%</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">Profit Margins</div>
                 </div>
-                <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+                <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
                   <div className="text-3xl font-black text-[#FF3131] dark:text-[#FF5050]">89%</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">Repurchase Rate</div>
                 </div>
-                <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+                <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
                   <div className="text-3xl font-black text-[#5B2EFF] dark:text-[#3694FF]">24h</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">Setup Time</div>
                 </div>
@@ -72,7 +72,7 @@ export function RetailerHero() {
                   onClick={() => scrollToSection("wholesale-pricing")}
                   size="lg"
                   variant="outline"
-                  className="bg-white/80 dark:bg-gray-800/80 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF]/50 dark:border-[#3694FF]/50 hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:text-white dark:hover:text-white dark:text-white transform hover:-translate-y-2 backdrop-blur-sm"
+                  className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 text-[#5B2EFF] dark:text-[#3694FF] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF]/50 dark:border-[#3694FF]/50 hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:text-white dark:hover:text-white dark:text-white transform hover:-translate-y-2 backdrop-blur-sm"
                 >
                   View Pricing
                 </Button>
@@ -92,7 +92,7 @@ export function RetailerHero() {
 
             {/* Right Column - Value Props */}
             <div className="space-y-6">
-              <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white dark:bg-gray-900/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-xl flex items-center justify-center mr-4">
                     <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +107,7 @@ export function RetailerHero() {
                 <p className="text-gray-700 dark:text-gray-200">Premium pricing with lightweight shipping. Higher margins than traditional heavy litter products.</p>
               </div>
 
-              <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white dark:bg-gray-900/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#FF3131] to-[#FF6B6B] rounded-xl flex items-center justify-center mr-4">
                     <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +122,7 @@ export function RetailerHero() {
                 <p className="text-gray-700 dark:text-gray-200">Customers become loyal advocates. Monthly repurchases and referrals drive steady revenue.</p>
               </div>
 
-              <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white dark:bg-gray-900/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
                     <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

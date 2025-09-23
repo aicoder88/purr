@@ -166,7 +166,7 @@ const ShippingPage: NextPage = () => {
               <p className="text-xl md:text-2xl mb-8 opacity-90">
                 Fast, reliable delivery across Canada and beyond
               </p>
-              <div className="bg-white/10 rounded-lg p-4 inline-block">
+              <div className="bg-white dark:bg-gray-900/10 rounded-lg p-4 inline-block">
                 <p className="text-lg font-semibold">
                   🚚 Free shipping on orders $25+ • 📦 Same-day processing • 🇨🇦 Canada-wide delivery
                 </p>
@@ -441,13 +441,13 @@ const ShippingPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white text-[#5B2EFF] hover:bg-gray-100 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 font-bold">
                     Order Trial Size - $4.99
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products
                   </Button>
                 </Link>

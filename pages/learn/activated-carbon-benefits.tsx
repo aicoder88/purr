@@ -109,7 +109,7 @@ export default function ActivatedCarbonBenefits() {
                 <li>• <strong>Permanent removal:</strong> Odors don't escape back into air</li>
               </ul>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg">
+            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
               <h4 className="font-semibold mb-3">Key Odor Molecules Eliminated:</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
@@ -190,37 +190,37 @@ export default function ActivatedCarbonBenefits() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Activated Carbon vs. Other Deodorizers</h2>
 
           <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse border border-gray-300">
+            <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
               <thead>
-                <tr className="bg-gray-50">
-                  <th className="border border-gray-300 px-4 py-3 text-left">Method</th>
-                  <th className="border border-gray-300 px-4 py-3 text-left">How It Works</th>
-                  <th className="border border-gray-300 px-4 py-3 text-left">Effectiveness</th>
-                  <th className="border border-gray-300 px-4 py-3 text-left">Considerations</th>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Method</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">How It Works</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Effectiveness</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Considerations</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Activated Carbon</td>
-                  <td className="border border-gray-300 px-4 py-3">Adsorbs and traps odor molecules</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Activated Carbon</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Adsorbs and traps odor molecules</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Excellent (99%+)</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Fragrance-free; biologically inert</td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Baking Soda</td>
-                  <td className="border border-gray-300 px-4 py-3">Neutralizes acids</td>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Baking Soda</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Neutralizes acids</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-yellow-600 dark:text-yellow-400">Moderate</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Common household use</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Fragrances</td>
-                  <td className="border border-gray-300 px-4 py-3">Masks odors with scent</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Fragrances</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Masks odors with scent</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-red-600 dark:text-red-400">Poor (temporary)</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-yellow-600 dark:text-yellow-400">Concerns for sensitive cats</td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-3 font-semibold">Enzymes</td>
-                  <td className="border border-gray-300 px-4 py-3">Break down organic matter</td>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Enzymes</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Break down organic matter</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-yellow-600 dark:text-yellow-400">Good for specific odors</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400">Common household use</td>
                 </tr>
@@ -241,7 +241,7 @@ export default function ActivatedCarbonBenefits() {
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
 
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6 mb-8">
             <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Fragrance-Free & Widely Used</h3>
             <ul className="space-y-2 text-green-700 dark:text-green-300">
               <li>• <strong>Biologically inert:</strong> Commonly used in household filtration</li>
@@ -256,21 +256,21 @@ export default function ActivatedCarbonBenefits() {
 
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
               </div>
               <h3 className="font-semibold mb-2">Sprinkle</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Add 1-2 tablespoons per litter box</p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
               </div>
               <h3 className="font-semibold mb-2">Mix</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Gently stir into existing litter</p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
               </div>
               <h3 className="font-semibold mb-2">Enjoy</h3>
@@ -321,7 +321,7 @@ export default function ActivatedCarbonBenefits() {
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-blue-600 dark:bg-blue-500 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-500 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 dark:bg-blue-600 transition-colors"
               >
                 Try 17g Trial Size - $6.99
               </Link>

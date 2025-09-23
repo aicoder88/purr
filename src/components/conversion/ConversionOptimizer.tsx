@@ -254,7 +254,7 @@ export function EmailCaptureForm({
 
   if (isSuccess) {
     return (
-      <div className={`text-center p-4 bg-green-50 border border-green-200 rounded-lg ${className}`}>
+      <div className={`text-center p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg ${className}`}>
         <div className="text-green-600 dark:text-green-400 dark:text-green-400 font-medium">✅ Success!</div>
         <div className="text-sm text-green-700 dark:text-green-300">Check your email for your {offer} code!</div>
       </div>

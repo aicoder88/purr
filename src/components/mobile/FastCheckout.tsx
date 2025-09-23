@@ -254,7 +254,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 onChange={handleFormChange}
                 autoComplete="email"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                  errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                  errors.email ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.email && (
@@ -275,7 +275,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   onChange={handleFormChange}
                   autoComplete="given-name"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                    errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    errors.firstName ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.firstName && (
@@ -291,7 +291,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   onChange={handleFormChange}
                   autoComplete="family-name"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                    errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    errors.lastName ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.lastName && (
@@ -337,7 +337,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 onChange={handleFormChange}
                 autoComplete="street-address"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                  errors.address ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                  errors.address ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.address && (
@@ -358,7 +358,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   onChange={handleFormChange}
                   autoComplete="address-level2"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                    errors.city ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    errors.city ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 />
                 {errors.city && (
@@ -372,7 +372,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                   onChange={handleFormChange}
                   autoComplete="address-level1"
                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                    errors.province ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    errors.province ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
                 >
                   <option value="">Province</option>
@@ -398,7 +398,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
                 autoComplete="postal-code"
                 maxLength={7}
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${
-                  errors.postalCode ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                  errors.postalCode ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-600'
                 } bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100`}
               />
               {errors.postalCode && (

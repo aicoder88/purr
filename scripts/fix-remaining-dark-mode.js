@@ -1,169 +1,103 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const { execSync } = require('child_process');
+const path = require('path');
 
-// Get specific violations from the validator
-function getViolations() {
+console.log('🌙 Dark Mode Remaining Issues Fix');
+console.log('================================');
+
+// More complex pattern fixes for remaining violations
+const complexFixes = [
+  // Background colors with transparency - most common remaining issues
+  { pattern: /bg-blue-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-blue-500/$1 dark:bg-blue-600/$1' },
+  { pattern: /bg-green-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-green-500/$1 dark:bg-green-600/$1' },
+  { pattern: /bg-red-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-red-500/$1 dark:bg-red-600/$1' },
+  { pattern: /bg-purple-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-purple-500/$1 dark:bg-purple-600/$1' },
+  { pattern: /bg-orange-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-orange-500/$1 dark:bg-orange-600/$1' },
+  { pattern: /bg-teal-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-teal-500/$1 dark:bg-teal-600/$1' },
+  { pattern: /bg-yellow-500\/([0-9]+)(?! dark:)/g, replacement: 'bg-yellow-500/$1 dark:bg-yellow-600/$1' },
+
+  // Border colors with transparency
+  { pattern: /border-blue-300\/([0-9]+)(?! dark:)/g, replacement: 'border-blue-300/$1 dark:border-blue-600/$1' },
+  { pattern: /border-green-300\/([0-9]+)(?! dark:)/g, replacement: 'border-green-300/$1 dark:border-green-600/$1' },
+  { pattern: /border-purple-300\/([0-9]+)(?! dark:)/g, replacement: 'border-purple-300/$1 dark:border-purple-600/$1' },
+  { pattern: /border-orange-300\/([0-9]+)(?! dark:)/g, replacement: 'border-orange-300/$1 dark:border-orange-600/$1' },
+  { pattern: /border-teal-300\/([0-9]+)(?! dark:)/g, replacement: 'border-teal-300/$1 dark:border-teal-600/$1' },
+
+  // Solid borders without transparency
+  { pattern: /border-gray-200(?! dark:)/g, replacement: 'border-gray-200 dark:border-gray-600' },
+  { pattern: /border-red-200(?! dark:)/g, replacement: 'border-red-200 dark:border-red-600' },
+  { pattern: /border-green-200(?! dark:)/g, replacement: 'border-green-200 dark:border-green-600' },
+  { pattern: /border-blue-200(?! dark:)/g, replacement: 'border-blue-200 dark:border-blue-600' },
+  { pattern: /border-green-400(?! dark:)/g, replacement: 'border-green-400 dark:border-green-500' },
+  { pattern: /border-red-400(?! dark:)/g, replacement: 'border-red-400 dark:border-red-500' },
+  { pattern: /border-blue-400(?! dark:)/g, replacement: 'border-blue-400 dark:border-blue-500' },
+  { pattern: /border-purple-400(?! dark:)/g, replacement: 'border-purple-400 dark:border-purple-500' },
+  { pattern: /border-orange-400(?! dark:)/g, replacement: 'border-orange-400 dark:border-orange-500' },
+
+  // Specific colored backgrounds
+  { pattern: /bg-gray-100(?! dark:)/g, replacement: 'bg-gray-100 dark:bg-gray-700' },
+  { pattern: /bg-purple-50(?! dark:)/g, replacement: 'bg-purple-50 dark:bg-purple-900/20' },
+  { pattern: /bg-teal-50(?! dark:)/g, replacement: 'bg-teal-50 dark:bg-teal-900/20' },
+
+  // Text colors that were missed
+  { pattern: /text-teal-900(?! dark:)/g, replacement: 'text-teal-900 dark:text-teal-100' },
+  { pattern: /text-teal-800(?! dark:)/g, replacement: 'text-teal-800 dark:text-teal-200' },
+  { pattern: /text-teal-700(?! dark:)/g, replacement: 'text-teal-700 dark:text-teal-300' },
+
+  // Background colors for specific use cases
+  { pattern: /bg-blue-500\/10(?! dark:)/g, replacement: 'bg-blue-500/10 dark:bg-blue-600/20' },
+  { pattern: /bg-green-500\/10(?! dark:)/g, replacement: 'bg-green-500/10 dark:bg-green-600/20' },
+];
+
+// Apply fixes to a file
+function fixFile(filePath) {
   try {
-    const result = execSync('npm run validate-dark-mode', { encoding: 'utf8', stdio: 'pipe' });
-    return result;
-  } catch (error) {
-    return error.stdout + error.stderr;
-  }
-}
+    let content = fs.readFileSync(filePath, 'utf8');
+    let changeCount = 0;
 
-// Parse violations from output
-function parseViolations(output) {
-  const violations = [];
-  const lines = output.split('\n');
-  let currentFile = null;
-  const violationLinePattern = /Line \d+:\d+ - Missing dark variant for:/;
-  const violationDetailsPattern = /Line (\d+):\d+ - Missing dark variant for: (.+)/;
-
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    if (line.startsWith('❌ ')) {
-      currentFile = line.replace('❌ ', '').trim();
-      continue;
-    }
-
-    if (currentFile && violationLinePattern.test(line)) {
-      const match = violationDetailsPattern.exec(line);
-      if (match) {
-        const [, lineNumber, classPattern] = match;
-        const nextLine = lines[index + 1];
-        if (nextLine && nextLine.trim()) {
-          violations.push({
-            file: currentFile,
-            line: parseInt(lineNumber, 10),
-            pattern: classPattern.trim(),
-            code: nextLine.trim()
-          });
-        }
+    for (const fix of complexFixes) {
+      const matches = content.match(fix.pattern);
+      if (matches) {
+        content = content.replace(fix.pattern, fix.replacement);
+        changeCount += matches.length;
       }
     }
-  }
 
-  return violations;
-}
-
-// Fix specific violations
-function fixViolations(violations) {
-  const fileChanges = new Map();
-  
-  // Group by file
-  violations.forEach(violation => {
-    if (!fileChanges.has(violation.file)) {
-      fileChanges.set(violation.file, []);
+    if (changeCount > 0) {
+      fs.writeFileSync(filePath, content, 'utf8');
+      console.log(`✅ ${filePath}: Fixed ${changeCount} violations`);
+      return changeCount;
     }
-    fileChanges.get(violation.file).push(violation);
-  });
-  
-  let totalFixed = 0;
-  
-  fileChanges.forEach((violationsInFile, fileName) => {
-    try {
-      const fullPath = `pages/${fileName}`;
-      if (!fs.existsSync(fullPath)) return;
-      
-      let content = fs.readFileSync(fullPath, 'utf8');
-      const lines = content.split('\n');
-      let hasChanges = false;
-      
-      // Sort by line number descending to avoid line number shifts
-      violationsInFile.sort((a, b) => b.line - a.line);
-      
-      violationsInFile.forEach(violation => {
-        const lineIndex = violation.line - 1;
-        if (lineIndex >= 0 && lineIndex < lines.length) {
-          const originalLine = lines[lineIndex];
-          
-          // Skip if line is commented out
-          if (originalLine.trim().startsWith('//')) return;
-          
-          let newLine = originalLine;
-          
-          // Common fixes
-          const fixes = [
-            { pattern: /text-yellow-600(\b)/g, replace: 'text-yellow-600 dark:text-yellow-400$1' },
-            { pattern: /text-red-600(\b)/g, replace: 'text-red-600 dark:text-red-400$1' },
-            { pattern: /text-green-600(\b)/g, replace: 'text-green-600 dark:text-green-400$1' },
-            { pattern: /text-blue-600(\b)/g, replace: 'text-blue-600 dark:text-blue-400$1' },
-            { pattern: /text-indigo-600(\b)/g, replace: 'text-indigo-600 dark:text-indigo-400$1' },
-            { pattern: /text-indigo-700(\b)/g, replace: 'text-indigo-700 dark:text-indigo-300$1' },
-            { pattern: /text-indigo-800(\b)/g, replace: 'text-indigo-800 dark:text-indigo-200$1' },
-            { pattern: /text-red-700(\b)/g, replace: 'text-red-700 dark:text-red-300$1' },
-            { pattern: /text-red-800(\b)/g, replace: 'text-red-800 dark:text-red-200$1' },
-            { pattern: /text-green-700(\b)/g, replace: 'text-green-700 dark:text-green-300$1' },
-            { pattern: /text-green-800(\b)/g, replace: 'text-green-800 dark:text-green-200$1' },
-            { pattern: /text-blue-700(\b)/g, replace: 'text-blue-700 dark:text-blue-300$1' },
-            { pattern: /text-blue-800(\b)/g, replace: 'text-blue-800 dark:text-blue-200$1' },
-            { pattern: /text-blue-900(\b)/g, replace: 'text-blue-900 dark:text-blue-100$1' },
-            { pattern: /text-gray-400(\b)/g, replace: 'text-gray-400 dark:text-gray-500$1' },
-            { pattern: /text-indigo-200(\b)/g, replace: 'text-indigo-200 dark:text-indigo-300$1' },
-            { pattern: /text-white(\b)/g, replace: 'text-white dark:text-gray-100$1' },
-            { pattern: /text-yellow-400(\b)/g, replace: 'text-yellow-400 dark:text-yellow-300$1' },
-          ];
-          
-          fixes.forEach(fix => {
-            if (newLine.includes(violation.pattern) && fix.pattern.test(newLine)) {
-              newLine = newLine.replace(fix.pattern, fix.replace);
-            }
-          });
-          
-          if (newLine !== originalLine) {
-            lines[lineIndex] = newLine;
-            hasChanges = true;
-            totalFixed++;
-          }
-        }
-      });
-      
-      if (hasChanges) {
-        fs.writeFileSync(fullPath, lines.join('\n'));
-        console.log(`✅ Fixed ${violationsInFile.length} violations in ${fileName}`);
-      }
-      
-    } catch (error) {
-      console.error(`❌ Error fixing ${fileName}:`, error.message);
-    }
-  });
-  
-  return totalFixed;
-}
 
-function main() {
-  console.log('🌙 Analyzing remaining dark mode violations...\n');
-  
-  const output = getViolations();
-  const violations = parseViolations(output);
-  
-  console.log(`Found ${violations.length} specific violations to fix\n`);
-  
-  if (violations.length === 0) {
-    console.log('🎉 No violations found! Dark mode compliance achieved.');
-    return;
-  }
-  
-  // Show first few violations for debugging
-  console.log('Sample violations:');
-  violations.slice(0, 5).forEach(v => {
-    console.log(`  ${v.file}:${v.line} - ${v.pattern}`);
-  });
-  console.log('');
-  
-  const fixed = fixViolations(violations);
-  
-  console.log(`\n🎉 Fixed ${fixed} violations!`);
-  
-  // Run validation again to see progress
-  console.log('\n📊 Running validation to check progress...\n');
-  try {
-    execSync('npm run validate-dark-mode', { stdio: 'inherit' });
+    return 0;
   } catch (error) {
-    console.log('Validation completed with remaining issues.');
+    console.error(`❌ Error fixing ${filePath}:`, error.message);
+    return 0;
   }
 }
 
-main();
+// Get files from validation output - files that still have issues
+const problemFiles = [
+  'pages/dn.tsx', 'pages/learn/how-to-use-deodorizer.tsx'
+];
+
+console.log(`📁 Targeting ${problemFiles.length} files with remaining issues`);
+
+let totalFixes = 0;
+let fixedFiles = 0;
+
+for (const file of problemFiles) {
+  if (fs.existsSync(file)) {
+    const fixes = fixFile(file);
+    if (fixes > 0) {
+      totalFixes += fixes;
+      fixedFiles++;
+    }
+  }
+}
+
+console.log('\n🎉 Complex Fixes Results:');
+console.log(`Files processed: ${problemFiles.length}`);
+console.log(`Files fixed: ${fixedFiles}`);
+console.log(`Total fixes applied: ${totalFixes}`);

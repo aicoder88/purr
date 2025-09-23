@@ -89,7 +89,7 @@ export function WholesalePricing() {
               className={`relative rounded-3xl p-8 ${
                 tier.highlighted
                   ? 'bg-gradient-to-br from-[#5B2EFF]/10 via-white to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:via-gray-800 dark:to-[#5B2EFF]/20 border-3 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl transform scale-105 z-10'
-                  : 'bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
+                  : 'bg-white dark:bg-gray-900/70 dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
               } backdrop-blur-sm transition-all duration-500 hover:transform hover:scale-105`}
             >
               {/* Badge */}

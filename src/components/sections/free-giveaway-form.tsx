@@ -177,8 +177,8 @@ export function FreeGiveawayForm() {
           <div
             className={`rounded-md p-4 ${
               submitStatus.success
-                ? 'bg-green-50 text-green-800 dark:text-green-200'
-                : 'bg-red-50 text-red-800'
+                ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
+                : 'bg-red-50 dark:bg-red-900/20 text-red-800'
             }`}
             role="alert"
             aria-live="polite"

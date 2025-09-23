@@ -199,7 +199,7 @@ export function VideoPlayer({
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
           <button
             onClick={togglePlay}
-            className="w-16 h-16 bg-white/90 dark:bg-gray-100/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-50 transition-colors shadow-lg"
+            className="w-16 h-16 bg-white dark:bg-gray-900/90 dark:bg-gray-100/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-50 dark:bg-gray-800 transition-colors shadow-lg"
             aria-label="Play video"
           >
             <Play className="w-8 h-8 text-gray-900 dark:text-gray-800 ml-1" />
@@ -218,7 +218,7 @@ export function VideoPlayer({
               max="100"
               value={duration ? (currentTime / duration) * 100 : 0}
               onChange={handleSeek}
-              className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-1 bg-white dark:bg-gray-900/30 rounded-lg appearance-none cursor-pointer slider"
             />
           </div>
 
@@ -350,7 +350,7 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
               className={cn(
                 'px-4 py-2 rounded-full text-sm font-medium transition-colors',
                 filter === category
-                  ? 'bg-blue-600 text-white dark:text-gray-100'
+                  ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
               )}
             >

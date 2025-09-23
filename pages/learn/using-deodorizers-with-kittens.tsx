@@ -113,7 +113,7 @@ export default function UsingDeodorizersWithKittensLearn() {
               <Link href="/products/trial-size" className="inline-block bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                 Try Fragrance-Free Formula - $6.99
               </Link>
-              <Link href="/learn/how-it-works" className="inline-block border border-green-600 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+              <Link href="/learn/how-it-works" className="inline-block border border-green-600 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:bg-green-900/20 transition-colors">
                 How It Works
               </Link>
             </div>

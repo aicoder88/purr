@@ -214,7 +214,7 @@ export function RetailerContact() {
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="mt-8 p-6 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
                 <h4 className="font-black text-lg text-gray-900 dark:text-gray-50 mb-3">💰 Expected Timeline to Revenue</h4>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
@@ -483,7 +483,7 @@ export function RetailerContact() {
                 </h3>
 
                 <div className="space-y-6">
-                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
+                  <div className="bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
                         🏪
@@ -499,7 +499,7 @@ export function RetailerContact() {
                     <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">+145% sales growth</div>
                   </div>
 
-                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
+                  <div className="bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
                         🏥

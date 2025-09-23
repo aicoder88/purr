@@ -240,7 +240,7 @@
 //                   </div>
 //                 </div>
                 
-//                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
+//                 <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 rounded-lg p-6 mb-8">
 //                   <div className="flex items-center justify-center mb-4">
 //                     <PawPrint className="h-8 w-8 text-red-600 dark:text-red-400 dark:text-red-400 mr-3" />
 //                     <h2 className="text-3xl font-bold text-red-600 dark:text-red-400 dark:text-red-400 text-center">CLAIM YOUR FREE BAG NOW</h2>
@@ -287,7 +287,7 @@ export default function FreeRedirect() {
         <link rel="canonical" href="https://www.purrify.ca/" />
       </Head>
       <div className="flex justify-center items-center min-h-screen bg-white dark:bg-gray-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400"></div>
       </div>
     </>
   );
