@@ -36,7 +36,7 @@ export function About() {
           </div>
           
           <p className="text-3xl font-semibold text-foreground mb-6">
-          {t.features.natural.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Discover the science</Link> behind our <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">activated carbon formula</Link>.
+          {t.features.catFriendly.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Discover the science</Link> behind our <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">activated carbon formula</Link>.
           </p>
         </div>
 

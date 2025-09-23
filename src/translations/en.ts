@@ -106,10 +106,6 @@ export const en = {
       title: "Works with Your Cat's Favorite Litter",
       description: "Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use."
     },
-    natural: {
-      title: "Pure Coconut Shell Carbon",
-      description: "Used in water and air filters around the world, made from sustainable coconut shells. The same type found in military gas masks for trusted filtration."
-    },
     costEffective: {
       title: "Saves Money on Litter",
       description: "Extends litter life by preventing odor buildup. Use less, change less often, breathe easier. Your wallet will love it too."

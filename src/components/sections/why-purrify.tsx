@@ -15,8 +15,8 @@ export function WhyPurrify() {
     },
     {
       icon: Cat,
-      title: `${t.features.catFriendly.title.toUpperCase()} & ${t.features.natural.title.toUpperCase()}`,
-      description: `${t.features.catFriendly.description}\n${t.features.natural.description}`,
+      title: t.features.catFriendly.title.toUpperCase(),
+      description: t.features.catFriendly.description,
       image: "/optimized/Carbon sktech.webp",
       color: "bg-[#E8F5E9]",
       textColor: "text-[#2E7D32]",

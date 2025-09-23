@@ -101,10 +101,6 @@ export interface TranslationType {
       title: string;
       description: string;
     };
-    natural: {
-      title: string;
-      description: string;
-    };
     costEffective: {
       title: string;
       description: string;
