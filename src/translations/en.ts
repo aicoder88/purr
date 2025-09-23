@@ -58,7 +58,7 @@ export const en = {
     ferretCage: "Ferret Cage Smell Killer",
     eliminateCatOdors: "Finally! A Litter Box That Doesn't Smell…",
     instantly: "Your Guests Will Never Know You Have Cats!",
-    description: "Tired of holding your breath? This water-filter grade activated carbon destroys ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
+    description: "Tired of holding your breath? This water-filter grade activated carbon locks away ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "cat parents say goodbye to litter box smell",
@@ -91,8 +91,8 @@ export const en = {
   // Features
   features: {
     odorElimination: {
-      title: "Destroys Ammonia Smell Instantly",
-      description: "Water-filter grade activated carbon doesn't just mask odors - it destroys ammonia molecules at the source. Your nose will thank you!"
+      title: "Locks Away Ammonia Smell Instantly",
+      description: "Water-filter grade activated carbon doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!"
     },
     catFriendly: {
       title: "Used in Water & Air Filters Worldwide",
