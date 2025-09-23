@@ -23,19 +23,19 @@ const ProductComparePage: NextPage = () => {
 
   const products = t.productComparison.products.map((product) => ({
     ...product,
-    price: product.id === 'trial' ? '$6.99' : product.id === 'small' ? '$19.99' : '$29.99',
-    originalPrice: product.id === 'trial' ? null : product.id === 'small' ? '$22.99' : '$34.99',
-    savings: product.id === 'trial' ? null : product.id === 'small' ? '$3.00' : '$5.00',
-    popular: product.id === 'small',
+    price: product.id === 'trial' ? '$6.99' : product.id === 'standard' ? '$19.99' : '$29.99',
+    originalPrice: product.id === 'trial' ? null : product.id === 'standard' ? '$22.99' : '$34.99',
+    savings: product.id === 'trial' ? null : product.id === 'standard' ? '$3.00' : '$5.00',
+    popular: product.id === 'standard',
     recommended: product.id === 'large',
     ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
-    color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'small' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
+    color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'standard' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
   }));
 
   const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
     feature: item.feature,
     trial: index < 4,
-    small: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
+    standard: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
     large: true
   }));
 
@@ -44,21 +44,21 @@ const ProductComparePage: NextPage = () => {
       cats: 1,
       litterChanges: locale === 'fr' ? 'Hebdomadaire' : locale === 'zh' ? '每周' : 'Weekly',
       trial: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
-      small: locale === 'fr' ? '3-4 semaines' : locale === 'zh' ? '3-4周' : '3-4 weeks',
+      standard: locale === 'fr' ? '3-4 semaines' : locale === 'zh' ? '3-4周' : '3-4 weeks',
       large: locale === 'fr' ? '8-10 semaines' : locale === 'zh' ? '8-10周' : '8-10 weeks'
     },
     {
       cats: 2,
       litterChanges: locale === 'fr' ? '2x par semaine' : locale === 'zh' ? '每周2次' : '2x per week',
       trial: locale === 'fr' ? '3-4 jours' : locale === 'zh' ? '3-4天' : '3-4 days',
-      small: locale === 'fr' ? '1,5-2 semaines' : locale === 'zh' ? '1.5-2周' : '1.5-2 weeks',
+      standard: locale === 'fr' ? '1,5-2 semaines' : locale === 'zh' ? '1.5-2周' : '1.5-2 weeks',
       large: locale === 'fr' ? '4-5 semaines' : locale === 'zh' ? '4-5周' : '4-5 weeks'
     },
     {
       cats: 3,
       litterChanges: locale === 'fr' ? '3x par semaine' : locale === 'zh' ? '每周3次' : '3x per week',
       trial: locale === 'fr' ? '2-3 jours' : locale === 'zh' ? '2-3天' : '2-3 days',
-      small: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
+      standard: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
       large: locale === 'fr' ? '2,5-3 semaines' : locale === 'zh' ? '2.5-3周' : '2.5-3 weeks'
     }
   ];
@@ -280,7 +280,7 @@ const ProductComparePage: NextPage = () => {
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
-                          {row.small ? (
+                          {row.standard ? (
                             <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
                           ) : (
                             <span className="text-gray-400 dark:text-gray-500">—</span>
@@ -339,7 +339,7 @@ const ProductComparePage: NextPage = () => {
                           {row.trial}
                         </td>
                         <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
-                          {row.small}
+                          {row.standard}
                         </td>
                         <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
                           {row.large}
