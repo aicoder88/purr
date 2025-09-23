@@ -174,7 +174,7 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
-  if (storeName.includes('KONG')) {
+  if (storeName.includes('Kong')) {
     return {
       src: "/optimized/kong-animalerie.webp", 
       alt: "KONG ANIMALERIE - Montreal Pet Store Logo",
@@ -202,7 +202,7 @@ const hasWhiteBackground = (storeName: string) => {
          storeName.includes('GIGI') || 
          storeName.includes('Pitou Minou') || 
          storeName.includes('Doghaus') || 
-         storeName.includes('KONG') || 
+         storeName.includes('Kong') || 
          storeName.includes('Coquette') ||
          storeName.includes('Coquette');
 };

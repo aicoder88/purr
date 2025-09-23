@@ -627,6 +627,9 @@ export interface TranslationType {
     duration: string;
     coverage: string;
     odorControl: string;
+    odorControlTrial: string;
+    odorControlMedium: string;
+    odorControlLarge: string;
     naturalIngredients: string;
     easyApplication: string;
     moneyBackGuarantee: string;

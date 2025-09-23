@@ -116,15 +116,28 @@ export function EnhancedProductComparison() {
     }
   ];
 
-  const featureLabels = {
-    odorControl: t.enhancedProductComparison?.odorControl || '7-Day Odor Control',
-    naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
-    easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
-    moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
-    // freeShipping: t.enhancedProductComparison?.freeShipping || 'Free Shipping', // TODO: Restore when free shipping is available
-    bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
-    prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support',
-    bonusGuide: t.enhancedProductComparison?.bonusGuide || 'Bonus Cat Care Guide'
+  // Dynamic feature labels based on product size
+  const getFeatureLabels = (productId: string) => {
+    let odorControlLabel = t.enhancedProductComparison?.odorControl || '7-Day Odor Control';
+
+    if (productId === 'purrify-17g') {
+      odorControlLabel = t.enhancedProductComparison?.odorControlTrial || '7-Day Odor Control';
+    } else if (productId === 'purrify-60g') {
+      odorControlLabel = t.enhancedProductComparison?.odorControlMedium || '14-Day Odor Control';
+    } else if (productId === 'purrify-140g') {
+      odorControlLabel = t.enhancedProductComparison?.odorControlLarge || '30-Day Odor Control';
+    }
+
+    return {
+      odorControl: odorControlLabel,
+      naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
+      easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
+      moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
+      // freeShipping: t.enhancedProductComparison?.freeShipping || 'Free Shipping', // TODO: Restore when free shipping is available
+      bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
+      prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support',
+      bonusGuide: t.enhancedProductComparison?.bonusGuide || 'Bonus Cat Care Guide'
+    };
   };
 
   return (
@@ -227,7 +240,7 @@ export function EnhancedProductComparison() {
 
                   {/* Features */}
                   <div className="flex-1 space-y-2 sm:space-y-3 mb-4 sm:mb-6 overflow-visible">
-                    {Object.entries(featureLabels).map(([key, label]) => {
+                    {Object.entries(getFeatureLabels(product.id)).map(([key, label]) => {
                       const isIncluded = product.features[key as keyof typeof product.features];
                       return (
                         <div key={key} className="flex items-start gap-2 sm:gap-3">
