@@ -8,7 +8,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for multi-cat household content
 const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
-const multiBoxImage = 'https://images.unsplash.com/photo-1559235038-1b0fadf5b93f?auto=format&fit=crop&w=1600&q=80';
+const multiBoxImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80';
 const maintenanceImage = 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1600&q=80';
 
 export default function MultiCatLitterDeodorizerGuide() {
@@ -17,7 +17,7 @@ export default function MultiCatLitterDeodorizerGuide() {
   return (
     <>
       <Head>
-        <title>{t.blog.multiCat.title} | {SITE_NAME}</title>
+        <title>{`${t.blog.multiCat.title} | ${SITE_NAME}`}</title>
         <meta name="description" content={t.blog.multiCat.description} />
         <meta name="keywords" content="multi cat litter deodorizer, litter deodorizer for multiple cats, best odor control multi cat, activated carbon multi cat litter, cat litter additive multiple cats" />
 

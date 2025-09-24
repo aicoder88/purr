@@ -14,7 +14,7 @@ export const videoContent = {
           step: 1,
           title: 'Prepare Your Litter Box',
           description: 'Clean the litter box thoroughly and add fresh litter as usual.',
-          image: 'https://images.unsplash.com/photo-1559235038-1b0fadf5b93f?auto=format&fit=crop&w=400&q=80'
+          image: 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=400&q=80'
         },
         {
           step: 2,

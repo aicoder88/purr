@@ -170,7 +170,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
   return (
     <>
       <Head>
-        <title>{post.title} | {SITE_NAME} Blog</title>
+        <title>{`${post.title} | ${SITE_NAME} Blog`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         

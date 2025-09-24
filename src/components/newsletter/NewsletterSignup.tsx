@@ -147,11 +147,11 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
     return (
       <div className={`${cardClasses} p-6 ${className}`}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left dark:text-center dark:md:text-left">
             <h3 className={`text-lg font-semibold ${COLORS.text.primary} mb-1`}>
               Stay Updated with Purrify
             </h3>
-            <p className={`${COLORS.text.tertiary} text-sm`}>
+            <p className={`${COLORS.text.tertiary} text-sm dark:text-sm`}>
               Get cat care tips and exclusive offers delivered to your inbox.
             </p>
           </div>

@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for cat litter odor control
-const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
-const litterBoxImage = 'https://images.unsplash.com/photo-1559235038-1b0fadf5b93f?auto=format&fit=crop&w=1600&q=80';
-const ventilationImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80';
-const cleaningImage = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/house-smells-cat-litter.webp';
+const heroImageOg = 'https://www.purrify.ca/optimized/house-smells-cat-litter.webp';
+const litterBoxImage = '/optimized/multi-cat-household.webp';
+const ventilationImage = '/optimized/fresh.webp';
+const cleaningImage = '/optimized/clay-cat-litter.webp';
 
 export default function HouseSmellsLikeCatLitter() {
   // const { t } = useTranslation();
@@ -17,7 +18,7 @@ export default function HouseSmellsLikeCatLitter() {
   return (
     <>
       <Head>
-        <title>Embarrassed Your House Smells Like Cat Litter? 7 Ways to Stop the Stink | {SITE_NAME}</title>
+        <title>{`Embarrassed Your House Smells Like Cat Litter? 7 Ways to Stop the Stink | ${SITE_NAME}`}</title>
         <meta name="description" content="Tired of guests noticing your house smells like cat litter? These 7 proven methods eliminate embarrassing litter box odors in 24 hours. Get your fresh-smelling home back!" />
         <meta name="keywords" content="house smells like cat litter, control cat litter smell, cat litter urine smell, strong urine smell cat litter box, getting cat litter smell out of house, house smells like litter box" />
 
@@ -26,7 +27,7 @@ export default function HouseSmellsLikeCatLitter() {
         <meta property="og:description" content="No more apologizing to guests! These 7 proven methods eliminate embarrassing cat litter odors in 24 hours. Water-filter grade activated carbon destroys ammonia instantly." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={heroImageOg} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -34,7 +35,7 @@ export default function HouseSmellsLikeCatLitter() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="House Smells Like Cat Litter? 7 Proven Solutions" />
         <meta name="twitter:description" content="Discover proven methods to eliminate cat litter odors and stop your house from smelling like a litter box." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={heroImageOg} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions" />
@@ -51,7 +52,7 @@ export default function HouseSmellsLikeCatLitter() {
                 "description": "Is your house smelling like cat litter? Discover 7 proven methods to control cat litter smell and eliminate strong urine odors from your litter box permanently.",
                 "image": {
                   "@type": "ImageObject",
-                  "url": heroImage,
+                  "url": heroImageOg,
                   "width": 1600,
                   "height": 1067,
                   "caption": "Cat looking concerned about litter box odors in home environment"
@@ -145,17 +146,17 @@ export default function HouseSmellsLikeCatLitter() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">House Smells Like Cat Litter Solutions</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">House Smells Like Cat Litter Solutions</li>
               </ol>
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+            <header className="mb-12 text-center dark:text-center">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Odor Control Solutions
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -350,7 +351,7 @@ export default function HouseSmellsLikeCatLitter() {
               </ul>
 
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h4 className="font-bold text-[#FF3131] mb-3">💡 Pro Tip: The Purrify Solution</h4>
+                <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">💡 Pro Tip: The Purrify Solution</h4>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   For the most effective odor control, try <strong>Purrify's activated carbon litter additive</strong>.
                   Simply sprinkle it in your litter box to eliminate odors for up to 7 days. Made from premium
@@ -386,7 +387,7 @@ export default function HouseSmellsLikeCatLitter() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to transform your home's air quality?
-                <Link href="/products" className="text-[#FF3131] hover:underline font-medium"> Try Purrify's activated carbon additive</Link>
+                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Try Purrify's activated carbon additive</Link>
                 and experience the difference that scientific odor control can make.
               </p>
             </div>

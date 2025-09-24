@@ -78,7 +78,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
               {t.footer.quickLinks}
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm dark:text-sm">
               <li>
                 <Link
                   href={locale === 'fr' ? "/fr/" : "/"}

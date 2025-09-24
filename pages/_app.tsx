@@ -43,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
 
   // Canonical site URL (use www domain to avoid redirects)
   const canonicalUrl = 'https://www.purrify.ca';
+  const shouldLoadChat = process.env.NODE_ENV === 'production';
 
   // Service Worker registration
   useEffect(() => {
@@ -210,41 +211,43 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
 
           {/* Idle-load chat plugin to avoid blocking TTI */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(){
-                  if (window.__purrifyChatLoaded) return;
-                  function loadChat(){
-                    if (window.__purrifyChatLoaded) return; 
-                    window.__purrifyChatLoaded = true;
-                    var s = document.createElement('script');
-                    s.src = 'https://app.simplebotinstall.com/js/chat_plugin.js';
-                    s.defer = true;
-                    s.setAttribute('data-bot-id','40892');
-                    document.body.appendChild(s);
-                  }
-                  var scheduled = false;
-                  function schedule(){
-                    if (scheduled) return; scheduled = true;
-                    if ('requestIdleCallback' in window) {
-                      requestIdleCallback(function(){ setTimeout(loadChat, 0); }, { timeout: 4000 });
-                    } else {
-                      window.addEventListener('load', function(){ setTimeout(loadChat, 3000); });
+          {shouldLoadChat && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  (function(){
+                    if (window.__purrifyChatLoaded) return;
+                    function loadChat(){
+                      if (window.__purrifyChatLoaded) return; 
+                      window.__purrifyChatLoaded = true;
+                      var s = document.createElement('script');
+                      s.src = 'https://app.simplebotinstall.com/js/chat_plugin.js';
+                      s.defer = true;
+                      s.setAttribute('data-bot-id','40892');
+                      document.body.appendChild(s);
                     }
-                  }
-                  // Load on idle, or on first interaction if earlier
-                  ['mousemove','touchstart','scroll','keydown'].forEach(function(evt){
-                    window.addEventListener(evt, function handler(){
-                      window.removeEventListener(evt, handler, { passive: true } as any);
-                      loadChat();
-                    }, { passive: true, once: true });
-                  });
-                  schedule();
-                })();
-              `
-            }}
-          />
+                    var scheduled = false;
+                    function schedule(){
+                      if (scheduled) return; scheduled = true;
+                      if ('requestIdleCallback' in window) {
+                        requestIdleCallback(function(){ setTimeout(loadChat, 0); }, { timeout: 4000 });
+                      } else {
+                        window.addEventListener('load', function(){ setTimeout(loadChat, 3000); });
+                      }
+                    }
+                    // Load on idle, or on first interaction if earlier
+                    ['mousemove','touchstart','scroll','keydown'].forEach(function(evt){
+                      window.addEventListener(evt, function handler(){
+                        window.removeEventListener(evt, handler, { passive: true } as any);
+                        loadChat();
+                      }, { passive: true, once: true });
+                    });
+                    schedule();
+                  })();
+                `
+              }}
+            />
+          )}
           
           
           <Toaster />

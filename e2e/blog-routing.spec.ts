@@ -10,11 +10,11 @@ test.describe('Blog Routing Functionality', () => {
     await expect(page.locator('h1')).toBeVisible();
 
     // Check that the page content loaded properly
-    const content = page.locator('article, main');
+    const content = page.locator('article, main').first();
     await expect(content).toBeVisible();
 
     // Verify breadcrumb navigation works
-    const backToBlog = page.locator('a[href="/blog"]');
+    const backToBlog = page.locator('a[href="/blog"]').first();
     await expect(backToBlog).toBeVisible();
   });
 
@@ -50,7 +50,7 @@ test.describe('Blog Routing Functionality', () => {
       await expect(errorContent).not.toBeVisible();
 
       // Should have proper page structure
-      const mainContent = page.locator('article, main');
+      const mainContent = page.locator('article, main').first();
       await expect(mainContent).toBeVisible();
     }
   });
@@ -108,7 +108,7 @@ test.describe('Blog Routing Functionality', () => {
     await expect(page.locator('h1')).toBeVisible();
 
     // Should be able to navigate back to blog
-    const backToBlog = page.locator('a[href="/blog"]');
+    const backToBlog = page.locator('a[href="/blog"]').first();
     if (await backToBlog.isVisible()) {
       await backToBlog.click();
       await expect(page.locator('h1')).toBeVisible();

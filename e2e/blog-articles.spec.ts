@@ -39,7 +39,7 @@ test.describe('Blog Articles Dark Mode and Image Tests', () => {
         }
 
         // Check that main content areas are readable in dark mode
-        const mainContent = page.locator('article, main, .prose').first();
+        const mainContent = page.locator('article, main').first();
         await expect(mainContent).toBeVisible();
 
         // Verify breadcrumb links work in dark mode
