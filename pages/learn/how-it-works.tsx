@@ -334,7 +334,7 @@ export default function HowItWorksPage() {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products
                   </Button>
                 </Link>

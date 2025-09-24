@@ -666,7 +666,7 @@ export default function Montreal() {
             </p>
             <Link 
               href="/support/contact" 
-              className="inline-block bg-yellow-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
+              className="inline-block bg-yellow-600 dark:bg-yellow-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 dark:hover:bg-yellow-500 transition-colors"
             >
               {locale === 'fr'
                 ? 'Contactez-nous pour Demandes de Magasin'
@@ -855,7 +855,7 @@ export default function Montreal() {
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3">
                   <span className="font-bold text-purple-600 dark:text-purple-400">SL</span>
                 </div>
                 <div>
@@ -1074,7 +1074,7 @@ export default function Montreal() {
               </ul>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 rounded-lg p-6 text-center shadow-sm relative">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-700 rounded-lg p-6 text-center shadow-sm relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
                 {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>

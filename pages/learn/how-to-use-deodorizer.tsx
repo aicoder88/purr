@@ -97,7 +97,7 @@ export default function HowToUseDeodorizer() {
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg">
-              <div className="bg-green-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 2
               </div>
               <div>
@@ -118,7 +118,7 @@ export default function HowToUseDeodorizer() {
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-              <div className="bg-purple-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-purple-600 dark:bg-purple-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 3
               </div>
               <div>
@@ -127,14 +127,14 @@ export default function HowToUseDeodorizer() {
                   Distribute the deodorizer additive evenly across the litter surface. Focus on areas where 
                   your cat typically urinates - usually corners and edges of the box.
                 </p>
-                <div className="bg-purple-100 p-3 rounded text-sm text-purple-700 dark:text-purple-300">
+                <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded text-sm text-purple-700 dark:text-purple-300">
                   <strong>Technique:</strong> Sprinkle from about 6 inches above the litter for even distribution.
                 </div>
               </div>
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-              <div className="bg-orange-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-orange-600 dark:bg-orange-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 4
               </div>
               <div>
@@ -150,7 +150,7 @@ export default function HowToUseDeodorizer() {
             </div>
 
             <div className="flex items-start space-x-6 p-6 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
-              <div className="bg-teal-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
+              <div className="bg-teal-600 dark:bg-teal-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
                 5
               </div>
               <div>
@@ -159,7 +159,7 @@ export default function HowToUseDeodorizer() {
                   The deodorizer additive starts working immediately. You'll notice reduced odors within minutes, 
                   with maximum effectiveness achieved within 24 hours.
                 </p>
-                <div className="bg-teal-100 p-3 rounded text-sm text-teal-700 dark:text-teal-300">
+                <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded text-sm text-teal-700 dark:text-teal-300">
                   <strong>Duration:</strong> Continues working for 2-4 weeks depending on usage.
                 </div>
               </div>
@@ -381,13 +381,13 @@ export default function HowToUseDeodorizer() {
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors"
               >
                 Start with Trial Size - $6.99
               </Link>
               <Link 
                 href="/learn/activated-carbon-benefits" 
-                className="inline-block border border-green-600 text-green-600 dark:text-green-400 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:bg-green-900/20 transition-colors"
+                className="inline-block border border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
               >
                 Learn the Science
               </Link>

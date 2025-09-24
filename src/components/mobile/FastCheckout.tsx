@@ -480,7 +480,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               <Button 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white dark:text-gray-100"
+                className="flex-1 bg-green-600 dark:bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white dark:text-gray-100"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">

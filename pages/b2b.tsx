@@ -249,13 +249,13 @@ export default function B2B() {
             <div className="space-x-4">
               <Link
                 href="#partnership-form"
-                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 {locale === 'fr' ? 'Devenir Partenaire' : 'Become a Partner'}
               </Link>
               <Link
                 href="#wholesale-pricing"
-                className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir les Prix' : 'View Pricing'}
               </Link>

@@ -188,7 +188,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
                 <Link
                   key={index}
                   href={page.path}
-                  className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
+                  className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
                   <span className="font-medium text-blue-600 dark:text-blue-400">{page.title}</span>
                   <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
@@ -199,7 +199,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
 
           <Link
             href="/"
-            className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white dark:text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white dark:text-gray-100 font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Return to Home Page
           </Link>

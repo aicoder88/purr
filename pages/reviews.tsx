@@ -242,7 +242,7 @@ export default function Reviews() {
                   </div>
 
                   {/* Product Details */}
-                  <div className="border-t border-gray-100 pt-4 space-y-2 text-xs text-gray-600 dark:text-gray-300">
+                  <div className="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-2 text-xs text-gray-600 dark:text-gray-300">
                     <div><strong>Product:</strong> {review.productUsed}</div>
                     <div><strong>Cats:</strong> {review.catsOwned}</div>
                     <div><strong>Use Case:</strong> {review.useCase}</div>

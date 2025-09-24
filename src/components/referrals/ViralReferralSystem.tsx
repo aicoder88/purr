@@ -403,7 +403,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                   </Button>
                   <Button 
                     onClick={() => shareToSocial('email')}
-                    className="bg-gray-600 text-white dark:text-gray-100"
+                    className="bg-gray-600 dark:bg-gray-600 text-white dark:text-gray-100"
                   >
                     ✉️ Email
                   </Button>

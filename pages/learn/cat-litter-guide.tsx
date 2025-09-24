@@ -408,7 +408,7 @@ const CatLitterGuidePage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     Read Success Stories
                   </Button>
                 </Link>

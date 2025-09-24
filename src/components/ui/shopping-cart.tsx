@@ -141,7 +141,7 @@ export function ShoppingCart() {
                             <Button
                               variant="outline"
                               size="icon"
-                              className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
+                              className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
                               onClick={handleQuantityDecrease}
                               data-product-id={item.id}
                             >
@@ -151,7 +151,7 @@ export function ShoppingCart() {
                             <Button
                               variant="outline"
                               size="icon"
-                              className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
+                              className="h-7 w-7 rounded-full border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
                               onClick={handleQuantityIncrease}
                               data-product-id={item.id}
                             >

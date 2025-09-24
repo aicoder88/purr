@@ -40,13 +40,13 @@ interface HeroContentProps {
 
 const SocialProofAvatars = () => (
   <div className="flex -space-x-2">
-    <div className="w-10 h-10 rounded-full bg-purple-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
+    <div className="w-10 h-10 rounded-full bg-purple-500 dark:bg-purple-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
       MJ
     </div>
-    <div className="w-10 h-10 rounded-full bg-blue-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
+    <div className="w-10 h-10 rounded-full bg-blue-500 dark:bg-blue-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
       SK
     </div>
-    <div className="w-10 h-10 rounded-full bg-green-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
+    <div className="w-10 h-10 rounded-full bg-green-500 dark:bg-green-500 border-2 border-white dark:border-gray-800 flex items-center justify-center text-white dark:text-white text-sm font-bold">
       TC
     </div>
   </div>

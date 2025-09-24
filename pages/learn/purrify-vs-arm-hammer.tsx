@@ -48,7 +48,7 @@ export default function PurrifyVsArmHammer() {
         </header>
 
         <div className="prose prose-lg max-w-none">
-          <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-6 mb-8">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-400 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Verdict</h2>
             <p className="text-blue-800 dark:text-blue-200 mb-4">
               <strong>Winner: Purrify</strong> - Superior natural odor elimination, safer ingredients, 
@@ -150,11 +150,11 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Detailed Analysis</h2>
 
           <div className="space-y-8 mb-12">
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🧪 Ingredients & Science</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
                   <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>• <strong>Activated Carbon:</strong> Physically traps odor molecules in microscopic pores</li>
@@ -164,7 +164,7 @@ export default function PurrifyVsArmHammer() {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
                   <h4 className="font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Arm & Hammer</h4>
                   <ul className="space-y-2 text-blue-700 dark:text-blue-300 text-sm">
                     <li>• <strong>Baking Soda:</strong> Neutralizes acidic odors through chemical reaction</li>
@@ -175,7 +175,7 @@ export default function PurrifyVsArmHammer() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 rounded">
+              <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded">
                 <p className="text-yellow-800 dark:text-yellow-200 text-sm">
                   <strong>Winner: Purrify</strong> - Activated carbon's adsorption mechanism is more effective 
                   than baking soda's neutralization, especially for complex organic odors.
@@ -183,7 +183,7 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">⚡ Effectiveness Test Results</h3>
               
               <p className="text-gray-700 dark:text-gray-200 dark:text-gray-200 mb-6">
@@ -199,8 +199,8 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm">Purrify</span>
                         <span className="text-sm font-semibold">95%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-600 h-2 rounded-full" style={{width: '95%'}}></div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div className="bg-green-600 dark:bg-green-600 h-2 rounded-full" style={{width: '95%'}}></div>
                       </div>
                     </div>
                     <div>
@@ -208,7 +208,7 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm">Arm & Hammer</span>
                         <span className="text-sm font-semibold">78%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                         <div className="bg-blue-600 dark:bg-blue-600 h-2 rounded-full" style={{width: '78%'}}></div>
                       </div>
                     </div>
@@ -223,8 +223,8 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm">Purrify</span>
                         <span className="text-sm font-semibold">3.5 weeks</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-600 h-2 rounded-full" style={{width: '87%'}}></div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div className="bg-green-600 dark:bg-green-600 h-2 rounded-full" style={{width: '87%'}}></div>
                       </div>
                     </div>
                     <div>
@@ -232,7 +232,7 @@ export default function PurrifyVsArmHammer() {
                         <span className="text-sm">Arm & Hammer</span>
                         <span className="text-sm font-semibold">1.5 weeks</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                         <div className="bg-blue-600 dark:bg-blue-600 h-2 rounded-full" style={{width: '37%'}}></div>
                       </div>
                     </div>
@@ -240,14 +240,14 @@ export default function PurrifyVsArmHammer() {
                 </div>
               </div>
 
-              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
+              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - Superior initial odor reduction and significantly longer-lasting effectiveness.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">💰 Cost Analysis</h3>
               
               <div className="overflow-x-auto mb-6">
@@ -280,7 +280,7 @@ export default function PurrifyVsArmHammer() {
                 </table>
               </div>
 
-              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
+              <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - 20% lower monthly cost due to longer-lasting effectiveness, 
                   despite higher upfront price.
@@ -288,11 +288,11 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 rounded-lg p-8">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🐱 Safety & Health Considerations</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
                   <h4 className="font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Profile</h4>
                   <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300 text-sm">
                     <li>✓ <strong>Fragrance-free:</strong> No respiratory irritation</li>
@@ -303,7 +303,7 @@ export default function PurrifyVsArmHammer() {
                   </ul>
                 </div>
 
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 rounded-lg p-6">
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-6">
                   <h4 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-3">Arm & Hammer Considerations</h4>
                   <ul className="space-y-2 text-yellow-700 dark:text-yellow-300 text-sm">
                     <li>⚠ <strong>Synthetic fragrances:</strong> May irritate sensitive cats</li>
@@ -315,7 +315,7 @@ export default function PurrifyVsArmHammer() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 rounded">
+              <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded">
                 <p className="text-green-800 dark:text-green-200 text-sm">
                   <strong>Winner: Purrify</strong> - Fragrance-free and a simpler profile for cats with respiratory sensitivities,
                   kittens, and multi-cat households.
@@ -327,7 +327,7 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Real User Reviews</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Purrify Users Say:</h3>
               <div className="space-y-4 text-sm">
                 <blockquote className="italic text-green-700 dark:text-green-300 dark:text-green-300">
@@ -345,7 +345,7 @@ export default function PurrifyVsArmHammer() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Arm & Hammer Users Say:</h3>
               <div className="space-y-4 text-sm">
                 <blockquote className="italic text-blue-700 dark:text-blue-300">
@@ -367,7 +367,7 @@ export default function PurrifyVsArmHammer() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Which Should You Choose?</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 dark:text-green-200 dark:text-green-200 mb-3">Choose Purrify If:</h3>
               <ul className="space-y-2 text-green-700 dark:text-green-300 dark:text-green-300">
                 <li>✓ You have cats with respiratory sensitivities</li>
@@ -380,7 +380,7 @@ export default function PurrifyVsArmHammer() {
               </ul>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200 dark:text-blue-200 mb-3">Choose Arm & Hammer If:</h3>
               <ul className="space-y-2 text-blue-700 dark:text-blue-300">
                 <li>• You need immediate availability at any store</li>
@@ -393,7 +393,7 @@ export default function PurrifyVsArmHammer() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 dark:border-green-700 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Try the Winner?</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Experience superior odor control with Purrify's natural activated carbon formula. 
@@ -402,13 +402,13 @@ export default function PurrifyVsArmHammer() {
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-green-600 text-white dark:text-gray-100 dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors"
               >
                 Try Purrify Risk-Free - $6.99
               </Link>
               <Link 
                 href="/learn/activated-carbon-benefits" 
-                className="inline-block border border-green-600 text-green-600 dark:text-green-400 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:bg-green-900/20 transition-colors"
+                className="inline-block border border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
               >
                 Learn More About Activated Carbon
               </Link>

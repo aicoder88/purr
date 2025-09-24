@@ -460,7 +460,7 @@ const FAQPage: NextPage = () => {
                     <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-[#E0EFC7] dark:border-gray-700 overflow-hidden">
                       <button
                         onClick={() => handleToggleItem(item.id)}
-                        className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                        className="w-full p-6 text-left flex items-center justify-between bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                       >
                         <div className="flex-1">
                           <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
@@ -571,7 +571,7 @@ const FAQPage: NextPage = () => {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-white hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
                     Compare All Sizes
                   </Button>
                 </Link>

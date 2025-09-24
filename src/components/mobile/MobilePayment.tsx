@@ -461,7 +461,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       
       {showApplePay && (
         <button
-          className="w-full bg-black text-white dark:text-gray-100 dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
+          className="w-full bg-black dark:bg-black text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
           onClick={handleApplePayExpress}
         >
           <span>🍎</span>

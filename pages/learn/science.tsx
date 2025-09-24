@@ -247,7 +247,7 @@ export default function SciencePage() {
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
                     Learn More
                   </Button>
                 </Link>

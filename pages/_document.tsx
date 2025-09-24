@@ -53,7 +53,7 @@ export default function Document() {
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white dark:focus:bg-gray-800 dark:focus:bg-gray-700 focus:z-50 focus:text-[#FF3131] dark:focus:text-[#FF3131] focus:top-0 focus:left-0"
+          className="sr-only focus:not-sr-only focus:absolute focus:p-4 bg-white dark:bg-gray-800 focus:z-50 focus:text-[#FF3131] dark:focus:text-[#FF3131] focus:top-0 focus:left-0"
         >
           Skip to content
         </a>

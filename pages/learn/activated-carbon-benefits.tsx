@@ -146,42 +146,42 @@ export default function ActivatedCarbonBenefits() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Top 8 Activated Carbon Litter Additive Benefits</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">1. Superior Odor Elimination</h3>
               <p>Unlike air fresheners that mask smells, activated carbon removes odor molecules completely. Studies show 99%+ effectiveness against ammonia and sulfur compounds.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">2. Natural & Fragrance-Free</h3>
               <p>Made from coconut shells or wood, activated carbon contains no added fragrances or dyes and is widely used in household filtration.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">3. Long-Lasting Performance</h3>
               <p>A small amount provides weeks of odor control. The carbon continues working until all pore spaces are filled with odor molecules.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">4. Works with Any Litter</h3>
               <p>Compatible with clay, clumping, crystal, wood, paper, and corn-based litters. Simply sprinkle on top or mix in.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">5. Reduces Litter Changes</h3>
               <p>Extends litter life by controlling odors longer, saving money and reducing waste. Many users report 30-50% longer intervals between changes.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">6. Improves Air Quality</h3>
               <p>Removes airborne particles and volatile organic compounds (VOCs), creating healthier indoor air for your family and pets.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">7. Low-Dust Application</h3>
               <p>High-quality activated carbon produces minimal dust, a consideration for cats with respiratory sensitivities.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">8. Practical Disposal</h3>
               <p>Dispose of used litter and carbon according to local guidelines. Avoid drains and follow municipal waste instructions.</p>
             </div>
@@ -241,7 +241,7 @@ export default function ActivatedCarbonBenefits() {
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
 
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-6 mb-8">
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
             <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Fragrance-Free & Widely Used</h3>
             <ul className="space-y-2 text-green-700 dark:text-green-300">
               <li>• <strong>Biologically inert:</strong> Commonly used in household filtration</li>
@@ -281,22 +281,22 @@ export default function ActivatedCarbonBenefits() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-6 mb-8">
-            <div className="border-b border-gray-200 pb-4">
+            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-lg font-semibold mb-2">Can activated carbon be used around kittens?</h3>
               <p>Activated carbon is widely used in household filtration and is fragrance-free. Many households introduce it gradually once kittens reliably use the litter box. Consult your veterinarian for specific advice.</p>
             </div>
 
-            <div className="border-b border-gray-200 pb-4">
+            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-lg font-semibold mb-2">How long does activated carbon last?</h3>
               <p>Activated carbon continues working until its pores are saturated with odor molecules. In a typical litter box, this ranges from 2-4 weeks depending on usage and the number of cats.</p>
             </div>
 
-            <div className="border-b border-gray-200 pb-4">
+            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-lg font-semibold mb-2">Can I use it with clumping litter?</h3>
               <p>Absolutely! Activated carbon works with all litter types including clumping clay, crystal, wood, paper, and natural alternatives. It enhances rather than interferes with clumping action.</p>
             </div>
 
-            <div className="border-b border-gray-200 pb-4">
+            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
               <h3 className="text-lg font-semibold mb-2">Will my cat notice the difference?</h3>
               <p>Most cats don't notice activated carbon since it's odorless and doesn't change litter texture significantly. Some cats actually prefer the improved odor control.</p>
             </div>
@@ -313,7 +313,7 @@ export default function ActivatedCarbonBenefits() {
             />
           </div>
 
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Experience the Benefits?</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Try Purrify's premium activated carbon litter additive and discover why 1,000+ cat owners trust our natural odor elimination solution.
@@ -321,7 +321,7 @@ export default function ActivatedCarbonBenefits() {
             <div className="space-x-4">
               <Link 
                 href="/products/trial-size" 
-                className="inline-block bg-blue-600 dark:bg-blue-500 dark:bg-blue-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 dark:bg-blue-600 transition-colors"
+                className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 Try 17g Trial Size - $6.99
               </Link>

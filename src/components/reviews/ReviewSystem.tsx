@@ -378,7 +378,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 </span>
                 <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div 
-                    className="bg-yellow-400 h-2 rounded-full transition-all duration-300"
+                    className="bg-yellow-400 dark:bg-yellow-400 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>

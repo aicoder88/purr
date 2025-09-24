@@ -25,15 +25,15 @@ const TestPage: NextPage = () => {
               <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">System Status</h2>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 dark:bg-green-500 rounded-full"></div>
                   <span className="text-gray-700 dark:text-gray-200">Next.js Routing: Active</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 dark:bg-green-500 rounded-full"></div>
                   <span className="text-gray-700 dark:text-gray-200">Dark Mode Support: Enabled</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 dark:bg-green-500 rounded-full"></div>
                   <span className="text-gray-700 dark:text-gray-200">SEO Components: Loaded</span>
                 </div>
               </div>

@@ -506,7 +506,7 @@ export default function Stockists() {
                           </a>
                           <a
                             href={`tel:${stockist.phone}`}
-                            className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                            className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium rounded bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                           >
                             <Phone className="h-4 w-4" />
                             {locale === 'fr' ? 'Appeler' : 'Call'}

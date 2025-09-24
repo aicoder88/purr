@@ -107,7 +107,7 @@ export function SolutionPageCTATest({
           </p>
           <a
             href={productUrl}
-            className="inline-block bg-red-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors shadow-lg animate-pulse"
+            className="inline-block bg-red-600 dark:bg-red-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 dark:hover:bg-red-500 transition-colors shadow-lg animate-pulse"
             onClick={() => trackABTestConversion(testId, 'urgency')}
           >
             Order Now - FREE Shipping!

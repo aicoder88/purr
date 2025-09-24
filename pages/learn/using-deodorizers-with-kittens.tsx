@@ -63,7 +63,7 @@ export default function UsingDeodorizersWithKittensLearn() {
             />
           </div>
 
-          <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 mb-8">
+          <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 dark:border-green-400 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Answer</h2>
             <p className="text-green-800 dark:text-green-200 mb-4">
               <strong>Many households introduce fragrance-free, activated carbon deodorizers once kittens reliably use the litter box (typically ~8+ weeks).</strong>
@@ -103,17 +103,17 @@ export default function UsingDeodorizersWithKittensLearn() {
             />
           </div>
 
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border border-green-200 dark:border-green-700 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Odor Control Around Kittens</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Purrify's fragrance-free, activated carbon formula is the same type of carbon used in many water and air filters.
               Introduce gradually and monitor for comfort.
             </p>
             <div className="space-x-4">
-              <Link href="/products/trial-size" className="inline-block bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <Link href="/products/trial-size" className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors">
                 Try Fragrance-Free Formula - $6.99
               </Link>
-              <Link href="/learn/how-it-works" className="inline-block border border-green-600 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:bg-green-900/20 transition-colors">
+              <Link href="/learn/how-it-works" className="inline-block border border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors">
                 How It Works
               </Link>
             </div>

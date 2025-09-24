@@ -128,7 +128,7 @@ export default function LitterBoxSmellEliminationPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/products/trial-size"
-                    className="inline-block bg-green-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors shadow-lg"
+                    className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 dark:hover:bg-green-500 transition-colors shadow-lg"
                   >
                     Try Purrify Risk-Free - $6.99
                   </Link>

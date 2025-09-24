@@ -251,7 +251,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
             tickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors"
+                className="p-6 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors"
                 onClick={() => setSelectedTicket(ticket)}
               >
                 <div className="flex items-start justify-between mb-3">

@@ -75,7 +75,7 @@ const NotFoundPage: NextPage = () => {
                 <Link
                   key={index}
                   href={page.path}
-                  className="p-4 border border-[#E0EFC7] dark:border-gray-600 rounded-lg hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
+                  className="p-4 border border-[#E0EFC7] dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
                   <span className="font-medium text-[#5B2EFF] dark:text-[#5B2EFF]">{page.title}</span>
                   <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
