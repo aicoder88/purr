@@ -1,0 +1,204 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - button "Scroll to top":
+        - img
+      - banner [ref=e6]:
+        - generic [ref=e8]:
+          - link "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - img "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e11] [cursor=pointer]
+          - navigation [ref=e12]:
+            - button "Products" [ref=e14] [cursor=pointer]:
+              - text: Products
+              - img [ref=e15] [cursor=pointer]
+            - button "For Retailers" [ref=e18] [cursor=pointer]:
+              - text: For Retailers
+              - img [ref=e19] [cursor=pointer]
+            - button "Learn" [ref=e22] [cursor=pointer]:
+              - text: Learn
+              - img [ref=e23] [cursor=pointer]
+            - link "About" [ref=e26] [cursor=pointer]:
+              - /url: /about/our-story
+            - link "Contact" [ref=e28] [cursor=pointer]:
+              - /url: /support/contact
+          - generic [ref=e29]:
+            - button "Toggle theme" [ref=e30] [cursor=pointer]:
+              - img [ref=e31] [cursor=pointer]
+              - generic [ref=e37] [cursor=pointer]: Toggle theme
+            - button "Buy Now!" [ref=e38] [cursor=pointer]:
+              - img [ref=e39] [cursor=pointer]
+              - text: Buy Now!
+            - button "English Flag English" [ref=e43] [cursor=pointer]:
+              - img "English Flag" [ref=e44] [cursor=pointer]
+              - generic [ref=e45] [cursor=pointer]: English
+              - img [ref=e46] [cursor=pointer]
+            - button [ref=e48] [cursor=pointer]:
+              - img [ref=e49] [cursor=pointer]
+      - main [ref=e53]:
+        - article [ref=e54]:
+          - generic [ref=e56]:
+            - link "Back to Blog" [ref=e57] [cursor=pointer]:
+              - /url: /blog
+              - img [ref=e58] [cursor=pointer]
+              - text: Back to Blog
+            - generic [ref=e60]:
+              - heading "House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell" [level=1] [ref=e61]
+              - generic [ref=e62]:
+                - generic [ref=e63]: 2025-09-23
+                - generic [ref=e64]: By Odor Control Specialist Team
+            - generic [ref=e65]:
+              - generic:
+                - img "House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell"
+            - generic [ref=e67]:
+              - paragraph [ref=e68]: Activated carbon is a remarkable material with a unique ability to eliminate odors at the molecular level. Unlike traditional odor control products that simply mask smells with fragrances, activated carbon actually captures and traps odor molecules through a process called adsorption.
+              - heading "How Activated Carbon Works" [level=2] [ref=e69]
+              - paragraph [ref=e70]: The secret to activated carbon's effectiveness lies in its structure. When carbon is "activated" through a special heating process, it develops millions of microscopic pores, creating an enormous surface area. Just one gram of activated carbon can have a surface area equivalent to several tennis courts!
+              - paragraph [ref=e71]: These micropores act like tiny magnets for odor molecules, pulling them in and trapping them so they can no longer reach your nose. This is particularly effective for ammonia and sulfur compounds - the primary culprits behind cat litter box odors.
+              - heading "Why Purrify's Activated Carbon is Different" [level=2] [ref=e72]
+              - paragraph [ref=e73]: "Not all activated carbon is created equal. Purrify uses a premium coconut shell-derived activated carbon that offers several advantages:"
+              - list [ref=e74]:
+                - listitem [ref=e75]: Higher adsorption capacity than coal-based carbon
+                - listitem [ref=e76]: More micropores for capturing smaller odor molecules
+                - listitem [ref=e77]: Coconut shell source material
+                - listitem [ref=e78]: No harmful additives or fragrances
+              - paragraph [ref=e79]: Our specialized activation process creates the optimal pore structure specifically designed to target pet odor molecules.
+              - heading "The Science of Odor Elimination" [level=2] [ref=e80]
+              - paragraph [ref=e81]: "When you add Purrify to your cat's litter, the activated carbon immediately begins working to capture odor molecules before they can escape into the air. The process happens in three stages:"
+              - list [ref=e82]:
+                - listitem [ref=e83]:
+                  - strong [ref=e84]: "Attraction:"
+                  - text: Odor molecules are drawn to the carbon's surface
+                - listitem [ref=e85]:
+                  - strong [ref=e86]: "Adsorption:"
+                  - text: Molecules bind to the carbon through van der Waals forces
+                - listitem [ref=e87]:
+                  - strong [ref=e88]: "Retention:"
+                  - text: Molecules remain trapped within the carbon's structure
+              - paragraph [ref=e89]: This process is entirely physical rather than chemical and relies on the same type of activated carbon commonly used in household water and air filtration.
+              - heading "Conclusion" [level=2] [ref=e90]
+              - paragraph [ref=e91]: Understanding the science behind activated carbon helps explain why Purrify is so effective at eliminating cat litter odors. By targeting odors at the molecular level rather than masking them, Purrify provides a truly fresh-smelling home without the need for artificial fragrances or harsh chemicals.
+            - generic [ref=e92]:
+              - heading "Share this article" [level=3] [ref=e93]
+              - generic [ref=e94]:
+                - link [ref=e95] [cursor=pointer]:
+                  - /url: https://twitter.com/intent/tweet?text=House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell
+                  - img [ref=e96] [cursor=pointer]
+                - link [ref=e98] [cursor=pointer]:
+                  - /url: https://www.facebook.com/sharer/sharer.php
+                  - img [ref=e99] [cursor=pointer]
+                - link [ref=e101] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/shareArticle?mini=true&title=House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell
+                  - img [ref=e102] [cursor=pointer]
+            - region "Related articles" [ref=e105]:
+              - generic [ref=e106]:
+                - heading "Related Articles" [level=2] [ref=e107]
+                - generic [ref=e108]:
+                  - article [ref=e109]:
+                    - link "Calm cat resting on a sofa in a bright living room Strong Cat Urine Smell Solutions Read more →" [ref=e110] [cursor=pointer]:
+                      - /url: /blog/strong-cat-urine-smell-litter-box
+                      - img "Calm cat resting on a sofa in a bright living room" [ref=e112] [cursor=pointer]
+                      - generic [ref=e113] [cursor=pointer]:
+                        - heading "Strong Cat Urine Smell Solutions" [level=3] [ref=e114] [cursor=pointer]
+                        - paragraph [ref=e115] [cursor=pointer]: Read more →
+                  - article [ref=e116]:
+                    - link "Microscopic view of activated carbon's porous structure Activated Carbon Litter Additive Benefits Read more →" [ref=e117] [cursor=pointer]:
+                      - /url: /blog/activated-carbon-litter-additive-benefits
+                      - img "Microscopic view of activated carbon's porous structure" [ref=e119] [cursor=pointer]
+                      - generic [ref=e120] [cursor=pointer]:
+                        - heading "Activated Carbon Litter Additive Benefits" [level=3] [ref=e121] [cursor=pointer]
+                        - paragraph [ref=e122] [cursor=pointer]: Read more →
+                  - article [ref=e123]:
+                    - link "Before and after using deodorizer in litter box How to Use a Cat Litter Deodorizer Read more →" [ref=e124] [cursor=pointer]:
+                      - /url: /blog/how-to-use-cat-litter-deodorizer
+                      - img "Before and after using deodorizer in litter box" [ref=e126] [cursor=pointer]
+                      - generic [ref=e127] [cursor=pointer]:
+                        - heading "How to Use a Cat Litter Deodorizer" [level=3] [ref=e128] [cursor=pointer]
+                        - paragraph [ref=e129] [cursor=pointer]: Read more →
+      - contentinfo [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - heading "Stay Updated with Purrify" [level=3] [ref=e136]
+              - paragraph [ref=e137]: Get cat care tips and exclusive offers delivered to your inbox.
+            - generic [ref=e138]:
+              - textbox "Your email" [ref=e139]
+              - button "Subscribe" [ref=e140] [cursor=pointer]
+          - generic [ref=e141]:
+            - generic [ref=e142]:
+              - generic [ref=e143]:
+                - link "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e145] [cursor=pointer]:
+                  - /url: /
+                  - img "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e148] [cursor=pointer]
+                - paragraph [ref=e149]: Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.
+                - generic [ref=e150]:
+                  - link "Follow Purrify on Facebook" [ref=e151] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e152] [cursor=pointer]
+                  - link "Follow Purrify on Instagram" [ref=e154] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e155] [cursor=pointer]
+                  - link "Follow Purrify on Twitter" [ref=e158] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e159] [cursor=pointer]
+              - generic [ref=e161]:
+                - heading "Quick Links" [level=3] [ref=e162]
+                - list [ref=e163]:
+                  - listitem [ref=e164]:
+                    - link "Home" [ref=e165] [cursor=pointer]:
+                      - /url: /
+                  - listitem [ref=e166]:
+                    - link "How It Works" [ref=e167] [cursor=pointer]:
+                      - /url: /learn/how-it-works
+                  - listitem [ref=e168]:
+                    - link "About" [ref=e169] [cursor=pointer]:
+                      - /url: /#about
+                  - listitem [ref=e170]:
+                    - link "Trial Size" [ref=e171] [cursor=pointer]:
+                      - /url: /products/trial-size
+                  - listitem [ref=e172]:
+                    - link "Testimonials" [ref=e173] [cursor=pointer]:
+                      - /url: /customers/testimonials
+                  - listitem [ref=e174]:
+                    - link "Contact" [ref=e175] [cursor=pointer]:
+                      - /url: /support/contact
+                  - listitem [ref=e176]:
+                    - link "Blog" [ref=e177] [cursor=pointer]:
+                      - /url: /blog
+                  - listitem [ref=e178]:
+                    - link "Customer Portal" [ref=e179] [cursor=pointer]:
+                      - /url: /customer/portal
+              - generic [ref=e180]:
+                - heading "Opening Hours" [level=3] [ref=e181]
+                - list [ref=e182]:
+                  - listitem [ref=e183]: "Mon - Fri: 08:00 am - 8:00 pm"
+                  - listitem [ref=e184]: "Saturday: 09:00 am - 8:00 pm"
+                  - listitem [ref=e185]: "Sunday: Closed"
+              - generic [ref=e186]:
+                - heading "Contact Us" [level=3] [ref=e187]
+                - generic [ref=e188]:
+                  - paragraph [ref=e189]: 109-17680 Rue Charles, Mirabel, QC J7J 0T6
+                  - paragraph [ref=e190]: 1-250-432-9352
+            - generic [ref=e191]:
+              - generic [ref=e192]:
+                - link "Privacy Policy" [ref=e193] [cursor=pointer]:
+                  - /url: /privacy-policy
+                - link "Terms of Service" [ref=e194] [cursor=pointer]:
+                  - /url: /terms
+                - link "Blog" [ref=e195] [cursor=pointer]:
+                  - /url: /blog
+              - paragraph [ref=e196]:
+                - text: © 2025
+                - generic [ref=e197]: Purrify
+                - text: "|All Rights Reserved"
+    - region "Notifications (F8)":
+      - list
+  - button "Open Next.js Dev Tools" [ref=e203] [cursor=pointer]:
+    - img [ref=e204] [cursor=pointer]
+  - alert [ref=e207]
+```

@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
 
 export default function Document() {
+  const enableGtm = process.env.NODE_ENV === 'production';
   return (
     <Html lang="en">
       <Head>
@@ -18,29 +19,33 @@ export default function Document() {
         {/* Font-face rules handled by next/font */}
         
         {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-T8WZ5D7R');`
-          }}
-        />
+        {enableGtm && (
+          <Script
+            id="gtm-script"
+            strategy="lazyOnload"
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-T8WZ5D7R');`
+            }}
+          />
+        )}
       </Head>
       <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
         {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-            title="Google Tag Manager"
-          />
-        </noscript>
+        {enableGtm && (
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
         
         {/* Global Structured Data */}
         <PurrifyStructuredData />
