@@ -324,17 +324,6 @@ export default function Home() {
                   "query-input": "required name=search_term_string"
                 },
                 "inLanguage": t.structuredData.website.inLanguage
-              },
-              {
-                "@type": "FAQPage",
-                "mainEntity": t.structuredData.faqPage.questions.map((faq: { question: string; answer: string }) => ({
-                  "@type": "Question",
-                  "name": faq.question,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": faq.answer
-                  }
-                }))
               }
             ]
           })
@@ -431,7 +420,7 @@ export default function Home() {
             <LazyLoad
               placeholder={sectionSkeleton('h-96')}
             >
-              <FAQ />
+              <FAQ includeStructuredData={true} />
             </LazyLoad>
           </ErrorBoundary>
         </div>

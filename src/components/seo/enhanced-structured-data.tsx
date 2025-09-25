@@ -377,69 +377,6 @@ export function EnhancedStructuredData() {
     keywords: 'cat litter additive, odor eliminator, activated carbon, natural pet care, cat odor control, fragrance-free, Canadian made'
   };
 
-  // FAQ Schema
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is Purrify?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Purrify is an activated carbon cat litter additive that eliminates odors at the source, rather than masking them with fragrances.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How does Purrify work?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Purrify uses activated carbon technology to trap and neutralize odor molecules through adsorption, effectively eliminating cat litter odors at the molecular level.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Can I use Purrify around my cat?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration and contains no added fragrances or dyes.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How long does Purrify last?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A single application of Purrify can keep your litter box odor-free for up to 7 days, depending on usage and the number of cats.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Can Purrify be used with any type of cat litter?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, Purrify works with all types of cat litter including clay, clumping, crystal, and natural litters.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I use Purrify?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Simply sprinkle Purrify on top of your existing cat litter. For best results, apply after cleaning the litter box and mixing with fresh litter.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What is Purrify made of?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Activated carbon derived from coconut shells, with no added fragrances or dyes.'
-        }
-      }
-    ]
-  };
 
   // Local Business Schema using centralized business profile
   const localBusinessSchema = getLocalBusinessStructuredData();
@@ -526,14 +463,6 @@ export function EnhancedStructuredData() {
         }}
       />
 
-      {/* FAQ Schema */}
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema)
-        }}
-      />
 
       {/* Local Business Schema */}
       <Script

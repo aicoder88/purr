@@ -10,7 +10,11 @@ import Script from 'next/script';
 import { createSectionClasses, createCardClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import SectionHeader from "../ui/section-header";
 
-export function FAQ() {
+interface FAQProps {
+  includeStructuredData?: boolean;
+}
+
+export function FAQ({ includeStructuredData = false }: FAQProps) {
   const { t } = useTranslation();
   
   // Use the FAQ items from translations if available, otherwise use the hardcoded ones
@@ -83,13 +87,15 @@ export function FAQ() {
 
   return (
     <>
-      <Script
-        id="faq-structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqStructuredData)
-        }}
-      />
+      {includeStructuredData && (
+        <Script
+          id="faq-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqStructuredData)
+          }}
+        />
+      )}
       <section
         className={`${sectionClasses} py-12`}
         id="faq"
