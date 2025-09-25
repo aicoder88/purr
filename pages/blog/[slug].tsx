@@ -231,7 +231,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
           <div className="max-w-4xl mx-auto">
             <Link 
               href="/blog" 
-              className="inline-flex items-center text-[#5B2EFF] hover:text-[#5B2EFF]/80 mb-8"
+              className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] hover:text-[#5B2EFF]/80 dark:hover:text-[#3694FF]/80 mb-8"
             >
               <svg 
                 className="w-4 h-4 mr-2" 
@@ -250,7 +250,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             </Link>
             
             <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#5B2EFF]">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
                 {post.title}
               </h1>
               <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 mb-6">
@@ -269,12 +269,12 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             </div>
             
             <div 
-              className="prose prose-lg max-w-none prose-headings:text-[#5B2EFF] prose-a:text-[#FF3131] prose-a:no-underline hover:prose-a:underline"
+              className="prose prose-lg max-w-none prose-headings:text-[#5B2EFF] dark:prose-headings:text-[#3694FF] prose-a:text-[#FF3131] dark:prose-a:text-[#FF6B6B] prose-a:no-underline hover:prose-a:underline dark:hover:prose-a:underline"
               dangerouslySetInnerHTML={{ __html: post.content || '' }}
             />
             
             <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
-              <h3 className="text-xl font-bold mb-4 text-[#5B2EFF]">Share this article</h3>
+              <h3 className="text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">Share this article</h3>
               <div className="flex space-x-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${post.title}`}

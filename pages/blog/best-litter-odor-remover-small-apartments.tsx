@@ -6,9 +6,10 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for small apartment cat odor control
-const heroImage = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80';
-const ventilationImage = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=80';
-const spaceImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/small-apartment-odor-control.webp';
+const heroImageOg = 'https://www.purrify.ca/optimized/small-apartment-odor-control.webp';
+const ventilationImage = '/optimized/fresh.webp';
+const spaceImage = '/optimized/natural-cat-litter.webp';
 
 export default function BestForSmallApartments() {
   // const { t } = useTranslation();
@@ -16,7 +17,7 @@ export default function BestForSmallApartments() {
   return (
     <>
       <Head>
-        <title>Apartment Smells Like Cat Litter? 5 Ways to Stop Neighbors from Noticing | {SITE_NAME}</title>
+        <title>{`Apartment Smells Like Cat Litter? 5 Ways to Stop Neighbors from Noticing | ${SITE_NAME}`}</title>
         <meta name="description" content="Embarrassed your small apartment reeks of cat litter? These 5 proven methods eliminate odors in tiny spaces. Stop worrying about what neighbors and landlords think!" />
         <meta name="keywords" content="best cat litter odor remover for small apartments, apartment cat odor control, urban cat litter solutions, small space pet odor" />
         
@@ -25,7 +26,7 @@ export default function BestForSmallApartments() {
         <meta property="og:description" content="Small apartment reeking of cat litter? These 5 methods eliminate odors in tiny spaces. Water-filter grade activated carbon works even with thin walls!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={heroImageOg} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -33,7 +34,7 @@ export default function BestForSmallApartments() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Cat Litter Odor Remover for Small Apartments" />
         <meta name="twitter:description" content="Expert solutions for controlling cat litter odors in small apartments and urban spaces." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={heroImageOg} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments" />
@@ -59,7 +60,7 @@ export default function BestForSmallApartments() {
             },
             "datePublished": "2024-02-01",
             "dateModified": "2024-02-01",
-            "image": "https://www.purrify.ca/optimized/20g.webp",
+            "image": heroImageOg,
             "url": "https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments"
           })}
         </script>
@@ -71,11 +72,11 @@ export default function BestForSmallApartments() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">Small Apartment Solutions</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">Small Apartment Solutions</li>
               </ol>
             </nav>
 
@@ -255,21 +256,21 @@ export default function BestForSmallApartments() {
                       </p>
                       <div className="space-y-3">
                         <div className="flex items-start space-x-3">
-                          <span className="text-[#FF3131] text-lg">🪟</span>
+                          <span className="text-[#FF3131] dark:text-[#FF6B6B] text-lg">🪟</span>
                           <div>
                             <strong className="text-gray-900 dark:text-gray-50">Window Placement:</strong>
                             <span className="text-gray-700 dark:text-gray-200"> Position litter box near (but not directly under) windows for natural air circulation.</span>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <span className="text-[#FF3131] text-lg">💨</span>
+                          <span className="text-[#FF3131] dark:text-[#FF6B6B] text-lg">💨</span>
                           <div>
                             <strong className="text-gray-900 dark:text-gray-50">Cross-Ventilation:</strong>
                             <span className="text-gray-700 dark:text-gray-200"> Create airflow paths between rooms using fans or open doors.</span>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <span className="text-[#FF3131] text-lg">🔄</span>
+                          <span className="text-[#FF3131] dark:text-[#FF6B6B] text-lg">🔄</span>
                           <div>
                             <strong className="text-gray-900 dark:text-gray-50">Exhaust Fans:</strong>
                             <span className="text-gray-700 dark:text-gray-200"> Use bathroom exhaust fans to pull odors out of the apartment.</span>
@@ -434,28 +435,28 @@ export default function BestForSmallApartments() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">🤝</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">🤝</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Noise Considerations:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Avoid electric litter boxes or loud fans during quiet hours (10 PM - 7 AM).</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">🚫</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">🚫</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Avoid Masking Fragrances:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Strong artificial scents can be worse than natural odors for sensitive neighbors.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">♻️</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">♻️</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Proper Waste Disposal:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Seal waste in odor-blocking bags before placing in shared trash areas.</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-[#FF3131] text-xl">💬</span>
+                  <span className="text-[#FF3131] dark:text-[#FF6B6B] text-xl">💬</span>
                   <div>
                     <strong className="text-gray-900 dark:text-gray-50">Open Communication:</strong>
                     <span className="text-gray-700 dark:text-gray-200"> Address any concerns promptly and professionally.</span>
@@ -481,7 +482,7 @@ export default function BestForSmallApartments() {
               </div>
 
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-[#FF3131] mb-4">🏆 Why Purrify Works Best in Small Apartments</h3>
+                <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Works Best in Small Apartments</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-gray-700 dark:text-gray-200">
                   <div>
                     <strong>Compact Storage:</strong> Small containers don't take up precious space
@@ -518,7 +519,7 @@ export default function BestForSmallApartments() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, successful apartment odor control is about consistency and the right products. 
-                <Link href="/products" className="text-[#FF3131] hover:underline font-medium">
+                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
                 Start with Purrify's compact 20g size</Link> and experience how professional-grade 
                 odor control can transform your small space living experience.
               </p>
