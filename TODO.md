@@ -175,3 +175,88 @@ Context / exclusions:
   - Remove unused shadcn/ui component imports
   - Clean up icon imports (lucide-react)
   - Consolidate utility imports where possible
+
+---
+
+# 🚀 PURRIFY REFERRAL PROGRAM IMPLEMENTATION
+
+## Current Sprint: Advanced Referral Program (Tier 1 Priority)
+
+### ✅ Completed Tasks
+- [x] Strategy analysis and feature prioritization
+- [x] Referral program design specification
+
+### 🔄 In Progress
+- [x] **Creating referral program database schema and API endpoints**
+
+### 📋 Pending Tasks
+
+#### Core Infrastructure
+- [ ] **Build referral dashboard component for users to track progress**
+- [ ] **Implement social sharing tools with personalized discount codes**
+- [ ] **Create referral landing page for new customers**
+- [ ] **Add referral tracking to checkout and user portal**
+- [ ] **Build referral email notification system**
+- [ ] **Test referral program end-to-end and deploy**
+
+## Referral Program Specifications
+
+### Features to Implement:
+
+#### 1. Dual Incentive System
+- **Referrer Reward**: 15% discount on next purchase
+- **Referee Reward**: Free 17g trial size (normally $6.99)
+- **Bonus**: After 3 successful referrals, referrer gets free 60g standard size
+
+#### 2. Social Sharing Tools
+- Personalized referral codes (e.g., `SARAH15-CAT`)
+- Share buttons for: Email, SMS, Facebook, Twitter, WhatsApp
+- Pre-written social media templates with conversion-focused copy
+- QR codes for in-person sharing
+
+#### 3. Progress Tracking Dashboard
+- Total referrals sent vs. completed
+- Earnings accumulated and available
+- Referral history with status tracking
+- Achievement badges for milestones
+
+#### 4. Smart Referral Landing Page
+- Referee sees personalized welcome message
+- Dynamic content showing who referred them
+- Special "friend recommended" pricing
+- Trust signals from mutual connections
+
+### Technical Requirements:
+
+#### Database Schema
+```sql
+-- Referral codes and campaigns
+referral_codes: id, user_id, code, created_at, expires_at, max_uses, current_uses
+referral_activities: id, referrer_id, referee_email, referee_id, status, created_at, completed_at
+referral_rewards: id, user_id, referral_id, reward_type, reward_value, claimed_at, expires_at
+```
+
+#### API Endpoints
+- `POST /api/referrals/generate` - Create new referral code
+- `GET /api/referrals/validate/:code` - Validate referral code
+- `POST /api/referrals/track` - Track referral conversion
+- `GET /api/referrals/dashboard/:userId` - Get user's referral stats
+- `POST /api/referrals/share` - Track social sharing events
+
+#### Integration Points
+- Checkout process (apply referral discount)
+- User registration (capture referee relationship)
+- Email notifications (welcome and reward notifications)
+- Analytics tracking (referral attribution)
+
+### Success Metrics:
+- **Primary**: 25%+ increase in customer acquisition
+- **Secondary**: 15%+ improvement in customer LTV
+- **Engagement**: 40%+ of customers share at least once
+- **Virality**: 1.2+ viral coefficient
+
+### Next Phase Ideas (Future Implementation):
+- Tiered referral rewards (VIP status for top referrers)
+- Corporate/group referral programs
+- Seasonal referral bonuses
+- Referral leaderboards and gamification
