@@ -433,7 +433,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Click Rate</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{data.clickThroughRate}%</p>
               <Badge variant="outline" className="mt-2">
-                <CheckCircle className="w-3 h-3 mr-1 text-green-500" />
+                <CheckCircle className="w-3 h-3 mr-1 text-green-500 dark:text-green-400" />
                 Excellent
               </Badge>
             </div>
@@ -447,7 +447,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Time to Convert</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{data.timeToConversion}d</p>
               <Badge variant="outline" className="mt-2">
-                <Clock className="w-3 h-3 mr-1 text-orange-500" />
+                <Clock className="w-3 h-3 mr-1 text-orange-500 dark:text-orange-400" />
                 Fast
               </Badge>
             </div>

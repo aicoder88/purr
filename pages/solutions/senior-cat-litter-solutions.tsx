@@ -159,7 +159,7 @@ export default function SeniorCatLitterSolutionsPage() {
                   </Link>
                   <Link
                     href="/learn/using-deodorizers-with-kittens"
-                    className="inline-block border-2 border-purple-600 text-purple-600 dark:text-purple-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
+                    className="inline-block border-2 border-purple-600 dark:border-purple-500 text-purple-600 dark:text-purple-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
                   >
                     Senior Care Guide
                   </Link>

@@ -131,21 +131,8 @@ const nextConfig = {
     locales: ['en', 'fr', 'zh'],
     defaultLocale: 'en',
     localeDetection: false,
-    // Specify domain-specific locales if needed
-    domains: [
-      {
-        domain: 'www.purrify.ca',
-        defaultLocale: 'en',
-      },
-      {
-        domain: 'fr.purrify.ca',
-        defaultLocale: 'fr',
-      },
-      {
-        domain: 'zh.purrify.ca',
-        defaultLocale: 'zh',
-      },
-    ],
+    // Use single domain with locale prefixes to avoid DNS complexity
+    // domains: disabled - using path-based localization instead
   },
   
   // Add debug logging for build process

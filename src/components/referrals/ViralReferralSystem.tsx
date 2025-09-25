@@ -125,7 +125,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
   useEffect(() => {
     // Generate referral code and link
     const code = generateReferralCode(userId);
-    const link = `https://purrify.ca/?ref=${code}&discount=FRIEND25`;
+    const link = `https://www.purrify.ca/?ref=${code}&discount=FRIEND25`;
     
     setReferralCode(code);
     setReferralLink(link);

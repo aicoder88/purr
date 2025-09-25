@@ -134,7 +134,7 @@ export default function LitterBoxSmellEliminationPage() {
                   </Link>
                   <Link
                     href="/learn/how-it-works"
-                    className="inline-block border-2 border-green-600 text-green-600 dark:text-green-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    className="inline-block border-2 border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
                   >
                     Learn the Science
                   </Link>

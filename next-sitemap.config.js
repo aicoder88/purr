@@ -22,11 +22,11 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/api/*', '/admin/*', '/404', '/_next/*', '/static/*'],
+  exclude: ['/api/*', '/admin/*', '/404', '/_next/*', '/static/*', '/free', '/fr/free', '/test', '/demo/*'],
   alternateRefs: [
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
-    { href: 'https://fr.purrify.ca', hreflang: 'fr-CA' },
-    { href: 'https://zh.purrify.ca', hreflang: 'zh-CN' },
+    { href: 'https://www.purrify.ca/fr', hreflang: 'fr-CA' },
+    { href: 'https://www.purrify.ca/zh', hreflang: 'zh-CN' },
     { href: 'https://www.purrify.ca', hreflang: 'x-default' },
   ],
   // Explicitly define all important pages
@@ -51,18 +51,6 @@ module.exports = {
     },
     {
       loc: '/fr/blog',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/free',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/free',
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: new Date().toISOString(),
