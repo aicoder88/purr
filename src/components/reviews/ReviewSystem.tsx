@@ -498,11 +498,17 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             {/* Review Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
               <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <button
+                  className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  aria-label={`Mark review as helpful (${review.helpful} votes)`}
+                >
                   <ThumbsUp className="w-4 h-4" />
                   <span className="text-sm">Helpful ({review.helpful})</span>
                 </button>
-                <button className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                <button
+                  className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                  aria-label={`Mark review as not helpful (${review.notHelpful} votes)`}
+                >
                   <ThumbsDown className="w-4 h-4" />
                   <span className="text-sm">({review.notHelpful})</span>
                 </button>

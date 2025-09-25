@@ -203,7 +203,7 @@ export const PurchaseNotifications: React.FC<PurchaseNotificationsProps> = ({
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-400 dark:text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 dark:text-gray-600 dark:text-gray-300 transition-colors"
+            className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
             aria-label="Close notification"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

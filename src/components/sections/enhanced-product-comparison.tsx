@@ -200,9 +200,10 @@ export function EnhancedProductComparison() {
                         <NextImage
                           src={product.image}
                           alt={product.name}
-                          width={128}
-                          height={128}
+                          width={200}
+                          height={200}
                           className="rounded-lg shadow-sm object-contain w-full h-auto max-h-[120px] sm:max-h-[140px] mx-auto"
+                          sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
                         />
                       </div>
                     </div>

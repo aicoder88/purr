@@ -589,6 +589,22 @@ const nextConfig = {
       ...config.resolve.alias,
       '@': require('path').resolve(process.cwd(), 'src'),
     };
+
+    // Exclude unused Zod locales to reduce bundle size
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // Keep only English locale for Zod
+      'zod/lib/locales': false,
+    };
+
+    // Use IgnorePlugin to exclude Zod locales
+    const IgnorePlugin = require('webpack').IgnorePlugin;
+    config.plugins = config.plugins || [];
+    config.plugins.push(
+      new IgnorePlugin({
+        resourceRegExp: /^zod\/lib\/locales\/(?!en)/,
+      })
+    );
     
     // Add babel plugins for production optimization
     if (!dev) {
