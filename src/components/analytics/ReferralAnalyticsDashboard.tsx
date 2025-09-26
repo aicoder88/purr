@@ -461,7 +461,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Quality Score</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{data.referralQuality}%</p>
               <Badge variant="outline" className="mt-2">
-                <Award className="w-3 h-3 mr-1 text-purple-500" />
+                <Award className="w-3 h-3 mr-1 text-purple-500 dark:text-purple-400" />
                 High Quality
               </Badge>
             </div>
@@ -475,7 +475,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Growth Rate</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">+{data.monthlyGrowthRate}%</p>
               <Badge variant="outline" className="mt-2">
-                <TrendingUp className="w-3 h-3 mr-1 text-green-500" />
+                <TrendingUp className="w-3 h-3 mr-1 text-green-500 dark:text-green-400" />
                 Growing
               </Badge>
             </div>

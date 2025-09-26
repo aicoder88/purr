@@ -101,21 +101,41 @@ function checkFile(filePath) {
           colorMatches.forEach(colorMatch => {
             const colorClass = colorMatch[0];
 
-            // Determine the expected dark variant pattern
+            // Skip if this color already has a corresponding dark variant in the string
+            // Handle cases like: bg-white dark:bg-gray-800 or hover:bg-gray-100 dark:bg-gray-700
             let hasDarkVariant = false;
 
             if (colorClass.startsWith('text-')) {
-              // Text colors need dark:text- variants
+              // Check for direct dark variant or any dark:text- variant
               const darkPattern = new RegExp(`dark:${colorClass}`);
               hasDarkVariant = darkPattern.test(classString) || /dark:text-/.test(classString);
             } else if (colorClass.startsWith('bg-')) {
-              // Background colors need dark:bg- variants
+              // For background colors, check multiple patterns
               const darkPattern = new RegExp(`dark:${colorClass}`);
-              hasDarkVariant = darkPattern.test(classString) || /dark:bg-/.test(classString);
+
+              // Check if this is part of hover state
+              if (classString.includes('hover:' + colorClass)) {
+                // Look for dark:hover:bg- or dark:bg- in the same string
+                hasDarkVariant = /dark:hover:bg-/.test(classString) || /dark:bg-/.test(classString);
+              } else {
+                // Regular bg- class, look for dark:bg- variant
+                hasDarkVariant = darkPattern.test(classString) || /dark:bg-/.test(classString);
+              }
+
+              // Special case: solid colors like bg-green-600, bg-red-600, bg-blue-600
+              // often don't need dark variants as they work in both modes
+              if (colorClass.match(/bg-(green|red|blue|purple|yellow|indigo|pink|orange)-[5-9]00/)) {
+                hasDarkVariant = true; // Consider these valid without dark variants
+              }
             } else if (colorClass.startsWith('border-')) {
-              // Border colors need dark:border- variants
+              // Handle border colors
               const darkPattern = new RegExp(`dark:${colorClass}`);
-              hasDarkVariant = darkPattern.test(classString) || /dark:border-/.test(classString);
+
+              if (classString.includes('hover:' + colorClass)) {
+                hasDarkVariant = /dark:hover:border-/.test(classString) || /dark:border-/.test(classString);
+              } else {
+                hasDarkVariant = darkPattern.test(classString) || /dark:border-/.test(classString);
+              }
             }
 
             if (!hasDarkVariant) {

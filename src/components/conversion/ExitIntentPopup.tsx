@@ -139,7 +139,7 @@ export function ExitIntentPopup({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="text-center border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+                className="text-center border-orange-300 dark:border-orange-600 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-orange-500 dark:focus:ring-orange-400"
               />
               
               <Button 
