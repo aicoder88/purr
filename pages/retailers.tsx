@@ -7,12 +7,14 @@ import { RetailerHero } from '../src/components/sections/retailer-hero';
 import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
+import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 
 export default function RetailersPage() {
   const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.retailers?.seo?.pageTitle || 'Wholesale & Retail Partners'}`;
   const pageDescription = t.retailers?.seo?.description || 'Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada.';
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`;
+  const canonicalUrl = getLocalizedUrl('/retailers', locale);
+  const languageAlternates = buildLanguageAlternates('/retailers');
 
   return (
     <>
@@ -20,12 +22,7 @@ export default function RetailersPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
-        languageAlternates={[
-          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/retailers' },
-          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/retailers' },
-          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/retailers' },
-          { hrefLang: 'x-default', href: 'https://www.purrify.ca/retailers' },
-        ]}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'website',
           url: canonicalUrl,

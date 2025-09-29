@@ -167,8 +167,8 @@ export const MONTREAL_STRUCTURED_DATA = {
   },
   "url": "https://www.purrify.ca/montreal",
   "alternateName": [
-    "https://purrify.ca/fr/montreal",
-    "https://fr.purrify.ca/montreal"  
+    "https://www.purrify.ca/fr/montreal",
+    "https://www.purrify.ca/zh/montreal"
   ],
   "sameAs": [
     "https://www.facebook.com/purrify.montreal",

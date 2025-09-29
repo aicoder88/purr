@@ -1,17 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Get the host from the request
-  const host = req.headers.host || 'www.purrify.ca';
-
-  // Determine the appropriate domain based on the subdomain
-  let canonicalDomain = 'https://www.purrify.ca';
-
-  if (host.includes('fr.purrify.ca')) {
-    canonicalDomain = 'https://fr.purrify.ca';
-  } else if (host.includes('zh.purrify.ca')) {
-    canonicalDomain = 'https://zh.purrify.ca';
-  }
+  // Always use canonical domain with localized paths (no subdomains)
+  const canonicalDomain = 'https://www.purrify.ca';
 
   const robots = `# *
 User-agent: *

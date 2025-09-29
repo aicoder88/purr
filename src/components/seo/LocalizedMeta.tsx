@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useTranslation } from '@/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
 
 interface LocalizedMetaProps {
   title?: string;
@@ -26,9 +27,8 @@ export const LocalizedMeta: React.FC<LocalizedMetaProps> = ({
 }) => {
   const { t, locale } = useTranslation();
   
-  const canonicalBase = 'https://www.purrify.ca';
-  const localizedPath = locale === 'en' ? canonicalPath : `/${locale}${canonicalPath}`;
-  const canonicalUrl = `${canonicalBase}${localizedPath}`;
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   const siteTitle = 'Purrify';
   const defaultDescription = 'Premium activated carbon cat litter additive for superior odor control';
@@ -46,10 +46,9 @@ export const LocalizedMeta: React.FC<LocalizedMetaProps> = ({
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Language alternates */}
-      <link rel="alternate" hrefLang="en-CA" href={`https://www.purrify.ca${canonicalPath}`} />
-      <link rel="alternate" hrefLang="fr-CA" href={`https://fr.purrify.ca${canonicalPath}`} />
-      <link rel="alternate" hrefLang="zh-CN" href={`https://zh.purrify.ca${canonicalPath}`} />
-      <link rel="alternate" hrefLang="x-default" href={`https://www.purrify.ca${canonicalPath}`} />
+      {languageAlternates.map(({ hrefLang, href }) => (
+        <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+      ))}
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

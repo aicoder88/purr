@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import { useTranslation } from '@/lib/translation-context';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
 
 interface UniversalSEOProps {
   pageType?: 'homepage' | 'product' | 'learn' | 'support' | 'about' | 'blog';
@@ -24,9 +25,7 @@ export const UniversalSEO: React.FC<UniversalSEOProps> = ({
   const { t, locale } = useTranslation();
 
   // Build canonical URL - always use www.purrify.ca with locale prefix for non-English
-  const canonicalBase = 'https://www.purrify.ca';
-  const localizedPath = locale === 'en' ? canonicalPath : `/${locale}${canonicalPath}`;
-  const canonicalUrl = `${canonicalBase}${localizedPath}`;
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
 
   // Fallback content based on page type and locale
   const getLocalizedContent = () => {
@@ -54,12 +53,7 @@ export const UniversalSEO: React.FC<UniversalSEOProps> = ({
         description={finalDescription}
         canonical={canonicalUrl}
         noindex={noIndex}
-        languageAlternates={[
-          { hrefLang: 'en-CA', href: `https://www.purrify.ca${canonicalPath}` },
-          { hrefLang: 'fr-CA', href: `https://www.purrify.ca/fr${canonicalPath}` },
-          { hrefLang: 'zh-CN', href: `https://www.purrify.ca/zh${canonicalPath}` },
-          { hrefLang: 'x-default', href: `https://www.purrify.ca${canonicalPath}` },
-        ]}
+        languageAlternates={buildLanguageAlternates(canonicalPath)}
         openGraph={{
           type: pageType === 'product' ? 'product' : 'website',
           url: canonicalUrl,

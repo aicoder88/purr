@@ -1,6 +1,7 @@
 // Advanced Sitemap Generation for Purrify
 import fs from 'fs';
 import path from 'path';
+import { buildLanguageAlternates, getLocalizedUrl } from './seo-utils';
 
 interface SitemapUrl {
   loc: string;
@@ -37,10 +38,11 @@ class SitemapGenerator {
   addUrl(url: SitemapUrl): void {
     // Use canonical www domain
     const canonicalBaseUrl = this.config.baseUrl.replace('https://purrify.ca', 'https://www.purrify.ca');
+    const normalizedPath = this.normalizePath(url.loc, canonicalBaseUrl);
 
     const fullUrl = {
       ...url,
-      loc: url.loc.startsWith('http') ? url.loc : `${canonicalBaseUrl}${url.loc}`,
+      loc: url.loc.startsWith('http') ? url.loc : getLocalizedUrl(normalizedPath, 'en'),
       changefreq: url.changefreq || this.config.defaultChangefreq,
       priority: url.priority || this.config.defaultPriority,
       lastmod: url.lastmod || new Date().toISOString().split('T')[0]
@@ -48,30 +50,33 @@ class SitemapGenerator {
 
     // Add multilingual alternates if enabled - using domain-based i18n
     if (this.config.includeAlternates && !url.alternates) {
-      const path = url.loc.replace(canonicalBaseUrl, '').replace(this.config.baseUrl, '');
-      if (!path.startsWith('/fr/') && !path.startsWith('/zh/')) {
-        fullUrl.alternates = [
-          {
-            hreflang: 'en-CA',
-            href: `https://www.purrify.ca${path}`
-          },
-          {
-            hreflang: 'fr-CA',
-            href: `https://fr.purrify.ca${path}`
-          },
-          {
-            hreflang: 'zh-CN',
-            href: `https://zh.purrify.ca${path}`
-          },
-          {
-            hreflang: 'x-default',
-            href: `https://www.purrify.ca${path}`
-          }
-        ];
+      if (!normalizedPath.startsWith('/fr/') && !normalizedPath.startsWith('/zh/')) {
+        fullUrl.alternates = buildLanguageAlternates(normalizedPath === '' ? '/' : normalizedPath);
       }
     }
 
     this.urls.push(fullUrl);
+  }
+
+  private normalizePath(loc: string, canonicalBaseUrl: string): string {
+    if (!loc) {
+      return '/';
+    }
+
+    if (loc.startsWith('http')) {
+      try {
+        return new URL(loc).pathname || '/';
+      } catch {
+        return '/';
+      }
+    }
+
+    const cleaned = loc.replace(canonicalBaseUrl, '').trim();
+    if (cleaned === '') {
+      return '/';
+    }
+
+    return cleaned.startsWith('/') ? cleaned : `/${cleaned}`;
   }
 
   // Add multiple URLs

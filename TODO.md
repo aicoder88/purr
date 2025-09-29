@@ -1,3 +1,113 @@
+# SEO
+
+## Comprehensive SEO Optimization Plan for Perfect SEO
+
+### Summary
+
+The audit reveals an "F" grade with critical issues in technical health (74%), performance (60%), and authority (2%). Here's my systematic plan to achieve perfect SEO performance:
+
+### Priority 1: Critical Technical Fixes (64 Critical Errors)
+
+#### A. Hreflang Issues (15 pages affected)
+
+- Fix incorrect hreflang links on /retailers, /products/trial-size, /products/standard
+- Implement proper hreflang attributes using existing buildLanguageAlternates function
+- Ensure consistency across all localized pages (en, fr, zh)
+
+#### B. Structured Data Errors (33 pages affected)
+
+- Fix JSON-LD schema markup errors in existing structured data components
+- Validate all product, article, and organization schemas
+- Ensure proper implementation of FAQPage, Product, and BreadcrumbList schemas
+
+#### C. Missing/Duplicate Title Tags
+
+- Add missing title tags to 7 blog pages (currently found to have proper titles - need investigation)
+- Fix duplicate titles on /products/trial-size, /, /products/standard
+- Implement unique, keyword-optimized titles for all pages
+
+#### D. Sitemap Issues (6 incorrect pages)
+
+- Fix sitemap-0.xml entries pointing to non-existent or incorrect pages
+- Update sitemap generation logic in src/lib/sitemap-generator.ts
+- Ensure all valid pages are included and invalid ones removed
+
+### Priority 2: Performance Optimization (Current: 60%)
+
+#### A. Mobile Performance Issues
+
+- Critical: Fix Largest Contentful Paint (LCP) - mobile 6.6s → <2.5s
+- Optimize First Contentful Paint - mobile 2.6s → <1.5s
+- Improve Speed Index - mobile 6.7s → <3.0s
+- Implement advanced image optimization and lazy loading
+
+#### B. Resource Optimization
+
+- Optimize bundle splitting configuration in next.config.js
+- Implement critical CSS inlining for above-the-fold content
+- Add preload directives for critical resources
+- Optimize font loading with font-display: swap
+
+#### C. Core Web Vitals Enhancement
+
+- Maintain perfect CLS (0 on mobile, 0.072 on desktop)
+- Implement resource hints (preconnect, prefetch)
+- Add service worker for improved caching
+
+### Priority 3: Content & Authority Building (Current: 2%)
+
+#### A. Content Optimization
+
+- Expand keyword targeting beyond current 2 ranking keywords
+- Optimize for high-volume keywords like "cat litter smell elimination"
+- Improve existing blog content with better internal linking
+- Add more comprehensive product descriptions
+
+#### B. Technical SEO Enhancements
+
+- Implement comprehensive FAQ schema on relevant pages
+- Add breadcrumb navigation with proper structured data
+- Enhance local SEO schemas for location pages
+- Implement review/rating schemas for products
+
+### Priority 4: Advanced SEO Features
+
+#### A. International SEO
+
+- Fix hreflang implementation for proper multilingual support
+- Ensure consistent URL structure across languages
+- Add proper canonical tags for all language variants
+
+#### B. Enhanced Structured Data
+
+- Implement advanced schema types (HowTo, VideoObject, etc.)
+- Add comprehensive organization and website schemas
+- Ensure proper schema validation across all page types
+
+#### C. Performance Monitoring
+
+- Implement Core Web Vitals monitoring
+- Add automated lighthouse testing in CI/CD
+- Set up performance budgets and alerts
+
+### Implementation Phases
+
+- **Phase 1 (Week 1)**: Critical technical fixes - hreflang, structured data, title tags, sitemap
+- **Phase 2 (Week 2)**: Performance optimization - LCP, resource optimization, critical CSS
+- **Phase 3 (Week 3)**: Content enhancement and schema implementation
+- **Phase 4 (Week 4)**: Advanced features, monitoring, and validation
+
+### Expected Results
+
+- Overall SEO Grade: F → A+
+- Technical Health: 74% → 95%+
+- Loading Speed: 60% → 90%+
+- Authority Health: 2% → Target 30%+ (with content strategy)
+- Core Web Vitals: All metrics in "Good" range
+- Mobile LCP: 6.6s → <2.5s
+
+This plan addresses every issue identified in the audit while leveraging the existing codebase architecture and optimization already in place.
+
 # SEO Follow-ups (SEMrush)
 
 This TODO tracks remaining items from the latest SEMrush crawl after implementing fixes (hreflang, canonical, structured data, sitemaps, and llms.txt). Items marked [infra] are DNS/hosting configurations; [content] require copy/IA updates.

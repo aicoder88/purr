@@ -62,14 +62,16 @@ import { ComprehensiveStructuredData, useStructuredData } from '../src/component
 import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
+import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 
 export default function Home() {
   const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
-  const canonicalUrl = 'https://www.purrify.ca/';
+  const canonicalUrl = getLocalizedUrl('/', locale);
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const { generateBreadcrumbs } = useStructuredData();
+  const languageAlternates = buildLanguageAlternates('/');
 
   // Generate breadcrumbs for home page
   const breadcrumbs = generateBreadcrumbs('/');
@@ -81,12 +83,7 @@ export default function Home() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
-        languageAlternates={[
-          { hrefLang: 'en-CA', href: 'https://www.purrify.ca/' },
-          { hrefLang: 'fr-CA', href: 'https://fr.purrify.ca/' },
-          { hrefLang: 'zh-CN', href: 'https://zh.purrify.ca/' },
-          { hrefLang: 'x-default', href: 'https://www.purrify.ca/' },
-        ]}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'website',
           url: canonicalUrl,
@@ -157,26 +154,11 @@ export default function Home() {
             rel: 'manifest',
             href: '/manifest.json',
           },
-          {
+          ...languageAlternates.map(({ hrefLang, href }) => ({
             rel: 'alternate',
-            hrefLang: 'en-CA',
-            href: 'https://www.purrify.ca/',
-          },
-          {
-            rel: 'alternate',
-            hrefLang: 'fr-CA',
-            href: 'https://fr.purrify.ca/',
-          },
-          {
-            rel: 'alternate',
-            hrefLang: 'zh-CN',
-            href: 'https://zh.purrify.ca/',
-          },
-          {
-            rel: 'alternate',
-            hrefLang: 'x-default',
-            href: 'https://www.purrify.ca/',
-          },
+            hrefLang,
+            href,
+          })),
           // Preload critical resources
           {
             rel: 'preload',

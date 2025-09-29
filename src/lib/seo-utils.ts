@@ -68,8 +68,47 @@ export const SEO_TRANSLATIONS = {
 export const getLocalizedUrl = (path: string, locale: 'en' | 'fr' | 'zh') => {
   const baseUrl = 'https://www.purrify.ca';
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
-  return `${baseUrl}${localePrefix}${path}`;
+  const normalizedPath = normalizeCanonicalPath(path);
+
+  if (normalizedPath === '/') {
+    return `${baseUrl}${localePrefix}/`;
+  }
+
+  return `${baseUrl}${localePrefix}${normalizedPath}`;
 };
+
+export const buildLanguageAlternates = (canonicalPath: string) => {
+  const normalizedPath = normalizeCanonicalPath(canonicalPath);
+
+  const buildHref = (locale: 'en' | 'fr' | 'zh') => {
+    if (normalizedPath === '/') {
+      return getLocalizedUrl('/', locale);
+    }
+
+    return getLocalizedUrl(normalizedPath, locale);
+  };
+
+  const alternates = [
+    { hrefLang: 'en-CA', href: buildHref('en') },
+    { hrefLang: 'fr-CA', href: buildHref('fr') },
+    { hrefLang: 'zh-CN', href: buildHref('zh') },
+  ];
+
+  alternates.push({ hrefLang: 'x-default', href: buildHref('en') });
+
+  return alternates;
+};
+
+function normalizeCanonicalPath(path: string | undefined) {
+  if (!path || path === '/') {
+    return '/';
+  }
+
+  const withLeadingSlash = path.startsWith('/') ? path : `/${path}`;
+  const trimmed = withLeadingSlash.replace(/\/+$/, '');
+
+  return trimmed.length === 0 ? '/' : trimmed;
+}
 
 // Generate localized content
 export const getLocalizedContent = (content: TranslatedContent, locale: 'en' | 'fr' | 'zh') => {
