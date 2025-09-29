@@ -8,6 +8,10 @@ interface TranslatedContent {
   zh: string;
 }
 
+type LocaleCode = 'en' | 'fr' | 'zh';
+
+const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh'];
+
 export const SEO_TRANSLATIONS = {
   siteDescription: {
     en: SITE_DESCRIPTION,
@@ -65,7 +69,16 @@ export const SEO_TRANSLATIONS = {
 };
 
 // Generate localized URLs
-export const getLocalizedUrl = (path: string, locale: 'en' | 'fr' | 'zh') => {
+export const normalizeLocale = (locale: string): LocaleCode => {
+  if (SUPPORTED_LOCALES.includes(locale as LocaleCode)) {
+    return locale as LocaleCode;
+  }
+
+  return 'en';
+};
+
+export const getLocalizedUrl = (path: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const normalizedPath = normalizeCanonicalPath(path);
@@ -80,7 +93,7 @@ export const getLocalizedUrl = (path: string, locale: 'en' | 'fr' | 'zh') => {
 export const buildLanguageAlternates = (canonicalPath: string) => {
   const normalizedPath = normalizeCanonicalPath(canonicalPath);
 
-  const buildHref = (locale: 'en' | 'fr' | 'zh') => {
+  const buildHref = (locale: LocaleCode) => {
     if (normalizedPath === '/') {
       return getLocalizedUrl('/', locale);
     }
@@ -88,13 +101,19 @@ export const buildLanguageAlternates = (canonicalPath: string) => {
     return getLocalizedUrl(normalizedPath, locale);
   };
 
+  const createAlternate = (hrefLang: string, href: string) => ({
+    hrefLang,
+    hreflang: hrefLang,
+    href,
+  });
+
   const alternates = [
-    { hrefLang: 'en-CA', href: buildHref('en') },
-    { hrefLang: 'fr-CA', href: buildHref('fr') },
-    { hrefLang: 'zh-CN', href: buildHref('zh') },
+    createAlternate('en-CA', buildHref('en')),
+    createAlternate('fr-CA', buildHref('fr')),
+    createAlternate('zh-CN', buildHref('zh')),
   ];
 
-  alternates.push({ hrefLang: 'x-default', href: buildHref('en') });
+  alternates.push(createAlternate('x-default', buildHref('en')));
 
   return alternates;
 };
@@ -111,17 +130,20 @@ function normalizeCanonicalPath(path: string | undefined) {
 }
 
 // Generate localized content
-export const getLocalizedContent = (content: TranslatedContent, locale: 'en' | 'fr' | 'zh') => {
+export const getLocalizedContent = (content: TranslatedContent, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   return content[locale] || content.en;
 };
 
 // Get localized keywords as array
-export const getLocalizedKeywords = (locale: 'en' | 'fr' | 'zh'): string[] => {
+export const getLocalizedKeywords = (localeInput: string): string[] => {
+  const locale = normalizeLocale(localeInput);
   return SEO_TRANSLATIONS.keywords[locale] || SEO_TRANSLATIONS.keywords.en;
 };
 
 // Generate comprehensive FAQ data for different locales
-export const generateLocalizedFAQs = (locale: 'en' | 'fr' | 'zh') => {
+export const generateLocalizedFAQs = (localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const baseFAQs = [
     {
       question: {
@@ -192,7 +214,8 @@ export const generateLocalizedFAQs = (locale: 'en' | 'fr' | 'zh') => {
 };
 
 // Generate product structured data with localization
-export const generateProductStructuredData = (productId: string, locale: 'en' | 'fr' | 'zh') => {
+export const generateProductStructuredData = (productId: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
 
@@ -233,7 +256,7 @@ export const generateProductStructuredData = (productId: string, locale: 'en' | 
 };
 
 // Generate article structured data with localization  
-export const generateArticleStructuredData = (title: string, description: string, path: string, locale: 'en' | 'fr' | 'zh', options?: {
+export const generateArticleStructuredData = (title: string, description: string, path: string, localeInput: string, options?: {
   author?: string;
   datePublished?: string;
   dateModified?: string;
@@ -241,6 +264,7 @@ export const generateArticleStructuredData = (title: string, description: string
   category?: string;
   image?: string;
 }) => {
+  const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
   
   return {
@@ -276,7 +300,8 @@ export const generateArticleStructuredData = (title: string, description: string
 };
 
 // Generate comprehensive organization schema with localization
-export const generateOrganizationSchema = (locale: 'en' | 'fr' | 'zh') => {
+export const generateOrganizationSchema = (localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
   
   return {
@@ -328,7 +353,8 @@ export const generateOrganizationSchema = (locale: 'en' | 'fr' | 'zh') => {
 };
 
 // Generate breadcrumb schema with localization
-export const generateBreadcrumbSchema = (path: string, locale: 'en' | 'fr' | 'zh') => {
+export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const pathSegments = path.split('/').filter(segment => segment !== '' && segment !== locale);
   
   const breadcrumbs = [
@@ -368,7 +394,8 @@ export const generateBreadcrumbSchema = (path: string, locale: 'en' | 'fr' | 'zh
 };
 
 // Generate website schema with localization
-export const generateWebsiteSchema = (locale: 'en' | 'fr' | 'zh') => {
+export const generateWebsiteSchema = (localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl('', locale);
   
@@ -396,7 +423,8 @@ export const generateWebsiteSchema = (locale: 'en' | 'fr' | 'zh') => {
 };
 
 // Generate FAQ schema with localization
-export const generateFAQSchema = (locale: 'en' | 'fr' | 'zh') => {
+export const generateFAQSchema = (localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const faqs = generateLocalizedFAQs(locale);
   
   return {
@@ -424,7 +452,8 @@ interface Product {
 }
 
 // Generate enhanced product offer schema
-export const generateOfferSchema = (product: Product, locale: 'en' | 'fr' | 'zh') => {
+export const generateOfferSchema = (product: Product, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const localizedUrl = getLocalizedUrl(`/products/${product.id}`, locale);
   
   return {
@@ -473,7 +502,8 @@ export const generateOfferSchema = (product: Product, locale: 'en' | 'fr' | 'zh'
 };
 
 // Generate local business schema for city pages
-export const generateLocalBusinessSchema = (cityName: string, province: string, locale: 'en' | 'fr' | 'zh') => {
+export const generateLocalBusinessSchema = (cityName: string, province: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const cityCoordinates = {
     'Montreal': { lat: '45.5017', lon: '-73.5673' },
     'Toronto': { lat: '43.6532', lon: '-79.3832' },
@@ -548,7 +578,8 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 // This functionality can be implemented when testimonials constants are properly typed
 
 // Generate comprehensive homepage schema
-export const generateHomepageSchema = (locale: 'en' | 'fr' | 'zh') => {
+export const generateHomepageSchema = (localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
   
   return {
@@ -588,7 +619,8 @@ export const generateHomepageSchema = (locale: 'en' | 'fr' | 'zh') => {
 };
 
 // Generate complete product page schema
-export const generateProductPageSchema = (productId: string, locale: 'en' | 'fr' | 'zh') => {
+export const generateProductPageSchema = (productId: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
   
@@ -671,7 +703,7 @@ export const generateProductPageSchema = (productId: string, locale: 'en' | 'fr'
 };
 
 // Generate article page schema for learn pages
-export const generateArticlePageSchema = (title: string, description: string, path: string, locale: 'en' | 'fr' | 'zh', options?: {
+export const generateArticlePageSchema = (title: string, description: string, path: string, localeInput: string, options?: {
   author?: string;
   datePublished?: string;
   dateModified?: string;
@@ -681,6 +713,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
   wordCount?: number;
   readingTime?: number;
 }) => {
+  const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
   const baseUrl = 'https://www.purrify.ca';
   
@@ -749,7 +782,8 @@ export const generateArticlePageSchema = (title: string, description: string, pa
 };
 
 // Generate location page schema
-export const generateLocationPageSchema = (cityName: string, province: string, locale: 'en' | 'fr' | 'zh') => {
+export const generateLocationPageSchema = (cityName: string, province: string, localeInput: string) => {
+  const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale);
   
   return {

@@ -158,8 +158,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const referralStats = getMockReferralStats(userId);
 
     // Track dashboard view
-    if (typeof global !== 'undefined' && (global as any).gtag) {
-      (global as any).gtag('event', 'referral_dashboard_view', {
+    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
+      (global as typeof globalThis & { gtag: Function }).gtag('event', 'referral_dashboard_view', {
         event_category: 'referrals',
         event_label: 'dashboard_access',
         custom_parameter_1: userId

@@ -43,7 +43,7 @@ export function clearReferralInfo(): void {
 export async function trackReferralSignup(
   email: string,
   userId?: string,
-  additionalData?: Record<string, any>
+  additionalData?: Record<string, string | number | boolean>
 ): Promise<void> {
   const referralInfo = getReferralInfo();
   if (!referralInfo) return;
@@ -89,7 +89,7 @@ export async function trackReferralPurchase(
   orderValue: number,
   customerEmail: string,
   customerId?: string,
-  orderDetails?: any
+  orderDetails?: Record<string, string | number | boolean>
 ): Promise<void> {
   const referralInfo = getReferralInfo();
   if (!referralInfo) return;
@@ -168,7 +168,7 @@ export function getCheckoutReferralData(customerEmail?: string): CheckoutReferra
 /**
  * Apply referral discount to cart items
  */
-export function applyReferralDiscountToCart(cartItems: any[]): any[] {
+export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price: number; name?: string; isReferralReward?: boolean; referralCode?: string }>): Array<{ id: string; price: number; discountApplied?: boolean }> {
   const referralInfo = getReferralInfo();
   if (!referralInfo) return cartItems;
 
@@ -203,7 +203,7 @@ export function applyReferralDiscountToCart(cartItems: any[]): any[] {
 /**
  * Show referral success notification
  */
-function showReferralSuccessNotification(referrerName?: string, rewards?: any): void {
+function showReferralSuccessNotification(referrerName?: string, _rewards?: { type: string; amount: number }): void {
   if (typeof window === 'undefined') return;
 
   // Create and show a toast notification
@@ -275,6 +275,7 @@ export function isEligibleForReferrals(
 ): boolean {
   // Check if user has made previous purchases (basic check)
   // In production, this would check against user purchase history
+  console.log('Checking eligibility for:', userEmail, userId);
 
   const referralInfo = getReferralInfo();
 

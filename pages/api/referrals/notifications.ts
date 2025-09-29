@@ -1,13 +1,20 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+interface RewardDetails {
+  amount?: number;
+  type?: string;
+  description?: string;
+  code?: string;
+}
+
 interface EmailNotificationData {
   type: 'welcome' | 'reward_earned' | 'milestone_achieved' | 'referee_signup' | 'referee_purchase';
   recipientEmail: string;
   recipientName?: string;
   referralCode?: string;
   referrerName?: string;
-  rewardDetails?: any;
-  customData?: Record<string, any>;
+  rewardDetails?: RewardDetails;
+  customData?: Record<string, string | number | boolean>;
 }
 
 interface NotificationResponse {
@@ -182,7 +189,7 @@ The Purrify Team
 }
 
 // Reward earned email templates
-function generateRewardEmailHTML(recipientName?: string, rewardDetails?: any, referrerName?: string): string {
+function generateRewardEmailHTML(recipientName?: string, rewardDetails?: RewardDetails, referrerName?: string): string {
   return `
     <!DOCTYPE html>
     <html>
@@ -237,7 +244,7 @@ function generateRewardEmailHTML(recipientName?: string, rewardDetails?: any, re
   `;
 }
 
-function generateRewardEmailText(recipientName?: string, rewardDetails?: any, referrerName?: string): string {
+function generateRewardEmailText(recipientName?: string, rewardDetails?: RewardDetails, referrerName?: string): string {
   return `
 🎉 Congratulations! You've Earned a Referral Reward!
 
@@ -262,32 +269,32 @@ The Purrify Team
 }
 
 // Additional email template functions would go here...
-function generateMilestoneEmailHTML(recipientName?: string, rewardDetails?: any): string {
+function generateMilestoneEmailHTML(recipientName?: string, rewardDetails?: RewardDetails): string {
   // Implementation for milestone emails
   return `<!-- Milestone email HTML -->`;
 }
 
-function generateMilestoneEmailText(recipientName?: string, rewardDetails?: any): string {
+function generateMilestoneEmailText(recipientName?: string, rewardDetails?: RewardDetails): string {
   // Implementation for milestone emails
   return `Milestone email text`;
 }
 
-function generateRefereeSignupEmailHTML(recipientName?: string, referrerName?: string, referralCode?: string): string {
+function generateRefereeSignupEmailHTML(_recipientName?: string, _referrerName?: string, _referralCode?: string): string {
   // Implementation for referee signup emails
   return `<!-- Referee signup email HTML -->`;
 }
 
-function generateRefereeSignupEmailText(recipientName?: string, referrerName?: string, referralCode?: string): string {
+function generateRefereeSignupEmailText(_recipientName?: string, _referrerName?: string, _referralCode?: string): string {
   // Implementation for referee signup emails
   return `Referee signup email text`;
 }
 
-function generateRefereePurchaseEmailHTML(recipientName?: string, referrerName?: string, rewardDetails?: any): string {
+function generateRefereePurchaseEmailHTML(_recipientName?: string, _referrerName?: string, _rewardDetails?: RewardDetails): string {
   // Implementation for referee purchase emails
   return `<!-- Referee purchase email HTML -->`;
 }
 
-function generateRefereePurchaseEmailText(recipientName?: string, referrerName?: string, rewardDetails?: any): string {
+function generateRefereePurchaseEmailText(_recipientName?: string, _referrerName?: string, _rewardDetails?: RewardDetails): string {
   // Implementation for referee purchase emails
   return `Referee purchase email text`;
 }

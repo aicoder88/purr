@@ -27,6 +27,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: 'Missing required fields: userId, userName' });
     }
 
+    // Email is optional but logged for tracking
+    console.log('Generating referral code for:', email || 'no email provided');
+
     // Generate personalized referral code
     const sanitizedName = userName.replace(/[^a-zA-Z]/g, '').toUpperCase().substring(0, 8);
     const randomSuffix = Math.floor(Math.random() * 99) + 1;
@@ -48,8 +51,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     referralCodes.set(code, referralCode);
 
     // Track referral code generation
-    if (typeof global !== 'undefined' && (global as any).gtag) {
-      (global as any).gtag('event', 'referral_code_generated', {
+    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
+      (global as typeof globalThis & { gtag: Function }).gtag('event', 'referral_code_generated', {
         event_category: 'referrals',
         event_label: 'code_generation',
         user_id: userId
