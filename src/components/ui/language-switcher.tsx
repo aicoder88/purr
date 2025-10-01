@@ -1,5 +1,5 @@
 // import Link from 'next/link';
-import { useCallback, useId, useMemo, useState } from 'react';
+import { useCallback, useId, useMemo, useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './button';
@@ -40,6 +40,8 @@ export function LanguageSwitcher() {
   const menuInstanceId = useId();
   const buttonId = `${menuInstanceId}-trigger`;
   const menuId = `${menuInstanceId}-menu`;
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLanguage = useMemo(
     () => languages.find(lang => lang.locale === locale) || languages[0],
@@ -54,6 +56,22 @@ export function LanguageSwitcher() {
     setIsOpen(false);
   }, []);
 
+  const scheduleClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 500);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
+
   const handleLanguageChange = useCallback((newLocale: Locale) => {
     closeDropdown();
     changeLocale(newLocale);
@@ -63,35 +81,64 @@ export function LanguageSwitcher() {
     handleLanguageChange(newLocale);
   }, [handleLanguageChange]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <Button
         variant="ghost"
         size="sm"
-        className="flex items-center space-x-1 px-2 py-1 hover:bg-[#FFFFF5]"
+        className="flex items-center space-x-1 px-2 py-1 hover:bg-[#FFFFF5] dark:hover:bg-gray-800"
         onClick={toggleDropdown}
+        onMouseEnter={cancelClose}
+        onMouseLeave={scheduleClose}
         id={buttonId}
         aria-expanded={isOpen}
         aria-haspopup="menu"
         aria-controls={menuId}
       >
-        <Image 
-          src={currentLanguage.flag} 
-          alt={currentLanguage.alt} 
+        <Image
+          src={currentLanguage.flag}
+          alt={currentLanguage.alt}
           width={20}
           height={20}
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
-        <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100 dark:text-gray-100">{currentLanguage.name}</span>
+        <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100">{currentLanguage.name}</span>
         <ChevronDown className="h-4 w-4 text-[#FF3131] dark:text-[#FF5050]" />
       </Button>
 
       {isOpen && (
-        <div 
+        <div
           id={menuId}
-          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black ring-opacity-5 z-50"
+          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black dark:ring-gray-700 ring-opacity-5 dark:ring-opacity-50 z-50"
           aria-labelledby={buttonId}
-          onMouseLeave={closeDropdown}
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
         >
           <ul className="py-1" aria-labelledby={buttonId}>
             {languages.map((language) => (
@@ -99,15 +146,15 @@ export function LanguageSwitcher() {
                 <button
                   className={`flex items-center px-3 py-2 text-sm w-full text-left ${
                     locale === language.locale
-                      ? 'bg-[#FFFFF5] dark:bg-gray-800 text-[#FF3131] dark:text-[#FF5050] font-medium'
-                      : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-800 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                      ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                   }`}
                   onClick={createLanguageClickHandler(language.locale)}
                   type="button"
                 >
-                  <Image 
-                    src={language.flag} 
-                    alt={language.alt} 
+                  <Image
+                    src={language.flag}
+                    alt={language.alt}
                     width={20}
                     height={20}
                     className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover mr-2 sm:mr-3"

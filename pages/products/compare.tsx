@@ -17,6 +17,7 @@ import {
   Zap
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { buildAvailabilityUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
 
 const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
@@ -38,6 +39,9 @@ const ProductComparePage: NextPage = () => {
     standard: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
     large: true
   }));
+
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
 
   const usageCalculator = [
     {
@@ -100,7 +104,9 @@ const ProductComparePage: NextPage = () => {
                   "offers": {
                     "@type": "Offer",
                     "price": product.price.replace('$', ''),
-                    "priceCurrency": "USD"
+                    "priceCurrency": "USD",
+                    "priceValidUntil": priceValidUntil,
+                    "availability": availabilityUrl
                   }
                 }))
               }

@@ -9,7 +9,7 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
 
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
@@ -19,6 +19,8 @@ export default function TrialSizePage() {
   const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-17g');
@@ -136,8 +138,8 @@ export default function TrialSizePage() {
                   "@type": "Offer",
                   "price": "6.99",
                   "priceCurrency": "CAD",
-                  "priceValidUntil": "2025-12-31",
-                  "availability": "https://schema.org/InStock",
+                  "priceValidUntil": priceValidUntil,
+                  "availability": availabilityUrl,
                   "itemCondition": "https://schema.org/NewCondition",
                   "url": canonicalUrl,
                   "seller": {
@@ -243,7 +245,9 @@ export default function TrialSizePage() {
                       "offers": {
                         "@type": "Offer",
                         "price": "6.99",
-                        "priceCurrency": "CAD"
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl
                       }
                     },
                     {
@@ -252,7 +256,9 @@ export default function TrialSizePage() {
                       "offers": {
                         "@type": "Offer",
                         "price": "19.99",
-                        "priceCurrency": "CAD"
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl
                       }
                     },
                     {
@@ -261,7 +267,9 @@ export default function TrialSizePage() {
                       "offers": {
                         "@type": "Offer",
                         "price": "29.99",
-                        "priceCurrency": "CAD"
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl
                       }
                     }
                   ]

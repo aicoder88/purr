@@ -8,9 +8,21 @@ interface TranslatedContent {
   zh: string;
 }
 
+export type OfferAvailability = 'InStock' | 'OutOfStock' | 'PreOrder';
 type LocaleCode = 'en' | 'fr' | 'zh';
 
 const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh'];
+const SCHEMA_ORG_BASE_URL = 'https://schema.org';
+const DEFAULT_PRICE_VALIDITY_DAYS = 365;
+
+export const getPriceValidityDate = (validForDays: number = DEFAULT_PRICE_VALIDITY_DAYS) => {
+  const validityDate = new Date();
+  validityDate.setDate(validityDate.getDate() + validForDays);
+  return validityDate.toISOString().split('T')[0];
+};
+
+export const buildAvailabilityUrl = (availability: OfferAvailability = 'InStock') =>
+  `${SCHEMA_ORG_BASE_URL}/${availability}`;
 
 export const SEO_TRANSLATIONS = {
   siteDescription: {
@@ -240,9 +252,9 @@ export const generateProductStructuredData = (productId: string, localeInput: st
       '@type': 'Offer',
       price: product.price.toString(),
       priceCurrency: 'CAD',
-      availability: 'https://schema.org/InStock',
+      availability: buildAvailabilityUrl(),
       url: localizedUrl,
-      priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      priceValidUntil: getPriceValidityDate()
     },
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -460,13 +472,13 @@ export const generateOfferSchema = (product: Product, localeInput: string) => {
     '@type': 'Offer',
     price: product.price.toString(),
     priceCurrency: 'CAD',
-    availability: 'https://schema.org/InStock',
+    availability: buildAvailabilityUrl(),
     url: localizedUrl,
     seller: {
       '@type': 'Organization',
       name: SITE_NAME
     },
-    priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    priceValidUntil: getPriceValidityDate(),
     itemCondition: 'https://schema.org/NewCondition',
     shippingDetails: {
       '@type': 'OfferShippingDetails',

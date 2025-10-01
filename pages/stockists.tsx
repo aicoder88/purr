@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { useTranslation } from '../src/lib/translation-context';
 import { MapPin, Phone, Globe, Star, Search, Navigation } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 
 interface StockistLocation {
   id: string;
@@ -147,6 +148,8 @@ export default function Stockists() {
     : 'Locate stores selling Purrify near you. Find pet stores, animal boutiques, and retailers across Canada with our interactive store locator tool.';
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}stockists`;
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
 
   // Filter stockists based on search and filters
   const filteredStockists = useMemo(() => {
@@ -237,7 +240,9 @@ export default function Stockists() {
               "@type": "Product",
               "name": `Purrify ${product} size`,
               "brand": "Purrify"
-            }
+            },
+            "availability": availabilityUrl,
+            "priceValidUntil": priceValidUntil
           }))
         }
       }))

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../../lib/constants';
 import { useTranslation } from '../../lib/translation-context';
+import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
 
 interface PageStructuredDataProps {
   pageType: 'home' | 'product' | 'article' | 'faq' | 'category';
@@ -18,7 +19,7 @@ interface PageStructuredDataProps {
       description: string;
       price: number;
       image: string;
-      availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
+      availability?: OfferAvailability;
       reviews?: {
         rating: number;
         reviewCount: number;
@@ -55,6 +56,8 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
   const { locale } = useTranslation();
   const baseUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}`;
   const mainUrl = 'https://www.purrify.ca';
+  const defaultAvailability = buildAvailabilityUrl();
+  const priceValidUntil = getPriceValidityDate();
   
   // Base Organization Schema - Used across all pages
   const organizationSchema = {
@@ -189,7 +192,8 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
                 '@type': 'Offer',
                 price: product.price.toString(),
                 priceCurrency: 'CAD',
-                availability: 'https://schema.org/InStock',
+                availability: defaultAvailability,
+                priceValidUntil,
                 url: `${mainUrl}/products/${product.id}`,
                 seller: {
                   '@id': `${mainUrl}/#organization`
@@ -249,8 +253,8 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
               '@type': 'Offer',
               price: pageData.product.price.toString(),
               priceCurrency: 'CAD',
-              priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-              availability: `https://schema.org/${pageData.product.availability || 'InStock'}`,
+              priceValidUntil,
+              availability: buildAvailabilityUrl(pageData.product.availability ?? 'InStock'),
               itemCondition: 'https://schema.org/NewCondition',
               url: `${baseUrl}/products/${pageData.product.id}`,
               seller: {

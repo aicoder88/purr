@@ -15,6 +15,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
+import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 
 export default function B2B() {
   const { locale } = useTranslation();
@@ -30,6 +31,8 @@ export default function B2B() {
     : 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada. Attractive margins and comprehensive marketing support.';
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}b2b`;
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
 
   // Partnership benefits
   const benefits = [
@@ -166,7 +169,9 @@ export default function B2B() {
         "name": "Wholesale Partnership Program",
         "description": "Retail partnership program with attractive margins and marketing support",
         "category": "Wholesale/B2B Program",
-        "eligibility": "Pet stores, animal boutiques, and distributors"
+        "eligibility": "Pet stores, animal boutiques, and distributors",
+        "availability": availabilityUrl,
+        "priceValidUntil": priceValidUntil
       }
     }
   };

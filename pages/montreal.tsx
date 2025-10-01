@@ -4,6 +4,7 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { MONTREAL_STRUCTURED_DATA } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
+import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 
 export default function Montreal() {
   const { locale } = useTranslation();
@@ -17,6 +18,8 @@ export default function Montreal() {
     : 'Find Purrify cat litter deodorizer at independent pet stores throughout Montreal. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
     
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
 
   // Enhanced structured data for better SEO
   const baseStructuredData = {
@@ -63,7 +66,9 @@ export default function Montreal() {
               "description": "Premium activated carbon cat litter additive for natural odor control",
               "brand": "Purrify",
               "category": "Pet Supplies"
-            }
+            },
+            "availability": availabilityUrl,
+            "priceValidUntil": priceValidUntil
           }
         ]
       }

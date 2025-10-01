@@ -62,7 +62,7 @@ import { ComprehensiveStructuredData, useStructuredData } from '../src/component
 import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
-import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 
 export default function Home() {
   const { t, locale } = useTranslation();
@@ -72,6 +72,8 @@ export default function Home() {
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const { generateBreadcrumbs } = useStructuredData();
   const languageAlternates = buildLanguageAlternates('/');
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl();
 
   // Generate breadcrumbs for home page
   const breadcrumbs = generateBreadcrumbs('/');
@@ -253,7 +255,8 @@ export default function Home() {
                       },
                       "price": "6.99",
                       "priceCurrency": "CAD",
-                      "availability": "https://schema.org/InStock",
+                      "priceValidUntil": priceValidUntil,
+                      "availability": availabilityUrl,
                       "url": "https://www.purrify.ca/products/trial-size"
                     },
                     {
@@ -267,7 +270,8 @@ export default function Home() {
                       },
                       "price": "19.99",
                       "priceCurrency": "CAD",
-                      "availability": "https://schema.org/InStock",
+                      "priceValidUntil": priceValidUntil,
+                      "availability": availabilityUrl,
                       "url": "https://www.purrify.ca/products/standard"
                     },
                     {
@@ -281,7 +285,8 @@ export default function Home() {
                       },
                       "price": "29.99",
                       "priceCurrency": "CAD",
-                      "availability": "https://schema.org/InStock",
+                      "priceValidUntil": priceValidUntil,
+                      "availability": availabilityUrl,
                       "url": "https://www.purrify.ca/products/family-pack"
                     }
                   ]

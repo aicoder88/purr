@@ -1,10 +1,13 @@
 import Script from 'next/script';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../../lib/constants';
 import { BUSINESS_PROFILE, getLocalBusinessStructuredData, getPrimaryLocation } from '../../lib/business-profile';
+import { buildAvailabilityUrl, getPriceValidityDate } from '../../lib/seo-utils';
 
 export function EnhancedStructuredData() {
   const baseUrl = 'https://www.purrify.ca';
   const primaryLocation = getPrimaryLocation();
+  const priceValidUntil = getPriceValidityDate();
+  const defaultAvailability = buildAvailabilityUrl();
 
   // Organization Schema using centralized business profile
   const organizationSchema = {
@@ -140,8 +143,8 @@ export function EnhancedStructuredData() {
       '@id': `${baseUrl}/products/${product.id}#offer`,
       price: product.price.toString(),
       priceCurrency: 'CAD',
-      priceValidUntil: '2025-12-31',
-      availability: 'https://schema.org/InStock',
+      priceValidUntil,
+      availability: defaultAvailability,
       itemCondition: 'https://schema.org/NewCondition',
       url: `${baseUrl}/products/${product.id}`,
       seller: {

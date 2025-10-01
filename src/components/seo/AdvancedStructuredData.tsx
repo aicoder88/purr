@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
 
 interface ProductStructuredDataProps {
   product: {
@@ -11,7 +12,7 @@ interface ProductStructuredDataProps {
     image: string;
     brand?: string;
     category?: string;
-    availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
+    availability?: OfferAvailability;
     condition?: 'NewCondition' | 'UsedCondition' | 'RefurbishedCondition';
     gtin?: string;
     mpn?: string;
@@ -104,6 +105,7 @@ interface ProductStructuredData {
     price: string;
     priceCurrency: string;
     availability: string;
+    priceValidUntil: string;
     itemCondition: string;
     url: string;
     seller: { "@type": string; name: string };
@@ -119,6 +121,9 @@ interface ProductStructuredData {
 
 // Product Structured Data
 export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ product }) => {
+  const priceValidUntil = getPriceValidityDate();
+  const availabilityUrl = buildAvailabilityUrl(product.availability ?? 'InStock');
+
   const structuredData: ProductStructuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -137,7 +142,8 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
       "@type": "Offer",
       "price": product.price.toString(),
       "priceCurrency": product.currency || "CAD",
-      "availability": `https://schema.org/${product.availability || 'InStock'}`,
+      "availability": availabilityUrl,
+      "priceValidUntil": priceValidUntil,
       "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,
       "url": `https://www.purrify.ca/products/${product.id}`,
       "seller": {
