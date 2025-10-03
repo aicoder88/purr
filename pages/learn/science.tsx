@@ -5,7 +5,8 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 // import NextImage from '../components/NextImage';
 import Link from 'next/link';
-import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical } from 'lucide-react';
+import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
+import NextImage from '../../components/NextImage';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function SciencePage() {
@@ -151,19 +152,19 @@ export default function SciencePage() {
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-500 mt-1">•</span>
+                    <span className="text-red-500 dark:text-red-400 mt-1">•</span>
                     <span><strong>The Smell:</strong> Sharp, pungent, eye-watering—like cleaning chemicals</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-500 mt-1">•</span>
+                    <span className="text-red-500 dark:text-red-400 mt-1">•</span>
                     <span><strong>Molecule Size:</strong> Tiny at 0.26 nanometers</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-500 mt-1">•</span>
+                    <span className="text-red-500 dark:text-red-400 mt-1">•</span>
                     <span><strong>The Problem:</strong> Forms when bacteria break down urea in urine</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-500 mt-1">•</span>
+                    <span className="text-red-500 dark:text-red-400 mt-1">•</span>
                     <span><strong>Why It's Hard:</strong> Most carbon has pores too large to trap such small molecules</span>
                   </li>
                 </ul>
@@ -179,19 +180,19 @@ export default function SciencePage() {
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-500 mt-1">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
                     <span><strong>The Smell:</strong> Rotten eggs, sewage, sulfur—that gagging sensation</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-500 mt-1">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
                     <span><strong>Molecule Size:</strong> Larger, more complex sulfur compounds</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-500 mt-1">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
                     <span><strong>The Problem:</strong> Released when proteins in feces decompose</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-500 mt-1">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
                     <span><strong>Why It's Hard:</strong> Sticky molecules that require specific pore sizes to capture</span>
                   </li>
                 </ul>
@@ -203,6 +204,110 @@ export default function SciencePage() {
                 <strong className="text-gray-900 dark:text-white">Here's the breakthrough:</strong> Most activated carbon is designed for water filtration or general air purification.
                 We worked with research scientists to engineer carbon specifically for these two molecules—creating the perfect trap for cat litter odor.
               </p>
+            </div>
+
+            {/* Visual Image */}
+            <div className="mt-16 max-w-5xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1600&q=80"
+                  alt="Cat looking content in clean home environment"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Your Cat Deserves a Fresh Home</h3>
+                    <p className="text-lg opacity-90">Molecular-level odor elimination, not masking</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Pore Size Visualization */}
+        <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10">
+          <Container>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6">
+                <BarChart3 className="w-8 h-8 text-white dark:text-gray-100" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                The Perfect Pore Size Distribution
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Laboratory testing confirms our optimized micropore-mesopore-macropore ratio
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-blue-200 dark:border-blue-800">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">&lt;2nm</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Micropores</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Ammonia Specialists</p>
+                </div>
+                <div className="space-y-3 text-gray-700 dark:text-gray-200">
+                  <p><strong>Target:</strong> NH₃ (0.26nm)</p>
+                  <p><strong>Density:</strong> Highest concentration</p>
+                  <p><strong>Function:</strong> Lock away smallest odor molecules</p>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-purple-200 dark:border-purple-800">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">2-50nm</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Mesopores</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Mercaptan Traps</p>
+                </div>
+                <div className="space-y-3 text-gray-700 dark:text-gray-200">
+                  <p><strong>Target:</strong> Sulfur compounds</p>
+                  <p><strong>Density:</strong> Optimized ratio</p>
+                  <p><strong>Function:</strong> Capture complex fecal odors</p>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-indigo-200 dark:border-indigo-800">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">&gt;50nm</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Macropores</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Transport System</p>
+                </div>
+                <div className="space-y-3 text-gray-700 dark:text-gray-200">
+                  <p><strong>Target:</strong> All molecules</p>
+                  <p><strong>Density:</strong> Strategic placement</p>
+                  <p><strong>Function:</strong> Rapid delivery to capture sites</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                Surface Area: 1050 m²/g
+              </h3>
+              <p className="text-center text-gray-600 dark:text-gray-300 mb-6 text-lg">
+                That's over <strong className="text-gray-900 dark:text-white">12 tennis courts</strong> of odor-capturing surface area in just one gram of Purrify™
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">≥1000</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-300">Iodine Number mg/g</div>
+                </div>
+                <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
+                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">≥50%</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-300">CTC Adsorption</div>
+                </div>
+                <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
+                  <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">≥98%</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-300">Hardness</div>
+                </div>
+                <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl">
+                  <div className="text-2xl font-bold text-red-600 dark:text-red-400 mb-1">≤5%</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-300">Moisture</div>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
@@ -219,9 +324,9 @@ export default function SciencePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               {scienceFacts.map((fact, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
                 >
@@ -242,6 +347,58 @@ export default function SciencePage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Microscopic View Visualization */}
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <NextImage
+                    src="https://images.unsplash.com/photo-1628863353691-0071c8c1874c?auto=format&fit=crop&w=1200&q=80"
+                    alt="Microscopic view of activated carbon porous structure"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <p className="text-white dark:text-gray-100 text-sm font-medium">Microscopic view of activated carbon pore structure</p>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-6 border border-[#FF3131]/20 dark:border-[#5B2EFF]/30">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                      What You're Looking At
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+                      This microscopic image shows the complex network of pores in activated carbon. Each tiny channel and cavity
+                      is a trap waiting to capture odor molecules.
+                    </p>
+                    <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+                      <li className="flex items-start space-x-2">
+                        <span className="text-[#FF3131] mt-1">→</span>
+                        <span>Millions of pores create massive surface area (1050 m²/g)</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-[#5B2EFF] mt-1">→</span>
+                        <span>Different pore sizes = different odor molecules captured</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-[#FF3131] mt-1">→</span>
+                        <span>Once trapped, molecules can't escape back into the air</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <p className="text-gray-700 dark:text-gray-200 italic">
+                      "The key is not just having pores, but having the <strong className="text-gray-900 dark:text-white">right sized pores</strong>
+                      in the <strong className="text-gray-900 dark:text-white">right ratios</strong> for the specific molecules you want to capture."
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">— Research collaboration with activated carbon scientists</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
