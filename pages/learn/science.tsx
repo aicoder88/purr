@@ -210,7 +210,7 @@ export default function SciencePage() {
             <div className="mt-16 max-w-5xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <NextImage
-                  src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1600&q=80"
+                  src="/optimized/cat-clean-home.jpg"
                   alt="Cat looking content in clean home environment"
                   width={1600}
                   height={900}
@@ -354,7 +354,7 @@ export default function SciencePage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <NextImage
-                    src="https://images.unsplash.com/photo-1628863353691-0071c8c1874c?auto=format&fit=crop&w=1200&q=80"
+                    src="/optimized/carbon-microscope.jpg"
                     alt="Microscopic view of activated carbon porous structure"
                     width={1200}
                     height={800}
@@ -396,6 +396,117 @@ export default function SciencePage() {
                       in the <strong className="text-gray-900 dark:text-white">right ratios</strong> for the specific molecules you want to capture."
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">— Research collaboration with activated carbon scientists</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Technical Performance Data */}
+        <section className="py-16 bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-900/20 dark:to-gray-900/20">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                Laboratory-Verified Performance
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Real data from activated carbon testing confirms our optimized pore structure delivers superior adsorption
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Particle Size Data */}
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <span className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
+                    <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </span>
+                  8×30 Mesh Particle Distribution
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">Effective Size:</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">1.0 mm</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">Mean Diameter:</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">1.4 mm</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">Uniformity Coefficient:</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">&lt;1.6</span>
+                  </div>
+                  <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                    <p className="text-sm text-gray-700 dark:text-gray-200">
+                      <strong>Why this matters:</strong> Consistent particle sizing ensures uniform flow through litter
+                      and maximum contact with odor molecules. Our 8×30 mesh is specifically sized for optimal cat litter performance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Adsorption Performance */}
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <span className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
+                    <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                  </span>
+                  Rapid Dechlorination Performance
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">Half-Length Value:</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">2.2 cm</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">Apparent Density:</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">540 kg/m³</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">BET Surface Area:</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">1050 m²/g</span>
+                  </div>
+                  <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                    <p className="text-sm text-gray-700 dark:text-gray-200">
+                      <strong>Why this matters:</strong> Rapid chlorine removal proves the carbon's micro porous structure
+                      is highly active. If it can capture chlorine molecules this quickly, ammonia doesn't stand a chance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pressure Loss & Bed Expansion Note */}
+            <div className="mt-12 max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                    <Microscope className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    Engineered for Real-World Performance
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+                    Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss
+                    across varying temperatures (5-25°C). This means consistent odor capture whether your litter box is in a cool basement
+                    or warm bathroom.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">5-25°C</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Temperature Range</div>
+                    </div>
+                    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Stable</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Performance</div>
+                    </div>
+                    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Minimal</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Pressure Loss</div>
+                    </div>
                   </div>
                 </div>
               </div>
