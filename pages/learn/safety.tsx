@@ -6,13 +6,14 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import NextImage from '../../components/NextImage';
 
 export default function SafetyInformationPage() {
   const { locale } = useTranslation();
 
   const pageTitle = `${SITE_NAME} - Safety Information & Technical Specifications`;
   const pageDescription = "Comprehensive technical datasheet and safety information for Purrify™ Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/safety-information`;
+  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/safety`;
 
   const specifications = [
     { property: "Iodine Number", value: "≥ 1000 mg/g" },
@@ -140,6 +141,40 @@ export default function SafetyInformationPage() {
                 The same type of activated carbon used in hospital water filters, municipal water treatment, and air purification systems.
                 Learn more about <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] dark:text-[#FF5050] hover:underline font-semibold">how activated carbon works</Link>.
               </p>
+            </div>
+
+            {/* Hero Images */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src="/optimized/quality-control-lab.jpg"
+                  alt="Quality control laboratory testing for activated carbon"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Laboratory-Tested Quality</h3>
+                    <p className="text-lg opacity-90">Meets NSF/ANSI 61 and FCC standards</p>
+                  </div>
+                </div>
+              </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src="/optimized/activated-carbon-granules.jpg"
+                  alt="Premium coconut shell activated carbon granules"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Premium Coconut Shell Carbon</h3>
+                    <p className="text-lg opacity-90">8×30 mesh granular activated carbon</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
@@ -270,7 +305,7 @@ export default function SafetyInformationPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
               {certifications.map((cert, index) => (
                 <div
                   key={index}
@@ -282,6 +317,37 @@ export default function SafetyInformationPage() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Certification Images */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <NextImage
+                  src="/optimized/certification-quality.jpg"
+                  alt="Quality certification and standards compliance"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <NextImage
+                  src="/optimized/coconut-shell-natural.jpg"
+                  alt="Sustainable coconut shell natural material"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <NextImage
+                  src="/optimized/safe-cat-litter.jpg"
+                  alt="Safe cat litter with activated carbon"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </Container>
         </section>
@@ -296,6 +362,23 @@ export default function SafetyInformationPage() {
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Versatile activated carbon for multiple use cases
               </p>
+            </div>
+
+            {/* Applications Image */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-12 max-w-5xl mx-auto">
+              <NextImage
+                src="/optimized/pet-safety-home.jpg"
+                alt="Pet safety and home odor control with activated carbon"
+                width={1600}
+                height={900}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-3xl font-bold mb-2">Multiple Applications</h3>
+                  <p className="text-xl opacity-90">From cat litter to air purification—versatile odor control</p>
+                </div>
+              </div>
             </div>
 
             <div className="max-w-3xl mx-auto space-y-4">
@@ -404,6 +487,23 @@ export default function SafetyInformationPage() {
 
               {/* Rodent-Friendly */}
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-10 shadow-xl border border-green-200 dark:border-green-700">
+                {/* Rodent Image */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
+                  <NextImage
+                    src="/optimized/hamster-rodent-pet.jpg"
+                    alt="Hamster and small pet rodent care with activated carbon"
+                    width={1600}
+                    height={900}
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                    <div className="p-8 text-white dark:text-gray-100">
+                      <h3 className="text-2xl font-bold mb-2">Small Pet Odor Control</h3>
+                      <p className="text-lg opacity-90">Hospital-grade carbon suitable for rodent environments</p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-green-600 dark:bg-green-500 rounded-lg flex items-center justify-center">
@@ -494,7 +594,7 @@ export default function SafetyInformationPage() {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/learn/safety-information" />
+            <RelatedArticles currentPath="/learn/safety" />
           </Container>
         </section>
 

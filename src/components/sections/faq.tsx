@@ -9,6 +9,7 @@ import { useTranslation } from "../../lib/translation-context";
 import Script from 'next/script';
 import { createSectionClasses, createCardClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import SectionHeader from "../ui/section-header";
+import Link from "next/link";
 
 interface FAQProps {
   includeStructuredData?: boolean;
@@ -58,6 +59,12 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
       question: "How soon will I notice results?",
       answer:
         "Many customers report noticing an improvement within hours of first application. The effect becomes more pronounced as the carbon fully integrates with your existing litter. For best results, apply a thin, even layer across the surface of clean litter.",
+    },
+    {
+      question: "Is Purrify certified? Where can I find safety information?",
+      answer:
+        "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and safety information, visit our safety information page.",
+      link: "/learn/safety"
     },
   ];
 
@@ -124,6 +131,14 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
                   </AccordionTrigger>
                   <AccordionContent className={`${COLORS.text.tertiary} leading-relaxed text-base pb-4`}>
                     {faq.answer}
+                    {faq.link && (
+                      <>
+                        {' '}
+                        <Link href={faq.link} className={`${COLORS.text.purple} font-medium hover:opacity-80 transition-colors underline`}>
+                          Learn more →
+                        </Link>
+                      </>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}

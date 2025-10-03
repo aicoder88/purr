@@ -206,12 +206,12 @@ export default function SciencePage() {
               </p>
             </div>
 
-            {/* Visual Image */}
-            <div className="mt-16 max-w-5xl mx-auto">
+            {/* Visual Images - Happy Cat */}
+            <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <NextImage
-                  src="/optimized/cat-clean-home.jpg"
-                  alt="Cat looking content in clean home environment"
+                  src="/optimized/happy-cat-home.jpg"
+                  alt="Happy cat in clean, fresh home environment"
                   width={1600}
                   height={900}
                   className="w-full h-auto"
@@ -220,6 +220,21 @@ export default function SciencePage() {
                   <div className="p-8 text-white dark:text-gray-100">
                     <h3 className="text-2xl font-bold mb-2">Your Cat Deserves a Fresh Home</h3>
                     <p className="text-lg opacity-90">Molecular-level odor elimination, not masking</p>
+                  </div>
+                </div>
+              </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src="/optimized/content-cat.jpg"
+                  alt="Content cat enjoying clean, odor-free environment"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">No More Embarrassing Odors</h3>
+                    <p className="text-lg opacity-90">Science-backed odor control for modern cat owners</p>
                   </div>
                 </div>
               </div>
@@ -352,27 +367,54 @@ export default function SciencePage() {
             {/* Microscopic View Visualization */}
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <NextImage
-                    src="/optimized/carbon-microscope.jpg"
-                    alt="Microscopic view of activated carbon porous structure"
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white dark:text-gray-100 text-sm font-medium">Microscopic view of activated carbon pore structure</p>
+                <div className="space-y-6">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <NextImage
+                      src="/optimized/science-microscope.jpg"
+                      alt="Laboratory microscope for activated carbon research"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">Research-grade microscopy reveals pore structure</p>
+                    </div>
+                  </div>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <NextImage
+                      src="/optimized/chemistry-lab.jpg"
+                      alt="Chemistry laboratory testing activated carbon samples"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">Laboratory testing confirms optimized performance</p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-6">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <NextImage
+                      src="/optimized/molecular-structure.jpg"
+                      alt="Molecular structure visualization showing pore architecture"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">Molecular-level capture of odor compounds</p>
+                    </div>
+                  </div>
+
                   <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-6 border border-[#FF3131]/20 dark:border-[#5B2EFF]/30">
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                       What You're Looking At
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-                      This microscopic image shows the complex network of pores in activated carbon. Each tiny channel and cavity
-                      is a trap waiting to capture odor molecules.
+                      These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity
+                      is a trap waiting to capture odor molecules at the molecular level.
                     </p>
                     <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                       <li className="flex items-start space-x-2">

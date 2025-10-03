@@ -126,7 +126,7 @@ const FAQPage: NextPage = () => {
       answer: 'Purrify uses coconut-shell activated carbon that meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards - the same type used in hospital water systems and municipal water treatment. It\'s Halal & Kosher compliant. For complete technical specifications, certifications, and detailed product information, visit our Safety Information page.',
       category: 'product',
       featured: true,
-      link: '/learn/safety-information'
+      link: '/learn/safety'
     },
     {
       id: 12,
@@ -134,7 +134,7 @@ const FAQPage: NextPage = () => {
       answer: 'Purrify uses the same type of activated carbon found in hospital water filtration and veterinary applications. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use. For detailed usage guidelines and precautions for rodents, see our complete Safety Information page.',
       category: 'product',
       featured: false,
-      link: '/learn/safety-information'
+      link: '/learn/safety'
     }
   ];
 

@@ -151,7 +151,8 @@ export function Header() {
       dropdownItems: [
         { label: t.nav?.howItWorksPage || 'How It Works', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-it-works` },
         { label: t.nav?.faq || 'FAQ', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/faq` },
-        { label: t.nav?.science || 'Science', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/science` }
+        { label: t.nav?.science || 'Science', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/science` },
+        { label: 'Safety Info', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/safety` }
       ]
     },
     {
