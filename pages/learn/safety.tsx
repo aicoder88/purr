@@ -216,19 +216,14 @@ export default function SafetyInformationPage() {
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-8 border border-green-200 dark:border-green-700">
-              <div className="flex items-start space-x-4">
-                <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Additional Benefits</h3>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-200">
-                    <li>• Rapid chlorine and ozone removal</li>
-                    <li>• Excellent odor reduction performance</li>
-                    <li>• Clean handling and minimal pressure drop</li>
-                    <li>• Safe for pets and household use</li>
-                  </ul>
-                </div>
-              </div>
+            <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 dark:border-green-400">
+              <h4 className="font-bold text-gray-900 dark:text-white mb-2">Best Practices for Small Pet Environments:</h4>
+              <p className="text-gray-800 dark:text-gray-100 leading-relaxed">
+                When using Purrify™ activated carbon for rodent odor control (hamsters, mice, rats), keep it contained in sealed pouches or cartridges
+                to minimize dust exposure and ensure proper ventilation. The carbon meets NSF/ANSI 61 and Food Chemicals Codex standards—
+                the same guidelines used for potable water systems. Rinse thoroughly to remove any loose particles before placement.
+                As with any pet product, observe your pet's behavior and discontinue use if any adverse reactions occur.
+              </p>
             </div>
           </Container>
         </section>
@@ -576,14 +571,19 @@ export default function SafetyInformationPage() {
                     </ul>
                   </div>
 
-                  <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 dark:border-green-400">
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-2">Best Practices for Small Pet Environments:</h4>
-                    <p className="text-gray-800 dark:text-gray-100 leading-relaxed">
-                      When using Purrify™ activated carbon for rodent odor control (hamsters, mice, rats), keep it contained in sealed pouches or cartridges
-                      to minimize dust exposure and ensure proper ventilation. The carbon meets NSF/ANSI 61 and Food Chemicals Codex standards—
-                      the same guidelines used for potable water systems. Rinse thoroughly to remove any loose particles before placement.
-                      As with any pet product, observe your pet's behavior and discontinue use if any adverse reactions occur.
-                    </p>
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-8 border border-green-200 dark:border-green-700">
+                    <div className="flex items-start space-x-4">
+                      <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Additional Benefits</h3>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-200">
+                          <li>• Rapid chlorine and ozone removal</li>
+                          <li>• Excellent odor reduction performance</li>
+                          <li>• Clean handling and minimal pressure drop</li>
+                          <li>• Safe for pets and household use</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
