@@ -19,7 +19,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
   const { t } = useTranslation();
   
   // Use the FAQ items from translations if available, otherwise use the hardcoded ones
-  const faqs = t.faq?.items || [
+  const faqs: Array<{ question: string; answer: string; link?: string }> = t.faq?.items || [
     {
       question: "How often should I use Purrify?",
       answer:
@@ -64,7 +64,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
       question: "Is Purrify certified? Where can I find safety information?",
       answer:
         "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and safety information, visit our safety information page.",
-      link: "/learn/safety"
+      link: "/learn/safety-information"
     },
   ];
 
