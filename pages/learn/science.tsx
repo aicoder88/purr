@@ -18,46 +18,46 @@ export default function SciencePage() {
   const scienceFacts = [
     {
       icon: Atom,
-      title: "Molecular Adsorption",
-      description: "Activated carbon has millions of microscopic pores that trap odor molecules through physical and chemical adsorption, removing them from the air permanently."
+      title: "Engineered Pore Architecture",
+      description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
     },
     {
       icon: Microscope,
-      title: "Surface Area Power",
-      description: "Just one gram of activated carbon has a surface area of 500-1500 square meters - equivalent to 6-18 tennis courts of odor-fighting power."
+      title: "Ammonia Capture Mastery",
+      description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
     },
     {
       icon: Zap,
-      title: "Instant Action",
-      description: "Unlike masking agents that cover smells, activated carbon physically captures and holds odor molecules, providing immediate and lasting results."
+      title: "Mercaptan Elimination",
+      description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
     },
     {
       icon: Shield,
-      title: "Fragrance-Free & Natural",
-      description: "Made from coconut shells through controlled heating, our activated carbon is the same type used in household water and air filters, with no added fragrances or dyes."
+      title: "Triple-Pore Synergy",
+      description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
     }
   ];
 
   const processSteps = [
     {
       step: "1",
-      title: "Odor Molecules Released",
-      description: "When cats use the litter box, ammonia and other odor compounds are released into the air."
+      title: "The Culprits: Ammonia & Mercaptans",
+      description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
     },
     {
-      step: "2", 
-      title: "Carbon Activation",
-      description: "Purrify's activated carbon particles immediately begin attracting these odor molecules to their porous surface."
+      step: "2",
+      title: "Macropores: The Express Lanes",
+      description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
     },
     {
       step: "3",
-      title: "Molecular Capture",
-      description: "Odor molecules are trapped in the carbon's microscopic pores through van der Waals forces and chemical bonds."
+      title: "Mesopores: The Mercaptan Traps",
+      description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
     },
     {
       step: "4",
-      title: "Permanent Elimination",
-      description: "Once captured, odor molecules remain locked in the carbon structure, eliminating smells rather than masking them."
+      title: "Micropores: The Ammonia Eliminators",
+      description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
     }
   ];
 
@@ -113,11 +113,11 @@ export default function SciencePage() {
                 <FlaskConical className="w-8 h-8 text-white dark:text-gray-100 dark:text-gray-100" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-                The Science Behind Purrify
+                Engineered to Eliminate Cat Litter Odor
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-8 leading-relaxed">
-                Discover how activated carbon technology eliminates odors at the molecular level, 
-                providing superior odor control that's both fragrance-free and effective for your feline friends.
+                Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine
+                and mercaptans from feces—the two molecules responsible for that unmistakable litter box smell.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                 <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">
@@ -128,15 +128,94 @@ export default function SciencePage() {
           </Container>
         </section>
 
+        {/* Understanding the Enemy */}
+        <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/10 dark:to-orange-900/10">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                Understanding Litter Box Odor: The Two Culprits
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                That unmistakable litter box smell comes from two specific molecules. To eliminate them, you need to understand them.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-red-200 dark:border-red-900">
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full mb-4">
+                    <span className="text-3xl">💧</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ammonia (NH₃)</h3>
+                  <p className="text-sm text-red-600 dark:text-red-400 font-semibold">From Cat Urine</p>
+                </div>
+                <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-red-500 mt-1">•</span>
+                    <span><strong>The Smell:</strong> Sharp, pungent, eye-watering—like cleaning chemicals</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-red-500 mt-1">•</span>
+                    <span><strong>Molecule Size:</strong> Tiny at 0.26 nanometers</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-red-500 mt-1">•</span>
+                    <span><strong>The Problem:</strong> Forms when bacteria break down urea in urine</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-red-500 mt-1">•</span>
+                    <span><strong>Why It's Hard:</strong> Most carbon has pores too large to trap such small molecules</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-yellow-200 dark:border-yellow-900">
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full mb-4">
+                    <span className="text-3xl">💩</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Mercaptans</h3>
+                  <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">From Cat Feces</p>
+                </div>
+                <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-yellow-500 mt-1">•</span>
+                    <span><strong>The Smell:</strong> Rotten eggs, sewage, sulfur—that gagging sensation</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-yellow-500 mt-1">•</span>
+                    <span><strong>Molecule Size:</strong> Larger, more complex sulfur compounds</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-yellow-500 mt-1">•</span>
+                    <span><strong>The Problem:</strong> Released when proteins in feces decompose</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-yellow-500 mt-1">•</span>
+                    <span><strong>Why It's Hard:</strong> Sticky molecules that require specific pore sizes to capture</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg border border-gray-200 dark:border-gray-700">
+              <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Here's the breakthrough:</strong> Most activated carbon is designed for water filtration or general air purification.
+                We worked with research scientists to engineer carbon specifically for these two molecules—creating the perfect trap for cat litter odor.
+              </p>
+            </div>
+          </Container>
+        </section>
+
         {/* Science Facts Grid */}
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-50 dark:text-white">
-                How Activated Carbon Works
+                Precision-Engineered Pore Structure
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
-                Understanding the molecular science that makes Purrify so effective at eliminating odors.
+                Not all activated carbon is created equal. We worked with scientists to optimize every detail for cat litter odor.
               </p>
             </div>
 
@@ -172,10 +251,10 @@ export default function SciencePage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-white">
-                The Odor Elimination Process
+                How the Three Pore Types Work Together
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
-                Follow the journey of odor molecules from release to permanent elimination.
+                Our research-backed pore architecture creates a capture system specifically engineered for cat litter odors.
               </p>
             </div>
 
@@ -218,25 +297,25 @@ export default function SciencePage() {
           <Container>
             <div className="text-center text-white dark:text-gray-100">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Proven by Science, Loved by Cats
+                The Most Effective Cat Litter Odor Solution in the World
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-                Our activated carbon formula has been tested and proven effective in eliminating 
-                ammonia, hydrogen sulfide, and other common litter box odors.
+                By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon
+                specifically optimized to capture ammonia and mercaptans—the exact molecules that make litter boxes smell.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">99.9%</div>
-                  <div className="text-lg opacity-90">Odor Elimination</div>
+                  <div className="text-4xl font-bold mb-2">0.26nm</div>
+                  <div className="text-lg opacity-90">Ammonia Molecule Size - Perfectly Matched Micropores</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">100%</div>
-                  <div className="text-lg opacity-90">Safe & Natural</div>
+                  <div className="text-4xl font-bold mb-2">3 Pore Types</div>
+                  <div className="text-lg opacity-90">Micro + Meso + Macro = Complete Capture</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">24/7</div>
-                  <div className="text-lg opacity-90">Continuous Protection</div>
+                  <div className="text-4xl font-bold mb-2">1050 m²/g</div>
+                  <div className="text-lg opacity-90">Surface Area - Millions of Capture Sites</div>
                 </div>
               </div>
 
