@@ -41,8 +41,8 @@ const FAQPage: NextPage = () => {
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`;
 
   const categories = [
-    { id: 'all', name: 'All Questions', icon: HelpCircle, count: 24 },
-    { id: 'product', name: 'Product Information', icon: Package, count: 8 },
+    { id: 'all', name: 'All Questions', icon: HelpCircle, count: 26 },
+    { id: 'product', name: 'Product Information', icon: Package, count: 10 },
     { id: 'usage', name: 'Usage & Application', icon: Users, count: 6 },
     { id: 'shipping', name: 'Shipping & Delivery', icon: Truck, count: 5 },
     { id: 'payment', name: 'Payment & Billing', icon: CreditCard, count: 3 },
@@ -60,7 +60,7 @@ const FAQPage: NextPage = () => {
     {
       id: 2,
       question: 'Is Purrify safe for cats and kittens?',
-      answer: 'Yes, Purrify is completely safe for cats of all ages. It\'s made from natural activated carbon derived from coconut shells, contains no chemicals or fragrances, and is the same type of carbon used in water and air filters.',
+      answer: 'Purrify uses the same type of coconut-shell activated carbon found in hospital water systems, municipal water treatment, and household air/water filters. It\'s made from natural coconut shells, contains no added chemicals or fragrances, and meets NSF/ANSI 61 and Food Chemicals Codex standards for potable water applications.',
       category: 'product',
       featured: true
     },
@@ -119,6 +119,22 @@ const FAQPage: NextPage = () => {
       answer: 'Absolutely! We offer a 30-day satisfaction guarantee. If you\'re not completely satisfied, contact us for a full refund.',
       category: 'support',
       featured: false
+    },
+    {
+      id: 11,
+      question: 'Where can I find detailed product specifications and certifications?',
+      answer: 'Purrify uses coconut-shell activated carbon that meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards - the same type used in hospital water systems and municipal water treatment. It\'s Halal & Kosher compliant. For complete technical specifications, certifications, and detailed product information, visit our Safety Information page.',
+      category: 'product',
+      featured: true,
+      link: '/learn/safety-information'
+    },
+    {
+      id: 12,
+      question: 'Can I use Purrify for rodents like hamsters, mice, or rats?',
+      answer: 'Purrify uses the same type of activated carbon found in hospital water filtration and veterinary applications. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use. For detailed usage guidelines and precautions for rodents, see our complete Safety Information page.',
+      category: 'product',
+      featured: false,
+      link: '/learn/safety-information'
     }
   ];
 
@@ -489,6 +505,16 @@ const FAQPage: NextPage = () => {
                           <p className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
                             {item.answer}
                           </p>
+                          {(item as { link?: string }).link && (
+                            <Link href={`${locale === 'fr' ? '/fr' : ''}${(item as { link?: string }).link}`}>
+                              <Button
+                                size="sm"
+                                className="mt-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-semibold"
+                              >
+                                View Safety Information →
+                              </Button>
+                            </Link>
+                          )}
                         </div>
                       )}
                     </div>
