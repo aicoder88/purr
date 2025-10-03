@@ -444,7 +444,8 @@ export default function SafetyInformationPage() {
                         <div>
                           <strong className="text-gray-900 dark:text-white">Inhalation:</strong>
                           <span className="text-gray-700 dark:text-gray-200"> Fine dust can irritate lungs if animals burrow or chew bags.
-                          Use only well-rinsed, dust-free carbon.</span>
+                          Keep bags out of your rodent's reach. Some dust may settle during shipping—if the bag looks dusty, either remove your pet
+                          from the cage for a few minutes while applying, or give the carbon a quick rinse and air-dry before use.</span>
                         </div>
                       </li>
                       <li className="flex items-start space-x-3">
