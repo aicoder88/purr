@@ -147,10 +147,10 @@ export default function SafetyInformationPage() {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <NextImage
-                  src="/optimized/quality-control-lab.jpg"
+                  src="/optimized/quality-control-lab.webp"
                   alt="Quality control laboratory testing for activated carbon"
                   width={1600}
-                  height={900}
+                  height={1067}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -162,10 +162,10 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <NextImage
-                  src="/optimized/activated-carbon-granules.jpg"
+                  src="/optimized/activated-carbon-granules.webp"
                   alt="Premium coconut shell activated carbon granules"
                   width={1600}
-                  height={900}
+                  height={1067}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -318,28 +318,28 @@ export default function SafetyInformationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <NextImage
-                  src="/optimized/certification-quality.jpg"
+                  src="/optimized/certification-quality.webp"
                   alt="Quality certification and standards compliance"
-                  width={1200}
-                  height={800}
+                  width={1600}
+                  height={1067}
                   className="w-full h-auto"
                 />
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <NextImage
-                  src="/optimized/coconut-shell-natural.jpg"
+                  src="/optimized/coconut-shell-natural.webp"
                   alt="Sustainable coconut shell natural material"
-                  width={1200}
-                  height={800}
+                  width={1600}
+                  height={1067}
                   className="w-full h-auto"
                 />
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <NextImage
-                  src="/optimized/safe-cat-litter.jpg"
+                  src="/optimized/safe-cat-litter.webp"
                   alt="Safe cat litter with activated carbon"
-                  width={1200}
-                  height={800}
+                  width={1600}
+                  height={1067}
                   className="w-full h-auto"
                 />
               </div>
@@ -362,10 +362,10 @@ export default function SafetyInformationPage() {
             {/* Applications Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-12 max-w-5xl mx-auto">
               <NextImage
-                src="/optimized/pet-safety-home.jpg"
+                src="/optimized/pet-safety-home.webp"
                 alt="Pet safety and home odor control with activated carbon"
                 width={1600}
-                height={900}
+                height={1067}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
@@ -485,10 +485,10 @@ export default function SafetyInformationPage() {
                 {/* Rodent Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
                   <NextImage
-                    src="/optimized/hamster-rodent-pet.jpg"
+                    src="/optimized/hamster-rodent-pet.webp"
                     alt="Hamster and small pet rodent care with activated carbon"
                     width={1600}
-                    height={900}
+                    height={1067}
                     className="w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
