@@ -402,7 +402,7 @@ export default function SafetyInformationPage() {
                 </div>
               </div>
 
-              {/* Safety for Rodents */}
+              {/* Rodent-Friendly */}
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-10 shadow-xl border border-green-200 dark:border-green-700">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="flex-shrink-0">
@@ -412,10 +412,10 @@ export default function SafetyInformationPage() {
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-                      Safe for Rodents
+                      Rodent-Friendly Odor Control
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
-                      Can Purrify™ be used for hamsters, mice, rats, and other small pets?
+                      Using Purrify™ with hamsters, mice, rats, and other small pets
                     </p>
                   </div>
                 </div>
@@ -423,17 +423,18 @@ export default function SafetyInformationPage() {
                 <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200">
                   <p className="mb-4 leading-relaxed font-semibold text-green-800 dark:text-green-200">
                     Purrify™ uses the same type of coconut-shell activated carbon found in hospital water systems, municipal water treatment,
-                    and veterinary applications. When used properly with appropriate precautions, it can be suitable for odor control in rodent environments.
+                    and veterinary applications. With proper handling and precautions, it can be suitable for odor control in small pet environments.
                   </p>
 
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-6 mb-3">Product Characteristics</h3>
                   <ul className="space-y-2 mb-6">
                     <li><strong>Pure carbon:</strong> Steam-activated coconut shell carbon with no chemical activators or binders
                       (no phosphoric acid, no zinc chloride).</li>
-                    <li><strong>Certified standards:</strong> Meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) guidelines
-                      for potable water and food-adjacent applications.</li>
-                    <li><strong>Low dust:</strong> Heavy de-dusting and high hardness reduce airborne particles.</li>
-                    <li><strong>Hospital-grade carbon:</strong> Same type of activated carbon used in medical water filtration systems.</li>
+                    <li><strong>Industry standards:</strong> Meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) guidelines—
+                      the same standards used for potable water and food-adjacent applications.</li>
+                    <li><strong>Low dust:</strong> Heavy de-dusting process and high hardness minimize airborne particles.</li>
+                    <li><strong>Hospital-grade carbon:</strong> The same type of activated carbon used in medical water filtration systems
+                      and veterinary applications.</li>
                   </ul>
 
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Practical Cautions</h3>
@@ -476,11 +477,12 @@ export default function SafetyInformationPage() {
                   </div>
 
                   <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 dark:border-green-400">
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-2">Recommended Usage:</h4>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2">Best Practices for Small Pet Environments:</h4>
                     <p className="text-gray-800 dark:text-gray-100 leading-relaxed">
-                      When using Purrify™ activated carbon near rodents (hamsters, mice, rats), keep it contained in sealed pouches or cartridges,
-                      minimize dust exposure, and ensure proper ventilation. The carbon meets the same standards used for potable water treatment,
-                      but proper handling is essential. Rinse thoroughly to remove loose particles before placement.
+                      When using Purrify™ activated carbon for rodent odor control (hamsters, mice, rats), keep it contained in sealed pouches or cartridges
+                      to minimize dust exposure and ensure proper ventilation. The carbon meets NSF/ANSI 61 and Food Chemicals Codex standards—
+                      the same guidelines used for potable water systems. Rinse thoroughly to remove any loose particles before placement.
+                      As with any pet product, observe your pet's behavior and discontinue use if any adverse reactions occur.
                     </p>
                   </div>
                 </div>
