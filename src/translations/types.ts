@@ -212,6 +212,7 @@ export interface TranslationType {
     items: {
       question: string;
       answer: string;
+      link?: string;
     }[];
   };
   

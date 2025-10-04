@@ -212,6 +212,11 @@ export const en = {
         answer: "Purrify uses activated carbon technology to trap and neutralize odor molecules through adsorption, effectively eliminating cat litter odors at the molecular level."
       },
       {
+        question: "Can I use Purrify for rodents like hamsters, mice, or rats?",
+        answer: "Yes! Purrify uses the same type of activated carbon found in hospital water filtration and veterinary applications. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use if needed. For detailed usage guidelines and precautions for small pets, see our complete safety information page.",
+        link: "/learn/safety"
+      },
+      {
         question: "How long does Purrify last?",
         answer: "A single application of Purrify can keep your litter box odor-free for up to 7 days, depending on usage and the number of cats."
       },
@@ -230,6 +235,11 @@ export const en = {
       {
         question: "How is Purrify different from scented litters or deodorizers?",
         answer: "Unlike scented products that mask odors, Purrify uses activated carbon technology to actually trap and neutralize odor molecules at the source. It doesn't add any scent to your home - it simply eliminates the bad ones."
+      },
+      {
+        question: "Is Purrify certified? Where can I find safety information?",
+        answer: "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and detailed safety information including rodent usage guidelines, visit our safety information page.",
+        link: "/learn/safety"
       }
     ]
   },
