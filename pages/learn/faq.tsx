@@ -41,12 +41,12 @@ const FAQPage: NextPage = () => {
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`;
 
   const categories = [
-    { id: 'all', name: 'All Questions', icon: HelpCircle, count: 26 },
-    { id: 'product', name: 'Product Information', icon: Package, count: 10 },
-    { id: 'usage', name: 'Usage & Application', icon: Users, count: 6 },
-    { id: 'shipping', name: 'Shipping & Delivery', icon: Truck, count: 5 },
-    { id: 'payment', name: 'Payment & Billing', icon: CreditCard, count: 3 },
-    { id: 'support', name: 'Customer Support', icon: MessageCircle, count: 2 }
+    { id: 'all', name: 'All Questions', icon: HelpCircle, count: 12 },
+    { id: 'product', name: 'Product Information', icon: Package, count: 7 },
+    { id: 'usage', name: 'Usage & Application', icon: Users, count: 3 },
+    { id: 'shipping', name: 'Shipping & Delivery', icon: Truck, count: 1 },
+    { id: 'payment', name: 'Payment & Billing', icon: CreditCard, count: 0 },
+    { id: 'support', name: 'Customer Support', icon: MessageCircle, count: 1 }
   ];
 
   const faqItems = [
