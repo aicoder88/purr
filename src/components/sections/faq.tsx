@@ -31,6 +31,12 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
         "Purrify uses the same type of coconut-shell activated carbon used widely in home water and air filtration. It contains no added fragrances or dyes.",
     },
     {
+      question: "Can I use Purrify for rodents like hamsters, mice, or rats?",
+      answer:
+        "Yes! Purrify uses the same type of activated carbon found in hospital water filtration and veterinary applications. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use if needed. For detailed usage guidelines and precautions for small pets, see our complete safety information page.",
+      link: "/learn/safety"
+    },
+    {
       question: "How long does one container of Purrify last?",
       answer:
         "This depends on how many cats you have and how often you change their litter. On average, our 65g container lasts about 1-2 months for a single cat household with regular litter changes.",
@@ -63,8 +69,8 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
     {
       question: "Is Purrify certified? Where can I find safety information?",
       answer:
-        "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and safety information, visit our safety information page.",
-      link: "/learn/safety-information"
+        "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and detailed safety information including rodent usage guidelines, visit our safety information page.",
+      link: "/learn/safety"
     },
   ];
 
