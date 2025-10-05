@@ -129,8 +129,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       referrerEmail: referralCode.referrerEmail,
       discount: {
         type: 'free_trial',
-        value: 6.99, // Value of free 17g trial
-        description: 'Free 17g Trial Size (normally $6.99)'
+        value: 6.99, // Value of free 12g trial
+        description: 'Free 12g Trial Size (normally $6.99)'
       },
       expiresAt: referralCode.expiresAt,
       usesRemaining,
@@ -148,16 +148,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
 // Helper function to apply referral discount to cart
 export function applyReferralDiscount(cartItems: any[], referralCode: string) {
-  // Add free 17g trial to cart if not already present
-  const hasTrialSize = cartItems.some(item => item.productId === '17g' || item.sku === 'purrify-17g');
+  // Add free 12g trial to cart if not already present
+  const hasTrialSize = cartItems.some(item => item.productId === '12g' || item.sku === 'purrify-12g');
 
   if (!hasTrialSize) {
     return [
       ...cartItems,
       {
-        productId: '17g',
-        sku: 'purrify-17g',
-        name: 'Purrify 17g Trial Size - FREE (Referral)',
+        productId: '12g',
+        sku: 'purrify-12g',
+        name: 'Purrify 12g Trial Size - FREE (Referral)',
         price: 0,
         originalPrice: 6.99,
         quantity: 1,

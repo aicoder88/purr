@@ -64,7 +64,7 @@ const Stage5DemoPage: NextPage = () => {
   const sampleImages = [
     {
       src: '/optimized/purrify-product-1.webp',
-      alt: 'Purrify 17g Trial Size',
+      alt: 'Purrify 12g Trial Size',
       caption: 'Perfect for trying Purrify'
     },
     {

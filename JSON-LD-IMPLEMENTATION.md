@@ -35,7 +35,7 @@ React component for easy schema implementation:
 ```typescript
 // Usage Examples:
 <HomepageSchema locale='en' />
-<ProductSchema productId='purrify-60g' locale='en' />
+<ProductSchema productId='purrify-50g' locale='en' />
 <ArticleSchema title="..." description="..." path="/learn/..." />
 <LocationSchema cityName='Montreal' province='Quebec' />
 ```
@@ -60,9 +60,9 @@ React component for easy schema implementation:
 ### Product Pages
 
 **Pages Implemented:**
-- `/products/trial-size` - Purrify 17g ($6.99)
-- `/products/standard` - Purrify 60g ($19.99) 
-- `/products/family-pack` - Purrify 140g ($29.99)
+- `/products/trial-size` - Purrify 12g ($6.99)
+- `/products/standard` - Purrify 50g ($19.99) 
+- `/products/family-pack` - Purrify 120g ($29.99)
 - `/products/compare` - Product comparison page
 
 **Schemas per Product Page:**

@@ -501,7 +501,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Product',
-                    name: 'Purrify 20g Trial Size',
+                    name: 'Purrify 12g Trial Size',
                     description: 'Perfect for first-time users in ${city.name}',
                   },
                   price: '14.99',
@@ -511,7 +511,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Product',
-                    name: 'Purrify 140g Family Size',
+                    name: 'Purrify 120g Family Size',
                     description: 'Ideal for ${city.name} households with multiple cats',
                   },
                   price: '39.99',
@@ -1052,7 +1052,7 @@ export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage
                   
                   <div className="mt-8 text-center">
                     <div className="text-3xl font-bold text-green-600 mb-2">$19.99</div>
-                    <p className="text-sm text-gray-600">140g - Lasts 2 months</p>
+                    <p className="text-sm text-gray-600">120g - Lasts 2 months</p>
                   </div>
                 </div>
 

@@ -475,9 +475,9 @@ export default function Stockists() {
                               key={product}
                               className="inline-block px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded"
                             >
-                              {product === 'trial' && (locale === 'fr' ? 'Essai 17g' : 'Trial 17g')}
-                              {product === 'regular' && (locale === 'fr' ? 'Régulier 60g' : 'Regular 60g')}
-                              {product === 'large' && (locale === 'fr' ? 'Grand 140g' : 'Large 140g')}
+                              {product === 'trial' && (locale === 'fr' ? 'Essai 12g' : 'Trial 12g')}
+                              {product === 'regular' && (locale === 'fr' ? 'Régulier 50g' : 'Regular 50g')}
+                              {product === 'large' && (locale === 'fr' ? 'Grand 120g' : 'Large 120g')}
                             </span>
                           ))}
                         </div>

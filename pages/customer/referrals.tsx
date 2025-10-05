@@ -170,7 +170,7 @@ export default function CustomerReferralsPage({
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Your friends receive a free 17g trial size (normally $6.99)
+                    Your friends receive a free 12g trial size (normally $6.99)
                   </p>
                 </div>
 

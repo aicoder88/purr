@@ -15,15 +15,15 @@ export default function StandardSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
-  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 60g Activated Carbon Cat Litter Additive`;
-  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 60g standard size activated carbon cat litter additive. Most popular size.";
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 50g Activated Carbon Cat Litter Additive`;
+  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 50g standard size activated carbon cat litter additive. Most popular size.";
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
   
   // Generate structured data for this product
-  const productData = generateProductData('purrify-60g');
+  const productData = generateProductData('purrify-50g');
   const breadcrumbs = generateBreadcrumbs('/products/standard');
 
   const benefits = [
@@ -37,7 +37,7 @@ export default function StandardSizePage() {
   const testimonials = [
     {
       name: "Kenji T., Verdun",
-      text: "My senior cat has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+      text: "My senior cat has some digestive issues, so odor control is crucial. The 50g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
       rating: 5,
       petName: "Mochi"
     },
@@ -67,14 +67,14 @@ export default function StandardSizePage() {
               url: 'https://www.purrify.ca/optimized/60g.webp',
               width: 1200,
               height: 630,
-              alt: 'Purrify 60g Standard Size Package (WebP)',
+              alt: 'Purrify 50g Standard Size Package (WebP)',
               type: 'image/webp'
             },
             {
               url: 'https://www.purrify.ca/purrify-standard-60g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 60g Standard Size Package',
+              alt: 'Purrify 50g Standard Size Package',
               type: 'image/jpeg'
             }
           ]
@@ -94,7 +94,7 @@ export default function StandardSizePage() {
       />
       
       {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-60g' locale={locale as 'en' | 'fr' | 'zh'} />
+      <ProductSchema productId='purrify-50g' locale={locale as 'en' | 'fr' | 'zh'} />
       
       {/* Enhanced Product JSON-LD */}
       <script
@@ -106,8 +106,8 @@ export default function StandardSizePage() {
               {
                 "@type": "Product",
                 "@id": canonicalUrl,
-                "name": "Purrify 60g Standard Size - Activated Carbon Cat Litter Additive",
-                "description": "Our most popular 60g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
+                "name": "Purrify 50g Standard Size - Activated Carbon Cat Litter Additive",
+                "description": "Our most popular 50g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
                 "image": [
                   "https://www.purrify.ca/optimized/60g.webp",
                   "https://www.purrify.ca/purrify-standard-60g.jpg"
@@ -123,15 +123,15 @@ export default function StandardSizePage() {
                   "name": "Purrify"
                 },
                 "category": "Pet Supplies > Cat Care > Litter Additives",
-                "sku": "purrify-60g",
-                "mpn": "PURRIFY-60G",
+                "sku": "purrify-50g",
+                "mpn": "PURRIFY-50G",
                 "gtin13": "9781234567890",
                 "weight": {
                   "@type": "QuantitativeValue",
-                  "value": "60",
+                  "value": "50",
                   "unitCode": "GRM"
                 },
-                "size": "60g",
+                "size": "50g",
                 "color": "Black",
                 "material": "Activated Carbon from Coconut Shells",
                 "offers": {
@@ -197,7 +197,7 @@ export default function StandardSizePage() {
                       "@type": "Person",
                       "name": "Kenji T."
                     },
-                    "reviewBody": "My senior cat has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+                    "reviewBody": "My senior cat has some digestive issues, so odor control is crucial. The 50g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
                     "datePublished": "2024-01-15"
                   },
                   {
@@ -316,7 +316,7 @@ export default function StandardSizePage() {
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <NextImage
                     src="/optimized/60g.webp"
-                    alt="Purrify 60g Standard Size"
+                    alt="Purrify 50g Standard Size"
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -335,7 +335,7 @@ export default function StandardSizePage() {
                     Purrify Standard Size
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    60g Activated Carbon Cat Litter Additive
+                    50g Activated Carbon Cat Litter Additive
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -412,7 +412,7 @@ export default function StandardSizePage() {
                 Perfect Size for Single Cat Homes
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Our most popular 60g size provides a full month of odor control for one cat
+                Our most popular 50g size provides a full month of odor control for one cat
               </p>
             </div>
 
@@ -423,7 +423,7 @@ export default function StandardSizePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Days of Freshness</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  One 60g package lasts a full month for typical single-cat usage
+                  One 50g package lasts a full month for typical single-cat usage
                 </p>
               </div>
               
@@ -498,7 +498,7 @@ export default function StandardSizePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">17g - Single use test</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$6.99</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
@@ -510,14 +510,14 @@ export default function StandardSizePage() {
                   MOST POPULAR
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">60g - One month supply</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$19.99</div>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">140g - Two month supply</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/family-pack`}>
                   <Button variant="outline" className="w-full">View Family Pack</Button>

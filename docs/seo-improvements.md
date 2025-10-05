@@ -76,7 +76,7 @@ critical: {
 ### 2. Product Schema Enhancements
 
 **Features Added**:
-- Multiple product variants (20g, 60g)
+- Multiple product variants (12g, 50g)
 - Pricing information with currency
 - Shipping details and delivery times
 - Return policy information

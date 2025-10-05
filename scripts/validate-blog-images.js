@@ -60,7 +60,7 @@ function validateBlogImages() {
       console.log('Fix missing images before deploying.');
       console.log('\nSuggested fixes:');
       console.log('• Add missing images to /public/optimized/ folder');
-      console.log('• Use existing images: 140g.webp, 60g.webp, 20g.webp');
+      console.log('• Use existing images: 120g.webp, 50g.webp, 12g.webp');
       console.log('• Update blog post data to reference correct image paths');
       process.exit(1);
     } else {

@@ -92,29 +92,29 @@ export default async function handler(req: NextRequest) {
 async function getProductData(productId: string) {
   // Edge-optimized product lookup
   const products = {
-    '20g': {
-      id: '20g',
-      name: 'Purrify 20g Trial Size',
-      price: 14.99,
-      weight: 0.02, // kg
-      sku: 'PURR-20G',
-      stripe_price_id: 'price_trial_20g'
+    '12g': {
+      id: '12g',
+      name: 'Purrify 12g Trial Size',
+      price: 6.99,
+      weight: 0.012, // kg
+      sku: 'PURR-12G',
+      stripe_price_id: 'price_trial_12g'
     },
-    '60g': {
-      id: '60g', 
-      name: 'Purrify 60g Standard',
-      price: 24.99,
-      weight: 0.06,
-      sku: 'PURR-60G',
-      stripe_price_id: 'price_standard_60g'
+    '50g': {
+      id: '50g', 
+      name: 'Purrify 50g Standard',
+      price: 19.99,
+      weight: 0.05,
+      sku: 'PURR-50G',
+      stripe_price_id: 'price_standard_50g'
     },
-    '140g': {
-      id: '140g',
-      name: 'Purrify 140g Family Size', 
-      price: 39.99,
-      weight: 0.14,
-      sku: 'PURR-140G',
-      stripe_price_id: 'price_family_140g'
+    '120g': {
+      id: '120g',
+      name: 'Purrify 120g Family Size', 
+      price: 29.99,
+      weight: 0.12,
+      sku: 'PURR-120G',
+      stripe_price_id: 'price_family_120g'
     }
   };
 

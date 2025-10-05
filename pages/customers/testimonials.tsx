@@ -39,10 +39,10 @@ export default function TestimonialsPage() {
       category: ['trial'],
       date: "2024-01-15",
       title: "Trial size convinced me immediately!",
-      text: "Started with the 17g trial for my kitten Ziggy. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+      text: "Started with the 12g trial for my kitten Ziggy. Worked so well I immediately ordered the 50g! No more embarrassing smells when friends come over.",
       verified: true,
       helpful: 28,
-      productUsed: "17g Trial → 60g Regular"
+      productUsed: "12g Trial → 50g Regular"
     },
     {
       id: 2,
@@ -53,7 +53,7 @@ export default function TestimonialsPage() {
       category: ['multiple-cats'],
       date: "2023-11-08",
       title: "Game changer for two cats!",
-      text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 140g size for both of them - game changer! Guests don't even know we have cats now.",
+      text: "My cats Mochi and Noodle used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
       verified: true,
       helpful: 18,
       productUsed: "Standard Size"

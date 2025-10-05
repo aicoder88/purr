@@ -57,7 +57,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
 
     try {
       // Add free trial to cart (using the cart's expected format)
-      await addToCart('purrify-17g-referral');
+      await addToCart('purrify-12g-referral');
 
       // Track referral conversion
       if (typeof window !== 'undefined' && window.gtag) {
@@ -90,7 +90,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
     : `Invalid Referral Code - ${SITE_NAME}`;
 
   const pageDescription = referralData.isValid
-    ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 17g trial size (normally $6.99) and see why they love this cat litter deodorizer.`
+    ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally $6.99) and see why they love this cat litter deodorizer.`
     : 'This referral code is not valid or has expired.';
 
   if (!referralData.isValid) {
@@ -135,7 +135,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
               url: 'https://www.purrify.ca/optimized/20g.webp',
               width: 500,
               height: 500,
-              alt: 'Purrify 17g Trial Size - Free with Referral'
+              alt: 'Purrify 12g Trial Size - Free with Referral'
             }
           ]
         }}
@@ -164,7 +164,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
 
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 {referralData.referrerName} has shared Purrify with you because they know how embarrassing
-                litter box smell can be. Get your <strong>FREE 17g trial</strong> and see why they love it!
+                litter box smell can be. Get your <strong>FREE 12g trial</strong> and see why they love it!
               </p>
 
               {/* Urgency Timer */}

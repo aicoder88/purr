@@ -224,7 +224,7 @@ async function trackReferralPurchase(
     referee: {
       type: 'product' as const,
       value: 6.99, // Free trial value
-      description: 'Free 17g Trial Size'
+      description: 'Free 12g Trial Size'
     }
   };
 
@@ -241,14 +241,14 @@ async function trackReferralPurchase(
     isUsed: false
   });
 
-  // Check for milestone rewards (every 3 referrals = free 60g)
+  // Check for milestone rewards (every 3 referrals = free 50g)
   const referrerCompletedReferrals = await getReferrerCompletedCount(referrerId);
   if (referrerCompletedReferrals % 3 === 0 && referrerCompletedReferrals > 0) {
     referralRewards.set(`${referrerId}_milestone_${Date.now()}`, {
       userId: referrerId,
       type: 'free_product',
-      productId: '60g',
-      description: 'Free 60g Standard Size (Milestone Reward)',
+      productId: '50g',
+      description: 'Free 50g Standard Size (Milestone Reward)',
       referralId,
       createdAt: new Date().toISOString(),
       expiresAt: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(), // 6 months

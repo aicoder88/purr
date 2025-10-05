@@ -36,9 +36,9 @@ Search engines were only finding a handful of indexable pages because the websit
 - `/fr/free` - French Free Sample Page (Priority: 0.8)
 
 ### Product Pages (Priority 0.9)
-- `/products/purrify-20g` - 20g Product
-- `/products/purrify-60g` - 60g Product
-- `/products/purrify-140g` - 140g Product
+- `/products/purrify-12g` - 12g Product
+- `/products/purrify-50g` - 50g Product
+- `/products/purrify-120g` - 120g Product
 
 ### Legal Pages (Priority 0.4)
 - `/privacy-policy` - Privacy Policy

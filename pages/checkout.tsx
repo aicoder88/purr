@@ -253,11 +253,11 @@ const CheckoutPage: NextPage = () => {
   // Purchase notification component
   const PurchaseNotification = () => {
     const notifications = [
-      "Sarah from Toronto just purchased Purrify 140g",
-      "Mike from Vancouver ordered 2x Purrify 60g",
+      "Sarah from Toronto just purchased Purrify 120g",
+      "Mike from Vancouver ordered 2x Purrify 50g",
       "Emma from Montreal just bought the trial size",
-      "Alex from Calgary ordered Purrify 140g",
-      "Lisa from Ottawa just purchased 3x Purrify 20g"
+      "Alex from Calgary ordered Purrify 120g",
+      "Lisa from Ottawa just purchased 3x Purrify 12g"
     ];
     
     const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];

@@ -127,7 +127,7 @@ export function Header() {
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products`,
       hasDropdown: true,
       dropdownItems: [
-        { label: t.nav?.trialSize || '17g Trial Size', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size` },
+        { label: t.nav?.trialSize || '12g Trial Size', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size` },
         { label: t.nav?.compareSizes || 'Compare Sizes', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/compare` },
         { label: t.nav?.viewAllProducts || 'View All Products', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products` }
       ]

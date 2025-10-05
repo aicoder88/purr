@@ -19,7 +19,7 @@ export const zh = {
     privacyPolicy: "隐私政策",
     termsOfService: "服务条款",
     // Dropdown items
-    trialSize: "17g 试用装",
+    trialSize: "12g 试用装",
     compareSizes: "比较规格",
     viewAllProducts: "查看所有产品",
     howItWorksPage: "工作原理",
@@ -34,16 +34,16 @@ export const zh = {
   
   // Products
   products: {
-    "purrify-17g": {
-      name: "Purrify 17g",
+    "purrify-12g": {
+      name: "Purrify 12g",
       description: "试用装 - 单次使用样品\n试用装：仅够一次猫砂更换使用。适合在购买大包装前试用Purrify。"
     },
-    "purrify-60g": {
-      name: "Purrify 60g",
+    "purrify-50g": {
+      name: "Purrify 50g",
       description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
     },
-    "purrify-140g": {
-      name: "Purrify 140g",
+    "purrify-120g": {
+      name: "Purrify 120g",
       description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
     }
   },
@@ -430,19 +430,19 @@ export const zh = {
       name: "猫砂异味控制产品",
       products: {
         trial: {
-          name: "Purrify 17g 试用装",
+          name: "Purrify 12g 试用装",
           description: "试用装活性炭猫砂添加剂 - 完美的测试选择",
-          sku: "purrify-17g"
+          sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 60g 标准装", 
+          name: "Purrify 50g 标准装", 
           description: "最受欢迎的规格 - 单猫家庭一个月用量",
-          sku: "purrify-60g"
+          sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 140g 家庭装",
+          name: "Purrify 120g 家庭装",
           description: "大容量装，非常适合多猫家庭 - 最大程度控制异味", 
-          sku: "purrify-140g"
+          sku: "purrify-120g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -459,7 +459,7 @@ export const zh = {
         },
         {
           question: "我应该使用多少Purrify？",
-          answer: "为获得最佳效果，每个标准猫砂盆使用大约1-2汤匙Purrify。在完全更换猫砂时将其与现有猫砂充分混合。17g试用装正好适合一次猫砂盆更换。"
+          answer: "为获得最佳效果，每个标准猫砂盆使用大约1-2汤匙Purrify。在完全更换猫砂时将其与现有猫砂充分混合。12g试用装正好适合一次猫砂盆更换。"
         },
         {
           question: "Purrify适用于所有类型的猫砂吗？",
@@ -713,7 +713,7 @@ export const zh = {
     free: "免费",
     claimTrial: "获取您的免费Purrify试用装",
     whatYouGet: "您将获得：",
-    freeTrialBag: "价值$4.99的17g Purrify试用装",
+    freeTrialBag: "价值$4.99的12g Purrify试用装",
     // freeShippingDoor: "免费送货到您家门口", // TODO: Restore when free shipping is available
     expertTips: "专家猫咪护理技巧和指南",
     zeroCommitment: "零承诺 - 这是我们送给您的礼物",
@@ -850,7 +850,7 @@ export const zh = {
     products: [
       {
         id: "trial",
-        name: "试用装 17g",
+        name: "试用装 12g",
         subtitle: "新用户的完美选择",
         duration: "1次猫砂更换",
         cats: "1只猫",
@@ -866,7 +866,7 @@ export const zh = {
       },
       {
         id: "small",
-        name: "中等装 60g", 
+        name: "中等装 50g", 
         subtitle: "单猫家庭的理想选择",
         duration: "3-4次猫砂更换",
         cats: "1只猫",
@@ -882,7 +882,7 @@ export const zh = {
       },
       {
         id: "large",
-        name: "大装 140g",
+        name: "大装 120g",
         subtitle: "多猫家庭的最佳价值",
         duration: "8-10次猫砂更换",
         cats: "2-3只猫",
@@ -1232,7 +1232,7 @@ export const zh = {
     },
     altText: {
       scientificDiagram: "科学图表显示活性炭分子结构，具有捕获异味分子的微孔",
-      productPackages: "三个Purrify产品包装展示不同尺寸：17g试用装、60g标准装和140g家庭装",
+      productPackages: "三个Purrify产品包装展示不同尺寸：12g试用装、50g标准装和120g家庭装",
       microscopicView: "活性炭的微观视图，显示捕获异味分子的多孔结构",
       happyCat: "快乐的猫咪在清新无异味的家庭环境中安静休息",
       happyCatAlt: "快乐的猫咪",

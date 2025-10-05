@@ -39,9 +39,9 @@ const notifications = [
 ```typescript
 // New Component: src/components/urgency/ScarcityIndicators.tsx
 const inventory = {
-  '20g': { stock: 47, lowStockThreshold: 50 },
-  '60g': { stock: 23, lowStockThreshold: 30 },
-  '140g': { stock: 12, lowStockThreshold: 20 }
+  '12g': { stock: 47, lowStockThreshold: 50 },
+  '50g': { stock: 23, lowStockThreshold: 30 },
+  '120g': { stock: 12, lowStockThreshold: 20 }
 };
 ```
 
@@ -225,17 +225,17 @@ const referralProgram = {
 // New: src/components/bundles/SmartBundles.tsx
 const intelligentBundles = {
   'first-time-buyer': {
-    products: ['purrify-20g', 'litter-scoop', 'how-to-guide'],
+    products: ['purrify-12g', 'litter-scoop', 'how-to-guide'],
     discount: 25,
     value: '$45 → $34'
   },
   'multi-cat-household': {
-    products: ['purrify-140g-x3', 'odor-spray', 'litter-mat'],
+    products: ['purrify-120g-x3', 'odor-spray', 'litter-mat'],
     discount: 30,
     value: '$120 → $84'
   },
   'premium-experience': {
-    products: ['purrify-140g', 'air-purifier', 'enzyme-cleaner', 'premium-scoop'],
+    products: ['purrify-120g', 'air-purifier', 'enzyme-cleaner', 'premium-scoop'],
     discount: 35,
     value: '$200 → $130'
   }

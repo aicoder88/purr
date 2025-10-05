@@ -27,7 +27,7 @@ export default function CaseStudies() {
         ]
       },
       solution: {
-        description: "Sarah started with Purrify's 17g trial size to test effectiveness, then upgraded to the 60g regular size after seeing immediate results.",
+        description: "Sarah started with Purrify's 12g trial size to test effectiveness, then upgraded to the 50g regular size after seeing immediate results.",
         implementation: [
           "Applied 1 teaspoon of Purrify per cat per week",
           "Mixed thoroughly with existing clay litter",
@@ -40,7 +40,7 @@ export default function CaseStudies() {
         metrics: [
           { label: "Odor Reduction", value: "95%", timeframe: "24 hours" },
           { label: "Guest Confidence", value: "100%", timeframe: "1 week" },
-          { label: "Product Longevity", value: "6 weeks", timeframe: "60g bag" },
+          { label: "Product Longevity", value: "6 weeks", timeframe: "50g bag" },
           { label: "Cost Savings", value: "$40/year", timeframe: "vs previous products" }
         ]
       },
@@ -67,7 +67,7 @@ export default function CaseStudies() {
         ]
       },
       solution: {
-        description: "The Johnsons implemented Purrify across all 3 litter boxes using the 140g large size for maximum value and effectiveness.",
+        description: "The Johnsons implemented Purrify across all 3 litter boxes using the 120g large size for maximum value and effectiveness.",
         implementation: [
           "Used 2 teaspoons per litter box weekly",
           "Staggered application across different boxes",

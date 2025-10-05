@@ -98,7 +98,7 @@ export default function Montreal() {
           "name": "How much does Purrify cost in Montreal?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Purrify is available in three sizes: 17g trial size for $6.99 CAD, 60g regular size for $19.99 CAD, and 140g large size for $29.99 CAD. Prices may vary by retailer."
+            "text": "Purrify is available in three sizes: 12g trial size for $6.99 CAD, 50g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer."
           }
         }
       ]
@@ -787,8 +787,8 @@ export default function Montreal() {
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
-                  ? 'Purrify est disponible en trois formats: format d\'essai de 17g pour 6,99$ CAD, format régulier de 60g pour 19,99$ CAD, et grand format de 140g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
-                  : 'Purrify is available in three sizes: 17g trial size for $6.99 CAD, 60g regular size for $19.99 CAD, and 140g large size for $29.99 CAD. Prices may vary by retailer.'
+                  ? 'Purrify est disponible en trois formats: format d\'essai de 12g pour 6,99$ CAD, format régulier de 50g pour 19,99$ CAD, et grand format de 120g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
+                  : 'Purrify is available in three sizes: 12g trial size for $6.99 CAD, 50g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer.'
                 }
               </p>
             </div>
@@ -1058,7 +1058,7 @@ export default function Montreal() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
               <h3 className="text-xl font-semibold mb-3">
-                {locale === 'fr' ? 'Format d\'Essai 17g' : '17g Trial Size'}
+                {locale === 'fr' ? 'Format d\'Essai 12g' : '12g Trial Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
@@ -1084,7 +1084,7 @@ export default function Montreal() {
                 {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
               </div>
               <h3 className="text-xl font-semibold mb-3">
-                {locale === 'fr' ? 'Format Régulier 60g' : '60g Regular Size'}
+                {locale === 'fr' ? 'Format Régulier 50g' : '50g Regular Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
@@ -1107,7 +1107,7 @@ export default function Montreal() {
 
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
               <h3 className="text-xl font-semibold mb-3">
-                {locale === 'fr' ? 'Grand Format 140g' : '140g Large Size'}
+                {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
                 {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}

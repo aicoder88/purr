@@ -186,7 +186,7 @@ export default function BestForSmallApartments() {
                       </div>
                       <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-4">
                         <p className="text-gray-700 dark:text-gray-200">
-                          <strong>Recommended:</strong> Purrify 20g - Perfect size for studio and one-bedroom apartments. 
+                          <strong>Recommended:</strong> Purrify 12g - Perfect size for studio and one-bedroom apartments. 
                           Provides up to 30 days of odor control in a compact package.
                         </p>
                       </div>
@@ -408,7 +408,7 @@ export default function BestForSmallApartments() {
                 <h3 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">💰 Cost-Effective Approach</h3>
                 <div className="space-y-4 text-blue-800 dark:text-blue-200">
                   <div className="flex justify-between items-center">
-                    <span><strong>Purrify 20g (monthly):</strong></span>
+                    <span><strong>Purrify 12g (monthly):</strong></span>
                     <span className="font-bold">$15/month</span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -520,7 +520,7 @@ export default function BestForSmallApartments() {
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, successful apartment odor control is about consistency and the right products. 
                 <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
-                Start with Purrify's compact 20g size</Link> and experience how professional-grade 
+                Start with Purrify's compact 12g size</Link> and experience how professional-grade 
                 odor control can transform your small space living experience.
               </p>
             </div>

@@ -206,12 +206,12 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products/purrify-60g',
+        source: '/products/purrify-50g',
         destination: '/products/standard',
         permanent: true,
       },
       {
-        source: '/products/purrify-140g',
+        source: '/products/purrify-120g',
         destination: '/products/family-pack',
         permanent: true,
       },

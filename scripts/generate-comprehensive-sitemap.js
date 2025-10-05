@@ -140,9 +140,9 @@ function generateProductSitemap(baseUrl = 'https://purrify.ca') {
   const now = new Date().toISOString();
   
   const products = [
-    { url: '/products/trial-size', name: 'Purrify 17g Trial' },
-    { url: '/products/standard', name: 'Purrify 60g Standard' },
-    { url: '/products/family-pack', name: 'Purrify 140g Family' },
+    { url: '/products/trial-size', name: 'Purrify 12g Trial' },
+    { url: '/products/standard', name: 'Purrify 50g Standard' },
+    { url: '/products/family-pack', name: 'Purrify 120g Family' },
   ];
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

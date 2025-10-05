@@ -403,9 +403,9 @@ export default function InvestorRelations() {
                     <div>
                       <BarChart
                         data={[
-                          { label: 'Trial Size (17g)', value: 28, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
-                          { label: 'Medium (60g)', value: 47, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
-                          { label: 'Large (140g)', value: 40, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
+                          { label: 'Trial Size (12g)', value: 28, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
+                          { label: 'Medium (50g)', value: 47, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                          { label: 'Large (120g)', value: 40, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                         ]}
                         title="Product Line Margins (%)"
                         className="mb-6"
@@ -414,21 +414,21 @@ export default function InvestorRelations() {
                       <div className="space-y-4">
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold text-gray-800 dark:text-white">Trial Size (17g)</h4>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Trial Size (12g)</h4>
                             <span className="text-[#FF3131] font-bold drop-shadow-sm">28% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Perfect impulse buy, proves efficacy fast</p>
                         </div>
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold text-gray-800 dark:text-white">Medium (60g)</h4>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Medium (50g)</h4>
                             <span className="text-[#5B2EFF] font-bold drop-shadow-sm">47% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Most popular, ideal for single-cat homes</p>
                         </div>
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-semibold text-gray-800 dark:text-white">Large (140g)</h4>
+                            <h4 className="font-semibold text-gray-800 dark:text-white">Large (120g)</h4>
                             <span className="text-[#2ed573] font-bold drop-shadow-sm">40% margin</span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Multi-cat powerhouse, best value</p>
@@ -557,7 +557,7 @@ export default function InvestorRelations() {
                   
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (60g)</h3>
+                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (50g)</h3>
                       <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
                         <table className="w-full">
                           <tbody>

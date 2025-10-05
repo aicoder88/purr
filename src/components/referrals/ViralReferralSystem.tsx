@@ -54,7 +54,7 @@ const REFERRAL_TIERS: ReferralTier[] = [
     level: 2,
     requiresReferrals: 5,
     commission: 25,
-    perks: ['$12.50 per referral', 'Free Purrify 60g monthly', 'Member-only content'],
+    perks: ['$12.50 per referral', 'Free Purrify 50g monthly', 'Member-only content'],
     color: 'from-blue-400 to-blue-600',
     icon: <Star className="w-5 h-5" />,
     badge: '⭐'

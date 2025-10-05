@@ -264,7 +264,7 @@ export default function PurrifyVsArmHammer() {
                   <tbody>
                     <tr>
                       <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 font-semibold">Purrify Regular</td>
-                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">60g</td>
+                      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">50g</td>
                       <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">$19.99</td>
                       <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center">6-8 weeks</td>
                       <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-center bg-green-50 dark:bg-green-900/20 font-semibold">$10.00</td>

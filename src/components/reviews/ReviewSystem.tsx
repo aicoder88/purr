@@ -19,7 +19,7 @@ interface Review {
   verified: boolean;
   helpful: number;
   notHelpful: number;
-  productSize: '17g' | '60g' | '140g';
+  productSize: '12g' | '50g' | '120g';
   catCount: number;
   usageDuration: string;
   wouldRecommend: boolean;
@@ -45,7 +45,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 24,
     notHelpful: 1,
-    productSize: '140g',
+    productSize: '120g',
     catCount: 3,
     usageDuration: '6 months',
     wouldRecommend: true
@@ -61,7 +61,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 18,
     notHelpful: 0,
-    productSize: '60g',
+    productSize: '50g',
     catCount: 1,
     usageDuration: '3 months',
     wouldRecommend: true
@@ -77,7 +77,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 15,
     notHelpful: 2,
-    productSize: '17g',
+    productSize: '12g',
     catCount: 2,
     usageDuration: '2 months',
     wouldRecommend: true
@@ -93,7 +93,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 12,
     notHelpful: 0,
-    productSize: '140g',
+    productSize: '120g',
     catCount: 2,
     usageDuration: '4 months',
     wouldRecommend: true
@@ -104,12 +104,12 @@ const SAMPLE_REVIEWS: Review[] = [
     userName: 'Amanda T.',
     rating: 4,
     title: 'Good value for money',
-    content: 'Makes my litter last much longer, so it pays for itself. The 140g size is definitely the best value. Easy to use and effective.',
+    content: 'Makes my litter last much longer, so it pays for itself. The 120g size is definitely the best value. Easy to use and effective.',
     date: '2024-01-05',
     verified: true,
     helpful: 9,
     notHelpful: 1,
-    productSize: '140g',
+    productSize: '120g',
     catCount: 1,
     usageDuration: '5 months',
     wouldRecommend: true
@@ -125,7 +125,7 @@ const SAMPLE_REVIEWS: Review[] = [
     verified: true,
     helpful: 31,
     notHelpful: 0,
-    productSize: '60g',
+    productSize: '50g',
     catCount: 2,
     usageDuration: '8 months',
     wouldRecommend: true
@@ -422,9 +422,9 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option value="">All Sizes</option>
-                <option value="17g">17g Trial</option>
-                <option value="60g">60g Regular</option>
-                <option value="140g">140g Large</option>
+                <option value="12g">12g Trial</option>
+                <option value="50g">50g Regular</option>
+                <option value="120g">120g Large</option>
               </select>
             </div>
 

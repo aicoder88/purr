@@ -91,7 +91,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
         subscriptions: [
           {
             id: 'sub_1',
-            productName: 'Purrify 60g Monthly',
+            productName: 'Purrify 50g Monthly',
             frequency: 'Every 30 days',
             nextDelivery: '2024-02-15',
             status: 'active',
@@ -113,7 +113,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
           items: [
             {
               id: '1',
-              name: 'Purrify 60g',
+              name: 'Purrify 50g',
               quantity: 1,
               price: 19.99,
               image: '/images/60g.jpg'
@@ -131,7 +131,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
           items: [
             {
               id: '2',
-              name: 'Purrify 140g',
+              name: 'Purrify 120g',
               quantity: 1,
               price: 29.99,
               image: '/images/140g.jpg'
@@ -145,7 +145,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       const mockSubscriptions: Subscription[] = [
         {
           id: 'sub_001',
-          productName: 'Purrify 140g Monthly',
+          productName: 'Purrify 120g Monthly',
           status: 'active',
           frequency: 'monthly',
           nextDelivery: '2024-02-15',
@@ -156,7 +156,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
         },
         {
           id: 'sub_002',
-          productName: 'Purrify 60g Bi-weekly',
+          productName: 'Purrify 50g Bi-weekly',
           status: 'paused',
           frequency: 'bi-weekly',
           nextDelivery: '2024-02-20',

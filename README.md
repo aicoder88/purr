@@ -7,7 +7,7 @@ This is the official website for Purrify, an activated carbon cat litter additiv
 - Improved language switcher visibility in dark mode.
 - Made the cart button easier to tap on mobile devices.
 - Changed hero section text to static, with gradient color preserved.
-- Updated Purrify 17g (trial size) description and price; clarified it is for one litter box change.
+- Updated Purrify 12g (trial size) description and price; clarified it is for one litter box change.
 - Replaced 'Add to Cart' with a direct Stripe 'Buy Now' link for the trial size.
 - Removed 'Free Purrify' box and combined 'Natural' and 'Cat-Friendly' boxes in the Why Purrify section.
 - Improved testimonial readability in dark mode.

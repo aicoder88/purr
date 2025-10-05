@@ -40,8 +40,8 @@ export function EnhancedProductComparison() {
 
   const products = [
     {
-      id: 'purrify-17g',
-      name: t.products?.['purrify-17g']?.name || 'Purrify 17g',
+      id: 'purrify-12g',
+      name: t.products?.['purrify-12g']?.name || 'Purrify 12g',
       subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
       price: 6.99,
       originalPrice: 9.99,
@@ -65,8 +65,8 @@ export function EnhancedProductComparison() {
       popularity: 1
     },
     {
-      id: 'purrify-60g',
-      name: t.products?.['purrify-60g']?.name || 'Purrify 60g',
+      id: 'purrify-50g',
+      name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
       subtitle: t.enhancedProductComparison?.mostPopular || 'Most Popular',
       price: 19.99,
       originalPrice: 24.99,
@@ -90,8 +90,8 @@ export function EnhancedProductComparison() {
       popularity: 3
     },
     {
-      id: 'purrify-140g',
-      name: t.products?.['purrify-140g']?.name || 'Purrify 140g',
+      id: 'purrify-120g',
+      name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
       subtitle: t.productsSection?.powerLevels?.maximumPower || 'Maximum Power',
       price: 29.99,
       originalPrice: 39.99,
@@ -120,11 +120,11 @@ export function EnhancedProductComparison() {
   const getFeatureLabels = (productId: string) => {
     let odorControlLabel = t.enhancedProductComparison?.odorControl || '7-Day Odor Control';
 
-    if (productId === 'purrify-17g') {
+    if (productId === 'purrify-12g') {
       odorControlLabel = t.enhancedProductComparison?.odorControlTrial || '7-Day Odor Control';
-    } else if (productId === 'purrify-60g') {
+    } else if (productId === 'purrify-50g') {
       odorControlLabel = t.enhancedProductComparison?.odorControlMedium || '14-Day Odor Control';
-    } else if (productId === 'purrify-140g') {
+    } else if (productId === 'purrify-120g') {
       odorControlLabel = t.enhancedProductComparison?.odorControlLarge || '30-Day Odor Control';
     }
 
@@ -260,7 +260,7 @@ export function EnhancedProductComparison() {
 
                   {/* CTA Button */}
                   <div className="mt-auto">
-                    {product.id === 'purrify-17g' ? (
+                    {product.id === 'purrify-12g' ? (
                       <Button
                         asChild
                         className="w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl"

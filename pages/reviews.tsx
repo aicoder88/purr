@@ -15,7 +15,7 @@ export default function Reviews() {
       title: "Game changer for my apartment!",
       review: "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!",
       verified: true,
-      productUsed: "60g Regular Size",
+      productUsed: "50g Regular Size",
       catsOwned: 2,
       useCase: "Small apartment odor control"
     },
@@ -28,7 +28,7 @@ export default function Reviews() {
       title: "Finally found something that works",
       review: "After trying Arm & Hammer, Fresh Step, and countless other deodorizers, Purrify is the only one that actually eliminates odors instead of just masking them. My guests can't even tell I have cats anymore. The activated carbon technology really works.",
       verified: true,
-      productUsed: "140g Large Size",
+      productUsed: "120g Large Size",
       catsOwned: 3,
       useCase: "Multi-cat household"
     },
@@ -41,7 +41,7 @@ export default function Reviews() {
       title: "Worked well for my sensitive kitten",
       review: "My 4-month-old kitten has respiratory sensitivities, so I was cautious about additives. Purrify is fragrance-free — no issues noticed after a gradual intro. Gentle approach and very effective.",
       verified: true,
-      productUsed: "17g Trial Size",
+      productUsed: "12g Trial Size",
       catsOwned: 1,
       useCase: "Use with kittens"
     },
@@ -52,9 +52,9 @@ export default function Reviews() {
       rating: 5,
       date: "December 2023",
       title: "Better value than I expected",
-      review: "Initially thought it was expensive, but when I calculated cost per day, it's actually cheaper than buying Arm & Hammer every week. One 60g bag lasts me almost 2 months with one cat. The convenience alone is worth it.",
+      review: "Initially thought it was expensive, but when I calculated cost per day, it's actually cheaper than buying Arm & Hammer every week. One 50g bag lasts me almost 2 months with one cat. The convenience alone is worth it.",
       verified: true,
-      productUsed: "60g Regular Size",
+      productUsed: "50g Regular Size",
       catsOwned: 1,
       useCase: "Cost-effective solution"
     },
@@ -67,7 +67,7 @@ export default function Reviews() {
       title: "Simple and effective",
       review: "Made from coconut-shell activated carbon and completely fragrance-free. Works really well and I like how straightforward it is. My cats didn’t mind the change at all.",
       verified: true,
-      productUsed: "60g Regular Size",
+      productUsed: "50g Regular Size",
       catsOwned: 2,
       useCase: "Fragrance-free choice"
     },
@@ -80,7 +80,7 @@ export default function Reviews() {
       title: "Veterinarian recommended",
       review: "My vet actually recommended Purrify when I mentioned litter box odors. She said activated carbon is well-established and most effective option for cats - the same type used in water filters. Been using it for 3 months now and couldn't be happier with the results.",
       verified: true,
-      productUsed: "140g Large Size",
+      productUsed: "120g Large Size",
       catsOwned: 2,
       useCase: "Veterinarian recommended"
     }

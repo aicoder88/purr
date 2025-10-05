@@ -144,7 +144,7 @@ function generateWelcomeEmailHTML(recipientName?: string, referralCode?: string)
         <h3>How It Works:</h3>
         <ul>
           <li><strong>Share:</strong> Give your friends your referral code</li>
-          <li><strong>They Save:</strong> Friends get a FREE 17g trial (normally $6.99)</li>
+          <li><strong>They Save:</strong> Friends get a FREE 12g trial (normally $6.99)</li>
           <li><strong>You Earn:</strong> Get 15% off your next order when they purchase</li>
           <li><strong>Bonus:</strong> Free products after every 3 successful referrals!</li>
         </ul>
@@ -175,7 +175,7 @@ Your Referral Code: ${referralCode}
 
 How It Works:
 • Share: Give your friends your referral code
-• They Save: Friends get a FREE 17g trial (normally $6.99)
+• They Save: Friends get a FREE 12g trial (normally $6.99)
 • You Earn: Get 15% off your next order when they purchase
 • Bonus: Free products after every 3 successful referrals!
 

@@ -53,8 +53,8 @@ const INTELLIGENT_BUNDLES: Bundle[] = [
     badge: 'Perfect Start',
     products: [
       {
-        id: '20g',
-        name: 'Purrify 20g Trial',
+        id: '12g',
+        name: 'Purrify 12g Trial',
         description: 'Try risk-free for 2 weeks',
         image: '/optimized/20g.webp',
         regularPrice: 14.99,
@@ -109,8 +109,8 @@ const INTELLIGENT_BUNDLES: Bundle[] = [
     badge: 'Most Popular',
     products: [
       {
-        id: '140g-triple',
-        name: '3x Purrify 140g Family Size',
+        id: '120g-triple',
+        name: '3x Purrify 120g Family Size',
         description: '6-month supply for multi-cat homes',
         image: '/optimized/140g.webp',
         regularPrice: 119.97,
@@ -163,8 +163,8 @@ const INTELLIGENT_BUNDLES: Bundle[] = [
     badge: 'Luxury',
     products: [
       {
-        id: '140g-premium',
-        name: '2x Purrify 140g Premium',
+        id: '120g-premium',
+        name: '2x Purrify 120g Premium',
         description: 'Premium grade activated carbon',
         image: '/optimized/140g-premium.webp',
         regularPrice: 89.98,
@@ -226,8 +226,8 @@ const INTELLIGENT_BUNDLES: Bundle[] = [
     savings: 24.97,
     products: [
       {
-        id: '60g-double',
-        name: '2x Purrify 60g Standard',
+        id: '50g-double',
+        name: '2x Purrify 50g Standard',
         description: 'Perfect portion for small spaces',
         image: '/optimized/60g.webp',
         regularPrice: 49.98,

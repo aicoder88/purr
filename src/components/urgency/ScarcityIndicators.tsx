@@ -20,19 +20,19 @@ interface ScarcityIndicatorProps {
 
 // Simulated inventory data - moved outside component to prevent recreation on every render
 const INVENTORY_DATA: InventoryData = {
-  '20g': {
+  '12g': {
     stock: 23,
     lowStockThreshold: 30,
     reserved: 7,
     lastUpdated: new Date().toISOString()
   },
-  '60g': {
+  '50g': {
     stock: 12,
     lowStockThreshold: 20,
     reserved: 3,
     lastUpdated: new Date().toISOString()
   },
-  '140g': {
+  '120g': {
     stock: 8,
     lowStockThreshold: 15,
     reserved: 2,

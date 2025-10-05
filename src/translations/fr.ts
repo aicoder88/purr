@@ -19,7 +19,7 @@ export const fr = {
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions d'Utilisation",
     // Dropdown items
-    trialSize: "Taille d'Essai 17g",
+    trialSize: "Taille d'Essai 12g",
     compareSizes: "Comparer les Tailles",
     viewAllProducts: "Voir Tous les Produits",
     howItWorksPage: "Comment Ça Marche",
@@ -34,16 +34,16 @@ export const fr = {
   
   // Products
   products: {
-    "purrify-17g": {
-      name: "Purrify 17g",
+    "purrify-12g": {
+      name: "Purrify 12g",
       description: "Parfait pour les Nouveaux Chaton\nTaille d'essai : Suffisant uniquement pour un seul changement de litière. Idéal pour essayer Purrify avant de choisir un format plus grand."
     },
-    "purrify-60g": {
-      name: "Purrify 60g",
+    "purrify-50g": {
+      name: "Purrify 50g",
       description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
     },
-    "purrify-140g": {
-      name: "Purrify 140g",
+    "purrify-120g": {
+      name: "Purrify 120g",
       description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
@@ -384,19 +384,19 @@ export const fr = {
       name: "Produits de Contrôle d'Odeurs de Litière pour Chat",
       products: {
         trial: {
-          name: "Purrify 17g Taille d'Essai",
+          name: "Purrify 12g Taille d'Essai",
           description: "Taille d'essai - additif de litière pour chat à base de charbon actif parfait pour tester",
-          sku: "purrify-17g"
+          sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 60g Taille Standard", 
+          name: "Purrify 50g Taille Standard", 
           description: "Taille la plus populaire - approvisionnement d'un mois pour les foyers à un seul chat",
-          sku: "purrify-60g"
+          sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 140g Pack Familial",
+          name: "Purrify 120g Pack Familial",
           description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs", 
-          sku: "purrify-140g"
+          sku: "purrify-120g"
         }
       },
       priceRange: "6,99 $ - 29,99 $"
@@ -413,7 +413,7 @@ export const fr = {
         },
         {
           question: "Combien de Purrify dois-je utiliser?",
-          answer: "Pour des résultats optimaux, utilisez environ 1-2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le soigneusement avec votre litière existante lorsque vous effectuez un changement complet. La taille d'essai de 17g est parfaite pour un changement de bac à litière."
+          answer: "Pour des résultats optimaux, utilisez environ 1-2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le soigneusement avec votre litière existante lorsque vous effectuez un changement complet. La taille d'essai de 12g est parfaite pour un changement de bac à litière."
         },
         {
           question: "Purrify fonctionne-t-il avec tous les types de litière?",
@@ -849,7 +849,7 @@ export const fr = {
     products: [
       {
         id: "trial",
-        name: "Taille d'Essai 17g",
+        name: "Taille d'Essai 12g",
         subtitle: "Parfait pour les Nouveaux Utilisateurs",
         duration: "1 changement de litière", 
         cats: "1 chat",
@@ -865,7 +865,7 @@ export const fr = {
       },
       {
         id: "small",
-        name: "Taille Moyenne 60g",
+        name: "Taille Moyenne 50g",
         subtitle: "Idéal pour les Foyers à Un Chat", 
         duration: "3-4 changements de litière",
         cats: "1 chat",
@@ -881,7 +881,7 @@ export const fr = {
       },
       {
         id: "large",
-        name: "Grande Taille 140g",
+        name: "Grande Taille 120g",
         subtitle: "Meilleure Valeur pour Foyers Multi-Chats",
         duration: "8-10 changements de litière",
         cats: "2-3 chats", 
@@ -1231,7 +1231,7 @@ export const fr = {
     },
     altText: {
       scientificDiagram: "Diagramme scientifique montrant la structure moléculaire du charbon actif avec des micropores qui piègent les molécules d'odeur",
-      productPackages: "Trois emballages Purrify montrant différentes tailles : essai 17g, standard 60g et pack famille 140g",
+      productPackages: "Trois emballages Purrify montrant différentes tailles : essai 12g, standard 50g et pack famille 120g",
       microscopicView: "Vue microscopique du charbon actif montrant la structure poreuse qui capture les molécules d'odeur",
       happyCat: "Chat heureux se reposant paisiblement dans un environnement domestique frais et sans odeur",
       happyCatAlt: "Chat heureux",

@@ -102,7 +102,7 @@ const FAQPage: NextPage = () => {
     {
       id: 8,
       question: 'What sizes are available?',
-      answer: 'Purrify comes in three sizes: 17g Trial Size ($6.99), 60g Standard ($19.99), and 140g Family Pack ($29.99). The trial size is perfect for testing with one litter box change.',
+      answer: 'Purrify comes in three sizes: 12g Trial Size ($6.99), 50g Standard ($19.99), and 120g Family Pack ($29.99). The trial size is perfect for testing with one litter box change.',
       category: 'product',
       featured: false
     },

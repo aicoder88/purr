@@ -123,9 +123,9 @@ export default async function handler(
 
 function getProductName(productId: string): string {
   const productNames: Record<string, string> = {
-    '20g': 'Purrify 20g Trial Size',
-    '60g': 'Purrify 60g Standard',
-    '140g': 'Purrify 140g Family Size',
+    '12g': 'Purrify 12g Trial Size',
+    '50g': 'Purrify 50g Standard',
+    '120g': 'Purrify 120g Family Size',
     'bundle-starter': 'Starter Bundle',
     'bundle-premium': 'Premium Bundle'
   };

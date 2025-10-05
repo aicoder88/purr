@@ -43,7 +43,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     intervalLabel: 'Every Month',
     savings: 'Save $36/year',
     features: [
-      '1x Purrify 60g delivered monthly',
+      '1x Purrify 50g delivered monthly',
       'Free shipping on all orders',
       'Skip or cancel anytime',
       'Member-only discounts',
@@ -51,9 +51,9 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     ],
     stripePriceId: 'price_monthly_subscription',
     products: [
-      { id: '60g', name: 'Purrify 60g', quantity: 1, value: 24.99 }
+      { id: '50g', name: 'Purrify 50g', quantity: 1, value: 19.99 }
     ],
-    totalValue: 24.99,
+    totalValue: 19.99,
     icon: <Zap className="w-6 h-6" />,
     color: 'from-blue-500 to-purple-500'
   },
@@ -69,7 +69,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     featured: true,
     savings: 'Save $84/year',
     features: [
-      '2x Purrify 60g delivered bi-monthly',
+      '2x Purrify 50g delivered bi-monthly',
       'Free premium scoop included',
       'Free shipping + tracking',
       'Exclusive member pricing',
@@ -82,10 +82,10 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     ],
     stripePriceId: 'price_bimonthly_subscription',
     products: [
-      { id: '60g', name: 'Purrify 60g', quantity: 2, value: 49.98 },
+      { id: '50g', name: 'Purrify 50g', quantity: 2, value: 39.98 },
       { id: 'scoop', name: 'Premium Scoop', quantity: 1, value: 12.99 }
     ],
-    totalValue: 62.97,
+    totalValue: 52.97,
     badge: 'Most Popular',
     icon: <Star className="w-6 h-6" />,
     color: 'from-orange-500 to-pink-500'
@@ -101,7 +101,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     intervalLabel: 'Every 3 Months',
     savings: 'Save $180/year',
     features: [
-      '3x Purrify 140g family size',
+      '3x Purrify 120g family size',
       'FREE odor-eliminating spray',
       'FREE premium litter mat',
       'VIP customer support',
@@ -115,11 +115,11 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     ],
     stripePriceId: 'price_quarterly_subscription',
     products: [
-      { id: '140g', name: 'Purrify 140g', quantity: 3, value: 119.97 },
+      { id: '120g', name: 'Purrify 120g', quantity: 3, value: 89.97 },
       { id: 'spray', name: 'Odor Spray', quantity: 1, value: 19.99 },
       { id: 'mat', name: 'Litter Mat', quantity: 1, value: 24.99 }
     ],
-    totalValue: 164.95,
+    totalValue: 134.95,
     badge: 'Best Value',
     icon: <Crown className="w-6 h-6" />,
     color: 'from-purple-500 to-indigo-500'

@@ -4,28 +4,28 @@ export const SITE_DESCRIPTION =
 
 export const PRODUCTS = [
   {
-    id: "purrify-17g",
-    name: "Purrify 17g",
+    id: "purrify-12g",
+    name: "Purrify 12g",
     description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
     price: 6.99,
     image: "/optimized/20g.webp",
-    size: "17g",
+    size: "12g",
   },
   {
-    id: "purrify-60g",
-    name: "Purrify 60g",
+    id: "purrify-50g",
+    name: "Purrify 50g",
     description: "Ideal for One Cat\nOur most popular size for single-cat homes.\nOne month of freshness!",
     price: 19.99,
     image: "/optimized/60g.webp",
-    size: "60g",
+    size: "50g",
   },
   {
-    id: "purrify-140g",
-    name: "Purrify 140g",
+    id: "purrify-120g",
+    name: "Purrify 120g",
     description: "Perfect for Two Cats\nDouble the power for multi-cat households.\nMaximum odor control.",
     price: 29.99,
     image: "/optimized/140g.webp",
-    size: "140g",
+    size: "120g",
   },
 ];
 
@@ -77,7 +77,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Priya S., Saint-Laurent",
-    text: "My cats used to make the whole basement smell terrible. Started using the 140g size for both of them - game changer! Guests don't even know we have cats now.",
+    text: "My cats used to make the whole basement smell terrible. Started using the 120g size for both of them - game changer! Guests don't even know we have cats now.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",
     stars: 5
   },
@@ -89,13 +89,13 @@ export const TESTIMONIALS = [
   },
   {
     name: "Kenji T., Verdun",
-    text: "My senior cat has some digestive issues, so odor control is crucial. The 60g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
+    text: "My senior cat has some digestive issues, so odor control is crucial. The 50g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kenji",
     stars: 5
   },
   {
     name: "Fatima R., Côte-des-Neiges",
-    text: "Started with the 17g trial for my kitten. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+    text: "Started with the 12g trial for my kitten. Worked so well I immediately ordered the 50g! No more embarrassing smells when friends come over.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=fatima",
     stars: 5
   },
@@ -113,7 +113,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Kai L., Outremont",
-    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat to inhale. The 140g size is perfect for my two-cat household.",
+    text: "Eco-conscious cat parent here! Love that it's just activated charcoal - no weird chemicals for my cat to inhale. The 120g size is perfect for my two-cat household.",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=kai",
     stars: 5
   },
@@ -131,7 +131,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Noor A., West Island",
-    text: "Three cats in a small townhouse. You can imagine the chaos! The 140g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+    text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=noor",
     stars: 5
   },

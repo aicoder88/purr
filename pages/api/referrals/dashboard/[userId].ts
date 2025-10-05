@@ -84,7 +84,7 @@ const getMockReferralStats = (userId: string): ReferralStats => {
         id: 'reward_002',
         type: 'free_product',
         value: 19.99,
-        description: 'Free 60g Standard Size (Milestone Reward)',
+        description: 'Free 50g Standard Size (Milestone Reward)',
         expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
         isUsed: false,
         createdAt: '2024-01-22T15:45:00Z'
@@ -120,7 +120,7 @@ const getMockReferralStats = (userId: string): ReferralStats => {
     milestoneProgress: {
       current: 8,
       target: 9, // Next milestone at 9 referrals
-      nextReward: 'Free 140g Family Pack',
+      nextReward: 'Free 120g Family Pack',
       progress: 88.9 // (8/9) * 100
     },
     socialShares: {

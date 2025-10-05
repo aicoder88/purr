@@ -24,7 +24,7 @@ const PURCHASE_DATA: PurchaseNotification[] = [
     id: '1',
     customerName: 'Sarah M.',
     location: 'Toronto, ON',
-    product: '3x Purrify 140g Bundle',
+    product: '3x Purrify 120g Bundle',
     timeAgo: '2 minutes ago',
     verified: true
   },
@@ -48,7 +48,7 @@ const PURCHASE_DATA: PurchaseNotification[] = [
     id: '4',
     customerName: 'David S.',
     location: 'Calgary, AB',
-    product: 'Purrify 60g Standard',
+    product: 'Purrify 50g Standard',
     timeAgo: '18 minutes ago',
     verified: true
   },

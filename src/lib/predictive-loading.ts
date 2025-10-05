@@ -411,9 +411,9 @@ class PredictiveLoader {
   }
 
   private extractProductId(href: string): string | null {
-    if (href.includes('trial-size')) return '20g';
-    if (href.includes('60g')) return '60g';
-    if (href.includes('140g')) return '140g';
+    if (href.includes('trial-size') || href.includes('20g')) return '12g';
+    if (href.includes('50g') || href.includes('60g')) return '50g';
+    if (href.includes('120g') || href.includes('140g')) return '120g';
     return null;
   }
 

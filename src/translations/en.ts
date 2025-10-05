@@ -21,7 +21,7 @@ export const en = {
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
     // Dropdown items
-    trialSize: "17g Trial Size",
+    trialSize: "12g Trial Size",
     compareSizes: "Compare Sizes", 
     viewAllProducts: "View All Products",
     howItWorksPage: "How It Works",
@@ -36,16 +36,16 @@ export const en = {
   
   // Products
   products: {
-    "purrify-17g": {
-      name: "Purrify 17g Trial",
+    "purrify-12g": {
+      name: "Purrify 12g Trial",
       description: "Skeptical? Try This First!\nJust $4.99 to prove your litter box can smell fresh. See results in 24 hours. Perfect 'try before you buy' size."
     },
-    "purrify-60g": {
-      name: "Purrify 60g Standard",
+    "purrify-50g": {
+      name: "Purrify 50g Standard",
       description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
     },
-    "purrify-140g": {
-      name: "Purrify 140g Family Pack",
+    "purrify-120g": {
+      name: "Purrify 120g Family Pack",
       description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },
@@ -230,7 +230,7 @@ export const en = {
       },
       {
         question: "How long does one bag of Purrify last?",
-        answer: "This depends on how many cats you have and how often you change their litter. On average, our 65g bag lasts about 1-2 months for a single cat household with regular litter changes."
+        answer: "This depends on how many cats you have and how often you change their litter. On average, our 50g bag lasts about 1-2 months for a single cat household with regular litter changes."
       },
       {
         question: "How is Purrify different from scented litters or deodorizers?",
@@ -368,19 +368,19 @@ export const en = {
       name: "Cat Litter Odor Control Products",
       products: {
         trial: {
-          name: "Purrify 17g Trial Size",
+          name: "Purrify 12g Trial Size",
           description: "Trial size activated carbon cat litter additive - perfect for testing",
-          sku: "purrify-17g"
+          sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 60g Standard Size", 
+          name: "Purrify 50g Standard Size",
           description: "Most popular size - one month supply for single cat households",
-          sku: "purrify-60g"
+          sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 140g Family Pack",
-          description: "Large size perfect for multi-cat households - maximum odor control", 
-          sku: "purrify-140g"
+          name: "Purrify 120g Family Pack",
+          description: "Large size perfect for multi-cat households - maximum odor control",
+          sku: "purrify-120g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -397,7 +397,7 @@ export const en = {
         },
         {
           question: "How much Purrify should I use?",
-          answer: "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 17g trial size is perfect for one litter box change."
+          answer: "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 12g trial size is perfect for one litter box change."
         },
         {
           question: "Does Purrify work with all types of litter?",
@@ -691,7 +691,7 @@ export const en = {
     free: "FREE",
     claimTrial: "Claim Your FREE Purrify Trial",
     whatYouGet: "What You Get:",
-    freeTrialBag: "17g Purrify Trial Size worth $4.99",
+    freeTrialBag: "12g Purrify Trial Size worth $4.99",
     // freeShippingDoor: "Free shipping to your door", // TODO: Restore when free shipping is available
     expertTips: "Expert cat care tips and guides",
     zeroCommitment: "Zero commitment - this is our gift to you",
@@ -827,7 +827,7 @@ export const en = {
         subtitle: "Perfect for first-time users",
         duration: "1-2 weeks",
         cats: "1-2 cats",
-        features: ["17g activated carbon", "Risk-free trial", "Perfect introduction"],
+        features: ["12g activated carbon", "Risk-free trial", "Perfect introduction"],
         bestFor: "New customers wanting to try Purrify",
         cta: "Try Risk-Free"
       },
@@ -954,7 +954,7 @@ export const en = {
       id: 3,
       category: "usage",
       question: "How much Purrify should I use?",
-      answer: "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 17g trial size is perfect for one litter box change.",
+      answer: "For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change. The 12g trial size is perfect for one litter box change.",
       popular: true,
       tags: ["dosage", "application", "mixing"]
     },
@@ -986,7 +986,7 @@ export const en = {
       id: 7,
       category: "product",
       question: "What sizes are available?",
-      answer: "We offer three sizes: 17g Trial Size ($6.99) for first-time users, 60g Regular Size ($19.99) for single-cat households, and 140g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
+      answer: "We offer three sizes: 12g Trial Size ($6.99) for first-time users, 50g Regular Size ($19.99) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
       popular: false,
       tags: ["sizes", "pricing", "value"]
     },
@@ -1042,7 +1042,7 @@ export const en = {
       id: 14,
       category: "product",
       question: "Can Purrify help with multiple cats?",
-      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 140g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
+      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
       popular: false,
       tags: ["multiple cats", "multi-cat", "large size"]
     },
@@ -1191,7 +1191,7 @@ export const en = {
     },
     altText: {
       scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      productPackages: "Three Purrify product packages showing different sizes: 17g trial, 60g standard, and 140g family pack",
+      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 50g standard, and 120g family pack",
       microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
       happyCatAlt: "Happy cat",

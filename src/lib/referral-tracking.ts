@@ -183,10 +183,10 @@ export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price
     return cartItems;
   }
 
-  // Add free 17g trial to cart
+  // Add free 12g trial to cart
   const freeTrialItem = {
-    id: 'purrify-17g-referral',
-    name: 'Purrify 17g Trial Size - FREE (Referral Reward)',
+    id: 'purrify-12g-referral',
+    name: 'Purrify 12g Trial Size - FREE (Referral Reward)',
     price: 0,
     originalPrice: 6.99,
     quantity: 1,

@@ -15,15 +15,15 @@ export default function TrialSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
-  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 17g Activated Carbon Cat Litter Additive`;
-  const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 17g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 12g Activated Carbon Cat Litter Additive`;
+  const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 12g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
   
   // Generate structured data for this product
-  const productData = generateProductData('purrify-17g');
+  const productData = generateProductData('purrify-12g');
   const breadcrumbs = generateBreadcrumbs('/products/trial-size');
 
   const benefits = [
@@ -37,7 +37,7 @@ export default function TrialSizePage() {
   const testimonials = [
     {
       name: "Fatima R., Côte-des-Neiges",
-      text: "Started with the 17g trial for my kitten Ziggy. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+      text: "Started with the 12g trial for my kitten Ziggy. Worked so well I immediately ordered the 50g! No more embarrassing smells when friends come over.",
       rating: 5,
       petName: "Ziggy"
     },
@@ -67,14 +67,14 @@ export default function TrialSizePage() {
               url: 'https://www.purrify.ca/optimized/20g.webp',
               width: 1200,
               height: 630,
-              alt: 'Purrify 17g Trial Size Package (WebP)',
+              alt: 'Purrify 12g Trial Size Package (WebP)',
               type: 'image/webp'
             },
             {
               url: 'https://www.purrify.ca/purrify-trial-17g.jpg',
               width: 1200,
               height: 630,
-              alt: 'Purrify 17g Trial Size Package',
+              alt: 'Purrify 12g Trial Size Package',
               type: 'image/jpeg'
             }
           ]
@@ -94,7 +94,7 @@ export default function TrialSizePage() {
       />
       
       {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-17g' locale={locale as 'en' | 'fr' | 'zh'} />
+      <ProductSchema productId='purrify-12g' locale={locale as 'en' | 'fr' | 'zh'} />
       
       {/* Enhanced Trial Product JSON-LD */}
       <script
@@ -106,7 +106,7 @@ export default function TrialSizePage() {
               {
                 "@type": "Product",
                 "@id": canonicalUrl,
-                "name": "Purrify 17g Trial Size - Activated Carbon Cat Litter Additive",
+                "name": "Purrify 12g Trial Size - Activated Carbon Cat Litter Additive",
                 "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
                 "image": [
                   "https://www.purrify.ca/optimized/20g.webp",
@@ -123,15 +123,15 @@ export default function TrialSizePage() {
                   "name": "Purrify"
                 },
                 "category": "Pet Supplies > Cat Care > Litter Additives",
-                "sku": "purrify-17g",
-                "mpn": "PURRIFY-17G-TRIAL",
+                "sku": "purrify-12g",
+                "mpn": "PURRIFY-12G-TRIAL",
                 "gtin13": "9781234567891",
                 "weight": {
                   "@type": "QuantitativeValue",
-                  "value": "17",
+                  "value": "12",
                   "unitCode": "GRM"
                 },
-                "size": "17g",
+                "size": "12g",
                 "color": "Black",
                 "material": "Activated Carbon from Coconut Shells",
                 "offers": {
@@ -204,7 +204,7 @@ export default function TrialSizePage() {
                       "@type": "Person",
                       "name": "Fatima R."
                     },
-                    "reviewBody": "Started with the 17g trial for my kitten. Worked so well I immediately ordered the 60g! No more embarrassing smells when friends come over.",
+                    "reviewBody": "Started with the 12g trial for my kitten. Worked so well I immediately ordered the 50g! No more embarrassing smells when friends come over.",
                     "datePublished": "2024-02-10"
                   }
                 ],
@@ -241,7 +241,7 @@ export default function TrialSizePage() {
                   "hasVariant": [
                     {
                       "@type": "Product",
-                      "name": "Purrify 17g Trial",
+                      "name": "Purrify 12g Trial",
                       "offers": {
                         "@type": "Offer",
                         "price": "6.99",
@@ -252,7 +252,7 @@ export default function TrialSizePage() {
                     },
                     {
                       "@type": "Product",
-                      "name": "Purrify 60g Standard",
+                      "name": "Purrify 50g Standard",
                       "offers": {
                         "@type": "Offer",
                         "price": "19.99",
@@ -263,7 +263,7 @@ export default function TrialSizePage() {
                     },
                     {
                       "@type": "Product",
-                      "name": "Purrify 140g Family Pack",
+                      "name": "Purrify 120g Family Pack",
                       "offers": {
                         "@type": "Offer",
                         "price": "29.99",
@@ -343,7 +343,7 @@ export default function TrialSizePage() {
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <NextImage
                     src="/optimized/20g.webp"
-                    alt="Purrify 17g Trial Size"
+                    alt="Purrify 12g Trial Size"
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -362,7 +362,7 @@ export default function TrialSizePage() {
                     Purrify Trial Size
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    17g Activated Carbon Cat Litter Additive
+                    12g Activated Carbon Cat Litter Additive
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -450,7 +450,7 @@ export default function TrialSizePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Order Trial</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Get your 17g trial size delivered to your door
+                  Get your 12g trial size delivered to your door
                 </p>
               </div>
               
@@ -533,14 +533,14 @@ export default function TrialSizePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Regular Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">60g - Perfect for regular use</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">50g - Perfect for regular use</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$19.99</div>
                 <Button className="w-full">View Regular Size</Button>
               </div>
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Large Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">140g - Best value for multiple cats</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value for multiple cats</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Button className="w-full">View Large Size</Button>
               </div>

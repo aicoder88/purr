@@ -267,9 +267,9 @@ const ProductComparePage: NextPage = () => {
                   <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">{locale === 'fr' ? 'Caractéristique' : locale === 'zh' ? '特性' : 'Feature'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : locale === 'zh' ? '17g 试用' : '17g Trial'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : locale === 'zh' ? '60g 标准' : '60g Regular'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 140g' : locale === 'zh' ? '140g 大号' : '140g Large'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 12g' : locale === 'zh' ? '12g 试用' : '12g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 50g' : locale === 'zh' ? '50g 标准' : '50g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -327,9 +327,9 @@ const ProductComparePage: NextPage = () => {
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 17g' : locale === 'zh' ? '17g 试用' : '17g Trial'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 60g' : locale === 'zh' ? '60g 标准' : '60g Regular'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 140g' : locale === 'zh' ? '140g 大号' : '140g Large'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 12g' : locale === 'zh' ? '12g 试用' : '12g Trial'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 50g' : locale === 'zh' ? '50g 标准' : '50g Regular'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
                     </tr>
                   </thead>
                   <tbody>

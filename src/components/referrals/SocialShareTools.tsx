@@ -36,7 +36,7 @@ I discovered this amazing cat litter deodorizer that ACTUALLY works. No more hol
 
 I was embarrassed about the smell in my home, but Purrify completely eliminated it in 24 hours. The activated carbon technology destroys odors instead of just masking them.
 
-You can get a FREE 17g trial with my referral code: {code}
+You can get a FREE 12g trial with my referral code: {code}
 
 Try it here: {url}
 

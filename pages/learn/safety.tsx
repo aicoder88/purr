@@ -413,7 +413,7 @@ export default function SafetyInformationPage() {
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="group">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 hover:border-[#FF3131] dark:hover:border-[#FF5050] h-full">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">17g</div>
+                      <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">12g</div>
                       <div className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Trial Size</div>
                       <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Perfect for testing with one cat</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">1 litter box change</p>
@@ -427,7 +427,7 @@ export default function SafetyInformationPage() {
                       MOST POPULAR
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">60g</div>
+                      <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">50g</div>
                       <div className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Standard Size</div>
                       <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Ideal for single-cat homes</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">1 month supply</p>

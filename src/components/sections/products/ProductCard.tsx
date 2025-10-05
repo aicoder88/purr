@@ -180,7 +180,7 @@ export const ProductCard = ({
             {cartQuantity > 0 && <CartBadge quantity={cartQuantity} />}
           </div>
 
-          {product.id === "purrify-17g" ? (
+          {product.id === "purrify-12g" ? (
             <a
               href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
               target="_blank"

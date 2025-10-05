@@ -32,7 +32,7 @@ const ALL_ARTICLES: Article[] = [
     title: 'Best Litter Odor Remover for Small Apartments',
     href: '/blog/best-litter-odor-remover-small-apartments',
     image: '/optimized/20g.webp',
-    alt: 'Compact 20g product ideal for small apartments',
+    alt: 'Compact 12g product ideal for small apartments',
   },
   {
     title: 'Multi-Cat Litter Deodorizer Guide',
