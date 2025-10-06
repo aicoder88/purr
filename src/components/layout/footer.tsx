@@ -31,7 +31,7 @@ export function Footer() {
         
         {/* Main Footer Content */}
         <div className="py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <Link href={locale === 'fr' ? "/fr/" : "/"} className="group">
@@ -76,33 +76,9 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
-              {t.footer.quickLinks}
+              Products
             </h3>
             <ul className="space-y-2 text-sm dark:text-sm">
-              <li>
-                <Link
-                  href={locale === 'fr' ? "/fr/" : "/"}
-                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                >
-                  {t.nav.home}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={locale === 'fr' ? "/fr/learn/how-it-works" : "/learn/how-it-works"}
-                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                >
-                  {t.nav.howItWorks}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={locale === 'fr' ? "/fr/#about" : "/#about"}
-                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                >
-                  {t.nav.about}
-                </Link>
-              </li>
               <li>
                 <Link
                   href={locale === 'fr' ? "/fr/products/trial-size" : "/products/trial-size"}
@@ -113,18 +89,58 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/customers/testimonials" : "/customers/testimonials"}
+                  href={locale === 'fr' ? "/fr/products/standard" : "/products/standard"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
-                  {t.nav.testimonials}
+                  Standard Size
                 </Link>
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/support/contact" : "/support/contact"}
+                  href={locale === 'fr' ? "/fr/products/family-pack" : "/products/family-pack"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
-                  {t.nav.contact}
+                  Family Pack
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/products/compare" : "/products/compare"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Compare Sizes
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              Learn
+            </h3>
+            <ul className="space-y-2 text-sm dark:text-sm">
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/learn/how-it-works" : "/learn/how-it-works"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/learn/faq" : "/learn/faq"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/learn/science" : "/learn/science"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Science
                 </Link>
               </li>
               <li>
@@ -137,18 +153,50 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href={locale === 'fr' ? "/fr/blog" : "/blog"}
+                  href={locale === 'fr' ? "/fr/learn/cat-litter-guide" : "/learn/cat-litter-guide"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
-                  {t.nav.blog}
+                  Cat Litter Guide
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              Solutions
+            </h3>
+            <ul className="space-y-2 text-sm dark:text-sm">
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/solutions/ammonia-smell-cat-litter" : "/solutions/ammonia-smell-cat-litter"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Ammonia Smell
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/customer/portal"
+                  href={locale === 'fr' ? "/fr/solutions/apartment-cat-smell-solution" : "/solutions/apartment-cat-smell-solution"}
                   className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 >
-                  Customer Portal
+                  Apartment Living
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/solutions/multiple-cats-odor-control" : "/solutions/multiple-cats-odor-control"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Multiple Cats
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/solutions/natural-cat-litter-additive" : "/solutions/natural-cat-litter-additive"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Natural Additive
                 </Link>
               </li>
             </ul>
@@ -156,24 +204,52 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
-              {t.footer.openingHours}
+              Company
             </h3>
-            <ul className="space-y-2 text-sm text-[#333333]/80 dark:text-gray-300">
-              <li>{locale === 'fr' ? 'Lun - Ven' : 'Mon - Fri'}: {t.contact.hours.monday}</li>
-              <li>{locale === 'fr' ? 'Samedi' : 'Saturday'}: {t.contact.hours.saturday}</li>
-              <li>{locale === 'fr' ? 'Dimanche' : 'Sunday'}: {t.contact.hours.sunday}</li>
+            <ul className="space-y-2 text-sm dark:text-sm">
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/about/our-story" : "/about/our-story"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/blog" : "/blog"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/customers/testimonials" : "/customers/testimonials"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/retailers" : "/retailers"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  For Retailers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={locale === 'fr' ? "/fr/support/contact" : "/support/contact"}
+                  className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
-              {t.footer.contactUs}
-            </h3>
-            <address className="not-italic space-y-2 text-sm text-[#333333]/80 dark:text-gray-300">
-              <p>{t.contact.address}</p>
-              <p>{t.contact.phone}</p>
-            </address>
-          </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-[#E0EFC7] dark:border-gray-800">
