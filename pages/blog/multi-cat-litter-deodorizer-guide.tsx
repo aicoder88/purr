@@ -7,9 +7,9 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for multi-cat household content
-const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
-const multiBoxImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80';
-const maintenanceImage = 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/multi-cat-deodorizer.webp';
+const multiBoxImage = '/optimized/multi-cat-household.webp';
+const maintenanceImage = '/optimized/multiple-cats-together.webp';
 
 export default function MultiCatLitterDeodorizerGuide() {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ export default function MultiCatLitterDeodorizerGuide() {
         <meta property="og:description" content={t.blog.multiCat.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -34,7 +34,7 @@ export default function MultiCatLitterDeodorizerGuide() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.blog.multiCat.title} />
         <meta name="twitter:description" content={t.blog.multiCat.description} />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide" />
@@ -60,7 +60,7 @@ export default function MultiCatLitterDeodorizerGuide() {
             },
             "datePublished": "2024-09-16",
             "dateModified": "2024-09-16",
-            "image": "https://www.purrify.ca/multi-cat-household.jpg",
+            "image": `https://www.purrify.ca${heroImage}`,
             "url": "https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide",
             "mainEntityOfPage": {
               "@type": "WebPage",
@@ -114,12 +114,12 @@ export default function MultiCatLitterDeodorizerGuide() {
                 <li>/</li>
                 <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">{t.blog.multiCat.breadcrumb}</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">{t.blog.multiCat.breadcrumb}</li>
               </ol>
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 {t.blog.multiCat.category}
               </div>

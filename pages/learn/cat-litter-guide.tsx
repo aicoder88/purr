@@ -168,7 +168,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
@@ -212,9 +212,9 @@ const CatLitterGuidePage: NextPage = () => {
               <OptimizedImage
                 src={heroImage}
                 alt="Modern cat litter box setup showing different litter types and maintenance tools"
-                width={800}
-                height={400}
-                className="w-full h-64 object-cover rounded-lg shadow-lg"
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
           </Container>
@@ -224,10 +224,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Cat Litter Types Compared
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Not all litters are created equal. Here's how different types stack up against each other.
               </p>
             </div>
@@ -236,7 +236,7 @@ const CatLitterGuidePage: NextPage = () => {
               {litterTypes.map((litter, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                       {litter.name}
                     </h3>
                     <div className="flex">
@@ -251,11 +251,11 @@ const CatLitterGuidePage: NextPage = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold text-green-600 dark:text-green-400 dark:text-green-400 dark:text-green-400 mb-2">Pros:</h4>
+                      <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Pros:</h4>
                       <ul className="space-y-1">
                         {litter.pros.map((pro, i) => (
-                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 dark:text-green-400 mr-2 flex-shrink-0" />
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                             {pro}
                           </li>
                         ))}
@@ -263,10 +263,10 @@ const CatLitterGuidePage: NextPage = () => {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-red-600 dark:text-red-400 dark:text-red-400 mb-2">Cons:</h4>
+                      <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Cons:</h4>
                       <ul className="space-y-1">
                         {litter.cons.map((con, i) => (
-                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300">
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                             <XCircle className="w-4 h-4 text-red-500 dark:text-red-400 mr-2 flex-shrink-0" />
                             {con}
                           </li>
@@ -287,9 +287,9 @@ const CatLitterGuidePage: NextPage = () => {
               <OptimizedImage
                 src={sectionImage1}
                 alt="Various cat litter types displayed for comparison"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-md"
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
               />
             </div>
           </Container>
@@ -299,10 +299,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Essential Maintenance Tips
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Keep your litter box fresh and your cat happy with these proven maintenance practices.
               </p>
             </div>
@@ -313,7 +313,7 @@ const CatLitterGuidePage: NextPage = () => {
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                     <tip.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                     {tip.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -332,9 +332,9 @@ const CatLitterGuidePage: NextPage = () => {
               <OptimizedImage
                 src={sectionImage2}
                 alt="Cat owner performing proper litter box maintenance routine"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-md"
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
               />
             </div>
           </Container>
@@ -344,10 +344,10 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Common Problems & Solutions
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Facing litter box issues? Here are the most common problems and their proven solutions.
               </p>
             </div>
@@ -355,11 +355,11 @@ const CatLitterGuidePage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {commonProblems.map((item, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-xl font-bold mb-3 text-red-600 dark:text-red-400 dark:text-red-400">
+                  <h3 className="text-xl font-bold mb-3 text-red-600 dark:text-red-400">
                     Problem: {item.problem}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    <span className="font-semibold text-green-600 dark:text-green-400 dark:text-green-400 dark:text-green-400">Solution:</span> {item.solution}
+                    <span className="font-semibold text-green-600 dark:text-green-400">Solution:</span> {item.solution}
                   </p>
                   {item.link && (
                     <Link href={`${locale === 'fr' ? '/fr' : ''}${item.link}`}>
@@ -382,9 +382,9 @@ const CatLitterGuidePage: NextPage = () => {
               <OptimizedImage
                 src={solutionImage}
                 alt="Happy multi-cat household with clean, odor-free environment"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-md"
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
               />
             </div>
           </Container>

@@ -13,7 +13,7 @@ export default function HowToUseLitterDeodorizer() {
   return (
     <>
       <Head>
-        <title>How to Use Cat Litter Deodorizer: Step-by-Step Guide | {SITE_NAME}</title>
+        <title>{`How to Use Cat Litter Deodorizer: Step-by-Step Guide | ${SITE_NAME}`}</title>
         <meta name="description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions, common mistakes to avoid, and expert tips." />
         <meta name="keywords" content="how to use cat litter deodorizer additive, litter box odor control, cat litter deodorizer instructions, activated carbon application" />
         
@@ -22,7 +22,7 @@ export default function HowToUseLitterDeodorizer() {
         <meta property="og:description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions and expert tips." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -30,7 +30,7 @@ export default function HowToUseLitterDeodorizer() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="How to Use Cat Litter Deodorizer: Complete Guide" />
         <meta name="twitter:description" content="Step-by-step instructions for proper cat litter deodorizer application and maximum odor control." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
@@ -116,7 +116,7 @@ export default function HowToUseLitterDeodorizer() {
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 How-To Guide
               </div>

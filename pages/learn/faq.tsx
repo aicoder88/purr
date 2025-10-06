@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useCallback } from 'react';
 import { Container } from '../../src/components/ui/container';
@@ -217,126 +216,6 @@ const FAQPage: NextPage = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Head>
-        <title>Frequently Asked Questions - Everything About Purrify | Purrify</title>
-        <meta 
-          name="description" 
-          content="Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ." 
-        />
-        <meta name="keywords" content="Purrify FAQ, cat litter questions, activated carbon safety, usage instructions, shipping info" />
-        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Frequently Asked Questions - Everything About Purrify" />
-        <meta property="og:description" content="Get answers to all your Purrify questions about usage, safety, shipping, and more." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`} />
-        
-        {/* Enhanced FAQ Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "FAQPage",
-                  "@id": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-                  "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-                  "name": "Frequently Asked Questions - Everything About Purrify",
-                  "description": "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
-                  "publisher": {
-                    "@type": "Organization",
-                    "@id": "https://www.purrify.ca/#organization",
-                    "name": "Purrify"
-                  },
-                  "datePublished": "2024-01-01",
-                  "dateModified": "2024-08-30",
-                  "inLanguage": "en-CA",
-                  "about": {
-                    "@type": "Product",
-                    "name": "Purrify Activated Carbon Cat Litter Additive",
-                    "description": "Premium activated carbon cat litter additive that eliminates odors at the molecular level."
-                  },
-                  "mainEntity": faqItems.map((item, index) => ({
-                    "@type": "Question",
-                    "@id": `https://www.purrify.ca/learn/faq#question-${index + 1}`,
-                    "name": item.question,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": item.answer,
-                      "dateCreated": "2024-01-01",
-                      "upvoteCount": item.featured ? 25 : 10,
-                      "author": {
-                        "@type": "Organization",
-                        "name": "Purrify Customer Service"
-                      }
-                    },
-                    "answerCount": 1,
-                    "suggestedAnswer": {
-                      "@type": "Answer",
-                      "text": item.answer
-                    }
-                  }))
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/`
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 2,
-                      "name": "Learn",
-                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 3,
-                      "name": "FAQ",
-                      "item": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`
-                    }
-                  ]
-                },
-                {
-                  "@type": "WebPage",
-                  "@id": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-                  "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-                  "name": "FAQ - Purrify Cat Litter Additive",
-                  "description": "Complete FAQ covering all aspects of Purrify activated carbon cat litter additive including usage, safety, and effectiveness.",
-                  "isPartOf": {
-                    "@type": "WebSite",
-                    "@id": "https://www.purrify.ca/#website"
-                  },
-                  "datePublished": "2024-01-01",
-                  "dateModified": "2024-08-30",
-                  "inLanguage": "en-CA",
-                  "primaryImageOfPage": {
-                    "@type": "ImageObject",
-                    "url": "https://www.purrify.ca/purrify-logo.png",
-                    "width": 400,
-                    "height": 400
-                  },
-                  "significantLink": [
-                    "https://purrify.ca/products/trial-size",
-                    "https://purrify.ca/products/standard",
-                    "https://purrify.ca/learn/how-it-works",
-                    "https://purrify.ca/learn/activated-carbon-benefits"
-                  ],
-                  "speakable": {
-                    "@type": "SpeakableSpecification",
-                    "cssSelector": [".popular-questions h3", ".faq-answer"]
-                  }
-                }
-              ]
-            })
-          }}
-        />
-      </Head>
       
       {/* Comprehensive FAQ Structured Data */}
       <ComprehensiveStructuredData 
@@ -357,7 +236,7 @@ const FAQPage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
@@ -423,7 +302,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Most Popular Questions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -434,7 +313,7 @@ const FAQPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {popularFAQs.map((item) => (
                 <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {item.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -473,7 +352,7 @@ const FAQPage: NextPage = () => {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Categories Sidebar */}
               <div className="lg:w-1/4">
-                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100 flex items-center">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
                   <Filter className="w-5 h-5 mr-2" />
                   Categories
                 </h3>
@@ -485,7 +364,7 @@ const FAQPage: NextPage = () => {
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                         selectedCategory === category.id
                           ? 'bg-[#5B2EFF] text-white dark:text-gray-100'
-                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
                       <div className="flex items-center">
@@ -495,7 +374,7 @@ const FAQPage: NextPage = () => {
                       <span className={`text-sm px-2 py-1 rounded-full ${
                         selectedCategory === category.id
                           ? 'bg-white dark:bg-gray-900/20 text-white dark:text-gray-100'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 dark:text-gray-400'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
                       }`}>
                         {category.count}
                       </span>
@@ -507,7 +386,7 @@ const FAQPage: NextPage = () => {
               {/* FAQ Items */}
               <div className="lg:w-3/4">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                     {filteredFAQs.length} Question{filteredFAQs.length !== 1 ? 's' : ''} Found
                   </h3>
                   {searchTerm && (
@@ -528,7 +407,7 @@ const FAQPage: NextPage = () => {
                         className="w-full p-6 text-left flex items-center justify-between bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                       >
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                             {item.question}
                           </h4>
                           <div className="flex flex-wrap gap-2">
@@ -573,7 +452,7 @@ const FAQPage: NextPage = () => {
                 {filteredFAQs.length === 0 && (
                   <div className="text-center py-12">
                     <HelpCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-300 dark:text-gray-400 mb-2">
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
                       No questions found
                     </h3>
                     <p className="text-gray-500 dark:text-gray-500">
@@ -611,7 +490,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Still Have Questions?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
@@ -621,7 +500,7 @@ const FAQPage: NextPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Mail className="w-8 h-8 text-[#5B2EFF] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Email Support</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Email Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Get detailed answers via email
                   </p>
@@ -636,7 +515,7 @@ const FAQPage: NextPage = () => {
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
                   <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Phone Support</h3>
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Phone Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Speak with our team directly
                   </p>
@@ -701,7 +580,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Learn More About Purrify
               </h2>
             </div>
@@ -709,7 +588,7 @@ const FAQPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     How It Works
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -720,7 +599,7 @@ const FAQPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Cat Litter Guide
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -731,7 +610,7 @@ const FAQPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

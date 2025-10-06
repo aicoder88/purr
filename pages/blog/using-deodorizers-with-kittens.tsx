@@ -6,13 +6,13 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for kitten care content
-const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/deodorizers-with-kittens.webp';
 
 export default function UsingDeodorizersWithKittens() {
   return (
     <>
       <Head>
-        <title>Using Cat Litter Deodorizer with Kittens? Complete Parent Guide | {SITE_NAME}</title>
+        <title>{`Using Cat Litter Deodorizer with Kittens? Complete Parent Guide | ${SITE_NAME}`}</title>
         <meta name="description" content="Considering litter deodorizers with kittens? This complete guide shows exactly when and how to eliminate litter box smell with kittens. Water-filter grade quality for tiny paws!" />
         <meta name="keywords" content="cat litter deodorizer kittens, kitten litter care, natural cat litter additive, fragrance-free cat deodorizer, kitten health" />
         
@@ -21,7 +21,7 @@ export default function UsingDeodorizersWithKittens() {
         <meta property="og:description" content="Kitten parents: This guide shows exactly when to eliminate litter box smell with kittens. Natural, chemical-free - the same type used in water filters worldwide!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -29,7 +29,7 @@ export default function UsingDeodorizersWithKittens() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Using Cat Litter Deodorizers with Kittens" />
         <meta name="twitter:description" content="How and when households introduce fragrance-free deodorizers around kittens." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
@@ -48,7 +48,7 @@ export default function UsingDeodorizersWithKittens() {
               </ol>
             </nav>
 
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Kitten Care & Health
               </div>

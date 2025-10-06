@@ -6,14 +6,14 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for comparison content
-const heroImage = 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?auto=format&fit=crop&w=1600&q=80';
-const comparisonImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/activated-carbon-vs-baking-soda.webp';
+const comparisonImage = '/optimized/carbon_magnified_image.webp';
 
 export default function ActivatedCarbonVsBakingSoda() {
   return (
     <>
       <Head>
-        <title>Baking Soda Not Working for Cat Litter Smell? Try This Instead | {SITE_NAME}</title>
+        <title>{`Baking Soda Not Working for Cat Litter Smell? Try This Instead | ${SITE_NAME}`}</title>
         <meta name="description" content="Frustrated that baking soda isn't stopping litter box smell? See why 89% of cat parents switch to activated carbon after trying this shocking comparison test!" />
         <meta name="keywords" content="activated carbon vs baking soda, cat litter deodorizer comparison, best odor control technology, natural odor elimination" />
 
@@ -22,7 +22,7 @@ export default function ActivatedCarbonVsBakingSoda() {
         <meta property="og:description" content="Baking soda failing you? This shocking test shows why 89% of cat parents switch to activated carbon. See the proof that'll change your mind!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -30,7 +30,7 @@ export default function ActivatedCarbonVsBakingSoda() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Activated Carbon vs Baking Soda: Which Deodorizer Wins?" />
         <meta name="twitter:description" content="Scientific comparison of two popular odor control technologies for cat litter - see which delivers better results." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
 
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison" />

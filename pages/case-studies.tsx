@@ -132,7 +132,7 @@ export default function CaseStudies() {
   return (
     <>
       <Head>
-        <title>Success Stories - Real Customer Results | {SITE_NAME}</title>
+        <title>{`Success Stories - Real Customer Results | ${SITE_NAME}`}</title>
         <meta name="description" content="Detailed case studies showing how Purrify cat litter deodorizer solved real odor problems for Canadian families. See measurable results and customer transformations." />
         <meta name="keywords" content="Purrify case studies, cat odor success stories, customer results, before and after, cat litter deodorizer effectiveness" />
         

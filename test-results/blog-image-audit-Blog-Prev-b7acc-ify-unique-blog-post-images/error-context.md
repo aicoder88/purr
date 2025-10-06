@@ -1,0 +1,382 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - button "Scroll to top":
+        - img
+      - banner [ref=e6]:
+        - generic [ref=e8]:
+          - link "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - img "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e11] [cursor=pointer]
+          - navigation [ref=e12]:
+            - button "Products" [ref=e14] [cursor=pointer]:
+              - text: Products
+              - img [ref=e15] [cursor=pointer]
+            - button "For Retailers" [ref=e18] [cursor=pointer]:
+              - text: For Retailers
+              - img [ref=e19] [cursor=pointer]
+            - button "Learn" [ref=e22] [cursor=pointer]:
+              - text: Learn
+              - img [ref=e23] [cursor=pointer]
+            - button "Solutions" [ref=e26] [cursor=pointer]:
+              - text: Solutions
+              - img [ref=e27] [cursor=pointer]
+            - link "Blog" [ref=e30] [cursor=pointer]:
+              - /url: /blog
+            - link "About" [ref=e32] [cursor=pointer]:
+              - /url: /about/our-story
+            - link "Contact" [ref=e34] [cursor=pointer]:
+              - /url: /support/contact
+          - generic [ref=e35]:
+            - button "Toggle theme" [ref=e36] [cursor=pointer]:
+              - img [ref=e37] [cursor=pointer]
+              - generic [ref=e43] [cursor=pointer]: Toggle theme
+            - button "Buy Now!" [ref=e44] [cursor=pointer]:
+              - img [ref=e45] [cursor=pointer]
+              - text: Buy Now!
+            - button "English Flag English" [ref=e49] [cursor=pointer]:
+              - img "English Flag" [ref=e50] [cursor=pointer]
+              - generic [ref=e51] [cursor=pointer]: English
+              - img [ref=e52] [cursor=pointer]
+            - button [ref=e54] [cursor=pointer]:
+              - img [ref=e55] [cursor=pointer]
+      - main [ref=e59]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - img [ref=e64]
+            - generic [ref=e67]: 100% Natural • Made in Canada
+          - generic [ref=e68]:
+            - img [ref=e69]
+            - generic [ref=e72]: Fast delivery Canada-wide
+          - generic [ref=e73]:
+            - img [ref=e74]
+            - generic [ref=e79]:
+              - generic [ref=e80]: "31"
+              - text: orders this week
+        - main [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - heading "Finally! A Litter Box That Doesn't Smell… Your Guests Will Never Know You Have Cats!" [level=1] [ref=e89]:
+                  - generic [ref=e90]: Finally! A Litter Box That Doesn't Smell…
+                  - generic [ref=e91]: Your Guests Will Never Know You Have Cats!
+                - paragraph [ref=e92]: Tired of holding your breath? This water-filter grade activated carbon locks away ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.
+                - generic [ref=e93]:
+                  - generic [ref=e94]:
+                    - generic [ref=e95]:
+                      - generic [ref=e96]: MJ
+                      - generic [ref=e97]: SK
+                      - generic [ref=e98]: TC
+                    - generic [ref=e99]:
+                      - generic [ref=e100]: 1,000+
+                      - text: cat parents say goodbye to litter box smell
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: ★★★★★
+                    - generic [ref=e103]: 4.8/5 stars - 'My apartment doesn't stink anymore!'
+                - generic [ref=e104]:
+                  - generic [ref=e105]:
+                    - generic [ref=e106]:
+                      - generic [ref=e107]:
+                        - img [ref=e109]
+                        - heading "For Your Cat" [level=3] [ref=e111]
+                      - paragraph [ref=e112]: Individual cat owners - instant checkout, direct delivery
+                      - button "For Your Cat" [ref=e113] [cursor=pointer]: Buy Now for Your Cat
+                    - link "Pet Stores & Retailers Wholesale pricing, bulk orders, marketing support Pet Stores & Retailers" [ref=e114] [cursor=pointer]:
+                      - /url: /retailers
+                      - generic [ref=e115] [cursor=pointer]:
+                        - generic [ref=e116] [cursor=pointer]:
+                          - img [ref=e118] [cursor=pointer]
+                          - heading "Pet Stores & Retailers" [level=3] [ref=e120] [cursor=pointer]
+                        - paragraph [ref=e121] [cursor=pointer]: Wholesale pricing, bulk orders, marketing support
+                        - button "Pet Stores & Retailers" [ref=e122] [cursor=pointer]: Wholesale Portal
+                  - generic [ref=e123]:
+                    - button "Read 138+ customer reviews" [ref=e124] [cursor=pointer]: ⚗️ Proof It Works
+                    - button "Learn how Purrify works" [ref=e125] [cursor=pointer]: How It Kills Odor
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - img "Purrify Cat Litter Additive in Action - Before and After Demonstration" [ref=e131]
+                  - generic [ref=e132]: 506ms
+                - img "Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application" [ref=e133]: Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.
+            - img [ref=e135]
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - heading "7 Days of Fresh Air Guaranteed" [level=2] [ref=e142]
+              - heading "Natural & Effective" [level=2] [ref=e143]
+              - img "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules" [ref=e148]
+              - paragraph [ref=e149]:
+                - text: Natural coconut carbon with zero chemicals, fragrances, or dyes. The same type used in water and air filters around the world, powerful enough for multiple cats.
+                - link "Discover the science" [ref=e150] [cursor=pointer]:
+                  - /url: /learn/science
+                - text: behind our
+                - link "activated carbon formula" [ref=e151] [cursor=pointer]:
+                  - /url: /products/trial-size
+                - text: .
+            - generic [ref=e152]:
+              - generic [ref=e154]:
+                - 'img "Three Purrify product packages showing different sizes: 12g trial, 50g standard, and 120g family pack" [ref=e157]'
+                - img "Microscopic view of activated carbon showing porous structure that captures odor molecules" [ref=e160]
+                - img "Happy cat resting peacefully in a fresh, odor-free home environment" [ref=e163]
+              - generic [ref=e164]:
+                - paragraph [ref=e165]: Water-filter grade activated carbon doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!
+                - paragraph [ref=e166]: Natural coconut carbon with zero chemicals, fragrances, or dyes. The same type used in water and air filters around the world, powerful enough for multiple cats.
+                - paragraph [ref=e167]:
+                  - generic [ref=e168]: Purrify Locks Away Ammonia Smell Instantly.
+                - paragraph [ref=e169]: One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy. Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use.
+          - generic [ref=e173]:
+            - generic [ref=e174]:
+              - heading "Fresh Air in 60 Seconds - Simple as 1-2-3" [level=2] [ref=e176]
+              - heading "How It Works" [level=2] [ref=e177]
+              - paragraph [ref=e178]:
+                - text: Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use.
+                - link "Learn the science" [ref=e179] [cursor=pointer]:
+                  - /url: /learn/science
+                - text: or
+                - link "compare our sizes" [ref=e180] [cursor=pointer]:
+                  - /url: /products/compare
+                - text: to find what works best for you.
+            - generic [ref=e181]:
+              - generic [ref=e184]:
+                - generic [ref=e185]: "01"
+                - generic [ref=e186]:
+                  - 'img "Step 01: Open & Pour - Tear open the bag - your nose will immediately notice the difference! No assembly, no complicated instructions." [ref=e189]'
+                  - heading "Open & Pour" [level=3] [ref=e190]
+                  - paragraph [ref=e191]: Tear open the bag - your nose will immediately notice the difference! No assembly, no complicated instructions.
+              - generic [ref=e193]:
+                - generic [ref=e194]: "02"
+                - generic [ref=e195]:
+                  - 'img "Step 02: Sprinkle the Magic - Just sprinkle a thin layer on top of clean litter. Works with ANY brand - clay, crystal, clumping, you name it." [ref=e198]'
+                  - heading "Sprinkle the Magic" [level=3] [ref=e199]
+                  - paragraph [ref=e200]: Just sprinkle a thin layer on top of clean litter. Works with ANY brand - clay, crystal, clumping, you name it.
+              - generic [ref=e202]:
+                - generic [ref=e203]: "03"
+                - generic [ref=e204]:
+                  - 'img "Step 03: Mix It In & Breathe Easy! - Gently mix and watch (smell?) the magic happen. 7 days of fresh air starts NOW. Your guests will be amazed." [ref=e207]'
+                  - heading "Mix It In & Breathe Easy!" [level=3] [ref=e208]
+                  - paragraph [ref=e209]: Gently mix and watch (smell?) the magic happen. 7 days of fresh air starts NOW. Your guests will be amazed.
+            - generic [ref=e211]:
+              - img "Three Purrify packages demonstrating universal compatibility with all types of cat litter" [ref=e214]
+              - heading "Works with Your Cat's Favorite Litter" [level=3] [ref=e215]
+              - paragraph [ref=e216]: Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use.
+              - generic [ref=e217]:
+                - generic [ref=e218]: CLAY
+                - generic [ref=e219]: CRYSTAL
+                - generic [ref=e220]: NATURAL
+                - generic [ref=e221]: CLUMPING
+                - generic [ref=e222]: NON-CLUMPING
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - generic [ref=e226]:
+                - heading "Why Purrify" [level=2] [ref=e227]
+                - paragraph [ref=e228]: Discover why 1,000+ cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
+              - generic [ref=e229]:
+                - generic [ref=e230]:
+                  - img "LOCKS AWAY AMMONIA SMELL INSTANTLY" [ref=e233]
+                  - generic [ref=e234]:
+                    - generic [ref=e235]:
+                      - img [ref=e237]
+                      - heading "LOCKS AWAY AMMONIA SMELL INSTANTLY" [level=3] [ref=e241]
+                    - paragraph [ref=e242]:
+                      - generic [ref=e243]: Water-filter grade activated carbon doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!
+                - generic [ref=e244]:
+                  - img "USED IN WATER & AIR FILTERS WORLDWIDE" [ref=e247]
+                  - generic [ref=e248]:
+                    - generic [ref=e249]:
+                      - img [ref=e251]
+                      - heading "USED IN WATER & AIR FILTERS WORLDWIDE" [level=3] [ref=e254]
+                    - paragraph [ref=e255]:
+                      - generic [ref=e256]: Natural coconut carbon with zero chemicals, fragrances, or dyes. The same type used in water and air filters around the world, powerful enough for multiple cats.
+                - generic [ref=e257]:
+                  - img "7 DAYS OF FRESH AIR GUARANTEED" [ref=e260]
+                  - generic [ref=e261]:
+                    - generic [ref=e262]:
+                      - img [ref=e264]
+                      - heading "7 DAYS OF FRESH AIR GUARANTEED" [level=3] [ref=e267]
+                    - paragraph [ref=e268]:
+                      - generic [ref=e269]: One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy.
+                - generic [ref=e270]:
+                  - img "WORKS WITH YOUR CAT'S FAVORITE LITTER" [ref=e275]
+                  - generic [ref=e276]:
+                    - generic [ref=e277]:
+                      - img [ref=e279]
+                      - heading "WORKS WITH YOUR CAT'S FAVORITE LITTER" [level=3] [ref=e283]
+                    - paragraph [ref=e284]:
+                      - generic [ref=e285]: Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use.
+                - generic [ref=e286]:
+                  - img "SAVES MONEY ON LITTER" [ref=e291]
+                  - generic [ref=e292]:
+                    - generic [ref=e293]:
+                      - img [ref=e295]
+                      - heading "SAVES MONEY ON LITTER" [level=3] [ref=e298]
+                    - paragraph [ref=e299]:
+                      - generic [ref=e300]: Extends litter life by preventing odor buildup. Use less, change less often, breathe easier. Your wallet will love it too.
+                - generic [ref=e301]:
+                  - img "BEFORE & AFTER" [ref=e306]
+                  - generic [ref=e307]:
+                    - generic [ref=e308]:
+                      - img [ref=e310]
+                      - heading "BEFORE & AFTER" [level=3] [ref=e313]
+                    - paragraph [ref=e314]:
+                      - generic [ref=e315]: See the difference Purrify makes in your cat's litter box.
+            - generic:
+              - img
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - img [ref=e327]
+              - heading "30-Day Money Back" [level=3] [ref=e332]
+              - generic [ref=e333]: 100% Guaranteed
+              - paragraph [ref=e334]: Not satisfied? Get a full refund within 30 days
+            - generic [ref=e335]:
+              - img [ref=e337]
+              - heading "Secure Payment" [level=3] [ref=e339]
+              - generic [ref=e340]: 256-bit SSL
+              - paragraph [ref=e341]: SSL encrypted checkout with Stripe
+            - generic [ref=e342]:
+              - img [ref=e344]
+              - heading "Fast Shipping" [level=3] [ref=e349]
+              - generic [ref=e350]: Same Day Processing
+              - paragraph [ref=e351]: Quick and reliable delivery
+            - generic [ref=e352]:
+              - img [ref=e354]
+              - heading "4.9/5 Customer Rating" [level=3] [ref=e356]
+              - generic [ref=e357]: 98% Satisfaction
+              - paragraph [ref=e358]: Based on 138 verified reviews
+            - generic [ref=e359]:
+              - img [ref=e361]
+              - heading "1,000+ Happy Customers" [level=3] [ref=e366]
+              - generic [ref=e367]: Since 2019
+              - paragraph [ref=e368]: Trusted by cat owners across Canada
+            - generic [ref=e369]:
+              - img [ref=e371]
+              - heading "Premium Quality" [level=3] [ref=e374]
+              - generic [ref=e375]: Fragrance-Free
+              - paragraph [ref=e376]: Filtration-grade activated carbon used in water and air filters
+          - generic [ref=e384]:
+            - generic [ref=e385]:
+              - heading "Our Current Clients | Purrify Locations" [level=2] [ref=e386]
+              - paragraph [ref=e387]: See where our clients are using Purrify across Canada. Each location represents a satisfied family who has transformed their cat litter experience.
+            - generic [ref=e389]:
+              - iframe [ref=e390]
+              - generic [ref=e391]:
+                - paragraph [ref=e392]: 🗺️ Purrify client locations across Canada - Montreal, Toronto, Vancouver and more
+                - generic [ref=e393]:
+                  - generic [ref=e394]: Montreal
+                  - generic [ref=e395]: Toronto
+                  - generic [ref=e396]: Vancouver
+                  - generic [ref=e397]: Calgary
+                  - generic [ref=e398]: Ottawa
+                  - generic [ref=e399]: Quebec City
+      - contentinfo [ref=e415]:
+        - generic [ref=e416]:
+          - generic [ref=e419]:
+            - generic [ref=e420]:
+              - heading "Stay Updated with Purrify" [level=3] [ref=e421]
+              - paragraph [ref=e422]: Get cat care tips and exclusive offers delivered to your inbox.
+            - generic [ref=e423]:
+              - textbox "Your email" [ref=e424]
+              - button "Subscribe" [ref=e425] [cursor=pointer]
+          - generic [ref=e426]:
+            - generic [ref=e427]:
+              - generic [ref=e428]:
+                - link "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e430] [cursor=pointer]:
+                  - /url: /
+                  - img "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e435] [cursor=pointer]
+                - paragraph [ref=e436]: Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.
+                - generic [ref=e437]:
+                  - link "Follow Purrify on Facebook" [ref=e438] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e439] [cursor=pointer]
+                  - link "Follow Purrify on Instagram" [ref=e441] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e442] [cursor=pointer]
+                  - link "Follow Purrify on Twitter" [ref=e445] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e446] [cursor=pointer]
+              - generic [ref=e448]:
+                - heading "Products" [level=3] [ref=e449]
+                - list [ref=e450]:
+                  - listitem [ref=e451]:
+                    - link "Trial Size" [ref=e452] [cursor=pointer]:
+                      - /url: /products/trial-size
+                  - listitem [ref=e453]:
+                    - link "Standard Size" [ref=e454] [cursor=pointer]:
+                      - /url: /products/standard
+                  - listitem [ref=e455]:
+                    - link "Family Pack" [ref=e456] [cursor=pointer]:
+                      - /url: /products/family-pack
+                  - listitem [ref=e457]:
+                    - link "Compare Sizes" [ref=e458] [cursor=pointer]:
+                      - /url: /products/compare
+              - generic [ref=e459]:
+                - heading "Learn" [level=3] [ref=e460]
+                - list [ref=e461]:
+                  - listitem [ref=e462]:
+                    - link "How It Works" [ref=e463] [cursor=pointer]:
+                      - /url: /learn/how-it-works
+                  - listitem [ref=e464]:
+                    - link "FAQ" [ref=e465] [cursor=pointer]:
+                      - /url: /learn/faq
+                  - listitem [ref=e466]:
+                    - link "Science" [ref=e467] [cursor=pointer]:
+                      - /url: /learn/science
+                  - listitem [ref=e468]:
+                    - link "Safety Info" [ref=e469] [cursor=pointer]:
+                      - /url: /learn/safety
+                  - listitem [ref=e470]:
+                    - link "Cat Litter Guide" [ref=e471] [cursor=pointer]:
+                      - /url: /learn/cat-litter-guide
+              - generic [ref=e472]:
+                - heading "Solutions" [level=3] [ref=e473]
+                - list [ref=e474]:
+                  - listitem [ref=e475]:
+                    - link "Ammonia Smell" [ref=e476] [cursor=pointer]:
+                      - /url: /solutions/ammonia-smell-cat-litter
+                  - listitem [ref=e477]:
+                    - link "Apartment Living" [ref=e478] [cursor=pointer]:
+                      - /url: /solutions/apartment-cat-smell-solution
+                  - listitem [ref=e479]:
+                    - link "Multiple Cats" [ref=e480] [cursor=pointer]:
+                      - /url: /solutions/multiple-cats-odor-control
+                  - listitem [ref=e481]:
+                    - link "Natural Additive" [ref=e482] [cursor=pointer]:
+                      - /url: /solutions/natural-cat-litter-additive
+              - generic [ref=e483]:
+                - heading "Company" [level=3] [ref=e484]
+                - list [ref=e485]:
+                  - listitem [ref=e486]:
+                    - link "About Us" [ref=e487] [cursor=pointer]:
+                      - /url: /about/our-story
+                  - listitem [ref=e488]:
+                    - link "Blog" [ref=e489] [cursor=pointer]:
+                      - /url: /blog
+                  - listitem [ref=e490]:
+                    - link "Testimonials" [ref=e491] [cursor=pointer]:
+                      - /url: /customers/testimonials
+                  - listitem [ref=e492]:
+                    - link "For Retailers" [ref=e493] [cursor=pointer]:
+                      - /url: /retailers
+                  - listitem [ref=e494]:
+                    - link "Contact Us" [ref=e495] [cursor=pointer]:
+                      - /url: /support/contact
+            - generic [ref=e496]:
+              - generic [ref=e497]:
+                - link "Privacy Policy" [ref=e498] [cursor=pointer]:
+                  - /url: /privacy-policy
+                - link "Terms of Service" [ref=e499] [cursor=pointer]:
+                  - /url: /terms
+                - link "Blog" [ref=e500] [cursor=pointer]:
+                  - /url: /blog
+              - paragraph [ref=e501]:
+                - text: © 2025
+                - generic [ref=e502]: Purrify
+                - text: "|All Rights Reserved"
+    - region "Notifications (F8)":
+      - list
+  - button "Open Next.js Dev Tools" [ref=e508] [cursor=pointer]:
+    - img [ref=e509] [cursor=pointer]
+  - alert [ref=e512]
+```

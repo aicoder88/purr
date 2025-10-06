@@ -87,10 +87,15 @@ export const createStaggeredAnimation = (index: number, baseDelay = 100) => ({
  * // Returns: "https://randomuser.me/api/portraits/men/3.jpg"
  * ```
  */
-export const generateAvatarUrl = (name: string, index: number) => {
-  const maleNames = ['Jean', 'François', 'Mathieu', 'Robert', 'Stéphane', 'Marc', 'Samuel'];
-  const gender = maleNames.some(maleName => name.includes(maleName)) ? 'men' : 'women';
-  return `https://randomuser.me/api/portraits/${gender}/${index + 1}.jpg`;
+const localAvatarPool = [
+  '/optimized/cat_rose_thumbnail.webp',
+  '/optimized/multi-cat-household.webp',
+  '/optimized/purrify-logo-icon.webp',
+  '/optimized/deodorizers-with-kittens.webp',
+];
+
+export const generateAvatarUrl = (_name: string, index: number) => {
+  return localAvatarPool[index % localAvatarPool.length];
 };
 
 /**

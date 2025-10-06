@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // Relevant images for activated carbon science content
-const heroImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
-const coconutImage = 'https://images.unsplash.com/photo-1517080727870-780609473738?auto=format&fit=crop&w=1600&q=80';
-const healthImage = 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/activated-carbon-benefits.webp';
+const coconutImage = '/optimized/coconut-shell-natural.webp';
+const healthImage = '/optimized/pet-safety-home.webp';
 
 export default function ActivatedCarbonBenefits() {
   // const { t } = useTranslation();
@@ -16,7 +16,7 @@ export default function ActivatedCarbonBenefits() {
   return (
     <>
       <Head>
-        <title>Why Activated Carbon Destroys Cat Litter Smell Better Than Baking Soda | {SITE_NAME}</title>
+        <title>{`Why Activated Carbon Destroys Cat Litter Smell Better Than Baking Soda | ${SITE_NAME}`}</title>
         <meta name="description" content="Wondering why your baking soda isn't working? Activated carbon destroys ammonia smell 10x better than home remedies. See the shocking science behind instant odor elimination!" />
         <meta name="keywords" content="activated carbon litter additive benefits, cat litter deodorizer, odor control science, molecular adsorption, natural cat litter additive" />
         
@@ -25,7 +25,7 @@ export default function ActivatedCarbonBenefits() {
         <meta property="og:description" content="Baking soda not working? Activated carbon destroys ammonia smell 10x better. See the shocking science that proves why home remedies fail!" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
 
@@ -33,7 +33,7 @@ export default function ActivatedCarbonBenefits() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
         <meta name="twitter:description" content="Discover the science behind activated carbon litter additives and how molecular adsorption eliminates odors." />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
@@ -162,7 +162,7 @@ export default function ActivatedCarbonBenefits() {
                 "@type": "HowTo",
                 "name": "How to Maximize Activated Carbon Effectiveness",
                 "description": "Best practices for using activated carbon cat litter additive",
-                "image": "https://purrify.ca/optimized/carbon_magnified_image.webp",
+            "image": "https://www.purrify.ca/optimized/carbon_magnified_image.webp",
                 "step": [
                   {
                     "@type": "HowToStep",
@@ -197,16 +197,16 @@ export default function ActivatedCarbonBenefits() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/blog" className="hover:text-[#FF3131]">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">Activated Carbon Benefits</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">Activated Carbon Benefits</li>
               </ol>
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/30 rounded-full text-[#FF3131] dark:text-green-400 font-medium text-sm mb-4">
                 Science & Education
               </div>
@@ -380,7 +380,7 @@ export default function ActivatedCarbonBenefits() {
               </ol>
 
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h4 className="font-bold text-[#FF3131] mb-3">🏆 Why Choose Purrify?</h4>
+                <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">🏆 Why Choose Purrify?</h4>
                 <p className="text-gray-700 dark:text-gray-200">
                   Purrify's activated carbon litter additive is made from premium coconut shell carbon, 
                   providing superior odor elimination that lasts up to 7 days. Our fragrance-free 
@@ -403,7 +403,7 @@ export default function ActivatedCarbonBenefits() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience the difference that science-backed odor control can make? 
-                <Link href="/products" className="text-[#FF3131] hover:underline font-medium"> Explore our Purrify products</Link> 
+                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Explore our Purrify products</Link> 
                 and discover why 1,000+ cat owners trust activated carbon for superior litter box freshness.
               </p>
             </div>

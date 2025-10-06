@@ -4,6 +4,7 @@ import { About } from '../src/components/sections/about';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import dynamic from 'next/dynamic';
+import { BlogPreview } from '../src/components/sections/blog-preview';
 
 // Above-the-fold banner should be SSR to avoid CLS
 import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
@@ -46,10 +47,6 @@ const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => (
   loading: () => sectionSkeleton('h-64')
 });
 const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-80')
-});
-const BlogPreview = dynamic(() => import('../src/components/sections/blog-preview').then(mod => ({ default: mod.BlogPreview })), {
   ssr: false,
   loading: () => sectionSkeleton('h-80')
 });
@@ -444,11 +441,7 @@ export default function Home() {
         
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-80')}
-            >
-              <BlogPreview />
-            </LazyLoad>
+            <BlogPreview />
           </ErrorBoundary>
         </div>
       </main>

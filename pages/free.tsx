@@ -13,7 +13,7 @@ export default function FreeRedirect() {
   return (
     <>
       <Head>
-        <title>Redirecting... | {SITE_NAME}</title>
+        <title>{`Redirecting... | ${SITE_NAME}`}</title>
         <meta name="description" content="Redirecting to homepage. Please wait..." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://www.purrify.ca/" />

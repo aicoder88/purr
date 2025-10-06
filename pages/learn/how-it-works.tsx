@@ -137,7 +137,7 @@ export default function HowItWorksPage() {
         {/* Breadcrumb Navigation */}
         <Container>
           <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
                 <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   {t.nav?.home || 'Home'}
@@ -187,10 +187,10 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Science Explanation */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 How Activated Carbon Works
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -208,7 +208,7 @@ export default function HowItWorksPage() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
                         {point.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -229,7 +229,7 @@ export default function HowItWorksPage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 How to Use Purrify
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -245,7 +245,7 @@ export default function HowItWorksPage() {
                       <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-gray-100 font-bold text-2xl">{step.number}</span>
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                         {step.title}
                       </h3>
                     </div>
@@ -253,7 +253,7 @@ export default function HowItWorksPage() {
                       {step.description}
                     </p>
                     <div className="bg-[#E0EFC7]/50 dark:bg-gray-700/50 p-4 rounded-xl">
-                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         💡 <strong>Pro Tip:</strong> {step.tip}
                       </p>
                     </div>
@@ -279,10 +279,10 @@ export default function HowItWorksPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
+        <section className="py-16 bg-white dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Common Questions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -293,7 +293,7 @@ export default function HowItWorksPage() {
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {faq.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

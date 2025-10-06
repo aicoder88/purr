@@ -14,7 +14,7 @@ export default function StrongCatUrineSmell() {
   return (
     <>
       <Head>
-        <title>Strong Cat Urine Smell in the Litter Box? Try This Layered Fix | {SITE_NAME}</title>
+        <title>{`Strong Cat Urine Smell in the Litter Box? Try This Layered Fix | ${SITE_NAME}`}</title>
         <meta
           name="description"
           content="Strong cat urine smell from the litter box? Follow this layered fix combining airflow, litter hygiene, and activated carbon to reclaim a fresh-smelling home."
@@ -102,7 +102,7 @@ export default function StrongCatUrineSmell() {
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#5B2EFF] dark:text-[#C4B5FD] font-medium text-sm mb-4">
                 Odor Control Playbook
               </div>

@@ -65,7 +65,7 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <NextImage
-                  src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80"
+                  src="/optimized/pet-safety-home.webp"
                   alt={t.homepage.altText.happyCat}
                   width={800}
                   height={400}

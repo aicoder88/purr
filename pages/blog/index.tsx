@@ -82,7 +82,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
   return (
     <>
       <Head>
-        <title>Blog | {SITE_NAME} - Cat Care Tips & Insights</title>
+        <title>{`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}</title>
         <meta name="description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         

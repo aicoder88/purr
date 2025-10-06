@@ -125,7 +125,7 @@ export default function NextImage({
         const formatPriority = isIOSChrome
           ? ['png', 'jpg', 'webp']
           : useModernFormat
-            ? ['avif', 'webp', 'jpg', 'png']
+            ? ['webp', 'jpg', 'png']
             : ['jpg', 'png', 'webp'];
 
         const addCandidate = (value?: string | null) => {

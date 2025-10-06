@@ -26,9 +26,9 @@ const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 const customerAvatars = [
-  "https://randomuser.me/api/portraits/women/32.jpg",
-  "https://randomuser.me/api/portraits/men/45.jpg",
-  "https://randomuser.me/api/portraits/women/68.jpg"
+  '/optimized/cat_rose_thumbnail.webp',
+  '/optimized/multi-cat-household.webp',
+  '/optimized/purrify-logo-icon.webp'
 ];
 
 export function CTA() {
@@ -55,7 +55,7 @@ export function CTA() {
 
           {/* Background image */}
           <Image
-            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80"
+            src="/optimized/pet-safety-home.webp"
             alt={t.homepage.altText.happyCatAlt}
             width={800}
             height={800}

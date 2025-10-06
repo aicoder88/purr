@@ -81,7 +81,7 @@ export default function BestForSmallApartments() {
             </nav>
 
             {/* Article Header */}
-            <header className="mb-12 text-center">
+            <header className="mb-12 text-center dark:text-center">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/20 rounded-full text-[#FF3131] dark:text-green-300 font-medium text-sm mb-4">
                 Urban Living Solutions
               </div>
