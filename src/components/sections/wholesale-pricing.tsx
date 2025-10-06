@@ -28,13 +28,20 @@ export function WholesalePricing() {
     },
     {
       name: 'Growth Partner',
-      description: 'Most popular choice',
+      description: 'The smart choice for growing retailers',
+      contents: [
+        'Five boxes of trial size (125 small bags)',
+        'Five boxes of medium (75 medium bags)',
+        'Five boxes of large (50 large bags)',
+        '🎁 BONUS: 25 extra trial bags to hook new customers'
+      ],
       features: [
-        'Custom order quantities',
-        'Premium counter display',
-        'Staff training materials',
-        'Co-op advertising credits',
-        'Priority phone support'
+        'Premium illuminated counter display',
+        'Staff training materials & product knowledge cards',
+        'Digital marketing assets (social posts, email templates)',
+        'Co-branded promotional flyers',
+        'Priority phone & email support',
+        'Free product replacement for damaged goods'
       ],
       highlighted: true,
       badge: '⭐ Best Value'
@@ -42,12 +49,18 @@ export function WholesalePricing() {
     {
       name: 'Scale Success',
       description: 'For serious revenue growth',
+      contents: [
+        'Ten boxes of trial size (250 small bags)',
+        'Ten boxes of medium (150 medium bags)',
+        'Ten boxes of large (100 large bags)'
+      ],
       features: [
         'Everything in Growth Partner',
         'Dedicated account manager',
-        'Custom marketing materials',
+        'Custom marketing materials & co-branding',
         'Territory protection rights',
-        'Quarterly business reviews'
+        'Quarterly business reviews & sales analytics',
+        'Priority inventory allocation'
       ],
       highlighted: false,
       badge: '🏆 Enterprise'
