@@ -1,6 +1,5 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { Layout } from '../../src/components/layout/layout';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
@@ -9,7 +8,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
   const canonicalUrl = 'https://purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers';
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -474,6 +473,6 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
           <RelatedArticles currentPath="/learn/activated-carbon-vs-baking-soda-deodorizers" />
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

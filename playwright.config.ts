@@ -13,9 +13,9 @@ const config: PlaywrightTestConfig = {
     trace: 'off',
   },
   webServer: {
-    command: 'npm run dev -- --port 3010',
+    command: 'npm run e2e:web',
     port: 3010,
-    reuseExistingServer: true,
+    reuseExistingServer: false,
     timeout: 180_000,
   },
   reporter: [['list']],
