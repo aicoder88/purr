@@ -127,8 +127,10 @@ className="text-white dark:text-gray-100 bg-red-500 hover:bg-red-600 dark:hover:
 - Cart data encrypted with CryptoJS
 
 ### Content Rules
-- NO competitor brand names
-- Use tech comparisons: "Activated Carbon vs Baking Soda" NOT "Purrify vs Brand X"
+- **LEGAL RISK MITIGATION**: NO direct competitor brand name comparisons
+- Use technology/category comparisons: "Activated Carbon vs Baking Soda Deodorizers" NOT "Purrify vs Brand X"
+- Educational positioning = legal protection
+- Reference `/docs/LEGAL_STRATEGY.md` before creating comparison content
 - All text via `useTranslation` hook
 
 ## Development Standards

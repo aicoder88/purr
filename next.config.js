@@ -182,6 +182,12 @@ const nextConfig = {
         destination: '/blog/activated-carbon-vs-baking-soda-comparison',
         permanent: true,
       },
+      // Redirect risky brand comparison to safe technology comparison
+      {
+        source: '/learn/purrify-vs-arm-hammer',
+        destination: '/learn/activated-carbon-vs-baking-soda-deodorizers',
+        permanent: true,
+      },
       // Redirect away from "safe" slugs to compliant phrasing
       {
         source: '/blog/safe-for-kittens',

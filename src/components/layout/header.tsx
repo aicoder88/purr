@@ -172,7 +172,7 @@ export function Header() {
         { label: 'Activated Carbon Benefits', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/activated-carbon-benefits` },
         { label: 'Cat Litter Guide', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/cat-litter-guide` },
         { label: 'How to Use', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-to-use-deodorizer` },
-        { label: 'Purrify vs Others', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/purrify-vs-arm-hammer` }
+        { label: 'Technology Comparison', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers` }
       ]
     },
     {
