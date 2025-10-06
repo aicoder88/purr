@@ -23,7 +23,7 @@ test.describe('Blog Preview Image Audit', () => {
     await page.goto('/');
 
     // Wait for page to load completely
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Since blog is dynamically imported, wait longer for it to load
     await page.waitForTimeout(5000);
@@ -48,7 +48,7 @@ test.describe('Blog Preview Image Audit', () => {
     await expect(blogSection).toBeVisible();
 
     // Wait for blog posts to load (handling loading state)
-    const blogPostCards = blogSection.locator('div.grid > div');
+    const blogPostCards = blogSection.locator('div.grid > *');
 
     // Wait for blog posts to be visible (either skeleton or actual content)
     await expect(blogPostCards.first()).toBeVisible();
@@ -57,7 +57,7 @@ test.describe('Blog Preview Image Audit', () => {
     await page.waitForTimeout(2000);
 
     // Re-evaluate after potential loading
-    const loadedBlogPosts = blogSection.locator('div.grid > div:not(.animate-pulse)');
+    const loadedBlogPosts = blogSection.locator('div.grid > *:not(.animate-pulse)');
     const blogPostCount = await loadedBlogPosts.count();
 
     console.log(`Found ${blogPostCount} blog posts`);
@@ -93,8 +93,26 @@ test.describe('Blog Preview Image Audit', () => {
     // Check for duplicate images
     const duplicates: { [key: string]: BlogImageInfo[] } = {};
 
+    const normalizeImageSrc = (src: string) => {
+      if (!src) return '';
+
+      try {
+        if (src.startsWith('/_next/image')) {
+          const parsed = new URL(src, 'http://localhost');
+          const encodedPath = parsed.searchParams.get('url');
+          if (encodedPath) {
+            return decodeURIComponent(encodedPath);
+          }
+        }
+      } catch (error) {
+        console.warn(`Failed to normalize image src ${src}:`, error);
+      }
+
+      return src.split('?')[0];
+    };
+
     blogImages.forEach(blogImage => {
-      const normalizedSrc = blogImage.imageSrc.split('?')[0]; // Remove query params for comparison
+      const normalizedSrc = normalizeImageSrc(blogImage.imageSrc);
       if (!duplicates[normalizedSrc]) {
         duplicates[normalizedSrc] = [];
       }

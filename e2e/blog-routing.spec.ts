@@ -72,7 +72,7 @@ test.describe('Blog Routing Functionality', () => {
 
     // Wait for content to load
     await expect(page.locator('h1')).toBeVisible();
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Check that images are present and load
     const images = page.locator('article img, main img');

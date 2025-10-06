@@ -6,7 +6,7 @@ test.describe('Blog Section Debug', () => {
     await page.goto('/');
 
     // Wait for page to load completely
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Get page title to confirm we're on the right page
     const title = await page.title();

@@ -56,7 +56,7 @@ test.describe('Blog Articles Dark Mode and Image Tests', () => {
         await expect(page.locator('h1')).toBeVisible();
 
         // Wait for images to load before testing
-        await page.waitForLoadState('networkidle');
+        await page.waitForLoadState('load');
 
         // Check all images in the article
         const images = page.locator('article img, main img');
