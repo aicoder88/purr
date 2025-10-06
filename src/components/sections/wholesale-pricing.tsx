@@ -10,11 +10,13 @@ export function WholesalePricing() {
 
   const pricingTiers = useMemo(() => [
     {
-      name: 'Starter Pack',
+      name: 'Starter Package',
       description: 'Perfect for testing the waters',
-      minUnits: 24,
-      retailPrice: 24.99,
-      wholesalePrice: 12.49,
+      contents: [
+        'One box of trial size (25 small bags)',
+        'One box of medium (15 medium bags)',
+        'One box of large (10 large bags)'
+      ],
       features: [
         'Proven 4.8/5 star product',
         'Lightweight shipping advantage',
@@ -27,11 +29,8 @@ export function WholesalePricing() {
     {
       name: 'Growth Partner',
       description: 'Most popular choice',
-      minUnits: 48,
-      retailPrice: 24.99,
-      wholesalePrice: 11.24,
       features: [
-        'Everything in Starter Pack',
+        'Custom order quantities',
         'Premium counter display',
         'Staff training materials',
         'Co-op advertising credits',
@@ -43,9 +42,6 @@ export function WholesalePricing() {
     {
       name: 'Scale Success',
       description: 'For serious revenue growth',
-      minUnits: 96,
-      retailPrice: 24.99,
-      wholesalePrice: 9.99,
       features: [
         'Everything in Growth Partner',
         'Dedicated account manager',
@@ -57,8 +53,6 @@ export function WholesalePricing() {
       badge: '🏆 Enterprise'
     }
   ], []);
-
-  const formatCurrency = (n: number) => n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
   return (
     <section id="wholesale-pricing" className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -74,30 +68,26 @@ export function WholesalePricing() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Start earning <strong className="text-[#5B2EFF] dark:text-[#3694FF]">50-60% margins</strong> with Canada's fastest-selling cat odor solution. No hidden fees, no surprises.
+            Partner with Canada's fastest-selling cat odor solution. No hidden fees, no surprises.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {pricingTiers.map((tier, index) => {
-            const unitProfit = tier.retailPrice - tier.wholesalePrice;
-            const monthlyProfit = tier.minUnits * unitProfit;
-            const marginPct = Math.round((unitProfit / tier.retailPrice) * 100);
-            return (
+          {pricingTiers.map((tier, index) => (
             <div
               key={index}
               className={`relative rounded-3xl p-8 ${
                 tier.highlighted
                   ? 'bg-gradient-to-br from-[#5B2EFF]/10 via-white to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:via-gray-800 dark:to-[#5B2EFF]/20 border-3 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl transform scale-105 z-10'
-                  : 'bg-white dark:bg-gray-900/70 dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
+                  : 'bg-white dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
               } backdrop-blur-sm transition-all duration-500 hover:transform hover:scale-105`}
             >
               {/* Badge */}
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <span className={`px-4 py-2 rounded-full text-sm font-bold ${
                   tier.highlighted
-                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] text-white dark:text-white'
-                    : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-white dark:text-gray-900'
+                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] text-white'
+                    : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900'
                 }`}>
                   {tier.badge}
                 </span>
@@ -107,34 +97,20 @@ export function WholesalePricing() {
                 <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">{tier.name}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">{tier.description}</p>
 
-                {/* Pricing Display */}
-                <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 mb-6">
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">You Pay</div>
-                      <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{formatCurrency(tier.wholesalePrice)}</div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">You Sell</div>
-                      <div className="text-2xl font-black text-gray-900 dark:text-gray-50">{formatCurrency(tier.retailPrice)}</div>
-                    </div>
+                {/* Package Contents (Starter Package Only) */}
+                {'contents' in tier && tier.contents && (
+                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 mb-6">
+                    <div className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-3">Package Includes:</div>
+                    <ul className="space-y-2 text-left">
+                      {tier.contents.map((item: string, i: number) => (
+                        <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-medium flex items-start">
+                          <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-2">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="mt-4 text-center">
-                    <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">{marginPct}%</div>
-                    <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">Profit Margin</div>
-                  </div>
-                </div>
-
-                {/* Revenue Projection */}
-                <div className="bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-xl p-4 mb-6">
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">Est. Monthly Profit</div>
-                  <div className="text-2xl font-black text-[#FF3131] dark:text-[#FF5050]">{formatCurrency(monthlyProfit)}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Based on {tier.minUnits} units/month • {formatCurrency(unitProfit)} profit/unit</div>
-                </div>
-
-                <div className="text-lg font-bold text-gray-900 dark:text-gray-50">
-                  Min Order: <span className="text-[#5B2EFF] dark:text-[#3694FF]">{tier.minUnits} units</span>
-                </div>
+                )}
               </div>
 
               <ul className="space-y-4 mb-8">
@@ -154,14 +130,14 @@ export function WholesalePricing() {
                 onClick={handleScrollToRetailer}
                 className={`w-full py-4 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                   tier.highlighted
-                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white shadow-xl hover:shadow-2xl'
-                    : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl'
+                    ? 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white shadow-xl hover:shadow-2xl'
+                    : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl'
                 }`}
               >
                 {tier.highlighted ? '🚀 Start Growing Now' : 'Get Started'}
               </Button>
             </div>
-          );})}
+          ))}
         </div>
 
         {/* Risk Reversal & Urgency */}
@@ -214,7 +190,7 @@ export function WholesalePricing() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:text-white dark:hover:text-white dark:text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
               >
                 📞 Call: 1-250-432-9352
               </Button>
