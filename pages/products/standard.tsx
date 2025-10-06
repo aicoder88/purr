@@ -21,6 +21,11 @@ export default function StandardSizePage() {
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+
+  // Standard size lifestyle images
+  const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Single cat household
+  const sectionImage1 = 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=1600&q=80'; // Happy single cat
+  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-50g');
@@ -404,6 +409,27 @@ export default function StandardSizePage() {
           </Container>
         </section>
 
+        {/* Single Cat Lifestyle Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={heroImage}
+                alt="Perfect for single cat households - one month of freshness"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h2 className="text-3xl font-bold mb-2">Perfect for Single Cat Homes</h2>
+                  <p className="text-xl opacity-90">One month of continuous freshness</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Value Proposition Section */}
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
@@ -537,6 +563,48 @@ export default function StandardSizePage() {
                   Back to All Products
                 </Button>
               </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* Happy Cat Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage1}
+                alt="Happy single cat enjoying fresh litter with Purrify"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Your Cat Deserves the Best</h3>
+                  <p className="text-lg opacity-90">Safe, natural, effective odor control</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Success Story Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={solutionImage}
+                alt="Happy cat owner with fresh, odor-free home using Purrify standard size"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Join 1,000+ Happy Customers</h3>
+                  <p className="text-lg opacity-90">Most popular size for a reason</p>
+                </div>
+              </div>
             </div>
           </Container>
         </section>

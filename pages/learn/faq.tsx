@@ -8,7 +8,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { NextSeo } from 'next-seo';
-import { 
+import {
   Search,
   ChevronDown,
   ChevronUp,
@@ -25,6 +25,7 @@ import {
   Truck,
   CreditCard
 } from 'lucide-react';
+import NextImage from '../../components/NextImage';
 
 const FAQPage: NextPage = () => {
   const { locale } = useTranslation();
@@ -39,6 +40,12 @@ const FAQPage: NextPage = () => {
   const pageTitle = 'Frequently Asked Questions - Purrify Cat Litter Additive';
   const pageDescription = 'Get answers to common questions about Purrify activated carbon cat litter additive. Learn about usage, shipping, safety, and more.';
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`;
+
+  // FAQ page images - contextually relevant
+  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner with questions
+  const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat looking up
+  const sectionImage2 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Customer service support
+  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner at home
 
   const categories = [
     { id: 'all', name: 'All Questions', icon: HelpCircle, count: 12 },
@@ -391,6 +398,27 @@ const FAQPage: NextPage = () => {
           </Container>
         </section>
 
+        {/* Hero Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={heroImage}
+                alt="Cat owner researching Purrify product information and frequently asked questions"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h2 className="text-3xl font-bold mb-2">Your Questions, Answered</h2>
+                  <p className="text-xl opacity-90">Everything you need to know about Purrify</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Popular Questions */}
         <section className="py-16">
           <Container>
@@ -414,6 +442,27 @@ const FAQPage: NextPage = () => {
                   </p>
                 </div>
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Section Image 1 - Curious Cat */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage1}
+                alt="Curious cat looking up with questions about Purrify cat litter additive"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Even Your Cat Has Questions</h3>
+                  <p className="text-lg opacity-90">Let's find the answers together</p>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
@@ -537,6 +586,27 @@ const FAQPage: NextPage = () => {
           </Container>
         </section>
 
+        {/* Section Image 2 - Customer Support */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage2}
+                alt="Friendly customer service support team ready to help with Purrify questions"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Expert Support Team</h3>
+                  <p className="text-lg opacity-90">Ready to answer your questions</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Still Have Questions */}
         <section className="py-16">
           <Container>
@@ -573,6 +643,27 @@ const FAQPage: NextPage = () => {
                   <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100">
                     Call Now
                   </Button>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Solution Image - Happy Cat Owner */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={solutionImage}
+                alt="Happy cat owner enjoying odor-free home with Purrify activated carbon additive"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Join Thousands of Happy Cat Owners</h3>
+                  <p className="text-lg opacity-90">Experience the Purrify difference today</p>
                 </div>
               </div>
             </div>

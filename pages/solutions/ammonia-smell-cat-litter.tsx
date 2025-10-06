@@ -1,15 +1,34 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import NextImage from '../../components/NextImage';
 
 export default function ammoniasmellcatlitterPage() {
   const seoTitle = 'Stop Embarrassing Ammonia Smell from Cat Litter - Water-Filter Grade Solution | Purrify';
   const seoDescription = 'Tired of that sharp ammonia smell hitting you when you open the litter box? This water-filter grade activated carbon destroys ammonia molecules instantly. No more holding your breath!';
+
+  // Ammonia smell solution images
+  const heroImage = 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?auto=format&fit=crop&w=1600&q=80'; // Person holding nose
+  const sectionImage1 = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Scientific molecular view
+  const sectionImage2 = 'https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=1600&q=80'; // Clean fresh home
+  const solutionImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Happy cat
   
   return (
     <>
       <NextSeo
         title={seoTitle}
         description={seoDescription}
+        openGraph={{
+          title: seoTitle,
+          description: seoDescription,
+          images: [
+            {
+              url: heroImage,
+              width: 1600,
+              height: 1067,
+              alt: 'Stop embarrassing ammonia smell from cat litter box',
+            },
+          ],
+        }}
         additionalMetaTags={[
           {
             name: 'keywords',
@@ -72,6 +91,27 @@ export default function ammoniasmellcatlitterPage() {
           </div>
         </section>
 
+        {/* Hero Image */}
+        <section className="py-8 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={heroImage}
+                alt="Person bothered by strong ammonia smell from cat litter box"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h2 className="text-3xl font-bold mb-2">No More Holding Your Breath!</h2>
+                  <p className="text-xl opacity-90">Eliminate ammonia smell at the molecular level</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">How It Works</h2>
@@ -91,6 +131,25 @@ export default function ammoniasmellcatlitterPage() {
                 This is why Purrify works so effectively - it doesn't just cover up the smell, it eliminates the source
                 of the odor at the molecular level.
               </p>
+            </div>
+
+            {/* Science Image */}
+            <div className="mb-12">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src={sectionImage1}
+                  alt="Molecular science of activated carbon trapping ammonia molecules"
+                  width={1600}
+                  height={1067}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Military-Grade Carbon Technology</h3>
+                    <p className="text-lg opacity-90">Same technology used in water filters and gas masks</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -114,6 +173,27 @@ export default function ammoniasmellcatlitterPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Eliminate</h3>
                 <p className="text-gray-700 dark:text-gray-200">Odors are permanently trapped - no more ammonia smell</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Clean Home Image */}
+        <section className="py-8 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage2}
+                alt="Clean, fresh-smelling home environment without ammonia odor"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Fresh Home, Happy Life</h3>
+                  <p className="text-lg opacity-90">No more embarrassment when guests visit</p>
+                </div>
               </div>
             </div>
           </div>
@@ -147,6 +227,25 @@ export default function ammoniasmellcatlitterPage() {
                   <li>✓ Longer-lasting litter between changes</li>
                   <li>✓ Happier cats and humans alike</li>
                 </ul>
+              </div>
+            </div>
+
+            {/* Solution Image - Happy Cat */}
+            <div className="mb-12">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
+                <NextImage
+                  src={solutionImage}
+                  alt="Happy cat in odor-free home thanks to Purrify ammonia elimination"
+                  width={1600}
+                  height={1067}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Your Cat Deserves Better</h3>
+                    <p className="text-lg opacity-90">Join 1,000+ happy cat owners</p>
+                  </div>
+                </div>
               </div>
             </div>
 

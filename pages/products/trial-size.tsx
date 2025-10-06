@@ -21,6 +21,12 @@ export default function TrialSizePage() {
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+
+  // Trial size lifestyle images
+  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Person trying new product
+  const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat first time
+  const sectionImage2 = 'https://images.unsplash.com/photo-1573566116339-501594f44963?auto=format&fit=crop&w=1600&q=80'; // Happy customer with cat
+  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Success story
   
   // Generate structured data for this product
   const productData = generateProductData('purrify-12g');
@@ -431,6 +437,27 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
+        {/* Hero Lifestyle Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={heroImage}
+                alt="Cat owner trying Purrify trial size for the first time"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h2 className="text-3xl font-bold mb-2">Risk-Free Trial</h2>
+                  <p className="text-xl opacity-90">See why 1,000+ cat owners love Purrify</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* How It Works Section */}
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
           <Container>
@@ -485,6 +512,27 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
+        {/* Curious Cat Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage1}
+                alt="Curious cat experiencing Purrify for the first time"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Your Cat Will Love It Too</h3>
+                  <p className="text-lg opacity-90">Gentle formula safe for all cats and kittens</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Customer Testimonials */}
         <section className="py-16 cv-auto cis-720">
           <Container>
@@ -518,6 +566,27 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
+        {/* Happy Customer Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage2}
+                alt="Happy cat owner with satisfied cat after trying Purrify"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Join Happy Trial Users</h3>
+                  <p className="text-lg opacity-90">Most trial users upgrade to full-size within days</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Related Products */}
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
@@ -543,6 +612,25 @@ export default function TrialSizePage() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value for multiple cats</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
                 <Button className="w-full">View Large Size</Button>
+              </div>
+            </div>
+
+            {/* Success Story Image */}
+            <div className="mt-12 max-w-3xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <NextImage
+                  src={solutionImage}
+                  alt="Success story of cat owner enjoying fresh home with Purrify"
+                  width={1600}
+                  height={1067}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-8 text-white dark:text-gray-100">
+                    <h3 className="text-2xl font-bold mb-2">Start Your Success Story</h3>
+                    <p className="text-lg opacity-90">Risk-free trial, amazing results</p>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>

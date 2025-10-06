@@ -17,7 +17,12 @@ export default function FamilyPackPage() {
   const pageTitle = `${SITE_NAME} Family Pack - 120g Activated Carbon Cat Litter Additive`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack activated carbon cat litter additive. Best value size.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
-  
+
+  // Family pack lifestyle images
+  const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
+  const sectionImage1 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Multi-cat household
+  const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat family
+
   // Generate structured data for this product
   const productData = generateProductData('purrify-120g');
   const breadcrumbs = generateBreadcrumbs('/products/family-pack');
@@ -383,6 +388,69 @@ export default function FamilyPackPage() {
                   Back to All Products
                 </Button>
               </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* Multi-Cat Lifestyle Image 1 */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={heroImage}
+                alt="Happy multiple cats in fresh, odor-free home with Purrify Family Pack"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h2 className="text-3xl font-bold mb-2">Perfect for Multi-Cat Families</h2>
+                  <p className="text-xl opacity-90">Best value for 2-3 months of freshness</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Multi-Cat Household Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={sectionImage1}
+                alt="Multi-cat household enjoying Purrify Family Pack odor control"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Handles Heavy Usage</h3>
+                  <p className="text-lg opacity-90">Powerful enough for 3+ cats</p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Happy Family Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
+              <NextImage
+                src={solutionImage}
+                alt="Happy cat family enjoying fresh home with Purrify Family Pack"
+                width={1600}
+                height={1067}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white dark:text-gray-100">
+                  <h3 className="text-2xl font-bold mb-2">Best Value, Happiest Cats</h3>
+                  <p className="text-lg opacity-90">Save 25% with our Family Pack</p>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
