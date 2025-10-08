@@ -17,8 +17,8 @@ export default function BestForSmallApartments() {
   return (
     <>
       <Head>
-        <title>{`Apartment Smells Like Cat Litter? 5 Ways to Stop Neighbors from Noticing | ${SITE_NAME}`}</title>
-        <meta name="description" content="Embarrassed your small apartment reeks of cat litter? These 5 proven methods eliminate odors in tiny spaces. Stop worrying about what neighbors and landlords think!" />
+        <title>{`5 Ways to Stop Cat Smell in Small Apartments | ${SITE_NAME}`}</title>
+        <meta name="description" content="Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy. Works in studios and small spaces!" />
         <meta name="keywords" content="best cat litter odor remover for small apartments, apartment cat odor control, urban cat litter solutions, small space pet odor" />
         
         {/* Open Graph */}

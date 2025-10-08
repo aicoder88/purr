@@ -12,8 +12,8 @@ export default function UsingDeodorizersWithKittens() {
   return (
     <>
       <Head>
-        <title>{`Using Cat Litter Deodorizer with Kittens? Complete Parent Guide | ${SITE_NAME}`}</title>
-        <meta name="description" content="Considering litter deodorizers with kittens? This complete guide shows exactly when and how to eliminate litter box smell with kittens. Water-filter grade quality for tiny paws!" />
+        <title>{`Cat Litter Deodorizer with Kittens Guide | ${SITE_NAME}`}</title>
+        <meta name="description" content="Complete guide to using litter deodorizers with kittens. Learn when, how, and what products work best for tiny paws. Natural, chemical-free options!" />
         <meta name="keywords" content="cat litter deodorizer kittens, kitten litter care, natural cat litter additive, fragrance-free cat deodorizer, kitten health" />
         
         {/* Open Graph */}

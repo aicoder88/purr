@@ -13,8 +13,8 @@ export default function HowToUseLitterDeodorizer() {
   return (
     <>
       <Head>
-        <title>{`How to Use Cat Litter Deodorizer: Step-by-Step Guide | ${SITE_NAME}`}</title>
-        <meta name="description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions, common mistakes to avoid, and expert tips." />
+        <title>{`How to Use Cat Litter Deodorizer | ${SITE_NAME}`}</title>
+        <meta name="description" content="Step-by-step guide to using cat litter deodorizer correctly. Avoid common mistakes and maximize odor control with expert tips." />
         <meta name="keywords" content="how to use cat litter deodorizer additive, litter box odor control, cat litter deodorizer instructions, activated carbon application" />
         
         {/* Open Graph */}

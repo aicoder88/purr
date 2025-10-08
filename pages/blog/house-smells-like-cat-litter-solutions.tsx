@@ -18,8 +18,8 @@ export default function HouseSmellsLikeCatLitter() {
   return (
     <>
       <Head>
-        <title>{`Embarrassed Your House Smells Like Cat Litter? 7 Ways to Stop the Stink | ${SITE_NAME}`}</title>
-        <meta name="description" content="Tired of guests noticing your house smells like cat litter? These 7 proven methods eliminate embarrassing litter box odors in 24 hours. Get your fresh-smelling home back!" />
+        <title>{`7 Ways to Stop Cat Litter Smell | ${SITE_NAME}`}</title>
+        <meta name="description" content="Stop embarrassing cat litter odors in 24 hours. 7 proven methods to eliminate litter box smell and keep your home fresh." />
         <meta name="keywords" content="house smells like cat litter, control cat litter smell, cat litter urine smell, strong urine smell cat litter box, getting cat litter smell out of house, house smells like litter box" />
 
         {/* Open Graph */}

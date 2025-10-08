@@ -13,8 +13,8 @@ export default function ActivatedCarbonVsBakingSoda() {
   return (
     <>
       <Head>
-        <title>{`Baking Soda Not Working for Cat Litter Smell? Try This Instead | ${SITE_NAME}`}</title>
-        <meta name="description" content="Frustrated that baking soda isn't stopping litter box smell? See why 89% of cat parents switch to activated carbon after trying this shocking comparison test!" />
+        <title>{`Baking Soda vs Activated Carbon Test | ${SITE_NAME}`}</title>
+        <meta name="description" content="Baking soda failing? See why 89% switch to activated carbon. Shocking test reveals which works better for cat litter smell!" />
         <meta name="keywords" content="activated carbon vs baking soda, cat litter deodorizer comparison, best odor control technology, natural odor elimination" />
 
         {/* Open Graph */}

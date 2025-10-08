@@ -16,8 +16,8 @@ export default function ActivatedCarbonBenefits() {
   return (
     <>
       <Head>
-        <title>{`Why Activated Carbon Destroys Cat Litter Smell Better Than Baking Soda | ${SITE_NAME}`}</title>
-        <meta name="description" content="Wondering why your baking soda isn't working? Activated carbon destroys ammonia smell 10x better than home remedies. See the shocking science behind instant odor elimination!" />
+        <title>{`Activated Carbon vs Baking Soda for Cat Litter | ${SITE_NAME}`}</title>
+        <meta name="description" content="Baking soda not working? Activated carbon destroys ammonia 10x better. See the science behind instant cat litter odor elimination!" />
         <meta name="keywords" content="activated carbon litter additive benefits, cat litter deodorizer, odor control science, molecular adsorption, natural cat litter additive" />
         
         {/* Open Graph */}

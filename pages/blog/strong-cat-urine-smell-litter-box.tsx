@@ -14,10 +14,10 @@ export default function StrongCatUrineSmell() {
   return (
     <>
       <Head>
-        <title>{`Strong Cat Urine Smell in the Litter Box? Try This Layered Fix | ${SITE_NAME}`}</title>
+        <title>{`Fix Strong Cat Urine Smell in Litter Box | ${SITE_NAME}`}</title>
         <meta
           name="description"
-          content="Strong cat urine smell from the litter box? Follow this layered fix combining airflow, litter hygiene, and activated carbon to reclaim a fresh-smelling home."
+          content="Stop strong cat urine smell fast. Proven layered fix with airflow, hygiene tips, and activated carbon for instant freshness at home."
         />
         <meta
           name="keywords"

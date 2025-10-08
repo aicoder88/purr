@@ -3,8 +3,8 @@ import Link from 'next/link';
 import NextImage from '../../components/NextImage';
 
 export default function ammoniasmellcatlitterPage() {
-  const seoTitle = 'Stop Embarrassing Ammonia Smell from Cat Litter - Water-Filter Grade Solution | Purrify';
-  const seoDescription = 'Tired of that sharp ammonia smell hitting you when you open the litter box? This water-filter grade activated carbon destroys ammonia molecules instantly. No more holding your breath!';
+  const seoTitle = 'Stop Cat Litter Ammonia Smell | Purrify';
+  const seoDescription = 'Sharp ammonia smell from litter box? Water-filter grade carbon destroys it instantly. No more holding your breath!';
 
   // Ammonia smell solution images
   const heroImage = 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?auto=format&fit=crop&w=1600&q=80'; // Person holding nose
@@ -17,7 +17,10 @@ export default function ammoniasmellcatlitterPage() {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
+        canonical="https://www.purrify.ca/solutions/ammonia-smell-cat-litter"
         openGraph={{
+          type: 'article',
+          url: 'https://www.purrify.ca/solutions/ammonia-smell-cat-litter',
           title: seoTitle,
           description: seoDescription,
           images: [

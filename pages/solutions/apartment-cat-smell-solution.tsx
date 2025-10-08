@@ -4,8 +4,8 @@ import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
 export default function ApartmentCatSmellSolutionPage() {
-  const seoTitle = 'Apartment Cat Smell Solution - Activated Carbon Odor Eliminator | Purrify';
-  const seoDescription = 'Eliminate apartment cat odors completely with Purrify activated carbon additive. Perfect for small spaces, works with any litter brand. Breathe easy again in your apartment.';
+  const seoTitle = 'Apartment Cat Smell Solution | Purrify';
+  const seoDescription = 'Eliminate cat odors in apartments with activated carbon. Perfect for small spaces, works with any litter. Breathe easy again!';
   const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
 
   // SEO optimized images
