@@ -40,7 +40,7 @@ export default function NextImage({
   ...rest
 }: NextImageProps) {
   const [imgSrc, setImgSrc] = useState<string>(src);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [width, setWidth] = useState<number | undefined>(propWidth);
   const [height, setHeight] = useState<number | undefined>(propHeight);
@@ -166,7 +166,7 @@ export default function NextImage({
 
     setImgSrc(initialCandidate);
     fallbackCandidatesRef.current = fallbacks;
-    setIsLoading(true);
+    setIsLoading(false); // Don't show loading spinner - let Next.js handle it
     setError(false);
 
     if (!propWidth || !propHeight) {
@@ -307,7 +307,7 @@ export default function NextImage({
             ref={imageRef}
             src={resolvedImgSrc}
             alt={safeAlt}
-            className={`${className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+            className={className || ''}
             priority={priority}
             quality={effectiveQuality}
             sizes={computedSizes}
@@ -370,7 +370,7 @@ export default function NextImage({
           alt={safeAlt}
           width={finalWidth}
           height={finalHeight}
-          className={`${className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+          className={className || ''}
           priority={priority}
           quality={effectiveQuality}
           sizes={computedSizes}
