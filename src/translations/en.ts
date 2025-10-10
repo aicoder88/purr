@@ -92,7 +92,7 @@ export const en = {
   features: {
     odorElimination: {
       title: "Locks Away Ammonia Smell Instantly",
-      description: "Water-filter grade activated carbon doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!"
+      description: "***Air-and-water-filter grade activated carbon*** doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!"
     },
     catFriendly: {
       title: "Used in Water & Air Filters Worldwide",
