@@ -56,9 +56,9 @@ export const en = {
     rabbitLitter: "Rabbit Litter Deodorizer",
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
-    eliminateCatOdors: "Finally! A Litter Box That Doesn't Smell…",
-    instantly: "Your Guests Will Never Know You Have Cats!",
-    description: "Tired of holding your breath? This water-filter grade activated carbon locks away ammonia smell instantly. One sprinkle gives you 7 days of fresh air - so effective, visitors won't believe you own cats.",
+    eliminateCatOdors: "Your Friends Smell It The Second They Walk In",
+    instantly: "(Even If They're Too Polite To Say So)",
+    description: "You've tried everything. Expensive litter. Constant scooping. Opening windows in February. Nothing works... until now. This NASA-grade activated carbon locks away ammonia at the molecular level—one sprinkle buys you 7 days of \"wait, you have CATS?\" from shocked visitors.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "cat parents say goodbye to litter box smell",
