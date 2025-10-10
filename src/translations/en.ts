@@ -96,7 +96,7 @@ export const en = {
     },
     catFriendly: {
       title: "Used in Water & Air Filters Worldwide",
-      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes. The same type used in water and air filters around the world, powerful enough for multiple cats."
+      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes.\n\nThe same type used in water and air filters around the world, powerful enough for multiple cats."
     },
     longLastingFreshness: {
       title: "7 Days of Fresh Air Guaranteed",
