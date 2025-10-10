@@ -130,7 +130,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
           {t.hero.eliminateCatOdors}
         </span>
         <span
-          className={`block ${COLORS.text.primary}`}
+          className={`block text-2xl md:text-3xl font-medium ${COLORS.text.primary}`}
           style={{
             lineHeight: "1.3"
           }}
