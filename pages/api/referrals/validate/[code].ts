@@ -18,9 +18,28 @@ interface ReferralCodeValidation {
 }
 
 // Simulated database lookup - replace with actual database
-const getMockReferralCode = (code: string) => {
+interface MockReferralCode {
+  id: string;
+  userId: string;
+  code: string;
+  referrerName: string;
+  referrerEmail: string;
+  isActive: boolean;
+  maxUses: number;
+  currentUses: number;
+  expiresAt: string;
+  createdAt: string;
+}
+
+type ReferralAnalyticsParams = Record<string, string | number | boolean | undefined>;
+
+type AnalyticsGlobal = typeof globalThis & {
+  gtag?: (command: 'event', eventName: string, params?: ReferralAnalyticsParams) => void;
+};
+
+const getMockReferralCode = (code: string): MockReferralCode | null => {
   // Mock data for demo - this would come from database
-  const mockCodes = {
+  const mockCodes: Record<string, MockReferralCode> = {
     'SARAH15-CAT': {
       id: 'ref_001',
       userId: 'user_001',
@@ -47,7 +66,7 @@ const getMockReferralCode = (code: string) => {
     }
   };
 
-  return (mockCodes as any)[code] || null;
+  return mockCodes[code] ?? null;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ReferralCodeValidation>) {
@@ -114,8 +133,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const usesRemaining = referralCode.maxUses - referralCode.currentUses;
 
     // Track referral code validation
-    if (typeof global !== 'undefined' && (global as any).gtag) {
-      (global as any).gtag('event', 'referral_code_validated', {
+    const analyticsGlobal = globalThis as AnalyticsGlobal;
+    if (analyticsGlobal.gtag) {
+      analyticsGlobal.gtag('event', 'referral_code_validated', {
         event_category: 'referrals',
         event_label: 'code_validation',
         custom_parameter_1: code
@@ -147,7 +167,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 // Helper function to apply referral discount to cart
-export function applyReferralDiscount(cartItems: any[], referralCode: string) {
+interface CartItem {
+  productId: string;
+  sku: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  quantity: number;
+  isReferralReward?: boolean;
+  referralCode?: string;
+}
+
+export function applyReferralDiscount(cartItems: CartItem[], referralCode: string): CartItem[] {
   // Add free 12g trial to cart if not already present
   const hasTrialSize = cartItems.some(item => item.productId === '12g' || item.sku === 'purrify-12g');
 

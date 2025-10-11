@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, useState, ReactNode, useCallback, useMemo } from 'react';
 
 interface ABTestConfig {
   testId: string;
@@ -75,7 +75,15 @@ export function SolutionPageCTATest({
   testId?: string;
   productUrl?: string;
 }) {
-  const variants = {
+  const handleControlClick = useCallback(() => {
+    trackABTestConversion(testId, 'control');
+  }, [testId]);
+
+  const handleUrgencyClick = useCallback(() => {
+    trackABTestConversion(testId, 'urgency');
+  }, [testId]);
+
+  const variants = useMemo(() => ({
     control: {
       weight: 50,
       component: (
@@ -87,7 +95,7 @@ export function SolutionPageCTATest({
           <a
             href={productUrl}
             className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors shadow-lg"
-            onClick={() => trackABTestConversion(testId, 'control')}
+            onClick={handleControlClick}
           >
             Try Purrify - $6.99
           </a>
@@ -108,14 +116,14 @@ export function SolutionPageCTATest({
           <a
             href={productUrl}
             className="inline-block bg-red-600 dark:bg-red-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 dark:hover:bg-red-500 transition-colors shadow-lg animate-pulse"
-            onClick={() => trackABTestConversion(testId, 'urgency')}
+            onClick={handleUrgencyClick}
           >
             Order Now - FREE Shipping!
           </a>
         </div>
       )
     }
-  };
+  }), [handleControlClick, handleUrgencyClick, productUrl]);
 
   return <ABTest testId={testId} variants={variants} />;
 }

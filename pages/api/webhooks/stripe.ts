@@ -40,12 +40,34 @@ export default async function handler(
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
         const orderId = session.metadata?.orderId;
+        const orderType = session.metadata?.type;
 
         if (!orderId) {
           throw new Error('No order ID in session metadata');
         }
 
-        // Update order status
+        // Handle retailer orders differently
+        if (orderType === 'retailer_order') {
+          const paymentIntent = session.payment_intent as string;
+
+          // Update retailer order status
+          await prisma.retailerOrder.update({
+            where: { id: orderId },
+            data: {
+              status: 'PAID',
+              stripePaymentIntentId: paymentIntent,
+            },
+          });
+
+          // TODO: Send confirmation email to retailer
+          // TODO: Send notification to admin
+          // TODO: Create ShipStation order
+
+          console.log(`Retailer order ${orderId} paid successfully`);
+          break;
+        }
+
+        // Handle consumer orders
         await prisma.order.update({
           where: { id: orderId },
           data: { status: 'PAID' },
@@ -84,12 +106,20 @@ export default async function handler(
       case 'checkout.session.expired': {
         const session = event.data.object as Stripe.Checkout.Session;
         const orderId = session.metadata?.orderId;
+        const orderType = session.metadata?.type;
 
         if (orderId) {
-          await prisma.order.update({
-            where: { id: orderId },
-            data: { status: 'CANCELLED' },
-          });
+          if (orderType === 'retailer_order') {
+            await prisma.retailerOrder.update({
+              where: { id: orderId },
+              data: { status: 'CANCELLED' },
+            });
+          } else {
+            await prisma.order.update({
+              where: { id: orderId },
+              data: { status: 'CANCELLED' },
+            });
+          }
         }
         break;
       }

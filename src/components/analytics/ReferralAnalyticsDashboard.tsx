@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -174,6 +174,40 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
     URL.revokeObjectURL(url);
   }, [analyticsData, timeframe]);
 
+  const timeframeOptions = useMemo(() => ['7d', '30d', '90d', '1y'] as const, []);
+
+  const timeframeButtons = useMemo(
+    () => timeframeOptions.map((period) => ({
+      period,
+      onClick: () => handleTimeframeChange(period)
+    })),
+    [handleTimeframeChange, timeframeOptions]
+  );
+
+  const tabConfigs = useMemo(
+    () => ([
+      { id: 'overview', label: 'Overview', icon: BarChart3 },
+      { id: 'performance', label: 'Performance', icon: TrendingUp },
+      { id: 'funnel', label: 'Conversion Funnel', icon: Target },
+      { id: 'social', label: 'Social Channels', icon: Share2 },
+      { id: 'cohorts', label: 'Cohorts', icon: Users },
+      { id: 'revenue', label: 'Revenue Impact', icon: DollarSign }
+    ] as const),
+    []
+  );
+
+  const handleTabSelect = useCallback((tabId: string) => {
+    setActiveTab(tabId);
+  }, [setActiveTab]);
+
+  const tabButtons = useMemo(
+    () => tabConfigs.map((tab) => ({
+      ...tab,
+      onClick: () => handleTabSelect(tab.id)
+    })),
+    [handleTabSelect, tabConfigs]
+  );
+
   if (loading || !analyticsData) {
     return (
       <div className={cn("space-y-6", className)}>
@@ -201,10 +235,10 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
         <div className="flex items-center space-x-3">
           {/* Timeframe Selector */}
           <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
-            {['7d', '30d', '90d', '1y'].map((period) => (
+            {timeframeButtons.map(({ period, onClick }) => (
               <Button
                 key={period}
-                onClick={() => handleTimeframeChange(period)}
+                onClick={onClick}
                 variant={timeframe === period ? 'default' : 'ghost'}
                 size="sm"
                 className="text-xs"
@@ -230,17 +264,10 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
       {/* Tab Navigation */}
       <div className="border-b border-gray-200 dark:border-gray-700">
         <nav className="-mb-px flex space-x-8">
-          {[
-            { id: 'overview', label: 'Overview', icon: BarChart3 },
-            { id: 'performance', label: 'Performance', icon: TrendingUp },
-            { id: 'funnel', label: 'Conversion Funnel', icon: Target },
-            { id: 'social', label: 'Social Channels', icon: Share2 },
-            { id: 'cohorts', label: 'Cohorts', icon: Users },
-            { id: 'revenue', label: 'Revenue Impact', icon: DollarSign }
-          ].map((tab) => (
+          {tabButtons.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={tab.onClick}
               className={cn(
                 "flex items-center py-2 px-1 border-b-2 font-medium text-sm",
                 activeTab === tab.id

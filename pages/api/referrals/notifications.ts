@@ -270,33 +270,171 @@ The Purrify Team
 
 // Additional email template functions would go here...
 function generateMilestoneEmailHTML(recipientName?: string, rewardDetails?: RewardDetails): string {
-  // Implementation for milestone emails
-  return `<!-- Milestone email HTML -->`;
+  const headline = rewardDetails?.description || 'Milestone Reward Unlocked!';
+  const rewardSummary = rewardDetails?.amount ? `${rewardDetails.amount}${rewardDetails.type === 'percentage' ? '% off' : ''}` : 'Exclusive Reward';
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Milestone Reward Unlocked</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
+        </div>
+
+        <h1 style="color: #FF6B35; text-align: center;">🏆 Milestone Achieved!</h1>
+        <p>Hi ${recipientName || 'friend'},</p>
+        <p>You just hit a major milestone in the Purrify referral program and unlocked a special reward.</p>
+
+        <div style="background: #fcefe6; border-radius: 10px; padding: 25px; margin: 30px 0; text-align: center;">
+          <h2 style="color: #FF6B35; margin-bottom: 10px;">${headline}</h2>
+          <p style="font-size: 18px; font-weight: bold; margin: 0;">${rewardSummary}</p>
+          ${rewardDetails?.code ? `
+            <div style="margin-top: 15px; font-size: 16px;">
+              <span style="background: white; padding: 10px 14px; border-radius: 6px; border: 1px dashed #FF6B35; font-family: monospace;">${rewardDetails.code}</span>
+            </div>
+          ` : ''}
+        </div>
+
+        <p>Keep the momentum going—share your code with a few more cat parents and you’ll unlock the next milestone reward even faster.</p>
+        <p style="font-size: 12px; color: #666; text-align: center; margin-top: 30px;">
+          View all rewards anytime in your <a href="https://www.purrify.ca/customer/referrals">referral dashboard</a>.
+        </p>
+      </body>
+    </html>
+  `;
 }
 
 function generateMilestoneEmailText(recipientName?: string, rewardDetails?: RewardDetails): string {
-  // Implementation for milestone emails
-  return `Milestone email text`;
+  const headline = rewardDetails?.description || 'Milestone Reward Unlocked!';
+  const rewardSummary = rewardDetails?.amount ? `${rewardDetails.amount}${rewardDetails.type === 'percentage' ? '% off' : ''}` : 'Exclusive Reward';
+
+  return `
+🏆 Milestone Achieved!
+
+Hi ${recipientName || 'friend'},
+
+You just hit a major milestone in the Purrify referral program and unlocked a special reward.
+
+Reward: ${headline}
+Details: ${rewardSummary}
+${rewardDetails?.code ? `Code: ${rewardDetails.code}` : ''}
+
+Keep sharing to reach the next milestone even faster.
+View all rewards: https://www.purrify.ca/customer/referrals
+
+Thanks for helping more cats breathe easy!
+  `;
 }
 
-function generateRefereeSignupEmailHTML(_recipientName?: string, _referrerName?: string, _referralCode?: string): string {
-  // Implementation for referee signup emails
-  return `<!-- Referee signup email HTML -->`;
+function generateRefereeSignupEmailHTML(recipientName?: string, referrerName?: string, referralCode?: string): string {
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>New Referral Signup</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
+        </div>
+
+        <h1 style="color: #28a745; text-align: center;">A New Cat Parent Joined!</h1>
+        <p>Hi ${recipientName || 'there'},</p>
+        <p>${referrerName || 'One of your referrals'} just signed up using your code ${referralCode || ''}. You’re one step closer to your next reward.</p>
+
+        <div style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 25px 0;">
+          <h3 style="margin-top: 0; color: #FF6B35;">What happens next?</h3>
+          <ul style="padding-left: 20px;">
+            <li>We’ll let you know when they make their first purchase.</li>
+            <li>Once they buy, you lock in your referral reward.</li>
+            <li>Three successful referrals unlock a milestone perk!</li>
+          </ul>
+        </div>
+
+        <p style="font-size: 12px; color: #666; text-align: center; margin-top: 30px;">
+          Share again: https://www.purrify.ca/customer/referrals
+        </p>
+      </body>
+    </html>
+  `;
 }
 
-function generateRefereeSignupEmailText(_recipientName?: string, _referrerName?: string, _referralCode?: string): string {
-  // Implementation for referee signup emails
-  return `Referee signup email text`;
+function generateRefereeSignupEmailText(recipientName?: string, referrerName?: string, referralCode?: string): string {
+  return `
+🐾 A New Cat Parent Joined!
+
+Hi ${recipientName || 'there'},
+
+${referrerName || 'One of your referrals'} just signed up using your code ${referralCode || ''}. You’re one step closer to earning a reward.
+
+We’ll email you again when they make their first purchase so you can celebrate your referral win.
+
+Keep sharing: https://www.purrify.ca/customer/referrals
+
+Thanks for spreading the word!
+  `;
 }
 
-function generateRefereePurchaseEmailHTML(_recipientName?: string, _referrerName?: string, _rewardDetails?: RewardDetails): string {
-  // Implementation for referee purchase emails
-  return `<!-- Referee purchase email HTML -->`;
+function generateRefereePurchaseEmailHTML(recipientName?: string, referrerName?: string, rewardDetails?: RewardDetails): string {
+  const rewardSummary = rewardDetails?.description || 'Your next discount is waiting!';
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Referral Purchase Complete</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
+        </div>
+
+        <h1 style="color: #FF6B35; text-align: center;">Cha-ching! Your referral paid off</h1>
+        <p>Hi ${recipientName || 'there'},</p>
+        <p>${referrerName || 'Your friend'} just made a purchase thanks to your referral. Your reward is ready to use.</p>
+
+        <div style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; padding: 24px; border-radius: 10px; margin: 30px 0; text-align: center;">
+          <h2 style="margin: 0 0 10px;">${rewardSummary}</h2>
+          ${rewardDetails?.code ? `
+            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-size: 18px; font-family: monospace;">
+              Use Code: ${rewardDetails.code}
+            </div>
+          ` : '<p style="margin: 0; font-size: 16px;">Reward automatically applied at checkout.</p>'}
+        </div>
+
+        <p>Log in to your dashboard to track progress toward your next milestone reward.</p>
+
+        <p style="font-size: 12px; color: #666; text-align: center; margin-top: 24px;">
+          View your rewards: https://www.purrify.ca/customer/referrals
+        </p>
+      </body>
+    </html>
+  `;
 }
 
-function generateRefereePurchaseEmailText(_recipientName?: string, _referrerName?: string, _rewardDetails?: RewardDetails): string {
-  // Implementation for referee purchase emails
-  return `Referee purchase email text`;
+function generateRefereePurchaseEmailText(recipientName?: string, referrerName?: string, rewardDetails?: RewardDetails): string {
+  const rewardSummary = rewardDetails?.description || 'Your next discount is ready to use.';
+
+  return `
+🎉 Your Referral Reward is Ready!
+
+Hi ${recipientName || 'there'},
+
+${referrerName || 'Your friend'} just made a Purrify purchase. Reward unlocked!
+
+Reward: ${rewardSummary}
+${rewardDetails?.code ? `Use code ${rewardDetails.code} at checkout.` : 'The reward is automatically applied to your account.'}
+
+Track rewards: https://www.purrify.ca/customer/referrals
+
+Keep sharing the freshness!
+  `;
 }
 
 // Mock email sending function - replace with actual email service
@@ -307,7 +445,12 @@ async function sendEmail(to: string, subject: string, html: string, text: string
   // - AWS SES
   // - Resend
 
-  console.log('📧 Email would be sent:', { to, subject });
+  console.log('📧 Email would be sent:', {
+    to,
+    subject,
+    htmlLength: html.length,
+    textPreview: text.slice(0, 120)
+  });
 
   // Simulate email sending delay
   await new Promise(resolve => setTimeout(resolve, 100));

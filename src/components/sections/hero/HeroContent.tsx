@@ -1,3 +1,4 @@
+import { useCallback, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
 import Link from "next/link";
@@ -71,7 +72,7 @@ const PathCard = ({
   description: string;
   cta: string;
   href?: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   colorScheme: 'red' | 'purple';
   onClick?: () => void;
 }) => {
@@ -123,6 +124,18 @@ const PathCard = ({
 };
 
 export const HeroContent = ({ t, locale }: HeroContentProps) => {
+  const handleScrollToProducts = useCallback(() => {
+    scrollToSection("products");
+  }, []);
+
+  const handleScrollToTestimonials = useCallback(() => {
+    scrollToSection("testimonials");
+  }, []);
+
+  const handleScrollToHowItWorks = useCallback(() => {
+    scrollToSection("how-it-works");
+  }, []);
+
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
@@ -169,7 +182,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
             description={t.hero.dualPath?.consumer?.description || 'Individual cat owners - instant checkout, direct delivery'}
             cta={t.hero.dualPath?.consumer?.cta || 'Buy Now for Your Cat'}
             colorScheme="red"
-            onClick={() => scrollToSection("products")}
+            onClick={handleScrollToProducts}
             icon={
               <svg className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -194,7 +207,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
         {/* Secondary Actions */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
-            onClick={() => scrollToSection("testimonials")}
+            onClick={handleScrollToTestimonials}
             size="lg"
             variant="outline"
             className={createButtonClasses('outline')}
@@ -203,7 +216,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
             {t.hero.buttons.reviews}
           </Button>
           <Button
-            onClick={() => scrollToSection("how-it-works")}
+            onClick={handleScrollToHowItWorks}
             size="lg"
             variant="ghost"
             className={`${COLORS.text.primary} font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95 transform hover:-translate-y-1`}

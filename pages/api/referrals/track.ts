@@ -1,17 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+interface TrackingData {
+  source?: string;
+  medium?: string;
+  campaign?: string;
+  utmParameters?: Record<string, string>;
+}
+
 interface ReferralTracking {
   referralId?: string;
   referrerId: string;
   refereeEmail: string;
   refereeId?: string;
   status: 'pending' | 'completed' | 'expired' | 'cancelled';
-  trackingData?: {
-    source?: string;
-    medium?: string;
-    campaign?: string;
-    utmParameters?: Record<string, string>;
-  };
+  trackingData?: TrackingData;
+  orderId?: string;
+  orderValue?: number;
 }
 
 interface TrackingResponse {
@@ -34,9 +38,42 @@ interface TrackingResponse {
   error?: string;
 }
 
+type TrackReferralAction = 'click' | 'signup' | 'purchase';
+
+interface TrackReferralRequestBody {
+  action?: TrackReferralAction;
+  referralCode?: string;
+  refereeEmail?: string;
+  refereeId?: string;
+  orderId?: string;
+  orderValue?: number;
+  trackingData?: TrackingData;
+}
+
+interface ReferralRewardRecord {
+  userId: string;
+  type: 'referral_discount' | 'free_product';
+  value?: number;
+  percentage?: boolean;
+  description: string;
+  referralId: string;
+  createdAt: string;
+  expiresAt: string;
+  isUsed: boolean;
+  productId?: string;
+  orderId?: string;
+  orderValue?: number;
+}
+
+type GtagEventParams = Record<string, string | number | boolean | undefined>;
+
+type AnalyticsGlobal = typeof globalThis & {
+  gtag?: (command: 'event', eventName: string, params?: GtagEventParams) => void;
+};
+
 // In-memory storage for demo - replace with database
 const referralActivities = new Map<string, ReferralTracking>();
-const referralRewards = new Map<string, any>();
+const referralRewards = new Map<string, ReferralRewardRecord>();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<TrackingResponse>) {
   if (req.method !== 'POST') {
@@ -55,12 +92,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       orderId,
       orderValue,
       trackingData
-    } = req.body;
+    } = req.body as TrackReferralRequestBody;
 
-    if (!action || !referralCode) {
+    if (!action || !referralCode || !refereeEmail) {
       return res.status(400).json({
         success: false,
-        error: 'Missing required fields: action, referralCode'
+        error: 'Missing required fields: action, referralCode, refereeEmail'
       });
     }
 
@@ -141,8 +178,8 @@ async function trackReferralClick(
   referralId: string,
   referrerId: string,
   refereeEmail: string,
-  trackingData?: any
-) {
+  trackingData?: TrackingData
+): Promise<void> {
   const tracking: ReferralTracking = {
     referralId,
     referrerId,
@@ -154,8 +191,9 @@ async function trackReferralClick(
   referralActivities.set(referralId, tracking);
 
   // Analytics tracking
-  if (typeof global !== 'undefined' && (global as any).gtag) {
-    (global as any).gtag('event', 'referral_click', {
+  const analyticsGlobal = globalThis as AnalyticsGlobal;
+  if (analyticsGlobal.gtag) {
+    analyticsGlobal.gtag('event', 'referral_click', {
       event_category: 'referrals',
       event_label: 'link_click',
       custom_parameter_1: referrerId,
@@ -169,8 +207,8 @@ async function trackReferralSignup(
   referrerId: string,
   refereeEmail: string,
   refereeId?: string,
-  trackingData?: any
-) {
+  trackingData?: TrackingData
+): Promise<void> {
   const tracking: ReferralTracking = {
     referralId,
     referrerId,
@@ -183,8 +221,9 @@ async function trackReferralSignup(
   referralActivities.set(referralId, tracking);
 
   // Analytics tracking
-  if (typeof global !== 'undefined' && (global as any).gtag) {
-    (global as any).gtag('event', 'referral_signup', {
+  const analyticsGlobal = globalThis as AnalyticsGlobal;
+  if (analyticsGlobal.gtag) {
+    analyticsGlobal.gtag('event', 'referral_signup', {
       event_category: 'referrals',
       event_label: 'user_signup',
       custom_parameter_1: referrerId,
@@ -200,8 +239,8 @@ async function trackReferralPurchase(
   refereeId?: string,
   orderId?: string,
   orderValue?: number,
-  trackingData?: any
-) {
+  trackingData?: TrackingData
+): Promise<TrackingResponse['rewards']> {
   // Update referral status to completed
   const tracking: ReferralTracking = {
     referralId,
@@ -209,7 +248,9 @@ async function trackReferralPurchase(
     refereeEmail,
     refereeId,
     status: 'completed',
-    trackingData
+    trackingData,
+    orderId,
+    orderValue
   };
 
   referralActivities.set(referralId, tracking);
@@ -238,7 +279,9 @@ async function trackReferralPurchase(
     referralId,
     createdAt: new Date().toISOString(),
     expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days
-    isUsed: false
+    isUsed: false,
+    orderId,
+    orderValue
   });
 
   // Check for milestone rewards (every 3 referrals = free 50g)
@@ -252,13 +295,16 @@ async function trackReferralPurchase(
       referralId,
       createdAt: new Date().toISOString(),
       expiresAt: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(), // 6 months
-      isUsed: false
+      isUsed: false,
+      orderId,
+      orderValue
     });
   }
 
   // Analytics tracking
-  if (typeof global !== 'undefined' && (global as any).gtag) {
-    (global as any).gtag('event', 'referral_conversion', {
+  const analyticsGlobal = globalThis as AnalyticsGlobal;
+  if (analyticsGlobal.gtag) {
+    analyticsGlobal.gtag('event', 'referral_conversion', {
       event_category: 'referrals',
       event_label: 'purchase_completed',
       value: orderValue || 0,
@@ -271,8 +317,15 @@ async function trackReferralPurchase(
 }
 
 // Helper function to get referral code data (mock)
-function getMockReferralCode(code: string) {
-  const mockCodes = {
+interface MockReferralCode {
+  userId: string;
+  code: string;
+  referrerName: string;
+  isActive: boolean;
+}
+
+function getMockReferralCode(code: string): MockReferralCode | null {
+  const mockCodes: Record<string, MockReferralCode> = {
     'SARAH15-CAT': {
       userId: 'user_001',
       code: 'SARAH15-CAT',
@@ -287,7 +340,7 @@ function getMockReferralCode(code: string) {
     }
   };
 
-  return (mockCodes as any)[code] || null;
+  return mockCodes[code] ?? null;
 }
 
 // Helper function to count completed referrals for a user

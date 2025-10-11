@@ -29,6 +29,124 @@ model User {
   @@index([createdAt])
 }
 
+model Retailer {
+  id                String           @id @default(cuid())
+  businessName      String
+  contactName       String
+  email             String           @unique
+  phone             String?
+  password          String           // Hashed with bcrypt
+  status            RetailerStatus   @default(PENDING)
+  approvedAt        DateTime?
+  approvedBy        String?          // Admin user ID
+  taxId             String?          // Business tax ID
+  shippingAddress   ShippingAddress?
+  billingAddress    BillingAddress?
+  orders            RetailerOrder[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  lastLoginAt       DateTime?
+  stripeCustomerId  String?          @unique // Stripe customer ID for B2B payments
+  notes             String?          @db.Text // Admin notes
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("retailers")
+}
+
+enum RetailerStatus {
+  PENDING     // Awaiting approval
+  ACTIVE      // Approved and can order
+  SUSPENDED   // Temporarily disabled
+  REJECTED    // Application rejected
+}
+
+model ShippingAddress {
+  id         String   @id @default(cuid())
+  street     String
+  city       String
+  province   String
+  postalCode String
+  country    String   @default("CA")
+  retailer   Retailer @relation(fields: [retailerId], references: [id], onDelete: Cascade)
+  retailerId String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("shipping_addresses")
+}
+
+model BillingAddress {
+  id         String   @id @default(cuid())
+  street     String
+  city       String
+  province   String
+  postalCode String
+  country    String   @default("CA")
+  retailer   Retailer @relation(fields: [retailerId], references: [id], onDelete: Cascade)
+  retailerId String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("billing_addresses")
+}
+
+model RetailerOrder {
+  id                 String             @id @default(cuid())
+  orderNumber        String             @unique // Human-readable order number (e.g., RO-2025-001)
+  retailer           Retailer           @relation(fields: [retailerId], references: [id])
+  retailerId         String
+  status             RetailerOrderStatus @default(PENDING)
+  subtotal           Float              // Before tax
+  tax                Float
+  shipping           Float
+  totalAmount        Float              // Final total
+  items              RetailerOrderItem[]
+  stripeSessionId    String?            @unique
+  stripePaymentIntentId String?         @unique
+  shipstationOrderId String?            @unique // ShipStation order ID
+  trackingNumber     String?
+  shippingCarrier    String?
+  shippedAt          DateTime?
+  deliveredAt        DateTime?
+  notes              String?            @db.Text
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@index([retailerId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([orderNumber])
+  @@map("retailer_orders")
+}
+
+enum RetailerOrderStatus {
+  PENDING           // Order created, awaiting payment
+  PAID              // Payment received
+  PROCESSING        // Being prepared
+  SHIPPED           // Shipped to retailer
+  DELIVERED         // Delivered
+  CANCELLED         // Cancelled
+  REFUNDED          // Refunded
+}
+
+model RetailerOrderItem {
+  id              String        @id @default(cuid())
+  order           RetailerOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId         String
+  product         Product       @relation(fields: [productId], references: [id])
+  productId       String
+  quantity        Int
+  unitPrice       Float         // Wholesale price
+  totalPrice      Float         // quantity * unitPrice
+  createdAt       DateTime      @default(now())
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("retailer_order_items")
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -65,14 +183,17 @@ model VerificationToken {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  price       Float
-  image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  orderItems  OrderItem[]
+  id                String              @id @default(cuid())
+  name              String
+  description       String
+  price             Float               // Consumer price
+  wholesalePrice    Float?              // Wholesale/retailer price
+  minimumOrder      Int?                // Minimum order quantity for retailers
+  image             String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  orderItems        OrderItem[]
+  retailerOrderItems RetailerOrderItem[]
 }
 
 model Order {

@@ -77,6 +77,32 @@ interface OptimizationRecommendation {
   metrics: string[];
 }
 
+interface CreateTestConfig {
+  name?: string;
+  description?: string;
+  variants?: TestVariant[];
+  metrics?: TestMetric[];
+}
+
+type OptimizationApiSuccess<T> = {
+  success: true;
+  data: T;
+  message?: string;
+};
+
+type OptimizationApiError = {
+  success: false;
+  error: string;
+};
+
+type OptimizationApiResponse<T> = OptimizationApiSuccess<T> | OptimizationApiError;
+
+type GtagEventParams = Record<string, string | number | boolean | undefined>;
+
+type AnalyticsGlobal = typeof globalThis & {
+  gtag?: (command: 'event', eventName: string, params?: GtagEventParams) => void;
+};
+
 // Mock A/B tests data
 const getMockOptimizationTests = (): OptimizationTest[] => [
   {
@@ -306,11 +332,12 @@ const getMockOptimizationRecommendations = (): OptimizationRecommendation[] => [
   }
 ];
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { action } = req.query;
+export default async function handler(req: NextApiRequest, res: NextApiResponse<OptimizationApiResponse<unknown>>) {
+  const actionParam = req.query.action;
+  const action = Array.isArray(actionParam) ? actionParam[0] : actionParam;
 
   if (req.method !== 'GET' && req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
   try {
@@ -318,6 +345,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'tests':
         if (req.method === 'GET') {
           const tests = getMockOptimizationTests();
+          trackApiUsage(action, req.method);
           return res.status(200).json({
             success: true,
             data: tests
@@ -328,6 +356,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'recommendations':
         if (req.method === 'GET') {
           const recommendations = getMockOptimizationRecommendations();
+          trackApiUsage(action, req.method);
           return res.status(200).json({
             success: true,
             data: recommendations
@@ -337,9 +366,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       case 'create-test':
         if (req.method === 'POST') {
-          const testConfig = req.body;
+          const testConfig = req.body as CreateTestConfig;
           // In production, create and start A/B test
           const newTest = createNewTest(testConfig);
+          trackApiUsage(action, req.method);
           return res.status(201).json({
             success: true,
             data: newTest,
@@ -351,7 +381,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'test-results':
         if (req.method === 'GET') {
           const { testId } = req.query;
-          const testResults = calculateTestResults(testId as string);
+          const normalizedTestId = Array.isArray(testId) ? testId[0] : testId;
+          if (!normalizedTestId) {
+            trackApiUsage(action, req.method);
+            return res.status(400).json({ success: false, error: 'testId is required' });
+          }
+          const testResults = calculateTestResults(normalizedTestId);
+          trackApiUsage(action, req.method);
           return res.status(200).json({
             success: true,
             data: testResults
@@ -360,24 +396,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         break;
 
       default:
-        return res.status(400).json({
-          success: false,
-          error: 'Invalid action specified'
-        });
+        trackApiUsage(action, req.method);
+        return res.status(400).json({ success: false, error: 'Invalid action specified' });
     }
 
-    // Track optimization API usage
-    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
-      (global as typeof globalThis & { gtag: Function }).gtag('event', 'optimization_api_call', {
-        event_category: 'analytics',
-        event_label: action,
-        custom_parameter_1: req.method
-      });
-    }
-
+    trackApiUsage(action, req.method);
+    return res.status(405).json({ success: false, error: 'Unsupported method for action' });
   } catch (error) {
     console.error('Optimization API error:', error);
-    res.status(500).json({
+    trackApiUsage(action, req.method);
+    return res.status(500).json({
       success: false,
       error: 'Failed to process optimization request'
     });
@@ -385,7 +413,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 // Helper function to create new A/B test
-function createNewTest(config: { name?: string; description?: string; variants?: any[]; metrics?: any[] }): OptimizationTest {
+function createNewTest(config: CreateTestConfig): OptimizationTest {
   const testId = `test_${Date.now()}`;
 
   return {
@@ -437,11 +465,16 @@ function calculateTestResults(testId: string): TestResults | null {
     (control.performance.visitors + variant.performance.visitors)
   );
 
-  const standardError = Math.sqrt(
-    pooledRate * (1 - pooledRate) * (
-      1/control.performance.visitors + 1/variant.performance.visitors
-    )
-  );
+  const visitorFactor = (1 / control.performance.visitors) + (1 / variant.performance.visitors);
+  if (!Number.isFinite(visitorFactor) || visitorFactor === 0) {
+    return null;
+  }
+
+  const standardError = Math.sqrt(pooledRate * (1 - pooledRate) * visitorFactor);
+
+  if (standardError === 0) {
+    return null;
+  }
 
   const zScore = Math.abs(variantRate - controlRate) / standardError;
   const pValue = 2 * (1 - normalCDF(Math.abs(zScore)));
@@ -534,4 +567,13 @@ function findValueDrivers(highValue: Array<{ averageOrderValue: number }>): stri
   // Determine value drivers based on order values
   const avgValue = highValue.reduce((sum, h) => sum + h.averageOrderValue, 0) / highValue.length;
   return avgValue > 50 ? ['Bundle offerings', 'Premium positioning', 'Educational content'] : ['Value messaging'];
+}
+
+function trackApiUsage(action: string | undefined, method: string): void {
+  const analyticsGlobal = globalThis as AnalyticsGlobal;
+  analyticsGlobal.gtag?.('event', 'optimization_api_call', {
+    event_category: 'analytics',
+    event_label: action,
+    custom_parameter_1: method
+  });
 }
