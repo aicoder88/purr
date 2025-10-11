@@ -34,7 +34,7 @@ export function WholesalePricing() {
         'Five boxes of trial size (125 small bags)',
         'Five boxes of medium (75 medium bags)',
         'Five boxes of large (50 large bags)',
-        '🎁 BONUS: 25 extra trial bags to hook new customers'
+        '🎁 BONUS: 5 extra medium bags free'
       ],
       features: [
         'Premium counter display',
