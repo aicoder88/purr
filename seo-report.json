@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-21T17:54:52.949Z",
+  "timestamp": "2025-10-11T16:04:29.051Z",
   "sitemap": {
     "generated": true,
     "index": false
@@ -11,10 +11,10 @@
     "implemented": false
   },
   "metaTags": {
-    "issues": 73
+    "issues": 9
   },
   "recommendations": [
     "Implement structured data schemas",
-    "Fix 73 meta tag issues"
+    "Fix 9 meta tag issues"
   ]
 }

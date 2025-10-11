@@ -30,21 +30,21 @@ export default function CustomerReferralsPage({
 
   useEffect(() => {
     // Check if user already has a referral code
+    const checkExistingReferralCode = async () => {
+      try {
+        const stats = await getUserReferralStats(userId);
+        if (stats && stats.referralCode) {
+          setReferralCode(stats.referralCode);
+          setShareUrl(stats.shareUrl);
+          setHasReferralCode(true);
+        }
+      } catch (error) {
+        console.error('Error checking referral code:', error);
+      }
+    };
+
     checkExistingReferralCode();
   }, [userId]);
-
-  const checkExistingReferralCode = async () => {
-    try {
-      const stats = await getUserReferralStats(userId);
-      if (stats && stats.referralCode) {
-        setReferralCode(stats.referralCode);
-        setShareUrl(stats.shareUrl);
-        setHasReferralCode(true);
-      }
-    } catch (error) {
-      console.error('Error checking referral code:', error);
-    }
-  };
 
   const handleGenerateReferralCode = async () => {
     setIsGeneratingCode(true);
