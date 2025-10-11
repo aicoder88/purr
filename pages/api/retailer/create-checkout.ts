@@ -5,7 +5,7 @@ import Stripe from 'stripe';
 
 const prisma = new PrismaClient();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-01-27.acacia',
+  apiVersion: '2025-07-30.basil',
 });
 
 const JWT_SECRET = process.env.RETAILER_JWT_SECRET || 'your-secret-key-change-in-production';
