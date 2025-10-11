@@ -154,6 +154,7 @@ export function Header() {
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers`,
       hasDropdown: true,
       dropdownItems: [
+        { label: t.nav?.retailers || 'For Retailers', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers` },
         { label: t.nav?.wholesalePricing || 'Wholesale Pricing', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#wholesale-pricing` },
         { label: t.nav?.becomePartner || 'Become a Partner', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#retailer-contact` },
         { label: t.nav?.marketingSupport || 'Marketing Support', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/retailers#marketing-support` }
