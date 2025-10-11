@@ -21,7 +21,8 @@ export function WholesalePricing() {
         'Proven 4.8/5 star product',
         'Lightweight shipping advantage',
         'Basic POS display included',
-        'Email support & setup guide'
+        'Email support & setup guide',
+        'Free product replacement for damaged goods'
       ],
       highlighted: false,
       badge: '🚀 Quick Start'
@@ -36,7 +37,7 @@ export function WholesalePricing() {
         '🎁 BONUS: 25 extra trial bags to hook new customers'
       ],
       features: [
-        'Premium illuminated counter display',
+        'Premium counter display',
         'Staff training materials & product knowledge cards',
         'Digital marketing assets (social posts, email templates)',
         'Co-branded promotional flyers',
