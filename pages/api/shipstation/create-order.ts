@@ -93,11 +93,13 @@ export default async function handler(
     }
 
     const shippingAddress = order.retailer.shippingAddress;
-    const billingAddress = order.retailer.billingAddress || shippingAddress;
 
     if (!shippingAddress) {
       return res.status(400).json({ message: 'Shipping address not found' });
     }
+
+    // Use billing address if available, otherwise use shipping address
+    const billingAddress = order.retailer.billingAddress || shippingAddress;
 
     // Create ShipStation order
     const shipstationOrder: ShipStationOrder = {
