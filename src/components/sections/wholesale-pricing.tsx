@@ -38,7 +38,7 @@ export function WholesalePricing() {
       ],
       features: [
         'Premium counter display',
-        'Staff training materials & product knowledge cards',
+        'Staff training materials',
         'Digital marketing assets (social posts, email templates)',
         'Co-branded promotional flyers',
         'Priority phone & email support',
