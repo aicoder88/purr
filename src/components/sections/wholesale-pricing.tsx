@@ -52,7 +52,8 @@ export function WholesalePricing() {
       contents: [
         'Ten boxes of trial size (250 small bags)',
         'Ten boxes of medium (150 medium bags)',
-        'Ten boxes of large (100 large bags)'
+        'Ten boxes of large (100 large bags)',
+        '🎁 BONUS: 25 extra trial bags to hook new customers'
       ],
       features: [
         'Everything in Growth Partner',
