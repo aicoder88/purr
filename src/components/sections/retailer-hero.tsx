@@ -40,7 +40,7 @@ export function RetailerHero() {
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 leading-relaxed">
-                Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">17 established retailers</strong> selling Canada's #1 cat odor solution with <strong>50%+ margins</strong>
+                Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">21 established retailers</strong> selling Canada's #1 cat odor solution with <strong>50%+ margins</strong>
               </p>
 
               {/* Key Stats */}

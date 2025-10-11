@@ -253,7 +253,7 @@ export function RetailerContact() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-bold text-sm mb-6">
-              🤝 Join 17 Established Partners
+              🤝 Join 21 Established Partners
             </div>
             <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
               Start Your
@@ -277,7 +277,7 @@ export function RetailerContact() {
                 <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Setup Fees</div>
               </div>
               <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-4 border border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">17</div>
+                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">21</div>
                 <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Current Partners</div>
               </div>
             </div>
