@@ -40,7 +40,6 @@ export function WholesalePricing() {
         'Premium counter display',
         'Staff training materials',
         'Digital marketing assets (social posts, email templates)',
-        'Co-branded promotional flyers',
         'Priority phone & email support',
         'Free product replacement for damaged goods'
       ],
