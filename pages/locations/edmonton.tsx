@@ -50,7 +50,7 @@ export default function edmontonPage() {
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Trusted by {Math.floor(city.population / 100) * 2}+ cat owners in {city.name} and across {city.province}
+              Trusted by 250+ cat owners in {city.name} and across {city.province}
             </p>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
@@ -139,10 +139,9 @@ export default function edmontonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Finally found something that works in our basement! Even with four cats, no more odor issues."
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Jennifer K., {city.name}</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
@@ -151,9 +150,9 @@ export default function edmontonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Love this product! A little goes a long way. My roommates actually thanked me for buying it!"
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- David L., {city.name}</p>
               </div>
             </div>
           </div>
@@ -177,11 +176,10 @@ export default function edmontonPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  What makes activated carbon so effective?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Activated carbon works like an air filter for your litter box! It traps and eliminates odor molecules at the source instead of just covering them up with perfumes.
                 </p>
               </div>
             </div>

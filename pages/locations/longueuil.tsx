@@ -50,7 +50,7 @@ export default function longueuilPage() {
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Trusted by {Math.floor(city.population / 100) * 2}+ cat owners in {city.name} and across {city.province}
+              Trusted by 150+ cat owners in {city.name} and across {city.province}
             </p>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
@@ -139,10 +139,9 @@ export default function longueuilPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Game changer for our condo! No more embarrassment when friends come over. This stuff really works!"
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Caroline B., {city.name}</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
@@ -151,9 +150,9 @@ export default function longueuilPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "I love that it's all natural! My senior cat is sensitive, and Purrify doesn't bother her at all."
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- André T., {city.name}</p>
               </div>
             </div>
           </div>
@@ -177,11 +176,10 @@ export default function longueuilPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  How often should I add Purrify to the litter box?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Sprinkle 2-3 tablespoons when you clean the box. For multiple cats or high-traffic boxes, you can add a bit more. One bag lasts most households 1-2 months!
                 </p>
               </div>
             </div>

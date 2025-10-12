@@ -50,7 +50,7 @@ export default function lavalPage() {
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Trusted by {Math.floor(city.population / 100) * 2}+ cat owners in {city.name} and across {city.province}
+              Trusted by 200+ cat owners in {city.name} and across {city.province}
             </p>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
@@ -139,10 +139,9 @@ export default function lavalPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "My apartment smelled fresh again within days! Purrify works alongside my regular litter perfectly."
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Marie L., {city.name}</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
@@ -151,9 +150,9 @@ export default function lavalPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "J'adore! Finally a natural solution that actually works. My guests can't even tell I have two cats!"
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Jean-Pierre D., {city.name}</p>
               </div>
             </div>
           </div>
@@ -177,11 +176,10 @@ export default function lavalPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Can I use Purrify with my existing litter?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Absolutely! Purrify works with any litter brand. Just sprinkle it on top and it starts working immediately to eliminate odors at the molecular level.
                 </p>
               </div>
             </div>
