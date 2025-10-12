@@ -16,6 +16,7 @@ export function Header() {
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
+  const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
   const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
@@ -28,21 +29,31 @@ export function Header() {
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
       setIsSolutionsDropdownOpen(false);
+      setIsLocationsDropdownOpen(false);
     } else if (id === 'retailers') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(true);
       setIsLearnDropdownOpen(false);
       setIsSolutionsDropdownOpen(false);
+      setIsLocationsDropdownOpen(false);
     } else if (id === 'learn') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(true);
       setIsSolutionsDropdownOpen(false);
+      setIsLocationsDropdownOpen(false);
     } else if (id === 'solutions') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
       setIsSolutionsDropdownOpen(true);
+      setIsLocationsDropdownOpen(false);
+    } else if (id === 'locations') {
+      setIsProductsDropdownOpen(false);
+      setIsRetailersDropdownOpen(false);
+      setIsLearnDropdownOpen(false);
+      setIsSolutionsDropdownOpen(false);
+      setIsLocationsDropdownOpen(true);
     }
   }, []);
 
@@ -51,21 +62,25 @@ export function Header() {
     if (id === 'products') {
       const next = !isProductsDropdownOpen;
       setIsProductsDropdownOpen(next);
-      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); }
+      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
     } else if (id === 'retailers') {
       const next = !isRetailersDropdownOpen;
       setIsRetailersDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
     } else if (id === 'learn') {
       const next = !isLearnDropdownOpen;
       setIsLearnDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsSolutionsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
     } else if (id === 'solutions') {
       const next = !isSolutionsDropdownOpen;
       setIsSolutionsDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+    } else if (id === 'locations') {
+      const next = !isLocationsDropdownOpen;
+      setIsLocationsDropdownOpen(next);
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); }
     }
-  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isSolutionsDropdownOpen]);
+  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isSolutionsDropdownOpen, isLocationsDropdownOpen]);
 
   const handleNavKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
     const id = (e.currentTarget.dataset.menuId as string) || '';
@@ -80,6 +95,7 @@ export function Header() {
       if (id === 'retailers') setIsRetailersDropdownOpen(false);
       if (id === 'learn') setIsLearnDropdownOpen(false);
       if (id === 'solutions') setIsSolutionsDropdownOpen(false);
+      if (id === 'locations') setIsLocationsDropdownOpen(false);
     }
   }, [handleNavClick]);
 
@@ -112,6 +128,7 @@ export function Header() {
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
       setIsSolutionsDropdownOpen(false);
+      setIsLocationsDropdownOpen(false);
     };
 
     router.events.on('routeChangeStart', handleRouteChange);
@@ -129,6 +146,7 @@ export function Header() {
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(false);
         setIsSolutionsDropdownOpen(false);
+        setIsLocationsDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -191,6 +209,23 @@ export function Header() {
       ]
     },
     {
+      id: 'locations',
+      label: 'Locations',
+      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/locations/toronto`,
+      hasDropdown: true,
+      dropdownItems: [
+        { label: 'Toronto', href: '/locations/toronto' },
+        { label: 'Mississauga', href: '/locations/mississauga' },
+        { label: 'Brampton', href: '/locations/brampton' },
+        { label: 'Markham', href: '/locations/markham' },
+        { label: 'Vaughan', href: '/locations/vaughan' },
+        { label: 'Richmond Hill', href: '/locations/richmond-hill' },
+        { label: 'Scarborough', href: '/locations/scarborough' },
+        { label: 'Oakville', href: '/locations/oakville' },
+        { label: 'Burlington', href: '/locations/burlington' }
+      ]
+    },
+    {
       id: 'blog',
       label: 'Blog',
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/blog`
@@ -233,7 +268,7 @@ export function Header() {
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
-                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'solutions' && isSolutionsDropdownOpen) ? 'true' : 'false'}
+                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'solutions' && isSolutionsDropdownOpen) || (item.id === 'locations' && isLocationsDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={handleNavMouseEnter}
                       // Do not auto-dismiss on mouse leave
@@ -246,7 +281,8 @@ export function Header() {
                     {((item.id === 'products' && isProductsDropdownOpen) ||
                       (item.id === 'retailers' && isRetailersDropdownOpen) ||
                       (item.id === 'learn' && isLearnDropdownOpen) ||
-                      (item.id === 'solutions' && isSolutionsDropdownOpen)) && (
+                      (item.id === 'solutions' && isSolutionsDropdownOpen) ||
+                      (item.id === 'locations' && isLocationsDropdownOpen)) && (
                       <div 
                         className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50"
                         role="menu"
