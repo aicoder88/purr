@@ -50,7 +50,7 @@ export default function ScarboroughPage() {
               Best Cat Litter Odor Eliminator in {city.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Trusted by {Math.floor(city.population / 1000).toLocaleString()}+ cat owners across {city.province}
+              Trusted by 600+ cat owners in {city.name} and across {city.province}
             </p>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
@@ -84,34 +84,42 @@ export default function ScarboroughPage() {
           </div>
         </section>
 
-        {/* Local Competition */}
-        <section className="py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
-              Better Than Local {city.name} Pet Stores
+        {/* Where to Buy */}
+        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-50">
+              Where to Find Purrify in {city.name}
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-200 dark:border-red-700">
-                <h3 className="text-xl font-bold text-red-700 dark:text-red-300 mb-4">
-                  Local Pet Stores ({city.competitors.join(', ')})
-                </h3>
-                <ul className="space-y-2 text-red-600 dark:text-red-400">
-                  <li>❌ Limited product selection</li>
-                  <li>❌ Higher prices due to overhead</li>
-                  <li>❌ Chemical-based deodorizers</li>
-                  <li>❌ No satisfaction guarantee</li>
-                </ul>
-              </div>
-              <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border border-green-200 dark:border-green-700">
-                <h3 className="text-xl font-bold text-green-700 dark:text-green-300 mb-4">
-                  Purrify Direct to {city.name}
-                </h3>
-                <ul className="space-y-2 text-green-600 dark:text-green-400">
-                  <li>✅ 100% natural activated carbon</li>
-                  <li>✅ Direct pricing, no middleman</li>
-                  <li>✅ Eliminates odors permanently</li>
-                  <li>✅ 30-day money-back guarantee</li>
-                </ul>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+              <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">
+                We partner with local pet stores across {city.name} to bring you the best natural cat litter odor control solution.
+              </p>
+              <div className="space-y-4">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+                  <h3 className="text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
+                    Ask Your Local Pet Store
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-200 mb-2">
+                    Visit your favorite {city.name} pet store and ask them to stock Purrify!
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    We work with retailers like {city.competitors.join(', ')} and independent stores
+                  </p>
+                </div>
+                <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
+                  <h3 className="text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
+                    Order Direct
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-200 mb-4">
+                    Can't find us in stores? Order directly from our website with free shipping to {city.name}
+                  </p>
+                  <Link
+                    href="/products/trial-size"
+                    className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                  >
+                    Shop Online Now
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
