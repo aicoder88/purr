@@ -10,6 +10,21 @@ import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+interface DropdownItem {
+  label: string;
+  href: string;
+  isGroupHeader?: boolean;
+  indent?: boolean;
+}
+
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
+}
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
@@ -154,7 +169,7 @@ export function Header() {
   }, []);
 
   // Navigation items for better organization
-  const navigationItems = [
+  const navigationItems: NavigationItem[] = [
     {
       id: 'products',
       label: t.nav?.products || 'Products',
@@ -214,15 +229,29 @@ export function Header() {
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/locations/toronto`,
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Toronto', href: '/locations/toronto' },
-        { label: 'Mississauga', href: '/locations/mississauga' },
-        { label: 'Brampton', href: '/locations/brampton' },
-        { label: 'Markham', href: '/locations/markham' },
-        { label: 'Vaughan', href: '/locations/vaughan' },
-        { label: 'Richmond Hill', href: '/locations/richmond-hill' },
-        { label: 'Scarborough', href: '/locations/scarborough' },
-        { label: 'Oakville', href: '/locations/oakville' },
-        { label: 'Burlington', href: '/locations/burlington' }
+        { label: '🏙️ Greater Toronto Area', href: '#', isGroupHeader: true },
+        { label: 'Toronto', href: '/locations/toronto', indent: true },
+        { label: 'Mississauga', href: '/locations/mississauga', indent: true },
+        { label: 'Brampton', href: '/locations/brampton', indent: true },
+        { label: 'Markham', href: '/locations/markham', indent: true },
+        { label: 'Vaughan', href: '/locations/vaughan', indent: true },
+        { label: 'Richmond Hill', href: '/locations/richmond-hill', indent: true },
+        { label: 'Scarborough', href: '/locations/scarborough', indent: true },
+        { label: 'Oakville', href: '/locations/oakville', indent: true },
+        { label: 'Burlington', href: '/locations/burlington', indent: true },
+        { label: 'Hamilton', href: '/locations/hamilton', indent: true },
+        { label: '🍁 Montreal Area', href: '#', isGroupHeader: true },
+        { label: 'Montreal', href: '/locations/montreal', indent: true },
+        { label: 'Laval', href: '/locations/laval', indent: true },
+        { label: 'Longueuil', href: '/locations/longueuil', indent: true },
+        { label: 'Gatineau', href: '/locations/gatineau', indent: true },
+        { label: '🌆 Other Major Cities', href: '#', isGroupHeader: true },
+        { label: 'Vancouver', href: '/locations/vancouver', indent: true },
+        { label: 'Calgary', href: '/locations/calgary', indent: true },
+        { label: 'Edmonton', href: '/locations/edmonton', indent: true },
+        { label: 'Winnipeg', href: '/locations/winnipeg', indent: true },
+        { label: 'Ottawa', href: '/locations/ottawa', indent: true },
+        { label: 'Quebec City', href: '/locations/quebec-city', indent: true }
       ]
     },
     {
@@ -283,21 +312,30 @@ export function Header() {
                       (item.id === 'learn' && isLearnDropdownOpen) ||
                       (item.id === 'solutions' && isSolutionsDropdownOpen) ||
                       (item.id === 'locations' && isLocationsDropdownOpen)) && (
-                      <div 
-                        className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50"
+                      <div
+                        className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 max-h-96 overflow-y-auto"
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
                       >
                         {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                          <Link
-                            key={dropdownIndex}
-                            href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-1 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
-                            role="menuitem"
-                          >
-                            {dropdownItem.label}
-                          </Link>
+                          dropdownItem.isGroupHeader ? (
+                            <div
+                              key={dropdownIndex}
+                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                            >
+                              {dropdownItem.label}
+                            </div>
+                          ) : (
+                            <Link
+                              key={dropdownIndex}
+                              href={dropdownItem.href}
+                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
+                              role="menuitem"
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          )
                         ))}
                       </div>
                     )}
@@ -359,14 +397,23 @@ export function Header() {
                         {item.label}
                       </div>
                       {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                        <Link
-                          key={dropdownIndex}
-                          href={dropdownItem.href}
-                          className="block px-6 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
-                          onClick={closeMenu}
-                        >
-                          {dropdownItem.label}
-                        </Link>
+                        dropdownItem.isGroupHeader ? (
+                          <div
+                            key={dropdownIndex}
+                            className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
+                          >
+                            {dropdownItem.label}
+                          </div>
+                        ) : (
+                          <Link
+                            key={dropdownIndex}
+                            href={dropdownItem.href}
+                            className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
+                            onClick={closeMenu}
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        )
                       ))}
                     </>
                   ) : (
