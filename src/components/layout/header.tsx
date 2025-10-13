@@ -166,7 +166,11 @@ export function Header() {
   // Close any open dropdown when clicking outside the header
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node;
+      const target = e.target as HTMLElement;
+      // Don't close if clicking on a dropdown button or within a dropdown
+      if (target.closest('[data-dropdown]')) {
+        return;
+      }
       if (headerRef.current && !headerRef.current.contains(target)) {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
