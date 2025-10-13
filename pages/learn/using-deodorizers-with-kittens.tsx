@@ -1,6 +1,5 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { Layout } from '../../src/components/layout/layout';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
@@ -15,7 +14,7 @@ export default function UsingDeodorizersWithKittensLearn() {
   const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy kitten with owner
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -125,6 +124,6 @@ export default function UsingDeodorizersWithKittensLearn() {
           <RelatedArticles currentPath="/learn/using-deodorizers-with-kittens" />
         </div>
       </article>
-    </Layout>
+    </>
   );
 }

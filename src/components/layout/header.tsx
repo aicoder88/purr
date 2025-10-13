@@ -167,10 +167,7 @@ export function Header() {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Don't close if clicking on a dropdown button or within a dropdown
-      if (target.closest('[data-dropdown]')) {
-        return;
-      }
+      // Only close if clicking completely outside the header
       if (headerRef.current && !headerRef.current.contains(target)) {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
@@ -179,8 +176,8 @@ export function Header() {
         setIsLocationsDropdownOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   // Navigation items for better organization

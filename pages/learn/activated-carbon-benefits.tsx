@@ -1,6 +1,5 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -17,7 +16,7 @@ export default function ActivatedCarbonBenefits() {
   const solutionImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80'; // Content cat in bright home
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -340,6 +339,6 @@ export default function ActivatedCarbonBenefits() {
           </div>
         </div>
       </article>
-    </Layout>
+    </>
   );
 }

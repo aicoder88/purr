@@ -1,6 +1,5 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { Layout } from '../../src/components/layout/layout';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
@@ -16,7 +15,7 @@ export default function HowToUseDeodorizer() {
   const solutionImage = 'https://images.unsplash.com/photo-1570018144715-43110363d70a?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -400,6 +399,6 @@ export default function HowToUseDeodorizer() {
           <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
         </div>
       </article>
-    </Layout>
+    </>
   );
 }
