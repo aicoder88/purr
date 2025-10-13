@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "../../components/ui/button";
@@ -37,6 +37,17 @@ export function Header() {
   const { t, locale} = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
+  const handleProvinceHighlight = useCallback((provinceCode: string) => {
+    setHoveredProvinceCode(provinceCode);
+  }, [setHoveredProvinceCode]);
+  const hoveredProvince = useMemo(
+    () => locationsByProvince.find((province) => province.code === hoveredProvinceCode) || null,
+    [hoveredProvinceCode]
+  );
+  const provinceHeadingText = hoveredProvince
+    ? (t.locationsMenu?.provinceCitiesHeading?.replace("{{province}}", hoveredProvince.name) ?? `${hoveredProvince.name} Cities`)
+    : (t.locationsMenu?.selectProvince ?? 'Select a Province');
+  const hoverPromptText = t.locationsMenu?.hoverPrompt ?? 'Hover a province to view cities.';
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -300,53 +311,69 @@ export function Header() {
                       (item.id === 'solutions' && isSolutionsDropdownOpen) ||
                       (item.id === 'locations' && isLocationsDropdownOpen)) && (
                       <div
-                        className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 max-h-96 overflow-y-auto"
+                        className={`absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 ${item.id === 'locations' ? 'min-w-[560px] p-3' : 'w-64 max-h-96 overflow-y-auto p-2'}`}
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
                       >
                         {item.id === 'locations' ? (
-                          // Province-based cascading menu for locations
-                          <>
-                            {locationsByProvince.map((province) => (
-                              <div
-                                key={province.code}
-                                className="relative"
-                              >
-                                <button
-                                  type="button"
-                                  className="w-full flex items-center justify-between px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
-                                  onMouseEnter={() => setHoveredProvinceCode(province.code)}
-                                  onFocus={() => setHoveredProvinceCode(province.code)}
-                                  onClick={() => setHoveredProvinceCode(province.code)}
-                                  aria-haspopup="true"
-                                  aria-expanded={hoveredProvinceCode === province.code}
-                                >
-                                  <span className="font-medium">{province.name}</span>
-                                  <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-500" />
-                                </button>
-
-                                {/* Cascading submenu for cities */}
-                                {hoveredProvinceCode === province.code && (
-                                  <div className="absolute left-full top-0 ml-1 w-56 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 max-h-96 overflow-y-auto">
-                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-200 dark:border-gray-700">
-                                      {province.name} Cities
-                                    </div>
-                                    {province.cities.map((city) => (
-                                      <Link
-                                        key={city.slug}
-                                        href={`/locations/${city.slug}`}
-                                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
-                                        role="menuitem"
-                                      >
-                                        {city.name}
-                                      </Link>
-                                    ))}
-                                  </div>
+                          // Two-column layout so province hover reveals city list without clipping
+                          <div className="flex gap-3">
+                            <div className="w-60 max-h-96 overflow-y-auto pr-1 border-r border-gray-200 dark:border-gray-700 space-y-1">
+                              {locationsByProvince.map((province) => {
+                                const isActive = hoveredProvinceCode === province.code;
+                                return (
+                                  <button
+                                    key={province.code}
+                                    type="button"
+                                    className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${
+                                      isActive
+                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
+                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                                    }`}
+                                    onMouseEnter={() => handleProvinceHighlight(province.code)}
+                                    onFocus={() => handleProvinceHighlight(province.code)}
+                                    onClick={() => handleProvinceHighlight(province.code)}
+                                    aria-haspopup="true"
+                                    aria-expanded={isActive}
+                                  >
+                                    <span className="truncate font-medium">{province.name}</span>
+                                    <ChevronRight
+                                      className={`h-4 w-4 shrink-0 ${
+                                        isActive
+                                          ? 'text-[#FF3131] dark:text-[#FF5050]'
+                                          : 'text-gray-400 dark:text-gray-500'
+                                      }`}
+                                    />
+                                  </button>
+                                );
+                              })}
+                            </div>
+                            <div className="w-64 max-h-96 overflow-y-auto pl-1">
+                              <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                {provinceHeadingText}
+                              </div>
+                              <div className="mt-1 space-y-1">
+                                {hoveredProvince ? (
+                                  hoveredProvince.cities.map((city) => (
+                                    <Link
+                                      key={city.slug}
+                                      href={`/locations/${city.slug}`}
+                                      className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                      role="menuitem"
+                                      onClick={() => setIsLocationsDropdownOpen(false)}
+                                    >
+                                      {city.name}
+                                    </Link>
+                                  ))
+                                ) : (
+                                  <p className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+                                    {hoverPromptText}
+                                  </p>
                                 )}
                               </div>
-                            ))}
-                          </>
+                            </div>
+                          </div>
                         ) : (
                           // Regular dropdown for other menus
                           item.dropdownItems?.map((dropdownItem, dropdownIndex) => (

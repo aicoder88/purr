@@ -31,6 +31,12 @@ export const fr = {
     becomePartner: "Devenir Partenaire",
     marketingSupport: "Support Marketing"
   },
+
+  locationsMenu: {
+    selectProvince: "Sélectionnez une province",
+    hoverPrompt: "Survolez une province pour voir les villes.",
+    provinceCitiesHeading: "Villes de {{province}}"
+  },
   
   // Products
   products: {

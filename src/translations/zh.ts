@@ -31,6 +31,12 @@ export const zh = {
     becomePartner: "成为合作伙伴",
     marketingSupport: "营销支持"
   },
+
+  locationsMenu: {
+    selectProvince: "选择省份",
+    hoverPrompt: "将鼠标悬停在省份上即可查看城市。",
+    provinceCitiesHeading: "{{province}} 城市"
+  },
   
   // Products
   products: {

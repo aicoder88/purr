@@ -33,6 +33,12 @@ export const en = {
     becomePartner: "Become a Partner",
     marketingSupport: "Marketing Support"
   },
+
+  locationsMenu: {
+    selectProvince: "Select a Province",
+    hoverPrompt: "Hover a province to view cities.",
+    provinceCitiesHeading: "{{province}} Cities"
+  },
   
   // Products
   products: {
