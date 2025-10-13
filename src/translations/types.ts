@@ -32,6 +32,13 @@ export interface TranslationType {
     marketingSupport: string;
   };
 
+  // Locations Menu
+  locationsMenu?: {
+    selectProvince: string;
+    hoverPrompt: string;
+    provinceCitiesHeading: string;
+  };
+
   // About Section
   about: {
     naturalAndEffective: string;
