@@ -303,7 +303,6 @@ export function Header() {
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
-                        onMouseLeave={item.id === 'locations' ? () => setHoveredProvinceCode(null) : undefined}
                       >
                         {item.id === 'locations' ? (
                           // Province-based cascading menu for locations
