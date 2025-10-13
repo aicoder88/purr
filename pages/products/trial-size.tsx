@@ -566,6 +566,71 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
+        {/* Compelling Conversion Section */}
+        <section className="py-16 bg-gradient-to-br from-[#FF3131]/5 via-[#5B2EFF]/5 to-[#03E46A]/5 dark:from-[#FF5050]/10 dark:via-[#3694FF]/10 dark:to-[#03E46A]/10">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              {/* Stats Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border-2 border-[#FF3131]/20 dark:border-[#FF5050]/30">
+                  <div className="text-4xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">87%</div>
+                  <p className="text-gray-700 dark:text-gray-300 font-semibold">Upgrade to Full Size</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Within 7 days</p>
+                </div>
+
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
+                  <div className="text-4xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">1,000+</div>
+                  <p className="text-gray-700 dark:text-gray-300 font-semibold">Trial Users</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Started with 12g</p>
+                </div>
+
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border-2 border-[#03E46A]/20 dark:border-[#03E46A]/30">
+                  <div className="text-4xl font-bold text-[#03E46A] dark:text-[#03E46A] mb-2">4.8★</div>
+                  <p className="text-gray-700 dark:text-gray-300 font-semibold">Average Rating</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">From trial users</p>
+                </div>
+              </div>
+
+              {/* Compelling CTA Box */}
+              <div className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] p-8 rounded-3xl shadow-2xl text-center">
+                <div className="mb-6">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white dark:text-gray-100 mb-3">
+                    Try It Risk-Free Today
+                  </h3>
+                  <p className="text-xl text-white/90 dark:text-gray-200 mb-2">
+                    Join 1,000+ cat owners who started with our trial size
+                  </p>
+                  <p className="text-white/80 dark:text-gray-300">
+                    Most upgrade to full-size within days. Why wait?
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#FF3131] hover:bg-gray-100 dark:bg-gray-900 dark:text-[#FF5050] dark:hover:bg-gray-800 font-bold py-4 px-8 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                  >
+                    <ShoppingCart className="w-6 h-6 mr-2" />
+                    Order Trial Size - $6.99
+                  </Button>
+
+                  <div className="flex items-center space-x-2 text-white dark:text-gray-100">
+                    <Check className="w-5 h-5 text-[#03E46A]" />
+                    <span className="text-sm">Free shipping over $25</span>
+                  </div>
+                </div>
+
+                {/* Urgency Element */}
+                <div className="mt-6 inline-block bg-white/20 dark:bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+                  <p className="text-sm text-white dark:text-gray-200 font-semibold">
+                    ⚡ Limited stock: Trial sizes sell out fast
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Happy Customer Image */}
         <section className="py-8">
           <Container>
