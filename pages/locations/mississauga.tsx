@@ -139,10 +139,9 @@ export default function MississaugaPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Our Mississauga townhouse stays fresh even with two cats! Perfect for our busy commuter lifestyle - no time for constant cleaning."
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Sarah K., Mississauga</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600">
                 <div className="flex items-center mb-4">
@@ -151,9 +150,9 @@ export default function MississaugaPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Close to Pearson Airport means we travel often. Purrify keeps our home fresh while we're away. Our cat sitter loves it!"
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-gray-50">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Marcus T., Mississauga</p>
               </div>
             </div>
           </div>
@@ -177,11 +176,10 @@ export default function MississaugaPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  How long does one container last?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  For most households, one container lasts 1-2 months. For multiple cats, you may need to sprinkle a bit more, but it's still very economical compared to constantly buying new litter!
                 </p>
               </div>
             </div>

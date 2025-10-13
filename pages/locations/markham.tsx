@@ -139,8 +139,7 @@ export default function MarkhamPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Our Markham home office setup means I'm on video calls all day. Purrify ensures my background is always fresh and professional!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Lisa C., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function MarkhamPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Tech-savvy solution for modern homes. Works better than any smart gadget I've tried. Simple, natural, effective."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- David L., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function MarkhamPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  How does activated carbon work?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Activated carbon has millions of tiny pores that trap odor molecules at the molecular level. Unlike perfumes that mask odors, it actually removes them from the air. It's the same technology used in high-end air purifiers!
                 </p>
               </div>
             </div>

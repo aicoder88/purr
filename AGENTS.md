@@ -1,29 +1,17 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- Next.js 15 Pages Router keeps routes inside `pages/`; locale-aware entries live under `pages/[locale]/` while API handlers (Stripe, analytics) stay in `pages/api/`.
-- Shared UI components sit in `src/components/{sections,ui,layout}`; structured-data helpers reside in `src/components/seo`.
-- Core logic and providers (cart, translation, analytics) belong in `src/lib/`; shared types stay in `src/types` and the root `types.ts`.
-- Translation JSON lives in `src/translations/{en,fr,zh}.json`; update all languages together. Static assets land in `public/`, Prisma schema sits at `prisma/schema.prisma`, and automation scripts live under `scripts/`.
+The Pages Router lives in `pages/` with locale-specific routes under `pages/[locale]/` and API handlers in `pages/api/`. Shared interfaces and UI live in `src/components/{sections,ui,layout}` while schema-aware SEO helpers sit in `src/components/seo`. Business logic, providers, and analytics utilities belong in `src/lib/`, with shared types split between `src/types/` and the root `types.ts`. Keep translation sources in `src/translations/{en,fr,zh}.json`, media in `public/`, Prisma schema at `prisma/schema.prisma`, and reusable scripts inside `scripts/`.
 
 ## Build, Test, and Development Commands
-- `npm run predev && npm run dev` clears caches and boots the local Next.js server.
-- `npm run lint`, `npm run check-types`, and `npm run validate-dark-mode` are required gates before commits or PRs.
-- `npm test` verifies translation key completeness. `npm run test:e2e` executes Playwright journeys (pass `--headed` as needed).
-- `npm run build` followed by `npm run start` smoke-tests the production bundle. Performance tooling: `npm run performance:audit` and `npm run bundle:analyze`. Use image optimizers (`npm run optimize-images`, `npm run optimize-all-images`) and `npm run clear-cache` when builds misbehave.
+Run `npm run predev && npm run dev` to clear caches and start the local server. Linting (`npm run lint`), type safety (`npm run check-types`), and dark mode validation (`npm run validate-dark-mode`) are mandatory before submitting work. Use `npm test` to guard translation key coverage, and `npm run test:e2e -- --headed` for Playwright journeys. Ship-ready verification is `npm run build` followed by `npm run start`; performance and bundle health come from `npm run performance:audit` and `npm run bundle:analyze`.
 
 ## Coding Style & Naming Conventions
-- TypeScript only; avoid `any`, follow Next.js ESLint, and rely on Prettier defaults (two spaces, single quotes).
-- Every Tailwind text/background class needs a matching `dark:` variant. Components/hooks/providers use PascalCase; utilities use camelCase.
-- Route copy must come from `useTranslation` and locale JSON—no inline literals.
+Stick to TypeScript—no `any` unless justified and approved. Prettier defaults (two spaces, single quotes) and the project ESLint config enforce formatting. Components, hooks, and providers use PascalCase; helpers remain camelCase. Tailwind text and background utilities must include a matching `dark:` variant, and UI copy should come from `useTranslation` with keys defined in each language file.
 
 ## Testing Guidelines
-- Unit tests run through Jest; keep the translation guard in `__tests__/` green.
-- End-to-end flows live in `e2e/*.spec.ts`; name files after the journey (e.g., `checkout-flow.spec.ts`). Run `npm run validate-dark-mode` before committing to guard accessibility.
+Jest specs in `__tests__/` protect translation completeness. End-to-end coverage lives in `e2e/*.spec.ts`; name scenarios after the user flow (`checkout-flow.spec.ts`). Always run `npm run validate-dark-mode` after UI-affecting changes to guard accessibility requirements.
 
 ## Commit & Pull Request Guidelines
-- Commit messages follow `Type: concise summary` ≤72 characters. Scope commits narrowly and stage generated files separately.
-- PRs must describe changes, link relevant issues, document local verification (lint, tests, e2e), include before/after screenshots for UI shifts, and request review from the maintainer listed in `PROJECT_OVERVIEW.md`.
+Follow the `Type: concise summary` commit format under 72 characters and stage generated assets separately. Pull requests should describe the change, link issues, and document local verification (lint, types, dark mode, tests, e2e). Include before/after screenshots for visual updates and request review from the maintainer listed in `PROJECT_OVERVIEW.md`. Log noteworthy work in `CHANGELOG.md` and sync with maintainers before altering Stripe or analytics endpoints.
 
-## Additional Notes
-- Record session notes in `CHANGELOG.md`. Maintain WCAG AA contrast and ≥44px touch targets across breakpoints. Coordinate with maintainers before updating sensitive Stripe or analytics routes.

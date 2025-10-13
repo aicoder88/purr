@@ -15,11 +15,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Tech Stack
 
-**Core**: Next.js 15 (Pages Router) + TypeScript + Tailwind CSS + shadcn/ui  
-**State**: React Context (Cart, Translation)  
-**Database**: PostgreSQL + Prisma  
-**Payments**: Stripe + NextAuth.js  
+**Core**: Next.js 15 (Pages Router) + TypeScript + Tailwind CSS + shadcn/ui
+**State**: React Context (Cart, Translation)
+**Database**: PostgreSQL + Prisma
+**Payments**: Stripe + NextAuth.js
 **Deploy**: Vercel
+**Runtime**: Node.js 22.x
 
 ### Key Architecture
 
@@ -67,6 +68,7 @@ npm run validate-blog-images  # Blog image availability
 
 # Testing
 npm run test:e2e              # Playwright end-to-end tests
+npm run test:translations     # Jest translation completeness tests
 
 # Build & Deploy
 npm run build                 # Production build
@@ -132,6 +134,142 @@ className="text-white dark:text-gray-100 bg-red-500 hover:bg-red-600 dark:hover:
 - Educational positioning = legal protection
 - Reference `/docs/LEGAL_STRATEGY.md` before creating comparison content
 - All text via `useTranslation` hook
+
+### Location Page Guidelines (CRITICAL)
+
+**MANDATORY: All location pages MUST follow partnership positioning - NEVER competitive messaging**
+
+#### Partnership Positioning (✅ ALWAYS USE)
+Location pages position Purrify as partnering WITH local pet stores, not competing against them:
+
+```tsx
+// ✅ CORRECT - Partnership Section
+<section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+  <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-50">
+    Where to Find Purrify in {city.name}
+  </h2>
+  <div className="space-y-4">
+    <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+      <h3 className="text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
+        Ask Your Local Pet Store
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200">
+        Visit your favorite {city.name} pet store and ask them to stock Purrify!
+      </p>
+      <p className="text-sm text-gray-600 dark:text-gray-300">
+        We work with retailers like {city.competitors.join(', ')} and independent stores
+      </p>
+    </div>
+    <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
+        Order Direct
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200 mb-4">
+        Can't find us in stores? Order directly with free shipping to {city.name}
+      </p>
+      <Link href="/products/trial-size" className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100">
+        Shop Online Now
+      </Link>
+    </div>
+  </div>
+</section>
+```
+
+#### ❌ NEVER USE: Competitive Messaging
+```tsx
+// ❌ WRONG - Competitive comparison (legal risk!)
+<h2>Better Than Local {city.name} Pet Stores</h2>
+<div className="bg-red-50 dark:bg-red-900/20">
+  <h3>Local Pet Stores ({city.competitors.join(', ')})</h3>
+  <ul>
+    <li>❌ Limited product selection</li>
+    <li>❌ Higher prices due to overhead</li>
+    <li>❌ Chemical-based deodorizers</li>
+  </ul>
+</div>
+```
+
+**Why Partnership Positioning?**
+1. **Legal Protection**: Avoids disparagement claims from retailers
+2. **B2B Strategy**: Aligns with wholesale/retail expansion goals
+3. **Local SEO**: Positive association with local business names
+4. **Brand Trust**: Collaborative vs combative positioning
+
+#### City-Specific Testimonial Guidelines
+
+**MANDATORY: Every location page needs 2 unique, authentic-sounding testimonials with city-specific context**
+
+**Testimonial Formula:**
+1. **Contextual Detail**: Reference local lifestyle, geography, or demographics
+2. **Authentic Problem**: Real pain point specific to that city's context
+3. **Specific Solution**: How Purrify solved their unique situation
+4. **Real Names**: Use common first names + last initial for that region
+
+**Examples by City Type:**
+
+```tsx
+// ✅ Calgary (Oil industry, dry climate, urban professionals)
+"As a busy oil industry professional, I needed something that actually worked.
+Purrify eliminated the litter box smell in my downtown condo completely!"
+- Jennifer K., Calgary
+
+"Finally found a natural solution that works in Alberta's dry climate.
+My two cats love it and my home stays fresh!"
+- David T., Calgary
+
+// ✅ Ottawa (Government workers, bilingual, work-from-home)
+"Working from home in Ottawa means my apartment needs to stay fresh.
+Purrify handles my cat's litter box odor perfectly - even during video meetings!"
+- Marie L., Ottawa
+
+"My bilingual household now has one thing in common - we all agree
+Purrify is the best odor solution we've found in the capital!"
+- Philippe D., Ottawa
+
+// ✅ Vancouver (Eco-conscious, condos, West Coast lifestyle)
+"Perfect for our eco-conscious household! Natural odor control that actually works."
+- Emma T., Vancouver
+
+"Finally something that keeps my condo fresh! No more worrying about
+guests noticing the litter box."
+- Jason P., Vancouver
+
+// ✅ Montreal (French culture, urban density, artistic community)
+"Dans mon petit appartement du Plateau, Purrify garde l'air frais même avec deux chats!"
+- Sophie B., Montreal
+
+"As an artist with limited space, I need efficient solutions.
+Purrify works perfectly in my Mile End studio."
+- Alex M., Montreal
+```
+
+**❌ NEVER USE: Generic Template Testimonials**
+```tsx
+// ❌ WRONG - No city context, sounds fake
+"Living in {city.name} with three cats was challenging until I found Purrify.
+The odor control is incredible!"
+- Sarah M., {city.name}
+
+// ❌ WRONG - No authentic detail
+"I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+- Mike R., {city.name}
+```
+
+**City Context Research Checklist:**
+Before writing location page testimonials, research:
+- [ ] Major local industries (oil, tech, government, tourism)
+- [ ] Housing types (condos, apartments, houses)
+- [ ] Lifestyle characteristics (eco-conscious, outdoorsy, urban)
+- [ ] Demographics (young professionals, families, retirees)
+- [ ] Climate considerations (dry, humid, extreme temperatures)
+- [ ] Cultural elements (bilingual, artistic, sports-focused)
+
+**Validation:**
+Every location page testimonial must answer YES to:
+1. Does it reference something specific to this city?
+2. Would someone from that city recognize the context?
+3. Does it sound authentic, not like a template?
+4. Is the problem/solution contextually relevant?
 
 ## Development Standards
 
@@ -425,39 +563,3 @@ Only if deployment shows "ERROR":
 **Vercel Project Info:**
 - Project: `prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2`
 - Team: `team_9MD2gEmcma1CnApg7QalkGj8`
-
----
-
-## Recent Optimizations & Improvements
-
-### ✅ SEO Enhancement (2025-01-25)
-- **Emotional copywriting** across all blog posts and homepage
-- **Cat odor keywords** strategically integrated from research file
-- **Blog optimization**: 8+ posts with high-converting titles
-- **Performance**: 90%+ image compression with WebP prioritization
-- **Reference file**: `/docs/cat odor keywords.xlsx` for future content
-
-### ✅ Dark Mode Compliance System (2025-01-25)
-- **Zero-tolerance validation**: 201 files pass with 0 errors
-- **Enhanced documentation**: Quick reference patterns and examples
-- **Automated validation**: Pre-commit hooks prevent violations
-- **Comprehensive coverage**: All backgrounds, borders, and text elements
-
-### ✅ Performance Optimizations (2025-01-25)
-- **ESLint rules**: 235+ performance issues tracked for cleanup
-- **TypeScript strict**: 147 unused identifier issues documented
-- **Regex optimization**: Boolean `.match` replaced with `.test`
-- **Cache improvements**: Webpack and Vercel edge cache management
-- **A11y enhancements**: Keyboard support and ARIA labeling
-
-### ✅ Development Workflow (2025-01-25)
-- **Faster deployment verification**: Reduced from minutes to 30s
-- **Pre-commit validation**: Dark mode + TypeScript + ESLint
-- **Image requirements**: Mandatory high-quality visuals for blog posts
-- **Documentation standards**: Streamlined CLAUDE.md for efficiency
-
-### Next Priority Areas
-- [ ] DNS configuration for international subdomains
-- [ ] Performance audit follow-up and rule prioritization
-- [ ] Component refactoring using new theme utilities
-- [ ] Advanced TypeScript strict mode implementation

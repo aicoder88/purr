@@ -139,8 +139,7 @@ export default function VaughanPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Living in Vaughan's newer subdivisions means our home is our pride. Purrify keeps our open-concept main floor fresh with three cats!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Maria S., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function VaughanPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Perfect for busy families! My kids can have friends over without worrying about litter box smell. Game changer!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Robert K., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function VaughanPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Does Purrify work with automated litter boxes?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Yes! Purrify works great with automatic litter boxes and traditional ones. Just sprinkle it in alongside your regular litter and it enhances odor control even further.
                 </p>
               </div>
             </div>

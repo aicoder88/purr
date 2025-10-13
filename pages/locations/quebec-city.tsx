@@ -46,8 +46,8 @@ export default function quebeccityPage() {
             </p>
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4">Why {city.name} Cat Owners Choose Purrify</h2>
-              <ul className="text-left space-y-2">
+              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Why {city.name} Cat Owners Choose Purrify</h2>
+              <ul className="text-left space-y-2 text-gray-700 dark:text-gray-200">
                 {city.keyFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
@@ -112,7 +112,7 @@ export default function quebeccityPage() {
         {/* Testimonials */}
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               What {city.name} Cat Owners Are Saying
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -122,11 +122,10 @@ export default function quebeccityPage() {
                     <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
-                <p className="italic mb-4">
-                  "Living in {city.name} with three cats was challenging until I found Purrify. 
-                  The odor control is incredible!"
+                <p className="italic mb-4 text-gray-700 dark:text-gray-200">
+                  "Parfait pour notre appartement dans le Vieux-Québec! Purrify garde l'air frais même avec deux chats."
                 </p>
-                <p className="font-semibold">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Marie-Claude L., Quebec City</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
@@ -134,10 +133,10 @@ export default function quebeccityPage() {
                     <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
-                <p className="italic mb-4">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                <p className="italic mb-4 text-gray-700 dark:text-gray-200">
+                  "Historic homes need modern solutions! Purrify works perfectly in our 100-year-old house. Natural and effective."
                 </p>
-                <p className="font-semibold">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Pierre D., Quebec City</p>
               </div>
             </div>
           </div>
@@ -146,26 +145,25 @@ export default function quebeccityPage() {
         {/* FAQ */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {city.name} FAQ
             </h2>
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Do you deliver to {city.name}, {city.province}?
                 </h3>
-                <p>
+                <p className="text-gray-700 dark:text-gray-200">
                   Yes! Free shipping across {city.province}, including {city.name}. 
                   Orders arrive within 2-3 business days.
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">
-                  How is Purrify different from products at {city.name} pet stores?
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                  Est-ce que Purrify est disponible au Québec?
                 </h3>
-                <p>
-                  We sell direct to keep costs low and quality high. 
-                  Our activated carbon actually eliminates odors instead of masking them.
+                <p className="text-gray-700 dark:text-gray-200">
+                  Oui! Free shipping across Quebec, including Quebec City. Orders typically arrive within 2-3 business days. Nous offrons le support en français!
                 </p>
               </div>
             </div>

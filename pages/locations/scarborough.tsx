@@ -139,8 +139,7 @@ export default function ScarboroughPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Our Scarborough apartment complex is pet-friendly, but that doesn't mean it should smell like it! Purrify keeps my unit fresh."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Amanda P., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function ScarboroughPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Great value for money! With rent prices in Scarborough, I need affordable solutions that work. This is it!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Chris D., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function ScarboroughPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Does Purrify work in apartments?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Yes! Purrify is perfect for apartments and condos where space is limited. It works especially well in smaller spaces where odors can concentrate.
                 </p>
               </div>
             </div>

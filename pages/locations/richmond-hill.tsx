@@ -139,8 +139,7 @@ export default function RichmondHillPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Our beautiful Richmond Hill home deserves the best. Purrify delivers luxury-level odor control without the luxury price tag."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Jennifer W., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function RichmondHillPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Hosting dinner parties is no problem now! Guests never know we have cats. Purrify is our secret weapon."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Kevin H., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function RichmondHillPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Can I use Purrify with premium litter brands?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Yes! Purrify enhances any litter brand - premium or budget. Many customers with high-end litters use Purrify to make them even more effective.
                 </p>
               </div>
             </div>

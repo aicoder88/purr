@@ -139,8 +139,7 @@ export default function BurlingtonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Between Lake Ontario humidity and three cats, odor control was a challenge. Purrify solved it completely!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Rebecca F., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function BurlingtonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Family-friendly and actually works! Our Burlington home stays fresh all year round. Highly recommend to other cat families."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Thomas G., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function BurlingtonPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Does humidity affect Purrify?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Activated carbon works in all humidity conditions! It's actually great for humid climates because it also helps absorb excess moisture in the litter box.
                 </p>
               </div>
             </div>

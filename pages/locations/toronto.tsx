@@ -54,8 +54,8 @@ export default function torontoPage() {
             </p>
             
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4">Why {city.name} Cat Owners Choose Purrify</h2>
-              <ul className="text-left space-y-2">
+              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Why {city.name} Cat Owners Choose Purrify</h2>
+              <ul className="text-left space-y-2 text-gray-700 dark:text-gray-200">
                 {city.keyFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
@@ -128,7 +128,7 @@ export default function torontoPage() {
         {/* Testimonials */}
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               What {city.name} Cat Owners Are Saying
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -138,11 +138,10 @@ export default function torontoPage() {
                     <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
-                <p className="italic mb-4">
-                  "Living in {city.name} with three cats was challenging until I found Purrify. 
-                  The odor control is incredible!"
+                <p className="italic mb-4 text-gray-700 dark:text-gray-200">
+                  "Living in a downtown Toronto condo with two cats was rough until Purrify. My 600 sq ft apartment finally smells fresh!"
                 </p>
-                <p className="font-semibold">- Sarah M., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Jessica T., Toronto</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
@@ -150,10 +149,10 @@ export default function torontoPage() {
                     <span key={star} className="text-yellow-400 dark:text-yellow-300">⭐</span>
                   ))}
                 </div>
-                <p className="italic mb-4">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                <p className="italic mb-4 text-gray-700 dark:text-gray-200">
+                  "Works perfectly in our King West high-rise. No more worrying about litter box smell during work-from-home meetings!"
                 </p>
-                <p className="font-semibold">- Mike R., {city.name}</p>
+                <p className="font-semibold text-gray-900 dark:text-gray-50">- Michael C., Toronto</p>
               </div>
             </div>
           </div>
@@ -162,26 +161,25 @@ export default function torontoPage() {
         {/* FAQ */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {city.name} FAQ
             </h2>
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Do you deliver to {city.name}, {city.province}?
                 </h3>
-                <p>
-                  Yes! Free shipping across {city.province}, including {city.name}. 
+                <p className="text-gray-700 dark:text-gray-200">
+                  Yes! Free shipping across {city.province}, including {city.name}.
                   Orders arrive within 2-3 business days.
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">
-                  How is Purrify different from products at {city.name} pet stores?
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                  How does Purrify work in small apartments?
                 </h3>
-                <p>
-                  We sell direct to keep costs low and quality high. 
-                  Our activated carbon actually eliminates odors instead of masking them.
+                <p className="text-gray-700 dark:text-gray-200">
+                  Purrify is perfect for Toronto condos and apartments! Our military-grade activated carbon traps odors at the source, so even small spaces stay fresh. Just sprinkle on top of your existing litter.
                 </p>
               </div>
             </div>

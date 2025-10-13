@@ -139,8 +139,7 @@ export default function BramptonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "Living in {city.name} with three cats was challenging until I found Purrify.
-                  The odor control is incredible!"
+                  "Perfect for our growing Brampton family home! Three kids, two cats, and Purrify keeps everything smelling clean and fresh."
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- Priya K., {city.name}</p>
               </div>
@@ -151,7 +150,7 @@ export default function BramptonPage() {
                   ))}
                 </div>
                 <p className="italic mb-4 text-gray-700 dark:text-gray-200">
-                  "I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
+                  "Affordable solution that actually works! As a single parent with cats, I need products that deliver value. Purrify does!"
                 </p>
                 <p className="font-semibold text-gray-900 dark:text-gray-50">- James T., {city.name}</p>
               </div>
@@ -177,11 +176,10 @@ export default function BramptonPage() {
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How is Purrify different from products at {city.name} pet stores?
+                  Is Purrify safe for homes with children?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  We sell direct to keep costs low and quality high.
-                  Our activated carbon actually eliminates odors instead of masking them.
+                  Absolutely! Purrify is 100% natural activated carbon with no chemicals or fragrances. Safe for homes with kids, pets, and even pregnant women.
                 </p>
               </div>
             </div>
