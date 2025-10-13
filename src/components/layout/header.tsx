@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingBag, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
@@ -9,6 +9,7 @@ import { ShoppingCart } from "../../components/ui/shopping-cart";
 import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { locationsByProvince } from "../../data/locations";
 
 interface DropdownItem {
   label: string;
@@ -32,7 +33,8 @@ export function Header() {
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
   const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
-  const { t, locale } = useTranslation();
+  const [hoveredProvinceCode, setHoveredProvinceCode] = useState<string | null>(null);
+  const { t, locale} = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
 
@@ -227,32 +229,7 @@ export function Header() {
       id: 'locations',
       label: 'Locations',
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/locations/toronto`,
-      hasDropdown: true,
-      dropdownItems: [
-        { label: '🏙️ Greater Toronto Area', href: '#', isGroupHeader: true },
-        { label: 'Toronto', href: '/locations/toronto', indent: true },
-        { label: 'Mississauga', href: '/locations/mississauga', indent: true },
-        { label: 'Brampton', href: '/locations/brampton', indent: true },
-        { label: 'Markham', href: '/locations/markham', indent: true },
-        { label: 'Vaughan', href: '/locations/vaughan', indent: true },
-        { label: 'Richmond Hill', href: '/locations/richmond-hill', indent: true },
-        { label: 'Scarborough', href: '/locations/scarborough', indent: true },
-        { label: 'Oakville', href: '/locations/oakville', indent: true },
-        { label: 'Burlington', href: '/locations/burlington', indent: true },
-        { label: 'Hamilton', href: '/locations/hamilton', indent: true },
-        { label: '🍁 Montreal Area', href: '#', isGroupHeader: true },
-        { label: 'Montreal', href: '/locations/montreal', indent: true },
-        { label: 'Laval', href: '/locations/laval', indent: true },
-        { label: 'Longueuil', href: '/locations/longueuil', indent: true },
-        { label: 'Gatineau', href: '/locations/gatineau', indent: true },
-        { label: '🌆 Other Major Cities', href: '#', isGroupHeader: true },
-        { label: 'Vancouver', href: '/locations/vancouver', indent: true },
-        { label: 'Calgary', href: '/locations/calgary', indent: true },
-        { label: 'Edmonton', href: '/locations/edmonton', indent: true },
-        { label: 'Winnipeg', href: '/locations/winnipeg', indent: true },
-        { label: 'Ottawa', href: '/locations/ottawa', indent: true },
-        { label: 'Quebec City', href: '/locations/quebec-city', indent: true }
-      ]
+      hasDropdown: true
     },
     {
       id: 'blog',
@@ -318,25 +295,64 @@ export function Header() {
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
                       >
-                        {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                          dropdownItem.isGroupHeader ? (
-                            <div
-                              key={dropdownIndex}
-                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                            >
-                              {dropdownItem.label}
-                            </div>
-                          ) : (
-                            <Link
-                              key={dropdownIndex}
-                              href={dropdownItem.href}
-                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
-                              role="menuitem"
-                            >
-                              {dropdownItem.label}
-                            </Link>
-                          )
-                        ))}
+                        {item.id === 'locations' ? (
+                          // Province-based cascading menu for locations
+                          <>
+                            {locationsByProvince.map((province) => (
+                              <div
+                                key={province.code}
+                                className="relative"
+                                onMouseEnter={() => setHoveredProvinceCode(province.code)}
+                                onMouseLeave={() => setHoveredProvinceCode(null)}
+                              >
+                                <div className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 cursor-pointer">
+                                  <span className="font-medium">{province.name}</span>
+                                  <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                                </div>
+
+                                {/* Cascading submenu for cities */}
+                                {hoveredProvinceCode === province.code && (
+                                  <div className="absolute left-full top-0 ml-1 w-56 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 max-h-96 overflow-y-auto">
+                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-200 dark:border-gray-700">
+                                      {province.name} Cities
+                                    </div>
+                                    {province.cities.map((city) => (
+                                      <Link
+                                        key={city.slug}
+                                        href={`/locations/${city.slug}`}
+                                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
+                                        role="menuitem"
+                                      >
+                                        {city.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </>
+                        ) : (
+                          // Regular dropdown for other menus
+                          item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                            dropdownItem.isGroupHeader ? (
+                              <div
+                                key={dropdownIndex}
+                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                              >
+                                {dropdownItem.label}
+                              </div>
+                            ) : (
+                              <Link
+                                key={dropdownIndex}
+                                href={dropdownItem.href}
+                                className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
+                                role="menuitem"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            )
+                          ))
+                        )}
                       </div>
                     )}
                   </>
@@ -396,25 +412,47 @@ export function Header() {
                       <div className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                         {item.label}
                       </div>
-                      {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                        dropdownItem.isGroupHeader ? (
-                          <div
-                            key={dropdownIndex}
-                            className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
-                          >
-                            {dropdownItem.label}
+                      {item.id === 'locations' ? (
+                        // Province-based structure for mobile locations menu
+                        locationsByProvince.map((province) => (
+                          <div key={province.code}>
+                            <div className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2">
+                              {province.name}
+                            </div>
+                            {province.cities.map((city) => (
+                              <Link
+                                key={city.slug}
+                                href={`/locations/${city.slug}`}
+                                className="block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 pl-8"
+                                onClick={closeMenu}
+                              >
+                                {city.name}
+                              </Link>
+                            ))}
                           </div>
-                        ) : (
-                          <Link
-                            key={dropdownIndex}
-                            href={dropdownItem.href}
-                            className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
-                            onClick={closeMenu}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        )
-                      ))}
+                        ))
+                      ) : (
+                        // Regular dropdown items for other menus
+                        item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                          dropdownItem.isGroupHeader ? (
+                            <div
+                              key={dropdownIndex}
+                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
+                            >
+                              {dropdownItem.label}
+                            </div>
+                          ) : (
+                            <Link
+                              key={dropdownIndex}
+                              href={dropdownItem.href}
+                              className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
+                              onClick={closeMenu}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          )
+                        ))
+                      )}
                     </>
                   ) : (
                     <Link
