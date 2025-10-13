@@ -40,8 +40,7 @@ export function WholesalePricing() {
         'Premium counter display',
         'Staff training materials',
         'Digital marketing assets (social posts, email templates)',
-        'Priority phone & email support',
-        'Free product replacement for damaged goods'
+        'Priority phone & email support'
       ],
       highlighted: true,
       badge: '⭐ Best Value'

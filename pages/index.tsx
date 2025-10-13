@@ -60,6 +60,7 @@ import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { ScrollAnchor } from '../src/components/ui/scroll-anchor';
 
 export default function Home() {
   const { t, locale } = useTranslation();
@@ -342,6 +343,7 @@ export default function Home() {
         
         {/* Enhanced Product Comparison for better conversions */}
         <div className="cv-auto cis-960">
+          <ScrollAnchor id="products" />
           <ErrorBoundary>
             <LazyLoad
               placeholder={sectionSkeleton('h-96', 'rounded-lg')}
@@ -380,6 +382,7 @@ export default function Home() {
         </div>
         
         <div className="cv-auto cis-960">
+          <ScrollAnchor id="testimonials" />
           <ErrorBoundary>
             <LazyLoad
               placeholder={sectionSkeleton('h-96')}
@@ -400,6 +403,7 @@ export default function Home() {
         </div>
 
         <div className="cv-auto cis-720">
+          <ScrollAnchor id="faq" />
           <ErrorBoundary>
             <LazyLoad
               placeholder={sectionSkeleton('h-96')}
@@ -430,6 +434,7 @@ export default function Home() {
         </div>
         
         <div className="cv-auto cis-720">
+          <ScrollAnchor id="contact" />
           <ErrorBoundary>
             <LazyLoad
               placeholder={sectionSkeleton('h-80')}

@@ -66,7 +66,7 @@ export function Testimonials() {
   return (
     <section
       className={sectionClasses}
-      id="testimonials"
+      id="testimonials-section"
       aria-labelledby="testimonials-heading"
     >
       <Container>
@@ -82,7 +82,7 @@ export function Testimonials() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <button
               onClick={() => {
-                const element = document.getElementById('testimonials');
+                const element = document.getElementById('testimonials-section');
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }

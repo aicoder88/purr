@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { LocationSchema } from '../../src/components/seo/json-ld-schema';
+import { CityInterlinkSection } from '../../src/components/sections/locations/CityInterlinkSection';
 
 export default function flinflonPage() {
   const city = {
@@ -184,6 +185,8 @@ export default function flinflonPage() {
             </div>
           </div>
         </section>
+        <CityInterlinkSection cityName={city.name} provinceName={city.province} />
+
       </div>
     </>
   );

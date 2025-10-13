@@ -111,7 +111,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
       )}
       <section
         className={`${sectionClasses} py-12`}
-        id="faq"
+        id="faq-section"
       >
         <Container>
           <div className="max-w-3xl mx-auto text-center mb-16">

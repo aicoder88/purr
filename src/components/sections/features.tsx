@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { FEATURES } from "@/lib/constants";
 import { Zap, Heart, Clock, Check, Leaf, DollarSign } from "lucide-react";
 import SectionHeader from "../ui/section-header";
+import { useTranslation } from "../../lib/translation-context";
 
 const iconMap = {
   Zap: Zap,
@@ -13,6 +15,10 @@ const iconMap = {
 };
 
 export function Features() {
+  const { locale } = useTranslation();
+  const localePrefix = locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : '';
+  const learnMoreHref = `${localePrefix}/learn/how-it-works`;
+
   return (
     <section
       className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
@@ -79,8 +85,8 @@ export function Features() {
                 </p>
 
                 <div className="mt-6 pt-6 border-t border-[#E0EFC7]">
-                  <a
-                    href="#"
+                  <Link
+                    href={learnMoreHref}
                     className={`font-medium flex items-center transition-colors ${
                       index % 3 === 0
                         ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
@@ -103,7 +109,7 @@ export function Features() {
                         d="M14 5l7 7m0 0l-7 7m7-7H3"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             );

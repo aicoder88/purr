@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { CityInterlinkSection } from '../../src/components/sections/locations/CityInterlinkSection';
 
 export default function hamiltonPage() {
   const city = {
@@ -177,6 +178,8 @@ export default function hamiltonPage() {
             </div>
           </div>
         </section>
+        <CityInterlinkSection cityName={city.name} provinceName={city.province} />
+
       </div>
     </>
   );

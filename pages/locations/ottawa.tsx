@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { CityInterlinkSection } from '../../src/components/sections/locations/CityInterlinkSection';
 
 export default function ottawaPage() {
   const city = {
@@ -178,6 +179,8 @@ export default function ottawaPage() {
             </div>
           </div>
         </section>
+        <CityInterlinkSection cityName={city.name} provinceName={city.province} />
+
       </div>
     </>
   );

@@ -137,6 +137,15 @@ export function Header() {
     closeMenu();
   }, [scrollToProducts, closeMenu]);
 
+  // Default to first province when locations menu opens
+  useEffect(() => {
+    if (isLocationsDropdownOpen) {
+      setHoveredProvinceCode(prev => prev ?? locationsByProvince[0]?.code ?? null);
+    } else {
+      setHoveredProvinceCode(null);
+    }
+  }, [isLocationsDropdownOpen]);
+
   // Close mobile menu when route changes
   useEffect(() => {
     const handleRouteChange = () => {
@@ -294,6 +303,7 @@ export function Header() {
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
+                        onMouseLeave={item.id === 'locations' ? () => setHoveredProvinceCode(null) : undefined}
                       >
                         {item.id === 'locations' ? (
                           // Province-based cascading menu for locations
@@ -302,13 +312,19 @@ export function Header() {
                               <div
                                 key={province.code}
                                 className="relative"
-                                onMouseEnter={() => setHoveredProvinceCode(province.code)}
-                                onMouseLeave={() => setHoveredProvinceCode(null)}
                               >
-                                <div className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 cursor-pointer">
+                                <button
+                                  type="button"
+                                  className="w-full flex items-center justify-between px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1"
+                                  onMouseEnter={() => setHoveredProvinceCode(province.code)}
+                                  onFocus={() => setHoveredProvinceCode(province.code)}
+                                  onClick={() => setHoveredProvinceCode(province.code)}
+                                  aria-haspopup="true"
+                                  aria-expanded={hoveredProvinceCode === province.code}
+                                >
                                   <span className="font-medium">{province.name}</span>
                                   <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-500" />
-                                </div>
+                                </button>
 
                                 {/* Cascading submenu for cities */}
                                 {hoveredProvinceCode === province.code && (

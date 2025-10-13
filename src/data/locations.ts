@@ -8,6 +8,7 @@ export interface LocationCity {
 
 export interface Province {
   name: string;
+  slug: string;
   code: string;
   cities: LocationCity[];
 }
@@ -15,6 +16,7 @@ export interface Province {
 export const locationsByProvince: Province[] = [
   {
     name: 'Ontario',
+    slug: 'ontario',
     code: 'ON',
     cities: [
       { name: 'Bancroft', slug: 'bancroft' },
@@ -85,6 +87,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Quebec',
+    slug: 'quebec',
     code: 'QC',
     cities: [
       { name: 'Gatineau', slug: 'gatineau' },
@@ -112,6 +115,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'British Columbia',
+    slug: 'british-columbia',
     code: 'BC',
     cities: [
       { name: 'Barkerville', slug: 'barkerville' },
@@ -153,6 +157,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Alberta',
+    slug: 'alberta',
     code: 'AB',
     cities: [
       { name: 'Banff', slug: 'banff' },
@@ -171,6 +176,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Saskatchewan',
+    slug: 'saskatchewan',
     code: 'SK',
     cities: [
       { name: 'Batoche', slug: 'batoche' },
@@ -185,6 +191,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Manitoba',
+    slug: 'manitoba',
     code: 'MB',
     cities: [
       { name: 'Brandon', slug: 'brandon' },
@@ -201,6 +208,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Nova Scotia',
+    slug: 'nova-scotia',
     code: 'NS',
     cities: [
       { name: 'Baddeck', slug: 'baddeck' },
@@ -218,6 +226,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'New Brunswick',
+    slug: 'new-brunswick',
     code: 'NB',
     cities: [
       { name: 'Bathurst', slug: 'bathurst' },
@@ -232,6 +241,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Prince Edward Island',
+    slug: 'prince-edward-island',
     code: 'PE',
     cities: [
       { name: 'Borden', slug: 'borden' },
@@ -243,6 +253,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Newfoundland and Labrador',
+    slug: 'newfoundland-and-labrador',
     code: 'NL',
     cities: [
       { name: 'Argentia', slug: 'argentia' },
@@ -264,6 +275,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Northwest Territories',
+    slug: 'northwest-territories',
     code: 'NT',
     cities: [
       { name: 'Fort Smith', slug: 'fort-smith' },
@@ -275,6 +287,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Yukon',
+    slug: 'yukon',
     code: 'YT',
     cities: [
       { name: 'Dawson', slug: 'dawson' }
@@ -282,6 +295,7 @@ export const locationsByProvince: Province[] = [
   },
   {
     name: 'Nunavut',
+    slug: 'nunavut',
     code: 'NU',
     cities: [
       { name: 'Iqaluit', slug: 'iqaluit' }
@@ -301,4 +315,32 @@ export function getCitiesByProvince(provinceCode: string): LocationCity[] {
 
 export function getProvinceByCode(provinceCode: string): Province | undefined {
   return locationsByProvince.find(p => p.code === provinceCode);
+}
+
+export function getProvinceByName(provinceName: string): Province | undefined {
+  return locationsByProvince.find(
+    (province) => province.name.toLowerCase() === provinceName.toLowerCase()
+  );
+}
+
+export function getProvinceBySlug(provinceSlug: string): Province | undefined {
+  return locationsByProvince.find((province) => province.slug === provinceSlug);
+}
+
+export function getCityInProvinceByName(
+  provinceName: string,
+  cityName: string
+): LocationCity | undefined {
+  const province = getProvinceByName(provinceName);
+  if (!province) {
+    return undefined;
+  }
+
+  return province.cities.find(
+    (city) => city.name.toLowerCase() === cityName.toLowerCase()
+  );
+}
+
+export function getAllProvinceSlugs(): string[] {
+  return locationsByProvince.map((province) => province.slug);
 }
