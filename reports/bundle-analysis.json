@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2025-09-23T17:39:54.062Z",
+    "timestamp": "2025-10-15T12:52:55.517Z",
     "projectName": "Purrify",
     "nodeVersion": "v22.14.0",
     "nextVersion": "^15.5.3"
@@ -9,63 +9,18 @@
     "score": 85,
     "grade": "B",
     "issues": [
-      "138 large images (-15 points)"
+      "152 large images (-15 points)"
     ]
   },
   "buildAnalysis": {
-    "timestamp": "2025-09-23T17:39:48.629Z",
-    "totalPages": 63,
-    "totalChunks": 72,
+    "timestamp": "2025-10-15T12:52:43.814Z",
+    "totalPages": 1,
+    "totalChunks": 1,
     "largestChunks": [
       {
-        "name": "react-36598b9c-3b769740b40629d1.js",
-        "size": 167667,
-        "sizeKB": "163.7"
-      },
-      {
-        "name": "polyfills-42372ed130431b0a.js",
+        "name": "polyfills.js",
         "size": 112594,
         "sizeKB": "110.0"
-      },
-      {
-        "name": "analytics-207d77d7-e1c0ba35d00355d9.js",
-        "size": 50889,
-        "sizeKB": "49.7"
-      },
-      {
-        "name": "vendors-zod-e5a36f68.67cf82029613172b.js",
-        "size": 49716,
-        "sizeKB": "48.6"
-      },
-      {
-        "name": "vendors-zod-84f829b2.f7981c40dc93ba51.js",
-        "size": 49155,
-        "sizeKB": "48.0"
-      },
-      {
-        "name": "9829-3d725b42ea66c86a.js",
-        "size": 48257,
-        "sizeKB": "47.1"
-      },
-      {
-        "name": "common-d87c119a-c77cfabb8d5e7319.js",
-        "size": 47830,
-        "sizeKB": "46.7"
-      },
-      {
-        "name": "analytics-2f8e3928-2669ebcf0db1dcd2.js",
-        "size": 42079,
-        "sizeKB": "41.1"
-      },
-      {
-        "name": "ui-b2caf839-a0a382ba58d6b8a1.js",
-        "size": 37816,
-        "sizeKB": "36.9"
-      },
-      {
-        "name": "analytics-66b14e9f-137f4d63dc595d89.js",
-        "size": 37356,
-        "sizeKB": "36.5"
       }
     ],
     "firstLoadJS": 0,
@@ -73,7 +28,7 @@
     "recommendations": []
   },
   "dependencyAnalysis": {
-    "totalDependencies": 65,
+    "totalDependencies": 69,
     "totalDevDependencies": 20,
     "heavyDependencies": [
       {
@@ -109,8 +64,8 @@
     "securityIssues": []
   },
   "imageAnalysis": {
-    "totalImages": 285,
-    "totalSize": 176784952,
+    "totalImages": 306,
+    "totalSize": 179506375,
     "largeImages": [
       {
         "path": "140g.png",
@@ -401,6 +356,12 @@
         "format": "webp"
       },
       {
+        "path": "optimized/carbon-microscope.jpg",
+        "size": 188237,
+        "sizeKB": "183.8",
+        "format": "jpg"
+      },
+      {
         "path": "optimized/carbon_magnified_image.avif",
         "size": 322621,
         "sizeKB": "315.1",
@@ -425,10 +386,28 @@
         "format": "webp"
       },
       {
+        "path": "optimized/cat-clean-home.jpg",
+        "size": 275741,
+        "sizeKB": "269.3",
+        "format": "jpg"
+      },
+      {
         "path": "optimized/cat-litter-deodorizer-guide.webp",
         "size": 154491,
         "sizeKB": "150.9",
         "format": "webp"
+      },
+      {
+        "path": "optimized/certification-quality.jpg",
+        "size": 216323,
+        "sizeKB": "211.3",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/chemistry-lab.jpg",
+        "size": 124894,
+        "sizeKB": "122.0",
+        "format": "jpg"
       },
       {
         "path": "optimized/clamping-cat-litter.avif",
@@ -465,6 +444,24 @@
         "size": 420698,
         "sizeKB": "410.8",
         "format": "webp"
+      },
+      {
+        "path": "optimized/coconut-shell-natural.jpg",
+        "size": 302403,
+        "sizeKB": "295.3",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/coconut-shell-natural.webp",
+        "size": 217526,
+        "sizeKB": "212.4",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/content-cat.jpg",
+        "size": 486576,
+        "sizeKB": "475.2",
+        "format": "jpg"
       },
       {
         "path": "optimized/coquette-finegueule.png",
@@ -575,6 +572,24 @@
         "format": "webp"
       },
       {
+        "path": "optimized/hamster-rodent-pet.jpg",
+        "size": 275741,
+        "sizeKB": "269.3",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/hamster-rodent-pet.webp",
+        "size": 179132,
+        "sizeKB": "174.9",
+        "format": "webp"
+      },
+      {
+        "path": "optimized/happy-cat-home.jpg",
+        "size": 398278,
+        "sizeKB": "388.9",
+        "format": "jpg"
+      },
+      {
         "path": "optimized/house-smells-cat-litter.webp",
         "size": 123805,
         "sizeKB": "120.9",
@@ -603,6 +618,12 @@
         "size": 104626,
         "sizeKB": "102.2",
         "format": "webp"
+      },
+      {
+        "path": "optimized/molecular-structure.jpg",
+        "size": 130580,
+        "sizeKB": "127.5",
+        "format": "jpg"
       },
       {
         "path": "optimized/multi-cat-deodorizer.webp",
@@ -659,6 +680,24 @@
         "format": "png"
       },
       {
+        "path": "optimized/pet-safety-home.jpg",
+        "size": 368820,
+        "sizeKB": "360.2",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/quality-control-lab.jpg",
+        "size": 182110,
+        "sizeKB": "177.8",
+        "format": "jpg"
+      },
+      {
+        "path": "optimized/safe-cat-litter.jpg",
+        "size": 222531,
+        "sizeKB": "217.3",
+        "format": "jpg"
+      },
+      {
         "path": "optimized/samplebag.avif",
         "size": 485578,
         "sizeKB": "474.2",
@@ -675,6 +714,12 @@
         "size": 342200,
         "sizeKB": "334.2",
         "format": "webp"
+      },
+      {
+        "path": "optimized/science-microscope.jpg",
+        "size": 375446,
+        "sizeKB": "366.6",
+        "format": "jpg"
       },
       {
         "path": "optimized/small-apartment-odor-control.webp",
@@ -923,12 +968,6 @@
         "format": "png"
       },
       {
-        "path": "purrify-logo.png",
-        "size": 1704709,
-        "sizeKB": "1664.8",
-        "format": "png"
-      },
-      {
         "path": "samplebag.jpg",
         "size": 673384,
         "sizeKB": "657.6",
@@ -1146,6 +1185,13 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "optimized/activated-carbon-granules.jpg",
+        "size": 73138,
+        "sizeKB": "71.4",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "optimized/before after.jpg",
         "size": 407663,
         "sizeKB": "398.1",
@@ -1157,6 +1203,13 @@
         "size": 4354180,
         "sizeKB": "4252.1",
         "format": "png",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/carbon-microscope.jpg",
+        "size": 188237,
+        "sizeKB": "183.8",
+        "format": "jpg",
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
@@ -1174,6 +1227,27 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "optimized/cat-clean-home.jpg",
+        "size": 275741,
+        "sizeKB": "269.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/certification-quality.jpg",
+        "size": 216323,
+        "sizeKB": "211.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/chemistry-lab.jpg",
+        "size": 124894,
+        "sizeKB": "122.0",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "optimized/clamping-cat-litter.jpg",
         "size": 367407,
         "sizeKB": "358.8",
@@ -1184,6 +1258,20 @@
         "path": "optimized/clay-cat-litter.jpg",
         "size": 627825,
         "sizeKB": "613.1",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/coconut-shell-natural.jpg",
+        "size": 302403,
+        "sizeKB": "295.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/content-cat.jpg",
+        "size": 486576,
+        "sizeKB": "475.2",
         "format": "jpg",
         "suggestion": "Consider converting to WebP or AVIF format"
       },
@@ -1237,6 +1325,20 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "optimized/hamster-rodent-pet.jpg",
+        "size": 275741,
+        "sizeKB": "269.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/happy-cat-home.jpg",
+        "size": 398278,
+        "sizeKB": "388.9",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "optimized/kong-animalerie.jpg",
         "size": 84832,
         "sizeKB": "82.8",
@@ -1254,6 +1356,13 @@
         "path": "optimized/micropores_magnified_view.jpg",
         "size": 142618,
         "sizeKB": "139.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/molecular-structure.jpg",
+        "size": 130580,
+        "sizeKB": "127.5",
         "format": "jpg",
         "suggestion": "Consider converting to WebP or AVIF format"
       },
@@ -1314,6 +1423,13 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "optimized/pet-safety-home.jpg",
+        "size": 368820,
+        "sizeKB": "360.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "optimized/purrify-logo-icon.jpg",
         "size": 64748,
         "sizeKB": "63.2",
@@ -1321,9 +1437,30 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
+        "path": "optimized/quality-control-lab.jpg",
+        "size": 182110,
+        "sizeKB": "177.8",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/safe-cat-litter.jpg",
+        "size": 222531,
+        "sizeKB": "217.3",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
         "path": "optimized/samplebag.jpg",
         "size": 647326,
         "sizeKB": "632.2",
+        "format": "jpg",
+        "suggestion": "Consider converting to WebP or AVIF format"
+      },
+      {
+        "path": "optimized/science-microscope.jpg",
+        "size": 375446,
+        "sizeKB": "366.6",
         "format": "jpg",
         "suggestion": "Consider converting to WebP or AVIF format"
       },
@@ -1643,13 +1780,6 @@
         "suggestion": "Consider converting to WebP or AVIF format"
       },
       {
-        "path": "purrify-logo.png",
-        "size": 1704709,
-        "sizeKB": "1664.8",
-        "format": "png",
-        "suggestion": "Consider converting to WebP or AVIF format"
-      },
-      {
         "path": "samplebag.jpg",
         "size": 673384,
         "sizeKB": "657.6",
@@ -1667,12 +1797,12 @@
     "recommendations": [
       {
         "type": "LARGE_IMAGES",
-        "message": "Found 138 images larger than 100.0KB",
+        "message": "Found 152 images larger than 100.0KB",
         "action": "Consider compressing or using Next.js Image optimization"
       },
       {
         "type": "UNOPTIMIZED_FORMATS",
-        "message": "Found 103 images that could be optimized",
+        "message": "Found 116 images that could be optimized",
         "action": "Convert to modern formats (WebP/AVIF) and use responsive images"
       }
     ]
