@@ -37,7 +37,35 @@ export const en = {
   locationsMenu: {
     selectProvince: "Select a Province",
     hoverPrompt: "Hover a province to view cities.",
-    provinceCitiesHeading: "{{province}} Cities"
+    provinceCitiesHeading: "{{province}} Cities",
+    viewProvinceGuide: "View the {{province}} province guide"
+  },
+  seoKeywords: {
+    headTerms: [
+      'cat litter smell',
+      'cat litter odor',
+      'cat litter odour',
+      'cat litter smell removal',
+      'best cat litter for smell',
+      'cat litter deodorizer'
+    ],
+    symptomVariants: [
+      'strong ammonia litter smell',
+      'litter box smells in apartment',
+      'why does my litter box smell so bad',
+      'cat litter smell embarrassing guests'
+    ],
+    solutionVariants: [
+      'natural cat litter odor eliminator',
+      'activated carbon litter additive',
+      'cat litter deodorizer without perfume',
+      'how to neutralize cat litter smell fast'
+    ],
+    modifiers: {
+      housing: ['condo', 'apartment', 'basement', 'multi-cat home'],
+      seasonal: ['winter windows closed', 'humid summer', 'Canadian winter air', 'rainy season ventilation'],
+      retailer: ['PetSmart', 'Pet Valu', 'Global Pet Foods', 'Bosleys', 'Ren\'s Pets']
+    }
   },
   
   // Products

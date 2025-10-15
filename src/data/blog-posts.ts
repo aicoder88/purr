@@ -12,13 +12,37 @@ export type BlogPost = {
 // Generate dynamic blog posts based on actual blog pages
 function generateLatestBlogPosts(): BlogPost[] {
   const now = Date.now();
-  
+
   return [
+    {
+      title: 'Embarrassed When Guests Visit? 5 Ways to Eliminate Cat Litter Smell Before Company Arrives',
+      excerpt: "Stop panicking before guests arrive! These proven fast-acting solutions eliminate embarrassing cat litter odors in 24 hours so you can entertain with confidence.",
+      author: 'Odor Control Specialist Team',
+      date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
+      image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80',
+      link: '/blog/embarrassed-guests-visit-cat-litter-smell'
+    },
+    {
+      title: 'Tried Everything for Cat Litter Smell? Why Most Solutions Fail (And What Actually Works)',
+      excerpt: "Nothing working for cat litter smell? Discover why baking soda, air fresheners, and cheap deodorizers fail—and the scientific solution that actually works.",
+      author: 'Odor Science Expert Team',
+      date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
+      image: 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1600&q=80',
+      link: '/blog/tried-everything-cat-litter-smell-solutions'
+    },
+    {
+      title: 'Why Cat Litter Smells Worse in Summer (And 4 Solutions That Actually Work)',
+      excerpt: "Heat doesn't just make you uncomfortable—it makes cat litter ammonia evaporate 10x faster. Discover the science behind summer odor problems and proven solutions.",
+      author: 'Seasonal Odor Control Team',
+      date: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
+      image: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=1600&q=80',
+      link: '/blog/cat-litter-smell-worse-summer-solutions'
+    },
     {
       title: 'Strong Cat Urine Smell in Litter Box? Proven Home Odor Fixes',
       excerpt: "Stop saying 'my house smells like cat litter' with this layered guide covering airflow, cleaning routines, and smart litter upgrades for a truly fresh home.",
       author: 'Clean Home Specialist Team',
-      date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
+      date: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days ago
       image: '/optimized/strong-cat-urine-smell.webp',
       link: '/blog/strong-cat-urine-smell-litter-box'
     },
@@ -26,7 +50,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell",
       excerpt: "Is your house smelling like cat litter? Discover 7 proven methods to control cat litter smell and eliminate strong urine odors from your litter box permanently.",
       author: "Odor Control Specialist Team",
-      date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
+      date: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 4 days ago
       image: "/optimized/house-smells-cat-litter.webp",
       link: "/blog/house-smells-like-cat-litter-solutions"
     },
@@ -34,7 +58,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "Best Multi-Cat Litter Deodorizer: Ultimate Odor Control Guide 2024",
       excerpt: "Discover the most effective litter deodorizer for multi-cat households. Expert solutions to eliminate strong odors from multiple cats using proven activated carbon technology.",
       author: "Multi-Cat Specialist Team",
-      date: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
+      date: new Date(now - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
       image: "/optimized/multi-cat-deodorizer.webp",
       link: "/blog/multi-cat-litter-deodorizer-guide"
     },
@@ -42,7 +66,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "The Complete Guide to Cat Litter Deodorizers: How to Use Them Effectively",
       excerpt: "Master the art of using cat litter deodorizers with our comprehensive guide. Learn proper application techniques, timing, and maintenance tips for maximum odor control.",
       author: "Dr. Sarah Mitchell",
-      date: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days ago
+      date: new Date(now - 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 6 days ago
       image: "/optimized/cat-litter-deodorizer-guide.webp",
       link: "/blog/how-to-use-cat-litter-deodorizer"
     },
@@ -50,7 +74,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "Activated Carbon vs Baking Soda Cat Litter Additives: Complete Comparison",
       excerpt: "Discover how Purrify's activated carbon technology compares to traditional baking soda approaches. See which solution provides superior odor control for your home.",
       author: "Pet Care Expert Team",
-      date: new Date(now - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
+      date: new Date(now - 8 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 8 days ago
       image: "/optimized/activated-carbon-vs-baking-soda.webp",
       link: "/blog/activated-carbon-vs-baking-soda-comparison"
     },
@@ -58,7 +82,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "Using Litter Deodorizers with Kittens: A Care Guide",
       excerpt: "Learn how households use Purrify around kittens, including key considerations, gradual introduction guidelines, and practical veterinary-informed tips for young cats.",
       author: "Dr. Emily Rodriguez, DVM",
-      date: new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week ago
+      date: new Date(now - 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 10 days ago
       image: "/optimized/deodorizers-with-kittens.webp",
       link: "/blog/using-deodorizers-with-kittens"
     },
@@ -66,7 +90,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "Best Cat Litter Odor Remover for Small Apartments: Space-Saving Solutions",
       excerpt: "Living in a small apartment with cats? Discover the most effective odor control strategies and products specifically designed for compact living spaces.",
       author: "Urban Pet Living Specialist",
-      date: new Date(now - 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 10 days ago
+      date: new Date(now - 12 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 12 days ago
       image: "/optimized/small-apartment-odor-control.webp",
       link: "/blog/best-litter-odor-remover-small-apartments"
     },
@@ -74,7 +98,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: "Activated Carbon Cat Litter Additive Benefits: The Science Behind Odor Elimination",
       excerpt: "Explore the scientific benefits of activated carbon in cat litter additives. Learn how this natural solution provides superior odor control compared to traditional methods.",
       author: "Dr. Nathan Hale, Environmental Scientist",
-      date: new Date(now - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 weeks ago
+      date: new Date(now - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 14 days ago
       image: "/optimized/activated-carbon-benefits.webp",
       link: "/blog/activated-carbon-litter-additive-benefits"
     }

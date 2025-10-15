@@ -35,7 +35,35 @@ export const fr = {
   locationsMenu: {
     selectProvince: "Sélectionnez une province",
     hoverPrompt: "Survolez une province pour voir les villes.",
-    provinceCitiesHeading: "Villes de {{province}}"
+    provinceCitiesHeading: "Villes de {{province}}",
+    viewProvinceGuide: "Voir le guide de la province {{province}}"
+  },
+  seoKeywords: {
+    headTerms: [
+      'odeur litière chat',
+      'odeurs bac à litière',
+      'neutraliser odeur litière',
+      'éliminer odeur litière',
+      'meilleure litière contre odeur',
+      'désodorisant litière naturel'
+    ],
+    symptomVariants: [
+      'odeur ammoniaque litière',
+      'litière sent dans appartement',
+      'pourquoi ma litière sent mauvais',
+      'odeur de litière embarrassante'
+    ],
+    solutionVariants: [
+      'désodorisant litière sans parfum',
+      'charbon actif pour litière',
+      'neutraliser odeur bac à litière rapidement',
+      'astuce pour enlever odeur litière chat'
+    ],
+    modifiers: {
+      housing: ['condo', 'appartement', 'sous-sol', 'maison multi-chats'],
+      seasonal: ['fenêtres fermées en hiver', 'été humide', 'hiver canadien', 'saison des pluies'],
+      retailer: ['Mondou', 'Pet Valu', 'Global Pet Foods', 'Ren\'s Pets', 'PetSmart']
+    }
   },
   
   // Products

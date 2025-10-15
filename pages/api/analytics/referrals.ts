@@ -1,5 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
+
+const getGtag = (): GtagFunction | undefined => {
+  if (typeof global === 'undefined') {
+    return undefined;
+  }
+  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
+  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
+};
+
 // Analytics data interfaces
 interface ReferralAnalytics {
   overview: OverviewMetrics;
@@ -229,8 +239,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Track analytics dashboard access
-    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
-      (global as typeof globalThis & { gtag: Function }).gtag('event', 'referral_analytics_view', {
+    const gtag = getGtag();
+    if (gtag) {
+      gtag('event', 'referral_analytics_view', {
         event_category: 'analytics',
         event_label: 'dashboard_access',
         custom_parameter_1: timeframe

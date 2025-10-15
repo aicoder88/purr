@@ -1,5 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
+
+const getGtag = (): GtagFunction | undefined => {
+  if (typeof global === 'undefined') {
+    return undefined;
+  }
+  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
+  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
+};
+
 interface ReferralStats {
   userId: string;
   referralCode: string;
@@ -158,8 +168,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const referralStats = getMockReferralStats(userId);
 
     // Track dashboard view
-    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
-      (global as typeof globalThis & { gtag: Function }).gtag('event', 'referral_dashboard_view', {
+    const gtag = getGtag();
+    if (gtag) {
+      gtag('event', 'referral_dashboard_view', {
         event_category: 'referrals',
         event_label: 'dashboard_access',
         custom_parameter_1: userId

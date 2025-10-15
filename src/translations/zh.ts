@@ -35,7 +35,8 @@ export const zh = {
   locationsMenu: {
     selectProvince: "选择省份",
     hoverPrompt: "将鼠标悬停在省份上即可查看城市。",
-    provinceCitiesHeading: "{{province}} 城市"
+    provinceCitiesHeading: "{{province}} 城市",
+    viewProvinceGuide: "查看 {{province}} 省指南"
   },
   
   // Products

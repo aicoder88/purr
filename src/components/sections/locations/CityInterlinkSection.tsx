@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {
   getProvinceByName,
   locationsByProvince,
+  type LocationCity,
 } from '../../../data/locations';
 
 interface CityInterlinkSectionProps {
@@ -28,6 +29,14 @@ export function CityInterlinkSection({
     (city) => normalize(city.name) !== normalize(cityName)
   );
 
+  const buildCityTagline = (city: LocationCity) => {
+    const scentFocus = city.profile.scentPainPoints[0];
+    if (!scentFocus) {
+      return `Best cat litter odor control for ${city.name}, ${province.name}`;
+    }
+    return `${scentFocus} in ${city.name}`;
+  };
+
   const otherProvinces = locationsByProvince.filter(
     (candidateProvince) => normalize(candidateProvince.name) !== normalize(provinceName)
   );
@@ -51,7 +60,7 @@ export function CityInterlinkSection({
                     {city.name}
                   </span>
                   <span className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                    Best cat litter odor control for {city.name}, {province.name}
+                    {buildCityTagline(city)}
                   </span>
                 </Link>
               ))}

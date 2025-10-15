@@ -106,6 +106,12 @@ The audit reveals an "F" grade with critical issues in technical health (74%), p
 - Core Web Vitals: All metrics in "Good" range
 - Mobile LCP: 6.6s → <2.5s
 
+## City Funnel Follow-ups
+
+- [ ] Wire `/api/leads/city` into the primary ESP/CRM webhook so marketing consented leads enter the 7-day nurture sequence automatically.
+- [ ] Configure GA4 and Meta remarketing audiences using the new `view_city_page` and `generate_lead` events, and launch creative variants per priority city.
+- [ ] Replace the temporary `reports/city-leads-log.json` storage with durable persistence (e.g., Supabase/CRM) and push Slack alerts for high-priority metro leads.
+
 This plan addresses every issue identified in the audit while leveraging the existing codebase architecture and optimization already in place.
 
 # SEO Follow-ups (SEMrush)

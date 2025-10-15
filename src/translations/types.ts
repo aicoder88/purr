@@ -37,6 +37,7 @@ export interface TranslationType {
     selectProvince: string;
     hoverPrompt: string;
     provinceCitiesHeading: string;
+    viewProvinceGuide: string;
   };
 
   // About Section
@@ -1048,6 +1049,17 @@ export interface TranslationType {
     contact: {
       title: string;
       description: string;
+    };
+  };
+
+  seoKeywords?: {
+    headTerms: string[];
+    symptomVariants: string[];
+    solutionVariants: string[];
+    modifiers: {
+      housing: string[];
+      seasonal: string[];
+      retailer: string[];
     };
   };
 }

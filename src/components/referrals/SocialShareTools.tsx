@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { Share2, Copy, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin, QrCode, Check, Download } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -16,7 +17,7 @@ interface SocialShareToolsProps {
 
 interface ShareTemplate {
   platform: string;
-  icon: React.ComponentType<any>;
+  icon: LucideIcon;
   color: string;
   title: string;
   template: string;

@@ -1,6 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
 
+type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
+
+const getGtag = (): GtagFunction | undefined => {
+  if (typeof global === 'undefined') {
+    return undefined;
+  }
+  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
+  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
+};
+
 interface ReferralCode {
   id: string;
   userId: string;
@@ -51,8 +61,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     referralCodes.set(code, referralCode);
 
     // Track referral code generation
-    if (typeof global !== 'undefined' && (global as typeof globalThis & { gtag?: Function }).gtag) {
-      (global as typeof globalThis & { gtag: Function }).gtag('event', 'referral_code_generated', {
+    const gtag = getGtag();
+    if (gtag) {
+      gtag('event', 'referral_code_generated', {
         event_category: 'referrals',
         event_label: 'code_generation',
         user_id: userId

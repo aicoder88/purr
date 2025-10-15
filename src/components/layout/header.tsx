@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "../../components/ui/button";
@@ -48,6 +49,9 @@ export function Header() {
     ? (t.locationsMenu?.provinceCitiesHeading?.replace("{{province}}", hoveredProvince.name) ?? `${hoveredProvince.name} Cities`)
     : (t.locationsMenu?.selectProvince ?? 'Select a Province');
   const hoverPromptText = t.locationsMenu?.hoverPrompt ?? 'Hover a province to view cities.';
+  const provinceGuideLinkText = hoveredProvince
+    ? (t.locationsMenu?.viewProvinceGuide?.replace("{{province}}", hoveredProvince.name) ?? `View ${hoveredProvince.name} guide`)
+    : null;
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -134,6 +138,35 @@ export function Header() {
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, []);
+
+  const buildLocalizedPath = useCallback((path: string) => {
+    if (locale === 'fr') return `/fr${path}`;
+    if (locale === 'zh') return `/zh${path}`;
+    return path;
+  }, [locale]);
+
+  const navigateToPath = useCallback((path: string) => {
+    const targetPath = buildLocalizedPath(path);
+    setIsLocationsDropdownOpen(false);
+    closeMenu();
+    void router.push(targetPath);
+  }, [buildLocalizedPath, closeMenu, router]);
+
+  const handleCityClick = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+    event.preventDefault();
+    navigateToPath(`/locations/${slug}`);
+  }, [navigateToPath]);
+
+  const handleProvinceLinkClick = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, provinceSlug: string) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+    event.preventDefault();
+    navigateToPath(`/locations/province/${provinceSlug}`);
+  }, [navigateToPath]);
 
   const scrollToProducts = useCallback(() => {
     const productsSection = document.getElementById('products');
@@ -355,17 +388,31 @@ export function Header() {
                               </div>
                               <div className="mt-1 space-y-1">
                                 {hoveredProvince ? (
-                                  hoveredProvince.cities.map((city) => (
-                                    <Link
-                                      key={city.slug}
-                                      href={`/locations/${city.slug}`}
-                                      className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
-                                      role="menuitem"
-                                      onClick={() => setIsLocationsDropdownOpen(false)}
-                                    >
-                                      {city.name}
-                                    </Link>
-                                  ))
+                                  <>
+                                    {provinceGuideLinkText && (
+                                      <Link
+                                        href={buildLocalizedPath(`/locations/province/${hoveredProvince.slug}`)}
+                                        className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                        onClick={(event) => handleProvinceLinkClick(event, hoveredProvince.slug)}
+                                      >
+                                        {provinceGuideLinkText}
+                                      </Link>
+                                    )}
+                                    {provinceGuideLinkText && (
+                                      <div className="mx-3 h-px bg-gray-200 dark:bg-gray-700" aria-hidden="true" />
+                                    )}
+                                    {hoveredProvince.cities.map((city) => (
+                                      <Link
+                                        key={city.slug}
+                                        href={buildLocalizedPath(`/locations/${city.slug}`)}
+                                        className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                        role="menuitem"
+                                        onClick={(event) => handleCityClick(event, city.slug)}
+                                      >
+                                        {city.name}
+                                      </Link>
+                                    ))}
+                                  </>
                                 ) : (
                                   <p className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
                                     {hoverPromptText}
@@ -465,9 +512,9 @@ export function Header() {
                             {province.cities.map((city) => (
                               <Link
                                 key={city.slug}
-                                href={`/locations/${city.slug}`}
+                                href={buildLocalizedPath(`/locations/${city.slug}`)}
                                 className="block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 pl-8"
-                                onClick={closeMenu}
+                                onClick={(event) => handleCityClick(event, city.slug)}
                               >
                                 {city.name}
                               </Link>
