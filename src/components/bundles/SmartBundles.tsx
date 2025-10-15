@@ -83,7 +83,7 @@ const INTELLIGENT_BUNDLES: Bundle[] = [
     ],
     bonusItems: [
       '30-day money-back guarantee',
-      'Free shipping',
+      'Fast shipping',
       'Email support'
     ],
     testimonial: {
@@ -387,7 +387,7 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
             </div>
             <div className="flex items-center">
               <Truck className="w-4 h-4 mr-2" />
-              Free shipping
+              Fast shipping
             </div>
             <div className="flex items-center">
               <Star className="w-4 h-4 mr-2" />

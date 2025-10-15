@@ -8,7 +8,7 @@
 **Features Implemented:**
 - 🎯 **Mouse-leave detection** - Triggers when user moves cursor toward browser close button
 - 📱 **Tab blur detection** - Activates when user switches tabs (mobile-friendly)
-- 🎁 **Dynamic offer types** - Discount, Free Shipping, or Bundle deals
+- 🎁 **Dynamic offer types** - Discount, Fast Shipping, or Bundle deals
 - ⏰ **Smart timing** - Only shows once per session, respects user behavior
 - 📊 **Analytics tracking** - Full GTM integration for conversion tracking
 - 🎨 **Professional UI** - Gradient backgrounds, animations, trust signals

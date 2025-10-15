@@ -19,7 +19,7 @@ export function SubscriptionOffer() {
       interval: t.subscriptionOfferExtended?.month || 'month',
       description: t.subscriptionOfferExtended?.perfectForSingleCat || 'Perfect for single-cat households',
       features: [
-        // t.subscriptionOfferExtended?.freeShippingEveryMonth || 'Free shipping every month', // TODO: Restore when free shipping is available
+        // t.subscriptionOfferExtended?.fastShippingEveryMonth || 'Fast shipping every month', // TODO: Restore when offer is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
         t.subscriptionOfferExtended?.fortyPercentSavings || '40% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'
@@ -34,7 +34,7 @@ export function SubscriptionOffer() {
       interval: `3 ${t.subscriptionOfferExtended?.months || 'months'}`,
       description: t.subscriptionOfferExtended?.mostPopularMultiCat || 'Most popular for multi-cat homes',
       features: [
-        // t.subscriptionOfferExtended?.freeShippingEveryThreeMonths || 'Free shipping every 3 months', // TODO: Restore when free shipping is available
+        // t.subscriptionOfferExtended?.fastShippingEveryThreeMonths || 'Fast shipping every 3 months', // TODO: Restore when offer is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
         t.subscriptionOfferExtended?.sixtyPercentSavings || '60% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
@@ -51,7 +51,7 @@ export function SubscriptionOffer() {
       interval: `6 ${t.subscriptionOfferExtended?.months || 'months'}`,
       description: t.subscriptionOfferExtended?.bestValueLargeFamilies || 'Best value for large families',
       features: [
-        // t.subscriptionOfferExtended?.freeShippingEverySixMonths || 'Free shipping every 6 months', // TODO: Restore when free shipping is available
+        // t.subscriptionOfferExtended?.fastShippingEverySixMonths || 'Fast shipping every 6 months', // TODO: Restore when offer is available
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
         t.subscriptionOfferExtended?.seventyTwoPercentSavings || '72% savings vs one-time purchase',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',

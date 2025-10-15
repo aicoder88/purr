@@ -15,8 +15,8 @@ export default function StandardSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
-  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 50g Activated Carbon Cat Litter Additive`;
-  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 50g standard size activated carbon cat litter additive. Most popular size.";
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 50g Cat Litter Odor Control`;
+  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 50g standard size litter deodorizer. Most popular size.";
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
@@ -111,7 +111,7 @@ export default function StandardSizePage() {
               {
                 "@type": "Product",
                 "@id": canonicalUrl,
-                "name": "Purrify 50g Standard Size - Activated Carbon Cat Litter Additive",
+                "name": "Purrify 50g Standard Size - Cat Litter Odor Control",
                 "description": "Our most popular 50g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
                 "image": [
                   "https://www.purrify.ca/optimized/60g.webp",
@@ -340,7 +340,7 @@ export default function StandardSizePage() {
                     Purrify Standard Size
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    50g Activated Carbon Cat Litter Additive
+                    50g Cat Litter Odor Control
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -397,7 +397,7 @@ export default function StandardSizePage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Free shipping on orders over $25
+                    Fast shipping on orders over $25
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />

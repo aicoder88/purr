@@ -19,7 +19,7 @@ export default function MultiCatLitterDeodorizerGuide() {
       <Head>
         <title>{`${t.blog.multiCat.title} | ${SITE_NAME}`}</title>
         <meta name="description" content={t.blog.multiCat.description} />
-        <meta name="keywords" content="multi cat litter deodorizer, litter deodorizer for multiple cats, best odor control multi cat, activated carbon multi cat litter, cat litter additive multiple cats" />
+        <meta name="keywords" content="multi cat litter deodorizer, litter deodorizer for multiple cats, best odor control multi cat, heavy duty litter deodorizer, cat litter additive multiple cats" />
 
         {/* Open Graph */}
         <meta property="og:title" content={t.blog.multiCat.title} />

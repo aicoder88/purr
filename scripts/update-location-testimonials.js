@@ -73,7 +73,7 @@ const cityTestimonials = {
     testimonial2: '"Historic homes need modern solutions! Purrify works perfectly in our 100-year-old house. Natural and effective."',
     name2: 'Pierre D., Quebec City',
     faqQuestion: 'Est-ce que Purrify est disponible au Québec?',
-    faqAnswer: 'Oui! Free shipping across Quebec, including Quebec City. Orders typically arrive within 2-3 business days. Nous offrons le support en français!'
+    faqAnswer: 'Oui! Fast shipping across Quebec, including Quebec City. Orders typically arrive within 2-3 business days. Nous offrons le support en français!'
   }
 };
 

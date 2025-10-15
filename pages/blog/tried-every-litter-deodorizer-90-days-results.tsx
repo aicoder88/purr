@@ -24,7 +24,7 @@ const scienceImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b23
 const solutionImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
 
 export default function TriedEveryLitterDeodorizer90Days() {
-  const pageTitle = 'I Tried Every Litter Deodorizer Method for 90 Days—Here\'s What Actually Worked';
+  const pageTitle = '90-Day Litter Deodorizer Test Results';
   const metaDescription = 'I tested 7 cat litter deodorizer methods for 90 days. Only activated carbon eliminated ammonia smell completely. Here\'s my journey from desperation to relief.';
 
   return (

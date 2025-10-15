@@ -12,13 +12,18 @@ interface ProvincePageProps {
   province: Province;
 }
 
+const PROVINCE_DISPLAY_OVERRIDES: Record<string, string> = {
+  'Newfoundland and Labrador': 'Newfoundland & Labrador',
+};
+
 const ProvincePage = ({ province }: ProvincePageProps) => {
   const otherProvinces = locationsByProvince.filter(
     (candidateProvince) => candidateProvince.slug !== province.slug
   );
 
-  const seoTitle = `Best Cat Litter Odor Eliminator in ${province.name} | Purrify`;
-  const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Free shipping across the province with fast delivery.`;
+  const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
+  const seoTitle = `Cat Litter Odor Control - ${displayName} (${province.code}) | Purrify`;
+  const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Fast shipping across the province with reliable delivery.`;
 
   return (
     <>

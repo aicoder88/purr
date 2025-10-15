@@ -122,13 +122,13 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           
           <DefaultSeo
             titleTemplate={`%s | ${SITE_NAME}`}
-            defaultTitle={`${SITE_NAME} - Activated Carbon Cat Litter Additive`}
+            defaultTitle={`${SITE_NAME} - Cat Litter Odor Control`}
             openGraph={{
               type: 'website',
               locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
               url: canonicalUrl,
               siteName: SITE_NAME,
-              title: `${SITE_NAME} - Activated Carbon Cat Litter Additive`,
+              title: `${SITE_NAME} - Cat Litter Odor Control`,
               description: SITE_DESCRIPTION,
               images: [
                 {

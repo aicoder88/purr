@@ -168,7 +168,7 @@ function getCityContext(cityName, province) {
     testimonial2: `"Reliable odor control for our northern household. Our ${cityName} cats and family all appreciate the fresh air!"`,
     faq: {
       q: 'Do you ship to remote areas?',
-      a: `Yes! We ship across Canada including ${cityName}. Free shipping on all orders, typically arriving within 3-5 business days.`
+      a: `Yes! We ship across Canada including ${cityName}. Fast shipping on all orders, typically arriving within 3-5 business days.`
     }
   };
 
@@ -237,7 +237,7 @@ export default function ${slug.replace(/-/g, '')}Page() {
   };
 
   const seoTitle = \`Best Cat Litter Odor Eliminator in \${city.name}, \${city.province} | Purrify\`;
-  const seoDescription = \`Eliminate cat litter odors in \${city.name}, \${city.province}. Free shipping across \${city.province}. Trusted by ${trustedBy}+ cat owners.\`;
+  const seoDescription = \`Eliminate cat litter odors in \${city.name}, \${city.province}. Fast shipping across \${city.province}. Trusted by ${trustedBy}+ cat owners.\`;
 
   return (
     <>
@@ -288,7 +288,7 @@ export default function ${slug.replace(/-/g, '')}Page() {
                 ))}
                 <li className="flex items-center">
                   <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
-                  Free shipping across {city.province}
+                  Fast shipping across {city.province}
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
@@ -394,7 +394,7 @@ export default function ${slug.replace(/-/g, '')}Page() {
                   Do you deliver to {city.name}, {city.province}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Yes! Free shipping across {city.province}, including {city.name}.
+                  Yes! Fast shipping across {city.province}, including {city.name}.
                   Orders arrive within 2-3 business days.
                 </p>
               </div>

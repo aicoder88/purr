@@ -356,7 +356,7 @@ export const en = {
   seo: {
     keywords: "cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies, cat video",
     openGraph: {
-      title: "Purrify - Activated Carbon Cat Litter Additive",
+      title: "Purrify - Cat Litter Odor Control",
       description: "Activated carbon cat litter additive that eliminates odors at the source."
     },
     metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by 1,000+ cat owners across Canada."
@@ -484,7 +484,7 @@ export const en = {
     },
     highlyRated: {
       title: "Highly Rated",
-      description: "30-day money-back guarantee\nFree shipping in Canada"
+      description: "30-day money-back guarantee\nFast shipping in Canada"
     }
   },
 
@@ -557,7 +557,7 @@ export const en = {
     maxSavings: "Maximum Savings",
     oneTimePurchase: "One-Time Purchase",
     subscriptionBenefits: "Subscription Benefits",
-    // freeShipping: "Free shipping on every order", // TODO: Restore when free shipping is available
+    // fastShipping: "Fast shipping on every order", // TODO: Restore when offer is available
     exclusiveDiscounts: "Subscriber-only discounts",
     prioritySupport: "Priority customer support",
     flexibleSchedule: "Flexible delivery schedule",
@@ -652,9 +652,9 @@ export const en = {
     perfectForSingleCat: "Perfect for single-cat households",
     mostPopularMultiCat: "Most popular for multi-cat homes",
     bestValueLargeFamilies: "Best value for large families",
-    // freeShippingEveryMonth: "Free shipping every month", // TODO: Restore when free shipping is available
-    // freeShippingEveryThreeMonths: "Free shipping every 3 months", // TODO: Restore when free shipping is available
-    // freeShippingEverySixMonths: "Free shipping every 6 months", // TODO: Restore when free shipping is available
+    // fastShippingEveryMonth: "Fast shipping every month", // TODO: Restore when offer is available
+    // fastShippingEveryThreeMonths: "Fast shipping every 3 months", // TODO: Restore when offer is available
+    // fastShippingEverySixMonths: "Fast shipping every 6 months", // TODO: Restore when offer is available
     skipOrCancelAnytime: "Skip or cancel anytime",
     fortyPercentSavings: "40% savings vs one-time purchase",
     sixtyPercentSavings: "60% savings vs one-time purchase",
@@ -726,7 +726,7 @@ export const en = {
     claimTrial: "Claim Your FREE Purrify Trial",
     whatYouGet: "What You Get:",
     freeTrialBag: "12g Purrify Trial Size worth $4.99",
-    // freeShippingDoor: "Free shipping to your door", // TODO: Restore when free shipping is available
+    // fastShippingDoor: "Fast shipping to your door", // TODO: Restore when offer is available
     expertTips: "Expert cat care tips and guides",
     zeroCommitment: "Zero commitment - this is our gift to you",
     attention: "ATTENTION: For cat owners tired of holding their breath",
@@ -916,7 +916,7 @@ export const en = {
     maxValuePerGram: "Maximum value per gram",
     bulkSavingsIncluded: "Bulk savings included",
     sustainableSupply: "Sustainable supply for heavy users",
-    // freeShippingIncluded: "Free shipping included", // TODO: Restore when free shipping is available
+    // fastShippingIncluded: "Fast shipping included", // TODO: Restore when offer is available
     features: "Features",
     idealFor: "Ideal For",
     duration: "Duration",
@@ -1182,7 +1182,7 @@ export const en = {
   // Homepage specific translations
   homepage: {
     seo: {
-      pageTitle: "Activated Carbon Cat Litter Additive",
+      pageTitle: "Cat Litter Odor Control Additive",
       keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, fragrance-free pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada",
       openGraphImageAlt: "Premium Cat Litter Odor Control Solution",
       videoAlt: "Purrify Cat Litter Additive Effectiveness Demonstration",
@@ -1252,7 +1252,7 @@ export const en = {
   // Blog
   blog: {
     multiCat: {
-      title: "Multiple Cats = Litter Box Nightmare? 7 Ways to Stop the Overwhelming Smell",
+      title: "7 Ways to Control Multi-Cat Litter Odor",
       description: "Overwhelmed by multiple cat litter box smell? These 7 proven methods eliminate even the strongest multi-cat ammonia odors. Stop dreading coming home to that awful stink!",
       category: "Multi-Cat Household Guide",
       publishDate: "Published September 16, 2024",

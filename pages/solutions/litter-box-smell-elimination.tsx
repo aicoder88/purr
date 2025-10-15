@@ -4,7 +4,7 @@ import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
 export default function LitterBoxSmellEliminationPage() {
-  const seoTitle = 'Litter Box Smell Elimination - Complete Odor Control Guide | Purrify';
+  const seoTitle = 'Litter Box Odor Control Guide | Purrify';
   const seoDescription = 'Eliminate litter box smells permanently with proven activated carbon technology. Complete guide to odor-free cat care with natural, fragrance-free solutions.';
   const canonicalUrl = 'https://www.purrify.ca/solutions/litter-box-smell-elimination';
 

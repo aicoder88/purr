@@ -206,7 +206,7 @@ export function ShoppingCart() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-3">
-                  🔒 Secure checkout • Free shipping over $50
+                  🔒 Secure checkout • Fast shipping over $50
                 </p>
               </div>
             )}

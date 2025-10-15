@@ -62,7 +62,7 @@ export default function B2B() {
       title: locale === 'fr' ? 'Livraison Rapide' : 'Fast Delivery',
       description: locale === 'fr'
         ? 'Livraison gratuite sur commandes de 500$+ avec options express pour réapprovisionnements urgents.'
-        : 'Free shipping on $500+ orders with express options for urgent restocking needs.'
+        : 'Fast shipping on $500+ orders with express options for urgent restocking needs.'
     },
     {
       icon: <Award className="h-8 w-8 text-red-600 dark:text-red-400" />,

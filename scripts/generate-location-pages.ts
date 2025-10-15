@@ -416,7 +416,7 @@ interface CityPageProps {
 
 export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPageProps) {
   const seoTitle = \`Best Cat Litter Odor Eliminator in \${city.name}, \${city.province} | Purrify\`;
-  const seoDescription = \`Eliminate cat litter odors in \${city.name}, \${city.province}. Purrify activated carbon additive works with any litter. Free shipping across \${city.province}. Trusted by \${Math.floor(city.population / 1000)}+ cat owners.\`;
+  const seoDescription = \`Eliminate cat litter odors in \${city.name}, \${city.province}. Purrify activated carbon additive works with any litter. Fast shipping across \${city.province}. Trusted by \${Math.floor(city.population / 1000)}+ cat owners.\`;
   
   return (
     <>
@@ -544,7 +544,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
                 ))}
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Free shipping across {city.province}
+                  Fast shipping across {city.province}
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
@@ -716,7 +716,7 @@ interface ProvincePageProps {
 
 export default function ${province.slug.replace(/-/g, '')}Page({ province }: ProvincePageProps) {
   const seoTitle = \`Cat Litter Odor Control \${province.name} | Purrify Activated Carbon\`;
-  const seoDescription = \`Premium cat litter odor eliminator across \${province.name}. Serving \${province.cities.length} cities including \${province.cities.slice(0, 3).map(c => c.name).join(', ')}. Free shipping province-wide.\`;
+  const seoDescription = \`Premium cat litter odor eliminator across \${province.name}. Serving \${province.cities.length} cities including \${province.cities.slice(0, 3).map(c => c.name).join(', ')}. Fast shipping province-wide.\`;
   
   return (
     <>

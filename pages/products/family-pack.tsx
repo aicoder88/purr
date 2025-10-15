@@ -14,8 +14,8 @@ export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
   
-  const pageTitle = `${SITE_NAME} Family Pack - 120g Activated Carbon Cat Litter Additive`;
-  const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack activated carbon cat litter additive. Best value size.";
+  const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
+  const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
 
   // Family pack lifestyle images
@@ -146,7 +146,7 @@ export default function FamilyPackPage() {
                     Purrify Family Pack
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    120g Activated Carbon Cat Litter Additive
+                    120g Cat Litter Odor Control
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -211,7 +211,7 @@ export default function FamilyPackPage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Free shipping included
+                    Fast shipping included
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />

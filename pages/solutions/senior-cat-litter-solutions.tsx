@@ -4,7 +4,7 @@ import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
 export default function SeniorCatLitterSolutionsPage() {
-  const seoTitle = 'Senior Cat Litter Solutions - Gentle Odor Control for Older Cats | Purrify';
+  const seoTitle = 'Senior Cat Litter Odor Solutions | Purrify';
   const seoDescription = 'Specialized litter solutions for senior cats. Gentle, fragrance-free odor control that works with age-related health issues and sensitive systems.';
   const canonicalUrl = 'https://www.purrify.ca/solutions/senior-cat-litter-solutions';
 

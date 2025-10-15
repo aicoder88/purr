@@ -44,7 +44,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     savings: 'Save $36/year',
     features: [
       '1x Purrify 50g delivered monthly',
-      'Free shipping on all orders',
+      'Fast shipping on all orders',
       'Skip or cancel anytime',
       'Member-only discounts',
       'Priority customer support'
@@ -71,7 +71,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     features: [
       '2x Purrify 50g delivered bi-monthly',
       'Free premium scoop included',
-      'Free shipping + tracking',
+      'Fast shipping with tracking',
       'Exclusive member pricing',
       'Priority customer support',
       'Flexible delivery schedule'
@@ -204,7 +204,7 @@ export function SubscriptionPlans({
           <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-8">
             <div className="flex items-center">
               <Truck className="w-4 h-4 mr-2" />
-              Free shipping
+              Fast shipping
             </div>
             <div className="flex items-center">
               <Zap className="w-4 h-4 mr-2" />

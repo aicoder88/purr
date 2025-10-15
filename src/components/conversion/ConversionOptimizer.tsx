@@ -24,7 +24,7 @@ export function ConversionOptimizer({
   useEffect(() => {
     // Determine the best offer based on page type and cart contents
     if (pageType === 'product' && !items.length) {
-      setOfferType('shipping'); // Free shipping for first-time visitors
+      setOfferType('shipping'); // Fast shipping incentive for first-time visitors
     } else if (items.length > 0 && !checkoutStarted) {
       setOfferType('discount'); // Discount for cart abandoners
     } else if (pageType === 'homepage') {

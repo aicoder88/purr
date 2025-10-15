@@ -129,10 +129,15 @@ export function createCityPage(slug: string) {
       ],
     );
 
-    const seoTitle = `Best Cat Litter Odor Eliminator in ${profile.name}, ${profile.province} | Purrify`;
+    const provinceLabel = profile.provinceCode?.trim() || profile.province;
+    const locationLabel = provinceLabel
+      ? `${profile.name}, ${provinceLabel}`
+      : profile.name;
+
+    const seoTitle = `Cat Litter Odor Control - ${locationLabel} | Purrify`;
     const seoDescription = populationLabel
-      ? `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Free shipping across ${profile.province}. Trusted by ${populationLabel}+ cat owners.`
-      : `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Free shipping across ${profile.province}. Trusted by cat owners nationwide.`;
+      ? `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Fast shipping across ${profile.province}. Trusted by ${populationLabel}+ cat owners.`
+      : `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Fast shipping across ${profile.province}. Trusted by cat owners nationwide.`;
 
     const seasonalTip = climateInsights[0] ?? 'changing seasons';
     const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
@@ -206,7 +211,7 @@ export function createCityPage(slug: string) {
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
-                    <span>Free shipping across {profile.province}</span>
+                    <span>Fast shipping across {profile.province}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
@@ -360,7 +365,7 @@ export function createCityPage(slug: string) {
                     Do you deliver to {profile.name}, {profile.province}?
                   </h3>
                   <p className="text-gray-700 dark:text-gray-200">
-                    Yes! Free shipping across {profile.province}, including every neighbourhood in {profile.name}. Orders arrive within 2-3 business days.
+                    Yes! Fast shipping across {profile.province}, including every neighbourhood in {profile.name}. Orders arrive within 2-3 business days.
                   </p>
                 </div>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">

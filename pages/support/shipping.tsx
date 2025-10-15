@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { SITE_NAME } from '../../src/lib/constants';
 import { 
   Truck, 
   Clock, 
@@ -105,20 +106,22 @@ const ShippingPage: NextPage = () => {
     }
   ];
 
+  const pageTitle = 'Shipping Info - Fast Delivery Across Canada';
+
   return (
     <>
       <Head>
-        <title>Shipping Information - Fast & Reliable Delivery Across Canada | Purrify</title>
+        <title>{`${pageTitle} | ${SITE_NAME}`}</title>
         <meta 
           name="description" 
-          content="Learn about Purrify shipping options, delivery times, and costs. Free shipping on orders $25+. Fast delivery across Canada and international shipping available." 
+          content="Learn about Purrify shipping options, delivery times, and costs. Fast shipping on orders $25+. Reliable delivery across Canada and international shipping available." 
         />
         <meta name="keywords" content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery" />
         <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Shipping Information - Fast & Reliable Delivery" />
-        <meta property="og:description" content="Fast and reliable Purrify delivery across Canada. Free shipping on orders $25+. International shipping available." />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content="Fast and reliable Purrify delivery across Canada. Fast shipping on orders $25+. International shipping available." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
         
@@ -168,7 +171,7 @@ const ShippingPage: NextPage = () => {
               </p>
               <div className="bg-white dark:bg-gray-900/10 rounded-lg p-4 inline-block">
                 <p className="text-lg font-semibold">
-                  🚚 Free shipping on orders $25+ • 📦 Same-day processing • 🇨🇦 Canada-wide delivery
+                  🚚 Fast shipping on orders $25+ • 📦 Same-day processing • 🇨🇦 Canada-wide delivery
                 </p>
               </div>
             </div>
@@ -437,7 +440,7 @@ const ShippingPage: NextPage = () => {
                 Ready to Order Purrify?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Get fast, reliable delivery right to your door. Free shipping on orders $25+.
+                Get fast, reliable delivery right to your door. Fast shipping on orders $25+.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>

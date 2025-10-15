@@ -37,7 +37,7 @@ export function UrgencyBanner() {
           {/* <div className="flex items-center space-x-2">
             <TrendingUp className="w-4 h-4" />
             <span className="text-sm font-medium">
-              Free shipping on orders over <span className="font-bold text-yellow-300 dark:text-yellow-400">$50</span>
+              Fast shipping on orders over <span className="font-bold text-yellow-300 dark:text-yellow-400">$50</span>
             </span>
           </div> */} {/* TODO: Restore when free shipping is available */}
           <div className="flex items-center space-x-2">

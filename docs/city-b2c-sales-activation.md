@@ -13,7 +13,7 @@
 | --- | --- | --- |
 | 0 | Confirm & deliver offer | Subject: `Your {{cityName}} litter odor blueprint + 12g trial`. Recap the main scent pain point (`{{scentFocus}}`) and link the sample CTA + FAQ.
 | 2 | Social proof | Share two testimonials from `cityOdorProfiles` + local stats (population label) and include a CTA to order the trial size.
-| 3 | Education | Short video/GIF showing Purrify usage in `{{housingHighlight}}`; remind them of free shipping across `{{provinceName}}`.
+| 3 | Education | Short video/GIF showing Purrify usage in `{{housingHighlight}}`; remind them of fast shipping across `{{provinceName}}`.
 | 4 | Retail tie-in | Highlight recommended retailers (`{{retailerAllies}}`) and include a “Ask your store to stock Purrify” script.
 | 5 | Objection handling | FAQ style email addressing `{{scentFocus}}` plus refill cadence tips.
 | 6 | Urgency close | Subject: `Last chance for your {{cityName}} fresh air kit`. Add a time-bound bonus (e.g., free scoop) and CTA back to `/products/trial-size`.
@@ -31,7 +31,7 @@
 
 ### Meta (Facebook/Instagram)
 - Build a website custom audience using GA4 → Ads Manager integration (or GTM). Source event `generate_lead` with parameter `city_slug`.
-- Creative rules: headline `Stop {City} Litter Smell`, carousel card 1 = benefit, card 2 = testimonial, card 3 = free shipping promise.
+- Creative rules: headline `Stop {City} Litter Smell`, carousel card 1 = benefit, card 2 = testimonial, card 3 = fast shipping promise.
 
 ## 4. Paid Media Creative Checklist
 - Asset bank: 1080×1080 product hero, testimonial quotes, “Before/After” graphic.

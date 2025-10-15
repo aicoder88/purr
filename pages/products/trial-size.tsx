@@ -15,7 +15,7 @@ export default function TrialSizePage() {
   const { t, locale } = useTranslation();
   const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
-  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 12g Activated Carbon Cat Litter Additive`;
+  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 12g Cat Litter Odor Control`;
   const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 12g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
@@ -112,7 +112,7 @@ export default function TrialSizePage() {
               {
                 "@type": "Product",
                 "@id": canonicalUrl,
-                "name": "Purrify 12g Trial Size - Activated Carbon Cat Litter Additive",
+                "name": "Purrify 12g Trial Size - Cat Litter Odor Control",
                 "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
                 "image": [
                   "https://www.purrify.ca/optimized/20g.webp",
@@ -243,7 +243,7 @@ export default function TrialSizePage() {
                 ],
                 "isVariantOf": {
                   "@type": "ProductGroup",
-                  "name": "Purrify Activated Carbon Cat Litter Additive",
+                  "name": "Purrify Cat Litter Odor Control Additive",
                   "hasVariant": [
                     {
                       "@type": "Product",
@@ -368,7 +368,7 @@ export default function TrialSizePage() {
                     Purrify Trial Size
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    12g Activated Carbon Cat Litter Additive
+                    12g Cat Litter Odor Control
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -425,7 +425,7 @@ export default function TrialSizePage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Free shipping on orders over $25
+                    Fast shipping on orders over $25
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
@@ -616,7 +616,7 @@ export default function TrialSizePage() {
 
                   <div className="flex items-center space-x-2 text-white dark:text-gray-100">
                     <Check className="w-5 h-5 text-[#03E46A]" />
-                    <span className="text-sm">Free shipping over $25</span>
+                    <span className="text-sm">Fast shipping over $25</span>
                   </div>
                 </div>
 

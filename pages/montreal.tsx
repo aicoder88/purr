@@ -10,8 +10,8 @@ export default function Montreal() {
   const { locale } = useTranslation();
   
   const pageTitle = locale === 'fr' 
-    ? 'Désodorisant Litière Chat Montréal - Où Acheter Purrify Québec'
-    : 'Cat Litter Deodorizer Montreal Stores - Where to Buy Purrify Canada';
+    ? 'Où acheter un désodorisant pour litière de chat à Montréal | Purrify'
+    : 'Where to Buy Cat Litter Deodorizer in Montreal | Purrify';
     
   const pageDescription = locale === 'fr'
     ? 'Trouvez le désodorisant pour litière de chat Purrify dans les boutiques d\'animaux indépendantes de Montréal. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
@@ -130,7 +130,7 @@ export default function Montreal() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, independent pet stores, activated carbon cat litter, pet stores Montreal, cat supplies Montreal, litter box odor control',
+            content: 'cat litter deodorizer Montreal, Purrify Montreal stores, cat odor eliminator Quebec, natural litter additive Montreal, independent pet stores, pet stores Montreal, cat supplies Montreal, litter box odor control',
           },
           {
             name: 'geo.region',

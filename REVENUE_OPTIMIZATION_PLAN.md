@@ -70,7 +70,7 @@ const generateLocationPages = async () => {
     const pageData = {
       slug: `/cat-litter-odor-eliminator-${city.slug}`,
       title: `Best Cat Litter Odor Eliminator in ${city.name} | Purrify`,
-      metaDescription: `Eliminate cat litter odors in ${city.name}. Free shipping across ${city.province}. 5-star rated by ${city.name} cat owners.`,
+      metaDescription: `Eliminate cat litter odors in ${city.name}. Fast shipping across ${city.province}. 5-star rated by ${city.name} cat owners.`,
       content: generateLocalizedContent(city),
       schema: getLocalBusinessSchema(city)
     };

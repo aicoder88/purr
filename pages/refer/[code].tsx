@@ -348,7 +348,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 </Button>
 
                 <p className="text-sm opacity-75">
-                  Free shipping • No commitment • 100% satisfaction guarantee
+                  Fast shipping • No commitment • 100% satisfaction guarantee
                 </p>
               </div>
             </div>

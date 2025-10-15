@@ -4,7 +4,7 @@ import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 
 export default function MultipleCatsOdorControlPage() {
-  const seoTitle = 'Multiple Cats Odor Control Solution | Purrify Activated Carbon';
+  const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
   const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
   const canonicalUrl = 'https://www.purrify.ca/solutions/multiple-cats-odor-control';
 
@@ -35,7 +35,7 @@ export default function MultipleCatsOdorControlPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'multiple cats odor control, multi-cat household, cat litter many cats, activated carbon multiple cats, large cat family, cat colony odor management',
+            content: 'multiple cats odor control, multi-cat household, cat litter many cats, litter deodorizer for multiple cats, large cat family, cat colony odor management',
           },
         ]}
       />
