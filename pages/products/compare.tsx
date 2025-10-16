@@ -93,7 +93,7 @@ const ProductComparePage: NextPage = () => {
               "@type": "WebPage",
               "name": "Compare Purrify Products",
               "description": "Compare all Purrify activated carbon litter additive sizes and find the perfect option for your household.",
-              "url": `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`,
+              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`,
               "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": products.map((product, index) => ({

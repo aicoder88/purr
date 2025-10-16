@@ -66,8 +66,8 @@ class SEOOptimizer {
 Allow: /
 
 # Sitemaps
-Sitemap: https://purrify.ca/sitemap.xml
-Sitemap: https://purrify.ca/sitemap-index.xml
+Sitemap: https://www.purrify.ca/sitemap.xml
+Sitemap: https://www.purrify.ca/sitemap-index.xml
 
 # Block admin and private areas
 Disallow: /admin/

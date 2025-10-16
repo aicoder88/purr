@@ -6,11 +6,11 @@ Search engines were only finding a handful of indexable pages because the websit
 ## ✅ What Was Fixed
 
 ### 1. **Comprehensive Sitemap Generation**
-- **Main Sitemap**: `https://purrify.ca/sitemap.xml` (sitemap index)
-- **Static Pages Sitemap**: `https://purrify.ca/sitemap-0.xml` (13 pages)
-- **Blog Sitemap**: `https://purrify.ca/sitemap-blog.xml` (4 blog posts)
-- **Product Sitemap**: `https://purrify.ca/sitemap-products.xml` (3 products)
-- **Server Sitemap**: `https://purrify.ca/server-sitemap.xml` (dynamic content)
+- **Main Sitemap**: `https://www.purrify.ca/sitemap.xml` (sitemap index)
+- **Static Pages Sitemap**: `https://www.purrify.ca/sitemap-0.xml` (13 pages)
+- **Blog Sitemap**: `https://www.purrify.ca/sitemap-blog.xml` (4 blog posts)
+- **Product Sitemap**: `https://www.purrify.ca/sitemap-products.xml` (3 products)
+- **Server Sitemap**: `https://www.purrify.ca/server-sitemap.xml` (dynamic content)
 
 ### 2. **Enhanced Robots.txt**
 - Proper crawl directives for search engines
@@ -81,12 +81,12 @@ Search engines were only finding a handful of indexable pages because the websit
 ### 1. **Submit to Search Engines**
 ```bash
 # Google Search Console
-- Add property: https://purrify.ca
-- Submit sitemap: https://purrify.ca/sitemap.xml
+- Add property: https://www.purrify.ca
+- Submit sitemap: https://www.purrify.ca/sitemap.xml
 
 # Bing Webmaster Tools
-- Add site: https://purrify.ca
-- Submit sitemap: https://purrify.ca/sitemap.xml
+- Add site: https://www.purrify.ca
+- Submit sitemap: https://www.purrify.ca/sitemap.xml
 ```
 
 ### 2. **Monitor Indexing**
@@ -127,9 +127,9 @@ Search engines were only finding a handful of indexable pages because the websit
 ### Check Sitemap Accessibility
 ```bash
 # Test sitemap URLs
-curl https://purrify.ca/sitemap.xml
-curl https://purrify.ca/robots.txt
-curl https://purrify.ca/sitemap-0.xml
+curl https://www.purrify.ca/sitemap.xml
+curl https://www.purrify.ca/robots.txt
+curl https://www.purrify.ca/sitemap-0.xml
 ```
 
 ### Regenerate Sitemaps

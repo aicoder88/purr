@@ -176,7 +176,7 @@ export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': `https://purrify.ca/locations/${loc.id}`,
+    '@id': `https://www.purrify.ca/locations/${loc.id}`,
     name: BUSINESS_PROFILE.name,
     legalName: BUSINESS_PROFILE.legalName,
     description: BUSINESS_PROFILE.description,

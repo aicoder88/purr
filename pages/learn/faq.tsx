@@ -223,7 +223,7 @@ const FAQPage: NextPage = () => {
         pageData={{
           title: "Frequently Asked Questions - Everything About Purrify",
           description: "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
-          url: `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
+          url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
           faqs: faqItems.map(item => ({
             question: item.question,
             answer: item.answer

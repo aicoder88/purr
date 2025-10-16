@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { 
+import {
   User, 
   Calendar, 
   MapPin, 
@@ -18,9 +18,13 @@ import {
   Star,
   CheckCircle
 } from 'lucide-react';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 const CaseStudiesPage: NextPage = () => {
   const { locale } = useTranslation();
+  const canonicalPath = '/customers/case-studies';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   const caseStudies = [
     {
@@ -153,14 +157,14 @@ const CaseStudiesPage: NextPage = () => {
           content="Read detailed case studies of how Purrify transformed real customers' lives. See before and after results, cost savings, and life improvements." 
         />
         <meta name="keywords" content="Purrify case studies, customer success stories, before after results, cat litter odor solutions, testimonials" />
-        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
-        
+        <link rel="canonical" href={canonicalUrl} />
+
         {/* Open Graph */}
         <meta property="og:title" content="Customer Case Studies - Real Purrify Success Stories" />
         <meta property="og:description" content="Discover how Purrify transformed real customers' lives with detailed case studies showing before and after results." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/case-studies`} />
-        
+        <meta property="og:url" content={canonicalUrl} />
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -170,6 +174,7 @@ const CaseStudiesPage: NextPage = () => {
               "@type": "Article",
               "headline": "Customer Case Studies - Real Purrify Success Stories",
               "description": "Detailed case studies of how Purrify activated carbon litter additive transformed customers' lives.",
+              "url": canonicalUrl,
               "author": {
                 "@type": "Organization",
                 "name": "Purrify"
@@ -187,6 +192,10 @@ const CaseStudiesPage: NextPage = () => {
             })
           }}
         />
+
+        {languageAlternates.map(({ hrefLang, href }) => (
+          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
       </Head>
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

@@ -154,11 +154,6 @@ export default function Home() {
             rel: 'manifest',
             href: '/manifest.json',
           },
-          ...languageAlternates.map(({ hrefLang, href }) => ({
-            rel: 'alternate',
-            hrefLang,
-            href,
-          })),
           // Preload critical resources
           {
             rel: 'preload',

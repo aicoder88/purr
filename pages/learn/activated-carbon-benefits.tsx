@@ -1,13 +1,19 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function ActivatedCarbonBenefits() {
+  const { locale } = useTranslation();
   const pageTitle = 'Activated Carbon Litter Additive Benefits - Complete Science Guide';
   const pageDescription = 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination, safety, and why activated carbon is the best cat litter deodorizer.';
-  const canonicalUrl = 'https://purrify.ca/learn/activated-carbon-benefits';
+  const canonicalPath = '/learn/activated-carbon-benefits';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for science guide - different from other posts
   const heroImage = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Microscopic/scientific view
@@ -21,6 +27,7 @@ export default function ActivatedCarbonBenefits() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,
@@ -47,8 +54,8 @@ export default function ActivatedCarbonBenefits() {
       <ArticleSchema
         title={pageTitle}
         description={pageDescription}
-        path='/learn/activated-carbon-benefits'
-        locale='en'
+        path={canonicalPath}
+        locale={locale as 'en' | 'fr' | 'zh'}
         options={{
           category: 'Pet Care Education',
           keywords: ['activated carbon', 'cat litter additive', 'odor control', 'pet care', 'natural solutions'],

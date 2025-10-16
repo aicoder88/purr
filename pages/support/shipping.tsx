@@ -5,7 +5,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import { 
+import {
   Truck, 
   Clock, 
   // MapPin, 
@@ -21,9 +21,13 @@ import {
   // DollarSign
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 const ShippingPage: NextPage = () => {
   const { locale } = useTranslation();
+  const canonicalPath = '/support/shipping';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   const shippingOptions = [
     {
@@ -117,13 +121,16 @@ const ShippingPage: NextPage = () => {
           content="Learn about Purrify shipping options, delivery times, and costs. Fast shipping on orders $25+. Reliable delivery across Canada and international shipping available." 
         />
         <meta name="keywords" content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery" />
-        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
+        <link rel="canonical" href={canonicalUrl} />
+        {languageAlternates.map(({ hrefLang, href }) => (
+          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
         
         {/* Open Graph */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content="Fast and reliable Purrify delivery across Canada. Fast shipping on orders $25+. International shipping available." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`} />
+        <meta property="og:url" content={canonicalUrl} />
         
         {/* Structured Data */}
         <script

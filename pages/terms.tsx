@@ -1,10 +1,16 @@
 import Head from 'next/head';
+
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
+import { useTranslation } from '../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 
 export default function Terms() {
+  const { locale } = useTranslation();
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
-  const canonicalUrl = 'https://www.purrify.ca/terms';
+  const canonicalPath = '/terms';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
   
   return (
     <>
@@ -27,8 +33,11 @@ export default function Terms() {
         <meta property="twitter:description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
         <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
         
-        {/* Canonical Link */}
+        {/* Canonical & hreflang */}
         <link rel="canonical" href={canonicalUrl} />
+        {languageAlternates.map(({ hrefLang, href }) => (
+          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
       </Head>
 
       <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -45,7 +54,7 @@ export default function Terms() {
             
             <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 dark:text-gray-200">
               <p>
-                Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://purrify.ca website (the "Service") operated by {SITE_NAME} ("us", "we", or "our").
+                Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://www.purrify.ca website (the "Service") operated by {SITE_NAME} ("us", "we", or "our").
               </p>
               <p>
                 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.

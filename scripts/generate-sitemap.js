@@ -10,7 +10,7 @@ const glob = require('glob');
 const prettier = require('prettier');
 
 // Configuration
-const SITE_URL = 'https://purrify.ca';
+const SITE_URL = 'https://www.purrify.ca';
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const PAGES_DIR = path.join(process.cwd(), 'pages');
 const OUTPUT_FILE = path.join(PUBLIC_DIR, 'enhanced-sitemap.xml');

@@ -1,12 +1,14 @@
 import { NextSeo } from 'next-seo';
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { ArrowLeft, Star, Quote, Heart, Users, ChevronRight } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import type { MouseEvent } from 'react';
+import { ArrowLeft, Star, Quote, Heart, Users, ChevronRight } from 'lucide-react';
+
+import { Container } from '../../src/components/ui/container';
+import { Button } from '../../src/components/ui/button';
+import { SITE_NAME } from '../../src/lib/constants';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function TestimonialsPage() {
   const { t, locale } = useTranslation();
@@ -19,7 +21,9 @@ export default function TestimonialsPage() {
   
   const pageTitle = `Customer Testimonials - ${SITE_NAME} Reviews & Success Stories`;
   const pageDescription = "Read real customer testimonials and success stories from cat owners who've experienced Purrify's odor elimination power. See why 1,000+ trust Purrify.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/customers/testimonials`;
+  const canonicalPath = '/customers/testimonials';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   const categories = [
     { id: 'all', name: 'All Reviews', count: 127 },
@@ -161,6 +165,7 @@ export default function TestimonialsPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

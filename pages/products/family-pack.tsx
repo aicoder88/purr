@@ -1,11 +1,13 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
+
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import NextImage from '../../components/NextImage';
-import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -16,7 +18,9 @@ export default function FamilyPackPage() {
   
   const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`;
+  const canonicalPath = '/products/family-pack';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Family pack lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
@@ -56,6 +60,7 @@ export default function FamilyPackPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

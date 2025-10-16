@@ -11,9 +11,21 @@ interface TranslatedContent {
 export type OfferAvailability = 'InStock' | 'OutOfStock' | 'PreOrder';
 type LocaleCode = 'en' | 'fr' | 'zh';
 
+const DEFAULT_LOCALE: LocaleCode = 'en';
 const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh'];
+const LOCALE_HREFLANG_MAP: Record<LocaleCode, string> = {
+  en: 'en-CA',
+  fr: 'fr-CA',
+  zh: 'zh-CN',
+};
 const SCHEMA_ORG_BASE_URL = 'https://schema.org';
 const DEFAULT_PRICE_VALIDITY_DAYS = 365;
+const DEFAULT_META_DESCRIPTION_PADDING =
+  'Explore Purrify activated carbon technology that neutralizes tough litter box odors and keeps homes fresh.';
+const DEFAULT_META_TITLE_SUFFIX = ' | Purrify';
+const META_TITLE_MAX_LENGTH = 60;
+const META_DESCRIPTION_MIN_LENGTH = 110;
+const META_DESCRIPTION_MAX_LENGTH = 160;
 
 export const getPriceValidityDate = (validForDays: number = DEFAULT_PRICE_VALIDITY_DAYS) => {
   const validityDate = new Date();
@@ -86,7 +98,7 @@ export const normalizeLocale = (locale: string): LocaleCode => {
     return locale as LocaleCode;
   }
 
-  return 'en';
+  return DEFAULT_LOCALE;
 };
 
 export const getLocalizedUrl = (path: string, localeInput: string) => {
@@ -102,32 +114,31 @@ export const getLocalizedUrl = (path: string, localeInput: string) => {
   return `${baseUrl}${localePrefix}${normalizedPath}`;
 };
 
-export const buildLanguageAlternates = (canonicalPath: string) => {
+export type LanguageAlternate = {
+  locale: LocaleCode;
+  hrefLang: string;
+  href: string;
+};
+
+export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternate[] => {
   const normalizedPath = normalizeCanonicalPath(canonicalPath);
 
-  const buildHref = (locale: LocaleCode) => {
-    if (normalizedPath === '/') {
-      return getLocalizedUrl('/', locale);
-    }
+  const alternates = SUPPORTED_LOCALES.map(locale => ({
+    locale,
+    hrefLang: LOCALE_HREFLANG_MAP[locale],
+    href: getLocalizedUrl(normalizedPath, locale),
+  }));
 
-    return getLocalizedUrl(normalizedPath, locale);
-  };
+  const defaultHref = getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
 
-  const createAlternate = (hrefLang: string, href: string) => ({
-    hrefLang,
-    hreflang: hrefLang,
-    href,
-  });
-
-  const alternates = [
-    createAlternate('en-CA', buildHref('en')),
-    createAlternate('fr-CA', buildHref('fr')),
-    createAlternate('zh-CN', buildHref('zh')),
+  return [
+    ...alternates,
+    {
+      locale: DEFAULT_LOCALE,
+      hrefLang: 'x-default',
+      href: defaultHref,
+    },
   ];
-
-  alternates.push(createAlternate('x-default', buildHref('en')));
-
-  return alternates;
 };
 
 function normalizeCanonicalPath(path: string | undefined) {
@@ -151,6 +162,63 @@ export const getLocalizedContent = (content: TranslatedContent, localeInput: str
 export const getLocalizedKeywords = (localeInput: string): string[] => {
   const locale = normalizeLocale(localeInput);
   return SEO_TRANSLATIONS.keywords[locale] || SEO_TRANSLATIONS.keywords.en;
+};
+
+const appendEllipsis = (value: string) => {
+  const trimmed = value.trim();
+  return trimmed.endsWith('…') ? trimmed : `${trimmed}…`;
+};
+
+const ensureSentenceTermination = (value: string) => {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  return /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
+};
+
+export const normalizeMetaTitle = (
+  rawTitle: string | undefined,
+  fallback: string = `${SITE_NAME}${DEFAULT_META_TITLE_SUFFIX}`
+): string => {
+  const base = (rawTitle || fallback).trim();
+
+  if (!base) {
+    return fallback;
+  }
+
+  if (base.length <= META_TITLE_MAX_LENGTH) {
+    return base;
+  }
+
+  const truncated = base.slice(0, META_TITLE_MAX_LENGTH - 1).trimEnd();
+  return appendEllipsis(truncated);
+};
+
+export const normalizeMetaDescription = (
+  rawDescription: string | undefined,
+  fallback: string = DEFAULT_META_DESCRIPTION_PADDING
+): string => {
+  let description = (rawDescription || '').trim();
+
+  if (!description) {
+    description = fallback;
+  }
+
+  if (description.length < META_DESCRIPTION_MIN_LENGTH) {
+    const padding = ensureSentenceTermination(description);
+    const extended = `${padding} ${DEFAULT_META_DESCRIPTION_PADDING}`.trim();
+    description = extended;
+  }
+
+  if (description.length > META_DESCRIPTION_MAX_LENGTH) {
+    const truncated = description.slice(0, META_DESCRIPTION_MAX_LENGTH - 1).trimEnd();
+    return appendEllipsis(truncated);
+  }
+
+  return description;
 };
 
 // Generate comprehensive FAQ data for different locales

@@ -1,6 +1,11 @@
 import Head from 'next/head';
 import { useTranslation } from '@/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
+import {
+  buildLanguageAlternates,
+  getLocalizedUrl,
+  normalizeMetaDescription,
+  normalizeMetaTitle,
+} from '@/lib/seo-utils';
 
 interface LocalizedMetaProps {
   title?: string;
@@ -34,9 +39,14 @@ export const LocalizedMeta: React.FC<LocalizedMetaProps> = ({
   const defaultDescription = 'Premium activated carbon cat litter additive for superior odor control';
   const defaultKeywords = 'cat litter odor control, activated carbon cat litter, natural cat litter additive';
 
-  const finalTitle = title || `${siteTitle} - ${defaultDescription}`;
-  const finalDescription = description || t?.siteDescription || defaultDescription;
+  const titleSource = title || `${siteTitle} - ${defaultDescription}`;
+  const descriptionSource = description || t?.seo?.metaDescription || t?.siteDescription || defaultDescription;
+
+  const finalTitle = normalizeMetaTitle(titleSource, `${siteTitle} - ${defaultDescription}`);
+  const finalDescription = normalizeMetaDescription(descriptionSource, defaultDescription);
   const finalKeywords = keywords || t?.seo?.keywords || defaultKeywords;
+  const finalOgTitle = normalizeMetaTitle(ogTitle || finalTitle, finalTitle);
+  const finalOgDescription = normalizeMetaDescription(ogDescription || finalDescription, finalDescription);
 
   return (
     <Head>
@@ -53,15 +63,15 @@ export const LocalizedMeta: React.FC<LocalizedMetaProps> = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={ogTitle || finalTitle} />
-      <meta property="og:description" content={ogDescription || finalDescription} />
+      <meta property="og:title" content={finalOgTitle} />
+      <meta property="og:description" content={finalOgDescription} />
       <meta property="og:image" content={ogImage} />
       
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
-      <meta property="twitter:title" content={ogTitle || finalTitle} />
-      <meta property="twitter:description" content={ogDescription || finalDescription} />
+      <meta property="twitter:title" content={finalOgTitle} />
+      <meta property="twitter:description" content={finalOgDescription} />
       <meta property="twitter:image" content={ogImage} />
       
       {/* Structured Data */}

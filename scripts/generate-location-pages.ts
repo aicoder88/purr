@@ -460,7 +460,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
         additionalLinkTags={[
           {
             rel: 'canonical',
-            href: \`https://purrify.ca/locations/\${city.slug}\`,
+            href: \`https://www.purrify.ca/locations/\${city.slug}\`,
           },
         ]}
       />
@@ -474,7 +474,7 @@ export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPagePro
             '@type': 'LocalBusiness',
             name: \`Purrify - Cat Litter Odor Eliminator \${city.name}\`,
             description: \`Premium activated carbon cat litter additive available in \${city.name}, \${city.province}\`,
-            url: \`https://purrify.ca/locations/\${city.slug}\`,
+            url: \`https://www.purrify.ca/locations/\${city.slug}\`,
             address: {
               '@type': 'PostalAddress',
               addressLocality: '${city.name}',
@@ -1220,7 +1220,7 @@ async function generateSEOSitemap(totalPages: number) {
 ${CANADIAN_CITIES.flatMap(province => 
   province.cities.map(city => `
   <url>
-    <loc>https://purrify.ca/locations/${city.slug}</loc>
+    <loc>https://www.purrify.ca/locations/${city.slug}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1228,7 +1228,7 @@ ${CANADIAN_CITIES.flatMap(province =>
 ).join('')}
 ${CANADIAN_CITIES.map(province => `
   <url>
-    <loc>https://purrify.ca/locations/${province.slug}</loc>
+    <loc>https://www.purrify.ca/locations/${province.slug}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -1236,7 +1236,7 @@ ${CANADIAN_CITIES.map(province => `
 ).join('')}
 ${PROBLEM_SOLUTION_KEYWORDS.map(problem => `
   <url>
-    <loc>https://purrify.ca/solutions/${problem.problem}</loc>
+    <loc>https://www.purrify.ca/solutions/${problem.problem}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -1244,7 +1244,7 @@ ${PROBLEM_SOLUTION_KEYWORDS.map(problem => `
 ).join('')}
 ${COMPETITOR_COMPARISON_DATA.map(competitor => `
   <url>
-    <loc>https://purrify.ca/compare/${competitor.competitor}</loc>
+    <loc>https://www.purrify.ca/compare/${competitor.competitor}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -4,7 +4,7 @@ import { OptimizedImage } from '../src/components/performance/OptimizedImage';
 import { MONTREAL_STRUCTURED_DATA } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
-import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 
 export default function Montreal() {
   const { locale } = useTranslation();
@@ -17,7 +17,9 @@ export default function Montreal() {
     ? 'Trouvez le désodorisant pour litière de chat Purrify dans les boutiques d\'animaux indépendantes de Montréal. Charbon activé premium fabriqué au Canada. Emplacements, directions, prix.'
     : 'Find Purrify cat litter deodorizer at independent pet stores throughout Montreal. Premium activated carbon odor eliminator made in Canada. Store locations, directions, and pricing.';
     
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}montreal`;
+  const canonicalPath = '/montreal';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
 
@@ -113,6 +115,7 @@ export default function Montreal() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'website',
           url: canonicalUrl,

@@ -1,12 +1,18 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function UsingDeodorizersWithKittensLearn() {
+  const { locale } = useTranslation();
   const pageTitle = 'Using Cat Litter Deodorizers with Kittens: A Care Guide';
   const pageDescription = 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.';
-  const canonicalUrl = 'https://purrify.ca/learn/using-deodorizers-with-kittens';
+  const canonicalPath = '/learn/using-deodorizers-with-kittens';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for kitten safety guide - focused on young cats
   const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Adorable kitten
@@ -19,6 +25,7 @@ export default function UsingDeodorizersWithKittensLearn() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,

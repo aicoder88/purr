@@ -1,11 +1,17 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
+  const { locale } = useTranslation();
   const pageTitle = 'Activated Carbon vs Baking Soda Cat Litter Deodorizers: Complete Comparison';
   const pageDescription = 'Compare activated carbon vs baking soda cat litter deodorizers. Learn which technology eliminates odors better, lasts longer, and provides safer odor control for your cats.';
-  const canonicalUrl = 'https://purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers';
+  const canonicalPath = '/learn/activated-carbon-vs-baking-soda-deodorizers';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   return (
     <>
@@ -13,6 +19,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,
@@ -20,7 +27,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/activated-carbon-vs-baking-soda.jpg',
+              url: 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg',
               width: 1200,
               height: 630,
               alt: 'Side-by-side comparison of activated carbon vs baking soda cat deodorizer technology',

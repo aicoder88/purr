@@ -8,409 +8,409 @@
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
   <url>
-    <loc>https://purrify.ca/tos</loc>
+    <loc>https://www.purrify.ca/tos</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/thank-you</loc>
+    <loc>https://www.purrify.ca/thank-you</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/test</loc>
+    <loc>https://www.purrify.ca/test</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/terms</loc>
+    <loc>https://www.purrify.ca/terms</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/stockists</loc>
+    <loc>https://www.purrify.ca/stockists</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/reviews</loc>
+    <loc>https://www.purrify.ca/reviews</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/retailers</loc>
+    <loc>https://www.purrify.ca/retailers</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/privacy</loc>
+    <loc>https://www.purrify.ca/privacy</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/privacy-policy</loc>
+    <loc>https://www.purrify.ca/privacy-policy</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/offline</loc>
+    <loc>https://www.purrify.ca/offline</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/montreal</loc>
+    <loc>https://www.purrify.ca/montreal</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/invest</loc>
+    <loc>https://www.purrify.ca/invest</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/</loc>
+    <loc>https://www.purrify.ca/</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://purrify.ca/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://purrify.ca/fr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://purrify.ca/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.purrify.ca/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.purrify.ca/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.purrify.ca/" />
     <image:image>
-      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:loc>https://www.purrify.ca/purrify-logo.png</image:loc>
       <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://purrify.ca/free</loc>
+    <loc>https://www.purrify.ca/free</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/checkout</loc>
+    <loc>https://www.purrify.ca/checkout</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/case-studies</loc>
+    <loc>https://www.purrify.ca/case-studies</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/b2b</loc>
+    <loc>https://www.purrify.ca/b2b</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/404</loc>
+    <loc>https://www.purrify.ca/404</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/support/shipping</loc>
+    <loc>https://www.purrify.ca/support/shipping</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/support/contact</loc>
+    <loc>https://www.purrify.ca/support/contact</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/senior-cat-litter-solutions</loc>
+    <loc>https://www.purrify.ca/solutions/senior-cat-litter-solutions</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/natural-cat-litter-additive</loc>
+    <loc>https://www.purrify.ca/solutions/natural-cat-litter-additive</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/multiple-cats-odor-control</loc>
+    <loc>https://www.purrify.ca/solutions/multiple-cats-odor-control</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/litter-box-smell-elimination</loc>
+    <loc>https://www.purrify.ca/solutions/litter-box-smell-elimination</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/apartment-cat-smell-solution</loc>
+    <loc>https://www.purrify.ca/solutions/apartment-cat-smell-solution</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/solutions/ammonia-smell-cat-litter</loc>
+    <loc>https://www.purrify.ca/solutions/ammonia-smell-cat-litter</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/products/trial-size</loc>
+    <loc>https://www.purrify.ca/products/trial-size</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
     <image:image>
-      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:loc>https://www.purrify.ca/purrify-logo.png</image:loc>
       <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://purrify.ca/products/standard</loc>
+    <loc>https://www.purrify.ca/products/standard</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
     <image:image>
-      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:loc>https://www.purrify.ca/purrify-logo.png</image:loc>
       <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://purrify.ca/products/family-pack</loc>
+    <loc>https://www.purrify.ca/products/family-pack</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
     <image:image>
-      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:loc>https://www.purrify.ca/purrify-logo.png</image:loc>
       <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://purrify.ca/products/compare</loc>
+    <loc>https://www.purrify.ca/products/compare</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
     <image:image>
-      <image:loc>https://purrify.ca/purrify-logo.png</image:loc>
+      <image:loc>https://www.purrify.ca/purrify-logo.png</image:loc>
       <image:title>Purrify - Activated Carbon Cat Litter Additive</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/vancouver</loc>
+    <loc>https://www.purrify.ca/locations/vancouver</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/toronto</loc>
+    <loc>https://www.purrify.ca/locations/toronto</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/quebec-city</loc>
+    <loc>https://www.purrify.ca/locations/quebec-city</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/ottawa</loc>
+    <loc>https://www.purrify.ca/locations/ottawa</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/montreal</loc>
+    <loc>https://www.purrify.ca/locations/montreal</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/hamilton</loc>
+    <loc>https://www.purrify.ca/locations/hamilton</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/locations/calgary</loc>
+    <loc>https://www.purrify.ca/locations/calgary</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/using-deodorizers-with-kittens</loc>
+    <loc>https://www.purrify.ca/learn/using-deodorizers-with-kittens</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/science</loc>
+    <loc>https://www.purrify.ca/learn/science</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/safety</loc>
+    <loc>https://www.purrify.ca/learn/safety</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/how-to-use-deodorizer</loc>
+    <loc>https://www.purrify.ca/learn/how-to-use-deodorizer</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/how-it-works</loc>
+    <loc>https://www.purrify.ca/learn/how-it-works</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/faq</loc>
+    <loc>https://www.purrify.ca/learn/faq</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/cat-litter-guide</loc>
+    <loc>https://www.purrify.ca/learn/cat-litter-guide</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers</loc>
+    <loc>https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/learn/activated-carbon-benefits</loc>
+    <loc>https://www.purrify.ca/learn/activated-carbon-benefits</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/demo/stage5-features</loc>
+    <loc>https://www.purrify.ca/demo/stage5-features</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/customers/testimonials</loc>
+    <loc>https://www.purrify.ca/customers/testimonials</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/customers/case-studies</loc>
+    <loc>https://www.purrify.ca/customers/case-studies</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/customer/referrals</loc>
+    <loc>https://www.purrify.ca/customer/referrals</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/customer/portal</loc>
+    <loc>https://www.purrify.ca/customer/portal</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/using-deodorizers-with-kittens</loc>
+    <loc>https://www.purrify.ca/blog/using-deodorizers-with-kittens</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/tried-every-litter-deodorizer-90-days-results</loc>
+    <loc>https://www.purrify.ca/blog/tried-every-litter-deodorizer-90-days-results</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/strong-cat-urine-smell-litter-box</loc>
+    <loc>https://www.purrify.ca/blog/strong-cat-urine-smell-litter-box</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/multi-cat-litter-deodorizer-guide</loc>
+    <loc>https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/</loc>
+    <loc>https://www.purrify.ca/blog/</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://purrify.ca/blog/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://purrify.ca/blog/fr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://purrify.ca/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.purrify.ca/blog/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.purrify.ca/blog/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.purrify.ca/blog/" />
   </url>
   <url>
-    <loc>https://purrify.ca/blog/how-to-use-cat-litter-deodorizer</loc>
-    <lastmod>2025-10-11T16:04:28.915Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://purrify.ca/blog/house-smells-like-cat-litter-solutions</loc>
+    <loc>https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/best-litter-odor-remover-small-apartments</loc>
+    <loc>https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/activated-carbon-vs-baking-soda-comparison</loc>
+    <loc>https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/blog/activated-carbon-litter-additive-benefits</loc>
+    <loc>https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/admin/referral-analytics</loc>
+    <loc>https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits</loc>
+    <lastmod>2025-10-11T16:04:28.915Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/admin/referral-analytics</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://purrify.ca/about/our-story</loc>
+    <loc>https://www.purrify.ca/about/our-story</loc>
     <lastmod>2025-10-11T16:04:28.915Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

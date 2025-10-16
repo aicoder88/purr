@@ -5,7 +5,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
-import { 
+import {
   CheckCircle, 
   XCircle, 
   Clock, 
@@ -18,9 +18,13 @@ import {
   Star
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 const CatLitterGuidePage: NextPage = () => {
   const { locale } = useTranslation();
+  const canonicalPath = '/learn/cat-litter-guide';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for cat litter guide - different from all other posts
   const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80'; // Modern litter box setup
@@ -116,19 +120,20 @@ const CatLitterGuidePage: NextPage = () => {
           content="Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer." 
         />
         <meta name="keywords" content="cat litter guide, litter types, cat care, odor control, litter maintenance, Purrify" />
-        <link rel="canonical" href={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
+        <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
         <meta property="og:title" content="Complete Cat Litter Guide - Types, Tips & Best Practices" />
         <meta property="og:description" content="Everything you need to know about cat litter - from choosing the right type to maintenance tips and problem-solving." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={heroImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Complete guide to cat litter types and maintenance tips" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:url" content={canonicalUrl} />
         
         {/* Structured Data */}
         <script
@@ -139,6 +144,7 @@ const CatLitterGuidePage: NextPage = () => {
               "@type": "Article",
               "headline": "Complete Cat Litter Guide - Types, Tips & Best Practices",
               "description": "Comprehensive guide to cat litter types, maintenance tips, and solving common problems.",
+              "url": canonicalUrl,
               "author": {
                 "@type": "Organization",
                 "name": "Purrify"
@@ -162,6 +168,10 @@ const CatLitterGuidePage: NextPage = () => {
             })
           }}
         />
+
+        {languageAlternates.map(({ hrefLang, href }) => (
+          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
       </Head>
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

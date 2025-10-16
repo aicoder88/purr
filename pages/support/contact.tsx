@@ -1,13 +1,15 @@
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+import { useState } from 'react';
+import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
+
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { Input } from '../../src/components/ui/input';
 import { Textarea } from '../../src/components/ui/textarea';
-import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import Link from 'next/link';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function ContactPage() {
@@ -20,7 +22,9 @@ export default function ContactPage() {
   
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
   const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/contact`;
+  const canonicalPath = '/support/contact';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -137,6 +141,7 @@ export default function ContactPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

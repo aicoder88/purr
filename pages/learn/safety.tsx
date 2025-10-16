@@ -13,7 +13,7 @@ export default function SafetyInformationPage() {
 
   const pageTitle = `${SITE_NAME} - Safety Information & Technical Specifications`;
   const pageDescription = "Comprehensive technical datasheet and safety information for Purrify™ Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/safety`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/safety`;
 
   const specifications = [
     { property: "Iodine Number", value: "≥ 1000 mg/g" },
@@ -92,7 +92,7 @@ export default function SafetyInformationPage() {
           type: 'article',
           images: [
             {
-              url: 'https://purrify.ca/optimized/140g.webp',
+              url: 'https://www.purrify.ca/optimized/140g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify Activated Carbon Technical Specifications',

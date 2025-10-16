@@ -64,7 +64,7 @@ The integration allows you to:
    - Set conditions to match your WordPress API endpoints
    - Add headers to allow cross-origin requests:
      ```
-     Access-Control-Allow-Origin: https://purrify.ca
+     Access-Control-Allow-Origin: https://www.purrify.ca
      Access-Control-Allow-Methods: GET, OPTIONS
      Access-Control-Allow-Headers: Content-Type
      ```

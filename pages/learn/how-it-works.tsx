@@ -14,7 +14,7 @@ export default function HowItWorksPage() {
   
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`;
 
   const sciencePoints = [
     {
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
           dateModified: new Date().toISOString(),
           wordCount: 2200,
           readingTime: 10,
-          image: 'https://purrify.ca/images/how-purrify-works-science.jpg'
+          image: 'https://www.purrify.ca/images/how-purrify-works-science.jpg'
         }}
       />
 

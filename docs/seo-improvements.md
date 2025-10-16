@@ -169,10 +169,10 @@ npm run analyze
 
 ```bash
 # Run Lighthouse audit
-npx lighthouse https://purrify.ca --output=html --output-path=./lighthouse-report.html
+npx lighthouse https://www.purrify.ca --output=html --output-path=./lighthouse-report.html
 
 # Check Core Web Vitals
-npx lighthouse https://purrify.ca --only-categories=performance
+npx lighthouse https://www.purrify.ca --only-categories=performance
 ```
 
 ### 3. Validate Structured Data

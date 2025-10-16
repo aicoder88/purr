@@ -6,7 +6,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 export default function PurrifyVsArmHammer() {
   const pageTitle = 'Purrify vs Arm & Hammer Cat Deodorizer - Honest Comparison Review';
   const pageDescription = 'Compare Purrify vs Arm & Hammer cat litter deodorizer. Detailed review of ingredients, effectiveness, price, and safety. See which cat odor eliminator wins.';
-  const canonicalUrl = 'https://purrify.ca/learn/purrify-vs-arm-hammer';
+  const canonicalUrl = 'https://www.purrify.ca/learn/purrify-vs-arm-hammer';
 
   return (
     <Layout>
@@ -21,7 +21,7 @@ export default function PurrifyVsArmHammer() {
           description: pageDescription,
           images: [
             {
-              url: 'https://purrify.ca/images/purrify-vs-arm-hammer.jpg',
+              url: 'https://www.purrify.ca/images/purrify-vs-arm-hammer.jpg',
               width: 1200,
               height: 630,
               alt: 'Side-by-side comparison of Purrify vs Arm & Hammer cat deodorizer',

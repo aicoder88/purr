@@ -1,17 +1,14 @@
 // Advanced Sitemap Generation for Purrify
 import fs from 'fs';
 import path from 'path';
-import { buildLanguageAlternates, getLocalizedUrl } from './seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, LanguageAlternate } from './seo-utils';
 
 interface SitemapUrl {
   loc: string;
   lastmod?: string;
   changefreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
   priority?: number;
-  alternates?: Array<{
-    hreflang: string;
-    href: string;
-  }>;
+  alternates?: LanguageAlternate[];
 }
 
 interface SitemapConfig {
@@ -288,7 +285,7 @@ class SitemapGenerator {
       // Add hreflang alternates
       if (url.alternates && url.alternates.length > 0) {
         url.alternates.forEach(alternate => {
-          xml += `    <xhtml:link rel="alternate" hreflang="${alternate.hreflang}" href="${this.escapeXml(alternate.href)}" />\n`;
+          xml += `    <xhtml:link rel="alternate" hreflang="${alternate.hrefLang}" href="${this.escapeXml(alternate.href)}" />\n`;
         });
       }
       

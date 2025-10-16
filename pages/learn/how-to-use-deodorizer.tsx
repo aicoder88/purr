@@ -1,12 +1,18 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { useTranslation } from '../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function HowToUseDeodorizer() {
+  const { locale } = useTranslation();
   const pageTitle = 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide';
   const pageDescription = 'Learn how to use cat litter deodorizer additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control effectiveness.';
-  const canonicalUrl = 'https://www.purrify.ca/learn/how-to-use-deodorizer';
+  const canonicalPath = '/learn/how-to-use-deodorizer';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for how-to guide
   const heroImage = 'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80'; // Cat owner using litter box
@@ -20,6 +26,7 @@ export default function HowToUseDeodorizer() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,

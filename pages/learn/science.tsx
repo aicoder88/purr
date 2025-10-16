@@ -14,7 +14,7 @@ export default function SciencePage() {
   
   const pageTitle = `The Science Behind ${SITE_NAME} - Activated Carbon Technology`;
   const pageDescription = "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";
-  const canonicalUrl = `https://purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
 
   const scienceFacts = [
     {
@@ -75,7 +75,7 @@ export default function SciencePage() {
           type: 'article',
           images: [
             {
-              url: 'https://purrify.ca/optimized/science-hero.webp',
+              url: 'https://www.purrify.ca/optimized/science-hero.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify Activated Carbon Science',

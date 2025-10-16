@@ -1,11 +1,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Container } from '../src/components/ui/container';
-import { SITE_NAME } from '../src/lib/constants';
 import Link from 'next/link';
 import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Home, Cat } from 'lucide-react';
 
+import { Container } from '../src/components/ui/container';
+import { SITE_NAME } from '../src/lib/constants';
+import { useTranslation } from '../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
+
 export default function CaseStudies() {
+  const { locale } = useTranslation();
+  const canonicalPath = '/case-studies';
+  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
+  const languageAlternates = buildLanguageAlternates(canonicalPath);
+
   const caseStudies = [
     {
       id: 1,
@@ -140,7 +148,7 @@ export default function CaseStudies() {
         <meta property="og:title" content="Success Stories - Real Customer Results" />
         <meta property="og:description" content="See detailed case studies showing how Purrify transformed homes across Canada with natural odor elimination." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.purrify.ca/case-studies" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         
         {/* Twitter */}
@@ -148,10 +156,16 @@ export default function CaseStudies() {
         <meta name="twitter:title" content="Success Stories - Real Customer Results" />
         <meta name="twitter:description" content="Detailed success stories showing measurable results from Canadian cat owners." />
         <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-        
+        <meta name="twitter:url" content={canonicalUrl} />
+
         {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/case-studies" />
-        
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Alternate locales */}
+        {languageAlternates.map(({ hrefLang, href }) => (
+          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
+
         {/* Schema.org structured data */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -159,6 +173,7 @@ export default function CaseStudies() {
             "@type": "CollectionPage",
             "name": "Purrify Customer Case Studies",
             "description": "Detailed success stories from Purrify customers across Canada",
+            "url": canonicalUrl,
             "mainEntity": caseStudies.map(study => ({
               "@type": "Article",
               "headline": study.title,

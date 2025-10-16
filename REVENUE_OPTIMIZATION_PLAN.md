@@ -128,7 +128,7 @@ const productSchema = {
   'video': {
     '@type': 'VideoObject',
     'name': 'How Purrify Eliminates Cat Litter Odors',
-    'url': 'https://purrify.ca/videos/how-it-works.mp4'
+    'url': 'https://www.purrify.ca/videos/how-it-works.mp4'
   }
 };
 ```

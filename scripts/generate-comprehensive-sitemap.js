@@ -40,7 +40,7 @@ const blogPosts = [
 ];
 
 // Generate XML sitemap
-function generateSitemapXML(pages, baseUrl = 'https://purrify.ca') {
+function generateSitemapXML(pages, baseUrl = 'https://www.purrify.ca') {
   const now = new Date().toISOString();
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -83,7 +83,7 @@ function generateSitemapXML(pages, baseUrl = 'https://purrify.ca') {
 }
 
 // Generate sitemap index
-function generateSitemapIndex(baseUrl = 'https://purrify.ca') {
+function generateSitemapIndex(baseUrl = 'https://www.purrify.ca') {
   const now = new Date().toISOString();
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -115,7 +115,7 @@ function generateSitemapIndex(baseUrl = 'https://purrify.ca') {
 }
 
 // Generate blog-specific sitemap
-function generateBlogSitemap(baseUrl = 'https://purrify.ca') {
+function generateBlogSitemap(baseUrl = 'https://www.purrify.ca') {
   const now = new Date().toISOString();
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -136,7 +136,7 @@ function generateBlogSitemap(baseUrl = 'https://purrify.ca') {
 }
 
 // Generate product-specific sitemap
-function generateProductSitemap(baseUrl = 'https://purrify.ca') {
+function generateProductSitemap(baseUrl = 'https://www.purrify.ca') {
   const now = new Date().toISOString();
   
   const products = [
@@ -182,7 +182,7 @@ fs.writeFileSync(path.join(publicDir, 'sitemap-products.xml'), generateProductSi
 console.log('✅ Generated sitemap-products.xml');
 
 // Create a comprehensive sitemap.txt for easy reading
-const sitemapTxt = pages.map(page => `https://purrify.ca${page.url}`).join('\n');
+const sitemapTxt = pages.map(page => `https://www.purrify.ca${page.url}`).join('\n');
 fs.writeFileSync(path.join(publicDir, 'sitemap.txt'), sitemapTxt);
 console.log('✅ Generated sitemap.txt');
 
@@ -194,11 +194,11 @@ console.log("- Product pages: 3");
 console.log(`- Total URLs: ${pages.length + blogPosts.length + 3}`);
 
 console.log('\n🔗 Sitemap URLs:');
-console.log('- https://purrify.ca/sitemap.xml (Main sitemap)');
-console.log('- https://purrify.ca/sitemap-index.xml (Sitemap index)');
-console.log('- https://purrify.ca/sitemap-blog.xml (Blog sitemap)');
-console.log('- https://purrify.ca/sitemap-products.xml (Product sitemap)');
-console.log('- https://purrify.ca/robots.txt (Robots file)');
+console.log('- https://www.purrify.ca/sitemap.xml (Main sitemap)');
+console.log('- https://www.purrify.ca/sitemap-index.xml (Sitemap index)');
+console.log('- https://www.purrify.ca/sitemap-blog.xml (Blog sitemap)');
+console.log('- https://www.purrify.ca/sitemap-products.xml (Product sitemap)');
+console.log('- https://www.purrify.ca/robots.txt (Robots file)');
 
 console.log('\n📝 Next steps:');
 console.log('1. Submit sitemap to Google Search Console');

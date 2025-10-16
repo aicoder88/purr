@@ -1,12 +1,43 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from 'next/document';
 import Script from 'next/script';
 import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
 
-export default function Document() {
-  const enableGtm = process.env.NODE_ENV === 'production';
-  return (
-    <Html lang="en">
-      <Head>
+const LOCALE_TO_LANG: Record<string, string> = {
+  en: 'en-CA',
+  fr: 'fr-CA',
+  zh: 'zh-CN',
+};
+
+interface PurrifyDocumentProps extends DocumentInitialProps {
+  locale?: string;
+}
+
+class PurrifyDocument extends Document<PurrifyDocumentProps> {
+  static async getInitialProps(ctx: DocumentContext): Promise<PurrifyDocumentProps> {
+    const initialProps = await Document.getInitialProps(ctx);
+    const activeLocale = ctx.locale ?? ctx.defaultLocale ?? 'en';
+
+    return {
+      ...initialProps,
+      locale: activeLocale,
+    };
+  }
+
+  render() {
+    const enableGtm = process.env.NODE_ENV === 'production';
+    const localeKey = this.props.locale ?? 'en';
+    const htmlLang = LOCALE_TO_LANG[localeKey] ?? localeKey;
+
+    return (
+      <Html lang={htmlLang}>
+        <Head>
         {/* Self-host fonts via next/font; remove external font CSS/preconnect to avoid blocking */}
         
         {/* Remove global preloads - each page will preload what it needs */}
@@ -32,8 +63,8 @@ export default function Document() {
             }}
           />
         )}
-      </Head>
-      <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
+        </Head>
+        <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
         {/* Google Tag Manager (noscript) */}
         {enableGtm && (
           <noscript>
@@ -63,7 +94,10 @@ export default function Document() {
         
         {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
         {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
-      </body>
-    </Html>
-  );
+        </body>
+      </Html>
+    );
+  }
 }
+
+export default PurrifyDocument;
