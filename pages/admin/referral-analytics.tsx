@@ -22,6 +22,7 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
     revenueToday: 0,
     systemUptime: '99.9%'
   });
+  const canonicalUrl = 'https://www.purrify.ca/admin/referral-analytics';
 
   // Mock real-time updates
   useEffect(() => {
@@ -43,6 +44,12 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
         <NextSeo
           title={`Access Denied - ${SITE_NAME}`}
           description="Administrative access required"
+          canonical={canonicalUrl}
+          openGraph={{
+            title: `Access Denied - ${SITE_NAME}`,
+            description: 'Administrative access required',
+            url: canonicalUrl,
+          }}
           noindex
         />
         <Container className="py-16">
@@ -70,6 +77,12 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
       <NextSeo
         title={`Referral Analytics Dashboard - ${SITE_NAME}`}
         description="Comprehensive analytics and insights for the referral program"
+        canonical={canonicalUrl}
+        openGraph={{
+          title: `Referral Analytics Dashboard - ${SITE_NAME}`,
+          description: 'Comprehensive analytics and insights for the referral program',
+          url: canonicalUrl,
+        }}
         noindex
       />
 

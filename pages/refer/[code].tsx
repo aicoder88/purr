@@ -93,10 +93,21 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
     ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally $6.99) and see why they love this cat litter deodorizer.`
     : 'This referral code is not valid or has expired.';
 
+  const canonicalUrl = `https://www.purrify.ca/refer/${code}`;
+
   if (!referralData.isValid) {
     return (
       <>
-        <NextSeo title={pageTitle} description={pageDescription} />
+        <NextSeo
+          title={pageTitle}
+          description={pageDescription}
+          canonical={canonicalUrl}
+          openGraph={{
+            title: pageTitle,
+            description: pageDescription,
+            url: canonicalUrl,
+          }}
+        />
         <Container className="py-16">
           <div className="text-center max-w-2xl mx-auto">
             <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -127,9 +138,11 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
       <NextSeo
         title={pageTitle}
         description={pageDescription}
+        canonical={canonicalUrl}
         openGraph={{
           title: pageTitle,
           description: pageDescription,
+          url: canonicalUrl,
           images: [
             {
               url: 'https://www.purrify.ca/optimized/20g.webp',

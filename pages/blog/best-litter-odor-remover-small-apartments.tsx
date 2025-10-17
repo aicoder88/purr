@@ -503,7 +503,7 @@ export default function BestForSmallApartments() {
                     <strong>Cost-Effective:</strong> Reduces need for other air freshening products
                   </div>
                 </div>
-                <Link href="/products" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
+                <Link href="/products/compare" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
                   Shop Apartment-Perfect Sizes →
                 </Link>
               </div>
@@ -519,7 +519,7 @@ export default function BestForSmallApartments() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, successful apartment odor control is about consistency and the right products. 
-                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
+                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
                 Start with Purrify's compact 12g size</Link> and experience how professional-grade 
                 odor control can transform your small space living experience.
               </p>

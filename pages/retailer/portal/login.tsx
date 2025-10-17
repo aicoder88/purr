@@ -40,6 +40,7 @@ export default function RetailerLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const canonicalUrl = 'https://www.purrify.ca/retailer/portal/login';
 
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: '',
@@ -178,6 +179,12 @@ export default function RetailerLoginPage() {
       <NextSeo
         title="Retailer Portal Login - Purrify"
         description="Access your wholesale account and manage orders"
+        canonical={canonicalUrl}
+        openGraph={{
+          title: 'Retailer Portal Login - Purrify',
+          description: 'Access your wholesale account and manage orders',
+          url: canonicalUrl,
+        }}
         noindex
         nofollow
       />

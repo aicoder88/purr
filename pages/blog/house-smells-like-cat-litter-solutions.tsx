@@ -357,7 +357,7 @@ export default function HouseSmellsLikeCatLitter() {
                   Simply sprinkle it in your litter box to eliminate odors for up to 7 days. Made from premium
                   coconut shell carbon, it's the same technology used in water and air filters.
                 </p>
-                <Link href="/products" className="inline-block bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
+                <Link href="/products/compare" className="inline-block bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
                   Try Purrify Risk-Free →
                 </Link>
               </div>
@@ -387,7 +387,7 @@ export default function HouseSmellsLikeCatLitter() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to transform your home's air quality?
-                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Try Purrify's activated carbon additive</Link>
+                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Try Purrify's activated carbon additive</Link>
                 and experience the difference that scientific odor control can make.
               </p>
             </div>

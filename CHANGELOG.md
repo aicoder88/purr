@@ -201,7 +201,7 @@ This file logs all changes, fixes, and improvements made to the codebase for eas
 - `src/data/blog-posts.ts`:
   - Line 26: Changed title from "Purrify vs Arm & Hammer: The Ultimate Cat Litter Additive Comparison"
   - Line 27: To "Activated Carbon vs Baking Soda Cat Litter Additives: Complete Comparison"
-  - Line 31: Updated link from "/blog/purrify-vs-arm-hammer" to "/blog/activated-carbon-vs-baking-soda-additives"
+  - Line 31: Updated link from "/blog/purrify-vs-arm-hammer" to "/blog/activated-carbon-vs-baking-soda-comparison"
 
 - `pages/case-studies.tsx`:
   - Line 402: Updated link reference to new URL

@@ -27,6 +27,7 @@ export default function CustomerReferralsPage({
   const [shareUrl, setShareUrl] = useState<string>('');
   const [isGeneratingCode, setIsGeneratingCode] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
+  const canonicalUrl = 'https://www.purrify.ca/customer/referrals';
 
   useEffect(() => {
     // Check if user already has a referral code
@@ -79,6 +80,12 @@ export default function CustomerReferralsPage({
         <NextSeo
           title="Create Your Referral Code - Purrify"
           description="Share Purrify with friends and earn rewards for every successful referral!"
+          canonical={canonicalUrl}
+          openGraph={{
+            title: 'Create Your Referral Code - Purrify',
+            description: 'Share Purrify with friends and earn rewards for every successful referral!',
+            url: canonicalUrl,
+          }}
         />
 
         <Container className="py-16">
@@ -222,6 +229,12 @@ export default function CustomerReferralsPage({
       <NextSeo
         title="Your Referral Dashboard - Purrify"
         description="Track your referral performance, manage your rewards, and share Purrify with friends."
+        canonical={canonicalUrl}
+        openGraph={{
+          title: 'Your Referral Dashboard - Purrify',
+          description: 'Track your referral performance, manage your rewards, and share Purrify with friends.',
+          url: canonicalUrl,
+        }}
       />
 
       <Container className="py-8">

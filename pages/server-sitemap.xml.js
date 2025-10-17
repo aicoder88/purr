@@ -1,15 +1,33 @@
+import { sampleBlogPosts } from '../src/data/blog-posts';
+
 export const getServerSideProps = async ({ res }) => {
-  // Fetch data from external API
-  const response = await fetch('https://www.purrify.ca/api/blog-posts');
-  const posts = await response.json();
+  let posts = sampleBlogPosts;
+
+  try {
+    const response = await fetch('https://www.purrify.ca/api/blog-posts');
+
+    if (!response.ok) {
+      console.error(`Failed to fetch blog posts for sitemap: ${response.status}`);
+    } else {
+      const json = await response.json();
+
+      if (Array.isArray(json) && json.length > 0) {
+        posts = json;
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching blog posts for sitemap', error);
+  }
 
   // Generate dynamic sitemap fields from blog posts
-  const fields = posts.map((post) => ({
-    loc: `https://www.purrify.ca${post.link}`,
-    lastmod: new Date().toISOString(),
-    changefreq: 'weekly',
-    priority: 0.8,
-  }));
+  const blogFields = posts
+    .filter((post) => post && typeof post.link === 'string')
+    .map((post) => ({
+      loc: `https://www.purrify.ca${post.link}`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.8,
+    }));
 
   // Add product pages
   const productFields = [
@@ -19,7 +37,7 @@ export const getServerSideProps = async ({ res }) => {
   ];
 
   // Combine all fields
-  const allFields = [...fields, ...productFields];
+  const allFields = [...blogFields, ...productFields];
 
   const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

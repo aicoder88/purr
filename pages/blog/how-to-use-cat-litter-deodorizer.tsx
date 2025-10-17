@@ -373,7 +373,7 @@ export default function HowToUseLitterDeodorizer() {
                   and maximum effectiveness. Our fine granules distribute evenly and provide up to 7 days of 
                   superior odor control.
                 </p>
-                <Link href="/products" className="inline-block bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 dark:hover:bg-[#FF6B6B]/90 transition-colors">
+                <Link href="/products/compare" className="inline-block bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 dark:hover:bg-[#FF6B6B]/90 transition-colors">
                   Shop Purrify Products →
                 </Link>
               </div>
@@ -415,7 +415,7 @@ export default function HowToUseLitterDeodorizer() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, consistency is key. Regular application and proper technique will give you 
-                the best results. <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
+                the best results. <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
                 Try Purrify today</Link> and experience the difference that proper application can make!
               </p>
             </div>

@@ -286,8 +286,8 @@ export default function Reviews() {
                   and see why it's Canada's most trusted natural cat litter deodorizer.
                 </p>
                 <div className="space-x-4">
-                  <Link 
-                    href="/products" 
+                <Link 
+                    href="/products/compare" 
                     className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Now
@@ -306,7 +306,7 @@ export default function Reviews() {
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
               <div className="grid md:grid-cols-4 gap-4">
-                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares</p>
                 </Link>

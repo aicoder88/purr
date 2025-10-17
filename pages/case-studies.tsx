@@ -199,8 +199,6 @@ export default function CaseStudies() {
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
                 <li>/</li>
-                <li><Link href="/customers" className="hover:text-[#FF3131]">Customers</Link></li>
-                <li>/</li>
                 <li className="text-[#FF3131]">Case Studies</li>
               </ol>
             </nav>
@@ -384,7 +382,7 @@ export default function CaseStudies() {
                 </p>
                 <div className="space-x-4">
                   <Link 
-                    href="/products" 
+                    href="/products/compare" 
                     className="inline-flex items-center bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Purrify
@@ -414,7 +412,7 @@ export default function CaseStudies() {
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>
                 </Link>
-                <Link href="/blog/activated-carbon-vs-baking-soda-additives" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <TrendingUp className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify outperforms competitors</p>

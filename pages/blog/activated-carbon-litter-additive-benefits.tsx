@@ -386,7 +386,7 @@ export default function ActivatedCarbonBenefits() {
                   providing superior odor elimination that lasts up to 7 days. Our fragrance-free 
                   formula uses the same type of activated carbon found in many water and air filters.
                 </p>
-                <Link href="/products" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
+                <Link href="/products/compare" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
                   Shop Purrify Products →
                 </Link>
               </div>
@@ -403,7 +403,7 @@ export default function ActivatedCarbonBenefits() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience the difference that science-backed odor control can make? 
-                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Explore our Purrify products</Link> 
+                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Explore our Purrify products</Link> 
                 and discover why 1,000+ cat owners trust activated carbon for superior litter box freshness.
               </p>
             </div>

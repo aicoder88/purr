@@ -1206,7 +1206,7 @@ export default function Montreal() {
                 {locale === 'fr' ? 'Trouver le Magasin le Plus Près' : 'Find Nearest Store'}
               </Link>
               <Link 
-                href="/products" 
+                href="/products/compare" 
                 className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:bg-blue-900/20 transition-colors"
               >
                 {locale === 'fr' ? 'Voir Tous les Produits' : 'View All Products'}

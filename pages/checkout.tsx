@@ -62,6 +62,7 @@ const CheckoutPage: NextPage = () => {
   const [referralCode, setReferralCode] = useState('');
   const [referralStatus, setReferralStatus] = useState<'idle' | 'validating' | 'valid' | 'invalid'>('idle');
   const [referralMessage, setReferralMessage] = useState('');
+  const canonicalUrl = 'https://www.purrify.ca/checkout';
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -704,6 +705,12 @@ const CheckoutPage: NextPage = () => {
       <NextSeo
         title="Secure Checkout - Complete Your Purrify Order"
         description="Fast and secure checkout for your Purrify cat litter deodorizer. Complete your order with trusted payment options and fast shipping across Canada."
+        canonical={canonicalUrl}
+        openGraph={{
+          title: 'Secure Checkout - Complete Your Purrify Order',
+          description: 'Fast and secure checkout for your Purrify cat litter deodorizer. Complete your order with trusted payment options and fast shipping across Canada.',
+          url: canonicalUrl,
+        }}
       />
       <Container>
         <PurchaseNotification />

@@ -24,10 +24,20 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
   const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
   const seoTitle = `Cat Litter Odor Control - ${displayName} (${province.code}) | Purrify`;
   const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Fast shipping across the province with reliable delivery.`;
+  const canonicalUrl = `https://www.purrify.ca/locations/province/${province.slug}`;
 
   return (
     <>
-      <NextSeo title={seoTitle} description={seoDescription} />
+      <NextSeo
+        title={seoTitle}
+        description={seoDescription}
+        canonical={canonicalUrl}
+        openGraph={{
+          title: seoTitle,
+          description: seoDescription,
+          url: canonicalUrl,
+        }}
+      />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
         <section className="py-20 px-4">

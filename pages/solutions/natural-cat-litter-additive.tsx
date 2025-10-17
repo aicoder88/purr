@@ -5,6 +5,7 @@ import NextImage from '../../components/NextImage';
 export default function naturalcatlitteradditivePage() {
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
   const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';
+  const canonicalUrl = 'https://www.purrify.ca/solutions/natural-cat-litter-additive';
 
   // Natural cat litter additive images
   const heroImage = 'https://images.unsplash.com/photo-1517080727870-780609473738?auto=format&fit=crop&w=1600&q=80'; // Coconut shells natural
@@ -17,9 +18,11 @@ export default function naturalcatlitteradditivePage() {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
+        canonical={canonicalUrl}
         openGraph={{
           title: seoTitle,
           description: seoDescription,
+          url: canonicalUrl,
           images: [
             {
               url: heroImage,
