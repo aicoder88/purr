@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // High-quality images for summer heat, odor problems, and fresh solutions
-const heroImage = 'https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=1600&q=80';
-const heroImageOg = 'https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=1600&q=80';
-const heatImage = 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1600&q=80';
-const ventilationImage = 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80';
-const reliefImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/blog/summer-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/blog/summer-hero.jpg';
+const heatImage = '/optimized/blog/summer-heat.jpg';
+const ventilationImage = '/optimized/blog/summer-ventilation.jpg';
+const reliefImage = '/optimized/blog/summer-relief.jpg';
 
 export default function CatLitterSmellWorseSummer() {
   return (

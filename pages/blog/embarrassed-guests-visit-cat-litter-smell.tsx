@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // High-quality images for cat litter odor and guest entertaining
-const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
-const heroImageOg = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80';
-const guestImage = 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=1600&q=80';
-const cleanHomeImage = 'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=80';
-const reliefImage = 'https://images.unsplash.com/photo-1573865526739-10c1dd7603f8?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/blog/embarrassed-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/blog/embarrassed-hero.jpg';
+const guestImage = '/optimized/blog/embarrassed-guests.jpg';
+const cleanHomeImage = '/optimized/blog/embarrassed-clean-home.jpg';
+const reliefImage = '/optimized/blog/embarrassed-relief.jpg';
 
 export default function EmbarrassedGuestsVisit() {
   return (

@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // High-quality images for frustration, failed solutions, and breakthrough
-const heroImage = 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1600&q=80';
-const heroImageOg = 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1600&q=80';
-const failedSolutionsImage = 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1600&q=80';
-const scienceImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
-const reliefImage = 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/blog/tried-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/blog/tried-hero.jpg';
+const failedSolutionsImage = '/optimized/blog/tried-failed.jpg';
+const scienceImage = '/optimized/blog/tried-science.jpg';
+const reliefImage = '/optimized/blog/tried-relief.jpg';
 
 export default function TriedEverythingCatLitterSmell() {
   return (

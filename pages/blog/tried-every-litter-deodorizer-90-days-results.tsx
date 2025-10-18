@@ -18,10 +18,11 @@ import { SITE_NAME } from '../../src/lib/constants';
  */
 
 // Image constants with Unsplash optimization
-const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80';
-const problemImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80';
-const scienceImage = 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=80';
-const solutionImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/blog/90day-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/blog/90day-hero.jpg';
+const problemImage = '/optimized/blog/90day-problem.jpg';
+const scienceImage = '/optimized/blog/90day-science.jpg';
+const solutionImage = '/optimized/blog/90day-solution.jpg';
 
 export default function TriedEveryLitterDeodorizer90Days() {
   const pageTitle = '90-Day Litter Deodorizer Test Results';
@@ -36,7 +37,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
         {/* OpenGraph tags for social sharing */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={heroImageOg} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.purrify.ca/blog/tried-every-litter-deodorizer-90-days-results" />
 
@@ -44,7 +45,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={heroImageOg} />
 
         {/* Keywords */}
         <meta name="keywords" content="cat litter deodorizer, best cat litter deodorizer, cat litter odor eliminator, activated carbon deodorizer, natural litter deodorizer, ammonia remover, litter box odor control" />
@@ -59,7 +60,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
             "@type": "Article",
             "headline": pageTitle,
             "description": metaDescription,
-            "image": heroImage,
+            "image": heroImageOg,
             "author": {
               "@type": "Organization",
               "name": "Purrify"

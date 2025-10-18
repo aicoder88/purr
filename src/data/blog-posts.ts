@@ -19,7 +19,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Stop panicking before guests arrive! These proven fast-acting solutions eliminate embarrassing cat litter odors in 24 hours so you can entertain with confidence.",
       author: 'Odor Control Specialist Team',
       date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
-      image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80',
+      image: '/optimized/blog/embarrassed-hero.jpg',
       link: '/blog/embarrassed-guests-visit-cat-litter-smell'
     },
     {
@@ -27,7 +27,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Nothing working for cat litter smell? Discover why baking soda, air fresheners, and cheap deodorizers fail—and the scientific solution that actually works.",
       author: 'Odor Science Expert Team',
       date: new Date(now - 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 day ago
-      image: 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1600&q=80',
+      image: '/optimized/blog/tried-hero.jpg',
       link: '/blog/tried-everything-cat-litter-smell-solutions'
     },
     {

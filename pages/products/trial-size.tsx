@@ -23,8 +23,14 @@ export default function TrialSizePage() {
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
   const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
   const trialPriceValue = getProductPrice('trial');
+  const standardPriceValue = getProductPrice('standard');
+  const familyPriceValue = getProductPrice('family');
   const trialPriceString = trialPriceValue.toFixed(2);
+  const standardPriceString = standardPriceValue.toFixed(2);
+  const familyPriceString = familyPriceValue.toFixed(2);
 
   // Trial size lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Person trying new product
@@ -265,7 +271,7 @@ export default function TrialSizePage() {
                       "name": "Purrify 50g Standard",
                       "offers": {
                         "@type": "Offer",
-                        "price": "${standardPriceValue}",
+                        "price": "${standardPriceString}",
                         "priceCurrency": "CAD",
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl
@@ -276,7 +282,7 @@ export default function TrialSizePage() {
                       "name": "Purrify 120g Family Pack",
                       "offers": {
                         "@type": "Offer",
-                        "price": "${familyPriceValue}",
+                        "price": "${familyPriceString}",
                         "priceCurrency": "CAD",
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl
