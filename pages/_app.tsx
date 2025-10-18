@@ -185,8 +185,8 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 logo: '/purrify-logo.png',
                 sameAs: [
                   'https://facebook.com/purrify',
-                  'https://instagram.com/purrify',
-                  'https://twitter.com/purrify'
+                  'https://www.instagram.com/purrifyhq/',
+                  'https://x.com/PurrifyHQ'
                 ],
                 contactPoint: [
                   {

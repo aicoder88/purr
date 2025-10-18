@@ -172,7 +172,7 @@ export const MONTREAL_STRUCTURED_DATA = {
   ],
   "sameAs": [
     "https://www.facebook.com/purrify.montreal",
-    "https://www.instagram.com/purrify.mtl"
+    "https://www.instagram.com/purrifyhq/"
   ],
   "priceRange": "$6.99-$29.99 CAD",
   "paymentAccepted": ["Cash", "Credit Card", "Debit", "Interac", "PayPal"],

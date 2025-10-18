@@ -60,7 +60,7 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/purrify"
+                href="https://www.instagram.com/purrifyhq/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
@@ -69,11 +69,11 @@ export function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com/purrify"
+                href="https://x.com/PurrifyHQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                aria-label="Follow Purrify on Twitter"
+                aria-label="Follow Purrify on X"
               >
                 <Twitter className="h-5 w-5" />
               </a>

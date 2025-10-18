@@ -418,8 +418,8 @@ export const generateOrganizationSchema = (localeInput: string) => {
     },
     sameAs: [
       'https://facebook.com/purrify',
-      'https://instagram.com/purrify', 
-      'https://twitter.com/purrify',
+      'https://www.instagram.com/purrifyhq/',
+      'https://x.com/PurrifyHQ',
       'https://www.linkedin.com/company/purrify'
     ],
     knowsAbout: getLocalizedKeywords(locale),

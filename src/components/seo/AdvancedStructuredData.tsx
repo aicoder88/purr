@@ -443,8 +443,8 @@ export const PurrifyStructuredData: React.FC = () => {
     },
     socialMedia: [
       "https://facebook.com/purrify",
-      "https://instagram.com/purrify",
-      "https://twitter.com/purrify"
+      "https://www.instagram.com/purrifyhq/",
+      "https://x.com/PurrifyHQ"
     ]
   };
 

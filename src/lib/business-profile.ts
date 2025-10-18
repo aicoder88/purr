@@ -97,9 +97,9 @@ export const BUSINESS_PROFILE: BusinessProfile = {
 
   socialMedia: {
     facebook: 'https://facebook.com/purrifycanada',
-    instagram: 'https://instagram.com/purrify.ca',
-    twitter: 'https://twitter.com/purrifycanada',
-    linkedin: 'https://linkedin.com/company/purrify'
+    instagram: 'https://www.instagram.com/purrifyhq/',
+    twitter: 'https://x.com/PurrifyHQ',
+    linkedin: 'https://www.linkedin.com/company/purrify'
   },
 
   businessCategories: [
