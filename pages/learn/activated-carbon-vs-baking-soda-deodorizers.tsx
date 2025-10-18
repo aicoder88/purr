@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
   const { locale } = useTranslation();
@@ -446,7 +447,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
                 href="/products/trial-size"
                 className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors"
               >
-                Try Purrify Trial Size - $6.99
+                {`Try Purrify Trial Size - ${formatProductPrice('trial', locale)}`}
               </Link>
               <Link
                 href="/learn/activated-carbon-benefits"

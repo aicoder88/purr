@@ -7,6 +7,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { NextSeo } from 'next-seo';
+import { formatProductPrice } from '../../src/lib/pricing';
 import {
   Search,
   ChevronDown,
@@ -29,6 +30,9 @@ import NextImage from '../../components/NextImage';
 const FAQPage: NextPage = () => {
   const { locale } = useTranslation();
   const { generateBreadcrumbs } = useStructuredData();
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -108,7 +112,7 @@ const FAQPage: NextPage = () => {
     {
       id: 8,
       question: 'What sizes are available?',
-      answer: 'Purrify comes in three sizes: 12g Trial Size ($6.99), 50g Standard ($19.99), and 120g Family Pack ($29.99). The trial size is perfect for testing with one litter box change.',
+      answer: `Purrify comes in three sizes: 12g Trial Size (${trialPrice}), 50g Standard (${standardPrice}), and 120g Family Pack (${familyPrice}). The trial size is perfect for testing with one litter box change.`,
       category: 'product',
       featured: false
     },

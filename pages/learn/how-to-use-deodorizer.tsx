@@ -5,6 +5,7 @@ import { OptimizedImage } from '../../src/components/performance/OptimizedImage'
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function HowToUseDeodorizer() {
   const { locale } = useTranslation();
@@ -389,7 +390,7 @@ export default function HowToUseDeodorizer() {
                 href="/products/trial-size" 
                 className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors"
               >
-                Start with Trial Size - $6.99
+                {`Start with Trial Size - ${formatProductPrice('trial', locale)}`}
               </Link>
               <Link 
                 href="/learn/activated-carbon-benefits" 

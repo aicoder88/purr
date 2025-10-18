@@ -10,6 +10,7 @@ import { ComprehensiveStructuredData, useStructuredData } from '../../src/compon
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
@@ -21,6 +22,9 @@ export default function TrialSizePage() {
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+  const trialPrice = formatProductPrice('trial', locale);
+  const trialPriceValue = getProductPrice('trial');
+  const trialPriceString = trialPriceValue.toFixed(2);
 
   // Trial size lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Person trying new product
@@ -142,7 +146,7 @@ export default function TrialSizePage() {
                 "material": "Activated Carbon from Coconut Shells",
                 "offers": {
                   "@type": "Offer",
-                  "price": "6.99",
+                  "price": "${trialPriceString}",
                   "priceCurrency": "CAD",
                   "priceValidUntil": priceValidUntil,
                   "availability": availabilityUrl,
@@ -250,7 +254,7 @@ export default function TrialSizePage() {
                       "name": "Purrify 12g Trial",
                       "offers": {
                         "@type": "Offer",
-                        "price": "6.99",
+                        "price": "${trialPriceString}",
                         "priceCurrency": "CAD",
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl
@@ -379,7 +383,7 @@ export default function TrialSizePage() {
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
                   </div>
                   <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-6">
-                    $6.99 CAD
+                    {trialPrice}
                   </div>
                 </div>
 
@@ -611,7 +615,7 @@ export default function TrialSizePage() {
                     className="bg-white text-[#FF3131] hover:bg-gray-100 dark:bg-gray-900 dark:text-[#FF5050] dark:hover:bg-gray-800 font-bold py-4 px-8 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
                   >
                     <ShoppingCart className="w-6 h-6 mr-2" />
-                    Order Trial Size - $6.99
+                    {`Order Trial Size - ${trialPrice}`}
                   </Button>
 
                   <div className="flex items-center space-x-2 text-white dark:text-gray-100">

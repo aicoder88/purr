@@ -289,11 +289,6 @@ export function Header() {
       id: 'about',
       label: t.nav?.about || 'About',
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/about/our-story`
-    },
-    {
-      id: 'contact',
-      label: t.nav?.contact || 'Contact',
-      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/support/contact`
     }
   ];
 
@@ -453,7 +448,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             <ThemeToggle />
             <Button
               onClick={scrollToProducts}
@@ -466,7 +461,7 @@ export function Header() {
             <ShoppingCart />
           </div>
 
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center space-x-1">
             <ThemeToggle />
             <LanguageSwitcher />
             <ShoppingCart />

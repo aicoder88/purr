@@ -112,7 +112,7 @@ export function LanguageSwitcher() {
       <Button
         variant="ghost"
         size="sm"
-        className="flex items-center space-x-1 px-2 py-1 hover:bg-[#FFFFF5] dark:hover:bg-gray-800"
+        className="flex items-center space-x-1 px-1.5 sm:px-2 py-1 hover:bg-[#FFFFF5] dark:hover:bg-gray-800"
         onClick={toggleDropdown}
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}

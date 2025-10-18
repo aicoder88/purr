@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function LitterBoxSmellEliminationPage() {
   const seoTitle = 'Litter Box Odor Control Guide | Purrify';
@@ -130,7 +131,7 @@ export default function LitterBoxSmellEliminationPage() {
                     href="/products/trial-size"
                     className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 dark:hover:bg-green-500 transition-colors shadow-lg"
                   >
-                    Try Purrify Risk-Free - $6.99
+                    {`Try Purrify Risk-Free - ${formatProductPrice('trial')}`}
                   </Link>
                   <Link
                     href="/learn/how-it-works"

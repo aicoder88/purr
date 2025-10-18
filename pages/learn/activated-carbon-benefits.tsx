@@ -6,6 +6,7 @@ import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function ActivatedCarbonBenefits() {
   const { locale } = useTranslation();
@@ -329,7 +330,7 @@ export default function ActivatedCarbonBenefits() {
                 href="/products/trial-size" 
                 className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
-                Try 12g Trial Size - $6.99
+                {`Try 12g Trial Size - ${formatProductPrice('trial', locale)}`}
               </Link>
               <Link 
                 href="/products/compare" 

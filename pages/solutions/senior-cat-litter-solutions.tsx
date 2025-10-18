@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function SeniorCatLitterSolutionsPage() {
   const seoTitle = 'Senior Cat Litter Odor Solutions | Purrify';
@@ -155,7 +156,7 @@ export default function SeniorCatLitterSolutionsPage() {
                     href="/products/trial-size"
                     className="inline-block bg-purple-600 dark:bg-purple-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-700 dark:hover:bg-purple-500 transition-colors shadow-lg"
                   >
-                    Start with Trial Size - $6.99
+                    {`Start with Trial Size - ${formatProductPrice('trial')}`}
                   </Link>
                   <Link
                     href="/learn/using-deodorizers-with-kittens"

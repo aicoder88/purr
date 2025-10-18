@@ -8,6 +8,7 @@ import { PageLayout } from '../../src/components/layout/PageLayout';
 import { Breadcrumbs } from '../../src/components/layout/Breadcrumbs';
 import { HeroSection } from '../../src/components/layout/HeroSection';
 import { enStoryData } from '../../src/lib/page-data';
+import { PRODUCT_PRICES } from '../../src/lib/pricing';
 import { 
   Heart, 
   Users, 
@@ -254,15 +255,25 @@ const OurStoryPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
-                    Try Purrify Today - $6.99
-                    Trial size - Single Use Sample
-
-<ChevronRight className="w-5 h-5 ml-2" />
+                  <Button
+                    size="lg"
+                    className="flex items-center justify-center gap-3 bg-white text-[#5B2EFF] hover:bg-gray-100 dark:bg-white/90 dark:hover:bg-white dark:text-[#5B2EFF] font-bold shadow-lg"
+                  >
+                    <span className="flex flex-col leading-tight text-left">
+                      <span className="text-base sm:text-lg">{`Try Purrify Today - ${PRODUCT_PRICES.trial.formatted}`}</span>
+                      <span className="text-xs sm:text-sm font-semibold text-[#5B2EFF]/80">
+                        Trial size • Single Use Sample
+                      </span>
+                    </span>
+                    <ChevronRight className="w-5 h-5" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                  <Button size="lg" variant="outline" className="border-white text-gray-900 dark:text-white dark:text-gray-100 hover:bg-white dark:bg-gray-800 hover:text-gray-900 dark:text-gray-50 transition-colors">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-gray-900 hover:bg-white hover:text-gray-900 dark:text-white dark:hover:bg-white dark:hover:text-[#5B2EFF] transition-colors"
+                  >
                     Get in Touch
                   </Button>
                 </Link>

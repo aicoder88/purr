@@ -3,6 +3,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
+import { formatProductPrice } from '../../src/lib/pricing';
 // import NextImage from '../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
@@ -122,7 +123,7 @@ export default function SciencePage() {
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                 <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Try the Science - $6.99
+                  {`Try the Science - ${formatProductPrice('trial', locale)}`}
                 </Button>
               </Link>
             </div>
