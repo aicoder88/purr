@@ -40,23 +40,35 @@ const ProductComparePage: NextPage = () => {
       originalPrice: formatCurrencyValue(standardPriceAmount + 3, locale),
       savings: formatCurrencyValue(3, locale),
     },
-    large: {
+    family: {
       price: familyPrice,
       originalPrice: formatCurrencyValue(familyPriceAmount + 5, locale),
       savings: formatCurrencyValue(5, locale),
     },
   } as const;
 
-  const products = t.productComparison.products.map((product) => ({
-    ...product,
-    price: priceDetails[product.id as 'trial' | 'standard' | 'large'].price,
-    originalPrice: priceDetails[product.id as 'trial' | 'standard' | 'large'].originalPrice,
-    savings: priceDetails[product.id as 'trial' | 'standard' | 'large'].savings,
-    popular: product.id === 'standard',
-    recommended: product.id === 'large',
-    ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
-    color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'standard' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
-  }));
+  const productIdAlias: Record<string, keyof typeof priceDetails> = {
+    trial: 'trial',
+    standard: 'standard',
+    small: 'standard',
+    large: 'family',
+    family: 'family',
+  };
+
+  const products = t.productComparison.products.map((product) => {
+    const priceKey = productIdAlias[product.id] ?? 'standard';
+
+    return {
+      ...product,
+      price: priceDetails[priceKey].price,
+      originalPrice: priceDetails[priceKey].originalPrice,
+      savings: priceDetails[priceKey].savings,
+      popular: product.id === 'standard',
+      recommended: product.id === 'large',
+      ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
+      color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'standard' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
+    };
+  });
 
   const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
     feature: item.feature,
