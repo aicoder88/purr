@@ -10,6 +10,7 @@ import { ComprehensiveStructuredData, useStructuredData } from '../../src/compon
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
@@ -21,6 +22,10 @@ export default function StandardSizePage() {
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
+  const standardPriceValue = getProductPrice('standard').toFixed(2);
 
   // Standard size lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Single cat household
@@ -141,7 +146,7 @@ export default function StandardSizePage() {
                 "material": "Activated Carbon from Coconut Shells",
                 "offers": {
                   "@type": "Offer",
-                  "price": "19.99",
+                  "price": "${standardPriceValue}",
                   "priceCurrency": "CAD",
                   "priceValidUntil": priceValidUntil,
                   "availability": availabilityUrl,
@@ -351,7 +356,7 @@ export default function StandardSizePage() {
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
                   </div>
                   <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-6">
-                    $19.99 CAD
+                    {standardPrice}
                   </div>
                 </div>
 
@@ -525,7 +530,7 @@ export default function StandardSizePage() {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$6.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
                 </Link>
@@ -537,14 +542,14 @@ export default function StandardSizePage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$19.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/family-pack`}>
                   <Button variant="outline" className="w-full">View Family Pack</Button>
                 </Link>

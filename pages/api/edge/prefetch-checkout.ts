@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getProductPrice } from '../../../src/lib/pricing';
 
 export const config = {
   runtime: 'edge',
@@ -95,7 +96,7 @@ async function getProductData(productId: string) {
     '12g': {
       id: '12g',
       name: 'Purrify 12g Trial Size',
-      price: 6.99,
+      price: getProductPrice('trial'),
       weight: 0.012, // kg
       sku: 'PURR-12G',
       stripe_price_id: 'price_trial_12g'
@@ -103,7 +104,7 @@ async function getProductData(productId: string) {
     '50g': {
       id: '50g', 
       name: 'Purrify 50g Standard',
-      price: 19.99,
+      price: getProductPrice('standard'),
       weight: 0.05,
       sku: 'PURR-50G',
       stripe_price_id: 'price_standard_50g'
@@ -111,7 +112,7 @@ async function getProductData(productId: string) {
     '120g': {
       id: '120g',
       name: 'Purrify 120g Family Size', 
-      price: 29.99,
+      price: getProductPrice('family'),
       weight: 0.12,
       sku: 'PURR-120G',
       stripe_price_id: 'price_family_120g'

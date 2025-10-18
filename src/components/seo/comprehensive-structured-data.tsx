@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from '../../lib/constants';
+import { getPriceRange, getProductPrice } from '../../lib/pricing';
 import { useTranslation } from '../../lib/translation-context';
 import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
 
@@ -54,6 +55,7 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
   pageData = {} 
 }) => {
   const { locale } = useTranslation();
+  const priceRange = getPriceRange(locale);
   const baseUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}`;
   const mainUrl = 'https://www.purrify.ca';
   const defaultAvailability = buildAvailabilityUrl();
@@ -216,7 +218,7 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
           },
           offers: {
             '@type': 'Offer',
-            priceRange: '$6.99 - $29.99',
+            priceRange: priceRange.formatted,
             priceCurrency: 'CAD'
           }
         };

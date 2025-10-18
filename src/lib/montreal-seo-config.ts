@@ -5,6 +5,12 @@
  */
 
 import { SOCIAL_LINKS } from './constants';
+import { getProductPrice, getPriceRange } from './pricing';
+
+const TRIAL_PRICE = getProductPrice('trial');
+const STANDARD_PRICE = getProductPrice('standard');
+const FAMILY_PRICE = getProductPrice('family');
+const PRICE_RANGE = getPriceRange();
 
 export interface MontrealSEOConfig {
   location: string;
@@ -178,7 +184,7 @@ export const MONTREAL_STRUCTURED_DATA = {
     SOCIAL_LINKS.tiktok,
     SOCIAL_LINKS.x
   ],
-  "priceRange": "$6.99-$29.99 CAD",
+  "priceRange": PRICE_RANGE.formatted,
   "paymentAccepted": ["Cash", "Credit Card", "Debit", "Interac", "PayPal"],
   "currenciesAccepted": "CAD"
 };
@@ -215,8 +221,8 @@ export const MONTREAL_GOOGLE_ADS_STRUCTURE = {
   
   // Conversion tracking
   conversions: {
-    "Purchase": { value: 19.99, currency: "CAD" },
-    "Trial_Request": { value: 6.99, currency: "CAD" },
+    "Purchase": { value: getProductPrice('standard'), currency: "CAD" },
+    "Trial_Request": { value: TRIAL_PRICE, currency: "CAD" },
     "Newsletter_Signup": { value: 2.00, currency: "CAD" },
     "Video_View": { value: 0.50, currency: "CAD" }
   },

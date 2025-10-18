@@ -1,4 +1,5 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
+import { getProductPrice, getPriceRange, formatProductPrice } from './pricing';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -642,10 +643,12 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
           '@type': 'Product',
           name: product.name,
           description: product.description.split('\n')[0]
-        }
+        },
+        price: getProductPrice(product.id as typeof PRODUCTS[number]['id']).toFixed(2),
+        priceCurrency: 'CAD'
       }))
     },
-    priceRange: '$6.99 - $29.99'
+    priceRange: getPriceRange(locale).formatted
   };
 };
 

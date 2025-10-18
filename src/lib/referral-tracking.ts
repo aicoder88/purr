@@ -1,4 +1,5 @@
 // Referral tracking utility functions
+import { getProductPrice } from './pricing';
 
 interface ReferralInfo {
   code: string;
@@ -188,7 +189,7 @@ export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price
     id: 'purrify-12g-referral',
     name: 'Purrify 12g Trial Size - FREE (Referral Reward)',
     price: 0,
-    originalPrice: 6.99,
+    originalPrice: getProductPrice('trial'),
     quantity: 1,
     image: '/optimized/20g.webp',
     isReferralReward: true,

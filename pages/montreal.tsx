@@ -5,9 +5,14 @@ import { MONTREAL_STRUCTURED_DATA } from '../src/lib/montreal-seo-config';
 import { useTranslation } from '../src/lib/translation-context';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { formatProductPrice, getPriceRange } from '../src/lib/pricing';
 
 export default function Montreal() {
   const { locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
+  const priceRange = getPriceRange(locale);
   
   const pageTitle = locale === 'fr' 
     ? 'Où acheter un désodorisant pour litière de chat à Montréal | Purrify'
@@ -22,6 +27,9 @@ export default function Montreal() {
   const languageAlternates = buildLanguageAlternates(canonicalPath);
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+  const productPriceSentence = locale === 'fr'
+    ? `Purrify est disponible en trois formats : 12 g format essai à ${trialPrice}, 50 g format régulier à ${standardPrice} et 120 g format familial à ${familyPrice}. Les prix peuvent varier selon le détaillant.`
+    : `Purrify is available in three sizes: 12g trial size for ${trialPrice}, 50g regular size for ${standardPrice}, and 120g large size for ${familyPrice}. Prices may vary by retailer.`;
 
   // Enhanced structured data for better SEO
   const baseStructuredData = {
@@ -100,7 +108,7 @@ export default function Montreal() {
           "name": "How much does Purrify cost in Montreal?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Purrify is available in three sizes: 12g trial size for $6.99 CAD, 50g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer."
+            "text": productPriceSentence
           }
         }
       ]
@@ -791,7 +799,7 @@ export default function Montreal() {
               <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
                   ? 'Purrify est disponible en trois formats: format d\'essai de 12g pour 6,99$ CAD, format régulier de 50g pour 19,99$ CAD, et grand format de 120g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
-                  : 'Purrify is available in three sizes: 12g trial size for $6.99 CAD, 50g regular size for $19.99 CAD, and 120g large size for $29.99 CAD. Prices may vary by retailer.'
+                  : productPriceSentence
                 }
               </p>
             </div>
@@ -1064,7 +1072,7 @@ export default function Montreal() {
                 {locale === 'fr' ? 'Format d\'Essai 12g' : '12g Trial Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
-                {locale === 'fr' ? '6,99$ CAD' : '$6.99 CAD'}
+                {trialPrice}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Parfait pour essayer Purrify ou voyager' : 'Perfect for trying Purrify or travel'}
@@ -1090,7 +1098,7 @@ export default function Montreal() {
                 {locale === 'fr' ? 'Format Régulier 50g' : '50g Regular Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
-                {locale === 'fr' ? '19,99$ CAD' : '$19.99 CAD'}
+                {standardPrice}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Meilleur rapport qualité-prix pour la plupart des propriétaires de chats' : 'Best value for most cat owners'}
@@ -1113,7 +1121,7 @@ export default function Montreal() {
                 {locale === 'fr' ? 'Grand Format 120g' : '120g Large Size'}
               </h3>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400 mb-2">
-                {locale === 'fr' ? '29,99$ CAD' : '$29.99 CAD'}
+                {familyPrice}
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {locale === 'fr' ? 'Valeur maximale pour foyers multi-chats' : 'Maximum value for multi-cat homes'}
@@ -1176,7 +1184,7 @@ export default function Montreal() {
                   {locale === 'fr' ? '3 Formats' : '3 Size Options'}
                 </h4>
                 <p className="text-sm">
-                  {locale === 'fr' ? 'De 6,99$ à 29,99$ CAD' : 'From $6.99 to $29.99 CAD'}
+                  {priceRange.formatted}
                 </p>
               </div>
             </div>

@@ -17,6 +17,7 @@ import {
 import { useCallback, useState } from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 import { CONTACT_INFO } from '../src/lib/constants';
+import { formatProductPrice } from '../src/lib/pricing';
 
 export default function B2B() {
   const { locale } = useTranslation();
@@ -32,6 +33,9 @@ export default function B2B() {
     : 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada. Attractive margins and comprehensive marketing support.';
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}b2b`;
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
 
@@ -392,7 +396,7 @@ export default function B2B() {
                 <h3 className="text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Format Essai 12g' : 'Trial Size 12g'}
                 </h3>
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">$6.99</div>
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{trialPrice}</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                   {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
                 </div>
@@ -406,7 +410,7 @@ export default function B2B() {
                 <h3 className="text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Format Régulier 50g' : 'Regular Size 50g'}
                 </h3>
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">$19.99</div>
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{standardPrice}</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                   {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
                 </div>
@@ -420,7 +424,7 @@ export default function B2B() {
                 <h3 className="text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Grand Format 120g' : 'Large Size 120g'}
                 </h3>
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">$29.99</div>
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{familyPrice}</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                   {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
                 </div>

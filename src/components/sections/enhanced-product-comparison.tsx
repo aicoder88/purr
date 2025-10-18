@@ -5,6 +5,7 @@ import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
 import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
 import NextImage from "../../../components/NextImage";
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 
 
 export function EnhancedProductComparison() {
@@ -38,13 +39,18 @@ export function EnhancedProductComparison() {
     handleAddToCart(productId);
   }, [handleAddToCart]);
 
+  const trialPriceAmount = getProductPrice('trial');
+  const standardPriceAmount = getProductPrice('standard');
+  const familyPriceAmount = getProductPrice('family');
+
   const products = [
     {
       id: 'purrify-12g',
       name: t.products?.['purrify-12g']?.name || 'Purrify 12g',
       subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
-      price: 6.99,
-      originalPrice: 9.99,
+      price: trialPriceAmount,
+      priceFormatted: formatProductPrice('trial'),
+      originalPriceFormatted: formatCurrencyValue(trialPriceAmount + 3),
       image: '/optimized/20g.webp',
       badge: t.enhancedProductComparison?.trial || 'TRIAL',
       badgeColor: 'bg-blue-500',
@@ -68,8 +74,9 @@ export function EnhancedProductComparison() {
       id: 'purrify-50g',
       name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
       subtitle: t.enhancedProductComparison?.mostPopular || 'Most Popular',
-      price: 19.99,
-      originalPrice: 24.99,
+      price: standardPriceAmount,
+      priceFormatted: formatProductPrice('standard'),
+      originalPriceFormatted: formatCurrencyValue(standardPriceAmount + 5),
       image: '/optimized/60g.webp',
       badge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
       badgeColor: 'bg-green-500',
@@ -93,8 +100,9 @@ export function EnhancedProductComparison() {
       id: 'purrify-120g',
       name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
       subtitle: t.productsSection?.powerLevels?.maximumPower || 'Maximum Power',
-      price: 29.99,
-      originalPrice: 39.99,
+      price: familyPriceAmount,
+      priceFormatted: formatProductPrice('family'),
+      originalPriceFormatted: formatCurrencyValue(familyPriceAmount + 10),
       image: '/optimized/140g.webp',
       badge: t.enhancedProductComparison?.premium || 'PREMIUM',
       badgeColor: 'bg-purple-500',
@@ -219,8 +227,12 @@ export function EnhancedProductComparison() {
                   {/* Pricing */}
                   <div className="text-center mb-4 sm:mb-6">
                     <div className="flex items-center justify-center mb-2 gap-2">
-                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">${product.price}</span>
-                      <span className="text-gray-500 dark:text-gray-400 line-through text-lg sm:text-xl">${product.originalPrice}</span>
+                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">{product.priceFormatted}</span>
+                      {product.originalPriceFormatted ? (
+                        <span className="text-gray-500 dark:text-gray-400 line-through text-lg sm:text-xl">
+                          {product.originalPriceFormatted}
+                        </span>
+                      ) : null}
                     </div>
                     <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold inline-block border border-green-200 dark:border-green-700 shadow-sm">
                       {t.subscriptionOfferExtended?.save || 'Save'} {product.savings}%

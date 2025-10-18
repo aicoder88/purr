@@ -1,4 +1,5 @@
 import { useEffect, useState, ReactNode, useCallback, useMemo } from 'react';
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 
 interface ABTestConfig {
   testId: string;
@@ -75,6 +76,7 @@ export function SolutionPageCTATest({
   testId?: string;
   productUrl?: string;
 }) {
+  const trialPrice = formatProductPrice('trial');
   const handleControlClick = useCallback(() => {
     trackABTestConversion(testId, 'control');
   }, [testId]);
@@ -97,7 +99,7 @@ export function SolutionPageCTATest({
             className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors shadow-lg"
             onClick={handleControlClick}
           >
-            Try Purrify - $6.99
+            {`Try Purrify - ${trialPrice}`}
           </a>
         </div>
       )
@@ -214,17 +216,18 @@ export function SocialProofTest({ testId = 'social_proof_v1' }: { testId?: strin
 // Pricing A/B test
 export function PricingTest({
   testId = 'pricing_v1',
-  basePrice = 6.99
+  basePrice = getProductPrice('trial')
 }: {
   testId?: string;
   basePrice?: number;
 }) {
+  const formattedBasePrice = formatCurrencyValue(basePrice);
   const variants = {
     regular: {
       weight: 50,
       component: (
         <span className="text-2xl font-bold text-green-600 dark:text-green-400">
-          ${basePrice}
+          {formattedBasePrice}
         </span>
       )
     },
@@ -232,9 +235,9 @@ export function PricingTest({
       weight: 50,
       component: (
         <div className="inline-flex items-center gap-2">
-          <span className="text-lg line-through text-gray-500 dark:text-gray-400">${(basePrice * 1.5).toFixed(2)}</span>
+          <span className="text-lg line-through text-gray-500 dark:text-gray-400">{formatCurrencyValue(basePrice * 1.5)}</span>
           <span className="text-2xl font-bold text-green-600 dark:text-green-400">
-            ${basePrice}
+            {formattedBasePrice}
           </span>
           <span className="bg-red-500 dark:bg-red-600 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">SAVE 33%</span>
         </div>

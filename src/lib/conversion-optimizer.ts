@@ -5,6 +5,7 @@
  */
 
 import { gtmEvent } from './gtm-events';
+import { getProductPrice, formatProductPrice } from './pricing';
 
 interface ConversionGoals {
   primary: { action: string; value: number; };
@@ -36,8 +37,8 @@ export class UltimateConversionOptimizer {
 
   constructor() {
     this.conversionGoals = {
-      primary: { action: 'purchase', value: 19.99 },
-      secondary: { action: 'trial_request', value: 6.99 },
+      primary: { action: 'purchase', value: getProductPrice('standard') },
+      secondary: { action: 'trial_request', value: getProductPrice('trial') },
       micro: [
         { action: 'email_signup', value: 2.00 },
         { action: 'video_view', value: 0.50 },
@@ -159,7 +160,7 @@ export class UltimateConversionOptimizer {
     const experiments = {
       // Montreal-specific price testing
       'montreal_pricing': {
-        control: { price: '$19.99', currency: 'CAD' },
+        control: { price: formatProductPrice('standard'), currency: 'CAD' },
         variant: { price: '19,99 $', currency: 'CAD' } // Quebec format
       },
       

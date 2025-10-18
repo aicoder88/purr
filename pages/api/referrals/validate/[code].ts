@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateReferralCodeFormat } from '../generate';
+import { getProductPrice, formatProductPrice } from '../../../../src/lib/pricing';
 
 interface ReferralCodeValidation {
   isValid: boolean;
@@ -149,8 +150,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       referrerEmail: referralCode.referrerEmail,
       discount: {
         type: 'free_trial',
-        value: 6.99, // Value of free 12g trial
-        description: 'Free 12g Trial Size (normally $6.99)'
+        value: getProductPrice('trial'),
+        description: `Free 12g Trial Size (normally ${formatProductPrice('trial')})`
       },
       expiresAt: referralCode.expiresAt,
       usesRemaining,
@@ -190,7 +191,7 @@ export function applyReferralDiscount(cartItems: CartItem[], referralCode: strin
         sku: 'purrify-12g',
         name: 'Purrify 12g Trial Size - FREE (Referral)',
         price: 0,
-        originalPrice: 6.99,
+        originalPrice: getProductPrice('trial'),
         quantity: 1,
         isReferralReward: true,
         referralCode

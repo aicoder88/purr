@@ -9,6 +9,7 @@ import { useCart } from '../../src/lib/cart-context';
 import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 interface ReferralPageProps {
   code: string;
@@ -27,6 +28,7 @@ interface ReferralPageProps {
 }
 
 export default function ReferralLandingPage({ code, referralData }: ReferralPageProps) {
+  const trialPrice = formatProductPrice('trial');
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
   const [isClaimingOffer, setIsClaimingOffer] = useState(false);
   const { addToCart } = useCart();
@@ -90,7 +92,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
     : `Invalid Referral Code - ${SITE_NAME}`;
 
   const pageDescription = referralData.isValid
-    ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally $6.99) and see why they love this cat litter deodorizer.`
+    ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally ${trialPrice}) and see why they love this cat litter deodorizer.`
     : 'This referral code is not valid or has expired.';
 
   const canonicalUrl = `https://www.purrify.ca/refer/${code}`;
@@ -209,7 +211,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 </h2>
 
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Normally $6.99 - Perfect for testing before you buy the full size
+                  {`Normally ${trialPrice} - perfect for testing before you buy the full size`}
                 </p>
 
                 <Button

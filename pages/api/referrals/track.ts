@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getProductPrice } from '../../../src/lib/pricing';
 
 interface TrackingData {
   source?: string;
@@ -264,7 +265,7 @@ async function trackReferralPurchase(
     },
     referee: {
       type: 'product' as const,
-      value: 6.99, // Free trial value
+      value: getProductPrice('trial'),
       description: 'Free 12g Trial Size'
     }
   };

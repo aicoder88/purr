@@ -7,6 +7,7 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import NextImage from '../../components/NextImage';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
@@ -21,6 +22,13 @@ export default function FamilyPackPage() {
   const canonicalPath = '/products/family-pack';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
+  const standardPriceAmount = getProductPrice('standard');
+  const familyPriceAmount = getProductPrice('family');
+  const doubleStandardPrice = formatCurrencyValue(standardPriceAmount * 2, locale);
+  const savingsComparedToStandard = formatCurrencyValue(standardPriceAmount * 2 - familyPriceAmount, locale);
 
   // Family pack lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
@@ -163,7 +171,7 @@ export default function FamilyPackPage() {
                   </div>
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF]">
-                      $29.99 CAD
+                    {familyPrice}
                     </div>
                     <div className="text-lg text-gray-500 dark:text-gray-400 line-through">
                       $39.98
@@ -283,10 +291,10 @@ export default function FamilyPackPage() {
                     Two Standard Sizes (50g each)
                   </div>
                   <div className="text-2xl font-bold text-red-600 dark:text-red-400 mb-2">
-                    $39.98
+                    {doubleStandardPrice}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    $19.99 × 2 = $39.98
+                    {`${standardPrice} × 2 = ${doubleStandardPrice}`}
                   </div>
                 </div>
                 <div className="text-center">
@@ -294,10 +302,12 @@ export default function FamilyPackPage() {
                     One Family Pack (120g)
                   </div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
-                    $29.99
+                    {familyPrice}
                   </div>
                   <div className="text-sm text-green-600 dark:text-green-400 font-semibold">
-                    You Save $9.99!
+                    {locale === 'fr'
+                      ? `Vous économisez ${savingsComparedToStandard} !`
+                      : `You Save ${savingsComparedToStandard}!`}
                   </div>
                 </div>
               </div>
@@ -355,7 +365,7 @@ export default function FamilyPackPage() {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$6.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
                 </Link>
@@ -364,7 +374,7 @@ export default function FamilyPackPage() {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$19.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/standard`}>
                   <Button variant="outline" className="w-full">View Standard Size</Button>
                 </Link>
@@ -376,7 +386,7 @@ export default function FamilyPackPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">$29.99</div>
+                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
             </div>

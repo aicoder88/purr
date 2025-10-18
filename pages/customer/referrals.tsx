@@ -9,6 +9,7 @@ import { SocialShareTools } from '../../src/components/referrals/SocialShareTool
 import { Share2, Trophy, Gift, Users, ArrowLeft, Plus, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { generateReferralCode, getUserReferralStats } from '../../src/lib/referral-tracking';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 interface CustomerReferralsPageProps {
   // In a real app, this would come from authentication
@@ -22,6 +23,7 @@ export default function CustomerReferralsPage({
   userName = 'Sarah M.',
   userEmail = 'sarah@example.com'
 }: CustomerReferralsPageProps) {
+  const trialPrice = formatProductPrice('trial');
   const [hasReferralCode, setHasReferralCode] = useState(false);
   const [referralCode, setReferralCode] = useState<string>('');
   const [shareUrl, setShareUrl] = useState<string>('');
@@ -177,7 +179,7 @@ export default function CustomerReferralsPage({
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Your friends receive a free 12g trial size (normally $6.99)
+                    {`Your friends receive a free 12g trial size (normally ${trialPrice})`}
                   </p>
                 </div>
 

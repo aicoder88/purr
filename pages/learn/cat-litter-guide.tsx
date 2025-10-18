@@ -19,12 +19,14 @@ import {
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 const CatLitterGuidePage: NextPage = () => {
   const { locale } = useTranslation();
   const canonicalPath = '/learn/cat-litter-guide';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
+  const trialPrice = formatProductPrice('trial', locale);
 
   // Unique images for cat litter guide - different from all other posts
   const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80'; // Modern litter box setup
@@ -206,7 +208,7 @@ const CatLitterGuidePage: NextPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Try Purrify - $4.99
+                    {`Try Purrify - ${trialPrice}`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -413,7 +415,7 @@ const CatLitterGuidePage: NextPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Start with Trial Size - $4.99
+                    {`Start with Trial Size - ${trialPrice}`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

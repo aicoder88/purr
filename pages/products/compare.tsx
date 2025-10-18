@@ -18,15 +18,40 @@ import {
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 
 const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
 
+  const trialPrice = formatProductPrice('trial', locale);
+  const standardPrice = formatProductPrice('standard', locale);
+  const familyPrice = formatProductPrice('family', locale);
+  const standardPriceAmount = getProductPrice('standard');
+  const familyPriceAmount = getProductPrice('family');
+
+  const priceDetails = {
+    trial: {
+      price: trialPrice,
+      originalPrice: null as string | null,
+      savings: null as string | null,
+    },
+    standard: {
+      price: standardPrice,
+      originalPrice: formatCurrencyValue(standardPriceAmount + 3, locale),
+      savings: formatCurrencyValue(3, locale),
+    },
+    large: {
+      price: familyPrice,
+      originalPrice: formatCurrencyValue(familyPriceAmount + 5, locale),
+      savings: formatCurrencyValue(5, locale),
+    },
+  } as const;
+
   const products = t.productComparison.products.map((product) => ({
     ...product,
-    price: product.id === 'trial' ? '$6.99' : product.id === 'standard' ? '$19.99' : '$29.99',
-    originalPrice: product.id === 'trial' ? null : product.id === 'standard' ? '$22.99' : '$34.99',
-    savings: product.id === 'trial' ? null : product.id === 'standard' ? '$3.00' : '$5.00',
+    price: priceDetails[product.id as 'trial' | 'standard' | 'large'].price,
+    originalPrice: priceDetails[product.id as 'trial' | 'standard' | 'large'].originalPrice,
+    savings: priceDetails[product.id as 'trial' | 'standard' | 'large'].savings,
     popular: product.id === 'standard',
     recommended: product.id === 'large',
     ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
