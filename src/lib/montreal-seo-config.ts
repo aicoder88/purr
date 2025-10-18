@@ -4,6 +4,8 @@
  * Following Quebec language laws (Bill 101) and cultural nuances
  */
 
+import { SOCIAL_LINKS } from './constants';
+
 export interface MontrealSEOConfig {
   location: string;
   keywords: {
@@ -172,7 +174,9 @@ export const MONTREAL_STRUCTURED_DATA = {
   ],
   "sameAs": [
     "https://www.facebook.com/purrify.montreal",
-    "https://www.instagram.com/purrifyhq/"
+    SOCIAL_LINKS.instagram,
+    SOCIAL_LINKS.tiktok,
+    SOCIAL_LINKS.x
   ],
   "priceRange": "$6.99-$29.99 CAD",
   "paymentAccepted": ["Cash", "Credit Card", "Debit", "Interac", "PayPal"],

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from '../../lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from '../../lib/constants';
 import { useTranslation } from '../../lib/translation-context';
 import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
 
@@ -99,12 +99,7 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
         }
       }
     ],
-    sameAs: [
-      'https://facebook.com/purrify',
-      'https://www.instagram.com/purrifyhq/',
-      'https://x.com/PurrifyHQ',
-      'https://www.linkedin.com/company/purrify'
-    ],
+    sameAs: Object.values(SOCIAL_LINKS),
     brand: {
       '@type': 'Brand',
       name: SITE_NAME,

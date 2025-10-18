@@ -138,7 +138,7 @@ export const TESTIMONIALS = [
 ];
 
 // Import centralized business profile for NAP consistency
-import {
+import BUSINESS_PROFILE, {
   getFormattedAddress,
   getPhoneNumber,
   getEmailAddress,
@@ -155,6 +155,15 @@ export const PHONE_NUMBER = {
   telLink: getPhoneNumberHref(),
 };
 
+export const SOCIAL_LINKS = {
+  x: BUSINESS_PROFILE.socialMedia.twitter ?? 'https://x.com/PurrifyHQ',
+  instagram: BUSINESS_PROFILE.socialMedia.instagram ?? 'https://www.instagram.com/purrifyhq/',
+  linkedin: BUSINESS_PROFILE.socialMedia.linkedin ?? 'https://www.linkedin.com/company/purrify',
+  youtube: BUSINESS_PROFILE.socialMedia.youtube ?? 'https://www.youtube.com/@PurrifyHQ',
+  tiktok: BUSINESS_PROFILE.socialMedia.tiktok ?? 'https://www.tiktok.com/@purrifyhq',
+  facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/purrify'
+} as const;
+
 export const CONTACT_INFO = {
   address: getFormattedAddress(),
   phone: PHONE_NUMBER.display,
@@ -166,4 +175,5 @@ export const CONTACT_INFO = {
     acc[dayKey] = item.hours;
     return acc;
   }, {} as Record<string, string>),
+  social: SOCIAL_LINKS,
 };

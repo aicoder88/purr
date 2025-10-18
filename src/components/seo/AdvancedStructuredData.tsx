@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
-import { CONTACT_INFO } from '../../lib/constants';
+import { CONTACT_INFO, SOCIAL_LINKS } from '../../lib/constants';
 
 interface ProductStructuredDataProps {
   product: {
@@ -442,11 +442,7 @@ export const PurrifyStructuredData: React.FC = () => {
       contactType: "Customer Service",
       email: CONTACT_INFO.email
     },
-    socialMedia: [
-      "https://facebook.com/purrify",
-      "https://www.instagram.com/purrifyhq/",
-      "https://x.com/PurrifyHQ"
-    ]
+    socialMedia: Object.values(SOCIAL_LINKS)
   };
 
   const websiteData = {

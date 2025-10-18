@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
+import type { SVGProps } from "react";
 import { Container } from "../../components/ui/container";
 import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
@@ -8,9 +9,23 @@ import {
   Facebook,
   Instagram,
   Twitter,
+  Linkedin,
+  Youtube,
   MapPin,
   Phone,
 } from "lucide-react";
+import { SOCIAL_LINKS } from "../../lib/constants";
+
+const TikTokIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    {...props}
+  >
+    <path d="M12.75 2a.75.75 0 0 1 .75.75c0 2.24 1.53 4.12 3.63 4.5.37.07.62.4.62.77v2.02a.75.75 0 0 1-1.03.7 6.3 6.3 0 0 1-2.47-1.4v6.67A4.82 4.82 0 1 1 8 11.5h.75a.75.75 0 0 1 .75.75v2.14a.75.75 0 0 1-1.02.7 1.83 1.83 0 0 0-.73-.15 1.82 1.82 0 1 0 1.82 1.83V3.5a.75.75 0 0 1 .75-.75h2.43Z" />
+  </svg>
+);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -51,7 +66,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/purrify"
+                href={SOCIAL_LINKS.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
@@ -60,7 +75,7 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/purrifyhq/"
+                href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
@@ -69,13 +84,40 @@ export function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://x.com/PurrifyHQ"
+                href={SOCIAL_LINKS.x}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                 aria-label="Follow Purrify on X"
               >
                 <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIAL_LINKS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Subscribe to Purrify on YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIAL_LINKS.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on TikTok"
+              >
+                <TikTokIcon className="h-5 w-5" />
               </a>
             </div>
           </div>

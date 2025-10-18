@@ -52,6 +52,7 @@ export interface BusinessProfile {
     twitter?: string;
     linkedin?: string;
     youtube?: string;
+    tiktok?: string;
   };
   businessCategories: string[];
   serviceAreas: string[];
@@ -105,7 +106,9 @@ export const BUSINESS_PROFILE: BusinessProfile = {
     facebook: 'https://facebook.com/purrifycanada',
     instagram: 'https://www.instagram.com/purrifyhq/',
     twitter: 'https://x.com/PurrifyHQ',
-    linkedin: 'https://www.linkedin.com/company/purrify'
+    linkedin: 'https://www.linkedin.com/company/purrify',
+    youtube: 'https://www.youtube.com/@PurrifyHQ',
+    tiktok: 'https://www.tiktok.com/@purrifyhq'
   },
 
   businessCategories: [

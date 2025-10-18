@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { DefaultSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import '../src/index.css';
-import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
 import Script from 'next/script';
 
 import { TranslationProvider } from '../src/lib/translation-context';
@@ -183,11 +183,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 name: SITE_NAME,
                 url: canonicalUrl,
                 logo: '/purrify-logo.png',
-                sameAs: [
-                  'https://facebook.com/purrify',
-                  'https://www.instagram.com/purrifyhq/',
-                  'https://x.com/PurrifyHQ'
-                ],
+                sameAs: Object.values(SOCIAL_LINKS),
                 contactPoint: [
                   {
                     '@type': 'ContactPoint',

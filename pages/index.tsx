@@ -50,7 +50,7 @@ const Contact = dynamic(() => import('../src/components/sections/contact').then(
   ssr: false,
   loading: () => sectionSkeleton('h-80')
 });
-import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
@@ -223,12 +223,7 @@ export default function Home() {
                   "areaServed": t.structuredData.organization.contactPoint.areaServed,
                   "availableLanguage": t.structuredData.organization.contactPoint.availableLanguage
                 },
-                "sameAs": [
-                  "https://facebook.com/purrify",
-                  "https://www.instagram.com/purrifyhq/",
-                  "https://x.com/PurrifyHQ",
-                  "https://www.linkedin.com/company/purrify"
-                ],
+                "sameAs": Object.values(SOCIAL_LINKS),
                 "areaServed": {
                   "@type": "Country",
                   "name": t.structuredData.organization.areaServed

@@ -128,7 +128,7 @@ export function LanguageSwitcher() {
           height={20}
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
-        <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100">{currentLanguage.name}</span>
+        <span className="sr-only">{currentLanguage.name}</span>
         <ChevronDown className="h-4 w-4 text-[#FF3131] dark:text-[#FF5050]" />
       </Button>
 

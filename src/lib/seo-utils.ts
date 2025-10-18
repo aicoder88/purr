@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO } from './constants';
+import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -416,12 +416,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
       areaServed: ['CA', 'US'],
       availableLanguage: ['English', 'French', 'Chinese']
     },
-    sameAs: [
-      'https://facebook.com/purrify',
-      'https://www.instagram.com/purrifyhq/',
-      'https://x.com/PurrifyHQ',
-      'https://www.linkedin.com/company/purrify'
-    ],
+    sameAs: Object.values(SOCIAL_LINKS),
     knowsAbout: getLocalizedKeywords(locale),
     areaServed: {
       '@type': 'Country',
