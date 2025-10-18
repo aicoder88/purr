@@ -138,11 +138,28 @@ export const TESTIMONIALS = [
 ];
 
 // Import centralized business profile for NAP consistency
-import { getFormattedAddress, getPhoneNumber, getEmailAddress, getFormattedBusinessHours } from './business-profile';
+import {
+  getFormattedAddress,
+  getPhoneNumber,
+  getEmailAddress,
+  getFormattedBusinessHours,
+  getPhoneNumberInternational,
+  getPhoneNumberHref,
+  getPhoneNumberE164
+} from './business-profile';
+
+export const PHONE_NUMBER = {
+  display: getPhoneNumber(),
+  international: getPhoneNumberInternational(),
+  e164: getPhoneNumberE164(),
+  telLink: getPhoneNumberHref(),
+};
 
 export const CONTACT_INFO = {
   address: getFormattedAddress(),
-  phone: getPhoneNumber(),
+  phone: PHONE_NUMBER.display,
+  phoneInternational: PHONE_NUMBER.international,
+  phoneHref: PHONE_NUMBER.telLink,
   email: getEmailAddress(),
   hours: getFormattedBusinessHours('en').reduce((acc, item) => {
     const dayKey = item.day.toLowerCase();

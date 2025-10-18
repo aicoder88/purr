@@ -50,7 +50,7 @@ const Contact = dynamic(() => import('../src/components/sections/contact').then(
   ssr: false,
   loading: () => sectionSkeleton('h-80')
 });
-import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
@@ -217,7 +217,7 @@ export default function Home() {
                 },
                 "contactPoint": {
                   "@type": "ContactPoint",
-                  "telephone": t.structuredData.organization.contactPoint.telephone,
+                  "telephone": CONTACT_INFO.phoneInternational,
                   "email": t.structuredData.organization.contactPoint.email,
                   "contactType": t.structuredData.organization.contactPoint.contactType,
                   "areaServed": t.structuredData.organization.contactPoint.areaServed,

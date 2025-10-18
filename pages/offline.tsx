@@ -4,6 +4,7 @@ import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import { WifiOff, RefreshCw, Home, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { CONTACT_INFO } from '../src/lib/constants';
 
 const OfflinePage: NextPage = () => {
   const handleRetry = () => {
@@ -85,8 +86,8 @@ const OfflinePage: NextPage = () => {
                 <Phone className="w-4 h-4" />
                 <span className="text-sm">
                   Need urgent help? Call us at{' '}
-                  <a href="tel:+1-800-PURRIFY" className="text-[#5B2EFF] hover:underline">
-                    1-800-PURRIFY
+                  <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] hover:underline">
+                    {CONTACT_INFO.phone}
                   </a>
                 </span>
               </div>

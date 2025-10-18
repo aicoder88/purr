@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { CONTACT_INFO } from '../src/lib/constants';
 
 export default function B2B() {
   const { locale } = useTranslation();
@@ -576,11 +577,11 @@ export default function B2B() {
                       partners@purrify.ca
                     </a>
                     <a
-                      href="tel:+1-800-PURRIFY"
+                      href={CONTACT_INFO.phoneHref}
                       className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
                     >
                       <Phone className="h-4 w-4" />
-                      1-800-PURRIFY
+                      {CONTACT_INFO.phone}
                     </a>
                   </div>
                 </div>
@@ -606,8 +607,8 @@ export default function B2B() {
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 {locale === 'fr' ? 'Appelez-nous' : 'Call Us'}
               </h4>
-              <a href="tel:+1-800-PURRIFY" className="text-blue-600 dark:text-blue-400 hover:underline">
-                1-800-PURRIFY
+              <a href={CONTACT_INFO.phoneHref} className="text-blue-600 dark:text-blue-400 hover:underline">
+                {CONTACT_INFO.phone}
               </a>
             </div>
             <div className="text-center">

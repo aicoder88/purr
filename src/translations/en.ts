@@ -1,4 +1,5 @@
 import { FEATURE_DESCRIPTIONS } from './common';
+import { CONTACT_INFO } from '../lib/constants';
 
 export const en = {
   // Common
@@ -283,7 +284,7 @@ export const en = {
     title: "Contact Us",
     subtitle: "We're here to help",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "1-250-432-9352",
+    phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
     courriel: "hello@purrify.ca",
     hours: {
@@ -369,7 +370,7 @@ export const en = {
       description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural coconut shell carbon.",
       foundingDate: "2023",
       contactPoint: {
-        telephone: "1-250-432-9352",
+        telephone: CONTACT_INFO.phoneInternational,
         email: "hello@purrify.ca",
         contactType: "customer service",
         areaServed: ["CA", "US"],

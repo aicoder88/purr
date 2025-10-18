@@ -1,3 +1,5 @@
+import { CONTACT_INFO } from '../lib/constants';
+
 export const fr = {
   // Common
   siteName: "Purrify",
@@ -299,7 +301,7 @@ export const fr = {
     title: "Contactez-Nous",
     subtitle: "Nous sommes là pour vous aider",
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
-    phone: "1-250-432-9352",
+    phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
     courriel: "hello@purrify.ca",
     hours: {
@@ -385,7 +387,7 @@ export const fr = {
       description: "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec du charbon de coque de coco naturel.",
       foundingDate: "2023",
       contactPoint: {
-        telephone: "1-250-432-9352",
+        telephone: CONTACT_INFO.phoneInternational,
         email: "hello@purrify.ca",
         contactType: "service client",
         areaServed: ["CA", "US"],
@@ -1139,7 +1141,7 @@ export const fr = {
     ],
     contactInfo: {
       email: "hello@purrify.ca",
-      phone: "1-250-432-9352",
+      phone: CONTACT_INFO.phone,
       address: "Montréal, Canada"
     }
   },

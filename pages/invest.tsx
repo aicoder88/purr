@@ -4,6 +4,7 @@ import { Button } from '../src/components/ui/button';
 import NextImage from '../components/NextImage';
 import { useState, useCallback } from 'react';
 import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
+import { CONTACT_INFO } from '../src/lib/constants';
 
 export default function InvestorRelations() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -873,7 +874,7 @@ export default function InvestorRelations() {
                         Schedule Investor Call
                       </Button>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
-                        Or contact us directly: <a href="mailto:hello@purrify.ca" className="text-[#FF3131] hover:underline">hello@purrify.ca</a> • <a href="tel:+12504329352" className="text-[#FF3131] hover:underline">+1 250 432 9352</a>
+                        Or contact us directly: <a href="mailto:hello@purrify.ca" className="text-[#FF3131] hover:underline">hello@purrify.ca</a> • <a href={CONTACT_INFO.phoneHref} className="text-[#FF3131] hover:underline">{CONTACT_INFO.phone}</a>
                       </div>
                       <div className="text-xs text-gray-400 dark:text-gray-500">
                         Incorporated: BC1318076 | All financial projections are forward-looking statements

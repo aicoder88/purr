@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { DefaultSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import '../src/index.css';
-import { SITE_NAME, SITE_DESCRIPTION } from '../src/lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
 import Script from 'next/script';
 
 import { TranslationProvider } from '../src/lib/translation-context';
@@ -191,7 +191,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 contactPoint: [
                   {
                     '@type': 'ContactPoint',
-                    telephone: '1-250-432-9352',
+                    telephone: CONTACT_INFO.phoneInternational,
                     contactType: 'customer service',
                     areaServed: 'CA',
                     availableLanguage: ['English', 'French'],

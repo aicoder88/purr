@@ -7,7 +7,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { Input } from '../../src/components/ui/input';
 import { Textarea } from '../../src/components/ui/textarea';
-import { SITE_NAME } from '../../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -57,10 +57,10 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone Support",
-      value: "+1 250 432 9352",
+      value: CONTACT_INFO.phone,
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
-      action: "tel:+12504329352"
+      action: CONTACT_INFO.phoneHref
     }
     // Live chat temporarily disabled
     /*

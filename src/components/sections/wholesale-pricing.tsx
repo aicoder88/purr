@@ -2,6 +2,7 @@ import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { scrollToSection } from '../../lib/utils';
 import { useCallback, useMemo } from 'react';
+import { CONTACT_INFO } from '../../lib/constants';
 
 export function WholesalePricing() {
   const handleScrollToRetailer = useCallback(() => {
@@ -205,7 +206,7 @@ export function WholesalePricing() {
                 variant="outline"
                 className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
               >
-                📞 Call: 1-250-432-9352
+                📞 Call: {CONTACT_INFO.phone}
               </Button>
             </div>
           </div>

@@ -4,6 +4,12 @@
  * to ensure consistency across all local SEO implementations.
  */
 
+const PRIMARY_PHONE = {
+  display: '450.663.6773',
+  international: '+1 450 663 6773',
+  e164: '+14506636773',
+};
+
 export interface BusinessLocation {
   id: string;
   name: string;
@@ -72,7 +78,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
         postalCode: 'J7J 0T6',
         addressCountry: 'CA'
       },
-      phone: '1-250-432-9352',
+      phone: PRIMARY_PHONE.display,
       email: 'hello@purrify.ca',
       website: 'https://www.purrify.ca',
       geo: {
@@ -143,9 +149,17 @@ export const getFormattedAddress = (location?: BusinessLocation) => {
 };
 
 export const getPhoneNumber = (location?: BusinessLocation) => {
-  const loc = location || getPrimaryLocation();
-  return loc.phone;
+  if (location && location.phone) {
+    return location.phone;
+  }
+  return PRIMARY_PHONE.display;
 };
+
+export const getPhoneNumberInternational = () => PRIMARY_PHONE.international;
+
+export const getPhoneNumberE164 = () => PRIMARY_PHONE.e164;
+
+export const getPhoneNumberHref = () => `tel:${PRIMARY_PHONE.e164}`;
 
 export const getEmailAddress = (location?: BusinessLocation) => {
   const loc = location || getPrimaryLocation();
@@ -182,7 +196,7 @@ export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
     description: BUSINESS_PROFILE.description,
     foundingDate: BUSINESS_PROFILE.foundingDate,
     url: loc.website,
-    telephone: loc.phone,
+    telephone: getPhoneNumberInternational(),
     email: loc.email,
     address: {
       '@type': 'PostalAddress',
@@ -223,7 +237,7 @@ export const getCitationData = (location?: BusinessLocation) => {
   return {
     businessName: BUSINESS_PROFILE.name,
     address: getFormattedAddress(loc),
-    phone: loc.phone,
+    phone: getPhoneNumber(),
     website: loc.website,
     email: loc.email,
     categories: BUSINESS_PROFILE.businessCategories,
@@ -237,7 +251,7 @@ export const getCitationData = (location?: BusinessLocation) => {
 export const validateNAPConsistency = (name: string, address: string, phone: string) => {
   const primaryLocation = getPrimaryLocation();
   const expectedAddress = getFormattedAddress(primaryLocation);
-  const expectedPhone = primaryLocation.phone;
+  const expectedPhone = getPhoneNumber(primaryLocation);
 
   return {
     nameMatch: name === BUSINESS_PROFILE.name,

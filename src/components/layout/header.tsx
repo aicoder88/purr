@@ -286,11 +286,6 @@ export function Header() {
       hasDropdown: true
     },
     {
-      id: 'blog',
-      label: 'Blog',
-      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/blog`
-    },
-    {
       id: 'about',
       label: t.nav?.about || 'About',
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/about/our-story`
@@ -307,7 +302,7 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
               <Image
                 src="/optimized/purrify-logo-text.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"

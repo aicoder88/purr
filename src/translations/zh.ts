@@ -1,3 +1,5 @@
+import { CONTACT_INFO } from '../lib/constants';
+
 export const zh = {
   // Common
   siteName: "Purrify",
@@ -277,7 +279,7 @@ export const zh = {
     title: "联系我们",
     subtitle: "我们很乐意听到您的声音",
     address: "加拿大蒙特利尔",
-    phone: "1-250-432-9352",
+    phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
     courriel: "hello@purrify.ca",
     hours: {
@@ -404,7 +406,7 @@ export const zh = {
       description: "优质活性炭猫砂添加剂，在分子水平上消除异味。采用天然椰壳炭在加拿大制造。",
       foundingDate: "2023",
       contactPoint: {
-        telephone: "1-250-432-9352",
+        telephone: CONTACT_INFO.phoneInternational,
         email: "hello@purrify.ca",
         contactType: "客户服务",
         areaServed: ["CA", "US"],
@@ -1113,7 +1115,7 @@ export const zh = {
     ],
     contactInfo: {
       email: "hello@purrify.ca",
-      phone: "1-250-432-9352",
+      phone: CONTACT_INFO.phone,
       address: "加拿大蒙特利尔"
     }
   },

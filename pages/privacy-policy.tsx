@@ -1,5 +1,6 @@
 import React from "react";
 import { LocalizedMeta } from "../src/components/seo/LocalizedMeta";
+import { CONTACT_INFO } from "../src/lib/constants";
 
 const PrivacyPolicy = () => (
   <>
@@ -117,7 +118,7 @@ const PrivacyPolicy = () => (
           <strong>Mail:</strong> Purrify Privacy Officer, 123 Main Street, Montreal, QC H1A 1A1, Canada
         </p>
         <p className="text-gray-700 dark:text-gray-200">
-          <strong>Phone:</strong> <a href="tel:+1-800-PURRIFY" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300">1-800-PURRIFY</a>
+          <strong>Phone:</strong> <a href={CONTACT_INFO.phoneHref} className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300">{CONTACT_INFO.phone}</a>
         </p>
       </div>
 

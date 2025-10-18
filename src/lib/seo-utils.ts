@@ -410,7 +410,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: CONTACT_INFO.phone,
+      telephone: CONTACT_INFO.phoneInternational,
       email: CONTACT_INFO.email,
       contactType: 'customer service',
       areaServed: ['CA', 'US'],
@@ -626,7 +626,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: CONTACT_INFO.phone,
+      telephone: CONTACT_INFO.phoneInternational,
       email: CONTACT_INFO.email,
       contactType: 'customer service',
       areaServed: 'CA',

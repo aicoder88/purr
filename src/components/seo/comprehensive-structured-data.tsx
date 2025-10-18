@@ -86,7 +86,7 @@ export const ComprehensiveStructuredData: React.FC<PageStructuredDataProps> = ({
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: CONTACT_INFO.phone,
+        telephone: CONTACT_INFO.phoneInternational,
         contactType: 'customer service',
         email: CONTACT_INFO.email,
         areaServed: ['CA', 'US'],
