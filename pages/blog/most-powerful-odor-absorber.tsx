@@ -378,7 +378,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
             </div>
 
-            <RelatedArticles currentSlug="most-powerful-odor-absorber" />
+            <RelatedArticles currentPath="/blog/most-powerful-odor-absorber" />
           </div>
         </Container>
       </article>

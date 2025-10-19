@@ -948,6 +948,21 @@ export interface TranslationType {
         maintenance: string;
       };
     };
+    odorAbsorber: {
+      title: string;
+      description: string;
+      category: string;
+      publishDate: string;
+      readTime: string;
+      breadcrumb: string;
+      stats: {
+        title: string;
+        ammoniaReduction: string;
+        adsorptionSpeed: string;
+        safeUsage: string;
+        refreshTiming: string;
+      };
+    };
   };
 
   // Retailers & B2B
