@@ -8,9 +8,17 @@ import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
+  const trialSizeCtaLabel =
+    locale === 'fr'
+      ? `Essayer le format d'essai - ${trialPrice} (livraison incluse)`
+      : locale === 'zh'
+        ? `体验试用装 - ${trialPrice}（含运费）`
+        : `Try Trial Size - ${trialPrice} (shipping included)`;
   
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
@@ -329,7 +337,7 @@ export default function HowItWorksPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Try Trial Size - $4.99
+                    {trialSizeCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

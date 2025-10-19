@@ -7,7 +7,7 @@ export const PRODUCTS = [
     id: "purrify-12g",
     name: "Purrify 12g",
     description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
-    price: 6.99,
+    price: 4.99,
     image: "/optimized/20g.webp",
     size: "12g",
   },

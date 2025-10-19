@@ -170,7 +170,7 @@ export function EnhancedStructuredData() {
         },
         shippingRate: {
           '@type': 'MonetaryAmount',
-          value: product.price >= 50 ? '0' : '9.99',
+          value: product.id === 'purrify-12g' ? '0' : product.price >= 50 ? '0' : '9.99',
           currency: 'CAD'
         },
         deliveryTime: {

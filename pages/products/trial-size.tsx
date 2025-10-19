@@ -31,7 +31,11 @@ export default function TrialSizePage() {
   const trialPriceString = trialPriceValue.toFixed(2);
   const standardPriceString = standardPriceValue.toFixed(2);
   const familyPriceString = familyPriceValue.toFixed(2);
-
+  const trialCoverageCopy = {
+    en: 'Designed for one cat and up to one litter box cycle (approximately 7 days). Enough for 1–2 full cleanings or a week of maintenance scooping.',
+    fr: 'Conçu pour un chat et jusqu’à un cycle complet de litière (environ 7 jours). Suffisant pour 1 à 2 nettoyages complets ou une semaine d’entretien.',
+    zh: '适用于一只猫，大约可覆盖 7 天的猫砂使用量，可支撑 1-2 次全面换砂或一周日常维护。'
+  } as const;
   // Trial size lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Person trying new product
   const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat first time
@@ -47,7 +51,7 @@ export default function TrialSizePage() {
     "Enough for one complete litter box change",
     "Risk-free way to experience Purrify",
     "Same powerful formula as full-size products",
-    "Fast shipping - try it this week"
+    "Shipping included across Canada"
   ];
 
   const testimonials = [
@@ -173,7 +177,7 @@ export default function TrialSizePage() {
                     "@type": "OfferShippingDetails",
                     "shippingRate": {
                       "@type": "MonetaryAmount",
-                      "value": "4.99",
+                      "value": "0",
                       "currency": "CAD"
                     },
                     "deliveryTime": {
@@ -380,6 +384,18 @@ export default function TrialSizePage() {
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
                     12g Cat Litter Odor Control
                   </p>
+                  <div className="bg-[#E0EFC7]/70 dark:bg-[#5B2EFF]/10 border border-[#E0EFC7] dark:border-[#5B2EFF]/30 rounded-xl p-4 text-left mb-4">
+                    <h2 className="text-base sm:text-lg font-semibold text-[#5B2EFF] dark:text-[#5B9BFF] mb-1">
+                      {locale === 'fr'
+                        ? 'Conçu pour un chat • Couvre jusqu’à 1 semaine'
+                        : locale === 'zh'
+                          ? '适用于一只猫 • 约可使用 1 周'
+                          : 'Sized for one cat • Covers up to 1 week'}
+                    </h2>
+                    <p className="text-sm sm:text-base text-gray-700 dark:text-gray-200 leading-relaxed">
+                      {trialCoverageCopy[locale as 'en' | 'fr' | 'zh'] ?? trialCoverageCopy.en}
+                    </p>
+                  </div>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
@@ -388,9 +404,12 @@ export default function TrialSizePage() {
                     </div>
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
                   </div>
-                  <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-6">
+                  <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-1">
                     {trialPrice}
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+                    Shipping included anywhere in Canada.
+                  </p>
                 </div>
 
                 {/* Benefits List */}
@@ -435,7 +454,7 @@ export default function TrialSizePage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Fast shipping on orders over $25
+                    Shipping included anywhere in Canada
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
@@ -626,7 +645,7 @@ export default function TrialSizePage() {
 
                   <div className="flex items-center space-x-2 text-white dark:text-gray-100">
                     <Check className="w-5 h-5 text-[#03E46A]" />
-                    <span className="text-sm">Fast shipping over $25</span>
+                    <span className="text-sm">Shipping included across Canada</span>
                   </div>
                 </div>
 

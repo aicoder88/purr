@@ -22,9 +22,11 @@ import {
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 const ShippingPage: NextPage = () => {
   const { locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
   const canonicalPath = '/support/shipping';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -33,7 +35,7 @@ const ShippingPage: NextPage = () => {
     {
       name: "Standard Shipping",
       price: "Free on orders $25+",
-      paidPrice: "$4.99 under $25",
+      paidPrice: "Shipping included for trial size orders",
       time: "5-7 business days",
       description: "Reliable Canada Post delivery to your door",
       icon: Truck,
@@ -447,12 +449,12 @@ const ShippingPage: NextPage = () => {
                 Ready to Order Purrify?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Get fast, reliable delivery right to your door. Fast shipping on orders $25+.
+                Get fast, reliable delivery right to your door. Trial size shipping is included, and orders $25+ receive expedited handling across Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Order Trial Size - $4.99
+                    {`Order Trial Size - ${trialPrice} (shipping included)`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

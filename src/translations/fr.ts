@@ -1307,6 +1307,21 @@ export const fr = {
         moreDeodorizer: "Plus de désodorisant nécessaire",
         maintenance: "Entretien requis"
       }
+    },
+    odorAbsorber: {
+      title: "Absorbeur d'odeurs le plus puissant pour la litière : guide scientifique 2025",
+      description: "Découvrez les stratégies d'absorption d'odeurs les plus puissantes pour la litière. Comparez le carbone activé, la zéolite et les systèmes hybrides afin que votre maison puisse rester fraîche sans parfums agressifs.",
+      category: "Science et technologie des odeurs",
+      publishDate: "Publié le 19 octobre 2025",
+      readTime: "Lecture de 14 min",
+      breadcrumb: "Science des odeurs",
+      stats: {
+        title: "Repères sur l'élimination des odeurs",
+        ammoniaReduction: "Réduction d'ammoniac mesurée jusqu'à 92 % avec des couches de carbone activé",
+        adsorptionSpeed: "Structure poreuse capturant les molécules en moins de 60 secondes",
+        safeUsage: "Sans parfum, sans additifs - conçu pour les chats sensibles",
+        refreshTiming: "Rafraîchir le carbone à chaque ramassage ou ajout de litière pour garder l'efficacité"
+      }
     }
   }
 };

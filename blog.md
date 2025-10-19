@@ -1135,7 +1135,7 @@ I've been using [Purrify Activated Carbon Cat Litter Deodorizer](#) for 8 weeks 
 - ✅ Fragrance-free formula
 - ✅ Lasts 6-8 weeks per container
 
-**Current readers can try the trial size for $6.99** (risk-free way to test if activated carbon works for your cats)
+**Current readers can try the trial size for $4.99 (shipping included)** (risk-free way to test if activated carbon works for your cats)
 
 [CTA Button: Try Purrify Trial Size]
 [Secondary CTA: Learn More About Activated Carbon]

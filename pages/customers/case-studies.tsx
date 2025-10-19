@@ -19,9 +19,11 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 const CaseStudiesPage: NextPage = () => {
   const { locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
   const canonicalPath = '/customers/case-studies';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -230,7 +232,7 @@ const CaseStudiesPage: NextPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
-                    Start Your Success Story - $4.99
+                    {`Start Your Success Story - ${trialPrice} (shipping included)`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -390,7 +392,7 @@ const CaseStudiesPage: NextPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
-                    Start Your Trial - $4.99
+                    {`Start Your Trial - ${trialPrice} (shipping included)`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

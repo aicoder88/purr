@@ -2,8 +2,14 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import { useTranslation } from '../../src/lib/translation-context';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function ApartmentCatSmellSolutionPage() {
+  const { locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
+  const riskFreeLabel = `Try Purrify Risk-Free - ${trialPrice} (shipping included)`;
+  const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
   const seoTitle = 'Apartment Cat Smell Solution | Purrify';
   const seoDescription = 'Eliminate cat odors in apartments with activated carbon. Perfect for small spaces, works with any litter. Breathe easy again!';
   const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
@@ -116,7 +122,7 @@ export default function ApartmentCatSmellSolutionPage() {
                   href="/products/trial-size"
                   className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                 >
-                  Try Purrify Risk-Free - $4.99
+                  {riskFreeLabel}
                 </Link>
               </div>
             </div>
@@ -266,7 +272,7 @@ export default function ApartmentCatSmellSolutionPage() {
                   href="/products/trial-size"
                   className="bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                 >
-                  Start Your Trial - $4.99
+                  {startTrialLabel}
                 </Link>
                 <Link
                   href="/learn/how-it-works"

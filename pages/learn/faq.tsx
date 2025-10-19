@@ -33,6 +33,12 @@ const FAQPage: NextPage = () => {
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
+  const trialCtaLabel =
+    locale === 'fr'
+      ? `Essayer sans risque - ${trialPrice} (livraison incluse)`
+      : locale === 'zh'
+        ? `无风险试用 - ${trialPrice}（含运费）`
+        : `Try Risk-Free - ${trialPrice} (shipping included)`;
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -566,7 +572,7 @@ const FAQPage: NextPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Try Risk-Free - $4.99
+                    {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

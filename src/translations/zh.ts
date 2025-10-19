@@ -1281,6 +1281,21 @@ export const zh = {
         moreDeodorizer: "需要更多除臭剂",
         maintenance: "所需维护"
       }
+    },
+    odorAbsorber: {
+      title: "猫砂最强异味吸附剂：2025 科学指南",
+      description: "探索猫砂盒最强的异味吸附策略，对比活性炭、沸石与混合系统，让你的家可以在无刺激香味的情况下保持清新。",
+      category: "气味科学与技术",
+      publishDate: "发布于 2025年10月19日",
+      readTime: "14分钟阅读",
+      breadcrumb: "气味科学",
+      stats: {
+        title: "除味性能指标",
+        ammoniaReduction: "实验数据显示活性炭层可降低高达92%的氨浓度",
+        adsorptionSpeed: "多孔结构可在60秒内锁住异味分子",
+        safeUsage: "无香精、无化学添加 - 为敏感猫设计",
+        refreshTiming: "每次清铲或补砂时补充炭层以保持效果"
+      }
     }
   }
 };

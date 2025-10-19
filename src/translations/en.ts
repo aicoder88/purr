@@ -1266,6 +1266,21 @@ export const en = {
         moreDeodorizer: "More deodorizer needed",
         maintenance: "Maintenance required"
       }
+    },
+    odorAbsorber: {
+      title: "Most Powerful Odor Absorber for Cat Litter: Science-Backed 2025 Guide",
+      description: "Discover the most powerful odor absorber strategies for cat litter boxes. Compare activated carbon, zeolite, and hybrid systems so your home may stay fresh without harsh perfumes.",
+      category: "Odor Science & Technology",
+      publishDate: "Published October 19, 2025",
+      readTime: "14 min read",
+      breadcrumb: "Odor Science",
+      stats: {
+        title: "Odor Elimination Benchmarks",
+        ammoniaReduction: "Independent lab data shows up to 92% ammonia reduction with activated carbon layers",
+        adsorptionSpeed: "Porous carbon structure traps odor molecules in under 60 seconds",
+        safeUsage: "Fragrance-free, no added chemicals-designed for sensitive cats",
+        refreshTiming: "Refresh carbon every scoop or litter top-up for consistent performance"
+      }
     }
   },
 

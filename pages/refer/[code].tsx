@@ -363,7 +363,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 </Button>
 
                 <p className="text-sm opacity-75">
-                  Fast shipping • No commitment • 100% satisfaction guarantee
+                  Shipping included • No commitment • 100% satisfaction guarantee
                 </p>
               </div>
             </div>

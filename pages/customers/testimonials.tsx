@@ -9,9 +9,11 @@ import { Button } from '../../src/components/ui/button';
 import { SITE_NAME } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function TestimonialsPage() {
   const { t, locale } = useTranslation();
+  const trialPrice = formatProductPrice('trial', locale);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const handleCategoryButtonClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     const { categoryId } = event.currentTarget.dataset;
@@ -332,7 +334,7 @@ export default function TestimonialsPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-800 text-[#5B2EFF] hover:bg-gray-100 dark:bg-gray-700 font-bold">
-                    Start with Trial Size - $4.99
+                    {`Start with Trial Size - ${trialPrice} (shipping included)`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

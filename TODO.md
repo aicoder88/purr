@@ -321,7 +321,7 @@ Context / exclusions:
 
 #### 1. Dual Incentive System
 - **Referrer Reward**: 15% discount on next purchase
-- **Referee Reward**: Free 12g trial size (normally $6.99)
+- **Referee Reward**: Free 12g trial size (normally $4.99 with shipping included)
 - **Bonus**: After 3 successful referrals, referrer gets free 50g standard size
 
 #### 2. Social Sharing Tools
