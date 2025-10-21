@@ -167,14 +167,14 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-50g',
       name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
-      subtitle: t.enhancedProductComparison?.autoshipHero || t.enhancedProductComparison?.mostPopular || 'Most Popular',
+      subtitle: t.enhancedProductComparison?.autoshipHero || t.enhancedProductComparison?.mostPopular || 'Regular Size',
       badge: t.enhancedProductComparison?.autoshipHighlight || 'SUBSCRIBE & SAVE',
       badgeColor: 'bg-green-500',
       description:
         t.enhancedProductComparison?.idealForSingleCat ||
         'Ideal for single-cat households with quarterly autoship savings.',
-      duration: t.productComparison?.products?.[1]?.duration || '4-6 weeks',
-      coverage: t.productComparison?.products?.[1]?.cats || '1-3 cats',
+      duration: t.productComparison?.products?.[1]?.duration || 'Up to 1 month of freshness!',
+      coverage: t.productComparison?.products?.[1]?.cats || '1-2 cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
