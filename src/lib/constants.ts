@@ -197,7 +197,17 @@ export const SOCIAL_LINKS = {
   linkedin: BUSINESS_PROFILE.socialMedia.linkedin ?? 'https://www.linkedin.com/company/purrify',
   youtube: BUSINESS_PROFILE.socialMedia.youtube ?? 'https://www.youtube.com/@PurrifyHQ',
   tiktok: BUSINESS_PROFILE.socialMedia.tiktok ?? 'https://www.tiktok.com/@purrifyhq',
-  facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/purrify'
+  facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/purrify',
+  trustpilot: BUSINESS_PROFILE.socialMedia.trustpilot ?? 'https://www.trustpilot.com/review/purrify.ca',
+  googleBusiness: BUSINESS_PROFILE.socialMedia.googleBusiness ?? 'https://share.google/S4ckzwuljW3gDUOqr',
+  googleReviews: BUSINESS_PROFILE.socialMedia.googleReviews ?? 'https://g.page/r/CUB8bZ_ibMbwEBI/review',
+  crunchbase: BUSINESS_PROFILE.socialMedia.crunchbase ?? 'https://www.crunchbase.com/organization/purrify',
+  bingPlaces: BUSINESS_PROFILE.socialMedia.bingPlaces ?? 'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
+  yelp: BUSINESS_PROFILE.socialMedia.yelp ?? 'https://biz.yelp.com/settings',
+  medium: BUSINESS_PROFILE.socialMedia.medium ?? 'https://medium.com/@purrify',
+  whop: BUSINESS_PROFILE.socialMedia.whop ?? 'https://whop.com/purrify',
+  producthunt: BUSINESS_PROFILE.socialMedia.producthunt ?? 'https://www.producthunt.com/products/purrify',
+  wellfound: BUSINESS_PROFILE.socialMedia.wellfound ?? 'https://wellfound.com/company/purrify'
 } as const;
 
 export const CONTACT_INFO = {

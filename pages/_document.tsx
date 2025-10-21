@@ -60,8 +60,18 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
                 'https://x.com/PurrifyHQ',
                 'https://www.instagram.com/purrifyhq/',
                 'https://www.linkedin.com/company/purrify',
+                'https://www.tiktok.com/@purrifyhq',
                 'https://www.youtube.com/@PurrifyHQ',
                 'https://www.trustpilot.com/review/purrify.ca',
+                'https://share.google/S4ckzwuljW3gDUOqr',
+                'https://g.page/r/CUB8bZ_ibMbwEBI/review',
+                'https://www.crunchbase.com/organization/purrify',
+                'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
+                'https://biz.yelp.com/settings',
+                'https://medium.com/@purrify',
+                'https://whop.com/purrify',
+                'https://www.producthunt.com/products/purrify',
+                'https://wellfound.com/company/purrify'
               ],
               contactPoint: {
                 '@type': 'ContactPoint',

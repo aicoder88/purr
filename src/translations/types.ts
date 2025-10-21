@@ -180,6 +180,24 @@ export interface TranslationType {
     adding: string;
     viewAllProducts: string;
   };
+
+  pricing?: {
+    oneTimeLabel: string;
+    autoshipLabel: string;
+    autoshipBestLabel: string;
+    billedEvery: string;
+    months: string;
+    shippingIncluded: string;
+    freeShipping: string;
+    plusShipping: string;
+    shippingCalculated: string;
+    startAutoship: string;
+    buyNow: string;
+    linkComingSoon: string;
+    recommended: string;
+    perMonth: string;
+    saveVsOneTime: string;
+  };
   
   // Stores Section
   storesSection?: {

@@ -53,6 +53,16 @@ export interface BusinessProfile {
     linkedin?: string;
     youtube?: string;
     tiktok?: string;
+    trustpilot?: string;
+    googleBusiness?: string;
+    googleReviews?: string;
+    crunchbase?: string;
+    bingPlaces?: string;
+    yelp?: string;
+    medium?: string;
+    whop?: string;
+    producthunt?: string;
+    wellfound?: string;
   };
   businessCategories: string[];
   serviceAreas: string[];
@@ -108,7 +118,17 @@ export const BUSINESS_PROFILE: BusinessProfile = {
     twitter: 'https://x.com/PurrifyHQ',
     linkedin: 'https://www.linkedin.com/company/purrify',
     youtube: 'https://www.youtube.com/@PurrifyHQ',
-    tiktok: 'https://www.tiktok.com/@purrifyhq'
+    tiktok: 'https://www.tiktok.com/@purrifyhq',
+    trustpilot: 'https://www.trustpilot.com/review/purrify.ca',
+    googleBusiness: 'https://share.google/S4ckzwuljW3gDUOqr',
+    googleReviews: 'https://g.page/r/CUB8bZ_ibMbwEBI/review',
+    crunchbase: 'https://www.crunchbase.com/organization/purrify',
+    bingPlaces: 'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
+    yelp: 'https://biz.yelp.com/settings',
+    medium: 'https://medium.com/@purrify',
+    whop: 'https://whop.com/purrify',
+    producthunt: 'https://www.producthunt.com/products/purrify',
+    wellfound: 'https://wellfound.com/company/purrify'
   },
 
   businessCategories: [
