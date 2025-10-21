@@ -52,7 +52,7 @@ export const PRODUCTS = [
     id: "purrify-120g-autoship",
     name: "Purrify 120g Autoship",
     description: "Best value bundle\n3×120g family packs delivered every quarter with free shipping and deepest savings.",
-    price: 50,
+    price: 49.99,
     image: "/optimized/140g.webp",
     size: "3 × 120g (quarterly)",
     shippingIncluded: true,

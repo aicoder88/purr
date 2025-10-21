@@ -432,7 +432,7 @@ export default function MostPowerfulOdorAbsorber() {
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link
                       href="/products/standard"
-                      className="px-6 py-3 bg-[#FF3131] text-white rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
+                      className="px-6 py-3 bg-[#FF3131] text-white dark:text-gray-100 rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
                     >
                       Shop Purrify 50g Standard
                     </Link>

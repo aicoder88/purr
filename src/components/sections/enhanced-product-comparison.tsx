@@ -458,7 +458,7 @@ export function EnhancedProductComparison() {
                         return (
                           <div key={option.key} className={cardClass}>
                             {option.badgeLabel ? (
-                              <div className="absolute -top-3 right-4 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border border-white/30">
+                              <div className="absolute -top-3 right-4 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold backdrop-blur-sm border border-white/30 whitespace-nowrap">
                                 {option.badgeLabel}
                               </div>
                             ) : null}
@@ -487,10 +487,17 @@ export function EnhancedProductComparison() {
                                 ) : null}
                               </div>
                               {option.savings ? (
-                                <div
-                                  className={`${isHighlighted ? 'bg-white text-[#FF3131]' : 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'} px-3 py-1.5 rounded-full text-xs font-semibold border ${isHighlighted ? 'border-white/70' : 'border-green-200 dark:border-green-700'}`}
-                                >
-                                  {formatSavingsLabel(option.savings)}
+                                <div className="flex flex-col items-end gap-1">
+                                  <div
+                                    className={`${isHighlighted ? 'bg-white text-[#FF3131]' : 'bg-gradient-to-r from-green-500 to-green-600 text-white dark:text-gray-100'} px-4 py-2 rounded-lg text-sm sm:text-base font-black border-2 ${isHighlighted ? 'border-white shadow-lg' : 'border-green-400 shadow-xl'} transform hover:scale-105 transition-transform`}
+                                  >
+                                    {formatSavingsLabel(option.savings)}
+                                  </div>
+                                  {isHighlighted && option.shippingNote?.toLowerCase().includes('free') && (
+                                    <div className="text-[10px] sm:text-xs font-bold text-white/90 dark:text-gray-100 uppercase tracking-wide">
+                                      + Free Shipping
+                                    </div>
+                                  )}
                                 </div>
                               ) : null}
                             </div>
