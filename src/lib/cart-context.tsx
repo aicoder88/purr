@@ -1,6 +1,29 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { PRODUCTS } from './constants';
-import { safeTrackEvent } from './analytics';
+
+type IdleRequestCallback = (deadline: { readonly didTimeout: boolean; timeRemaining: () => number }) => void;
+type IdleRequestOptions = { timeout?: number };
+
+const scheduleIdleTask = (task: () => void): (() => void) | undefined => {
+  if (typeof window === 'undefined') return undefined;
+
+  const win = window as Window & {
+    requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    cancelIdleCallback?: (handle: number) => void;
+  };
+
+  if (typeof win.requestIdleCallback === 'function') {
+    const handle = win.requestIdleCallback(() => task(), { timeout: 500 });
+    return () => {
+      if (typeof win.cancelIdleCallback === 'function') {
+        win.cancelIdleCallback(handle);
+      }
+    };
+  }
+
+  const timeoutId = window.setTimeout(task, 120);
+  return () => window.clearTimeout(timeoutId);
+};
 
 interface CartItem {
   id: string;
@@ -77,35 +100,40 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Load cart from encrypted localStorage on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    const savedCart = secureStorage.getItem('cart');
-    const savedCheckoutStarted = secureStorage.getItem('checkoutStarted');
-    const savedLastActivity = secureStorage.getItem('lastActivity');
-    
-    if (savedCart) {
-      try {
-        const parsedCart = JSON.parse(savedCart);
-        if (Array.isArray(parsedCart)) {
-          setItems(parsedCart);
+
+    const cancelIdle = scheduleIdleTask(() => {
+      const savedCart = secureStorage.getItem('cart');
+      const savedCheckoutStarted = secureStorage.getItem('checkoutStarted');
+      const savedLastActivity = secureStorage.getItem('lastActivity');
+
+      if (savedCart) {
+        try {
+          const parsedCart = JSON.parse(savedCart);
+          if (Array.isArray(parsedCart)) {
+            setItems(parsedCart);
+          }
+        } catch (err) {
+          console.error('Failed to parse saved cart:', err);
+          secureStorage.removeItem('cart');
         }
-      } catch (err) {
-        console.error('Failed to parse saved cart:', err);
-        // Clear corrupted data
-        secureStorage.removeItem('cart');
       }
-    }
-    
-    if (savedCheckoutStarted === 'true') {
-      setCheckoutStarted(true);
-    }
-    
-    if (savedLastActivity) {
-      try {
-        setLastActivity(new Date(savedLastActivity));
-      } catch (err) {
-        console.error('Invalid last activity date:', err);
+
+      if (savedCheckoutStarted === 'true') {
+        setCheckoutStarted(true);
       }
-    }
+
+      if (savedLastActivity) {
+        try {
+          setLastActivity(new Date(savedLastActivity));
+        } catch (err) {
+          console.error('Invalid last activity date:', err);
+        }
+      }
+    });
+
+    return () => {
+      cancelIdle?.();
+    };
   }, []);
 
   // Define getTotalPrice function before it's used
@@ -156,11 +184,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
       // Only track if user has consented to analytics
       if (hasTrackingConsent()) {
-        safeTrackEvent('cart_abandoned', {
-          event_category: 'ecommerce',
-          event_label: recoveryType,
-          value: getTotalPrice()
-        });
+        void import('./analytics')
+          .then(({ safeTrackEvent }) => {
+            safeTrackEvent('cart_abandoned', {
+              event_category: 'ecommerce',
+              event_label: recoveryType,
+              value: getTotalPrice()
+            });
+          })
+          .catch(err => {
+            console.debug('Deferred analytics module failed to load:', err);
+          });
       }
     } catch (err) {
       console.error('Cart recovery failed:', err);
@@ -178,48 +212,52 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     recoveryTimersRef.current.forEach(timer => clearTimeout(timer));
     recoveryTimersRef.current = [];
 
-    // Only set up timers if cart has items and checkout hasn't started
-    if (items.length === 0 || checkoutStarted || isUnmountingRef.current) {
-      return;
-    }
+    let cleanupFn: (() => void) | undefined;
 
-    const now = new Date();
-    setLastActivity(now);
-    
-    // Save encrypted data
-    secureStorage.setItem('cart', JSON.stringify(items));
-    secureStorage.setItem('lastActivity', now.toISOString());
-    
-    // 1 hour abandonment timer
-    const oneHourTimer = setTimeout(() => {
-      if (isUnmountingRef.current) return;
-      setCartAbandoned(true);
-      triggerCartRecovery('1h');
-    }, 60 * 60 * 1000);
-    
-    // 24 hour recovery timer
-    const twentyFourHourTimer = setTimeout(() => {
-      if (isUnmountingRef.current) return;
-      triggerCartRecovery('24h');
-    }, 24 * 60 * 60 * 1000);
-    
-    // 72 hour final recovery timer
-    const seventyTwoHourTimer = setTimeout(() => {
-      if (isUnmountingRef.current) return;
-      triggerCartRecovery('72h');
-    }, 72 * 60 * 60 * 1000);
-
-    abandonmentTimerRef.current = oneHourTimer;
-    recoveryTimersRef.current = [twentyFourHourTimer, seventyTwoHourTimer];
-
-    // Cleanup function
-    return () => {
-      if (abandonmentTimerRef.current) {
-        clearTimeout(abandonmentTimerRef.current);
-        abandonmentTimerRef.current = null;
+    const cancelIdle = scheduleIdleTask(() => {
+      // Only set up timers if cart has items and checkout hasn't started
+      if (items.length === 0 || checkoutStarted || isUnmountingRef.current) {
+        return;
       }
-      recoveryTimersRef.current.forEach(timer => clearTimeout(timer));
-      recoveryTimersRef.current = [];
+
+      const now = new Date();
+      setLastActivity(now);
+
+      secureStorage.setItem('cart', JSON.stringify(items));
+      secureStorage.setItem('lastActivity', now.toISOString());
+
+      const oneHourTimer = setTimeout(() => {
+        if (isUnmountingRef.current) return;
+        setCartAbandoned(true);
+        triggerCartRecovery('1h');
+      }, 60 * 60 * 1000);
+
+      const twentyFourHourTimer = setTimeout(() => {
+        if (isUnmountingRef.current) return;
+        triggerCartRecovery('24h');
+      }, 24 * 60 * 60 * 1000);
+
+      const seventyTwoHourTimer = setTimeout(() => {
+        if (isUnmountingRef.current) return;
+        triggerCartRecovery('72h');
+      }, 72 * 60 * 60 * 1000);
+
+      abandonmentTimerRef.current = oneHourTimer;
+      recoveryTimersRef.current = [twentyFourHourTimer, seventyTwoHourTimer];
+
+      cleanupFn = () => {
+        if (abandonmentTimerRef.current) {
+          clearTimeout(abandonmentTimerRef.current);
+          abandonmentTimerRef.current = null;
+        }
+        recoveryTimersRef.current.forEach(timer => clearTimeout(timer));
+        recoveryTimersRef.current = [];
+      };
+    });
+
+    return () => {
+      cancelIdle?.();
+      cleanupFn?.();
     };
   }, [items, checkoutStarted, triggerCartRecovery]);
 
