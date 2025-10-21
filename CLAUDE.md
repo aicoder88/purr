@@ -2,16 +2,45 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Quick Reference
+
+**First Time Setup:**
+```bash
+npm install
+npm run dev                    # Start development server
+```
+
+**Before Every Commit (MANDATORY):**
+```bash
+npm run validate-dark-mode     # Must pass (0 errors) - CRITICAL
+npm run check-types            # Must pass (0 errors)
+npm run lint                   # Must pass (<50 warnings)
+```
+
+**Common Tasks:**
+- **Add new page** → Use Pages Router in `pages/` (NOT App Router!)
+- **Add text** → Use `useTranslation()` hook, add keys to `src/translations/{en,fr,zh}.ts`
+- **Style component** → Include `dark:` variants on ALL color classes (text, bg, border)
+- **Debug hot reload** → `npm run clear-cache && npm run dev`
+- **Test single file** → `npx jest <file> --watch` or `npx playwright test <file>`
+
+**Emergency Debugging:**
+- Build failing? → Check dark mode violations (`npm run validate-dark-mode`) and TypeScript errors first
+- Payment failing? → Check Stripe dashboard webhook logs
+- Translation missing? → `npm run test:translations`
+
+---
+
 ## Project Context
 
 Purrify is a Next.js 15 e-commerce website for activated carbon cat litter additive. Production system requiring dark mode compliance, multi-language support, and secure payment processing.
 
 **Critical Constraints:**
-- Pages Router (NOT App Router) 
+- Pages Router (NOT App Router)
 - Dark mode mandatory on ALL elements
 - Multi-language: en, fr, zh
 - Stripe payments protected
-- No competitor brand names
+- No competitor brand names in content (legal risk)
 
 ## Tech Stack
 
@@ -25,68 +54,94 @@ Purrify is a Next.js 15 e-commerce website for activated carbon cat litter addit
 ### Key Architecture
 
 **State Management:**
-- Cart: React Context with encrypted localStorage (`src/lib/cart-context.tsx`) - Uses CryptoJS for encryption
-- i18n: React Context with Next.js i18n (`src/lib/translation-context.tsx`) - Supports en/fr/zh
-- Theme: Built-in Next.js theme system with automatic persistence
+- **Cart**: React Context with encrypted localStorage (`src/lib/cart-context.tsx`) - Uses CryptoJS for encryption
+- **i18n**: React Context with Next.js i18n (`src/lib/translation-context.tsx`) - Supports en/fr/zh
+- **Theme**: Built-in Next.js theme system with automatic persistence
 
 **Directory Structure:**
 ```
 pages/                         # Next.js Pages Router (NOT App Router!)
-├── api/                       # 19+ API routes
+├── api/                       # API routes
 │   ├── create-checkout-session.ts    # Stripe checkout (protected)
 │   ├── webhooks/stripe.ts            # Payment webhooks (protected)
-│   ├── [analytics|referrals|etc]/    # Feature-specific routes
-│   └── security/               # Security/validation routes
-├── blog/                       # Dynamic blog posts
-├── learn/                      # Educational content
-├── [locale]/                   # Multi-language routes (fr/, zh/)
-└── [other page routes]         # Static pages
+│   ├── analytics/             # Analytics & tracking endpoints
+│   ├── referrals/             # Referral program endpoints
+│   └── security/              # Security/validation routes
+├── blog/                      # Dynamic blog posts
+├── learn/                     # Educational content
+├── [locale]/                  # Multi-language routes (fr/, zh/)
+└── [other routes]             # Landing, product, location pages
 
 src/
-├── components/                 # 80+ React components
+├── components/                # 80+ React components
 │   ├── sections/              # Full-width page sections (Hero, CTA, etc.)
 │   ├── ui/                    # 40+ shadcn/ui components
-│   ├── layout/                # Reusable layout (Header, Footer, Nav)
-│   ├── mobile/                # Mobile-specific optimized components
+│   ├── layout/                # Header, Footer, Navigation
+│   ├── mobile/                # Mobile-optimized components
 │   ├── social-proof/          # Testimonials, trust signals
 │   ├── seo/                   # Structured data, schema.org JSON-LD
-│   └── performance/           # Performance monitoring components
-├── lib/                        # 30+ utility files
-│   ├── cart-context.tsx       # Shopping cart state management
-│   ├── translation-context.tsx # i18n translation provider
-│   ├── seo-utils.ts           # SEO optimization helpers
+│   └── performance/           # Performance monitoring
+├── lib/                       # Utility libraries
+│   ├── cart-context.tsx       # Shopping cart state
+│   ├── translation-context.tsx # i18n provider
+│   ├── seo-utils.ts           # SEO helpers
 │   ├── analytics.ts           # Event tracking & GTM
-│   ├── conversion-optimizer.ts # Landing page optimization
-│   └── [other utilities]      # Payment, cache, performance, etc.
-├── translations/              # i18n data files
-│   ├── en.ts                  # English translations
-│   ├── fr.ts                  # French translations
-│   └── zh.ts                  # Chinese translations
-├── data/                      # Static data, config, constants
-└── types/                     # TypeScript interfaces & types
+│   ├── payment-security.ts    # Payment validation
+│   └── [30+ other utilities]
+├── translations/              # i18n data
+│   ├── en.ts                  # English
+│   ├── fr.ts                  # French
+│   └── zh.ts                  # Chinese
+├── data/                      # Static data, config
+└── types/                     # TypeScript interfaces
 
-scripts/                        # 20+ build & optimization scripts
-├── dark-mode-validator.js     # Validates dark mode compliance
-├── optimize-images.js         # Image optimization pipeline
-├── generate-sitemap.js        # SEO sitemap generation
-└── [other scripts]            # Performance, SEO, cache utilities
+scripts/                       # Build & optimization scripts
+├── dark-mode-validator.js     # Dark mode compliance validator
+├── validate-blog-images.js    # Blog image validator
+├── optimize-images.js         # Image optimization
+└── [40+ other scripts]        # SEO, performance, cache utilities
 
 prisma/
 └── schema.prisma              # PostgreSQL database schema
 
 public/
 ├── optimized/                 # Auto-generated optimized images
-├── original-images/           # Source images for optimization
-└── [other static assets]
+└── original-images/           # Source images
 ```
 
-**Page Types & Routing:**
+**Page Types:**
 - Landing pages: `pages/index.tsx`, `/products/*`
 - Learn pages: `/learn/*` (FAQ, How-it-works, Science)
-- Location pages: `/locations/*` for local SEO targeting
-- Blog: `/blog/[slug].tsx` dynamic routes with SEO
-- Multi-language: Routes duplicated under `/fr/` and `/zh/` prefixes
+- Location pages: `/locations/*` for local SEO
+- Blog: `/blog/[slug].tsx` dynamic routes
+- Multi-language: Routes under `/fr/` and `/zh/` prefixes
 - Admin: `/admin/*` protected routes
+
+## Environment Variables
+
+Create `.env.local` in project root:
+
+```bash
+# Stripe (Payment Processing)
+STRIPE_SECRET_KEY=sk_test_...              # Stripe secret key
+NEXT_PUBLIC_STRIPE_KEY=pk_test_...         # Stripe publishable key
+STRIPE_WEBHOOK_SECRET=whsec_...            # Stripe webhook secret
+
+# Database
+DATABASE_URL=postgresql://...              # PostgreSQL connection string
+
+# NextAuth
+NEXTAUTH_URL=http://localhost:3000         # App URL
+NEXTAUTH_SECRET=...                        # Random secret (32+ chars)
+
+# Email (EmailJS)
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=...         # EmailJS service ID
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=...        # EmailJS template ID
+NEXT_PUBLIC_EMAILJS_USER_ID=...            # EmailJS public key
+
+# Analytics (Optional)
+NEXT_PUBLIC_GTM_ID=GTM-...                 # Google Tag Manager ID
+```
 
 ## Essential Commands
 
@@ -94,34 +149,34 @@ public/
 # Development
 npm run dev                    # Start dev server
 npm run predev                 # Clear cache first (use before dev)
-npm run clear-cache           # Clear webpack cache if hot reload stuck
+npm run clear-cache            # Clear webpack cache if hot reload stuck
 
 # Pre-commit (MANDATORY - run before every git commit)
-npm run lint                   # ESLint validation
-npm run check-types           # TypeScript strict mode checking
-npm run validate-dark-mode    # Dark mode compliance (BUILD BLOCKS WITHOUT)
-npm run validate-blog-images  # Verify all blog images exist
+npm run lint                   # ESLint validation (max 50 warnings)
+npm run check-types            # TypeScript strict mode checking
+npm run validate-dark-mode     # Dark mode compliance (CRITICAL - 0 errors)
+npm run validate-blog-images   # Verify all blog images exist
 
 # Testing
-npm run test:translations     # Jest translation completeness test
-npm run test:e2e              # Playwright end-to-end tests
-npm run test:e2e -- --debug   # Run e2e tests in debug mode
+npm run test:translations      # Jest translation completeness test
+npm run test:e2e               # Playwright end-to-end tests
+npm run test:e2e -- --debug    # Run e2e tests in debug mode
 
 # Build & Deploy
-npm run build                 # Production build (runs prebuild + postbuild)
-npm run start                 # Start production server locally
-npm run analyze               # Build with bundle analysis enabled
+npm run build                  # Production build (runs prebuild + postbuild)
+npm run start                  # Start production server locally
+npm run analyze                # Build with bundle analysis enabled
 
 # Optimization & Analysis
-npm run performance:audit     # Complete audit (SEO + bundle + cache)
-npm run seo:optimize          # Run SEO optimizations
-npm run bundle:analyze        # Analyze bundle size
-npm run optimize-images       # Optimize single image
-npm run optimize-all-images   # Optimize all images in batch
-npm run add-image-dimensions  # Add width/height metadata to images
+npm run performance:audit      # Complete audit (SEO + bundle + cache)
+npm run seo:optimize           # Run SEO optimizations
+npm run bundle:analyze         # Analyze bundle size
+npm run optimize-images        # Optimize single image
+npm run optimize-all-images    # Optimize all images in batch
+npm run add-image-dimensions   # Add width/height metadata to images
 
 # Vercel & Cache
-npm run purge-vercel-cache    # Clear Vercel edge cache after deploy
+npm run purge-vercel-cache     # Clear Vercel edge cache after deploy
 ```
 
 ### Testing Single Tests
@@ -250,6 +305,18 @@ className="bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 borde
 className="text-white dark:text-gray-100 bg-red-500 hover:bg-red-600 dark:hover:bg-red-400"
 ```
 
+**PREVENTION: Enhanced Validation System**
+The enhanced validator catches ALL color violations:
+- Background colors: `bg-white`, `bg-blue-50`, etc.
+- Border colors: `border-gray-200`, `border-blue-200`, etc.
+- Text colors: `text-white`, `text-gray-900`, etc.
+
+**Auto-Prevention Tools:**
+1. **Pre-commit Hook**: `.husky/pre-commit` blocks commits with violations
+2. **VSCode Snippets**: `.vscode/snippets.code-snippets` provides `darkbg`, `darktext`, `darkbox` shortcuts
+3. **Enhanced Validator**: Catches 496+ violations across background/border/text patterns
+4. **Blog Image Validator**: `npm run validate-blog-images` ensures all blog preview images exist
+
 ### Protected Systems
 - `/api/create-checkout-session` (Stripe payments)
 - `/api/webhooks/stripe` (Payment webhooks)
@@ -265,59 +332,13 @@ className="text-white dark:text-gray-100 bg-red-500 hover:bg-red-600 dark:hover:
 - Reference `/docs/LEGAL_STRATEGY.md` before creating comparison content
 - All text via `useTranslation` hook
 
-### Location Page Guidelines (CRITICAL)
+### Location Page Guidelines
 
-**MANDATORY: All location pages MUST follow partnership positioning - NEVER competitive messaging**
-
-#### Partnership Positioning (✅ ALWAYS USE)
-Location pages position Purrify as partnering WITH local pet stores, not competing against them:
-
-```tsx
-// ✅ CORRECT - Partnership Section
-<section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-  <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-50">
-    Where to Find Purrify in {city.name}
-  </h2>
-  <div className="space-y-4">
-    <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
-      <h3 className="text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
-        Ask Your Local Pet Store
-      </h3>
-      <p className="text-gray-700 dark:text-gray-200">
-        Visit your favorite {city.name} pet store and ask them to stock Purrify!
-      </p>
-      <p className="text-sm text-gray-600 dark:text-gray-300">
-        We work with retailers like {city.competitors.join(', ')} and independent stores
-      </p>
-    </div>
-    <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
-      <h3 className="text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
-        Order Direct
-      </h3>
-      <p className="text-gray-700 dark:text-gray-200 mb-4">
-        Can't find us in stores? Order directly with free shipping to {city.name}
-      </p>
-      <Link href="/products/trial-size" className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100">
-        Shop Online Now
-      </Link>
-    </div>
-  </div>
-</section>
-```
-
-#### ❌ NEVER USE: Competitive Messaging
-```tsx
-// ❌ WRONG - Competitive comparison (legal risk!)
-<h2>Better Than Local {city.name} Pet Stores</h2>
-<div className="bg-red-50 dark:bg-red-900/20">
-  <h3>Local Pet Stores ({city.competitors.join(', ')})</h3>
-  <ul>
-    <li>❌ Limited product selection</li>
-    <li>❌ Higher prices due to overhead</li>
-    <li>❌ Chemical-based deodorizers</li>
-  </ul>
-</div>
-```
+**Partnership Positioning (Required):**
+- Position Purrify as partnering WITH local pet stores, not competing against them
+- Include "Ask Your Local Pet Store" section mentioning store names
+- Provide direct order option as alternative
+- Avoid competitive language ("better than", "cheaper than")
 
 **Why Partnership Positioning?**
 1. **Legal Protection**: Avoids disparagement claims from retailers
@@ -325,81 +346,34 @@ Location pages position Purrify as partnering WITH local pet stores, not competi
 3. **Local SEO**: Positive association with local business names
 4. **Brand Trust**: Collaborative vs combative positioning
 
-#### City-Specific Testimonial Guidelines
+**City-Specific Testimonials (Required):**
+- 2 unique testimonials per city with local context
+- Reference: local industries, housing types, climate, lifestyle
+- Use region-appropriate names (first name + last initial)
+- Make testimonials authentic with specific details
 
-**MANDATORY: Every location page needs 2 unique, authentic-sounding testimonials with city-specific context**
-
-**Testimonial Formula:**
-1. **Contextual Detail**: Reference local lifestyle, geography, or demographics
-2. **Authentic Problem**: Real pain point specific to that city's context
-3. **Specific Solution**: How Purrify solved their unique situation
-4. **Real Names**: Use common first names + last initial for that region
-
-**Examples by City Type:**
-
+**Example Partnership Section:**
 ```tsx
-// ✅ Calgary (Oil industry, dry climate, urban professionals)
-"As a busy oil industry professional, I needed something that actually worked.
-Purrify eliminated the litter box smell in my downtown condo completely!"
-- Jennifer K., Calgary
-
-"Finally found a natural solution that works in Alberta's dry climate.
-My two cats love it and my home stays fresh!"
-- David T., Calgary
-
-// ✅ Ottawa (Government workers, bilingual, work-from-home)
-"Working from home in Ottawa means my apartment needs to stay fresh.
-Purrify handles my cat's litter box odor perfectly - even during video meetings!"
-- Marie L., Ottawa
-
-"My bilingual household now has one thing in common - we all agree
-Purrify is the best odor solution we've found in the capital!"
-- Philippe D., Ottawa
-
-// ✅ Vancouver (Eco-conscious, condos, West Coast lifestyle)
-"Perfect for our eco-conscious household! Natural odor control that actually works."
-- Emma T., Vancouver
-
-"Finally something that keeps my condo fresh! No more worrying about
-guests noticing the litter box."
-- Jason P., Vancouver
-
-// ✅ Montreal (French culture, urban density, artistic community)
-"Dans mon petit appartement du Plateau, Purrify garde l'air frais même avec deux chats!"
-- Sophie B., Montreal
-
-"As an artist with limited space, I need efficient solutions.
-Purrify works perfectly in my Mile End studio."
-- Alex M., Montreal
+<section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+  <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-50">
+    Where to Find Purrify in {city.name}
+  </h2>
+  <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+    <h3 className="text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
+      Ask Your Local Pet Store
+    </h3>
+    <p className="text-gray-700 dark:text-gray-200">
+      Visit your favorite {city.name} pet store and ask them to stock Purrify!
+    </p>
+  </div>
+</section>
 ```
 
-**❌ NEVER USE: Generic Template Testimonials**
+**❌ NEVER USE Competitive Messaging:**
 ```tsx
-// ❌ WRONG - No city context, sounds fake
-"Living in {city.name} with three cats was challenging until I found Purrify.
-The odor control is incredible!"
-- Sarah M., {city.name}
-
-// ❌ WRONG - No authentic detail
-"I tried everything at pet stores in {city.name}. Nothing worked like Purrify!"
-- Mike R., {city.name}
+// ❌ WRONG - Competitive comparison (legal risk!)
+<h2>Better Than Local {city.name} Pet Stores</h2>
 ```
-
-**City Context Research Checklist:**
-Before writing location page testimonials, research:
-- [ ] Major local industries (oil, tech, government, tourism)
-- [ ] Housing types (condos, apartments, houses)
-- [ ] Lifestyle characteristics (eco-conscious, outdoorsy, urban)
-- [ ] Demographics (young professionals, families, retirees)
-- [ ] Climate considerations (dry, humid, extreme temperatures)
-- [ ] Cultural elements (bilingual, artistic, sports-focused)
-
-**Validation:**
-Every location page testimonial must answer YES to:
-1. Does it reference something specific to this city?
-2. Would someone from that city recognize the context?
-3. Does it sound authentic, not like a template?
-4. Is the problem/solution contextually relevant?
 
 ## Development Standards
 
@@ -417,6 +391,8 @@ interface SlideMeta {
   duration: number;
 }
 ```
+
+**Note:** Some optimizer files (`src/lib/*-optimizer.ts`) explicitly allow `any` types - this is intentional.
 
 ### React Hooks Compliance
 ```typescript
@@ -437,41 +413,28 @@ setState(prev => prev + 1);
 ### Component Checklist (MANDATORY BEFORE COMMIT)
 - [ ] **DARK MODE: Every text element has `dark:text-*` variant**
 - [ ] **DARK MODE: All `text-white` includes `dark:text-gray-100`**
-- [ ] **DARK MODE: All colored text has dark variants**
+- [ ] **DARK MODE: All colored backgrounds have dark variants**
+- [ ] **DARK MODE: All borders have dark variants**
 - [ ] **DARK MODE: `npm run validate-dark-mode` passes with 0 errors**
-- [ ] TypeScript strict compliance
+- [ ] TypeScript strict compliance (0 errors)
+- [ ] ESLint compliance (<50 warnings)
 - [ ] Mobile responsive (44px+ touch targets)
-- [ ] Keyboard navigation
-- [ ] WCAG AA contrast ratios
+- [ ] Keyboard navigation works
+- [ ] WCAG AA contrast ratios met
 
-**Pre-Commit Dark Mode Validation:**
-```bash
-npm run validate-dark-mode  # MUST show 0 errors
-```
+## Blog & Content Requirements
 
-**PREVENTION: Enhanced Validation System**
-The enhanced validator now catches ALL color violations:
-- Background colors: `bg-white`, `bg-blue-50`, etc.
-- Border colors: `border-gray-200`, `border-blue-200`, etc.
-- Text colors: `text-white`, `text-gray-900`, etc.
-
-**Auto-Prevention Tools:**
-1. **Pre-commit Hook**: `.husky/pre-commit` blocks commits with violations
-2. **VSCode Snippets**: `.vscode/snippets.code-snippets` provides `darkbg`, `darktext`, `darkbox` shortcuts
-3. **Enhanced Validator**: Catches 496+ violations across background/border/text patterns
-4. **Blog Image Validator**: `npm run validate-blog-images` ensures all blog preview images exist
-
-## Blog Image Requirements
+### Blog Image Requirements
 
 **MANDATORY: All blog posts need accessible preview images**
 
-### Image Standards:
+**Image Standards:**
 - **Location**: Store in `/public/optimized/` folder
 - **Format**: `.webp` preferred for best performance
 - **Size**: Minimum 1200x800px for quality previews
 - **Naming**: Use descriptive names (`multi-cat-household.webp`)
 
-### Prevention System:
+**Prevention System:**
 ```bash
 npm run validate-blog-images  # Check all blog post images exist
 ```
@@ -480,6 +443,31 @@ npm run validate-blog-images  # Check all blog post images exist
 **USE:** Local optimized images in `/public/optimized/` folder
 
 **Fallback System:** NextImage component includes `onError` handler that falls back to `/optimized/140g.webp`
+
+**Every blog post should have 3-4 high-quality images:**
+1. **Hero Image** (main article image for social sharing)
+2. **Section Images** (2-3 supporting visuals throughout content)
+3. **Solution/Result Image** (showing positive outcome)
+
+**Image Selection Criteria:**
+- High quality (minimum 1600x1067 resolution)
+- Contextual relevance (match blog post topic)
+- Professional look (clean, bright, impressive)
+- Cat-related (cats, litter boxes, homes, pet care)
+- Emotional appeal (evoke pain points or solutions)
+
+### SEO & Content Guidelines
+
+**ALWAYS reference keyword research before content updates:**
+- Primary file: `/docs/cat odor keywords.xlsx`
+- Strategy guide: `/docs/SEO_KEYWORD_STRATEGY.md`
+
+**Content optimization checklist:**
+- Target emotional pain points (embarrassment, frustration)
+- Use benefit-driven headlines with numbers
+- Include high-converting keywords naturally
+- Remove money-back guarantee language (company policy)
+- "Military-grade" is trust signal only, not SEO keyword
 
 ## Performance Standards
 
@@ -497,15 +485,16 @@ npm run validate-blog-images  # Check all blog post images exist
 
 **Must pass before commit:**
 ```bash
-eslint --max-warnings=0     # Zero warnings
-tsc --noEmit               # Zero TypeScript errors
-npm run validate-dark-mode  # All elements compliant
+npm run check-types            # 0 TypeScript errors
+npm run lint                   # <50 ESLint warnings (configured in pre-commit hook)
+npm run validate-dark-mode     # 0 dark mode violations
 ```
 
-**Common lint rules:**
-- `react-hooks/exhaustive-deps`: Include all dependencies
-- `@typescript-eslint/no-explicit-any`: No `any` types
-- `@next/next/no-img-element`: Use Next.js `Image`
+**Common ESLint rules (see `eslint.config.js`):**
+- `@typescript-eslint/no-unused-vars`: 'warn'
+- `react-hooks/exhaustive-deps`: 'warn'
+- `@typescript-eslint/no-explicit-any`: 'off' for optimizer files
+- `@next/next/no-img-element`: Use Next.js `Image` component
 
 ## Debugging & Troubleshooting
 
@@ -514,7 +503,7 @@ npm run validate-dark-mode  # All elements compliant
 **Hot reload not working?**
 ```bash
 npm run predev  # Clear webpack cache
-npm run dev    # Restart dev server
+npm run dev     # Restart dev server
 ```
 
 **Dark mode validation failing?**
@@ -536,7 +525,7 @@ npm run validate-blog-images  # Check which images are missing
 ```
 
 **Stripe checkout failing?**
-- Verify STRIPE_SECRET_KEY and NEXT_PUBLIC_STRIPE_KEY in .env
+- Verify STRIPE_SECRET_KEY and NEXT_PUBLIC_STRIPE_KEY in .env.local
 - Check Stripe dashboard for webhook logs
 - Ensure webhook endpoint is registered in Stripe settings
 
@@ -549,7 +538,6 @@ npm run test:translations  # Identifies missing keys
 **Performance degradation?**
 ```bash
 npm run performance:audit  # Complete performance check
-# Check bundle size, cache hits, Core Web Vitals
 npm run analyze            # Interactive bundle analysis
 ```
 
@@ -564,7 +552,7 @@ npm run analyze            # Interactive bundle analysis
 **Build failures:** Usually dark mode violations or TypeScript errors
 - Run `npm run validate-dark-mode` and `npm run check-types` first
 - Check recent commit changes before pushing
-- Never force push main branch
+- Never force push to main branch
 
 **Payment issues:** Check Stripe dashboard/webhooks
 - Verify test keys in development
@@ -576,183 +564,110 @@ npm run analyze            # Interactive bundle analysis
 - Core Web Vitals failing? Check image optimization
 - Lighthouse scores dropping? Check CSS specificity
 
-## Changelog (MANDATORY)
-Document every session in `/CHANGELOG.md`:
-```markdown
-## [YYYY-MM-DD] - [Brief Description]  
-### Issues Found
-- [Technical problem]
-### Changes Made  
-- [File]: [Change] - [Reason]
-### Testing Done
-- [Validation completed]
-```
+## Deployment & Verification
 
----
+### Git Development Branch Requirements
 
-## Business Requirements
+**DEVELOP** on feature branches starting with `claude/` and ending with session ID.
 
-### B2B vs B2C Path Strategy
-**Current State:** Single consumer-focused e-commerce site
-**Required:** Dual-path experience for retailers vs consumers
+**Git push requirements:**
+- Always use: `git push -u origin <branch-name>`
+- Branch MUST start with `claude/` and end with matching session ID
+- If push fails with 403, verify branch name format
+- For network errors: retry up to 4 times with exponential backoff (2s, 4s, 8s, 16s)
 
-**Implementation Approach:**
-- Header navigation: Add "For Retailers" vs "Shop Now" paths
-- Retailer portal: Wholesale pricing, minimum orders, marketing support
-- Consumer path: Direct checkout, individual pricing
-- Conditional component rendering based on user type
-- Separate checkout flows and pricing logic
-
-### Customer Segmentation
-- **B2C**: Individual cat owners, direct Stripe checkout
-- **B2B**: Pet stores, retailers, wholesale accounts
-- **Target Markets**: Canada (primary), US expansion planned
-
-## Critical API Endpoints
-
-```typescript
-// Stripe Integration
-/api/create-checkout-session     # Consumer checkout
-/api/webhooks/stripe            # Payment processing
-/api/payment-validation         # Security validation
-
-// Business Logic
-/api/cart-recovery             # Abandoned cart emails
-/api/analytics/conversion-metrics  # Performance tracking
-/api/trial-conversion          # Trial to full conversion
-
-// Content Management
-/api/blog-posts               # Dynamic blog content
-/api/newsletter              # Email subscriptions
-```
-
----
-
-**Code Quality Promise:** All code output will be production-ready with zero lint warnings, complete TypeScript compliance, full dark mode coverage, and performance optimized.
-
-## SEO & Content Creation Guidelines
-
-**ALWAYS reference keyword research before content updates:**
-- Primary file: `/docs/cat odor keywords.xlsx`
-- Strategy guide: `/docs/SEO_KEYWORD_STRATEGY.md`
-
-**Content optimization checklist:**
-- Target emotional pain points (embarrassment, frustration)
-- Use benefit-driven headlines with numbers
-- Include high-converting keywords naturally
-- Remove money-back guarantee language (company policy)
-- "Military-grade" is trust signal only, not SEO keyword
-
-## Deployment Verification Protocol
-
-**MANDATORY: Always verify deployment after pushing changes**
-
-### Step 1: Push and Deploy
+**Example:**
 ```bash
-git add . && git commit -m "..." && git push
+git push -u origin claude/feature-name-SESSION123
 ```
 
-### Step 2: Verify Build Success
-Use Vercel MCP to check deployment status:
+### Deployment Verification Protocol
+
+**After pushing changes:**
+
+**Option 1: If Vercel MCP is available:**
 ```bash
-# Check latest deployment
-mcp__vercel__list_deployments (get latest ID)
-mcp__vercel__get_deployment (check state: BUILDING -> READY)
+# Check latest deployment status
+mcp__vercel__list_deployments
+mcp__vercel__get_deployment <deployment-id>
 ```
 
-### Step 3: Production Validation
-If deployment state = "READY":
+**Option 2: Manual verification:**
+1. Push changes: `git push`
+2. Visit Vercel dashboard to check deployment status
+3. Wait for status to show "READY" (not "BUILDING" or "ERROR")
+4. Test production URL once deployed
+
+**Production Validation Checklist:**
 - ✅ Visit production URL to verify changes are live
 - ✅ Test key functionality (forms, navigation, dark mode)
 - ✅ Check mobile responsiveness
 - ✅ Verify SEO meta tags in view source
 
-### Step 4: Handle Build Failures
-If deployment state = "ERROR":
-- Check build logs: `mcp__vercel__get_deployment_build_logs`
-- Fix TypeScript/lint errors locally
-- Re-run `npm run check-types` and `npm run lint`
-- Push fix and repeat verification
-
-## Blog Image Requirements
-
-**MANDATORY: Every blog post needs 3-4 high-quality images**
-
-### Image Sources (Commercial-Use Approved):
-- **Unsplash.com** (primary) - Always use `?auto=format&fit=crop&w=1600&q=80`
-- **Pexels.com** (secondary) - Free commercial use
-- **Pixabay.com** (tertiary) - Check license before use
-
-### Image Selection Criteria:
-- **High Quality**: Minimum 1600x1067 resolution
-- **Contextual Relevance**: Must match blog post topic exactly
-- **Professional Look**: Clean, bright, impressive visuals
-- **Cat-Related**: Prefer images with cats, litter boxes, homes, or pet care
-- **Emotional Appeal**: Images that evoke the pain points or solutions
-
-### Required Images Per Blog Post:
-1. **Hero Image** (main article image for social sharing)
-2. **Section Images** (2-3 supporting visuals throughout content)
-3. **Solution/Result Image** (showing positive outcome)
-
-### Implementation:
-```typescript
-// Always use these variable names and structure:
-const heroImage = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
-const sectionImage1 = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
-const solutionImage = 'https://images.unsplash.com/photo-ID?auto=format&fit=crop&w=1600&q=80';
-
-// Update all meta tags:
-<meta property="og:image" content={heroImage} />
-<meta name="twitter:image" content={heroImage} />
-```
-
-### Image Testing Protocol:
-After adding images to blog posts, ALWAYS:
-1. Use Playwright MCP to test image loading and display
-2. Verify images fit context and look professional
-3. Check mobile responsiveness of images
-4. Confirm images load fast and don't break layout
-
-### Common Image Keywords for Cat Blog Posts:
-- "cat litter box clean"
-- "happy cat home"
-- "pet care supplies"
-- "apartment with cat"
-- "multiple cats household"
-- "cleaning supplies natural"
-- "fresh home interior"
-
-## Deployment & Quality Assurance
-
-### Quick Deployment Check
-After pushing commits, verify deployment with minimal overhead:
-
-```bash
-# Fast deployment verification (30s max)
-mcp__vercel__list_deployments | check latest state = "READY"
-# If ERROR, only then check build logs
-```
-
-### Pre-Commit Validation (MANDATORY)
-```bash
-npm run validate-dark-mode    # 0 errors required
-npm run lint                  # 0 warnings required
-npm run check-types          # 0 errors required
-```
-
-### Success Criteria:
-- Latest deployment state: "READY" ✅
-- Dark mode validation: 0 errors ✅
-- TypeScript compilation: 0 errors ✅
-- ESLint validation: 0 warnings ✅
-
-### Build Failure Recovery:
-Only if deployment shows "ERROR":
-1. Check build logs: `mcp__vercel__get_deployment_build_logs`
-2. Fix issues (usually dark mode or TypeScript violations)
+**Build Failure Recovery:**
+If deployment shows "ERROR":
+1. Check build logs
+2. Fix TypeScript/lint/dark-mode errors locally
 3. Re-run pre-commit validation before pushing
+4. Push fix and repeat verification
 
 **Vercel Project Info:**
 - Project: `prj_4U4S5H54ifEUlIrWw8ebYtvxZBT2`
 - Team: `team_9MD2gEmcma1CnApg7QalkGj8`
+
+## Business Context
+
+### B2B vs B2C Strategy
+**Current State:** Single consumer-focused e-commerce site
+**Future Direction:** Dual-path experience for retailers vs consumers
+
+**Customer Segmentation:**
+- **B2C**: Individual cat owners, direct Stripe checkout
+- **B2B**: Pet stores, retailers, wholesale accounts
+- **Target Markets**: Canada (primary), US expansion planned
+
+### Critical API Endpoints
+
+```typescript
+// Stripe Integration
+/api/create-checkout-session     # Consumer checkout
+/api/webhooks/stripe             # Payment processing
+/api/payment-validation          # Security validation
+
+// Business Logic
+/api/cart-recovery               # Abandoned cart emails
+/api/analytics/conversion-metrics # Performance tracking
+/api/trial-conversion            # Trial to full conversion
+
+// Content Management
+/api/blog-posts                  # Dynamic blog content
+/api/newsletter                  # Email subscriptions
+```
+
+---
+
+## Git Operations
+
+**For git push:**
+- Always use `git push -u origin <branch-name>`
+- CRITICAL: Branch must start with `claude/` and end with matching session ID
+- Only retry for network errors (up to 4 times with exponential backoff)
+
+**For git fetch/pull:**
+- Prefer fetching specific branches: `git fetch origin <branch-name>`
+- For pulls: `git pull origin <branch-name>`
+- Retry on network failures (up to 4 times with exponential backoff)
+
+**Creating commits:**
+- Only commit when explicitly requested by user
+- NEVER skip hooks (--no-verify, --no-gpg-sign)
+- NEVER force push to main/master
+- Use heredoc for commit messages to ensure proper formatting
+
+**GitHub CLI (`gh`):**
+- Not available in this environment
+- For GitHub issues, ask user to provide necessary information directly
+
+---
+
+**Code Quality Promise:** All code output will be production-ready with zero lint errors, complete TypeScript compliance, full dark mode coverage, and performance optimized.
