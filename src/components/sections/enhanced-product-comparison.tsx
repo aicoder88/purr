@@ -85,9 +85,7 @@ export function EnhancedProductComparison() {
     handleAddToCart(productId);
   }, [handleAddToCart]);
 
-  const standardPriceAmount = getProductPrice('standard');
   const familyPriceAmount = getProductPrice('family');
-  const standardAutoshipPriceAmount = getProductPrice('standardAutoship');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');
 
   const computeQuarterlySavings = (oneTimePrice: number, subscriptionPrice: number) => {
@@ -127,7 +125,6 @@ export function EnhancedProductComparison() {
     bestValueBadge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
   };
 
-  const standardAutoshipSavings = computeQuarterlySavings(standardPriceAmount, standardAutoshipPriceAmount);
   const familyAutoshipSavings = computeQuarterlySavings(familyPriceAmount, familyAutoshipPriceAmount);
 
   const products: ProductCard[] = [
@@ -191,22 +188,6 @@ export function EnhancedProductComparison() {
       image: '/optimized/60g.webp',
       purchaseOptions: [
         {
-          key: 'standard-autoship',
-          type: 'subscription',
-          label: pricingCopy.autoshipLabel,
-          priceFormatted: formatProductPrice('standardAutoship', locale),
-          subLabel: `${pricingCopy.billedEvery} 3 ${pricingCopy.months}`,
-          perMonth: formatPerMonthLabel(standardAutoshipPriceAmount / 3),
-          shippingNote: pricingCopy.shippingIncluded,
-          savings: standardAutoshipSavings,
-          action: 'link',
-          linkKey: 'standardAutoship',
-          ctaLabel: pricingCopy.startAutoship,
-          icon: 'zap',
-          highlight: true,
-          ctaEmphasis: 'contrast',
-        },
-        {
           key: 'standard-single',
           type: 'one-time',
           label: pricingCopy.oneTimeLabel,
@@ -218,7 +199,7 @@ export function EnhancedProductComparison() {
           ctaLabel: t.homepage.enhancedComparison.chooseThisSize,
           icon: 'cart',
           cartProductId: 'purrify-50g',
-          ctaEmphasis: 'secondary',
+          ctaEmphasis: 'primary',
         },
       ],
     },
