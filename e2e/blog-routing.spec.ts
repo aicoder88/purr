@@ -6,7 +6,7 @@ test.describe('Blog Routing Functionality', () => {
     await page.goto('/blog/how-to-use-cat-litter-deodorizer');
 
     // Should load successfully without 404 or routing errors
-    await expect(page).toHaveTitle(/How to Use Cat Litter Deodorizer/i);
+    await expect(page).toHaveTitle(/Cat Litter Deodorizer Additive: Step-by-Step Guide/i);
     await expect(page.locator('h1')).toBeVisible();
 
     // Check that the page content loaded properly
@@ -59,9 +59,9 @@ test.describe('Blog Routing Functionality', () => {
     // Test that our routing fixes don't break i18n
     await page.goto('/blog/how-to-use-cat-litter-deodorizer');
 
-    // Check that locale detection works (default should be 'en')
+    // Check that locale detection works (default should be 'en-CA')
     const htmlLang = await page.locator('html').getAttribute('lang');
-    expect(htmlLang).toBe('en');
+    expect(htmlLang).toBe('en-CA');
 
     // Page should load without i18n conflicts
     await expect(page.locator('h1')).toBeVisible();

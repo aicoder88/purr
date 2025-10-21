@@ -224,6 +224,15 @@
     "avifSanitized": "optimized/coquette-finegueule.avif",
     "optimized": "optimized/coquette-finegueule.png"
   },
+  "cats and filters.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/cats and filters.webp",
+    "webpSanitized": "optimized/cats-and-filters.webp",
+    "avif": "optimized/cats and filters.avif",
+    "avifSanitized": "optimized/cats-and-filters.avif",
+    "optimized": "optimized/cats and filters.png"
+  },
   "cat_rose_thumbnail.jpg": {
     "width": 500,
     "height": 340,
@@ -232,6 +241,33 @@
     "avif": "optimized/cat_rose_thumbnail.avif",
     "avifSanitized": "optimized/cat_rose_thumbnail.avif",
     "optimized": "optimized/cat_rose_thumbnail.jpg"
+  },
+  "cat_long_lasting_freshness_card_640x400.png": {
+    "width": 640,
+    "height": 400,
+    "webp": "optimized/cat_long_lasting_freshness_card_640x400.webp",
+    "webpSanitized": "optimized/cat_long_lasting_freshness_card_640x400.webp",
+    "avif": "optimized/cat_long_lasting_freshness_card_640x400.avif",
+    "avifSanitized": "optimized/cat_long_lasting_freshness_card_640x400.avif",
+    "optimized": "optimized/cat_long_lasting_freshness_card_640x400.png"
+  },
+  "cat_long_lasting_freshness_800x500.png": {
+    "width": 800,
+    "height": 500,
+    "webp": "optimized/cat_long_lasting_freshness_800x500.webp",
+    "webpSanitized": "optimized/cat_long_lasting_freshness_800x500.webp",
+    "avif": "optimized/cat_long_lasting_freshness_800x500.avif",
+    "avifSanitized": "optimized/cat_long_lasting_freshness_800x500.avif",
+    "optimized": "optimized/cat_long_lasting_freshness_800x500.png"
+  },
+  "cat-favorite-litter.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/cat-favorite-litter.webp",
+    "webpSanitized": "optimized/cat-favorite-litter.webp",
+    "avif": "optimized/cat-favorite-litter.avif",
+    "avifSanitized": "optimized/cat-favorite-litter.avif",
+    "optimized": "optimized/cat-favorite-litter.png"
   },
   "carbon_magnified_image.png": {
     "width": 1024,

@@ -206,12 +206,12 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-120g',
       name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
-      subtitle: pricingCopy.bestValueBadge,
-      badge: pricingCopy.bestValueBadge,
-      badgeColor: 'bg-purple-600',
+      subtitle: '🏆 PREMIUM FAMILY PACK',
+      badge: '💎 BEST VALUE',
+      badgeColor: 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500',
       description:
         t.enhancedProductComparison?.perfectForMultiCat ||
-        'Perfect for multi-cat households and allergy-prone homes.',
+        '⚡ Ultimate protection for multi-cat homes. Eliminate odors for months, not days.',
       duration: t.productComparison?.products?.[2]?.duration || '8-12 weeks',
       coverage: t.productComparison?.products?.[2]?.cats || '3+ cats',
       features: {
@@ -228,24 +228,24 @@ export function EnhancedProductComparison() {
         {
           key: 'family-autoship',
           type: 'subscription',
-          label: pricingCopy.autoshipBestLabel,
+          label: '💰 ULTIMATE SAVINGS PLAN',
           priceFormatted: formatProductPrice('familyAutoship', locale),
-          subLabel: `${pricingCopy.billedEvery} 3 ${pricingCopy.months}`,
+          subLabel: `Auto-delivered every 3 ${pricingCopy.months} • Cancel anytime`,
           perMonth: formatPerMonthLabel(familyAutoshipPriceAmount / 3),
-          shippingNote: pricingCopy.freeShipping,
+          shippingNote: '🚚 FREE Premium Shipping Always',
           savings: familyAutoshipSavings,
           action: 'link',
           linkKey: 'familyAutoship',
-          ctaLabel: pricingCopy.startAutoship,
+          ctaLabel: '🔥 CLAIM YOUR SAVINGS NOW',
           icon: 'zap',
           highlight: true,
-          badgeLabel: `${pricingCopy.bestValueBadge} • ${pricingCopy.recommended}`,
+          badgeLabel: `💎 VIP EXCLUSIVE • ${pricingCopy.recommended}`,
           ctaEmphasis: 'contrast',
         },
         {
           key: 'family-single',
           type: 'one-time',
-          label: pricingCopy.oneTimeLabel,
+          label: 'One-Time Purchase',
           priceFormatted: formatProductPrice('family', locale),
           subLabel: pricingCopy.plusShipping,
           shippingNote: pricingCopy.shippingCalculated,
@@ -273,7 +273,7 @@ export function EnhancedProductComparison() {
       secondary:
         'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]',
       contrast:
-        'bg-white text-[#FF3131] hover:bg-white/90 dark:bg-gray-100 dark:text-[#FF3131] shadow-xl hover:shadow-2xl',
+        'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-500 text-gray-900 dark:text-gray-900 hover:from-amber-300 hover:via-yellow-300 hover:to-amber-300 dark:hover:from-amber-400 dark:hover:via-yellow-400 dark:hover:to-amber-400 shadow-2xl hover:shadow-3xl font-black uppercase tracking-widest transform hover:scale-105 transition-all duration-200 border-4 border-white dark:border-gray-900 animate-pulse-button',
     };
 
     const buttonClass = `${baseClass} ${emphasisClassMap[option.ctaEmphasis || 'secondary']}`;
@@ -434,55 +434,59 @@ export function EnhancedProductComparison() {
                       .map(option => {
                         const isHighlighted = option.highlight;
                         const cardClass = isHighlighted
-                          ? 'relative overflow-hidden rounded-2xl border border-[#FF3131]/40 bg-gradient-to-br from-[#FF3131]/95 via-[#FF3131]/85 to-[#FF3131]/75 text-white dark:text-gray-100 p-5 shadow-2xl'
+                          ? 'relative overflow-hidden rounded-3xl border-4 border-amber-400 dark:border-amber-500 bg-gradient-to-br from-purple-600 via-fuchsia-600 to-pink-600 dark:from-purple-700 dark:via-fuchsia-700 dark:to-pink-700 text-white dark:text-gray-100 p-6 shadow-2xl transform hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle'
                           : 'rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-md';
                         return (
                           <div key={option.key} className={cardClass}>
+                            {/* Animated shimmer effect for highlighted option */}
+                            {isHighlighted && (
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent animate-shimmer pointer-events-none" />
+                            )}
+
                             {option.badgeLabel ? (
-                              <div className="absolute -top-3 right-4 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold backdrop-blur-sm border border-white/30 whitespace-nowrap">
+                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 whitespace-nowrap uppercase tracking-wider animate-bounce-subtle">
                                 {option.badgeLabel}
                               </div>
                             ) : null}
-                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                              <div>
-                                <p className={`text-xs uppercase tracking-wide font-semibold ${isHighlighted ? 'text-white/80' : 'text-[#FF3131]'}`}>
+
+                            <div className="flex flex-col gap-5 mt-2">
+                              <div className="text-center">
+                                <p className={`text-sm uppercase tracking-widest font-black mb-3 ${isHighlighted ? 'text-amber-300 dark:text-amber-200' : 'text-[#FF3131]'}`}>
                                   {option.label}
                                 </p>
-                                <div className={`text-2xl sm:text-3xl font-bold ${isHighlighted ? 'text-white' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
+                                <div className={`text-5xl sm:text-6xl font-black mb-2 ${isHighlighted ? 'text-white dark:text-white drop-shadow-2xl' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
                                   {option.priceFormatted}
                                 </div>
                                 {option.perMonth ? (
-                                  <p className={`text-sm font-medium ${isHighlighted ? 'text-white/85' : 'text-gray-700 dark:text-gray-200'}`}>
+                                  <p className={`text-lg font-bold mb-2 ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
                                     {option.perMonth}
                                   </p>
                                 ) : null}
                                 {option.subLabel ? (
-                                  <p className={`text-xs mt-1 ${isHighlighted ? 'text-white/80' : 'text-gray-600 dark:text-gray-300'}`}>
+                                  <p className={`text-sm ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
                                     {option.subLabel}
                                   </p>
                                 ) : null}
                                 {option.shippingNote ? (
-                                  <p className={`text-xs mt-1 font-medium ${isHighlighted ? 'text-white' : 'text-gray-700 dark:text-gray-200'}`}>
-                                    {option.shippingNote}
-                                  </p>
+                                  <div className={`mt-3 inline-block ${isHighlighted ? 'bg-white/20 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-700'} px-4 py-2 rounded-full`}>
+                                    <p className={`text-sm font-bold ${isHighlighted ? 'text-white dark:text-white' : 'text-gray-700 dark:text-gray-200'}`}>
+                                      {option.shippingNote}
+                                    </p>
+                                  </div>
                                 ) : null}
                               </div>
+
                               {option.savings ? (
-                                <div className="flex flex-col items-end gap-1">
+                                <div className="flex justify-center">
                                   <div
-                                    className={`${isHighlighted ? 'bg-white text-[#FF3131]' : 'bg-gradient-to-r from-green-500 to-green-600 text-white dark:text-gray-100'} px-4 py-2 rounded-lg text-sm sm:text-base font-black border-2 ${isHighlighted ? 'border-white shadow-lg' : 'border-green-400 shadow-xl'} transform hover:scale-105 transition-transform`}
+                                    className={`${isHighlighted ? 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-500 text-gray-900 dark:text-gray-900 animate-pulse-glow' : 'bg-gradient-to-r from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 text-white dark:text-gray-100'} px-6 py-3 rounded-2xl text-lg sm:text-xl font-black border-4 ${isHighlighted ? 'border-white dark:border-gray-900 shadow-2xl' : 'border-green-400 dark:border-green-700 shadow-xl'} transform hover:scale-110 transition-all duration-200 uppercase tracking-wider`}
                                   >
-                                    {formatSavingsLabel(option.savings)}
+                                    🎉 {formatSavingsLabel(option.savings)}
                                   </div>
-                                  {isHighlighted && option.shippingNote?.toLowerCase().includes('free') && (
-                                    <div className="text-[10px] sm:text-xs font-bold text-white/90 dark:text-gray-100 uppercase tracking-wide">
-                                      + Free Shipping
-                                    </div>
-                                  )}
                                 </div>
                               ) : null}
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-5">
                               {renderOptionButton(option, option.cartProductId || product.id)}
                             </div>
                           </div>
@@ -558,9 +562,14 @@ export function EnhancedProductComparison() {
 
                   {product.recommended && (
                     <div className="mt-3 sm:mt-4 text-center">
-                      <p className="text-xs sm:text-sm text-[#FF3131] dark:text-[#FF5555] font-medium">
-                        {t.enhancedProductComparison?.chosenByCustomers || '🔥 68% of customers choose this bundle'}
-                      </p>
+                      <div className="bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-amber-400/20 dark:from-amber-500/30 dark:via-yellow-500/30 dark:to-amber-500/30 border-2 border-amber-400 dark:border-amber-500 rounded-2xl p-4 animate-pulse-subtle">
+                        <p className="text-sm sm:text-base text-amber-900 dark:text-amber-200 font-black uppercase tracking-wide">
+                          🔥 {t.enhancedProductComparison?.chosenByCustomers || '68% Choose This Bundle'}
+                        </p>
+                        <p className="text-xs text-amber-800 dark:text-amber-300 font-semibold mt-1">
+                          Join 1,000+ Happy Cat Owners
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>

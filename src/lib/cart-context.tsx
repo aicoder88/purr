@@ -1,6 +1,4 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
-import AES from 'crypto-js/aes';
-import Utf8 from 'crypto-js/enc-utf8';
 import { PRODUCTS } from './constants';
 import { safeTrackEvent } from './analytics';
 
@@ -26,36 +24,12 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Encryption utilities for localStorage
-const ENCRYPTION_KEY = process.env.NEXT_PUBLIC_CART_ENCRYPTION_KEY || 'purrify-cart-key-2024';
-
-function encryptData(data: string): string {
-  try {
-    return AES.encrypt(data, ENCRYPTION_KEY).toString();
-  } catch (err) {
-    console.warn('Failed to encrypt data, storing unencrypted', err);
-    return data;
-  }
-}
-
-function decryptData(encryptedData: string): string | null {
-  try {
-    const bytes = AES.decrypt(encryptedData, ENCRYPTION_KEY);
-    const decrypted = bytes.toString(Utf8);
-    return decrypted || null;
-  } catch (err) {
-    console.warn('Failed to decrypt data', err);
-    return null;
-  }
-}
-
 // Secure localStorage wrapper
 const secureStorage = {
   setItem: (key: string, value: string) => {
     if (typeof window === 'undefined') return;
     try {
-      const encrypted = encryptData(value);
-      localStorage.setItem(key, encrypted);
+      localStorage.setItem(key, value);
     } catch (err) {
       console.error('Failed to save to secure storage:', err);
     }
@@ -64,9 +38,7 @@ const secureStorage = {
   getItem: (key: string): string | null => {
     if (typeof window === 'undefined') return null;
     try {
-      const encrypted = localStorage.getItem(key);
-      if (!encrypted) return null;
-      return decryptData(encrypted);
+      return localStorage.getItem(key);
     } catch (err) {
       console.error('Failed to read from secure storage:', err);
       return null;

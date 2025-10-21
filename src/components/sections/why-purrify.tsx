@@ -31,7 +31,7 @@ export function WhyPurrify() {
       icon: Layers,
       title: t.features.worksWithAnyLitter.title.toUpperCase(),
       description: t.features.worksWithAnyLitter.description,
-      image: "/optimized/cat-litter-types.webp"
+      image: "/optimized/cat-favorite-litter.png"
     },
     {
       icon: PiggyBank,

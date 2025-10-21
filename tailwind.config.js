@@ -71,11 +71,36 @@ module.exports = {
           '0%, 100%': { opacity: 1 },
           '50%': { opacity: 0.85 },
         },
+        "pulse-subtle": {
+          '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+          '50%': { opacity: 0.95, transform: 'scale(1.005)' },
+        },
+        "pulse-glow": {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(251, 191, 36, 0.5), 0 0 40px rgba(251, 191, 36, 0.3)' },
+          '50%': { boxShadow: '0 0 30px rgba(251, 191, 36, 0.7), 0 0 60px rgba(251, 191, 36, 0.5)' },
+        },
+        "pulse-button": {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.02)' },
+        },
+        "bounce-subtle": {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        "shimmer": {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-subtle": "pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-glow": "pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-button": "pulse-button 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "bounce-subtle": "bounce-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "shimmer": "shimmer 3s linear infinite",
       },
     },
   },
