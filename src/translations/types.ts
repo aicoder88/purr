@@ -660,7 +660,7 @@ export interface TranslationType {
     naturalIngredients: string;
     easyApplication: string;
     moneyBackGuarantee: string;
-    // freeShipping: string; // TODO: Restore when free shipping is available
+    freeShipping: string;
     bulkDiscount: string;
     prioritySupport: string;
     bonusGuide: string;
