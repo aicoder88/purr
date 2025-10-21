@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-~Purrify is a Next.js 15 e-commerce website for activated carbon cat litter additive. Production system requiring dark mode compliance, multi-language support, and secure payment processing.
+Purrify is a Next.js 15 e-commerce website for activated carbon cat litter additive. Production system requiring dark mode compliance, multi-language support, and secure payment processing.
 
 **Critical Constraints:**
 - Pages Router (NOT App Router) 
@@ -25,67 +25,197 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Key Architecture
 
 **State Management:**
-- Cart: React Context with encrypted localStorage (`src/lib/cart-context.tsx`)
-- i18n: React Context with Next.js i18n (`src/lib/translation-context.tsx`)
+- Cart: React Context with encrypted localStorage (`src/lib/cart-context.tsx`) - Uses CryptoJS for encryption
+- i18n: React Context with Next.js i18n (`src/lib/translation-context.tsx`) - Supports en/fr/zh
 - Theme: Built-in Next.js theme system with automatic persistence
 
-**Key Structure:**
+**Directory Structure:**
 ```
-pages/                    # Next.js Pages Router
-├── api/                 # API routes (Stripe, webhooks, analytics)
-├── [locale]/            # Internationalized pages
+pages/                         # Next.js Pages Router (NOT App Router!)
+├── api/                       # 19+ API routes
+│   ├── create-checkout-session.ts    # Stripe checkout (protected)
+│   ├── webhooks/stripe.ts            # Payment webhooks (protected)
+│   ├── [analytics|referrals|etc]/    # Feature-specific routes
+│   └── security/               # Security/validation routes
+├── blog/                       # Dynamic blog posts
+├── learn/                      # Educational content
+├── [locale]/                   # Multi-language routes (fr/, zh/)
+└── [other page routes]         # Static pages
+
 src/
-├── components/
-│   ├── sections/        # Page sections (Hero, About, etc.)
-│   ├── ui/              # shadcn/ui components
-│   ├── layout/          # Header, Footer
-│   ├── social-proof/    # Trust badges, notifications
-│   └── seo/             # Structured data, JSON-LD
-├── lib/                 # Core business logic
-├── translations/        # i18n JSON files (en/fr/zh)
-└── types/               # TypeScript definitions
-scripts/                 # Build/optimization scripts
+├── components/                 # 80+ React components
+│   ├── sections/              # Full-width page sections (Hero, CTA, etc.)
+│   ├── ui/                    # 40+ shadcn/ui components
+│   ├── layout/                # Reusable layout (Header, Footer, Nav)
+│   ├── mobile/                # Mobile-specific optimized components
+│   ├── social-proof/          # Testimonials, trust signals
+│   ├── seo/                   # Structured data, schema.org JSON-LD
+│   └── performance/           # Performance monitoring components
+├── lib/                        # 30+ utility files
+│   ├── cart-context.tsx       # Shopping cart state management
+│   ├── translation-context.tsx # i18n translation provider
+│   ├── seo-utils.ts           # SEO optimization helpers
+│   ├── analytics.ts           # Event tracking & GTM
+│   ├── conversion-optimizer.ts # Landing page optimization
+│   └── [other utilities]      # Payment, cache, performance, etc.
+├── translations/              # i18n data files
+│   ├── en.ts                  # English translations
+│   ├── fr.ts                  # French translations
+│   └── zh.ts                  # Chinese translations
+├── data/                      # Static data, config, constants
+└── types/                     # TypeScript interfaces & types
+
+scripts/                        # 20+ build & optimization scripts
+├── dark-mode-validator.js     # Validates dark mode compliance
+├── optimize-images.js         # Image optimization pipeline
+├── generate-sitemap.js        # SEO sitemap generation
+└── [other scripts]            # Performance, SEO, cache utilities
+
+prisma/
+└── schema.prisma              # PostgreSQL database schema
+
+public/
+├── optimized/                 # Auto-generated optimized images
+├── original-images/           # Source images for optimization
+└── [other static assets]
 ```
 
-**Page Types:**
-- Landing pages: `pages/index.tsx`, product pages
+**Page Types & Routing:**
+- Landing pages: `pages/index.tsx`, `/products/*`
 - Learn pages: `/learn/*` (FAQ, How-it-works, Science)
-- Location pages: `/locations/*` for local SEO
-- Blog: Dynamic routes with SEO optimization
+- Location pages: `/locations/*` for local SEO targeting
+- Blog: `/blog/[slug].tsx` dynamic routes with SEO
+- Multi-language: Routes duplicated under `/fr/` and `/zh/` prefixes
+- Admin: `/admin/*` protected routes
 
 ## Essential Commands
 
 ```bash
 # Development
 npm run dev                    # Start dev server
-npm run predev                 # Clear cache first
+npm run predev                 # Clear cache first (use before dev)
+npm run clear-cache           # Clear webpack cache if hot reload stuck
 
-# Pre-commit (MANDATORY)
-npm run lint                   # ESLint
-npm run check-types           # TypeScript validation
-npm run validate-dark-mode    # Dark mode compliance
-npm run validate-blog-images  # Blog image availability
+# Pre-commit (MANDATORY - run before every git commit)
+npm run lint                   # ESLint validation
+npm run check-types           # TypeScript strict mode checking
+npm run validate-dark-mode    # Dark mode compliance (BUILD BLOCKS WITHOUT)
+npm run validate-blog-images  # Verify all blog images exist
 
 # Testing
+npm run test:translations     # Jest translation completeness test
 npm run test:e2e              # Playwright end-to-end tests
-npm run test:translations     # Jest translation completeness tests
+npm run test:e2e -- --debug   # Run e2e tests in debug mode
 
 # Build & Deploy
-npm run build                 # Production build
-npm run start                 # Start production server
-npm run analyze               # Bundle analysis
+npm run build                 # Production build (runs prebuild + postbuild)
+npm run start                 # Start production server locally
+npm run analyze               # Build with bundle analysis enabled
 
-# Optimization
-npm run optimize-images       # Image optimization
-npm run optimize-all-images   # Optimize all images
-npm run performance:audit     # Performance check (SEO + bundle + cache)
-npm run seo:optimize         # SEO optimizations
-npm run bundle:analyze       # Bundle size analysis
+# Optimization & Analysis
+npm run performance:audit     # Complete audit (SEO + bundle + cache)
+npm run seo:optimize          # Run SEO optimizations
+npm run bundle:analyze        # Analyze bundle size
+npm run optimize-images       # Optimize single image
+npm run optimize-all-images   # Optimize all images in batch
+npm run add-image-dimensions  # Add width/height metadata to images
 
-# Cache Management
-npm run clear-cache          # Clear webpack cache
-npm run purge-vercel-cache   # Purge Vercel edge cache
+# Vercel & Cache
+npm run purge-vercel-cache    # Clear Vercel edge cache after deploy
 ```
+
+### Testing Single Tests
+```bash
+# Run single Jest test file
+npx jest __tests__/translation-completeness.test.js --watch
+
+# Run specific test by name pattern
+npx jest --testNamePattern="translation" --watch
+
+# Run Playwright tests for specific file
+npx playwright test tests/homepage.spec.ts
+```
+
+## Core Libraries & Patterns
+
+### Critical State Management Patterns
+
+**Cart Context (`src/lib/cart-context.tsx`):**
+- Encrypted localStorage with CryptoJS
+- Access via `useCart()` hook in components
+- Auto-persists on every change
+- Integrated with Stripe checkout flow
+
+**Translation Context (`src/lib/translation-context.tsx`):**
+- Access via `useTranslation()` hook
+- Returns `t` function for getting translated strings
+- Auto-detects locale from URL (`/fr/`, `/zh/`)
+- All UI text MUST use this hook, never hardcode
+
+**Example Usage:**
+```tsx
+import { useCart } from '@/lib/cart-context';
+import { useTranslation } from '@/lib/translation-context';
+
+export function MyComponent() {
+  const { cart, addToCart } = useCart();
+  const { t } = useTranslation();
+
+  return <button>{t('addToCart')}</button>;
+}
+```
+
+### Key Utility Libraries
+
+**Analytics & Tracking (`src/lib/analytics.ts`):**
+- Google Tag Manager integration
+- Custom event tracking for conversions
+- Use `trackEvent()` for all important user actions
+
+**SEO Utilities (`src/lib/seo-utils.ts`):**
+- Structured data generation (JSON-LD)
+- Meta tag helpers
+- Schema.org markup for products, organization, FAQs
+
+**Performance Optimization (`src/lib/performance-optimizer.ts`):**
+- Image lazy loading
+- Component code splitting
+- Cache strategy management
+
+**Payment Security (`src/lib/payment-security.ts`):**
+- Payment validation
+- Order security checks
+- Stripe integration helpers
+
+### Common Patterns to Follow
+
+**Protected API Routes:**
+```typescript
+// Use proper type checking
+if (!session) {
+  return res.status(401).json({ error: 'Unauthorized' });
+}
+
+// Validate input
+const { productId } = req.body;
+if (!productId) {
+  return res.status(400).json({ error: 'Missing required field' });
+}
+```
+
+**Server-Side Props with i18n:**
+```typescript
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { locale } = context.params as { locale: string };
+  // Locale is automatically handled by Next.js i18n routing
+};
+```
+
+**Using shadcn/ui Components:**
+- All components in `src/components/ui/` are from shadcn
+- Import and customize with Tailwind classes
+- Ensure dark mode variants on all interactive elements
+- Use `clsx` or `tailwind-merge` for class composition
 
 ## Critical Requirements
 
@@ -377,11 +507,74 @@ npm run validate-dark-mode  # All elements compliant
 - `@typescript-eslint/no-explicit-any`: No `any` types
 - `@next/next/no-img-element`: Use Next.js `Image`
 
+## Debugging & Troubleshooting
+
+### Common Issues & Solutions
+
+**Hot reload not working?**
+```bash
+npm run predev  # Clear webpack cache
+npm run dev    # Restart dev server
+```
+
+**Dark mode validation failing?**
+```bash
+npm run validate-dark-mode  # See exact violations
+# Look for: no dark:text-*, no dark:bg-*, missing dark: variants
+```
+
+**TypeScript errors on build?**
+```bash
+npm run check-types  # Get detailed error locations
+# Fix each error before pushing
+```
+
+**Blog image validator fails?**
+```bash
+npm run validate-blog-images  # Check which images are missing
+# Ensure all blog posts have images in /public/optimized/
+```
+
+**Stripe checkout failing?**
+- Verify STRIPE_SECRET_KEY and NEXT_PUBLIC_STRIPE_KEY in .env
+- Check Stripe dashboard for webhook logs
+- Ensure webhook endpoint is registered in Stripe settings
+
+**Translation missing for new text?**
+```bash
+npm run test:translations  # Identifies missing keys
+# Add key to src/translations/en.ts, fr.ts, zh.ts
+```
+
+**Performance degradation?**
+```bash
+npm run performance:audit  # Complete performance check
+# Check bundle size, cache hits, Core Web Vitals
+npm run analyze            # Interactive bundle analysis
+```
+
+**Mobile layout broken?**
+- Check 44px minimum touch targets (WCAG AA)
+- Verify responsive classes at breakpoints (sm:, md:, lg:)
+- Test on actual devices, not just browser DevTools
+- Ensure images have proper aspect ratios
+
 ## Emergency Protocols
 
-**Build failures:** Usually dark mode violations or TypeScript errors  
-**Payment issues:** Check Stripe dashboard/webhooks  
-**Performance:** Run `npm run performance:audit`
+**Build failures:** Usually dark mode violations or TypeScript errors
+- Run `npm run validate-dark-mode` and `npm run check-types` first
+- Check recent commit changes before pushing
+- Never force push main branch
+
+**Payment issues:** Check Stripe dashboard/webhooks
+- Verify test keys in development
+- Check webhook event logs in Stripe dashboard
+- Ensure POST endpoint matches webhook configuration
+
+**Performance degradation:** Run `npm run performance:audit`
+- Bundle size over 250KB? Run `npm run analyze`
+- Core Web Vitals failing? Check image optimization
+- Lighthouse scores dropping? Check CSS specificity
 
 ## Changelog (MANDATORY)
 Document every session in `/CHANGELOG.md`:

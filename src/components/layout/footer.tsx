@@ -6,7 +6,6 @@ import NextImage from "../../../components/NextImage";
 import { useTranslation } from "../../lib/translation-context";
 import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
-  Facebook,
   Instagram,
   Twitter,
   Linkedin,
@@ -65,15 +64,6 @@ export function Footer() {
               {t.siteDescription}
             </p>
             <div className="flex space-x-4">
-              <a
-                href={SOCIAL_LINKS.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                aria-label="Follow Purrify on Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
