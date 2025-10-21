@@ -5,13 +5,12 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
-import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
-import { getPaymentLink } from '../../src/lib/payment-links';
+import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
@@ -25,17 +24,8 @@ export default function StandardSizePage() {
   const availabilityUrl = buildAvailabilityUrl();
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
-  const standardAutoshipPrice = formatProductPrice('standardAutoship', locale);
   const familyPrice = formatProductPrice('family', locale);
   const standardPriceValue = getProductPrice('standard').toFixed(2);
-  const standardAutoshipAmount = getProductPrice('standardAutoship');
-  const standardAmount = getProductPrice('standard');
-  const standardAutoshipSavings = Math.max(
-    0,
-    Math.round((1 - standardAutoshipAmount / (standardAmount * 3)) * 100)
-  );
-  const standardAutoshipPerMonth = formatCurrencyValue(standardAutoshipAmount / 3, locale);
-  const standardAutoshipLink = getPaymentLink('standardAutoship');
   const checkoutUrl = getLocalizedUrl('/checkout', locale);
 
   // Standard size lifestyle images
@@ -157,7 +147,7 @@ export default function StandardSizePage() {
                 "material": "Activated Carbon from Coconut Shells",
                 "offers": {
                   "@type": "Offer",
-                  "price": "${standardPriceValue}",
+                  "price": standardPriceValue,
                   "priceCurrency": "CAD",
                   "priceValidUntil": priceValidUntil,
                   "availability": availabilityUrl,
@@ -388,69 +378,6 @@ export default function StandardSizePage() {
 
                 {/* Purchase Options */}
                 <div className="space-y-5">
-                  <div className="rounded-2xl border border-[#FF3131]/30 bg-white dark:bg-gray-900/40 p-6 shadow-lg">
-                    <div className="flex items-center justify-between mb-3">
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-[#FF3131] font-semibold">
-                          {t.subscriptionOfferExtended?.autoshipHighlight || 'Subscribe & Save'}
-                        </p>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                          {t.subscriptionOfferExtended?.standardPlanTitle || 'Quarterly Autoship – 3 × 50g'}
-                        </h3>
-                      </div>
-                      <span className="inline-flex items-center bg-[#FF3131]/10 text-[#FF3131] px-3 py-1 rounded-full text-xs font-semibold">
-                        {t.subscriptionOfferExtended?.saveVsOneTime
-                          ? t.subscriptionOfferExtended.saveVsOneTime.replace('{percent}', standardAutoshipSavings.toString())
-                          : `Save ${standardAutoshipSavings}% vs one-time`}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-3 mb-3">
-                      <div className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">
-                        {standardAutoshipPrice}
-                      </div>
-                      <div className="text-sm font-medium text-[#FF3131]">
-                        {t.subscriptionOfferExtended?.perMonthLabel
-                          ? t.subscriptionOfferExtended.perMonthLabel.replace('{price}', standardAutoshipPerMonth)
-                          : `≈ ${standardAutoshipPerMonth}/month effective`}
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
-                      {t.subscriptionOfferExtended?.shippingIncluded || 'Shipping included'} · {t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months'}
-                    </p>
-                    <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5">
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.includesThreeStandard || 'Includes 3 × 50g bags delivered together'}
-                      </li>
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime'}
-                      </li>
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'}
-                      </li>
-                    </ul>
-                    <Button
-                      asChild={Boolean(standardAutoshipLink)}
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                      disabled={!standardAutoshipLink}
-                    >
-                      {standardAutoshipLink ? (
-                        <a href={standardAutoshipLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                          <Zap className="w-5 h-5" />
-                          {t.subscriptionOfferExtended?.startAutoship || 'Start Autoship'}
-                        </a>
-                      ) : (
-                        <div className="flex items-center justify-center gap-2">
-                          <Zap className="w-5 h-5" />
-                          {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
-                        </div>
-                      )}
-                    </Button>
-                  </div>
-
                   <div className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900/30 p-6">
                     <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
                       {t.pricing?.oneTimeLabel || 'One-time purchase'}
@@ -462,9 +389,9 @@ export default function StandardSizePage() {
                       <span className="text-sm text-gray-600 dark:text-gray-300">+ {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}</span>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {t.pricing?.plusShipping || '+ shipping'} · {t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime'}
+                      {t.pricing?.plusShipping || '+ shipping'}
                     </p>
-                    <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
+                    <Button asChild size="lg" className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
                       <Link href={checkoutUrl} className="flex items-center justify-center gap-2">
                         <ShoppingCart className="w-5 h-5" />
                         {t.homepage.enhancedComparison.chooseThisSize}
@@ -498,7 +425,7 @@ export default function StandardSizePage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Subscribe & save {standardAutoshipSavings}% compared to monthly reorders
+                    Free shipping on orders over CA$50
                   </div>
                 </div>
               </div>
