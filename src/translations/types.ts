@@ -674,6 +674,8 @@ export interface TranslationType {
     satisfactionRate: string;
     odorFreeGuarantee: string;
     moneyBackGuaranteeText: string;
+    autoshipHero?: string;
+    autoshipHighlight?: string;
   };
 
   // Subscription Offer
