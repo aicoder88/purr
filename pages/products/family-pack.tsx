@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -8,6 +8,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 import NextImage from '../../components/NextImage';
 import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { ProductSchema } from '../../src/components/seo/json-ld-schema';
@@ -25,10 +26,19 @@ export default function FamilyPackPage() {
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
+  const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
   const standardPriceAmount = getProductPrice('standard');
   const familyPriceAmount = getProductPrice('family');
+  const familyAutoshipAmount = getProductPrice('familyAutoship');
   const doubleStandardPrice = formatCurrencyValue(standardPriceAmount * 2, locale);
   const savingsComparedToStandard = formatCurrencyValue(standardPriceAmount * 2 - familyPriceAmount, locale);
+  const familyAutoshipSavings = Math.max(
+    0,
+    Math.round((1 - familyAutoshipAmount / (familyPriceAmount * 3)) * 100)
+  );
+  const familyAutoshipPerMonth = formatCurrencyValue(familyAutoshipAmount / 3, locale);
+  const familyAutoshipLink = getPaymentLink('familyAutoship');
+  const checkoutUrl = getLocalizedUrl('/checkout', locale);
 
   // Family pack lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
@@ -169,16 +179,13 @@ export default function FamilyPackPage() {
                     </div>
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
                   </div>
-                  <div className="flex items-center space-x-4 mb-6">
+                  <div className="space-y-3 mb-6">
                     <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF]">
-                    {familyPrice}
+                      {familyPrice}
                     </div>
-                    <div className="text-lg text-gray-500 dark:text-gray-400 line-through">
-                      $39.98
-                    </div>
-                    <div className="bg-[#03E46A] text-white dark:text-gray-100 px-2 py-1 rounded text-sm font-bold">
-                      SAVE 25%
-                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      + {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}
+                    </p>
                   </div>
                 </div>
 
@@ -192,16 +199,93 @@ export default function FamilyPackPage() {
                   ))}
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="space-y-4">
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Buy Family Pack Now
-                  </Button>
-                  
+                {/* Purchase Options */}
+                <div className="space-y-5">
+                  <div className="rounded-2xl border border-[#03E46A]/30 bg-white dark:bg-gray-900/40 p-6 shadow-lg relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/15 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                    <div className="flex items-center justify-between mb-3 relative">
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-[#03E46A] font-semibold">
+                          {t.subscriptionOfferExtended?.bestValueBadge || 'Best Value'}
+                        </p>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                          {t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × 120g'}
+                        </h3>
+                      </div>
+                      <span className="inline-flex items-center bg-[#03E46A]/10 text-[#03E46A] px-3 py-1 rounded-full text-xs font-semibold">
+                        {t.subscriptionOfferExtended?.saveVsOneTime
+                          ? t.subscriptionOfferExtended.saveVsOneTime.replace('{percent}', familyAutoshipSavings.toString())
+                          : `Save ${familyAutoshipSavings}% vs one-time`}
+                      </span>
+                    </div>
+                    <div className="flex items-baseline gap-3 mb-3 relative">
+                      <div className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">
+                        {familyAutoshipPrice}
+                      </div>
+                      <div className="text-sm font-medium text-[#03E46A]">
+                        {t.subscriptionOfferExtended?.perMonthLabel
+                          ? t.subscriptionOfferExtended.perMonthLabel.replace('{price}', familyAutoshipPerMonth)
+                          : `≈ ${familyAutoshipPerMonth}/month effective`}
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-200 mb-4 relative">
+                      {t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included'} · {t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months'}
+                    </p>
+                    <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5 relative">
+                      <li className="flex gap-2">
+                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
+                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × 120g family packs (delivered together)'}
+                      </li>
+                      <li className="flex gap-2">
+                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
+                        {t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'}
+                      </li>
+                      <li className="flex gap-2">
+                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
+                        {t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide'}
+                      </li>
+                    </ul>
+                    <Button
+                      asChild={Boolean(familyAutoshipLink)}
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative"
+                      disabled={!familyAutoshipLink}
+                    >
+                      {familyAutoshipLink ? (
+                        <a href={familyAutoshipLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                          <Zap className="w-5 h-5" />
+                          {t.subscriptionOfferExtended?.startAutoship || 'Start Autoship'}
+                        </a>
+                      ) : (
+                        <div className="flex items-center justify-center gap-2">
+                          <Zap className="w-5 h-5" />
+                          {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
+                        </div>
+                      )}
+                    </Button>
+                  </div>
+
+                  <div className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900/30 p-6">
+                    <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                      {t.pricing?.oneTimeLabel || 'One-time purchase'}
+                    </p>
+                    <div className="flex items-baseline gap-3 mb-3">
+                      <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">
+                        {familyPrice}
+                      </div>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">+ {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      {t.pricing?.plusShipping || '+ shipping'} · {t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime'}
+                    </p>
+                    <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
+                      <Link href={checkoutUrl} className="flex items-center justify-center gap-2">
+                        <ShoppingCart className="w-5 h-5" />
+                        {t.homepage.enhancedComparison.chooseThisSize}
+                      </Link>
+                    </Button>
+                  </div>
+
                   <div className="flex space-x-3">
                     <Button variant="outline" size="lg" className="flex-1">
                       <Heart className="w-5 h-5 mr-2" />
@@ -224,7 +308,7 @@ export default function FamilyPackPage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Fast shipping included
+                    Free shipping on autoship bundles
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />

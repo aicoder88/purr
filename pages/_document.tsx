@@ -46,6 +46,32 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow" />
         <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Purrify',
+              url: 'https://purrify.ca',
+              logo: 'https://purrify.ca/logo.png',
+              sameAs: [
+                'https://x.com/PurrifyHQ',
+                'https://www.instagram.com/purrifyhq/',
+                'https://www.linkedin.com/company/purrify',
+                'https://www.youtube.com/@PurrifyHQ',
+                'https://www.trustpilot.com/review/purrify.ca',
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                email: 'hello@purrify.ca',
+                contactType: 'customer support',
+                areaServed: ['CA', 'US'],
+              },
+            }),
+          }}
+        />
         
         {/* Font-face rules handled by next/font */}
         

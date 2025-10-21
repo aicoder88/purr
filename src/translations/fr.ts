@@ -84,6 +84,24 @@ export const fr = {
     }
   },
 
+  pricing: {
+    oneTimeLabel: "Achat unique",
+    autoshipLabel: "Abonnement & économies",
+    autoshipBestLabel: "Meilleur abonnement",
+    billedEvery: "Facturé tous les",
+    months: "mois",
+    shippingIncluded: "Livraison incluse",
+    freeShipping: "Livraison gratuite incluse",
+    plusShipping: "+ frais de livraison",
+    shippingCalculated: "Frais de livraison calculés à la caisse",
+    startAutoship: "Activer l'abonnement",
+    buyNow: "Acheter maintenant",
+    linkComingSoon: "Lien de paiement bientôt disponible",
+    recommended: "Recommandé",
+    perMonth: "≈ {price}/mois",
+    saveVsOneTime: "Économisez {percent}% vs achat unique"
+  },
+
   // Hero Section
   hero: {
     catLitter: "Litière pour Chat",
@@ -518,13 +536,15 @@ export const fr = {
     naturalIngredients: "100% Ingrédients Naturels",
     easyApplication: "Application Facile",
     moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
-    // freeShipping: "Livraison Gratuite", // TODO: Restore when free shipping is available
+    freeShipping: "Livraison incluse",
+    autoshipHero: "Abonnement & économies",
+    autoshipHighlight: "S'abonner et économiser",
     bulkDiscount: "Remise en Gros",
     prioritySupport: "Support Client Prioritaire",
     bonusGuide: "Guide Gratuit de Soins pour Chats",
     tryRiskFree: "Essayez Sans Risque",
     chooseThisSize: "Choisir Cette Taille",
-    chosenByCustomers: "🔥 68% des clients choisissent",
+    chosenByCustomers: "🔥 68% des clients choisissent cette offre",
     whyChoosePurrify: "Pourquoi Choisir Purrify ?",
     joinThousands: "Rejoignez 1 000+ propriétaires de chats qui font confiance à Purrify",
     happyCustomers: "Clients Satisfaits",
@@ -637,33 +657,30 @@ export const fr = {
 
   // Additional Subscription Offer Translations
   subscriptionOfferExtended: {
-    neverRunOutAgain: "PLUS JAMAIS EN RUPTURE",
-    subscribeAndSaveUpTo: "Abonnez-vous et économisez jusqu'à",
-    seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "Rejoignez 1 000+ propriétaires de chats heureux qui ne s'inquiètent plus jamais des odeurs.",
-    getPurrifyDelivered: "Recevez Purrify automatiquement et économisez de l'argent chaque mois.",
-    monthlyDelivery: "Livraison Mensuelle",
-    quarterlyDelivery: "Livraison Trimestrielle",
-    biAnnualDelivery: "Livraison Semestrielle",
-    perfectForSingleCat: "Parfait pour les foyers à un chat",
-    mostPopularMultiCat: "Le plus populaire pour les foyers multi-chats",
-    bestValueLargeFamilies: "Meilleure valeur pour les grandes familles",
-    // freeShippingEveryMonth: "Livraison gratuite chaque mois", // TODO: Restore when free shipping is available
-    // freeShippingEveryThreeMonths: "Livraison gratuite tous les 3 mois", // TODO: Restore when free shipping is available
-    // freeShippingEverySixMonths: "Livraison gratuite tous les 6 mois", // TODO: Restore when free shipping is available
+    autoshipBadge: "Abonnement trimestriel",
+    headline: "Votre défense anti-odeurs en pilote automatique",
+    supportingCopy: "Choisissez le lot qui se renouvelle automatiquement tous les 3 mois, garde votre maison fraîche et protège votre budget.",
+    perMonthLabel: "≈ {price}/mois",
+    saveVsOneTime: "Économisez {percent}% vs achat unique",
     skipOrCancelAnytime: "Suspendre ou annuler à tout moment",
-    fortyPercentSavings: "40% d'économies vs achat unique",
-    sixtyPercentSavings: "60% d'économies vs achat unique",
-    seventyTwoPercentSavings: "72% d'économies vs achat unique",
+    shippingIncluded: "Livraison incluse",
+    freeShippingIncluded: "Livraison gratuite incluse",
     priorityCustomerSupport: "Support client prioritaire",
     bonusFreeCatCareGuide: "Bonus : Guide gratuit de soins pour chats",
-    bonusFreeCatToys: "Bonus : Jouets gratuits pour chats",
-    mostPopular: "LE PLUS POPULAIRE",
-    save: "Économiser",
-    month: "mois",
-    months: "mois",
-    selectPlan: "Sélectionner le Plan",
-    joinThePurrifyFamily: "Rejoignez la Famille Purrify"
+    startAutoship: "Activer l'abonnement",
+    linkComingSoon: "Lien de paiement bientôt disponible",
+    quarterlyBilling: "Facturé tous les 3 mois",
+    autoshipHero: "Abonnement & économies",
+    autoshipHighlight: "S'abonner et économiser",
+    standardPlanTitle: "Abonnement trimestriel – 3 × 50g",
+    standardDescription: "Idéal pour les foyers avec un chat qui veulent un contrôle des odeurs continu.",
+    includesThreeStandard: "Comprend 3 sachets de 50g livrés ensemble",
+    familyPlanTitle: "Abonnement meilleur rapport – 3 × 120g",
+    familyDescription: "Pensé pour les foyers multi-chats et sensibles aux allergies. Notre meilleur prix par utilisation.",
+    includesThreeFamily: "Comprend 3 sachets familiaux de 120g (livrés ensemble)",
+    bestValueBadge: "Meilleure valeur",
+    save: "Économisez",
+    joinThePurrifyFamily: "Rejoignez la famille Purrify"
   },
 
   // Payment Security

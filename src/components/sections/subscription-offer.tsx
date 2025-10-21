@@ -3,61 +3,94 @@ import { Button } from "@/components/ui/button";
 
 import { useTranslation } from "../../lib/translation-context";
 import { Check, Star, Truck, Shield, Clock, Zap } from 'lucide-react';
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
+import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
+
+type SubscriptionPlan = {
+  id: string;
+  name: string;
+  description: string;
+  priceFormatted: string;
+  perMonthLabel: string;
+  billingLabel: string;
+  shippingNote: string;
+  savingsPercent: number;
+  features: string[];
+  highlight?: boolean;
+  badge?: string;
+  linkKey: PaymentLinkKey;
+  ctaLabel: string;
+};
 
 
 export function SubscriptionOffer() {
-  const { t } = useTranslation();
-  
+  const { t, locale } = useTranslation();
+  const standardPrice = getProductPrice('standard');
+  const familyPrice = getProductPrice('family');
+  const standardAutoshipPrice = getProductPrice('standardAutoship');
+  const familyAutoshipPrice = getProductPrice('familyAutoship');
 
-  const subscriptionPlans = [
+  const computeSavings = (oneTimePrice: number, autoshipPrice: number) => {
+    if (oneTimePrice <= 0 || autoshipPrice <= 0) return 0;
+    const baseline = oneTimePrice * 3;
+    if (baseline <= 0) return 0;
+    return Math.max(0, Math.round((1 - autoshipPrice / baseline) * 100));
+  };
+
+  const formatPerMonth = (price: number) => {
+    const formatted = formatCurrencyValue(price / 3, locale);
+    const template = t.subscriptionOfferExtended?.perMonthLabel || '≈ {price}/month effective';
+    return template.replace('{price}', formatted);
+  };
+
+  const formatSavingsText = (percent: number) => {
+    const template = t.subscriptionOfferExtended?.saveVsOneTime || 'Save {percent}% vs one-time purchase';
+    return template.replace('{percent}', percent.toString());
+  };
+
+  const plans: SubscriptionPlan[] = [
     {
-      id: 'monthly',
-      name: t.subscriptionOfferExtended?.monthlyDelivery || 'Monthly Delivery',
-      price: 14.99,
-      originalPrice: 24.99,
-      savings: 40,
-      interval: t.subscriptionOfferExtended?.month || 'month',
-      description: t.subscriptionOfferExtended?.perfectForSingleCat || 'Perfect for single-cat households',
+      id: 'standard-autoship',
+      name: t.subscriptionOfferExtended?.standardPlanTitle || 'Quarterly Autoship – 3 × 50g',
+      description:
+        t.subscriptionOfferExtended?.standardDescription ||
+        'Perfect for single-cat households that want fresh odor control every month.',
+      priceFormatted: formatProductPrice('standardAutoship', locale),
+      perMonthLabel: formatPerMonth(standardAutoshipPrice),
+      billingLabel: t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months',
+      shippingNote: t.subscriptionOfferExtended?.shippingIncluded || 'Shipping included',
+      savingsPercent: computeSavings(standardPrice, standardAutoshipPrice),
       features: [
-        // t.subscriptionOfferExtended?.fastShippingEveryMonth || 'Fast shipping every month', // TODO: Restore when offer is available
+        t.subscriptionOfferExtended?.includesThreeStandard || 'Includes 3 × 50g bags delivered together',
+        t.subscriptionOfferExtended?.shippingIncluded || 'Shipping included',
         t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.fortyPercentSavings || '40% savings vs one-time purchase',
-        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'
-      ]
-    },
-    {
-      id: 'quarterly',
-      name: t.subscriptionOfferExtended?.quarterlyDelivery || 'Quarterly Delivery',
-      price: 29.99,
-      originalPrice: 74.97,
-      savings: 60,
-      interval: `3 ${t.subscriptionOfferExtended?.months || 'months'}`,
-      description: t.subscriptionOfferExtended?.mostPopularMultiCat || 'Most popular for multi-cat homes',
-      features: [
-        // t.subscriptionOfferExtended?.fastShippingEveryThreeMonths || 'Fast shipping every 3 months', // TODO: Restore when offer is available
-        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.sixtyPercentSavings || '60% savings vs one-time purchase',
-        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
-        t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide'
       ],
-      popular: true
+      highlight: false,
+      linkKey: 'standardAutoship',
+      ctaLabel: t.subscriptionOfferExtended?.startAutoship || 'Start Autoship',
     },
     {
-      id: 'biannual',
-      name: t.subscriptionOfferExtended?.biAnnualDelivery || 'Bi-Annual Delivery',
-      price: 41.98,
-      originalPrice: 149.94,
-      savings: 72,
-      interval: `6 ${t.subscriptionOfferExtended?.months || 'months'}`,
-      description: t.subscriptionOfferExtended?.bestValueLargeFamilies || 'Best value for large families',
+      id: 'family-autoship',
+      name: t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × 120g',
+      description:
+        t.subscriptionOfferExtended?.familyDescription ||
+        'Designed for multi-cat and allergy-prone homes. Our best price per scoop.',
+      priceFormatted: formatProductPrice('familyAutoship', locale),
+      perMonthLabel: formatPerMonth(familyAutoshipPrice),
+      billingLabel: t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months',
+      shippingNote: t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
+      savingsPercent: computeSavings(familyPrice, familyAutoshipPrice),
       features: [
-        // t.subscriptionOfferExtended?.fastShippingEverySixMonths || 'Fast shipping every 6 months', // TODO: Restore when offer is available
-        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-        t.subscriptionOfferExtended?.seventyTwoPercentSavings || '72% savings vs one-time purchase',
+        t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × 120g family packs (delivered together)',
+        t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
-        t.subscriptionOfferExtended?.bonusFreeCatToys || 'Bonus: Free cat toys'
-      ]
-    }
+        t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide',
+      ],
+      highlight: true,
+      badge: t.subscriptionOfferExtended?.bestValueBadge || 'Best Value',
+      linkKey: 'familyAutoship',
+      ctaLabel: t.subscriptionOfferExtended?.startAutoship || 'Start Autoship',
+    },
   ];
 
   return (
@@ -66,80 +99,101 @@ export function SubscriptionOffer() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-6 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-6 py-2 rounded-full mb-6 shadow-lg">
               <Zap className="w-5 h-5 mr-2" />
-              <span className="font-bold">{t.subscriptionOfferExtended?.neverRunOutAgain || "NEVER RUN OUT AGAIN"}</span>
+              <span className="font-bold">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-              {t.subscriptionOfferExtended?.subscribeAndSaveUpTo || "Subscribe & Save Up to"}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80">
-                {t.subscriptionOfferExtended?.seventyTwoPercent || "72%"}
-              </span>
+              {t.subscriptionOfferExtended?.headline || 'Set & forget your litter odor defense'}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.subscriptionOfferExtended?.joinThousandsHappyCatParents || "Join 1,000+ happy cat parents who never worry about odors again."} {' '}
-              {t.subscriptionOfferExtended?.getPurrifyDelivered || "Get Purrify delivered automatically and save money every month."}
+              {t.subscriptionOfferExtended?.supportingCopy || 'Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.'}
             </p>
           </div>
 
           {/* Subscription Plans */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {subscriptionPlans.map((plan) => (
-              <div
-                key={plan.id}
-                className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
-                  plan.popular ? 'ring-4 ring-[#FF3131]/20 scale-105' : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-6 py-2 rounded-full text-sm font-bold">
-                      {t.subscriptionOfferExtended?.mostPopular || "MOST POPULAR"}
-                    </div>
-                  </div>
-                )}
-                
-                <div className="p-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">{plan.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{plan.description}</p>
-                    
-                    <div className="mb-4">
-                      <div className="flex items-center justify-center mb-2">
-                        <span className="text-4xl font-bold text-[#FF3131]">${plan.price}</span>
-                        <span className="text-gray-500 dark:text-gray-400 ml-2">/ {plan.interval}</span>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {plans.map(plan => {
+              const paymentLink = getPaymentLink(plan.linkKey);
+              const savingsLabel = plan.savingsPercent > 0 ? formatSavingsText(plan.savingsPercent) : null;
+
+              return (
+                <div
+                  key={plan.id}
+                  className={`relative overflow-hidden rounded-2xl transition-all duration-300 bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl hover:scale-[1.02] ${
+                    plan.highlight ? 'ring-4 ring-[#FF3131]/25 scale-[1.02]' : ''
+                  }`}
+                >
+                  {plan.highlight && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/12 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                  )}
+                  {plan.badge ? (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-5 py-1.5 rounded-full shadow-lg text-xs font-semibold uppercase tracking-wide">
+                        {plan.badge}
                       </div>
-                      <div className="flex items-center justify-center space-x-2">
-                        <span className="text-gray-400 dark:text-gray-500 line-through">${plan.originalPrice}</span>
-                        <span className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-sm font-medium">
-                          {t.subscriptionOfferExtended?.save || "Save"} {plan.savings}%
+                    </div>
+                  ) : null}
+
+                  <div className="p-8 space-y-6 relative">
+                    <div className="space-y-2 text-center">
+                      <h3 className={`text-2xl font-bold ${plan.highlight ? 'text-[#FF3131]' : 'text-gray-900 dark:text-gray-50'}`}>{plan.name}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{plan.description}</p>
+                    </div>
+
+                    <div className="text-center space-y-2">
+                      <div className="text-4xl font-extrabold text-gray-900 dark:text-gray-50">{plan.priceFormatted}</div>
+                      <p className="text-sm font-medium text-[#FF3131]">{plan.perMonthLabel}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">{plan.billingLabel}</p>
+                      <p className="text-xs font-medium text-gray-700 dark:text-gray-200">{plan.shippingNote}</p>
+                      {savingsLabel ? (
+                        <span className="inline-block mt-2 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-4 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
+                          {savingsLabel}
                         </span>
-                      </div>
+                      ) : null}
+                    </div>
+
+                    <ul className="space-y-3 text-sm">
+                      {plan.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
+                          <Check className="w-4 h-4 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div>
+                      {paymentLink ? (
+                        <Button
+                          asChild
+                          className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
+                            plan.highlight
+                              ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl'
+                              : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
+                          }`}
+                        >
+                          <a href={paymentLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                            <Zap className="w-5 h-5" />
+                            {plan.ctaLabel}
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button
+                          className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
+                            plan.highlight
+                              ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/60 text-white dark:text-gray-100 opacity-80'
+                              : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 opacity-80'
+                          }`}
+                          disabled
+                        >
+                          {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
+                        </Button>
+                      )}
                     </div>
                   </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <Check className="w-5 h-5 text-green-500 dark:text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-200">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button 
-                    className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
-                      plan.popular 
-                        ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl' 
-                        : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131]/30'
-                    }`}
-                    
-                  >
-                    {plan.popular ? (t.subscriptionOfferExtended?.selectPlan || 'Select Plan') : (t.subscriptionOfferExtended?.selectPlan || 'Select Plan')}
-                  </Button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Trust Indicators */}

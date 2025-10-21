@@ -11,7 +11,7 @@ This is the official website for Purrify, an activated carbon cat litter additiv
 - Replaced 'Add to Cart' with a direct Stripe 'Buy Now' link for the trial size.
 - Removed 'Free Purrify' box and combined 'Natural' and 'Cat-Friendly' boxes in the Why Purrify section.
 - Improved testimonial readability in dark mode.
-- Updated phone number everywhere to 450.663.6773.
+- Updated phone number everywhere to 14506636773.
 - Added /privacy, /tos, /fr/privacy, and /fr/tos routes as aliases for legal pages.
 - Fixed build errors related to circular imports and missing default exports in privacy policy pages.
 - Added a valid Privacy Policy page from scratch.

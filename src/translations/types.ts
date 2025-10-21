@@ -756,33 +756,30 @@ export interface TranslationType {
 
   // Additional Subscription Offer Translations
   subscriptionOfferExtended: {
-    neverRunOutAgain: string;
-    subscribeAndSaveUpTo: string;
-    seventyTwoPercent: string;
-    joinThousandsHappyCatParents: string;
-    getPurrifyDelivered: string;
-    monthlyDelivery: string;
-    quarterlyDelivery: string;
-    biAnnualDelivery: string;
-    perfectForSingleCat: string;
-    mostPopularMultiCat: string;
-    bestValueLargeFamilies: string;
-    // freeShippingEveryMonth: string; // TODO: Restore when free shipping is available
-    // freeShippingEveryThreeMonths: string; // TODO: Restore when free shipping is available
-    // freeShippingEverySixMonths: string; // TODO: Restore when free shipping is available
+    autoshipBadge?: string;
+    headline?: string;
+    supportingCopy?: string;
+    perMonthLabel?: string;
+    saveVsOneTime?: string;
     skipOrCancelAnytime: string;
-    fortyPercentSavings: string;
-    sixtyPercentSavings: string;
-    seventyTwoPercentSavings: string;
+    shippingIncluded?: string;
+    freeShippingIncluded?: string;
     priorityCustomerSupport: string;
-    bonusFreeCatCareGuide: string;
-    bonusFreeCatToys: string;
-    mostPopular: string;
-    save: string;
-    month: string;
-    months: string;
-    selectPlan: string;
-    joinThePurrifyFamily: string;
+    bonusFreeCatCareGuide?: string;
+    startAutoship: string;
+    linkComingSoon?: string;
+    quarterlyBilling?: string;
+    autoshipHero?: string;
+    autoshipHighlight?: string;
+    standardPlanTitle?: string;
+    standardDescription?: string;
+    includesThreeStandard?: string;
+    familyPlanTitle?: string;
+    familyDescription?: string;
+    includesThreeFamily?: string;
+    bestValueBadge?: string;
+    save?: string;
+    joinThePurrifyFamily?: string;
   };
 
   // Payment Security

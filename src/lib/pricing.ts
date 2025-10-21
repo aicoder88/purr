@@ -4,12 +4,14 @@ const CURRENCY = 'CAD';
 
 export type ProductCatalogId = typeof PRODUCTS[number]['id'];
 
-type ProductPriceKey = 'trial' | 'standard' | 'family';
+type ProductPriceKey = 'trial' | 'standard' | 'family' | 'standardAutoship' | 'familyAutoship';
 
 const PRODUCT_ID_ALIAS: Record<ProductPriceKey, ProductCatalogId> = {
   trial: 'purrify-12g',
   standard: 'purrify-50g',
+  standardAutoship: 'purrify-50g-autoship',
   family: 'purrify-120g',
+  familyAutoship: 'purrify-120g-autoship',
 };
 
 const priceById = PRODUCTS.reduce<Record<ProductCatalogId, number>>((acc, product) => {

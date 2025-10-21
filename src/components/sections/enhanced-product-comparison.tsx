@@ -6,10 +6,56 @@ import { useCart } from "../../lib/cart-context";
 import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
 import NextImage from "../../../components/NextImage";
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
+import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
+
+type PurchaseAction = 'link' | 'cart';
+
+type PurchaseOption = {
+  key: string;
+  type: 'subscription' | 'one-time';
+  label: string;
+  priceFormatted: string;
+  subLabel?: string;
+  perMonth?: string;
+  shippingNote?: string;
+  savings?: number;
+  action: PurchaseAction;
+  linkKey?: PaymentLinkKey;
+  ctaLabel: string;
+  icon?: 'cart' | 'zap';
+  highlight?: boolean;
+  badgeLabel?: string;
+  cartProductId?: string;
+  ctaEmphasis?: 'primary' | 'secondary' | 'contrast';
+};
+
+type ProductCard = {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  badge: string;
+  badgeColor: string;
+  duration: string;
+  coverage: string;
+  features: {
+    odorControl: boolean;
+    naturalIngredients: boolean;
+    easyApplication: boolean;
+    moneyBackGuarantee: boolean;
+    freeShipping?: boolean;
+    bulkDiscount: boolean;
+    prioritySupport: boolean;
+    bonusGuide: boolean;
+  };
+  image: string;
+  purchaseOptions: PurchaseOption[];
+  recommended?: boolean;
+};
 
 
 export function EnhancedProductComparison() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const { addToCart } = useCart();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
@@ -39,19 +85,56 @@ export function EnhancedProductComparison() {
     handleAddToCart(productId);
   }, [handleAddToCart]);
 
-  const trialPriceAmount = getProductPrice('trial');
   const standardPriceAmount = getProductPrice('standard');
   const familyPriceAmount = getProductPrice('family');
+  const standardAutoshipPriceAmount = getProductPrice('standardAutoship');
+  const familyAutoshipPriceAmount = getProductPrice('familyAutoship');
 
-  const products = [
+  const computeQuarterlySavings = (oneTimePrice: number, subscriptionPrice: number) => {
+    if (oneTimePrice <= 0 || subscriptionPrice <= 0) return 0;
+    const baseline = oneTimePrice * 3;
+    if (baseline <= 0) return 0;
+    const savingsRatio = 1 - subscriptionPrice / baseline;
+    return Math.max(0, Math.round(savingsRatio * 100));
+  };
+
+  const formatPerMonthLabel = (value: number) => {
+    const formatted = formatCurrencyValue(value, locale);
+    const template = t.pricing?.perMonth || '≈ {price}/month';
+    return template.replace('{price}', formatted);
+  };
+
+  const formatSavingsLabel = (percentage: number) => {
+    const template = t.pricing?.saveVsOneTime || 'Save {percent}% vs one-time';
+    return template.replace('{percent}', percentage.toString());
+  };
+
+  const pricingCopy = {
+    oneTimeLabel: t.pricing?.oneTimeLabel || 'One-time purchase',
+    autoshipLabel: t.pricing?.autoshipLabel || 'Autoship & Save',
+    autoshipBestLabel:
+      t.pricing?.autoshipBestLabel || t.pricing?.autoshipLabel || 'Autoship & Save',
+    billedEvery: t.pricing?.billedEvery || 'Billed every',
+    months: t.pricing?.months || 'months',
+    shippingIncluded: t.pricing?.shippingIncluded || 'Shipping included',
+    freeShipping: t.pricing?.freeShipping || 'Free shipping included',
+    plusShipping: t.pricing?.plusShipping || '+ shipping',
+    shippingCalculated: t.pricing?.shippingCalculated || 'Shipping calculated at checkout',
+    startAutoship: t.pricing?.startAutoship || 'Start Autoship',
+    buyNow: t.pricing?.buyNow || 'Buy Now',
+    linkComingSoon: t.pricing?.linkComingSoon || 'Payment link coming soon',
+    recommended: t.pricing?.recommended || 'Most recommended',
+    bestValueBadge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
+  };
+
+  const standardAutoshipSavings = computeQuarterlySavings(standardPriceAmount, standardAutoshipPriceAmount);
+  const familyAutoshipSavings = computeQuarterlySavings(familyPriceAmount, familyAutoshipPriceAmount);
+
+  const products: ProductCard[] = [
     {
       id: 'purrify-12g',
       name: t.products?.['purrify-12g']?.name || 'Purrify 12g',
       subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
-      price: trialPriceAmount,
-      priceFormatted: formatProductPrice('trial'),
-      originalPriceFormatted: formatCurrencyValue(trialPriceAmount + 3),
-      image: '/optimized/20g.webp',
       badge: t.enhancedProductComparison?.trial || 'TRIAL',
       badgeColor: 'bg-blue-500',
       description: t.enhancedProductComparison?.perfectForFirstTime || 'Perfect for first-time users',
@@ -62,25 +145,37 @@ export function EnhancedProductComparison() {
         naturalIngredients: true,
         easyApplication: true,
         moneyBackGuarantee: true,
-        freeShipping: false,
+        freeShipping: true,
         bulkDiscount: false,
         prioritySupport: false,
-        bonusGuide: false
+        bonusGuide: false,
       },
-      savings: 30,
-      popularity: 1
+      image: '/optimized/20g.webp',
+      purchaseOptions: [
+        {
+          key: 'trial-single',
+          type: 'one-time',
+          label: pricingCopy.oneTimeLabel,
+          priceFormatted: formatProductPrice('trial', locale),
+          subLabel: pricingCopy.shippingIncluded,
+          shippingNote: pricingCopy.shippingIncluded,
+          action: 'link',
+          linkKey: 'trialSingle',
+          ctaLabel: t.homepage.enhancedComparison.tryRiskFree,
+          icon: 'cart',
+          ctaEmphasis: 'primary',
+        },
+      ],
     },
     {
       id: 'purrify-50g',
       name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
-      subtitle: t.enhancedProductComparison?.mostPopular || 'Most Popular',
-      price: standardPriceAmount,
-      priceFormatted: formatProductPrice('standard'),
-      originalPriceFormatted: formatCurrencyValue(standardPriceAmount + 5),
-      image: '/optimized/60g.webp',
-      badge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
+      subtitle: t.enhancedProductComparison?.autoshipHero || t.enhancedProductComparison?.mostPopular || 'Most Popular',
+      badge: t.enhancedProductComparison?.autoshipHighlight || 'SUBSCRIBE & SAVE',
       badgeColor: 'bg-green-500',
-      description: t.enhancedProductComparison?.idealForSingleCat || 'Ideal for single-cat households',
+      description:
+        t.enhancedProductComparison?.idealForSingleCat ||
+        'Ideal for single-cat households with quarterly autoship savings.',
       duration: t.productComparison?.products?.[1]?.duration || '4-6 weeks',
       coverage: t.productComparison?.products?.[1]?.cats || '1-3 cats',
       features: {
@@ -88,25 +183,54 @@ export function EnhancedProductComparison() {
         naturalIngredients: true,
         easyApplication: true,
         moneyBackGuarantee: true,
-        // freeShipping: true, // TODO: Restore when free shipping is available
-        bulkDiscount: false,
+        freeShipping: true,
+        bulkDiscount: true,
         prioritySupport: true,
-        bonusGuide: true
+        bonusGuide: true,
       },
-      savings: 20,
-      popularity: 3
+      image: '/optimized/60g.webp',
+      purchaseOptions: [
+        {
+          key: 'standard-autoship',
+          type: 'subscription',
+          label: pricingCopy.autoshipLabel,
+          priceFormatted: formatProductPrice('standardAutoship', locale),
+          subLabel: `${pricingCopy.billedEvery} 3 ${pricingCopy.months}`,
+          perMonth: formatPerMonthLabel(standardAutoshipPriceAmount / 3),
+          shippingNote: pricingCopy.shippingIncluded,
+          savings: standardAutoshipSavings,
+          action: 'link',
+          linkKey: 'standardAutoship',
+          ctaLabel: pricingCopy.startAutoship,
+          icon: 'zap',
+          highlight: true,
+          ctaEmphasis: 'contrast',
+        },
+        {
+          key: 'standard-single',
+          type: 'one-time',
+          label: pricingCopy.oneTimeLabel,
+          priceFormatted: formatProductPrice('standard', locale),
+          subLabel: pricingCopy.plusShipping,
+          shippingNote: pricingCopy.shippingCalculated,
+          action: 'cart',
+          linkKey: 'standardSingle',
+          ctaLabel: t.homepage.enhancedComparison.chooseThisSize,
+          icon: 'cart',
+          cartProductId: 'purrify-50g',
+          ctaEmphasis: 'secondary',
+        },
+      ],
     },
     {
       id: 'purrify-120g',
       name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
-      subtitle: t.productsSection?.powerLevels?.maximumPower || 'Maximum Power',
-      price: familyPriceAmount,
-      priceFormatted: formatProductPrice('family'),
-      originalPriceFormatted: formatCurrencyValue(familyPriceAmount + 10),
-      image: '/optimized/140g.webp',
-      badge: t.enhancedProductComparison?.premium || 'PREMIUM',
-      badgeColor: 'bg-purple-500',
-      description: t.enhancedProductComparison?.perfectForMultiCat || 'Perfect for multi-cat households',
+      subtitle: pricingCopy.bestValueBadge,
+      badge: pricingCopy.bestValueBadge,
+      badgeColor: 'bg-purple-600',
+      description:
+        t.enhancedProductComparison?.perfectForMultiCat ||
+        'Perfect for multi-cat households and allergy-prone homes.',
       duration: t.productComparison?.products?.[2]?.duration || '8-12 weeks',
       coverage: t.productComparison?.products?.[2]?.cats || '3+ cats',
       features: {
@@ -114,15 +238,113 @@ export function EnhancedProductComparison() {
         naturalIngredients: true,
         easyApplication: true,
         moneyBackGuarantee: true,
-        // freeShipping: true, // TODO: Restore when free shipping is available
         bulkDiscount: true,
         prioritySupport: true,
-        bonusGuide: true
+        bonusGuide: true,
       },
-      savings: 25,
-      popularity: 2
-    }
+      image: '/optimized/140g.webp',
+      purchaseOptions: [
+        {
+          key: 'family-autoship',
+          type: 'subscription',
+          label: pricingCopy.autoshipBestLabel,
+          priceFormatted: formatProductPrice('familyAutoship', locale),
+          subLabel: `${pricingCopy.billedEvery} 3 ${pricingCopy.months}`,
+          perMonth: formatPerMonthLabel(familyAutoshipPriceAmount / 3),
+          shippingNote: pricingCopy.freeShipping,
+          savings: familyAutoshipSavings,
+          action: 'link',
+          linkKey: 'familyAutoship',
+          ctaLabel: pricingCopy.startAutoship,
+          icon: 'zap',
+          highlight: true,
+          badgeLabel: `${pricingCopy.bestValueBadge} • ${pricingCopy.recommended}`,
+          ctaEmphasis: 'contrast',
+        },
+        {
+          key: 'family-single',
+          type: 'one-time',
+          label: pricingCopy.oneTimeLabel,
+          priceFormatted: formatProductPrice('family', locale),
+          subLabel: pricingCopy.plusShipping,
+          shippingNote: pricingCopy.shippingCalculated,
+          action: 'cart',
+          linkKey: 'familySingle',
+          ctaLabel: t.homepage.enhancedComparison.chooseThisSize,
+          icon: 'cart',
+          cartProductId: 'purrify-120g',
+          ctaEmphasis: 'secondary',
+        },
+      ],
+      recommended: true,
+    },
   ];
+
+  const renderOptionButton = (option: PurchaseOption, productId: string) => {
+    const paymentLink = option.linkKey ? getPaymentLink(option.linkKey) : null;
+    const Icon = option.icon === 'zap' ? Zap : ShoppingCart;
+
+    const baseClass = 'w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300';
+
+    const emphasisClassMap: Record<NonNullable<PurchaseOption['ctaEmphasis']>, string> = {
+      primary:
+        'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl',
+      secondary:
+        'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]',
+      contrast:
+        'bg-white text-[#FF3131] hover:bg-white/90 dark:bg-gray-100 dark:text-[#FF3131] shadow-xl hover:shadow-2xl',
+    };
+
+    const buttonClass = `${baseClass} ${emphasisClassMap[option.ctaEmphasis || 'secondary']}`;
+
+    if (paymentLink) {
+      return (
+        <Button asChild className={buttonClass}>
+          <a
+            href={paymentLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2"
+          >
+            <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
+            {option.ctaLabel}
+          </a>
+        </Button>
+      );
+    }
+
+    if (option.action === 'cart') {
+      const targetProductId = option.cartProductId || productId;
+      return (
+        <Button
+          className={buttonClass}
+          onClick={() => handleAddToCartClick(targetProductId)}
+          disabled={addingToCart === targetProductId}
+        >
+          {addingToCart === targetProductId ? (
+            <div className="flex items-center gap-2">
+              <div className="animate-spin rounded-full h-4 sm:h-5 w-4 sm:w-5 border-b-2 border-current"></div>
+              {t.productsSection?.adding || 'Adding...'}
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
+              {option.ctaLabel}
+            </div>
+          )}
+        </Button>
+      );
+    }
+
+    return (
+      <Button className={`${buttonClass} opacity-80`} disabled>
+        <div className="flex items-center gap-2">
+          <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
+          {pricingCopy.linkComingSoon}
+        </div>
+      </Button>
+    );
+  };
 
   // Dynamic feature labels based on product size
   const getFeatureLabels = (productId: string) => {
@@ -141,7 +363,7 @@ export function EnhancedProductComparison() {
       naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
       easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
       moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
-      // freeShipping: t.enhancedProductComparison?.freeShipping || 'Free Shipping', // TODO: Restore when free shipping is available
+      freeShipping: t.enhancedProductComparison?.freeShipping || 'Shipping Included',
       bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
       prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support',
       bonusGuide: t.enhancedProductComparison?.bonusGuide || 'Bonus Cat Care Guide'
@@ -173,7 +395,7 @@ export function EnhancedProductComparison() {
                 key={product.id}
                 className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
                   hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                } ${product.popularity === 3 ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
+                } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
                 onMouseEnter={() => handleMouseEnter(product.id)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -185,7 +407,7 @@ export function EnhancedProductComparison() {
                   </div>
 
                   {/* Popularity Indicator */}
-                  {product.popularity === 3 && (
+                  {product.recommended && (
                     <div className="absolute top-2 right-2 bg-[#FF3131] text-white dark:text-gray-100 p-2 rounded-full shadow-lg">
                       <Award className="w-5 h-5" />
                     </div>
@@ -224,19 +446,95 @@ export function EnhancedProductComparison() {
                     </div>
                   </div>
 
-                  {/* Pricing */}
-                  <div className="text-center mb-4 sm:mb-6">
-                    <div className="flex items-center justify-center mb-2 gap-2">
-                      <span className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">{product.priceFormatted}</span>
-                      {product.originalPriceFormatted ? (
-                        <span className="text-gray-500 dark:text-gray-400 line-through text-lg sm:text-xl">
-                          {product.originalPriceFormatted}
-                        </span>
-                      ) : null}
-                    </div>
-                    <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold inline-block border border-green-200 dark:border-green-700 shadow-sm">
-                      {t.subscriptionOfferExtended?.save || 'Save'} {product.savings}%
-                    </div>
+                  {/* Purchase Options */}
+                  <div className="mb-4 sm:mb-6 space-y-4">
+                    {product.purchaseOptions
+                      .filter(option => option.type === 'subscription')
+                      .map(option => {
+                        const isHighlighted = option.highlight;
+                        const cardClass = isHighlighted
+                          ? 'relative overflow-hidden rounded-2xl border border-[#FF3131]/40 bg-gradient-to-br from-[#FF3131]/95 via-[#FF3131]/85 to-[#FF3131]/75 text-white dark:text-gray-100 p-5 shadow-2xl'
+                          : 'rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-md';
+                        return (
+                          <div key={option.key} className={cardClass}>
+                            {option.badgeLabel ? (
+                              <div className="absolute -top-3 right-4 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border border-white/30">
+                                {option.badgeLabel}
+                              </div>
+                            ) : null}
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                              <div>
+                                <p className={`text-xs uppercase tracking-wide font-semibold ${isHighlighted ? 'text-white/80' : 'text-[#FF3131]'}`}>
+                                  {option.label}
+                                </p>
+                                <div className={`text-2xl sm:text-3xl font-bold ${isHighlighted ? 'text-white' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
+                                  {option.priceFormatted}
+                                </div>
+                                {option.perMonth ? (
+                                  <p className={`text-sm font-medium ${isHighlighted ? 'text-white/85' : 'text-gray-700 dark:text-gray-200'}`}>
+                                    {option.perMonth}
+                                  </p>
+                                ) : null}
+                                {option.subLabel ? (
+                                  <p className={`text-xs mt-1 ${isHighlighted ? 'text-white/80' : 'text-gray-600 dark:text-gray-300'}`}>
+                                    {option.subLabel}
+                                  </p>
+                                ) : null}
+                                {option.shippingNote ? (
+                                  <p className={`text-xs mt-1 font-medium ${isHighlighted ? 'text-white' : 'text-gray-700 dark:text-gray-200'}`}>
+                                    {option.shippingNote}
+                                  </p>
+                                ) : null}
+                              </div>
+                              {option.savings ? (
+                                <div
+                                  className={`${isHighlighted ? 'bg-white text-[#FF3131]' : 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'} px-3 py-1.5 rounded-full text-xs font-semibold border ${isHighlighted ? 'border-white/70' : 'border-green-200 dark:border-green-700'}`}
+                                >
+                                  {formatSavingsLabel(option.savings)}
+                                </div>
+                              ) : null}
+                            </div>
+                            <div className="mt-4">
+                              {renderOptionButton(option, option.cartProductId || product.id)}
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                    {product.purchaseOptions
+                      .filter(option => option.type !== 'subscription')
+                      .map(option => (
+                        <div key={option.key} className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-sm">
+                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                            <div>
+                              <p className="text-xs uppercase tracking-wide font-semibold text-gray-600 dark:text-gray-300">
+                                {option.label}
+                              </p>
+                              <div className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">
+                                {option.priceFormatted}
+                              </div>
+                              {option.subLabel ? (
+                                <p className="text-xs mt-1 text-gray-600 dark:text-gray-300">
+                                  {option.subLabel}
+                                </p>
+                              ) : null}
+                              {option.shippingNote ? (
+                                <p className="text-xs mt-1 font-medium text-gray-700 dark:text-gray-200">
+                                  {option.shippingNote}
+                                </p>
+                              ) : null}
+                            </div>
+                            {option.savings ? (
+                              <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
+                                {formatSavingsLabel(option.savings)}
+                              </div>
+                            ) : null}
+                          </div>
+                          <div className="mt-4">
+                            {renderOptionButton(option, option.cartProductId || product.id)}
+                          </div>
+                        </div>
+                      ))}
                   </div>
 
                   {/* Key Stats */}
@@ -270,56 +568,13 @@ export function EnhancedProductComparison() {
                     })}
                   </div>
 
-                  {/* CTA Button */}
-                  <div className="mt-auto">
-                    {product.id === 'purrify-12g' ? (
-                      <Button
-                        asChild
-                        className="w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl"
-                      >
-                        <a
-                          href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full h-full flex items-center justify-center gap-2"
-                        >
-                          <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5" />
-                          {t.homepage.enhancedComparison.tryRiskFree}
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button
-                        className={`w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 ${
-                          product.popularity === 3
-                            ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl border-2 border-transparent'
-                            : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white dark:text-gray-100 border-2 border-gray-200 dark:border-gray-500 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
-                        }`}
-                        onClick={() => handleAddToCartClick(product.id)}
-                        disabled={!!addingToCart}
-                      >
-                        {addingToCart === product.id ? (
-                          <div className="flex items-center gap-2">
-                            <div className="animate-spin rounded-full h-4 sm:h-5 w-4 sm:w-5 border-b-2 border-white"></div>
-                            {t.productsSection?.adding || 'Adding...'}
-                          </div>
-                        ) : (
-                          <div className="flex items-center gap-2">
-                            <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5" />
-                            {t.homepage.enhancedComparison.chooseThisSize}
-                          </div>
-                        )}
-                      </Button>
-                    )}
-
-                    {/* Urgency for popular product */}
-                    {product.popularity === 3 && (
-                      <div className="mt-3 sm:mt-4 text-center">
-                        <p className="text-xs sm:text-sm text-[#FF3131] dark:text-[#FF5555] font-medium">
-                          {t.enhancedProductComparison?.chosenByCustomers || '🔥 68% of customers choose'}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                  {product.recommended && (
+                    <div className="mt-3 sm:mt-4 text-center">
+                      <p className="text-xs sm:text-sm text-[#FF3131] dark:text-[#FF5555] font-medium">
+                        {t.enhancedProductComparison?.chosenByCustomers || '🔥 68% of customers choose this bundle'}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

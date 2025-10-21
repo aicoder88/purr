@@ -85,6 +85,24 @@ export const en = {
     }
   },
 
+  pricing: {
+    oneTimeLabel: "One-time purchase",
+    autoshipLabel: "Autoship & Save",
+    autoshipBestLabel: "Best Value Autoship",
+    billedEvery: "Billed every",
+    months: "months",
+    shippingIncluded: "Shipping included",
+    freeShipping: "Free shipping included",
+    plusShipping: "+ shipping",
+    shippingCalculated: "Shipping calculated at checkout",
+    startAutoship: "Start Autoship",
+    buyNow: "Buy Now",
+    linkComingSoon: "Payment link coming soon",
+    recommended: "Most recommended",
+    perMonth: "≈ {price}/month",
+    saveVsOneTime: "Save {percent}% vs one-time"
+  },
+
   // Hero Section
   hero: {
     catLitter: "Cat Litter Odor Eliminator",
@@ -528,13 +546,15 @@ export const en = {
     naturalIngredients: "100% Natural Ingredients",
     easyApplication: "Easy Application",
     moneyBackGuarantee: "30-Day Money Back Guarantee",
-    // freeShipping: "Free Shipping", // TODO: Restore when free shipping is available
+    freeShipping: "Shipping Included",
+    autoshipHero: "Autoship & Save",
+    autoshipHighlight: "Subscribe & Save",
     bulkDiscount: "Bulk Discount Available",
     prioritySupport: "Priority Customer Support",
     bonusGuide: "Bonus Cat Care Guide",
     tryRiskFree: "Try Risk-Free",
     chooseThisSize: "Choose This Size",
-    chosenByCustomers: "🔥 68% of customers choose",
+    chosenByCustomers: "🔥 68% of customers choose this bundle",
     whyChoosePurrify: "Why Choose Purrify?",
     joinThousands: "Join 1,000+ cat owners who trust Purrify",
     happyCustomers: "Happy Customers",
@@ -642,32 +662,29 @@ export const en = {
 
   // Additional Subscription Offer Translations
   subscriptionOfferExtended: {
-    neverRunOutAgain: "NEVER RUN OUT AGAIN",
-    subscribeAndSaveUpTo: "Subscribe & Save Up to",
-    seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "Join 1,000+ happy cat parents who never worry about odors again.",
-    getPurrifyDelivered: "Get Purrify delivered automatically and save money every month.",
-    monthlyDelivery: "Monthly Delivery",
-    quarterlyDelivery: "Quarterly Delivery",
-    biAnnualDelivery: "Bi-Annual Delivery",
-    perfectForSingleCat: "Perfect for single-cat households",
-    mostPopularMultiCat: "Most popular for multi-cat homes",
-    bestValueLargeFamilies: "Best value for large families",
-    // fastShippingEveryMonth: "Fast shipping every month", // TODO: Restore when offer is available
-    // fastShippingEveryThreeMonths: "Fast shipping every 3 months", // TODO: Restore when offer is available
-    // fastShippingEverySixMonths: "Fast shipping every 6 months", // TODO: Restore when offer is available
+    autoshipBadge: "Quarterly Autoship",
+    headline: "Set & forget your litter odor defense",
+    supportingCopy: "Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.",
+    perMonthLabel: "≈ {price}/month effective",
+    saveVsOneTime: "Save {percent}% vs one-time purchase",
     skipOrCancelAnytime: "Skip or cancel anytime",
-    fortyPercentSavings: "40% savings vs one-time purchase",
-    sixtyPercentSavings: "60% savings vs one-time purchase",
-    seventyTwoPercentSavings: "72% savings vs one-time purchase",
+    shippingIncluded: "Shipping included",
+    freeShippingIncluded: "Free shipping included",
     priorityCustomerSupport: "Priority customer support",
     bonusFreeCatCareGuide: "Bonus: Free cat care guide",
-    bonusFreeCatToys: "Bonus: Free cat toys",
-    mostPopular: "MOST POPULAR",
+    startAutoship: "Start Autoship",
+    linkComingSoon: "Payment link coming soon",
+    quarterlyBilling: "Billed every 3 months",
+    autoshipHero: "Autoship & Save",
+    autoshipHighlight: "Subscribe & Save",
+    standardPlanTitle: "Quarterly Autoship – 3 × 50g",
+    standardDescription: "Perfect for single-cat households that want fresh odor control every month.",
+    includesThreeStandard: "Includes 3 × 50g bags delivered together",
+    familyPlanTitle: "Best Value Autoship – 3 × 120g",
+    familyDescription: "Designed for multi-cat and allergy-prone homes. Our best price per scoop.",
+    includesThreeFamily: "Includes 3 × 120g family packs (delivered together)",
+    bestValueBadge: "Best Value",
     save: "Save",
-    month: "month",
-    months: "months",
-    selectPlan: "Select Plan",
     joinThePurrifyFamily: "Join the Purrify Family"
   },
 
@@ -1021,7 +1038,7 @@ export const en = {
       id: 7,
       category: "product",
       question: "What sizes are available?",
-      answer: "We offer three sizes: 12g Trial Size ($6.99) for first-time users, 50g Regular Size ($19.99) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size offers the best value per gram.",
+      answer: "We offer three sizes: 12g Trial Size ($4.99 with shipping included) for first-time users, 50g Regular Size ($14.99 + shipping) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size delivers the best value per gram, and our autoship bundles include free shipping.",
       popular: false,
       tags: ["sizes", "pricing", "value"]
     },

@@ -57,6 +57,24 @@ export const zh = {
     }
   },
 
+  pricing: {
+    oneTimeLabel: "一次性购买",
+    autoshipLabel: "自动订购省更多",
+    autoshipBestLabel: "超值自动订购方案",
+    billedEvery: "账单周期：每",
+    months: "个月",
+    shippingIncluded: "含运费",
+    freeShipping: "免运费",
+    plusShipping: "+ 运费",
+    shippingCalculated: "运费将在结账时计算",
+    startAutoship: "开启自动订购",
+    buyNow: "立即购买",
+    linkComingSoon: "支付链接即将上线",
+    recommended: "推荐选择",
+    perMonth: "≈ {price}/月",
+    saveVsOneTime: "比单次购买节省 {percent}%"
+  },
+
   // Hero Section
   hero: {
     catLitter: "猫砂",
@@ -537,13 +555,15 @@ export const zh = {
     naturalIngredients: "100%天然成分",
     easyApplication: "易于使用",
     moneyBackGuarantee: "30天退款保证",
-    // freeShipping: "免费配送", // TODO: Restore when free shipping is available
+    freeShipping: "包含配送",
+    autoshipHero: "自动订购省更多",
+    autoshipHighlight: "订阅立享优惠",
     bulkDiscount: "批量折扣",
     prioritySupport: "优先客户支持",
     bonusGuide: "赠送猫咪护理指南",
     tryRiskFree: "无风险试用",
     chooseThisSize: "选择此尺寸",
-    chosenByCustomers: "🔥 68%的客户选择",
+    chosenByCustomers: "🔥 68%的客户选择此方案",
     whyChoosePurrify: "为什么选择Purrify？",
     joinThousands: "加入 1,000+ 名信任 Purrify 的猫主人",
     happyCustomers: "满意客户",
@@ -651,32 +671,29 @@ export const zh = {
 
   // Additional Subscription Offer Translations
   subscriptionOfferExtended: {
-    neverRunOutAgain: "永不断货",
-    subscribeAndSaveUpTo: "订阅并节省高达",
-    seventyTwoPercent: "72%",
-    joinThousandsHappyCatParents: "加入 1,000+ 名快乐的猫主人，再也不用担心异味问题。",
-    getPurrifyDelivered: "自动配送Purrify，每月节省更多费用。",
-    monthlyDelivery: "月度配送",
-    quarterlyDelivery: "季度配送",
-    biAnnualDelivery: "半年配送",
-    perfectForSingleCat: "单猫家庭的完美选择",
-    mostPopularMultiCat: "多猫家庭最受欢迎",
-    bestValueLargeFamilies: "大家庭的最佳价值",
-    // freeShippingEveryMonth: "每月免费配送", // TODO: Restore when free shipping is available
-    // freeShippingEveryThreeMonths: "每3个月免费配送", // TODO: Restore when free shipping is available
-    // freeShippingEverySixMonths: "每6个月免费配送", // TODO: Restore when free shipping is available
+    autoshipBadge: "季度自动配送",
+    headline: "自动守护你的猫砂清新",
+    supportingCopy: "选择每3个月自动补货的组合，省心、省钱、家里始终清新。",
+    perMonthLabel: "≈ {price}/月",
+    saveVsOneTime: "比单次购买节省 {percent}%",
     skipOrCancelAnytime: "随时跳过或取消",
-    fortyPercentSavings: "比单次购买节省40%",
-    sixtyPercentSavings: "比单次购买节省60%",
-    seventyTwoPercentSavings: "比单次购买节省72%",
+    shippingIncluded: "含运费",
+    freeShippingIncluded: "免运费",
     priorityCustomerSupport: "优先客户支持",
-    bonusFreeCatCareGuide: "赠品：免费猫咪护理指南",
-    bonusFreeCatToys: "赠品：免费猫咪玩具",
-    mostPopular: "最受欢迎",
+    bonusFreeCatCareGuide: "赠送：猫咪护理电子指南",
+    startAutoship: "开启自动订购",
+    linkComingSoon: "支付链接即将上线",
+    quarterlyBilling: "每 3 个月结算一次",
+    autoshipHero: "自动订购省更多",
+    autoshipHighlight: "订阅立享优惠",
+    standardPlanTitle: "季度自动配送 – 3 × 50g",
+    standardDescription: "单猫家庭的理想选择，每个月都保持清新。",
+    includesThreeStandard: "包含 3 袋 50g，一次送达",
+    familyPlanTitle: "超值自动配送 – 3 × 120g",
+    familyDescription: "专为多猫或敏感家庭设计，单次使用成本最低。",
+    includesThreeFamily: "包含 3 袋 120g 家庭装（一次送达）",
+    bestValueBadge: "最佳价值",
     save: "节省",
-    month: "月",
-    months: "月",
-    selectPlan: "选择计划",
     joinThePurrifyFamily: "加入Purrify大家庭"
   },
 

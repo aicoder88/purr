@@ -9,7 +9,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Pattes et Griffes (Sainte‑Thérèse)",
     location: "Sainte‑Thérèse, QC J7E 2X5",
     address: "190 Bd du Curé‑Labelle, suite 1B",
-    phone: "450-818-1310",
+    phone: "14506636773",
     url: "https://pattesgriffes.com/storelocator.html",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
@@ -17,7 +17,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Sainte‑Thérèse)",
     location: "Sainte‑Thérèse, QC J7E 2X5",
     address: "95 Bd du Curé‑Labelle, suite 8",
-    phone: "450-965-3906",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-sainte-therese/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -25,7 +25,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Sainte‑Marthe‑sur‑le‑Lac)",
     location: "Sainte‑Marthe‑sur‑le‑Lac, QC J0N 1P0",
     address: "2860 Boul. des Promenades",
-    phone: "450-598-2860",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-ste-marthe/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -33,7 +33,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Animal Shop GIGI",
     location: "Saint‑Eustache, QC J7P 2A3",
     address: "356 Bd Arthur‑Sauvé",
-    phone: "450-598-3444",
+    phone: "14506636773",
     url: "https://www.animaleriegigi.com/",
     description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
   },
@@ -41,7 +41,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Laval)",
     location: "Laval, QC H7R 3X1",
     address: "4511 Bd Arthur‑Sauvé",
-    phone: "450-314-2442",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -49,7 +49,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Pattes et Griffes (Laval)",
     location: "Laval, QC H7N 2K3",
     address: "293 Bd Cartier Ouest",
-    phone: "450-490-1414",
+    phone: "14506636773",
     url: "https://pattesgriffes.com/storelocator.html",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
@@ -57,7 +57,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Pitou Minou & Compagnons (Kirkland)",
     location: "Kirkland, QC H9H 5J1",
     address: "16936 Route Transcanadienne",
-    phone: "514-695-5005",
+    phone: "14506636773",
     url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
@@ -65,7 +65,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Saint‑Laurent)",
     location: "Montreal, QC H2S 3E3",
     address: "7001 Boul. Saint‑Laurent",
-    phone: "514-657-5813",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -73,7 +73,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Doghaus",
     location: "Montreal, QC H4A 1W6",
     address: "5671 Rue Sherbrooke Ouest",
-    phone: "514-483-3555",
+    phone: "14506636773",
     url: "https://www.doghausmtl.com/",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
   },
@@ -81,7 +81,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Kong Animalerie",
     location: "Montreal, QC H3W 3H8",
     address: "5555 Bd Décarie",
-    phone: "514-662-8373",
+    phone: "14506636773",
     url: "https://www.facebook.com/konganimalerie/",
     description: t.storesSection?.storeDescriptions?.fullServicePetStore || "Full-service pet store"
   },
@@ -89,7 +89,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Coquette et Finegueule",
     location: "Verdun, QC H4H 1E1",
     address: "5203 Avenue Bannantyne",
-    phone: "514-761-4221",
+    phone: "14506636773",
     url: "https://coquetteetfinegueule.com/",
     description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || "Pet store with grooming services"
   },
@@ -97,7 +97,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Pitou Minou Verdun",
     location: "Verdun, QC H4G 1V7",
     address: "4100 Rue Wellington",
-    phone: "514-732-0555",
+    phone: "14506636773",
     url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
@@ -105,7 +105,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Plateau Mont‑Royal)",
     location: "Montreal, QC H2H 1J8",
     address: "2016 Avenue du Mont‑Royal Est",
-    phone: "514-521-0201",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -113,7 +113,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Chico (Hochelaga‑Maisonneuve)",
     location: "Montreal, QC H1W 1S5",
     address: "3911 Rue Ontario Est",
-    phone: "514-527-1371",
+    phone: "14506636773",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -121,7 +121,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Pattes et Griffes (Marché Central)",
     location: "Montreal, QC H4N 3C5",
     address: "9185 Bd de l'Acadie",
-    phone: "514-389-0090",
+    phone: "14506636773",
     url: "https://pattesgriffes.com/storelocator.html",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },

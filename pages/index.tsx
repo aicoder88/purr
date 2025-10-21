@@ -241,53 +241,53 @@ export default function Home() {
                   "name": t.structuredData.offerCatalog.name,
                   "itemListElement": [
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Product",
-                        "name": t.structuredData.offerCatalog.products.trial.name,
-                        "description": t.structuredData.offerCatalog.products.trial.description,
-                        "sku": t.structuredData.offerCatalog.products.trial.sku,
-                        "image": "https://www.purrify.ca/optimized/20g.webp"
-                      },
-                  "price": "${trialPriceValue}",
-                      "priceCurrency": "CAD",
-                      "priceValidUntil": priceValidUntil,
-                      "availability": availabilityUrl,
-                      "url": "https://www.purrify.ca/products/trial-size"
+                      "@type": "Product",
+                      "name": t.structuredData.offerCatalog.products.trial.name,
+                      "description": t.structuredData.offerCatalog.products.trial.description,
+                      "sku": t.structuredData.offerCatalog.products.trial.sku,
+                      "image": "https://www.purrify.ca/optimized/20g.webp",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": trialPriceValue,
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl,
+                        "url": "https://www.purrify.ca/products/trial-size"
+                      }
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Product",
-                        "name": t.structuredData.offerCatalog.products.standard.name,
-                        "description": t.structuredData.offerCatalog.products.standard.description,
-                        "sku": t.structuredData.offerCatalog.products.standard.sku,
-                        "image": "https://www.purrify.ca/optimized/60g.webp"
-                      },
-                  "price": "${standardPriceValue}",
-                      "priceCurrency": "CAD",
-                      "priceValidUntil": priceValidUntil,
-                      "availability": availabilityUrl,
-                      "url": "https://www.purrify.ca/products/standard"
+                      "@type": "Product",
+                      "name": t.structuredData.offerCatalog.products.standard.name,
+                      "description": t.structuredData.offerCatalog.products.standard.description,
+                      "sku": t.structuredData.offerCatalog.products.standard.sku,
+                      "image": "https://www.purrify.ca/optimized/60g.webp",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": standardPriceValue,
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl,
+                        "url": "https://www.purrify.ca/products/standard"
+                      }
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Product",
-                        "name": t.structuredData.offerCatalog.products.family.name,
-                        "description": t.structuredData.offerCatalog.products.family.description,
-                        "sku": t.structuredData.offerCatalog.products.family.sku,
-                        "image": "https://www.purrify.ca/optimized/140g.webp"
-                      },
-                  "price": "${familyPriceValue}",
-                      "priceCurrency": "CAD",
-                      "priceValidUntil": priceValidUntil,
-                      "availability": availabilityUrl,
-                      "url": "https://www.purrify.ca/products/family-pack"
+                      "@type": "Product",
+                      "name": t.structuredData.offerCatalog.products.family.name,
+                      "description": t.structuredData.offerCatalog.products.family.description,
+                      "sku": t.structuredData.offerCatalog.products.family.sku,
+                      "image": "https://www.purrify.ca/optimized/140g.webp",
+                      "offers": {
+                        "@type": "Offer",
+                        "price": familyPriceValue,
+                        "priceCurrency": "CAD",
+                        "priceValidUntil": priceValidUntil,
+                        "availability": availabilityUrl,
+                        "url": "https://www.purrify.ca/products/family-pack"
+                      }
                     }
                   ]
                 },
-                  "priceRange": priceRange.formatted
+                "priceRange": priceRange.formatted
               },
               {
                 "@type": "WebSite",
