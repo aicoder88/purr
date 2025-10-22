@@ -185,11 +185,13 @@ export default function ContactPage() {
           <Container>
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
-                We're Here to Help
+                The Litter Box Odor Eliminator That Actually Works
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-12 leading-relaxed">
-                Have questions about Purrify? Need help with your order? Our friendly customer support team 
-                is ready to assist you with expert advice and solutions.
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                You've tried fancy litter, daily scooping, air fresheners that just make it worse. Your house still smells like a litter box the second someone walks in.
+              </p>
+              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-12 leading-relaxed font-semibold">
+                This NASA-grade activated carbon doesn't mask ammonia—it traps it at the molecular level. One sprinkle = 7 days of guests asking "wait, you have cats?" instead of holding their breath.
               </p>
             </div>
           </Container>
