@@ -181,35 +181,32 @@ export default function ContactPage() {
         </Container>
 
         {/* Hero Section */}
-        <section className="py-16">
+        <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
           <Container>
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
-                The Litter Box Odor Eliminator That Actually Works
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+                We're Here to Help
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                You've tried fancy litter, daily scooping, air fresheners that just make it worse. Your house still smells like a litter box the second someone walks in.
-              </p>
-              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-12 leading-relaxed font-semibold">
-                This NASA-grade activated carbon doesn't mask ammonia—it traps it at the molecular level. One sprinkle = 7 days of guests asking "wait, you have cats?" instead of holding their breath.
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Have questions about Purrify? Need help with your order? Our friendly customer support team is ready to assist you with expert advice and solutions.
               </p>
             </div>
           </Container>
         </section>
 
         {/* Contact Methods */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
+        <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                Choose How to Reach Us
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                Get in Touch
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
-                Pick the contact method that works best for you
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Choose the contact method that works best for you
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
               {contactMethods.map((method, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
@@ -246,35 +243,15 @@ export default function ContactPage() {
           </Container>
         </section>
 
-        {/* Phone Messaging Section */}
-        <section className="py-16 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                {PHONE_MESSAGING.headline}
-              </h2>
-              <p className="text-2xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-6">
-                {PHONE_MESSAGING.callout}
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
-                {PHONE_MESSAGING.explanation}
-              </p>
-              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100 italic whitespace-pre-line">
-                {PHONE_MESSAGING.cta}
-              </p>
-            </div>
-          </Container>
-        </section>
-
         {/* Contact Form */}
-        <section className="py-16">
+        <section className="py-16 bg-[#E0EFC7]/20 dark:bg-gray-800/30">
           <Container>
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                   Send Us a Message
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
+                <p className="text-lg text-gray-600 dark:text-gray-300">
                   Fill out the form below and we'll get back to you within 24 hours
                 </p>
               </div>
@@ -450,6 +427,26 @@ export default function ContactPage() {
                   View Full FAQ
                 </Button>
               </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* Phone Messaging Section */}
+        <section className="py-16 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {PHONE_MESSAGING.headline}
+              </h2>
+              <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-4">
+                {PHONE_MESSAGING.callout}
+              </p>
+              <p className="text-base text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                {PHONE_MESSAGING.explanation}
+              </p>
+              <p className="text-base font-semibold text-gray-900 dark:text-gray-100 italic whitespace-pre-line">
+                {PHONE_MESSAGING.cta}
+              </p>
             </div>
           </Container>
         </section>
