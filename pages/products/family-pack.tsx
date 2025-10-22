@@ -218,7 +218,7 @@ export default function FamilyPackPage() {
                           : `Save ${familyAutoshipSavings}% vs one-time`}
                       </span>
                     </div>
-                    <div className="flex items-baseline gap-3 mb-3 relative">
+                    <div className="flex items-baseline gap-3 mb-4 relative">
                       <div className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">
                         {familyAutoshipPrice}
                       </div>
@@ -228,8 +228,19 @@ export default function FamilyPackPage() {
                           : `≈ ${familyAutoshipPerMonth}/month effective`}
                       </div>
                     </div>
+
+                    {/* Prominent Shipping Savings Callout */}
+                    <div className="bg-green-100 dark:bg-green-900/50 border-2 border-green-500 dark:border-green-400 rounded-lg p-4 mb-4 relative">
+                      <div className="flex items-center gap-3">
+                        <div className="text-2xl font-bold text-green-700 dark:text-green-300">✓ FREE SHIPPING</div>
+                      </div>
+                      <p className="text-sm font-semibold text-green-800 dark:text-green-200 mt-2">
+                        Save $15–$20+ per order vs single purchases
+                      </p>
+                    </div>
+
                     <p className="text-sm text-gray-700 dark:text-gray-200 mb-4 relative">
-                      {t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included'} · {t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months'}
+                      {t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months'}
                     </p>
                     <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5 relative">
                       <li className="flex gap-2">
@@ -273,10 +284,20 @@ export default function FamilyPackPage() {
                       <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">
                         {familyPrice}
                       </div>
-                      <span className="text-sm text-gray-600 dark:text-gray-300">+ {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}</span>
                     </div>
+
+                    {/* Shipping Cost Warning */}
+                    <div className="bg-amber-100 dark:bg-amber-900/40 border-2 border-amber-500 dark:border-amber-400 rounded-lg p-3 mb-4 relative">
+                      <p className="text-sm font-bold text-amber-900 dark:text-amber-200">
+                        + Shipping: $15–$20+
+                      </p>
+                      <p className="text-xs text-amber-800 dark:text-amber-300 mt-1">
+                        Actual cost at checkout
+                      </p>
+                    </div>
+
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {t.pricing?.plusShipping || '+ shipping'} · {t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime'}
+                      {t.pricing?.plusShipping || '+ shipping'} · One-time order
                     </p>
                     <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
                       <Link href={checkoutUrl} className="flex items-center justify-center gap-2">

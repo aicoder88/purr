@@ -141,11 +141,22 @@ export function SubscriptionOffer() {
                       <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{plan.description}</p>
                     </div>
 
-                    <div className="text-center space-y-2">
+                    <div className="text-center space-y-3">
                       <div className="text-4xl font-extrabold text-gray-900 dark:text-gray-50">{plan.priceFormatted}</div>
                       <p className="text-sm font-medium text-[#FF3131]">{plan.perMonthLabel}</p>
                       <p className="text-xs text-gray-600 dark:text-gray-400">{plan.billingLabel}</p>
-                      <p className="text-xs font-medium text-gray-700 dark:text-gray-200">{plan.shippingNote}</p>
+
+                      {/* Prominent Shipping Callout */}
+                      <div className={`rounded-lg p-3 font-semibold text-sm ${
+                        plan.id === 'family-autoship'
+                          ? 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 border-2 border-green-500 dark:border-green-500'
+                          : 'bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 border-2 border-amber-500 dark:border-amber-500'
+                      }`}>
+                        {plan.id === 'family-autoship'
+                          ? '✓ FREE SHIPPING INCLUDED'
+                          : '+ Shipping costs apply'}
+                      </div>
+
                       {savingsLabel ? (
                         <span className="inline-block mt-2 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-4 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
                           {savingsLabel}
