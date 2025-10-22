@@ -5,8 +5,8 @@
  */
 
 const PRIMARY_PHONE = {
-  display: '14506636773',
-  international: '+14506636773',
+  display: '1-450-663-6773',
+  international: '+1-450-663-6773',
   e164: '+14506636773',
 };
 

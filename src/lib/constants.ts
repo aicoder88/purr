@@ -189,6 +189,15 @@ export const PHONE_NUMBER = {
   international: getPhoneNumberInternational(),
   e164: getPhoneNumberE164(),
   telLink: getPhoneNumberHref(),
+  tagline: 'Call 1-450-6-ODORS-3',
+  description: 'See what we did there? We trapped those pesky odors right inside our digits so they can\'t escape and stink up your day!',
+};
+
+export const PHONE_MESSAGING = {
+  headline: 'WE LOCKED AWAY THE ODORS... EVEN IN OUR PHONE NUMBER!',
+  callout: 'Call 1-450-6-ODORS-3',
+  explanation: 'See what we did there? We trapped those pesky odors right inside our digits so they can\'t escape and stink up your day!',
+  cta: 'If we can imprison odors in a phone number...\n...imagine what we can do in your home!'
 };
 
 export const SOCIAL_LINKS = {

@@ -65,7 +65,7 @@ const OurStoryPage: NextPage = () => {
           icon={Heart}
           title="Our Story"
           subtitle="Born from a cat owner's frustration, grown into a mission to help families everywhere"
-          description="What started as one person's struggle with persistent litter box odors has become a Canadian success story, helping 1,000+ cat owners create fresher, cleaner homes."
+          description="What started as one person's struggle with persistent litter box odors has become a Canadian success story, helping hundreds of cat owners create fresher, cleaner homes."
         />
 
         {/* Mission Statement */}

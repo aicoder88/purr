@@ -8,121 +8,145 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
   {
     name: "Pattes et Griffes (Sainte‑Thérèse)",
     location: "Sainte‑Thérèse, QC J7E 2X5",
-    address: "190 Bd du Curé‑Labelle, suite 1B",
-    phone: "14506636773",
+    address: "190 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2X5",
+    phone: "1-450-818-1310",
     url: "https://pattesgriffes.com/storelocator.html",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
     name: "Chico (Sainte‑Thérèse)",
-    location: "Sainte‑Thérèse, QC J7E 2X5",
-    address: "95 Bd du Curé‑Labelle, suite 8",
-    phone: "14506636773",
+    location: "Sainte‑Thérèse, QC J7E 2Z7",
+    address: "95 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2Z7",
+    phone: "1-450-965-3906",
     url: "https://www.chico.ca/boutique/chico-sainte-therese/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Chico (Sainte‑Marthe‑sur‑le‑Lac)",
     location: "Sainte‑Marthe‑sur‑le‑Lac, QC J0N 1P0",
-    address: "2860 Boul. des Promenades",
-    phone: "14506636773",
+    address: "2860 B Boulevard des Promenades, Sainte-Marthe-sur-le-Lac, QC J0N 1P0",
+    phone: "1-450-598-2860",
     url: "https://www.chico.ca/boutique/chico-ste-marthe/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Animal Shop GIGI",
-    location: "Saint‑Eustache, QC J7P 2A3",
-    address: "356 Bd Arthur‑Sauvé",
-    phone: "14506636773",
+    location: "Saint‑Eustache, QC J7R 2J3",
+    address: "356 Boulevard Arthur-Sauvé, Saint-Eustache, QC J7R 2J3",
+    phone: "1-450-598-3444",
     url: "https://www.animaleriegigi.com/",
     description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
   },
   {
     name: "Chico (Laval)",
-    location: "Laval, QC H7R 3X1",
-    address: "4511 Bd Arthur‑Sauvé",
-    phone: "14506636773",
+    location: "Laval, QC H7E 0A4",
+    address: "5405 Boulevard Robert-Bourassa, Laval, QC H7E 0A4",
+    phone: "1-450-239-0354",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Pattes et Griffes (Laval)",
-    location: "Laval, QC H7N 2K3",
-    address: "293 Bd Cartier Ouest",
-    phone: "14506636773",
+    location: "Laval, QC H7S 1M9",
+    address: "1682 Boulevard Saint-Martin Ouest, Laval, QC H7S 1M9",
+    phone: "1-579-640-1857",
     url: "https://pattesgriffes.com/storelocator.html",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
     name: "Pitou Minou & Compagnons (Kirkland)",
-    location: "Kirkland, QC H9H 5J1",
-    address: "16936 Route Transcanadienne",
-    phone: "14506636773",
+    location: "Kirkland, QC H9H 0C5",
+    address: "16936 Autoroute Transcanadienne, Kirkland, QC H9H 0C5",
+    phone: "1-514-695-5005",
     url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
     name: "Chico (Saint‑Laurent)",
     location: "Montreal, QC H2S 3E3",
-    address: "7001 Boul. Saint‑Laurent",
-    phone: "14506636773",
+    address: "7001 Boulevard Saint-Laurent, Montréal, QC H2S 3E3",
+    phone: "1-514-657-5813",
     url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Doghaus",
     location: "Montreal, QC H4A 1W6",
-    address: "5671 Rue Sherbrooke Ouest",
-    phone: "14506636773",
+    address: "5671 Rue Sherbrooke Ouest, Montréal, QC H4A 1W6",
+    phone: "514-483-3555",
     url: "https://www.doghausmtl.com/",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
   },
   {
     name: "Kong Animalerie",
     location: "Montreal, QC H3W 3H8",
-    address: "5555 Bd Décarie",
-    phone: "14506636773",
+    address: "5555 Bd Décarie, Montréal, QC H3W 3H8",
+    phone: "514-662-8373",
     url: "https://www.facebook.com/konganimalerie/",
     description: t.storesSection?.storeDescriptions?.fullServicePetStore || "Full-service pet store"
   },
   {
     name: "Coquette et Finegueule",
-    location: "Verdun, QC H4H 1E1",
-    address: "5203 Avenue Bannantyne",
-    phone: "14506636773",
+    location: "Verdun, QC H4H 1E6",
+    address: "5203 Rue Bannantyne, Verdun, QC H4H 1E6",
+    phone: "514-761-4221",
     url: "https://coquetteetfinegueule.com/",
     description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || "Pet store with grooming services"
   },
   {
-    name: "Pitou Minou Verdun",
+    name: "Pitou Minou & Compagnons (Verdun)",
     location: "Verdun, QC H4G 1V7",
-    address: "4100 Rue Wellington",
-    phone: "14506636773",
+    address: "4100 Rue Wellington, Verdun, QC H4G 1V7",
+    phone: "514-732-0555",
     url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
     name: "Chico (Plateau Mont‑Royal)",
-    location: "Montreal, QC H2H 1J8",
-    address: "2016 Avenue du Mont‑Royal Est",
-    phone: "14506636773",
+    location: "Montreal, QC H2H 1J6",
+    address: "2016 Avenue du Mont-Royal E., Montréal, QC H2H 1J6",
+    phone: "514-521-0201",
     url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
     name: "Chico (Hochelaga‑Maisonneuve)",
-    location: "Montreal, QC H1W 1S5",
-    address: "3911 Rue Ontario Est",
-    phone: "14506636773",
+    location: "Montreal, QC H1L 2M4",
+    address: "8646 Rue Hochelaga, Montréal, QC H1L 2M4",
+    phone: "514-419-9850",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
   {
-    name: "Pattes et Griffes (Marché Central)",
-    location: "Montreal, QC H4N 3C5",
-    address: "9185 Bd de l'Acadie",
-    phone: "14506636773",
-    url: "https://pattesgriffes.com/storelocator.html",
+    name: "Chico (Plateau Mont-Royal — alternate)",
+    location: "Montreal, QC H1W 1S7",
+    address: "3911 Rue Ontario E., Montréal, QC H1W 1S7",
+    phone: "514-527-1371",
+    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+  },
+  {
+    name: "Animalerie Mamiwouff Inc",
+    location: "Saint-Césaire, QC J0L 1T0",
+    address: "2048 Route 112, Saint-Césaire, QC J0L 1T0",
+    phone: "450-469-4560",
+    url: "https://www.mamiwouff.ca/",
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
+  },
+  {
+    name: "Animalerie Lamifidel",
+    location: "Alma, QC G8B 2V6",
+    address: "1295 Avenue du Pont S, Alma, QC G8B 2V6",
+    phone: "418-668-0117",
+    url: "https://www.lamifidel.com/",
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+  },
+  {
+    name: "Animalerie Petmobile Nathamo",
+    location: "Shawinigan, QC G0X 1L0",
+    address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
+    phone: "819-695-2329",
+    url: "",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
 ];
