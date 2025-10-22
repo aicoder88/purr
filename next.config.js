@@ -234,6 +234,12 @@ const nextConfig = {
         permanent: true,
         locale: false,
       },
+      {
+        source: '/products/family',
+        destination: '/products/family-pack',
+        permanent: true,
+        locale: false,
+      },
       // Redirect old demo URLs
       {
         source: '/demo/:path*',
