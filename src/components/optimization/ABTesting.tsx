@@ -92,14 +92,14 @@ export function SolutionPageCTATest({
         <div className="text-center">
           <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Ready to Eliminate Odors?</h3>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Try Purrify risk-free and see the difference activated carbon makes.
+            Try Purrify risk-free with free shipping and see the difference activated carbon makes.
           </p>
           <a
             href={productUrl}
             className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors shadow-lg"
             onClick={handleControlClick}
           >
-            {`Try Purrify - ${trialPrice}`}
+            {`Try Purrify - ${trialPrice} (Free Shipping)`}
           </a>
         </div>
       )

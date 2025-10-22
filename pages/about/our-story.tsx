@@ -262,7 +262,7 @@ const OurStoryPage: NextPage = () => {
                     <span className="flex flex-col leading-tight text-left">
                       <span className="text-base sm:text-lg">{`Try Purrify Today - ${PRODUCT_PRICES.trial.formatted}`}</span>
                       <span className="text-xs sm:text-sm font-semibold text-[#5B2EFF]/80">
-                        Trial size • Single Use Sample
+                        Trial size • Free Shipping Included
                       </span>
                     </span>
                     <ChevronRight className="w-5 h-5" />
