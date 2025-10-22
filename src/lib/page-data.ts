@@ -58,13 +58,13 @@ export const enStoryData = {
       icon: Zap
     },
     {
-      year: "2024",
+      year: "2023",
       title: "Product Launch",
       description: "Officially launched Purrify across Canada, helping hundreds of cat owners create fresher, cleaner homes.",
       icon: Award
     },
     {
-      year: "2023",
+      year: "2024",
       title: "Expansion & Growth",
       description: "Expanded product line with multiple sizes and began international shipping to serve cat owners worldwide.",
       icon: Users
@@ -167,13 +167,13 @@ export const frStoryData = {
       icon: Zap
     },
     {
-      year: "2024",
+      year: "2023",
       title: "Lancement du Produit",
       description: "Lancement officiel de Purrify à travers le Canada, aidant des centaines de propriétaires de chats à créer des maisons plus fraîches et propres.",
       icon: Award
     },
     {
-      year: "2023",
+      year: "2024",
       title: "Expansion et Croissance",
       description: "Expansion de la gamme de produits avec plusieurs tailles et début de l'expédition internationale pour servir les propriétaires de chats mondialement.",
       icon: Users
