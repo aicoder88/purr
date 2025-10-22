@@ -7,7 +7,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { Input } from '../../src/components/ui/input';
 import { Textarea } from '../../src/components/ui/textarea';
-import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -240,6 +240,26 @@ export default function ContactPage() {
                   </Button>
                 </div>
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Phone Messaging Section */}
+        <section className="py-16 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                {PHONE_MESSAGING.headline}
+              </h2>
+              <p className="text-2xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-6">
+                {PHONE_MESSAGING.callout}
+              </p>
+              <p className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+                {PHONE_MESSAGING.explanation}
+              </p>
+              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100 italic whitespace-pre-line">
+                {PHONE_MESSAGING.cta}
+              </p>
             </div>
           </Container>
         </section>
