@@ -109,9 +109,9 @@ export const en = {
     rabbitLitter: "Rabbit Litter Deodorizer",
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
-    eliminateCatOdors: "Your Friends Smell It The Second They Walk In",
-    instantly: "(Even If They're Too Polite To Say So)",
-    description: "You've tried everything. Expensive litter. Constant scooping. Opening windows in February. Nothing works... until now. This NASA-grade activated carbon locks away ammonia at the molecular level—one sprinkle buys you 7 days of \"wait, you have CATS?\" from shocked visitors.",
+    eliminateCatOdors: "The Litter Box Odor Eliminator That Actually Works",
+    instantly: "You've tried fancy litter, daily scooping, air fresheners that just make it worse. Your house still smells like a litter box the second someone walks in.",
+    description: "This NASA-grade activated coconut doesn't mask odor—it traps it at the molecular level. One sprinkle = 7 days of guests asking \"wait, you have cats?\" instead of holding their breath.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "cat parents say goodbye to litter box smell",
