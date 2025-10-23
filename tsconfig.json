@@ -9,12 +9,13 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
+    "tsBuildInfoFile": ".next/.tsbuildinfo",
     // Enhanced type checking options (gradually enabled)
     "noFallthroughCasesInSwitch": true,
     "plugins": [

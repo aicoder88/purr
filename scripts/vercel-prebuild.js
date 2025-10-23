@@ -7,6 +7,13 @@ console.log('🚀 Starting Vercel prebuild process...');
 
 const isCI = !!(process.env.CI || process.env.VERCEL);
 
+// Optimize TypeScript configuration for faster builds
+try {
+  execSync('node scripts/optimize-typescript.js', { stdio: 'inherit' });
+} catch (e) {
+  console.warn('⚠️ TypeScript optimization warning (non-blocking)');
+}
+
 // Dark mode validation
 if (!isCI) {
   console.log('🌙 Running dark mode validation...');

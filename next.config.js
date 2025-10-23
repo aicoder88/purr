@@ -118,9 +118,11 @@ const nextConfig = {
     reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
   
-  // Enable strict mode for better type safety
+  // Optimize TypeScript for faster builds
   typescript: {
     ignoreBuildErrors: false,
+    // Enable tsc caching to speed up rebuilds
+    tsconfigPath: './tsconfig.json',
   },
   
   // Set the output directory that Vercel expects
