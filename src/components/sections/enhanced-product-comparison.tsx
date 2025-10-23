@@ -132,8 +132,8 @@ export function EnhancedProductComparison() {
       id: 'purrify-12g',
       name: t.products?.['purrify-12g']?.name || 'Purrify 12g',
       subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
-      badge: t.enhancedProductComparison?.trial || 'TRIAL',
-      badgeColor: 'bg-blue-500',
+      badge: t.enhancedProductComparison?.trial || 'ONE-TIME PURCHASE',
+      badgeColor: 'bg-blue-500 dark:bg-blue-600',
       description: t.enhancedProductComparison?.perfectForFirstTime || 'Perfect for first-time users',
       duration: t.productComparison?.products?.[0]?.duration || '1-2 weeks',
       coverage: t.productComparison?.products?.[0]?.cats || '1-2 cats',
@@ -152,9 +152,9 @@ export function EnhancedProductComparison() {
         {
           key: 'trial-single',
           type: 'one-time',
-          label: pricingCopy.oneTimeLabel,
+          label: '💰 ONE-TIME PRICE',
           priceFormatted: formatProductPrice('trial', locale),
-          subLabel: pricingCopy.shippingIncluded,
+          subLabel: 'Pay once, no recurring charges • Shipping included',
           shippingNote: pricingCopy.shippingIncluded,
           action: 'link',
           linkKey: 'trialSingle',
@@ -167,12 +167,11 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-50g',
       name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
-      subtitle: t.enhancedProductComparison?.autoshipHero || t.enhancedProductComparison?.mostPopular || 'Regular Size',
-      badge: t.enhancedProductComparison?.autoshipHighlight || 'SUBSCRIBE & SAVE',
-      badgeColor: 'bg-green-500',
+      subtitle: 'Monthly Subscription Option',
+      badge: 'PAY MONTHLY',
+      badgeColor: 'bg-blue-600 dark:bg-blue-700',
       description:
-        t.enhancedProductComparison?.idealForSingleCat ||
-        'Ideal for single-cat households with quarterly autoship savings.',
+        'Perfect for single-cat households that want fresh Purrify delivered each month.',
       duration: t.productComparison?.products?.[1]?.duration || 'Up to 1 month of freshness!',
       coverage: t.productComparison?.products?.[1]?.cats || '1-2 cats',
       features: {
@@ -188,16 +187,17 @@ export function EnhancedProductComparison() {
       image: '/optimized/60g.webp',
       purchaseOptions: [
         {
-          key: 'standard-single',
-          type: 'one-time',
-          label: pricingCopy.oneTimeLabel,
+          key: 'standard-monthly',
+          type: 'subscription',
+          label: '📅 MONTHLY SUBSCRIPTION',
           priceFormatted: formatProductPrice('standard', locale),
-          subLabel: pricingCopy.plusShipping,
-          shippingNote: pricingCopy.shippingCalculated,
+          subLabel: 'Auto-delivered every month • Cancel anytime',
+          perMonth: 'Per month',
+          shippingNote: 'Shipping included',
           action: 'cart',
           linkKey: 'standardSingle',
-          ctaLabel: t.homepage.enhancedComparison.chooseThisSize,
-          icon: 'cart',
+          ctaLabel: 'Subscribe Now',
+          icon: 'zap',
           cartProductId: 'purrify-50g',
           ctaEmphasis: 'primary',
         },
@@ -206,12 +206,11 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-120g',
       name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
-      subtitle: '🏆 PREMIUM FAMILY PACK',
-      badge: '💎 BEST VALUE',
-      badgeColor: 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500',
+      subtitle: '⭐ BEST VALUE - SAVE 40%',
+      badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
+      badgeColor: 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600',
       description:
-        t.enhancedProductComparison?.perfectForMultiCat ||
-        '⚡ Ultimate protection for multi-cat homes. Eliminate odors for months, not days.',
+        'The #1 choice for multi-cat homes. Delivered every 3 months at the lowest price per oz.',
       duration: t.productComparison?.products?.[2]?.duration || '8-12 weeks',
       coverage: t.productComparison?.products?.[2]?.cats || '3+ cats',
       features: {
@@ -228,18 +227,18 @@ export function EnhancedProductComparison() {
         {
           key: 'family-autoship',
           type: 'subscription',
-          label: '💰 ULTIMATE SAVINGS PLAN',
+          label: '💎 SUBSCRIBE EVERY 3 MONTHS',
           priceFormatted: formatProductPrice('familyAutoship', locale),
-          subLabel: `Auto-delivered every 3 ${pricingCopy.months} • Cancel anytime`,
+          subLabel: `That's ${formatPerMonthLabel(familyAutoshipPriceAmount / 3)} • Free Premium Shipping`,
           perMonth: formatPerMonthLabel(familyAutoshipPriceAmount / 3),
-          shippingNote: '🚚 FREE Premium Shipping Always',
+          shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: familyAutoshipSavings,
           action: 'link',
           linkKey: 'familyAutoship',
-          ctaLabel: '🔥 CLAIM YOUR SAVINGS NOW',
+          ctaLabel: '🔥 GET BEST VALUE - SAVE NOW',
           icon: 'zap',
           highlight: true,
-          badgeLabel: `💎 VIP EXCLUSIVE • ${pricingCopy.recommended}`,
+          badgeLabel: `⭐ MOST POPULAR • ${pricingCopy.recommended}`,
           ctaEmphasis: 'contrast',
         },
         {
@@ -247,11 +246,11 @@ export function EnhancedProductComparison() {
           type: 'one-time',
           label: 'One-Time Purchase',
           priceFormatted: formatProductPrice('family', locale),
-          subLabel: pricingCopy.plusShipping,
+          subLabel: 'No subscription • Shipping calculated at checkout',
           shippingNote: pricingCopy.shippingCalculated,
           action: 'cart',
           linkKey: 'familySingle',
-          ctaLabel: t.homepage.enhancedComparison.chooseThisSize,
+          ctaLabel: 'Buy Once',
           icon: 'cart',
           cartProductId: 'purrify-120g',
           ctaEmphasis: 'secondary',
@@ -355,18 +354,26 @@ export function EnhancedProductComparison() {
     <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black">
       <Container>
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6 shadow-lg">
-              <TrendingUp className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
-              <span className="font-bold text-sm sm:text-base">{t.enhancedProductComparison?.compareAndSave || "COMPARE & SAVE"}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-3 sm:mb-4 leading-tight">
+          {/* Header with Clear Section Title */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20 px-4">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
               {t.homepage.enhancedComparison.chooseYourPerfectSize}
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto font-semibold mb-8 leading-relaxed">
               {t.homepage.enhancedComparison.allSizesDeliver}
             </p>
+
+            {/* Billing Period Legend */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 flex-wrap mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-blue-500 dark:bg-blue-400"></div>
+                <span className="text-gray-700 dark:text-gray-200 font-semibold">Pay Per Month</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600"></div>
+                <span className="text-gray-700 dark:text-gray-200 font-semibold">Subscribe Every 3 Months (Best Value ⭐)</span>
+              </div>
+            </div>
           </div>
 
           {/* Product Comparison Grid */}
