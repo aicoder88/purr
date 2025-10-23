@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/vercel-prebuild.js",
-    "build": "NODE_OPTIONS=\"--max-old-space-size=4096 --experimental-workers\" next build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
     "start": "next start",
     "lint": "eslint .",
     "check-types": "node scripts/check-types.js",
