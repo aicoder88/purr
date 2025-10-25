@@ -448,11 +448,7 @@ export default function Home() {
           </ErrorBoundary>
         </div>
       </main>
-      
-      
-      {/* Sticky Urgency Bar for persistent conversion pressure */}
-      <StickyUrgencyBar />
-      
+
       {/* Social Proof Components - Temporarily disabled */}
       {/* <PurchaseNotifications 
         position="bottom-left"
