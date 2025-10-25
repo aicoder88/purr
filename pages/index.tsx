@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { BlogPreview } from '../src/components/sections/blog-preview';
 
 // Above-the-fold banner should be SSR to avoid CLS
-import { UrgencyBanner, StickyUrgencyBar } from '../src/components/sections/urgency-banner';
+import { ScrollingAnnouncementBar } from '../src/components/sections/scrolling-announcement-bar';
 import { LazyLoad } from '../src/components/performance/LazyLoad';
 
 const sectionSkeleton = (height: string, rounding: string = 'rounded-2xl') => (
@@ -313,8 +313,8 @@ export default function Home() {
         }}
       />
 
-      {/* Urgency Banner at the top */}
-      <UrgencyBanner />
+      {/* Scrolling Announcement Bar at the top */}
+      <ScrollingAnnouncementBar />
       
       <main id="main-content" role="main">
         <ErrorBoundary>

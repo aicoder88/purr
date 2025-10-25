@@ -1401,5 +1401,11 @@ export const en = {
       title: "Become a Purrify Retail Partner",
       description: "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours."
     }
+  },
+
+  // Scrolling Announcement Bar
+  scrollingBar: {
+    freeShipping: "Free Shipping on All Subscription Orders",
+    madeInCanada: "Manufactured in Canada from Domestic and Globally Sourced Ingredients"
   }
 }; 

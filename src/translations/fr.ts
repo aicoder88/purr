@@ -1340,5 +1340,11 @@ export const fr = {
         refreshTiming: "Rafraîchir le carbone à chaque ramassage ou ajout de litière pour garder l'efficacité"
       }
     }
+  },
+
+  // Scrolling Announcement Bar
+  scrollingBar: {
+    freeShipping: "Livraison Gratuite sur Tous les Abonnements",
+    madeInCanada: "Fabriqué au Canada avec des Ingrédients d'Origine Nationale et Mondiale"
   }
 };

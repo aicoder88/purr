@@ -1314,5 +1314,11 @@ export const zh = {
         refreshTiming: "每次清铲或补砂时补充炭层以保持效果"
       }
     }
+  },
+
+  // Scrolling Announcement Bar
+  scrollingBar: {
+    freeShipping: "订阅订单免运费",
+    madeInCanada: "加拿大制造，采用国内外优质原料"
   }
 };
