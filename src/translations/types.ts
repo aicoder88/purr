@@ -1094,4 +1094,10 @@ export interface TranslationType {
       retailer: string[];
     };
   };
+
+  // Scrolling Announcement Bar
+  scrollingBar?: {
+    freeShipping: string;
+    madeInCanada: string;
+  };
 }
