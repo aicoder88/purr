@@ -44,7 +44,7 @@ export function ScrollingAnnouncementBar() {
           }
         `
       }} />
-      <div className="bg-gradient-to-r from-teal-600 via-blue-600 to-teal-600 dark:from-teal-700 dark:via-blue-700 dark:to-teal-700 text-white dark:text-gray-100 py-3 md:py-4 overflow-hidden relative">
+      <div className="bg-gradient-to-r from-teal-600 via-blue-600 to-teal-600 dark:from-teal-700 dark:via-blue-700 dark:to-teal-700 text-white dark:text-gray-100 py-2.5 overflow-hidden relative">
         {/* Scrolling container */}
         <div className="flex animate-scroll-left whitespace-nowrap">
           {duplicatedMessages.map((message, index) => {

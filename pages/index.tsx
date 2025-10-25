@@ -313,14 +313,14 @@ export default function Home() {
         }}
       />
 
-      {/* Scrolling Announcement Bar at the top */}
-      <ScrollingAnnouncementBar />
-      
       <main id="main-content" role="main">
         <ErrorBoundary>
           <Hero />
         </ErrorBoundary>
-        
+
+        {/* Scrolling Announcement Bar below hero */}
+        <ScrollingAnnouncementBar />
+
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <About />

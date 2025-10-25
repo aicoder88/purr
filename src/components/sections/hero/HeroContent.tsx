@@ -128,14 +128,6 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
     scrollToSection("products");
   }, []);
 
-  const handleScrollToTestimonials = useCallback(() => {
-    scrollToSection("testimonials");
-  }, []);
-
-  const handleScrollToHowItWorks = useCallback(() => {
-    scrollToSection("how-it-works");
-  }, []);
-
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
@@ -202,28 +194,6 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
               </svg>
             }
           />
-        </div>
-
-        {/* Secondary Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button
-            onClick={handleScrollToTestimonials}
-            size="lg"
-            variant="outline"
-            className={createButtonClasses('outline')}
-            aria-label={t.hero.ariaLabels.reviews}
-          >
-            {t.hero.buttons.reviews}
-          </Button>
-          <Button
-            onClick={handleScrollToHowItWorks}
-            size="lg"
-            variant="ghost"
-            className={`${COLORS.text.primary} font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95 transform hover:-translate-y-1`}
-            aria-label="Learn how Purrify works"
-          >
-            {t.hero.buttons.learnMore || 'How It Works'}
-          </Button>
         </div>
       </div>
     </div>
