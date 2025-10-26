@@ -248,6 +248,8 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  // Note: Logos for Animalerie Lamifidel and Animalerie Petmobile Nathamo
+  // are still being sourced. These stores will show a fallback icon until logos are available.
   return null;
 };
 
