@@ -10,7 +10,7 @@ const SectionHeader = ({ text }: { text: string }) => {
     <div className="section-header">
       <h2>
         {isHighlighted ? (
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#E0EFC7]/80 text-[#2F3F1C] dark:bg-[#20391F]/80 dark:text-[#D4F8D0] text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#FF10F0]/70 text-white dark:bg-[#FF10F0]/60 dark:text-white text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300">
             {text}
           </span>
         ) : (

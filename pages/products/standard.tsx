@@ -550,11 +550,12 @@ export default function StandardSizePage() {
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
                 </Link>
               </div>
-              
+
               <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF5050]/10 dark:to-[#3694FF]/10 p-6 rounded-xl shadow-lg text-center border-2 border-[#5B2EFF] dark:border-[#3694FF]">
                 <div className="bg-[#5B2EFF] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
                   MOST POPULAR
@@ -562,13 +563,15 @@ export default function StandardSizePage() {
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
-              
+
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping · Free with autoship</p>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/family-pack`}>
                   <Button variant="outline" className="w-full">View Family Pack</Button>
                 </Link>

@@ -114,7 +114,7 @@ export function SubscriptionOffer() {
                     </div>
                   ) : null}
 
-                  <div className="p-8 space-y-6 relative">
+                  <div className="pt-12 px-8 pb-8 space-y-6 relative">
                     <div className="space-y-2 text-center">
                       <h3 className={`text-2xl font-bold ${plan.highlight ? 'text-[#FF3131]' : 'text-gray-900 dark:text-gray-50'}`}>{plan.name}</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{plan.description}</p>
