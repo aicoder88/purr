@@ -10,7 +10,7 @@ interface DecorativeElementProps {
 }
 
 const DecorativeElement = ({ className, style }: DecorativeElementProps) => (
-  <div className={`bg-white dark:bg-gray-800 rounded-full opacity-10 ${className}`} style={style} />
+  <div className={`bg-gray-300 dark:bg-gray-800 rounded-full opacity-10 dark:opacity-10 ${className}`} style={style} />
 );
 
 const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
@@ -51,7 +51,7 @@ export function CTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-white/20 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-gray-200 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
 
           {/* Background image */}
           <Image
@@ -63,12 +63,12 @@ export function CTA() {
           />
 
           {/* Content section */}
-          <div className="text-white dark:text-gray-100 max-w-2xl bg-black/30 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
               {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
 
-            <p className="text-white dark:text-gray-100/90 text-lg">
+            <p className="text-gray-700 dark:text-gray-100/90 text-lg">
               {t.cta?.subtitle || "Join 1,000+ happy customers who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
             </p>
 
@@ -83,7 +83,7 @@ export function CTA() {
                   />
                 ))}
               </div>
-              <p className="text-white dark:text-gray-100/90 text-sm font-medium">
+              <p className="text-gray-700 dark:text-gray-100/90 text-sm font-medium">
                 {t.cta?.joinText || "Join 1,000+ Happy cat Families - Visit your local store"}
               </p>
             </div>
@@ -98,7 +98,7 @@ export function CTA() {
               {t.cta?.buttonText || "ORDER NOW"}
             </Button>
 
-            <p className="text-white dark:text-white dark:text-gray-100/80 text-xs text-center mt-2">
+            <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
               {t.cta?.guarantee || "30-day money-back guarantee"}
             </p>
           </div>
