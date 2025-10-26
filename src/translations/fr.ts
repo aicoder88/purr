@@ -492,7 +492,7 @@ export const fr = {
     getInTouch: "Contactez-nous",
     ourLocation: "Notre adresse",
     phoneNumber: "Numéro de téléphone",
-    phoneDescription: "Nous avons enfermé les odeurs directement dans notre numéro. Composez le 1-450-6-ODORS-3 pour voir à quel point nous prenons l'air frais au sérieux.",
+    phoneDescription: "Nous avons carrément enfermé les odeurs dans notre numéro. Composez le 1-450-6-ODORS-3 (soit 1 (450) 663-6773) et voyez à quel point nous prenons l'air frais au sérieux.",
     openingHours: "Heures d'ouverture",
     weekdays: "Lun - Ven:",
     saturday: "Samedi:",

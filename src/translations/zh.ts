@@ -511,7 +511,7 @@ export const zh = {
     getInTouch: "联系我们",
     ourLocation: "我们的位置",
     phoneNumber: "电话号码",
-    phoneDescription: "我们把那股味道直接锁进了电话号码里。拨打 1-450-6-ODORS-3，感受我们对清新空气的执着。",
+    phoneDescription: "我们把那股顽固的味道牢牢关进了电话号码里。拨打 1-450-6-ODORS-3 (也就是 1 (450) 663-6773)，体验我们对清新空气的执着。",
     openingHours: "营业时间",
     weekdays: "工作日：上午9点 - 下午5点",
     saturday: "周六：上午10点 - 下午2点",
