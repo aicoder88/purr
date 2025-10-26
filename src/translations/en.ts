@@ -1231,7 +1231,7 @@ export const en = {
       coverage: "Coverage",
       chooseYourPerfectSize: "Choose Your Perfect Size",
       allSizesDeliver: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
-      whyChoosePurrify: "Why Choose Purrify?",
+      whyChoosePurrify: "Turn Cat Odor Problems Into a Thing of the Past",
       joinThousands: "Join 1,000+ satisfied cat parents who trust Purrify",
       happyCustomers: "Happy Customers",
       averageRating: "Average Rating",
@@ -1249,7 +1249,7 @@ export const en = {
       userAvatar: "User",
       customerTestimonials: "View customer testimonials",
       leaveGoogleReview: "Leave a Google review",
-      litterCompatibility: "Three Purrify packages demonstrating universal compatibility with all types of cat litter"
+      litterCompatibility: "Cat enjoying their favorite litter while Purrify works with every type of litter"
     },
     subscription: {
       fastDelivery: "Fast Delivery",

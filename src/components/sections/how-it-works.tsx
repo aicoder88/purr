@@ -131,7 +131,7 @@ export function HowItWorks() {
           <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
             <div className="w-full flex justify-center mb-6">
               <NextImage
-                src="/optimized/three_bags_no_bg.webp"
+                src="/optimized/cat-favorite-litter.webp"
                 alt={t.homepage.altText.litterCompatibility}
                 width={340}
                 height={180}

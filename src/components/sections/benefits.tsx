@@ -112,7 +112,7 @@ export function Benefits() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text="Why Choose Purrify" />
+          <SectionHeader text="Turn Cat Odor Problems Into a Thing of the Past" />
           <h2 className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
             Benefits of Purrify
           </h2>

@@ -1290,7 +1290,7 @@ export const fr = {
       userAvatar: "Utilisateur",
       customerTestimonials: "Voir les témoignages clients",
       leaveGoogleReview: "Laisser un avis Google",
-      litterCompatibility: "Trois emballages Purrify démontrant la compatibilité universelle avec tous les types de litière pour chat"
+      litterCompatibility: "Un chat profite de sa litière préférée, montrant la compatibilité de Purrify avec tous les types de litière"
     },
     subscription: {
       fastDelivery: "Livraison Rapide",

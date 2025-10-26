@@ -1264,7 +1264,7 @@ export const zh = {
       userAvatar: "用户",
       customerTestimonials: "查看客户评价",
       leaveGoogleReview: "留下Google评价",
-      litterCompatibility: "三个Purrify包装展示与所有类型猫砂的通用兼容性"
+      litterCompatibility: "一只猫享受它最喜欢的猫砂，展示 Purrify 与所有类型猫砂的兼容性"
     },
     subscription: {
       fastDelivery: "快速配送",
