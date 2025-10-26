@@ -177,12 +177,11 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Pattes et Griffes')) {
     return {
-      src: "https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg",
+      src: "/pattes.webp",
       alt: "Pattes et Griffes Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
-      height: 64,
-      fallback: true  // Enable fallback if external image fails
+      height: 64
     };
   }
   if (storeName.includes('GIGI')) {
@@ -230,15 +229,6 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
-  if (storeName.includes('Pattes et Griffes')) {
-    return {
-      src: "/optimized/pattes-et-griffes.png",
-      alt: "Pattes et Griffes - Complete Pet Care and Supplies Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
   if (storeName.includes('Animalerie Mamiwouff')) {
     return {
       src: "/optimized/animalerie-mamiwouff.webp",
@@ -248,8 +238,17 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
-  // Note: Logos for Animalerie Lamifidel and Animalerie Petmobile Nathamo
-  // are still being sourced. These stores will show a fallback icon until logos are available.
+  if (storeName.includes('Animalerie Lamifidel')) {
+    return {
+      src: "/lamifidel.avif",
+      alt: "Animalerie Lamifidel - Complete Pet Care and Supplies Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  // Note: Logo for Animalerie Petmobile Nathamo is still being sourced.
+  // This store will show a fallback icon until logo is available.
   return null;
 };
 
