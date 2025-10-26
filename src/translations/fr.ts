@@ -158,6 +158,10 @@ export const fr = {
       title: "Fonctionne avec Toute Litière",
       description: "Compatible avec tous les types de litière, vous n'avez pas besoin de changer ce que votre chat aime déjà."
     },
+    sustainableCoconuts: {
+      title: "Fait avec des Noix de Coco Durables",
+      description: "Les coques de noix de coco pures sont activées par haute pression et vapeur pour ouvrir des millions de trous et de tunnels afin de piéger les odeurs."
+    },
     natural: {
       title: "Naturel",
       description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle car la santé de votre chat passe en premier."

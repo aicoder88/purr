@@ -29,8 +29,8 @@ export function WhyPurrify() {
     },
     {
       icon: Layers,
-      title: t.features.worksWithAnyLitter.title.toUpperCase(),
-      description: t.features.worksWithAnyLitter.description,
+      title: t.features.sustainableCoconuts.title.toUpperCase(),
+      description: t.features.sustainableCoconuts.description,
       image: "/optimized/cat-favorite-litter.png"
     },
     {

@@ -156,6 +156,10 @@ export const en = {
       description: "One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy."
     },
     worksWithAnyLitter: {
+      title: "Works with Your Cat's Favorite Litter",
+      description: "Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use."
+    },
+    sustainableCoconuts: {
       title: "Made with Sustainable Coconuts",
       description: "Pure coconut shells are activated with high pressure and steam to open millions of holes and tunnels to lock away odor."
     },
