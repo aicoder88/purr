@@ -79,7 +79,7 @@ export const fr = {
       description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
     },
     "purrify-120g": {
-      name: "Purrify 120g",
+      name: "Purrify format régulier 120g",
       description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
@@ -533,16 +533,16 @@ export const fr = {
     odorControl: "Contrôle des Odeurs 7 Jours",
     odorControlTrial: "Contrôle des Odeurs 7 Jours",
     odorControlMedium: "Contrôle des Odeurs 14 Jours",
-    odorControlLarge: "Contrôle des Odeurs 30 Jours",
+    odorControlLarge: "Contrôle des odeurs sur 30 jours",
     naturalIngredients: "100% Ingrédients Naturels",
     easyApplication: "Application Facile",
     moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
     freeShipping: "Livraison incluse",
+    freeShippingDetailed: "La livraison est incluse.",
     autoshipHero: "Abonnement & économies",
     autoshipHighlight: "S'abonner et économiser",
     bulkDiscount: "Remise en Gros",
     prioritySupport: "Support Client Prioritaire",
-    bonusGuide: "Guide Gratuit de Soins pour Chats",
     tryRiskFree: "Essayez Sans Risque",
     chooseThisSize: "Choisir Cette Taille",
     chosenByCustomers: "🔥 68% des clients choisissent cette offre",
@@ -574,7 +574,6 @@ export const fr = {
     prioritySupport: "Support client prioritaire",
     flexibleSchedule: "Calendrier de livraison flexible",
     cancelAnytime: "Annulez à tout moment",
-    bonusGuide: "Guide gratuit de soins pour chats",
     startSubscription: "Commencer l'Abonnement",
     selectPlan: "Sélectionner le Plan",
     popularChoice: "Choix Populaire"
@@ -667,7 +666,6 @@ export const fr = {
     shippingIncluded: "Livraison incluse",
     freeShippingIncluded: "Livraison gratuite incluse",
     priorityCustomerSupport: "Support client prioritaire",
-    bonusFreeCatCareGuide: "Bonus : Guide gratuit de soins pour chats",
     startAutoship: "Activer l'abonnement",
     linkComingSoon: "Lien de paiement bientôt disponible",
     quarterlyBilling: "Facturé tous les 3 mois",
@@ -676,9 +674,9 @@ export const fr = {
     standardPlanTitle: "Abonnement trimestriel – 3 × 50g",
     standardDescription: "Idéal pour les foyers avec un chat qui veulent un contrôle des odeurs continu.",
     includesThreeStandard: "Comprend 3 sachets de 50g livrés ensemble",
-    familyPlanTitle: "Abonnement meilleur rapport – 3 × 120g",
+    familyPlanTitle: "Abonnement meilleur rapport – 3 × format régulier 120g",
     familyDescription: "Pensé pour les foyers multi-chats et sensibles aux allergies. Notre meilleur prix par utilisation.",
-    includesThreeFamily: "Comprend 3 sachets familiaux de 120g (livrés ensemble)",
+    includesThreeFamily: "Comprend 3 sachets format régulier 120g (livrés ensemble)",
     bestValueBadge: "Meilleure valeur",
     save: "Économisez",
     joinThePurrifyFamily: "Rejoignez la famille Purrify"
@@ -905,8 +903,8 @@ export const fr = {
         id: "trial",
         name: "Taille d'Essai 12g",
         subtitle: "Parfait pour les Nouveaux Utilisateurs",
-        duration: "1 changement de litière", 
-        cats: "1 chat",
+        duration: "Durée d'une semaine",
+        cats: "Pour un chat",
         features: [
           "Essayez avant de vous engager",
           "Introduction sans risque",
@@ -937,8 +935,8 @@ export const fr = {
         id: "large",
         name: "Grande Taille 120g",
         subtitle: "Meilleure Valeur pour Foyers Multi-Chats",
-        duration: "8-10 changements de litière",
-        cats: "2-3 chats", 
+        duration: "Durée de 4 semaines",
+        cats: "Pour 1 à 2 chats",
         features: [
           "Valeur maximale par gramme",
           "Économies en vrac incluses",

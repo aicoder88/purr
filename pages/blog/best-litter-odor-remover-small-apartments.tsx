@@ -8,7 +8,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 // Relevant images for small apartment cat odor control
 const heroImage = '/optimized/small-apartment-odor-control.webp';
 const heroImageOg = 'https://www.purrify.ca/optimized/small-apartment-odor-control.webp';
-const ventilationImage = '/optimized/fresh.webp';
+const ventilationImage = '/catonbed.jpeg';
 const spaceImage = '/optimized/natural-cat-litter.webp';
 
 export default function BestForSmallApartments() {

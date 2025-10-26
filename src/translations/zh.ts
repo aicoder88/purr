@@ -52,7 +52,7 @@ export const zh = {
       description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
     },
     "purrify-120g": {
-      name: "Purrify 120g",
+      name: "Purrify 常规装 120g",
       description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
     }
   },
@@ -557,11 +557,11 @@ export const zh = {
     easyApplication: "易于使用",
     moneyBackGuarantee: "30天退款保证",
     freeShipping: "包含配送",
+    freeShippingDetailed: "包含配送。",
     autoshipHero: "自动订购省更多",
     autoshipHighlight: "订阅立享优惠",
     bulkDiscount: "批量折扣",
     prioritySupport: "优先客户支持",
-    bonusGuide: "赠送猫咪护理指南",
     tryRiskFree: "无风险试用",
     chooseThisSize: "选择此尺寸",
     chosenByCustomers: "🔥 68%的客户选择此方案",
@@ -593,7 +593,6 @@ export const zh = {
     prioritySupport: "优先客户支持",
     flexibleSchedule: "灵活的配送计划",
     cancelAnytime: "随时取消",
-    bonusGuide: "免费猫咪护理指南",
     startSubscription: "开始订阅",
     selectPlan: "选择计划",
     popularChoice: "热门选择"
@@ -681,7 +680,6 @@ export const zh = {
     shippingIncluded: "含运费",
     freeShippingIncluded: "免运费",
     priorityCustomerSupport: "优先客户支持",
-    bonusFreeCatCareGuide: "赠送：猫咪护理电子指南",
     startAutoship: "开启自动订购",
     linkComingSoon: "支付链接即将上线",
     quarterlyBilling: "每 3 个月结算一次",
@@ -690,9 +688,9 @@ export const zh = {
     standardPlanTitle: "季度自动配送 – 3 × 50g",
     standardDescription: "单猫家庭的理想选择，每个月都保持清新。",
     includesThreeStandard: "包含 3 袋 50g，一次送达",
-    familyPlanTitle: "超值自动配送 – 3 × 120g",
+    familyPlanTitle: "超值自动配送 – 3 × 常规装 120g",
     familyDescription: "专为多猫或敏感家庭设计，单次使用成本最低。",
-    includesThreeFamily: "包含 3 袋 120g 家庭装（一次送达）",
+    includesThreeFamily: "包含 3 袋 120g 常规装（一次送达）",
     bestValueBadge: "最佳价值",
     save: "节省",
     joinThePurrifyFamily: "加入Purrify大家庭"
@@ -879,8 +877,8 @@ export const zh = {
         id: "trial",
         name: "试用装 12g",
         subtitle: "新用户的完美选择",
-        duration: "1次猫砂更换",
-        cats: "1只猫",
+        duration: "一周用量",
+        cats: "适合1只猫",
         features: [
           "先试用再承诺",
           "无风险介绍",
@@ -911,8 +909,8 @@ export const zh = {
         id: "large",
         name: "大装 120g",
         subtitle: "多猫家庭的最佳价值",
-        duration: "8-10次猫砂更换",
-        cats: "2-3只猫",
+        duration: "4周用量",
+        cats: "适合1-2只猫",
         features: [
           "每克最大价值",
           "包含批量节省",

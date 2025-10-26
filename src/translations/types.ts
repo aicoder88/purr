@@ -662,9 +662,9 @@ export interface TranslationType {
     easyApplication: string;
     moneyBackGuarantee: string;
     freeShipping: string;
+    freeShippingDetailed?: string;
     bulkDiscount: string;
     prioritySupport: string;
-    bonusGuide: string;
     tryRiskFree: string;
     chooseThisSize: string;
     chosenByCustomers: string;
@@ -698,7 +698,6 @@ export interface TranslationType {
     prioritySupport: string;
     flexibleSchedule: string;
     cancelAnytime: string;
-    bonusGuide: string;
     startSubscription: string;
     selectPlan: string;
     popularChoice: string;
@@ -786,7 +785,6 @@ export interface TranslationType {
     shippingIncluded?: string;
     freeShippingIncluded?: string;
     priorityCustomerSupport: string;
-    bonusFreeCatCareGuide?: string;
     startAutoship: string;
     linkComingSoon?: string;
     quarterlyBilling?: string;

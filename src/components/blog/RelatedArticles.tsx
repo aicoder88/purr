@@ -61,8 +61,8 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Ammonia Smell from Cat Litter Solution',
     href: '/solutions/ammonia-smell-cat-litter',
-    image: '/optimized/fresh.webp',
-    alt: 'Cat sitting near fresh litter box'
+    image: '/catonbed.jpeg',
+    alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {
     title: 'Apartment Cat Smell Solution',

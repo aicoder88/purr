@@ -46,7 +46,6 @@ type ProductCard = {
     freeShipping?: boolean;
     bulkDiscount: boolean;
     prioritySupport: boolean;
-    bonusGuide: boolean;
   };
   image: string;
   purchaseOptions: PurchaseOption[];
@@ -135,8 +134,8 @@ export function EnhancedProductComparison() {
       badge: t.enhancedProductComparison?.trial || 'ONE-TIME PURCHASE',
       badgeColor: 'bg-blue-500 dark:bg-blue-600',
       description: t.enhancedProductComparison?.perfectForFirstTime || 'Perfect for first-time users',
-      duration: t.productComparison?.products?.[0]?.duration || '1-2 weeks',
-      coverage: t.productComparison?.products?.[0]?.cats || '1-2 cats',
+      duration: t.productComparison?.products?.[0]?.duration || 'One week duration',
+      coverage: t.productComparison?.products?.[0]?.cats || 'For one cat',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -145,7 +144,6 @@ export function EnhancedProductComparison() {
         freeShipping: true,
         bulkDiscount: false,
         prioritySupport: false,
-        bonusGuide: false,
       },
       image: '/optimized/20g.webp',
       purchaseOptions: [
@@ -155,7 +153,6 @@ export function EnhancedProductComparison() {
           label: '💰 ONE-TIME PRICE',
           priceFormatted: formatProductPrice('trial', locale),
           subLabel: 'Pay once, no recurring charges • Shipping included',
-          shippingNote: pricingCopy.shippingIncluded,
           action: 'link',
           linkKey: 'trialSingle',
           ctaLabel: t.homepage.enhancedComparison.tryRiskFree,
@@ -166,14 +163,14 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-120g',
-      name: t.products?.['purrify-120g']?.name || 'Purrify 120g',
+      name: t.products?.['purrify-120g']?.name || 'Purrify Regular size 120g',
       subtitle: '⭐ BEST VALUE - SAVE 40%',
       badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
       badgeColor: 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600',
       description:
         'The #1 choice for multi-cat homes. Delivered every 3 months at the lowest price per oz.',
-      duration: t.productComparison?.products?.[2]?.duration || '8-12 weeks',
-      coverage: t.productComparison?.products?.[2]?.cats || '3+ cats',
+      duration: t.productComparison?.products?.[2]?.duration || '4-week duration',
+      coverage: t.productComparison?.products?.[2]?.cats || 'For 1-2 cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -181,7 +178,7 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: true,
         bulkDiscount: true,
         prioritySupport: true,
-        bonusGuide: true,
+        freeShipping: true,
       },
       image: '/optimized/140g.webp',
       purchaseOptions: [
@@ -190,7 +187,7 @@ export function EnhancedProductComparison() {
           type: 'subscription',
           label: '💎 SUBSCRIBE EVERY 3 MONTHS',
           priceFormatted: formatCurrencyValue(familyAutoshipPriceAmount / 3, locale),
-          subLabel: `Billed ${formatProductPrice('familyAutoship', locale)} every 3 months • Free Premium Shipping`,
+          subLabel: `Billed ${formatProductPrice('familyAutoship', locale)} every 3 months • Shipping is included`,
           perMonth: 'Per month',
           shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: familyAutoshipSavings,
@@ -207,8 +204,8 @@ export function EnhancedProductComparison() {
           type: 'one-time',
           label: 'One-Time Purchase',
           priceFormatted: formatProductPrice('family', locale),
-          subLabel: 'No subscription • Shipping calculated at checkout',
-          shippingNote: pricingCopy.shippingCalculated,
+          subLabel: 'No subscription • Shipping is included',
+          shippingNote: pricingCopy.shippingIncluded,
           action: 'cart',
           linkKey: 'familySingle',
           ctaLabel: 'Buy Once',
@@ -221,14 +218,14 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-240g',
-      name: t.products?.['purrify-240g']?.name || 'Purrify 240g',
-      subtitle: 'Super Jumbo Size',
+      name: t.products?.['purrify-240g']?.name || 'Purrify Large size 240g',
+      subtitle: 'Large size',
       badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
       badgeColor: 'bg-purple-600 dark:bg-purple-700',
       description:
-        'For large multi-cat households or extended supply. The 120g option offers better value per gram.',
-      duration: '16-20 weeks',
-      coverage: '4+ cats',
+        'For large multi-cat households or extended supply.',
+      duration: '4-week duration',
+      coverage: 'For 3+ cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -236,7 +233,7 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: true,
         bulkDiscount: true,
         prioritySupport: true,
-        bonusGuide: true,
+        freeShipping: true,
       },
       image: '/optimized/140g.webp',
       purchaseOptions: [
@@ -245,7 +242,7 @@ export function EnhancedProductComparison() {
           type: 'subscription',
           label: '💎 SUBSCRIBE EVERY 3 MONTHS',
           priceFormatted: formatCurrencyValue(getProductPrice('jumboAutoship') / 3, locale),
-          subLabel: `Billed ${formatProductPrice('jumboAutoship', locale)} every 3 months • Free Shipping`,
+          subLabel: `Billed ${formatProductPrice('jumboAutoship', locale)} every 3 months • Shipping is included`,
           perMonth: 'Per month',
           shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: computeQuarterlySavings(getProductPrice('jumbo'), getProductPrice('jumboAutoship')),
@@ -261,8 +258,8 @@ export function EnhancedProductComparison() {
           type: 'one-time',
           label: 'One-Time Purchase',
           priceFormatted: formatProductPrice('jumbo', locale),
-          subLabel: 'No subscription • Shipping calculated at checkout',
-          shippingNote: pricingCopy.shippingCalculated,
+          subLabel: 'No subscription • Shipping is included',
+          shippingNote: pricingCopy.shippingIncluded,
           action: 'cart',
           linkKey: 'jumboSingle' as PaymentLinkKey,
           ctaLabel: 'Buy Once',
@@ -346,8 +343,14 @@ export function EnhancedProductComparison() {
 
     if (productId === 'purrify-12g') {
       odorControlLabel = t.enhancedProductComparison?.odorControlTrial || '7-Day Odor Control';
-    } else if (productId === 'purrify-120g') {
+    } else if (productId === 'purrify-120g' || productId === 'purrify-240g') {
       odorControlLabel = t.enhancedProductComparison?.odorControlLarge || '30-Day Odor Control';
+    }
+
+    let freeShippingLabel = t.enhancedProductComparison?.freeShipping || 'Shipping included';
+
+    if (productId === 'purrify-120g' || productId === 'purrify-240g') {
+      freeShippingLabel = t.enhancedProductComparison?.freeShippingDetailed || 'Shipping is included.';
     }
 
     return {
@@ -355,10 +358,9 @@ export function EnhancedProductComparison() {
       naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
       easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
       moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
-      freeShipping: t.enhancedProductComparison?.freeShipping || 'Shipping Included',
+      freeShipping: freeShippingLabel,
       bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
-      prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support',
-      bonusGuide: t.enhancedProductComparison?.bonusGuide || 'Bonus Cat Care Guide'
+      prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support'
     };
   };
 
@@ -390,15 +392,22 @@ export function EnhancedProductComparison() {
 
           {/* Product Comparison Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
-                  hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
-                onMouseEnter={() => handleMouseEnter(product.id)}
-                onMouseLeave={handleMouseLeave}
-              >
+            {products.map(product => {
+              const sizeBadgeLabel =
+                product.name
+                  .split(' ')
+                  .find(part => /\d+g$/i.test(part))
+                || product.name;
+
+              return (
+                <div
+                  key={product.id}
+                  className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
+                    hoveredProduct === product.id ? 'scale-[1.02]' : ''
+                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
+                  onMouseEnter={() => handleMouseEnter(product.id)}
+                  onMouseLeave={handleMouseLeave}
+                >
                 {/* Top Section with Badge and Popular Indicator */}
                 <div className="relative px-4 sm:px-6 pt-6 pb-2">
                   {/* Badge */}
@@ -420,10 +429,10 @@ export function EnhancedProductComparison() {
                     {/* Size Badge - Positioned above image */}
                     <div className="flex justify-center mb-3">
                       <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
-                        <span className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-sm">{product.name.split(' ')[1]}</span>
+                        <span className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-sm">{sizeBadgeLabel}</span>
                       </div>
                     </div>
-                    
+
                     {/* Image Container - NO absolute positioning */}
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
                       <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
@@ -595,7 +604,8 @@ export function EnhancedProductComparison() {
                   )}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Trust Indicators */}

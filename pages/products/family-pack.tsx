@@ -245,15 +245,11 @@ export default function FamilyPackPage() {
                     <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5 relative">
                       <li className="flex gap-2">
                         <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × 120g family packs (delivered together)'}
+                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × Regular size 120g packs (delivered together)'}
                       </li>
                       <li className="flex gap-2">
                         <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
                         {t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'}
-                      </li>
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide'}
                       </li>
                     </ul>
                     <Button

@@ -9,7 +9,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 const heroImage = '/optimized/house-smells-cat-litter.webp';
 const heroImageOg = 'https://www.purrify.ca/optimized/house-smells-cat-litter.webp';
 const litterBoxImage = '/optimized/multi-cat-household.webp';
-const ventilationImage = '/optimized/fresh.webp';
+const ventilationImage = '/catonbed.jpeg';
 const cleaningImage = '/optimized/clay-cat-litter.webp';
 
 export default function HouseSmellsLikeCatLitter() {

@@ -80,7 +80,7 @@ export const en = {
       description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
     },
     "purrify-120g": {
-      name: "Purrify 120g Family Pack",
+      name: "Purrify Regular size 120g",
       description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },
@@ -543,16 +543,16 @@ export const en = {
     odorControl: "7-Day Odor Control",
     odorControlTrial: "7-Day Odor Control",
     odorControlMedium: "14-Day Odor Control",
-    odorControlLarge: "30-Day Odor Control",
+    odorControlLarge: "30-day odor control",
     naturalIngredients: "100% Natural Ingredients",
     easyApplication: "Easy Application",
     moneyBackGuarantee: "30-Day Money Back Guarantee",
-    freeShipping: "Shipping Included",
+    freeShipping: "Shipping included",
+    freeShippingDetailed: "Shipping is included.",
     autoshipHero: "Autoship & Save",
     autoshipHighlight: "Subscribe & Save",
     bulkDiscount: "Bulk Discount Available",
     prioritySupport: "Priority Customer Support",
-    bonusGuide: "Bonus Cat Care Guide",
     tryRiskFree: "Try Risk-Free",
     chooseThisSize: "Choose This Size",
     chosenByCustomers: "🔥 68% of customers choose this bundle",
@@ -584,7 +584,6 @@ export const en = {
     prioritySupport: "Priority customer support",
     flexibleSchedule: "Flexible delivery schedule",
     cancelAnytime: "Cancel anytime",
-    bonusGuide: "Bonus cat care guide",
     startSubscription: "Start Subscription",
     selectPlan: "Select Plan",
     popularChoice: "Popular Choice"
@@ -672,7 +671,6 @@ export const en = {
     shippingIncluded: "Shipping included",
     freeShippingIncluded: "Free shipping included",
     priorityCustomerSupport: "Priority customer support",
-    bonusFreeCatCareGuide: "Bonus: Free cat care guide",
     startAutoship: "Start Autoship",
     linkComingSoon: "Payment link coming soon",
     quarterlyBilling: "Billed every 3 months",
@@ -681,9 +679,9 @@ export const en = {
     standardPlanTitle: "Quarterly Autoship – 3 × 50g",
     standardDescription: "Perfect for single-cat households that want fresh odor control every month.",
     includesThreeStandard: "Includes 3 × 50g bags delivered together",
-    familyPlanTitle: "Best Value Autoship – 3 × 120g",
+    familyPlanTitle: "Best Value Autoship – 3 × Regular size 120g",
     familyDescription: "Designed for multi-cat and allergy-prone homes. Our best price per scoop.",
-    includesThreeFamily: "Includes 3 × 120g family packs (delivered together)",
+    includesThreeFamily: "Includes 3 × Regular size 120g packs (delivered together)",
     bestValueBadge: "Best Value",
     save: "Save",
     joinThePurrifyFamily: "Join the Purrify Family"
@@ -878,8 +876,8 @@ export const en = {
         id: "trial",
         name: "Trial Size",
         subtitle: "Perfect for first-time users",
-        duration: "1-2 weeks",
-        cats: "1-2 cats",
+    duration: "One week duration",
+    cats: "For one cat",
         features: ["12g activated carbon", "Risk-free trial", "Perfect introduction"],
         bestFor: "New customers wanting to try Purrify",
         cta: "Try Risk-Free"
@@ -898,8 +896,8 @@ export const en = {
         id: "large",
         name: "Large Size", 
         subtitle: "Best value for multi-cat homes",
-        duration: "8-12 weeks",
-        cats: "3+ cats",
+    duration: "4-week duration",
+    cats: "For 1-2 cats",
         features: ["150g activated carbon", "Maximum savings", "Bulk discount"],
         bestFor: "Multi-cat households and heavy users",
         cta: "Get Best Value"

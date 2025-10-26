@@ -51,7 +51,7 @@ export function SubscriptionOffer() {
   const plans: SubscriptionPlan[] = [
     {
       id: 'family-autoship',
-      name: t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × 120g',
+      name: t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × Regular size 120g',
       description:
         t.subscriptionOfferExtended?.familyDescription ||
         'Designed for multi-cat and allergy-prone homes. Our best price per scoop.',
@@ -61,10 +61,9 @@ export function SubscriptionOffer() {
       shippingNote: t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
       savingsPercent: computeSavings(familyPrice, familyAutoshipPrice),
       features: [
-        t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × 120g family packs (delivered together)',
+        t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × Regular size 120g packs (delivered together)',
         t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
         t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
-        t.subscriptionOfferExtended?.bonusFreeCatCareGuide || 'Bonus: Free cat care guide',
       ],
       highlight: true,
       badge: t.subscriptionOfferExtended?.bestValueBadge || 'Best Value',
