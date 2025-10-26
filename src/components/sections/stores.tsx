@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import Image from "next/image";
 import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
+import { useState } from "react";
 
 // Store data - Complete list of pet stores carrying Purrify
 const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/translation-context').useTranslation>['t']) => [
@@ -151,6 +152,17 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
   },
 ];
 
+/**
+ * IMPORTANT: DO NOT REMOVE EXTERNAL LOGO URLS
+ *
+ * These external URLs are intentionally used for retailer logos because:
+ * 1. They ensure we always display the latest official branding
+ * 2. Retailers can update their logos without requiring our updates
+ * 3. Legal compliance - using official assets from their websites
+ *
+ * If logos fail to load, the fallback SVG icon will display instead.
+ */
+
 // Helper function to get store logo configuration using local and external images
 const getStoreLogo = (storeName: string) => {
   if (storeName.includes('Chico')) {
@@ -159,7 +171,8 @@ const getStoreLogo = (storeName: string) => {
       alt: "Chico - Boutique d'animaux Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
-      height: 64
+      height: 64,
+      fallback: true  // Enable fallback if external image fails
     };
   }
   if (storeName.includes('Pattes et Griffes')) {
@@ -168,7 +181,8 @@ const getStoreLogo = (storeName: string) => {
       alt: "Pattes et Griffes Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
-      height: 64
+      height: 64,
+      fallback: true  // Enable fallback if external image fails
     };
   }
   if (storeName.includes('GIGI')) {
@@ -231,10 +245,55 @@ const hasWhiteBackground = (storeName: string) => {
          storeName.includes('Coquette');
 };
 
+// Component to handle logo display with fallback
+const StoreLogoImage = ({
+  logoConfig,
+  storeName
+}: {
+  logoConfig: ReturnType<typeof getStoreLogo>;
+  storeName: string;
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (!logoConfig || hasError) {
+    // Fallback SVG icon for stores without logos or when logos fail to load
+    return (
+      <svg
+        className="w-6 h-6 text-white dark:text-gray-100"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <Image
+      src={logoConfig.src}
+      alt={logoConfig.alt || storeName}
+      width={logoConfig.width}
+      height={logoConfig.height}
+      className={logoConfig.className}
+      onError={() => {
+        console.warn(`Failed to load logo for ${storeName}, using fallback`);
+        setHasError(true);
+      }}
+      unoptimized={logoConfig.src.startsWith('http')}  // Skip Next.js optimization for external URLs
+    />
+  );
+};
+
 export function Stores() {
   const { t } = useTranslation();
   const stores = getStoresWithTranslations(t);
-  
+
   return (
     <section
       className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-colors duration-300"
@@ -270,26 +329,7 @@ export function Stores() {
                         (shouldUseWhiteBg ? "bg-white dark:bg-gray-900" : "bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80")
                       }
                     >
-                      {logoConfig ? (
-                        <Image 
-                          {...logoConfig} 
-                          alt={logoConfig.alt || store.name || 'Store logo'} 
-                        />
-                      ) : (
-                        <svg 
-                          className="w-6 h-6 text-white dark:text-gray-100 dark:text-gray-100" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" 
-                          />
-                        </svg>
-                      )}
+                      <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">

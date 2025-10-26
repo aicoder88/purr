@@ -110,7 +110,7 @@ export const en = {
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
     eliminateCatOdors: "The Litter Box Odor Eliminator That Actually Works",
-    instantly: "You've tried fancy litter, daily scooping, air fresheners that just make it worse. Your house still smells like a litter box the second someone walks in.",
+    instantly: "",
     description: "This NASA-grade activated coconut doesn't mask odor—it traps it at the molecular level. One sprinkle = 7 days of guests asking \"wait, you have cats?\" instead of holding their breath.",
     socialProof: {
       trustNumber: "1,000+",
@@ -144,7 +144,7 @@ export const en = {
   // Features
   features: {
     odorElimination: {
-      title: "Locks Away Ammonia Smell Instantly",
+      title: "Locks Away Ammonia Smell",
       description: "***Air-and-water-filter grade activated carbon*** doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!"
     },
     catFriendly: {
