@@ -1,6 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides detailed guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+**Quick Reference:** See `AGENTS.md` for a condensed summary of key guidelines.
 
 ## Project Context
 
@@ -78,6 +80,19 @@ public/
 ├── optimized/                 # Auto-generated optimized images
 ├── original-images/           # Source images for optimization
 └── [other static assets]
+
+__tests__/                      # Jest unit tests
+├── translation-completeness.test.js
+├── [feature-name].test.ts
+└── [other test specs]
+
+e2e/                            # Playwright E2E tests
+├── homepage.spec.ts
+├── [journey-name].spec.ts
+└── [other journey tests]
+
+.husky/                         # Git hooks
+└── pre-commit                  # Validation before commits
 ```
 
 **Page Types & Routing:**
@@ -495,11 +510,25 @@ npm run validate-blog-images  # Check all blog post images exist
 
 ## Build Requirements
 
-**Must pass before commit:**
+**Must pass before commit (MANDATORY):**
 ```bash
-eslint --max-warnings=0     # Zero warnings
-tsc --noEmit               # Zero TypeScript errors
-npm run validate-dark-mode  # All elements compliant
+npm run lint                # ESLint: zero warnings
+npm run check-types         # TypeScript: zero errors
+npm run validate-dark-mode  # Dark mode: zero violations
+npm run validate-blog-images # Blog images: all exist
+```
+
+**Commit Message Format:**
+Use `Type: concise summary` format (max 72 chars):
+```bash
+# ✅ CORRECT
+git commit -m "Refactor: simplify product comparison layout"
+git commit -m "Feature: add quarterly autoship section headers"
+git commit -m "Fix: dark mode validation on new components"
+
+# ❌ WRONG
+git commit -m "updated stuff"
+git commit -m "WIP: work in progress changes"
 ```
 
 **Common lint rules:**
@@ -576,13 +605,55 @@ npm run analyze            # Interactive bundle analysis
 - Core Web Vitals failing? Check image optimization
 - Lighthouse scores dropping? Check CSS specificity
 
+## Pull Request Guidelines (MANDATORY)
+
+**Before creating a PR, verify locally:**
+```bash
+npm run lint                # ESLint: zero warnings
+npm run check-types         # TypeScript: zero errors
+npm run validate-dark-mode  # Dark mode: zero violations
+npm run validate-blog-images # Blog images: all exist
+npm run test:translations   # Translations: complete (if text changed)
+npm run test:e2e            # E2E tests: pass (if journeys changed)
+```
+
+**PR Description Template:**
+```markdown
+## Summary
+Brief description of what changed and why (1-3 bullet points)
+
+## Changes Made
+- [File]: [What changed] - [Why]
+- [File]: [What changed] - [Why]
+
+## Testing
+- [x] Lint & types pass
+- [x] Dark mode validated
+- [x] Blog images validated (if applicable)
+- [x] E2E tests pass (if applicable)
+- [x] Manual testing completed
+
+## Screenshots (if UI changed)
+[Add before/after screenshots]
+
+## Related Issues
+Fixes #123
+```
+
+**Important Notes:**
+- Stage generated assets (sitemap, images) separately from code changes
+- Capture UI diffs with screenshots when layout changes
+- Sync with maintainers before touching Stripe, analytics, or Prisma schema
+- Never force push to main branch
+- After merge, verify Vercel deployment reaches `READY` state
+
 ## Changelog (MANDATORY)
 Document every session in `/CHANGELOG.md`:
 ```markdown
-## [YYYY-MM-DD] - [Brief Description]  
+## [YYYY-MM-DD] - [Brief Description]
 ### Issues Found
 - [Technical problem]
-### Changes Made  
+### Changes Made
 - [File]: [Change] - [Reason]
 ### Testing Done
 - [Validation completed]
