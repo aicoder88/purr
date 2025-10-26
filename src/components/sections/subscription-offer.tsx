@@ -50,26 +50,6 @@ export function SubscriptionOffer() {
 
   const plans: SubscriptionPlan[] = [
     {
-      id: 'standard-autoship',
-      name: t.subscriptionOfferExtended?.standardPlanTitle || 'Quarterly Autoship – 3 × 50g',
-      description:
-        t.subscriptionOfferExtended?.standardDescription ||
-        'Perfect for single-cat households that want fresh odor control every month.',
-      priceFormatted: formatProductPrice('standardAutoship', locale),
-      perMonthLabel: formatPerMonth(standardAutoshipPrice),
-      billingLabel: t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months',
-      shippingNote: t.subscriptionOfferExtended?.shippingIncluded || 'Shipping included',
-      savingsPercent: computeSavings(standardPrice, standardAutoshipPrice),
-      features: [
-        t.subscriptionOfferExtended?.includesThreeStandard || 'Includes 3 × 50g bags delivered together',
-        t.subscriptionOfferExtended?.shippingIncluded || 'Shipping included',
-        t.subscriptionOfferExtended?.skipOrCancelAnytime || 'Skip or cancel anytime',
-      ],
-      highlight: false,
-      linkKey: 'standardAutoship',
-      ctaLabel: t.subscriptionOfferExtended?.startAutoship || 'Start Autoship',
-    },
-    {
       id: 'family-autoship',
       name: t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × 120g',
       description:
@@ -112,7 +92,7 @@ export function SubscriptionOffer() {
           </div>
 
           {/* Subscription Plans */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="flex justify-center mb-12">
             {plans.map(plan => {
               const paymentLink = getPaymentLink(plan.linkKey);
               const savingsLabel = plan.savingsPercent > 0 ? formatSavingsText(plan.savingsPercent) : null;
@@ -120,7 +100,7 @@ export function SubscriptionOffer() {
               return (
                 <div
                   key={plan.id}
-                  className={`relative overflow-hidden rounded-2xl transition-all duration-300 bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl hover:scale-[1.02] ${
+                  className={`relative overflow-hidden rounded-2xl transition-all duration-300 bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl hover:scale-[1.02] max-w-md ${
                     plan.highlight ? 'ring-4 ring-[#FF3131]/25 scale-[1.02]' : ''
                   }`}
                 >
