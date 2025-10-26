@@ -127,42 +127,6 @@ export function HowItWorks() {
           ))}
         </div>
 
-        <div className="mt-12 sm:mt-20 flex justify-center">
-          <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm p-6 sm:p-10 rounded-2xl shadow-lg border border-[#E0EFC7] dark:border-gray-800 w-full max-w-2xl flex flex-col items-center text-center transition-all duration-500 hover:shadow-[#E0EFC7]/40 dark:hover:shadow-[#3694FF]/20 hover:-translate-y-1 group overflow-hidden">
-            <div className="w-full flex justify-center mb-6">
-              <NextImage
-                src="/optimized/cat-favorite-litter.webp"
-                alt={t.homepage.altText.litterCompatibility}
-                width={340}
-                height={180}
-                className="rounded-xl object-cover shadow-md"
-                loading="eager"
-              />
-            </div>
-            <h3 className="font-bold text-2xl mb-3 text-[#333333] dark:text-gray-100">
-              {t.features.worksWithAnyLitter.title}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-lg mb-5 max-w-xl mx-auto">
-              {t.features.worksWithAnyLitter.description}
-            </p>
-            <div className="flex flex-wrap justify-center gap-2 mt-2">
-              {[
-                t.howItWorks?.litterTypes?.clay || "Clay",
-                t.howItWorks?.litterTypes?.crystal || "Crystal",
-                t.howItWorks?.litterTypes?.natural || "Natural",
-                t.howItWorks?.litterTypes?.clumping || "Clumping",
-                t.howItWorks?.litterTypes?.nonClumping || "Non-Clumping",
-              ].map((type) => (
-                <span
-                  key={type}
-                  className="px-3 py-1 bg-[#E0EFC7] text-[#5B2EFF] rounded-full text-sm font-medium shadow-sm border border-[#E0EFC7]/60 dark:border-[#5B2EFF]/30"
-                >
-                  {type}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </Container>
     </section>
   );
