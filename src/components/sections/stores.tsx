@@ -224,7 +224,16 @@ const getStoreLogo = (storeName: string) => {
   if (storeName.includes('Coquette')) {
     return {
       src: "/optimized/coquette-finegueule.webp",
-      alt: "Coquette et Finegueule - Pet Store with Grooming Logo", 
+      alt: "Coquette et Finegueule - Pet Store with Grooming Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
+  if (storeName.includes('Pattes et Griffes')) {
+    return {
+      src: "/optimized/pattes-et-griffes.webp",
+      alt: "Pattes et Griffes - Complete Pet Care and Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
       height: 64
