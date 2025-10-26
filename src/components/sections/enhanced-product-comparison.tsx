@@ -87,6 +87,7 @@ export function EnhancedProductComparison() {
 
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');
+  const standardAutoshipPriceAmount = getProductPrice('standardAutoship');
 
   const computeQuarterlySavings = (oneTimePrice: number, subscriptionPrice: number) => {
     if (oneTimePrice <= 0 || subscriptionPrice <= 0) return 0;
@@ -125,7 +126,9 @@ export function EnhancedProductComparison() {
     bestValueBadge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
   };
 
+  const standardPriceAmount = getProductPrice('standard');
   const familyAutoshipSavings = computeQuarterlySavings(familyPriceAmount, familyAutoshipPriceAmount);
+  const standardAutoshipSavings = computeQuarterlySavings(standardPriceAmount, standardAutoshipPriceAmount);
 
   const products: ProductCard[] = [
     {
@@ -167,12 +170,12 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-50g',
       name: t.products?.['purrify-50g']?.name || 'Purrify 50g',
-      subtitle: 'Monthly Subscription Option',
-      badge: 'PAY MONTHLY',
+      subtitle: 'Compact Size - Pay Monthly',
+      badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
       badgeColor: 'bg-blue-600 dark:bg-blue-700',
       description:
-        'Perfect for single-cat households that want fresh Purrify delivered each month.',
-      duration: t.productComparison?.products?.[1]?.duration || 'Up to 1 month of freshness!',
+        'Perfect for single-cat households. Get 50g bags delivered every 3 months. For better value per gram, consider the 120g option.',
+      duration: t.productComparison?.products?.[1]?.duration || 'Up to 1 month per bag',
       coverage: t.productComparison?.products?.[1]?.cats || '1-2 cats',
       features: {
         odorControl: true,
@@ -187,18 +190,19 @@ export function EnhancedProductComparison() {
       image: '/optimized/60g.webp',
       purchaseOptions: [
         {
-          key: 'standard-monthly',
+          key: 'standard-autoship',
           type: 'subscription',
-          label: '📅 MONTHLY SUBSCRIPTION',
-          priceFormatted: formatProductPrice('standard', locale),
-          subLabel: 'Auto-delivered every month • Cancel anytime',
+          label: '💎 SUBSCRIBE EVERY 3 MONTHS',
+          priceFormatted: formatCurrencyValue(standardAutoshipPriceAmount / 3, locale),
+          subLabel: `Billed ${formatProductPrice('standardAutoship', locale)} every 3 months • Free Shipping`,
           perMonth: 'Per month',
-          shippingNote: 'Shipping included',
-          action: 'cart',
-          linkKey: 'standardSingle',
-          ctaLabel: 'Subscribe Now',
+          shippingNote: '🚚 3 bags delivered every 3 months - Cancel Anytime',
+          savings: standardAutoshipSavings,
+          action: 'link',
+          linkKey: 'standardAutoship',
+          ctaLabel: '🎯 Subscribe & Save',
           icon: 'zap',
-          cartProductId: 'purrify-50g',
+          cartProductId: 'purrify-50g-autoship',
           ctaEmphasis: 'primary',
         },
       ],
@@ -228,9 +232,9 @@ export function EnhancedProductComparison() {
           key: 'family-autoship',
           type: 'subscription',
           label: '💎 SUBSCRIBE EVERY 3 MONTHS',
-          priceFormatted: formatProductPrice('familyAutoship', locale),
-          subLabel: `That's ${formatPerMonthLabel(familyAutoshipPriceAmount / 3)} • Free Premium Shipping`,
-          perMonth: formatPerMonthLabel(familyAutoshipPriceAmount / 3),
+          priceFormatted: formatCurrencyValue(familyAutoshipPriceAmount / 3, locale),
+          subLabel: `Billed ${formatProductPrice('familyAutoship', locale)} every 3 months • Free Premium Shipping`,
+          perMonth: 'Per month',
           shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: familyAutoshipSavings,
           action: 'link',
@@ -257,6 +261,59 @@ export function EnhancedProductComparison() {
         },
       ],
       recommended: true,
+    },
+    {
+      id: 'purrify-240g',
+      name: t.products?.['purrify-240g']?.name || 'Purrify 240g',
+      subtitle: 'Super Jumbo Size',
+      badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
+      badgeColor: 'bg-purple-600 dark:bg-purple-700',
+      description:
+        'For large multi-cat households or extended supply. The 120g option offers better value per gram.',
+      duration: '16-20 weeks',
+      coverage: '4+ cats',
+      features: {
+        odorControl: true,
+        naturalIngredients: true,
+        easyApplication: true,
+        moneyBackGuarantee: true,
+        bulkDiscount: true,
+        prioritySupport: true,
+        bonusGuide: true,
+      },
+      image: '/optimized/140g.webp',
+      purchaseOptions: [
+        {
+          key: 'jumbo-autoship',
+          type: 'subscription',
+          label: '💎 SUBSCRIBE EVERY 3 MONTHS',
+          priceFormatted: formatCurrencyValue(getProductPrice('jumboAutoship') / 3, locale),
+          subLabel: `Billed ${formatProductPrice('jumboAutoship', locale)} every 3 months • Free Shipping`,
+          perMonth: 'Per month',
+          shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
+          savings: computeQuarterlySavings(getProductPrice('jumbo'), getProductPrice('jumboAutoship')),
+          action: 'cart',
+          linkKey: 'jumboAutoship' as PaymentLinkKey,
+          ctaLabel: 'Subscribe Now',
+          icon: 'zap',
+          cartProductId: 'purrify-240g-autoship',
+          ctaEmphasis: 'primary',
+        },
+        {
+          key: 'jumbo-single',
+          type: 'one-time',
+          label: 'One-Time Purchase',
+          priceFormatted: formatProductPrice('jumbo', locale),
+          subLabel: 'No subscription • Shipping calculated at checkout',
+          shippingNote: pricingCopy.shippingCalculated,
+          action: 'cart',
+          linkKey: 'jumboSingle' as PaymentLinkKey,
+          ctaLabel: 'Buy Once',
+          icon: 'cart',
+          cartProductId: 'purrify-240g',
+          ctaEmphasis: 'secondary',
+        },
+      ],
     },
   ];
 

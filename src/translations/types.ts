@@ -405,6 +405,7 @@ export interface TranslationType {
     getInTouch: string;
     ourLocation: string;
     phoneNumber: string;
+    phoneDescription: string;
     openingHours: string;
     weekdays: string;
     saturday: string;

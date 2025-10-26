@@ -47,11 +47,19 @@ export function Contact() {
               <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
                 <Phone className="h-5 w-5 text-white dark:text-gray-100" />
               </div>
-              <div>
-                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#5B2EFF] dark:text-[#3694FF]">
+              <div className="space-y-2">
+                <h3 className="font-bold text-lg sm:text-xl text-[#5B2EFF] dark:text-[#3694FF]">
                   {t.contactSection.phoneNumber}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{CONTACT_INFO.phone}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                  {t.contactSection.phoneDescription}
+                </p>
+                <a
+                  href={CONTACT_INFO.phoneHref}
+                  className="inline-block font-semibold text-[#5B2EFF] dark:text-[#3694FF] text-sm sm:text-base hover:underline"
+                >
+                  {CONTACT_INFO.phone}
+                </a>
               </div>
             </div>
 

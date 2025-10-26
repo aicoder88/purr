@@ -475,6 +475,7 @@ export const en = {
     getInTouch: "Get in Touch",
     ourLocation: "Our Location",
     phoneNumber: "Phone Number",
+    phoneDescription: "We locked away the odors right inside our phone number. Call 1-450-6-ODORS-3 to see how serious we are about fresh air.",
     openingHours: "Opening Hours",
     weekdays: "Weekdays",
     saturday: "Saturday",
