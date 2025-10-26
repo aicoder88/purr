@@ -154,17 +154,17 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
+      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-left md:text-left">
         <span className={`block ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
           {headlinePrimary}
         </span>
         {hasEmphasis ? (
-          <span className={`block text-3xl md:text-5xl font-extrabold tracking-tight ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
+          <span className={`block text-center mt-3 text-2xl md:text-4xl font-extrabold tracking-tight ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
             {emphasisLineText}
           </span>
         ) : null}
         <span
-          className={`block text-2xl md:text-3xl font-medium ${COLORS.text.primary}`}
+          className={`block text-center md:text-left text-2xl md:text-3xl font-medium ${COLORS.text.primary}`}
           style={{
             lineHeight: "1.3"
           }}
