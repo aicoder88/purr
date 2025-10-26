@@ -136,10 +136,6 @@ export const zh = {
       title: "适用于任何猫砂",
       description: "与所有类型的猫砂兼容，包括结团砂、水晶砂和天然砂。"
     },
-    sustainableCoconuts: {
-      title: "采用可持续椰壳制造",
-      description: "纯椰壳通过高压和蒸汽激活，打开数百万个孔洞和通道，有效捕捉异味。"
-    },
     natural: {
       title: "天然成分",
       description: "采用100%天然活性炭制成，无有害化学物质。"

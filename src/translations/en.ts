@@ -159,10 +159,6 @@ export const en = {
       title: "Works with Your Cat's Favorite Litter",
       description: "Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use."
     },
-    sustainableCoconuts: {
-      title: "Made with Sustainable Coconuts",
-      description: "Pure coconut shells are activated with high pressure and steam to open millions of holes and tunnels to lock away odor."
-    },
     costEffective: {
       title: "Saves Money on Litter",
       description: "Extends litter life by preventing odor buildup. Use less, change less often, breathe easier. Your wallet will love it too."
