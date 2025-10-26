@@ -239,19 +239,30 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  if (storeName.includes('Animalerie Mamiwouff')) {
+    return {
+      src: "/optimized/animalerie-mamiwouff.webp",
+      alt: "Animalerie Mamiwouff - Family-Owned Pet Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
 // Helper function to check if store should have white background
 const hasWhiteBackground = (storeName: string) => {
-  return storeName.includes('Chico') || 
-         storeName.includes('Pattes et Griffes') || 
-         storeName.includes('GIGI') || 
-         storeName.includes('Pitou Minou') || 
-         storeName.includes('Doghaus') || 
-         storeName.includes('Kong') || 
+  return storeName.includes('Chico') ||
+         storeName.includes('Pattes et Griffes') ||
+         storeName.includes('GIGI') ||
+         storeName.includes('Pitou Minou') ||
+         storeName.includes('Doghaus') ||
+         storeName.includes('Kong') ||
          storeName.includes('Coquette') ||
-         storeName.includes('Coquette');
+         storeName.includes('Animalerie Mamiwouff') ||
+         storeName.includes('Animalerie Lamifidel') ||
+         storeName.includes('Animalerie Petmobile');
 };
 
 // Component to handle logo display with fallback
