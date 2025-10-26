@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { formatCurrencyValue } from '@/lib/pricing';
 interface CartRecoveryRequest {
   email: string;
   cartItems: {
@@ -147,6 +148,9 @@ function getEmailTemplate(
   const { cartItems, cartTotal, recoveryToken } = data;
   
   const recoveryUrl = `${process.env.NEXT_PUBLIC_DOMAIN || 'https://www.purrify.ca'}/checkout?recovery=${recoveryToken}`;
+  const formattedCartTotal = formatCurrencyValue(cartTotal);
+  const formattedDiscountAmount = formatCurrencyValue(cartTotal * 0.1);
+  const formattedDiscountedTotal = formatCurrencyValue(cartTotal * 0.9);
   
   const templates = {
     immediate: {
@@ -162,13 +166,13 @@ function getEmailTemplate(
             ${cartItems.map(item => `
               <div style="display: flex; justify-content: space-between; margin: 10px 0;">
                 <span>${item.name || `Product ${item.id}`} (x${item.quantity})</span>
-                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                <span>${formatCurrencyValue(item.price * item.quantity)}</span>
               </div>
             `).join('')}
             <hr style="margin: 15px 0;">
             <div style="display: flex; justify-content: space-between; font-weight: bold;">
               <span>Total:</span>
-              <span>$${cartTotal.toFixed(2)} CAD</span>
+              <span>${formattedCartTotal}</span>
             </div>
           </div>
           
@@ -200,21 +204,21 @@ function getEmailTemplate(
             ${cartItems.map(item => `
               <div style="display: flex; justify-content: space-between; margin: 10px 0;">
                 <span>${item.name || `Product ${item.id}`} (x${item.quantity})</span>
-                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                <span>${formatCurrencyValue(item.price * item.quantity)}</span>
               </div>
             `).join('')}
             <hr style="margin: 15px 0;">
             <div style="display: flex; justify-content: space-between;">
               <span>Subtotal:</span>
-              <span>$${cartTotal.toFixed(2)}</span>
+              <span>${formattedCartTotal}</span>
             </div>
             <div style="display: flex; justify-content: space-between; color: #ef4444;">
               <span>Discount (10%):</span>
-              <span>-$${(cartTotal * 0.1).toFixed(2)}</span>
+              <span>-${formattedDiscountAmount}</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px;">
               <span>New Total:</span>
-              <span>$${(cartTotal * 0.9).toFixed(2)} CAD</span>
+              <span>${formattedDiscountedTotal}</span>
             </div>
           </div>
           
@@ -244,7 +248,7 @@ function getEmailTemplate(
           <div style="background: #fecaca; border: 2px solid #ef4444; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
             <h2 style="color: #991b1b; margin: 0;">EXPIRES TODAY!</h2>
             <p style="margin: 5px 0;">Use Code: SAVE10</p>
-            <p style="color: #991b1b; font-weight: bold;">Save $${(cartTotal * 0.1).toFixed(2)} CAD</p>
+            <p style="color: #991b1b; font-weight: bold;">Save ${formattedDiscountAmount}</p>
           </div>
           
           <a href="${recoveryUrl}&discount=SAVE10" style="display: inline-block; background: linear-gradient(45deg, #ef4444, #dc2626); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0;">
@@ -253,7 +257,7 @@ function getEmailTemplate(
           
           <p><strong>What happens if you wait?</strong></p>
           <ul>
-            <li>❌ You lose your 10% discount (save $${(cartTotal * 0.1).toFixed(2)})</li>
+            <li>❌ You lose your 10% discount (save ${formattedDiscountAmount})</li>
             <li>❌ Your cats continue to suffer from litter odors</li>
             <li>❌ Your home keeps smelling like a litter box</li>
             <li>❌ You miss out on joining 1,000+ happy cat owners</li>

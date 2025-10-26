@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { User, Package, Calendar, CreditCard, Settings, LogOut, Bell, Download, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { formatCurrencyValue } from '@/lib/pricing';
 import { CustomerSupport } from './CustomerSupport';
 
 interface Order {
@@ -202,12 +203,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     });
   }, []);
 
-  const formatCurrency = useCallback((amount: number) => {
-    return new Intl.NumberFormat('en-CA', {
-      style: 'currency',
-      currency: 'CAD'
-    }).format(amount);
-  }, []);
+  const formatCurrency = useCallback((amount: number) => formatCurrencyValue(amount), []);
 
   // Tab change handlers - must be defined before early returns
   const handleTabChange = useCallback((tabId: string) => {
@@ -350,9 +346,7 @@ function DashboardTab({ customer, orders, subscriptions }: { customer: Customer;
             <CreditCard className="w-8 h-8 text-green-600 dark:text-green-400" />
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Spent</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-50">
-                {new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(customer.totalSpent)}
-              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-50">{formatCurrencyValue(customer.totalSpent)}</p>
             </div>
           </div>
         </div>
@@ -390,9 +384,7 @@ function DashboardTab({ customer, orders, subscriptions }: { customer: Customer;
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-gray-900 dark:text-gray-50">
-                      {new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(order.total)}
-                    </p>
+                    <p className="font-medium text-gray-900 dark:text-gray-50">{formatCurrencyValue(order.total)}</p>
                     <span className={cn('inline-flex px-2 py-1 text-xs font-semibold rounded-full',
                       order.status === 'delivered' ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300' :
                       order.status === 'shipped' ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300' :
@@ -1512,7 +1504,7 @@ function ProfileTab({ customer }: { customer: Customer }) {
             </div>
             <div className="text-center">
               <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(customer.totalSpent)}
+                {formatCurrencyValue(customer.totalSpent)}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">Total Spent</p>
             </div>

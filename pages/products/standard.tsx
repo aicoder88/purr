@@ -425,7 +425,7 @@ export default function StandardSizePage() {
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Free shipping on orders over CA$50
+                    Free shipping on orders over $50
                   </div>
                 </div>
               </div>

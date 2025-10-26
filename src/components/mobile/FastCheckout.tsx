@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { User, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ExpressCheckoutButtons } from './MobilePayment';
+import { formatCurrencyValue } from '@/lib/pricing';
 
 interface CheckoutData {
   email: string;
@@ -441,7 +442,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Subtotal:</span>
-                <span className="font-medium">${cartTotal.toFixed(2)}</span>
+                <span className="font-medium">{formatCurrencyValue(cartTotal)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Shipping:</span>
@@ -449,7 +450,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
               </div>
               <div className="border-t pt-2 flex justify-between font-bold text-lg">
                 <span>Total:</span>
-                <span>${cartTotal.toFixed(2)} CAD</span>
+                <span>{formatCurrencyValue(cartTotal)}</span>
               </div>
             </div>
 

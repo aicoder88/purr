@@ -125,9 +125,9 @@ export default function PurrifyVsArmHammer() {
                 <tr className="bg-gray-50 dark:bg-gray-800">
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Price (per month)</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
-                    <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> ~$10 CAD
+                    <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> ~$10
                   </td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">~$12 CAD</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">~$12</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Availability</td>

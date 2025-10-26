@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/lib/cart-context';
+import { formatCurrencyValue } from '@/lib/pricing';
 
 interface BundleProduct {
   id: string;
@@ -454,13 +455,12 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <span className="text-3xl font-bold">${bundle.bundlePrice}</span>
-                      <span className="text-gray-500 dark:text-gray-400 ml-2">CAD</span>
+                      <span className="text-3xl font-bold">{formatCurrencyValue(bundle.bundlePrice)}</span>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg text-gray-400 dark:text-gray-500 line-through">${bundle.regularPrice}</p>
+                      <p className="text-lg text-gray-400 dark:text-gray-500 line-through">{formatCurrencyValue(bundle.regularPrice)}</p>
                       <Badge className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 dark:bg-green-800 dark:text-green-200">
-                        Save ${bundle.savings}
+                        Save {formatCurrencyValue(bundle.savings)}
                       </Badge>
                     </div>
                   </div>
@@ -504,15 +504,10 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
                         <div className="text-right">
                           {product.bundlePrice === 0 ? (
                             <span className="text-green-600 dark:text-green-400 font-bold text-sm">FREE</span>
+                          ) : product.bundlePrice ? (
+                            <p className="font-semibold text-sm">{formatCurrencyValue(product.bundlePrice)}</p>
                           ) : (
-                            <>
-                              {product.bundlePrice && (
-                                <p className="font-semibold text-sm">${product.bundlePrice}</p>
-                              )}
-                              {!product.bundlePrice && (
-                                <p className="text-gray-400 dark:text-gray-500 line-through text-sm">${product.regularPrice}</p>
-                              )}
-                            </>
+                            <p className="text-gray-400 dark:text-gray-500 line-through text-sm">{formatCurrencyValue(product.regularPrice)}</p>
                           )}
                         </div>
                       </div>

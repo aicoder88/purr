@@ -148,9 +148,9 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
                 <tr className="bg-gray-50 dark:bg-gray-800">
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Typical Monthly Cost</td>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center bg-green-50 dark:bg-green-900/20">
-                    <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> $10-15 CAD
+                    <span className="text-green-600 dark:text-green-400 font-semibold">✓</span> $10-15
                   </td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">$12-18 CAD</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-center">$12-18</td>
                 </tr>
               </tbody>
             </table>

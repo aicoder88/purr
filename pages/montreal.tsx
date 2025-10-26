@@ -798,7 +798,7 @@ export default function Montreal() {
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
                 {locale === 'fr'
-                  ? 'Purrify est disponible en trois formats: format d\'essai de 12g pour 4,99$ CAD, format régulier de 50g pour 19,99$ CAD, et grand format de 120g pour 29,99$ CAD. Les prix peuvent varier selon le détaillant.'
+                  ? 'Purrify est disponible en trois formats: format d\'essai de 12g pour 4,99$, format régulier de 50g pour 19,99$, et grand format de 120g pour 29,99$. Les prix peuvent varier selon le détaillant.'
                   : productPriceSentence
                 }
               </p>

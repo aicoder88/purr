@@ -49,7 +49,7 @@ export default function InvestorRelations() {
     <>
       <NextSeo
         title="Investor Relations - Purrify Cat Litter Investment Opportunity"
-        description="Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising CAD $50K @ $1M pre-money valuation."
+        description="Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising $50K @ $1M pre-money valuation."
         canonical="https://www.purrify.ca/invest"
         openGraph={{
           title: 'Investor Relations - Purrify Cat Litter Investment Opportunity',
@@ -173,7 +173,7 @@ export default function InvestorRelations() {
                   <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                       <div className="relative">
-                        <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">CAD $50K</div>
+                        <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">$50K</div>
                         <div className="text-sm text-gray-600 dark:text-gray-300">Current Round</div>
                         <ProgressRing percentage={75} label="Target Progress" color="#FF3131" size={80} className="mt-4" />
                       </div>
@@ -290,7 +290,7 @@ export default function InvestorRelations() {
                       <BarChart
                         data={[
                           { label: 'Cat Owners (Millions)', value: 52, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
-                          { label: 'Market Size ($M CAD)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                          { label: 'Market Size ($M)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
                           { label: 'Online CAGR (%)', value: 6.2, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                         ]}
                         title="Canadian Market Overview"
@@ -783,7 +783,7 @@ export default function InvestorRelations() {
                     <div>
                       <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-2xl p-6 mb-6">
                         <div className="text-center">
-                          <div className="text-4xl font-bold text-[#FF3131] mb-2">CAD $50K</div>
+                          <div className="text-4xl font-bold text-[#FF3131] mb-2">$50K</div>
                           <div className="text-lg text-gray-600 dark:text-gray-400 mb-4">Current Round</div>
                           <div className="text-2xl font-bold text-[#5B2EFF] mb-2">$1M Pre-Money</div>
                           <div className="text-lg text-gray-600 dark:text-gray-400">SAFE Agreement</div>

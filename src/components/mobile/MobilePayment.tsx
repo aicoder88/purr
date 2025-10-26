@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Shield, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';
+import { formatCurrencyValue } from '@/lib/pricing';
 
 // Type declarations for Apple Pay and Google Pay
 declare global {
@@ -299,12 +300,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     });
   };
 
-  const formatAmount = useCallback((amount: number, currency: string) => {
-    return new Intl.NumberFormat('en-CA', {
-      style: 'currency',
-      currency: currency
-    }).format(amount);
-  }, []);
+  const formatAmount = useCallback((amount: number) => formatCurrencyValue(amount), []);
 
   const handlePaymentMethodSelect = useCallback((paymentId: string) => {
     return () => {
@@ -321,7 +317,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
           Choose Payment Method
         </h3>
         <div className="text-2xl font-bold text-[#5B2EFF]">
-          {formatAmount(amount, currency)}
+          {formatAmount(amount)}
         </div>
       </div>
 

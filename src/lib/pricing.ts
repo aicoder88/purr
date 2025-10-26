@@ -27,8 +27,28 @@ const resolveLocale = (locale?: string) => {
   return locale ?? 'en-CA';
 };
 
-const formatCurrency = (value: number, locale: string = 'en-CA') =>
-  new Intl.NumberFormat(resolveLocale(locale), { style: 'currency', currency: CURRENCY }).format(value);
+const formatCurrency = (value: number, locale: string = 'en-CA') => {
+  const resolvedLocale = resolveLocale(locale);
+  const formatter = new Intl.NumberFormat(resolvedLocale, {
+    style: 'currency',
+    currency: CURRENCY,
+    currencyDisplay: 'narrowSymbol'
+  });
+
+  const parts = formatter.formatToParts(value);
+  const formatted = parts
+    .map(part => {
+      if (part.type === 'currency') {
+        const symbol = part.value.replace(/[A-Za-z]/g, '').trim();
+        return symbol || '$';
+      }
+      return part.value;
+    })
+    .join('');
+
+  // Normalize any lingering multiple spaces without disturbing locale-specific formatting
+  return formatted.replace(/\s+/g, match => (match.includes('\u00A0') ? match : ' ')).trim();
+};
 
 export const getProductPrice = (idOrKey: ProductCatalogId | ProductPriceKey): number => {
   const catalogId = (PRODUCT_ID_ALIAS[idOrKey as ProductPriceKey] ?? idOrKey) as ProductCatalogId;

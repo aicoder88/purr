@@ -22,10 +22,6 @@ const EnhancedProductComparison = dynamic(() => import('../src/components/sectio
   ssr: false,
   loading: () => sectionSkeleton('h-96', 'rounded-lg')
 });
-const SubscriptionOffer = dynamic(() => import('../src/components/sections/subscription-offer').then(mod => ({ default: mod.SubscriptionOffer })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-72')
-});
 const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), {
   ssr: false,
   loading: () => sectionSkeleton('h-64')
@@ -347,17 +343,6 @@ export default function Home() {
               placeholder={sectionSkeleton('h-96', 'rounded-lg')}
             >
               <EnhancedProductComparison />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
-        
-        {/* Subscription Offer for recurring revenue */}
-        <div className="cv-auto cis-480">
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-72')}
-            >
-              <SubscriptionOffer />
             </LazyLoad>
           </ErrorBoundary>
         </div>

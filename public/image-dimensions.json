@@ -233,6 +233,24 @@
     "avifSanitized": "optimized/cats-and-filters.avif",
     "optimized": "optimized/cats and filters.png"
   },
+  "catonbed.jpeg": {
+    "width": 1086,
+    "height": 724,
+    "webp": "optimized/catonbed.webp",
+    "webpSanitized": "optimized/catonbed.webp",
+    "avif": "optimized/catonbed.avif",
+    "avifSanitized": "optimized/catonbed.avif",
+    "optimized": "optimized/catonbed.jpeg"
+  },
+  "catcoco.png": {
+    "width": 1536,
+    "height": 1024,
+    "webp": "optimized/catcoco.webp",
+    "webpSanitized": "optimized/catcoco.webp",
+    "avif": "optimized/catcoco.avif",
+    "avifSanitized": "optimized/catcoco.avif",
+    "optimized": "optimized/catcoco.png"
+  },
   "cat_rose_thumbnail.jpg": {
     "width": 500,
     "height": 340,
@@ -314,6 +332,15 @@
     "avifSanitized": "optimized/60g.avif",
     "optimized": "optimized/60g.png"
   },
+  "60g yellow.png": {
+    "width": 1741,
+    "height": 2907,
+    "webp": "optimized/60g yellow.webp",
+    "webpSanitized": "optimized/60g-yellow.webp",
+    "avif": "optimized/60g yellow.avif",
+    "avifSanitized": "optimized/60g-yellow.avif",
+    "optimized": "optimized/60g yellow.png"
+  },
   "20g_o.png": {
     "width": 1696,
     "height": 2607,
@@ -331,6 +358,24 @@
     "avif": "optimized/20g.avif",
     "avifSanitized": "optimized/20g.avif",
     "optimized": "optimized/20g.png"
+  },
+  "17gpink.png": {
+    "width": 1852,
+    "height": 2889,
+    "webp": "optimized/17gpink.webp",
+    "webpSanitized": "optimized/17gpink.webp",
+    "avif": "optimized/17gpink.avif",
+    "avifSanitized": "optimized/17gpink.avif",
+    "optimized": "optimized/17gpink.png"
+  },
+  "17 and 60 yellow and PINK.png": {
+    "width": 577,
+    "height": 433,
+    "webp": "optimized/17 and 60 yellow and PINK.webp",
+    "webpSanitized": "optimized/17-and-60-yellow-and-PINK.webp",
+    "avif": "optimized/17 and 60 yellow and PINK.avif",
+    "avifSanitized": "optimized/17-and-60-yellow-and-PINK.avif",
+    "optimized": "optimized/17 and 60 yellow and PINK.png"
   },
   "140g.png": {
     "width": 1024,

@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { useEffect, useRef } from 'react';
+import { formatCurrencyValue } from './pricing';
 
 // Core utility function for combining Tailwind classes
 export function cn(...inputs: ClassValue[]) {
@@ -39,10 +40,15 @@ export function useInterval(callback: () => void, delay: number | null) {
 }
 
 // Additional common utilities
-export const formatPrice = (price: number, currency = 'CAD'): string => {
-  return new Intl.NumberFormat('en-CA', {
+export const formatPrice = (price: number, currency = 'CAD', locale = 'en-CA'): string => {
+  if (currency === 'CAD') {
+    return formatCurrencyValue(price, locale);
+  }
+
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: currency
+    currency,
+    currencyDisplay: 'narrowSymbol'
   }).format(price);
 };
 

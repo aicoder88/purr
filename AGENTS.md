@@ -1,17 +1,24 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-The Pages Router lives in `pages/` with locale-specific routes under `pages/[locale]/` and API handlers in `pages/api/`. Shared interfaces and UI live in `src/components/{sections,ui,layout}` while schema-aware SEO helpers sit in `src/components/seo`. Business logic, providers, and analytics utilities belong in `src/lib/`, with shared types split between `src/types/` and the root `types.ts`. Keep translation sources in `src/translations/{en,fr,zh}.json`, media in `public/`, Prisma schema at `prisma/schema.prisma`, and reusable scripts inside `scripts/`.
+React pages live in `pages/`; locales under `pages/[locale]/`, Stripe/webhooks in `pages/api/`, and long-form content in `pages/blog/` or `pages/learn/`. Shared UI sits in `src/components/{sections,ui,layout,mobile,social-proof,performance}` with SEO helpers in `src/components/seo`. Keep business logic in `src/lib/`, translations in `src/translations/{en,fr,zh,common}.ts`, types in `src/types/` and `types.ts`, schema in `prisma/schema.prisma`, assets in `public/`, and tests in `__tests__/` plus `e2e/`.
 
 ## Build, Test, and Development Commands
-Run `npm run predev && npm run dev` to clear caches and start the local server. Linting (`npm run lint`), type safety (`npm run check-types`), and dark mode validation (`npm run validate-dark-mode`) are mandatory before submitting work. Use `npm test` to guard translation key coverage, and `npm run test:e2e -- --headed` for Playwright journeys. Ship-ready verification is `npm run build` followed by `npm run start`; performance and bundle health come from `npm run performance:audit` and `npm run bundle:analyze`.
+- `npm run predev && npm run dev`: prep caches and launch dev server; run `npm run clear-cache` if hot reloads stall.
+- `npm run lint` + `npm run check-types`: pass ESLint and TS gates.
+- `npm run validate-dark-mode` + `npm run validate-blog-images`: enforce theme and media.
+- `npm run test:translations` + `npm run test:e2e -- --headed`: cover i18n and journeys.
+- `npm run build && npm run start`: production validation.
+- `npm run performance:audit` or `npm run analyze`: inspect perf and bundles.
 
 ## Coding Style & Naming Conventions
-Stick to TypeScript—no `any` unless justified and approved. Prettier defaults (two spaces, single quotes) and the project ESLint config enforce formatting. Components, hooks, and providers use PascalCase; helpers remain camelCase. Tailwind text and background utilities must include a matching `dark:` variant, and UI copy should come from `useTranslation` with keys defined in each language file.
+Ship TypeScript only; avoid `any` without approval. Prettier (2 spaces, single quotes) and ESLint set formatting—run lint before commits. Components, hooks, and providers use PascalCase; helpers stay camelCase. Pair text/background Tailwind classes with `dark:` variants. Pull copy through `useTranslation`; never hardcode strings or competitor names.
 
 ## Testing Guidelines
-Jest specs in `__tests__/` protect translation completeness. End-to-end coverage lives in `e2e/*.spec.ts`; name scenarios after the user flow (`checkout-flow.spec.ts`). Always run `npm run validate-dark-mode` after UI-affecting changes to guard accessibility requirements.
+Keep Jest specs in `__tests__/` aligned with their feature names. Run `npm run test:translations` to keep en/fr/zh parity and name Playwright specs after each journey. Before a PR, rerun dark-mode and blog-image validators plus the unit or e2e suites touched.
 
 ## Commit & Pull Request Guidelines
-Follow the `Type: concise summary` commit format under 72 characters and stage generated assets separately. Pull requests should describe the change, link issues, and document local verification (lint, types, dark mode, tests, e2e). Include before/after screenshots for visual updates and request review from the maintainer listed in `PROJECT_OVERVIEW.md`. Log noteworthy work in `CHANGELOG.md` and sync with maintainers before altering Stripe or analytics endpoints.
+Use `Type: concise summary` commit messages under 72 chars and stage generated assets separately. PRs must describe the change, link issues, and list local checks (lint, types, dark mode, blog images, translations, unit, e2e). Capture UI diffs with screenshots, log notable work in `CHANGELOG.md`, sync with maintainers before touching Stripe, analytics, or Prisma schema, and respect existing local edits. After merging, confirm the Vercel deployment hits `READY` and spot-check production flows.
 
+## Content & Media Requirements
+Blog posts need 3–4 cat-relevant images from approved sources (Unsplash, Pexels, Pixabay) wired into OG/Twitter meta tags. Follow the keyword strategy in `/docs/SEO_KEYWORD_STRATEGY.md` and `/docs/cat odor keywords.xlsx`, avoid money-back guarantee claims, and keep tone brand-safe. Re-run `npm run validate-blog-images` and spot-check responsive layouts whenever copy or assets change.

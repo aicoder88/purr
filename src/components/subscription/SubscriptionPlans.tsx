@@ -4,6 +4,7 @@ import { Check, Star, Zap, Gift, Crown, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { formatCurrencyValue } from '@/lib/pricing';
 
 interface SubscriptionPlan {
   id: string;
@@ -261,14 +262,13 @@ export function SubscriptionPlans({
                 {/* Pricing */}
                 <div className="mb-4">
                   <div className="flex items-center justify-center mb-2">
-                    <span className="text-4xl font-bold">${plan.price}</span>
-                    <span className="text-gray-500 dark:text-gray-400 ml-2">CAD</span>
+                    <span className="text-4xl font-bold">{formatCurrencyValue(plan.price)}</span>
                   </div>
                   
                   {plan.originalPrice && (
                     <div className="flex items-center justify-center space-x-2">
                       <span className="text-lg text-gray-400 dark:text-gray-500 line-through">
-                        ${plan.originalPrice}
+                        {formatCurrencyValue(plan.originalPrice)}
                       </span>
                       <Badge variant="secondary" className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200 dark:text-green-200">
                         Save {plan.discount}%
@@ -321,17 +321,17 @@ export function SubscriptionPlans({
                     {plan.products.map((product, productIndex) => (
                       <div key={productIndex} className="flex justify-between text-sm">
                         <span>{product.quantity}x {product.name}</span>
-                        <span>${product.value.toFixed(2)}</span>
+                        <span>{formatCurrencyValue(product.value)}</span>
                       </div>
                     ))}
                   </div>
                   <div className="border-t pt-2 mt-2 font-semibold flex justify-between">
                     <span>Total Value:</span>
-                    <span className="text-green-600 dark:text-green-400">${plan.totalValue.toFixed(2)}</span>
+                    <span className="text-green-600 dark:text-green-400">{formatCurrencyValue(plan.totalValue)}</span>
                   </div>
                   <div className="flex justify-between text-sm text-purple-600 dark:text-purple-400">
                     <span>You Pay:</span>
-                    <span>${plan.price.toFixed(2)}</span>
+                    <span>{formatCurrencyValue(plan.price)}</span>
                   </div>
                 </div>
 

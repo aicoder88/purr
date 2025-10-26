@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -9,12 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
     "tsBuildInfoFile": ".next/.tsbuildinfo",
     "noFallthroughCasesInSwitch": true,
     "plugins": [
@@ -23,10 +27,23 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@translations/*": ["./src/translations/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@translations/*": [
+        "./src/translations/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src"],
-  "exclude": ["node_modules", "backup/**/*"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "backup/**/*"
+  ]
 }
