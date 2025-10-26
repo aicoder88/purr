@@ -456,29 +456,31 @@ export function EnhancedProductComparison() {
                               </div>
                             ) : null}
 
-                            <div className="flex flex-col gap-5 mt-2">
-                              <div className="text-center">
-                                <p className={`text-sm uppercase tracking-widest font-black mb-3 ${isHighlighted ? 'text-amber-300 dark:text-amber-200' : 'text-[#FF3131]'}`}>
+                            <div className="flex flex-col gap-4 mt-4 px-2">
+                              <div className="text-center space-y-3">
+                                <p className={`text-sm uppercase tracking-widest font-black ${isHighlighted ? 'text-amber-300 dark:text-amber-200' : 'text-[#FF3131]'}`}>
                                   {option.label}
                                 </p>
-                                <div className={`text-5xl sm:text-6xl font-black mb-2 ${isHighlighted ? 'text-white dark:text-white drop-shadow-2xl' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
+                                <div className={`text-5xl sm:text-6xl font-black leading-none ${isHighlighted ? 'text-white dark:text-white drop-shadow-2xl' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
                                   {option.priceFormatted}
                                 </div>
                                 {option.perMonth ? (
-                                  <p className={`text-lg font-bold mb-2 ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
+                                  <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
                                     {option.perMonth}
                                   </p>
                                 ) : null}
                                 {option.subLabel ? (
-                                  <p className={`text-sm ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
+                                  <p className={`text-sm leading-snug px-2 ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
                                     {option.subLabel}
                                   </p>
                                 ) : null}
                                 {option.shippingNote ? (
-                                  <div className={`mt-3 inline-block ${isHighlighted ? 'bg-white/20 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-700'} px-4 py-2 rounded-full`}>
-                                    <p className={`text-sm font-bold ${isHighlighted ? 'text-white dark:text-white' : 'text-gray-700 dark:text-gray-200'}`}>
-                                      {option.shippingNote}
-                                    </p>
+                                  <div className="flex justify-center mt-2">
+                                    <div className={`inline-flex ${isHighlighted ? 'bg-white/20 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-700'} px-4 py-2.5 rounded-full`}>
+                                      <p className={`text-sm font-bold text-center ${isHighlighted ? 'text-white dark:text-white' : 'text-gray-700 dark:text-gray-200'}`}>
+                                        {option.shippingNote}
+                                      </p>
+                                    </div>
                                   </div>
                                 ) : null}
                               </div>
