@@ -131,25 +131,38 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
   const headlineRaw = t.hero.eliminateCatOdors;
   const emphasisPhrase = 'And Why Cat Owners Care';
   const emphasisIndex = headlineRaw.indexOf(emphasisPhrase);
-  const headlineBeforeEmphasis = emphasisIndex >= 0
-    ? headlineRaw.slice(0, emphasisIndex)
+  const hasEmphasis = emphasisIndex >= 0;
+  const emphasisStart = hasEmphasis && emphasisIndex > 0 && headlineRaw[emphasisIndex - 1] === '('
+    ? emphasisIndex - 1
+    : emphasisIndex;
+  const headlinePrimary = hasEmphasis
+    ? headlineRaw.slice(0, emphasisStart).trimEnd()
     : headlineRaw;
-  const headlineAfterEmphasis = emphasisIndex >= 0
-    ? headlineRaw.slice(emphasisIndex + emphasisPhrase.length)
+  const emphasisLineText = hasEmphasis
+    ? headlineRaw.slice(emphasisStart).trim()
+    : '';
+  const descriptionRaw = t.hero.description;
+  const highlightSentence = 'One sprinkle eliminates litter box odor for 7 full days.';
+  const highlightIndex = descriptionRaw.indexOf(highlightSentence);
+  const hasHighlightSentence = highlightIndex >= 0;
+  const descriptionBeforeHighlight = hasHighlightSentence
+    ? descriptionRaw.slice(0, highlightIndex).trimEnd()
+    : '';
+  const descriptionAfterHighlight = hasHighlightSentence
+    ? descriptionRaw.slice(highlightIndex + highlightSentence.length).trimStart()
     : '';
 
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
         <span className={`block ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
-          {headlineBeforeEmphasis}
-          {emphasisIndex >= 0 ? (
-            <span className="text-lg md:text-xl font-semibold text-gray-600 dark:text-gray-300">
-              {emphasisPhrase}
-            </span>
-          ) : null}
-          {headlineAfterEmphasis}
+          {headlinePrimary}
         </span>
+        {hasEmphasis ? (
+          <span className={`block text-3xl md:text-5xl font-extrabold tracking-tight ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
+            {emphasisLineText}
+          </span>
+        ) : null}
         <span
           className={`block text-2xl md:text-3xl font-medium ${COLORS.text.primary}`}
           style={{
@@ -161,7 +174,21 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
       </h1>
 
       <p className={`text-xl ${COLORS.text.secondary} mb-8 max-w-2xl`}>
-        {t.hero.description}
+        {hasHighlightSentence ? (
+          <>
+            {descriptionBeforeHighlight && (
+              <span>{descriptionBeforeHighlight}</span>
+            )}
+            <span className="block my-2">
+              {highlightSentence}
+            </span>
+            {descriptionAfterHighlight && (
+              <span>{descriptionAfterHighlight}</span>
+            )}
+          </>
+        ) : (
+          descriptionRaw
+        )}
       </p>
 
       {/* Social Proof Section */}
