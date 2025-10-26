@@ -128,11 +128,27 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
     scrollToSection("products");
   }, []);
 
+  const headlineRaw = t.hero.eliminateCatOdors;
+  const emphasisPhrase = 'And Why Cat Owners Care';
+  const emphasisIndex = headlineRaw.indexOf(emphasisPhrase);
+  const headlineBeforeEmphasis = emphasisIndex >= 0
+    ? headlineRaw.slice(0, emphasisIndex)
+    : headlineRaw;
+  const headlineAfterEmphasis = emphasisIndex >= 0
+    ? headlineRaw.slice(emphasisIndex + emphasisPhrase.length)
+    : '';
+
   return (
     <div className="space-y-8">
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-center">
         <span className={`block ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark} [text-shadow:0_0_16px_rgba(0,0,0,0.1)] dark:[text-shadow:0_0_16px_rgba(255,255,255,0.1)]`}>
-          {t.hero.eliminateCatOdors}
+          {headlineBeforeEmphasis}
+          {emphasisIndex >= 0 ? (
+            <span className="text-lg md:text-xl font-semibold text-gray-600 dark:text-gray-300">
+              {emphasisPhrase}
+            </span>
+          ) : null}
+          {headlineAfterEmphasis}
         </span>
         <span
           className={`block text-2xl md:text-3xl font-medium ${COLORS.text.primary}`}
