@@ -74,6 +74,25 @@ export function HowItWorks() {
           </p>
         </div>
 
+        {/* Coconut Shells Visualization */}
+        <div className="max-w-2xl mx-auto text-center mb-16 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-2xl p-8 border border-orange-200 dark:border-orange-700/50">
+          <div className="overflow-hidden rounded-lg mb-6 h-[300px] sm:h-[400px] flex items-center justify-center">
+            <NextImage
+              src="/optimized/catcoco.webp"
+              alt="Pure sustainable coconut shells for Purrify activated carbon cat litter"
+              width={400}
+              height={400}
+              priority={true}
+              quality={90}
+              className="w-full h-full object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
+            />
+          </div>
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+            Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
           <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#5B2EFF]/30 to-[#E0EFC7] hidden md:block"></div>
