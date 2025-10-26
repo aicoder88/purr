@@ -180,7 +180,7 @@ export function EnhancedProductComparison() {
         prioritySupport: true,
         freeShipping: true,
       },
-      image: '/optimized/140g.webp',
+      image: '/60g yellow.png',
       purchaseOptions: [
         {
           key: 'family-autoship',
