@@ -247,8 +247,15 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
-  // Note: Logo for Animalerie Petmobile Nathamo is still being sourced.
-  // This store will show a fallback icon until logo is available.
+  if (storeName.includes('Animalerie Petmobile Nathamo')) {
+    return {
+      src: "/nathamo.jpg",
+      alt: "Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
