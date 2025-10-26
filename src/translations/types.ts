@@ -197,6 +197,8 @@ export interface TranslationType {
     recommended: string;
     perMonth: string;
     saveVsOneTime: string;
+    trialSizeSection: string;
+    quarterlyAutoshipSection: string;
   };
   
   // Stores Section

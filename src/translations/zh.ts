@@ -72,7 +72,9 @@ export const zh = {
     linkComingSoon: "支付链接即将上线",
     recommended: "推荐选择",
     perMonth: "≈ {price}/月",
-    saveVsOneTime: "比单次购买节省 {percent}%"
+    saveVsOneTime: "比单次购买节省 {percent}%",
+    trialSizeSection: "先试试再购买",
+    quarterlyAutoshipSection: "订购享优惠 - 季度自动配送"
   },
 
   // Hero Section

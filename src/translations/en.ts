@@ -100,7 +100,9 @@ export const en = {
     linkComingSoon: "Payment link coming soon",
     recommended: "Most recommended",
     perMonth: "≈ {price}/month",
-    saveVsOneTime: "Save {percent}% vs one-time"
+    saveVsOneTime: "Save {percent}% vs one-time",
+    trialSizeSection: "Try Before You Buy",
+    quarterlyAutoshipSection: "Subscribe & Save - Quarterly Autoship"
   },
 
   // Hero Section

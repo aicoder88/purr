@@ -99,7 +99,9 @@ export const fr = {
     linkComingSoon: "Lien de paiement bientôt disponible",
     recommended: "Recommandé",
     perMonth: "≈ {price}/mois",
-    saveVsOneTime: "Économisez {percent}% vs achat unique"
+    saveVsOneTime: "Économisez {percent}% vs achat unique",
+    trialSizeSection: "Essayer avant d'acheter",
+    quarterlyAutoshipSection: "S'abonner & économiser - Abonnement trimestriel"
   },
 
   // Hero Section
