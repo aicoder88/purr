@@ -22,6 +22,7 @@
     "browserslist:update": "npx update-browserslist-db@latest",
     "generate-enhanced-sitemap": "node scripts/generate-sitemap.js",
     "generate-location-sitemap": "node scripts/generate-location-sitemap.js",
+    "optimize-sitemap-changefreq": "node scripts/optimize-sitemap-changefreq.js",
     "predev": "node scripts/clear-webpack-cache.js",
     "analyze": "ANALYZE=true next build",
     "analyze-js": "node scripts/analyze-js.js",
