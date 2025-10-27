@@ -1,11 +1,12 @@
 import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { DefaultSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import '../src/index.css';
-import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
+import { buildDefaultSeoConfig } from '../src/lib/seo/defaultSeoConfig';
 import Script from 'next/script';
 
 import { TranslationProvider } from '../src/lib/translation-context';
@@ -43,48 +44,67 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
 
   // Canonical site URL (use www domain to avoid redirects)
   const canonicalUrl = 'https://www.purrify.ca';
+  const defaultSeoConfig = useMemo(
+    () => buildDefaultSeoConfig(locale, canonicalUrl),
+    [locale, canonicalUrl]
+  );
   const shouldLoadChat = process.env.NODE_ENV === 'production';
 
   // Service Worker registration
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-      const registerSW = async () => {
-        try {
-          const registration = await navigator.serviceWorker.register('/sw.js', {
-            scope: '/',
-            updateViaCache: 'none'
-          });
-
-          registration.addEventListener('updatefound', () => {
-            const newWorker = registration.installing;
-            if (newWorker) {
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  // New content is available, prompt user to refresh
-                  if (confirm('New content is available! Click OK to refresh.')) {
-                    window.location.reload();
-                  }
-                }
-              });
-            }
-          });
-
-          console.log('SW registered successfully');
-        } catch (err) {
-          console.warn('SW registration failed:', err);
-        }
-      };
-
-      // Register after page load to avoid blocking
-      if (document.readyState === 'complete') {
-        registerSW();
-      } else {
-        window.addEventListener('load', registerSW);
-      }
+    if (process.env.NODE_ENV !== 'production') {
+      return;
     }
+
+    if (typeof window === 'undefined' || !('serviceWorker' in navigator)) {
+      return;
+    }
+
+    let loadListener: (() => void) | null = null;
+
+    const registerSW = async () => {
+      try {
+        const registration = await navigator.serviceWorker.register('/sw.js', {
+          scope: '/',
+          updateViaCache: 'none',
+        });
+
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New content is available, prompt user to refresh
+                if (confirm('New content is available! Click OK to refresh.')) {
+                  window.location.reload();
+                }
+              }
+            });
+          }
+        });
+
+        console.log('SW registered successfully');
+      } catch (err) {
+        console.warn('SW registration failed:', err);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      registerSW();
+    } else {
+      loadListener = () => {
+        registerSW();
+      };
+      window.addEventListener('load', loadListener, { once: true });
+    }
+
+    return () => {
+      if (loadListener) {
+        window.removeEventListener('load', loadListener);
+      }
+    };
   }, []);
-  
-  
+
   return (
     <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
       <CartProvider>
@@ -120,57 +140,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
           </Head>
           
-          <DefaultSeo
-            titleTemplate={`%s | ${SITE_NAME}`}
-            defaultTitle={`${SITE_NAME} - Cat Litter Odor Control`}
-            openGraph={{
-              type: 'website',
-              locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
-              url: canonicalUrl,
-              siteName: SITE_NAME,
-              title: `${SITE_NAME} - Cat Litter Odor Control`,
-              description: SITE_DESCRIPTION,
-              images: [
-                {
-                  url: 'https://www.purrify.ca/purrify-logo.png',
-                  width: 1200,
-                  height: 800,
-                  alt: SITE_NAME,
-                  type: 'image/png',
-                },
-              ],
-            }}
-            twitter={{
-              handle: '@purrify',
-              site: '@purrify',
-              cardType: 'summary_large_image',
-            }}
-            additionalMetaTags={[
-              {
-                name: 'keywords',
-                content: 'cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies',
-              },
-              {
-                name: 'author',
-                content: SITE_NAME,
-              },
-              {
-                name: 'application-name',
-                content: SITE_NAME,
-              },
-              {
-                property: 'og:site_name',
-                content: SITE_NAME,
-              },
-              {
-                name: 'apple-mobile-web-app-title',
-                content: SITE_NAME,
-              },
-            ]}
-            additionalLinkTags={[
-              { rel: 'manifest', href: '/manifest.json' },
-            ]}
-          />
+          <DefaultSeo {...defaultSeoConfig} />
           
           {/* Organization Schema Markup */}
           <Script
