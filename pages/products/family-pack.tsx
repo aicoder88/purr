@@ -10,14 +10,11 @@ import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-util
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import NextImage from '../../components/NextImage';
-import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
-import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
-  const { generateBreadcrumbs, generateProductData } = useStructuredData();
-  
+
   const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
   const canonicalPath = '/products/family-pack';
@@ -44,10 +41,6 @@ export default function FamilyPackPage() {
   const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
   const sectionImage1 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Multi-cat household
   const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat family
-
-  // Generate structured data for this product
-  const productData = generateProductData('purrify-120g');
-  const breadcrumbs = generateBreadcrumbs('/products/family-pack');
 
   const benefits = [
     "Perfect for multi-cat households",
@@ -102,21 +95,6 @@ export default function FamilyPackPage() {
           ]
         }}
       />
-      
-      {/* Comprehensive Product Structured Data */}
-      <ComprehensiveStructuredData 
-        pageType="product" 
-        pageData={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          product: productData || undefined,
-          breadcrumbs: breadcrumbs
-        }}
-      />
-      
-      {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-120g' locale={locale as 'en' | 'fr' | 'zh'} />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

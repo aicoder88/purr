@@ -5,7 +5,6 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
 import { NextSeo } from 'next-seo';
 import { formatProductPrice } from '../../src/lib/pricing';
 import {
@@ -29,7 +28,6 @@ import NextImage from '../../components/NextImage';
 
 const FAQPage: NextPage = () => {
   const { locale } = useTranslation();
-  const { generateBreadcrumbs } = useStructuredData();
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
@@ -42,9 +40,6 @@ const FAQPage: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
-  
-  // Generate breadcrumbs for FAQ page
-  const breadcrumbs = generateBreadcrumbs('/learn/faq');
 
   const pageTitle = 'Frequently Asked Questions - Purrify Cat Litter Additive';
   const pageDescription = 'Get answers to common questions about Purrify activated carbon cat litter additive. Learn about usage, shipping, safety, and more.';
@@ -225,21 +220,6 @@ const FAQPage: NextPage = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
-      {/* Comprehensive FAQ Structured Data */}
-      <ComprehensiveStructuredData 
-        pageType="faq" 
-        pageData={{
-          title: "Frequently Asked Questions - Everything About Purrify",
-          description: "Find answers to all your questions about Purrify cat litter additive. Learn about usage, safety, shipping, and more in our comprehensive FAQ.",
-          url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`,
-          faqs: faqItems.map(item => ({
-            question: item.question,
-            answer: item.answer
-          })),
-          breadcrumbs: breadcrumbs
-        }}
       />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

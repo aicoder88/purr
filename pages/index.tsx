@@ -51,9 +51,6 @@ import { formatProductPrice, getProductPrice, getPriceRange } from '../src/lib/p
 import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
-import { EnhancedStructuredData } from '../src/components/seo/enhanced-structured-data';
-import { ComprehensiveStructuredData, useStructuredData } from '../src/components/seo/comprehensive-structured-data';
-import { HomepageSchema } from '../src/components/seo/json-ld-schema';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
@@ -65,7 +62,6 @@ export default function Home() {
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
   const canonicalUrl = getLocalizedUrl('/', locale);
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
-  const { generateBreadcrumbs } = useStructuredData();
   const languageAlternates = buildLanguageAlternates('/');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
@@ -76,9 +72,6 @@ export default function Home() {
   const standardPriceValue = getProductPrice('standard').toFixed(2);
   const familyPriceValue = getProductPrice('family').toFixed(2);
   const priceRange = getPriceRange(locale);
-
-  // Generate breadcrumbs for home page
-  const breadcrumbs = generateBreadcrumbs('/');
 
   return (
     <>
@@ -168,24 +161,7 @@ export default function Home() {
         ]}
       />
 
-      {/* Enhanced Structured Data */}
-      <EnhancedStructuredData />
-      
-      {/* Comprehensive Structured Data */}
-      <ComprehensiveStructuredData 
-        pageType="home" 
-        pageData={{
-          title: pageTitle,
-          description: SITE_DESCRIPTION,
-          url: canonicalUrl,
-          breadcrumbs: breadcrumbs
-        }}
-      />
-      
-      {/* Advanced JSON-LD Schema for Homepage */}
-      <HomepageSchema locale='en' />
-      
-      {/* Enhanced JSON-LD Schemas */}
+      {/* Enhanced JSON-LD Schemas with Product Catalog */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
