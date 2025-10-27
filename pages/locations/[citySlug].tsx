@@ -11,8 +11,59 @@ const CityPage = ({ citySlug }: InferGetStaticPropsType<typeof getStaticProps>) 
   <CityPageTemplate citySlug={citySlug} />
 );
 
-// Add city slugs here if specific markets must be pre-rendered at build time.
-const HIGH_PRIORITY_CITY_SLUGS: string[] = [];
+// Top 50 Canadian cities by population - pre-rendered at build time for SEO
+const HIGH_PRIORITY_CITY_SLUGS: string[] = [
+  'toronto',
+  'montreal',
+  'calgary',
+  'edmonton',
+  'ottawa',
+  'winnipeg',
+  'mississauga',
+  'vancouver',
+  'brampton',
+  'scarborough',
+  'hamilton',
+  'quebec-city',
+  'halifax',
+  'laval',
+  'london',
+  'markham',
+  'vaughan',
+  'gatineau',
+  'saskatoon',
+  'kitchener',
+  'longueuil',
+  'windsor',
+  'regina',
+  'oakville',
+  'richmond-hill',
+  'burlington',
+  'oshawa',
+  'barrie',
+  'kelowna',
+  'guelph',
+  'victoria',
+  'argentia',
+  'baddeck',
+  'bancroft',
+  'banff',
+  'barkerville',
+  'bathurst',
+  'batoche',
+  'belleville',
+  'bonavista',
+  'borden',
+  'brandon',
+  'brantford',
+  'brockville',
+  'brooks',
+  'burnaby',
+  'cambridge',
+  'campbell-river',
+  'caraquet',
+  'cavendish',
+];
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = HIGH_PRIORITY_CITY_SLUGS

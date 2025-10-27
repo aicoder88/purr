@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../src/components/ui/button';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG, isEmailJSConfigured } from '../src/lib/emailjs-config';
 import { useTranslation } from '../src/lib/translation-context';
 
 // Define validation schema with Zod
@@ -38,30 +36,8 @@ export default function ContactForm() {
     },
   });
 
-  // EmailJS configuration
-  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
-  const [configValid, setConfigValid] = useState(false);
-  
-  useEffect(() => {
-    // Check if EmailJS is properly configured
-    const isConfigured = isEmailJSConfigured();
-    setConfigValid(isConfigured);
-    
-    // Only initialize if configuration is valid
-    if (isConfigured && EMAILJS_CONFIG.PUBLIC_KEY) {
-      try {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        setEmailjsInitialized(true);
-        console.log('EmailJS initialized successfully');
-      } catch (err) {
-        console.error('Failed to initialize EmailJS:', err);
-        setEmailjsInitialized(false);
-      }
-    }
-  }, []);
-
-  // Helper function to validate API response
-  const validateWithAPI = async (data: ContactFormData) => {
+  // Helper function to submit contact form via API
+  const submitContactForm = async (data: ContactFormData) => {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {
@@ -80,36 +56,6 @@ export default function ContactForm() {
     return responseData;
   };
 
-  // Helper function to send email via EmailJS
-  const sendEmailViaEmailJS = async (data: ContactFormData) => {
-    if (!configValid) {
-      throw new Error('Email service is not properly configured. Please try again later.');
-    }
-
-    if (!emailjsInitialized) {
-      throw new Error('Email service not initialized. Please try again later.');
-    }
-
-    const templateParams = {
-      name: data.name,
-      email: data.email,
-      message: data.message,
-      subject: `Contact form submission from ${data.name}`,
-      date: new Date().toLocaleString(),
-    };
-
-    console.log('Sending email via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
-    
-    const result = await emailjs.send(
-      EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATE_ID,
-      templateParams
-    );
-
-    console.log('EmailJS send result:', result);
-    return result;
-  };
-
   // Helper function to handle submission success
   const handleSubmissionSuccess = () => {
     setSubmitStatus({
@@ -123,10 +69,10 @@ export default function ContactForm() {
   const handleSubmissionError = (error: unknown) => {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Form submission error:', errorMessage);
-    
+
     setSubmitStatus({
       success: false,
-      message: error instanceof Error && error.message.includes('configured') 
+      message: error instanceof Error
         ? error.message
         : 'An error occurred. Please try again later.',
     });
@@ -142,16 +88,13 @@ export default function ContactForm() {
         email: data.email,
         messageLength: data.message.length
       });
-      
-      // Step 1: Validate with API
-      await validateWithAPI(data);
-      
-      // Step 2: Send email via EmailJS
-      await sendEmailViaEmailJS(data);
-      
-      // Step 3: Handle success
+
+      // Submit via API
+      await submitContactForm(data);
+
+      // Handle success
       handleSubmissionSuccess();
-      
+
     } catch (err) {
       handleSubmissionError(err);
     } finally {
