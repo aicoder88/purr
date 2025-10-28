@@ -8,6 +8,7 @@ import { getCityBySlug } from '../../../data/locations';
 import { useTranslation } from '../../../lib/translation-context';
 import { safeTrackEvent } from '../../../lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
+import { LocalShippingUrgency } from './LocalShippingUrgency';
 
 const numberFormatter = new Intl.NumberFormat('en-CA');
 const compactNumberFormatter = new Intl.NumberFormat('en-CA', {
@@ -246,6 +247,13 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
             </div>
           </div>
         </section>
+
+        {/* Local Shipping Urgency - Conversion Optimization */}
+        <LocalShippingUrgency
+          cityName={profile.name}
+          provinceName={profile.province}
+          provinceCode={profile.provinceCode}
+        />
 
         <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
           <div className="max-w-5xl mx-auto">
