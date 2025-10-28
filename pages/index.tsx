@@ -293,25 +293,8 @@ export default function Home() {
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
-        <div className="cv-auto cis-720">
-          <ErrorBoundary>
-            <About />
-          </ErrorBoundary>
-        </div>
-        
-        <div className="cv-auto cis-720">
-          <ErrorBoundary>
-            <HowItWorks />
-          </ErrorBoundary>
-        </div>
-        
-        <div className="cv-auto cis-720">
-          <ErrorBoundary>
-            <WhyPurrify />
-          </ErrorBoundary>
-        </div>
-        
-        {/* Enhanced Product Comparison for better conversions */}
+        {/* Enhanced Product Comparison - MOVED UP for better conversions */}
+        {/* Products shown early to capture user interest immediately after hero */}
         <div className="cv-auto cis-960">
           <ScrollAnchor id="products" />
           <ErrorBoundary>
@@ -322,24 +305,33 @@ export default function Home() {
             </LazyLoad>
           </ErrorBoundary>
         </div>
-        
-        {/* Trust Badges for Customer Confidence */}
+
+        {/* Trust Badges immediately after products for credibility reinforcement */}
         <section className="py-8 bg-gray-50 dark:bg-gray-900/50 cv-auto cis-480">
           <div className="container mx-auto px-4">
             <TrustBadges variant="grid" showIcons={true} />
           </div>
         </section>
-        
+
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-64')}
-            >
-              <Stores />
-            </LazyLoad>
+            <About />
+          </ErrorBoundary>
+        </div>
+
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <HowItWorks />
+          </ErrorBoundary>
+        </div>
+
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <WhyPurrify />
           </ErrorBoundary>
         </div>
         
+        {/* Testimonials moved earlier for social proof after product education */}
         <div className="cv-auto cis-960">
           <ScrollAnchor id="testimonials" />
           <ErrorBoundary>
@@ -347,6 +339,16 @@ export default function Home() {
               placeholder={sectionSkeleton('h-96')}
             >
               <Testimonials />
+            </LazyLoad>
+          </ErrorBoundary>
+        </div>
+
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <LazyLoad
+              placeholder={sectionSkeleton('h-64')}
+            >
+              <Stores />
             </LazyLoad>
           </ErrorBoundary>
         </div>
