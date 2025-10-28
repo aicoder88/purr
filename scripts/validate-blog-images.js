@@ -34,7 +34,7 @@ function validateBlogImages() {
         fullImagePath = path.join(process.cwd(), 'public', imagePath);
       } else if (imagePath.startsWith('http')) {
         // External URL - we can't validate these locally
-        console.log(`⚠️  External URL (can't validate): ${post.title}`);
+        console.log(`⚠️  External URL (can't validate locally)`);
         console.log(`   URL: ${imagePath}\n`);
         return;
       } else {
