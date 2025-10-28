@@ -3,12 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslation } from "@/lib/translation-context";
-import dynamic from "next/dynamic";
-
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../../../components/NextImage"), {
-  ssr: true,
-});
+import NextImage from "../../../components/NextImage";
 
 interface BlogPost {
   title: string;
