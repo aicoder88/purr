@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "fort-smith",
+    "name": "Fort Smith",
+    "province": "Northwest Territories",
+    "provinceCode": "NT",
+    "region": "north",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic dryness intensifies ammonia smell",
+      "Extended winters reduce fresh air circulation"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Tight northern housing with limited airflow need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "hay-river",
+    "name": "Hay River",
+    "province": "Northwest Territories",
+    "provinceCode": "NT",
+    "region": "north",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic dryness intensifies ammonia smell",
+      "Extended winters reduce fresh air circulation"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Tight northern housing with limited airflow need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "inuvik",
+    "name": "Inuvik",
+    "province": "Northwest Territories",
+    "provinceCode": "NT",
+    "region": "north",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic dryness intensifies ammonia smell",
+      "Extended winters reduce fresh air circulation"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Tight northern housing with limited airflow need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "tuktoyaktuk",
+    "name": "Tuktoyaktuk",
+    "province": "Northwest Territories",
+    "provinceCode": "NT",
+    "region": "north",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic dryness intensifies ammonia smell",
+      "Extended winters reduce fresh air circulation"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Tight northern housing with limited airflow need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ]
+  },
+  {
+    "slug": "yellowknife",
+    "name": "Yellowknife",
+    "province": "Northwest Territories",
+    "provinceCode": "NT",
+    "region": "north",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic dryness intensifies ammonia smell",
+      "Extended winters reduce fresh air circulation"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Tight northern housing with limited airflow need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ]
+  }
+]

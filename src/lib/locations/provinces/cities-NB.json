@@ -1,0 +1,215 @@
+[
+  {
+    "slug": "bathurst",
+    "name": "Bathurst",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "caraquet",
+    "name": "Caraquet",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "dalhousie",
+    "name": "Dalhousie",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "fredericton",
+    "name": "Fredericton",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "miramichi",
+    "name": "Miramichi",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "moncton",
+    "name": "Moncton",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "saint-john",
+    "name": "Saint John",
+    "province": "New Brunswick",
+    "provinceCode": "NB",
+    "region": "atlantic",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Maritime culture",
+      "Bilingual communities",
+      "Coastal living"
+    ],
+    "climateConsiderations": [
+      "Maritime humidity lingers indoors",
+      "Historic homes need ventilation planning"
+    ],
+    "scentPainPoints": [
+      "Odor control for maritime culture",
+      "Odor control for bilingual communities",
+      "Odor control for coastal living",
+      "Heritage homes and waterfront apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Atlantic Co-op"
+    ]
+  }
+]

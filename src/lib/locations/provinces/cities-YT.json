@@ -1,0 +1,33 @@
+[
+  {
+    "slug": "dawson",
+    "name": "Dawson",
+    "province": "Yukon",
+    "provinceCode": "YT",
+    "region": "north",
+    "metroPopulation": 1500,
+    "populationLabel": "2k",
+    "housingHighlights": [
+      "Remote northern climate",
+      "Historic Klondike community",
+      "Outdoor-loving households"
+    ],
+    "climateConsiderations": [
+      "Subarctic cold keeps windows sealed",
+      "Short summers need rapid ventilation"
+    ],
+    "scentPainPoints": [
+      "Odor control for remote northern climate",
+      "Odor control for historic klondike community",
+      "Odor control for outdoor-loving households",
+      "Compact homes built for extreme climates need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Yukon Gardens",
+      "Bonanza Market",
+      "Local Pet Shops"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  }
+]

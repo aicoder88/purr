@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "iqaluit",
+    "name": "Iqaluit",
+    "province": "Nunavut",
+    "provinceCode": "NU",
+    "region": "north",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Northern communities",
+      "Resilient households",
+      "Close-knit neighbors"
+    ],
+    "climateConsiderations": [
+      "Arctic temperatures keep doors closed",
+      "Ventilation systems work overtime year-round"
+    ],
+    "scentPainPoints": [
+      "Odor control for northern communities",
+      "Odor control for resilient households",
+      "Odor control for close-knit neighbors",
+      "Remote communities with efficient housing need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Northern Stores",
+      "Co-op",
+      "Local Retailers"
+    ],
+    "frenchQueryVariant": "city-first"
+  }
+]
