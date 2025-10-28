@@ -185,6 +185,11 @@ const nextConfig = {
     scrollRestoration: true,
     esmExternals: true,
     optimizePackageImports: OPTIMIZE_PACKAGE_IMPORTS,
+    // Next.js 15 performance enhancements
+    webpackBuildWorker: true,
+    optimizeServerReact: true,
+    parallelServerCompiles: true,
+    parallelServerBuildTraces: true,
   },
   serverExternalPackages: ['sharp'],
   staticPageGenerationTimeout: 120,
@@ -199,7 +204,11 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
     reactRemoveProperties: process.env.NODE_ENV === 'production',
+    // SWC minification for better performance
+    styledComponents: false,
+    emotion: false,
   },
+  swcMinify: true,
   typescript: {
     ignoreBuildErrors: process.env.CI === 'true' || process.env.VERCEL === '1',
     tsconfigPath: './tsconfig.json',
@@ -221,8 +230,10 @@ const nextConfig = {
   async headers() {
     return HEADERS;
   },
-  webpack(config) {
+  webpack(config, { isServer }) {
     const { IgnorePlugin } = require('webpack');
+
+    // Resolve configuration
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -230,6 +241,7 @@ const nextConfig = {
       'zod/lib/locales': false,
     };
 
+    // Plugin configuration
     config.plugins = config.plugins ?? [];
     config.plugins.push(
       new IgnorePlugin({
@@ -237,6 +249,7 @@ const nextConfig = {
       })
     );
 
+    // Module rules
     config.module = config.module ?? {};
     config.module.rules = config.module.rules ?? [];
     config.module.rules.push({
@@ -244,6 +257,52 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     });
+
+    // Production optimizations
+    if (process.env.NODE_ENV === 'production') {
+      config.optimization = config.optimization ?? {};
+      config.optimization.moduleIds = 'deterministic';
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = true;
+      config.optimization.concatenateModules = true;
+
+      // Split chunks optimization
+      if (!isServer) {
+        config.optimization.splitChunks = {
+          ...config.optimization.splitChunks,
+          chunks: 'all',
+          cacheGroups: {
+            default: false,
+            vendors: false,
+            // Core framework bundle
+            framework: {
+              name: 'framework',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types)[\\/]/,
+              priority: 40,
+              enforce: true,
+            },
+            // Large libraries
+            lib: {
+              test: /[\\/]node_modules[\\/]/,
+              name(module) {
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)?.[1];
+                return `lib.${packageName?.replace('@', '')}`;
+              },
+              priority: 30,
+              minChunks: 1,
+              reuseExistingChunk: true,
+            },
+            // Common components
+            commons: {
+              name: 'commons',
+              minChunks: 2,
+              priority: 20,
+            },
+          },
+        };
+      }
+    }
 
     return config;
   },
