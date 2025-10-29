@@ -219,10 +219,10 @@ export const PHONE_NUMBER = {
 };
 
 export const PHONE_MESSAGING = {
-  headline: 'WE LOCKED AWAY THE ODORS... EVEN IN OUR PHONE NUMBER!',
-  callout: 'Call 1-450-6-ODORS-3',
-  explanation: 'See what we did there? We trapped those pesky odors right inside our digits so they can\'t escape and stink up your day!',
-  cta: 'If we can imprison odors in a phone number...\n...imagine what we can do in your home!'
+  headline: 'Need Help? We\'re Just a Call Away',
+  callout: 'Call 1 (450) 663-6773',
+  explanation: 'Our friendly customer support team is ready to help you with any questions about Purrify, orders, or product recommendations. We\'re here Monday-Friday 9AM-5PM EST.',
+  cta: 'Have a question? Give us a call and we\'ll get your litter box smelling fresh again!'
 };
 
 export const SOCIAL_LINKS = {
