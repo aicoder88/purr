@@ -17,6 +17,7 @@ type PurchaseOption = {
   priceFormatted: string;
   subLabel?: string;
   perMonth?: string;
+  totalPrice?: string;
   shippingNote?: string;
   savings?: number;
   action: PurchaseAction;
@@ -189,6 +190,7 @@ export function EnhancedProductComparison() {
           priceFormatted: formatCurrencyValue(familyAutoshipPriceAmount / 3, locale),
           subLabel: `Billed ${formatProductPrice('familyAutoship', locale)} every 3 months • Shipping is included`,
           perMonth: 'Per month',
+          totalPrice: `${formatProductPrice('familyAutoship', locale)} per quarter`,
           shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: familyAutoshipSavings,
           action: 'link',
@@ -244,6 +246,7 @@ export function EnhancedProductComparison() {
           priceFormatted: formatCurrencyValue(getProductPrice('jumboAutoship') / 3, locale),
           subLabel: `Billed ${formatProductPrice('jumboAutoship', locale)} every 3 months • Shipping is included`,
           perMonth: 'Per month',
+          totalPrice: `${formatProductPrice('jumboAutoship', locale)} per quarter`,
           shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
           savings: computeQuarterlySavings(getProductPrice('jumbo'), getProductPrice('jumboAutoship')),
           action: 'cart',
@@ -490,9 +493,16 @@ export function EnhancedProductComparison() {
                                   {option.priceFormatted}
                                 </div>
                                 {option.perMonth ? (
-                                  <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
-                                    {option.perMonth}
-                                  </p>
+                                  <div>
+                                    <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
+                                      {option.perMonth}
+                                    </p>
+                                    {option.totalPrice ? (
+                                      <p className={`text-xs leading-tight mt-1 ${isHighlighted ? 'text-white/75 dark:text-gray-300' : 'text-gray-600 dark:text-gray-400'}`}>
+                                        {option.totalPrice}
+                                      </p>
+                                    ) : null}
+                                  </div>
                                 ) : null}
                                 {option.subLabel ? (
                                   <p className={`text-sm leading-snug px-2 ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
@@ -713,9 +723,16 @@ export function EnhancedProductComparison() {
                                   {option.priceFormatted}
                                 </div>
                                 {option.perMonth ? (
-                                  <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
-                                    {option.perMonth}
-                                  </p>
+                                  <div>
+                                    <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
+                                      {option.perMonth}
+                                    </p>
+                                    {option.totalPrice ? (
+                                      <p className={`text-xs leading-tight mt-1 ${isHighlighted ? 'text-white/75 dark:text-gray-300' : 'text-gray-600 dark:text-gray-400'}`}>
+                                        {option.totalPrice}
+                                      </p>
+                                    ) : null}
+                                  </div>
                                 ) : null}
                                 {option.subLabel ? (
                                   <p className={`text-sm leading-snug px-2 ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
