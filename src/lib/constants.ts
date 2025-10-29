@@ -41,12 +41,12 @@ export const PRODUCTS = [
   {
     id: "purrify-120g",
     name: "Purrify Regular size 120g",
-    description: "Perfect for two cats\nDouble the power for multi-cat households.\nMaximum odor control with shipping included.",
-    price: 29.99,
+    description: "Perfect for two cats\nDouble the power for multi-cat households.\nMaximum odor control.",
+    price: 49.99,
     image: "/optimized/140g.webp",
     size: "120g",
-    shippingIncluded: true,
-    shippingNote: "Shipping is included",
+    shippingIncluded: false,
+    shippingNote: "Shipping calculated at checkout",
   },
   {
     id: "purrify-120g-autoship",
@@ -66,12 +66,12 @@ export const PRODUCTS = [
   {
     id: "purrify-240g",
     name: "Purrify Large size 240g",
-    description: "Large size\nFor large multi-cat households or extended supply. Shipping is included.",
-    price: 54.99,
+    description: "Large size\nFor large multi-cat households or extended supply.",
+    price: 79.99,
     image: "/optimized/140g.webp",
     size: "240g",
-    shippingIncluded: true,
-    shippingNote: "Shipping is included",
+    shippingIncluded: false,
+    shippingNote: "Shipping calculated at checkout",
   },
   {
     id: "purrify-240g-autoship",

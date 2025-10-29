@@ -279,7 +279,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                       Order Direct With Fast Shipping
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Prefer doorstep delivery? Order online and get free shipping anywhere in {profile.province}. Fresh air in 2-3 business days.
+                      Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {profile.province}.
                     </p>
                     <Link
                       href="/products/trial-size"

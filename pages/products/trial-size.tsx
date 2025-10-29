@@ -44,7 +44,7 @@ export default function TrialSizePage() {
     "Enough for one complete litter box change",
     "Risk-free way to experience Purrify",
     "Same powerful formula as full-size products",
-    "Shipping included across Canada"
+    "Money-back guarantee if not satisfied"
   ];
 
   const testimonials = [
@@ -386,7 +386,7 @@ export default function TrialSizePage() {
                     {trialPrice}
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-                    Shipping included anywhere in Canada.
+                    Shipping calculated at checkout
                   </p>
                 </div>
 
@@ -429,10 +429,6 @@ export default function TrialSizePage() {
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
                     30-day money-back guarantee
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Shipping included anywhere in Canada
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
@@ -623,7 +619,7 @@ export default function TrialSizePage() {
 
                   <div className="flex items-center space-x-2 text-white dark:text-gray-100">
                     <Check className="w-5 h-5 text-[#03E46A]" />
-                    <span className="text-sm">Shipping included across Canada</span>
+                    <span className="text-sm">Ships to all of Canada</span>
                   </div>
                 </div>
 
