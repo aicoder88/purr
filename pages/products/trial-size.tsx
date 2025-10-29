@@ -6,15 +6,12 @@ import { SITE_NAME } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
-import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
-import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
 import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
-  const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
   const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Trial Size - 12g Cat Litter Odor Control`;
   const pageDescription = t.seo?.metaDescription || "Try Purrify risk-free with our 12g trial size. Perfect for one litter box change. See why 1,000+ cat owners love Purrify's odor elimination power.";
@@ -32,8 +29,8 @@ export default function TrialSizePage() {
   const standardPriceString = standardPriceValue.toFixed(2);
   const familyPriceString = familyPriceValue.toFixed(2);
   const trialCoverageCopy = {
-    en: 'Designed for one cat and up to one litter box cycle (approximately 7 days). Enough for 1–2 full cleanings or a week of maintenance scooping.',
-    fr: 'Conçu pour un chat et jusqu’à un cycle complet de litière (environ 7 jours). Suffisant pour 1 à 2 nettoyages complets ou une semaine d’entretien.',
+    en: 'Designed for one cat and up to one litter box cycle (approximately 7 days). Enough for 1-2 full cleanings or a week of maintenance scooping.',
+    fr: 'Concu pour un chat et jusqua un cycle complet de litiere (environ 7 jours). Suffisant pour 1 a 2 nettoyages complets ou une semaine dentretien.',
     zh: '适用于一只猫，大约可覆盖 7 天的猫砂使用量，可支撑 1-2 次全面换砂或一周日常维护。'
   } as const;
   // Trial size lifestyle images
@@ -41,10 +38,6 @@ export default function TrialSizePage() {
   const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat first time
   const sectionImage2 = 'https://images.unsplash.com/photo-1573566116339-501594f44963?auto=format&fit=crop&w=1600&q=80'; // Happy customer with cat
   const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Success story
-  
-  // Generate structured data for this product
-  const productData = generateProductData('purrify-12g');
-  const breadcrumbs = generateBreadcrumbs('/products/trial-size');
 
   const benefits = [
     "Perfect for testing with your cat",
@@ -100,23 +93,8 @@ export default function TrialSizePage() {
           ]
         }}
       />
-      
-      {/* Comprehensive Product Structured Data */}
-      <ComprehensiveStructuredData 
-        pageType="product" 
-        pageData={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          product: productData || undefined,
-          breadcrumbs: breadcrumbs
-        }}
-      />
-      
-      {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-12g' locale={locale as 'en' | 'fr' | 'zh'} />
-      
-      {/* Enhanced Trial Product JSON-LD */}
+
+      {/* Comprehensive Trial Product JSON-LD with detailed specifications */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -1,0 +1,558 @@
+[
+  {
+    "slug": "gatineau",
+    "name": "Gatineau",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 291041,
+    "populationLabel": "291k",
+    "housingHighlights": [
+      "National Capital Region",
+      "Bilingual community",
+      "Urban-suburban mix"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for national capital region",
+      "Odor control for bilingual community",
+      "Odor control for urban-suburban mix",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Animaleries Taschereau"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "laval",
+    "name": "Laval",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 438366,
+    "populationLabel": "438k",
+    "housingHighlights": [
+      "Suburban living",
+      "Family-friendly",
+      "Growing pet market"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for suburban living",
+      "Odor control for family-friendly",
+      "Odor control for growing pet market",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Pitou Minou & Compagnons"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "longueuil",
+    "name": "Longueuil",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 246900,
+    "populationLabel": "247k",
+    "housingHighlights": [
+      "South Shore community",
+      "Urban density",
+      "Pet-friendly neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for south shore community",
+      "Odor control for urban density",
+      "Odor control for pet-friendly neighborhoods",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "montreal",
+    "name": "Montreal",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 1762949,
+    "populationLabel": "1.8M",
+    "housingHighlights": [
+      "Bilingual market",
+      "Dense apartments",
+      "Cat-loving culture"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual market",
+      "Odor control for dense apartments",
+      "Odor control for cat-loving culture",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Animaleries Taschereau",
+      "Mondou",
+      "PetSmart"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "quebec-city",
+    "name": "Quebec City",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 542298,
+    "populationLabel": "542k",
+    "housingHighlights": [
+      "Historic city",
+      "French-speaking",
+      "Tourist destination"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for historic city",
+      "Odor control for french-speaking",
+      "Odor control for tourist destination",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "Canadian Tire",
+      "IGA"
+    ]
+  },
+  {
+    "slug": "rimouski",
+    "name": "Rimouski",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "rouyn-noranda",
+    "name": "Rouyn-Noranda",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "saguenay",
+    "name": "Saguenay",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "saint-eustache",
+    "name": "Saint-Eustache",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "saint-hubert",
+    "name": "Saint-Hubert",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sainte-anne-de-beaupre",
+    "name": "Sainte-Anne-de-Beaupré",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sainte-foy",
+    "name": "Sainte-Foy",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sainte-therese",
+    "name": "Sainte-Thérèse",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sept-iles",
+    "name": "Sept-Îles",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sherbrooke",
+    "name": "Sherbrooke",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "sorel-tracy",
+    "name": "Sorel-Tracy",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "trois-rivieres",
+    "name": "Trois-Rivières",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "val-dor",
+    "name": "Val-d’Or",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  },
+  {
+    "slug": "waskaganish",
+    "name": "Waskaganish",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Bilingual community",
+      "Urban apartments",
+      "Rich cultural heritage"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual community",
+      "Odor control for urban apartments",
+      "Odor control for rich cultural heritage",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Chico"
+    ]
+  }
+]

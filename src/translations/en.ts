@@ -112,7 +112,7 @@ export const en = {
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
     eliminateCatOdors: "What NASA Discovered About Eliminating Odors (And Why Cat Owners Care)",
-    instantly: "",
+    instantly: "Eliminates Litter Box Smell Instantly",
     description: "This activated coconut uses molecular trapping technology—the same principle NASA developed for cleaning air to breathe in space. One sprinkle eliminates litter box odor for 7 full days. Your guests will ask \"You have cats?\" with genuine surprise.",
     socialProof: {
       trustNumber: "1,000+",

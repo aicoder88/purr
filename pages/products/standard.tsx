@@ -6,15 +6,12 @@ import { SITE_NAME } from '../../src/lib/constants';
 import NextImage from '../../components/NextImage';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
-import { ComprehensiveStructuredData, useStructuredData } from '../../src/components/seo/comprehensive-structured-data';
-import { ProductSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
-  const { generateBreadcrumbs, generateProductData } = useStructuredData();
 
   const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 50g Cat Litter Odor Control`;
   const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 50g standard size litter deodorizer. Most popular size.";
@@ -32,10 +29,6 @@ export default function StandardSizePage() {
   const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Single cat household
   const sectionImage1 = 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=1600&q=80'; // Happy single cat
   const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
-  
-  // Generate structured data for this product
-  const productData = generateProductData('purrify-50g');
-  const breadcrumbs = generateBreadcrumbs('/products/standard');
 
   const benefits = [
     "Ideal for single-cat households",
@@ -91,23 +84,8 @@ export default function StandardSizePage() {
           ]
         }}
       />
-      
-      {/* Comprehensive Product Structured Data */}
-      <ComprehensiveStructuredData 
-        pageType="product" 
-        pageData={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          product: productData || undefined,
-          breadcrumbs: breadcrumbs
-        }}
-      />
-      
-      {/* Advanced JSON-LD Schema for Product */}
-      <ProductSchema productId='purrify-50g' locale={locale as 'en' | 'fr' | 'zh'} />
-      
-      {/* Enhanced Product JSON-LD */}
+
+      {/* Comprehensive Product JSON-LD with detailed specifications */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

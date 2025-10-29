@@ -21,31 +21,10 @@ export function RetailerContact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
-  const [configValid, setConfigValid] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     success?: boolean;
     message?: string;
   }>({});
-
-  // EmailJS configuration
-  useEffect(() => {
-    // Check if EmailJS is properly configured
-    const isConfigured = isEmailJSConfigured();
-    setConfigValid(isConfigured);
-
-    // Only initialize if configuration is valid
-    if (isConfigured && EMAILJS_CONFIG.PUBLIC_KEY) {
-      try {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        setEmailjsInitialized(true);
-        console.log('EmailJS initialized successfully for retailer form');
-      } catch (err) {
-        console.error('Failed to initialize EmailJS for retailer form:', err);
-        setEmailjsInitialized(false);
-      }
-    }
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -55,75 +34,23 @@ export function RetailerContact() {
     }));
   };
 
-  // Helper function to send email via EmailJS
-  const sendEmailViaEmailJS = async () => {
-    if (!configValid) {
-      throw new Error('Email service is not properly configured. Please try again later.');
+  // Helper function to send retailer contact via API
+  const sendRetailerContact = async () => {
+    const response = await fetch('/api/contact-retailer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to submit application');
     }
 
-    if (!emailjsInitialized) {
-      throw new Error('Email service not initialized. Please try again later.');
-    }
-
-    const submittedAt = new Date();
-    const fullMessage = [
-      'Retailer Partnership Application',
-      '--------------------------------',
-      `Business Name: ${formData.businessName || '—'}`,
-      `Contact Name: ${formData.contactName || '—'}`,
-      `Email: ${formData.email || '—'}`,
-      `Phone: ${formData.phone || '—'}`,
-      `Position: ${formData.position || '—'}`,
-      `Business Type: ${formData.businessType || '—'}`,
-      `Number of Locations: ${formData.locations || '—'}`,
-      `Current Products: ${formData.currentProducts || '—'}`,
-      `Additional Message: ${formData.message || '—'}`,
-      '',
-      `Submitted (local): ${submittedAt.toLocaleString()}`,
-      `Submitted (ISO): ${submittedAt.toISOString()}`,
-    ].join('\n');
-
-    // Note: EmailJS templates commonly use {{message}}; we include the full
-    // labeled body in plain text via the `message` param below for reliability.
-
-    const templateParams = {
-      // Common mappings expected by many EmailJS templates
-      subject: `Retailer Partnership Application from ${formData.businessName || 'Unknown Business'}`,
-      // Common template keys for compatibility
-      from_name: formData.contactName || formData.businessName || 'Retailer Applicant',
-      from_email: formData.email || 'noreply@purrify.ca',
-      reply_to: formData.email || 'noreply@purrify.ca',
-
-      // Individual labeled fields
-      businessName: formData.businessName || 'Not provided',
-      contactName: formData.contactName || 'Not provided',
-      phone: formData.phone || 'Not provided',
-      position: formData.position || 'Not provided',
-      businessType: formData.businessType || 'Not provided',
-      locations: formData.locations || 'Not provided',
-      currentProducts: formData.currentProducts || 'Not provided',
-      additionalMessage: formData.message || 'No additional message',
-
-      // Full body content (plain text)
-      message: fullMessage,
-
-      // Meta
-      date: submittedAt.toLocaleString(),
-      date_iso: submittedAt.toISOString(),
-      formType: 'Retailer Partnership Application'
-    };
-
-    console.log('Sending retailer inquiry via EmailJS with service:', EMAILJS_CONFIG.SERVICE_ID);
-
-    const result = await emailjs.send(
-      EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATE_ID,
-      templateParams,
-      { publicKey: EMAILJS_CONFIG.PUBLIC_KEY, blockHeadless: false }
-    );
-
-    console.log('EmailJS send result for retailer form:', result);
-    return result;
+    return data;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -139,14 +66,14 @@ export function RetailerContact() {
         businessType: formData.businessType
       });
 
-      // Send email via EmailJS
-      await sendEmailViaEmailJS();
+      // Send via API
+      const result = await sendRetailerContact();
 
       // Handle success
       setIsSubmitted(true);
       setSubmitStatus({
         success: true,
-        message: 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
+        message: result.message || 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
       });
 
       // Reset form
@@ -164,11 +91,10 @@ export function RetailerContact() {
 
     } catch (err) {
       console.error('Error submitting retailer form:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
 
       setSubmitStatus({
         success: false,
-        message: err instanceof Error && err.message.includes('configured')
+        message: err instanceof Error
           ? err.message
           : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
       });

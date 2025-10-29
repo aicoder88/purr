@@ -1,0 +1,301 @@
+[
+  {
+    "slug": "brandon",
+    "name": "Brandon",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "churchill",
+    "name": "Churchill",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "dauphin",
+    "name": "Dauphin",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "flin-flon",
+    "name": "Flin Flon",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "kildonan",
+    "name": "Kildonan",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "saint-boniface",
+    "name": "Saint Boniface",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  },
+  {
+    "slug": "swan-river",
+    "name": "Swan River",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  },
+  {
+    "slug": "thompson",
+    "name": "Thompson",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  },
+  {
+    "slug": "winnipeg",
+    "name": "Winnipeg",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 749607,
+    "populationLabel": "750k",
+    "housingHighlights": [
+      "Prairie city living",
+      "Extreme weather",
+      "Strong pet community"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie city living",
+      "Odor control for extreme weather",
+      "Odor control for strong pet community",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  },
+  {
+    "slug": "york-factory",
+    "name": "York Factory",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Prairie resilience",
+      "Extreme weather adaptability",
+      "Close-knit communities"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie resilience",
+      "Odor control for extreme weather adaptability",
+      "Odor control for close-knit communities",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  }
+]

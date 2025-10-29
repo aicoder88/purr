@@ -75,7 +75,7 @@ export default async function handler(
           return res.status(400).json({ message: `Product ${item.productId} not found` });
         }
 
-        const unitPrice = product.wholesalePrice || product.price;
+        const unitPrice = product.wholesalePrice ?? product.price;
         const totalPrice = unitPrice * item.quantity;
         subtotal += totalPrice;
 

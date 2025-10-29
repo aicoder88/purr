@@ -3,12 +3,8 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslation } from "@/lib/translation-context";
-import dynamic from "next/dynamic";
-
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../../../components/NextImage"), {
-  ssr: true,
-});
+import NextImage from "../../../components/NextImage";
+import { sampleBlogPosts } from "@/data/blog-posts";
 
 interface BlogPost {
   title: string;
@@ -21,53 +17,25 @@ interface BlogPost {
 
 export function BlogPreview() {
   const { t } = useTranslation();
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // Initialize with static data immediately to prevent blinking
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 2));
 
   useEffect(() => {
     let isMounted = true;
     async function fetchBlogPosts() {
       try {
-        setIsLoading(true);
         const response = await fetch("/api/blog-posts?limit=2");
         if (!response.ok) {
           throw new Error(`Failed to fetch blog posts (status ${response.status})`);
         }
         const data = await response.json();
-        if (isMounted) setBlogPosts(data);
-      } catch (err) {
-        // Fallback to static posts to avoid UI gaps
-        try {
-          const { sampleBlogPosts } = await import("@/data/blog-posts");
-          if (isMounted) setBlogPosts(sampleBlogPosts.slice(0, 2));
-        } catch (_) {
-          // As a final fallback, provide minimal static content
-          if (isMounted)
-            setBlogPosts([
-              {
-                title: "How Activated Carbon Eliminates Litter Odors",
-                excerpt:
-                  "Quick overview of why activated carbon outperforms baking soda for litter box odor control.",
-                author: "Purrify Team",
-                date: new Date().toISOString().split("T")[0],
-                image: "/optimized/60g.webp",
-                link: "/blog/activated-carbon-litter-additive-benefits",
-              },
-              {
-                title: "Using Deodorizers with Kittens: Best Practices",
-                excerpt:
-                  "Vet-informed guidance for introducing odor control safely in homes with young cats.",
-                author: "Dr. Emily Rodriguez, DVM",
-                date: new Date(Date.now() - 86400000).toISOString().split("T")[0],
-                image: "/optimized/20g.webp",
-                link: "/blog/using-deodorizers-with-kittens",
-              },
-            ]);
+        // Only update if we got different data to avoid unnecessary re-renders
+        if (isMounted && data.length > 0) {
+          setBlogPosts(data);
         }
-        // Reduce console noise in production
-        console.debug("Blog posts fetch failed; using fallback content.", err);
-      } finally {
-        if (isMounted) setIsLoading(false);
+      } catch (err) {
+        // Already initialized with static data, no need to update on error
+        console.debug("Blog posts fetch failed; using static content.", err);
       }
     }
     fetchBlogPosts();
@@ -95,27 +63,6 @@ export function BlogPreview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {isLoading && blogPosts.length === 0 && (
-            <>
-              {[0, 1].map((i) => (
-                <div
-                  key={`skeleton-${i}`}
-                  className="animate-pulse bg-white dark:bg-gray-800/80 rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700"
-                >
-                  <div className="w-full h-[200px] sm:h-[250px] bg-gray-200 dark:bg-gray-700" />
-                  <div className="p-4 sm:p-6 space-y-3">
-                    <div className="h-5 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
-                    <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded" />
-                    <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded" />
-                    <div className="flex justify-between pt-2">
-                      <div className="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded" />
-                      <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
           {blogPosts.map((post, index) => (
             <Link
               key={post.link || `blog-post-${index}`}

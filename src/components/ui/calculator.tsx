@@ -3,29 +3,7 @@ import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
 import { Leaf, Car, TreePine, Cat, DollarSign, Clock } from "lucide-react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TooltipItem,
-} from "chart.js";
-
-// Register Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 interface CostCalculatorProps {
   className?: string;
@@ -124,53 +102,6 @@ export function CostCalculator({ className }: CostCalculatorProps) {
   };
 
   const savingsData = generateSavingsData();
-
-
-  const generateSavingsChartData = () => {
-    return {
-      labels: savingsData.map((data) => `${data.year}yr`),
-      datasets: [
-        {
-          label: "Savings ($)",
-          data: savingsData.map((data) => data.savings),
-          borderColor: "#5B2EFF",
-          backgroundColor: "rgba(91, 46, 255, 0.2)",
-          tension: 0.4,
-          pointRadius: 5,
-          pointBackgroundColor: "#03E46A",
-        },
-      ],
-    };
-  };
-
-  const savingsChartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        callbacks: {
-          label: (tooltipItem: TooltipItem<"line">) => `$${tooltipItem.raw as number}`,
-        },
-      },
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Years",
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Savings ($)",
-        },
-        beginAtZero: true,
-      },
-    },
-  };
 
   const yearlyImpactMetrics = [
     {
@@ -401,11 +332,39 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-3 text-center">
               10-Year Savings Projection
             </p>
-            <div className="bg-white dark:bg-gray-800/70 rounded-lg p-4 border border-[#E0EFC7]">
-              <Line
-                data={generateSavingsChartData()}
-                options={savingsChartOptions}
-              />
+            <div className="bg-white dark:bg-gray-800/70 rounded-lg p-4 border border-[#E0EFC7] dark:border-gray-700">
+              <ResponsiveContainer width="100%" height={250}>
+                <LineChart data={savingsData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
+                  <XAxis
+                    dataKey="year"
+                    label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
+                    tick={{ fill: '#6b7280' }}
+                    tickFormatter={(value) => `${value}yr`}
+                  />
+                  <YAxis
+                    label={{ value: 'Savings ($)', angle: -90, position: 'insideLeft' }}
+                    tick={{ fill: '#6b7280' }}
+                    tickFormatter={(value) => `$${value}`}
+                  />
+                  <Tooltip
+                    formatter={(value: number) => `$${value.toFixed(2)}`}
+                    contentStyle={{
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #e5e7eb',
+                      borderRadius: '8px'
+                    }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="savings"
+                    stroke="#5B2EFF"
+                    strokeWidth={3}
+                    dot={{ fill: '#03E46A', r: 4 }}
+                    activeDot={{ r: 6 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </motion.div>

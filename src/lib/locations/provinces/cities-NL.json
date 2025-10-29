@@ -1,0 +1,427 @@
+[
+  {
+    "slug": "argentia",
+    "name": "Argentia",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "bonavista",
+    "name": "Bonavista",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "channel-port-aux-basques",
+    "name": "Channel-Port aux Basques",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "corner-brook",
+    "name": "Corner Brook",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "ferryland",
+    "name": "Ferryland",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "gander",
+    "name": "Gander",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "grand-fallswindsor",
+    "name": "Grand Falls–Windsor",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "happy-valleygoose-bay",
+    "name": "Happy Valley–Goose Bay",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "harbour-grace",
+    "name": "Harbour Grace",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "labrador-city",
+    "name": "Labrador City",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "placentia",
+    "name": "Placentia",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ]
+  },
+  {
+    "slug": "saint-anthony",
+    "name": "Saint Anthony",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ]
+  },
+  {
+    "slug": "st-johns",
+    "name": "St. John’s",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ]
+  },
+  {
+    "slug": "wabana",
+    "name": "Wabana",
+    "province": "Newfoundland and Labrador",
+    "provinceCode": "NL",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Tight-knit communities",
+      "Coastal living",
+      "Resilient spirit"
+    ],
+    "climateConsiderations": [
+      "Coastal winds carry moisture year-round",
+      "Foggy mornings make air feel heavy"
+    ],
+    "scentPainPoints": [
+      "Odor control for tight-knit communities",
+      "Odor control for coastal living",
+      "Odor control for resilient spirit",
+      "Tight-knit coastal communities need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Colemans"
+    ]
+  }
+]
