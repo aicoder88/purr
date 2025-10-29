@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
-import { CONTACT_INFO } from '../src/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
 import { formatProductPrice } from '../src/lib/pricing';
 
 export default function B2B() {
@@ -572,21 +572,26 @@ export default function B2B() {
                       : 'Thank you for your interest! Our team will contact you within 24-48 hours to discuss next steps.'
                     }
                   </p>
-                  <div className="space-x-4">
-                    <a
-                      href="mailto:partners@purrify.ca"
-                      className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                      <Mail className="h-4 w-4" />
-                      partners@purrify.ca
-                    </a>
-                    <a
-                      href={CONTACT_INFO.phoneHref}
-                      className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                      <Phone className="h-4 w-4" />
-                      {CONTACT_INFO.phone}
-                    </a>
+                  <div className="space-y-4">
+                    <div className="space-x-4">
+                      <a
+                        href="mailto:partners@purrify.ca"
+                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        <Mail className="h-4 w-4" />
+                        partners@purrify.ca
+                      </a>
+                      <a
+                        href={CONTACT_INFO.phoneHref}
+                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        <Phone className="h-4 w-4" />
+                        {PHONE_MESSAGING.callout}
+                      </a>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      {PHONE_MESSAGING.explanation}
+                    </p>
                   </div>
                 </div>
               )}
@@ -611,9 +616,12 @@ export default function B2B() {
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 {locale === 'fr' ? 'Appelez-nous' : 'Call Us'}
               </h4>
-              <a href={CONTACT_INFO.phoneHref} className="text-blue-600 dark:text-blue-400 hover:underline">
-                {CONTACT_INFO.phone}
+              <a href={CONTACT_INFO.phoneHref} className="text-blue-600 dark:text-blue-400 hover:underline font-bold">
+                {PHONE_MESSAGING.callout}
               </a>
+              <p className="text-xs text-gray-600 dark:text-gray-400 italic mt-3">
+                {PHONE_MESSAGING.explanation}
+              </p>
             </div>
             <div className="text-center">
               <Mail className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />

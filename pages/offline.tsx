@@ -4,7 +4,7 @@ import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
 import { WifiOff, RefreshCw, Home, Phone } from 'lucide-react';
 import Link from 'next/link';
-import { CONTACT_INFO } from '../src/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
 
 const OfflinePage: NextPage = () => {
   const handleRetry = () => {
@@ -82,14 +82,16 @@ const OfflinePage: NextPage = () => {
             
             {/* Emergency Contact */}
             <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">
-                  Need urgent help? Call us at{' '}
-                  <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] hover:underline">
-                    {CONTACT_INFO.phone}
+              <div className="flex flex-col items-center justify-center space-y-2">
+                <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400">
+                  <Phone className="w-4 h-4" />
+                  <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] hover:underline font-bold text-sm">
+                    {PHONE_MESSAGING.callout}
                   </a>
-                </span>
+                </div>
+                <p className="text-xs text-gray-600 dark:text-gray-400 italic">
+                  {PHONE_MESSAGING.explanation}
+                </p>
               </div>
             </div>
             
