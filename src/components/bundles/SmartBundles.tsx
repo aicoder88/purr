@@ -586,8 +586,8 @@ export function SmartBundles({ userProfile, onBundleSelect }: SmartBundlesProps)
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
               </div>
-              <h4 className="font-semibold mb-2">Free Shipping</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">All bundles ship free across Canada</p>
+              <h4 className="font-semibold mb-2">Ships Across Canada</h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300">We deliver bundles to all of Canada</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">

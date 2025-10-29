@@ -33,11 +33,11 @@ export function ExitIntentPopup({
       icon: <Gift className="w-8 h-8 text-green-500 dark:text-green-400" />
     },
     shipping: {
-      title: '🚚 FREE SHIPPING Alert!',
-      subtitle: 'Get FREE Delivery on Any Order',
-      description: 'No minimum purchase required. Your cats deserve odor-free litter delivered free!',
-      cta: 'GET FREE SHIPPING',
-      urgency: 'Today only - FREE shipping to your door!',
+      title: '💎 Subscribe & Save!',
+      subtitle: 'Free Shipping on Autoship Orders',
+      description: 'Get automatic deliveries every 3 months with free shipping included. Cancel anytime!',
+      cta: 'SUBSCRIBE NOW',
+      urgency: 'Limited time offer - Join 1,000+ subscribers today!',
       icon: <Star className="w-8 h-8 text-blue-500 dark:text-blue-400 dark:text-blue-300" />
     },
     bundle: {
