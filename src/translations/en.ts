@@ -154,7 +154,7 @@ export const en = {
       description: "Natural coconut carbon with zero chemicals, fragrances, or dyes.\n\nThe same type used in water and air filters around the world, powerful enough for multiple cats."
     },
     longLastingFreshness: {
-      title: "7 Days of Fresh Air Guaranteed",
+      title: "7 Days of Fresh Air Per Application- Money-back Guaranteed",
       description: "One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy."
     },
     worksWithAnyLitter: {
@@ -563,7 +563,7 @@ export const en = {
     happyCustomers: "Happy Customers",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
-    odorFreeGuarantee: "Odor-Free Guarantee",
+    odorFreeGuarantee: "Fresh Air Per Application- Money-back Guaranteed",
     moneyBackGuaranteeText: "30-day money-back guarantee - Try risk-free!"
   },
 
@@ -1238,7 +1238,7 @@ export const en = {
       happyCustomers: "Happy Customers",
       averageRating: "Average Rating",
       satisfactionRate: "Satisfaction Rate",
-      odorFreeGuarantee: "Odor-Free Guarantee",
+      odorFreeGuarantee: "Fresh Air Per Application- Money-back Guaranteed",
       tryRiskFree: "Try Risk-Free",
       chooseThisSize: "Choose This Size"
     },

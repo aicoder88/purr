@@ -22,29 +22,9 @@ const EnhancedProductComparison = dynamic(() => import('../src/components/sectio
   ssr: false,
   loading: () => sectionSkeleton('h-96', 'rounded-lg')
 });
-const Stores = dynamic(() => import('../src/components/sections/stores').then(mod => ({ default: mod.Stores })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-64')
-});
-const Testimonials = dynamic(() => import('../src/components/sections/testimonials').then(mod => ({ default: mod.Testimonials })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-96')
-});
-const FAQ = dynamic(() => import('../src/components/sections/faq').then(mod => ({ default: mod.FAQ })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-96')
-});
-const Newsletter = dynamic(() => import('../src/components/sections/newsletter').then(mod => ({ default: mod.Newsletter })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-72')
-});
 const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), {
   ssr: false,
   loading: () => sectionSkeleton('h-64')
-});
-const Contact = dynamic(() => import('../src/components/sections/contact').then(mod => ({ default: mod.Contact })), {
-  ssr: false,
-  loading: () => sectionSkeleton('h-80')
 });
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
 import { formatProductPrice, getProductPrice, getPriceRange } from '../src/lib/pricing';
@@ -330,26 +310,6 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="cv-auto cis-720">
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-64')}
-            >
-              <Stores />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
-
-        <div className="cv-auto cis-960">
-          <ScrollAnchor id="testimonials" />
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-96')}
-            >
-              <Testimonials />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
 
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">
@@ -361,26 +321,6 @@ export default function Home() {
           </ErrorBoundary>
         </div>
 
-        <div className="cv-auto cis-720">
-          <ScrollAnchor id="faq" />
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-96')}
-            >
-              <FAQ includeStructuredData={true} />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
-        
-        <div className="cv-auto cis-480">
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-72')}
-            >
-              <Newsletter />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
         
         <div className="cv-auto cis-480">
           <ErrorBoundary>
@@ -388,17 +328,6 @@ export default function Home() {
               placeholder={sectionSkeleton('h-64')}
             >
               <CTA />
-            </LazyLoad>
-          </ErrorBoundary>
-        </div>
-        
-        <div className="cv-auto cis-720">
-          <ScrollAnchor id="contact" />
-          <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-80')}
-            >
-              <Contact />
             </LazyLoad>
           </ErrorBoundary>
         </div>

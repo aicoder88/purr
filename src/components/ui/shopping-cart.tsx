@@ -12,9 +12,11 @@ import Image from 'next/image';
 export function ShoppingCart() {
   const [isOpen, setIsOpen] = useState(false);
   const [itemAnimations, setItemAnimations] = useState<{[key: string]: boolean}>({});
-  const { items, updateQuantity, removeFromCart, getTotalPrice } = useCart();
+  const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems } = useCart();
   const router = useRouter();
   // const { t: _t } = useTranslation();
+
+  const totalItems = getTotalItems();
 
   // Animate new items being added
   useEffect(() => {
@@ -71,9 +73,9 @@ export function ShoppingCart() {
             className="relative rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 h-11 w-11 sm:h-10 sm:w-10 md:h-9 md:w-9 p-0 active:scale-95 transition-transform duration-100"
           >
             <ShoppingCartIcon className="h-6 w-6 sm:h-5 sm:w-5 text-gray-700 dark:text-gray-300" />
-            {items.length > 0 && (
+            {totalItems > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF3131] text-xs font-medium text-white dark:text-white dark:text-gray-100 animate-pulse">
-                {items.length}
+                {totalItems}
               </span>
             )}
           </Button>
@@ -85,7 +87,7 @@ export function ShoppingCart() {
                 <ShoppingCartIcon className="h-5 w-5 text-[#FF3131]" />
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Shopping Cart</h2>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">{items.length} {items.length === 1 ? 'item' : 'items'}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{totalItems} {totalItems === 1 ? 'item' : 'items'}</p>
                 </div>
               </div>
               <SheetClose asChild>
@@ -182,11 +184,11 @@ export function ShoppingCart() {
                 </div>
               )}
             </div>
-            {items.length > 0 && (
+            {totalItems > 0 && (
               <div className="border-t border-gray-200 dark:border-gray-700 p-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600 dark:text-gray-400">Subtotal ({items.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
+                    <span className="text-gray-600 dark:text-gray-400">Subtotal ({totalItems} {totalItems === 1 ? 'item' : 'items'})</span>
                     <span className="font-medium text-gray-900 dark:text-gray-100">
                       ${getTotalPrice().toFixed(2)}
                     </span>

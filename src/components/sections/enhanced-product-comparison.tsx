@@ -143,7 +143,7 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: true,
         freeShipping: true,
         bulkDiscount: false,
-        prioritySupport: false,
+        prioritySupport: false
       },
       image: '/optimized/20g.webp',
       purchaseOptions: [
@@ -177,7 +177,7 @@ export function EnhancedProductComparison() {
         easyApplication: true,
         moneyBackGuarantee: true,
         bulkDiscount: true,
-        prioritySupport: true,
+        prioritySupport: false,
         freeShipping: true,
       },
       image: '/60g yellow.png',
@@ -232,7 +232,7 @@ export function EnhancedProductComparison() {
         easyApplication: true,
         moneyBackGuarantee: true,
         bulkDiscount: true,
-        prioritySupport: true,
+        prioritySupport: false,
         freeShipping: true,
       },
       image: '/optimized/140g.webp',
@@ -360,7 +360,7 @@ export function EnhancedProductComparison() {
       moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
       freeShipping: freeShippingLabel,
       bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
-      prioritySupport: t.enhancedProductComparison?.prioritySupport || 'Priority Customer Support'
+      prioritySupport: ''
     };
   };
 
@@ -476,7 +476,7 @@ export function EnhancedProductComparison() {
                             )}
 
                             {option.badgeLabel ? (
-                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 whitespace-nowrap uppercase tracking-wider animate-bounce-subtle">
+                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle max-w-xs text-center">
                                 {option.badgeLabel}
                               </div>
                             ) : null}
@@ -699,7 +699,7 @@ export function EnhancedProductComparison() {
                             )}
 
                             {option.badgeLabel ? (
-                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 whitespace-nowrap uppercase tracking-wider animate-bounce-subtle">
+                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle max-w-xs text-center">
                                 {option.badgeLabel}
                               </div>
                             ) : null}
@@ -837,7 +837,7 @@ export function EnhancedProductComparison() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-[#FF3131]/10 dark:to-[#FF3131]/20 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-[#FF3131]/30">
+          <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-gray-600">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-2">{t.homepage.enhancedComparison.whyChoosePurrify}</h3>
               <p className="text-gray-600 dark:text-gray-300">{t.homepage.enhancedComparison.joinThousands}</p>
