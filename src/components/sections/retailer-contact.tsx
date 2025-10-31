@@ -468,11 +468,14 @@ export function RetailerContact() {
                       </div>
                       <div>
                         <div className="font-black text-xl text-gray-900 dark:text-gray-50">📞 {PHONE_MESSAGING.callout}</div>
-                        <div className="text-gray-600 dark:text-gray-300">Direct Wholesale Sales Line</div>
+                        <div className="text-gray-600 dark:text-gray-300 font-semibold">{PHONE_MESSAGING.headline}</div>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 italic mt-3 ml-0">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-3 ml-0">
                       {PHONE_MESSAGING.explanation}
+                    </div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200 font-semibold italic mt-3 ml-0">
+                      {PHONE_MESSAGING.cta}
                     </div>
                   </a>
 
