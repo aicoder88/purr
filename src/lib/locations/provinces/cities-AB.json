@@ -1,0 +1,356 @@
+[
+  {
+    "slug": "banff",
+    "name": "Banff",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "brooks",
+    "name": "Brooks",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "calgary",
+    "name": "Calgary",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 1336000,
+    "populationLabel": "1.3M",
+    "housingHighlights": [
+      "Oil industry",
+      "High income",
+      "Pet-friendly city"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for oil industry",
+      "Odor control for high income",
+      "Odor control for pet-friendly city",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetLand",
+      "Pet Planet",
+      "PetSmart"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "edmonton",
+    "name": "Edmonton",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 1010899,
+    "populationLabel": "1M",
+    "housingHighlights": [
+      "River valley living",
+      "Cold climate needs",
+      "Family neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for river valley living",
+      "Odor control for cold climate needs",
+      "Odor control for family neighborhoods",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "fort-mcmurray",
+    "name": "Fort McMurray",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "grande-prairie",
+    "name": "Grande Prairie",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "jasper",
+    "name": "Jasper",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  },
+  {
+    "slug": "lake-louise",
+    "name": "Lake Louise",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  },
+  {
+    "slug": "lethbridge",
+    "name": "Lethbridge",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  },
+  {
+    "slug": "medicine-hat",
+    "name": "Medicine Hat",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  },
+  {
+    "slug": "red-deer",
+    "name": "Red Deer",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  },
+  {
+    "slug": "saint-albert",
+    "name": "Saint Albert",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 15000,
+    "populationLabel": "15k",
+    "housingHighlights": [
+      "Energy sector workers",
+      "Dry climate homes",
+      "Growing communities"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for energy sector workers",
+      "Odor control for dry climate homes",
+      "Odor control for growing communities",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Homes Alive Pets"
+    ]
+  }
+]

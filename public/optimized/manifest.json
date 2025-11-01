@@ -1,0 +1,1655 @@
+{
+  "generated": "2025-10-28T16:59:20.099Z",
+  "images": {
+    "three_bags_no_bg": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/three_bags_no_bg.webp",
+          "size": 401580,
+          "modified": "2025-09-01T13:51:14.713Z"
+        },
+        "png": {
+          "path": "/optimized/three_bags_no_bg.png",
+          "size": 5047385,
+          "modified": "2025-09-01T13:51:22.720Z"
+        },
+        "jpg": {
+          "path": "/optimized/three_bags_no_bg.jpg",
+          "size": 509173,
+          "modified": "2025-05-22T08:24:43.550Z"
+        },
+        "avif": {
+          "path": "/optimized/three_bags_no_bg.avif",
+          "size": 474636,
+          "modified": "2025-10-25T20:53:52.831Z"
+        }
+      },
+      "sizes": []
+    },
+    "strong-cat-urine-smell": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/strong-cat-urine-smell.webp",
+          "size": 398189,
+          "modified": "2025-10-25T20:53:52.831Z"
+        }
+      },
+      "sizes": []
+    },
+    "small-apartment-odor-control": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/small-apartment-odor-control.webp",
+          "size": 228466,
+          "modified": "2025-10-25T20:53:52.830Z"
+        }
+      },
+      "sizes": []
+    },
+    "science-microscope": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/science-microscope.jpg",
+          "size": 375446,
+          "modified": "2025-10-25T20:53:52.830Z"
+        }
+      },
+      "sizes": []
+    },
+    "samplebag": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/samplebag.webp",
+          "size": 342200,
+          "modified": "2025-09-01T13:51:14.400Z"
+        },
+        "jpg": {
+          "path": "/optimized/samplebag.jpg",
+          "size": 647326,
+          "modified": "2025-09-01T13:51:22.513Z"
+        },
+        "avif": {
+          "path": "/optimized/samplebag.avif",
+          "size": 485578,
+          "modified": "2025-09-01T13:51:18.162Z"
+        }
+      },
+      "sizes": []
+    },
+    "safe-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/safe-cat-litter.webp",
+          "size": 84748,
+          "modified": "2025-10-25T20:53:52.829Z"
+        },
+        "jpg": {
+          "path": "/optimized/safe-cat-litter.jpg",
+          "size": 222531,
+          "modified": "2025-10-25T20:53:52.829Z"
+        }
+      },
+      "sizes": []
+    },
+    "quality-control-lab": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/quality-control-lab.webp",
+          "size": 83470,
+          "modified": "2025-10-25T20:53:52.829Z"
+        },
+        "jpg": {
+          "path": "/optimized/quality-control-lab.jpg",
+          "size": 182110,
+          "modified": "2025-10-25T20:53:52.829Z"
+        }
+      },
+      "sizes": []
+    },
+    "purrify-logo": {
+      "variants": {
+        "png": {
+          "path": "/optimized/purrify-logo.png",
+          "size": 29,
+          "modified": "2025-06-14T02:38:59.686Z"
+        }
+      },
+      "sizes": []
+    },
+    "purrify-logo-text": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/purrify-logo-text.webp",
+          "size": 2280,
+          "modified": "2025-09-01T13:51:14.094Z"
+        },
+        "png": {
+          "path": "/optimized/purrify-logo-text.png",
+          "size": 2966,
+          "modified": "2025-09-01T13:51:17.954Z"
+        },
+        "jpg": {
+          "path": "/optimized/purrify-logo-text.jpg",
+          "size": 5643,
+          "modified": "2025-05-22T08:24:42.316Z"
+        },
+        "avif": {
+          "path": "/optimized/purrify-logo-text.avif",
+          "size": 3552,
+          "modified": "2025-09-01T13:51:14.843Z"
+        }
+      },
+      "sizes": []
+    },
+    "purrify-logo-icon": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/purrify-logo-icon.webp",
+          "size": 22886,
+          "modified": "2025-09-01T13:51:14.139Z"
+        },
+        "png": {
+          "path": "/optimized/purrify-logo-icon.png",
+          "size": 35886,
+          "modified": "2025-09-01T13:51:18.114Z"
+        },
+        "jpg": {
+          "path": "/optimized/purrify-logo-icon.jpg",
+          "size": 64748,
+          "modified": "2025-05-22T08:24:42.333Z"
+        },
+        "avif": {
+          "path": "/optimized/purrify-logo-icon.avif",
+          "size": 28377,
+          "modified": "2025-09-01T13:51:15.069Z"
+        }
+      },
+      "sizes": []
+    },
+    "pitou-minou": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/pitou-minou.webp",
+          "size": 11956,
+          "modified": "2025-09-01T13:51:14.107Z"
+        },
+        "png": {
+          "path": "/optimized/pitou-minou.png",
+          "size": 26771,
+          "modified": "2025-09-01T13:51:18.103Z"
+        },
+        "avif": {
+          "path": "/optimized/pitou-minou.avif",
+          "size": 14897,
+          "modified": "2025-09-01T13:51:14.887Z"
+        }
+      },
+      "sizes": []
+    },
+    "pet-safety-home": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/pet-safety-home.webp",
+          "size": 59516,
+          "modified": "2025-10-25T20:53:52.828Z"
+        },
+        "jpg": {
+          "path": "/optimized/pet-safety-home.jpg",
+          "size": 368820,
+          "modified": "2025-10-25T20:53:52.828Z"
+        }
+      },
+      "sizes": []
+    },
+    "pattes-et-griffes": {
+      "variants": {
+        "png": {
+          "path": "/optimized/pattes-et-griffes.png",
+          "size": 22536,
+          "modified": "2025-10-27T08:19:44.059Z"
+        }
+      },
+      "sizes": []
+    },
+    "panel_3": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/panel_3.webp",
+          "size": 39008,
+          "modified": "2025-09-01T13:51:14.125Z"
+        },
+        "png": {
+          "path": "/optimized/panel_3.png",
+          "size": 902952,
+          "modified": "2025-09-01T13:51:18.211Z"
+        },
+        "jpg": {
+          "path": "/optimized/panel_3.jpg",
+          "size": 67677,
+          "modified": "2025-05-22T08:24:43.175Z"
+        },
+        "avif": {
+          "path": "/optimized/panel_3.avif",
+          "size": 61538,
+          "modified": "2025-09-01T13:51:15.279Z"
+        }
+      },
+      "sizes": []
+    },
+    "panel_2": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/panel_2.webp",
+          "size": 42894,
+          "modified": "2025-09-01T13:51:14.187Z"
+        },
+        "png": {
+          "path": "/optimized/panel_2.png",
+          "size": 815164,
+          "modified": "2025-09-01T13:51:18.346Z"
+        },
+        "jpg": {
+          "path": "/optimized/panel_2.jpg",
+          "size": 68301,
+          "modified": "2025-05-22T08:24:42.343Z"
+        },
+        "avif": {
+          "path": "/optimized/panel_2.avif",
+          "size": 62348,
+          "modified": "2025-09-01T13:51:15.542Z"
+        }
+      },
+      "sizes": []
+    },
+    "panel_1": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/panel_1.webp",
+          "size": 28348,
+          "modified": "2025-09-01T13:51:14.165Z"
+        },
+        "png": {
+          "path": "/optimized/panel_1.png",
+          "size": 674351,
+          "modified": "2025-09-01T13:51:18.255Z"
+        },
+        "jpg": {
+          "path": "/optimized/panel_1.jpg",
+          "size": 49774,
+          "modified": "2025-05-22T08:24:43.185Z"
+        },
+        "avif": {
+          "path": "/optimized/panel_1.avif",
+          "size": 39467,
+          "modified": "2025-09-01T13:51:15.300Z"
+        }
+      },
+      "sizes": []
+    },
+    "natural_cat_litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/natural_cat_litter.webp",
+          "size": 134596,
+          "modified": "2025-05-22T16:16:22.340Z"
+        }
+      },
+      "sizes": []
+    },
+    "natural-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/natural-cat-litter.webp",
+          "size": 113256,
+          "modified": "2025-05-22T08:24:34.960Z"
+        },
+        "jpg": {
+          "path": "/optimized/natural-cat-litter.jpg",
+          "size": 179320,
+          "modified": "2025-05-22T08:24:44.297Z"
+        },
+        "avif": {
+          "path": "/optimized/natural-cat-litter.avif",
+          "size": 133975,
+          "modified": "2025-05-22T08:24:37.771Z"
+        }
+      },
+      "sizes": []
+    },
+    "multiple-cats-together": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/multiple-cats-together.webp",
+          "size": 31138,
+          "modified": "2025-10-25T20:53:52.827Z"
+        },
+        "jpg": {
+          "path": "/optimized/multiple-cats-together.jpg",
+          "size": 60421,
+          "modified": "2025-10-25T20:53:52.827Z"
+        },
+        "avif": {
+          "path": "/optimized/multiple-cats-together.avif",
+          "size": 38307,
+          "modified": "2025-10-25T20:53:52.827Z"
+        }
+      },
+      "sizes": []
+    },
+    "multi-cat-household": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/multi-cat-household.webp",
+          "size": 68394,
+          "modified": "2025-10-25T20:53:52.827Z"
+        },
+        "jpg": {
+          "path": "/optimized/multi-cat-household.jpg",
+          "size": 115383,
+          "modified": "2025-10-25T20:53:52.827Z"
+        },
+        "avif": {
+          "path": "/optimized/multi-cat-household.avif",
+          "size": 92967,
+          "modified": "2025-10-25T20:53:52.827Z"
+        }
+      },
+      "sizes": []
+    },
+    "multi-cat-deodorizer": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/multi-cat-deodorizer.webp",
+          "size": 550930,
+          "modified": "2025-10-25T20:53:52.827Z"
+        }
+      },
+      "sizes": []
+    },
+    "molecular-structure": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/molecular-structure.jpg",
+          "size": 130580,
+          "modified": "2025-10-25T20:53:52.826Z"
+        }
+      },
+      "sizes": []
+    },
+    "micropores_magnified_view": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/micropores_magnified_view.webp",
+          "size": 164152,
+          "modified": "2025-10-27T08:19:44.059Z"
+        },
+        "jpg": {
+          "path": "/optimized/micropores_magnified_view.jpg",
+          "size": 142618,
+          "modified": "2025-05-22T08:24:43.498Z"
+        },
+        "jpeg": {
+          "path": "/optimized/micropores_magnified_view.jpeg",
+          "size": 138934,
+          "modified": "2025-09-01T13:51:18.266Z"
+        },
+        "avif": {
+          "path": "/optimized/micropores_magnified_view.avif",
+          "size": 142808,
+          "modified": "2025-09-01T13:51:15.308Z"
+        }
+      },
+      "sizes": []
+    },
+    "logo-text-240": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/logo-text-240.webp",
+          "size": 3352,
+          "modified": "2025-09-01T13:51:14.173Z"
+        },
+        "png": {
+          "path": "/optimized/logo-text-240.png",
+          "size": 5961,
+          "modified": "2025-09-01T13:51:18.269Z"
+        },
+        "jpg": {
+          "path": "/optimized/logo-text-240.jpg",
+          "size": 1284,
+          "modified": "2025-09-01T13:51:18.214Z"
+        },
+        "avif": {
+          "path": "/optimized/logo-text-240.avif",
+          "size": 2970,
+          "modified": "2025-09-01T13:51:15.319Z"
+        }
+      },
+      "sizes": []
+    },
+    "logo-text-180": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/logo-text-180.webp",
+          "size": 3196,
+          "modified": "2025-09-01T13:51:14.169Z"
+        },
+        "png": {
+          "path": "/optimized/logo-text-180.png",
+          "size": 5173,
+          "modified": "2025-09-01T13:51:18.268Z"
+        },
+        "jpg": {
+          "path": "/optimized/logo-text-180.jpg",
+          "size": 1018,
+          "modified": "2025-09-01T13:51:18.256Z"
+        },
+        "avif": {
+          "path": "/optimized/logo-text-180.avif",
+          "size": 2494,
+          "modified": "2025-09-01T13:51:15.317Z"
+        }
+      },
+      "sizes": []
+    },
+    "logo-text-120": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/logo-text-120.webp",
+          "size": 2152,
+          "modified": "2025-10-25T20:53:52.826Z"
+        },
+        "png": {
+          "path": "/optimized/logo-text-120.png",
+          "size": 3313,
+          "modified": "2025-09-01T13:51:18.270Z"
+        },
+        "jpg": {
+          "path": "/optimized/logo-text-120.jpg",
+          "size": 704,
+          "modified": "2025-09-01T13:51:18.272Z"
+        },
+        "avif": {
+          "path": "/optimized/logo-text-120.avif",
+          "size": 1809,
+          "modified": "2025-10-25T20:53:52.826Z"
+        }
+      },
+      "sizes": []
+    },
+    "kong-animalerie": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/kong-animalerie.webp",
+          "size": 61110,
+          "modified": "2025-09-01T13:51:14.206Z"
+        },
+        "jpg": {
+          "path": "/optimized/kong-animalerie.jpg",
+          "size": 84832,
+          "modified": "2025-09-01T13:51:18.357Z"
+        },
+        "avif": {
+          "path": "/optimized/kong-animalerie.avif",
+          "size": 93855,
+          "modified": "2025-09-01T13:51:15.635Z"
+        }
+      },
+      "sizes": []
+    },
+    "icon-64": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/icon-64.webp",
+          "size": 2764,
+          "modified": "2025-10-25T20:53:52.821Z"
+        },
+        "png": {
+          "path": "/optimized/icon-64.png",
+          "size": 4000,
+          "modified": "2025-09-01T13:51:18.274Z"
+        },
+        "jpg": {
+          "path": "/optimized/icon-64.jpg",
+          "size": 747,
+          "modified": "2025-09-01T13:51:18.273Z"
+        },
+        "avif": {
+          "path": "/optimized/icon-64.avif",
+          "size": 2734,
+          "modified": "2025-09-01T13:51:15.327Z"
+        }
+      },
+      "sizes": []
+    },
+    "icon-32": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/icon-32.webp",
+          "size": 1060,
+          "modified": "2025-10-25T20:53:52.821Z"
+        },
+        "png": {
+          "path": "/optimized/icon-32.png",
+          "size": 1598,
+          "modified": "2025-09-01T13:51:18.275Z"
+        },
+        "jpg": {
+          "path": "/optimized/icon-32.jpg",
+          "size": 481,
+          "modified": "2025-09-01T13:51:18.276Z"
+        },
+        "avif": {
+          "path": "/optimized/icon-32.avif",
+          "size": 1307,
+          "modified": "2025-10-25T20:53:52.821Z"
+        }
+      },
+      "sizes": []
+    },
+    "icon-128": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/icon-128.webp",
+          "size": 7268,
+          "modified": "2025-09-01T13:51:14.210Z"
+        },
+        "png": {
+          "path": "/optimized/icon-128.png",
+          "size": 9742,
+          "modified": "2025-09-01T13:51:18.282Z"
+        },
+        "jpg": {
+          "path": "/optimized/icon-128.jpg",
+          "size": 1480,
+          "modified": "2025-09-01T13:51:18.278Z"
+        },
+        "avif": {
+          "path": "/optimized/icon-128.avif",
+          "size": 5351,
+          "modified": "2025-09-01T13:51:15.439Z"
+        }
+      },
+      "sizes": []
+    },
+    "house-smells-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/house-smells-cat-litter.webp",
+          "size": 123805,
+          "modified": "2025-10-25T20:53:52.821Z"
+        }
+      },
+      "sizes": []
+    },
+    "happy-cat-home": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/happy-cat-home.jpg",
+          "size": 398278,
+          "modified": "2025-10-25T20:53:52.821Z"
+        }
+      },
+      "sizes": []
+    },
+    "hamster-rodent-pet": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/hamster-rodent-pet.webp",
+          "size": 179132,
+          "modified": "2025-10-25T20:53:52.820Z"
+        },
+        "jpg": {
+          "path": "/optimized/hamster-rodent-pet.jpg",
+          "size": 275741,
+          "modified": "2025-10-25T20:53:52.820Z"
+        }
+      },
+      "sizes": []
+    },
+    "gigi": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/gigi.webp",
+          "size": 8448,
+          "modified": "2025-09-01T13:51:14.193Z"
+        },
+        "png": {
+          "path": "/optimized/gigi.png",
+          "size": 21892,
+          "modified": "2025-09-01T13:51:18.280Z"
+        },
+        "avif": {
+          "path": "/optimized/gigi.avif",
+          "size": 8785,
+          "modified": "2025-09-01T13:51:15.402Z"
+        }
+      },
+      "sizes": []
+    },
+    "fresh": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/fresh.webp",
+          "size": 220216,
+          "modified": "2025-10-27T08:19:44.059Z"
+        },
+        "png": {
+          "path": "/optimized/fresh.png",
+          "size": 2720824,
+          "modified": "2025-10-25T20:53:52.819Z"
+        },
+        "jpg": {
+          "path": "/optimized/fresh.jpg",
+          "size": 335467,
+          "modified": "2025-09-01T13:51:19.910Z"
+        },
+        "avif": {
+          "path": "/optimized/fresh.avif",
+          "size": 442440,
+          "modified": "2025-09-01T13:51:17.829Z"
+        }
+      },
+      "sizes": []
+    },
+    "free-purrify": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/free-purrify.webp",
+          "size": 123654,
+          "modified": "2025-09-01T13:51:16.213Z"
+        },
+        "avif": {
+          "path": "/optimized/free-purrify.avif",
+          "size": 198908,
+          "modified": "2025-10-25T20:53:52.815Z"
+        }
+      },
+      "sizes": []
+    },
+    "free purrify": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/free purrify.webp",
+          "size": 123654,
+          "modified": "2025-09-01T13:51:14.403Z"
+        },
+        "png": {
+          "path": "/optimized/free purrify.png",
+          "size": 3651955,
+          "modified": "2025-09-01T13:51:24.072Z"
+        },
+        "jpg": {
+          "path": "/optimized/free purrify.jpg",
+          "size": 234200,
+          "modified": "2025-05-22T08:24:49.110Z"
+        },
+        "avif": {
+          "path": "/optimized/free purrify.avif",
+          "size": 198908,
+          "modified": "2025-10-25T20:53:52.815Z"
+        }
+      },
+      "sizes": []
+    },
+    "favicon": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/favicon.webp",
+          "size": 446,
+          "modified": "2025-10-25T20:53:52.815Z"
+        },
+        "png": {
+          "path": "/optimized/favicon.png",
+          "size": 621,
+          "modified": "2025-09-01T13:51:18.283Z"
+        },
+        "jpg": {
+          "path": "/optimized/favicon.jpg",
+          "size": 372,
+          "modified": "2025-09-01T13:51:18.284Z"
+        },
+        "avif": {
+          "path": "/optimized/favicon.avif",
+          "size": 732,
+          "modified": "2025-10-25T20:53:52.815Z"
+        }
+      },
+      "sizes": []
+    },
+    "doghaus": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/doghaus.webp",
+          "size": 14862,
+          "modified": "2025-09-01T13:51:14.233Z"
+        },
+        "png": {
+          "path": "/optimized/doghaus.png",
+          "size": 43842,
+          "modified": "2025-09-01T13:51:18.298Z"
+        },
+        "avif": {
+          "path": "/optimized/doghaus.avif",
+          "size": 18053,
+          "modified": "2025-09-01T13:51:15.540Z"
+        }
+      },
+      "sizes": []
+    },
+    "deodorizers-with-kittens": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/deodorizers-with-kittens.webp",
+          "size": 274841,
+          "modified": "2025-10-25T20:53:52.811Z"
+        }
+      },
+      "sizes": []
+    },
+    "crystal-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/crystal-cat-litter.webp",
+          "size": 13278,
+          "modified": "2025-05-22T08:24:35.022Z"
+        },
+        "jpg": {
+          "path": "/optimized/crystal-cat-litter.jpg",
+          "size": 25740,
+          "modified": "2025-05-22T08:24:43.561Z"
+        },
+        "avif": {
+          "path": "/optimized/crystal-cat-litter.avif",
+          "size": 20423,
+          "modified": "2025-05-22T08:24:37.473Z"
+        }
+      },
+      "sizes": []
+    },
+    "cost-effective": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cost-effective.webp",
+          "size": 383746,
+          "modified": "2025-09-01T13:51:16.873Z"
+        },
+        "avif": {
+          "path": "/optimized/cost-effective.avif",
+          "size": 530520,
+          "modified": "2025-10-25T20:53:52.810Z"
+        }
+      },
+      "sizes": []
+    },
+    "cost effective": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cost effective.webp",
+          "size": 383746,
+          "modified": "2025-09-01T13:51:14.524Z"
+        },
+        "png": {
+          "path": "/optimized/cost effective.png",
+          "size": 4303769,
+          "modified": "2025-09-01T13:51:24.966Z"
+        },
+        "jpg": {
+          "path": "/optimized/cost effective.jpg",
+          "size": 406129,
+          "modified": "2025-05-22T08:24:50.128Z"
+        },
+        "avif": {
+          "path": "/optimized/cost effective.avif",
+          "size": 530520,
+          "modified": "2025-10-25T20:53:52.810Z"
+        }
+      },
+      "sizes": []
+    },
+    "coquette-finegueule": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/coquette-finegueule.webp",
+          "size": 46882,
+          "modified": "2025-09-01T13:51:14.383Z"
+        },
+        "png": {
+          "path": "/optimized/coquette-finegueule.png",
+          "size": 211851,
+          "modified": "2025-09-01T13:51:18.369Z"
+        },
+        "avif": {
+          "path": "/optimized/coquette-finegueule.avif",
+          "size": 69573,
+          "modified": "2025-09-01T13:51:15.966Z"
+        }
+      },
+      "sizes": []
+    },
+    "content-cat": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/content-cat.jpg",
+          "size": 486576,
+          "modified": "2025-10-25T20:53:52.810Z"
+        }
+      },
+      "sizes": []
+    },
+    "coconut-shell-natural": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/coconut-shell-natural.webp",
+          "size": 217526,
+          "modified": "2025-10-25T20:53:52.809Z"
+        },
+        "jpg": {
+          "path": "/optimized/coconut-shell-natural.jpg",
+          "size": 302403,
+          "modified": "2025-10-25T20:53:52.809Z"
+        }
+      },
+      "sizes": []
+    },
+    "clay-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/clay-cat-litter.webp",
+          "size": 420698,
+          "modified": "2025-05-22T08:24:35.294Z"
+        },
+        "jpg": {
+          "path": "/optimized/clay-cat-litter.jpg",
+          "size": 627825,
+          "modified": "2025-05-22T08:24:46.960Z"
+        },
+        "avif": {
+          "path": "/optimized/clay-cat-litter.avif",
+          "size": 516079,
+          "modified": "2025-05-22T08:24:41.294Z"
+        }
+      },
+      "sizes": []
+    },
+    "clamping-cat-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/clamping-cat-litter.webp",
+          "size": 282782,
+          "modified": "2025-05-22T08:24:35.231Z"
+        },
+        "jpg": {
+          "path": "/optimized/clamping-cat-litter.jpg",
+          "size": 367407,
+          "modified": "2025-05-22T08:24:45.600Z"
+        },
+        "avif": {
+          "path": "/optimized/clamping-cat-litter.avif",
+          "size": 340805,
+          "modified": "2025-05-22T08:24:38.819Z"
+        }
+      },
+      "sizes": []
+    },
+    "chemistry-lab": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/chemistry-lab.jpg",
+          "size": 124894,
+          "modified": "2025-10-25T20:53:52.808Z"
+        }
+      },
+      "sizes": []
+    },
+    "certification-quality": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/certification-quality.webp",
+          "size": 96294,
+          "modified": "2025-10-25T20:53:52.808Z"
+        },
+        "jpg": {
+          "path": "/optimized/certification-quality.jpg",
+          "size": 216323,
+          "modified": "2025-10-25T20:53:52.808Z"
+        }
+      },
+      "sizes": []
+    },
+    "cats-and-filters": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cats-and-filters.webp",
+          "size": 153218,
+          "modified": "2025-10-25T20:53:52.808Z"
+        },
+        "avif": {
+          "path": "/optimized/cats-and-filters.avif",
+          "size": 232844,
+          "modified": "2025-10-25T20:53:52.808Z"
+        }
+      },
+      "sizes": []
+    },
+    "cats and filters": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cats and filters.webp",
+          "size": 153218,
+          "modified": "2025-10-25T20:53:52.808Z"
+        },
+        "png": {
+          "path": "/optimized/cats and filters.png",
+          "size": 2311970,
+          "modified": "2025-10-25T20:53:52.807Z"
+        },
+        "avif": {
+          "path": "/optimized/cats and filters.avif",
+          "size": 232844,
+          "modified": "2025-10-25T20:53:52.806Z"
+        }
+      },
+      "sizes": []
+    },
+    "catonbed": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/catonbed.webp",
+          "size": 65082,
+          "modified": "2025-10-27T08:19:44.058Z"
+        },
+        "jpeg": {
+          "path": "/optimized/catonbed.jpeg",
+          "size": 103389,
+          "modified": "2025-10-27T08:19:44.058Z"
+        },
+        "avif": {
+          "path": "/optimized/catonbed.avif",
+          "size": 124031,
+          "modified": "2025-10-27T08:19:44.058Z"
+        }
+      },
+      "sizes": []
+    },
+    "catcoco": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/catcoco.webp",
+          "size": 220818,
+          "modified": "2025-10-27T08:19:44.057Z"
+        },
+        "png": {
+          "path": "/optimized/catcoco.png",
+          "size": 4209366,
+          "modified": "2025-10-27T08:19:44.057Z"
+        },
+        "avif": {
+          "path": "/optimized/catcoco.avif",
+          "size": 400727,
+          "modified": "2025-10-27T08:19:44.055Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat_rose_thumbnail": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat_rose_thumbnail.webp",
+          "size": 19502,
+          "modified": "2025-09-01T13:51:14.416Z"
+        },
+        "jpg": {
+          "path": "/optimized/cat_rose_thumbnail.jpg",
+          "size": 29664,
+          "modified": "2025-09-01T13:51:19.860Z"
+        },
+        "avif": {
+          "path": "/optimized/cat_rose_thumbnail.avif",
+          "size": 26376,
+          "modified": "2025-09-01T13:51:16.280Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat_long_lasting_freshness_card_640x400": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat_long_lasting_freshness_card_640x400.webp",
+          "size": 16878,
+          "modified": "2025-10-25T20:53:52.805Z"
+        },
+        "png": {
+          "path": "/optimized/cat_long_lasting_freshness_card_640x400.png",
+          "size": 487314,
+          "modified": "2025-10-25T20:53:52.805Z"
+        },
+        "avif": {
+          "path": "/optimized/cat_long_lasting_freshness_card_640x400.avif",
+          "size": 32552,
+          "modified": "2025-10-25T20:53:52.805Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat_long_lasting_freshness_800x500": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat_long_lasting_freshness_800x500.webp",
+          "size": 28528,
+          "modified": "2025-10-25T20:53:52.804Z"
+        },
+        "png": {
+          "path": "/optimized/cat_long_lasting_freshness_800x500.png",
+          "size": 730033,
+          "modified": "2025-10-25T20:53:52.804Z"
+        },
+        "avif": {
+          "path": "/optimized/cat_long_lasting_freshness_800x500.avif",
+          "size": 50546,
+          "modified": "2025-10-25T20:53:52.800Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat-litter-types": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat-litter-types.webp",
+          "size": 175276,
+          "modified": "2025-10-25T20:53:52.800Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat-litter-deodorizer-guide": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat-litter-deodorizer-guide.webp",
+          "size": 154491,
+          "modified": "2025-10-25T20:53:52.799Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat-favorite-litter": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/cat-favorite-litter.webp",
+          "size": 175276,
+          "modified": "2025-10-25T20:53:52.799Z"
+        },
+        "png": {
+          "path": "/optimized/cat-favorite-litter.png",
+          "size": 2696016,
+          "modified": "2025-10-25T20:53:52.799Z"
+        },
+        "avif": {
+          "path": "/optimized/cat-favorite-litter.avif",
+          "size": 283176,
+          "modified": "2025-10-25T20:53:52.798Z"
+        }
+      },
+      "sizes": []
+    },
+    "cat-clean-home": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/cat-clean-home.jpg",
+          "size": 275741,
+          "modified": "2025-10-25T20:53:52.797Z"
+        }
+      },
+      "sizes": []
+    },
+    "carbon_magnified_image": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/carbon_magnified_image.webp",
+          "size": 236442,
+          "modified": "2025-09-01T13:51:14.467Z"
+        },
+        "png": {
+          "path": "/optimized/carbon_magnified_image.png",
+          "size": 2359097,
+          "modified": "2025-09-01T13:51:21.314Z"
+        },
+        "jpg": {
+          "path": "/optimized/carbon_magnified_image.jpg",
+          "size": 283803,
+          "modified": "2025-05-22T08:24:45.710Z"
+        },
+        "avif": {
+          "path": "/optimized/carbon_magnified_image.avif",
+          "size": 322621,
+          "modified": "2025-09-01T13:51:17.439Z"
+        }
+      },
+      "sizes": []
+    },
+    "carbon-microscope": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/carbon-microscope.jpg",
+          "size": 188237,
+          "modified": "2025-10-25T20:53:52.797Z"
+        }
+      },
+      "sizes": []
+    },
+    "before-after": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/before-after.webp",
+          "size": 358172,
+          "modified": "2025-09-01T13:51:17.076Z"
+        },
+        "avif": {
+          "path": "/optimized/before-after.avif",
+          "size": 521005,
+          "modified": "2025-10-25T20:53:52.789Z"
+        }
+      },
+      "sizes": []
+    },
+    "before after": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/before after.webp",
+          "size": 358172,
+          "modified": "2025-09-01T13:51:14.649Z"
+        },
+        "png": {
+          "path": "/optimized/before after.png",
+          "size": 4354180,
+          "modified": "2025-09-01T13:51:24.944Z"
+        },
+        "jpg": {
+          "path": "/optimized/before after.jpg",
+          "size": 407663,
+          "modified": "2025-05-22T08:24:50.330Z"
+        },
+        "avif": {
+          "path": "/optimized/before after.avif",
+          "size": 521005,
+          "modified": "2025-10-25T20:53:52.788Z"
+        }
+      },
+      "sizes": []
+    },
+    "apple-touch-icon": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/apple-touch-icon.webp",
+          "size": 1178,
+          "modified": "2025-09-01T13:51:14.424Z"
+        },
+        "png": {
+          "path": "/optimized/apple-touch-icon.png",
+          "size": 14540,
+          "modified": "2025-09-01T13:51:19.863Z"
+        },
+        "jpg": {
+          "path": "/optimized/apple-touch-icon.jpg",
+          "size": 2070,
+          "modified": "2025-09-01T13:51:19.877Z"
+        },
+        "avif": {
+          "path": "/optimized/apple-touch-icon.avif",
+          "size": 1777,
+          "modified": "2025-09-01T13:51:16.341Z"
+        }
+      },
+      "sizes": []
+    },
+    "animalerie-mamiwouff": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/animalerie-mamiwouff.webp",
+          "size": 1268,
+          "modified": "2025-10-27T08:19:44.055Z"
+        }
+      },
+      "sizes": []
+    },
+    "activated-carbon-vs-baking-soda": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/activated-carbon-vs-baking-soda.webp",
+          "size": 163818,
+          "modified": "2025-10-25T20:53:52.788Z"
+        }
+      },
+      "sizes": []
+    },
+    "activated-carbon-granules": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/activated-carbon-granules.webp",
+          "size": 37114,
+          "modified": "2025-10-25T20:53:52.788Z"
+        },
+        "jpg": {
+          "path": "/optimized/activated-carbon-granules.jpg",
+          "size": 73138,
+          "modified": "2025-10-25T20:53:52.788Z"
+        }
+      },
+      "sizes": []
+    },
+    "activated-carbon-benefits": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/activated-carbon-benefits.webp",
+          "size": 159817,
+          "modified": "2025-10-25T20:53:52.788Z"
+        }
+      },
+      "sizes": []
+    },
+    "Carbon-sktech": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/Carbon-sktech.webp",
+          "size": 300112,
+          "modified": "2025-09-01T13:51:17.952Z"
+        },
+        "avif": {
+          "path": "/optimized/Carbon-sktech.avif",
+          "size": 234776,
+          "modified": "2025-09-01T13:51:23.908Z"
+        }
+      },
+      "sizes": []
+    },
+    "Carbon sktech": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/Carbon sktech.webp",
+          "size": 300112,
+          "modified": "2025-09-01T13:51:14.818Z"
+        },
+        "png": {
+          "path": "/optimized/Carbon sktech.png",
+          "size": 2385958,
+          "modified": "2025-09-01T13:51:23.980Z"
+        },
+        "jpg": {
+          "path": "/optimized/Carbon sktech.jpg",
+          "size": 222337,
+          "modified": "2025-05-22T08:24:50.232Z"
+        },
+        "avif": {
+          "path": "/optimized/Carbon sktech.avif",
+          "size": 234776,
+          "modified": "2025-09-01T13:51:22.460Z"
+        }
+      },
+      "sizes": []
+    },
+    "60g": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/60g.webp",
+          "size": 622190,
+          "modified": "2025-09-01T13:51:16.014Z"
+        },
+        "png": {
+          "path": "/optimized/60g.png",
+          "size": 10652603,
+          "modified": "2025-09-01T13:51:23.399Z"
+        },
+        "jpg": {
+          "path": "/optimized/60g.jpg",
+          "size": 926720,
+          "modified": "2025-05-22T08:24:48.007Z"
+        },
+        "avif": {
+          "path": "/optimized/60g.avif",
+          "size": 704841,
+          "modified": "2025-10-25T20:53:52.787Z"
+        }
+      },
+      "sizes": []
+    },
+    "60g-yellow": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/60g-yellow.webp",
+          "size": 260906,
+          "modified": "2025-10-27T08:19:44.055Z"
+        },
+        "avif": {
+          "path": "/optimized/60g-yellow.avif",
+          "size": 384800,
+          "modified": "2025-10-27T08:19:44.055Z"
+        }
+      },
+      "sizes": []
+    },
+    "60g yellow": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/60g yellow.webp",
+          "size": 260906,
+          "modified": "2025-10-27T08:19:44.054Z"
+        },
+        "png": {
+          "path": "/optimized/60g yellow.png",
+          "size": 2162417,
+          "modified": "2025-10-27T08:19:44.053Z"
+        },
+        "avif": {
+          "path": "/optimized/60g yellow.avif",
+          "size": 384800,
+          "modified": "2025-10-27T08:19:44.049Z"
+        }
+      },
+      "sizes": []
+    },
+    "20g_o": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/20g_o.webp",
+          "size": 496116,
+          "modified": "2025-09-01T13:51:15.177Z"
+        },
+        "png": {
+          "path": "/optimized/20g_o.png",
+          "size": 7609288,
+          "modified": "2025-09-01T13:51:22.831Z"
+        },
+        "jpg": {
+          "path": "/optimized/20g_o.jpg",
+          "size": 722846,
+          "modified": "2025-05-22T08:24:47.181Z"
+        },
+        "avif": {
+          "path": "/optimized/20g_o.avif",
+          "size": 549191,
+          "modified": "2025-10-25T20:53:52.787Z"
+        }
+      },
+      "sizes": []
+    },
+    "20g": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/20g.webp",
+          "size": 65386,
+          "modified": "2025-09-01T13:51:14.708Z"
+        },
+        "png": {
+          "path": "/optimized/20g.png",
+          "size": 580131,
+          "modified": "2025-09-01T13:51:21.204Z"
+        },
+        "jpg": {
+          "path": "/optimized/20g.jpg",
+          "size": 74267,
+          "modified": "2025-05-22T08:24:46.697Z"
+        },
+        "avif": {
+          "path": "/optimized/20g.avif",
+          "size": 85080,
+          "modified": "2025-09-01T13:51:17.284Z"
+        }
+      },
+      "sizes": []
+    },
+    "17gpink": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/17gpink.webp",
+          "size": 364208,
+          "modified": "2025-10-27T08:19:44.049Z"
+        },
+        "png": {
+          "path": "/optimized/17gpink.png",
+          "size": 2770898,
+          "modified": "2025-10-27T08:19:44.049Z"
+        },
+        "avif": {
+          "path": "/optimized/17gpink.avif",
+          "size": 585543,
+          "modified": "2025-10-27T08:19:44.043Z"
+        }
+      },
+      "sizes": []
+    },
+    "17-and-60-yellow-and-PINK": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/17-and-60-yellow-and-PINK.webp",
+          "size": 31578,
+          "modified": "2025-10-27T08:19:44.043Z"
+        },
+        "avif": {
+          "path": "/optimized/17-and-60-yellow-and-PINK.avif",
+          "size": 39265,
+          "modified": "2025-10-27T08:19:44.043Z"
+        }
+      },
+      "sizes": []
+    },
+    "17 and 60 yellow and PINK": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/17 and 60 yellow and PINK.webp",
+          "size": 31578,
+          "modified": "2025-10-27T08:19:44.043Z"
+        },
+        "png": {
+          "path": "/optimized/17 and 60 yellow and PINK.png",
+          "size": 310683,
+          "modified": "2025-10-27T08:19:44.043Z"
+        },
+        "avif": {
+          "path": "/optimized/17 and 60 yellow and PINK.avif",
+          "size": 39265,
+          "modified": "2025-10-27T08:19:44.042Z"
+        }
+      },
+      "sizes": []
+    },
+    "140g_thumb": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/140g_thumb.webp",
+          "size": 10648,
+          "modified": "2025-10-28T16:59:20.094Z"
+        }
+      },
+      "sizes": []
+    },
+    "140g": {
+      "variants": {
+        "webp": {
+          "path": "/optimized/140g.webp",
+          "size": 218074,
+          "modified": "2025-10-28T16:59:17.184Z"
+        },
+        "png": {
+          "path": "/optimized/140g.png",
+          "size": 2548674,
+          "modified": "2025-09-01T13:51:22.555Z"
+        },
+        "jpg": {
+          "path": "/optimized/140g.jpg",
+          "size": 222771,
+          "modified": "2025-10-28T16:59:17.004Z"
+        },
+        "avif": {
+          "path": "/optimized/140g.avif",
+          "size": 262412,
+          "modified": "2025-10-28T16:59:20.075Z"
+        }
+      },
+      "sizes": []
+    },
+    "tried-science": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/tried-science.jpg",
+          "size": 182110,
+          "modified": "2025-10-25T20:53:52.797Z"
+        }
+      },
+      "sizes": []
+    },
+    "tried-relief": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/tried-relief.jpg",
+          "size": 460922,
+          "modified": "2025-10-25T20:53:52.797Z"
+        }
+      },
+      "sizes": []
+    },
+    "tried-hero": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/tried-hero.jpg",
+          "size": 305046,
+          "modified": "2025-10-25T20:53:52.796Z"
+        }
+      },
+      "sizes": []
+    },
+    "tried-failed": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/tried-failed.jpg",
+          "size": 443396,
+          "modified": "2025-10-25T20:53:52.795Z"
+        }
+      },
+      "sizes": []
+    },
+    "summer-ventilation": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/summer-ventilation.jpg",
+          "size": 271529,
+          "modified": "2025-10-25T20:53:52.794Z"
+        }
+      },
+      "sizes": []
+    },
+    "summer-relief": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/summer-relief.jpg",
+          "size": 154491,
+          "modified": "2025-10-25T20:53:52.794Z"
+        }
+      },
+      "sizes": []
+    },
+    "summer-hero": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/summer-hero.jpg",
+          "size": 435746,
+          "modified": "2025-10-25T20:53:52.794Z"
+        }
+      },
+      "sizes": []
+    },
+    "summer-heat": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/summer-heat.jpg",
+          "size": 206368,
+          "modified": "2025-10-25T20:53:52.793Z"
+        }
+      },
+      "sizes": []
+    },
+    "embarrassed-relief": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/embarrassed-relief.jpg",
+          "size": 142344,
+          "modified": "2025-10-25T20:53:52.792Z"
+        }
+      },
+      "sizes": []
+    },
+    "embarrassed-hero": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/embarrassed-hero.jpg",
+          "size": 159817,
+          "modified": "2025-10-25T20:53:52.792Z"
+        }
+      },
+      "sizes": []
+    },
+    "embarrassed-guests": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/embarrassed-guests.jpg",
+          "size": 227655,
+          "modified": "2025-10-25T20:53:52.792Z"
+        }
+      },
+      "sizes": []
+    },
+    "embarrassed-clean-home": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/embarrassed-clean-home.jpg",
+          "size": 177992,
+          "modified": "2025-10-25T20:53:52.791Z"
+        }
+      },
+      "sizes": []
+    },
+    "90day-solution": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/90day-solution.jpg",
+          "size": 755236,
+          "modified": "2025-10-25T20:53:52.791Z"
+        }
+      },
+      "sizes": []
+    },
+    "90day-science": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/90day-science.jpg",
+          "size": 182110,
+          "modified": "2025-10-25T20:53:52.790Z"
+        }
+      },
+      "sizes": []
+    },
+    "90day-problem": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/90day-problem.jpg",
+          "size": 272618,
+          "modified": "2025-10-25T20:53:52.789Z"
+        }
+      },
+      "sizes": []
+    },
+    "90day-hero": {
+      "variants": {
+        "jpg": {
+          "path": "/optimized/blog/90day-hero.jpg",
+          "size": 166647,
+          "modified": "2025-10-25T20:53:52.789Z"
+        }
+      },
+      "sizes": []
+    }
+  },
+  "stats": {
+    "processed": 1,
+    "saved": 33382,
+    "errors": 0
+  }
+}

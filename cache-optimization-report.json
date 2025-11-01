@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-10-11T16:04:29.455Z",
+  "strategies": {
+    "serviceWorker": {
+      "implemented": true,
+      "cacheFirst": false,
+      "networkFirst": false,
+      "staleWhileRevalidate": false,
+      "backgroundSync": false,
+      "score": 20
+    },
+    "clientSide": {
+      "cacheOptimizer": true,
+      "cacheUtils": true,
+      "score": 100
+    }
+  },
+  "recommendations": [
+    {
+      "category": "Configuration",
+      "priority": "medium",
+      "title": "Enable compression",
+      "description": "Add gzip/brotli compression for text assets",
+      "impact": "Reduced bandwidth usage and faster loading"
+    },
+    {
+      "category": "Service Worker",
+      "priority": "medium",
+      "title": "Enhance Service Worker strategies",
+      "description": "Implement more sophisticated caching strategies",
+      "impact": "Better cache hit rates and performance"
+    }
+  ],
+  "performance": {
+    "overallScore": 62,
+    "breakdown": {
+      "configuration": 65,
+      "serviceWorker": 20,
+      "clientSide": 100
+    }
+  },
+  "configuration": {
+    "staticAssetCaching": true,
+    "imageCaching": true,
+    "apiCaching": true,
+    "compressionEnabled": false,
+    "advancedCachingEnabled": false,
+    "configurationScore": 65
+  }
+}

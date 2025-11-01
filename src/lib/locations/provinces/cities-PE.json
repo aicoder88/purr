@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "borden",
+    "name": "Borden",
+    "province": "Prince Edward Island",
+    "provinceCode": "PE",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Island community",
+      "Tourism-focused",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Salt air settles inside coastal homes",
+      "Summer tourism keeps litter boxes busier"
+    ],
+    "scentPainPoints": [
+      "Odor control for island community",
+      "Odor control for tourism-focused",
+      "Odor control for agricultural heritage",
+      "Farmhouses and beach rentals need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Co-op",
+      "Local Pet Shops"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "cavendish",
+    "name": "Cavendish",
+    "province": "Prince Edward Island",
+    "provinceCode": "PE",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Island community",
+      "Tourism-focused",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Salt air settles inside coastal homes",
+      "Summer tourism keeps litter boxes busier"
+    ],
+    "scentPainPoints": [
+      "Odor control for island community",
+      "Odor control for tourism-focused",
+      "Odor control for agricultural heritage",
+      "Farmhouses and beach rentals need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Co-op",
+      "Local Pet Shops"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "charlottetown",
+    "name": "Charlottetown",
+    "province": "Prince Edward Island",
+    "provinceCode": "PE",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Island community",
+      "Tourism-focused",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Salt air settles inside coastal homes",
+      "Summer tourism keeps litter boxes busier"
+    ],
+    "scentPainPoints": [
+      "Odor control for island community",
+      "Odor control for tourism-focused",
+      "Odor control for agricultural heritage",
+      "Farmhouses and beach rentals need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Co-op",
+      "Local Pet Shops"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "souris",
+    "name": "Souris",
+    "province": "Prince Edward Island",
+    "provinceCode": "PE",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Island community",
+      "Tourism-focused",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Salt air settles inside coastal homes",
+      "Summer tourism keeps litter boxes busier"
+    ],
+    "scentPainPoints": [
+      "Odor control for island community",
+      "Odor control for tourism-focused",
+      "Odor control for agricultural heritage",
+      "Farmhouses and beach rentals need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Co-op",
+      "Local Pet Shops"
+    ]
+  },
+  {
+    "slug": "summerside",
+    "name": "Summerside",
+    "province": "Prince Edward Island",
+    "provinceCode": "PE",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Island community",
+      "Tourism-focused",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Salt air settles inside coastal homes",
+      "Summer tourism keeps litter boxes busier"
+    ],
+    "scentPainPoints": [
+      "Odor control for island community",
+      "Odor control for tourism-focused",
+      "Odor control for agricultural heritage",
+      "Farmhouses and beach rentals need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Co-op",
+      "Local Pet Shops"
+    ]
+  }
+]

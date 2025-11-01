@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrify - The $50M Odor Control Empire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-bottom: 2px solid #333;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #feca57;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            font-weight: 300;
+        }
+        
+        .tagline {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #48dbfb;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px rgba(72, 219, 251, 0.5);
+        }
+        
+        .big-number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #ff6b6b;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+            margin: 1rem 0;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #feca57;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+        
+        .problem-item {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
+        }
+        
+        .solution-item {
+            background: linear-gradient(135deg, #2ed573, #7bed9f);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #000;
+            box-shadow: 0 10px 30px rgba(46, 213, 115, 0.3);
+        }
+        
+        .competitive-advantage {
+            background: linear-gradient(135deg, #5352ed, #3742fa);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(83, 82, 237, 0.3);
+        }
+        
+        .margin-box {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: #000;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 15px 35px rgba(254, 202, 87, 0.4);
+        }
+        
+        .traction-proof {
+            background: rgba(72, 219, 251, 0.2);
+            border: 3px solid #48dbfb;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .urgency-box {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #000;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            display: inline-block;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(255, 107, 107, 0.6);
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #48dbfb;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .profit-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 300px;
+            margin: 2rem 0;
+        }
+        
+        .profit-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 1rem;
+        }
+        
+        .bar {
+            width: 80px;
+            background: linear-gradient(to top, #ff6b6b, #feca57);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            animation: growUp 2s ease-out;
+        }
+        
+        .bar-label {
+            margin-top: 1rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 900;
+            color: #feca57;
+            font-size: 1.2rem;
+        }
+        
+        .tam-chart {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .tam-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .tam-bar {
+            background: linear-gradient(to right, #48dbfb, #2ed573);
+            height: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            animation: expandWidth 2s ease-out;
+        }
+        
+        .tam-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            width: 100px;
+            animation: shimmer 2s infinite;
+        }
+        
+        .growth-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 250px;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .growth-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.5rem;
+        }
+        
+        .growth-bar-fill {
+            width: 60px;
+            background: linear-gradient(to top, #5352ed, #48dbfb);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            animation: growUp 2.5s ease-out;
+        }
+        
+        .year-label {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .revenue-label {
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            color: #48dbfb;
+            font-size: 0.9rem;
+        }
+        
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff6b6b 0deg 234deg,
+                #feca57 234deg 306deg,
+                #48dbfb 306deg 360deg
+            );
+            position: relative;
+            margin: 2rem auto;
+            animation: spin 3s ease-in-out;
+        }
+        
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: #1a1a2e;
+            border-radius: 50%;
+        }
+        
+        .pie-legend {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        @keyframes growUp {
+            from { height: 0; }
+            to { height: var(--bar-height); }
+        }
+        
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .market-growth-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-weight: 900;
+            text-align: center;
+        }
+        
+        .tam-circle {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #000;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .financial-table {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .financial-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .financial-table th, .financial-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .financial-table th {
+            background: rgba(255, 107, 107, 0.3);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .highlight-row {
+            background: rgba(254, 202, 87, 0.2);
+            font-weight: 700;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .roadmap-item {
+            background: linear-gradient(135deg, #48dbfb, #0abde3);
+            color: #000;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(72, 219, 251, 0.3);
+        }
+        
+        .exit-strategy {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: #000;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 15px 35px rgba(254, 202, 87, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <div class="slide">
+        <div class="slide-number">1/16</div>
+        <div class="background-animation">
+            <div class="floating-particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-particle" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="floating-particle" style="left: 50%; animation-delay: 4s;"></div>
+            <div class="floating-particle" style="left: 70%; animation-delay: 1s;"></div>
+            <div class="floating-particle" style="left: 90%; animation-delay: 3s;"></div>
+        </div>
+        <div class="slide-content">
+            <h1>PURRIFY</h1>
+            <div class="subtitle">The Activated-Carbon Revolution That's About to Dominate Cat Litter</div>
+            <div class="tagline">"Sprinkle. Trap Odor. Print Money."</div>
+            <div class="margin-box">
+                Raising $50K @ $1M Pre-Money<br>
+                <strong>Target: 8-Figure Revenue by 2028</strong>
+            </div>
+            <div style="font-size: 1.2rem; color: #48dbfb; margin-top: 2rem;">
+                purrify.ca • Contact: 14506636773
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The $50M Problem -->
+    <div class="slide">
+        <div class="slide-number">2/16</div>
+        <div class="slide-content">
+            <h2>The #1 Pain Point That Tortures 8.1 Million Canadian Cat Owners DAILY</h2>
+            
+            <div class="big-number">LITTER BOX ODOR</div>
+            
+            <div class="problem-item">
+                🏠 Urban apartments = NO ESCAPE from smell
+            </div>
+            <div class="problem-item">
+                💸 Existing "solutions" are EXPENSIVE BAND-AIDS
+            </div>
+            <div class="problem-item">
+                🤢 Perfume sprays = Chemical irritants that MASK (don't eliminate)
+            </div>
+            <div class="problem-item">
+                ⏰ Frequent litter changes = Time + Money drain
+            </div>
+            <div class="problem-item">
+                📈 Multi-cat homes = Problem MULTIPLIED
+            </div>
+
+            <div class="urgency-box">
+                <strong>PROOF:</strong> 16 Montreal stores now carrying Purrify<br>
+                <strong>4 stores reordered THIS WEEK</strong> because customers are DEMANDING more!
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Game-Changing Solution -->
+    <div class="slide">
+        <div class="slide-number">3/16</div>
+        <div class="slide-content">
+            <h2>The Scientific Breakthrough That ELIMINATES Odor at the Molecular Level</h2>
+            
+            <div class="solution-item">
+                ✅ Purrify = Premium activated-carbon additive (NOT another litter)
+            </div>
+            <div class="solution-item">
+                ✅ ADSORBS odor molecules (science, not gimmicks)
+            </div>
+            <div class="solution-item">
+                ✅ 100% safe coconut shell carbon - your cat's health FIRST
+            </div>
+            <div class="solution-item">
+                ✅ Works with ANY litter type - no switching required
+            </div>
+            <div class="solution-item">
+                ✅ Simple: Sprinkle → Mix → Odor GONE
+            </div>
+
+            <div class="tagline">
+                One sprinkle keeps homes fresh for DAYS
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Competitive Domination -->
+    <div class="slide">
+        <div class="slide-number">4/16</div>
+        <div class="slide-content">
+            <h2>Why We're About to CRUSH the Competition</h2>
+            
+            <div class="competitive-advantage">
+                🏆 FIRST dedicated carbon additive in Canada (ZERO direct local competition)
+            </div>
+            <div class="competitive-advantage">
+                🇨🇦 Canadian-made, eco-friendly, shelf-ready packaging
+            </div>
+            <div class="competitive-advantage">
+                💰 Retailer economics: 50-56% margins (they LOVE us)
+            </div>
+            <div class="competitive-advantage">
+                ⚡ Cash conversion: Stores pay on delivery, suppliers COD = TIGHT working capital
+            </div>
+            <div class="competitive-advantage">
+                🔬 True molecular adsorption vs weak perfume masking
+            </div>
+
+            <div class="margin-box">
+                <strong>SECRET WEAPON:</strong> Every competitor uses perfume chemicals<br>
+                We use SCIENCE to actually eliminate odor molecules
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Product Line & Pricing Power -->
+    <div class="slide">
+        <div class="slide-number">5/16</div>
+        <div class="slide-content">
+            <h2>Bulletproof Product Strategy Built for Maximum Profit</h2>
+            
+            <div class="chart-container">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Profit Margins by SKU</h3>
+                <div class="profit-chart">
+                    <div class="profit-bar">
+                        <div class="bar" style="height: 140px; --bar-height: 140px;">
+                            <div class="bar-value">28%</div>
+                        </div>
+                        <div class="bar-label">Trial<br>12g</div>
+                    </div>
+                    <div class="profit-bar">
+                        <div class="bar" style="height: 235px; --bar-height: 235px;">
+                            <div class="bar-value">47%</div>
+                        </div>
+                        <div class="bar-label">Medium<br>50g</div>
+                    </div>
+                    <div class="profit-bar">
+                        <div class="bar" style="height: 200px; --bar-height: 200px;">
+                            <div class="bar-value">40%</div>
+                        </div>
+                        <div class="bar-label">Large<br>120g</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgency-box">
+                <strong>POSITIONING GENIUS:</strong><br>
+                Trial = Impulse buy that proves efficacy FAST<br>
+                Medium = Perfect for single-cat homes<br>
+                Large = Multi-cat powerhouse
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Market Tsunami -->
+    <div class="slide">
+        <div class="slide-number">6/16</div>
+        <div class="slide-content">
+            <h2>The Market Opportunity That Will Make You Rich</h2>
+            
+            <div class="chart-container">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Total Addressable Market (TAM)</h3>
+                <div class="tam-chart">
+                    <div class="tam-bars">
+                        <div class="tam-bar" style="width: 100%;">
+                            <span>Global Market: $11.05B (2032)</span>
+                        </div>
+                        <div class="tam-bar" style="width: 73%;">
+                            <span>North America: $8.11B (2023)</span>
+                        </div>
+                        <div class="tam-bar" style="width: 25%;">
+                            <span>Online Channel: 6.2% CAGR Growth</span>
+                        </div>
+                        <div class="tam-bar" style="width: 15%;">
+                            <span>Additive Segment: Growing Fast</span>
+                        </div>
+                    </div>
+                    <div class="market-growth-visual">
+                        <div>
+                            <div class="metric-circle tam-circle">
+                                <div style="font-size: 1.5rem;">$11B</div>
+                                <div style="font-size: 0.9rem;">Global TAM</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="metric-circle growth-circle">
+                                <div style="font-size: 1.5rem;">6.2%</div>
+                                <div style="font-size: 0.9rem;">Online CAGR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="margin-box">
+                <strong>MARKET DRIVERS EXPLODING:</strong><br>
+                ✅ Pet humanization: 76% consider cats "family members"<br>
+                ✅ Premium shift: Medium-high price segment dominates (35.2%)<br>
+                ✅ Online growth: 6.2% CAGR vs 4.43% overall market<br>
+                ✅ Sustainability focus: Eco-products grow 9.63% faster<br>
+                ✅ North American preference: 38% prefer scented solutions
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Unit Economics That Print Money -->
+    <div class="slide">
+        <div class="slide-number">7/16</div>
+        <div class="slide-content">
+            <h2>Unit Economics So Good, Your Accountant Will Cry Tears of Joy</h2>
+            
+            <div class="financial-table">
+                <h3>Medium SKU (50g) Breakdown</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><strong>Wholesale Price</strong></td>
+                            <td>$2.25</td>
+                        </tr>
+                        <tr>
+                            <td>Raw Materials</td>
+                            <td>$0.60</td>
+                        </tr>
+                        <tr>
+                            <td>Packaging</td>
+                            <td>$0.14</td>
+                        </tr>
+                        <tr>
+                            <td>Labor</td>
+                            <td>$0.12</td>
+                        </tr>
+                        <tr>
+                            <td>Fixed Costs (includes depreciation)</td>
+                            <td>$0.13</td>
+                        </tr>
+                        <tr>
+                            <td>Marketing & Admin</td>
+                            <td>$0.20</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>GROSS PROFIT</strong></td>
+                            <td><strong>$1.06 (47%)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="urgency-box">
+                <strong>SCALE MAGIC:</strong> At 100K bags/month, fixed costs drop to $0.05/bag<br>
+                <strong>Result:</strong> Gross margins jump to 55%+ while maintaining 50% retailer margins
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Traction That Proves Demand -->
+    <div class="slide">
+        <div class="slide-number">8/16</div>
+        <div class="slide-content">
+            <h2>Real Traction From Real Customers Spending Real Money</h2>
+            
+            <div class="traction-proof">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">Montreal Stores<br>ONBOARDED</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Stores Reordered<br>THIS WEEK</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$3K+</div>
+                        <div class="stat-label">Early Revenue<br>ZERO Paid Ads</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">68%</div>
+                        <div class="stat-label">Customers Choose<br>Medium Size</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgency-box">
+                <strong>STORE OWNER QUOTE:</strong><br>
+                "My customers keep asking when you're restocking Purrify.<br>
+                They say it's the first thing that actually works!"<br>
+                <em>- Chico Pet Store, Montreal</em>
+            </div>
+
+            <div class="margin-box">
+                <strong>FOUNDATION ALREADY BUILT:</strong><br>
+                ✅ Brand & packaging perfected<br>
+                ✅ Website & SEO optimized<br>
+                ✅ Supply chain tested & proven<br>
+                ✅ Customer testimonials flowing in
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Go-To-Market Domination Plan -->
+    <div class="slide">
+        <div class="slide-number">9/16</div>
+        <div class="slide-content">
+            <h2>The 18-Month Plan to Own Canada (Then Conquer the US)</h2>
+            
+            <div class="roadmap-item">
+                <strong>Q1 2025:</strong> Quebec → Ontario expansion via rep network
+            </div>
+            <div class="roadmap-item">
+                <strong>Q2 2025:</strong> British Columbia launch + distributor partnerships
+            </div>
+            <div class="roadmap-item">
+                <strong>Q3 2025:</strong> Amazon Canada LAUNCH (keyword domination ready)
+            </div>
+            <div class="roadmap-item">
+                <strong>Q4 2025:</strong> Amazon US expansion + UGC content machine
+            </div>
+            <div class="roadmap-item">
+                <strong>Q1 2026:</strong> Chewy onboarding + major chain discussions
+            </div>
+            <div class="roadmap-item">
+                <strong>Q2 2026:</strong> US distributor network + supermarket trials
+            </div>
+
+            <div class="margin-box">
+                <strong>SECRET WEAPON:</strong> "Odor Test Challenge" UGC campaign<br>
+                Before/after content that SELLS ITSELF<br>
+                Influencer seeding program ready to deploy
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Competitive Moat -->
+    <div class="slide">
+        <div class="slide-number">10/16</div>
+        <div class="slide-content">
+            <h2>Why Competitors Can't Touch Us (And Won't Even Try)</h2>
+            
+            <div class="competitive-advantage">
+                🛡️ SPEED MOAT: Like Kleenex vs "facial tissue" - first to market becomes the category name
+            </div>
+            <div class="competitive-advantage">
+                🧬 SCIENCE MOAT: 50% more effective carbon than Brita + exclusive partnerships
+            </div>
+            <div class="competitive-advantage">
+                🎯 POSITIONING MOAT: "Add-on" not "replacement" = easier adoption
+            </div>
+            <div class="competitive-advantage">
+                💎 MARGIN MOAT: Healthy margins with retailer-friendly economics
+            </div>
+            <div class="competitive-advantage">
+                🚀 BRAND MOAT: Building household name recognition before copycats arrive
+            </div>
+
+            <div class="exit-strategy">
+                <strong>FUTURE DEFENSIBILITY:</strong><br>
+                ⚡ Exclusive coconut carbon supply agreements (Sri Lanka connections)<br>
+                ⚡ Brand preference through superior 50% more effective carbon<br>
+                ⚡ Retail partner loyalty programs<br>
+                ⚡ Speed to market = household name like "Kleenex"
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Financial Projections -->
+    <div class="slide">
+        <div class="slide-number">11/16</div>
+        <div class="slide-content">
+            <h2>The Numbers That Will Make You a Fortune</h2>
+            
+            <div class="chart-container">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Revenue Projection Growth</h3>
+                <div class="growth-chart">
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill" style="height: 60px; --bar-height: 60px;">
+                            <div class="revenue-label">$480K</div>
+                        </div>
+                        <div class="year-label">2025</div>
+                    </div>
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill" style="height: 120px; --bar-height: 120px;">
+                            <div class="revenue-label">$2.4M</div>
+                        </div>
+                        <div class="year-label">2026</div>
+                    </div>
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill" style="height: 180px; --bar-height: 180px;">
+                            <div class="revenue-label">$8.5M</div>
+                        </div>
+                        <div class="year-label">2027</div>
+                    </div>
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill" style="height: 240px; --bar-height: 240px; background: linear-gradient(to top, #ff6b6b, #feca57);">
+                            <div class="revenue-label" style="color: #feca57;">$24M</div>
+                        </div>
+                        <div class="year-label" style="color: #feca57; font-weight: 900;">2028 EXIT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgency-box">
+                <strong>CASH EFFICIENCY MACHINE:</strong><br>
+                ✅ Retailers pay on delivery = instant cash<br>
+                ✅ Suppliers on COD = tight working capital<br>
+                ✅ Inventory turns prioritized = maximum velocity<br>
+                <strong>Path to EBITDA+ in 18 months</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Dream Team -->
+    <div class="slide">
+        <div class="slide-number">12/16</div>
+        <div class="slide-content">
+            <h2>The Dream Team That Executes While You Sleep</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                <div class="team-member">
+                    <h3 style="color: #ff6b6b;">MARK ARCHER - CEO</h3>
+                    <div style="font-size: 1.3rem; margin: 1rem 0;"><strong>The Marketing Genius</strong></div>
+                    <div>✅ Built manufacturing company from scratch twice</div>
+                    <div>✅ Growth marketer + direct response copywriter</div>
+                    <div>✅ Deep activated-carbon knowledge</div>
+                    <div style="color: #feca57; font-weight: 700; margin-top: 1rem;">SUPERPOWER: Turns marketing into profit machines</div>
+                </div>
+
+                <div class="team-member">
+                    <h3 style="color: #48dbfb;">ANTHONY - COO</h3>
+                    <div style="font-size: 1.3rem; margin: 1rem 0;"><strong>The Operations Machine</strong></div>
+                    <div>✅ Supply chain optimization expert</div>
+                    <div>✅ Sales & customer relations master</div>
+                    <div>✅ Backend systems architect</div>
+                    <div style="color: #feca57; font-weight: 700; margin-top: 1rem;">SUPERPOWER: Makes impossible things happen</div>
+                </div>
+
+                <div class="team-member">
+                    <h3 style="color: #2ed573;">KEY ADVISOR</h3>
+                    <div style="font-size: 1.3rem; margin: 1rem 0;"><strong>Ex-P&G Brand Manager</strong></div>
+                    <div>✅ CPG discipline & merchandising</div>
+                    <div>✅ Retail partnership expertise</div>
+                    <div>✅ Scale-up guidance</div>
+                    <div style="color: #feca57; font-weight: 700; margin-top: 1rem;">SUPERPOWER: Knows how to dominate retail</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: The Master Plan -->
+    <div class="slide">
+        <div class="slide-number">13/16</div>
+        <div class="slide-content">
+            <h2>The 3-Year Roadmap to Your Exit Payday</h2>
+            
+            <div class="roadmap-item">
+                <strong>2025:</strong> Canadian market domination + Amazon CA crushing it
+            </div>
+            <div class="roadmap-item">
+                <strong>2026:</strong> US invasion via Amazon US + Chewy partnerships
+            </div>
+            <div class="roadmap-item">
+                <strong>2027:</strong> National distribution + supermarket chains
+            </div>
+            <div class="roadmap-item">
+                <strong>2030:</strong> Vertical integration - Own coconut carbon supply (family contacts in Sri Lanka)
+            </div>
+
+            <div class="exit-strategy" style="color: #ffffff;">
+                <h3 style="margin-bottom: 1rem; color: #000;">EXIT STRATEGY OPTIONS:</h3>
+                <strong style="color: #000;">🎯 Strategic Acquisition:</strong> <span style="color: #000;">Mars Petcare, Nestlé Purina, Hill's</span><br>
+                <strong style="color: #000;">💰 Private Equity:</strong> <span style="color: #000;">8-12x revenue multiple</span><br>
+                <strong style="color: #000;">💎 Cash Cow:</strong> <span style="color: #000;">Dividend machine generating $5M+ annually</span><br><br>
+                <div style="font-size: 1.5rem;">
+                    <strong style="color: #000;">TARGET VALUATION: $150M - $300M</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Funding Details -->
+    <div class="slide">
+        <div class="slide-number">14/16</div>
+        <div class="slide-content">
+            <h2>The Investment Opportunity of the Decade</h2>
+            
+            <div class="big-number">$50K</div>
+            <div class="subtitle">SAFE @ $1M Pre-Money Valuation</div>
+            <div class="tagline">18-Month Runway to EBITDA Positive</div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin: 3rem 0;">
+                <div class="chart-container">
+                    <h3>Use of Funds ($50K)</h3>
+                    <div class="pie-chart"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ff6b6b;"></div>
+                            <span>Marketing 65%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #feca57;"></div>
+                            <span>Inventory 20%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #48dbfb;"></div>
+                            <span>Working Capital 15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="margin-box" style="margin: 0;">
+                    <strong>COMPETITOR INTEL:</strong><br>
+                    ✅ Modkat: $30 activated carbon<br>
+                    ✅ Charcoal House: Generic formula<br>
+                    ✅ Rocco & Roxie: Overpriced at $24<br>
+                    ✅ PURRIFY: Superior carbon, better price
+                </div>
+            </div>
+
+            <div class="urgency-box">
+                <strong>INVESTMENT THESIS:</strong><br>
+                Massive market + Proven traction + Bulletproof unit economics + Experienced team = 
+                <strong>INEVITABLE DOMINATION</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Risk Mitigation -->
+    <div class="slide">
+        <div class="slide-number">15/16</div>
+        <div class="slide-content">
+            <h2>Why This Investment is Practically Risk-Free</h2>
+            
+            <div class="competitive-advantage">
+                💪 <strong>DEMAND RISK:</strong> Already proven with 16 stores + reorders
+            </div>
+            <div class="competitive-advantage">
+                💪 <strong>COMPETITION RISK:</strong> First-mover advantage + science moat
+            </div>
+            <div class="competitive-advantage">
+                💪 <strong>EXECUTION RISK:</strong> Team has 5+ years experience in category
+            </div>
+            <div class="competitive-advantage">
+                💪 <strong>CASH RISK:</strong> Fast inventory turns + retailer prepayment
+            </div>
+            <div class="competitive-advantage">
+                💪 <strong>SCALE RISK:</strong> Amazon provides unlimited distribution
+            </div>
+
+            <div class="traction-proof">
+                <h3 style="color: #48dbfb; margin-bottom: 1rem;">DOWNSIDE PROTECTION:</h3>
+                <div>✅ Asset-light model = minimal capital at risk</div>
+                <div>✅ High margins = profitability at low volumes</div>
+                <div>✅ Proven demand = guaranteed baseline revenue</div>
+                <div>✅ Multiple exit paths = liquidity when you want it</div><br>
+                <div style="font-size: 1.3rem; font-weight: 700; color: #feca57;">
+                    Even in worst-case scenario: 3-5x return minimum
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Call to Action -->
+    <div class="slide">
+        <div class="slide-number">16/16</div>
+        <div class="slide-content">
+            <h1 style="font-size: 3rem; margin-bottom: 2rem;">TIME TO GET RICH</h1>
+            
+            <div class="tagline">
+                Join Us to Fix Litter Odor Properly<br>
+                (And Make a Fortune Doing It)
+            </div>
+
+            <div class="urgency-box">
+                <strong>LAST WEEK:</strong> 4 stores called demanding more inventory<br>
+                <strong>THIS WEEK:</strong> We're raising capital to meet exploding demand<br>
+                <strong>NEXT WEEK:</strong> Door closes on this round forever
+            </div>
+
+            <div class="margin-box">
+                <strong>WHAT HAPPENS NEXT:</strong><br>
+                1. You wire $5K - $50K into the SAFE<br>
+                2. We execute our bulletproof plan<br>
+                3. You collect your 10-50x return in 3-5 years<br>
+                4. You tell everyone how smart you were
+            </div>
+
+            <a href="https://calendly.com/copywriting" class="cta-button" target="_blank">BOOK YOUR CALL NOW</a>
+            
+            <div style="margin-top: 3rem; font-size: 1.4rem;">
+                <strong>Contact:</strong> 14506636773<br>
+                <strong>Email:</strong> hello@purrify.ca<br>
+                <strong>Incorporated:</strong> BC1318076 (Mark Archer - 100% owner)
+            </div>
+
+            <div style="margin-top: 2rem; font-size: 1.1rem; color: #48dbfb;">
+                "The best time to invest was yesterday.<br>
+                The second best time is RIGHT NOW."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some dynamic effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create more floating particles
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                const bgAnimation = slide.querySelector('.background-animation');
+                if (!bgAnimation) {
+                    const newBg = document.createElement('div');
+                    newBg.className = 'background-animation';
+                    slide.appendChild(newBg);
+                }
+                
+                // Add particles to each slide
+                for (let i = 0; i < 8; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'floating-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 6 + 's';
+                    particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+                    
+                    const colors = ['#48dbfb', '#ff6b6b', '#feca57', '#2ed573'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    if (bgAnimation || slide.querySelector('.background-animation')) {
+                        (bgAnimation || slide.querySelector('.background-animation')).appendChild(particle);
+                    }
+                }
+            });
+
+            // Add hover effects to stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.05)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-10px) scale(1)';
+                });
+            });
+
+            // Animate numbers on scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bigNumbers = entry.target.querySelectorAll('.big-number, .stat-number');
+                        bigNumbers.forEach(num => {
+                            num.style.animation = 'none';
+                            num.offsetHeight; // Trigger reflow
+                            num.style.animation = 'pulse 2s ease-in-out';
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+
+            // Add pulse animation to CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

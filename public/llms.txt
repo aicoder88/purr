@@ -1,0 +1,15 @@
+# llms.txt — AI Crawler and Training Policy for Purrify
+# More info: https://llmstxt.org
+
+User-agent: *
+Allow: /
+
+# Disallow sensitive or dynamic endpoints
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /static/
+
+# Contact
+Contact: info@purrify.ca
+

@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2025-10-28T17:19:26.548Z",
+  "totalCities": 196,
+  "provinceCount": 13,
+  "provinces": [
+    {
+      "provinceCode": "ON",
+      "filename": "cities-ON.json",
+      "cityCount": 67,
+      "sizeKB": "55.27"
+    },
+    {
+      "provinceCode": "BC",
+      "filename": "cities-BC.json",
+      "cityCount": 35,
+      "sizeKB": "28.74"
+    },
+    {
+      "provinceCode": "QC",
+      "filename": "cities-QC.json",
+      "cityCount": 19,
+      "sizeKB": "14.47"
+    },
+    {
+      "provinceCode": "NL",
+      "filename": "cities-NL.json",
+      "cityCount": 14,
+      "sizeKB": "11.43"
+    },
+    {
+      "provinceCode": "NS",
+      "filename": "cities-NS.json",
+      "cityCount": 12,
+      "sizeKB": "9.34"
+    },
+    {
+      "provinceCode": "AB",
+      "filename": "cities-AB.json",
+      "cityCount": 12,
+      "sizeKB": "9.66"
+    },
+    {
+      "provinceCode": "MB",
+      "filename": "cities-MB.json",
+      "cityCount": 10,
+      "sizeKB": "8.11"
+    },
+    {
+      "provinceCode": "SK",
+      "filename": "cities-SK.json",
+      "cityCount": 8,
+      "sizeKB": "6.31"
+    },
+    {
+      "provinceCode": "NB",
+      "filename": "cities-NB.json",
+      "cityCount": 7,
+      "sizeKB": "5.70"
+    },
+    {
+      "provinceCode": "PE",
+      "filename": "cities-PE.json",
+      "cityCount": 5,
+      "sizeKB": "4.02"
+    },
+    {
+      "provinceCode": "NT",
+      "filename": "cities-NT.json",
+      "cityCount": 5,
+      "sizeKB": "4.20"
+    },
+    {
+      "provinceCode": "YT",
+      "filename": "cities-YT.json",
+      "cityCount": 1,
+      "sizeKB": "0.88"
+    },
+    {
+      "provinceCode": "NU",
+      "filename": "cities-NU.json",
+      "cityCount": 1,
+      "sizeKB": "0.82"
+    }
+  ]
+}

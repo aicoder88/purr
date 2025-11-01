@@ -1,0 +1,361 @@
+[
+  {
+    "slug": "baddeck",
+    "name": "Baddeck",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "digby",
+    "name": "Digby",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "glace-bay",
+    "name": "Glace Bay",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "halifax",
+    "name": "Halifax",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 439819,
+    "populationLabel": "440k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "liverpool",
+    "name": "Liverpool",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "louisbourg",
+    "name": "Louisbourg",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "lunenburg",
+    "name": "Lunenburg",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "pictou",
+    "name": "Pictou",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ]
+  },
+  {
+    "slug": "port-hawkesbury",
+    "name": "Port Hawkesbury",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ]
+  },
+  {
+    "slug": "springhill",
+    "name": "Springhill",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ]
+  },
+  {
+    "slug": "sydney",
+    "name": "Sydney",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ]
+  },
+  {
+    "slug": "yarmouth",
+    "name": "Yarmouth",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 25000,
+    "populationLabel": "25k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Global Pet Foods"
+    ]
+  }
+]

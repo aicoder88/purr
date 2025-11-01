@@ -1,0 +1,318 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLoginAt   DateTime?
+  accounts      Account[]
+  sessions      Session[]
+  orders        Order[]
+  referrals     Referral[] @relation("Referrer")
+  referredBy    Referral[] @relation("Referee")
+
+  @@index([email])
+  @@index([createdAt])
+}
+
+model Retailer {
+  id                String           @id @default(cuid())
+  businessName      String
+  contactName       String
+  email             String           @unique
+  phone             String?
+  password          String           // Hashed with bcrypt
+  status            RetailerStatus   @default(PENDING)
+  approvedAt        DateTime?
+  approvedBy        String?          // Admin user ID
+  taxId             String?          // Business tax ID
+  shippingAddress   ShippingAddress?
+  billingAddress    BillingAddress?
+  orders            RetailerOrder[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  lastLoginAt       DateTime?
+  stripeCustomerId  String?          @unique // Stripe customer ID for B2B payments
+  notes             String?          @db.Text // Admin notes
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("retailers")
+}
+
+enum RetailerStatus {
+  PENDING     // Awaiting approval
+  ACTIVE      // Approved and can order
+  SUSPENDED   // Temporarily disabled
+  REJECTED    // Application rejected
+}
+
+model ShippingAddress {
+  id         String   @id @default(cuid())
+  street     String
+  city       String
+  province   String
+  postalCode String
+  country    String   @default("CA")
+  retailer   Retailer @relation(fields: [retailerId], references: [id], onDelete: Cascade)
+  retailerId String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("shipping_addresses")
+}
+
+model BillingAddress {
+  id         String   @id @default(cuid())
+  street     String
+  city       String
+  province   String
+  postalCode String
+  country    String   @default("CA")
+  retailer   Retailer @relation(fields: [retailerId], references: [id], onDelete: Cascade)
+  retailerId String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("billing_addresses")
+}
+
+model RetailerOrder {
+  id                 String             @id @default(cuid())
+  orderNumber        String             @unique // Human-readable order number (e.g., RO-2025-001)
+  retailer           Retailer           @relation(fields: [retailerId], references: [id])
+  retailerId         String
+  status             RetailerOrderStatus @default(PENDING)
+  subtotal           Float              // Before tax
+  tax                Float
+  shipping           Float
+  totalAmount        Float              // Final total
+  items              RetailerOrderItem[]
+  stripeSessionId    String?            @unique
+  stripePaymentIntentId String?         @unique
+  shipstationOrderId String?            @unique // ShipStation order ID
+  trackingNumber     String?
+  shippingCarrier    String?
+  shippedAt          DateTime?
+  deliveredAt        DateTime?
+  notes              String?            @db.Text
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@index([retailerId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([orderNumber])
+  @@map("retailer_orders")
+}
+
+enum RetailerOrderStatus {
+  PENDING           // Order created, awaiting payment
+  PAID              // Payment received
+  PROCESSING        // Being prepared
+  SHIPPED           // Shipped to retailer
+  DELIVERED         // Delivered
+  CANCELLED         // Cancelled
+  REFUNDED          // Refunded
+}
+
+model RetailerOrderItem {
+  id              String        @id @default(cuid())
+  order           RetailerOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId         String
+  product         Product       @relation(fields: [productId], references: [id])
+  productId       String
+  quantity        Int
+  unitPrice       Float         // Wholesale price
+  totalPrice      Float         // quantity * unitPrice
+  createdAt       DateTime      @default(now())
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("retailer_order_items")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Product {
+  id                String              @id @default(cuid())
+  name              String
+  description       String
+  price             Float               // Consumer price
+  wholesalePrice    Float?              // Wholesale/retailer price
+  minimumOrder      Int?                // Minimum order quantity for retailers
+  image             String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  orderItems        OrderItem[]
+  retailerOrderItems RetailerOrderItem[]
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  totalAmount Float       @map("total") // Renamed for clarity
+  status      OrderStatus @default(PENDING) // Use enum for better type safety
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  userId      String?
+  stripeSessionId String? @unique // Track Stripe sessions
+  user        User?       @relation(fields: [userId], references: [id])
+  customer    Customer?
+  items       OrderItem[]
+  referral    Referral?
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([stripeSessionId])
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+model Customer {
+  id         String   @id @default(cuid())
+  email      String   // Should be encrypted at application level
+  firstName  String   // Should be encrypted at application level  
+  lastName   String   // Should be encrypted at application level
+  address    String   // Should be encrypted at application level
+  city       String   // Should be encrypted at application level
+  province   String
+  postalCode String   // Should be encrypted at application level
+  phone      String?  // Should be encrypted at application level
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  order      Order    @relation(fields: [orderId], references: [id])
+  orderId    String   @unique
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("customers") // Use consistent table naming
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  price     Float
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model Referral {
+  id           String           @id @default(cuid())
+  code         String           @unique
+  status       ReferralStatus   @default(ACTIVE)
+  createdAt    DateTime         @default(now())
+  expiresAt    DateTime?        // Optional expiration
+  usageCount   Int              @default(0)
+  maxUsages    Int?             // Optional usage limit
+  commission   Float?           // Commission amount/percentage
+  order        Order            @relation(fields: [orderId], references: [id])
+  orderId      String           @unique
+  referrer     User             @relation("Referrer", fields: [referrerId], references: [id])
+  referrerId   String
+  referee      User             @relation("Referee", fields: [refereeId], references: [id])
+  refereeId    String
+
+  @@index([code])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum ReferralStatus {
+  ACTIVE
+  EXPIRED
+  DISABLED
+  USED
+}
+
+model AuditLog {
+  id          String      @id @default(cuid())
+  action      AuditAction
+  entity      String      // Table name (users, orders, etc.)
+  entityId    String      // Record ID
+  userId      String?     // User who performed the action
+  ipAddress   String?     // IP address for security
+  userAgent   String?     // Browser info
+  changes     Json?       // JSON of what changed
+  createdAt   DateTime    @default(now())
+  
+  @@index([action])
+  @@index([entity, entityId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+enum AuditAction {
+  USER_CREATED
+  USER_UPDATED
+  USER_DELETED
+  ORDER_CREATED
+  ORDER_UPDATED
+  ORDER_CANCELLED
+  PAYMENT_PROCESSED
+  CUSTOMER_DATA_ACCESSED
+  CUSTOMER_DATA_UPDATED
+  REFERRAL_CREATED
+  REFERRAL_USED
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  PASSWORD_RESET
+} 
