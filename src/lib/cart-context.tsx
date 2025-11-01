@@ -215,8 +215,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     let cleanupFn: (() => void) | undefined;
 
     const cancelIdle = scheduleIdleTask(() => {
-      // Only set up timers if cart has items and checkout hasn't started
-      if (items.length === 0 || checkoutStarted || isUnmountingRef.current) {
+      if (isUnmountingRef.current) {
+        return;
+      }
+
+      if (items.length === 0) {
+        setCartAbandoned(false);
+        setLastActivity(null);
+        secureStorage.removeItem('cart');
+        secureStorage.removeItem('lastActivity');
+        return;
+      }
+
+      // Only set up timers if checkout hasn't started
+      if (checkoutStarted) {
         return;
       }
 

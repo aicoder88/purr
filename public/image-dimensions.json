@@ -71,6 +71,15 @@
     "avifSanitized": "optimized/panel_1.avif",
     "optimized": "optimized/panel_1.png"
   },
+  "nathamo.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/nathamo.webp",
+    "webpSanitized": "optimized/nathamo.webp",
+    "avif": "optimized/nathamo.avif",
+    "avifSanitized": "optimized/nathamo.avif",
+    "optimized": "optimized/nathamo.jpg"
+  },
   "multiple-cats-together.jpg": {
     "width": 1200,
     "height": 600,

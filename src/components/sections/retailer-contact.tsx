@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';
@@ -8,6 +8,7 @@ import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
 
 export function RetailerContact() {
   const { t } = useTranslation();
+  const wholesaleEmail = 'wholesale@purrify.ca';
   const [formData, setFormData] = useState({
     businessName: '',
     contactName: '',
@@ -25,6 +26,53 @@ export function RetailerContact() {
     success?: boolean;
     message?: string;
   }>({});
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
+
+  const handleWholesaleEmailClick = useCallback(() => {
+    const mailtoLink = `mailto:${wholesaleEmail}`;
+    if (typeof window !== 'undefined') {
+      window.location.href = mailtoLink;
+    }
+  }, [wholesaleEmail]);
+
+  const handleWholesaleEmailKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        handleWholesaleEmailClick();
+      }
+    },
+    [handleWholesaleEmailClick]
+  );
+
+  const handleCopyWholesaleEmail = useCallback(
+    async (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      try {
+        if (navigator?.clipboard?.writeText) {
+          await navigator.clipboard.writeText(wholesaleEmail);
+          setCopyStatus('copied');
+        } else {
+          throw new Error('Clipboard API unavailable');
+        }
+      } catch (err) {
+        console.error('Failed to copy wholesale email:', err);
+        setCopyStatus('failed');
+      }
+    },
+    [wholesaleEmail]
+  );
+
+  useEffect(() => {
+    if (copyStatus === 'idle') {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => setCopyStatus('idle'), 2000);
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [copyStatus]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -479,24 +527,46 @@ export function RetailerContact() {
                     </div>
                   </a>
 
-                  <a href="mailto:wholesale@purrify.ca" className="flex items-center p-4 bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl hover:from-[#10B981]/20 hover:to-[#34D399]/20 dark:hover:from-[#10B981]/30 dark:hover:to-[#34D399]/30 transition-all duration-300 transform hover:scale-105">
+                  <div
+                    role="link"
+                    tabIndex={0}
+                    onClick={handleWholesaleEmailClick}
+                    onKeyDown={handleWholesaleEmailKeyDown}
+                    className="flex items-center p-4 bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl hover:from-[#10B981]/20 hover:to-[#34D399]/20 dark:hover:from-[#10B981]/30 dark:hover:to-[#34D399]/30 transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10B981]"
+                    aria-label={`Email ${wholesaleEmail}`}
+                  >
                     <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
                       <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div>
-                      <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ wholesale@purrify.ca</div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {wholesaleEmail}</div>
+                        <button
+                          type="button"
+                          onClick={handleCopyWholesaleEmail}
+                          className="flex items-center gap-1 text-sm font-semibold text-[#0F766E] dark:text-[#A7F3D0] hover:text-[#065F46] dark:hover:text-[#6EE7B7] transition-colors"
+                          aria-label="Copy wholesale email address"
+                        >
+                          <span aria-hidden="true">📋</span>
+                          <span className="sr-only">Click to copy</span>
+                        </button>
+                        {copyStatus === 'copied' && (
+                          <span className="text-xs font-medium text-[#065F46] dark:text-[#6EE7B7]">Copied!</span>
+                        )}
+                        {copyStatus === 'failed' && (
+                          <span className="text-xs font-medium text-red-600 dark:text-red-300">Copy failed</span>
+                        )}
+                      </div>
                       <div className="text-gray-600 dark:text-gray-300">Partnership Email</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to draft an email or copy the address.</div>
                     </div>
-                  </a>
+                  </div>
 
                   <div className="text-center p-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl">
                     <div className="font-bold text-gray-900 dark:text-gray-50 mb-1">⏰ Business Hours</div>
                     <div className="text-gray-600 dark:text-gray-300">Monday - Friday: 9 AM - 6 PM EST</div>
-                    <div className="text-sm text-[#5B2EFF] dark:text-[#3694FF] font-semibold mt-2">
-                      Same-day response guaranteed!
-                    </div>
                   </div>
                 </div>
               </div>

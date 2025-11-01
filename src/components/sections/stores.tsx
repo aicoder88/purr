@@ -150,6 +150,14 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     url: "",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
+  {
+    name: "K&K Pet Foods Dunbar",
+    location: "Vancouver, BC V6S 2G2",
+    address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
+    phone: "+1 604-224-2513",
+    url: "https://www.kandkpetfoods.ca/",
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
+  },
 ];
 
 /**
