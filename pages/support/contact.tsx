@@ -21,7 +21,7 @@ export default function ContactPage() {
   }>({});
   
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
+  const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice. Call 1-450-6-ODORS-3!";
   const canonicalPath = '/support/contact';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
