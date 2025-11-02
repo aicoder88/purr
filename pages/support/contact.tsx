@@ -7,7 +7,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { Input } from '../../src/components/ui/input';
 import { Textarea } from '../../src/components/ui/textarea';
-import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING } from '../../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -58,6 +58,8 @@ export default function ContactPage() {
       icon: Phone,
       title: "Phone Support",
       value: CONTACT_INFO.phone,
+      tagline: PHONE_NUMBER.tagline,
+      taglineDescription: PHONE_NUMBER.description,
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
       action: CONTACT_INFO.phoneHref
@@ -218,13 +220,23 @@ export default function ContactPage() {
                   <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
                     {method.value}
                   </p>
+                  {'tagline' in method && (
+                    <>
+                      <p className="text-lg font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">
+                        {method.tagline}
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 italic">
+                        {method.taglineDescription}
+                      </p>
+                    </>
+                  )}
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {method.description}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
-                  <Button 
+                  <Button
                     className="w-full"
                     onClick={() => {
                       if (method.action.startsWith('#')) {
