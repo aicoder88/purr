@@ -59,7 +59,6 @@ export default function ContactPage() {
       title: "Phone Support",
       value: CONTACT_INFO.phone,
       tagline: PHONE_NUMBER.tagline,
-      taglineDescription: PHONE_NUMBER.description,
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
       action: CONTACT_INFO.phoneHref
@@ -217,18 +216,19 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {method.title}
                   </h3>
-                  <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
-                    {method.value}
-                  </p>
-                  {'tagline' in method && (
+                  {'tagline' in method ? (
                     <>
-                      <p className="text-lg font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">
+                      <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-1">
                         {method.tagline}
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 italic">
-                        {method.taglineDescription}
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                        {method.value}
                       </p>
                     </>
+                  ) : (
+                    <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
+                      {method.value}
+                    </p>
                   )}
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {method.description}
