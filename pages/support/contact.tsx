@@ -30,20 +30,8 @@ export default function ContactPage() {
     name: '',
     email: '',
     subject: '',
-    message: '',
-    orderNumber: '',
-    contactReason: 'general'
+    message: ''
   });
-
-  const contactReasons = [
-    { value: 'general', label: 'General Question' },
-    { value: 'product', label: 'Product Information' },
-    { value: 'order', label: 'Order Support' },
-    { value: 'shipping', label: 'Shipping Question' },
-    { value: 'return', label: 'Return/Refund' },
-    { value: 'wholesale', label: 'Wholesale Inquiry' },
-    { value: 'feedback', label: 'Feedback/Review' }
-  ];
 
   const contactMethods = [
     {
@@ -122,9 +110,7 @@ export default function ContactPage() {
         name: '',
         email: '',
         subject: '',
-        message: '',
-        orderNumber: '',
-        contactReason: 'general'
+        message: ''
       });
     } catch (_error) {
       setSubmitStatus({
@@ -309,41 +295,6 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
-                        Reason for Contact
-                      </label>
-                      <select
-                        id="contactReason"
-                        name="contactReason"
-                        value={formData.contactReason}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
-                      >
-                        {contactReasons.map((reason) => (
-                          <option key={reason.value} value={reason.value}>
-                            {reason.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
-                        Order Number (if applicable)
-                      </label>
-                      <Input
-                        id="orderNumber"
-                        name="orderNumber"
-                        type="text"
-                        value={formData.orderNumber}
-                        onChange={handleInputChange}
-                        placeholder="e.g., PUR-12345"
                         className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
                     </div>
