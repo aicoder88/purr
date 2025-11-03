@@ -97,14 +97,36 @@ export default function ContactPage() {
     setSubmitStatus({});
 
     try {
-      // Simulate form submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      // Send email using EmailJS
+      const emailjs = await import('@emailjs/browser');
+      const { EMAILJS_CONFIG, isEmailJSConfigured } = await import('../../src/lib/emailjs-config');
+
+      if (!isEmailJSConfigured) {
+        throw new Error('Email service is not configured');
+      }
+
+      // Initialize EmailJS
+      emailjs.init(EMAILJS_CONFIG.publicKey);
+
+      // Send email with form data
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          date: new Date().toLocaleString()
+        },
+        EMAILJS_CONFIG.publicKey
+      );
+
       setSubmitStatus({
         success: true,
         message: "Thank you for contacting us! We'll get back to you within 24 hours."
       });
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -115,7 +137,7 @@ export default function ContactPage() {
     } catch (_error) {
       setSubmitStatus({
         success: false,
-        message: "Sorry, there was an error sending your message. Please try again or contact us directly."
+        message: "Sorry, there was an error sending your message. Please try again or contact us directly at support@purrify.ca"
       });
     } finally {
       setIsSubmitting(false);
