@@ -35,6 +35,7 @@ import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 import { ScrollAnchor } from '../src/components/ui/scroll-anchor';
+import { Stores } from '../src/components/sections/stores';
 
 export default function Home() {
   const { t, locale } = useTranslation();
@@ -321,7 +322,13 @@ export default function Home() {
           </ErrorBoundary>
         </div>
 
-        
+        {/* Retail Store Locations with Logos */}
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <Stores />
+          </ErrorBoundary>
+        </div>
+
         <div className="cv-auto cis-480">
           <ErrorBoundary>
             <LazyLoad

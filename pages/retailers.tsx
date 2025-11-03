@@ -8,6 +8,7 @@ import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
+import { Stores } from '../src/components/sections/stores';
 
 export default function RetailersPage() {
   const { t, locale } = useTranslation();
@@ -71,6 +72,9 @@ export default function RetailersPage() {
             : 'Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners.'
           }
         />
+
+        {/* Retail Store Locations with Logos */}
+        <Stores />
       </main>
     </>
   );
