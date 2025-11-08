@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle } from 'lucide-react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -12,6 +12,11 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
+type ResponseData = {
+  success: boolean;
+  message: string;
+};
+
 export default function ContactPage() {
   const { t, locale } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,7 +26,7 @@ export default function ContactPage() {
   }>({});
   
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice. Call 1-450-6-ODORS-3!";
+  const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
   const canonicalPath = '/support/contact';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -30,8 +35,20 @@ export default function ContactPage() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    orderNumber: '',
+    contactReason: 'general'
   });
+
+  const contactReasons = [
+    { value: 'general', label: 'General Question' },
+    { value: 'product', label: 'Product Information' },
+    { value: 'order', label: 'Order Support' },
+    { value: 'shipping', label: 'Shipping Question' },
+    { value: 'return', label: 'Return/Refund' },
+    { value: 'wholesale', label: 'Wholesale Inquiry' },
+    { value: 'feedback', label: 'Feedback/Review' }
+  ];
 
   const contactMethods = [
     {
@@ -46,7 +63,6 @@ export default function ContactPage() {
       icon: Phone,
       title: "Phone Support",
       value: CONTACT_INFO.phone,
-      tagline: PHONE_NUMBER.tagline,
       description: "Speak directly with our team",
       responseTime: "Mon-Fri, 9AM-5PM EST",
       action: CONTACT_INFO.phoneHref
@@ -97,30 +113,23 @@ export default function ContactPage() {
     setSubmitStatus({});
 
     try {
-      // Send email using EmailJS
-      const emailjs = await import('@emailjs/browser');
-      const { EMAILJS_CONFIG, isEmailJSConfigured } = await import('../../src/lib/emailjs-config');
-
-      if (!isEmailJSConfigured) {
-        throw new Error('Email service is not configured');
-      }
-
-      // Initialize EmailJS
-      emailjs.init(EMAILJS_CONFIG.publicKey);
-
-      // Send email with form data
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          date: new Date().toLocaleString()
-        },
-        EMAILJS_CONFIG.publicKey
-      );
+          message: `${formData.subject}\n\nReason: ${formData.contactReason}${formData.orderNumber ? `\nOrder #: ${formData.orderNumber}` : ''}\n\n${formData.message}`,
+        }),
+      });
+
+      const data = await response.json() as ResponseData;
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to send message');
+      }
 
       setSubmitStatus({
         success: true,
@@ -132,12 +141,14 @@ export default function ContactPage() {
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        orderNumber: '',
+        contactReason: 'general'
       });
-    } catch (_error) {
+    } catch (error) {
       setSubmitStatus({
         success: false,
-        message: "Sorry, there was an error sending your message. Please try again or contact us directly at support@purrify.ca"
+        message: error instanceof Error ? error.message : "Sorry, there was an error sending your message. Please try again or contact us directly at support@purrify.ca"
       });
     } finally {
       setIsSubmitting(false);
@@ -224,27 +235,16 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                     {method.title}
                   </h3>
-                  {'tagline' in method ? (
-                    <>
-                      <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-1">
-                        {method.tagline}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-                        {method.value}
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
-                      {method.value}
-                    </p>
-                  )}
+                  <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
+                    {method.value}
+                  </p>
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {method.description}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
-                  <Button
+                  <Button 
                     className="w-full"
                     onClick={() => {
                       if (method.action.startsWith('#')) {
@@ -317,6 +317,41 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
+                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                        Reason for Contact
+                      </label>
+                      <select
+                        id="contactReason"
+                        name="contactReason"
+                        value={formData.contactReason}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
+                      >
+                        {contactReasons.map((reason) => (
+                          <option key={reason.value} value={reason.value}>
+                            {reason.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="orderNumber" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                        Order Number (if applicable)
+                      </label>
+                      <Input
+                        id="orderNumber"
+                        name="orderNumber"
+                        type="text"
+                        value={formData.orderNumber}
+                        onChange={handleInputChange}
+                        placeholder="e.g., PUR-12345"
                         className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
                     </div>
@@ -426,7 +461,13 @@ export default function ContactPage() {
               <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-4">
                 {PHONE_MESSAGING.callout}
               </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
+                Or use our secret code: {PHONE_NUMBER.tagline}
+              </p>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                {PHONE_NUMBER.description}
+              </p>
+              <p className="text-base text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
                 {PHONE_MESSAGING.explanation}
               </p>
               <p className="text-base font-semibold text-gray-900 dark:text-gray-100 italic whitespace-pre-line">

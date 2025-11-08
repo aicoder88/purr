@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
+import { EMAILJS_CONFIG, isEmailJSServerConfigured } from '../../src/lib/emailjs-config';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -7,8 +8,6 @@ const contactFormSchema = z.object({
   email: z.string().email().trim().toLowerCase(),
   message: z.string().min(10).max(1000).trim(),
 });
-
-
 
 type ResponseData = {
   success: boolean;
@@ -19,6 +18,70 @@ type ResponseData = {
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 5;
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
+
+/**
+ * Send email via EmailJS API
+ */
+async function sendEmailViaEmailJS(
+  name: string,
+  email: string,
+  message: string,
+  subject: string
+): Promise<{ success: boolean; message: string }> {
+  if (!isEmailJSServerConfigured()) {
+    console.error('EmailJS not properly configured. Missing credentials.');
+    return {
+      success: false,
+      message: 'Email service not available. Please contact us directly at support@purrify.ca'
+    };
+  }
+
+  try {
+    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: EMAILJS_CONFIG.serviceId,
+        template_id: EMAILJS_CONFIG.templateId,
+        user_id: EMAILJS_CONFIG.publicKey,
+        accessToken: EMAILJS_CONFIG.privateKey,
+        template_params: {
+          to_email: 'support@purrify.ca',
+          from_name: name,
+          from_email: email,
+          subject: subject || 'Contact Form Submission',
+          message: message,
+          date: new Date().toLocaleString(),
+          reply_to: email,
+        },
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.status === 200) {
+      console.log('Email sent successfully via EmailJS');
+      return {
+        success: true,
+        message: 'Message sent successfully!'
+      };
+    } else {
+      console.error('EmailJS API error:', data);
+      return {
+        success: false,
+        message: 'Failed to send email. Please try again later.'
+      };
+    }
+  } catch (error) {
+    console.error('Error sending email via EmailJS:', error instanceof Error ? error.message : 'Unknown error');
+    return {
+      success: false,
+      message: 'An error occurred while sending your message. Please try again or contact us directly at support@purrify.ca'
+    };
+  }
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -58,7 +121,7 @@ export default async function handler(
   try {
     // Validate form data with Zod
     const validationResult = contactFormSchema.safeParse(req.body);
-    
+
     if (!validationResult.success) {
       return res.status(400).json({
         success: false,
@@ -68,26 +131,37 @@ export default async function handler(
 
     const { name, email, message } = validationResult.data;
 
-    // In a real implementation, you would send the email here
-    // For example, using a service like SendGrid, Mailgun, or AWS SES
-    
-    // Log sanitized data
-    console.log('Contact form submission:', {
+    // Send email via EmailJS
+    const emailResult = await sendEmailViaEmailJS(
       name,
       email,
-      messageLength: message.length
+      message,
+      'New Contact Form Submission from Purrify'
+    );
+
+    if (!emailResult.success) {
+      return res.status(500).json({
+        success: false,
+        message: emailResult.message
+      });
+    }
+
+    // Log successful submission
+    console.log('Contact form submitted successfully:', {
+      name,
+      email,
+      timestamp: new Date().toISOString()
     });
 
-    // Return success response
     return res.status(200).json({
       success: true,
-      message: 'Message sent successfully!'
+      message: 'Thank you for contacting us! We\'ll get back to you within 24 hours.'
     });
   } catch (error) {
     console.error('Error processing contact form:', error instanceof Error ? error.message : 'Unknown error');
     return res.status(500).json({
       success: false,
-      message: 'An error occurred while sending your message'
+      message: 'An error occurred while sending your message. Please try again or contact us directly at support@purrify.ca'
     });
   }
 }
