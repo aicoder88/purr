@@ -119,7 +119,7 @@ export function SubscriptionOffer() {
                   {/* Badge */}
                   {plan.badge && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-6 py-2 rounded-full shadow-xl text-sm font-black uppercase tracking-wide">
+                      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white dark:text-gray-100 px-6 py-2 rounded-full shadow-xl text-sm font-black uppercase tracking-wide">
                         {plan.badge}
                       </div>
                     </div>
@@ -172,7 +172,7 @@ export function SubscriptionOffer() {
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
                           <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-full p-1 mt-0.5 flex-shrink-0">
-                            <Check className="w-4 h-4 text-white" />
+                            <Check className="w-4 h-4 text-white dark:text-gray-100" />
                           </div>
                           <span className="font-medium">{feature}</span>
                         </li>
@@ -184,7 +184,7 @@ export function SubscriptionOffer() {
                       {paymentLink ? (
                         <Button
                           asChild
-                          className="w-full py-6 text-xl font-black transition-all duration-300 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
+                          className="w-full py-6 text-xl font-black transition-all duration-300 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white dark:text-gray-100 shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
                         >
                           <a href={paymentLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                             <Zap className="w-6 h-6" />
@@ -210,7 +210,7 @@ export function SubscriptionOffer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Truck className="w-10 h-10 text-white" />
+                <Truck className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
                 {t.homepage.subscription.fastDelivery}
@@ -222,7 +222,7 @@ export function SubscriptionOffer() {
             
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-pink-500 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Shield className="w-10 h-10 text-white" />
+                <Shield className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
                 {t.homepage.subscription.thirtyDayGuarantee}
@@ -234,7 +234,7 @@ export function SubscriptionOffer() {
             
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Clock className="w-10 h-10 text-white" />
+                <Clock className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
                 {t.homepage.subscription.skipAnytime}
@@ -246,7 +246,7 @@ export function SubscriptionOffer() {
             
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Star className="w-10 h-10 text-white" />
+                <Star className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
                 {t.homepage.subscription.fiveStarRated}
@@ -264,7 +264,7 @@ export function SubscriptionOffer() {
             </p>
             <div className="flex justify-center items-center space-x-1 mb-6">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
               ))}
               <span className="ml-3 text-gray-900 dark:text-white font-black text-xl">
                 {t.homepage.subscription.reviewsRating}

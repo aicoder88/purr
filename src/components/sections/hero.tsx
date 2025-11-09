@@ -27,7 +27,7 @@ export function Hero() {
       <div className="w-full -mt-4 text-center flex flex-col items-center">
         <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
           <svg
-            className="w-6 h-6 text-white animate-bounce"
+            className="w-6 h-6 text-white dark:text-gray-100 animate-bounce"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

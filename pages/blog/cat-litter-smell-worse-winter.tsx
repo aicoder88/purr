@@ -23,7 +23,7 @@ export default function CatLitterSmellWorseWinter() {
         <meta property="og:title" content="Why Cat Litter Smells Worse in Winter (And 5 Solutions That Don't Require Opening Windows)" />
         <meta property="og:description" content="Closed windows trapping unbearable cat litter smell? Discover 5 proven solutions that eliminate winter odors without freezing your home." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.purrify.ca/blog/cat-litter-smell-worse-winter-solutions" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/cat-litter-smell-worse-winter" />
         <meta property="og:image" content={heroImage} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
@@ -35,7 +35,7 @@ export default function CatLitterSmellWorseWinter() {
         <meta name="twitter:image" content={heroImage} />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/blog/cat-litter-smell-worse-winter-solutions" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/cat-litter-smell-worse-winter" />
 
         {/* Enhanced Article Schema */}
         <script type="application/ld+json">
@@ -44,7 +44,7 @@ export default function CatLitterSmellWorseWinter() {
             "@graph": [
               {
                 "@type": "Article",
-                "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter-solutions",
+                "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter",
                 "headline": "Why Cat Litter Smells Worse in Winter (And 5 Solutions That Don't Require Opening Windows)",
                 "description": "Cat litter smell unbearable in winter? Closed windows trap ammonia odors. Discover 5 proven solutions that work without opening windows in cold weather.",
                 "image": {
@@ -73,10 +73,10 @@ export default function CatLitterSmellWorseWinter() {
                 },
                 "datePublished": new Date().toISOString(),
                 "dateModified": new Date().toISOString(),
-                "url": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter-solutions",
+                "url": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter",
                 "mainEntityOfPage": {
                   "@type": "WebPage",
-                  "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter-solutions"
+                  "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter"
                 },
                 "articleSection": "Seasonal Odor Control",
                 "articleBody": "Learn why cat litter ammonia odors intensify dramatically in winter with closed windows and discover 5 proven solutions that work in cold weather conditions without opening windows.",
@@ -462,7 +462,7 @@ export default function CatLitterSmellWorseWinter() {
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Common Winter Mistakes to Avoid</h2>
 
-              <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+              <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-600 p-6 mb-8 rounded-r-lg">
                 <h3 className="text-xl font-bold text-red-900 dark:text-red-200 mb-4">❌ Don't Make These Mistakes:</h3>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li><strong>Using more scented litter/sprays:</strong> Fragrances don't eliminate ammonia—they just create competing smells in your sealed home</li>
@@ -618,7 +618,7 @@ export default function CatLitterSmellWorseWinter() {
         {/* Related Articles */}
         <section className="py-12 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/blog/cat-litter-smell-worse-winter-solutions" />
+            <RelatedArticles currentPath="/blog/cat-litter-smell-worse-winter" />
           </Container>
         </section>
       </article>

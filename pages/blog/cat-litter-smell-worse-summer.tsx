@@ -24,7 +24,7 @@ export default function CatLitterSmellWorseSummer() {
         <meta property="og:title" content="Why Cat Litter Smells Worse in Summer (And 4 Solutions That Actually Work)" />
         <meta property="og:description" content="Heat amplifies cat litter ammonia by 10x. Discover the science behind summer odor problems and 4 proven solutions that work in hot weather." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/cat-litter-smell-worse-summer" />
         <meta property="og:image" content={heroImageOg} />
         <meta property="og:image:width" content="1600" />
         <meta property="og:image:height" content="1067" />
@@ -36,7 +36,7 @@ export default function CatLitterSmellWorseSummer() {
         <meta name="twitter:image" content={heroImageOg} />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions" />
+        <link rel="canonical" href="https://www.purrify.ca/blog/cat-litter-smell-worse-summer" />
 
         {/* Enhanced Article Schema */}
         <script type="application/ld+json">
@@ -45,7 +45,7 @@ export default function CatLitterSmellWorseSummer() {
             "@graph": [
               {
                 "@type": "Article",
-                "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions",
+                "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer",
                 "headline": "Why Cat Litter Smells Worse in Summer (And 4 Solutions That Actually Work)",
                 "description": "Cat litter smell unbearable in summer? Discover why heat makes ammonia odors 10x stronger and 4 science-backed solutions that work in hot weather.",
                 "image": {
@@ -74,10 +74,10 @@ export default function CatLitterSmellWorseSummer() {
                 },
                 "datePublished": "2025-01-20T10:00:00-05:00",
                 "dateModified": new Date().toISOString(),
-                "url": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions",
+                "url": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer",
                 "mainEntityOfPage": {
                   "@type": "WebPage",
-                  "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions"
+                  "@id": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer"
                 },
                 "articleSection": "Seasonal Odor Control",
                 "articleBody": "Learn why cat litter ammonia odors intensify dramatically in summer heat and discover 4 proven solutions that work in hot weather conditions.",
@@ -129,7 +129,7 @@ export default function CatLitterSmellWorseSummer() {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Cat Litter Smell Worse in Summer",
-                    "item": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions"
+                    "item": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer"
                   }
                 ]
               }
@@ -522,7 +522,7 @@ export default function CatLitterSmellWorseSummer() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath="/blog/cat-litter-smell-worse-summer-solutions" />
+              <RelatedArticles currentPath="/blog/cat-litter-smell-worse-summer" />
             </div>
           </div>
         </Container>
