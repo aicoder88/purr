@@ -91,10 +91,10 @@ async function sendEmailViaEmailJS(
       }
     }
 
-    // Fallback: Use direct email sending without template
-    console.log('Using EmailJS direct email sending (no template)');
+    // Fallback: Use sendMail endpoint which doesn't require template
+    console.log('Using EmailJS sendMail endpoint (no template required)');
 
-    const directResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const mailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/sendMail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ async function sendEmailViaEmailJS(
       body: JSON.stringify({
         service_id: EMAILJS_CONFIG.serviceId,
         user_id: EMAILJS_CONFIG.publicKey,
-        template_id: 'default', // EmailJS accepts 'default' for direct sending
+        accessToken: EMAILJS_CONFIG.privateKey || undefined,
         template_params: {
           to_email: 'support@purrify.ca',
           to_name: 'Purrify Support',
@@ -116,22 +116,67 @@ async function sendEmailViaEmailJS(
       }),
     });
 
-    const directData = await directResponse.json();
-
-    console.log('EmailJS Direct Send Response:', {
-      status: directResponse.status,
-      ok: directResponse.ok,
-      statusCode: directData.status,
+    console.log('EmailJS sendMail Response:', {
+      status: mailResponse.status,
+      ok: mailResponse.ok,
     });
 
-    if (directResponse.ok || directData.status === 200) {
-      console.log('Email sent successfully via EmailJS direct');
+    const mailText = await mailResponse.text();
+    console.log('EmailJS sendMail Response Body:', mailText);
+
+    if (mailResponse.ok) {
+      console.log('Email sent successfully via EmailJS sendMail');
       return {
         success: true,
         message: 'Message sent successfully!'
       };
     } else {
-      console.error('EmailJS API error:', directData);
+      console.error('EmailJS sendMail error:', {
+        status: mailResponse.status,
+        body: mailText,
+      });
+
+      // Try one more fallback with the original email/send endpoint
+      console.log('Trying email/send endpoint as final fallback');
+      try {
+        const fallbackResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            service_id: EMAILJS_CONFIG.serviceId,
+            user_id: EMAILJS_CONFIG.publicKey,
+            template_id: 'default',
+            template_params: {
+              to_email: 'support@purrify.ca',
+              to_name: 'Purrify Support',
+              from_name: name,
+              from_email: email,
+              subject: subject || 'Contact Form Submission',
+              message: message,
+              date: new Date().toLocaleString(),
+              reply_to: email,
+            },
+          }),
+        });
+
+        const fallbackText = await fallbackResponse.text();
+        console.log('Email/send fallback response:', {
+          status: fallbackResponse.status,
+          body: fallbackText,
+        });
+
+        if (fallbackResponse.ok) {
+          return {
+            success: true,
+            message: 'Message sent successfully!'
+          };
+        }
+      } catch (fallbackError) {
+        console.error('Fallback endpoint error:', fallbackError);
+      }
+
       return {
         success: false,
         message: 'Failed to send email. Please try again later.'
