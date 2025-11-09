@@ -39,7 +39,7 @@
   - Verify data types
   - _Requirements: 2.5_
 
-- [ ] 2.3 Integrate with Next.js pages
+- [x] 2.3 Integrate with Next.js pages
   - Add structured data to product pages
   - Add structured data to blog posts
   - Add structured data to homepage
