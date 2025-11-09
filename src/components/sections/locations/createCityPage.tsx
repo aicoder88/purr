@@ -226,109 +226,209 @@ const locationFormatters: LocationFormatter[] = [
   ({ cityName }) => `${cityName} • plaza district`,
 ];
 
+// 200+ unique quote templates to ensure each of 588 testimonials (196 cities × 3) is different
 const quoteTemplates: QuoteTemplate[] = [
-  () =>
-    `Skeptical by nature but this stuff just works. No fake flower smell, no BS. The activated carbon actually bonds with ammonia molecules instead of covering them up. Chemistry background so I appreciate the science.`,
-  () =>
-    `honestly idk what's in this but my apartment doesn't smell anymore lol. guests used to make faces and now they don't. that's literally all i needed`,
-  (context, persona) =>
-    `After three months of testing various odor control products for ${persona.household}, I can confirm this is the only one that eliminated ammonia smell rather than masking it. Highly effective.`,
-  () =>
-    `GAME CHANGER. That's it. That's the review.`,
-  (context) =>
-    `I'm not one to write reviews but I had to. The difference is night and day. My mother-in-law visited last week and didn't say ONE word about the litter box. If you know, you know. Thank you.`,
-  () =>
-    `Works exactly as described. Fragrance-free, which was my main requirement. Would purchase again.`,
-  (context, persona) =>
-    `Been a ${persona.occupation} for 15 years and never thought I'd be writing about cat litter additives, but here we are. This product saved my home office situation. The smell was genuinely affecting my ability to concentrate.`,
-  () =>
-    `My cats don't even notice it's there, which is perfect because they're picky about everything. But I notice the difference immediately. No more ammonia smell hitting you in the face.`,
-  (context) =>
-    `Tried baking soda, tried those scented crystals, tried literally everything Amazon recommended. This is the first thing that actually worked. Wish I hadn't wasted six months on the other stuff.`,
-  () =>
-    `Simple, effective, no nonsense. Sprinkle it on, smell goes away. That's the entire experience and I'm extremely satisfied with that.`,
-  (context, persona) =>
-    `As someone with ${persona.household}, I've become an unwilling expert on odor control. This is the first product I've used that I'd actually recommend to other multi-cat households without reservation.`,
-  () =>
-    `The carbon technology is legit. I was curious so I did some research—activated carbon has been used in air filtration for decades. This isn't snake oil, it's actual science.`,
-  () =>
-    `my sister recommended this after I complained about the smell for the millionth time. should've listened to her sooner. apartment smells normal now`,
-  (context) =>
-    `I have a sensitive nose and most "odor eliminators" just give me a headache from the fake scents. This has zero smell itself and actually eliminates the ammonia. Finally.`,
-  () =>
-    `Worth every penny. That's all I'll say.`,
-  (context, persona) =>
-    `Running ${persona.household} through a small space, I needed something industrial-strength. This handles it without making my place smell like a Bath & Body Works exploded.`,
-  () =>
-    `The molecular bonding thing isn't marketing hype—you can actually tell it's capturing the smell at the source rather than covering it up. Different mechanism entirely from those scented products.`,
-  () =>
-    `Just buy it. Stop reading reviews and buy it. You'll thank me later.`,
-  (context) =>
-    `I'm the kind of person who reads ingredient lists and researches everything. This is just activated carbon—safe, effective, no weird chemicals. That transparency matters to me.`,
-  () =>
-    `Fixes the problem without creating new ones. Rare in consumer products these days.`,
-  (context, persona) =>
-    `Having ${persona.household} used to be embarrassing when people came over. Not anymore. This stuff is quiet, effective, and doesn't smell like anything. Perfect combo.`,
-  () =>
-    `My partner is chemically sensitive and this is the ONLY thing we've found that works for him. Fragrance-free actually means fragrance-free. Grateful to have found it.`,
-  () =>
-    `Been using for 4 months. Still works. Still no smell. Still buying more.`,
-  (context) =>
-    `I foster cats so I go through a LOT of litter. This makes the whole operation actually manageable without turning my place into a gas chamber of fake lavender scent.`,
-  () =>
-    `The science checks out, the product works, and I don't have to hold my breath when I walk past the litter box anymore. A+ experience.`,
-  () =>
-    `no complaints at all. does what it says it'll do`,
-  (context, persona) =>
-    `As a ${persona.occupation}, I'm home constantly and the smell was getting unbearable. Tried this on a whim and it actually solved the problem. Rare to find products that deliver on their promises.`,
-  () =>
-    `My landlord does quarterly inspections and used to comment on pet odors. Started using this and haven't heard a word since. Problem solved.`,
-  () =>
-    `Activated carbon is the real deal. Not some gimmick. This works on a molecular level and you can tell.`,
-  () =>
-    `simple. effective. affordable. everything you need and nothing you don't`,
-  (context) =>
-    `I have respiratory issues and can't be around strong scents. This eliminated the ammonia smell without adding any fragrance. Exactly what I needed and nearly impossible to find elsewhere.`,
-  () =>
-    `The difference between this and those scented sprays is like the difference between cleaning your kitchen and just lighting a candle in it. One actually fixes the problem.`,
-  () =>
-    `Five stars. Would give more if I could.`,
-  (context, persona) =>
-    `With ${persona.household} in a tiny apartment, odor control isn't optional—it's survival. This is the first thing that's actually kept up with the demand. Genuinely impressive.`,
-  () =>
-    `My cats are basically family and their litter box was making my home uninhabitable. This fixed it without any weird chemicals or overpowering scents. So relieved.`,
-  () =>
-    `Works. That's it. Just works.`,
-  (context) =>
-    `I'm particular about what I bring into my home and this passed all my tests. Safe, effective, transparent about ingredients. Recommend without hesitation.`,
-  () =>
-    `The activated carbon bonds with the ammonia molecules before they can spread through your living space. That's not marketing—that's just chemistry. And it works exactly as advertised.`,
-  () =>
-    `best purchase i've made this year and i'm including my new couch in that comparison`,
-  (context, persona) =>
-    `Being a ${persona.occupation} means I notice details, and the detail I noticed most was how completely this eliminated the smell. No masking, no perfume, just clean air.`,
-  () =>
-    `Tried literally everything else first. This is the only one that worked. Save yourself the trial and error.`,
-  () =>
-    `No fragrance. No fuss. No smell. Perfect.`,
-  (context) =>
-    `I have sensory processing issues and strong smells are genuinely painful for me. The ammonia from the litter box was making me miserable, and scented products are even worse. This solved both problems.`,
-  () =>
-    `The molecular science is sound. Product delivers. Case closed.`,
-  () =>
-    `honestly shocked at how well this works. thought it would be like everything else (useless) but it actually eliminates the smell instead of covering it up`,
-  (context, persona) =>
-    `Managing ${persona.household} used to mean constant vigilance about smells. Now I just sprinkle this on and forget about it. Life-changing might sound dramatic but that's genuinely how it feels.`,
-  () =>
-    `Carbon filtration technology in a bottle. Simple, effective, scientifically valid. Everything I look for in a product.`,
-  () =>
-    `My standards are high and this met them. Rare.`,
-  () =>
-    `just works like it's supposed to. refreshing in a world of overpromising and underdelivering`,
-  (context) =>
-    `The fact that it's fragrance-free was the selling point for me. The fact that it actually works was the bonus. Both things are true and both things matter.`,
-  () =>
-    `Five stars. No notes. Perfect product.`,
+  () => `Skeptical by nature but this stuff just works. No fake flower smell, no BS. The activated carbon actually bonds with ammonia molecules instead of covering them up. Chemistry background so I appreciate the science.`,
+  () => `honestly idk what's in this but my apartment doesn't smell anymore lol. guests used to make faces and now they don't. that's literally all i needed`,
+  (context, persona) => `After three months of testing various odor control products for ${persona.household}, I can confirm this is the only one that eliminated ammonia smell rather than masking it. Highly effective.`,
+  () => `GAME CHANGER. That's it. That's the review.`,
+  () => `I'm not one to write reviews but I had to. The difference is night and day. My mother-in-law visited last week and didn't say ONE word about the litter box. If you know, you know. Thank you.`,
+  () => `Works exactly as described. Fragrance-free, which was my main requirement. Would purchase again.`,
+  (context, persona) => `Been a ${persona.occupation} for 15 years and never thought I'd be writing about cat litter additives, but here we are. This product saved my home office situation. The smell was genuinely affecting my ability to concentrate.`,
+  () => `My cats don't even notice it's there, which is perfect because they're picky about everything. But I notice the difference immediately. No more ammonia smell hitting you in the face.`,
+  () => `Tried baking soda, tried those scented crystals, tried literally everything Amazon recommended. This is the first thing that actually worked. Wish I hadn't wasted six months on the other stuff.`,
+  () => `Simple, effective, no nonsense. Sprinkle it on, smell goes away. That's the entire experience and I'm extremely satisfied with that.`,
+  (context, persona) => `As someone with ${persona.household}, I've become an unwilling expert on odor control. This is the first product I've used that I'd actually recommend to other multi-cat households without reservation.`,
+  () => `The carbon technology is legit. I was curious so I did some research—activated carbon has been used in air filtration for decades. This isn't snake oil, it's actual science.`,
+  () => `my sister recommended this after I complained about the smell for the millionth time. should've listened to her sooner. apartment smells normal now`,
+  () => `I have a sensitive nose and most "odor eliminators" just give me a headache from the fake scents. This has zero smell itself and actually eliminates the ammonia. Finally.`,
+  () => `Worth every penny. That's all I'll say.`,
+  (context, persona) => `Running ${persona.household} through a small space, I needed something industrial-strength. This handles it without making my place smell like a Bath & Body Works exploded.`,
+  () => `The molecular bonding thing isn't marketing hype—you can actually tell it's capturing the smell at the source rather than covering it up. Different mechanism entirely from those scented products.`,
+  () => `Just buy it. Stop reading reviews and buy it. You'll thank me later.`,
+  () => `I'm the kind of person who reads ingredient lists and researches everything. This is just activated carbon—safe, effective, no weird chemicals. That transparency matters to me.`,
+  () => `Fixes the problem without creating new ones. Rare in consumer products these days.`,
+  (context, persona) => `Having ${persona.household} used to be embarrassing when people came over. Not anymore. This stuff is quiet, effective, and doesn't smell like anything. Perfect combo.`,
+  () => `My partner is chemically sensitive and this is the ONLY thing we've found that works for him. Fragrance-free actually means fragrance-free. Grateful to have found it.`,
+  () => `Been using for 4 months. Still works. Still no smell. Still buying more.`,
+  () => `I foster cats so I go through a LOT of litter. This makes the whole operation actually manageable without turning my place into a gas chamber of fake lavender scent.`,
+  () => `The science checks out, the product works, and I don't have to hold my breath when I walk past the litter box anymore. A+ experience.`,
+  () => `no complaints at all. does what it says it'll do`,
+  (context, persona) => `As a ${persona.occupation}, I'm home constantly and the smell was getting unbearable. Tried this on a whim and it actually solved the problem. Rare to find products that deliver on their promises.`,
+  () => `My landlord does quarterly inspections and used to comment on pet odors. Started using this and haven't heard a word since. Problem solved.`,
+  () => `Activated carbon is the real deal. Not some gimmick. This works on a molecular level and you can tell.`,
+  () => `simple. effective. affordable. everything you need and nothing you don't`,
+  () => `I have respiratory issues and can't be around strong scents. This eliminated the ammonia smell without adding any fragrance. Exactly what I needed and nearly impossible to find elsewhere.`,
+  () => `The difference between this and those scented sprays is like the difference between cleaning your kitchen and just lighting a candle in it. One actually fixes the problem.`,
+  () => `Five stars. Would give more if I could.`,
+  (context, persona) => `With ${persona.household} in a tiny apartment, odor control isn't optional—it's survival. This is the first thing that's actually kept up with the demand. Genuinely impressive.`,
+  () => `My cats are basically family and their litter box was making my home uninhabitable. This fixed it without any weird chemicals or overpowering scents. So relieved.`,
+  () => `Works. That's it. Just works.`,
+  () => `I'm particular about what I bring into my home and this passed all my tests. Safe, effective, transparent about ingredients. Recommend without hesitation.`,
+  () => `The activated carbon bonds with the ammonia molecules before they can spread through your living space. That's not marketing—that's just chemistry. And it works exactly as advertised.`,
+  () => `best purchase i've made this year and i'm including my new couch in that comparison`,
+  (context, persona) => `Being a ${persona.occupation} means I notice details, and the detail I noticed most was how completely this eliminated the smell. No masking, no perfume, just clean air.`,
+  () => `Tried literally everything else first. This is the only one that worked. Save yourself the trial and error.`,
+  () => `No fragrance. No fuss. No smell. Perfect.`,
+  () => `I have sensory processing issues and strong smells are genuinely painful for me. The ammonia from the litter box was making me miserable, and scented products are even worse. This solved both problems.`,
+  () => `The molecular science is sound. Product delivers. Case closed.`,
+  () => `honestly shocked at how well this works. thought it would be like everything else (useless) but it actually eliminates the smell instead of covering it up`,
+  (context, persona) => `Managing ${persona.household} used to mean constant vigilance about smells. Now I just sprinkle this on and forget about it. Life-changing might sound dramatic but that's genuinely how it feels.`,
+  () => `Carbon filtration technology in a bottle. Simple, effective, scientifically valid. Everything I look for in a product.`,
+  () => `My standards are high and this met them. Rare.`,
+  () => `just works like it's supposed to. refreshing in a world of overpromising and underdelivering`,
+  () => `The fact that it's fragrance-free was the selling point for me. The fact that it actually works was the bonus. Both things are true and both things matter.`,
+  () => `Five stars. No notes. Perfect product.`,
+  // 51-100: Adding 49 more unique testimonials
+  () => `Finally something that doesn't make me sneeze while also not making my place smell like a litter box. Win-win.`,
+  () => `My roommate kept complaining and I was getting desperate. This ended the conflict immediately. Apartment harmony restored.`,
+  () => `The chemistry is simple but effective. Adsorption works better than any spray or gel I've tried. Solid purchase.`,
+  () => `i put off buying this for months thinking it was too expensive but it's lasted forever and actually works so... worth it`,
+  () => `Read the reviews, took the plunge, zero regrets. Sometimes the hype is real.`,
+  (context, persona) => `Three rescue cats means three litter boxes and I was drowning in smell. This brought me back to life.`,
+  () => `My girlfriend noticed the difference before I even told her I'd bought something new. That's how you know it works.`,
+  () => `Eliminates odor without any scent of its own. That's surprisingly hard to find. Most products just swap one smell for another.`,
+  () => `The activated carbon approach is the only thing that made sense to me scientifically, and it delivers in practice.`,
+  () => `10/10 would recommend. Actually, I already have recommended it to like five people.`,
+  () => `Bought it thinking if it doesn't work I'll just return it. Never returned it. Still using it months later.`,
+  () => `my friend has this and her place always smells good so i got it too. same result for me`,
+  () => `Fragrance-free was non-negotiable for me. This delivers on that promise while actually working.`,
+  () => `Used to dread coming home because of the smell. Now I actually look forward to it again.`,
+  () => `The difference was immediate. Like within hours immediate. Impressive stuff.`,
+  () => `Can't believe I lived with that smell for years before finding this. Better late than never I guess.`,
+  () => `Professional product. Professional results. No gimmicks.`,
+  () => `My vet recommended it and vets don't usually recommend products unless they're legit. She was right.`,
+  (context, persona) => `I'm a ${persona.occupation} so I research everything obsessively. This has solid science behind it and performs exactly as expected.`,
+  () => `honestly just get it. stop overthinking it like i did for weeks`,
+  () => `The absence of smell is what you notice most. Not a new smell covering the old one—just actual clean air.`,
+  () => `My cats didn't change their behavior at all, which tells me it's safe and non-irritating. Meanwhile the smell is gone.`,
+  () => `It works and that's all that matters. Everything else is just bonus.`,
+  () => `Changed my life is too dramatic but changed my living situation? Absolutely.`,
+  () => `I'm picky about products and this is one of maybe three things I'd actually write a review for.`,
+  () => `Molecular adsorption isn't magic, it's just good chemistry. And this product uses it well.`,
+  () => `tried the spray version of something similar and it was terrible. this powder form actually works`,
+  () => `My nose is happy. My cats are fine. My apartment is livable. All goals achieved.`,
+  () => `The price seemed high until I realized how long it lasts. Actually very economical.`,
+  () => `No artificial fragrances means no headaches for me. Plus it works. Rare combination.`,
+  (context, persona) => `Having ${persona.household} in a studio apartment was... intense. This made it manageable.`,
+  () => `Works as advertised, which is shockingly rare in consumer products. Appreciate the honesty.`,
+  () => `Carbon filtration is proven technology. Glad someone finally made it accessible for pet owners.`,
+  () => `best $30 i've spent in years`,
+  () => `My expectations were low. It exceeded them significantly.`,
+  () => `The real test was having my mom over. She noticed nothing. Success.`,
+  () => `Bought this skeptically. Now I'm a believer. Sometimes things just work.`,
+  () => `Activated carbon is the only scientifically sound approach to this problem. Everything else is perfume theater.`,
+  () => `i hate writing reviews but this deserves it. completely eliminated the problem`,
+  () => `My apartment complex has strict pet policies. This helps me stay in compliance by eliminating odor complaints.`,
+  () => `The science is simple: carbon has a huge surface area that traps molecules. It works.`,
+  () => `No scent. No fuss. No smell. That's the whole review.`,
+  () => `I'm a minimalist and this fits my philosophy: one product, one job, done well.`,
+  () => `My allergies are severe and I can't use scented anything. This is fragrance-free and actually works. Grateful.`,
+  () => `Been using for six months. Still effective. Still odor-free. Still satisfied.`,
+  () => `The ROI on this is incredible. Small amount goes a long way.`,
+  () => `My downstairs neighbor used to complain. Now she doesn't. Problem solved.`,
+  () => `Works exactly as described without any BS. Refreshing.`,
+  () => `I'm that person who reads scientific papers before buying things. The activated carbon science is solid here.`,
+  // 101-150: Continuing with 50 more
+  () => `finally something that actually works instead of just covering up the problem with fake smells`,
+  () => `My partner has asthma. Scented products trigger attacks. This doesn't. And it works. Life saver.`,
+  () => `Straightforward product. Does what it says. No complaints.`,
+  () => `The carbon filtration method is the same tech used in industrial applications. It's proven.`,
+  () => `Bought this after my lease inspection went badly. Next inspection was fine. Saving my deposit.`,
+  () => `I'm neurodivergent and sensitive to smells. This eliminated the problem without creating a new one.`,
+  () => `Five stars isn't enough. Six stars if that were possible.`,
+  () => `My cats are seniors with digestive issues. The smell was unbearable. This fixed it.`,
+  () => `It just works. Really well. That's all you need to know.`,
+  () => `The transparent ingredient list sold me. Just activated carbon. No weird chemicals.`,
+  () => `i was spending so much on scented sprays that didn't work. this costs less and actually works`,
+  () => `My roommate is chemically sensitive. This is the only thing that works for both of us.`,
+  () => `Been recommending this to everyone. My friends are tired of hearing about it but it's that good.`,
+  () => `The science behind carbon adsorption is well-established. This product applies it perfectly.`,
+  () => `No perfume. No headache. No smell. Perfect trifecta.`,
+  (context, persona) => `Managing ${persona.household} got exponentially easier with this. Wish I'd found it sooner.`,
+  () => `Exceeded expectations significantly. Rare for products these days.`,
+  () => `The activated carbon actually captures the molecules instead of masking them. That's the key difference.`,
+  () => `my therapist noticed my apartment smelled better and asked what i changed lol. this was it`,
+  () => `Simple solution to a complex problem. That's good design.`,
+  () => `I have COPD and can't tolerate fragrances. This eliminated odor without triggering my lungs.`,
+  () => `Works immediately. Works consistently. Works as advertised.`,
+  () => `The carbon bed captures odor molecules through physical adsorption. It's not magic, it's chemistry.`,
+  () => `Been using for a year. Still works. Still buying it.`,
+  () => `My building super commented that my unit smells better than most pet-free units. That's the power of this stuff.`,
+  () => `Practical. Effective. Affordable. Everything you want in a product.`,
+  () => `i hate leaving reviews but this actually solved my problem so here we are`,
+  () => `The molecular binding is real. You can tell it's capturing smell at the source.`,
+  () => `My standards are high. This met them all.`,
+  () => `No artificial anything. Just pure carbon doing its molecular job.`,
+  (context, persona) => `As a ${persona.occupation} I'm home 24/7. The smell was inescapable before this. Now it's completely gone.`,
+  () => `Tried everything before this. Nothing worked. This worked immediately.`,
+  () => `The technology is proven. The product delivers. Case closed.`,
+  () => `honestly the best thing i've bought for my apartment all year`,
+  () => `Fragrance-free means actually fragrance-free. Rare and appreciated.`,
+  () => `My cats approve (they didn't change behavior) and so do I (no smell). Win-win.`,
+  () => `Chemical adsorption on activated carbon is textbook science. This applies it brilliantly.`,
+  () => `Works. Period.`,
+  () => `The absence of artificial fragrance is as important as the absence of ammonia smell. This delivers both.`,
+  () => `My parents visited and didn't realize I had cats. That's the ultimate test.`,
+  () => `Solid product. Solid science. Solid results.`,
+  () => `i was skeptical because everything else failed but this actually works`,
+  () => `The carbon technology is the same used in water filtration. Proven method applied to odor control.`,
+  () => `Been using for eight months. Effectiveness hasn't decreased. Quality product.`,
+  () => `My apartment smells like nothing. That's exactly what I wanted.`,
+  () => `Professional grade results at consumer prices. Rare.`,
+  () => `The activated carbon approach made sense to me as an engineer. Glad to see it works in practice.`,
+  () => `no weird smells. no cat smells. just normal air. perfect`,
+  // 151-200: Final 50 unique testimonials
+  () => `My dates don't wrinkle their noses anymore when they come over. That alone makes this worth it.`,
+  () => `Carbon adsorption is thermodynamically favorable for ammonia. This product gets the chemistry right.`,
+  () => `Simple. Clean. Effective. Three words that describe this perfectly.`,
+  () => `I have multiple chemical sensitivity. This doesn't trigger it. And it works. Grateful beyond words.`,
+  () => `The real test is having guests who don't know you have cats. They never guess. It works that well.`,
+  () => `Been through every product on the market. This is the only one that delivers.`,
+  () => `Molecular chemistry working exactly as it should. Impressed.`,
+  () => `my place finally smells like a place instead of a zoo`,
+  () => `The porous carbon structure traps odor molecules through Van der Waals forces. Science done right.`,
+  () => `Works immediately and consistently. That's all you need in a product.`,
+  () => `My home office is tolerable again. Can actually focus on work now.`,
+  () => `Fragrance sensitivity made everything else unusable. This works without triggering reactions.`,
+  () => `The activated carbon bed does exactly what chemistry says it should. Excellent product.`,
+  () => `honestly just buy it you won't regret it`,
+  () => `My air purifier thanks me. Doesn't have to work as hard now.`,
+  () => `Professional results. Consumer price point. Sold.`,
+  () => `The science of adsorption is well understood. This applies it perfectly.`,
+  () => `My cats are my family. This lets me live with them comfortably. Grateful.`,
+  () => `No masking. Just elimination. That's the difference.`,
+  (context, persona) => `Being a ${persona.occupation} means I notice details. The detail I notice most now is the absence of smell.`,
+  () => `Tried it. It worked. Ordered more. Simple story.`,
+  () => `The carbon's high surface area creates massive adsorption capacity. This product uses it well.`,
+  () => `my therapist said my living environment seemed healthier. this was the change`,
+  () => `Quality carbon filtration in a convenient form. Smart product design.`,
+  () => `Works as advertised every single time. Consistency matters.`,
+  () => `My building allows pets but odor complaints void that privilege. This saves me.`,
+  () => `The thermodynamics favor adsorption. The product works as chemistry predicts.`,
+  () => `no complaints. does everything it promises`,
+  () => `My mom can visit now without commenting on smell. That's worth everything.`,
+  () => `Activated carbon filtration: proven technology, practical application, perfect results.`,
+  () => `Been using for ten months. Still works perfectly. Quality product.`,
+  () => `The molecular bonding is real and measurable. This isn't placebo.`,
+  () => `i hate shopping for this stuff but this is the last product i'll try because it works`,
+  () => `My apartment smells neutral. That's exactly what I paid for.`,
+  () => `The pore structure of activated carbon is ideal for capturing small molecules. This uses that brilliantly.`,
+  (context, persona) => `Managing ${persona.household} became possible with this. Before it was overwhelming.`,
+  () => `Chemical-free odor elimination through physical adsorption. Science working as intended.`,
+  () => `Works. Consistently. Perfectly. End of review.`,
+  () => `My home is my sanctuary again. This made that possible.`,
+  () => `The carbon mechanism is straightforward and effective. No gimmicks needed.`,
+  () => `been using for over a year now. effectiveness hasn't changed. impressed`,
+  () => `My guests never guess I have cats. The smell is completely gone.`,
+  () => `Professional filtration technology made accessible. Excellent.`,
+  () => `The adsorption isotherms favor ammonia capture. Product works exactly as chemistry predicts.`,
+  () => `finally found something that works without making me sick from artificial fragrances`,
+  () => `My quality of life improved significantly. Simple product, profound impact.`,
+  () => `Carbon's microporous structure provides massive surface area for molecular capture. This uses it perfectly.`,
+  () => `Tried everything else first. Should've started here.`,
+  () => `The science is sound. The product delivers. That's all that matters.`,
+  () => `my place smells like nothing and that's exactly what i wanted`,
 ];
 
 const hashString = (value: string): number => {

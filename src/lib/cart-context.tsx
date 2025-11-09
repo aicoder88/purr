@@ -30,6 +30,67 @@ interface CartItem {
   quantity: number;
 }
 
+const VALID_PRODUCT_IDS = new Set(PRODUCTS.map((product) => product.id));
+const MAX_CART_QUANTITY = 99;
+
+const clampQuantity = (value: unknown): number => {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return Math.max(1, Math.min(MAX_CART_QUANTITY, Math.floor(value)));
+  }
+
+  if (typeof value === 'string') {
+    const parsed = Number.parseInt(value, 10);
+    if (Number.isFinite(parsed)) {
+      return Math.max(1, Math.min(MAX_CART_QUANTITY, parsed));
+    }
+  }
+
+  return 1;
+};
+
+const normalizeCartItems = (rawCart: unknown): CartItem[] => {
+  if (!Array.isArray(rawCart)) {
+    return [];
+  }
+
+  const normalized: CartItem[] = [];
+  const mergedById = new Map<string, CartItem>();
+
+  rawCart.forEach((entry) => {
+    if (!entry || typeof entry !== 'object') {
+      return;
+    }
+
+    const candidateId = typeof (entry as { id?: unknown }).id === 'string'
+      ? (entry as { id: string }).id.trim()
+      : typeof (entry as { productId?: unknown }).productId === 'string'
+        ? (entry as { productId: string }).productId.trim()
+        : '';
+
+    if (!candidateId || !VALID_PRODUCT_IDS.has(candidateId)) {
+      return;
+    }
+
+    const safeQuantity = clampQuantity((entry as { quantity?: unknown }).quantity);
+
+    const existing = mergedById.get(candidateId);
+    if (existing) {
+      existing.quantity = Math.max(1, Math.min(MAX_CART_QUANTITY, existing.quantity + safeQuantity));
+      return;
+    }
+
+    const normalizedItem: CartItem = {
+      id: candidateId,
+      quantity: safeQuantity,
+    };
+
+    mergedById.set(candidateId, normalizedItem);
+    normalized.push(normalizedItem);
+  });
+
+  return normalized;
+};
+
 interface CartContextType {
   items: CartItem[];
   addToCart: (productId: string) => void;
@@ -109,8 +170,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          if (Array.isArray(parsedCart)) {
-            setItems(parsedCart);
+          const sanitizedCart = normalizeCartItems(parsedCart);
+
+          if (sanitizedCart.length > 0) {
+            setItems(sanitizedCart);
+            const serialized = JSON.stringify(sanitizedCart);
+            if (serialized !== savedCart) {
+              secureStorage.setItem('cart', serialized);
+            }
+          } else {
+            secureStorage.removeItem('cart');
           }
         } catch (err) {
           console.error('Failed to parse saved cart:', err);
