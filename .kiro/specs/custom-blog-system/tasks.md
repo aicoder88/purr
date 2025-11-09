@@ -32,14 +32,14 @@
   - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
 - [ ] 3. Implement image optimization
-- [ ] 3.1 Create ImageOptimizer class
+- [x] 3.1 Create ImageOptimizer class
   - Implement optimizeImage() to generate AVIF, WebP, JPG
   - Generate responsive sizes (640w, 828w, 1200w, 1920w)
   - Extract image dimensions
   - Compress images with Sharp
   - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-- [ ] 3.2 Create image upload API endpoint
+- [x] 3.2 Create image upload API endpoint
   - Create /api/admin/blog/upload-image endpoint
   - Validate file types and sizes
   - Process uploads with ImageOptimizer
