@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-11-09T14:02:05.600Z",
+  "totalImages": 45,
+  "successful": 44,
+  "failed": 0,
+  "skipped": 1,
+  "errors": [],
+  "statistics": {
+    "totalSizeReduction": 0,
+    "averageProcessingTime": 11767.568181818182,
+    "formatBreakdown": {
+      "avif": 72,
+      "webp": 72,
+      "jpg": 72
+    }
+  }
+}
