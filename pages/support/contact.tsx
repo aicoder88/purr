@@ -199,50 +199,84 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Methods */}
-        <section className="py-16">
+        <section className="py-20 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
                 Get in Touch
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
-                Choose the contact method that works best for you
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Choose the contact method that works best for you. Our friendly team is here to help!
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {contactMethods.map((method, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-6">
-                    <method.icon className="w-8 h-8 text-white dark:text-gray-100" />
+                <div
+                  key={index}
+                  className="group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#FF3131]/20 dark:hover:border-[#FF5050]/20 text-center relative overflow-hidden"
+                >
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5 dark:from-[#FF3131]/10 dark:to-[#5B2EFF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#FF3131] to-[#5B2EFF] rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <method.icon className="w-10 h-10 text-white dark:text-gray-100" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+                      {method.title}
+                    </h3>
+
+                    {/* Value */}
+                    <div className="mb-4">
+                      <p className="text-lg font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">
+                        {method.value}
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-200 font-medium">
+                        {method.description}
+                      </p>
+                    </div>
+
+                    {/* Tagline note for phone */}
+                    {'taglineNote' in method && (
+                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 p-4 rounded-xl mb-4 border border-orange-200 dark:border-orange-800">
+                        <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                          {method.taglineNote}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Response time badge */}
+                    <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-6 border border-blue-200 dark:border-blue-700">
+                      <Clock className="w-4 h-4 mr-2 text-[#FF3131] dark:text-[#FF5050]" />
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                        {method.responseTime}
+                      </p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <Button
+                      className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-bold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                      size="lg"
+                      onClick={() => {
+                        window.location.href = method.action;
+                      }}
+                    >
+                      Contact Now
+                    </Button>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                    {method.title}
-                  </h3>
-                  <p className="text-xl font-semibold text-[#5B2EFF] dark:text-[#3694FF] mb-3">
-                    {method.value}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 mb-2">
-                    {method.description}
-                  </p>
-                  {'taglineNote' in method && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 italic mb-3">
-                      {method.taglineNote}
-                    </p>
-                  )}
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">
-                    {method.responseTime}
-                  </p>
-                  <Button
-                    className="w-full"
-                    onClick={() => {
-                      window.location.href = method.action;
-                    }}
-                  >
-                    Contact Now
-                  </Button>
                 </div>
               ))}
+            </div>
+
+            {/* Help text */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600 dark:text-gray-300 text-lg">
+                💬 <span className="font-semibold">Average response time:</span> Under 2 hours during business hours
+              </p>
             </div>
           </Container>
         </section>
