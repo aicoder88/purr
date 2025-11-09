@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Circle } from 'lucide-react';
-import NextImage from '../../../components/NextImage';
+import Image from 'next/image';
 
 interface TouchGalleryProps {
   images: {
@@ -138,7 +138,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
         >
           {images.map((image, index) => (
             <div key={index} className="w-full h-full flex-shrink-0 relative">
-              <NextImage
+              <Image
                 src={image.src}
                 alt={image.alt}
                 fill

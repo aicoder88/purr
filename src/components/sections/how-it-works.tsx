@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
-import NextImage from "../../../components/NextImage";
+import Image from 'next/image';
 import { useTranslation } from "../../lib/translation-context";
 import Link from "next/link";
 
@@ -82,7 +82,7 @@ export function HowItWorks() {
         {/* Enhanced Coconut Shells Visualization */}
         <div className="max-w-2xl mx-auto text-center mb-16 bg-gradient-to-br from-orange-100 to-yellow-100 dark:from-orange-900/30 dark:to-yellow-900/30 rounded-3xl p-10 border-2 border-orange-300 dark:border-orange-700 shadow-2xl transform hover:-translate-y-2 transition-all duration-500">
           <div className="overflow-hidden rounded-2xl mb-6 h-[300px] sm:h-[400px] flex items-center justify-center shadow-xl">
-            <NextImage
+            <Image
               src="/optimized/catcoco.webp"
               alt="Pure sustainable coconut shells for Purrify activated carbon cat litter"
               width={400}
@@ -122,7 +122,7 @@ export function HowItWorks() {
                 </div>
                 <div className="text-center mt-8">
                   <div className="overflow-hidden rounded-2xl mb-6 h-[250px] sm:h-[400px] flex items-center justify-center shadow-xl border-2 border-gray-100 dark:border-gray-700">
-                    <NextImage
+                    <Image
                       src={step.image}
                       alt={`Step ${step.number}: ${step.title} - ${step.description}`}
                       width={400}

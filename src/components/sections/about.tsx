@@ -4,10 +4,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "../../lib/translation-context";
 import Link from "next/link";
 
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../../../components/NextImage"), {
-  ssr: true,
-});
+import Image from 'next/image';
 
 export function About() {
   const { t, locale } = useTranslation();
@@ -23,7 +20,7 @@ export function About() {
             {/* Pre-allocate space for the image with a fixed height container */}
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF3131]/10 dark:to-[#5B2EFF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 dark:shadow-white/20 transition duration-300 w-10/12 h-[400px] bg-white dark:bg-white/95 p-4">
-              <NextImage
+              <Image
                 src="/optimized/Carbon sktech.webp"
                 alt={t.homepage.altText.scientificDiagram}
                 width={800}
@@ -44,7 +41,7 @@ export function About() {
           <div className="hidden md:block">
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
-                <NextImage
+                <Image
                   src="/optimized/three_bags_no_bg.webp"
                   alt={t.homepage.altText.productPackages}
                   width={400}
@@ -54,7 +51,7 @@ export function About() {
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
-                <NextImage
+                <Image
                   src="/optimized/carbon_magnified_image.webp"
                   alt={t.homepage.altText.microscopicView}
                   width={400}
@@ -64,7 +61,7 @@ export function About() {
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
-                <NextImage
+                <Image
                   src="/optimized/pet-safety-home.webp"
                   alt={t.homepage.altText.happyCat}
                   width={800}

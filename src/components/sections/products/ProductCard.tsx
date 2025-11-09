@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { ShoppingCart, Plus, Minus, Check } from 'lucide-react';
-import NextImage from "../../../../components/NextImage";
+import Image from 'next/image';
 import { createButtonClasses, GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme-utils";
 import { LoadingSpinner, CheckIcon, createStaggeredAnimation } from "@/lib/component-utils";
 import { ecommerceEvents } from '../../../lib/gtm-events';
@@ -119,7 +119,7 @@ export const ProductCard = ({
             {/* Product image */}
             <div className="relative h-full flex items-center justify-center p-4 sm:p-8 z-20">
               <div className="relative max-w-[140px] sm:max-w-[180px] max-h-[140px] sm:max-h-[180px] mx-auto">
-                <NextImage
+                <Image
                   src={product.image}
                   alt={`${product.name} activated carbon cat litter additive package showing ${product.size} size for odor elimination`}
                   width={180}

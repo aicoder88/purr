@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
 import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
-import NextImage from "../../../components/NextImage";
+import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
 
@@ -443,7 +443,7 @@ export function EnhancedProductComparison() {
                     {/* Image Container - NO absolute positioning */}
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
                       <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
-                        <NextImage
+                        <Image
                           src={product.image}
                           alt={product.name}
                           width={200}
@@ -675,7 +675,7 @@ export function EnhancedProductComparison() {
                     {/* Image Container - NO absolute positioning */}
                     <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
                       <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
-                        <NextImage
+                        <Image
                           src={product.image}
                           alt={product.name}
                           width={200}

@@ -153,7 +153,7 @@ export default function InvestorRelations() {
                 {/* Hero Section - Only on overview tab */}
                 <div className="text-center max-w-4xl mx-auto mb-16">
                   <div className="mb-8">
-                    <NextImage
+                    <Image
                       src="/optimized/purrify-logo-text.webp"
                       alt="Purrify Logo"
                       width={200}

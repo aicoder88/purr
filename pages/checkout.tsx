@@ -393,7 +393,7 @@ const CheckoutPage: NextPage = () => {
               <div key={item.id} className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700 last:border-0">
                 <div className="flex items-center gap-3">
                   <div className="w-20 h-20 relative bg-gray-50 dark:bg-gray-700 rounded-lg p-2">
-                    <NextImage
+                    <Image
                       src={product.image}
                       alt={product.name}
                       width={80}

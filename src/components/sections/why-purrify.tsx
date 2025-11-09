@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
-import NextImage from "../../../components/NextImage";
+import Image from 'next/image';
 import { useTranslation } from "../../lib/translation-context";
 
 export function WhyPurrify() {
@@ -97,7 +97,7 @@ export function WhyPurrify() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
 
                   <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center relative">
-                    <NextImage
+                    <Image
                       src={reason.image}
                       alt={reason.title}
                       width={400}

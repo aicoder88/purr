@@ -45,13 +45,14 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
 
         <div ref={mediaContainerRef} className="relative w-full max-w-2xl mx-auto" style={{ aspectRatio: '16/9', maxWidth: '100%' }}>
           {state.showPoster && (
-            <HeroImage
+            <Image
               src="/optimized/cat_rose_thumbnail.avif"
               alt={t.homepage.seo.videoDescription}
               width={1280}
               height={720}
               className="w-full h-auto rounded-2xl object-contain"
               sizes="(max-width: 480px) 100vw, (max-width: 1024px) 90vw, 960px"
+              priority
             />
           )}
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Script from "next/script";
 import type { SVGProps } from "react";
 import { Container } from "../../components/ui/container";
-import NextImage from "../../../components/NextImage";
+import Image from 'next/image';
 import { useTranslation } from "../../lib/translation-context";
 import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
@@ -50,7 +50,7 @@ export function Footer() {
             <div className="flex items-center mb-4">
               <Link href={locale === 'fr' ? "/fr/" : "/"} className="group">
                 <div className="h-6 w-auto mr-2 flex items-center">
-                  <NextImage
+                  <Image
                     src="/optimized/purrify-logo-text.webp"
                     alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                     width={70}
