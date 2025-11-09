@@ -227,108 +227,108 @@ const locationFormatters: LocationFormatter[] = [
 ];
 
 const quoteTemplates: QuoteTemplate[] = [
+  () =>
+    `Skeptical by nature but this stuff just works. No fake flower smell, no BS. The activated carbon actually bonds with ammonia molecules instead of covering them up. Chemistry background so I appreciate the science.`,
+  () =>
+    `honestly idk what's in this but my apartment doesn't smell anymore lol. guests used to make faces and now they don't. that's literally all i needed`,
   (context, persona) =>
-    `Living in ${context.cityName} with ${persona.household}, I was skeptical about another litter product. But Purrify actually works—no perfume smell, just clean air. Total game changer for my home office.`,
+    `After three months of testing various odor control products for ${persona.household}, I can confirm this is the only one that eliminated ammonia smell rather than masking it. Highly effective.`,
+  () =>
+    `GAME CHANGER. That's it. That's the review.`,
+  (context) =>
+    `I'm not one to write reviews but I had to. The difference is night and day. My mother-in-law visited last week and didn't say ONE word about the litter box. If you know, you know. Thank you.`,
+  () =>
+    `Works exactly as described. Fragrance-free, which was my main requirement. Would purchase again.`,
   (context, persona) =>
-    `My landlord mentioned the smell during our last inspection. Started using Purrify and now there's literally nothing to notice. Worth every penny for anyone in ${toSentenceCase(context.housingHighlight)}.`,
+    `Been a ${persona.occupation} for 15 years and never thought I'd be writing about cat litter additives, but here we are. This product saved my home office situation. The smell was genuinely affecting my ability to concentrate.`,
+  () =>
+    `My cats don't even notice it's there, which is perfect because they're picky about everything. But I notice the difference immediately. No more ammonia smell hitting you in the face.`,
+  (context) =>
+    `Tried baking soda, tried those scented crystals, tried literally everything Amazon recommended. This is the first thing that actually worked. Wish I hadn't wasted six months on the other stuff.`,
+  () =>
+    `Simple, effective, no nonsense. Sprinkle it on, smell goes away. That's the entire experience and I'm extremely satisfied with that.`,
   (context, persona) =>
-    `As a ${persona.occupation}, I'm home all day with ${persona.household}. Tried everything before this. Purrify is the first thing that handles ${context.cityName} humidity without covering up odors with fake scents.`,
+    `As someone with ${persona.household}, I've become an unwilling expert on odor control. This is the first product I've used that I'd actually recommend to other multi-cat households without reservation.`,
+  () =>
+    `The carbon technology is legit. I was curious so I did some research—activated carbon has been used in air filtration for decades. This isn't snake oil, it's actual science.`,
+  () =>
+    `my sister recommended this after I complained about the smell for the millionth time. should've listened to her sooner. apartment smells normal now`,
+  (context) =>
+    `I have a sensitive nose and most "odor eliminators" just give me a headache from the fake scents. This has zero smell itself and actually eliminates the ammonia. Finally.`,
+  () =>
+    `Worth every penny. That's all I'll say.`,
   (context, persona) =>
-    `I have ${persona.household} in a small space. The litter box used to be obvious the moment you walked in. Now guests don't even realize we have cats until they see them.`,
+    `Running ${persona.household} through a small space, I needed something industrial-strength. This handles it without making my place smell like a Bath & Body Works exploded.`,
+  () =>
+    `The molecular bonding thing isn't marketing hype—you can actually tell it's capturing the smell at the source rather than covering it up. Different mechanism entirely from those scented products.`,
+  () =>
+    `Just buy it. Stop reading reviews and buy it. You'll thank me later.`,
+  (context) =>
+    `I'm the kind of person who reads ingredient lists and researches everything. This is just activated carbon—safe, effective, no weird chemicals. That transparency matters to me.`,
+  () =>
+    `Fixes the problem without creating new ones. Rare in consumer products these days.`,
   (context, persona) =>
-    `Work from home means I notice every smell. Purrify neutralizes ammonia so fast—I can actually focus on my ${persona.occupation} work instead of worrying about the litter box.`,
+    `Having ${persona.household} used to be embarrassing when people came over. Not anymore. This stuff is quiet, effective, and doesn't smell like anything. Perfect combo.`,
+  () =>
+    `My partner is chemically sensitive and this is the ONLY thing we've found that works for him. Fragrance-free actually means fragrance-free. Grateful to have found it.`,
+  () =>
+    `Been using for 4 months. Still works. Still no smell. Still buying more.`,
+  (context) =>
+    `I foster cats so I go through a LOT of litter. This makes the whole operation actually manageable without turning my place into a gas chamber of fake lavender scent.`,
+  () =>
+    `The science checks out, the product works, and I don't have to hold my breath when I walk past the litter box anymore. A+ experience.`,
+  () =>
+    `no complaints at all. does what it says it'll do`,
   (context, persona) =>
-    `Hosting friends in ${context.cityName} was embarrassing before. Even with daily scooping, ${persona.household} made the apartment smell. Purrify fixed that completely.`,
+    `As a ${persona.occupation}, I'm home constantly and the smell was getting unbearable. Tried this on a whim and it actually solved the problem. Rare to find products that deliver on their promises.`,
+  () =>
+    `My landlord does quarterly inspections and used to comment on pet odors. Started using this and haven't heard a word since. Problem solved.`,
+  () =>
+    `Activated carbon is the real deal. Not some gimmick. This works on a molecular level and you can tell.`,
+  () =>
+    `simple. effective. affordable. everything you need and nothing you don't`,
+  (context) =>
+    `I have respiratory issues and can't be around strong scents. This eliminated the ammonia smell without adding any fragrance. Exactly what I needed and nearly impossible to find elsewhere.`,
+  () =>
+    `The difference between this and those scented sprays is like the difference between cleaning your kitchen and just lighting a candle in it. One actually fixes the problem.`,
+  () =>
+    `Five stars. Would give more if I could.`,
   (context, persona) =>
-    `My partner works nights, so I needed something that works 24/7 without being overpowering. Purrify just quietly does its job. No fragrances, no fuss.`,
+    `With ${persona.household} in a tiny apartment, odor control isn't optional—it's survival. This is the first thing that's actually kept up with the demand. Genuinely impressive.`,
+  () =>
+    `My cats are basically family and their litter box was making my home uninhabitable. This fixed it without any weird chemicals or overpowering scents. So relieved.`,
+  () =>
+    `Works. That's it. Just works.`,
+  (context) =>
+    `I'm particular about what I bring into my home and this passed all my tests. Safe, effective, transparent about ingredients. Recommend without hesitation.`,
+  () =>
+    `The activated carbon bonds with the ammonia molecules before they can spread through your living space. That's not marketing—that's just chemistry. And it works exactly as advertised.`,
+  () =>
+    `best purchase i've made this year and i'm including my new couch in that comparison`,
   (context, persona) =>
-    `${capitalize(persona.household)} in our ${toSentenceCase(context.housingHighlight)}—it was rough. Tried baking soda, special litters, everything. Purrify is the only product that actually eliminated the odor instead of masking it.`,
+    `Being a ${persona.occupation} means I notice details, and the detail I noticed most was how completely this eliminated the smell. No masking, no perfume, just clean air.`,
+  () =>
+    `Tried literally everything else first. This is the only one that worked. Save yourself the trial and error.`,
+  () =>
+    `No fragrance. No fuss. No smell. Perfect.`,
+  (context) =>
+    `I have sensory processing issues and strong smells are genuinely painful for me. The ammonia from the litter box was making me miserable, and scented products are even worse. This solved both problems.`,
+  () =>
+    `The molecular science is sound. Product delivers. Case closed.`,
+  () =>
+    `honestly shocked at how well this works. thought it would be like everything else (useless) but it actually eliminates the smell instead of covering it up`,
   (context, persona) =>
-    `I'm a ${persona.occupation} and my schedule means I can't scoop as often as I'd like. Purrify keeps things fresh between cleanings. Legitimately impressed.`,
-  (context, persona) =>
-    `The ${context.cityName} heat makes everything worse in summer. Purrify handles it even when our AC can't keep up. Finally something that works in real ${context.provinceName} conditions.`,
-  (context, persona) =>
-    `Been fostering for years with ${persona.household}. This is the first odor control that actually keeps up with multiple cats. No comparison to sprays or plugins.`,
-  (context, persona) =>
-    `My mom visits monthly and she's sensitive to smells. Since switching to Purrify, she hasn't mentioned the litter box once. That tells you everything.`,
-  (context, persona) =>
-    `Small ${toSentenceCase(context.housingHighlight)} meant the smell would spread everywhere. Purrify contains it right at the source. Wish I'd found this years ago.`,
-  (context, persona) =>
-    `Dating with ${persona.household} was tough—nobody wants to hang out in a place that smells. Purrify solved that problem completely. Air stays fresh now.`,
-  (context, persona) =>
-    `I teach yoga from home and need the space to smell neutral. Purrify delivers without any artificial fragrances. Perfect for a ${persona.occupation} who's sensitive to scents.`,
-  (context, persona) =>
-    `Our building has thin walls and I was worried about complaints. Using Purrify means no odors escaping into the ${context.cityName} hallway. Neighbors have no idea we have cats.`,
-  (context, persona) =>
-    `Tried every "natural" litter additive out there. Most just add another smell. Purrify actually absorbs the ammonia—you can tell the difference immediately.`,
-  (context, persona) =>
-    `I foster ${persona.household} and the shelter recommended this. Now I understand why. Even with high turnover, my apartment doesn't smell like a cattery anymore.`,
-  (context, persona) =>
-    `Working as a ${persona.occupation} means unpredictable hours. Can't always scoop on schedule. Purrify gives me breathing room without the place smelling neglected.`,
-  (context, persona) =>
-    `My allergist suggested reducing airborne irritants. Purrify helped with litter box odor without adding perfumes that trigger my reactions. Double win.`,
-  (context, persona) =>
-    `Living in ${context.cityName} with ${persona.household}—I needed something that works in our ${context.provinceName} climate. Purrify handles humidity and temperature swings like nothing else.`,
-  (context, persona) =>
-    `Basement apartment means limited airflow. The litter smell would linger for days. Purrify cleared that up within a week. Actually works as advertised.`,
-  (context, persona) =>
-    `Have ${persona.household} and used to light candles constantly. Realized I was just mixing smells. Purrify eliminates the source problem. So much better.`,
-  (context, persona) =>
-    `My ${persona.occupation} job is stressful enough without coming home to litter box smell. Purrify keeps my sanctuary actually relaxing. Simple solution that works.`,
-  (context, persona) =>
-    `Apartment viewings were mortifying with ${persona.household}. Started using Purrify and now my place always smells fresh. Total confidence booster.`,
-  (context, persona) =>
-    `I'm in ${toSentenceCase(context.housingHighlight)} with limited storage, so I can't stockpile fancy litters. Purrify works with whatever's on sale. That flexibility matters.`,
-  (context, persona) =>
-    `Family gatherings at my place used to be a no-go. The litter box smell was too obvious. Now I host regularly thanks to Purrify keeping things neutral.`,
-  (context, persona) =>
-    `Moving to ${context.cityName} meant downsizing. Smaller space, same ${persona.household}. Purrify made the transition manageable by controlling odors in tight quarters.`,
-  (context, persona) =>
-    `I run a side business from home as a ${persona.occupation}. Clients used to comment about "pet smells." That stopped completely after I started using Purrify.`,
-  (context, persona) =>
-    `The litter box is in my bathroom—not ideal but it's the only spot. Purrify means guests can actually use it without holding their breath. Huge relief.`,
-  (context, persona) =>
-    `Summer in ${context.cityName} is brutal for litter box odors. Purrify handles it without me having to scoop every three hours. Makes ${context.provinceName} summers bearable.`,
-  (context, persona) =>
-    `Have ${persona.household} in a rent-controlled place I can't lose. Purrify protects my deposit by keeping odors from seeping into carpets. Smart investment.`,
-  (context, persona) =>
-    `My kid's friends come over constantly. Used to worry about them noticing the litter smell. Purrify eliminated that anxiety completely. Just fresh air now.`,
-  (context, persona) =>
-    `Night shifts as a ${persona.occupation} mean I sleep during the day. Can't have strong scents disrupting that. Purrify works silently and scentlessly. Perfect solution.`,
-  (context, persona) =>
-    `Tried clay, crystal, pine—every litter type. They all smelled eventually. Adding Purrify on top was the missing piece. Finally cracked the odor code.`,
-  (context, persona) =>
-    `Open concept ${toSentenceCase(context.housingHighlight)} means smells travel fast. Purrify stops the ammonia at the litter box before it reaches the kitchen. Game changer for entertaining.`,
-  (context, persona) =>
-    `My senior cat has digestive issues. The smell was honestly awful. Purrify handles even that without any perfume overlay. Nothing else came close.`,
-  (context, persona) =>
-    `Working remotely with ${persona.household} exposed me to the litter box smell 24/7. Purrify gave me my quality of life back. Can't recommend it enough.`,
-  (context, persona) =>
-    `${context.cityName} winters mean closed windows for months. Used to get headaches from trapped odors. Purrify solved that problem completely. Fresh air even in February.`,
-  (context, persona) =>
-    `I'm a ${persona.occupation} with a sensitive nose. Most products were worse than the original smell. Purrify has zero added fragrance—just neutralization. Finally something that works for me.`,
-  (context, persona) =>
-    `Studio living with ${persona.household} seemed impossible. Purrify made it work by containing odors immediately. Now I actually enjoy my small space again.`,
-  (context, persona) =>
-    `My partner was allergic to the perfumed alternatives. Purrify's fragrance-free formula works for both of us. No more compromise between fresh air and health.`,
-  (context, persona) =>
-    `Been in ${context.cityName} for ten years with ${persona.household}. Wish I'd found Purrify sooner. Would've saved me from so many awkward guest situations.`,
-  (context, persona) =>
-    `The ${toSentenceCase(context.climateHighlight)} in ${context.provinceName} makes odor control tricky. Purrify adapts to conditions better than anything I've tried. Truly effective.`,
-  (context, persona) =>
-    `I foster special needs cats—${persona.household} currently. Accidents happen. Purrify handles the worst days without making me feel like I live in a perfume factory.`,
-  (context, persona) =>
-    `Multiple litter boxes in my ${toSentenceCase(context.housingHighlight)} used to be overwhelming. One bottle of Purrify covers all of them. Efficient and effective.`,
-  (context, persona) =>
-    `Work as a ${persona.occupation}, so my uniform can't smell like cats. Since using Purrify, laundry doesn't pick up litter box odors anymore. Professional problem solved.`,
-  (context, persona) =>
-    `Moved from a house to ${toSentenceCase(context.housingHighlight)} in ${context.cityName}. Space got smaller but cat count didn't. Purrify made the transition actually work.`,
-  (context, persona) =>
-    `My video calls for work used to stress me out—worried people could smell the litter box through the screen somehow. Purrify gave me confidence my space is truly odor-free.`,
-  (context, persona) =>
-    `Dating apps and ${persona.household} don't mix well. Purrify means first dates at my place don't end with awkward smell comments. Confidence matters.`,
-  (context, persona) =>
-    `I have severe asthma and can't tolerate fragrance. Purrify's activated carbon approach works without triggering my lungs. Medical necessity met with a good product.`,
+    `Managing ${persona.household} used to mean constant vigilance about smells. Now I just sprinkle this on and forget about it. Life-changing might sound dramatic but that's genuinely how it feels.`,
+  () =>
+    `Carbon filtration technology in a bottle. Simple, effective, scientifically valid. Everything I look for in a product.`,
+  () =>
+    `My standards are high and this met them. Rare.`,
+  () =>
+    `just works like it's supposed to. refreshing in a world of overpromising and underdelivering`,
+  (context) =>
+    `The fact that it's fragrance-free was the selling point for me. The fact that it actually works was the bonus. Both things are true and both things matter.`,
+  () =>
+    `Five stars. No notes. Perfect product.`,
 ];
 
 const hashString = (value: string): number => {
