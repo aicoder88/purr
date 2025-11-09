@@ -60,14 +60,14 @@
   - _Requirements: 10.1, 10.2, 10.3, 10.5_
 
 - [ ] 5. Create admin UI foundation
-- [ ] 5.1 Build admin layout component
+- [x] 5.1 Build admin layout component
   - Create AdminLayout with top bar and navigation
   - Add logo and user menu
   - Implement tab navigation (Posts, Categories, Tags, Media)
   - Style with Purrify brand colors
   - _Requirements: 1.1_
 
-- [ ] 5.2 Create reusable UI components
+- [x] 5.2 Create reusable UI components
   - Build Button component with variants
   - Create Input and Textarea components
   - Build Select and Checkbox components

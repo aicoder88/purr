@@ -14,6 +14,8 @@ import { useRouter } from 'next/router';
 import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
+import { SessionProvider } from 'next-auth/react';
+import { ToastProvider } from '../src/components/admin/Toast';
 
 const Toaster = dynamic(() => import('../src/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
   ssr: false,
@@ -106,9 +108,10 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
-      <CartProvider>
-        <TranslationProvider language={locale ?? 'en'}>
+    <SessionProvider session={pageProps.session}>
+      <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
+        <CartProvider>
+          <TranslationProvider language={locale ?? 'en'}>
           <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -217,10 +220,12 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           
           
           <Toaster />
+          <ToastProvider />
           <AnalyticsComponent />
         </TranslationProvider>
       </CartProvider>
     </ThemeProvider>
+    </SessionProvider>
   );
 }
 
