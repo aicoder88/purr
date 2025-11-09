@@ -92,7 +92,7 @@
   - _Requirements: 1.1, 1.5_
 
 - [ ] 7. Build block-based editor
-- [ ] 7.1 Set up Novel or TipTap editor
+- [x] 7.1 Set up Novel or TipTap editor
   - Install and configure editor library
   - Create EditorComponent wrapper
   - Style editor to match WordPress Gutenberg

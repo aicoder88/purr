@@ -1,9 +1,9 @@
 # TypeScript Unused Identifier Report
 
-Generated: 2025-11-09T15:30:13.882Z
+Generated: 2025-11-09T16:17:36.573Z
 
-- Total issues detected: 88
-- Files impacted: 34
+- Total issues detected: 90
+- Files impacted: 36
 
 ## Top Offenders
 - src/components/sections/locations/createCityPage.tsx: 20 issues
@@ -24,13 +24,13 @@ Generated: 2025-11-09T15:30:13.882Z
 - src/components/sections/subscription-offer.tsx: 2 issues
 - src/lib/cache-utils.ts: 2 issues
 - pages/about/our-story.tsx: 1 issue
+- pages/admin/blog/index.tsx: 1 issue
 - pages/admin/referral-analytics.tsx: 1 issue
 - pages/api/robots.ts: 1 issue
 - pages/blog/cat-litter-smell-worse-winter.tsx: 1 issue
 - pages/checkout.tsx: 1 issue
 - pages/invest.tsx: 1 issue
 - pages/refer/[code].tsx: 1 issue
-- src/components/maps/ClientLocationsMap.tsx: 1 issue
 
 ## Detailed Findings
 ### src/components/sections/locations/createCityPage.tsx
@@ -141,6 +141,9 @@ Generated: 2025-11-09T15:30:13.882Z
 ### pages/about/our-story.tsx
   - 22,11 — 'milestones' is declared but its value is never read.
 
+### pages/admin/blog/index.tsx
+  - 17,62 — 'locale' is declared but its value is never read.
+
 ### pages/admin/referral-analytics.tsx
   - 18,24 — 'setSystemHealth' is declared but its value is never read.
 
@@ -183,6 +186,9 @@ Generated: 2025-11-09T15:30:13.882Z
 ### src/components/video/SolutionVideos.tsx
   - 1,23 — 'VideoGallery' is declared but its value is never read.
 
+### src/lib/blog/image-optimizer.ts
+  - 80,44 — 'format' is declared but its value is never read.
+
 ### src/lib/seo-utils.ts
   - 2,42 — 'formatProductPrice' is declared but its value is never read.
 
@@ -193,8 +199,15 @@ Generated: 2025-11-09T15:30:13.882Z
 
 ### Raw TypeScript Output
 ```
+pages/_app.tsx(111,22): error TS2322: Type 'unknown' is not assignable to type 'Session | null | undefined'.
 pages/about/our-story.tsx(22,11): error TS6133: 'milestones' is declared but its value is never read.
+pages/admin/blog/index.tsx(17,62): error TS6133: 'locale' is declared but its value is never read.
 pages/admin/referral-analytics.tsx(18,24): error TS6133: 'setSystemHealth' is declared but its value is never read.
+pages/api/admin/blog/upload-image.ts(55,28): error TS2322: Type 'Buffer<ArrayBufferLike>' is not assignable to type 'BlobPart'.
+  Type 'Buffer<ArrayBufferLike>' is not assignable to type 'ArrayBufferView<ArrayBuffer>'.
+    Types of property 'buffer' are incompatible.
+      Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+        Type 'SharedArrayBuffer' is missing the following properties from type 'ArrayBuffer': resizable, resize, detached, transfer, transferToFixedLength
 pages/api/robots.ts(3,33): error TS6133: 'req' is declared but its value is never read.
 pages/blog/cat-litter-smell-worse-winter.tsx(11,7): error TS6133: 'ventilationImage' is declared but its value is never read.
 pages/checkout.tsx(13,1): error TS6133: 'dynamic' is declared but its value is never read.
@@ -296,6 +309,7 @@ src/lib/blog/ai-client.ts(31,7): error TS2769: No overload matches this call.
         Types of property 'role' are incompatible.
           Type '"user" | "system"' is not assignable to type '"user" | "assistant"'.
             Type '"system"' is not assignable to type '"user" | "assistant"'.
+src/lib/blog/image-optimizer.ts(80,44): error TS6133: 'format' is declared but its value is never read.
 src/lib/cache-utils.ts(264,11): error TS6133: 'decompress' is declared but its value is never read.
 src/lib/cache-utils.ts(358,19): error TS6133: 'target' is declared but its value is never read.
 src/lib/seo-utils.ts(2,42): error TS6133: 'formatProductPrice' is declared but its value is never read.
