@@ -76,7 +76,7 @@
   - _Requirements: 1.1, 1.4_
 
 - [ ] 6. Build post listing page
-- [ ] 6.1 Create /admin/blog page
+- [x] 6.1 Create /admin/blog page
   - Display all posts in a list/grid
   - Show post status, date, views, categories
   - Add search functionality
@@ -84,7 +84,7 @@
   - Add category/tag filters
   - _Requirements: 1.1, 2.5_
 
-- [ ] 6.2 Add post actions
+- [x] 6.2 Add post actions
   - Implement Edit button
   - Add Quick Edit inline editing
   - Create Delete with confirmation
