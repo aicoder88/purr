@@ -1,5 +1,5 @@
 import { VideoPlayer, VideoGallery } from './VideoPlayer';
-import { OptimizedImage } from '../performance/OptimizedImage';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 // How-to video component for solution pages
@@ -87,7 +87,7 @@ export function HowToVideo({
                   </p>
 
                   {step.image && (
-                    <OptimizedImage
+                    <Image
                       src={step.image}
                       alt={step.title}
                       width={200}
@@ -248,7 +248,7 @@ export function TestimonialVideo({
         <div>
           <div className="flex items-center mb-6">
             {customer.photo && (
-              <OptimizedImage
+              <Image
                 src={customer.photo}
                 alt={customer.name}
                 width={64}

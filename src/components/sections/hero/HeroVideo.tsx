@@ -1,5 +1,5 @@
 import { useVideoPlayer } from './useVideoPlayer';
-import { HeroImage } from "@/components/performance/OptimizedImage";
+import Image from 'next/image';
 
 interface HeroVideoProps {
   t: {
