@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -63,21 +63,19 @@ export default function ContactPage() {
       icon: Phone,
       title: "Phone Support",
       value: CONTACT_INFO.phone,
-      description: "Speak directly with our team",
+      description: PHONE_NUMBER.tagline,
       responseTime: "Mon-Fri, 9AM-5PM EST",
-      action: CONTACT_INFO.phoneHref
-    }
-    // Live chat temporarily disabled
-    /*
+      action: CONTACT_INFO.phoneHref,
+      taglineNote: PHONE_NUMBER.description
+    },
     {
       icon: MessageCircle,
-      title: "Live Chat", 
-      value: "Available Now",
-      description: "Instant help for quick questions",
-      responseTime: "Average response: 2 minutes",
-      action: "#"
+      title: "WhatsApp Chat",
+      value: "Chat with us",
+      description: "Instant messaging via WhatsApp",
+      responseTime: "Usually within 1 hour",
+      action: "https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify"
     }
-    */
   ];
 
   const faqs = [
@@ -241,18 +239,18 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-300 mb-2">
                     {method.description}
                   </p>
+                  {'taglineNote' in method && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic mb-3">
+                      {method.taglineNote}
+                    </p>
+                  )}
                   <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">
                     {method.responseTime}
                   </p>
-                  <Button 
+                  <Button
                     className="w-full"
                     onClick={() => {
-                      if (method.action.startsWith('#')) {
-                        // Handle live chat
-                        alert('Live chat feature coming soon! Please use email or phone for now.');
-                      } else {
-                        window.location.href = method.action;
-                      }
+                      window.location.href = method.action;
                     }}
                   >
                     Contact Now

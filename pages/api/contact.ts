@@ -19,6 +19,16 @@ const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 5;
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
 
+// Debug log EmailJS config on startup
+console.log('[EmailJS Contact API] Configuration Status:', {
+  publicKeySet: !!EMAILJS_CONFIG.publicKey,
+  serviceIdSet: !!EMAILJS_CONFIG.serviceId,
+  templateIdSet: !!EMAILJS_CONFIG.templateId,
+  privateKeySet: !!EMAILJS_CONFIG.privateKey,
+  publicKeyPrefix: EMAILJS_CONFIG.publicKey ? EMAILJS_CONFIG.publicKey.substring(0, 8) + '...' : 'MISSING',
+  serviceIdValue: EMAILJS_CONFIG.serviceId || 'MISSING',
+});
+
 /**
  * Send email via EmailJS API
  */
@@ -257,9 +267,11 @@ export default async function handler(
     console.log('Email result:', emailResult);
 
     if (!emailResult.success) {
-      console.warn('Email failed but returning success to user:', emailResult.message);
-      // Note: We return success anyway so user sees the confirmation message
-      // The email sending failure is logged for debugging
+      console.error('Email sending failed:', emailResult.message);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to send your message. Please try again or contact us directly at support@purrify.ca'
+      });
     }
 
     // Log successful submission
