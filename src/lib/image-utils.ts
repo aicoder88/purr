@@ -4,7 +4,7 @@
  * Helper functions for working with optimized images and Next.js Image component.
  */
 
-import imageDimensions from '@/public/image-dimensions.json';
+import imageDimensionsData from '../../public/image-dimensions.json';
 
 /**
  * Image metadata interface
@@ -28,7 +28,8 @@ export interface ImageMetadata {
  * @returns Image metadata or null if not found
  */
 export function getImageMetadata(imagePath: string): ImageMetadata | null {
-  const metadata = (imageDimensions as Record<string, ImageMetadata>)[imagePath];
+  const imageDimensions = imageDimensionsData as unknown as Record<string, ImageMetadata>;
+  const metadata = imageDimensions[imagePath];
   return metadata || null;
 }
 
@@ -78,7 +79,10 @@ export function getAvailableFormats(imagePath: string): string[] {
   }
 
   return Object.keys(metadata.formats).filter(
-    format => metadata.formats[format as keyof typeof metadata.formats]?.length > 0
+    format => {
+      const formatPaths = metadata.formats[format as keyof typeof metadata.formats];
+      return formatPaths && formatPaths.length > 0;
+    }
   );
 }
 
@@ -136,7 +140,7 @@ export function getImageDimensions(imagePath: string): { width: number; height: 
  */
 export function getImageAspectRatio(imagePath: string): number | null {
   const metadata = getImageMetadata(imagePath);
-  return metadata?.aspectRatio || null;
+  return metadata?.aspectRatio ?? null;
 }
 
 /**

@@ -565,10 +565,6 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     : null;
 
   const trustedAudience = formatTrustedAudience(profile.metroPopulation);
-  const retailerAllies = profile.retailerAllies.length > 0
-    ? profile.retailerAllies
-    : ['local pet retailers'];
-
   const keyFeatures = profile.housingHighlights.length > 0
     ? profile.housingHighlights
     : ['busy households', 'multi-cat families'];
@@ -777,10 +773,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                       Ask Your Local Pet Store
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-2">
-                      Independent retailers and national partners across {profile.name} stock the odor eliminator cat parents talk about.
+                      Independent pet stores across {profile.name} stock the odor eliminator cat parents talk about.
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Start with {retailerAllies.join(', ')} or tell your favourite shop about Purrify.
+                      Start with your favourite neighbourhood shop or tell them you want to see Purrify on the shelf.
                     </p>
                   </div>
                   <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
@@ -976,7 +972,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                   Which litter brands work best with Purrify in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {profile.name} cat owners use it with brands found at {retailerAllies[0] || 'local pet stores'}, and it enhances them all without changing your cat's preferences.
+                  Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {profile.name} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences.
                 </p>
               </div>
 
@@ -994,7 +990,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                   Can I find Purrify at pet stores in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Many {profile.name} retailers stock Purrify, including {retailerAllies.slice(0, 2).join(' and ')}. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {profile.province}.
+                  Many independent retailers in {profile.name} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {profile.province}.
                 </p>
               </div>
 
