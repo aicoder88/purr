@@ -73,25 +73,33 @@ export function SubscriptionOffer() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-[#FF3131]/5 via-[#FFFFF5] to-[#FF3131]/10 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
-      <Container>
+    <section className="py-20 md:py-28 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-80 h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <Container className="relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-6 py-2 rounded-full mb-6 shadow-lg">
-              <Zap className="w-5 h-5 mr-2" />
-              <span className="font-bold">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
+          {/* Header - Enhanced */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+              <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <span className="font-bold text-purple-700 dark:text-purple-300">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-              {t.subscriptionOfferExtended?.headline || 'Set & forget your litter odor defense'}
+            
+            <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
+              {t.subscriptionOfferExtended?.headline || 'Subscribe & Save'}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
               {t.subscriptionOfferExtended?.supportingCopy || 'Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.'}
             </p>
           </div>
 
-          {/* Subscription Plans */}
-          <div className="flex justify-center mb-12">
+          {/* Subscription Plans - Enhanced */}
+          <div className="flex justify-center mb-16">
             {plans.map(plan => {
               const paymentLink = getPaymentLink(plan.linkKey);
               const savingsLabel = plan.savingsPercent > 0 ? formatSavingsText(plan.savingsPercent) : null;
@@ -99,81 +107,93 @@ export function SubscriptionOffer() {
               return (
                 <div
                   key={plan.id}
-                  className={`relative overflow-hidden rounded-2xl transition-all duration-300 bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl hover:scale-[1.02] max-w-md ${
-                    plan.highlight ? 'ring-4 ring-[#FF3131]/25 scale-[1.02]' : ''
+                  className={`relative overflow-hidden rounded-3xl transition-all duration-500 bg-white dark:bg-gray-800 shadow-2xl hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:scale-[1.03] max-w-md border-2 ${
+                    plan.highlight ? 'border-purple-300 dark:border-purple-600' : 'border-gray-200 dark:border-gray-700'
                   }`}
                 >
+                  {/* Gradient overlay */}
                   {plan.highlight && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/12 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-orange-500/5 dark:from-purple-500/10 dark:via-pink-500/10 dark:to-orange-500/10 pointer-events-none" aria-hidden="true" />
                   )}
-                  {plan.badge ? (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white dark:text-gray-100 px-5 py-1.5 rounded-full shadow-lg text-xs font-semibold uppercase tracking-wide">
+                  
+                  {/* Badge */}
+                  {plan.badge && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-6 py-2 rounded-full shadow-xl text-sm font-black uppercase tracking-wide">
                         {plan.badge}
                       </div>
                     </div>
-                  ) : null}
+                  )}
 
-                  <div className="pt-12 px-8 pb-8 space-y-6 relative">
-                    <div className="space-y-2 text-center">
-                      <h3 className={`text-2xl font-bold ${plan.highlight ? 'text-[#FF3131]' : 'text-gray-900 dark:text-gray-50'}`}>{plan.name}</h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{plan.description}</p>
+                  <div className="pt-14 px-8 pb-8 space-y-6 relative">
+                    {/* Title & Description */}
+                    <div className="space-y-3 text-center">
+                      <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white leading-tight">
+                        {plan.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                        {plan.description}
+                      </p>
                     </div>
 
-                    <div className="text-center space-y-3">
-                      <div className="text-4xl font-extrabold text-gray-900 dark:text-gray-50">{plan.priceFormatted}</div>
-                      <p className="text-sm font-medium text-[#FF3131]">{plan.perMonthLabel}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">{plan.billingLabel}</p>
+                    {/* Pricing */}
+                    <div className="text-center space-y-3 py-4">
+                      <div className="text-5xl font-black bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                        {plan.priceFormatted}
+                      </div>
+                      <p className="text-base font-bold text-purple-600 dark:text-purple-400">
+                        {plan.perMonthLabel}
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {plan.billingLabel}
+                      </p>
 
-                      {/* Prominent Shipping Callout */}
-                      <div className={`rounded-lg p-3 font-semibold text-sm ${
+                      {/* Shipping Callout - Enhanced */}
+                      <div className={`rounded-xl p-4 font-bold text-base shadow-lg ${
                         plan.id === 'family-autoship'
-                          ? 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 border-2 border-green-500 dark:border-green-500'
-                          : 'bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 border-2 border-amber-500 dark:border-amber-500'
+                          ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/40 dark:to-emerald-900/40 text-green-800 dark:text-green-200 border-2 border-green-400 dark:border-green-600'
+                          : 'bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 text-amber-900 dark:text-amber-200 border-2 border-amber-400 dark:border-amber-600'
                       }`}>
                         {plan.id === 'family-autoship'
                           ? '✓ FREE SHIPPING INCLUDED'
                           : '+ Shipping costs apply'}
                       </div>
 
-                      {savingsLabel ? (
-                        <span className="inline-block mt-2 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-4 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
+                      {/* Savings Badge */}
+                      {savingsLabel && (
+                        <div className="inline-block bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/50 dark:to-emerald-900/50 text-green-800 dark:text-green-200 px-5 py-2 rounded-full text-sm font-black border-2 border-green-300 dark:border-green-700 shadow-md">
                           {savingsLabel}
-                        </span>
-                      ) : null}
+                        </div>
+                      )}
                     </div>
 
-                    <ul className="space-y-3 text-sm">
+                    {/* Features */}
+                    <ul className="space-y-4 text-base py-4">
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
-                          <Check className="w-4 h-4 text-[#03E46A] mt-0.5 flex-shrink-0" />
-                          <span>{feature}</span>
+                          <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-full p-1 mt-0.5 flex-shrink-0">
+                            <Check className="w-4 h-4 text-white" />
+                          </div>
+                          <span className="font-medium">{feature}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div>
+                    {/* CTA Button */}
+                    <div className="pt-4">
                       {paymentLink ? (
                         <Button
                           asChild
-                          className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
-                            plan.highlight
-                              ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl'
-                              : 'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]'
-                          }`}
+                          className="w-full py-6 text-xl font-black transition-all duration-300 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
                         >
-                          <a href={paymentLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                            <Zap className="w-5 h-5" />
+                          <a href={paymentLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
+                            <Zap className="w-6 h-6" />
                             {plan.ctaLabel}
                           </a>
                         </Button>
                       ) : (
                         <Button
-                          className={`w-full py-4 text-lg font-bold transition-all duration-300 ${
-                            plan.highlight
-                              ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/60 text-white dark:text-gray-100 opacity-80'
-                              : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 opacity-80'
-                          }`}
+                          className="w-full py-6 text-xl font-black bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 opacity-60"
                           disabled
                         >
                           {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
@@ -186,54 +206,72 @@ export function SubscriptionOffer() {
             })}
           </div>
 
-          {/* Trust Indicators */}
-          <div className="grid md:grid-cols-4 gap-6 text-center">
-            <div className="flex flex-col items-center">
-              <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
-                <Truck className="w-8 h-8 text-[#FF3131]" />
+          {/* Trust Indicators - Enhanced */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div className="flex flex-col items-center group">
+              <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Truck className="w-10 h-10 text-white" />
               </div>
-              {/* <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">Free Shipping</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">On all subscription orders</p> */}
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.fastDelivery}</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.quickReliableShipping}</p>
+              <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
+                {t.homepage.subscription.fastDelivery}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {t.homepage.subscription.quickReliableShipping}
+              </p>
             </div>
             
-            <div className="flex flex-col items-center">
-              <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
-                <Shield className="w-8 h-8 text-[#FF3131]" />
+            <div className="flex flex-col items-center group">
+              <div className="bg-gradient-to-br from-pink-500 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Shield className="w-10 h-10 text-white" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.thirtyDayGuarantee}</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.moneyBackPromise}</p>
+              <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
+                {t.homepage.subscription.thirtyDayGuarantee}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {t.homepage.subscription.moneyBackPromise}
+              </p>
             </div>
             
-            <div className="flex flex-col items-center">
-              <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
-                <Clock className="w-8 h-8 text-[#FF3131]" />
+            <div className="flex flex-col items-center group">
+              <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Clock className="w-10 h-10 text-white" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.skipAnytime}</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.fullControlDeliveries}</p>
+              <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
+                {t.homepage.subscription.skipAnytime}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {t.homepage.subscription.fullControlDeliveries}
+              </p>
             </div>
             
-            <div className="flex flex-col items-center">
-              <div className="bg-[#FF3131]/10 p-4 rounded-full mb-3">
-                <Star className="w-8 h-8 text-[#FF3131]" />
+            <div className="flex flex-col items-center group">
+              <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <Star className="w-10 h-10 text-white" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{t.homepage.subscription.fiveStarRated}</h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t.homepage.subscription.lovedByCustomers}</p>
+              <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
+                {t.homepage.subscription.fiveStarRated}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {t.homepage.subscription.lovedByCustomers}
+              </p>
             </div>
           </div>
 
-          {/* Social Proof */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 dark:text-gray-300 mb-4">{t.homepage.subscription.joinSatisfiedCustomers}</p>
-            <div className="flex justify-center items-center space-x-1 mb-4">
+          {/* Social Proof - Enhanced */}
+          <div className="mt-16 text-center bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl border-2 border-purple-200 dark:border-purple-800">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg font-semibold">
+              {t.homepage.subscription.joinSatisfiedCustomers}
+            </p>
+            <div className="flex justify-center items-center space-x-1 mb-6">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
+                <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400" />
               ))}
-              <span className="ml-2 text-gray-700 dark:text-gray-200 font-medium">{t.homepage.subscription.reviewsRating}</span>
+              <span className="ml-3 text-gray-900 dark:text-white font-black text-xl">
+                {t.homepage.subscription.reviewsRating}
+              </span>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-              {t.homepage.subscription.testimonialQuote}
+            <p className="text-lg text-gray-600 dark:text-gray-300 italic font-medium max-w-2xl mx-auto leading-relaxed">
+              "{t.homepage.subscription.testimonialQuote}"
             </p>
           </div>
         </div>
