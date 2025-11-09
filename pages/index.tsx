@@ -266,7 +266,7 @@ export default function Home() {
         }}
       />
 
-      <main id="main-content" role="main">
+      <main id="main-content" role="main" className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         <ErrorBoundary>
           <Hero />
         </ErrorBoundary>
@@ -274,71 +274,71 @@ export default function Home() {
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
+        {/* About Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <About />
           </ErrorBoundary>
         </div>
 
+        {/* How It Works Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <HowItWorks />
           </ErrorBoundary>
         </div>
 
+        {/* Why Purrify Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <WhyPurrify />
           </ErrorBoundary>
         </div>
 
-        {/* Enhanced Product Comparison - shown after user understands the product */}
+        {/* Enhanced Product Comparison */}
         <div className="cv-auto cis-960">
           <ScrollAnchor id="products" />
           <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-96', 'rounded-lg')}
-            >
+            <LazyLoad placeholder={sectionSkeleton('h-96', 'rounded-lg')}>
               <EnhancedProductComparison />
             </LazyLoad>
           </ErrorBoundary>
         </div>
 
-        {/* Trust Badges for Customer Confidence */}
-        <section className="py-8 bg-gray-50 dark:bg-gray-900/50 cv-auto cis-480">
+        {/* Trust Badges - Improved spacing */}
+        <section className="py-16 bg-white dark:bg-gray-800 cv-auto cis-480">
           <div className="container mx-auto px-4">
             <TrustBadges variant="grid" showIcons={true} />
           </div>
         </section>
 
-
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <ClientLocationsMap
-              className="bg-gray-50 dark:bg-gray-900/50"
+              className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
               height="400"
             />
           </ErrorBoundary>
         </div>
 
-        {/* Retail Store Locations with Logos */}
+        {/* Retail Store Locations */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <Stores />
           </ErrorBoundary>
         </div>
 
+        {/* CTA Section */}
         <div className="cv-auto cis-480">
           <ErrorBoundary>
-            <LazyLoad
-              placeholder={sectionSkeleton('h-64')}
-            >
+            <LazyLoad placeholder={sectionSkeleton('h-64')}>
               <CTA />
             </LazyLoad>
           </ErrorBoundary>
         </div>
         
+        {/* Blog Preview */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <BlogPreview />
