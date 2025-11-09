@@ -162,110 +162,138 @@ export default function ContactPage() {
         }}
       />
 
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+      <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
         <Container>
-          <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 dark:text-gray-400">
+          <nav className="py-6 text-sm">
+            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                   {t.nav?.home || 'Home'}
                 </Link>
               </li>
-              <li>/</li>
+              <li className="text-gray-400">/</li>
               <li>
-                <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                   Support
                 </span>
               </li>
-              <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Contact</li>
+              <li className="text-gray-400">/</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-semibold">Contact</li>
             </ol>
           </nav>
         </Container>
 
-        {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+        {/* Hero Section - Enhanced */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+          
           <Container>
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
-                We're Here to Help
+            <div className="text-center max-w-4xl mx-auto relative z-10">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+                <MessageCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <span className="text-purple-700 dark:text-purple-300 font-semibold">24/7 Support Available</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
+                We're Here to Help! 🐱
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Have questions about Purrify? Need help with your order? Our friendly customer support team is ready to assist you with expert advice and solutions.
+              
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-medium">
+                Have questions about Purrify? Need help with your order? <br className="hidden md:block" />
+                Our friendly customer support team is ready to assist you with expert advice and solutions.
               </p>
+              
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span className="text-gray-700 dark:text-gray-300">Fast Response</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span className="text-gray-700 dark:text-gray-300">Expert Advice</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span className="text-gray-700 dark:text-gray-300">Friendly Team</span>
+                </div>
+              </div>
             </div>
           </Container>
         </section>
 
-        {/* Contact Methods */}
-        <section className="py-20 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10">
+        {/* Contact Methods - Redesigned */}
+        <section className="py-20 relative">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-                Get in Touch
+              <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
+                Choose Your <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Preferred Way</span> to Connect
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Choose the contact method that works best for you. Our friendly team is here to help!
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                We're available through multiple channels to make it easy for you!
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {contactMethods.map((method, index) => (
                 <div
                   key={index}
-                  className="group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#FF3131]/20 dark:hover:border-[#FF5050]/20 text-center relative overflow-hidden"
+                  className="group relative bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl hover:shadow-purple-500/20 dark:hover:shadow-purple-500/40 transition-all duration-500 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-2"
                 >
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF3131]/5 to-[#5B2EFF]/5 dark:from-[#FF3131]/10 dark:to-[#5B2EFF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-orange-500/5 dark:from-purple-500/10 dark:via-pink-500/10 dark:to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
 
                   <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#FF3131] to-[#5B2EFF] rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <method.icon className="w-10 h-10 text-white dark:text-gray-100" />
+                    {/* Icon with animated gradient */}
+                    <div className="w-24 h-24 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
+                      <method.icon className="w-12 h-12 text-white" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+                    <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">
                       {method.title}
                     </h3>
 
                     {/* Value */}
-                    <div className="mb-4">
-                      <p className="text-lg font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">
+                    <div className="mb-6">
+                      <p className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-2">
                         {method.value}
                       </p>
-                      <p className="text-gray-700 dark:text-gray-200 font-medium">
+                      <p className="text-gray-600 dark:text-gray-300 font-medium">
                         {method.description}
                       </p>
                     </div>
 
                     {/* Tagline note for phone */}
                     {'taglineNote' in method && (
-                      <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 p-4 rounded-xl mb-4 border border-orange-200 dark:border-orange-800">
-                        <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                      <div className="bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 p-4 rounded-2xl mb-6 border-2 border-orange-200 dark:border-orange-800">
+                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                           {method.taglineNote}
                         </p>
                       </div>
                     )}
 
                     {/* Response time badge */}
-                    <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-6 border border-blue-200 dark:border-blue-700">
-                      <Clock className="w-4 h-4 mr-2 text-[#FF3131] dark:text-[#FF5050]" />
-                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                    <div className="inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 rounded-full mb-6 border-2 border-blue-200 dark:border-blue-700 shadow-md">
+                      <Clock className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" />
+                      <p className="text-sm font-bold text-gray-700 dark:text-gray-300">
                         {method.responseTime}
                       </p>
                     </div>
 
                     {/* CTA Button */}
                     <Button
-                      className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-bold shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                      className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold shadow-xl transform group-hover:scale-105 transition-all duration-300 text-lg py-6"
                       size="lg"
                       onClick={() => {
                         window.location.href = method.action;
                       }}
                     >
-                      Contact Now
+                      Contact Now →
                     </Button>
                   </div>
                 </div>
@@ -273,43 +301,46 @@ export default function ContactPage() {
             </div>
 
             {/* Help text */}
-            <div className="text-center mt-12">
-              <p className="text-gray-600 dark:text-gray-300 text-lg">
-                💬 <span className="font-semibold">Average response time:</span> Under 2 hours during business hours
+            <div className="text-center mt-16 p-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-2xl border-2 border-purple-200 dark:border-purple-800 max-w-2xl mx-auto">
+              <p className="text-gray-700 dark:text-gray-300 text-lg font-semibold">
+                ⚡ <span className="text-purple-600 dark:text-purple-400">Average response time:</span> Under 2 hours during business hours
               </p>
             </div>
           </Container>
         </section>
 
-        {/* Contact Form */}
-        <section className="py-16 bg-[#E0EFC7]/20 dark:bg-gray-800/30">
+        {/* Contact Form - Enhanced */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-100/50 via-pink-100/50 to-orange-100/50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20"></div>
+          
           <Container>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  Send Us a Message
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+                  Send Us a <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Message</span>
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Fill out the form below and we'll get back to you within 24 hours
+                <p className="text-xl text-gray-600 dark:text-gray-400">
+                  Fill out the form below and we'll get back to you within 24 hours ⏰
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+              <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border-2 border-purple-200 dark:border-purple-800">
                 {submitStatus.message && (
-                  <div className={`mb-6 p-4 rounded-lg flex items-center ${
+                  <div className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${
                     submitStatus.success 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 dark:text-green-300 border border-green-200 dark:border-green-800'
-                      : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 dark:text-red-300 border border-red-200 dark:border-red-800'
+                      ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
+                      : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
                   }`}>
-                    {submitStatus.success && <CheckCircle className="w-5 h-5 mr-2" />}
+                    {submitStatus.success && <CheckCircle className="w-6 h-6 mr-3" />}
                     {submitStatus.message}
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                      <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                         Full Name *
                       </label>
                       <Input
@@ -320,11 +351,11 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your full name"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                        className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                      <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                         Email Address *
                       </label>
                       <Input
@@ -335,13 +366,13 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                        className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                       Subject *
                     </label>
                     <Input
@@ -352,12 +383,12 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="Brief description of your inquiry"
-                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                      className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                       Message *
                     </label>
                     <Textarea
@@ -368,7 +399,7 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       placeholder="Please provide details about your question or concern..."
                       rows={6}
-                      className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                      className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all resize-none"
                     />
                   </div>
 
@@ -376,16 +407,16 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-bold"
+                    className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-black text-xl py-7 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white dark:border-gray-600 mr-2"></div>
+                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
                         Sending Message...
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5 mr-2" />
+                        <Send className="w-6 h-6 mr-3" />
                         Send Message
                       </>
                     )}
@@ -396,38 +427,39 @@ export default function ContactPage() {
           </Container>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50">
+        {/* FAQ Section - Enhanced */}
+        <section className="py-20">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                Frequently Asked Questions
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+                Frequently Asked <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Questions</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
-                Quick answers to common questions
+              <p className="text-xl text-gray-600 dark:text-gray-400">
+                Quick answers to common questions 💡
               </p>
             </div>
 
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                <div key={index} className="group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
+                  <h3 className="text-xl font-black mb-4 text-gray-900 dark:text-white flex items-start">
+                    <span className="text-purple-600 dark:text-purple-400 mr-3 text-2xl">Q:</span>
                     {faq.question}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed pl-8 text-lg">
                     {faq.answer}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="text-center mt-12">
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <div className="text-center mt-16">
+              <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">
                 Don't see your question answered here?
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/#faq`}>
-                <Button variant="outline" size="lg">
-                  View Full FAQ
+                <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-600 font-bold text-lg px-8 py-6 rounded-xl transition-all duration-300">
+                  View Full FAQ →
                 </Button>
               </Link>
             </div>
