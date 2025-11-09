@@ -424,7 +424,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 <p className="text-gray-700 dark:text-gray-200 mb-4">{post.cta.text}</p>
                 <a
                   href={post.cta.url}
-                  className="inline-flex items-center px-6 py-3 rounded-full bg-[#FF3131] text-white font-semibold shadow-lg hover:bg-[#FF3131]/90 transition-colors"
+                  className="inline-flex items-center px-6 py-3 rounded-full bg-[#FF3131] text-white dark:text-gray-100 font-semibold shadow-lg hover:bg-[#FF3131]/90 transition-colors"
                 >
                   {localizedCopy.ctaButton}
                 </a>

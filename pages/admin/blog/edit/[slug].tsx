@@ -8,54 +8,50 @@ import RichTextEditor from '@/components/admin/RichTextEditor';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import type { BlogPost, Category, Tag } from '@/types/blog';
-import { ArrowLeft, Save, Eye } from 'lucide-react';
+import { ArrowLeft, Save, Eye, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import Link from 'next/link';
 
-interface NewPostPageProps {
+interface EditPostPageProps {
+  post: BlogPost;
   categories: Category[];
   tags: Tag[];
   locale: string;
 }
 
-export default function NewPostPage({ categories, tags, locale }: NewPostPageProps) {
+export default function EditPostPage({ post: initialPost, categories, tags, locale }: EditPostPageProps) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [autoSaving, setAutoSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [featuredImage, setFeaturedImage] = useState('');
-  const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft');
-  const [scheduledDate, setScheduledDate] = useState<string>('');
+  const [title, setTitle] = useState(initialPost.title);
+  const [content, setContent] = useState(initialPost.content);
+  const [excerpt, setExcerpt] = useState(initialPost.excerpt);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(initialPost.categories);
+  const [selectedTags, setSelectedTags] = useState<string[]>(initialPost.tags);
+  const [featuredImage, setFeaturedImage] = useState(initialPost.featuredImage?.url || '');
+  const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>(initialPost.status);
+  const [scheduledDate, setScheduledDate] = useState<string>(initialPost.scheduledDate || '');
 
   // Auto-save functionality
   const autoSave = useCallback(async () => {
     if (!title.trim() || !content.trim()) {
-      return; // Don't auto-save empty posts
+      return;
     }
 
     setAutoSaving(true);
 
     try {
-      const slug = generateSlug(title);
       const now = new Date().toISOString();
 
-      const post: BlogPost = {
-        id: Date.now().toString(),
-        slug,
+      const updatedPost: BlogPost = {
+        ...initialPost,
         title,
         excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
         content,
-        author: {
-          name: 'Purrify Team'
-        },
-        publishDate: now,
         modifiedDate: now,
-        status: 'draft', // Always save as draft for auto-save
+        status: 'draft', // Auto-save always as draft
         featuredImage: {
           url: featuredImage || '/purrify-logo.png',
           alt: title,
@@ -64,8 +60,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
         },
         categories: selectedCategories,
         tags: selectedTags,
-        locale,
-        translations: {},
         seo: {
           title: title.substring(0, 60),
           description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
@@ -74,60 +68,35 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
         readingTime: calculateReadingTime(content)
       };
 
-      // Save to localStorage as backup
-      localStorage.setItem('blog-draft', JSON.stringify(post));
-
-      // Save to server
       await fetch('/api/admin/blog/posts', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(post)
+        body: JSON.stringify(updatedPost)
       });
 
       setLastSaved(new Date());
     } catch (error) {
       console.error('Auto-save failed:', error);
-      // Don't show error toast for auto-save failures
     } finally {
       setAutoSaving(false);
     }
-  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, locale]);
+  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, initialPost]);
 
   // Auto-save every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       autoSave();
-    }, 30000); // 30 seconds
+    }, 30000);
 
     return () => clearInterval(interval);
   }, [autoSave]);
 
-  // Load draft from localStorage on mount
-  useEffect(() => {
-    const savedDraft = localStorage.getItem('blog-draft');
-    if (savedDraft) {
-      try {
-        const draft = JSON.parse(savedDraft);
-        if (confirm('Found a saved draft. Would you like to restore it?')) {
-          setTitle(draft.title || '');
-          setContent(draft.content || '');
-          setExcerpt(draft.excerpt || '');
-          setSelectedCategories(draft.categories || []);
-          setSelectedTags(draft.tags || []);
-          setFeaturedImage(draft.featuredImage?.url || '');
-        }
-      } catch (error) {
-        console.error('Failed to load draft:', error);
-      }
-    }
-  }, []);
-
   const handleImageUpload = async (file: File): Promise<string> => {
     const formData = new FormData();
     formData.append('image', file);
-    formData.append('slug', generateSlug(title || 'untitled'));
+    formData.append('slug', initialPost.slug);
 
     const response = await fetch('/api/admin/blog/upload-image', {
       method: 'POST',
@@ -142,34 +111,19 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
     return data.url;
   };
 
-  const generateSlug = (text: string): string => {
-    return text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
-
   const calculateReadingTime = (text: string): number => {
     const words = text.replace(/<[^>]*>/g, '').split(/\s+/).length;
     return Math.ceil(words / 200);
   };
 
   const handlePreview = async () => {
-    if (!title.trim()) {
-      toast.error('Please enter a title');
-      return;
-    }
-
     try {
-      const slug = generateSlug(title);
-      
-      // Generate preview token
       const response = await fetch('/api/admin/blog/preview', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ slug, locale })
+        body: JSON.stringify({ slug: initialPost.slug, locale })
       });
 
       if (!response.ok) {
@@ -177,8 +131,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
       }
 
       const { previewUrl } = await response.json();
-      
-      // Open preview in new tab
       window.open(previewUrl, '_blank');
     } catch (error) {
       toast.error('Failed to generate preview');
@@ -200,19 +152,13 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
     setSaving(true);
 
     try {
-      const slug = generateSlug(title);
       const now = new Date().toISOString();
 
-      const post: BlogPost = {
-        id: Date.now().toString(),
-        slug,
+      const updatedPost: BlogPost = {
+        ...initialPost,
         title,
         excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
         content,
-        author: {
-          name: 'Purrify Team'
-        },
-        publishDate: now,
         modifiedDate: now,
         status: publishNow ? 'published' : (scheduledDate ? 'scheduled' : status),
         scheduledDate: scheduledDate || undefined,
@@ -224,8 +170,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
         },
         categories: selectedCategories,
         tags: selectedTags,
-        locale,
-        translations: {},
         seo: {
           title: title.substring(0, 60),
           description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
@@ -235,24 +179,49 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
       };
 
       const response = await fetch('/api/admin/blog/posts', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(post)
+        body: JSON.stringify(updatedPost)
       });
 
       if (!response.ok) {
         throw new Error('Failed to save post');
       }
 
-      toast.success(publishNow ? 'Post published!' : 'Post saved as draft');
+      toast.success(publishNow ? 'Post published!' : 'Post updated');
       router.push('/admin/blog');
     } catch (error) {
       toast.error('Failed to save post');
       console.error(error);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
+      return;
+    }
+
+    setDeleting(true);
+
+    try {
+      const response = await fetch(`/api/admin/blog/posts/${initialPost.slug}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+
+      toast.success('Post deleted');
+      router.push('/admin/blog');
+    } catch (error) {
+      toast.error('Failed to delete post');
+      console.error(error);
+      setDeleting(false);
     }
   };
 
@@ -300,7 +269,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   return (
     <>
       <Head>
-        <title>New Post - Blog Admin</title>
+        <title>Edit: {title} - Blog Admin</title>
       </Head>
       <AdminLayout>
         {/* Header */}
@@ -329,9 +298,16 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
               </span>
             )}
             <button
+              onClick={handleDelete}
+              disabled={deleting}
+              className="flex items-center space-x-2 px-4 py-2 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50"
+            >
+              <Trash2 className="w-5 h-5" />
+              <span>Delete</span>
+            </button>
+            <button
               onClick={handlePreview}
-              disabled={!title.trim()}
-              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-50"
+              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               <Eye className="w-5 h-5" />
               <span>Preview</span>
@@ -349,7 +325,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
               disabled={saving}
               className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
             >
-              <span>Publish</span>
+              <span>{status === 'published' ? 'Update' : 'Publish'}</span>
             </button>
           </div>
         </div>
@@ -512,7 +488,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
                       <span>{tag.name}</span>
                       <button
                         onClick={() => removeTag(tagId)}
-                        className="text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100"
+                        className="hover:text-purple-900 dark:hover:text-purple-100 text-purple-700 dark:text-purple-300"
                       >
                         ×
                       </button>
@@ -590,7 +566,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res, params, locale }) => {
   const { authorized } = await requireAuth(req, res);
 
   if (!authorized) {
@@ -602,15 +578,33 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
     };
   }
 
+  const slug = params?.slug as string;
   const store = new ContentStore();
-  const categories = await store.getCategories();
-  const tags = await store.getTags();
-
-  return {
-    props: {
-      categories: JSON.parse(JSON.stringify(categories)),
-      tags: JSON.parse(JSON.stringify(tags)),
-      locale: locale || 'en'
+  
+  try {
+    const post = await store.getPost(slug, locale || 'en');
+    
+    if (!post) {
+      return {
+        notFound: true
+      };
     }
-  };
+
+    const categories = await store.getCategories();
+    const tags = await store.getTags();
+
+    return {
+      props: {
+        post: JSON.parse(JSON.stringify(post)),
+        categories: JSON.parse(JSON.stringify(categories)),
+        tags: JSON.parse(JSON.stringify(tags)),
+        locale: locale || 'en'
+      }
+    };
+  } catch (error) {
+    console.error('Failed to load post:', error);
+    return {
+      notFound: true
+    };
+  }
 };

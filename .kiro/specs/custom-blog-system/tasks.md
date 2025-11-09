@@ -115,8 +115,9 @@
   - Add keyboard shortcuts
   - _Requirements: 1.2_
 
-- [ ] 8. Create post editor page
+- [x] 8. Create post editor page
 - [x] 8.1 Build /admin/blog/new page
+- [x] 8.5 Build /admin/blog/edit/[slug] page
   - Create two-column layout (editor + sidebar)
   - Add title input field
   - Integrate block editor

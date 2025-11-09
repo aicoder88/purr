@@ -18,9 +18,9 @@ export default function PreviewPage({ post, isPreview }: PreviewPageProps) {
       </Head>
 
       {isPreview && (
-        <div className="bg-yellow-100 border-b border-yellow-300 py-2">
+        <div className="bg-yellow-100 dark:bg-yellow-900/20 border-b border-yellow-300 dark:border-yellow-700 py-2">
           <Container>
-            <p className="text-center text-yellow-800 text-sm font-medium">
+            <p className="text-center text-yellow-800 dark:text-yellow-200 text-sm font-medium">
               ⚠️ Preview Mode - This post is not published yet
             </p>
           </Container>

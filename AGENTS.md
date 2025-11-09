@@ -1,24 +1,24 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Purrify runs on Next.js 15 with React 19. Core UI and logic live in `src` (`src/components` for feature modules, `src/lib` for shared services, `src/translations` for locale JSON). Legacy Pages Router entries remain in `pages/`, while marketing and blog copy sits in `content/`. Automation utilities live in `scripts/`, database schema/migrations in `prisma/`, and static assets in `public/`. Tests live in `__tests__/` (Jest) and `e2e/` plus `test-screenshots/` (Playwright visual baselines).
+Feature code lives in `src/`, with UI modules under `src/components`, shared helpers in `src/lib`, and locale files in `src/translations`. Legacy Pages Router routes remain in `pages/`, while marketing copy and localized Markdown stay in `content/`. Tests and fixtures are organized as `__tests__/` for Jest, `e2e/` for Playwright, and `test-screenshots/` for golden images. Build utilities sit in `scripts/`, Prisma schema plus migrations in `prisma/`, and deployable assets in `public/`.
 
 ## Build, Test, and Development Commands
-- `npm run dev` – cleans the webpack cache (`predev`) then starts the dev server with hot reload.
-- `npm run build` – production build with generous memory limits and sitemap generation; always run before release PRs.
-- `npm run start` – serves the compiled output for smoke testing.
-- `npm run lint` / `npm run check-types` – enforce ESLint (Next preset) and strict TypeScript.
-- `npm run test` – executes `__tests__/translation-completeness.test.js` to guard locale coverage.
-- `npm run test:e2e` – launches Playwright; pair with `npm run e2e:web` if the tests need a running server.
+- `npm run dev`: clears caches via `predev` and starts the hot-reload server.
+- `npm run build`: generates the production bundle, then runs sitemap/postbuild hooks; execute before release PRs.
+- `npm run start`: serves `.next/` output for smoke tests or Playwright.
+- `npm run lint` / `npm run check-types`: enforce ESLint (Next preset) and strict TS diagnostics.
+- `npm run test`: runs `__tests__/translation-completeness.test.js` to ensure every locale key exists.
+- `npm run test:e2e` (+ `npm run e2e:web`): launches Playwright suites covering checkout, account, and blog funnels.
 
 ## Coding Style & Naming Conventions
-Use TypeScript everywhere (`.tsx` for components, `.ts` for helpers) with 2-space indentation, single quotes, and descriptive prop names. Prefer functional components with local hooks; colocate feature-specific utilities next to their UI to keep imports relative. File names: PascalCase for React components, kebab-case for routes/content, camelCase for helpers. Format via `npm run lint -- --fix` and `npx prettier --write` before committing.
+Use TypeScript everywhere with 2-space indentation, single quotes, and explicit prop/variable names. React components use `.tsx` and PascalCase filenames (`src/components/HeroBanner.tsx`), helpers use `.ts` with camelCase exports, and routes/content use kebab-case. Run `npm run lint -- --fix` and `npx prettier --write` before committing to keep formatting consistent.
 
 ## Testing Guidelines
-Unit coverage currently focuses on translation integrity; mirror that pattern when adding string-heavy modules. Playwright specs within `e2e/` should reflect the highest-risk funnels (checkout, subscription flows, blog publishing). Give tests customer-focused names (`checkout completes with single-bag plan`).
+Keep translation fixtures in sync before running Jest or the locale coverage test fails fast. Name Playwright specs descriptively (e.g., `checkout completes single bag`) and mirror top funnels. When adding features, update Jest fixtures under `__tests__/fixtures` and regenerate golden screenshots in `test-screenshots/` as needed. Always run `npm run test` and at least the impacted Playwright specs before pushing.
 
 ## Commit & Pull Request Guidelines
-Commits follow Conventional Commit notation (`feat(seo): ...`, `fix(content): ...`). Keep changes scoped, mention related tasks in parentheses, and update `CHANGELOG.md` plus relevant docs. PRs must list commands executed, summarize impact, link to issues, and provide screenshots or logs for UI/SEO changes. Request review only after lint, type checking, Jest, and Playwright all pass locally.
+Follow Conventional Commits such as `feat(seo): add hreflang tags`, referencing task IDs in parentheses when relevant. PRs must describe user impact, list commands executed (lint, type-check, Jest, Playwright), and link issues. Include screenshots or logs for UX, SEO, or content changes, and update `CHANGELOG.md` or docs touched by the work. Request review only after lint, type, Jest, and Playwright suites pass locally.
 
 ## Security & Configuration Tips
-Store secrets exclusively in `.env.local` (never commit) and in the deployment provider’s dashboard. Generate Prisma changes with `npx prisma migrate dev` and have another reviewer confirm destructive steps. Asset optimization or sitemap scripts should write only inside `public/` or `reports/` so CI artifacts stay contained.
+Never commit `.env*`; keep secrets in `.env.local` or hosted environment variables. Generate Prisma migrations with `npx prisma migrate dev` and surface destructive steps for review. Asset and sitemap scripts must only write inside `public/` or `reports/` to keep CI artifacts deterministic.
