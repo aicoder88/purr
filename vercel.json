@@ -92,8 +92,7 @@
   "crons": [
     {
       "path": "/api/cron/generate-blog-post",
-      "schedule": "0 12 */3 * *",
-      "method": "POST"
+      "schedule": "0 12 */3 * *"
     }
   ]
 }
