@@ -247,7 +247,7 @@
   - _Requirements: 4.5_
 
 - [ ] 15. Implement automated content generation
-- [ ] 15.1 Create AutomatedContentGenerator class
+- [x] 15.1 Create AutomatedContentGenerator class
   - Implement generateBlogPost() with OpenAI API
   - Build prompt with SEO guidelines
   - Parse AI-generated content
@@ -261,7 +261,7 @@
   - Optimize with ImageOptimizer
   - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-- [ ] 15.3 Create cron job endpoint
+- [x] 15.3 Create cron job endpoint
   - Create /api/cron/generate-blog-post endpoint
   - Verify cron secret for security
   - Rotate through topic list

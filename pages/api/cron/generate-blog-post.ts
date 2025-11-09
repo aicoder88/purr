@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../src/lib/prisma';
 import { generateAutomatedBlogPost } from '../../../src/lib/blog/generator';
+import { AutomatedContentGenerator } from '../../../src/lib/blog/automated-content-generator';
+import { ContentStore } from '../../../src/lib/blog/content-store';
 
 const THREE_DAYS_IN_MS = (Number(process.env.AUTOBLOG_INTERVAL_DAYS ?? '3') || 3) * 24 * 60 * 60 * 1000;
 
@@ -49,6 +51,47 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+    // Try new ContentStore-based generator first
+    const useNewGenerator = process.env.USE_NEW_BLOG_GENERATOR === 'true';
+    
+    if (useNewGenerator) {
+      const generator = new AutomatedContentGenerator();
+      const store = new ContentStore();
+      
+      // Topic rotation
+      const topics = [
+        'How to Eliminate Cat Litter Odor Naturally',
+        'Best Practices for Multi-Cat Households',
+        'Understanding Activated Carbon for Pet Odor Control',
+        'Apartment Living with Cats: Odor Management Tips',
+        'Eco-Friendly Cat Litter Solutions',
+        'Cat Health and Litter Box Hygiene',
+        'Seasonal Cat Care Tips',
+        'DIY Cat Litter Box Maintenance',
+        'Natural Ways to Keep Your Home Fresh with Cats',
+        'The Science Behind Cat Litter Odor Control'
+      ];
+      
+      const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+      const topicIndex = daysSinceEpoch % topics.length;
+      const selectedTopic = topics[topicIndex];
+      
+      console.log(`🤖 Generating blog post: ${selectedTopic}`);
+      
+      const post = await generator.generateBlogPost(selectedTopic);
+      await generator.publishPost(post);
+      
+      return res.status(200).json({
+        success: true,
+        postId: post.id,
+        slug: post.slug,
+        title: post.title,
+        topic: selectedTopic,
+        generator: 'new'
+      });
+    }
+    
+    // Fallback to existing generator
     const result = await generateAutomatedBlogPost();
     return res.status(200).json({
       success: true,
@@ -57,6 +100,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       topic: result.topic,
       heroImage: result.heroImage,
       secondaryImageCount: result.secondaryImageCount,
+      generator: 'legacy'
     });
   } catch (error) {
     console.error('[auto-blog] generation failed', error);
