@@ -83,7 +83,7 @@ export const zh = {
     rabbitLitter: "兔砂",
     fridgeSmells: "冰箱异味",
     ferretCage: "雪貂笼",
-    eliminateCatOdors: "消除猫咪异味",
+    eliminateCatOdors: "7天消除猫砂异味",
     instantly: "瞬间见效",
     description: "先进的活性炭技术中和氨气和异味的速度比传统解决方案快3倍。几秒钟内将您的猫砂盒从有异味变为清新。",
     socialProof: {

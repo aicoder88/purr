@@ -110,7 +110,7 @@ export const fr = {
     rabbitLitter: "Litière pour Lapin",
     fridgeSmells: "Odeurs de réfrigérateur",
     ferretCage: "Cage de furet",
-    eliminateCatOdors: "Éliminez les Odeurs de Chat",
+    eliminateCatOdors: "7 Jours Sans Odeur de Litière",
     instantly: "Instantanément",
     description: "La technologie avancée au carbone activé neutralise l'ammoniac et les odeurs 3x plus rapidement que les solutions traditionnelles. Transformez votre litière de malodorante à fraîche en quelques secondes.",
     socialProof: {
