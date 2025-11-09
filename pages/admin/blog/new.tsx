@@ -29,7 +29,8 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [featuredImage, setFeaturedImage] = useState('');
-  const [status, setStatus] = useState<'draft' | 'published'>('draft');
+  const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft');
+  const [scheduledDate, setScheduledDate] = useState<string>('');
 
   // Auto-save functionality
   const autoSave = useCallback(async () => {
@@ -153,6 +154,38 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
     return Math.ceil(words / 200);
   };
 
+  const handlePreview = async () => {
+    if (!title.trim()) {
+      toast.error('Please enter a title');
+      return;
+    }
+
+    try {
+      const slug = generateSlug(title);
+      
+      // Generate preview token
+      const response = await fetch('/api/admin/blog/preview', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ slug, locale })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate preview');
+      }
+
+      const { previewUrl } = await response.json();
+      
+      // Open preview in new tab
+      window.open(previewUrl, '_blank');
+    } catch (error) {
+      toast.error('Failed to generate preview');
+      console.error(error);
+    }
+  };
+
   const handleSave = async (publishNow = false) => {
     if (!title.trim()) {
       toast.error('Please enter a title');
@@ -181,7 +214,8 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
         },
         publishDate: now,
         modifiedDate: now,
-        status: publishNow ? 'published' : status,
+        status: publishNow ? 'published' : (scheduledDate ? 'scheduled' : status),
+        scheduledDate: scheduledDate || undefined,
         featuredImage: {
           url: featuredImage || '/purrify-logo.png',
           alt: title,
@@ -295,6 +329,14 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
               </span>
             )}
             <button
+              onClick={handlePreview}
+              disabled={!title.trim()}
+              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+            >
+              <Eye className="w-5 h-5" />
+              <span>Preview</span>
+            </button>
+            <button
               onClick={() => handleSave(false)}
               disabled={saving}
               className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
@@ -307,7 +349,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
               disabled={saving}
               className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
             >
-              <Eye className="w-5 h-5" />
               <span>Publish</span>
             </button>
           </div>
@@ -366,6 +407,48 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Post Settings */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <h3 className="font-semibold text-gray-900 mb-3">Post Settings</h3>
+              
+              {/* Status */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Status
+                </label>
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value as 'draft' | 'published' | 'scheduled')}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                >
+                  <option value="draft">Draft</option>
+                  <option value="scheduled">Scheduled</option>
+                  <option value="published">Published</option>
+                </select>
+              </div>
+
+              {/* Scheduled Date */}
+              {status === 'scheduled' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Publish Date & Time
+                  </label>
+                  <input
+                    type="datetime-local"
+                    value={scheduledDate}
+                    onChange={(e) => setScheduledDate(e.target.value)}
+                    min={new Date().toISOString().slice(0, 16)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  />
+                  {scheduledDate && (
+                    <p className="mt-1 text-xs text-gray-500">
+                      Will publish on {new Date(scheduledDate).toLocaleString()}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+
             {/* SEO Score */}
             {seoScore && (
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">

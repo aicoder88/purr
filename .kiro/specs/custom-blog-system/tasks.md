@@ -160,13 +160,13 @@
   - _Requirements: 1.1, 5.4, 5.5_
 
 - [ ] 10. Implement scheduling and drafts
-- [ ] 10.1 Add publish date picker
+- [x] 10.1 Add publish date picker
   - Create DateTimePicker component
   - Allow setting future publish dates
   - Show scheduled status in post list
   - _Requirements: 5.1, 5.2, 5.3_
 
-- [ ] 10.2 Create preview functionality
+- [x] 10.2 Create preview functionality
   - Generate secure preview tokens
   - Create /blog/preview/[token] route
   - Allow previewing draft and scheduled posts
