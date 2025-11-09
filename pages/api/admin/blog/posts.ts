@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
 import type { BlogPost } from '@/types/blog';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -13,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const store = new ContentStore();
   const logger = new AuditLogger();
+  const sitemapGenerator = new SitemapGenerator();
 
   try {
     if (req.method === 'GET') {
@@ -50,6 +52,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       });
 
+      // Update sitemap if post is published
+      if (post.status === 'published') {
+        try {
+          await sitemapGenerator.updateAllSitemaps();
+        } catch (error) {
+          console.error('Failed to update sitemap:', error);
+          // Don't fail the request if sitemap update fails
+        }
+      }
+
       return res.status(201).json({ success: true, post });
     }
 
@@ -79,6 +91,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           locale: post.locale
         }
       });
+
+      // Update sitemap if post is published
+      if (post.status === 'published') {
+        try {
+          await sitemapGenerator.updateAllSitemaps();
+        } catch (error) {
+          console.error('Failed to update sitemap:', error);
+          // Don't fail the request if sitemap update fails
+        }
+      }
 
       return res.status(200).json({ success: true, post });
     }

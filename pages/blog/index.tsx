@@ -1,86 +1,41 @@
 import Head from 'next/head';
-
+import { GetStaticProps } from 'next';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { BlogPost } from '../../src/data/blog-posts';
-import { sampleBlogPosts } from '../../src/data/blog-posts';
 import { useTranslation } from '../../src/lib/translation-context';
-import { prisma } from '../../src/lib/prisma';
+import { ContentStore } from '../../src/lib/blog/content-store';
+import type { BlogPost as BlogPostType } from '../../src/types/blog';
 
-interface WpPost {
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  _embedded?: {
-    author?: { name: string }[];
-    'wp:featuredmedia'?: { source_url: string }[];
-  };
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  author: string;
   date: string;
-  slug: string;
+  image: string;
+  link: string;
+  locale: string;
 }
 
 // This function gets called at build time on server-side
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   try {
-    const automatedPosts = await prisma.blogPost.findMany({
-      where: { status: 'PUBLISHED' },
-      orderBy: { publishedAt: 'desc' },
-      take: 12,
-    });
-
-    if (automatedPosts.length > 0) {
-      return {
-        props: {
-          blogPosts: automatedPosts.map((post) => ({
-            title: post.title,
-            excerpt: post.excerpt,
-            author: post.author ?? 'Purrify Research Lab',
-            date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
-            image: post.heroImageUrl,
-            link: `/blog/${post.slug}`,
-            content: post.content,
-            locale: (post.locale as 'en' | 'fr' | 'zh' | undefined) ?? 'en',
-          })),
-        },
-        revalidate: 21600,
-      };
-    }
-
-    // WordPress API URL - replace with your WordPress site URL
-    const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
+    const store = new ContentStore();
+    const currentLocale = (locale || 'en') as string;
     
-    // Check if WordPress API URL is configured
-    if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
-      // If WordPress is not configured yet, use sample data
-      console.log('WordPress API not configured, using sample data');
-      return {
-        props: {
-          blogPosts: sampleBlogPosts,
-        },
-        // Re-generate the page at most once per day
-        revalidate: 86400,
-      };
-    }
+    // Fetch all published posts from ContentStore
+    const posts = await store.getAllPosts(currentLocale, false);
     
-    // Fetch posts from WordPress
-    const response = await fetch(`${wpApiUrl}/posts?_embed&per_page=10`);
-    
-    if (!response.ok) {
-      throw new Error(`WordPress API error: ${response.status}`);
-    }
-    
-    const wpPosts = await response.json();
-    
-    // Transform WordPress posts to match our BlogPost interface
-    const blogPosts: BlogPost[] = wpPosts.map((post: WpPost) => ({
-      title: post.title.rendered,
-      excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
-      author: post._embedded?.author?.[0]?.name || "Purrify Team",
-      date: new Date(post.date).toISOString().split('T')[0],
-      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+    // Transform to match the component's expected format
+    const blogPosts: BlogPost[] = posts.map((post: BlogPostType) => ({
+      title: post.title,
+      excerpt: post.excerpt,
+      author: post.author.name,
+      date: new Date(post.publishDate).toISOString().split('T')[0],
+      image: post.featuredImage.url,
       link: `/blog/${post.slug}`,
-      locale: 'en',
+      locale: post.locale,
     }));
     
     return {
@@ -91,13 +46,13 @@ export async function getStaticProps() {
       revalidate: 3600,
     };
   } catch (err) {
-    console.error('Error fetching WordPress posts:', err);
-    // Fallback to sample data in case of error
+    console.error('Error fetching blog posts:', err);
+    // Return empty array on error
     return {
       props: {
-        blogPosts: sampleBlogPosts,
+        blogPosts: [],
       },
-      revalidate: 86400,
+      revalidate: 3600,
     };
   }
 }

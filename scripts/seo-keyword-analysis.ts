@@ -32,7 +32,12 @@ const colors = {
  */
 function parseArgs() {
   const args = process.argv.slice(2);
-  const options = {
+  const options: {
+    file: string | null;
+    category: string | null;
+    directory: string | null;
+    output: string | null;
+  } = {
     file: null,
     category: null,
     directory: null,
@@ -57,10 +62,10 @@ function parseArgs() {
 /**
  * Find all markdown files in a directory
  */
-function findMarkdownFiles(dir) {
-  const files = [];
+function findMarkdownFiles(dir: string): string[] {
+  const files: string[] = [];
   
-  function traverse(currentDir) {
+  function traverse(currentDir: string): void {
     const items = fs.readdirSync(currentDir);
     
     for (const item of items) {
@@ -85,7 +90,7 @@ function findMarkdownFiles(dir) {
 /**
  * Analyze a single file
  */
-async function analyzeFile(filePath, optimizer, category) {
+async function analyzeFile(filePath: string, optimizer: any, category: string): Promise<any> {
   console.log(`\n${colors.cyan}Analyzing: ${filePath}${colors.reset}`);
   
   const content = fs.readFileSync(filePath, 'utf-8');
@@ -118,7 +123,7 @@ async function analyzeFile(filePath, optimizer, category) {
 /**
  * Extract keywords that appear to be targeted in content
  */
-function extractKeywordsFromContent(content) {
+function extractKeywordsFromContent(content: string): string[] {
   const keywords = [];
   const lines = content.split('\n');
   
@@ -147,7 +152,7 @@ function extractKeywordsFromContent(content) {
 /**
  * Print analysis results
  */
-function printResults(results) {
+function printResults(results: any): void {
   console.log(`\n${colors.bright}${colors.blue}═══════════════════════════════════════════════════${colors.reset}`);
   console.log(`${colors.bright}${colors.blue}  KEYWORD ANALYSIS RESULTS${colors.reset}`);
   console.log(`${colors.bright}${colors.blue}═══════════════════════════════════════════════════${colors.reset}\n`);
@@ -174,8 +179,9 @@ function printResults(results) {
     
     console.log(`\n${colors.bright}Keyword Density:${colors.reset}`);
     for (const [keyword, density] of Object.entries(results.validation.keywordDensity)) {
-      const color = density > 3 ? colors.red : density < 0.5 ? colors.yellow : colors.green;
-      console.log(`  ${color}${keyword}: ${density.toFixed(2)}%${colors.reset}`);
+      const densityNum = Number(density);
+      const color = densityNum > 3 ? colors.red : densityNum < 0.5 ? colors.yellow : colors.green;
+      console.log(`  ${color}${keyword}: ${densityNum.toFixed(2)}%${colors.reset}`);
     }
   }
   
@@ -215,7 +221,7 @@ function printResults(results) {
 /**
  * Get color for competition level
  */
-function getCompetitionColor(competition) {
+function getCompetitionColor(competition: string): string {
   switch (competition) {
     case 'low':
       return colors.green;
@@ -231,7 +237,7 @@ function getCompetitionColor(competition) {
 /**
  * Generate JSON report
  */
-function generateReport(allResults, outputPath) {
+function generateReport(allResults: any[], outputPath: string): void {
   const report = {
     timestamp: new Date().toISOString(),
     summary: {
@@ -243,7 +249,7 @@ function generateReport(allResults, outputPath) {
       file: result.file,
       currentKeywords: result.currentKeywords,
       validation: result.validation,
-      topSuggestions: result.suggestions.slice(0, 5).map(s => ({
+      topSuggestions: result.suggestions.slice(0, 5).map((s: any) => ({
         keyword: s.keyword.term,
         searchVolume: s.keyword.searchVolume,
         competition: s.keyword.competition,
@@ -251,7 +257,7 @@ function generateReport(allResults, outputPath) {
         currentUsage: s.currentUsage,
         recommendedPlacement: s.recommendedPlacement,
       })),
-      opportunities: result.opportunities.map(o => ({
+      opportunities: result.opportunities.map((o: any) => ({
         keyword: o.keyword.term,
         searchVolume: o.keyword.searchVolume,
         competition: o.keyword.competition,
@@ -311,7 +317,7 @@ async function main() {
     // Analyze all files
     const allResults = [];
     for (const file of filesToAnalyze) {
-      const result = await analyzeFile(file, optimizer, options.category);
+      const result = await analyzeFile(file, optimizer, options.category || 'general');
       allResults.push(result);
       printResults(result);
     }
@@ -324,8 +330,9 @@ async function main() {
     console.log(`\n${colors.green}${colors.bright}Analysis complete!${colors.reset}\n`);
     
   } catch (error) {
-    console.error(`${colors.red}Error: ${error.message}${colors.reset}`);
-    console.error(error.stack);
+    const err = error as Error;
+    console.error(`${colors.red}Error: ${err.message}${colors.reset}`);
+    console.error(err.stack);
     process.exit(1);
   }
 }

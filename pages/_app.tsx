@@ -15,6 +15,7 @@ import { Layout } from '../src/components/layout/layout';
 import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
 import { ToastProvider } from '../src/components/admin/Toast';
 
 const Toaster = dynamic(() => import('../src/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
@@ -34,7 +35,7 @@ const CacheOptimizer = dynamic(() => import('../src/components/performance/Cache
 });
 
 interface PageProps {
-  // Add your page props here if needed
+  session?: Session | null;
   [key: string]: unknown;
 }
 

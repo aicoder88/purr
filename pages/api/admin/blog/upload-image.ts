@@ -52,7 +52,7 @@ export default async function handler(
 
     // Read file
     const fileBuffer = await fs.readFile(uploadedFile.filepath);
-    const file = new File([fileBuffer], uploadedFile.originalFilename || 'image.jpg', {
+    const file = new File([new Uint8Array(fileBuffer)], uploadedFile.originalFilename || 'image.jpg', {
       type: uploadedFile.mimetype || 'image/jpeg'
     });
 

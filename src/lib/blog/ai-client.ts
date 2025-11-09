@@ -22,7 +22,7 @@ export async function callAi(messages: Message[]): Promise<AiResponse> {
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const response = await anthropic.messages.create({
       model: DEFAULT_ANTHROPIC_MODEL,
-      max_output_tokens: 4096,
+      max_tokens: 4096,
       temperature: 0.2,
       system: messages
         .filter((message) => message.role === 'system')
@@ -30,7 +30,7 @@ export async function callAi(messages: Message[]): Promise<AiResponse> {
         .join('\n\n'),
       messages: messages
         .filter((message) => message.role !== 'system')
-        .map((message) => ({ role: message.role, content: message.content })),
+        .map((message) => ({ role: message.role as 'user' | 'assistant', content: message.content })),
     });
 
     const text = response.content

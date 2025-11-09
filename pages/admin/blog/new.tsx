@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -21,6 +21,8 @@ interface NewPostPageProps {
 export default function NewPostPage({ categories, tags, locale }: NewPostPageProps) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
+  const [autoSaving, setAutoSaving] = useState(false);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
@@ -28,6 +30,98 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [featuredImage, setFeaturedImage] = useState('');
   const [status, setStatus] = useState<'draft' | 'published'>('draft');
+
+  // Auto-save functionality
+  const autoSave = useCallback(async () => {
+    if (!title.trim() || !content.trim()) {
+      return; // Don't auto-save empty posts
+    }
+
+    setAutoSaving(true);
+
+    try {
+      const slug = generateSlug(title);
+      const now = new Date().toISOString();
+
+      const post: BlogPost = {
+        id: Date.now().toString(),
+        slug,
+        title,
+        excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+        content,
+        author: {
+          name: 'Purrify Team'
+        },
+        publishDate: now,
+        modifiedDate: now,
+        status: 'draft', // Always save as draft for auto-save
+        featuredImage: {
+          url: featuredImage || '/purrify-logo.png',
+          alt: title,
+          width: 1200,
+          height: 630
+        },
+        categories: selectedCategories,
+        tags: selectedTags,
+        locale,
+        translations: {},
+        seo: {
+          title: title.substring(0, 60),
+          description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
+          keywords: selectedTags
+        },
+        readingTime: calculateReadingTime(content)
+      };
+
+      // Save to localStorage as backup
+      localStorage.setItem('blog-draft', JSON.stringify(post));
+
+      // Save to server
+      await fetch('/api/admin/blog/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+      });
+
+      setLastSaved(new Date());
+    } catch (error) {
+      console.error('Auto-save failed:', error);
+      // Don't show error toast for auto-save failures
+    } finally {
+      setAutoSaving(false);
+    }
+  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, locale]);
+
+  // Auto-save every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      autoSave();
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [autoSave]);
+
+  // Load draft from localStorage on mount
+  useEffect(() => {
+    const savedDraft = localStorage.getItem('blog-draft');
+    if (savedDraft) {
+      try {
+        const draft = JSON.parse(savedDraft);
+        if (confirm('Found a saved draft. Would you like to restore it?')) {
+          setTitle(draft.title || '');
+          setContent(draft.content || '');
+          setExcerpt(draft.excerpt || '');
+          setSelectedCategories(draft.categories || []);
+          setSelectedTags(draft.tags || []);
+          setFeaturedImage(draft.featuredImage?.url || '');
+        }
+      } catch (error) {
+        console.error('Failed to load draft:', error);
+      }
+    }
+  }, []);
 
   const handleImageUpload = async (file: File): Promise<string> => {
     const formData = new FormData();
@@ -185,6 +279,21 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
             <span>Back to Posts</span>
           </Link>
           <div className="flex items-center space-x-3">
+            {/* Auto-save indicator */}
+            {autoSaving && (
+              <span className="text-sm text-gray-500 flex items-center space-x-2">
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                <span>Saving...</span>
+              </span>
+            )}
+            {!autoSaving && lastSaved && (
+              <span className="text-sm text-gray-500">
+                Saved {Math.floor((Date.now() - lastSaved.getTime()) / 1000)}s ago
+              </span>
+            )}
             <button
               onClick={() => handleSave(false)}
               disabled={saving}
@@ -216,6 +325,15 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
                 placeholder="Add title..."
                 className="w-full text-4xl font-bold border-none focus:outline-none focus:ring-0 placeholder-gray-300"
               />
+              <div className="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                <span className={title.length >= 50 && title.length <= 60 ? 'text-green-600' : title.length > 60 ? 'text-red-600' : ''}>
+                  Title: {title.length} characters {title.length >= 50 && title.length <= 60 && '✓'}
+                </span>
+                <span className="text-gray-400">•</span>
+                <span>
+                  Reading time: {calculateReadingTime(content)} min
+                </span>
+              </div>
             </div>
 
             {/* Content Editor */}
@@ -238,6 +356,11 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
                 rows={3}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
+              <div className="mt-1 text-sm">
+                <span className={excerpt.length >= 150 && excerpt.length <= 160 ? 'text-green-600' : excerpt.length > 160 ? 'text-red-600' : 'text-gray-500'}>
+                  {excerpt.length} / 160 characters {excerpt.length >= 150 && excerpt.length <= 160 && '✓'}
+                </span>
+              </div>
             </div>
           </div>
 
