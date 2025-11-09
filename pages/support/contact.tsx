@@ -191,13 +191,13 @@ export default function ContactPage() {
                   {t.nav?.home || 'Home'}
                 </Link>
               </li>
-              <li className="text-gray-400">/</li>
+              <li className="text-gray-400 dark:text-gray-500">/</li>
               <li>
                 <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                   Support
                 </span>
               </li>
-              <li className="text-gray-400">/</li>
+              <li className="text-gray-400 dark:text-gray-500">/</li>
               <li className="text-[#FF3131] dark:text-[#FF5050] font-semibold">Contact</li>
             </ol>
           </nav>
@@ -229,15 +229,15 @@ export default function ContactPage() {
               
               <div className="flex flex-wrap justify-center gap-4 text-sm">
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                   <span className="text-gray-700 dark:text-gray-300">Fast Response</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                   <span className="text-gray-700 dark:text-gray-300">Expert Advice</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                   <span className="text-gray-700 dark:text-gray-300">Friendly Team</span>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function ContactPage() {
                   <div className="relative z-10">
                     {/* Icon with animated gradient */}
                     <div className="w-24 h-24 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
-                      <method.icon className="w-12 h-12 text-white" />
+                      <method.icon className="w-12 h-12 text-white dark:text-gray-100" />
                     </div>
 
                     {/* Title */}
@@ -306,7 +306,7 @@ export default function ContactPage() {
 
                     {/* CTA Button */}
                     <Button
-                      className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold shadow-xl transform group-hover:scale-105 transition-all duration-300 text-lg py-6"
+                      className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white dark:text-gray-100 font-bold shadow-xl transform group-hover:scale-105 transition-all duration-300 text-lg py-6"
                       size="lg"
                       onClick={() => {
                         window.location.href = method.action;
@@ -440,11 +440,11 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-black text-xl py-7 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white dark:text-gray-100 font-black text-xl py-7 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white dark:border-gray-100 mr-3"></div>
                         Sending Message...
                       </>
                     ) : (

@@ -19,7 +19,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Break down the most powerful odor absorber technologies for cat litter, including how activated carbon outperforms zeolite and perfumes without overwhelming your cat.',
       author: 'Odor Science Research Team',
       date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
-      image: 'https://images.unsplash.com/photo-1619983081593-ec8c3d5a1e43?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80',
       link: '/blog/most-powerful-odor-absorber'
     },
     {

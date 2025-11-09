@@ -7,7 +7,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
-const heroImage = 'https://images.unsplash.com/photo-1619983081593-ec8c3d5a1e43?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
+const heroImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const labImage = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const layeringImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const carbonMacroImage = 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
