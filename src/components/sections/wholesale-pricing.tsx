@@ -90,7 +90,7 @@ export function WholesalePricing() {
           {pricingTiers.map((tier, index) => (
             <div
               key={index}
-              className={`relative rounded-3xl p-8 ${
+              className={`relative flex flex-col h-full rounded-3xl p-8 ${
                 tier.highlighted
                   ? 'bg-gradient-to-br from-[#5B2EFF]/10 via-white to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:via-gray-800 dark:to-[#5B2EFF]/20 border-3 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl transform scale-105 z-10'
                   : 'bg-white dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
@@ -127,7 +127,7 @@ export function WholesalePricing() {
                 )}
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 flex-1">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start text-gray-700 dark:text-gray-200">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#10B981] to-[#34D399] flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
@@ -140,7 +140,8 @@ export function WholesalePricing() {
                 ))}
               </ul>
 
-              <Button
+              <div className="mt-auto">
+                <Button
                 onClick={handleScrollToRetailer}
                 className={`w-full py-4 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
                   tier.highlighted
@@ -148,8 +149,9 @@ export function WholesalePricing() {
                     : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl'
                 }`}
               >
-                {tier.highlighted ? '🚀 Start Growing Now' : 'Get Started'}
-              </Button>
+                  {tier.highlighted ? '🚀 Start Growing Now' : 'Get Started'}
+                </Button>
+              </div>
             </div>
           ))}
         </div>

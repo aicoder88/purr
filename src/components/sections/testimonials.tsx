@@ -22,7 +22,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
 
   return (
     <div
-      className={`${colors.bg} backdrop-blur-sm p-8 rounded-2xl shadow-xl border ${colors.border} relative transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group`}
+      className={`flex flex-col h-full ${colors.bg} backdrop-blur-sm p-8 rounded-2xl shadow-xl border ${colors.border} relative transition-all duration-500 hover:shadow-[#E0EFC7]/50 hover:-translate-y-2 group`}
       style={staggerStyle}
     >
       <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">

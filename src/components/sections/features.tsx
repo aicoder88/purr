@@ -55,7 +55,7 @@ export function Features() {
             return (
               <div
                 key={index}
-                className="bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/70 hover:-translate-y-2 group"
+                className="flex flex-col h-full bg-[#FFFFFF]/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] transition-all duration-500 hover:shadow-[#E0EFC7]/70 hover:-translate-y-2 group"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div

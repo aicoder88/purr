@@ -223,13 +223,13 @@ export function SubscriptionPlans({
           {SUBSCRIPTION_PLANS.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative transform transition-all duration-300 hover:scale-105 cursor-pointer ${
-                plan.featured 
-                  ? 'ring-2 ring-orange-500 shadow-2xl' 
+              className={`relative flex flex-col h-full transform transition-all duration-300 hover:scale-105 cursor-pointer ${
+                plan.featured
+                  ? 'ring-2 ring-orange-500 shadow-2xl'
                   : 'hover:shadow-xl'
               } ${
-                selectedPlan === plan.id 
-                  ? 'ring-2 ring-purple-500 shadow-2xl' 
+                selectedPlan === plan.id
+                  ? 'ring-2 ring-purple-500 shadow-2xl'
                   : ''
               }`}
               data-plan-id={plan.id}
@@ -286,7 +286,7 @@ export function SubscriptionPlans({
                 </div>
               </CardHeader>
 
-              <CardContent>
+              <CardContent className="flex-1 flex flex-col">
                 {/* Features */}
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
@@ -336,15 +336,17 @@ export function SubscriptionPlans({
                 </div>
 
                 {/* CTA Button */}
-                <Button
-                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all transform ${
-                    hoveredPlan === plan.id ? 'scale-105' : ''
-                  }`}
-                  onClick={handleButtonClick}
-                  data-plan-id={plan.id}
-                >
-                  {selectedPlan === plan.id ? 'Selected' : `Choose ${plan.name}`}
-                </Button>
+                <div className="mt-auto">
+                  <Button
+                    className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all transform ${
+                      hoveredPlan === plan.id ? 'scale-105' : ''
+                    }`}
+                    onClick={handleButtonClick}
+                    data-plan-id={plan.id}
+                  >
+                    {selectedPlan === plan.id ? 'Selected' : `Choose ${plan.name}`}
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
