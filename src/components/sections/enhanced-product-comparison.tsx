@@ -409,9 +409,9 @@ export function EnhancedProductComparison() {
               return (
                 <div
                   key={product.id}
-                  className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
+                  className={`relative flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
                     hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
+                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50' : ''}`}
                   onMouseEnter={() => handleMouseEnter(product.id)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -479,8 +479,10 @@ export function EnhancedProductComparison() {
                             )}
 
                             {option.badgeLabel ? (
-                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle max-w-xs text-center">
-                                {option.badgeLabel}
+                              <div className="flex justify-center mb-6">
+                                <div className="inline-flex bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle text-center">
+                                  {option.badgeLabel}
+                                </div>
                               </div>
                             ) : null}
 
@@ -639,9 +641,9 @@ export function EnhancedProductComparison() {
               return (
                 <div
                   key={product.id}
-                  className={`relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
+                  className={`relative flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
                     hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50 scale-[1.02]' : ''}`}
+                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50' : ''}`}
                   onMouseEnter={() => handleMouseEnter(product.id)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -709,8 +711,10 @@ export function EnhancedProductComparison() {
                             )}
 
                             {option.badgeLabel ? (
-                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle max-w-xs text-center">
-                                {option.badgeLabel}
+                              <div className="flex justify-center mb-6">
+                                <div className="inline-flex bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle text-center">
+                                  {option.badgeLabel}
+                                </div>
                               </div>
                             ) : null}
 
