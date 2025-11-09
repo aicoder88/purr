@@ -96,7 +96,9 @@ export default function HowToUseLitterDeodorizer() {
                 "@type": "ImageObject",
                 "url": "https://www.purrify.ca/purrify-logo.png"
               }
-            }
+            },
+            "datePublished": "2024-01-15",
+            "dateModified": new Date().toISOString().split('T')[0]
           })}
         </script>
       </Head>

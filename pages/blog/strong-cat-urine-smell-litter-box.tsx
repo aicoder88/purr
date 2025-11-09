@@ -74,7 +74,7 @@ export default function StrongCatUrineSmell() {
               },
             },
             datePublished: '2024-02-01',
-            dateModified: '2024-02-01',
+            dateModified: new Date().toISOString().split('T')[0],
           })}
         </script>
       </Head>

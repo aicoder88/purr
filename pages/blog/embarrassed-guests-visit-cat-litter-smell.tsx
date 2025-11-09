@@ -73,7 +73,7 @@ export default function EmbarrassedGuestsVisit() {
                   }
                 },
                 "datePublished": "2025-01-20T08:00:00-05:00",
-                "dateModified": "2025-01-20T08:00:00-05:00",
+                "dateModified": new Date().toISOString(),
                 "url": "https://www.purrify.ca/blog/embarrassed-guests-visit-cat-litter-smell",
                 "mainEntityOfPage": {
                   "@type": "WebPage",

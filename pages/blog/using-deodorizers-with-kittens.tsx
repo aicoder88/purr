@@ -33,6 +33,32 @@ export default function UsingDeodorizersWithKittens() {
         
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
+
+        {/* Article Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Using Cat Litter Deodorizers with Kittens: A Care Guide",
+            "description": "Complete guide to using litter deodorizers with kittens. Learn when, how, and what products work best for tiny paws.",
+            "author": {
+              "@type": "Organization",
+              "name": "Purrify"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Purrify",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.purrify.ca/purrify-logo.png"
+              }
+            },
+            "datePublished": "2024-01-25",
+            "dateModified": new Date().toISOString().split('T')[0],
+            "image": `https://www.purrify.ca${heroImage}`,
+            "url": "https://www.purrify.ca/blog/using-deodorizers-with-kittens"
+          })}
+        </script>
       </Head>
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">

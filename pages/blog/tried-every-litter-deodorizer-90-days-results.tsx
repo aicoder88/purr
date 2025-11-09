@@ -74,7 +74,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
               }
             },
             "datePublished": "2025-10-06",
-            "dateModified": "2025-10-06"
+            "dateModified": new Date().toISOString().split('T')[0]
           })}
         </script>
       </Head>

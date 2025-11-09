@@ -75,7 +75,7 @@ export default function HouseSmellsLikeCatLitter() {
                   }
                 },
                 "datePublished": "2024-12-15T08:00:00-05:00",
-                "dateModified": "2024-12-15T10:00:00-05:00",
+                "dateModified": new Date().toISOString(),
                 "url": "https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions",
                 "mainEntityOfPage": {
                   "@type": "WebPage",

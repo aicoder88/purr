@@ -59,7 +59,7 @@ export default function BestForSmallApartments() {
               }
             },
             "datePublished": "2024-02-01",
-            "dateModified": "2024-02-01",
+            "dateModified": new Date().toISOString().split('T')[0],
             "image": heroImageOg,
             "url": "https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments"
           })}

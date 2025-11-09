@@ -73,7 +73,7 @@ export default function CatLitterSmellWorseSummer() {
                   }
                 },
                 "datePublished": "2025-01-20T10:00:00-05:00",
-                "dateModified": "2025-01-20T10:00:00-05:00",
+                "dateModified": new Date().toISOString(),
                 "url": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer-solutions",
                 "mainEntityOfPage": {
                   "@type": "WebPage",

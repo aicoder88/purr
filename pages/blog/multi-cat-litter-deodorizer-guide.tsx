@@ -59,7 +59,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               }
             },
             "datePublished": "2024-09-16",
-            "dateModified": "2024-09-16",
+            "dateModified": new Date().toISOString().split('T')[0],
             "image": `https://www.purrify.ca${heroImage}`,
             "url": "https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide",
             "mainEntityOfPage": {

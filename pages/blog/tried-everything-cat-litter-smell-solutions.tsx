@@ -73,7 +73,7 @@ export default function TriedEverythingCatLitterSmell() {
                   }
                 },
                 "datePublished": "2025-01-20T09:00:00-05:00",
-                "dateModified": "2025-01-20T09:00:00-05:00",
+                "dateModified": new Date().toISOString(),
                 "url": "https://www.purrify.ca/blog/tried-everything-cat-litter-smell-solutions",
                 "mainEntityOfPage": {
                   "@type": "WebPage",

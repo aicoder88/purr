@@ -73,7 +73,7 @@ export default function ActivatedCarbonBenefits() {
                   }
                 },
                 "datePublished": "2024-01-15T08:00:00-05:00",
-                "dateModified": "2024-08-30T10:00:00-05:00",
+                "dateModified": new Date().toISOString(),
             "url": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
                 "mainEntityOfPage": {
                   "@type": "WebPage",

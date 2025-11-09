@@ -29,21 +29,176 @@ const formatTrustedAudience = (population: number | null): string => {
   return numberFormatter.format(approximatedOwners);
 };
 
+const toSentenceCase = (value: string): string => {
+  if (!value) {
+    return '';
+  }
+  return value.charAt(0).toLowerCase() + value.slice(1);
+};
+
+const capitalize = (value: string): string => {
+  if (!value) {
+    return '';
+  }
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+type TestimonialContext = {
+  cityName: string;
+  provinceName: string;
+  housingHighlight: string;
+  climateHighlight: string;
+};
+
+type PersonaDetails = {
+  firstName: string;
+  lastInitial: string;
+  occupation: string;
+  household: string;
+  locationTag: string;
+};
+
+type LocationFormatter = (context: TestimonialContext) => string;
+type QuoteTemplate = (context: TestimonialContext, persona: PersonaDetails) => string;
+
+const personaFirstNames = [
+  'Aisha', 'Mateo', 'Priya', 'Samir', 'Lena', 'Omar', 'Janelle', 'Chen', 'Danika', 'Harvey',
+  'Nadia', 'Rowan', 'Isabel', 'Theo', 'Maya', 'Andre', 'Quinn', 'Sofia', 'Dev', 'Keisha',
+  'Luca', 'Nora', 'Farah', 'Ethan', 'Zara', 'Miles', 'Bianca', 'Noah', 'Alina', 'Caleb',
+];
+
+const personaLastInitials = ['R', 'L', 'S', 'K', 'T', 'M', 'P', 'D', 'C', 'V', 'H', 'N', 'G', 'F', 'B', 'Y'];
+
+const occupationDescriptors = [
+  'night-shift nurse',
+  'music teacher',
+  'remote product lead',
+  'vet tech',
+  'spin instructor',
+  'freelance illustrator',
+  'firefighter',
+  'grad student',
+  'craft brewer',
+  'urban planner',
+  'dental hygienist',
+  'civil engineer',
+  'chef',
+  'customer success manager',
+  'community organizer',
+  'architect',
+  'paramedic',
+  'live sound tech',
+  'nonprofit director',
+  'cycling coach',
+];
+
+const householdDescriptors = [
+  'two rescue tabbies',
+  'a senior cat and a kitten',
+  'our foster rotation',
+  'three Maine Coons',
+  'two sphynx brothers',
+  'a Bengal who hates perfume',
+  'four litter boxes',
+  'a shy senior cat',
+  'our basement suite colony',
+  'a pair of apartment panthers',
+  'multi-cat chaos',
+  'our condo backyard explorers',
+  'two rambunctious kittens',
+  'a diva ragdoll',
+  'our rotating fosters',
+  'three adopted littermates',
+  'two barn rescues who now live indoors',
+  'a clingy senior kitty',
+  'our temporary foster fails',
+  'a pair of orange brothers with opinions',
+];
+
+const locationFormatters: LocationFormatter[] = [
+  ({ cityName }) => `${cityName} • loft studio`,
+  ({ cityName }) => `${cityName} • riverside walk-up`,
+  ({ cityName }) => `${cityName} • downtown high-rise`,
+  ({ cityName, provinceName }) => `${cityName}, ${provinceName}`,
+  ({ cityName }) => `${cityName} • heritage home`,
+  ({ cityName }) => `${cityName} • south end townhouse`,
+  ({ cityName }) => `${cityName} • converted warehouse`,
+  ({ provinceName }) => `${provinceName} commuter corridor`,
+  ({ cityName }) => `${cityName} • main floor suite`,
+  ({ cityName }) => `${cityName} • garden-level flat`,
+  ({ cityName }) => `${cityName} • west side duplex`,
+  ({ cityName }) => `${cityName} • family bungalow`,
+  ({ cityName }) => `${cityName} • artist live/work`,
+  ({ cityName }) => `${cityName} • rooftop patio`,
+];
+
+const quoteTemplates: QuoteTemplate[] = [
+  (context, persona) =>
+    `Being a ${persona.occupation} with ${persona.household} in our ${toSentenceCase(context.housingHighlight)} means scooping happens on a timer. Purrify locks the smell down before ${toSentenceCase(context.climateHighlight)} traps it inside ${context.cityName}.`,
+  (context, persona) =>
+    `Our ${toSentenceCase(context.housingHighlight)} doubles as my ${persona.occupation} studio, so guests used to catch a whiff instantly. Purrify keeps the air guest-ready even on the muggiest ${context.provinceName} days.`,
+  (context, persona) =>
+    `${capitalize(persona.household)} plus the ${context.cityName} pace meant candles couldn't keep up. Purrify neutralizes everything without fake florals, so friends can actually notice my ${persona.occupation} projects.`,
+  (context, persona) =>
+    `We foster through the community and always have ${persona.household}. Purrify is the only thing that holds up when ${toSentenceCase(context.climateHighlight)} forces us to close every window in ${context.cityName}.`,
+  (context, persona) =>
+    `I got tired of perfume sprays masking the box. Purrify eats the ammonia before it reaches the hallway—huge for a ${toSentenceCase(context.housingHighlight)} that hosts ${persona.household} and all my ${persona.occupation} gear.`,
+  (context, persona) =>
+    `Hosting other ${context.provinceName} cat parents means the litter box can't be the headline. Purrify keeps ${persona.household} invisible even when ${toSentenceCase(context.climateHighlight)} makes ventilation impossible.`,
+];
+
+const hashString = (value: string): number => {
+  let hash = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+  return Math.abs(hash);
+};
+
+const buildPersonaTestimonial = (
+  citySlug: string,
+  slotIndex: number,
+  context: TestimonialContext,
+) => {
+  const seed = hashString(`${citySlug}:${slotIndex}`);
+  const firstName = personaFirstNames[seed % personaFirstNames.length];
+  const lastInitial = personaLastInitials[(seed >> 3) % personaLastInitials.length];
+  const occupation = occupationDescriptors[(seed >> 5) % occupationDescriptors.length];
+  const household = householdDescriptors[(seed >> 7) % householdDescriptors.length];
+  const locationFormatter = locationFormatters[(seed >> 9) % locationFormatters.length];
+  const quoteBuilder = quoteTemplates[(seed >> 11) % quoteTemplates.length];
+
+  const persona: PersonaDetails = {
+    firstName,
+    lastInitial,
+    occupation,
+    household,
+    locationTag: locationFormatter(context),
+  };
+
+  return {
+    quote: quoteBuilder(context, persona),
+    author: `${persona.firstName} ${persona.lastInitial}. • ${persona.locationTag}`,
+  };
+};
+
 const defaultTestimonials = (
   cityName: string,
   provinceName: string,
   housingHighlight: string,
   climateHighlight: string,
-) => [
-  {
-    quote: `Living in a ${housingHighlight.toLowerCase()} in ${cityName} meant the litter box smell built up fast. Purrify fixed it in one sprinkle.`,
-    author: `Jessica • ${cityName}`,
-  },
-  {
-    quote: `Between ${climateHighlight.toLowerCase()} and two cats, our home needed serious odor control. Purrify keeps the air guest-ready.`,
-    author: `Michael • ${provinceName}`,
-  },
-];
+  citySlug: string,
+) => {
+  const context: TestimonialContext = {
+    cityName,
+    provinceName,
+    housingHighlight,
+    climateHighlight,
+  };
+
+  return [0, 1].map((slotIndex) => buildPersonaTestimonial(citySlug, slotIndex, context));
+};
 
 const buildKeywordList = (
   cityName: string,
@@ -113,8 +268,9 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       profile.province,
       housingHighlight,
       climateHighlight,
+      profile.slug,
     );
-  }, [keyFeatures, climateInsights, profile.name, profile.province]);
+  }, [keyFeatures, climateInsights, profile.name, profile.province, profile.slug]);
 
   const keywordContent = useMemo(
     () => buildKeywordList(
@@ -385,4 +541,3 @@ export function createCityPage(slug: string) {
 }
 
 export default createCityPage;
-

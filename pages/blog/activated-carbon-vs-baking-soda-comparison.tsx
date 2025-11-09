@@ -57,7 +57,7 @@ export default function ActivatedCarbonVsBakingSoda() {
               }
             },
             "datePublished": "2024-01-15",
-            "dateModified": "2024-01-15"
+            "dateModified": new Date().toISOString().split('T')[0]
           })}
         </script>
       </Head>
