@@ -28,8 +28,26 @@ async function sendEmailViaEmailJS(
   message: string,
   subject: string
 ): Promise<{ success: boolean; message: string }> {
+  // Log configuration status for debugging
+  console.log('EmailJS Config Status:', {
+    hasPublicKey: !!EMAILJS_CONFIG.publicKey,
+    hasServiceId: !!EMAILJS_CONFIG.serviceId,
+    hasTemplateId: !!EMAILJS_CONFIG.templateId,
+    hasPrivateKey: !!EMAILJS_CONFIG.privateKey,
+    publicKeyLength: EMAILJS_CONFIG.publicKey?.length || 0,
+    serviceIdLength: EMAILJS_CONFIG.serviceId?.length || 0,
+    templateIdLength: EMAILJS_CONFIG.templateId?.length || 0,
+    privateKeyLength: EMAILJS_CONFIG.privateKey?.length || 0,
+  });
+
   if (!isEmailJSServerConfigured()) {
     console.error('EmailJS not properly configured. Missing credentials.');
+    console.error('Missing:', {
+      publicKey: !EMAILJS_CONFIG.publicKey,
+      serviceId: !EMAILJS_CONFIG.serviceId,
+      templateId: !EMAILJS_CONFIG.templateId,
+      privateKey: !EMAILJS_CONFIG.privateKey,
+    });
     return {
       success: false,
       message: 'Email service not available. Please contact us directly at support@purrify.ca'
@@ -61,6 +79,12 @@ async function sendEmailViaEmailJS(
 
     const data = await response.json();
 
+    console.log('EmailJS API Response:', {
+      status: response.status,
+      ok: response.ok,
+      data: data,
+    });
+
     if (response.ok && data.status === 200) {
       console.log('Email sent successfully via EmailJS');
       return {
@@ -68,7 +92,12 @@ async function sendEmailViaEmailJS(
         message: 'Message sent successfully!'
       };
     } else {
-      console.error('EmailJS API error:', data);
+      console.error('EmailJS API error:', {
+        responseStatus: response.status,
+        responseOk: response.ok,
+        dataStatus: data.status,
+        errorMessage: data.message || data.error,
+      });
       return {
         success: false,
         message: 'Failed to send email. Please try again later.'
