@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
-import { EMAILJS_CONFIG, isEmailJSServerConfigured } from '../../src/lib/emailjs-config';
+import nodemailer from 'nodemailer';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -19,34 +19,26 @@ const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 5;
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
 
-// Debug log EmailJS config on startup
-console.log('[EmailJS Contact API] Configuration Status:', {
-  publicKeySet: !!EMAILJS_CONFIG.publicKey,
-  serviceIdSet: !!EMAILJS_CONFIG.serviceId,
-  templateIdSet: !!EMAILJS_CONFIG.templateId,
-  privateKeySet: !!EMAILJS_CONFIG.privateKey,
-  publicKeyPrefix: EMAILJS_CONFIG.publicKey ? EMAILJS_CONFIG.publicKey.substring(0, 8) + '...' : 'MISSING',
-  serviceIdValue: EMAILJS_CONFIG.serviceId || 'MISSING',
+// Debug log SMTP config on startup
+console.log('[Contact API] SMTP Configuration Status:', {
+  userSet: !!process.env.SMTP_USER,
+  passSet: !!process.env.SMTP_PASS,
+  hostSet: !!process.env.SMTP_HOST,
+  portSet: !!process.env.SMTP_PORT,
 });
 
 /**
- * Send email via EmailJS API
+ * Send email via Nodemailer SMTP
  */
-async function sendEmailViaEmailJS(
+async function sendEmailViaSMTP(
   name: string,
   email: string,
   message: string,
   subject: string
 ): Promise<{ success: boolean; message: string }> {
-  // Check for required config
-  if (!EMAILJS_CONFIG.publicKey || !EMAILJS_CONFIG.serviceId) {
-    console.error('EmailJS not properly configured. Missing publicKey or serviceId.');
-    console.error('Config:', {
-      hasPublicKey: !!EMAILJS_CONFIG.publicKey,
-      hasServiceId: !!EMAILJS_CONFIG.serviceId,
-      hasTemplateId: !!EMAILJS_CONFIG.templateId,
-      hasPrivateKey: !!EMAILJS_CONFIG.privateKey,
-    });
+  // Check for required SMTP config
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.SMTP_HOST) {
+    console.error('SMTP not properly configured. Missing SMTP_USER, SMTP_PASS, or SMTP_HOST.');
     return {
       success: false,
       message: 'Email service not available. Please contact us directly at support@purrify.ca'
@@ -54,149 +46,66 @@ async function sendEmailViaEmailJS(
   }
 
   try {
-    console.log('Sending email via EmailJS with config:', {
-      serviceId: EMAILJS_CONFIG.serviceId,
-      hasTemplate: !!EMAILJS_CONFIG.templateId,
-      publicKeyExists: !!EMAILJS_CONFIG.publicKey,
+    console.log('Sending email via SMTP...', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT || 587,
+      userSet: !!process.env.SMTP_USER,
     });
 
-    // If template ID is configured, use template-based sending
-    if (EMAILJS_CONFIG.templateId) {
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: EMAILJS_CONFIG.serviceId,
-          template_id: EMAILJS_CONFIG.templateId,
-          user_id: EMAILJS_CONFIG.publicKey,
-          accessToken: EMAILJS_CONFIG.privateKey || undefined,
-          template_params: {
-            to_email: 'support@purrify.ca',
-            from_name: name,
-            from_email: email,
-            subject: subject || 'Contact Form Submission',
-            message: message,
-            date: new Date().toLocaleString(),
-            reply_to: email,
-          },
-        }),
-      });
-
-      const data = await response.json();
-
-      console.log('EmailJS Template Send Response:', {
-        status: response.status,
-        ok: response.ok,
-        statusCode: data.status,
-      });
-
-      if (response.ok && (data.status === 200 || data.status === 'success')) {
-        console.log('Email sent successfully via EmailJS template');
-        return {
-          success: true,
-          message: 'Message sent successfully!'
-        };
-      }
-    }
-
-    // Fallback: Use sendMail endpoint which doesn't require template
-    console.log('Using EmailJS sendMail endpoint (no template required)');
-
-    const mailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/sendMail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587', 10),
+      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
-      body: JSON.stringify({
-        service_id: EMAILJS_CONFIG.serviceId,
-        user_id: EMAILJS_CONFIG.publicKey,
-        accessToken: EMAILJS_CONFIG.privateKey || undefined,
-        template_params: {
-          to_email: 'support@purrify.ca',
-          to_name: 'Purrify Support',
-          from_name: name,
-          from_email: email,
-          subject: subject || 'Contact Form Submission',
-          message: message,
-          date: new Date().toLocaleString(),
-          reply_to: email,
-        },
-      }),
     });
 
-    console.log('EmailJS sendMail Response:', {
-      status: mailResponse.status,
-      ok: mailResponse.ok,
+    const mailOptions = {
+      from: process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@purrify.ca',
+      to: 'support@purrify.ca',
+      replyTo: email,
+      subject: `New Contact Form Submission: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <pre>${message}</pre>
+        <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+      `,
+      text: `
+New Contact Form Submission
+
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+
+Date: ${new Date().toLocaleString()}
+      `,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Email sent successfully:', {
+      messageId: info.messageId,
+      response: info.response,
     });
 
-    const mailText = await mailResponse.text();
-    console.log('EmailJS sendMail Response Body:', mailText);
-
-    if (mailResponse.ok) {
-      console.log('Email sent successfully via EmailJS sendMail');
-      return {
-        success: true,
-        message: 'Message sent successfully!'
-      };
-    } else {
-      console.error('EmailJS sendMail error:', {
-        status: mailResponse.status,
-        body: mailText,
-      });
-
-      // Try one more fallback with the original email/send endpoint
-      console.log('Trying email/send endpoint as final fallback');
-      try {
-        const fallbackResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            service_id: EMAILJS_CONFIG.serviceId,
-            user_id: EMAILJS_CONFIG.publicKey,
-            template_id: 'default',
-            template_params: {
-              to_email: 'support@purrify.ca',
-              to_name: 'Purrify Support',
-              from_name: name,
-              from_email: email,
-              subject: subject || 'Contact Form Submission',
-              message: message,
-              date: new Date().toLocaleString(),
-              reply_to: email,
-            },
-          }),
-        });
-
-        const fallbackText = await fallbackResponse.text();
-        console.log('Email/send fallback response:', {
-          status: fallbackResponse.status,
-          body: fallbackText,
-        });
-
-        if (fallbackResponse.ok) {
-          return {
-            success: true,
-            message: 'Message sent successfully!'
-          };
-        }
-      } catch (fallbackError) {
-        console.error('Fallback endpoint error:', fallbackError);
-      }
-
-      return {
-        success: false,
-        message: 'Failed to send email. Please try again later.'
-      };
-    }
+    return {
+      success: true,
+      message: 'Message sent successfully!'
+    };
   } catch (error) {
-    console.error('Error sending email via EmailJS:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('Error sending email via SMTP:', error instanceof Error ? error.message : 'Unknown error');
     return {
       success: false,
-      message: 'An error occurred while sending your message. Please try again or contact us directly at support@purrify.ca'
+      message: 'Failed to send email. Please try again later.'
     };
   }
 }
@@ -256,12 +165,12 @@ export default async function handler(
       timestamp: new Date().toISOString()
     });
 
-    // Send email via EmailJS
-    const emailResult = await sendEmailViaEmailJS(
+    // Send email via SMTP
+    const emailResult = await sendEmailViaSMTP(
       name,
       email,
       message,
-      'New Contact Form Submission from Purrify'
+      subject
     );
 
     console.log('Email result:', emailResult);
