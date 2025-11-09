@@ -62,7 +62,7 @@ module.exports = {
       maxWidth: 1920,                 // Maximum width in pixels
       responsiveSizes: [640, 828, 1080, 1200, 1920],  // Responsive breakpoints
       formats: ['avif', 'webp', 'jpg'],  // Output formats
-      compressionLevel: 6,            // AVIF/WebP compression (0-9)
+      compressionLevel: 6,            // AVIF/WebP compression (0-6)
       preserveMetadata: false         // Strip EXIF data
     },
     // ... other profiles

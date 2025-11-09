@@ -173,7 +173,7 @@ class ConfigurationManager {
           maxWidth: 1200,
           responsiveSizes: [640, 828, 1200],
           formats: ['avif', 'webp', 'jpg'],
-          compressionLevel: 7,
+          compressionLevel: 6,
           preserveMetadata: false
         },
         thumbnail: {
@@ -182,7 +182,7 @@ class ConfigurationManager {
           maxWidth: 400,
           responsiveSizes: [200, 400],
           formats: ['avif', 'webp'],
-          compressionLevel: 8,
+          compressionLevel: 6,
           preserveMetadata: false
         },
         default: {
@@ -191,7 +191,7 @@ class ConfigurationManager {
           maxWidth: 1920,
           responsiveSizes: [640, 828, 1080, 1200, 1920],
           formats: ['avif', 'webp', 'jpg'],
-          compressionLevel: 7,
+          compressionLevel: 6,
           preserveMetadata: false
         }
       },
