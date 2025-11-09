@@ -1,0 +1,91 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { requireAuth } from '@/lib/auth/session';
+import { ContentStore } from '@/lib/blog/content-store';
+import { AuditLogger } from '@/lib/blog/audit-logger';
+import type { BlogPost } from '@/types/blog';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { authorized, session } = await requireAuth(req, res);
+
+  if (!authorized || !session) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  const store = new ContentStore();
+  const logger = new AuditLogger();
+
+  try {
+    if (req.method === 'GET') {
+      // Get all posts
+      const locale = (req.query.locale as string) || 'en';
+      const includeUnpublished = req.query.includeUnpublished === 'true';
+      
+      const posts = await store.getAllPosts(locale, includeUnpublished);
+      return res.status(200).json(posts);
+    }
+
+    if (req.method === 'POST') {
+      // Create new post
+      const post: BlogPost = req.body;
+
+      // Validate required fields
+      if (!post.title || !post.content || !post.slug) {
+        return res.status(400).json({ error: 'Missing required fields' });
+      }
+
+      // Save post
+      await store.savePost(post);
+
+      // Log the creation
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'create',
+        resourceType: 'post',
+        resourceId: post.slug,
+        details: {
+          title: post.title,
+          status: post.status,
+          locale: post.locale
+        }
+      });
+
+      return res.status(201).json({ success: true, post });
+    }
+
+    if (req.method === 'PUT') {
+      // Update existing post
+      const post: BlogPost = req.body;
+
+      if (!post.slug) {
+        return res.status(400).json({ error: 'Missing slug' });
+      }
+
+      // Update modified date
+      post.modifiedDate = new Date().toISOString();
+
+      await store.savePost(post);
+
+      // Log the update
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'update',
+        resourceType: 'post',
+        resourceId: post.slug,
+        details: {
+          title: post.title,
+          status: post.status,
+          locale: post.locale
+        }
+      });
+
+      return res.status(200).json({ success: true, post });
+    }
+
+    return res.status(405).json({ error: 'Method not allowed' });
+  } catch (error) {
+    console.error('Error handling posts request:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}

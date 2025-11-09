@@ -116,7 +116,7 @@
   - _Requirements: 1.2_
 
 - [ ] 8. Create post editor page
-- [ ] 8.1 Build /admin/blog/new page
+- [x] 8.1 Build /admin/blog/new page
   - Create two-column layout (editor + sidebar)
   - Add title input field
   - Integrate block editor
@@ -146,7 +146,7 @@
   - _Requirements: 4.1, 4.2_
 
 - [ ] 9. Create post editor API endpoints
-- [ ] 9.1 Create /api/admin/blog/posts endpoint
+- [x] 9.1 Create /api/admin/blog/posts endpoint
   - Handle GET to fetch all posts
   - Handle POST to create new post
   - Handle PUT to update existing post
