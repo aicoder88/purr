@@ -368,16 +368,18 @@ const buildPersonaTestimonial = (
   context: TestimonialContext,
 ) => {
   const seed = hashString(`${citySlug}:${slotIndex}`);
-  const firstName = personaFirstNames[seed % personaFirstNames.length];
-  const lastInitial = personaLastInitials[(seed >> 3) % personaLastInitials.length];
-  const occupation = occupationDescriptors[(seed >> 5) % occupationDescriptors.length];
-  const household = householdDescriptors[(seed >> 7) % householdDescriptors.length];
-  const locationFormatter = locationFormatters[(seed >> 9) % locationFormatters.length];
-  const quoteBuilder = quoteTemplates[(seed >> 11) % quoteTemplates.length];
-  const timeAgo = timeAgoOptions[(seed >> 13) % timeAgoOptions.length];
-  const stars = starRatings[(seed >> 15) % starRatings.length];
-  const badge = trustBadges[(seed >> 17) % trustBadges.length];
-  const helpfulCount = 12 + (seed % 45); // Random between 12-57
+
+  // Use different multipliers to ensure better distribution across the same city
+  const firstName = personaFirstNames[(seed * 7) % personaFirstNames.length];
+  const lastInitial = personaLastInitials[(seed * 11) % personaLastInitials.length];
+  const occupation = occupationDescriptors[(seed * 13) % occupationDescriptors.length];
+  const household = householdDescriptors[(seed * 17) % householdDescriptors.length];
+  const locationFormatter = locationFormatters[(seed * 19) % locationFormatters.length];
+  const quoteBuilder = quoteTemplates[(seed * 23 + slotIndex * 29) % quoteTemplates.length];
+  const timeAgo = timeAgoOptions[(seed * 31) % timeAgoOptions.length];
+  const stars = starRatings[(seed * 37 + slotIndex) % starRatings.length];
+  const badge = trustBadges[(seed * 41) % trustBadges.length];
+  const helpfulCount = 12 + ((seed * 43) % 45); // Random between 12-57
 
   const persona: PersonaDetails = {
     firstName,
