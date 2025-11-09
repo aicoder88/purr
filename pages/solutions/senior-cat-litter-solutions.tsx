@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function SeniorCatLitterSolutionsPage() {
@@ -62,7 +62,7 @@ export default function SeniorCatLitterSolutionsPage() {
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <OptimizedImage
+              <Image
                 src={heroImage}
                 alt="Senior cat resting comfortably in clean environment"
                 width={600}
@@ -82,7 +82,7 @@ export default function SeniorCatLitterSolutionsPage() {
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl max-w-4xl mx-auto mb-16">
               <h2 className="text-3xl font-bold mb-6 text-purple-600 dark:text-purple-400 text-center">Understanding Senior Cat Needs</h2>
 
-              <OptimizedImage
+              <Image
                 src={careImage}
                 alt="Gentle care approach for senior cats"
                 width={500}
@@ -114,7 +114,7 @@ export default function SeniorCatLitterSolutionsPage() {
                 </div>
               </div>
 
-              <OptimizedImage
+              <Image
                 src={solutionImage}
                 alt="Senior cat living peacefully in odor-free home"
                 width={500}

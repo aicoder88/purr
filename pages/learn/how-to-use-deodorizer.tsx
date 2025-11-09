@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
@@ -64,7 +64,7 @@ export default function HowToUseDeodorizer() {
         <div className="prose prose-lg max-w-none">
           {/* Hero Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={heroImage}
               alt="Cat owner maintaining clean litter box with proper technique"
               width={800}
@@ -175,7 +175,7 @@ export default function HowToUseDeodorizer() {
 
           {/* Section Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={sectionImage1}
               alt="Clean litter box ready for proper deodorizer application"
               width={600}
@@ -266,7 +266,7 @@ export default function HowToUseDeodorizer() {
 
           {/* Cat Usage Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={sectionImage2}
               alt="Cat comfortably using well-maintained litter box"
               width={600}
@@ -370,7 +370,7 @@ export default function HowToUseDeodorizer() {
 
           {/* Solution Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={solutionImage}
               alt="Happy cat owner enjoying odor-free home environment"
               width={600}

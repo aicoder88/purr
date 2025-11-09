@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 
 export default function MultipleCatsOdorControlPage() {
   const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
@@ -58,7 +58,7 @@ export default function MultipleCatsOdorControlPage() {
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <OptimizedImage
+            <Image
               src={heroImage}
               alt="Multiple cats living together in clean, odor-free environment"
               width={600}
@@ -76,7 +76,7 @@ export default function MultipleCatsOdorControlPage() {
               <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
               <p className="text-lg mb-6">Purrify handles multi-cat households with industrial-strength odor elimination</p>
               
-              <OptimizedImage
+              <Image
                 src={solutionImage}
                 alt="Happy multi-cat household with successful odor management"
                 width={500}

@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -82,7 +82,7 @@ export default function ActivatedCarbonBenefits() {
         <div className="prose prose-lg max-w-none">
           {/* Hero Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={heroImage}
               alt="Scientific view of activated carbon molecular structure for odor control"
               width={800}
@@ -141,7 +141,7 @@ export default function ActivatedCarbonBenefits() {
 
           {/* Science Section Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={sectionImage1}
               alt="Modern laboratory showing scientific research into odor elimination"
               width={600}
@@ -237,7 +237,7 @@ export default function ActivatedCarbonBenefits() {
 
           {/* Happy Cats Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={sectionImage2}
               alt="Multiple cats living happily in clean, odor-free home environment"
               width={600}
@@ -311,7 +311,7 @@ export default function ActivatedCarbonBenefits() {
 
           {/* Solution Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={solutionImage}
               alt="Content cat in bright, fresh home showcasing successful odor control"
               width={600}

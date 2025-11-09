@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function LitterBoxSmellEliminationPage() {
@@ -62,7 +62,7 @@ export default function LitterBoxSmellEliminationPage() {
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <OptimizedImage
+              <Image
                 src={heroImage}
                 alt="Clean litter box with cat - complete odor elimination"
                 width={600}
@@ -82,7 +82,7 @@ export default function LitterBoxSmellEliminationPage() {
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl max-w-4xl mx-auto mb-16">
               <h2 className="text-3xl font-bold mb-6 text-green-600 dark:text-green-400 text-center">The Science of Odor Elimination</h2>
 
-              <OptimizedImage
+              <Image
                 src={scienceImage}
                 alt="Scientific approach to odor elimination with activated carbon"
                 width={500}
@@ -113,7 +113,7 @@ export default function LitterBoxSmellEliminationPage() {
                 </div>
               </div>
 
-              <OptimizedImage
+              <Image
                 src={solutionImage}
                 alt="Happy cat in fresh, odor-free environment"
                 width={500}

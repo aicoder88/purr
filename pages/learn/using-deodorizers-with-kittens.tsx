@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
@@ -61,7 +61,7 @@ export default function UsingDeodorizersWithKittensLearn() {
         <div className="prose prose-lg max-w-none">
           {/* Hero Image - Adorable Kitten */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={heroImage}
               alt="Adorable kitten in safe, clean environment"
               width={800}
@@ -83,7 +83,7 @@ export default function UsingDeodorizersWithKittensLearn() {
 
           {/* Kittens Playing Safely Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={sectionImage1}
               alt="Young kittens playing safely in clean household environment"
               width={600}
@@ -101,7 +101,7 @@ export default function UsingDeodorizersWithKittensLearn() {
 
           {/* Happy Kitten with Owner Image */}
           <div className="mb-8">
-            <OptimizedImage
+            <Image
               src={solutionImage}
               alt="Happy kitten with caring owner in safe home environment"
               width={600}

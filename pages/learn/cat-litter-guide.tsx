@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import {
   CheckCircle, 
   XCircle, 
@@ -221,7 +221,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src={heroImage}
                 alt="Modern cat litter box setup showing different litter types and maintenance tools"
                 width={1600}
@@ -296,7 +296,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src={sectionImage1}
                 alt="Various cat litter types displayed for comparison"
                 width={1600}
@@ -341,7 +341,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src={sectionImage2}
                 alt="Cat owner performing proper litter box maintenance routine"
                 width={1600}
@@ -391,7 +391,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src={solutionImage}
                 alt="Happy multi-cat household with clean, odor-free environment"
                 width={1600}

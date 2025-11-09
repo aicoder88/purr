@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { OptimizedImage } from '../../src/components/performance/OptimizedImage';
+import Image from 'next/image';
 import { useTranslation } from '../../src/lib/translation-context';
 import { formatProductPrice } from '../../src/lib/pricing';
 
@@ -66,7 +66,7 @@ export default function ApartmentCatSmellSolutionPage() {
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <OptimizedImage
+              <Image
                 src={heroImage}
                 alt="Modern apartment with cat - clean, odor-free living space"
                 width={600}
@@ -91,7 +91,7 @@ export default function ApartmentCatSmellSolutionPage() {
                 giving you the freedom to enjoy apartment living with your feline friends.
               </p>
 
-              <OptimizedImage
+              <Image
                 src={solutionImage}
                 alt="Clean, fresh apartment living room showing successful odor control"
                 width={500}
