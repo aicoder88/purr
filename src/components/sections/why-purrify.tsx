@@ -51,29 +51,35 @@ export function WhyPurrify() {
     },
   ];
 
-  // Define color themes to cycle through
+  // Define enhanced color themes
   const colorThemes = [
-    { bgGradient: "from-[#FF3131] to-[#FF3131]/80", textClass: "text-[#FF3131]", shadow: "shadow-red-200/50", border: "border-red-100" },
-    { bgGradient: "from-[#5B2EFF] to-[#5B2EFF]/80", textClass: "text-[#5B2EFF]", shadow: "shadow-purple-200/50", border: "border-purple-100" },
-    { bgGradient: "from-[#03E46A] to-[#03E46A]/80", textClass: "text-[#03E46A]", shadow: "shadow-green-200/50", border: "border-green-100" },
+    { bgGradient: "from-purple-600 to-purple-500", textClass: "text-purple-600 dark:text-purple-400", shadow: "shadow-purple-500/30", border: "border-purple-200 dark:border-purple-800", hoverBorder: "hover:border-purple-400 dark:hover:border-purple-600" },
+    { bgGradient: "from-pink-600 to-pink-500", textClass: "text-pink-600 dark:text-pink-400", shadow: "shadow-pink-500/30", border: "border-pink-200 dark:border-pink-800", hoverBorder: "hover:border-pink-400 dark:hover:border-pink-600" },
+    { bgGradient: "from-orange-600 to-orange-500", textClass: "text-orange-600 dark:text-orange-400", shadow: "shadow-orange-500/30", border: "border-orange-200 dark:border-orange-800", hoverBorder: "hover:border-orange-400 dark:hover:border-orange-600" },
   ];
 
   return (
     <section
-      className="relative pt-2 pb-12 bg-gradient-to-br from-orange-50 to-[#F5F5F5] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
+      className="relative pt-20 pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
       id="why-purrify"
     >
-      <Container>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-80 h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-orange-600 dark:text-orange-400 font-medium text-sm mb-4">
-            The Science Behind Purrify
-          </div> */}
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">The Science Behind Purrify</span>
+          </div>
         
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
             {t.nav.whyPurrify}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-lg dark:text-gray-300">
-            Discover why 1,000+ cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals.
+          <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+            Discover why 1,000+ cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals. 🐱✨
           </p>
         </div>
 
@@ -84,10 +90,13 @@ export function WhyPurrify() {
               return (
                 <div
                   key={index}
-                  className={`bg-white dark:bg-gray-800/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl border ${theme.border} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
+                  className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center">
+                  {/* Gradient overlay on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
+
+                  <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center relative">
                     <NextImage
                       src={reason.image}
                       alt={reason.title}
@@ -95,7 +104,7 @@ export function WhyPurrify() {
                       height={225}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                       loading={index < 3 ? "eager" : "lazy"}
-                      className={"w-full h-full transition-transform duration-500 group-hover:scale-105"}
+                      className={"w-full h-full transition-transform duration-700 group-hover:scale-110"}
                       style={{
                         objectFit: 'cover',
                         objectPosition: 'center',
@@ -105,18 +114,18 @@ export function WhyPurrify() {
                       }}
                     />
                   </div>
-                  <div className="p-4 sm:p-6 flex flex-col flex-grow">
-                    <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
+                    <div className="flex items-center mb-4">
                       <div
-                        className={`p-2 sm:p-3 rounded-full shadow-md mr-3 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${theme.bgGradient}`}
+                        className={`p-3 sm:p-4 rounded-2xl shadow-xl mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
                       >
-                        <IconComponent className="h-5 w-5 text-white dark:text-gray-100 dark:text-gray-100" />
+                        <IconComponent className="h-6 w-6 text-white" />
                       </div>
-                      <h3 className={`font-bold text-lg sm:text-xl ${theme.textClass} text-gray-900 dark:text-gray-100`}>
+                      <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
                         {reason.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base flex-grow">
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
                       {reason.description.split('\n').map((line, i) => (
                         <span key={i} className="block mb-1">{line}</span>
                       ))}
@@ -127,23 +136,25 @@ export function WhyPurrify() {
             })}
         </div>
       </Container>
-      {/* Downward-facing arrow to encourage scrolling */}
-      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-0 z-20 flex justify-center w-full">
-        <svg
-          className="w-10 h-10 drop-shadow-md animate-bounce mb-[-20px]"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6 9l6 6 6-6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-gray-400 dark:text-gray-500 dark:text-gray-400"
-          />
-        </svg>
+      
+      {/* Enhanced scroll indicator */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-8 z-20 flex justify-center w-full">
+        <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
+          <svg
+            className="w-8 h-8 animate-bounce"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 9l6 6 6-6"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
     </section>
   );

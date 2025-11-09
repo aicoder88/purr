@@ -57,26 +57,31 @@ export function HowItWorks() {
 
   return (
     <section
-      className="pb-20 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
+      className="pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
       id="how-it-works"
     >
-      <Container>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-40 right-20 w-64 h-64 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            Simple as 1-2-3
-          </div> */}
-          <SectionHeader text={t.howItWorks?.simpleAs123 || "Simple as 1-2-3"} />
-          <h2 className="text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">{t.howItWorks?.simpleAs123 || "Simple as 1-2-3"}</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
             {t.nav.howItWorks}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">compare our sizes</Link> to find what works best for you.
+          <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">compare our sizes</Link> to find what works best for you.
           </p>
         </div>
 
-        {/* Coconut Shells Visualization */}
-        <div className="max-w-2xl mx-auto text-center mb-16 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-2xl p-8 border border-orange-200 dark:border-orange-700/50">
-          <div className="overflow-hidden rounded-lg mb-6 h-[300px] sm:h-[400px] flex items-center justify-center">
+        {/* Enhanced Coconut Shells Visualization */}
+        <div className="max-w-2xl mx-auto text-center mb-16 bg-gradient-to-br from-orange-100 to-yellow-100 dark:from-orange-900/30 dark:to-yellow-900/30 rounded-3xl p-10 border-2 border-orange-300 dark:border-orange-700 shadow-2xl transform hover:-translate-y-2 transition-all duration-500">
+          <div className="overflow-hidden rounded-2xl mb-6 h-[300px] sm:h-[400px] flex items-center justify-center shadow-xl">
             <NextImage
               src="/optimized/catcoco.webp"
               alt="Pure sustainable coconut shells for Purrify activated carbon cat litter"
@@ -84,18 +89,18 @@ export function HowItWorks() {
               height={400}
               priority={true}
               quality={90}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
             />
           </div>
-          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
-            Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules.
+          <p className="text-gray-800 dark:text-gray-200 text-lg sm:text-xl leading-relaxed font-medium">
+            Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules. 🥥✨
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Connecting line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E0EFC7] via-[#5B2EFF]/30 to-[#E0EFC7] hidden md:block"></div>
+          {/* Enhanced connecting line with gradient */}
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300 dark:from-purple-700 dark:via-pink-700 dark:to-orange-700 hidden md:block rounded-full shadow-lg"></div>
 
           {steps.map((step, index) => (
             <div
@@ -103,20 +108,20 @@ export function HowItWorks() {
               className="relative group"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-10 h-full border border-[#E0EFC7] dark:border-gray-800 shadow-xl transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-2 z-10 relative">
+              <div className="bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl p-10 h-full border-2 border-purple-200 dark:border-purple-800 shadow-2xl transition-all duration-500 hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:-translate-y-4 z-10 relative">
                 <div
-                  className={`absolute -top-6 left-1/2 -translate-x-1/2 ${
+                  className={`absolute -top-8 left-1/2 -translate-x-1/2 ${
                     index === 0
-                      ? "bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80"
+                      ? "bg-gradient-to-r from-purple-600 to-purple-500"
                       : index === 1
-                      ? "bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80"
-                      : "bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80"
-                  } text-white dark:text-gray-100 w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 z-20`}
+                      ? "bg-gradient-to-r from-pink-600 to-pink-500"
+                      : "bg-gradient-to-r from-orange-600 to-orange-500"
+                  } text-white w-20 h-20 rounded-full flex items-center justify-center font-black text-3xl shadow-2xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 z-20 border-4 border-white dark:border-gray-900`}
                 >
                   {step.number}
                 </div>
-                <div className="text-center mt-6">
-                  <div className="overflow-hidden rounded-lg mb-4 h-[250px] sm:h-[400px] flex items-center justify-center">
+                <div className="text-center mt-8">
+                  <div className="overflow-hidden rounded-2xl mb-6 h-[250px] sm:h-[400px] flex items-center justify-center shadow-xl border-2 border-gray-100 dark:border-gray-700">
                     <NextImage
                       src={step.image}
                       alt={`Step ${step.number}: ${step.title} - ${step.description}`}
@@ -129,17 +134,17 @@ export function HowItWorks() {
                     />
                   </div>
                   <h3
-                    className={`font-bold text-2xl sm:text-3xl mb-3 sm:mb-4 ${
+                    className={`font-black text-2xl sm:text-3xl mb-4 ${
                       index === 0
-                        ? "text-[#FF3131]"
+                        ? "text-purple-600 dark:text-purple-400"
                         : index === 1
-                        ? "text-[#5B2EFF]"
-                        : "text-[#03E46A]"
+                        ? "text-pink-600 dark:text-pink-400"
+                        : "text-orange-600 dark:text-orange-400"
                     }`}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg">{step.description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed font-medium">{step.description}</p>
                 </div>
               </div>
             </div>
