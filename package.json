@@ -15,6 +15,8 @@
     "check-types:unused": "node scripts/check-unused-identifiers.js",
     "postbuild": "next-sitemap && npm run generate-enhanced-sitemap",
     "optimize-images": "node scripts/optimize-images.js",
+    "optimize-images:enhanced": "node scripts/optimize-images-enhanced.js",
+    "optimize-images:watch": "nodemon --watch public/original-images --exec 'npm run optimize-images:enhanced'",
     "optimize-all-images": "node scripts/optimize-all-images.js",
     "optimize-performance": "node scripts/optimize-performance.js",
     "add-image-dimensions": "node scripts/add-image-dimensions.js",

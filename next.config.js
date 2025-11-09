@@ -5,6 +5,17 @@ const withBundleAnalyzer =
     ? require('@next/bundle-analyzer')({ enabled: true })
     : (config) => config;
 
+/**
+ * Image Optimization
+ * 
+ * Image optimization is handled separately via npm scripts:
+ * - npm run optimize-images:enhanced - Run enhanced optimization
+ * - npm run optimize-images:watch - Watch for changes in development
+ * 
+ * This keeps the build process fast and allows optimization to run
+ * independently. Images are optimized once and cached.
+ */
+
 const REMOTE_IMAGE_HOSTS = [
   'api.dicebear.com',
   'purrify.ca',
