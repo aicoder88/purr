@@ -113,7 +113,7 @@ export const en = {
     ferretCage: "Ferret Cage Smell Killer",
     eliminateCatOdors: "7 Days Without Litter Box Smell",
     instantly: "Eliminates Litter Box Smell Instantly",
-    description: "This activated coconut uses molecular trapping technology—the same principle NASA developed for cleaning air to breathe in space. One sprinkle eliminates litter box odor for 7 full days. Your guests will ask \"You have cats?\" with genuine surprise.",
+    description: "This activated coconut uses molecular trapping technology—the same principle NASA developed for cleaning air to breathe in space. One sprinkle eliminates litter box odor for 7 full days.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "cat parents say goodbye to litter box smell",

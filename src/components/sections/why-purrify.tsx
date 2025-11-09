@@ -60,7 +60,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="relative pt-20 pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
+      className="relative pt-20 pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
       id="why-purrify"
     >
       {/* Animated background elements */}
@@ -138,7 +138,7 @@ export function WhyPurrify() {
       </Container>
       
       {/* Enhanced scroll indicator */}
-      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-8 z-20 flex justify-center w-full">
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex justify-center w-full">
         <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
           <svg
             className="w-8 h-8 animate-bounce"

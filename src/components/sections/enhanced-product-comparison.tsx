@@ -332,9 +332,9 @@ export function EnhancedProductComparison() {
 
     return (
       <Button className={`${buttonClass} opacity-80`} disabled>
-        <div className="flex items-center gap-2">
-          <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
-          {pricingCopy.linkComingSoon}
+        <div className="flex items-center gap-2 text-xs sm:text-sm">
+          <Icon className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
+          <span className="leading-tight">{pricingCopy.linkComingSoon}</span>
         </div>
       </Button>
     );
@@ -432,7 +432,7 @@ export function EnhancedProductComparison() {
 
                 <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex-1 flex flex-col">
                   {/* Product Image Section */}
-                  <div className="text-center mb-6">
+                  <div className="text-center mt-4 mb-6">
                     {/* Size Badge - Positioned above image */}
                     <div className="flex justify-center mb-3">
                       <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
@@ -664,7 +664,7 @@ export function EnhancedProductComparison() {
 
                 <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex-1 flex flex-col">
                   {/* Product Image Section */}
-                  <div className="text-center mb-6">
+                  <div className="text-center mt-4 mb-6">
                     {/* Size Badge - Positioned above image */}
                     <div className="flex justify-center mb-3">
                       <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">

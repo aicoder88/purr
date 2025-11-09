@@ -1,1 +1,0 @@
-Always update the translation types when adding new translation keys in this project.

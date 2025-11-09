@@ -55,8 +55,6 @@ export default [
   },
   {
     files: [
-      'src/lib/*-optimizer.ts',
-      'src/lib/montreal-seo-config.ts',
       'src/types/window.d.ts',
     ],
     rules: {
