@@ -47,13 +47,13 @@
   - _Requirements: 1.3, 7.1, 7.2, 7.3, 7.4, 7.5_
 
 - [ ] 4. Build admin authentication
-- [ ] 4.1 Set up NextAuth.js
+- [x] 4.1 Set up NextAuth.js
   - Configure NextAuth with credentials provider
   - Add admin and editor roles
   - Create session management
   - _Requirements: 10.1, 10.2, 10.3_
 
-- [ ] 4.2 Create protected admin routes
+- [x] 4.2 Create protected admin routes
   - Add middleware to protect /admin routes
   - Implement role-based access control
   - Add audit logging for content changes
