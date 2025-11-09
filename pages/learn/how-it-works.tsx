@@ -3,7 +3,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
@@ -177,7 +177,7 @@ export default function HowItWorksPage() {
               <div className="relative max-w-2xl mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative">
-                        <NextImage
+                        <Image
                           src="/optimized/micropores_magnified_view.webp"
                           alt="Activated Carbon Micropores Under Magnification"
                           width={600}
@@ -270,7 +270,7 @@ export default function HowItWorksPage() {
                     <div className="relative">
                       <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                       <div className="relative">
-                        <NextImage
+                        <Image
                           src={step.image}
                           alt={step.title}
                           width={500}

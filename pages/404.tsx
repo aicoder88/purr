@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
-import NextImage from '../components/NextImage';
+import Image from 'next/image';
 import { SITE_NAME } from '../src/lib/constants';
 
 // Suggested pages for common user journeys
@@ -47,7 +47,7 @@ const NotFoundPage: NextPage = () => {
       <Container>
         <div className="py-16 px-4 text-center max-w-3xl mx-auto">
           <div className="mb-8 flex justify-center">
-            <NextImage
+            <Image
               src="/optimized/purrify-logo-icon.webp"
               alt="Purrify Logo"
               width={80}

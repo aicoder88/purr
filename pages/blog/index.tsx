@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { sampleBlogPosts } from '../../src/data/blog-posts';
@@ -132,7 +132,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="aspect-video overflow-hidden">
-                      <NextImage
+                      <Image
                         src={post.image}
                         alt={post.title}
                         width={600}

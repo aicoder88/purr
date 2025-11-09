@@ -3,7 +3,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -339,7 +339,7 @@ export default function TrialSizePage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
-                  <NextImage
+                  <Image
                     src="/optimized/20g.webp"
                     alt="Purrify 12g Trial Size"
                     width={400}
@@ -444,7 +444,7 @@ export default function TrialSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Cat owner trying Purrify trial size for the first time"
                 width={1600}
@@ -519,7 +519,7 @@ export default function TrialSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage1}
                 alt="Curious cat experiencing Purrify for the first time"
                 width={1600}
@@ -638,7 +638,7 @@ export default function TrialSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage2}
                 alt="Happy cat owner with satisfied cat after trying Purrify"
                 width={1600}
@@ -686,7 +686,7 @@ export default function TrialSizePage() {
             {/* Success Story Image */}
             <div className="mt-12 max-w-3xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src={solutionImage}
                   alt="Success story of cat owner enjoying fresh home with Purrify"
                   width={1600}

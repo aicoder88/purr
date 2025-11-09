@@ -1,6 +1,6 @@
 import { Container } from '../src/components/ui/container';
 import { Twitter, Facebook } from 'lucide-react';
-import NextImage from '../components/NextImage';
+import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ const ThankYouPage = () => {
       <Container>
         <div className="max-w-2xl mx-auto text-center py-16">
           <div className="mb-8">
-            <NextImage
+            <Image
               src="/optimized/thank-you.webp"
               alt="Thank You"
               width={200}

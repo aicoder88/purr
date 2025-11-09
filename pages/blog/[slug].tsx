@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -260,7 +260,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             </div>
             
             <div className="relative h-[500px] mb-8">
-              <NextImage
+              <Image
                 src={post.image}
                 alt={post.title}
                 fill

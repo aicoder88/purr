@@ -3,7 +3,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -303,7 +303,7 @@ export default function StandardSizePage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
-                  <NextImage
+                  <Image
                     src="/optimized/60g.webp"
                     alt="Purrify 50g Standard Size"
                     width={400}
@@ -415,7 +415,7 @@ export default function StandardSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Perfect for single cat households - one month of freshness"
                 width={1600}
@@ -576,7 +576,7 @@ export default function StandardSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage1}
                 alt="Happy single cat enjoying fresh litter with Purrify"
                 width={1600}
@@ -597,7 +597,7 @@ export default function StandardSizePage() {
         <section className="py-8">
           <Container>
             <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={solutionImage}
                 alt="Happy cat owner with fresh, odor-free home using Purrify standard size"
                 width={1600}

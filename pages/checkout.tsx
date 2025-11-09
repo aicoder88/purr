@@ -14,10 +14,7 @@ import dynamic from "next/dynamic";
 import { FastCheckout } from '../src/components/mobile/FastCheckout';
 import { TrustBadges, CheckoutTrustBadges } from '../src/components/social-proof/TrustBadges';
 
-// Dynamically import NextImage to reduce initial bundle size
-const NextImage = dynamic(() => import("../components/NextImage"), {
-  ssr: true,
-});
+import Image from 'next/image';
 
 interface CheckoutFormData {
   email: string;

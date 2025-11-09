@@ -4,10 +4,10 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { formatProductPrice } from '../../src/lib/pricing';
-// import NextImage from '../components/NextImage';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function SciencePage() {
@@ -210,7 +210,7 @@ export default function SciencePage() {
             {/* Visual Images - Happy Cat */}
             <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src="/optimized/pet-safety-home.webp"
                   alt="Happy cat in clean, fresh home environment"
                   width={1600}
@@ -225,7 +225,7 @@ export default function SciencePage() {
                 </div>
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src="/optimized/content-cat.jpg"
                   alt="Content cat enjoying clean, odor-free environment"
                   width={1600}
@@ -370,7 +370,7 @@ export default function SciencePage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <NextImage
+                    <Image
                       src="/optimized/science-microscope.jpg"
                       alt="Laboratory microscope for activated carbon research"
                       width={1200}
@@ -382,7 +382,7 @@ export default function SciencePage() {
                     </div>
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <NextImage
+                    <Image
                       src="/optimized/chemistry-lab.jpg"
                       alt="Chemistry laboratory testing activated carbon samples"
                       width={1200}
@@ -397,7 +397,7 @@ export default function SciencePage() {
 
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <NextImage
+                    <Image
                       src="/optimized/molecular-structure.jpg"
                       alt="Molecular structure visualization showing pore architecture"
                       width={1200}

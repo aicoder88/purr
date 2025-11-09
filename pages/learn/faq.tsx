@@ -24,7 +24,7 @@ import {
   Truck,
   CreditCard
 } from 'lucide-react';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 
 const FAQPage: NextPage = () => {
   const { locale } = useTranslation();
@@ -315,7 +315,7 @@ const FAQPage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Cat owner researching Purrify product information and frequently asked questions"
                 width={1600}
@@ -363,7 +363,7 @@ const FAQPage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage1}
                 alt="Curious cat looking up with questions about Purrify cat litter additive"
                 width={1600}
@@ -503,7 +503,7 @@ const FAQPage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage2}
                 alt="Friendly customer service support team ready to help with Purrify questions"
                 width={1600}
@@ -566,7 +566,7 @@ const FAQPage: NextPage = () => {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={solutionImage}
                 alt="Happy cat owner enjoying odor-free home with Purrify activated carbon additive"
                 width={1600}

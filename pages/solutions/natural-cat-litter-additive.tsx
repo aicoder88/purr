@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 
 export default function naturalcatlitteradditivePage() {
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
@@ -83,7 +83,7 @@ export default function naturalcatlitteradditivePage() {
         <section className="py-8 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Natural coconut shell activated carbon - 100% natural cat litter additive"
                 width={1600}
@@ -130,7 +130,7 @@ export default function naturalcatlitteradditivePage() {
             {/* Natural Ingredients Image */}
             <div className="mt-12 mb-12">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src={sectionImage1}
                   alt="Natural ingredients and eco-friendly cat litter solution"
                   width={1600}
@@ -149,7 +149,7 @@ export default function naturalcatlitteradditivePage() {
             {/* Happy Cats Image */}
             <div className="mb-12">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src={sectionImage2}
                   alt="Multiple happy cats in clean, naturally fresh home"
                   width={1600}
@@ -175,7 +175,7 @@ export default function naturalcatlitteradditivePage() {
             {/* Solution Image */}
             <div className="mb-12 max-w-3xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src={solutionImage}
                   alt="Eco-friendly natural cat litter additive for sustainable pet care"
                   width={1600}

@@ -6,7 +6,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 
 export default function SafetyInformationPage() {
   const { locale } = useTranslation();
@@ -146,7 +146,7 @@ export default function SafetyInformationPage() {
             {/* Hero Images */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src="/optimized/quality-control-lab.webp"
                   alt="Quality control laboratory testing for activated carbon"
                   width={1600}
@@ -161,7 +161,7 @@ export default function SafetyInformationPage() {
                 </div>
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src="/optimized/activated-carbon-granules.webp"
                   alt="Premium coconut shell activated carbon granules"
                   width={1600}
@@ -317,7 +317,7 @@ export default function SafetyInformationPage() {
             {/* Certification Images */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <NextImage
+                <Image
                   src="/optimized/certification-quality.webp"
                   alt="Quality certification and standards compliance"
                   width={1600}
@@ -326,7 +326,7 @@ export default function SafetyInformationPage() {
                 />
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <NextImage
+                <Image
                   src="/optimized/coconut-shell-natural.webp"
                   alt="Sustainable coconut shell natural material"
                   width={1600}
@@ -335,7 +335,7 @@ export default function SafetyInformationPage() {
                 />
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <NextImage
+                <Image
                   src="/optimized/safe-cat-litter.webp"
                   alt="Safe cat litter with activated carbon"
                   width={1600}
@@ -361,7 +361,7 @@ export default function SafetyInformationPage() {
 
             {/* Applications Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-12 max-w-5xl mx-auto">
-              <NextImage
+              <Image
                 src="/optimized/pet-safety-home.webp"
                 alt="Pet safety and home odor control with activated carbon"
                 width={1600}
@@ -484,7 +484,7 @@ export default function SafetyInformationPage() {
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-10 shadow-xl border border-green-200 dark:border-green-700">
                 {/* Rodent Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
-                  <NextImage
+                  <Image
                     src="/optimized/hamster-rodent-pet.webp"
                     alt="Hamster and small pet rodent care with activated carbon"
                     width={1600}

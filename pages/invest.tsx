@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
-import NextImage from '../components/NextImage';
+import Image from 'next/image';
 import { useState, useCallback } from 'react';
 import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
 import { CONTACT_INFO } from '../src/lib/constants';

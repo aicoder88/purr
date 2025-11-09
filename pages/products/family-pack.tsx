@@ -9,7 +9,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function FamilyPackPage() {
@@ -126,7 +126,7 @@ export default function FamilyPackPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
-                  <NextImage
+                  <Image
                     src="/optimized/140g.webp"
                     alt="Purrify 120g Family Pack"
                     width={400}
@@ -493,7 +493,7 @@ export default function FamilyPackPage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Happy multiple cats in fresh, odor-free home with Purrify Family Pack"
                 width={1600}
@@ -514,7 +514,7 @@ export default function FamilyPackPage() {
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage1}
                 alt="Multi-cat household enjoying Purrify Family Pack odor control"
                 width={1600}
@@ -535,7 +535,7 @@ export default function FamilyPackPage() {
         <section className="py-8">
           <Container>
             <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={solutionImage}
                 alt="Happy cat family enjoying fresh home with Purrify Family Pack"
                 width={1600}

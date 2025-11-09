@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import NextImage from '../../components/NextImage';
+import Image from 'next/image';
 
 export default function ammoniasmellcatlitterPage() {
   const seoTitle = 'Stop Cat Litter Ammonia Smell | Purrify';
@@ -98,7 +98,7 @@ export default function ammoniasmellcatlitterPage() {
         <section className="py-8 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={heroImage}
                 alt="Person bothered by strong ammonia smell from cat litter box"
                 width={1600}
@@ -139,7 +139,7 @@ export default function ammoniasmellcatlitterPage() {
             {/* Science Image */}
             <div className="mb-12">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <NextImage
+                <Image
                   src={sectionImage1}
                   alt="Molecular science of activated carbon trapping ammonia molecules"
                   width={1600}
@@ -185,7 +185,7 @@ export default function ammoniasmellcatlitterPage() {
         <section className="py-8 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <NextImage
+              <Image
                 src={sectionImage2}
                 alt="Clean, fresh-smelling home environment without ammonia odor"
                 width={1600}
@@ -236,7 +236,7 @@ export default function ammoniasmellcatlitterPage() {
             {/* Solution Image - Happy Cat */}
             <div className="mb-12">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
-                <NextImage
+                <Image
                   src={solutionImage}
                   alt="Happy cat in odor-free home thanks to Purrify ammonia elimination"
                   width={1600}
