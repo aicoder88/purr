@@ -239,10 +239,14 @@ export default async function handler(
 
     const { name, email, message } = validationResult.data;
 
+    // Generate subject line for the contact form email
+    const subject = `Contact Form Submission from ${name}`;
+
     console.log('Processing contact form submission:', {
       name,
       email,
       messageLength: message.length,
+      subject,
       timestamp: new Date().toISOString()
     });
 
