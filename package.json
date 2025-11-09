@@ -34,6 +34,7 @@
     "purge-vercel-cache": "node scripts/purge-vercel-cache.js",
     "build:production": "node scripts/build-production.js",
     "seo:optimize": "node scripts/seo-optimization.js",
+    "seo:keywords": "tsx scripts/seo-keyword-analysis.js",
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",
     "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize",
@@ -115,6 +116,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
     "web-vitals": "^5.1.0",
+    "xlsx": "^0.18.5",
     "zod": "^4.1.0"
   },
   "devDependencies": {
