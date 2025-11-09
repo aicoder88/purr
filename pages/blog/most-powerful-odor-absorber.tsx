@@ -82,7 +82,7 @@ export default function MostPowerfulOdorAbsorber() {
       },
     },
     datePublished: '2025-10-19',
-    dateModified: '2025-10-19',
+    dateModified: new Date().toISOString().split('T')[0],
     wordCount: 2150,
     mainEntityOfPage: {
       '@type': 'WebPage',

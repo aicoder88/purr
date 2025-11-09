@@ -1,0 +1,276 @@
+=============================================================================
+FAQ & QUESTION-FOCUSED CONTENT - DETAILED FILE LISTING
+=============================================================================
+
+FILE HIERARCHY:
+
+1. DEDICATED FAQ PAGE & COMPONENTS
+   =================================
+
+   /Users/macpro/dev/purr/pages/learn/faq.tsx
+   - 600+ lines
+   - Main FAQ page with searchable/filterable interface
+   - 12 FAQ items with 5 categories
+   - FAQPage schema for Google Featured Snippets
+   - Dark mode support
+   - Mobile responsive
+   - Related articles integration
+   - Support contact options
+
+   /Users/macpro/dev/purr/src/components/sections/faq.tsx
+   - 170 lines
+   - Reusable FAQ accordion component
+   - Optional FAQPage schema generation
+   - Translatable via i18n context
+   - Can be embedded in other pages
+   - Links support for related pages
+   - Gradient card styling
+
+   /Users/macpro/dev/purr/src/components/ui/accordion.tsx
+   - Radix UI accordion component
+   - Used for all Q&A sections
+   - Keyboard accessible
+   - Smooth animations
+
+---
+
+2. HOW-TO PAGES WITH Q&A
+   ======================
+
+   /Users/macpro/dev/purr/pages/learn/how-to-use-deodorizer.tsx
+   - 410+ lines
+   - 5-step instructional guide (color-coded steps)
+   - 4 common mistakes section
+   - 4 pro tips
+   - 3 troubleshooting Q&As
+   - Litter type compatibility table
+   - HowTo schema implementation
+   - Multiple section images
+   - Dark mode support
+
+   /Users/macpro/dev/purr/pages/blog/how-to-use-cat-litter-deodorizer.tsx
+   - Blog article version of how-to
+   - HowTo schema with supplies and steps
+   - Estimated cost and time
+   - Hero image
+   - Related articles
+
+---
+
+3. PAGES WITH EMBEDDED FAQ SECTIONS
+   =================================
+
+   /Users/macpro/dev/purr/pages/learn/how-it-works.tsx
+   - 370+ lines
+   - "Common Questions" section with 4 FAQs
+   - Science explanation with icons
+   - Step-by-step usage with images
+   - ArticleSchema implementation
+   - CTA to products
+   - Breadcrumb navigation
+
+   /Users/macpro/dev/purr/pages/blog/most-powerful-odor-absorber.tsx
+   - 200+ lines
+   - Embedded 3-question FAQ
+   - Performance comparison chart
+   - Article + Question schema
+   - Product comparison focused
+   - Images and charts
+
+---
+
+4. QUESTION-FOCUSED BLOG POSTS
+   ============================
+
+   /Users/macpro/dev/purr/pages/blog/most-powerful-odor-absorber.tsx
+   TITLE: "What's The Most Powerful Odor Absorber For Cat Litter?"
+   Q&A: 3 items | Schema: Article + Question | Images: 5
+
+   /Users/macpro/dev/purr/pages/blog/tried-everything-cat-litter-smell-solutions.tsx
+   TITLE: "Tried Everything for Cat Litter Smell? Why Most Solutions Fail"
+   TYPE: Emotion-driven problem query | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/best-litter-odor-remover-small-apartments.tsx
+   TITLE: "Best Litter Odor Remover For Small Apartments"
+   TYPE: Scenario-specific solution | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/strong-cat-urine-smell-litter-box.tsx
+   TITLE: "Strong Cat Urine Smell in Litter Box: Solutions & Prevention"
+   TYPE: Problem-focused | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/house-smells-like-cat-litter-solutions.tsx
+   TITLE: "House Smells Like Cat Litter? Complete Solutions"
+   TYPE: Environmental problem | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/cat-litter-smell-worse-summer-solutions.tsx
+   TITLE: "Why Cat Litter Smells Worse in Summer (And Solutions)"
+   TYPE: Seasonal issue | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/embarrassed-guests-visit-cat-litter-smell.tsx
+   TITLE: "Embarrassed When Guests Visit Because of Cat Litter Smell?"
+   TYPE: Emotional trigger | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/activated-carbon-litter-additive-benefits.tsx
+   TITLE: "Activated Carbon Litter Additive: Benefits & How It Works"
+   TYPE: Educational/Benefits | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/activated-carbon-vs-baking-soda-comparison.tsx
+   TITLE: "Activated Carbon vs Baking Soda: Complete Comparison"
+   TYPE: Comparison | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/multi-cat-litter-deodorizer-guide.tsx
+   TITLE: "Multi-Cat Litter Deodorizer Guide"
+   TYPE: Specific scenario | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/using-deodorizers-with-kittens.tsx
+   TITLE: "Using Deodorizers With Kittens: Safety & Best Practices"
+   TYPE: Age-specific/Safety | Schema: Article | Images: 4+
+
+   /Users/macpro/dev/purr/pages/blog/tried-every-litter-deodorizer-90-days-results.tsx
+   TITLE: "Tried Every Litter Deodorizer - 90 Days of Results"
+   TYPE: Case study/Results-driven | Schema: Article | Images: 4+
+
+---
+
+5. EDUCATIONAL/ANSWER PAGES
+   ==========================
+
+   /Users/macpro/dev/purr/pages/learn/activated-carbon-benefits.tsx
+   Answers: "What are the benefits of activated carbon?"
+
+   /Users/macpro/dev/purr/pages/learn/activated-carbon-vs-baking-soda-deodorizers.tsx
+   Answers: "What's the difference between activated carbon and baking soda?"
+
+   /Users/macpro/dev/purr/pages/learn/cat-litter-guide.tsx
+   Answers: "What's the best litter type?" "How to maintain litter?"
+   - Litter type comparison table (5 types + Purrify)
+   - Maintenance tips (4 sections)
+   - Common problems & solutions
+
+   /Users/macpro/dev/purr/pages/learn/safety.tsx
+   Answers: "Is it safe?" "What are the certifications?"
+   - Technical specifications table
+   - Certifications (NSF/ANSI 61, AWWA B604, FCC, Halal, Kosher)
+   - Feature highlights
+
+   /Users/macpro/dev/purr/pages/learn/science.tsx
+   Answers: "How does the science work?"
+
+---
+
+6. TRANSLATION FILES
+   ==================
+
+   /Users/macpro/dev/purr/src/translations/en.ts
+   - FAQ section with 8+ items and nested structure
+   - Navigation menu FAQ link
+   - faqPage dedicated questions array
+   - Contact and "Learn more" labels
+
+   /Users/macpro/dev/purr/src/translations/fr.ts
+   - French translations for all FAQ content
+   - Same structure as English
+
+   /Users/macpro/dev/purr/src/translations/zh.ts
+   - Chinese/Mandarin translations for all FAQ content
+   - Same structure as English
+
+---
+
+7. RELATED COMPONENTS
+   ====================
+
+   /Users/macpro/dev/purr/src/components/blog/RelatedArticles.tsx
+   - Used in all FAQ and blog pages
+   - Automatically suggests related content
+
+   /Users/macpro/dev/purr/src/components/seo/json-ld-schema.ts
+   - Schema generation utilities
+   - ArticleSchema component with full customization
+
+   /Users/macpro/dev/purr/src/lib/seo-utils.ts
+   - Canonical URL building
+   - Language alternates generation
+   - Structured data helpers
+
+---
+
+8. STATIC FILES & ASSETS
+   ======================
+
+   /Users/macpro/dev/purr/public/optimized/
+   - panel_1.webp (Sprinkle Purrify step)
+   - panel_2.webp (Mix Gently step)
+   - panel_3.webp (Enjoy Freshness step)
+   - micropores_magnified_view.webp (Science image)
+   - Various blog hero images
+
+---
+
+STATISTICS:
+===========
+Total dedicated FAQ pages: 1 (plus 1 reusable component)
+Pages with embedded FAQs: 2+ (how-it-works, most-powerful-absorber)
+Total FAQ questions across all pages: 30+
+How-to pages with Q&A sections: 2
+Blog posts targeting question keywords: 12+
+Educational/answer pages: 5
+Languages supported: 3 (EN, FR, ZH)
+Structured data types used: FAQPage, HowTo, Article, Question
+
+SCHEMA IMPLEMENTATION:
+======================
+✓ FAQPage - Main FAQ page for featured snippets
+✓ HowTo - How-to guides with steps
+✓ Article - Blog posts and learn pages
+✓ Question - Embedded FAQ questions
+✓ Answer - FAQ answers
+✓ Organization - Author/publisher info
+
+DARK MODE:
+==========
+All FAQ components include full dark mode support:
+- Accordion items
+- Section backgrounds
+- Text colors
+- Border colors
+- Button states
+
+ACCESSIBILITY:
+==============
+✓ Keyboard navigation (Tab, Arrow keys, Enter)
+✓ ARIA labels for interactive elements
+✓ Proper heading hierarchy
+✓ Color contrast meets WCAG AA
+✓ Focus indicators
+✓ Skip navigation link
+✓ Image alt text
+
+TRANSLATIONS:
+=============
+Keys available in 3 languages:
+- t.faq.title
+- t.faq.commonQuestions
+- t.faq.subtitle
+- t.faq.stillHaveQuestions
+- t.faq.contactTeam
+- t.faq.forMoreInfo
+- t.faq.items[]
+- t.faq.faqPage.questions[]
+
+SEO OPTIMIZATION:
+=================
+✓ Keyword-rich titles for blog posts
+✓ Question-based URL paths
+✓ Meta descriptions
+✓ Open Graph tags
+✓ Twitter Card tags
+✓ Canonical URLs
+✓ Language alternates
+✓ Internal linking between related content
+✓ Breadcrumb navigation
+✓ Schema markup for rich snippets
+
+=============================================================================
+END OF FILE LISTING
+=============================================================================

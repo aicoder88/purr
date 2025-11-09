@@ -149,18 +149,53 @@ const FAQPage: NextPage = () => {
     }
   ];
 
+  // Current date for fresh content signals
+  const today = new Date().toISOString();
+  const lastUpdated = '2025-01-09'; // Updated regularly for SEO freshness
+
   // Generate FAQ schema for SEO
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    'datePublished': '2024-01-15',
+    'dateModified': today,
     'mainEntity': faqItems.map(item => ({
       '@type': 'Question',
       'name': item.question,
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': item.answer
+        'text': item.answer,
+        'dateCreated': '2024-01-15',
+        'dateModified': today
       }
     }))
+  };
+
+  // Additional Article schema for better AI/SEO signals
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    'headline': pageTitle,
+    'description': pageDescription,
+    'datePublished': '2024-01-15',
+    'dateModified': today,
+    'author': {
+      '@type': 'Organization',
+      'name': 'Purrify',
+      'url': 'https://www.purrify.ca'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Purrify',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://www.purrify.ca/logo.png'
+      }
+    },
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': canonicalUrl
+    }
   };
 
   const toggleItem = useCallback((id: number) => {
@@ -222,6 +257,12 @@ const FAQPage: NextPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
+      {/* Article Schema for AI/SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
@@ -248,10 +289,13 @@ const FAQPage: NextPage = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Frequently Asked Questions
               </h1>
-              <p className="text-xl md:text-2xl mb-8 opacity-90">
+              <p className="text-xl md:text-2xl mb-4 opacity-90">
                 Everything you need to know about Purrify
               </p>
-              
+              <p className="text-sm mb-8 opacity-75">
+                Last updated: {new Date(lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />

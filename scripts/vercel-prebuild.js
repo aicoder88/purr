@@ -7,13 +7,6 @@ console.log('🚀 Starting Vercel prebuild process...');
 
 const isCI = !!(process.env.CI || process.env.VERCEL);
 
-// Optimize TypeScript configuration for faster builds
-try {
-  execSync('node scripts/optimize-typescript.js', { stdio: 'inherit' });
-} catch (e) {
-  console.warn('⚠️ TypeScript optimization warning (non-blocking)');
-}
-
 // Dark mode validation
 if (!isCI) {
   console.log('🌙 Running dark mode validation...');
@@ -40,17 +33,9 @@ const imageDimensionsExists = fs.existsSync(imageDimensionsPath);
 
 try {
   if (isCI) {
-    console.log('🛟 CI/Vercel build detected: skipping duplicate removal and heavy image optimization.');
+    console.log('🛟 CI/Vercel build detected: skipping heavy image optimization.');
   } else {
-    // Local/dev builds only: dedupe and optimize
-    console.log('🧹 Removing duplicate images (local/dev only)...');
-    try {
-      execSync('node scripts/remove-duplicate-images.js', { stdio: 'inherit' });
-      console.log('✅ Duplicate images removed');
-    } catch (e) {
-      console.warn('⚠️ Duplicate image removal failed or skipped');
-    }
-
+    // Local/dev builds only: optimize images
     console.log('🖼️ Optimizing all images...');
     execSync('node scripts/optimize-all-images.js', { stdio: 'inherit' });
     console.log('✅ Image optimization complete');
