@@ -7,6 +7,19 @@ export type BlogPost = {
   image: string;
   link: string;
   content?: string;
+  locale?: 'en' | 'fr' | 'zh';
+  heroImageAlt?: string;
+  heroImageCaption?: string;
+  heroImageCredit?: string;
+  secondaryImages?: Array<{
+    url: string;
+    alt: string;
+    caption?: string;
+    credit?: string;
+  }>;
+  toc?: Array<{ title: string; id: string }>;
+  faq?: Array<{ question: string; answerHtml: string }>;
+  cta?: { text: string; url: string };
 };
 
 // Generate dynamic blog posts based on actual blog pages

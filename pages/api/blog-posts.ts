@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { sampleBlogPosts, BlogPost } from '../../src/data/blog-posts';
+import { prisma } from '../../src/lib/prisma';
 
 interface WpPost {
   title: {
@@ -25,7 +26,29 @@ export default async function handler(
 ) {
   try {
     const { limit } = req.query;
-    const limitNum = limit ? parseInt(limit as string) : undefined;
+    const limitNum = limit ? parseInt(limit as string, 10) : undefined;
+    const take = limitNum || 6;
+
+    const automatedPosts = await prisma.blogPost.findMany({
+      where: { status: 'PUBLISHED' },
+      orderBy: { publishedAt: 'desc' },
+      take,
+    });
+
+    if (automatedPosts.length > 0) {
+      return res.status(200).json(
+        automatedPosts.map((post) => ({
+          title: post.title,
+          excerpt: post.excerpt,
+          author: post.author ?? 'Purrify Research Lab',
+          date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
+          image: post.heroImageUrl,
+          link: `/blog/${post.slug}`,
+          content: post.content,
+          locale: (post.locale as 'en' | 'fr' | 'zh' | undefined) ?? 'en',
+        }))
+      );
+    }
     
     // WordPress API URL - replace with your WordPress site URL
     const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
@@ -39,7 +62,7 @@ export default async function handler(
     }
     
     // Fetch posts from WordPress
-    const postsUrl = `${wpApiUrl}/posts?_embed&per_page=${limitNum || 10}`;
+    const postsUrl = `${wpApiUrl}/posts?_embed&per_page=${take}`;
     const response = await fetch(postsUrl);
     
     if (!response.ok) {
@@ -56,7 +79,8 @@ export default async function handler(
       date: new Date(post.date).toISOString().split('T')[0],
       image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
       link: `/blog/${post.slug}`,
-      content: post.content.rendered
+      content: post.content.rendered,
+      locale: 'en'
     }));
     
     res.status(200).json(posts);
@@ -64,7 +88,7 @@ export default async function handler(
     console.error('Error fetching WordPress posts:', err);
     // Fallback to sample data in case of error
     const { limit } = req.query;
-    const limitNum = limit ? parseInt(limit as string) : undefined;
+    const limitNum = limit ? parseInt(limit as string, 10) : undefined;
     const posts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
     res.status(200).json(posts);
   }

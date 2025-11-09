@@ -1,13 +1,13 @@
 # Implementation Plan
 
 - [ ] 1. Set up content storage infrastructure
-- [ ] 1.1 Create content directory structure
+- [x] 1.1 Create content directory structure
   - Create content/blog/{locale} directories
   - Create content/categories.json and tags.json
   - Set up TypeScript interfaces for BlogPost, Category, Tag
   - _Requirements: 8.1, 8.2_
 
-- [ ] 1.2 Implement ContentStore class
+- [x] 1.2 Implement ContentStore class
   - Write getPost() method with status filtering
   - Write getAllPosts() with sorting and filtering
   - Write getPostsByCategory() and getPostsByTag()

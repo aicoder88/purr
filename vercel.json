@@ -88,5 +88,12 @@
       "source": "/robots.txt",
       "destination": "/api/robots"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/generate-blog-post",
+      "schedule": "0 12 */3 * *",
+      "method": "POST"
+    }
   ]
 }

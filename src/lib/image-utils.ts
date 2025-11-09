@@ -206,13 +206,22 @@ export function getImageProps(
               getOptimizedImagePath(imagePath, 'jpg') ||
               `/${imagePath}`;
 
-  const props: any = {
+  const props: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    sizes: string;
+    priority: boolean;
+    placeholder?: 'blur';
+    blurDataURL?: string;
+  } = {
     src,
     alt,
     width: metadata.width,
     height: metadata.height,
     sizes: metadata.sizes,
-    priority
+    priority,
   };
 
   // Add blur placeholder if available

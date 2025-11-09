@@ -1,0 +1,86 @@
+[
+  {
+    "id": "tips",
+    "name": "Tips & Advice",
+    "slug": "tips",
+    "description": "Helpful tips and advice for cat owners",
+    "parent": null,
+    "translations": {
+      "en": {
+        "name": "Tips & Advice",
+        "description": "Helpful tips and advice for cat owners"
+      },
+      "fr": {
+        "name": "Conseils",
+        "description": "Conseils utiles pour les propriétaires de chats"
+      },
+      "zh": {
+        "name": "提示与建议",
+        "description": "为猫主人提供有用的提示和建议"
+      }
+    }
+  },
+  {
+    "id": "odor-control",
+    "name": "Odor Control",
+    "slug": "odor-control",
+    "description": "Everything about controlling cat litter odors",
+    "parent": null,
+    "translations": {
+      "en": {
+        "name": "Odor Control",
+        "description": "Everything about controlling cat litter odors"
+      },
+      "fr": {
+        "name": "Contrôle des Odeurs",
+        "description": "Tout sur le contrôle des odeurs de litière pour chat"
+      },
+      "zh": {
+        "name": "气味控制",
+        "description": "关于控制猫砂气味的一切"
+      }
+    }
+  },
+  {
+    "id": "cat-health",
+    "name": "Cat Health",
+    "slug": "cat-health",
+    "description": "Health and wellness information for cats",
+    "parent": null,
+    "translations": {
+      "en": {
+        "name": "Cat Health",
+        "description": "Health and wellness information for cats"
+      },
+      "fr": {
+        "name": "Santé des Chats",
+        "description": "Informations sur la santé et le bien-être des chats"
+      },
+      "zh": {
+        "name": "猫咪健康",
+        "description": "猫咪健康和保健信息"
+      }
+    }
+  },
+  {
+    "id": "product-guides",
+    "name": "Product Guides",
+    "slug": "product-guides",
+    "description": "Guides for using Purrify products effectively",
+    "parent": null,
+    "translations": {
+      "en": {
+        "name": "Product Guides",
+        "description": "Guides for using Purrify products effectively"
+      },
+      "fr": {
+        "name": "Guides Produits",
+        "description": "Guides pour utiliser efficacement les produits Purrify"
+      },
+      "zh": {
+        "name": "产品指南",
+        "description": "有效使用Purrify产品的指南"
+      }
+    }
+  }
+]

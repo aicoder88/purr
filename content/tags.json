@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cat-litter",
+    "name": "Cat Litter",
+    "slug": "cat-litter",
+    "translations": {
+      "en": "Cat Litter",
+      "fr": "Litière pour Chat",
+      "zh": "猫砂"
+    }
+  },
+  {
+    "id": "odor-elimination",
+    "name": "Odor Elimination",
+    "slug": "odor-elimination",
+    "translations": {
+      "en": "Odor Elimination",
+      "fr": "Élimination des Odeurs",
+      "zh": "除臭"
+    }
+  },
+  {
+    "id": "activated-carbon",
+    "name": "Activated Carbon",
+    "slug": "activated-carbon",
+    "translations": {
+      "en": "Activated Carbon",
+      "fr": "Charbon Actif",
+      "zh": "活性炭"
+    }
+  },
+  {
+    "id": "multi-cat",
+    "name": "Multi-Cat Households",
+    "slug": "multi-cat",
+    "translations": {
+      "en": "Multi-Cat Households",
+      "fr": "Foyers Multi-Chats",
+      "zh": "多猫家庭"
+    }
+  },
+  {
+    "id": "apartment-living",
+    "name": "Apartment Living",
+    "slug": "apartment-living",
+    "translations": {
+      "en": "Apartment Living",
+      "fr": "Vie en Appartement",
+      "zh": "公寓生活"
+    }
+  },
+  {
+    "id": "eco-friendly",
+    "name": "Eco-Friendly",
+    "slug": "eco-friendly",
+    "translations": {
+      "en": "Eco-Friendly",
+      "fr": "Écologique",
+      "zh": "环保"
+    }
+  },
+  {
+    "id": "pet-care",
+    "name": "Pet Care",
+    "slug": "pet-care",
+    "translations": {
+      "en": "Pet Care",
+      "fr": "Soins des Animaux",
+      "zh": "宠物护理"
+    }
+  },
+  {
+    "id": "cleaning-tips",
+    "name": "Cleaning Tips",
+    "slug": "cleaning-tips",
+    "translations": {
+      "en": "Cleaning Tips",
+      "fr": "Conseils de Nettoyage",
+      "zh": "清洁技巧"
+    }
+  }
+]

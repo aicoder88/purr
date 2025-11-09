@@ -7,8 +7,14 @@ import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
+import { prisma } from '../../src/lib/prisma';
 import fs from 'fs';
 import path from 'path';
+
+type TocEntry = { title: string; id: string };
+type FaqEntry = { question: string; answerHtml: string };
+
+const asArray = <T,>(value: unknown): T[] => (Array.isArray(value) ? (value as T[]) : []);
 
 // This function gets called at build time to generate static paths
 export function getStaticPaths() {
@@ -49,6 +55,43 @@ export function getStaticPaths() {
 // This function gets called at build time on server-side
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   try {
+    const dbPost = await prisma.blogPost.findUnique({
+      where: { slug: params.slug },
+      include: { secondaryImages: true },
+    });
+
+    if (dbPost) {
+      const toc = asArray<TocEntry>(dbPost.toc);
+      const faq = asArray<FaqEntry>(dbPost.faq);
+      return {
+        props: {
+          post: {
+            title: dbPost.title,
+            excerpt: dbPost.excerpt,
+            author: dbPost.author ?? 'Purrify Research Lab',
+            date: (dbPost.publishedAt ?? dbPost.createdAt).toISOString().split('T')[0],
+            image: dbPost.heroImageUrl,
+            heroImageAlt: dbPost.heroImageAlt,
+            heroImageCaption: dbPost.heroImageCaption ?? undefined,
+            heroImageCredit: dbPost.heroImageCredit ?? undefined,
+            secondaryImages: dbPost.secondaryImages.map((image) => ({
+              url: image.url,
+              alt: image.alt,
+              caption: image.caption ?? undefined,
+              credit: image.credit ?? undefined,
+            })),
+            toc,
+            faq,
+            cta: dbPost.ctaText && dbPost.ctaUrl ? { text: dbPost.ctaText, url: dbPost.ctaUrl } : undefined,
+            link: `/blog/${dbPost.slug}`,
+            content: dbPost.content,
+            locale: (dbPost.locale as 'en' | 'fr' | 'zh' | undefined) ?? 'en',
+          },
+        },
+        revalidate: 21600,
+      };
+    }
+
     // WordPress API URL - replace with your WordPress site URL
     const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
     
@@ -105,15 +148,16 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     const wpPost = wpPosts[0];
     
     // Transform WordPress post to match our BlogPost interface
-    const post: BlogPost = {
-      title: wpPost.title.rendered,
-      excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
-      author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
-      date: new Date(wpPost.date).toISOString().split('T')[0],
-      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
-      link: `/blog/${wpPost.slug}`,
-      content: wpPost.content.rendered
-    };
+      const post: BlogPost = {
+        title: wpPost.title.rendered,
+        excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+        author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
+        date: new Date(wpPost.date).toISOString().split('T')[0],
+        image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+        link: `/blog/${wpPost.slug}`,
+        content: wpPost.content.rendered,
+        locale: 'en'
+      };
     
     // Return the post data as props
     return {
@@ -157,6 +201,19 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
 export default function BlogPost({ post }: { post: BlogPost }) {
   const router = useRouter();
+  const locale = post.locale ?? 'en';
+  const localizedCopy = {
+    tocTitle:
+      locale === 'fr' ? 'Dans cet article' : locale === 'zh' ? '本页导读' : 'On this page',
+    ctaHeading:
+      locale === 'fr'
+        ? 'Prêt à éliminer les odeurs de litière ?'
+        : locale === 'zh'
+          ? '现在就解决猫砂异味'
+          : 'Ready to fix litter odor?',
+    ctaButton: locale === 'fr' ? 'Commander maintenant ->' : locale === 'zh' ? '立即订购 ->' : 'Shop now ->',
+    shareHeading: locale === 'fr' ? "Partager l'article" : locale === 'zh' ? '分享本文' : 'Share this article',
+  };
   
   // If the page is still generating via fallback, show loading
   if (router.isFallback) {
@@ -259,22 +316,106 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               </div>
             </div>
             
-            <div className="relative h-[500px] mb-8">
+            <div className="relative h-[500px] mb-4">
               <Image
                 src={post.image}
-                alt={post.title}
+                alt={post.heroImageAlt || post.title}
                 fill
                 className="object-contain scale-75"
               />
             </div>
+            {(post.heroImageCaption || post.heroImageCredit) && (
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-8 text-center">
+                {post.heroImageCaption}
+                {post.heroImageCredit ? (
+                  <>
+                    {post.heroImageCaption ? ' | ' : ''}
+                    <span className="italic">{post.heroImageCredit}</span>
+                  </>
+                ) : null}
+              </p>
+            )}
+
+            {post.toc && post.toc.length > 0 && (
+              <div className="mb-8 p-6 rounded-2xl bg-white/80 dark:bg-gray-800/70 shadow-lg border border-[#E0EFC7]/70">
+                <p className="text-xs uppercase font-semibold tracking-widest text-[#5B2EFF] dark:text-[#3694FF]">
+                  {localizedCopy.tocTitle}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {post.toc.map((entry) => (
+                    <li key={entry.id}>
+                      <a
+                        href={`#${entry.id}`}
+                        className="text-[#03E46A] hover:text-[#03E46A]/80 dark:text-[#03E46A] font-medium"
+                      >
+                        {entry.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {post.secondaryImages && post.secondaryImages.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {post.secondaryImages.map((image, index) => (
+                  <figure
+                    key={`${image.url}-${index}`}
+                    className="rounded-2xl overflow-hidden bg-white/80 dark:bg-gray-800/70 border border-[#E0EFC7]/60"
+                  >
+                    <div className="relative w-full h-64">
+                      <Image src={image.url} alt={image.alt} fill className="object-cover" />
+                    </div>
+                    {(image.caption || image.credit) && (
+                      <figcaption className="p-4 text-sm text-gray-600 dark:text-gray-300">
+                        {image.caption}
+                        {image.credit ? (
+                          <>
+                            {' '}
+                            <span className="italic">{image.credit}</span>
+                          </>
+                        ) : null}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            )}
             
             <div 
               className="prose prose-lg max-w-none prose-headings:text-[#5B2EFF] dark:prose-headings:text-[#3694FF] prose-a:text-[#FF3131] dark:prose-a:text-[#FF6B6B] prose-a:no-underline hover:prose-a:underline dark:hover:prose-a:underline"
               dangerouslySetInnerHTML={{ __html: post.content || '' }}
             />
+
+            {post.cta && (
+              <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-[#03E46A]/15 via-[#5B2EFF]/10 to-[#FF3131]/10 border border-[#E0EFC7]/80">
+                <h3 className="text-2xl font-bold mb-3 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.ctaHeading}</h3>
+                <p className="text-gray-700 dark:text-gray-200 mb-4">{post.cta.text}</p>
+                <a
+                  href={post.cta.url}
+                  className="inline-flex items-center px-6 py-3 rounded-full bg-[#FF3131] text-white font-semibold shadow-lg hover:bg-[#FF3131]/90 transition-colors"
+                >
+                  {localizedCopy.ctaButton}
+                </a>
+              </div>
+            )}
+
+            {post.faq && post.faq.length > 0 && (
+              <div className="mt-12">
+                <h2 className="text-3xl font-bold mb-6 text-[#5B2EFF] dark:text-[#3694FF]">FAQ</h2>
+                <div className="space-y-6">
+                  {post.faq.map((entry, index) => (
+                    <div key={`${entry.question}-${index}`} className="p-6 rounded-2xl bg-white/90 dark:bg-gray-800/80 border border-[#E0EFC7]/60">
+                      <h3 className="text-xl font-semibold mb-2 text-[#03E46A]">{entry.question}</h3>
+                      <div className="prose prose-sm dark:prose-invert" dangerouslySetInnerHTML={{ __html: entry.answerHtml }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             
             <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
-              <h3 className="text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">Share this article</h3>
+              <h3 className="text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.shareHeading}</h3>
               <div className="flex space-x-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${post.title}`}

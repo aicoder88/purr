@@ -315,4 +315,75 @@ enum AuditAction {
   LOGIN_SUCCESS
   LOGIN_FAILED
   PASSWORD_RESET
-} 
+}
+
+model BlogPost {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  locale         String          @default("en")
+  title          String
+  author         String          @default("Purrify Research Lab")
+  excerpt        String          @db.Text
+  content        String          @db.Text
+  heroImageUrl   String
+  heroImageAlt   String
+  heroImageCredit String?
+  heroImageCaption String?
+  secondaryImages BlogImage[]
+  keywords       String[]        @default([])
+  metaDescription String?
+  toc            Json?
+  faq            Json?
+  internalLinks  Json?
+  externalLinks  Json?
+  ctaText        String?
+  ctaUrl         String?
+  topicKey       String?
+  promptContext  String?         @db.Text
+  rawPrompt      String?         @db.Text
+  rawResponse    String?         @db.Text
+  provider       String?         // e.g., anthropic, openai
+  modelUsed      String?
+  wordCount      Int             @default(0)
+  status         BlogPostStatus  @default(PUBLISHED)
+  scheduledFor   DateTime?
+  publishedAt    DateTime?       @default(now())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([status])
+  @@index([publishedAt])
+  @@index([topicKey])
+  @@map("blog_posts")
+}
+
+model BlogImage {
+  id        String        @id @default(cuid())
+  post      BlogPost      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  kind      BlogImageType @default(SECTION)
+  url       String
+  alt       String
+  caption   String?
+  credit    String?
+  keywords  String[]      @default([])
+  createdAt DateTime      @default(now())
+
+  @@index([postId])
+  @@index([kind])
+  @@map("blog_images")
+}
+
+enum BlogImageType {
+  HERO
+  SECTION
+  INFOGRAPHIC
+  CTA
+}
+
+enum BlogPostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  FAILED
+}
