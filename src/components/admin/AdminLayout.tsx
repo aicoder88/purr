@@ -33,18 +33,18 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
   const visibleTabs = tabs.filter(tab => !tab.adminOnly || userRole === 'admin');
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Top Bar */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo and Title */}
             <div className="flex items-center space-x-4">
               <Link href="/admin/blog" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">P</span>
+                <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
                 </div>
-                <span className="text-xl font-semibold text-gray-900">Blog Admin</span>
+                <span className="text-xl font-semibold text-gray-900 dark:text-gray-50">Blog Admin</span>
               </Link>
             </div>
 
@@ -53,22 +53,22 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
               <Link
                 href="/"
                 target="_blank"
-                className="text-sm text-gray-600 hover:text-gray-900"
+                className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 View Site
               </Link>
-              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100">
-                <User className="w-4 h-4 text-gray-600" />
-                <span className="text-sm font-medium text-gray-900">
+              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700">
+                <User className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                   {session?.user?.email}
                 </span>
-                <span className="text-xs text-gray-500 ml-2 px-2 py-0.5 bg-purple-100 text-purple-700 rounded">
+                <span className="text-xs text-gray-500 dark:text-gray-400 ml-2 px-2 py-0.5 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded">
                   {userRole}
                 </span>
               </div>
               <button
                 onClick={() => signOut({ callbackUrl: '/admin/login' })}
-                className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Sign Out</span>
@@ -108,7 +108,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {title && (
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">{title}</h1>
           </div>
         )}
         {children}

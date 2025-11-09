@@ -110,9 +110,9 @@ export default function RichTextEditor({
   );
 
   return (
-    <div className="border border-gray-300 rounded-lg overflow-hidden bg-white">
+    <div className="border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
       {/* Toolbar */}
-      <div className="flex items-center gap-1 p-2 border-b border-gray-200 bg-gray-50">
+      <div className="flex items-center gap-1 p-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
           isActive={editor.isActive('bold')}
@@ -129,7 +129,7 @@ export default function RichTextEditor({
           <Italic className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -147,7 +147,7 @@ export default function RichTextEditor({
           <Heading3 className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -173,7 +173,7 @@ export default function RichTextEditor({
           <Quote className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
 
         <ToolbarButton onClick={handleImageUpload} title="Insert Image">
           <ImageIcon className="w-5 h-5" />
