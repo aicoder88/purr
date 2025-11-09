@@ -99,6 +99,25 @@ export default function ContactPage() {
     setSubmitStatus({});
 
     try {
+      // Client-side validation
+      const combinedMessage = `${formData.subject}\n\n${formData.message}`;
+
+      if (formData.name.trim().length < 2) {
+        throw new Error('Name must be at least 2 characters long');
+      }
+
+      if (formData.name.trim().length > 50) {
+        throw new Error('Name must be no more than 50 characters long');
+      }
+
+      if (combinedMessage.trim().length < 10) {
+        throw new Error('Your message is too short. Please provide more details (at least 10 characters total)');
+      }
+
+      if (combinedMessage.trim().length > 1000) {
+        throw new Error('Your message is too long. Please keep it under 1000 characters');
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -107,7 +126,7 @@ export default function ContactPage() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: `${formData.subject}\n\n${formData.message}`,
+          message: combinedMessage,
         }),
       });
 
@@ -317,11 +336,16 @@ export default function ContactPage() {
                         name="name"
                         type="text"
                         required
+                        minLength={2}
+                        maxLength={50}
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your full name"
                         className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                       />
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        2-50 characters
+                      </p>
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-2">
@@ -349,11 +373,15 @@ export default function ContactPage() {
                       name="subject"
                       type="text"
                       required
+                      minLength={3}
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="Brief description of your inquiry"
                       className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                     />
+                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                      At least 3 characters
+                    </p>
                   </div>
 
                   <div>
@@ -364,12 +392,17 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       required
+                      minLength={10}
+                      maxLength={900}
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Please provide details about your question or concern..."
                       rows={6}
                       className="w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 dark:text-gray-100"
                     />
+                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                      {formData.message.length}/900 characters (minimum 10)
+                    </p>
                   </div>
 
                   <Button
