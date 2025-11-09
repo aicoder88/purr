@@ -202,7 +202,7 @@
   - _Requirements: 6.5_
 
 - [ ] 13. Create public blog pages
-- [ ] 13.1 Update pages/blog/[slug].tsx
+- [x] 13.1 Update pages/blog/[slug].tsx
   - Fetch post from ContentStore
   - Generate SEO metadata with SEOGenerator
   - Implement ISR with 3600s revalidation

@@ -53,8 +53,39 @@ export function getStaticPaths() {
 }
 
 // This function gets called at build time on server-side
-export async function getStaticProps({ params }: { params: { slug: string } }) {
+export async function getStaticProps({ params, locale }: { params: { slug: string }; locale?: string }) {
   try {
+    // First, try our new ContentStore
+    const { ContentStore } = await import('../../src/lib/blog/content-store');
+    const { SEOGenerator } = await import('../../src/lib/blog/seo-generator');
+    
+    const store = new ContentStore();
+    const seoGen = new SEOGenerator();
+    const currentLocale = locale || 'en';
+    
+    const blogPost = await store.getPost(params.slug, currentLocale);
+    
+    if (blogPost) {
+      // Transform to match existing BlogPost interface
+      const post: BlogPost = {
+        title: blogPost.title,
+        excerpt: blogPost.excerpt,
+        author: blogPost.author.name,
+        date: new Date(blogPost.publishDate).toISOString().split('T')[0],
+        image: blogPost.featuredImage.url,
+        heroImageAlt: blogPost.featuredImage.alt,
+        link: `/blog/${blogPost.slug}`,
+        content: blogPost.content,
+        locale: blogPost.locale as 'en' | 'fr' | 'zh'
+      };
+      
+      return {
+        props: { post },
+        revalidate: 3600 // Revalidate every hour
+      };
+    }
+    
+    // Fallback to database
     const dbPost = await prisma.blogPost.findUnique({
       where: { slug: params.slug },
       include: { secondaryImages: true },
