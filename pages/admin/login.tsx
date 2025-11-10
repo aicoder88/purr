@@ -19,17 +19,27 @@ export default function AdminLogin() {
       const result = await signIn('credentials', {
         email,
         password,
-        redirect: false
+        redirect: false,
+        callbackUrl: '/admin/blog'
       });
+
+      console.log('Sign in result:', result);
 
       if (result?.error) {
         setError('Invalid email or password');
+        setLoading(false);
+      } else if (result?.ok) {
+        // Wait a moment for session to be set
+        setTimeout(() => {
+          window.location.href = '/admin/blog';
+        }, 100);
       } else {
-        router.push('/admin/blog');
+        setError('Login failed. Please try again.');
+        setLoading(false);
       }
     } catch (err) {
+      console.error('Login error:', err);
       setError('An error occurred. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
