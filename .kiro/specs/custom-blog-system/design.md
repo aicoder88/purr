@@ -921,7 +921,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       post: {
         title: post.title,
         slug: post.slug,
-        publishDate: post.publishDate
+        publishDate: post.publishDate,
+        url: `https://purrify.ca/blog/${post.slug}`
       }
     });
   } catch (error) {
@@ -946,11 +947,331 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 This runs at midnight every 3 days.
 
+### 8. Make.com Webhook Integration
+
+**Purpose**: Allow external automation tools (Make.com) to trigger blog post generation on-demand
+
+**Architecture**:
+- **Webhook Endpoint**: Public API endpoint that accepts POST requests
+- **Authentication**: Secret token validation to prevent abuse
+- **Flexible Input**: Accept custom topics, keywords, or full content
+- **Duplicate Prevention**: Check for existing posts with similar titles
+- **Response**: Return published post details for further automation
+
+**Webhook Payload Schema**:
+```typescript
+interface WebhookPayload {
+  secret: string;  // Authentication token
+  mode: 'generate' | 'publish';  // Generate new content or publish provided content
+  
+  // For 'generate' mode
+  topic?: string;
+  keywords?: string[];
+  targetWordCount?: number;
+  locale?: string;
+  
+  // For 'publish' mode
+  post?: {
+    title: string;
+    content: string;  // HTML or Markdown
+    excerpt?: string;
+    categories?: string[];
+    tags?: string[];
+    featuredImageUrl?: string;
+    seo?: {
+      title?: string;
+      description?: string;
+      keywords?: string[];
+    };
+  };
+}
+
+interface WebhookResponse {
+  success: boolean;
+  post?: {
+    id: string;
+    slug: string;
+    title: string;
+    url: string;
+    publishDate: string;
+  };
+  error?: string;
+}
+```
+
+**Implementation**:
+
+```typescript
+// pages/api/webhooks/generate-blog-post.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import { AutomatedContentGenerator } from '@/lib/blog/automated-content-generator';
+import { ContentStore } from '@/lib/blog/content-store';
+import { z } from 'zod';
+
+// Validation schema
+const webhookSchema = z.object({
+  secret: z.string(),
+  mode: z.enum(['generate', 'publish']),
+  topic: z.string().optional(),
+  keywords: z.array(z.string()).optional(),
+  targetWordCount: z.number().optional(),
+  locale: z.string().optional(),
+  post: z.object({
+    title: z.string(),
+    content: z.string(),
+    excerpt: z.string().optional(),
+    categories: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    featuredImageUrl: z.string().optional(),
+    seo: z.object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+      keywords: z.array(z.string()).optional()
+    }).optional()
+  }).optional()
+});
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Only accept POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+  
+  try {
+    // Validate payload
+    const payload = webhookSchema.parse(req.body);
+    
+    // Verify webhook secret
+    if (payload.secret !== process.env.WEBHOOK_SECRET) {
+      return res.status(401).json({ error: 'Invalid secret' });
+    }
+    
+    const generator = new AutomatedContentGenerator();
+    const store = new ContentStore();
+    
+    let post;
+    
+    if (payload.mode === 'generate') {
+      // Generate new content with AI
+      const topic = payload.topic || 'Cat Litter Odor Control Tips';
+      const locale = payload.locale || 'en';
+      
+      // Check for duplicate posts
+      const existingPosts = await store.getAllPosts(locale);
+      const isDuplicate = existingPosts.some(p => 
+        p.title.toLowerCase().includes(topic.toLowerCase())
+      );
+      
+      if (isDuplicate) {
+        return res.status(409).json({ 
+          error: 'Similar post already exists',
+          suggestion: 'Try a different topic or check existing posts'
+        });
+      }
+      
+      // Generate post
+      post = await generator.generateBlogPost(topic, {
+        keywords: payload.keywords,
+        targetWordCount: payload.targetWordCount || 1200,
+        locale
+      });
+      
+    } else if (payload.mode === 'publish') {
+      // Publish provided content
+      if (!payload.post) {
+        return res.status(400).json({ error: 'Post data required for publish mode' });
+      }
+      
+      // Create post object from provided data
+      post = await generator.createPostFromContent(payload.post);
+    }
+    
+    // Publish the post
+    await generator.publishPost(post);
+    
+    // Return success response
+    return res.status(200).json({
+      success: true,
+      post: {
+        id: post.id,
+        slug: post.slug,
+        title: post.title,
+        url: `https://purrify.ca/blog/${post.slug}`,
+        publishDate: post.publishDate
+      }
+    });
+    
+  } catch (error) {
+    console.error('Webhook error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ 
+        error: 'Invalid payload',
+        details: error.errors
+      });
+    }
+    
+    return res.status(500).json({ 
+      error: 'Failed to process webhook',
+      message: error.message
+    });
+  }
+}
+
+// Disable body parsing to handle raw body if needed
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb'
+    }
+  }
+};
+```
+
+**Extended AutomatedContentGenerator Methods**:
+
+```typescript
+class AutomatedContentGenerator {
+  // ... existing methods ...
+  
+  async generateBlogPost(
+    topic: string, 
+    options?: {
+      keywords?: string[];
+      targetWordCount?: number;
+      locale?: string;
+    }
+  ): Promise<BlogPost> {
+    const locale = options?.locale || 'en';
+    const targetWordCount = options?.targetWordCount || 1200;
+    
+    // Load SEO guidelines
+    const seoGuidelines = await this.loadSEOGuidelines();
+    
+    // Build enhanced prompt with keywords
+    const prompt = this.buildPrompt(topic, seoGuidelines, {
+      keywords: options?.keywords,
+      targetWordCount
+    });
+    
+    // ... rest of generation logic ...
+  }
+  
+  async createPostFromContent(data: any): Promise<BlogPost> {
+    // Create post from provided content (for Make.com publish mode)
+    const slug = this.generateSlug(data.title);
+    
+    // Download and optimize featured image if URL provided
+    let featuredImage;
+    if (data.featuredImageUrl) {
+      featuredImage = await this.downloadAndOptimizeImage(
+        data.featuredImageUrl,
+        slug
+      );
+    } else {
+      // Fetch default image from Unsplash
+      const images = await this.fetchRelevantImages(data.title, 1);
+      featuredImage = await this.downloadAndOptimizeImage(images[0], slug);
+    }
+    
+    // Calculate reading time
+    const readingTime = this.calculateReadingTime(data.content);
+    
+    // Generate SEO if not provided
+    const seo = data.seo || await this.optimizeSEO(data.content, data.title);
+    
+    const post: BlogPost = {
+      id: this.generateId(),
+      slug,
+      title: data.title,
+      excerpt: data.excerpt || this.generateExcerpt(data.content),
+      content: data.content,
+      author: {
+        name: 'Purrify Team',
+        avatar: '/team-avatar.png'
+      },
+      publishDate: new Date().toISOString(),
+      modifiedDate: new Date().toISOString(),
+      status: 'published',
+      featuredImage,
+      categories: data.categories || ['Tips'],
+      tags: data.tags || [],
+      locale: 'en',
+      translations: {},
+      seo,
+      readingTime
+    };
+    
+    return post;
+  }
+  
+  private generateExcerpt(content: string): string {
+    // Extract first 160 characters from content
+    const text = content.replace(/<[^>]*>/g, ''); // Strip HTML
+    return text.substring(0, 157) + '...';
+  }
+}
+```
+
+**Make.com Scenario Setup**:
+
+1. **Trigger**: Schedule (every 3 days) OR Manual button OR RSS feed OR Google Sheets
+2. **HTTP Module**: Make a POST request
+   - URL: `https://purrify.ca/api/webhooks/generate-blog-post`
+   - Method: POST
+   - Headers: `Content-Type: application/json`
+   - Body:
+   ```json
+   {
+     "secret": "{{env.WEBHOOK_SECRET}}",
+     "mode": "generate",
+     "topic": "{{topic}}",
+     "keywords": ["cat litter", "odor control"],
+     "locale": "en"
+   }
+   ```
+3. **Router**: Check response status
+4. **Success Path**: 
+   - Send notification (email/Slack)
+   - Log to Google Sheets
+   - Share on social media
+5. **Error Path**:
+   - Send alert
+   - Retry with different topic
+
 **Environment Variables Required**:
 ```env
 OPENAI_API_KEY=sk-...
 UNSPLASH_ACCESS_KEY=...
 CRON_SECRET=your-secret-key-here
+WEBHOOK_SECRET=your-webhook-secret-here
+ENABLE_CRON_AUTOMATION=true
+ENABLE_WEBHOOK_AUTOMATION=true
+```
+
+**Duplicate Prevention Strategy**:
+```typescript
+class AutomatedContentGenerator {
+  private async checkDuplicates(title: string, locale: string): Promise<boolean> {
+    const store = new ContentStore();
+    const existingPosts = await store.getAllPosts(locale);
+    
+    // Check for similar titles (fuzzy matching)
+    const titleWords = title.toLowerCase().split(' ');
+    
+    for (const post of existingPosts) {
+      const postWords = post.title.toLowerCase().split(' ');
+      const commonWords = titleWords.filter(word => postWords.includes(word));
+      
+      // If more than 50% of words match, consider it a duplicate
+      if (commonWords.length / titleWords.length > 0.5) {
+        return true;
+      }
+    }
+    
+    return false;
+  }
+}
 ```
 
 ### 7. Sitemap Generator
@@ -1176,3 +1497,341 @@ If WordPress integration is needed later:
 2. Import using WordPress importer
 3. Switch to WordPress API client
 4. Keep file-based system as backup
+
+## Existing Blog Post Migration
+
+### Migration Strategy
+
+**Purpose**: Import all existing blog posts from `pages/blog/*.tsx` files into the new CMS format
+
+**Existing Blog Post Structure**:
+- Static TSX files in `pages/blog/` directory
+- SEO metadata in `<Head>` component
+- JSON-LD structured data
+- Optimized images in `/optimized/` directory
+- Content as JSX/HTML
+
+**Migration Process**:
+
+1. **Parse TSX Files**: Extract metadata and content from each blog post file
+2. **Convert to JSON**: Transform to new BlogPost schema
+3. **Preserve SEO**: Maintain all meta tags, descriptions, keywords
+4. **Keep URLs**: Use existing slugs to prevent broken links
+5. **Optimize Images**: Ensure images are in correct format
+6. **Validate**: Check all posts load correctly
+
+**Migration Script**:
+
+```typescript
+// scripts/migrate-blog-posts.ts
+import fs from 'fs/promises';
+import path from 'path';
+import { parse } from '@babel/parser';
+import traverse from '@babel/traverse';
+import { ContentStore } from '../src/lib/blog/content-store';
+import type { BlogPost } from '../src/types';
+
+interface ParsedPost {
+  slug: string;
+  title: string;
+  description: string;
+  keywords: string[];
+  content: string;
+  images: string[];
+  publishDate: string;
+  structuredData: any;
+}
+
+class BlogMigration {
+  private blogDir = path.join(process.cwd(), 'pages', 'blog');
+  private contentStore = new ContentStore();
+  
+  async migrate() {
+    console.log('Starting blog post migration...');
+    
+    // Get all blog post files
+    const files = await fs.readdir(this.blogDir);
+    const postFiles = files.filter(f => 
+      f.endsWith('.tsx') && 
+      f !== 'index.tsx' && 
+      f !== '[slug].tsx'
+    );
+    
+    console.log(`Found ${postFiles.length} blog posts to migrate`);
+    
+    const results = {
+      success: [],
+      failed: []
+    };
+    
+    for (const file of postFiles) {
+      try {
+        const slug = file.replace('.tsx', '');
+        console.log(`Migrating: ${slug}`);
+        
+        const parsed = await this.parsePostFile(file);
+        const post = await this.convertToNewFormat(parsed);
+        
+        await this.contentStore.savePost(post);
+        results.success.push(slug);
+        
+        console.log(`✓ Migrated: ${slug}`);
+      } catch (error) {
+        console.error(`✗ Failed: ${file}`, error);
+        results.failed.push({ file, error: error.message });
+      }
+    }
+    
+    console.log('\nMigration complete!');
+    console.log(`Success: ${results.success.length}`);
+    console.log(`Failed: ${results.failed.length}`);
+    
+    if (results.failed.length > 0) {
+      console.log('\nFailed posts:');
+      results.failed.forEach(f => console.log(`  - ${f.file}: ${f.error}`));
+    }
+    
+    return results;
+  }
+  
+  private async parsePostFile(filename: string): Promise<ParsedPost> {
+    const filePath = path.join(this.blogDir, filename);
+    const content = await fs.readFile(filePath, 'utf-8');
+    
+    // Parse TSX file
+    const ast = parse(content, {
+      sourceType: 'module',
+      plugins: ['typescript', 'jsx']
+    });
+    
+    const parsed: ParsedPost = {
+      slug: filename.replace('.tsx', ''),
+      title: '',
+      description: '',
+      keywords: [],
+      content: '',
+      images: [],
+      publishDate: '',
+      structuredData: null
+    };
+    
+    // Extract metadata from Head component
+    traverse(ast, {
+      JSXElement(path) {
+        const openingElement = path.node.openingElement;
+        
+        // Extract title
+        if (openingElement.name.name === 'title') {
+          const titleContent = path.node.children[0];
+          if (titleContent.type === 'JSXText') {
+            parsed.title = this.extractTitle(titleContent.value);
+          }
+        }
+        
+        // Extract meta tags
+        if (openingElement.name.name === 'meta') {
+          const attrs = openingElement.attributes;
+          const nameAttr = attrs.find(a => a.name?.name === 'name');
+          const contentAttr = attrs.find(a => a.name?.name === 'content');
+          
+          if (nameAttr && contentAttr) {
+            const name = nameAttr.value.value;
+            const content = contentAttr.value.value;
+            
+            if (name === 'description') {
+              parsed.description = content;
+            } else if (name === 'keywords') {
+              parsed.keywords = content.split(',').map(k => k.trim());
+            }
+          }
+        }
+        
+        // Extract JSON-LD structured data
+        if (openingElement.name.name === 'script') {
+          const typeAttr = openingElement.attributes.find(
+            a => a.name?.name === 'type'
+          );
+          if (typeAttr?.value?.value === 'application/ld+json') {
+            const scriptContent = path.node.children[0];
+            if (scriptContent.type === 'JSXExpressionContainer') {
+              // Extract structured data
+              parsed.structuredData = this.extractStructuredData(scriptContent);
+            }
+          }
+        }
+        
+        // Extract images
+        if (openingElement.name.name === 'Image') {
+          const srcAttr = openingElement.attributes.find(
+            a => a.name?.name === 'src'
+          );
+          if (srcAttr) {
+            parsed.images.push(srcAttr.value.value);
+          }
+        }
+      }
+    });
+    
+    // Extract main content (everything in Container component)
+    parsed.content = await this.extractContent(content);
+    
+    // Extract publish date from structured data or use file creation date
+    if (parsed.structuredData?.datePublished) {
+      parsed.publishDate = parsed.structuredData.datePublished;
+    } else {
+      const stats = await fs.stat(path.join(this.blogDir, filename));
+      parsed.publishDate = stats.birthtime.toISOString();
+    }
+    
+    return parsed;
+  }
+  
+  private extractTitle(rawTitle: string): string {
+    // Remove site name and separators
+    return rawTitle
+      .replace(/\s*\|\s*Purrify.*$/i, '')
+      .replace(/\s*-\s*Purrify.*$/i, '')
+      .trim();
+  }
+  
+  private extractStructuredData(node: any): any {
+    // Parse JSON.stringify call to extract structured data
+    try {
+      // This is simplified - actual implementation would need proper AST parsing
+      return null;
+    } catch {
+      return null;
+    }
+  }
+  
+  private async extractContent(fileContent: string): Promise<string> {
+    // Extract JSX content between Container tags
+    // Convert JSX to HTML
+    // This is a simplified version - actual implementation would use proper JSX parser
+    
+    const containerMatch = fileContent.match(
+      /<Container[^>]*>([\s\S]*?)<\/Container>/
+    );
+    
+    if (!containerMatch) {
+      return '';
+    }
+    
+    let content = containerMatch[1];
+    
+    // Convert common JSX patterns to HTML
+    content = content
+      .replace(/<Image\s+src="([^"]+)"[^>]*\/>/g, '<img src="$1" />')
+      .replace(/className=/g, 'class=')
+      .replace(/{`([^`]+)`}/g, '$1')
+      .replace(/{([^}]+)}/g, '');
+    
+    return content.trim();
+  }
+  
+  private async convertToNewFormat(parsed: ParsedPost): Promise<BlogPost> {
+    // Determine categories from keywords
+    const categories = this.inferCategories(parsed.keywords);
+    
+    // Generate excerpt from description or content
+    const excerpt = parsed.description || 
+      parsed.content.substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    
+    // Get featured image (first image in post)
+    const featuredImage = parsed.images[0] || '/optimized/blog/default.webp';
+    
+    // Calculate reading time
+    const wordCount = parsed.content.split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 200);
+    
+    const post: BlogPost = {
+      id: this.generateId(),
+      slug: parsed.slug,
+      title: parsed.title,
+      excerpt,
+      content: parsed.content,
+      author: {
+        name: 'Purrify Team',
+        avatar: '/team-avatar.png'
+      },
+      publishDate: parsed.publishDate,
+      modifiedDate: new Date().toISOString(),
+      status: 'published',
+      featuredImage: {
+        url: featuredImage,
+        alt: parsed.title,
+        width: 1200,
+        height: 800
+      },
+      categories,
+      tags: parsed.keywords.slice(0, 8), // Use first 8 keywords as tags
+      locale: 'en',
+      translations: {},
+      seo: {
+        title: parsed.title,
+        description: parsed.description,
+        keywords: parsed.keywords,
+        canonical: `https://purrify.ca/blog/${parsed.slug}`
+      },
+      readingTime
+    };
+    
+    return post;
+  }
+  
+  private inferCategories(keywords: string[]): string[] {
+    const categoryMap = {
+      'Tips': ['tips', 'guide', 'how to', 'best practices'],
+      'Odor Control': ['odor', 'smell', 'deodorizer', 'eliminate'],
+      'Science': ['science', 'activated carbon', 'molecular'],
+      'Multi-Cat': ['multi-cat', 'multiple cats', 'household'],
+      'Product Guide': ['product', 'comparison', 'review']
+    };
+    
+    const categories = [];
+    
+    for (const [category, terms] of Object.entries(categoryMap)) {
+      if (keywords.some(k => terms.some(t => k.toLowerCase().includes(t)))) {
+        categories.push(category);
+      }
+    }
+    
+    return categories.length > 0 ? categories : ['Tips'];
+  }
+  
+  private generateId(): string {
+    return `post_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+}
+
+// Run migration
+const migration = new BlogMigration();
+migration.migrate()
+  .then(() => {
+    console.log('Migration completed successfully');
+    process.exit(0);
+  })
+  .catch(error => {
+    console.error('Migration failed:', error);
+    process.exit(1);
+  });
+```
+
+**Migration Checklist**:
+
+1. ✓ Backup existing blog posts
+2. ✓ Run migration script
+3. ✓ Verify all posts imported correctly
+4. ✓ Check SEO metadata preserved
+5. ✓ Test URLs still work
+6. ✓ Validate images display correctly
+7. ✓ Update sitemap
+8. ✓ Test ISR revalidation
+9. ✓ Archive old TSX files (don't delete yet)
+10. ✓ Monitor for broken links
+
+**Post-Migration**:
+- Keep old TSX files for 30 days as backup
+- Monitor analytics for traffic drops
+- Fix any broken internal links
+- Update any hardcoded references

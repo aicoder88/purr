@@ -284,4 +284,129 @@ Make the content genuinely helpful and informative, not promotional.
       seoKeywords: ['cat care', 'pet tips']
     };
   }
+
+  /**
+   * Check for duplicate posts
+   */
+  async checkDuplicates(title: string, existingPosts: BlogPost[]): Promise<boolean> {
+    const titleWords = title.toLowerCase().split(/\s+/);
+    
+    for (const post of existingPosts) {
+      const postWords = post.title.toLowerCase().split(/\s+/);
+      const commonWords = titleWords.filter(word => 
+        word.length > 3 && postWords.includes(word)
+      );
+      
+      // If more than 50% of significant words match, consider it a duplicate
+      if (commonWords.length / titleWords.length > 0.5) {
+        console.log(`Duplicate detected: "${title}" similar to "${post.title}"`);
+        return true;
+      }
+    }
+    
+    return false;
+  }
+
+  /**
+   * Create post from provided content (for webhook publish mode)
+   */
+  async createPostFromContent(data: {
+    title: string;
+    content: string;
+    excerpt?: string;
+    categories?: string[];
+    tags?: string[];
+    featuredImageUrl?: string;
+    seo?: {
+      title?: string;
+      description?: string;
+      keywords?: string[];
+    };
+  }): Promise<BlogPost> {
+    const slug = this.generateSlug(data.title);
+    const now = new Date().toISOString();
+    
+    // Download and optimize featured image if URL provided
+    let featuredImage;
+    if (data.featuredImageUrl) {
+      try {
+        const response = await fetch(data.featuredImageUrl);
+        const buffer = await response.arrayBuffer();
+        const file = new File([buffer], 'featured-image.jpg', { type: 'image/jpeg' });
+        
+        const optimized = await this.imageOptimizer.optimizeImage(file, slug);
+        featuredImage = {
+          url: optimized.optimized.webp[0],
+          alt: data.title,
+          width: optimized.width,
+          height: optimized.height
+        };
+      } catch (error) {
+        console.error('Error downloading featured image:', error);
+        // Fallback to default
+        featuredImage = {
+          url: '/purrify-logo.png',
+          alt: data.title,
+          width: 1200,
+          height: 630
+        };
+      }
+    } else {
+      // Fetch default image from Unsplash
+      const images = await this.fetchRelevantImages(data.title, 1);
+      featuredImage = images[0] || {
+        url: '/purrify-logo.png',
+        alt: data.title,
+        width: 1200,
+        height: 630
+      };
+    }
+    
+    // Generate excerpt if not provided
+    const excerpt = data.excerpt || this.generateExcerpt(data.content);
+    
+    // Calculate reading time
+    const readingTime = this.calculateReadingTime(data.content);
+    
+    // Generate SEO if not provided
+    const seo = {
+      title: data.seo?.title || this.seoGenerator.optimizeTitle(data.title),
+      description: data.seo?.description || this.seoGenerator.optimizeDescription(excerpt),
+      keywords: data.seo?.keywords || data.tags || []
+    };
+    
+    const post: BlogPost = {
+      id: Date.now().toString(),
+      slug,
+      title: data.title,
+      excerpt,
+      content: data.content,
+      author: {
+        name: 'Purrify Team'
+      },
+      publishDate: now,
+      modifiedDate: now,
+      status: 'published',
+      featuredImage,
+      categories: data.categories || ['Tips'],
+      tags: data.tags || [],
+      locale: 'en',
+      translations: {},
+      seo,
+      readingTime
+    };
+    
+    return post;
+  }
+
+  /**
+   * Generate excerpt from content
+   */
+  private generateExcerpt(content: string): string {
+    // Strip HTML tags
+    const text = content.replace(/<[^>]*>/g, '');
+    // Get first 160 characters
+    const excerpt = text.substring(0, 157).trim();
+    return excerpt + '...';
+  }
 }

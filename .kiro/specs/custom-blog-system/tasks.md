@@ -276,6 +276,43 @@
   - Add CRON_SECRET environment variable
   - _Requirements: 1.5_
 
+- [ ] 15.5 Create Make.com webhook endpoint
+  - Create /api/webhooks/generate-blog-post endpoint
+  - Implement webhook payload validation with Zod
+  - Add secret token authentication
+  - Support 'generate' mode (AI-generated content)
+  - Support 'publish' mode (provided content)
+  - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5_
+
+- [ ] 15.6 Implement duplicate prevention
+  - Add checkDuplicates() method to AutomatedContentGenerator
+  - Use fuzzy matching to detect similar titles
+  - Return 409 status code for duplicates
+  - Suggest alternative topics
+  - _Requirements: 12.3_
+
+- [ ] 15.7 Add createPostFromContent() method
+  - Parse provided content from webhook
+  - Download and optimize featured image from URL
+  - Generate excerpt if not provided
+  - Calculate reading time
+  - Generate SEO metadata
+  - _Requirements: 11.4, 11.5_
+
+- [ ] 15.8 Add automation controls
+  - Add ENABLE_CRON_AUTOMATION environment variable
+  - Add ENABLE_WEBHOOK_AUTOMATION environment variable
+  - Add WEBHOOK_SECRET environment variable
+  - Allow disabling either automation method
+  - _Requirements: 12.5_
+
+- [ ] 15.9 Create Make.com scenario documentation
+  - Document webhook endpoint URL and payload format
+  - Provide example Make.com scenario setup
+  - Document error handling and retry logic
+  - Add troubleshooting guide
+  - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5_
+
 - [ ] 16. Add analytics integration
 - [ ] 16.1 Implement page view tracking
   - Track views per post
@@ -346,11 +383,61 @@
   - Document all required environment variables
   - _Requirements: 10.2_
 
-- [ ]* 22. Create integration tests
+- [ ] 22. Migrate existing blog posts
+- [ ] 22.1 Create migration script
+  - Create scripts/migrate-blog-posts.ts
+  - Implement TSX file parsing with Babel
+  - Extract metadata from Head component
+  - Extract content from Container component
+  - Parse JSON-LD structured data
+  - _Requirements: 13.1, 13.2_
+
+- [ ] 22.2 Implement content conversion
+  - Convert JSX to HTML
+  - Extract title, description, keywords
+  - Identify featured images
+  - Calculate reading time
+  - Infer categories from keywords
+  - _Requirements: 13.2, 13.3_
+
+- [ ] 22.3 Preserve SEO metadata
+  - Maintain meta titles and descriptions
+  - Keep Open Graph tags
+  - Preserve JSON-LD structured data
+  - Maintain canonical URLs
+  - Keep existing slugs
+  - _Requirements: 13.4, 13.5_
+
+- [ ] 22.4 Run migration
+  - Backup existing blog posts
+  - Execute migration script
+  - Verify all posts imported
+  - Check for errors
+  - Generate migration report
+  - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.5_
+
+- [ ] 22.5 Validate migrated content
+  - Test all blog post URLs
+  - Verify images display correctly
+  - Check SEO metadata
+  - Validate structured data
+  - Test ISR revalidation
+  - Update sitemap
+  - _Requirements: 13.5_
+
+- [ ] 22.6 Archive old files
+  - Move old TSX files to archive folder
+  - Keep as backup for 30 days
+  - Document migration process
+  - Update internal links if needed
+  - _Requirements: 13.1_
+
+- [ ]* 23. Create integration tests
   - Test ContentStore operations
   - Test SEO metadata generation
   - Test image optimization
   - Test admin authentication
   - Test post creation workflow
   - Test automated content generation
+  - Test migration script
   - _Requirements: All_

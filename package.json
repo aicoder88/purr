@@ -28,6 +28,7 @@
     "predev": "node scripts/clear-webpack-cache.js",
     "analyze": "ANALYZE=true next build",
     "blog:auto:generate": "tsx scripts/run-auto-blog.ts",
+    "blog:migrate": "tsx scripts/migrate-blog-posts.ts",
     "analyze-js": "node scripts/analyze-js.js",
     "find-unused-deps": "npx depcheck",
     "clear-cache": "node scripts/clear-webpack-cache.js",

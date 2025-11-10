@@ -138,3 +138,39 @@ This document defines the requirements for a custom blog management system built
 3. THE Custom Blog System SHALL implement role-based access control with admin and editor roles
 4. THE Custom Blog System SHALL sanitize all user input to prevent XSS attacks
 5. THE Custom Blog System SHALL log all content changes with user attribution and timestamps
+
+### Requirement 11
+
+**User Story:** As a content creator, I want to trigger blog post generation from Make.com automation, so that I can integrate blog publishing with my existing workflows.
+
+#### Acceptance Criteria
+
+1. THE Custom Blog System SHALL provide a webhook endpoint at /api/webhooks/generate-blog-post for external automation
+2. THE Custom Blog System SHALL validate webhook requests using a secret token to prevent unauthorized access
+3. WHEN a valid webhook request is received, THE Custom Blog System SHALL generate and publish a blog post within 60 seconds
+4. THE Custom Blog System SHALL accept topic, keywords, and content parameters from the webhook payload
+5. THE Custom Blog System SHALL return the published post URL and metadata in the webhook response
+
+### Requirement 12
+
+**User Story:** As a content creator, I want both scheduled and on-demand blog post generation, so that I have flexibility in content publishing.
+
+#### Acceptance Criteria
+
+1. THE Custom Blog System SHALL support automated blog post generation via Vercel cron jobs every 3 days
+2. THE Custom Blog System SHALL support on-demand blog post generation via Make.com webhooks
+3. THE Custom Blog System SHALL prevent duplicate posts when both automation methods are active
+4. THE Custom Blog System SHALL log all automated post generation attempts with source attribution
+5. THE Custom Blog System SHALL allow disabling either automation method via environment variables
+
+### Requirement 13
+
+**User Story:** As a developer, I want to import all existing blog posts into the new CMS, so that no content is lost during the migration.
+
+#### Acceptance Criteria
+
+1. THE Custom Blog System SHALL provide a migration script to import existing blog posts from pages/blog/*.tsx files
+2. THE Custom Blog System SHALL extract title, content, metadata, and images from existing blog post files
+3. THE Custom Blog System SHALL convert existing blog posts to the new JSON format
+4. THE Custom Blog System SHALL preserve SEO metadata including titles, descriptions, and keywords
+5. THE Custom Blog System SHALL maintain existing URLs and slugs to prevent broken links
