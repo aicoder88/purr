@@ -94,6 +94,7 @@
     "express-rate-limit": "^8.0.1",
     "formidable": "^3.5.4",
     "framer-motion": "^12.23.12",
+    "isomorphic-dompurify": "^2.31.0",
     "jsonwebtoken": "^9.0.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.536.0",

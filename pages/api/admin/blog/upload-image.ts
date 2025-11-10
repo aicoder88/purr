@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { ImageOptimizer } from '@/lib/blog/image-optimizer';
+import { requireAuth } from '@/lib/auth/session';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 import formidable from 'formidable';
 import fs from 'fs/promises';
 
@@ -23,7 +25,7 @@ interface UploadResponse {
   error?: string;
 }
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse<UploadResponse>
 ) {
@@ -31,11 +33,11 @@ export default async function handler(
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  // TODO: Add authentication check
-  // const session = await getSession({ req });
-  // if (!session || !['admin', 'editor'].includes(session.user.role)) {
-  //   return res.status(401).json({ success: false, error: 'Unauthorized' });
-  // }
+  // Check authentication
+  const { authorized } = await requireAuth(req, res);
+  if (!authorized) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
 
   try {
     const form = formidable({
@@ -87,3 +89,6 @@ export default async function handler(
     });
   }
 }
+
+// Apply rate limiting for uploads
+export default withRateLimit(RATE_LIMITS.UPLOAD, handler);

@@ -3,9 +3,12 @@ import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
+import { sanitizeBlogPost } from '@/lib/security/sanitize';
+import { withRateLimit, RATE_LIMITS, combineMiddleware } from '@/lib/security/rate-limit';
+import { withCSRFProtection } from '@/lib/security/csrf';
 import type { BlogPost } from '@/types/blog';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { authorized, session } = await requireAuth(req, res);
 
   if (!authorized || !session) {
@@ -28,12 +31,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (req.method === 'POST') {
       // Create new post
-      const post: BlogPost = req.body;
+      let post: BlogPost = req.body;
 
       // Validate required fields
       if (!post.title || !post.content || !post.slug) {
         return res.status(400).json({ error: 'Missing required fields' });
       }
+
+      // Sanitize post content to prevent XSS
+      post = sanitizeBlogPost(post);
 
       // Save post
       await store.savePost(post);
@@ -67,11 +73,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (req.method === 'PUT') {
       // Update existing post
-      const post: BlogPost = req.body;
+      let post: BlogPost = req.body;
 
       if (!post.slug) {
         return res.status(400).json({ error: 'Missing slug' });
       }
+
+      // Sanitize post content to prevent XSS
+      post = sanitizeBlogPost(post);
 
       // Update modified date
       post.modifiedDate = new Date().toISOString();
@@ -111,3 +120,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+// Apply security middleware
+export default combineMiddleware(
+  (h) => withRateLimit(RATE_LIMITS.CREATE, h),
+  withCSRFProtection
+)(handler);
