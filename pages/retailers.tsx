@@ -12,8 +12,8 @@ import { Stores } from '../src/components/sections/stores';
 
 export default function RetailersPage() {
   const { t, locale } = useTranslation();
-  const pageTitle = `${SITE_NAME} - ${t.retailers?.seo?.pageTitle || 'Wholesale & Retail Partners'}`;
-  const pageDescription = t.retailers?.seo?.description || 'Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada.';
+  const pageTitle = `${SITE_NAME} - ${t.retailers.seo.pageTitle}`;
+  const pageDescription = t.retailers.seo.description;
   const canonicalUrl = getLocalizedUrl('/retailers', locale);
   const languageAlternates = buildLanguageAlternates('/retailers');
 
@@ -35,7 +35,7 @@ export default function RetailersPage() {
               url: 'https://www.purrify.ca/purrify-logo.png',
               width: 1200,
               height: 630,
-              alt: `${SITE_NAME} - Wholesale Partners`,
+              alt: `${SITE_NAME} - ${t.retailers.seo.openGraphAlt}`,
               type: 'image/png',
             }
           ],
@@ -43,7 +43,7 @@ export default function RetailersPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'wholesale cat litter additive, pet store products, retail partnership, bulk orders, wholesale pricing, marketing support',
+            content: t.retailers.seo.keywords,
           },
           {
             name: 'robots',
@@ -63,14 +63,8 @@ export default function RetailersPage() {
         <ClientLocationsMap
           className="bg-gray-50 dark:bg-gray-900/50"
           height="400"
-          headerTitle={locale === 'fr'
-            ? 'Nos Partenaires Détaillants et Clients | Réseau Purrify'
-            : 'Our Retail Partners and Clients | Purrify Network'
-          }
-          headerDescription={locale === 'fr'
-            ? 'Découvrez notre réseau grandissant de détaillants et clients satisfaits à travers le Canada. Rejoignez notre famille de partenaires prospères.'
-            : 'Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners.'
-          }
+          headerTitle={t.retailers.map.title}
+          headerDescription={t.retailers.map.description}
         />
 
         {/* Retail Store Locations with Logos */}

@@ -1306,7 +1306,13 @@ export const en = {
   retailers: {
     seo: {
       pageTitle: "Wholesale & Retail Partners",
-      description: "Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada."
+      description: "Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada.",
+      openGraphAlt: "Wholesale Partners",
+      keywords: "wholesale cat litter additive, pet store products, retail partnership, bulk orders, wholesale pricing, marketing support"
+    },
+    map: {
+      title: "Our Retail Partners and Clients | Purrify Network",
+      description: "Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners."
     },
     hero: {
       badge: "Business Partnership",

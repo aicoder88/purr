@@ -997,7 +997,13 @@ export const fr = {
   retailers: {
     seo: {
       pageTitle: "Partenaires grossistes & détaillants",
-      description: "Rejoignez notre réseau de détaillants. Tarifs de gros, support marketing et produit éprouvé pour les animaleries partout au Canada."
+      description: "Rejoignez notre réseau de détaillants. Tarifs de gros, support marketing et produit éprouvé pour les animaleries partout au Canada.",
+      openGraphAlt: "Partenaires grossistes",
+      keywords: "additif litière chat grossiste, produits animalerie, partenariat détaillant, commandes en gros, tarifs grossiste, support marketing"
+    },
+    map: {
+      title: "Nos Partenaires Détaillants et Clients | Réseau Purrify",
+      description: "Découvrez notre réseau grandissant de détaillants et clients satisfaits à travers le Canada. Rejoignez notre famille de partenaires prospères."
     },
     hero: {
       badge: "Partenariat d'affaires",

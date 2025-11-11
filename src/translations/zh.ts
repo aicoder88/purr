@@ -971,7 +971,13 @@ export const zh = {
   retailers: {
     seo: {
       pageTitle: "批发与零售合作伙伴",
-      description: "加入我们的零售网络。提供批发价格、营销支持以及经过验证的热销产品。"
+      description: "加入我们的零售网络。提供批发价格、营销支持以及经过验证的热销产品。",
+      openGraphAlt: "批发合作伙伴",
+      keywords: "批发猫砂添加剂, 宠物店产品, 零售合作, 大宗订单, 批发价格, 营销支持"
+    },
+    map: {
+      title: "我们的零售合作伙伴与客户 | Purrify网络",
+      description: "探索我们在加拿大不断增长的零售商和满意客户网络。加入我们成功的合作伙伴大家庭。"
     },
     hero: {
       badge: "商务合作",

@@ -984,9 +984,15 @@ export interface TranslationType {
   };
 
   // Retailers & B2B
-  retailers?: {
+  retailers: {
     seo: {
       pageTitle: string;
+      description: string;
+      openGraphAlt: string;
+      keywords: string;
+    };
+    map: {
+      title: string;
       description: string;
     };
     hero: {
