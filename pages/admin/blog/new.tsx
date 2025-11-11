@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
 import RichTextEditor from '@/components/admin/RichTextEditor';
+import AutoSaveIndicator from '@/components/admin/AutoSaveIndicator';
+import { useAutoSave } from '@/hooks/useAutoSave';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import type { BlogPost, Category, Tag } from '@/types/blog';
@@ -21,8 +23,6 @@ interface NewPostPageProps {
 export default function NewPostPage({ categories, tags, locale }: NewPostPageProps) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
-  const [autoSaving, setAutoSaving] = useState(false);
-  const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
@@ -32,94 +32,103 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft');
   const [scheduledDate, setScheduledDate] = useState<string>('');
 
-  // Auto-save functionality
-  const autoSave = useCallback(async () => {
+  // Enhanced auto-save with visual feedback
+  const performAutoSave = useCallback(async () => {
     if (!title.trim() || !content.trim()) {
-      return; // Don't auto-save empty posts
+      return;
     }
 
-    setAutoSaving(true);
+    const slug = generateSlug(title);
+    const now = new Date().toISOString();
 
-    try {
-      const slug = generateSlug(title);
-      const now = new Date().toISOString();
+    const post: BlogPost = {
+      id: Date.now().toString(),
+      slug,
+      title,
+      excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+      content,
+      author: {
+        name: 'Purrify Team'
+      },
+      publishDate: now,
+      modifiedDate: now,
+      status: 'draft',
+      featuredImage: {
+        url: featuredImage || '/purrify-logo.png',
+        alt: title,
+        width: 1200,
+        height: 630
+      },
+      categories: selectedCategories,
+      tags: selectedTags,
+      locale,
+      translations: {},
+      seo: {
+        title: title.substring(0, 60),
+        description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
+        keywords: selectedTags
+      },
+      readingTime: calculateReadingTime(content)
+    };
 
-      const post: BlogPost = {
-        id: Date.now().toString(),
-        slug,
-        title,
-        excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-        content,
-        author: {
-          name: 'Purrify Team'
-        },
-        publishDate: now,
-        modifiedDate: now,
-        status: 'draft', // Always save as draft for auto-save
-        featuredImage: {
-          url: featuredImage || '/purrify-logo.png',
-          alt: title,
-          width: 1200,
-          height: 630
-        },
-        categories: selectedCategories,
-        tags: selectedTags,
-        locale,
-        translations: {},
-        seo: {
-          title: title.substring(0, 60),
-          description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
-          keywords: selectedTags
-        },
-        readingTime: calculateReadingTime(content)
-      };
+    // Save to server
+    const response = await fetch('/api/admin/blog/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    });
 
-      // Save to localStorage as backup
-      localStorage.setItem('blog-draft', JSON.stringify(post));
-
-      // Save to server
-      await fetch('/api/admin/blog/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(post)
-      });
-
-      setLastSaved(new Date());
-    } catch (error) {
-      console.error('Auto-save failed:', error);
-      // Don't show error toast for auto-save failures
-    } finally {
-      setAutoSaving(false);
+    if (!response.ok) {
+      throw new Error('Failed to auto-save');
     }
   }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, locale]);
 
-  // Auto-save every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      autoSave();
-    }, 30000); // 30 seconds
+  const {
+    state: autoSaveState,
+    triggerAutoSave,
+    saveToLocalStorage,
+    loadFromLocalStorage,
+    clearLocalStorage
+  } = useAutoSave({
+    onSave: performAutoSave,
+    delay: 30000,
+    localStorageKey: 'blog-draft-new'
+  });
 
-    return () => clearInterval(interval);
-  }, [autoSave]);
+  // Trigger auto-save on content changes
+  useEffect(() => {
+    if (title || content) {
+      triggerAutoSave();
+      saveToLocalStorage({
+        title,
+        content,
+        excerpt,
+        selectedCategories,
+        selectedTags,
+        featuredImage,
+        status,
+        scheduledDate
+      });
+    }
+  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, status, scheduledDate]);
 
   // Load draft from localStorage on mount
   useEffect(() => {
-    const savedDraft = localStorage.getItem('blog-draft');
-    if (savedDraft) {
-      try {
-        const draft = JSON.parse(savedDraft);
-        if (confirm('Found a saved draft. Would you like to restore it?')) {
-          setTitle(draft.title || '');
-          setContent(draft.content || '');
-          setExcerpt(draft.excerpt || '');
-          setSelectedCategories(draft.categories || []);
-          setSelectedTags(draft.tags || []);
-          setFeaturedImage(draft.featuredImage?.url || '');
-        }
-      } catch (error) {
-        console.error('Failed to load draft:', error);
+    const draft = loadFromLocalStorage();
+    if (draft && draft.title) {
+      if (confirm('Found a saved draft. Would you like to restore it?')) {
+        setTitle(draft.title || '');
+        setContent(draft.content || '');
+        setExcerpt(draft.excerpt || '');
+        setSelectedCategories(draft.selectedCategories || []);
+        setSelectedTags(draft.selectedTags || []);
+        setFeaturedImage(draft.featuredImage || '');
+        setStatus(draft.status || 'draft');
+        setScheduledDate(draft.scheduledDate || '');
+      } else {
+        clearLocalStorage();
       }
     }
   }, []);
@@ -313,21 +322,8 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
             <span>Back to Posts</span>
           </Link>
           <div className="flex items-center space-x-3">
-            {/* Auto-save indicator */}
-            {autoSaving && (
-              <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center space-x-2">
-                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                <span>Saving...</span>
-              </span>
-            )}
-            {!autoSaving && lastSaved && (
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Saved {Math.floor((Date.now() - lastSaved.getTime()) / 1000)}s ago
-              </span>
-            )}
+            {/* Enhanced auto-save indicator */}
+            <AutoSaveIndicator state={autoSaveState} />
             <button
               onClick={handlePreview}
               disabled={!title.trim()}

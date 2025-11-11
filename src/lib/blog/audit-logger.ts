@@ -5,7 +5,7 @@ export interface AuditLog {
   timestamp: string;
   userId: string;
   userEmail: string;
-  action: 'create' | 'update' | 'delete' | 'publish' | 'unpublish';
+  action: 'create' | 'update' | 'delete' | 'publish' | 'unpublish' | 'bulk_delete' | 'bulk_status_change' | 'bulk_assign_categories' | 'bulk_assign_tags';
   resourceType: 'post' | 'category' | 'tag' | 'media';
   resourceId: string;
   details?: Record<string, any>;

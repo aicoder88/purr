@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { RevisionManager } from '@/lib/blog/revision-manager';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
 import { sanitizeBlogPost } from '@/lib/security/sanitize';
 import { withRateLimit, RATE_LIMITS, combineMiddleware } from '@/lib/security/rate-limit';
@@ -17,6 +18,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const store = new ContentStore();
   const logger = new AuditLogger();
+  const revisionManager = new RevisionManager();
   const sitemapGenerator = new SitemapGenerator();
 
   try {
@@ -43,6 +45,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
       // Save post
       await store.savePost(post);
+
+      // Create initial revision
+      await revisionManager.createRevision(
+        post,
+        session.user?.email || 'unknown',
+        'Initial post creation'
+      );
 
       // Log the creation
       await logger.log({
@@ -86,6 +95,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       post.modifiedDate = new Date().toISOString();
 
       await store.savePost(post);
+
+      // Create revision
+      await revisionManager.createRevision(
+        post,
+        session.user?.email || 'unknown',
+        'Post updated'
+      );
 
       // Log the update
       await logger.log({

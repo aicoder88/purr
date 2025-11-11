@@ -4,20 +4,24 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
+import BulkActionsToolbar, { type BulkOperation } from '@/components/admin/BulkActionsToolbar';
 import { ContentStore } from '@/lib/blog/content-store';
-import type { BlogPost } from '@/types/blog';
+import type { BlogPost, Category, Tag } from '@/types/blog';
 import { Plus, Search, Filter, Edit, Trash2, Eye } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface AdminBlogPageProps {
   posts: BlogPost[];
+  categories: Category[];
+  tags: Tag[];
   locale: string;
 }
 
-export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlogPageProps) {
+export default function AdminBlogPage({ posts: initialPosts, categories, tags, locale }: AdminBlogPageProps) {
   const [posts, setPosts] = useState(initialPosts);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft' | 'scheduled'>('all');
+  const [selectedPosts, setSelectedPosts] = useState<string[]>([]);
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -25,6 +29,79 @@ export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlog
     const matchesStatus = statusFilter === 'all' || post.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
+
+  const togglePostSelection = (slug: string) => {
+    setSelectedPosts(prev =>
+      prev.includes(slug)
+        ? prev.filter(s => s !== slug)
+        : [...prev, slug]
+    );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedPosts.length === filteredPosts.length) {
+      setSelectedPosts([]);
+    } else {
+      setSelectedPosts(filteredPosts.map(p => p.slug));
+    }
+  };
+
+  const handleBulkOperation = async (operation: BulkOperation) => {
+    try {
+      const response = await fetch('/api/admin/blog/bulk-operations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          operation,
+          postSlugs: selectedPosts
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Bulk operation failed');
+      }
+
+      const result = await response.json();
+
+      // Update local state based on operation
+      if (operation.type === 'delete') {
+        setPosts(posts.filter(p => !selectedPosts.includes(p.slug)));
+        toast.success(`Deleted ${result.results.successful.length} post(s)`);
+      } else if (operation.type === 'changeStatus') {
+        setPosts(posts.map(p =>
+          selectedPosts.includes(p.slug)
+            ? { ...p, status: operation.status }
+            : p
+        ));
+        toast.success(`Updated ${result.results.successful.length} post(s)`);
+      } else if (operation.type === 'assignCategories') {
+        setPosts(posts.map(p =>
+          selectedPosts.includes(p.slug)
+            ? { ...p, categories: [...new Set([...p.categories, ...operation.categories])] }
+            : p
+        ));
+        toast.success(`Updated ${result.results.successful.length} post(s)`);
+      } else if (operation.type === 'assignTags') {
+        setPosts(posts.map(p =>
+          selectedPosts.includes(p.slug)
+            ? { ...p, tags: [...new Set([...p.tags, ...operation.tags])] }
+            : p
+        ));
+        toast.success(`Updated ${result.results.successful.length} post(s)`);
+      }
+
+      if (result.results.failed.length > 0) {
+        toast.error(`Failed to update ${result.results.failed.length} post(s)`);
+      }
+
+      setSelectedPosts([]);
+    } catch (error) {
+      console.error('Bulk operation error:', error);
+      toast.error('Bulk operation failed');
+    }
+  };
 
   const handleDelete = async (slug: string) => {
     if (!confirm('Are you sure you want to delete this post?')) {
@@ -38,6 +115,7 @@ export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlog
 
       if (response.ok) {
         setPosts(posts.filter(p => p.slug !== slug));
+        setSelectedPosts(selectedPosts.filter(s => s !== slug));
         toast.success('Post deleted successfully');
       } else {
         toast.error('Failed to delete post');
@@ -122,6 +200,21 @@ export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlog
           </div>
         </div>
 
+        {/* Select All */}
+        {filteredPosts.length > 0 && (
+          <div className="flex items-center space-x-2 mb-4">
+            <input
+              type="checkbox"
+              checked={selectedPosts.length === filteredPosts.length && filteredPosts.length > 0}
+              onChange={toggleSelectAll}
+              className="rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+            />
+            <span className="text-sm text-gray-600 dark:text-gray-400">
+              Select all
+            </span>
+          </div>
+        )}
+
         {/* Posts List */}
         {filteredPosts.length === 0 ? (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
@@ -141,30 +234,39 @@ export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlog
                 key={post.id}
                 className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                        {post.title}
-                      </h2>
-                      {getStatusBadge(post.status)}
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                      <span>{formatDate(post.publishDate)}</span>
-                      <span>•</span>
-                      <span>{post.readingTime} min read</span>
-                      {post.categories.length > 0 && (
-                        <>
-                          <span>•</span>
-                          <span>{post.categories.join(', ')}</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
+                <div className="flex items-start space-x-4">
+                  {/* Checkbox */}
+                  <input
+                    type="checkbox"
+                    checked={selectedPosts.includes(post.slug)}
+                    onChange={() => togglePostSelection(post.slug)}
+                    className="mt-1 rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+                  />
 
-                  {/* Actions */}
-                  <div className="flex items-center space-x-2 ml-4">
+                  <div className="flex-1 flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                          {post.title}
+                        </h2>
+                        {getStatusBadge(post.status)}
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">{post.excerpt}</p>
+                      <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                        <span>{formatDate(post.publishDate)}</span>
+                        <span>•</span>
+                        <span>{post.readingTime} min read</span>
+                        {post.categories.length > 0 && (
+                          <>
+                            <span>•</span>
+                            <span>{post.categories.join(', ')}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center space-x-2 ml-4">
                     <Link
                       href={`/blog/${post.slug}`}
                       target="_blank"
@@ -180,19 +282,29 @@ export default function AdminBlogPage({ posts: initialPosts, locale }: AdminBlog
                     >
                       <Edit className="w-5 h-5" />
                     </Link>
-                    <button
-                      onClick={() => handleDelete(post.slug)}
-                      className="p-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
-                      title="Delete"
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button>
+                      <button
+                        onClick={() => handleDelete(post.slug)}
+                        className="p-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         )}
+
+        {/* Bulk Actions Toolbar */}
+        <BulkActionsToolbar
+          selectedCount={selectedPosts.length}
+          onClearSelection={() => setSelectedPosts([])}
+          onExecute={handleBulkOperation}
+          categories={categories}
+          tags={tags}
+        />
       </AdminLayout>
     </>
   );
@@ -212,10 +324,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
 
   const store = new ContentStore();
   const posts = await store.getAllPosts(locale || 'en', true); // Include unpublished
+  const categories = await store.getCategories();
+  const tags = await store.getTags();
 
   return {
     props: {
       posts: JSON.parse(JSON.stringify(posts)), // Serialize dates
+      categories: JSON.parse(JSON.stringify(categories)),
+      tags: JSON.parse(JSON.stringify(tags)),
       locale: locale || 'en'
     }
   };
