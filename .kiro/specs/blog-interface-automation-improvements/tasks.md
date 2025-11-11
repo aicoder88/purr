@@ -215,29 +215,29 @@
     - Display author and timestamp for each revision
     - _Requirements: 11.2, 11.3, 11.4_
 
-- [-] 12. Build Category and Tag Management
-  - [ ] 12.1 Create CategoryManager service
+- [x] 12. Build Category and Tag Management
+  - [x] 12.1 Create CategoryManager service
     - Implement getCategoriesWithStats() with usage counts
     - Add createCategory(), updateCategory(), deleteCategory()
     - Create mergeTags() for duplicate consolidation
     - Implement findSimilarTags() for suggestions
     - _Requirements: 12.1, 12.2, 12.4_
   
-  - [ ] 12.2 Build category management UI
+  - [x] 12.2 Build category management UI
     - Create category list with hierarchy display
     - Add drag-and-drop for reordering
     - Implement inline editing
     - Add delete confirmation with reassignment option
     - _Requirements: 12.1, 12.2, 12.5_
   
-  - [ ] 12.3 Build tag management UI
+  - [x] 12.3 Build tag management UI
     - Display tags with usage statistics
     - Add tag merging interface
     - Implement similar tag detection
     - Create bulk tag operations
     - _Requirements: 12.4, 12.5_
   
-  - [ ] 12.4 Add multi-language taxonomy support
+  - [x] 12.4 Add multi-language taxonomy support
     - Create translation editor for categories/tags
     - Display translations for all supported locales
     - Add validation for required translations

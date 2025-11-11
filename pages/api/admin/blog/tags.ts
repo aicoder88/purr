@@ -1,80 +1,102 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
-import { ContentStore } from '@/lib/blog/content-store';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+import { CategoryManager } from '@/lib/blog/category-manager';
+import { AuditLogger } from '@/lib/blog/audit-logger';
 import type { Tag } from '@/types/blog';
-import fs from 'fs/promises';
-import path from 'path';
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { authorized } = await requireAuth(req, res);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { authorized, session } = await requireAuth(req, res);
 
-  if (!authorized) {
+  if (!authorized || !session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const store = new ContentStore();
-  const tagsPath = path.join(process.cwd(), 'content', 'tags.json');
+  const categoryManager = new CategoryManager();
+  const logger = new AuditLogger();
 
   try {
     if (req.method === 'GET') {
-      const tags = await store.getTags();
+      const tags = await categoryManager.getTagsWithStats();
       return res.status(200).json(tags);
     }
 
     if (req.method === 'POST') {
-      const newTag: Tag = req.body;
+      const action = req.body.action;
 
-      if (!newTag.name || !newTag.slug) {
-        return res.status(400).json({ error: 'Name and slug are required' });
+      if (action === 'merge') {
+        const { sourceIds, targetId } = req.body;
+        await categoryManager.mergeTags(sourceIds, targetId);
+
+        await logger.log({
+          userId: session.user?.email || 'unknown',
+          userEmail: session.user?.email || 'unknown',
+          action: 'update',
+          resourceType: 'tag',
+          resourceId: targetId,
+          details: { action: 'merge', sourceIds }
+        });
+
+        return res.status(200).json({ success: true });
       }
 
-      // Read existing tags
-      const tags = await store.getTags();
+      // Create new tag
+      const tag: Tag = req.body;
+      await categoryManager.createTag(tag);
 
-      // Check for duplicate slug
-      if (tags.some(tag => tag.slug === newTag.slug)) {
-        return res.status(400).json({ error: 'Tag with this slug already exists' });
-      }
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'create',
+        resourceType: 'tag',
+        resourceId: tag.id,
+        details: { name: tag.name }
+      });
 
-      // Add new tag
-      tags.push(newTag);
-
-      // Save to file
-      await fs.writeFile(tagsPath, JSON.stringify(tags, null, 2));
-
-      return res.status(201).json({ success: true, tag: newTag });
+      return res.status(201).json({ success: true, tag });
     }
 
     if (req.method === 'PUT') {
-      const updatedTag: Tag = req.body;
+      const { id, ...updates } = req.body;
 
-      if (!updatedTag.id || !updatedTag.name || !updatedTag.slug) {
-        return res.status(400).json({ error: 'ID, name, and slug are required' });
-      }
+      await categoryManager.updateTag(id, updates);
 
-      // Read existing tags
-      const tags = await store.getTags();
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'update',
+        resourceType: 'tag',
+        resourceId: id,
+        details: updates
+      });
 
-      // Find and update tag
-      const index = tags.findIndex(tag => tag.id === updatedTag.id);
-      if (index === -1) {
-        return res.status(404).json({ error: 'Tag not found' });
-      }
+      return res.status(200).json({ success: true });
+    }
 
-      tags[index] = { ...tags[index], ...updatedTag };
+    if (req.method === 'DELETE') {
+      const { id } = req.query;
 
-      // Save to file
-      await fs.writeFile(tagsPath, JSON.stringify(tags, null, 2));
+      await categoryManager.deleteTag(id as string);
 
-      return res.status(200).json({ success: true, tag: tags[index] });
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'delete',
+        resourceType: 'tag',
+        resourceId: id as string,
+        details: {}
+      });
+
+      return res.status(200).json({ success: true });
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
-  } catch (error) {
-    console.error('Error handling tags request:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Tag management error:', error);
+    return res.status(500).json({ 
+      error: error.message || 'Internal server error' 
+    });
   }
 }
-
-export default withRateLimit(RATE_LIMITS.CREATE, handler);

@@ -1,80 +1,91 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
-import { ContentStore } from '@/lib/blog/content-store';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+import { CategoryManager } from '@/lib/blog/category-manager';
+import { AuditLogger } from '@/lib/blog/audit-logger';
 import type { Category } from '@/types/blog';
-import fs from 'fs/promises';
-import path from 'path';
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { authorized } = await requireAuth(req, res);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { authorized, session } = await requireAuth(req, res);
 
-  if (!authorized) {
+  if (!authorized || !session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const store = new ContentStore();
-  const categoriesPath = path.join(process.cwd(), 'content', 'categories.json');
+  const categoryManager = new CategoryManager();
+  const logger = new AuditLogger();
 
   try {
     if (req.method === 'GET') {
-      const categories = await store.getCategories();
-      return res.status(200).json(categories);
+      const withStats = req.query.stats === 'true';
+      
+      if (withStats) {
+        const categories = await categoryManager.getCategoriesWithStats();
+        return res.status(200).json(categories);
+      } else {
+        const categories = await categoryManager.getCategoriesWithStats();
+        return res.status(200).json(categories);
+      }
     }
 
     if (req.method === 'POST') {
-      const newCategory: Category = req.body;
+      const category: Category = req.body;
 
-      if (!newCategory.name || !newCategory.slug) {
-        return res.status(400).json({ error: 'Name and slug are required' });
-      }
+      await categoryManager.createCategory(category);
 
-      // Read existing categories
-      const categories = await store.getCategories();
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'create',
+        resourceType: 'category',
+        resourceId: category.id,
+        details: { name: category.name }
+      });
 
-      // Check for duplicate slug
-      if (categories.some(cat => cat.slug === newCategory.slug)) {
-        return res.status(400).json({ error: 'Category with this slug already exists' });
-      }
-
-      // Add new category
-      categories.push(newCategory);
-
-      // Save to file
-      await fs.writeFile(categoriesPath, JSON.stringify(categories, null, 2));
-
-      return res.status(201).json({ success: true, category: newCategory });
+      return res.status(201).json({ success: true, category });
     }
 
     if (req.method === 'PUT') {
-      const updatedCategory: Category = req.body;
+      const { id, ...updates } = req.body;
 
-      if (!updatedCategory.id || !updatedCategory.name || !updatedCategory.slug) {
-        return res.status(400).json({ error: 'ID, name, and slug are required' });
-      }
+      await categoryManager.updateCategory(id, updates);
 
-      // Read existing categories
-      const categories = await store.getCategories();
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'update',
+        resourceType: 'category',
+        resourceId: id,
+        details: updates
+      });
 
-      // Find and update category
-      const index = categories.findIndex(cat => cat.id === updatedCategory.id);
-      if (index === -1) {
-        return res.status(404).json({ error: 'Category not found' });
-      }
+      return res.status(200).json({ success: true });
+    }
 
-      categories[index] = { ...categories[index], ...updatedCategory };
+    if (req.method === 'DELETE') {
+      const { id, reassignTo } = req.query;
 
-      // Save to file
-      await fs.writeFile(categoriesPath, JSON.stringify(categories, null, 2));
+      await categoryManager.deleteCategory(id as string, reassignTo as string | undefined);
 
-      return res.status(200).json({ success: true, category: categories[index] });
+      await logger.log({
+        userId: session.user?.email || 'unknown',
+        userEmail: session.user?.email || 'unknown',
+        action: 'delete',
+        resourceType: 'category',
+        resourceId: id as string,
+        details: { reassignTo }
+      });
+
+      return res.status(200).json({ success: true });
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
-  } catch (error) {
-    console.error('Error handling categories request:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Category management error:', error);
+    return res.status(500).json({ 
+      error: error.message || 'Internal server error' 
+    });
   }
 }
-
-export default withRateLimit(RATE_LIMITS.CREATE, handler);
