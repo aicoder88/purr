@@ -77,7 +77,7 @@ export default async function handler(
     const generator = new AutomatedContentGenerator();
     const store = new ContentStore();
     
-    let post;
+    let post: any;
     
     if (payload.mode === 'generate') {
       // Generate new content with AI
@@ -101,11 +101,7 @@ export default async function handler(
       }
       
       // Generate post
-      post = await generator.generateBlogPost(topic, {
-        keywords: payload.keywords,
-        targetWordCount: payload.targetWordCount || 1200,
-        locale
-      });
+      post = await generator.generateBlogPost(topic);
       
     } else if (payload.mode === 'publish') {
       // Publish provided content
@@ -120,6 +116,13 @@ export default async function handler(
       
       // Create post object from provided data
       post = await generator.createPostFromContent(payload.post);
+    }
+    
+    if (!post) {
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to create post'
+      });
     }
     
     // Publish the post
@@ -146,7 +149,7 @@ export default async function handler(
       return res.status(400).json({ 
         success: false,
         error: 'Invalid payload',
-        details: error.errors
+        details: error.issues
       });
     }
     
