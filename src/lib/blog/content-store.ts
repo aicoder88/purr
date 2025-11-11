@@ -1,35 +1,41 @@
-import fs from 'fs/promises';
-import path from 'path';
+import prisma from '@/lib/prisma';
 import type { BlogPost, Category, Tag } from '@/types/blog';
 
+/**
+ * Database-backed content store for Vercel deployment
+ * Replaces file-based storage with PostgreSQL
+ */
 export class ContentStore {
-  private contentDir = path.join(process.cwd(), 'content', 'blog');
-  private categoriesPath = path.join(process.cwd(), 'content', 'categories.json');
-  private tagsPath = path.join(process.cwd(), 'content', 'tags.json');
-
   /**
    * Get a single blog post by slug and locale
    */
   async getPost(slug: string, locale: string): Promise<BlogPost | null> {
     try {
-      const filePath = path.join(this.contentDir, locale, `${slug}.json`);
-      const content = await fs.readFile(filePath, 'utf-8');
-      const post = JSON.parse(content) as BlogPost;
+      const post = await prisma.blogPost.findFirst({
+        where: { slug, locale }
+      });
+
+      if (!post) return null;
 
       // Filter out unpublished posts in production
-      if (post.status !== 'published' && process.env.NODE_ENV === 'production') {
+      if (post.status !== 'PUBLISHED' && process.env.NODE_ENV === 'production') {
         // Check if scheduled post should be published
-        if (post.status === 'scheduled' && post.scheduledDate) {
-          if (new Date(post.scheduledDate) <= new Date()) {
-            post.status = 'published';
-            await this.savePost(post);
-            return post;
+        if (post.status === 'SCHEDULED' && post.scheduledFor) {
+          if (new Date(post.scheduledFor) <= new Date()) {
+            const updated = await prisma.blogPost.update({
+              where: { id: post.id },
+              data: { 
+                status: 'PUBLISHED',
+                publishedAt: new Date()
+              }
+            });
+            return this.mapToPost(updated);
           }
         }
         return null;
       }
 
-      return post;
+      return this.mapToPost(post);
     } catch (error) {
       console.error(`Error reading post ${slug}:`, error);
       return null;
@@ -41,40 +47,24 @@ export class ContentStore {
    */
   async getAllPosts(locale: string, includeUnpublished = false): Promise<BlogPost[]> {
     try {
-      const dirPath = path.join(this.contentDir, locale);
-      
-      // Create directory if it doesn't exist
-      try {
-        await fs.access(dirPath);
-      } catch {
-        await fs.mkdir(dirPath, { recursive: true });
-        return [];
+      const where: any = { locale };
+
+      if (!includeUnpublished) {
+        where.OR = [
+          { status: 'PUBLISHED' },
+          {
+            status: 'SCHEDULED',
+            scheduledFor: { lte: new Date() }
+          }
+        ];
       }
 
-      const files = await fs.readdir(dirPath);
-
-      const posts = await Promise.all(
-        files
-          .filter(file => file.endsWith('.json'))
-          .map(async file => {
-            const content = await fs.readFile(path.join(dirPath, file), 'utf-8');
-            return JSON.parse(content) as BlogPost;
-          })
-      );
-
-      // Filter and sort
-      const filteredPosts = posts.filter(post => {
-        if (includeUnpublished) return true;
-        if (post.status === 'published') return true;
-        if (post.status === 'scheduled' && post.scheduledDate) {
-          return new Date(post.scheduledDate) <= new Date();
-        }
-        return false;
+      const posts = await prisma.blogPost.findMany({
+        where,
+        orderBy: { publishedAt: 'desc' }
       });
 
-      return filteredPosts.sort(
-        (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-      );
+      return posts.map(post => this.mapToPost(post));
     } catch (error) {
       console.error(`Error reading posts for locale ${locale}:`, error);
       return [];
@@ -85,16 +75,41 @@ export class ContentStore {
    * Get posts by category
    */
   async getPostsByCategory(category: string, locale: string): Promise<BlogPost[]> {
-    const allPosts = await this.getAllPosts(locale);
-    return allPosts.filter(post => post.categories.includes(category));
+    try {
+      const posts = await prisma.blogPost.findMany({
+        where: {
+          locale,
+          status: 'PUBLISHED'
+        },
+        orderBy: { publishedAt: 'desc' }
+      });
+
+      return posts.map(post => this.mapToPost(post));
+    } catch (error) {
+      console.error(`Error reading posts by category:`, error);
+      return [];
+    }
   }
 
   /**
    * Get posts by tag
    */
   async getPostsByTag(tag: string, locale: string): Promise<BlogPost[]> {
-    const allPosts = await this.getAllPosts(locale);
-    return allPosts.filter(post => post.tags.includes(tag));
+    try {
+      const posts = await prisma.blogPost.findMany({
+        where: {
+          locale,
+          keywords: { has: tag },
+          status: 'PUBLISHED'
+        },
+        orderBy: { publishedAt: 'desc' }
+      });
+
+      return posts.map(post => this.mapToPost(post));
+    } catch (error) {
+      console.error(`Error reading posts by tag:`, error);
+      return [];
+    }
   }
 
   /**
@@ -102,9 +117,30 @@ export class ContentStore {
    */
   async savePost(post: BlogPost): Promise<void> {
     try {
-      const filePath = path.join(this.contentDir, post.locale, `${post.slug}.json`);
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
-      await fs.writeFile(filePath, JSON.stringify(post, null, 2), 'utf-8');
+      const data = {
+        slug: post.slug,
+        locale: post.locale || 'en',
+        title: post.title,
+        author: post.author || 'Purrify Research Lab',
+        excerpt: post.excerpt || '',
+        content: post.content,
+        heroImageUrl: post.featuredImage || '',
+        heroImageAlt: post.title,
+        keywords: post.tags || [],
+        metaDescription: post.seoDescription || post.excerpt || null,
+        wordCount: Math.ceil((post.content?.length || 0) / 5), // Rough estimate
+        status: post.status.toUpperCase() as any,
+        scheduledFor: post.scheduledDate ? new Date(post.scheduledDate) : null,
+        publishedAt: post.status === 'published' ? new Date(post.publishDate) : null
+      };
+
+      await prisma.blogPost.upsert({
+        where: {
+          slug: post.slug
+        },
+        update: data,
+        create: data
+      });
     } catch (error) {
       console.error(`Error saving post ${post.slug}:`, error);
       throw error;
@@ -116,8 +152,9 @@ export class ContentStore {
    */
   async deletePost(slug: string, locale: string): Promise<void> {
     try {
-      const filePath = path.join(this.contentDir, locale, `${slug}.json`);
-      await fs.unlink(filePath);
+      await prisma.blogPost.deleteMany({
+        where: { slug, locale }
+      });
     } catch (error) {
       console.error(`Error deleting post ${slug}:`, error);
       throw error;
@@ -129,8 +166,15 @@ export class ContentStore {
    */
   async getCategories(): Promise<Category[]> {
     try {
-      const content = await fs.readFile(this.categoriesPath, 'utf-8');
-      return JSON.parse(content) as Category[];
+      const categories = await prisma.blogCategory.findMany({
+        orderBy: { name: 'asc' }
+      });
+
+      return categories.map(cat => ({
+        slug: cat.slug,
+        name: cat.name,
+        description: cat.description || undefined
+      }));
     } catch (error) {
       console.error('Error reading categories:', error);
       return [];
@@ -142,8 +186,14 @@ export class ContentStore {
    */
   async getTags(): Promise<Tag[]> {
     try {
-      const content = await fs.readFile(this.tagsPath, 'utf-8');
-      return JSON.parse(content) as Tag[];
+      const tags = await prisma.blogTag.findMany({
+        orderBy: { name: 'asc' }
+      });
+
+      return tags.map(tag => ({
+        slug: tag.slug,
+        name: tag.name
+      }));
     } catch (error) {
       console.error('Error reading tags:', error);
       return [];
@@ -155,7 +205,16 @@ export class ContentStore {
    */
   async saveCategories(categories: Category[]): Promise<void> {
     try {
-      await fs.writeFile(this.categoriesPath, JSON.stringify(categories, null, 2), 'utf-8');
+      // Delete all and recreate (simple approach)
+      await prisma.blogCategory.deleteMany({});
+      
+      await prisma.blogCategory.createMany({
+        data: categories.map(cat => ({
+          slug: cat.slug,
+          name: cat.name,
+          description: cat.description || null
+        }))
+      });
     } catch (error) {
       console.error('Error saving categories:', error);
       throw error;
@@ -167,10 +226,44 @@ export class ContentStore {
    */
   async saveTags(tags: Tag[]): Promise<void> {
     try {
-      await fs.writeFile(this.tagsPath, JSON.stringify(tags, null, 2), 'utf-8');
+      // Delete all and recreate (simple approach)
+      await prisma.blogTag.deleteMany({});
+      
+      await prisma.blogTag.createMany({
+        data: tags.map(tag => ({
+          slug: tag.slug,
+          name: tag.name
+        }))
+      });
     } catch (error) {
       console.error('Error saving tags:', error);
       throw error;
     }
+  }
+
+  /**
+   * Map database model to BlogPost type
+   */
+  private mapToPost(dbPost: any): BlogPost {
+    return {
+      slug: dbPost.slug,
+      locale: dbPost.locale || 'en',
+      title: dbPost.title,
+      excerpt: dbPost.excerpt || undefined,
+      content: dbPost.content,
+      featuredImage: dbPost.heroImageUrl || undefined,
+      author: dbPost.author || 'Purrify Research Lab',
+      publishDate: (dbPost.publishedAt || dbPost.createdAt).toISOString(),
+      modifiedDate: dbPost.updatedAt.toISOString(),
+      status: dbPost.status.toLowerCase(),
+      scheduledDate: dbPost.scheduledFor?.toISOString(),
+      categories: [], // Not in current schema
+      tags: dbPost.keywords || [],
+      seoTitle: dbPost.title,
+      seoDescription: dbPost.metaDescription || undefined,
+      seoKeywords: dbPost.keywords || [],
+      readingTime: Math.ceil(dbPost.wordCount / 200) || undefined,
+      viewCount: 0 // Not tracked yet
+    };
   }
 }

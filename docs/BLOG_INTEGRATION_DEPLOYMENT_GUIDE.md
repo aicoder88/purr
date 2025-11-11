@@ -2,6 +2,10 @@
 
 **Quick Reference for Getting Everything Working in Production**
 
+## ⚠️ CRITICAL FIX APPLIED
+
+**500 Error Fixed**: Blog storage has been switched from file-based to database-backed storage to work on Vercel's serverless environment. See `BLOG_500_ERROR_FIX.md` for details.
+
 ## 🎯 Goal
 
 Get all recently built blog features integrated, tested, and deployed to production on Vercel.

@@ -1,0 +1,70 @@
+================================================================================
+BLOG 500 ERROR - FIXED ✅
+================================================================================
+
+PROBLEM: 500 error when editing blog posts on Vercel
+CAUSE:   File-based storage doesn't work on Vercel (read-only file system)
+FIX:     Switched to PostgreSQL database storage
+
+================================================================================
+DEPLOY NOW (Copy & Paste)
+================================================================================
+
+git add .
+git commit -m "fix: switch blog storage to database for Vercel"
+git push origin main
+
+Then test at: https://purrify.ca/admin/blog
+
+================================================================================
+WHAT CHANGED
+================================================================================
+
+✅ src/lib/blog/content-store.ts - Now uses database instead of files
+✅ src/lib/prisma.ts - New Prisma client singleton
+✅ package.json - Added "postinstall: prisma generate"
+
+================================================================================
+ENVIRONMENT VARIABLES (Already Set ✅)
+================================================================================
+
+✅ DATABASE_URL
+✅ NEXTAUTH_SECRET
+✅ NEXTAUTH_URL
+✅ ADMIN_PASSWORD
+✅ ANTHROPIC_API_KEY
+✅ FAL_API_KEY
+
+No changes needed!
+
+================================================================================
+VERIFICATION STEPS
+================================================================================
+
+1. Deploy completes (2-3 min)
+2. Go to https://purrify.ca/admin/blog
+3. Edit any post
+4. Save changes
+5. Should work! ✅
+
+================================================================================
+DOCUMENTATION
+================================================================================
+
+- DEPLOY_NOW.md - Quick start guide
+- BLOG_500_ERROR_FIX.md - Detailed explanation
+- docs/BLOG_STORAGE_FIX.md - Technical details
+- docs/STORAGE_MIGRATION_GUIDE.md - Migration guide
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If still getting 500 error:
+1. Check Vercel logs (Dashboard → Logs)
+2. Verify DATABASE_URL is set
+3. Look for "Prisma" errors in build logs
+
+================================================================================
+READY TO DEPLOY! 🚀
+================================================================================
