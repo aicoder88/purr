@@ -154,8 +154,151 @@
   - Test SEO audit engine
   - _Requirements: All_
 
-- [ ] 9. Create documentation
+- [ ] 9. Build broken link detection system
+- [x] 9.1 Create BrokenLinkDetector class
+  - Implement site crawler using axios and cheerio
+  - Extract all internal and external links
+  - Check HTTP status codes for each link
+  - Track visited URLs to avoid duplicates
+  - _Requirements: 8.1, 8.2_
+
+- [x] 9.2 Implement link validation logic
+  - Check for 404 and 5xx status codes
+  - Detect redirect responses (3xx)
+  - Handle timeouts and network errors gracefully
+  - _Requirements: 8.1, 8.2_
+
+- [x] 9.3 Add intelligent link replacement suggestions
+  - Try common URL variations (trailing slash, case, extensions)
+  - Search for similar content based on URL patterns
+  - Suggest valid alternatives from sitemap
+  - _Requirements: 8.3_
+
+- [x] 9.4 Create broken link report generator
+  - List all broken links with source pages
+  - Group by status code and link type
+  - Include suggested fixes for each broken link
+  - Export as JSON and HTML formats
+  - _Requirements: 8.4_
+
+- [x] 9.5 Add sitemap URL validation
+  - Load sitemap.xml and extract all URLs
+  - Validate each sitemap URL returns 200
+  - Report any 404 or redirect URLs in sitemap
+  - _Requirements: 8.5_
+
+- [ ] 10. Implement canonical URL validation
+- [x] 10.1 Create CanonicalValidator class
+  - Extract canonical tags from HTML pages
+  - Check canonical URLs return 200 without redirects
+  - Validate protocol (https) and domain
+  - _Requirements: 9.1, 9.2, 9.5_
+
+- [x] 10.2 Add canonical conflict detection
+  - Track which pages claim each canonical URL
+  - Identify multiple pages with same canonical
+  - Report canonical conflicts with affected pages
+  - _Requirements: 9.4_
+
+- [x] 10.3 Implement canonical fix suggestions
+  - Suggest updating redirecting canonicals to final URL
+  - Recommend adding missing canonical tags
+  - Propose fixes for protocol mismatches
+  - _Requirements: 9.2, 9.5_
+
+- [x] 10.4 Add self-referencing canonical validation
+  - Ensure self-referencing canonicals match page URL exactly
+  - Check for trailing slash consistency
+  - Validate query parameter handling
+  - _Requirements: 9.3, 9.5_
+
+- [ ] 11. Build redirect chain analyzer
+- [x] 11.1 Create RedirectAnalyzer class
+  - Follow redirect chains up to 10 hops
+  - Track each hop with status code and URL
+  - Identify final destination URL
+  - _Requirements: 11.1_
+
+- [x] 11.2 Implement redirect type detection
+  - Distinguish permanent (301, 308) from temporary (302, 307)
+  - Flag temporary redirects that should be permanent
+  - Calculate total redirect hops
+  - _Requirements: 11.2_
+
+- [x] 11.3 Add redirect optimization suggestions
+  - Suggest updating multi-hop chains to direct redirects
+  - Recommend changing temporary to permanent redirects
+  - Generate redirect map showing all paths
+  - _Requirements: 11.3, 11.5_
+
+- [x] 11.4 Validate redirected URLs not in sitemap
+  - Cross-reference sitemap URLs with redirect list
+  - Report any redirecting URLs found in sitemap
+  - Suggest removing or replacing with final URLs
+  - _Requirements: 11.4_
+
+- [ ] 12. Implement automated sitemap cleanup
+- [x] 12.1 Create sitemap validation pipeline
+  - Load existing sitemap.xml files
+  - Validate each URL returns 200 status
+  - Check URLs match their canonical versions
+  - _Requirements: 10.1, 10.2, 10.4_
+
+- [x] 12.2 Add noindex detection
+  - Check for noindex meta tags in HTML
+  - Check for X-Robots-Tag: noindex headers
+  - Exclude noindex pages from sitemap
+  - _Requirements: 10.3_
+
+- [x] 12.3 Implement sitemap size management
+  - Count total URLs and calculate file size
+  - Split into multiple sitemaps if exceeding limits (50k URLs or 50MB)
+  - Generate sitemap index file for multiple sitemaps
+  - _Requirements: 10.5_
+
+- [x] 12.4 Create clean sitemap generator
+  - Remove all invalid URLs (404, 5xx)
+  - Remove non-canonical URLs
+  - Remove noindex pages
+  - Regenerate sitemap with only valid URLs
+  - _Requirements: 10.1, 10.2, 10.3, 10.4_
+
+- [ ] 13. Build technical SEO health dashboard
+- [x] 13.1 Create CLI tool for technical SEO audit
+  - Add `npm run seo:health-check` command
+  - Run broken link detection
+  - Run canonical validation
+  - Run redirect analysis
+  - Run sitemap validation
+  - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 9.1, 9.2, 9.3, 9.4, 9.5, 11.1, 11.2, 11.3, 11.4, 11.5_
+
+- [x] 13.2 Generate comprehensive health report
+  - Calculate overall health score
+  - Summarize issues by severity
+  - List all broken links with sources
+  - List all canonical issues
+  - List all redirect chains
+  - List all sitemap problems
+  - Export as JSON and HTML
+  - _Requirements: 8.4, 9.1, 9.2, 9.3, 9.4, 9.5, 11.5_
+
+- [x] 13.3 Integrate with build process
+  - Run health check during `npm run build`
+  - Fail build if critical issues found (broken links, canonical errors)
+  - Generate report in `reports/` directory
+  - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 9.1, 9.2, 9.3, 9.4, 9.5_
+
+- [x] 13.4 Add automated fix application
+  - Create `npm run seo:fix` command
+  - Apply suggested fixes for broken links
+  - Update canonical tags
+  - Optimize redirect chains
+  - Clean up sitemap
+  - _Requirements: 8.3, 9.2, 11.3_
+
+- [x] 14. Create documentation
   - Document keyword optimization process
   - Provide SEO best practices guide
-  - Create troubleshooting documentation
+  - Document technical SEO health check workflow
+  - Create troubleshooting guide for common issues
   - _Requirements: All_

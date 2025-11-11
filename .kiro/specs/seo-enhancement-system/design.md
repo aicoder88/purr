@@ -25,6 +25,10 @@ The SEO Enhancement System automates SEO optimization tasks including keyword su
 │  │   Sitemap    │  │   Internal   │  │  SEO Audit   │     │
 │  │  Generator   │  │   Linking    │  │   Engine     │     │
 │  └──────────────┘  └──────────────┘  └──────────────┘     │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │ Broken Link  │  │  Canonical   │  │  Redirect    │     │
+│  │  Detector    │  │  Validator   │  │  Analyzer    │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
 └────────────────────────┬────────────────────────────────────┘
                          │
                          ▼
@@ -333,6 +337,446 @@ class SEOAuditEngine {
 }
 ```
 
+### 7. Broken Link Detector
+
+**Purpose**: Identify and report broken internal and external links
+
+**Interface**:
+```typescript
+interface BrokenLink {
+  sourceUrl: string;
+  targetUrl: string;
+  statusCode: number;
+  linkText: string;
+  linkType: 'internal' | 'external';
+  suggestedFix?: string;
+}
+
+interface LinkCheckResult {
+  totalLinks: number;
+  brokenLinks: BrokenLink[];
+  redirects: BrokenLink[];
+  validLinks: number;
+}
+
+class BrokenLinkDetector {
+  async crawlSite(baseUrl: string): Promise<LinkCheckResult>;
+  async checkUrl(url: string): Promise<{ statusCode: number; finalUrl: string }>;
+  async findBrokenLinks(): Promise<BrokenLink[]>;
+  async suggestReplacement(brokenUrl: string): Promise<string | null>;
+  async validateSitemapUrls(sitemapUrl: string): Promise<BrokenLink[]>;
+}
+```
+
+**Implementation**:
+```typescript
+import axios from 'axios';
+import cheerio from 'cheerio';
+
+class BrokenLinkDetector {
+  private visited = new Set<string>();
+  private brokenLinks: BrokenLink[] = [];
+  
+  async crawlSite(baseUrl: string): Promise<LinkCheckResult> {
+    const queue = [baseUrl];
+    const allLinks: string[] = [];
+    
+    while (queue.length > 0) {
+      const url = queue.shift()!;
+      if (this.visited.has(url)) continue;
+      this.visited.add(url);
+      
+      try {
+        const response = await axios.get(url, { 
+          maxRedirects: 0,
+          validateStatus: () => true 
+        });
+        
+        if (response.status === 200) {
+          const $ = cheerio.load(response.data);
+          
+          // Extract all links
+          $('a[href]').each((_, el) => {
+            const href = $(el).attr('href');
+            if (href) {
+              const absoluteUrl = new URL(href, url).href;
+              allLinks.push(absoluteUrl);
+              
+              // Add internal links to queue
+              if (absoluteUrl.startsWith(baseUrl)) {
+                queue.push(absoluteUrl);
+              }
+            }
+          });
+        }
+      } catch (error) {
+        console.error(`Error crawling ${url}:`, error);
+      }
+    }
+    
+    // Check all found links
+    for (const link of allLinks) {
+      const result = await this.checkUrl(link);
+      if (result.statusCode >= 400) {
+        this.brokenLinks.push({
+          sourceUrl: '', // Will be filled by caller
+          targetUrl: link,
+          statusCode: result.statusCode,
+          linkText: '',
+          linkType: link.startsWith(baseUrl) ? 'internal' : 'external'
+        });
+      }
+    }
+    
+    return {
+      totalLinks: allLinks.length,
+      brokenLinks: this.brokenLinks,
+      redirects: this.brokenLinks.filter(l => l.statusCode >= 300 && l.statusCode < 400),
+      validLinks: allLinks.length - this.brokenLinks.length
+    };
+  }
+  
+  async checkUrl(url: string): Promise<{ statusCode: number; finalUrl: string }> {
+    try {
+      const response = await axios.get(url, {
+        maxRedirects: 5,
+        validateStatus: () => true,
+        timeout: 10000
+      });
+      
+      return {
+        statusCode: response.status,
+        finalUrl: response.request.res.responseUrl || url
+      };
+    } catch (error) {
+      return { statusCode: 0, finalUrl: url };
+    }
+  }
+  
+  async suggestReplacement(brokenUrl: string): Promise<string | null> {
+    // Try common variations
+    const variations = [
+      brokenUrl.replace(/\/$/, ''), // Remove trailing slash
+      brokenUrl + '/', // Add trailing slash
+      brokenUrl.replace(/\.html$/, ''), // Remove .html
+      brokenUrl.toLowerCase() // Lowercase
+    ];
+    
+    for (const variant of variations) {
+      const result = await this.checkUrl(variant);
+      if (result.statusCode === 200) {
+        return variant;
+      }
+    }
+    
+    return null;
+  }
+}
+```
+
+### 8. Canonical Validator
+
+**Purpose**: Ensure canonical URLs are valid and don't point to redirects
+
+**Interface**:
+```typescript
+interface CanonicalIssue {
+  pageUrl: string;
+  canonicalUrl: string;
+  issueType: 'points-to-redirect' | 'missing' | 'conflict' | 'invalid-protocol' | 'self-reference-mismatch';
+  statusCode?: number;
+  finalUrl?: string;
+  suggestion: string;
+}
+
+class CanonicalValidator {
+  async validateCanonicals(siteUrl: string): Promise<CanonicalIssue[]>;
+  async checkCanonicalUrl(pageUrl: string, canonicalUrl: string): Promise<CanonicalIssue | null>;
+  async findCanonicalConflicts(): Promise<CanonicalIssue[]>;
+  async fixCanonicalUrl(pageUrl: string, correctCanonical: string): Promise<void>;
+}
+```
+
+**Implementation**:
+```typescript
+import axios from 'axios';
+import cheerio from 'cheerio';
+
+class CanonicalValidator {
+  async validateCanonicals(siteUrl: string): Promise<CanonicalIssue[]> {
+    const issues: CanonicalIssue[] = [];
+    const pages = await this.getAllPages(siteUrl);
+    
+    for (const pageUrl of pages) {
+      try {
+        const response = await axios.get(pageUrl);
+        const $ = cheerio.load(response.data);
+        const canonicalUrl = $('link[rel="canonical"]').attr('href');
+        
+        if (!canonicalUrl) {
+          issues.push({
+            pageUrl,
+            canonicalUrl: '',
+            issueType: 'missing',
+            suggestion: `Add canonical tag: <link rel="canonical" href="${pageUrl}" />`
+          });
+          continue;
+        }
+        
+        // Check if canonical points to redirect
+        const canonicalCheck = await axios.get(canonicalUrl, {
+          maxRedirects: 0,
+          validateStatus: () => true
+        });
+        
+        if (canonicalCheck.status >= 300 && canonicalCheck.status < 400) {
+          const finalUrl = canonicalCheck.headers.location;
+          issues.push({
+            pageUrl,
+            canonicalUrl,
+            issueType: 'points-to-redirect',
+            statusCode: canonicalCheck.status,
+            finalUrl,
+            suggestion: `Update canonical to point directly to ${finalUrl}`
+          });
+        }
+        
+        // Check protocol
+        if (canonicalUrl.startsWith('http://')) {
+          issues.push({
+            pageUrl,
+            canonicalUrl,
+            issueType: 'invalid-protocol',
+            suggestion: `Update canonical to use https:// instead of http://`
+          });
+        }
+        
+        // Check self-reference
+        if (pageUrl === canonicalUrl) {
+          const normalizedPage = this.normalizeUrl(pageUrl);
+          const normalizedCanonical = this.normalizeUrl(canonicalUrl);
+          
+          if (normalizedPage !== normalizedCanonical) {
+            issues.push({
+              pageUrl,
+              canonicalUrl,
+              issueType: 'self-reference-mismatch',
+              suggestion: `Ensure canonical exactly matches page URL: ${normalizedPage}`
+            });
+          }
+        }
+      } catch (error) {
+        console.error(`Error validating canonical for ${pageUrl}:`, error);
+      }
+    }
+    
+    return issues;
+  }
+  
+  private normalizeUrl(url: string): string {
+    return url.toLowerCase().replace(/\/$/, '');
+  }
+  
+  private async getAllPages(siteUrl: string): Promise<string[]> {
+    // Fetch from sitemap
+    const sitemapUrl = `${siteUrl}/sitemap.xml`;
+    const response = await axios.get(sitemapUrl);
+    const $ = cheerio.load(response.data, { xmlMode: true });
+    
+    const urls: string[] = [];
+    $('url > loc').each((_, el) => {
+      urls.push($(el).text());
+    });
+    
+    return urls;
+  }
+}
+```
+
+### 9. Redirect Analyzer
+
+**Purpose**: Detect and optimize redirect chains
+
+**Interface**:
+```typescript
+interface RedirectChain {
+  startUrl: string;
+  chain: RedirectHop[];
+  finalUrl: string;
+  totalHops: number;
+  suggestion: string;
+}
+
+interface RedirectHop {
+  url: string;
+  statusCode: number;
+  redirectType: 'permanent' | 'temporary';
+}
+
+class RedirectAnalyzer {
+  async analyzeRedirects(siteUrl: string): Promise<RedirectChain[]>;
+  async followRedirectChain(url: string): Promise<RedirectChain>;
+  async findTemporaryRedirects(): Promise<RedirectHop[]>;
+  async generateRedirectMap(): Promise<Map<string, string>>;
+}
+```
+
+**Implementation**:
+```typescript
+import axios from 'axios';
+
+class RedirectAnalyzer {
+  async followRedirectChain(url: string): Promise<RedirectChain> {
+    const chain: RedirectHop[] = [];
+    let currentUrl = url;
+    let hops = 0;
+    const maxHops = 10;
+    
+    while (hops < maxHops) {
+      try {
+        const response = await axios.get(currentUrl, {
+          maxRedirects: 0,
+          validateStatus: () => true
+        });
+        
+        if (response.status >= 300 && response.status < 400) {
+          const redirectType = [301, 308].includes(response.status) ? 'permanent' : 'temporary';
+          
+          chain.push({
+            url: currentUrl,
+            statusCode: response.status,
+            redirectType
+          });
+          
+          currentUrl = response.headers.location;
+          hops++;
+        } else {
+          // Reached final destination
+          break;
+        }
+      } catch (error) {
+        break;
+      }
+    }
+    
+    const suggestion = chain.length > 1 
+      ? `Update ${url} to redirect directly to ${currentUrl} (currently ${chain.length} hops)`
+      : chain.length === 1 && chain[0].redirectType === 'temporary'
+      ? `Change redirect from ${chain[0].statusCode} to 301 (permanent)`
+      : 'No issues';
+    
+    return {
+      startUrl: url,
+      chain,
+      finalUrl: currentUrl,
+      totalHops: chain.length,
+      suggestion
+    };
+  }
+  
+  async analyzeRedirects(siteUrl: string): Promise<RedirectChain[]> {
+    const pages = await this.getAllPages(siteUrl);
+    const chains: RedirectChain[] = [];
+    
+    for (const page of pages) {
+      const chain = await this.followRedirectChain(page);
+      if (chain.totalHops > 0) {
+        chains.push(chain);
+      }
+    }
+    
+    return chains;
+  }
+  
+  private async getAllPages(siteUrl: string): Promise<string[]> {
+    // Implementation similar to CanonicalValidator
+    return [];
+  }
+}
+```
+
+## Technical SEO Workflow
+
+### Automated Link Health Check
+
+```typescript
+// Run during build or as scheduled task
+async function checkLinkHealth() {
+  const detector = new BrokenLinkDetector();
+  const validator = new CanonicalValidator();
+  const analyzer = new RedirectAnalyzer();
+  
+  // 1. Find broken links
+  const brokenLinks = await detector.findBrokenLinks();
+  console.log(`Found ${brokenLinks.length} broken links`);
+  
+  // 2. Validate canonicals
+  const canonicalIssues = await validator.validateCanonicals('https://purrify.ca');
+  console.log(`Found ${canonicalIssues.length} canonical issues`);
+  
+  // 3. Analyze redirects
+  const redirectChains = await analyzer.analyzeRedirects('https://purrify.ca');
+  const problematicChains = redirectChains.filter(c => c.totalHops > 1);
+  console.log(`Found ${problematicChains.length} redirect chains`);
+  
+  // 4. Generate report
+  const report = {
+    timestamp: new Date().toISOString(),
+    brokenLinks,
+    canonicalIssues,
+    redirectChains: problematicChains
+  };
+  
+  // 5. Fail build if critical issues
+  if (brokenLinks.length > 0 || canonicalIssues.length > 0) {
+    console.error('Critical SEO issues found!');
+    process.exit(1);
+  }
+  
+  return report;
+}
+```
+
+### Sitemap Cleanup Process
+
+```typescript
+async function cleanupSitemap() {
+  const detector = new BrokenLinkDetector();
+  const validator = new CanonicalValidator();
+  
+  // 1. Load current sitemap
+  const sitemap = await loadSitemap('public/sitemap.xml');
+  
+  // 2. Validate each URL
+  const validUrls: string[] = [];
+  const invalidUrls: string[] = [];
+  
+  for (const url of sitemap.urls) {
+    const result = await detector.checkUrl(url);
+    
+    // Only include 200 OK responses
+    if (result.statusCode === 200) {
+      // Check if it's the canonical version
+      const canonical = await getCanonicalUrl(url);
+      if (canonical === url) {
+        validUrls.push(url);
+      } else {
+        invalidUrls.push(url);
+        console.log(`Removing non-canonical URL: ${url} (canonical: ${canonical})`);
+      }
+    } else {
+      invalidUrls.push(url);
+      console.log(`Removing invalid URL: ${url} (status: ${result.statusCode})`);
+    }
+  }
+  
+  // 3. Generate clean sitemap
+  await generateSitemap(validUrls);
+  
+  console.log(`Sitemap cleaned: ${validUrls.length} valid, ${invalidUrls.length} removed`);
+}
+```
+
 ## Data Models
 
 ### SEO Audit Report Schema
@@ -362,6 +806,75 @@ class SEOAuditEngine {
       "currentRank": null,
       "difficulty": "low",
       "recommendation": "Add to title and first paragraph"
+    }
+  ]
+}
+```
+
+### Technical SEO Health Report Schema
+
+```json
+{
+  "timestamp": "2025-11-11T12:00:00.000Z",
+  "summary": {
+    "totalUrls": 267,
+    "brokenLinks": 197,
+    "canonicalIssues": 48,
+    "redirectChains": 15,
+    "sitemapIssues": 40,
+    "healthScore": 42
+  },
+  "brokenLinks": [
+    {
+      "sourceUrl": "/blog/cat-litter-guide",
+      "targetUrl": "/products/old-product",
+      "statusCode": 404,
+      "linkText": "View Product",
+      "linkType": "internal",
+      "suggestedFix": "/products/standard"
+    }
+  ],
+  "canonicalIssues": [
+    {
+      "pageUrl": "/products/trial-size",
+      "canonicalUrl": "/products/trial",
+      "issueType": "points-to-redirect",
+      "statusCode": 301,
+      "finalUrl": "/products/trial-size",
+      "suggestion": "Update canonical to point directly to /products/trial-size"
+    }
+  ],
+  "redirectChains": [
+    {
+      "startUrl": "/old-page",
+      "chain": [
+        {
+          "url": "/old-page",
+          "statusCode": 301,
+          "redirectType": "permanent"
+        },
+        {
+          "url": "/temp-page",
+          "statusCode": 301,
+          "redirectType": "permanent"
+        }
+      ],
+      "finalUrl": "/new-page",
+      "totalHops": 2,
+      "suggestion": "Update /old-page to redirect directly to /new-page"
+    }
+  ],
+  "sitemapIssues": [
+    {
+      "url": "/products/discontinued",
+      "issue": "returns-404",
+      "action": "remove-from-sitemap"
+    },
+    {
+      "url": "/blog/draft-post",
+      "issue": "non-canonical",
+      "canonicalUrl": "/blog/published-post",
+      "action": "replace-with-canonical"
     }
   ]
 }
