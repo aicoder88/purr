@@ -36,7 +36,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [scheduledDate, setScheduledDate] = useState<string>('');
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showAIGenerator, setShowAIGenerator] = useState(false);
-  const [showAIGenerator, setShowAIGenerator] = useState(false);
 
   // Enhanced auto-save with visual feedback
   const performAutoSave = useCallback(async () => {
@@ -536,7 +535,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
                 {seoScore.suggestions.length > 0 && (
                   <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                     {seoScore.suggestions.slice(0, 3).map((suggestion, i) => (
-                      <p key={i}>• {suggestion}</p>
+                      <p key={i}>• {suggestion.message}</p>
                     ))}
                   </div>
                 )}
