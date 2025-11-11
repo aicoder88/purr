@@ -11,7 +11,36 @@ export interface SEOScore {
     images: number;
     links: number;
   };
-  suggestions: string[];
+  suggestions: SEOSuggestion[];
+  internalLinkSuggestions?: InternalLinkSuggestion[];
+  keywordCannibalization?: KeywordCannibalization[];
+}
+
+export interface SEOSuggestion {
+  category: 'title' | 'description' | 'keywords' | 'headings' | 'content' | 'images' | 'links';
+  priority: 'high' | 'medium' | 'low';
+  message: string;
+  autoFixable: boolean;
+  autoFixAction?: string;
+}
+
+export interface InternalLinkSuggestion {
+  anchor: string;
+  suggestedPost: {
+    slug: string;
+    title: string;
+    relevanceScore: number;
+  };
+  context: string;
+}
+
+export interface KeywordCannibalization {
+  keyword: string;
+  competingPosts: Array<{
+    slug: string;
+    title: string;
+    score: number;
+  }>;
 }
 
 export class SEOScorer {
@@ -332,7 +361,7 @@ export class SEOScorer {
   /**
    * Generate actionable suggestions based on scores
    */
-  private generateSuggestions(breakdown: SEOScore['breakdown'], post: BlogPost): string[] {
+  private generateSuggestions(breakdown: SEOScore['breakdown'], post: BlogPost): SEOSuggestion[] {
     const suggestions: string[] = [];
 
     if (breakdown.title < 70) {
@@ -395,6 +424,264 @@ export class SEOScorer {
       suggestions.push('Consider adding 1-2 external links to authoritative sources');
     }
 
+    return suggestions.map(msg => ({
+      category: this.categorizeSuggestion(msg),
+      priority: this.prioritizeSuggestion(msg),
+      message: msg,
+      autoFixable: this.isAutoFixable(msg),
+      autoFixAction: this.getAutoFixAction(msg)
+    }));
+  }
+
+  /**
+   * Categorize suggestion by type
+   */
+  private categorizeSuggestion(message: string): SEOSuggestion['category'] {
+    if (message.toLowerCase().includes('title')) return 'title';
+    if (message.toLowerCase().includes('description')) return 'description';
+    if (message.toLowerCase().includes('keyword')) return 'keywords';
+    if (message.toLowerCase().includes('heading')) return 'headings';
+    if (message.toLowerCase().includes('image') || message.toLowerCase().includes('alt')) return 'images';
+    if (message.toLowerCase().includes('link')) return 'links';
+    return 'content';
+  }
+
+  /**
+   * Prioritize suggestion based on impact
+   */
+  private prioritizeSuggestion(message: string): SEOSuggestion['priority'] {
+    const highPriority = ['title', 'keyword', 'meta description'];
+    const lowPriority = ['consider', 'try', 'might'];
+    
+    if (highPriority.some(word => message.toLowerCase().includes(word))) {
+      return 'high';
+    }
+    if (lowPriority.some(word => message.toLowerCase().includes(word))) {
+      return 'low';
+    }
+    return 'medium';
+  }
+
+  /**
+   * Check if suggestion can be auto-fixed
+   */
+  private isAutoFixable(message: string): boolean {
+    const autoFixablePatterns = [
+      'add alt text',
+      'add more keywords',
+      'add internal links',
+      'add meta description'
+    ];
+    return autoFixablePatterns.some(pattern => 
+      message.toLowerCase().includes(pattern)
+    );
+  }
+
+  /**
+   * Get auto-fix action identifier
+   */
+  private getAutoFixAction(message: string): string | undefined {
+    if (message.toLowerCase().includes('alt text')) return 'generate-alt-text';
+    if (message.toLowerCase().includes('internal links')) return 'suggest-internal-links';
+    if (message.toLowerCase().includes('meta description')) return 'generate-meta-description';
+    if (message.toLowerCase().includes('title')) return 'optimize-title';
+    return undefined;
+  }
+
+  /**
+   * Suggest internal links based on content analysis
+   */
+  async suggestInternalLinks(
+    currentPost: BlogPost,
+    allPosts: BlogPost[]
+  ): Promise<InternalLinkSuggestion[]> {
+    const suggestions: InternalLinkSuggestion[] = [];
+    const content = currentPost.content.toLowerCase();
+    const words = content.split(/\s+/);
+
+    // Find relevant posts based on keyword overlap
+    const relevantPosts = allPosts
+      .filter(post => post.slug !== currentPost.slug && post.status === 'published')
+      .map(post => {
+        const postKeywords = post.seo.keywords.map(k => k.toLowerCase());
+        const currentKeywords = currentPost.seo.keywords.map(k => k.toLowerCase());
+        
+        // Calculate relevance score
+        const commonKeywords = postKeywords.filter(k => currentKeywords.includes(k));
+        const relevanceScore = commonKeywords.length / Math.max(postKeywords.length, 1);
+        
+        return {
+          post,
+          relevanceScore,
+          commonKeywords
+        };
+      })
+      .filter(item => item.relevanceScore > 0.2)
+      .sort((a, b) => b.relevanceScore - a.relevanceScore)
+      .slice(0, 5);
+
+    // Generate link suggestions
+    for (const { post, relevanceScore, commonKeywords } of relevantPosts) {
+      // Find good anchor text opportunities
+      for (const keyword of commonKeywords) {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'i');
+        const match = content.match(regex);
+        
+        if (match && match.index !== undefined) {
+          const contextStart = Math.max(0, match.index - 50);
+          const contextEnd = Math.min(content.length, match.index + keyword.length + 50);
+          const context = content.substring(contextStart, contextEnd);
+          
+          suggestions.push({
+            anchor: keyword,
+            suggestedPost: {
+              slug: post.slug,
+              title: post.title,
+              relevanceScore
+            },
+            context: '...' + context + '...'
+          });
+          
+          break; // One suggestion per post
+        }
+      }
+    }
+
     return suggestions;
+  }
+
+  /**
+   * Check for keyword cannibalization
+   */
+  async checkKeywordCannibalization(
+    currentPost: BlogPost,
+    allPosts: BlogPost[]
+  ): Promise<KeywordCannibalization[]> {
+    const cannibalization: KeywordCannibalization[] = [];
+    
+    for (const keyword of currentPost.seo.keywords) {
+      const competingPosts = allPosts
+        .filter(post => 
+          post.slug !== currentPost.slug &&
+          post.status === 'published' &&
+          post.seo.keywords.some(k => k.toLowerCase() === keyword.toLowerCase())
+        )
+        .map(post => {
+          // Calculate how strongly this post targets the keyword
+          const titleMatch = post.title.toLowerCase().includes(keyword.toLowerCase());
+          const contentMatches = (post.content.toLowerCase().match(new RegExp(keyword.toLowerCase(), 'g')) || []).length;
+          const score = (titleMatch ? 50 : 0) + Math.min(contentMatches * 5, 50);
+          
+          return {
+            slug: post.slug,
+            title: post.title,
+            score
+          };
+        })
+        .filter(post => post.score > 30)
+        .sort((a, b) => b.score - a.score);
+
+      if (competingPosts.length > 0) {
+        cannibalization.push({
+          keyword,
+          competingPosts
+        });
+      }
+    }
+
+    return cannibalization;
+  }
+
+  /**
+   * Generate alt text for images using AI
+   */
+  async generateAltText(imageUrl: string, context: string): Promise<string> {
+    // Extract topic from context
+    const words = context.split(/\s+/).slice(0, 20).join(' ');
+    
+    // Simple alt text generation (can be enhanced with AI)
+    const filename = imageUrl.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image';
+    const cleanFilename = filename.replace(/[-_]/g, ' ');
+    
+    return `${cleanFilename} - ${words.substring(0, 50)}`;
+  }
+
+  /**
+   * Auto-generate meta description from content
+   */
+  generateMetaDescription(content: string, keywords: string[]): string {
+    // Remove HTML tags
+    const text = content.replace(/<[^>]*>/g, ' ').trim();
+    
+    // Find first paragraph that contains a keyword
+    const paragraphs = text.split(/\n\n+/);
+    let bestParagraph = paragraphs[0];
+    
+    for (const para of paragraphs) {
+      if (keywords.some(k => para.toLowerCase().includes(k.toLowerCase()))) {
+        bestParagraph = para;
+        break;
+      }
+    }
+    
+    // Trim to 150-160 characters
+    let description = bestParagraph.substring(0, 157).trim();
+    
+    // End at last complete word
+    const lastSpace = description.lastIndexOf(' ');
+    if (lastSpace > 140) {
+      description = description.substring(0, lastSpace);
+    }
+    
+    return description + '...';
+  }
+
+  /**
+   * Optimize title for SEO
+   */
+  optimizeTitle(title: string, keywords: string[]): string {
+    let optimized = title;
+    
+    // Ensure main keyword is present
+    const mainKeyword = keywords[0];
+    if (mainKeyword && !title.toLowerCase().includes(mainKeyword.toLowerCase())) {
+      optimized = `${mainKeyword}: ${title}`;
+    }
+    
+    // Trim to ideal length (50-60 chars)
+    if (optimized.length > 60) {
+      optimized = optimized.substring(0, 57) + '...';
+    }
+    
+    return optimized;
+  }
+
+  /**
+   * Validate schema markup
+   */
+  validateSchema(post: BlogPost): { valid: boolean; errors: string[] } {
+    const errors: string[] = [];
+    
+    // Check required fields for Article schema
+    if (!post.title) errors.push('Missing title');
+    if (!post.excerpt) errors.push('Missing excerpt/description');
+    if (!post.author.name) errors.push('Missing author name');
+    if (!post.publishDate) errors.push('Missing publish date');
+    if (!post.featuredImage.url) errors.push('Missing featured image');
+    
+    // Check image requirements
+    if (post.featuredImage.url) {
+      if (!post.featuredImage.width || !post.featuredImage.height) {
+        errors.push('Featured image missing dimensions');
+      }
+      if (post.featuredImage.width < 1200) {
+        errors.push('Featured image should be at least 1200px wide');
+      }
+    }
+    
+    return {
+      valid: errors.length === 0,
+      errors
+    };
   }
 }
