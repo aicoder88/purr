@@ -121,13 +121,13 @@ export class ContentStore {
         slug: post.slug,
         locale: post.locale || 'en',
         title: post.title,
-        author: post.author || 'Purrify Research Lab',
+        author: typeof post.author === 'string' ? post.author : post.author.name,
         excerpt: post.excerpt || '',
         content: post.content,
-        heroImageUrl: post.featuredImage || '',
-        heroImageAlt: post.title,
+        heroImageUrl: typeof post.featuredImage === 'string' ? post.featuredImage : post.featuredImage.url,
+        heroImageAlt: typeof post.featuredImage === 'string' ? post.title : post.featuredImage.alt,
         keywords: post.tags || [],
-        metaDescription: post.seoDescription || post.excerpt || null,
+        metaDescription: post.seo?.description || post.excerpt || null,
         wordCount: Math.ceil((post.content?.length || 0) / 5), // Rough estimate
         status: post.status.toUpperCase() as any,
         scheduledFor: post.scheduledDate ? new Date(post.scheduledDate) : null,
@@ -171,9 +171,12 @@ export class ContentStore {
       });
 
       return categories.map(cat => ({
+        id: cat.id,
         slug: cat.slug,
         name: cat.name,
-        description: cat.description || undefined
+        description: cat.description || '',
+        parent: null,
+        translations: {}
       }));
     } catch (error) {
       console.error('Error reading categories:', error);
@@ -191,8 +194,10 @@ export class ContentStore {
       });
 
       return tags.map(tag => ({
+        id: tag.id,
         slug: tag.slug,
-        name: tag.name
+        name: tag.name,
+        translations: {}
       }));
     } catch (error) {
       console.error('Error reading tags:', error);
@@ -246,24 +251,37 @@ export class ContentStore {
    */
   private mapToPost(dbPost: any): BlogPost {
     return {
+      id: dbPost.id,
       slug: dbPost.slug,
       locale: dbPost.locale || 'en',
       title: dbPost.title,
-      excerpt: dbPost.excerpt || undefined,
+      excerpt: dbPost.excerpt || '',
       content: dbPost.content,
-      featuredImage: dbPost.heroImageUrl || undefined,
-      author: dbPost.author || 'Purrify Research Lab',
+      author: {
+        name: dbPost.author || 'Purrify Research Lab',
+        avatar: undefined
+      },
+      featuredImage: {
+        url: dbPost.heroImageUrl || '',
+        alt: dbPost.heroImageAlt || dbPost.title,
+        width: 1200,
+        height: 630
+      },
       publishDate: (dbPost.publishedAt || dbPost.createdAt).toISOString(),
       modifiedDate: dbPost.updatedAt.toISOString(),
-      status: dbPost.status.toLowerCase(),
+      status: dbPost.status.toLowerCase() as 'draft' | 'scheduled' | 'published',
       scheduledDate: dbPost.scheduledFor?.toISOString(),
       categories: [], // Not in current schema
       tags: dbPost.keywords || [],
-      seoTitle: dbPost.title,
-      seoDescription: dbPost.metaDescription || undefined,
-      seoKeywords: dbPost.keywords || [],
-      readingTime: Math.ceil(dbPost.wordCount / 200) || undefined,
-      viewCount: 0 // Not tracked yet
+      translations: {},
+      seo: {
+        title: dbPost.title,
+        description: dbPost.metaDescription || dbPost.excerpt || '',
+        keywords: dbPost.keywords || [],
+        ogImage: dbPost.heroImageUrl,
+        canonical: undefined
+      },
+      readingTime: Math.ceil(dbPost.wordCount / 200) || 5
     };
   }
 }
