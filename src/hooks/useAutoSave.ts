@@ -19,15 +19,16 @@ export function useAutoSave({
     pendingChanges: false
   });
 
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const savedIndicatorTimeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const savedIndicatorTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const updateStatus = (status: AutoSaveStatus, error: string | null = null) => {
     setState(prev => ({
       ...prev,
       status,
       error,
-      lastSaved: status === 'saved' ? new Date() : prev.lastSaved
+      lastSaved: status === 'saved' ? new Date() : prev.lastSaved,
+      pendingChanges: prev.pendingChanges
     }));
 
     // Clear "saved" indicator after 3 seconds

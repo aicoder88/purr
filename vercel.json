@@ -8,6 +8,12 @@
     },
     "pages/api/webhooks/stripe.ts": {
       "maxDuration": 30
+    },
+    "pages/api/admin/blog/**/*.ts": {
+      "maxDuration": 30
+    },
+    "pages/api/cron/**/*.ts": {
+      "maxDuration": 60
     }
   },
   "headers": [
@@ -77,6 +83,23 @@
           "value": "public, max-age=86400"
         }
       ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
     }
   ],
   "rewrites": [
@@ -93,6 +116,14 @@
     {
       "path": "/api/cron/generate-blog-post",
       "schedule": "0 12 */3 * *"
+    },
+    {
+      "path": "/api/cron/publish-scheduled-posts",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/cleanup-old-revisions",
+      "schedule": "0 2 * * 0"
     }
   ]
 }

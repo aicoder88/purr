@@ -215,11 +215,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
     reactRemoveProperties: process.env.NODE_ENV === 'production',
-    // SWC minification for better performance
     styledComponents: false,
     emotion: false,
   },
-  swcMinify: true,
   typescript: {
     ignoreBuildErrors: process.env.CI === 'true' || process.env.VERCEL === '1',
     tsconfigPath: './tsconfig.json',

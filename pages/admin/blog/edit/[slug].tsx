@@ -462,7 +462,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
                 {seoScore.suggestions.length > 0 && (
                   <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                     {seoScore.suggestions.slice(0, 3).map((suggestion, i) => (
-                      <p key={i}>• {suggestion}</p>
+                      <p key={i}>• {typeof suggestion === 'string' ? suggestion : suggestion.message}</p>
                     ))}
                   </div>
                 )}

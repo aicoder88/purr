@@ -1,179 +1,280 @@
-# Deployment Checklist
+# Blog System Deployment Checklist
 
-## Pre-Deployment
+**Use this checklist to ensure a smooth deployment to production**
 
-### 1. Environment Variables
-Set these in Vercel project settings:
+## ✅ Pre-Deployment Completed
 
-```env
-# Required for AI Content Generation
-OPENAI_API_KEY=sk-...
-UNSPLASH_ACCESS_KEY=...
+The following tasks have been completed automatically:
 
-# Required for Automation
-CRON_SECRET=your-secure-random-string
-WEBHOOK_SECRET=your-secure-random-string
-ENABLE_CRON_AUTOMATION=true
-ENABLE_WEBHOOK_AUTOMATION=true
+- [x] Environment configuration system created
+- [x] Storage verification system created
+- [x] Health check API endpoint created
+- [x] Vercel.json updated with cron jobs
+- [x] Security headers configured
+- [x] TypeScript errors in new code fixed
+- [x] All new files validated
 
-# Required for Authentication
-NEXTAUTH_SECRET=your-secure-random-string
-NEXTAUTH_URL=https://purrify.ca
+## 📋 What You Need to Do
 
-# Optional: Database (if using)
-DATABASE_URL=postgresql://...
+### 1. Generate Secrets (5 minutes)
+
+Run these commands to generate secure secrets:
+
+```bash
+# Generate NEXTAUTH_SECRET
+openssl rand -base64 32
+
+# Generate CRON_SECRET  
+openssl rand -base64 32
 ```
 
-### 2. Local Testing
-- [ ] Run type check: `npm run check-types`
-- [ ] Run build: `npm run build`
-- [ ] Test locally: `npm run dev`
-- [ ] Visit blog: http://localhost:3000/blog
-- [ ] Visit a post: http://localhost:3000/blog/activated-carbon-litter-additive-benefits
-- [ ] Check admin: http://localhost:3000/admin/blog
+Save these values - you'll need them in the next step.
 
-### 3. Migration Verification
-- [ ] Verify all 14 posts migrated: `ls -la content/blog/en/`
-- [ ] Check backup exists: `ls -la pages/blog/archive/`
-- [ ] Review migration report: `docs/BLOG_MIGRATION_REPORT.md`
+### 2. Add Environment Variables to Vercel (10 minutes)
 
-## Deployment
+Go to: **Vercel Dashboard → Your Project → Settings → Environment Variables**
 
-### 4. Deploy to Vercel
+#### Required Variables
+
+Add these for all environments (Production, Preview, Development):
+
+```
+NEXTAUTH_SECRET=<paste-generated-secret-here>
+NEXTAUTH_URL=https://purrify.ca
+DATABASE_URL=<your-existing-postgresql-url>
+CRON_SECRET=<paste-generated-secret-here>
+```
+
+#### Optional Variables (Recommended)
+
+For AI content generation:
+```
+ANTHROPIC_API_KEY=<your-claude-api-key>
+```
+
+Get your Claude API key at: https://console.anthropic.com/
+
+For AI image generation:
+```
+FAL_API_KEY=<your-fal-api-key>
+```
+
+Get your fal.ai API key at: https://fal.ai/
+
+#### Optional Variables (Nice to Have)
+
+For real analytics (currently using mock data):
+```
+GA4_PROPERTY_ID=<your-ga4-property-id>
+GA4_CLIENT_EMAIL=<your-service-account-email>
+GA4_PRIVATE_KEY=<your-service-account-private-key>
+```
+
+For error monitoring:
+```
+SENTRY_DSN=<your-sentry-dsn>
+```
+
+For email alerts:
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=<your-email>
+SMTP_PASS=<your-app-password>
+ALERT_EMAIL=<admin-email>
+```
+
+### 3. Run Pre-Deployment Checks (5 minutes)
+
 ```bash
-# Build for production
+# Type check (should pass - pre-existing errors are okay)
+npm run check-types
+
+# Lint
+npm run lint
+
+# Build
 npm run build
 
-# Deploy
-vercel --prod
+# Test locally
+npm run start
+# Visit http://localhost:3000/admin/blog and test features
+```
 
-# Or push to main (auto-deploy)
+### 4. Deploy to Production (5 minutes)
+
+```bash
+# Commit all changes
+git add .
+git commit -m "feat: integrate blog system features for production deployment"
+
+# Push to trigger Vercel deployment
 git push origin main
 ```
 
-### 5. Post-Deployment Verification
-- [ ] Visit production site: https://purrify.ca
-- [ ] Check blog listing: https://purrify.ca/blog
-- [ ] Test a blog post: https://purrify.ca/blog/activated-carbon-litter-additive-benefits
-- [ ] Verify SEO metadata (view source)
-- [ ] Check structured data: [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [ ] Test category pages: https://purrify.ca/blog/category/odor-control
-- [ ] Test tag pages: https://purrify.ca/blog/tag/cat-litter-deodorizer
-
-### 6. Webhook Testing
-Test the webhook endpoint:
-
+Or deploy directly:
 ```bash
-# Test Generate Mode
-curl -X POST https://purrify.ca/api/webhooks/generate-blog-post \
-  -H "Content-Type: application/json" \
-  -d '{
-    "secret": "your-webhook-secret",
-    "mode": "generate",
-    "topic": "Test Blog Post - Delete Me",
-    "keywords": ["test"]
-  }'
-
-# Expected: 200 response with post URL
-# Then delete the test post from content/blog/en/
+vercel --prod
 ```
 
-### 7. Sitemap Update
-- [ ] Regenerate sitemap: `npm run generate-enhanced-sitemap`
-- [ ] Verify sitemap: https://purrify.ca/sitemap.xml
-- [ ] Check blog sitemap: https://purrify.ca/sitemap-blog.xml
-- [ ] Submit to Google Search Console
+### 5. Post-Deployment Verification (15 minutes)
 
-### 8. Make.com Setup
-- [ ] Create HTTP module in Make.com
-- [ ] Configure webhook URL
-- [ ] Add authentication (secret)
-- [ ] Test with manual trigger
-- [ ] Verify post appears on site
-- [ ] Enable automation
+#### Basic Smoke Tests
 
-## Monitoring
+1. **Visit Site**: https://purrify.ca
+   - [ ] Site loads successfully
+   - [ ] No console errors
 
-### 9. Analytics Setup
-- [ ] Verify Google Analytics tracking
-- [ ] Check Google Search Console
-- [ ] Monitor Vercel function logs
-- [ ] Set up error alerts
+2. **Login to Admin**: https://purrify.ca/admin/blog
+   - [ ] Can login successfully
+   - [ ] Admin dashboard loads
 
-### 10. Performance Check
-- [ ] Run Lighthouse audit
-- [ ] Check Core Web Vitals
-- [ ] Verify image optimization
-- [ ] Test page load speed
+3. **Create Test Post**:
+   - [ ] Click "New Post"
+   - [ ] Add title: "Test Post - Delete Me"
+   - [ ] Add content with formatting
+   - [ ] Wait 30 seconds for auto-save
+   - [ ] Verify "Saved at HH:MM:SS" appears
+   - [ ] Click "Publish"
+   - [ ] Post appears in list
 
-## Post-Launch
+4. **Test Media Library**:
+   - [ ] Click "Media" tab
+   - [ ] Images load in grid view
+   - [ ] Can search for images
+   - [ ] Click image to see usage info
 
-### 11. Content Verification (First 24 Hours)
-- [ ] Monitor first automated post (cron)
-- [ ] Check for any errors in logs
-- [ ] Verify SEO metadata
-- [ ] Check social media sharing
-- [ ] Test internal links
+5. **Test Bulk Operations**:
+   - [ ] Select 2-3 posts with checkboxes
+   - [ ] Click "Change Status" dropdown
+   - [ ] Select "Draft"
+   - [ ] Click "Apply"
+   - [ ] Verify success message
+   - [ ] Posts updated to draft
 
-### 12. Backup & Rollback Plan
-- [ ] Original files backed up: `pages/blog/archive/`
-- [ ] Git history available for rollback
-- [ ] Document rollback procedure
-- [ ] Keep backup for 30 days
+6. **Test Scheduling**:
+   - [ ] Click "Schedule" tab
+   - [ ] Calendar loads
+   - [ ] Can see scheduled posts (if any)
 
-### 13. Documentation Review
-- [ ] Team knows how to use webhook
-- [ ] Make.com scenario documented
-- [ ] Environment variables documented
-- [ ] Troubleshooting guide available
+7. **Test Analytics**:
+   - [ ] Click "Analytics" tab
+   - [ ] Dashboard loads with metrics
+   - [ ] Can change date range
+   - [ ] Can export CSV
 
-## Success Criteria
+#### Verify Cron Jobs
 
-✅ All blog posts accessible  
-✅ SEO metadata correct  
-✅ Images loading properly  
-✅ Webhook responding correctly  
-✅ No TypeScript errors  
-✅ No console errors  
-✅ Lighthouse score > 90  
-✅ Sitemap updated  
-✅ Search Console verified  
+In Vercel Dashboard:
+1. Go to **Cron Jobs** section
+2. Verify 3 cron jobs are listed:
+   - [ ] `generate-blog-post` (every 3 days at noon)
+   - [ ] `publish-scheduled-posts` (every hour)
+   - [ ] `cleanup-old-revisions` (weekly on Sunday at 2am)
+3. Check execution logs
+4. Manually trigger one to test
 
-## Rollback Procedure
+#### Check Logs
 
-If issues are discovered:
+In Vercel Dashboard → Logs:
+1. Filter by "Error"
+2. [ ] No critical errors
+3. [ ] Function execution times reasonable
+4. [ ] No timeout errors
 
-1. **Immediate**: Disable webhook automation
-   ```env
-   ENABLE_WEBHOOK_AUTOMATION=false
-   ```
+#### Test Health Endpoint
 
-2. **If needed**: Restore old blog files
-   ```bash
-   cp pages/blog/archive/*.tsx pages/blog/
-   git add pages/blog/*.tsx
-   git commit -m "Rollback: restore original blog files"
-   git push origin main
-   ```
+```bash
+curl https://purrify.ca/api/health/storage
+```
 
-3. **Investigate**: Check logs and fix issues
+Should return:
+```json
+{
+  "status": "healthy",
+  "timestamp": "...",
+  "checks": {
+    "directories": { "status": "ok", ... },
+    "fileOperations": { "status": "ok", ... },
+    "jsonFiles": { "status": "ok", ... }
+  }
+}
+```
 
-4. **Re-deploy**: Once fixed, deploy again
+### 6. Monitor for 24 Hours
 
-## Support Contacts
+- [ ] Check error rates in Vercel dashboard
+- [ ] Monitor performance metrics
+- [ ] Verify cron jobs execute on schedule
+- [ ] Respond to any issues immediately
 
-- **Vercel Support**: https://vercel.com/support
-- **Make.com Support**: https://www.make.com/en/help
-- **Documentation**: `docs/` folder
+## 🚨 Rollback Procedure
 
-## Notes
+If critical issues occur:
 
-- Keep this checklist updated
-- Document any issues encountered
-- Share learnings with team
-- Update environment variables as needed
+1. **Immediate Rollback**:
+   - Go to Vercel Dashboard
+   - Click "Deployments" tab
+   - Find previous stable deployment
+   - Click "..." menu → "Promote to Production"
+
+2. **Verify Rollback**:
+   - Check site is accessible
+   - Test critical features
+   - Monitor error rates
+
+3. **Investigate**:
+   - Review deployment logs
+   - Check error reports
+   - Identify root cause
+
+4. **Fix and Redeploy**:
+   - Fix issues in development
+   - Test thoroughly
+   - Deploy again
+
+## 📊 Success Criteria
+
+After deployment, verify:
+
+- [ ] Site loads in < 2 seconds
+- [ ] Admin dashboard accessible
+- [ ] Can create/edit posts
+- [ ] Auto-save works within 30 seconds
+- [ ] Media library displays images
+- [ ] Bulk operations complete successfully
+- [ ] Cron jobs execute on schedule
+- [ ] No errors in Vercel logs
+- [ ] Performance metrics acceptable
+
+## 🎉 Post-Launch
+
+After successful deployment:
+
+1. **Announce to Team**: Let everyone know the new features are live
+2. **User Training**: Share user guides with content creators
+3. **Monitor Closely**: Watch for 24-48 hours
+4. **Collect Feedback**: Gather user feedback on new features
+5. **Iterate**: Plan improvements based on usage
+
+## 📚 Documentation References
+
+- **Quick Guide**: `docs/BLOG_INTEGRATION_DEPLOYMENT_GUIDE.md`
+- **Status Report**: `docs/BLOG_SYSTEM_STATUS.md`
+- **Roadmap**: `docs/DEPLOYMENT_ROADMAP.md`
+- **Full Spec**: `.kiro/specs/blog-system-integration-deployment/`
+- **AI Setup**: `docs/BLOG_AI_API_SETUP.md`
+- **Vercel Setup**: `docs/VERCEL_ENV_SETUP.md`
+
+## 🆘 Need Help?
+
+1. Check the troubleshooting section in `docs/BLOG_INTEGRATION_DEPLOYMENT_GUIDE.md`
+2. Review Vercel logs for specific errors
+3. Check health endpoint: `https://purrify.ca/api/health/storage`
+4. Review implementation docs in `docs/`
 
 ---
 
-**Last Updated**: November 10, 2024  
-**Version**: 1.0.0
+**Last Updated**: November 11, 2025  
+**Status**: Ready for Deployment  
+**Estimated Time**: 40 minutes + 24 hours monitoring
