@@ -45,6 +45,7 @@
     "performance:audit": "npm run seo:optimize && npm run bundle:analyze && npm run cache:optimize",
     "validate-dark-mode": "node scripts/dark-mode-validator.js",
     "validate-blog-images": "node scripts/validate-blog-images.js",
+    "validate-links": "tsx scripts/validate-links.ts",
     "test:e2e": "playwright test",
     "e2e:web": "next build && next start --port 3010",
     "test": "npm run test:translations",

@@ -5,13 +5,14 @@
 ```
 purrify/
 ├── pages/              # Next.js Pages Router (routing & page components)
-├── src/                # Source code (components, lib, data)
+├── src/                # Source code (components, lib, data, translations)
 ├── public/             # Static assets (images, videos, manifests)
 ├── scripts/            # Build and optimization scripts
-├── prisma/             # Database schema
+├── prisma/             # Database schema and migrations
 ├── docs/               # Project documentation
 ├── e2e/                # Playwright E2E tests
-└── __tests__/          # Jest unit tests
+├── __tests__/          # Jest unit tests
+└── content/            # Blog content and marketing copy
 ```
 
 ## Pages Directory (Routing)
@@ -30,15 +31,20 @@ pages/
 │   ├── create-checkout-session.ts    # Stripe checkout
 │   ├── contact.ts                    # Contact form handler
 │   ├── newsletter.ts                 # Newsletter signup
-│   ├── webhooks/stripe.ts            # Payment webhooks
+│   ├── blog-posts.ts                 # Blog API
+│   ├── webhooks/                     # Payment webhooks
 │   ├── analytics/                    # Analytics endpoints
 │   ├── referrals/                    # Referral system
-│   └── retailer/                     # B2B retailer APIs
+│   ├── retailer/                     # B2B retailer APIs
+│   └── admin/                        # Admin APIs
+│       └── blog/                     # Blog management APIs
 │
 ├── blog/               # Blog system
 │   ├── index.tsx       # Blog listing page
 │   ├── [slug].tsx      # Dynamic blog post pages
-│   └── [static-posts].tsx  # Individual blog posts
+│   ├── category/       # Category pages
+│   ├── tag/            # Tag pages
+│   └── preview/        # Preview mode
 │
 ├── products/           # Product pages
 │   ├── compare.tsx     # Product comparison
@@ -52,16 +58,26 @@ pages/
 │   ├── safety.tsx
 │   └── faq.tsx
 │
-├── solutions/          # Solution-focused landing pages
+├── solutions/          # Solution-focused landing pages (SEO)
 │   ├── apartment-cat-smell-solution.tsx
 │   ├── multiple-cats-odor-control.tsx
 │   └── [other-solutions].tsx
 │
 ├── locations/          # Location-based pages (SEO)
 │   ├── [citySlug].tsx  # Dynamic city pages
-│   └── province/       # Province-specific pages
+│   ├── province/       # Province-specific pages
+│   └── [province].tsx  # Province landing pages (ab.tsx, bc.tsx, etc.)
+│
+├── admin/              # Admin dashboard
+│   ├── login.tsx
+│   └── blog/           # Blog management UI
+│       ├── index.tsx   # Blog dashboard
+│       ├── new.tsx     # Create post
+│       ├── edit/[slug].tsx  # Edit post
+│       └── analytics.tsx    # Blog analytics
 │
 ├── support/            # Customer support
+│   ├── index.tsx
 │   ├── contact.tsx
 │   └── shipping.tsx
 │
@@ -78,23 +94,32 @@ pages/
 ```
 src/
 ├── components/         # React components
-│   ├── ui/            # Shadcn/UI components (40+ components)
+│   ├── ui/            # Shadcn/UI components (40+ Radix UI components)
 │   │   ├── button.tsx
 │   │   ├── card.tsx
 │   │   ├── dialog.tsx
-│   │   └── [radix-ui-components].tsx
+│   │   ├── input.tsx
+│   │   └── [other-radix-components].tsx
 │   │
 │   ├── sections/      # Page sections (reusable)
 │   │   ├── Hero.tsx
 │   │   ├── Testimonials.tsx
 │   │   ├── Features.tsx
-│   │   └── CallToAction.tsx
+│   │   ├── CallToAction.tsx
+│   │   └── locations/  # Location-specific sections
 │   │
 │   ├── layout/        # Layout components
 │   │   ├── Header.tsx
 │   │   ├── Footer.tsx
 │   │   ├── Navigation.tsx
 │   │   └── LanguageSwitcher.tsx
+│   │
+│   ├── admin/         # Admin dashboard components
+│   │   ├── MediaLibrary.tsx
+│   │   ├── SchedulingCalendar.tsx
+│   │   ├── AnalyticsDashboard.tsx
+│   │   ├── AIContentGenerator.tsx
+│   │   └── [other-admin-components].tsx
 │   │
 │   ├── mobile/        # Mobile-optimized components
 │   ├── performance/   # Performance monitoring
@@ -109,7 +134,29 @@ src/
 │   ├── theme-context.tsx         # Dark mode state
 │   ├── image-utils.ts            # Image optimization helpers
 │   ├── performance-optimizer.ts  # Performance utilities
-│   └── [other-utils].ts
+│   │
+│   ├── blog/          # Blog system utilities
+│   │   ├── analytics-service.ts
+│   │   ├── category-manager.ts
+│   │   ├── media-library.ts
+│   │   ├── seo-scorer.ts
+│   │   ├── automated-content-generator.ts
+│   │   └── [other-blog-utils].ts
+│   │
+│   ├── seo/           # SEO utilities
+│   │   ├── sitemap-cleaner.ts
+│   │   ├── report-generator.ts
+│   │   └── broken-link-detector.ts
+│   │
+│   ├── locations/     # Location data and utilities
+│   │   └── provinces.ts
+│   │
+│   └── config/        # Configuration
+│       └── environment.ts
+│
+├── hooks/             # Custom React hooks
+│   ├── useAutoSave.ts
+│   └── useKeyboardShortcuts.ts
 │
 ├── translations/      # i18n translation files
 │   ├── en.ts         # English translations
@@ -134,10 +181,11 @@ src/
 ```
 public/
 ├── optimized/              # Auto-generated optimized images
-│   ├── [image]-640w.avif
-│   ├── [image]-640w.webp
-│   ├── [image]-828w.avif
-│   └── [multiple-sizes].{avif,webp,jpg}
+│   ├── [image]-640w.avif   # Mobile size
+│   ├── [image]-828w.avif   # Tablet size
+│   ├── [image]-1080w.avif  # Desktop size
+│   ├── [image]-1200w.avif  # Large desktop
+│   └── [multiple-formats].{avif,webp,jpg}
 │
 ├── original-images/        # Source images (add here, run optimization)
 ├── images/                 # Legacy images (being phased out)
@@ -148,6 +196,7 @@ public/
 ├── robots.txt              # SEO robots file
 ├── sitemap.xml             # Main sitemap
 ├── sitemap-locations.xml   # Location-specific sitemap
+├── image-dimensions.json   # Image metadata (auto-generated)
 └── sw.js                   # Service worker
 ```
 
@@ -155,15 +204,30 @@ public/
 
 ```
 scripts/
-├── optimize-images-enhanced.js     # Main image optimization
+├── optimize-images-enhanced.js     # Main image optimization (Sharp)
 ├── generate-sitemap.js             # Sitemap generation
+├── generate-location-sitemap.js    # Location sitemap
 ├── bundle-analysis.js              # Bundle size analysis
 ├── seo-optimization.js             # SEO automation
+├── seo-health-check.ts             # SEO health checks
 ├── performance-audit.js            # Performance checks
 ├── validate-blog-images.js         # Blog image validation
+├── verify-storage.ts               # Storage verification
 └── lib/                            # Script utilities
     ├── ConfigurationManager.js
     └── MetadataGenerator.js
+```
+
+## Content Directory
+
+```
+content/
+├── blog/              # Blog posts (Markdown)
+│   ├── en/           # English posts
+│   ├── fr/           # French posts
+│   └── zh/           # Chinese posts
+├── categories.json    # Blog categories
+└── tags.json         # Blog tags
 ```
 
 ## Documentation
@@ -175,8 +239,8 @@ docs/
 ├── REFERENCE.md                # Technical standards
 ├── OPTIMIZATION_GUIDE.md       # Performance guide
 ├── IMAGE_OPTIMIZATION_GUIDE.md # Image workflow
-├── REVENUE_STRATEGY.md         # Business strategy
-├── B2B_RETAILERS.md            # B2B documentation
+├── DEPLOYMENT_CHECKLIST.md     # Deployment guide
+├── BLOG_SYSTEM_STATUS.md       # Blog system docs
 └── archive/                    # Historical docs
 ```
 
@@ -186,6 +250,7 @@ docs/
 - **UI components** (`src/components/ui/`) - Shadcn/UI primitives, no business logic
 - **Section components** (`src/components/sections/`) - Reusable page sections with business logic
 - **Layout components** (`src/components/layout/`) - Navigation, header, footer
+- **Admin components** (`src/components/admin/`) - Admin dashboard UI
 - **Page components** (`pages/`) - Route handlers, compose sections
 
 ### File Naming
@@ -193,6 +258,7 @@ docs/
 - **Utilities**: kebab-case (e.g., `image-utils.ts`)
 - **Pages**: kebab-case (e.g., `trial-size.tsx`)
 - **API routes**: kebab-case (e.g., `create-checkout-session.ts`)
+- **Hooks**: camelCase with `use` prefix (e.g., `useAutoSave.ts`)
 
 ### Import Patterns
 ```typescript
@@ -249,15 +315,18 @@ const { theme, toggleTheme } = useTheme()
 node_modules/       # Dependencies (gitignored)
 public/optimized/   # Generated images (committed)
 public/image-dimensions.json  # Image metadata (committed)
+tsconfig.tsbuildinfo  # TypeScript cache (gitignored)
 ```
 
 ## Configuration Files (Root)
 
 - `next.config.js` - Next.js configuration
 - `tailwind.config.js` - Tailwind theme
-- `tsconfig.json` - TypeScript config
+- `tsconfig.json` - TypeScript config with path aliases
 - `package.json` - Dependencies and scripts
 - `vercel.json` - Deployment config
 - `netlify.toml` - Netlify config
 - `prisma/schema.prisma` - Database schema
-- `.env` / `.env.production` - Environment variables
+- `.env` / `.env.production` - Environment variables (not committed)
+- `eslint.config.mjs` - ESLint configuration
+- `playwright.config.ts` - E2E test configuration

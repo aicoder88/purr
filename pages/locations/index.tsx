@@ -1,18 +1,18 @@
 import { GetServerSideProps } from 'next';
 
 /**
- * Redirect /support/contact to /contact
+ * Redirect /locations to homepage with locations section
  * This maintains SEO and prevents 404s
  */
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     redirect: {
-      destination: locale === 'fr' ? '/fr/contact' : '/contact',
-      permanent: true, // 301 redirect
+      destination: locale === 'fr' ? '/fr/#locations' : '/#locations',
+      permanent: false, // 302 redirect (temporary)
     },
   };
 };
 
-export default function SupportContact() {
+export default function LocationsIndex() {
   return null;
 }
