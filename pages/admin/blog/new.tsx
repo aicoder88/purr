@@ -6,11 +6,14 @@ import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 import AutoSaveIndicator from '@/components/admin/AutoSaveIndicator';
+import HelpBanner from '@/components/admin/HelpBanner';
+import AIContentGenerator from '@/components/admin/AIContentGenerator';
 import { useAutoSave } from '@/hooks/useAutoSave';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import type { BlogPost, Category, Tag } from '@/types/blog';
-import { ArrowLeft, Save, Eye } from 'lucide-react';
+import { ArrowLeft, Save, Eye, Keyboard, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import Link from 'next/link';
 
@@ -31,6 +34,8 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [featuredImage, setFeaturedImage] = useState('');
   const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft');
   const [scheduledDate, setScheduledDate] = useState<string>('');
+  const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showAIGenerator, setShowAIGenerator] = useState(false);
 
   // Enhanced auto-save with visual feedback
   const performAutoSave = useCallback(async () => {
@@ -283,6 +288,40 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
     setSelectedTags(selectedTags.filter(id => id !== tagId));
   };
 
+  // Keyboard shortcuts
+  useKeyboardShortcuts([
+    {
+      key: 's',
+      ctrl: true,
+      action: () => handleSave(false),
+      description: 'Save draft'
+    },
+    {
+      key: 's',
+      ctrl: true,
+      shift: true,
+      action: () => handleSave(true),
+      description: 'Save and publish'
+    },
+    {
+      key: 'p',
+      ctrl: true,
+      action: handlePreview,
+      description: 'Preview post'
+    },
+    {
+      key: '?',
+      shift: true,
+      action: () => setShowShortcuts(true),
+      description: 'Show keyboard shortcuts'
+    },
+    {
+      key: 'Escape',
+      action: () => setShowShortcuts(false),
+      description: 'Close dialogs'
+    }
+  ]);
+
   // Calculate SEO score
   const mockPost: Partial<BlogPost> = {
     title,
@@ -312,6 +351,19 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
         <title>New Post - Blog Admin</title>
       </Head>
       <AdminLayout>
+        {/* Help Banner */}
+        <HelpBanner
+          storageKey="blog-new-post-help-dismissed"
+          title="Creating Your Post"
+          tips={[
+            'Your work is auto-saved every 30 seconds - watch the indicator in the header',
+            'Aim for an SEO score of 80+ for better search visibility',
+            'Use the media library to insert previously uploaded images',
+            'Schedule posts for future publication using the status dropdown'
+          ]}
+          showKeyboardHint
+        />
+
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <Link
@@ -324,6 +376,13 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
           <div className="flex items-center space-x-3">
             {/* Enhanced auto-save indicator */}
             <AutoSaveIndicator state={autoSaveState} />
+            <button
+              onClick={() => setShowAIGenerator(true)}
+              className="flex items-center space-x-2 px-4 py-2 border border-purple-300 dark:border-purple-700 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
+            >
+              <Sparkles className="w-5 h-5" />
+              <span>AI Generate</span>
+            </button>
             <button
               onClick={handlePreview}
               disabled={!title.trim()}
@@ -581,6 +640,61 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
             </div>
           </div>
         </div>
+
+        {/* AI Content Generator */}
+        {showAIGenerator && (
+          <AIContentGenerator
+            onGenerate={(generated) => {
+              setTitle(generated.title);
+              setContent(generated.content);
+              setExcerpt(generated.excerpt);
+              toast.success('AI content applied!');
+            }}
+            onClose={() => setShowAIGenerator(false)}
+          />
+        )}
+
+        {/* Keyboard Shortcuts Help Modal */}
+        {showShortcuts && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold flex items-center space-x-2">
+                  <Keyboard className="w-5 h-5" />
+                  <span>Keyboard Shortcuts</span>
+                </h3>
+                <button
+                  onClick={() => setShowShortcuts(false)}
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span>Save draft</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">Ctrl+S</kbd>
+                </div>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span>Save and publish</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">Ctrl+Shift+S</kbd>
+                </div>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span>Preview</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">Ctrl+P</kbd>
+                </div>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span>Show shortcuts</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">Shift+?</kbd>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span>Close dialogs</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">Esc</kbd>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </AdminLayout>
     </>
   );

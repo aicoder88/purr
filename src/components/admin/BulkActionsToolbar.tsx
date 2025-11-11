@@ -77,8 +77,8 @@ export default function BulkActionsToolbar({
   }
 
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 z-50">
-      <div className="flex items-center space-x-4">
+    <div className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 sm:w-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 z-50">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
         {/* Selection count */}
         <div className="flex items-center space-x-2">
           <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -93,10 +93,10 @@ export default function BulkActionsToolbar({
           </button>
         </div>
 
-        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600" />
+        <div className="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-600" />
 
         {/* Actions */}
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* Change Status */}
           <div className="relative">
             <button

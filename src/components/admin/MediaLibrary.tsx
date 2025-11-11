@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, X, Trash2, Check, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
+import LoadingSpinner from './LoadingSpinner';
 import type { MediaItem } from '@/lib/blog/media-library';
 
 interface MediaLibraryProps {
@@ -164,7 +165,7 @@ export default function MediaLibrary({
         <div className="flex-1 overflow-y-auto p-6">
           {loading ? (
             <div className="flex items-center justify-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+              <LoadingSpinner size="lg" text="Loading media library..." />
             </div>
           ) : filteredMedia.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-64 text-gray-500 dark:text-gray-400">

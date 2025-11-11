@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
 import BulkActionsToolbar, { type BulkOperation } from '@/components/admin/BulkActionsToolbar';
+import Tooltip from '@/components/admin/Tooltip';
+import HelpBanner from '@/components/admin/HelpBanner';
 import { ContentStore } from '@/lib/blog/content-store';
 import type { BlogPost, Category, Tag } from '@/types/blog';
-import { Plus, Search, Filter, Edit, Trash2, Eye } from 'lucide-react';
+import { Plus, Search, Filter, Edit, Trash2, Eye, HelpCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface AdminBlogPageProps {
@@ -153,6 +155,18 @@ export default function AdminBlogPage({ posts: initialPosts, categories, tags, l
         <title>Posts - Blog Admin</title>
       </Head>
       <AdminLayout>
+        {/* Help Banner */}
+        <HelpBanner
+          storageKey="blog-posts-help-dismissed"
+          title="Quick Tips"
+          tips={[
+            'Select multiple posts using checkboxes to perform bulk actions',
+            'Click "Schedule" in the navigation to view your content calendar',
+            'All changes are automatically saved with revision history',
+            'Visit the Media library to manage and reuse uploaded images'
+          ]}
+        />
+
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
