@@ -25,8 +25,9 @@ async function runHealthCheck() {
 
   // 1. Check broken links
   console.log('📋 Step 1/5: Checking for broken links...');
+  console.log('   Note: This crawls from homepage. For complete site scan, use sitemap-based crawl.');
   const linkResult = await brokenLinkDetector.crawlSite(SITE_URL);
-  console.log(`   Found ${linkResult.brokenLinks.length} broken links\n`);
+  console.log(`   Found ${linkResult.brokenLinks.length} broken links from ${linkResult.totalLinks} links\n`);
 
   // Add suggested fixes
   for (const link of linkResult.brokenLinks) {

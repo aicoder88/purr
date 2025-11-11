@@ -437,7 +437,7 @@ export default function MostPowerfulOdorAbsorber() {
                       Shop Purrify 50g Standard
                     </Link>
                     <Link
-                      href="/products/family"
+                      href="/products/family-pack"
                       className="px-6 py-3 border border-[#FF3131] text-[#FF3131] rounded-full font-semibold hover:bg-[#FF3131]/10 transition-colors"
                     >
                       Explore 120g Family Pack

@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-11-11T19:48:42.864Z",
+  "summary": {
+    "totalUrls": 60,
+    "brokenLinks": 8,
+    "canonicalIssues": 0,
+    "redirectChains": 0,
+    "sitemapIssues": 0,
+    "healthScore": 87
+  },
+  "brokenLinks": [
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://pattesgriffes.com/storelocator.html",
+      "statusCode": 404,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.chico.ca/boutique/chico-sainte-therese/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.chico.ca/boutique/chico-ste-marthe/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.mamiwouff.ca/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca",
+      "targetUrl": "https://www.lamifidel.com/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://purrify.ca/blog/most-powerful-odor-absorber",
+      "targetUrl": "https://purrify.ca/products/family",
+      "statusCode": 404,
+      "linkText": "Explore 120g Family Pack",
+      "linkType": "internal"
+    }
+  ],
+  "canonicalIssues": [],
+  "redirectChains": [],
+  "sitemapIssues": []
+}
