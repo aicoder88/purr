@@ -36,6 +36,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const [scheduledDate, setScheduledDate] = useState<string>('');
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showAIGenerator, setShowAIGenerator] = useState(false);
+  const [showAIGenerator, setShowAIGenerator] = useState(false);
 
   // Enhanced auto-save with visual feedback
   const performAutoSave = useCallback(async () => {
@@ -286,6 +287,13 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
 
   const removeTag = (tagId: string) => {
     setSelectedTags(selectedTags.filter(id => id !== tagId));
+  };
+
+  const handleAIGenerate = (generated: { title: string; content: string; excerpt: string }) => {
+    setTitle(generated.title);
+    setContent(generated.content);
+    setExcerpt(generated.excerpt);
+    toast.success('AI content applied! Review and edit as needed.');
   };
 
   // Keyboard shortcuts

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Sparkles, RefreshCw, Check, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Sparkles, RefreshCw, Check, X, FileText, History } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import { toast } from 'sonner';
 
@@ -9,6 +9,7 @@ interface AIGenerationConfig {
   length: 'short' | 'medium' | 'long';
   targetAudience: 'beginners' | 'intermediate' | 'experts';
   keywords: string[];
+  templateId?: string;
   includeImages: boolean;
   imageCount: number;
 }
@@ -25,12 +26,44 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
     length: 'medium',
     targetAudience: 'beginners',
     keywords: [],
+    templateId: undefined,
     includeImages: true,
     imageCount: 2
   });
   const [keywordInput, setKeywordInput] = useState('');
   const [generating, setGenerating] = useState(false);
   const [preview, setPreview] = useState<any>(null);
+  const [templates, setTemplates] = useState<any[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [history, setHistory] = useState<any[]>([]);
+
+  useEffect(() => {
+    loadTemplates();
+  }, []);
+
+  const loadTemplates = async () => {
+    try {
+      const response = await fetch('/api/admin/blog/templates');
+      if (response.ok) {
+        const data = await response.json();
+        setTemplates(data);
+      }
+    } catch (error) {
+      console.error('Error loading templates:', error);
+    }
+  };
+
+  const loadHistory = async () => {
+    try {
+      const response = await fetch('/api/admin/blog/generation-history');
+      if (response.ok) {
+        const data = await response.json();
+        setHistory(data);
+      }
+    } catch (error) {
+      console.error('Error loading history:', error);
+    }
+  };
 
   const handleGenerate = async () => {
     if (!config.topic.trim()) {
@@ -101,16 +134,76 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
             <Sparkles className="w-6 h-6 text-purple-600" />
             <span>AI Content Generator</span>
           </h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-          >
-            <X className="w-6 h-6" />
-          </button>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => {
+                setShowHistory(!showHistory);
+                if (!showHistory) loadHistory();
+              }}
+              className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              <History className="w-4 h-4" />
+              <span>History</span>
+            </button>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
         <div className="p-6">
-          {!preview ? (
+          {showHistory ? (
+            /* Generation History */
+            <div className="space-y-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Generations</h3>
+                <button
+                  onClick={() => setShowHistory(false)}
+                  className="text-sm text-purple-600 hover:text-purple-700"
+                >
+                  Back to Generator
+                </button>
+              </div>
+              {history.length === 0 ? (
+                <p className="text-center text-gray-500 dark:text-gray-400 py-8">No generation history yet</p>
+              ) : (
+                <div className="space-y-3">
+                  {history.map((record) => (
+                    <div
+                      key={record.id}
+                      className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <h4 className="font-medium text-gray-900 dark:text-gray-100">{record.result.title}</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{record.config.topic}</p>
+                          <div className="flex items-center space-x-3 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                            <span>{record.config.tone} tone</span>
+                            <span>•</span>
+                            <span>{record.config.length} length</span>
+                            <span>•</span>
+                            <span>{new Date(record.timestamp).toLocaleDateString()}</span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            onGenerate(record.result);
+                            onClose();
+                          }}
+                          className="ml-4 px-3 py-1.5 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                        >
+                          Use This
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : !preview ? (
             /* Configuration Form */
             <div className="space-y-6">
               {/* Topic */}
@@ -174,6 +267,25 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   <option value="beginners">Beginners</option>
                   <option value="intermediate">Intermediate</option>
                   <option value="experts">Experts</option>
+                </select>
+              </div>
+
+              {/* Content Template */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Content Template (Optional)
+                </label>
+                <select
+                  value={config.templateId || ''}
+                  onChange={(e) => setConfig({ ...config, templateId: e.target.value || undefined })}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                >
+                  <option value="">No template (free-form)</option>
+                  {templates.map((template) => (
+                    <option key={template.id} value={template.id}>
+                      {template.name} - {template.description}
+                    </option>
+                  ))}
                 </select>
               </div>
 
