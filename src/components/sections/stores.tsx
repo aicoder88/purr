@@ -151,6 +151,14 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
+    name: "Animalerie Club Wouf Miaou",
+    location: "Trois-Rivières, QC G9A 6M1",
+    address: "3175 boulevard des Récollets, Trois-Rivières, QC G9A 6M1",
+    phone: "",
+    url: "https://woufmiaou.ca/",
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+  },
+  {
     name: "K&K Pet Foods Dunbar",
     location: "Vancouver, BC V6S 2G2",
     address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
@@ -264,6 +272,15 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  if (storeName.includes('Animalerie Club Wouf Miaou')) {
+    return {
+      src: "/optimized/woofmiao-logo.webp",
+      alt: "Animalerie Club Wouf Miaou - Pet Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
@@ -278,7 +295,8 @@ const hasWhiteBackground = (storeName: string) => {
          storeName.includes('Coquette') ||
          storeName.includes('Animalerie Mamiwouff') ||
          storeName.includes('Animalerie Lamifidel') ||
-         storeName.includes('Animalerie Petmobile');
+         storeName.includes('Animalerie Petmobile') ||
+         storeName.includes('Animalerie Club Wouf Miaou');
 };
 
 // Component to handle logo display with fallback
