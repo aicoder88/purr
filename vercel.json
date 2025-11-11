@@ -119,7 +119,7 @@
     },
     {
       "path": "/api/cron/publish-scheduled-posts",
-      "schedule": "0 * * * *"
+      "schedule": "0 0 * * *"
     },
     {
       "path": "/api/cron/cleanup-old-revisions",
