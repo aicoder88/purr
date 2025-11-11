@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Security: Authentication (Task 10.1)', () => {
   test('admin endpoints require authentication', async ({ page }) => {
     // Try to access admin dashboard without auth
-    const response = await page.goto('/admin/blog');
+    await page.goto('/admin/blog');
     
     // Should redirect to login page
     await expect(page).toHaveURL(/\/admin\/login/);
@@ -12,7 +12,7 @@ test.describe('Security: Authentication (Task 10.1)', () => {
   test('API endpoints require authentication', async ({ page }) => {
     // Try to access API endpoint without auth
     const response = await page.request.get('/api/admin/blog/posts');
-    
+
     // Should return 401 Unauthorized
     expect(response.status()).toBe(401);
   });

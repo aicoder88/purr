@@ -9,55 +9,61 @@
 >
   <url>
     <loc>https://www.purrify.ca/thank-you</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/terms</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/stockists</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/reviews</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/retailers</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/privacy-policy</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/offline</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/montreal</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/invest</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.purrify.ca/" />
@@ -70,91 +76,103 @@
   </url>
   <url>
     <loc>https://www.purrify.ca/free</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/contact</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/checkout</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/case-studies</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/b2b</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/404</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/support/subscription</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/support/shipping</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.purrify.ca/support/contact</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <loc>https://www.purrify.ca/support/</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/senior-cat-litter-solutions</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/natural-cat-litter-additive</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/multiple-cats-odor-control</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/litter-box-smell-elimination</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/apartment-cat-smell-solution</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/solutions/ammonia-smell-cat-litter</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/retailer/portal/login</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/products/trial-size</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
@@ -165,7 +183,7 @@
   </url>
   <url>
     <loc>https://www.purrify.ca/products/standard</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
@@ -176,7 +194,7 @@
   </url>
   <url>
     <loc>https://www.purrify.ca/products/family-pack</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
@@ -187,7 +205,7 @@
   </url>
   <url>
     <loc>https://www.purrify.ca/products/compare</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 
@@ -197,122 +215,188 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.purrify.ca/locations/sk</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/qc</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/pe</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/on</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/ns</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/nl</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/nb</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/mb</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/bc</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/locations/ab</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.purrify.ca/learn/using-deodorizers-with-kittens</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/science</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/safety</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/how-to-use-deodorizer</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/how-it-works</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/faq</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/cat-litter-guide</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/learn/activated-carbon-benefits</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/customers/testimonials</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/customers/case-studies</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/customer/referrals</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/customer/portal</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/using-deodorizers-with-kittens</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/tried-everything-cat-litter-smell-solutions</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/tried-every-litter-deodorizer-90-days-results</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/strong-cat-urine-smell-litter-box</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/multi-cat-litter-deodorizer-guide</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/most-powerful-odor-absorber</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.purrify.ca/blog/" />
@@ -321,91 +405,109 @@
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/embarrassed-guests-visit-cat-litter-smell</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/cat-litter-smell-worse-winter</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/cat-litter-smell-worse-summer</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/referral-analytics</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/login</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/blog/tags</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/admin/blog/schedule</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/blog/new</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/admin/blog/media</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/blog/</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/admin/blog/categories</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.purrify.ca/admin/blog/analytics</loc>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.purrify.ca/about/our-story</loc>
-    <lastmod>2025-11-10T20:03:30.795Z</lastmod>
+    <lastmod>2025-11-11T23:18:30.789Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

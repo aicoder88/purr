@@ -47,6 +47,7 @@
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-links": "tsx scripts/validate-links.ts",
     "test:e2e": "playwright test",
+    "test:e2e:security": "bash scripts/run-security-tests.sh",
     "e2e:web": "next build && next start --port 3010",
     "test": "npm run test:translations",
     "test:translations": "jest __tests__/translation-completeness.test.js"

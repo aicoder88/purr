@@ -35,6 +35,12 @@ export interface SubscriptionAnalytics {
   nextBillingDate: Date;
   lifetimeValue: number;
   churnRisk: number; // 0-1, higher = more likely to cancel
+  lastInteractionDays?: number;
+  supportTickets?: number;
+  deliveryIssues?: number;
+  pauseCount?: number;
+  paymentFailures?: number;
+  usageFrequency?: 'low' | 'medium' | 'high';
 }
 
 export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [

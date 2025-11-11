@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
 
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
-import { Input } from '../../src/components/ui/input';
-import { Textarea } from '../../src/components/ui/textarea';
-import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER } from '../../src/lib/constants';
-import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER } from '@/lib/constants';
+import { useTranslation } from '@/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
+import { RelatedArticles } from '@/components/blog/RelatedArticles';
 
 type ResponseData = {
   success: boolean;

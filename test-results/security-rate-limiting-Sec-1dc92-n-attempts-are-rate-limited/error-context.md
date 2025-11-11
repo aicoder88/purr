@@ -1,0 +1,172 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - button "Scroll to top":
+        - img
+      - banner [ref=e6]:
+        - generic [ref=e8]:
+          - link "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - img "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e11]
+          - navigation [ref=e12]:
+            - button "Products" [ref=e14] [cursor=pointer]:
+              - text: Products
+              - img [ref=e15]
+            - button "For Retailers" [ref=e18] [cursor=pointer]:
+              - text: For Retailers
+              - img [ref=e19]
+            - button "Learn" [ref=e22] [cursor=pointer]:
+              - text: Learn
+              - img [ref=e23]
+            - button "Solutions" [ref=e26] [cursor=pointer]:
+              - text: Solutions
+              - img [ref=e27]
+            - button "Locations" [ref=e30] [cursor=pointer]:
+              - text: Locations
+              - img [ref=e31]
+            - link "About" [ref=e34] [cursor=pointer]:
+              - /url: /about/our-story
+          - generic [ref=e35]:
+            - button "Toggle theme" [ref=e36] [cursor=pointer]:
+              - img [ref=e37]
+              - generic [ref=e43]: Toggle theme
+            - button "Buy Now!" [ref=e44] [cursor=pointer]:
+              - img [ref=e45]
+              - text: Buy Now!
+            - button "English Flag English" [ref=e49] [cursor=pointer]:
+              - img "English Flag" [ref=e50]
+              - generic [ref=e51]: English
+              - img [ref=e52]
+            - button [ref=e54] [cursor=pointer]:
+              - img [ref=e55]
+      - main [ref=e59]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Purrify Blog Admin" [level=2] [ref=e63]
+            - paragraph [ref=e64]: Sign in to manage blog content
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - generic [ref=e68]: Email address
+                - textbox "Email address" [ref=e69]: test@example.com
+              - generic [ref=e70]:
+                - generic [ref=e71]: Password
+                - textbox "Password" [active] [ref=e72]: wrongpassword
+            - button "Sign in" [ref=e74] [cursor=pointer]
+      - contentinfo [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - heading "Stay Updated with Purrify" [level=3] [ref=e81]
+              - paragraph [ref=e82]: Get cat care tips and exclusive offers delivered to your inbox.
+            - generic [ref=e83]:
+              - textbox "Your email" [ref=e84]
+              - button "Subscribe" [ref=e85] [cursor=pointer]
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - link "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e90] [cursor=pointer]:
+                  - /url: /
+                  - img "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e92]
+                - paragraph [ref=e93]: Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.
+                - generic [ref=e94]:
+                  - link "Follow Purrify on Instagram" [ref=e95] [cursor=pointer]:
+                    - /url: https://www.instagram.com/purrifyhq/
+                    - img [ref=e96]
+                  - link "Follow Purrify on X" [ref=e99] [cursor=pointer]:
+                    - /url: https://x.com/PurrifyHQ
+                    - img [ref=e100]
+                  - link "Follow Purrify on LinkedIn" [ref=e102] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/company/purrify
+                    - img [ref=e103]
+                  - link "Subscribe to Purrify on YouTube" [ref=e107] [cursor=pointer]:
+                    - /url: https://www.youtube.com/@PurrifyHQ
+                    - img [ref=e108]
+                  - link "Follow Purrify on TikTok" [ref=e111] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@purrifyhq
+                    - img [ref=e112]
+              - generic [ref=e114]:
+                - heading "Products" [level=3] [ref=e115]
+                - list [ref=e116]:
+                  - listitem [ref=e117]:
+                    - link "Trial Size" [ref=e118] [cursor=pointer]:
+                      - /url: /products/trial-size
+                  - listitem [ref=e119]:
+                    - link "Standard Size" [ref=e120] [cursor=pointer]:
+                      - /url: /products/standard
+                  - listitem [ref=e121]:
+                    - link "Family Pack" [ref=e122] [cursor=pointer]:
+                      - /url: /products/family-pack
+                  - listitem [ref=e123]:
+                    - link "Compare Sizes" [ref=e124] [cursor=pointer]:
+                      - /url: /products/compare
+              - generic [ref=e125]:
+                - heading "Learn" [level=3] [ref=e126]
+                - list [ref=e127]:
+                  - listitem [ref=e128]:
+                    - link "How It Works" [ref=e129] [cursor=pointer]:
+                      - /url: /learn/how-it-works
+                  - listitem [ref=e130]:
+                    - link "FAQ" [ref=e131] [cursor=pointer]:
+                      - /url: /learn/faq
+                  - listitem [ref=e132]:
+                    - link "Science" [ref=e133] [cursor=pointer]:
+                      - /url: /learn/science
+                  - listitem [ref=e134]:
+                    - link "Safety Info" [ref=e135] [cursor=pointer]:
+                      - /url: /learn/safety
+                  - listitem [ref=e136]:
+                    - link "Cat Litter Guide" [ref=e137] [cursor=pointer]:
+                      - /url: /learn/cat-litter-guide
+              - generic [ref=e138]:
+                - heading "Solutions" [level=3] [ref=e139]
+                - list [ref=e140]:
+                  - listitem [ref=e141]:
+                    - link "Ammonia Smell" [ref=e142] [cursor=pointer]:
+                      - /url: /solutions/ammonia-smell-cat-litter
+                  - listitem [ref=e143]:
+                    - link "Apartment Living" [ref=e144] [cursor=pointer]:
+                      - /url: /solutions/apartment-cat-smell-solution
+                  - listitem [ref=e145]:
+                    - link "Multiple Cats" [ref=e146] [cursor=pointer]:
+                      - /url: /solutions/multiple-cats-odor-control
+                  - listitem [ref=e147]:
+                    - link "Natural Additive" [ref=e148] [cursor=pointer]:
+                      - /url: /solutions/natural-cat-litter-additive
+              - generic [ref=e149]:
+                - heading "Company" [level=3] [ref=e150]
+                - list [ref=e151]:
+                  - listitem [ref=e152]:
+                    - link "About Us" [ref=e153] [cursor=pointer]:
+                      - /url: /about/our-story
+                  - listitem [ref=e154]:
+                    - link "Blog" [ref=e155] [cursor=pointer]:
+                      - /url: /blog
+                  - listitem [ref=e156]:
+                    - link "Testimonials" [ref=e157] [cursor=pointer]:
+                      - /url: /customers/testimonials
+                  - listitem [ref=e158]:
+                    - link "For Retailers" [ref=e159] [cursor=pointer]:
+                      - /url: /retailers
+                  - listitem [ref=e160]:
+                    - link "Contact Us" [ref=e161] [cursor=pointer]:
+                      - /url: /support/contact
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - link "Privacy Policy" [ref=e164] [cursor=pointer]:
+                  - /url: /privacy-policy
+                - link "Terms of Service" [ref=e165] [cursor=pointer]:
+                  - /url: /terms
+                - link "Blog" [ref=e166] [cursor=pointer]:
+                  - /url: /blog
+              - paragraph [ref=e167]: © 2025 Purrify |All Rights Reserved
+    - region "Notifications (F8)":
+      - list
+    - region "Notifications alt+T"
+  - alert [ref=e168]
+```

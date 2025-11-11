@@ -148,8 +148,8 @@ const REDIRECTS = [
     permanent: false,
   },
   {
-    source: '/contact',
-    destination: '/support/contact',
+    source: '/support/contact',
+    destination: '/contact',
     permanent: true,
   },
   {

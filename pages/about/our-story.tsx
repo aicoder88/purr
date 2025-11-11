@@ -19,7 +19,7 @@ import {
 
 const OurStoryPage: NextPage = () => {
   const { locale } = useTranslation();
-  const { milestones, values, team, stats } = enStoryData;
+  const { values, team, stats } = enStoryData;
 
   const structuredData = {
     "@context": "https://schema.org",

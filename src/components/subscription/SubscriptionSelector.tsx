@@ -58,10 +58,10 @@ export function SubscriptionSelector({
     <div className="w-full">
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          {t.subscription?.title || 'Subscribe & Save'}
+          Subscribe & Save
         </h3>
         <p className="text-gray-600 dark:text-gray-300">
-          {t.subscription?.subtitle || 'Get Purrify delivered automatically and save up to 30%'}
+          Get Purrify delivered automatically and save up to 30%
         </p>
       </div>
 
@@ -202,7 +202,7 @@ export function SubscriptionSelector({
       <div className="mt-12 bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-gray-600">
         <div className="text-center mb-6">
           <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            {t.subscription?.benefitsTitle || 'Why Subscribe?'}
+            Why Subscribe?
           </h4>
         </div>
         
@@ -212,10 +212,10 @@ export function SubscriptionSelector({
               <Zap className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              {t.subscription?.benefit1Title || 'Save Money'}
+              Save Money
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              {t.subscription?.benefit1Desc || 'Up to 30% savings vs one-time purchases'}
+              Up to 30% savings vs one-time purchases
             </div>
           </div>
           <div>
@@ -223,10 +223,10 @@ export function SubscriptionSelector({
               <Truck className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              {t.subscription?.benefit2Title || 'Free Shipping'}
+              Free Shipping
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              {t.subscription?.benefit2Desc || 'Always free, always on time'}
+              Always free, always on time
             </div>
           </div>
           <div>
@@ -234,10 +234,10 @@ export function SubscriptionSelector({
               <Star className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              {t.subscription?.benefit3Title || 'VIP Treatment'}
+              VIP Treatment
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              {t.subscription?.benefit3Desc || 'Priority support & exclusive perks'}
+              Priority support & exclusive perks
             </div>
           </div>
         </div>
@@ -246,9 +246,9 @@ export function SubscriptionSelector({
       {/* FAQ section */}
       <div className="mt-8 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-300">
-          {t.subscription?.faqText || 'Questions?'} {' '}
+          Questions? {' '}
           <a href="/support/subscription" className="text-[#FF3131] hover:underline">
-            {t.subscription?.faqLink || 'View subscription FAQ'}
+            View subscription FAQ
           </a>
         </p>
       </div>
