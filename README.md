@@ -2,7 +2,7 @@
 
 This is the official website for Purrify, an activated carbon cat litter additive that eliminates odors at the source.
 
-<!-- Test commit to verify Vercel deployment pipeline - 2025-01-11 -->
+<!-- Vercel deployment pipeline restored and working! -->
 
 ## 📚 Documentation Structure
 
