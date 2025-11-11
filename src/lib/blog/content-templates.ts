@@ -24,7 +24,7 @@ export const DEFAULT_TEMPLATES: ContentTemplate[] = [
       },
       {
         type: 'heading',
-        content: 'What You'll Need',
+        content: 'What You\'ll Need',
         placeholder: 'List of materials or prerequisites',
         required: true
       },
