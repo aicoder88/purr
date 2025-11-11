@@ -1,0 +1,128 @@
+{
+  "timestamp": "2025-11-11T20:44:48.662Z",
+  "summary": {
+    "totalUrls": 344,
+    "brokenLinks": 16,
+    "canonicalIssues": 0,
+    "redirectChains": 0,
+    "sitemapIssues": 0,
+    "healthScore": 95
+  },
+  "brokenLinks": [
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://pattesgriffes.com/storelocator.html",
+      "statusCode": 404,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.mamiwouff.ca/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.lamifidel.com/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/b2b",
+      "targetUrl": "https://www.purrify.ca/partnership-guide.pdf",
+      "statusCode": 404,
+      "linkText": "Partner Guide",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/reviews",
+      "targetUrl": "https://www.purrify.ca/montreal",
+      "statusCode": 404,
+      "linkText": "Store LocationsFind Purrify near you",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/toronto",
+      "targetUrl": "https://www.purrify.ca/locations/on",
+      "statusCode": 404,
+      "linkText": "Explore more Ontario testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/montreal",
+      "targetUrl": "https://www.purrify.ca/locations/qc",
+      "statusCode": 404,
+      "linkText": "Explore more Quebec testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/calgary",
+      "targetUrl": "https://www.purrify.ca/locations/ab",
+      "statusCode": 404,
+      "linkText": "Explore more Alberta testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/winnipeg",
+      "targetUrl": "https://www.purrify.ca/locations/mb",
+      "statusCode": 404,
+      "linkText": "Explore more Manitoba testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/vancouver",
+      "targetUrl": "https://www.purrify.ca/locations/bc",
+      "statusCode": 404,
+      "linkText": "Explore more British Columbia testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/halifax",
+      "targetUrl": "https://www.purrify.ca/locations/ns",
+      "statusCode": 404,
+      "linkText": "Explore more Nova Scotia testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/saskatoon",
+      "targetUrl": "https://www.purrify.ca/locations/sk",
+      "statusCode": 404,
+      "linkText": "Explore more Saskatchewan testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/argentia",
+      "targetUrl": "https://www.purrify.ca/locations/nl",
+      "statusCode": 404,
+      "linkText": "Explore more Newfoundland and Labrador testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/bathurst",
+      "targetUrl": "https://www.purrify.ca/locations/nb",
+      "statusCode": 404,
+      "linkText": "Explore more New Brunswick testimonials →",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca/locations/borden",
+      "targetUrl": "https://www.purrify.ca/locations/pe",
+      "statusCode": 404,
+      "linkText": "Explore more Prince Edward Island testimonials →",
+      "linkType": "external"
+    }
+  ],
+  "canonicalIssues": [],
+  "redirectChains": [],
+  "sitemapIssues": []
+}

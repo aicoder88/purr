@@ -23,10 +23,10 @@ async function runHealthCheck() {
   const sitemapCleaner = new SitemapCleaner();
   const reportGenerator = new ReportGenerator();
 
-  // 1. Check broken links
+  // 1. Check broken links (using sitemap for complete coverage)
   console.log('📋 Step 1/5: Checking for broken links...');
-  console.log('   Note: This crawls from homepage. For complete site scan, use sitemap-based crawl.');
-  const linkResult = await brokenLinkDetector.crawlSite(SITE_URL);
+  const useSitemap = process.env.USE_SITEMAP !== 'false'; // Default to true
+  const linkResult = await brokenLinkDetector.crawlSite(SITE_URL, useSitemap);
   console.log(`   Found ${linkResult.brokenLinks.length} broken links from ${linkResult.totalLinks} links\n`);
 
   // Add suggested fixes

@@ -23,13 +23,23 @@ export class BrokenLinkDetector {
   private linkMap = new Map<string, Set<{ source: string; text: string }>>();
   private baseUrl: string = '';
 
-  async crawlSite(baseUrl: string): Promise<LinkCheckResult> {
+  async crawlSite(baseUrl: string, useSitemap: boolean = false): Promise<LinkCheckResult> {
     this.baseUrl = baseUrl;
     this.visited.clear();
     this.brokenLinks = [];
     this.linkMap.clear();
 
-    const queue = [baseUrl];
+    let queue: string[] = [];
+    
+    if (useSitemap) {
+      // Get all URLs from sitemap for complete coverage
+      console.log(`Loading URLs from sitemap...`);
+      queue = await this.getUrlsFromSitemap(baseUrl);
+      console.log(`Found ${queue.length} URLs in sitemap`);
+    } else {
+      queue = [baseUrl];
+    }
+
     const allLinks = new Set<string>();
 
     console.log(`Starting crawl of ${baseUrl}...`);
@@ -206,5 +216,50 @@ export class BrokenLinkDetector {
     }
 
     return brokenSitemapLinks;
+  }
+
+  private async getUrlsFromSitemap(baseUrl: string): Promise<string[]> {
+    const urls: string[] = [];
+    
+    try {
+      // Try main sitemap
+      const sitemapUrl = `${baseUrl}/sitemap.xml`;
+      const response = await axios.get(sitemapUrl, {
+        timeout: 10000,
+        headers: { 'User-Agent': 'Purrify-SEO-Crawler/1.0' }
+      });
+
+      const $ = cheerio.load(response.data, { xmlMode: true });
+
+      // Check if it's a sitemap index
+      const sitemapTags = $('sitemap > loc');
+      if (sitemapTags.length > 0) {
+        // It's a sitemap index, fetch all sub-sitemaps
+        for (let i = 0; i < sitemapTags.length; i++) {
+          const subSitemapUrl = $(sitemapTags[i]).text();
+          try {
+            const subResponse = await axios.get(subSitemapUrl, {
+              timeout: 10000,
+              headers: { 'User-Agent': 'Purrify-SEO-Crawler/1.0' }
+            });
+            const sub$ = cheerio.load(subResponse.data, { xmlMode: true });
+            sub$('url > loc').each((_, el) => {
+              urls.push(sub$(el).text());
+            });
+          } catch (error) {
+            console.error(`Error fetching sub-sitemap ${subSitemapUrl}:`, error instanceof Error ? error.message : error);
+          }
+        }
+      } else {
+        // Regular sitemap
+        $('url > loc').each((_, el) => {
+          urls.push($(el).text());
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching sitemap:', error instanceof Error ? error.message : error);
+    }
+
+    return urls;
   }
 }
