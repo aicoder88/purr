@@ -635,10 +635,16 @@ export default function B2B() {
             <div className="text-center">
               <FileText className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                {locale === 'fr' ? 'Documentation' : 'Documentation'}
+                {locale === 'fr' ? 'Besoin de Plus d\'Information?' : 'Need More Information?'}
               </h4>
-              <a href="/partnership-guide.pdf" className="text-blue-600 dark:text-blue-400 hover:underline">
-                {locale === 'fr' ? 'Guide Partenaire' : 'Partner Guide'}
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                {locale === 'fr' 
+                  ? 'Contactez notre équipe pour recevoir notre guide détaillé'
+                  : 'Contact our team to receive our detailed partnership guide'
+                }
+              </p>
+              <a href="mailto:partners@purrify.ca" className="text-blue-600 dark:text-blue-400 hover:underline">
+                {locale === 'fr' ? 'Demander le Guide' : 'Request Guide'}
               </a>
             </div>
           </div>
