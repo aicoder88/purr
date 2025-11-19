@@ -246,7 +246,7 @@ export default function SupportPage() {
                 Our friendly support team is here to help you with any questions about Purrify products, orders, or shipping.
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                <Button size="lg" className="bg-white dark:bg-gray-900 text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6">
+                <Button size="lg" className="bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6">
                   Contact Support Now →
                 </Button>
               </Link>

@@ -202,14 +202,14 @@ export default function MediaLibrary({
                     
                     {/* Selected indicator */}
                     {selectedItem === item.id && (
-                      <div className="absolute top-2 right-2 bg-purple-600 text-white rounded-full p-1">
+                      <div className="absolute top-2 right-2 bg-purple-600 text-white dark:text-gray-100 rounded-full p-1">
                         <Check className="w-4 h-4" />
                       </div>
                     )}
 
                     {/* Usage badge */}
                     {item.usedIn.length > 0 && (
-                      <div className="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
+                      <div className="absolute top-2 left-2 bg-green-600 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">
                         Used in {item.usedIn.length}
                       </div>
                     )}
@@ -222,7 +222,7 @@ export default function MediaLibrary({
                             e.stopPropagation();
                             handleSelect(item.url);
                           }}
-                          className="px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 text-sm"
+                          className="px-3 py-1 bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 text-sm"
                         >
                           Select
                         </button>
@@ -233,7 +233,7 @@ export default function MediaLibrary({
                             e.stopPropagation();
                             handleDelete(item.id);
                           }}
-                          className="p-2 bg-red-600 text-white rounded hover:bg-red-700"
+                          className="p-2 bg-red-600 text-white dark:text-gray-100 rounded hover:bg-red-700"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -272,7 +272,7 @@ export default function MediaLibrary({
                 if (item) handleSelect(item.url);
               }}
               disabled={!selectedItem}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Insert Image
             </button>

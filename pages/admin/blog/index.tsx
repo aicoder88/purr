@@ -221,7 +221,7 @@ export default function AdminBlogPage({ posts: initialPosts, categories, tags, l
               type="checkbox"
               checked={selectedPosts.length === filteredPosts.length && filteredPosts.length > 0}
               onChange={toggleSelectAll}
-              className="rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+              className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
             />
             <span className="text-sm text-gray-600 dark:text-gray-400">
               Select all
@@ -254,7 +254,7 @@ export default function AdminBlogPage({ posts: initialPosts, categories, tags, l
                     type="checkbox"
                     checked={selectedPosts.includes(post.slug)}
                     onChange={() => togglePostSelection(post.slug)}
-                    className="mt-1 rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+                    className="mt-1 rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
                   />
 
                   <div className="flex-1 flex items-start justify-between">

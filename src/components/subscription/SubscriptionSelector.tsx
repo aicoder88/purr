@@ -90,7 +90,7 @@ export function SubscriptionSelector({
             >
               {/* Recommended badge */}
               {isRecommended && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 dark:text-gray-800 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                   ⭐ MOST POPULAR
                 </div>
               )}
@@ -124,7 +124,7 @@ export function SubscriptionSelector({
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
                   </li>
                 ))}

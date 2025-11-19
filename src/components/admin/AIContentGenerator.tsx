@@ -131,7 +131,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-2">
-            <Sparkles className="w-6 h-6 text-purple-600" />
+            <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
             <span>AI Content Generator</span>
           </h2>
           <div className="flex items-center space-x-2">
@@ -147,7 +147,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
             </button>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-200"
             >
               <X className="w-6 h-6" />
             </button>
@@ -162,7 +162,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Generations</h3>
                 <button
                   onClick={() => setShowHistory(false)}
-                  className="text-sm text-purple-600 hover:text-purple-700"
+                  className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
                 >
                   Back to Generator
                 </button>
@@ -193,7 +193,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                             onGenerate(record.result);
                             onClose();
                           }}
-                          className="ml-4 px-3 py-1.5 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                          className="ml-4 px-3 py-1.5 text-sm bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600"
                         >
                           Use This
                         </button>
@@ -305,7 +305,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   />
                   <button
                     onClick={addKeyword}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                    className="px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600"
                   >
                     Add
                   </button>
@@ -319,7 +319,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                       <span>{keyword}</span>
                       <button
                         onClick={() => removeKeyword(keyword)}
-                        className="hover:text-purple-900 dark:hover:text-purple-100"
+                        className="text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100"
                       >
                         ×
                       </button>
@@ -335,7 +335,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                     type="checkbox"
                     checked={config.includeImages}
                     onChange={(e) => setConfig({ ...config, includeImages: e.target.checked })}
-                    className="rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+                    className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
                   />
                   <span className="text-sm text-gray-700 dark:text-gray-300">Include images</span>
                 </label>
@@ -355,7 +355,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
               <button
                 onClick={handleGenerate}
                 disabled={generating || !config.topic.trim()}
-                className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {generating ? (
                   <>
@@ -394,7 +394,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors"
                 >
                   <Check className="w-5 h-5" />
                   <span>Use This Content</span>

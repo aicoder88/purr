@@ -159,7 +159,7 @@ export default function BulkActionsToolbar({
           <button
             onClick={handleDelete}
             disabled={executing}
-            className="flex items-center space-x-2 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm disabled:opacity-50"
+            className="flex items-center space-x-2 px-3 py-2 bg-red-600 text-white dark:text-gray-100 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors text-sm disabled:opacity-50"
           >
             <Trash2 className="w-4 h-4" />
             <span>Delete</span>
@@ -184,7 +184,7 @@ export default function BulkActionsToolbar({
                       setSelectedCategories(selectedCategories.filter(id => id !== category.id));
                     }
                   }}
-                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
                 />
                 <span className="text-sm">{category.name}</span>
               </label>
@@ -202,7 +202,7 @@ export default function BulkActionsToolbar({
             </button>
             <button
               onClick={handleAssignCategories}
-              className="px-3 py-1 text-sm bg-purple-600 text-white rounded hover:bg-purple-700"
+              className="px-3 py-1 text-sm bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 dark:hover:bg-purple-600"
             >
               Apply
             </button>
@@ -227,7 +227,7 @@ export default function BulkActionsToolbar({
                       setSelectedTags(selectedTags.filter(id => id !== tag.id));
                     }
                   }}
-                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 focus:ring-purple-500"
+                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
                 />
                 <span className="text-sm">{tag.name}</span>
               </label>
@@ -245,7 +245,7 @@ export default function BulkActionsToolbar({
             </button>
             <button
               onClick={handleAssignTags}
-              className="px-3 py-1 text-sm bg-purple-600 text-white rounded hover:bg-purple-700"
+              className="px-3 py-1 text-sm bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 dark:hover:bg-purple-600"
             >
               Apply
             </button>

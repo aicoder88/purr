@@ -154,7 +154,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Animalerie Club Wouf Miaou",
     location: "Trois-Rivières, QC G9A 6M1",
     address: "3175 boulevard des Récollets, Trois-Rivières, QC G9A 6M1",
-    phone: "",
+    phone: "+1 819-376-0973",
     url: "https://woufmiaou.ca/",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },

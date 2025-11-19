@@ -74,7 +74,7 @@ const OfflinePage: NextPage = () => {
                 <Link href="/learn/how-it-works" className="block text-blue-700 dark:text-blue-300 hover:underline">
                   • How It Works
                 </Link>
-                <Link href="/support/contact" className="block text-blue-700 dark:text-blue-300 hover:underline">
+                <Link href="/contact" className="block text-blue-700 dark:text-blue-300 hover:underline">
                   • Contact Support
                 </Link>
               </div>

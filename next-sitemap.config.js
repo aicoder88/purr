@@ -15,7 +15,7 @@ module.exports = {
     ],
     additionalSitemaps: [
       'https://www.purrify.ca/server-sitemap.xml', // For dynamically generated content
-      'https://www.purrify.ca/sitemap-0.xml', // For static pages
+      'https://www.purrify.ca/sitemap-locations.xml', // Location pages
     ],
     host: 'https://www.purrify.ca',
   },

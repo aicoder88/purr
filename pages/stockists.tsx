@@ -130,6 +130,23 @@ const STOCKIST_LOCATIONS: StockistLocation[] = [
     region: 'montreal',
     type: 'independent',
     products: ['trial', 'regular']
+  },
+  {
+    id: 'animalerie-club-wouf-miaou',
+    name: 'Animalerie Club Wouf Miaou',
+    address: '3175 boulevard des Récollets',
+    city: 'Trois-Rivières',
+    province: 'QC',
+    postalCode: 'G9A 6M1',
+    phone: '+1 819-376-0973',
+    website: 'https://woufmiaou.ca/',
+    coordinates: { lat: 46.3432, lng: -72.5477 },
+    specialties: ['Complete pet care', 'Supplies'],
+    verified: true,
+    lastUpdated: '2025-01-18',
+    region: 'quebec',
+    type: 'independent',
+    products: ['trial', 'regular', 'large']
   }
 ];
 
@@ -376,7 +393,7 @@ export default function Stockists() {
                 }
               </p>
               <Link
-                href="/support/contact"
+                href="/contact"
                 className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
               >
                 {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
@@ -542,7 +559,7 @@ export default function Stockists() {
           </p>
           <div className="space-x-4">
             <Link
-              href="/support/contact"
+              href="/contact"
               className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 transition-colors"
             >
               {locale === 'fr' ? 'Demander à mon magasin' : 'Request for my store'}

@@ -1,13 +1,4 @@
 {
-  "woofmiao logo.png": {
-    "width": 827,
-    "height": 863,
-    "webp": "optimized/woofmiao logo.webp",
-    "webpSanitized": "optimized/woofmiao-logo.webp",
-    "avif": "optimized/woofmiao logo.avif",
-    "avifSanitized": "optimized/woofmiao-logo.avif",
-    "optimized": "optimized/woofmiao logo.png"
-  },
   "three_bags_no_bg.png": {
     "width": 1920,
     "height": 1629,

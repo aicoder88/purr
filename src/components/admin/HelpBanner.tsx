@@ -51,7 +51,7 @@ export default function HelpBanner({
         </div>
         <button
           onClick={handleDismiss}
-          className="ml-4 text-purple-400 hover:text-purple-600 dark:hover:text-purple-200"
+          className="ml-4 text-purple-400 dark:text-purple-500 hover:text-purple-600 dark:hover:text-purple-200"
           aria-label="Dismiss"
         >
           <X className="w-5 h-5" />
