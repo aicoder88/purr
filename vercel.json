@@ -111,5 +111,11 @@
       "source": "/robots.txt",
       "destination": "/api/robots"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/publish-scheduled-posts",
+      "schedule": "0 * * * *"
+    }
   ]
 }
