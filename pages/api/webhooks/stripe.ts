@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
-import { prisma } from '../../../src/lib/prisma';
+import prisma from '../../../src/lib/prisma';
 import { buffer } from 'micro';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -38,6 +38,9 @@ export default async function handler(
   try {
     switch (event.type) {
       case 'checkout.session.completed': {
+        if (!prisma) {
+          throw new Error('Database connection not established');
+        }
         const session = event.data.object as Stripe.Checkout.Session;
         const orderId = session.metadata?.orderId;
         const orderType = session.metadata?.type;
@@ -104,6 +107,9 @@ export default async function handler(
       }
 
       case 'checkout.session.expired': {
+        if (!prisma) {
+          throw new Error('Database connection not established');
+        }
         const session = event.data.object as Stripe.Checkout.Session;
         const orderId = session.metadata?.orderId;
         const orderType = session.metadata?.type;

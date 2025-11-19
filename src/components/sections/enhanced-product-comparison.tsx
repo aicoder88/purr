@@ -316,7 +316,7 @@ export function EnhancedProductComparison() {
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {product.recommended && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-deep-coral text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-1">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-deep-coral text-white dark:text-gray-100 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-1">
                     <Star className="w-3 h-3 fill-current" />
                     Most Popular
                   </div>
@@ -376,7 +376,7 @@ export function EnhancedProductComparison() {
                           isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
                         )}
                       >
-                        <a href={getPaymentLink(preferredOption.linkKey)} target="_blank" rel="noopener noreferrer">
+                        <a href={getPaymentLink(preferredOption.linkKey) || '#'} target="_blank" rel="noopener noreferrer">
                           {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                         </a>
                       </Button>

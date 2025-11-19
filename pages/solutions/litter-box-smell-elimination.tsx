@@ -57,7 +57,7 @@ export default function LitterBoxSmellEliminationPage() {
         }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -69,7 +69,7 @@ export default function LitterBoxSmellEliminationPage() {
                 height={300}
                 className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
               />
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Litter Box Smell Elimination
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
@@ -79,8 +79,8 @@ export default function LitterBoxSmellEliminationPage() {
             </div>
 
             {/* Main Solution Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl max-w-4xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold mb-6 text-green-600 dark:text-green-400 text-center">The Science of Odor Elimination</h2>
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-4xl mx-auto mb-16">
+              <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo dark:text-electric-indigo-400 text-center">The Science of Odor Elimination</h2>
 
               <Image
                 src={scienceImage}
@@ -122,20 +122,20 @@ export default function LitterBoxSmellEliminationPage() {
               />
 
               <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Ready to Eliminate Odors Forever?</h3>
+                <h3 className="text-2xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-50">Ready to Eliminate Odors Forever?</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
                   Join thousands of cat owners who've solved their litter box odor problems with Purrify.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/products/trial-size"
-                    className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 dark:hover:bg-green-500 transition-colors shadow-lg"
+                    className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
                   >
                     {`Try Purrify Risk-Free - ${formatProductPrice('trial')}`}
                   </Link>
                   <Link
                     href="/learn/how-it-works"
-                    className="inline-block border-2 border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    className="inline-block border-2 border-electric-indigo dark:border-electric-indigo text-electric-indigo dark:text-electric-indigo-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-electric-indigo/10 dark:hover:bg-electric-indigo/20 hover:scale-105 transition-all duration-300"
                   >
                     Learn the Science
                   </Link>
@@ -145,8 +145,8 @@ export default function LitterBoxSmellEliminationPage() {
 
             {/* Features Grid */}
             <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Works with Any Litter</h3>
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Works with Any Litter</h3>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                   <li>✅ Clay litter (clumping & non-clumping)</li>
                   <li>✅ Crystal/silica gel litter</li>
@@ -156,8 +156,8 @@ export default function LitterBoxSmellEliminationPage() {
                 </ul>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold mb-4 text-purple-600 dark:text-purple-400">Perfect For</h3>
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-bold mb-4 text-deep-coral dark:text-deep-coral-400">Perfect For</h3>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                   <li>🏠 Small apartments & condos</li>
                   <li>🐱 Multiple cat households</li>
@@ -169,7 +169,7 @@ export default function LitterBoxSmellEliminationPage() {
             </div>
 
             {/* Testimonial */}
-            <div className="bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-8 text-white dark:text-gray-100 text-center">
+            <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 text-white dark:text-gray-100 text-center">
               <blockquote className="text-2xl font-medium mb-4">
                 "I was so embarrassed when guests came over. Now I actually invite people in!
                 Purrify completely eliminated the smell in just one day."

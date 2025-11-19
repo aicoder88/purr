@@ -1,4 +1,4 @@
-import { prisma } from './prisma';
+import prisma from './prisma';
 import { PaymentValidator } from './payment-validation';
 import { OrderStatus } from '@prisma/client';
 
@@ -59,9 +59,13 @@ export class OrderManager {
     shippingAddress?: ShippingAddress;
   }): Promise<Order> {
     try {
-      const totalAmount = data.items.reduce((sum, item) => 
+      const totalAmount = data.items.reduce((sum, item) =>
         sum + (item.quantity * item.unitPrice), 0
       );
+
+      if (!prisma) {
+        throw new Error('Database connection not established');
+      }
 
       const order = await prisma.order.create({
         data: {
@@ -112,6 +116,10 @@ export class OrderManager {
         console.log('Shipping address would be updated:', updateData.shippingAddress);
       }
 
+      if (!prisma) {
+        throw new Error('Database connection not established');
+      }
+
       const order = await prisma.order.update({
         where: { id: orderId },
         data: updatePayload,
@@ -129,6 +137,10 @@ export class OrderManager {
 
   static async getOrder(orderId: string): Promise<Order | null> {
     try {
+      if (!prisma) {
+        return null;
+      }
+
       const order = await prisma.order.findUnique({
         where: { id: orderId },
         include: {
@@ -145,6 +157,10 @@ export class OrderManager {
 
   static async getOrdersByCustomer(customerId: string): Promise<Order[]> {
     try {
+      if (!prisma) {
+        return [];
+      }
+
       const orders = await prisma.order.findMany({
         where: { userId: customerId },
         include: {
@@ -163,11 +179,15 @@ export class OrderManager {
   static async processPayment(orderId: string, stripeSessionId: string): Promise<boolean> {
     try {
       const validation = await PaymentValidator.validateCheckoutSession(stripeSessionId);
-      
+
       if (!validation.isValid) {
         console.error('Payment validation failed:', validation.errors);
         await this.updateOrderStatus(orderId, { status: 'CANCELLED' });
         return false;
+      }
+
+      if (!prisma) {
+        throw new Error('Database connection not established');
       }
 
       await prisma.order.update({
@@ -220,6 +240,10 @@ export class OrderManager {
     try {
       const startDate = new Date();
       startDate.setDate(startDate.getDate() - timeframe);
+
+      if (!prisma) {
+        throw new Error('Database connection not established');
+      }
 
       const orders = await prisma.order.findMany({
         where: {

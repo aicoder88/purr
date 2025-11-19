@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { z } from 'zod';
 import { rateLimit } from 'express-rate-limit';
-import { prisma } from '../../src/lib/prisma';
+import prisma from '../../src/lib/prisma';
 
 // Initialize Stripe with proper error handling
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -54,8 +54,8 @@ interface OrderItemWithProduct {
 
 // Helper function to apply rate limiting in Next.js API route
 function runMiddleware(
-  req: NextApiRequest, 
-  res: NextApiResponse, 
+  req: NextApiRequest,
+  res: NextApiResponse,
   fn: (req: NextApiRequest, res: NextApiResponse, callback: (result?: Error) => void) => void
 ) {
   return new Promise((resolve, reject) => {
@@ -91,18 +91,18 @@ function sanitizeMetadata(metadata: Record<string, unknown>): Record<string, str
 function verifyItemPrice(item: OrderItemWithProduct): boolean {
   const productKey = item.product.id as keyof typeof ALLOWED_PRODUCTS;
   const allowedProduct = ALLOWED_PRODUCTS[productKey];
-  
+
   if (!allowedProduct) {
     console.error(`Invalid product ID: ${item.product.id}`);
     return false;
   }
-  
+
   const itemPriceInCents = Math.round(item.price * 100);
   if (itemPriceInCents > allowedProduct.maxPrice) {
     console.error(`Price too high for ${item.product.id}: ${itemPriceInCents} > ${allowedProduct.maxPrice}`);
     return false;
   }
-  
+
   return true;
 }
 
@@ -112,9 +112,9 @@ export default async function handler(
 ) {
   // Only allow POST requests
   if (req.method !== 'POST') {
-    return res.status(405).json({ 
+    return res.status(405).json({
       error: 'Method not allowed',
-      allowedMethods: ['POST'] 
+      allowedMethods: ['POST']
     });
   }
 
@@ -143,6 +143,9 @@ export default async function handler(
     };
 
     // Get order from database with proper validation
+    if (!prisma) {
+      throw new Error('Database connection not established');
+    }
     const order = await prisma.order.findUnique({
       where: { id: orderId },
       include: {
@@ -155,9 +158,9 @@ export default async function handler(
     });
 
     if (!order) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         error: 'Order not found',
-        orderId: orderId 
+        orderId: orderId
       });
     }
 
@@ -235,9 +238,9 @@ export default async function handler(
     // Log successful checkout creation (without sensitive data)
     console.log(`Checkout session created: ${session.id} for order ${orderId}`);
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       sessionId: session.id,
-      url: session.url 
+      url: session.url
     });
 
   } catch (error) {
@@ -250,9 +253,9 @@ export default async function handler(
     });
 
     // Return generic error to client
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Failed to create checkout session',
-      errorId: errorId 
+      errorId: errorId
     });
   }
 }

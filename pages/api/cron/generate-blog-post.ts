@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { prisma } from '../../../src/lib/prisma';
+import prisma from '../../../src/lib/prisma';
 import { generateAutomatedBlogPost } from '../../../src/lib/blog/generator';
 import { AutomatedContentGenerator } from '../../../src/lib/blog/automated-content-generator';
 import { ContentStore } from '../../../src/lib/blog/content-store';
@@ -34,6 +34,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const forceRun = req.query.force === 'true' || req.query.force === '1';
+  if (!prisma) {
+    return res.status(503).json({ error: 'Database not available' });
+  }
+
   const latestAutomated = await prisma.blogPost.findFirst({
     where: { topicKey: { not: null } },
     orderBy: { publishedAt: 'desc' },
@@ -53,11 +57,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     // Try new ContentStore-based generator first
     const useNewGenerator = process.env.USE_NEW_BLOG_GENERATOR === 'true';
-    
+
     if (useNewGenerator) {
       const generator = new AutomatedContentGenerator();
       const store = new ContentStore();
-      
+
       // Topic rotation
       const topics = [
         'How to Eliminate Cat Litter Odor Naturally',
@@ -71,21 +75,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'Natural Ways to Keep Your Home Fresh with Cats',
         'The Science Behind Cat Litter Odor Control'
       ];
-      
+
       const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
       const topicIndex = daysSinceEpoch % topics.length;
       const selectedTopic = topics[topicIndex];
-      
+
       console.log(`🤖 Generating blog post: ${selectedTopic}`);
-      
+
       const result = await generator.generateBlogPost(selectedTopic);
-      
+
       if (!result.success || !result.post) {
         throw new Error(`Generation failed: ${result.validation.errors.map(e => e.message).join(', ')}`);
       }
-      
+
       await generator.publishPost(result.post);
-      
+
       return res.status(200).json({
         success: true,
         postId: result.post.id,
@@ -96,7 +100,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         attempts: result.attempts
       });
     }
-    
+
     // Fallback to existing generator
     const result = await generateAutomatedBlogPost();
     return res.status(200).json({

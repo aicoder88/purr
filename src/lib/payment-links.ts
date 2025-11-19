@@ -3,7 +3,9 @@ export type PaymentLinkKey =
   | 'standardSingle'
   | 'standardAutoship'
   | 'familySingle'
-  | 'familyAutoship';
+  | 'familyAutoship'
+  | 'jumboSingle'
+  | 'jumboAutoship';
 
 const DEFAULT_PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
   trialSingle: 'https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04',
@@ -11,6 +13,8 @@ const DEFAULT_PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
   standardAutoship: '',
   familySingle: '',
   familyAutoship: '',
+  jumboSingle: '',
+  jumboAutoship: '',
 };
 
 const PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
@@ -19,6 +23,8 @@ const PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
   standardAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_STANDARD_AUTOSHIP ?? DEFAULT_PAYMENT_LINKS.standardAutoship,
   familySingle: process.env.NEXT_PUBLIC_STRIPE_LINK_FAMILY_SINGLE ?? DEFAULT_PAYMENT_LINKS.familySingle,
   familyAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_FAMILY_AUTOSHIP ?? DEFAULT_PAYMENT_LINKS.familyAutoship,
+  jumboSingle: process.env.NEXT_PUBLIC_STRIPE_LINK_JUMBO_SINGLE ?? DEFAULT_PAYMENT_LINKS.jumboSingle,
+  jumboAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_JUMBO_AUTOSHIP ?? DEFAULT_PAYMENT_LINKS.jumboAutoship,
 };
 
 export function getPaymentLink(key: PaymentLinkKey): string | null {

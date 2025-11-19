@@ -8,7 +8,7 @@ import type { BlogPost } from '../../src/data/blog-posts';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { SocialFollowCTA } from '../../src/components/blog/SocialFollowCTA';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
-import { prisma } from '../../src/lib/prisma';
+import prisma from '../../src/lib/prisma';
 import fs from 'fs';
 import path from 'path';
 
@@ -47,7 +47,7 @@ export function getStaticPaths() {
       };
     })
     .filter((value): value is { params: { slug: string } } => Boolean(value));
-  
+
   // We'll pre-render only these paths at build time
   // { fallback: 'blocking' } means other routes will be rendered at request time
   return { paths, fallback: 'blocking' };
@@ -59,13 +59,13 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     // First, try our new ContentStore
     const { ContentStore } = await import('../../src/lib/blog/content-store');
     const { SEOGenerator } = await import('../../src/lib/blog/seo-generator');
-    
+
     const store = new ContentStore();
     const seoGen = new SEOGenerator();
     const currentLocale = locale || 'en';
-    
+
     const blogPost = await store.getPost(params.slug, currentLocale);
-    
+
     if (blogPost) {
       // Transform to match existing BlogPost interface
       const post: BlogPost = {
@@ -79,18 +79,21 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         content: blogPost.content,
         locale: blogPost.locale as 'en' | 'fr' | 'zh'
       };
-      
+
       return {
         props: { post },
         revalidate: 3600 // Revalidate every hour
       };
     }
-    
+
     // Fallback to database
-    const dbPost = await prisma.blogPost.findUnique({
-      where: { slug: params.slug },
-      include: { secondaryImages: true },
-    });
+    let dbPost = null;
+    if (prisma) {
+      dbPost = await prisma.blogPost.findUnique({
+        where: { slug: params.slug },
+        include: { secondaryImages: true },
+      });
+    }
 
     if (dbPost) {
       const toc = asArray<TocEntry>(dbPost.toc);
@@ -126,32 +129,32 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
 
     // WordPress API URL - replace with your WordPress site URL
     const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
-    
+
     // Check if WordPress API URL is configured
     if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
       // If WordPress is not configured yet, use sample data
       console.log('WordPress API not configured, using sample data');
-      
+
       // Find the post that matches the slug, handling language prefixes
       const foundPost = sampleBlogPosts.find((post) => {
         // Remove language prefix from the post link for comparison
         const postSlug = post.link.replace(/^\/(en|fr|zh)\//, '').replace(/^\//, '');
         return postSlug === `blog/${params.slug}` || postSlug.endsWith(`/${params.slug}`);
       });
-      
+
       if (!foundPost) {
         console.error(`Blog post not found for slug: ${params.slug}`);
         return {
           notFound: true, // This will show the 404 page
         };
       }
-      
+
       // Create a copy of the post to avoid modifying the original
       const post = { ...foundPost };
-      
+
       // Add content to the post
       post.content = getBlogPostContent();
-      
+
       // Return the post data as props
       return {
         props: {
@@ -161,36 +164,36 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         revalidate: 86400,
       };
     }
-    
+
     // Fetch post from WordPress by slug
     const response = await fetch(`${wpApiUrl}/posts?slug=${params.slug}&_embed`);
-    
+
     if (!response.ok) {
       throw new Error(`WordPress API error: ${response.status}`);
     }
-    
+
     const wpPosts = await response.json();
-    
+
     if (wpPosts.length === 0) {
       return {
         notFound: true,
       };
     }
-    
+
     const wpPost = wpPosts[0];
-    
+
     // Transform WordPress post to match our BlogPost interface
-      const post: BlogPost = {
-        title: wpPost.title.rendered,
-        excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
-        author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
-        date: new Date(wpPost.date).toISOString().split('T')[0],
-        image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
-        link: `/blog/${wpPost.slug}`,
-        content: wpPost.content.rendered,
-        locale: 'en'
-      };
-    
+    const post: BlogPost = {
+      title: wpPost.title.rendered,
+      excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
+      date: new Date(wpPost.date).toISOString().split('T')[0],
+      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      link: `/blog/${wpPost.slug}`,
+      content: wpPost.content.rendered,
+      locale: 'en'
+    };
+
     // Return the post data as props
     return {
       props: {
@@ -201,22 +204,22 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     };
   } catch (err) {
     console.error('Error fetching blog post:', err);
-    
+
     // Fallback to sample data in case of error
     try {
       const foundPost = sampleBlogPosts.find((post) =>
         post.link.includes(params.slug)
       );
-      
+
       if (!foundPost) {
         return {
           notFound: true,
         };
       }
-      
+
       const post = { ...foundPost };
       post.content = getBlogPostContent();
-      
+
       return {
         props: {
           post,
@@ -246,7 +249,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
     ctaButton: locale === 'fr' ? 'Commander maintenant ->' : locale === 'zh' ? '立即订购 ->' : 'Shop now ->',
     shareHeading: locale === 'fr' ? "Partager l'article" : locale === 'zh' ? '分享本文' : 'Share this article',
   };
-  
+
   // If the page is still generating via fallback, show loading
   if (router.isFallback) {
     return (
@@ -262,7 +265,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         <title>{`${post.title} | ${SITE_NAME} Blog`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={post.link} />
@@ -271,14 +274,14 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         <meta property="og:image" content={post.image} />
         <meta property="article:published_time" content={new Date(post.date).toISOString()} />
         <meta property="article:author" content={post.author} />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={post.link} />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.excerpt} />
         <meta property="twitter:image" content={post.image} />
-        
+
         {/* Canonical Link */}
         <link rel="canonical" href={post.link} />
 
@@ -318,26 +321,26 @@ export default function BlogPost({ post }: { post: BlogPost }) {
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <Link 
-              href="/blog" 
+            <Link
+              href="/blog"
               className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] hover:text-[#5B2EFF]/80 dark:hover:text-[#3694FF]/80 mb-8"
             >
-              <svg 
-                className="w-4 h-4 mr-2" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
               Back to Blog
             </Link>
-            
+
             <div className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
                 {post.title}
@@ -347,7 +350,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 <span>By {post.author}</span>
               </div>
             </div>
-            
+
             <div className="relative h-[500px] mb-4">
               <Image
                 src={post.image}
@@ -413,8 +416,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 ))}
               </div>
             )}
-            
-            <div 
+
+            <div
               className="prose prose-lg max-w-none prose-headings:text-[#5B2EFF] dark:prose-headings:text-[#3694FF] prose-a:text-[#FF3131] dark:prose-a:text-[#FF6B6B] prose-a:no-underline hover:prose-a:underline dark:hover:prose-a:underline"
               dangerouslySetInnerHTML={{ __html: post.content || '' }}
             />
@@ -445,7 +448,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 </div>
               </div>
             )}
-            
+
             <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
               <h3 className="text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.shareHeading}</h3>
               <div className="flex space-x-4">

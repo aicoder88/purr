@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { prisma } from '../../src/lib/prisma';
+import prisma from '../../src/lib/prisma';
 import { getSession } from 'next-auth/react';
 
 interface CartItem {
@@ -21,6 +21,9 @@ export default async function handler(
     const { items, customer, total } = req.body;
 
     // Create order in database
+    if (!prisma) {
+      return res.status(503).json({ message: 'Database not available' });
+    }
     const order = await prisma.order.create({
       data: {
         totalAmount: total,
@@ -38,7 +41,7 @@ export default async function handler(
           },
         },
         items: {
-                    create: items.map((item: CartItem) => ({
+          create: items.map((item: CartItem) => ({
             productId: item.id,
             quantity: item.quantity,
             price: item.price,

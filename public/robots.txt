@@ -15,3 +15,4 @@ Host: https://www.purrify.ca
 # Sitemaps
 Sitemap: https://www.purrify.ca/sitemap.xml
 Sitemap: https://www.purrify.ca/server-sitemap.xml
+Sitemap: https://www.purrify.ca/sitemap-locations.xml

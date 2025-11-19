@@ -1,8 +1,13 @@
 import { AUTOMATED_BLOG_TOPICS } from '../../data/automated-blog-topics';
-import { prisma } from '../prisma';
+import prisma from '../prisma';
 import { BlogTopic } from './types';
 
 export async function getNextTopic(): Promise<BlogTopic> {
+  if (!prisma) {
+    // If database is not available, return a random topic to keep things running
+    return AUTOMATED_BLOG_TOPICS[Math.floor(Math.random() * AUTOMATED_BLOG_TOPICS.length)];
+  }
+
   const usedTopicKeys = new Set(
     (
       await prisma.blogPost.findMany({

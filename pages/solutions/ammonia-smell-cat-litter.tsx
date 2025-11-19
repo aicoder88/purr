@@ -11,7 +11,7 @@ export default function ammoniasmellcatlitterPage() {
   const sectionImage1 = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Scientific molecular view
   const sectionImage2 = 'https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=1600&q=80'; // Clean fresh home
   const solutionImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Happy cat
-  
+
   return (
     <>
       <NextSeo
@@ -40,18 +40,18 @@ export default function ammoniasmellcatlitterPage() {
         ]}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Stop That Sharp Ammonia Smell!
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
               Finally! A solution that destroys ammonia smell instead of masking it. Your nose (and your guests) will thank you.
             </p>
-            
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Powerful Ammonia Destroyer</h2>
+
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
+              <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Powerful Ammonia Destroyer</h2>
               <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">This isn't your typical air freshener. Purrify uses the same activated carbon grade found in military gas masks to destroy ammonia molecules instantly.</p>
 
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">
@@ -65,7 +65,7 @@ export default function ammoniasmellcatlitterPage() {
                   That's where activated carbon technology makes the difference.
                 </p>
               </div>
-              
+
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-3xl mb-2">⚡</div>
@@ -83,10 +83,10 @@ export default function ammoniasmellcatlitterPage() {
                   <p className="text-sm text-gray-600 dark:text-gray-300">Small amount goes a long way</p>
                 </div>
               </div>
-              
+
               <Link
                 href="/products/trial-size"
-                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Get Purrify Now - Stop The Stink
               </Link>
@@ -117,10 +117,10 @@ export default function ammoniasmellcatlitterPage() {
 
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">How It Works</h2>
+            <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-gray-100">How It Works</h2>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 mb-12 shadow-lg">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">The Science Behind Ammonia Elimination</h3>
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 mb-12 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-2xl font-heading font-semibold mb-6 text-gray-900 dark:text-gray-100">The Science Behind Ammonia Elimination</h3>
               <p className="text-gray-700 dark:text-gray-200 mb-4">
                 Activated carbon works through a process called adsorption (not absorption). The carbon has millions of
                 microscopic pores that create an enormous surface area - just one gram has the surface area of a football field!
@@ -157,24 +157,24 @@ export default function ammoniasmellcatlitterPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-orange-600 dark:text-orange-300">1</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Sprinkle</h3>
+                <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Sprinkle</h3>
                 <p className="text-gray-700 dark:text-gray-200">Add Purrify to your existing litter - works with any brand</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-orange-600 dark:text-orange-300">2</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">2</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Activate</h3>
+                <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Activate</h3>
                 <p className="text-gray-700 dark:text-gray-200">Activated carbon absorbs ammonia molecules at the source</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-orange-600 dark:text-orange-300">3</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Eliminate</h3>
+                <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Eliminate</h3>
                 <p className="text-gray-700 dark:text-gray-200">Odors are permanently trapped - no more ammonia smell</p>
               </div>
             </div>
@@ -205,13 +205,13 @@ export default function ammoniasmellcatlitterPage() {
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Solve Your Ammonia Smell Problem?</h2>
+              <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Solve Your Ammonia Smell Problem?</h2>
               <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners who've eliminated litter box odors</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Why Choose Purrify?</h3>
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Why Choose Purrify?</h3>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li>✓ Works with any litter brand you already use</li>
                   <li>✓ 100% natural activated carbon - safe for cats and humans</li>
@@ -221,8 +221,8 @@ export default function ammoniasmellcatlitterPage() {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Common Results</h3>
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Common Results</h3>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li>✓ Immediate reduction in ammonia smell</li>
                   <li>✓ Fresh-smelling home even with multiple cats</li>
@@ -255,7 +255,7 @@ export default function ammoniasmellcatlitterPage() {
             <div className="text-center">
               <Link
                 href="/products/compare"
-                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all text-lg mr-4"
+                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
               >
                 Shop Purrify Now
               </Link>

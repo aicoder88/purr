@@ -20,7 +20,7 @@ export function ScienceSection() {
             description: "100% natural activated carbon. Safe for pets and humans."
         },
         {
-            icon: <Leaf className="w-6 h-6 text-green-500" />,
+            icon: <Leaf className="w-6 h-6 text-green-500 dark:text-green-400" />,
             title: "Eco-Friendly",
             description: "Sustainable materials that are biodegradable and earth-safe."
         }
@@ -113,7 +113,7 @@ export function ScienceSection() {
                                 </div>
                                 <div>
                                     <p className="font-bold text-sm text-gray-900 dark:text-white">100% Natural</p>
-                                    <p className="text-xs text-gray-500">No chemicals</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">No chemicals</p>
                                 </div>
                             </div>
                         </div>

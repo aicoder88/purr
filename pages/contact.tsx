@@ -24,7 +24,7 @@ export default function ContactPage() {
     success?: boolean;
     message?: string;
   }>({});
-  
+
   const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
   const pageDescription = "Get in touch with Purrify's customer support team. We're here to help with product questions, orders, and cat litter odor control advice.";
   const canonicalPath = '/contact';
@@ -210,23 +210,23 @@ export default function ContactPage() {
             <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
-          
+
           <Container>
             <div className="text-center max-w-4xl mx-auto relative z-10">
               <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
                 <MessageCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                 <span className="text-purple-700 dark:text-purple-300 font-semibold">24/7 Support Available</span>
               </div>
-              
+
               <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
                 We're Here to Help! 🐱
               </h1>
-              
+
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-medium">
                 Have questions about Purrify? Need help with your order? <br className="hidden md:block" />
                 Our friendly customer support team is ready to assist you with expert advice and solutions.
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4 text-sm">
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
                   <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
@@ -332,7 +332,7 @@ export default function ContactPage() {
         <section className="py-20 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-100/50 via-pink-100/50 to-orange-100/50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20"></div>
-          
+
           <Container>
             <div className="max-w-4xl mx-auto relative z-10">
               <div className="text-center mb-12">
@@ -346,11 +346,10 @@ export default function ContactPage() {
 
               <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border-2 border-purple-200 dark:border-purple-800">
                 {submitStatus.message && (
-                  <div className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${
-                    submitStatus.success 
+                  <div className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${submitStatus.success
                       ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
                       : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
-                  }`}>
+                    }`}>
                     {submitStatus.success && <CheckCircle className="w-6 h-6 mr-3" />}
                     {submitStatus.message}
                   </div>
@@ -603,14 +602,14 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F] group"
               >
-                <div className="p-3 bg-gradient-to-br from-[#E4405F] to-[#833AB4] rounded-lg text-white">
+                <div className="p-3 bg-gradient-to-br from-[#E4405F] to-[#833AB4] rounded-lg text-white dark:text-white">
                   <Instagram className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900 dark:text-white">Instagram</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#E4405F]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#E4405F]" />
               </a>
 
               <a
@@ -619,14 +618,14 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1DA1F2] group"
               >
-                <div className="p-3 bg-[#1DA1F2] rounded-lg text-white">
+                <div className="p-3 bg-[#1DA1F2] rounded-lg text-white dark:text-white">
                   <Twitter className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900 dark:text-white">X (Twitter)</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1DA1F2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1DA1F2]" />
               </a>
 
               <a
@@ -635,14 +634,14 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1877F2] group"
               >
-                <div className="p-3 bg-[#1877F2] rounded-lg text-white">
+                <div className="p-3 bg-[#1877F2] rounded-lg text-white dark:text-white">
                   <Facebook className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900 dark:text-white">Facebook</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Purrify Canada</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1877F2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1877F2]" />
               </a>
 
               <a
@@ -651,14 +650,14 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#FF0000] group"
               >
-                <div className="p-3 bg-[#FF0000] rounded-lg text-white">
+                <div className="p-3 bg-[#FF0000] rounded-lg text-white dark:text-white">
                   <Youtube className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900 dark:text-white">YouTube</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#FF0000]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#FF0000]" />
               </a>
 
               <a
@@ -667,14 +666,14 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#0A66C2] group"
               >
-                <div className="p-3 bg-[#0A66C2] rounded-lg text-white">
+                <div className="p-3 bg-[#0A66C2] rounded-lg text-white dark:text-white">
                   <Linkedin className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-gray-900 dark:text-white">LinkedIn</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Purrify</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#0A66C2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#0A66C2]" />
               </a>
 
               <a
@@ -692,7 +691,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">TikTok</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-black dark:group-hover:text-white" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white" />
               </a>
             </div>
 

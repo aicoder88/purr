@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { prisma } from '../prisma';
+import prisma from '../prisma';
 import { callAi } from './ai-client';
 import { loadGuidelines } from './guidelines';
 import { getNextTopic } from './topic-queue';
@@ -33,6 +33,9 @@ const WORD_COUNT_REGEX = /<[^>]+>/g;
 
 async function ensureUniqueSlug(baseSlug: string) {
   const slugCandidate = sanitizeSlug(baseSlug);
+  if (!prisma) {
+    throw new Error('Database connection not established');
+  }
   const existing = await prisma.blogPost.findUnique({ where: { slug: slugCandidate } });
   if (!existing) {
     return slugCandidate;
@@ -86,6 +89,10 @@ export async function generateAutomatedBlogPost() {
 
   if (!heroImage) {
     throw new Error('Failed to source hero image');
+  }
+
+  if (!prisma) {
+    throw new Error('Database connection not established');
   }
 
   const createdPost = await prisma.blogPost.create({

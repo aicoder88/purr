@@ -11,7 +11,7 @@ export default function MultipleCatsOdorControlPage() {
   // SEO optimized images for multi-cat households
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Multiple cats together
   const solutionImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat home
-  
+
   return (
     <>
       <NextSeo
@@ -55,7 +55,7 @@ export default function MultipleCatsOdorControlPage() {
         }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Image
@@ -65,17 +65,17 @@ export default function MultipleCatsOdorControlPage() {
               height={300}
               className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
             />
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Multiple Cats Odor Control
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
               Complete solution for multiple cats odor control
             </p>
-            
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">The Purrify Solution</h2>
+
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
+              <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">The Purrify Solution</h2>
               <p className="text-lg mb-6">Purrify handles multi-cat households with industrial-strength odor elimination</p>
-              
+
               <Image
                 src={solutionImage}
                 alt="Happy multi-cat household with successful odor management"
@@ -98,10 +98,10 @@ export default function MultipleCatsOdorControlPage() {
                   <h3 className="font-bold">Cost Effective</h3>
                 </div>
               </div>
-              
-              <Link 
+
+              <Link
                 href="/products/trial-size"
-                className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
               </Link>
@@ -111,27 +111,27 @@ export default function MultipleCatsOdorControlPage() {
 
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <h2 className="text-3xl font-heading font-bold text- center mb-12">How It Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold">1</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Sprinkle</h3>
+                <h3 className="text-xl font-heading font-bold mb-2">Sprinkle</h3>
                 <p>Add Purrify to your existing litter</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold">2</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">2</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Activate</h3>
+                <h3 className="text-xl font-heading font-bold mb-2">Activate</h3>
                 <p>Activated carbon absorbs odor molecules</p>
               </div>
               <div className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold">3</span>
+                <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Eliminate</h3>
+                <h3 className="text-xl font-heading font-bold mb-2">Eliminate</h3>
                 <p>Odors are permanently trapped</p>
               </div>
             </div>
@@ -140,11 +140,11 @@ export default function MultipleCatsOdorControlPage() {
 
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">Ready to Solve Your Multiple Cats Odor Control?</h2>
+            <h2 className="text-3xl font-heading font-bold mb-8">Ready to Solve Your Multiple Cats Odor Control?</h2>
             <p className="text-xl mb-8">Join 1,000+ satisfied cat owners</p>
-            <Link 
+            <Link
               href="/products/compare"
-              className="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all text-lg"
+              className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg shadow-lg"
             >
               Shop Purrify Now
             </Link>

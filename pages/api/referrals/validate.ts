@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { prisma } from '../../../src/lib/prisma';
+import prisma from '../../../src/lib/prisma';
 import { getSession } from 'next-auth/react';
 
 export default async function handler(
@@ -16,6 +16,10 @@ export default async function handler(
 
     if (!session?.user?.email) {
       return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    if (!prisma) {
+      return res.status(503).json({ message: 'Database not available' });
     }
 
     // Find referral code

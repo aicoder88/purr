@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { sampleBlogPosts, BlogPost } from '../../src/data/blog-posts';
-import { prisma } from '../../src/lib/prisma';
+import prisma from '../../src/lib/prisma';
 
 interface WpPost {
   title: {
@@ -49,14 +49,11 @@ export default async function handler(
         title: true,
         excerpt: true,
         content: true,
-        featuredImage: true,
+        heroImageUrl: true,
         publishedAt: true,
+        createdAt: true,
         author: true,
-        categories: true,
-        tags: true,
-        seoTitle: true,
-        seoDescription: true,
-        readingTime: true,
+        locale: true,
       },
     });
 
@@ -74,10 +71,10 @@ export default async function handler(
         }))
       );
     }
-    
+
     // WordPress API URL - replace with your WordPress site URL
     const wpApiUrl = process.env.WORDPRESS_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2';
-    
+
     // Check if WordPress API URL is configured
     if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
       // If WordPress is not configured yet, return sample data
@@ -85,19 +82,19 @@ export default async function handler(
       const posts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
       return res.status(200).json(posts);
     }
-    
+
     // Fetch posts from WordPress
     const postsUrl = `${wpApiUrl}/posts?_embed&per_page=${take}`;
     const response = await fetch(postsUrl);
-    
+
     if (!response.ok) {
       throw new Error(`WordPress API error: ${response.status}`);
     }
-    
+
     const wpPosts = await response.json();
-    
+
     // Transform WordPress posts to match our BlogPost interface
-        const posts: BlogPost[] = wpPosts.map((post: WpPost) => ({
+    const posts: BlogPost[] = wpPosts.map((post: WpPost) => ({
       title: post.title.rendered,
       excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
@@ -107,7 +104,7 @@ export default async function handler(
       content: post.content.rendered,
       locale: 'en'
     }));
-    
+
     res.status(200).json(posts);
   } catch (error) {
     console.error('Error fetching WordPress posts:', error);
