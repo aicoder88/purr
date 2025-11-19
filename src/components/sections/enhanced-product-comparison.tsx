@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useState, useCallback } from 'react';
 import { useTranslation } from "../../lib/translation-context";
 import { useCart } from "../../lib/cart-context";
-import { Check, X, TrendingUp, Award, Zap, ShoppingCart } from 'lucide-react';
+import { Check, Zap, ShoppingCart, Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
+import { cn } from "@/lib/utils";
 
 type PurchaseAction = 'link' | 'cart';
 
@@ -35,8 +36,8 @@ type ProductCard = {
   name: string;
   subtitle: string;
   description: string;
-  badge: string;
-  badgeColor: string;
+  badge?: string;
+  badgeColor?: string;
   duration: string;
   coverage: string;
   features: {
@@ -53,12 +54,12 @@ type ProductCard = {
   recommended?: boolean;
 };
 
-
 export function EnhancedProductComparison() {
   const { t, locale } = useTranslation();
   const { addToCart } = useCart();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [addingToCart, setAddingToCart] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'subscription' | 'one-time'>('subscription');
 
   const handleAddToCart = useCallback(async (productId: string) => {
     setAddingToCart(productId);
@@ -72,14 +73,6 @@ export function EnhancedProductComparison() {
       setTimeout(() => setAddingToCart(null), 1000);
     }
   }, [addToCart]);
-
-  const handleMouseEnter = useCallback((productId: string) => {
-    setHoveredProduct(productId);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setHoveredProduct(null);
-  }, []);
 
   const handleAddToCartClick = useCallback((productId: string) => {
     handleAddToCart(productId);
@@ -96,33 +89,9 @@ export function EnhancedProductComparison() {
     return Math.max(0, Math.round(savingsRatio * 100));
   };
 
-  const formatPerMonthLabel = (value: number) => {
-    const formatted = formatCurrencyValue(value, locale);
-    const template = t.pricing?.perMonth || '≈ {price}/month';
-    return template.replace('{price}', formatted);
-  };
-
   const formatSavingsLabel = (percentage: number) => {
-    const template = t.pricing?.saveVsOneTime || 'Save {percent}% vs one-time';
+    const template = t.pricing?.saveVsOneTime || 'Save {percent}%';
     return template.replace('{percent}', percentage.toString());
-  };
-
-  const pricingCopy = {
-    oneTimeLabel: t.pricing?.oneTimeLabel || 'One-time purchase',
-    autoshipLabel: t.pricing?.autoshipLabel || 'Autoship & Save',
-    autoshipBestLabel:
-      t.pricing?.autoshipBestLabel || t.pricing?.autoshipLabel || 'Autoship & Save',
-    billedEvery: t.pricing?.billedEvery || 'Billed every',
-    months: t.pricing?.months || 'months',
-    shippingIncluded: t.pricing?.shippingIncluded || 'Shipping included',
-    freeShipping: t.pricing?.freeShipping || 'Free shipping included',
-    plusShipping: t.pricing?.plusShipping || '+ shipping',
-    shippingCalculated: t.pricing?.shippingCalculated || 'Shipping calculated at checkout',
-    startAutoship: t.pricing?.startAutoship || 'Start Autoship',
-    buyNow: t.pricing?.buyNow || 'Buy Now',
-    linkComingSoon: t.pricing?.linkComingSoon || 'Payment link coming soon',
-    recommended: t.pricing?.recommended || 'Most recommended',
-    bestValueBadge: t.enhancedProductComparison?.bestValue || 'BEST VALUE',
   };
 
   const familyAutoshipSavings = computeQuarterlySavings(familyPriceAmount, familyAutoshipPriceAmount);
@@ -130,13 +99,13 @@ export function EnhancedProductComparison() {
   const products: ProductCard[] = [
     {
       id: 'purrify-12g',
-      name: t.products?.['purrify-12g']?.name || 'Purrify 12g',
-      subtitle: t.productComparison?.products?.[0]?.name || 'Trial Size',
-      badge: t.enhancedProductComparison?.trial || 'ONE-TIME PURCHASE',
-      badgeColor: 'bg-blue-500 dark:bg-blue-600',
-      description: t.enhancedProductComparison?.perfectForFirstTime || 'Perfect for first-time users',
-      duration: t.productComparison?.products?.[0]?.duration || 'One week duration',
-      coverage: t.productComparison?.products?.[0]?.cats || 'For one cat',
+      name: t.products?.['purrify-12g']?.name || 'Trial Size',
+      subtitle: '12g Pack',
+      badge: 'TRIAL',
+      badgeColor: 'bg-gray-900 dark:bg-gray-700',
+      description: 'Perfect for testing the magic of Purrify.',
+      duration: '1 Week',
+      coverage: '1 Cat',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -151,27 +120,26 @@ export function EnhancedProductComparison() {
         {
           key: 'trial-single',
           type: 'one-time',
-          label: '💰 ONE-TIME PRICE',
+          label: 'One-Time',
           priceFormatted: formatProductPrice('trial', locale),
-          subLabel: 'Pay once, no recurring charges',
+          subLabel: 'One-time purchase',
           action: 'link',
           linkKey: 'trialSingle',
-          ctaLabel: t.homepage.enhancedComparison.tryRiskFree,
+          ctaLabel: 'Try Risk Free',
           icon: 'cart',
-          ctaEmphasis: 'primary',
+          ctaEmphasis: 'secondary',
         },
       ],
     },
     {
       id: 'purrify-120g',
-      name: t.products?.['purrify-120g']?.name || 'Purrify Regular size 120g',
-      subtitle: '⭐ BEST VALUE - SAVE 40%',
-      badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
-      badgeColor: 'bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600',
-      description:
-        'The #1 choice for multi-cat homes. Delivered every 3 months at the lowest price per oz.',
-      duration: t.productComparison?.products?.[2]?.duration || '4-week duration',
-      coverage: t.productComparison?.products?.[2]?.cats || 'For 1-2 cats',
+      name: t.products?.['purrify-120g']?.name || 'Regular',
+      subtitle: '120g Pack',
+      badge: 'MOST POPULAR',
+      badgeColor: 'bg-deep-coral',
+      description: 'The #1 choice for single or dual cat homes.',
+      duration: '3 Months',
+      coverage: '1-2 Cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -186,31 +154,27 @@ export function EnhancedProductComparison() {
         {
           key: 'family-autoship',
           type: 'subscription',
-          label: '💎 SUBSCRIBE EVERY 3 MONTHS',
+          label: 'Subscribe',
           priceFormatted: formatCurrencyValue(familyAutoshipPriceAmount / 3, locale),
-          subLabel: `Billed ${formatProductPrice('familyAutoship', locale)} every 3 months • Shipping is included`,
-          perMonth: 'Per month',
-          totalPrice: `${formatProductPrice('familyAutoship', locale)} per quarter`,
-          shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
+          subLabel: 'per month, billed quarterly',
+          totalPrice: `${formatProductPrice('familyAutoship', locale)} / quarter`,
           savings: familyAutoshipSavings,
           action: 'link',
           linkKey: 'familyAutoship',
-          ctaLabel: '🔥 GET BEST VALUE - SAVE NOW',
+          ctaLabel: 'Subscribe & Save',
           icon: 'zap',
           highlight: true,
-          badgeLabel: `⭐ MOST POPULAR • ${pricingCopy.recommended}`,
-          ctaEmphasis: 'contrast',
+          ctaEmphasis: 'primary',
         },
         {
           key: 'family-single',
           type: 'one-time',
-          label: 'One-Time Purchase',
+          label: 'One-Time',
           priceFormatted: formatProductPrice('family', locale),
-          subLabel: 'No subscription required',
-          shippingNote: 'Shipping calculated at checkout',
+          subLabel: 'One-time purchase',
           action: 'cart',
           linkKey: 'familySingle',
-          ctaLabel: 'Buy Once',
+          ctaLabel: 'Add to Cart',
           icon: 'cart',
           cartProductId: 'purrify-120g',
           ctaEmphasis: 'secondary',
@@ -220,14 +184,13 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-240g',
-      name: t.products?.['purrify-240g']?.name || 'Purrify Large size 240g',
-      subtitle: 'Large size',
-      badge: '💎 SUBSCRIBE EVERY 3 MONTHS',
-      badgeColor: 'bg-purple-600 dark:bg-purple-700',
-      description:
-        'For large multi-cat households or extended supply.',
-      duration: '4-week duration',
-      coverage: 'For 3+ cats',
+      name: t.products?.['purrify-240g']?.name || 'Large',
+      subtitle: '240g Pack',
+      badge: 'BEST VALUE',
+      badgeColor: 'bg-electric-indigo',
+      description: 'Maximum savings for multi-cat households.',
+      duration: '3 Months',
+      coverage: '3+ Cats',
       features: {
         odorControl: true,
         naturalIngredients: true,
@@ -242,16 +205,14 @@ export function EnhancedProductComparison() {
         {
           key: 'jumbo-autoship',
           type: 'subscription',
-          label: '💎 SUBSCRIBE EVERY 3 MONTHS',
+          label: 'Subscribe',
           priceFormatted: formatCurrencyValue(getProductPrice('jumboAutoship') / 3, locale),
-          subLabel: `Billed ${formatProductPrice('jumboAutoship', locale)} every 3 months • Shipping is included`,
-          perMonth: 'Per month',
-          totalPrice: `${formatProductPrice('jumboAutoship', locale)} per quarter`,
-          shippingNote: '🚚 Delivered Every 3 Months - Cancel Anytime',
+          subLabel: 'per month, billed quarterly',
+          totalPrice: `${formatProductPrice('jumboAutoship', locale)} / quarter`,
           savings: computeQuarterlySavings(getProductPrice('jumbo'), getProductPrice('jumboAutoship')),
           action: 'cart',
           linkKey: 'jumboAutoship' as PaymentLinkKey,
-          ctaLabel: 'Subscribe Now',
+          ctaLabel: 'Subscribe & Save',
           icon: 'zap',
           cartProductId: 'purrify-240g-autoship',
           ctaEmphasis: 'primary',
@@ -259,13 +220,12 @@ export function EnhancedProductComparison() {
         {
           key: 'jumbo-single',
           type: 'one-time',
-          label: 'One-Time Purchase',
+          label: 'One-Time',
           priceFormatted: formatProductPrice('jumbo', locale),
-          subLabel: 'No subscription required',
-          shippingNote: 'Shipping calculated at checkout',
+          subLabel: 'One-time purchase',
           action: 'cart',
           linkKey: 'jumboSingle' as PaymentLinkKey,
-          ctaLabel: 'Buy Once',
+          ctaLabel: 'Add to Cart',
           icon: 'cart',
           cartProductId: 'purrify-240g',
           ctaEmphasis: 'secondary',
@@ -274,623 +234,190 @@ export function EnhancedProductComparison() {
     },
   ];
 
-  const renderOptionButton = (option: PurchaseOption, productId: string) => {
-    const paymentLink = option.linkKey ? getPaymentLink(option.linkKey) : null;
-    const Icon = option.icon === 'zap' ? Zap : ShoppingCart;
-
-    const baseClass = 'w-full py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-bold transition-all duration-300';
-
-    const emphasisClassMap: Record<NonNullable<PurchaseOption['ctaEmphasis']>, string> = {
-      primary:
-        'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 shadow-lg hover:shadow-xl',
-      secondary:
-        'bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]',
-      contrast:
-        'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-500 text-gray-900 dark:text-gray-900 hover:from-amber-300 hover:via-yellow-300 hover:to-amber-300 dark:hover:from-amber-400 dark:hover:via-yellow-400 dark:hover:to-amber-400 shadow-2xl hover:shadow-3xl font-black uppercase tracking-widest transform hover:scale-105 transition-all duration-200 border-4 border-white dark:border-gray-900 animate-pulse-button',
-    };
-
-    const buttonClass = `${baseClass} ${emphasisClassMap[option.ctaEmphasis || 'secondary']}`;
-
-    if (paymentLink) {
-      return (
-        <Button asChild className={buttonClass}>
-          <a
-            href={paymentLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2"
-          >
-            <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
-            {option.ctaLabel}
-          </a>
-        </Button>
-      );
-    }
-
-    if (option.action === 'cart') {
-      const targetProductId = option.cartProductId || productId;
-      return (
-        <Button
-          className={buttonClass}
-          onClick={() => handleAddToCartClick(targetProductId)}
-          disabled={addingToCart === targetProductId}
-        >
-          {addingToCart === targetProductId ? (
-            <div className="flex items-center gap-2">
-              <div className="animate-spin rounded-full h-4 sm:h-5 w-4 sm:w-5 border-b-2 border-current"></div>
-              {t.productsSection?.adding || 'Adding...'}
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
-              {option.ctaLabel}
-            </div>
-          )}
-        </Button>
-      );
-    }
-
-    return (
-      <Button className={`${buttonClass} opacity-80`} disabled>
-        <div className="flex items-center gap-2 text-xs sm:text-sm">
-          <Icon className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-          <span className="leading-tight">{pricingCopy.linkComingSoon}</span>
-        </div>
-      </Button>
-    );
-  };
-
-  // Dynamic feature labels based on product size
   const getFeatureLabels = (productId: string) => {
-    let odorControlLabel = t.enhancedProductComparison?.odorControl || '7-Day Odor Control';
-
-    if (productId === 'purrify-12g') {
-      odorControlLabel = t.enhancedProductComparison?.odorControlTrial || '7-Day Odor Control';
-    } else if (productId === 'purrify-120g' || productId === 'purrify-240g') {
-      odorControlLabel = t.enhancedProductComparison?.odorControlLarge || '30-Day Odor Control';
-    }
-
-    let freeShippingLabel = t.enhancedProductComparison?.freeShipping || 'Shipping included';
-
-    if (productId === 'purrify-120g' || productId === 'purrify-240g') {
-      freeShippingLabel = t.enhancedProductComparison?.freeShippingDetailed || 'Shipping is included.';
-    }
-
     return {
-      odorControl: odorControlLabel,
-      naturalIngredients: t.enhancedProductComparison?.naturalIngredients || '100% Natural Ingredients',
-      easyApplication: t.enhancedProductComparison?.easyApplication || 'Easy Application',
-      moneyBackGuarantee: t.enhancedProductComparison?.moneyBackGuarantee || '30-Day Money Back Guarantee',
-      freeShipping: freeShippingLabel,
-      bulkDiscount: t.enhancedProductComparison?.bulkDiscount || 'Bulk Discount Available',
-      prioritySupport: ''
+      odorControl: '7-Day Odor Control',
+      naturalIngredients: '100% Natural',
+      easyApplication: 'Easy Application',
+      moneyBackGuarantee: '30-Day Guarantee',
+      freeShipping: 'Free Shipping',
+      bulkDiscount: 'Bulk Discount',
+      prioritySupport: 'Priority Support'
     };
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black">
-      <Container>
-        <div className="max-w-7xl mx-auto">
-          {/* Header with Clear Section Title */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 px-4">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
-              {t.homepage.enhancedComparison.chooseYourPerfectSize}
-            </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto font-semibold mb-8 leading-relaxed">
-              {t.homepage.enhancedComparison.allSizesDeliver}
-            </p>
+    <section className="py-20 bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden" id="products">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-deep-coral/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-electric-indigo/5 rounded-full blur-3xl" />
+      </div>
 
-            {/* Billing Period Legend */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 flex-wrap mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-4 h-4 rounded-full bg-blue-500 dark:bg-blue-400"></div>
-                <span className="text-gray-700 dark:text-gray-200 font-semibold">Pay Per Month</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600"></div>
-                <span className="text-gray-700 dark:text-gray-200 font-semibold">Subscribe Every 3 Months (Best Value ⭐)</span>
-              </div>
-            </div>
+      <Container className="relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Choose Your Perfect Size
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+            Simple pricing. No hidden fees. Cancel anytime.
+          </p>
+
+          {/* Toggle Switch */}
+          <div className="inline-flex bg-white dark:bg-gray-800 p-1.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm mb-8">
+            <button
+              onClick={() => setViewMode('subscription')}
+              className={cn(
+                "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                viewMode === 'subscription'
+                  ? "bg-gray-900 text-white shadow-md"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              )}
+            >
+              <Zap className="w-4 h-4" />
+              Subscribe & Save
+            </button>
+            <button
+              onClick={() => setViewMode('one-time')}
+              className={cn(
+                "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                viewMode === 'one-time'
+                  ? "bg-gray-900 text-white shadow-md"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              )}
+            >
+              <ShoppingCart className="w-4 h-4" />
+              One-Time Purchase
+            </button>
           </div>
+        </div>
 
-          {/* Trial Size Section - Standalone */}
-          <div className="mb-20">
-            <h3 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8">
-              {t.pricing?.trialSizeSection || 'Try Before You Buy'}
-            </h3>
-            <div className="grid grid-cols-1 max-w-sm mx-auto gap-4 sm:gap-6 lg:gap-8">
-              {products.filter(p => p.id === 'purrify-12g').map(product => {
-              const sizeBadgeLabel =
-                product.name
-                  .split(' ')
-                  .find(part => /\d+g$/i.test(part))
-                || product.name;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+          {products.map((product) => {
+            // Determine which option to show based on viewMode
+            // If viewMode is subscription but product has no subscription, show one-time (or handle gracefully)
+            // For Trial (12g), it only has one-time. We should probably show it always but maybe style differently.
 
-              return (
-                <div
-                  key={product.id}
-                  className={`relative flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
-                    hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50' : ''}`}
-                  onMouseEnter={() => handleMouseEnter(product.id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                {/* Top Section with Badge and Popular Indicator */}
-                <div className="relative px-4 sm:px-6 pt-6 pb-2">
-                  {/* Badge */}
-                  <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white dark:text-gray-100 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg`}>
-                    {product.badge}
+            const preferredOption = product.purchaseOptions.find(o => o.type === viewMode) || product.purchaseOptions[0];
+            const isSubscription = preferredOption.type === 'subscription';
+
+            return (
+              <div
+                key={product.id}
+                className={cn(
+                  "relative bg-white dark:bg-gray-800 rounded-3xl border transition-all duration-300 group",
+                  product.recommended
+                    ? "border-deep-coral shadow-xl scale-105 z-10"
+                    : "border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600"
+                )}
+                onMouseEnter={() => setHoveredProduct(product.id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {product.recommended && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-deep-coral text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-1">
+                    <Star className="w-3 h-3 fill-current" />
+                    Most Popular
+                  </div>
+                )}
+
+                <div className="p-6 flex flex-col h-full">
+                  <div className="text-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium uppercase tracking-wide mb-4">
+                      {product.subtitle}
+                    </p>
+
+                    <div className="relative w-48 h-48 mx-auto mb-6">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+
+                    <div className="mb-2">
+                      <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
+                        {preferredOption.priceFormatted}
+                      </span>
+                      {isSubscription && preferredOption.perMonth && (
+                        <span className="text-gray-500 dark:text-gray-400 text-sm font-medium ml-1">/mo</span>
+                      )}
+                    </div>
+
+                    {isSubscription && preferredOption.totalPrice && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        Billed {preferredOption.totalPrice}
+                      </p>
+                    )}
+
+                    {preferredOption.savings ? (
+                      <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mb-4">
+                        Save {formatSavingsLabel(preferredOption.savings)}
+                      </div>
+                    ) : (
+                      <div className="h-8 mb-4" /> // Spacer
+                    )}
+
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 min-h-[40px]">
+                      {product.description}
+                    </p>
+
+                    {preferredOption.action === 'link' && preferredOption.linkKey ? (
+                      <Button
+                        asChild
+                        className={cn(
+                          "w-full py-6 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1",
+                          isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
+                        )}
+                      >
+                        <a href={getPaymentLink(preferredOption.linkKey)} target="_blank" rel="noopener noreferrer">
+                          {preferredOption.ctaLabel} <ArrowRight className="w-5 h-5 ml-2" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={() => handleAddToCartClick(preferredOption.cartProductId || product.id)}
+                        disabled={addingToCart === (preferredOption.cartProductId || product.id)}
+                        className={cn(
+                          "w-full py-6 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1",
+                          isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
+                        )}
+                      >
+                        {addingToCart === (preferredOption.cartProductId || product.id) ? (
+                          "Adding..."
+                        ) : (
+                          <>
+                            {preferredOption.ctaLabel} <ArrowRight className="w-5 h-5 ml-2" />
+                          </>
+                        )}
+                      </Button>
+                    )}
                   </div>
 
-                  {/* Popularity Indicator */}
-                  {product.recommended && (
-                    <div className="absolute top-2 right-2 bg-[#FF3131] text-white dark:text-gray-100 p-2 rounded-full shadow-lg">
-                      <Award className="w-5 h-5" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex-1 flex flex-col">
-                  {/* Product Image Section */}
-                  <div className="text-center mt-4 mb-6">
-                    {/* Size Badge - Positioned above image */}
-                    <div className="flex justify-center mb-3">
-                      <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
-                        <span className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-sm">{sizeBadgeLabel}</span>
-                      </div>
-                    </div>
-
-                    {/* Image Container - NO absolute positioning */}
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
-                      <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          width={200}
-                          height={200}
-                          className="rounded-lg shadow-sm object-contain w-full h-auto max-h-[120px] sm:max-h-[140px] mx-auto"
-                          sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
-                        />
-                      </div>
-                    </div>
-                    
-                    {/* Product Info - Clear separation */}
-                    <div className="space-y-3">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 leading-tight">{product.name}</h3>
-                      <p className="text-[#FF3131] dark:text-[#FF5555] font-semibold text-sm sm:text-base">{product.subtitle}</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-[280px] mx-auto">{product.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Purchase Options */}
-                  <div className="mb-4 sm:mb-6 space-y-4">
-                    {product.purchaseOptions
-                      .filter(option => option.type === 'subscription')
-                      .map(option => {
-                        const isHighlighted = option.highlight;
-                        const cardClass = isHighlighted
-                          ? 'relative overflow-hidden rounded-3xl border-4 border-amber-400 dark:border-amber-500 bg-gradient-to-br from-purple-600 via-fuchsia-600 to-pink-600 dark:from-purple-700 dark:via-fuchsia-700 dark:to-pink-700 text-white dark:text-gray-100 p-6 shadow-2xl transform hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle'
-                          : 'rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-md';
+                  <div className="border-t border-gray-100 dark:border-gray-700 pt-6 mt-auto">
+                    <ul className="space-y-3">
+                      {Object.entries(getFeatureLabels(product.id)).map(([key, label]) => {
+                        const isIncluded = product.features[key as keyof typeof product.features];
+                        if (!isIncluded) return null;
                         return (
-                          <div key={option.key} className={cardClass}>
-                            {/* Animated shimmer effect for highlighted option */}
-                            {isHighlighted && (
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent animate-shimmer pointer-events-none" />
-                            )}
-
-                            {option.badgeLabel ? (
-                              <div className="flex justify-center mb-6">
-                                <div className="inline-flex bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle text-center">
-                                  {option.badgeLabel}
-                                </div>
-                              </div>
-                            ) : null}
-
-                            <div className="flex flex-col gap-4 mt-4 px-2">
-                              <div className="text-center space-y-3">
-                                <p className={`text-sm uppercase tracking-widest font-black ${isHighlighted ? 'text-amber-300 dark:text-amber-200' : 'text-[#FF3131]'}`}>
-                                  {option.label}
-                                </p>
-                                <div className={`text-5xl sm:text-6xl font-black leading-none ${isHighlighted ? 'text-white dark:text-white drop-shadow-2xl' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
-                                  {option.priceFormatted}
-                                </div>
-                                {option.perMonth ? (
-                                  <div>
-                                    <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
-                                      {option.perMonth}
-                                    </p>
-                                    {option.totalPrice ? (
-                                      <p className={`text-xs leading-tight mt-1 ${isHighlighted ? 'text-white/75 dark:text-gray-300' : 'text-gray-600 dark:text-gray-400'}`}>
-                                        {option.totalPrice}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                ) : null}
-                                {option.subLabel ? (
-                                  <p className={`text-sm leading-snug px-2 ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
-                                    {option.subLabel}
-                                  </p>
-                                ) : null}
-                                {option.shippingNote ? (
-                                  <div className="flex justify-center mt-2">
-                                    <div className={`inline-flex ${isHighlighted ? 'bg-white/20 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-700'} px-4 py-2.5 rounded-full`}>
-                                      <p className={`text-sm font-bold text-center ${isHighlighted ? 'text-white dark:text-white' : 'text-gray-700 dark:text-gray-200'}`}>
-                                        {option.shippingNote}
-                                      </p>
-                                    </div>
-                                  </div>
-                                ) : null}
-                              </div>
-
-                              {option.savings ? (
-                                <div className="flex justify-center">
-                                  <div
-                                    className={`${isHighlighted ? 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-500 text-gray-900 dark:text-gray-900 animate-pulse-glow' : 'bg-gradient-to-r from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 text-white dark:text-gray-100'} px-6 py-3 rounded-2xl text-lg sm:text-xl font-black border-4 ${isHighlighted ? 'border-white dark:border-gray-900 shadow-2xl' : 'border-green-400 dark:border-green-700 shadow-xl'} transform hover:scale-110 transition-all duration-200 uppercase tracking-wider`}
-                                  >
-                                    🎉 {formatSavingsLabel(option.savings)}
-                                  </div>
-                                </div>
-                              ) : null}
+                          <li key={key} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+                            <div className="mt-0.5 bg-green-100 dark:bg-green-900/30 rounded-full p-0.5">
+                              <Check className="w-3 h-3 text-green-600 dark:text-green-400" />
                             </div>
-                            <div className="mt-5">
-                              {renderOptionButton(option, option.cartProductId || product.id)}
-                            </div>
-                          </div>
+                            {label}
+                          </li>
                         );
                       })}
-
-                    {product.purchaseOptions
-                      .filter(option => option.type !== 'subscription')
-                      .map(option => (
-                        <div key={option.key} className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-sm">
-                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                            <div>
-                              <p className="text-xs uppercase tracking-wide font-semibold text-gray-600 dark:text-gray-300">
-                                {option.label}
-                              </p>
-                              <div className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">
-                                {option.priceFormatted}
-                              </div>
-                              {option.subLabel ? (
-                                <p className="text-xs mt-1 text-gray-600 dark:text-gray-300">
-                                  {option.subLabel}
-                                </p>
-                              ) : null}
-                              {option.shippingNote ? (
-                                <p className="text-xs mt-1 font-medium text-gray-700 dark:text-gray-200">
-                                  {option.shippingNote}
-                                </p>
-                              ) : null}
-                            </div>
-                            {option.savings ? (
-                              <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
-                                {formatSavingsLabel(option.savings)}
-                              </div>
-                            ) : null}
-                          </div>
-                          <div className="mt-4">
-                            {renderOptionButton(option, option.cartProductId || product.id)}
-                          </div>
-                        </div>
-                      ))}
+                    </ul>
                   </div>
-
-                  {/* Key Stats */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/70 rounded-lg border border-gray-100 dark:border-gray-600">
-                    <div className="text-center">
-                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.duration}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.duration}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.coverage}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.coverage}</div>
-                    </div>
-                  </div>
-
-                  {/* Features */}
-                  <div className="flex-1 space-y-2 sm:space-y-3 mb-4 sm:mb-6 overflow-visible">
-                    {Object.entries(getFeatureLabels(product.id)).map(([key, label]) => {
-                      const isIncluded = product.features[key as keyof typeof product.features];
-                      return (
-                        <div key={key} className="flex items-start gap-2 sm:gap-3">
-                          {isIncluded ? (
-                            <Check className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                          ) : (
-                            <X className="w-4 sm:w-5 h-4 sm:h-5 text-gray-300 dark:text-gray-500 mt-0.5 flex-shrink-0" />
-                          )}
-                          <span className={`text-xs sm:text-sm leading-tight font-medium ${isIncluded ? 'text-gray-800 dark:text-gray-200' : 'text-gray-400 dark:text-gray-500'}`}>
-                            {label}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {product.recommended && (
-                    <div className="mt-3 sm:mt-4 text-center">
-                      <div className="bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-amber-400/20 dark:from-amber-500/30 dark:via-yellow-500/30 dark:to-amber-500/30 border-2 border-amber-400 dark:border-amber-500 rounded-2xl p-4 animate-pulse-subtle">
-                        <p className="text-sm sm:text-base text-amber-900 dark:text-amber-200 font-black uppercase tracking-wide">
-                          🔥 {t.enhancedProductComparison?.chosenByCustomers || '68% Choose This Bundle'}
-                        </p>
-                        <p className="text-xs text-amber-800 dark:text-amber-300 font-semibold mt-1">
-                          Join 1,000+ Happy Cat Owners
-                        </p>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
-              );
-            })}
-            </div>
-          </div>
-
-          {/* Quarterly Autoship Section - 120g & 240g */}
-          <div className="mb-20">
-            <h3 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8">
-              {t.pricing?.quarterlyAutoshipSection || 'Subscribe & Save - Quarterly Autoship'}
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
-              {products.filter(p => p.id === 'purrify-120g' || p.id === 'purrify-240g').map(product => {
-              const sizeBadgeLabel =
-                product.name
-                  .split(' ')
-                  .find(part => /\d+g$/i.test(part))
-                || product.name;
-
-              return (
-                <div
-                  key={product.id}
-                  className={`relative flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/30 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-black/40 min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] ${
-                    hoveredProduct === product.id ? 'scale-[1.02]' : ''
-                  } ${product.recommended ? 'ring-4 ring-[#FF3131]/20 dark:ring-[#FF3131]/50' : ''}`}
-                  onMouseEnter={() => handleMouseEnter(product.id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                {/* Top Section with Badge and Popular Indicator */}
-                <div className="relative px-4 sm:px-6 pt-6 pb-2">
-                  {/* Badge */}
-                  <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${product.badgeColor} text-white dark:text-gray-100 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg`}>
-                    {product.badge}
-                  </div>
-
-                  {/* Popularity Indicator */}
-                  {product.recommended && (
-                    <div className="absolute top-2 right-2 bg-[#FF3131] text-white dark:text-gray-100 p-2 rounded-full shadow-lg">
-                      <Award className="w-5 h-5" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex-1 flex flex-col">
-                  {/* Product Image Section */}
-                  <div className="text-center mt-4 mb-6">
-                    {/* Size Badge - Positioned above image */}
-                    <div className="flex justify-center mb-3">
-                      <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 py-1.5 rounded-full shadow-lg border-2 border-white dark:border-gray-800">
-                        <span className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-sm">{sizeBadgeLabel}</span>
-                      </div>
-                    </div>
-
-                    {/* Image Container - NO absolute positioning */}
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 mb-4 mx-auto max-w-[200px] sm:max-w-[220px]">
-                      <div className="bg-white dark:bg-gray-800/95 dark:bg-white dark:bg-gray-800/98 rounded-lg p-4">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          width={200}
-                          height={200}
-                          className="rounded-lg shadow-sm object-contain w-full h-auto max-h-[120px] sm:max-h-[140px] mx-auto"
-                          sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Product Info - Clear separation */}
-                    <div className="space-y-3">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 leading-tight">{product.name}</h3>
-                      <p className="text-[#FF3131] dark:text-[#FF5555] font-semibold text-sm sm:text-base">{product.subtitle}</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-[280px] mx-auto">{product.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Purchase Options */}
-                  <div className="mb-4 sm:mb-6 space-y-4">
-                    {product.purchaseOptions
-                      .filter(option => option.type === 'subscription')
-                      .map(option => {
-                        const isHighlighted = option.highlight;
-                        const cardClass = isHighlighted
-                          ? 'relative overflow-hidden rounded-3xl border-4 border-amber-400 dark:border-amber-500 bg-gradient-to-br from-purple-600 via-fuchsia-600 to-pink-600 dark:from-purple-700 dark:via-fuchsia-700 dark:to-pink-700 text-white dark:text-gray-100 p-6 shadow-2xl transform hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle'
-                          : 'rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-md';
-                        return (
-                          <div key={option.key} className={cardClass}>
-                            {/* Animated shimmer effect for highlighted option */}
-                            {isHighlighted && (
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent animate-shimmer pointer-events-none" />
-                            )}
-
-                            {option.badgeLabel ? (
-                              <div className="flex justify-center mb-6">
-                                <div className="inline-flex bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-600 text-gray-900 dark:text-gray-900 px-3 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-black shadow-xl border-2 border-white dark:border-gray-900 uppercase tracking-wider animate-bounce-subtle text-center">
-                                  {option.badgeLabel}
-                                </div>
-                              </div>
-                            ) : null}
-
-                            <div className="flex flex-col gap-4 mt-4 px-2">
-                              <div className="text-center space-y-3">
-                                <p className={`text-sm uppercase tracking-widest font-black ${isHighlighted ? 'text-amber-300 dark:text-amber-200' : 'text-[#FF3131]'}`}>
-                                  {option.label}
-                                </p>
-                                <div className={`text-5xl sm:text-6xl font-black leading-none ${isHighlighted ? 'text-white dark:text-white drop-shadow-2xl' : 'text-[#FF3131] dark:text-[#FF5555]'}`}>
-                                  {option.priceFormatted}
-                                </div>
-                                {option.perMonth ? (
-                                  <div>
-                                    <p className={`text-lg font-bold leading-tight ${isHighlighted ? 'text-white/95 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200'}`}>
-                                      {option.perMonth}
-                                    </p>
-                                    {option.totalPrice ? (
-                                      <p className={`text-xs leading-tight mt-1 ${isHighlighted ? 'text-white/75 dark:text-gray-300' : 'text-gray-600 dark:text-gray-400'}`}>
-                                        {option.totalPrice}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                ) : null}
-                                {option.subLabel ? (
-                                  <p className={`text-sm leading-snug px-2 ${isHighlighted ? 'text-white/90 dark:text-gray-200' : 'text-gray-600 dark:text-gray-300'}`}>
-                                    {option.subLabel}
-                                  </p>
-                                ) : null}
-                                {option.shippingNote ? (
-                                  <div className="flex justify-center mt-2">
-                                    <div className={`inline-flex ${isHighlighted ? 'bg-white/20 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-700'} px-4 py-2.5 rounded-full`}>
-                                      <p className={`text-sm font-bold text-center ${isHighlighted ? 'text-white dark:text-white' : 'text-gray-700 dark:text-gray-200'}`}>
-                                        {option.shippingNote}
-                                      </p>
-                                    </div>
-                                  </div>
-                                ) : null}
-                              </div>
-
-                              {option.savings ? (
-                                <div className="flex justify-center">
-                                  <div
-                                    className={`${isHighlighted ? 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 dark:from-amber-500 dark:via-yellow-500 dark:to-amber-500 text-gray-900 dark:text-gray-900 animate-pulse-glow' : 'bg-gradient-to-r from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 text-white dark:text-gray-100'} px-6 py-3 rounded-2xl text-lg sm:text-xl font-black border-4 ${isHighlighted ? 'border-white dark:border-gray-900 shadow-2xl' : 'border-green-400 dark:border-green-700 shadow-xl'} transform hover:scale-110 transition-all duration-200 uppercase tracking-wider`}
-                                  >
-                                    🎉 {formatSavingsLabel(option.savings)}
-                                  </div>
-                                </div>
-                              ) : null}
-                            </div>
-                            <div className="mt-5">
-                              {renderOptionButton(option, option.cartProductId || product.id)}
-                            </div>
-                          </div>
-                        );
-                      })}
-
-                    {product.purchaseOptions
-                      .filter(option => option.type !== 'subscription')
-                      .map(option => (
-                        <div key={option.key} className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-5 shadow-sm">
-                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                            <div>
-                              <p className="text-xs uppercase tracking-wide font-semibold text-gray-600 dark:text-gray-300">
-                                {option.label}
-                              </p>
-                              <div className="text-2xl sm:text-3xl font-bold text-[#FF3131] dark:text-[#FF5555]">
-                                {option.priceFormatted}
-                              </div>
-                              {option.subLabel ? (
-                                <p className="text-xs mt-1 text-gray-600 dark:text-gray-300">
-                                  {option.subLabel}
-                                </p>
-                              ) : null}
-                              {option.shippingNote ? (
-                                <p className="text-xs mt-1 font-medium text-gray-700 dark:text-gray-200">
-                                  {option.shippingNote}
-                                </p>
-                              ) : null}
-                            </div>
-                            {option.savings ? (
-                              <div className="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-200 dark:border-green-700">
-                                {formatSavingsLabel(option.savings)}
-                              </div>
-                            ) : null}
-                          </div>
-                          <div className="mt-4">
-                            {renderOptionButton(option, option.cartProductId || product.id)}
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-
-                  {/* Key Stats */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/70 rounded-lg border border-gray-100 dark:border-gray-600">
-                    <div className="text-center">
-                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.duration}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.duration}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-[#FF3131] dark:text-[#FF5555] text-sm sm:text-base leading-tight">{product.coverage}</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">{t.homepage.enhancedComparison.coverage}</div>
-                    </div>
-                  </div>
-
-                  {/* Features */}
-                  <div className="flex-1 space-y-2 sm:space-y-3 mb-4 sm:mb-6 overflow-visible">
-                    {Object.entries(getFeatureLabels(product.id)).map(([key, label]) => {
-                      const isIncluded = product.features[key as keyof typeof product.features];
-                      return (
-                        <div key={key} className="flex items-start gap-2 sm:gap-3">
-                          {isIncluded ? (
-                            <Check className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                          ) : (
-                            <X className="w-4 sm:w-5 h-4 sm:h-5 text-gray-300 dark:text-gray-500 mt-0.5 flex-shrink-0" />
-                          )}
-                          <span className={`text-xs sm:text-sm leading-tight font-medium ${isIncluded ? 'text-gray-800 dark:text-gray-200' : 'text-gray-400 dark:text-gray-500'}`}>
-                            {label}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {product.recommended && (
-                    <div className="mt-3 sm:mt-4 text-center">
-                      <div className="bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-amber-400/20 dark:from-amber-500/30 dark:via-yellow-500/30 dark:to-amber-500/30 border-2 border-amber-400 dark:border-amber-500 rounded-2xl p-4 animate-pulse-subtle">
-                        <p className="text-sm sm:text-base text-amber-900 dark:text-amber-200 font-black uppercase tracking-wide">
-                          🔥 {t.enhancedProductComparison?.chosenByCustomers || '68% Choose This Bundle'}
-                        </p>
-                        <p className="text-xs text-amber-800 dark:text-amber-300 font-semibold mt-1">
-                          Join 1,000+ Happy Cat Owners
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              );
-            })}
-            </div>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-gray-600">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100 mb-2">{t.homepage.enhancedComparison.whyChoosePurrify}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{t.homepage.enhancedComparison.joinThousands}</p>
-            </div>
-            
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">1,000+</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.happyCustomers}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">4.9/5</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.averageRating}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">99%</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.satisfactionRate}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">7 Days</div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{t.homepage.enhancedComparison.odorFreeGuarantee}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Money-Back Guarantee */}
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-6 py-3 rounded-full">
-              <Zap className="w-5 h-5 mr-2" />
-              <span className="font-bold">{t.enhancedProductComparison?.moneyBackGuaranteeText || '30-Day Money-Back Guarantee - Try Risk-Free!'}</span>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </Container>
     </section>

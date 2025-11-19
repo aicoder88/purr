@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { Hero } from '../src/components/sections/hero';
-import { About } from '../src/components/sections/about';
+import { ScienceSection } from '../src/components/sections/science-section';
 import { HowItWorks } from '../src/components/sections/how-it-works';
 import { WhyPurrify } from '../src/components/sections/why-purrify';
 import dynamic from 'next/dynamic';
@@ -275,10 +275,10 @@ export default function Home() {
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
-        {/* About Section */}
+        {/* Science Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <About />
+            <ScienceSection />
           </ErrorBoundary>
         </div>
 
@@ -343,7 +343,7 @@ export default function Home() {
             </LazyLoad>
           </ErrorBoundary>
         </div>
-        
+
         {/* Blog Preview */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>

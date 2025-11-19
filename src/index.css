@@ -4,69 +4,65 @@
 
 @layer base {
   :root {
-    --background: 60 100% 99.7%;
-    --foreground: 0 0% 20%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 14 92% 62%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 246 86% 67%; /* Electric Indigo */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 90 40% 89%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary-text: #0072CE;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --muted: 14 30% 95%;
-    --muted-foreground: 14 10% 45%;
-
-    --accent: 14 92% 62%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 100% 71%; /* Deep Coral */
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 14 30% 90%;
-    --input: 14 30% 90%;
-    --ring: 14 92% 62%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 246 86% 67%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 14 92% 62%;
+    --primary: 246 86% 67%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 213 31% 91%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --secondary-text: #3694FF;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 0 100% 71%;
+    --accent-foreground: 210 40% 98%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 213 31% 91%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 213 31% 91%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-    --ring: 14 92% 62%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 246 86% 67%;
   }
 }
 
@@ -77,53 +73,65 @@
   
   html {
     @apply antialiased;
-    /* Improve iOS scroll performance */
     -webkit-overflow-scrolling: touch;
-    /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
   }
   
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    /* Prevent horizontal scroll */
     overflow-x: hidden;
-    /* Improve touch performance */
     touch-action: manipulation;
-    /* Use self-hosted Inter via next/font */
     font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), var(--font-inter), ui-sans-serif, system-ui;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Mobile-first optimizations */
   @media (max-width: 768px) {
-    /* Ensure minimum touch target size */
     button, a, [role="button"] {
       min-height: 44px;
       min-width: 44px;
     }
     
-    /* Improve tap responsiveness */
     button, a, [role="button"], input, select, textarea {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
       -webkit-touch-callout: none;
     }
     
-    /* Prevent zoom on input focus */
     input, select, textarea {
       font-size: 16px;
     }
     
-    /* Improve scrolling */
     .overflow-y-auto, .overflow-y-scroll {
       -webkit-overflow-scrolling: touch;
     }
   }
   
-  .bg-gradient-primary {
-    @apply bg-gradient-to-t from-[#FF3131] to-[#FF3131]/40 dark:from-[#FF5050] dark:to-[#FF5050]/40;
+  .bg-mesh-gradient {
+    background-color: hsla(0, 100%, 50%, 1);
+    background-image: radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
   }
-  
-  .bg-gradient-secondary {
-    @apply bg-gradient-to-t from-[#ffaa2f] to-[#ffaa2f]/40 dark:from-[#ffcc2f] dark:to-[#ffcc2f]/40;
+
+  .dark .bg-mesh-gradient {
+    background-color: hsla(222, 47%, 11%, 1);
+    background-image: radial-gradient(at 40% 20%, hsla(266, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(240, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(280, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(220, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(260, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(240, 50%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(280, 50%, 20%, 1) 0px, transparent 50%);
   }
 
   /* Performance optimizations for animations and transitions */
@@ -137,13 +145,6 @@
   [class*="blur-"] {
     transform: translateZ(0);
     will-change: auto;
-  }
-
-  /* Improve text rendering */
-  h1, h2, h3, h4, h5, h6 {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Optimize gradients for performance */
@@ -160,13 +161,13 @@
     display: none !important;
   }
   
-  /* Dark mode specific styles */
-  .dark .dark-glass {
-    @apply bg-black/30 backdrop-blur-lg border border-white/10;
+  /* Glassmorphism */
+  .glass-panel {
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl;
   }
   
-  .light-glass {
-    @apply bg-white/70 backdrop-blur-lg border border-black/10;
+  .glass-card {
+    @apply bg-white/50 dark:bg-white/5 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300;
   }
 }
 
