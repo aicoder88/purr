@@ -9,9 +9,9 @@ import { Breadcrumbs } from '../../src/components/layout/Breadcrumbs';
 import { HeroSection } from '../../src/components/layout/HeroSection';
 import { enStoryData } from '../../src/lib/page-data';
 import { PRODUCT_PRICES } from '../../src/lib/pricing';
-import { 
-  Heart, 
-  Users, 
+import {
+  Heart,
+  Users,
   ChevronRight,
   MapPin,
   Mail
@@ -54,11 +54,11 @@ const OurStoryPage: NextPage = () => {
       />
 
       <PageLayout>
-        <Breadcrumbs 
+        <Breadcrumbs
           items={[
             { label: "About" },
             { label: "Our Story" }
-          ]} 
+          ]}
         />
 
         <HeroSection
@@ -72,16 +72,16 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Our Mission
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 To revolutionize the cat ownership experience by creating innovative, fragrance-free products designed for use around pets that eliminate odors, reduce waste, and strengthen the bond between cats and their families.
               </p>
-              <div className="bg-[#E0EFC7]/30 dark:bg-gray-800/50 rounded-xl p-8">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/20 dark:border-electric-indigo/30">
                 <p className="text-lg text-gray-700 dark:text-gray-300 italic">
-                  &quot;We believe every cat deserves a clean, comfortable environment, and every family deserves to enjoy 
-                  their home without compromise. That&apos;s why we&apos;re dedicated to creating products that work better, 
+                  &quot;We believe every cat deserves a clean, comfortable environment, and every family deserves to enjoy
+                  their home without compromise. That&apos;s why we&apos;re dedicated to creating products that work better,
                   last longer, and respect our planet.&quot;
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
@@ -96,7 +96,7 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Our Values
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -106,11 +106,11 @@ const OurStoryPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div key={index} className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 hover:shadow-xl transition-all duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-electric-indigo to-deep-coral rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-subtle">
                     <value.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {value.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -126,7 +126,7 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Meet Our Team
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -136,14 +136,14 @@ const OurStoryPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {team.map((member, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 text-center hover:scale-105 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-electric-indigo to-deep-coral rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-10 h-10 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-heading font-bold mb-1 text-gray-900 dark:text-gray-100">
                     {member.name}
                   </h3>
-                  <p className="text-[#5B2EFF] font-semibold mb-3">
+                  <p className="text-electric-indigo dark:text-electric-indigo-300 font-semibold mb-3">
                     {member.role}
                   </p>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
@@ -163,7 +163,7 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Our Impact
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -173,11 +173,11 @@ const OurStoryPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <div className="text-4xl font-bold text-[#FF3131] mb-2">
+                <div key={index} className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 hover:scale-105 transition-all duration-300">
+                  <div className="text-4xl font-heading font-bold text-deep-coral dark:text-deep-coral-400 mb-2">
                     {stat.number}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                  <h3 className="text-lg font-heading font-semibold mb-2 text-gray-900 dark:text-gray-100">
                     {stat.label}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -190,25 +190,25 @@ const OurStoryPage: NextPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+        <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
                 Join Our Story
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Become part of the Purrify family and experience the difference that passion, 
+                Become part of the Purrify family and experience the difference that passion,
                 innovation, and genuine care can make in your home.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button
                     size="lg"
-                    className="flex items-center justify-center gap-3 bg-white text-[#5B2EFF] hover:bg-gray-100 dark:bg-white/90 dark:hover:bg-white dark:text-[#5B2EFF] font-bold shadow-lg"
+                    className="flex items-center justify-center gap-3 bg-white text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:bg-white/90 dark:hover:bg-white dark:text-electric-indigo font-bold shadow-lg transition-all duration-300"
                   >
                     <span className="flex flex-col leading-tight text-left">
                       <span className="text-base sm:text-lg">{`Try Purrify Today - ${PRODUCT_PRICES.trial.formatted}`}</span>
-                      <span className="text-xs sm:text-sm font-semibold text-[#5B2EFF]/80">
+                      <span className="text-xs sm:text-sm font-semibold text-electric-indigo/80">
                         Trial size • Free Shipping Included
                       </span>
                     </span>
@@ -219,7 +219,7 @@ const OurStoryPage: NextPage = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white text-gray-900 hover:bg-white hover:text-gray-900 dark:text-white dark:hover:bg-white dark:hover:text-[#5B2EFF] transition-colors"
+                    className="border-white text-gray-900 hover:bg-white hover:text-gray-900 hover:scale-105 dark:text-white dark:hover:bg-white dark:hover:text-electric-indigo transition-all duration-300"
                   >
                     Get in Touch
                   </Button>
@@ -233,17 +233,17 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Connect With Us
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                We love hearing from our customers and fellow cat lovers. 
+                We love hearing from our customers and fellow cat lovers.
                 Share your story, ask questions, or just say hello!
               </p>
-              
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
                 <div className="flex items-center justify-center mb-4">
-                  <Mail className="w-6 h-6 text-[#5B2EFF] mr-3" />
+                  <Mail className="w-6 h-6 text-electric-indigo dark:text-electric-indigo-400 mr-3" />
                   <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     hello@purrify.com
                   </span>
@@ -252,7 +252,7 @@ const OurStoryPage: NextPage = () => {
                   We typically respond within 24 hours
                 </p>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                  <Button className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
+                  <Button className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
                     Contact Us
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
@@ -266,15 +266,15 @@ const OurStoryPage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Learn More About Purrify
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     How It Works
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -282,10 +282,10 @@ const OurStoryPage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Customer Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -293,10 +293,10 @@ const OurStoryPage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Find Your Perfect Size
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

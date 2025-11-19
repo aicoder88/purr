@@ -171,16 +171,16 @@ export default function CatLitterSmellWorseWinter() {
             </header>
 
             {/* Hero Image */}
-            <div className="mb-12">
+            <div className="mb-12 relative w-full h-64 md:h-96 rounded-2xl shadow-xl overflow-hidden">
               <Image
                 src={heroImage}
                 alt="Cat looking out snowy window while owner deals with winter litter box odor in closed home"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1600}
-                height={1067}
+                fill
+                className="object-cover"
                 priority
+                sizes="(max-width: 768px) 100vw, 1200px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2 absolute -bottom-8 left-0 right-0">
                 Winter's closed windows create the perfect storm for trapped cat litter odors
               </p>
             </div>
@@ -226,13 +226,15 @@ export default function CatLitterSmellWorseWinter() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Why Winter Is Different: The Science Behind Trapped Odors</h2>
 
               <div className="mb-12">
-                <Image
-                  src={closedWindowImage}
-                  alt="Closed window with frost showing how winter weather keeps ammonia odors trapped indoors"
-                  className="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
-                />
+                <div className="relative w-full h-64 md:h-80 rounded-xl shadow-lg overflow-hidden">
+                  <Image
+                    src={closedWindowImage}
+                    alt="Closed window with frost showing how winter weather keeps ammonia odors trapped indoors"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                  />
+                </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   Closed windows and sealed homes trap odor molecules that would normally escape
                 </p>
@@ -448,13 +450,15 @@ export default function CatLitterSmellWorseWinter() {
               </div>
 
               <div className="mb-12">
-                <Image
-                  src={solutionImage}
-                  alt="Happy cat owner enjoying fresh, odor-free home during winter with proper litter box management"
-                  className="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
-                />
+                <div className="relative w-full h-64 md:h-80 rounded-xl shadow-lg overflow-hidden">
+                  <Image
+                    src={solutionImage}
+                    alt="Happy cat owner enjoying fresh, odor-free home during winter with proper litter box management"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                  />
+                </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   Winter odor control success: Fresh air indoors without opening windows
                 </p>

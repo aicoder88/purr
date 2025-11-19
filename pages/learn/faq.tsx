@@ -224,7 +224,7 @@ const FAQPage: NextPage = () => {
 
   const filteredFAQs = faqItems.filter(item => {
     const matchesSearch = item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.answer.toLowerCase().includes(searchTerm.toLowerCase());
+      item.answer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -282,11 +282,11 @@ const FAQPage: NextPage = () => {
         </section>
 
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+        <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
                 Frequently Asked Questions
               </h1>
               <p className="text-xl md:text-2xl mb-4 opacity-90">
@@ -304,7 +304,7 @@ const FAQPage: NextPage = () => {
                   placeholder="Search for answers..."
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
                 />
               </div>
             </div>
@@ -324,7 +324,7 @@ const FAQPage: NextPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h2 className="text-3xl font-bold mb-2">Your Questions, Answered</h2>
+                  <h2 className="text-3xl font-heading font-bold mb-2">Your Questions, Answered</h2>
                   <p className="text-xl opacity-90">Everything you need to know about Purrify</p>
                 </div>
               </div>
@@ -336,7 +336,7 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Most Popular Questions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -346,8 +346,8 @@ const FAQPage: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {popularFAQs.map((item) => (
-                <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                  <h3 className="text-lg font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {item.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -372,7 +372,7 @@ const FAQPage: NextPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Even Your Cat Has Questions</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-2">Even Your Cat Has Questions</h3>
                   <p className="text-lg opacity-90">Let's find the answers together</p>
                 </div>
               </div>
@@ -386,7 +386,7 @@ const FAQPage: NextPage = () => {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Categories Sidebar */}
               <div className="lg:w-1/4">
-                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
+                <h3 className="text-xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
                   <Filter className="w-5 h-5 mr-2" />
                   Categories
                 </h3>
@@ -395,21 +395,19 @@ const FAQPage: NextPage = () => {
                     <button
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
-                      className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
-                        selectedCategory === category.id
-                          ? 'bg-[#5B2EFF] text-white dark:text-gray-100'
-                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                      }`}
+                      className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${selectedCategory === category.id
+                          ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
+                          : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 transition-all duration-300'
+                        }`}
                     >
                       <div className="flex items-center">
                         <category.icon className="w-4 h-4 mr-3" />
                         <span className="font-medium">{category.name}</span>
                       </div>
-                      <span className={`text-sm px-2 py-1 rounded-full ${
-                        selectedCategory === category.id
+                      <span className={`text-sm px-2 py-1 rounded-full ${selectedCategory === category.id
                           ? 'bg-white dark:bg-gray-900/20 text-white dark:text-gray-100'
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                      }`}>
+                        }`}>
                         {category.count}
                       </span>
                     </button>
@@ -420,13 +418,13 @@ const FAQPage: NextPage = () => {
               {/* FAQ Items */}
               <div className="lg:w-3/4">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-100">
                     {filteredFAQs.length} Question{filteredFAQs.length !== 1 ? 's' : ''} Found
                   </h3>
                   {searchTerm && (
                     <button
                       onClick={handleClearSearch}
-                      className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium"
+                      className="text-electric-indigo hover:text-electric-indigo-600 font-medium transition-colors"
                     >
                       Clear Search
                     </button>
@@ -435,22 +433,22 @@ const FAQPage: NextPage = () => {
 
                 <div className="space-y-4">
                   {filteredFAQs.map((item) => (
-                    <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-[#E0EFC7] dark:border-gray-700 overflow-hidden">
+                    <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-xl transition-all duration-300">
                       <button
                         onClick={() => handleToggleItem(item.id)}
-                        className="w-full p-6 text-left flex items-center justify-between bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                        className="w-full p-6 text-left flex items-center justify-between bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300"
                       >
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                          <h4 className="text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
                             {item.question}
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {item.featured && (
-                              <span className="px-2 py-1 bg-[#FF3131]/10 text-[#FF3131] rounded-full text-xs font-medium">
+                              <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/20 text-deep-coral dark:text-deep-coral-400 rounded-full text-xs font-medium">
                                 Popular
                               </span>
                             )}
-                            <span className="px-2 py-1 bg-[#5B2EFF]/10 text-[#5B2EFF] rounded-full text-xs font-medium">
+                            <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/20 text-electric-indigo dark:text-electric-indigo-400 rounded-full text-xs font-medium">
                               {categories.find(cat => cat.id === item.category)?.name}
                             </span>
                           </div>
@@ -461,9 +459,9 @@ const FAQPage: NextPage = () => {
                           <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                         )}
                       </button>
-                      
+
                       {openItems.includes(item.id) && (
-                        <div className="px-6 pb-6 border-t border-gray-100 dark:border-gray-700">
+                        <div className="px-6 pb-6 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top duration-300">
                           <p className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
                             {item.answer}
                           </p>
@@ -471,7 +469,7 @@ const FAQPage: NextPage = () => {
                             <Link href={`${locale === 'fr' ? '/fr' : ''}${(item as { link?: string }).link}`}>
                               <Button
                                 size="sm"
-                                className="mt-4 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-semibold"
+                                className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
                               >
                                 View Safety Information →
                               </Button>
@@ -512,7 +510,7 @@ const FAQPage: NextPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Expert Support Team</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-2">Expert Support Team</h3>
                   <p className="text-lg opacity-90">Ready to answer your questions</p>
                 </div>
               </div>
@@ -524,32 +522,32 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Still Have Questions?
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Can't find what you're looking for? Our customer support team is here to help!
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
-                  <Mail className="w-8 h-8 text-[#5B2EFF] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Email Support</h3>
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
+                  <Mail className="w-8 h-8 text-electric-indigo dark:text-electric-indigo-400 mx-auto mb-4" />
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Email Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Get detailed answers via email
                   </p>
                   <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
-                    <Button size="sm" className="bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100">
+                    <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
                       Contact Us
                     </Button>
                   </Link>
                 </div>
 
-{/* Live Chat temporarily disabled */}
+                {/* Live Chat temporarily disabled */}
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 text-center">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
                   <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Phone Support</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Phone Support</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Speak with our team directly
                   </p>
@@ -575,7 +573,7 @@ const FAQPage: NextPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Join Thousands of Happy Cat Owners</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-2">Join Thousands of Happy Cat Owners</h3>
                   <p className="text-lg opacity-90">Experience the Purrify difference today</p>
                 </div>
               </div>
@@ -584,10 +582,10 @@ const FAQPage: NextPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+        <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
                 Ready to Try Purrify?
               </h2>
               <p className="text-xl mb-8 opacity-90">
@@ -595,13 +593,13 @@ const FAQPage: NextPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                     {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
                     Compare All Sizes
                   </Button>
                 </Link>
@@ -614,15 +612,15 @@ const FAQPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Learn More About Purrify
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     How It Works
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -630,10 +628,10 @@ const FAQPage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Cat Litter Guide
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -641,10 +639,10 @@ const FAQPage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Customer Stories
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
