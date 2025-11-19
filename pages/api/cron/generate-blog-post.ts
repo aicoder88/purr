@@ -78,16 +78,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       
       console.log(`🤖 Generating blog post: ${selectedTopic}`);
       
-      const post = await generator.generateBlogPost(selectedTopic);
-      await generator.publishPost(post);
+      const result = await generator.generateBlogPost(selectedTopic);
+      
+      if (!result.success || !result.post) {
+        throw new Error(`Generation failed: ${result.validation.errors.map(e => e.message).join(', ')}`);
+      }
+      
+      await generator.publishPost(result.post);
       
       return res.status(200).json({
         success: true,
-        postId: post.id,
-        slug: post.slug,
-        title: post.title,
+        postId: result.post.id,
+        slug: result.post.slug,
+        title: result.post.title,
         topic: selectedTopic,
-        generator: 'new'
+        generator: 'new',
+        attempts: result.attempts
       });
     }
     

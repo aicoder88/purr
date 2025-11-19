@@ -46,6 +46,7 @@
     "validate-dark-mode": "node scripts/dark-mode-validator.js",
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-links": "tsx scripts/validate-links.ts",
+    "repair-blog": "tsx scripts/repair-blog-posts.ts",
     "test:e2e": "playwright test",
     "test:e2e:security": "bash scripts/run-security-tests.sh",
     "e2e:web": "next build && next start --port 3010",

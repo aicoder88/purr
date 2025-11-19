@@ -2,16 +2,27 @@ import type { BlogPost, GeneratedContent } from '@/types/blog';
 import { ContentStore } from './content-store';
 import { ImageOptimizer } from './image-optimizer';
 import { SEOGenerator } from './seo-generator';
+import { ContentValidator, type ValidationResult } from './content-validator';
+
+export interface GenerationResult {
+  success: boolean;
+  post?: BlogPost;
+  validation: ValidationResult;
+  attempts: number;
+}
 
 export class AutomatedContentGenerator {
   private contentStore: ContentStore;
   private imageOptimizer: ImageOptimizer;
   private seoGenerator: SEOGenerator;
+  private validator: ContentValidator;
+  private maxRetries: number = 3;
 
   constructor() {
     this.contentStore = new ContentStore();
     this.imageOptimizer = new ImageOptimizer();
     this.seoGenerator = new SEOGenerator();
+    this.validator = new ContentValidator();
   }
 
   /**
@@ -126,51 +137,138 @@ export class AutomatedContentGenerator {
   }
 
   /**
-   * Generate a complete blog post from a topic
+   * Generate a complete blog post from a topic with validation and retry logic
    */
-  async generateBlogPost(topic: string): Promise<BlogPost> {
-    // Generate content using AI
-    const content = await this.generateContent(topic);
+  async generateBlogPost(topic: string): Promise<GenerationResult> {
+    for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
+      try {
+        console.log(`Generating blog post for "${topic}" (attempt ${attempt}/${this.maxRetries})`);
 
-    // Fetch and optimize images
-    const images = await this.fetchRelevantImages(topic, 1);
-    const featuredImage = images[0] || {
+        // Generate content using AI
+        const content = await this.generateContent(topic);
+
+        // Validate generated content for template variables
+        if (this.validator.containsTemplateVariables(content.title)) {
+          console.warn(`Attempt ${attempt}: Generated title contains template variables, retrying...`);
+          continue;
+        }
+
+        if (this.validator.containsTemplateVariables(content.excerpt)) {
+          console.warn(`Attempt ${attempt}: Generated excerpt contains template variables, retrying...`);
+          continue;
+        }
+
+        if (this.validator.containsTemplateVariables(content.content)) {
+          console.warn(`Attempt ${attempt}: Generated content contains template variables, retrying...`);
+          continue;
+        }
+
+        // Ensure valid featured image
+        const featuredImage = await this.ensureValidFeaturedImage(topic);
+
+        // Create blog post
+        const slug = this.generateSlug(content.title);
+        const now = new Date().toISOString();
+
+        const post: BlogPost = {
+          id: Date.now().toString(),
+          slug,
+          title: content.title,
+          excerpt: content.excerpt,
+          content: content.content,
+          author: {
+            name: 'Purrify Team'
+          },
+          publishDate: now,
+          modifiedDate: now,
+          status: 'published',
+          featuredImage,
+          categories: content.categories,
+          tags: content.tags,
+          locale: 'en',
+          translations: {},
+          seo: {
+            title: this.seoGenerator.optimizeTitle(content.title),
+            description: this.seoGenerator.optimizeDescription(content.excerpt),
+            keywords: content.seoKeywords
+          },
+          readingTime: this.calculateReadingTime(content.content)
+        };
+
+        // Validate complete post
+        const validation = this.validator.validatePost(post);
+        
+        if (!validation.valid) {
+          console.warn(`Attempt ${attempt}: Post validation failed:`, validation.errors);
+          if (attempt < this.maxRetries) {
+            continue;
+          }
+        }
+
+        console.log(`✅ Successfully generated valid post: ${post.title}`);
+        
+        return {
+          success: true,
+          post,
+          validation,
+          attempts: attempt
+        };
+
+      } catch (error) {
+        console.error(`Attempt ${attempt} failed:`, error);
+        
+        if (attempt === this.maxRetries) {
+          return {
+            success: false,
+            validation: {
+              valid: false,
+              errors: [{ field: 'system', message: `Generation failed after ${this.maxRetries} attempts: ${error}` }],
+              warnings: []
+            },
+            attempts: attempt
+          };
+        }
+      }
+    }
+
+    // Should never reach here, but TypeScript needs it
+    return {
+      success: false,
+      validation: {
+        valid: false,
+        errors: [{ field: 'system', message: 'Generation failed unexpectedly' }],
+        warnings: []
+      },
+      attempts: this.maxRetries
+    };
+  }
+
+  /**
+   * Ensure valid featured image with fallback
+   */
+  private async ensureValidFeaturedImage(topic: string): Promise<BlogPost['featuredImage']> {
+    try {
+      // Try to fetch relevant images
+      const images = await this.fetchRelevantImages(topic, 1);
+      
+      if (images.length > 0 && images[0].url) {
+        // Validate the image URL
+        const isValid = this.validator.isValidURL(images[0].url);
+        if (isValid) {
+          return images[0];
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to fetch relevant images, using fallback:', error);
+    }
+
+    // Fallback to default Purrify logo
+    return {
       url: '/purrify-logo.png',
-      alt: topic,
+      alt: `${topic} - Purrify Blog`,
       width: 1200,
       height: 630
     };
-
-    // Create blog post
-    const slug = this.generateSlug(content.title);
-    const now = new Date().toISOString();
-
-    const post: BlogPost = {
-      id: Date.now().toString(),
-      slug,
-      title: content.title,
-      excerpt: content.excerpt,
-      content: content.content,
-      author: {
-        name: 'Purrify Team'
-      },
-      publishDate: now,
-      modifiedDate: now,
-      status: 'published',
-      featuredImage,
-      categories: content.categories,
-      tags: content.tags,
-      locale: 'en',
-      translations: {},
-      seo: {
-        title: this.seoGenerator.optimizeTitle(content.title),
-        description: this.seoGenerator.optimizeDescription(content.excerpt),
-        keywords: content.seoKeywords
-      },
-      readingTime: this.calculateReadingTime(content.content)
-    };
-
-    return post;
   }
 
   /**
@@ -262,11 +360,23 @@ Make the content genuinely helpful and informative, not promotional.
   }
 
   /**
-   * Publish a generated post
+   * Publish a generated post with validation
    */
-  async publishPost(post: BlogPost): Promise<void> {
-    await this.contentStore.savePost(post);
-    console.log(`✅ Published new blog post: ${post.title}`);
+  async publishPost(post: BlogPost): Promise<GenerationResult> {
+    const saveResult = await this.contentStore.savePost(post);
+    
+    if (saveResult.success) {
+      console.log(`✅ Published new blog post: ${post.title}`);
+    } else {
+      console.error(`❌ Failed to publish post: ${post.title}`, saveResult.validation.errors);
+    }
+
+    return {
+      success: saveResult.success,
+      post: saveResult.post,
+      validation: saveResult.validation,
+      attempts: 1
+    };
   }
 
   /**
@@ -502,7 +612,7 @@ Make the content genuinely helpful and informative, not promotional.
   }
 
   /**
-   * Create post from provided content (for webhook publish mode)
+   * Create post from provided content (for webhook publish mode) with validation
    */
   async createPostFromContent(data: {
     title: string;
@@ -516,7 +626,7 @@ Make the content genuinely helpful and informative, not promotional.
       description?: string;
       keywords?: string[];
     };
-  }): Promise<BlogPost> {
+  }): Promise<GenerationResult> {
     const slug = this.generateSlug(data.title);
     const now = new Date().toISOString();
     
@@ -582,7 +692,7 @@ Make the content genuinely helpful and informative, not promotional.
       modifiedDate: now,
       status: 'published',
       featuredImage,
-      categories: data.categories || ['Tips'],
+      categories: data.categories || ['tips'],
       tags: data.tags || [],
       locale: 'en',
       translations: {},
@@ -590,7 +700,15 @@ Make the content genuinely helpful and informative, not promotional.
       readingTime
     };
     
-    return post;
+    // Validate the post
+    const validation = this.validator.validatePost(post);
+    
+    return {
+      success: validation.valid,
+      post: validation.valid ? post : undefined,
+      validation,
+      attempts: 1
+    };
   }
 
   /**
