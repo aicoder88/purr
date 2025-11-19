@@ -38,98 +38,102 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
     return (
       <Html lang={htmlLang}>
         <Head>
-        {/* Self-host fonts via next/font; remove external font CSS/preconnect to avoid blocking */}
-        
-        {/* Remove global preloads - each page will preload what it needs */}
-        
-        {/* Enhanced SEO */}
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
+          {/* Self-host fonts via next/font; remove external font CSS/preconnect to avoid blocking */}
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Purrify',
-              url: 'https://purrify.ca',
-              logo: 'https://purrify.ca/logo.png',
-              sameAs: [
-                'https://x.com/PurrifyHQ',
-                'https://www.instagram.com/purrifyhq/',
-                'https://www.linkedin.com/company/purrify',
-                'https://www.tiktok.com/@purrifyhq',
-                'https://www.youtube.com/@PurrifyHQ',
-                'https://www.trustpilot.com/review/purrify.ca',
-                'https://share.google/S4ckzwuljW3gDUOqr',
-                'https://g.page/r/CUB8bZ_ibMbwEBI/review',
-                'https://www.crunchbase.com/organization/purrify',
-                'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
-                'https://biz.yelp.com/settings',
-                'https://medium.com/@purrify',
-                'https://whop.com/purrify',
-                'https://www.producthunt.com/products/purrify',
-                'https://wellfound.com/company/purrify'
-              ],
-              contactPoint: {
-                '@type': 'ContactPoint',
-                email: 'hello@purrify.ca',
-                contactType: 'customer support',
-                areaServed: ['CA', 'US'],
-              },
-            }),
-          }}
-        />
-        
-        {/* Font-face rules handled by next/font */}
-        
-        {/* Google Tag Manager */}
-        {enableGtm && (
-          <Script
-            id="gtm-script"
-            strategy="lazyOnload"
+          {/* Remove global preloads - each page will preload what it needs */}
+
+          {/* Enhanced SEO */}
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+          <meta name="googlebot" content="index, follow" />
+          <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
+
+          <script
+            type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'Purrify',
+                url: 'https://purrify.ca',
+                logo: 'https://purrify.ca/logo.png',
+                sameAs: [
+                  'https://x.com/PurrifyHQ',
+                  'https://www.instagram.com/purrifyhq/',
+                  'https://www.linkedin.com/company/purrify',
+                  'https://www.tiktok.com/@purrifyhq',
+                  'https://www.youtube.com/@PurrifyHQ',
+                  'https://www.trustpilot.com/review/purrify.ca',
+                  'https://share.google/S4ckzwuljW3gDUOqr',
+                  'https://g.page/r/CUB8bZ_ibMbwEBI/review',
+                  'https://www.crunchbase.com/organization/purrify',
+                  'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
+                  'https://biz.yelp.com/settings',
+                  'https://medium.com/@purrify',
+                  'https://whop.com/purrify',
+                  'https://www.producthunt.com/products/purrify',
+                  'https://wellfound.com/company/purrify'
+                ],
+                contactPoint: {
+                  '@type': 'ContactPoint',
+                  email: 'hello@purrify.ca',
+                  contactType: 'customer support',
+                  areaServed: ['CA', 'US'],
+                },
+              }),
+            }}
+          />
+
+          {/* Font-face rules handled by next/font */}
+
+          {/* Google Tag Manager */}
+          {enableGtm && (
+            <Script
+              id="gtm-script"
+              strategy="lazyOnload"
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-T8WZ5D7R');`
-            }}
-          />
-        )}
+              }}
+            />
+          )}
         </Head>
         <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
-        {/* Google Tag Manager (noscript) */}
-        {enableGtm && (
-          <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-              title="Google Tag Manager"
-            />
-          </noscript>
-        )}
-        
-        {/* Global Structured Data */}
-        <PurrifyStructuredData />
-        
-        {/* Skip to content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:p-4 bg-white dark:bg-gray-800 focus:z-50 focus:text-[#FF3131] dark:focus:text-[#FF3131] focus:top-0 focus:left-0"
-        >
-          Skip to content
-        </a>
-        
-        <Main />
-        <NextScript />
-        
-        {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
-        {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
+          {/* Google Tag Manager (noscript) */}
+          {enableGtm && (
+            <noscript>
+              <iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
+                height="0"
+                width="0"
+                style={{ display: 'none', visibility: 'hidden' }}
+                title="Google Tag Manager"
+              />
+            </noscript>
+          )}
+
+          {/* Global Structured Data */}
+          <PurrifyStructuredData />
+
+          {/* Skip to content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:p-4 bg-white dark:bg-gray-800 focus:z-50 focus:text-[#FF3131] dark:focus:text-[#FF3131] focus:top-0 focus:left-0"
+          >
+            Skip to content
+          </a>
+
+          <Main />
+          <NextScript />
+
+          {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
+          {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
+
+          {/* Start of HubSpot Embed Code */}
+          <script type="text/javascript" id="hs-script-loader" async defer src="//js-na3.hs-scripts.com/342693981.js"></script>
+          {/* End of HubSpot Embed Code */}
         </body>
       </Html>
     );
