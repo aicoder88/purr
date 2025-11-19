@@ -33,6 +33,7 @@ import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
+import { SocialProofBadges } from '../src/components/sections/SocialProofBadges';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 import { ScrollAnchor } from '../src/components/ui/scroll-anchor';
 import { Stores } from '../src/components/sections/stores';
@@ -311,6 +312,11 @@ export default function Home() {
             <TrustBadges variant="grid" showIcons={true} />
           </div>
         </section>
+
+        {/* Social Proof - Find Us On */}
+        <ErrorBoundary>
+          <SocialProofBadges />
+        </ErrorBoundary>
 
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">

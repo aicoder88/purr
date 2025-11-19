@@ -1,13 +1,13 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle, Instagram, Twitter, Facebook, Youtube, Linkedin, ExternalLink, Star } from 'lucide-react';
 
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER } from '@/lib/constants';
+import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
 import { useTranslation } from '@/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
@@ -578,6 +578,231 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Social Media Directory */}
+        <section className="py-16 bg-gradient-to-r from-purple-100/50 to-pink-100/50 dark:from-purple-900/20 dark:to-pink-900/20">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+                Connect With Us <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Everywhere</span>
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                Follow us on social media for tips, updates, and exclusive offers
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {/* Social Media */}
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F] group"
+              >
+                <div className="p-3 bg-gradient-to-br from-[#E4405F] to-[#833AB4] rounded-lg text-white">
+                  <Instagram className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">Instagram</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#E4405F]" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1DA1F2] group"
+              >
+                <div className="p-3 bg-[#1DA1F2] rounded-lg text-white">
+                  <Twitter className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">X (Twitter)</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1DA1F2]" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1877F2] group"
+              >
+                <div className="p-3 bg-[#1877F2] rounded-lg text-white">
+                  <Facebook className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">Facebook</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Purrify Canada</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1877F2]" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#FF0000] group"
+              >
+                <div className="p-3 bg-[#FF0000] rounded-lg text-white">
+                  <Youtube className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">YouTube</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#FF0000]" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#0A66C2] group"
+              >
+                <div className="p-3 bg-[#0A66C2] rounded-lg text-white">
+                  <Linkedin className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">LinkedIn</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Purrify</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#0A66C2]" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-black dark:hover:border-white group"
+              >
+                <div className="p-3 bg-black dark:bg-white rounded-lg text-white dark:text-black">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.75 2a.75.75 0 0 1 .75.75c0 2.24 1.53 4.12 3.63 4.5.37.07.62.4.62.77v2.02a.75.75 0 0 1-1.03.7 6.3 6.3 0 0 1-2.47-1.4v6.67A4.82 4.82 0 1 1 8 11.5h.75a.75.75 0 0 1 .75.75v2.14a.75.75 0 0 1-1.02.7 1.83 1.83 0 0 0-.73-.15 1.82 1.82 0 1 0 1.82 1.83V3.5a.75.75 0 0 1 .75-.75h2.43Z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-gray-900 dark:text-white">TikTok</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
+                </div>
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-black dark:group-hover:text-white" />
+              </a>
+            </div>
+
+            {/* Review Platforms */}
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Leave Us a Review
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href={SOCIAL_LINKS.trustpilot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#00B67A]"
+                >
+                  <div className="flex items-center gap-0.5 text-[#00B67A]">
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                  </div>
+                  <span className="font-semibold text-gray-700 dark:text-gray-300">Trustpilot</span>
+                </a>
+
+                <a
+                  href={SOCIAL_LINKS.googleReviews}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#4285F4]"
+                >
+                  <div className="flex items-center gap-0.5 text-[#FBBC04]">
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                  </div>
+                  <span className="font-semibold text-gray-700 dark:text-gray-300">Google</span>
+                </a>
+
+                <a
+                  href="https://www.yelp.ca/biz/purrify-montreal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#D32323]"
+                >
+                  <div className="flex items-center gap-0.5 text-[#D32323]">
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                  </div>
+                  <span className="font-semibold text-gray-700 dark:text-gray-300">Yelp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Business Profiles */}
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Business Profiles
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href={SOCIAL_LINKS.crunchbase}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#0288D1] dark:hover:text-[#0288D1]"
+                >
+                  Crunchbase
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.wellfound}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                >
+                  Wellfound
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.producthunt}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#DA552F] dark:hover:text-[#DA552F]"
+                >
+                  Product Hunt
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.medium}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
+                >
+                  Medium
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.googleBusiness}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#4285F4] dark:hover:text-[#4285F4]"
+                >
+                  Google Business
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </Container>

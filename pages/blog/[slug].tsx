@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { SocialFollowCTA } from '../../src/components/blog/SocialFollowCTA';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 import { prisma } from '../../src/lib/prisma';
 import fs from 'fs';
@@ -480,6 +481,12 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 </a>
               </div>
             </div>
+
+            {/* Social Follow CTA */}
+            <div className="mt-10">
+              <SocialFollowCTA variant="card" />
+            </div>
+
             {/* Related Articles */}
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
               <RelatedArticles />

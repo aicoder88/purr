@@ -10,10 +10,22 @@ import {
   Twitter,
   Linkedin,
   Youtube,
-  MapPin,
-  Phone,
+  Facebook,
+  Star,
+  ExternalLink,
 } from "lucide-react";
 import { SOCIAL_LINKS } from "../../lib/constants";
+
+const MediumIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    {...props}
+  >
+    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+  </svg>
+);
 
 const TikTokIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -63,7 +75,7 @@ export function Footer() {
             <p className="text-sm text-[#333333]/80 dark:text-gray-300">
               {t.siteDescription}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3">
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
@@ -81,6 +93,15 @@ export function Footer() {
                 aria-label="Follow Purrify on X"
               >
                 <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Follow Purrify on Facebook"
+              >
+                <Facebook className="h-5 w-5" />
               </a>
               <a
                 href={SOCIAL_LINKS.linkedin}
@@ -109,6 +130,56 @@ export function Footer() {
               >
                 <TikTokIcon className="h-5 w-5" />
               </a>
+              <a
+                href={SOCIAL_LINKS.medium}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                aria-label="Read Purrify on Medium"
+              >
+                <MediumIcon className="h-5 w-5" />
+              </a>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-4 pt-4 border-t border-[#E0EFC7]/50 dark:border-gray-700/50">
+              <p className="text-xs font-medium text-[#333333]/60 dark:text-gray-500 mb-3">Trusted Reviews</p>
+              <div className="flex flex-col gap-2">
+                <a
+                  href={SOCIAL_LINKS.trustpilot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#333333]/70 dark:text-gray-400 hover:text-[#00B67A] dark:hover:text-[#00B67A] transition-colors duration-300"
+                  aria-label="View Purrify reviews on Trustpilot"
+                >
+                  <div className="flex items-center gap-0.5 text-[#00B67A]">
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                  </div>
+                  <span>Trustpilot</span>
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.googleReviews}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#333333]/70 dark:text-gray-400 hover:text-[#4285F4] dark:hover:text-[#4285F4] transition-colors duration-300"
+                  aria-label="Leave a review on Google"
+                >
+                  <div className="flex items-center gap-0.5 text-[#FBBC04]">
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                    <Star className="h-3 w-3 fill-current" />
+                  </div>
+                  <span>Google Reviews</span>
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
             </div>
           </div>
 
