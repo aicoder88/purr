@@ -42,8 +42,8 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/optimized/three_bags_no_bg.webp"
-                  alt={t.homepage.altText.productPackages}
+                  src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80"
+                  alt="Activated carbon granules - natural odor elimination"
                   width={400}
                   height={300}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
@@ -52,18 +52,18 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/optimized/carbon_magnified_image.webp"
-                  alt={t.homepage.altText.microscopicView}
+                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80"
+                  alt="Microscopic view of activated carbon pores"
                   width={400}
                   height={300}
-                  className="w-full h-48 object-contain scale-85 transform hover:scale-90 transition duration-500"
+                  className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"
                   loading="lazy"
                 />
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <Image
-                  src="/optimized/pet-safety-home.webp"
-                  alt={t.homepage.altText.happyCat}
+                  src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80"
+                  alt="Happy cat in fresh, clean home environment"
                   width={800}
                   height={400}
                   className="w-full h-48 object-cover transform hover:scale-110 transition duration-500"

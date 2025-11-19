@@ -22,17 +22,42 @@ interface WpPost {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<BlogPost[]>
+  res: NextApiResponse
 ) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   try {
     const { limit } = req.query;
     const limitNum = limit ? parseInt(limit as string, 10) : undefined;
     const take = limitNum || 6;
 
+    // Check if database is configured
+    if (!prisma) {
+      console.warn('Database not configured, returning empty blog posts');
+      return res.status(200).json([]);
+    }
+
     const automatedPosts = await prisma.blogPost.findMany({
       where: { status: 'PUBLISHED' },
       orderBy: { publishedAt: 'desc' },
       take,
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        excerpt: true,
+        content: true,
+        featuredImage: true,
+        publishedAt: true,
+        author: true,
+        categories: true,
+        tags: true,
+        seoTitle: true,
+        seoDescription: true,
+        readingTime: true,
+      },
     });
 
     if (automatedPosts.length > 0) {
@@ -84,12 +109,9 @@ export default async function handler(
     }));
     
     res.status(200).json(posts);
-  } catch (err) {
-    console.error('Error fetching WordPress posts:', err);
-    // Fallback to sample data in case of error
-    const { limit } = req.query;
-    const limitNum = limit ? parseInt(limit as string, 10) : undefined;
-    const posts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
-    res.status(200).json(posts);
+  } catch (error) {
+    console.error('Error fetching WordPress posts:', error);
+    // Return empty array instead of error to prevent page crashes
+    return res.status(200).json([]);
   }
 }
