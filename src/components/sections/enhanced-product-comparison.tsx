@@ -263,31 +263,33 @@ export function EnhancedProductComparison() {
             Simple pricing. No hidden fees. Cancel anytime.
           </p>
 
-          {/* Toggle Switch */}
-          <div className="inline-flex bg-white dark:bg-gray-800 p-1.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm mb-8">
+          {/* Toggle Switch - Better mobile layout */}
+          <div className="inline-flex bg-white dark:bg-gray-800 p-1.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm mb-8 flex-wrap sm:flex-nowrap justify-center">
             <button
               onClick={() => setViewMode('subscription')}
               className={cn(
-                "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                "px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap",
                 viewMode === 'subscription'
                   ? "bg-gray-900 text-white shadow-md"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               )}
             >
-              <Zap className="w-4 h-4" />
-              Subscribe & Save
+              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">Subscribe & Save</span>
+              <span className="xs:hidden">Subscribe</span>
             </button>
             <button
               onClick={() => setViewMode('one-time')}
               className={cn(
-                "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                "px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap",
                 viewMode === 'one-time'
                   ? "bg-gray-900 text-white shadow-md"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               )}
             >
-              <ShoppingCart className="w-4 h-4" />
-              One-Time Purchase
+              <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">One-Time Purchase</span>
+              <span className="xs:hidden">One-Time</span>
             </button>
           </div>
         </div>
@@ -307,7 +309,7 @@ export function EnhancedProductComparison() {
                 className={cn(
                   "relative bg-white dark:bg-gray-800 rounded-3xl border transition-all duration-300 group",
                   product.recommended
-                    ? "border-deep-coral shadow-xl scale-105 z-10"
+                    ? "border-deep-coral shadow-xl md:scale-105 z-10"
                     : "border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600"
                 )}
                 onMouseEnter={() => setHoveredProduct(product.id)}
@@ -370,12 +372,12 @@ export function EnhancedProductComparison() {
                       <Button
                         asChild
                         className={cn(
-                          "w-full py-6 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1",
+                          "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
                           isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
                         )}
                       >
                         <a href={getPaymentLink(preferredOption.linkKey)} target="_blank" rel="noopener noreferrer">
-                          {preferredOption.ctaLabel} <ArrowRight className="w-5 h-5 ml-2" />
+                          {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                         </a>
                       </Button>
                     ) : (
@@ -383,7 +385,7 @@ export function EnhancedProductComparison() {
                         onClick={() => handleAddToCartClick(preferredOption.cartProductId || product.id)}
                         disabled={addingToCart === (preferredOption.cartProductId || product.id)}
                         className={cn(
-                          "w-full py-6 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1",
+                          "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
                           isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
                         )}
                       >
@@ -391,7 +393,7 @@ export function EnhancedProductComparison() {
                           "Adding..."
                         ) : (
                           <>
-                            {preferredOption.ctaLabel} <ArrowRight className="w-5 h-5 ml-2" />
+                            {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                           </>
                         )}
                       </Button>

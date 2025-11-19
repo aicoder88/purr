@@ -86,8 +86,8 @@ const PathCard = ({
     : "bg-white/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 hover:border-electric-indigo/30 hover:shadow-xl hover:shadow-electric-indigo/10";
 
   const buttonClass = variant === 'primary'
-    ? "w-full mt-4 bg-deep-coral hover:bg-deep-coral/90 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-deep-coral/20 transition-all duration-300 transform group-hover:-translate-y-0.5"
-    : "w-full mt-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 hover:border-electric-indigo hover:text-electric-indigo font-bold py-3 px-6 rounded-xl transition-all duration-300";
+    ? "w-full mt-4 bg-deep-coral hover:bg-deep-coral/90 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-deep-coral/20 transition-all duration-300 transform group-hover:-translate-y-0.5 min-h-[44px] text-sm sm:text-base"
+    : "w-full mt-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 hover:border-electric-indigo hover:text-electric-indigo font-bold py-3 px-6 rounded-xl transition-all duration-300 min-h-[44px] text-sm sm:text-base";
 
   const content = (
     <div className={`${baseClasses} ${variantClasses}`}>
@@ -154,21 +154,21 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
         </span>
       </div>
 
-      <h1 className="font-heading text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
+      <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
         <span className="block bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
           {headlinePrimary}
         </span>
         {hasEmphasis && (
-          <span className="block mt-2 text-3xl md:text-5xl font-bold text-deep-coral">
+          <span className="block mt-2 text-2xl sm:text-3xl md:text-5xl font-bold text-deep-coral">
             {emphasisLineText}
           </span>
         )}
-        <span className="block mt-4 text-2xl md:text-3xl font-medium text-electric-indigo">
+        <span className="block mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl font-medium text-electric-indigo">
           {t.hero.instantly}
         </span>
       </h1>
 
-      <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed font-medium">
+      <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed font-medium">
         {hasHighlightSentence ? (
           <>
             {descriptionBeforeHighlight && <span>{descriptionBeforeHighlight} </span>}
@@ -182,13 +182,13 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
         )}
       </p>
 
-      <div className="flex items-center gap-4 py-2">
+      <div className="flex items-center gap-3 sm:gap-4 py-2">
         <SocialProofAvatars />
         <div className="text-sm text-gray-600 dark:text-gray-400">
-          <span className="font-bold text-gray-900 dark:text-white block text-base">
+          <span className="font-bold text-gray-900 dark:text-white block text-sm sm:text-base">
             {t.hero.socialProof.trustNumber}
           </span>
-          {t.hero.socialProof.trustText}
+          <span className="text-xs sm:text-sm">{t.hero.socialProof.trustText}</span>
         </div>
       </div>
 
