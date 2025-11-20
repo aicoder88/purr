@@ -6,11 +6,11 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import Image from 'next/image';
 import {
-  CheckCircle, 
-  XCircle, 
-  Clock, 
-  Droplets, 
-  Shield, 
+  CheckCircle,
+  XCircle,
+  Clock,
+  Droplets,
+  Shield,
   Heart,
   ChevronRight,
   Home,
@@ -29,10 +29,10 @@ const CatLitterGuidePage: NextPage = () => {
   const trialPrice = formatProductPrice('trial', locale);
 
   // Unique images for cat litter guide - different from all other posts
-  const heroImage = 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1600&q=80'; // Modern litter box setup
-  const sectionImage1 = 'https://images.unsplash.com/photo-1615789591457-74a63395c990?auto=format&fit=crop&w=1600&q=80'; // Different litter types
-  const sectionImage2 = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner maintenance
-  const solutionImage = 'https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat household
+  const heroImage = '/optimized/litter-guide-hero-setup.png'; // Modern litter box setup
+  const sectionImage1 = '/optimized/safe-cat-litter.png'; // Different litter types (reused safe litter image)
+  const sectionImage2 = '/optimized/step-2-mix.png'; // Cat owner maintenance (reused mixing image)
+  const solutionImage = '/optimized/benefits-happy-cats.png'; // Happy multi-cat household
 
   const litterTypes = [
     {
@@ -117,13 +117,13 @@ const CatLitterGuidePage: NextPage = () => {
     <>
       <Head>
         <title>Complete Cat Litter Guide - Types, Tips & Best Practices | Purrify</title>
-        <meta 
-          name="description" 
-          content="Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer." 
+        <meta
+          name="description"
+          content="Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer."
         />
         <meta name="keywords" content="cat litter guide, litter types, cat care, odor control, litter maintenance, Purrify" />
         <link rel="canonical" href={canonicalUrl} />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Complete Cat Litter Guide - Types, Tips & Best Practices" />
         <meta property="og:description" content="Everything you need to know about cat litter - from choosing the right type to maintenance tips and problem-solving." />
@@ -136,7 +136,7 @@ const CatLitterGuidePage: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={heroImage} />
         <meta name="twitter:url" content={canonicalUrl} />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -253,14 +253,14 @@ const CatLitterGuidePage: NextPage = () => {
                     </h3>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'}`} 
+                        <Star
+                          key={i}
+                          className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'}`}
                         />
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Pros:</h4>
@@ -273,7 +273,7 @@ const CatLitterGuidePage: NextPage = () => {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Cons:</h4>
                       <ul className="space-y-1">
