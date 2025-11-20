@@ -17,10 +17,10 @@ export default function ActivatedCarbonBenefits() {
   const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for science guide - different from other posts
-  const heroImage = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Microscopic/scientific view
-  const sectionImage1 = 'https://images.unsplash.com/photo-1582719201952-c6832d046536?auto=format&fit=crop&w=1600&q=80'; // Modern laboratory/science
-  const sectionImage2 = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy cats in clean home
-  const solutionImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80'; // Content cat in bright home
+  const heroImage = '/optimized/benefits-hero-science.png'; // Microscopic/scientific view
+  const sectionImage1 = '/optimized/benefits-lab-modern.png'; // Modern laboratory/science
+  const sectionImage2 = '/optimized/benefits-happy-cats.png'; // Happy cats in clean home
+  const solutionImage = '/optimized/benefits-solution-bright.png'; // Content cat in bright home
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function ActivatedCarbonBenefits() {
           },
         ]}
       />
-      
+
       {/* Advanced JSON-LD Schema for Article */}
       <ArticleSchema
         title={pageTitle}
@@ -67,7 +67,7 @@ export default function ActivatedCarbonBenefits() {
           image: heroImage
         }}
       />
-      
+
 
       <article className="max-w-4xl mx-auto px-4 py-12 text-gray-900 dark:text-gray-100">
         <header className="mb-12">
@@ -94,20 +94,20 @@ export default function ActivatedCarbonBenefits() {
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-500 p-6 mb-8">
             <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Answer</h2>
             <p className="text-blue-800 dark:text-blue-200">
-              Activated carbon litter additive benefits include superior odor elimination through molecular adsorption, 
-              natural and fragrance-free composition, long-lasting effectiveness, and compatibility with all litter types. 
+              Activated carbon litter additive benefits include superior odor elimination through molecular adsorption,
+              natural and fragrance-free composition, long-lasting effectiveness, and compatibility with all litter types.
               Unlike masking fragrances, activated carbon actually removes odor molecules from the air.
             </p>
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How Activated Carbon Eliminates Odors</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
               <h3 className="text-2xl font-semibold mb-4">The Science of Adsorption</h3>
               <p>
-                Activated carbon works through a process called <strong>adsorption</strong> (not absorption). 
-                The carbon's massive surface area - up to 1,500 square meters per gram - contains millions 
+                Activated carbon works through a process called <strong>adsorption</strong> (not absorption).
+                The carbon's massive surface area - up to 1,500 square meters per gram - contains millions
                 of microscopic pores that trap odor molecules like ammonia and hydrogen sulfide.
               </p>
               <ul className="mt-4 space-y-2">
@@ -326,21 +326,21 @@ export default function ActivatedCarbonBenefits() {
               Try Purrify's premium activated carbon litter additive and discover why 1,000+ cat owners trust our natural odor elimination solution.
             </p>
             <div className="space-x-4">
-              <Link 
-                href="/products/trial-size" 
+              <Link
+                href="/products/trial-size"
                 className="inline-block bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 {`Try 12g Trial Size - ${formatProductPrice('trial', locale)}`}
               </Link>
-              <Link 
-                href="/products/compare" 
+              <Link
+                href="/products/compare"
                 className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
               >
                 View All Sizes
               </Link>
             </div>
           </div>
-          
+
           {/* Related Articles */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
             <RelatedArticles currentPath="/learn/activated-carbon-benefits" />

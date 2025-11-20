@@ -12,7 +12,7 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function SciencePage() {
   const { locale } = useTranslation();
-  
+
   const pageTitle = `The Science Behind ${SITE_NAME} - Activated Carbon Technology`;
   const pageDescription = "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
@@ -211,7 +211,7 @@ export default function SciencePage() {
             <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/pet-safety-home.webp"
+                  src="/optimized/happy-cat-fresh-home.png"
                   alt="Happy cat in clean, fresh home environment"
                   width={1600}
                   height={900}
@@ -226,7 +226,7 @@ export default function SciencePage() {
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/content-cat.jpg"
+                  src="/optimized/content-cat-owner.png"
                   alt="Content cat enjoying clean, odor-free environment"
                   width={1600}
                   height={900}
@@ -371,7 +371,7 @@ export default function SciencePage() {
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/science-microscope.jpg"
+                      src="/optimized/science-microscope-research.png"
                       alt="Laboratory microscope for activated carbon research"
                       width={1200}
                       height={800}
@@ -383,7 +383,7 @@ export default function SciencePage() {
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/chemistry-lab.jpg"
+                      src="/optimized/chemistry-lab-testing.png"
                       alt="Chemistry laboratory testing activated carbon samples"
                       width={1200}
                       height={800}
@@ -398,7 +398,7 @@ export default function SciencePage() {
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/molecular-structure.jpg"
+                      src="/optimized/molecular-structure-pore.png"
                       alt="Molecular structure visualization showing pore architecture"
                       width={1200}
                       height={800}
@@ -575,7 +575,7 @@ export default function SciencePage() {
 
               <div className="space-y-12">
                 {processSteps.map((step, index) => (
-                  <div 
+                  <div
                     key={index}
                     className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col`}
                   >
@@ -656,7 +656,7 @@ export default function SciencePage() {
         {/* Back to Learn */}
         <section className="py-8 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <Link 
+            <Link
               href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}
               className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
             >

@@ -147,7 +147,7 @@ export default function SafetyInformationPage() {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/quality-control-lab.webp"
+                  src="/optimized/quality-control-lab.png"
                   alt="Quality control laboratory testing for activated carbon"
                   width={1600}
                   height={1067}
@@ -162,7 +162,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/activated-carbon-granules.webp"
+                  src="/optimized/activated-carbon-granules.png"
                   alt="Premium coconut shell activated carbon granules"
                   width={1600}
                   height={1067}
@@ -318,7 +318,7 @@ export default function SafetyInformationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/certification-quality.webp"
+                  src="/optimized/certification-quality.png"
                   alt="Quality certification and standards compliance"
                   width={1600}
                   height={1067}
@@ -327,7 +327,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/coconut-shell-natural.webp"
+                  src="/optimized/coconut-shell-natural.png"
                   alt="Sustainable coconut shell natural material"
                   width={1600}
                   height={1067}
@@ -336,7 +336,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/safe-cat-litter.webp"
+                  src="/optimized/safe-cat-litter.png"
                   alt="Safe cat litter with activated carbon"
                   width={1600}
                   height={1067}
@@ -362,7 +362,7 @@ export default function SafetyInformationPage() {
             {/* Applications Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-12 max-w-5xl mx-auto">
               <Image
-                src="/optimized/pet-safety-home.webp"
+                src="/optimized/versatile-applications.png"
                 alt="Pet safety and home odor control with activated carbon"
                 width={1600}
                 height={1067}
@@ -485,7 +485,7 @@ export default function SafetyInformationPage() {
                 {/* Rodent Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
                   <Image
-                    src="/optimized/hamster-rodent-pet.webp"
+                    src="/optimized/hamster-rodent-pet.png"
                     alt="Hamster and small pet rodent care with activated carbon"
                     width={1600}
                     height={1067}
@@ -540,8 +540,8 @@ export default function SafetyInformationPage() {
                         <div>
                           <strong className="text-gray-900 dark:text-white">Inhalation:</strong>
                           <span className="text-gray-700 dark:text-gray-200"> Fine dust can irritate lungs if animals burrow or chew bags.
-                          Keep bags out of your rodent's reach. Some dust may settle during shipping—if the bag looks dusty, either remove your pet
-                          from the cage for a few minutes while applying, or give the carbon a quick rinse and air-dry before use.</span>
+                            Keep bags out of your rodent's reach. Some dust may settle during shipping—if the bag looks dusty, either remove your pet
+                            from the cage for a few minutes while applying, or give the carbon a quick rinse and air-dry before use.</span>
                         </div>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -549,7 +549,7 @@ export default function SafetyInformationPage() {
                         <div>
                           <strong className="text-gray-900 dark:text-white">Ingestion:</strong>
                           <span className="text-gray-700 dark:text-gray-200"> Small incidental ingestion isn't toxic, but continuous chewing
-                          can cause GI upset or blockages.</span>
+                            can cause GI upset or blockages.</span>
                         </div>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -557,7 +557,7 @@ export default function SafetyInformationPage() {
                         <div>
                           <strong className="text-gray-900 dark:text-white">Housing use:</strong>
                           <span className="text-gray-700 dark:text-gray-200"> Safe if in a container (filter box, pouch) that rodents
-                          can't chew through. Avoid loose piles they can dig into and inhale.</span>
+                            can't chew through. Avoid loose piles they can dig into and inhale.</span>
                         </div>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -565,7 +565,7 @@ export default function SafetyInformationPage() {
                         <div>
                           <strong className="text-gray-900 dark:text-white">Moisture:</strong>
                           <span className="text-gray-700 dark:text-gray-200"> Carbon will adsorb odors and moisture — keep dry
-                          to avoid mold growth.</span>
+                            to avoid mold growth.</span>
                         </div>
                       </li>
                     </ul>

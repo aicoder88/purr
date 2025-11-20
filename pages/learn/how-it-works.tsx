@@ -19,7 +19,7 @@ export default function HowItWorksPage() {
       : locale === 'zh'
         ? `体验试用装 - ${trialPrice}（含运费）`
         : `Try Trial Size - ${trialPrice} (shipping included)`;
-  
+
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`;
@@ -56,21 +56,21 @@ export default function HowItWorksPage() {
       number: "1",
       title: "Sprinkle Purrify",
       description: "Add a thin layer of Purrify on top of fresh or existing litter",
-      image: "/optimized/panel_1.webp",
+      image: "/optimized/step-1-sprinkle.png",
       tip: "A little goes a long way - just 1-2 teaspoons per litter box change"
     },
     {
-      number: "2", 
+      number: "2",
       title: "Mix Gently",
       description: "Lightly mix Purrify into the top layer of litter",
-      image: "/optimized/panel_2.webp",
+      image: "/optimized/step-2-mix.png",
       tip: "No need to completely blend - surface coverage is most effective"
     },
     {
       number: "3",
       title: "Enjoy Freshness",
       description: "Experience immediate and long-lasting odor control",
-      image: "/optimized/panel_3.webp",
+      image: "/optimized/step-3-enjoy.png",
       tip: "Reapply when adding fresh litter or doing a complete change"
     }
   ];
@@ -123,7 +123,7 @@ export default function HowItWorksPage() {
           ]
         }}
       />
-      
+
       {/* Advanced JSON-LD Schema for Article */}
       <ArticleSchema
         title={pageTitle}
@@ -171,20 +171,20 @@ export default function HowItWorksPage() {
                 The Science Behind Purrify
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Discover how activated carbon technology eliminates odors at the molecular level, 
+                Discover how activated carbon technology eliminates odors at the molecular level,
                 providing superior odor control for your cat's litter box.
               </p>
               <div className="relative max-w-2xl mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative">
-                        <Image
-                          src="/optimized/micropores_magnified_view.webp"
-                          alt="Activated Carbon Micropores Under Magnification"
-                          width={600}
-                          height={400}
-                          sizes="(max-width: 768px) 100vw, 600px"
-                          className="w-full h-auto rounded-2xl shadow-2xl"
-                        />
+                  <Image
+                    src="/optimized/micropores-magnified.png"
+                    alt="Activated Carbon Micropores Under Magnification"
+                    width={600}
+                    height={400}
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
                   <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
                     Micropores magnified 1000x
                   </div>
