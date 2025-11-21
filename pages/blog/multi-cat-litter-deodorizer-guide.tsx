@@ -141,9 +141,9 @@ export default function MultiCatLitterDeodorizerGuide() {
               <Image
                 src={heroImage}
                 alt="Multiple cats in a household demonstrating the need for effective multi-cat litter deodorizing solutions"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={2400}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -267,10 +267,10 @@ export default function MultiCatLitterDeodorizerGuide() {
                 <Image
                   src={multiBoxImage}
                   alt="Strategic litter box setup for multi-cat household odor management"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   Strategic litter box placement is crucial for multi-cat households
@@ -534,10 +534,10 @@ export default function MultiCatLitterDeodorizerGuide() {
                 <Image
                   src={maintenanceImage}
                   alt="Cat owners troubleshooting and maintaining clean multi-cat litter areas"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1200}
+                  height={600}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   Proper maintenance prevents common multi-cat odor issues
@@ -635,7 +635,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                   <p className="text-gray-700 dark:text-gray-200">
                     Activated carbon is the only deodorizer type that maintains effectiveness in large multi-cat
                     households. <Link href="/blog/activated-carbon-litter-additive-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">
-                    Unlike baking soda or scented alternatives</Link>, activated carbon provides superior
+                      Unlike baking soda or scented alternatives</Link>, activated carbon provides superior
                     ammonia absorption without becoming overwhelmed.
                   </p>
                 </div>
@@ -686,7 +686,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               <p className="text-gray-700 dark:text-gray-200">
                 Ready to experience odor-free multi-cat living?
                 <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
-                Start with Purrify's 120g multi-cat size</Link> and discover why thousands of multi-cat
+                  Start with Purrify's 120g multi-cat size</Link> and discover why thousands of multi-cat
                 households trust activated carbon technology for their odor control needs.
               </p>
             </div>

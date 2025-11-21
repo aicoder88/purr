@@ -16,7 +16,7 @@ export default function HowToUseLitterDeodorizer() {
         <title>{`${pageTitle} | ${SITE_NAME}`}</title>
         <meta name="description" content="Step-by-step guide to using cat litter deodorizer correctly. Avoid common mistakes and maximize odor control with expert tips." />
         <meta name="keywords" content="cat litter deodorizer additive guide, litter box odor control, cat litter deodorizer instructions, step-by-step litter deodorizer" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content="Learn the proper way to use cat litter deodorizer additive for maximum odor control. Step-by-step instructions and expert tips." />
@@ -31,10 +31,10 @@ export default function HowToUseLitterDeodorizer() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content="Step-by-step instructions for proper cat litter deodorizer application and maximum odor control." />
         <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
-        
+
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer" />
-        
+
         {/* Schema.org structured data */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -55,7 +55,7 @@ export default function HowToUseLitterDeodorizer() {
                 "name": "Cat litter deodorizer additive"
               },
               {
-                "@type": "HowToSupply", 
+                "@type": "HowToSupply",
                 "name": "Clean litter box"
               },
               {
@@ -70,7 +70,7 @@ export default function HowToUseLitterDeodorizer() {
                 "text": "Start with a clean, empty litter box for best results"
               },
               {
-                "@type": "HowToStep", 
+                "@type": "HowToStep",
                 "name": "Add base layer of litter",
                 "text": "Pour 2-3 inches of your regular cat litter into the box"
               },
@@ -126,7 +126,7 @@ export default function HowToUseLitterDeodorizer() {
                 How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Master the proper application technique for maximum odor control effectiveness. 
+                Master the proper application technique for maximum odor control effectiveness.
                 Learn common mistakes to avoid and expert tips for long-lasting freshness.
               </p>
               <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
@@ -141,9 +141,9 @@ export default function HowToUseLitterDeodorizer() {
               <Image
                 src={heroImage}
                 alt="Cat owner properly applying litter deodorizer additive following step-by-step instructions"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1600}
-                height={1067}
+                className="w-full h-auto rounded-2xl shadow-xl"
+                width={1536}
+                height={1024}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -173,9 +173,9 @@ export default function HowToUseLitterDeodorizer() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Step-by-Step Application Guide</h2>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Using a <strong>cat litter deodorizer additive</strong> correctly is crucial for achieving maximum odor control. 
+                Using a <strong>cat litter deodorizer additive</strong> correctly is crucial for achieving maximum odor control.
                 Follow this comprehensive guide to ensure you get the best results from your deodorizer.
               </p>
 
@@ -188,12 +188,12 @@ export default function HowToUseLitterDeodorizer() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Start with a Clean Litter Box</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Begin with a completely clean, empty litter box. Remove all old litter and wash the box 
+                      Begin with a completely clean, empty litter box. Remove all old litter and wash the box
                       with mild soap and water. Dry thoroughly before proceeding.
                     </p>
                     <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-600 dark:border-blue-400 p-4">
                       <p className="text-blue-800 dark:text-blue-200 text-sm">
-                        <strong>Pro Tip:</strong> A clean starting surface ensures maximum contact between 
+                        <strong>Pro Tip:</strong> A clean starting surface ensures maximum contact between
                         the deodorizer and odor-causing compounds.
                       </p>
                     </div>
@@ -208,7 +208,7 @@ export default function HowToUseLitterDeodorizer() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Base Layer of Litter</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Pour 2-3 inches of your regular cat litter into the clean box. This creates the 
+                      Pour 2-3 inches of your regular cat litter into the clean box. This creates the
                       foundation layer that will work with your deodorizer additive.
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 dark:text-gray-200 space-y-1">
@@ -250,12 +250,12 @@ export default function HowToUseLitterDeodorizer() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Final Litter Layer</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Add another 1-2 inches of litter on top of the deodorizer. This creates a "sandwich" 
+                      Add another 1-2 inches of litter on top of the deodorizer. This creates a "sandwich"
                       effect that maximizes odor control while keeping the additive in place.
                     </p>
                     <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 dark:border-green-600 p-4">
                       <p className="text-green-800 dark:text-green-200 text-sm">
-                        <strong>Why This Works:</strong> The layered approach ensures the deodorizer 
+                        <strong>Why This Works:</strong> The layered approach ensures the deodorizer
                         contacts odors from both above and below, providing 360-degree protection.
                       </p>
                     </div>
@@ -270,7 +270,7 @@ export default function HowToUseLitterDeodorizer() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Gentle Mixing (Optional)</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Lightly mix the top layer with a clean scoop to distribute the deodorizer throughout 
+                      Lightly mix the top layer with a clean scoop to distribute the deodorizer throughout
                       the litter. Be gentle to avoid creating dust clouds.
                     </p>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -281,7 +281,7 @@ export default function HowToUseLitterDeodorizer() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes to Avoid</h2>
-              
+
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
                 <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ What NOT to Do</h3>
                 <div className="space-y-4 text-red-800 dark:text-red-200">
@@ -304,9 +304,9 @@ export default function HowToUseLitterDeodorizer() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance and Reapplication</h2>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                To maintain optimal odor control with your <strong>natural cat litter odor eliminator</strong>, 
+                To maintain optimal odor control with your <strong>natural cat litter odor eliminator</strong>,
                 follow these maintenance guidelines:
               </p>
 
@@ -332,7 +332,7 @@ export default function HowToUseLitterDeodorizer() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maximizing Effectiveness</h2>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Get the most out of your <strong>cat litter deodorizer</strong> with these expert tips:
               </p>
@@ -371,8 +371,8 @@ export default function HowToUseLitterDeodorizer() {
               <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
                 <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">🏆 Why Choose Purrify?</h4>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
-                  Purrify's premium coconut shell activated carbon is specifically designed for easy application 
-                  and maximum effectiveness. Our fine granules distribute evenly and provide up to 7 days of 
+                  Purrify's premium coconut shell activated carbon is specifically designed for easy application
+                  and maximum effectiveness. Our fine granules distribute evenly and provide up to 7 days of
                   superior odor control.
                 </p>
                 <Link href="/products/compare" className="inline-block bg-[#FF3131] dark:bg-[#FF6B6B] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 dark:hover:bg-[#FF6B6B]/90 transition-colors">
@@ -381,44 +381,44 @@ export default function HowToUseLitterDeodorizer() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Common Issues</h2>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Odors still present after application</h4>
                   <p className="text-orange-800 dark:text-orange-200">
-                    <strong>Solution:</strong> Increase the amount used, ensure even distribution, 
+                    <strong>Solution:</strong> Increase the amount used, ensure even distribution,
                     or consider more frequent applications for heavy-use boxes.
                   </p>
                 </div>
                 <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Cat avoiding the litter box</h4>
                   <p className="text-orange-800 dark:text-orange-200">
-                    <strong>Solution:</strong> Reduce the amount used or try mixing less thoroughly. 
+                    <strong>Solution:</strong> Reduce the amount used or try mixing less thoroughly.
                     Some cats are sensitive to texture changes.
                   </p>
                 </div>
                 <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
                   <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">Problem: Deodorizer clumping together</h4>
                   <p className="text-orange-800 dark:text-orange-200">
-                    <strong>Solution:</strong> Ensure litter is completely dry before application 
+                    <strong>Solution:</strong> Ensure litter is completely dry before application
                     and store deodorizer in a moisture-free environment.
                   </p>
                 </div>
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Proper application of <strong>cat litter deodorizer additive</strong> is the key to achieving 
-                professional-grade odor control in your home. By following this step-by-step guide and 
-                avoiding common mistakes, you'll enjoy a fresher, more pleasant environment for both 
+                Proper application of <strong>cat litter deodorizer additive</strong> is the key to achieving
+                professional-grade odor control in your home. By following this step-by-step guide and
+                avoiding common mistakes, you'll enjoy a fresher, more pleasant environment for both
                 you and your feline friends.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200">
-                Remember, consistency is key. Regular application and proper technique will give you 
+                Remember, consistency is key. Regular application and proper technique will give you
                 the best results. <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
-                Try Purrify today</Link> and experience the difference that proper application can make!
+                  Try Purrify today</Link> and experience the difference that proper application can make!
               </p>
             </div>
 

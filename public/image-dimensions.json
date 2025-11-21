@@ -394,5 +394,50 @@
     "avif": "optimized/140g.avif",
     "avifSanitized": "optimized/140g.avif",
     "optimized": "optimized/140g.png"
+  },
+  "blog/small-apartment/ventilation.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/ventilation.webp",
+    "webpSanitized": "optimized/ventilation.webp",
+    "avif": "optimized/ventilation.avif",
+    "avifSanitized": "optimized/ventilation.avif",
+    "optimized": "optimized/ventilation.png"
+  },
+  "blog/small-apartment/placement.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/placement.webp",
+    "webpSanitized": "optimized/placement.webp",
+    "avif": "optimized/placement.avif",
+    "avifSanitized": "optimized/placement.avif",
+    "optimized": "optimized/placement.png"
+  },
+  "blog/small-apartment/hero.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/hero.webp",
+    "webpSanitized": "optimized/hero.webp",
+    "avif": "optimized/hero.avif",
+    "avifSanitized": "optimized/hero.avif",
+    "optimized": "optimized/hero.png"
+  },
+  "blog/small-apartment/happy-owner.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/happy-owner.webp",
+    "webpSanitized": "optimized/happy-owner.webp",
+    "avif": "optimized/happy-owner.avif",
+    "avifSanitized": "optimized/happy-owner.avif",
+    "optimized": "optimized/happy-owner.png"
+  },
+  "blog/small-apartment/carbon.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/carbon.webp",
+    "webpSanitized": "optimized/carbon.webp",
+    "avif": "optimized/carbon.avif",
+    "avifSanitized": "optimized/carbon.avif",
+    "optimized": "optimized/carbon.png"
   }
 }

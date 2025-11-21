@@ -19,7 +19,7 @@ export default function ActivatedCarbonBenefits() {
         <title>{`Activated Carbon vs Baking Soda for Cat Litter | ${SITE_NAME}`}</title>
         <meta name="description" content="Baking soda not working? Activated carbon destroys ammonia 10x better. See the science behind instant cat litter odor elimination!" />
         <meta name="keywords" content="activated carbon litter additive benefits, cat litter deodorizer, odor control science, molecular adsorption, natural cat litter additive" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Why Activated Carbon Beats Baking Soda for Cat Litter Smell" />
         <meta property="og:description" content="Baking soda not working? Activated carbon destroys ammonia smell 10x better. See the shocking science that proves why home remedies fail!" />
@@ -34,10 +34,10 @@ export default function ActivatedCarbonBenefits() {
         <meta name="twitter:title" content="Activated Carbon Litter Additive Benefits: Science-Backed Odor Control" />
         <meta name="twitter:description" content="Discover the science behind activated carbon litter additives and how molecular adsorption eliminates odors." />
         <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
-        
+
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits" />
-        
+
         {/* Enhanced Article Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -45,7 +45,7 @@ export default function ActivatedCarbonBenefits() {
             "@graph": [
               {
                 "@type": "Article",
-            "@id": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
+                "@id": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
                 "headline": "Activated Carbon Litter Additive Benefits: Science-Backed Odor Control",
                 "description": "Discover the science behind activated carbon litter additives. Learn how molecular adsorption eliminates cat litter odors at the source, creating a fresher home environment.",
                 "image": {
@@ -74,7 +74,7 @@ export default function ActivatedCarbonBenefits() {
                 },
                 "datePublished": "2024-01-15T08:00:00-05:00",
                 "dateModified": new Date().toISOString(),
-            "url": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
+                "url": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits",
                 "mainEntityOfPage": {
                   "@type": "WebPage",
                   "@id": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
@@ -106,12 +106,12 @@ export default function ActivatedCarbonBenefits() {
                   {
                     "@type": "Product",
                     "name": "Purrify Activated Carbon Cat Litter Additive",
-                  "url": "https://www.purrify.ca/products/standard"
+                    "url": "https://www.purrify.ca/products/standard"
                   },
                   {
                     "@type": "Organization",
                     "name": "Purrify",
-                  "url": "https://www.purrify.ca"
+                    "url": "https://www.purrify.ca"
                   }
                 ],
                 "citation": [
@@ -142,19 +142,19 @@ export default function ActivatedCarbonBenefits() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                  "item": "https://www.purrify.ca/"
+                    "item": "https://www.purrify.ca/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Blog",
-                  "item": "https://www.purrify.ca/blog/"
+                    "item": "https://www.purrify.ca/blog/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Activated Carbon Benefits",
-                  "item": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
+                    "item": "https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits"
                   }
                 ]
               },
@@ -162,7 +162,7 @@ export default function ActivatedCarbonBenefits() {
                 "@type": "HowTo",
                 "name": "How to Maximize Activated Carbon Effectiveness",
                 "description": "Best practices for using activated carbon cat litter additive",
-            "image": "https://www.purrify.ca/optimized/carbon_magnified_image.webp",
+                "image": "https://www.purrify.ca/optimized/carbon_magnified_image.webp",
                 "step": [
                   {
                     "@type": "HowToStep",
@@ -214,7 +214,7 @@ export default function ActivatedCarbonBenefits() {
                 Activated Carbon Litter Additive Benefits: The Science Behind Superior Odor Control
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Discover how activated carbon works at the molecular level to eliminate cat litter odors, 
+                Discover how activated carbon works at the molecular level to eliminate cat litter odors,
                 creating a fresher, healthier home environment for you and your feline friends.
               </p>
               <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
@@ -229,9 +229,9 @@ export default function ActivatedCarbonBenefits() {
               <Image
                 src={heroImage}
                 alt="Laboratory scientist examining activated carbon samples for odor control research"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={1101}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -242,17 +242,17 @@ export default function ActivatedCarbonBenefits() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Makes Activated Carbon So Effective?</h2>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                When it comes to <strong>cat litter deodorizer</strong> solutions, activated carbon stands out as the gold standard. 
-                But what exactly makes this natural material so effective at eliminating odors? The answer lies in its unique 
+                When it comes to <strong>cat litter deodorizer</strong> solutions, activated carbon stands out as the gold standard.
+                But what exactly makes this natural material so effective at eliminating odors? The answer lies in its unique
                 molecular structure and the process of adsorption.
               </p>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">The Science of Molecular Adsorption</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Unlike absorption (where substances are soaked up like a sponge), <strong>adsorption</strong> is a surface phenomenon 
+                Unlike absorption (where substances are soaked up like a sponge), <strong>adsorption</strong> is a surface phenomenon
                 where odor molecules stick to the surface of the activated carbon. This process is incredibly effective because:
               </p>
 
@@ -275,7 +275,7 @@ export default function ActivatedCarbonBenefits() {
                 <Image
                   src={coconutImage}
                   alt="Coconut shells being processed into activated carbon for superior odor control"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -316,7 +316,7 @@ export default function ActivatedCarbonBenefits() {
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Specific Odor Compounds Eliminated</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Cat litter odors come from several specific compounds that activated carbon effectively targets:
               </p>
@@ -343,7 +343,7 @@ export default function ActivatedCarbonBenefits() {
                 <Image
                   src={healthImage}
                   alt="Happy healthy cat in clean home environment with fresh air"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -367,7 +367,7 @@ export default function ActivatedCarbonBenefits() {
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">How to Maximize Effectiveness</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 To get the most benefit from your <strong>natural cat litter odor eliminator</strong>, follow these best practices:
               </p>
@@ -382,8 +382,8 @@ export default function ActivatedCarbonBenefits() {
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
                 <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">🏆 Why Choose Purrify?</h4>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Purrify's activated carbon litter additive is made from premium coconut shell carbon, 
-                  providing superior odor elimination that lasts up to 7 days. Our fragrance-free 
+                  Purrify's activated carbon litter additive is made from premium coconut shell carbon,
+                  providing superior odor elimination that lasts up to 7 days. Our fragrance-free
                   formula uses the same type of activated carbon found in many water and air filters.
                 </p>
                 <Link href="/products/compare" className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
@@ -392,18 +392,18 @@ export default function ActivatedCarbonBenefits() {
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Conclusion</h3>
-              
+
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                The benefits of <strong>activated carbon litter additives</strong> are rooted in solid science. 
-                Through the process of molecular adsorption, activated carbon provides superior, long-lasting 
-                odor control that chemical alternatives simply cannot match. By choosing a premium coconut 
-                shell activated carbon product like Purrify, you're investing in a cleaner, healthier home 
+                The benefits of <strong>activated carbon litter additives</strong> are rooted in solid science.
+                Through the process of molecular adsorption, activated carbon provides superior, long-lasting
+                odor control that chemical alternatives simply cannot match. By choosing a premium coconut
+                shell activated carbon product like Purrify, you're investing in a cleaner, healthier home
                 environment for both you and your feline companions.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200">
-                Ready to experience the difference that science-backed odor control can make? 
-                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Explore our Purrify products</Link> 
+                Ready to experience the difference that science-backed odor control can make?
+                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Explore our Purrify products</Link>
                 and discover why 1,000+ cat owners trust activated carbon for superior litter box freshness.
               </p>
             </div>

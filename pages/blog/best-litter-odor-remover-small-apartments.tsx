@@ -106,10 +106,10 @@ export default function BestForSmallApartments() {
               <Image
                 src={heroImage}
                 alt="Small apartment living room with cat, showcasing space-efficient odor control"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
-                width={1600}
-                height={1067}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                className="w-full h-auto rounded-2xl shadow-xl"
+                width={1024}
+                height={1024}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1024px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Small apartments require smart odor control solutions
@@ -180,9 +180,9 @@ export default function BestForSmallApartments() {
                         <Image
                           src={carbonImage}
                           alt="Activated carbon granules for maximum odor absorption"
-                          className="w-full h-48 object-cover rounded-lg shadow-md"
-                          width={800}
-                          height={400}
+                          className="w-full h-auto rounded-lg shadow-md"
+                          width={1024}
+                          height={1024}
                         />
                       </div>
                       <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
@@ -244,10 +244,10 @@ export default function BestForSmallApartments() {
                   <Image
                     src={ventilationImage}
                     alt="Well-ventilated apartment room with strategic airflow for odor control"
-                    className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                    width={1600}
-                    height={1067}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                    className="w-full h-auto rounded-xl shadow-lg"
+                    width={1024}
+                    height={1024}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1024px"
                   />
                   <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                     Strategic ventilation is crucial for small apartment odor control
@@ -357,10 +357,10 @@ export default function BestForSmallApartments() {
                 <Image
                   src={spaceImage}
                   alt="Modern apartment layout showing optimal litter box placement for odor control"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1024}
+                  height={1024}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1024px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   Strategic placement maximizes odor control in small spaces
@@ -448,9 +448,9 @@ export default function BestForSmallApartments() {
                 <Image
                   src={happyOwnerImage}
                   alt="Happy cat owner relaxing in a fresh smelling apartment"
-                  className="w-full h-64 object-cover rounded-xl shadow-lg"
-                  width={1200}
-                  height={600}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1024}
+                  height={1024}
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                   A fresh apartment keeps everyone happy - including your neighbors

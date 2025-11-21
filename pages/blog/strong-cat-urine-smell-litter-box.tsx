@@ -125,7 +125,7 @@ export default function StrongCatUrineSmell() {
               <Image
                 src={heroImage}
                 alt="Cat parent refreshing a litter box with activated carbon to eliminate strong urine odor"
-                className="w-full h-[420px] md:h-[540px] object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
                 height={2000}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
@@ -226,9 +226,9 @@ export default function StrongCatUrineSmell() {
               <Image
                 src={airflowImage}
                 alt="Bright cat-friendly room with windows open to improve litter box airflow"
-                className="w-full h-72 md:h-80 object-cover rounded-2xl shadow-lg"
-                width={1024}
-                height={1536}
+                className="w-full h-auto rounded-2xl shadow-lg"
+                width={1086}
+                height={724}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 1024px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -258,12 +258,13 @@ export default function StrongCatUrineSmell() {
                   <strong>Lab Insight:</strong> Purrify reduces airborne ammonia by up to 94% within 30 minutes in a 12x12 ft room.
                 </div>
               </div>
-              <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden shadow-lg">
+              <div className="rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={carbonImage}
                   alt="Magnified view of activated carbon pores trapping odor molecules"
-                  className="object-cover"
-                  fill
+                  className="w-full h-auto"
+                  width={1024}
+                  height={1024}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                 />
               </div>
@@ -283,7 +284,7 @@ export default function StrongCatUrineSmell() {
                   <Image
                     src={beforeAfterImage}
                     alt="Before and after chart showing litter box odor reduction"
-                    className="w-full h-56 md:h-64 object-cover rounded-xl shadow-md"
+                    className="w-full h-auto rounded-xl shadow-md"
                     width={1536}
                     height={1024}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"

@@ -175,9 +175,9 @@ export default function TriedEverythingCatLitterSmell() {
               <Image
                 src={heroImage}
                 alt="Frustrated cat owner who has tried multiple failed odor solutions"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={2133}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -229,9 +229,9 @@ export default function TriedEverythingCatLitterSmell() {
                 <Image
                   src={failedSolutionsImage}
                   alt="Common household products that fail to eliminate cat odors effectively"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
-                  height={1067}
+                  height={2400}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -324,7 +324,7 @@ export default function TriedEverythingCatLitterSmell() {
                 <Image
                   src={scienceImage}
                   alt="Scientific molecular structure showing activated carbon capturing ammonia molecules"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -430,9 +430,9 @@ export default function TriedEverythingCatLitterSmell() {
                 <Image
                   src={reliefImage}
                   alt="Happy cat owner finally finding effective odor control solution"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
-                  height={1067}
+                  height={2400}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">

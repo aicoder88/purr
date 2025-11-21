@@ -203,7 +203,7 @@ const getStoreLogo = (storeName: string) => {
   if (storeName.includes('GIGI')) {
     return {
       src: "/optimized/gigi.webp",
-      alt: "Animal Shop GIGI - Pet Store Logo", 
+      alt: "Animal Shop GIGI - Pet Store Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
       height: 64
@@ -229,7 +229,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Kong')) {
     return {
-      src: "/optimized/kong-animalerie.webp", 
+      src: "/optimized/kong-animalerie.webp",
       alt: "KONG ANIMALERIE - Montreal Pet Store Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -281,22 +281,32 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  if (storeName.includes('K&K Pet Foods')) {
+    return {
+      src: "/kk.avif",
+      alt: "K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
 // Helper function to check if store should have white background
 const hasWhiteBackground = (storeName: string) => {
   return storeName.includes('Chico') ||
-         storeName.includes('Pattes et Griffes') ||
-         storeName.includes('GIGI') ||
-         storeName.includes('Pitou Minou') ||
-         storeName.includes('Doghaus') ||
-         storeName.includes('Kong') ||
-         storeName.includes('Coquette') ||
-         storeName.includes('Animalerie Mamiwouff') ||
-         storeName.includes('Animalerie Lamifidel') ||
-         storeName.includes('Animalerie Petmobile') ||
-         storeName.includes('Animalerie Club Wouf Miaou');
+    storeName.includes('Pattes et Griffes') ||
+    storeName.includes('GIGI') ||
+    storeName.includes('Pitou Minou') ||
+    storeName.includes('Doghaus') ||
+    storeName.includes('Kong') ||
+    storeName.includes('Coquette') ||
+    storeName.includes('Animalerie Mamiwouff') ||
+    storeName.includes('Animalerie Lamifidel') ||
+    storeName.includes('Animalerie Petmobile') ||
+    storeName.includes('Animalerie Club Wouf Miaou') ||
+    storeName.includes('K&K Pet Foods');
 };
 
 // Component to handle logo display with fallback
@@ -368,7 +378,7 @@ export function Stores() {
           {stores.map((store, index) => {
             const logoConfig = getStoreLogo(store.name);
             const shouldUseWhiteBg = hasWhiteBackground(store.name);
-            
+
             return (
               <div
                 key={`${store.name}-${store.location}`}
@@ -402,50 +412,50 @@ export function Stores() {
                       {store.address}
                     </p>
                     <div className="flex flex-wrap gap-2 items-center">
-                    {store.phone && (
-                      <a 
-                        href={`tel:${store.phone}`}
-                        className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200 mb-1"
-                      >
-                        <svg 
-                          className="w-4 h-4 mr-1" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
+                      {store.phone && (
+                        <a
+                          href={`tel:${store.phone}`}
+                          className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200 mb-1"
                         >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
-                          />
-                        </svg>
-                        {store.phone}
-                      </a>
-                    )}
-                    {store.url && (
-                      <a
-                        href={store.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
-                      >
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                          <svg
+                            className="w-4 h-4 mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            />
+                          </svg>
+                          {store.phone}
+                        </a>
+                      )}
+                      {store.url && (
+                        <a
+                          href={store.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4v1m0 14v1m8-8h-1M5 12H4m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                          />
-                        </svg>
-                        Website
-                      </a>
-                    )}
+                          <svg
+                            className="w-4 h-4 mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 4v1m0 14v1m8-8h-1M5 12H4m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                            />
+                          </svg>
+                          Website
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -458,7 +468,7 @@ export function Stores() {
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             {t.storesSection?.dontSeeLocalStore || "Don't see your local store? Contact us to request Purrify at your favorite pet store!"}
           </p>
-          <button 
+          <button
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >

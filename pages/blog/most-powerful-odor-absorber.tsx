@@ -192,7 +192,7 @@ export default function MostPowerfulOdorAbsorber() {
               <Image
                 src={heroImage}
                 alt="Cat owner leveling freshly prepared litter box with activated carbon layer"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
                 height={1067}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -284,7 +284,7 @@ export default function MostPowerfulOdorAbsorber() {
                 <Image
                   src={labImage}
                   alt="Lab technician measuring ammonia levels above a cat litter sample"
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg my-8"
+                  className="w-full h-auto rounded-2xl shadow-lg my-8"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -320,7 +320,7 @@ export default function MostPowerfulOdorAbsorber() {
                 <Image
                   src={layeringImage}
                   alt="Cat observing a freshly layered litter box with carbon additive"
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg my-8"
+                  className="w-full h-auto rounded-2xl shadow-lg my-8"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -350,7 +350,7 @@ export default function MostPowerfulOdorAbsorber() {
                     <Image
                       src={carbonMacroImage}
                       alt="Macro detail of coconut-shell activated carbon granules used in Purrify"
-                      className="w-full h-64 object-cover"
+                      className="w-full h-auto"
                       width={1600}
                       height={1067}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1600px"
@@ -363,7 +363,7 @@ export default function MostPowerfulOdorAbsorber() {
                     <Image
                       src={carbonScoopImage}
                       alt="Cat parent scooping Purrify activated carbon into a litter box"
-                      className="w-full h-64 object-cover"
+                      className="w-full h-auto"
                       width={1600}
                       height={1067}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1600px"

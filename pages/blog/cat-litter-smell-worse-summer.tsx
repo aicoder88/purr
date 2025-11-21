@@ -175,9 +175,9 @@ export default function CatLitterSmellWorseSummer() {
               <Image
                 src={heroImage}
                 alt="Cat seeking relief from summer heat and litter box odor challenges"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={3092}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -218,7 +218,7 @@ export default function CatLitterSmellWorseSummer() {
                 <Image
                   src={heatImage}
                   alt="Summer heat waves causing accelerated ammonia evaporation from litter boxes"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -309,7 +309,7 @@ export default function CatLitterSmellWorseSummer() {
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Unlike baking soda (which stops working when wet) or fragrances (which evaporate faster in heat), <strong>activated
-                carbon's performance doesn't decline in summer</strong>. In fact, it's specifically designed for volatile compound control
+                  carbon's performance doesn't decline in summer</strong>. In fact, it's specifically designed for volatile compound control
                 in industrial settings—where temperatures can exceed 40°C.
               </p>
 
@@ -354,7 +354,7 @@ export default function CatLitterSmellWorseSummer() {
                 <Image
                   src={ventilationImage}
                   alt="Well-ventilated home with strategic airflow for summer odor control"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -442,7 +442,7 @@ export default function CatLitterSmellWorseSummer() {
                 <Image
                   src={reliefImage}
                   alt="Happy cat owner enjoying fresh home during summer despite hot weather"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -505,7 +505,7 @@ export default function CatLitterSmellWorseSummer() {
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 But you don't have to accept it as inevitable. With the right approach—especially <strong>activated carbon that
-                works regardless of temperature</strong>—you can keep your home fresh even during heat waves.
+                  works regardless of temperature</strong>—you can keep your home fresh even during heat waves.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">

@@ -78,7 +78,7 @@ export default function ActivatedCarbonVsBakingSoda() {
             <Image
               src={heroImage}
               alt="Side-by-side comparison of activated carbon and baking soda for odor control testing"
-              className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+              className="w-full h-auto rounded-2xl shadow-xl"
               width={1600}
               height={1067}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -124,9 +124,9 @@ export default function ActivatedCarbonVsBakingSoda() {
               <Image
                 src={comparisonImage}
                 alt="Laboratory testing setup comparing odor control effectiveness"
-                className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                width={1600}
-                height={1067}
+                className="w-full h-auto rounded-xl shadow-lg"
+                width={1024}
+                height={1024}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -202,10 +202,10 @@ export default function ActivatedCarbonVsBakingSoda() {
             </p>
           </footer>
         </article>
-          {/* Related Articles */}
-          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-            <RelatedArticles currentPath="/blog/activated-carbon-vs-baking-soda-comparison" />
-          </div>
+        {/* Related Articles */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+          <RelatedArticles currentPath="/blog/activated-carbon-vs-baking-soda-comparison" />
+        </div>
       </Container>
     </>
   );

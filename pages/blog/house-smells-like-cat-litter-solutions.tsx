@@ -178,9 +178,9 @@ export default function HouseSmellsLikeCatLitter() {
               <Image
                 src={heroImage}
                 alt="Concerned cat near litter box highlighting need for odor control solutions"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={898}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -236,9 +236,9 @@ export default function HouseSmellsLikeCatLitter() {
                 <Image
                   src={cleaningImage}
                   alt="Clean and organized pet care supplies for maintaining litter box hygiene"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1920}
+                  height={1920}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -263,9 +263,9 @@ export default function HouseSmellsLikeCatLitter() {
                 <Image
                   src={ventilationImage}
                   alt="Well-ventilated room with fresh air circulation for odor control"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1086}
+                  height={724}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -303,9 +303,9 @@ export default function HouseSmellsLikeCatLitter() {
                 <Image
                   src={litterBoxImage}
                   alt="Multiple litter boxes setup for multi-cat household odor management"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
-                  width={1600}
-                  height={1067}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  width={1200}
+                  height={800}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">

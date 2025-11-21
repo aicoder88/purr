@@ -175,9 +175,9 @@ export default function EmbarrassedGuestsVisit() {
               <Image
                 src={heroImage}
                 alt="Confident cat owner feeling proud of fresh-smelling home before guests arrive"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={1101}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -242,9 +242,9 @@ export default function EmbarrassedGuestsVisit() {
                 <Image
                   src={cleanHomeImage}
                   alt="Clean and organized home interior ready for guests with no odors"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
-                  height={1067}
+                  height={959}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
@@ -328,7 +328,7 @@ export default function EmbarrassedGuestsVisit() {
                 <Image
                   src={guestImage}
                   alt="Welcoming home entrance creating positive first impression for guests"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -360,7 +360,7 @@ export default function EmbarrassedGuestsVisit() {
                 <Image
                   src={reliefImage}
                   alt="Relaxed cat owner confidently entertaining guests in fresh-smelling home"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"

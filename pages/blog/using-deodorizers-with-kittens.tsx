@@ -15,7 +15,7 @@ export default function UsingDeodorizersWithKittens() {
         <title>{`Cat Litter Deodorizer with Kittens Guide | ${SITE_NAME}`}</title>
         <meta name="description" content="Complete guide to using litter deodorizers with kittens. Learn when, how, and what products work best for tiny paws. Natural, chemical-free options!" />
         <meta name="keywords" content="cat litter deodorizer kittens, kitten litter care, natural cat litter additive, fragrance-free cat deodorizer, kitten health" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Using Cat Litter Deodorizer with Kittens? Complete Guide" />
         <meta property="og:description" content="Kitten parents: This guide shows exactly when to eliminate litter box smell with kittens. Natural, chemical-free - the same type used in water filters worldwide!" />
@@ -30,7 +30,7 @@ export default function UsingDeodorizersWithKittens() {
         <meta name="twitter:title" content="Using Cat Litter Deodorizers with Kittens" />
         <meta name="twitter:description" content="How and when households introduce fragrance-free deodorizers around kittens." />
         <meta name="twitter:image" content={`https://www.purrify.ca${heroImage}`} />
-        
+
         {/* Canonical */}
         <link rel="canonical" href="https://www.purrify.ca/blog/using-deodorizers-with-kittens" />
 
@@ -96,9 +96,9 @@ export default function UsingDeodorizersWithKittens() {
               <Image
                 src={heroImage}
                 alt="Adorable kitten being cared for in a safe, clean environment with gentle odor control"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
-                height={1067}
+                height={2399}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
