@@ -10,9 +10,9 @@ export default function SeniorCatLitterSolutionsPage() {
   const canonicalUrl = 'https://www.purrify.ca/solutions/senior-cat-litter-solutions';
 
   // SEO optimized images for senior cat care
-  const heroImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Senior cat comfortable
-  const solutionImage = 'https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&w=1600&q=80'; // Older cat in peaceful environment
-  const careImage = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Gentle cat care
+  const heroImage = '/images/solutions/ammonia-happy-cat.png';
+  const solutionImage = '/images/solutions/apartment-hero.png';
+  const careImage = '/images/solutions/litter-box-hero.png';
 
   return (
     <>
@@ -27,9 +27,9 @@ export default function SeniorCatLitterSolutionsPage() {
           description: seoDescription,
           images: [
             {
-              url: heroImage,
+              url: `https://www.purrify.ca${heroImage}`,
               width: 1200,
-              height: 630,
+              height: 675,
               alt: 'Senior cat comfortable with gentle litter solution',
             },
           ],
@@ -65,9 +65,9 @@ export default function SeniorCatLitterSolutionsPage() {
               <Image
                 src={heroImage}
                 alt="Senior cat resting comfortably in clean environment"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Senior Cat Litter Solutions
@@ -85,9 +85,9 @@ export default function SeniorCatLitterSolutionsPage() {
               <Image
                 src={careImage}
                 alt="Gentle care approach for senior cats"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <p className="text-lg mb-8 text-gray-700 dark:text-gray-200 text-center">
@@ -117,9 +117,9 @@ export default function SeniorCatLitterSolutionsPage() {
               <Image
                 src={solutionImage}
                 alt="Senior cat living peacefully in odor-free home"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <div className="bg-gradient-to-r from-electric-indigo/10 to-deep-coral/10 dark:from-electric-indigo/20 dark:to-deep-coral/20 rounded-lg p-6 mb-6">

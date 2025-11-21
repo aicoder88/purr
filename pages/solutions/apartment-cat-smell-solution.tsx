@@ -15,8 +15,8 @@ export default function ApartmentCatSmellSolutionPage() {
   const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
 
   // SEO optimized images
-  const heroImage = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80'; // Modern apartment with cat
-  const solutionImage = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1600&q=80'; // Clean apartment living room
+  const heroImage = '/images/solutions/apartment-hero.png';
+  const solutionImage = '/images/solutions/apartment-living-room.png';
 
   return (
     <>
@@ -31,9 +31,9 @@ export default function ApartmentCatSmellSolutionPage() {
           description: seoDescription,
           images: [
             {
-              url: heroImage,
+              url: `https://www.purrify.ca${heroImage}`,
               width: 1200,
-              height: 630,
+              height: 675,
               alt: 'Modern apartment living with cats - odor-free solution',
             },
           ],
@@ -69,9 +69,9 @@ export default function ApartmentCatSmellSolutionPage() {
               <Image
                 src={heroImage}
                 alt="Modern apartment with cat - clean, odor-free living space"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Apartment Cat Smell Solution
@@ -94,9 +94,9 @@ export default function ApartmentCatSmellSolutionPage() {
               <Image
                 src={solutionImage}
                 alt="Clean, fresh apartment living room showing successful odor control"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">

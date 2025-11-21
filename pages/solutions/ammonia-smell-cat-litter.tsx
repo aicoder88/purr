@@ -7,10 +7,10 @@ export default function ammoniasmellcatlitterPage() {
   const seoDescription = 'Sharp ammonia smell from litter box? Water-filter grade carbon destroys it instantly. No more holding your breath!';
 
   // Ammonia smell solution images
-  const heroImage = 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?auto=format&fit=crop&w=1600&q=80'; // Person holding nose
-  const sectionImage1 = 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb74c7?auto=format&fit=crop&w=1600&q=80'; // Scientific molecular view
-  const sectionImage2 = 'https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=1600&q=80'; // Clean fresh home
-  const solutionImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Happy cat
+  const heroImage = '/images/solutions/ammonia-hero.png';
+  const sectionImage1 = '/images/solutions/ammonia-science.png';
+  const sectionImage2 = '/images/solutions/ammonia-fresh-home.png';
+  const solutionImage = '/images/solutions/ammonia-happy-cat.png';
 
   return (
     <>
@@ -25,9 +25,9 @@ export default function ammoniasmellcatlitterPage() {
           description: seoDescription,
           images: [
             {
-              url: heroImage,
-              width: 1600,
-              height: 1067,
+              url: `https://www.purrify.ca${heroImage}`,
+              width: 1200,
+              height: 675,
               alt: 'Stop embarrassing ammonia smell from cat litter box',
             },
           ],
@@ -101,8 +101,8 @@ export default function ammoniasmellcatlitterPage() {
               <Image
                 src={heroImage}
                 alt="Person bothered by strong ammonia smell from cat litter box"
-                width={1600}
-                height={1067}
+                width={1200}
+                height={675}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -142,8 +142,8 @@ export default function ammoniasmellcatlitterPage() {
                 <Image
                   src={sectionImage1}
                   alt="Molecular science of activated carbon trapping ammonia molecules"
-                  width={1600}
-                  height={1067}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -188,8 +188,8 @@ export default function ammoniasmellcatlitterPage() {
               <Image
                 src={sectionImage2}
                 alt="Clean, fresh-smelling home environment without ammonia odor"
-                width={1600}
-                height={1067}
+                width={1200}
+                height={675}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -239,8 +239,8 @@ export default function ammoniasmellcatlitterPage() {
                 <Image
                   src={solutionImage}
                   alt="Happy cat in odor-free home thanks to Purrify ammonia elimination"
-                  width={1600}
-                  height={1067}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">

@@ -8,10 +8,10 @@ export default function naturalcatlitteradditivePage() {
   const canonicalUrl = 'https://www.purrify.ca/solutions/natural-cat-litter-additive';
 
   // Natural cat litter additive images
-  const heroImage = 'https://images.unsplash.com/photo-1517080727870-780609473738?auto=format&fit=crop&w=1600&q=80'; // Coconut shells natural
-  const sectionImage1 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Natural ingredients
-  const sectionImage2 = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy cats clean home
-  const solutionImage = 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=1600&q=80'; // Natural eco-friendly
+  const heroImage = '/images/solutions/litter-box-hero.png';
+  const sectionImage1 = '/images/solutions/ammonia-science.png';
+  const sectionImage2 = '/images/solutions/ammonia-happy-cat.png';
+  const solutionImage = '/images/solutions/ammonia-fresh-home.png';
 
   return (
     <>
@@ -25,9 +25,9 @@ export default function naturalcatlitteradditivePage() {
           url: canonicalUrl,
           images: [
             {
-              url: heroImage,
-              width: 1600,
-              height: 1067,
+              url: `https://www.purrify.ca${heroImage}`,
+              width: 1200,
+              height: 675,
               alt: 'Natural cat litter additive made from coconut shells',
             },
           ],
@@ -86,8 +86,8 @@ export default function naturalcatlitteradditivePage() {
               <Image
                 src={heroImage}
                 alt="Natural coconut shell activated carbon - 100% natural cat litter additive"
-                width={1600}
-                height={1067}
+                width={1200}
+                height={675}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -133,8 +133,8 @@ export default function naturalcatlitteradditivePage() {
                 <Image
                   src={sectionImage1}
                   alt="Natural ingredients and eco-friendly cat litter solution"
-                  width={1600}
-                  height={1067}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -152,8 +152,8 @@ export default function naturalcatlitteradditivePage() {
                 <Image
                   src={sectionImage2}
                   alt="Multiple happy cats in clean, naturally fresh home"
-                  width={1600}
-                  height={1067}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -178,8 +178,8 @@ export default function naturalcatlitteradditivePage() {
                 <Image
                   src={solutionImage}
                   alt="Eco-friendly natural cat litter additive for sustainable pet care"
-                  width={1600}
-                  height={1067}
+                  width={1200}
+                  height={675}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">

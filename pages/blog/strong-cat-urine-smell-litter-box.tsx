@@ -245,7 +245,7 @@ export default function StrongCatUrineSmell() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 my-12">
+            <div className="flex flex-col gap-8 my-12">
               <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-6 shadow-sm dark:shadow-none flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-[#5B2EFF] dark:text-[#C4B5FD] mb-4">Odor Lock Technology</h3>
@@ -258,20 +258,20 @@ export default function StrongCatUrineSmell() {
                   <strong>Lab Insight:</strong> Purrify reduces airborne ammonia by up to 94% within 30 minutes in a 12x12 ft room.
                 </div>
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-lg">
+              <div className="rounded-2xl overflow-hidden shadow-lg w-full">
                 <Image
                   src={carbonImage}
                   alt="Magnified view of activated carbon pores trapping odor molecules"
                   className="w-full h-auto"
                   width={1024}
                   height={1024}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  sizes="(max-width: 768px) 100vw, 1024px"
                 />
               </div>
             </div>
 
             <div className="bg-[#FFF5E6] dark:bg-[#FFB347]/20 border border-[#FFD8A8] dark:border-[#FDBA74]/40 rounded-2xl p-6 mb-12">
-              <div className="grid md:grid-cols-[2fr,3fr] gap-6 items-center">
+              <div className="flex flex-col gap-6 items-center">
                 <div>
                   <h2 className="text-2xl font-bold text-[#C05621] dark:text-[#FDBA74] mb-4">Before &amp; After: Smell Scorecard</h2>
                   <p className="text-gray-700 dark:text-gray-200">
@@ -280,14 +280,14 @@ export default function StrongCatUrineSmell() {
                     detect.
                   </p>
                 </div>
-                <div>
+                <div className="w-full">
                   <Image
                     src={beforeAfterImage}
                     alt="Before and after chart showing litter box odor reduction"
                     className="w-full h-auto rounded-xl shadow-md"
                     width={1536}
                     height={1024}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"
+                    sizes="(max-width: 768px) 100vw, 1200px"
                   />
                 </div>
               </div>

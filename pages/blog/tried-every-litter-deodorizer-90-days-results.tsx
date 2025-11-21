@@ -116,7 +116,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
               <Image
                 src={heroImage}
                 alt="Cat litter deodorizer testing - frustrated cat owner dealing with strong ammonia smell"
-                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
                 height={1067}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -179,7 +179,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 <Image
                   src={problemImage}
                   alt="Ammonia smell from cat litter - frustrated apartment owner covering nose due to strong odor"
-                  className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                  className="w-full h-auto rounded-2xl shadow-xl"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -296,7 +296,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 <Image
                   src={scienceImage}
                   alt="Activated carbon science - microscopic porous structure trapping odor molecules"
-                  className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                  className="w-full h-auto rounded-2xl shadow-xl"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
@@ -392,7 +392,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 <Image
                   src={solutionImage}
                   alt="Cat litter deodorizer success - happy cat owner in fresh, odor-free home"
-                  className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+                  className="w-full h-auto rounded-2xl shadow-xl"
                   width={1600}
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"

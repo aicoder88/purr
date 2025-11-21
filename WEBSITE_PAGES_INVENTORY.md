@@ -2,7 +2,7 @@
 
 **Purpose**: Complete reference of all publicly viewable pages on Purrify.ca with image counts and categorization.
 
-**Last Updated**: 2025-11-20
+**Last Updated**: 2025-11-21
 
 ---
 

@@ -10,9 +10,9 @@ export default function LitterBoxSmellEliminationPage() {
   const canonicalUrl = 'https://www.purrify.ca/solutions/litter-box-smell-elimination';
 
   // SEO optimized images for odor elimination
-  const heroImage = 'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80'; // Cat with clean litter box
-  const solutionImage = 'https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=1600&q=80'; // Happy cat in fresh environment
-  const scienceImage = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80'; // Science/laboratory setting
+  const heroImage = '/images/solutions/litter-box-hero.png';
+  const solutionImage = '/images/solutions/ammonia-happy-cat.png';
+  const scienceImage = '/images/solutions/ammonia-science.png';
 
   return (
     <>
@@ -27,9 +27,9 @@ export default function LitterBoxSmellEliminationPage() {
           description: seoDescription,
           images: [
             {
-              url: heroImage,
+              url: `https://www.purrify.ca${heroImage}`,
               width: 1200,
-              height: 630,
+              height: 675,
               alt: 'Complete litter box odor elimination solution',
             },
           ],
@@ -65,9 +65,9 @@ export default function LitterBoxSmellEliminationPage() {
               <Image
                 src={heroImage}
                 alt="Clean litter box with cat - complete odor elimination"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Litter Box Smell Elimination
@@ -85,9 +85,9 @@ export default function LitterBoxSmellEliminationPage() {
               <Image
                 src={scienceImage}
                 alt="Scientific approach to odor elimination with activated carbon"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <p className="text-lg mb-8 text-gray-700 dark:text-gray-200 text-center">
@@ -116,9 +116,9 @@ export default function LitterBoxSmellEliminationPage() {
               <Image
                 src={solutionImage}
                 alt="Happy cat in fresh, odor-free environment"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <div className="text-center">

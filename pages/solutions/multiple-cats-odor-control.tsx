@@ -9,8 +9,8 @@ export default function MultipleCatsOdorControlPage() {
   const canonicalUrl = 'https://www.purrify.ca/solutions/multiple-cats-odor-control';
 
   // SEO optimized images for multi-cat households
-  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Multiple cats together
-  const solutionImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat home
+  const heroImage = '/images/solutions/apartment-hero.png';
+  const solutionImage = '/images/solutions/ammonia-fresh-home.png';
 
   return (
     <>
@@ -25,9 +25,9 @@ export default function MultipleCatsOdorControlPage() {
           description: seoDescription,
           images: [
             {
-              url: heroImage,
+              url: `https://www.purrify.ca${heroImage}`,
               width: 1200,
-              height: 630,
+              height: 675,
               alt: 'Multiple cats living harmoniously in odor-free home',
             },
           ],
@@ -61,9 +61,9 @@ export default function MultipleCatsOdorControlPage() {
             <Image
               src={heroImage}
               alt="Multiple cats living together in clean, odor-free environment"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-lg mb-8"
+              width={1200}
+              height={675}
+              className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Multiple Cats Odor Control
@@ -79,9 +79,9 @@ export default function MultipleCatsOdorControlPage() {
               <Image
                 src={solutionImage}
                 alt="Happy multi-cat household with successful odor management"
-                width={500}
-                height={250}
-                className="w-full h-40 object-cover rounded-lg shadow-md mb-6"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-lg shadow-md mb-6"
               />
 
               <div className="grid md:grid-cols-3 gap-4 mb-8">

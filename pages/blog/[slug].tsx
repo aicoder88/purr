@@ -351,12 +351,14 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               </div>
             </div>
 
-            <div className="relative h-[500px] mb-4">
+            <div className="relative w-full h-auto mb-8">
               <Image
                 src={post.image}
                 alt={post.heroImageAlt || post.title}
-                fill
-                className="object-contain scale-75"
+                width={1200}
+                height={630}
+                className="w-full h-auto rounded-2xl shadow-lg"
+                priority
               />
             </div>
             {(post.heroImageCaption || post.heroImageCredit) && (
@@ -398,7 +400,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                     key={`${image.url}-${index}`}
                     className="rounded-2xl overflow-hidden bg-white/80 dark:bg-gray-800/70 border border-[#E0EFC7]/60"
                   >
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full aspect-video">
                       <Image src={image.url} alt={image.alt} fill className="object-cover" />
                     </div>
                     {(image.caption || image.credit) && (
