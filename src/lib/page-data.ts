@@ -1,7 +1,7 @@
-import { 
-  Heart, 
-  Users, 
-  Award, 
+import {
+  Heart,
+  Users,
+  Award,
   Target,
   Lightbulb,
   Leaf,
@@ -133,12 +133,12 @@ export const enStoryData = {
       description: "Customers who would recommend Purrify"
     },
     {
-      number: "10k+",
+      number: "2,000+",
       label: "Litter Changes Improved",
       description: "Estimated litter box changes made better"
     },
     {
-      number: "10k+",
+      number: "200+",
       label: "Orders Fulfilled",
       description: "Across Canada and internationally"
     }
@@ -242,12 +242,12 @@ export const frStoryData = {
       description: "Clients qui recommanderaient Purrify"
     },
     {
-      number: "2M+",
+      number: "2 000+",
       label: "Changements de Litière Améliorés",
       description: "Changements de bac à litière estimés rendus meilleurs"
     },
     {
-      number: "10k+",
+      number: "200+",
       label: "Commandes traitées",
       description: "À travers le Canada et à l'international"
     }

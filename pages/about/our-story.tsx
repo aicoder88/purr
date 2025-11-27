@@ -297,15 +297,17 @@ const OurStoryPage: NextPage = () => {
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button
                     size="lg"
-                    className="h-auto py-4 px-8 flex items-center justify-center gap-3 bg-electric-indigo hover:bg-electric-indigo-600 text-white font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full"
+                    className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
                   >
-                    <span className="flex flex-col leading-tight text-left">
-                      <span className="text-lg">Try Purrify Today</span>
-                      <span className="text-xs font-normal opacity-90">
-                        {PRODUCT_PRICES.trial.formatted} • Free Shipping
+                    <div className="flex flex-col items-start text-left">
+                      <span className="text-xl font-bold tracking-tight">
+                        Try Purrify Today <span className="opacity-90 font-normal ml-1">- {PRODUCT_PRICES.trial.formatted}</span>
                       </span>
-                    </span>
-                    <ChevronRight className="w-6 h-6" />
+                      <span className="text-xs font-medium opacity-90 tracking-wide uppercase">
+                        Trial size • Free Shipping Included
+                      </span>
+                    </div>
+                    <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
