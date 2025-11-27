@@ -22,7 +22,10 @@ Purrify is a production Next.js 15 e-commerce platform for activated carbon cat 
 **Email:** Resend + EmailJS
 **Blog:** TipTap rich text editor + filesystem-based JSON storage
 **AI:** Anthropic SDK + OpenAI API (automated content generation)
+**Shipping:** ShipStation integration (webhook-based)
 **Deploy:** Vercel (Node.js 22.x)
+
+**MCP Integration:** Supabase MCP server available for database operations via Claude Code
 
 ## Architecture Overview
 
@@ -137,6 +140,7 @@ npm run analyze             # Build with bundle analysis
 npm run test:translations   # Jest translation completeness
 npm run test:e2e            # Playwright E2E tests
 npm run test:e2e -- --debug # E2E debug mode
+npm run test:e2e:security   # Security-focused E2E tests
 
 # Single test execution
 npx jest __tests__/translation-completeness.test.js --watch
@@ -156,6 +160,15 @@ npm run purge-vercel-cache  # Clear Vercel edge cache
 ### Blog Management
 ```bash
 npm run blog:auto:generate  # Run automated blog post generation (AI)
+npm run blog:migrate        # Migrate blog posts to new format
+npm run repair-blog         # Repair broken/corrupted blog posts
+```
+
+### SEO & Link Validation
+```bash
+npm run seo:fix             # Auto-fix SEO issues across site
+npm run seo:health-check    # Run comprehensive SEO health check
+npm run validate-links      # Validate internal and external links
 ```
 
 ## Key Architectural Patterns
@@ -193,6 +206,11 @@ getStaticProps() reads JSON
 - `POST /api/admin/blog/posts` - Create/update post (protected, requires admin/editor role)
 - `GET /api/admin/blog/categories` - Manage categories
 - `GET /api/admin/blog/tags` - Manage tags
+- `POST /api/admin/blog/upload-image` - Upload blog images
+- `GET /api/admin/blog/analytics` - Blog analytics data
+- `POST /api/admin/blog/generate-content` - AI content generation
+- `GET /api/cron/publish-scheduled-posts` - Publish scheduled posts (requires CRON_SECRET)
+- `POST /api/cron/generate-blog-post` - Generate blog post via cron (requires CRON_SECRET)
 
 ### Authentication & Protected Routes
 
@@ -261,16 +279,15 @@ function MyComponent() {
 **Key Models:**
 ```prisma
 model User {
-  id            String    @id @default(uuid())
-  email         String    @unique
+  id            String    @id @default(cuid())
+  email         String?   @unique
   orders        Order[]
-  referralCode  String?   @unique
   referrals     Referral[]
   createdAt     DateTime  @default(now())
 }
 
 model Retailer {
-  id                String          @id @default(uuid())
+  id                String          @id @default(cuid())
   businessName      String
   email             String          @unique
   status            RetailerStatus  @default(PENDING) // PENDING/ACTIVE/SUSPENDED/REJECTED
@@ -280,25 +297,52 @@ model Retailer {
 }
 
 model Order {
-  id              String      @id @default(uuid())
+  id              String      @id @default(cuid())
   userId          String?
-  orderNumber     String      @unique
+  totalAmount     Float
   items           OrderItem[]
-  totalAmount     Decimal
   status          OrderStatus @default(PENDING)
   stripeSessionId String?
   createdAt       DateTime    @default(now())
 }
 
 model Product {
-  id            String   @id @default(uuid())
+  id            String   @id @default(cuid())
   name          String
-  price         Decimal
-  wholesalePrice Decimal?
-  stock         Int
+  price         Float
+  wholesalePrice Float?
   createdAt     DateTime @default(now())
 }
+
+model BlogPost {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  locale         String          @default("en")
+  title          String
+  content        String          @db.Text
+  status         BlogPostStatus  @default(PUBLISHED)
+  publishedAt    DateTime?
+  scheduledFor   DateTime?
+  createdAt      DateTime        @default(now())
+}
+
+model AuditLog {
+  id          String      @id @default(cuid())
+  action      AuditAction
+  entity      String      // Table name
+  entityId    String      // Record ID
+  userId      String?
+  ipAddress   String?
+  changes     Json?
+  createdAt   DateTime    @default(now())
+}
 ```
+
+**Important Notes:**
+- IDs use `cuid()` (not `uuid()`)
+- Prices stored as `Float` (not `Decimal`)
+- Customer data should be encrypted at application level (see model comments)
+- `AuditLog` tracks all sensitive operations for compliance
 
 **Relationships:**
 - User → Orders (one-to-many)
@@ -330,6 +374,36 @@ Processes: checkout.session.completed, payment_intent.succeeded, etc.
 // pages/api/blog-posts.ts
 GET /api/blog-posts?locale=en&page=1&limit=10&category=tips
 Returns: { posts: BlogPost[], total: number, page: number }
+```
+
+**Other Key API Routes:**
+```typescript
+// Referral System
+POST /api/referrals/generate       // Generate referral code
+GET /api/referrals/validate/[code] // Validate referral code
+POST /api/referrals/track          // Track referral usage
+GET /api/referrals/dashboard/[userId] // Get referral dashboard
+
+// B2B/Retailer
+POST /api/retailer/register        // Retailer registration
+POST /api/retailer/login           // Retailer login
+GET /api/retailer/profile          // Get retailer profile
+POST /api/retailer/create-checkout // Create retailer checkout
+GET /api/retailer/orders           // Get retailer orders
+
+// Shipping Integration
+POST /api/shipstation/create-order // Create ShipStation order
+POST /api/shipstation/webhook      // ShipStation webhook handler
+
+// Analytics & Optimization
+GET /api/analytics/conversion-metrics // Conversion metrics
+GET /api/analytics/optimization    // Optimization recommendations
+POST /api/cart-recovery            // Cart recovery emails
+
+// Cron Jobs (require CRON_SECRET header)
+GET /api/cron/publish-scheduled-posts // Publish scheduled blog posts
+POST /api/cron/generate-blog-post     // Generate blog posts automatically
+GET /api/cron/cleanup-old-revisions   // Clean up old blog revisions
 ```
 
 ## Dark Mode Compliance (CRITICAL)
@@ -565,6 +639,18 @@ setState(prev => prev + 1);
 - [ ] Mobile: 44px+ touch targets, responsive breakpoints
 - [ ] Performance: Dynamic imports for below-fold content
 
+## MCP (Model Context Protocol) Integration
+
+This project has Supabase MCP server configured for database operations. When working with Claude Code, you have access to:
+
+- `mcp__supabase__list_tables` - List all database tables
+- `mcp__supabase__execute_sql` - Execute SQL queries
+- `mcp__supabase__apply_migration` - Apply database migrations
+- `mcp__supabase__search_docs` - Search Supabase documentation
+- Additional Supabase management tools
+
+**Usage:** Prefer using MCP tools for database introspection and queries when available, as they provide better context and error handling.
+
 ## Debugging & Troubleshooting
 
 ### Common Issues
@@ -626,12 +712,17 @@ npm run analyze  # Interactive bundle analysis
 
 ### Environment Variables (Vercel)
 All sensitive keys stored in Vercel dashboard:
-- `DATABASE_URL`
-- `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
-- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`
-- `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `EDITOR_EMAIL`, `EDITOR_PASSWORD`
-- `RESEND_API_KEY`, `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`
-- `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`
+- `DATABASE_URL` - PostgreSQL connection string
+- `NEXTAUTH_SECRET`, `NEXTAUTH_URL` - Authentication
+- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Payments
+- `ADMIN_EMAIL`, `ADMIN_PASSWORD` - Admin credentials
+- `EDITOR_EMAIL`, `EDITOR_PASSWORD` - Editor credentials
+- `RESEND_API_KEY` - Email delivery (Resend)
+- `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` - EmailJS
+- `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` - AI content generation
+- `UNSPLASH_ACCESS_KEY` - Image fetching
+- `CRON_SECRET` - Cron job authentication
+- `NEXT_PUBLIC_SITE_URL` - Site base URL
 
 ### Deployment Verification
 ```bash
