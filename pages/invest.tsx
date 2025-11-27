@@ -74,7 +74,7 @@ export default function InvestorRelations() {
           <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#5B2EFF]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
-        
+
 
         {/* Navigation Tabs */}
         <Container>
@@ -93,11 +93,10 @@ export default function InvestorRelations() {
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
-                    className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${
-                      activeTab === tab.id
+                    className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${activeTab === tab.id
                         ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-white shadow-lg transform scale-105'
                         : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white dark:hover:bg-gray-700/50 dark:hover:bg-gray-700/50'
-                    }`}
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -119,18 +118,17 @@ export default function InvestorRelations() {
                   <span className="text-sm mr-1">←</span>
                   Previous
                 </button>
-                
+
                 <div className="flex space-x-1">
                   {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
                     <div
                       key={tab}
-                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                        activeTab === tab ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
-                      }`}
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeTab === tab ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
+                        }`}
                     />
                   ))}
                 </div>
-                
+
                 <button
                   onClick={handleNextClick}
                   className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
@@ -146,7 +144,7 @@ export default function InvestorRelations() {
         {/* Content Sections */}
         <Container>
           <div className="max-w-6xl mx-auto pb-16">
-            
+
             {/* Executive Summary */}
             {activeTab === 'overview' && (
               <section className="space-y-12 relative z-10">
@@ -161,15 +159,15 @@ export default function InvestorRelations() {
                       className="mx-auto mb-6"
                     />
                   </div>
-                  
+
                   <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
                     Revolutionary Odor Solution for 52 Million North American Cat Owners
                   </h1>
-                  
+
                   <p className="text-xl lg:text-2xl text-[#333333] dark:text-gray-300 mb-8 leading-relaxed">
                     Growing pet care innovation company with molecular-level odor elimination technology
                   </p>
-                  
+
                   <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20 dark:border-gray-700/50 relative z-10">
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                       <div className="relative">
@@ -192,14 +190,14 @@ export default function InvestorRelations() {
                 </div>
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
-                  
+
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Opportunity</h3>
                       <p className="text-gray-600 dark:text-gray-200 mb-6 leading-relaxed">
                         Purrify addresses the #1 pain point of urban cat owners: persistent litter box odor. Our premium activated carbon additive provides molecular-level odor elimination, creating a new product category in the $160M Canadian pet care market.
                       </p>
-                      
+
                       <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Competitive Advantages</h3>
                       <ul className="space-y-2 text-gray-600 dark:text-gray-200">
                         <li className="flex items-start">
@@ -220,7 +218,7 @@ export default function InvestorRelations() {
                         </li>
                       </ul>
                     </div>
-                    
+
                     <div>
                       <PieChart
                         data={[
@@ -230,7 +228,7 @@ export default function InvestorRelations() {
                         title="Unit Economics Breakdown"
                         className="mb-6"
                       />
-                      
+
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">$3K+</div>
@@ -266,7 +264,7 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Opportunity</h2>
-                  
+
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Problem</h3>
@@ -285,7 +283,7 @@ export default function InvestorRelations() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <BarChart
                         data={[
@@ -296,7 +294,7 @@ export default function InvestorRelations() {
                         title="Canadian Market Overview"
                         className="mb-6"
                       />
-                      
+
                       <div className="grid grid-cols-3 gap-3">
                         <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
                           <div className="text-2xl font-bold text-[#FF3131] drop-shadow-sm">52M</div>
@@ -360,14 +358,14 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Our Solution</h2>
-                  
+
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Purrify Activated Carbon Additive</h3>
                       <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                         Premium coconut shell activated carbon that adsorbs odor molecules at the molecular level. Unlike competitors who mask odors with chemicals, we eliminate them completely through proven scientific principles.
                       </p>
-                      
+
                       <h4 className="text-lg font-semibold text-[#5B2EFF] mb-3">Key Benefits</h4>
                       <div className="space-y-3">
                         <div className="flex items-start">
@@ -400,7 +398,7 @@ export default function InvestorRelations() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <BarChart
                         data={[
@@ -411,7 +409,7 @@ export default function InvestorRelations() {
                         title="Product Line Margins (%)"
                         className="mb-6"
                       />
-                      
+
                       <div className="space-y-4">
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                           <div className="flex justify-between items-center mb-2">
@@ -466,7 +464,7 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Traction</h2>
-                  
+
                   <div className="grid md:grid-cols-4 gap-6 mb-8">
                     <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                       <ProgressRing percentage={100} label="Stores Onboarded" color="#FF3131" size={60} />
@@ -519,7 +517,7 @@ export default function InvestorRelations() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Foundation Built</h3>
                       <div className="space-y-3">
@@ -555,7 +553,7 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Unit Economics</h2>
-                  
+
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (50g)</h3>
@@ -594,7 +592,7 @@ export default function InvestorRelations() {
                         </table>
                       </div>
                     </div>
-                    
+
                     <div>
                       <PieChart
                         data={[
@@ -608,7 +606,7 @@ export default function InvestorRelations() {
                         title="Cost Breakdown (Medium SKU)"
                         className="mb-6"
                       />
-                      
+
                       <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
                       <div className="space-y-4">
                         <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
@@ -667,7 +665,7 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Leadership Team</h2>
-                  
+
                   <div className="grid lg:grid-cols-3 gap-8">
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
@@ -694,12 +692,12 @@ export default function InvestorRelations() {
                         <div className="text-sm text-gray-600 dark:text-gray-300">Turns marketing into profit machines</div>
                       </div>
                     </div>
-                    
+
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center">
-                        <span className="text-white dark:text-white font-bold text-2xl">A</span>
+                        <span className="text-white dark:text-white font-bold text-2xl">S</span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#5B2EFF] mb-2">Anthony - COO</h3>
+                      <h3 className="text-xl font-bold text-[#5B2EFF] mb-2">Sage Dean - COO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Operations Machine</p>
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
@@ -720,7 +718,7 @@ export default function InvestorRelations() {
                         <div className="text-sm text-gray-600 dark:text-gray-300">Makes impossible things happen</div>
                       </div>
                     </div>
-                    
+
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#2ed573] to-[#7bed9f] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white font-bold text-2xl">K</span>
@@ -747,7 +745,7 @@ export default function InvestorRelations() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="mt-8 bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-6">
                     <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Strategic Roadmap</h3>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -778,7 +776,7 @@ export default function InvestorRelations() {
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
                   <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Investment Terms</h2>
-                  
+
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
                       <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-2xl p-6 mb-6">
@@ -789,7 +787,7 @@ export default function InvestorRelations() {
                           <div className="text-lg text-gray-600 dark:text-gray-400">SAFE Agreement</div>
                         </div>
                       </div>
-                      
+
                       <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Use of Funds</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
@@ -806,7 +804,7 @@ export default function InvestorRelations() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <PieChart
                         data={[
@@ -817,7 +815,7 @@ export default function InvestorRelations() {
                         title="Use of Funds Breakdown"
                         className="mb-6"
                       />
-                      
+
                       <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Investment Highlights</h3>
                       <div className="space-y-4">
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">

@@ -108,7 +108,7 @@ export const enStoryData = {
       location: "Vancouver, BC"
     },
     {
-      name: "Anthony Thambiah",
+      name: "Sage Dean",
       role: "Head of Customer Experience",
       bio: "Former veterinary technician passionate about improving the lives of pets and their families through better products.",
       location: "Montreal, QC"
