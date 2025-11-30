@@ -5,6 +5,13 @@
 
 set -e
 
+# Load environment variables from .env.test
+if [ -f .env.test ]; then
+  set -a
+  source .env.test
+  set +a
+fi
+
 echo "🔒 Running Security Tests (Task 10)"
 echo "===================================="
 echo ""
@@ -12,6 +19,8 @@ echo ""
 # Set test environment variables if not already set
 export ADMIN_EMAIL="${ADMIN_EMAIL:-admin@purrify.ca}"
 export ADMIN_PASSWORD="${ADMIN_PASSWORD:-admin123}"
+export NEXTAUTH_SECRET="${NEXTAUTH_SECRET:-dev-secret-key-change-in-production-min-32-chars-required}"
+export NEXTAUTH_URL="${NEXTAUTH_URL:-http://localhost:3010}"
 
 echo "📋 Test Configuration:"
 echo "  Admin Email: $ADMIN_EMAIL"
