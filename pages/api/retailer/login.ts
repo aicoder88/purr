@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
-const JWT_SECRET = process.env.RETAILER_JWT_SECRET || 'your-secret-key-change-in-production';
+const JWT_SECRET = process.env.RETAILER_JWT_SECRET;
 
 interface LoginRequest {
   email: string;
@@ -61,6 +61,11 @@ export default async function handler(
       where: { id: retailer.id },
       data: { lastLoginAt: new Date() },
     });
+
+    if (!JWT_SECRET) {
+      console.error('Retailer login blocked: RETAILER_JWT_SECRET is not configured.');
+      return res.status(500).json({ message: 'Login unavailable. Please contact support.' });
+    }
 
     // Create JWT token
     const token = jwt.sign(

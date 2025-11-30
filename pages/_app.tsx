@@ -209,7 +209,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                     // Load on idle, or on first interaction if earlier
                     ['mousemove','touchstart','scroll','keydown'].forEach(function(evt){
                       window.addEventListener(evt, function handler(){
-                        window.removeEventListener(evt, handler, { passive: true } as any);
+                        window.removeEventListener(evt, handler);
                         loadChat();
                       }, { passive: true, once: true });
                     });
