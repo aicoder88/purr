@@ -130,10 +130,6 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
 
           {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
           {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
-
-          {/* Start of HubSpot Embed Code */}
-          <script type="text/javascript" id="hs-script-loader" async defer src="//js-na3.hs-scripts.com/342693981.js"></script>
-          {/* End of HubSpot Embed Code */}
         </body>
       </Html>
     );
