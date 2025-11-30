@@ -154,8 +154,12 @@ export const en = {
       description: "Natural coconut carbon with zero chemicals, fragrances, or dyes.\n\nThe same type used in water and air filters around the world, powerful enough for multiple cats."
     },
     longLastingFreshness: {
-      title: "7 Days of Fresh Air Per Application- Money-back Guaranteed",
+      title: "7 Days of Fresh Air Per Application",
       description: "One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy."
+    },
+    natural: {
+      title: "100% Natural Ingredients",
+      description: "Made from coconut shell activated carbon with no synthetic fragrances or fillers."
     },
     worksWithAnyLitter: {
       title: "Works with Your Cat's Favorite Litter",
@@ -506,7 +510,7 @@ export const en = {
     },
     highlyRated: {
       title: "Highly Rated",
-      description: "30-day money-back guarantee\nFast shipping in Canada"
+      description: "Loved by cat parents across Canada\nFast shipping in Canada"
     }
   },
 
@@ -548,7 +552,7 @@ export const en = {
     odorControlLarge: "30-day odor control",
     naturalIngredients: "100% Natural Ingredients",
     easyApplication: "Easy Application",
-    moneyBackGuarantee: "30-Day Money Back Guarantee",
+    moneyBackGuarantee: "Expert odor support",
     freeShipping: "Shipping included",
     freeShippingDetailed: "Shipping is included.",
     autoshipHero: "Autoship & Save",
@@ -563,8 +567,8 @@ export const en = {
     happyCustomers: "Happy Customers",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
-    odorFreeGuarantee: "Fresh Air Per Application- Money-back Guaranteed",
-    moneyBackGuaranteeText: "30-day money-back guarantee - Try risk-free!"
+    odorFreeGuarantee: "Fresh air with every application",
+    moneyBackGuaranteeText: "Questions? Our cat-care team is ready to help you get results."
   },
 
   // Subscription Offer
@@ -707,9 +711,9 @@ export const en = {
   // Trust Badges
   trustBadges: {
     moneyBack: {
-      title: "30-Day Money Back",
-      description: "Not satisfied? Get a full refund within 30 days",
-      highlight: "100% Guaranteed"
+      title: "Canada-Based Support",
+      description: "Real people ready to help you dial in odor control",
+      highlight: "Cat-care experts"
     },
     securePayment: {
       title: "Secure Payment",
@@ -910,7 +914,7 @@ export const en = {
       { feature: "Fragrance-free" },
       { feature: "Works with all litters" },
       { feature: "Natural ingredients" },
-      { feature: "Money-back guarantee" }
+      { feature: "Personalized odor coaching" }
     ],
     usageCalculator: {
       title: "Usage Calculator",
@@ -1070,10 +1074,10 @@ export const en = {
     {
       id: 11,
       category: "product",
-      question: "Is there a money-back guarantee?",
-      answer: "Yes! We offer a 30-day money-back guarantee. If you're not completely satisfied with Purrify, contact us within 30 days of purchase for a full refund. We stand behind our product 100%.",
+      question: "What if I'm not getting the results I expected?",
+      answer: "We're here to help! Message our support team and we'll walk through your setup, share odor-elimination tips, and make sure Purrify is working its best in your home.",
       popular: true,
-      tags: ["guarantee", "refund", "30 days"]
+      tags: ["support", "help", "odor tips"]
     },
     {
       id: 12,
@@ -1189,7 +1193,7 @@ export const en = {
     
     // General
     happyCustomers: "Happy Customers",
-    moneyBack: "Money Back",
+    moneyBack: "Expert Support",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
     // freeShipping: "Free Shipping", // TODO: Restore when free shipping is available
@@ -1225,7 +1229,7 @@ export const en = {
       videoFallbackText: "Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.",
       videoDescriptions: "English Descriptions",
       highlyRated: "Highly Rated",
-      moneyBackGuarantee: "30-Day Money-Back Guarantee",
+      moneyBackGuarantee: "Expert Support Team",
       freeShippingCanada: "Free Shipping in Canada"
     },
     enhancedComparison: {
@@ -1238,7 +1242,7 @@ export const en = {
       happyCustomers: "Happy Customers",
       averageRating: "Average Rating",
       satisfactionRate: "Satisfaction Rate",
-      odorFreeGuarantee: "Fresh Air Per Application- Money-back Guaranteed",
+      odorFreeGuarantee: "Fresh air with every application",
       tryRiskFree: "Try Risk-Free",
       chooseThisSize: "Choose This Size"
     },
@@ -1260,8 +1264,8 @@ export const en = {
       fullControlDeliveries: "Full control over deliveries",
       lovedByCustomers: "Loved by 1,000+ customers",
       joinSatisfiedCustomers: "Join over 1,000 satisfied customers:",
-      thirtyDayGuarantee: "30-Day Guarantee",
-      moneyBackPromise: "100% money-back promise",
+      thirtyDayGuarantee: "Ongoing odor support",
+      moneyBackPromise: "Dedicated customer care",
       fiveStarRated: "5-Star Rated",
       reviewsRating: "4.9/5 from 138 reviews",
       testimonialQuote: "\"I've saved over $200 this year with my subscription, and my cats' litter box never smells!\" - Sarah M."

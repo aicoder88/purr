@@ -270,10 +270,10 @@ export const fr = {
   // Call to Action
   cta: {
     title: "Prêt à Dire Adieu aux Odeurs de Litière pour Toujours ?",
-    subtitle: "Rejoignez 1 000+ propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le sans risque avec notre garantie de satisfaction de 30 jours.",
+    subtitle: "Rejoignez 1 000+ propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le avec l'accompagnement personnalisé de notre équipe.",
     buttonText: "COMMANDER MAINTENANT",
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
-    guarantee: "Garantie de remboursement de 30 jours"
+    guarantee: "Support personnalisé inclus"
   },
   
   // FAQ
@@ -538,7 +538,7 @@ export const fr = {
     odorControlLarge: "Contrôle des odeurs sur 30 jours",
     naturalIngredients: "100% Ingrédients Naturels",
     easyApplication: "Application Facile",
-    moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
+    moneyBackGuarantee: "Support d'experts en odeurs",
     freeShipping: "Livraison incluse",
     freeShippingDetailed: "La livraison est incluse.",
     autoshipHero: "Abonnement & économies",
@@ -553,8 +553,8 @@ export const fr = {
     happyCustomers: "Clients Satisfaits",
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
-    odorFreeGuarantee: "Garantie Sans Odeur",
-    moneyBackGuaranteeText: "Garantie de remboursement 30 jours - Essayez sans risque !"
+    odorFreeGuarantee: "Air frais à chaque application",
+    moneyBackGuaranteeText: "Des questions ? Notre équipe vous aide à garder une maison sans odeurs."
   },
 
   // Subscription Offer
@@ -702,9 +702,9 @@ export const fr = {
   // Trust Badges
   trustBadges: {
     moneyBack: {
-      title: "Remboursement 30 Jours",
-      description: "Pas satisfait ? Obtenez un remboursement complet sous 30 jours",
-      highlight: "100% Garantie"
+      title: "Support au Canada",
+      description: "Une équipe réelle vous aide à optimiser le contrôle des odeurs",
+      highlight: "Experts félins"
     },
     securePayment: {
       title: "Paiement Sécurisé",
@@ -751,7 +751,7 @@ export const fr = {
     
     // General
     happyCustomers: "Clients Satisfaits",
-    moneyBack: "Remboursement",
+    moneyBack: "Support expert",
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
     // freeShipping: "Livraison Gratuite", // TODO: Restore when free shipping is available
@@ -864,8 +864,8 @@ export const fr = {
         answer: "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact."
       },
       {
-        question: "Quelle est votre politique de retour?",
-        answer: "Nous offrons une garantie de remboursement de 30 jours. Si vous n'êtes pas complètement satisfait de Purrify, contactez-nous pour un remboursement complet."
+        question: "Que faire si je n'obtiens pas les résultats espérés?",
+        answer: "Écrivez-nous ! Notre équipe d'accompagnement analysera votre installation, partagera des conseils personnalisés et s'assurera que Purrify fonctionne au mieux chez vous."
       },
       {
         question: "Offrez-vous des prix de gros pour plusieurs chats?", 
@@ -912,7 +912,7 @@ export const fr = {
           "Introduction sans risque",
           "Portion parfaite",
           "Même formule puissante",
-          "Garantie de remboursement"
+          "Accompagnement expert inclus"
         ],
         bestFor: "Nouveaux clients qui veulent tester Purrify",
         cta: "Commencer l'Essai"
@@ -954,7 +954,7 @@ export const fr = {
       { feature: "Élimination d'Odeurs" },
       { feature: "Fonctionne avec Toute Litière" },
       { feature: "Prolonge la Vie de la Litière" },
-      { feature: "Garantie de Remboursement" },
+      { feature: "Support dédié aux odeurs" },
       { feature: "Livraison Gratuite" },
       { feature: "Économies en Vrac" },
       { feature: "Convient Multi-Chats" }
@@ -1272,7 +1272,7 @@ export const fr = {
       videoFallbackText: "Votre navigateur ne prend pas en charge la balise vidéo. Cette vidéo démontre l'additif Purrify au charbon actif éliminant les odeurs avant et après application à la litière pour chat.",
       videoDescriptions: "Descriptions en Français",
       highlyRated: "Très Bien Noté",
-      moneyBackGuarantee: "Garantie de Remboursement 30 Jours",
+      moneyBackGuarantee: "Support d'experts en odeurs",
       freeShippingCanada: "Livraison Gratuite au Canada"
     },
     enhancedComparison: {
@@ -1285,7 +1285,7 @@ export const fr = {
       happyCustomers: "Clients Satisfaits",
       averageRating: "Note Moyenne",
       satisfactionRate: "Taux de Satisfaction",
-      odorFreeGuarantee: "Garantie Sans Odeur",
+      odorFreeGuarantee: "Air frais à chaque application",
       tryRiskFree: "Essayer Sans Risque",
       chooseThisSize: "Choisir Cette Taille"
     },
@@ -1307,8 +1307,8 @@ export const fr = {
       fullControlDeliveries: "Contrôle total sur les livraisons",
       lovedByCustomers: "Aimé par plus de 1 000 clients",
       joinSatisfiedCustomers: "Rejoignez plus de 1 000 clients satisfaits :",
-      thirtyDayGuarantee: "Garantie 30 Jours",
-      moneyBackPromise: "Promesse de remboursement à 100%",
+      thirtyDayGuarantee: "Support continu",
+      moneyBackPromise: "Engagement service client",
       fiveStarRated: "Classé 5 Étoiles",
       reviewsRating: "4,9/5 sur 138 avis",
       testimonialQuote: "\"J'ai économisé plus de 200$ cette année avec mon abonnement, et la litière de mes chats ne sent jamais !\" - Sarah M."
