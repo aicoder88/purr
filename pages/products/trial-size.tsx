@@ -218,13 +218,15 @@ export default function TrialSizePage() {
                     </li>
                   </ul>
 
-                  <Button
-                    size="lg"
-                    className="w-full bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-electric-indigo-500/20 transition-all duration-300 transform hover:scale-[1.02]"
-                  >
-                    <ShoppingCart className="w-6 h-6 mr-2" />
-                    YES! Send Me My Trial Now
-                  </Button>
+                  <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="block w-full">
+                    <Button
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-electric-indigo-500/20 transition-all duration-300 transform hover:scale-[1.02]"
+                    >
+                      <ShoppingCart className="w-6 h-6 mr-2" />
+                      YES! Send Me My Trial Now
+                    </Button>
+                  </a>
 
                   <div className="mt-4 space-y-2">
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -238,6 +240,20 @@ export default function TrialSizePage() {
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
                       <span>Free shipping on orders over $50</span>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-2">Secure payment with:</p>
+                      <div className="flex items-center justify-center gap-2 text-xs text-gray-600 dark:text-gray-400 font-medium">
+                        <span>💳 Card</span>
+                        <span>•</span>
+                        <span>🍎 Apple Pay</span>
+                        <span>•</span>
+                        <span>🔵 Google Pay</span>
+                        <span>•</span>
+                        <span>Klarna</span>
+                        <span>•</span>
+                        <span>Link</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -411,12 +427,14 @@ export default function TrialSizePage() {
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   Then you get every penny back. No questions. No hassle. No "return shipping fees" nonsense. We eat the cost. You risk <strong>nothing</strong>.
                 </p>
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-electric-indigo-500/20 transform hover:scale-[1.02] transition-all"
-                >
-                  Try It Risk-Free Now
-                </Button>
+                <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-electric-indigo-500/20 transform hover:scale-[1.02] transition-all"
+                  >
+                    Try It Risk-Free Now
+                  </Button>
+                </a>
               </div>
             </div>
           </Container>
@@ -475,19 +493,25 @@ export default function TrialSizePage() {
                 </div>
               </div>
 
-              <Button
-                size="lg"
-                className="bg-white text-electric-indigo-700 hover:bg-indigo-50 dark:bg-electric-indigo-600 dark:text-white dark:hover:bg-electric-indigo-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 mb-6"
-              >
-                YES! Send My Trial Now - Only {trialPrice}
-              </Button>
+              <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block mb-6">
+                <Button
+                  size="lg"
+                  className="bg-white text-electric-indigo-700 hover:bg-indigo-50 dark:bg-electric-indigo-600 dark:text-white dark:hover:bg-electric-indigo-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
+                >
+                  YES! Send My Trial Now - Only {trialPrice}
+                </Button>
+              </a>
 
               <p className="text-sm opacity-75 mb-2">
                 ✓ 30-Day Money-Back Guarantee • ✓ Ships in 24 Hours • ✓ Join 1,127 Happy Users This Month
               </p>
 
-              <p className="text-xs opacity-60">
+              <p className="text-xs opacity-60 mb-2">
                 Secure checkout • Your information is protected by 256-bit SSL encryption
+              </p>
+
+              <p className="text-xs opacity-50">
+                Payment options: Card • Apple Pay • Google Pay • Klarna • Link
               </p>
             </div>
           </Container>
