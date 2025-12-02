@@ -11,7 +11,7 @@ const heroImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?aut
 const labImage = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const layeringImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const carbonMacroImage = 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
-const carbonScoopImage = 'https://images.unsplash.com/photo-1616628188505-40468f63229e?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
+const carbonScoopImage = '/optimized/activated-carbon-granules.webp';
 
 const PerformanceChart = dynamic(
   () =>

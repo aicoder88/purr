@@ -3,10 +3,10 @@ import { BlogTopic, GeneratedImage } from './types';
 const FALLBACK_IMAGES: GeneratedImage[] = [
   {
     kind: 'HERO',
-    url: 'https://images.unsplash.com/photo-1558944351-c626b0d2ebb4?auto=format&fit=crop&w=1600&q=80',
+    url: '/optimized/activated-carbon-benefits.webp',
     alt: 'Cat litter deodorizer - activated carbon powder keeping litter box fresh',
     caption: 'Activated carbon absorbs odor molecules before they escape the litter box.',
-    credit: 'Photo by Litter Robot on Unsplash',
+    credit: 'Purrify Product Image',
     keywords: ['cat litter deodorizer', 'activated carbon']
   },
   {
@@ -19,10 +19,10 @@ const FALLBACK_IMAGES: GeneratedImage[] = [
   },
   {
     kind: 'SECTION',
-    url: 'https://images.unsplash.com/photo-1548802772-20401578dc01?auto=format&fit=crop&w=1600&q=80',
+    url: '/optimized/house-smells-cat-litter.webp',
     alt: 'Frustrated apartment renter holding nose near litter box',
     caption: 'Odor emergencies happen fast in small apartments without airflow.',
-    credit: 'Photo by Brittany Colette on Unsplash',
+    credit: 'Purrify Product Image',
     keywords: ['apartment litter smell']
   },
   {

@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 // High-quality images for winter, closed windows, and fresh solutions
-const heroImage = 'https://images.unsplash.com/photo-1483306130718-042b74ae6faa?auto=format&fit=crop&w=1600&q=80';
-const closedWindowImage = 'https://images.unsplash.com/photo-1545319261-8c7d87e1d3c9?auto=format&fit=crop&w=1600&q=80';
-const ventilationImage = 'https://images.unsplash.com/photo-1514984879728-be0aff75a6e8?auto=format&fit=crop&w=1600&q=80';
-const solutionImage = 'https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1600&q=80';
+const heroImage = '/optimized/cat-clean-home.jpg';
+const closedWindowImage = '/optimized/house-smells-cat-litter.webp';
+const ventilationImage = '/optimized/happy-cat-home.jpg';
+const solutionImage = '/optimized/happy-cat-fresh-home.png';
 
 export default function CatLitterSmellWorseWinter() {
   return (

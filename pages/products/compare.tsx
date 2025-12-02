@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { 
-  CheckCircle, 
-  Package, 
-  Clock, 
+import {
+  CheckCircle,
+  Package,
+  Clock,
   // DollarSign, 
   Users,
   ChevronRight,
@@ -19,6 +19,7 @@ import {
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 
 const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
@@ -65,7 +66,7 @@ const ProductComparePage: NextPage = () => {
       savings: priceDetails[priceKey].savings,
       popular: product.id === 'standard',
       recommended: product.id === 'large',
-      ctaLink: product.id === 'trial' ? '/products/trial-size' : '/#products',
+      ctaLink: product.id === 'trial' ? (getPaymentLink('trialSingle') || '/products/trial-size') : '/#products',
       color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'standard' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
     };
   });
@@ -108,19 +109,19 @@ const ProductComparePage: NextPage = () => {
     <>
       <Head>
         <title>{`${t.productComparison.title} - ${locale === 'fr' ? 'Trouvez la Taille Parfaite' : locale === 'zh' ? '找到完美尺寸' : 'Find the Perfect Size'} | Purrify`}</title>
-        <meta 
-          name="description" 
-          content={t.productComparison.subtitle} 
+        <meta
+          name="description"
+          content={t.productComparison.subtitle}
         />
         <meta name="keywords" content="Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison" />
         <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Compare Purrify Products - Find the Perfect Size" />
         <meta property="og:description" content="Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -190,13 +191,12 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {products.map((product) => (
-                <div 
-                  key={product.id} 
-                  className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 ${
-                    product.recommended 
-                      ? 'border-[#FF3131] dark:border-[#FF5050]' 
+                <div
+                  key={product.id}
+                  className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 ${product.recommended
+                      ? 'border-[#FF3131] dark:border-[#FF5050]'
                       : 'border-[#E0EFC7] dark:border-gray-700'
-                  } overflow-hidden transform hover:scale-105 transition-transform duration-300`}
+                    } overflow-hidden transform hover:scale-105 transition-transform duration-300`}
                 >
                   {/* Popular Badge */}
                   {product.popular && (
@@ -205,7 +205,7 @@ const ProductComparePage: NextPage = () => {
                       {t.productComparison.popular}
                     </div>
                   )}
-                  
+
                   {/* Recommended Badge */}
                   {product.recommended && (
                     <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
@@ -266,19 +266,33 @@ const ProductComparePage: NextPage = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}${product.ctaLink}`}>
-                      <Button 
-                        size="lg" 
-                        className={`w-full ${
-                          product.recommended 
-                            ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white' 
-                            : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
-                        }`}
-                      >
-                        {product.cta}
-                        <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
-                    </Link>
+                    {product.ctaLink.startsWith('http') ? (
+                      <a href={product.ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+                        <Button
+                          size="lg"
+                          className={`w-full ${product.recommended
+                              ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white'
+                              : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
+                            }`}
+                        >
+                          {product.cta}
+                          <ChevronRight className="w-5 h-5 ml-2" />
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link href={`${locale === 'fr' ? '/fr' : ''}${product.ctaLink}`}>
+                        <Button
+                          size="lg"
+                          className={`w-full ${product.recommended
+                              ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white'
+                              : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
+                            }`}
+                        >
+                          {product.cta}
+                          <ChevronRight className="w-5 h-5 ml-2" />
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               ))}
@@ -432,7 +446,7 @@ const ProductComparePage: NextPage = () => {
                 {t.productComparison.learnMoreAboutPurrify}
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
@@ -444,7 +458,7 @@ const ProductComparePage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/customers/testimonials`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
@@ -455,7 +469,7 @@ const ProductComparePage: NextPage = () => {
                   </p>
                 </div>
               </Link>
-              
+
               <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
