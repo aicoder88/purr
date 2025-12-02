@@ -66,14 +66,18 @@ const HIGH_PRIORITY_CITY_SLUGS: string[] = [
 ];
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = HIGH_PRIORITY_CITY_SLUGS
-    .map((citySlug) => getCityBySlug(citySlug))
-    .filter((city): city is NonNullable<typeof city> => Boolean(city))
-    .map((city) => ({ params: { citySlug: city.slug } }));
+  // Import all cities function to pre-render ALL pages at build time
+  const { getAllCities } = await import('../../src/data/locations');
+  const allCities = getAllCities();
+
+  // Generate paths for ALL cities to eliminate SSR blocking (performance critical)
+  const paths = allCities.map((city) => ({
+    params: { citySlug: city.slug }
+  }));
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false, // All pages pre-rendered = instant TTFB
   };
 };
 
@@ -94,7 +98,7 @@ export const getStaticProps: GetStaticProps<CityPageProps> = async ({ params }) 
     props: {
       citySlug: city.slug,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 3600, // 1 hour ISR (was 24h) for faster content updates
   };
 };
 

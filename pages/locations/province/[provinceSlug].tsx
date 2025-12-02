@@ -115,20 +115,15 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
   );
 };
 
-// Add province slugs here if certain regions need pre-rendered landing pages.
-const PRIORITY_PROVINCE_SLUGS: string[] = [];
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = PRIORITY_PROVINCE_SLUGS
-    .map((slug) => locationsByProvince.find((province) => province.slug === slug))
-    .filter((province): province is NonNullable<typeof province> => Boolean(province))
-    .map((province) => ({
-      params: { provinceSlug: province.slug },
-    }));
+  // Pre-render ALL province pages at build time (performance critical)
+  const paths = locationsByProvince.map((province) => ({
+    params: { provinceSlug: province.slug },
+  }));
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false, // All pages pre-rendered = instant TTFB
   };
 };
 
@@ -149,7 +144,7 @@ export const getStaticProps: GetStaticProps<ProvincePageProps> = async ({ params
     props: {
       province,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 3600, // 1 hour ISR (was 24h) for faster content updates
   };
 };
 

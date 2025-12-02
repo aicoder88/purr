@@ -80,18 +80,18 @@ const OurStoryPage: NextPage = () => {
 
           <div className="relative z-10 w-full">
             <Container>
-              <div className="max-w-4xl mx-auto text-center text-white">
+              <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
                 <Breadcrumbs
                   items={[
                     { label: "About" },
                     { label: "Our Story" }
                   ]}
-                  className="justify-center mb-8 text-white/80"
+                  className="justify-center mb-8 text-white/80 dark:text-gray-200/80"
                 />
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight drop-shadow-lg">
                   Our Story
                 </h1>
-                <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md text-white/90">
+                <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md text-white/90 dark:text-gray-100/90">
                   Born from a cat owner's frustration, grown into a mission to help families everywhere.
                 </p>
               </div>
@@ -178,7 +178,7 @@ const OurStoryPage: NextPage = () => {
               {values.map((value, index) => (
                 <div key={index} className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-gradient-to-br from-electric-indigo to-electric-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
-                    <value.icon className="w-7 h-7 text-white" />
+                    <value.icon className="w-7 h-7 text-white dark:text-gray-100" />
                   </div>
                   <h3 className="text-xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     {value.title}
@@ -225,7 +225,7 @@ const OurStoryPage: NextPage = () => {
                               {getInitials(member.name)}
                             </span>
                           </div>
-                          <Users className="w-6 h-6 text-gray-400 absolute bottom-4 right-4 opacity-50" />
+                          <Users className="w-6 h-6 text-gray-400 dark:text-gray-500 absolute bottom-4 right-4 opacity-50" />
                         </div>
                       )}
                       {/* Overlay gradient */}
@@ -255,22 +255,22 @@ const OurStoryPage: NextPage = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-electric-indigo text-white relative overflow-hidden">
+        <section className="py-20 bg-electric-indigo text-white dark:text-gray-100 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/images/pattern-bg.png')] opacity-10 mix-blend-overlay" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 dark:bg-gray-200/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-deep-coral/20 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
 
           <Container className="relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20 dark:divide-gray-400/20">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center px-4 py-4 md:py-0">
-                  <div className="text-5xl font-heading font-bold text-white mb-2 drop-shadow-sm">
+                  <div className="text-5xl font-heading font-bold text-white dark:text-gray-100 mb-2 drop-shadow-sm">
                     {stat.number}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-white/90 uppercase tracking-wide">
+                  <h3 className="text-lg font-semibold mb-2 text-white/90 dark:text-gray-100/90 uppercase tracking-wide">
                     {stat.label}
                   </h3>
-                  <p className="text-white/70 text-sm max-w-[200px] mx-auto">
+                  <p className="text-white/70 dark:text-gray-200/70 text-sm max-w-[200px] mx-auto">
                     {stat.description}
                   </p>
                 </div>
@@ -287,17 +287,17 @@ const OurStoryPage: NextPage = () => {
 
           <Container className="relative z-10">
             <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-white dark:text-gray-100 leading-tight">
                 Ready to Experience the Difference?
               </h2>
-              <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-300 dark:text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of happy cat owners who have transformed their homes with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button
                     size="lg"
-                    className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
+                    className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white dark:text-gray-100 font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
                   >
                     <div className="flex flex-col items-start text-left">
                       <span className="text-xl font-bold tracking-tight">
@@ -314,7 +314,7 @@ const OurStoryPage: NextPage = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="h-full py-4 px-8 border-2 border-white/20 text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 rounded-full text-lg font-medium backdrop-blur-sm"
+                    className="h-full py-4 px-8 border-2 border-white/20 text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 hover:scale-105 transition-all duration-300 rounded-full text-lg font-medium backdrop-blur-sm"
                   >
                     Get in Touch
                   </Button>
