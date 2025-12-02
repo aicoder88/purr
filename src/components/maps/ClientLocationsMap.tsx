@@ -20,12 +20,12 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
   const { t, locale } = useTranslation();
 
   const defaultTitle = locale === 'fr'
-    ? 'Nos Clients Actuels | Emplacements Purrify'
-    : 'Our Current Clients | Purrify Locations';
+    ? 'Trouvez Purrify Près de Chez Vous | Magasins Détaillants'
+    : 'Find Purrify Near You | Retail Store Locations';
 
   const defaultDescription = locale === 'fr'
-    ? 'Découvrez où nos clients utilisent Purrify à travers le Canada. Chaque point représente une famille satisfaite qui a transformé l\'expérience de la litière de son chat.'
-    : 'See where our clients are using Purrify across Canada. Each location represents a satisfied family who has transformed their cat litter experience.';
+    ? 'Découvrez où acheter Purrify à travers le Canada. Chaque point représente un magasin de détail où vous pouvez trouver nos produits.'
+    : 'Discover where to buy Purrify across Canada. Each location represents a retail store where you can find our products.';
 
   const title = headerTitle || defaultTitle;
   const description = headerDescription || defaultDescription;
@@ -62,14 +62,14 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title={locale === 'fr' ? 'Carte des Emplacements Clients Purrify' : 'Purrify Client Locations Map'}
+            title={locale === 'fr' ? 'Carte des Magasins Détaillants Purrify' : 'Purrify Retail Store Locations Map'}
             className="rounded-lg"
           />
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {locale === 'fr'
-                ? '🗺️ Emplacements clients Purrify à travers le Canada - Montréal, Toronto, Vancouver et plus'
-                : '🗺️ Purrify client locations across Canada - Montreal, Toronto, Vancouver and more'
+                ? '🗺️ Magasins détaillants Purrify à travers le Canada - Montréal, Toronto, Vancouver et plus'
+                : '🗺️ Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more'
               }
             </p>
             <div className="flex flex-wrap justify-center gap-2 mt-2 text-xs text-gray-500 dark:text-gray-400">
