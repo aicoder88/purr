@@ -118,7 +118,7 @@ export default function TrialSizePage() {
         </Container>
 
         {/* Attention-Grabbing Headline */}
-        <section className="py-8 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/10 dark:to-orange-900/10 border-y border-red-200 dark:border-red-800">
+        <section className="py-8 bg-gradient-to-r from-red-50/80 to-orange-50/80 dark:from-red-950/30 dark:to-orange-950/30 border-y border-red-100 dark:border-red-900/50">
           <Container>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wide">
@@ -140,13 +140,13 @@ export default function TrialSizePage() {
         </section>
 
         {/* Hero Section with Product */}
-        <section className="py-16 bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+        <section className="py-16 bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 dark:from-gray-950 dark:via-slate-900 dark:to-gray-950">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               {/* Product Image - Properly Sized */}
               <div className="order-2 lg:order-1">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-purple-400/30 to-blue-400/30 dark:from-purple-600/20 dark:to-blue-600/20 rounded-3xl blur-2xl"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-electric-indigo-400/20 to-purple-400/20 dark:from-electric-indigo-600/10 dark:to-purple-600/10 rounded-3xl blur-2xl"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                     <Image
                       src="/optimized/20g.webp"
@@ -175,7 +175,7 @@ export default function TrialSizePage() {
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-                  Try the <span className="text-purple-600 dark:text-purple-400">"12g Miracle"</span> That's Transforming Litter Boxes Across Canada
+                  Try the <span className="text-electric-indigo-600 dark:text-electric-indigo-400">"12g Miracle"</span> That's Transforming Litter Boxes Across Canada
                 </h2>
 
                 <div className="flex items-center space-x-2 mb-4">
@@ -189,7 +189,7 @@ export default function TrialSizePage() {
 
                 <div className="bg-white dark:bg-gray-800 border-2 border-purple-200 dark:border-purple-800 rounded-xl p-6">
                   <div className="flex items-baseline gap-3 mb-3">
-                    <span className="text-4xl font-black text-purple-600 dark:text-purple-400">{trialPrice}</span>
+                    <span className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400">{trialPrice}</span>
                     <span className="text-gray-500 dark:text-gray-400 line-through text-xl">$14.99</span>
                     <span className="bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 px-2 py-1 rounded text-sm font-bold">
                       SAVE 67%
@@ -220,7 +220,7 @@ export default function TrialSizePage() {
 
                   <Button
                     size="lg"
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 dark:from-purple-500 dark:to-blue-500 dark:hover:from-purple-600 dark:hover:to-blue-600 text-white dark:text-gray-100 font-bold py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-electric-indigo-500/20 transition-all duration-300 transform hover:scale-[1.02]"
                   >
                     <ShoppingCart className="w-6 h-6 mr-2" />
                     YES! Send Me My Trial Now
@@ -312,7 +312,7 @@ export default function TrialSizePage() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10 p-6 rounded-xl border border-purple-200 dark:border-purple-800">
+                <div className="bg-gradient-to-br from-white to-indigo-50/50 dark:from-gray-800 dark:to-gray-800/50 p-6 rounded-xl border border-indigo-100 dark:border-indigo-900/50 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
@@ -325,7 +325,7 @@ export default function TrialSizePage() {
                   <p className="text-sm text-gray-600 dark:text-gray-400">Upgraded to Standard Size in 2 days</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 p-6 rounded-xl border border-green-200 dark:border-green-800">
+                <div className="bg-gradient-to-br from-white to-indigo-50/50 dark:from-gray-800 dark:to-gray-800/50 p-6 rounded-xl border border-indigo-100 dark:border-indigo-900/50 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
@@ -341,16 +341,16 @@ export default function TrialSizePage() {
 
               {/* Stats Bar */}
               <div className="grid grid-cols-3 gap-6 text-center">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-2 border-purple-200 dark:border-purple-800">
-                  <div className="text-4xl font-black text-purple-600 dark:text-purple-400 mb-2">87%</div>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
+                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">87%</div>
                   <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Upgrade to full-size within 7 days</p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-2 border-blue-200 dark:border-blue-800">
-                  <div className="text-4xl font-black text-blue-600 dark:text-blue-400 mb-2">60s</div>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
+                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">60s</div>
                   <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Average time to eliminate odor</p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-2 border-green-200 dark:border-green-800">
-                  <div className="text-4xl font-black text-green-600 dark:text-green-400 mb-2">1,127</div>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
+                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">1,127</div>
                   <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Happy trial users this month</p>
                 </div>
               </div>
@@ -359,7 +359,7 @@ export default function TrialSizePage() {
         </section>
 
         {/* How It Works - Simple & Clear */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10">
+        <section className="py-16 bg-gradient-to-br from-indigo-50/30 via-white to-purple-50/30 dark:from-indigo-950/20 dark:via-gray-950 dark:to-purple-950/20">
           <Container>
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-12">
@@ -368,7 +368,7 @@ export default function TrialSizePage() {
 
               <div className="space-y-8">
                 <div className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-purple-600 dark:bg-purple-500 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg">
+                  <div className="flex-shrink-0 w-12 h-12 bg-electric-indigo-400 dark:bg-electric-indigo-500 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg shadow-electric-indigo-500/20">
                     1
                   </div>
                   <div>
@@ -380,7 +380,7 @@ export default function TrialSizePage() {
                 </div>
 
                 <div className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg">
+                  <div className="flex-shrink-0 w-12 h-12 bg-electric-indigo-500 dark:bg-electric-indigo-600 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg shadow-electric-indigo-500/20">
                     2
                   </div>
                   <div>
@@ -392,7 +392,7 @@ export default function TrialSizePage() {
                 </div>
 
                 <div className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-600 dark:bg-green-500 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg">
+                  <div className="flex-shrink-0 w-12 h-12 bg-electric-indigo-600 dark:bg-electric-indigo-700 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg shadow-electric-indigo-500/20">
                     3
                   </div>
                   <div>
@@ -404,7 +404,7 @@ export default function TrialSizePage() {
                 </div>
               </div>
 
-              <div className="mt-12 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border-2 border-purple-300 dark:border-purple-700">
+              <div className="mt-12 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border-2 border-indigo-100 dark:border-indigo-900/50">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   "But what if it doesn't work for MY cat?"
                 </p>
@@ -413,7 +413,7 @@ export default function TrialSizePage() {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 dark:from-green-500 dark:to-emerald-500 dark:hover:from-green-600 dark:hover:to-emerald-600 text-white dark:text-gray-100 font-bold py-6 px-12 text-lg shadow-xl transform hover:scale-105 transition-all"
+                  className="bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-electric-indigo-500/20 transform hover:scale-[1.02] transition-all"
                 >
                   Try It Risk-Free Now
                 </Button>
@@ -423,7 +423,7 @@ export default function TrialSizePage() {
         </section>
 
         {/* Final CTA - Gary Bencivenga Style */}
-        <section className="py-20 bg-gradient-to-br from-purple-900 to-blue-900 dark:from-purple-950 dark:to-blue-950">
+        <section className="py-20 bg-gradient-to-br from-indigo-900 to-slate-900 dark:from-indigo-950 dark:to-slate-950">
           <Container>
             <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
               <h2 className="text-4xl md:text-5xl font-black mb-6">
@@ -477,7 +477,7 @@ export default function TrialSizePage() {
 
               <Button
                 size="lg"
-                className="bg-white text-purple-900 hover:bg-gray-100 dark:bg-gray-100 dark:text-purple-900 dark:hover:bg-white font-black py-8 px-16 text-2xl shadow-2xl transform hover:scale-110 transition-all duration-300 mb-6"
+                className="bg-white text-electric-indigo-700 hover:bg-indigo-50 dark:bg-electric-indigo-600 dark:text-white dark:hover:bg-electric-indigo-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 mb-6"
               >
                 YES! Send My Trial Now - Only {trialPrice}
               </Button>
@@ -494,7 +494,7 @@ export default function TrialSizePage() {
         </section>
 
         {/* Urgency Footer */}
-        <section className="py-8 bg-red-600 dark:bg-red-700">
+        <section className="py-8 bg-deep-coral-600 dark:bg-deep-coral-700">
           <Container>
             <div className="text-center text-white dark:text-gray-100">
               <p className="text-xl font-bold mb-2">
