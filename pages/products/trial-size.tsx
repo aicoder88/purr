@@ -34,10 +34,10 @@ export default function TrialSizePage() {
     zh: '适用于一只猫，大约可覆盖 7 天的猫砂使用量，可支撑 1-2 次全面换砂或一周日常维护。'
   } as const;
   // Trial size lifestyle images
-  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Person trying new product
-  const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat first time
-  const sectionImage2 = 'https://images.unsplash.com/photo-1573566116339-501594f44963?auto=format&fit=crop&w=1600&q=80'; // Happy customer with cat
-  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Success story
+  const heroImage = '/images/trial/hero-lifestyle.jpg'; // Person trying new product
+  const sectionImage1 = '/images/trial/curious-cat.jpg'; // Curious cat first time
+  const sectionImage2 = '/images/trial/happy-customer.jpg'; // Happy customer with cat
+  const solutionImage = '/images/trial/success-story.jpg'; // Success story
 
   const benefits = [
     "Perfect for testing with your cat",
@@ -55,7 +55,7 @@ export default function TrialSizePage() {
       petName: "Ziggy"
     },
     {
-      name: "Zara K., Plateau", 
+      name: "Zara K., Plateau",
       text: "My rescue cat Biscuit is super picky about litter changes, but with Purrify I can keep his box fresh way longer. The trial size was perfect to test it out first.",
       rating: 5,
       petName: "Biscuit"
@@ -402,14 +402,14 @@ export default function TrialSizePage() {
 
                 {/* CTA Buttons */}
                 <div className="space-y-4">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Buy Trial Size Now
                   </Button>
-                  
+
                   <div className="flex space-x-3">
                     <Button variant="outline" size="lg" className="flex-1">
                       <Heart className="w-5 h-5 mr-2" />
@@ -483,7 +483,7 @@ export default function TrialSizePage() {
                   Get your 12g trial size delivered to your door
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">2</span>
@@ -493,7 +493,7 @@ export default function TrialSizePage() {
                   Use for one complete litter box change and see the difference
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">3</span>
@@ -674,7 +674,7 @@ export default function TrialSizePage() {
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
                 <Button className="w-full">View Regular Size</Button>
               </div>
-              
+
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Large Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value for multiple cats</p>
@@ -704,26 +704,26 @@ export default function TrialSizePage() {
           </Container>
         </section>
 
-      {/* Back to Products */}
-      <section className="py-8 cv-auto cis-480">
-        <Container>
-          <div className="text-center">
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-              <Button variant="outline" size="lg">
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                Back to All Products
-              </Button>
-            </Link>
-          </div>
-        </Container>
-      </section>
+        {/* Back to Products */}
+        <section className="py-8 cv-auto cis-480">
+          <Container>
+            <div className="text-center">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+                <Button variant="outline" size="lg">
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Back to All Products
+                </Button>
+              </Link>
+            </div>
+          </Container>
+        </section>
 
-      {/* Related Articles */}
-      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
-        <Container>
-          <RelatedArticles currentPath="/products/trial-size" />
-        </Container>
-      </section>
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedArticles currentPath="/products/trial-size" />
+          </Container>
+        </section>
       </main>
     </>
   );
