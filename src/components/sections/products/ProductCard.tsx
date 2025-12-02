@@ -6,6 +6,7 @@ import { createButtonClasses, GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme
 import { LoadingSpinner, CheckIcon, createStaggeredAnimation } from "@/lib/component-utils";
 import { ecommerceEvents } from '../../../lib/gtm-events';
 import { TranslationType } from '../../../translations/types';
+import { getPaymentLink } from '../../../lib/payment-links';
 
 interface Product {
   id: string;
@@ -22,7 +23,7 @@ interface ProductCardProps {
   isVisible: boolean;
   addingToCart: string | null;
   addedToCart: string | null;
-  quantities: {[key: string]: number};
+  quantities: { [key: string]: number };
   cartQuantity: number;
   t: TranslationType;
   onAddToCart: (product: Product) => void;
@@ -182,7 +183,7 @@ export const ProductCard = ({
 
           {product.id === "purrify-12g" ? (
             <a
-              href="https://buy.stripe.com/5kQ3cw7uEeak1LkcbT5gc04"
+              href={getPaymentLink('trialSingle') || "https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07"}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
@@ -199,11 +200,10 @@ export const ProductCard = ({
               />
 
               <Button
-                className={`w-full font-bold shadow-lg hover:shadow-xl ${TRANSITIONS.default} border-0 ${
-                  isAdded
-                    ? 'bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100'
-                    : createButtonClasses('primary')
-                }`}
+                className={`w-full font-bold shadow-lg hover:shadow-xl ${TRANSITIONS.default} border-0 ${isAdded
+                  ? 'bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100'
+                  : createButtonClasses('primary')
+                  }`}
                 onClick={() => onAddToCart(product)}
                 disabled={isAdding || isAdded}
               >
