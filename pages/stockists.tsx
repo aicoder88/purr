@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import Image from 'next/image';
 import { GetStaticProps } from 'next';
 import { useTranslation } from '../src/lib/translation-context';
 import { MapPin, Phone, Globe, Star, Search, Navigation } from 'lucide-react';
@@ -310,6 +311,15 @@ export default function Stockists() {
       <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
         {/* Hero Section */}
         <section className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/optimized/purrify-logo-text.webp"
+              alt="Purrify Logo"
+              width={180}
+              height={60}
+              className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:invert dark:brightness-110 dark:contrast-125"
+            />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {locale === 'fr'
               ? 'Trouvez un Détaillant Purrify Près de Chez Vous'
