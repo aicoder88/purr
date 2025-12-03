@@ -67,7 +67,14 @@ export function Footer() {
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={70}
                       height={24}
-                      className="h-full w-auto filter drop-shadow-sm transition-all duration-300"
+                      className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
+                    />
+                    <Image
+                      src="/purrify-dark-mode-logo.png"
+                      alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
+                      width={70}
+                      height={24}
+                      className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
                     />
                   </div>
                 </Link>

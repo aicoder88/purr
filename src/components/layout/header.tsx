@@ -303,7 +303,14 @@ export function Header() {
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}
-                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300"
+                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
+              />
+              <Image
+                src="/purrify-dark-mode-logo.png"
+                alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
+                width={120}
+                height={40}
+                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
             </Link>
           </div>
@@ -350,8 +357,8 @@ export function Header() {
                                       key={province.code}
                                       type="button"
                                       className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${isActive
-                                          ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
-                                          : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
+                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                                         }`}
                                       onMouseEnter={() => handleProvinceHighlight(province.code)}
                                       onFocus={() => handleProvinceHighlight(province.code)}
@@ -362,8 +369,8 @@ export function Header() {
                                       <span className="truncate font-medium">{province.name}</span>
                                       <ChevronRight
                                         className={`h-4 w-4 shrink-0 ${isActive
-                                            ? 'text-[#FF3131] dark:text-[#FF5050]'
-                                            : 'text-gray-400 dark:text-gray-500'
+                                          ? 'text-[#FF3131] dark:text-[#FF5050]'
+                                          : 'text-gray-400 dark:text-gray-500'
                                           }`}
                                       />
                                     </button>
