@@ -131,7 +131,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               <meta name="referrer" content="origin-when-cross-origin" />
 
               {/* Favicon and App Icons */}
-              <link rel="icon" href="/favicon-adaptive.svg" type="image/svg+xml" />
               <link rel="icon" href="/images/favicon.png" type="image/png" />
               <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
               <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
