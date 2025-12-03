@@ -35,7 +35,7 @@ export function Header() {
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
   const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
   const [hoveredProvinceCode, setHoveredProvinceCode] = useState<string | null>(null);
-  const { t, locale} = useTranslation();
+  const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
   const handleProvinceHighlight = useCallback((provinceCode: string) => {
@@ -303,7 +303,7 @@ export function Header() {
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}
-                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 dark:invert dark:brightness-110 dark:contrast-125"
+                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300"
               />
             </Link>
           </div>
@@ -333,108 +333,106 @@ export function Header() {
                       (item.id === 'learn' && isLearnDropdownOpen) ||
                       (item.id === 'solutions' && isSolutionsDropdownOpen) ||
                       (item.id === 'locations' && isLocationsDropdownOpen)) && (
-                      <div
-                        className={`absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 ${item.id === 'locations' ? 'min-w-[560px] p-3' : 'w-64 max-h-96 overflow-y-auto p-2'}`}
-                        role="menu"
-                        aria-labelledby={`dropdown-${item.id}`}
-                        data-dropdown
-                      >
-                        {item.id === 'locations' ? (
-                          // Two-column layout so province hover reveals city list without clipping
-                          <div className="flex gap-3">
-                            <div className="w-60 max-h-96 overflow-y-auto pr-1 border-r border-gray-200 dark:border-gray-700 space-y-1">
-                              {locationsByProvince.map((province) => {
-                                const isActive = hoveredProvinceCode === province.code;
-                                return (
-                                  <button
-                                    key={province.code}
-                                    type="button"
-                                    className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${
-                                      isActive
-                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
-                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
-                                    }`}
-                                    onMouseEnter={() => handleProvinceHighlight(province.code)}
-                                    onFocus={() => handleProvinceHighlight(province.code)}
-                                    onClick={() => handleProvinceHighlight(province.code)}
-                                    aria-haspopup="true"
-                                    aria-expanded={isActive}
-                                  >
-                                    <span className="truncate font-medium">{province.name}</span>
-                                    <ChevronRight
-                                      className={`h-4 w-4 shrink-0 ${
-                                        isActive
-                                          ? 'text-[#FF3131] dark:text-[#FF5050]'
-                                          : 'text-gray-400 dark:text-gray-500'
-                                      }`}
-                                    />
-                                  </button>
-                                );
-                              })}
+                        <div
+                          className={`absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 ${item.id === 'locations' ? 'min-w-[560px] p-3' : 'w-64 max-h-96 overflow-y-auto p-2'}`}
+                          role="menu"
+                          aria-labelledby={`dropdown-${item.id}`}
+                          data-dropdown
+                        >
+                          {item.id === 'locations' ? (
+                            // Two-column layout so province hover reveals city list without clipping
+                            <div className="flex gap-3">
+                              <div className="w-60 max-h-96 overflow-y-auto pr-1 border-r border-gray-200 dark:border-gray-700 space-y-1">
+                                {locationsByProvince.map((province) => {
+                                  const isActive = hoveredProvinceCode === province.code;
+                                  return (
+                                    <button
+                                      key={province.code}
+                                      type="button"
+                                      className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${isActive
+                                          ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
+                                          : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                                        }`}
+                                      onMouseEnter={() => handleProvinceHighlight(province.code)}
+                                      onFocus={() => handleProvinceHighlight(province.code)}
+                                      onClick={() => handleProvinceHighlight(province.code)}
+                                      aria-haspopup="true"
+                                      aria-expanded={isActive}
+                                    >
+                                      <span className="truncate font-medium">{province.name}</span>
+                                      <ChevronRight
+                                        className={`h-4 w-4 shrink-0 ${isActive
+                                            ? 'text-[#FF3131] dark:text-[#FF5050]'
+                                            : 'text-gray-400 dark:text-gray-500'
+                                          }`}
+                                      />
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                              <div className="w-64 max-h-96 overflow-y-auto pl-1">
+                                <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                  {provinceHeadingText}
+                                </div>
+                                <div className="mt-1 space-y-1">
+                                  {hoveredProvince ? (
+                                    <>
+                                      {provinceGuideLinkText && (
+                                        <Link
+                                          href={buildLocalizedPath(`/locations/province/${hoveredProvince.slug}`)}
+                                          className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                          onClick={(event) => handleProvinceLinkClick(event, hoveredProvince.slug)}
+                                        >
+                                          {provinceGuideLinkText}
+                                        </Link>
+                                      )}
+                                      {provinceGuideLinkText && (
+                                        <div className="mx-3 h-px bg-gray-200 dark:bg-gray-700" aria-hidden="true" />
+                                      )}
+                                      {hoveredProvince.cities.map((city) => (
+                                        <Link
+                                          key={city.slug}
+                                          href={buildLocalizedPath(`/locations/${city.slug}`)}
+                                          className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                          role="menuitem"
+                                          onClick={(event) => handleCityClick(event, city.slug)}
+                                        >
+                                          {city.name}
+                                        </Link>
+                                      ))}
+                                    </>
+                                  ) : (
+                                    <p className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+                                      {hoverPromptText}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
                             </div>
-                            <div className="w-64 max-h-96 overflow-y-auto pl-1">
-                              <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                {provinceHeadingText}
-                              </div>
-                              <div className="mt-1 space-y-1">
-                                {hoveredProvince ? (
-                                  <>
-                                    {provinceGuideLinkText && (
-                                      <Link
-                                        href={buildLocalizedPath(`/locations/province/${hoveredProvince.slug}`)}
-                                        className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
-                                        onClick={(event) => handleProvinceLinkClick(event, hoveredProvince.slug)}
-                                      >
-                                        {provinceGuideLinkText}
-                                      </Link>
-                                    )}
-                                    {provinceGuideLinkText && (
-                                      <div className="mx-3 h-px bg-gray-200 dark:bg-gray-700" aria-hidden="true" />
-                                    )}
-                                    {hoveredProvince.cities.map((city) => (
-                                      <Link
-                                        key={city.slug}
-                                        href={buildLocalizedPath(`/locations/${city.slug}`)}
-                                        className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
-                                        role="menuitem"
-                                        onClick={(event) => handleCityClick(event, city.slug)}
-                                      >
-                                        {city.name}
-                                      </Link>
-                                    ))}
-                                  </>
-                                ) : (
-                                  <p className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
-                                    {hoverPromptText}
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          // Regular dropdown for other menus
-                          item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                            dropdownItem.isGroupHeader ? (
-                              <div
-                                key={dropdownIndex}
-                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                              >
-                                {dropdownItem.label}
-                              </div>
-                            ) : (
-                              <Link
-                                key={dropdownIndex}
-                                href={dropdownItem.href}
-                                className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
-                                role="menuitem"
-                              >
-                                {dropdownItem.label}
-                              </Link>
-                            )
-                          ))
-                        )}
-                      </div>
-                    )}
+                          ) : (
+                            // Regular dropdown for other menus
+                            item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                              dropdownItem.isGroupHeader ? (
+                                <div
+                                  key={dropdownIndex}
+                                  className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                                >
+                                  {dropdownItem.label}
+                                </div>
+                              ) : (
+                                <Link
+                                  key={dropdownIndex}
+                                  href={dropdownItem.href}
+                                  className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
+                                  role="menuitem"
+                                >
+                                  {dropdownItem.label}
+                                </Link>
+                              )
+                            ))
+                          )}
+                        </div>
+                      )}
                   </>
                 ) : (
                   <Link
@@ -545,7 +543,7 @@ export function Header() {
                   )}
                 </div>
               ))}
-              
+
               {/* Quick Actions */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <Button
