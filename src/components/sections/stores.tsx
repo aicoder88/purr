@@ -166,6 +166,14 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     url: "https://www.kandkpetfoods.ca/",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
   },
+  {
+    name: "Viva Pets",
+    location: "Montreal, QC",
+    address: "Montreal, QC",
+    phone: "",
+    url: "https://www.vivapets.ca/",
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
+  },
 ];
 
 /**
@@ -290,6 +298,15 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  if (storeName.includes('Viva Pets')) {
+    return {
+      src: "/viva.avif",
+      alt: "Viva Pets - Premium Pet Products & Supplies Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
@@ -306,7 +323,8 @@ const hasWhiteBackground = (storeName: string) => {
     storeName.includes('Animalerie Lamifidel') ||
     storeName.includes('Animalerie Petmobile') ||
     storeName.includes('Animalerie Club Wouf Miaou') ||
-    storeName.includes('K&K Pet Foods');
+    storeName.includes('K&K Pet Foods') ||
+    storeName.includes('Viva Pets');
 };
 
 // Component to handle logo display with fallback
