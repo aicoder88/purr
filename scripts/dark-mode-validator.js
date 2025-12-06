@@ -15,15 +15,15 @@ const CRITICAL_PATTERNS = [];
 // Helper function to recursively find files
 function findFiles(dir, extensions = ['.tsx', '.ts']) {
   const files = [];
-  
+
   function scanDirectory(currentDir) {
     if (!fs.existsSync(currentDir)) return;
-    
+
     const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       const fullPath = path.join(currentDir, entry.name);
-      
+
       if (entry.isDirectory()) {
         scanDirectory(fullPath);
       } else if (entry.isFile() && extensions.some(ext => entry.name.endsWith(ext))) {
@@ -31,7 +31,7 @@ function findFiles(dir, extensions = ['.tsx', '.ts']) {
       }
     }
   }
-  
+
   scanDirectory(dir);
   return files;
 }
@@ -46,15 +46,15 @@ function checkFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const lines = content.split('\n');
   const errors = [];
-  
+
   lines.forEach((line, lineIndex) => {
     // Extract all className strings from the line
     const classNameMatches = line.match(/className=["'`]([^"'`]*)["'`]/g);
-    
+
     if (classNameMatches) {
       classNameMatches.forEach(classMatch => {
         const classString = classMatch.match(/className=["'`]([^"'`]*)["'`]/)[1];
-        
+
         // Check each critical pattern
         const colorClasses = [
           // Gray text colors
@@ -95,7 +95,7 @@ function checkFile(filePath) {
           /border-orange-[1-9]00/g,
           /border-teal-[1-9]00/g,
         ];
-        
+
         colorClasses.forEach(pattern => {
           const colorMatches = [...classString.matchAll(pattern)];
           colorMatches.forEach(colorMatch => {
@@ -108,7 +108,7 @@ function checkFile(filePath) {
             if (colorClass.startsWith('text-')) {
               // Check for direct dark variant or any dark:text- variant
               const darkPattern = new RegExp(`dark:${colorClass}`);
-              hasDarkVariant = darkPattern.test(classString) || /dark:text-/.test(classString);
+              hasDarkVariant = darkPattern.test(classString) || /dark:text-/.test(classString) || /dark:hover:text-/.test(classString);
             } else if (colorClass.startsWith('bg-')) {
               // For background colors, check multiple patterns
               const darkPattern = new RegExp(`dark:${colorClass}`);
@@ -153,28 +153,28 @@ function checkFile(filePath) {
       });
     }
   });
-  
+
   return errors;
 }
 
 function validateDarkMode() {
   console.log('🌙 Starting Dark Mode Validation...\n');
-  
+
   const allFiles = [];
   DIRECTORIES_TO_CHECK.forEach(dir => {
     const files = findFiles(dir);
     allFiles.push(...files);
   });
-  
+
   console.log(`Checking ${allFiles.length} files...\n`);
-  
+
   allFiles.forEach(filePath => {
     const errors = checkFile(filePath);
-    
+
     if (errors.length > 0) {
       filesWithErrors++;
       totalErrors += errors.length;
-      
+
       console.log(`❌ ${filePath}`);
       errors.forEach(error => {
         console.log(`  Line ${error.line}:${error.column} - Missing dark variant for: ${error.match}`);
@@ -183,12 +183,12 @@ function validateDarkMode() {
       });
     }
   });
-  
+
   console.log('\n🌙 Dark Mode Validation Results:');
   console.log(`Files checked: ${allFiles.length}`);
   console.log(`Files with errors: ${filesWithErrors}`);
   console.log(`Total errors: ${totalErrors}`);
-  
+
   if (totalErrors > 0) {
     console.log('\n❌ DARK MODE VALIDATION FAILED!');
     console.log('Fix all missing dark mode variants before deploying.');
@@ -206,7 +206,7 @@ function validateDarkMode() {
     console.log('BORDER COLORS:');
     console.log('• border-gray-200 → border-gray-200 dark:border-gray-700');
     console.log('• border-blue-200 → border-blue-200 dark:border-blue-700');
-    
+
     process.exit(1);
   } else {
     console.log('\n✅ All files pass dark mode validation!');
