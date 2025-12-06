@@ -37,8 +37,7 @@ const requiredDirs = [
   'content/revisions',
   'logs/audit',
   'logs/webhooks',
-  'logs/errors',
-  'public/optimized/blog'
+  'logs/errors'
 ];
 
 const jsonFiles = [
@@ -50,17 +49,17 @@ const jsonFiles = [
 async function checkDirectories() {
   const details = [];
   let allOk = true;
-  
+
   for (const dir of requiredDirs) {
     try {
       await fs.access(dir);
-      
+
       // Test write permission
       const testFile = path.join(dir, '.health-check');
       try {
         await fs.writeFile(testFile, 'test');
         await fs.unlink(testFile);
-        
+
         details.push({
           path: dir,
           exists: true,
@@ -83,7 +82,7 @@ async function checkDirectories() {
       allOk = false;
     }
   }
-  
+
   return {
     status: allOk ? 'ok' : 'error',
     details
@@ -93,18 +92,18 @@ async function checkDirectories() {
 async function checkFileOperations() {
   const testFile = 'content/.health-check';
   const testContent = 'health-check-' + Date.now();
-  
+
   try {
     // Write
     await fs.writeFile(testFile, testContent);
-    
+
     // Read
     const content = await fs.readFile(testFile, 'utf-8');
     const readOk = content === testContent;
-    
+
     // Delete
     await fs.unlink(testFile);
-    
+
     return {
       status: readOk ? 'ok' : 'error',
       write: true,
@@ -115,8 +114,8 @@ async function checkFileOperations() {
     // Clean up
     try {
       await fs.unlink(testFile);
-    } catch {}
-    
+    } catch { }
+
     return {
       status: 'error',
       write: false,
@@ -129,12 +128,12 @@ async function checkFileOperations() {
 async function checkJSONFiles() {
   const details = [];
   let allOk = true;
-  
+
   for (const file of jsonFiles) {
     try {
       const content = await fs.readFile(file, 'utf-8');
       JSON.parse(content);
-      
+
       details.push({
         path: file,
         valid: true
@@ -155,7 +154,7 @@ async function checkJSONFiles() {
       }
     }
   }
-  
+
   return {
     status: allOk ? 'ok' : 'error',
     details
@@ -172,12 +171,12 @@ export default async function handler(
       checkFileOperations(),
       checkJSONFiles()
     ]);
-    
-    const allHealthy = 
+
+    const allHealthy =
       directories.status === 'ok' &&
       fileOperations.status === 'ok' &&
       jsonFiles.status === 'ok';
-    
+
     const response: StorageHealthCheck = {
       status: allHealthy ? 'healthy' : 'unhealthy',
       timestamp: new Date().toISOString(),
@@ -187,7 +186,7 @@ export default async function handler(
         jsonFiles: jsonFiles as any
       }
     };
-    
+
     res.status(allHealthy ? 200 : 503).json(response);
   } catch (error) {
     res.status(500).json({
