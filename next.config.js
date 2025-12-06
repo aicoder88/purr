@@ -219,7 +219,6 @@ const nextConfig = {
     emotion: false,
   },
   typescript: {
-    ignoreBuildErrors: process.env.CI === 'true' || process.env.VERCEL === '1',
     tsconfigPath: './tsconfig.json',
   },
   distDir: '.next',

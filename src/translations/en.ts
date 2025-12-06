@@ -1,4 +1,3 @@
-import { FEATURE_DESCRIPTIONS } from './common';
 import { CONTACT_INFO } from '../lib/constants';
 
 export const en = {

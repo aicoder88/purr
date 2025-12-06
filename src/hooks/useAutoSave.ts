@@ -7,7 +7,7 @@ interface UseAutoSaveOptions {
   localStorageKey?: string;
 }
 
-export function useAutoSave({
+export function useAutoSave<T = unknown>({
   onSave,
   delay = 30000, // 30 seconds default
   localStorageKey
@@ -22,7 +22,7 @@ export function useAutoSave({
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const savedIndicatorTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  const updateStatus = (status: AutoSaveStatus, error: string | null = null) => {
+  const updateStatus = useCallback((status: AutoSaveStatus, error: string | null = null) => {
     setState(prev => ({
       ...prev,
       status,
@@ -43,7 +43,7 @@ export function useAutoSave({
         }));
       }, 3000);
     }
-  };
+  }, []);
 
   const performSave = useCallback(async () => {
     try {
@@ -79,7 +79,7 @@ export function useAutoSave({
     await performSave();
   }, [performSave]);
 
-  const saveToLocalStorage = useCallback((data: any) => {
+  const saveToLocalStorage = useCallback((data: T) => {
     if (localStorageKey) {
       try {
         localStorage.setItem(localStorageKey, JSON.stringify({
@@ -92,7 +92,7 @@ export function useAutoSave({
     }
   }, [localStorageKey]);
 
-  const loadFromLocalStorage = useCallback((): any | null => {
+  const loadFromLocalStorage = useCallback((): T | null => {
     if (localStorageKey) {
       try {
         const stored = localStorage.getItem(localStorageKey);

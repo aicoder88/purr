@@ -20,7 +20,7 @@ export async function requireAuth(
     return { authorized: false, session: null };
   }
 
-  const userRole = (session.user as any).role;
+  const userRole = (session.user as { role?: string }).role || '';
   if (!allowedRoles.includes(userRole)) {
     return { authorized: false, session };
   }

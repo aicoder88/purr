@@ -49,7 +49,7 @@ export class AnalyticsService {
   /**
    * Get analytics for a specific post
    */
-  async getPostAnalytics(slug: string, dateRange: DateRange): Promise<PostAnalytics | null> {
+  async getPostAnalytics(slug: string, _dateRange: DateRange): Promise<PostAnalytics | null> {
     try {
       // Try to load from cache first
       const cached = await this.loadCachedAnalytics(slug);
@@ -93,16 +93,16 @@ export class AnalyticsService {
   /**
    * Get dashboard metrics
    */
-  async getDashboardMetrics(dateRange: DateRange): Promise<DashboardMetrics> {
+  async getDashboardMetrics(_dateRange: DateRange): Promise<DashboardMetrics> {
     try {
       const posts = await this.contentStore.getAllPosts('en', false);
-      
+
       // Calculate metrics
       const totalViews = Math.floor(Math.random() * 10000) + 5000;
       const totalPosts = posts.length;
-      
+
       // Calculate average SEO score
-      const avgSEOScore = posts.reduce((sum, post) => {
+      const avgSEOScore = posts.reduce((sum, _post) => {
         // Mock SEO score calculation
         return sum + (Math.random() * 30 + 70);
       }, 0) / posts.length;
