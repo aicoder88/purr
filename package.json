@@ -2,6 +2,7 @@
   "name": "purrify",
   "private": true,
   "version": "0.1.0",
+  "buildCacheBuster": "2024-12-06-01",
   "engines": {
     "node": "22.x"
   },
