@@ -216,7 +216,7 @@ Email Day 30: "Don't run out!" + urgency
 - ✅ Vercel (hosting, CDN)
 
 ### Recommended Additions
-- [ ] Klaviyo/Mailchimp (email marketing automation)
+- [ ] Mailchimp (email marketing automation)
 - [ ] Yotpo/Judge.me (reviews + UGC)
 - [ ] Rebuy/Bold (upsells, cross-sells)
 - [ ] Smile.io (loyalty program)
