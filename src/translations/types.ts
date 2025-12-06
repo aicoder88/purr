@@ -1157,4 +1157,43 @@ export interface TranslationType {
     };
     iframeTitle: string;
   };
+
+  // Upsell Page
+  upsell?: {
+    pageTitle: string;
+    metaDescription: string;
+    offerExpired: string;
+    offerExpiresIn: string;
+    headline: string;
+    subheadline: string;
+    saveBadge: string;
+    productTitle: string;
+    productSubtitle: string;
+    youSave: string;
+    benefit1: string;
+    benefit2: string;
+    benefit3: string;
+    benefit4: string;
+    benefit5: string;
+    processing: string;
+    addToOrder: string;
+    noThanks: string;
+    feature1Title: string;
+    feature1Description: string;
+    feature2Title: string;
+    feature2Description: string;
+    feature3Title: string;
+    feature3Description: string;
+    testimonialText: string;
+    testimonialAuthor: string;
+    faqTitle: string;
+    faq1Question: string;
+    faq1Answer: string;
+    faq2Question: string;
+    faq2Answer: string;
+    faq3Question: string;
+    faq3Answer: string;
+    bottomNote: string;
+    returnHome: string;
+  };
 }

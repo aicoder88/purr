@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function StandardSizePage() {
@@ -267,7 +267,9 @@ export default function StandardSizePage() {
                     "item": canonicalUrl
                   }
                 ]
-              }
+              },
+              // FAQ Schema for product page
+              generateFAQSchema(locale)
             ]
           })
         }}

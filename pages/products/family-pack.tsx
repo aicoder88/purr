@@ -6,7 +6,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
@@ -93,6 +93,14 @@ export default function FamilyPackPage() {
               type: 'image/jpeg'
             }
           ]
+        }}
+      />
+
+      {/* FAQ Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateFAQSchema(locale))
         }}
       />
 

@@ -1392,5 +1392,44 @@ export const zh = {
   scrollingBar: {
     freeShipping: "订阅订单免运费",
     madeInCanada: "加拿大制造，采用国内外优质原料"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "特别一次性优惠 - Purrify",
+    metaDescription: "新客户专属一次性优惠。季度自动订购可节省25%。",
+    offerExpired: "优惠已过期",
+    offerExpiresIn: "优惠将在以下时间后过期",
+    headline: "等等！独家一次性优惠",
+    subheadline: "添加自动订购，立省25%",
+    saveBadge: "节省29%",
+    productTitle: "Purrify 50g 自动订购",
+    productSubtitle: "3个月供应（3 × 50g 袋装）",
+    youSave: "您节省",
+    benefit1: "永不缺货 - 每3个月自动配送",
+    benefit2: "包含免费送货（节省$7.99）",
+    benefit3: "永久锁定此特惠价格",
+    benefit4: "随时取消或跳过（无需承诺）",
+    benefit5: "每次发货前自动提醒",
+    processing: "处理中...",
+    addToOrder: "是的！添加到我的订单",
+    noThanks: "不用了，我宁愿以后支付全价",
+    feature1Title: "即时激活",
+    feature1Description: "您的自动订购在此订单后立即开始",
+    feature2Title: "100%满意",
+    feature2Description: "每次发货均享30天退款保证",
+    feature3Title: "灵活控制",
+    feature3Description: "随时在线跳过、暂停或取消",
+    testimonialText: "我差点跳过自动订购优惠，但我很高兴我没有这样做！少了一件要记住的事情，节省的费用也会累积。而且，我永远不会在最需要的时候用完。",
+    testimonialAuthor: "— Sarah M., 多伦多",
+    faqTitle: "常见问题",
+    faq1Question: "我可以随时取消吗？",
+    faq1Answer: "当然可以！随时从您的账户仪表板取消、跳过或修改订阅。无需费用，无需麻烦。",
+    faq2Question: "我什么时候会被收费？",
+    faq2Answer: "您今天将为此特别优惠付费。您的下一次发货将在3个月后，您将在7天前收到提醒电子邮件。",
+    faq3Question: "价格是锁定的吗？",
+    faq3Answer: "是的！只要您继续订阅，此特惠价格就会锁定。您永远不会支付超过此价格。",
+    bottomNote: "此一次性优惠仅在您首次购买后立即可用",
+    returnHome: "返回首页"
   }
 };

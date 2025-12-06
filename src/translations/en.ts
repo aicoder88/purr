@@ -1480,5 +1480,44 @@ export const en = {
       ottawa: "Ottawa"
     },
     iframeTitle: "Purrify Retail Store Locations Map"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "Special One-Time Offer - Purrify",
+    metaDescription: "Exclusive one-time offer for new customers. Save 25% on quarterly autoship subscription.",
+    offerExpired: "Offer Expired",
+    offerExpiresIn: "Offer expires in",
+    headline: "Wait! One-Time Exclusive Offer",
+    subheadline: "Add autoship to your order and save 25%",
+    saveBadge: "SAVE 29%",
+    productTitle: "Purrify 50g Autoship",
+    productSubtitle: "3-Month Supply (3 × 50g bags)",
+    youSave: "You save",
+    benefit1: "Never run out - delivered every 3 months",
+    benefit2: "Free shipping included (save $7.99)",
+    benefit3: "Lock in this special price forever",
+    benefit4: "Cancel or skip anytime (no commitments)",
+    benefit5: "Automatic reminders before each shipment",
+    processing: "Processing...",
+    addToOrder: "Yes! Add to My Order",
+    noThanks: "No thanks, I prefer to pay full price later",
+    feature1Title: "Instant Activation",
+    feature1Description: "Your autoship starts immediately after this order",
+    feature2Title: "100% Satisfaction",
+    feature2Description: "30-day money-back guarantee on every shipment",
+    feature3Title: "Flexible Control",
+    feature3Description: "Skip, pause, or cancel online anytime",
+    testimonialText: "I almost skipped the autoship offer, but I'm so glad I didn't! It's one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.",
+    testimonialAuthor: "— Sarah M., Toronto",
+    faqTitle: "Common Questions",
+    faq1Question: "Can I cancel anytime?",
+    faq1Answer: "Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.",
+    faq2Question: "When will I be charged?",
+    faq2Answer: "You'll be charged today for this special offer. Your next shipment will be in 3 months, and you'll receive a reminder email 7 days before.",
+    faq3Question: "Is the price locked in?",
+    faq3Answer: "Yes! This special price is locked in for as long as you remain subscribed. You'll never pay more than this rate.",
+    bottomNote: "This one-time offer is only available immediately after your first purchase",
+    returnHome: "Return to homepage"
   }
 };

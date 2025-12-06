@@ -1416,5 +1416,44 @@ export const fr = {
       ottawa: "Ottawa"
     },
     iframeTitle: "Carte des Magasins Détaillants Purrify"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "Offre Spéciale Unique - Purrify",
+    metaDescription: "Offre unique exclusive pour les nouveaux clients. Économisez 25% sur l'abonnement trimestriel automatique.",
+    offerExpired: "Offre Expirée",
+    offerExpiresIn: "L'offre expire dans",
+    headline: "Attendez! Offre Exclusive Unique",
+    subheadline: "Ajoutez l'abonnement automatique et économisez 25%",
+    saveBadge: "ÉCONOMISEZ 29%",
+    productTitle: "Purrify 50g Abonnement Automatique",
+    productSubtitle: "Approvisionnement de 3 Mois (3 × 50g sachets)",
+    youSave: "Vous économisez",
+    benefit1: "Ne manquez jamais - livré tous les 3 mois",
+    benefit2: "Livraison gratuite incluse (économisez 7,99 $)",
+    benefit3: "Verrouillez ce prix spécial pour toujours",
+    benefit4: "Annulez ou sautez à tout moment (sans engagement)",
+    benefit5: "Rappels automatiques avant chaque expédition",
+    processing: "Traitement en cours...",
+    addToOrder: "Oui! Ajouter à Ma Commande",
+    noThanks: "Non merci, je préfère payer le prix plein plus tard",
+    feature1Title: "Activation Instantanée",
+    feature1Description: "Votre abonnement automatique commence immédiatement après cette commande",
+    feature2Title: "100% Satisfaction",
+    feature2Description: "Garantie de remboursement de 30 jours sur chaque expédition",
+    feature3Title: "Contrôle Flexible",
+    feature3Description: "Sautez, suspendez ou annulez en ligne à tout moment",
+    testimonialText: "J'ai failli sauter l'offre d'abonnement automatique, mais je suis si content de ne pas l'avoir fait! C'est une chose de moins à retenir, et les économies s'accumulent. De plus, je ne manque jamais quand j'en ai le plus besoin.",
+    testimonialAuthor: "— Sarah M., Toronto",
+    faqTitle: "Questions Courantes",
+    faq1Question: "Puis-je annuler à tout moment?",
+    faq1Answer: "Absolument! Annulez, sautez ou modifiez votre abonnement à tout moment depuis votre tableau de bord. Pas de frais, pas de tracas.",
+    faq2Question: "Quand serai-je facturé?",
+    faq2Answer: "Vous serez facturé aujourd'hui pour cette offre spéciale. Votre prochaine expédition sera dans 3 mois, et vous recevrez un email de rappel 7 jours avant.",
+    faq3Question: "Le prix est-il verrouillé?",
+    faq3Answer: "Oui! Ce prix spécial est verrouillé tant que vous restez abonné. Vous ne paierez jamais plus que ce tarif.",
+    bottomNote: "Cette offre unique n'est disponible qu'immédiatement après votre premier achat",
+    returnHome: "Retour à l'accueil"
   }
 };

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Container } from '../src/components/ui/container';
 import { Twitter, Facebook } from 'lucide-react';
 import Image from 'next/image';
@@ -5,6 +7,62 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 const ThankYouPage = () => {
+  const router = useRouter();
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  useEffect(() => {
+    // Check if this is a non-subscription order and should show upsell
+    const showUpsell = () => {
+      const { session_id, product } = router.query;
+
+      // Don't show upsell if:
+      // 1. No session_id (direct page access)
+      // 2. Product is already an autoship/subscription
+      // 3. User explicitly declined upsell (skip_upsell param)
+      if (!session_id || router.query.skip_upsell === 'true') {
+        return false;
+      }
+
+      // Check if product is a subscription (contains 'autoship' in product ID)
+      if (product && typeof product === 'string' && product.includes('autoship')) {
+        return false;
+      }
+
+      // Check localStorage to see if user has already seen upsell in this session
+      const upsellShown = sessionStorage.getItem('upsell_shown');
+      if (upsellShown === 'true') {
+        return false;
+      }
+
+      return true;
+    };
+
+    // Redirect to upsell page if conditions are met
+    if (showUpsell() && !isRedirecting) {
+      setIsRedirecting(true);
+
+      // Track that we're showing the upsell
+      sessionStorage.setItem('upsell_shown', 'true');
+
+      // Analytics tracking - upsell page impression
+      if (typeof window !== 'undefined') {
+        const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+        if (gtag) {
+          gtag('event', 'upsell_page_view', {
+            event_category: 'ecommerce',
+            event_label: 'post_purchase_upsell',
+            value: 1
+          });
+        }
+      }
+
+      // Redirect after a brief delay to show confirmation
+      setTimeout(() => {
+        router.push('/thank-you/upsell');
+      }, 2000);
+    }
+  }, [router, isRedirecting]);
+
   return (
     <>
       <Head>
