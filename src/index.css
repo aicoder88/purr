@@ -83,7 +83,7 @@
     @apply bg-background text-foreground transition-colors duration-300;
     overflow-x: hidden;
     touch-action: manipulation;
-    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--font-nunito), var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   }
 
   h1,
@@ -92,7 +92,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-outfit), var(--font-inter), ui-sans-serif, system-ui;
+    font-family: var(--font-quicksand), var(--font-outfit), var(--font-inter), ui-sans-serif, system-ui;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
