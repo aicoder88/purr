@@ -6,7 +6,7 @@ export async function getSession(
   req: NextApiRequest | GetServerSidePropsContext['req'],
   res: NextApiResponse | GetServerSidePropsContext['res']
 ) {
-  return await getServerSession(req, res, authOptions);
+  return getServerSession(req, res, authOptions);
 }
 
 export async function requireAuth(

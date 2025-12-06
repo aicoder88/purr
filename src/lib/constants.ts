@@ -90,6 +90,16 @@ export const PRODUCTS = [
       bestFor: "Large multi-cat households",
     },
   },
+  {
+    id: "purrify-12g-bump",
+    name: "Purrify 12g (Trial Bump)",
+    description: "One-time offer: Add a trial size for just $4.99!",
+    price: 4.99,
+    image: "/optimized/20g.webp",
+    size: "12g",
+    shippingIncluded: true,
+    shippingNote: "Ships with your order",
+  },
 ];
 
 export const FEATURES = [

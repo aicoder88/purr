@@ -8,7 +8,7 @@ import React from 'react';
 import type { ComponentProps, MouseEvent } from 'react';
 import { useCart } from '../src/lib/cart-context';
 import { useRouter } from 'next/router';
-import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Star, Users, Clock, Zap, Heart, CheckSquare } from 'lucide-react';
+import { ArrowRight, CreditCard, Truck, CheckCircle, Loader2, Package, User, MapPin, Shield, Star, Users, Clock, Zap, Heart, CheckSquare, Sparkles, Tag } from 'lucide-react';
 import { PRODUCTS, TESTIMONIALS } from '../src/lib/constants';
 import dynamic from "next/dynamic";
 import { FastCheckout } from '../src/components/mobile/FastCheckout';
@@ -44,13 +44,13 @@ const CheckoutPage: NextPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [showPurchaseNotification, setShowPurchaseNotification] = useState(false);
-  const { items, getTotalPrice, clearCart } = useCart();
-  
+  const { items, addToCart, removeFromCart, getTotalPrice, clearCart } = useCart();
+
   const getShippingCost = useCallback(() => {
     const subtotal = getTotalPrice();
     return subtotal >= 50 ? 0 : 30;
   }, [getTotalPrice]);
-  
+
   const getTotalWithShipping = useCallback(() => {
     return getTotalPrice() + getShippingCost();
   }, [getShippingCost, getTotalPrice]);
@@ -117,10 +117,10 @@ const CheckoutPage: NextPage = () => {
 
     // Show initial notification after 2 seconds
     const initialTimeout = setTimeout(showNotification, 2000);
-    
+
     // Then show every 45-75 seconds
     const interval = setInterval(showNotification, Math.random() * 30000 + 45000);
-    
+
     return () => {
       clearTimeout(initialTimeout);
       clearInterval(interval);
@@ -222,13 +222,12 @@ const CheckoutPage: NextPage = () => {
       {[1, 2, 3].map((stepNumber) => (
         <div key={stepNumber} className="flex items-center">
           <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
-              stepNumber === step
-                ? 'bg-[#FF3131] text-white dark:text-white'
-                : stepNumber < step
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${stepNumber === step
+              ? 'bg-[#FF3131] text-white dark:text-white'
+              : stepNumber < step
                 ? 'bg-green-500 text-white dark:text-white'
                 : 'bg-gray-200 text-gray-500 dark:text-gray-400'
-            }`}
+              }`}
           >
             {stepNumber < step ? (
               <CheckCircle className="w-5 h-5" />
@@ -238,9 +237,8 @@ const CheckoutPage: NextPage = () => {
           </div>
           {stepNumber < 3 && (
             <div
-              className={`w-16 h-1 transition-colors duration-200 ${
-                stepNumber < step ? 'bg-green-500' : 'bg-gray-200 dark:bg-gray-600'
-              }`}
+              className={`w-16 h-1 transition-colors duration-200 ${stepNumber < step ? 'bg-green-500' : 'bg-gray-200 dark:bg-gray-600'
+                }`}
             />
           )}
         </div>
@@ -257,14 +255,13 @@ const CheckoutPage: NextPage = () => {
       "Alex from Calgary ordered Purrify 120g",
       "Lisa from Ottawa just purchased 3x Purrify 12g"
     ];
-    
+
     const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
-    
+
     return (
-      <div 
-        className={`fixed top-4 right-4 z-50 transition-all duration-500 ${
-          showPurchaseNotification ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        }`}
+      <div
+        className={`fixed top-4 right-4 z-50 transition-all duration-500 ${showPurchaseNotification ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
       >
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 max-w-sm">
           <div className="flex items-center gap-3">
@@ -287,7 +284,7 @@ const CheckoutPage: NextPage = () => {
   // Testimonials sidebar component
   const TestimonialsSidebar = () => {
     const displayTestimonials = TESTIMONIALS.slice(0, 6);
-    
+
     return (
       <div className="lg:col-span-1">
         <div className="sticky top-8 space-y-6">
@@ -314,14 +311,13 @@ const CheckoutPage: NextPage = () => {
               <Star className="h-5 w-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               <h3 className="font-bold text-gray-900 dark:text-gray-100">Customer Love</h3>
             </div>
-            
+
             <div className="relative min-h-[200px]">
               {displayTestimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentTestimonial ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-500 ${index === currentTestimonial ? 'opacity-100' : 'opacity-0'
+                    }`}
                 >
                   <div className="flex mb-2">
                     {Array(testimonial.stars || 5).fill(0).map((_, i) => (
@@ -344,7 +340,7 @@ const CheckoutPage: NextPage = () => {
                 </div>
               ))}
             </div>
-            
+
             {/* Testimonial indicators */}
             <div className="flex justify-center gap-2 mt-4">
               {displayTestimonials.map((_, index) => (
@@ -353,11 +349,10 @@ const CheckoutPage: NextPage = () => {
                   type="button"
                   data-index={index}
                   onClick={handleTestimonialIndicatorClick}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentTestimonial 
-                      ? 'bg-[#FF3131]' 
-                      : 'bg-gray-300 dark:bg-gray-600'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors ${index === currentTestimonial
+                    ? 'bg-[#FF3131]'
+                    : 'bg-gray-300 dark:bg-gray-600'
+                    }`}
                 />
               ))}
             </div>
@@ -434,7 +429,56 @@ const CheckoutPage: NextPage = () => {
                 <span className="font-medium">Add ${(50 - getTotalPrice()).toFixed(2)} more for free shipping!</span>
               </div>
             )} */} {/* TODO: Restore when free shipping is available */}
-            
+
+            {/* Order Bump */}
+            <div className={`mt-4 mb-4 border-2 border-dashed rounded-xl p-4 transition-all duration-300 ${items.some(i => i.id === 'purrify-12g-bump')
+              ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
+              : 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/10'
+              }`}>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 pt-1">
+                  <input
+                    type="checkbox"
+                    id="order-bump"
+                    checked={items.some(i => i.id === 'purrify-12g-bump')}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        addToCart('purrify-12g-bump');
+                      } else {
+                        removeFromCart('purrify-12g-bump');
+                      }
+                    }}
+                    className="w-5 h-5 rounded text-[#FF3131] focus:ring-[#FF3131] border-gray-300 dark:border-gray-600 cursor-pointer"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label htmlFor="order-bump" className="cursor-pointer block">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-bold text-gray-900 dark:text-gray-100 text-sm uppercase tracking-wide bg-gradient-to-r from-[#FF3131] to-[#FF5050] text-white px-2 py-0.5 rounded text-[10px]">
+                        One-Time Offer
+                      </span>
+                      <span className="font-bold text-green-600 dark:text-green-400 text-lg">$4.99</span>
+                    </div>
+                    <p className="font-semibold text-gray-800 dark:text-gray-200 text-sm mb-1">
+                      Yes, add the 12g Trial Size to my order!
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                      Perfect for travel or gifting to a friend. 95% of customers who try it buy more! -- Money-back guarantee included.
+                    </p>
+                  </label>
+                </div>
+                <div className="hidden sm:block w-16 h-16 bg-white dark:bg-gray-800 rounded-lg p-1 border border-gray-200 dark:border-gray-700">
+                  <Image
+                    src="/optimized/20g.webp"
+                    alt="Trial Size"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Urgency messaging */}
             <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-3 rounded-lg border border-orange-200 dark:border-orange-800 mt-2">
               <div className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
@@ -445,6 +489,12 @@ const CheckoutPage: NextPage = () => {
             <div className="flex justify-between font-bold text-lg pt-3 border-t border-gray-200 dark:border-gray-700">
               <span className="text-gray-800 dark:text-gray-100">Total</span>
               <span className="text-[#FF3131] text-xl">${getTotalWithShipping().toFixed(2)}</span>
+            </div>
+
+            {/* Guarantee Badge - Text Only for Summary */}
+            <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+              <Shield className="h-3 w-3" />
+              <span>30-Day Money-Back Guarantee</span>
             </div>
           </div>
         </div>
@@ -711,7 +761,7 @@ const CheckoutPage: NextPage = () => {
       />
       <Container>
         <PurchaseNotification />
-        
+
         <div className="py-12">
           {/* Header */}
           <div className="text-center mb-12">
@@ -725,7 +775,7 @@ const CheckoutPage: NextPage = () => {
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
               Join 1,000+ happy cat parents who trust Purrify for odor-free litter boxes
             </p>
-            
+
             {/* Trust indicators */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center gap-2">
@@ -748,81 +798,81 @@ const CheckoutPage: NextPage = () => {
             {/* Checkout form - 2 columns on large screens */}
             <div className="lg:col-span-2">
               <div className="max-w-3xl">
-          
-          {/* Mobile-Optimized Fast Checkout */}
-          <div className="md:hidden mb-8">
-            <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 border border-[#5B2EFF]/20 dark:border-[#5B2EFF]/30 mb-6">
-              <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">Complete your purchase in under 60 seconds</p>
-              
-          <FastCheckout 
-            cartTotal={getTotalWithShipping()}
-            onCheckoutComplete={handleFastCheckoutComplete}
-          />
-            </div>
-            
-            <div className="text-center mb-6">
-              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-300">
-                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
-                <span>or use traditional checkout</span>
-                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Trust Badges */}
-          <div className="mb-8">
-            <TrustBadges variant="horizontal" showIcons={true} maxBadges={4} />
-          </div>
-          
-          {renderStepIndicator()}
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {renderStep()}
-            <div className="flex justify-between pt-6">
-              {step > 1 && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={goToPreviousStep}
-                  className="min-w-[120px]"
-                >
-                  Back
-                </Button>
-              )}
-              {step < 3 ? (
-                <Button
-                  type="button"
-                  onClick={goToNextStep}
-                  disabled={
-                    (step === 1 && !isContactStepValid) ||
-                    (step === 2 && !isShippingStepValid)
-                  }
-                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
-                >
-                  Continue
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              ) : (
-                <Button
-                  type="submit"
-                  disabled={isProcessing}
-                  className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
-                >
-                  {isProcessing ? (
-                    <>
-                      <Loader2 className="animate-spin mr-2 h-4 w-4" />
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      Complete Purchase
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </>
-                  )}
-                </Button>
-              )}
-            </div>
-          </form>
+
+                {/* Mobile-Optimized Fast Checkout */}
+                <div className="md:hidden mb-8">
+                  <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 border border-[#5B2EFF]/20 dark:border-[#5B2EFF]/30 mb-6">
+                    <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">Complete your purchase in under 60 seconds</p>
+
+                    <FastCheckout
+                      cartTotal={getTotalWithShipping()}
+                      onCheckoutComplete={handleFastCheckoutComplete}
+                    />
+                  </div>
+
+                  <div className="text-center mb-6">
+                    <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-300">
+                      <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
+                      <span>or use traditional checkout</span>
+                      <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Trust Badges */}
+                <div className="mb-8">
+                  <TrustBadges variant="horizontal" showIcons={true} maxBadges={4} />
+                </div>
+
+                {renderStepIndicator()}
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {renderStep()}
+                  <div className="flex justify-between pt-6">
+                    {step > 1 && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={goToPreviousStep}
+                        className="min-w-[120px]"
+                      >
+                        Back
+                      </Button>
+                    )}
+                    {step < 3 ? (
+                      <Button
+                        type="button"
+                        onClick={goToNextStep}
+                        disabled={
+                          (step === 1 && !isContactStepValid) ||
+                          (step === 2 && !isShippingStepValid)
+                        }
+                        className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
+                      >
+                        Continue
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="submit"
+                        disabled={isProcessing}
+                        className="min-w-[120px] bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white"
+                      >
+                        {isProcessing ? (
+                          <>
+                            <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            Complete Purchase
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    )}
+                  </div>
+                </form>
               </div>
             </div>
 
