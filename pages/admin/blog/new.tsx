@@ -13,9 +13,11 @@ import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import type { BlogPost, Category, Tag } from '@/types/blog';
+import type { BlogDraftData } from '@/types/blog-draft';
 import { ArrowLeft, Save, Eye, Keyboard, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import Link from 'next/link';
+
 
 interface NewPostPageProps {
   categories: Category[];
@@ -96,7 +98,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
     saveToLocalStorage,
     loadFromLocalStorage,
     clearLocalStorage
-  } = useAutoSave({
+  } = useAutoSave<BlogDraftData>({
     onSave: performAutoSave,
     delay: 30000,
     localStorageKey: 'blog-draft-new'
@@ -176,7 +178,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
 
     try {
       const slug = generateSlug(title);
-      
+
       // Generate preview token
       const response = await fetch('/api/admin/blog/preview', {
         method: 'POST',
@@ -191,7 +193,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
       }
 
       const { previewUrl } = await response.json();
-      
+
       // Open preview in new tab
       window.open(previewUrl, '_blank');
     } catch (error) {
@@ -286,13 +288,6 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
 
   const removeTag = (tagId: string) => {
     setSelectedTags(selectedTags.filter(id => id !== tagId));
-  };
-
-  const handleAIGenerate = (generated: { title: string; content: string; excerpt: string }) => {
-    setTitle(generated.title);
-    setContent(generated.content);
-    setExcerpt(generated.excerpt);
-    toast.success('AI content applied! Review and edit as needed.');
   };
 
   // Keyboard shortcuts
@@ -472,7 +467,7 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
             {/* Post Settings */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
               <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Post Settings</h3>
-              
+
               {/* Status */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -518,13 +513,12 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
-                      className={`h-2 rounded-full ${
-                        seoScore.overall >= 80
-                          ? 'bg-green-500'
-                          : seoScore.overall >= 60
+                      className={`h-2 rounded-full ${seoScore.overall >= 80
+                        ? 'bg-green-500'
+                        : seoScore.overall >= 60
                           ? 'bg-yellow-500'
                           : 'bg-red-500'
-                      }`}
+                        }`}
                       style={{ width: `${seoScore.overall}%` }}
                     />
                   </div>
