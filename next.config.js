@@ -178,7 +178,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   outputFileTracingRoot: __dirname,
-  eslint: { ignoreDuringBuilds: true },
+
   images: {
     remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https', hostname })),
     formats: ['image/avif', 'image/webp'],
