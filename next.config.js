@@ -201,6 +201,9 @@ const nextConfig = {
     optimizeServerReact: true,
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
+    outputFileTracingExcludes: {
+      '/api/health/storage': ['./public/**/*'],
+    },
   },
   serverExternalPackages: ['sharp'],
   staticPageGenerationTimeout: 120,
