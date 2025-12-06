@@ -2,6 +2,8 @@ export const SITE_NAME = "Purrify";
 export const SITE_DESCRIPTION =
   "Activated carbon cat litter additive that eliminates odors at the source.";
 
+export const GOOGLE_MAPS_EMBED_ID = "1tp1A30e-7ixcKLz4hrvMI1cY0FPhs2A";
+
 export const PRODUCTS = [
   {
     id: "purrify-12g",

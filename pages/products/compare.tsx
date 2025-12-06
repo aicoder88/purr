@@ -8,7 +8,6 @@ import {
   CheckCircle,
   Package,
   Clock,
-  // DollarSign, 
   Users,
   ChevronRight,
   Home,
@@ -84,41 +83,41 @@ const ProductComparePage: NextPage = () => {
   const usageCalculator = [
     {
       cats: 1,
-      litterChanges: locale === 'fr' ? 'Hebdomadaire' : locale === 'zh' ? '每周' : 'Weekly',
-      trial: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
-      standard: locale === 'fr' ? '3-4 semaines' : locale === 'zh' ? '3-4周' : '3-4 weeks',
-      large: locale === 'fr' ? '8-10 semaines' : locale === 'zh' ? '8-10周' : '8-10 weeks'
+      litterChanges: t.productComparison.units.weekly,
+      trial: `1 ${t.productComparison.units.week}`,
+      standard: `3-4 ${t.productComparison.units.weeks}`,
+      large: `8-10 ${t.productComparison.units.weeks}`
     },
     {
       cats: 2,
-      litterChanges: locale === 'fr' ? '2x par semaine' : locale === 'zh' ? '每周2次' : '2x per week',
-      trial: locale === 'fr' ? '3-4 jours' : locale === 'zh' ? '3-4天' : '3-4 days',
-      standard: locale === 'fr' ? '1,5-2 semaines' : locale === 'zh' ? '1.5-2周' : '1.5-2 weeks',
-      large: locale === 'fr' ? '4-5 semaines' : locale === 'zh' ? '4-5周' : '4-5 weeks'
+      litterChanges: `2x ${t.productComparison.units.perWeek}`,
+      trial: `3-4 ${t.productComparison.units.days}`,
+      standard: `1.5-2 ${t.productComparison.units.weeks}`,
+      large: `4-5 ${t.productComparison.units.weeks}`
     },
     {
       cats: 3,
-      litterChanges: locale === 'fr' ? '3x par semaine' : locale === 'zh' ? '每周3次' : '3x per week',
-      trial: locale === 'fr' ? '2-3 jours' : locale === 'zh' ? '2-3天' : '2-3 days',
-      standard: locale === 'fr' ? '1 semaine' : locale === 'zh' ? '1周' : '1 week',
-      large: locale === 'fr' ? '2,5-3 semaines' : locale === 'zh' ? '2.5-3周' : '2.5-3 weeks'
+      litterChanges: `3x ${t.productComparison.units.perWeek}`,
+      trial: `2-3 ${t.productComparison.units.days}`,
+      standard: `1 ${t.productComparison.units.week}`,
+      large: `2.5-3 ${t.productComparison.units.weeks}`
     }
   ];
 
   return (
     <>
       <Head>
-        <title>{`${t.productComparison.title} - ${locale === 'fr' ? 'Trouvez la Taille Parfaite' : locale === 'zh' ? '找到完美尺寸' : 'Find the Perfect Size'} | Purrify`}</title>
+        <title>{`${t.productComparison.title} - ${t.productComparison.seo.title} | Purrify`}</title>
         <meta
           name="description"
-          content={t.productComparison.subtitle}
+          content={t.productComparison.seo.description}
         />
         <meta name="keywords" content="Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison" />
         <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Compare Purrify Products - Find the Perfect Size" />
-        <meta property="og:description" content="Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs." />
+        <meta property="og:title" content={`${t.productComparison.title} - ${t.productComparison.seo.title}`} />
+        <meta property="og:description" content={t.productComparison.seo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
 
@@ -129,8 +128,8 @@ const ProductComparePage: NextPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": "Compare Purrify Products",
-              "description": "Compare all Purrify activated carbon litter additive sizes and find the perfect option for your household.",
+              "name": t.productComparison.title,
+              "description": t.productComparison.seo.description,
               "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`,
               "mainEntity": {
                 "@type": "ItemList",
@@ -142,7 +141,7 @@ const ProductComparePage: NextPage = () => {
                   "offers": {
                     "@type": "Offer",
                     "price": product.price.replace('$', ''),
-                    "priceCurrency": "USD",
+                    "priceCurrency": "CAD",
                     "priceValidUntil": priceValidUntil,
                     "availability": availabilityUrl
                   }
@@ -155,24 +154,24 @@ const ProductComparePage: NextPage = () => {
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
-        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+        <section className="py-4 border-b border-brand-light dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-brand-red dark:hover:text-red-400 transition-colors">
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-brand-red dark:hover:text-red-400 transition-colors">
                 {t.nav.products}
               </Link>
               <span>/</span>
-              <span className="text-gray-900 dark:text-gray-50 dark:text-gray-100">{t.nav.compareSizes}</span>
+              <span className="text-gray-900 dark:text-gray-100">{t.nav.compareSizes}</span>
             </nav>
           </Container>
         </section>
 
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+        <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
@@ -194,8 +193,8 @@ const ProductComparePage: NextPage = () => {
                 <div
                   key={product.id}
                   className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 ${product.recommended
-                      ? 'border-[#FF3131] dark:border-[#FF5050]'
-                      : 'border-[#E0EFC7] dark:border-gray-700'
+                    ? 'border-brand-red dark:border-red-500'
+                    : 'border-brand-light dark:border-gray-700'
                     } overflow-hidden transform hover:scale-105 transition-transform duration-300`}
                 >
                   {/* Popular Badge */}
@@ -208,7 +207,7 @@ const ProductComparePage: NextPage = () => {
 
                   {/* Recommended Badge */}
                   {product.recommended && (
-                    <div className="absolute top-4 right-4 bg-[#FF3131] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                    <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
                       <Award className="w-4 h-4 mr-1" />
                       {t.productComparison.bestValue}
                     </div>
@@ -234,12 +233,12 @@ const ProductComparePage: NextPage = () => {
                     {/* Quick Stats */}
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="text-center">
-                        <Clock className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
+                        <Clock className="w-6 h-6 mx-auto mb-2 text-brand-purple" />
                         <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.duration}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
                       </div>
                       <div className="text-center">
-                        <Users className="w-6 h-6 mx-auto mb-2 text-[#5B2EFF]" />
+                        <Users className="w-6 h-6 mx-auto mb-2 text-brand-purple" />
                         <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.idealFor}</p>
                         <p className="font-semibold text-gray-900 dark:text-gray-100">{product.cats}</p>
                       </div>
@@ -251,7 +250,7 @@ const ProductComparePage: NextPage = () => {
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 dark:text-green-400 mr-2 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -259,7 +258,7 @@ const ProductComparePage: NextPage = () => {
                     </div>
 
                     {/* Best For */}
-                    <div className="mb-6 p-4 bg-[#E0EFC7]/30 dark:bg-gray-700/30 rounded-lg">
+                    <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg">
                       <p className="text-sm text-gray-600 dark:text-gray-300">
                         <span className="font-semibold">{t.productComparison.idealFor}:</span> {product.bestFor}
                       </p>
@@ -271,8 +270,8 @@ const ProductComparePage: NextPage = () => {
                         <Button
                           size="lg"
                           className={`w-full ${product.recommended
-                              ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white'
-                              : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
+                            ? 'bg-brand-red hover:bg-brand-red/90 text-white'
+                            : 'bg-brand-purple hover:bg-brand-purple/90 text-white'
                             }`}
                         >
                           {product.cta}
@@ -284,8 +283,8 @@ const ProductComparePage: NextPage = () => {
                         <Button
                           size="lg"
                           className={`w-full ${product.recommended
-                              ? 'bg-[#FF3131] hover:bg-[#FF3131]/90 text-white'
-                              : 'bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white'
+                            ? 'bg-brand-red hover:bg-brand-red/90 text-white'
+                            : 'bg-brand-purple hover:bg-brand-purple/90 text-white'
                             }`}
                         >
                           {product.cta}
@@ -301,7 +300,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* Feature Comparison Table */}
-        <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50 cv-auto cis-720">
+        <section className="py-16 bg-brand-light/30 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
@@ -315,12 +314,12 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-[#5B2EFF] text-white dark:text-gray-100">
+                  <thead className="bg-brand-purple text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">{locale === 'fr' ? 'Caractéristique' : locale === 'zh' ? '特性' : 'Feature'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 12g' : locale === 'zh' ? '12g 试用' : '12g Trial'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 50g' : locale === 'zh' ? '50g 标准' : '50g Regular'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
+                      <th className="px-6 py-4 text-left font-bold">{t.productComparison.tableHeaders.feature}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.standard}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -331,21 +330,21 @@ const ProductComparePage: NextPage = () => {
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.trial ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
                           ) : (
                             <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.standard ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
                           ) : (
                             <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
                           {row.large ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 dark:text-green-400 mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
                           ) : (
                             <span className="text-gray-400 dark:text-gray-500">—</span>
                           )}
@@ -374,20 +373,20 @@ const ProductComparePage: NextPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white dark:text-gray-100">
+                  <thead className="bg-gradient-to-r from-brand-purple to-brand-red text-white dark:text-gray-100">
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Essai 12g' : locale === 'zh' ? '12g 试用' : '12g Trial'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Moyen 50g' : locale === 'zh' ? '50g 标准' : '50g Regular'}</th>
-                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand 120g' : locale === 'zh' ? '120g 大号' : '120g Large'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.standard}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {usageCalculator.map((row, index) => (
                       <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
-                        <td className="px-6 py-4 font-bold text-[#5B2EFF]">
-                          {row.cats} {locale === 'fr' ? `Chat${row.cats > 1 ? 's' : ''}` : locale === 'zh' ? '只猫' : `Cat${row.cats > 1 ? 's' : ''}`}
+                        <td className="px-6 py-4 font-bold text-brand-purple">
+                          {row.cats} {row.cats > 1 ? t.productComparison.units.cats : t.productComparison.units.cat}
                         </td>
                         <td className="px-6 py-4 text-center text-gray-600 dark:text-gray-300">
                           {row.litterChanges}
@@ -411,7 +410,7 @@ const ProductComparePage: NextPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131] cv-auto cis-720">
+        <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red cv-auto cis-720">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
@@ -419,16 +418,16 @@ const ProductComparePage: NextPage = () => {
                 {t.productComparison.stillUnsure}
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                {locale === 'fr' ? 'Commencez avec notre taille d\'essai sans risque et découvrez la différence Purrify par vous-même.' : locale === 'zh' ? '从我们的无风险试用装开始，亲身体验 Purrify 的不同。' : 'Start with our risk-free trial size and experience the Purrify difference for yourself.'}
+                {t.productComparison.stillUnsureDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/products/trial-size`}>
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {t.productComparison.tryRiskFree}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/support/contact`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     {t.productComparison.getPersonalizedAdvice}
                   </Button>
@@ -448,38 +447,18 @@ const ProductComparePage: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-it-works`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    {t.nav.howItWorksPage}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {locale === 'fr' ? 'Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.' : locale === 'zh' ? '发现我们活性炭技术背后的科学及其如此有效的原因。' : 'Discover the science behind our activated carbon technology and why it\'s so effective.'}
-                  </p>
-                </div>
-              </Link>
-
-              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/customers/testimonials`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    {locale === 'fr' ? 'Avis Clients' : locale === 'zh' ? '客户评价' : 'Customer Reviews'}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {locale === 'fr' ? 'Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.' : locale === 'zh' ? '看看 1,000+ 名满意客户对他们的 Purrify 体验的评价。' : 'See what 1,000+ satisfied customers are saying about their Purrify experience.'}
-                  </p>
-                </div>
-              </Link>
-
-              <Link href={`${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/cat-litter-guide`} className="group">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
-                    {locale === 'fr' ? 'Guide de Litière' : locale === 'zh' ? '猫砂指南' : 'Cat Litter Guide'}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {locale === 'fr' ? 'Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.' : locale === 'zh' ? '了解不同类型的猫砂，以及如何为您的猫咪选择最佳选项。' : 'Learn about different litter types and how to choose the best option for your cat.'}
-                  </p>
-                </div>
-              </Link>
+              {t.productComparison.relatedPages.map((page, index) => (
+                <Link href={`${locale === 'fr' ? '/fr' : ''}${page.link}`} key={index} className="group">
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
+                      {page.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {page.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </Container>
         </section>

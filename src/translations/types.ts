@@ -2,7 +2,7 @@ export interface TranslationType {
   // Common
   siteName: string;
   siteDescription: string;
-  
+
   // Navigation
   nav: {
     home: string;
@@ -82,7 +82,7 @@ export interface TranslationType {
       };
     };
   };
-  
+
   // Products
   products: {
     [key: string]: {
@@ -90,7 +90,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // Features
   features: {
     odorElimination: {
@@ -146,7 +146,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
@@ -163,7 +163,7 @@ export interface TranslationType {
       nonClumping: string;
     };
   };
-  
+
   // Products Section
   productsSection?: {
     forEveryCatHousehold: string;
@@ -200,7 +200,7 @@ export interface TranslationType {
     trialSizeSection: string;
     quarterlyAutoshipSection: string;
   };
-  
+
   // Stores Section
   storesSection?: {
     availableInStores: string;
@@ -219,7 +219,7 @@ export interface TranslationType {
       petStoreWithGroomingServices: string;
     };
   };
-  
+
   // Call to Action
   cta?: {
     title: string;
@@ -228,7 +228,7 @@ export interface TranslationType {
     joinText: string;
     guarantee: string;
   };
-  
+
   // FAQ
   faq: {
     title?: string;
@@ -243,7 +243,7 @@ export interface TranslationType {
       link?: string;
     }[];
   };
-  
+
   // Contact
   contact: {
     title?: string;
@@ -268,7 +268,7 @@ export interface TranslationType {
       submit: string;
     };
   };
-  
+
   // Newsletter
   newsletter?: {
     title: string;
@@ -300,7 +300,7 @@ export interface TranslationType {
       };
     };
   };
-  
+
   // Free Giveaway Form
   freeGiveaway?: {
     formTitle: string;
@@ -316,7 +316,7 @@ export interface TranslationType {
     errorGeneric: string;
     privacyNotice: string;
   };
-  
+
   // SEO
   seo: {
     keywords: string;
@@ -326,7 +326,7 @@ export interface TranslationType {
     };
     metaDescription: string;
   };
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -554,6 +554,7 @@ export interface TranslationType {
       estimateDuration: string;
     };
     stillUnsure: string;
+    stillUnsureDescription: string;
     getPersonalizedAdvice: string;
     tryRiskFree: string;
     learnMoreAboutPurrify: string;
@@ -578,6 +579,39 @@ export interface TranslationType {
     chooseThisSize: string;
     tryWithoutRisk: string;
     chooseSmallSize: string;
+
+    // SEO
+    seo: {
+      title: string;
+      description: string;
+    };
+
+    // Table Headers
+    tableHeaders: {
+      feature: string;
+      trial: string;
+      standard: string;
+      large: string;
+    };
+
+    // Calculation Units
+    units: {
+      cat: string;
+      cats: string;
+      week: string;
+      weeks: string;
+      day: string;
+      days: string;
+      weekly: string;
+      perWeek: string;
+    };
+
+    // Related Pages
+    relatedPages: Array<{
+      title: string;
+      description: string;
+      link: string;
+    }>;
   };
 
   // Privacy Policy
@@ -863,11 +897,11 @@ export interface TranslationType {
     lowestRated: string;
     mostHelpful: string;
     verifiedPurchase: string;
-    
+
     // Payment & Cart
     securePayment: string;
     shoppingCart: string;
-    
+
     // General
     happyCustomers: string;
     moneyBack: string;
@@ -1106,5 +1140,21 @@ export interface TranslationType {
   scrollingBar?: {
     freeShipping: string;
     madeInCanada: string;
+  };
+
+  // Maps
+  maps?: {
+    findNearYou: string;
+    discoverWhere: string;
+    retailStores: string;
+    cities: {
+      montreal: string;
+      quebec: string;
+      toronto: string;
+      vancouver: string;
+      calgary: string;
+      ottawa: string;
+    };
+    iframeTitle: string;
   };
 }

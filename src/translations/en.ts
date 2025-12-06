@@ -5,7 +5,7 @@ export const en = {
   // Common
   siteName: "Purrify",
   siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
-  
+
   // Navigation
   nav: {
     home: "Home",
@@ -23,7 +23,7 @@ export const en = {
     termsOfService: "Terms of Service",
     // Dropdown items
     trialSize: "12g Trial Size",
-    compareSizes: "Compare Sizes", 
+    compareSizes: "Compare Sizes",
     viewAllProducts: "View All Products",
     howItWorksPage: "How It Works",
     faq: "FAQ",
@@ -68,7 +68,7 @@ export const en = {
       retailer: ['PetSmart', 'Pet Valu', 'Global Pet Foods', 'Bosleys', 'Ren\'s Pets']
     }
   },
-  
+
   // Products
   products: {
     "purrify-12g": {
@@ -142,7 +142,7 @@ export const en = {
       }
     }
   },
-  
+
   // Features
   features: {
     odorElimination: {
@@ -178,7 +178,7 @@ export const en = {
       description: "See the difference Purrify makes in your cat's litter box."
     }
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "Fresh Air in 60 Seconds - Simple as 1-2-3",
@@ -207,7 +207,7 @@ export const en = {
       nonClumping: "NON-CLUMPING"
     }
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "FOR EVERY CAT HOUSEHOLD",
@@ -224,7 +224,7 @@ export const en = {
     adding: "Adding...",
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "AVAILABLE IN STORES",
@@ -235,7 +235,7 @@ export const en = {
     callStore: "Call Store",
     storeDescriptions: {
       completePetCareAndSupplies: "Complete pet care and supplies",
-      premiumPetBoutique: "Premium pet boutique", 
+      premiumPetBoutique: "Premium pet boutique",
       familyOwnedPetStore: "Family-owned pet store",
       globalPetFoodsLocation: "Global Pet Foods location",
       premiumPetProductsAndSupplies: "Premium pet products & supplies",
@@ -243,7 +243,7 @@ export const en = {
       petStoreWithGroomingServices: "Pet store with grooming services"
     }
   },
-  
+
   // Call to Action
   cta: {
     title: "Stop Being Embarrassed by Cat Litter Smell!",
@@ -252,7 +252,7 @@ export const en = {
     joinText: "Join 1,000+ families with odor-free homes - Visit your local store",
     guarantee: "Proven results you can smell (or can't smell!)"
   },
-  
+
   // FAQ
   faq: {
     title: "Frequently Asked Questions",
@@ -302,7 +302,7 @@ export const en = {
       }
     ]
   },
-  
+
   // Contact
   contact: {
     title: "Contact Us",
@@ -328,7 +328,7 @@ export const en = {
       submit: "Send"
     }
   },
-  
+
   // Newsletter
   newsletter: {
     title: "Subscribe to our newsletter",
@@ -343,7 +343,7 @@ export const en = {
       benefits: {
         firstOrder: "10% Off First Order",
         firstOrderDesc: "Exclusive discount for new subscribers",
-        catCareTips: "Cat Care Tips", 
+        catCareTips: "Cat Care Tips",
         catCareTipsDesc: "Weekly expert advice and litter tips",
         earlyAccess: "Early Access",
         earlyAccessDesc: "Be first to know about new products",
@@ -355,12 +355,12 @@ export const en = {
       joinText: "Join 1,000+ happy customers • No spam, unsubscribe anytime",
       features: {
         weeklyTips: "✓ Weekly tips",
-        exclusiveOffers: "✓ Exclusive offers", 
+        exclusiveOffers: "✓ Exclusive offers",
         earlyAccessProducts: "✓ Early access"
       }
     }
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "Enter Your Details",
@@ -376,7 +376,7 @@ export const en = {
     errorGeneric: "An error occurred. Please try again later.",
     privacyNotice: "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."
   },
-  
+
   // SEO
   seo: {
     keywords: "cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies, cat video",
@@ -386,7 +386,7 @@ export const en = {
     },
     metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by 1,000+ cat owners across Canada."
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -811,7 +811,7 @@ export const en = {
         responseTime: "Response within 24 hours"
       },
       {
-        title: "Phone Support", 
+        title: "Phone Support",
         description: "Speak directly with our team",
         responseTime: "Mon-Fri 9AM-5PM EST"
       },
@@ -823,7 +823,7 @@ export const en = {
     ],
     form: {
       fullName: "Full Name",
-      emailAddress: "Email Address", 
+      emailAddress: "Email Address",
       subject: "Subject",
       message: "Message",
       contactReason: "Contact Reason",
@@ -845,7 +845,7 @@ export const en = {
         answer: "Standard shipping takes 3-5 business days within Canada. We also offer expedited shipping options."
       },
       {
-        question: "Can I use Purrify around my cat?", 
+        question: "Can I use Purrify around my cat?",
         answer: "Purrify uses the same type of activated carbon found in many home water filters and contains no added fragrances or dyes."
       },
       {
@@ -882,14 +882,14 @@ export const en = {
         id: "trial",
         name: "Trial Size",
         subtitle: "Perfect for first-time users",
-    duration: "One week duration",
-    cats: "For one cat",
+        duration: "One week duration",
+        cats: "For one cat",
         features: ["12g activated carbon", "Risk-free trial", "Perfect introduction"],
         bestFor: "New customers wanting to try Purrify",
         cta: "Try Risk-Free"
       },
       {
-        id: "standard", 
+        id: "standard",
         name: "Standard Size",
         subtitle: "Most popular choice",
         duration: "4-6 weeks",
@@ -900,10 +900,10 @@ export const en = {
       },
       {
         id: "large",
-        name: "Large Size", 
+        name: "Large Size",
         subtitle: "Best value for multi-cat homes",
-    duration: "4-week duration",
-    cats: "For 1-2 cats",
+        duration: "4-week duration",
+        cats: "For 1-2 cats",
         features: ["150g activated carbon", "Maximum savings", "Bulk discount"],
         bestFor: "Multi-cat households and heavy users",
         cta: "Get Best Value"
@@ -931,7 +931,7 @@ export const en = {
     seeHowProductsCompare: "See how our products compare",
     howLongWillEachSizeLast: "How long will each size last?",
     popular: "POPULAR",
-    bestValue: "BEST VALUE", 
+    bestValue: "BEST VALUE",
     perfectForFirstTime: "Perfect for first-time users",
     idealForSingleCat: "Ideal for single cat households",
     perfectForMultiCat: "Perfect for multi-cat households",
@@ -947,7 +947,54 @@ export const en = {
     getBestValue: "Get Best Value",
     chooseThisSize: "Choose This Size",
     tryWithoutRisk: "Try Without Risk",
-    chooseSmallSize: "Choose Small Size"
+    chooseSmallSize: "Choose Small Size",
+
+    // SEO
+    seo: {
+      title: "Find the Perfect Size",
+      description: "Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs."
+    },
+
+    stillUnsureDescription: "Start with our risk-free trial size and experience the Purrify difference for yourself.",
+
+    // Table Headers
+    tableHeaders: {
+      feature: "Feature",
+      trial: "12g Trial",
+      standard: "50g Regular",
+      large: "120g Large"
+    },
+
+    // Calculation Units
+    units: {
+      cat: "Cat",
+      cats: "Cats",
+      week: "week",
+      weeks: "weeks",
+      day: "day",
+      days: "days",
+      weekly: "Weekly",
+      perWeek: "per week"
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "How It Works",
+        description: "Discover the science behind our activated carbon technology and why it's so effective.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Customer Reviews",
+        description: "See what 1,000+ satisfied customers are saying about their Purrify experience.",
+        link: "/customers/testimonials"
+      },
+      {
+        title: "Cat Litter Guide",
+        description: "Learn about different litter types and how to choose the best option for your cat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ]
   },
 
   // Privacy Policy
@@ -966,7 +1013,7 @@ export const en = {
         ]
       },
       {
-        title: "How We Use Your Information", 
+        title: "How We Use Your Information",
         content: "We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you."
       },
       {
@@ -984,7 +1031,7 @@ export const en = {
     ],
     contactInfo: {
       email: "Email",
-      phone: "Phone", 
+      phone: "Phone",
       address: "Purrify Canada, Montreal, Quebec, Canada"
     }
   },
@@ -1151,7 +1198,7 @@ export const en = {
     detailedEmailHelp: "Get detailed answers via email",
     liveChat: "Live Chat",
     realTimeChatHelp: "Chat with us in real-time",
-    phoneSupport: "Phone Support", 
+    phoneSupport: "Phone Support",
     speakDirectlyTeam: "Speak with our team directly",
     contactUs: "Contact Us",
     startChat: "Start Chat",
@@ -1186,11 +1233,11 @@ export const en = {
     lowestRated: "Lowest Rated",
     mostHelpful: "Most Helpful",
     verifiedPurchase: "Verified Purchase",
-    
+
     // Payment & Cart
     securePayment: "Secure Payment",
     shoppingCart: "Shopping Cart",
-    
+
     // General
     happyCustomers: "Happy Customers",
     moneyBack: "Expert Support",
@@ -1418,5 +1465,21 @@ export const en = {
   scrollingBar: {
     freeShipping: "Free Shipping on All Subscription Orders",
     madeInCanada: "Manufactured in Canada from Domestic and Globally Sourced Ingredients"
+  },
+
+  // Maps
+  maps: {
+    findNearYou: "Find Purrify Near You | Retail Store Locations",
+    discoverWhere: "Discover where to buy Purrify across Canada. Each location represents a retail store where you can find our products.",
+    retailStores: "🗺️ Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more",
+    cities: {
+      montreal: "Montreal",
+      quebec: "Quebec City",
+      toronto: "Toronto",
+      vancouver: "Vancouver",
+      calgary: "Calgary",
+      ottawa: "Ottawa"
+    },
+    iframeTitle: "Purrify Retail Store Locations Map"
   }
-}; 
+};

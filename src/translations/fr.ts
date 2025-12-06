@@ -4,7 +4,7 @@ export const fr = {
   // Common
   siteName: "Purrify",
   siteDescription: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
-  
+
   // Navigation
   nav: {
     home: "Accueil",
@@ -67,7 +67,7 @@ export const fr = {
       retailer: ['Mondou', 'Pet Valu', 'Global Pet Foods', 'Ren\'s Pets', 'PetSmart']
     }
   },
-  
+
   // Products
   products: {
     "purrify-12g": {
@@ -141,7 +141,7 @@ export const fr = {
       }
     }
   },
-  
+
   // Features
   features: {
     odorElimination: {
@@ -201,7 +201,7 @@ export const fr = {
       description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
     }
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "Simple comme 1-2-3",
@@ -230,7 +230,7 @@ export const fr = {
       nonClumping: "NON-AGGLOMÉRANTE"
     }
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "POUR CHAQUE FOYER DE CHAT",
@@ -247,7 +247,7 @@ export const fr = {
     adding: "Ajout en cours...",
     viewAllProducts: "VOIR TOUS LES PRODUITS"
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "DISPONIBLE EN MAGASIN",
@@ -266,7 +266,7 @@ export const fr = {
       petStoreWithGroomingServices: "Magasin d'animaux avec services de toilettage"
     }
   },
-  
+
   // Call to Action
   cta: {
     title: "Prêt à Dire Adieu aux Odeurs de Litière pour Toujours ?",
@@ -275,7 +275,7 @@ export const fr = {
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
     guarantee: "Support personnalisé inclus"
   },
-  
+
   // FAQ
   faq: {
     title: "Questions Fréquemment Posées",
@@ -315,7 +315,7 @@ export const fr = {
       }
     ]
   },
-  
+
   // Contact
   contact: {
     title: "Contactez-Nous",
@@ -341,7 +341,7 @@ export const fr = {
       submit: "Envoyer"
     }
   },
-  
+
   // Newsletter
   newsletter: {
     title: "Abonnez-vous à notre infolettre",
@@ -373,7 +373,7 @@ export const fr = {
       }
     }
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "Entrez Vos Coordonnées",
@@ -389,7 +389,7 @@ export const fr = {
     errorGeneric: "Une erreur s'est produite. Veuillez réessayer plus tard.",
     privacyNotice: "En soumettant ce formulaire, vous nous autorisez à vous contacter concernant votre échantillon gratuit de Purrify. Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers."
   },
-  
+
   // SEO
   seo: {
     keywords: "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animal, élimination des odeurs de chat, litière écologique pour chat, contrôle naturel des odeurs, soins des chats, fournitures pour animaux, vidéo de chat",
@@ -399,7 +399,7 @@ export const fr = {
     },
     metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par plus de 1 000 propriétaires de chats au Canada."
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -445,13 +445,13 @@ export const fr = {
           sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 50g Taille Standard", 
+          name: "Purrify 50g Taille Standard",
           description: "Taille la plus populaire - approvisionnement d'un mois pour les foyers à un seul chat",
           sku: "purrify-50g"
         },
         family: {
           name: "Purrify 120g Pack Familial",
-          description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs", 
+          description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs",
           sku: "purrify-120g"
         }
       },
@@ -744,11 +744,11 @@ export const fr = {
     lowestRated: "Moins Bien Noté",
     mostHelpful: "Plus Utile",
     verifiedPurchase: "Achat Vérifié",
-    
+
     // Payment & Cart
     securePayment: "Paiement Sécurisé",
     shoppingCart: "Panier d'Achat",
-    
+
     // General
     happyCustomers: "Clients Satisfaits",
     moneyBack: "Support expert",
@@ -775,7 +775,7 @@ export const fr = {
     alreadyClaimed: "Déjà réclamés",
     countdownLabels: {
       hours: "HEURES",
-      minutes: "MINS", 
+      minutes: "MINS",
       seconds: "SECS"
     },
     testimonials: [
@@ -813,7 +813,7 @@ export const fr = {
   contactPage: {
     title: "Nous Sommes Là Pour Vous Aider",
     subtitle: "Notre équipe de support client amicale est prête à vous assister avec des conseils d'experts et des solutions.",
-    chooseContactMethod: "Choisissez Comment Nous Contacter", 
+    chooseContactMethod: "Choisissez Comment Nous Contacter",
     contactReasons: [
       { value: "general", label: "Question Générale" },
       { value: "product", label: "Information Produit" },
@@ -826,7 +826,7 @@ export const fr = {
     contactMethods: [
       {
         title: "Support Email",
-        description: "Obtenez de l'aide détaillée par email", 
+        description: "Obtenez de l'aide détaillée par email",
         responseTime: "Habituellement dans les 24 heures"
       },
       {
@@ -842,7 +842,7 @@ export const fr = {
     ],
     form: {
       fullName: "Nom Complet",
-      emailAddress: "Adresse Courriel", 
+      emailAddress: "Adresse Courriel",
       subject: "Sujet",
       message: "Message",
       contactReason: "Raison du Contact",
@@ -868,7 +868,7 @@ export const fr = {
         answer: "Écrivez-nous ! Notre équipe d'accompagnement analysera votre installation, partagera des conseils personnalisés et s'assurera que Purrify fonctionne au mieux chez vous."
       },
       {
-        question: "Offrez-vous des prix de gros pour plusieurs chats?", 
+        question: "Offrez-vous des prix de gros pour plusieurs chats?",
         answer: "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
       },
       {
@@ -878,7 +878,7 @@ export const fr = {
     ],
     businessHours: {
       title: "Heures d'Affaires",
-      weekdays: "9h00 - 17h00 EST", 
+      weekdays: "9h00 - 17h00 EST",
       saturday: "10h00 - 14h00 EST",
       sunday: "Fermé",
       closed: "Fermé"
@@ -920,7 +920,7 @@ export const fr = {
       {
         id: "small",
         name: "Taille Moyenne 50g",
-        subtitle: "Idéal pour les Foyers à Un Chat", 
+        subtitle: "Idéal pour les Foyers à Un Chat",
         duration: "3-4 changements de litière",
         cats: "1 chat",
         features: [
@@ -973,7 +973,7 @@ export const fr = {
     featuresComparison: "Comparaison des Caractéristiques",
     seeHowProductsCompare: "Voyez comment nos produits se comparent côte à côte",
     howLongWillEachSizeLast: "Combien de Temps Chaque Taille Durera-t-elle?",
-    popular: "Populaire", 
+    popular: "Populaire",
     bestValue: "Meilleure Valeur",
     perfectForFirstTime: "Parfait pour les nouveaux utilisateurs",
     idealForSingleCat: "Idéal pour les foyers à un chat",
@@ -990,7 +990,54 @@ export const fr = {
     getBestValue: "Obtenir la Meilleure Valeur",
     chooseThisSize: "Choisir Cette Taille",
     tryWithoutRisk: "Essayez Sans Risque",
-    chooseSmallSize: "Choisir Petite Taille"
+    chooseSmallSize: "Choisir Petite Taille",
+
+    // SEO
+    seo: {
+      title: "Trouvez la Taille Parfaite",
+      description: "Comparez toutes les tailles Purrify et trouvez l'additif pour litière au charbon actif parfait pour les besoins de votre foyer."
+    },
+
+    stillUnsureDescription: "Commencez avec notre taille d'essai sans risque et découvrez la différence Purrify par vous-même.",
+
+    // Table Headers
+    tableHeaders: {
+      feature: "Caractéristique",
+      trial: "Essai 12g",
+      standard: "Moyen 50g",
+      large: "Grand 120g"
+    },
+
+    // Calculation Units
+    units: {
+      cat: "Chat",
+      cats: "Chats",
+      week: "semaine",
+      weeks: "semaines",
+      day: "jour",
+      days: "jours",
+      weekly: "Hebdomadaire",
+      perWeek: "par semaine"
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "Comment ça marche",
+        description: "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Avis Clients",
+        description: "Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.",
+        link: "/customers/testimonials"
+      },
+      {
+        title: "Guide de Litière",
+        description: "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ]
   },
 
   // Détaillants & B2B
@@ -1104,7 +1151,7 @@ export const fr = {
   // Privacy Policy
   privacyPolicy: {
     title: "Politique de Confidentialité",
-    lastUpdated: "Dernière mise à jour : juin 2024", 
+    lastUpdated: "Dernière mise à jour : juin 2024",
     sections: [
       {
         title: "Information que Nous Collectons",
@@ -1122,7 +1169,7 @@ export const fr = {
         content: "Nous utilisons les informations collectées pour :",
         items: [
           "Traiter et expédier vos commandes",
-          "Fournir un support client", 
+          "Fournir un support client",
           "Envoyer des mises à jour de produits et des conseils de soins",
           "Améliorer nos produits et services",
           "Respecter les exigences légales"
@@ -1181,7 +1228,7 @@ export const fr = {
       tags: ["charbon actif", "contrôle odeurs"]
     },
     {
-      id: 2, 
+      id: 2,
       category: "product",
       question: "Peut-on utiliser Purrify près des chats et des personnes ?",
       answer: "Purrify utilise le même type de charbon actif que l’on retrouve couramment dans les filtres à eau et à air domestiques. Sans parfums ni colorants ajoutés.",
@@ -1210,7 +1257,7 @@ export const fr = {
     categories: "Catégories",
     questionsFound: "Question trouvée",
     questionsFoundPlural: "Questions trouvées",
-    clearSearch: "Effacer Recherche", 
+    clearSearch: "Effacer Recherche",
     noQuestionsFound: "Aucune question trouvée",
     adjustSearchTerms: "Essayez d'ajuster vos termes de recherche ou le filtre de catégorie",
     stillHaveQuestions: "Vous Avez Encore Des Questions ?",
@@ -1244,7 +1291,7 @@ export const fr = {
     }
   },
 
-  
+
   // Homepage specific translations
   homepage: {
     seo: {
@@ -1353,5 +1400,21 @@ export const fr = {
   scrollingBar: {
     freeShipping: "Livraison Gratuite sur Tous les Abonnements",
     madeInCanada: "Fabriqué au Canada avec des Ingrédients d'Origine Nationale et Mondiale"
+  },
+
+  // Maps
+  maps: {
+    findNearYou: "Trouvez Purrify Près de Chez Vous | Magasins Détaillants",
+    discoverWhere: "Découvrez où acheter Purrify à travers le Canada. Chaque point représente un magasin de détail où vous pouvez trouver nos produits.",
+    retailStores: "🗺️ Magasins détaillants Purrify à travers le Canada - Montréal, Toronto, Vancouver et plus",
+    cities: {
+      montreal: "Montréal",
+      quebec: "Québec",
+      toronto: "Toronto",
+      vancouver: "Vancouver",
+      calgary: "Calgary",
+      ottawa: "Ottawa"
+    },
+    iframeTitle: "Carte des Magasins Détaillants Purrify"
   }
 };
