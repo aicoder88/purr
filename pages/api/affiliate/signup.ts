@@ -63,13 +63,19 @@ export default async function handler(
       </p>
     `;
 
-    await resend.emails.send({
-      from: 'Purrify Affiliate Program <noreply@purrify.ca>',
+    // Log the email attempt for debugging
+    console.log('Attempting to send email to:', process.env.ADMIN_EMAIL || 'hello@purrify.ca');
+    console.log('Applicant:', data.name, data.email);
+
+    const emailResult = await resend.emails.send({
+      from: 'onboarding@resend.dev', // Use Resend's verified domain for testing
       to: process.env.ADMIN_EMAIL || 'hello@purrify.ca',
       replyTo: data.email,
       subject: `New Affiliate Application: ${data.name}`,
       html: emailContent,
     });
+
+    console.log('Email sent successfully:', emailResult);
 
     return res.status(200).json({
       success: true,

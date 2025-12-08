@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
@@ -7,6 +7,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 
 export default function AffiliateSignupPage() {
   const { t } = useTranslation();
+  const successMessageRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,9 +66,19 @@ export default function AffiliateSignupPage() {
         experience: '',
         message: '',
       });
+
+      // Scroll to success message
+      setTimeout(() => {
+        successMessageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     } catch (error) {
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'An error occurred. Please try again.');
+
+      // Scroll to error message
+      setTimeout(() => {
+        successMessageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     } finally {
       setIsSubmitting(false);
     }
@@ -121,7 +132,7 @@ export default function AffiliateSignupPage() {
         <Container>
           <div className="max-w-3xl mx-auto">
             {submitStatus === 'success' && (
-              <div className="mb-8 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl">
+              <div ref={successMessageRef} className="mb-8 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
@@ -143,7 +154,7 @@ export default function AffiliateSignupPage() {
             )}
 
             {submitStatus === 'error' && (
-              <div className="mb-8 p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+              <div ref={successMessageRef} className="mb-8 p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
