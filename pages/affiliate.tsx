@@ -61,7 +61,7 @@ export default function AffiliatePage() {
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto font-light">
               {t.affiliate.hero.subtitle}
             </p>
-            <Link href="/customer/referrals">
+            <Link href="/affiliate/signup">
               <button className="inline-flex items-center px-8 py-4 bg-[#2e90fa] hover:bg-[#1e5dd6] text-white dark:text-gray-100 text-lg font-semibold rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.1),0_0_0_1px_#1E5DD6] hover:shadow-[0_4px_12px_rgba(46,144,250,0.4)] transition-all duration-200">
                 {t.affiliate.hero.primaryCTA}
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -421,7 +421,7 @@ export default function AffiliatePage() {
             <p className="text-xl text-blue-100 dark:text-blue-50 mb-10 font-light">
               {t.affiliate.finalCTA.subtitle}
             </p>
-            <Link href="/customer/referrals">
+            <Link href="/affiliate/signup">
               <button className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-900 text-[#2e90fa] dark:text-[#2e90fa] text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200">
                 {t.affiliate.finalCTA.cta}
                 <ArrowRight className="w-5 h-5 ml-2" />
