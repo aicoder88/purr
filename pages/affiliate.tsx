@@ -118,35 +118,66 @@ export default function AffiliatePage() {
         </Container>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 border-y border-gray-800/50 dark:border-gray-800/50 bg-gray-900/30 dark:bg-gray-900/30">
+      {/* Earnings Preview Section */}
+      <section className="py-24 border-y border-gray-800/50 dark:border-gray-800/50 bg-gray-900/30 dark:bg-gray-900/30">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-3 bg-blue-500/10 dark:bg-blue-500/10 rounded-xl">
-                <DollarSign className="w-8 h-8 text-blue-400 dark:text-blue-400" />
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 bg-gray-900 dark:bg-gray-900 ring-1 ring-white/10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                <Image
+                  src="/optimized/affiliate-dashboard.png"
+                  alt="Affiliate Earnings Dashboard"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent pointer-events-none"></div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-white dark:text-white">30%</p>
-                <p className="text-gray-400 dark:text-gray-400">Commission Rate</p>
-              </div>
+              {/* Decorative glow */}
+              <div className="absolute -inset-4 bg-blue-500/20 dark:bg-blue-500/20 blur-3xl -z-10 rounded-full opacity-50"></div>
             </div>
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-3 bg-purple-500/10 dark:bg-purple-500/10 rounded-xl">
-                <TrendingUp className="w-8 h-8 text-purple-400 dark:text-purple-400" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white dark:text-white">$600+</p>
-                <p className="text-gray-400 dark:text-gray-400">Avg. Monthly Payout</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-3 bg-green-500/10 dark:bg-green-500/10 rounded-xl">
-                <Users className="w-8 h-8 text-green-400 dark:text-green-400" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white dark:text-white">High</p>
-                <p className="text-gray-400 dark:text-gray-400">Conversion Rate</p>
+
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-white mb-8">
+                Track your success in real-time
+              </h2>
+
+              <div className="space-y-8">
+                <div className="flex gap-4">
+                  <div className="p-3 bg-blue-500/10 dark:bg-blue-500/10 rounded-xl h-fit">
+                    <DollarSign className="w-6 h-6 text-blue-400 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Uncapped Commissions</h3>
+                    <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
+                      Earn 30% on every sale. Our top affiliates make over $2,000 monthly just by sharing content they love.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="p-3 bg-purple-500/10 dark:bg-purple-500/10 rounded-xl h-fit">
+                    <TrendingUp className="w-6 h-6 text-purple-400 dark:text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">High Conversion Rates</h3>
+                    <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
+                      Our optimized landing pages and strong brand trust mean more of your clicks turn into cash.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="p-3 bg-green-500/10 dark:bg-green-500/10 rounded-xl h-fit">
+                    <Users className="w-6 h-6 text-green-400 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Growing Community</h3>
+                    <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
+                      Join hundreds of creators who are monetizing their pet content with Purrify.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
