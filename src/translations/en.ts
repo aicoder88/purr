@@ -1519,5 +1519,101 @@ export const en = {
     faq3Answer: "Yes! This special price is locked in for as long as you remain subscribed. You'll never pay more than this rate.",
     bottomNote: "This one-time offer is only available immediately after your first purchase",
     returnHome: "Return to homepage"
+  },
+
+  // Affiliate Page
+  affiliate: {
+    metaTitle: "Earn Monthly Income with Purrify Affiliate Program",
+    metaDescription: "Refer cat owners to Purrify and earn 30% recurring commission for life. Join hundreds of successful affiliates earning passive income helping cats live odor-free.",
+    hero: {
+      badge: "Join Our Affiliate Program",
+      title: "Earn Monthly Income With Purrify",
+      subtitle: "Refer cat owners to Purrify and earn 30% of monthly recurring income for life.",
+      primaryCTA: "Become An Affiliate",
+      secondaryCTA: "See Earnings Calculator"
+    },
+    calculator: {
+      title: "Calculate Your Potential Earnings",
+      subtitle: "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
+      standardProduct: "50g Standard ($24.99) - Referrals/Month",
+      familyPack: "120g Family Pack ($44.99) - Referrals/Month",
+      perSale: "per sale",
+      monthlyIncome: "Estimated Monthly Income",
+      yearlyIncome: "Estimated Yearly Income",
+      disclaimer: "These are potential earnings based on 30% commission. Actual results may vary.",
+      cta: "Start Earning Now"
+    },
+    howItWorks: {
+      title: "How It Works",
+      step1: {
+        title: "Join the Program",
+        description: "Create your affiliate account and receive your unique referral link. It's free to join and takes less than 2 minutes."
+      },
+      step2: {
+        title: "Share Your Link",
+        description: "Share your referral link with your audience through social media, blog posts, videos, or email. We provide marketing materials to help you succeed."
+      },
+      step3: {
+        title: "Get Paid for Life",
+        description: "Earn 30% recurring commission on every sale your referrals make - not just the first purchase, but forever. Payments sent monthly via your preferred method."
+      }
+    },
+    benefits: {
+      title: "Why Join Purrify's Affiliate Program?",
+      subtitle: "We've designed our program to help you succeed with industry-leading commissions and support",
+      benefit1: {
+        title: "30% Lifetime Commissions",
+        description: "Unlike most programs that only pay on the first sale, you earn 30% on every purchase your referrals make - forever. Build true passive income."
+      },
+      benefit2: {
+        title: "High-Converting Product",
+        description: "Purrify solves a real problem cat owners face daily. With 4.8/5 stars and 98% satisfaction rate, our products sell themselves."
+      },
+      benefit3: {
+        title: "Real-Time Tracking",
+        description: "Monitor your earnings, clicks, and conversions in real-time with our advanced affiliate dashboard. Full transparency on your performance."
+      },
+      benefit4: {
+        title: "Marketing Resources",
+        description: "Access professional banners, email templates, product images, and proven copy. We provide everything you need to succeed."
+      }
+    },
+    testimonials: {
+      title: "Success Stories from Our Affiliates",
+      testimonial1: {
+        quote: "I've earned over $3,400 in the past 6 months just by recommending Purrify to my cat blog audience. The recurring commissions add up fast!",
+        name: "Jessica M.",
+        role: "Cat Blog Owner"
+      },
+      testimonial2: {
+        quote: "Best affiliate program I've joined. Great product, high conversion rate, and the 30% lifetime commission is unbeatable. Highly recommend!",
+        name: "Mike T.",
+        role: "Pet Product Reviewer"
+      },
+      testimonial3: {
+        quote: "The support team is amazing. They helped me optimize my content and now I'm earning steady monthly income. This is truly passive income.",
+        name: "Amanda R.",
+        role: "YouTube Creator"
+      }
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      question1: "How much can I earn?",
+      answer1: "You earn 30% commission on every sale. If you refer 10 customers buying the $24.99 standard size monthly, that's $74.97/month in recurring income. There's no limit to how much you can earn.",
+      question2: "When do I get paid?",
+      answer2: "Commissions are paid monthly via PayPal, direct deposit, or check. We pay on the 15th of each month for the previous month's earnings. Minimum payout is $50.",
+      question3: "How long do cookies last?",
+      answer3: "Our affiliate cookies last for 90 days. If someone clicks your link and purchases within 90 days, you get credit for that sale and all future purchases from that customer.",
+      question4: "Do I need a website?",
+      answer4: "No! While having a website helps, you can share your affiliate link on social media, YouTube, email newsletters, or anywhere else you connect with cat owners.",
+      question5: "What marketing materials do you provide?",
+      answer5: "We provide professional banners, product images, email templates, social media posts, and proven copy. Everything you need to start promoting immediately."
+    },
+    finalCTA: {
+      title: "Ready to Start Earning?",
+      subtitle: "Join hundreds of successful affiliates earning passive income with Purrify",
+      cta: "Join the Affiliate Program",
+      disclaimer: "Free to join • No monthly fees • Start earning immediately"
+    }
   }
 };

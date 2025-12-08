@@ -1431,5 +1431,101 @@ export const zh = {
     faq3Answer: "是的！只要您继续订阅，此特惠价格就会锁定。您永远不会支付超过此价格。",
     bottomNote: "此一次性优惠仅在您首次购买后立即可用",
     returnHome: "返回首页"
+  },
+
+  // Affiliate Page
+  affiliate: {
+    metaTitle: "通过Purrify联盟计划赚取月收入",
+    metaDescription: "向猫主人推荐Purrify，终身赚取30%的循环佣金。加入数百名成功的联盟会员，通过帮助猫咪无异味生活赚取被动收入。",
+    hero: {
+      badge: "加入我们的联盟计划",
+      title: "通过Purrify赚取月收入",
+      subtitle: "向猫主人推荐Purrify，终身赚取30%的月度循环收入。",
+      primaryCTA: "成为联盟会员",
+      secondaryCTA: "查看收益计算器"
+    },
+    calculator: {
+      title: "计算您的潜在收益",
+      subtitle: "调整滑块，查看您使用Purrify 30%佣金可以赚取多少",
+      standardProduct: "50g 标准装（$24.99）- 推荐数/月",
+      familyPack: "120g 家庭装（$44.99）- 推荐数/月",
+      perSale: "每笔销售",
+      monthlyIncome: "预计月收入",
+      yearlyIncome: "预计年收入",
+      disclaimer: "这些是基于30%佣金的潜在收益。实际结果可能有所不同。",
+      cta: "立即开始赚钱"
+    },
+    howItWorks: {
+      title: "如何运作",
+      step1: {
+        title: "加入计划",
+        description: "创建您的联盟账户并获得您的独特推荐链接。加入是免费的，只需不到2分钟。"
+      },
+      step2: {
+        title: "分享您的链接",
+        description: "通过社交媒体、博客文章、视频或电子邮件与您的受众分享您的推荐链接。我们提供营销材料帮助您成功。"
+      },
+      step3: {
+        title: "终身获得报酬",
+        description: "您的推荐客户每次购买都能赚取30%的循环佣金 - 不仅仅是第一次购买，而是永远。每月通过您首选的方式发送付款。"
+      }
+    },
+    benefits: {
+      title: "为什么加入Purrify联盟计划？",
+      subtitle: "我们设计了这个计划，通过行业领先的佣金和支持帮助您成功",
+      benefit1: {
+        title: "30%终身佣金",
+        description: "与大多数仅在首次销售时支付的计划不同，您的推荐客户每次购买都能赚取30% - 永远。建立真正的被动收入。"
+      },
+      benefit2: {
+        title: "高转化率产品",
+        description: "Purrify解决猫主人每天面临的真实问题。凭借4.8/5星和98%满意度，我们的产品不言自明。"
+      },
+      benefit3: {
+        title: "实时跟踪",
+        description: "通过我们先进的联盟仪表板实时监控您的收益、点击和转化。对您的表现完全透明。"
+      },
+      benefit4: {
+        title: "营销资源",
+        description: "获取专业横幅、电子邮件模板、产品图片和经过验证的文案。我们提供您成功所需的一切。"
+      }
+    },
+    testimonials: {
+      title: "我们联盟会员的成功故事",
+      testimonial1: {
+        quote: "在过去的6个月里，我仅通过向我的猫博客受众推荐Purrify就赚了超过3,400美元。循环佣金增长得很快！",
+        name: "Jessica M.",
+        role: "猫博客主"
+      },
+      testimonial2: {
+        quote: "我加入过的最好的联盟计划。优质产品，高转化率，30%的终身佣金无与伦比。强烈推荐！",
+        name: "Mike T.",
+        role: "宠物产品评论员"
+      },
+      testimonial3: {
+        quote: "支持团队太棒了。他们帮助我优化内容，现在我获得了稳定的月收入。这真的是被动收入。",
+        name: "Amanda R.",
+        role: "YouTube创作者"
+      }
+    },
+    faq: {
+      title: "常见问题",
+      question1: "我能赚多少钱？",
+      answer1: "您每次销售赚取30%的佣金。如果您推荐10位客户每月购买24.99美元的标准装，那就是每月74.97美元的循环收入。您可以赚取的金额没有限制。",
+      question2: "我什么时候获得报酬？",
+      answer2: "佣金通过PayPal、直接存款或支票每月支付。我们在每月15日支付上个月的收益。最低支付金额为50美元。",
+      question3: "Cookie有效期多长？",
+      answer3: "我们的联盟Cookie有效期为90天。如果有人点击您的链接并在90天内购买，您将获得该销售以及该客户所有未来购买的信用。",
+      question4: "我需要网站吗？",
+      answer4: "不需要！虽然拥有网站有帮助，但您可以在社交媒体、YouTube、电子邮件通讯或任何与猫主人联系的地方分享您的联盟链接。",
+      question5: "你们提供什么营销材料？",
+      answer5: "我们提供专业横幅、产品图片、电子邮件模板、社交媒体帖子和经过验证的文案。您需要的一切都可以立即开始推广。"
+    },
+    finalCTA: {
+      title: "准备开始赚钱了吗？",
+      subtitle: "加入数百名成功的联盟会员，通过Purrify赚取被动收入",
+      cta: "加入联盟计划",
+      disclaimer: "免费加入 • 无月费 • 立即开始赚钱"
+    }
   }
 };

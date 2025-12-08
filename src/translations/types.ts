@@ -1196,4 +1196,100 @@ export interface TranslationType {
     bottomNote: string;
     returnHome: string;
   };
+
+  // Affiliate Page
+  affiliate?: {
+    metaTitle: string;
+    metaDescription: string;
+    hero: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      primaryCTA: string;
+      secondaryCTA: string;
+    };
+    calculator: {
+      title: string;
+      subtitle: string;
+      standardProduct: string;
+      familyPack: string;
+      perSale: string;
+      monthlyIncome: string;
+      yearlyIncome: string;
+      disclaimer: string;
+      cta: string;
+    };
+    howItWorks: {
+      title: string;
+      step1: {
+        title: string;
+        description: string;
+      };
+      step2: {
+        title: string;
+        description: string;
+      };
+      step3: {
+        title: string;
+        description: string;
+      };
+    };
+    benefits: {
+      title: string;
+      subtitle: string;
+      benefit1: {
+        title: string;
+        description: string;
+      };
+      benefit2: {
+        title: string;
+        description: string;
+      };
+      benefit3: {
+        title: string;
+        description: string;
+      };
+      benefit4: {
+        title: string;
+        description: string;
+      };
+    };
+    testimonials: {
+      title: string;
+      testimonial1: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+      testimonial2: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+      testimonial3: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+    };
+    faq: {
+      title: string;
+      question1: string;
+      answer1: string;
+      question2: string;
+      answer2: string;
+      question3: string;
+      answer3: string;
+      question4: string;
+      answer4: string;
+      question5: string;
+      answer5: string;
+    };
+    finalCTA: {
+      title: string;
+      subtitle: string;
+      cta: string;
+      disclaimer: string;
+    };
+  };
 }
