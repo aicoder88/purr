@@ -1030,7 +1030,7 @@ export const fr = {
       {
         title: "Avis Clients",
         description: "Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.",
-        link: "/customers/testimonials"
+        link: "/reviews"
       },
       {
         title: "Guide de Litière",

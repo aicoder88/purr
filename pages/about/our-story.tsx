@@ -310,7 +310,7 @@ const OurStoryPage: NextPage = () => {
                     <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                   <Button
                     size="lg"
                     variant="outline"

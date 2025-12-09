@@ -158,7 +158,7 @@ const ShippingPage: NextPage = () => {
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 Support
               </Link>
               <span>/</span>
@@ -478,7 +478,7 @@ const ShippingPage: NextPage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Contact Support
@@ -500,7 +500,7 @@ const ShippingPage: NextPage = () => {
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Reviews

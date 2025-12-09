@@ -315,7 +315,7 @@ export default function HowItWorksPage() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Have more questions about how Purrify works?
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                 <Button size="lg" variant="outline">
                   Contact Our Experts
                 </Button>

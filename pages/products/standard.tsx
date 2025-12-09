@@ -384,7 +384,7 @@ export default function StandardSizePage() {
                       <Heart className="w-5 h-5 mr-2" />
                       Add to Wishlist
                     </Button>
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                       <Button variant="outline" size="lg" className="flex-1">
                         <Users className="w-5 h-5 mr-2" />
                         Read Reviews
@@ -504,7 +504,7 @@ export default function StandardSizePage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                 <Button variant="outline" size="lg">
                   Read All Customer Stories
                 </Button>

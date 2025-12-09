@@ -407,7 +407,7 @@ export default function CaseStudies() {
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Read verified reviews from 500+ customers</p>
                 </Link>
-                <Link href="/customers/testimonials" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <CheckCircle className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>

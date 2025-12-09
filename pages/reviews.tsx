@@ -310,7 +310,7 @@ export default function Reviews() {
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares</p>
                 </Link>
-                <Link href="/customers/case-studies" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/case-studies" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Detailed success stories</p>
                 </Link>

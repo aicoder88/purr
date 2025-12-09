@@ -1022,7 +1022,7 @@ export const zh = {
       {
         title: "客户评价",
         description: "看看1,000+满意客户如何评价他们的Purrify体验。",
-        link: "/customers/testimonials"
+        link: "/reviews"
       },
       {
         title: "猫砂指南",

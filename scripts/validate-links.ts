@@ -72,14 +72,14 @@ const VALID_ROUTES = [
   
   // Support
   '/support',
-  '/support/contact',
+  '/contact',
   '/support/shipping',
   
   // Customer
   '/customer/portal',
   '/customer/referrals',
-  '/customers/testimonials',
-  '/customers/case-studies',
+  '/reviews',
+  '/case-studies',
   
   // Support
   '/support/subscription',

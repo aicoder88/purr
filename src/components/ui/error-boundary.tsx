@@ -24,7 +24,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
   }, []);
 
   const navigateSupport = React.useCallback(() => {
-    window.location.href = '/support/contact';
+    window.location.href = '/contact';
   }, []);
 
   return (

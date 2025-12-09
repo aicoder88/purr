@@ -986,7 +986,7 @@ export const en = {
       {
         title: "Customer Reviews",
         description: "See what 1,000+ satisfied customers are saying about their Purrify experience.",
-        link: "/customers/testimonials"
+        link: "/reviews"
       },
       {
         title: "Cat Litter Guide",

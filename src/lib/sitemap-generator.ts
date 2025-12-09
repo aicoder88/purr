@@ -107,7 +107,7 @@ class SitemapGenerator {
         changefreq: 'weekly',
         priority: 0.9
       },
-      
+
       // Learning pages
       {
         loc: '/learn/how-it-works',
@@ -124,22 +124,22 @@ class SitemapGenerator {
         changefreq: 'weekly',
         priority: 0.8
       },
-      
+
       // Customer pages
       {
-        loc: '/customers/testimonials',
+        loc: '/reviews',
         changefreq: 'weekly',
         priority: 0.7
       },
       {
-        loc: '/customers/case-studies',
+        loc: '/case-studies',
         changefreq: 'monthly',
         priority: 0.6
       },
-      
+
       // Support pages
       {
-        loc: '/support/contact',
+        loc: '/contact',
         changefreq: 'monthly',
         priority: 0.6
       },
@@ -148,21 +148,21 @@ class SitemapGenerator {
         changefreq: 'monthly',
         priority: 0.5
       },
-      
+
       // About pages
       {
         loc: '/about/our-story',
         changefreq: 'monthly',
         priority: 0.6
       },
-      
+
       // Product comparison
       {
         loc: '/products/compare',
         changefreq: 'weekly',
         priority: 0.7
       },
-      
+
       // Blog (if exists)
       {
         loc: '/blog',
@@ -236,12 +236,12 @@ class SitemapGenerator {
         priority: 0.8
       },
       {
-        loc: '/fr/customers/testimonials',
+        loc: '/fr/reviews',
         changefreq: 'weekly',
         priority: 0.7
       },
       {
-        loc: '/fr/support/contact',
+        loc: '/fr/contact',
         changefreq: 'monthly',
         priority: 0.6
       },
@@ -259,25 +259,25 @@ class SitemapGenerator {
   generateXML(): string {
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
-    
+
     if (this.config.includeAlternates) {
       xml += ' xmlns:xhtml="http://www.w3.org/1999/xhtml"';
     }
-    
+
     xml += '>\n';
 
     this.urls.forEach(url => {
       xml += '  <url>\n';
       xml += `    <loc>${this.escapeXml(url.loc)}</loc>\n`;
-      
+
       if (url.lastmod) {
         xml += `    <lastmod>${url.lastmod}</lastmod>\n`;
       }
-      
+
       if (url.changefreq) {
         xml += `    <changefreq>${url.changefreq}</changefreq>\n`;
       }
-      
+
       if (url.priority !== undefined) {
         xml += `    <priority>${url.priority.toFixed(1)}</priority>\n`;
       }
@@ -288,7 +288,7 @@ class SitemapGenerator {
           xml += `    <xhtml:link rel="alternate" hreflang="${alternate.hrefLang}" href="${this.escapeXml(alternate.href)}" />\n`;
         });
       }
-      
+
       xml += '  </url>\n';
     });
 
@@ -304,11 +304,11 @@ class SitemapGenerator {
     sitemaps.forEach(sitemap => {
       xml += '  <sitemap>\n';
       xml += `    <loc>${this.escapeXml(sitemap.loc)}</loc>\n`;
-      
+
       if (sitemap.lastmod) {
         xml += `    <lastmod>${sitemap.lastmod}</lastmod>\n`;
       }
-      
+
       xml += '  </sitemap>\n';
     });
 
@@ -320,12 +320,12 @@ class SitemapGenerator {
   async saveSitemap(): Promise<void> {
     const xml = this.generateXML();
     const outputDir = path.dirname(this.config.outputPath);
-    
+
     // Ensure output directory exists
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
-    
+
     fs.writeFileSync(this.config.outputPath, xml, 'utf8');
     console.log(`Sitemap generated: ${this.config.outputPath}`);
   }
@@ -392,7 +392,7 @@ Crawl-delay: 1
     this.urls.forEach(url => {
       const priority = url.priority?.toString() || 'undefined';
       const changefreq = url.changefreq || 'undefined';
-      
+
       stats.byPriority[priority] = (stats.byPriority[priority] || 0) + 1;
       stats.byChangefreq[changefreq] = (stats.byChangefreq[changefreq] || 0) + 1;
     });
@@ -412,19 +412,19 @@ export async function generatePurrifySitemap(): Promise<void> {
   };
 
   const generator = new SitemapGenerator(config);
-  
+
   // Generate all pages
   generator.generateStaticPages();
   generator.generateDynamicPages();
   generator.generateFrenchPages();
-  
+
   // Save sitemap
   await generator.saveSitemap();
-  
+
   // Generate and save robots.txt
   const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
   generator.saveRobotsTxt(robotsPath);
-  
+
   // Log statistics
   const stats = generator.getStats();
   console.log('Sitemap Statistics:', stats);

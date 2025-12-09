@@ -427,7 +427,7 @@ const ProductComparePage: NextPage = () => {
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     {t.productComparison.getPersonalizedAdvice}
                   </Button>

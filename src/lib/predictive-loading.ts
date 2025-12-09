@@ -303,7 +303,7 @@ class PredictiveLoader {
       predictions.push(
         { path: '/checkout', confidence: 0.8 },
         { path: '/learn/faq', confidence: 0.4 },
-        { path: '/customers/testimonials', confidence: 0.3 }
+        { path: '/reviews', confidence: 0.3 }
       );
     }
 
