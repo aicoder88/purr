@@ -150,7 +150,7 @@ export default function AffiliatePage() {
                   <div>
                     <h3 className="text-xl font-bold text-white dark:text-white mb-2">Uncapped Commissions</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
-                      Earn 30% on every sale. Our top affiliates make over $2,000 monthly just by sharing content they love.
+                      Earn 30% on every sale with no limits. The more you share, the more you earn.
                     </p>
                   </div>
                 </div>
@@ -172,9 +172,9 @@ export default function AffiliatePage() {
                     <Users className="w-6 h-6 text-green-400 dark:text-green-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Growing Community</h3>
+                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Easy to Promote</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
-                      Join hundreds of creators who are monetizing their pet content with Purrify.
+                      Eco-friendly, effective, and loved by cat owners. A product that practically sells itself.
                     </p>
                   </div>
                 </div>
