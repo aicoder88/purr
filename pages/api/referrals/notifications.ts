@@ -123,7 +123,7 @@ function generateWelcomeEmailHTML(recipientName?: string, referralCode?: string)
         <meta charset="utf-8">
         <title>Welcome to Purrify Referrals</title>
       </head>
-      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <body style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
           <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
         </div>
@@ -136,7 +136,7 @@ function generateWelcomeEmailHTML(recipientName?: string, referralCode?: string)
 
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
           <h3 style="color: #FF6B35; margin-bottom: 10px;">Your Referral Code</h3>
-          <div style="font-size: 24px; font-weight: bold; font-family: monospace; background: white; padding: 15px; border-radius: 5px; border: 2px dashed #FF6B35;">
+          <div style="font-size: 24px; font-weight: bold; font-family: Inter, monospace; background: white; padding: 15px; border-radius: 5px; border: 2px dashed #FF6B35;">
             ${referralCode}
           </div>
           <p style="margin-top: 10px; font-size: 14px; color: #666;">Share this code for instant rewards!</p>
@@ -198,7 +198,7 @@ function generateRewardEmailHTML(recipientName?: string, rewardDetails?: RewardD
         <meta charset="utf-8">
         <title>Referral Reward Earned!</title>
       </head>
-      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <body style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
           <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
         </div>
@@ -281,7 +281,7 @@ function generateMilestoneEmailHTML(recipientName?: string, rewardDetails?: Rewa
         <meta charset="utf-8">
         <title>Milestone Reward Unlocked</title>
       </head>
-      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <body style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
           <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
         </div>
@@ -295,7 +295,7 @@ function generateMilestoneEmailHTML(recipientName?: string, rewardDetails?: Rewa
           <p style="font-size: 18px; font-weight: bold; margin: 0;">${rewardSummary}</p>
           ${rewardDetails?.code ? `
             <div style="margin-top: 15px; font-size: 16px;">
-              <span style="background: white; padding: 10px 14px; border-radius: 6px; border: 1px dashed #FF6B35; font-family: monospace;">${rewardDetails.code}</span>
+              <span style="background: white; padding: 10px 14px; border-radius: 6px; border: 1px dashed #FF6B35; font-family: Inter, monospace;">${rewardDetails.code}</span>
             </div>
           ` : ''}
         </div>
@@ -339,7 +339,7 @@ function generateRefereeSignupEmailHTML(recipientName?: string, referrerName?: s
         <meta charset="utf-8">
         <title>New Referral Signup</title>
       </head>
-      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <body style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 24px;">
           <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
         </div>
@@ -391,7 +391,7 @@ function generateRefereePurchaseEmailHTML(recipientName?: string, referrerName?:
         <meta charset="utf-8">
         <title>Referral Purchase Complete</title>
       </head>
-      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <body style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 24px;">
           <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
         </div>
@@ -403,7 +403,7 @@ function generateRefereePurchaseEmailHTML(recipientName?: string, referrerName?:
         <div style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; padding: 24px; border-radius: 10px; margin: 30px 0; text-align: center;">
           <h2 style="margin: 0 0 10px;">${rewardSummary}</h2>
           ${rewardDetails?.code ? `
-            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-size: 18px; font-family: monospace;">
+            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-size: 18px; font-family: Inter, monospace;">
               Use Code: ${rewardDetails.code}
             </div>
           ` : '<p style="margin: 0; font-size: 16px;">Reward automatically applied at checkout.</p>'}

@@ -28,26 +28,26 @@ class CacheOptimizationAnalyzer {
       warning: '⚠️',
       error: '❌'
     }[type];
-    
+
     console.log(`${prefix} [${timestamp}] ${message}`);
   }
 
   // Analyze current caching configuration
   analyzeCacheConfig() {
     this.log('Analyzing cache configuration...');
-    
+
     const nextConfigPath = path.join(this.projectRoot, 'next.config.js');
-    
+
     if (fs.existsSync(nextConfigPath)) {
       const configContent = fs.readFileSync(nextConfigPath, 'utf8');
-      
+
       // Analyze headers configuration
       const hasStaticCaching = configContent.includes('/_next/static/');
       const hasImageCaching = configContent.includes('/_next/image');
       const hasApiCaching = configContent.includes('/api/');
       const hasCompressionEnabled = configContent.includes('compression: true');
       const hasAdvancedCaching = configContent.includes('isrMemoryCacheSize');
-      
+
       this.cacheReport.configuration = {
         staticAssetCaching: hasStaticCaching,
         imageCaching: hasImageCaching,
@@ -62,7 +62,7 @@ class CacheOptimizationAnalyzer {
           hasAdvancedCaching
         })
       };
-      
+
       this.log(`Configuration score: ${this.cacheReport.configuration.configurationScore}/100`, 'success');
     } else {
       this.log('next.config.js not found', 'warning');
@@ -83,17 +83,17 @@ class CacheOptimizationAnalyzer {
   // Analyze service worker caching
   analyzeServiceWorkerCache() {
     this.log('Analyzing service worker cache...');
-    
+
     const swPath = path.join(this.projectRoot, 'public/sw.js');
-    
+
     if (fs.existsSync(swPath)) {
       const swContent = fs.readFileSync(swPath, 'utf8');
-      
+
       const hasCacheFirst = swContent.includes('cache-first');
       const hasNetworkFirst = swContent.includes('network-first');
       const hasStaleWhileRevalidate = swContent.includes('stale-while-revalidate');
       const hasBackgroundSync = swContent.includes('background-sync');
-      
+
       this.cacheReport.strategies.serviceWorker = {
         implemented: true,
         cacheFirst: hasCacheFirst,
@@ -107,7 +107,7 @@ class CacheOptimizationAnalyzer {
           hasBackgroundSync
         })
       };
-      
+
       this.log(`Service Worker score: ${this.cacheReport.strategies.serviceWorker.score}/100`, 'success');
     } else {
       this.cacheReport.strategies.serviceWorker = {
@@ -130,30 +130,30 @@ class CacheOptimizationAnalyzer {
   // Analyze client-side caching
   analyzeClientSideCache() {
     this.log('Analyzing client-side cache implementation...');
-    
+
     const cacheOptimizerPath = path.join(this.projectRoot, 'src/components/performance/CacheOptimizer.tsx');
     const cacheUtilsPath = path.join(this.projectRoot, 'src/lib/cache-utils.ts');
-    
+
     const hasCacheOptimizer = fs.existsSync(cacheOptimizerPath);
     const hasCacheUtils = fs.existsSync(cacheUtilsPath);
-    
+
     this.cacheReport.strategies.clientSide = {
       cacheOptimizer: hasCacheOptimizer,
       cacheUtils: hasCacheUtils,
       score: (hasCacheOptimizer ? 50 : 0) + (hasCacheUtils ? 50 : 0)
     };
-    
+
     this.log(`Client-side cache score: ${this.cacheReport.strategies.clientSide.score}/100`, 'success');
   }
 
   // Generate performance recommendations
   generateRecommendations() {
     this.log('Generating cache optimization recommendations...');
-    
+
     const config = this.cacheReport.configuration;
     const sw = this.cacheReport.strategies.serviceWorker;
     const client = this.cacheReport.strategies.clientSide;
-    
+
     // Configuration recommendations
     if (!config.staticAssetCaching) {
       this.cacheReport.recommendations.push({
@@ -164,7 +164,7 @@ class CacheOptimizationAnalyzer {
         impact: 'High performance improvement for repeat visits'
       });
     }
-    
+
     if (!config.imageCaching) {
       this.cacheReport.recommendations.push({
         category: 'Configuration',
@@ -174,7 +174,7 @@ class CacheOptimizationAnalyzer {
         impact: 'Significant bandwidth savings and faster image loading'
       });
     }
-    
+
     if (!config.compressionEnabled) {
       this.cacheReport.recommendations.push({
         category: 'Configuration',
@@ -184,7 +184,7 @@ class CacheOptimizationAnalyzer {
         impact: 'Reduced bandwidth usage and faster loading'
       });
     }
-    
+
     // Service Worker recommendations
     if (!sw.implemented) {
       this.cacheReport.recommendations.push({
@@ -195,7 +195,7 @@ class CacheOptimizationAnalyzer {
         impact: 'Offline support and improved performance'
       });
     }
-    
+
     if (sw.implemented && sw.score < 80) {
       this.cacheReport.recommendations.push({
         category: 'Service Worker',
@@ -205,7 +205,7 @@ class CacheOptimizationAnalyzer {
         impact: 'Better cache hit rates and performance'
       });
     }
-    
+
     // Client-side recommendations
     if (!client.cacheOptimizer) {
       this.cacheReport.recommendations.push({
@@ -216,7 +216,7 @@ class CacheOptimizationAnalyzer {
         impact: 'Reduced API calls and faster user interactions'
       });
     }
-    
+
     this.log(`Generated ${this.cacheReport.recommendations.length} recommendations`, 'success');
   }
 
@@ -225,23 +225,23 @@ class CacheOptimizationAnalyzer {
     const configScore = this.cacheReport.configuration.configurationScore || 0;
     const swScore = this.cacheReport.strategies.serviceWorker.score || 0;
     const clientScore = this.cacheReport.strategies.clientSide.score || 0;
-    
+
     const overallScore = Math.round((configScore + swScore + clientScore) / 3);
-    
+
     this.cacheReport.performance.overallScore = overallScore;
     this.cacheReport.performance.breakdown = {
       configuration: configScore,
       serviceWorker: swScore,
       clientSide: clientScore
     };
-    
+
     return overallScore;
   }
 
   // Generate HTML report
   generateHTMLReport() {
     const overallScore = this.calculateOverallScore();
-    
+
     const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -250,7 +250,7 @@ class CacheOptimizationAnalyzer {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purrify Cache Optimization Report</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; }
         .score { font-size: 3em; font-weight: bold; margin: 10px 0; }
@@ -327,7 +327,7 @@ class CacheOptimizationAnalyzer {
     </div>
 </body>
 </html>`;
-    
+
     const reportPath = path.join(this.projectRoot, 'cache-optimization-report.html');
     fs.writeFileSync(reportPath, html);
     this.log(`HTML report saved to ${reportPath}`, 'success');
@@ -337,28 +337,28 @@ class CacheOptimizationAnalyzer {
   async analyze() {
     try {
       this.log('🚀 Starting cache optimization analysis...');
-      
+
       this.analyzeCacheConfig();
       this.analyzeServiceWorkerCache();
       this.analyzeClientSideCache();
       this.generateRecommendations();
-      
+
       const overallScore = this.calculateOverallScore();
-      
+
       // Save JSON report
       const jsonPath = path.join(this.projectRoot, 'cache-optimization-report.json');
       fs.writeFileSync(jsonPath, JSON.stringify(this.cacheReport, null, 2));
-      
+
       // Generate HTML report
       this.generateHTMLReport();
-      
+
       this.log('📊 Cache Optimization Summary:', 'info');
       this.log(`  Overall Score: ${overallScore}/100`, 'info');
       this.log(`  Configuration: ${this.cacheReport.performance.breakdown.configuration}/100`, 'info');
       this.log(`  Service Worker: ${this.cacheReport.performance.breakdown.serviceWorker}/100`, 'info');
       this.log(`  Client-side: ${this.cacheReport.performance.breakdown.clientSide}/100`, 'info');
       this.log(`  Recommendations: ${this.cacheReport.recommendations.length}`, 'info');
-      
+
       if (overallScore >= 80) {
         this.log('🎉 Excellent cache optimization!', 'success');
       } else if (overallScore >= 60) {
@@ -366,11 +366,11 @@ class CacheOptimizationAnalyzer {
       } else {
         this.log('🔧 Cache optimization needs attention.', 'warning');
       }
-      
+
       this.log('📄 Reports saved:', 'info');
       this.log('  - cache-optimization-report.json', 'info');
       this.log('  - cache-optimization-report.html', 'info');
-      
+
     } catch (error) {
       this.log(`Cache analysis failed: ${error.message}`, 'error');
       process.exit(1);

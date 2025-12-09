@@ -105,7 +105,7 @@ export class ReportGenerator {
   <title>Broken Links Report - ${report.timestamp}</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; background: #f5f5f5; }
+    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; background: #f5f5f5; }
     .container { max-width: 1400px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     h1 { color: #333; margin-bottom: 0.5rem; }
     .timestamp { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
@@ -194,7 +194,7 @@ export class ReportGenerator {
   <title>Technical SEO Health Report - ${report.timestamp}</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; background: #f5f5f5; }
+    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; background: #f5f5f5; }
     .container { max-width: 1400px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     h1 { color: #333; margin-bottom: 0.5rem; }
     h2 { color: #495057; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e9ecef; }
