@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { Quicksand, Nunito, Inter, Outfit } from 'next/font/google';
+import { Quicksand, Inter } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
 import { DefaultSeo } from 'next-seo';
@@ -39,10 +39,8 @@ interface PageProps {
   [key: string]: unknown;
 }
 
-const quicksand = Quicksand({ subsets: ['latin'], display: 'swap', variable: '--font-quicksand', weight: ['300', '400', '500', '600', '700'] });
-const nunito = Nunito({ subsets: ['latin'], display: 'swap', variable: '--font-nunito', weight: ['200', '300', '400', '500', '600', '700', '800', '900'] });
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '700'] });
-const outfit = Outfit({ subsets: ['latin'], display: 'swap', variable: '--font-outfit', weight: ['400', '500', '700', '900'] });
+const quicksand = Quicksand({ subsets: ['latin'], display: 'swap', variable: '--font-quicksand', weight: ['400', '500', '600', '700'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '600', '700'] });
 
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
@@ -174,7 +172,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               }}
             />
 
-            <div className={`${quicksand.variable} ${nunito.variable} ${inter.variable} ${outfit.variable}`}>
+            <div className={`${quicksand.variable} ${inter.variable}`}>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
