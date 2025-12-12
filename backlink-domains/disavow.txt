@@ -1,0 +1,27 @@
+# Spam Backlinks Disavow File for Purrify.ca
+
+# Generated: December 11, 2025
+# Purpose: Remove toxic spam backlinks identified in Ahrefs analysis
+
+# Spam SEO service links
+domain:exlinko.net
+domain:rank.itxoft.com
+domain:crossover-p.com
+domain:rank-fast.agency
+domain:seolexo.com
+domain:seo-backlink.agency
+domain:primeseo.xyz
+domain:xploredomains.com
+domain:linkbooster.agency
+domain:buyseolink.com
+
+# Instructions for use:
+# 1. Go to https://search.google.com/search-console/disavow-links
+# 2. Select purrify.ca property
+# 3. Upload this file
+# 4. Monitor Search Console for 2-3 months for impact
+# 5. Check rankings and organic traffic trends
+
+# Note: This will tell Google to ignore these backlinks when calculating
+# your site's authority and rankings. The links will still show in tools
+# like Ahrefs, but Google will disregard them.
