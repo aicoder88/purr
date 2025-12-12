@@ -1,11 +1,10 @@
-import { FEATURE_DESCRIPTIONS } from './common';
 import { CONTACT_INFO } from '../lib/constants';
 
 export const en = {
   // Common
   siteName: "Purrify",
   siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
-  
+
   // Navigation
   nav: {
     home: "Home",
@@ -23,7 +22,7 @@ export const en = {
     termsOfService: "Terms of Service",
     // Dropdown items
     trialSize: "12g Trial Size",
-    compareSizes: "Compare Sizes", 
+    compareSizes: "Compare Sizes",
     viewAllProducts: "View All Products",
     howItWorksPage: "How It Works",
     faq: "FAQ",
@@ -68,7 +67,7 @@ export const en = {
       retailer: ['PetSmart', 'Pet Valu', 'Global Pet Foods', 'Bosleys', 'Ren\'s Pets']
     }
   },
-  
+
   // Products
   products: {
     "purrify-12g": {
@@ -142,7 +141,7 @@ export const en = {
       }
     }
   },
-  
+
   // Features
   features: {
     odorElimination: {
@@ -178,7 +177,7 @@ export const en = {
       description: "See the difference Purrify makes in your cat's litter box."
     }
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "Fresh Air in 60 Seconds - Simple as 1-2-3",
@@ -207,7 +206,7 @@ export const en = {
       nonClumping: "NON-CLUMPING"
     }
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "FOR EVERY CAT HOUSEHOLD",
@@ -224,7 +223,7 @@ export const en = {
     adding: "Adding...",
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "AVAILABLE IN STORES",
@@ -235,7 +234,7 @@ export const en = {
     callStore: "Call Store",
     storeDescriptions: {
       completePetCareAndSupplies: "Complete pet care and supplies",
-      premiumPetBoutique: "Premium pet boutique", 
+      premiumPetBoutique: "Premium pet boutique",
       familyOwnedPetStore: "Family-owned pet store",
       globalPetFoodsLocation: "Global Pet Foods location",
       premiumPetProductsAndSupplies: "Premium pet products & supplies",
@@ -243,7 +242,7 @@ export const en = {
       petStoreWithGroomingServices: "Pet store with grooming services"
     }
   },
-  
+
   // Call to Action
   cta: {
     title: "Stop Being Embarrassed by Cat Litter Smell!",
@@ -252,7 +251,7 @@ export const en = {
     joinText: "Join 1,000+ families with odor-free homes - Visit your local store",
     guarantee: "Proven results you can smell (or can't smell!)"
   },
-  
+
   // FAQ
   faq: {
     title: "Frequently Asked Questions",
@@ -302,7 +301,7 @@ export const en = {
       }
     ]
   },
-  
+
   // Contact
   contact: {
     title: "Contact Us",
@@ -328,7 +327,7 @@ export const en = {
       submit: "Send"
     }
   },
-  
+
   // Newsletter
   newsletter: {
     title: "Subscribe to our newsletter",
@@ -343,7 +342,7 @@ export const en = {
       benefits: {
         firstOrder: "10% Off First Order",
         firstOrderDesc: "Exclusive discount for new subscribers",
-        catCareTips: "Cat Care Tips", 
+        catCareTips: "Cat Care Tips",
         catCareTipsDesc: "Weekly expert advice and litter tips",
         earlyAccess: "Early Access",
         earlyAccessDesc: "Be first to know about new products",
@@ -355,12 +354,12 @@ export const en = {
       joinText: "Join 1,000+ happy customers • No spam, unsubscribe anytime",
       features: {
         weeklyTips: "✓ Weekly tips",
-        exclusiveOffers: "✓ Exclusive offers", 
+        exclusiveOffers: "✓ Exclusive offers",
         earlyAccessProducts: "✓ Early access"
       }
     }
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "Enter Your Details",
@@ -376,7 +375,7 @@ export const en = {
     errorGeneric: "An error occurred. Please try again later.",
     privacyNotice: "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."
   },
-  
+
   // SEO
   seo: {
     keywords: "cat litter, odor control, activated carbon, cat litter additive, pet odor, cat odor elimination, natural odor control, cat care, pet supplies, cat video",
@@ -386,7 +385,7 @@ export const en = {
     },
     metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by 1,000+ cat owners across Canada."
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -811,7 +810,7 @@ export const en = {
         responseTime: "Response within 24 hours"
       },
       {
-        title: "Phone Support", 
+        title: "Phone Support",
         description: "Speak directly with our team",
         responseTime: "Mon-Fri 9AM-5PM EST"
       },
@@ -823,7 +822,7 @@ export const en = {
     ],
     form: {
       fullName: "Full Name",
-      emailAddress: "Email Address", 
+      emailAddress: "Email Address",
       subject: "Subject",
       message: "Message",
       contactReason: "Contact Reason",
@@ -845,7 +844,7 @@ export const en = {
         answer: "Standard shipping takes 3-5 business days within Canada. We also offer expedited shipping options."
       },
       {
-        question: "Can I use Purrify around my cat?", 
+        question: "Can I use Purrify around my cat?",
         answer: "Purrify uses the same type of activated carbon found in many home water filters and contains no added fragrances or dyes."
       },
       {
@@ -882,14 +881,14 @@ export const en = {
         id: "trial",
         name: "Trial Size",
         subtitle: "Perfect for first-time users",
-    duration: "One week duration",
-    cats: "For one cat",
+        duration: "One week duration",
+        cats: "For one cat",
         features: ["12g activated carbon", "Risk-free trial", "Perfect introduction"],
         bestFor: "New customers wanting to try Purrify",
         cta: "Try Risk-Free"
       },
       {
-        id: "standard", 
+        id: "standard",
         name: "Standard Size",
         subtitle: "Most popular choice",
         duration: "4-6 weeks",
@@ -900,10 +899,10 @@ export const en = {
       },
       {
         id: "large",
-        name: "Large Size", 
+        name: "Large Size",
         subtitle: "Best value for multi-cat homes",
-    duration: "4-week duration",
-    cats: "For 1-2 cats",
+        duration: "4-week duration",
+        cats: "For 1-2 cats",
         features: ["150g activated carbon", "Maximum savings", "Bulk discount"],
         bestFor: "Multi-cat households and heavy users",
         cta: "Get Best Value"
@@ -931,7 +930,7 @@ export const en = {
     seeHowProductsCompare: "See how our products compare",
     howLongWillEachSizeLast: "How long will each size last?",
     popular: "POPULAR",
-    bestValue: "BEST VALUE", 
+    bestValue: "BEST VALUE",
     perfectForFirstTime: "Perfect for first-time users",
     idealForSingleCat: "Ideal for single cat households",
     perfectForMultiCat: "Perfect for multi-cat households",
@@ -947,7 +946,54 @@ export const en = {
     getBestValue: "Get Best Value",
     chooseThisSize: "Choose This Size",
     tryWithoutRisk: "Try Without Risk",
-    chooseSmallSize: "Choose Small Size"
+    chooseSmallSize: "Choose Small Size",
+
+    // SEO
+    seo: {
+      title: "Find the Perfect Size",
+      description: "Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs."
+    },
+
+    stillUnsureDescription: "Start with our risk-free trial size and experience the Purrify difference for yourself.",
+
+    // Table Headers
+    tableHeaders: {
+      feature: "Feature",
+      trial: "12g Trial",
+      standard: "50g Regular",
+      large: "120g Large"
+    },
+
+    // Calculation Units
+    units: {
+      cat: "Cat",
+      cats: "Cats",
+      week: "week",
+      weeks: "weeks",
+      day: "day",
+      days: "days",
+      weekly: "Weekly",
+      perWeek: "per week"
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "How It Works",
+        description: "Discover the science behind our activated carbon technology and why it's so effective.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Customer Reviews",
+        description: "See what 1,000+ satisfied customers are saying about their Purrify experience.",
+        link: "/reviews"
+      },
+      {
+        title: "Cat Litter Guide",
+        description: "Learn about different litter types and how to choose the best option for your cat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ]
   },
 
   // Privacy Policy
@@ -966,7 +1012,7 @@ export const en = {
         ]
       },
       {
-        title: "How We Use Your Information", 
+        title: "How We Use Your Information",
         content: "We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you."
       },
       {
@@ -984,7 +1030,7 @@ export const en = {
     ],
     contactInfo: {
       email: "Email",
-      phone: "Phone", 
+      phone: "Phone",
       address: "Purrify Canada, Montreal, Quebec, Canada"
     }
   },
@@ -1151,7 +1197,7 @@ export const en = {
     detailedEmailHelp: "Get detailed answers via email",
     liveChat: "Live Chat",
     realTimeChatHelp: "Chat with us in real-time",
-    phoneSupport: "Phone Support", 
+    phoneSupport: "Phone Support",
     speakDirectlyTeam: "Speak with our team directly",
     contactUs: "Contact Us",
     startChat: "Start Chat",
@@ -1186,11 +1232,11 @@ export const en = {
     lowestRated: "Lowest Rated",
     mostHelpful: "Most Helpful",
     verifiedPurchase: "Verified Purchase",
-    
+
     // Payment & Cart
     securePayment: "Secure Payment",
     shoppingCart: "Shopping Cart",
-    
+
     // General
     happyCustomers: "Happy Customers",
     moneyBack: "Expert Support",
@@ -1418,5 +1464,156 @@ export const en = {
   scrollingBar: {
     freeShipping: "Free Shipping on All Subscription Orders",
     madeInCanada: "Manufactured in Canada from Domestic and Globally Sourced Ingredients"
+  },
+
+  // Maps
+  maps: {
+    findNearYou: "Find Purrify Near You | Retail Store Locations",
+    discoverWhere: "Discover where to buy Purrify across Canada. Each location represents a retail store where you can find our products.",
+    retailStores: "🗺️ Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more",
+    cities: {
+      montreal: "Montreal",
+      quebec: "Quebec City",
+      toronto: "Toronto",
+      vancouver: "Vancouver",
+      calgary: "Calgary",
+      ottawa: "Ottawa"
+    },
+    iframeTitle: "Purrify Retail Store Locations Map"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "Special One-Time Offer - Purrify",
+    metaDescription: "Exclusive one-time offer for new customers. Save 25% on quarterly autoship subscription.",
+    offerExpired: "Offer Expired",
+    offerExpiresIn: "Offer expires in",
+    headline: "Wait! One-Time Exclusive Offer",
+    subheadline: "Add autoship to your order and save 25%",
+    saveBadge: "SAVE 29%",
+    productTitle: "Purrify 50g Autoship",
+    productSubtitle: "3-Month Supply (3 × 50g bags)",
+    youSave: "You save",
+    benefit1: "Never run out - delivered every 3 months",
+    benefit2: "Free shipping included (save $7.99)",
+    benefit3: "Lock in this special price forever",
+    benefit4: "Cancel or skip anytime (no commitments)",
+    benefit5: "Automatic reminders before each shipment",
+    processing: "Processing...",
+    addToOrder: "Yes! Add to My Order",
+    noThanks: "No thanks, I prefer to pay full price later",
+    feature1Title: "Instant Activation",
+    feature1Description: "Your autoship starts immediately after this order",
+    feature2Title: "100% Satisfaction",
+    feature2Description: "30-day money-back guarantee on every shipment",
+    feature3Title: "Flexible Control",
+    feature3Description: "Skip, pause, or cancel online anytime",
+    testimonialText: "I almost skipped the autoship offer, but I'm so glad I didn't! It's one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.",
+    testimonialAuthor: "— Sarah M., Toronto",
+    faqTitle: "Common Questions",
+    faq1Question: "Can I cancel anytime?",
+    faq1Answer: "Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.",
+    faq2Question: "When will I be charged?",
+    faq2Answer: "You'll be charged today for this special offer. Your next shipment will be in 3 months, and you'll receive a reminder email 7 days before.",
+    faq3Question: "Is the price locked in?",
+    faq3Answer: "Yes! This special price is locked in for as long as you remain subscribed. You'll never pay more than this rate.",
+    bottomNote: "This one-time offer is only available immediately after your first purchase",
+    returnHome: "Return to homepage"
+  },
+
+  // Affiliate Page
+  affiliate: {
+    metaTitle: "Earn Monthly Income with Purrify Affiliate Program",
+    metaDescription: "Refer cat owners to Purrify and earn 30% recurring commission for life. Join hundreds of successful affiliates earning passive income helping cats live odor-free.",
+    hero: {
+      badge: "Join Our Affiliate Program",
+      title: "Earn Monthly Income With Purrify",
+      subtitle: "Refer cat owners to Purrify and earn 30% of monthly recurring income for life.",
+      primaryCTA: "Become An Affiliate",
+      secondaryCTA: "See Earnings Calculator"
+    },
+    calculator: {
+      title: "Calculate Your Potential Earnings",
+      subtitle: "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
+      standardProduct: "50g Standard ($24.99) - Referrals/Month",
+      familyPack: "120g Family Pack ($44.99) - Referrals/Month",
+      perSale: "per sale",
+      monthlyIncome: "Estimated Monthly Income",
+      yearlyIncome: "Estimated Yearly Income",
+      disclaimer: "These are potential earnings based on 30% commission. Actual results may vary.",
+      cta: "Start Earning Now"
+    },
+    howItWorks: {
+      title: "How It Works",
+      step1: {
+        title: "Join the Program",
+        description: "Create your affiliate account and receive your unique referral link. It's free to join and takes less than 2 minutes."
+      },
+      step2: {
+        title: "Share Your Link",
+        description: "Share your referral link with your audience through social media, blog posts, videos, or email. We provide marketing materials to help you succeed."
+      },
+      step3: {
+        title: "Get Paid for Life",
+        description: "Earn 30% recurring commission on every sale your referrals make - not just the first purchase, but forever. Payments sent monthly via your preferred method."
+      }
+    },
+    benefits: {
+      title: "Why Join Purrify's Affiliate Program?",
+      subtitle: "We've designed our program to help you succeed with industry-leading commissions and support",
+      benefit1: {
+        title: "30% Lifetime Commissions",
+        description: "Unlike most programs that only pay on the first sale, you earn 30% on every purchase your referrals make - forever. Build true passive income."
+      },
+      benefit2: {
+        title: "High-Converting Product",
+        description: "Purrify solves a real problem cat owners face daily. With 4.8/5 stars and 98% satisfaction rate, our products sell themselves."
+      },
+      benefit3: {
+        title: "Real-Time Tracking",
+        description: "Monitor your earnings, clicks, and conversions in real-time with our advanced affiliate dashboard. Full transparency on your performance."
+      },
+      benefit4: {
+        title: "Marketing Resources",
+        description: "Access professional banners, email templates, product images, and proven copy. We provide everything you need to succeed."
+      }
+    },
+    testimonials: {
+      title: "Success Stories from Our Affiliates",
+      testimonial1: {
+        quote: "I've earned over $3,400 in the past 6 months just by recommending Purrify to my cat blog audience. The recurring commissions add up fast!",
+        name: "Jessica M.",
+        role: "Cat Blog Owner"
+      },
+      testimonial2: {
+        quote: "Best affiliate program I've joined. Great product, high conversion rate, and the 30% lifetime commission is unbeatable. Highly recommend!",
+        name: "Mike T.",
+        role: "Pet Product Reviewer"
+      },
+      testimonial3: {
+        quote: "The support team is amazing. They helped me optimize my content and now I'm earning steady monthly income. This is truly passive income.",
+        name: "Amanda R.",
+        role: "YouTube Creator"
+      }
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      question1: "How much can I earn?",
+      answer1: "You earn 30% commission on every sale. If you refer 10 customers buying the $24.99 standard size monthly, that's $74.97/month in recurring income. There's no limit to how much you can earn.",
+      question2: "When do I get paid?",
+      answer2: "Commissions are paid monthly via PayPal, direct deposit, or check. We pay on the 15th of each month for the previous month's earnings. Minimum payout is $50.",
+      question3: "How long do cookies last?",
+      answer3: "Our affiliate cookies last for 90 days. If someone clicks your link and purchases within 90 days, you get credit for that sale and all future purchases from that customer.",
+      question4: "Do I need a website?",
+      answer4: "No! While having a website helps, you can share your affiliate link on social media, YouTube, email newsletters, or anywhere else you connect with cat owners.",
+      question5: "What marketing materials do you provide?",
+      answer5: "We provide professional banners, product images, email templates, social media posts, and proven copy. Everything you need to start promoting immediately."
+    },
+    finalCTA: {
+      title: "Ready to Start Earning?",
+      subtitle: "Join hundreds of successful affiliates earning passive income with Purrify",
+      cta: "Join the Affiliate Program",
+      disclaimer: "Free to join • No monthly fees • Start earning immediately"
+    }
   }
-}; 
+};

@@ -6,7 +6,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
@@ -93,6 +93,14 @@ export default function FamilyPackPage() {
               type: 'image/jpeg'
             }
           ]
+        }}
+      />
+
+      {/* FAQ Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateFAQSchema(locale))
         }}
       />
 
@@ -286,7 +294,7 @@ export default function FamilyPackPage() {
                       <Heart className="w-5 h-5 mr-2" />
                       Add to Wishlist
                     </Button>
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                       <Button variant="outline" size="lg" className="flex-1">
                         <Users className="w-5 h-5 mr-2" />
                         Read Reviews
@@ -419,7 +427,7 @@ export default function FamilyPackPage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                 <Button variant="outline" size="lg">
                   Read All Multi-Cat Stories
                 </Button>

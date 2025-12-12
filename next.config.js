@@ -178,7 +178,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   outputFileTracingRoot: __dirname,
-  eslint: { ignoreDuringBuilds: true },
+
   images: {
     remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https', hostname })),
     formats: ['image/avif', 'image/webp'],
@@ -192,7 +192,7 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled: incompatible with Next.js 16 Turbopack (requires lightningcss native binary)
     scrollRestoration: true,
     esmExternals: true,
     optimizePackageImports: OPTIMIZE_PACKAGE_IMPORTS,
@@ -201,6 +201,9 @@ const nextConfig = {
     optimizeServerReact: true,
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
+    outputFileTracingExcludes: {
+      '/api/health/storage': ['./public/**/*'],
+    },
   },
   serverExternalPackages: ['sharp'],
   staticPageGenerationTimeout: 120,
@@ -219,7 +222,6 @@ const nextConfig = {
     emotion: false,
   },
   typescript: {
-    ignoreBuildErrors: process.env.CI === 'true' || process.env.VERCEL === '1',
     tsconfigPath: './tsconfig.json',
   },
   distDir: '.next',

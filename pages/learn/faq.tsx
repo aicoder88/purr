@@ -536,7 +536,7 @@ const FAQPage: NextPage = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Get detailed answers via email
                   </p>
-                  <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+                  <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                     <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
                       Contact Us
                     </Button>
@@ -640,7 +640,7 @@ const FAQPage: NextPage = () => {
                 </div>
               </Link>
 
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Customer Stories

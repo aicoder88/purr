@@ -48,7 +48,7 @@ function generateBasicSitemap(req: NextApiRequest): string {
     { loc: '/learn/how-it-works', priority: '0.8', changefreq: 'monthly' },
     { loc: '/learn/cat-litter-guide', priority: '0.7', changefreq: 'monthly' },
     { loc: '/learn/faq', priority: '0.8', changefreq: 'weekly' },
-    { loc: '/support/contact', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/contact', priority: '0.6', changefreq: 'monthly' },
     { loc: '/about/our-story', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog', priority: '0.8', changefreq: 'daily' },
     { loc: '/blog/activated-carbon-litter-additive-benefits', priority: '0.6', changefreq: 'monthly' },
@@ -57,7 +57,7 @@ function generateBasicSitemap(req: NextApiRequest): string {
     { loc: '/blog/using-deodorizers-with-kittens', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/activated-carbon-vs-baking-soda-comparison', priority: '0.6', changefreq: 'monthly' },
     { loc: '/case-studies', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/customers/testimonials', priority: '0.7', changefreq: 'weekly' }
+    { loc: '/reviews', priority: '0.7', changefreq: 'weekly' }
   ];
 
   const lastmod = new Date().toISOString().split('T')[0];

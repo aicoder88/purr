@@ -2,6 +2,8 @@ export const SITE_NAME = "Purrify";
 export const SITE_DESCRIPTION =
   "Activated carbon cat litter additive that eliminates odors at the source.";
 
+export const GOOGLE_MAPS_EMBED_ID = "1tp1A30e-7ixcKLz4hrvMI1cY0FPhs2A";
+
 export const PRODUCTS = [
   {
     id: "purrify-12g",
@@ -87,6 +89,16 @@ export const PRODUCTS = [
       quantity: 3,
       bestFor: "Large multi-cat households",
     },
+  },
+  {
+    id: "purrify-12g-bump",
+    name: "Purrify 12g (Trial Bump)",
+    description: "One-time offer: Add a trial size for just $4.99!",
+    price: 4.99,
+    image: "/optimized/20g.webp",
+    size: "12g",
+    shippingIncluded: true,
+    shippingNote: "Ships with your order",
   },
 ];
 

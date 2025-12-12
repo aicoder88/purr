@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
@@ -89,7 +89,9 @@ export default function TrialSizePage() {
                   "reviewCount": "127",
                   "bestRating": "5"
                 }
-              }
+              },
+              // FAQ Schema for product page
+              generateFAQSchema(locale)
             ]
           })
         }}

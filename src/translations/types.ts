@@ -2,7 +2,7 @@ export interface TranslationType {
   // Common
   siteName: string;
   siteDescription: string;
-  
+
   // Navigation
   nav: {
     home: string;
@@ -82,7 +82,7 @@ export interface TranslationType {
       };
     };
   };
-  
+
   // Products
   products: {
     [key: string]: {
@@ -90,7 +90,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // Features
   features: {
     odorElimination: {
@@ -146,7 +146,7 @@ export interface TranslationType {
       description: string;
     };
   };
-  
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
@@ -163,7 +163,7 @@ export interface TranslationType {
       nonClumping: string;
     };
   };
-  
+
   // Products Section
   productsSection?: {
     forEveryCatHousehold: string;
@@ -200,7 +200,7 @@ export interface TranslationType {
     trialSizeSection: string;
     quarterlyAutoshipSection: string;
   };
-  
+
   // Stores Section
   storesSection?: {
     availableInStores: string;
@@ -219,7 +219,7 @@ export interface TranslationType {
       petStoreWithGroomingServices: string;
     };
   };
-  
+
   // Call to Action
   cta?: {
     title: string;
@@ -228,7 +228,7 @@ export interface TranslationType {
     joinText: string;
     guarantee: string;
   };
-  
+
   // FAQ
   faq: {
     title?: string;
@@ -243,7 +243,7 @@ export interface TranslationType {
       link?: string;
     }[];
   };
-  
+
   // Contact
   contact: {
     title?: string;
@@ -268,7 +268,7 @@ export interface TranslationType {
       submit: string;
     };
   };
-  
+
   // Newsletter
   newsletter?: {
     title: string;
@@ -300,7 +300,7 @@ export interface TranslationType {
       };
     };
   };
-  
+
   // Free Giveaway Form
   freeGiveaway?: {
     formTitle: string;
@@ -316,7 +316,7 @@ export interface TranslationType {
     errorGeneric: string;
     privacyNotice: string;
   };
-  
+
   // SEO
   seo: {
     keywords: string;
@@ -326,7 +326,7 @@ export interface TranslationType {
     };
     metaDescription: string;
   };
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -554,6 +554,7 @@ export interface TranslationType {
       estimateDuration: string;
     };
     stillUnsure: string;
+    stillUnsureDescription: string;
     getPersonalizedAdvice: string;
     tryRiskFree: string;
     learnMoreAboutPurrify: string;
@@ -578,6 +579,39 @@ export interface TranslationType {
     chooseThisSize: string;
     tryWithoutRisk: string;
     chooseSmallSize: string;
+
+    // SEO
+    seo: {
+      title: string;
+      description: string;
+    };
+
+    // Table Headers
+    tableHeaders: {
+      feature: string;
+      trial: string;
+      standard: string;
+      large: string;
+    };
+
+    // Calculation Units
+    units: {
+      cat: string;
+      cats: string;
+      week: string;
+      weeks: string;
+      day: string;
+      days: string;
+      weekly: string;
+      perWeek: string;
+    };
+
+    // Related Pages
+    relatedPages: Array<{
+      title: string;
+      description: string;
+      link: string;
+    }>;
   };
 
   // Privacy Policy
@@ -863,11 +897,11 @@ export interface TranslationType {
     lowestRated: string;
     mostHelpful: string;
     verifiedPurchase: string;
-    
+
     // Payment & Cart
     securePayment: string;
     shoppingCart: string;
-    
+
     // General
     happyCustomers: string;
     moneyBack: string;
@@ -1106,5 +1140,156 @@ export interface TranslationType {
   scrollingBar?: {
     freeShipping: string;
     madeInCanada: string;
+  };
+
+  // Maps
+  maps?: {
+    findNearYou: string;
+    discoverWhere: string;
+    retailStores: string;
+    cities: {
+      montreal: string;
+      quebec: string;
+      toronto: string;
+      vancouver: string;
+      calgary: string;
+      ottawa: string;
+    };
+    iframeTitle: string;
+  };
+
+  // Upsell Page
+  upsell?: {
+    pageTitle: string;
+    metaDescription: string;
+    offerExpired: string;
+    offerExpiresIn: string;
+    headline: string;
+    subheadline: string;
+    saveBadge: string;
+    productTitle: string;
+    productSubtitle: string;
+    youSave: string;
+    benefit1: string;
+    benefit2: string;
+    benefit3: string;
+    benefit4: string;
+    benefit5: string;
+    processing: string;
+    addToOrder: string;
+    noThanks: string;
+    feature1Title: string;
+    feature1Description: string;
+    feature2Title: string;
+    feature2Description: string;
+    feature3Title: string;
+    feature3Description: string;
+    testimonialText: string;
+    testimonialAuthor: string;
+    faqTitle: string;
+    faq1Question: string;
+    faq1Answer: string;
+    faq2Question: string;
+    faq2Answer: string;
+    faq3Question: string;
+    faq3Answer: string;
+    bottomNote: string;
+    returnHome: string;
+  };
+
+  // Affiliate Page
+  affiliate?: {
+    metaTitle: string;
+    metaDescription: string;
+    hero: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      primaryCTA: string;
+      secondaryCTA: string;
+    };
+    calculator: {
+      title: string;
+      subtitle: string;
+      standardProduct: string;
+      familyPack: string;
+      perSale: string;
+      monthlyIncome: string;
+      yearlyIncome: string;
+      disclaimer: string;
+      cta: string;
+    };
+    howItWorks: {
+      title: string;
+      step1: {
+        title: string;
+        description: string;
+      };
+      step2: {
+        title: string;
+        description: string;
+      };
+      step3: {
+        title: string;
+        description: string;
+      };
+    };
+    benefits: {
+      title: string;
+      subtitle: string;
+      benefit1: {
+        title: string;
+        description: string;
+      };
+      benefit2: {
+        title: string;
+        description: string;
+      };
+      benefit3: {
+        title: string;
+        description: string;
+      };
+      benefit4: {
+        title: string;
+        description: string;
+      };
+    };
+    testimonials: {
+      title: string;
+      testimonial1: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+      testimonial2: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+      testimonial3: {
+        quote: string;
+        name: string;
+        role: string;
+      };
+    };
+    faq: {
+      title: string;
+      question1: string;
+      answer1: string;
+      question2: string;
+      answer2: string;
+      question3: string;
+      answer3: string;
+      question4: string;
+      answer4: string;
+      question5: string;
+      answer5: string;
+    };
+    finalCTA: {
+      title: string;
+      subtitle: string;
+      cta: string;
+      disclaimer: string;
+    };
   };
 }

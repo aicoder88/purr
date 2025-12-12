@@ -22,7 +22,7 @@ export default function SupportPage() {
       icon: Mail,
       title: "Contact Us",
       description: "Get in touch with our customer support team via email, phone, or WhatsApp",
-      link: "/support/contact",
+      link: "/contact",
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -52,9 +52,9 @@ export default function SupportPage() {
     { title: "How It Works", link: "/learn/how-it-works" },
     { title: "Product Comparison", link: "/products/compare" },
     { title: "Safety Information", link: "/learn/safety" },
-    { title: "Returns & Refunds", link: "/support/contact" },
+    { title: "Returns & Refunds", link: "/contact" },
     { title: "Wholesale Inquiries", link: "/b2b" },
-    { title: "Customer Reviews", link: "/customers/testimonials" }
+    { title: "Customer Reviews", link: "/reviews" }
   ];
 
   return (
@@ -245,7 +245,7 @@ export default function SupportPage() {
               <p className="text-xl mb-8 opacity-90">
                 Our friendly support team is here to help you with any questions about Purrify products, orders, or shipping.
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/support/contact`}>
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                 <Button size="lg" className="bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6">
                   Contact Support Now →
                 </Button>

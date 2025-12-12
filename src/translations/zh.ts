@@ -4,7 +4,7 @@ export const zh = {
   // Common
   siteName: "Purrify",
   siteDescription: "活性炭猫砂添加剂，从源头消除异味。",
-  
+
   // Navigation
   nav: {
     home: "首页",
@@ -67,7 +67,7 @@ export const zh = {
       retailer: ['Pet Valu', 'PetSmart', 'Global Pet Foods', 'Ren\'s Pets', 'Mondou']
     }
   },
-  
+
   // Products
   products: {
     "purrify-12g": {
@@ -141,12 +141,12 @@ export const zh = {
       }
     }
   },
-  
+
   // About Section
   about: {
     naturalAndEffective: "天然有效"
   },
-  
+
   // Features
   features: {
     odorElimination: {
@@ -206,7 +206,7 @@ export const zh = {
       description: "获得 1,000+ 满意客户的五星好评。"
     }
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "简单三步骤",
@@ -235,7 +235,7 @@ export const zh = {
       nonClumping: "非结团砂"
     }
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "适合每个猫咪家庭",
@@ -252,11 +252,11 @@ export const zh = {
     adding: "添加中...",
     viewAllProducts: "查看所有产品"
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "门店有售",
-    soldInFollowingStores: "在以下门店有售", 
+    soldInFollowingStores: "在以下门店有售",
     subtitle: "在您附近的宠物用品店寻找Purrify",
     requestStoreAvailability: "申请门店供货",
     dontSeeLocalStore: "没看到您当地的门店？",
@@ -271,16 +271,16 @@ export const zh = {
       petStoreWithGroomingServices: "提供美容服务的宠物店"
     }
   },
-  
+
   // Call to Action
   cta: {
     title: "准备好体验差异了吗？",
     subtitle: "加入 1,000+ 满意的猫主人，今天就试试 Purrify",
     buttonText: "立即订购",
     joinText: "加入Purrify家族",
-  guarantee: "专属客服支持"
+    guarantee: "专属客服支持"
   },
-  
+
   // FAQ
   faq: {
     title: "常见问题",
@@ -320,7 +320,7 @@ export const zh = {
       }
     ]
   },
-  
+
   // Contact
   contact: {
     title: "联系我们",
@@ -346,7 +346,7 @@ export const zh = {
       submit: "发送消息"
     }
   },
-  
+
   // Newsletter
   newsletter: {
     title: "订阅我们的通讯",
@@ -419,7 +419,7 @@ export const zh = {
     sslEncrypted: "256位SSL",
     sslEncryptedCheckout: "您的支付信息经过加密且安全。我们绝不存储您的支付详情。"
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "获取免费Purrify样品",
@@ -435,7 +435,7 @@ export const zh = {
     errorGeneric: "出现错误，请稍后重试。",
     privacyNotice: "我们尊重您的隐私，绝不会分享您的信息。"
   },
-  
+
   // SEO
   seo: {
     keywords: "猫砂添加剂, 异味控制, 活性炭, 宠物护理, 猫咪产品",
@@ -445,7 +445,7 @@ export const zh = {
     },
     metaDescription: "Purrify是一款优质的活性炭猫砂添加剂，可在分子水平上消除异味。采用天然椰壳炭制成，提供7天清新效果，适用于所有类型的猫砂。深受加拿大 1,000+ 猫主人的信赖。"
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -491,13 +491,13 @@ export const zh = {
           sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 50g 标准装", 
+          name: "Purrify 50g 标准装",
           description: "最受欢迎的规格 - 单猫家庭一个月用量",
           sku: "purrify-50g"
         },
         family: {
           name: "Purrify 120g 家庭装",
-          description: "大容量装，非常适合多猫家庭 - 最大程度控制异味", 
+          description: "大容量装，非常适合多猫家庭 - 最大程度控制异味",
           sku: "purrify-120g"
         }
       },
@@ -745,11 +745,11 @@ export const zh = {
     lowestRated: "评分最低",
     mostHelpful: "最有帮助",
     verifiedPurchase: "已验证购买",
-    
+
     // Payment & Cart
     securePayment: "安全支付",
     shoppingCart: "购物车",
-    
+
     // General
     happyCustomers: "满意客户",
     moneyBack: "专家支持",
@@ -920,7 +920,7 @@ export const zh = {
       },
       {
         id: "small",
-        name: "中等装 50g", 
+        name: "中等装 50g",
         subtitle: "单猫家庭的理想选择",
         duration: "3-4次猫砂更换",
         cats: "1只猫",
@@ -991,7 +991,45 @@ export const zh = {
     getBestValue: "获取最佳价值",
     chooseThisSize: "选择此尺寸",
     tryWithoutRisk: "无风险试用",
-    chooseSmallSize: "选择小装"
+    chooseSmallSize: "选择小装",
+    tableHeaders: {
+      feature: "特征",
+      trial: "12g 试用装",
+      standard: "50g 标准装",
+      large: "120g 家庭装"
+    },
+    units: {
+      cat: "只猫",
+      cats: "只猫",
+      week: "周",
+      weeks: "周",
+      day: "天",
+      days: "天",
+      weekly: "每周",
+      perWeek: "每周"
+    },
+    seo: {
+      title: "找到完美尺寸",
+      description: "比较所有Purrify尺寸，找到满足您家庭需求的完美活性炭猫砂添加剂。"
+    },
+    stillUnsureDescription: "从我们的无风险试用装开始，亲自体验Purrify的不同。",
+    relatedPages: [
+      {
+        title: "工作原理",
+        description: "了解我们活性炭技术背后的科学原理及其高效原因。",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "客户评价",
+        description: "看看1,000+满意客户如何评价他们的Purrify体验。",
+        link: "/reviews"
+      },
+      {
+        title: "猫砂指南",
+        description: "了解不同类型的猫砂以及如何为您的爱猫选择最佳选择。",
+        link: "/learn/cat-litter-guide"
+      }
+    ]
   },
 
   // 零售与B2B
@@ -1183,7 +1221,7 @@ export const zh = {
     },
     {
       id: 2,
-      category: "product", 
+      category: "product",
       question: "Purrify可以在猫和人周围使用吗？",
       answer: "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭，不添加香精或染料。",
       popular: true,
@@ -1245,7 +1283,7 @@ export const zh = {
     }
   },
 
-  
+
   // Homepage specific translations
   homepage: {
     seo: {
@@ -1354,5 +1392,140 @@ export const zh = {
   scrollingBar: {
     freeShipping: "订阅订单免运费",
     madeInCanada: "加拿大制造，采用国内外优质原料"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "特别一次性优惠 - Purrify",
+    metaDescription: "新客户专属一次性优惠。季度自动订购可节省25%。",
+    offerExpired: "优惠已过期",
+    offerExpiresIn: "优惠将在以下时间后过期",
+    headline: "等等！独家一次性优惠",
+    subheadline: "添加自动订购，立省25%",
+    saveBadge: "节省29%",
+    productTitle: "Purrify 50g 自动订购",
+    productSubtitle: "3个月供应（3 × 50g 袋装）",
+    youSave: "您节省",
+    benefit1: "永不缺货 - 每3个月自动配送",
+    benefit2: "包含免费送货（节省$7.99）",
+    benefit3: "永久锁定此特惠价格",
+    benefit4: "随时取消或跳过（无需承诺）",
+    benefit5: "每次发货前自动提醒",
+    processing: "处理中...",
+    addToOrder: "是的！添加到我的订单",
+    noThanks: "不用了，我宁愿以后支付全价",
+    feature1Title: "即时激活",
+    feature1Description: "您的自动订购在此订单后立即开始",
+    feature2Title: "100%满意",
+    feature2Description: "每次发货均享30天退款保证",
+    feature3Title: "灵活控制",
+    feature3Description: "随时在线跳过、暂停或取消",
+    testimonialText: "我差点跳过自动订购优惠，但我很高兴我没有这样做！少了一件要记住的事情，节省的费用也会累积。而且，我永远不会在最需要的时候用完。",
+    testimonialAuthor: "— Sarah M., 多伦多",
+    faqTitle: "常见问题",
+    faq1Question: "我可以随时取消吗？",
+    faq1Answer: "当然可以！随时从您的账户仪表板取消、跳过或修改订阅。无需费用，无需麻烦。",
+    faq2Question: "我什么时候会被收费？",
+    faq2Answer: "您今天将为此特别优惠付费。您的下一次发货将在3个月后，您将在7天前收到提醒电子邮件。",
+    faq3Question: "价格是锁定的吗？",
+    faq3Answer: "是的！只要您继续订阅，此特惠价格就会锁定。您永远不会支付超过此价格。",
+    bottomNote: "此一次性优惠仅在您首次购买后立即可用",
+    returnHome: "返回首页"
+  },
+
+  // Affiliate Page
+  affiliate: {
+    metaTitle: "通过Purrify联盟计划赚取月收入",
+    metaDescription: "向猫主人推荐Purrify，终身赚取30%的循环佣金。加入数百名成功的联盟会员，通过帮助猫咪无异味生活赚取被动收入。",
+    hero: {
+      badge: "加入我们的联盟计划",
+      title: "通过Purrify赚取月收入",
+      subtitle: "向猫主人推荐Purrify，终身赚取30%的月度循环收入。",
+      primaryCTA: "成为联盟会员",
+      secondaryCTA: "查看收益计算器"
+    },
+    calculator: {
+      title: "计算您的潜在收益",
+      subtitle: "调整滑块，查看您使用Purrify 30%佣金可以赚取多少",
+      standardProduct: "50g 标准装（$24.99）- 推荐数/月",
+      familyPack: "120g 家庭装（$44.99）- 推荐数/月",
+      perSale: "每笔销售",
+      monthlyIncome: "预计月收入",
+      yearlyIncome: "预计年收入",
+      disclaimer: "这些是基于30%佣金的潜在收益。实际结果可能有所不同。",
+      cta: "立即开始赚钱"
+    },
+    howItWorks: {
+      title: "如何运作",
+      step1: {
+        title: "加入计划",
+        description: "创建您的联盟账户并获得您的独特推荐链接。加入是免费的，只需不到2分钟。"
+      },
+      step2: {
+        title: "分享您的链接",
+        description: "通过社交媒体、博客文章、视频或电子邮件与您的受众分享您的推荐链接。我们提供营销材料帮助您成功。"
+      },
+      step3: {
+        title: "终身获得报酬",
+        description: "您的推荐客户每次购买都能赚取30%的循环佣金 - 不仅仅是第一次购买，而是永远。每月通过您首选的方式发送付款。"
+      }
+    },
+    benefits: {
+      title: "为什么加入Purrify联盟计划？",
+      subtitle: "我们设计了这个计划，通过行业领先的佣金和支持帮助您成功",
+      benefit1: {
+        title: "30%终身佣金",
+        description: "与大多数仅在首次销售时支付的计划不同，您的推荐客户每次购买都能赚取30% - 永远。建立真正的被动收入。"
+      },
+      benefit2: {
+        title: "高转化率产品",
+        description: "Purrify解决猫主人每天面临的真实问题。凭借4.8/5星和98%满意度，我们的产品不言自明。"
+      },
+      benefit3: {
+        title: "实时跟踪",
+        description: "通过我们先进的联盟仪表板实时监控您的收益、点击和转化。对您的表现完全透明。"
+      },
+      benefit4: {
+        title: "营销资源",
+        description: "获取专业横幅、电子邮件模板、产品图片和经过验证的文案。我们提供您成功所需的一切。"
+      }
+    },
+    testimonials: {
+      title: "我们联盟会员的成功故事",
+      testimonial1: {
+        quote: "在过去的6个月里，我仅通过向我的猫博客受众推荐Purrify就赚了超过3,400美元。循环佣金增长得很快！",
+        name: "Jessica M.",
+        role: "猫博客主"
+      },
+      testimonial2: {
+        quote: "我加入过的最好的联盟计划。优质产品，高转化率，30%的终身佣金无与伦比。强烈推荐！",
+        name: "Mike T.",
+        role: "宠物产品评论员"
+      },
+      testimonial3: {
+        quote: "支持团队太棒了。他们帮助我优化内容，现在我获得了稳定的月收入。这真的是被动收入。",
+        name: "Amanda R.",
+        role: "YouTube创作者"
+      }
+    },
+    faq: {
+      title: "常见问题",
+      question1: "我能赚多少钱？",
+      answer1: "您每次销售赚取30%的佣金。如果您推荐10位客户每月购买24.99美元的标准装，那就是每月74.97美元的循环收入。您可以赚取的金额没有限制。",
+      question2: "我什么时候获得报酬？",
+      answer2: "佣金通过PayPal、直接存款或支票每月支付。我们在每月15日支付上个月的收益。最低支付金额为50美元。",
+      question3: "Cookie有效期多长？",
+      answer3: "我们的联盟Cookie有效期为90天。如果有人点击您的链接并在90天内购买，您将获得该销售以及该客户所有未来购买的信用。",
+      question4: "我需要网站吗？",
+      answer4: "不需要！虽然拥有网站有帮助，但您可以在社交媒体、YouTube、电子邮件通讯或任何与猫主人联系的地方分享您的联盟链接。",
+      question5: "你们提供什么营销材料？",
+      answer5: "我们提供专业横幅、产品图片、电子邮件模板、社交媒体帖子和经过验证的文案。您需要的一切都可以立即开始推广。"
+    },
+    finalCTA: {
+      title: "准备开始赚钱了吗？",
+      subtitle: "加入数百名成功的联盟会员，通过Purrify赚取被动收入",
+      cta: "加入联盟计划",
+      disclaimer: "免费加入 • 无月费 • 立即开始赚钱"
+    }
   }
 };

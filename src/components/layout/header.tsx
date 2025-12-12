@@ -293,7 +293,7 @@ export function Header() {
   ];
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
+    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -322,7 +322,7 @@ export function Header() {
                   <>
                     <button
                       id={`dropdown-${item.id}`}
-                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
+                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
                       aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'solutions' && isSolutionsDropdownOpen) || (item.id === 'locations' && isLocationsDropdownOpen) ? 'true' : 'false'}
@@ -356,9 +356,9 @@ export function Header() {
                                     <button
                                       key={province.code}
                                       type="button"
-                                      className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${isActive
-                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-[#FF3131] dark:text-[#FF5050]'
-                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                                      className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${isActive
+                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-brand-red dark:text-brand-red-400'
+                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-brand-red dark:hover:text-brand-red-400'
                                         }`}
                                       onMouseEnter={() => handleProvinceHighlight(province.code)}
                                       onFocus={() => handleProvinceHighlight(province.code)}
@@ -369,7 +369,7 @@ export function Header() {
                                       <span className="truncate font-medium">{province.name}</span>
                                       <ChevronRight
                                         className={`h-4 w-4 shrink-0 ${isActive
-                                          ? 'text-[#FF3131] dark:text-[#FF5050]'
+                                          ? 'text-brand-red dark:text-brand-red-400'
                                           : 'text-gray-400 dark:text-gray-500'
                                           }`}
                                       />
@@ -387,7 +387,7 @@ export function Header() {
                                       {provinceGuideLinkText && (
                                         <Link
                                           href={buildLocalizedPath(`/locations/province/${hoveredProvince.slug}`)}
-                                          className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                          className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:focus-visible:ring-brand-red-400 focus-visible:ring-offset-1"
                                           onClick={(event) => handleProvinceLinkClick(event, hoveredProvince.slug)}
                                         >
                                           {provinceGuideLinkText}
@@ -400,7 +400,7 @@ export function Header() {
                                         <Link
                                           key={city.slug}
                                           href={buildLocalizedPath(`/locations/${city.slug}`)}
-                                          className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3131] dark:focus-visible:ring-[#FF5050] focus-visible:ring-offset-1"
+                                          className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:focus-visible:ring-brand-red-400 focus-visible:ring-offset-1"
                                           role="menuitem"
                                           onClick={(event) => handleCityClick(event, city.slug)}
                                         >
@@ -430,7 +430,7 @@ export function Header() {
                                 <Link
                                   key={dropdownIndex}
                                   href={dropdownItem.href}
-                                  className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] focus:text-[#FF3131] dark:focus:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
+                                  className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
                                   role="menuitem"
                                 >
                                   {dropdownItem.label}
@@ -444,7 +444,7 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors font-medium"
+                    className="text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 transition-colors font-medium"
                   >
                     {item.label}
                   </Link>
@@ -457,7 +457,7 @@ export function Header() {
             <ThemeToggle />
             <Button
               onClick={scrollToProducts}
-              className="flex items-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               {t.nav?.buyNow || 'Buy Now!'}
@@ -488,7 +488,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-[#E0EFC7]/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item, index) => (
                 <div key={index}>
@@ -508,7 +508,7 @@ export function Header() {
                               <Link
                                 key={city.slug}
                                 href={buildLocalizedPath(`/locations/${city.slug}`)}
-                                className="block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 pl-8"
+                                className="block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 pl-8"
                                 onClick={(event) => handleCityClick(event, city.slug)}
                               >
                                 {city.name}
@@ -530,7 +530,7 @@ export function Header() {
                             <Link
                               key={dropdownIndex}
                               href={dropdownItem.href}
-                              className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
+                              className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
                               onClick={closeMenu}
                             >
                               {dropdownItem.label}
@@ -542,7 +542,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-[#FF3131] dark:hover:text-[#FF5050] hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
                       {item.label}
@@ -555,7 +555,7 @@ export function Header() {
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <Button
                   onClick={handleBuyNowMobile}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {t.nav?.buyNow || 'Buy Now!'}

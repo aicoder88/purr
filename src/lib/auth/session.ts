@@ -6,7 +6,7 @@ export async function getSession(
   req: NextApiRequest | GetServerSidePropsContext['req'],
   res: NextApiResponse | GetServerSidePropsContext['res']
 ) {
-  return await getServerSession(req, res, authOptions);
+  return getServerSession(req, res, authOptions);
 }
 
 export async function requireAuth(
@@ -20,7 +20,7 @@ export async function requireAuth(
     return { authorized: false, session: null };
   }
 
-  const userRole = (session.user as any).role;
+  const userRole = (session.user as { role?: string }).role || '';
   if (!allowedRoles.includes(userRole)) {
     return { authorized: false, session };
   }

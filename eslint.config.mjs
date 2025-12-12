@@ -44,6 +44,7 @@ export default [
         'allowFunctions': false,
         'allowBind': false
       }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
   {

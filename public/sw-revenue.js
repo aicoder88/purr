@@ -43,19 +43,19 @@ const NETWORK_FIRST_PATTERNS = [
 
 self.addEventListener('install', (event) => {
   console.log('🚀 Service Worker installing...');
-  
+
   event.waitUntil(
     (async () => {
       try {
         // Cache critical static assets
         const staticCache = await caches.open(STATIC_CACHE);
         await staticCache.addAll(STATIC_ASSETS);
-        
+
         // Preload critical product data
         await preloadCriticalData();
-        
+
         console.log('✅ Service Worker installed successfully');
-        
+
         // Skip waiting to activate immediately
         self.skipWaiting();
       } catch (_error) {
@@ -67,7 +67,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('🔄 Service Worker activating...');
-  
+
   event.waitUntil(
     (async () => {
       try {
@@ -78,10 +78,10 @@ self.addEventListener('activate', (event) => {
             .filter(name => name.startsWith('purrify-') && !name.includes(CACHE_VERSION))
             .map(name => caches.delete(name))
         );
-        
+
         // Take control of all clients immediately
         await self.clients.claim();
-        
+
         console.log('✅ Service Worker activated successfully');
       } catch (_error) {
         console.error('❌ Service Worker activation failed:', error);
@@ -93,7 +93,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  
+
   // Skip non-GET requests and cross-origin requests
   if (request.method !== 'GET' || url.origin !== self.location.origin) {
     return;
@@ -126,10 +126,10 @@ self.addEventListener('sync', (event) => {
 // Push notifications for cart abandonment (if enabled)
 self.addEventListener('push', (event) => {
   if (!event.data) return;
-  
+
   try {
     const data = event.data.json();
-    
+
     if (data.type === 'cart-reminder') {
       event.waitUntil(showCartReminderNotification(data));
     }
@@ -144,18 +144,18 @@ async function cacheFirstStrategy(request, cacheName) {
   try {
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(request);
-    
+
     if (cachedResponse) {
       // Return cached version immediately
       return cachedResponse;
     }
-    
+
     // Fetch from network and cache
     const networkResponse = await fetch(request);
     if (networkResponse.ok) {
       await cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (_error) {
     console.error('Cache-first strategy failed:', error);
@@ -166,29 +166,29 @@ async function cacheFirstStrategy(request, cacheName) {
 async function networkFirstWithOfflineSupport(request, cacheName) {
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       // Cache successful responses
       const cache = await caches.open(cacheName);
       await cache.put(request, networkResponse.clone());
       return networkResponse;
     }
-    
+
     throw new Error('Network response not ok');
   } catch (_error) {
     // Fallback to cache
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(request);
-    
+
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // For checkout requests, return offline checkout page
     if (request.url.includes('checkout')) {
       return createOfflineCheckoutResponse();
     }
-    
+
     return new Response('Offline - Please check your connection', { status: 503 });
   }
 }
@@ -196,7 +196,7 @@ async function networkFirstWithOfflineSupport(request, cacheName) {
 async function staleWhileRevalidateStrategy(request, cacheName) {
   const cache = await caches.open(cacheName);
   const cachedResponse = await cache.match(request);
-  
+
   // Always try to fetch fresh data in background
   const networkResponsePromise = fetch(request).then(response => {
     if (response.ok) {
@@ -204,12 +204,12 @@ async function staleWhileRevalidateStrategy(request, cacheName) {
     }
     return response;
   }).catch(() => null);
-  
+
   // Return cached version immediately if available
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   // Wait for network if no cache
   return networkResponsePromise || new Response('Offline', { status: 503 });
 }
@@ -226,14 +226,14 @@ async function networkFirstStrategy(request) {
 // Helper functions for URL pattern matching
 
 function isStaticAsset(pathname) {
-  return STATIC_ASSETS.includes(pathname) || 
-         pathname.startsWith('/optimized/') ||
-         pathname.startsWith('/_next/static/') ||
-         pathname.includes('.css') ||
-         pathname.includes('.js') ||
-         pathname.includes('.webp') ||
-         pathname.includes('.jpg') ||
-         pathname.includes('.png');
+  return STATIC_ASSETS.includes(pathname) ||
+    pathname.startsWith('/optimized/') ||
+    pathname.startsWith('/_next/static/') ||
+    pathname.includes('.css') ||
+    pathname.includes('.js') ||
+    pathname.includes('.webp') ||
+    pathname.includes('.jpg') ||
+    pathname.includes('.png');
 }
 
 function isCheckoutCritical(pathname) {
@@ -258,7 +258,7 @@ async function preloadCriticalData() {
       const cache = await caches.open(DYNAMIC_CACHE);
       await cache.put('/api/products', productsResponse);
     }
-    
+
     // Preload testimonials
     const testimonialsResponse = await fetch('/api/testimonials');
     if (testimonialsResponse.ok) {
@@ -279,7 +279,7 @@ function createOfflineCheckoutResponse() {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <style>
         body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
           max-width: 600px;
           margin: 0 auto;
           padding: 20px;
@@ -350,7 +350,7 @@ function createOfflineCheckoutResponse() {
     </body>
     </html>
   `;
-  
+
   return new Response(offlineHTML, {
     headers: { 'Content-Type': 'text/html' }
   });
@@ -360,7 +360,7 @@ async function retryOfflineCheckouts() {
   try {
     // Get stored offline checkout attempts
     const offlineCheckouts = await getStoredCheckouts();
-    
+
     for (const checkout of offlineCheckouts) {
       try {
         const response = await fetch('/api/create-checkout-session', {
@@ -368,10 +368,10 @@ async function retryOfflineCheckouts() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(checkout.data)
         });
-        
+
         if (response.ok) {
           await removeStoredCheckout(checkout.id);
-          
+
           // Notify user of successful checkout
           await self.registration.showNotification('Checkout Complete! 🎉', {
             body: 'Your Purrify order has been processed successfully.',
@@ -393,14 +393,14 @@ async function syncOfflineAnalytics() {
   // Sync offline analytics events when back online
   try {
     const offlineEvents = await getStoredAnalytics();
-    
+
     for (const event of offlineEvents) {
       try {
         // Send to analytics service
         if (self.gtag) {
           self.gtag('event', event.name, event.parameters);
         }
-        
+
         await removeStoredAnalytic(event.id);
       } catch (_error) {
         console.error('Failed to sync analytic event:', error);
@@ -435,7 +435,7 @@ async function showCartReminderNotification(data) {
       discount: data.discount
     }
   };
-  
+
   return self.registration.showNotification('Don\'t Let Odors Win! 🐱', options);
 }
 

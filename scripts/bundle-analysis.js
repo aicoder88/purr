@@ -33,17 +33,17 @@ class BundleAnalyzer {
   // Run Next.js bundle analyzer
   async runBundleAnalyzer() {
     console.log('🔍 Running Next.js Bundle Analyzer...');
-    
+
     try {
       // Set environment variable for bundle analysis
       process.env.ANALYZE = 'true';
-      
+
       // Build with bundle analyzer
-      execSync('npm run build', { 
+      execSync('npm run build', {
         stdio: 'inherit',
         env: { ...process.env, ANALYZE: 'true' }
       });
-      
+
       console.log('✅ Bundle analysis complete. Check the generated HTML files.');
     } catch (error) {
       console.error('❌ Bundle analysis failed:', error.message);
@@ -53,10 +53,10 @@ class BundleAnalyzer {
   // Analyze build output
   analyzeBuildOutput() {
     console.log('📊 Analyzing build output...');
-    
+
     const buildManifest = path.join(this.buildDir, 'build-manifest.json');
     const pagesManifest = path.join(this.buildDir, 'server/pages-manifest.json');
-    
+
     let analysis = {
       timestamp: new Date().toISOString(),
       totalPages: 0,
@@ -72,20 +72,20 @@ class BundleAnalyzer {
       if (fs.existsSync(buildManifest)) {
         const manifest = JSON.parse(fs.readFileSync(buildManifest, 'utf8'));
         analysis.totalPages = Object.keys(manifest.pages).length;
-        
+
         // Calculate first load JS size
         const sharedFiles = manifest.pages['/'] || [];
         let firstLoadSize = 0;
-        
+
         sharedFiles.forEach(file => {
           const filePath = path.join(this.buildDir, 'static', file);
           if (fs.existsSync(filePath)) {
             firstLoadSize += fs.statSync(filePath).size;
           }
         });
-        
+
         analysis.firstLoadJS = firstLoadSize;
-        
+
         if (firstLoadSize > this.thresholds.firstLoadJS) {
           analysis.warnings.push({
             type: 'LARGE_FIRST_LOAD',
@@ -100,7 +100,7 @@ class BundleAnalyzer {
       if (fs.existsSync(staticDir)) {
         const chunks = fs.readdirSync(staticDir);
         analysis.totalChunks = chunks.length;
-        
+
         const chunkSizes = chunks.map(chunk => {
           const chunkPath = path.join(staticDir, chunk);
           const stats = fs.statSync(chunkPath);
@@ -110,9 +110,9 @@ class BundleAnalyzer {
             sizeKB: (stats.size / 1024).toFixed(1)
           };
         }).sort((a, b) => b.size - a.size);
-        
+
         analysis.largestChunks = chunkSizes.slice(0, 10);
-        
+
         // Check for oversized chunks
         chunkSizes.forEach(chunk => {
           if (chunk.size > this.thresholds.chunkSize) {
@@ -135,10 +135,10 @@ class BundleAnalyzer {
   // Analyze dependencies
   analyzeDependencies() {
     console.log('📦 Analyzing dependencies...');
-    
+
     const packageJson = path.join(this.projectRoot, 'package.json');
     const packageLock = path.join(this.projectRoot, 'package-lock.json');
-    
+
     let depAnalysis = {
       totalDependencies: 0,
       totalDevDependencies: 0,
@@ -175,20 +175,20 @@ class BundleAnalyzer {
       // Check for potential unused dependencies (basic check)
       const srcDir = path.join(this.projectRoot, 'src');
       const pagesDir = path.join(this.projectRoot, 'pages');
-      
+
       if (fs.existsSync(srcDir) || fs.existsSync(pagesDir)) {
         const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
         const unusedCandidates = [];
-        
+
         Object.keys(allDeps).forEach(dep => {
           // Skip certain deps that might not be directly imported
           const skipDeps = ['next', '@types/', 'eslint', 'typescript', 'tailwindcss'];
           if (skipDeps.some(skip => dep.includes(skip))) return;
-          
+
           try {
             const grepResult = execSync(`grep -r "from '${dep}'" src/ pages/ 2>/dev/null || true`, { encoding: 'utf8' });
             const importResult = execSync(`grep -r "import.*${dep}" src/ pages/ 2>/dev/null || true`, { encoding: 'utf8' });
-            
+
             if (!grepResult.trim() && !importResult.trim()) {
               unusedCandidates.push(dep);
             }
@@ -196,7 +196,7 @@ class BundleAnalyzer {
             // Ignore grep errors
           }
         });
-        
+
         depAnalysis.unusedDependencies = unusedCandidates.slice(0, 10); // Limit output
       }
 
@@ -210,7 +210,7 @@ class BundleAnalyzer {
   // Analyze images
   analyzeImages() {
     console.log('🖼️ Analyzing images...');
-    
+
     const publicDir = path.join(this.projectRoot, 'public');
     let imageAnalysis = {
       totalImages: 0,
@@ -223,33 +223,33 @@ class BundleAnalyzer {
     try {
       const analyzeDirectory = (dir, relativePath = '') => {
         const items = fs.readdirSync(dir);
-        
+
         items.forEach(item => {
           const fullPath = path.join(dir, item);
           const stats = fs.statSync(fullPath);
-          
+
           if (stats.isDirectory()) {
             analyzeDirectory(fullPath, path.join(relativePath, item));
           } else if (stats.isFile()) {
             const ext = path.extname(item).toLowerCase();
             const imageExts = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif', '.svg'];
-            
+
             if (imageExts.includes(ext)) {
               imageAnalysis.totalImages++;
               imageAnalysis.totalSize += stats.size;
-              
+
               const imageInfo = {
                 path: path.join(relativePath, item),
                 size: stats.size,
                 sizeKB: (stats.size / 1024).toFixed(1),
                 format: ext.substring(1)
               };
-              
+
               // Check for large images
               if (stats.size > this.thresholds.imageSize) {
                 imageAnalysis.largeImages.push(imageInfo);
               }
-              
+
               // Check for unoptimized formats
               if (['.jpg', '.jpeg', '.png'].includes(ext) && stats.size > 50 * 1024) {
                 imageAnalysis.unoptimizedImages.push({
@@ -436,7 +436,7 @@ class BundleAnalyzer {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purrify Bundle Analysis Report</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .header { text-align: center; margin-bottom: 30px; }
         .score { font-size: 3em; font-weight: bold; color: ${report.performanceScore.score >= 80 ? '#22c55e' : report.performanceScore.score >= 60 ? '#f59e0b' : '#ef4444'}; }
@@ -496,26 +496,26 @@ class BundleAnalyzer {
         <div class="section">
             <h2>📦 Largest Chunks</h2>
             <div class="chunk-list">
-                ${report.buildAnalysis.largestChunks.map(chunk => 
-                    `<div class="chunk-item">
+                ${report.buildAnalysis.largestChunks.map(chunk =>
+      `<div class="chunk-item">
                         <span>${chunk.name}</span>
                         <span>${chunk.sizeKB}KB</span>
                     </div>`
-                ).join('')}
+    ).join('')}
             </div>
         </div>
 
         <div class="section">
             <h2>🎯 Recommendations</h2>
-            ${report.recommendations.map(rec => 
-                `<div class="recommendation">
+            ${report.recommendations.map(rec =>
+      `<div class="recommendation">
                     <h3>${rec.title} (${rec.priority} priority)</h3>
                     <p>${rec.description}</p>
                     <ul>
                         ${rec.actions.map(action => `<li>${action}</li>`).join('')}
                     </ul>
                 </div>`
-            ).join('')}
+    ).join('')}
         </div>
     </div>
 </body>
@@ -528,24 +528,24 @@ class BundleAnalyzer {
   // Main analysis function
   async analyze() {
     console.log('🚀 Starting Purrify Bundle Analysis...\n');
-    
+
     this.ensureOutputDir();
-    
+
     // Run all analyses
     const buildAnalysis = this.analyzeBuildOutput();
     const depAnalysis = this.analyzeDependencies();
     const imageAnalysis = this.analyzeImages();
     const performanceScore = this.calculatePerformanceScore(buildAnalysis, depAnalysis, imageAnalysis);
-    
+
     // Generate report
     const report = this.generateReport(buildAnalysis, depAnalysis, imageAnalysis, performanceScore);
-    
+
     // Print summary
     console.log(`\n🎯 Performance Score: ${performanceScore.score}/100 (${performanceScore.grade})`);
     console.log(`📊 Total Issues: ${performanceScore.issues.length}`);
     console.log(`📦 Bundle Size: ${(buildAnalysis.firstLoadJS / 1024).toFixed(1)}KB`);
     console.log(`🖼️ Images: ${imageAnalysis.totalImages} (${(imageAnalysis.totalSize / 1024 / 1024).toFixed(1)}MB)`);
-    
+
     return report;
   }
 }
@@ -553,9 +553,9 @@ class BundleAnalyzer {
 // CLI execution
 if (require.main === module) {
   const analyzer = new BundleAnalyzer();
-  
+
   const command = process.argv[2];
-  
+
   switch (command) {
     case 'analyze':
       analyzer.analyze().catch(console.error);

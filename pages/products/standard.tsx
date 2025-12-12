@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
 export default function StandardSizePage() {
@@ -270,7 +270,9 @@ export default function StandardSizePage() {
                     "item": canonicalUrl
                   }
                 ]
-              }
+              },
+              // FAQ Schema for product page
+              generateFAQSchema(locale)
             ]
           })
         }}
@@ -385,7 +387,7 @@ export default function StandardSizePage() {
                       <Heart className="w-5 h-5 mr-2" />
                       Add to Wishlist
                     </Button>
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                       <Button variant="outline" size="lg" className="flex-1">
                         <Users className="w-5 h-5 mr-2" />
                         Read Reviews
@@ -505,7 +507,7 @@ export default function StandardSizePage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/customers/testimonials`}>
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                 <Button variant="outline" size="lg">
                   Read All Customer Stories
                 </Button>

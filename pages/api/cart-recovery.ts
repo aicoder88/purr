@@ -29,12 +29,12 @@ export default async function handler(
   }
 
   try {
-  const {
-    email,
-    cartItems,
-    recoveryType,
-    discount
-  }: CartRecoveryRequest = req.body;
+    const {
+      email,
+      cartItems,
+      recoveryType,
+      discount
+    }: CartRecoveryRequest = req.body;
 
     // Validate input
     if (!email || !cartItems || cartItems.length === 0) {
@@ -44,7 +44,7 @@ export default async function handler(
     // Check if this cart recovery already exists to avoid spam
     // Note: This would require adding a CartRecovery model to your Prisma schema
     // For now, we'll skip this check and rely on client-side throttling
-    
+
     // const existingRecovery = await prisma.cartRecovery?.findFirst({
     //   where: {
     //     email,
@@ -60,7 +60,7 @@ export default async function handler(
 
     // Generate recovery token
     const recoveryToken = generateRecoveryToken();
-    
+
     // Calculate cart total
     const cartTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     // Transform cart items to match email template format
@@ -146,17 +146,17 @@ function getEmailTemplate(
   }
 ): EmailTemplate {
   const { cartItems, cartTotal, recoveryToken } = data;
-  
+
   const recoveryUrl = `${process.env.NEXT_PUBLIC_DOMAIN || 'https://www.purrify.ca'}/checkout?recovery=${recoveryToken}`;
   const formattedCartTotal = formatCurrencyValue(cartTotal);
   const formattedDiscountAmount = formatCurrencyValue(cartTotal * 0.1);
   const formattedDiscountedTotal = formatCurrencyValue(cartTotal * 0.9);
-  
+
   const templates = {
     immediate: {
       subject: "🐱 Oops! You left something in your cart",
       htmlContent: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #f97316;">Don't let odors win! 🐱</h1>
           <p>Hi there,</p>
           <p>We noticed you were interested in eliminating those stubborn litter box odors with Purrify, but didn't complete your order.</p>
@@ -188,7 +188,7 @@ function getEmailTemplate(
     '1h': {
       subject: "🚨 Still thinking about Purrify? Here's 10% OFF!",
       htmlContent: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #f97316;">Special Offer Just For You! 🎁</h1>
           <p>We get it - you want to make sure Purrify is right for your cats.</p>
           <p><strong>Here's 10% OFF to help you decide!</strong></p>
@@ -240,7 +240,7 @@ function getEmailTemplate(
     '24h': {
       subject: "Final notice: Your Purrify discount expires soon!",
       htmlContent: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #ef4444;">⏰ Last Chance!</h1>
           <p>Your 10% discount on Purrify expires in just a few hours.</p>
           <p>After that, you'll pay full price - and your cats will keep dealing with odors.</p>
@@ -270,7 +270,7 @@ function getEmailTemplate(
     '72h': {
       subject: "We miss you! Here's a fresh start with Purrify",
       htmlContent: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #f97316;">One more try? 🐱</h1>
           <p>We noticed you haven't completed your Purrify order yet.</p>
           <p>Maybe you're still not sure if it's right for your cats?</p>
@@ -299,7 +299,7 @@ function getEmailTemplate(
   };
 
   const template = templates[recoveryType as keyof typeof templates] || templates.immediate;
-  
+
   return {
     subject: template.subject,
     htmlContent: template.htmlContent,
@@ -310,7 +310,7 @@ function getEmailTemplate(
 async function sendRecoveryEmail(email: string, template: EmailTemplate) {
   // In a real implementation, you'd integrate with your email service
   // For now, we'll simulate the email send
-  
+
   if (process.env.NODE_ENV === 'development') {
     console.log('📧 Cart Recovery Email (DEV MODE):');
     console.log('To:', email);
@@ -327,7 +327,7 @@ async function sendRecoveryEmail(email: string, template: EmailTemplate) {
     //   html: template.htmlContent,
     //   text: template.textContent
     // });
-    
+
     return true;
   } catch (err) {
     console.error('Failed to send recovery email:', err);
@@ -356,13 +356,13 @@ async function logCartRecovery(data: {
     //     status: 'sent'
     //   }
     // });
-    
+
     console.log('Cart recovery logged:', {
       email: data.email.replace(/(.{3}).*@/, '$1***@'),
       recoveryType: data.recoveryType,
       cartTotal: data.cartTotal
     });
-    
+
   } catch (err) {
     console.error('Failed to log cart recovery:', err);
   }

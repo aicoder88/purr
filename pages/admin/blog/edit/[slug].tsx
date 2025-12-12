@@ -10,6 +10,7 @@ import { useAutoSave } from '@/hooks/useAutoSave';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import type { BlogPost, Category, Tag } from '@/types/blog';
+import type { BlogDraftData } from '@/types/blog-draft';
 import { ArrowLeft, Save, Eye, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import Link from 'next/link';
@@ -83,7 +84,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
     triggerAutoSave,
     saveToLocalStorage,
     loadFromLocalStorage
-  } = useAutoSave({
+  } = useAutoSave<BlogDraftData>({
     onSave: performAutoSave,
     delay: 30000,
     localStorageKey: `blog-draft-edit-${initialPost.slug}`
@@ -399,7 +400,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
             {/* Post Settings */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
               <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Post Settings</h3>
-              
+
               {/* Status */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -445,13 +446,12 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
-                      className={`h-2 rounded-full ${
-                        seoScore.overall >= 80
+                      className={`h-2 rounded-full ${seoScore.overall >= 80
                           ? 'bg-green-500'
                           : seoScore.overall >= 60
-                          ? 'bg-yellow-500'
-                          : 'bg-red-500'
-                      }`}
+                            ? 'bg-yellow-500'
+                            : 'bg-red-500'
+                        }`}
                       style={{ width: `${seoScore.overall}%` }}
                     />
                   </div>
@@ -593,10 +593,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, params,
 
   const slug = params?.slug as string;
   const store = new ContentStore();
-  
+
   try {
     const post = await store.getPost(slug, locale || 'en');
-    
+
     if (!post) {
       return {
         notFound: true

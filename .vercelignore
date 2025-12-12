@@ -1,0 +1,42 @@
+# Vercel build cache (managed by Vercel)
+.next/cache
+
+# Standalone output (not needed for Vercel deployment)
+.next/standalone
+
+# Local build artifacts
+.next/trace
+
+# Development files
+node_modules
+.env.local
+.env.*.local
+
+# Testing
+coverage
+.nyc_output
+playwright-report
+test-results
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.temp
+.tmp

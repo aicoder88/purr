@@ -1,13 +1,14 @@
 import { useState, useCallback } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Calendar, Shield, Truck, Star } from 'lucide-react';
 import { useTranslation } from '../../lib/translation-context';
 import { formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink } from '../../lib/payment-links';
-import { 
-  SUBSCRIPTION_PLANS, 
+import {
+  SUBSCRIPTION_PLANS,
   SubscriptionPlan,
-  SubscriptionOptimizer 
+  SubscriptionOptimizer
 } from '../../lib/subscription-optimizer';
 
 interface SubscriptionSelectorProps {
@@ -16,10 +17,10 @@ interface SubscriptionSelectorProps {
   selectedPlan?: SubscriptionPlan | null;
 }
 
-export function SubscriptionSelector({ 
-  productId, 
-  onPlanSelect, 
-  selectedPlan = null 
+export function SubscriptionSelector({
+  productId,
+  onPlanSelect,
+  selectedPlan = null
 }: SubscriptionSelectorProps) {
   const { t, locale } = useTranslation();
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
@@ -34,11 +35,11 @@ export function SubscriptionSelector({
   };
 
   const calculateMonthlyPrice = (plan: SubscriptionPlan): number => {
-    return plan.billingPeriod === 'quarterly' 
-      ? plan.price / 3 
+    return plan.billingPeriod === 'quarterly'
+      ? plan.price / 3
       : plan.billingPeriod === 'biannual'
-      ? plan.price / 6
-      : plan.price;
+        ? plan.price / 6
+        : plan.price;
   };
 
   const getBillingPeriodText = (plan: SubscriptionPlan): string => {
@@ -78,8 +79,8 @@ export function SubscriptionSelector({
               key={plan.id}
               className={`
                 relative bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 transition-all duration-300
-                ${isSelected 
-                  ? 'border-[#FF3131] shadow-xl scale-105' 
+                ${isSelected
+                  ? 'border-[#FF3131] shadow-xl scale-105'
                   : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                 }
                 ${isRecommended ? 'ring-4 ring-amber-400/20' : ''}
@@ -142,7 +143,7 @@ export function SubscriptionSelector({
 
               {/* Action button */}
               {paymentLink ? (
-                <Button 
+                <Button
                   asChild
                   className={`
                     w-full py-3 font-bold transition-all duration-300
@@ -152,7 +153,7 @@ export function SubscriptionSelector({
                     }
                   `}
                 >
-                  <a 
+                  <a
                     href={paymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -205,7 +206,7 @@ export function SubscriptionSelector({
             Why Subscribe?
           </h4>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-6 text-center">
           <div>
             <div className="flex justify-center mb-2">
@@ -247,9 +248,9 @@ export function SubscriptionSelector({
       <div className="mt-8 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-300">
           Questions? {' '}
-          <a href="/support/subscription" className="text-[#FF3131] hover:underline">
+          <Link href="/support/subscription" className="text-[#FF3131] hover:underline">
             View subscription FAQ
-          </a>
+          </Link>
         </p>
       </div>
     </div>

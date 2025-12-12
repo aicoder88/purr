@@ -4,7 +4,7 @@ export const fr = {
   // Common
   siteName: "Purrify",
   siteDescription: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
-  
+
   // Navigation
   nav: {
     home: "Accueil",
@@ -67,7 +67,7 @@ export const fr = {
       retailer: ['Mondou', 'Pet Valu', 'Global Pet Foods', 'Ren\'s Pets', 'PetSmart']
     }
   },
-  
+
   // Products
   products: {
     "purrify-12g": {
@@ -141,7 +141,7 @@ export const fr = {
       }
     }
   },
-  
+
   // Features
   features: {
     odorElimination: {
@@ -201,7 +201,7 @@ export const fr = {
       description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
     }
   },
-  
+
   // How It Works
   howItWorks: {
     simpleAs123: "Simple comme 1-2-3",
@@ -230,7 +230,7 @@ export const fr = {
       nonClumping: "NON-AGGLOMÉRANTE"
     }
   },
-  
+
   // Products Section
   productsSection: {
     forEveryCatHousehold: "POUR CHAQUE FOYER DE CHAT",
@@ -247,7 +247,7 @@ export const fr = {
     adding: "Ajout en cours...",
     viewAllProducts: "VOIR TOUS LES PRODUITS"
   },
-  
+
   // Stores Section
   storesSection: {
     availableInStores: "DISPONIBLE EN MAGASIN",
@@ -266,7 +266,7 @@ export const fr = {
       petStoreWithGroomingServices: "Magasin d'animaux avec services de toilettage"
     }
   },
-  
+
   // Call to Action
   cta: {
     title: "Prêt à Dire Adieu aux Odeurs de Litière pour Toujours ?",
@@ -275,7 +275,7 @@ export const fr = {
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
     guarantee: "Support personnalisé inclus"
   },
-  
+
   // FAQ
   faq: {
     title: "Questions Fréquemment Posées",
@@ -315,7 +315,7 @@ export const fr = {
       }
     ]
   },
-  
+
   // Contact
   contact: {
     title: "Contactez-Nous",
@@ -341,7 +341,7 @@ export const fr = {
       submit: "Envoyer"
     }
   },
-  
+
   // Newsletter
   newsletter: {
     title: "Abonnez-vous à notre infolettre",
@@ -373,7 +373,7 @@ export const fr = {
       }
     }
   },
-  
+
   // Free Giveaway Form
   freeGiveaway: {
     formTitle: "Entrez Vos Coordonnées",
@@ -389,7 +389,7 @@ export const fr = {
     errorGeneric: "Une erreur s'est produite. Veuillez réessayer plus tard.",
     privacyNotice: "En soumettant ce formulaire, vous nous autorisez à vous contacter concernant votre échantillon gratuit de Purrify. Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers."
   },
-  
+
   // SEO
   seo: {
     keywords: "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animal, élimination des odeurs de chat, litière écologique pour chat, contrôle naturel des odeurs, soins des chats, fournitures pour animaux, vidéo de chat",
@@ -399,7 +399,7 @@ export const fr = {
     },
     metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par plus de 1 000 propriétaires de chats au Canada."
   },
-  
+
   // Structured Data
   structuredData: {
     organization: {
@@ -445,13 +445,13 @@ export const fr = {
           sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 50g Taille Standard", 
+          name: "Purrify 50g Taille Standard",
           description: "Taille la plus populaire - approvisionnement d'un mois pour les foyers à un seul chat",
           sku: "purrify-50g"
         },
         family: {
           name: "Purrify 120g Pack Familial",
-          description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs", 
+          description: "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs",
           sku: "purrify-120g"
         }
       },
@@ -744,11 +744,11 @@ export const fr = {
     lowestRated: "Moins Bien Noté",
     mostHelpful: "Plus Utile",
     verifiedPurchase: "Achat Vérifié",
-    
+
     // Payment & Cart
     securePayment: "Paiement Sécurisé",
     shoppingCart: "Panier d'Achat",
-    
+
     // General
     happyCustomers: "Clients Satisfaits",
     moneyBack: "Support expert",
@@ -775,7 +775,7 @@ export const fr = {
     alreadyClaimed: "Déjà réclamés",
     countdownLabels: {
       hours: "HEURES",
-      minutes: "MINS", 
+      minutes: "MINS",
       seconds: "SECS"
     },
     testimonials: [
@@ -813,7 +813,7 @@ export const fr = {
   contactPage: {
     title: "Nous Sommes Là Pour Vous Aider",
     subtitle: "Notre équipe de support client amicale est prête à vous assister avec des conseils d'experts et des solutions.",
-    chooseContactMethod: "Choisissez Comment Nous Contacter", 
+    chooseContactMethod: "Choisissez Comment Nous Contacter",
     contactReasons: [
       { value: "general", label: "Question Générale" },
       { value: "product", label: "Information Produit" },
@@ -826,7 +826,7 @@ export const fr = {
     contactMethods: [
       {
         title: "Support Email",
-        description: "Obtenez de l'aide détaillée par email", 
+        description: "Obtenez de l'aide détaillée par email",
         responseTime: "Habituellement dans les 24 heures"
       },
       {
@@ -842,7 +842,7 @@ export const fr = {
     ],
     form: {
       fullName: "Nom Complet",
-      emailAddress: "Adresse Courriel", 
+      emailAddress: "Adresse Courriel",
       subject: "Sujet",
       message: "Message",
       contactReason: "Raison du Contact",
@@ -868,7 +868,7 @@ export const fr = {
         answer: "Écrivez-nous ! Notre équipe d'accompagnement analysera votre installation, partagera des conseils personnalisés et s'assurera que Purrify fonctionne au mieux chez vous."
       },
       {
-        question: "Offrez-vous des prix de gros pour plusieurs chats?", 
+        question: "Offrez-vous des prix de gros pour plusieurs chats?",
         answer: "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
       },
       {
@@ -878,7 +878,7 @@ export const fr = {
     ],
     businessHours: {
       title: "Heures d'Affaires",
-      weekdays: "9h00 - 17h00 EST", 
+      weekdays: "9h00 - 17h00 EST",
       saturday: "10h00 - 14h00 EST",
       sunday: "Fermé",
       closed: "Fermé"
@@ -920,7 +920,7 @@ export const fr = {
       {
         id: "small",
         name: "Taille Moyenne 50g",
-        subtitle: "Idéal pour les Foyers à Un Chat", 
+        subtitle: "Idéal pour les Foyers à Un Chat",
         duration: "3-4 changements de litière",
         cats: "1 chat",
         features: [
@@ -973,7 +973,7 @@ export const fr = {
     featuresComparison: "Comparaison des Caractéristiques",
     seeHowProductsCompare: "Voyez comment nos produits se comparent côte à côte",
     howLongWillEachSizeLast: "Combien de Temps Chaque Taille Durera-t-elle?",
-    popular: "Populaire", 
+    popular: "Populaire",
     bestValue: "Meilleure Valeur",
     perfectForFirstTime: "Parfait pour les nouveaux utilisateurs",
     idealForSingleCat: "Idéal pour les foyers à un chat",
@@ -990,7 +990,54 @@ export const fr = {
     getBestValue: "Obtenir la Meilleure Valeur",
     chooseThisSize: "Choisir Cette Taille",
     tryWithoutRisk: "Essayez Sans Risque",
-    chooseSmallSize: "Choisir Petite Taille"
+    chooseSmallSize: "Choisir Petite Taille",
+
+    // SEO
+    seo: {
+      title: "Trouvez la Taille Parfaite",
+      description: "Comparez toutes les tailles Purrify et trouvez l'additif pour litière au charbon actif parfait pour les besoins de votre foyer."
+    },
+
+    stillUnsureDescription: "Commencez avec notre taille d'essai sans risque et découvrez la différence Purrify par vous-même.",
+
+    // Table Headers
+    tableHeaders: {
+      feature: "Caractéristique",
+      trial: "Essai 12g",
+      standard: "Moyen 50g",
+      large: "Grand 120g"
+    },
+
+    // Calculation Units
+    units: {
+      cat: "Chat",
+      cats: "Chats",
+      week: "semaine",
+      weeks: "semaines",
+      day: "jour",
+      days: "jours",
+      weekly: "Hebdomadaire",
+      perWeek: "par semaine"
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "Comment ça marche",
+        description: "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Avis Clients",
+        description: "Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.",
+        link: "/reviews"
+      },
+      {
+        title: "Guide de Litière",
+        description: "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ]
   },
 
   // Détaillants & B2B
@@ -1104,7 +1151,7 @@ export const fr = {
   // Privacy Policy
   privacyPolicy: {
     title: "Politique de Confidentialité",
-    lastUpdated: "Dernière mise à jour : juin 2024", 
+    lastUpdated: "Dernière mise à jour : juin 2024",
     sections: [
       {
         title: "Information que Nous Collectons",
@@ -1122,7 +1169,7 @@ export const fr = {
         content: "Nous utilisons les informations collectées pour :",
         items: [
           "Traiter et expédier vos commandes",
-          "Fournir un support client", 
+          "Fournir un support client",
           "Envoyer des mises à jour de produits et des conseils de soins",
           "Améliorer nos produits et services",
           "Respecter les exigences légales"
@@ -1181,7 +1228,7 @@ export const fr = {
       tags: ["charbon actif", "contrôle odeurs"]
     },
     {
-      id: 2, 
+      id: 2,
       category: "product",
       question: "Peut-on utiliser Purrify près des chats et des personnes ?",
       answer: "Purrify utilise le même type de charbon actif que l’on retrouve couramment dans les filtres à eau et à air domestiques. Sans parfums ni colorants ajoutés.",
@@ -1210,7 +1257,7 @@ export const fr = {
     categories: "Catégories",
     questionsFound: "Question trouvée",
     questionsFoundPlural: "Questions trouvées",
-    clearSearch: "Effacer Recherche", 
+    clearSearch: "Effacer Recherche",
     noQuestionsFound: "Aucune question trouvée",
     adjustSearchTerms: "Essayez d'ajuster vos termes de recherche ou le filtre de catégorie",
     stillHaveQuestions: "Vous Avez Encore Des Questions ?",
@@ -1244,7 +1291,7 @@ export const fr = {
     }
   },
 
-  
+
   // Homepage specific translations
   homepage: {
     seo: {
@@ -1353,5 +1400,156 @@ export const fr = {
   scrollingBar: {
     freeShipping: "Livraison Gratuite sur Tous les Abonnements",
     madeInCanada: "Fabriqué au Canada avec des Ingrédients d'Origine Nationale et Mondiale"
+  },
+
+  // Maps
+  maps: {
+    findNearYou: "Trouvez Purrify Près de Chez Vous | Magasins Détaillants",
+    discoverWhere: "Découvrez où acheter Purrify à travers le Canada. Chaque point représente un magasin de détail où vous pouvez trouver nos produits.",
+    retailStores: "🗺️ Magasins détaillants Purrify à travers le Canada - Montréal, Toronto, Vancouver et plus",
+    cities: {
+      montreal: "Montréal",
+      quebec: "Québec",
+      toronto: "Toronto",
+      vancouver: "Vancouver",
+      calgary: "Calgary",
+      ottawa: "Ottawa"
+    },
+    iframeTitle: "Carte des Magasins Détaillants Purrify"
+  },
+
+  // Upsell Page
+  upsell: {
+    pageTitle: "Offre Spéciale Unique - Purrify",
+    metaDescription: "Offre unique exclusive pour les nouveaux clients. Économisez 25% sur l'abonnement trimestriel automatique.",
+    offerExpired: "Offre Expirée",
+    offerExpiresIn: "L'offre expire dans",
+    headline: "Attendez! Offre Exclusive Unique",
+    subheadline: "Ajoutez l'abonnement automatique et économisez 25%",
+    saveBadge: "ÉCONOMISEZ 29%",
+    productTitle: "Purrify 50g Abonnement Automatique",
+    productSubtitle: "Approvisionnement de 3 Mois (3 × 50g sachets)",
+    youSave: "Vous économisez",
+    benefit1: "Ne manquez jamais - livré tous les 3 mois",
+    benefit2: "Livraison gratuite incluse (économisez 7,99 $)",
+    benefit3: "Verrouillez ce prix spécial pour toujours",
+    benefit4: "Annulez ou sautez à tout moment (sans engagement)",
+    benefit5: "Rappels automatiques avant chaque expédition",
+    processing: "Traitement en cours...",
+    addToOrder: "Oui! Ajouter à Ma Commande",
+    noThanks: "Non merci, je préfère payer le prix plein plus tard",
+    feature1Title: "Activation Instantanée",
+    feature1Description: "Votre abonnement automatique commence immédiatement après cette commande",
+    feature2Title: "100% Satisfaction",
+    feature2Description: "Garantie de remboursement de 30 jours sur chaque expédition",
+    feature3Title: "Contrôle Flexible",
+    feature3Description: "Sautez, suspendez ou annulez en ligne à tout moment",
+    testimonialText: "J'ai failli sauter l'offre d'abonnement automatique, mais je suis si content de ne pas l'avoir fait! C'est une chose de moins à retenir, et les économies s'accumulent. De plus, je ne manque jamais quand j'en ai le plus besoin.",
+    testimonialAuthor: "— Sarah M., Toronto",
+    faqTitle: "Questions Courantes",
+    faq1Question: "Puis-je annuler à tout moment?",
+    faq1Answer: "Absolument! Annulez, sautez ou modifiez votre abonnement à tout moment depuis votre tableau de bord. Pas de frais, pas de tracas.",
+    faq2Question: "Quand serai-je facturé?",
+    faq2Answer: "Vous serez facturé aujourd'hui pour cette offre spéciale. Votre prochaine expédition sera dans 3 mois, et vous recevrez un email de rappel 7 jours avant.",
+    faq3Question: "Le prix est-il verrouillé?",
+    faq3Answer: "Oui! Ce prix spécial est verrouillé tant que vous restez abonné. Vous ne paierez jamais plus que ce tarif.",
+    bottomNote: "Cette offre unique n'est disponible qu'immédiatement après votre premier achat",
+    returnHome: "Retour à l'accueil"
+  },
+
+  // Affiliate Page
+  affiliate: {
+    metaTitle: "Gagnez un Revenu Mensuel avec le Programme d'Affiliation Purrify",
+    metaDescription: "Recommandez Purrify aux propriétaires de chats et gagnez une commission récurrente de 30% à vie. Rejoignez des centaines d'affiliés qui gagnent un revenu passif en aidant les chats à vivre sans odeur.",
+    hero: {
+      badge: "Rejoignez Notre Programme d'Affiliation",
+      title: "Gagnez un Revenu Mensuel Avec Purrify",
+      subtitle: "Recommandez Purrify aux propriétaires de chats et gagnez 30% de revenu récurrent mensuel à vie.",
+      primaryCTA: "Devenez Affilié",
+      secondaryCTA: "Voir le Calculateur de Revenus"
+    },
+    calculator: {
+      title: "Calculez Vos Gains Potentiels",
+      subtitle: "Ajustez les curseurs pour voir combien vous pourriez gagner avec la commission de 30% de Purrify",
+      standardProduct: "50g Standard (24,99$) - Références/Mois",
+      familyPack: "120g Format Familial (44,99$) - Références/Mois",
+      perSale: "par vente",
+      monthlyIncome: "Revenu Mensuel Estimé",
+      yearlyIncome: "Revenu Annuel Estimé",
+      disclaimer: "Ce sont des gains potentiels basés sur une commission de 30%. Les résultats réels peuvent varier.",
+      cta: "Commencez à Gagner Maintenant"
+    },
+    howItWorks: {
+      title: "Comment Ça Marche",
+      step1: {
+        title: "Rejoignez le Programme",
+        description: "Créez votre compte d'affilié et recevez votre lien de parrainage unique. C'est gratuit de rejoindre et prend moins de 2 minutes."
+      },
+      step2: {
+        title: "Partagez Votre Lien",
+        description: "Partagez votre lien de parrainage avec votre audience via les médias sociaux, articles de blog, vidéos ou email. Nous fournissons du matériel marketing pour vous aider à réussir."
+      },
+      step3: {
+        title: "Soyez Payé à Vie",
+        description: "Gagnez une commission récurrente de 30% sur chaque vente de vos parrainés - pas seulement le premier achat, mais pour toujours. Paiements envoyés mensuellement par votre méthode préférée."
+      }
+    },
+    benefits: {
+      title: "Pourquoi Rejoindre le Programme d'Affiliation Purrify?",
+      subtitle: "Nous avons conçu notre programme pour vous aider à réussir avec des commissions et un soutien de premier plan dans l'industrie",
+      benefit1: {
+        title: "Commissions à Vie de 30%",
+        description: "Contrairement à la plupart des programmes qui ne paient que sur la première vente, vous gagnez 30% sur chaque achat de vos parrainés - pour toujours. Construisez un véritable revenu passif."
+      },
+      benefit2: {
+        title: "Produit à Haute Conversion",
+        description: "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de 98%, nos produits se vendent tout seuls."
+      },
+      benefit3: {
+        title: "Suivi en Temps Réel",
+        description: "Surveillez vos gains, clics et conversions en temps réel avec notre tableau de bord d'affilié avancé. Transparence totale sur vos performances."
+      },
+      benefit4: {
+        title: "Ressources Marketing",
+        description: "Accédez à des bannières professionnelles, modèles d'email, images de produits et textes éprouvés. Nous fournissons tout ce dont vous avez besoin pour réussir."
+      }
+    },
+    testimonials: {
+      title: "Histoires de Succès de Nos Affiliés",
+      testimonial1: {
+        quote: "J'ai gagné plus de 3 400$ au cours des 6 derniers mois simplement en recommandant Purrify à l'audience de mon blog sur les chats. Les commissions récurrentes s'accumulent rapidement!",
+        name: "Jessica M.",
+        role: "Propriétaire de Blog sur les Chats"
+      },
+      testimonial2: {
+        quote: "Meilleur programme d'affiliation auquel j'ai adhéré. Excellent produit, taux de conversion élevé, et la commission à vie de 30% est imbattable. Je recommande vivement!",
+        name: "Mike T.",
+        role: "Critique de Produits pour Animaux"
+      },
+      testimonial3: {
+        quote: "L'équipe de support est incroyable. Ils m'ont aidé à optimiser mon contenu et maintenant je gagne un revenu mensuel stable. C'est vraiment un revenu passif.",
+        name: "Amanda R.",
+        role: "Créatrice YouTube"
+      }
+    },
+    faq: {
+      title: "Questions Fréquemment Posées",
+      question1: "Combien puis-je gagner?",
+      answer1: "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 24,99$ mensuellement, c'est 74,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
+      question2: "Quand suis-je payé?",
+      answer2: "Les commissions sont payées mensuellement via PayPal, dépôt direct ou chèque. Nous payons le 15 de chaque mois pour les gains du mois précédent. Paiement minimum de 50$.",
+      question3: "Combien de temps durent les cookies?",
+      answer3: "Nos cookies d'affiliation durent 90 jours. Si quelqu'un clique sur votre lien et achète dans les 90 jours, vous obtenez le crédit pour cette vente et tous les achats futurs de ce client.",
+      question4: "Ai-je besoin d'un site web?",
+      answer4: "Non! Bien qu'avoir un site web aide, vous pouvez partager votre lien d'affilié sur les médias sociaux, YouTube, newsletters par email, ou partout où vous connectez avec des propriétaires de chats.",
+      question5: "Quel matériel marketing fournissez-vous?",
+      answer5: "Nous fournissons des bannières professionnelles, images de produits, modèles d'email, publications sur les médias sociaux et textes éprouvés. Tout ce dont vous avez besoin pour commencer à promouvoir immédiatement."
+    },
+    finalCTA: {
+      title: "Prêt à Commencer à Gagner?",
+      subtitle: "Rejoignez des centaines d'affiliés prospères gagnant un revenu passif avec Purrify",
+      cta: "Rejoignez le Programme d'Affiliation",
+      disclaimer: "Gratuit de rejoindre • Pas de frais mensuels • Commencez à gagner immédiatement"
+    }
   }
 };
