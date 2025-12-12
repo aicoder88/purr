@@ -75,7 +75,7 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-2">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-2">
           <Calendar className="w-5 h-5" />
           <span>Scheduled Posts</span>
         </h2>

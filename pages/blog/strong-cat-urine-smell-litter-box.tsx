@@ -106,7 +106,7 @@ export default function StrongCatUrineSmell() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#5B2EFF] dark:text-[#C4B5FD] font-medium text-sm mb-4">
                 Odor Control Playbook
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Strong Cat Urine Smell in the Litter Box? Try This Layered Fix
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -137,7 +137,7 @@ export default function StrongCatUrineSmell() {
 
             {/* Quick Relief Panel */}
             <section className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-md dark:shadow-none">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 flex items-center justify-between">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 flex items-center justify-between">
                 Immediate Odor Relief Checklist
                 <span className="text-sm font-semibold text-[#FF3131] dark:text-[#FF6B6B] bg-[#FFE6E6] dark:bg-[#FFE6E6]/20 px-3 py-1 rounded-full">
                   48-hour transformation
@@ -145,19 +145,19 @@ export default function StrongCatUrineSmell() {
               </h2>
               <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-200">
                 <div className="bg-[#F7F4FF] dark:bg-[#5B2EFF]/20 border border-[#C7B7FF] dark:border-[#C7B7FF]/40 rounded-xl p-5">
-                  <h3 className="text-lg font-semibold text-[#5B2EFF] dark:text-[#C4B5FD] mb-2">Daily</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#C4B5FD] mb-2">Daily</h3>
                   <p>Remove clumps twice per day and mix in one tablespoon of Purrify to neutralize fresh ammonia spikes.</p>
                 </div>
                 <div className="bg-[#E9F8FF] dark:bg-[#0EA5E9]/20 border border-[#BAE6FD] dark:border-[#38BDF8]/30 rounded-xl p-5">
-                  <h3 className="text-lg font-semibold text-[#0369A1] dark:text-[#7DD3FC] mb-2">Airflow</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#0369A1] dark:text-[#7DD3FC] mb-2">Airflow</h3>
                   <p>Open a nearby window for 10 minutes or run a compact fan to disperse trapped odor molecules.</p>
                 </div>
                 <div className="bg-[#FFF5E6] dark:bg-[#FFB347]/20 border border-[#FFD8A8] dark:border-[#FDBA74]/40 rounded-xl p-5">
-                  <h3 className="text-lg font-semibold text-[#C05621] dark:text-[#FBBF24] mb-2">Litter Base</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#C05621] dark:text-[#FBBF24] mb-2">Litter Base</h3>
                   <p>Every third day, scrape the bottom of the box so liquids cannot pool beneath the litter surface.</p>
                 </div>
                 <div className="bg-[#E6FFE6] dark:bg-[#16A34A]/20 border border-[#B7F7C4] dark:border-[#4ADE80]/40 rounded-xl p-5">
-                  <h3 className="text-lg font-semibold text-[#15803D] dark:text-[#86EFAC] mb-2">Room Reset</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#15803D] dark:text-[#86EFAC] mb-2">Room Reset</h3>
                   <p>Mist the nearby area with an enzyme-safe cleaner and wipe baseboards to catch lingering scent particles.</p>
                 </div>
               </div>
@@ -174,15 +174,15 @@ export default function StrongCatUrineSmell() {
 
               <div className="grid md:grid-cols-3 gap-6 my-10">
                 <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
-                  <h3 className="text-lg font-semibold text-[#5B2EFF] dark:text-[#C4B5FD]">1. Saturation</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#C4B5FD]">1. Saturation</h3>
                   <p>Overfilled litter traps moisture against the base. Liquids seep into scratches and plastic pores, releasing odor nonstop.</p>
                 </div>
                 <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
-                  <h3 className="text-lg font-semibold text-[#FF3131] dark:text-[#FF6B6B]">2. Air Stagnation</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#FF3131] dark:text-[#FF6B6B]">2. Air Stagnation</h3>
                   <p>Closed laundry rooms create a micro-climate where ammonia concentrates. Even high-end litter fails without airflow.</p>
                 </div>
                 <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
-                  <h3 className="text-lg font-semibold text-[#15803D] dark:text-[#86EFAC]">3. Neutralization Gap</h3>
+                  <h3 className="font-heading text-lg font-semibold text-[#15803D] dark:text-[#86EFAC]">3. Neutralization Gap</h3>
                   <p>Baking soda masks smell briefly but lacks the pore structure to trap nitrogen compounds for more than a day.</p>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function StrongCatUrineSmell() {
             <div className="flex flex-col gap-8 my-12">
               <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-6 shadow-sm dark:shadow-none flex flex-col justify-between">
                 <div>
-                  <h3 className="text-2xl font-bold text-[#5B2EFF] dark:text-[#C4B5FD] mb-4">Odor Lock Technology</h3>
+                  <h3 className="font-heading text-2xl font-bold text-[#5B2EFF] dark:text-[#C4B5FD] mb-4">Odor Lock Technology</h3>
                   <p className="text-gray-700 dark:text-gray-200 mb-4">
                     Coconut-shell activated carbon features ultra-fine pores that adsorb ammonia, mercaptans, and sulfur
                     compounds. Unlike fragranced toppers, it removes odor molecules from circulation.
@@ -273,7 +273,7 @@ export default function StrongCatUrineSmell() {
             <div className="bg-[#FFF5E6] dark:bg-[#FFB347]/20 border border-[#FFD8A8] dark:border-[#FDBA74]/40 rounded-2xl p-6 mb-12">
               <div className="flex flex-col gap-6 items-center">
                 <div>
-                  <h2 className="text-2xl font-bold text-[#C05621] dark:text-[#FDBA74] mb-4">Before &amp; After: Smell Scorecard</h2>
+                  <h2 className="font-heading text-2xl font-bold text-[#C05621] dark:text-[#FDBA74] mb-4">Before &amp; After: Smell Scorecard</h2>
                   <p className="text-gray-700 dark:text-gray-200">
                     Our odor control specialists tracked scent levels with a handheld ammonia monitor. The layered routine and
                     Purrify additive dropped readings from 38 ppm to under 5 ppm in four days—well below the threshold humans can
@@ -294,7 +294,7 @@ export default function StrongCatUrineSmell() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-sm dark:shadow-none">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">What Cat Parents Are Saying</h2>
+              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">What Cat Parents Are Saying</h2>
               <blockquote className="border-l-4 border-[#5B2EFF] dark:border-[#C4B5FD] pl-6 text-lg text-gray-700 dark:text-gray-200 italic">
                 “We tried switching litters, adding baking soda, even moving the box. Nothing worked until we layered the
                 cleaning routine with Purrify. Our guests stopped noticing the cat smell within a week.”

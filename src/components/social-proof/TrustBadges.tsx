@@ -144,7 +144,7 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
                 <badge.icon className="w-full h-full" />
               </div>
             )}
-            <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+            <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">
               {getTrustBadgeText(badge, 'title')}
             </h3>
             {badge.highlightKey && (

@@ -232,7 +232,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
     <div className={cn("space-y-6", className)}>
       {/* Quick Share Buttons */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
           <Share2 className="w-5 h-5 mr-2" />
           Quick Share
         </h3>
@@ -254,7 +254,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
 
       {/* Detailed Templates */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Personalized Templates
         </h3>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
@@ -342,7 +342,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
               <QrCode className="w-5 h-5 mr-2" />
               QR Code
             </h3>
@@ -404,7 +404,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
 
       {/* Performance Tips */}
       <Card className="p-6 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           💡 Sharing Tips for Better Results
         </h3>
 

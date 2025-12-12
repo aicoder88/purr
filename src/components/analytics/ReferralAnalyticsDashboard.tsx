@@ -224,7 +224,7 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
       {/* Header with Controls */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
             Referral Analytics
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -401,7 +401,7 @@ function OverviewTab({ data, trends, topPerformers }: { data: OverviewMetrics; t
 
       {/* Trends Chart */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Performance Trends
         </h3>
         <div className="h-64 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center">
@@ -413,7 +413,7 @@ function OverviewTab({ data, trends, topPerformers }: { data: OverviewMetrics; t
 
       {/* Top Performers */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Top Performing Referrers
         </h3>
         <div className="space-y-4">
@@ -513,7 +513,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
 
       {/* Performance Chart */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Conversion Performance Over Time
         </h3>
         <div className="h-80 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center">
@@ -530,7 +530,7 @@ function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: Tr
 function FunnelTab({ data }: { data: FunnelData[] }) {
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">
+      <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">
         Conversion Funnel Analysis
       </h3>
       <div className="space-y-4">
@@ -570,7 +570,7 @@ function FunnelTab({ data }: { data: FunnelData[] }) {
 function SocialTab({ data }: { data: SocialChannelData[] }) {
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+      <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Social Channel Performance
       </h3>
       <div className="space-y-4">
@@ -598,7 +598,7 @@ function SocialTab({ data }: { data: SocialChannelData[] }) {
 function CohortsTab({ data }: { data: CohortData[] }) {
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+      <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Cohort Analysis
       </h3>
       <div className="overflow-x-auto">
@@ -673,7 +673,7 @@ function RevenueTab({ data, trends }: { data: RevenueData; trends: TrendData[] }
       </div>
 
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Revenue by Source
         </h3>
         <div className="space-y-4">

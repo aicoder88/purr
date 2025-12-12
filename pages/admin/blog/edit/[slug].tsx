@@ -399,7 +399,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
           <div className="space-y-6">
             {/* Post Settings */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Post Settings</h3>
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Post Settings</h3>
 
               {/* Status */}
               <div className="mb-4">
@@ -442,7 +442,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
             {/* SEO Score */}
             {seoScore && (
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">SEO Score</h3>
+                <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">SEO Score</h3>
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
@@ -471,7 +471,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
 
             {/* Categories */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Categories</h3>
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Categories</h3>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
@@ -489,7 +489,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
 
             {/* Tags */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Tags</h3>
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Tags</h3>
               <div className="flex flex-wrap gap-2 mb-3">
                 {selectedTags.map((tagId) => {
                   const tag = tags.find(t => t.id === tagId);
@@ -531,7 +531,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
 
             {/* Featured Image */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Featured Image</h3>
+              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Featured Image</h3>
               {featuredImage ? (
                 <div className="relative">
                   <img

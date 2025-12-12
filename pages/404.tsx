@@ -56,7 +56,7 @@ const NotFoundPage: NextPage = () => {
             />
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#5B2EFF]">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-[#5B2EFF]">
             404 - Page Not Found
           </h1>
           
@@ -66,7 +66,7 @@ const NotFoundPage: NextPage = () => {
           </p>
           
           <div className="mb-12 p-4 bg-[#FFFFF5] dark:bg-gray-800 rounded-lg border border-[#E0EFC7] dark:border-gray-600 shadow-sm">
-            <h2 className="text-xl font-semibold mb-4 text-[#03E46A] dark:text-[#03E46A]">
+            <h2 className="font-heading text-xl font-semibold mb-4 text-[#03E46A] dark:text-[#03E46A]">
               You might be looking for:
             </h2>
             

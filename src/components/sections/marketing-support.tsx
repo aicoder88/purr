@@ -71,7 +71,7 @@ export function MarketingSupport() {
     <section className="py-16 bg-white dark:bg-gray-900">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             {t.retailers?.marketing?.title || 'Complete Marketing Support'}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -81,7 +81,7 @@ export function MarketingSupport() {
 
         {supportItems.map((category, categoryIndex) => (
           <div key={categoryIndex} className="mb-16 last:mb-0">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
+            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
               {category.category}
             </h3>
 
@@ -117,7 +117,7 @@ export function MarketingSupport() {
         <div className="mt-16 bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-2xl p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                 {t.retailers?.marketing?.coop?.title || 'Co-op Advertising Program'}
               </h3>
               <p className="text-gray-700 dark:text-gray-200 mb-6">

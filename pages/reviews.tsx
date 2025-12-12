@@ -164,7 +164,7 @@ export default function Reviews() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
                 Customer Reviews
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Real Stories from Happy Cat Owners
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
@@ -231,7 +231,7 @@ export default function Reviews() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-3">{review.title}</h3>
+                  <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-50 mb-3">{review.title}</h3>
 
                   {/* Review */}
                   <div className="relative mb-4">
@@ -254,21 +254,21 @@ export default function Reviews() {
             {/* Trust Indicators */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-8 mb-16 cv-auto cis-480">
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
+                <h2 className="font-heading text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
                 <div className="grid md:grid-cols-3 gap-6 text-blue-800 dark:text-blue-200">
                   <div className="text-center">
                     <CheckCircle className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">Verified Reviews</h3>
+                    <h3 className="font-heading font-semibold mb-2">Verified Reviews</h3>
                     <p className="text-sm">All reviews are from verified purchasers who have used Purrify products.</p>
                   </div>
                   <div className="text-center">
                     <Star className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">4.9/5 Rating</h3>
+                    <h3 className="font-heading font-semibold mb-2">4.9/5 Rating</h3>
                     <p className="text-sm">Consistently high ratings across all product sizes and customer types.</p>
                   </div>
                   <div className="text-center">
                     <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">1,000+ Customers</h3>
+                    <h3 className="font-heading font-semibold mb-2">1,000+ Customers</h3>
                     <p className="text-sm">Growing community of satisfied cat owners across Canada.</p>
                   </div>
                 </div>
@@ -278,7 +278,7 @@ export default function Reviews() {
             {/* Call to Action */}
             <div className="text-center cv-auto cis-480">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Join 1,000+ Happy Cat Owners
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
@@ -304,7 +304,7 @@ export default function Reviews() {
 
             {/* Related Links */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
               <div className="grid md:grid-cols-4 gap-4">
                 <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>

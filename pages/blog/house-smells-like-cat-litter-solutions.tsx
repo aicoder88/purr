@@ -159,7 +159,7 @@ export default function HouseSmellsLikeCatLitter() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Odor Control Solutions
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 House Smells Like Cat Litter? 7 Proven Solutions to Control Cat Litter Smell
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -197,7 +197,7 @@ export default function HouseSmellsLikeCatLitter() {
                 and permanently.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Does My House Smell Like Cat Litter?</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Does My House Smell Like Cat Litter?</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 When your <strong>house smells like kitty litter</strong>, it's usually due to one or more of these common issues:
@@ -211,9 +211,9 @@ export default function HouseSmellsLikeCatLitter() {
                 <li><strong>Medical issues:</strong> Health problems can cause stronger-smelling urine</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">7 Proven Solutions to Control Cat Litter Smell</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">7 Proven Solutions to Control Cat Litter Smell</h2>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Use Activated Carbon Litter Additives</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Use Activated Carbon Litter Additives</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 The most effective way to eliminate <strong>cat litter urine smell</strong> is with activated carbon additives.
@@ -230,7 +230,7 @@ export default function HouseSmellsLikeCatLitter() {
                 </ul>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Maintain Proper Litter Box Cleaning Schedule</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Maintain Proper Litter Box Cleaning Schedule</h3>
 
               <div className="mb-8">
                 <Image
@@ -257,7 +257,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>Replace old litter boxes annually</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Improve Ventilation Around the Litter Area</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Improve Ventilation Around the Litter Area</h3>
 
               <div className="mb-8">
                 <Image
@@ -284,7 +284,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>Avoid placing litter boxes in enclosed spaces</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Choose the Right Litter Type</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Choose the Right Litter Type</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Some litters are better at controlling odors than others. Look for:
@@ -297,7 +297,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>High-quality litter that controls dust</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">5. Address Multiple Cat Households</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">5. Address Multiple Cat Households</h3>
 
               <div className="mb-8">
                 <Image
@@ -324,7 +324,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>Stronger odor control solutions like activated carbon</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">6. Monitor Your Cat's Health</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">6. Monitor Your Cat's Health</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Unusually <strong>strong urine smell from your cat litter box</strong> could indicate health issues:
@@ -337,7 +337,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>Consult your vet if odors suddenly become stronger</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">7. Deep Clean Affected Areas</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">7. Deep Clean Affected Areas</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If odors have permeated your home, you may need to deep clean:
@@ -362,7 +362,7 @@ export default function HouseSmellsLikeCatLitter() {
                 </Link>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Preventing Future Odor Problems</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Preventing Future Odor Problems</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Once you've eliminated existing odors, maintain a fresh-smelling home with these habits:
@@ -376,7 +376,7 @@ export default function HouseSmellsLikeCatLitter() {
                 <li>Keep backup supplies on hand</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 You don't have to live with a <strong>house that smells like cat litter</strong>. By combining proper

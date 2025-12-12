@@ -55,7 +55,7 @@ export default function ammoniasmellcatlitterPage() {
               <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">This isn't your typical air freshener. Purrify uses the same activated carbon grade found in military gas masks to destroy ammonia molecules instantly.</p>
 
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">
-                <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why Ammonia Smell Develops</h3>
+                <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why Ammonia Smell Develops</h3>
                 <p className="text-gray-700 dark:text-gray-200 mb-3">
                   Ammonia smell in cat litter boxes occurs when bacteria break down urea in cat urine. This natural process
                   produces ammonia gas, which has that distinctive sharp, pungent odor that makes you want to hold your breath.
@@ -69,17 +69,17 @@ export default function ammoniasmellcatlitterPage() {
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-3xl mb-2">⚡</div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100">Instant Results</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Instant Results</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Works immediately upon application</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">🌿</div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100">100% Natural</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">100% Natural</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Safe for cats and humans</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">💰</div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100">Cost Effective</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Cost Effective</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Small amount goes a long way</p>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function ammoniasmellcatlitterPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h2 className="text-3xl font-bold mb-2">No More Holding Your Breath!</h2>
+                  <h2 className="font-heading text-3xl font-bold mb-2">No More Holding Your Breath!</h2>
                   <p className="text-xl opacity-90">Eliminate ammonia smell at the molecular level</p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function ammoniasmellcatlitterPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">Military-Grade Carbon Technology</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">Military-Grade Carbon Technology</h3>
                     <p className="text-lg opacity-90">Same technology used in water filters and gas masks</p>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ export default function ammoniasmellcatlitterPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Fresh Home, Happy Life</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-2">Fresh Home, Happy Life</h3>
                   <p className="text-lg opacity-90">No more embarrassment when guests visit</p>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export default function ammoniasmellcatlitterPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">Your Cat Deserves Better</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves Better</h3>
                     <p className="text-lg opacity-90">Join 1,000+ happy cat owners</p>
                   </div>
                 </div>

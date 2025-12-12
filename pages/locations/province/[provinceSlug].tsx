@@ -45,7 +45,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
             <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">
               Province Guide
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
               Cat Litter Odor Control in {province.name}
             </h1>
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
 
         <section id="province-cities" className="py-16 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
               Cities We Serve in {province.name}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -94,7 +94,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
 
         <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8">
+            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8">
               Explore Other Provinces
             </h2>
             <div className="flex flex-wrap justify-center gap-3">

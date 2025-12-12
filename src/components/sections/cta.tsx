@@ -64,7 +64,7 @@ export function CTA() {
 
           {/* Content section */}
           <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
               {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
             </h2>
 

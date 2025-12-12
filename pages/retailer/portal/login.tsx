@@ -194,7 +194,7 @@ export default function RetailerLoginPage() {
           {/* Header */}
           <div className="text-center">
             <Building2 className="mx-auto h-12 w-12 text-blue-600 dark:text-blue-400" />
-            <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading mt-6 text-3xl font-bold text-gray-900 dark:text-gray-50">
               {isLogin ? 'Retailer Portal Login' : 'Apply for Wholesale Account'}
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
@@ -302,7 +302,7 @@ export default function RetailerLoginPage() {
               <div className="space-y-6">
                 {/* Business Information */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Business Information</h3>
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Business Information</h3>
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -386,7 +386,7 @@ export default function RetailerLoginPage() {
 
                 {/* Shipping Address */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-4 flex items-center">
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                     <MapPin className="h-5 w-5 mr-2" />
                     Shipping Address
                   </h3>
@@ -487,7 +487,7 @@ export default function RetailerLoginPage() {
 
                 {/* Password */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Account Security</h3>
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Account Security</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">

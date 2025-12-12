@@ -120,7 +120,7 @@ export function OrdersTab({
     <div className="space-y-6">
       {/* Order Statistics */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Order Statistics</h3>
+        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Order Statistics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
             <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{getOrderStatusCount('all')}</p>
@@ -178,7 +178,7 @@ export function OrdersTab({
       {/* Order History */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">
             Order History
             {statusFilter !== 'all' && (
               <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">

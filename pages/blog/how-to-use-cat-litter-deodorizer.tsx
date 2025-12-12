@@ -122,7 +122,7 @@ export default function HowToUseLitterDeodorizer() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 How-To Guide
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -153,7 +153,7 @@ export default function HowToUseLitterDeodorizer() {
 
             {/* Quick Summary Box */}
             <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-12">
-              <h2 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">📋 Quick Application Summary</h2>
+              <h2 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">📋 Quick Application Summary</h2>
               <div className="grid md:grid-cols-2 gap-4 text-green-800 dark:text-green-200">
                 <div>
                   <strong>Application Time:</strong> 2-3 minutes
@@ -172,7 +172,7 @@ export default function HowToUseLitterDeodorizer() {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Step-by-Step Application Guide</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Step-by-Step Application Guide</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Using a <strong>cat litter deodorizer additive</strong> correctly is crucial for achieving maximum odor control.
@@ -186,7 +186,7 @@ export default function HowToUseLitterDeodorizer() {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Start with a Clean Litter Box</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Start with a Clean Litter Box</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
                       Begin with a completely clean, empty litter box. Remove all old litter and wash the box
                       with mild soap and water. Dry thoroughly before proceeding.
@@ -206,7 +206,7 @@ export default function HowToUseLitterDeodorizer() {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Base Layer of Litter</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Base Layer of Litter</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
                       Pour 2-3 inches of your regular cat litter into the clean box. This creates the
                       foundation layer that will work with your deodorizer additive.
@@ -225,7 +225,7 @@ export default function HowToUseLitterDeodorizer() {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Sprinkle Deodorizer Evenly</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Sprinkle Deodorizer Evenly</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
                       This is the most critical step. Sprinkle the <Link href="/learn/activated-carbon-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-semibold">activated carbon litter additive</Link>
                       evenly across the entire litter surface. Use the following amounts:
@@ -248,7 +248,7 @@ export default function HowToUseLitterDeodorizer() {
                     4
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Final Litter Layer</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Add Final Litter Layer</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
                       Add another 1-2 inches of litter on top of the deodorizer. This creates a "sandwich"
                       effect that maximizes odor control while keeping the additive in place.
@@ -268,7 +268,7 @@ export default function HowToUseLitterDeodorizer() {
                     5
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Gentle Mixing (Optional)</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Gentle Mixing (Optional)</h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
                       Lightly mix the top layer with a clean scoop to distribute the deodorizer throughout
                       the litter. Be gentle to avoid creating dust clouds.
@@ -280,10 +280,10 @@ export default function HowToUseLitterDeodorizer() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes to Avoid</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes to Avoid</h2>
 
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ What NOT to Do</h3>
+                <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ What NOT to Do</h3>
                 <div className="space-y-4 text-red-800 dark:text-red-200">
                   <div>
                     <strong>Don't dump it all in one spot:</strong> Uneven distribution reduces effectiveness significantly.
@@ -303,7 +303,7 @@ export default function HowToUseLitterDeodorizer() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance and Reapplication</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance and Reapplication</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 To maintain optimal odor control with your <strong>natural cat litter odor eliminator</strong>,
@@ -331,7 +331,7 @@ export default function HowToUseLitterDeodorizer() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maximizing Effectiveness</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maximizing Effectiveness</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Get the most out of your <strong>cat litter deodorizer</strong> with these expert tips:
@@ -380,7 +380,7 @@ export default function HowToUseLitterDeodorizer() {
                 </Link>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Common Issues</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Common Issues</h2>
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-orange-400 dark:border-orange-700 pl-6">
@@ -406,7 +406,7 @@ export default function HowToUseLitterDeodorizer() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Proper application of <strong>cat litter deodorizer additive</strong> is the key to achieving

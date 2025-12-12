@@ -98,7 +98,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/30 rounded-full text-[#FF3131] dark:text-green-400 font-medium text-sm mb-4">
                 Product Testing & Reviews
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 I Tried Every Litter Deodorizer Method for 90 Days—Here's What Actually Worked
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -150,7 +150,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Problem Section */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   My Litter Box Nightmare
                 </h2>
 
@@ -191,7 +191,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Testing Methods Section */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   The 7 Methods I Tested
                 </h2>
 
@@ -201,7 +201,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 1 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 1: Baking Soda (The Classic)
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -214,7 +214,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 2 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 2: Essential Oils (The "Natural" Solution)
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -227,7 +227,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 3 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 3: Enzyme Sprays (The Biological Approach)
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -240,7 +240,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 4 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 4: Zeolite Crystals (The Mineral Solution)
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -253,7 +253,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 5 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 5: DIY Activated Charcoal (The Budget Hack)
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -266,7 +266,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 6 */}
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 6: Commercial Litter Deodorizer Powder
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -279,7 +279,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
                 {/* Method 7 - THE WINNER */}
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 mb-6 border-2 border-green-500 dark:border-green-400 shadow-xl">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                     Method 7: Premium Activated Carbon (The Winner) 🏆
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
@@ -308,7 +308,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Science Section */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   Why Activated Carbon Won (The Science)
                 </h2>
 
@@ -325,7 +325,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 </p>
 
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-8 my-8 border border-blue-200 dark:border-blue-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">The Mind-Blowing Science:</h3>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">The Mind-Blowing Science:</h3>
                   <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                     <li className="flex items-start">
                       <span className="text-2xl mr-3">🔬</span>
@@ -404,7 +404,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Results Section */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   My Results After Switching to Activated Carbon
                 </h2>
 
@@ -428,7 +428,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 </div>
 
                 <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-8 my-8 border border-green-200 dark:border-green-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Cost Comparison:</h3>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Cost Comparison:</h3>
                   <div className="space-y-2 text-gray-700 dark:text-gray-200">
                     <div className="flex justify-between items-center">
                       <span>Baking soda:</span>
@@ -448,7 +448,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Bottom Line Section */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   Bottom Line: Should You Try This?
                 </h2>
 
@@ -475,7 +475,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
               {/* CTA Section */}
               <section className="mb-12">
                 <div className="bg-gradient-to-br from-[#FF3131] to-[#FF6B6B] dark:from-[#FF3131] dark:to-[#FF6B6B] rounded-2xl p-8 text-center shadow-2xl">
-                  <h2 className="text-3xl font-bold text-white dark:text-gray-100 mb-4">
+                  <h2 className="font-heading text-3xl font-bold text-white dark:text-gray-100 mb-4">
                     The Activated Carbon I Use
                   </h2>
 
@@ -500,13 +500,13 @@ export default function TriedEveryLitterDeodorizer90Days() {
 
               {/* Related Articles */}
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   Related Articles
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <Link href="/learn/how-it-works" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
+                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
                       How Activated Carbon Works
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200">
@@ -515,7 +515,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                   </Link>
 
                   <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
+                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
                       Activated Carbon vs Baking Soda
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200">
@@ -524,7 +524,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                   </Link>
 
                   <Link href="/blog/multi-cat-litter-deodorizer-guide" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
+                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
                       Multi-Cat Odor Control System
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200">
@@ -533,7 +533,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                   </Link>
 
                   <Link href="/solutions/ammonia-smell-cat-litter" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
+                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
                       Ammonia Smell Solution Guide
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200">

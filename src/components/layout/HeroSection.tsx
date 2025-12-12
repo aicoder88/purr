@@ -26,7 +26,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <Container>
         <div className="text-center text-white dark:text-gray-100 dark:text-gray-100 max-w-4xl mx-auto">
           {Icon && <Icon className={iconClassName} />}
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
             {title}
           </h1>
           {subtitle && (

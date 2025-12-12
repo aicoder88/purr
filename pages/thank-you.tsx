@@ -81,12 +81,12 @@ const ThankYouPage = () => {
               className="mx-auto"
             />
           </div>
-          <h1 className="text-4xl font-bold mb-4 text-[#03E46A] dark:text-[#03E46A]">Thank You!</h1>
+          <h1 className="font-heading text-4xl font-bold mb-4 text-[#03E46A] dark:text-[#03E46A]">Thank You!</h1>
           <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">
             Your order has been received and is being processed.
           </p>
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">What&apos;s Next?</h2>
+            <h2 className="font-heading text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">What&apos;s Next?</h2>
             <p className="mb-4 text-gray-700 dark:text-gray-200">
               You will receive an email confirmation shortly with your order details.&nbsp;
               Our team will begin processing your order right away.
@@ -110,7 +110,7 @@ const ThankYouPage = () => {
             </Link>
           </div>
           <div className="mt-12">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Share Your Experience</h3>
+            <h3 className="font-heading text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Share Your Experience</h3>
             <div className="flex justify-center gap-4">
               <a
                 href="https://twitter.com/intent/tweet?text=I%20just%20ordered%20from%20Purrify%20and%20I%20can%27t%20wait%20to%20try%20their%20products!%20%23Purrify"

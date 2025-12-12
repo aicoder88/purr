@@ -103,7 +103,7 @@ export default function AffiliateSignupPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#2e90fa] to-[#1e5dd6] dark:from-[#2e90fa] dark:to-[#1e5dd6] py-16 md:py-24">
         <Container className="relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white dark:text-gray-100 mb-4">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-gray-100 mb-4">
               Apply to Join Our Affiliate Program
             </h1>
             <p className="text-xl text-blue-100 dark:text-blue-50 mb-6 font-light">
@@ -136,7 +136,7 @@ export default function AffiliateSignupPage() {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-2">
+                    <h3 className="font-heading text-lg font-semibold text-green-900 dark:text-green-100 mb-2">
                       Application Submitted Successfully!
                     </h3>
                     <p className="text-green-700 dark:text-green-200 mb-4">
@@ -158,7 +158,7 @@ export default function AffiliateSignupPage() {
                 <div className="flex items-start gap-3">
                   <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">
+                    <h3 className="font-heading text-lg font-semibold text-red-900 dark:text-red-100 mb-2">
                       Submission Failed
                     </h3>
                     <p className="text-red-700 dark:text-red-200">
@@ -171,7 +171,7 @@ export default function AffiliateSignupPage() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-gray-100 dark:border-gray-800 p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
                   Your Information
                 </h2>
 
@@ -358,7 +358,7 @@ export default function AffiliateSignupPage() {
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 text-center mb-12">
+            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 text-center mb-12">
               What You&apos;ll Get as an Affiliate
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

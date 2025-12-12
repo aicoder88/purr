@@ -210,7 +210,7 @@ export default function ActivatedCarbonBenefits() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/30 rounded-full text-[#FF3131] dark:text-green-400 font-medium text-sm mb-4">
                 Science & Education
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Activated Carbon Litter Additive Benefits: The Science Behind Superior Odor Control
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -241,7 +241,7 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Makes Activated Carbon So Effective?</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Makes Activated Carbon So Effective?</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 When it comes to <strong>cat litter deodorizer</strong> solutions, activated carbon stands out as the gold standard.
@@ -249,7 +249,7 @@ export default function ActivatedCarbonBenefits() {
                 molecular structure and the process of adsorption.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">The Science of Molecular Adsorption</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">The Science of Molecular Adsorption</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Unlike absorption (where substances are soaked up like a sponge), <strong>adsorption</strong> is a surface phenomenon
@@ -285,7 +285,7 @@ export default function ActivatedCarbonBenefits() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Why Coconut Shell Carbon is Superior</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Why Coconut Shell Carbon is Superior</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Not all activated carbon is created equal. <strong>Purrify uses premium coconut shell activated carbon</strong>
@@ -315,7 +315,7 @@ export default function ActivatedCarbonBenefits() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Specific Odor Compounds Eliminated</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Specific Odor Compounds Eliminated</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Cat litter odors come from several specific compounds that activated carbon effectively targets:
@@ -353,7 +353,7 @@ export default function ActivatedCarbonBenefits() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Health Benefits Beyond Odor Control</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Health Benefits Beyond Odor Control</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Using an <strong>activated carbon litter additive</strong> provides benefits beyond just odor elimination:
@@ -366,7 +366,7 @@ export default function ActivatedCarbonBenefits() {
                 <li><strong>Respiratory Health:</strong> Cleaner air is better for both cats and humans</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">How to Maximize Effectiveness</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">How to Maximize Effectiveness</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 To get the most benefit from your <strong>natural cat litter odor eliminator</strong>, follow these best practices:
@@ -391,7 +391,7 @@ export default function ActivatedCarbonBenefits() {
                 </Link>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Conclusion</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Conclusion</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 The benefits of <strong>activated carbon litter additives</strong> are rooted in solid science.

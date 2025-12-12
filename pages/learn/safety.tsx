@@ -130,7 +130,7 @@ export default function SafetyInformationPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full mb-6">
                 <FileCheck className="w-8 h-8 text-white dark:text-gray-100" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+              <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
                 Safety Information & Technical Datasheet
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -155,7 +155,7 @@ export default function SafetyInformationPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">Laboratory-Tested Quality</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">Laboratory-Tested Quality</h3>
                     <p className="text-lg opacity-90">Meets NSF/ANSI 61 and FCC standards</p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function SafetyInformationPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">Premium Coconut Shell Carbon</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">Premium Coconut Shell Carbon</h3>
                     <p className="text-lg opacity-90">8×30 mesh granular activated carbon</p>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export default function SafetyInformationPage() {
         <section className="py-16 bg-white dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Features & Benefits
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -204,7 +204,7 @@ export default function SafetyInformationPage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-white">
                         {feature.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -232,7 +232,7 @@ export default function SafetyInformationPage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Typical Specifications
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-2">
@@ -273,7 +273,7 @@ export default function SafetyInformationPage() {
               </div>
 
               <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
-                <h3 className="font-bold text-gray-900 dark:text-white mb-3">Available Particle Sizes</h3>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-white mb-3">Available Particle Sizes</h3>
                 <p className="text-gray-700 dark:text-gray-200 mb-2">
                   • <strong>8×30 mesh (2.36 – 0.60 mm)</strong> — standard size for odor and water applications
                 </p>
@@ -292,7 +292,7 @@ export default function SafetyInformationPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-gray-900 rounded-full mb-6">
                 <Award className="w-8 h-8 text-[#5B2EFF]" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 Certifications & Standards
               </h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
@@ -351,7 +351,7 @@ export default function SafetyInformationPage() {
         <section className="py-16 bg-white dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Applications
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -370,7 +370,7 @@ export default function SafetyInformationPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-3xl font-bold mb-2">Multiple Applications</h3>
+                  <h3 className="font-heading text-3xl font-bold mb-2">Multiple Applications</h3>
                   <p className="text-xl opacity-90">From cat litter to air purification—versatile odor control</p>
                 </div>
               </div>
@@ -406,7 +406,7 @@ export default function SafetyInformationPage() {
             </div>
 
             <div className="mt-12 bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-8 max-w-4xl mx-auto border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">
+              <h3 className="font-heading text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">
                 Available Package Sizes
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -463,7 +463,7 @@ export default function SafetyInformationPage() {
           <Container>
             <div className="max-w-4xl mx-auto space-y-8">
               <div className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900/50 rounded-2xl p-10 shadow-xl border border-gray-200 dark:border-gray-700">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                   Product Description
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200">
@@ -493,7 +493,7 @@ export default function SafetyInformationPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                     <div className="p-8 text-white dark:text-gray-100">
-                      <h3 className="text-2xl font-bold mb-2">Small Pet Odor Control</h3>
+                      <h3 className="font-heading text-2xl font-bold mb-2">Small Pet Odor Control</h3>
                       <p className="text-lg opacity-90">Hospital-grade carbon suitable for rodent environments</p>
                     </div>
                   </div>
@@ -506,7 +506,7 @@ export default function SafetyInformationPage() {
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white">
                       Rodent-Friendly Odor Control
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
@@ -521,7 +521,7 @@ export default function SafetyInformationPage() {
                     and veterinary applications. With proper handling and precautions, it can be suitable for odor control in small pet environments.
                   </p>
 
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-6 mb-3">Product Characteristics</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mt-6 mb-3">Product Characteristics</h3>
                   <ul className="space-y-2 mb-6">
                     <li><strong>Pure carbon:</strong> Steam-activated coconut shell carbon with no chemical activators or binders
                       (no phosphoric acid, no zinc chloride).</li>
@@ -532,7 +532,7 @@ export default function SafetyInformationPage() {
                       and veterinary applications.</li>
                   </ul>
 
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Practical Cautions</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">Practical Cautions</h3>
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
                     <ul className="space-y-3">
                       <li className="flex items-start space-x-3">
@@ -575,7 +575,7 @@ export default function SafetyInformationPage() {
                     <div className="flex items-start space-x-4">
                       <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Additional Benefits</h3>
+                        <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-white">Additional Benefits</h3>
                         <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                           <li>• Rapid chlorine and ozone removal</li>
                           <li>• Excellent odor reduction performance</li>

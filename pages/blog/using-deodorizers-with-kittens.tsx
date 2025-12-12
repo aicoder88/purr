@@ -78,7 +78,7 @@ export default function UsingDeodorizersWithKittens() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Kitten Care & Health
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Using Cat Litter Deodorizers with Kittens: A Care Guide
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -108,24 +108,24 @@ export default function UsingDeodorizersWithKittens() {
 
             {/* Import the rest of the updated content structure from the original page without “safe” claims */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Understanding Kitten Sensitivities</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Understanding Kitten Sensitivities</h2>
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Kittens have developing respiratory and digestive systems that make them more sensitive than adult cats.
                 When considering <strong>using cat litter deodorizers around kittens</strong>, it's helpful to understand these unique factors.
               </p>
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-12">
-                <h2 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Quick Answer</h2>
+                <h2 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Quick Answer</h2>
                 <p className="text-green-800 dark:text-green-200 mb-4">
                   <strong>Many households introduce fragrance-free, activated carbon deodorizers once kittens reliably use the litter box (typically ~8+ weeks).</strong>
                   Always start small, introduce gradually, and monitor your kitten’s behavior.
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Commonly Used vs. Ingredients to Avoid</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Commonly Used vs. Ingredients to Avoid</h2>
               <p className="text-gray-700 dark:text-gray-200 mb-6">Not all <strong>cat litter deodorizers</strong> are the same. Here's what many households use, and what to avoid:</p>
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Commonly Used Ingredients</h3>
+                  <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Commonly Used Ingredients</h3>
                   <ul className="text-green-800 dark:text-green-200 space-y-3">
                     <li><strong>Activated Carbon:</strong> Commonly used odor absorber in water and air filtration</li>
                     <li><strong>Natural Clay Minerals:</strong> Bentonite, zeolite (unscented)</li>
@@ -134,7 +134,7 @@ export default function UsingDeodorizersWithKittens() {
                   </ul>
                 </div>
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ Avoid These Ingredients</h3>
+                  <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ Avoid These Ingredients</h3>
                   <ul className="text-red-800 dark:text-red-200 space-y-3">
                     <li><strong>Artificial Fragrances:</strong> Can cause respiratory irritation</li>
                     <li><strong>Essential Oils:</strong> Many are problematic for cats</li>
@@ -144,7 +144,7 @@ export default function UsingDeodorizersWithKittens() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Gradual Introduction Protocol</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Gradual Introduction Protocol</h2>
               <p className="text-gray-700 dark:text-gray-200 mb-6">When your kitten reaches 8+ weeks and is comfortable with their litter routine, follow this step-by-step protocol for a gradual deodorizer introduction:</p>
               <ol className="list-decimal pl-6 mb-6 text-gray-700 dark:text-gray-200">
                 <li><strong>Start Small:</strong> Use ~1/4 the adult amount (about 1/2 tsp)</li>
@@ -152,14 +152,14 @@ export default function UsingDeodorizersWithKittens() {
                 <li><strong>Increase Gradually:</strong> Move to full amount over 2 weeks if well-tolerated</li>
               </ol>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
               <div className="space-y-6 mb-8">
                 <div className="border-b border-gray-200 dark:border-gray-600 pb-4">
-                  <h3 className="text-lg font-semibold mb-2">At what age can I start using deodorizer with my kitten?</h3>
+                  <h3 className="font-heading text-lg font-semibold mb-2">At what age can I start using deodorizer with my kitten?</h3>
                   <p>Many households introduce fragrance-free litter deodorizers once kittens start using the litter box independently, typically around 8 weeks old. Start with smaller amounts and monitor for sensitivity.</p>
                 </div>
                 <div className="border-b border-gray-200 dark:border-gray-600 pb-4">
-                  <h3 className="text-lg font-semibold mb-2">What if my kitten eats some?</h3>
+                  <h3 className="font-heading text-lg font-semibold mb-2">What if my kitten eats some?</h3>
                   <p>Activated carbon used in household filtration is biologically inert. If a small amount is ingested, monitor as usual. For large amounts or concerns, contact your veterinarian.</p>
                 </div>
               </div>

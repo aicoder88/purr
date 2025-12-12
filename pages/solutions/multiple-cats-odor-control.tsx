@@ -87,15 +87,15 @@ export default function MultipleCatsOdorControlPage() {
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-3xl mb-2">⚡</div>
-                  <h3 className="font-bold">Instant Results</h3>
+                  <h3 className="font-heading font-bold">Instant Results</h3>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">🌿</div>
-                  <h3 className="font-bold">100% Natural</h3>
+                  <h3 className="font-heading font-bold">100% Natural</h3>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">💰</div>
-                  <h3 className="font-bold">Cost Effective</h3>
+                  <h3 className="font-heading font-bold">Cost Effective</h3>
                 </div>
               </div>
 

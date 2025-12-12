@@ -75,7 +75,7 @@ export function WholesalePricing() {
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-semibold text-sm mb-6">
             💰 Transparent Wholesale Pricing
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
+          <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
             Choose Your
             <span className="block bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
               Profit Level
@@ -108,7 +108,7 @@ export function WholesalePricing() {
               </div>
 
               <div className="text-center mb-8 pt-4">
-                <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">{tier.name}</h3>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">{tier.name}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">{tier.description}</p>
 
                 {/* Package Contents (Starter Package Only) */}
@@ -159,7 +159,7 @@ export function WholesalePricing() {
         {/* Risk Reversal & Urgency */}
         <div className="bg-gradient-to-r from-[#5B2EFF]/10 via-[#3694FF]/5 to-[#5B2EFF]/10 dark:from-[#3694FF]/15 dark:via-[#5B2EFF]/10 dark:to-[#3694FF]/15 rounded-3xl p-10 text-center border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-3xl font-black text-gray-900 dark:text-gray-50 mb-4">
+            <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-gray-50 mb-4">
               🎯 Ready to Boost Your Revenue?
             </h3>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">

@@ -58,7 +58,7 @@ export function ScienceSection() {
                                         {feature.icon}
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-1 group-hover:text-electric-indigo transition-colors">
+                                        <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-1 group-hover:text-electric-indigo transition-colors">
                                             {feature.title}
                                         </h3>
                                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">

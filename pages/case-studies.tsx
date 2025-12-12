@@ -208,7 +208,7 @@ export default function CaseStudies() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
                 Customer Success Stories
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Real Results from Real Customers
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
@@ -245,7 +245,7 @@ export default function CaseStudies() {
                   <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#E0EFC7]/50 p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                       <div className="flex-1">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+                        <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                           {study.title}
                         </h2>
                         <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{study.subtitle}</p>
@@ -285,7 +285,7 @@ export default function CaseStudies() {
                     <div className="grid md:grid-cols-2 gap-8 mb-8">
                       {/* Challenge */}
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                           <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mr-3">
                             <span className="text-red-600 dark:text-red-400 font-bold text-sm">1</span>
                           </div>
@@ -307,7 +307,7 @@ export default function CaseStudies() {
 
                       {/* Solution */}
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                           <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3">
                             <span className="text-blue-600 dark:text-blue-400 font-bold text-sm">2</span>
                           </div>
@@ -330,7 +330,7 @@ export default function CaseStudies() {
 
                     {/* Results */}
                     <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-6 mb-6">
-                      <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4 flex items-center">
+                      <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4 flex items-center">
                         <div className="w-8 h-8 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center mr-3">
                           <span className="text-green-600 dark:text-green-400 font-bold text-sm">3</span>
                         </div>
@@ -373,7 +373,7 @@ export default function CaseStudies() {
             {/* Call to Action */}
             <div className="mt-16 text-center cv-auto cis-480">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Ready to Write Your Own Success Story?
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
@@ -400,7 +400,7 @@ export default function CaseStudies() {
 
             {/* Related Content */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <Users className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />

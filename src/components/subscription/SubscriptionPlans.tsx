@@ -194,7 +194,7 @@ export function SubscriptionPlans({
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="font-heading text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
             Never Run Out of Odor Control
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-6">
@@ -256,7 +256,7 @@ export function SubscriptionPlans({
                 </div>
 
                 {/* Plan Name */}
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <h3 className="font-heading text-2xl font-bold mb-2">{plan.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">{plan.description}</p>
 
                 {/* Pricing */}
@@ -354,7 +354,7 @@ export function SubscriptionPlans({
 
         {/* Subscription Benefits */}
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-8">
-          <h3 className="text-2xl font-bold text-center mb-6">
+          <h3 className="font-heading text-2xl font-bold text-center mb-6">
             Why 3,000+ Cat Owners Love Purrify Subscriptions
           </h3>
           

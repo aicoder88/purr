@@ -235,7 +235,7 @@ const UpsellPage = () => {
                 : `${t.upsell?.offerExpiresIn || 'Offer expires in'}: ${formatTime(timeLeft)}`
               }
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+            <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
               {t.upsell?.headline || 'Wait! One-Time Exclusive Offer'}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
@@ -266,7 +266,7 @@ const UpsellPage = () => {
               {/* Offer Details */}
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                     {t.upsell?.productTitle || 'Purrify 50g Autoship'}
                   </h2>
                   <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
@@ -337,7 +337,7 @@ const UpsellPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
               <Zap className="w-12 h-12 text-[#5B2EFF] dark:text-[#3694FF] mx-auto mb-3" />
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+              <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                 {t.upsell?.feature1Title || 'Instant Activation'}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -347,7 +347,7 @@ const UpsellPage = () => {
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
               <Shield className="w-12 h-12 text-[#03E46A] mx-auto mb-3" />
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+              <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                 {t.upsell?.feature2Title || '100% Satisfaction'}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -357,7 +357,7 @@ const UpsellPage = () => {
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
               <Package className="w-12 h-12 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+              <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                 {t.upsell?.feature3Title || 'Flexible Control'}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -378,7 +378,7 @@ const UpsellPage = () => {
 
           {/* FAQ Section */}
           <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-50">
+            <h3 className="font-heading text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-50">
               {t.upsell?.faqTitle || 'Common Questions'}
             </h3>
             <div className="space-y-4">

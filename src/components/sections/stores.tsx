@@ -384,7 +384,7 @@ export function Stores() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <SectionHeader text={t.storesSection?.availableInStores || "AVAILABLE IN STORES"} />
-          <h2 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-50 dark:text-gray-100">
+          <h2 className="font-heading text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-50 dark:text-gray-100">
             {t.storesSection?.soldInFollowingStores || "SOLD IN THE FOLLOWING STORES"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-xl max-w-2xl mx-auto">
@@ -415,7 +415,7 @@ export function Stores() {
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
                       {store.name}
                     </h3>
                     <p className="text-[#FF3131] font-medium text-sm mb-1">

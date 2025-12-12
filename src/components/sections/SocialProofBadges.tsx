@@ -114,7 +114,7 @@ export function SocialProofBadges({ variant = 'full', className = '' }: SocialPr
           <p className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
             Trusted & Verified
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-gray-900 dark:text-gray-50">
+          <h2 className="font-heading mt-2 text-2xl font-bold text-gray-900 dark:text-gray-50">
             Find Us On
           </h2>
         </div>

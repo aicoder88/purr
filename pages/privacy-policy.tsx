@@ -10,13 +10,13 @@ const PrivacyPolicy = () => (
       canonicalPath="/privacy-policy"
     />
     <main className="max-w-4xl mx-auto py-12 px-4">
-      <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50">Privacy Policy</h1>
+      <h1 className="font-heading text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50">Privacy Policy</h1>
       <p className="mb-6 text-lg text-gray-700 dark:text-gray-200">
         At Purrify, your privacy is important to us. This Privacy Policy explains how we collect, use, protect, and share your information when you use our website, purchase our products, or interact with our services. By using our website, you consent to the practices described in this policy.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Information We Collect</h2>
-      <h3 className="text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Personal Information</h3>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Information We Collect</h2>
+      <h3 className="font-heading text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Personal Information</h3>
       <p className="mb-4 text-gray-700 dark:text-gray-200">We collect personal information that you voluntarily provide to us when you:</p>
       <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
         <li>Create an account or make a purchase</li>
@@ -26,12 +26,12 @@ const PrivacyPolicy = () => (
         <li>Leave reviews or feedback about our products</li>
       </ul>
 
-      <h3 className="text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Order and Payment Information</h3>
+      <h3 className="font-heading text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Order and Payment Information</h3>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         When you make a purchase, we collect order details, shipping information, and payment data necessary to process your transaction. Payment information is securely processed by our trusted payment processors and is not stored on our servers.
       </p>
 
-      <h3 className="text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Usage and Technical Data</h3>
+      <h3 className="font-heading text-xl font-medium mb-3 text-gray-800 dark:text-gray-100">Usage and Technical Data</h3>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         We automatically collect certain information about your device and usage patterns, including:
       </p>
@@ -42,7 +42,7 @@ const PrivacyPolicy = () => (
         <li>Location data (general geographic area based on IP address)</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">How We Use Your Information</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">How We Use Your Information</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">We use the information we collect for legitimate business purposes, including:</p>
       <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
         <li><strong>Order Processing:</strong> To process, fulfill, and ship your orders</li>
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => (
         <li><strong>Fraud Prevention:</strong> To detect and prevent fraudulent transactions</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">How We Protect Your Information</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">How We Protect Your Information</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         We implement industry-standard security measures to protect your personal information, including:
       </p>
@@ -68,7 +68,7 @@ const PrivacyPolicy = () => (
         While we strive to protect your information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Information Sharing and Disclosure</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Information Sharing and Disclosure</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
       </p>
@@ -79,7 +79,7 @@ const PrivacyPolicy = () => (
         <li><strong>Consent:</strong> When you have given explicit consent for sharing</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Your Rights and Choices</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Your Rights and Choices</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         You have the following rights regarding your personal information:
       </p>
@@ -91,22 +91,22 @@ const PrivacyPolicy = () => (
         <li><strong>Opt-out:</strong> Unsubscribe from marketing communications at any time</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Cookies and Tracking</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Cookies and Tracking</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         We use cookies and similar technologies to enhance your browsing experience, analyze website traffic, and personalize content. You can control cookie settings through your browser preferences.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Children's Privacy</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Children's Privacy</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-200">
         Our website and services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Changes to This Policy</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Changes to This Policy</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-200">
         We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last Updated" date.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Contact Us</h2>
+      <h2 className="font-heading text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-50">Contact Us</h2>
       <p className="mb-4 text-gray-700 dark:text-gray-200">
         If you have any questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us:
       </p>

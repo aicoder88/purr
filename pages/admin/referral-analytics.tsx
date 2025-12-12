@@ -57,7 +57,7 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
             <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Shield className="w-8 h-8 text-red-600 dark:text-red-400" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Access Denied
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -91,7 +91,7 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
                 Admin Dashboard
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
@@ -196,7 +196,7 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
 
         {/* Admin Actions */}
         <Card className="p-6 mt-8">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Administrative Actions
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -217,7 +217,7 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
 
         {/* Data Export & Backup */}
         <Card className="p-6 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Data Management
           </h3>
           <div className="flex flex-wrap gap-3">

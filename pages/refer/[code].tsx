@@ -115,7 +115,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
             <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Clock className="w-8 h-8 text-red-600 dark:text-red-400" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Referral Code Not Valid
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
@@ -170,7 +170,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Your Friend Was Right -<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">
                   This Actually Works!
@@ -206,7 +206,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                   </Badge>
                 </div>
 
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   {referralData.discount?.description}
                 </h2>
 
@@ -238,7 +238,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
         <section className="py-16 bg-white dark:bg-gray-800">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Why {referralData.referrerName} Recommends Purrify
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -251,7 +251,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   No More Embarrassment
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -264,7 +264,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Star className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   Actually Works
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -277,7 +277,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                 <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   Safe & Natural
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -293,7 +293,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
         <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
                 Join Thousands of Happy Cat Parents
               </h2>
 
@@ -336,7 +336,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
         <section className="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="font-heading text-3xl font-bold mb-4">
                 Don't Miss Out on Your FREE Trial
               </h2>
 

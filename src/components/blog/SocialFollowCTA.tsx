@@ -102,7 +102,7 @@ export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFoll
   return (
     <div className={`bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-100 dark:border-purple-800/50 ${className}`}>
       <div className="text-center">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
           {headlineText}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">

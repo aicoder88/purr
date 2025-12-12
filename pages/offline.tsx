@@ -32,7 +32,7 @@ const OfflinePage: NextPage = () => {
             </div>
             
             {/* Title and Message */}
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               You're Offline
             </h1>
             
@@ -61,7 +61,7 @@ const OfflinePage: NextPage = () => {
             
             {/* Cached Pages Available */}
             <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">
+              <h3 className="font-heading font-semibold text-blue-900 dark:text-blue-100 mb-3">
                 Available Offline
               </h3>
               <div className="space-y-2 text-sm">

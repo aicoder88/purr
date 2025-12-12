@@ -114,7 +114,7 @@ export default function SciencePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full mb-6">
                 <FlaskConical className="w-8 h-8 text-white dark:text-gray-100" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
+              <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
                 Engineered to Eliminate Cat Litter Odor
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -134,7 +134,7 @@ export default function SciencePage() {
         <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/10 dark:to-orange-900/10">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Understanding Litter Box Odor: The Two Culprits
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -148,7 +148,7 @@ export default function SciencePage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full mb-4">
                     <span className="text-3xl">💧</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ammonia (NH₃)</h3>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">Ammonia (NH₃)</h3>
                   <p className="text-sm text-red-600 dark:text-red-400 font-semibold">From Cat Urine</p>
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -176,7 +176,7 @@ export default function SciencePage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full mb-4">
                     <span className="text-3xl">💩</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Mercaptans</h3>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">Mercaptans</h3>
                   <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">From Cat Feces</p>
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -219,7 +219,7 @@ export default function SciencePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">Your Cat Deserves a Fresh Home</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves a Fresh Home</h3>
                     <p className="text-lg opacity-90">Molecular-level odor elimination, not masking</p>
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export default function SciencePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="text-2xl font-bold mb-2">No More Embarrassing Odors</h3>
+                    <h3 className="font-heading text-2xl font-bold mb-2">No More Embarrassing Odors</h3>
                     <p className="text-lg opacity-90">Science-backed odor control for modern cat owners</p>
                   </div>
                 </div>
@@ -250,7 +250,7 @@ export default function SciencePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6">
                 <BarChart3 className="w-8 h-8 text-white dark:text-gray-100" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 The Perfect Pore Size Distribution
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -262,7 +262,7 @@ export default function SciencePage() {
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-blue-200 dark:border-blue-800">
                 <div className="text-center mb-4">
                   <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">&lt;2nm</div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Micropores</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Micropores</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Ammonia Specialists</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -275,7 +275,7 @@ export default function SciencePage() {
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-purple-200 dark:border-purple-800">
                 <div className="text-center mb-4">
                   <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">2-50nm</div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Mesopores</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Mesopores</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Mercaptan Traps</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -288,7 +288,7 @@ export default function SciencePage() {
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-indigo-200 dark:border-indigo-800">
                 <div className="text-center mb-4">
                   <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">&gt;50nm</div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Macropores</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Macropores</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Transport System</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -300,7 +300,7 @@ export default function SciencePage() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
                 Surface Area: 1050 m²/g
               </h3>
               <p className="text-center text-gray-600 dark:text-gray-300 mb-6 text-lg">
@@ -332,7 +332,7 @@ export default function SciencePage() {
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Precision-Engineered Pore Structure
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -353,7 +353,7 @@ export default function SciencePage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-white">
                         {fact.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -410,7 +410,7 @@ export default function SciencePage() {
                   </div>
 
                   <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-6 border border-[#FF3131]/20 dark:border-[#5B2EFF]/30">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-3">
                       What You're Looking At
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
@@ -450,7 +450,7 @@ export default function SciencePage() {
         <section className="py-16 bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-900/20 dark:to-gray-900/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 Laboratory-Verified Performance
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -461,7 +461,7 @@ export default function SciencePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Particle Size Data */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                   <span className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
                     <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </span>
@@ -491,7 +491,7 @@ export default function SciencePage() {
 
               {/* Adsorption Performance */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                   <span className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
                     <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   </span>
@@ -529,7 +529,7 @@ export default function SciencePage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">
                     Engineered for Real-World Performance
                   </h3>
                   <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
@@ -561,7 +561,7 @@ export default function SciencePage() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
                 How the Three Pore Types Work Together
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -581,7 +581,7 @@ export default function SciencePage() {
                   >
                     <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                       <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                        <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-white">
                           {step.title}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -607,7 +607,7 @@ export default function SciencePage() {
         <section className="py-16 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131]">
           <Container>
             <div className="text-center text-white dark:text-gray-100">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 The Most Effective Cat Litter Odor Solution in the World
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">

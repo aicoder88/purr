@@ -160,7 +160,7 @@ export default function InvestorRelations() {
                     />
                   </div>
 
-                  <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
+                  <h1 className="font-heading text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
                     Revolutionary Odor Solution for 52 Million North American Cat Owners
                   </h1>
 
@@ -189,16 +189,16 @@ export default function InvestorRelations() {
                   </div>
                 </div>
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Executive Summary</h2>
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Opportunity</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Opportunity</h3>
                       <p className="text-gray-600 dark:text-gray-200 mb-6 leading-relaxed">
                         Purrify addresses the #1 pain point of urban cat owners: persistent litter box odor. Our premium activated carbon additive provides molecular-level odor elimination, creating a new product category in the $160M Canadian pet care market.
                       </p>
 
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Competitive Advantages</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Competitive Advantages</h3>
                       <ul className="space-y-2 text-gray-600 dark:text-gray-200">
                         <li className="flex items-start">
                           <span className="text-[#FF3131] mr-2 font-bold">✓</span>
@@ -263,11 +263,11 @@ export default function InvestorRelations() {
             {activeTab === 'problem' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Opportunity</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Opportunity</h2>
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Problem</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4 drop-shadow-sm">The Problem</h3>
                       <div className="space-y-4">
                         <div className="bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-4 border border-[#FF3131]/30 border-l-4 border-l-[#FF3131]">
                           <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Urban Cat Owners' #1 Complaint</h4>
@@ -313,7 +313,7 @@ export default function InvestorRelations() {
                   </div>
 
                   <div className="bg-white dark:bg-gray-900/60 dark:bg-gray-700/60 backdrop-blur-md rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4 drop-shadow-sm">Market Drivers</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#333333] dark:text-white mb-4 drop-shadow-sm">Market Drivers</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 dark:bg-gray-600/40 rounded-lg backdrop-blur-sm">
@@ -357,11 +357,11 @@ export default function InvestorRelations() {
             {activeTab === 'solution' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Our Solution</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Our Solution</h2>
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Purrify Activated Carbon Additive</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4">Purrify Activated Carbon Additive</h3>
                       <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                         Premium coconut shell activated carbon that adsorbs odor molecules at the molecular level. Unlike competitors who mask odors with chemicals, we eliminate them completely through proven scientific principles.
                       </p>
@@ -437,7 +437,7 @@ export default function InvestorRelations() {
                   </div>
 
                   <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Competitive Differentiation</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#333333] dark:text-white mb-4">Competitive Differentiation</h3>
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                       <div>
                         <div className="text-lg font-bold text-[#FF3131] mb-2">Competitors</div>
@@ -463,7 +463,7 @@ export default function InvestorRelations() {
             {activeTab === 'traction' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Traction</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Market Traction</h2>
 
                   <div className="grid md:grid-cols-4 gap-6 mb-8">
                     <div className="text-center bg-white dark:bg-gray-900/60 dark:bg-red-900/20 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
@@ -505,7 +505,7 @@ export default function InvestorRelations() {
 
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Customer Testimonials</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4">Customer Testimonials</h3>
                       <div className="space-y-4">
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
                           <p className="italic mb-2 text-gray-700 dark:text-gray-200">"My customers keep asking when you're restocking Purrify. They say it's the first thing that actually works!"</p>
@@ -519,7 +519,7 @@ export default function InvestorRelations() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4">Foundation Built</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4">Foundation Built</h3>
                       <div className="space-y-3">
                         <div className="flex items-center">
                           <span className="text-[#FF3131] text-xl mr-3">✓</span>
@@ -552,11 +552,11 @@ export default function InvestorRelations() {
             {activeTab === 'financials' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Unit Economics</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Unit Economics</h2>
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (50g)</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4">Medium SKU Breakdown (50g)</h3>
                       <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
                         <table className="w-full">
                           <tbody>
@@ -607,7 +607,7 @@ export default function InvestorRelations() {
                         className="mb-6"
                       />
 
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
                       <div className="space-y-4">
                         <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
                           <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Current Scale (1K bags/month)</h4>
@@ -632,7 +632,7 @@ export default function InvestorRelations() {
                   </div>
 
                   <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Growth Projections</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#333333] dark:text-white mb-4">Growth Projections</h3>
                     <div className="grid md:grid-cols-4 gap-6 text-center">
                       <div>
                         <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2025</div>
@@ -664,14 +664,14 @@ export default function InvestorRelations() {
             {activeTab === 'team' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Leadership Team</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Leadership Team</h2>
 
                   <div className="grid lg:grid-cols-3 gap-8">
                     <div className="text-center">
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#FF5050] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white font-bold text-2xl">D</span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#FF3131] mb-2">Mark Archer - CEO</h3>
+                      <h3 className="font-heading text-xl font-bold text-[#FF3131] mb-2">Mark Archer - CEO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Marketing Genius</p>
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
@@ -697,7 +697,7 @@ export default function InvestorRelations() {
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white font-bold text-2xl">S</span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#5B2EFF] mb-2">Sage Dean - COO</h3>
+                      <h3 className="font-heading text-xl font-bold text-[#5B2EFF] mb-2">Sage Dean - COO</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Operations Machine</p>
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
@@ -723,7 +723,7 @@ export default function InvestorRelations() {
                       <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#2ed573] to-[#7bed9f] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white font-bold text-2xl">K</span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#2ed573] mb-2">Key Advisor</h3>
+                      <h3 className="font-heading text-xl font-bold text-[#2ed573] mb-2">Key Advisor</h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">Ex-P&G Brand Manager</p>
                       <div className="text-left space-y-2 text-sm">
                         <div className="flex items-start">
@@ -747,7 +747,7 @@ export default function InvestorRelations() {
                   </div>
 
                   <div className="mt-8 bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-6">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4">Strategic Roadmap</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#333333] dark:text-white mb-4">Strategic Roadmap</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h4 className="font-semibold text-[#FF3131] mb-3">Near Term (2025)</h4>
@@ -775,7 +775,7 @@ export default function InvestorRelations() {
             {activeTab === 'investment' && (
               <section className="space-y-8 relative z-10">
                 <div className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 dark:border-gray-700/50">
-                  <h2 className="text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Investment Terms</h2>
+                  <h2 className="font-heading text-3xl font-bold text-[#333333] dark:text-white mb-6 drop-shadow-sm">Investment Terms</h2>
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-8">
                     <div>
@@ -788,7 +788,7 @@ export default function InvestorRelations() {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-semibold text-[#FF3131] mb-4">Use of Funds</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#FF3131] mb-4">Use of Funds</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-[#FF3131]/10 dark:bg-red-900/20 rounded-lg">
                           <span className="text-gray-700 dark:text-gray-200">Marketing & Growth</span>
@@ -816,7 +816,7 @@ export default function InvestorRelations() {
                         className="mb-6"
                       />
 
-                      <h3 className="text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Investment Highlights</h3>
+                      <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Investment Highlights</h3>
                       <div className="space-y-4">
                         <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#FF3131]">
                           <h4 className="font-semibold mb-2">18-Month Runway</h4>
@@ -839,7 +839,7 @@ export default function InvestorRelations() {
                   </div>
 
                   <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-red-900/20 dark:to-purple-900/20 rounded-xl p-6 mb-8">
-                    <h3 className="text-xl font-semibold text-[#333333] dark:text-white mb-4 text-center">Why Invest Now?</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#333333] dark:text-white mb-4 text-center">Why Invest Now?</h3>
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                       <div>
                         <div className="text-2xl mb-2">🚀</div>

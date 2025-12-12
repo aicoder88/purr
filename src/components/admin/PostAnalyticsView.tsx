@@ -66,7 +66,7 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Post Analytics</h3>
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Post Analytics</h3>
         <select
           value={dateRange}
           onChange={(e) => setDateRange(e.target.value)}

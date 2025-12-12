@@ -282,7 +282,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         />
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
             Customer Reviews
           </h3>
           <div className="flex items-center space-x-2">

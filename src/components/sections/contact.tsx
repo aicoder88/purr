@@ -21,7 +21,7 @@ export function Contact() {
           <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#5B2EFF]/30 rounded-full text-[#FF3131] dark:text-[#E0EFC7] font-medium text-sm mb-4">
             {t.contactSection.getInTouch}
           </div>
-          <h2 className="text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
+          <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
             {t.contact.title}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
@@ -36,7 +36,7 @@ export function Contact() {
                 <MapPin className="h-5 w-5 text-white dark:text-gray-100" />
               </div>
               <div>
-                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
                   {t.contactSection.ourLocation}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{CONTACT_INFO.address}</p>
@@ -48,7 +48,7 @@ export function Contact() {
                 <Phone className="h-5 w-5 text-white dark:text-gray-100" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-bold text-lg sm:text-xl text-[#5B2EFF] dark:text-[#3694FF]">
+                <h3 className="font-heading font-bold text-lg sm:text-xl text-[#5B2EFF] dark:text-[#3694FF]">
                   {t.contactSection.phoneNumber}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
@@ -68,7 +68,7 @@ export function Contact() {
                 <Clock className="h-5 w-5 text-white dark:text-gray-100" />
               </div>
               <div>
-                <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
                   {t.contactSection.openingHours}
                 </h3>
                 <ul className="text-gray-600 dark:text-gray-300 text-sm sm:text-base space-y-1 sm:space-y-2">
@@ -90,7 +90,7 @@ export function Contact() {
           </div>
 
           <div className="bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30">
-            <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6 text-[#5B2EFF] dark:text-[#3694FF]">
+            <h3 className="font-heading font-bold text-xl sm:text-2xl mb-4 sm:mb-6 text-[#5B2EFF] dark:text-[#3694FF]">
               {t.contactSection.sendMessage}
             </h3>
             <ContactForm />

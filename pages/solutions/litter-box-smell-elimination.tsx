@@ -98,17 +98,17 @@ export default function LitterBoxSmellEliminationPage() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">🧪</div>
-                  <h3 className="font-bold text-lg mb-2">Molecular Level</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">Molecular Level</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Eliminates odors at the source, not just masking</p>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">🌿</div>
-                  <h3 className="font-bold text-lg mb-2">100% Natural</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">100% Natural</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Made from coconut shells - safe for cats and family</p>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">⏱️</div>
-                  <h3 className="font-bold text-lg mb-2">Instant Results</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">Instant Results</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Works within minutes of application</p>
                 </div>
               </div>

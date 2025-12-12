@@ -221,7 +221,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
     <div className={cn("space-y-8", className)}>
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
           Your Referral Dashboard
         </h1>
         <p className="text-gray-600 dark:text-gray-300">
@@ -282,7 +282,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Referral Code Section */}
       <Card className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
           <Share2 className="w-5 h-5 mr-2" />
           Your Referral Code
         </h2>
@@ -312,7 +312,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Social Sharing */}
       <Card className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           Share & Earn
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -378,7 +378,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Milestone Progress */}
       <Card className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
           <Trophy className="w-5 h-5 mr-2" />
           Progress to Next Reward
         </h2>
@@ -411,7 +411,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
       {/* Available Rewards */}
       {stats.availableRewards.length > 0 && (
         <Card className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+          <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
             <Gift className="w-5 h-5 mr-2" />
             Your Rewards ({stats.availableRewards.length})
           </h2>
@@ -423,7 +423,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
                 className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
               >
                 <div className="flex-1">
-                  <h3 className="font-semibold text-green-800 dark:text-green-200">
+                  <h3 className="font-heading font-semibold text-green-800 dark:text-green-200">
                     {reward.description}
                   </h3>
                   {reward.code && (
@@ -449,7 +449,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Recent Activity */}
       <Card className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           Recent Activity
         </h2>
 

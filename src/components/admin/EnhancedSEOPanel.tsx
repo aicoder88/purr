@@ -117,7 +117,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
       <div className={`rounded-lg p-6 ${getScoreBgColor(score.overall)}`}>
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">SEO Score</h3>
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">SEO Score</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
               {score.overall >= 80 ? 'Excellent!' : score.overall >= 60 ? 'Good, but can improve' : 'Needs improvement'}
             </p>

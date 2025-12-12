@@ -9,7 +9,7 @@ export function BarChart({ data, title, className = "" }: BarChartProps) {
   
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="relative">
@@ -45,7 +45,7 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
   
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="relative h-48">
         <svg className="w-full h-full" viewBox="0 0 400 180">
           <defs>
@@ -122,7 +122,7 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
   
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="flex items-center justify-center space-x-8">
         <div className="relative">
           <svg width="150" height="150" className="transform -rotate-90">

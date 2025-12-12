@@ -28,7 +28,7 @@ export function HowToVideo({
   return (
     <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
           {title}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -50,7 +50,7 @@ export function HowToVideo({
 
           {/* Video Description */}
           <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-2">
+            <h3 className="font-heading font-semibold text-blue-900 dark:text-blue-200 mb-2">
               📹 What you'll learn:
             </h3>
             <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
@@ -64,7 +64,7 @@ export function HowToVideo({
 
         {/* Step-by-Step Guide */}
         <div className="order-1 lg:order-2">
-          <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+          <h3 className="font-heading text-2xl font-bold mb-6 text-gray-900 dark:text-gray-50">
             Step-by-Step Guide
           </h3>
 
@@ -134,7 +134,7 @@ export function BeforeAfterVideo({
   return (
     <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
           {title}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -146,7 +146,7 @@ export function BeforeAfterVideo({
         {/* Before Video */}
         <div className="text-center">
           <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-            <h3 className="text-xl font-bold text-red-700 dark:text-red-300 mb-2">
+            <h3 className="font-heading text-xl font-bold text-red-700 dark:text-red-300 mb-2">
               😤 Before Purrify
             </h3>
             <p className="text-red-600 dark:text-red-400 text-sm">
@@ -165,7 +165,7 @@ export function BeforeAfterVideo({
         {/* After Video */}
         <div className="text-center">
           <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-            <h3 className="text-xl font-bold text-green-700 dark:text-green-300 mb-2">
+            <h3 className="font-heading text-xl font-bold text-green-700 dark:text-green-300 mb-2">
               ✨ After Purrify
             </h3>
             <p className="text-green-600 dark:text-green-400 text-sm">
@@ -184,7 +184,7 @@ export function BeforeAfterVideo({
 
       {/* Results Summary */}
       <div className="mt-8 text-center p-6 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
           Amazing Results in Just 24 Hours!
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -257,7 +257,7 @@ export function TestimonialVideo({
               />
             )}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50">
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50">
                 {customer.name}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
@@ -331,7 +331,7 @@ export function ScienceVideo({
   return (
     <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
           {title}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -353,7 +353,7 @@ export function ScienceVideo({
 
         {/* Key Scientific Points */}
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+          <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             Key Scientific Facts
           </h3>
 

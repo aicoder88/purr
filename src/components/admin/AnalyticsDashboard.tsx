@@ -79,7 +79,7 @@ export default function AnalyticsDashboard() {
     <div className="space-y-6">
       {/* Date Range Selector */}
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Analytics Overview</h2>
+        <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">Analytics Overview</h2>
         <div className="flex items-center space-x-3">
           <button
             onClick={() => handleExport('csv')}
@@ -128,7 +128,7 @@ export default function AnalyticsDashboard() {
 
       {/* Top Posts */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center space-x-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center space-x-2">
           <BarChart3 className="w-5 h-5" />
           <span>Top Performing Posts</span>
         </h3>
@@ -175,7 +175,7 @@ export default function AnalyticsDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Trending Categories */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Trending Categories
           </h3>
           <div className="space-y-3">
@@ -202,7 +202,7 @@ export default function AnalyticsDashboard() {
 
         {/* Recent Activity */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Recent Activity
           </h3>
           <div className="space-y-3">

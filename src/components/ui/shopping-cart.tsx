@@ -86,7 +86,7 @@ export function ShoppingCart() {
               <div className="flex items-center gap-3">
                 <ShoppingCartIcon className="h-5 w-5 text-[#FF3131]" />
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Shopping Cart</h2>
+                  <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Shopping Cart</h2>
                   <p className="text-xs text-gray-600 dark:text-gray-400">{totalItems} {totalItems === 1 ? 'item' : 'items'}</p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export function ShoppingCart() {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 line-clamp-2">
+                          <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-1 line-clamp-2">
                             {product.name}
                           </h3>
                           <div className="flex items-center gap-2 mb-3">

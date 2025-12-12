@@ -87,7 +87,7 @@ export default function BestForSmallApartments() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/20 rounded-full text-[#FF3131] dark:text-green-300 font-medium text-sm mb-4">
                 Urban Living Solutions
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Best Cat Litter Odor Remover for Small Apartments: Urban Solutions
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -118,7 +118,7 @@ export default function BestForSmallApartments() {
 
             {/* Quick Tips Box */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-12">
-              <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🏙️ Small Apartment Quick Tips</h2>
+              <h2 className="font-heading text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🏙️ Small Apartment Quick Tips</h2>
               <div className="grid md:grid-cols-2 gap-4 text-blue-800 dark:text-blue-200">
                 <div>
                   <strong>Best Location:</strong> Near ventilation, away from living areas
@@ -137,7 +137,7 @@ export default function BestForSmallApartments() {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Small Apartment Challenge</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Small Apartment Challenge</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Urban cat owners face unique challenges when it comes to odor control. Limited space,
@@ -146,7 +146,7 @@ export default function BestForSmallApartments() {
               </p>
 
               <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-500 p-6 mb-8">
-                <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🏢 Urban Living Challenges</h3>
+                <h3 className="font-heading text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🏢 Urban Living Challenges</h3>
                 <ul className="text-yellow-800 dark:text-yellow-200 space-y-2">
                   <li>• Limited ventilation and air circulation</li>
                   <li>• Shared walls with noise-sensitive neighbors</li>
@@ -156,7 +156,7 @@ export default function BestForSmallApartments() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Top 5 Odor Control Solutions for Small Spaces</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Top 5 Odor Control Solutions for Small Spaces</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Based on effectiveness, space efficiency, and urban living requirements, here are
@@ -171,7 +171,7 @@ export default function BestForSmallApartments() {
                       1
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Activated Carbon Litter Additives</h3>
+                      <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Activated Carbon Litter Additives</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         <strong>Why it's #1:</strong> Maximum odor elimination in minimal space.
                         Activated carbon provides professional-grade odor control without taking up extra room.
@@ -212,7 +212,7 @@ export default function BestForSmallApartments() {
                       2
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">High-Frequency Maintenance Schedule</h3>
+                      <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">High-Frequency Maintenance Schedule</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         In small spaces, prevention is better than treatment. A strategic cleaning
                         schedule prevents odor buildup before it becomes noticeable.
@@ -261,7 +261,7 @@ export default function BestForSmallApartments() {
                       3
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Strategic Ventilation Optimization</h3>
+                      <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Strategic Ventilation Optimization</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         Maximize your apartment's natural airflow to work with your odor control products.
                       </p>
@@ -299,7 +299,7 @@ export default function BestForSmallApartments() {
                       4
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Compact Air Purification</h3>
+                      <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Compact Air Purification</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         Supplement your litter deodorizer with space-efficient air purification for complete odor control.
                       </p>
@@ -324,7 +324,7 @@ export default function BestForSmallApartments() {
                       5
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Multi-Cat Apartment Strategies</h3>
+                      <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Multi-Cat Apartment Strategies</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
                         Multiple cats in small spaces require specialized approaches to maintain air quality.
                       </p>
@@ -351,7 +351,7 @@ export default function BestForSmallApartments() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Space-Specific Placement Guide</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Space-Specific Placement Guide</h2>
 
               <div className="mb-8">
                 <Image
@@ -373,7 +373,7 @@ export default function BestForSmallApartments() {
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ BEST Locations</h3>
+                  <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ BEST Locations</h3>
                   <ul className="text-green-800 dark:text-green-200 space-y-3">
                     <li>
                       <strong>Bathroom:</strong> Natural ventilation, easy cleaning, contained odors
@@ -390,7 +390,7 @@ export default function BestForSmallApartments() {
                   </ul>
                 </div>
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ AVOID These Locations</h3>
+                  <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ AVOID These Locations</h3>
                   <ul className="text-red-800 dark:text-red-200 space-y-3">
                     <li>
                       <strong>Bedroom:</strong> Poor air quality affects sleep
@@ -408,7 +408,7 @@ export default function BestForSmallApartments() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Budget-Friendly Solutions</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Budget-Friendly Solutions</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Effective <strong>small space pet odor</strong> control doesn't have to break the bank.
@@ -416,7 +416,7 @@ export default function BestForSmallApartments() {
               </p>
 
               <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">💰 Cost-Effective Approach</h3>
+                <h3 className="font-heading text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">💰 Cost-Effective Approach</h3>
                 <div className="space-y-4 text-blue-800 dark:text-blue-200">
                   <div className="flex justify-between items-center">
                     <span><strong>Purrify 12g (monthly):</strong></span>
@@ -437,7 +437,7 @@ export default function BestForSmallApartments() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Neighbor-Friendly Practices</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Neighbor-Friendly Practices</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Apartment living means being considerate of neighbors. These practices ensure your
@@ -488,14 +488,14 @@ export default function BestForSmallApartments() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Emergency Odor Control</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Emergency Odor Control</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Sometimes you need immediate odor control for unexpected situations. Here's your emergency protocol:
               </p>
 
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">🚨 Quick Action Plan (Under 30 Minutes)</h3>
+                <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-100 mb-4">🚨 Quick Action Plan (Under 30 Minutes)</h3>
                 <ol className="text-red-800 dark:text-red-200 space-y-2">
                   <li><strong>1. Immediate Cleanup:</strong> Remove all waste and soiled litter</li>
                   <li><strong>2. Ventilation Boost:</strong> Open all windows, turn on fans</li>
@@ -506,7 +506,7 @@ export default function BestForSmallApartments() {
               </div>
 
               <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Works Best in Small Apartments</h3>
+                <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Works Best in Small Apartments</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-gray-700 dark:text-gray-200">
                   <div>
                     <strong>Compact Storage:</strong> Small containers don't take up precious space
@@ -532,7 +532,7 @@ export default function BestForSmallApartments() {
                 </Link>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Finding the <strong>best cat litter odor remover for small apartments</strong> requires

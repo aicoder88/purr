@@ -199,7 +199,7 @@ const CatLitterGuidePage: NextPage = () => {
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
                 The Complete Cat Litter Guide
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
@@ -236,7 +236,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Cat Litter Types Compared
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -248,7 +248,7 @@ const CatLitterGuidePage: NextPage = () => {
               {litterTypes.map((litter, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
                       {litter.name}
                     </h3>
                     <div className="flex">
@@ -311,7 +311,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Essential Maintenance Tips
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -325,7 +325,7 @@ const CatLitterGuidePage: NextPage = () => {
                   <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                     <tip.icon className="w-8 h-8 text-white dark:text-gray-100" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                  <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                     {tip.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -356,7 +356,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Common Problems & Solutions
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -367,7 +367,7 @@ const CatLitterGuidePage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {commonProblems.map((item, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-xl font-bold mb-3 text-red-600 dark:text-red-400">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-red-600 dark:text-red-400">
                     Problem: {item.problem}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -406,7 +406,7 @@ const CatLitterGuidePage: NextPage = () => {
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 Ready to Upgrade Your Litter Box Experience?
               </h2>
               <p className="text-xl mb-8 opacity-90">

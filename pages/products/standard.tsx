@@ -325,7 +325,7 @@ export default function StandardSizePage() {
               {/* Product Details */}
               <div className="space-y-6">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
+                  <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
                     Purrify Standard Size
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
@@ -429,7 +429,7 @@ export default function StandardSizePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h2 className="text-3xl font-bold mb-2">Perfect for Single Cat Homes</h2>
+                  <h2 className="font-heading text-3xl font-bold mb-2">Perfect for Single Cat Homes</h2>
                   <p className="text-xl opacity-90">One month of continuous freshness</p>
                 </div>
               </div>
@@ -441,7 +441,7 @@ export default function StandardSizePage() {
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Perfect Size for Single Cat Homes
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -454,7 +454,7 @@ export default function StandardSizePage() {
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">30</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Days of Freshness</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Days of Freshness</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   One 50g package lasts a full month for typical single-cat usage
                 </p>
@@ -464,7 +464,7 @@ export default function StandardSizePage() {
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">#1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Most Popular Size</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Most Popular Size</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Chosen by 60% of our customers as the perfect balance
                 </p>
@@ -474,7 +474,7 @@ export default function StandardSizePage() {
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">$</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Best Value</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Best Value</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Optimal cost per day - less than $0.67 for complete odor control
                 </p>
@@ -487,7 +487,7 @@ export default function StandardSizePage() {
         <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Standard Size Success Stories
               </h2>
             </div>
@@ -520,7 +520,7 @@ export default function StandardSizePage() {
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Choose Your Perfect Size
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -530,7 +530,7 @@ export default function StandardSizePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
@@ -543,7 +543,7 @@ export default function StandardSizePage() {
                 <div className="bg-[#5B2EFF] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
                   MOST POPULAR
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
@@ -551,7 +551,7 @@ export default function StandardSizePage() {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping · Free with autoship</p>
@@ -590,7 +590,7 @@ export default function StandardSizePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Your Cat Deserves the Best</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves the Best</h3>
                   <p className="text-lg opacity-90">Safe, natural, effective odor control</p>
                 </div>
               </div>
@@ -611,7 +611,7 @@ export default function StandardSizePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-bold mb-2">Join 1,000+ Happy Customers</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-2">Join 1,000+ Happy Customers</h3>
                   <p className="text-lg opacity-90">Most popular size for a reason</p>
                 </div>
               </div>

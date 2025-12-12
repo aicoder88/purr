@@ -107,7 +107,7 @@ export default function CustomerReferralsPage({
                 <Share2 className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
 
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Share Purrify & Earn Rewards
               </h1>
 
@@ -123,7 +123,7 @@ export default function CustomerReferralsPage({
                 <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Gift className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   15% Off Every Referral
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -135,7 +135,7 @@ export default function CustomerReferralsPage({
                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Trophy className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   Milestone Bonuses
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -147,7 +147,7 @@ export default function CustomerReferralsPage({
                 <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                   Help Cat Parents
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -158,7 +158,7 @@ export default function CustomerReferralsPage({
 
             {/* How it Works */}
             <Card className="p-8 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
                 How It Works
               </h2>
 
@@ -167,7 +167,7 @@ export default function CustomerReferralsPage({
                   <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-orange-600 dark:text-orange-400">1</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Share Your Code</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Share Your Code</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Get your personalized referral code and share it with friends & family
                   </p>
@@ -177,7 +177,7 @@ export default function CustomerReferralsPage({
                   <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-orange-600 dark:text-orange-400">2</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     {`Your friends receive a free 12g trial size (normally ${trialPrice})`}
                   </p>
@@ -187,7 +187,7 @@ export default function CustomerReferralsPage({
                   <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-orange-600 dark:text-orange-400">3</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">You Earn Rewards</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">You Earn Rewards</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Get 15% off + milestone bonuses when they make their first purchase
                   </p>
@@ -254,7 +254,7 @@ export default function CustomerReferralsPage({
             </div>
 
             <div className="text-right">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
                 Referral Center
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
@@ -299,7 +299,7 @@ export default function CustomerReferralsPage({
             <TabsContent value="rewards" className="space-y-6">
               <Card className="p-8 text-center">
                 <Gift className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   Rewards Coming Soon
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">

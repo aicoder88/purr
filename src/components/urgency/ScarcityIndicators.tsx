@@ -143,7 +143,7 @@ export function ScarcityIndicator({
           <div className="flex items-center space-x-3">
             <AlertTriangle className="w-6 h-6 animate-bounce" />
             <div>
-              <h3 className="font-bold text-lg">⚠️ Stock Alert</h3>
+              <h3 className="font-heading font-bold text-lg">⚠️ Stock Alert</h3>
               <p className="text-sm opacity-90">{urgencyMessage}</p>
             </div>
           </div>

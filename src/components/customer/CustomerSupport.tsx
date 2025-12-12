@@ -228,7 +228,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-50">Support Tickets</h2>
+            <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50">Support Tickets</h2>
             <p className="text-gray-600 dark:text-gray-300 mt-1">Get help with your orders, subscriptions, and more</p>
           </div>
           <button
@@ -244,7 +244,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       {/* Tickets List */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Your Tickets</h3>
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Your Tickets</h3>
         </div>
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
           {tickets.length > 0 ? (
@@ -320,7 +320,7 @@ function NewTicketForm({ onSubmit, onCancel }: {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
       <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Create New Support Ticket</h3>
+        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Create New Support Ticket</h3>
       </div>
       <form onSubmit={handleSubmit} className="p-6 space-y-6">
         <div>
@@ -459,7 +459,7 @@ function TicketView({ ticket, onBack, onAddMessage }: {
           </span>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">{ticket.subject}</h1>
+        <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">{ticket.subject}</h1>
 
         <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
           <span>Ticket #{ticket.id}</span>
@@ -475,7 +475,7 @@ function TicketView({ ticket, onBack, onAddMessage }: {
       {/* Messages */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Conversation</h3>
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Conversation</h3>
         </div>
 
         <div className="p-6 space-y-6">

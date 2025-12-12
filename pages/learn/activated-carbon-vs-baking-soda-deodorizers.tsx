@@ -45,7 +45,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
 
       <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+          <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">
             Activated Carbon vs Baking Soda Cat Litter Deodorizers: Science-Based Comparison
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -56,7 +56,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
 
         <div className="prose prose-lg max-w-none">
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-400 p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Summary</h2>
+            <h2 className="font-heading text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Summary</h2>
             <p className="text-blue-800 dark:text-blue-200 mb-4">
               <strong>Activated carbon</strong> physically traps odor molecules in microscopic pores and eliminates
               them permanently. <strong>Baking soda</strong> neutralizes acidic odors through chemical reactions
@@ -68,7 +68,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Technology Comparison</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Technology Comparison</h2>
 
           <div className="overflow-x-auto mb-8">
             <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
@@ -156,11 +156,11 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </table>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How Each Technology Works</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How Each Technology Works</h2>
 
           <div className="space-y-8 mb-12">
             <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🔬 The Science Behind Each Method</h3>
+              <h3 className="font-heading text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🔬 The Science Behind Each Method</h3>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
@@ -196,7 +196,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">⚡ Real-World Performance</h3>
+              <h3 className="font-heading text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">⚡ Real-World Performance</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 We tested both technologies in identical conditions with clay litter and measured odor reduction
@@ -268,7 +268,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">💰 True Cost Comparison</h3>
+              <h3 className="font-heading text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">💰 True Cost Comparison</h3>
 
               <div className="overflow-x-auto mb-6">
                 <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
@@ -316,7 +316,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🐱 Safety & Health Considerations</h3>
+              <h3 className="font-heading text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-4">🐱 Safety & Health Considerations</h3>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
@@ -355,11 +355,11 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Common Questions</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Common Questions</h2>
 
           <div className="space-y-6 mb-12">
             <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
                 Can I use both activated carbon and baking soda together?
               </h3>
               <p className="text-gray-700 dark:text-gray-200 text-sm">
@@ -370,7 +370,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
                 Why do baking soda products need added fragrances?
               </h3>
               <p className="text-gray-700 dark:text-gray-200 text-sm">
@@ -382,7 +382,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
                 Which technology is better for multi-cat households?
               </h3>
               <p className="text-gray-700 dark:text-gray-200 text-sm">
@@ -394,7 +394,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
                 Is activated carbon safe if my cat ingests it?
               </h3>
               <p className="text-gray-700 dark:text-gray-200 text-sm">
@@ -405,11 +405,11 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Which Technology Should You Choose?</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Which Technology Should You Choose?</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">Choose Activated Carbon If:</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-800 dark:text-green-200 mb-3">Choose Activated Carbon If:</h3>
               <ul className="space-y-2 text-green-700 dark:text-green-300">
                 <li>✓ You have cats with respiratory sensitivities or allergies</li>
                 <li>✓ You prefer completely fragrance-free odor control</li>
@@ -423,7 +423,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-3">Choose Baking Soda If:</h3>
+              <h3 className="font-heading text-xl font-semibold text-blue-800 dark:text-blue-200 mb-3">Choose Baking Soda If:</h3>
               <ul className="space-y-2 text-blue-700 dark:text-blue-300">
                 <li>• You need immediate availability at any grocery store</li>
                 <li>• You prefer very low upfront costs</li>
@@ -437,7 +437,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
           </div>
 
           <div className="bg-gradient-to-r from-green-50 via-blue-50 to-green-50 dark:from-green-900/20 dark:via-blue-900/20 dark:to-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-8 text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Try Premium Activated Carbon Technology</h2>
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Try Premium Activated Carbon Technology</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Purrify uses pharmaceutical-grade activated carbon from Canadian sources. Completely fragrance-free,
               hypoallergenic, and proven to eliminate 95%+ of litter box odors for 6-8 weeks per application.
@@ -459,7 +459,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
           </div>
 
           <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3">Bottom Line</h3>
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3">Bottom Line</h3>
             <p className="text-gray-700 dark:text-gray-200 text-sm mb-4">
               Both technologies work, but they use completely different mechanisms. Baking soda is widely available
               and familiar, but it only neutralizes acidic odors and usually requires added fragrances to mask

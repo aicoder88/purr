@@ -174,7 +174,7 @@ export default function MostPowerfulOdorAbsorber() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/20 rounded-full text-[#FF3131] dark:text-green-300 font-medium text-sm mb-4">
                 {meta.category}
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 {meta.title}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -205,7 +205,7 @@ export default function MostPowerfulOdorAbsorber() {
 
             {/* Quick Stats */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mb-12">
-              <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🔬 {meta.stats.title}</h2>
+              <h2 className="font-heading text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🔬 {meta.stats.title}</h2>
               <div className="grid md:grid-cols-2 gap-4 text-blue-800 dark:text-blue-200">
                 <div className="space-y-1">
                   <p className="font-semibold">Ammonia Control</p>
@@ -232,7 +232,7 @@ export default function MostPowerfulOdorAbsorber() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Power Matters When Choosing an Odor Absorber</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Power Matters When Choosing an Odor Absorber</h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   Search interest in the phrase <strong>"most powerful odor absorber"</strong> surged 140 percent this year. Cat parents are tired of masking litter smells with perfumes that only last a few hours. A powerful absorber captures odor molecules at the source so your living room may stay neutral between scoops—and that is exactly what the Purrify activated carbon system was built to do.
                 </p>
@@ -274,7 +274,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Physics Behind the Most Powerful Odor Absorber</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Physics Behind the Most Powerful Odor Absorber</h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   Activated carbon wins because its activation process opens millions of microscopic pores. Each pore acts like a molecular parking spot. The higher the surface area, the more ammonia and sulfur compounds the carbon can lock down. Purrify's coconut-shell carbon, the same grade used in premium water filters, provides the densest pore network for cat odor molecules.
                 </p>
@@ -290,7 +290,7 @@ export default function MostPowerfulOdorAbsorber() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
                 <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">Lab Snapshot</h3>
+                  <h3 className="font-heading text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">Lab Snapshot</h3>
                   <ul className="space-y-2 text-yellow-800 dark:text-yellow-200">
                     <li>• Activated carbon cut airborne ammonia by 92 percent in a 30-minute sealed chamber test.</li>
                     <li>• Zeolite plus baking soda reduced ammonia by 38 percent under the same conditions.</li>
@@ -306,7 +306,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Layering Strategy for Maximum Odor Capture</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Layering Strategy for Maximum Odor Capture</h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   The way you apply a powerful odor absorber matters as much as the material itself. Follow this layering plan to get the most from Purrify activated carbon without overwhelming your cat with texture changes.
                 </p>
@@ -331,7 +331,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">See Purrify's Odor Shield in Action</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">See Purrify's Odor Shield in Action</h2>
                 <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
                   <PerformanceChart />
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-4 text-center">
@@ -344,7 +344,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Activated Carbon Close-Ups</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Activated Carbon Close-Ups</h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
                     <Image
@@ -376,7 +376,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes That Weaken Odor Absorbers</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes That Weaken Odor Absorbers</h2>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li><strong>Using perfumes instead of absorbers:</strong> Fragrances mix with ammonia and can smell worse over time. Focus on adsorption with Purrify carbon, not cover-ups.</li>
                   <li><strong>Letting the carbon cake:</strong> Moisture can seal the pores. Break up clumps during scooping to reopen Purrify's pore structure.</li>
@@ -386,10 +386,10 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance Timeline That Keeps Performance High</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance Timeline That Keeps Performance High</h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Weekly Routine</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Weekly Routine</h3>
                     <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                       <li>• Scoop twice daily and add a teaspoon of Purrify carbon.</li>
                       <li>• Wipe the litter box rim to prevent residue build-up.</li>
@@ -397,7 +397,7 @@ export default function MostPowerfulOdorAbsorber() {
                     </ul>
                   </div>
                   <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Monthly Reset</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Monthly Reset</h3>
                     <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                       <li>• Empty the entire box and wash with unscented soap.</li>
                       <li>• Dry thoroughly so moisture does not saturate the next Purrify layer.</li>
@@ -408,11 +408,11 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
                 <div className="space-y-6">
                   {faqs.map((item) => (
                     <div key={item.question} className="bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-2">{item.question}</h3>
+                      <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-gray-50 mb-2">{item.question}</h3>
                       <p className="text-gray-700 dark:text-gray-200">{item.answer}</p>
                     </div>
                   ))}
@@ -420,12 +420,12 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Take the Science Into Your Litter Routine</h2>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Take the Science Into Your Litter Routine</h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   Powerful odor control is not about masking smells. It is about giving odor molecules a place to stay. Purrify activated carbon provides that home, packaging high-grade granules in an easy-to-use format designed for sensitive cats and busy households.
                 </p>
                 <div className="bg-[#E0EFC7] dark:bg-green-900/30 border border-[#5B2EFF]/10 dark:border-green-700 rounded-2xl p-8 text-center">
-                  <h3 className="text-2xl font-bold text-[#5B2EFF] dark:text-green-200 mb-4">Ready to build a fragrance-free odor shield?</h3>
+                  <h3 className="font-heading text-2xl font-bold text-[#5B2EFF] dark:text-green-200 mb-4">Ready to build a fragrance-free odor shield?</h3>
                   <p className="text-gray-700 dark:text-gray-200 mb-6">
                     Start with the Purrify 50g standard jar for single-cat homes or upgrade to the 120g family pack if you manage more than one feline roommate.
                   </p>

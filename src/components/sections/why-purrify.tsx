@@ -75,7 +75,7 @@ export function WhyPurrify() {
             <span className="text-purple-700 dark:text-purple-300 font-semibold">The Science Behind Purrify</span>
           </div>
         
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
+          <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
             {t.nav.whyPurrify}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">

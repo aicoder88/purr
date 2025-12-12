@@ -342,7 +342,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             </Link>
 
             <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
                 {post.title}
               </h1>
               <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 mb-6">
@@ -426,7 +426,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
             {post.cta && (
               <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-[#03E46A]/15 via-[#5B2EFF]/10 to-[#FF3131]/10 border border-[#E0EFC7]/80">
-                <h3 className="text-2xl font-bold mb-3 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.ctaHeading}</h3>
+                <h3 className="font-heading text-2xl font-bold mb-3 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.ctaHeading}</h3>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">{post.cta.text}</p>
                 <a
                   href={post.cta.url}
@@ -439,11 +439,11 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
             {post.faq && post.faq.length > 0 && (
               <div className="mt-12">
-                <h2 className="text-3xl font-bold mb-6 text-[#5B2EFF] dark:text-[#3694FF]">FAQ</h2>
+                <h2 className="font-heading text-3xl font-bold mb-6 text-[#5B2EFF] dark:text-[#3694FF]">FAQ</h2>
                 <div className="space-y-6">
                   {post.faq.map((entry, index) => (
                     <div key={`${entry.question}-${index}`} className="p-6 rounded-2xl bg-white/90 dark:bg-gray-800/80 border border-[#E0EFC7]/60">
-                      <h3 className="text-xl font-semibold mb-2 text-[#03E46A]">{entry.question}</h3>
+                      <h3 className="font-heading text-xl font-semibold mb-2 text-[#03E46A]">{entry.question}</h3>
                       <div className="prose prose-sm dark:prose-invert" dangerouslySetInnerHTML={{ __html: entry.answerHtml }} />
                     </div>
                   ))}
@@ -452,7 +452,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             )}
 
             <div className="mt-12 pt-8 border-t border-[#E0EFC7]">
-              <h3 className="text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.shareHeading}</h3>
+              <h3 className="font-heading text-xl font-bold mb-4 text-[#5B2EFF] dark:text-[#3694FF]">{localizedCopy.shareHeading}</h3>
               <div className="flex space-x-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${post.title}`}

@@ -153,7 +153,7 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Posts</span>
             </Link>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Categories</h1>
+            <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">Categories</h1>
             <p className="text-gray-600 dark:text-gray-400 mt-1">{categories.length} categories</p>
           </div>
           <button
@@ -169,7 +169,7 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
         {/* Add New Form */}
         {isAdding && (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">New Category</h3>
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">New Category</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -300,7 +300,7 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
                 // View Mode
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {category.name}
                     </h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">

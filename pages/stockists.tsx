@@ -320,7 +320,7 @@ export default function Stockists() {
               className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:invert dark:brightness-110 dark:contrast-125"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {locale === 'fr'
               ? 'Trouvez un Détaillant Purrify Près de Chez Vous'
               : 'Find a Purrify Retailer Near You'
@@ -390,7 +390,7 @@ export default function Stockists() {
         <section className="mb-16">
           {Object.keys(stockistsByRegion).length === 0 ? (
             <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 {locale === 'fr'
                   ? 'Aucun détaillant trouvé'
                   : 'No retailers found'
@@ -412,7 +412,7 @@ export default function Stockists() {
           ) : (
             Object.entries(stockistsByRegion).map(([region, stockists]) => (
               <div key={region} className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 capitalize">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6 capitalize">
                   {region === 'montreal' && locale === 'fr' ? 'Grand Montréal' :
                    region === 'quebec' && locale === 'fr' ? 'Québec' :
                    region === 'atlantic' && locale === 'fr' ? 'Provinces Atlantiques' :
@@ -428,7 +428,7 @@ export default function Stockists() {
                       {/* Store Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-1">
                             {stockist.name}
                           </h3>
                           <div className="flex items-center gap-2 mb-2">
@@ -555,7 +555,7 @@ export default function Stockists() {
 
         {/* Call to Action */}
         <section className="text-center bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
             {locale === 'fr'
               ? 'Votre magasin ne vend pas encore Purrify?'
               : 'Your store doesn\'t carry Purrify yet?'

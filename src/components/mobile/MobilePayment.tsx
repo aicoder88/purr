@@ -313,7 +313,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   return (
     <div className={`space-y-4 ${className}`}>
       <div className="text-center mb-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
           Choose Payment Method
         </h3>
         <div className="text-2xl font-bold text-[#5B2EFF]">

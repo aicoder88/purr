@@ -157,7 +157,7 @@ export default function EmbarrassedGuestsVisit() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Quick Odor Solutions
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Embarrassed When Guests Visit? 5 Ways to Eliminate Cat Litter Smell Before Company Arrives
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -213,9 +213,9 @@ export default function EmbarrassedGuestsVisit() {
                 methods that work fast when you're expecting company.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">5 Fast-Acting Solutions to Eliminate Cat Litter Smell Before Guests Arrive</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">5 Fast-Acting Solutions to Eliminate Cat Litter Smell Before Guests Arrive</h2>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Apply Activated Carbon Immediately (Works in 2-4 Hours)</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Apply Activated Carbon Immediately (Works in 2-4 Hours)</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If you only have time for <strong>one thing</strong>, this is it. Activated carbon doesn't mask odors with fragrance—it
@@ -236,7 +236,7 @@ export default function EmbarrassedGuestsVisit() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Do an Emergency Deep Clean of the Litter Box</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Do an Emergency Deep Clean of the Litter Box</h3>
 
               <div className="mb-8">
                 <Image
@@ -272,7 +272,7 @@ export default function EmbarrassedGuestsVisit() {
                 This reset eliminates built-up ammonia and gives odor control products a clean slate to work with.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Create Strategic Airflow (But Don't Just Mask It)</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Create Strategic Airflow (But Don't Just Mask It)</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 You might be tempted to spray air freshener everywhere. <strong>Don't.</strong> Guests can tell when you're masking something,
@@ -299,7 +299,7 @@ export default function EmbarrassedGuestsVisit() {
                 </ul>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Address Any "Accident Zones" Outside the Box</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Address Any "Accident Zones" Outside the Box</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Here's the uncomfortable truth: sometimes <strong>the smell isn't just from the litter box</strong>. Cats occasionally
@@ -322,7 +322,7 @@ export default function EmbarrassedGuestsVisit() {
                 Let it sit for 10-15 minutes, then blot dry.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">5. Create a "Fresh Air Pathway" Away From the Litter Area</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">5. Create a "Fresh Air Pathway" Away From the Litter Area</h3>
 
               <div className="mb-8">
                 <Image
@@ -354,7 +354,7 @@ export default function EmbarrassedGuestsVisit() {
                 fresh-smelling home, they won't be suspicious or looking for problems.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Long-Term Solution: Stop the Panic Forever</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Long-Term Solution: Stop the Panic Forever</h2>
 
               <div className="mb-8">
                 <Image
@@ -400,7 +400,7 @@ export default function EmbarrassedGuestsVisit() {
                 </Link>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Cat Owners Share Their Stories</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Cat Owners Share Their Stories</h2>
 
               <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded-lg p-6 mb-6">
                 <p className="text-gray-700 dark:text-gray-200 italic mb-3">
@@ -419,7 +419,7 @@ export default function EmbarrassedGuestsVisit() {
                 <p className="text-gray-600 dark:text-gray-300 text-sm">— David K., Calgary</p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Your 24-Hour Action Plan</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Your 24-Hour Action Plan</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Got guests coming tomorrow? Here's your step-by-step timeline:
@@ -448,7 +448,7 @@ export default function EmbarrassedGuestsVisit() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: You Deserve to Entertain Confidently</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: You Deserve to Entertain Confidently</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Being a cat owner shouldn't mean social isolation. You deserve to have friends over without apologizing, explain, or

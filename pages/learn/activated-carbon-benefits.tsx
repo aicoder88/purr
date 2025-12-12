@@ -71,7 +71,7 @@ export default function ActivatedCarbonBenefits() {
 
       <article className="max-w-4xl mx-auto px-4 py-12 text-gray-900 dark:text-gray-100">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Activated Carbon Litter Additive Benefits: The Complete Science Guide
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -92,7 +92,7 @@ export default function ActivatedCarbonBenefits() {
           </div>
 
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-500 p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Answer</h2>
+            <h2 className="font-heading text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Answer</h2>
             <p className="text-blue-800 dark:text-blue-200">
               Activated carbon litter additive benefits include superior odor elimination through molecular adsorption,
               natural and fragrance-free composition, long-lasting effectiveness, and compatibility with all litter types.
@@ -100,11 +100,11 @@ export default function ActivatedCarbonBenefits() {
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How Activated Carbon Eliminates Odors</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How Activated Carbon Eliminates Odors</h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-semibold mb-4">The Science of Adsorption</h3>
+              <h3 className="font-heading text-2xl font-semibold mb-4">The Science of Adsorption</h3>
               <p>
                 Activated carbon works through a process called <strong>adsorption</strong> (not absorption).
                 The carbon's massive surface area - up to 1,500 square meters per gram - contains millions
@@ -150,51 +150,51 @@ export default function ActivatedCarbonBenefits() {
             />
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Top 8 Activated Carbon Litter Additive Benefits</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Top 8 Activated Carbon Litter Additive Benefits</h2>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">1. Superior Odor Elimination</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">1. Superior Odor Elimination</h3>
               <p>Unlike air fresheners that mask smells, activated carbon removes odor molecules completely. Studies show 99%+ effectiveness against ammonia and sulfur compounds.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">2. Natural & Fragrance-Free</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">2. Natural & Fragrance-Free</h3>
               <p>Made from coconut shells or wood, activated carbon contains no added fragrances or dyes and is widely used in household filtration.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">3. Long-Lasting Performance</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">3. Long-Lasting Performance</h3>
               <p>A small amount provides weeks of odor control. The carbon continues working until all pore spaces are filled with odor molecules.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">4. Works with Any Litter</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">4. Works with Any Litter</h3>
               <p>Compatible with clay, clumping, crystal, wood, paper, and corn-based litters. Simply sprinkle on top or mix in.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">5. Reduces Litter Changes</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">5. Reduces Litter Changes</h3>
               <p>Extends litter life by controlling odors longer, saving money and reducing waste. Many users report 30-50% longer intervals between changes.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">6. Improves Air Quality</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">6. Improves Air Quality</h3>
               <p>Removes airborne particles and volatile organic compounds (VOCs), creating healthier indoor air for your family and pets.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">7. Low-Dust Application</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">7. Low-Dust Application</h3>
               <p>High-quality activated carbon produces minimal dust, a consideration for cats with respiratory sensitivities.</p>
             </div>
 
             <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-3">8. Practical Disposal</h3>
+              <h3 className="font-heading text-xl font-semibold text-green-600 dark:text-green-400 mb-3">8. Practical Disposal</h3>
               <p>Dispose of used litter and carbon according to local guidelines. Avoid drains and follow municipal waste instructions.</p>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Activated Carbon vs. Other Deodorizers</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Activated Carbon vs. Other Deodorizers</h2>
 
           <div className="overflow-x-auto mb-8">
             <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
@@ -246,10 +246,10 @@ export default function ActivatedCarbonBenefits() {
             />
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Using Around Cats and Kittens</h2>
 
           <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Fragrance-Free & Widely Used</h3>
+            <h3 className="font-heading text-xl font-semibold text-green-800 dark:text-green-200 mb-3">✓ Fragrance-Free & Widely Used</h3>
             <ul className="space-y-2 text-green-700 dark:text-green-300">
               <li>• <strong>Biologically inert:</strong> Commonly used in household filtration</li>
               <li>• <strong>Gentle approach:</strong> Often introduced gradually for young cats</li>
@@ -259,52 +259,52 @@ export default function ActivatedCarbonBenefits() {
             </ul>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How to Use Activated Carbon Litter Additive</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">How to Use Activated Carbon Litter Additive</h2>
 
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
               </div>
-              <h3 className="font-semibold mb-2">Sprinkle</h3>
+              <h3 className="font-heading font-semibold mb-2">Sprinkle</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Add 1-2 tablespoons per litter box</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
               </div>
-              <h3 className="font-semibold mb-2">Mix</h3>
+              <h3 className="font-heading font-semibold mb-2">Mix</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Gently stir into existing litter</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
               </div>
-              <h3 className="font-semibold mb-2">Enjoy</h3>
+              <h3 className="font-heading font-semibold mb-2">Enjoy</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Experience immediate odor control</p>
             </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-6 mb-8">
             <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="text-lg font-semibold mb-2">Can activated carbon be used around kittens?</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2">Can activated carbon be used around kittens?</h3>
               <p>Activated carbon is widely used in household filtration and is fragrance-free. Many households introduce it gradually once kittens reliably use the litter box. Consult your veterinarian for specific advice.</p>
             </div>
 
             <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="text-lg font-semibold mb-2">How long does activated carbon last?</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2">How long does activated carbon last?</h3>
               <p>Activated carbon continues working until its pores are saturated with odor molecules. In a typical litter box, this ranges from 2-4 weeks depending on usage and the number of cats.</p>
             </div>
 
             <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="text-lg font-semibold mb-2">Can I use it with clumping litter?</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2">Can I use it with clumping litter?</h3>
               <p>Absolutely! Activated carbon works with all litter types including clumping clay, crystal, wood, paper, and natural alternatives. It enhances rather than interferes with clumping action.</p>
             </div>
 
             <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="text-lg font-semibold mb-2">Will my cat notice the difference?</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2">Will my cat notice the difference?</h3>
               <p>Most cats don't notice activated carbon since it's odorless and doesn't change litter texture significantly. Some cats actually prefer the improved odor control.</p>
             </div>
           </div>
@@ -321,7 +321,7 @@ export default function ActivatedCarbonBenefits() {
           </div>
 
           <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Experience the Benefits?</h2>
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Experience the Benefits?</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Try Purrify's premium activated carbon litter additive and discover why 1,000+ cat owners trust our natural odor elimination solution.
             </p>

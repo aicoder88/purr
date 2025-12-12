@@ -14,7 +14,7 @@ export function About() {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t.features.longLastingFreshness.title} />
           
-          <h2 className="text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
+          <h2 className="font-heading text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
           
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}

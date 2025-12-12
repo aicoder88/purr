@@ -34,7 +34,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
           <AlertTriangle className="w-10 h-10 text-red-600 dark:text-red-400" />
         </div>
         
-        <h2 className="text-2xl font-bold text-red-800 dark:text-red-200 mb-3">
+        <h2 className="font-heading text-2xl font-bold text-red-800 dark:text-red-200 mb-3">
           Something went wrong
         </h2>
         

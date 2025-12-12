@@ -157,7 +157,7 @@ export default function TriedEverythingCatLitterSmell() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Odor Control Science
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Tried Everything for Cat Litter Smell? Why Most Solutions Fail (And What Actually Works)
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -221,9 +221,9 @@ export default function TriedEverythingCatLitterSmell() {
                 what actually works at the molecular level.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why the "Popular" Solutions Don't Work</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why the "Popular" Solutions Don't Work</h2>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Baking Soda: Too Weak for Ammonia</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Baking Soda: Too Weak for Ammonia</h3>
 
               <div className="mb-8">
                 <Image
@@ -258,7 +258,7 @@ export default function TriedEverythingCatLitterSmell() {
                 It's like bringing a squirt gun to a fire.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Air Fresheners: Mixing Bad Smells with Perfume</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Air Fresheners: Mixing Bad Smells with Perfume</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 You've experienced this: spray air freshener near the litter box, and for 30 seconds it smells like "Ocean Breeze."
@@ -279,7 +279,7 @@ export default function TriedEverythingCatLitterSmell() {
                 Air fresheners are designed for <strong>temporary masking</strong>, not permanent elimination. They're solving the wrong problem.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. "Odor-Eliminating" Litters: Marketing Over Science</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. "Odor-Eliminating" Litters: Marketing Over Science</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 You bought the premium litter with "advanced odor control technology." The package promised "7-day freshness."
@@ -301,7 +301,7 @@ export default function TriedEverythingCatLitterSmell() {
                 </ul>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Covered Litter Boxes: Trapping the Problem</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">4. Covered Litter Boxes: Trapping the Problem</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Logic says: "If I cover the litter box, the smell won't escape." But here's what actually happens:
@@ -318,7 +318,7 @@ export default function TriedEverythingCatLitterSmell() {
                 Covered boxes don't eliminate odors—they <strong>contain them temporarily</strong>, making the problem worse long-term.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Real Problem: Nobody's Targeting Ammonia Molecules</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Real Problem: Nobody's Targeting Ammonia Molecules</h2>
 
               <div className="mb-8">
                 <Image
@@ -361,7 +361,7 @@ export default function TriedEverythingCatLitterSmell() {
                 <strong>You need activated carbon.</strong>
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Actually Works: The Science of Activated Carbon</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Actually Works: The Science of Activated Carbon</h2>
 
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-8">
                 <h4 className="font-bold text-green-900 dark:text-green-100 mb-3">🔬 How Activated Carbon Eliminates Ammonia:</h4>
@@ -401,7 +401,7 @@ export default function TriedEverythingCatLitterSmell() {
                 If it's powerful enough for <strong>chemical plants and military applications</strong>, it can handle cat urine.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why You Haven't Heard About This Before</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why You Haven't Heard About This Before</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Good question. If activated carbon is so effective, why do pet stores push baking soda and scented litter?
@@ -424,7 +424,7 @@ export default function TriedEverythingCatLitterSmell() {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Results from Skeptical Cat Owners</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Results from Skeptical Cat Owners</h2>
 
               <div className="mb-8">
                 <Image
@@ -458,7 +458,7 @@ export default function TriedEverythingCatLitterSmell() {
                 <p className="text-gray-600 dark:text-gray-300 text-sm">— Marcus L., Toronto</p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Not All Activated Carbon Is Equal</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Not All Activated Carbon Is Equal</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Before you rush to buy any "activated carbon" product, know this: <strong>quality matters</strong>.
@@ -496,7 +496,7 @@ export default function TriedEverythingCatLitterSmell() {
                 </Link>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: You're Not the Problem—Your Products Are</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: You're Not the Problem—Your Products Are</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If you've "tried everything" and nothing worked, <strong>it's not your fault</strong>. The pet industry has been

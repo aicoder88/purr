@@ -267,7 +267,7 @@ const OurStoryPage: NextPage = () => {
                   <div className="text-5xl font-heading font-bold text-white dark:text-gray-100 mb-2 drop-shadow-sm">
                     {stat.number}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-white/90 dark:text-gray-100/90 uppercase tracking-wide">
+                  <h3 className="font-heading text-lg font-semibold mb-2 text-white/90 dark:text-gray-100/90 uppercase tracking-wide">
                     {stat.label}
                   </h3>
                   <p className="text-white/70 dark:text-gray-200/70 text-sm max-w-[200px] mx-auto">

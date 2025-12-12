@@ -175,7 +175,7 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
                 {t.productComparison.title}
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
@@ -215,7 +215,7 @@ const ProductComparePage: NextPage = () => {
 
                   {/* Header */}
                   <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
-                    <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
+                    <h2 className="font-heading text-2xl font-bold mb-2">{product.name}</h2>
                     <p className="opacity-90 mb-4">{product.subtitle}</p>
                     <div className="flex items-baseline">
                       <span className="text-4xl font-bold">{product.price}</span>
@@ -246,7 +246,7 @@ const ProductComparePage: NextPage = () => {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h3 className="font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h3>
+                      <h3 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h3>
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
@@ -303,7 +303,7 @@ const ProductComparePage: NextPage = () => {
         <section className="py-16 bg-brand-light/30 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {t.productComparison.featuresComparison}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -362,7 +362,7 @@ const ProductComparePage: NextPage = () => {
         <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {t.productComparison.howLongWillEachSizeLast}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -414,7 +414,7 @@ const ProductComparePage: NextPage = () => {
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <Zap className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 {t.productComparison.stillUnsure}
               </h2>
               <p className="text-xl mb-8 opacity-90">
@@ -441,7 +441,7 @@ const ProductComparePage: NextPage = () => {
         <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {t.productComparison.learnMoreAboutPurrify}
               </h2>
             </div>
@@ -450,7 +450,7 @@ const ProductComparePage: NextPage = () => {
               {t.productComparison.relatedPages.map((page, index) => (
                 <Link href={`${locale === 'fr' ? '/fr' : ''}${page.link}`} key={index} className="group">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
                       {page.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">

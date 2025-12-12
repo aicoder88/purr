@@ -102,17 +102,17 @@ export default function ApartmentCatSmellSolutionPage() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">⚡</div>
-                  <h3 className="font-bold text-lg mb-2">Instant Results</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">Instant Results</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Works immediately upon contact with odors</p>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">🌿</div>
-                  <h3 className="font-bold text-lg mb-2">100% Natural</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">100% Natural</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Safe for cats, humans, and the environment</p>
                 </div>
                 <div className="text-center p-4">
                   <div className="text-4xl mb-3">💰</div>
-                  <h3 className="font-bold text-lg mb-2">Cost Effective</h3>
+                  <h3 className="font-heading font-bold text-lg mb-2">Cost Effective</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Extends litter life and reduces waste</p>
                 </div>
               </div>

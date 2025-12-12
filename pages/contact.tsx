@@ -218,7 +218,7 @@ export default function ContactPage() {
                 <span className="text-purple-700 dark:text-purple-300 font-semibold">24/7 Support Available</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
+              <h1 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
                 We're Here to Help! 🐱
               </h1>
 
@@ -249,7 +249,7 @@ export default function ContactPage() {
         <section className="py-20 relative">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
                 Choose Your <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Preferred Way</span> to Connect
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -273,7 +273,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">
+                    <h3 className="font-heading text-2xl font-black mb-4 text-gray-900 dark:text-white">
                       {method.title}
                     </h3>
 
@@ -336,7 +336,7 @@ export default function ContactPage() {
           <Container>
             <div className="max-w-4xl mx-auto relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+                <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
                   Send Us a <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Message</span>
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -463,7 +463,7 @@ export default function ContactPage() {
         <section className="py-20">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
                 Frequently Asked <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Questions</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -474,7 +474,7 @@ export default function ContactPage() {
             <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
                 <div key={index} className="group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
-                  <h3 className="text-xl font-black mb-4 text-gray-900 dark:text-white flex items-start">
+                  <h3 className="font-heading text-xl font-black mb-4 text-gray-900 dark:text-white flex items-start">
                     <span className="text-purple-600 dark:text-purple-400 mr-3 text-2xl">Q:</span>
                     {faq.question}
                   </h3>
@@ -502,7 +502,7 @@ export default function ContactPage() {
         <section className="py-16 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
           <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {PHONE_MESSAGING.headline}
               </h2>
               <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-4">
@@ -529,7 +529,7 @@ export default function ContactPage() {
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                   Business Hours
                 </h2>
                 <div className="space-y-4">
@@ -558,7 +558,7 @@ export default function ContactPage() {
               </div>
 
               <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
                   Our Location
                 </h2>
                 <div className="space-y-4">
@@ -586,7 +586,7 @@ export default function ContactPage() {
         <section className="py-16 bg-gradient-to-r from-purple-100/50 to-pink-100/50 dark:from-purple-900/20 dark:to-pink-900/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
                 Connect With Us <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Everywhere</span>
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -697,7 +697,7 @@ export default function ContactPage() {
 
             {/* Review Platforms */}
             <div className="mt-12">
-              <h3 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+              <h3 className="font-heading text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
                 Leave Us a Review
               </h3>
               <div className="flex flex-wrap justify-center gap-4">
@@ -753,7 +753,7 @@ export default function ContactPage() {
 
             {/* Business Profiles */}
             <div className="mt-12">
-              <h3 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+              <h3 className="font-heading text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
                 Business Profiles
               </h3>
               <div className="flex flex-wrap justify-center gap-4">

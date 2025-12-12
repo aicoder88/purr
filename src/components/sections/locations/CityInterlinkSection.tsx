@@ -46,7 +46,7 @@ export function CityInterlinkSection({
       <div className="max-w-6xl mx-auto space-y-12">
         {siblingCities.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-50">
               Explore More {province.name} Cities
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -69,7 +69,7 @@ export function CityInterlinkSection({
         )}
 
         <div>
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-50">
+          <h2 className="font-heading text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-50">
             Browse Canadian Provinces
           </h2>
           <div className="flex flex-wrap justify-center gap-3">

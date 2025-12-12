@@ -147,7 +147,7 @@ export default function TagsPage({ tags: initialTags }: TagsPageProps) {
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Posts</span>
             </Link>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Tags</h1>
+            <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">Tags</h1>
             <p className="text-gray-600 dark:text-gray-400 mt-1">{tags.length} tags</p>
           </div>
           <button
@@ -163,7 +163,7 @@ export default function TagsPage({ tags: initialTags }: TagsPageProps) {
         {/* Add New Form */}
         {isAdding && (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">New Tag</h3>
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">New Tag</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -271,7 +271,7 @@ export default function TagsPage({ tags: initialTags }: TagsPageProps) {
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center space-x-2">
                       <TagIcon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                      <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                      <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100">
                         {tag.name}
                       </h3>
                     </div>

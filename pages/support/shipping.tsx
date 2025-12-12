@@ -172,7 +172,7 @@ const ShippingPage: NextPage = () => {
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Truck className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
                 Shipping Information
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
@@ -191,7 +191,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Choose Your Shipping Speed
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -222,7 +222,7 @@ const ShippingPage: NextPage = () => {
                       <option.icon className="w-8 h-8 text-white dark:text-gray-100" />
                     </div>
                     
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                    <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                       {option.name}
                     </h3>
                     
@@ -256,7 +256,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Delivery Times by Province
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -299,7 +299,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 International Shipping
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -312,7 +312,7 @@ const ShippingPage: NextPage = () => {
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-center mb-4">
                     <Globe className="w-6 h-6 text-[#5B2EFF] mr-3" />
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-100">
                       {country.name}
                     </h3>
                   </div>
@@ -354,7 +354,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Order Processing & Fulfillment
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -367,7 +367,7 @@ const ShippingPage: NextPage = () => {
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <CreditCard className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+                <h3 className="font-heading text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Order Placed
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -379,7 +379,7 @@ const ShippingPage: NextPage = () => {
                 <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Package className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+                <h3 className="font-heading text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Processing
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -391,7 +391,7 @@ const ShippingPage: NextPage = () => {
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Truck className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+                <h3 className="font-heading text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Shipped
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -403,7 +403,7 @@ const ShippingPage: NextPage = () => {
                 <div className="w-16 h-16 bg-[#FFB800] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+                <h3 className="font-heading text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
                   Delivered
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -418,7 +418,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Shipping FAQ
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -429,7 +429,7 @@ const ShippingPage: NextPage = () => {
             <div className="max-w-3xl mx-auto space-y-6">
               {faqItems.map((item, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                  <h3 className="font-heading text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {item.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -445,7 +445,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 Ready to Order Purrify?
               </h2>
               <p className="text-xl mb-8 opacity-90">
@@ -472,7 +472,7 @@ const ShippingPage: NextPage = () => {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 Need More Information?
               </h2>
             </div>
@@ -480,7 +480,7 @@ const ShippingPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Contact Support
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -491,7 +491,7 @@ const ShippingPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Compare Products
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -502,7 +502,7 @@ const ShippingPage: NextPage = () => {
               
               <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Reviews
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

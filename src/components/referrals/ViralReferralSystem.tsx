@@ -247,7 +247,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     <div className="max-w-4xl mx-auto p-6">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+        <h1 className="font-heading text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
           Earn Money Helping Cat Parents
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
@@ -304,7 +304,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
       {nextTier && (
         <Card className="mb-8">
           <CardHeader>
-            <h3 className="text-xl font-bold flex items-center">
+            <h3 className="font-heading text-xl font-bold flex items-center">
               <Trophy className="w-5 h-5 mr-2" />
               Progress to {nextTier.badge} {nextTier.name}
             </h3>
@@ -346,7 +346,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             {/* Referral Link */}
             <Card>
               <CardHeader>
-                <h3 className="text-xl font-bold flex items-center">
+                <h3 className="font-heading text-xl font-bold flex items-center">
                   <Share2 className="w-5 h-5 mr-2" />
                   Your Referral Link
                 </h3>
@@ -378,7 +378,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             {/* Social Sharing */}
             <Card>
               <CardHeader>
-                <h3 className="text-xl font-bold">Share on Social Media</h3>
+                <h3 className="font-heading text-xl font-bold">Share on Social Media</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Pre-written posts for maximum engagement</p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -433,7 +433,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <TabsContent value="leaderboard">
           <Card>
             <CardHeader>
-              <h3 className="text-xl font-bold flex items-center">
+              <h3 className="font-heading text-xl font-bold flex items-center">
                 <Trophy className="w-5 h-5 mr-2" />
                 Top Referrers This Month
               </h3>
@@ -476,7 +476,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <TabsContent value="history">
           <Card>
             <CardHeader>
-              <h3 className="text-xl font-bold">Recent Referrals</h3>
+              <h3 className="font-heading text-xl font-bold">Recent Referrals</h3>
             </CardHeader>
             <CardContent>
               {stats.recentReferrals.length === 0 ? (
@@ -520,7 +520,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                         {tier.icon}
                       </div>
                       <div>
-                        <h3 className="font-bold">{tier.badge} {tier.name}</h3>
+                        <h3 className="font-heading font-bold">{tier.badge} {tier.name}</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-300">{tier.commission}% commission</p>
                       </div>
                     </div>

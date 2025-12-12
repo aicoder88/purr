@@ -51,7 +51,7 @@ export default function UsingDeodorizersWithKittensLearn() {
 
       <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">{pageTitle}</h1>
+          <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">{pageTitle}</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             Expert-informed guidance on using fragrance-free deodorizers around kittens — what to consider,
             what to avoid, and how to protect your young cat's comfort.
@@ -71,7 +71,7 @@ export default function UsingDeodorizersWithKittensLearn() {
           </div>
 
           <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 dark:border-green-400 p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Answer</h2>
+            <h2 className="font-heading text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Answer</h2>
             <p className="text-green-800 dark:text-green-200 mb-4">
               <strong>Many households introduce fragrance-free, activated carbon deodorizers once kittens reliably use the litter box (typically ~8+ weeks).</strong>
               Avoid products with synthetic fragrances or strong chemicals. Introduce gradually and monitor.
@@ -92,7 +92,7 @@ export default function UsingDeodorizersWithKittensLearn() {
             />
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">What to Consider</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">What to Consider</h2>
           <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
             <li>Start with small amounts; increase gradually if well-tolerated</li>
             <li>Choose fragrance-free, low-dust options</li>
@@ -111,7 +111,7 @@ export default function UsingDeodorizersWithKittensLearn() {
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border border-green-200 dark:border-green-700 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Odor Control Around Kittens</h2>
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Odor Control Around Kittens</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Purrify's fragrance-free, activated carbon formula is the same type of carbon used in many water and air filters.
               Introduce gradually and monitor for comfort.

@@ -49,7 +49,7 @@ export function LocalShippingUrgency({
       <div className="max-w-6xl mx-auto">
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8">
           <div className="text-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
               🚚 Fast Shipping to {cityName}
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-200">
@@ -62,7 +62,7 @@ export function LocalShippingUrgency({
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border-2 border-blue-200 dark:border-blue-700">
               <div className="flex items-center mb-3">
                 <Package className="w-6 h-6 text-blue-600 dark:text-blue-400 mr-2" />
-                <h3 className="font-bold text-gray-900 dark:text-gray-50">Arrives Fast</h3>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-50">Arrives Fast</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-200">
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{deliveryDays}</span> business days to {cityName}
@@ -73,7 +73,7 @@ export function LocalShippingUrgency({
             <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 border-2 border-orange-200 dark:border-orange-700">
               <div className="flex items-center mb-3">
                 <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400 mr-2" />
-                <h3 className="font-bold text-gray-900 dark:text-gray-50">Order Today</h3>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-50">Order Today</h3>
               </div>
               {currentTime && hoursUntilCutoff > 0 ? (
                 <p className="text-gray-700 dark:text-gray-200">
@@ -90,7 +90,7 @@ export function LocalShippingUrgency({
             <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border-2 border-green-200 dark:border-green-700">
               <div className="flex items-center mb-3">
                 <Truck className="w-6 h-6 text-green-600 dark:text-green-400 mr-2" />
-                <h3 className="font-bold text-gray-900 dark:text-gray-50">Free Shipping</h3>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-50">Free Shipping</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-200">
                 On all orders over <span className="font-bold text-green-600 dark:text-green-400">$35</span> to {provinceName}

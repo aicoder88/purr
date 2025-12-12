@@ -25,7 +25,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
     <section className={className}>
       <Container>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             {title}
           </h2>
           {subtitle && (
@@ -53,7 +53,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-[#FF3131]">{item.year}</div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
                           {item.title}
                         </h3>
                       </div>

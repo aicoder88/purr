@@ -30,7 +30,7 @@ export function Features() {
             The Purrify Difference
           </div> */}
           <SectionHeader text="The Purrify Difference" />
-          <h2 className="text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
+          <h2 className="font-heading text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             Why do Cats and Pet Parents Love Purrify?
           </h2>
           <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">

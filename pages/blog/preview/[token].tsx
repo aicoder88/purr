@@ -32,7 +32,7 @@ export default function PreviewPage({ post, isPreview }: PreviewPageProps) {
           <div className="max-w-3xl mx-auto">
             {/* Header */}
             <header className="mb-8">
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+              <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                 {post.title}
               </h1>
               <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">

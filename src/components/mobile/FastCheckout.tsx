@@ -241,7 +241,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
           <div className="space-y-4">
             <div className="flex items-center space-x-2 mb-4">
               <User className="w-5 h-5 text-[#5B2EFF]" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Contact Information
               </h3>
             </div>
@@ -324,7 +324,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
           <div className="space-y-4">
             <div className="flex items-center space-x-2 mb-4">
               <MapPin className="w-5 h-5 text-[#5B2EFF]" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Shipping Address
               </h3>
             </div>
@@ -433,7 +433,7 @@ export const FastCheckout: React.FC<FastCheckoutProps> = ({
           <div className="space-y-4">
             <div className="flex items-center space-x-2 mb-4">
               <CheckCircle className="w-5 h-5 text-[#5B2EFF]" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Review & Complete
               </h3>
             </div>

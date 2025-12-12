@@ -41,7 +41,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
           <item.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
         </div>
       )}
-      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
         {item.title}
       </h3>
       <p className="text-gray-600 dark:text-gray-300">
@@ -54,7 +54,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
     <section className={className}>
       <Container>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             {title}
           </h2>
           {subtitle && (

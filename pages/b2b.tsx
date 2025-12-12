@@ -222,7 +222,7 @@ export default function B2B() {
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               {locale === 'fr'
                 ? 'Partenariat Détaillant Purrify'
                 : 'Purrify Retail Partnership'
@@ -275,7 +275,7 @@ export default function B2B() {
 
         {/* Partnership Benefits */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
             {locale === 'fr'
               ? 'Pourquoi Choisir Purrify Comme Partenaire'
               : 'Why Choose Purrify as Your Partner'
@@ -287,7 +287,7 @@ export default function B2B() {
                 <div className="flex justify-center mb-4">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -300,7 +300,7 @@ export default function B2B() {
 
         {/* Wholesale Pricing */}
         <section id="wholesale-pricing" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
             {locale === 'fr' ? 'Programme de Prix en Gros' : 'Wholesale Pricing Program'}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -318,7 +318,7 @@ export default function B2B() {
                   </div>
                 )}
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {tier.name}
                   </h3>
                   <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
@@ -356,7 +356,7 @@ export default function B2B() {
 
         {/* Success Stories */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
             {locale === 'fr' ? 'Témoignages de Partenaires' : 'Partner Success Stories'}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -387,13 +387,13 @@ export default function B2B() {
 
         {/* Product Information */}
         <section className="mb-16 bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             {locale === 'fr' ? 'Gamme de Produits Purrify' : 'Purrify Product Line'}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-white dark:bg-gray-700 rounded-lg p-6 mb-4">
-                <h3 className="text-lg font-semibold mb-2">
+                <h3 className="font-heading text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Format Essai 12g' : 'Trial Size 12g'}
                 </h3>
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{trialPrice}</div>
@@ -407,7 +407,7 @@ export default function B2B() {
             </div>
             <div className="text-center">
               <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-4">
-                <h3 className="text-lg font-semibold mb-2">
+                <h3 className="font-heading text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Format Régulier 50g' : 'Regular Size 50g'}
                 </h3>
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{standardPrice}</div>
@@ -421,7 +421,7 @@ export default function B2B() {
             </div>
             <div className="text-center">
               <div className="bg-white dark:bg-gray-700 rounded-lg p-6 mb-4">
-                <h3 className="text-lg font-semibold mb-2">
+                <h3 className="font-heading text-lg font-semibold mb-2">
                   {locale === 'fr' ? 'Grand Format 120g' : 'Large Size 120g'}
                 </h3>
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{familyPrice}</div>
@@ -439,7 +439,7 @@ export default function B2B() {
         {/* Partnership Application Form */}
         <section id="partnership-form" className="mb-16">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
               {locale === 'fr' ? 'Demande de Partenariat' : 'Partnership Application'}
             </h2>
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-sm">
@@ -563,7 +563,7 @@ export default function B2B() {
               ) : (
                 <div className="text-center py-12">
                   <CheckCircle className="h-16 w-16 text-green-500 dark:text-green-400 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
                     {locale === 'fr' ? 'Demande Reçue!' : 'Application Received!'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
@@ -601,7 +601,7 @@ export default function B2B() {
 
         {/* Contact Information */}
         <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
             {locale === 'fr' ? 'Questions? Parlons-en!' : 'Questions? Let\'s Talk!'}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">

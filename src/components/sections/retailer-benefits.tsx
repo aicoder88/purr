@@ -71,7 +71,7 @@ export function RetailerBenefits() {
     <section className="py-16 bg-gray-50 dark:bg-gray-800">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             {t.retailers?.benefits?.title || 'Why Retailers Choose Purrify'}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -89,7 +89,7 @@ export function RetailerBenefits() {
                 {benefit.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                 {benefit.title}
               </h3>
 
@@ -112,7 +112,7 @@ export function RetailerBenefits() {
         {/* Success Stories Preview */}
         <div className="mt-16 bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-2xl p-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
               {t.retailers?.benefits?.success?.title || 'Real Success Stories'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

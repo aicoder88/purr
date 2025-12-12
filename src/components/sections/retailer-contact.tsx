@@ -161,7 +161,7 @@ export function RetailerContact() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-50 mb-6">
+            <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-50 mb-6">
               🎉 Application Received!
             </h2>
             <p className="text-2xl text-gray-700 dark:text-gray-200 mb-8">
@@ -170,7 +170,7 @@ export function RetailerContact() {
             </p>
 
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-              <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 Your Next Steps</h3>
+              <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 Your Next Steps</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">1</div>
@@ -233,7 +233,7 @@ export function RetailerContact() {
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-bold text-sm mb-6">
               🤝 Join 21 Established Partners
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
+            <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
               Start Your
               <span className="block bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
                 Partnership Today
@@ -270,7 +270,7 @@ export function RetailerContact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
                   🚀 Partnership Application
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -456,7 +456,7 @@ export function RetailerContact() {
             <div className="space-y-8">
               {/* Success Stories */}
               <div className="bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/10 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/5 rounded-3xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-                <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-6 text-center">
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6 text-center">
                   💰 Partner Success Stories
                 </h3>
 
@@ -498,7 +498,7 @@ export function RetailerContact() {
               {/* Contact Info */}
               <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
+                  <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
                     ⚡ Need Immediate Help?
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">

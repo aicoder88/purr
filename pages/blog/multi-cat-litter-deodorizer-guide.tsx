@@ -123,7 +123,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 {t.blog.multiCat.category}
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 {t.blog.multiCat.title}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -153,7 +153,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
             {/* Quick Stats Box */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-12">
-              <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🐱 {t.blog.multiCat.stats.title}</h2>
+              <h2 className="font-heading text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🐱 {t.blog.multiCat.stats.title}</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-blue-800 dark:text-blue-200">
                 <div className="text-center">
                   <div className="text-2xl font-bold">3.2x</div>
@@ -176,7 +176,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Multi-Cat Households Face Unique Odor Challenges</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Multi-Cat Households Face Unique Odor Challenges</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If you're searching for the <strong>best litter deodorizer for multi-cat</strong> households,
@@ -185,7 +185,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </p>
 
               <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-700 p-6 mb-8">
-                <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🔬 The Science Behind Multi-Cat Odors</h3>
+                <h3 className="font-heading text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">🔬 The Science Behind Multi-Cat Odors</h3>
                 <ul className="text-yellow-800 dark:text-yellow-200 space-y-2">
                   <li>• <strong>Ammonia Concentration:</strong> 2+ cats create 4x stronger ammonia levels</li>
                   <li>• <strong>Bacterial Growth:</strong> Warm, moist environment accelerates decomposition</li>
@@ -201,7 +201,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 strategies designed for these intensified conditions.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The #1 Solution: Activated Carbon Technology</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The #1 Solution: Activated Carbon Technology</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 After testing dozens of products in real multi-cat environments, activated carbon
@@ -210,7 +210,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </p>
 
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">⚡ Why Activated Carbon Wins</h3>
+                <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">⚡ Why Activated Carbon Wins</h3>
                 <div className="grid md:grid-cols-2 gap-6 text-green-800 dark:text-green-200">
                   <div>
                     <h4 className="font-bold mb-2">🎯 Superior Absorption</h4>
@@ -231,7 +231,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Multi-Cat Dosage Calculator</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Multi-Cat Dosage Calculator</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Getting the dosage right is critical for multi-cat success. Too little won't control
@@ -239,7 +239,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </p>
 
               <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">📊 Exact Dosage Formula</h3>
+                <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">📊 Exact Dosage Formula</h3>
                 <div className="space-y-4">
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
                     <div className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-2">Base Formula:</div>
@@ -277,7 +277,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Multi-Cat Litter Box Strategy</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Multi-Cat Litter Box Strategy</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 The <strong>activated carbon multi-cat litter</strong> approach requires strategic box
@@ -287,7 +287,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               <div className="space-y-8 mb-12">
                 {/* Box Placement */}
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">📍 Strategic Box Placement</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">📍 Strategic Box Placement</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-bold text-green-700 dark:text-green-300 mb-3">✅ High-Traffic Zones</h4>
@@ -314,7 +314,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
                 {/* Maintenance Schedule */}
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">⏰ Multi-Cat Maintenance Schedule</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">⏰ Multi-Cat Maintenance Schedule</h3>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
                       <h4 className="font-bold text-red-900 dark:text-red-100 mb-2">🌅 Morning (5 minutes)</h4>
@@ -345,7 +345,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
                 {/* Common Mistakes */}
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">❌ Avoid These Multi-Cat Mistakes</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">❌ Avoid These Multi-Cat Mistakes</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <span className="text-red-500 dark:text-red-400 text-xl">🚫</span>
@@ -379,7 +379,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Comparison: Multi-Cat Deodorizer Options</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Comparison: Multi-Cat Deodorizer Options</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Not all <strong>cat litter additive multiple cats</strong> products are created equal.
@@ -457,7 +457,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </table>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Advanced Multi-Cat Strategies</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Advanced Multi-Cat Strategies</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Once you've mastered basic <strong>litter deodorizer for multiple cats</strong> application,
@@ -466,7 +466,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
               <div className="space-y-6 mb-8">
                 <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-purple-900 dark:text-purple-100 mb-4">🎯 Zone-Based Management</h3>
+                  <h3 className="font-heading text-xl font-bold text-purple-900 dark:text-purple-100 mb-4">🎯 Zone-Based Management</h3>
                   <div className="space-y-3 text-purple-800 dark:text-purple-200">
                     <div>
                       <strong>High-Traffic Zone:</strong> 2x daily deodorizer + premium activated carbon
@@ -484,7 +484,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-teal-900 dark:text-teal-100 mb-4">📈 Seasonal Adjustments</h3>
+                  <h3 className="font-heading text-xl font-bold text-teal-900 dark:text-teal-100 mb-4">📈 Seasonal Adjustments</h3>
                   <div className="grid md:grid-cols-2 gap-4 text-teal-800 dark:text-teal-200">
                     <div>
                       <strong className="block mb-2">🌞 Summer (Higher Humidity)</strong>
@@ -506,7 +506,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-orange-900 dark:text-orange-100 mb-4">🏠 Whole-Home Integration</h3>
+                  <h3 className="font-heading text-xl font-bold text-orange-900 dark:text-orange-100 mb-4">🏠 Whole-Home Integration</h3>
                   <div className="space-y-3 text-orange-800 dark:text-orange-200">
                     <div className="flex items-start space-x-3">
                       <span>💨</span>
@@ -544,7 +544,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Multi-Cat Odor Problems</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Troubleshooting Multi-Cat Odor Problems</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Even with the best <strong>multi-cat litter deodorizer</strong> products, challenges
@@ -553,7 +553,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-red-500 dark:border-red-700 bg-red-50 dark:bg-red-900/20 p-6">
-                  <h3 className="text-lg font-bold text-red-900 dark:text-red-100 mb-3">🔥 Problem: Overwhelming Ammonia Smell</h3>
+                  <h3 className="font-heading text-lg font-bold text-red-900 dark:text-red-100 mb-3">🔥 Problem: Overwhelming Ammonia Smell</h3>
                   <div className="text-red-800 dark:text-red-200 space-y-2">
                     <div><strong>Cause:</strong> Insufficient deodorizer or overdue box cleaning</div>
                     <div><strong>Solution:</strong> Double deodorizer amount, increase cleaning frequency to twice daily</div>
@@ -562,7 +562,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="border-l-4 border-yellow-500 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20 p-6">
-                  <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">⚠️ Problem: One Box Smells Worse Than Others</h3>
+                  <h3 className="font-heading text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-3">⚠️ Problem: One Box Smells Worse Than Others</h3>
                   <div className="text-yellow-800 dark:text-yellow-200 space-y-2">
                     <div><strong>Cause:</strong> Territorial preference or medical issue with one cat</div>
                     <div><strong>Solution:</strong> Triple deodorizer in problem box, check for underlying health issues</div>
@@ -571,7 +571,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="border-l-4 border-blue-500 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-6">
-                  <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-3">💙 Problem: Cats Avoiding Certain Boxes</h3>
+                  <h3 className="font-heading text-lg font-bold text-blue-900 dark:text-blue-100 mb-3">💙 Problem: Cats Avoiding Certain Boxes</h3>
                   <div className="text-blue-800 dark:text-blue-200 space-y-2">
                     <div><strong>Cause:</strong> Over-deodorizing or using scented products</div>
                     <div><strong>Solution:</strong> Reduce deodorizer by half, ensure fragrance-free formula</div>
@@ -581,7 +581,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </div>
 
               <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/5 border border-[#FF3131]/20 dark:border-[#FF6B6B]/30 rounded-lg p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Is the #1 Choice for Multi-Cat Households</h3>
+                <h3 className="font-heading text-2xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Is the #1 Choice for Multi-Cat Households</h3>
                 <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-200">
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
@@ -619,11 +619,11 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
 
               <div className="space-y-6 mb-8">
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">How much litter deodorizer do I need for multiple cats?</h3>
+                  <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">How much litter deodorizer do I need for multiple cats?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     Use 1 teaspoon per cat per litter box. For 3 cats with 4 boxes, you'd use approximately
                     4 teaspoons daily. A 120g container provides about 4-5 weeks of coverage at this rate.
@@ -631,7 +631,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">What's the best litter deodorizer for 4+ cats?</h3>
+                  <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">What's the best litter deodorizer for 4+ cats?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     Activated carbon is the only deodorizer type that maintains effectiveness in large multi-cat
                     households. <Link href="/blog/activated-carbon-litter-additive-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">
@@ -641,7 +641,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">How often should I add deodorizer with multiple cats?</h3>
+                  <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">How often should I add deodorizer with multiple cats?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     High-traffic boxes need fresh deodorizer every 2-3 days, while less-used boxes can go
                     3-4 days. Always add fresh deodorizer after deep cleaning or when you notice any odor buildup.
@@ -649,7 +649,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
 
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">Can I use different deodorizers in different boxes?</h3>
+                  <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">Can I use different deodorizers in different boxes?</h3>
                   <p className="text-gray-700 dark:text-gray-200">
                     It's best to stick with one type of deodorizer throughout your home. Mixing different
                     products can reduce effectiveness and create unpredictable chemical reactions.
@@ -658,7 +658,7 @@ export default function MultiCatLitterDeodorizerGuide() {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: Mastering Multi-Cat Odor Control</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: Mastering Multi-Cat Odor Control</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Managing odors in multi-cat households doesn't have to be overwhelming. The key is using
@@ -673,7 +673,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               </p>
 
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-3">🎯 Your Multi-Cat Success Plan</h3>
+                <h3 className="font-heading text-lg font-bold text-green-900 dark:text-green-100 mb-3">🎯 Your Multi-Cat Success Plan</h3>
                 <ol className="text-green-800 dark:text-green-200 space-y-2">
                   <li><strong>1. Calculate your dosage:</strong> 1 teaspoon per cat per box</li>
                   <li><strong>2. Choose the right size:</strong> <Link href="/products/standard" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">120g for 2+ cats</Link>, perfect for multi-cat households</li>
@@ -693,7 +693,7 @@ export default function MultiCatLitterDeodorizerGuide() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Related Guides</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Related Guides</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <Link href="/blog/best-litter-odor-remover-small-apartments" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow">
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Small Apartment Solutions</h4>

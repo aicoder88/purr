@@ -110,7 +110,7 @@ export default function SupportPage() {
                 <span className="text-purple-700 dark:text-purple-300 font-semibold">We're Here to Help</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
+              <h1 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
                 Customer Support 🐱
               </h1>
               
@@ -136,7 +136,7 @@ export default function SupportPage() {
                         <option.icon className="w-10 h-10 text-white dark:text-gray-100" />
                       </div>
 
-                      <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">
+                      <h3 className="font-heading text-2xl font-black mb-4 text-gray-900 dark:text-white">
                         {option.title}
                       </h3>
 
@@ -159,7 +159,7 @@ export default function SupportPage() {
         <section className="py-20 bg-gradient-to-r from-purple-100/50 via-pink-100/50 to-orange-100/50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
                 Get in Touch <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Instantly</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -171,7 +171,7 @@ export default function SupportPage() {
               <a href="mailto:support@purrify.ca" className="group">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
                   <Mail className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Email</h3>
+                  <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">Email</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-2">support@purrify.ca</p>
                   <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                     <Clock className="w-4 h-4 mr-1" />
@@ -183,7 +183,7 @@ export default function SupportPage() {
               <a href={CONTACT_INFO.phoneHref} className="group">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
                   <Phone className="w-12 h-12 text-pink-600 dark:text-pink-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Phone</h3>
+                  <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">Phone</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-2">{CONTACT_INFO.phone}</p>
                   <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                     <Clock className="w-4 h-4 mr-1" />
@@ -195,7 +195,7 @@ export default function SupportPage() {
               <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
                   <MessageCircle className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">WhatsApp</h3>
+                  <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">WhatsApp</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-2">Chat with us</p>
                   <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                     <Clock className="w-4 h-4 mr-1" />
@@ -211,7 +211,7 @@ export default function SupportPage() {
         <section className="py-20">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
                 Popular <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Help Topics</span>
               </h2>
             </div>
@@ -239,7 +239,7 @@ export default function SupportPage() {
         <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl font-black mb-6">
                 Still Have Questions?
               </h2>
               <p className="text-xl mb-8 opacity-90">

@@ -30,7 +30,7 @@ export function RetailerHero() {
 
             {/* Left Column - Main Message */}
             <div className="text-center lg:text-left">
-              <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6">
+              <h1 className="font-heading text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6">
                 <span className="block text-gray-900 dark:text-gray-50">
                   Boost Your
                 </span>
@@ -100,7 +100,7 @@ export function RetailerHero() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-black text-xl text-gray-900 dark:text-gray-50">High-Margin Product</h3>
+                    <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">High-Margin Product</h3>
                     <p className="text-[#5B2EFF] dark:text-[#3694FF] font-bold">Up to 55% profit margins</p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export function RetailerHero() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-black text-xl text-gray-900 dark:text-gray-50">Customer Loyalty</h3>
+                    <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">Customer Loyalty</h3>
                     <p className="text-[#FF3131] dark:text-[#FF5050] font-bold">4.8/5 star rating</p>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export function RetailerHero() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-black text-xl text-gray-900 dark:text-gray-50">Complete Support</h3>
+                    <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">Complete Support</h3>
                     <p className="text-[#10B981] dark:text-[#34D399] font-bold">Everything included</p>
                   </div>
                 </div>

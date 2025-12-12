@@ -43,7 +43,7 @@ export default function CategoryArchive({ category, posts, seo }: CategoryArchiv
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
               Category
             </div>
-            <h1 className="text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
+            <h1 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
               {category.name}
             </h1>
             {category.description && (
@@ -86,7 +86,7 @@ export default function CategoryArchive({ category, posts, seo }: CategoryArchiv
                     </div>
                   </div>
                   <div className="p-6">
-                    <h2 className="font-bold text-xl mb-3 text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80 transition-colors">
+                    <h2 className="font-heading font-bold text-xl mb-3 text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80 transition-colors">
                       {post.title}
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">

@@ -157,7 +157,7 @@ export default function CatLitterSmellWorseSummer() {
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full text-[#FF3131] dark:text-[#FF6B6B] font-medium text-sm mb-4">
                 Seasonal Odor Control
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Why Cat Litter Smells Worse in Summer (And 4 Solutions That Actually Work)
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -212,7 +212,7 @@ export default function CatLitterSmellWorseSummer() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Science: Why Heat Makes Ammonia 10x Stronger</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Science: Why Heat Makes Ammonia 10x Stronger</h2>
 
               <div className="mb-8">
                 <Image
@@ -232,7 +232,7 @@ export default function CatLitterSmellWorseSummer() {
                 Here's what's actually happening in your litter box when temperatures rise:
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Heat Accelerates Ammonia Evaporation</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Heat Accelerates Ammonia Evaporation</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Cat urine contains <strong>urea</strong>, which bacteria break down into <strong>ammonia</strong>. This is the molecule
@@ -255,7 +255,7 @@ export default function CatLitterSmellWorseSummer() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Bacterial Activity Increases in Heat</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Bacterial Activity Increases in Heat</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 The bacteria that convert urea to ammonia are <strong>more active in warm conditions</strong>. They reproduce faster,
@@ -267,7 +267,7 @@ export default function CatLitterSmellWorseSummer() {
                 churning out ammonia at maximum speed.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Hot Air Holds and Distributes More Odor Molecules</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Hot Air Holds and Distributes More Odor Molecules</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Warm air is <strong>less dense</strong> than cold air, meaning odor molecules spread through your home faster.
@@ -285,13 +285,13 @@ export default function CatLitterSmellWorseSummer() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">4 Proven Solutions for Summer Cat Litter Smell</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">4 Proven Solutions for Summer Cat Litter Smell</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Now that you understand <em>why</em> summer makes odors worse, here's <em>what to do about it</em>:
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #1: Use Activated Carbon (Non-Negotiable in Summer)</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #1: Use Activated Carbon (Non-Negotiable in Summer)</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 If there's <strong>one solution</strong> that works in hot weather, it's activated carbon. Here's why:
@@ -328,7 +328,7 @@ export default function CatLitterSmellWorseSummer() {
                 </Link>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #2: Increase Scooping Frequency</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #2: Increase Scooping Frequency</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 What worked in winter (once-daily scooping) <strong>won't cut it in summer</strong>. Heat accelerates ammonia production,
@@ -348,7 +348,7 @@ export default function CatLitterSmellWorseSummer() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #3: Strategic Ventilation (But Don't Sacrifice AC)</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #3: Strategic Ventilation (But Don't Sacrifice AC)</h3>
 
               <div className="mb-8">
                 <Image
@@ -380,7 +380,7 @@ export default function CatLitterSmellWorseSummer() {
                 living areas.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #4: Keep Litter Boxes Out of Direct Heat</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Solution #4: Keep Litter Boxes Out of Direct Heat</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Where your litter box sits matters more in summer than any other season.
@@ -411,7 +411,7 @@ export default function CatLitterSmellWorseSummer() {
                 anything else.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Doesn't Work in Summer (Don't Waste Your Money)</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What Doesn't Work in Summer (Don't Waste Your Money)</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Before you rush to buy "solutions," here's what <strong>won't help</strong> in hot weather:
@@ -436,7 +436,7 @@ export default function CatLitterSmellWorseSummer() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Cat Owners on Summer Odor Control</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Real Cat Owners on Summer Odor Control</h2>
 
               <div className="mb-8">
                 <Image
@@ -469,7 +469,7 @@ export default function CatLitterSmellWorseSummer() {
                 <p className="text-gray-600 dark:text-gray-300 text-sm">— Kevin P., Phoenix, AZ</p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Your Summer Odor Control Action Plan</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Your Summer Odor Control Action Plan</h2>
 
               <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-8">
                 <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-4">🌞 Before the Heat Wave Hits:</h4>
@@ -496,7 +496,7 @@ export default function CatLitterSmellWorseSummer() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: Summer Doesn't Have to Mean Suffering</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion: Summer Doesn't Have to Mean Suffering</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 You're not imagining it—<strong>cat litter smell genuinely gets worse in summer</strong>. Heat accelerates ammonia

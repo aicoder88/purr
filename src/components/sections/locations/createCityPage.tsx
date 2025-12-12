@@ -264,7 +264,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               Best Cat Litter Odor Eliminator in {profile.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
@@ -272,7 +272,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
             </p>
 
             <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Why {profile.name} Cat Parents Choose Purrify
               </h2>
               <ul className="text-left space-y-2 text-gray-700 dark:text-gray-200">
@@ -332,12 +332,12 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
           <div className="max-w-5xl mx-auto">
             <div className="grid gap-10 lg:grid-cols-2 items-start">
               <div className="order-2 lg:order-1">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
                   Where to Find Purrify in {profile.name}
                 </h2>
                 <div className="space-y-6">
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
                       Ask Your Local Pet Store
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-2">
@@ -348,7 +348,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                     </p>
                   </div>
                   <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
-                    <h3 className="text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
                       Order Direct With Fast Shipping
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
@@ -365,7 +365,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
               <div className="order-1 lg:order-2">
                 <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-4">
+                  <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-gray-50 mb-4">
                     Fresh Air Playbook for {profile.name}
                   </h3>
                   <ol className="space-y-3 text-left text-gray-700 dark:text-gray-200">
@@ -390,7 +390,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               What {profile.name} Cat Owners Say
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -455,7 +455,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
             {/* Video Testimonial CTA */}
             <div className="mt-12 text-center">
               <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 rounded-xl p-8 border-2 border-dashed border-orange-300 dark:border-orange-700">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-2xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   Share Your {profile.name} Success Story
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
@@ -483,7 +483,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         {/* Related City Success Stories */}
         <section className="py-16 px-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               Cat Owners Across {profile.province} Love Purrify
             </h2>
             <p className="text-gray-700 dark:text-gray-200 mb-8">
@@ -513,12 +513,12 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {profile.name} FAQ
             </h2>
             <div className="space-y-6">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Do you deliver to {profile.name}, {profile.province}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -527,7 +527,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   How does Purrify support homes dealing with {painPoint.toLowerCase()}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -536,7 +536,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Which litter brands work best with Purrify in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -545,7 +545,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   How does Purrify handle {seasonalTip.toLowerCase()} in {profile.province}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -554,7 +554,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Can I find Purrify at pet stores in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -563,7 +563,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
                   Is Purrify safe for multi-cat households in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">

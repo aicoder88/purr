@@ -164,7 +164,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         {/* Personal Information */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Personal Information</h3>
+            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Personal Information</h3>
           </div>
           <div className="p-6 space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -253,7 +253,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         {/* Shipping Address */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Shipping Address</h3>
+            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Shipping Address</h3>
           </div>
           <div className="p-6 space-y-4">
             <div>
@@ -373,7 +373,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         {/* Security Settings */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Security Settings</h3>
+            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Security Settings</h3>
           </div>
           <div className="p-6">
             {!showPasswordForm ? (
@@ -458,7 +458,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         {/* Notification Preferences */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Notification Preferences</h3>
+            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Notification Preferences</h3>
           </div>
           <div className="p-6 space-y-4">
             <div className="flex items-center justify-between">
@@ -531,7 +531,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       {/* Account Summary */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50">Account Summary</h3>
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Account Summary</h3>
         </div>
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

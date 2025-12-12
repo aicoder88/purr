@@ -89,7 +89,7 @@ export function SubscriptionOffer() {
               <span className="font-bold text-purple-700 dark:text-purple-300">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
             </div>
             
-            <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
+            <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
               {t.subscriptionOfferExtended?.headline || 'Subscribe & Save'}
             </h2>
             
@@ -128,7 +128,7 @@ export function SubscriptionOffer() {
                   <div className="pt-14 px-8 pb-8 space-y-6 relative">
                     {/* Title & Description */}
                     <div className="space-y-3 text-center">
-                      <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white leading-tight">
+                      <h3 className="font-heading text-2xl md:text-3xl font-black text-gray-900 dark:text-white leading-tight">
                         {plan.name}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">

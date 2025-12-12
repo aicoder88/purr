@@ -69,7 +69,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
               className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
             />
           </div>
-          <h2 className="text-3xl font-bold text-brand-dark dark:text-gray-50 mb-4 text-center">
+          <h2 className="font-heading text-3xl font-bold text-brand-dark dark:text-gray-50 mb-4 text-center">
             {title}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-4xl mx-auto">

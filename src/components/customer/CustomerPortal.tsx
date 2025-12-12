@@ -177,7 +177,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">Unable to load customer data</h2>
+          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">Unable to load customer data</h2>
           <p className="text-gray-600 dark:text-gray-300">Please try refreshing the page or contact support.</p>
         </div>
       </div>
@@ -191,7 +191,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Customer Portal</h1>
+              <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50">Customer Portal</h1>
             </div>
 
             <div className="flex items-center space-x-4">

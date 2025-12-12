@@ -240,7 +240,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       {/* Header */}
       <div className={`${GRADIENTS.background.purpleToRed} p-6 text-white text-center`}>
         <Mail className="w-12 h-12 mx-auto mb-4 opacity-90" />
-        <h2 className="text-2xl md:text-3xl font-bold mb-2">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2">
           {t.newsletter?.joinFamily?.title || 'Join the Purrify Family'}
         </h2>
         <p className="text-lg opacity-90">

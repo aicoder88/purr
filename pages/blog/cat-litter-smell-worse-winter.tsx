@@ -157,7 +157,7 @@ export default function CatLitterSmellWorseWinter() {
               <div className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-700 dark:text-blue-400 font-medium text-sm mb-4">
                 Seasonal Odor Control
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Why Cat Litter Smells Worse in Winter (And 5 Solutions That Don't Require Opening Windows)
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -188,7 +188,7 @@ export default function CatLitterSmellWorseWinter() {
 
             {/* Quick Summary Box */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mb-12">
-              <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4">Quick Summary</h2>
+              <h2 className="font-heading text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4">Quick Summary</h2>
               <ul className="space-y-3 text-blue-800 dark:text-blue-300">
                 <li className="flex items-start">
                   <span className="text-blue-600 dark:text-blue-400 mr-2">❄️</span>
@@ -207,7 +207,7 @@ export default function CatLitterSmellWorseWinter() {
 
             {/* Main Content */}
             <div className="prose prose-lg max-w-none dark:prose-invert">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Winter Litter Box Problem Nobody Talks About</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Winter Litter Box Problem Nobody Talks About</h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
                 You've probably noticed it: the exact same litter box that was manageable in summer suddenly becomes <em>overwhelming</em> in winter. You walk into your home and hit a wall of ammonia smell. Your guests notice the second they walk through the door. Even your cat seems hesitant to use the box.
@@ -224,7 +224,7 @@ export default function CatLitterSmellWorseWinter() {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Why Winter Is Different: The Science Behind Trapped Odors</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Why Winter Is Different: The Science Behind Trapped Odors</h2>
 
               <div className="mb-12">
                 <Image
@@ -240,7 +240,7 @@ export default function CatLitterSmellWorseWinter() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Reduced Air Exchange Rate</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Reduced Air Exchange Rate</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 Modern energy-efficient homes are designed to retain heat—which also means retaining odors. Here's what happens:
               </p>
@@ -268,7 +268,7 @@ export default function CatLitterSmellWorseWinter() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Dry Indoor Air</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Dry Indoor Air</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 Winter heating systems create extremely dry indoor air (often 15-25% humidity vs. summer's 40-60%). This causes:
               </p>
@@ -288,12 +288,12 @@ export default function CatLitterSmellWorseWinter() {
                 </li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Heating System Circulation</h3>
+              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Heating System Circulation</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 Your furnace or heating system actively circulates air throughout your home. While this keeps you warm, it also distributes litter box odors to every room—bedrooms, kitchen, living room. What was once localized to the bathroom or laundry room now permeates your entire home.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">5 Proven Solutions for Winter Cat Litter Odor</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">5 Proven Solutions for Winter Cat Litter Odor</h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed">
                 The good news? You don't need to choose between fresh air and staying warm. Here are 5 science-backed solutions that eliminate winter odors without opening a single window.
@@ -307,7 +307,7 @@ export default function CatLitterSmellWorseWinter() {
                       1
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Trap Odors at the Source with Activated Carbon</h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Trap Odors at the Source with Activated Carbon</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                         The most effective winter solution is preventing odors from entering your air in the first place. Activated carbon works through <em>adsorption</em>—millions of microscopic pores trap ammonia molecules before they can escape the litter box.
                       </p>
@@ -334,7 +334,7 @@ export default function CatLitterSmellWorseWinter() {
                       2
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Increase Cleaning Frequency by 25-50%</h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Increase Cleaning Frequency by 25-50%</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                         With reduced natural ventilation, waste accumulates faster in your indoor air. Adjust your schedule:
                       </p>
@@ -377,7 +377,7 @@ export default function CatLitterSmellWorseWinter() {
                       3
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Optimize Indoor Air Circulation</h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Optimize Indoor Air Circulation</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                         Since you can't rely on outdoor air, maximize what you have indoors:
                       </p>
@@ -410,7 +410,7 @@ export default function CatLitterSmellWorseWinter() {
                       4
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Switch to Low-Dust Litter</h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Switch to Low-Dust Litter</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                         Winter's dry air exacerbates dust problems. Consider switching to:
                       </p>
@@ -431,7 +431,7 @@ export default function CatLitterSmellWorseWinter() {
                       5
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Consider a Covered Litter Box with Filter</h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Consider a Covered Litter Box with Filter</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                         Covered boxes with activated carbon filters contain odors before they escape—especially important when windows are closed. Look for:
                       </p>
@@ -463,10 +463,10 @@ export default function CatLitterSmellWorseWinter() {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Common Winter Mistakes to Avoid</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Common Winter Mistakes to Avoid</h2>
 
               <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-600 p-6 mb-8 rounded-r-lg">
-                <h3 className="text-xl font-bold text-red-900 dark:text-red-200 mb-4">❌ Don't Make These Mistakes:</h3>
+                <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-200 mb-4">❌ Don't Make These Mistakes:</h3>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li><strong>Using more scented litter/sprays:</strong> Fragrances don't eliminate ammonia—they just create competing smells in your sealed home</li>
                   <li><strong>Placing box near heating vents:</strong> Heat accelerates urine evaporation and distributes odors faster</li>
@@ -476,14 +476,14 @@ export default function CatLitterSmellWorseWinter() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">The Complete Winter Strategy</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">The Complete Winter Strategy</h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
                 Combine these solutions for maximum effectiveness:
               </p>
 
               <div className="bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-xl p-6 mb-8">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Your Winter Odor Control Checklist:</h3>
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Your Winter Odor Control Checklist:</h3>
                 <ul className="space-y-3 text-gray-800 dark:text-gray-200">
                   <li className="flex items-start">
                     <span className="text-[#5B2EFF] mr-3">☑</span>
@@ -520,7 +520,7 @@ export default function CatLitterSmellWorseWinter() {
                 </ul>
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">When to See Improvement</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">When to See Improvement</h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 Most cat owners notice dramatic improvement within <strong>24-48 hours</strong> of implementing these solutions:
@@ -545,7 +545,7 @@ export default function CatLitterSmellWorseWinter() {
                 </li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Spring Transition Tips</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Spring Transition Tips</h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 As weather warms and you can open windows again:
@@ -561,7 +561,7 @@ export default function CatLitterSmellWorseWinter() {
 
             {/* CTA Section */}
             <div className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] rounded-2xl p-8 md:p-12 text-center text-white dark:text-gray-100 my-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
                 Ready to Solve Your Winter Litter Box Odor Problem?
               </h2>
               <p className="text-xl mb-6 opacity-90">
@@ -583,32 +583,32 @@ export default function CatLitterSmellWorseWinter() {
 
             {/* FAQ Section */}
             <div className="my-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
 
               <div className="space-y-6">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Can I use baking soda instead of activated carbon in winter?</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Can I use baking soda instead of activated carbon in winter?</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     Baking soda has limited effectiveness in winter because it only neutralizes acids—it doesn't trap ammonia molecules. Activated carbon physically adsorbs ammonia, making it far more effective when you can't rely on ventilation. In winter, activated carbon outperforms baking soda by 10-15x in sealed environments.
                   </p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Is it safe to never open windows all winter?</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Is it safe to never open windows all winter?</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     While modern homes can maintain reasonable air quality without opening windows, it's still beneficial to crack a window for 10-15 minutes daily when outdoor temperatures allow (above -10°C). This brief exchange refreshes indoor air without significantly impacting heating costs. Focus odor control at the source with activated carbon rather than relying solely on ventilation.
                   </p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Why does my cat litter smell worse at night in winter?</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Why does my cat litter smell worse at night in winter?</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     Overnight, your home's air exchange drops even further as thermostats lower and everyone sleeps. Without daytime movement, cooking exhaust fans, or door opening/closing, odors concentrate. Additionally, humidity often rises at night (from breathing, showering), which can temporarily make ammonia smell more noticeable. Morning scooping becomes even more critical in winter.
                   </p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Will a dehumidifier help with winter cat litter smell?</h3>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Will a dehumidifier help with winter cat litter smell?</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     Actually, a <em>humidifier</em> may help more than a dehumidifier. Winter indoor air is typically too dry (15-25% humidity), which increases dust and makes odors seem stronger. Bringing humidity to 35-45% can reduce airborne litter dust and make ammonia less noticeable. However, don't go above 50% as excessive humidity can cause other issues.
                   </p>

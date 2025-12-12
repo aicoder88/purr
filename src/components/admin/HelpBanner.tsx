@@ -32,7 +32,7 @@ export default function HelpBanner({
         <div className="flex-1">
           <div className="flex items-center space-x-2 mb-2">
             <Lightbulb className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-            <h3 className="font-semibold text-purple-900 dark:text-purple-100">{title}</h3>
+            <h3 className="font-heading font-semibold text-purple-900 dark:text-purple-100">{title}</h3>
           </div>
           <ul className="space-y-1 text-sm text-purple-800 dark:text-purple-200">
             {tips.map((tip, index) => (

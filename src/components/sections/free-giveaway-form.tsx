@@ -96,7 +96,7 @@ export function FreeGiveawayForm() {
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
-      <h2 className="text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
+      <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
         <div>

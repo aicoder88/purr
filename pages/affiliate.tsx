@@ -65,7 +65,7 @@ export default function AffiliatePage() {
                 <span className="text-sm font-medium text-blue-200 dark:text-blue-200">Join our growing partner network</span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200 dark:from-white dark:via-blue-100 dark:to-blue-200">
+              <h1 className="font-heading text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200 dark:from-white dark:via-blue-100 dark:to-blue-200">
                 {t.affiliate.hero.title}
               </h1>
 
@@ -138,7 +138,7 @@ export default function AffiliatePage() {
             </div>
 
             <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-white mb-8">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-white dark:text-white mb-8">
                 Track your success in real-time
               </h2>
 
@@ -148,7 +148,7 @@ export default function AffiliatePage() {
                     <DollarSign className="w-6 h-6 text-blue-400 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Uncapped Commissions</h3>
+                    <h3 className="font-heading text-xl font-bold text-white dark:text-white mb-2">Uncapped Commissions</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
                       Earn 30% on every sale with no limits. The more you share, the more you earn.
                     </p>
@@ -160,7 +160,7 @@ export default function AffiliatePage() {
                     <TrendingUp className="w-6 h-6 text-purple-400 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">High Conversion Rates</h3>
+                    <h3 className="font-heading text-xl font-bold text-white dark:text-white mb-2">High Conversion Rates</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
                       Our optimized landing pages and strong brand trust mean more of your clicks turn into cash.
                     </p>
@@ -172,7 +172,7 @@ export default function AffiliatePage() {
                     <Users className="w-6 h-6 text-green-400 dark:text-green-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white mb-2">Easy to Promote</h3>
+                    <h3 className="font-heading text-xl font-bold text-white dark:text-white mb-2">Easy to Promote</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
                       Eco-friendly, effective, and loved by cat owners. A product that practically sells itself.
                     </p>
@@ -189,7 +189,7 @@ export default function AffiliatePage() {
         <Container>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
                 {t.affiliate.calculator.title}
               </h2>
               <p className="text-xl text-gray-400 dark:text-gray-400 font-light max-w-2xl mx-auto">
@@ -287,7 +287,7 @@ export default function AffiliatePage() {
       <section className="py-24 bg-gray-900 dark:bg-gray-900 border-y border-gray-800 dark:border-gray-800">
         <Container>
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-20">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-20">
               {t.affiliate.howItWorks.title}
             </h2>
 
@@ -299,7 +299,7 @@ export default function AffiliatePage() {
                 <div className="w-24 h-24 mx-auto bg-gray-800 dark:bg-gray-800 rounded-full border-2 border-gray-700 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-500 flex items-center justify-center mb-8 relative z-10 transition-colors shadow-lg shadow-black/50">
                   <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
                   {t.affiliate.howItWorks.step1.title}
                 </h3>
                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
@@ -312,7 +312,7 @@ export default function AffiliatePage() {
                 <div className="w-24 h-24 mx-auto bg-gray-800 dark:bg-gray-800 rounded-full border-2 border-gray-700 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-500 flex items-center justify-center mb-8 relative z-10 transition-colors shadow-lg shadow-black/50">
                   <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
                   {t.affiliate.howItWorks.step2.title}
                 </h3>
                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
@@ -325,7 +325,7 @@ export default function AffiliatePage() {
                 <div className="w-24 h-24 mx-auto bg-gray-800 dark:bg-gray-800 rounded-full border-2 border-gray-700 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-500 flex items-center justify-center mb-8 relative z-10 transition-colors shadow-lg shadow-black/50">
                   <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
                   {t.affiliate.howItWorks.step3.title}
                 </h3>
                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
@@ -341,7 +341,7 @@ export default function AffiliatePage() {
       <section className="py-24 overflow-hidden">
         <Container>
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
               {t.affiliate.benefits.title}
             </h2>
             <p className="text-xl text-gray-400 dark:text-gray-400 font-light max-w-2xl mx-auto">
@@ -369,7 +369,7 @@ export default function AffiliatePage() {
                 <div className="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
                   <Star className="w-6 h-6 text-blue-400 dark:text-blue-400" />
                 </div>
-                <h3 className="text-3xl font-bold text-white dark:text-white mb-6">
+                <h3 className="font-heading text-3xl font-bold text-white dark:text-white mb-6">
                   {t.affiliate.benefits.benefit1.title}
                 </h3>
                 <p className="text-lg text-gray-400 dark:text-gray-400 leading-relaxed mb-6">
@@ -387,7 +387,7 @@ export default function AffiliatePage() {
                 <div className="w-12 h-12 bg-purple-500/10 dark:bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
                   <TrendingUp className="w-6 h-6 text-purple-400 dark:text-purple-400" />
                 </div>
-                <h3 className="text-3xl font-bold text-white dark:text-white mb-6">
+                <h3 className="font-heading text-3xl font-bold text-white dark:text-white mb-6">
                   {t.affiliate.benefits.benefit2.title}
                 </h3>
                 <p className="text-lg text-gray-400 dark:text-gray-400 leading-relaxed">
@@ -424,7 +424,7 @@ export default function AffiliatePage() {
       <section className="py-24 bg-gray-900 dark:bg-gray-900 border-t border-gray-800 dark:border-gray-800">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-16">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-16">
               {t.affiliate.faq.title}
             </h2>
 
@@ -480,7 +480,7 @@ export default function AffiliatePage() {
 
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-bold text-white dark:text-white mb-8 tracking-tight">
+            <h2 className="font-heading text-4xl md:text-6xl font-bold text-white dark:text-white mb-8 tracking-tight">
               {t.affiliate.finalCTA.title}
             </h2>
             <p className="text-xl text-blue-100 dark:text-blue-100 mb-12 font-light max-w-2xl mx-auto">

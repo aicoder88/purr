@@ -126,7 +126,7 @@ export default function TrialSizePage() {
               <div className="inline-block bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wide">
                 ⚠️ Health Alert for Cat Owners
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
                 Is Your Cat's Litter Box<br />
                 <span className="text-red-600 dark:text-red-400">Secretly Poisoning Your Home?</span>
               </h1>
@@ -176,7 +176,7 @@ export default function TrialSizePage() {
                   </p>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+                <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
                   Try the <span className="text-electric-indigo-600 dark:text-electric-indigo-400">"12g Miracle"</span> That's Transforming Litter Boxes Across Canada
                 </h2>
 
@@ -276,13 +276,13 @@ export default function TrialSizePage() {
         <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-8 text-center">
+              <h2 className="font-heading text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-8 text-center">
                 Here's The Ugly Truth About<br />Cat Litter Odor...
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6 mb-12">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-red-600 dark:border-red-500">
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3">❌ The Problem:</h3>
+                  <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-3">❌ The Problem:</h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li>• Ammonia buildup starts <strong>immediately</strong> after your cat uses the box</li>
                     <li>• By hour 24: <strong>Noticeable smell</strong></li>
@@ -294,7 +294,7 @@ export default function TrialSizePage() {
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-green-600 dark:border-green-500">
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3">✅ The Solution:</h3>
+                  <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-3">✅ The Solution:</h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li>• <strong>Activated carbon</strong> traps ammonia molecules instantly</li>
                     <li>• Works at the <strong>molecular level</strong> (not just masking)</li>
@@ -322,7 +322,7 @@ export default function TrialSizePage() {
         <section className="py-16 bg-white dark:bg-gray-900">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-4">
                 Real Results From Real Cat Owners
               </h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
@@ -380,7 +380,7 @@ export default function TrialSizePage() {
         <section className="py-16 bg-gradient-to-br from-indigo-50/30 via-white to-purple-50/30 dark:from-indigo-950/20 dark:via-gray-950 dark:to-purple-950/20">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-12">
                 Here's Exactly How This Works
               </h2>
 
@@ -390,7 +390,7 @@ export default function TrialSizePage() {
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Order Your $4.99 Trial</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Order Your $4.99 Trial</h3>
                     <p className="text-gray-700 dark:text-gray-300">
                       Click the button, enter your info. Done. Your trial ships within 24 hours. You'll get tracking immediately.
                     </p>
@@ -402,7 +402,7 @@ export default function TrialSizePage() {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Use It During Your Next Litter Change</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Use It During Your Next Litter Change</h3>
                     <p className="text-gray-700 dark:text-gray-300">
                       Clean the box, add fresh litter, sprinkle in the Purrify. That's it. No complicated instructions. No weird rituals.
                     </p>
@@ -414,7 +414,7 @@ export default function TrialSizePage() {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Watch The Magic Happen</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Watch The Magic Happen</h3>
                     <p className="text-gray-700 dark:text-gray-300">
                       In 60 seconds (we timed it), the ammonia smell vanishes. Not covered up. <strong>Actually gone.</strong> Your cat uses the box. Still no smell. Day 2. Still fresh. Day 7. You're ordering the full-size.
                     </p>
@@ -446,7 +446,7 @@ export default function TrialSizePage() {
         <section className="py-20 bg-gradient-to-br from-indigo-900 to-slate-900 dark:from-indigo-950 dark:to-slate-950">
           <Container>
             <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
-              <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6">
                 You're 60 Seconds Away From<br />A Fresh-Smelling Home
               </h2>
 
@@ -460,7 +460,7 @@ export default function TrialSizePage() {
               </p>
 
               <div className="bg-white/10 dark:bg-black/30 backdrop-blur-sm rounded-2xl p-8 mb-8 text-left">
-                <h3 className="text-2xl font-bold mb-6 text-center">Two Paths:</h3>
+                <h3 className="font-heading text-2xl font-bold mb-6 text-center">Two Paths:</h3>
 
                 <div className="space-y-6">
                   <div className="flex gap-4">

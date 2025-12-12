@@ -256,7 +256,12 @@ const CheckoutPage: NextPage = () => {
       "Lisa from Ottawa just purchased 3x Purrify 12g"
     ];
 
-    const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+    // Use useMemo to prevent notification from changing on every render
+    // The notification should only change when showPurchaseNotification changes from false to true
+    const randomNotification = useMemo(
+      () => notifications[Math.floor(Math.random() * notifications.length)],
+      [showPurchaseNotification] // Only re-calculate when notification is shown
+    );
 
     return (
       <div
@@ -309,7 +314,7 @@ const CheckoutPage: NextPage = () => {
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
             <div className="flex items-center gap-2 mb-4">
               <Star className="h-5 w-5 text-yellow-400 dark:text-yellow-300 fill-current" />
-              <h3 className="font-bold text-gray-900 dark:text-gray-100">Customer Love</h3>
+              <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Customer Love</h3>
             </div>
 
             <div className="relative min-h-[200px]">
@@ -371,7 +376,7 @@ const CheckoutPage: NextPage = () => {
     <div className="bg-gradient-to-r from-[#FFFFF5] to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 mb-8 border border-gray-100 dark:border-gray-700 shadow-lg">
       <div className="flex items-center gap-2 mb-4">
         <Package className="h-5 w-5 text-[#FF3131]" />
-        <h3 className="font-semibold text-gray-800 dark:text-gray-200">Order Summary</h3>
+        <h3 className="font-heading font-semibold text-gray-800 dark:text-gray-200">Order Summary</h3>
         <span className="ml-auto text-sm text-gray-500 dark:text-gray-300">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
       </div>
       {items.length === 0 ? (
@@ -515,7 +520,7 @@ const CheckoutPage: NextPage = () => {
                     <User className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Contact Information</h2>
+                    <h2 className="font-heading text-2xl font-bold text-gray-800 dark:text-gray-200">Contact Information</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Step 1 of 3 - We'll use this to send you order updates</p>
                   </div>
                 </div>
@@ -625,7 +630,7 @@ const CheckoutPage: NextPage = () => {
                     <MapPin className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Shipping Information</h2>
+                    <h2 className="font-heading text-2xl font-bold text-gray-800 dark:text-gray-200">Shipping Information</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Step 2 of 3 - Where should we send your Purrify?</p>
                   </div>
                 </div>
@@ -699,7 +704,7 @@ const CheckoutPage: NextPage = () => {
                     <CreditCard className="w-6 h-6 text-white dark:text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Secure Payment</h2>
+                    <h2 className="font-heading text-2xl font-bold text-gray-800 dark:text-gray-200">Secure Payment</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Step 3 of 3 - Your information is protected with 256-bit SSL</p>
                   </div>
                 </div>
@@ -769,7 +774,7 @@ const CheckoutPage: NextPage = () => {
               <Zap className="h-4 w-4 text-green-600 dark:text-green-400" />
               <span className="text-sm font-semibold text-green-800 dark:text-green-200">Fast & Secure Checkout</span>
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-4">
+            <h1 className="font-heading text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-4">
               Complete Your Order
             </h1>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
@@ -802,7 +807,7 @@ const CheckoutPage: NextPage = () => {
                 {/* Mobile-Optimized Fast Checkout */}
                 <div className="md:hidden mb-8">
                   <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#5B2EFF]/20 dark:to-[#FF3131]/20 rounded-xl p-6 border border-[#5B2EFF]/20 dark:border-[#5B2EFF]/30 mb-6">
-                    <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
+                    <h2 className="font-heading text-lg font-semibold text-center mb-2 text-gray-900 dark:text-gray-100">⚡ Fast Mobile Checkout</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-4">Complete your purchase in under 60 seconds</p>
 
                     <FastCheckout

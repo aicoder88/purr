@@ -65,7 +65,7 @@ export default function ActivatedCarbonVsBakingSoda() {
       <Container>
         <article className="max-w-4xl mx-auto py-16 px-4">
           <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               Activated Carbon vs Baking Soda: The Ultimate Comparison
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -94,13 +94,13 @@ export default function ActivatedCarbonVsBakingSoda() {
               Both have their merits, but which one actually delivers better results for cat owners?
             </p>
 
-            <h2 className="text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
               How Each Technology Works
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 my-8">
               <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4 text-blue-800 dark:text-blue-200">
+                <h3 className="font-heading text-xl font-semibold mb-4 text-blue-800 dark:text-blue-200">
                   Activated Carbon
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
@@ -110,7 +110,7 @@ export default function ActivatedCarbonVsBakingSoda() {
               </div>
 
               <div className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4 text-orange-800 dark:text-orange-200">
+                <h3 className="font-heading text-xl font-semibold mb-4 text-orange-800 dark:text-orange-200">
                   Baking Soda
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
@@ -134,7 +134,7 @@ export default function ActivatedCarbonVsBakingSoda() {
               </p>
             </div>
 
-            <h2 className="text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
               Performance Comparison
             </h2>
 
@@ -172,7 +172,7 @@ export default function ActivatedCarbonVsBakingSoda() {
               </table>
             </div>
 
-            <h2 className="text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-2xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
               The Verdict
             </h2>
 
@@ -183,7 +183,7 @@ export default function ActivatedCarbonVsBakingSoda() {
             </p>
 
             <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 dark:border-green-700 p-6 my-8">
-              <h3 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-2">
+              <h3 className="font-heading text-lg font-semibold text-green-800 dark:text-green-200 mb-2">
                 Pro Tip for Cat Owners
               </h3>
               <p className="text-green-700 dark:text-green-300">

@@ -270,7 +270,7 @@ export function VideoPlayer({
         <div className="absolute top-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
           <div className="bg-black/60 rounded-lg p-3 backdrop-blur-sm">
             {title && (
-              <h3 className="text-white dark:text-gray-100 font-semibold text-lg mb-1">
+              <h3 className="font-heading text-white dark:text-gray-100 font-semibold text-lg mb-1">
                 {title}
               </h3>
             )}

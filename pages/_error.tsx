@@ -144,7 +144,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
             />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50">
             {title}
           </h1>
 
@@ -154,7 +154,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
 
           {isServerError && (
             <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-700">
-              <h2 className="text-lg font-semibold mb-2 text-red-800 dark:text-red-200">
+              <h2 className="font-heading text-lg font-semibold mb-2 text-red-800 dark:text-red-200">
                 What can you do?
               </h2>
               <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
@@ -167,7 +167,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
 
           {isClientError && statusCode !== 404 && (
             <div className="mb-8 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-700">
-              <h2 className="text-lg font-semibold mb-2 text-orange-800 dark:text-orange-200">
+              <h2 className="font-heading text-lg font-semibold mb-2 text-orange-800 dark:text-orange-200">
                 What can you do?
               </h2>
               <ul className="text-sm text-orange-700 dark:text-orange-300 space-y-1">
@@ -179,7 +179,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
           )}
 
           <div className="mb-12 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="font-heading text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
               You might be looking for:
             </h2>
 

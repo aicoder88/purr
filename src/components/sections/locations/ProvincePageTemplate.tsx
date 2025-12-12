@@ -102,7 +102,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
               <span className="text-gray-700 dark:text-gray-300">{provinceName}</span>
             </nav>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
               {locale === 'fr'
                 ? `Contrôle des Odeurs de Litière pour Chat en ${provinceName}`
                 : `Cat Litter Odor Control in ${provinceName}`
@@ -163,7 +163,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
         {majorCities.length > 0 && (
           <section className="py-16 px-4 bg-white dark:bg-gray-800">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
                 {locale === 'fr'
                   ? `Grandes Villes en ${provinceName}`
                   : `Major Cities in ${provinceName}`
@@ -176,7 +176,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
                     href={`/locations/${city.slug}`}
                     className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700/70 dark:to-gray-700/50 p-6 rounded-xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                       {city.name}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
@@ -205,7 +205,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
         {/* All Cities Section */}
         <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {locale === 'fr'
                 ? `Toutes les Villes en ${provinceName}`
                 : `All Cities in ${provinceName}`
@@ -233,7 +233,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
         {/* Why Choose Purrify Section */}
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {locale === 'fr'
                 ? `Pourquoi les Propriétaires de Chats en ${provinceName} Choisissent Purrify`
                 : `Why ${provinceName} Cat Owners Choose Purrify`
@@ -241,7 +241,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 p-6 rounded-xl border border-orange-200 dark:border-orange-700">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   {locale === 'fr' ? 'Technologie au Charbon Actif' : 'Activated Carbon Technology'}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -253,7 +253,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
               </div>
 
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-700">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   {locale === 'fr' ? 'Sans Parfum' : 'Fragrance-Free'}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -265,7 +265,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
               </div>
 
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 p-6 rounded-xl border border-green-200 dark:border-green-700">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   {locale === 'fr' ? 'Livraison Rapide' : 'Fast Shipping'}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -277,7 +277,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
               </div>
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl border border-purple-200 dark:border-purple-700">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
+                <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   {locale === 'fr' ? 'Fonctionne avec Toutes les Litières' : 'Works with All Litters'}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
@@ -294,7 +294,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
         {/* CTA Section */}
         <section className="py-16 px-4 bg-gradient-to-br from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               {locale === 'fr'
                 ? `Prêt à Éliminer les Odeurs de Litière en ${provinceName}?`
                 : `Ready to Eliminate Litter Box Odors in ${provinceName}?`

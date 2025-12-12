@@ -39,7 +39,7 @@ export default function SetupInstructions({
           </svg>
         </div>
         <div className="ml-3 flex-1">
-          <h3 className="text-lg font-medium text-yellow-800 dark:text-yellow-200">
+          <h3 className="font-heading text-lg font-medium text-yellow-800 dark:text-yellow-200">
             {feature} Not Configured
           </h3>
           <div className="mt-2 text-sm text-yellow-700 dark:text-yellow-300">
@@ -131,7 +131,7 @@ export function MultipleSetupInstructions({ instructions }: MultipleSetupInstruc
           </svg>
         </div>
         <div className="ml-3 flex-1">
-          <h3 className="text-lg font-medium text-blue-800 dark:text-blue-200">
+          <h3 className="font-heading text-lg font-medium text-blue-800 dark:text-blue-200">
             Optional Features Available
           </h3>
           <p className="mt-2 text-sm text-blue-700 dark:text-blue-300">

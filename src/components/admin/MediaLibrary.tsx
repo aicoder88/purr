@@ -116,7 +116,7 @@ export default function MediaLibrary({
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
             Media Library
           </h2>
           {onClose && (
