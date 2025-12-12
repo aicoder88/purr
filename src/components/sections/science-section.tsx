@@ -12,17 +12,20 @@ export function ScienceSection() {
         {
             icon: <Microscope className="w-6 h-6 text-electric-indigo" />,
             title: "Micro-Pore Technology",
-            description: "Millions of microscopic pores trap odor molecules instantly upon contact."
+            description: "Millions of microscopic pores trap odor molecules instantly upon contact.",
+            image: "/optimized/science-microscope-research.webp"
         },
         {
             icon: <ShieldCheck className="w-6 h-6 text-deep-coral" />,
             title: "Safe & Non-Toxic",
-            description: "100% natural activated carbon. Safe for pets and humans."
+            description: "100% natural activated carbon. Safe for pets and humans.",
+            image: "/optimized/happy-cat-fresh-home.webp"
         },
         {
             icon: <Leaf className="w-6 h-6 text-green-500 dark:text-green-400" />,
             title: "Eco-Friendly",
-            description: "Sustainable materials that are biodegradable and earth-safe."
+            description: "Sustainable materials that are biodegradable and earth-safe.",
+            image: "/optimized/molecular-structure-pore.webp"
         }
     ];
 
@@ -81,7 +84,7 @@ export function ScienceSection() {
                         <div className="relative bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl p-4 border border-gray-100 dark:border-gray-700 rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
                             <div className="relative rounded-[2rem] overflow-hidden aspect-square bg-gray-100 dark:bg-gray-900">
                                 <Image
-                                    src="/optimized/Carbon sktech.webp"
+                                    src="/optimized/Carbon-sktech.webp"
                                     alt="Activated Carbon Mechanism"
                                     fill
                                     className="object-cover"

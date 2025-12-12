@@ -26,14 +26,17 @@ export default function StandardSizePage() {
   const checkoutUrl = getLocalizedUrl('/checkout', locale);
 
   // Standard size lifestyle images
-  const heroImage = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1600&q=80'; // Single cat household
-  const sectionImage1 = 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=1600&q=80'; // Happy single cat
-  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
+  const heroImage = "/optimized/standard-hero.webp";
+  const heroImageAlt = "Happy cat with Purrify activated carbon litter additive";
+  const sectionImage1 = "/optimized/standard-happy-cat.webp";
+  const sectionImage1Alt = "Cat owner enjoying a fresh smelling home";
+  const solutionImage = "/optimized/standard-solution.webp";
+  const solutionImageAlt = "Purrify packaging and product";
 
   const benefits = [
     "Ideal for single-cat households",
     "One month of continuous odor control",
-    "Most popular size among customers", 
+    "Most popular size among customers",
     "Perfect balance of value and quantity",
     "Works with any litter type"
   ];
@@ -46,7 +49,7 @@ export default function StandardSizePage() {
       petName: "Mochi"
     },
     {
-      name: "Dr. Amara Chen, Westmount", 
+      name: "Dr. Amara Chen, Westmount",
       text: "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat's litter area stays remarkably fresh.",
       rating: 5,
       petName: "Whiskers"
@@ -454,7 +457,7 @@ export default function StandardSizePage() {
                   One 50g package lasts a full month for typical single-cat usage
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">#1</span>
@@ -464,7 +467,7 @@ export default function StandardSizePage() {
                   Chosen by 60% of our customers as the perfect balance
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">$</span>
