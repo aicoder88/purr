@@ -178,6 +178,9 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   outputFileTracingRoot: __dirname,
+  outputFileTracingExcludes: {
+    '/api/health/storage': ['./public/**/*'],
+  },
 
   images: {
     remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https', hostname })),
@@ -201,9 +204,6 @@ const nextConfig = {
     optimizeServerReact: true,
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
-    outputFileTracingExcludes: {
-      '/api/health/storage': ['./public/**/*'],
-    },
   },
   serverExternalPackages: ['sharp'],
   staticPageGenerationTimeout: 120,
