@@ -49,6 +49,27 @@ export default async function handler(
           throw new Error('No order ID in session metadata');
         }
 
+        // Extract customer details for email
+        const customerEmail = session.customer_details?.email || session.customer_email;
+        const customerName = session.customer_details?.name || undefined;
+
+        // Get line items to extract product details
+        let productName = 'Purrify';
+        let quantity = 1;
+        let amount = session.amount_total || 0;
+
+        try {
+          const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 });
+          if (lineItems.data.length > 0) {
+            const item = lineItems.data[0];
+            productName = item.description || item.price?.product?.toString() || 'Purrify';
+            quantity = item.quantity || 1;
+          }
+        } catch (err) {
+          console.error('Error fetching line items:', err);
+          // Continue with defaults
+        }
+
         // Handle retailer orders differently
         if (orderType === 'retailer_order') {
           const paymentIntent = session.payment_intent as string;
@@ -62,11 +83,35 @@ export default async function handler(
             },
           });
 
-          // TODO: Send confirmation email to retailer
-          // TODO: Send notification to admin
-          // TODO: Create ShipStation order
-
           console.log(`Retailer order ${orderId} paid successfully`);
+
+          // Send thank you email to retailer
+          if (customerEmail) {
+            try {
+              const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/email/send-thank-you-email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  customerEmail,
+                  customerName,
+                  orderNumber: orderId,
+                  productName,
+                  quantity,
+                  amount,
+                  locale: 'en'
+                })
+              });
+
+              if (!emailResponse.ok) {
+                console.error('Failed to send retailer thank you email:', await emailResponse.text());
+              } else {
+                console.log(`Thank you email sent to retailer: ${customerEmail}`);
+              }
+            } catch (emailError) {
+              console.error('Error sending retailer thank you email:', emailError);
+            }
+          }
+
           break;
         }
 
@@ -101,6 +146,34 @@ export default async function handler(
               refereeId: order.user.id, // Initially set to self, will be updated when used
             },
           });
+        }
+
+        // Send thank you email to customer
+        if (customerEmail) {
+          try {
+            const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/email/send-thank-you-email`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                customerEmail,
+                customerName,
+                orderNumber: orderId,
+                productName,
+                quantity,
+                amount,
+                locale: 'en' // TODO: Get from session metadata or customer preference
+              })
+            });
+
+            if (!emailResponse.ok) {
+              console.error('Failed to send thank you email:', await emailResponse.text());
+            } else {
+              console.log(`Thank you email sent to: ${customerEmail}`);
+            }
+          } catch (emailError) {
+            console.error('Error sending thank you email:', emailError);
+            // Don't fail the webhook if email fails
+          }
         }
 
         break;
