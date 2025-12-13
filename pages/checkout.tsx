@@ -108,22 +108,50 @@ const CheckoutPage: NextPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Social proof notifications
+  // Social proof notifications with proper timing
+  const lastNotificationTimeRef = React.useRef<number>(0);
+  const notificationTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
   React.useEffect(() => {
+    const minDelay = 45000; // 45 seconds minimum between notifications
+    const maxDelay = 75000; // 75 seconds maximum
+    const initialDelay = 8000; // 8 seconds before first notification
+    const displayDuration = 5000; // How long notification stays visible
+
     const showNotification = () => {
+      const now = Date.now();
+      // Prevent rapid succession - ensure at least minDelay between notifications
+      if (now - lastNotificationTimeRef.current < minDelay) {
+        return;
+      }
+
+      lastNotificationTimeRef.current = now;
       setShowPurchaseNotification(true);
-      setTimeout(() => setShowPurchaseNotification(false), 5000);
+
+      // Hide after display duration
+      setTimeout(() => setShowPurchaseNotification(false), displayDuration);
     };
 
-    // Show initial notification after 2 seconds
-    const initialTimeout = setTimeout(showNotification, 2000);
+    const scheduleNextNotification = () => {
+      // Random delay between 45-75 seconds for each notification
+      const randomDelay = minDelay + Math.random() * (maxDelay - minDelay);
+      notificationTimeoutRef.current = setTimeout(() => {
+        showNotification();
+        scheduleNextNotification(); // Schedule the next one
+      }, randomDelay);
+    };
 
-    // Then show every 45-75 seconds
-    const interval = setInterval(showNotification, Math.random() * 30000 + 45000);
+    // Show initial notification after 8 seconds
+    const initialTimeout = setTimeout(() => {
+      showNotification();
+      scheduleNextNotification(); // Start the recurring schedule
+    }, initialDelay);
 
     return () => {
       clearTimeout(initialTimeout);
-      clearInterval(interval);
+      if (notificationTimeoutRef.current) {
+        clearTimeout(notificationTimeoutRef.current);
+      }
     };
   }, []);
 
