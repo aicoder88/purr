@@ -56,9 +56,6 @@ const CheckoutPage: NextPage = () => {
   }, [getShippingCost, getTotalPrice]);
   const router = useRouter();
   // const { t } = useTranslation();
-  const [referralCode, setReferralCode] = useState('');
-  const [referralStatus, setReferralStatus] = useState<'idle' | 'validating' | 'valid' | 'invalid'>('idle');
-  const [referralMessage, setReferralMessage] = useState('');
   const canonicalUrl = 'https://www.purrify.ca/checkout';
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,11 +63,6 @@ const CheckoutPage: NextPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   }, []);
 
-  const handleReferralCodeChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setReferralCode(event.target.value);
-    setReferralStatus('idle');
-    setReferralMessage('');
-  }, []);
 
   const handleTestimonialIndicatorClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     const { index } = event.currentTarget.dataset;
@@ -155,31 +147,6 @@ const CheckoutPage: NextPage = () => {
     };
   }, []);
 
-  const validateReferral = useCallback(async () => {
-    if (!referralCode) return;
-    setReferralStatus('validating');
-    setReferralMessage('');
-    try {
-      const res = await fetch('/api/referrals/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: referralCode }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setReferralStatus('valid');
-        setReferralMessage('Referral code applied!');
-      } else {
-        setReferralStatus('invalid');
-        setReferralMessage(data.message || 'Invalid referral code.');
-      }
-    } catch (err) {
-      console.error('Referral validation failed:', err);
-      setReferralStatus('invalid');
-      setReferralMessage('Could not validate referral code.');
-    }
-  }, [referralCode]);
-
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
@@ -195,7 +162,6 @@ const CheckoutPage: NextPage = () => {
           subtotal: getTotalPrice(),
           shipping: getShippingCost(),
           total: getTotalWithShipping(),
-          referralCode: referralStatus === 'valid' ? referralCode : undefined,
         }),
       });
 
@@ -221,8 +187,6 @@ const CheckoutPage: NextPage = () => {
     getTotalPrice,
     getTotalWithShipping,
     items,
-    referralCode,
-    referralStatus,
     router
   ]);
 
@@ -231,10 +195,9 @@ const CheckoutPage: NextPage = () => {
       formData.email &&
       formData.phone &&
       formData.firstName &&
-      formData.lastName &&
-      referralStatus !== 'validating'
+      formData.lastName
     )
-  ), [formData.email, formData.firstName, formData.lastName, formData.phone, referralStatus]);
+  ), [formData.email, formData.firstName, formData.lastName, formData.phone]);
 
   const isShippingStepValid = useMemo(() => (
     Boolean(
@@ -556,42 +519,6 @@ const CheckoutPage: NextPage = () => {
                   <Shield className="h-4 w-4 inline mr-1" />
                   Secure & Private
                 </div>
-              </div>
-              <div className="mb-6">
-                <label className="block font-medium mb-2 text-gray-700 dark:text-gray-300">Referral Code (optional)</label>
-                <div className="flex gap-2">
-                  <Input
-                    type="text"
-                    name="referralCode"
-                    placeholder="Enter referral code"
-                    value={referralCode}
-                    onChange={handleReferralCodeChange}
-                    className="flex-1"
-                    disabled={referralStatus === 'validating'}
-                  />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={validateReferral}
-                    disabled={!referralCode || referralStatus === 'validating'}
-                    className="min-w-[100px]"
-                  >
-                    {referralStatus === 'validating' ? (
-                      <Loader2 className="animate-spin h-4 w-4" />
-                    ) : (
-                      'Apply'
-                    )}
-                  </Button>
-                </div>
-                {referralStatus === 'valid' && (
-                  <div className="text-green-600 dark:text-green-400 text-sm mt-2 flex items-center gap-1">
-                    <CheckCircle className="w-4 h-4" />
-                    {referralMessage}
-                  </div>
-                )}
-                {referralStatus === 'invalid' && (
-                  <div className="text-red-600 dark:text-red-400 text-sm mt-2">{referralMessage}</div>
-                )}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

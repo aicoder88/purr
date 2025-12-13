@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-Purrify is a production Next.js 15 e-commerce platform for activated carbon cat litter additive. The site serves both B2C (direct consumer sales via Stripe) and B2B (wholesale retailer management) with multi-language support (en, fr, zh), an advanced blog system, and strict dark mode requirements.
+Purrify is a production Next.js e-commerce platform for activated carbon cat litter additive. The site serves both B2C (direct consumer sales via Stripe) and B2B (wholesale retailer management) with multi-language support (en, fr, zh), an advanced blog system, and strict dark mode requirements.
 
 **Critical Constraints:**
 - Pages Router architecture (NOT App Router)
@@ -15,17 +15,33 @@ Purrify is a production Next.js 15 e-commerce platform for activated carbon cat 
 
 ## Tech Stack
 
-**Core:** Next.js 15 (Pages Router) + TypeScript + Tailwind CSS + Radix UI (shadcn/ui)
+**Core:** Next.js 16 (Pages Router) + React 19 + TypeScript + Tailwind CSS + Radix UI (shadcn/ui)
 **Database:** PostgreSQL + Prisma ORM
-**Auth:** NextAuth.js (JWT strategy with role-based access)
+**Auth:** NextAuth.js (JWT strategy with role-based access: admin/editor/user)
 **Payments:** Stripe (consumer + wholesale)
 **Email:** Resend + EmailJS
-**Blog:** TipTap rich text editor + filesystem-based JSON storage
+**Blog:** TipTap rich text editor + filesystem-based JSON storage (`/content/blog/{locale}/*.json`)
 **AI:** Anthropic SDK + OpenAI API (automated content generation)
 **Shipping:** ShipStation integration (webhook-based)
-**Deploy:** Vercel (Node.js 22.x)
+**Deploy:** Vercel (Node.js 22.x) with GitHub Actions CI/CD
 
 **MCP Integration:** Supabase MCP server available for database operations via Claude Code
+
+## Quick Start
+
+```bash
+# Install (legacy peer deps required for React 19 compatibility)
+npm install --legacy-peer-deps
+
+# Development
+npm run dev                    # Start dev server (auto-clears webpack cache)
+
+# Pre-commit validation (ALL must pass)
+npm run lint && npm run check-types && npm run validate-dark-mode
+
+# Build
+npm run build                  # Production build
+```
 
 ## Architecture Overview
 
@@ -138,14 +154,20 @@ npm run analyze             # Build with bundle analysis
 ### Testing
 ```bash
 npm run test:translations   # Jest translation completeness
-npm run test:e2e            # Playwright E2E tests
+npm run test:e2e            # Playwright E2E tests (blog, homepage)
 npm run test:e2e -- --debug # E2E debug mode
-npm run test:e2e:security   # Security-focused E2E tests
+npm run test:e2e:security   # Security E2E tests (auth, XSS, CSRF, rate-limiting, file-upload)
 
 # Single test execution
 npx jest __tests__/translation-completeness.test.js --watch
 npx playwright test e2e/homepage.spec.ts
+npx playwright test e2e/security-xss.spec.ts  # Run specific security test
 ```
+
+**E2E Test Coverage (`e2e/`):**
+- `blog-*.spec.ts` - Blog articles, routing, image audit
+- `home.spec.ts` - Homepage functionality
+- `security-*.spec.ts` - Authentication, CSRF, XSS, rate-limiting, file-upload
 
 ### Optimization & Analysis
 ```bash
@@ -162,6 +184,14 @@ npm run purge-vercel-cache  # Clear Vercel edge cache
 npm run blog:auto:generate  # Run automated blog post generation (AI)
 npm run blog:migrate        # Migrate blog posts to new format
 npm run repair-blog         # Repair broken/corrupted blog posts
+```
+
+### Database (Prisma)
+```bash
+npx prisma generate         # Generate Prisma client (runs on postinstall)
+npx prisma migrate dev      # Create/apply migrations in development
+npx prisma studio           # Open Prisma Studio GUI
+npx prisma db push          # Push schema changes without migration (dev only)
 ```
 
 ### SEO & Link Validation
@@ -276,79 +306,26 @@ function MyComponent() {
 
 ### Database Schema (Prisma)
 
-**Key Models:**
-```prisma
-model User {
-  id            String    @id @default(cuid())
-  email         String?   @unique
-  orders        Order[]
-  referrals     Referral[]
-  createdAt     DateTime  @default(now())
-}
+Full schema in `prisma/schema.prisma`. Key models:
 
-model Retailer {
-  id                String          @id @default(cuid())
-  businessName      String
-  email             String          @unique
-  status            RetailerStatus  @default(PENDING) // PENDING/ACTIVE/SUSPENDED/REJECTED
-  orders            RetailerOrder[]
-  stripeCustomerId  String?
-  createdAt         DateTime        @default(now())
-}
+| Model | Purpose | Key Fields |
+|-------|---------|------------|
+| `User` | NextAuth users | email, orders, referrals |
+| `Retailer` | B2B wholesale accounts | businessName, status (PENDING/ACTIVE/SUSPENDED/REJECTED), stripeCustomerId |
+| `Order` | Consumer orders | totalAmount, status, stripeSessionId, items |
+| `RetailerOrder` | B2B orders | orderNumber, items, shipstationOrderId, trackingNumber |
+| `Product` | Products | name, price, wholesalePrice, minimumOrder |
+| `Customer` | Order customer details | email, address (encrypted at app level) |
+| `BlogPost` | Blog content | slug, locale, title, content, status, heroImageUrl, keywords[] |
+| `BlogImage` | Secondary blog images | url, alt, kind (HERO/SECTION/INFOGRAPHIC/CTA) |
+| `Referral` | Referral tracking | code, status, commission |
+| `AuditLog` | Compliance logging | action, entity, entityId, changes (JSON) |
 
-model Order {
-  id              String      @id @default(cuid())
-  userId          String?
-  totalAmount     Float
-  items           OrderItem[]
-  status          OrderStatus @default(PENDING)
-  stripeSessionId String?
-  createdAt       DateTime    @default(now())
-}
-
-model Product {
-  id            String   @id @default(cuid())
-  name          String
-  price         Float
-  wholesalePrice Float?
-  createdAt     DateTime @default(now())
-}
-
-model BlogPost {
-  id             String          @id @default(cuid())
-  slug           String          @unique
-  locale         String          @default("en")
-  title          String
-  content        String          @db.Text
-  status         BlogPostStatus  @default(PUBLISHED)
-  publishedAt    DateTime?
-  scheduledFor   DateTime?
-  createdAt      DateTime        @default(now())
-}
-
-model AuditLog {
-  id          String      @id @default(cuid())
-  action      AuditAction
-  entity      String      // Table name
-  entityId    String      // Record ID
-  userId      String?
-  ipAddress   String?
-  changes     Json?
-  createdAt   DateTime    @default(now())
-}
-```
-
-**Important Notes:**
+**Schema Conventions:**
 - IDs use `cuid()` (not `uuid()`)
 - Prices stored as `Float` (not `Decimal`)
-- Customer data should be encrypted at application level (see model comments)
-- `AuditLog` tracks all sensitive operations for compliance
-
-**Relationships:**
-- User → Orders (one-to-many)
-- Retailer → RetailerOrders (one-to-many)
-- Order → OrderItems (one-to-many)
-- OrderItem → Product (many-to-one)
+- Customer PII should be encrypted at application level
+- Enums: `OrderStatus`, `RetailerStatus`, `RetailerOrderStatus`, `ReferralStatus`, `BlogPostStatus`, `AuditAction`
 
 ### API Route Patterns
 
@@ -703,10 +680,9 @@ npm run analyze  # Interactive bundle analysis
 ### Vercel Configuration
 ```json
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "installCommand": "npm install"
+  "buildCommand": "npx prisma generate && npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs"
 }
 ```
 
@@ -723,6 +699,17 @@ All sensitive keys stored in Vercel dashboard:
 - `UNSPLASH_ACCESS_KEY` - Image fetching
 - `CRON_SECRET` - Cron job authentication
 - `NEXT_PUBLIC_SITE_URL` - Site base URL
+
+### Vercel Cron Jobs
+Configured in `vercel.json`:
+- `0 0 * * *` - `/api/cron/publish-scheduled-posts` - Publish scheduled blog posts daily at midnight
+- `0 6 * * *` - `/api/cron/generate-blog-post` - Auto-generate blog content daily at 6am
+
+### GitHub Actions CI/CD
+Workflows in `.github/workflows/`:
+- `e2e.yml` - Playwright E2E tests on PR/push
+- `claude-code-review.yml` - Automated code review
+- `vercel-monitor.yml` - Deployment monitoring
 
 ### Deployment Verification
 ```bash
@@ -802,12 +789,12 @@ Brief description (1-3 bullet points)
 
 ### Documentation Structure
 - `CLAUDE.md` - AI development guidelines (this file)
-- `AGENTS.md` - Quick developer reference
-- `CHANGELOG.md` - Change log (update after each session)
-- `TODO.md` - Active work queue
-- `docs/REFERENCE.md` - Technical reference (dark mode, SEO, structured data)
+- `AGENTS.md` - Quick developer reference (coding style, testing guidelines)
+- `docs/REFERENCE.md` - Technical reference (dark mode color system, SEO playbook, JSON-LD schemas, site structure, Canadian cities list)
 - `docs/PROJECT_OVERVIEW.md` - System architecture
 - `docs/PROJECT_HANDOFF.md` - Production status
+- `docs/BLOG_SYSTEM_GUIDE.md` - Blog system detailed documentation
+- `docs/SECURITY.md` - Security implementation details
 
 ### Important File Locations
 - Blog content: `/content/blog/{locale}/*.json`
