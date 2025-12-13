@@ -192,20 +192,60 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
         </div>
       </div>
 
-      <div className="pt-6">
+      {/* Urgency & Social Proof */}
+      <div className="flex items-center justify-center gap-6 pt-4 pb-3">
+        <div className="flex items-center gap-2 text-sm">
+          <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
+          <span className="text-gray-600 dark:text-gray-400">2,847 sold this week</span>
+        </div>
+        <div className="flex items-center gap-1 text-sm">
+          <svg className="w-4 h-4 text-red-500 dark:text-red-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+          </svg>
+          <span className="text-gray-600 dark:text-gray-400">Limited winter stock</span>
+        </div>
+      </div>
+
+      {/* Main CTA Button */}
+      <div className="pt-2 pb-4">
         <Button
           onClick={handleScrollToProducts}
-          className="w-full sm:w-auto px-8 py-6 bg-deep-coral hover:bg-deep-coral/90 text-white font-bold text-xl rounded-2xl shadow-xl shadow-deep-coral/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-deep-coral/30 min-h-[64px] flex items-center justify-center gap-3 group"
-          aria-label="Purchase Purrify for your cat"
+          className="w-full sm:w-auto px-10 py-7 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-xl sm:text-2xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[72px] flex items-center justify-center gap-4 group border-2 border-deep-coral/20"
+          aria-label="Stop embarrassing cat odors forever"
         >
-          <svg className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          <svg className="w-8 h-8 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          Buy Now for Your Cat
-          <svg className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          Stop Embarrassing Cat Odors Forever
+          <svg className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </Button>
+      </div>
+
+      {/* Risk Reversal & Guarantee */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <div className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-700">
+          <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+          <span className="text-sm font-bold text-green-700 dark:text-green-300">30-Day Money-Back Guarantee</span>
+        </div>
+        
+        <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-700">
+          <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <span className="text-sm font-bold text-blue-700 dark:text-blue-300">Free Shipping Over $35</span>
+        </div>
+      </div>
+
+      {/* Final Urgency Push */}
+      <div className="flex items-center justify-center gap-2 pt-4">
+        <svg className="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+        </svg>
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Winter special ends soon - most customers order 3+ bottles</span>
       </div>
     </div>
   );
