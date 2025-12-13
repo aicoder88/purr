@@ -6,9 +6,15 @@ import { GetServerSideProps } from 'next';
 import Stripe from 'stripe';
 import { Container } from '../src/components/ui/container';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-07-30.basil',
-});
+const getStripeInstance = () => {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY environment variable is not set');
+  }
+  return new Stripe(secretKey, {
+    apiVersion: '2025-07-30.basil',
+  });
+};
 
 interface OrderDetails {
   customerEmail?: string;
@@ -37,6 +43,20 @@ export const getServerSideProps: GetServerSideProps<ThankYouPageProps> = async (
   }
 
   try {
+    // Get Stripe instance with error handling
+    let stripe;
+    try {
+      stripe = getStripeInstance();
+    } catch (stripeError) {
+      console.error('Stripe configuration error:', stripeError);
+      return {
+        props: {
+          orderDetails: null,
+          error: 'Unable to load order details due to configuration issue'
+        }
+      };
+    }
+    
     // Fetch session details from Stripe
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
