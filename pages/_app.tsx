@@ -50,7 +50,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
     () => buildDefaultSeoConfig(locale, canonicalUrl),
     [locale, canonicalUrl]
   );
-  const shouldLoadChat = process.env.NODE_ENV === 'production';
 
   // Service Worker registration
   useEffect(() => {
@@ -178,44 +177,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <PerformanceMonitor enabled sampleRate={0.1} />
           <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
 
-          {/* Idle-load chat plugin to avoid blocking TTI */}
-          {shouldLoadChat && (
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  (function(){
-                    if (window.__purrifyChatLoaded) return;
-                    function loadChat(){
-                      if (window.__purrifyChatLoaded) return; 
-                      window.__purrifyChatLoaded = true;
-                      var s = document.createElement('script');
-                      s.src = 'https://app.simplebotinstall.com/js/chat_plugin.js';
-                      s.defer = true;
-                      s.setAttribute('data-bot-id','40892');
-                      document.body.appendChild(s);
-                    }
-                    var scheduled = false;
-                    function schedule(){
-                      if (scheduled) return; scheduled = true;
-                      if ('requestIdleCallback' in window) {
-                        requestIdleCallback(function(){ setTimeout(loadChat, 0); }, { timeout: 4000 });
-                      } else {
-                        window.addEventListener('load', function(){ setTimeout(loadChat, 3000); });
-                      }
-                    }
-                    // Load on idle, or on first interaction if earlier
-                    ['mousemove','touchstart','scroll','keydown'].forEach(function(evt){
-                      window.addEventListener(evt, function handler(){
-                        window.removeEventListener(evt, handler);
-                        loadChat();
-                      }, { passive: true, once: true });
-                    });
-                    schedule();
-                  })();
-                `
-              }}
-            />
-          )}
 
 
           <Toaster />
