@@ -12,9 +12,9 @@ const DEFAULT_PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
   standardSingle: '',
   standardAutoship: '',
   familySingle: '',
-  familyAutoship: '',
+  familyAutoship: 'https://buy.stripe.com/14A4gz9C0aAGew4gb06Na08',
   jumboSingle: '',
-  jumboAutoship: '',
+  jumboAutoship: 'https://buy.stripe.com/3cI7sLbK8dMS9bK7Eu6Na09',
 };
 
 const PAYMENT_LINKS: Record<PaymentLinkKey, string> = {

@@ -144,8 +144,8 @@ export function EnhancedProductComparison() {
         odorControl: true,
         naturalIngredients: true,
         easyApplication: true,
-        moneyBackGuarantee: true,
-        bulkDiscount: true,
+        moneyBackGuarantee: false,
+        bulkDiscount: false,
         prioritySupport: false,
         freeShipping: true,
       },
@@ -157,7 +157,7 @@ export function EnhancedProductComparison() {
           label: 'Subscribe',
           priceFormatted: formatCurrencyValue(familyAutoshipPriceAmount / 3, locale),
           subLabel: 'per month, billed quarterly',
-          totalPrice: `${formatProductPrice('familyAutoship', locale)} / quarter`,
+          totalPrice: `at ${formatProductPrice('familyAutoship', locale)} every 3 months`,
           savings: familyAutoshipSavings,
           action: 'link',
           linkKey: 'familyAutoship',
@@ -208,13 +208,12 @@ export function EnhancedProductComparison() {
           label: 'Subscribe',
           priceFormatted: formatCurrencyValue(getProductPrice('jumboAutoship') / 3, locale),
           subLabel: 'per month, billed quarterly',
-          totalPrice: `${formatProductPrice('jumboAutoship', locale)} / quarter`,
+          totalPrice: `at ${formatProductPrice('jumboAutoship', locale)} every 3 months`,
           savings: computeQuarterlySavings(getProductPrice('jumbo'), getProductPrice('jumboAutoship')),
-          action: 'cart',
+          action: 'link',
           linkKey: 'jumboAutoship' as PaymentLinkKey,
           ctaLabel: 'Subscribe & Save',
           icon: 'zap',
-          cartProductId: 'purrify-240g-autoship',
           ctaEmphasis: 'primary',
         },
         {
@@ -236,7 +235,7 @@ export function EnhancedProductComparison() {
 
   const getFeatureLabels = (productId: string) => {
     return {
-      odorControl: '7-Day Odor Control',
+      odorControl: '3 months of Odor Control',
       naturalIngredients: '100% Natural',
       easyApplication: 'Easy Application',
       moneyBackGuarantee: '30-Day Guarantee',
@@ -341,19 +340,16 @@ export function EnhancedProductComparison() {
                       />
                     </div>
 
-                    <div className="mb-2">
-                      <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
-                        {preferredOption.priceFormatted}
-                      </span>
-                      {isSubscription && preferredOption.perMonth && (
-                        <span className="text-gray-500 dark:text-gray-400 text-sm font-medium ml-1">/mo</span>
-                      )}
-                    </div>
-
-                    {isSubscription && preferredOption.totalPrice && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                        Billed {preferredOption.totalPrice}
+                    {isSubscription && preferredOption.totalPrice ? (
+                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                        {preferredOption.priceFormatted} per month (Billed {preferredOption.totalPrice})
                       </p>
+                    ) : (
+                      <div className="mb-2">
+                        <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
+                          {preferredOption.priceFormatted}
+                        </span>
+                      </div>
                     )}
 
                     {preferredOption.savings ? (
