@@ -157,10 +157,42 @@ const REDIRECTS = [
     destination: '/case-studies',
     permanent: true,
   },
+
+  // Solutions pages moved to /learn/solutions
   {
-    source: '/products',
-    destination: '/products/compare',
-    permanent: false,
+    source: '/solutions/ammonia-smell-cat-litter',
+    destination: '/learn/solutions/ammonia-smell-cat-litter',
+    permanent: true,
+  },
+  {
+    source: '/solutions/apartment-cat-smell-solution',
+    destination: '/learn/solutions/apartment-cat-smell-solution',
+    permanent: true,
+  },
+  {
+    source: '/solutions/litter-box-smell-elimination',
+    destination: '/learn/solutions/litter-box-smell-elimination',
+    permanent: true,
+  },
+  {
+    source: '/solutions/multiple-cats-odor-control',
+    destination: '/learn/solutions/multiple-cats-odor-control',
+    permanent: true,
+  },
+  {
+    source: '/solutions/natural-cat-litter-additive',
+    destination: '/learn/solutions/natural-cat-litter-additive',
+    permanent: true,
+  },
+  {
+    source: '/solutions/senior-cat-litter-solutions',
+    destination: '/learn/solutions/senior-cat-litter-solutions',
+    permanent: true,
+  },
+  {
+    source: '/solutions',
+    destination: '/learn',
+    permanent: true,
   },
 ];
 

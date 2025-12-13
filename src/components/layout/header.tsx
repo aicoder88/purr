@@ -13,7 +13,7 @@ import { locationsByProvince } from "../../data/locations";
 
 interface DropdownItem {
   label: string;
-  href: string;
+  href?: string;
   isGroupHeader?: boolean;
   indent?: boolean;
 }
@@ -31,7 +31,6 @@ export function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
-  const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
   const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
   const [hoveredProvinceCode, setHoveredProvinceCode] = useState<string | null>(null);
   const { t, locale } = useTranslation();
@@ -59,31 +58,21 @@ export function Header() {
       setIsProductsDropdownOpen(true);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
-      setIsSolutionsDropdownOpen(false);
       setIsLocationsDropdownOpen(false);
     } else if (id === 'retailers') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(true);
       setIsLearnDropdownOpen(false);
-      setIsSolutionsDropdownOpen(false);
       setIsLocationsDropdownOpen(false);
     } else if (id === 'learn') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(true);
-      setIsSolutionsDropdownOpen(false);
-      setIsLocationsDropdownOpen(false);
-    } else if (id === 'solutions') {
-      setIsProductsDropdownOpen(false);
-      setIsRetailersDropdownOpen(false);
-      setIsLearnDropdownOpen(false);
-      setIsSolutionsDropdownOpen(true);
       setIsLocationsDropdownOpen(false);
     } else if (id === 'locations') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
-      setIsSolutionsDropdownOpen(false);
       setIsLocationsDropdownOpen(true);
     }
   }, []);
@@ -93,25 +82,22 @@ export function Header() {
     if (id === 'products') {
       const next = !isProductsDropdownOpen;
       setIsProductsDropdownOpen(next);
-      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
     } else if (id === 'retailers') {
       const next = !isRetailersDropdownOpen;
       setIsRetailersDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
     } else if (id === 'learn') {
       const next = !isLearnDropdownOpen;
       setIsLearnDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsSolutionsDropdownOpen(false); setIsLocationsDropdownOpen(false); }
-    } else if (id === 'solutions') {
-      const next = !isSolutionsDropdownOpen;
-      setIsSolutionsDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+
     } else if (id === 'locations') {
       const next = !isLocationsDropdownOpen;
       setIsLocationsDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsSolutionsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); }
     }
-  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isSolutionsDropdownOpen, isLocationsDropdownOpen]);
+  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isLocationsDropdownOpen]);
 
   const handleNavKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
     const id = (e.currentTarget.dataset.menuId as string) || '';
@@ -125,7 +111,6 @@ export function Header() {
       if (id === 'products') setIsProductsDropdownOpen(false);
       if (id === 'retailers') setIsRetailersDropdownOpen(false);
       if (id === 'learn') setIsLearnDropdownOpen(false);
-      if (id === 'solutions') setIsSolutionsDropdownOpen(false);
       if (id === 'locations') setIsLocationsDropdownOpen(false);
     }
   }, [handleNavClick]);
@@ -196,7 +181,6 @@ export function Header() {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
-      setIsSolutionsDropdownOpen(false);
       setIsLocationsDropdownOpen(false);
     };
 
@@ -215,7 +199,6 @@ export function Header() {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(false);
-        setIsSolutionsDropdownOpen(false);
         setIsLocationsDropdownOpen(false);
       }
     };
@@ -261,21 +244,14 @@ export function Header() {
         { label: 'Activated Carbon Benefits', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/activated-carbon-benefits` },
         { label: 'Cat Litter Guide', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/cat-litter-guide` },
         { label: 'How to Use', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/how-to-use-deodorizer` },
-        { label: 'Technology Comparison', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers` }
-      ]
-    },
-    {
-      id: 'solutions',
-      label: 'Solutions',
-      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions`,
-      hasDropdown: true,
-      dropdownItems: [
-        { label: 'Ammonia Smell Control', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/ammonia-smell-cat-litter` },
-        { label: 'Apartment Living', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/apartment-cat-smell-solution` },
-        { label: 'Litter Box Odor', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/litter-box-smell-elimination` },
-        { label: 'Multiple Cats', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/multiple-cats-odor-control` },
-        { label: 'Natural Additive', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/natural-cat-litter-additive` },
-        { label: 'Senior Cats', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/solutions/senior-cat-litter-solutions` }
+        { label: 'Technology Comparison', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers` },
+        { label: 'Solutions', isGroupHeader: true },
+        { label: 'Ammonia Smell Control', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/ammonia-smell-cat-litter`, indent: true },
+        { label: 'Apartment Living', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/apartment-cat-smell-solution`, indent: true },
+        { label: 'Litter Box Odor', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/litter-box-smell-elimination`, indent: true },
+        { label: 'Multiple Cats', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/multiple-cats-odor-control`, indent: true },
+        { label: 'Natural Additive', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/natural-cat-litter-additive`, indent: true },
+        { label: 'Senior Cats', href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/learn/solutions/senior-cat-litter-solutions`, indent: true }
       ]
     },
     {
@@ -324,7 +300,7 @@ export function Header() {
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
-                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'solutions' && isSolutionsDropdownOpen) || (item.id === 'locations' && isLocationsDropdownOpen) ? 'true' : 'false'}
+                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'locations' && isLocationsDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={handleNavMouseEnter}
                       // Do not auto-dismiss on mouse leave
@@ -337,7 +313,6 @@ export function Header() {
                     {((item.id === 'products' && isProductsDropdownOpen) ||
                       (item.id === 'retailers' && isRetailersDropdownOpen) ||
                       (item.id === 'learn' && isLearnDropdownOpen) ||
-                      (item.id === 'solutions' && isSolutionsDropdownOpen) ||
                       (item.id === 'locations' && isLocationsDropdownOpen)) && (
                         <div
                           className={`absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 ${item.id === 'locations' ? 'min-w-[560px] p-3' : 'w-64 max-h-96 overflow-y-auto p-2'}`}
@@ -428,7 +403,7 @@ export function Header() {
                               ) : (
                                 <Link
                                   key={dropdownIndex}
-                                  href={dropdownItem.href}
+                                  href={dropdownItem.href || ''}
                                   className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
                                   role="menuitem"
                                 >
@@ -526,7 +501,7 @@ export function Header() {
                           ) : (
                             <Link
                               key={dropdownIndex}
-                              href={dropdownItem.href}
+                              href={dropdownItem.href || ''}
                               className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
                               onClick={closeMenu}
                             >

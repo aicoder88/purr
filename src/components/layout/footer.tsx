@@ -285,7 +285,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/solutions/ammonia-smell-cat-litter" : "/solutions/ammonia-smell-cat-litter"}
+                    href={locale === 'fr' ? "/fr/learn/solutions/ammonia-smell-cat-litter" : "/learn/solutions/ammonia-smell-cat-litter"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Ammonia Smell
@@ -293,7 +293,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/solutions/apartment-cat-smell-solution" : "/solutions/apartment-cat-smell-solution"}
+                    href={locale === 'fr' ? "/fr/learn/solutions/apartment-cat-smell-solution" : "/learn/solutions/apartment-cat-smell-solution"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Apartment Living
@@ -301,7 +301,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/solutions/multiple-cats-odor-control" : "/solutions/multiple-cats-odor-control"}
+                    href={locale === 'fr' ? "/fr/learn/solutions/multiple-cats-odor-control" : "/learn/solutions/multiple-cats-odor-control"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Multiple Cats
@@ -309,7 +309,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/solutions/natural-cat-litter-additive" : "/solutions/natural-cat-litter-additive"}
+                    href={locale === 'fr' ? "/fr/learn/solutions/natural-cat-litter-additive" : "/learn/solutions/natural-cat-litter-additive"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Natural Additive

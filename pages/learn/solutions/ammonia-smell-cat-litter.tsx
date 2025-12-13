@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,10 +18,10 @@ export default function ammoniasmellcatlitterPage() {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
-        canonical="https://www.purrify.ca/solutions/ammonia-smell-cat-litter"
+        canonical="https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter"
         openGraph={{
           type: 'article',
-          url: 'https://www.purrify.ca/solutions/ammonia-smell-cat-litter',
+          url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
           title: seoTitle,
           description: seoDescription,
           images: [

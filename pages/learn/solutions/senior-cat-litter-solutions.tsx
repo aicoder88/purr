@@ -1,13 +1,13 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
-import { formatProductPrice } from '../../src/lib/pricing';
+import { formatProductPrice } from '../../../src/lib/pricing';
 
 export default function SeniorCatLitterSolutionsPage() {
   const seoTitle = 'Senior Cat Litter Odor Solutions | Purrify';
   const seoDescription = 'Specialized litter solutions for senior cats. Gentle, fragrance-free odor control that works with age-related health issues and sensitive systems.';
-  const canonicalUrl = 'https://www.purrify.ca/solutions/senior-cat-litter-solutions';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions';
 
   // SEO optimized images for senior cat care
   const heroImage = '/images/solutions/ammonia-happy-cat.png';
@@ -34,18 +34,19 @@ export default function SeniorCatLitterSolutionsPage() {
             },
           ],
         }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'senior cat litter, elderly cat odor control, gentle cat litter additive, aging cat care, fragrance-free senior pets',
-          },
-        ]}
+        additionalMetaTags={
+          [
+            {
+              name: 'keywords',
+              content: 'senior cat litter, elderly cat odor control, gentle cat litter additive, aging cat care, fragrance-free senior pets',
+            },
+          ]}
       />
 
       <ArticleSchema
         title={seoTitle}
         description={seoDescription}
-        path="/solutions/senior-cat-litter-solutions"
+        path="/learn/solutions/senior-cat-litter-solutions"
         options={{
           category: 'Senior Pet Care',
           keywords: ['senior cats', 'elderly pet care', 'gentle odor control', 'aging cats'],

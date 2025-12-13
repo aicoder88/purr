@@ -59,14 +59,14 @@ export default function SafetyInformationPage() {
     {
       text: "Odor elimination (cat litter additive, waste management, air treatment)",
       links: [
-        { text: "apartment cat smell solution", href: "/solutions/apartment-cat-smell-solution" },
-        { text: "litter box smell elimination", href: "/solutions/litter-box-smell-elimination" }
+        { text: "apartment cat smell solution", href: "/learn/solutions/apartment-cat-smell-solution" },
+        { text: "litter box smell elimination", href: "/learn/solutions/litter-box-smell-elimination" }
       ]
     },
     {
       text: "Multi-cat household odor control",
       links: [
-        { text: "multiple cats odor control", href: "/solutions/multiple-cats-odor-control" },
+        { text: "multiple cats odor control", href: "/learn/solutions/multiple-cats-odor-control" },
         { text: "how to use deodorizer", href: "/learn/how-to-use-deodorizer" }
       ]
     },

@@ -1,11 +1,12 @@
 import { NextSeo } from 'next-seo';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function naturalcatlitteradditivePage() {
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
   const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';
-  const canonicalUrl = 'https://www.purrify.ca/solutions/natural-cat-litter-additive';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive';
 
   // Natural cat litter additive images
   const heroImage = '/images/solutions/litter-box-hero.png';

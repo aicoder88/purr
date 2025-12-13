@@ -1,12 +1,12 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
 
 export default function MultipleCatsOdorControlPage() {
   const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
   const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
-  const canonicalUrl = 'https://www.purrify.ca/solutions/multiple-cats-odor-control';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control';
 
   // SEO optimized images for multi-cat households
   const heroImage = '/images/solutions/apartment-hero.png';
@@ -43,7 +43,7 @@ export default function MultipleCatsOdorControlPage() {
       <ArticleSchema
         title={seoTitle}
         description={seoDescription}
-        path="/solutions/multiple-cats-odor-control"
+        path="/learn/solutions/multiple-cats-odor-control"
         options={{
           category: 'Multi-Cat Solutions',
           keywords: ['multiple cats', 'multi-cat household', 'odor control', 'cat colony', 'large cat family'],

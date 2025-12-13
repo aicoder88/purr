@@ -1,9 +1,9 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
-import { useTranslation } from '../../src/lib/translation-context';
-import { formatProductPrice } from '../../src/lib/pricing';
+import { useTranslation } from '../../../src/lib/translation-context';
+import { formatProductPrice } from '../../../src/lib/pricing';
 
 export default function ApartmentCatSmellSolutionPage() {
   const { locale } = useTranslation();

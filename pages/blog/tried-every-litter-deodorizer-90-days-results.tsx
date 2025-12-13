@@ -532,7 +532,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
                     </p>
                   </Link>
 
-                  <Link href="/solutions/ammonia-smell-cat-litter" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                  <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
                     <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
                       Ammonia Smell Solution Guide
                     </h3>

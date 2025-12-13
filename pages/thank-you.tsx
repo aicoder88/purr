@@ -178,7 +178,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
 
             <div className="space-y-4 text-left">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white flex items-center justify-center font-bold">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white dark:text-gray-900 flex items-center justify-center font-bold">
                   1
                 </div>
                 <div>
@@ -192,7 +192,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
               </div>
 
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white flex items-center justify-center font-bold">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white dark:text-gray-900 flex items-center justify-center font-bold">
                   2
                 </div>
                 <div>
@@ -206,7 +206,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
               </div>
 
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white flex items-center justify-center font-bold">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03E46A] text-white dark:text-gray-900 flex items-center justify-center font-bold">
                   3
                 </div>
                 <div>
@@ -233,7 +233,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#03E46A] hover:bg-[#02C55A] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-gray-900 bg-[#03E46A] hover:bg-[#02C55A] transition-colors"
             >
               Return to Home
             </Link>

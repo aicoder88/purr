@@ -5,7 +5,7 @@ import { User, Gift, Star, ArrowRight, Heart, CheckCircle, Clock, Shield } from 
 import { Button } from '../../src/components/ui/button';
 import { Card } from '../../src/components/ui/card';
 import { Badge } from '../../src/components/ui/badge';
-import { useCart } from '../../src/lib/cart-context';
+
 import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
@@ -31,7 +31,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
   const trialPrice = formatProductPrice('trial');
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
   const [isClaimingOffer, setIsClaimingOffer] = useState(false);
-  const { addToCart } = useCart();
+
 
   // Countdown timer for urgency
   useEffect(() => {
@@ -58,9 +58,6 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
     setIsClaimingOffer(true);
 
     try {
-      // Add free trial to cart (using the cart's expected format)
-      await addToCart('purrify-12g-referral');
-
       // Track referral conversion
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_offer_claimed', {
@@ -78,8 +75,8 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
         claimedAt: new Date().toISOString()
       }));
 
-      // Redirect to checkout
-      window.location.href = '/checkout';
+      // Redirect to product page
+      window.location.href = '/products/trial-size';
 
     } catch (error) {
       console.error('Failed to claim referral offer:', error);

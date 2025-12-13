@@ -60,25 +60,25 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'Ammonia Smell from Cat Litter Solution',
-    href: '/solutions/ammonia-smell-cat-litter',
+    href: '/learn/solutions/ammonia-smell-cat-litter',
     image: '/catonbed.jpeg',
     alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {
     title: 'Apartment Cat Smell Solution',
-    href: '/solutions/apartment-cat-smell-solution',
+    href: '/learn/solutions/apartment-cat-smell-solution',
     image: '/optimized/small-apartment-odor-control.webp',
     alt: 'Modern apartment living space'
   },
   {
     title: 'Natural Cat Litter Additive Guide',
-    href: '/solutions/natural-cat-litter-additive',
+    href: '/learn/solutions/natural-cat-litter-additive',
     image: '/optimized/natural-cat-litter.webp',
     alt: 'Natural ingredients for cat care'
   },
   {
     title: 'Multiple Cats Odor Control Solutions',
-    href: '/solutions/multiple-cats-odor-control',
+    href: '/learn/solutions/multiple-cats-odor-control',
     image: '/optimized/multiple-cats-together.webp',
     alt: 'Multiple cats in a home environment'
   },
