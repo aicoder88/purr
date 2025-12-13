@@ -177,6 +177,7 @@ export interface TranslationType {
     mostPopular: string;
     addToCart: string;
     buyNow: string;
+    subscribeNow: string;
     adding: string;
     viewAllProducts: string;
   };

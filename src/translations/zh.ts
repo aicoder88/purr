@@ -249,6 +249,7 @@ export const zh = {
     mostPopular: "最受欢迎",
     addToCart: "加入购物车",
     buyNow: "立即购买",
+    subscribeNow: "订阅享优惠",
     adding: "添加中...",
     viewAllProducts: "查看所有产品"
   },

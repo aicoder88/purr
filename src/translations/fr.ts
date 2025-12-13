@@ -244,6 +244,7 @@ export const fr = {
     mostPopular: "LE PLUS POPULAIRE",
     addToCart: "Ajouter au Panier",
     buyNow: "Acheter Maintenant",
+    subscribeNow: "S'abonner & Économiser",
     adding: "Ajout en cours...",
     viewAllProducts: "VOIR TOUS LES PRODUITS"
   },

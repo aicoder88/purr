@@ -220,6 +220,7 @@ export const en = {
     mostPopular: "MOST POPULAR",
     addToCart: "Add to Cart",
     buyNow: "Buy Now",
+    subscribeNow: "Subscribe & Save",
     adding: "Adding...",
     viewAllProducts: "VIEW ALL PRODUCTS"
   },
