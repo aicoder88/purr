@@ -12,7 +12,6 @@ import Script from 'next/script';
 import { TranslationProvider } from '../src/lib/translation-context';
 import { useRouter } from 'next/router';
 import { Layout } from '../src/components/layout/layout';
-import { CartProvider } from '../src/lib/cart-context';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
@@ -112,8 +111,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   return (
     <SessionProvider session={pageProps.session}>
       <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
-        <CartProvider>
-          <TranslationProvider language={locale ?? 'en'}>
+        <TranslationProvider language={locale ?? 'en'}>
             <Head>
               <meta charSet="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -225,7 +223,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <ToastProvider />
             <AnalyticsComponent />
           </TranslationProvider>
-        </CartProvider>
       </ThemeProvider>
     </SessionProvider>
   );

@@ -2,10 +2,8 @@ import { Container } from "@/components/ui/container";
 import { PRODUCTS } from "@/lib/constants";
 import dynamic from "next/dynamic";
 import { useTranslation } from "../../lib/translation-context";
-import { useCart } from "../../lib/cart-context";
 import { ReviewSystem } from '../reviews/ReviewSystem';
-import { ecommerceEvents } from '../../lib/gtm-events';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { useIntersectionObserver } from "@/lib/component-utils";
 import { ProductCard } from "./products/ProductCard";
@@ -24,59 +22,13 @@ interface Product {
 
 export function Products() {
   const { t } = useTranslation();
-  const { addToCart, items } = useCart();
   const [isVisible, setIsVisible] = useState(false);
-  const [addingToCart, setAddingToCart] = useState<string | null>(null);
-  const [addedToCart, setAddedToCart] = useState<string | null>(null);
-  const [quantities, setQuantities] = useState<{[key: string]: number}>({});
 
   const sectionRef = useIntersectionObserver((isIntersecting) => {
     if (isIntersecting) {
       setIsVisible(true);
     }
   });
-
-  const handleAddToCart = useCallback(async (product: Product) => {
-    setAddingToCart(product.id);
-    const quantity = quantities[product.id] || 1;
-    try {
-      // Add the specified quantity
-      for (let i = 0; i < quantity; i++) {
-        addToCart(product.id);
-      }
-      // Track ecommerce event
-      ecommerceEvents.addToCart({
-        item_id: product.id,
-        item_name: product.name,
-        category: 'cat-litter-additive',
-        price: product.price,
-        quantity: quantity
-      });
-
-      // Show success state
-      setAddingToCart(null);
-      setAddedToCart(product.id);
-
-      // Reset to normal state after 2 seconds
-      setTimeout(() => {
-        setAddedToCart(null);
-      }, 2000);
-    } catch (err) {
-      console.error('Failed to add to cart:', err);
-      setAddingToCart(null);
-    }
-  }, [addToCart, quantities]);
-
-  const getCartQuantity = useCallback((productId: string) => {
-    const cartItem = items.find(item => item.id === productId);
-    return cartItem?.quantity || 0;
-  }, [items]);
-
-  const updateProductQuantity = useCallback((productId: string, delta: number) => {
-    const currentQty = quantities[productId] || 1;
-    const newQty = Math.max(1, currentQty + delta);
-    setQuantities(prev => ({ ...prev, [productId]: newQty }));
-  }, [quantities]);
   
   const sectionClasses = createSectionClasses('light');
 
@@ -121,13 +73,7 @@ export function Products() {
               product={product}
               index={index}
               isVisible={isVisible}
-              addingToCart={addingToCart}
-              addedToCart={addedToCart}
-              quantities={quantities}
-              cartQuantity={getCartQuantity(product.id)}
               t={t}
-              onAddToCart={handleAddToCart}
-              onUpdateQuantity={updateProductQuantity}
             />
           ))}
         </div>

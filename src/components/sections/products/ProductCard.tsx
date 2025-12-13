@@ -1,10 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
-import { ShoppingCart, Plus, Minus, Check } from 'lucide-react';
 import Image from 'next/image';
 import { createButtonClasses, GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme-utils";
-import { LoadingSpinner, CheckIcon, createStaggeredAnimation } from "@/lib/component-utils";
-import { ecommerceEvents } from '../../../lib/gtm-events';
+import { createStaggeredAnimation } from "@/lib/component-utils";
 import { TranslationType } from '../../../translations/types';
 import { getPaymentLink } from '../../../lib/payment-links';
 
@@ -21,77 +18,23 @@ interface ProductCardProps {
   product: Product;
   index: number;
   isVisible: boolean;
-  addingToCart: string | null;
-  addedToCart: string | null;
-  quantities: { [key: string]: number };
-  cartQuantity: number;
   t: TranslationType;
-  onAddToCart: (product: Product) => void;
-  onUpdateQuantity: (productId: string, delta: number) => void;
 }
-
-const QuantityControl = ({
-  productId,
-  quantity,
-  onUpdate,
-  productName
-}: {
-  productId: string;
-  quantity: number;
-  onUpdate: (productId: string, delta: number) => void;
-  productName: string;
-}) => (
-  <div className="flex items-center justify-center space-x-3">
-    <button
-      onClick={() => onUpdate(productId, -1)}
-      className={`w-8 h-8 ${COLORS.surface.light} hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-gray-200 dark:focus:bg-gray-600 rounded-full flex items-center justify-center ${TRANSITIONS.default} focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2`}
-      aria-label={`Decrease quantity for ${productName}`}
-      disabled={quantity === 1}
-    >
-      <Minus className={`w-4 h-4 ${COLORS.text.tertiary}`} />
-    </button>
-    <span
-      className={`text-lg font-semibold min-w-[2rem] text-center ${COLORS.text.primary}`}
-      aria-live="polite"
-      aria-label={`Current quantity: ${quantity}`}
-    >
-      {quantity}
-    </span>
-    <button
-      onClick={() => onUpdate(productId, 1)}
-      className={`w-8 h-8 ${COLORS.surface.light} hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-gray-200 dark:focus:bg-gray-600 rounded-full flex items-center justify-center ${TRANSITIONS.default} focus:outline-none focus:ring-2 focus:ring-[#FF3131] dark:focus:ring-[#FF5050] focus:ring-offset-2`}
-      aria-label={`Increase quantity for ${productName}`}
-    >
-      <Plus className={`w-4 h-4 ${COLORS.text.tertiary}`} />
-    </button>
-  </div>
-);
-
-const CartBadge = ({ quantity }: { quantity: number }) => (
-  <span
-    className="text-sm text-green-600 dark:text-green-400 font-medium bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full"
-    aria-live="polite"
-  >
-    {quantity} in cart
-  </span>
-);
 
 export const ProductCard = ({
   product,
   index,
   isVisible,
-  addingToCart,
-  addedToCart,
-  quantities,
-  cartQuantity,
-  t,
-  onAddToCart,
-  onUpdateQuantity
+  t
 }: ProductCardProps) => {
-  const currentQuantity = quantities[product.id] || 1;
-  const isAdding = addingToCart === product.id;
-  const isAdded = addedToCart === product.id;
   const staggerStyle = createStaggeredAnimation(index);
+
+  // Map product IDs to payment link keys
+  const getPaymentLinkKey = (productId: string): 'trialSingle' | 'familyAutoship' | 'jumboAutoship' => {
+    if (productId === 'purrify-12g') return 'trialSingle';
+    if (productId === 'purrify-120g') return 'familyAutoship';
+    return 'jumboAutoship'; // purrify-240g
+  };
 
   const cardClasses = `bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-xl border ${COLORS.border.accent} ${TRANSITIONS.slow} hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative z-10`;
 
@@ -178,54 +121,18 @@ export const ProductCard = ({
             <span className={`text-xl sm:text-2xl font-bold ${GRADIENTS.text.primary}`}>
               ${product.price.toFixed(2)}
             </span>
-            {cartQuantity > 0 && <CartBadge quantity={cartQuantity} />}
           </div>
 
-          {product.id === "purrify-12g" ? (
-            <a
-              href={getPaymentLink('trialSingle') || "https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
-            >
-              {t.productsSection?.buyNow || "Buy Now"}
-            </a>
-          ) : (
-            <div className="space-y-2">
-              <QuantityControl
-                productId={product.id}
-                quantity={currentQuantity}
-                onUpdate={onUpdateQuantity}
-                productName={product.name}
-              />
-
-              <Button
-                className={`w-full font-bold shadow-lg hover:shadow-xl ${TRANSITIONS.default} border-0 ${isAdded
-                  ? 'bg-green-600 hover:bg-green-700 text-white dark:text-white dark:text-gray-100'
-                  : createButtonClasses('primary')
-                  }`}
-                onClick={() => onAddToCart(product)}
-                disabled={isAdding || isAdded}
-              >
-                {isAdding ? (
-                  <div className="flex items-center">
-                    <LoadingSpinner />
-                    <span className="ml-2">{t.productsSection?.adding || "Adding..."}</span>
-                  </div>
-                ) : isAdded ? (
-                  <div className="flex items-center">
-                    <CheckIcon />
-                    <span className="ml-2">Added to Cart!</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    {t.productsSection?.addToCart || "Add to Cart"}
-                  </div>
-                )}
-              </Button>
-            </div>
-          )}
+          <a
+            href={getPaymentLink(getPaymentLinkKey(product.id)) || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
+          >
+            {product.id === "purrify-12g"
+              ? (t.productsSection?.buyNow || "Buy Now")
+              : (t.productsSection?.subscribeNow || "Subscribe & Save")}
+          </a>
         </div>
       </div>
     </div>

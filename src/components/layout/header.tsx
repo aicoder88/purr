@@ -6,7 +6,6 @@ import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
 import { useTranslation } from "../../lib/translation-context";
-import { ShoppingCart } from "../../components/ui/shopping-cart";
 import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -463,13 +462,11 @@ export function Header() {
               {t.nav?.buyNow || 'Buy Now!'}
             </Button>
             <LanguageSwitcher />
-            <ShoppingCart />
           </div>
 
           <div className="flex md:hidden items-center space-x-1">
             <ThemeToggle />
             <LanguageSwitcher />
-            <ShoppingCart />
             <Button
               variant="ghost"
               size="icon"

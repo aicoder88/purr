@@ -1,9 +1,8 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useTranslation } from "../../lib/translation-context";
-import { useCart } from "../../lib/cart-context";
-import { Check, Zap, ShoppingCart, Star, ArrowRight } from 'lucide-react';
+import { Check, Zap, Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
@@ -56,27 +55,7 @@ type ProductCard = {
 
 export function EnhancedProductComparison() {
   const { t, locale } = useTranslation();
-  const { addToCart } = useCart();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  const [addingToCart, setAddingToCart] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'subscription' | 'one-time'>('subscription');
-
-  const handleAddToCart = useCallback(async (productId: string) => {
-    setAddingToCart(productId);
-    try {
-      addToCart(productId);
-    } catch (err) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Failed to add to cart:', err);
-      }
-    } finally {
-      setTimeout(() => setAddingToCart(null), 1000);
-    }
-  }, [addToCart]);
-
-  const handleAddToCartClick = useCallback((productId: string) => {
-    handleAddToCart(productId);
-  }, [handleAddToCart]);
 
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');
@@ -166,19 +145,6 @@ export function EnhancedProductComparison() {
           highlight: true,
           ctaEmphasis: 'primary',
         },
-        {
-          key: 'family-single',
-          type: 'one-time',
-          label: 'One-Time',
-          priceFormatted: formatProductPrice('family', locale),
-          subLabel: 'One-time purchase',
-          action: 'cart',
-          linkKey: 'familySingle',
-          ctaLabel: 'Add to Cart',
-          icon: 'cart',
-          cartProductId: 'purrify-120g',
-          ctaEmphasis: 'secondary',
-        },
       ],
       recommended: true,
     },
@@ -216,19 +182,6 @@ export function EnhancedProductComparison() {
           icon: 'zap',
           ctaEmphasis: 'primary',
         },
-        {
-          key: 'jumbo-single',
-          type: 'one-time',
-          label: 'One-Time',
-          priceFormatted: formatProductPrice('jumbo', locale),
-          subLabel: 'One-time purchase',
-          action: 'cart',
-          linkKey: 'jumboSingle' as PaymentLinkKey,
-          ctaLabel: 'Add to Cart',
-          icon: 'cart',
-          cartProductId: 'purrify-240g',
-          ctaEmphasis: 'secondary',
-        },
       ],
     },
   ];
@@ -258,48 +211,14 @@ export function EnhancedProductComparison() {
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Choose Your Perfect Size
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Simple pricing. No hidden fees. Cancel anytime.
           </p>
-
-          {/* Toggle Switch - Better mobile layout */}
-          <div className="inline-flex bg-white dark:bg-gray-800 p-1.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm mb-8 flex-wrap sm:flex-nowrap justify-center">
-            <button
-              onClick={() => setViewMode('subscription')}
-              className={cn(
-                "px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap",
-                viewMode === 'subscription'
-                  ? "bg-gray-900 text-white shadow-md"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              )}
-            >
-              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden xs:inline">Subscribe & Save</span>
-              <span className="xs:hidden">Subscribe</span>
-            </button>
-            <button
-              onClick={() => setViewMode('one-time')}
-              className={cn(
-                "px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap",
-                viewMode === 'one-time'
-                  ? "bg-gray-900 text-white shadow-md"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              )}
-            >
-              <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden xs:inline">One-Time Purchase</span>
-              <span className="xs:hidden">One-Time</span>
-            </button>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
           {products.map((product) => {
-            // Determine which option to show based on viewMode
-            // If viewMode is subscription but product has no subscription, show one-time (or handle gracefully)
-            // For Trial (12g), it only has one-time. We should probably show it always but maybe style differently.
-
-            const preferredOption = product.purchaseOptions.find(o => o.type === viewMode) || product.purchaseOptions[0];
+            const preferredOption = product.purchaseOptions[0];
             const isSubscription = preferredOption.type === 'subscription';
 
             return (
@@ -364,36 +283,17 @@ export function EnhancedProductComparison() {
                       {product.description}
                     </p>
 
-                    {preferredOption.action === 'link' && preferredOption.linkKey ? (
-                      <Button
-                        asChild
-                        className={cn(
-                          "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
-                          isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
-                        )}
-                      >
-                        <a href={getPaymentLink(preferredOption.linkKey) || '#'} target="_blank" rel="noopener noreferrer">
-                          {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={() => handleAddToCartClick(preferredOption.cartProductId || product.id)}
-                        disabled={addingToCart === (preferredOption.cartProductId || product.id)}
-                        className={cn(
-                          "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
-                          isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
-                        )}
-                      >
-                        {addingToCart === (preferredOption.cartProductId || product.id) ? (
-                          "Adding..."
-                        ) : (
-                          <>
-                            {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-                          </>
-                        )}
-                      </Button>
-                    )}
+                    <Button
+                      asChild
+                      className={cn(
+                        "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
+                        isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
+                      )}
+                    >
+                      <a href={getPaymentLink(preferredOption.linkKey!) || '#'} target="_blank" rel="noopener noreferrer">
+                        {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                      </a>
+                    </Button>
                   </div>
 
                   <div className="border-t border-gray-100 dark:border-gray-700 pt-6 mt-auto">
