@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../src/lib/prisma';
 import { generateAutomatedBlogPost } from '../../../src/lib/blog/generator';
 import { AutomatedContentGenerator } from '../../../src/lib/blog/automated-content-generator';
 import { ContentStore } from '../../../src/lib/blog/content-store';
@@ -20,6 +19,28 @@ function isMethodAllowed(method?: string) {
   return method === 'POST' || method === 'GET';
 }
 
+/**
+ * Get the most recent post from filesystem to check interval
+ */
+async function getLatestPostDate(): Promise<Date | null> {
+  const store = new ContentStore();
+  const posts = await store.getAllPosts('en', true);
+
+  if (posts.length === 0) return null;
+
+  // Sort by publishDate or modifiedDate, most recent first
+  const sorted = posts.sort((a, b) => {
+    const dateA = new Date(a.publishDate || a.modifiedDate || 0);
+    const dateB = new Date(b.publishDate || b.modifiedDate || 0);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  const latest = sorted[0];
+  const latestDate = latest.publishDate || latest.modifiedDate;
+
+  return latestDate ? new Date(latestDate) : null;
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!isMethodAllowed(req.method)) {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -34,23 +55,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const forceRun = req.query.force === 'true' || req.query.force === '1';
-  if (!prisma) {
-    return res.status(503).json({ error: 'Database not available' });
-  }
 
-  const latestAutomated = await prisma.blogPost.findFirst({
-    where: { topicKey: { not: null } },
-    orderBy: { publishedAt: 'desc' },
-  });
-
-  if (!forceRun && latestAutomated?.publishedAt) {
-    const elapsed = Date.now() - new Date(latestAutomated.publishedAt).getTime();
-    if (elapsed < THREE_DAYS_IN_MS) {
-      return res.status(200).json({
-        skipped: true,
-        reason: 'Interval not reached',
-        nextRunInHours: Math.round((THREE_DAYS_IN_MS - elapsed) / (1000 * 60 * 60)),
-      });
+  // Check interval using filesystem instead of database
+  if (!forceRun) {
+    const latestPostDate = await getLatestPostDate();
+    if (latestPostDate) {
+      const elapsed = Date.now() - latestPostDate.getTime();
+      if (elapsed < THREE_DAYS_IN_MS) {
+        return res.status(200).json({
+          skipped: true,
+          reason: 'Interval not reached',
+          nextRunInHours: Math.round((THREE_DAYS_IN_MS - elapsed) / (1000 * 60 * 60)),
+        });
+      }
     }
   }
 
@@ -60,7 +77,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (useNewGenerator) {
       const generator = new AutomatedContentGenerator();
-      const store = new ContentStore();
 
       // Topic rotation
       const topics = [
