@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { generateAutomatedBlogPost } from '../../../src/lib/blog/generator';
 import { AutomatedContentGenerator } from '../../../src/lib/blog/automated-content-generator';
 import { ContentStore } from '../../../src/lib/blog/content-store';
 
@@ -77,6 +76,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Legacy generator requires database - only use if explicitly enabled
     if (useLegacyGenerator) {
+      const { generateAutomatedBlogPost } = await import('../../../src/lib/blog/generator');
       const result = await generateAutomatedBlogPost();
       return res.status(200).json({
         success: true,
