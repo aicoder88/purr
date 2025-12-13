@@ -92,7 +92,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-quicksand), var(--font-inter), ui-sans-serif, system-ui;
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

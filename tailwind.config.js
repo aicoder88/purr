@@ -172,8 +172,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-nunito)", "var(--font-inter)", "ui-sans-serif", "system-ui"],
-        heading: ["var(--font-quicksand)", "var(--font-outfit)", "var(--font-inter)", "ui-sans-serif", "system-ui"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
+        heading: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
       },
       borderRadius: {
         lg: "var(--radius)",

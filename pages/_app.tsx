@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { Quicksand, Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
 import { DefaultSeo } from 'next-seo';
@@ -38,7 +38,6 @@ interface PageProps {
   [key: string]: unknown;
 }
 
-const quicksand = Quicksand({ subsets: ['latin'], display: 'swap', variable: '--font-quicksand', weight: ['400', '500', '600', '700'] });
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '600', '700'] });
 
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
@@ -112,78 +111,78 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
     <SessionProvider session={pageProps.session}>
       <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
         <TranslationProvider language={locale ?? 'en'}>
-            <Head>
-              <meta charSet="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-              <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-              <meta name="theme-color" content="#FF3131" media="(prefers-color-scheme: light)" />
-              <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
-              <meta name="format-detection" content="telephone=no" />
-              <meta name="apple-mobile-web-app-capable" content="yes" />
-              <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-              <meta name="msapplication-TileColor" content="#FF3131" />
-              <meta name="msapplication-navbutton-color" content="#FF3131" />
-              <meta name="application-name" content={SITE_NAME} />
-              <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
-              <meta name="mobile-web-app-capable" content="yes" />
-              <meta name="referrer" content="origin-when-cross-origin" />
+          <Head>
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="theme-color" content="#FF3131" media="(prefers-color-scheme: light)" />
+            <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
+            <meta name="format-detection" content="telephone=no" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+            <meta name="msapplication-TileColor" content="#FF3131" />
+            <meta name="msapplication-navbutton-color" content="#FF3131" />
+            <meta name="application-name" content={SITE_NAME} />
+            <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
+            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="referrer" content="origin-when-cross-origin" />
 
-              {/* Favicon and App Icons */}
-              <link rel="icon" href="/images/favicon.png" type="image/png" />
-              <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
-              <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
-              <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
-              <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
-              <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-              <link rel="mask-icon" href="/images/icon-128.png" color="#FF3131" />
-              <link rel="manifest" href="/manifest.json" />
+            {/* Favicon and App Icons */}
+            <link rel="icon" href="/images/favicon.png" type="image/png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
+            <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
+            <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
+            <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+            <link rel="mask-icon" href="/images/icon-128.png" color="#FF3131" />
+            <link rel="manifest" href="/manifest.json" />
 
-              {/* DNS Prefetch only for non-critical third-parties */}
-              <link rel="dns-prefetch" href="https://api.dicebear.com" />
-              <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-            </Head>
+            {/* DNS Prefetch only for non-critical third-parties */}
+            <link rel="dns-prefetch" href="https://api.dicebear.com" />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+          </Head>
 
-            <DefaultSeo {...defaultSeoConfig} />
+          <DefaultSeo {...defaultSeoConfig} />
 
-            {/* Organization Schema Markup */}
-            <Script
-              id="organization-schema"
-              type="application/ld+json"
+          {/* Organization Schema Markup */}
+          <Script
+            id="organization-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: SITE_NAME,
+                url: canonicalUrl,
+                logo: '/purrify-logo.png',
+                sameAs: Object.values(SOCIAL_LINKS),
+                contactPoint: [
+                  {
+                    '@type': 'ContactPoint',
+                    telephone: CONTACT_INFO.phoneInternational,
+                    contactType: 'customer service',
+                    areaServed: 'CA',
+                    availableLanguage: ['English', 'French'],
+                  },
+                ],
+              })
+            }}
+          />
+
+          <div className={`${inter.variable} font-sans`}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </div>
+
+          <PerformanceMonitor enabled sampleRate={0.1} />
+          <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
+
+          {/* Idle-load chat plugin to avoid blocking TTI */}
+          {shouldLoadChat && (
+            <script
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  '@context': 'https://schema.org',
-                  '@type': 'Organization',
-                  name: SITE_NAME,
-                  url: canonicalUrl,
-                  logo: '/purrify-logo.png',
-                  sameAs: Object.values(SOCIAL_LINKS),
-                  contactPoint: [
-                    {
-                      '@type': 'ContactPoint',
-                      telephone: CONTACT_INFO.phoneInternational,
-                      contactType: 'customer service',
-                      areaServed: 'CA',
-                      availableLanguage: ['English', 'French'],
-                    },
-                  ],
-                })
-              }}
-            />
-
-            <div className={`${quicksand.variable} ${inter.variable}`}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </div>
-
-            <PerformanceMonitor enabled sampleRate={0.1} />
-            <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
-
-            {/* Idle-load chat plugin to avoid blocking TTI */}
-            {shouldLoadChat && (
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
+                __html: `
                   (function(){
                     if (window.__purrifyChatLoaded) return;
                     function loadChat(){
@@ -214,15 +213,15 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                     schedule();
                   })();
                 `
-                }}
-              />
-            )}
+              }}
+            />
+          )}
 
 
-            <Toaster />
-            <ToastProvider />
-            <AnalyticsComponent />
-          </TranslationProvider>
+          <Toaster />
+          <ToastProvider />
+          <AnalyticsComponent />
+        </TranslationProvider>
       </ThemeProvider>
     </SessionProvider>
   );
