@@ -1,18 +1,151 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
+import Link from 'next/link';
+import { NextSeo } from 'next-seo';
+import { Container } from '@/components/ui/container';
+import { locationsByProvince, Province } from '@/data/locations';
 
-/**
- * Redirect /locations to homepage with locations section
- * This maintains SEO and prevents 404s
- */
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+interface LocationsIndexProps {
+  provinces: Province[];
+}
+
+const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
+  const seoTitle = 'Cat Litter Odor Control - All Locations in Canada | Purrify';
+  const seoDescription = 'Find Purrify activated carbon cat litter additive in your province. Explore our comprehensive guides for cities across Canada with fast, reliable shipping.';
+  const canonicalUrl = 'https://www.purrify.ca/locations';
+
+  return (
+    <>
+      <NextSeo
+        title={seoTitle}
+        description={seoDescription}
+        canonical={canonicalUrl}
+        openGraph={{
+          title: seoTitle,
+          description: seoDescription,
+          url: canonicalUrl,
+        }}
+      />
+
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        {/* Hero Section */}
+        <section className="py-20 px-4">
+          <Container>
+            <div className="max-w-5xl mx-auto text-center space-y-6">
+              <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">
+                Nationwide Coverage
+              </span>
+              <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
+                Cat Litter Odor Control Across Canada
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
+                Discover Purrify locations throughout Canada. Select your province to find city-specific guides, shipping information, and local resources for cat owners.
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link
+                  href="/products/trial-size"
+                  className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
+                >
+                  Shop Purrify
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Provinces Grid */}
+        <section className="py-16 px-4 bg-white dark:bg-gray-900">
+          <Container>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
+                Select Your Province
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {provinces.map((province) => (
+                  <Link
+                    key={province.slug}
+                    href={`/locations/province/${province.slug}`}
+                    className="group flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/70 p-6 transition hover:border-orange-300 dark:hover:border-orange-500/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:focus-visible:ring-orange-400 focus-visible:ring-offset-2"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-300">
+                        {province.name}
+                      </h3>
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-300 font-bold text-sm group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition">
+                        {province.code}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      {province.cities.length} {province.cities.length === 1 ? 'city' : 'cities'} available
+                    </p>
+                    <div className="mt-auto">
+                      <span className="inline-flex items-center text-sm font-medium text-orange-600 dark:text-orange-300 group-hover:text-orange-700 dark:group-hover:text-orange-200">
+                        View province guide →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Information Section */}
+        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
+                Why Choose Purrify?
+              </h2>
+              <div className="grid gap-8 md:grid-cols-3">
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Fast Shipping</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Reliable delivery across all provinces with tracking
+                  </p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Natural Solution</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Activated carbon technology for superior odor control
+                  </p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Local Support</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    City-specific guides tailored to your climate
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+      </div>
+    </>
+  );
+};
+
+export const getStaticProps: GetStaticProps<LocationsIndexProps> = async () => {
   return {
-    redirect: {
-      destination: locale === 'fr' ? '/fr/#locations' : '/#locations',
-      permanent: false, // 302 redirect (temporary)
+    props: {
+      provinces: locationsByProvince,
     },
+    revalidate: 3600, // 1 hour ISR for content updates
   };
 };
 
-export default function LocationsIndex() {
-  return null;
-}
+export default LocationsIndex;

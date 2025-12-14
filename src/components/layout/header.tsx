@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import type { MouseEvent as ReactMouseEvent } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, ShoppingBag, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
@@ -9,7 +8,6 @@ import { useTranslation } from "../../lib/translation-context";
 import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { locationsByProvince } from "../../data/locations";
 
 interface DropdownItem {
   label: string;
@@ -31,25 +29,9 @@ export function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
-  const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
-  const [hoveredProvinceCode, setHoveredProvinceCode] = useState<string | null>(null);
   const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
-  const handleProvinceHighlight = useCallback((provinceCode: string) => {
-    setHoveredProvinceCode(provinceCode);
-  }, [setHoveredProvinceCode]);
-  const hoveredProvince = useMemo(
-    () => locationsByProvince.find((province) => province.code === hoveredProvinceCode) || null,
-    [hoveredProvinceCode]
-  );
-  const provinceHeadingText = hoveredProvince
-    ? (t.locationsMenu?.provinceCitiesHeading?.replace("{{province}}", hoveredProvince.name) ?? `${hoveredProvince.name} Cities`)
-    : (t.locationsMenu?.selectProvince ?? 'Select a Province');
-  const hoverPromptText = t.locationsMenu?.hoverPrompt ?? 'Hover a province to view cities.';
-  const provinceGuideLinkText = hoveredProvince
-    ? (t.locationsMenu?.viewProvinceGuide?.replace("{{province}}", hoveredProvince.name) ?? `View ${hoveredProvince.name} guide`)
-    : null;
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -58,22 +40,14 @@ export function Header() {
       setIsProductsDropdownOpen(true);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
-      setIsLocationsDropdownOpen(false);
     } else if (id === 'retailers') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(true);
       setIsLearnDropdownOpen(false);
-      setIsLocationsDropdownOpen(false);
     } else if (id === 'learn') {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(true);
-      setIsLocationsDropdownOpen(false);
-    } else if (id === 'locations') {
-      setIsProductsDropdownOpen(false);
-      setIsRetailersDropdownOpen(false);
-      setIsLearnDropdownOpen(false);
-      setIsLocationsDropdownOpen(true);
     }
   }, []);
 
@@ -82,22 +56,17 @@ export function Header() {
     if (id === 'products') {
       const next = !isProductsDropdownOpen;
       setIsProductsDropdownOpen(next);
-      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+      if (next) { setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); }
     } else if (id === 'retailers') {
       const next = !isRetailersDropdownOpen;
       setIsRetailersDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); setIsLocationsDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsLearnDropdownOpen(false); }
     } else if (id === 'learn') {
       const next = !isLearnDropdownOpen;
       setIsLearnDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLocationsDropdownOpen(false); }
-
-    } else if (id === 'locations') {
-      const next = !isLocationsDropdownOpen;
-      setIsLocationsDropdownOpen(next);
-      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); setIsLearnDropdownOpen(false); }
+      if (next) { setIsProductsDropdownOpen(false); setIsRetailersDropdownOpen(false); }
     }
-  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isLocationsDropdownOpen]);
+  }, [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen]);
 
   const handleNavKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
     const id = (e.currentTarget.dataset.menuId as string) || '';
@@ -111,7 +80,6 @@ export function Header() {
       if (id === 'products') setIsProductsDropdownOpen(false);
       if (id === 'retailers') setIsRetailersDropdownOpen(false);
       if (id === 'learn') setIsLearnDropdownOpen(false);
-      if (id === 'locations') setIsLocationsDropdownOpen(false);
     }
   }, [handleNavClick]);
 
@@ -123,34 +91,6 @@ export function Header() {
     setIsMenuOpen(false);
   }, []);
 
-  const buildLocalizedPath = useCallback((path: string) => {
-    if (locale === 'fr') return `/fr${path}`;
-    if (locale === 'zh') return `/zh${path}`;
-    return path;
-  }, [locale]);
-
-  const navigateToPath = useCallback((path: string) => {
-    const targetPath = buildLocalizedPath(path);
-    setIsLocationsDropdownOpen(false);
-    closeMenu();
-    void router.push(targetPath);
-  }, [buildLocalizedPath, closeMenu, router]);
-
-  const handleCityClick = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, slug: string) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
-      return;
-    }
-    event.preventDefault();
-    navigateToPath(`/locations/${slug}`);
-  }, [navigateToPath]);
-
-  const handleProvinceLinkClick = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, provinceSlug: string) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
-      return;
-    }
-    event.preventDefault();
-    navigateToPath(`/locations/province/${provinceSlug}`);
-  }, [navigateToPath]);
 
   const scrollToProducts = useCallback(() => {
     const productsSection = document.getElementById('products');
@@ -165,15 +105,6 @@ export function Header() {
     closeMenu();
   }, [scrollToProducts, closeMenu]);
 
-  // Default to first province when locations menu opens
-  useEffect(() => {
-    if (isLocationsDropdownOpen) {
-      setHoveredProvinceCode(prev => prev ?? locationsByProvince[0]?.code ?? null);
-    } else {
-      setHoveredProvinceCode(null);
-    }
-  }, [isLocationsDropdownOpen]);
-
   // Close mobile menu when route changes
   useEffect(() => {
     const handleRouteChange = () => {
@@ -181,7 +112,6 @@ export function Header() {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
-      setIsLocationsDropdownOpen(false);
     };
 
     router.events.on('routeChangeStart', handleRouteChange);
@@ -199,7 +129,6 @@ export function Header() {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(false);
-        setIsLocationsDropdownOpen(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -255,12 +184,6 @@ export function Header() {
       ]
     },
     {
-      id: 'locations',
-      label: 'Locations',
-      href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/locations/toronto`,
-      hasDropdown: true
-    },
-    {
       id: 'about',
       label: t.nav?.about || 'About',
       href: `${locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : ''}/about/our-story`
@@ -300,7 +223,7 @@ export function Header() {
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
-                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) || (item.id === 'locations' && isLocationsDropdownOpen) ? 'true' : 'false'}
+                      aria-expanded={(item.id === 'products' && isProductsDropdownOpen) || (item.id === 'retailers' && isRetailersDropdownOpen) || (item.id === 'learn' && isLearnDropdownOpen) ? 'true' : 'false'}
                       aria-haspopup="true"
                       onMouseEnter={handleNavMouseEnter}
                       // Do not auto-dismiss on mouse leave
@@ -312,106 +235,32 @@ export function Header() {
                     </button>
                     {((item.id === 'products' && isProductsDropdownOpen) ||
                       (item.id === 'retailers' && isRetailersDropdownOpen) ||
-                      (item.id === 'learn' && isLearnDropdownOpen) ||
-                      (item.id === 'locations' && isLocationsDropdownOpen)) && (
+                      (item.id === 'learn' && isLearnDropdownOpen)) && (
                         <div
-                          className={`absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 ${item.id === 'locations' ? 'min-w-[560px] p-3' : 'w-64 max-h-96 overflow-y-auto p-2'}`}
+                          className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
                           role="menu"
                           aria-labelledby={`dropdown-${item.id}`}
                           data-dropdown
                         >
-                          {item.id === 'locations' ? (
-                            // Two-column layout so province hover reveals city list without clipping
-                            <div className="flex gap-3">
-                              <div className="w-60 max-h-96 overflow-y-auto pr-1 border-r border-gray-200 dark:border-gray-700 space-y-1">
-                                {locationsByProvince.map((province) => {
-                                  const isActive = hoveredProvinceCode === province.code;
-                                  return (
-                                    <button
-                                      key={province.code}
-                                      type="button"
-                                      className={`w-full flex items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${isActive
-                                        ? 'bg-gray-100 dark:bg-gray-700/80 text-brand-red dark:text-brand-red-400'
-                                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/70 hover:text-brand-red dark:hover:text-brand-red-400'
-                                        }`}
-                                      onMouseEnter={() => handleProvinceHighlight(province.code)}
-                                      onFocus={() => handleProvinceHighlight(province.code)}
-                                      onClick={() => handleProvinceHighlight(province.code)}
-                                      aria-haspopup="true"
-                                      aria-expanded={isActive}
-                                    >
-                                      <span className="truncate font-medium">{province.name}</span>
-                                      <ChevronRight
-                                        className={`h-4 w-4 shrink-0 ${isActive
-                                          ? 'text-brand-red dark:text-brand-red-400'
-                                          : 'text-gray-400 dark:text-gray-500'
-                                          }`}
-                                      />
-                                    </button>
-                                  );
-                                })}
+                          {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                            dropdownItem.isGroupHeader ? (
+                              <div
+                                key={dropdownIndex}
+                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                              >
+                                {dropdownItem.label}
                               </div>
-                              <div className="w-64 max-h-96 overflow-y-auto pl-1">
-                                <div className="px-2 py-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                  {provinceHeadingText}
-                                </div>
-                                <div className="mt-1 space-y-1">
-                                  {hoveredProvince ? (
-                                    <>
-                                      {provinceGuideLinkText && (
-                                        <Link
-                                          href={buildLocalizedPath(`/locations/province/${hoveredProvince.slug}`)}
-                                          className="block rounded-md px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:focus-visible:ring-brand-red-400 focus-visible:ring-offset-1"
-                                          onClick={(event) => handleProvinceLinkClick(event, hoveredProvince.slug)}
-                                        >
-                                          {provinceGuideLinkText}
-                                        </Link>
-                                      )}
-                                      {provinceGuideLinkText && (
-                                        <div className="mx-3 h-px bg-gray-200 dark:bg-gray-700" aria-hidden="true" />
-                                      )}
-                                      {hoveredProvince.cities.map((city) => (
-                                        <Link
-                                          key={city.slug}
-                                          href={buildLocalizedPath(`/locations/${city.slug}`)}
-                                          className="block rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:focus-visible:ring-brand-red-400 focus-visible:ring-offset-1"
-                                          role="menuitem"
-                                          onClick={(event) => handleCityClick(event, city.slug)}
-                                        >
-                                          {city.name}
-                                        </Link>
-                                      ))}
-                                    </>
-                                  ) : (
-                                    <p className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
-                                      {hoverPromptText}
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                          ) : (
-                            // Regular dropdown for other menus
-                            item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                              dropdownItem.isGroupHeader ? (
-                                <div
-                                  key={dropdownIndex}
-                                  className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                                >
-                                  {dropdownItem.label}
-                                </div>
-                              ) : (
-                                <Link
-                                  key={dropdownIndex}
-                                  href={dropdownItem.href || ''}
-                                  className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
-                                  role="menuitem"
-                                >
-                                  {dropdownItem.label}
-                                </Link>
-                              )
-                            ))
-                          )}
+                            ) : (
+                              <Link
+                                key={dropdownIndex}
+                                href={dropdownItem.href || ''}
+                                className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
+                                role="menuitem"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            )
+                          ))}
                         </div>
                       )}
                   </>
@@ -469,47 +318,25 @@ export function Header() {
                       <div className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                         {item.label}
                       </div>
-                      {item.id === 'locations' ? (
-                        // Province-based structure for mobile locations menu
-                        locationsByProvince.map((province) => (
-                          <div key={province.code}>
-                            <div className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2">
-                              {province.name}
-                            </div>
-                            {province.cities.map((city) => (
-                              <Link
-                                key={city.slug}
-                                href={buildLocalizedPath(`/locations/${city.slug}`)}
-                                className="block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 pl-8"
-                                onClick={(event) => handleCityClick(event, city.slug)}
-                              >
-                                {city.name}
-                              </Link>
-                            ))}
+                      {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                        dropdownItem.isGroupHeader ? (
+                          <div
+                            key={dropdownIndex}
+                            className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
+                          >
+                            {dropdownItem.label}
                           </div>
-                        ))
-                      ) : (
-                        // Regular dropdown items for other menus
-                        item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                          dropdownItem.isGroupHeader ? (
-                            <div
-                              key={dropdownIndex}
-                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
-                            >
-                              {dropdownItem.label}
-                            </div>
-                          ) : (
-                            <Link
-                              key={dropdownIndex}
-                              href={dropdownItem.href || ''}
-                              className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
-                              onClick={closeMenu}
-                            >
-                              {dropdownItem.label}
-                            </Link>
-                          )
-                        ))
-                      )}
+                        ) : (
+                          <Link
+                            key={dropdownIndex}
+                            href={dropdownItem.href || ''}
+                            className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
+                            onClick={closeMenu}
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        )
+                      ))}
                     </>
                   ) : (
                     <Link

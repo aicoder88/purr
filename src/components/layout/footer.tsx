@@ -341,6 +341,14 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
+                    href={locale === 'fr' ? "/fr/locations" : "/locations"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Locations
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href={locale === 'fr' ? "/fr/reviews" : "/reviews"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
