@@ -196,7 +196,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
       <div className="flex items-center justify-center gap-6 pt-4 pb-3">
         <div className="flex items-center gap-2 text-sm">
           <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-gray-600 dark:text-gray-400">2,847 sold this week</span>
+          <span className="text-gray-600 dark:text-gray-400">147 sold this week</span>
         </div>
         <div className="flex items-center gap-1 text-sm">
           <svg className="w-4 h-4 text-red-500 dark:text-red-400" fill="currentColor" viewBox="0 0 20 20">
@@ -245,7 +245,7 @@ export const HeroContent = ({ t, locale }: HeroContentProps) => {
         <svg className="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
         </svg>
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Winter special ends soon - most customers order 3+ bottles</span>
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Winter special ends soon - most customers order 3+ bags auto shipment</span>
       </div>
     </div>
   );
