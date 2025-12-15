@@ -242,10 +242,10 @@ const slides = [
                     Real Customer, Real Results
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-                    TechFlow Industries Case Study
+                    How We Built It
                 </h2>
                 <p className="text-xl text-gray-400 mb-12 max-w-3xl">
-                    A leading SaaS company transformed their sales training process
+                    Purrify developed DialerGPT to solve our own sales training challenges
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-8">
                     <motion.div
@@ -283,7 +283,7 @@ const slides = [
                     <p className="text-lg text-gray-300">
                         <span className="text-white font-semibold">"Our reps are closing deals faster than ever. The AI training removed all the guesswork."</span>
                         <br />
-                        <span className="text-sm text-gray-500 mt-2 block">— VP of Sales, TechFlow Industries</span>
+                        <span className="text-sm text-gray-500 mt-2 block">— Tony Hammam, Founder & CEO, Purrify</span>
                     </p>
                 </motion.div>
             </div>
@@ -624,7 +624,7 @@ const slides = [
                 >
                     <p className="text-white font-medium">Built by Purrify</p>
                     <p>tony@purrify.ca • Transforming sales training, one conversation at a time</p>
-                    <p className="text-xs">purrify.ca • AWS Account Domain</p>
+                    <p className="text-xs">purrify.ca</p>
                 </motion.div>
             </div>
         ),
