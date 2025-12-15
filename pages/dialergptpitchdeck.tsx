@@ -283,7 +283,7 @@ const slides = [
                     <p className="text-lg text-gray-300">
                         <span className="text-white font-semibold">"Our reps are closing deals faster than ever. The AI training removed all the guesswork."</span>
                         <br />
-                        <span className="text-sm text-gray-500 mt-2 block">— Tony Hammam, Founder & CEO, Purrify</span>
+                        <span className="text-sm text-gray-500 mt-2 block">— Anthony Thanbiah, Sales Manager, Purrify</span>
                     </p>
                 </motion.div>
             </div>
