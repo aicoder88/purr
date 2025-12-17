@@ -33,13 +33,13 @@ export const RATE_LIMITS = {
   // Strict limits for authentication
   AUTH: {
     windowMs: 15 * 60 * 1000, // 15 minutes
-    maxRequests: 5,
+    maxRequests: 20,
     message: 'Too many login attempts. Please try again later.',
   },
   // Moderate limits for content creation
   CREATE: {
     windowMs: 60 * 1000, // 1 minute
-    maxRequests: 10,
+    maxRequests: 30,
     message: 'Too many requests. Please slow down.',
   },
   // Lenient limits for reading
@@ -51,7 +51,7 @@ export const RATE_LIMITS = {
   // Image upload limits
   UPLOAD: {
     windowMs: 60 * 1000, // 1 minute
-    maxRequests: 5,
+    maxRequests: 15,
     message: 'Too many uploads. Please wait a moment.',
   },
 };

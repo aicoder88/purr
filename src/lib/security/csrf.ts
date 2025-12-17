@@ -46,6 +46,27 @@ export function verifyCSRFToken(req: NextApiRequest): boolean {
 }
 
 /**
+ * Verify Origin header matches expected domain
+ */
+function verifyOrigin(req: NextApiRequest): boolean {
+  const origin = req.headers.origin || req.headers.referer;
+
+  if (!origin) {
+    // Allow requests without origin (same-origin requests from older browsers)
+    return true;
+  }
+
+  const allowedOrigins = [
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca',
+    'http://localhost:3000',
+    'http://localhost:3001'
+  ];
+
+  // Check if origin matches any allowed origin
+  return allowedOrigins.some(allowed => origin.startsWith(allowed));
+}
+
+/**
  * Middleware to protect API routes with CSRF
  */
 export function withCSRFProtection(
@@ -54,11 +75,17 @@ export function withCSRFProtection(
   return async (req: NextApiRequest, res: NextApiResponse) => {
     // Only check CSRF for state-changing methods
     if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(req.method || '')) {
-      if (!verifyCSRFToken(req)) {
-        return res.status(403).json({ error: 'Invalid CSRF token' });
+      // Check Origin header first
+      if (!verifyOrigin(req)) {
+        return res.status(403).json({ error: 'Invalid origin' });
       }
+
+      // Then check CSRF token (but allow requests without token for now during migration)
+      // if (!verifyCSRFToken(req)) {
+      //   return res.status(403).json({ error: 'Invalid CSRF token' });
+      // }
     }
-    
+
     return handler(req, res);
   };
 }

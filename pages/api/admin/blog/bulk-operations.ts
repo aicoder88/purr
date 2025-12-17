@@ -2,9 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { withRateLimit, RATE_LIMITS, combineMiddleware } from '@/lib/security/rate-limit';
+import { withCSRFProtection } from '@/lib/security/csrf';
 import type { BulkOperation } from '@/components/admin/BulkActionsToolbar';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -126,3 +128,11 @@ export default async function handler(
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+// Apply security middleware (CSRF + rate limiting)
+const withRateLimitMiddleware = (handler: any) => withRateLimit(RATE_LIMITS.CREATE, handler);
+
+export default combineMiddleware(
+  withCSRFProtection,
+  withRateLimitMiddleware
+)(handler);
