@@ -161,7 +161,7 @@ export class BlogRepairUtility {
       if (post.featuredImage && !this.validator.isValidURL(post.featuredImage.url)) {
         console.log(`Fixing broken image for ${slug}`);
         repairedPost.featuredImage = {
-          url: '/purrify-logo.png',
+          url: '/optimized/purrify-logo.avif',
           alt: post.title,
           width: 1200,
           height: 630

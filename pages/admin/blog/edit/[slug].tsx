@@ -51,7 +51,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
       modifiedDate: now,
       status: 'draft',
       featuredImage: {
-        url: featuredImage || '/purrify-logo.png',
+        url: featuredImage || '/optimized/purrify-logo.avif',
         alt: title,
         width: 1200,
         height: 630
@@ -190,7 +190,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
         status: publishNow ? 'published' : (scheduledDate ? 'scheduled' : status),
         scheduledDate: scheduledDate || undefined,
         featuredImage: {
-          url: featuredImage || '/purrify-logo.png',
+          url: featuredImage || '/optimized/purrify-logo.avif',
           alt: title,
           width: 1200,
           height: 630

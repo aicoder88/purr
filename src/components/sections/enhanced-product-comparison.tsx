@@ -128,7 +128,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/60g yellow.png',
+      image: '/optimized/60g-yellow.avif',
       purchaseOptions: [
         {
           key: 'family-autoship',

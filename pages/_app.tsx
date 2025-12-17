@@ -153,7 +153,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
                 '@type': 'Organization',
                 name: SITE_NAME,
                 url: canonicalUrl,
-                logo: '/purrify-logo.png',
+                logo: '/optimized/purrify-logo.avif',
                 sameAs: Object.values(SOCIAL_LINKS),
                 contactPoint: [
                   {

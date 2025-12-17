@@ -273,7 +273,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Animalerie Petmobile Nathamo')) {
     return {
-      src: "/nathamo.jpg",
+      src: "/optimized/nathamo.avif",
       alt: "Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,

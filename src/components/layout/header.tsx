@@ -204,7 +204,7 @@ export function Header() {
                 className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
-                src="/purrify-dark-mode-logo.png"
+                src="/optimized/purrify-dark-mode-logo.avif"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}

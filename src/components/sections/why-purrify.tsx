@@ -25,7 +25,7 @@ export function WhyPurrify() {
       icon: Clock,
       title: t.features.longLastingFreshness.title.toUpperCase(),
       description: t.features.longLastingFreshness.description,
-      image: "/catonbed.jpeg"
+      image: "/optimized/catonbed.avif"
     },
     {
       icon: Layers,

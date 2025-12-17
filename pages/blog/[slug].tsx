@@ -188,7 +188,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
       excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(wpPost.date).toISOString().split('T')[0],
-      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
       link: `/blog/${wpPost.slug}`,
       content: wpPost.content.rendered,
       locale: 'en'
@@ -305,7 +305,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                 'name': SITE_NAME,
                 'logo': {
                   '@type': 'ImageObject',
-                  'url': '/purrify-logo.png'
+                  'url': '/optimized/purrify-logo.avif'
                 }
               },
               'description': post.excerpt,

@@ -99,7 +99,7 @@ export default async function handler(
       excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(post.date).toISOString().split('T')[0],
-      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/purrify-logo.png",
+      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
       link: `/blog/${post.slug}`,
       content: post.content.rendered,
       locale: 'en'

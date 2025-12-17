@@ -119,7 +119,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                       <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <div className="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
                         <Image
-                          src={post.image || '/purrify-logo.png'}
+                          src={post.image || '/optimized/purrify-logo.avif'}
                           alt={post.title}
                           width={600}
                           height={400}
@@ -127,7 +127,7 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
                           onError={(e) => {
                             // Fallback to Purrify logo if image fails to load
                             const target = e.target as HTMLImageElement;
-                            target.src = '/purrify-logo.png';
+                            target.src = '/optimized/purrify-logo.avif';
                             target.onerror = null; // Prevent infinite loop
                           }}
                         />

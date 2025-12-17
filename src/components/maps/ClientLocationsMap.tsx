@@ -62,7 +62,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
               className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
             />
             <Image
-              src="/purrify-dark-mode-logo.png"
+              src="/optimized/purrify-dark-mode-logo.avif"
               alt="Purrify Logo"
               width={160}
               height={53}

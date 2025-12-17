@@ -6,7 +6,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 const heroImage = '/optimized/strong-cat-urine-smell.webp';
-const airflowImage = '/catonbed.jpeg';
+const airflowImage = '/optimized/catonbed.avif';
 const carbonImage = '/optimized/carbon_magnified_image.webp';
 const beforeAfterImage = '/optimized/before-after.webp';
 
