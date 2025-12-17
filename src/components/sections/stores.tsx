@@ -39,10 +39,18 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
   },
   {
-    name: "Chico (Laval)",
+    name: "Chico (Laval-Est)",
     location: "Laval, QC H7E 0A4",
     address: "5405 Boulevard Robert-Bourassa, Laval, QC H7E 0A4",
     phone: "1-450-239-0354",
+    url: "https://www.chico.ca/en/boutique/chico-laval-east/",
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+  },
+  {
+    name: "Chico (Laval Ouest)",
+    location: "Laval, QC H7R 5P8",
+    address: "4511 Bd Arthur-Sauvé, Laval, QC H7R 5P8",
+    phone: "1-450-314-2442",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
     description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
   },
@@ -170,7 +178,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     name: "Viva Pets",
     location: "Montreal, QC",
     address: "Montreal, QC",
-    phone: "",
+    phone: "780-489-7387",
     url: "https://www.vivapets.ca/",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
   },
@@ -300,7 +308,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Viva Pets')) {
     return {
-      src: "/viva.avif",
+      src: "/Viva_Lilac.avif",
       alt: "Viva Pets - Premium Pet Products & Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
