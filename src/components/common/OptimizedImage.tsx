@@ -44,6 +44,20 @@ const imageObjectFitClasses: Record<string, string> = {
   none: 'object-none'
 };
 
+/**
+ * Get responsive sizes attribute based on variant
+ */
+function getSizesForVariant(variant?: string): string {
+  const sizeMap: Record<string, string> = {
+    hero: '100vw',
+    product: '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw',
+    thumbnail: '(min-width: 640px) 200px, 100vw',
+    avatar: '100px',
+    default: '100vw'
+  };
+  return sizeMap[variant || 'default'] || '100vw';
+}
+
 export interface OptimizedImageProps extends VariantProps<typeof imageVariants> {
   src: string;
   alt: string;
@@ -54,6 +68,9 @@ export interface OptimizedImageProps extends VariantProps<typeof imageVariants> 
   onLoad?: () => void;
   onError?: () => void;
   fill?: boolean;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+  quality?: number;
 }
 
 export function OptimizedImage({
@@ -67,18 +84,27 @@ export function OptimizedImage({
   className,
   onLoad,
   onError,
-  fill = false
+  fill = false,
+  loading,
+  sizes: customSizes,
+  quality = 85
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  
+
   // Load metadata from image-dimensions.json
   const metadata = getImageMetadata(src);
-  
+
   // Use provided dimensions or fall back to metadata
   const imageWidth = width || metadata?.width || 800;
   const imageHeight = height || metadata?.height || 600;
-  const sizes = metadata?.sizes || '100vw';
+
+  // Responsive sizes - use custom or fall back to variant-based defaults
+  const imageSizes = customSizes || metadata?.sizes || getSizesForVariant(variant);
+
+  // Loading strategy: priority overrides loading prop
+  const loadingStrategy = priority ? 'eager' : (loading || 'lazy');
+
   const blurDataURL = metadata?.blurDataURL;
 
   const handleLoad = () => {
@@ -133,7 +159,9 @@ export function OptimizedImage({
             }
           )}
           priority={priority}
-          sizes={sizes}
+          loading={loadingStrategy}
+          sizes={imageSizes}
+          quality={quality}
           {...(blurDataURL && {
             placeholder: 'blur' as const,
             blurDataURL
@@ -148,17 +176,17 @@ export function OptimizedImage({
 
 // Specialized variant exports for convenience
 export const HeroImage = (props: Omit<OptimizedImageProps, 'variant'>) => (
-  <OptimizedImage {...props} variant="hero" />
+  <OptimizedImage {...props} variant="hero" priority={props.priority ?? true} />
 );
 
 export const ProductImage = (props: Omit<OptimizedImageProps, 'variant'>) => (
-  <OptimizedImage {...props} variant="product" />
+  <OptimizedImage {...props} variant="product" loading={props.loading ?? 'lazy'} />
 );
 
 export const ThumbnailImage = (props: Omit<OptimizedImageProps, 'variant'>) => (
-  <OptimizedImage {...props} variant="thumbnail" />
+  <OptimizedImage {...props} variant="thumbnail" loading={props.loading ?? 'lazy'} />
 );
 
 export const AvatarImage = (props: Omit<OptimizedImageProps, 'variant'>) => (
-  <OptimizedImage {...props} variant="avatar" objectFit="cover" />
+  <OptimizedImage {...props} variant="avatar" objectFit="cover" loading={props.loading ?? 'lazy'} />
 );
