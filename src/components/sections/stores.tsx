@@ -167,6 +167,14 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
+    name: "Little Bit Western Feed and Supplies Inc.",
+    location: "Timmins, ON P4N 2S2",
+    address: "372 Algonquin Blvd.West, TIMMINS, ON P4N 2S2",
+    phone: "",
+    url: "https://www.littlebitwestern.ca/",
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+  },
+  {
     name: "K&K Pet Foods Dunbar",
     location: "Vancouver, BC V6S 2G2",
     address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
@@ -315,6 +323,15 @@ const getStoreLogo = (storeName: string) => {
       height: 64
     };
   }
+  if (storeName.includes('Little Bit Western')) {
+    return {
+      src: "/Little_Bit_Western_final_logo_x90.avif",
+      alt: "Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo",
+      className: "w-16 h-16 object-contain",
+      width: 64,
+      height: 64
+    };
+  }
   return null;
 };
 
@@ -332,7 +349,8 @@ const hasWhiteBackground = (storeName: string) => {
     storeName.includes('Animalerie Petmobile') ||
     storeName.includes('Animalerie Club Wouf Miaou') ||
     storeName.includes('K&K Pet Foods') ||
-    storeName.includes('Viva Pets');
+    storeName.includes('Viva Pets') ||
+    storeName.includes('Little Bit Western');
 };
 
 // Component to handle logo display with fallback
