@@ -151,52 +151,62 @@ async function optimizeImage(filePath) {
 async function processIcons() {
   const outputDir = path.join(PUBLIC_DIR, 'images');
   ensureDirectoryExists(outputDir);
-  
+
   // Optimize icon logo
   const iconPath = path.join(PUBLIC_DIR, 'purrify-logo-icon.png');
-  
-  // Create favicon (16x16)
-  const writeIcon = async (size, name) => {
-    const dest = path.join(outputDir, name);
-    const srcStat = fs.statSync(iconPath);
-    const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
-    if (needs) {
-      await sharp(iconPath).resize(size, size).toFile(dest);
-    }
-  };
-    
-  // Create small icon (32x32)
-  await writeIcon(16, 'favicon.png');
-  await writeIcon(32, 'icon-32.png');
-    
-  // Create medium icon (64x64)
-  await writeIcon(64, 'icon-64.png');
-    
-  // Create large icon (128x128)
-  await writeIcon(128, 'icon-128.png');
-    
-  // Create apple touch icon (180x180)
-  await writeIcon(180, 'apple-touch-icon.png');
-  
+
+  // Skip icon processing if source file doesn't exist
+  if (fs.existsSync(iconPath)) {
+    // Create favicon (16x16)
+    const writeIcon = async (size, name) => {
+      const dest = path.join(outputDir, name);
+      const srcStat = fs.statSync(iconPath);
+      const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
+      if (needs) {
+        await sharp(iconPath).resize(size, size).toFile(dest);
+      }
+    };
+
+    // Create small icon (32x32)
+    await writeIcon(16, 'favicon.png');
+    await writeIcon(32, 'icon-32.png');
+
+    // Create medium icon (64x64)
+    await writeIcon(64, 'icon-64.png');
+
+    // Create large icon (128x128)
+    await writeIcon(128, 'icon-128.png');
+
+    // Create apple touch icon (180x180)
+    await writeIcon(180, 'apple-touch-icon.png');
+  } else {
+    console.log('Skipping icon processing - source file not found:', iconPath);
+  }
+
   // Optimize text logo
   const textPath = path.join(PUBLIC_DIR, 'purrify-logo-text.png');
-  
-  // Create small text logo (120x40)
-  const writeTextLogo = async (w, h, name) => {
-    const dest = path.join(outputDir, name);
-    const srcStat = fs.statSync(textPath);
-    const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
-    if (needs) {
-      await sharp(textPath).resize(w, h).toFile(dest);
-    }
-  };
-    
-  // Create medium text logo (180x60)
-  await writeTextLogo(120, 40, 'logo-text-120.png');
-  await writeTextLogo(180, 60, 'logo-text-180.png');
-    
-  // Create large text logo (240x80)
-  await writeTextLogo(240, 80, 'logo-text-240.png');
+
+  // Skip text logo processing if source file doesn't exist
+  if (fs.existsSync(textPath)) {
+    // Create small text logo (120x40)
+    const writeTextLogo = async (w, h, name) => {
+      const dest = path.join(outputDir, name);
+      const srcStat = fs.statSync(textPath);
+      const needs = !fs.existsSync(dest) || fs.statSync(dest).mtimeMs < srcStat.mtimeMs;
+      if (needs) {
+        await sharp(textPath).resize(w, h).toFile(dest);
+      }
+    };
+
+    // Create medium text logo (180x60)
+    await writeTextLogo(120, 40, 'logo-text-120.png');
+    await writeTextLogo(180, 60, 'logo-text-180.png');
+
+    // Create large text logo (240x80)
+    await writeTextLogo(240, 80, 'logo-text-240.png');
+  } else {
+    console.log('Skipping text logo processing - source file not found:', textPath);
+  }
 }
 
 // Main function to optimize all images

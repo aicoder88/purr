@@ -100,7 +100,7 @@ export function OptimizedImage({
   const imageHeight = height || metadata?.height || 600;
 
   // Responsive sizes - use custom or fall back to variant-based defaults
-  const imageSizes = customSizes || metadata?.sizes || getSizesForVariant(variant);
+  const imageSizes = customSizes || metadata?.sizes || getSizesForVariant(variant ?? undefined);
 
   // Loading strategy: priority overrides loading prop
   const loadingStrategy = priority ? 'eager' : (loading || 'lazy');
