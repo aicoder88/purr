@@ -48,3 +48,5 @@ out
 
 # Testing
 /coverage
+test-results
+playwright-report
