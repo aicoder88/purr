@@ -210,6 +210,10 @@ export interface TranslationType {
     requestStoreAvailability: string;
     dontSeeLocalStore: string;
     callStore: string;
+    sending: string;
+    requestSent: string;
+    requestSuccess: string;
+    requestError: string;
     storeDescriptions: {
       completePetCareAndSupplies: string;
       premiumPetBoutique: string;

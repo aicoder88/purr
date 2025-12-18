@@ -262,6 +262,10 @@ export const zh = {
     requestStoreAvailability: "申请门店供货",
     dontSeeLocalStore: "没看到您当地的门店？",
     callStore: "致电门店",
+    sending: "发送中...",
+    requestSent: "请求已发送！",
+    requestSuccess: "谢谢！我们会帮助您在当地商店购买Purrify。",
+    requestError: "发生错误。请直接联系我们 support@purrify.ca",
     storeDescriptions: {
       completePetCareAndSupplies: "完整的宠物护理和用品",
       premiumPetBoutique: "高端宠物精品店",

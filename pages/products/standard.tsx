@@ -5,55 +5,44 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, ShieldCheck, Truck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
+import { cn } from '@/lib/utils';
 
-export default function StandardSizePage() {
+export default function RegularSizePage() {
   const { t, locale } = useTranslation();
 
-  const pageTitle = t.seo?.openGraph?.title || `${SITE_NAME} Standard Size - 50g Cat Litter Odor Control`;
-  const pageDescription = t.seo?.metaDescription || "Perfect for single-cat homes. One month of freshness with Purrify's 50g standard size litter deodorizer. Most popular size.";
+  const productKey = 'family'; // 120g Regular Size
+  const productName = t.products?.["purrify-120g"]?.name || "Purrify Regular Size (120g)";
+  const productPrice = formatProductPrice(productKey, locale);
+  const productPriceValue = getProductPrice(productKey).toFixed(2);
+
+  const pageTitle = `${productName} - Maximum Odor Control for Multi-Cat Homes`;
+  const pageDescription = t.products?.["purrify-120g"]?.description || "Perfect for homes with 2+ cats. Double-strength 120g Regular Size eliminates even the strongest ammonia smells instantly.";
+
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
-  const familyPrice = formatProductPrice('family', locale);
-  const standardPriceValue = getProductPrice('standard').toFixed(2);
-  const checkoutUrl = getLocalizedUrl('/checkout', locale);
 
-  // Standard size lifestyle images
-  const heroImage = "/optimized/standard-hero.webp";
-  const heroImageAlt = "Happy cat with Purrify activated carbon litter additive";
-  const sectionImage1 = "/optimized/standard-happy-cat.webp";
-  const sectionImage1Alt = "Cat owner enjoying a fresh smelling home";
-  const solutionImage = "/optimized/standard-solution.webp";
-  const solutionImageAlt = "Purrify packaging and product";
+  const singleCheckoutUrl = getPaymentLink('familySingle') || '#';
+  const autoshipCheckoutUrl = getPaymentLink('familyAutoship') || '#';
+
+  // Optimized images
+  const heroImage = "/optimized/regular_size_hero.png";
+  const lifestyleImage = "/optimized/regular_size_lifestyle_cat.png";
+  const solutionImage = "/optimized/regular_size_solution.png";
+  const productImage = "/optimized/140g.webp";
 
   const benefits = [
-    "Ideal for single-cat households",
-    "One month of continuous odor control",
-    "Most popular size among customers",
-    "Perfect balance of value and quantity",
-    "Works with any litter type"
-  ];
-
-  const testimonials = [
-    {
-      name: "Kenji T., Verdun",
-      text: "My senior cat has some digestive issues, so odor control is crucial. The 50g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
-      rating: 5,
-      petName: "Mochi"
-    },
-    {
-      name: "Dr. Amara Chen, Westmount",
-      text: "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat's litter area stays remarkably fresh.",
-      rating: 5,
-      petName: "Whiskers"
-    }
+    "Perfect for multi-cat households (2+ cats)",
+    "3 months of continuous odor control",
+    "Double-strength activated carbon formula",
+    "100% natural, fragrance-free, and safe",
+    "Works instantly on even the strongest smells"
   ];
 
   return (
@@ -71,556 +60,274 @@ export default function StandardSizePage() {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://www.purrify.ca/optimized/60g.webp',
+              url: 'https://www.purrify.ca' + productImage,
               width: 1200,
               height: 630,
-              alt: 'Purrify 50g Standard Size Package (WebP)',
+              alt: productName,
               type: 'image/webp'
-            },
-            {
-              url: 'https://www.purrify.ca/purrify-standard-60g.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify 50g Standard Size Package',
-              type: 'image/jpeg'
             }
           ]
         }}
       />
 
-      {/* Comprehensive Product JSON-LD with detailed specifications */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Product",
-                "@id": canonicalUrl,
-                "name": "Purrify 50g Standard Size - Cat Litter Odor Control",
-                "description": "Our most popular 50g size provides a full month of odor control for single-cat households. Made from premium coconut shell activated carbon that eliminates odors at the molecular level.",
-                "image": [
-                  "https://www.purrify.ca/optimized/60g.webp",
-                  "https://www.purrify.ca/purrify-standard-60g.jpg"
-                ],
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Purrify",
-                  "logo": "https://www.purrify.ca/purrify-logo.png"
-                },
-                "manufacturer": {
-                  "@type": "Organization",
-                  "@id": "https://www.purrify.ca/#organization",
-                  "name": "Purrify"
-                },
-                "category": "Pet Supplies > Cat Care > Litter Additives",
-                "sku": "purrify-50g",
-                "mpn": "PURRIFY-50G",
-                "gtin13": "9781234567890",
-                "weight": {
-                  "@type": "QuantitativeValue",
-                  "value": "50",
-                  "unitCode": "GRM"
-                },
-                "size": "50g",
-                "color": "Black",
-                "material": "Activated Carbon from Coconut Shells",
-                "offers": {
-                  "@type": "Offer",
-                  "price": standardPriceValue,
-                  "priceCurrency": "CAD",
-                  "priceValidUntil": priceValidUntil,
-                  "availability": availabilityUrl,
-                  "itemCondition": "https://schema.org/NewCondition",
-                  "url": canonicalUrl,
-                  "seller": {
-                    "@type": "Organization",
-                    "@id": "https://www.purrify.ca/#organization",
-                    "name": "Purrify"
-                  },
-                  "shippingDetails": {
-                    "@type": "OfferShippingDetails",
-                    "shippingRate": {
-                      "@type": "MonetaryAmount",
-                      "value": "0",
-                      "currency": "CAD"
-                    },
-                    "deliveryTime": {
-                      "@type": "ShippingDeliveryTime",
-                      "handlingTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 1,
-                        "maxValue": 2,
-                        "unitCode": "DAY"
-                      },
-                      "transitTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 2,
-                        "maxValue": 7,
-                        "unitCode": "DAY"
-                      }
-                    }
-                  },
-                  "hasMerchantReturnPolicy": {
-                    "@type": "MerchantReturnPolicy",
-                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                    "merchantReturnDays": 30,
-                    "returnMethod": "https://schema.org/ReturnByMail",
-                    "returnFees": "https://schema.org/FreeReturn"
-                  }
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.9",
-                  "reviewCount": "127",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "review": [
-                  {
-                    "@type": "Review",
-                    "reviewRating": {
-                      "@type": "Rating",
-                      "ratingValue": "5",
-                      "bestRating": "5"
-                    },
-                    "author": {
-                      "@type": "Person",
-                      "name": "Kenji T."
-                    },
-                    "reviewBody": "My senior cat has some digestive issues, so odor control is crucial. The 50g size lasts about a month and keeps everything fresh. Worth every penny for peace of mind.",
-                    "datePublished": "2024-01-15"
-                  },
-                  {
-                    "@type": "Review",
-                    "reviewRating": {
-                      "@type": "Rating",
-                      "ratingValue": "5",
-                      "bestRating": "5"
-                    },
-                    "author": {
-                      "@type": "Person",
-                      "name": "Dr. Amara Chen"
-                    },
-                    "reviewBody": "As a veterinarian, I'm always skeptical of 'miracle' products. But Purrify's activated carbon approach is scientifically sound. My clinic cat's litter area stays remarkably fresh.",
-                    "datePublished": "2024-02-01"
-                  }
-                ],
-                "additionalProperty": [
-                  {
-                    "@type": "PropertyValue",
-                    "name": "Pet Type",
-                    "value": "Cat"
-                  },
-                  {
-                    "@type": "PropertyValue",
-                    "name": "Ingredient",
-                    "value": "Activated Carbon from Coconut Shells"
-                  },
-                  {
-                    "@type": "PropertyValue",
-                    "name": "Usage Duration",
-                    "value": "30 days"
-                  },
-                  {
-                    "@type": "PropertyValue",
-                    "name": "Compatibility",
-                    "value": "All cat litter types"
-                  },
-                  {
-                    "@type": "PropertyValue",
-                    "name": "Safety",
-                    "value": "Fragrance-free; uses filtration-grade activated carbon"
-                  }
-                ],
-                "isAccessoryOrSparePartFor": {
-                  "@type": "Product",
-                  "name": "Cat Litter",
-                  "category": "Pet Supplies"
-                },
-                "audience": {
-                  "@type": "Audience",
-                  "name": "Cat Owners",
-                  "description": "Single-cat household owners looking for effective odor control"
-                },
-                "usageOrSchedule": "Add 1-2 tablespoons when changing litter completely",
-                "mainEntityOfPage": canonicalUrl,
-                "inLanguage": "en-CA"
-              },
-              {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.purrify.ca/"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Products",
-                    "item": "https://www.purrify.ca/#products"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Standard Size",
-                    "item": canonicalUrl
-                  }
-                ]
-              },
-              // FAQ Schema for product page
-              generateFAQSchema(locale)
-            ]
-          })
-        }}
-      />
-
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+      <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
         <Container>
-          <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+          <nav className="py-6 text-sm">
+            <ol className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
               <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-deep-coral transition-colors">
                   {t.nav?.home || 'Home'}
                 </Link>
               </li>
               <li>/</li>
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-deep-coral transition-colors">
                   Products
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Standard Size</li>
+              <li className="text-deep-coral font-semibold">{productName}</li>
             </ol>
           </nav>
         </Container>
 
         {/* Hero Section */}
-        <section className="py-12">
+        <section className="pb-16 pt-4">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Product Image */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Product Image Stage */}
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
-                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
+                <div className="absolute -inset-10 bg-gradient-to-tr from-electric-indigo/20 to-deep-coral/20 rounded-[40px] blur-3xl opacity-60 animate-pulse"></div>
+                <div className="relative bg-white/40 dark:bg-gray-800/40 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 rounded-[32px] p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]">
                   <Image
-                    src="/optimized/60g.webp"
-                    alt="Purrify 50g Standard Size"
-                    width={400}
-                    height={400}
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                    className="w-full h-auto object-contain"
+                    src={productImage}
+                    alt={productName}
+                    width={600}
+                    height={600}
+                    priority
+                    className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4 bg-[#5B2EFF] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">
-                    MOST POPULAR
+                  <div className="absolute top-8 right-8">
+                    <div className="bg-deep-coral text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
+                      <Zap className="w-4 h-4 fill-current" />
+                      Most Popular
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Product Details */}
-              <div className="space-y-6">
+              {/* Product Info */}
+              <div className="space-y-8">
                 <div>
-                  <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
-                    Purrify Standard Size
+                  <h1 className="font-heading text-5xl md:text-6xl font-black mb-6 tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                    <span className="bg-gradient-to-r from-deep-coral to-electric-indigo bg-clip-text text-transparent">
+                      {productName}
+                    </span>
                   </h1>
-                  <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    50g Cat Litter Odor Control
-                  </p>
-                  <div className="flex items-center space-x-2 mb-4">
-                    <div className="flex items-center">
+
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-1 bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-gray-100 dark:border-gray-700">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                       ))}
+                      <span className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">4.9</span>
                     </div>
-                    <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">138+ Verified Home Stories</span>
                   </div>
-                  <div className="space-y-3 mb-6">
-                    <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF]">
-                      {standardPrice}
+
+                  <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
+                    The ultimate solution for multi-cat households. 120 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.
+                  </p>
+                </div>
+
+                {/* Purchase Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Autoship Option */}
+                  <div className="relative group overflow-hidden bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
+                      Save 30%
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      + {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}
-                    </p>
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">Subscribe & Save</h3>
+                    <div className="flex items-baseline gap-1 mb-4">
+                      <span className="text-3xl font-black text-gray-900 dark:text-white">{formatProductPrice('familyAutoship', locale)}</span>
+                      <span className="text-xs text-gray-500">/ 3 months</span>
+                    </div>
+                    <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
+                      <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        Get Autoship <Zap className="w-4 h-4 fill-current" />
+                      </a>
+                    </Button>
+                    <p className="text-[10px] text-center mt-3 text-gray-400 font-medium">Cancel anytime. Ships free.</p>
+                  </div>
+
+                  {/* One-time Option */}
+                  <div className="bg-white/60 dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-lg hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300">
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">One-Time</h3>
+                    <div className="mb-4">
+                      <span className="text-3xl font-black text-gray-900 dark:text-white">{productPrice}</span>
+                    </div>
+                    <Button asChild variant="outline" className="w-full border-2 border-gray-900 dark:border-gray-200 hover:bg-gray-900 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-900 font-bold py-6 rounded-2xl">
+                      <a href={singleCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                        Buy Now
+                      </a>
+                    </Button>
+                    <p className="text-[10px] text-center mt-3 text-gray-400 font-medium">+ $6.99 Shipping</p>
                   </div>
                 </div>
 
-                {/* Benefits List */}
-                <div className="space-y-3">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-[#03E46A] flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                {/* Quick Trust */}
+                <div className="flex flex-wrap gap-6 pt-2">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <ShieldCheck className="w-5 h-5 text-green-500" />
+                    7-Day Money Back
+                  </div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <Truck className="w-5 h-5 text-electric-indigo" />
+                    Ships Next Business Day
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Feature/Lifestyle Section 1 */}
+        <section className="py-24 bg-white/50 dark:bg-black/20 overflow-hidden">
+          <Container>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div className="order-2 lg:order-1 relative">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-3xl blur-2xl"></div>
+                <Image
+                  src={heroImage}
+                  alt="Purrify Regular Size in action"
+                  width={800}
+                  height={600}
+                  className="relative rounded-[40px] shadow-2xl border-8 border-white dark:border-gray-800"
+                />
+              </div>
+              <div className="order-1 lg:order-2 space-y-8">
+                <div className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+                  Scientifically Proven
+                </div>
+                <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
+                  Stop Masking. <br />
+                  <span className="text-electric-indigo">Start Eliminating.</span>
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Most deodorizers use heavy perfumes to hide smells. Purrify works like a magnet—trapping ammonia gas molecules inside millions of microscopic pores. It is the same principle NASA uses to keep air fresh in space stations.
+                </p>
+                <div className="space-y-4">
+                  {benefits.map((benefit, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="flex-shrink-0 w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                        <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="font-bold text-gray-700 dark:text-gray-200">{benefit}</span>
                     </div>
                   ))}
                 </div>
-
-                {/* Purchase Options */}
-                <div className="space-y-5">
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900/30 p-6">
-                    <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                      {t.pricing?.oneTimeLabel || 'One-time purchase'}
-                    </p>
-                    <div className="flex items-baseline gap-3 mb-3">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">
-                        {standardPrice}
-                      </div>
-                      <span className="text-sm text-gray-600 dark:text-gray-300">+ {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}</span>
-                    </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {t.pricing?.plusShipping || '+ shipping'}
-                    </p>
-                    <Button asChild size="lg" className="w-full bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                      <Link href={checkoutUrl} className="flex items-center justify-center gap-2">
-                        <ShoppingCart className="w-5 h-5" />
-                        {t.homepage.enhancedComparison.chooseThisSize}
-                      </Link>
-                    </Button>
-                  </div>
-
-                  <div className="flex space-x-3">
-                    <Button variant="outline" size="lg" className="flex-1">
-                      <Heart className="w-5 h-5 mr-2" />
-                      Add to Wishlist
-                    </Button>
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
-                      <Button variant="outline" size="lg" className="flex-1">
-                        <Users className="w-5 h-5 mr-2" />
-                        Read Reviews
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Trust Indicators */}
-                <div className="border-t pt-6 space-y-2">
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    30-day money-back guarantee
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Ships within 24 hours
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Free shipping on orders over $50
-                  </div>
-                </div>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Single Cat Lifestyle Image */}
-        <section className="py-8">
+        {/* Values Block */}
+        <section className="py-24">
           <Container>
-            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src={heroImage}
-                alt="Perfect for single cat households - one month of freshness"
-                width={1600}
-                height={1067}
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
-                  <h2 className="font-heading text-3xl font-bold mb-2">Perfect for Single Cat Homes</h2>
-                  <p className="text-xl opacity-90">One month of continuous freshness</p>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        {/* Value Proposition Section */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
-          <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
-                Perfect Size for Single Cat Homes
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Our most popular 50g size provides a full month of odor control for one cat
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#FF3131] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white dark:text-gray-100 font-bold text-xl">30</span>
+              <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
+                <div className="w-16 h-16 bg-electric-indigo/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Star className="w-8 h-8 text-electric-indigo" />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Days of Freshness</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  One 50g package lasts a full month for typical single-cat usage
-                </p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">Professional Grade</h3>
+                <p className="text-gray-600 dark:text-gray-400">Used by vets and professional cleaning services across Canada.</p>
               </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white dark:text-gray-100 font-bold text-xl">#1</span>
+              <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
+                <div className="w-16 h-16 bg-deep-coral/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Heart className="w-8 h-8 text-deep-coral" />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Most Popular Size</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Chosen by 60% of our customers as the perfect balance
-                </p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">100% Cat Safe</h3>
+                <p className="text-gray-600 dark:text-gray-400">Fragrance-free, chemical-free, and safe if accidentally ingested.</p>
               </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white dark:text-gray-100 font-bold text-xl">$</span>
+              <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
+                <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <ShoppingCart className="w-8 h-8 text-green-500" />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Best Value</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Optimal cost per day - less than $0.67 for complete odor control
-                </p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">Best Value</h3>
+                <p className="text-gray-600 dark:text-gray-400">One regular size replaces 4-5 spray cans or expensive plugins.</p>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Customer Testimonials */}
-        <section className="py-16 cv-auto cis-720">
-          <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
-                Standard Size Success Stories
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-50">- {testimonial.name}</p>
+        {/* Product Detail Image */}
+        <section className="py-24 bg-gray-900 text-white overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-tr from-electric-indigo/20 to-deep-coral/20 opacity-40"></div>
+          <Container className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-8">
+                <h2 className="font-heading text-4xl md:text-5xl font-black leading-tight">
+                  High-Surface Area <br />
+                  <span className="text-deep-coral">Molecular Filtration</span>
+                </h2>
+                <p className="text-xl text-gray-400 leading-relaxed">
+                  Our activated carbon is sourced from premium coconut shells, processed to maximize the surface area that "captures" odor particles. Just one gram has a surface area equivalent to a tennis court.
+                </p>
+                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                  <p className="text-deep-coral font-black mb-2 uppercase tracking-widest text-sm">Real Results</p>
+                  <p className="italic text-lg">"My husband used to complain the second he walked through the door. Since we started using the Regular Size, he doesn't even notice the litter area anymore! Game changer for our small apartment."</p>
+                  <p className="mt-4 font-bold">— Sarah L., Toronto</p>
                 </div>
-              ))}
+              </div>
+              <div className="relative">
+                <Image
+                  src={solutionImage}
+                  alt="Purrify carbon granules close-up"
+                  width={800}
+                  height={800}
+                  className="rounded-[40px] shadow-2xl grayscale brightness-110 hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
             </div>
+          </Container>
+        </section>
 
-            <div className="text-center mt-12">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
-                <Button variant="outline" size="lg">
-                  Read All Customer Stories
+        {/* Bottom CTA */}
+        <section className="py-32 bg-white dark:bg-gray-950">
+          <Container>
+            <div className="bg-gradient-to-r from-deep-coral/5 to-electric-indigo/5 border border-gray-100 dark:border-gray-800 rounded-[48px] p-12 md:p-24 text-center space-y-10">
+              <div className="max-w-3xl mx-auto space-y-6">
+                <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-white">
+                  Experience Fresh Air Again
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400">
+                  Join 1,000+ happy Canadians who have reclaimed their homes from stubborn litter box odors.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
+                  <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                    Start Your Fresh Journey <Zap className="w-5 h-5 fill-current" />
+                  </a>
                 </Button>
-              </Link>
+              </div>
+              <p className="text-sm font-bold text-gray-400">30-Day Happiness Guarantee • Free Shipping on Autoship</p>
             </div>
           </Container>
         </section>
 
-        {/* Size Comparison */}
-        <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
-          <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
-                Choose Your Perfect Size
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                Compare all available sizes to find what works best for you
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
-                  <Button variant="outline" className="w-full">View Trial Size</Button>
-                </Link>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF5050]/10 dark:to-[#3694FF]/10 p-6 rounded-xl shadow-lg text-center border-2 border-[#5B2EFF] dark:border-[#3694FF]">
-                <div className="bg-[#5B2EFF] text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
-                  MOST POPULAR
-                </div>
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
-                <Button className="w-full">Currently Viewing</Button>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping · Free with autoship</p>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/family-pack`}>
-                  <Button variant="outline" className="w-full">View Family Pack</Button>
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        {/* Back to Products */}
-        <section className="py-8 cv-auto cis-480">
-          <Container>
-            <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
-                <Button variant="outline" size="lg">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back to All Products
-                </Button>
-              </Link>
-            </div>
-          </Container>
-        </section>
-
-        {/* Happy Cat Image */}
-        <section className="py-8">
-          <Container>
-            <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src={sectionImage1}
-                alt="Happy single cat enjoying fresh litter with Purrify"
-                width={1600}
-                height={1067}
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves the Best</h3>
-                  <p className="text-lg opacity-90">Safe, natural, effective odor control</p>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        {/* Success Story Image */}
-        <section className="py-8">
-          <Container>
-            <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src={solutionImage}
-                alt="Happy cat owner with fresh, odor-free home using Purrify standard size"
-                width={1600}
-                height={1067}
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="font-heading text-2xl font-bold mb-2">Join 1,000+ Happy Customers</h3>
-                  <p className="text-lg opacity-90">Most popular size for a reason</p>
-                </div>
-              </div>
-            </div>
+        {/* Back navigation */}
+        <section className="py-12 border-t border-gray-100 dark:border-gray-900">
+          <Container className="text-center">
+            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="inline-flex items-center text-gray-500 hover:text-deep-coral font-bold gap-2 transition-colors">
+              <ArrowLeft className="w-5 h-5" /> Back to all sizes
+            </Link>
           </Container>
         </section>
 
         {/* Related Articles */}
-        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+        <section className="py-24 border-t border-gray-200 dark:border-gray-800">
           <Container>
             <RelatedArticles currentPath="/products/standard" />
           </Container>

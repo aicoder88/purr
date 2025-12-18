@@ -257,6 +257,10 @@ export const fr = {
     requestStoreAvailability: "Demander la Disponibilité en Magasin",
     dontSeeLocalStore: "Vous ne voyez pas votre magasin local ? Contactez-nous pour demander Purrify dans votre magasin d'animaux préféré !",
     callStore: "Appeler le Magasin",
+    sending: "Envoi en cours...",
+    requestSent: "Demande Envoyée !",
+    requestSuccess: "Merci ! Nous vous contacterons pour aider à obtenir Purrify dans votre magasin local.",
+    requestError: "Une erreur s'est produite. Veuillez nous contacter directement à support@purrify.ca",
     storeDescriptions: {
       completePetCareAndSupplies: "Soins complets et fournitures pour animaux",
       premiumPetBoutique: "Boutique premium pour animaux",

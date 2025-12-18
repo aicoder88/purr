@@ -427,7 +427,7 @@ export default function MostPowerfulOdorAbsorber() {
                 <div className="bg-[#E0EFC7] dark:bg-green-900/30 border border-[#5B2EFF]/10 dark:border-green-700 rounded-2xl p-8 text-center">
                   <h3 className="font-heading text-2xl font-bold text-[#5B2EFF] dark:text-green-200 mb-4">Ready to build a fragrance-free odor shield?</h3>
                   <p className="text-gray-700 dark:text-gray-200 mb-6">
-                    Start with the Purrify 50g standard jar for single-cat homes or upgrade to the 120g family pack if you manage more than one feline roommate.
+                    Start with the Purrify 50g standard bag for single-cat homes or upgrade to the 120g family pack if you manage more than one feline roommate.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link

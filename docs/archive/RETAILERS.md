@@ -245,7 +245,7 @@ await prisma.product.update({
 ```
 
 ### Wholesale Pricing Guidelines:
-- **Consumer Price**: $24.99 (140g jar)
+- **Consumer Price**: $24.99 (140g bag)
 - **Wholesale Price**: $15.99 (36% discount)
 - **Minimum Order**: 24 units (one case)
 

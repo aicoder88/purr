@@ -401,6 +401,44 @@ const StoreLogoImage = ({
 export function Stores() {
   const { t } = useTranslation();
   const stores = getStoresWithTranslations(t);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleRequestStore = async () => {
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'Store Availability Request',
+          email: 'customer@purrify.ca',
+          message: 'A customer has requested Purrify at their local pet store. Please follow up to understand which store they would like us to contact.',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus('success');
+        setStatusMessage(t.storesSection?.requestSuccess || 'Thank you! We\'ll reach out to help get Purrify at your local store.');
+      } else {
+        setSubmitStatus('error');
+        setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting store request:', error);
+      setSubmitStatus('error');
+      setStatusMessage(t.storesSection?.requestError || 'An error occurred. Please contact us directly at support@purrify.ca');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -513,11 +551,39 @@ export function Stores() {
             {t.storesSection?.dontSeeLocalStore || "Don't see your local store? Contact us to request Purrify at your favorite pet store!"}
           </p>
           <button
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleRequestStore}
+            disabled={isSubmitting || submitStatus === 'success'}
           >
-            {t.storesSection?.requestStoreAvailability || "Request Store Availability"}
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-gray-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {t.storesSection?.sending || "Sending..."}
+              </>
+            ) : submitStatus === 'success' ? (
+              <>
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                {t.storesSection?.requestSent || "Request Sent!"}
+              </>
+            ) : (
+              t.storesSection?.requestStoreAvailability || "Request Store Availability"
+            )}
           </button>
+
+          {submitStatus !== 'idle' && statusMessage && (
+            <div className={`mt-4 p-4 rounded-lg ${
+              submitStatus === 'success'
+                ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800'
+                : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
+            }`}>
+              <p className="text-sm font-medium">{statusMessage}</p>
+            </div>
+          )}
         </div>
       </Container>
     </section>

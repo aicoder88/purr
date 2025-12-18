@@ -233,6 +233,10 @@ export const en = {
     requestStoreAvailability: "Request Store Availability",
     dontSeeLocalStore: "Don't see your local store? Contact us to request Purrify at your favorite pet store!",
     callStore: "Call Store",
+    sending: "Sending...",
+    requestSent: "Request Sent!",
+    requestSuccess: "Thank you! We'll reach out to help get Purrify at your local store.",
+    requestError: "An error occurred. Please contact us directly at support@purrify.ca",
     storeDescriptions: {
       completePetCareAndSupplies: "Complete pet care and supplies",
       premiumPetBoutique: "Premium pet boutique",
