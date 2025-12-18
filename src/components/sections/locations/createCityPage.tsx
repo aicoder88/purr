@@ -113,6 +113,11 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
   const { profile } = cityRecord;
 
+  // Use localized province name if available
+  const { PROVINCES } = require('../../../lib/locations/provinces');
+  const provinceData = PROVINCES[profile.provinceCode.toLowerCase()];
+  const provinceName = (locale === 'fr' && provinceData?.nameFr) ? provinceData.nameFr : (provinceData?.name || profile.province);
+
   const populationLabel = profile.populationLabel !== 'n/a'
     ? profile.populationLabel
     : null;
@@ -153,14 +158,14 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
   const keywordContent = useMemo(
     () => buildKeywordList(
       profile.name,
-      profile.province,
+      provinceName,
       profile.provinceCode,
       profile.englishQueries,
       t.seoKeywords?.headTerms,
     ),
     [
       profile.name,
-      profile.province,
+      provinceName,
       profile.provinceCode,
       profile.englishQueries,
       t.seoKeywords?.headTerms,
@@ -174,8 +179,8 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
   const seoTitle = `Cat Litter Odor Control - ${locationLabel} | Purrify`;
   const seoDescription = populationLabel
-    ? `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Fast shipping across ${profile.province}. Trusted by ${populationLabel}+ cat owners.`
-    : `Eliminate cat litter odors in ${profile.name}, ${profile.province}. Fast shipping across ${profile.province}. Trusted by cat owners nationwide.`;
+    ? `Eliminate cat litter odors in ${profile.name}, ${provinceName}. Fast shipping across ${provinceName}. Trusted by ${populationLabel}+ cat owners.`
+    : `Eliminate cat litter odors in ${profile.name}, ${provinceName}. Fast shipping across ${provinceName}. Trusted by cat owners nationwide.`;
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
@@ -194,7 +199,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       event_category: 'city_page',
       city_slug: profile.slug,
       city_name: profile.name,
-      province: profile.province,
+      province: provinceName,
       province_code: profile.provinceCode,
     });
   }, [profile.slug, profile.name, profile.province, profile.provinceCode]);
@@ -211,7 +216,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
           },
           {
             name: 'geo.region',
-            content: profile.province,
+            content: provinceName,
           },
           {
             name: 'geo.placename',
@@ -226,7 +231,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
       <LocationSchema
         cityName={profile.name}
-        province={profile.province}
+        province={provinceName}
         locale={schemaLocale}
       />
 
@@ -253,7 +258,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                 name: profile.name,
                 containedInPlace: {
                   '@type': 'AdministrativeArea',
-                  name: profile.province,
+                  name: provinceName,
                 },
               },
             },
@@ -268,7 +273,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               Best Cat Litter Odor Eliminator in {profile.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Trusted by {trustedAudience}+ cat owners in {profile.name} and across {profile.province}
+              Trusted by {trustedAudience}+ cat owners in {profile.name} and across {provinceName}
             </p>
 
             <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
@@ -288,7 +293,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
-                  <span>Fast shipping across {profile.province}</span>
+                  <span>Fast shipping across {provinceName}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
@@ -324,7 +329,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         {/* Local Shipping Urgency - Conversion Optimization */}
         <LocalShippingUrgency
           cityName={profile.name}
-          provinceName={profile.province}
+          provinceName={provinceName}
           provinceCode={profile.provinceCode}
         />
 
@@ -352,7 +357,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                       Order Direct With Fast Shipping
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {profile.province}.
+                      Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {provinceName}.
                     </p>
                     <Link
                       href="/products/trial-size"
@@ -484,10 +489,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         <section className="py-16 px-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
-              Cat Owners Across {profile.province} Love Purrify
+              Cat Owners Across {provinceName} Love Purrify
             </h2>
             <p className="text-gray-700 dark:text-gray-200 mb-8">
-              Join thousands of satisfied cat parents in {profile.province} who've eliminated litter box odors for good.
+              Join thousands of satisfied cat parents in {provinceName} who've eliminated litter box odors for good.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
@@ -497,7 +502,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                 🏠 {trustedAudience}+ Happy Homes
               </span>
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
-                🚚 Fast {profile.province} Shipping
+                🚚 Fast {provinceName} Shipping
               </span>
             </div>
             <div className="mt-8">
@@ -519,10 +524,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
             <div className="space-y-6">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  Do you deliver to {profile.name}, {profile.province}?
+                  Do you deliver to {profile.name}, {provinceName}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Yes! Fast shipping across {profile.province}, including every neighbourhood in {profile.name}. Orders arrive within 2-3 business days.
+                  Yes! Fast shipping across {provinceName}, including every neighbourhood in {profile.name}. Orders arrive within 2-3 business days.
                 </p>
               </div>
 
@@ -546,10 +551,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How does Purrify handle {seasonalTip.toLowerCase()} in {profile.province}?
+                  How does Purrify handle {seasonalTip.toLowerCase()} in {provinceName}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {seasonalTip.toLowerCase()} in {profile.name}, Purrify's molecular odor capture continues 24/7. Perfect for {keyFeatures[0]?.toLowerCase() || 'busy households'} facing {profile.province}'s climate challenges.
+                  The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {seasonalTip.toLowerCase()} in {profile.name}, Purrify's molecular odor capture continues 24/7. Perfect for {keyFeatures[0]?.toLowerCase() || 'busy households'} facing {provinceName}'s climate challenges.
                 </p>
               </div>
 
@@ -558,7 +563,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                   Can I find Purrify at pet stores in {profile.name}?
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200">
-                  Many independent retailers in {profile.name} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {profile.province}.
+                  Many independent retailers in {profile.name} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {provinceName}.
                 </p>
               </div>
 
@@ -576,7 +581,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
 
         <CityInterlinkSection
           cityName={profile.name}
-          provinceName={profile.province}
+          provinceName={provinceName}
         />
       </div>
     </>

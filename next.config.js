@@ -194,6 +194,104 @@ const REDIRECTS = [
     destination: '/learn',
     permanent: true,
   },
+
+  // E-commerce & Legacy artifacts
+  {
+    source: '/checkout',
+    destination: '/products/compare',
+    permanent: true,
+  },
+  {
+    source: '/cart-2',
+    destination: '/products/compare',
+    permanent: true,
+  },
+  {
+    source: '/comments/feed',
+    destination: '/blog',
+    permanent: true,
+  },
+
+  // WordPress legacy query parameters
+  {
+    source: '/',
+    has: [{ type: 'query', key: 'p', value: '138' }],
+    destination: '/blog',
+    permanent: true,
+  },
+  {
+    source: '/',
+    has: [{ type: 'query', key: 'p', value: '137' }],
+    destination: '/blog',
+    permanent: true,
+  },
+
+  // Province code redirects to standard URLs
+  {
+    source: '/locations/ab',
+    destination: '/locations/province/alberta',
+    permanent: true,
+  },
+  {
+    source: '/locations/bc',
+    destination: '/locations/province/british-columbia',
+    permanent: true,
+  },
+  {
+    source: '/locations/mb',
+    destination: '/locations/province/manitoba',
+    permanent: true,
+  },
+  {
+    source: '/locations/nb',
+    destination: '/locations/province/new-brunswick',
+    permanent: true,
+  },
+  {
+    source: '/locations/nl',
+    destination: '/locations/province/newfoundland-and-labrador',
+    permanent: true,
+  },
+  {
+    source: '/locations/ns',
+    destination: '/locations/province/nova-scotia',
+    permanent: true,
+  },
+  {
+    source: '/locations/on',
+    destination: '/locations/province/ontario',
+    permanent: true,
+  },
+  {
+    source: '/locations/pe',
+    destination: '/locations/province/prince-edward-island',
+    permanent: true,
+  },
+  {
+    source: '/locations/qc',
+    destination: '/locations/province/quebec',
+    permanent: true,
+  },
+  {
+    source: '/locations/sk',
+    destination: '/locations/province/saskatchewan',
+    permanent: true,
+  },
+  {
+    source: '/locations/nt',
+    destination: '/locations/province/northwest-territories',
+    permanent: true,
+  },
+  {
+    source: '/locations/nu',
+    destination: '/locations/province/nunavut',
+    permanent: true,
+  },
+  {
+    source: '/locations/yt',
+    destination: '/locations/province/yukon',
+    permanent: true,
+  },
 ];
 
 const OPTIMIZE_PACKAGE_IMPORTS = [

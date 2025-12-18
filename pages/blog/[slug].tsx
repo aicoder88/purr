@@ -64,7 +64,13 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     const seoGen = new SEOGenerator();
     const currentLocale = locale || 'en';
 
-    const blogPost = await store.getPost(params.slug, currentLocale);
+    let blogPost = await store.getPost(params.slug, currentLocale);
+
+    // Fallback to English if localized post doesn't exist to prevent 404
+    if (!blogPost && currentLocale !== 'en') {
+      console.log(`Blog post ${params.slug} not found in ${currentLocale}, falling back to English`);
+      blogPost = await store.getPost(params.slug, 'en');
+    }
 
     if (blogPost) {
       // Transform to match existing BlogPost interface

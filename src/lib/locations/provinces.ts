@@ -186,6 +186,54 @@ export const PROVINCES: Record<string, ProvinceData> = {
       'PEI pet supplies',
       'cat litter smell PEI'
     ]
+  },
+  nt: {
+    code: 'NT',
+    name: 'Northwest Territories',
+    nameFr: 'Territoires du Nord-Ouest',
+    slug: 'nt',
+    region: 'north',
+    population: 45504,
+    description: 'Discover Purrify cat litter deodorizer in the Northwest Territories. Effective odor control for the unique challenges of Northern living.',
+    descriptionFr: 'Découvrez le désodorisant pour litière Purrify dans les Territoires du Nord-Ouest. Contrôle efficace des odeurs pour les défis uniques de la vie dans le Nord.',
+    metaKeywords: [
+      'cat litter Northwest Territories',
+      'Yellowknife cat litter',
+      'cat litter deodorizer NT',
+      'Northern pet supplies'
+    ]
+  },
+  nu: {
+    code: 'NU',
+    name: 'Nunavut',
+    nameFr: 'Nunavut',
+    slug: 'nu',
+    region: 'north',
+    population: 39403,
+    description: 'Find Purrify cat litter deodorizer in Nunavut. Natural activated carbon odor control for cat owners in Canada\'s northernmost territory.',
+    descriptionFr: 'Trouvez le désodorisant pour litière Purrify au Nunavut. Contrôle naturel des odeurs au charbon actif pour les propriétaires de chats dans le territoire le plus au nord du Canada.',
+    metaKeywords: [
+      'cat litter Nunavut',
+      'Iqaluit cat litter',
+      'cat litter deodorizer NU',
+      'Arctic pet supplies'
+    ]
+  },
+  yt: {
+    code: 'YT',
+    name: 'Yukon',
+    nameFr: 'Yukon',
+    slug: 'yt',
+    region: 'north',
+    population: 42986,
+    description: 'Get Purrify cat litter deodorizer in the Yukon. Keep your home fresh with natural odor elimination for cat litter in the territory.',
+    descriptionFr: 'Obtenez le désodorisant pour litière Purrify au Yukon. Gardez votre maison fraîche avec l\'élimination naturelle des odeurs pour la litière de chat dans le territoire.',
+    metaKeywords: [
+      'cat litter Yukon',
+      'Whitehorse cat litter',
+      'cat litter deodorizer YT',
+      'Yukon pet supplies'
+    ]
   }
 };
 
