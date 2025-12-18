@@ -5,7 +5,7 @@ import { useTranslation } from "../../lib/translation-context";
 
 export function WhyPurrify() {
   const { t } = useTranslation();
-  
+
   const reasons = [
     {
       icon: Wind,
@@ -74,7 +74,7 @@ export function WhyPurrify() {
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
             <span className="text-purple-700 dark:text-purple-300 font-semibold">The Science Behind Purrify</span>
           </div>
-        
+
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
             {t.nav.whyPurrify}
           </h2>
@@ -85,58 +85,55 @@ export function WhyPurrify() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reasons.map((reason, index) => {
-              const theme = colorThemes[index % 3];
-              const IconComponent = reason.icon;
-              return (
-                <div
-                  key={index}
-                  className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
+            const theme = colorThemes[index % 3];
+            const IconComponent = reason.icon;
+            return (
+              <div
+                key={index}
+                className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Gradient overlay on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
 
-                  <div className="aspect-video overflow-hidden h-[200px] sm:h-[225px] flex items-center justify-center relative">
-                    <Image
-                      src={reason.image}
-                      alt={reason.title}
-                      width={400}
-                      height={225}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
-                      loading={index < 3 ? "eager" : "lazy"}
-                      className={"w-full h-full transition-transform duration-700 group-hover:scale-110"}
-                      style={{
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                        transform: reason.title.includes('LONG-LASTING FRESHNESS') || reason.title.includes('COST-EFFECTIVE')
-                          ? 'scale(1.2)'
-                          : 'none'
-                      }}
-                    />
-                  </div>
-                  <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
-                    <div className="flex items-center mb-4">
-                      <div
-                        className={`p-3 sm:p-4 rounded-2xl shadow-xl mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
-                      >
-                        <IconComponent className="h-6 w-6 text-white dark:text-gray-100" />
-                      </div>
-                      <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
-                        {reason.title}
-                      </h3>
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
-                      {reason.description.split('\n').map((line, i) => (
-                        <span key={i} className="block mb-1">{line}</span>
-                      ))}
-                    </p>
-                  </div>
+                <div className="aspect-[4/3] w-full overflow-hidden flex items-center justify-center relative">
+                  <Image
+                    src={reason.image}
+                    alt={reason.title}
+                    width={400}
+                    height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    loading={index < 3 ? "eager" : "lazy"}
+                    className={"w-full h-full transition-transform duration-700 group-hover:scale-105"}
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                    }}
+                  />
                 </div>
-              );
-            })}
+                <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div
+                      className={`p-3 sm:p-4 rounded-2xl shadow-xl mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
+                    >
+                      <IconComponent className="h-6 w-6 text-white dark:text-gray-100" />
+                    </div>
+                    <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
+                      {reason.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
+                    {reason.description.split('\n').map((line, i) => (
+                      <span key={i} className="block mb-1">{line}</span>
+                    ))}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Container>
-      
+
       {/* Enhanced scroll indicator */}
       <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex justify-center w-full">
         <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
