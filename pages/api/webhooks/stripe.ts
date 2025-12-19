@@ -1,13 +1,78 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
+import { Resend } from 'resend';
 import prisma from '../../../src/lib/prisma';
 import { buffer } from 'micro';
+import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '../../../src/emails/order-confirmation';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-07-30.basil',
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+
+// Initialize Resend for sending emails directly
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+/**
+ * Send thank you email directly via Resend
+ * This avoids the internal HTTP fetch which can fail in serverless environments
+ */
+async function sendThankYouEmail({
+  customerEmail,
+  customerName,
+  orderNumber,
+  productName,
+  quantity,
+  amount,
+  locale = 'en'
+}: {
+  customerEmail: string;
+  customerName?: string;
+  orderNumber: string;
+  productName: string;
+  quantity: number;
+  amount: number;
+  locale?: string;
+}): Promise<{ success: boolean; error?: string }> {
+  // Validate Resend API key
+  if (!process.env.RESEND_API_KEY || !process.env.RESEND_API_KEY.startsWith('re_')) {
+    console.error('[Stripe Webhook] RESEND_API_KEY not configured or invalid');
+    return { success: false, error: 'Email service not configured' };
+  }
+
+  try {
+    const emailHTML = OrderConfirmationEmailHTML({
+      customerEmail,
+      customerName,
+      orderNumber,
+      productName,
+      quantity,
+      amount,
+      locale
+    });
+
+    const emailSubject = getOrderConfirmationEmailSubject(locale);
+
+    const { data, error } = await resend.emails.send({
+      from: 'Purrify Support <support@purrify.ca>',
+      to: customerEmail,
+      subject: emailSubject,
+      html: emailHTML,
+    });
+
+    if (error) {
+      console.error('[Stripe Webhook] Resend API error:', error);
+      return { success: false, error: error.message };
+    }
+
+    console.log('[Stripe Webhook] Email sent successfully:', { emailId: data?.id, to: customerEmail });
+    return { success: true };
+  } catch (err) {
+    console.error('[Stripe Webhook] Error sending email:', err);
+    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+  }
+}
 
 export const config = {
   api: {
@@ -85,30 +150,20 @@ export default async function handler(
 
           console.log(`Retailer order ${orderId} paid successfully`);
 
-          // Send thank you email to retailer
+          // Send thank you email to retailer (direct Resend call)
           if (customerEmail) {
-            try {
-              const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/email/send-thank-you-email`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  customerEmail,
-                  customerName,
-                  orderNumber: orderId,
-                  productName,
-                  quantity,
-                  amount,
-                  locale: 'en'
-                })
-              });
+            const emailResult = await sendThankYouEmail({
+              customerEmail,
+              customerName,
+              orderNumber: orderId,
+              productName,
+              quantity,
+              amount,
+              locale: 'en'
+            });
 
-              if (!emailResponse.ok) {
-                console.error('Failed to send retailer thank you email:', await emailResponse.text());
-              } else {
-                console.log(`Thank you email sent to retailer: ${customerEmail}`);
-              }
-            } catch (emailError) {
-              console.error('Error sending retailer thank you email:', emailError);
+            if (!emailResult.success) {
+              console.error('Failed to send retailer thank you email:', emailResult.error);
             }
           }
 
@@ -148,30 +203,20 @@ export default async function handler(
           });
         }
 
-        // Send thank you email to customer
+        // Send thank you email to customer (direct Resend call)
         if (customerEmail) {
-          try {
-            const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/email/send-thank-you-email`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                customerEmail,
-                customerName,
-                orderNumber: orderId,
-                productName,
-                quantity,
-                amount,
-                locale: 'en' // TODO: Get from session metadata or customer preference
-              })
-            });
+          const emailResult = await sendThankYouEmail({
+            customerEmail,
+            customerName,
+            orderNumber: orderId,
+            productName,
+            quantity,
+            amount,
+            locale: 'en' // TODO: Get from session metadata or customer preference
+          });
 
-            if (!emailResponse.ok) {
-              console.error('Failed to send thank you email:', await emailResponse.text());
-            } else {
-              console.log(`Thank you email sent to: ${customerEmail}`);
-            }
-          } catch (emailError) {
-            console.error('Error sending thank you email:', emailError);
+          if (!emailResult.success) {
+            console.error('Failed to send thank you email:', emailResult.error);
             // Don't fail the webhook if email fails
           }
         }
