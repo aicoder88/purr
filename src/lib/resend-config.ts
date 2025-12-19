@@ -28,5 +28,5 @@ if (typeof window === 'undefined') {
  * Check if Resend is properly configured
  */
 export const isResendConfigured = (): boolean => {
-  return !!RESEND_CONFIG.apiKey && RESEND_CONFIG.apiKey.startsWith('re_');
+  return !!RESEND_CONFIG.apiKey && RESEND_CONFIG.apiKey.length > 0;
 };

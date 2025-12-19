@@ -35,9 +35,9 @@ async function sendThankYouEmail({
   amount: number;
   locale?: string;
 }): Promise<{ success: boolean; error?: string }> {
-  // Validate Resend API key
-  if (!process.env.RESEND_API_KEY || !process.env.RESEND_API_KEY.startsWith('re_')) {
-    console.error('[Stripe Webhook] RESEND_API_KEY not configured or invalid');
+  // Validate Resend API key exists (Resend will validate the key itself)
+  if (!process.env.RESEND_API_KEY) {
+    console.error('[Stripe Webhook] RESEND_API_KEY not configured');
     return { success: false, error: 'Email service not configured' };
   }
 
