@@ -78,11 +78,11 @@ export function EnhancedProductComparison() {
   const products: ProductCard[] = [
     {
       id: 'purrify-12g',
-      name: t.products?.['purrify-12g']?.name || 'Trial Size',
+      name: t.products?.['purrify-12g']?.name || 'FREE Trial',
       subtitle: '12g Pack',
-      badge: 'TRIAL',
-      badgeColor: 'bg-gray-900 dark:bg-gray-700',
-      description: 'Perfect for testing the magic of Purrify.',
+      badge: 'FREE TRIAL',
+      badgeColor: 'bg-green-600 dark:bg-green-700',
+      description: 'Try Purrify FREE - just pay shipping & handling.',
       duration: '1 Week',
       coverage: '1 Cat',
       features: {
@@ -99,12 +99,13 @@ export function EnhancedProductComparison() {
         {
           key: 'trial-single',
           type: 'one-time',
-          label: 'One-Time',
-          priceFormatted: formatProductPrice('trial', locale),
-          subLabel: 'One-time purchase',
+          label: 'FREE',
+          priceFormatted: 'FREE',
+          subLabel: `Just ${formatProductPrice('trial', locale)} shipping & handling`,
+          shippingNote: 'Limit one per customer',
           action: 'link',
           linkKey: 'trialSingle',
-          ctaLabel: 'Try Risk Free',
+          ctaLabel: 'Get FREE Trial',
           icon: 'cart',
           ctaEmphasis: 'secondary',
         },
@@ -187,6 +188,17 @@ export function EnhancedProductComparison() {
   ];
 
   const getFeatureLabels = (productId: string) => {
+    if (productId === 'purrify-12g') {
+      return {
+        odorControl: '1 Week Odor Control',
+        naturalIngredients: '100% Natural',
+        easyApplication: 'Easy Application',
+        moneyBackGuarantee: '30-Day Guarantee',
+        freeShipping: 'Shipping Included',
+        bulkDiscount: 'Bulk Discount',
+        prioritySupport: 'Priority Support'
+      };
+    }
     return {
       odorControl: '3 months of Odor Control',
       naturalIngredients: '100% Natural',
@@ -263,6 +275,22 @@ export function EnhancedProductComparison() {
                       <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
                         {preferredOption.priceFormatted} per month (Billed {preferredOption.totalPrice})
                       </p>
+                    ) : preferredOption.priceFormatted === 'FREE' ? (
+                      <div className="mb-2">
+                        <span className="text-4xl font-black text-green-600 dark:text-green-400 tracking-tight">
+                          {preferredOption.priceFormatted}
+                        </span>
+                        {preferredOption.subLabel && (
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            {preferredOption.subLabel}
+                          </p>
+                        )}
+                        {preferredOption.shippingNote && (
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                            {preferredOption.shippingNote}
+                          </p>
+                        )}
+                      </div>
                     ) : (
                       <div className="mb-2">
                         <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
@@ -274,6 +302,10 @@ export function EnhancedProductComparison() {
                     {preferredOption.savings ? (
                       <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mb-4">
                         Save {formatSavingsLabel(preferredOption.savings)}
+                      </div>
+                    ) : preferredOption.priceFormatted === 'FREE' ? (
+                      <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mb-4">
+                        🎁 Limited Time Offer
                       </div>
                     ) : (
                       <div className="h-8 mb-4" /> // Spacer
@@ -287,7 +319,11 @@ export function EnhancedProductComparison() {
                       asChild
                       className={cn(
                         "w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px]",
-                        isSubscription ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25" : "bg-gray-900 hover:bg-gray-800 text-white"
+                        isSubscription
+                          ? "bg-deep-coral hover:bg-deep-coral/90 text-white shadow-deep-coral/25"
+                          : preferredOption.priceFormatted === 'FREE'
+                            ? "bg-green-600 hover:bg-green-500 text-white shadow-green-600/25"
+                            : "bg-gray-900 hover:bg-gray-800 text-white"
                       )}
                     >
                       <a href={getPaymentLink(preferredOption.linkKey!) || '#'} target="_blank" rel="noopener noreferrer">

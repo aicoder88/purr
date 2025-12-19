@@ -13,7 +13,7 @@ export const en = {
     howItWorks: "How It Works",
     about: "About",
     whyPurrify: "Why Purrify",
-    tryFree: "Try Free Trial",
+    tryFree: "Get FREE Trial",
     testimonials: "Testimonials",
     leaveReview: "Leave a Review",
     contact: "Contact",
@@ -21,7 +21,7 @@ export const en = {
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
     // Dropdown items
-    trialSize: "12g Trial Size",
+    trialSize: "FREE Trial (Just Pay S&H)",
     compareSizes: "Compare Sizes",
     viewAllProducts: "View All Products",
     howItWorksPage: "How It Works",
@@ -71,8 +71,8 @@ export const en = {
   // Products
   products: {
     "purrify-12g": {
-      name: "Purrify 12g Trial",
-      description: "Skeptical? Try This First!\nJust $4.99 to prove your litter box can smell fresh. See results in 24 hours. Perfect 'try before you buy' size."
+      name: "FREE Trial",
+      description: "Try Purrify FREE!\nJust pay $4.99 shipping & handling. See results in 24 hours. Limited time offer - limit one per customer."
     },
     "purrify-50g": {
       name: "Purrify 50g Standard",
@@ -100,7 +100,7 @@ export const en = {
     recommended: "Most recommended",
     perMonth: "≈ {price}/month",
     saveVsOneTime: "Save {percent}% vs one-time",
-    trialSizeSection: "Try Before You Buy",
+    trialSizeSection: "FREE Trial - Just Pay Shipping",
     quarterlyAutoshipSection: "Subscribe & Save - Quarterly Autoship"
   },
 

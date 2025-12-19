@@ -13,7 +13,7 @@ export const fr = {
     howItWorks: "Comment Ça Marche",
     about: "À Propos",
     whyPurrify: "Pourquoi Purrify",
-    tryFree: "Essai Gratuit",
+    tryFree: "Essai GRATUIT",
     testimonials: "Témoignages",
     leaveReview: "Laisser un Avis",
     contact: "Contact",
@@ -21,7 +21,7 @@ export const fr = {
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions d'Utilisation",
     // Dropdown items
-    trialSize: "Taille d'Essai 12g",
+    trialSize: "Essai GRATUIT (Frais envoi seul.)",
     compareSizes: "Comparer les Tailles",
     viewAllProducts: "Voir Tous les Produits",
     howItWorksPage: "Comment Ça Marche",
@@ -71,8 +71,8 @@ export const fr = {
   // Products
   products: {
     "purrify-12g": {
-      name: "Purrify 12g",
-      description: "Parfait pour les Nouveaux Chaton\nTaille d'essai : Suffisant uniquement pour un seul changement de litière. Idéal pour essayer Purrify avant de choisir un format plus grand."
+      name: "Essai GRATUIT",
+      description: "Essayez Purrify GRATUITEMENT !\nPayez seulement 4,99 $ pour les frais d'envoi. Offre limitée - une par client."
     },
     "purrify-50g": {
       name: "Purrify 50g",
@@ -100,7 +100,7 @@ export const fr = {
     recommended: "Recommandé",
     perMonth: "≈ {price}/mois",
     saveVsOneTime: "Économisez {percent}% vs achat unique",
-    trialSizeSection: "Essayer avant d'acheter",
+    trialSizeSection: "Essai GRATUIT - Frais d'envoi seulement",
     quarterlyAutoshipSection: "S'abonner & économiser - Abonnement trimestriel"
   },
 

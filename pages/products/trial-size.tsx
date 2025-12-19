@@ -13,8 +13,8 @@ import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/l
 export default function TrialSizePage() {
   const { t, locale } = useTranslation();
 
-  const pageTitle = "Try Purrify FREE for 7 Days - Transform Your Cat's Litter Box";
-  const pageDescription = "WARNING: Your Cat's Litter Box Could Be Making You Sick. Discover the 12g trial that 87% of cat owners upgrade from within 7 days. Zero risk. Maximum results.";
+  const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
+  const pageDescription = "Get your FREE 12g Purrify trial - just pay $4.99 shipping & handling. Limited time offer, limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const priceValidUntil = getPriceValidityDate();
@@ -120,22 +120,22 @@ export default function TrialSizePage() {
         </Container>
 
         {/* Attention-Grabbing Headline */}
-        <section className="py-8 bg-gradient-to-r from-red-50/80 to-orange-50/80 dark:from-red-950/30 dark:to-orange-950/30 border-y border-red-100 dark:border-red-900/50">
+        <section className="py-8 bg-gradient-to-r from-green-50/80 to-emerald-50/80 dark:from-green-950/30 dark:to-emerald-950/30 border-y border-green-100 dark:border-green-900/50">
           <Container>
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wide">
-                ⚠️ Health Alert for Cat Owners
+              <div className="inline-block bg-green-600 dark:bg-green-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wide animate-pulse">
+                🎁 LIMITED TIME OFFER - FREE TRIAL
               </div>
               <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
-                Is Your Cat's Litter Box<br />
-                <span className="text-red-600 dark:text-red-400">Secretly Poisoning Your Home?</span>
+                Get Your <span className="text-green-600 dark:text-green-400">FREE</span> Purrify Trial<br />
+                <span className="text-gray-600 dark:text-gray-400 text-2xl md:text-3xl lg:text-4xl font-bold">Just Pay Shipping & Handling</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-semibold mb-4">
-                Ammonia levels from cat urine can reach<br className="hidden md:block" />
-                <span className="text-red-600 dark:text-red-400">dangerous concentrations</span> in just 48 hours...
+                Experience the odor-eliminating power of activated carbon<br className="hidden md:block" />
+                <span className="text-green-600 dark:text-green-400">absolutely FREE</span> - we just ask you cover shipping.
               </p>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                But there's a scientifically-proven solution that works in minutes, not days.
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                *Just $4.99 shipping & handling. Limit one per customer.
               </p>
             </div>
           </Container>
@@ -158,8 +158,8 @@ export default function TrialSizePage() {
                       className="w-full max-w-sm mx-auto h-auto object-contain"
                       priority
                     />
-                    <div className="absolute -top-4 -right-4 bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold shadow-lg rotate-12 transform hover:rotate-0 transition-transform">
-                      TRY RISK-FREE
+                    <div className="absolute -top-4 -right-4 bg-green-600 dark:bg-green-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold shadow-lg rotate-12 transform hover:rotate-0 transition-transform">
+                      FREE TRIAL
                     </div>
                   </div>
                 </div>
@@ -167,17 +167,17 @@ export default function TrialSizePage() {
 
               {/* Compelling Copy - John Carlton Style */}
               <div className="order-1 lg:order-2 space-y-6">
-                <div className="bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-600 dark:border-yellow-500 p-4 mb-6">
+                <div className="bg-green-100 dark:bg-green-900/20 border-l-4 border-green-600 dark:border-green-500 p-4 mb-6">
                   <p className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wide mb-1">
-                    LIMITED TIME OFFER
+                    🎁 FREE TRIAL - LIMITED TIME OFFER
                   </p>
                   <p className="text-gray-800 dark:text-gray-200">
-                    <strong>87% of trial users</strong> upgrade to full-size within 7 days. See why...
+                    <strong>87% of trial users</strong> upgrade to full-size within 7 days. See why for FREE!
                   </p>
                 </div>
 
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-                  Try the <span className="text-electric-indigo-600 dark:text-electric-indigo-400">"12g Miracle"</span> That's Transforming Litter Boxes Across Canada
+                  Get Your <span className="text-green-600 dark:text-green-400">FREE</span> 12g Trial That's Transforming Litter Boxes Across Canada
                 </h2>
 
                 <div className="flex items-center space-x-2 mb-4">
@@ -189,16 +189,19 @@ export default function TrialSizePage() {
                   <span className="text-gray-700 dark:text-gray-300 font-semibold">4.8/5 from 127 verified buyers</span>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 border-2 border-purple-200 dark:border-purple-800 rounded-xl p-6">
+                <div className="bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-800 rounded-xl p-6">
                   <div className="flex items-baseline gap-3 mb-3">
-                    <span className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400">{trialPrice}</span>
+                    <span className="text-4xl font-black text-green-600 dark:text-green-400">FREE</span>
                     <span className="text-gray-500 dark:text-gray-400 line-through text-xl">$14.99</span>
                     <span className="bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 px-2 py-1 rounded text-sm font-bold">
-                      SAVE 67%
+                      100% OFF
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    One-time trial • Perfect for 1 week • Works with ANY litter
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Just pay {trialPrice} shipping & handling
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                    One-time trial • Limit one per customer • Works with ANY litter
                   </p>
 
                   <ul className="space-y-2 mb-6">
@@ -223,10 +226,10 @@ export default function TrialSizePage() {
                   <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="block w-full">
                     <Button
                       size="lg"
-                      className="w-full bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-electric-indigo-500/20 transition-all duration-300 transform hover:scale-[1.02]"
+                      className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 transform hover:scale-[1.02]"
                     >
                       <ShoppingCart className="w-6 h-6 mr-2" />
-                      YES! Send Me My Trial Now
+                      GET MY FREE TRIAL NOW
                     </Button>
                   </a>
 
@@ -241,7 +244,7 @@ export default function TrialSizePage() {
                     </div>
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
-                      <span>Free shipping on orders over $50</span>
+                      <span>Shipping & handling included in {trialPrice}</span>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                       <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-2">Secure payment with:</p>
@@ -260,11 +263,11 @@ export default function TrialSizePage() {
                   </div>
                 </div>
 
-                <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start gap-3">
-                  <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-lg p-4 flex items-start gap-3">
+                  <AlertCircle className="w-6 h-6 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-bold text-red-900 dark:text-red-300 mb-1">⚡ Limited Stock Warning</p>
-                    <p className="text-sm text-red-800 dark:text-red-300">Trial sizes sell out fast. Current stock: <strong>47 units remaining</strong></p>
+                    <p className="font-bold text-amber-900 dark:text-amber-300 mb-1">⏰ Limited Time Free Trial Offer</p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300">This free trial offer won't last forever. <strong>Limit one per customer.</strong></p>
                   </div>
                 </div>
               </div>
@@ -386,13 +389,13 @@ export default function TrialSizePage() {
 
               <div className="space-y-8">
                 <div className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-electric-indigo-400 dark:bg-electric-indigo-500 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg shadow-electric-indigo-500/20">
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-500 dark:bg-green-600 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold text-xl shadow-lg shadow-green-500/20">
                     1
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Order Your $4.99 Trial</h3>
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Claim Your FREE Trial</h3>
                     <p className="text-gray-700 dark:text-gray-300">
-                      Click the button, enter your info. Done. Your trial ships within 24 hours. You'll get tracking immediately.
+                      Click the button, just pay {trialPrice} shipping & handling. Done. Your FREE trial ships within 24 hours. You'll get tracking immediately.
                     </p>
                   </div>
                 </div>
@@ -432,9 +435,9 @@ export default function TrialSizePage() {
                 <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-electric-indigo-600 to-electric-indigo-500 hover:from-electric-indigo-500 hover:to-electric-indigo-400 dark:from-electric-indigo-600 dark:to-electric-indigo-500 dark:hover:from-electric-indigo-500 dark:hover:to-electric-indigo-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-electric-indigo-500/20 transform hover:scale-[1.02] transition-all"
+                    className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-green-500/20 transform hover:scale-[1.02] transition-all"
                   >
-                    Try It Risk-Free Now
+                    Get My FREE Trial Now
                   </Button>
                 </a>
               </div>
@@ -443,11 +446,11 @@ export default function TrialSizePage() {
         </section>
 
         {/* Final CTA - Gary Bencivenga Style */}
-        <section className="py-20 bg-gradient-to-br from-indigo-900 to-slate-900 dark:from-indigo-950 dark:to-slate-950">
+        <section className="py-20 bg-gradient-to-br from-green-900 to-slate-900 dark:from-green-950 dark:to-slate-950">
           <Container>
             <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-6">
-                You're 60 Seconds Away From<br />A Fresh-Smelling Home
+                Your FREE Trial Is Waiting<br />Just Pay Shipping
               </h2>
 
               <p className="text-xl mb-8 opacity-90">
@@ -478,9 +481,9 @@ export default function TrialSizePage() {
                   <div className="flex gap-4">
                     <div className="text-green-400 dark:text-green-300 text-3xl font-black">✅</div>
                     <div>
-                      <p className="font-bold text-xl mb-2">PATH 2: Take The Trial</p>
+                      <p className="font-bold text-xl mb-2">PATH 2: Claim Your FREE Trial</p>
                       <p className="opacity-90">
-                        Click below. Spend $4.99. Get it in 2-3 days. Use it once.
+                        Click below. Just pay {trialPrice} shipping & handling. Get it in 2-3 days. Use it once.
                         Watch the smell disappear. Join the 87% who upgrade. Finally solve this problem forever.
                       </p>
                     </div>
@@ -489,27 +492,27 @@ export default function TrialSizePage() {
               </div>
 
               <div className="mb-8">
-                <div className="inline-flex items-center gap-3 bg-yellow-400 dark:bg-yellow-500 text-gray-900 dark:text-gray-900 px-6 py-3 rounded-full font-bold text-lg mb-4">
+                <div className="inline-flex items-center gap-3 bg-green-400 dark:bg-green-500 text-gray-900 dark:text-gray-900 px-6 py-3 rounded-full font-bold text-lg mb-4">
                   <TrendingUp className="w-6 h-6" />
-                  <span>47 Units Left in Stock</span>
+                  <span>🎁 LIMITED TIME - FREE TRIAL OFFER</span>
                 </div>
               </div>
 
               <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block mb-6">
                 <Button
                   size="lg"
-                  className="bg-white text-electric-indigo-700 hover:bg-indigo-50 dark:bg-electric-indigo-600 dark:text-white dark:hover:bg-electric-indigo-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
+                  className="bg-white text-green-700 hover:bg-green-50 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
                 >
-                  YES! Send My Trial Now - Only {trialPrice}
+                  GET MY FREE TRIAL - Just {trialPrice} S&H
                 </Button>
               </a>
 
               <p className="text-sm opacity-75 mb-2">
-                ✓ 30-Day Money-Back Guarantee • ✓ Ships in 24 Hours • ✓ Join 1,127 Happy Users This Month
+                ✓ 30-Day Money-Back Guarantee • ✓ Ships in 24 Hours • ✓ Limit One Per Customer
               </p>
 
               <p className="text-xs opacity-60 mb-2">
-                Secure checkout • Your information is protected by 256-bit SSL encryption
+                *{trialPrice} covers shipping & handling only. Product is FREE. Secure checkout with 256-bit SSL encryption.
               </p>
 
               <p className="text-xs opacity-50">
@@ -520,14 +523,14 @@ export default function TrialSizePage() {
         </section>
 
         {/* Urgency Footer */}
-        <section className="py-8 bg-deep-coral-600 dark:bg-deep-coral-700">
+        <section className="py-8 bg-green-600 dark:bg-green-700">
           <Container>
             <div className="text-center text-white dark:text-gray-100">
               <p className="text-xl font-bold mb-2">
-                ⚡ IMPORTANT: Trial sizes are selling faster than we can restock
+                🎁 FREE TRIAL OFFER - Limited Time Only
               </p>
               <p className="text-sm opacity-90">
-                Current inventory: 47 units • Next restock: 7-10 business days
+                Product is FREE • Just pay {trialPrice} shipping & handling • Limit one per customer
               </p>
             </div>
           </Container>

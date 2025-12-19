@@ -13,7 +13,7 @@ export const zh = {
     howItWorks: "工作原理",
     about: "关于我们",
     whyPurrify: "为什么选择Purrify",
-    tryFree: "免费试用",
+    tryFree: "免费试用装",
     testimonials: "用户评价",
     leaveReview: "留下评价",
     contact: "联系我们",
@@ -21,7 +21,7 @@ export const zh = {
     privacyPolicy: "隐私政策",
     termsOfService: "服务条款",
     // Dropdown items
-    trialSize: "12g 试用装",
+    trialSize: "免费试用 (仅付运费)",
     compareSizes: "比较规格",
     viewAllProducts: "查看所有产品",
     howItWorksPage: "工作原理",
@@ -71,8 +71,8 @@ export const zh = {
   // Products
   products: {
     "purrify-12g": {
-      name: "Purrify 12g",
-      description: "试用装 - 单次使用样品\n试用装：仅够一次猫砂更换使用。适合在购买大包装前试用Purrify。"
+      name: "免费试用装",
+      description: "免费试用Purrify！\n仅需支付$4.99运费。限时优惠 - 每位客户限一份。"
     },
     "purrify-50g": {
       name: "Purrify 50g",
@@ -100,7 +100,7 @@ export const zh = {
     recommended: "推荐选择",
     perMonth: "≈ {price}/月",
     saveVsOneTime: "比单次购买节省 {percent}%",
-    trialSizeSection: "先试试再购买",
+    trialSizeSection: "免费试用 - 仅付运费",
     quarterlyAutoshipSection: "订购享优惠 - 季度自动配送"
   },
 
