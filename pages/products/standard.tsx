@@ -109,7 +109,7 @@ export default function RegularSizePage() {
                     className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-8 right-8">
-                    <div className="bg-deep-coral text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
+                    <div className="bg-deep-coral text-white dark:text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
                       <Zap className="w-4 h-4 fill-current" />
                       Most Popular
                     </div>
@@ -129,7 +129,7 @@ export default function RegularSizePage() {
                   <div className="flex items-center gap-4 mb-6">
                     <div className="flex items-center gap-1 bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-gray-100 dark:border-gray-700">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:text-yellow-500" />
                       ))}
                       <span className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">4.9</span>
                     </div>
@@ -145,20 +145,20 @@ export default function RegularSizePage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Autoship Option */}
                   <div className="relative group overflow-hidden bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
+                    <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white dark:text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
                       Save 30%
                     </div>
                     <h3 className="font-bold text-gray-900 dark:text-white mb-1">Subscribe & Save</h3>
                     <div className="flex items-baseline gap-1 mb-4">
                       <span className="text-3xl font-black text-gray-900 dark:text-white">{formatProductPrice('familyAutoship', locale)}</span>
-                      <span className="text-xs text-gray-500">/ 3 months</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">/ 3 months</span>
                     </div>
-                    <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
+                    <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
                       <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         Get Autoship <Zap className="w-4 h-4 fill-current" />
                       </a>
                     </Button>
-                    <p className="text-[10px] text-center mt-3 text-gray-400 font-medium">Cancel anytime. Ships free.</p>
+                    <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">Cancel anytime. Ships free.</p>
                   </div>
 
                   {/* One-time Option */}
@@ -172,14 +172,14 @@ export default function RegularSizePage() {
                         Buy Now
                       </a>
                     </Button>
-                    <p className="text-[10px] text-center mt-3 text-gray-400 font-medium">+ $6.99 Shipping</p>
+                    <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">+ $6.99 Shipping</p>
                   </div>
                 </div>
 
                 {/* Quick Trust */}
                 <div className="flex flex-wrap gap-6 pt-2">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    <ShieldCheck className="w-5 h-5 text-green-500" />
+                    <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
                     7-Day Money Back
                   </div>
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -252,7 +252,7 @@ export default function RegularSizePage() {
               </div>
               <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
                 <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <ShoppingCart className="w-8 h-8 text-green-500" />
+                  <ShoppingCart className="w-8 h-8 text-green-500 dark:text-green-400" />
                 </div>
                 <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">Best Value</h3>
                 <p className="text-gray-600 dark:text-gray-400">One regular size replaces 4-5 spray cans or expensive plugins.</p>
@@ -262,22 +262,22 @@ export default function RegularSizePage() {
         </section>
 
         {/* Product Detail Image */}
-        <section className="py-24 bg-gray-900 text-white overflow-hidden relative">
+        <section className="py-24 bg-gray-900 dark:bg-gray-900 text-white dark:text-white overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-tr from-electric-indigo/20 to-deep-coral/20 opacity-40"></div>
           <Container className="relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
-                <h2 className="font-heading text-4xl md:text-5xl font-black leading-tight">
+                <h2 className="font-heading text-4xl md:text-5xl font-black leading-tight text-white dark:text-white">
                   High-Surface Area <br />
                   <span className="text-deep-coral">Molecular Filtration</span>
                 </h2>
-                <p className="text-xl text-gray-400 leading-relaxed">
+                <p className="text-xl text-gray-400 dark:text-gray-300 leading-relaxed">
                   Our activated carbon is sourced from premium coconut shells, processed to maximize the surface area that "captures" odor particles. Just one gram has a surface area equivalent to a tennis court.
                 </p>
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 dark:border-white/5">
                   <p className="text-deep-coral font-black mb-2 uppercase tracking-widest text-sm">Real Results</p>
-                  <p className="italic text-lg">"My husband used to complain the second he walked through the door. Since we started using the Regular Size, he doesn't even notice the litter area anymore! Game changer for our small apartment."</p>
-                  <p className="mt-4 font-bold">— Sarah L., Toronto</p>
+                  <p className="italic text-lg text-white dark:text-white">"My husband used to complain the second he walked through the door. Since we started using the Regular Size, he doesn't even notice the litter area anymore! Game changer for our small apartment."</p>
+                  <p className="mt-4 font-bold text-white dark:text-white">— Sarah L., Toronto</p>
                 </div>
               </div>
               <div className="relative">
@@ -306,13 +306,13 @@ export default function RegularSizePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
+                <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
                   <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                     Start Your Fresh Journey <Zap className="w-5 h-5 fill-current" />
                   </a>
                 </Button>
               </div>
-              <p className="text-sm font-bold text-gray-400">30-Day Happiness Guarantee • Free Shipping on Autoship</p>
+              <p className="text-sm font-bold text-gray-400 dark:text-gray-500">30-Day Happiness Guarantee • Free Shipping on Autoship</p>
             </div>
           </Container>
         </section>
@@ -320,7 +320,7 @@ export default function RegularSizePage() {
         {/* Back navigation */}
         <section className="py-12 border-t border-gray-100 dark:border-gray-900">
           <Container className="text-center">
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="inline-flex items-center text-gray-500 hover:text-deep-coral font-bold gap-2 transition-colors">
+            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-deep-coral font-bold gap-2 transition-colors">
               <ArrowLeft className="w-5 h-5" /> Back to all sizes
             </Link>
           </Container>
