@@ -211,7 +211,7 @@ export function EnhancedProductComparison() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden" id="products">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-deep-coral/5 rounded-full blur-3xl" />
