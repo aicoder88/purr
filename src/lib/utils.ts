@@ -9,15 +9,24 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Improved scroll utility with better element targeting
+// Accounts for sticky header offset
 export const scrollToSection = (id: string) => {
   if (!id) return;
 
   const element = document.getElementById(id);
   if (!element) return;
 
-  element.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+  // Get the sticky header height to offset the scroll position
+  const header = document.querySelector('header');
+  const headerHeight = header?.offsetHeight || 80;
+
+  // Calculate the target position accounting for header
+  const elementPosition = element.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.scrollY - headerHeight - 16; // 16px extra padding
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: "smooth"
   });
 };
 
