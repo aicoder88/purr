@@ -884,33 +884,33 @@ export const en = {
     products: [
       {
         id: "trial",
-        name: "Trial Size",
-        subtitle: "Perfect for first-time users",
-        duration: "One week duration",
-        cats: "For one cat",
-        features: ["12g activated carbon", "Risk-free trial", "Perfect introduction"],
-        bestFor: "New customers wanting to try Purrify",
-        cta: "Try Risk-Free"
+        name: "FREE Trial",
+        subtitle: "12g Pack",
+        duration: "1 week",
+        cats: "1 cat",
+        features: ["12g activated carbon", "Just pay shipping", "Perfect introduction"],
+        bestFor: "New customers wanting to try Purrify risk-free",
+        cta: "Get FREE Trial"
       },
       {
-        id: "standard",
-        name: "Standard Size",
-        subtitle: "Most popular choice",
-        duration: "4-6 weeks",
-        cats: "1-3 cats",
-        features: ["75g activated carbon", "Best value", "Most popular"],
-        bestFor: "Regular households with 1-3 cats",
-        cta: "Choose This Size"
+        id: "regular",
+        name: "Regular",
+        subtitle: "120g Pack - Most Popular",
+        duration: "3 months",
+        cats: "1-2 cats",
+        features: ["120g activated carbon", "Subscribe & save", "Free shipping"],
+        bestFor: "Single or dual cat homes wanting continuous freshness",
+        cta: "Subscribe & Save"
       },
       {
         id: "large",
-        name: "Large Size",
-        subtitle: "Best value for multi-cat homes",
-        duration: "4-week duration",
-        cats: "For 1-2 cats",
-        features: ["150g activated carbon", "Maximum savings", "Bulk discount"],
+        name: "Large",
+        subtitle: "240g Pack - Best Value",
+        duration: "3 months",
+        cats: "3+ cats",
+        features: ["240g activated carbon", "Maximum savings", "Free shipping"],
         bestFor: "Multi-cat households and heavy users",
-        cta: "Get Best Value"
+        cta: "Subscribe & Save"
       }
     ],
     comparisonFeatures: [
@@ -965,8 +965,8 @@ export const en = {
     tableHeaders: {
       feature: "Feature",
       trial: "12g Trial",
-      standard: "50g Regular",
-      large: "120g Large"
+      regular: "120g Regular",
+      large: "240g Large"
     },
 
     // Calculation Units

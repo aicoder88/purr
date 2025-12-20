@@ -908,51 +908,33 @@ export const fr = {
     products: [
       {
         id: "trial",
-        name: "Taille d'Essai 12g",
-        subtitle: "Parfait pour les Nouveaux Utilisateurs",
-        duration: "Durée d'une semaine",
-        cats: "Pour un chat",
-        features: [
-          "Essayez avant de vous engager",
-          "Introduction sans risque",
-          "Portion parfaite",
-          "Même formule puissante",
-          "Accompagnement expert inclus"
-        ],
-        bestFor: "Nouveaux clients qui veulent tester Purrify",
-        cta: "Commencer l'Essai"
+        name: "Essai GRATUIT",
+        subtitle: "Paquet 12g",
+        duration: "1 semaine",
+        cats: "1 chat",
+        features: ["12g de charbon actif", "Frais d'expédition seulement", "Introduction parfaite"],
+        bestFor: "Nouveaux clients qui veulent essayer Purrify sans risque",
+        cta: "Obtenir l'Essai GRATUIT"
       },
       {
-        id: "small",
-        name: "Taille Moyenne 50g",
-        subtitle: "Idéal pour les Foyers à Un Chat",
-        duration: "3-4 changements de litière",
-        cats: "1 chat",
-        features: [
-          "Choix économique",
-          "Prolonge la vie de la litière 3-4x",
-          "Élimine complètement les odeurs",
-          "Fonctionne avec toute litière",
-          "Formule écologique"
-        ],
-        bestFor: "Propriétaires d'un chat recherchant la valeur",
-        cta: "Choisir Petite Taille"
+        id: "regular",
+        name: "Régulier",
+        subtitle: "Paquet 120g - Le Plus Populaire",
+        duration: "3 mois",
+        cats: "1-2 chats",
+        features: ["120g de charbon actif", "Abonnez & économisez", "Livraison gratuite"],
+        bestFor: "Foyers avec un ou deux chats souhaitant une fraîcheur continue",
+        cta: "Abonnez & Économisez"
       },
       {
         id: "large",
-        name: "Grande Taille 120g",
-        subtitle: "Meilleure Valeur pour Foyers Multi-Chats",
-        duration: "Durée de 4 semaines",
-        cats: "Pour 1 à 2 chats",
-        features: [
-          "Valeur maximale par gramme",
-          "Économies en vrac incluses",
-          "Parfait pour plusieurs chats",
-          "Approvisionnement durable",
-          // "Livraison gratuite incluse" // TODO: Restore when free shipping is available
-        ],
-        bestFor: "Foyers multi-chats recherchant la valeur maximale",
-        cta: "Obtenir la Meilleure Valeur"
+        name: "Grand",
+        subtitle: "Paquet 240g - Meilleure Valeur",
+        duration: "3 mois",
+        cats: "3+ chats",
+        features: ["240g de charbon actif", "Économies maximales", "Livraison gratuite"],
+        bestFor: "Foyers multi-chats et utilisateurs intensifs",
+        cta: "Abonnez & Économisez"
       }
     ],
     comparisonFeatures: [
@@ -1009,8 +991,8 @@ export const fr = {
     tableHeaders: {
       feature: "Caractéristique",
       trial: "Essai 12g",
-      standard: "Moyen 50g",
-      large: "Grand 120g"
+      regular: "Régulier 120g",
+      large: "Grand 240g"
     },
 
     // Calculation Units

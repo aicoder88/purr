@@ -595,7 +595,7 @@ export interface TranslationType {
     tableHeaders: {
       feature: string;
       trial: string;
-      standard: string;
+      regular: string;
       large: string;
     };
 

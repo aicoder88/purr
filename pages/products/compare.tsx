@@ -24,56 +24,71 @@ const ProductComparePage: NextPage = () => {
   const { locale, t } = useTranslation();
 
   const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
-  const standardPriceAmount = getProductPrice('standard');
-  const familyPriceAmount = getProductPrice('family');
+  const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
+  const jumboPrice = formatProductPrice('jumbo', locale);
+  const jumboAutoshipPrice = formatProductPrice('jumboAutoship', locale);
+
+  const familyAutoshipAmount = getProductPrice('familyAutoship');
+  const jumboAutoshipAmount = getProductPrice('jumboAutoship');
 
   const priceDetails = {
     trial: {
       price: trialPrice,
       originalPrice: null as string | null,
       savings: null as string | null,
+      monthlyPrice: null as string | null,
+      autoshipPrice: null as string | null,
     },
-    standard: {
-      price: standardPrice,
-      originalPrice: formatCurrencyValue(standardPriceAmount + 3, locale),
-      savings: formatCurrencyValue(3, locale),
-    },
-    family: {
+    regular: {
       price: familyPrice,
-      originalPrice: formatCurrencyValue(familyPriceAmount + 5, locale),
-      savings: formatCurrencyValue(5, locale),
+      originalPrice: null as string | null,
+      savings: null as string | null,
+      monthlyPrice: formatCurrencyValue(familyAutoshipAmount / 3, locale),
+      autoshipPrice: familyAutoshipPrice,
+    },
+    large: {
+      price: jumboPrice,
+      originalPrice: null as string | null,
+      savings: null as string | null,
+      monthlyPrice: formatCurrencyValue(jumboAutoshipAmount / 3, locale),
+      autoshipPrice: jumboAutoshipPrice,
     },
   } as const;
 
   const productIdAlias: Record<string, keyof typeof priceDetails> = {
     trial: 'trial',
-    standard: 'standard',
-    small: 'standard',
-    large: 'family',
-    family: 'family',
+    regular: 'regular',
+    large: 'large',
+  };
+
+  const paymentLinks: Record<string, string | null> = {
+    trial: getPaymentLink('trialSingle'),
+    regular: getPaymentLink('familyAutoship'),
+    large: getPaymentLink('jumboAutoship'),
   };
 
   const products = t.productComparison.products.map((product) => {
-    const priceKey = productIdAlias[product.id] ?? 'standard';
+    const priceKey = productIdAlias[product.id] ?? 'regular';
 
     return {
       ...product,
       price: priceDetails[priceKey].price,
       originalPrice: priceDetails[priceKey].originalPrice,
       savings: priceDetails[priceKey].savings,
-      popular: product.id === 'standard',
+      monthlyPrice: priceDetails[priceKey].monthlyPrice,
+      autoshipPrice: priceDetails[priceKey].autoshipPrice,
+      popular: product.id === 'regular',
       recommended: product.id === 'large',
-      ctaLink: product.id === 'trial' ? (getPaymentLink('trialSingle') || '/products/trial-size') : '/#products',
-      color: product.id === 'trial' ? 'from-blue-500 to-blue-600' : product.id === 'standard' ? 'from-green-500 to-green-600' : 'from-purple-500 to-purple-600'
+      ctaLink: paymentLinks[product.id] || '/#products',
+      color: product.id === 'trial' ? 'from-green-500 to-green-600' : product.id === 'regular' ? 'from-deep-coral to-rose-600' : 'from-electric-indigo to-purple-600'
     };
   });
 
   const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
     feature: item.feature,
     trial: index < 4,
-    standard: index === 0 || index === 1 || index === 2 || index === 3 || index === 5 || index === 6,
+    regular: true,
     large: true
   }));
 
@@ -85,22 +100,22 @@ const ProductComparePage: NextPage = () => {
       cats: 1,
       litterChanges: t.productComparison.units.weekly,
       trial: `1 ${t.productComparison.units.week}`,
-      standard: `3-4 ${t.productComparison.units.weeks}`,
-      large: `8-10 ${t.productComparison.units.weeks}`
+      regular: `10-12 ${t.productComparison.units.weeks}`,
+      large: `20-24 ${t.productComparison.units.weeks}`
     },
     {
       cats: 2,
       litterChanges: `2x ${t.productComparison.units.perWeek}`,
       trial: `3-4 ${t.productComparison.units.days}`,
-      standard: `1.5-2 ${t.productComparison.units.weeks}`,
-      large: `4-5 ${t.productComparison.units.weeks}`
+      regular: `5-6 ${t.productComparison.units.weeks}`,
+      large: `10-12 ${t.productComparison.units.weeks}`
     },
     {
       cats: 3,
       litterChanges: `3x ${t.productComparison.units.perWeek}`,
       trial: `2-3 ${t.productComparison.units.days}`,
-      standard: `1 ${t.productComparison.units.week}`,
-      large: `2.5-3 ${t.productComparison.units.weeks}`
+      regular: `3-4 ${t.productComparison.units.weeks}`,
+      large: `6-8 ${t.productComparison.units.weeks}`
     }
   ];
 
@@ -318,7 +333,7 @@ const ProductComparePage: NextPage = () => {
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">{t.productComparison.tableHeaders.feature}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.standard}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.regular}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
                     </tr>
                   </thead>
@@ -336,7 +351,7 @@ const ProductComparePage: NextPage = () => {
                           )}
                         </td>
                         <td className="px-6 py-4 text-center">
-                          {row.standard ? (
+                          {row.regular ? (
                             <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
                           ) : (
                             <span className="text-gray-400 dark:text-gray-500">—</span>
@@ -378,7 +393,7 @@ const ProductComparePage: NextPage = () => {
                       <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.standard}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.regular}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
                     </tr>
                   </thead>
@@ -395,7 +410,7 @@ const ProductComparePage: NextPage = () => {
                           {row.trial}
                         </td>
                         <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
-                          {row.standard}
+                          {row.regular}
                         </td>
                         <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
                           {row.large}

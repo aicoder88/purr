@@ -909,51 +909,33 @@ export const zh = {
     products: [
       {
         id: "trial",
-        name: "试用装 12g",
-        subtitle: "新用户的完美选择",
-        duration: "一周用量",
-        cats: "适合1只猫",
-        features: [
-          "先试用再承诺",
-          "无风险介绍",
-          "完美分量",
-          "相同强效配方",
-          "专家支持团队"
-        ],
-        bestFor: "想要测试Purrify的新客户",
-        cta: "开始试用"
+        name: "免费试用",
+        subtitle: "12g 套装",
+        duration: "1周",
+        cats: "1只猫",
+        features: ["12g活性炭", "仅付运费", "完美体验"],
+        bestFor: "想要免费试用Purrify的新客户",
+        cta: "获取免费试用"
       },
       {
-        id: "small",
-        name: "中等装 50g",
-        subtitle: "单猫家庭的理想选择",
-        duration: "3-4次猫砂更换",
-        cats: "1只猫",
-        features: [
-          "经济选择",
-          "延长猫砂寿命3-4倍",
-          "完全消除异味",
-          "适用于任何猫砂",
-          "无香配方"
-        ],
-        bestFor: "寻求价值的单猫主人",
-        cta: "选择小装"
+        id: "regular",
+        name: "常规装",
+        subtitle: "120g 套装 - 最受欢迎",
+        duration: "3个月",
+        cats: "1-2只猫",
+        features: ["120g活性炭", "订阅省更多", "免费配送"],
+        bestFor: "单猫或双猫家庭的持续清新选择",
+        cta: "订阅省钱"
       },
       {
         id: "large",
-        name: "大装 120g",
-        subtitle: "多猫家庭的最佳价值",
-        duration: "4周用量",
-        cats: "适合1-2只猫",
-        features: [
-          "每克最大价值",
-          "包含批量节省",
-          "适合多只猫",
-          "可持续供应",
-          // "包含免费运送" // TODO: Restore when free shipping is available
-        ],
-        bestFor: "寻求最大价值的多猫家庭",
-        cta: "获取最佳价值"
+        name: "大装",
+        subtitle: "240g 套装 - 最佳价值",
+        duration: "3个月",
+        cats: "3+只猫",
+        features: ["240g活性炭", "最大节省", "免费配送"],
+        bestFor: "多猫家庭和重度使用者",
+        cta: "订阅省钱"
       }
     ],
     comparisonFeatures: [
@@ -1000,8 +982,8 @@ export const zh = {
     tableHeaders: {
       feature: "特征",
       trial: "12g 试用装",
-      standard: "50g 标准装",
-      large: "120g 家庭装"
+      regular: "120g 常规装",
+      large: "240g 大装"
     },
     units: {
       cat: "只猫",
