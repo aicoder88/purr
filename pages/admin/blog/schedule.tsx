@@ -10,11 +10,11 @@ import type { BlogPost } from '@/types/blog';
 import { ArrowLeft } from 'lucide-react';
 
 interface SchedulePageProps {
-  posts: BlogPost[];
-  locale: string;
+  readonly posts: BlogPost[];
+  readonly locale: string;
 }
 
-export default function SchedulePage({ posts, locale }: SchedulePageProps) {
+export default function SchedulePage({ posts }: Readonly<SchedulePageProps>) {
   const router = useRouter();
 
   const handlePostClick = (post: BlogPost) => {
@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts)),
+      posts: structuredClone(posts),
       locale: locale || 'en'
     }
   };

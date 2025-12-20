@@ -34,7 +34,7 @@ module.exports = {
     {
       loc: '/',
       changefreq: 'daily',
-      priority: 1.0,
+      priority: 1,
       lastmod: new Date().toISOString(),
     },
     {
@@ -113,7 +113,7 @@ module.exports = {
       return {
         loc: path,
         changefreq: 'daily',
-        priority: 1.0,
+        priority: 1,
         lastmod: new Date().toISOString(),
       };
     }

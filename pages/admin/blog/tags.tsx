@@ -10,10 +10,10 @@ import { ArrowLeft, Plus, Edit2, Trash2, Save, X, Tag as TagIcon } from 'lucide-
 import { toast } from 'sonner';
 
 interface TagsPageProps {
-  tags: Tag[];
+  readonly tags: Tag[];
 }
 
-export default function TagsPage({ tags: initialTags }: TagsPageProps) {
+export default function TagsPage({ tags: initialTags }: Readonly<TagsPageProps>) {
   const [tags, setTags] = useState(initialTags);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Tag>>({});
@@ -127,8 +127,8 @@ export default function TagsPage({ tags: initialTags }: TagsPageProps) {
   const generateSlug = (name: string) => {
     return name
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+      .replaceAll(/[^a-z0-9]+/g, '-')
+      .replaceAll(/^-+|-+$/g, '');
   };
 
   return (
@@ -335,7 +335,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   return {
     props: {
-      tags: JSON.parse(JSON.stringify(tags)),
+      tags: structuredClone(tags),
     },
   };
 };

@@ -4,8 +4,8 @@
  * Script to compare translation keys across languages and identify missing sections
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 // Helper function to extract keys from object
 function extractKeys(obj, prefix = '') {

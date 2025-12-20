@@ -26,7 +26,7 @@ test.describe('Security: Rate Limiting (Task 10.4)', () => {
     
     // After many attempts, should see rate limiting (429) or continued rejection
     // At minimum, all should be unauthorized
-    expect(results.every(status => [401, 429].includes(status))).toBe(true);
+    expect(results.every(status => status === 401 || status === 429)).toBe(true);
   });
 
   test('rapid API requests are rate limited', async ({ page }) => {
@@ -40,8 +40,7 @@ test.describe('Security: Rate Limiting (Task 10.4)', () => {
     
     // Should see some 429 responses if rate limiting is active
     // Or at least consistent 401s for unauthorized
-    const has429 = results.some(status => status === 429);
-    expect(has429 || results.every(s => s === 401)).toBe(true);
+    const has429 = results.includes(429);
     const allUnauthorized = results.every(status => status === 401);
     
     // Either rate limited or consistently unauthorized
@@ -80,7 +79,7 @@ test.describe('Security: Rate Limiting (Task 10.4)', () => {
     }
     
     // Should see rate limiting kick in
-    const has429 = results.some(status => status === 429);
+    const has429 = results.includes(429);
     expect(has429 || results.every(s => s === 401)).toBe(true);
     const successCount = results.filter(status => status === 200 || status === 201).length;
     
@@ -117,7 +116,7 @@ test.describe('Security: Rate Limiting (Task 10.4)', () => {
     }
     
     // Should see some rate limiting or reasonable behavior
-    const has429 = results.some(status => status === 429);
+    const has429 = results.includes(429);
     expect(has429 || results.every(s => s === 401)).toBe(true);
     expect(results.length).toBe(attempts);
   });

@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
       return;
     }
 
-    if (typeof window === 'undefined' || !('serviceWorker' in navigator)) {
+    if (typeof globalThis.window === 'undefined' || !('serviceWorker' in navigator)) {
       return;
     }
 
@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                 // New content is available, prompt user to refresh
                 if (confirm('New content is available! Click OK to refresh.')) {
-                  window.location.reload();
+                  globalThis.location.reload();
                 }
               }
             });

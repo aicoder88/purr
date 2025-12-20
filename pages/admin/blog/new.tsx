@@ -20,12 +20,12 @@ import Link from 'next/link';
 
 
 interface NewPostPageProps {
-  categories: Category[];
-  tags: Tag[];
-  locale: string;
+  readonly categories: Category[];
+  readonly tags: Tag[];
+  readonly locale: string;
 }
 
-export default function NewPostPage({ categories, tags, locale }: NewPostPageProps) {
+export default function NewPostPage({ categories, tags, locale }: Readonly<NewPostPageProps>) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [title, setTitle] = useState('');
@@ -161,8 +161,8 @@ export default function NewPostPage({ categories, tags, locale }: NewPostPagePro
   const generateSlug = (text: string): string => {
     return text
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+      .replaceAll(/[^a-z0-9]+/g, '-')
+      .replaceAll(/^-+|-+$/g, '');
   };
 
   const calculateReadingTime = (text: string): number => {
@@ -719,8 +719,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
 
   return {
     props: {
-      categories: JSON.parse(JSON.stringify(categories)),
-      tags: JSON.parse(JSON.stringify(tags)),
+      categories: structuredClone(categories),
+      tags: structuredClone(tags),
       locale: locale || 'en'
     }
   };

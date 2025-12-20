@@ -89,7 +89,7 @@ export function WhyPurrify() {
             const IconComponent = reason.icon;
             return (
               <div
-                key={index}
+                key={reason.title}
                 className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -123,8 +123,8 @@ export function WhyPurrify() {
                     </h3>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
-                    {reason.description.split('\n').map((line, i) => (
-                      <span key={i} className="block mb-1">{line}</span>
+                    {reason.description.split('\n').map((line) => (
+                      <span key={line} className="block mb-1">{line}</span>
                     ))}
                   </p>
                 </div>

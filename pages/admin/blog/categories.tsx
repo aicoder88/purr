@@ -10,10 +10,10 @@ import { ArrowLeft, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface CategoriesPageProps {
-  categories: Category[];
+  readonly categories: Category[];
 }
 
-export default function CategoriesPage({ categories: initialCategories }: CategoriesPageProps) {
+export default function CategoriesPage({ categories: initialCategories }: Readonly<CategoriesPageProps>) {
   const [categories, setCategories] = useState(initialCategories);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Category>>({});
@@ -57,7 +57,7 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
       setEditingId(null);
       setEditForm({});
       toast.success('Category updated');
-    } catch (error) {
+    } catch {
       toast.error('Failed to update category');
     }
   };
@@ -76,7 +76,7 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
 
       setCategories(categories.filter(cat => cat.id !== id));
       toast.success('Category deleted');
-    } catch (error) {
+    } catch {
       toast.error('Failed to delete category');
     }
   };
@@ -133,8 +133,8 @@ export default function CategoriesPage({ categories: initialCategories }: Catego
   const generateSlug = (name: string) => {
     return name
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+      .replaceAll(/[^a-z0-9]+/g, '-')
+      .replaceAll(/^-+|-+$/g, '');
   };
 
   return (
@@ -366,7 +366,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   return {
     props: {
-      categories: JSON.parse(JSON.stringify(categories)),
+      categories: structuredClone(categories),
     },
   };
 };

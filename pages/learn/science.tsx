@@ -341,9 +341,9 @@ export default function SciencePage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-              {scienceFacts.map((fact, index) => (
+              {scienceFacts.map((fact) => (
                 <div
-                  key={index}
+                  key={fact.title}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
                 >
                   <div className="flex items-start space-x-4">
@@ -576,7 +576,7 @@ export default function SciencePage() {
               <div className="space-y-12">
                 {processSteps.map((step, index) => (
                   <div
-                    key={index}
+                    key={step.step}
                     className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col`}
                   >
                     <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>

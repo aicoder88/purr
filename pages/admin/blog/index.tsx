@@ -5,21 +5,20 @@ import Link from 'next/link';
 import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
 import BulkActionsToolbar, { type BulkOperation } from '@/components/admin/BulkActionsToolbar';
-import Tooltip from '@/components/admin/Tooltip';
 import HelpBanner from '@/components/admin/HelpBanner';
 import { ContentStore } from '@/lib/blog/content-store';
 import type { BlogPost, Category, Tag } from '@/types/blog';
-import { Plus, Search, Filter, Edit, Trash2, Eye, HelpCircle } from 'lucide-react';
+import { Plus, Search, Filter, Edit, Trash2, Eye } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface AdminBlogPageProps {
-  posts: BlogPost[];
-  categories: Category[];
-  tags: Tag[];
-  locale: string;
+  readonly posts: BlogPost[];
+  readonly categories: Category[];
+  readonly tags: Tag[];
+  readonly locale: string;
 }
 
-export default function AdminBlogPage({ posts: initialPosts, categories, tags, locale }: AdminBlogPageProps) {
+export default function AdminBlogPage({ posts: initialPosts, categories, tags }: Readonly<AdminBlogPageProps>) {
   const [posts, setPosts] = useState(initialPosts);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft' | 'scheduled'>('all');
@@ -122,7 +121,7 @@ export default function AdminBlogPage({ posts: initialPosts, categories, tags, l
       } else {
         toast.error('Failed to delete post');
       }
-    } catch (error) {
+    } catch {
       toast.error('An error occurred');
     }
   };
@@ -343,9 +342,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts)), // Serialize dates
-      categories: JSON.parse(JSON.stringify(categories)),
-      tags: JSON.parse(JSON.stringify(tags)),
+      posts: structuredClone(posts), // Serialize dates
+      categories: structuredClone(categories),
+      tags: structuredClone(tags),
       locale: locale || 'en'
     }
   };

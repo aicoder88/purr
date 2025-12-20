@@ -214,8 +214,8 @@ export function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item, index) => (
-              <div key={index} className="relative group">
+            {navigationItems.map((item) => (
+              <div key={item.id} className="relative group">
                 {item.hasDropdown ? (
                   <>
                     <button
@@ -242,17 +242,17 @@ export function Header() {
                           aria-labelledby={`dropdown-${item.id}`}
                           data-dropdown
                         >
-                          {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                          {item.dropdownItems?.map((dropdownItem) => (
                             dropdownItem.isGroupHeader ? (
                               <div
-                                key={dropdownIndex}
+                                key={dropdownItem.label}
                                 className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
                               >
                                 {dropdownItem.label}
                               </div>
                             ) : (
                               <Link
-                                key={dropdownIndex}
+                                key={dropdownItem.label}
                                 href={dropdownItem.href || ''}
                                 className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? 'pl-6' : 'px-4'}`}
                                 role="menuitem"
@@ -311,24 +311,24 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigationItems.map((item, index) => (
-                <div key={index}>
+              {navigationItems.map((item) => (
+                <div key={item.id}>
                   {item.hasDropdown ? (
                     <>
                       <div className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                         {item.label}
                       </div>
-                      {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                      {item.dropdownItems?.map((dropdownItem) => (
                         dropdownItem.isGroupHeader ? (
                           <div
-                            key={dropdownIndex}
+                            key={dropdownItem.label}
                             className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
                           >
                             {dropdownItem.label}
                           </div>
                         ) : (
                           <Link
-                            key={dropdownIndex}
+                            key={dropdownItem.label}
                             href={dropdownItem.href || ''}
                             className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? 'pl-8' : 'px-6'}`}
                             onClick={closeMenu}

@@ -1,18 +1,18 @@
 import { test, expect, Page } from '@playwright/test';
 
-test.describe('Security: XSS Prevention (Task 10.2)', () => {
-  // Helper to login
-  async function login(page: Page) {
-    await page.goto('/admin/login');
-    const email = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
-    const password = process.env.ADMIN_PASSWORD || 'admin123';
-    
-    await page.fill('input[name="email"]', email);
-    await page.fill('input[name="password"]', password);
-    await page.click('button[type="submit"]');
-    await expect(page).toHaveURL(/\/admin\/blog/, { timeout: 10000 });
-  }
+// Helper to login - moved to outer scope for performance
+async function login(page: Page) {
+  await page.goto('/admin/login');
+  const email = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
+  const password = process.env.ADMIN_PASSWORD || 'admin123';
 
+  await page.fill('input[name="email"]', email);
+  await page.fill('input[name="password"]', password);
+  await page.click('button[type="submit"]');
+  await expect(page).toHaveURL(/\/admin\/blog/, { timeout: 10000 });
+}
+
+test.describe('Security: XSS Prevention (Task 10.2)', () => {
   test('script tags in post title are sanitized', async ({ page }) => {
     await login(page);
     

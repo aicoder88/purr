@@ -9,14 +9,14 @@ interface BlogImageInfo {
 
 test.describe('Blog Preview Image Audit', () => {
   test('should extract and verify unique blog post images', async ({ page }) => {
-    const errors: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() !== 'error') return;
       const text = msg.text();
       // Ignore known non-fatal errors
       if (text.includes('/_vercel/insights/script.js')) return;
       if (text.includes('Failed to load resource') && text.includes('/_vercel/insights/')) return;
-      errors.push(text);
+      // Log other errors for debugging
+      console.log('Console error:', text);
     });
 
     // Navigate to homepage
@@ -195,7 +195,7 @@ test.describe('Blog Preview Image Audit', () => {
     console.log('\n=== AUDIT SUMMARY ===');
     console.log(JSON.stringify(summary, null, 2));
 
-    // Store results in test context for potential use
-    (test as typeof test & { blogImageAudit?: typeof summary }).blogImageAudit = summary;
+    // Log summary for potential use
+    console.log('Blog image audit completed:', summary);
   });
 });

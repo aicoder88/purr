@@ -1,8 +1,8 @@
 const { chromium } = require('playwright');
 const PDFDocument = require('pdfkit');
-const fs = require('fs');
+const fs = require('node:fs');
 
-(async () => {
+async function main() {
   const browser = await chromium.launch();
   const context = await browser.newContext({
     viewport: { width: 1920, height: 1080 }
@@ -68,4 +68,6 @@ const fs = require('fs');
   console.log(`Saved ${slideCount} slides to dialergptdeck.pdf`);
 
   await browser.close();
-})();
+}
+
+main();

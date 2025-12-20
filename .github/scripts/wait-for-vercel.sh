@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ -z "${VERCEL_TOKEN:-}" ]]; then
-  echo "::error::VERCEL_TOKEN secret is required"
+  echo "::error::VERCEL_TOKEN secret is required" >&2
   exit 1
 fi
 
@@ -44,7 +44,7 @@ poll() {
       return 0
     fi
     if [[ "$state" =~ ^(ERROR|error|CANCELED|canceled)$ ]]; then
-      echo "::error::Deployment failed (state=${state}) id=${DEPLOY_ID}"
+      echo "::error::Deployment failed (state=${state}) id=${DEPLOY_ID}" >&2
       echo "Deployment failed (state=${state}) id=${DEPLOY_ID}" >> "$GITHUB_STEP_SUMMARY"
       echo "Fetching build events..."
       set +e
@@ -74,7 +74,7 @@ while [[ $(date +%s) -lt $deadline ]]; do
   sleep 10
 done
 
-echo "::error::Timed out waiting for Vercel deployment for commit ${SHA}"
+echo "::error::Timed out waiting for Vercel deployment for commit ${SHA}" >&2
 echo "Timed out waiting for deployment of ${SHA}" >> "$GITHUB_STEP_SUMMARY"
 exit 1
 

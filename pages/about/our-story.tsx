@@ -14,7 +14,6 @@ import {
   Users,
   ChevronRight,
   MapPin,
-  Mail,
   Quote
 } from 'lucide-react';
 
@@ -175,8 +174,8 @@ const OurStoryPage: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div key={index} className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+              {values.map((value) => (
+                <div key={value.title} className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-gradient-to-br from-electric-indigo to-electric-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
                     <value.icon className="w-7 h-7 text-white dark:text-gray-100" />
                   </div>
@@ -206,10 +205,10 @@ const OurStoryPage: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.map((member, index) => {
+              {team.map((member) => {
                 const isMark = member.name === "Mark Archer";
                 return (
-                  <div key={index} className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full">
+                  <div key={member.name} className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full">
                     <div className="relative h-64 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
                       {isMark ? (
                         <Image
@@ -262,8 +261,8 @@ const OurStoryPage: NextPage = () => {
 
           <Container className="relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20 dark:divide-gray-400/20">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center px-4 py-4 md:py-0">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center px-4 py-4 md:py-0">
                   <div className="text-5xl font-heading font-bold text-white dark:text-gray-100 mb-2 drop-shadow-sm">
                     {stat.number}
                   </div>

@@ -20,9 +20,9 @@ const NotFoundPage: NextPage = () => {
   useEffect(() => {
     // This would connect to your analytics platform in production
     console.error('404 error occurred', {
-      url: typeof window !== 'undefined' ? window.location.href : '',
-      referrer: typeof document !== 'undefined' ? document.referrer : '',
-      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+      url: typeof globalThis.window !== 'undefined' ? globalThis.location.href : '',
+      referrer: typeof globalThis.document !== 'undefined' ? globalThis.document.referrer : '',
+      userAgent: typeof globalThis.navigator !== 'undefined' ? globalThis.navigator.userAgent : '',
       timestamp: new Date().toISOString(),
     });
   }, []);
@@ -71,9 +71,9 @@ const NotFoundPage: NextPage = () => {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {suggestedPages.map((page, index) => (
+              {suggestedPages.map((page) => (
                 <Link
-                  key={index}
+                  key={page.path}
                   href={page.path}
                   className="p-4 border border-[#E0EFC7] dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >

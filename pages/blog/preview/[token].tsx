@@ -136,7 +136,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
 
     return {
       props: {
-        post: JSON.parse(JSON.stringify(post)),
+        post: structuredClone(post),
         isPreview: true,
       },
     };

@@ -16,13 +16,13 @@ import { toast } from 'sonner';
 import Link from 'next/link';
 
 interface EditPostPageProps {
-  post: BlogPost;
-  categories: Category[];
-  tags: Tag[];
-  locale: string;
+  readonly post: BlogPost;
+  readonly categories: Category[];
+  readonly tags: Tag[];
+  readonly locale: string;
 }
 
-export default function EditPostPage({ post: initialPost, categories, tags, locale }: EditPostPageProps) {
+export default function EditPostPage({ post: initialPost, categories, tags, locale }: Readonly<EditPostPageProps>) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -608,9 +608,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, params,
 
     return {
       props: {
-        post: JSON.parse(JSON.stringify(post)),
-        categories: JSON.parse(JSON.stringify(categories)),
-        tags: JSON.parse(JSON.stringify(tags)),
+        post: structuredClone(post),
+        categories: structuredClone(categories),
+        tags: structuredClone(tags),
         locale: locale || 'en'
       }
     };

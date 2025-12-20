@@ -68,9 +68,9 @@ export default function CategoryArchive({ category, posts, seo }: CategoryArchiv
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+              {posts.map((post) => (
                 <div
-                  key={index}
+                  key={post.link}
                   className="bg-white dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
                 >
                   <div className="relative overflow-hidden">
@@ -198,7 +198,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   return {
     props: {
-      category: JSON.parse(JSON.stringify(category)),
+      category: structuredClone(category),
       posts,
       seo,
     },

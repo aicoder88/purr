@@ -1,5 +1,4 @@
-import { NextPage } from 'next';
-import { NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
@@ -104,9 +103,9 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
   useEffect(() => {
     // This would connect to your analytics platform in production
     console.error(`${statusCode} error occurred`, {
-      url: typeof window !== 'undefined' ? window.location.href : '',
-      referrer: typeof document !== 'undefined' ? document.referrer : '',
-      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+      url: typeof globalThis.window !== 'undefined' ? globalThis.location.href : '',
+      referrer: typeof globalThis.document !== 'undefined' ? globalThis.document.referrer : '',
+      userAgent: typeof globalThis.navigator !== 'undefined' ? globalThis.navigator.userAgent : '',
       timestamp: new Date().toISOString(),
       statusCode,
     });
@@ -184,9 +183,9 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {suggestions.map((page, index) => (
+              {suggestions.map((page) => (
                 <Link
-                  key={index}
+                  key={page.path}
                   href={page.path}
                   className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
@@ -210,7 +209,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
 };
 
 ErrorPage.getInitialProps = ({ res, err }: NextPageContext) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode ?? 500 : 404;
+  const statusCode = res ? res.statusCode : (err?.statusCode ?? 500);
   return { statusCode };
 };
 

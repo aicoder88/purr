@@ -1,18 +1,18 @@
 import { test, expect, Page } from '@playwright/test';
 
-test.describe('Security: CSRF Protection (Task 10.3)', () => {
-  // Helper to login
-  async function login(page: Page) {
-    await page.goto('/admin/login');
-    const email = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
-    const password = process.env.ADMIN_PASSWORD || 'admin123';
-    
-    await page.fill('input[name="email"]', email);
-    await page.fill('input[name="password"]', password);
-    await page.click('button[type="submit"]');
-    await expect(page).toHaveURL(/\/admin\/blog/, { timeout: 10000 });
-  }
+// Helper to login - moved to outer scope for performance
+async function login(page: Page) {
+  await page.goto('/admin/login');
+  const email = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
+  const password = process.env.ADMIN_PASSWORD || 'admin123';
 
+  await page.fill('input[name="email"]', email);
+  await page.fill('input[name="password"]', password);
+  await page.click('button[type="submit"]');
+  await expect(page).toHaveURL(/\/admin\/blog/, { timeout: 10000 });
+}
+
+test.describe('Security: CSRF Protection (Task 10.3)', () => {
   test('POST requests without proper origin are rejected', async ({ page, context }) => {
     await login(page);
     

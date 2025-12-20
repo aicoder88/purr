@@ -105,9 +105,9 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cv-auto cis-960">
-              {blogPosts.map((post, index) => (
+              {blogPosts.map((post) => (
                 <article
-                  key={index}
+                  key={post.link}
                   className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
                 >
                   <Link
