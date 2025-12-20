@@ -10,7 +10,7 @@
  */
 
 import * as fs from 'fs/promises';
-import * as path from 'path';
+import * as path from 'node:path';
 
 interface DirectoryCheck {
   path: string;
@@ -126,17 +126,17 @@ class StorageVerifier {
         read: true,
         delete: true
       };
-    } catch (error) {
+    } catch (err) {
       // Clean up test file if it exists
       try {
         await fs.unlink(testFile);
       } catch {}
-      
+
       return {
         write: false,
         read: false,
         delete: false,
-        error: (error as any).message
+        error: (err as Error).message
       };
     }
   }

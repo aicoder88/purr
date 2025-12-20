@@ -118,7 +118,7 @@ export function Testimonials() {
             const colorScheme = colorSchemes[index % colorSchemes.length];
             return (
               <TestimonialCard
-                key={`testimonial-${testimonial.name.replace(/\s+/g, '-').toLowerCase()}-${index}`}
+                key={`testimonial-${testimonial.name.replaceAll(/\s+/g, '-').toLowerCase()}-${index}`}
                 testimonial={testimonial}
                 index={index}
                 colorScheme={colorScheme}

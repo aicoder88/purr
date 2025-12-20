@@ -49,13 +49,13 @@ class PredictiveLoader {
     this.prefetchQueue = new Set();
     this.userBehavior = this.loadUserBehavior();
     
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       this.initializePredictiveLoading();
     }
   }
 
   private loadUserBehavior(): UserBehavior {
-    if (typeof window === 'undefined') {
+    if (typeof globalThis.window === 'undefined') {
       return {
         pageViews: [],
         timeOnPage: {},
@@ -84,7 +84,7 @@ class PredictiveLoader {
   }
 
   private saveUserBehavior(): void {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       try {
         localStorage.setItem('purrify_user_behavior', JSON.stringify(this.userBehavior));
       } catch (err) {
@@ -464,7 +464,7 @@ class PredictiveLoader {
 let predictiveLoader: PredictiveLoader | null = null;
 
 export function initializePredictiveLoading(config?: Partial<PredictiveLoadingConfig>): PredictiveLoader {
-  if (typeof window !== 'undefined' && !predictiveLoader) {
+  if (typeof globalThis.window !== 'undefined' && !predictiveLoader) {
     predictiveLoader = new PredictiveLoader(config);
   }
   return predictiveLoader!;

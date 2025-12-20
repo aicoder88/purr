@@ -9,8 +9,8 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { SocialFollowCTA } from '../../src/components/blog/SocialFollowCTA';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 import prisma from '../../src/lib/prisma';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 type TocEntry = { title: string; id: string };
 type FaqEntry = { question: string; answerHtml: string };
@@ -191,7 +191,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     // Transform WordPress post to match our BlogPost interface
     const post: BlogPost = {
       title: wpPost.title.rendered,
-      excerpt: wpPost.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      excerpt: wpPost.excerpt.rendered.replaceAll(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(wpPost.date).toISOString().split('T')[0],
       image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",

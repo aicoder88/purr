@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import type { BlogPost } from '@/types/blog';
 import { ContentStore } from './content-store';
 import { ContentValidator } from './content-validator';
@@ -136,14 +136,14 @@ export class BlogRepairUtility {
       }
 
       const issues = validation.errors.map(e => `${e.field}: ${e.message}`);
-      let repairedPost = { ...post };
+      const repairedPost = { ...post };
       let repaired = false;
 
       // Fix template variables in title
       if (this.validator.containsTemplateVariables(post.title)) {
         console.log(`Fixing template variables in title for ${slug}`);
         // Extract topic from slug
-        const topic = slug.replace(/-/g, ' ');
+        const topic = slug.replaceAll(/-/g, ' ');
         repairedPost.title = this.capitalizeWords(topic);
         repaired = true;
       }

@@ -59,7 +59,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
 
     try {
       // Track referral conversion
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_offer_claimed', {
           event_category: 'referrals',
           event_label: 'free_trial_claimed',

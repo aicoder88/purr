@@ -97,7 +97,7 @@ export function SubscriptionsTab({
           : sub
       ));
 
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'subscription_action', {
           event_category: 'subscription',
           event_label: action,

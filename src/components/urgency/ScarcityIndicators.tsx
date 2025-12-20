@@ -63,7 +63,7 @@ export function ScarcityIndicator({
 
   const handleClick = useCallback(() => {
     // Track scarcity indicator interaction
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof globalThis.window !== 'undefined' && window.gtag) {
       window.gtag('event', 'scarcity_indicator_clicked', {
         event_category: 'conversion',
         event_label: productId,

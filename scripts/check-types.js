@@ -1,5 +1,5 @@
-const { execSync } = require('child_process');
-const path = require('path');
+const { execSync } = require('node:child_process');
+const path = require('node:path');
 
 console.log('🔍 Checking TypeScript types...');
 

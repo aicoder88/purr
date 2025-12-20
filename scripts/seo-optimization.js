@@ -5,8 +5,8 @@
  * Generates sitemaps, robots.txt, and validates structured data
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 class SEOOptimizer {
   constructor() {
@@ -32,7 +32,7 @@ class SEOOptimizer {
     
     try {
       // Use the working sitemap generation script
-      const { execSync } = require('child_process');
+      const { execSync } = require('node:child_process');
       execSync('npm run generate-enhanced-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
       this.log('Sitemap generated successfully', 'success');
     } catch (error) {

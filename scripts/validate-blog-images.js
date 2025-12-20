@@ -4,8 +4,8 @@
  * Blog Image Validator - Ensures all blog post images exist and are accessible
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 function validateBlogImages() {
   console.log('📸 Starting Blog Image Validation...\n');

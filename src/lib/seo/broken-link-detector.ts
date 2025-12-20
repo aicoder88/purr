@@ -82,7 +82,7 @@ export class BrokenLinkDetector {
                 if (absoluteUrl.startsWith(baseUrl)) {
                   queue.push(absoluteUrl);
                 }
-              } catch (error) {
+              } catch {
                 // Invalid URL, skip
               }
             }

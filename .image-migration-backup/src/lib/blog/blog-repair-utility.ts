@@ -136,7 +136,7 @@ export class BlogRepairUtility {
       }
 
       const issues = validation.errors.map(e => `${e.field}: ${e.message}`);
-      let repairedPost = { ...post };
+      const repairedPost = { ...post };
       let repaired = false;
 
       // Fix template variables in title

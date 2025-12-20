@@ -8,7 +8,7 @@ import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
 
 const OfflinePage: NextPage = () => {
   const handleRetry = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       window.location.reload();
     }
   };

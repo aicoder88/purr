@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
 
@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.log('Generating referral code for:', email || 'no email provided');
 
     // Generate personalized referral code
-    const sanitizedName = userName.replace(/[^a-zA-Z]/g, '').toUpperCase().substring(0, 8);
+    const sanitizedName = userName.replaceAll(/[^a-zA-Z]/g, '').toUpperCase().substring(0, 8);
     const randomSuffix = Math.floor(Math.random() * 99) + 1;
     const code = `${sanitizedName}${randomSuffix}-CAT`;
 

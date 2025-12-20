@@ -5,8 +5,8 @@
  * Scans all pages for broken internal and external links
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { glob } from 'glob';
 import {
   validateExternalLinks,

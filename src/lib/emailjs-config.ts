@@ -17,7 +17,7 @@ export const EMAILJS_CONFIG = {
 };
 
 // Debug logging (will be visible in Vercel logs)
-if (typeof window === 'undefined') {
+if (typeof globalThis.window === 'undefined') {
   console.log('[EmailJS Config Debug]', {
     publicKeySet: !!EMAILJS_CONFIG.publicKey,
     publicKeyLength: EMAILJS_CONFIG.publicKey?.length || 0,

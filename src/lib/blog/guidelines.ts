@@ -1,18 +1,18 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { BlogGuidelineContext } from './types';
 
 function readFileSafe(filePath: string) {
   try {
     return fs.readFileSync(filePath, 'utf-8');
-  } catch (error) {
+  } catch {
     return '';
   }
 }
 
 function extractSection(markdown: string, heading: string): string {
   if (!markdown) return '';
-  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escapedHeading = heading.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const regex = new RegExp(`${escapedHeading}\\n([\\s\\S]*?)(\\n## |\\n### |$)`, 'i');
   const match = markdown.match(regex);
   return match ? match[1].trim() : '';

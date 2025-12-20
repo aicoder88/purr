@@ -3,8 +3,8 @@
  * Validates internal and external links across the site
  */
 
-import * as https from 'https';
-import * as http from 'http';
+import * as https from 'node:https';
+import * as http from 'node:http';
 
 export interface LinkValidationResult {
   url: string;
@@ -140,7 +140,7 @@ export function validateInternalLinks(
     const isValid = validRoutes.some(route => {
       // Handle dynamic routes
       if (route.includes('[')) {
-        const pattern = route.replace(/\[.*?\]/g, '[^/]+');
+        const pattern = route.replaceAll(/\[.*?\]/g, '[^/]+');
         const regex = new RegExp(`^${pattern}$`);
         return regex.test(cleanLink);
       }

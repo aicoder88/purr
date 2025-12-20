@@ -1,6 +1,6 @@
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const https = require('node:https');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const TARGET_DIR = path.join(__dirname, '../public/original-images');
 const PUBLIC_DIR = path.join(__dirname, '../public'); // Fallback if regular script picks from here

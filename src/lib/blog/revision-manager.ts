@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
 import type { BlogPost } from '@/types/blog';
 
 export interface Revision {

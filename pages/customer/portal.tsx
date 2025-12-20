@@ -49,7 +49,7 @@ export default function CustomerPortalPage() {
     setCustomer(customerData);
 
     // Track successful login for analytics
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof globalThis.window !== 'undefined' && window.gtag) {
       window.gtag('event', 'customer_login', {
         event_category: 'engagement',
         event_label: 'customer_portal'
@@ -63,7 +63,7 @@ export default function CustomerPortalPage() {
     setCustomer(null);
 
     // Track logout for analytics
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof globalThis.window !== 'undefined' && window.gtag) {
       window.gtag('event', 'customer_logout', {
         event_category: 'engagement',
         event_label: 'customer_portal'

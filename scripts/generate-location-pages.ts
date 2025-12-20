@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 interface City {
   name: string;
@@ -414,7 +414,7 @@ interface CityPageProps {
   };
 }
 
-export default function ${city.slug.replace(/-/g, '')}Page({ city }: CityPageProps) {
+export default function ${city.slug.replaceAll(/-/g, '')}Page({ city }: CityPageProps) {
   const seoTitle = \`Best Cat Litter Odor Eliminator in \${city.name}, \${city.province} | Purrify\`;
   const seoDescription = \`Eliminate cat litter odors in \${city.name}, \${city.province}. Purrify activated carbon additive works with any litter. Fast shipping across \${city.province}. Trusted by \${Math.floor(city.population / 1000)}+ cat owners.\`;
   
@@ -714,7 +714,7 @@ interface ProvincePageProps {
   };
 }
 
-export default function ${province.slug.replace(/-/g, '')}Page({ province }: ProvincePageProps) {
+export default function ${province.slug.replaceAll(/-/g, '')}Page({ province }: ProvincePageProps) {
   const seoTitle = \`Cat Litter Odor Control \${province.name} | Purrify Activated Carbon\`;
   const seoDescription = \`Premium cat litter odor eliminator across \${province.name}. Serving \${province.cities.length} cities including \${province.cities.slice(0, 3).map(c => c.name).join(', ')}. Fast shipping province-wide.\`;
   
@@ -819,7 +819,7 @@ import { ProductsSection } from '../../src/components/sections/products';
 import { TestimonialsSection } from '../../src/components/sections/testimonials';
 import { FaqSection } from '../../src/components/sections/faq';
 
-export default function ${problem.problem.replace(/-/g, '')}Page() {
+export default function ${problem.problem.replaceAll(/-/g, '')}Page() {
   const seoTitle = \`\${problem.title} Solution | Purrify Activated Carbon\`;
   const seoDescription = \`Effective solution for \${problem.description.toLowerCase()}. \${problem.solution}. Works with any litter brand. Money-back guarantee.\`;
   
@@ -835,7 +835,7 @@ export default function ${problem.problem.replace(/-/g, '')}Page() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: \`\${problem.problem.replace(/-/g, ' ')}, cat odor control, activated carbon, natural solution, pet odor eliminator\`,
+            content: \`\${problem.problem.replaceAll(/-/g, ' ')}, cat odor control, activated carbon, natural solution, pet odor eliminator\`,
           },
         ]}
       />
@@ -995,7 +995,7 @@ async function generateComparisonPage(competitor: CompetitorData, baseDir: strin
   const pageContent = `import { NextSeo } from 'next-seo';
 import { ProductsSection } from '../../src/components/sections/products';
 
-export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage() {
+export default function ${competitor.competitor.replaceAll(/-/g, '')}ComparisonPage() {
   const seoTitle = \`Purrify vs \${competitor.name} | Cat Litter Comparison\`;
   const seoDescription = \`Compare Purrify activated carbon to \${competitor.name}. See why 1,000+ choose Purrify for superior odor elimination and value.\`;
   
@@ -1011,7 +1011,7 @@ export default function ${competitor.competitor.replace(/-/g, '')}ComparisonPage
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: \`purrify vs \${competitor.competitor.replace(/-/g, ' ')}, cat litter comparison, \${competitor.name} alternative\`,
+            content: \`purrify vs \${competitor.competitor.replaceAll(/-/g, ' ')}, cat litter comparison, \${competitor.name} alternative\`,
           },
         ]}
       />

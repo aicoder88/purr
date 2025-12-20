@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 require('dotenv').config({ path: '.env.production' });
 
 // Configuration

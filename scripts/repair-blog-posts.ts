@@ -1,8 +1,8 @@
 #!/usr/bin/env ts-node
 
 import { BlogRepairUtility } from '../src/lib/blog/blog-repair-utility';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 async function main() {
   const locale = process.argv[2] || 'en';

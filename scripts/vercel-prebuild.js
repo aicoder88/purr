@@ -1,6 +1,6 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { execSync } = require('node:child_process');
+const fs = require('node:fs');
+const path = require('node:path');
 
 console.log('🚀 Starting Vercel prebuild process...');
 // Force fresh deployment after fixing Next.js static generation cache issues

@@ -63,7 +63,7 @@ export function TranslationProvider({
   const changeLocale = useMemo(() => {
     return (newLocale: Locale) => {
       // Only execute on client-side after hydration
-      if (typeof window === 'undefined' || !isHydrated) {
+      if (typeof globalThis.window === 'undefined' || !isHydrated) {
         return;
       }
 

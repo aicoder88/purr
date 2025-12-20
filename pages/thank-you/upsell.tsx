@@ -74,7 +74,7 @@ const UpsellPage = () => {
     }
 
     // Analytics tracking - page loaded
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
       if (gtag) {
         gtag('event', 'page_view', {
@@ -93,7 +93,7 @@ const UpsellPage = () => {
           clearInterval(timer);
 
           // Analytics tracking - timer expired
-          if (typeof window !== 'undefined') {
+          if (typeof globalThis.window !== 'undefined') {
             const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
             if (gtag) {
               gtag('event', 'upsell_timer_expired', {
@@ -114,7 +114,7 @@ const UpsellPage = () => {
                 console.log('Timer expiry email sent successfully');
 
                 // Track email sent event
-                if (typeof window !== 'undefined') {
+                if (typeof globalThis.window !== 'undefined') {
                   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
                   if (gtag) {
                     gtag('event', 'upsell_email_sent', {
@@ -147,7 +147,7 @@ const UpsellPage = () => {
     setIsLoading(true);
 
     // Analytics tracking - upsell accepted
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
       if (gtag) {
         gtag('event', 'upsell_accepted', {
@@ -172,7 +172,7 @@ const UpsellPage = () => {
 
   const handleNoThanks = async () => {
     // Analytics tracking - upsell declined
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
       if (gtag) {
         gtag('event', 'upsell_declined', {
@@ -193,7 +193,7 @@ const UpsellPage = () => {
           console.log('Declined follow-up email sent successfully');
 
           // Track email sent event
-          if (typeof window !== 'undefined') {
+          if (typeof globalThis.window !== 'undefined') {
             const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
             if (gtag) {
               gtag('event', 'upsell_email_sent', {

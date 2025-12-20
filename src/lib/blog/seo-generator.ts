@@ -117,7 +117,7 @@ export class SEOGenerator {
    */
   optimizeDescription(description: string): string {
     // Remove HTML tags if present
-    const cleanDescription = description.replace(/<[^>]*>/g, '');
+    const cleanDescription = description.replaceAll(/<[^>]*>/g, '');
 
     if (cleanDescription.length >= 150 && cleanDescription.length <= 160) {
       return cleanDescription;
@@ -139,7 +139,7 @@ export class SEOGenerator {
    * Estimate word count from HTML content
    */
   private estimateWordCount(content: string): number {
-    const text = content.replace(/<[^>]*>/g, ' ');
+    const text = content.replaceAll(/<[^>]*>/g, ' ');
     const words = text.trim().split(/\s+/);
     return words.filter(word => word.length > 0).length;
   }

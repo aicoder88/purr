@@ -18,7 +18,7 @@ interface CheckoutReferralData {
  * Get referral information from localStorage
  */
 export function getReferralInfo(): ReferralInfo | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof globalThis.window === 'undefined') return null;
 
   try {
     const referralInfo = localStorage.getItem('referralInfo');
@@ -33,7 +33,7 @@ export function getReferralInfo(): ReferralInfo | null {
  * Clear referral information from localStorage
  */
 export function clearReferralInfo(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
 
   localStorage.removeItem('referralInfo');
 }
@@ -68,7 +68,7 @@ export async function trackReferralSignup(
     });
 
     // Track analytics event
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof globalThis.window !== 'undefined' && window.gtag) {
       window.gtag('event', 'referral_signup_completed', {
         event_category: 'referrals',
         event_label: 'user_registration',
@@ -122,7 +122,7 @@ export async function trackReferralPurchase(
       clearReferralInfo();
 
       // Track analytics event
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_purchase_completed', {
           event_category: 'referrals',
           event_label: 'purchase_conversion',
@@ -205,7 +205,7 @@ export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price
  * Show referral success notification
  */
 function showReferralSuccessNotification(referrerName?: string, _rewards?: { type: string; amount: number }): void {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
 
   // Create and show a toast notification
   const notification = document.createElement('div');

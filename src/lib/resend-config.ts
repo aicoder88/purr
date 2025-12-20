@@ -14,7 +14,7 @@ export const RESEND_CONFIG = {
 };
 
 // Debug logging (will be visible in Vercel logs)
-if (typeof window === 'undefined') {
+if (typeof globalThis.window === 'undefined') {
   console.log('[Resend Config Debug]', {
     apiKeySet: !!RESEND_CONFIG.apiKey,
     apiKeyLength: RESEND_CONFIG.apiKey?.length || 0,

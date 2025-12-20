@@ -130,7 +130,7 @@ export class SEOScorer {
    */
   private scoreDescriptionOptimization(post: BlogPost): number {
     const description = post.seo.description || post.excerpt;
-    const cleanDesc = description.replace(/<[^>]*>/g, '');
+    const cleanDesc = description.replaceAll(/<[^>]*>/g, '');
     const length = cleanDesc.length;
     let score = 0;
 
@@ -251,7 +251,7 @@ export class SEOScorer {
    */
   private scoreContentQuality(content: string): number {
     let score = 0;
-    const text = content.replace(/<[^>]*>/g, ' ');
+    const text = content.replaceAll(/<[^>]*>/g, ' ');
     const wordCount = text.trim().split(/\s+/).length;
 
     // Word count (40 points)
@@ -377,7 +377,7 @@ export class SEOScorer {
     }
 
     if (breakdown.description < 70) {
-      const descLength = (post.seo.description || post.excerpt).replace(/<[^>]*>/g, '').length;
+      const descLength = (post.seo.description || post.excerpt).replaceAll(/<[^>]*>/g, '').length;
       if (descLength < 150) {
         suggestions.push('Make your meta description longer (150-160 characters is ideal)');
       } else if (descLength > 160) {
@@ -400,7 +400,7 @@ export class SEOScorer {
     }
 
     if (breakdown.content < 70) {
-      const wordCount = post.content.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
+      const wordCount = post.content.replaceAll(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
       if (wordCount < 1000) {
         suggestions.push('Consider adding more content (1000-2000 words is ideal for SEO)');
       }
@@ -601,7 +601,7 @@ export class SEOScorer {
     
     // Simple alt text generation (can be enhanced with AI)
     const filename = imageUrl.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image';
-    const cleanFilename = filename.replace(/[-_]/g, ' ');
+    const cleanFilename = filename.replaceAll(/[-_]/g, ' ');
     
     return `${cleanFilename} - ${words.substring(0, 50)}`;
   }
@@ -611,7 +611,7 @@ export class SEOScorer {
    */
   generateMetaDescription(content: string, keywords: string[]): string {
     // Remove HTML tags
-    const text = content.replace(/<[^>]*>/g, ' ').trim();
+    const text = content.replaceAll(/<[^>]*>/g, ' ').trim();
     
     // Find first paragraph that contains a keyword
     const paragraphs = text.split(/\n\n+/);

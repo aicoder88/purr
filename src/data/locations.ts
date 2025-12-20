@@ -22,9 +22,9 @@ const slugify = (value: string): string =>
   value
     .trim()
     .toLowerCase()
-    .replace(/['’]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+    .replaceAll(/['’]/g, '')
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '');
 
 const provinceMap = new Map<string, Province>();
 

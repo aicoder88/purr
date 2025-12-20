@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
 
 export interface GenerationRecord {
   id: string;
@@ -97,7 +97,7 @@ export class GenerationHistoryManager {
       const filePath = path.join(this.historyDir, `${id}.json`);
       const content = await fs.readFile(filePath, 'utf-8');
       return JSON.parse(content) as GenerationRecord;
-    } catch (error) {
+    } catch {
       return null;
     }
   }

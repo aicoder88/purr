@@ -5,8 +5,8 @@
  * Analyzes and optimizes caching strategies across the application
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 class CacheOptimizationAnalyzer {
   constructor() {

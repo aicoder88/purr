@@ -201,7 +201,7 @@ export default async function handler(
         // Get line items to extract product details
         let productName = 'Purrify';
         let quantity = 1;
-        let amount = session.amount_total || 0;
+        const amount = session.amount_total || 0;
 
         try {
           const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 5 });

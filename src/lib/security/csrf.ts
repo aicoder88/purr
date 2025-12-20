@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto';
+import { randomBytes } from 'node:crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const CSRF_TOKEN_LENGTH = 32;

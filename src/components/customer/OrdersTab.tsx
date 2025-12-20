@@ -78,7 +78,7 @@ export function OrdersTab({
       await new Promise(resolve => setTimeout(resolve, 1500));
 
       // Track reorder for analytics
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'reorder', {
           event_category: 'ecommerce',
           event_label: order.orderNumber,

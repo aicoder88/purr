@@ -5,9 +5,9 @@
  * Comprehensive build process with performance optimization and SEO
  */
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { execSync } = require('node:child_process');
+const fs = require('node:fs');
+const path = require('node:path');
 
 class ProductionBuilder {
   constructor() {
@@ -32,7 +32,7 @@ class ProductionBuilder {
     try {
       execSync(command, { stdio: 'inherit' });
       this.log(`${description} completed`, 'success');
-    } catch (error) {
+    } catch {
       this.log(`${description} failed: ${error.message}`, 'error');
       throw error;
     }

@@ -43,7 +43,7 @@ export default function ScrollToTopButton() {
 
   // Check for reduced motion preference
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
     
     try {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,7 +72,7 @@ export default function ScrollToTopButton() {
 
   // Define the scroll handler using useCallback
   const handleScroll = useCallback(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       setIsVisible(window.scrollY > 300);
     }
   }, []); // setIsVisible is stable
@@ -85,7 +85,7 @@ export default function ScrollToTopButton() {
 
   // Set up scroll listener with passive option for better performance
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
     
     window.addEventListener("scroll", toggleVisibility, { passive: true });
     
@@ -97,7 +97,7 @@ export default function ScrollToTopButton() {
 
   // Scroll to top with or without smooth behavior based on user preferences
   const scrollToTop = useCallback(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       window.scrollTo({
         top: 0,
         behavior: isReducedMotion ? 'auto' : 'smooth'

@@ -39,7 +39,7 @@ const formatCurrency = (value: number, locale: string = 'en-CA') => {
   const formatted = parts
     .map(part => {
       if (part.type === 'currency') {
-        const symbol = part.value.replace(/[A-Za-z]/g, '').trim();
+        const symbol = part.value.replaceAll(/[A-Za-z]/g, '').trim();
         return symbol || '$';
       }
       return part.value;
@@ -47,7 +47,7 @@ const formatCurrency = (value: number, locale: string = 'en-CA') => {
     .join('');
 
   // Normalize any lingering multiple spaces without disturbing locale-specific formatting
-  return formatted.replace(/\s+/g, match => (match.includes('\u00A0') ? match : ' ')).trim();
+  return formatted.replaceAll(/\s+/g, match => (match.includes('\u00A0') ? match : ' ')).trim();
 };
 
 export const getProductPrice = (idOrKey: ProductCatalogId | ProductPriceKey): number => {

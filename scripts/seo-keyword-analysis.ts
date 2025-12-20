@@ -12,8 +12,8 @@
  *   npm run seo:keywords -- --category=blog
  */
 
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { KeywordOptimizer } from '../src/lib/seo/keyword-optimizer';
 
 // ANSI color codes for terminal output
@@ -139,7 +139,7 @@ function extractKeywordsFromContent(content: string): string[] {
       if (line.includes('keywords:') || line.includes('tags:')) {
         const match = line.match(/:\s*\[(.*?)\]/);
         if (match) {
-          const tags = match[1].split(',').map(t => t.trim().replace(/['"]/g, ''));
+          const tags = match[1].split(',').map(t => t.trim().replaceAll(/['"]/g, ''));
           keywords.push(...tags);
         }
       }

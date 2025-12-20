@@ -70,7 +70,7 @@ function runMiddleware(
 
 // Sanitize string input to prevent injection
 function sanitizeString(input: string): string {
-  return input.replace(/[<>\"'&]/g, '').trim().substring(0, 255);
+  return input.replaceAll(/[<>\"'&]/g, '').trim().substring(0, 255);
 }
 
 // Validate and sanitize metadata
@@ -78,7 +78,7 @@ function sanitizeMetadata(metadata: Record<string, unknown>): Record<string, str
   const sanitized: Record<string, string> = {};
   for (const [key, value] of Object.entries(metadata)) {
     if (typeof key === 'string' && key.length <= 40) {
-      const sanitizedKey = key.replace(/[^a-zA-Z0-9_]/g, '');
+      const sanitizedKey = key.replaceAll(/[^a-zA-Z0-9_]/g, '');
       if (sanitizedKey.length > 0) {
         sanitized[sanitizedKey] = String(value).substring(0, 500);
       }

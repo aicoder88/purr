@@ -15,7 +15,7 @@ export default function HelpBanner({
   showKeyboardHint = false 
 }: HelpBannerProps) {
   const [dismissed, setDismissed] = useState(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof globalThis.window === 'undefined') return false;
     return localStorage.getItem(storageKey) === 'true';
   });
 

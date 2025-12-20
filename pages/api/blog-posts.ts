@@ -96,7 +96,7 @@ export default async function handler(
     // Transform WordPress posts to match our BlogPost interface
     const posts: BlogPost[] = wpPosts.map((post: WpPost) => ({
       title: post.title.rendered,
-      excerpt: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
+      excerpt: post.excerpt.rendered.replaceAll(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(post.date).toISOString().split('T')[0],
       image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",

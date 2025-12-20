@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 // Store preview tokens in memory (in production, use Redis or database)
 const previewTokens = new Map<string, { slug: string; locale: string; expiresAt: number }>();

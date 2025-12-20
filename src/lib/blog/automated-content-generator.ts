@@ -385,15 +385,15 @@ Make the content genuinely helpful and informative, not promotional.
   private generateSlug(text: string): string {
     return text
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+      .replaceAll(/[^a-z0-9]+/g, '-')
+      .replaceAll(/^-+|-+$/g, '');
   }
 
   /**
    * Calculate reading time
    */
   private calculateReadingTime(content: string): number {
-    const text = content.replace(/<[^>]*>/g, '');
+    const text = content.replaceAll(/<[^>]*>/g, '');
     const words = text.split(/\s+/).length;
     return Math.ceil(words / 200);
   }
@@ -716,7 +716,7 @@ Make the content genuinely helpful and informative, not promotional.
    */
   private generateExcerpt(content: string): string {
     // Strip HTML tags
-    const text = content.replace(/<[^>]*>/g, '');
+    const text = content.replaceAll(/<[^>]*>/g, '');
     // Get first 160 characters
     const excerpt = text.substring(0, 157).trim();
     return excerpt + '...';

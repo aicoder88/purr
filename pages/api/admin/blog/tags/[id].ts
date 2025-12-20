@@ -3,7 +3,7 @@ import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { authorized } = await requireAuth(req, res);

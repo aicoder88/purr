@@ -4,13 +4,13 @@
 // Using global declarations from window.d.ts
 
 // Initialize dataLayer if it doesn't exist
-if (typeof window !== 'undefined' && !window.dataLayer) {
+if (typeof globalThis.window !== 'undefined' && !window.dataLayer) {
   window.dataLayer = [];
 }
 
 // Helper function to push events to dataLayer
 export const gtmEvent = (eventName: string, parameters: Record<string, unknown> = {}) => {
-  if (typeof window !== 'undefined' && window.dataLayer) {
+  if (typeof globalThis.window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push({
       event: eventName,
       ...parameters

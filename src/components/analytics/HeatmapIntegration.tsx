@@ -38,7 +38,7 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
         elements.forEach(element => {
           element.addEventListener('click', (_e) => {
             // Send custom event to heatmap tools
-            if (typeof window !== 'undefined') {
+            if (typeof globalThis.window !== 'undefined') {
               // Hotjar event
               if (window.hj) {
                 window.hj('event', 'critical_interaction');
@@ -168,7 +168,7 @@ export const HeatmapTracker: React.FC<{
 // Hook for programmatic heatmap events
 export const useHeatmapTracking = () => {
   const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Hotjar
     if (window.hj) {
@@ -187,7 +187,7 @@ export const useHeatmapTracking = () => {
   };
 
   const identifyUser = (userId: string, userProperties?: Record<string, unknown>) => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Hotjar
     if (window.hj) {
@@ -201,7 +201,7 @@ export const useHeatmapTracking = () => {
   };
 
   const setUserProperties = (properties: Record<string, unknown>) => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Microsoft Clarity
     if (window.clarity) {

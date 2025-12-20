@@ -507,7 +507,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
             </div>
             <div className="mt-8">
               <Link
-                href={`/locations/${profile.provinceCode?.toLowerCase() || profile.province.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/locations/${profile.provinceCode?.toLowerCase() || profile.province.toLowerCase().replaceAll(/\s+/g, '-')}`}
                 className="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
               >
                 Explore more {profile.province} testimonials →

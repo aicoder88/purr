@@ -126,7 +126,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       setShowNewTicketForm(false);
 
       // Track ticket creation for analytics
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'support_ticket_created', {
           event_category: 'support',
           event_label: newTicket.category

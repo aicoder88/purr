@@ -128,7 +128,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem
-                  key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, '-').toLowerCase()}-${index}`}
+                  key={`faq-${faq.question.slice(0, 20).replaceAll(/\s+/g, '-').toLowerCase()}-${index}`}
                   value={`item-${index}`}
                   className={`border-b ${COLORS.border.accent} last:border-0`}
                 >

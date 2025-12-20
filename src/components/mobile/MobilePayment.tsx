@@ -134,7 +134,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   }, [checkPaymentAvailability]);
 
   const checkApplePayAvailability = (): boolean => {
-    if (typeof window === 'undefined') return false;
+    if (typeof globalThis.window === 'undefined') return false;
     
     // Check if Apple Pay is available
     return !!(window.ApplePaySession && 
@@ -142,7 +142,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   };
 
   const checkGooglePayAvailability = (): boolean => {
-    if (typeof window === 'undefined') return false;
+    if (typeof globalThis.window === 'undefined') return false;
     
     // Check if Google Pay is available
     return !!(window.google?.payments?.api);
@@ -408,7 +408,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   const [showGooglePay, setShowGooglePay] = useState(false);
 
   const checkApplePayAvailability = useCallback((): boolean => {
-    if (typeof window === 'undefined') return false;
+    if (typeof globalThis.window === 'undefined') return false;
     const applePayWindow = window as unknown as { 
       ApplePaySession?: {
         canMakePayments: () => boolean;
@@ -423,7 +423,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   }, []);
 
   const checkGooglePayAvailability = useCallback((): boolean => {
-    if (typeof window === 'undefined') return false;
+    if (typeof globalThis.window === 'undefined') return false;
     const googleWindow = window as unknown as { 
       google?: { 
         payments?: { 

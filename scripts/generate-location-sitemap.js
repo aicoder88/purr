@@ -4,8 +4,8 @@
  * This activates the biggest SEO opportunity: 6,000+ keyword targets
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 // Load city data
 const cities = require('../src/lib/locations/city-profile-seeds.json');

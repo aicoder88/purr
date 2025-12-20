@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import type { BlogPost, Category, Tag } from '@/types/blog';
 import { ContentValidator, type ValidationResult } from './content-validator';
 

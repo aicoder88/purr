@@ -5,8 +5,8 @@ if (process.env.VERCEL || process.env.CI) {
 }
 
 const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const glob = require('glob');
 const ConfigurationManager = require('./lib/ConfigurationManager');
 const MetadataGenerator = require('./lib/MetadataGenerator');
@@ -100,7 +100,7 @@ async function getImageMetadata(filePath) {
  */
 async function generateResponsiveImage(filePath, format, width, quality, compressionLevel) {
   const filename = path.basename(filePath, path.extname(filePath));
-  const sanitizedFilename = filename.replace(/\s+/g, '-');
+  const sanitizedFilename = filename.replaceAll(/\s+/g, '-');
   const outputFilename = `${sanitizedFilename}-${width}w.${format}`;
   const outputPath = path.join(OPTIMIZED_DIR, outputFilename);
 

@@ -1,6 +1,6 @@
 // Advanced Sitemap Generation for Purrify
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { buildLanguageAlternates, getLocalizedUrl, LanguageAlternate } from './seo-utils';
 
 interface SitemapUrl {
@@ -369,7 +369,7 @@ Crawl-delay: 1
 
   // Utility function to escape XML characters
   private escapeXml(unsafe: string): string {
-    return unsafe.replace(/[<>&'"]/g, (c) => {
+    return unsafe.replaceAll(/[<>&'"]/g, (c) => {
       switch (c) {
         case '<': return '&lt;';
         case '>': return '&gt;';

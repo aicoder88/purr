@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs/promises';
-import * as path from 'path';
+import * as path from 'node:path';
 
 interface StorageHealthCheck {
   status: 'healthy' | 'degraded' | 'unhealthy';

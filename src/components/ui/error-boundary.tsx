@@ -120,8 +120,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
         componentStack: errorInfo.componentStack,
       },
       timestamp: new Date().toISOString(),
-      url: typeof window !== 'undefined' ? window.location.href : undefined,
-      userAgent: typeof window !== 'undefined' ? window.navigator.userAgent : undefined,
+      url: typeof globalThis.window !== 'undefined' ? window.location.href : undefined,
+      userAgent: typeof globalThis.window !== 'undefined' ? window.navigator.userAgent : undefined,
       errorId: this.state.errorId,
     };
 

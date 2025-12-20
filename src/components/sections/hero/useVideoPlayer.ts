@@ -65,7 +65,7 @@ export const useVideoPlayer = () => {
 
   // Load video when in viewport
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     const element = mediaContainerRef.current;
     if (!element) {

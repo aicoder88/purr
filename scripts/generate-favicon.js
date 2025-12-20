@@ -1,6 +1,6 @@
 const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const inputFile = path.join(__dirname, '../public/purrify-dark-mode-logo.png');
 const outputDir = path.join(__dirname, '../public/images');

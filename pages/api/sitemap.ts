@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {

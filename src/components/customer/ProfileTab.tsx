@@ -104,7 +104,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setEditingProfile(false);
 
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'profile_updated', {
           event_category: 'account',
           event_label: 'profile_information'

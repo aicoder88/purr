@@ -4,8 +4,8 @@
  * beyond what next-sitemap provides by default.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const glob = require('glob');
 const prettier = require('prettier');
 

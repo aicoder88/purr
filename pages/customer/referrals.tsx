@@ -61,7 +61,7 @@ export default function CustomerReferralsPage({
         setHasReferralCode(true);
 
         // Track referral code generation
-        if (typeof window !== 'undefined' && window.gtag) {
+        if (typeof globalThis.window !== 'undefined' && window.gtag) {
           window.gtag('event', 'referral_code_created', {
             event_category: 'referrals',
             event_label: 'first_time_generation',

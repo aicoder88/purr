@@ -1,6 +1,6 @@
 const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const PUBLIC_DIR = path.join(__dirname, '../public'); // Adjust if needed
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');

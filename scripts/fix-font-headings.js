@@ -11,8 +11,8 @@
  *   node scripts/fix-font-headings.js --apply  # Apply changes
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const glob = require('glob');
 
 // Check if we should apply changes or just preview

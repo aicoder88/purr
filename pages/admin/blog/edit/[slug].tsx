@@ -46,7 +46,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
     const updatedPost: BlogPost = {
       ...initialPost,
       title,
-      excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+      excerpt: excerpt || content.replaceAll(/<[^>]*>/g, '').substring(0, 150) + '...',
       content,
       modifiedDate: now,
       status: 'draft',
@@ -60,7 +60,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
       tags: selectedTags,
       seo: {
         title: title.substring(0, 60),
-        description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
+        description: excerpt || content.replaceAll(/<[^>]*>/g, '').substring(0, 160),
         keywords: selectedTags
       },
       readingTime: calculateReadingTime(content)
@@ -139,7 +139,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
   };
 
   const calculateReadingTime = (text: string): number => {
-    const words = text.replace(/<[^>]*>/g, '').split(/\s+/).length;
+    const words = text.replaceAll(/<[^>]*>/g, '').split(/\s+/).length;
     return Math.ceil(words / 200);
   };
 
@@ -184,7 +184,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
       const updatedPost: BlogPost = {
         ...initialPost,
         title,
-        excerpt: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+        excerpt: excerpt || content.replaceAll(/<[^>]*>/g, '').substring(0, 150) + '...',
         content,
         modifiedDate: now,
         status: publishNow ? 'published' : (scheduledDate ? 'scheduled' : status),
@@ -199,7 +199,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
         tags: selectedTags,
         seo: {
           title: title.substring(0, 60),
-          description: excerpt || content.replace(/<[^>]*>/g, '').substring(0, 160),
+          description: excerpt || content.replaceAll(/<[^>]*>/g, '').substring(0, 160),
           keywords: selectedTags
         },
         readingTime: calculateReadingTime(content)

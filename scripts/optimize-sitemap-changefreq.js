@@ -4,8 +4,8 @@
  * Google ignores unrealistic changefreq values, so this improves crawl efficiency
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const SITEMAP_PATH = path.join(process.cwd(), 'public/sitemap-0.xml');
 

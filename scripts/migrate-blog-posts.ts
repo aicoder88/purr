@@ -7,7 +7,7 @@
  */
 
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
 import { ContentStore } from '../src/lib/blog/content-store';
 
 interface ParsedPost {
@@ -276,7 +276,7 @@ class BlogMigration {
   private extractTitle(rawTitle: string): string {
     // Remove site name and separators
     return rawTitle
-      .replace(/\s*\|\s*\$\{SITE_NAME\}/g, '')
+      .replaceAll(/\s*\|\s*\$\{SITE_NAME\}/g, '')
       .replace(/\s*\|\s*Purrify.*$/i, '')
       .replace(/\s*-\s*Purrify.*$/i, '')
       .trim();
@@ -287,25 +287,25 @@ class BlogMigration {
     let content = rawContent;
     
     // Remove Head component and its contents
-    content = content.replace(/<Head>[\s\S]*?<\/Head>/g, '');
+    content = content.replaceAll(/<Head>[\s\S]*?<\/Head>/g, '');
     
     // Remove breadcrumb navigation
-    content = content.replace(/<nav[^>]*>[\s\S]*?<\/nav>/g, '');
+    content = content.replaceAll(/<nav[^>]*>[\s\S]*?<\/nav>/g, '');
     
     // Remove RelatedArticles component
-    content = content.replace(/<RelatedArticles[^>]*\/>/g, '');
-    content = content.replace(/<RelatedArticles[^>]*>[\s\S]*?<\/RelatedArticles>/g, '');
+    content = content.replaceAll(/<RelatedArticles[^>]*\/>/g, '');
+    content = content.replaceAll(/<RelatedArticles[^>]*>[\s\S]*?<\/RelatedArticles>/g, '');
     
     // Remove Container component tags but keep content
-    content = content.replace(/<Container[^>]*>/g, '');
-    content = content.replace(/<\/Container>/g, '');
+    content = content.replaceAll(/<Container[^>]*>/g, '');
+    content = content.replaceAll(/<\/Container>/g, '');
     
     // Remove Link components but keep content
-    content = content.replace(/<Link\s+href="([^"]+)"[^>]*>/g, '<a href="$1">');
-    content = content.replace(/<\/Link>/g, '</a>');
+    content = content.replaceAll(/<Link\s+href="([^"]+)"[^>]*>/g, '<a href="$1">');
+    content = content.replaceAll(/<\/Link>/g, '</a>');
     
     // Remove Image components and replace with img tags
-    content = content.replace(/<Image\s+src=\{?([^}\s]+)\}?[^>]*\/>/g, (match, src) => {
+    content = content.replaceAll(/<Image\s+src=\{?([^}\s]+)\}?[^>]*\/>/g, (match, src) => {
       // Extract alt text if present
       const altMatch = match.match(/alt="([^"]*)"/);
       const alt = altMatch ? altMatch[1] : '';
@@ -313,25 +313,25 @@ class BlogMigration {
     });
     
     // Convert className to class
-    content = content.replace(/className=/g, 'class=');
+    content = content.replaceAll(/className=/g, 'class=');
     
     // Remove JSX expressions that are just variables
-    content = content.replace(/\{heroImage\}/g, '');
-    content = content.replace(/\{coconutImage\}/g, '');
-    content = content.replace(/\{healthImage\}/g, '');
-    content = content.replace(/\{\w+Image\}/g, '');
+    content = content.replaceAll(/\{heroImage\}/g, '');
+    content = content.replaceAll(/\{coconutImage\}/g, '');
+    content = content.replaceAll(/\{healthImage\}/g, '');
+    content = content.replaceAll(/\{\w+Image\}/g, '');
     
     // Clean up template literals
-    content = content.replace(/\{`([^`]+)`\}/g, '$1');
+    content = content.replaceAll(/\{`([^`]+)`\}/g, '$1');
     
     // Remove empty JSX expressions
-    content = content.replace(/\{\s*\}/g, '');
+    content = content.replaceAll(/\{\s*\}/g, '');
     
     // Remove JSX comments
-    content = content.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+    content = content.replaceAll(/\{\/\*[\s\S]*?\*\/\}/g, '');
     
     // Clean up whitespace
-    content = content.replace(/\n\s*\n\s*\n/g, '\n\n');
+    content = content.replaceAll(/\n\s*\n\s*\n/g, '\n\n');
     content = content.trim();
     
     return content;
@@ -349,7 +349,7 @@ class BlogMigration {
     let featuredImageUrl = parsed.ogImage || parsed.images[0] || '/optimized/blog/default.webp';
     
     // Clean up image URL if it has JSX syntax
-    featuredImageUrl = featuredImageUrl.replace(/\$\{.*?\}/g, '').trim();
+    featuredImageUrl = featuredImageUrl.replaceAll(/\$\{.*?\}/g, '').trim();
     if (!featuredImageUrl || featuredImageUrl === '') {
       featuredImageUrl = parsed.images[0] || '/optimized/blog/default.webp';
     }
@@ -423,7 +423,7 @@ class BlogMigration {
   
   private generateExcerpt(content: string): string {
     // Strip HTML tags
-    const text = content.replace(/<[^>]*>/g, '');
+    const text = content.replaceAll(/<[^>]*>/g, '');
     // Get first 160 characters
     const excerpt = text.substring(0, 157).trim();
     return excerpt + '...';
@@ -431,7 +431,7 @@ class BlogMigration {
   
   private calculateReadingTime(content: string): number {
     // Strip HTML tags
-    const text = content.replace(/<[^>]*>/g, '');
+    const text = content.replaceAll(/<[^>]*>/g, '');
     // Count words
     const wordCount = text.split(/\s+/).length;
     // Average reading speed: 200 words per minute

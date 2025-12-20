@@ -1,5 +1,5 @@
 import xlsx from 'xlsx';
-import path from 'path';
+import path from 'node:path';
 
 export interface Keyword {
   term: string;
@@ -307,7 +307,7 @@ export class KeywordOptimizer {
     // For multi-word keywords, search for the phrase
     if (keywordWords.length > 1) {
       const contentText = content.toLowerCase();
-      const regex = new RegExp(keyword.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+      const regex = new RegExp(keyword.toLowerCase().replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
       const matches = contentText.match(regex);
       occurrences = matches ? matches.length : 0;
     } else {
@@ -413,8 +413,8 @@ export class KeywordOptimizer {
     return [
       keyword.replace(/s$/, ''), // singular
       keyword + 's', // plural
-      keyword.replace(/-/g, ' '), // space variant
-      keyword.replace(/\s/g, '-'), // hyphen variant
+      keyword.replaceAll(/-/g, ' '), // space variant
+      keyword.replaceAll(/\s/g, '-'), // hyphen variant
     ].filter(term => term !== keyword);
   }
 
@@ -424,7 +424,7 @@ export class KeywordOptimizer {
   private countOccurrences(content: string, keyword: string): number {
     const contentLower = content.toLowerCase();
     const keywordLower = keyword.toLowerCase();
-    const regex = new RegExp(keywordLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    const regex = new RegExp(keywordLower.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
     const matches = contentLower.match(regex);
     return matches ? matches.length : 0;
   }

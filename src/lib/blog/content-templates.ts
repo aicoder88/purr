@@ -253,7 +253,7 @@ export class ContentTemplateManager {
    * Create a custom template
    */
   createCustomTemplate(template: Omit<ContentTemplate, 'id'>): ContentTemplate {
-    const id = template.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const id = template.name.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-');
     return {
       id,
       ...template

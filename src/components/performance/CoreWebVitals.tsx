@@ -32,7 +32,7 @@ export function CoreWebVitals({ onMetric, debug = false }: WebVitalsProps) {
       }
 
       // Send to analytics (Google Analytics 4)
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', metric.name, {
           metric_id: metric.id,
           metric_value: metric.value,
@@ -75,7 +75,7 @@ function getMetricRating(name: string, value: number): 'good' | 'needs-improveme
 
 function reportToAnalytics(metric: MetricValue) {
   // Report to Vercel Analytics if available
-  if (typeof window !== 'undefined' && window.va) {
+  if (typeof globalThis.window !== 'undefined' && window.va) {
     window.va('event', {
       name: 'Core Web Vitals',
       metric: metric.name,
@@ -85,7 +85,7 @@ function reportToAnalytics(metric: MetricValue) {
   }
 
   // Report to custom analytics endpoint
-  if (typeof window !== 'undefined') {
+  if (typeof globalThis.window !== 'undefined') {
     fetch('/api/analytics/web-vitals', {
       method: 'POST',
       headers: {
@@ -108,7 +108,7 @@ function reportToAnalytics(metric: MetricValue) {
 // Performance monitoring hook for components
 export function usePerformanceMonitoring() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Monitor page load performance
     const observer = new PerformanceObserver((list) => {
@@ -133,7 +133,7 @@ export function usePerformanceMonitoring() {
 // Real User Monitoring component
 export function RealUserMonitoring() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Monitor resource loading
     const resourceObserver = new PerformanceObserver((list) => {
@@ -203,7 +203,7 @@ export function RealUserMonitoring() {
 // Performance budget monitoring
 export function PerformanceBudgetMonitor() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     const checkBudgets = () => {
       const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;

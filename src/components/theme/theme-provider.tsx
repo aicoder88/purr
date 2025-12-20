@@ -28,7 +28,7 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check if we're in the browser environment
-    if (typeof window !== "undefined") {
+    if (typeof globalThis.window !== 'undefined') {
       const storedTheme = localStorage.getItem(storageKey) as Theme;
       if (storedTheme) return storedTheme;
       // If no stored theme, use defaultTheme (dark mode)
@@ -58,7 +58,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (newTheme: Theme) => {
-      if (typeof window !== "undefined") {
+      if (typeof globalThis.window !== 'undefined') {
         localStorage.setItem(storageKey, newTheme);
       }
       setTheme(newTheme);

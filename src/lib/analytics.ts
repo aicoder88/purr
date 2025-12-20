@@ -9,7 +9,7 @@ export enum ConsentType {
 
 // Check user consent status
 export function hasConsent(type: ConsentType): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof globalThis.window === 'undefined') return false;
   
   try {
     // Check for explicit consent (adjust based on your consent management platform)
@@ -55,7 +55,7 @@ export function safeTrackEvent(
     [key: string]: unknown;
   }
 ) {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   // Check for analytics consent before tracking
   if (!hasConsent(ConsentType.ANALYTICS)) {
@@ -81,7 +81,7 @@ export function safeTrackEvent(
 }
 
 export function safeTrackConfig(targetId: string, config: Record<string, unknown>) {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   // Check consent before configuring analytics
   if (!hasConsent(ConsentType.ANALYTICS)) {
@@ -109,7 +109,7 @@ export function safeTrackConfig(targetId: string, config: Record<string, unknown
 
 // Track page views with consent
 export function safeTrackPageView(url?: string) {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   if (!hasConsent(ConsentType.ANALYTICS)) {
     console.debug('Page view tracking blocked: No consent for analytics');
@@ -142,7 +142,7 @@ export function safeTrackPurchase(transactionData: {
     price: number;
   }>;
 }) {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   if (!hasConsent(ConsentType.ANALYTICS)) {
     console.debug('Purchase tracking blocked: No consent for analytics');
@@ -164,7 +164,7 @@ export function safeTrackPurchase(transactionData: {
 
 // Utility to update consent and reinitialize analytics
 export function updateConsent(consentSettings: Record<ConsentType, boolean>) {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   try {
     // Store consent settings
@@ -191,7 +191,7 @@ export function updateConsent(consentSettings: Record<ConsentType, boolean>) {
 
 // Initialize consent mode (call this early in your app)
 export function initializeConsent() {
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   try {
     // Set default consent state (denied until user chooses)

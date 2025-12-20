@@ -24,10 +24,10 @@ const GeneratedBlogSchema = z.object({
 const sanitizeSlug = (value: string) =>
   value
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
+    .replaceAll(/[^a-z0-9\s-]/g, '')
     .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
+    .replaceAll(/\s+/g, '-')
+    .replaceAll(/-+/g, '-');
 
 const WORD_COUNT_REGEX = /<[^>]+>/g;
 

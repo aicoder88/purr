@@ -103,7 +103,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
         description: "Referral code copied to clipboard",
         variant: "default"
       });
-    } catch (err) {
+    } catch {
       toast({
         title: "Copy failed",
         description: "Unable to copy to clipboard",
@@ -122,7 +122,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
         description: "Referral link copied to clipboard",
         variant: "default"
       });
-    } catch (err) {
+    } catch {
       toast({
         title: "Copy failed",
         description: "Unable to copy link",
@@ -164,7 +164,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
       window.open(shareUrl, '_blank', 'width=600,height=400');
 
       // Track social share
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_social_share', {
           event_category: 'referrals',
           event_label: platform,

@@ -16,8 +16,8 @@
  *   - Reports all changes made
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const glob = require('glob');
 
 // Configuration
@@ -123,7 +123,7 @@ function processFile(filePath) {
   // Apply all image migrations
   for (const [original, optimized] of Object.entries(IMAGE_MIGRATIONS)) {
     // Escape special characters for regex
-    const escapedOriginal = original.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escapedOriginal = original.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
     // Match different quote styles and contexts
     const patterns = [

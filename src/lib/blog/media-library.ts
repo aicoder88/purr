@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
 import { ContentStore } from './content-store';
 
 export interface MediaItem {
@@ -194,7 +194,7 @@ export class MediaLibrary {
     try {
       const content = await fs.readFile(this.metadataPath, 'utf-8');
       return JSON.parse(content);
-    } catch (error) {
+    } catch {
       // File doesn't exist yet
       return [];
     }

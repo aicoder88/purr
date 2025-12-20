@@ -311,7 +311,7 @@ export class ContentValidator {
         });
         syncResult.valid = false;
       }
-    } catch (error) {
+    } catch {
       syncResult.warnings.push({
         field: 'featuredImage.url',
         message: 'Could not verify image URL accessibility',
@@ -346,7 +346,7 @@ export class ContentValidator {
    */
   stripHTML(html: string): string {
     if (!html) return '';
-    return html.replace(/<[^>]*>/g, '').trim();
+    return html.replaceAll(/<[^>]*>/g, '').trim();
   }
 
   /**

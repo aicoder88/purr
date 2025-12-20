@@ -17,7 +17,7 @@ export function loadScriptOnInteraction(
   options: AddEventListenerOptions = { once: true }
 ): void {
   // Only run in browser environment
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
 
   // Function to handle the interaction
   const handleInteraction = async () => {
@@ -65,7 +65,7 @@ export function loadScriptOnVisible(
   }
 ): void {
   // Only run in browser environment
-  if (typeof window === 'undefined') return;
+  if (typeof globalThis.window === 'undefined') return;
   
   // Check if IntersectionObserver is supported
   if (!('IntersectionObserver' in window)) {

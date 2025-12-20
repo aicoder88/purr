@@ -72,7 +72,7 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
       } else {
         setError('Please fill in all fields');
       }
-    } catch (err) {
+    } catch {
       setError('Invalid email or password. Please try again.');
     } finally {
       setLoading(false);
@@ -104,7 +104,7 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
         id: 'customer_' + Date.now(),
         email: registerForm.email
       });
-    } catch (err) {
+    } catch {
       setError('Registration failed. Please try again.');
     } finally {
       setLoading(false);

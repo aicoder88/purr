@@ -5,8 +5,8 @@ if (process.env.VERCEL || process.env.CI) {
 }
 
 const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const glob = require('glob');
 
 // Configuration
@@ -94,7 +94,7 @@ async function optimizeImage(filePath) {
     }
     
     // Handle spaces in filenames by creating sanitized versions
-    const sanitizedBaseName = baseName.replace(/\s+/g, '-');
+    const sanitizedBaseName = baseName.replaceAll(/\s+/g, '-');
     
     const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
     const sanitizedWebpOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.webp`);
@@ -243,8 +243,8 @@ async function optimizeAllImages() {
       if (result) {
         const relativePath = path.relative(PUBLIC_DIR, filePath);
         // Handle spaces in filenames for image dimensions
-        const sanitizedWebp = result.webp.replace(/\s+/g, '-');
-        const sanitizedAvif = result.avif.replace(/\s+/g, '-');
+        const sanitizedWebp = result.webp.replaceAll(/\s+/g, '-');
+        const sanitizedAvif = result.avif.replaceAll(/\s+/g, '-');
         
         imageDimensions[relativePath] = {
           width: result.width,

@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require('node:fs');
+const path = require('node:path');
+const { execSync } = require('node:child_process');
 
 console.log('🚀 Starting performance optimization...');
 
 // Check if sharp is installed
 try {
   require('sharp');
-} catch (error) {
+} catch {
   console.log('📦 Installing sharp for image optimization...');
   execSync('npm install sharp', { stdio: 'inherit' });
 }
@@ -150,7 +150,7 @@ async function optimizeVideos() {
         // Use ffmpeg to optimize video (if available)
         execSync(`ffmpeg -i "${inputPath}" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k "${outputPath}"`, { stdio: 'inherit' });
         console.log(`✅ Optimized video: ${video}`);
-      } catch (error) {
+      } catch {
         console.log(`⚠️  FFmpeg not available, skipping video optimization for ${video}`);
       }
     }

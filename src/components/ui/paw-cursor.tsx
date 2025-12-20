@@ -43,7 +43,7 @@ export function PawCursor() {
   // Check for reduced motion preference and device capabilities
   useEffect(() => {
     // Safely check if window exists (for SSR)
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
     
     try {
       // Check for reduced motion preference
@@ -130,7 +130,7 @@ export function PawCursor() {
   // Set up and clean up event listeners
   useEffect(() => {
     // Safely check if window exists (for SSR)
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
     
     try {
       if (isPawAnimationEnabled && !isReducedMotion) {
@@ -148,7 +148,7 @@ export function PawCursor() {
   }, [throttledMouseMove, isPawAnimationEnabled, isReducedMotion]);
 
   // Only render if we're in a browser environment and animation is enabled
-  if (typeof window === 'undefined' || !isPawAnimationEnabled || isReducedMotion) {
+  if (typeof globalThis.window === 'undefined' || !isPawAnimationEnabled || isReducedMotion) {
     return null;
   }
   

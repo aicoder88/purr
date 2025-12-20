@@ -5,8 +5,8 @@
  * This script prevents the deployment of components with poor dark mode contrast
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 // This array is now handled directly in checkFile function
 // Keep for reference but not used in the new logic

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require('node:fs');
+const path = require('node:path');
+const { execSync } = require('node:child_process');
 
 // Configuration
 const PROJECT_ROOT = path.join(__dirname, '..');
@@ -35,7 +35,7 @@ function findUnusedDependencies() {
     // Install depcheck if not already installed
     try {
       execSync('npx depcheck --version', { stdio: 'ignore' });
-    } catch (error) {
+    } catch {
       console.log('Installing depcheck...');
       execSync('npm install --save-dev depcheck', { 
         stdio: 'inherit',
@@ -101,7 +101,7 @@ function analyzeBundleSize() {
     // Install source-map-explorer if not already installed
     try {
       execSync('npx source-map-explorer --version', { stdio: 'ignore' });
-    } catch (error) {
+    } catch {
       console.log('Installing source-map-explorer...');
       execSync('npm install --save-dev source-map-explorer', { 
         stdio: 'inherit',

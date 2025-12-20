@@ -67,7 +67,7 @@ function fixNodePrefix(content, filePath) {
   let count = 0;
 
   for (const mod of builtins) {
-    // require('fs') -> require('node:fs')
+    // require('node:fs') -> require('node:fs')
     const requireRegex = new RegExp(`require\\(['"]${mod}['"]\\)`, 'g');
     const requireMatches = modified.match(requireRegex);
     if (requireMatches) {
@@ -75,7 +75,7 @@ function fixNodePrefix(content, filePath) {
       count += requireMatches.length;
     }
 
-    // import ... from 'fs' -> import ... from 'node:fs'
+    // import ... from 'node:fs' -> import ... from 'node:fs'
     const importRegex = new RegExp(`from ['"]${mod}['"]`, 'g');
     const importMatches = modified.match(importRegex);
     if (importMatches) {
@@ -92,7 +92,7 @@ function fixReplaceAll(content, filePath) {
   let modified = content;
   let count = 0;
 
-  // Match .replace(/pattern/g, replacement) -> .replaceAll(/pattern/g, replacement)
+  // Match .replaceAll(/pattern/g, replacement) -> .replaceAll(/pattern/g, replacement)
   // Only for patterns that are simple enough
   const regex = /\.replace\((\/.+?\/g),/g;
   const matches = modified.match(regex);
@@ -110,7 +110,7 @@ function fixStructuredClone(content, filePath) {
   let modified = content;
   let count = 0;
 
-  // JSON.parse(JSON.stringify(x)) -> structuredClone(x)
+  // structuredClone(x) -> structuredClone(x)
   const regex = /JSON\.parse\(JSON\.stringify\(([^)]+)\)\)/g;
   const matches = modified.match(regex);
 
@@ -128,30 +128,62 @@ function fixUnusedCatch(content, filePath) {
   let count = 0;
 
   // Pattern: catch (error) { ... } where error is not used
-  // This is a simplified version - catches cases where error appears only once (in the catch)
-  const catchRegex = /\} catch \(error\) \{([^}]*)\}/g;
+  // We need to be careful - only remove if error is NOT used in the ENTIRE catch block
+  // Use a more robust approach: find catch blocks and check the full body
 
-  modified = modified.replace(catchRegex, (match, body) => {
-    // Check if 'error' is used in the body (not just as a parameter)
-    if (!body.includes('error')) {
-      count++;
-      return `} catch {${body}}`;
+  // Match catch blocks with their full body (handling nested braces)
+  const lines = modified.split('\n');
+  const result = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Check for catch (error) or catch (err) pattern
+    const catchMatch = line.match(/^(\s*)\}\s*catch\s*\((error|err|e)\)\s*\{\s*$/);
+
+    if (catchMatch) {
+      const indent = catchMatch[1];
+      const errorVar = catchMatch[2];
+      const catchBodyLines = [line];
+      let braceCount = 1;
+      let j = i + 1;
+
+      // Collect the entire catch block body
+      while (j < lines.length && braceCount > 0) {
+        catchBodyLines.push(lines[j]);
+        braceCount += (lines[j].match(/\{/g) || []).length;
+        braceCount -= (lines[j].match(/\}/g) || []).length;
+        j++;
+      }
+
+      // Check if errorVar is used in the body (excluding the catch line itself)
+      const bodyText = catchBodyLines.slice(1).join('\n');
+      const errorUsed = new RegExp(`\\b${errorVar}\\b`).test(bodyText);
+
+      if (!errorUsed) {
+        // Replace with catch without error variable
+        result.push(`${indent}} catch {`);
+        count++;
+        // Add remaining lines of the catch block
+        for (let k = 1; k < catchBodyLines.length; k++) {
+          result.push(catchBodyLines[k]);
+        }
+        i = j;
+        continue;
+      }
     }
-    return match;
-  });
 
-  // Also handle (err) pattern
-  const catchErrRegex = /\} catch \(err\) \{([^}]*)\}/g;
-  modified = modified.replace(catchErrRegex, (match, body) => {
-    if (!body.includes('err')) {
-      count++;
-      return `} catch {${body}}`;
-    }
-    return match;
-  });
+    result.push(line);
+    i++;
+  }
 
-  // Handle multi-line catch blocks (simplified - just removes unused _error, _err prefixed ones)
-  const underscoreRegex = /catch \(_error\)/g;
+  if (count > 0) {
+    modified = result.join('\n');
+  }
+
+  // Handle already prefixed unused errors like _error, _err
+  const underscoreRegex = /catch \((_error|_err|_e)\)/g;
   const underscoreMatches = modified.match(underscoreRegex);
   if (underscoreMatches) {
     modified = modified.replace(underscoreRegex, 'catch');
@@ -191,8 +223,8 @@ function fixIncludes(content, filePath) {
   let modified = content;
   let count = 0;
 
-  // .some(x => x === value) -> .includes(value)
-  // .some(item => item === value) -> .includes(value)
+  // .includes(value) -> .includes(value)
+  // .includes(value) -> .includes(value)
   const someRegex = /\.some\(\s*(\w+)\s*=>\s*\1\s*===\s*([^)]+)\)/g;
 
   modified = modified.replace(someRegex, (match, param, value) => {

@@ -11,8 +11,8 @@
  *   node scripts/cleanup-duplicate-images.js --apply   # Actually delete files
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const DRY_RUN = !process.argv.includes('--apply');
 const PUBLIC_DIR = path.join(__dirname, '../public');
@@ -45,7 +45,7 @@ function getFileSize(filePath) {
   try {
     const stats = fs.statSync(filePath);
     return stats.size;
-  } catch (error) {
+  } catch {
     return 0;
   }
 }

@@ -30,7 +30,7 @@ export function RetailerContact() {
 
   const handleWholesaleEmailClick = useCallback(() => {
     const mailtoLink = `mailto:${wholesaleEmail}`;
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       window.location.href = mailtoLink;
     }
   }, [wholesaleEmail]);

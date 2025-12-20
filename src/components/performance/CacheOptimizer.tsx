@@ -47,7 +47,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
   // Cache management
   const cache = useCallback(() => {
-    if (typeof window === 'undefined') return null;
+    if (typeof globalThis.window === 'undefined') return null;
     
     const CACHE_KEY = 'purrify_cache';
     const STATS_KEY = 'purrify_cache_stats';
@@ -75,7 +75,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
               const entry = JSON.parse(item);
               totalSize += entry.size || 0;
             }
-          } catch (err) {
+          } catch {
             // Invalid entry, remove it
             localStorage.removeItem(key);
           }
@@ -99,7 +99,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
               totalSize += entry.size || 0;
               entryCount++;
             }
-          } catch (err) {
+          } catch {
             localStorage.removeItem(key);
           }
         }
@@ -131,7 +131,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
               leastHits = entry.hits;
               leastUsedKey = key;
             }
-          } catch (error) {
+          } catch {
             // Invalid entry, remove it
             localStorage.removeItem(key);
           }
@@ -234,7 +234,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
                   leastUsedKey = key;
                 }
               }
-            } catch (error) {
+            } catch {
               // Invalid entry, remove it
               localStorage.removeItem(key);
             }
@@ -253,7 +253,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
   // Preload critical resources
   const preloadResources = useCallback(async () => {
-    if (!enabled || typeof window === 'undefined') return;
+    if (!enabled || typeof globalThis.window === 'undefined') return;
     
     const cacheInstance = cache();
     if (!cacheInstance) return;
@@ -296,7 +296,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
   // Service Worker cache integration
   const setupServiceWorkerCache = useCallback(() => {
-    if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
+    if (typeof globalThis.window === 'undefined' || !('serviceWorker' in navigator)) return;
     
     navigator.serviceWorker.ready.then(registration => {
       // Send cache configuration to service worker
@@ -341,7 +341,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
   // Cache performance monitoring
   const monitorCachePerformance = useCallback(() => {
-    if (!enabled || typeof window === 'undefined') return;
+    if (!enabled || typeof globalThis.window === 'undefined') return;
     
     const cacheInstance = cache();
     if (!cacheInstance) return;
@@ -384,7 +384,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
   // Cleanup expired entries on visibility change
   useEffect(() => {
-    if (!enabled || typeof window === 'undefined') return;
+    if (!enabled || typeof globalThis.window === 'undefined') return;
     
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
@@ -399,7 +399,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
                 if (Date.now() > entry.expires) {
                   localStorage.removeItem(key);
                 }
-              } catch (err) {
+              } catch {
                 localStorage.removeItem(key);
               }
             }

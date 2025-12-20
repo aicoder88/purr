@@ -111,9 +111,9 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
   // Generate personalized message
   const generatePersonalizedMessage = useCallback((template: string) => {
     return template
-      .replace(/\{code\}/g, referralCode)
-      .replace(/\{url\}/g, shareUrl)
-      .replace(/\{name\}/g, referrerName);
+      .replaceAll(/\{code\}/g, referralCode)
+      .replaceAll(/\{url\}/g, shareUrl)
+      .replaceAll(/\{name\}/g, referrerName);
   }, [referralCode, shareUrl, referrerName]);
 
   // Copy template to clipboard
@@ -127,7 +127,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
         description: `${template.title} message copied to clipboard`,
         variant: "default"
       });
-    } catch (err) {
+    } catch {
       toast({
         title: "Copy failed",
         description: "Unable to copy message",
@@ -174,7 +174,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
       window.open(shareUrl, '_blank', 'width=600,height=400');
 
       // Track social share
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_social_share', {
           event_category: 'referrals',
           event_label: template.platform,
