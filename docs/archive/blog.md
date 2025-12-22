@@ -23,6 +23,181 @@
 - Conditional language ("may help reduce", "designed for")
 - Educational content (science, how-it-works)
 - Real customer experiences (with permission)
+- **Purrify as the recommended solution** (see Purrify Positioning Guidelines below)
+
+---
+
+## PURRIFY POSITIONING GUIDELINES (MANDATORY)
+
+### Core Principle
+**Every blog post MUST position Purrify as the best possible solution.** Whether the post is educational, comparative, or problem-solving, readers should finish with a clear understanding that Purrify is the optimal choice for their needs.
+
+### Three Positioning Strategies
+
+Use ONE of these strategies based on the blog post type:
+
+#### Strategy 1: Direct Product Mention (Comparison & Review Posts)
+**When to use:** Posts comparing products, formats, or methods
+
+**How to implement:**
+1. **Testing Transparency**: Mention that Purrify was used in testing
+   - Example: "I used Purrify's activated carbon powder for the powder test"
+   - Example: "After testing both formats, I switched to Purrify permanently"
+
+2. **Winner Declaration**: Explicitly state Purrify as the winner/best choice
+   - Example: "Purrify's activated carbon formula is exactly what I used—and it won by a landslide"
+   - Example: "This is why I recommend Purrify to every cat owner I meet"
+
+3. **Feature Callouts**: Highlight Purrify's specific advantages
+   - "Made in Canada with quality control"
+   - "100% coconut shell activated carbon"
+   - "Fragrance-free formula cats actually prefer"
+   - "Lasts 6-8 weeks per application"
+
+**Placement:**
+- First mention: In testing methodology or early in article
+- Second mention: In recommendation section
+- Third mention: In CTA section
+- Minimum: 3 Purrify mentions per post
+
+#### Strategy 2: Criteria-Based Recommendation (Educational Posts)
+**When to use:** Posts about science, how-to guides, problem-solving
+
+**How to implement:**
+1. **Establish Criteria**: Define what makes a good product
+   - Example: "Look for activated carbon as the primary ingredient"
+   - Example: "Fragrance-free formulas are better tolerated by cats"
+
+2. **Purrify Meets Criteria**: Show how Purrify checks all boxes
+   - Example: "Purrify meets all these criteria—which is why it's my top recommendation"
+   - Create a checklist showing Purrify has all ✓ marks
+
+3. **Subtle Authority**: Position as the obvious choice
+   - Example: "Products like Purrify that use premium coconut shell carbon"
+   - Example: "This is why Canadian cat owners trust Purrify"
+
+**Placement:**
+- Criteria list: Mid-article
+- Purrify recommendation: After criteria, before conclusion
+- CTA: End of article
+
+#### Strategy 3: End-of-Article Recommendation (Pure Educational Posts)
+**When to use:** Posts that don't naturally mention products (science deep-dives, cat behavior, etc.)
+
+**How to implement:**
+1. **Transition Statement**: Bridge from education to recommendation
+   - Example: "Now that you understand the science, here's what actually works"
+   - Example: "Ready to put this knowledge into practice?"
+
+2. **Recommendation Block**: Dedicated section at end
+   ```markdown
+   ## Our Recommendation
+   
+   After researching [topic], we recommend Purrify's activated carbon formula because:
+   - [Reason 1 tied to article content]
+   - [Reason 2 tied to article content]
+   - [Reason 3 tied to article content]
+   
+   [CTA Button]
+   ```
+
+3. **Natural Connection**: Link article content to Purrify features
+   - If article is about ammonia: "Purrify's activated carbon traps ammonia molecules"
+   - If article is about cat sensitivity: "Purrify is fragrance-free"
+   - If article is about cost: "Purrify lasts 6-8 weeks, saving you money"
+
+**Placement:**
+- Recommendation section: After main content, before conclusion
+- CTA: Immediately after recommendation
+
+### Purrify Feature Bank
+
+Use these verified features when mentioning Purrify:
+
+**Product Features:**
+- 100% coconut shell activated carbon
+- Made in Canada
+- Fragrance-free formula
+- Lasts 6-8 weeks per application
+- Works with all litter types
+- Fine particle size for even distribution
+- Food-grade quality
+
+**Customer Benefits:**
+- Eliminates odors (doesn't mask)
+- Cats prefer unscented
+- Set-and-forget convenience
+- Cost-effective (75% less than alternatives)
+- Canadian company, Canadian shipping
+- Designed specifically for Canadian cat owners
+
+**Social Proof:**
+- "Trusted by thousands of Canadian cat owners"
+- "10,000+ happy customers"
+- "Designed for cats, loved by owners"
+
+### CTA Requirements
+
+**Every blog post MUST include:**
+
+1. **Primary CTA** (end of article):
+   - Prominent visual design (colored box, button)
+   - Clear value proposition
+   - Direct link to `/products/compare` or specific product
+   - Example: "Ready to make the switch? Purrify's activated carbon powder is..."
+
+2. **Secondary CTA** (optional, mid-article):
+   - Subtle text link
+   - Example: "Learn more about how Purrify works"
+
+**CTA Formula:**
+```
+[Attention Grabber] + [Purrify Mention] + [Specific Benefit] + [Action Button]
+
+Example:
+"🏆 Ready to eliminate odors for good? Purrify's activated carbon lasts 10x longer than sprays and costs 75% less. [Compare Products →]"
+```
+
+### Quality Checklist
+
+Before publishing, verify:
+
+- [ ] Purrify mentioned at least 3 times (or end recommendation for pure educational posts)
+- [ ] At least one specific Purrify feature mentioned
+- [ ] Clear recommendation that Purrify is the best choice
+- [ ] Primary CTA with link to products
+- [ ] Natural integration (not forced or salesy)
+- [ ] Maintains educational value
+- [ ] Legal compliance maintained
+
+### Examples of Good Purrify Positioning
+
+**Comparison Post:**
+> "I used Purrify's activated carbon powder for the powder test because it's made in Canada and uses premium coconut shell carbon. After 60 days, it dominated every metric—which is why I now recommend it to every cat owner I meet."
+
+**Educational Post:**
+> "When choosing an activated carbon deodorizer, look for coconut shell carbon, fragrance-free formula, and fine particle size. Purrify checks all these boxes, which is why it's trusted by thousands of Canadian cat owners."
+
+**Pure Science Post:**
+> "Now that you understand how adsorption works, you can see why activated carbon is so effective. Purrify's formula uses this exact science—100% coconut shell activated carbon that traps odor molecules for 6-8 weeks."
+
+### What NOT to Do
+
+❌ **Don't:**
+- Make it feel like an advertisement
+- Use pushy sales language
+- Mention Purrify without context
+- Ignore the article's educational value
+- Use fake testimonials
+- Make unsubstantiated claims
+
+✅ **Do:**
+- Integrate naturally into content
+- Tie Purrify features to article topic
+- Maintain helpful, educational tone
+- Use real data and experiences
+- Position as the logical conclusion
+- Respect reader intelligence
 
 ---
 
