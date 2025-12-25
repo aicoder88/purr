@@ -24,6 +24,7 @@ export default function FamilyPackPage() {
   const languageAlternates = buildLanguageAlternates(canonicalPath);
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
+  const standardPriceAmount = getProductPrice('standard');
   const familyPrice = formatProductPrice('family', locale);
   const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
   const familyPriceAmount = getProductPrice('family');
