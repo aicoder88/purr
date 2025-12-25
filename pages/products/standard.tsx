@@ -2,17 +2,15 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, ShieldCheck, Truck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
-import { cn } from '@/lib/utils';
 
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
@@ -20,22 +18,18 @@ export default function StandardSizePage() {
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
   const productPrice = formatProductPrice(productKey, locale);
-  const productPriceValue = getProductPrice(productKey).toFixed(2);
 
   const pageTitle = `${productName} - Ideal Odor Control for Single-Cat Homes`;
   const pageDescription = t.products?.["purrify-50g"]?.description || "Perfect for homes with 1 cat. 50g Standard Size eliminates ammonia smells instantly using activated carbon.";
 
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
 
   const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
   // Optimized images
   const heroImage = "/optimized/60g.webp";
-  const lifestyleImage = "/optimized/60g.webp";
   const solutionImage = "/optimized/regular_size_solution.png";
   const productImage = "/optimized/60g.webp";
 

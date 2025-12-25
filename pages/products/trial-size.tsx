@@ -2,33 +2,23 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
-import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/lib/pricing';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { getProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
 
   const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
-  const pageDescription = "Get your FREE 12g Purrify trial - just pay $4.99 shipping & handling. Limited time offer, limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
+  const pageDescription = "Get your FREE 12g Purrify trial - just pay $4.76 shipping & handling (Canada) (or $6.39 to USA). Limited time offer, limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
-  const familyPrice = formatProductPrice('family', locale);
   const trialPriceValue = getProductPrice('trial');
-  const standardPriceValue = getProductPrice('standard');
-  const familyPriceValue = getProductPrice('family');
   const trialPriceString = trialPriceValue.toFixed(2);
-  const standardPriceString = standardPriceValue.toFixed(2);
-  const familyPriceString = familyPriceValue.toFixed(2);
 
   return (
     <>
@@ -136,7 +126,7 @@ export default function TrialSizePage() {
                 <span className="text-green-600 dark:text-green-400">absolutely FREE</span> - we just ask you cover shipping.
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                *Just $4.99 shipping & handling. Limit one per customer.
+                *Just pay $4.76 shipping & handling (Canada) (or $6.39 to USA). Limit one per customer.
               </p>
             </div>
           </Container>

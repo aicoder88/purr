@@ -99,7 +99,6 @@ export function CityLeadCaptureCTA({
         formEvents.formSubmit('city_lead_capture', citySlug, true);
         setSubmissionState('success');
       } catch (error) {
-        console.error('City lead capture failed', error);
         setErrorMessage((error as Error).message || 'Something went wrong. Please try again.');
         setSubmissionState('error');
         formEvents.formSubmit('city_lead_capture', citySlug, false);

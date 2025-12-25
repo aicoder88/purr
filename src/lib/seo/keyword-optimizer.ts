@@ -1,5 +1,5 @@
-import xlsx from 'xlsx';
 import path from 'node:path';
+import fs from 'node:fs/promises';
 
 export interface Keyword {
   term: string;
@@ -29,30 +29,28 @@ export class KeywordOptimizer {
   private keywordFilePath: string;
 
   constructor(keywordFilePath?: string) {
-    this.keywordFilePath = keywordFilePath || path.join(process.cwd(), 'docs', 'cat odor keywords.xlsx');
+    this.keywordFilePath = keywordFilePath || path.join(process.cwd(), 'docs', 'cat-odor-keywords.json');
   }
 
   /**
-   * Load keywords from Excel file
+   * Load keywords from JSON file
    */
   async loadKeywords(): Promise<Keyword[]> {
     try {
-      const workbook = xlsx.readFile(this.keywordFilePath);
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
-      const data = xlsx.utils.sheet_to_json(sheet);
+      const fileContent = await fs.readFile(this.keywordFilePath, 'utf-8');
+      const data = JSON.parse(fileContent);
 
       this.keywords = data.map((row: any) => ({
         term: row['Keyword'] || row['keyword'] || '',
-        searchVolume: parseInt(row['Search Volume'] || row['search_volume'] || '0'),
-        competition: this.normalizeCompetition(row['Competition'] || row['competition'] || 'medium'),
-        difficulty: parseInt(row['Difficulty'] || row['difficulty'] || '50'),
-        category: row['Category'] || row['category'] || 'general'
+        searchVolume: parseInt(row['Volume'] || row['Search Volume'] || row['search_volume'] || '0'),
+        competition: this.normalizeCompetition(row['Competitive Density'] || row['Competition'] || row['competition'] || 'medium'),
+        difficulty: parseInt(row['Keyword Difficulty'] || row['Difficulty'] || row['difficulty'] || '50'),
+        category: row['Topic'] || row['Category'] || row['category'] || 'general'
       })).filter(k => k.term); // Filter out empty keywords
 
       return this.keywords;
     } catch (error) {
-      console.error('Error loading keywords:', error);
-      throw new Error(`Failed to load keywords from ${this.keywordFilePath}`);
+      throw new Error(`Failed to load keywords from ${this.keywordFilePath}: ${error}`);
     }
   }
 

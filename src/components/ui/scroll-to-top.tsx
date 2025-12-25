@@ -66,7 +66,7 @@ export default function ScrollToTopButton() {
         }
       };
     } catch (err) {
-      console.error("Error checking motion preferences:", err);
+      // Silently fail - will default to no motion preference
     }
   }, []);
 

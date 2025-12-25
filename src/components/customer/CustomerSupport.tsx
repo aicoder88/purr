@@ -94,7 +94,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
 
       setTickets(mockTickets);
     } catch (error) {
-      console.error('Failed to fetch support tickets:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }
@@ -133,7 +133,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
         });
       }
     } catch (error) {
-      console.error('Failed to create support ticket:', error);
+      // Silently fail
     }
   };
 
@@ -164,7 +164,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
         } : null);
       }
     } catch (error) {
-      console.error('Failed to add message:', error);
+      // Silently fail
     }
   };
 

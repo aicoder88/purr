@@ -49,7 +49,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
         setTemplates(data);
       }
     } catch (error) {
-      console.error('Error loading templates:', error);
+      // Silently fail - templates are optional
     }
   };
 
@@ -61,7 +61,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
         setHistory(data);
       }
     } catch (error) {
-      console.error('Error loading history:', error);
+      // Silently fail - history is optional
     }
   };
 
@@ -89,7 +89,6 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
       setPreview(result);
       toast.success('Content generated successfully!');
     } catch (error) {
-      console.error('Generation error:', error);
       toast.error('Failed to generate content');
     } finally {
       setGenerating(false);

@@ -72,7 +72,7 @@ export const en = {
   products: {
     "purrify-12g": {
       name: "FREE Trial",
-      description: "Try Purrify FREE!\nJust pay $4.99 shipping & handling. See results in 24 hours. Limited time offer - limit one per customer."
+      description: "Try Purrify FREE!\nJust pay $4.76 shipping & handling (Canada) (or $6.39 to USA). See results in 24 hours. Limited time offer - limit one per customer."
     },
     "purrify-50g": {
       name: "Purrify 50g Standard",
@@ -752,7 +752,7 @@ export const en = {
     free: "FREE",
     claimTrial: "Claim Your FREE Purrify Trial",
     whatYouGet: "What You Get:",
-    freeTrialBag: "12g Purrify Trial Size worth $4.99",
+    freeTrialBag: "12g Purrify Trial Size worth $4.76",
     // fastShippingDoor: "Fast shipping to your door", // TODO: Restore when offer is available
     expertTips: "Expert cat care tips and guides",
     zeroCommitment: "Zero commitment - this is our gift to you",
@@ -1094,7 +1094,7 @@ export const en = {
       id: 7,
       category: "product",
       question: "What sizes are available?",
-      answer: "We offer three sizes: 12g Trial Size ($4.99 with shipping included) for first-time users, 50g Regular Size ($14.99 + shipping) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size delivers the best value per gram, and our autoship bundles include free shipping.",
+      answer: "We offer three sizes: 12g Trial Size (just pay $4.76 S&H Canada / $6.39 USA) for first-time users, 50g Regular Size ($14.99 + shipping) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size delivers the best value per gram, and our autoship bundles include free shipping.",
       popular: false,
       tags: ["sizes", "pricing", "value"]
     },
@@ -1210,7 +1210,7 @@ export const en = {
     readyToTryPurrify: "Ready to Try Purrify?",
     startWithRiskFreeTrial: "Start with our risk-free trial size and experience the difference for yourself.",
     compareAllSizes: "Compare All Sizes",
-    tryRiskFree: "Try Risk-Free - $4.99",
+    tryRiskFree: "Try Risk-Free - $4.76",
     learnMoreAboutPurrify: "Learn More About Purrify",
     howItWorks: "How It Works",
     learnScience: "Learn the science behind our activated carbon technology and why it's so effective.",

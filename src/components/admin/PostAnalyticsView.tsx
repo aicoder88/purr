@@ -25,7 +25,7 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
         setAnalytics(data);
       }
     } catch (error) {
-      console.error('Error loading analytics:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }

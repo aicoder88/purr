@@ -390,7 +390,6 @@ const StoreLogoImage = ({
       height={logoConfig.height}
       className={logoConfig.className}
       onError={() => {
-        console.warn(`Failed to load logo for ${storeName}, using fallback`);
         setHasError(true);
       }}
       unoptimized={logoConfig.src.startsWith('http')}  // Skip Next.js optimization for external URLs
@@ -432,7 +431,6 @@ export function Stores() {
         setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
       }
     } catch (error) {
-      console.error('Error submitting store request:', error);
       setSubmitStatus('error');
       setStatusMessage(t.storesSection?.requestError || 'An error occurred. Please contact us directly at support@purrify.ca');
     } finally {

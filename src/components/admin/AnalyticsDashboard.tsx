@@ -21,7 +21,7 @@ export default function AnalyticsDashboard() {
         setMetrics(data);
       }
     } catch (error) {
-      console.error('Error loading analytics:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }
@@ -42,7 +42,7 @@ export default function AnalyticsDashboard() {
         document.body.removeChild(a);
       }
     } catch (error) {
-      console.error('Error exporting report:', error);
+      // Silently fail
     }
   };
 

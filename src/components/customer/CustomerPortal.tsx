@@ -117,7 +117,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       setOrders(mockOrders);
       setSubscriptions(mockSubscriptions);
     } catch (error) {
-      console.error('Failed to fetch customer data:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }

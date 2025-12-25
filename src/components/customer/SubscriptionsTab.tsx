@@ -34,7 +34,7 @@ export function SubscriptionsTab({
           : sub
       ));
     } catch (error) {
-      console.error('Frequency change failed:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }
@@ -105,7 +105,7 @@ export function SubscriptionsTab({
         });
       }
     } catch (error) {
-      console.error('Subscription action failed:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }

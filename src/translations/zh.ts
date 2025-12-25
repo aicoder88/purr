@@ -72,7 +72,7 @@ export const zh = {
   products: {
     "purrify-12g": {
       name: "免费试用装",
-      description: "免费试用Purrify！\n仅需支付$4.99运费。限时优惠 - 每位客户限一份。"
+      description: "免费试用Purrify！\n仅需支付$4.76运费 (加拿大) 或 $6.39 (美国)。限时优惠 - 每位客户限一份。"
     },
     "purrify-50g": {
       name: "Purrify 50g",
@@ -772,7 +772,7 @@ export const zh = {
     free: "免费",
     claimTrial: "获取您的免费Purrify试用装",
     whatYouGet: "您将获得：",
-    freeTrialBag: "价值$4.99的12g Purrify试用装",
+    freeTrialBag: "价值$4.76的12g Purrify试用装",
     // freeShippingDoor: "免费送货到您家门口", // TODO: Restore when free shipping is available
     expertTips: "专家猫咪护理技巧和指南",
     zeroCommitment: "零承诺 - 这是我们送给您的礼物",
@@ -956,7 +956,7 @@ export const zh = {
     },
     stillUnsure: "仍然不确定选择哪种尺寸？",
     getPersonalizedAdvice: "获取个性化建议",
-    tryRiskFree: "无风险试用 - $4.99",
+    tryRiskFree: "无风险试用 - $4.76",
     learnMoreAboutPurrify: "了解更多关于Purrify",
     featuresComparison: "功能比较",
     seeHowProductsCompare: "看看我们的产品如何并排比较",
@@ -1254,7 +1254,7 @@ export const zh = {
     readyToTryPurrify: "准备试试Purrify？",
     startWithRiskFreeTrial: "从我们的无风险试用装开始，亲自体验差异。",
     compareAllSizes: "比较所有尺寸",
-    tryRiskFree: "无风险试用 - $4.99",
+    tryRiskFree: "无风险试用 - $4.76",
     learnMoreAboutPurrify: "进一步了解Purrify",
     howItWorks: "工作原理",
     learnScience: "了解我们的活性炭技术为何如此高效。",

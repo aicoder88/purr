@@ -38,7 +38,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         setInternalLinks(data.result || []);
       }
     } catch (error) {
-      console.error('Error loading internal link suggestions:', error);
+      // Silently fail - suggestions are optional
     } finally {
       setLoadingLinks(false);
     }
@@ -60,7 +60,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         setCannibalization(data.result || []);
       }
     } catch (error) {
-      console.error('Error checking cannibalization:', error);
+      // Silently fail - cannibalization check is optional
     } finally {
       setLoadingCannibalization(false);
     }

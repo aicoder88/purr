@@ -120,7 +120,7 @@ const productSchema = {
   },
   'offers': {
     '@type': 'AggregateOffer',
-    'lowPrice': '14.99',
+    'lowPrice': '4.76',
     'highPrice': '39.99',
     'priceCurrency': 'CAD'
   },

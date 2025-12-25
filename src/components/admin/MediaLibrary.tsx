@@ -37,7 +37,6 @@ export default function MediaLibrary({
       const data = await response.json();
       setMedia(data);
     } catch (error) {
-      console.error('Error loading media:', error);
       toast.error('Failed to load media library');
     } finally {
       setLoading(false);
@@ -70,7 +69,6 @@ export default function MediaLibrary({
       setMedia(media.filter(m => m.id !== id));
       toast.success('Image deleted');
     } catch (error) {
-      console.error('Error deleting media:', error);
       toast.error('Failed to delete image');
     }
   };

@@ -111,7 +111,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         });
       }
     } catch (error) {
-      console.error('Failed to update profile:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }
@@ -123,7 +123,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setEditingAddress(false);
     } catch (error) {
-      console.error('Failed to update address:', error);
+      // Silently fail
     } finally {
       setLoading(false);
     }
@@ -142,7 +142,6 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
       alert('Password updated successfully');
     } catch (error) {
-      console.error('Failed to change password:', error);
       alert('Failed to change password');
     } finally {
       setLoading(false);
@@ -154,7 +153,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       setPreferences(prev => ({ ...prev, [key]: value }));
       await new Promise(resolve => setTimeout(resolve, 500));
     } catch (error) {
-      console.error('Failed to update preferences:', error);
+      // Silently fail
     }
   };
 

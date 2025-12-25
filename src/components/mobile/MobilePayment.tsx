@@ -179,14 +179,12 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
         // In production, validate with your payment processor
         try {
           // Simulate merchant validation
-          console.log('Validating merchant:', event.validationURL);
           // In a real app, you would call your backend to validate the merchant
           // const merchantSession = await validateMerchant(event.validationURL);
           // session.completeMerchantValidation(merchantSession);
           // For now, complete with empty object to proceed to payment
           session.completeMerchantValidation({});
         } catch (err) {
-          console.error('Merchant validation failed:', err);
           if ('abort' in session) {
             session.abort();
           }
@@ -200,11 +198,10 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
             onPaymentSuccess?.(result);
           })
           .catch((err) => {
-            console.error('Payment processing failed:', err);
             session.completePayment(window.ApplePaySession?.STATUS_FAILURE || 1);
-            onPaymentError?.({ 
-              success: false, 
-              message: err instanceof Error ? err.message : 'Payment processing failed' 
+            onPaymentError?.({
+              success: false,
+              message: err instanceof Error ? err.message : 'Payment processing failed'
             });
           });
       };
@@ -215,7 +212,6 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 
       session.begin();
     } catch (err) {
-      console.error('Apple Pay error:', err);
       onPaymentError?.(err as Record<string, unknown>);
     } finally {
       setIsProcessing(false);
@@ -276,7 +272,6 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       const result = await processPayment(paymentData, 'google-pay');
       onPaymentSuccess?.(result);
     } catch (err) {
-      console.error('Google Pay error:', err);
       onPaymentError?.({
         success: false,
         message: err instanceof Error ? err.message : 'Google Pay processing failed'

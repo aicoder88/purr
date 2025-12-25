@@ -56,7 +56,6 @@ export function RetailerContact() {
           throw new Error('Clipboard API unavailable');
         }
       } catch (err) {
-        console.error('Failed to copy wholesale email:', err);
         setCopyStatus('failed');
       }
     },
@@ -107,13 +106,6 @@ export function RetailerContact() {
     setSubmitStatus({});
 
     try {
-      console.log('Attempting to submit retailer form:', {
-        businessName: formData.businessName,
-        contactName: formData.contactName,
-        email: formData.email,
-        businessType: formData.businessType
-      });
-
       // Send via API
       const result = await sendRetailerContact();
 
@@ -138,8 +130,6 @@ export function RetailerContact() {
       });
 
     } catch (err) {
-      console.error('Error submitting retailer form:', err);
-
       setSubmitStatus({
         success: false,
         message: err instanceof Error

@@ -35,7 +35,7 @@ export default function BulkActionsToolbar({
       await onExecute(operation);
       onClearSelection();
     } catch (error) {
-      console.error('Bulk operation failed:', error);
+      // Silently fail
     } finally {
       setExecuting(false);
     }

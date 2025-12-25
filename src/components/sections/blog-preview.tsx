@@ -35,7 +35,7 @@ export function BlogPreview() {
         }
       } catch (err) {
         // Already initialized with static data, no need to update on error
-        console.debug("Blog posts fetch failed; using static content.", err);
+        // Silently fall back to static content
       }
     }
     fetchBlogPosts();

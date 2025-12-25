@@ -411,7 +411,7 @@ Comprehensive JSON-LD implementation for maximum search visibility and rich snip
 #### Product Pages
 
 **Pages Implemented:**
-- `/products/trial-size` - Purrify 12g ($4.99)
+- `/products/trial-size` - Purrify 12g ($4.76)
 - `/products/standard` - Purrify 50g ($19.99)
 - `/products/family-pack` - Purrify 120g ($29.99)
 - `/products/compare` - Product comparison page

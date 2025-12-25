@@ -8,7 +8,7 @@
 
 ### Current State
 - **Product Line**: 3 sizes (Trial 12g, Standard 50g, Family 120g)
-- **Pricing**: $4.99 - $29.99 CAD
+- **Pricing**: $4.76+ CAD ($4.76 Canada / $6.39 USA for trial)
 - **Subscription**: Quarterly autoship available (120g x 3 for $69)
 - **Channels**: Direct website + Retail stockists (pet stores)
 - **Markets**: Canada-focused, multilingual (EN, FR, ZH)
@@ -163,7 +163,7 @@ Email Day 30: "Don't run out!" + urgency
 ### Current Pricing Analysis
 | Product | Price | Cost | Margin | $/gram |
 |---------|-------|------|--------|--------|
-| Trial 12g | $4.99 | ~$1.50 | 70% | $0.42 |
+| Trial 12g | $4.76 / $6.39 | ~$1.50 | 70% | $0.40 |
 | Standard 50g | $14.99 | ~$4.50 | 70% | $0.30 |
 | Family 120g | $29.99 | ~$9.00 | 70% | $0.25 |
 

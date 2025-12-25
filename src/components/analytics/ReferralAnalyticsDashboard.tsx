@@ -13,14 +13,10 @@ import {
   Award,
   ArrowUp,
   ArrowDown,
-  Filter,
   Download,
   RefreshCw,
-  AlertCircle,
   CheckCircle,
-  Activity,
-  Calendar,
-  Zap
+  Activity
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 

@@ -26,7 +26,7 @@ export const useVideoPlayer = () => {
       await video.play();
       setState(prev => ({ ...prev, showPlayButton: false }));
     } catch (err) {
-      console.log('Video autoplay prevented, showing play button:', err);
+      // Video autoplay prevented by browser, show manual play button
       setState(prev => ({ ...prev, showPlayButton: true }));
     }
   };
@@ -36,7 +36,6 @@ export const useVideoPlayer = () => {
   };
 
   const handleVideoError = () => {
-    console.error('Video failed to load');
     setState(prev => ({ ...prev, showPlayButton: true }));
   };
 

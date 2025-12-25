@@ -88,9 +88,8 @@ export function OrdersTab({
 
       alert(`Order ${order.orderNumber} has been added to your cart!`);
     } catch (error) {
-      console.error('Reorder failed:', error);
       alert('Failed to reorder. Please try again.');
-    } finally {
+    } finally{
       setLoading(false);
     }
   };
@@ -106,7 +105,6 @@ export function OrdersTab({
       await new Promise(resolve => setTimeout(resolve, 1000));
       alert(`Invoice for order ${orderNumber} will be downloaded shortly.`);
     } catch (error) {
-      console.error('Invoice download failed:', error);
       alert('Failed to download invoice. Please try again.');
     }
   };
