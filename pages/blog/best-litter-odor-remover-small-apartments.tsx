@@ -518,7 +518,7 @@ export default function BestForSmallApartments() {
                     <strong>Silent Operation:</strong> No noise to disturb neighbors
                   </div>
                   <div>
-                    <strong>Natural Formula:</strong> Safe for enclosed spaces with limited ventilation
+                    <strong>Natural Formula:</strong> Non-toxic for enclosed spaces with limited ventilation
                   </div>
                   <div>
                     <strong>Long-Lasting:</strong> Up to 7 days of protection per application

@@ -196,8 +196,8 @@ export default function ActivatedCarbonVsBakingSoda() {
                         <p className="text-sm text-forest-100 dark:text-forest-200">Doesn't just cover them up; it permanently removes them.</p>
                       </div>
                       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 dark:border-white/5">
-                        <div className="font-bold text-lg mb-1 text-yellow-400 dark:text-yellow-400">Safe & Natural</div>
-                        <p className="text-sm text-forest-100 dark:text-forest-200">Made from coconut shells or wood, 100% biodegradable.</p>
+                        <div className="font-bold text-lg mb-1 text-yellow-400 dark:text-yellow-400">Non-toxic & Natural</div>
+                        <p className="text-sm text-forest-100 dark:text-forest-200">Made from 100% natural activated coconut carbon.</p>
                       </div>
                     </div>
                   </div>

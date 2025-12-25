@@ -1,4 +1,4 @@
-import { Truck, MapPin } from 'lucide-react';
+import { Truck, MapPin, Leaf, ShieldCheck, Users } from 'lucide-react';
 import { useTranslation } from '../../lib/translation-context';
 
 export function ScrollingAnnouncementBar() {
@@ -8,15 +8,33 @@ export function ScrollingAnnouncementBar() {
   const messages = [
     {
       icon: Truck,
-      line1: 'Free Shipping',
-      line2: 'on All Subscription Orders',
+      line1: t.announcementBar.freeShipping.line1,
+      line2: t.announcementBar.freeShipping.line2,
       iconColor: 'text-blue-200 dark:text-blue-300',
     },
     {
       icon: MapPin,
-      line1: 'Manufactured in Canada',
-      line2: 'from Domestic and Globally Sourced Ingredients',
+      line1: t.announcementBar.madeInCanada.line1,
+      line2: t.announcementBar.madeInCanada.line2,
       iconColor: 'text-red-200 dark:text-red-300',
+    },
+    {
+      icon: Leaf,
+      line1: t.announcementBar.naturalCarbon.line1,
+      line2: t.announcementBar.naturalCarbon.line2,
+      iconColor: 'text-emerald-200 dark:text-emerald-300',
+    },
+    {
+      icon: Users,
+      line1: t.announcementBar.socialProof.line1,
+      line2: t.announcementBar.socialProof.line2,
+      iconColor: 'text-blue-100 dark:text-blue-200',
+    },
+    {
+      icon: ShieldCheck,
+      line1: t.announcementBar.moneyBack.line1,
+      line2: t.announcementBar.moneyBack.line2,
+      iconColor: 'text-blue-200 dark:text-blue-300',
     },
   ];
 

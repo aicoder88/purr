@@ -28,7 +28,7 @@ export default function CaseStudies() {
         description: "Sarah lived in a 400 square foot studio apartment with two cats. The litter box was located near her living area due to space constraints, making odor control critical for her quality of life and ability to have guests over.",
         painPoints: [
           "Limited ventilation in studio apartment",
-          "Litter box visible from main living area", 
+          "Litter box visible from main living area",
           "Embarrassment when having guests over",
           "Previous products only masked odors temporarily",
           "Tried 6 different deodorizers with poor results"
@@ -111,7 +111,7 @@ export default function CaseStudies() {
           "Veterinary background requiring evidence-based solutions",
           "Previous products caused coughing and sneezing",
           "Need for gentle but effective odor control",
-          "Concern about product safety for aging pets"
+          "Concern about ingredient toxicity for aging pets"
         ]
       },
       solution: {
@@ -143,14 +143,14 @@ export default function CaseStudies() {
         <title>{`Success Stories - Real Customer Results | ${SITE_NAME}`}</title>
         <meta name="description" content="Detailed case studies showing how Purrify cat litter deodorizer solved real odor problems for Canadian families. See measurable results and customer transformations." />
         <meta name="keywords" content="Purrify case studies, cat odor success stories, customer results, before and after, cat litter deodorizer effectiveness" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Success Stories - Real Customer Results" />
         <meta property="og:description" content="See detailed case studies showing how Purrify transformed homes across Canada with natural odor elimination." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Success Stories - Real Customer Results" />
@@ -212,10 +212,10 @@ export default function CaseStudies() {
                 Real Results from Real Customers
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                Discover how Purrify transformed homes across Canada with detailed case studies 
+                Discover how Purrify transformed homes across Canada with detailed case studies
                 showing measurable results, challenges overcome, and lasting success.
               </p>
-              
+
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div className="text-center">
@@ -269,8 +269,8 @@ export default function CaseStudies() {
                         </div>
                       </div>
                       <div className="mt-6 md:mt-0 md:ml-8">
-                        <Image 
-                          src={study.image} 
+                        <Image
+                          src={study.image}
                           alt={`Purrify product used in ${study.customer} case study`}
                           className="w-32 h-32 object-contain"
                           width={128}
@@ -337,7 +337,7 @@ export default function CaseStudies() {
                         The Results
                       </h3>
                       <p className="text-green-800 dark:text-green-200 mb-6">{study.results.description}</p>
-                      
+
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {study.results.metrics.map((metric, i) => (
                           <div key={i} className="text-center">
@@ -377,19 +377,19 @@ export default function CaseStudies() {
                   Ready to Write Your Own Success Story?
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                  Join 1,000+ satisfied customers who have transformed their homes with Purrify. 
+                  Join 1,000+ satisfied customers who have transformed their homes with Purrify.
                   Start your journey to odor-free living today.
                 </p>
                 <div className="space-x-4">
-                  <Link 
-                    href="/products/compare" 
+                  <Link
+                    href="/products/compare"
                     className="inline-flex items-center bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Purrify
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
-                  <Link 
-                    href="/free" 
+                  <Link
+                    href="/free"
                     className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
                   >
                     Try Free Sample

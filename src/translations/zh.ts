@@ -101,7 +101,31 @@ export const zh = {
     perMonth: "≈ {price}/月",
     saveVsOneTime: "比单次购买节省 {percent}%",
     trialSizeSection: "免费试用 - 仅付运费",
-    quarterlyAutoshipSection: "订购享优惠 - 季度自动配送"
+    quarterlyAutoshipSection: "订购享优惠 - 季度自动配送",
+    stripeShippingNote: "产品将收货地址将以您在下一页 Stripe 填写的 'SHIP TO' 为准"
+  },
+
+  announcementBar: {
+    freeShipping: {
+      line1: '免运费',
+      line2: '适用于所有自动订购项目',
+    },
+    madeInCanada: {
+      line1: '加拿大制造',
+      line2: '采用本地及全球采购原料',
+    },
+    naturalCarbon: {
+      line1: '无毒成分',
+      line2: '由100%天然活性椰壳炭制成',
+    },
+    socialProof: {
+      line1: '无化学品、香精或添加剂',
+      line2: '加拿大数千名猫主人的共同选择',
+    },
+    moneyBack: {
+      line1: '30天退款保证',
+      line2: '不满意？无条件全额退款',
+    },
   },
 
   // Hero Section
@@ -167,7 +191,7 @@ export const zh = {
     },
     natural: {
       title: "天然成分",
-      description: "采用100%天然活性炭制成，无有害化学物质。"
+      description: "采用100%天然活性炭制成，无化学品、香精或添加剂。",
     },
     costEffective: {
       title: "经济实惠",
@@ -195,7 +219,7 @@ export const zh = {
     },
     natural: {
       title: "100%天然",
-      description: "采用天然活性炭；不添加香精或染料。"
+      description: "采用100%天然活性炭；不添加化学品、香精或添加剂。",
     },
     universalFit: {
       title: "通用兼容",

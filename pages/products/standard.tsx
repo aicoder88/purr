@@ -158,6 +158,11 @@ export default function StandardSizePage() {
                         Get Autoship <Zap className="w-4 h-4 fill-current" />
                       </a>
                     </Button>
+                    {autoshipCheckoutUrl.startsWith('http') && (
+                      <p className="mt-3 text-[10px] text-center text-gray-400 dark:text-gray-500 font-bold italic uppercase tracking-tighter">
+                        * {t.pricing?.stripeShippingNote}
+                      </p>
+                    )}
                     <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">Cancel anytime. Ships free.</p>
                   </div>
 
@@ -172,6 +177,11 @@ export default function StandardSizePage() {
                         Buy Now
                       </a>
                     </Button>
+                    {singleCheckoutUrl.startsWith('http') && (
+                      <p className="mt-3 text-[10px] text-center text-gray-400 dark:text-gray-500 font-bold italic uppercase tracking-tighter leading-tight">
+                        * {t.pricing?.stripeShippingNote}
+                      </p>
+                    )}
                     <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">+ $6.99 Shipping</p>
                   </div>
                 </div>
@@ -319,11 +329,18 @@ export default function StandardSizePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
-                  <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
-                    Start Your Fresh Journey <Zap className="w-5 h-5 fill-current" />
-                  </a>
-                </Button>
+                <div className="space-y-4 w-full sm:w-auto">
+                  <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
+                    <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                      Start Your Fresh Journey <Zap className="w-5 h-5 fill-current" />
+                    </a>
+                  </Button>
+                  {autoshipCheckoutUrl.startsWith('http') && (
+                    <p className="text-xs font-bold text-gray-500 dark:text-gray-400 italic">
+                      * {t.pricing?.stripeShippingNote}
+                    </p>
+                  )}
+                </div>
               </div>
               <p className="text-sm font-bold text-gray-400 dark:text-gray-500">30-Day Happiness Guarantee • Free Shipping on Autoship</p>
             </div>

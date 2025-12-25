@@ -292,6 +292,9 @@ const ProductComparePage: NextPage = () => {
                           {product.cta}
                           <ChevronRight className="w-5 h-5 ml-2" />
                         </Button>
+                        <p className="mt-3 text-[10px] text-center text-gray-500 dark:text-gray-400 font-bold italic uppercase tracking-tighter">
+                          * {t.pricing?.stripeShippingNote}
+                        </p>
                       </a>
                     ) : (
                       <Link href={`${locale === 'fr' ? '/fr' : ''}${product.ctaLink}`}>

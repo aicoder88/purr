@@ -101,7 +101,31 @@ export const en = {
     perMonth: "≈ {price}/month",
     saveVsOneTime: "Save {percent}% vs one-time",
     trialSizeSection: "FREE Trial - Just Pay Shipping",
-    quarterlyAutoshipSection: "Subscribe & Save - Quarterly Autoship"
+    quarterlyAutoshipSection: "Subscribe & Save - Quarterly Autoship",
+    stripeShippingNote: "the product will be shipped to the stripe \"SHIP TO\" address ON THE NEXT PAGE"
+  },
+
+  announcementBar: {
+    freeShipping: {
+      line1: 'Free Shipping',
+      line2: 'on All Subscription Orders',
+    },
+    madeInCanada: {
+      line1: 'Manufactured in Canada',
+      line2: 'from Domestic and Globally Sourced Ingredients',
+    },
+    naturalCarbon: {
+      line1: 'Non-toxic ingredients',
+      line2: 'Made from 100% natural activated coconut carbon',
+    },
+    socialProof: {
+      line1: 'No chemicals, fragrances, or additives',
+      line2: 'Used by thousands of cat owners across Canada',
+    },
+    moneyBack: {
+      line1: '30-Day Money-Back Guarantee',
+      line2: 'Not satisfied? Full refund, no questions asked',
+    },
   },
 
   // Hero Section
@@ -158,7 +182,7 @@ export const en = {
     },
     natural: {
       title: "100% Natural Ingredients",
-      description: "Made from coconut shell activated carbon with no synthetic fragrances or fillers."
+      description: "Made from coconut shell activated carbon with no synthetic fragrances or fillers. Non-toxic and chemicals-free."
     },
     worksWithAnyLitter: {
       title: "Works with Your Cat's Favorite Litter",
@@ -506,7 +530,7 @@ export const en = {
     },
     natural: {
       title: "100% Natural",
-      description: "No added fragrances; coconut shell activated carbon"
+      description: "No added chemicals; 100% natural activated coconut carbon"
     },
     universalFit: {
       title: "Universal Fit",
@@ -1351,7 +1375,7 @@ export const en = {
         title: "Odor Elimination Benchmarks",
         ammoniaReduction: "Independent lab data shows up to 92% ammonia reduction with activated carbon layers",
         adsorptionSpeed: "Porous carbon structure traps odor molecules in under 60 seconds",
-        safeUsage: "Fragrance-free, no added chemicals-designed for sensitive cats",
+        safeUsage: "No chemicals, fragrances, or additives - non-toxic for sensitive cats",
         refreshTiming: "Refresh carbon every scoop or litter top-up for consistent performance"
       }
     }

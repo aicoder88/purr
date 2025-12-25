@@ -101,7 +101,31 @@ export const fr = {
     perMonth: "≈ {price}/mois",
     saveVsOneTime: "Économisez {percent}% vs achat unique",
     trialSizeSection: "Essai GRATUIT - Frais d'envoi seulement",
-    quarterlyAutoshipSection: "S'abonner & économiser - Abonnement trimestriel"
+    quarterlyAutoshipSection: "S'abonner & économiser - Abonnement trimestriel",
+    stripeShippingNote: "le produit sera expédié à l'adresse 'EXPÉDIER À' de Stripe SUR LA PAGE SUIVANTE"
+  },
+
+  announcementBar: {
+    freeShipping: {
+      line1: 'Livraison gratuite',
+      line2: 'sur toutes les commandes avec abonnement',
+    },
+    madeInCanada: {
+      line1: 'Fabriqué au Canada',
+      line2: 'à partir d\'ingrédients locaux et mondiaux',
+    },
+    naturalCarbon: {
+      line1: 'Ingrédients non toxiques',
+      line2: 'Fabriqué à partir de carbone de noix de coco activé 100 % naturel',
+    },
+    socialProof: {
+      line1: 'Sans produits chimiques, parfums ou additifs',
+      line2: 'Utilisé par des milliers de propriétaires de chats au Canada',
+    },
+    moneyBack: {
+      line1: 'Garantie de remboursement de 30 jours',
+      line2: 'Pas satisfait ? Remboursement complet, sans questions',
+    },
   },
 
   // Hero Section
@@ -162,7 +186,7 @@ export const fr = {
     },
     natural: {
       title: "Naturel",
-      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution naturelle car la santé de votre chat passe en premier."
+      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution 100 % naturelle, sans produits chimiques ni parfums.",
     },
     costEffective: {
       title: "Économique",
@@ -190,7 +214,7 @@ export const fr = {
     },
     natural: {
       title: "100% Naturel",
-      description: "Fabriqué à partir de charbon actif naturel, sans produits chimiques nocifs."
+      description: "Fabriqué à partir de charbon actif 100 % naturel, sans produits chimiques ni additifs.",
     },
     universalFit: {
       title: "Adapté à Toutes les Litières",

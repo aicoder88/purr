@@ -275,11 +275,11 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
                   <Shield className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-                  Safe & Natural
+                  Non-toxic & Natural
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Military-grade activated carbon with no fragrances,
-                  chemicals, or harmful additives.
+                  Made from 100% natural activated coconut carbon. No chemicals,
+                  fragrances, or additives.
                 </p>
               </Card>
             </div>

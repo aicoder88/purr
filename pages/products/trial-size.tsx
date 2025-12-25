@@ -11,7 +11,7 @@ import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../
 import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
 
   const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
   const pageDescription = "Get your FREE 12g Purrify trial - just pay $4.76 shipping & handling (Canada) (or $6.39 to USA). Limited time offer, limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
@@ -228,6 +228,9 @@ export default function TrialSizePage() {
                       GET MY FREE TRIAL NOW
                     </Button>
                   </a>
+                  <p className="mt-4 text-xs font-medium text-gray-500 dark:text-gray-400 text-center italic">
+                    * {t.pricing?.stripeShippingNote}
+                  </p>
 
                   <div className="mt-4 space-y-2">
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -503,7 +506,7 @@ export default function TrialSizePage() {
                 </div>
               </div>
 
-              <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block mb-6">
+              <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block mb-4">
                 <Button
                   size="lg"
                   className="bg-white text-green-700 hover:bg-green-50 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
@@ -511,6 +514,9 @@ export default function TrialSizePage() {
                   GET MY FREE TRIAL - Just {trialPrice} S&H
                 </Button>
               </a>
+              <p className="mb-6 text-sm font-bold text-white/90 dark:text-white/80 max-w-lg mx-auto italic uppercase tracking-tight">
+                {t.pricing?.stripeShippingNote}
+              </p>
 
               <p className="text-sm opacity-75 mb-2">
                 ✓ 30-Day Money-Back Guarantee • ✓ Ships in 24 Hours • ✓ Limit One Per Customer

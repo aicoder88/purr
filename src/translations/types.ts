@@ -200,6 +200,30 @@ export interface TranslationType {
     saveVsOneTime: string;
     trialSizeSection: string;
     quarterlyAutoshipSection: string;
+    stripeShippingNote: string;
+  };
+
+  announcementBar: {
+    freeShipping: {
+      line1: string;
+      line2: string;
+    };
+    madeInCanada: {
+      line1: string;
+      line2: string;
+    };
+    naturalCarbon: {
+      line1: string;
+      line2: string;
+    };
+    socialProof: {
+      line1: string;
+      line2: string;
+    };
+    moneyBack: {
+      line1: string;
+      line2: string;
+    };
   };
 
   // Stores Section

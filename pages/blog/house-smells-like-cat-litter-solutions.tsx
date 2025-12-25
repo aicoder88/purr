@@ -225,8 +225,8 @@ export default function HouseSmellsLikeCatLitter() {
                 <ul className="text-green-800 dark:text-green-200 space-y-2">
                   <li>• Traps ammonia and sulfur compounds from urine</li>
                   <li>• Works for up to 7 days per application</li>
-                  <li>• No artificial fragrances or chemicals</li>
-                  <li>• Safe for cats and humans</li>
+                  <li>• No chemicals, fragrances, or additives</li>
+                  <li>• Non-toxic ingredients</li>
                 </ul>
               </div>
 

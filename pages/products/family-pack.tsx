@@ -257,6 +257,11 @@ export default function FamilyPackPage() {
                         </div>
                       )}
                     </Button>
+                    {familyAutoshipLink && (
+                      <p className="mt-3 text-[10px] text-center text-gray-400 dark:text-gray-500 font-bold italic uppercase tracking-tighter">
+                        * {t.pricing?.stripeShippingNote}
+                      </p>
+                    )}
                   </div>
 
                   <div className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900/30 p-6">
