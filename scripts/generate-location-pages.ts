@@ -366,9 +366,9 @@ const COMPETITOR_COMPARISON_DATA = [
 
 async function generateLocationPages() {
   console.log('🚀 Starting programmatic SEO page generation...');
-  
+
   const pagesDir = path.join(process.cwd(), 'pages', 'locations');
-  
+
   // Ensure locations directory exists
   if (!fs.existsSync(pagesDir)) {
     fs.mkdirSync(pagesDir, { recursive: true });
@@ -380,17 +380,17 @@ async function generateLocationPages() {
   for (const province of CANADIAN_CITIES) {
     for (const city of province.cities) {
       await generateCityPage(city, pagesDir);
-      _totalPages++;
+      totalPages++;
     }
   }
 
   // Generate province pages
   for (const province of CANADIAN_CITIES) {
     await generateProvincePage(province, pagesDir);
-    _totalPages++;
+    totalPages++;
   }
 
-  console.log(`✅ Generated ${_totalPages} location-based SEO pages`);
+  console.log(`✅ Generated ${totalPages} location-based SEO pages`);
   return totalPages;
 }
 
@@ -689,13 +689,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const filePath = path.join(baseDir, `${city.slug}.tsx`);
   fs.writeFileSync(filePath, pageContent);
-  
+
   console.log(`✅ Generated: /locations/${city.slug} (${city.name}, ${city.province})`);
 }
 
 async function generateProvincePage(province: Province, baseDir: string) {
   const totalPopulation = province.cities.reduce((sum, city) => sum + city.population, 0);
-    
+
   const pageContent = `import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -768,10 +768,10 @@ export const getStaticProps: GetStaticProps = async () => {
         name: '${province.name}',
         slug: '${province.slug}',
         cities: ${JSON.stringify(province.cities.map(city => ({
-          name: city.name,
-          slug: city.slug,
-          population: city.population
-        })))},
+    name: city.name,
+    slug: city.slug,
+    population: city.population
+  })))},
         totalPopulation: ${totalPopulation},
       },
     },
@@ -780,16 +780,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const filePath = path.join(baseDir, `${province.slug}.tsx`);
   fs.writeFileSync(filePath, pageContent);
-  
+
   console.log(`✅ Generated: /locations/${province.slug} (${province.name} Province)`);
 }
 
 // Generate problem/solution pages
 async function generateProblemSolutionPages() {
   console.log('🎯 Generating problem/solution content hub...');
-  
+
   const solutionsDir = path.join(process.cwd(), 'pages', 'solutions');
-  
+
   if (!fs.existsSync(solutionsDir)) {
     fs.mkdirSync(solutionsDir, { recursive: true });
   }
@@ -798,10 +798,10 @@ async function generateProblemSolutionPages() {
 
   for (const problem of PROBLEM_SOLUTION_KEYWORDS) {
     await generateProblemPage(problem, solutionsDir);
-    _totalPages++;
+    totalPages++;
   }
 
-  console.log(`✅ Generated ${_totalPages} problem/solution pages`);
+  console.log(`✅ Generated ${totalPages} problem/solution pages`);
   return totalPages;
 }
 
@@ -958,16 +958,16 @@ export default function ${problem.problem.replaceAll(/-/g, '')}Page() {
 
   const filePath = path.join(baseDir, `${problem.problem}.tsx`);
   fs.writeFileSync(filePath, pageContent);
-  
+
   console.log(`✅ Generated: /solutions/${problem.problem}`);
 }
 
 // Generate competitor comparison pages
 async function generateComparisonPages() {
   console.log('⚔️ Generating competitor comparison pages...');
-  
+
   const comparisonsDir = path.join(process.cwd(), 'pages', 'compare');
-  
+
   if (!fs.existsSync(comparisonsDir)) {
     fs.mkdirSync(comparisonsDir, { recursive: true });
   }
@@ -976,10 +976,10 @@ async function generateComparisonPages() {
 
   for (const competitor of COMPETITOR_COMPARISON_DATA) {
     await generateComparisonPage(competitor, comparisonsDir);
-    _totalPages++;
+    totalPages++;
   }
 
-  console.log(`✅ Generated ${_totalPages} competitor comparison pages`);
+  console.log(`✅ Generated ${totalPages} competitor comparison pages`);
   return totalPages;
 }
 
@@ -1180,7 +1180,7 @@ export default function ${competitor.competitor.replaceAll(/-/g, '')}ComparisonP
 
   const filePath = path.join(baseDir, `${competitor.competitor}.tsx`);
   fs.writeFileSync(filePath, pageContent);
-  
+
   console.log(`✅ Generated: /compare/${competitor.competitor}`);
 }
 
@@ -1188,42 +1188,43 @@ export default function ${competitor.competitor.replaceAll(/-/g, '')}ComparisonP
 async function main() {
   try {
     console.log('🚀 Starting SEO page generation...');
-    
+
     const locationPages = await generateLocationPages();
     const problemPages = await generateProblemSolutionPages();
     const comparisonPages = await generateComparisonPages();
-    
-        
+
+    const totalPages = locationPages + problemPages + comparisonPages;
+
     console.log('\n✅ SEO PAGE GENERATION COMPLETE!');
-    console.log(`📊 Total pages generated: ${_totalPages}`);
+    console.log(`📊 Total pages generated: ${totalPages}`);
     console.log(`🌍 Location pages: ${locationPages}`);
     console.log(`🎯 Problem/solution pages: ${problemPages}`);
     console.log(`⚔️ Comparison pages: ${comparisonPages}`);
     console.log('\n🎉 Ready to dominate search results!');
-    
+
     // Generate sitemap index for all new pages
     await generateSEOSitemap(totalPages);
-    
+
   } catch (error) {
     console.error('❌ Error generating SEO pages:', error);
     process.exit(1);
   }
 }
 
-async function generateSEOSitemap(_totalPages: number) {
+async function generateSEOSitemap(totalPages: number) {
   console.log('🗺️ Generating SEO sitemap...');
-  
+
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${CANADIAN_CITIES.flatMap(province => 
-  province.cities.map(city => `
+${CANADIAN_CITIES.flatMap(province =>
+    province.cities.map(city => `
   <url>
     <loc>https://www.purrify.ca/locations/${city.slug}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`)
-).join('')}
+  ).join('')}
 ${CANADIAN_CITIES.map(province => `
   <url>
     <loc>https://www.purrify.ca/locations/${province.slug}</loc>
@@ -1231,7 +1232,7 @@ ${CANADIAN_CITIES.map(province => `
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>`
-).join('')}
+  ).join('')}
 ${PROBLEM_SOLUTION_KEYWORDS.map(problem => `
   <url>
     <loc>https://www.purrify.ca/solutions/${problem.problem}</loc>
@@ -1239,7 +1240,7 @@ ${PROBLEM_SOLUTION_KEYWORDS.map(problem => `
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>`
-).join('')}
+  ).join('')}
 ${COMPETITOR_COMPARISON_DATA.map(competitor => `
   <url>
     <loc>https://www.purrify.ca/compare/${competitor.competitor}</loc>
@@ -1247,12 +1248,12 @@ ${COMPETITOR_COMPARISON_DATA.map(competitor => `
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`
-).join('')}
+  ).join('')}
 </urlset>`;
-  
+
   const sitemapPath = path.join(process.cwd(), 'public', 'sitemap-seo.xml');
   fs.writeFileSync(sitemapPath, sitemapContent);
-  
+
   console.log('✅ SEO sitemap generated: /sitemap-seo.xml');
 }
 
@@ -1262,7 +1263,7 @@ if (require.main === module) {
 
 export {
   generateLocationPages,
-  generateProblemSolutionPages, 
+  generateProblemSolutionPages,
   generateComparisonPages,
   CANADIAN_CITIES,
   PROBLEM_SOLUTION_KEYWORDS,

@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { getProductPrice } from '../../src/lib/pricing';
+import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
+import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 
 export default function TrialSizePage() {
   const { locale } = useTranslation();
@@ -19,6 +19,11 @@ export default function TrialSizePage() {
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial');
   const trialPriceString = trialPriceValue.toFixed(2);
+  const trialPrice = formatProductPrice('trial', locale);
+
+  // Schema.org structured data variables
+  const priceValidUntil = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; // 90 days from now
+  const availabilityUrl = 'https://schema.org/InStock';
 
   return (
     <>

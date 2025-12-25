@@ -12,6 +12,8 @@ interface EnhancedSEOPanelProps {
 export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSEOPanelProps) {
   const [internalLinks, setInternalLinks] = useState<InternalLinkSuggestion[]>([]);
   const [cannibalization, setCannibalization] = useState<KeywordCannibalization[]>([]);
+  const [loadingLinks, setLoadingLinks] = useState(false);
+  const [loadingCannibalization, setLoadingCannibalization] = useState(false);
 
   useEffect(() => {
     if (slug) {
@@ -22,7 +24,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
 
   const loadInternalLinkSuggestions = async () => {
     if (!slug) return;
-    
+
     setLoadingLinks(true);
     try {
       const response = await fetch('/api/admin/blog/seo-autofix', {
@@ -30,7 +32,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'suggest-internal-links', slug })
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         setInternalLinks(data.result || []);
@@ -44,7 +46,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
 
   const checkCannibalization = async () => {
     if (!slug) return;
-    
+
     setLoadingCannibalization(true);
     try {
       const response = await fetch('/api/admin/blog/seo-autofix', {
@@ -52,7 +54,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'check-cannibalization', slug })
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         setCannibalization(data.result || []);
@@ -69,11 +71,11 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
 
     try {
       toast.info('Applying fix...');
-      
+
       if (onApplyFix) {
         onApplyFix(suggestion.autoFixAction, {});
       }
-      
+
       toast.success('Fix applied successfully!');
     } catch (error) {
       toast.error('Failed to apply fix');
@@ -136,9 +138,8 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
               <div className="flex items-center space-x-3">
                 <div className="w-32 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div
-                    className={`h-2 rounded-full ${
-                      value >= 80 ? 'bg-green-600' : value >= 60 ? 'bg-yellow-600' : 'bg-red-600'
-                    }`}
+                    className={`h-2 rounded-full ${value >= 80 ? 'bg-green-600' : value >= 60 ? 'bg-yellow-600' : 'bg-red-600'
+                      }`}
                     style={{ width: `${value}%` }}
                   />
                 </div>
@@ -166,13 +167,12 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
               <div className="flex-1">
                 <p className="text-sm text-gray-900 dark:text-gray-100">{suggestion.message}</p>
                 <div className="flex items-center space-x-2 mt-2">
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    suggestion.priority === 'high'
+                  <span className={`text-xs px-2 py-0.5 rounded-full ${suggestion.priority === 'high'
                       ? 'bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300'
                       : suggestion.priority === 'medium'
-                      ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300'
-                      : 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
-                  }`}>
+                        ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300'
+                        : 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                    }`}>
                     {suggestion.priority}
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400 capitalize">

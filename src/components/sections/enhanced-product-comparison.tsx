@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { useState } from 'react';
 
 import { useTranslation } from "../../lib/translation-context";
 import { Check, Star, ArrowRight } from 'lucide-react';
@@ -55,6 +56,7 @@ type ProductCard = {
 
 export function EnhancedProductComparison() {
   const { t, locale } = useTranslation();
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');

@@ -46,7 +46,7 @@ export class KeywordOptimizer {
         competition: this.normalizeCompetition(row['Competitive Density'] || row['Competition'] || row['competition'] || 'medium'),
         difficulty: parseInt(row['Keyword Difficulty'] || row['Difficulty'] || row['difficulty'] || '50'),
         category: row['Topic'] || row['Category'] || row['category'] || 'general'
-      })).filter(k => k.term); // Filter out empty keywords
+      })).filter((k: Keyword) => k.term); // Filter out empty keywords
 
       return this.keywords;
     } catch (error) {
@@ -65,7 +65,7 @@ export class KeywordOptimizer {
    * Filter keywords by category
    */
   getKeywordsByCategory(category: string): Keyword[] {
-    return this.keywords.filter(k => 
+    return this.keywords.filter(k =>
       k.category.toLowerCase() === category.toLowerCase()
     );
   }
@@ -97,8 +97,8 @@ export class KeywordOptimizer {
    * Suggest keywords based on content and category
    */
   async suggestKeywords(
-    content: string, 
-    category?: string, 
+    content: string,
+    category?: string,
     limit: number = 10
   ): Promise<KeywordSuggestion[]> {
     if (this.keywords.length === 0) {
@@ -109,13 +109,13 @@ export class KeywordOptimizer {
 
     // Filter by category if provided
     if (category) {
-      relevantKeywords = relevantKeywords.filter(k => 
+      relevantKeywords = relevantKeywords.filter(k =>
         k.category.toLowerCase() === category.toLowerCase()
       );
     }
 
     // Prioritize low/medium competition
-    relevantKeywords = relevantKeywords.filter(k => 
+    relevantKeywords = relevantKeywords.filter(k =>
       k.competition === 'low' || k.competition === 'medium'
     );
 
@@ -173,12 +173,12 @@ export class KeywordOptimizer {
 
     // Apply filters
     if (category) {
-      relevantKeywords = relevantKeywords.filter(k => 
+      relevantKeywords = relevantKeywords.filter(k =>
         k.category.toLowerCase() === category.toLowerCase()
       );
     }
 
-    relevantKeywords = relevantKeywords.filter(k => 
+    relevantKeywords = relevantKeywords.filter(k =>
       k.searchVolume >= minSearchVolume &&
       k.difficulty <= maxDifficulty &&
       (k.competition === 'low' || k.competition === 'medium')
@@ -242,7 +242,7 @@ export class KeywordOptimizer {
    * Validate keyword usage in content
    */
   async validateKeywordUsage(
-    content: string, 
+    content: string,
     targetKeywords: string[]
   ): Promise<ValidationResult> {
     const issues: string[] = [];
@@ -296,11 +296,11 @@ export class KeywordOptimizer {
   calculateKeywordDensity(content: string, keyword: string): number {
     const words = content.toLowerCase().split(/\s+/).filter(w => w.length > 0);
     const keywordWords = keyword.toLowerCase().split(/\s+/);
-    
+
     if (words.length === 0) return 0;
 
     let occurrences = 0;
-    
+
     // For multi-word keywords, search for the phrase
     if (keywordWords.length > 1) {
       const contentText = content.toLowerCase();
@@ -329,14 +329,14 @@ export class KeywordOptimizer {
     // 1. Exact phrase match in content (40 points)
     if (contentLower.includes(keywordLower)) {
       score += 40;
-      
+
       // Bonus for multiple exact matches
       const exactMatches = this.countOccurrences(content, keyword);
       score += Math.min(exactMatches * 5, 15);
     }
 
     // 2. Individual keyword words present (25 points)
-    const wordsPresent = keywordWords.filter(word => 
+    const wordsPresent = keywordWords.filter(word =>
       contentLower.includes(word)
     ).length;
     score += (wordsPresent / keywordWords.length) * 25;
@@ -373,7 +373,7 @@ export class KeywordOptimizer {
   private calculateSemanticSimilarity(content: string, keyword: string): number {
     const contentLower = content.toLowerCase();
     const relatedTerms = this.getRelatedTerms(keyword);
-    
+
     let matchCount = 0;
     for (const term of relatedTerms) {
       if (contentLower.includes(term.toLowerCase())) {
@@ -398,7 +398,7 @@ export class KeywordOptimizer {
     };
 
     const keywordLower = keyword.toLowerCase();
-    
+
     // Find related terms
     for (const [key, terms] of Object.entries(relatedTermsMap)) {
       if (keywordLower.includes(key)) {
@@ -430,7 +430,7 @@ export class KeywordOptimizer {
    * Get recommended placements for keyword
    */
   private getRecommendedPlacements(
-    content: string, 
+    content: string,
     keyword: string
   ): ('title' | 'h1' | 'meta-description' | 'content')[] {
     const placements: ('title' | 'h1' | 'meta-description' | 'content')[] = [];
@@ -489,7 +489,7 @@ export class KeywordOptimizer {
 
     for (const line of lines) {
       const trimmed = line.trim();
-      
+
       // Skip headings
       if (trimmed.startsWith('#')) {
         foundContent = true;
@@ -499,7 +499,7 @@ export class KeywordOptimizer {
       // Start collecting paragraph
       if (foundContent && trimmed.length > 0) {
         paragraph += trimmed + ' ';
-        
+
         // Stop at first paragraph break
         if (paragraph.length > 100) {
           break;
