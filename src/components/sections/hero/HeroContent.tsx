@@ -1,6 +1,7 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
+import { heroTestimonials } from "@/data/hero-testimonials";
 
 interface HeroContentProps {
   t: {
@@ -51,20 +52,68 @@ const SocialProofAvatars = () => (
   </div>
 );
 
-const StarRating = () => (
-  <div className="flex text-yellow-400 dark:text-yellow-300 gap-0.5">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <svg key={`star-${star}`} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ))}
-  </div>
-);
+const StarRating = ({ rating = 5 }: { rating?: number }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+
+  return (
+    <div className="flex text-yellow-400 dark:text-yellow-300 gap-0.5">
+      {[1, 2, 3, 4, 5].map((star) => {
+        if (star <= fullStars) {
+          // Full star
+          return (
+            <svg key={`star-${star}`} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          );
+        } else if (star === fullStars + 1 && hasHalfStar) {
+          // Half star
+          return (
+            <svg key={`star-${star}`} className="w-5 h-5" viewBox="0 0 20 20">
+              <defs>
+                <linearGradient id="half-star">
+                  <stop offset="50%" stopColor="currentColor" className="text-yellow-400 dark:text-yellow-300" />
+                  <stop offset="50%" stopColor="currentColor" className="text-gray-300 dark:text-gray-600" />
+                </linearGradient>
+              </defs>
+              <path fill="url(#half-star)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          );
+        } else {
+          // Empty star
+          return (
+            <svg key={`star-${star}`} className="w-5 h-5 fill-current text-gray-300 dark:text-gray-600" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          );
+        }
+      })}
+    </div>
+  );
+};
 
 export const HeroContent = ({ t }: HeroContentProps) => {
   const handleScrollToProducts = useCallback(() => {
     scrollToSection("products");
   }, []);
+
+  // Rotating testimonials - cycle every 1.5 seconds
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
+        setIsTransitioning(false);
+      }, 300); // Fade out duration
+    }, 1500); // Rotate every 1.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentTestimonial = heroTestimonials[currentTestimonialIndex];
 
   const headlineRaw = t.hero.eliminateCatOdors;
   const emphasisPhrase = 'And Why Cat Owners Care';
@@ -92,11 +141,14 @@ export const HeroContent = ({ t }: HeroContentProps) => {
 
   return (
     <div className="space-y-2 md:space-y-3 relative z-10">
-      {/* Social Proof Badge - Moved to top */}
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up">
-        <StarRating />
+      {/* Social Proof Badge - Rotating Testimonials */}
+      <div
+        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up transition-opacity duration-300"
+        style={{ opacity: isTransitioning ? 0.5 : 1 }}
+      >
+        <StarRating rating={currentTestimonial.stars} />
         <span className="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">
-          {t.hero.socialProof.ratingText}
+          {currentTestimonial.rating} - '{currentTestimonial.quote}'
         </span>
       </div>
 
