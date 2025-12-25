@@ -1,4 +1,7 @@
+'use client'
+
 import { Check, AlertCircle, Loader2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export type AutoSaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
@@ -14,6 +17,18 @@ interface AutoSaveIndicatorProps {
 }
 
 export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    // Set initial time
+    setCurrentTime(Date.now());
+    // Update every second
+    const interval = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const formatTime = (date: Date): string => {
     return date.toLocaleTimeString('en-US', {
       hour: '2-digit',
@@ -23,7 +38,7 @@ export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
   };
 
   const getTimeSince = (date: Date): string => {
-    const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+    const seconds = Math.floor((currentTime - date.getTime()) / 1000);
     if (seconds < 60) return `${seconds}s ago`;
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) return `${minutes}m ago`;

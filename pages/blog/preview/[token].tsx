@@ -103,7 +103,7 @@ export default function PreviewPage({ post, isPreview }: PreviewPageProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params}) => {
   const token = params?.token as string;
 
   if (!token) {

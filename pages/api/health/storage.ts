@@ -161,8 +161,7 @@ async function checkJSONFiles() {
   };
 }
 
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(_req: NextApiRequest,
   res: NextApiResponse<StorageHealthCheck>
 ) {
   try {

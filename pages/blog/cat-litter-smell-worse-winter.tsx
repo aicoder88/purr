@@ -8,7 +8,6 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 // High-quality images for winter, closed windows, and fresh solutions
 const heroImage = '/optimized/cat-clean-home.jpg';
 const closedWindowImage = '/optimized/house-smells-cat-litter.webp';
-const ventilationImage = '/optimized/happy-cat-home.jpg';
 const solutionImage = '/optimized/happy-cat-fresh-home.png';
 
 export default function CatLitterSmellWorseWinter() {

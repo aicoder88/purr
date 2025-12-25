@@ -73,10 +73,12 @@ export function ScarcityIndicator({
   }, [productId]);
 
   useEffect(() => {
+     
     setInventory(INVENTORY_DATA);
-    
+
     // Simulate recent sales activity
     const salesCount = 12 + Math.floor(Math.random() * 8);
+     
     setRecentSales(salesCount);
 
     // Update recent sales every 30 seconds
@@ -299,10 +301,12 @@ export function StockMovementIndicator({ productId }: { productId: string }) {
     // Simulate stock movement based on product popularity
     const movements = ['high', 'medium', 'low'] as const;
     const randomMovement = movements[Math.floor(Math.random() * movements.length)];
+     
     setMovement(randomMovement);
-    
+
     // Simulate view count
     const views = 127 + Math.floor(Math.random() * 73);
+     
     setViewCount(views);
 
     // Update periodically

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Zap, TrendingUp, Globe, Server, Users, Clock, DollarSign, Target, Rocket, Shield, Brain } from "lucide-react";
 import Head from "next/head";

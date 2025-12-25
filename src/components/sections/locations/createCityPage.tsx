@@ -385,7 +385,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               What {profile.name} Cat Owners Say
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => {
+              {testimonials.map((testimonial, _index) => {
                 const fullStars = Math.floor(testimonial.stars);
                 const hasHalfStar = testimonial.stars % 1 !== 0;
 

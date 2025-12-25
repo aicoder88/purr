@@ -380,17 +380,17 @@ async function generateLocationPages() {
   for (const province of CANADIAN_CITIES) {
     for (const city of province.cities) {
       await generateCityPage(city, pagesDir);
-      totalPages++;
+      _totalPages++;
     }
   }
 
   // Generate province pages
   for (const province of CANADIAN_CITIES) {
     await generateProvincePage(province, pagesDir);
-    totalPages++;
+    _totalPages++;
   }
 
-  console.log(`✅ Generated ${totalPages} location-based SEO pages`);
+  console.log(`✅ Generated ${_totalPages} location-based SEO pages`);
   return totalPages;
 }
 
@@ -695,8 +695,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 async function generateProvincePage(province: Province, baseDir: string) {
   const totalPopulation = province.cities.reduce((sum, city) => sum + city.population, 0);
-  const cityList = province.cities.map(city => city.name).join(', ');
-  
+    
   const pageContent = `import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -799,10 +798,10 @@ async function generateProblemSolutionPages() {
 
   for (const problem of PROBLEM_SOLUTION_KEYWORDS) {
     await generateProblemPage(problem, solutionsDir);
-    totalPages++;
+    _totalPages++;
   }
 
-  console.log(`✅ Generated ${totalPages} problem/solution pages`);
+  console.log(`✅ Generated ${_totalPages} problem/solution pages`);
   return totalPages;
 }
 
@@ -977,10 +976,10 @@ async function generateComparisonPages() {
 
   for (const competitor of COMPETITOR_COMPARISON_DATA) {
     await generateComparisonPage(competitor, comparisonsDir);
-    totalPages++;
+    _totalPages++;
   }
 
-  console.log(`✅ Generated ${totalPages} competitor comparison pages`);
+  console.log(`✅ Generated ${_totalPages} competitor comparison pages`);
   return totalPages;
 }
 
@@ -1194,10 +1193,9 @@ async function main() {
     const problemPages = await generateProblemSolutionPages();
     const comparisonPages = await generateComparisonPages();
     
-    const totalPages = locationPages + problemPages + comparisonPages;
-    
+        
     console.log('\n✅ SEO PAGE GENERATION COMPLETE!');
-    console.log(`📊 Total pages generated: ${totalPages}`);
+    console.log(`📊 Total pages generated: ${_totalPages}`);
     console.log(`🌍 Location pages: ${locationPages}`);
     console.log(`🎯 Problem/solution pages: ${problemPages}`);
     console.log(`⚔️ Comparison pages: ${comparisonPages}`);
@@ -1212,7 +1210,7 @@ async function main() {
   }
 }
 
-async function generateSEOSitemap(totalPages: number) {
+async function generateSEOSitemap(_totalPages: number) {
   console.log('🗺️ Generating SEO sitemap...');
   
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>

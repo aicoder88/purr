@@ -13,7 +13,7 @@ async function login(page: Page) {
 }
 
 test.describe('Security: CSRF Protection (Task 10.3)', () => {
-  test('POST requests without proper origin are rejected', async ({ page, context }) => {
+  test('POST requests without proper origin are rejected', async ({ page}) => {
     await login(page);
     
     // Try to make a POST request with wrong origin
@@ -54,7 +54,7 @@ test.describe('Security: CSRF Protection (Task 10.3)', () => {
     expect(response.status()).toBe(401);
   });
 
-  test('state-changing operations require valid session', async ({ page, context }) => {
+  test('state-changing operations require valid session', async ({ page}) => {
     // Create a new context without session
     const newContext = await page.context().browser()?.newContext();
     if (!newContext) return;

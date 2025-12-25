@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { AlertTriangle, RefreshCw, Home, Mail } from 'lucide-react';
 
@@ -15,8 +17,8 @@ interface State {
 
 // Default fallback component
 function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => void }) {
-  const errorId = React.useMemo(() => 
-    Math.random().toString(36).substring(2, 15), []
+  const [errorId] = React.useState(() =>
+    Math.random().toString(36).substring(2, 15)
   );
 
   const navigateHome = React.useCallback(() => {

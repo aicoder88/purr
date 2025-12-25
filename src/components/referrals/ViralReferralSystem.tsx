@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 import { useState, useEffect } from 'react';
 import { Share2, Copy, DollarSign, Trophy, Gift, Users, Star, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';

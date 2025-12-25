@@ -119,7 +119,7 @@ export default function TagsPage({ tags: initialTags }: Readonly<TagsPageProps>)
       setIsAdding(false);
       setNewTag({ name: '', slug: '' });
       toast.success('Tag created');
-    } catch (error) {
+    } catch {
       toast.error('Failed to create tag');
     }
   };

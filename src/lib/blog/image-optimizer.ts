@@ -77,7 +77,7 @@ export class ImageOptimizer {
   /**
    * Generate responsive image srcset string
    */
-  generateSrcSet(optimizedPaths: string[], format: 'avif' | 'webp' | 'jpg'): string {
+  generateSrcSet(optimizedPaths: string[], _format: 'avif' | 'webp' | 'jpg'): string {
     return optimizedPaths
       .map((path, index) => {
         const size = this.sizes[index];

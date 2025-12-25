@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/container";
-import SectionHeader from "../ui/section-header";
 import Image from 'next/image';
 import { useTranslation } from "../../lib/translation-context";
 import Link from "next/link";

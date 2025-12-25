@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { SITE_NAME } from '../../../src/lib/constants';
 import { ContentStore } from '../../../src/lib/blog/content-store';
-import { SEOGenerator } from '../../../src/lib/blog/seo-generator';
+
 import type { BlogPost, Category } from '../../../src/types/blog';
 
 interface CategoryArchiveProps {
@@ -165,8 +165,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const currentLocale = (locale || 'en') as string;
 
   const store = new ContentStore();
-  const seoGenerator = new SEOGenerator();
-
+  
   // Get category
   const categories = await store.getCategories();
   const category = categories.find((c) => c.slug === slug);

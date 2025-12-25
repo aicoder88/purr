@@ -12,7 +12,7 @@ const CityPage = ({ citySlug }: InferGetStaticPropsType<typeof getStaticProps>) 
 );
 
 // Top 50 Canadian cities by population - pre-rendered at build time for SEO
-const HIGH_PRIORITY_CITY_SLUGS: string[] = [
+const HIGH_PRIORITY_CITY_SLUGS = [
   'toronto',
   'montreal',
   'calgary',

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trash2, FileText, Calendar, Tag, Folder, X } from 'lucide-react';
+import { Trash2, FileText, Tag, Folder, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 export type BulkOperation =

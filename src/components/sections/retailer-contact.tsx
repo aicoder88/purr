@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
-import { EMAILJS_CONFIG, isEmailJSConfigured } from '../../lib/emailjs-config';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
 
 export function RetailerContact() {

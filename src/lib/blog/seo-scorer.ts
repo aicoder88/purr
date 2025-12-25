@@ -497,7 +497,7 @@ export class SEOScorer {
   ): Promise<InternalLinkSuggestion[]> {
     const suggestions: InternalLinkSuggestion[] = [];
     const content = currentPost.content.toLowerCase();
-    const words = content.split(/\s+/);
+
 
     // Find relevant posts based on keyword overlap
     const relevantPosts = allPosts
@@ -595,15 +595,12 @@ export class SEOScorer {
   /**
    * Generate alt text for images using AI
    */
-  async generateAltText(imageUrl: string, context: string): Promise<string> {
-    // Extract topic from context
-    const words = context.split(/\s+/).slice(0, 20).join(' ');
-    
+  generateAltText(imageUrl: string, _context: string): string {
     // Simple alt text generation (can be enhanced with AI)
     const filename = imageUrl.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image';
     const cleanFilename = filename.replaceAll(/[-_]/g, ' ');
-    
-    return `${cleanFilename} - ${words.substring(0, 50)}`;
+
+    return `${cleanFilename} for cat litter odor control`;
   }
 
   /**

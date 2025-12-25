@@ -27,7 +27,7 @@ const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => (
   loading: () => sectionSkeleton('h-64')
 });
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
-import { formatProductPrice, getProductPrice, getPriceRange } from '../src/lib/pricing';
+import { getProductPrice, getPriceRange } from '../src/lib/pricing';
 import { useTranslation } from '../src/lib/translation-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';

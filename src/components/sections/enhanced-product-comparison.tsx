@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+
 import { useTranslation } from "../../lib/translation-context";
 import { Check, Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';

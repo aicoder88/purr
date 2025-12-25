@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import Image from 'next/image';
-import { createButtonClasses, GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme-utils";
+import { GRADIENTS, COLORS, TRANSITIONS } from "@/lib/theme-utils";
 import { createStaggeredAnimation } from "@/lib/component-utils";
 import { TranslationType } from '../../../translations/types';
 import { getPaymentLink } from '../../../lib/payment-links';

@@ -45,16 +45,18 @@ export function TranslationProvider({
     return translations[locale] || translations.en;
   }, [locale]);
 
-  // Handle hydration and language changes
+  // Handle hydration
   useEffect(() => {
     // Mark as hydrated on first client-side render
-    if (!isHydrated) {
-      setIsHydrated(true);
-    }
+     
+    setIsHydrated(true);
+  }, []);
 
-    // Update locale only after hydration to prevent mismatches
+  // Update locale when normalized locale changes
+  useEffect(() => {
     const newLocale = normalizeLocale;
-    if (newLocale !== locale) {
+    if (isHydrated && newLocale !== locale) {
+       
       setLocale(newLocale);
     }
   }, [normalizeLocale, locale, isHydrated]);
@@ -118,10 +120,11 @@ export function useTranslation() {
 // Helper hook for checking if component is hydrated
 export function useIsHydrated() {
   const [isHydrated, setIsHydrated] = useState(false);
-  
+
   useEffect(() => {
+     
     setIsHydrated(true);
   }, []);
-  
+
   return isHydrated;
 }

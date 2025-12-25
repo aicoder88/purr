@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo';
-import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Link from 'next/link';
 import Image from 'next/image';
 

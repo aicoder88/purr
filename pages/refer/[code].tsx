@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { useState, useEffect } from 'react';
-import { User, Gift, Star, ArrowRight, Heart, CheckCircle, Clock, Shield } from 'lucide-react';
+import { Gift, Star, ArrowRight, Heart, CheckCircle, Clock, Shield } from 'lucide-react';
 import { Button } from '../../src/components/ui/button';
 import { Card } from '../../src/components/ui/card';
 import { Badge } from '../../src/components/ui/badge';

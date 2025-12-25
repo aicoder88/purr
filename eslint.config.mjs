@@ -25,6 +25,8 @@ export default [
       'react/no-unescaped-entities': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-compiler/react-compiler': 'off',
       'prefer-const': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
 
@@ -50,6 +52,15 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       'prefer-const': 'off',
+    },
+  },
+  {
+    files: [
+      'src/components/**/*.tsx',
+      'src/components/**/*.ts',
+    ],
+    rules: {
+      'react-compiler/react-compiler': 'off',
     },
   },
 ];

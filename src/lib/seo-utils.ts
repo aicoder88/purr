@@ -1,5 +1,5 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
-import { getProductPrice, getPriceRange, formatProductPrice } from './pricing';
+import { getProductPrice, getPriceRange} from './pricing';
 
 // SEO utilities for comprehensive structured data and multilingual support
 

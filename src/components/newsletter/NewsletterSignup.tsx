@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Check, X, Gift, Sparkles, Bell, Users } from 'lucide-react';
+import { Mail, X, Gift, Sparkles, Bell, Users } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';
 import { createButtonClasses, createCardClasses, GRADIENTS, COLORS, TRANSITIONS } from '@/lib/theme-utils';

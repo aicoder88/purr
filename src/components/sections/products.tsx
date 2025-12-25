@@ -10,16 +10,6 @@ import { ProductCard } from "./products/ProductCard";
 
 // Dynamically import SectionHeader to reduce initial bundle size
 const SectionHeader = dynamic(() => import("../ui/section-header"), { ssr: true });
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  size: string;
-}
-
 export function Products() {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, RefreshCw, Check, X, FileText, History } from 'lucide-react';
+import { Sparkles, RefreshCw, Check, X, History } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import { toast } from 'sonner';
 

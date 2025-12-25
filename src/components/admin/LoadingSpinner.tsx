@@ -1,3 +1,5 @@
+'use client'
+
 import { Loader2 } from 'lucide-react';
 
 interface LoadingSpinnerProps {
@@ -39,13 +41,16 @@ export default function LoadingSpinner({
 
 // Skeleton loader for content
 export function SkeletonLoader({ lines = 3 }: { lines?: number }) {
+  // Fixed widths for consistent rendering
+  const widths = [85, 92, 78, 88, 95, 73, 90];
+
   return (
     <div className="animate-pulse space-y-3">
       {Array.from({ length: lines }).map((_, i) => (
         <div
           key={i}
           className="h-4 bg-gray-200 dark:bg-gray-700 rounded"
-          style={{ width: `${Math.random() * 30 + 70}%` }}
+          style={{ width: `${widths[i % widths.length]}%` }}
         />
       ))}
     </div>

@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'node:path';
 import { ContentStore } from './content-store';
-import type { BlogPost } from '@/types/blog';
+import type {} from '@/types/blog';
 
 export class SitemapGenerator {
   private store: ContentStore;

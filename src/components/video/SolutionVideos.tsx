@@ -1,4 +1,4 @@
-import { VideoPlayer, VideoGallery } from './VideoPlayer';
+import { VideoPlayer} from './VideoPlayer';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 

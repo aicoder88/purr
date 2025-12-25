@@ -62,7 +62,7 @@ const UpsellPage = () => {
 
   useEffect(() => {
     // Get customer email from URL params or sessionStorage
-    const { email, session_id } = router.query;
+    const { email} = router.query;
     if (email && typeof email === 'string') {
       setCustomerEmail(email);
       sessionStorage.setItem('upsell_customer_email', email);

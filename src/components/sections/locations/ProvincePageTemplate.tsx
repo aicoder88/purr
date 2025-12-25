@@ -33,7 +33,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
 
   // Group cities by region for better organization
   const majorCities = cities.filter(city => city.metroPopulation && city.metroPopulation > 100000);
-  const otherCities = cities.filter(city => !city.metroPopulation || city.metroPopulation <= 100000);
+
 
   useEffect(() => {
     safeTrackEvent('view_province_page', {

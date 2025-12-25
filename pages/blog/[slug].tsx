@@ -61,8 +61,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     const { SEOGenerator } = await import('../../src/lib/blog/seo-generator');
 
     const store = new ContentStore();
-    const seoGen = new SEOGenerator();
-    const currentLocale = locale || 'en';
+        const currentLocale = locale || 'en';
 
     let blogPost = await store.getPost(params.slug, currentLocale);
 

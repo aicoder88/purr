@@ -1,3 +1,5 @@
+'use client'
+
 interface BarChartProps {
   data: { label: string; value: number; color?: string }[];
   title: string;
@@ -118,32 +120,38 @@ interface PieChartProps {
 
 export function PieChart({ data, title, className = "" }: PieChartProps) {
   const total = data.reduce((sum, item) => sum + item.value, 0);
-  let currentAngle = 0;
-  
+
+  // Calculate cumulative angles for each slice
+  const slices = data.map((item, index) => {
+    const percentage = (item.value / total) * 100;
+    const angle = (percentage / 100) * 360;
+    const startAngle = data.slice(0, index).reduce((sum, prevItem) => {
+      const prevPercentage = (prevItem.value / total) * 100;
+      return sum + (prevPercentage / 100) * 360;
+    }, 0);
+    return { ...item, angle, startAngle };
+  });
+
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
       <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
       <div className="flex items-center justify-center space-x-8">
         <div className="relative">
           <svg width="150" height="150" className="transform -rotate-90">
-            {data.map((item, index) => {
-              const percentage = (item.value / total) * 100;
-              const angle = (percentage / 100) * 360;
-              const x1 = 75 + 60 * Math.cos((currentAngle * Math.PI) / 180);
-              const y1 = 75 + 60 * Math.sin((currentAngle * Math.PI) / 180);
-              const x2 = 75 + 60 * Math.cos(((currentAngle + angle) * Math.PI) / 180);
-              const y2 = 75 + 60 * Math.sin(((currentAngle + angle) * Math.PI) / 180);
-              
-              const largeArc = angle > 180 ? 1 : 0;
+            {slices.map((slice, index) => {
+              const x1 = 75 + 60 * Math.cos((slice.startAngle * Math.PI) / 180);
+              const y1 = 75 + 60 * Math.sin((slice.startAngle * Math.PI) / 180);
+              const x2 = 75 + 60 * Math.cos(((slice.startAngle + slice.angle) * Math.PI) / 180);
+              const y2 = 75 + 60 * Math.sin(((slice.startAngle + slice.angle) * Math.PI) / 180);
+
+              const largeArc = slice.angle > 180 ? 1 : 0;
               const pathData = `M 75 75 L ${x1} ${y1} A 60 60 0 ${largeArc} 1 ${x2} ${y2} Z`;
-              
-              currentAngle += angle;
-              
+
               return (
                 <path
                   key={index}
                   d={pathData}
-                  fill={item.color}
+                  fill={slice.color}
                   className="drop-shadow-sm"
                 />
               );

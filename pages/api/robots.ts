@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   // Always use canonical domain with localized paths (no subdomains)
   const canonicalDomain = 'https://www.purrify.ca';
 

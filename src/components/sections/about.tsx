@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
-import dynamic from "next/dynamic";
 import { useTranslation } from "../../lib/translation-context";
 import Link from "next/link";
 

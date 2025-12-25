@@ -120,7 +120,7 @@ export default function InvestorRelations() {
                 </button>
 
                 <div className="flex space-x-1">
-                  {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, index) => (
+                  {['overview', 'problem', 'solution', 'traction', 'financials', 'team', 'investment'].map((tab, _index) => (
                     <div
                       key={tab}
                       className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeTab === tab ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
