@@ -7,43 +7,49 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, ShieldCheck, Truck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { ProductFAQ } from '../../src/components/product/ProductFAQ';
+import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import { cn } from '@/lib/utils';
 
-export default function RegularSizePage() {
+export default function StandardSizePage() {
   const { t, locale } = useTranslation();
 
-  const productKey = 'family'; // 120g Regular Size
-  const productName = t.products?.["purrify-120g"]?.name || "Purrify Regular Size (120g)";
+  const productKey = 'standard'; // 50g Standard Size
+  const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
   const productPrice = formatProductPrice(productKey, locale);
   const productPriceValue = getProductPrice(productKey).toFixed(2);
 
-  const pageTitle = `${productName} - Maximum Odor Control for Multi-Cat Homes`;
-  const pageDescription = t.products?.["purrify-120g"]?.description || "Perfect for homes with 2+ cats. Double-strength 120g Regular Size eliminates even the strongest ammonia smells instantly.";
+  const pageTitle = `${productName} - Ideal Odor Control for Single-Cat Homes`;
+  const pageDescription = t.products?.["purrify-50g"]?.description || "Perfect for homes with 1 cat. 50g Standard Size eliminates ammonia smells instantly using activated carbon.";
 
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
 
-  const singleCheckoutUrl = getPaymentLink('familySingle') || '#';
-  const autoshipCheckoutUrl = getPaymentLink('familyAutoship') || '#';
+  const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
+  const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
   // Optimized images
-  const heroImage = "/optimized/regular_size_hero.png";
-  const lifestyleImage = "/optimized/regular_size_lifestyle_cat.png";
+  const heroImage = "/optimized/60g.webp";
+  const lifestyleImage = "/optimized/60g.webp";
   const solutionImage = "/optimized/regular_size_solution.png";
-  const productImage = "/optimized/140g.webp";
+  const productImage = "/optimized/60g.webp";
 
   const benefits = [
-    "Perfect for multi-cat households (2+ cats)",
-    "3 months of continuous odor control",
-    "Double-strength activated carbon formula",
+    "Ideal for single-cat households",
+    "4-6 weeks of continuous odor control",
+    "Advanced activated carbon formula",
     "100% natural, fragrance-free, and safe",
-    "Works instantly on even the strongest smells"
+    "Works instantly on litter box smells"
   ];
+
+  const productFaqType = 'standard';
+  const productFaqName = "Standard Size (50g)";
+
 
   return (
     <>
@@ -176,6 +182,10 @@ export default function RegularSizePage() {
                   </div>
                 </div>
 
+                <div className="pt-2">
+                  <BNPLBadge price={getProductPrice(productKey)} locale={locale} />
+                </div>
+
                 {/* Quick Trust */}
                 <div className="flex flex-wrap gap-6 pt-2">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -188,6 +198,15 @@ export default function RegularSizePage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Product-Specific FAQ */}
+        <section className="py-12 bg-white/30 dark:bg-gray-900/30">
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <ProductFAQ productType={productFaqType} productName={productFaqName} />
             </div>
           </Container>
         </section>

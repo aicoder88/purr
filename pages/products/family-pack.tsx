@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, HelpCircle } from 'lucide-react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -11,6 +11,8 @@ import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { ProductFAQ } from '../../src/components/product/ProductFAQ';
+import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
@@ -172,6 +174,7 @@ export default function FamilyPackPage() {
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       + {t.pricing?.shippingCalculated || 'Shipping calculated at checkout'}
                     </p>
+                    <BNPLBadge price={familyPriceAmount} locale={locale} />
                   </div>
                 </div>
 
@@ -323,6 +326,15 @@ export default function FamilyPackPage() {
           </Container>
         </section>
 
+        {/* Product-Specific FAQ */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-900/30">
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <ProductFAQ productType="family" productName="Regular Size (120g)" />
+            </div>
+          </Container>
+        </section>
+
         {/* Value Proposition Section */}
         <section className="py-16 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 cv-auto cis-720">
           <Container>
@@ -345,7 +357,7 @@ export default function FamilyPackPage() {
                   Two full months of odor control for multi-cat households
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">25%</span>
@@ -355,7 +367,7 @@ export default function FamilyPackPage() {
                   Save 25% compared to buying two standard sizes
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white dark:text-gray-100 font-bold text-xl">3+</span>
@@ -367,38 +379,43 @@ export default function FamilyPackPage() {
               </div>
             </div>
 
-            {/* Value Comparison */}
             <div className="mt-12 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-8">
               <h3 className="font-heading text-2xl font-bold text-center mb-6 text-gray-900 dark:text-gray-50">
-                Family Pack Savings Calculator
+                Family Pack Value Calculator
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="text-center">
                   <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Two Standard Sizes (50g each)
+                    Standard Size (50g)
                   </div>
                   <div className="text-2xl font-bold text-red-600 dark:text-red-400 mb-2">
-                    {doubleStandardPrice}
+                    {standardPrice}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {`${standardPrice} × 2 = ${doubleStandardPrice}`}
+                    Cost per 10g: {(standardPriceAmount / 5).toFixed(2)}
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    One Family Pack (120g)
+                    Family Pack (120g)
                   </div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
                     {familyPrice}
                   </div>
                   <div className="text-sm text-green-600 dark:text-green-400 font-semibold">
-                    {locale === 'fr'
-                      ? `Vous économisez ${savingsComparedToStandard} !`
-                      : `You Save ${savingsComparedToStandard}!`}
+                    Cost per 10g: {(familyPriceAmount / 12).toFixed(2)}
                   </div>
                 </div>
               </div>
+              <div className="mt-6 text-center">
+                <p className="text-lg font-bold text-gray-800 dark:text-gray-200">
+                  {locale === 'fr'
+                    ? "Vous obtenez 20 % de produit en plus et économisez sur le prix au gramme !"
+                    : "You get 20% more product and save on price-per-gram!"}
+                </p>
+              </div>
             </div>
+
           </Container>
         </section>
 

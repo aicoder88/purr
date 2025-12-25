@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { PRODUCT_PRICES, formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 
@@ -441,6 +442,15 @@ export default function TrialSizePage() {
                   </Button>
                 </a>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Product-Specific FAQ */}
+        <section className="py-12 bg-white dark:bg-gray-900">
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <ProductFAQ productType="trial" productName="Trial Size (12g)" />
             </div>
           </Container>
         </section>

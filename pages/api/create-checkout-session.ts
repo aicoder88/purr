@@ -209,8 +209,10 @@ export default async function handler(
     }));
 
     // Create Stripe checkout session with security settings
+    // Note: Omitting payment_method_types allows Stripe to dynamically show
+    // Apple Pay, Google Pay, cards, and other relevant payment methods
+    // based on the customer's device and location
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
