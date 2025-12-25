@@ -47,12 +47,7 @@ export default function Home() {
   const languageAlternates = buildLanguageAlternates('/');
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
-  const familyPrice = formatProductPrice('family', locale);
   const trialPriceValue = getProductPrice('trial').toFixed(2);
-  const standardPriceValue = getProductPrice('standard').toFixed(2);
-  const familyPriceValue = getProductPrice('family').toFixed(2);
   const priceRange = getPriceRange(locale);
 
   return (

@@ -56,7 +56,7 @@ export default function TagsPage({ tags: initialTags }: Readonly<TagsPageProps>)
       setEditingId(null);
       setEditForm({});
       toast.success('Tag updated');
-    } catch (error) {
+    } catch {
       toast.error('Failed to update tag');
     }
   };
@@ -75,7 +75,7 @@ export default function TagsPage({ tags: initialTags }: Readonly<TagsPageProps>)
 
       setTags(tags.filter(tag => tag.id !== id));
       toast.success('Tag deleted');
-    } catch (error) {
+    } catch {
       toast.error('Failed to delete tag');
     }
   };

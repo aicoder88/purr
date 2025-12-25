@@ -35,20 +35,6 @@ const formatTrustedAudience = (population: number | null): string => {
 // Lazy-load testimonial generation (performance optimization)
 import type { TestimonialContext } from '../../../lib/locations/testimonial-templates';
 
-const toSentenceCase = (value: string): string => {
-  if (!value) {
-    return '';
-  }
-  return value.charAt(0).toLowerCase() + value.slice(1);
-};
-
-const capitalize = (value: string): string => {
-  if (!value) {
-    return '';
-  }
-  return value.charAt(0).toUpperCase() + value.slice(1);
-};
-
 const generateTestimonials = async (
   cityName: string,
   provinceName: string,

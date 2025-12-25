@@ -1,8 +1,6 @@
-import { useCallback, type ReactNode } from "react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
-import Link from "next/link";
-import { GRADIENTS, COLORS, createButtonClasses } from "@/lib/theme-utils";
 
 interface HeroContentProps {
   t: {
@@ -63,59 +61,7 @@ const StarRating = () => (
   </div>
 );
 
-const PathCard = ({
-  title,
-  description,
-  cta,
-  href,
-  icon,
-  variant,
-  onClick
-}: {
-  title: string;
-  description: string;
-  cta: string;
-  href?: string;
-  icon: ReactNode;
-  variant: 'primary' | 'secondary';
-  onClick?: () => void;
-}) => {
-  const baseClasses = "relative overflow-hidden rounded-2xl p-6 transition-all duration-300 group border";
-  const variantClasses = variant === 'primary'
-    ? "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-deep-coral/30 hover:shadow-xl hover:shadow-deep-coral/10"
-    : "bg-white/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 hover:border-electric-indigo/30 hover:shadow-xl hover:shadow-electric-indigo/10";
-
-  const buttonClass = variant === 'primary'
-    ? "w-full mt-4 bg-deep-coral hover:bg-deep-coral/90 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-deep-coral/20 transition-all duration-300 transform group-hover:-translate-y-0.5 min-h-[44px] text-sm sm:text-base"
-    : "w-full mt-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 hover:border-electric-indigo hover:text-electric-indigo font-bold py-3 px-6 rounded-xl transition-all duration-300 min-h-[44px] text-sm sm:text-base";
-
-  const content = (
-    <div className={`${baseClasses} ${variantClasses}`}>
-      <div className="flex items-start gap-4 mb-3">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${variant === 'primary' ? 'bg-deep-coral/10 text-deep-coral' : 'bg-electric-indigo/10 text-electric-indigo'}`}>
-          {icon}
-        </div>
-        <div>
-          <h3 className="font-heading font-bold text-xl text-gray-900 dark:text-white leading-tight mb-1">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{description}</p>
-        </div>
-      </div>
-      {onClick ? (
-        <Button onClick={onClick} className={buttonClass} aria-label={title}>
-          {cta}
-        </Button>
-      ) : (
-        <Button className={buttonClass} aria-label={title}>
-          {cta}
-        </Button>
-      )}
-    </div>
-  );
-
-  return href ? <Link href={href} className="block h-full">{content}</Link> : <div className="h-full">{content}</div>;
-};
-
-export const HeroContent = ({ t, locale }: HeroContentProps) => {
+export const HeroContent = ({ t }: HeroContentProps) => {
   const handleScrollToProducts = useCallback(() => {
     scrollToSection("products");
   }, []);

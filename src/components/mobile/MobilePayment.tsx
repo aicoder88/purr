@@ -175,7 +175,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 
       const session = new window.ApplePaySession(3, paymentRequest);
 
-      session.onvalidatemerchant = async (event: ApplePayValidateMerchantEvent) => {
+      session.onvalidatemerchant = async (_event: ApplePayValidateMerchantEvent) => {
         // In production, validate with your payment processor
         try {
           // Simulate merchant validation
@@ -282,7 +282,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     }
   };
 
-  const processPayment = async (paymentData: ApplePayPayment | unknown, method: string): Promise<PaymentResult> => {
+  const processPayment = async (_paymentData: ApplePayPayment | unknown, method: string): Promise<PaymentResult> => {
     // Simulate payment processing
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -395,8 +395,6 @@ interface ExpressCheckoutButtonsProps {
 }
 
 const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
-  amount,
-  onPaymentSuccess,
   className = '',
 }) => {
   const [showApplePay, setShowApplePay] = useState(false);

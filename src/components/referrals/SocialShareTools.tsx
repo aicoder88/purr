@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { Share2, Copy, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin, QrCode, Check, Download } from 'lucide-react';
+import { Share2, Copy, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin, QrCode, Download } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
@@ -102,9 +102,7 @@ Professional recommendation for fellow pet owners: try the free sample with code
 ];
 
 export function SocialShareTools({ referralCode, shareUrl, referrerName, className }: SocialShareToolsProps) {
-  const [selectedTemplate, setSelectedTemplate] = useState<ShareTemplate | null>(null);
   const [showQR, setShowQR] = useState(false);
-  const [customMessage, setCustomMessage] = useState('');
   const qrCanvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
 

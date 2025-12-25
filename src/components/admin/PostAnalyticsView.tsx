@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Eye, Users, Clock, TrendingUp, ExternalLink, Download } from 'lucide-react';
+import { Eye, Users, Clock, TrendingUp } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import type { PostAnalytics } from '@/lib/blog/analytics-service';
 

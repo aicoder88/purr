@@ -125,7 +125,7 @@ export default function CategoriesPage({ categories: initialCategories }: Readon
       setIsAdding(false);
       setNewCategory({ name: '', slug: '', description: '' });
       toast.success('Category created');
-    } catch (error) {
+    } catch {
       toast.error('Failed to create category');
     }
   };

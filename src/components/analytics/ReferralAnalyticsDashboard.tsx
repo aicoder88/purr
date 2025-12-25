@@ -307,7 +307,7 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
 }
 
 // Overview Tab Component
-function OverviewTab({ data, trends, topPerformers }: { data: OverviewMetrics; trends: TrendData[]; topPerformers: TopPerformer[] }) {
+function OverviewTab({ data, topPerformers }: { data: OverviewMetrics; trends: TrendData[]; topPerformers: TopPerformer[] }) {
   const kpiCards = [
     {
       title: 'Total Referrals',
@@ -445,7 +445,7 @@ function OverviewTab({ data, trends, topPerformers }: { data: OverviewMetrics; t
 }
 
 // Performance Tab Component
-function PerformanceTab({ data, trends }: { data: PerformanceMetrics; trends: TrendData[] }) {
+function PerformanceTab({ data }: { data: PerformanceMetrics; trends: TrendData[] }) {
   return (
     <div className="space-y-6">
       {/* Performance Metrics */}
@@ -633,7 +633,7 @@ function CohortsTab({ data }: { data: CohortData[] }) {
   );
 }
 
-function RevenueTab({ data, trends }: { data: RevenueData; trends: TrendData[] }) {
+function RevenueTab({ data }: { data: RevenueData; trends: TrendData[] }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

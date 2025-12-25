@@ -25,9 +25,7 @@ type SubscriptionPlan = {
 
 export function SubscriptionOffer() {
   const { t, locale } = useTranslation();
-  const standardPrice = getProductPrice('standard');
   const familyPrice = getProductPrice('family');
-  const standardAutoshipPrice = getProductPrice('standardAutoship');
   const familyAutoshipPrice = getProductPrice('familyAutoship');
 
   const computeSavings = (oneTimePrice: number, autoshipPrice: number) => {

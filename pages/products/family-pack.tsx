@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, HelpCircle } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -26,11 +26,8 @@ export default function FamilyPackPage() {
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
   const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
-  const standardPriceAmount = getProductPrice('standard');
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipAmount = getProductPrice('familyAutoship');
-  const doubleStandardPrice = formatCurrencyValue(standardPriceAmount * 2, locale);
-  const savingsComparedToStandard = formatCurrencyValue(standardPriceAmount * 2 - familyPriceAmount, locale);
   const familyAutoshipSavings = Math.max(
     0,
     Math.round((1 - familyAutoshipAmount / (familyPriceAmount * 3)) * 100)

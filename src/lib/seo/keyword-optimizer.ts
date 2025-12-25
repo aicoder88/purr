@@ -249,7 +249,6 @@ export class KeywordOptimizer {
     const warnings: string[] = [];
     const keywordDensity: Record<string, number> = {};
 
-    const contentLower = content.toLowerCase();
     const title = this.extractTitle(content);
     const firstParagraph = this.extractFirstParagraph(content);
     const headings = this.extractHeadings(content);
@@ -435,7 +434,6 @@ export class KeywordOptimizer {
     keyword: string
   ): ('title' | 'h1' | 'meta-description' | 'content')[] {
     const placements: ('title' | 'h1' | 'meta-description' | 'content')[] = [];
-    const contentLower = content.toLowerCase();
     const keywordLower = keyword.toLowerCase();
 
     const title = this.extractTitle(content);

@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { useTranslation } from "../../lib/translation-context";
-import { Check, Zap, Star, ArrowRight } from 'lucide-react';
+import { Check, Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
@@ -55,7 +55,6 @@ type ProductCard = {
 
 export function EnhancedProductComparison() {
   const { t, locale } = useTranslation();
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { LocalizedMeta } from "../src/components/seo/LocalizedMeta";
 import { CONTACT_INFO } from "../src/lib/constants";
 

@@ -1,13 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
-import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, isEmailJSConfigured } from '../../lib/emailjs-config';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
 
 export function RetailerContact() {
-  const { t } = useTranslation();
   const wholesaleEmail = 'wholesale@purrify.ca';
   const [formData, setFormData] = useState({
     businessName: '',

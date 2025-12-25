@@ -632,7 +632,7 @@ export class StructuredDataGenerator {
   /**
    * Validate BreadcrumbList schema
    */
-  private validateBreadcrumbSchema(schema: any, errors: string[], warnings: string[]): void {
+  private validateBreadcrumbSchema(schema: any, errors: string[], _warnings: string[]): void {
     if (schema['@type'] !== 'BreadcrumbList') return;
 
     // Required fields
@@ -714,7 +714,7 @@ export class StructuredDataGenerator {
   /**
    * Validate data types
    */
-  private validateDataTypes(schema: any, errors: string[], warnings: string[]): void {
+  private validateDataTypes(schema: any, errors: string[], _warnings: string[]): void {
     // Validate dates
     if (schema.datePublished && !this.isValidDate(schema.datePublished)) {
       errors.push('datePublished is not a valid ISO 8601 date');

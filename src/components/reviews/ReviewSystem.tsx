@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Star, ThumbsUp, ThumbsDown, User, Calendar, CheckCircle, Filter, SortAsc } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Star, ThumbsUp, ThumbsDown, User, CheckCircle, Filter, SortAsc } from 'lucide-react';
 import Script from 'next/script';
 
 type SortOption = 'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful';
 import { Button } from '../ui/button';
-import { Container } from '../ui/container';
-import { useTranslation } from '../../lib/translation-context';
 
 interface Review {
   id: string;

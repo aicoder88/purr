@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Share2, Copy, DollarSign, Trophy, Gift, Users, Star, Crown, Zap } from 'lucide-react';
+import { Share2, Copy, DollarSign, Trophy, Gift, Users, Star, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -134,7 +133,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     loadReferralStats(userId);
   }, [userId]);
 
-  const generateReferralCode = (userId: string): string => {
+  const generateReferralCode = (_userId: string): string => {
     // Generate a user-friendly referral code
     const adjectives = ['HAPPY', 'FRESH', 'CLEAN', 'PURE', 'SWEET'];
     const nouns = ['CAT', 'KITTY', 'PAWS', 'PURR', 'MEOW'];
@@ -509,7 +508,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         {/* Rewards Tab */}
         <TabsContent value="rewards">
           <div className="grid md:grid-cols-2 gap-6">
-            {REFERRAL_TIERS.map((tier, index) => (
+            {REFERRAL_TIERS.map((tier) => (
               <Card key={tier.level} className={`${
                 tier.name === currentTier.name ? 'ring-2 ring-orange-500' : ''
               }`}>

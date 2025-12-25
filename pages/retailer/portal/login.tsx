@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin, Building2 } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, MapPin, Building2 } from 'lucide-react';
 import { cn } from '../../../src/lib/utils';
 
 interface LoginForm {

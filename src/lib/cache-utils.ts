@@ -260,11 +260,6 @@ export class AdvancedCache<T = unknown> {
     return JSON.stringify(data);
   }
 
-  // Simple decompression
-  private decompress(data: string): T {
-    return JSON.parse(data) as T;
-  }
-
   // Calculate approximate size
   private calculateSize(data: unknown): number {
     return new Blob([JSON.stringify(data)]).size;
@@ -355,7 +350,7 @@ export function cached<T extends (...args: unknown[]) => unknown>(
   type: keyof typeof CACHE_STRATEGIES,
   keyGenerator?: (...args: Parameters<T>) => string
 ) {
-  return function(target: unknown, propertyKey: string, descriptor: PropertyDescriptor) {
+  return function(_target: unknown, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     
     descriptor.value = function(...args: Parameters<T>) {

@@ -5,7 +5,6 @@ import {
   Mail,
   Clock,
   Gift,
-  Share2,
   Copy,
   Check,
   Sparkles,
@@ -14,7 +13,6 @@ import {
   MessageCircle,
   Zap
 } from 'lucide-react';
-import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';

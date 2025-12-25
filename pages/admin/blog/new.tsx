@@ -119,7 +119,7 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
         scheduledDate
       });
     }
-  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, status, scheduledDate]);
+  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, status, scheduledDate, triggerAutoSave, saveToLocalStorage]);
 
   // Load draft from localStorage on mount
   useEffect(() => {
@@ -138,6 +138,7 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
         clearLocalStorage();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleImageUpload = async (file: File): Promise<string> => {

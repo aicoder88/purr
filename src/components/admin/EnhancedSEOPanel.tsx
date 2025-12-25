@@ -12,8 +12,6 @@ interface EnhancedSEOPanelProps {
 export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSEOPanelProps) {
   const [internalLinks, setInternalLinks] = useState<InternalLinkSuggestion[]>([]);
   const [cannibalization, setCannibalization] = useState<KeywordCannibalization[]>([]);
-  const [loadingLinks, setLoadingLinks] = useState(false);
-  const [loadingCannibalization, setLoadingCannibalization] = useState(false);
 
   useEffect(() => {
     if (slug) {

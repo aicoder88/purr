@@ -1,13 +1,5 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypeScript from 'eslint-config-next/typescript';
 
 export default [
   {
@@ -25,25 +17,21 @@ export default [
       'public/sw-optimized.js',
     ],
   },
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextCoreWebVitals,
+  ...nextTypeScript,
   {
     rules: {
       // Disable rules that are too strict for now
       'react/no-unescaped-entities': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn', // Changed from 'off' to 'warn'
+      '@typescript-eslint/no-unused-vars': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
       'prefer-const': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
 
       // Performance-related rules
-      'no-return-await': 'error', // Prevent unnecessary return await
-      'react/jsx-no-bind': ['warn', { // Prevent inline function creation in render
-        'ignoreDOMComponents': false,
-        'ignoreRefs': true,
-        'allowArrowFunctions': false,
-        'allowFunctions': false,
-        'allowBind': false
-      }],
+      'no-return-await': 'error',
+      // Disabled: too many violations and minimal performance impact in most cases
+      'react/jsx-no-bind': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MessageCircle, Plus, Eye, Clock, CheckCircle, X, FileText, Send } from 'lucide-react';
+import { MessageCircle, Plus, Eye, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SupportTicket {

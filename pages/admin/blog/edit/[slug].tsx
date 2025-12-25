@@ -103,7 +103,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
       status,
       scheduledDate
     });
-  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, status, scheduledDate]);
+  }, [title, content, excerpt, selectedCategories, selectedTags, featuredImage, status, scheduledDate, triggerAutoSave, saveToLocalStorage]);
 
   // Offer to restore from localStorage on mount
   useEffect(() => {
@@ -118,6 +118,7 @@ export default function EditPostPage({ post: initialPost, categories, tags, loca
         setFeaturedImage(draft.featuredImage || initialPost.featuredImage?.url || '');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleImageUpload = async (file: File): Promise<string> => {
