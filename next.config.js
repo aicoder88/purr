@@ -359,6 +359,20 @@ const nextConfig = {
     locales: ['en', 'fr', 'zh'],
     defaultLocale: 'en',
     localeDetection: false,
+    domains: [
+      {
+        domain: 'www.purrify.ca',
+        defaultLocale: 'en',
+      },
+      {
+        domain: 'fr.purrify.ca',
+        defaultLocale: 'fr',
+      },
+      {
+        domain: 'zh.purrify.ca',
+        defaultLocale: 'zh',
+      },
+    ],
   },
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
