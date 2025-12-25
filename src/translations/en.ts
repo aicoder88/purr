@@ -115,7 +115,7 @@ export const en = {
     description: "Using \"activated\" (chemical-free) coconut-based molecular trapping technology NASA developed for cleaning breatheable air  in space, one sprinkle drastically reduces litter box odour almost immediately and continues to last for up to  7 full days.",
     socialProof: {
       trustNumber: "1,000+",
-      trustText: "cat parents say goodbye to litter box smell",
+      trustText: "cat parents said goodbye to litter box smell",
       ratingText: "4.8/5 stars - 'My apartment doesn't stink anymore!'"
     },
     buttons: {
