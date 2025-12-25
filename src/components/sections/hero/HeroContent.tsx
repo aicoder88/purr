@@ -91,7 +91,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
     : '';
 
   return (
-    <div className="space-y-4 md:space-y-6 relative z-10">
+    <div className="space-y-2 md:space-y-3 relative z-10">
       {/* Social Proof Badge - Moved to top */}
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up">
         <StarRating />
@@ -128,7 +128,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         )}
       </p>
 
-      <div className="flex items-center gap-3 sm:gap-4 py-1">
+      <div className="flex items-center gap-3 sm:gap-4">
         <SocialProofAvatars />
         <div className="text-sm text-gray-600 dark:text-gray-400">
           <span className="font-bold text-gray-900 dark:text-white block text-sm sm:text-base">
@@ -139,7 +139,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       </div>
 
       {/* Urgency & Social Proof */}
-      <div className="flex items-center justify-center gap-6 pt-2 pb-1">
+      <div className="flex items-center sm:justify-start justify-center gap-6">
         <div className="flex items-center gap-2 text-sm">
           <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
           <span className="text-gray-600 dark:text-gray-400">87 sold this week</span>
@@ -153,7 +153,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       </div>
 
       {/* Main CTA Button */}
-      <div className="pt-1 pb-2">
+      <div>
         <Button
           onClick={handleScrollToProducts}
           className="w-full sm:w-auto px-10 py-7 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-xl sm:text-2xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[72px] flex items-center justify-center gap-4 group border-2 border-deep-coral/20"
@@ -170,7 +170,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       </div>
 
       {/* Risk Reversal & Guarantee */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+      <div className="flex flex-col sm:flex-row items-center sm:justify-start justify-center gap-4">
         <div className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-700">
           <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -187,7 +187,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       </div>
 
       {/* Final Urgency Push */}
-      <div className="flex items-center justify-center gap-2 pt-2">
+      <div className="flex items-center sm:justify-start justify-center gap-2">
         <svg className="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
         </svg>

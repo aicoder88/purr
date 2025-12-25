@@ -14,8 +14,8 @@ Your `package.json` specifies Node 22.x, but the local environment is running v1
 
 ```bash
 # Using nvm (recommended)
-nvm install 22
-nvm use 22
+nvm install 24
+nvm use 24
 
 # Or download from nodejs.org
 # https://nodejs.org/

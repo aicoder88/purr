@@ -57,6 +57,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
     "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "^6.18.0",
     "@radix-ui/react-accordion": "^1.1.2",
