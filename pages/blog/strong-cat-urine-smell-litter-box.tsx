@@ -128,6 +128,7 @@ export default function StrongCatUrineSmell() {
                 className="w-full h-auto rounded-2xl shadow-xl"
                 width={1600}
                 height={2000}
+                priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">

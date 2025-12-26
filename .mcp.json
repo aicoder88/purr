@@ -11,6 +11,9 @@
       "env": {
         "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
       }
+    },
+    "Sentry": {
+      "url": "https://mcp.sentry.dev/mcp/purrify/javascript-nextjs"
     }
   }
 }

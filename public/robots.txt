@@ -2,17 +2,15 @@
 User-agent: *
 Allow: /
 
-# *
-User-agent: *
+# Block private areas
 Disallow: /api/*
 Disallow: /admin/*
 Disallow: /_next/*
 Disallow: /static/*
 
-# Host
+# Host (canonical www domain)
 Host: https://www.purrify.ca
 
-# Sitemaps
+# Sitemaps (using canonical domain)
 Sitemap: https://www.purrify.ca/sitemap.xml
-Sitemap: https://www.purrify.ca/server-sitemap.xml
 Sitemap: https://www.purrify.ca/sitemap-locations.xml

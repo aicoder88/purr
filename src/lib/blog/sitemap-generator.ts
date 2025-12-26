@@ -10,7 +10,8 @@ export class SitemapGenerator {
 
   constructor() {
     this.store = new ContentStore();
-    this.baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca';
+    // CRITICAL: Always use canonical www domain for SEO
+    this.baseUrl = 'https://www.purrify.ca';
   }
 
   async generateBlogSitemap(): Promise<string> {

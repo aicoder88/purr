@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import Image from 'next/image';
 import { SITE_NAME } from '../src/lib/constants';
+import * as Sentry from '@sentry/nextjs';
 
 interface ErrorProps {
   statusCode?: number;
@@ -208,7 +209,10 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
   );
 };
 
-ErrorPage.getInitialProps = ({ res, err }: NextPageContext) => {
+ErrorPage.getInitialProps = async (contextData: NextPageContext) => {
+  await Sentry.captureUnderscoreErrorException(contextData);
+
+  const { res, err } = contextData;
   const statusCode = res ? res.statusCode : (err?.statusCode ?? 500);
   return { statusCode };
 };
