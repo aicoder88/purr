@@ -20,12 +20,15 @@ interface BlogPost {
 
 // This function gets called at build time on server-side
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  console.log(`[BlogIndex] getStaticProps called for locale: ${locale}`);
   try {
     const store = new ContentStore();
     const currentLocale = (locale || 'en') as string;
-    
+    console.log(`[BlogIndex] Calling getAllPosts for locale: ${currentLocale}`);
+
     // Fetch all published posts from ContentStore
     const posts = await store.getAllPosts(currentLocale, false);
+    console.log(`[BlogIndex] getAllPosts returned ${posts.length} posts`);
     
     // Transform to match the component's expected format
     const blogPosts: BlogPost[] = posts.map((post: BlogPostType) => ({

@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 import {
   Province,
@@ -17,6 +18,8 @@ const PROVINCE_DISPLAY_OVERRIDES: Record<string, string> = {
 };
 
 const ProvincePage = ({ province }: ProvincePageProps) => {
+  const router = useRouter();
+  const locale = router.locale || 'en';
   const otherProvinces = locationsByProvince.filter(
     (candidateProvince) => candidateProvince.slug !== province.slug
   );
@@ -24,7 +27,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
   const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
   const seoTitle = `Cat Litter Odor Control - ${displayName} (${province.code}) | Purrify`;
   const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Fast shipping across the province with reliable delivery.`;
-  const canonicalUrl = `https://www.purrify.ca/locations/province/${province.slug}`;
+  const canonicalUrl = `https://www.purrify.ca${locale === 'en' ? '' : `/${locale}`}/locations/province/${province.slug}`;
 
   return (
     <>

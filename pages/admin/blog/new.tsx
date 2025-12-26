@@ -12,6 +12,7 @@ import { useAutoSave } from '@/hooks/useAutoSave';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { ContentStore } from '@/lib/blog/content-store';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
+import { sanitizeText } from '@/lib/security/sanitize';
 import type { BlogPost, Category, Tag } from '@/types/blog';
 import type { BlogDraftData } from '@/types/blog-draft';
 import { ArrowLeft, Save, Eye, Keyboard, Sparkles } from 'lucide-react';
@@ -419,8 +420,9 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
             <div>
               <input
                 type="text"
+                name="title"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setTitle(sanitizeText(e.target.value))}
                 placeholder="Add title..."
                 className="w-full text-4xl font-bold border-none focus:outline-none focus:ring-0 placeholder-gray-300 dark:placeholder-gray-600 bg-transparent dark:text-gray-100"
               />
@@ -449,8 +451,9 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
                 Excerpt (Optional)
               </label>
               <textarea
+                name="excerpt"
                 value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
+                onChange={(e) => setExcerpt(sanitizeText(e.target.value))}
                 placeholder="Write a short excerpt..."
                 rows={3}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"

@@ -61,7 +61,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     const { SEOGenerator } = await import('../../src/lib/blog/seo-generator');
 
     const store = new ContentStore();
-        const currentLocale = locale || 'en';
+    const currentLocale = locale || 'en';
 
     let blogPost = await store.getPost(params.slug, currentLocale);
 
@@ -270,6 +270,9 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         <title>{`${post.title} | ${SITE_NAME} Blog`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Noindex for fallback content - SEO fix 2025-12-26 */}
+        {post.locale !== (router.locale || 'en') && <meta name="robots" content="noindex, follow" />}
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />

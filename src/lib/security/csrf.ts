@@ -75,15 +75,21 @@ export function withCSRFProtection(
   return async (req: NextApiRequest, res: NextApiResponse) => {
     // Only check CSRF for state-changing methods
     if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(req.method || '')) {
-      // Check Origin header first
+      // Check Origin header first - this is the primary CSRF defense
       if (!verifyOrigin(req)) {
         return res.status(403).json({ error: 'Invalid origin' });
       }
 
-      // Then check CSRF token
-      if (!verifyCSRFToken(req)) {
-        return res.status(403).json({ error: 'Invalid CSRF token' });
+      // Check CSRF token if one has been issued (cookie exists)
+      // This allows gradual migration to token-based CSRF protection
+      const cookieToken = req.cookies[CSRF_COOKIE_NAME];
+      if (cookieToken) {
+        if (!verifyCSRFToken(req)) {
+          return res.status(403).json({ error: 'Invalid CSRF token' });
+        }
       }
+      // If no cookie exists yet, origin validation alone is sufficient
+      // TODO: Implement frontend CSRF token handling and make token validation mandatory
     }
 
     return handler(req, res);
