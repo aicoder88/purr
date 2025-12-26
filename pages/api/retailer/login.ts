@@ -1,9 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-
-const prisma = new PrismaClient();
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+import prisma from '@/lib/prisma';
 
 const JWT_SECRET = process.env.RETAILER_JWT_SECRET;
 
@@ -12,7 +11,7 @@ interface LoginRequest {
   password: string;
 }
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -26,6 +25,11 @@ export default async function handler(
     // Validation
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
+    }
+
+    // Check database connection
+    if (!prisma) {
+      return res.status(500).json({ message: 'Database unavailable. Please try again later.' });
     }
 
     // Find retailer
@@ -95,7 +99,8 @@ export default async function handler(
   } catch (error) {
     console.error('Retailer login error:', error);
     return res.status(500).json({ message: 'Login failed. Please try again.' });
-  } finally {
-    await prisma.$disconnect();
   }
 }
+
+// Apply rate limiting for authentication
+export default withRateLimit(RATE_LIMITS.AUTH, handler);

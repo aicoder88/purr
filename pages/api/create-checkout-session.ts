@@ -1,24 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { z } from 'zod';
-import { rateLimit } from 'express-rate-limit';
+import * as Sentry from '@sentry/nextjs';
 import prisma from '../../src/lib/prisma';
 import { withCSRFProtection } from '../../src/lib/security/csrf';
+import { withRateLimit, RATE_LIMITS } from '../../src/lib/security/rate-limit';
 
 // Initialize Stripe with proper error handling
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-07-30.basil',
-});
-
-// Rate limiting configuration
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // Limit each IP to 10 requests per windowMs
-  message: {
-    error: 'Too many checkout attempts, please try again later.',
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
 // Input validation schema
@@ -53,22 +43,6 @@ interface OrderItemWithProduct {
   };
 }
 
-// Helper function to apply rate limiting in Next.js API route
-function runMiddleware(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: (req: NextApiRequest, res: NextApiResponse, callback: (result?: Error) => void) => void
-) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result?: Error) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-      return resolve(result);
-    });
-  });
-}
-
 // Sanitize string input to prevent injection
 function sanitizeString(input: string): string {
   return input.replaceAll(/[<>\"'&]/g, '').trim().substring(0, 255);
@@ -90,17 +64,24 @@ function sanitizeMetadata(metadata: Record<string, unknown>): Record<string, str
 
 // Verify price against product catalog
 function verifyItemPrice(item: OrderItemWithProduct): boolean {
+  const { logger } = Sentry;
   const productKey = item.product.id as keyof typeof ALLOWED_PRODUCTS;
   const allowedProduct = ALLOWED_PRODUCTS[productKey];
 
   if (!allowedProduct) {
-    console.error(`Invalid product ID: ${item.product.id}`);
+    logger.error('Invalid product ID in price verification', {
+      productId: item.product.id
+    });
     return false;
   }
 
   const itemPriceInCents = Math.round(item.price * 100);
   if (itemPriceInCents > allowedProduct.maxPrice) {
-    console.error(`Price too high for ${item.product.id}: ${itemPriceInCents} > ${allowedProduct.maxPrice}`);
+    logger.error('Price exceeds maximum allowed', {
+      productId: item.product.id,
+      price: itemPriceInCents,
+      maxPrice: allowedProduct.maxPrice
+    });
     return false;
   }
 
@@ -111,21 +92,41 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Only allow POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({
-      error: 'Method not allowed',
-      allowedMethods: ['POST']
-    });
-  }
+  return Sentry.startSpan(
+    {
+      op: 'http.server',
+      name: 'POST /api/create-checkout-session',
+    },
+    async (span) => {
+      const { logger } = Sentry;
 
-  try {
-    // Apply rate limiting
-    await runMiddleware(req, res, limiter);
+      // Only allow POST requests
+      if (req.method !== 'POST') {
+        logger.warn('Invalid HTTP method for checkout', {
+          method: req.method,
+          ip: req.socket.remoteAddress
+        });
 
-    // Validate and sanitize input
+        return res.status(405).json({
+          error: 'Method not allowed',
+          allowedMethods: ['POST']
+        });
+      }
+
+      try {
+        logger.info('Processing checkout session request');
+
+        // Validate and sanitize input
+    logger.debug('Validating checkout request data');
     const validationResult = createCheckoutSchema.safeParse(req.body);
     if (!validationResult.success) {
+      logger.warn('Invalid checkout request data', {
+        errors: validationResult.error.issues.map(issue => ({
+          field: issue.path.join('.'),
+          message: issue.message,
+        })),
+      });
+
       return res.status(400).json({
         error: 'Invalid request data',
         details: validationResult.error.issues.map(issue => ({
@@ -137,6 +138,9 @@ async function handler(
 
     const { orderId, customer } = validationResult.data;
 
+    span.setAttribute('orderId', orderId);
+    span.setAttribute('customerEmail', customer.email);
+
     // Sanitize customer data
     const sanitizedCustomer = {
       email: sanitizeString(customer.email.toLowerCase()),
@@ -144,6 +148,7 @@ async function handler(
     };
 
     // Get order from database with proper validation
+    logger.debug(logger.fmt`Fetching order from database: ${orderId}`);
     if (!prisma) {
       throw new Error('Database connection not established');
     }
@@ -159,14 +164,23 @@ async function handler(
     });
 
     if (!order) {
+      logger.warn('Order not found', { orderId });
       return res.status(404).json({
         error: 'Order not found',
         orderId: orderId
       });
     }
 
+    span.setAttribute('orderItemCount', order.items.length);
+    span.setAttribute('orderTotal', order.totalAmount);
+
     // Verify order hasn't already been paid
     if (order.status === 'PAID') {
+      logger.warn('Attempted checkout for already paid order', {
+        orderId,
+        status: order.status
+      });
+
       return res.status(400).json({
         error: 'Order already paid',
         orderId: orderId
@@ -174,8 +188,15 @@ async function handler(
     }
 
     // Verify all item prices against catalog
+    logger.debug('Verifying item prices against catalog');
     for (const item of order.items) {
       if (!verifyItemPrice(item as OrderItemWithProduct)) {
+        logger.error('Price verification failed', {
+          orderId,
+          productId: item.product.id,
+          price: item.price
+        });
+
         return res.status(400).json({
           error: 'Invalid product or price detected',
           productId: item.product.id
@@ -189,7 +210,13 @@ async function handler(
     }, 0);
 
     if (Math.abs(calculatedTotal - order.totalAmount) > 0.01) {
-      console.error(`Order total mismatch: calculated ${calculatedTotal}, stored ${order.totalAmount}`);
+      logger.error('Order total mismatch detected', {
+        orderId,
+        calculated: calculatedTotal,
+        stored: order.totalAmount,
+        difference: Math.abs(calculatedTotal - order.totalAmount)
+      });
+
       return res.status(400).json({
         error: 'Order total verification failed'
       });
@@ -210,10 +237,16 @@ async function handler(
     }));
 
     // Create Stripe checkout session with security settings
-    // Note: Omitting payment_method_types allows Stripe to dynamically show
-    // Apple Pay, Google Pay, cards, and other relevant payment methods
-    // based on the customer's device and location
-    const session = await stripe.checkout.sessions.create({
+    logger.info('Creating Stripe checkout session', {
+      orderId,
+      itemCount: order.items.length,
+      totalAmount: order.totalAmount
+    });
+
+    // Note: Using payment_method_configuration to enable Klarna, Link, and other
+    // payment methods configured in Stripe Dashboard. If not set, falls back to
+    // dynamic payment methods (Apple Pay, Google Pay, cards) based on device/location.
+    const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
@@ -236,32 +269,54 @@ async function handler(
           source: 'purrify_checkout',
         }),
       },
-    });
+    };
+
+    // Add payment method configuration if available (for Klarna, Link, etc.)
+    if (process.env.STRIPE_PAYMENT_METHOD_CONFIG_ID) {
+      sessionConfig.payment_method_configuration = process.env.STRIPE_PAYMENT_METHOD_CONFIG_ID;
+      logger.debug('Using payment method configuration', {
+        configId: process.env.STRIPE_PAYMENT_METHOD_CONFIG_ID
+      });
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
 
     // Log successful checkout creation (without sensitive data)
-    console.log(`Checkout session created: ${session.id} for order ${orderId}`);
+    span.setAttribute('sessionId', session.id);
+    logger.info('Checkout session created successfully', {
+      sessionId: session.id,
+      orderId,
+      itemCount: order.items.length,
+      totalAmount: order.totalAmount
+    });
 
     return res.status(200).json({
       sessionId: session.id,
       url: session.url
     });
 
-  } catch (error) {
-    // Log error securely (don't expose sensitive data)
-    const errorId = Math.random().toString(36).substring(2, 15);
-    console.error(`Checkout error [${errorId}]:`, {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      timestamp: new Date().toISOString(),
-    });
+      } catch (error) {
+        // Capture exception in Sentry
+        Sentry.captureException(error);
 
-    // Return generic error to client
-    return res.status(500).json({
-      error: 'Failed to create checkout session',
-      errorId: errorId
-    });
-  }
+        // Log error securely (don't expose sensitive data)
+        const errorId = Math.random().toString(36).substring(2, 15);
+        logger.error('Failed to create checkout session', {
+          errorId,
+          message: error instanceof Error ? error.message : 'Unknown error',
+          orderId: req.body.orderId,
+          timestamp: new Date().toISOString(),
+        });
+
+        // Return generic error to client
+        return res.status(500).json({
+          error: 'Failed to create checkout session',
+          errorId: errorId
+        });
+      }
+    }
+  );
 }
 
-// Apply CSRF protection middleware
-export default withCSRFProtection(handler);
+// Apply CSRF protection and rate limiting middleware
+export default withCSRFProtection(withRateLimit(RATE_LIMITS.CREATE, handler));

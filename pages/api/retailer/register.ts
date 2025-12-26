@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
-
-const prisma = new PrismaClient();
+import { z } from 'zod';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+import prisma from '@/lib/prisma';
 
 interface RegisterRequest {
   businessName: string;
@@ -27,7 +27,15 @@ interface RegisterRequest {
   };
 }
 
-export default async function handler(
+// Password strength validation schema
+const passwordSchema = z.string()
+  .min(12, 'Password must be at least 12 characters')
+  .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+  .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+  .regex(/[0-9]/, 'Password must contain at least one number')
+  .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character');
+
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -50,6 +58,20 @@ export default async function handler(
     // Validation
     if (!businessName || !contactName || !email || !password || !shippingAddress) {
       return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    // Validate password strength
+    const passwordValidation = passwordSchema.safeParse(password);
+    if (!passwordValidation.success) {
+      return res.status(400).json({
+        message: 'Password does not meet security requirements',
+        errors: passwordValidation.error.issues.map((err: { message: string }) => err.message)
+      });
+    }
+
+    // Check database connection
+    if (!prisma) {
+      return res.status(500).json({ message: 'Database unavailable. Please try again later.' });
     }
 
     // Check if email already exists
@@ -120,7 +142,8 @@ export default async function handler(
   } catch (error) {
     console.error('Retailer registration error:', error);
     return res.status(500).json({ message: 'Registration failed. Please try again.' });
-  } finally {
-    await prisma.$disconnect();
   }
 }
+
+// Apply rate limiting for registration
+export default withRateLimit(RATE_LIMITS.CREATE, handler);

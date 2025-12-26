@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ImageOptimizer } from '@/lib/blog/image-optimizer';
 import { requireAuth } from '@/lib/auth/session';
 import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+import { withCSRFProtection } from '@/lib/security/csrf';
 import formidable from 'formidable';
 import fs from 'fs/promises';
 
@@ -90,5 +91,5 @@ async function handler(
   }
 }
 
-// Apply rate limiting for uploads
-export default withRateLimit(RATE_LIMITS.UPLOAD, handler);
+// Apply CSRF protection and rate limiting for uploads
+export default withCSRFProtection(withRateLimit(RATE_LIMITS.UPLOAD, handler));
