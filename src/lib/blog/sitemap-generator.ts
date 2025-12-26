@@ -1,17 +1,17 @@
-import fs from 'fs/promises';
-import path from 'node:path';
-import { ContentStore } from './content-store';
-import type {} from '@/types/blog';
+import fs from "fs/promises";
+import path from "node:path";
+import { ContentStore } from "./content-store";
+import type {} from "@/types/blog";
 
 export class SitemapGenerator {
   private store: ContentStore;
   private baseUrl: string;
-  private locales = ['en', 'fr', 'zh'];
+  private locales = ["en", "fr", "zh"];
 
   constructor() {
     this.store = new ContentStore();
     // CRITICAL: Always use canonical www domain for SEO
-    this.baseUrl = 'https://www.purrify.ca';
+    this.baseUrl = "https://www.purrify.ca";
   }
 
   async generateBlogSitemap(): Promise<string> {
@@ -42,7 +42,7 @@ export class SitemapGenerator {
       }
     }
 
-    xml += '</urlset>';
+    xml += "</urlset>";
 
     return xml;
   }
@@ -50,12 +50,16 @@ export class SitemapGenerator {
   async updateSitemap(): Promise<void> {
     try {
       const xml = await this.generateBlogSitemap();
-      const sitemapPath = path.join(process.cwd(), 'public', 'sitemap-blog.xml');
+      const sitemapPath = path.join(
+        process.cwd(),
+        "public",
+        "sitemap-blog.xml",
+      );
 
-      await fs.writeFile(sitemapPath, xml, 'utf-8');
-      console.log('Blog sitemap updated successfully');
+      await fs.writeFile(sitemapPath, xml, "utf-8");
+      console.log("Blog sitemap updated successfully");
     } catch (error) {
-      console.error('Error updating blog sitemap:', error);
+      console.error("Error updating blog sitemap:", error);
       throw error;
     }
   }
@@ -77,7 +81,7 @@ export class SitemapGenerator {
       }
     }
 
-    xml += '</urlset>';
+    xml += "</urlset>";
 
     return xml;
   }
@@ -99,7 +103,7 @@ export class SitemapGenerator {
       }
     }
 
-    xml += '</urlset>';
+    xml += "</urlset>";
 
     return xml;
   }
@@ -112,22 +116,22 @@ export class SitemapGenerator {
       // Update category sitemap
       const categorySitemap = await this.generateCategorySitemap();
       await fs.writeFile(
-        path.join(process.cwd(), 'public', 'sitemap-blog-categories.xml'),
+        path.join(process.cwd(), "public", "sitemap-blog-categories.xml"),
         categorySitemap,
-        'utf-8'
+        "utf-8",
       );
 
       // Update tag sitemap
       const tagSitemap = await this.generateTagSitemap();
       await fs.writeFile(
-        path.join(process.cwd(), 'public', 'sitemap-blog-tags.xml'),
+        path.join(process.cwd(), "public", "sitemap-blog-tags.xml"),
         tagSitemap,
-        'utf-8'
+        "utf-8",
       );
 
-      console.log('All blog sitemaps updated successfully');
+      console.log("All blog sitemaps updated successfully");
     } catch (error) {
-      console.error('Error updating sitemaps:', error);
+      console.error("Error updating sitemaps:", error);
       throw error;
     }
   }

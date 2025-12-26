@@ -2,7 +2,7 @@ import Link from "next/link";
 import Script from "next/script";
 import type { SVGProps } from "react";
 import { Container } from "../../components/ui/container";
-import Image from 'next/image';
+import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
 import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
@@ -17,23 +17,13 @@ import {
 import { SOCIAL_LINKS } from "../../lib/constants";
 
 const MediumIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-    {...props}
-  >
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
     <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
   </svg>
 );
 
 const TikTokIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-    {...props}
-  >
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
     <path d="M12.75 2a.75.75 0 0 1 .75.75c0 2.24 1.53 4.12 3.63 4.5.37.07.62.4.62.77v2.02a.75.75 0 0 1-1.03.7 6.3 6.3 0 0 1-2.47-1.4v6.67A4.82 4.82 0 1 1 8 11.5h.75a.75.75 0 0 1 .75.75v2.14a.75.75 0 0 1-1.02.7 1.83 1.83 0 0 0-.73-.15 1.82 1.82 0 1 0 1.82 1.83V3.5a.75.75 0 0 1 .75-.75h2.43Z" />
   </svg>
 );
@@ -60,7 +50,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="space-y-4">
               <div className="flex items-center mb-4">
-                <Link href={locale === 'fr' ? "/fr/" : "/"} className="group">
+                <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
                       src="/optimized/purrify-logo-text.webp"
@@ -152,7 +142,9 @@ export function Footer() {
 
               {/* Trust Badges */}
               <div className="mt-4 pt-4 border-t border-[#E0EFC7]/50 dark:border-gray-700/50">
-                <p className="text-xs font-medium text-[#333333]/60 dark:text-gray-500 mb-3">Trusted Reviews</p>
+                <p className="text-xs font-medium text-[#333333]/60 dark:text-gray-500 mb-3">
+                  Trusted Reviews
+                </p>
                 <div className="flex flex-col gap-2">
                   <a
                     href={SOCIAL_LINKS.trustpilot}
@@ -199,7 +191,11 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/products/trial-size" : "/products/trial-size"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/products/trial-size"
+                        : "/products/trial-size"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Trial Size
@@ -207,7 +203,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/products/standard" : "/products/standard"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/products/standard"
+                        : "/products/standard"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Standard Size
@@ -215,7 +215,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/products/family-pack" : "/products/family-pack"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/products/family-pack"
+                        : "/products/family-pack"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Family Pack
@@ -223,7 +227,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/products/compare" : "/products/compare"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/products/compare"
+                        : "/products/compare"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Compare Sizes
@@ -239,7 +247,11 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/how-it-works" : "/learn/how-it-works"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/how-it-works"
+                        : "/learn/how-it-works"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     How It Works
@@ -247,7 +259,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/faq" : "/learn/faq"}
+                    href={locale === "fr" ? "/fr/learn/faq" : "/learn/faq"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     FAQ
@@ -255,7 +267,9 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/science" : "/learn/science"}
+                    href={
+                      locale === "fr" ? "/fr/learn/science" : "/learn/science"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Science
@@ -263,7 +277,9 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/safety" : "/learn/safety"}
+                    href={
+                      locale === "fr" ? "/fr/learn/safety" : "/learn/safety"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Safety Info
@@ -271,7 +287,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/cat-litter-guide" : "/learn/cat-litter-guide"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/cat-litter-guide"
+                        : "/learn/cat-litter-guide"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Cat Litter Guide
@@ -287,7 +307,11 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/solutions/ammonia-smell-cat-litter" : "/learn/solutions/ammonia-smell-cat-litter"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/solutions/ammonia-smell-cat-litter"
+                        : "/learn/solutions/ammonia-smell-cat-litter"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Ammonia Smell
@@ -295,7 +319,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/solutions/apartment-cat-smell-solution" : "/learn/solutions/apartment-cat-smell-solution"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/solutions/apartment-cat-smell-solution"
+                        : "/learn/solutions/apartment-cat-smell-solution"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Apartment Living
@@ -303,7 +331,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/solutions/multiple-cats-odor-control" : "/learn/solutions/multiple-cats-odor-control"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/solutions/multiple-cats-odor-control"
+                        : "/learn/solutions/multiple-cats-odor-control"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Multiple Cats
@@ -311,7 +343,11 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/learn/solutions/natural-cat-litter-additive" : "/learn/solutions/natural-cat-litter-additive"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/solutions/natural-cat-litter-additive"
+                        : "/learn/solutions/natural-cat-litter-additive"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Natural Additive
@@ -327,7 +363,11 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/about/our-story" : "/about/our-story"}
+                    href={
+                      locale === "fr"
+                        ? "/fr/about/our-story"
+                        : "/about/our-story"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     About Us
@@ -335,7 +375,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/blog" : "/blog"}
+                    href={locale === "fr" ? "/fr/blog" : "/blog"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Blog
@@ -343,7 +383,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/locations" : "/locations"}
+                    href={locale === "fr" ? "/fr/locations" : "/locations"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Locations
@@ -351,7 +391,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/reviews" : "/reviews"}
+                    href={locale === "fr" ? "/fr/reviews" : "/reviews"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Testimonials
@@ -359,7 +399,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/retailers" : "/retailers"}
+                    href={locale === "fr" ? "/fr/retailers" : "/retailers"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     For Retailers
@@ -375,7 +415,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === 'fr' ? "/fr/contact" : "/contact"}
+                    href={locale === "fr" ? "/fr/contact" : "/contact"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     Contact Us
@@ -383,25 +423,26 @@ export function Footer() {
                 </li>
               </ul>
             </div>
-
           </div>
 
           <div className="mt-12 pt-8 border-t border-[#E0EFC7] dark:border-gray-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
               <Link
-                href={locale === 'fr' ? "/fr/privacy-policy" : "/privacy-policy"}
+                href={
+                  locale === "fr" ? "/fr/privacy-policy" : "/privacy-policy"
+                }
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.privacyPolicy}
               </Link>
               <Link
-                href={locale === 'fr' ? "/fr/terms" : "/terms"}
+                href={locale === "fr" ? "/fr/terms" : "/terms"}
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.termsOfService}
               </Link>
               <Link
-                href={locale === 'fr' ? "/fr/blog" : "/blog"}
+                href={locale === "fr" ? "/fr/blog" : "/blog"}
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.blog}
@@ -409,8 +450,10 @@ export function Footer() {
             </div>
             <p className="text-center text-xs text-[#333333]/80 dark:text-gray-300">
               © {currentYear}{" "}
-              <span className="text-[#FF3131] dark:text-[#FF5050] font-medium">{t.siteName}</span> |
-              {t.footer.allRightsReserved}
+              <span className="text-[#FF3131] dark:text-[#FF5050] font-medium">
+                {t.siteName}
+              </span>{" "}
+              |{t.footer.allRightsReserved}
             </p>
           </div>
         </div>

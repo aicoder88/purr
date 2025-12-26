@@ -1,11 +1,11 @@
-import { NextPage, NextPageContext } from 'next';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { NextSeo } from 'next-seo';
-import { Container } from '../src/components/ui/container';
-import Image from 'next/image';
-import { SITE_NAME } from '../src/lib/constants';
-import * as Sentry from '@sentry/nextjs';
+import { NextPage, NextPageContext } from "next";
+import Link from "next/link";
+import { useEffect } from "react";
+import { NextSeo } from "next-seo";
+import { Container } from "../src/components/ui/container";
+import Image from "next/image";
+import { SITE_NAME } from "../src/lib/constants";
+import * as Sentry from "@sentry/nextjs";
 
 interface ErrorProps {
   statusCode?: number;
@@ -16,24 +16,44 @@ interface ErrorProps {
 // Suggested pages for different error types
 const getErrorSuggestions = (statusCode: number) => {
   const commonPages = [
-    { title: 'Home', path: '/', description: 'Return to our homepage' },
-    { title: 'Products', path: '/#products', description: 'Browse our cat litter additives' },
-    { title: 'Blog', path: '/blog', description: 'Read our latest articles on cat care' },
-    { title: 'Contact', path: '/#contact', description: 'Get in touch with our team' },
+    { title: "Home", path: "/", description: "Return to our homepage" },
+    {
+      title: "Products",
+      path: "/#products",
+      description: "Browse our cat litter additives",
+    },
+    {
+      title: "Blog",
+      path: "/blog",
+      description: "Read our latest articles on cat care",
+    },
+    {
+      title: "Contact",
+      path: "/#contact",
+      description: "Get in touch with our team",
+    },
   ];
 
   if (statusCode === 403) {
     return [
-      { title: 'Home', path: '/', description: 'Return to our homepage' },
-      { title: 'Login', path: '/api/auth/signin', description: 'Sign in to your account' },
+      { title: "Home", path: "/", description: "Return to our homepage" },
+      {
+        title: "Login",
+        path: "/api/auth/signin",
+        description: "Sign in to your account",
+      },
       ...commonPages.slice(1),
     ];
   }
 
   if (statusCode >= 500) {
     return [
-      { title: 'Home', path: '/', description: 'Return to our homepage' },
-      { title: 'Support', path: '/support', description: 'Contact our support team' },
+      { title: "Home", path: "/", description: "Return to our homepage" },
+      {
+        title: "Support",
+        path: "/support",
+        description: "Contact our support team",
+      },
       ...commonPages.slice(1, 3),
     ];
   }
@@ -45,53 +65,60 @@ const getErrorMessage = (statusCode: number) => {
   switch (statusCode) {
     case 400:
       return {
-        title: '400 - Bad Request',
-        message: 'The request could not be understood by the server due to malformed syntax.',
+        title: "400 - Bad Request",
+        message:
+          "The request could not be understood by the server due to malformed syntax.",
       };
     case 401:
       return {
-        title: '401 - Unauthorized',
-        message: 'You need to authenticate to access this resource.',
+        title: "401 - Unauthorized",
+        message: "You need to authenticate to access this resource.",
       };
     case 403:
       return {
-        title: '403 - Forbidden',
-        message: 'You do not have permission to access this resource.',
+        title: "403 - Forbidden",
+        message: "You do not have permission to access this resource.",
       };
     case 404:
       return {
-        title: '404 - Page Not Found',
-        message: 'The page you are looking for might have been moved, deleted, or perhaps never existed.',
+        title: "404 - Page Not Found",
+        message:
+          "The page you are looking for might have been moved, deleted, or perhaps never existed.",
       };
     case 429:
       return {
-        title: '429 - Too Many Requests',
-        message: 'You have sent too many requests in a given amount of time. Please try again later.',
+        title: "429 - Too Many Requests",
+        message:
+          "You have sent too many requests in a given amount of time. Please try again later.",
       };
     case 500:
       return {
-        title: '500 - Internal Server Error',
-        message: 'Something went wrong on our end. Our team has been notified and is working on a fix.',
+        title: "500 - Internal Server Error",
+        message:
+          "Something went wrong on our end. Our team has been notified and is working on a fix.",
       };
     case 502:
       return {
-        title: '502 - Bad Gateway',
-        message: 'We are experiencing temporary issues. Please try again in a few minutes.',
+        title: "502 - Bad Gateway",
+        message:
+          "We are experiencing temporary issues. Please try again in a few minutes.",
       };
     case 503:
       return {
-        title: '503 - Service Unavailable',
-        message: 'The service is temporarily unavailable. Please try again later.',
+        title: "503 - Service Unavailable",
+        message:
+          "The service is temporarily unavailable. Please try again later.",
       };
     case 504:
       return {
-        title: '504 - Gateway Timeout',
-        message: 'The request took too long to complete. Please try again.',
+        title: "504 - Gateway Timeout",
+        message: "The request took too long to complete. Please try again.",
       };
     default:
       return {
         title: `${statusCode} - Error`,
-        message: 'An unexpected error occurred. Please try again or contact support if the problem persists.',
+        message:
+          "An unexpected error occurred. Please try again or contact support if the problem persists.",
       };
   }
 };
@@ -104,9 +131,18 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
   useEffect(() => {
     // This would connect to your analytics platform in production
     console.error(`${statusCode} error occurred`, {
-      url: typeof globalThis.window !== 'undefined' ? globalThis.location.href : '',
-      referrer: typeof globalThis.document !== 'undefined' ? globalThis.document.referrer : '',
-      userAgent: typeof globalThis.navigator !== 'undefined' ? globalThis.navigator.userAgent : '',
+      url:
+        typeof globalThis.window !== "undefined"
+          ? globalThis.location.href
+          : "",
+      referrer:
+        typeof globalThis.document !== "undefined"
+          ? globalThis.document.referrer
+          : "",
+      userAgent:
+        typeof globalThis.navigator !== "undefined"
+          ? globalThis.navigator.userAgent
+          : "",
       timestamp: new Date().toISOString(),
       statusCode,
     });
@@ -128,7 +164,7 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
           noimageindex: true,
           noarchive: true,
           maxSnippet: -1,
-          maxImagePreview: 'none',
+          maxImagePreview: "none",
           maxVideoPreview: -1,
         }}
       />
@@ -190,8 +226,12 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
                   href={page.path}
                   className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
                 >
-                  <span className="font-medium text-blue-600 dark:text-blue-400">{page.title}</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
+                  <span className="font-medium text-blue-600 dark:text-blue-400">
+                    {page.title}
+                  </span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {page.description}
+                  </span>
                 </Link>
               ))}
             </div>
