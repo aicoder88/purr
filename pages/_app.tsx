@@ -33,6 +33,10 @@ const CacheOptimizer = dynamic(() => import('../src/components/performance/Cache
   ssr: false,
 });
 
+const InstallPrompt = dynamic(() => import('../src/components/pwa/InstallPrompt').then(mod => mod.InstallPrompt), {
+  ssr: false,
+});
+
 interface PageProps {
   session?: Session | null;
   [key: string]: unknown;
@@ -175,12 +179,24 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           </div>
 
           <PerformanceMonitor enabled sampleRate={0.1} />
-          <CacheOptimizer enabled={false} preloadRoutes={[]} warmupDelay={8000} maxCacheSize={15728640} />
+          <CacheOptimizer
+            enabled={true}
+            preloadRoutes={[
+              '/products/trial-size',
+              '/products/standard',
+              '/products/family',
+              '/learn/how-it-works',
+              '/learn/faq',
+            ]}
+            warmupDelay={5000}
+            maxCacheSize={15728640}
+          />
 
 
 
           <Toaster />
           <ToastProvider />
+          <InstallPrompt />
           <AnalyticsComponent />
         </TranslationProvider>
       </ThemeProvider>

@@ -7,6 +7,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { NextSeo } from 'next-seo';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { generateWebsiteSchema } from '../../src/lib/seo-utils';
 import {
   Search,
   ChevronDown,
@@ -261,6 +262,14 @@ const FAQPage: NextPage = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* Website Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateWebsiteSchema(locale))
+        }}
       />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

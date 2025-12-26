@@ -105,7 +105,7 @@ async function handleImageRequest(request) {
       cache.put(request, response.clone());
     }
     return response;
-  } catch (_error) {
+  } catch (error) {
     console.warn('Image cache error:', error);
     return new Response('Image not available offline', { status: 503 });
   }
@@ -182,7 +182,7 @@ async function handlePageRequest(request) {
       status: 503,
       headers: { 'Content-Type': 'text/html' }
     });
-  } catch (_error) {
+  } catch (error) {
     console.warn('Page cache error:', error);
     return new Response('Page not available offline', { status: 503 });
   }
@@ -266,12 +266,12 @@ async function syncContactForms() {
           await fetch(request);
           await cache.delete(request);
           console.log('Service Worker: Contact form synced successfully');
-        } catch (_error) {
+        } catch (error) {
           console.error('Service Worker: Failed to sync contact form', error);
         }
       }
     }
-  } catch (_error) {
+  } catch (error) {
     console.error('Service Worker: Error syncing contact forms', error);
   }
 }
@@ -287,12 +287,12 @@ async function syncNewsletterSignups() {
           await fetch(request);
           await cache.delete(request);
           console.log('Service Worker: Newsletter signup synced successfully');
-        } catch (_error) {
+        } catch (error) {
           console.error('Service Worker: Failed to sync newsletter signup', error);
         }
       }
     }
-  } catch (_error) {
+  } catch (error) {
     console.error('Service Worker: Error syncing newsletter signups', error);
   }
 }

@@ -16,7 +16,7 @@ import {
   Zap
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildAvailabilityUrl, getPriceValidityDate } from '../../src/lib/seo-utils';
+import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 
@@ -163,6 +163,12 @@ const ProductComparePage: NextPage = () => {
                 }))
               }
             })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebsiteSchema(locale))
           }}
         />
       </Head>

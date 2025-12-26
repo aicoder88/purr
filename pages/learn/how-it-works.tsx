@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -9,6 +10,7 @@ import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-r
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { generateWebsiteSchema } from '../../src/lib/seo-utils';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
@@ -140,6 +142,15 @@ export default function HowItWorksPage() {
           image: 'https://www.purrify.ca/images/how-purrify-works-science.jpg'
         }}
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebsiteSchema(locale))
+          }}
+        />
+      </Head>
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

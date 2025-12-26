@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle, Instagram, Twitter, Facebook, Youtube, Linkedin, ExternalLink, Star } from 'lucide-react';
@@ -9,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
 import { useTranslation } from '@/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateWebsiteSchema } from '@/lib/seo-utils';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
 
 type ResponseData = {
@@ -180,6 +181,15 @@ export default function ContactPage() {
           ]
         }}
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebsiteSchema(locale))
+          }}
+        />
+      </Head>
 
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

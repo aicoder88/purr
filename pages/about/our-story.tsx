@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
@@ -9,6 +10,7 @@ import { PageLayout } from '../../src/components/layout/PageLayout';
 import { Breadcrumbs } from '../../src/components/layout/Breadcrumbs';
 import { enStoryData } from '../../src/lib/page-data';
 import { PRODUCT_PRICES } from '../../src/lib/pricing';
+import { generateWebsiteSchema } from '../../src/lib/seo-utils';
 import {
   Heart,
   Users,
@@ -62,6 +64,15 @@ const OurStoryPage: NextPage = () => {
         ogDescription="Discover the story behind Purrify and our mission to help cat owners create fresher, cleaner homes."
         structuredData={structuredData}
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebsiteSchema(locale))
+          }}
+        />
+      </Head>
 
       <PageLayout>
         {/* Custom Hero Section with Background Image */}
