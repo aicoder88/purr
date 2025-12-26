@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import * as Sentry from '@sentry/nextjs';
 import { AutomatedContentGenerator } from '../../../src/lib/blog/automated-content-generator';
 import { ContentStore } from '../../../src/lib/blog/content-store';
 
@@ -41,99 +42,156 @@ async function getLatestPostDate(): Promise<Date | null> {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (!isMethodAllowed(req.method)) {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  return Sentry.startSpan(
+    {
+      op: 'cron.job',
+      name: 'Generate Blog Post',
+    },
+    async (span) => {
+      const { logger } = Sentry;
 
-  const expectedSecret = process.env.AUTOBLOG_CRON_SECRET;
-  if (expectedSecret) {
-    const providedSecret = extractSecret(req);
-    if (providedSecret !== expectedSecret) {
-      return res.status(401).json({ error: 'Invalid cron secret' });
-    }
-  }
+      logger.info('Blog post generation cron started', {
+        method: req.method,
+        forceRun: req.query.force
+      });
 
-  const forceRun = req.query.force === 'true' || req.query.force === '1';
+      if (!isMethodAllowed(req.method)) {
+        logger.warn('Invalid HTTP method for cron job', {
+          method: req.method
+        });
+        return res.status(405).json({ error: 'Method not allowed' });
+      }
 
-  // Check interval using filesystem instead of database
-  if (!forceRun) {
-    const latestPostDate = await getLatestPostDate();
-    if (latestPostDate) {
-      const elapsed = Date.now() - latestPostDate.getTime();
-      if (elapsed < THREE_DAYS_IN_MS) {
+      const expectedSecret = process.env.AUTOBLOG_CRON_SECRET;
+      if (expectedSecret) {
+        const providedSecret = extractSecret(req);
+        if (providedSecret !== expectedSecret) {
+          logger.warn('Invalid cron secret provided');
+          return res.status(401).json({ error: 'Invalid cron secret' });
+        }
+      }
+
+      const forceRun = req.query.force === 'true' || req.query.force === '1';
+      span.setAttribute('forceRun', forceRun);
+
+      // Check interval using filesystem instead of database
+      if (!forceRun) {
+        const latestPostDate = await getLatestPostDate();
+        if (latestPostDate) {
+          const elapsed = Date.now() - latestPostDate.getTime();
+          if (elapsed < THREE_DAYS_IN_MS) {
+            const nextRunInHours = Math.round((THREE_DAYS_IN_MS - elapsed) / (1000 * 60 * 60));
+            logger.info('Interval not reached, skipping generation', {
+              elapsed,
+              nextRunInHours
+            });
+            return res.status(200).json({
+              skipped: true,
+              reason: 'Interval not reached',
+              nextRunInHours,
+            });
+          }
+        }
+      }
+
+      try {
+        // Use new ContentStore-based generator by default (filesystem, no database required)
+        const useLegacyGenerator = process.env.USE_LEGACY_BLOG_GENERATOR === 'true';
+        span.setAttribute('useLegacyGenerator', useLegacyGenerator);
+
+        // Legacy generator requires database - only use if explicitly enabled
+        if (useLegacyGenerator) {
+          logger.info('Using legacy blog generator');
+          const { generateAutomatedBlogPost } = await import('../../../src/lib/blog/generator');
+          const result = await generateAutomatedBlogPost();
+
+          span.setAttribute('postId', result.post.id);
+          span.setAttribute('slug', result.post.slug);
+          logger.info('Legacy blog post generated successfully', {
+            postId: result.post.id,
+            slug: result.post.slug,
+            topic: result.topic
+          });
+
+          return res.status(200).json({
+            success: true,
+            postId: result.post.id,
+            slug: result.post.slug,
+            topic: result.topic,
+            heroImage: result.heroImage,
+            secondaryImageCount: result.secondaryImageCount,
+            generator: 'legacy'
+          });
+        }
+
+        // Default: Use filesystem-based generator (no database required)
+        logger.info('Using filesystem-based blog generator');
+        const generator = new AutomatedContentGenerator();
+
+        // Topic rotation
+        const topics = [
+          'How to Eliminate Cat Litter Odor Naturally',
+          'Best Practices for Multi-Cat Households',
+          'Understanding Activated Carbon for Pet Odor Control',
+          'Apartment Living with Cats: Odor Management Tips',
+          'Eco-Friendly Cat Litter Solutions',
+          'Cat Health and Litter Box Hygiene',
+          'Seasonal Cat Care Tips',
+          'DIY Cat Litter Box Maintenance',
+          'Natural Ways to Keep Your Home Fresh with Cats',
+          'The Science Behind Cat Litter Odor Control'
+        ];
+
+        const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+        const topicIndex = daysSinceEpoch % topics.length;
+        const selectedTopic = topics[topicIndex];
+
+        span.setAttribute('topic', selectedTopic);
+        logger.info('Generating blog post', { topic: selectedTopic });
+
+        const result = await generator.generateBlogPost(selectedTopic);
+
+        if (!result.success || !result.post) {
+          const errorMessage = `Generation failed: ${result.validation.errors.map(e => e.message).join(', ')}`;
+          logger.error('Blog post generation validation failed', {
+            errors: result.validation.errors.map(e => e.message)
+          });
+          throw new Error(errorMessage);
+        }
+
+        await generator.publishPost(result.post);
+
+        span.setAttribute('postId', result.post.id);
+        span.setAttribute('slug', result.post.slug);
+        span.setAttribute('attempts', result.attempts || 0);
+
+        logger.info('Blog post generated and published successfully', {
+          postId: result.post.id,
+          slug: result.post.slug,
+          title: result.post.title,
+          topic: selectedTopic,
+          attempts: result.attempts
+        });
+
         return res.status(200).json({
-          skipped: true,
-          reason: 'Interval not reached',
-          nextRunInHours: Math.round((THREE_DAYS_IN_MS - elapsed) / (1000 * 60 * 60)),
+          success: true,
+          postId: result.post.id,
+          slug: result.post.slug,
+          title: result.post.title,
+          topic: selectedTopic,
+          generator: 'filesystem',
+          attempts: result.attempts
+        });
+      } catch (error) {
+        Sentry.captureException(error);
+        logger.error('Blog post generation failed', {
+          error: (error as Error).message
+        });
+        return res.status(500).json({
+          error: 'Failed to generate blog post',
+          details: (error as Error).message,
         });
       }
     }
-  }
-
-  try {
-    // Use new ContentStore-based generator by default (filesystem, no database required)
-    const useLegacyGenerator = process.env.USE_LEGACY_BLOG_GENERATOR === 'true';
-
-    // Legacy generator requires database - only use if explicitly enabled
-    if (useLegacyGenerator) {
-      const { generateAutomatedBlogPost } = await import('../../../src/lib/blog/generator');
-      const result = await generateAutomatedBlogPost();
-      return res.status(200).json({
-        success: true,
-        postId: result.post.id,
-        slug: result.post.slug,
-        topic: result.topic,
-        heroImage: result.heroImage,
-        secondaryImageCount: result.secondaryImageCount,
-        generator: 'legacy'
-      });
-    }
-
-    // Default: Use filesystem-based generator (no database required)
-    const generator = new AutomatedContentGenerator();
-
-    // Topic rotation
-    const topics = [
-      'How to Eliminate Cat Litter Odor Naturally',
-      'Best Practices for Multi-Cat Households',
-      'Understanding Activated Carbon for Pet Odor Control',
-      'Apartment Living with Cats: Odor Management Tips',
-      'Eco-Friendly Cat Litter Solutions',
-      'Cat Health and Litter Box Hygiene',
-      'Seasonal Cat Care Tips',
-      'DIY Cat Litter Box Maintenance',
-      'Natural Ways to Keep Your Home Fresh with Cats',
-      'The Science Behind Cat Litter Odor Control'
-    ];
-
-    const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
-    const topicIndex = daysSinceEpoch % topics.length;
-    const selectedTopic = topics[topicIndex];
-
-    console.log(`🤖 Generating blog post: ${selectedTopic}`);
-
-    const result = await generator.generateBlogPost(selectedTopic);
-
-    if (!result.success || !result.post) {
-      throw new Error(`Generation failed: ${result.validation.errors.map(e => e.message).join(', ')}`);
-    }
-
-    await generator.publishPost(result.post);
-
-    return res.status(200).json({
-      success: true,
-      postId: result.post.id,
-      slug: result.post.slug,
-      title: result.post.title,
-      topic: selectedTopic,
-      generator: 'filesystem',
-      attempts: result.attempts
-    });
-  } catch (error) {
-    console.error('[auto-blog] generation failed', error);
-    return res.status(500).json({
-      error: 'Failed to generate blog post',
-      details: (error as Error).message,
-    });
-  }
+  );
 }

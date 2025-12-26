@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-12-26T18:01:53.686Z",
+  "sitemap": {
+    "generated": true,
+    "index": false
+  },
+  "robots": {
+    "exists": true
+  },
+  "structuredData": {
+    "implemented": false
+  },
+  "metaTags": {
+    "issues": 69
+  },
+  "recommendations": [
+    "Implement structured data schemas",
+    "Fix 69 meta tag issues"
+  ]
+}

@@ -15,7 +15,14 @@ import * as path from 'path';
 import { execSync } from 'child_process';
 
 // Image size limits (in pixels)
-const IMAGE_LIMITS = {
+interface ImageLimit {
+  maxWidth: number;
+  maxHeight: number;
+  description: string;
+  exclude?: string[];
+}
+
+const IMAGE_LIMITS: Record<string, ImageLimit> = {
   // Blog preview images should be optimized for preview cards
   'public/optimized/blog': {
     maxWidth: 800,

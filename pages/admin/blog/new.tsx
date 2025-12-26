@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { requireAuth } from '@/lib/auth/session';
 import AdminLayout from '@/components/admin/AdminLayout';
@@ -604,15 +605,17 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
               <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Featured Image</h3>
               {featuredImage ? (
-                <div className="relative">
-                  <img
+                <div className="relative h-32">
+                  <Image
                     src={featuredImage}
                     alt="Featured"
-                    className="w-full h-32 object-cover rounded"
+                    fill
+                    className="object-cover rounded"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <button
                     onClick={() => setFeaturedImage('')}
-                    className="absolute top-2 right-2 px-2 py-1 bg-red-600 text-white dark:text-gray-100 text-xs rounded hover:bg-red-700"
+                    className="absolute top-2 right-2 px-2 py-1 bg-red-600 text-white dark:text-gray-100 text-xs rounded hover:bg-red-700 z-10"
                   >
                     Remove
                   </button>
@@ -630,7 +633,7 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
                           const url = await handleImageUpload(file);
                           setFeaturedImage(url);
                           toast.success('Image uploaded');
-                        } catch (error) {
+                        } catch {
                           toast.error('Failed to upload image');
                         }
                       }

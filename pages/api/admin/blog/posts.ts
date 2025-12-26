@@ -138,7 +138,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 
 // Apply security middleware
-const withRateLimitMiddleware = (handler: any) => withRateLimit(RATE_LIMITS.CREATE, handler);
+const withRateLimitMiddleware = (handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>) =>
+  withRateLimit(RATE_LIMITS.CREATE, handler);
 
 export default combineMiddleware(
   withCSRFProtection,

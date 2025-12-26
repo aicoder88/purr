@@ -132,12 +132,10 @@ Several B2B-related API routes were not removed because they might be in use:
 - `/api/retailer/create-checkout.ts` - Is B2B checkout functionality needed?
 - `/api/retailer/orders.ts` - Are retailers able to view their orders?
 - `/api/retailer/profile.ts` - Can retailers manage their profiles?
-- `/api/shipstation/create-order.ts` - Are you using ShipStation for fulfillment?
-- `/api/shipstation/webhook.ts` - Is this webhook configured in ShipStation?
 
 **Action**:
 1. Test the B2B/retailer features on the site
-2. If not being used, remove these API routes: `rm pages/api/retailer/{create-checkout,orders,profile}.ts pages/api/shipstation/*.ts`
+2. If not being used, remove these API routes: `rm pages/api/retailer/{create-checkout,orders,profile}.ts`
 3. If being used, ensure they're properly tested and working
 
 ### 6. Newsletter Functionality

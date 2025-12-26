@@ -93,10 +93,10 @@ export default async function handler(
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Tag management error:', error);
-    return res.status(500).json({ 
-      error: error.message || 'Internal server error' 
+    return res.status(500).json({
+      error: error instanceof Error ? error.message : 'Internal server error'
     });
   }
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as Sentry from '@sentry/nextjs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PlusCircle } from 'lucide-react';
@@ -49,49 +50,76 @@ export function FreeGiveawayForm() {
   });
 
   const onSubmit = async (data: FreeGiveawayFormData) => {
-    setIsSubmitting(true);
-    setSubmitStatus({});
+    Sentry.startSpan(
+      {
+        op: 'ui.form.submit',
+        name: 'Free Giveaway Form Submit',
+      },
+      async (span) => {
+        const { logger } = Sentry;
 
-    try {
-      // Filter out empty cat names
-      const filteredCatNames = data.catNames?.filter(cat => cat.value && cat.value.trim() !== '') || [];
-      
-      const formData = {
-        ...data,
-        catNames: filteredCatNames.map(cat => cat.value),
-      };
+        setIsSubmitting(true);
+        setSubmitStatus({});
 
-      const response = await fetch('/api/free-giveaway', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+        try {
+          // Filter out empty cat names
+          const filteredCatNames = data.catNames?.filter(cat => cat.value && cat.value.trim() !== '') || [];
 
-      const responseData = await response.json();
+          const formData = {
+            ...data,
+            catNames: filteredCatNames.map(cat => cat.value),
+          };
 
-      if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: responseData.message || (t.freeGiveaway?.successMessage || 'Your free bag request has been submitted successfully!'),
-        });
-        // Reset form on success
-        reset();
-      } else {
-        setSubmitStatus({
-          success: false,
-          message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
-        });
+          span.setAttribute('catCount', filteredCatNames.length);
+          logger.info('Submitting free giveaway request', {
+            catCount: filteredCatNames.length,
+            hasEmail: !!data.email
+          });
+
+          const response = await fetch('/api/free-giveaway', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+
+          const responseData = await response.json();
+
+          span.setAttribute('responseStatus', response.status);
+
+          if (response.ok) {
+            logger.info('Free giveaway request submitted successfully');
+            setSubmitStatus({
+              success: true,
+              message: responseData.message || (t.freeGiveaway?.successMessage || 'Your free bag request has been submitted successfully!'),
+            });
+            // Reset form on success
+            reset();
+          } else {
+            logger.warn('Free giveaway request failed', {
+              status: response.status,
+              message: responseData.message
+            });
+            setSubmitStatus({
+              success: false,
+              message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
+            });
+          }
+        } catch (error) {
+          Sentry.captureException(error);
+          logger.error('Error submitting free giveaway request', {
+            error: error instanceof Error ? error.message : 'Unknown error'
+          });
+          setSubmitStatus({
+            success: false,
+            message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',
+          });
+        } finally {
+          setIsSubmitting(false);
+        }
       }
-    } catch {
-      setSubmitStatus({
-        success: false,
-        message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    );
   };
 
   return (

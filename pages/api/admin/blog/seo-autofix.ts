@@ -82,10 +82,10 @@ export default async function handler(
     }
 
     return res.status(200).json({ result });
-  } catch (error: any) {
+  } catch (error) {
     console.error('SEO autofix error:', error);
-    return res.status(500).json({ 
-      error: error.message || 'Internal server error' 
+    return res.status(500).json({
+      error: error instanceof Error ? error.message : 'Internal server error'
     });
   }
 }

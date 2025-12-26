@@ -73,9 +73,11 @@ These are pages/routes that don't exist yet or need to be created:
 Priority external links checked include:
 - Social media profiles (X/Twitter, Instagram, LinkedIn, TikTok, YouTube)
 - Partner websites and stockist locations
-- Third-party integrations (Google Maps, ShipStation API)
+- Third-party integrations (Google Maps)
 
 **Note:** Some external sites may block automated requests (rate limiting, bot protection). This is expected behavior and doesn't indicate broken links.
+
+External link validation includes social media profiles, partner websites, and third-party integrations.
 
 ## Recommendations
 

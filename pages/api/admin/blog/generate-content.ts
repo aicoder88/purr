@@ -96,10 +96,10 @@ export default async function handler(
       tags: result.tags,
       seoKeywords: result.seoKeywords
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Content generation error:', error);
-    return res.status(500).json({ 
-      error: error.message || 'Failed to generate content' 
+    return res.status(500).json({
+      error: error instanceof Error ? error.message : 'Failed to generate content'
     });
   }
 }

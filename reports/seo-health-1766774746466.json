@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-12-26T18:45:46.464Z",
+  "summary": {
+    "totalUrls": 314,
+    "brokenLinks": 8,
+    "canonicalIssues": 0,
+    "redirectChains": 0,
+    "sitemapIssues": 0,
+    "healthScore": 97
+  },
+  "brokenLinks": [
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.crunchbase.com/organization/purrify",
+      "statusCode": 403,
+      "linkText": "Crunchbase",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.yelp.ca/biz/purrify-montreal",
+      "statusCode": 403,
+      "linkText": "Yelp",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://wellfound.com/company/purrify",
+      "statusCode": 403,
+      "linkText": "Wellfound",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://pattesgriffes.com/storelocator.html",
+      "statusCode": 404,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.mamiwouff.ca/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://www.lamifidel.com/",
+      "statusCode": 0,
+      "linkText": "Website",
+      "linkType": "external"
+    },
+    {
+      "sourceUrl": "https://www.purrify.ca",
+      "targetUrl": "https://medium.com/@purrify",
+      "statusCode": 403,
+      "linkText": "",
+      "linkType": "external"
+    }
+  ],
+  "canonicalIssues": [],
+  "redirectChains": [],
+  "sitemapIssues": []
+}

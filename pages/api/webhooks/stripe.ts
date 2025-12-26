@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
+import * as Sentry from '@sentry/nextjs';
 import prisma from '../../../src/lib/prisma';
 import { buffer } from 'micro';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '../../../src/emails/order-confirmation';
@@ -37,12 +38,24 @@ async function sendAdminNotification({
   amount: number;
   isPaymentLink?: boolean;
 }): Promise<{ success: boolean; error?: string }> {
-  if (!process.env.RESEND_API_KEY) {
-    console.error('[Stripe Webhook] RESEND_API_KEY not configured for admin notification');
-    return { success: false, error: 'Email service not configured' };
-  }
+  return Sentry.startSpan(
+    {
+      op: 'email.send',
+      name: 'Send Admin Notification',
+    },
+    async (span) => {
+      const { logger } = Sentry;
 
-  try {
+      span.setAttribute('orderNumber', orderNumber);
+      span.setAttribute('amount', amount);
+      span.setAttribute('isPaymentLink', isPaymentLink);
+
+      if (!process.env.RESEND_API_KEY) {
+        logger.error('RESEND_API_KEY not configured for admin notification');
+        return { success: false, error: 'Email service not configured' };
+      }
+
+      try {
     const formattedAmount = (amount / 100).toFixed(2);
     const orderSource = isPaymentLink ? '(via Payment Link)' : '(via Website Checkout)';
 
@@ -82,17 +95,31 @@ async function sendAdminNotification({
       html: emailHTML,
     });
 
-    if (error) {
-      console.error('[Stripe Webhook] Admin notification error:', error);
-      return { success: false, error: error.message };
-    }
+        if (error) {
+          logger.error('Admin notification failed', {
+            error: error.message,
+            orderNumber
+          });
+          return { success: false, error: error.message };
+        }
 
-    console.log('[Stripe Webhook] Admin notification sent:', { emailId: data?.id, to: ADMIN_EMAIL });
-    return { success: true };
-  } catch (err) {
-    console.error('[Stripe Webhook] Error sending admin notification:', err);
-    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
-  }
+        span.setAttribute('emailId', data?.id || '');
+        logger.info('Admin notification sent successfully', {
+          emailId: data?.id,
+          to: ADMIN_EMAIL,
+          orderNumber
+        });
+        return { success: true };
+      } catch (err) {
+        Sentry.captureException(err);
+        logger.error('Error sending admin notification', {
+          error: err instanceof Error ? err.message : 'Unknown error',
+          orderNumber
+        });
+        return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+      }
+    }
+  );
 }
 
 /**
@@ -116,13 +143,25 @@ async function sendThankYouEmail({
   amount: number;
   locale?: string;
 }): Promise<{ success: boolean; error?: string }> {
-  // Validate Resend API key exists (Resend will validate the key itself)
-  if (!process.env.RESEND_API_KEY) {
-    console.error('[Stripe Webhook] RESEND_API_KEY not configured');
-    return { success: false, error: 'Email service not configured' };
-  }
+  return Sentry.startSpan(
+    {
+      op: 'email.send',
+      name: 'Send Thank You Email',
+    },
+    async (span) => {
+      const { logger } = Sentry;
 
-  try {
+      span.setAttribute('orderNumber', orderNumber);
+      span.setAttribute('locale', locale);
+      span.setAttribute('amount', amount);
+
+      // Validate Resend API key exists (Resend will validate the key itself)
+      if (!process.env.RESEND_API_KEY) {
+        logger.error('RESEND_API_KEY not configured for customer email');
+        return { success: false, error: 'Email service not configured' };
+      }
+
+      try {
     const emailHTML = OrderConfirmationEmailHTML({
       customerEmail,
       customerName,
@@ -142,17 +181,32 @@ async function sendThankYouEmail({
       html: emailHTML,
     });
 
-    if (error) {
-      console.error('[Stripe Webhook] Resend API error:', error);
-      return { success: false, error: error.message };
-    }
+        if (error) {
+          logger.error('Customer email failed', {
+            error: error.message,
+            orderNumber,
+            customerEmail
+          });
+          return { success: false, error: error.message };
+        }
 
-    console.log('[Stripe Webhook] Email sent successfully:', { emailId: data?.id, to: customerEmail });
-    return { success: true };
-  } catch (err) {
-    console.error('[Stripe Webhook] Error sending email:', err);
-    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
-  }
+        span.setAttribute('emailId', data?.id || '');
+        logger.info('Customer email sent successfully', {
+          emailId: data?.id,
+          to: customerEmail,
+          orderNumber
+        });
+        return { success: true };
+      } catch (err) {
+        Sentry.captureException(err);
+        logger.error('Error sending customer email', {
+          error: err instanceof Error ? err.message : 'Unknown error',
+          orderNumber
+        });
+        return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+      }
+    }
+  );
 }
 
 export const config = {
@@ -165,23 +219,43 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
+  return Sentry.startSpan(
+    {
+      op: 'webhook.stripe',
+      name: 'POST /api/webhooks/stripe',
+    },
+    async (span) => {
+      const { logger } = Sentry;
 
-  const buf = await buffer(req);
-  const sig = req.headers['stripe-signature']!;
+      if (req.method !== 'POST') {
+        logger.warn('Invalid method for Stripe webhook', {
+          method: req.method
+        });
+        return res.status(405).json({ message: 'Method not allowed' });
+      }
 
-  let event: Stripe.Event;
+      const buf = await buffer(req);
+      const sig = req.headers['stripe-signature']!;
 
-  try {
-    event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
-  } catch (err) {
-    console.error('Webhook signature verification failed:', err);
-    return res.status(400).send('Webhook signature verification failed');
-  }
+      let event: Stripe.Event;
 
-  try {
+      try {
+        event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+        span.setAttribute('eventType', event.type);
+        span.setAttribute('eventId', event.id);
+        logger.info('Stripe webhook received', {
+          eventType: event.type,
+          eventId: event.id
+        });
+      } catch (err) {
+        Sentry.captureException(err);
+        logger.error('Webhook signature verification failed', {
+          error: err instanceof Error ? err.message : 'Unknown error'
+        });
+        return res.status(400).send('Webhook signature verification failed');
+      }
+
+      try {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
@@ -190,6 +264,19 @@ export default async function handler(
 
         // Determine if this is a Payment Link (no orderId) or website checkout
         const isPaymentLink = !orderId;
+
+        span.setAttribute('sessionId', session.id);
+        span.setAttribute('isPaymentLink', isPaymentLink);
+        span.setAttribute('orderType', orderType || 'consumer');
+        if (orderId) span.setAttribute('orderId', orderId);
+
+        logger.info('Checkout session completed', {
+          sessionId: session.id,
+          orderId,
+          orderType,
+          isPaymentLink,
+          amount: session.amount_total
+        });
 
         // Extract customer details for email
         const customerEmail = session.customer_details?.email || session.customer_email;
@@ -217,7 +304,10 @@ export default async function handler(
 
         // Handle Payment Links (no database order to update)
         if (isPaymentLink) {
-          console.log(`[Stripe Webhook] Payment Link checkout completed: ${session.id}`);
+          logger.info('Payment Link checkout completed', {
+            sessionId: session.id,
+            amount: session.amount_total
+          });
 
           // Send customer confirmation email
           if (customerEmail) {
@@ -232,7 +322,10 @@ export default async function handler(
             });
 
             if (!emailResult.success) {
-              console.error('Failed to send Payment Link thank you email:', emailResult.error);
+              logger.warn('Failed to send Payment Link thank you email', {
+                error: emailResult.error,
+                sessionId: session.id
+              });
             }
           }
 
@@ -249,7 +342,10 @@ export default async function handler(
             });
 
             if (!adminResult.success) {
-              console.error('Failed to send admin notification:', adminResult.error);
+              logger.warn('Failed to send admin notification', {
+                error: adminResult.error,
+                sessionId: session.id
+              });
             }
           }
 
@@ -274,7 +370,11 @@ export default async function handler(
             },
           });
 
-          console.log(`Retailer order ${orderId} paid successfully`);
+          logger.info('Retailer order paid successfully', {
+            orderId,
+            paymentIntent,
+            amount: session.amount_total
+          });
 
           // Send thank you email to retailer
           if (customerEmail) {
@@ -289,7 +389,10 @@ export default async function handler(
             });
 
             if (!emailResult.success) {
-              console.error('Failed to send retailer thank you email:', emailResult.error);
+              logger.warn('Failed to send retailer thank you email', {
+                error: emailResult.error,
+                orderId
+              });
             }
 
             // Send admin notification for retailer order
@@ -353,7 +456,10 @@ export default async function handler(
           });
 
           if (!emailResult.success) {
-            console.error('Failed to send thank you email:', emailResult.error);
+            logger.warn('Failed to send thank you email', {
+              error: emailResult.error,
+              orderId
+            });
             // Don't fail the webhook if email fails
           }
 
@@ -397,12 +503,27 @@ export default async function handler(
       }
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
-    }
+        logger.debug('Unhandled Stripe event type', {
+          eventType: event.type,
+          eventId: event.id
+        });
+        }
 
-    return res.status(200).json({ received: true });
-  } catch (error) {
-    console.error('Error processing webhook:', error);
-    return res.status(500).json({ message: 'Error processing webhook' });
-  }
+        logger.info('Webhook processed successfully', {
+          eventType: event.type,
+          eventId: event.id
+        });
+
+        return res.status(200).json({ received: true });
+      } catch (error) {
+        Sentry.captureException(error);
+        logger.error('Error processing webhook', {
+          error: error instanceof Error ? error.message : 'Unknown error',
+          eventType: event.type,
+          eventId: event.id
+        });
+        return res.status(500).json({ message: 'Error processing webhook' });
+      }
+    }
+  );
 } 

@@ -105,7 +105,6 @@ model RetailerOrder {
   items              RetailerOrderItem[]
   stripeSessionId    String?            @unique
   stripePaymentIntentId String?         @unique
-  shipstationOrderId String?            @unique // ShipStation order ID
   trackingNumber     String?
   shippingCarrier    String?
   shippedAt          DateTime?

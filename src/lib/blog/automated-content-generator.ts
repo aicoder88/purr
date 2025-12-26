@@ -1,4 +1,5 @@
 import type { BlogPost, GeneratedContent } from '@/types/blog';
+import * as Sentry from '@sentry/nextjs';
 import { ContentStore } from './content-store';
 import { ImageOptimizer } from './image-optimizer';
 import { SEOGenerator } from './seo-generator';
@@ -29,111 +30,181 @@ export class AutomatedContentGenerator {
    * Helper method to call Claude API
    */
   private async callClaudeAPI(systemPrompt: string, userPrompt: string, maxTokens: number = 4000): Promise<string> {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-
-    if (!apiKey) {
-      throw new Error('ANTHROPIC_API_KEY not configured');
-    }
-
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
+    return Sentry.startSpan(
+      {
+        op: 'ai.completion',
+        name: 'Claude API Call',
       },
-      body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: maxTokens,
-        system: systemPrompt,
-        messages: [
-          {
-            role: 'user',
-            content: userPrompt
-          }
-        ],
-        temperature: 0.7
-      })
-    });
+      async (span) => {
+        const { logger } = Sentry;
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Claude API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
-    }
+        const apiKey = process.env.ANTHROPIC_API_KEY;
 
-    const data = await response.json();
-    return data.content[0].text;
+        if (!apiKey) {
+          logger.error('ANTHROPIC_API_KEY not configured');
+          throw new Error('ANTHROPIC_API_KEY not configured');
+        }
+
+        span.setAttribute('model', 'claude-3-5-sonnet-20241022');
+        span.setAttribute('maxTokens', maxTokens);
+        span.setAttribute('promptLength', systemPrompt.length + userPrompt.length);
+
+        logger.info('Calling Claude API', {
+          model: 'claude-3-5-sonnet-20241022',
+          maxTokens
+        });
+
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: 'claude-3-5-sonnet-20241022',
+            max_tokens: maxTokens,
+            system: systemPrompt,
+            messages: [
+              {
+                role: 'user',
+                content: userPrompt
+              }
+            ],
+            temperature: 0.7
+          })
+        });
+
+        span.setAttribute('responseStatus', response.status);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          logger.error('Claude API request failed', {
+            status: response.status,
+            error: errorData.error?.message
+          });
+          throw new Error(`Claude API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+        }
+
+        const data = await response.json();
+        const responseText = data.content[0].text;
+
+        span.setAttribute('responseLength', responseText.length);
+        logger.info('Claude API call successful', {
+          responseLength: responseText.length,
+          tokensUsed: data.usage?.total_tokens
+        });
+
+        return responseText;
+      }
+    );
   }
 
   /**
    * Generate AI image using fal.ai Flux Pro
    */
   private async generateAIImage(prompt: string): Promise<{ url: string; alt: string; width: number; height: number } | null> {
-    const apiKey = process.env.FAL_API_KEY;
+    return Sentry.startSpan(
+      {
+        op: 'ai.image.generation',
+        name: 'Generate AI Image',
+      },
+      async (span) => {
+        const { logger } = Sentry;
 
-    if (!apiKey) {
-      console.warn('FAL_API_KEY not configured, skipping AI image generation');
-      return null;
-    }
+        const apiKey = process.env.FAL_API_KEY;
 
-    try {
-      const response = await fetch('https://fal.run/fal-ai/flux-pro', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Key ${apiKey}`
-        },
-        body: JSON.stringify({
-          prompt: `Professional blog featured image: ${prompt}. High quality, clean, modern aesthetic. No text or watermarks.`,
-          image_size: 'landscape_16_9',
-          num_inference_steps: 28,
-          guidance_scale: 3.5,
-          num_images: 1,
-          enable_safety_checker: true
-        })
-      });
+        if (!apiKey) {
+          logger.warn('FAL_API_KEY not configured, skipping AI image generation');
+          return null;
+        }
 
-      if (!response.ok) {
-        throw new Error(`fal.ai API error: ${response.status}`);
-      }
+        try {
+          span.setAttribute('imageSize', 'landscape_16_9');
+          span.setAttribute('promptLength', prompt.length);
 
-      const data = await response.json();
+          logger.info('Generating AI image', {
+            promptLength: prompt.length
+          });
+
+          const response = await fetch('https://fal.run/fal-ai/flux-pro', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Key ${apiKey}`
+            },
+            body: JSON.stringify({
+              prompt: `Professional blog featured image: ${prompt}. High quality, clean, modern aesthetic. No text or watermarks.`,
+              image_size: 'landscape_16_9',
+              num_inference_steps: 28,
+              guidance_scale: 3.5,
+              num_images: 1,
+              enable_safety_checker: true
+            })
+          });
+
+          span.setAttribute('responseStatus', response.status);
+
+          if (!response.ok) {
+            logger.error('AI image generation failed', {
+              status: response.status
+            });
+            throw new Error(`fal.ai API error: ${response.status}`);
+          }
+
+          const data = await response.json();
       
-      if (data.images && data.images.length > 0) {
-        const imageUrl = data.images[0].url;
-        
-        // Download and optimize the generated image
-        const imageResponse = await fetch(imageUrl);
-        const arrayBuffer = await imageResponse.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        
-        // Save to file system and optimize
-        const fs = await import('fs/promises');
-        const path = await import('path');
-        const tempPath = path.join(process.cwd(), 'public', 'temp', `ai-${Date.now()}.png`);
-        await fs.mkdir(path.dirname(tempPath), { recursive: true });
-        await fs.writeFile(tempPath, buffer);
-        
-        // Optimize using existing image optimizer
-        const file = new File([buffer], 'ai-generated.png', { type: 'image/png' });
-        const optimized = await this.imageOptimizer.optimizeImage(file, `ai-${Date.now()}`);
-        
-        // Clean up temp file
-        await fs.unlink(tempPath);
-        
-        return {
-          url: optimized.optimized.webp[0] || imageUrl,
-          alt: prompt,
-          width: optimized.width,
-          height: optimized.height
-        };
-      }
+          if (data.images && data.images.length > 0) {
+            const imageUrl = data.images[0].url;
 
-      return null;
-    } catch (error) {
-      console.error('Error generating AI image:', error);
-      return null;
-    }
+            logger.info('AI image generated successfully, downloading and optimizing');
+
+            // Download and optimize the generated image
+            const imageResponse = await fetch(imageUrl);
+            const arrayBuffer = await imageResponse.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
+            // Save to file system and optimize
+            const fs = await import('fs/promises');
+            const path = await import('path');
+            const tempPath = path.join(process.cwd(), 'public', 'temp', `ai-${Date.now()}.png`);
+            await fs.mkdir(path.dirname(tempPath), { recursive: true });
+            await fs.writeFile(tempPath, buffer);
+
+            // Optimize using existing image optimizer
+            const file = new File([buffer], 'ai-generated.png', { type: 'image/png' });
+            const optimized = await this.imageOptimizer.optimizeImage(file, `ai-${Date.now()}`);
+
+            // Clean up temp file
+            await fs.unlink(tempPath);
+
+            span.setAttribute('imageWidth', optimized.width);
+            span.setAttribute('imageHeight', optimized.height);
+
+            logger.info('AI image optimized successfully', {
+              width: optimized.width,
+              height: optimized.height
+            });
+
+            return {
+              url: optimized.optimized.webp[0] || imageUrl,
+              alt: prompt,
+              width: optimized.width,
+              height: optimized.height
+            };
+          }
+
+          logger.warn('No images returned from AI generation');
+          return null;
+        } catch (error) {
+          Sentry.captureException(error);
+          logger.error('Error generating AI image', {
+            error: error instanceof Error ? error.message : 'Unknown error'
+          });
+          return null;
+        }
+      }
+    );
   }
 
   /**

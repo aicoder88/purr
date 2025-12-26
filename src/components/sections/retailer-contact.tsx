@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import * as Sentry from '@sentry/nextjs';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
@@ -98,43 +99,67 @@ export function RetailerContact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({});
 
-    try {
-      // Send via API
-      const result = await sendRetailerContact();
+    Sentry.startSpan(
+      {
+        op: 'ui.form.submit',
+        name: 'Retailer Contact Form Submit',
+      },
+      async (span) => {
+        const { logger } = Sentry;
 
-      // Handle success
-      setIsSubmitted(true);
-      setSubmitStatus({
-        success: true,
-        message: result.message || 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
-      });
+        setIsSubmitting(true);
+        setSubmitStatus({});
 
-      // Reset form
-      setFormData({
-        businessName: '',
-        contactName: '',
-        email: '',
-        phone: '',
-        position: '',
-        businessType: '',
-        locations: '',
-        currentProducts: '',
-        message: ''
-      });
+        try {
+          span.setAttribute('businessType', formData.businessType);
+          span.setAttribute('hasPhone', !!formData.phone);
+          logger.info('Submitting retailer contact form', {
+            businessType: formData.businessType,
+            locations: formData.locations
+          });
 
-    } catch (err) {
-      setSubmitStatus({
-        success: false,
-        message: err instanceof Error
-          ? err.message
-          : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+          // Send via API
+          const result = await sendRetailerContact();
+
+          logger.info('Retailer contact form submitted successfully');
+
+          // Handle success
+          setIsSubmitted(true);
+          setSubmitStatus({
+            success: true,
+            message: result.message || 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
+          });
+
+          // Reset form
+          setFormData({
+            businessName: '',
+            contactName: '',
+            email: '',
+            phone: '',
+            position: '',
+            businessType: '',
+            locations: '',
+            currentProducts: '',
+            message: ''
+          });
+
+        } catch (err) {
+          Sentry.captureException(err);
+          logger.error('Error submitting retailer contact form', {
+            error: err instanceof Error ? err.message : 'Unknown error'
+          });
+          setSubmitStatus({
+            success: false,
+            message: err instanceof Error
+              ? err.message
+              : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
+          });
+        } finally {
+          setIsSubmitting(false);
+        }
+      }
+    );
   };
 
   if (isSubmitted) {

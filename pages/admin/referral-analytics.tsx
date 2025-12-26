@@ -15,7 +15,7 @@ interface AdminAnalyticsPageProps {
 }
 
 export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: AdminAnalyticsPageProps) {
-  const [systemHealth, _setSystemHealth] = useState<'healthy' | 'warning' | 'critical'>('healthy');
+  const systemHealth: 'healthy' | 'warning' | 'critical' = 'healthy';
   const [realTimeMetrics, setRealTimeMetrics] = useState({
     activeUsers: 0,
     conversionsToday: 0,

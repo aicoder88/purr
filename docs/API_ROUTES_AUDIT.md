@@ -2,11 +2,11 @@
 
 ## Summary
 
-Found **14 unused API routes** out of 40+ total routes.
+Found **12 unused API routes** out of 40+ total routes.
 
 ---
 
-## Unused API Routes (14 total)
+## Unused API Routes (12 total)
 
 ### High Confidence - Can Be Removed
 
@@ -21,11 +21,9 @@ These routes have no frontend references and appear to be unused:
 7. ❌ `/api/retailer/create-checkout.ts` - No frontend calls
 8. ❌ `/api/retailer/orders.ts` - No frontend calls
 9. ❌ `/api/retailer/profile.ts` - No frontend calls
-10. ❌ `/api/shipstation/create-order.ts` - No frontend calls
-11. ❌ `/api/shipstation/webhook.ts` - No frontend calls (but may be called by ShipStation)
-12. ❌ `/api/referrals/notifications.ts` - No frontend calls
-13. ❌ `/api/retailer-inquiry.ts` - No frontend calls
-14. ❌ `/api/payment-validation.ts` - No frontend calls
+10. ❌ `/api/referrals/notifications.ts` - No frontend calls
+11. ❌ `/api/retailer-inquiry.ts` - No frontend calls
+12. ❌ `/api/payment-validation.ts` - No frontend calls
 
 ### Medium Confidence - Verify Before Removing
 
@@ -78,18 +76,11 @@ These routes have no obvious frontend calls but may be used:
 - Check if newsletter signup form exists
 - **Recommendation**: Remove if no newsletter signup exists
 
-### 3. `/api/shipstation/webhook.ts`
-**Status**: ⚠️ **EXTERNAL WEBHOOK**
-
-- No frontend calls (expected)
-- Called by ShipStation service
-- **Recommendation**: Keep if using ShipStation, remove if not
-
 ---
 
 ## Recommended Actions
 
-### Phase 1: Safe Removals (12 files)
+### Phase 1: Safe Removals (10 files)
 
 Remove these with high confidence:
 
@@ -112,10 +103,6 @@ rm pages/api/security/risk-assessment.ts
 rm pages/api/retailer/create-checkout.ts
 rm pages/api/retailer/orders.ts
 rm pages/api/retailer/profile.ts
-
-# ShipStation (if not using)
-rm pages/api/shipstation/create-order.ts
-# rm pages/api/shipstation/webhook.ts  # Only if not using ShipStation
 
 # Referrals (unused)
 rm pages/api/referrals/notifications.ts
@@ -146,9 +133,9 @@ rm pages/api/payment-validation.ts
 
 | Metric | Before | After | Improvement |
 |--------|--------|-------|-------------|
-| **API routes** | 40+ | ~26 | 35% reduction |
-| **Unused routes** | 14 | 0 | 100% cleanup |
-| **Lines of code** | - | ~1,000-1,500 | - |
+| **API routes** | 40+ | ~28 | 30% reduction |
+| **Unused routes** | 12 | 0 | 100% cleanup |
+| **Lines of code** | - | ~1,000-1,200 | - |
 
 ---
 
@@ -173,7 +160,7 @@ Common patterns in over-engineered codebases:
 
 ---
 
-**Status**: ✅ Audit complete - Ready to remove unused routes  
-**High confidence removals**: 12 files  
-**Verify first**: 2 files  
-**Estimated lines removed**: ~1,000-1,500
+**Status**: ✅ Audit complete - Ready to remove unused routes
+**High confidence removals**: 10 files
+**Verify first**: 2 files
+**Estimated lines removed**: ~1,000-1,200
