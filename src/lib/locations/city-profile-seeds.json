@@ -1,118 +1,114 @@
 [
   {
-    "slug": "argentia",
-    "name": "Argentia",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "baddeck",
-    "name": "Baddeck",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "bancroft",
-    "name": "Bancroft",
+    "slug": "toronto",
+    "name": "Toronto",
     "province": "Ontario",
     "provinceCode": "ON",
     "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 2794356,
+    "populationLabel": "2.8M",
     "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
+      "Dense urban living",
+      "High-rise apartments",
+      "Multi-cat households"
     ],
     "climateConsiderations": [
       "Humid summers trap odors in apartments",
       "Sealed winter windows concentrate smells"
     ],
     "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
+      "Odor control for dense urban living",
+      "Odor control for high-rise apartments",
+      "Odor control for multi-cat households",
       "Downtown condos and suburban family homes need fresh air strategies"
     ],
     "retailerAllies": [
       "PetSmart",
       "Pet Valu",
-      "Ren's Pets"
+      "Global Pet Foods"
+    ]
+  },
+  {
+    "slug": "montreal",
+    "name": "Montreal",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 1762949,
+    "populationLabel": "1.8M",
+    "housingHighlights": [
+      "Bilingual market",
+      "Dense apartments",
+      "Cat-loving culture"
     ],
-    "englishQueryVariant": "city-first",
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for bilingual market",
+      "Odor control for dense apartments",
+      "Odor control for cat-loving culture",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Animaleries Taschereau",
+      "Mondou",
+      "PetSmart"
+    ],
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "banff",
-    "name": "Banff",
+    "slug": "calgary",
+    "name": "Calgary",
     "province": "Alberta",
     "provinceCode": "AB",
     "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 1336000,
+    "populationLabel": "1.3M",
     "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
+      "Oil industry",
+      "High income",
+      "Pet-friendly city"
     ],
     "climateConsiderations": [
       "Dry winters require extra humidity control",
       "Temperature swings from Chinooks can amplify odors"
     ],
     "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
+      "Odor control for oil industry",
+      "Odor control for high income",
+      "Odor control for pet-friendly city",
+      "Spacious suburban homes and downtown condos need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetLand",
+      "Pet Planet",
+      "PetSmart"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
+    "slug": "edmonton",
+    "name": "Edmonton",
+    "province": "Alberta",
+    "provinceCode": "AB",
+    "region": "prairies",
+    "metroPopulation": 1010899,
+    "populationLabel": "1M",
+    "housingHighlights": [
+      "River valley living",
+      "Cold climate needs",
+      "Family neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Dry winters require extra humidity control",
+      "Temperature swings from Chinooks can amplify odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for river valley living",
+      "Odor control for cold climate needs",
+      "Odor control for family neighborhoods",
       "Spacious suburban homes and downtown condos need fresh air strategies"
     ],
     "retailerAllies": [
@@ -123,221 +119,121 @@
     "englishQueryVariant": "city-first"
   },
   {
-    "slug": "barkerville",
-    "name": "Barkerville",
+    "slug": "ottawa",
+    "name": "Ottawa",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 994837,
+    "populationLabel": "995k",
+    "housingHighlights": [
+      "Government workers",
+      "Urban professionals",
+      "Cat-friendly city"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for government workers",
+      "Odor control for urban professionals",
+      "Odor control for cat-friendly city",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Rens Pets",
+      "PetSmart",
+      "Walmart"
+    ]
+  },
+  {
+    "slug": "winnipeg",
+    "name": "Winnipeg",
+    "province": "Manitoba",
+    "provinceCode": "MB",
+    "region": "prairies",
+    "metroPopulation": 749607,
+    "populationLabel": "750k",
+    "housingHighlights": [
+      "Prairie city living",
+      "Extreme weather",
+      "Strong pet community"
+    ],
+    "climateConsiderations": [
+      "Cold snaps lock in indoor air",
+      "Humid summers can trigger odor spikes"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie city living",
+      "Odor control for extreme weather",
+      "Odor control for strong pet community",
+      "Bungalows and multi-level family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Pets & Friends"
+    ]
+  },
+  {
+    "slug": "mississauga",
+    "name": "Mississauga",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 721599,
+    "populationLabel": "722k",
+    "housingHighlights": [
+      "Suburban homes",
+      "Multi-cat households",
+      "Active pet community"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for suburban homes",
+      "Odor control for multi-cat households",
+      "Odor control for active pet community",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "vancouver",
+    "name": "Vancouver",
     "province": "British Columbia",
     "provinceCode": "BC",
     "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 675218,
+    "populationLabel": "675k",
     "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
+      "Eco-conscious",
+      "High-density living",
+      "Pet-friendly culture"
     ],
     "climateConsiderations": [
       "Coastal humidity intensifies litter box smells",
       "Rainy seasons keep windows closed for long stretches"
     ],
     "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
+      "Odor control for eco-conscious",
+      "Odor control for high-density living",
+      "Odor control for pet-friendly culture",
       "Dense condo living and eco-focused households need fresh air strategies"
     ],
     "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "barrie",
-    "name": "Barrie",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 150443,
-    "populationLabel": "150k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "bathurst",
-    "name": "Bathurst",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "batoche",
-    "name": "Batoche",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "belleville",
-    "name": "Belleville",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "bonavista",
-    "name": "Bonavista",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "borden",
-    "name": "Borden",
-    "province": "Prince Edward Island",
-    "provinceCode": "PE",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Island community",
-      "Tourism-focused",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Salt air settles inside coastal homes",
-      "Summer tourism keeps litter boxes busier"
-    ],
-    "scentPainPoints": [
-      "Odor control for island community",
-      "Odor control for tourism-focused",
-      "Odor control for agricultural heritage",
-      "Farmhouses and beach rentals need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Co-op",
-      "Local Pet Shops"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+      "Bosleys",
+      "Pet Habitat",
+      "PetSmart"
+    ]
   },
   {
     "slug": "brampton",
@@ -371,1537 +267,33 @@
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "brandon",
-    "name": "Brandon",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Family-friendly prairie neighbourhoods",
-      "Farmhouse-style homes and acreages",
-      "Heritage homes with finished basements"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Multi-cat prairie households",
-      "Basement litter setups during cold snaps",
-      "Farmhouse mudrooms and breezeways",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "independent pet stores in Brandon"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "brantford",
-    "name": "Brantford",
+    "slug": "scarborough",
+    "name": "Scarborough",
     "province": "Ontario",
     "provinceCode": "ON",
     "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 632098,
+    "populationLabel": "632k",
     "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
+      "Diverse neighborhoods",
+      "Apartment and condo living",
+      "Active pet community"
     ],
     "climateConsiderations": [
       "Humid summers trap odors in apartments",
       "Sealed winter windows concentrate smells"
     ],
     "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
+      "Odor control for diverse neighborhoods",
+      "Odor control for apartment and condo living",
+      "Odor control for active pet community",
       "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "brockville",
-    "name": "Brockville",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "brooks",
-    "name": "Brooks",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "burlington",
-    "name": "Burlington",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 186948,
-    "populationLabel": "187k",
-    "housingHighlights": [
-      "Lakeside communities",
-      "Family neighborhoods",
-      "Active pet owners"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for lakeside communities",
-      "Odor control for family neighborhoods",
-      "Odor control for active pet owners",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "burnaby",
-    "name": "Burnaby",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "calgary",
-    "name": "Calgary",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 1336000,
-    "populationLabel": "1.3M",
-    "housingHighlights": [
-      "Oil industry",
-      "High income",
-      "Pet-friendly city"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for oil industry",
-      "Odor control for high income",
-      "Odor control for pet-friendly city",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetLand",
-      "Pet Planet",
-      "PetSmart"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "cambridge",
-    "name": "Cambridge",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "campbell-river",
-    "name": "Campbell River",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "caraquet",
-    "name": "Caraquet",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "cavendish",
-    "name": "Cavendish",
-    "province": "Prince Edward Island",
-    "provinceCode": "PE",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Island community",
-      "Tourism-focused",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Salt air settles inside coastal homes",
-      "Summer tourism keeps litter boxes busier"
-    ],
-    "scentPainPoints": [
-      "Odor control for island community",
-      "Odor control for tourism-focused",
-      "Odor control for agricultural heritage",
-      "Farmhouses and beach rentals need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Co-op",
-      "Local Pet Shops"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "channel-port-aux-basques",
-    "name": "Channel-Port aux Basques",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "charlottetown",
-    "name": "Charlottetown",
-    "province": "Prince Edward Island",
-    "provinceCode": "PE",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Island community",
-      "Tourism-focused",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Salt air settles inside coastal homes",
-      "Summer tourism keeps litter boxes busier"
-    ],
-    "scentPainPoints": [
-      "Odor control for island community",
-      "Odor control for tourism-focused",
-      "Odor control for agricultural heritage",
-      "Farmhouses and beach rentals need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Co-op",
-      "Local Pet Shops"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "chatham",
-    "name": "Chatham",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "chatham-kent",
-    "name": "Chatham-Kent",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "chilliwack",
-    "name": "Chilliwack",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "churchill",
-    "name": "Churchill",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "corner-brook",
-    "name": "Corner Brook",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "cornwall",
-    "name": "Cornwall",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "courtenay",
-    "name": "Courtenay",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "cranbrook",
-    "name": "Cranbrook",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "cumberland-house",
-    "name": "Cumberland House",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "dalhousie",
-    "name": "Dalhousie",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "dauphin",
-    "name": "Dauphin",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "dawson",
-    "name": "Dawson",
-    "province": "Yukon",
-    "provinceCode": "YT",
-    "region": "north",
-    "metroPopulation": 1500,
-    "populationLabel": "2k",
-    "housingHighlights": [
-      "Remote northern climate",
-      "Historic Klondike community",
-      "Outdoor-loving households"
-    ],
-    "climateConsiderations": [
-      "Subarctic cold keeps windows sealed",
-      "Short summers need rapid ventilation"
-    ],
-    "scentPainPoints": [
-      "Odor control for remote northern climate",
-      "Odor control for historic klondike community",
-      "Odor control for outdoor-loving households",
-      "Compact homes built for extreme climates need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Yukon Gardens",
-      "Bonanza Market",
-      "Local Pet Shops"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "dawson-creek",
-    "name": "Dawson Creek",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "delta",
-    "name": "Delta",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "digby",
-    "name": "Digby",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
     ],
     "retailerAllies": [
       "PetSmart",
       "Pet Valu",
       "Global Pet Foods"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "edmonton",
-    "name": "Edmonton",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 1010899,
-    "populationLabel": "1M",
-    "housingHighlights": [
-      "River valley living",
-      "Cold climate needs",
-      "Family neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for river valley living",
-      "Odor control for cold climate needs",
-      "Odor control for family neighborhoods",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "elliot-lake",
-    "name": "Elliot Lake",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "esquimalt",
-    "name": "Esquimalt",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "estevan",
-    "name": "Estevan",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "etobicoke",
-    "name": "Etobicoke",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "ferryland",
-    "name": "Ferryland",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "flin-flon",
-    "name": "Flin Flon",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-erie",
-    "name": "Fort Erie",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-frances",
-    "name": "Fort Frances",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-mcmurray",
-    "name": "Fort McMurray",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-saint-james",
-    "name": "Fort Saint James",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-saint-john",
-    "name": "Fort Saint John",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "fort-smith",
-    "name": "Fort Smith",
-    "province": "Northwest Territories",
-    "provinceCode": "NT",
-    "region": "north",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic dryness intensifies ammonia smell",
-      "Extended winters reduce fresh air circulation"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Tight northern housing with limited airflow need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "fredericton",
-    "name": "Fredericton",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "gananoque",
-    "name": "Gananoque",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "gander",
-    "name": "Gander",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "gatineau",
-    "name": "Gatineau",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 291041,
-    "populationLabel": "291k",
-    "housingHighlights": [
-      "National Capital Region",
-      "Bilingual community",
-      "Urban-suburban mix"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for national capital region",
-      "Odor control for bilingual community",
-      "Odor control for urban-suburban mix",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Animaleries Taschereau"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "glace-bay",
-    "name": "Glace Bay",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "grand-fallswindsor",
-    "name": "Grand Falls–Windsor",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "grande-prairie",
-    "name": "Grande Prairie",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "guelph",
-    "name": "Guelph",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 135474,
-    "populationLabel": "135k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "halifax",
-    "name": "Halifax",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 439819,
-    "populationLabel": "440k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+    ]
   },
   {
     "slug": "hamilton",
@@ -1935,689 +327,63 @@
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "happy-valleygoose-bay",
-    "name": "Happy Valley–Goose Bay",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "slug": "quebec-city",
+    "name": "Quebec City",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 542298,
+    "populationLabel": "542k",
     "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
+      "Historic city",
+      "French-speaking",
+      "Tourist destination"
     ],
     "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
     ],
     "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
+      "Odor control for historic city",
+      "Odor control for french-speaking",
+      "Odor control for tourist destination",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "Canadian Tire",
+      "IGA"
+    ]
+  },
+  {
+    "slug": "halifax",
+    "name": "Halifax",
+    "province": "Nova Scotia",
+    "provinceCode": "NS",
+    "region": "atlantic",
+    "metroPopulation": 439819,
+    "populationLabel": "440k",
+    "housingHighlights": [
+      "Coastal communities",
+      "Tourism-friendly",
+      "Historic homes"
+    ],
+    "climateConsiderations": [
+      "Atlantic storms keep pets inside",
+      "Ocean air boosts humidity levels"
+    ],
+    "scentPainPoints": [
+      "Odor control for coastal communities",
+      "Odor control for tourism-friendly",
+      "Odor control for historic homes",
+      "Coastal towns and growing urban condos need fresh air strategies"
     ],
     "retailerAllies": [
       "PetSmart",
       "Pet Valu",
-      "Colemans"
+      "Global Pet Foods"
     ],
     "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "harbour-grace",
-    "name": "Harbour Grace",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "hay-river",
-    "name": "Hay River",
-    "province": "Northwest Territories",
-    "provinceCode": "NT",
-    "region": "north",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic dryness intensifies ammonia smell",
-      "Extended winters reduce fresh air circulation"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Tight northern housing with limited airflow need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ],
-    "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "hope",
-    "name": "Hope",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ],
-    "englishQueryVariant": "city-first"
-  },
-  {
-    "slug": "inuvik",
-    "name": "Inuvik",
-    "province": "Northwest Territories",
-    "provinceCode": "NT",
-    "region": "north",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic dryness intensifies ammonia smell",
-      "Extended winters reduce fresh air circulation"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Tight northern housing with limited airflow need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "iqaluit",
-    "name": "Iqaluit",
-    "province": "Nunavut",
-    "provinceCode": "NU",
-    "region": "north",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic temperatures keep doors closed",
-      "Ventilation systems work overtime year-round"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Remote communities with efficient housing need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "iroquois-falls",
-    "name": "Iroquois Falls",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "jasper",
-    "name": "Jasper",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ]
-  },
-  {
-    "slug": "kamloops",
-    "name": "Kamloops",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "kapuskasing",
-    "name": "Kapuskasing",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kawartha-lakes",
-    "name": "Kawartha Lakes",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kelowna",
-    "name": "Kelowna",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 144576,
-    "populationLabel": "145k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "kenora",
-    "name": "Kenora",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kildonan",
-    "name": "Kildonan",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kimberley",
-    "name": "Kimberley",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "kingston",
-    "name": "Kingston",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kirkland-lake",
-    "name": "Kirkland Lake",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kitchener",
-    "name": "Kitchener",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 256885,
-    "populationLabel": "257k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "kitimat",
-    "name": "Kitimat",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "labrador-city",
-    "name": "Labrador City",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "lake-louise",
-    "name": "Lake Louise",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ]
-  },
-  {
-    "slug": "langley",
-    "name": "Langley",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "laurentian-hills",
-    "name": "Laurentian Hills",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
     "frenchQueryVariant": "city-first"
   },
   {
@@ -2651,65 +417,6 @@
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "lethbridge",
-    "name": "Lethbridge",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ]
-  },
-  {
-    "slug": "liverpool",
-    "name": "Liverpool",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
     "slug": "london",
     "name": "London",
     "province": "Ontario",
@@ -2717,6 +424,155 @@
     "region": "central",
     "metroPopulation": 422324,
     "populationLabel": "422k",
+    "housingHighlights": [
+      "Diverse communities",
+      "Urban and suburban living",
+      "Family-focused neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for diverse communities",
+      "Odor control for urban and suburban living",
+      "Odor control for family-focused neighborhoods",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "markham",
+    "name": "Markham",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 338503,
+    "populationLabel": "339k",
+    "housingHighlights": [
+      "Upscale suburban homes",
+      "Tech-savvy pet owners",
+      "Premium pet care market"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for upscale suburban homes",
+      "Odor control for tech-savvy pet owners",
+      "Odor control for premium pet care market",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
+    ],
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "vaughan",
+    "name": "Vaughan",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 323103,
+    "populationLabel": "323k",
+    "housingHighlights": [
+      "Modern suburban homes",
+      "Family-oriented communities",
+      "Growing pet population"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for modern suburban homes",
+      "Odor control for family-oriented communities",
+      "Odor control for growing pet population",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
+    ]
+  },
+  {
+    "slug": "gatineau",
+    "name": "Gatineau",
+    "province": "Quebec",
+    "provinceCode": "QC",
+    "region": "central",
+    "metroPopulation": 291041,
+    "populationLabel": "291k",
+    "housingHighlights": [
+      "National Capital Region",
+      "Bilingual community",
+      "Urban-suburban mix"
+    ],
+    "climateConsiderations": [
+      "Long winters require closed windows",
+      "Humid summers magnify litter odors"
+    ],
+    "scentPainPoints": [
+      "Odor control for national capital region",
+      "Odor control for bilingual community",
+      "Odor control for urban-suburban mix",
+      "Bilingual homes and historic apartments need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "Mondou",
+      "PetSmart",
+      "Animaleries Taschereau"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "saskatoon",
+    "name": "Saskatoon",
+    "province": "Saskatchewan",
+    "provinceCode": "SK",
+    "region": "prairies",
+    "metroPopulation": 273010,
+    "populationLabel": "273k",
+    "housingHighlights": [
+      "Prairie communities",
+      "Family-oriented",
+      "Agricultural heritage"
+    ],
+    "climateConsiderations": [
+      "Arid winters dry out air",
+      "Wide temperature swings affect odor control"
+    ],
+    "scentPainPoints": [
+      "Odor control for prairie communities",
+      "Odor control for family-oriented",
+      "Odor control for agricultural heritage",
+      "Rural homesteads and urban lofts need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Co-op"
+    ]
+  },
+  {
+    "slug": "kitchener",
+    "name": "Kitchener",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 256885,
+    "populationLabel": "257k",
     "housingHighlights": [
       "Diverse communities",
       "Urban and suburban living",
@@ -2770,132 +626,13 @@
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "louisbourg",
-    "name": "Louisbourg",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "lunenburg",
-    "name": "Lunenburg",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "markham",
-    "name": "Markham",
+    "slug": "windsor",
+    "name": "Windsor",
     "province": "Ontario",
     "provinceCode": "ON",
     "region": "central",
-    "metroPopulation": 338503,
-    "populationLabel": "339k",
-    "housingHighlights": [
-      "Upscale suburban homes",
-      "Tech-savvy pet owners",
-      "Premium pet care market"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for upscale suburban homes",
-      "Odor control for tech-savvy pet owners",
-      "Odor control for premium pet care market",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "medicine-hat",
-    "name": "Medicine Hat",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ]
-  },
-  {
-    "slug": "midland",
-    "name": "Midland",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 229660,
+    "populationLabel": "230k",
     "housingHighlights": [
       "Diverse communities",
       "Urban and suburban living",
@@ -2915,1064 +652,6 @@
       "PetSmart",
       "Pet Valu",
       "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "miramichi",
-    "name": "Miramichi",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "mississauga",
-    "name": "Mississauga",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 721599,
-    "populationLabel": "722k",
-    "housingHighlights": [
-      "Suburban homes",
-      "Multi-cat households",
-      "Active pet community"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for suburban homes",
-      "Odor control for multi-cat households",
-      "Odor control for active pet community",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "moncton",
-    "name": "Moncton",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
-    ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "montreal",
-    "name": "Montreal",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 1762949,
-    "populationLabel": "1.8M",
-    "housingHighlights": [
-      "Bilingual market",
-      "Dense apartments",
-      "Cat-loving culture"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual market",
-      "Odor control for dense apartments",
-      "Odor control for cat-loving culture",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Animaleries Taschereau",
-      "Mondou",
-      "PetSmart"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "moose-factory",
-    "name": "Moose Factory",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "moose-jaw",
-    "name": "Moose Jaw",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "moosonee",
-    "name": "Moosonee",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "nanaimo",
-    "name": "Nanaimo",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "nelson",
-    "name": "Nelson",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "new-westminster",
-    "name": "New Westminster",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "niagara-falls",
-    "name": "Niagara Falls",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "niagara-on-the-lake",
-    "name": "Niagara-on-the-Lake",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "north-bay",
-    "name": "North Bay",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "north-vancouver",
-    "name": "North Vancouver",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "north-york",
-    "name": "North York",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "oak-bay",
-    "name": "Oak Bay",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "oakville",
-    "name": "Oakville",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 213759,
-    "populationLabel": "214k",
-    "housingHighlights": [
-      "Upscale lakeside community",
-      "Luxury homes",
-      "Premium pet care market"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for upscale lakeside community",
-      "Odor control for luxury homes",
-      "Odor control for premium pet care market",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "orillia",
-    "name": "Orillia",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "oshawa",
-    "name": "Oshawa",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 175383,
-    "populationLabel": "175k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "ottawa",
-    "name": "Ottawa",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 994837,
-    "populationLabel": "995k",
-    "housingHighlights": [
-      "Government workers",
-      "Urban professionals",
-      "Cat-friendly city"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for government workers",
-      "Odor control for urban professionals",
-      "Odor control for cat-friendly city",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Rens Pets",
-      "PetSmart",
-      "Walmart"
-    ]
-  },
-  {
-    "slug": "parry-sound",
-    "name": "Parry Sound",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "penticton",
-    "name": "Penticton",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "perth",
-    "name": "Perth",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "peterborough",
-    "name": "Peterborough",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "picton",
-    "name": "Picton",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "pictou",
-    "name": "Pictou",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "placentia",
-    "name": "Placentia",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ]
-  },
-  {
-    "slug": "port-colborne",
-    "name": "Port Colborne",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "port-hawkesbury",
-    "name": "Port Hawkesbury",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "powell-river",
-    "name": "Powell River",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "prince-albert",
-    "name": "Prince Albert",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ],
-    "frenchQueryVariant": "city-first"
-  },
-  {
-    "slug": "prince-george",
-    "name": "Prince George",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "prince-rupert",
-    "name": "Prince Rupert",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "quebec-city",
-    "name": "Quebec City",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 542298,
-    "populationLabel": "542k",
-    "housingHighlights": [
-      "Historic city",
-      "French-speaking",
-      "Tourist destination"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for historic city",
-      "Odor control for french-speaking",
-      "Odor control for tourist destination",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "Canadian Tire",
-      "IGA"
-    ]
-  },
-  {
-    "slug": "quesnel",
-    "name": "Quesnel",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "red-deer",
-    "name": "Red Deer",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
     ]
   },
   {
@@ -4006,33 +685,34 @@
     "frenchQueryVariant": "city-first"
   },
   {
-    "slug": "revelstoke",
-    "name": "Revelstoke",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "slug": "oakville",
+    "name": "Oakville",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 213759,
+    "populationLabel": "214k",
     "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
+      "Upscale lakeside community",
+      "Luxury homes",
+      "Premium pet care market"
     ],
     "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
     ],
     "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
+      "Odor control for upscale lakeside community",
+      "Odor control for luxury homes",
+      "Odor control for premium pet care market",
+      "Downtown condos and suburban family homes need fresh air strategies"
     ],
     "retailerAllies": [
       "PetSmart",
       "Pet Valu",
-      "Bosley's"
-    ]
+      "Ren's Pets"
+    ],
+    "frenchQueryVariant": "city-first"
   },
   {
     "slug": "richmond-hill",
@@ -4064,42 +744,104 @@
     ]
   },
   {
-    "slug": "rimouski",
-    "name": "Rimouski",
-    "province": "Quebec",
-    "provinceCode": "QC",
+    "slug": "burlington",
+    "name": "Burlington",
+    "province": "Ontario",
+    "provinceCode": "ON",
     "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 186948,
+    "populationLabel": "187k",
     "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
+      "Lakeside communities",
+      "Family neighborhoods",
+      "Active pet owners"
     ],
     "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
     ],
     "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
+      "Odor control for lakeside communities",
+      "Odor control for family neighborhoods",
+      "Odor control for active pet owners",
+      "Downtown condos and suburban family homes need fresh air strategies"
     ],
     "retailerAllies": [
-      "Mondou",
       "PetSmart",
-      "Chico"
+      "Pet Valu",
+      "Ren's Pets"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "oshawa",
+    "name": "Oshawa",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 175383,
+    "populationLabel": "175k",
+    "housingHighlights": [
+      "Diverse communities",
+      "Urban and suburban living",
+      "Family-focused neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for diverse communities",
+      "Odor control for urban and suburban living",
+      "Odor control for family-focused neighborhoods",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
     ]
   },
   {
-    "slug": "rossland",
-    "name": "Rossland",
+    "slug": "barrie",
+    "name": "Barrie",
+    "province": "Ontario",
+    "provinceCode": "ON",
+    "region": "central",
+    "metroPopulation": 150443,
+    "populationLabel": "150k",
+    "housingHighlights": [
+      "Diverse communities",
+      "Urban and suburban living",
+      "Family-focused neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Humid summers trap odors in apartments",
+      "Sealed winter windows concentrate smells"
+    ],
+    "scentPainPoints": [
+      "Odor control for diverse communities",
+      "Odor control for urban and suburban living",
+      "Odor control for family-focused neighborhoods",
+      "Downtown condos and suburban family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Ren's Pets"
+    ],
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "kelowna",
+    "name": "Kelowna",
     "province": "British Columbia",
     "provinceCode": "BC",
     "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
+    "metroPopulation": 144576,
+    "populationLabel": "145k",
     "housingHighlights": [
       "Eco-conscious living",
       "Outdoor lifestyle",
@@ -4122,158 +864,13 @@
     ]
   },
   {
-    "slug": "rouyn-noranda",
-    "name": "Rouyn-Noranda",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "saguenay",
-    "name": "Saguenay",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "saint-albert",
-    "name": "Saint Albert",
-    "province": "Alberta",
-    "provinceCode": "AB",
-    "region": "prairies",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Energy sector workers",
-      "Dry climate homes",
-      "Growing communities"
-    ],
-    "climateConsiderations": [
-      "Dry winters require extra humidity control",
-      "Temperature swings from Chinooks can amplify odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for energy sector workers",
-      "Odor control for dry climate homes",
-      "Odor control for growing communities",
-      "Spacious suburban homes and downtown condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Homes Alive Pets"
-    ]
-  },
-  {
-    "slug": "saint-anthony",
-    "name": "Saint Anthony",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ]
-  },
-  {
-    "slug": "saint-boniface",
-    "name": "Saint Boniface",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ]
-  },
-  {
-    "slug": "saint-catharines",
-    "name": "Saint Catharines",
+    "slug": "guelph",
+    "name": "Guelph",
     "province": "Ontario",
     "provinceCode": "ON",
     "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
+    "metroPopulation": 135474,
+    "populationLabel": "135k",
     "housingHighlights": [
       "Diverse communities",
       "Urban and suburban living",
@@ -4293,1543 +890,8 @@
       "PetSmart",
       "Pet Valu",
       "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "saint-john",
-    "name": "Saint John",
-    "province": "New Brunswick",
-    "provinceCode": "NB",
-    "region": "atlantic",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Maritime culture",
-      "Bilingual communities",
-      "Coastal living"
     ],
-    "climateConsiderations": [
-      "Maritime humidity lingers indoors",
-      "Historic homes need ventilation planning"
-    ],
-    "scentPainPoints": [
-      "Odor control for maritime culture",
-      "Odor control for bilingual communities",
-      "Odor control for coastal living",
-      "Heritage homes and waterfront apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Atlantic Co-op"
-    ]
-  },
-  {
-    "slug": "saint-thomas",
-    "name": "Saint Thomas",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "saint-eustache",
-    "name": "Saint-Eustache",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "saint-hubert",
-    "name": "Saint-Hubert",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "sainte-anne-de-beaupre",
-    "name": "Sainte-Anne-de-Beaupré",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "sainte-foy",
-    "name": "Sainte-Foy",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "sainte-therese",
-    "name": "Sainte-Thérèse",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "sarnia-clearwater",
-    "name": "Sarnia-Clearwater",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "saskatoon",
-    "name": "Saskatoon",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 273010,
-    "populationLabel": "273k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ]
-  },
-  {
-    "slug": "sault-sainte-marie",
-    "name": "Sault Sainte Marie",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 15000,
-    "populationLabel": "15k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "scarborough",
-    "name": "Scarborough",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 632098,
-    "populationLabel": "632k",
-    "housingHighlights": [
-      "Diverse neighborhoods",
-      "Apartment and condo living",
-      "Active pet community"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse neighborhoods",
-      "Odor control for apartment and condo living",
-      "Odor control for active pet community",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "sept-iles",
-    "name": "Sept-Îles",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "sherbrooke",
-    "name": "Sherbrooke",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "simcoe",
-    "name": "Simcoe",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "sorel-tracy",
-    "name": "Sorel-Tracy",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "souris",
-    "name": "Souris",
-    "province": "Prince Edward Island",
-    "provinceCode": "PE",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Island community",
-      "Tourism-focused",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Salt air settles inside coastal homes",
-      "Summer tourism keeps litter boxes busier"
-    ],
-    "scentPainPoints": [
-      "Odor control for island community",
-      "Odor control for tourism-focused",
-      "Odor control for agricultural heritage",
-      "Farmhouses and beach rentals need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Co-op",
-      "Local Pet Shops"
-    ]
-  },
-  {
-    "slug": "springhill",
-    "name": "Springhill",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "st-johns",
-    "name": "St. John’s",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ]
-  },
-  {
-    "slug": "stratford",
-    "name": "Stratford",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "sudbury",
-    "name": "Sudbury",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "summerside",
-    "name": "Summerside",
-    "province": "Prince Edward Island",
-    "provinceCode": "PE",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Island community",
-      "Tourism-focused",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Salt air settles inside coastal homes",
-      "Summer tourism keeps litter boxes busier"
-    ],
-    "scentPainPoints": [
-      "Odor control for island community",
-      "Odor control for tourism-focused",
-      "Odor control for agricultural heritage",
-      "Farmhouses and beach rentals need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Co-op",
-      "Local Pet Shops"
-    ]
-  },
-  {
-    "slug": "swan-river",
-    "name": "Swan River",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ]
-  },
-  {
-    "slug": "sydney",
-    "name": "Sydney",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "temiskaming-shores",
-    "name": "Temiskaming Shores",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "thompson",
-    "name": "Thompson",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ]
-  },
-  {
-    "slug": "thorold",
-    "name": "Thorold",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "thunder-bay",
-    "name": "Thunder Bay",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "timmins",
-    "name": "Timmins",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "toronto",
-    "name": "Toronto",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 2794356,
-    "populationLabel": "2.8M",
-    "housingHighlights": [
-      "Dense urban living",
-      "High-rise apartments",
-      "Multi-cat households"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for dense urban living",
-      "Odor control for high-rise apartments",
-      "Odor control for multi-cat households",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "trail",
-    "name": "Trail",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "trenton",
-    "name": "Trenton",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "trois-rivieres",
-    "name": "Trois-Rivières",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "tuktoyaktuk",
-    "name": "Tuktoyaktuk",
-    "province": "Northwest Territories",
-    "provinceCode": "NT",
-    "region": "north",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic dryness intensifies ammonia smell",
-      "Extended winters reduce fresh air circulation"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Tight northern housing with limited airflow need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ]
-  },
-  {
-    "slug": "uranium-city",
-    "name": "Uranium City",
-    "province": "Saskatchewan",
-    "provinceCode": "SK",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie communities",
-      "Family-oriented",
-      "Agricultural heritage"
-    ],
-    "climateConsiderations": [
-      "Arid winters dry out air",
-      "Wide temperature swings affect odor control"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie communities",
-      "Odor control for family-oriented",
-      "Odor control for agricultural heritage",
-      "Rural homesteads and urban lofts need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Co-op"
-    ]
-  },
-  {
-    "slug": "val-dor",
-    "name": "Val-d’Or",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "vancouver",
-    "name": "Vancouver",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 675218,
-    "populationLabel": "675k",
-    "housingHighlights": [
-      "Eco-conscious",
-      "High-density living",
-      "Pet-friendly culture"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious",
-      "Odor control for high-density living",
-      "Odor control for pet-friendly culture",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Bosleys",
-      "Pet Habitat",
-      "PetSmart"
-    ]
-  },
-  {
-    "slug": "vaughan",
-    "name": "Vaughan",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 323103,
-    "populationLabel": "323k",
-    "housingHighlights": [
-      "Modern suburban homes",
-      "Family-oriented communities",
-      "Growing pet population"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for modern suburban homes",
-      "Odor control for family-oriented communities",
-      "Odor control for growing pet population",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "vernon",
-    "name": "Vernon",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "victoria",
-    "name": "Victoria",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 92141,
-    "populationLabel": "92k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "wabana",
-    "name": "Wabana",
-    "province": "Newfoundland and Labrador",
-    "provinceCode": "NL",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Tight-knit communities",
-      "Coastal living",
-      "Resilient spirit"
-    ],
-    "climateConsiderations": [
-      "Coastal winds carry moisture year-round",
-      "Foggy mornings make air feel heavy"
-    ],
-    "scentPainPoints": [
-      "Odor control for tight-knit communities",
-      "Odor control for coastal living",
-      "Odor control for resilient spirit",
-      "Tight-knit coastal communities need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Colemans"
-    ]
-  },
-  {
-    "slug": "waskaganish",
-    "name": "Waskaganish",
-    "province": "Quebec",
-    "provinceCode": "QC",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Bilingual community",
-      "Urban apartments",
-      "Rich cultural heritage"
-    ],
-    "climateConsiderations": [
-      "Long winters require closed windows",
-      "Humid summers magnify litter odors"
-    ],
-    "scentPainPoints": [
-      "Odor control for bilingual community",
-      "Odor control for urban apartments",
-      "Odor control for rich cultural heritage",
-      "Bilingual homes and historic apartments need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Mondou",
-      "PetSmart",
-      "Chico"
-    ]
-  },
-  {
-    "slug": "waterloo",
-    "name": "Waterloo",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "welland",
-    "name": "Welland",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "west-nipissing",
-    "name": "West Nipissing",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "west-vancouver",
-    "name": "West Vancouver",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "white-rock",
-    "name": "White Rock",
-    "province": "British Columbia",
-    "provinceCode": "BC",
-    "region": "west-coast",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Eco-conscious living",
-      "Outdoor lifestyle",
-      "Pet-friendly communities"
-    ],
-    "climateConsiderations": [
-      "Coastal humidity intensifies litter box smells",
-      "Rainy seasons keep windows closed for long stretches"
-    ],
-    "scentPainPoints": [
-      "Odor control for eco-conscious living",
-      "Odor control for outdoor lifestyle",
-      "Odor control for pet-friendly communities",
-      "Dense condo living and eco-focused households need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Bosley's"
-    ]
-  },
-  {
-    "slug": "windsor",
-    "name": "Windsor",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 229660,
-    "populationLabel": "230k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "winnipeg",
-    "name": "Winnipeg",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 749607,
-    "populationLabel": "750k",
-    "housingHighlights": [
-      "Prairie city living",
-      "Extreme weather",
-      "Strong pet community"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie city living",
-      "Odor control for extreme weather",
-      "Odor control for strong pet community",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ]
-  },
-  {
-    "slug": "woodstock",
-    "name": "Woodstock",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "yarmouth",
-    "name": "Yarmouth",
-    "province": "Nova Scotia",
-    "provinceCode": "NS",
-    "region": "atlantic",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Coastal communities",
-      "Tourism-friendly",
-      "Historic homes"
-    ],
-    "climateConsiderations": [
-      "Atlantic storms keep pets inside",
-      "Ocean air boosts humidity levels"
-    ],
-    "scentPainPoints": [
-      "Odor control for coastal communities",
-      "Odor control for tourism-friendly",
-      "Odor control for historic homes",
-      "Coastal towns and growing urban condos need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Global Pet Foods"
-    ]
-  },
-  {
-    "slug": "yellowknife",
-    "name": "Yellowknife",
-    "province": "Northwest Territories",
-    "provinceCode": "NT",
-    "region": "north",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Northern communities",
-      "Resilient households",
-      "Close-knit neighbors"
-    ],
-    "climateConsiderations": [
-      "Arctic dryness intensifies ammonia smell",
-      "Extended winters reduce fresh air circulation"
-    ],
-    "scentPainPoints": [
-      "Odor control for northern communities",
-      "Odor control for resilient households",
-      "Odor control for close-knit neighbors",
-      "Tight northern housing with limited airflow need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "Northern Stores",
-      "Co-op",
-      "Local Retailers"
-    ]
-  },
-  {
-    "slug": "york",
-    "name": "York",
-    "province": "Ontario",
-    "provinceCode": "ON",
-    "region": "central",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Diverse communities",
-      "Urban and suburban living",
-      "Family-focused neighborhoods"
-    ],
-    "climateConsiderations": [
-      "Humid summers trap odors in apartments",
-      "Sealed winter windows concentrate smells"
-    ],
-    "scentPainPoints": [
-      "Odor control for diverse communities",
-      "Odor control for urban and suburban living",
-      "Odor control for family-focused neighborhoods",
-      "Downtown condos and suburban family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Ren's Pets"
-    ]
-  },
-  {
-    "slug": "york-factory",
-    "name": "York Factory",
-    "province": "Manitoba",
-    "provinceCode": "MB",
-    "region": "prairies",
-    "metroPopulation": 25000,
-    "populationLabel": "25k",
-    "housingHighlights": [
-      "Prairie resilience",
-      "Extreme weather adaptability",
-      "Close-knit communities"
-    ],
-    "climateConsiderations": [
-      "Cold snaps lock in indoor air",
-      "Humid summers can trigger odor spikes"
-    ],
-    "scentPainPoints": [
-      "Odor control for prairie resilience",
-      "Odor control for extreme weather adaptability",
-      "Odor control for close-knit communities",
-      "Bungalows and multi-level family homes need fresh air strategies"
-    ],
-    "retailerAllies": [
-      "PetSmart",
-      "Pet Valu",
-      "Pets & Friends"
-    ]
+    "englishQueryVariant": "city-first",
+    "frenchQueryVariant": "city-first"
   }
 ]

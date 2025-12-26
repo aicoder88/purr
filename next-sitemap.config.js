@@ -22,7 +22,21 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/api/*', '/admin/*', '/404', '/_next/*', '/static/*', '/free', '/fr/free', '/test', '/demo/*'],
+  exclude: [
+    '/api/*',
+    '/admin/*',
+    '/404',
+    '/_next/*',
+    '/static/*',
+    '/free',
+    '/fr/free',
+    '/test',
+    '/demo/*',
+    '/fr/blog',
+    '/fr/blog/*',
+    '/zh/blog',
+    '/zh/blog/*',
+  ],
   alternateRefs: [
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
     { href: 'https://www.purrify.ca/fr', hreflang: 'fr-CA' },
@@ -50,12 +64,6 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/fr/blog',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
-    {
       loc: '/checkout',
       changefreq: 'monthly',
       priority: 0.6,
@@ -70,25 +78,25 @@ module.exports = {
     {
       loc: '/privacy-policy',
       changefreq: 'monthly',
-      priority: 0.4,
+      priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
       loc: '/fr/privacy-policy',
       changefreq: 'monthly',
-      priority: 0.4,
+      priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
       loc: '/terms',
       changefreq: 'monthly',
-      priority: 0.4,
+      priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
       loc: '/fr/terms',
       changefreq: 'monthly',
-      priority: 0.4,
+      priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     // Product pages (canonical slugs)
@@ -107,7 +115,17 @@ module.exports = {
         lastmod: new Date().toISOString(),
       };
     }
-    
+
+    // Location pages - reduced priority and frequency (SEO fix 2025-12-26)
+    if (path.startsWith('/locations/') || path.includes('/locations/')) {
+      return {
+        loc: path,
+        changefreq: 'monthly',
+        priority: 0.6,
+        lastmod: new Date().toISOString(),
+      };
+    }
+
     // Home page gets highest priority
     if (path === '') {
       return {
@@ -117,7 +135,7 @@ module.exports = {
         lastmod: new Date().toISOString(),
       };
     }
-    
+
     // Default transformation for other pages
     return {
       loc: path,

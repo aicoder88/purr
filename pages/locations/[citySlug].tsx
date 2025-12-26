@@ -11,7 +11,8 @@ const CityPage = ({ citySlug }: InferGetStaticPropsType<typeof getStaticProps>) 
   <CityPageTemplate citySlug={citySlug} />
 );
 
-// Top 50 Canadian cities by population - pre-rendered at build time for SEO
+// Top 30 Canadian cities by population - pre-rendered at build time for SEO
+// Reduced from 196 to 30 cities to improve indexing quality (2025-12-26)
 const HIGH_PRIORITY_CITY_SLUGS = [
   'toronto',
   'montreal',
@@ -43,26 +44,6 @@ const HIGH_PRIORITY_CITY_SLUGS = [
   'barrie',
   'kelowna',
   'guelph',
-  'victoria',
-  'argentia',
-  'baddeck',
-  'bancroft',
-  'banff',
-  'barkerville',
-  'bathurst',
-  'batoche',
-  'belleville',
-  'bonavista',
-  'borden',
-  'brandon',
-  'brantford',
-  'brockville',
-  'brooks',
-  'burnaby',
-  'cambridge',
-  'campbell-river',
-  'caraquet',
-  'cavendish',
 ];
 
 export const getStaticPaths: GetStaticPaths = async () => {

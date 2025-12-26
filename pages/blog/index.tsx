@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return {
       props: {
         blogPosts,
+        locale: currentLocale,
       },
       // Re-generate the page at most once per hour
       revalidate: 3600,
@@ -51,14 +52,18 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return {
       props: {
         blogPosts: [],
+        locale: (locale || 'en') as string,
       },
       revalidate: 3600,
     };
   }
 }
 
-export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
+export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], locale: string }) {
   const { t } = useTranslation();
+
+  // Add noindex to French/Chinese blog pages until we have translated content
+  const shouldNoindex = blogPosts.length === 0 && (locale === 'fr' || locale === 'zh');
 
   return (
     <>
@@ -66,21 +71,24 @@ export default function Blog({ blogPosts }: { blogPosts: BlogPost[] }) {
         <title>{`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}</title>
         <meta name="description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
+        {/* Noindex for empty French/Chinese blog pages - SEO fix 2025-12-26 */}
+        {shouldNoindex && <meta name="robots" content="noindex, follow" />}
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.purrify.ca/blog" />
         <meta property="og:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
         <meta property="og:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
         <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.purrify.ca/blog" />
         <meta property="twitter:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
         <meta property="twitter:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
         <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
-        
+
         {/* Canonical Link */}
         <link rel="canonical" href="https://www.purrify.ca/blog" />
       </Head>
