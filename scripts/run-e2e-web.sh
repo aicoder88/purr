@@ -6,4 +6,5 @@ source .env.test 2>/dev/null || true
 set +a
 
 # Build and start Next.js on port 3010
-next build && next start --port 3010
+# Use standalone server since next.config.js has output: 'standalone'
+next build && PORT=3010 node .next/standalone/server.js

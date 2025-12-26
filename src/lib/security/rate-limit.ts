@@ -33,7 +33,7 @@ export const RATE_LIMITS = {
   // Strict limits for authentication
   AUTH: {
     windowMs: 15 * 60 * 1000, // 15 minutes
-    maxRequests: 20,
+    maxRequests: 5,
     message: 'Too many login attempts. Please try again later.',
   },
   // Moderate limits for content creation

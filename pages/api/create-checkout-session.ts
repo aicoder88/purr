@@ -3,6 +3,7 @@ import Stripe from 'stripe';
 import { z } from 'zod';
 import { rateLimit } from 'express-rate-limit';
 import prisma from '../../src/lib/prisma';
+import { withCSRFProtection } from '../../src/lib/security/csrf';
 
 // Initialize Stripe with proper error handling
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -106,7 +107,7 @@ function verifyItemPrice(item: OrderItemWithProduct): boolean {
   return true;
 }
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -261,3 +262,6 @@ export default async function handler(
     });
   }
 }
+
+// Apply CSRF protection middleware
+export default withCSRFProtection(handler);

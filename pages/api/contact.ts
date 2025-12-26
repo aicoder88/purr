@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '../../src/lib/resend-config';
+import { withCSRFProtection } from '../../src/lib/security/csrf';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -114,7 +115,7 @@ This email was sent from the Purrify contact form
   }
 }
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
@@ -210,3 +211,6 @@ export default async function handler(
     });
   }
 }
+
+// Apply CSRF protection middleware
+export default withCSRFProtection(handler);

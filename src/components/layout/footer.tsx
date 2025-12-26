@@ -159,7 +159,7 @@ export function Footer() {
                     className="inline-flex items-center gap-1.5 text-xs text-[#333333]/70 dark:text-gray-400 hover:text-[#00B67A] dark:hover:text-[#00B67A] transition-colors duration-300"
                     aria-label="View Purrify reviews on Trustpilot"
                   >
-                    <div className="flex items-center gap-0.5 text-[#00B67A]">
+                    <div className="flex items-center gap-0.5 text-[#00B67A] dark:text-emerald-400">
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />
@@ -176,7 +176,7 @@ export function Footer() {
                     className="inline-flex items-center gap-1.5 text-xs text-[#333333]/70 dark:text-gray-400 hover:text-[#4285F4] dark:hover:text-[#4285F4] transition-colors duration-300"
                     aria-label="Leave a review on Google"
                   >
-                    <div className="flex items-center gap-0.5 text-[#FBBC04]">
+                    <div className="flex items-center gap-0.5 text-[#FBBC04] dark:text-yellow-400">
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />

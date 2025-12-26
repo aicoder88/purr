@@ -20,8 +20,8 @@ function checkLoginRateLimit(email: string): boolean {
 
   record.count++;
 
-  // Allow 20 attempts per 15 minutes (higher for E2E tests)
-  return record.count <= 20;
+  // Allow 5 attempts per 15 minutes to prevent brute force attacks
+  return record.count <= 5;
 }
 
 // Cleanup old entries every 30 minutes

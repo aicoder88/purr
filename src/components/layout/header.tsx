@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingBag, ChevronDown, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { LanguageSwitcher } from "../../components/ui/language-switcher";
@@ -8,6 +8,7 @@ import { useTranslation } from "../../lib/translation-context";
 import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useSession, signOut } from "next-auth/react";
 
 interface DropdownItem {
   label: string;
@@ -32,6 +33,7 @@ export function Header() {
   const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
+  const { data: session } = useSession();
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -278,6 +280,24 @@ export function Header() {
 
           <div className="hidden md:flex items-center space-x-3">
             <ThemeToggle />
+            {session?.user && (
+              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <UserIcon className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                <span className="text-sm text-gray-700 dark:text-gray-200">
+                  {session.user.email}
+                </span>
+              </div>
+            )}
+            {session?.user && (
+              <Button
+                onClick={() => signOut({ callbackUrl: '/' })}
+                variant="ghost"
+                className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Sign Out</span>
+              </Button>
+            )}
             <Button
               onClick={scrollToProducts}
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
@@ -290,6 +310,17 @@ export function Header() {
 
           <div className="flex md:hidden items-center space-x-1">
             <ThemeToggle />
+            {session?.user && (
+              <Button
+                onClick={() => signOut({ callbackUrl: '/' })}
+                variant="ghost"
+                size="icon"
+                className="h-11 w-11 p-0"
+                aria-label="Sign out"
+              >
+                <LogOut className="h-5 w-5" />
+              </Button>
+            )}
             <LanguageSwitcher />
             <Button
               variant="ghost"
@@ -351,7 +382,25 @@ export function Header() {
               ))}
 
               {/* Quick Actions */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
+                {session?.user && (
+                  <div className="px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <UserIcon className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                      <span className="text-sm text-gray-700 dark:text-gray-200">
+                        {session.user.email}
+                      </span>
+                    </div>
+                    <Button
+                      onClick={() => signOut({ callbackUrl: '/' })}
+                      variant="ghost"
+                      className="w-full flex items-center justify-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </Button>
+                  </div>
+                )}
                 <Button
                   onClick={handleBuyNowMobile}
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"

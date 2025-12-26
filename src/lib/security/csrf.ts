@@ -51,9 +51,9 @@ export function verifyCSRFToken(req: NextApiRequest): boolean {
 function verifyOrigin(req: NextApiRequest): boolean {
   const origin = req.headers.origin || req.headers.referer;
 
+  // SECURITY: Reject requests without origin/referer for state-changing operations
   if (!origin) {
-    // Allow requests without origin (same-origin requests from older browsers)
-    return true;
+    return false;
   }
 
   const allowedOrigins = [
@@ -80,10 +80,10 @@ export function withCSRFProtection(
         return res.status(403).json({ error: 'Invalid origin' });
       }
 
-      // Then check CSRF token (but allow requests without token for now during migration)
-      // if (!verifyCSRFToken(req)) {
-      //   return res.status(403).json({ error: 'Invalid CSRF token' });
-      // }
+      // Then check CSRF token
+      if (!verifyCSRFToken(req)) {
+        return res.status(403).json({ error: 'Invalid CSRF token' });
+      }
     }
 
     return handler(req, res);
