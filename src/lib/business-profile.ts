@@ -124,7 +124,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
     googleReviews: 'https://g.page/r/CUB8bZ_ibMbwEBI/review',
     crunchbase: 'https://www.crunchbase.com/organization/purrify',
     bingPlaces: 'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
-    yelp: 'https://biz.yelp.com/settings',
+    yelp: 'https://www.yelp.ca/biz/purrify-montreal',
     medium: 'https://medium.com/@purrify',
     whop: 'https://whop.com/purrify',
     producthunt: 'https://www.producthunt.com/products/purrify',

@@ -11,7 +11,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Sainte‑Thérèse, QC J7E 2X5",
     address: "190 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2X5",
     phone: "1-450-818-1310",
-    url: "https://pattesgriffes.com/storelocator.html",
+    url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
@@ -59,7 +59,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Laval, QC H7S 1M9",
     address: "1682 Boulevard Saint-Martin Ouest, Laval, QC H7S 1M9",
     phone: "1-579-640-1857",
-    url: "https://pattesgriffes.com/storelocator.html",
+    url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {
@@ -67,7 +67,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Kirkland, QC H9H 0C5",
     address: "16936 Autoroute Transcanadienne, Kirkland, QC H9H 0C5",
     phone: "1-514-695-5005",
-    url: "https://pitou-minou.ca/en/global-pet-foods-locations-quebec/",
+    url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
@@ -107,7 +107,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Verdun, QC H4G 1V7",
     address: "4100 Rue Wellington, Verdun, QC H4G 1V7",
     phone: "514-732-0555",
-    url: "https://www.pitouminou.com/en/global-pet-foods-locations-quebec/",
+    url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
     description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
   },
   {
@@ -139,7 +139,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Saint-Césaire, QC J0L 1T0",
     address: "2048 Route 112, Saint-Césaire, QC J0L 1T0",
     phone: "450-469-4560",
-    url: "https://www.mamiwouff.ca/",
+    url: "https://www.animaleriemamiwouff.com/",
     description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
   },
   {
@@ -147,7 +147,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Alma, QC G8B 2V6",
     address: "1295 Avenue du Pont S, Alma, QC G8B 2V6",
     phone: "418-668-0117",
-    url: "https://www.lamifidel.com/",
+    url: "https://www.lamifidel.net/",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
   },
   {

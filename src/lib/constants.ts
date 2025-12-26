@@ -250,7 +250,7 @@ export const SOCIAL_LINKS = {
   googleReviews: BUSINESS_PROFILE.socialMedia.googleReviews ?? 'https://g.page/r/CUB8bZ_ibMbwEBI/review',
   crunchbase: BUSINESS_PROFILE.socialMedia.crunchbase ?? 'https://www.crunchbase.com/organization/purrify',
   bingPlaces: BUSINESS_PROFILE.socialMedia.bingPlaces ?? 'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
-  yelp: BUSINESS_PROFILE.socialMedia.yelp ?? 'https://biz.yelp.com/settings',
+  yelp: BUSINESS_PROFILE.socialMedia.yelp ?? 'https://www.yelp.ca/biz/purrify-montreal',
   medium: BUSINESS_PROFILE.socialMedia.medium ?? 'https://medium.com/@purrify',
   whop: BUSINESS_PROFILE.socialMedia.whop ?? 'https://whop.com/purrify',
   producthunt: BUSINESS_PROFILE.socialMedia.producthunt ?? 'https://www.producthunt.com/products/purrify',

@@ -744,7 +744,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="https://www.yelp.ca/biz/purrify-montreal"
+                  href={SOCIAL_LINKS.yelp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#D32323]"
