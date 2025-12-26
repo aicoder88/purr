@@ -15,9 +15,9 @@ async function login(page: Page) {
 test.describe('Security: CSRF Protection (Task 10.3)', () => {
   test('POST requests without proper origin are rejected', async ({ page}) => {
     await login(page);
-    
+
     // Try to make a POST request with wrong origin
-    const response = await context.request.post('/api/admin/blog/posts', {
+    const response = await page.request.post('/api/admin/blog/posts', {
       headers: {
         'Origin': 'https://evil-site.com',
         'Content-Type': 'application/json'
