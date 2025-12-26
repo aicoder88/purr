@@ -77,10 +77,10 @@ export function BlogPreview() {
                     src={post.image}
                     alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                     priority={index === 0}
-                    quality={85}
+                    quality={75}
                   />
                 </div>
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-white dark:text-gray-100 font-medium">

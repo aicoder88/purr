@@ -25,7 +25,7 @@ Purrify is a production Next.js e-commerce platform for activated carbon cat lit
 | **Email** | Resend + EmailJS |
 | **Blog** | TipTap rich text + filesystem JSON (`/content/blog/{locale}/*.json`) |
 | **AI** | Anthropic SDK + OpenAI API (content generation) |
-| **Shipping** | ShipStation (webhook-based) |
+| **Monitoring** | Sentry (error tracking, performance monitoring, logging) |
 | **Deploy** | Vercel (Node.js 22.x) + GitHub Actions CI/CD |
 | **MCP** | Supabase MCP server for database operations |
 
@@ -39,7 +39,7 @@ npm install --legacy-peer-deps
 npm run dev                    # Start dev server (auto-clears webpack cache)
 
 # Pre-commit validation (ALL must pass)
-npm run lint && npm run check-types && npm run validate-dark-mode
+npm run lint && npm run check-types && npm run validate-dark-mode && npm run validate-images
 
 # Build
 npm run build                  # Production build
@@ -60,6 +60,7 @@ npm run lint                   # ESLint (MUST pass with 0 warnings)
 npm run check-types            # TypeScript strict mode (MUST pass with 0 errors)
 npm run check-types:unused     # Check for unused identifiers
 npm run validate-dark-mode     # Dark mode compliance (BUILD BLOCKS WITHOUT)
+npm run validate-images        # Check for oversized images (PERFORMANCE CRITICAL)
 npm run validate-blog-images   # Verify blog images exist
 npm run validate-links         # Validate internal and external links
 ```
@@ -229,6 +230,64 @@ npm run validate-dark-mode  # MUST return 0 errors before commit
 
 Build Failure: Dark mode validation runs in pre-commit hook. Commits blocked if violations exist.
 
+## Image Optimization (CRITICAL)
+
+**MANDATORY: All images MUST be optimized for web - NO EXCEPTIONS**
+
+### Image Size Limits
+
+| Directory | Max Width | Max Height | Purpose |
+|-----------|-----------|------------|---------|
+| `public/optimized/blog/` | 800px | 800px | Blog preview images (STRICT) |
+| `public/optimized/` | 3200px | 3200px | Hero/feature/product images |
+| `public/images/products/` | 1200px | 1800px | Product thumbnails |
+
+### Next.js Image Component Best Practices
+
+```tsx
+import Image from 'next/image';
+
+// ✅ CORRECT: Specify appropriate sizes for the actual display size
+<Image
+  src="/optimized/blog/hero.jpg"
+  alt="Descriptive alt text"
+  fill
+  sizes="(max-width: 768px) 100vw, 50vw"  // Match actual rendered size
+  quality={75}  // 75 is optimal for most images
+  priority={false}  // Only true for above-fold images
+/>
+
+// ❌ WRONG: Requesting full viewport images when not needed
+<Image
+  src="/optimized/blog/hero.jpg"
+  alt="Alt text"
+  fill
+  sizes="100vw"  // Too large for a preview card!
+  quality={100}  // Unnecessarily high quality
+/>
+```
+
+### Validation
+```bash
+npm run validate-images  # MUST pass before commit
+npm run optimize-images:enhanced  # Auto-optimize images
+```
+
+### Common Issues & Fixes
+
+| Issue | Solution |
+|-------|----------|
+| Blog preview images > 800px | `sips -Z 800 public/optimized/blog/*.jpg` |
+| Hero images > 1920px | `sips -Z 1920 public/optimized/*.jpg` |
+| Incorrect `sizes` attribute | Match sizes to actual render dimensions, not viewport |
+| Quality too high (>85) | Reduce to 75 for most images, 85 for hero images only |
+
+**Why This Matters:**
+- **Performance**: Oversized images slow page load by 3-5x
+- **Bandwidth**: Users on mobile waste data downloading huge images
+- **SEO**: Google penalizes sites with poor Core Web Vitals
+- **Cost**: Larger images = higher CDN costs
+
 ## Security Implementation
 
 ### Security Middleware (`src/lib/security/`)
@@ -330,7 +389,7 @@ Key models in `prisma/schema.prisma`:
 | `User` | NextAuth users with orders, referrals |
 | `Retailer` | B2B wholesale accounts (status: PENDING/ACTIVE/SUSPENDED/REJECTED) |
 | `Order` | Consumer orders with Stripe integration |
-| `RetailerOrder` | B2B orders with ShipStation tracking |
+| `RetailerOrder` | B2B wholesale orders |
 | `Product` | Products with price, wholesalePrice, minimumOrder |
 | `BlogPost` | Blog content with slug, locale, status, keywords |
 | `Referral` | Referral tracking with commission |
@@ -417,6 +476,60 @@ npm run test:e2e            # E2E tests pass
 npm audit                   # No critical vulnerabilities
 ```
 
+## Sentry Integration
+
+The application uses Sentry for error tracking, performance monitoring, and structured logging.
+
+### Configuration Files
+
+- **`instrumentation-client.ts`** - Client-side (browser) Sentry initialization
+- **`sentry.server.config.ts`** - Server-side (Node.js) Sentry initialization
+- **`sentry.edge.config.ts`** - Edge runtime Sentry initialization
+
+**IMPORTANT:** Never re-initialize Sentry in other files. Just import: `import * as Sentry from "@sentry/nextjs"`
+
+### Usage Guidelines
+
+**Exception Catching:**
+```typescript
+try {
+  await riskyOperation();
+} catch (error) {
+  Sentry.captureException(error);
+  const { logger } = Sentry;
+  logger.error("Operation failed", { error: error.message });
+}
+```
+
+**Performance Tracing:**
+```typescript
+return Sentry.startSpan(
+  {
+    op: "http.server",
+    name: "POST /api/endpoint",
+  },
+  async (span) => {
+    const { logger } = Sentry;
+    span.setAttribute("userId", userId);
+    logger.info("Processing request", { userId });
+    // Your logic here
+  }
+);
+```
+
+**Structured Logging:**
+```typescript
+const { logger } = Sentry;
+logger.trace("Starting connection", { database: "users" });
+logger.debug(logger.fmt`Cache miss for: ${key}`);
+logger.info("Operation successful", { id: 123 });
+logger.warn("Rate limit approaching", { remaining: 10 });
+logger.error("Operation failed", { error: error.message });
+logger.fatal("Critical failure", { service: "database" });
+```
+
+See [docs/SENTRY_INTEGRATION.md](docs/SENTRY_INTEGRATION.md) for complete documentation and [docs/SENTRY_QUICK_REFERENCE.md](docs/SENTRY_QUICK_REFERENCE.md) for quick copy-paste examples.
+
 ## Documentation Reference
 
 | File | Purpose |
@@ -426,6 +539,8 @@ npm audit                   # No critical vulnerabilities
 | `docs/REFERENCE.md` | Dark mode colors, SEO playbook, JSON-LD schemas |
 | `docs/BLOG_SYSTEM_GUIDE.md` | Blog system documentation |
 | `docs/SECURITY.md` | Security implementation details |
+| `docs/SENTRY_INTEGRATION.md` | Sentry error tracking and monitoring guide |
+| `docs/SENTRY_QUICK_REFERENCE.md` | Quick Sentry usage examples |
 | `docs/PROJECT_OVERVIEW.md` | System architecture |
 
 ## MCP Integration
