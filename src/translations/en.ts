@@ -72,7 +72,7 @@ export const en = {
   products: {
     "purrify-12g": {
       name: "FREE Trial",
-      description: "Try Purrify FREE!\nJust pay $4.76 shipping & handling (Canada) (or $6.39 to USA). See results in 24 hours. Limited time offer - limit one per customer."
+      description: "Try Purrify FREE!\nJust $4.76 shipping & handling anywhere in Canada\n\nLimit one per customer"
     },
     "purrify-50g": {
       name: "Purrify 50g Standard",
@@ -776,7 +776,7 @@ export const en = {
     free: "FREE",
     claimTrial: "Claim Your FREE Purrify Trial",
     whatYouGet: "What You Get:",
-    freeTrialBag: "12g Purrify Trial Size worth $4.76",
+    freeTrialBag: "12g Purrify Trial Size (Just $4.76 S&H anywhere in Canada)",
     // fastShippingDoor: "Fast shipping to your door", // TODO: Restore when offer is available
     expertTips: "Expert cat care tips and guides",
     zeroCommitment: "Zero commitment - this is our gift to you",

@@ -102,7 +102,7 @@ export function EnhancedProductComparison() {
           type: 'one-time',
           label: 'FREE',
           priceFormatted: 'FREE',
-          subLabel: `Just ${formatProductPrice('trial', locale)} shipping & handling`,
+          subLabel: `Just ${formatProductPrice('trial', locale)} shipping & handling anywhere in Canada`,
           shippingNote: 'Limit one per customer',
           action: 'link',
           linkKey: 'trialSingle',

@@ -72,7 +72,7 @@ export const fr = {
   products: {
     "purrify-12g": {
       name: "Essai GRATUIT",
-      description: "Essayez Purrify GRATUITEMENT !\nPayez seulement 4,99 $ pour les frais d'envoi. Offre limitée - une par client."
+      description: "Essayez Purrify GRATUITEMENT !\nJuste 4,76 $ pour les frais d'envoi partout au Canada\n\nLimite d'un par client"
     },
     "purrify-50g": {
       name: "Purrify 50g",

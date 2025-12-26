@@ -93,7 +93,7 @@ export const PRODUCTS = [
   {
     id: "purrify-12g-bump",
     name: "Purrify 12g (Trial Bump)",
-    description: "One-time offer: Add a trial size for just $4.76 (Canada) / $6.39 (USA)!",
+    description: "One-time offer: Add a trial size for just $4.76 shipping & handling anywhere in Canada!",
     price: 4.76,
     image: "/optimized/20g.webp",
     size: "12g",

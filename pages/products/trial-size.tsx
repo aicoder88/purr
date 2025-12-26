@@ -14,7 +14,7 @@ export default function TrialSizePage() {
   const { t, locale } = useTranslation();
 
   const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
-  const pageDescription = "Get your FREE 12g Purrify trial - just pay $4.76 shipping & handling (Canada) (or $6.39 to USA). Limited time offer, limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
+  const pageDescription = "Get your FREE 12g Purrify trial - Just $4.76 shipping & handling anywhere in Canada. Limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial');
@@ -124,14 +124,14 @@ export default function TrialSizePage() {
               </div>
               <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
                 Get Your <span className="text-green-600 dark:text-green-400">FREE</span> Purrify Trial<br />
-                <span className="text-gray-600 dark:text-gray-400 text-2xl md:text-3xl lg:text-4xl font-bold">Just Pay Shipping & Handling</span>
+                <span className="text-gray-600 dark:text-gray-400 text-2xl md:text-3xl lg:text-4xl font-bold">Just $4.76 shipping & handling anywhere in Canada</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-semibold mb-4">
                 Experience the odor-eliminating power of activated carbon<br className="hidden md:block" />
                 <span className="text-green-600 dark:text-green-400">absolutely FREE</span> - we just ask you cover shipping.
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                *Just pay $4.76 shipping & handling (Canada) (or $6.39 to USA). Limit one per customer.
+                *Just $4.76 shipping & handling anywhere in Canada. Limit one per customer.
               </p>
             </div>
           </Container>
@@ -194,7 +194,7 @@ export default function TrialSizePage() {
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    Just pay {trialPrice} shipping & handling
+                    Just {trialPrice} shipping & handling anywhere in Canada
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
                     One-time trial • Limit one per customer • Works with ANY litter
@@ -243,7 +243,7 @@ export default function TrialSizePage() {
                     </div>
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
-                      <span>Shipping & handling included in {trialPrice}</span>
+                      <span>Shipping & handling anywhere in Canada included in {trialPrice}</span>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                       <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-2">Secure payment with:</p>
@@ -394,7 +394,7 @@ export default function TrialSizePage() {
                   <div>
                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Claim Your FREE Trial</h3>
                     <p className="text-gray-700 dark:text-gray-300">
-                      Click the button, just pay {trialPrice} shipping & handling. Done. Your FREE trial ships within 24 hours. You'll get tracking immediately.
+                      Click the button, just {trialPrice} shipping & handling anywhere in Canada. Done. Your FREE trial ships within 24 hours. You'll get tracking immediately.
                     </p>
                   </div>
                 </div>
@@ -491,7 +491,7 @@ export default function TrialSizePage() {
                     <div>
                       <p className="font-bold text-xl mb-2">PATH 2: Claim Your FREE Trial</p>
                       <p className="opacity-90">
-                        Click below. Just pay {trialPrice} shipping & handling. Get it in 2-3 days. Use it once.
+                        Click below. Just {trialPrice} shipping & handling anywhere in Canada. Get it in 2-3 days. Use it once.
                         Watch the smell disappear. Join the 87% who upgrade. Finally solve this problem forever.
                       </p>
                     </div>
@@ -511,7 +511,7 @@ export default function TrialSizePage() {
                   size="lg"
                   className="bg-white text-green-700 hover:bg-green-50 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
                 >
-                  GET MY FREE TRIAL - Just {trialPrice} S&H
+                  GET MY FREE TRIAL - Just {trialPrice} S&H anywhere in Canada
                 </Button>
               </a>
               <p className="mb-6 text-sm font-bold text-white/90 dark:text-white/80 max-w-lg mx-auto italic uppercase tracking-tight">
@@ -523,7 +523,7 @@ export default function TrialSizePage() {
               </p>
 
               <p className="text-xs opacity-60 mb-2">
-                *{trialPrice} covers shipping & handling only. Product is FREE. Secure checkout with 256-bit SSL encryption.
+                *{trialPrice} covers shipping & handling anywhere in Canada only. Product is FREE. Secure checkout with 256-bit SSL encryption.
               </p>
 
               <p className="text-xs opacity-50">
@@ -541,7 +541,7 @@ export default function TrialSizePage() {
                 🎁 FREE TRIAL OFFER - Limited Time Only
               </p>
               <p className="text-sm opacity-90">
-                Product is FREE • Just pay {trialPrice} shipping & handling • Limit one per customer
+                Product is FREE • Just {trialPrice} shipping & handling anywhere in Canada • Limit one per customer
               </p>
             </div>
           </Container>
