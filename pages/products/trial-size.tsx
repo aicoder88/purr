@@ -219,7 +219,7 @@ export default function TrialSizePage() {
                     </li>
                   </ul>
 
-                  <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="block w-full">
+                  <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" className="block w-full">
                     <Button
                       size="lg"
                       className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 transform hover:scale-[1.02]"
@@ -431,7 +431,7 @@ export default function TrialSizePage() {
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   Then you get every penny back. No questions. No hassle. No "return shipping fees" nonsense. We eat the cost. You risk <strong>nothing</strong>.
                 </p>
-                <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block">
+                <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" className="inline-block">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-green-500/20 transform hover:scale-[1.02] transition-all"
@@ -506,7 +506,7 @@ export default function TrialSizePage() {
                 </div>
               </div>
 
-              <a href="https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07" target="_blank" rel="noopener noreferrer" className="inline-block mb-4">
+              <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" className="inline-block mb-4">
                 <Button
                   size="lg"
                   className="bg-white text-green-700 hover:bg-green-50 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"

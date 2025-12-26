@@ -8,7 +8,7 @@ export type PaymentLinkKey =
   | 'jumboAutoship';
 
 const DEFAULT_PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
-  trialSingle: 'https://buy.stripe.com/eVq7sL4hGcIOfA88Iy6Na07',
+  trialSingle: 'https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a',
   standardSingle: '',
   standardAutoship: '',
   familySingle: '',
