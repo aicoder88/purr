@@ -114,14 +114,14 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             </Layout>
           </div>
 
-          {/* Temporarily disabled for debugging */}
+          {/* PerformanceMonitor disabled - was causing crashes */}
           {/* <PerformanceMonitor enabled sampleRate={0.1} /> */}
-          {/* <CacheOptimizer
+          <CacheOptimizer
             enabled={true}
             preloadRoutes={[]}
             warmupDelay={5000}
             maxCacheSize={15728640}
-          /> */}
+          />
 
 
 
