@@ -18,8 +18,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* PawCursor disabled - investigating memory leak */}
-      {/* <PawCursor /> */}
+      <PawCursor />
       <ScrollToTopButton />
       {!hideHeader && <Header />}
       <main className="flex-grow">{children}</main>
