@@ -91,15 +91,15 @@ export default function HowToUseDeodorizer() {
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Quick Start Guide</h2>
                   <div className="space-y-4">
                     <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white dark:text-white flex items-center justify-center flex-shrink-0 font-bold">1</div>
                       <p className="text-gray-700 dark:text-gray-200">Sprinkle 1-2 tablespoons evenly over your existing litter.</p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white dark:text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
                       <p className="text-gray-700 dark:text-gray-200">Mix gently into the top layer focusing on high-traffic areas.</p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white dark:text-white flex items-center justify-center flex-shrink-0 font-bold">3</div>
                       <p className="text-gray-700 dark:text-gray-200">Enjoy instant odor control that lasts for weeks.</p>
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export default function HowToUseDeodorizer() {
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl flex items-center justify-center">
                   <AlertTriangle size={24} />
                 </div>
                 <h2 className="text-3xl font-black text-gray-900 dark:text-white">Common Mistakes</h2>
@@ -183,7 +183,7 @@ export default function HowToUseDeodorizer() {
                   { title: "Applying to Dirty Litter", desc: "Always scoop first. Adding additive to soiled litter reduces effectiveness." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-red-50 dark:border-red-900/30">
-                    <span className="text-red-500 font-black text-lg">✕</span>
+                    <span className="text-red-500 dark:text-red-400 font-black text-lg">✕</span>
                     <div>
                       <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
@@ -222,14 +222,14 @@ export default function HowToUseDeodorizer() {
       <section className="py-24 relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-brand-purple -z-10" />
         <Container>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">Experience True Neutrality</h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto font-medium">
+          <h2 className="text-4xl md:text-6xl font-black text-white dark:text-white mb-6">Experience True Neutrality</h2>
+          <p className="text-xl text-white/80 dark:text-white/80 mb-10 max-w-2xl mx-auto font-medium">
             Join 10,000+ happy Canadians who have reclaimed their homes from litter box odors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/products/trial-size"
-              className="px-12 py-5 bg-white text-brand-purple rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl"
+              className="px-12 py-5 bg-white dark:bg-white text-brand-purple rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl"
             >
               Get Trial Size - {formatProductPrice('trial', locale)}
             </Link>

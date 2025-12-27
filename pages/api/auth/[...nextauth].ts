@@ -7,11 +7,31 @@ interface ExtendedUser extends User {
 }
 
 // Simple in-memory rate limiter for login attempts
+// Note: In serverless, each invocation starts fresh, so this only works
+// within a single warm instance. For production, use Redis or similar.
 const loginAttempts = new Map<string, { count: number; resetTime: number }>();
+
+// Cleanup old entries lazily during rate limit check
+// Note: Using setInterval in serverless is problematic as each invocation
+// starts fresh. Instead, we clean up stale entries during the rate limit check.
+function cleanupStaleEntries() {
+  const now = Date.now();
+  for (const [key, record] of loginAttempts.entries()) {
+    if (record.resetTime < now) {
+      loginAttempts.delete(key);
+    }
+  }
+}
 
 function checkLoginRateLimit(email: string): boolean {
   const now = Date.now();
   const key = email.toLowerCase();
+
+  // Cleanup stale entries periodically (every 10th check)
+  if (Math.random() < 0.1) {
+    cleanupStaleEntries();
+  }
+
   const record = loginAttempts.get(key);
 
   if (!record || record.resetTime < now) {
@@ -28,16 +48,6 @@ function checkLoginRateLimit(email: string): boolean {
   // Allow 5 attempts per 15 minutes to prevent brute force attacks
   return record.count <= 5;
 }
-
-// Cleanup old entries every 30 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, record] of loginAttempts.entries()) {
-    if (record.resetTime < now) {
-      loginAttempts.delete(key);
-    }
-  }
-}, 30 * 60 * 1000);
 
 export const authOptions: NextAuthOptions = {
   providers: [

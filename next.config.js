@@ -331,6 +331,12 @@ const nextConfig = {
   outputFileTracingExcludes: {
     "/api/health/storage": ["./public/**/*"],
   },
+  outputFileTracingIncludes: {
+    "/admin/*": ["./content/blog/**/*"],
+    "/api/admin/*": ["./content/blog/**/*"],
+    "/api/blog-posts": ["./content/blog/**/*"],
+    "/blog/*": ["./content/blog/**/*"],
+  },
 
   images: {
     remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({
