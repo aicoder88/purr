@@ -7,29 +7,24 @@ import * as Sentry from "@sentry/nextjs";
 Sentry.init({
   dsn: "https://417e8c4f09f6ee842bef52a337877258@o4510602036772864.ingest.de.sentry.io/4510602102112336",
 
-  // Add optional integrations for additional features
-  integrations: [
-    Sentry.replayIntegration(),
-    // Send console.log, console.warn, and console.error calls as logs to Sentry
-    Sentry.consoleLoggingIntegration({ levels: ["log", "warn", "error"] }),
-  ],
+  // Minimal integrations to reduce overhead
+  integrations: [],
 
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
-  // Enable logs to be sent to Sentry
-  enableLogs: true,
+  // Reduce trace sampling in development
+  tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 0,
 
-  // Define how likely Replay events are sampled.
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
+  // Disable logs in development
+  enableLogs: process.env.NODE_ENV === 'production',
 
-  // Define how likely Replay events are sampled when an error occurs.
-  replaysOnErrorSampleRate: 1.0,
+  // Disable replay to reduce overhead
+  replaysSessionSampleRate: 0,
+  replaysOnErrorSampleRate: 0,
 
-  // Enable sending user PII (Personally Identifiable Information)
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
-  sendDefaultPii: true,
+  // Only send PII in production
+  sendDefaultPii: process.env.NODE_ENV === 'production',
 });
 
-export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+// Disable router transition tracking in development
+export const onRouterTransitionStart = process.env.NODE_ENV === 'production'
+  ? Sentry.captureRouterTransitionStart
+  : undefined;
