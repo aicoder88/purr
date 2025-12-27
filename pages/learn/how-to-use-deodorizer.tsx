@@ -1,11 +1,25 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-
 import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { Container } from '../../src/components/ui/container';
+import { Card, CardContent } from '../../src/components/ui/card';
+import { Badge } from '../../src/components/ui/badge';
+import {
+  CheckCircle2,
+  Info,
+  AlertTriangle,
+  Lightbulb,
+  ArrowRight,
+  Sparkles,
+  MousePointer2,
+  Cat,
+  ShieldCheck,
+  Zap
+} from 'lucide-react';
 
 export default function HowToUseDeodorizer() {
   const { locale } = useTranslation();
@@ -15,11 +29,7 @@ export default function HowToUseDeodorizer() {
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
 
-  // Unique images for how-to guide
-  const heroImage = 'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80'; // Cat owner using litter box
-  const sectionImage1 = 'https://images.unsplash.com/photo-1574231164645-d6f0e8553590?auto=format&fit=crop&w=1600&q=80'; // Clean litter box setup
-  const sectionImage2 = 'https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=1600&q=80'; // Cat using fresh litter
-  const solutionImage = 'https://images.unsplash.com/photo-1570018144715-43110363d70a?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner
+  const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=2000&q=90';
 
   return (
     <>
@@ -42,371 +52,194 @@ export default function HowToUseDeodorizer() {
             },
           ],
         }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'how to use cat litter deodorizer additive, cat litter deodorizer instructions, litter box odor control guide, activated carbon litter additive usage',
-          },
-        ]}
       />
 
-      <article className="max-w-4xl mx-auto px-4 py-12">
-        <header className="mb-12">
-          <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-50 mb-6">
-            How to Use Cat Litter Deodorizer Additive: Complete Step-by-Step Guide
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed">
-            Master the proper technique for using cat litter deodorizer additive to achieve maximum odor control. 
-            Follow our proven method used by 1,000+ satisfied cat owners.
+      <section className="relative pt-20 pb-16 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full -z-10 bg-gradient-to-b from-brand-green-light/20 to-transparent dark:from-brand-purple/10 dark:to-transparent" />
+        <Container>
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <Badge className="mb-4 px-4 py-1.5 bg-brand-green-light text-brand-green font-bold text-sm tracking-wide dark:bg-brand-green/20 border-none">
+              EDUCATIONAL GUIDE
+            </Badge>
+            <h1 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6 leading-[1.1]">
+              Master the Art of <span className="text-brand-purple italic">Freshness</span>
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-medium">
+              Everything you need to know about using cat litter deodorizer like a pro.
+              Say goodbye to odors and hello to a pristine home.
+            </p>
+          </div>
+
+          <div className="relative max-w-5xl mx-auto">
+            <div className="relative bg-white dark:bg-gray-900 rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-800">
+              <div className="grid md:grid-cols-2">
+                <div className="relative h-64 md:h-full min-h-[400px]">
+                  <Image
+                    src={heroImage}
+                    alt="Happy cat in a fresh environment"
+                    fill
+                    className="object-cover"
+                    priority
+                    unoptimized
+                  />
+                </div>
+                <div className="p-8 md:p-12 flex flex-col justify-center bg-brand-cream/50 dark:bg-gray-800/50">
+                  <div className="inline-flex items-center gap-2 text-brand-green font-bold mb-4">
+                    <Zap size={20} className="fill-current" />
+                    <span>IMMEDIATE RESULTS</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Quick Start Guide</h2>
+                  <div className="space-y-4">
+                    <div className="flex gap-4">
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                      <p className="text-gray-700 dark:text-gray-200">Sprinkle 1-2 tablespoons evenly over your existing litter.</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                      <p className="text-gray-700 dark:text-gray-200">Mix gently into the top layer focusing on high-traffic areas.</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                      <p className="text-gray-700 dark:text-gray-200">Enjoy instant odor control that lasts for weeks.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 bg-white dark:bg-gray-950">
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="font-heading text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">The Step-by-Step Method</h2>
+            <div className="w-24 h-1.5 bg-brand-purple mx-auto rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-none shadow-xl bg-gray-50 dark:bg-gray-900/50">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 bg-brand-purple/10 text-brand-purple rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-2xl font-black">01</span>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Clean the Slate</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Start with a clean litter box. Remove all waste and clumps. If doing a deep clean, wash the box with mild soap.
+                </p>
+                <Badge variant="outline" className="text-brand-purple border-brand-purple/20 bg-brand-purple/5">
+                  PRO TIP: Fresh litter = Max Impact
+                </Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-xl bg-gray-50 dark:bg-gray-900/50">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 bg-brand-green/10 text-brand-green rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-2xl font-black">02</span>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Precise Measurement</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Use 1-2 tablespoons for a standard box. Multi-cat homes may need up to 3 tablespoons.
+                </p>
+                <div className="flex gap-2">
+                  <Badge className="bg-brand-green/20 text-brand-green border-none">1 Cat: 1-2 Tbsp</Badge>
+                  <Badge className="bg-brand-green/20 text-brand-green border-none">2+ Cats: 3 Tbsp</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-xl bg-gray-50 dark:bg-gray-900/50">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 bg-brand-red/10 text-brand-red rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-2xl font-black">03</span>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Strategic Distribution</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Sprinkle evenly across the surface. Focus extra attention on corners and edges.
+                </p>
+                <p className="text-sm font-bold text-brand-red/80 flex items-center gap-1">
+                  <MousePointer2 size={16} /> Focus on High-Traffic Zones
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center">
+                  <AlertTriangle size={24} />
+                </div>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-white">Common Mistakes</h2>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { title: "Using Too Much", desc: "Excessive application doesn't improve odor control but can create dusty conditions." },
+                  { title: "Applying to Dirty Litter", desc: "Always scoop first. Adding additive to soiled litter reduces effectiveness." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-red-50 dark:border-red-900/30">
+                    <span className="text-red-500 font-black text-lg">✕</span>
+                    <div>
+                      <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-brand-green-light text-brand-green rounded-xl flex items-center justify-center">
+                  <Lightbulb size={24} />
+                </div>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-white">Pro Mastery Tips</h2>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { title: "High-Traffic Target", desc: "Cats are habitual. Apply more product where they prefer to go.", icon: MousePointer2 },
+                  { title: "The 24h Window", desc: "If guests are coming, apply the additive the night before.", icon: Sparkles }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-brand-green-light/50 dark:border-brand-green/30">
+                    <item.icon className="text-brand-green" size={24} />
+                    <div>
+                      <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-24 relative overflow-hidden text-center">
+        <div className="absolute inset-0 bg-brand-purple -z-10" />
+        <Container>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">Experience True Neutrality</h2>
+          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto font-medium">
+            Join 10,000+ happy Canadians who have reclaimed their homes from litter box odors.
           </p>
-        </header>
-
-        <div className="prose prose-lg max-w-none">
-          {/* Hero Image */}
-          <div className="mb-8">
-            <Image
-              src={heroImage}
-              alt="Cat owner maintaining clean litter box with proper technique"
-              width={800}
-              height={400}
-              className="w-full h-64 object-cover rounded-lg shadow-lg"
-            />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/products/trial-size"
+              className="px-12 py-5 bg-white text-brand-purple rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl"
+            >
+              Get Trial Size - {formatProductPrice('trial', locale)}
+            </Link>
           </div>
+        </Container>
+      </section>
 
-          <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 dark:border-green-500 p-6 mb-8">
-            <h2 className="font-heading text-2xl font-semibold text-green-900 dark:text-green-100 mb-3">Quick Start Guide</h2>
-            <p className="text-green-800 dark:text-green-200 mb-4">
-              <strong>For immediate results:</strong> Sprinkle 1-2 tablespoons of cat litter deodorizer additive 
-              evenly over your existing litter, mix gently, and enjoy instant odor control that lasts weeks.
-            </p>
-            <div className="text-sm text-green-700 dark:text-green-300 dark:text-green-300">
-              <strong>Best time to apply:</strong> Right after cleaning the litter box or when adding fresh litter.
-            </div>
-          </div>
-
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Step-by-Step Instructions</h2>
-
-          <div className="grid gap-8 mb-12">
-            <div className="flex items-start space-x-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-              <div className="bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                1
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Clean Your Litter Box</h3>
-                <p className="text-blue-800 dark:text-blue-200 mb-3">
-                  Start with a clean litter box for best results. Remove all waste and clumps. 
-                  If doing a complete change, wash the box with mild soap and dry thoroughly.
-                </p>
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded text-sm text-blue-700 dark:text-blue-300">
-                  <strong>Pro Tip:</strong> Apply deodorizer additive to fresh litter for maximum effectiveness.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg">
-              <div className="bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-green-900 dark:text-green-100 mb-3">Measure the Right Amount</h3>
-                <p className="text-green-800 dark:text-green-200 mb-3">
-                  Use 1-2 tablespoons (15-30ml) per standard litter box. For multiple cats or extra odor control, 
-                  use up to 3 tablespoons. Less is often more - don't over-apply.
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded text-sm">
-                    <strong>1 cat:</strong> 1-2 tablespoons
-                  </div>
-                  <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded text-sm">
-                    <strong>2+ cats:</strong> 2-3 tablespoons
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6 p-6 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-              <div className="bg-purple-600 dark:bg-purple-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-purple-900 dark:text-purple-100 mb-3">Sprinkle Evenly</h3>
-                <p className="text-purple-800 dark:text-purple-200 mb-3">
-                  Distribute the deodorizer additive evenly across the litter surface. Focus on areas where 
-                  your cat typically urinates - usually corners and edges of the box.
-                </p>
-                <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded text-sm text-purple-700 dark:text-purple-300">
-                  <strong>Technique:</strong> Sprinkle from about 6 inches above the litter for even distribution.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-              <div className="bg-orange-600 dark:bg-orange-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                4
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-orange-900 dark:text-orange-100 mb-3">Mix Gently (Optional)</h3>
-                <p className="text-orange-800 dark:text-orange-200 mb-3">
-                  Lightly stir the additive into the top layer of litter using a scoop or your hand. 
-                  Don't mix too vigorously - you want the additive near the surface where odors occur.
-                </p>
-                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded text-sm text-orange-700 dark:text-orange-300">
-                  <strong>Note:</strong> Mixing isn't required but can help distribute the additive more evenly.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6 p-6 bg-teal-50 dark:bg-teal-900/20 rounded-lg">
-              <div className="bg-teal-600 dark:bg-teal-600 text-white dark:text-gray-100 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                5
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold text-teal-900 dark:text-teal-100 mb-3">Let It Work</h3>
-                <p className="text-teal-800 dark:text-teal-200 mb-3">
-                  The deodorizer additive starts working immediately. You'll notice reduced odors within minutes, 
-                  with maximum effectiveness achieved within 24 hours.
-                </p>
-                <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded text-sm text-teal-700 dark:text-teal-300">
-                  <strong>Duration:</strong> Continues working for 2-4 weeks depending on usage.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section Image */}
-          <div className="mb-8">
-            <Image
-              src={sectionImage1}
-              alt="Clean litter box ready for proper deodorizer application"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
-            />
-          </div>
-
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Common Mistakes to Avoid</h2>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="border border-red-200 dark:border-red-600 bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
-              <h3 className="font-heading text-xl font-semibold text-red-800 dark:text-red-200 dark:text-red-200 mb-3">❌ Using Too Much</h3>
-              <p className="text-red-700 dark:text-red-300 mb-3">
-                More isn't always better. Excessive amounts can create dust and waste product without improving odor control.
-              </p>
-              <div className="text-sm text-red-600 dark:text-red-400 dark:text-red-400">
-                <strong>Solution:</strong> Start with 1 tablespoon and increase gradually if needed.
-              </div>
-            </div>
-
-            <div className="border border-red-200 dark:border-red-600 bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
-              <h3 className="font-heading text-xl font-semibold text-red-800 dark:text-red-200 mb-3">❌ Applying to Dirty Litter</h3>
-              <p className="text-red-700 dark:text-red-300 mb-3">
-                Adding deodorizer to heavily soiled litter reduces effectiveness and wastes product.
-              </p>
-              <div className="text-sm text-red-600 dark:text-red-400">
-                <strong>Solution:</strong> Always remove waste first, then apply to clean or fresh litter.
-              </div>
-            </div>
-
-            <div className="border border-red-200 dark:border-red-600 bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
-              <h3 className="font-heading text-xl font-semibold text-red-800 dark:text-red-200 mb-3">❌ Mixing Too Deep</h3>
-              <p className="text-red-700 dark:text-red-300 mb-3">
-                Burying the additive too deep in the litter prevents it from capturing airborne odors effectively.
-              </p>
-              <div className="text-sm text-red-600 dark:text-red-400">
-                <strong>Solution:</strong> Keep most of the additive in the top 1-2 inches of litter.
-              </div>
-            </div>
-
-            <div className="border border-red-200 dark:border-red-600 bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
-              <h3 className="font-heading text-xl font-semibold text-red-800 dark:text-red-200 mb-3">❌ Inconsistent Application</h3>
-              <p className="text-red-700 dark:text-red-300 mb-3">
-                Forgetting to reapply when adding fresh litter or after deep cleaning reduces long-term effectiveness.
-              </p>
-              <div className="text-sm text-red-600 dark:text-red-400">
-                <strong>Solution:</strong> Set a reminder to reapply every 2-3 weeks or when changing litter.
-              </div>
-            </div>
-          </div>
-
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Pro Tips for Maximum Effectiveness</h2>
-
-          <div className="space-y-6 mb-8">
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border-l-4 border-blue-400 dark:border-blue-500 p-6">
-              <h3 className="font-heading text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">🎯 Target High-Traffic Areas</h3>
-              <p className="text-blue-800 dark:text-blue-200">
-                Apply extra deodorizer additive where your cat urinates most frequently. Most cats prefer corners 
-                and the same spots repeatedly.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 border-l-4 border-green-400 dark:border-green-500 p-6">
-              <h3 className="font-heading text-lg font-semibold text-green-900 dark:text-green-100 mb-2">⏰ Time It Right</h3>
-              <p className="text-green-800 dark:text-green-200">
-                Apply deodorizer additive right after scooping waste for immediate odor control, or when adding 
-                fresh litter for preventive protection.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 border-l-4 border-purple-400 dark:border-purple-500 p-6">
-              <h3 className="font-heading text-lg font-semibold text-purple-900 dark:text-purple-100 mb-2">🔄 Maintain Consistency</h3>
-              <p className="text-purple-800 dark:text-purple-200">
-                Reapply every 2-3 weeks or whenever you notice odors returning. Consistent use provides better 
-                long-term odor control than sporadic applications.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 border-l-4 border-orange-400 dark:border-orange-500 p-6">
-              <h3 className="font-heading text-lg font-semibold text-orange-900 dark:text-orange-100 mb-2">📏 Adjust for Your Situation</h3>
-              <p className="text-orange-800 dark:text-orange-200">
-                Multiple cats, small apartments, or senior cats may need slightly more product. Start with standard 
-                amounts and adjust based on results.
-              </p>
-            </div>
-          </div>
-
-          {/* Cat Usage Image */}
-          <div className="mb-8">
-            <Image
-              src={sectionImage2}
-              alt="Cat comfortably using well-maintained litter box"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
-            />
-          </div>
-
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Compatibility with Different Litter Types</h2>
-
-          <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
-              <thead>
-                <tr className="bg-gray-50 dark:bg-gray-800">
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Litter Type</th>
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Compatibility</th>
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left">Special Instructions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Clay (Non-Clumping)</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400 dark:text-green-400">✓ Excellent</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Mix lightly to distribute evenly</td>
-                </tr>
-                <tr className="bg-gray-50 dark:bg-gray-800">
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Clumping Clay</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400">✓ Excellent</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Won't interfere with clumping action</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Crystal/Silica</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400">✓ Excellent</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Complements crystal odor absorption</td>
-                </tr>
-                <tr className="bg-gray-50 dark:bg-gray-800">
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Wood Pellets</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400">✓ Good</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Apply to sawdust layer</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Paper/Recycled</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400">✓ Good</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Use slightly more for best results</td>
-                </tr>
-                <tr className="bg-gray-50 dark:bg-gray-800">
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 font-semibold">Corn/Wheat</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3 text-green-600 dark:text-green-400 dark:text-green-400">✓ Excellent</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-3">Natural combination works well</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Troubleshooting Common Issues</h2>
-
-          <div className="space-y-6 mb-8">
-            <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3">
-                Q: "I still smell odors after applying the deodorizer additive"
-              </h3>
-              <div className="text-gray-700 dark:text-gray-200 dark:text-gray-200 space-y-2">
-                <p><strong>Possible causes:</strong></p>
-                <ul className="list-disc list-inside ml-4 space-y-1">
-                  <li>Not enough product used (try increasing amount)</li>
-                  <li>Applied to heavily soiled litter (clean first)</li>
-                  <li>Litter box needs deeper cleaning</li>
-                  <li>Multiple cats may need more frequent application</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3">
-                Q: "My cat seems hesitant to use the litter box after adding deodorizer"
-              </h3>
-              <div className="text-gray-700 dark:text-gray-200 space-y-2">
-                <p><strong>Solutions:</strong></p>
-                <ul className="list-disc list-inside ml-4 space-y-1">
-                  <li>Use less product initially and gradually increase</li>
-                  <li>Mix more thoroughly to reduce visible particles</li>
-                  <li>Ensure you're using fragrance-free, natural deodorizer</li>
-                  <li>Give your cat 24-48 hours to adjust</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
-              <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3">
-                Q: "How often should I reapply the deodorizer additive?"
-              </h3>
-              <div className="text-gray-700 dark:text-gray-200">
-                <p>
-                  Reapply every 2-3 weeks for normal use, or when you notice odors returning. 
-                  With multiple cats or heavy use, you may need to reapply weekly. Always reapply 
-                  when doing a complete litter change.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Solution Image */}
-          <div className="mb-8">
-            <Image
-              src={solutionImage}
-              alt="Happy cat owner enjoying odor-free home environment"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
-            />
-          </div>
-
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/30 dark:to-blue-900/30 border border-green-200 dark:border-green-600 rounded-lg p-8 text-center">
-            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Try Purrify?</h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
-              Experience the difference with Canada's #1 natural cat litter deodorizer additive. 
-              Made with premium activated carbon for superior odor control.
-            </p>
-            <div className="space-x-4">
-              <Link 
-                href="/products/trial-size" 
-                className="inline-block bg-green-600 dark:bg-green-600 text-white dark:text-gray-100 px-6 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-700 transition-colors"
-              >
-                {`Start with Trial Size - ${formatProductPrice('trial', locale)}`}
-              </Link>
-              <Link 
-                href="/learn/activated-carbon-benefits" 
-                className="inline-block border border-green-600 dark:border-green-500 text-green-600 dark:text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
-              >
-                Learn the Science
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Related Articles */}
-        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
-        </div>
-      </article>
+      <div className="bg-white dark:bg-gray-950">
+        <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
+      </div>
     </>
   );
 }
