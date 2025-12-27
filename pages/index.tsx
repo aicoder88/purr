@@ -126,10 +126,6 @@ export default function Home() {
           },
         ]}
         additionalLinkTags={[
-          {
-            rel: 'manifest',
-            href: '/manifest.json',
-          },
           // Preload critical resources
           {
             rel: 'preload',

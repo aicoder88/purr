@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { DefaultSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import '../src/index.css';
@@ -33,9 +33,6 @@ const CacheOptimizer = dynamic(() => import('../src/components/performance/Cache
   ssr: false,
 });
 
-const InstallPrompt = dynamic(() => import('../src/components/pwa/InstallPrompt').then(mod => mod.InstallPrompt), {
-  ssr: false,
-});
 
 interface PageProps {
   session?: Session | null;
@@ -55,60 +52,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
     [locale, canonicalUrl]
   );
 
-  // Service Worker registration
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      return;
-    }
-
-    if (typeof globalThis.window === 'undefined' || !('serviceWorker' in navigator)) {
-      return;
-    }
-
-    let loadListener: (() => void) | null = null;
-
-    const registerSW = async () => {
-      try {
-        const registration = await navigator.serviceWorker.register('/sw.js', {
-          scope: '/',
-          updateViaCache: 'none',
-        });
-
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          if (newWorker) {
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // New content is available, prompt user to refresh
-                if (confirm('New content is available! Click OK to refresh.')) {
-                  globalThis.location.reload();
-                }
-              }
-            });
-          }
-        });
-
-        console.log('SW registered successfully');
-      } catch (err) {
-        console.warn('SW registration failed:', err);
-      }
-    };
-
-    if (document.readyState === 'complete') {
-      registerSW();
-    } else {
-      loadListener = () => {
-        registerSW();
-      };
-      window.addEventListener('load', loadListener, { once: true });
-    }
-
-    return () => {
-      if (loadListener) {
-        window.removeEventListener('load', loadListener);
-      }
-    };
-  }, []);
 
   return (
     <SessionProvider session={pageProps.session}>
@@ -121,13 +64,8 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <meta name="theme-color" content="#FF3131" media="(prefers-color-scheme: light)" />
             <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
             <meta name="format-detection" content="telephone=no" />
-            <meta name="apple-mobile-web-app-capable" content="yes" />
-            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
             <meta name="msapplication-TileColor" content="#FF3131" />
-            <meta name="msapplication-navbutton-color" content="#FF3131" />
             <meta name="application-name" content={SITE_NAME} />
-            <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
-            <meta name="mobile-web-app-capable" content="yes" />
             <meta name="referrer" content="origin-when-cross-origin" />
 
             {/* Favicon and App Icons */}
@@ -137,8 +75,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
             <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
             <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-            <link rel="mask-icon" href="/images/icon-128.png" color="#FF3131" />
-            <link rel="manifest" href="/manifest.json" />
 
             {/* DNS Prefetch only for non-critical third-parties */}
             <link rel="dns-prefetch" href="https://api.dicebear.com" />
@@ -196,7 +132,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
 
           <Toaster />
           <ToastProvider />
-          <InstallPrompt />
           <AnalyticsComponent />
         </TranslationProvider>
       </ThemeProvider>

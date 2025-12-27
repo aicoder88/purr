@@ -13,6 +13,17 @@ Purrify is a production Next.js e-commerce platform for activated carbon cat lit
 - Strict TypeScript enforcement (no `any` types)
 - Performance-first optimization (code splitting, image optimization)
 
+**Requires User Approval (ASK FIRST):**
+- PWA install prompts, service workers, or "add to home screen" features
+- Push notifications or notification permission requests
+- Popups, modals, or banners that interrupt user flow
+- New third-party integrations or analytics tracking
+- Features that request browser permissions (location, camera, microphone)
+- Any "growth hack" or engagement features (gamification, streaks, etc.)
+- Email capture modals or exit-intent popups
+
+This is a simple e-commerce site for cat litter additive. Users want to learn about the product and buy it. Do not add unnecessary features that annoy users or make the site feel like bloatware.
+
 ## Tech Stack
 
 | Layer | Technology |

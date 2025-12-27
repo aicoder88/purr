@@ -59,6 +59,5 @@ export const buildDefaultSeoConfig = (locale: string | undefined, canonicalUrl: 
       content: SITE_NAME,
     },
   ],
-  additionalLinkTags: [{ rel: 'manifest', href: '/manifest.json' }],
 });
 

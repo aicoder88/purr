@@ -50,8 +50,6 @@ const CACHE_HEADER_CONFIGS = [
   ["/optimized/(.*)", "public, max-age=31536000, immutable"],
   ["/_next/static/(.*)", "public, max-age=31536000, immutable"],
   ["/_next/image(.*)", "public, max-age=31536000, immutable"],
-  ["/manifest.json", "public, max-age=86400"],
-  ["/sw.js", "public, max-age=0, must-revalidate"],
   ["/sitemap.xml", "public, max-age=3600"],
   ["/robots.txt", "public, max-age=86400"],
   [

@@ -294,23 +294,6 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
     }
   }, [enabled, preloadRoutes, cache, cacheStats.totalSize]);
 
-  // Service Worker cache integration
-  const setupServiceWorkerCache = useCallback(() => {
-    if (typeof globalThis.window === 'undefined' || !('serviceWorker' in navigator)) return;
-    
-    navigator.serviceWorker.ready.then(registration => {
-      // Send cache configuration to service worker
-      registration.active?.postMessage({
-        type: 'CACHE_CONFIG',
-        config: {
-          maxCacheSize,
-          enabled,
-          routes: preloadRoutes
-        }
-      });
-    });
-  }, [enabled, maxCacheSize, preloadRoutes]);
-
   // Cache warming strategy
   const warmupCache = useCallback(() => {
     if (!enabled) return;
@@ -368,19 +351,18 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Initialize cache optimization
   useEffect(() => {
     if (!enabled) return;
-    
-    setupServiceWorkerCache();
+
     warmupCache();
     const cleanup = monitorCachePerformance();
-    
+
     // Initial stats update
     const cacheInstance = cache();
     if (cacheInstance) {
       cacheInstance.updateCacheStats();
     }
-    
+
     return cleanup;
-  }, [enabled, setupServiceWorkerCache, warmupCache, monitorCachePerformance, cache]);
+  }, [enabled, warmupCache, monitorCachePerformance, cache]);
 
   // Cleanup expired entries on visibility change
   useEffect(() => {

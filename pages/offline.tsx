@@ -95,10 +95,6 @@ const OfflinePage: NextPage = () => {
               </div>
             </div>
             
-            {/* PWA Install Prompt */}
-            <div className="mt-8 text-xs text-gray-500 dark:text-gray-400">
-              💡 Tip: Install our app for better offline experience
-            </div>
           </div>
         </div>
       </Container>
