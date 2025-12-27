@@ -62,7 +62,7 @@ export default function ContactPage() {
       title: "WhatsApp Chat",
       value: "Chat with us",
       description: "Instant messaging via WhatsApp",
-      responseTime: "Usually within 1 hour",
+      responseTime: "Available 7 days a week",
       action: "https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify"
     }
   ];
@@ -329,12 +329,6 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Help text */}
-            <div className="text-center mt-16 p-6 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-2xl border-2 border-purple-200 dark:border-purple-800 max-w-2xl mx-auto">
-              <p className="text-gray-700 dark:text-gray-300 text-lg font-semibold">
-                ⚡ <span className="text-purple-600 dark:text-purple-400">Average response time:</span> Under 2 hours during business hours
-              </p>
-            </div>
           </Container>
         </section>
 
