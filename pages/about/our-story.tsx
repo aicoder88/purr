@@ -218,12 +218,19 @@ const OurStoryPage: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => {
                 const isMark = member.name === "Mark Archer";
+                const isDrMike = member.name === "Dr. Michael Rodriguez";
+                const hasPhoto = isMark || isDrMike;
+                const photoSrc = isMark
+                  ? "/images/about/mark-archer.jpg"
+                  : isDrMike
+                    ? "/images/about/dr-michael-rodriguez.jpg"
+                    : null;
                 return (
                   <div key={member.name} className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full">
                     <div className="relative h-64 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
-                      {isMark ? (
+                      {hasPhoto && photoSrc ? (
                         <Image
-                          src="/images/about/mark-archer.jpg"
+                          src={photoSrc}
                           alt={member.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
