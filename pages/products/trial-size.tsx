@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { GetStaticProps } from 'next';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -10,7 +11,11 @@ import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 
-export default function TrialSizePage() {
+interface TrialSizePageProps {
+  priceValidUntil: string;
+}
+
+export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const { t, locale } = useTranslation();
 
   const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
@@ -22,7 +27,6 @@ export default function TrialSizePage() {
   const trialPrice = formatProductPrice('trial', locale);
 
   // Schema.org structured data variables
-  const priceValidUntil = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; // 90 days from now
   const availabilityUrl = 'https://schema.org/InStock';
 
   return (
@@ -571,3 +575,16 @@ export default function TrialSizePage() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<TrialSizePageProps> = async () => {
+  // Calculate price valid date at build time to avoid hydration mismatch
+  const priceValidUntil = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+  return {
+    props: {
+      priceValidUntil,
+    },
+    // Revalidate every 24 hours to keep the date fresh
+    revalidate: 86400,
+  };
+};

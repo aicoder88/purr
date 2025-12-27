@@ -117,13 +117,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <PerformanceMonitor enabled sampleRate={0.1} />
           <CacheOptimizer
             enabled={true}
-            preloadRoutes={[
-              '/products/trial-size',
-              '/products/standard',
-              '/products/family',
-              '/learn/how-it-works',
-              '/learn/faq',
-            ]}
+            preloadRoutes={[]}
             warmupDelay={5000}
             maxCacheSize={15728640}
           />

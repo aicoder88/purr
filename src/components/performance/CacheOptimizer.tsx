@@ -251,45 +251,43 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
     };
   }, [maxCacheSize]);
 
-  // Preload critical resources
+  // Preload critical resources - only API routes that return JSON
   const preloadResources = useCallback(async () => {
     if (!enabled || typeof globalThis.window === 'undefined') return;
-    
+
     const cacheInstance = cache();
     if (!cacheInstance) return;
-    
-    // Preload critical routes
-    const criticalRoutes = [
-      '/api/products',
-      '/api/testimonials',
-      ...preloadRoutes
-    ];
-    
-    for (const route of criticalRoutes) {
+
+    // Only preload actual API routes that return JSON (not page routes)
+    const apiRoutes = preloadRoutes.filter(route => route.startsWith('/api/'));
+
+    for (const route of apiRoutes) {
       try {
         // Check if already cached
         const cached = cacheInstance.get(route);
         if (cached) continue;
-        
+
         // Fetch and cache
         const response = await fetch(route);
         if (response.ok) {
-          const data = await response.json();
-          cacheInstance.set(route, data, 600000); // 10 minutes
-          
-          gtmEvent('cache_preload', {
-            route,
-            success: true,
-            cache_size: cacheStats.totalSize
-          });
+          const contentType = response.headers.get('content-type');
+          // Only parse as JSON if the response is actually JSON
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json();
+            cacheInstance.set(route, data, 600000); // 10 minutes
+
+            gtmEvent('cache_preload', {
+              route,
+              success: true,
+              cache_size: cacheStats.totalSize
+            });
+          }
         }
       } catch (error) {
-        console.warn(`Failed to preload ${route}:`, error);
-        gtmEvent('cache_preload', {
-          route,
-          success: false,
-          error: error instanceof Error ? error.message : 'Unknown error occurred'
-        });
+        // Silently fail for preload errors - this is non-critical
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`Failed to preload ${route}:`, error);
+        }
       }
     }
   }, [enabled, preloadRoutes, cache, cacheStats.totalSize]);
