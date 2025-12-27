@@ -192,32 +192,20 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
   },
 ];
 
-/**
- * IMPORTANT: DO NOT REMOVE EXTERNAL LOGO URLS
- *
- * These external URLs are intentionally used for retailer logos because:
- * 1. They ensure we always display the latest official branding
- * 2. Retailers can update their logos without requiring our updates
- * 3. Legal compliance - using official assets from their websites
- *
- * If logos fail to load, the fallback SVG icon will display instead.
- */
-
-// Helper function to get store logo configuration using local and external images
+// Helper function to get store logo configuration - all logos served locally for optimization
 const getStoreLogo = (storeName: string) => {
   if (storeName.includes('Chico')) {
     return {
-      src: "https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg",
+      src: "/optimized/chico-logo.svg",
       alt: "Chico - Boutique d'animaux Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
-      height: 64,
-      fallback: true  // Enable fallback if external image fails
+      height: 64
     };
   }
   if (storeName.includes('Pattes et Griffes')) {
     return {
-      src: "/pattes.webp",
+      src: "/optimized/pattes.webp",
       alt: "Pattes et Griffes Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -280,7 +268,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Animalerie Lamifidel')) {
     return {
-      src: "/lamifidel.avif",
+      src: "/optimized/lamifidel.avif",
       alt: "Animalerie Lamifidel - Complete Pet Care and Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -307,7 +295,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('K&K Pet Foods')) {
     return {
-      src: "/kk.avif",
+      src: "/optimized/kk.avif",
       alt: "K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -316,7 +304,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Viva Pets')) {
     return {
-      src: "/Viva_Lilac.avif",
+      src: "/optimized/viva-pets.avif",
       alt: "Viva Pets - Premium Pet Products & Supplies Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -325,7 +313,7 @@ const getStoreLogo = (storeName: string) => {
   }
   if (storeName.includes('Little Bit Western')) {
     return {
-      src: "/Little_Bit_Western_final_logo_x90.avif",
+      src: "/optimized/little-bit-western.avif",
       alt: "Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo",
       className: "w-16 h-16 object-contain",
       width: 64,
@@ -392,7 +380,6 @@ const StoreLogoImage = ({
       onError={() => {
         setHasError(true);
       }}
-      unoptimized={logoConfig.src.startsWith('http')}  // Skip Next.js optimization for external URLs
     />
   );
 };
