@@ -231,7 +231,7 @@ export default function HowToUseDeodorizer() {
           <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Pro Tips for Maximum Effectiveness</h2>
 
           <div className="space-y-6 mb-8">
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-400 dark:border-blue-500 p-6">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border-l-4 border-blue-400 dark:border-blue-500 p-6">
               <h3 className="font-heading text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">🎯 Target High-Traffic Areas</h3>
               <p className="text-blue-800 dark:text-blue-200">
                 Apply extra deodorizer additive where your cat urinates most frequently. Most cats prefer corners 
@@ -239,7 +239,7 @@ export default function HowToUseDeodorizer() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-400 dark:border-green-500 p-6">
+            <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 border-l-4 border-green-400 dark:border-green-500 p-6">
               <h3 className="font-heading text-lg font-semibold text-green-900 dark:text-green-100 mb-2">⏰ Time It Right</h3>
               <p className="text-green-800 dark:text-green-200">
                 Apply deodorizer additive right after scooping waste for immediate odor control, or when adding 
@@ -247,7 +247,7 @@ export default function HowToUseDeodorizer() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-400 dark:border-purple-500 p-6">
+            <div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 border-l-4 border-purple-400 dark:border-purple-500 p-6">
               <h3 className="font-heading text-lg font-semibold text-purple-900 dark:text-purple-100 mb-2">🔄 Maintain Consistency</h3>
               <p className="text-purple-800 dark:text-purple-200">
                 Reapply every 2-3 weeks or whenever you notice odors returning. Consistent use provides better 
@@ -255,7 +255,7 @@ export default function HowToUseDeodorizer() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-400 dark:border-orange-500 p-6">
+            <div className="bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 border-l-4 border-orange-400 dark:border-orange-500 p-6">
               <h3 className="font-heading text-lg font-semibold text-orange-900 dark:text-orange-100 mb-2">📏 Adjust for Your Situation</h3>
               <p className="text-orange-800 dark:text-orange-200">
                 Multiple cats, small apartments, or senior cats may need slightly more product. Start with standard 
@@ -379,7 +379,7 @@ export default function HowToUseDeodorizer() {
             />
           </div>
 
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 dark:border-green-600 rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/30 dark:to-blue-900/30 border border-green-200 dark:border-green-600 rounded-lg p-8 text-center">
             <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Ready to Try Purrify?</h2>
             <p className="text-gray-700 dark:text-gray-200 mb-6">
               Experience the difference with Canada's #1 natural cat litter deodorizer additive. 
