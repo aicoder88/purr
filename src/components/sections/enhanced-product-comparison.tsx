@@ -50,6 +50,7 @@ type ProductCard = {
     prioritySupport: boolean;
   };
   image: string;
+  imageSize: 'sm' | 'md' | 'lg'; // Visual scale to show relative product sizes
   purchaseOptions: PurchaseOption[];
   recommended?: boolean;
 };
@@ -96,6 +97,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false
       },
       image: '/optimized/17gpink.avif',
+      imageSize: 'sm',
       purchaseOptions: [
         {
           key: 'trial-single',
@@ -131,6 +133,7 @@ export function EnhancedProductComparison() {
         freeShipping: true,
       },
       image: '/optimized/60g.avif',
+      imageSize: 'md',
       purchaseOptions: [
         {
           key: 'family-autoship',
@@ -169,6 +172,7 @@ export function EnhancedProductComparison() {
         freeShipping: true,
       },
       image: '/optimized/140g.avif',
+      imageSize: 'lg',
       purchaseOptions: [
         {
           key: 'jumbo-autoship',
@@ -262,14 +266,26 @@ export function EnhancedProductComparison() {
                       {product.subtitle}
                     </p>
 
-                    <div className="relative w-48 h-48 mx-auto mb-6">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
+                    {/* Image container with size-based scaling to show relative product sizes */}
+                    <div className="relative h-56 mx-auto mb-6 flex items-end justify-center">
+                      <div className={cn(
+                        "relative transition-all duration-300",
+                        product.imageSize === 'sm' && "w-28 h-36",
+                        product.imageSize === 'md' && "w-36 h-48",
+                        product.imageSize === 'lg' && "w-44 h-56"
+                      )}>
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className={cn(
+                            "object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110",
+                            // Use mix-blend-multiply to blend white backgrounds into card background
+                            "mix-blend-multiply dark:mix-blend-normal"
+                          )}
+                          sizes="(max-width: 768px) 50vw, 200px"
+                        />
+                      </div>
                     </div>
 
                     {/* Pricing section with consistent height */}
