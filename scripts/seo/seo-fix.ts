@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 
-import { SitemapCleaner } from '../src/lib/seo/sitemap-cleaner';
+import { SitemapCleaner } from '../../src/lib/seo/sitemap-cleaner';
 import fs from 'node:fs';
 
 const SITEMAP_PATH = process.env.SITEMAP_PATH || 'public/sitemap.xml';

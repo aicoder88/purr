@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { generateAutomatedBlogPost } from '../src/lib/blog/generator';
+import { generateAutomatedBlogPost } from '../../src/lib/blog/generator';
 
 async function run() {
   try {

@@ -8,7 +8,7 @@
 
 import fs from 'fs/promises';
 import path from 'node:path';
-import { ContentStore } from '../src/lib/blog/content-store';
+import { ContentStore } from '../../src/lib/blog/content-store';
 
 interface ParsedPost {
   slug: string;

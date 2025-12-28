@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 
-import { BlogRepairUtility } from '../src/lib/blog/blog-repair-utility';
+import { BlogRepairUtility } from '../../src/lib/blog/blog-repair-utility';
 import fs from 'node:fs';
 import path from 'node:path';
 

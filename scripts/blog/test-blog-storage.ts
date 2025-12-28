@@ -6,7 +6,7 @@
  * Run: npx ts-node scripts/test-blog-storage.ts
  */
 
-import { ContentStore } from '../src/lib/blog/content-store';
+import { ContentStore } from '../../src/lib/blog/content-store';
 
 async function testStorage() {
   console.log('🧪 Testing Blog Storage Connection...\n');

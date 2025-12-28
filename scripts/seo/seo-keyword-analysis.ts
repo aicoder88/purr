@@ -14,7 +14,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { KeywordOptimizer } from '../src/lib/seo/keyword-optimizer';
+import { KeywordOptimizer } from '../../src/lib/seo/keyword-optimizer';
 
 // ANSI color codes for terminal output
 const colors = {

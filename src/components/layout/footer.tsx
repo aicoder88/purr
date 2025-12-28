@@ -53,7 +53,7 @@ export function Footer() {
                 <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/purrify-logo-text.webp"
+                      src="/optimized/logo-text-240.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={70}
                       height={24}
@@ -61,7 +61,7 @@ export function Footer() {
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
-                      src="/optimized/purrify-dark-mode-logo.avif"
+                      src="/optimized/purrify-dark-mode-logo.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={70}
                       height={24}

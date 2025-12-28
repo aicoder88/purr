@@ -1,10 +1,10 @@
 #!/usr/bin/env ts-node
 
-import { BrokenLinkDetector } from '../src/lib/seo/broken-link-detector';
-import { CanonicalValidator } from '../src/lib/seo/canonical-validator';
-import { RedirectAnalyzer } from '../src/lib/seo/redirect-analyzer';
-import { SitemapCleaner } from '../src/lib/seo/sitemap-cleaner';
-import { ReportGenerator, TechnicalSEOReport } from '../src/lib/seo/report-generator';
+import { BrokenLinkDetector } from '../../src/lib/seo/broken-link-detector';
+import { CanonicalValidator } from '../../src/lib/seo/canonical-validator';
+import { RedirectAnalyzer } from '../../src/lib/seo/redirect-analyzer';
+import { SitemapCleaner } from '../../src/lib/seo/sitemap-cleaner';
+import { ReportGenerator, TechnicalSEOReport } from '../../src/lib/seo/report-generator';
 
 const SITE_URL = process.env.SITE_URL || 'https://purrify.ca';
 const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;

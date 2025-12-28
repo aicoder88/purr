@@ -14,7 +14,7 @@ import {
   generateValidationReport,
   extractLinks,
   type LinkValidationResult,
-} from '../src/lib/seo/link-validator';
+} from '../../src/lib/seo/link-validator';
 
 // Known external links to check (social media, partners, etc.)
 const PRIORITY_EXTERNAL_LINKS = [
