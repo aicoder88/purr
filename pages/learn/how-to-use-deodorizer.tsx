@@ -9,22 +9,17 @@ import { Container } from '../../src/components/ui/container';
 import { Card, CardContent } from '../../src/components/ui/card';
 import { Badge } from '../../src/components/ui/badge';
 import {
-  CheckCircle2,
-  Info,
   AlertTriangle,
   Lightbulb,
-  ArrowRight,
   Sparkles,
-  MousePointer2,
   Cat,
-  ShieldCheck,
   Zap
 } from 'lucide-react';
 
 export default function HowToUseDeodorizer() {
   const { locale } = useTranslation();
   const pageTitle = 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide';
-  const pageDescription = 'Learn how to use cat litter deodorizer additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control effectiveness.';
+  const pageDescription = 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for your litter box, common mistakes to avoid, and pro tips for maximum odor control.';
   const canonicalPath = '/learn/how-to-use-deodorizer';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -65,8 +60,8 @@ export default function HowToUseDeodorizer() {
               Master the Art of <span className="text-brand-purple italic">Freshness</span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-medium">
-              Everything you need to know about using cat litter deodorizer like a pro.
-              Say goodbye to odors and hello to a pristine home.
+              Your complete guide to using activated carbon in your cat&apos;s litter box.
+              Transform odor control with just a few simple steps.
             </p>
           </div>
 
@@ -96,7 +91,7 @@ export default function HowToUseDeodorizer() {
                     </div>
                     <div className="flex gap-4">
                       <div className="w-8 h-8 rounded-full bg-brand-green text-white dark:text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
-                      <p className="text-gray-700 dark:text-gray-200">Mix gently into the top layer focusing on high-traffic areas.</p>
+                      <p className="text-gray-700 dark:text-gray-200">Mix gently into the top layer of litter, focusing on your cat&apos;s favorite spots.</p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-8 h-8 rounded-full bg-brand-green text-white dark:text-white flex items-center justify-center flex-shrink-0 font-bold">3</div>
@@ -156,10 +151,10 @@ export default function HowToUseDeodorizer() {
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Strategic Distribution</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                  Sprinkle evenly across the surface. Focus extra attention on corners and edges.
+                  Sprinkle evenly across the litter surface. Corners and edges where odors concentrate benefit most.
                 </p>
                 <p className="text-sm font-bold text-brand-red/80 flex items-center gap-1">
-                  <MousePointer2 size={16} /> Focus on High-Traffic Zones
+                  <Cat size={16} /> Target Where Your Cat Digs Most
                 </p>
               </CardContent>
             </Card>
@@ -202,8 +197,8 @@ export default function HowToUseDeodorizer() {
               </div>
               <div className="space-y-4">
                 {[
-                  { title: "High-Traffic Target", desc: "Cats are habitual. Apply more product where they prefer to go.", icon: MousePointer2 },
-                  { title: "The 24h Window", desc: "If guests are coming, apply the additive the night before.", icon: Sparkles }
+                  { title: "Know Your Cat's Habits", desc: "Cats dig in the same spots. Apply extra product to those areas of the litter box.", icon: Cat },
+                  { title: "The 24h Window", desc: "Expecting guests? Apply the additive the night before for maximum freshness.", icon: Sparkles }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-brand-green-light/50 dark:border-brand-green/30">
                     <item.icon className="text-brand-green" size={24} />

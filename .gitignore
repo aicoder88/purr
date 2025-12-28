@@ -53,3 +53,18 @@ playwright-report
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Generated reports
+/reports/
+cache-optimization-report.*
+seo-report.json
+bundle-analysis.*
+
+# Test artifacts
+test-results/
+test-screenshots/
+playwright-report/
+
+# Misc generated
+*.tsbuildinfo
+sitemap.xml

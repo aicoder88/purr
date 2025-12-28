@@ -1,5 +1,0 @@
-- [ ] Locate the About Us page in the project
-- [ ] Find David Kim's current information in the About Us page
-- [ ] Replace David Kim with a female customer service rep from Toronto
-- [ ] Update the description to match customer service role
-- [ ] Verify the changes are correct
