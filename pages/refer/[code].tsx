@@ -144,7 +144,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
           url: canonicalUrl,
           images: [
             {
-              url: 'https://www.purrify.ca/optimized/20g.webp',
+              url: 'https://www.purrify.ca/optimized/17gpink.webp',
               width: 500,
               height: 500,
               alt: 'Purrify 12g Trial Size - Free with Referral'

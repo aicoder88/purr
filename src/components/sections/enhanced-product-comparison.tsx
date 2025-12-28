@@ -95,7 +95,7 @@ export function EnhancedProductComparison() {
         bulkDiscount: false,
         prioritySupport: false
       },
-      image: '/optimized/20g.webp',
+      image: '/optimized/17gpink.avif',
       purchaseOptions: [
         {
           key: 'trial-single',
@@ -130,7 +130,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/60g-yellow.avif',
+      image: '/optimized/60g.avif',
       purchaseOptions: [
         {
           key: 'family-autoship',
@@ -168,7 +168,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/140g.webp',
+      image: '/optimized/140g.avif',
       purchaseOptions: [
         {
           key: 'jumbo-autoship',
@@ -229,7 +229,7 @@ export function EnhancedProductComparison() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {products.map((product) => {
             const preferredOption = product.purchaseOptions[0];
             const isSubscription = preferredOption.type === 'subscription';
@@ -272,33 +272,36 @@ export function EnhancedProductComparison() {
                       />
                     </div>
 
-                    {isSubscription && preferredOption.totalPrice ? (
-                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
-                        {preferredOption.priceFormatted} per month (Billed {preferredOption.totalPrice})
-                      </p>
-                    ) : preferredOption.priceFormatted === 'FREE' ? (
-                      <div className="mb-2">
-                        <span className="text-4xl font-black text-green-600 dark:text-green-400 tracking-tight">
-                          {preferredOption.priceFormatted}
-                        </span>
-                        {preferredOption.subLabel && (
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            {preferredOption.subLabel}
-                          </p>
-                        )}
-                        {preferredOption.shippingNote && (
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                            {preferredOption.shippingNote}
-                          </p>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="mb-2">
-                        <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
-                          {preferredOption.priceFormatted}
-                        </span>
-                      </div>
-                    )}
+                    {/* Pricing section with consistent height */}
+                    <div className="min-h-[80px] flex flex-col justify-center">
+                      {isSubscription && preferredOption.totalPrice ? (
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                          {preferredOption.priceFormatted} per month (Billed {preferredOption.totalPrice})
+                        </p>
+                      ) : preferredOption.priceFormatted === 'FREE' ? (
+                        <div className="mb-2">
+                          <span className="text-4xl font-black text-green-600 dark:text-green-400 tracking-tight">
+                            {preferredOption.priceFormatted}
+                          </span>
+                          {preferredOption.subLabel && (
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                              {preferredOption.subLabel}
+                            </p>
+                          )}
+                          {preferredOption.shippingNote && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                              {preferredOption.shippingNote}
+                            </p>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="mb-2">
+                          <span className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">
+                            {preferredOption.priceFormatted}
+                          </span>
+                        </div>
+                      )}
+                    </div>
 
                     {preferredOption.savings ? (
                       <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mb-4">

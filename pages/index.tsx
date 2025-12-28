@@ -192,7 +192,7 @@ export default function Home() {
                       "name": t.structuredData.offerCatalog.products.trial.name,
                       "description": t.structuredData.offerCatalog.products.trial.description,
                       "sku": t.structuredData.offerCatalog.products.trial.sku,
-                      "image": "https://www.purrify.ca/optimized/20g.webp",
+                      "image": "https://www.purrify.ca/optimized/17gpink.webp",
                       "offers": {
                         "@type": "Offer",
                         "price": trialPriceValue,

@@ -44,9 +44,9 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
           locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
           images: [
             {
-              url: 'https://www.purrify.ca/optimized/20g.webp',
+              url: 'https://www.purrify.ca/optimized/17gpink.webp',
               width: 1200,
-              height: 630,
+              height: 1870,
               alt: 'Purrify 12g Trial Size Package',
               type: 'image/webp'
             }
@@ -67,7 +67,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 "name": "Purrify 12g Trial Size - Cat Litter Odor Control",
                 "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
                 "image": [
-                  "https://www.purrify.ca/optimized/20g.webp",
+                  "https://www.purrify.ca/optimized/17gpink.webp",
                   "https://www.purrify.ca/purrify-trial-17g.jpg"
                 ],
                 "brand": {
@@ -151,7 +151,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                   <div className="absolute -inset-4 bg-gradient-to-r from-electric-indigo-400/20 to-purple-400/20 dark:from-electric-indigo-600/10 dark:to-purple-600/10 rounded-3xl blur-2xl"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                     <Image
-                      src="/optimized/20g.webp"
+                      src="/optimized/17gpink.webp"
                       alt="Purrify 12g Trial Size"
                       width={300}
                       height={300}
