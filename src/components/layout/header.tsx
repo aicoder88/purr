@@ -300,20 +300,20 @@ export function Header() {
               <Image
                 src="/optimized/logo-text-240.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={120}
-                height={40}
+                width={240}
+                height={111}
                 priority
                 unoptimized
-                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
+                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
                 src="/optimized/purrify-dark-mode-logo.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={120}
-                height={40}
+                width={240}
+                height={111}
                 priority
                 unoptimized
-                className="h-8 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
+                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
             </Link>
           </div>
@@ -390,10 +390,12 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-3">
             <ThemeToggle />
             {session?.user && (
-              <div className="flex items-center space-x-2 px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <UserIcon className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                <span className="text-sm text-gray-700 dark:text-gray-200">
-                  {session.user.email}
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-brand-green/10 to-brand-green/5 dark:from-purple-500/20 dark:to-purple-500/10 border border-brand-green/30 dark:border-purple-500/40 rounded-full">
+                <div className="w-6 h-6 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
+                  <UserIcon className="w-3.5 h-3.5 text-white" />
+                </div>
+                <span className="text-sm font-medium text-brand-green-dark dark:text-purple-300">
+                  {session.user.email?.split('@')[0] || 'User'}
                 </span>
               </div>
             )}
@@ -493,17 +495,24 @@ export function Header() {
               {/* Quick Actions */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
                 {session?.user && (
-                  <div className="px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <UserIcon className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-200">
-                        {session.user.email}
-                      </span>
+                  <div className="px-3 py-3 bg-gradient-to-r from-brand-green/10 to-brand-green/5 dark:from-purple-500/20 dark:to-purple-500/10 border border-brand-green/30 dark:border-purple-500/40 rounded-xl">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
+                          <UserIcon className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
+                            {session.user.email?.split('@')[0] || 'User'}
+                          </span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">Signed in</span>
+                        </div>
+                      </div>
                     </div>
                     <Button
                       onClick={() => signOut({ callbackUrl: "/" })}
-                      variant="ghost"
-                      className="w-full flex items-center justify-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
+                      variant="outline"
+                      className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-dark dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>Sign Out</span>
