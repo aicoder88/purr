@@ -1573,52 +1573,185 @@ export const fr = {
     breadcrumb: "Contrôle de l'Ammoniac",
     hero: {
       headline: "Contrôle de l'Ammoniac: Éliminez les Odeurs de Litière à la Source",
-      subheadline: "Le charbon actif de noix de coco de Purrify capture les molécules d'ammoniac avant qu'elles ne se dispersent dans l'air, gardant votre maison fraîche pendant 7+ jours.",
+      subheadline: "Cette odeur âcre et piquante de la litière n'est pas qu'un désagrément—c'est de l'ammoniac, et ça empire chaque heure. Le charbon actif de noix de coco premium de Purrify capture les molécules d'ammoniac au niveau moléculaire, gardant votre maison vraiment fraîche pendant 7+ jours sans parfums artificiels.",
       cta: "Acheter Maintenant",
       secondaryCta: "Voir Comment Ça Marche"
     },
     trust: {
       happyCats: "chats heureux"
     },
+    understanding: {
+      headline: "Comprendre l'Ammoniac: La Vraie Cause de l'Odeur de Litière",
+      intro: "Cette odeur distinctive de litière ne vient pas de votre chat—c'est un processus chimique qui se produit dans la litière elle-même. Comprendre ce processus est la première étape pour l'éliminer.",
+      chemistry: {
+        title: "La Chimie Derrière l'Odeur",
+        description: "Quand votre chat urine, l'urine contient un composé appelé urée. En seulement 2-4 heures, les bactéries naturellement présentes dans la litière commencent à décomposer cette urée en gaz ammoniac (NH₃). C'est l'odeur âcre et piquante qui peut envahir toute votre maison.",
+        formula: "Urée + Bactéries + Temps = Gaz Ammoniac"
+      },
+      factors: {
+        title: "Pourquoi Ça Empire avec le Temps",
+        point1: "Température: Les bactéries se multiplient plus vite dans les environnements chauds, produisant plus d'ammoniac",
+        point2: "Humidité: L'humidité accélère le processus de décomposition et aide l'ammoniac à se disperser dans l'air",
+        point3: "Accumulation: Chaque jour ajoute plus d'urine, créant plus de production d'ammoniac",
+        point4: "Espaces clos: Les litières dans les placards ou meubles fermés piègent et concentrent l'ammoniac"
+      },
+      health: {
+        title: "Problèmes de Santé Liés à l'Exposition à l'Ammoniac",
+        description: "L'exposition prolongée à l'ammoniac n'est pas qu'un désagrément—elle peut causer de vrais problèmes de santé. À des concentrations courantes près des litières mal entretenues, l'ammoniac peut irriter les yeux et le système respiratoire des humains et des chats. Les chats, avec leur nez sensible, peuvent même commencer à éviter une litière qui sent trop l'ammoniac, causant des accidents ailleurs dans votre maison."
+      }
+    },
     problem: {
-      headline: "Pourquoi les Litières Parfumées Ne Fonctionnent Pas",
+      headline: "Pourquoi les Litières Parfumées et Désodorisants Échouent",
+      intro: "Si vous avez essayé les litières parfumées, le bicarbonate de soude ou les désodorisants et trouvé qu'ils ne fonctionnent qu'un jour ou deux, il y a une raison scientifique: aucun d'eux n'élimine vraiment l'ammoniac.",
       card1: {
         title: "Masquer, Pas Résoudre",
-        description: "Les parfums couvrent temporairement l'odeur d'ammoniac mais n'éliminent pas la source. L'odeur revient toujours."
+        description: "Les parfums et litières parfumées ajoutent simplement une odeur différente par-dessus l'ammoniac. Votre nez s'habitue au parfum en quelques heures, mais l'ammoniac est toujours là—toujours produit, toujours en accumulation. C'est pourquoi l'odeur revient toujours, souvent pire qu'avant."
       },
       card2: {
-        title: "Préoccupations de Santé",
-        description: "Les parfums artificiels peuvent irriter les chats sensibles et les humains souffrant d'allergies ou de problèmes respiratoires."
+        title: "Préoccupations de Santé pour les Chats",
+        description: "Les parfums artificiels ne sont pas seulement inefficaces—ils peuvent être nocifs. Les chats ont 200 millions de récepteurs olfactifs contre 5 millions pour nous. Les parfums forts peuvent causer des irritations respiratoires, déclencher de l'asthme, ou faire éviter la litière à votre chat."
       },
       card3: {
-        title: "Coût Constant",
-        description: "Les changements fréquents de litière pour gérer les odeurs s'accumulent rapidement—vous coûtant temps et argent chaque semaine."
+        title: "Le Mythe du Bicarbonate de Soude",
+        description: "Le bicarbonate de soude est alcalin (pH ~8,3) et l'ammoniac est aussi alcalin (pH ~11,6). Pour une neutralisation, il faut une réaction acide-base—mais base plus base égale pas de réaction. Le bicarbonate ne peut pas neutraliser l'ammoniac; il n'absorbe que temporairement l'humidité."
+      },
+      card4: {
+        title: "Coût & Effort Constants",
+        description: "Sans vraie élimination des odeurs, vous êtes coincé dans un cycle coûteux: changements fréquents de litière, achats de produits parfumés inefficaces, et inquiétude constante sur ce que les invités pourraient sentir. Cela peut coûter 50-100$+ par mois pour les foyers multi-chats."
       }
     },
     solution: {
       headline: "La Science de la Vraie Élimination des Odeurs",
-      description: "Le charbon actif possède une structure microporeuse avec des millions de petits pores qui capturent physiquement les molécules d'ammoniac. Contrairement aux agents masquants, le charbon actif capture l'odeur au niveau moléculaire par adsorption—vous ne la sentez plus jamais."
+      intro: "Le charbon actif fonctionne par un mécanisme totalement différent des agents masquants—et c'est pourquoi il fonctionne vraiment.",
+      description: "Le charbon actif possède une structure microporeuse avec des millions de petits pores qui capturent physiquement les molécules d'ammoniac. Contrairement aux agents masquants, le charbon actif capture l'odeur au niveau moléculaire par adsorption—vous ne la sentez plus jamais.",
+      adsorption: {
+        title: "L'Adsorption: La Différence Clé",
+        description: "L'adsorption (avec un 'd') est différente de l'absorption. Quand les molécules d'ammoniac contactent le charbon actif, elles ne font pas que s'imbiber—elles se lient à la surface du charbon au niveau moléculaire. Ce processus physique fonctionne quel que soit le pH, le rendant efficace contre l'ammoniac là où le bicarbonate échoue."
+      },
+      pores: {
+        title: "Structure de Pores Optimisée",
+        micro: "Micropores (<2nm): Piègent les petites molécules d'ammoniac de façon permanente",
+        meso: "Mésopores (2-50nm): Servent d'autoroutes guidant l'ammoniac vers les micropores",
+        macro: "Macropores (>50nm): Points d'entrée permettant un accès rapide des gaz",
+        description: "Le charbon de noix de coco de Purrify est spécifiquement traité pour optimiser cette distribution de pores pour la capture de l'ammoniac. Résultat: efficacité maximale de piégeage pour les molécules exactes causant votre problème d'odeur."
+      },
+      surface: {
+        title: "Surface Massive",
+        stat: "1 150 m²/g",
+        comparison: "C'est l'équivalent de 4 courts de tennis de surface de piégeage dans chaque cuillère à café. Comparez au bicarbonate de soude à seulement 0,2 m²/g—presque 6 000 fois moins de surface.",
+        explanation: "Cette énorme surface explique pourquoi une petite quantité de charbon actif peut capturer autant d'ammoniac sur une si longue période."
+      }
+    },
+    howToUse: {
+      headline: "Comment Utiliser Purrify",
+      intro: "Commencer avec Purrify est simple. La plupart des parents de chats remarquent une différence dramatique en 24 heures.",
+      step1: {
+        number: "1",
+        title: "Saupoudrer",
+        description: "Saupoudrez 2-3 cuillères à soupe de Purrify uniformément sur la litière de votre chat. Pour de meilleurs résultats, ajoutez Purrify après avoir nettoyé quand la litière est relativement fraîche."
+      },
+      step2: {
+        number: "2",
+        title: "Mélanger",
+        description: "Mélangez doucement les granulés de charbon dans la couche supérieure de la litière. Pas besoin de mélanger profondément—le charbon fonctionne mieux près de la surface où l'ammoniac est libéré."
+      },
+      step3: {
+        number: "3",
+        title: "Entretenir",
+        description: "Ramassez quotidiennement comme d'habitude. Réappliquez Purrify tous les 5-7 jours, ou quand vous ajoutez de la litière fraîche. Un sachet de 50g dure généralement 2-3 semaines pour un seul chat."
+      },
+      tips: {
+        title: "Conseils Pro pour de Meilleurs Résultats",
+        tip1: "Pour les odeurs fortes existantes, faites d'abord un changement complet de litière, puis ajoutez Purrify à la litière fraîche",
+        tip2: "Les foyers multi-chats peuvent devoir réappliquer tous les 4-5 jours au lieu de 7",
+        tip3: "Fonctionne avec tous les types de litière: agglomérante, argile, cristal, bois, maïs ou papier"
+      }
     },
     benefits: {
       headline: "Pourquoi les Parents de Chats Choisissent Purrify",
+      intro: "Il y a une raison pour laquelle des milliers de propriétaires de chats sont passés au charbon actif pour le contrôle des odeurs.",
       pillar1: {
-        title: "Science Naturelle",
-        description: "100% charbon actif naturel de noix de coco. Aucun produit chimique, parfum ou additif pouvant nuire à votre chat."
+        title: "Science 100% Naturelle",
+        description: "Purrify est fait de charbon actif de noix de coco premium—rien d'autre. Pas de produits chimiques, parfums, additifs synthétiques ou charges. C'est le même matériau utilisé dans les purificateurs d'air de qualité hospitalière et les systèmes de filtration d'eau.",
+        detail: "Le charbon de noix de coco est prisé pour sa haute densité de micropores, le rendant particulièrement efficace pour piéger les petites molécules de gaz comme l'ammoniac."
       },
       pillar2: {
-        title: "Longue Durée",
-        description: "Une application protège pendant 7+ jours, réduisant les changements de litière et vous faisant économiser."
+        title: "Protection Longue Durée",
+        description: "Une application de Purrify offre un contrôle continu de l'ammoniac pendant 7+ jours. Contrairement aux parfums qui s'estompent en quelques heures ou au bicarbonate qui cesse de fonctionner après 48 heures, le charbon actif continue de fonctionner jusqu'à saturation de ses pores.",
+        detail: "La plupart des clients trouvent qu'ils peuvent réduire leurs changements complets de litière de 30-50%, économisant argent et temps."
       },
       pillar3: {
-        title: "Sûr & Doux",
-        description: "Formule approuvée par les vétérinaires, sûre pour les chats de tous âges, y compris les chatons et les seniors sensibles."
+        title: "Sûr pour Tous les Chats",
+        description: "Parce que Purrify est totalement sans parfum et fait de charbon naturel, il est sûr pour les chats de tous âges et sensibilités. Chatons, seniors et chats avec des conditions respiratoires peuvent tous en bénéficier sans risque d'irritation.",
+        detail: "Beaucoup de chats préfèrent en fait les environnements de litière non parfumés. Vous remarquerez peut-être que votre chat utilise la litière plus régulièrement après être passé à Purrify."
       }
+    },
+    results: {
+      headline: "À Quoi S'Attendre: Chronologie des Résultats Réels",
+      intro: "Voici ce que les parents de chats expérimentent généralement après avoir ajouté Purrify à leur routine de litière.",
+      day1: {
+        title: "Dans les 24 Heures",
+        description: "Réduction notable de l'odeur d'ammoniac. La qualité âcre et piquante de l'odeur diminue significativement alors que le charbon commence à piéger les molécules d'ammoniac en suspension."
+      },
+      day3: {
+        title: "Jours 2-3",
+        description: "La plupart des odeurs existantes sont éliminées. Même les odeurs fortes et établies sont capturées alors que l'ammoniac continue d'être adsorbé. Les invités ne remarqueront aucune odeur de litière."
+      },
+      week1: {
+        title: "Après Une Semaine",
+        description: "Fraîcheur constante maintenue. Le charbon actif fonctionne toujours, piégeant continuellement le nouvel ammoniac produit. Il est temps d'ajouter une nouvelle application."
+      },
+      ongoing: {
+        title: "Utilisation Continue",
+        description: "Avec une réapplication régulière, votre maison reste fraîche en permanence. Beaucoup de clients rapportent qu'ils 'oublient' qu'ils ont une litière car il n'y a simplement pas d'odeur pour leur rappeler."
+      }
+    },
+    comparison: {
+      headline: "Comment Purrify Se Compare",
+      intro: "Toutes les méthodes de contrôle des odeurs ne sont pas égales. Voici comment les approches les plus courantes se comparent.",
+      headers: {
+        method: "Méthode",
+        effectiveness: "Efficacité",
+        duration: "Durée",
+        safety: "Sécurité Chat"
+      },
+      purrify: {
+        method: "Purrify (Charbon Actif)",
+        effectiveness: "95%",
+        duration: "7+ jours",
+        safety: "100% sûr"
+      },
+      bakingSoda: {
+        method: "Bicarbonate de Soude",
+        effectiveness: "20%",
+        duration: "1-2 jours",
+        safety: "Sûr"
+      },
+      scented: {
+        method: "Litière Parfumée",
+        effectiveness: "30%",
+        duration: "Heures",
+        safety: "Peut irriter"
+      },
+      airFreshener: {
+        method: "Désodorisants",
+        effectiveness: "10%",
+        duration: "Heures",
+        safety: "Peut irriter"
+      },
+      frequentChanges: {
+        method: "Changements Fréquents",
+        effectiveness: "70%",
+        duration: "Jusqu'au prochain usage",
+        safety: "Sûr mais coûteux"
+      },
+      note: "Notes d'efficacité basées sur la réduction de l'ammoniac. Purrify cible spécifiquement l'ammoniac par adsorption, tandis que les autres méthodes masquent ou absorbent temporairement."
     },
     stats: {
       days: { value: "7+", label: "Jours de Fraîcheur" },
-      savings: { value: "Moins", label: "de Changements" },
-      customers: { value: "10 000+", label: "Chats Heureux" },
-      rating: { value: "4,9★", label: "Note Client" }
+      savings: { value: "50%", label: "Moins de Changements" },
+      surfaceArea: { value: "1 150", label: "m²/g de Surface" },
+      natural: { value: "100%", label: "Ingrédients Naturels" }
     },
     faq: {
       headline: "Questions Courantes sur le Contrôle de l'Ammoniac",
@@ -1640,10 +1773,10 @@ export const fr = {
       a8: "Le sachet de 50g dure environ 7 jours pour un chat. Le sachet de 120g dure environ 7 jours pour les foyers multi-chats (2-3 chats). La plupart des clients trouvent qu'ils doivent changer la litière moins souvent."
     },
     cta: {
-      headline: "Prêt pour une Maison qui Sent Bon?",
-      subheadline: "Rejoignez des milliers de parents de chats qui ont éliminé les odeurs de litière pour de bon.",
+      headline: "Prêt pour une Maison Vraiment Fraîche?",
+      subheadline: "Rejoignez des milliers de parents de chats qui ont éliminé l'ammoniac de litière pour de bon—pas masqué, éliminé.",
       button: "Acheter Purrify",
-      secondaryButton: "Essai GRATUIT",
+      secondaryButton: "Essayer le Format Découverte",
       benefit1: "Livraison gratuite dès 35$",
       benefit2: "Garantie satisfaction 30 jours"
     }

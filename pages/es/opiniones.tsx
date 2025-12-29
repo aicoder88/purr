@@ -302,19 +302,19 @@ export default function OpinionesPage() {
                   </p>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                     <li className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
                       <span>100% natural y sin fragancia</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
                       <span>Seguro para gatos y gatitos</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
                       <span>Funciona con cualquier tipo de arena</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
                       <span>Dura hasta 30 días por aplicación</span>
                     </li>
                   </ul>

@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -13,9 +14,53 @@ import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
+import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
+  const viewTracked = useRef(false);
+
+  const productKey = 'family';
+  const productName = 'Purrify Family Pack (120g)';
+
+  // Track ViewContent on page load
+  useEffect(() => {
+    if (viewTracked.current) return;
+    viewTracked.current = true;
+
+    const numericPrice = getProductPrice(productKey);
+    trackTikTokClientEvent('ViewContent', {
+      content_id: productKey,
+      content_name: productName,
+      content_type: 'product',
+      value: numericPrice,
+      currency: 'CAD',
+    });
+  }, []);
+
+  // Track AddToCart + InitiateCheckout when user clicks buy
+  const handleBuyClick = (isAutoship: boolean) => {
+    const price = isAutoship ? getProductPrice('familyAutoship') : getProductPrice(productKey);
+    const name = isAutoship ? `${productName} - Autoship` : productName;
+
+    trackTikTokClientEvent('AddToCart', {
+      content_id: productKey,
+      content_name: name,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+
+    trackTikTokClientEvent('InitiateCheckout', {
+      content_id: productKey,
+      content_name: name,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+  };
 
   const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
@@ -246,7 +291,7 @@ export default function FamilyPackPage() {
                       disabled={!familyAutoshipLink}
                     >
                       {familyAutoshipLink ? (
-                        <a href={familyAutoshipLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                        <a href={familyAutoshipLink} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(true)} className="flex items-center justify-center gap-2">
                           <Zap className="w-5 h-5" />
                           {t.subscriptionOfferExtended?.startAutoship || 'Start Autoship'}
                         </a>
@@ -288,7 +333,7 @@ export default function FamilyPackPage() {
                       {t.pricing?.plusShipping || '+ shipping'} · One-time order
                     </p>
                     <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
-                      <Link href={checkoutUrl} className="flex items-center justify-center gap-2">
+                      <Link href={checkoutUrl} onClick={() => handleBuyClick(false)} className="flex items-center justify-center gap-2">
                         <ShoppingCart className="w-5 h-5" />
                         {t.homepage.enhancedComparison.chooseThisSize}
                       </Link>

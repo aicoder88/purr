@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   CheckCircle2,
   Package,
@@ -123,6 +123,51 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [referralLoading, setReferralLoading] = useState(false);
+  const purchaseTracked = useRef(false);
+
+  // Track purchase event for TikTok (server-side for reliability)
+  useEffect(() => {
+    if (!orderDetails || purchaseTracked.current) return;
+    purchaseTracked.current = true;
+
+    const trackPurchase = async () => {
+      try {
+        // Server-side tracking (more reliable)
+        await fetch('/api/tracking/tiktok', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'Purchase',
+            content_id: orderDetails.orderNumber,
+            content_name: orderDetails.productName || 'Purrify',
+            content_type: 'product',
+            quantity: orderDetails.quantity || 1,
+            value: orderDetails.amount ? orderDetails.amount / 100 : undefined,
+            currency: 'CAD',
+            email: orderDetails.customerEmail,
+            external_id: orderDetails.orderNumber,
+            url: typeof window !== 'undefined' ? window.location.href : undefined,
+          }),
+        });
+
+        // Client-side tracking (backup, for TikTok pixel matching)
+        if (typeof window !== 'undefined' && window.ttq) {
+          window.ttq.track('Purchase', {
+            content_id: orderDetails.orderNumber,
+            content_name: orderDetails.productName || 'Purrify',
+            content_type: 'product',
+            quantity: orderDetails.quantity || 1,
+            value: orderDetails.amount ? orderDetails.amount / 100 : undefined,
+            currency: 'CAD',
+          });
+        }
+      } catch (err) {
+        console.debug('TikTok purchase tracking failed:', err);
+      }
+    };
+
+    trackPurchase();
+  }, [orderDetails]);
 
   // Determine delivery timeline based on shipping country
   const getDeliveryTimeline = () => {

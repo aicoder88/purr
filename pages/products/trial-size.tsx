@@ -10,6 +10,8 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
+import { useEffect, useRef } from 'react';
+import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface TrialSizePageProps {
   priceValidUntil: string;
@@ -17,6 +19,47 @@ interface TrialSizePageProps {
 
 export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const { t, locale } = useTranslation();
+  const viewTracked = useRef(false);
+
+  const productKey = 'trial';
+  const productName = 'Purrify Trial Size (12g)';
+
+  // Track ViewContent on page load
+  useEffect(() => {
+    if (viewTracked.current) return;
+    viewTracked.current = true;
+
+    const numericPrice = getProductPrice(productKey);
+    trackTikTokClientEvent('ViewContent', {
+      content_id: productKey,
+      content_name: productName,
+      content_type: 'product',
+      value: numericPrice,
+      currency: 'CAD',
+    });
+  }, []);
+
+  // Track AddToCart + InitiateCheckout when user clicks buy
+  const handleBuyClick = () => {
+    const price = getProductPrice(productKey);
+    trackTikTokClientEvent('AddToCart', {
+      content_id: productKey,
+      content_name: productName,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+
+    trackTikTokClientEvent('InitiateCheckout', {
+      content_id: productKey,
+      content_name: productName,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+  };
 
   const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
   const pageDescription = "Get your FREE 12g Purrify trial - Just $4.76 shipping & handling anywhere in Canada. Limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
@@ -223,7 +266,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                     </li>
                   </ul>
 
-                  <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" className="block w-full">
+                  <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="block w-full">
                     <Button
                       size="lg"
                       className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 transform hover:scale-[1.02]"
@@ -435,7 +478,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   Then you get every penny back. No questions. No hassle. No "return shipping fees" nonsense. We eat the cost. You risk <strong>nothing</strong>.
                 </p>
-                <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" className="inline-block">
+                <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="inline-block">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 px-12 text-lg shadow-xl hover:shadow-green-500/20 transform hover:scale-[1.02] transition-all"

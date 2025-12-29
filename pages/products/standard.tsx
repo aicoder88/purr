@@ -11,13 +11,55 @@ import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
+import { useEffect, useRef } from 'react';
+import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
+  const viewTracked = useRef(false);
 
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
   const productPrice = formatProductPrice(productKey, locale);
+  const numericPrice = getProductPrice(productKey);
+
+  // Track ViewContent on page load
+  useEffect(() => {
+    if (viewTracked.current) return;
+    viewTracked.current = true;
+
+    trackTikTokClientEvent('ViewContent', {
+      content_id: productKey,
+      content_name: productName,
+      content_type: 'product',
+      value: numericPrice,
+      currency: 'CAD',
+    });
+  }, [productKey, productName, numericPrice]);
+
+  // Track AddToCart + InitiateCheckout when user clicks buy
+  const handleBuyClick = (isAutoship: boolean) => {
+    const price = isAutoship ? getProductPrice('standardAutoship') : numericPrice;
+    const name = isAutoship ? `${productName} - Autoship` : productName;
+
+    trackTikTokClientEvent('AddToCart', {
+      content_id: productKey,
+      content_name: name,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+
+    trackTikTokClientEvent('InitiateCheckout', {
+      content_id: productKey,
+      content_name: name,
+      content_type: 'product',
+      quantity: 1,
+      value: price,
+      currency: 'CAD',
+    });
+  };
 
   const pageTitle = `${productName} - Ideal Odor Control for Single-Cat Homes`;
   const pageDescription = t.products?.["purrify-50g"]?.description || "Perfect for homes with 1 cat. 50g Standard Size eliminates ammonia smells instantly using activated carbon.";
@@ -154,7 +196,7 @@ export default function StandardSizePage() {
                       <span className="text-xs text-gray-500 dark:text-gray-400">/ 3 months</span>
                     </div>
                     <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
-                      <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(true)} className="flex items-center gap-2">
                         Get Autoship <Zap className="w-4 h-4 fill-current" />
                       </a>
                     </Button>
@@ -173,7 +215,7 @@ export default function StandardSizePage() {
                       <span className="text-3xl font-black text-gray-900 dark:text-white">{productPrice}</span>
                     </div>
                     <Button asChild variant="outline" className="w-full border-2 border-gray-900 dark:border-gray-200 hover:bg-gray-900 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-900 font-bold py-6 rounded-2xl">
-                      <a href={singleCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={singleCheckoutUrl} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(false)}>
                         Buy Now
                       </a>
                     </Button>
@@ -331,7 +373,7 @@ export default function StandardSizePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <div className="space-y-4 w-full sm:w-auto">
                   <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
-                    <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                    <a href={autoshipCheckoutUrl} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(true)} className="flex items-center gap-3">
                       Start Your Fresh Journey <Zap className="w-5 h-5 fill-current" />
                     </a>
                   </Button>

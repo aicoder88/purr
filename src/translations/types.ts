@@ -1338,27 +1338,100 @@ export interface TranslationType {
     trust: {
       happyCats: string;
     };
+    understanding: {
+      headline: string;
+      intro: string;
+      chemistry: { title: string; description: string; formula: string };
+      factors: { title: string; point1: string; point2: string; point3: string; point4: string };
+      health: { title: string; description: string };
+    };
     problem: {
       headline: string;
+      intro?: string;
       card1: { title: string; description: string };
       card2: { title: string; description: string };
       card3: { title: string; description: string };
+      card4: { title: string; description: string };
     };
     solution: {
       headline: string;
+      intro?: string;
       description: string;
+      adsorption: { title: string; description: string };
+      pores: { title: string; micro: string; meso: string; macro: string; description?: string };
+      surface: { title: string; stat: string; comparison: string; explanation?: string };
     };
     benefits: {
       headline: string;
-      pillar1: { title: string; description: string };
-      pillar2: { title: string; description: string };
-      pillar3: { title: string; description: string };
+      pillar1: { title: string; intro?: string; description: string; detail?: string };
+      pillar2: { title: string; intro?: string; description: string; detail?: string };
+      pillar3: { title: string; intro?: string; description: string; detail?: string };
+    };
+    howToUse: {
+      headline: string;
+      intro: string;
+      step1: { number?: string; title: string; description: string };
+      step2: { number?: string; title: string; description: string };
+      step3: { number?: string; title: string; description: string };
+      proTip?: { title: string; description: string };
+      tips: { title: string; tip1: string; tip2: string; tip3: string };
+    };
+    results: {
+      headline: string;
+      intro: string;
+      day1: { title: string; description: string };
+      day3: { title: string; description: string };
+      week1: { title: string; description: string };
+      ongoing: { title: string; description: string };
+    };
+    comparison: {
+      headline: string;
+      intro: string;
+      headers: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      purrify: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      bakingSoda: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      scented: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      airFreshener: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      frequentChanges: {
+        method: string;
+        effectiveness: string;
+        duration: string;
+        safety: string;
+      };
+      note: string;
     };
     stats: {
       days: { value: string; label: string };
       savings: { value: string; label: string };
-      customers: { value: string; label: string };
-      rating: { value: string; label: string };
+      surfaceArea?: { value: string; label: string };
+      natural?: { value: string; label: string };
+      customers?: { value: string; label: string };
+      rating?: { value: string; label: string };
     };
     faq: {
       headline: string;

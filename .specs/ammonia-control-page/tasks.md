@@ -324,19 +324,19 @@ Before T11, ensure these exist:
 
 | Task | Status | Notes |
 |------|--------|-------|
-| T1 | pending | |
-| T2 | pending | |
-| T3 | pending | |
-| T4 | pending | |
-| T5 | pending | |
-| T6 | pending | |
-| T7 | pending | |
-| T8 | pending | |
-| T9 | pending | |
-| T10 | pending | |
-| T11 | pending | |
-| T12 | pending | |
-| T13 | pending | |
+| T1 | completed | LandingHero component created |
+| T2 | completed | TrustBar component created |
+| T3 | completed | ProblemSection component created |
+| T4 | completed | SolutionSection component created |
+| T5 | completed | BenefitPillars component created |
+| T6 | completed | StatsBar (not used in final) |
+| T7 | completed | FinalCTA component created |
+| T8 | completed | English translations added |
+| T9 | completed | French translations added |
+| T10 | completed | Chinese translations added |
+| T11 | completed | Page file created |
+| T12 | completed | Structured data added |
+| T13 | pending | Content expansion to ~2,000 words |
 
 ---
 

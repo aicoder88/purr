@@ -21,7 +21,7 @@
 ## Tasks
 
 ### T0: Source and Download Images
-**Status:** pending
+**Status:** completed
 **File:** `public/optimized/blog/`
 
 **Done Criteria:**
@@ -48,7 +48,7 @@
 ---
 
 ### T1: Create Blog Post JSON Structure
-**Status:** pending
+**Status:** completed
 **File:** `content/blog/en/how-to-neutralize-ammonia-cat-litter.json`
 
 **Done Criteria:**
@@ -61,7 +61,7 @@
 ---
 
 ### T2: Write Header and Intro Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T1
 
 **Done Criteria:**
@@ -86,7 +86,7 @@ Intro paragraph:
 ---
 
 ### T3: Write "Why Ammonia" Science Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T2
 
 **Done Criteria:**
@@ -106,7 +106,7 @@ H2: Why Does Cat Litter Smell Like Ammonia?
 ---
 
 ### T4: Write 5 Methods Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T3
 
 **Done Criteria:**
@@ -144,7 +144,7 @@ H3: 5. Optimize Litter Box Placement
 ---
 
 ### T4.5: Write "Why Purrify's Carbon is Optimized for Ammonia" Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T4
 
 **Done Criteria:**
@@ -186,7 +186,7 @@ Pull 3-4 from hero-testimonials.ts:
 ---
 
 ### T5: Write Comparison Table
-**Status:** pending
+**Status:** completed
 **Depends on:** T4
 
 **Done Criteria:**
@@ -211,7 +211,7 @@ H2: Which Method Works Best? (Comparison)
 ---
 
 ### T6: Write Baking Soda Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T5
 
 **Done Criteria:**
@@ -233,7 +233,7 @@ H2: Why Baking Soda Doesn't Neutralize Ammonia
 ---
 
 ### T7: Write FAQ Section
-**Status:** pending
+**Status:** completed
 **Depends on:** T6
 
 **Done Criteria:**
@@ -252,7 +252,7 @@ H2: Why Baking Soda Doesn't Neutralize Ammonia
 ---
 
 ### T8: Add CTA and Internal Links
-**Status:** pending
+**Status:** completed
 **Depends on:** T7
 
 **Done Criteria:**
@@ -266,7 +266,7 @@ H2: Why Baking Soda Doesn't Neutralize Ammonia
 ---
 
 ### T9: Validate Build and Dark Mode
-**Status:** pending
+**Status:** completed
 **Depends on:** T8
 
 **Done Criteria:**

@@ -92,7 +92,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
         {/* Quick Answer Box */}
         <section className="px-4 mb-12">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 rounded-r-xl">
+            <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 dark:border-green-400 p-6 rounded-r-xl">
               <h2 className="text-xl font-heading font-bold text-green-800 dark:text-green-200 mb-3">
                 Quick Answer: What Neutralizes Ammonia in Cat Litter?
               </h2>
@@ -170,7 +170,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             </h2>
 
             {/* Method 1 - Best */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 mb-6 border-2 border-green-500">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 mb-6 border-2 border-green-500 dark:border-green-400">
               <div className="flex items-center gap-3 mb-4">
                 <span className="bg-green-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">BEST</span>
                 <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
@@ -185,19 +185,19 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
                   </p>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500">✓</span>
+                      <span className="text-green-500 dark:text-green-400">✓</span>
                       <span>Neutralizes ammonia at the molecular level</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500">✓</span>
+                      <span className="text-green-500 dark:text-green-400">✓</span>
                       <span>Lasts up to 7 days per application</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500">✓</span>
+                      <span className="text-green-500 dark:text-green-400">✓</span>
                       <span>100% natural and safe for cats</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500">✓</span>
+                      <span className="text-green-500 dark:text-green-400">✓</span>
                       <span>No fragrances or chemicals</span>
                     </li>
                   </ul>
@@ -214,7 +214,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             {/* Method 2 */}
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-gray-400 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#2</span>
+                <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#2</span>
                 <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                   Baking Soda (Sodium Bicarbonate)
                 </h3>
@@ -245,7 +245,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             {/* Method 3 */}
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-gray-400 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#3</span>
+                <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#3</span>
                 <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                   Zeolite Additives
                 </h3>
@@ -275,7 +275,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             {/* Method 4 */}
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-gray-400 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#4</span>
+                <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#4</span>
                 <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                   More Frequent Scooping
                 </h3>
@@ -404,7 +404,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
         {/* Health Warning */}
         <section className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 rounded-r-xl">
+            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-400 p-6 rounded-r-xl">
               <h2 className="text-xl font-heading font-bold text-red-800 dark:text-red-200 mb-3">
                 Health Warning: Ammonia Exposure Risks
               </h2>
@@ -506,13 +506,13 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/products/trial-size"
-                  className="inline-block bg-white text-electric-indigo dark:text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   {`Try Purrify - ${formatProductPrice('trial')}`}
                 </Link>
                 <Link
                   href="/products/compare"
-                  className="inline-block border-2 border-white text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300"
+                  className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
                 >
                   Compare All Sizes
                 </Link>
