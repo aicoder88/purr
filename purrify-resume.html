@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrify Inc. - Company Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid #f97316;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #f97316;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #f97316;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .stat-box {
+            background: #fef3e7;
+            padding: 15px 10px;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dotted #e5e5e5;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .product-price {
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        .certification-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            background: #1a1a2e;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .team-member {
+            margin-bottom: 15px;
+        }
+
+        .team-member h4 {
+            font-size: 14px;
+            color: #1a1a2e;
+            margin-bottom: 2px;
+        }
+
+        .team-member .role {
+            font-size: 12px;
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        .team-member p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3e7 0%, #fff7ed 100%);
+            border-left: 4px solid #f97316;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PURRIFY INC.</h1>
+        <div class="tagline">Revolutionizing the Cat Ownership Experience</div>
+        <div class="contact-info">
+            <span>www.purrify.ca</span>
+            <span>|</span>
+            <span>hello@purrify.ca</span>
+            <span>|</span>
+            <span>1 (450) 663-6773</span>
+            <span>|</span>
+            <span>Mirabel, QC, Canada</span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Company Profile</h2>
+        <p style="font-size: 14px; margin-bottom: 10px;">
+            Purrify is a Canadian company creating innovative, fragrance-free products that eliminate pet odors using NASA-developed activated carbon technology. Our flagship product transforms the cat ownership experience by providing molecular-level odor elimination without chemicals or artificial fragrances.
+        </p>
+        <div class="highlight-box">
+            "We believe every cat deserves a clean, comfortable environment, and every family deserves to enjoy their home without compromise."
+        </div>
+    </section>
+
+    <section>
+        <h2>Key Achievements</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">1,000+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Star Rating</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7 Days</div>
+                <div class="stat-label">Odor Protection</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="two-column">
+        <section>
+            <h2>Core Competencies</h2>
+            <ul>
+                <li>Molecular-level odor elimination technology</li>
+                <li>100% natural activated coconut carbon</li>
+                <li>NASA-developed adsorption science</li>
+                <li>Universal compatibility with all litter types</li>
+                <li>Fragrance-free, chemical-free formulation</li>
+                <li>Pet-safe and non-toxic</li>
+                <li>60-second application process</li>
+                <li>Extended litter life & reduced waste</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Product Portfolio</h2>
+            <div class="product-item">
+                <span class="product-name">Trial Size (12g)</span>
+                <span class="product-price">$4.76</span>
+            </div>
+            <div class="product-item">
+                <span class="product-name">Standard (50g)</span>
+                <span class="product-price">$14.99</span>
+            </div>
+            <div class="product-item">
+                <span class="product-name">Family Pack (120g)</span>
+                <span class="product-price">$29.99</span>
+            </div>
+            <div class="product-item">
+                <span class="product-name">Large (240g)</span>
+                <span class="product-price">$54.99</span>
+            </div>
+            <div class="product-item">
+                <span class="product-name">Autoship Subscriptions</span>
+                <span class="product-price">Available</span>
+            </div>
+        </section>
+    </div>
+
+    <section>
+        <h2>Certifications & Standards</h2>
+        <div class="certification-badges">
+            <span class="badge">NSF/ANSI 61 Certified</span>
+            <span class="badge">AWWA B604 Certified</span>
+            <span class="badge">Food Chemicals Codex</span>
+            <span class="badge">Halal Certified</span>
+            <span class="badge">Kosher Certified</span>
+            <span class="badge">Made in Canada</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Leadership Team</h2>
+        <div class="two-column">
+            <div class="team-member">
+                <h4>Mark Archer</h4>
+                <div class="role">Founder & CEO</div>
+                <p>Environmental science background. Lifelong cat lover whose personal struggle with litter box odors inspired the solution.</p>
+            </div>
+            <div class="team-member">
+                <h4>Dr. Michael Rodriguez</h4>
+                <div class="role">Chief Science Officer</div>
+                <p>Materials scientist with 15+ years experience in activated carbon technology. Leads product development and quality assurance.</p>
+            </div>
+            <div class="team-member">
+                <h4>Sage Dean</h4>
+                <div class="role">Head of Customer Experience</div>
+                <p>Former veterinary technician passionate about pet welfare and family satisfaction.</p>
+            </div>
+            <div class="team-member">
+                <h4>David Kim</h4>
+                <div class="role">Operations Director</div>
+                <p>Supply chain expert ensuring fast processing and reliable delivery across Canada.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Market Presence</h2>
+        <div class="two-column">
+            <div>
+                <h3>Geographic Coverage</h3>
+                <ul>
+                    <li>Canada-wide shipping (all provinces & territories)</li>
+                    <li>International shipping available</li>
+                    <li>English & French market support</li>
+                    <li>B2B wholesale partnerships</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Target Segments</h3>
+                <ul>
+                    <li>Single & multi-cat households</li>
+                    <li>Apartment & condo dwellers</li>
+                    <li>Allergy-prone households</li>
+                    <li>Eco-conscious consumers</li>
+                    <li>Pet retailers (B2B)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Competitive Advantages</h2>
+        <ul>
+            <li>Only activated carbon-based cat litter additive on the market</li>
+            <li>Patented NASA-developed molecular trapping technology</li>
+            <li>Works with ANY litter type - no brand switching required</li>
+            <li>Multi-certified quality (NSF, AWWA, FCC, Halal, Kosher)</li>
+            <li>30-day money-back guarantee</li>
+            <li>Canadian company with local customer support</li>
+            <li>Proven results: 95% odor reduction in 60 seconds</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Digital Presence</h2>
+        <p style="font-size: 13px; color: #666;">
+            <strong>Social:</strong> @purrifyhq on Instagram, TikTok, Twitter/X, YouTube | LinkedIn: Purrify<br>
+            <strong>Platforms:</strong> Trustpilot, Google Business, Product Hunt, Crunchbase, Wellfound
+        </p>
+    </section>
+
+    <footer>
+        <p><strong>Purrify Inc.</strong> | 109-17680 Rue Charles, Mirabel, QC J7J 0T6, Canada</p>
+        <p>Founded 2023 | Research & Development since 2008</p>
+        <p style="margin-top: 10px; color: #f97316; font-weight: 600;">"Stop the Stink. Naturally."</p>
+    </footer>
+</body>
+</html>

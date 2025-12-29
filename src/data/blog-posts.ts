@@ -32,7 +32,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       title: 'How to Eliminate Cat Litter Smell: The NASA-Inspired Solution That Actually Works',
       excerpt: 'Tried everything for cat litter odor? Discover activated carbon - the same technology NASA uses in space. No perfumes, no chemicals. Traps ammonia molecules instantly.',
       author: 'Purrify Team',
-      date: '2024-12-29', // Fixed publication date
+      date: '2025-12-29', // Fixed publication date
       image: '/optimized/activated-carbon-benefits.webp',
       link: '/blog/space-station-secret-fresh-home-cat-owners'
     },
