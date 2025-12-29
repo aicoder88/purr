@@ -1384,8 +1384,8 @@ export const en = {
   // Retailers & B2B
   retailers: {
     seo: {
-      pageTitle: "Wholesale & Retail Partners",
-      description: "Join our retail network. Wholesale pricing, marketing support, and proven products for pet stores and retailers across Canada.",
+      pageTitle: "Sell Purrify in Your Store | Wholesale Cat Litter Additive",
+      description: "Pet store owners: stock the litter deodorizer customers actually reorder. Wholesale pricing, POS materials, and marketing support included.",
       openGraphAlt: "Wholesale Partners",
       keywords: "wholesale cat litter additive, pet store products, retail partnership, bulk orders, wholesale pricing, marketing support"
     },

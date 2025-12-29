@@ -13,8 +13,8 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 export default function SciencePage() {
   const { locale } = useTranslation();
 
-  const pageTitle = `The Science Behind ${SITE_NAME} - Activated Carbon Technology`;
-  const pageDescription = "Discover how Purrify's activated carbon technology eliminates odors at the molecular level. Learn about the science that makes our cat litter additive so effective.";
+  const pageTitle = `How Activated Carbon Eliminates Cat Litter Odor: The Science`;
+  const pageDescription = "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors.";
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
 
   const scienceFacts = [

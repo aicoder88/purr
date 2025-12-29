@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ammoniasmellcatlitterPage() {
-  const seoTitle = 'Cat Litter Smells Like Ammonia? Here\'s How to Stop It (Fast)';
-  const seoDescription = 'Why does your cat litter smell like ammonia? Bacteria breaking down urine. Fix it instantly with activated carbon that traps ammonia molecules permanently.';
+  const seoTitle = 'Why Your Cat Litter Smells Like Ammonia (And How to Fix It)';
+  const seoDescription = 'That sharp ammonia smell? Bacteria converting urine to gas. Baking soda can\'t neutralize it (both are alkaline). Here\'s what traps ammonia at the molecular level.';
 
   // Ammonia smell solution images
   const heroImage = '/images/solutions/ammonia-hero.png';
