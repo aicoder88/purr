@@ -1321,4 +1321,63 @@ export interface TranslationType {
       disclaimer: string;
     };
   };
+
+  // Ammonia Control Landing Page
+  ammonia: {
+    meta: {
+      title: string;
+      description: string;
+    };
+    breadcrumb: string;
+    hero: {
+      headline: string;
+      subheadline: string;
+      cta: string;
+      secondaryCta: string;
+    };
+    trust: {
+      happyCats: string;
+    };
+    problem: {
+      headline: string;
+      card1: { title: string; description: string };
+      card2: { title: string; description: string };
+      card3: { title: string; description: string };
+    };
+    solution: {
+      headline: string;
+      description: string;
+    };
+    benefits: {
+      headline: string;
+      pillar1: { title: string; description: string };
+      pillar2: { title: string; description: string };
+      pillar3: { title: string; description: string };
+    };
+    stats: {
+      days: { value: string; label: string };
+      savings: { value: string; label: string };
+      customers: { value: string; label: string };
+      rating: { value: string; label: string };
+    };
+    faq: {
+      headline: string;
+      q1: string; a1: string;
+      q2: string; a2: string;
+      q3: string; a3: string;
+      q4: string; a4: string;
+      q5: string; a5: string;
+      q6: string; a6: string;
+      q7: string; a7: string;
+      q8: string; a8: string;
+    };
+    cta: {
+      headline: string;
+      subheadline: string;
+      button: string;
+      secondaryButton: string;
+      benefit1: string;
+      benefit2: string;
+    };
+  };
 }

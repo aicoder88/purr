@@ -1644,5 +1644,90 @@ export const en = {
       cta: "Join the Affiliate Program",
       disclaimer: "Free to join • No monthly fees • Start earning immediately"
     }
+  },
+
+  // Ammonia Control Landing Page
+  ammonia: {
+    meta: {
+      title: "Ammonia Control for Cat Litter | Natural Odor Elimination | Purrify",
+      description: "Eliminate litter box ammonia smell with Purrify's natural zeolite formula. Controls odor at the source for 30+ days. Safe for cats. Shop now."
+    },
+    breadcrumb: "Ammonia Control",
+    hero: {
+      headline: "Ammonia Control: Eliminate Litter Box Odor at the Source",
+      subheadline: "Purrify's natural zeolite formula traps ammonia molecules before they become airborne, keeping your home fresh for 30+ days.",
+      cta: "Shop Now",
+      secondaryCta: "See How It Works"
+    },
+    trust: {
+      happyCats: "happy cats"
+    },
+    problem: {
+      headline: "Why Scented Litters Don't Work",
+      card1: {
+        title: "Masking, Not Solving",
+        description: "Fragrances cover up ammonia smell temporarily but don't eliminate the source. The odor always comes back."
+      },
+      card2: {
+        title: "Health Concerns",
+        description: "Artificial scents can irritate sensitive cats and humans with allergies or respiratory issues."
+      },
+      card3: {
+        title: "Constant Cost",
+        description: "Frequent litter changes to manage odor add up fast—costing you time and money every week."
+      }
+    },
+    solution: {
+      headline: "The Science of True Odor Elimination",
+      description: "Zeolite is a natural volcanic mineral with a microporous structure that physically traps ammonia molecules. Unlike masking agents, zeolite captures odor at the molecular level and holds it permanently—so you never smell it again."
+    },
+    benefits: {
+      headline: "Why Cat Parents Choose Purrify",
+      pillar1: {
+        title: "Natural Science",
+        description: "100% natural zeolite and activated charcoal. No chemicals, fragrances, or additives that could harm your cat."
+      },
+      pillar2: {
+        title: "Long-Lasting",
+        description: "One application protects for 30+ days, reducing litter changes by up to 50% and saving you money."
+      },
+      pillar3: {
+        title: "Safe & Gentle",
+        description: "Vet-approved formula safe for cats of all ages, including kittens and seniors with sensitivities."
+      }
+    },
+    stats: {
+      days: { value: "30+", label: "Days of Freshness" },
+      savings: { value: "50%", label: "Less Litter Changes" },
+      customers: { value: "10,000+", label: "Happy Cats" },
+      rating: { value: "4.9★", label: "Customer Rating" }
+    },
+    faq: {
+      headline: "Common Questions About Ammonia Control",
+      q1: "How does Purrify control ammonia?",
+      a1: "Purrify uses natural zeolite, a volcanic mineral with millions of microscopic pores that trap ammonia molecules. Unlike baking soda or fragrances that mask odor, zeolite physically captures and holds ammonia so it never reaches your nose.",
+      q2: "Is zeolite safe for cats?",
+      a2: "Yes, zeolite is 100% natural and non-toxic. It's the same mineral used in premium water filters and has been safely used around pets for decades. Purrify contains no chemicals, fragrances, or additives.",
+      q3: "How much Purrify do I use?",
+      a3: "Simply sprinkle a thin layer over your cat's litter and mix it in. One 50g pouch treats a standard litter box for about 30 days. For multiple cats, use our 120g size.",
+      q4: "Does it work with all litter types?",
+      a4: "Yes! Purrify works with clumping clay, non-clumping, crystal, paper, wood, and corn-based litters. It enhances any litter's odor control.",
+      q5: "How is Purrify different from baking soda?",
+      a5: "Baking soda only neutralizes some odors temporarily and needs constant reapplication. Zeolite physically traps ammonia molecules permanently, providing weeks of protection from a single application.",
+      q6: "Will it eliminate existing odors?",
+      a6: "Purrify immediately starts absorbing ammonia from the moment you add it. Existing odors typically disappear within 24-48 hours as the zeolite absorbs them.",
+      q7: "Is it safe for kittens?",
+      a7: "Absolutely. Purrify is safe for cats of all ages. There are no chemicals or fragrances that could irritate young or sensitive cats.",
+      q8: "How long does one bag last?",
+      a8: "The 50g pouch lasts about 30 days for one cat. The 120g pouch lasts 30 days for multi-cat households (2-3 cats). Most customers find they need to change litter less often."
+    },
+    cta: {
+      headline: "Ready for a Fresh-Smelling Home?",
+      subheadline: "Join thousands of cat parents who've eliminated litter box odor for good.",
+      button: "Shop Purrify",
+      secondaryButton: "Try FREE Sample",
+      benefit1: "Free shipping over $35",
+      benefit2: "30-day satisfaction guarantee"
+    }
   }
 };
