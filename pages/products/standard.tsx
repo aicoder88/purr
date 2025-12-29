@@ -72,7 +72,7 @@ export default function StandardSizePage() {
 
   // Optimized images
   const heroImage = "/optimized/60g.webp";
-  const solutionImage = "/optimized/regular_size_solution.png";
+  const solutionImage = "/optimized/regular_size_solution.webp";
   const productImage = "/optimized/60g.webp";
 
   const benefits = [

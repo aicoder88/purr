@@ -17,10 +17,10 @@ export default function ActivatedCarbonBenefits() {
   const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for science guide - different from other posts
-  const heroImage = '/optimized/benefits-hero-science.png'; // Microscopic/scientific view
-  const sectionImage1 = '/optimized/benefits-lab-modern.png'; // Modern laboratory/science
-  const sectionImage2 = '/optimized/benefits-happy-cats.png'; // Happy cats in clean home
-  const solutionImage = '/optimized/benefits-solution-bright.png'; // Content cat in bright home
+  const heroImage = '/optimized/benefits-hero-science.webp'; // Microscopic/scientific view
+  const sectionImage1 = '/optimized/benefits-lab-modern.webp'; // Modern laboratory/science
+  const sectionImage2 = '/optimized/benefits-happy-cats.webp'; // Happy cats in clean home
+  const solutionImage = '/optimized/benefits-solution-bright.webp'; // Content cat in bright home
 
   return (
     <>

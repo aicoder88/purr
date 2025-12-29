@@ -58,21 +58,21 @@ export default function HowItWorksPage() {
       number: "1",
       title: "Sprinkle Purrify",
       description: "Add a thin layer of Purrify on top of fresh or existing litter",
-      image: "/optimized/step-1-sprinkle.png",
+      image: "/optimized/step-1-sprinkle.webp",
       tip: "A little goes a long way - just 1-2 teaspoons per litter box change"
     },
     {
       number: "2",
       title: "Mix Gently",
       description: "Lightly mix Purrify into the top layer of litter",
-      image: "/optimized/step-2-mix.png",
+      image: "/optimized/step-2-mix.webp",
       tip: "No need to completely blend - surface coverage is most effective"
     },
     {
       number: "3",
       title: "Enjoy Freshness",
       description: "Experience immediate and long-lasting odor control",
-      image: "/optimized/step-3-enjoy.png",
+      image: "/optimized/step-3-enjoy.webp",
       tip: "Reapply when adding fresh litter or doing a complete change"
     }
   ];
@@ -189,7 +189,7 @@ export default function HowItWorksPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative">
                   <Image
-                    src="/optimized/micropores-magnified.png"
+                    src="/optimized/micropores-magnified.webp"
                     alt="Activated Carbon Micropores Under Magnification"
                     width={600}
                     height={400}

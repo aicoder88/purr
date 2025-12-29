@@ -29,10 +29,10 @@ const CatLitterGuidePage: NextPage = () => {
   const trialPrice = formatProductPrice('trial', locale);
 
   // Unique images for cat litter guide - different from all other posts
-  const heroImage = '/optimized/litter-guide-hero-setup.png'; // Modern litter box setup
-  const sectionImage1 = '/optimized/safe-cat-litter.png'; // Different litter types (reused safe litter image)
-  const sectionImage2 = '/optimized/step-2-mix.png'; // Cat owner maintenance (reused mixing image)
-  const solutionImage = '/optimized/benefits-happy-cats.png'; // Happy multi-cat household
+  const heroImage = '/optimized/litter-guide-hero-setup.webp'; // Modern litter box setup
+  const sectionImage1 = '/optimized/safe-cat-litter.webp'; // Different litter types (reused safe litter image)
+  const sectionImage2 = '/optimized/step-2-mix.webp'; // Cat owner maintenance (reused mixing image)
+  const solutionImage = '/optimized/benefits-happy-cats.webp'; // Happy multi-cat household
 
   const litterTypes = [
     {

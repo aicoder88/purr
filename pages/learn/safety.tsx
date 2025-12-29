@@ -147,7 +147,7 @@ export default function SafetyInformationPage() {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/quality-control-lab.png"
+                  src="/optimized/quality-control-lab.webp"
                   alt="Quality control laboratory testing for activated carbon"
                   width={1600}
                   height={1067}
@@ -162,7 +162,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/activated-carbon-granules.png"
+                  src="/optimized/activated-carbon-granules.webp"
                   alt="Premium coconut shell activated carbon granules"
                   width={1600}
                   height={1067}
@@ -318,7 +318,7 @@ export default function SafetyInformationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/certification-quality.png"
+                  src="/optimized/certification-quality.webp"
                   alt="Quality certification and standards compliance"
                   width={1600}
                   height={1067}
@@ -327,7 +327,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/coconut-shell-natural.png"
+                  src="/optimized/coconut-shell-natural.webp"
                   alt="Sustainable coconut shell natural material"
                   width={1600}
                   height={1067}
@@ -336,7 +336,7 @@ export default function SafetyInformationPage() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/optimized/safe-cat-litter.png"
+                  src="/optimized/safe-cat-litter.webp"
                   alt="Safe cat litter with activated carbon"
                   width={1600}
                   height={1067}
@@ -362,7 +362,7 @@ export default function SafetyInformationPage() {
             {/* Applications Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-12 max-w-5xl mx-auto">
               <Image
-                src="/optimized/versatile-applications.png"
+                src="/optimized/versatile-applications.webp"
                 alt="Pet safety and home odor control with activated carbon"
                 width={1600}
                 height={1067}
@@ -485,7 +485,7 @@ export default function SafetyInformationPage() {
                 {/* Rodent Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
                   <Image
-                    src="/optimized/hamster-rodent-pet.png"
+                    src="/optimized/hamster-rodent-pet.webp"
                     alt="Hamster and small pet rodent care with activated carbon"
                     width={1600}
                     height={1067}

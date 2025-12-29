@@ -125,7 +125,7 @@ export default function AffiliatePage() {
             <div className="lg:w-1/2 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 bg-gray-900 dark:bg-gray-900 ring-1 ring-white/10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                 <Image
-                  src="/optimized/affiliate-dashboard.png"
+                  src="/optimized/affiliate-dashboard.webp"
                   alt="Affiliate Earnings Dashboard"
                   width={800}
                   height={600}
@@ -406,7 +406,7 @@ export default function AffiliatePage() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 group">
                   <div className="aspect-[4/3] relative">
                     <Image
-                      src="/optimized/benefits-happy-cats.png"
+                      src="/optimized/benefits-happy-cats.webp"
                       alt="Effective Product"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700"

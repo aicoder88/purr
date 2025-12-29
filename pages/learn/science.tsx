@@ -76,7 +76,7 @@ export default function SciencePage() {
           type: 'article',
           images: [
             {
-              url: 'https://www.purrify.ca/optimized/benefits-hero-science.png',
+              url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify Activated Carbon Science',
@@ -211,7 +211,7 @@ export default function SciencePage() {
             <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/happy-cat-fresh-home.png"
+                  src="/optimized/happy-cat-fresh-home.webp"
                   alt="Happy cat in clean, fresh home environment"
                   width={1600}
                   height={900}
@@ -226,7 +226,7 @@ export default function SciencePage() {
               </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/optimized/content-cat-owner.png"
+                  src="/optimized/content-cat-owner.webp"
                   alt="Content cat enjoying clean, odor-free environment"
                   width={1600}
                   height={900}
@@ -371,7 +371,7 @@ export default function SciencePage() {
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/science-microscope-research.png"
+                      src="/optimized/science-microscope-research.webp"
                       alt="Laboratory microscope for activated carbon research"
                       width={1200}
                       height={800}
@@ -383,7 +383,7 @@ export default function SciencePage() {
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/chemistry-lab-testing.png"
+                      src="/optimized/chemistry-lab-testing.webp"
                       alt="Chemistry laboratory testing activated carbon samples"
                       width={1200}
                       height={800}
@@ -398,7 +398,7 @@ export default function SciencePage() {
                 <div className="space-y-6">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/optimized/molecular-structure-pore.png"
+                      src="/optimized/molecular-structure-pore.webp"
                       alt="Molecular structure visualization showing pore architecture"
                       width={1200}
                       height={800}
