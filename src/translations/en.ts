@@ -79,7 +79,7 @@ export const en = {
       description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
     },
     "purrify-120g": {
-      name: "Purrify Regular size 120g",
+      name: "Regular",
       description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },

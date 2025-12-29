@@ -79,7 +79,7 @@ export const fr = {
       description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
     },
     "purrify-120g": {
-      name: "Purrify format régulier 120g",
+      name: "Régulier",
       description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
