@@ -27,6 +27,15 @@ function generateLatestBlogPosts(): BlogPost[] {
   const now = Date.now();
 
   return [
+    // FEATURED POST - Pinned to top of homepage
+    {
+      title: 'How to Eliminate Cat Litter Smell: The NASA-Inspired Solution That Actually Works',
+      excerpt: 'Tried everything for cat litter odor? Discover activated carbon - the same technology NASA uses in space. No perfumes, no chemicals. Traps ammonia molecules instantly.',
+      author: 'Purrify Team',
+      date: '2024-12-29', // Fixed publication date
+      image: '/optimized/activated-carbon-benefits.webp',
+      link: '/blog/space-station-secret-fresh-home-cat-owners'
+    },
     {
       title: 'Most Powerful Odor Absorber for Cat Litter: Science-Backed 2025 Guide',
       excerpt: 'Break down the most powerful odor absorber technologies for cat litter, including how activated carbon outperforms zeolite and perfumes without overwhelming your cat.',

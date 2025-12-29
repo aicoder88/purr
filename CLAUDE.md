@@ -143,6 +143,44 @@ No direct competitor comparisons. Use partnership positioning:
 
 ---
 
+## CRITICAL: Content Writing Guidelines
+
+**BEFORE writing ANY blog post, marketing copy, or product content, ALWAYS read:**
+
+📖 **`/content/content-guidelines.md`** - Complete writing reference
+
+### Quick Reference (Full Details in Guidelines Doc)
+
+**Safety Language (NEVER use "safe"):**
+| Avoid | Use Instead |
+|-------|-------------|
+| Safe | Non-toxic, food-grade, pet-friendly |
+| Hypoallergenic | Fragrance-free, gentle |
+
+**Authority Hooks (Include in Every Post):**
+- Water Filter: "Same activated carbon as drinking water filters"
+- NASA: "Technology astronauts rely on for breathable air"
+- Football Field: "One gram = surface area of a football field"
+
+**Benefit Order (Always This Sequence):**
+1. Cat-Friendly (no irritants)
+2. High-Performance (filtration-grade)
+3. Simple (sprinkle on existing litter)
+
+**Core Message Framework:**
+- "Traps odor molecules, doesn't mask them"
+- "Works with any litter your cat already loves"
+- "100% natural coconut shell activated carbon"
+
+**Technical Terms for General Audiences:**
+| Avoid | Use Instead |
+|-------|-------------|
+| Mercaptans | Sulfur-based compounds |
+| Adsorption | Molecular trapping |
+| VOCs | Organic odor molecules |
+
+---
+
 ## CRITICAL: Product Content Verification
 
 **BEFORE writing ANY marketing/product content, ALWAYS:**
