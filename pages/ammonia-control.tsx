@@ -3,11 +3,9 @@ import Script from 'next/script';
 import { useTranslation } from '../src/lib/translation-context';
 import {
   LandingHero,
-  TrustBar,
   ProblemSection,
   SolutionSection,
   BenefitPillars,
-  StatsBar,
   FinalCTA,
 } from '../src/components/sections/landing';
 import { Testimonials } from '../src/components/sections/testimonials';
@@ -71,14 +69,6 @@ export default function AmmoniaControl() {
     },
   ];
 
-  // Stats data
-  const stats = [
-    { value: ammonia.stats.days.value, label: ammonia.stats.days.label },
-    { value: ammonia.stats.savings.value, label: ammonia.stats.savings.label },
-    { value: ammonia.stats.customers.value, label: ammonia.stats.customers.label },
-    { value: ammonia.stats.rating.value, label: ammonia.stats.rating.label },
-  ];
-
   // FAQ items
   const faqItems = [
     { q: ammonia.faq.q1, a: ammonia.faq.a1 },
@@ -100,13 +90,6 @@ export default function AmmoniaControl() {
     brand: {
       '@type': 'Brand',
       name: 'Purrify',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
     },
     offers: {
       '@type': 'AggregateOffer',
@@ -204,15 +187,8 @@ export default function AmmoniaControl() {
         subheadline={ammonia.hero.subheadline}
         primaryCTA={{ label: ammonia.hero.cta, href: '/products' }}
         secondaryCTA={{ label: ammonia.hero.secondaryCta, href: '#how-it-works' }}
-        image="/images/products/purrify-product-hero.webp"
-        imageAlt="Purrify natural cat litter deodorizer"
-      />
-
-      {/* Trust Bar */}
-      <TrustBar
-        customerCount={ammonia.stats.customers.value}
-        rating={4.9}
-        reviewCount={500}
+        image="/images/solutions/ammonia-hero.png"
+        imageAlt="Purrify activated carbon cat litter deodorizer"
       />
 
       {/* Problem Section */}
@@ -226,7 +202,7 @@ export default function AmmoniaControl() {
         id="how-it-works"
         headline={ammonia.solution.headline}
         description={ammonia.solution.description}
-        diagramSrc="/images/how-it-works/activated-carbon-diagram.webp"
+        diagramSrc="/images/solutions/ammonia-science.png"
         diagramAlt="How activated carbon captures ammonia molecules"
       />
 
@@ -238,9 +214,6 @@ export default function AmmoniaControl() {
 
       {/* Testimonials - Reuse existing component */}
       <Testimonials />
-
-      {/* Stats Bar */}
-      <StatsBar stats={stats} />
 
       {/* FAQ Section */}
       <section className="bg-white dark:bg-gray-900 py-16 lg:py-24">

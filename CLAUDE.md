@@ -162,7 +162,21 @@ No direct competitor comparisons. Use partnership positioning:
    - Check existing FAQ answers
    - Check product descriptions
 
-**NEVER fabricate product ingredients, duration claims, or technical specs.**
+4. **NEVER fabricate statistics or social proof:**
+   - No invented review counts ("500 reviews")
+   - No invented customer counts ("10,000+ happy cats")
+   - No invented ratings ("4.9 stars")
+   - Use ONLY numbers that exist in the codebase, or omit the section entirely
+
+5. **NEVER reference images that don't exist:**
+   ```bash
+   # Before using any image path, verify it exists:
+   ls -la public/images/path/to/image.webp
+   ```
+   - Only use images already in the codebase
+   - If an image is needed but doesn't exist, note it as `[IMAGE NEEDED: description]`
+
+**NEVER fabricate product ingredients, duration claims, statistics, or image paths.**
 
 ---
 
