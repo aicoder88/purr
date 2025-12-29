@@ -511,7 +511,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
                   {`Try Purrify - ${formatProductPrice('trial')}`}
                 </Link>
                 <Link
-                  href="/products/compare"
+                  href="/products"
                   className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
                 >
                   Compare All Sizes

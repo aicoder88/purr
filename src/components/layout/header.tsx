@@ -175,7 +175,7 @@ export function Header() {
         },
         {
           label: t.nav?.compareSizes || "Compare Sizes",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products/compare`,
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products`,
         },
         {
           label: t.nav?.viewAllProducts || "View All Products",

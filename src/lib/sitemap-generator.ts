@@ -158,7 +158,7 @@ class SitemapGenerator {
 
       // Product comparison
       {
-        loc: '/products/compare',
+        loc: '/products',
         changefreq: 'weekly',
         priority: 0.7
       },

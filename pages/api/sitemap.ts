@@ -44,7 +44,7 @@ function generateBasicSitemap(req: NextApiRequest): string {
     { loc: '/products/trial-size', priority: '0.9', changefreq: 'weekly' },
     { loc: '/products/standard', priority: '0.9', changefreq: 'weekly' },
     { loc: '/products/family-pack', priority: '0.9', changefreq: 'weekly' },
-    { loc: '/products/compare', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/products', priority: '0.7', changefreq: 'weekly' },
     { loc: '/learn/how-it-works', priority: '0.8', changefreq: 'monthly' },
     { loc: '/learn/cat-litter-guide', priority: '0.7', changefreq: 'monthly' },
     { loc: '/learn/faq', priority: '0.8', changefreq: 'weekly' },

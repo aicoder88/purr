@@ -607,7 +607,7 @@ const FAQPage: NextPage = () => {
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
                     Compare All Sizes
                   </Button>

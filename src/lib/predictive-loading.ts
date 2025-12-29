@@ -293,7 +293,7 @@ class PredictiveLoader {
     if (currentPath === '/') {
       predictions.push(
         { path: '/products/trial-size', confidence: 0.7 },
-        { path: '/products/compare', confidence: 0.6 },
+        { path: '/products', confidence: 0.6 },
         { path: '/learn/how-it-works', confidence: 0.5 }
       );
     }
@@ -311,7 +311,7 @@ class PredictiveLoader {
     if (currentPath.includes('/learn/')) {
       predictions.push(
         { path: '/products/trial-size', confidence: 0.6 },
-        { path: '/products/compare', confidence: 0.5 }
+        { path: '/products', confidence: 0.5 }
       );
     }
 

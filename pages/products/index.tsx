@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -13,14 +14,20 @@ import {
   Home,
   Star,
   Award,
-  Zap
+  Zap,
+  Shield,
+  Droplets,
+  Leaf,
+  ArrowRight,
+  Cat,
+  Sparkles,
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 
-const ProductComparePage: NextPage = () => {
+const ProductsPage: NextPage = () => {
   const { locale, t } = useTranslation();
 
   const trialPrice = formatProductPrice('trial', locale);
@@ -119,22 +126,72 @@ const ProductComparePage: NextPage = () => {
     }
   ];
 
+  // Quick decision helper data
+  const quickPicks = [
+    {
+      question: "Just want to try it?",
+      answer: "FREE Trial",
+      detail: "Pay only shipping. See results in days.",
+      productId: "trial",
+      icon: <Sparkles className="w-6 h-6" />,
+    },
+    {
+      question: "1-2 cats at home?",
+      answer: "120g Regular",
+      detail: "3 months of freshness. Most popular choice.",
+      productId: "regular",
+      icon: <Cat className="w-6 h-6" />,
+    },
+    {
+      question: "Multi-cat household?",
+      answer: "240g Large",
+      detail: "Best value per gram. Free shipping.",
+      productId: "large",
+      icon: <Users className="w-6 h-6" />,
+    },
+  ];
+
+  // Trust signals
+  const trustSignals = [
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Water-Filter Grade",
+      description: "Same activated carbon used in drinking water filtration",
+    },
+    {
+      icon: <Leaf className="w-8 h-8" />,
+      title: "100% Natural",
+      description: "Made from coconut shells. No chemicals or fragrances.",
+    },
+    {
+      icon: <Droplets className="w-8 h-8" />,
+      title: "Traps, Not Masks",
+      description: "Eliminates odor molecules instead of covering them up",
+    },
+  ];
+
+  const pageTitle = locale === 'fr'
+    ? "Produits Purrify - Additif Litière au Charbon Actif"
+    : "Purrify Products - Activated Carbon Litter Additive";
+
+  const pageDescription = locale === 'fr'
+    ? "Découvrez tous les formats Purrify. Du format d'essai gratuit au format familial, trouvez la taille parfaite pour votre foyer."
+    : "Explore all Purrify sizes. From free trial to family pack, find the perfect activated carbon litter additive for your household.";
+
   return (
     <>
       <Head>
-        <title>{`${t.productComparison.title} - ${t.productComparison.seo.title} | Purrify`}</title>
-        <meta
-          name="description"
-          content={t.productComparison.seo.description}
-        />
-        <meta name="keywords" content="Purrify comparison, cat litter additive sizes, trial size, bulk savings, multi-cat, product comparison" />
-        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
+        <title>{pageTitle} | Purrify</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="Purrify products, cat litter additive, activated carbon, odor control, trial size, family pack" />
+        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`} />
 
         {/* Open Graph */}
-        <meta property="og:title" content={`${t.productComparison.title} - ${t.productComparison.seo.title}`} />
-        <meta property="og:description" content={t.productComparison.seo.description} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`} />
+        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`} />
+        <meta property="og:image" content="https://www.purrify.ca/optimized/og-products.webp" />
 
         {/* Structured Data */}
         <script
@@ -142,10 +199,10 @@ const ProductComparePage: NextPage = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": t.productComparison.title,
-              "description": t.productComparison.seo.description,
-              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/compare`,
+              "@type": "CollectionPage",
+              "name": pageTitle,
+              "description": pageDescription,
+              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`,
               "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": products.map((product, index) => ({
@@ -153,9 +210,13 @@ const ProductComparePage: NextPage = () => {
                   "position": index + 1,
                   "name": product.name,
                   "description": product.subtitle,
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Purrify"
+                  },
                   "offers": {
                     "@type": "Offer",
-                    "price": product.price.replace('$', ''),
+                    "price": product.price.replace('$', '').replace(',', ''),
                     "priceCurrency": "CAD",
                     "priceValidUntil": priceValidUntil,
                     "availability": availabilityUrl
@@ -182,11 +243,7 @@ const ProductComparePage: NextPage = () => {
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-brand-red dark:hover:text-red-400 transition-colors">
-                {t.nav.products}
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">{t.nav.compareSizes}</span>
+              <span className="text-gray-900 dark:text-gray-100">{t.nav.products}</span>
             </nav>
           </Container>
         </section>
@@ -197,11 +254,77 @@ const ProductComparePage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-                {t.productComparison.title}
+                {locale === 'fr' ? "Un produit. Trois formats." : "One Product. Three Sizes."}
               </h1>
-              <p className="text-xl md:text-2xl mb-8 opacity-90">
-                {t.productComparison.subtitle}
+              <p className="text-xl md:text-2xl mb-4 opacity-90">
+                {locale === 'fr'
+                  ? "Du charbon actif de qualité filtration, fabriqué à partir de coques de noix de coco."
+                  : "Filtration-grade activated carbon, made from coconut shells."}
               </p>
+              <p className="text-lg opacity-80">
+                {locale === 'fr'
+                  ? "La seule différence ? La quantité que vous recevez."
+                  : "The only difference? How much you get."}
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Quick Decision Helper */}
+        <section className="py-12 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <Container>
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                {locale === 'fr' ? "Choisissez en 5 secondes" : "Pick in 5 Seconds"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                {locale === 'fr' ? "Répondez à une question, obtenez votre réponse." : "Answer one question, get your answer."}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {quickPicks.map((pick, index) => {
+                const product = products.find(p => p.id === pick.productId);
+                return (
+                  <a
+                    key={index}
+                    href={product?.ctaLink || '#'}
+                    target={product?.ctaLink?.startsWith('http') ? '_blank' : undefined}
+                    rel={product?.ctaLink?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
+                  >
+                    <div className="text-brand-purple dark:text-purple-400 mb-3">
+                      {pick.icon}
+                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
+                    <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
+                      {pick.answer} <ArrowRight className="inline w-4 h-4 ml-1" />
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
+                  </a>
+                );
+              })}
+            </div>
+          </Container>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="py-12 bg-brand-light/30 dark:bg-gray-800/50">
+          <Container>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {trustSignals.map((signal, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-brand-purple dark:text-purple-400 mb-3 flex justify-center">
+                    {signal.icon}
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                    {signal.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {signal.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
@@ -209,6 +332,17 @@ const ProductComparePage: NextPage = () => {
         {/* Product Comparison Cards */}
         <section className="py-16 cv-auto cis-720">
           <Container>
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {t.productComparison.title}
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                {locale === 'fr'
+                  ? "Tous les formats contiennent exactement la même formule. Choisissez simplement la quantité dont vous avez besoin."
+                  : "All sizes contain the exact same formula. Just pick how much you need."}
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {products.map((product) => (
                 <div
@@ -236,7 +370,7 @@ const ProductComparePage: NextPage = () => {
 
                   {/* Header */}
                   <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
-                    <h2 className="font-heading text-2xl font-bold mb-2">{product.name}</h2>
+                    <h3 className="font-heading text-2xl font-bold mb-2">{product.name}</h3>
                     <p className="opacity-90 mb-4">{product.subtitle}</p>
                     <div className="flex items-baseline">
                       <span className="text-4xl font-bold">{product.price}</span>
@@ -267,7 +401,7 @@ const ProductComparePage: NextPage = () => {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h3 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h3>
+                      <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h4>
                       <ul className="space-y-2">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
@@ -323,60 +457,102 @@ const ProductComparePage: NextPage = () => {
           </Container>
         </section>
 
-        {/* Feature Comparison Table */}
-        <section className="py-16 bg-brand-light/30 dark:bg-gray-800/50 cv-auto cis-720">
+        {/* What You Get Section */}
+        <section className="py-16 bg-white dark:bg-gray-800">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {t.productComparison.featuresComparison}
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                {t.productComparison.seeHowProductsCompare}
-              </p>
-            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                  {locale === 'fr' ? "Ce que vous obtenez" : "What You Get"}
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-300">
+                  {locale === 'fr'
+                    ? "Chaque format inclut la même qualité premium"
+                    : "Every size includes the same premium quality"}
+                </p>
+              </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-brand-purple text-white dark:text-gray-100">
-                    <tr>
-                      <th className="px-6 py-4 text-left font-bold">{t.productComparison.tableHeaders.feature}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.regular}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonFeatures.map((row, index) => (
-                      <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
-                        <td className="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">
-                          {row.feature}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {row.trial ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
-                          ) : (
-                            <span className="text-gray-400 dark:text-gray-500">—</span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {row.regular ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
-                          ) : (
-                            <span className="text-gray-400 dark:text-gray-500">—</span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {row.large ? (
-                            <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400 mx-auto" />
-                          ) : (
-                            <span className="text-gray-400 dark:text-gray-500">—</span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {locale === 'fr' ? "Charbon actif de coque de noix de coco" : "Coconut Shell Activated Carbon"}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {locale === 'fr'
+                        ? "Le même matériau utilisé dans les filtres à eau résidentiels"
+                        : "The same material used in residential drinking water filters"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {locale === 'fr' ? "Aucun parfum ni produit chimique" : "Zero Fragrances or Chemicals"}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {locale === 'fr'
+                        ? "Rien qui puisse irriter le système respiratoire sensible de votre chat"
+                        : "Nothing that could irritate your cat's sensitive respiratory system"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {locale === 'fr' ? "Compatible avec toutes les litières" : "Works With Any Litter"}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {locale === 'fr'
+                        ? "Argile, cristal, naturelle - tout ce que votre chat utilise déjà"
+                        : "Clay, crystal, natural - whatever your cat already uses"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {locale === 'fr' ? "Application simple" : "Simple Application"}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {locale === 'fr'
+                        ? "Saupoudrez une fine couche sur la litière. C'est tout."
+                        : "Sprinkle a thin layer on top of litter. That's it."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* The Football Field Fact */}
+              <div className="mt-12 p-6 bg-brand-purple/5 dark:bg-brand-purple/10 rounded-xl border border-brand-purple/20">
+                <div className="flex items-start space-x-4">
+                  <Zap className="w-8 h-8 text-brand-purple flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+                      {locale === 'fr' ? "Le saviez-vous ?" : "Did You Know?"}
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-200">
+                      {locale === 'fr'
+                        ? "Un seul gramme de charbon actif a la surface d'un terrain de football. Ces tunnels microscopiques piègent les molécules d'odeur au contact - pas de masquage, juste de l'élimination pure."
+                        : "One gram of activated carbon has the surface area of a football field. Those microscopic tunnels trap odor molecules on contact - no masking, just pure elimination."}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>
@@ -490,7 +666,7 @@ const ProductComparePage: NextPage = () => {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/products/compare" />
+            <RelatedArticles currentPath="/products" />
           </Container>
         </section>
       </main>
@@ -498,4 +674,4 @@ const ProductComparePage: NextPage = () => {
   );
 };
 
-export default ProductComparePage;
+export default ProductsPage;

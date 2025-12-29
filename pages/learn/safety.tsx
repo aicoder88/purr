@@ -448,7 +448,7 @@ export default function SafetyInformationPage() {
               </div>
 
               <div className="text-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/products`}>
                   <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] hover:from-[#FF3131]/90 hover:to-[#5B2EFF]/90 text-white dark:text-gray-100 font-bold">
                     Compare All Sizes
                   </Button>

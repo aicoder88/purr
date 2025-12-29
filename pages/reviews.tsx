@@ -287,7 +287,7 @@ export default function Reviews() {
                 </p>
                 <div className="space-x-4">
                 <Link 
-                    href="/products/compare" 
+                    href="/products" 
                     className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Now

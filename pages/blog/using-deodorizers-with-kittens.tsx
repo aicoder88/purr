@@ -166,7 +166,7 @@ export default function UsingDeodorizersWithKittens() {
 
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, every kitten is unique. When in doubt, consult with your veterinarian and always prioritize your kitten's comfort.
-                <Link href="/products/compare" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Choose Purrify for fragrance-free odor control</Link> many households use around kittens.
+                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Choose Purrify for fragrance-free odor control</Link> many households use around kittens.
               </p>
             </div>
           </div>

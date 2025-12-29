@@ -489,7 +489,7 @@ const ShippingPage: NextPage = () => {
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="group">
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Compare Products

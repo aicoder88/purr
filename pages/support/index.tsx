@@ -50,7 +50,7 @@ export default function SupportPage() {
 
   const quickLinks = [
     { title: "How It Works", link: "/learn/how-it-works" },
-    { title: "Product Comparison", link: "/products/compare" },
+    { title: "Product Comparison", link: "/products" },
     { title: "Safety Information", link: "/learn/safety" },
     { title: "Returns & Refunds", link: "/contact" },
     { title: "Wholesale Inquiries", link: "/b2b" },

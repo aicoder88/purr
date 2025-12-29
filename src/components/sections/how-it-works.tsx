@@ -74,7 +74,7 @@ export function HowItWorks() {
             {t.nav.howItWorks}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products/compare`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">compare our sizes</Link> to find what works best for you.
+            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">Learn the science</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">compare our sizes</Link> to find what works best for you.
           </p>
         </div>
 

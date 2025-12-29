@@ -333,7 +333,7 @@ export default function ActivatedCarbonBenefits() {
                 {`Try 12g Trial Size - ${formatProductPrice('trial', locale)}`}
               </Link>
               <Link
-                href="/products/compare"
+                href="/products"
                 className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
               >
                 View All Sizes

@@ -254,7 +254,7 @@ export default function ammoniasmellcatlitterPage() {
 
             <div className="text-center">
               <Link
-                href="/products/compare"
+                href="/products"
                 className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
               >
                 Shop Purrify Now

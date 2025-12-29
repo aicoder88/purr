@@ -319,7 +319,7 @@ export default function ApartmentCatSmellSolutionPage() {
             <h2 className="text-3xl font-heading font-bold mb-8">Ready to Solve Your Apartment Cat Smell Solution?</h2>
             <p className="text-xl mb-8">Join 1,000+ satisfied cat owners</p>
             <Link
-              href="/products/compare"
+              href="/products"
               className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg shadow-lg"
             >
               Shop Purrify Now

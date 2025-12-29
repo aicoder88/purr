@@ -178,7 +178,7 @@ export function LivePurchaseNotifications({
     });
 
     // Redirect to products page
-    window.location.href = '/products/compare';
+    window.location.href = '/products';
   }, []);
 
   const handleNotificationClickCallback = useCallback((notification: PurchaseNotification) => {

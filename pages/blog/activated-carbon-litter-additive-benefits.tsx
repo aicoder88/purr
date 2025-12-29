@@ -529,7 +529,7 @@ export default function ActivatedCarbonBenefits() {
                   water and air filters.
                 </p>
                 <Link
-                  href="/products/compare"
+                  href="/products"
                   className="inline-block mt-4 bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors"
                 >
                   Shop Purrify Products →
@@ -555,7 +555,7 @@ export default function ActivatedCarbonBenefits() {
                 Ready to experience the difference that science-backed odor
                 control can make?
                 <Link
-                  href="/products/compare"
+                  href="/products"
                   className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"
                 >
                   {" "}

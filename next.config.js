@@ -218,12 +218,17 @@ const REDIRECTS = [
   // E-commerce & Legacy artifacts
   {
     source: "/checkout",
-    destination: "/products/compare",
+    destination: "/products",
     permanent: true,
   },
   {
     source: "/cart-2",
-    destination: "/products/compare",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/products/compare",
+    destination: "/products",
     permanent: true,
   },
   {
