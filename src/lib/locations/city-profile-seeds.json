@@ -327,6 +327,36 @@
     "frenchQueryVariant": "city-first"
   },
   {
+    "slug": "surrey",
+    "name": "Surrey",
+    "province": "British Columbia",
+    "provinceCode": "BC",
+    "region": "west-coast",
+    "metroPopulation": 568322,
+    "populationLabel": "568k",
+    "housingHighlights": [
+      "Fastest-growing city in BC",
+      "Diverse multicultural communities",
+      "Family-oriented neighborhoods"
+    ],
+    "climateConsiderations": [
+      "Coastal humidity intensifies litter box smells",
+      "Rainy seasons keep windows closed for long stretches"
+    ],
+    "scentPainPoints": [
+      "Odor control for fastest-growing city in BC",
+      "Odor control for diverse multicultural communities",
+      "Odor control for family-oriented neighborhoods",
+      "Dense townhome developments and single-family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Bosley's"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
     "slug": "quebec-city",
     "name": "Quebec City",
     "province": "Quebec",
@@ -626,6 +656,36 @@
     "frenchQueryVariant": "city-first"
   },
   {
+    "slug": "burnaby",
+    "name": "Burnaby",
+    "province": "British Columbia",
+    "provinceCode": "BC",
+    "region": "west-coast",
+    "metroPopulation": 249125,
+    "populationLabel": "249k",
+    "housingHighlights": [
+      "Metro Vancouver hub",
+      "High-density condo living",
+      "Urban professionals"
+    ],
+    "climateConsiderations": [
+      "Coastal humidity intensifies litter box smells",
+      "Rainy seasons keep windows closed for long stretches"
+    ],
+    "scentPainPoints": [
+      "Odor control for metro Vancouver hub",
+      "Odor control for high-density condo living",
+      "Odor control for urban professionals",
+      "Highrise apartments and townhomes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Bosley's"
+    ],
+    "englishQueryVariant": "city-first"
+  },
+  {
     "slug": "windsor",
     "name": "Windsor",
     "province": "Ontario",
@@ -713,6 +773,36 @@
       "Ren's Pets"
     ],
     "frenchQueryVariant": "city-first"
+  },
+  {
+    "slug": "richmond",
+    "name": "Richmond",
+    "province": "British Columbia",
+    "provinceCode": "BC",
+    "region": "west-coast",
+    "metroPopulation": 209937,
+    "populationLabel": "210k",
+    "housingHighlights": [
+      "Metro Vancouver suburb",
+      "Multicultural community",
+      "Modern townhomes and condos"
+    ],
+    "climateConsiderations": [
+      "Coastal humidity intensifies litter box smells",
+      "Rainy seasons keep windows closed for long stretches"
+    ],
+    "scentPainPoints": [
+      "Odor control for metro Vancouver suburb",
+      "Odor control for multicultural community",
+      "Odor control for modern townhomes and condos",
+      "Dense housing developments and family homes need fresh air strategies"
+    ],
+    "retailerAllies": [
+      "PetSmart",
+      "Pet Valu",
+      "Bosley's"
+    ],
+    "englishQueryVariant": "city-first"
   },
   {
     "slug": "richmond-hill",

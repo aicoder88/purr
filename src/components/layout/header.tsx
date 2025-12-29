@@ -392,7 +392,7 @@ export function Header() {
             {session?.user && (
               <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-brand-green/10 to-brand-green/5 dark:from-purple-500/20 dark:to-purple-500/10 border border-brand-green/30 dark:border-purple-500/40 rounded-full">
                 <div className="w-6 h-6 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
-                  <UserIcon className="w-3.5 h-3.5 text-white" />
+                  <UserIcon className="w-3.5 h-3.5 text-white dark:text-gray-100" />
                 </div>
                 <span className="text-sm font-medium text-brand-green-dark dark:text-purple-300">
                   {session.user.email?.split('@')[0] || 'User'}
@@ -499,7 +499,7 @@ export function Header() {
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
-                          <UserIcon className="w-4 h-4 text-white" />
+                          <UserIcon className="w-4 h-4 text-white dark:text-gray-100" />
                         </div>
                         <div>
                           <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
