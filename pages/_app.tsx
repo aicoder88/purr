@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { DefaultSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import '../src/index.css';
@@ -16,6 +16,38 @@ import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { ToastProvider } from '../src/components/admin/Toast';
+
+/**
+ * Cleanup any stale service workers that may be causing cache issues.
+ * This runs once on app load to ensure old SW caches don't persist.
+ */
+function useServiceWorkerCleanup() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister().then((success) => {
+            if (success) {
+              console.log('[SW Cleanup] Unregistered stale service worker');
+            }
+          });
+        }
+      });
+      // Also clear caches that service workers may have created
+      if ('caches' in window) {
+        caches.keys().then((cacheNames) => {
+          cacheNames.forEach((cacheName) => {
+            caches.delete(cacheName).then((success) => {
+              if (success) {
+                console.log(`[Cache Cleanup] Deleted cache: ${cacheName}`);
+              }
+            });
+          });
+        });
+      }
+    }
+  }, []);
+}
 
 const Toaster = dynamic(() => import('../src/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
   ssr: false,
@@ -45,13 +77,15 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   const router = useRouter();
   const { locale } = router;
 
+  // Cleanup stale service workers and caches on app load
+  useServiceWorkerCleanup();
+
   // Canonical site URL (use www domain to avoid redirects)
   const canonicalUrl = 'https://www.purrify.ca';
   const defaultSeoConfig = useMemo(
     () => buildDefaultSeoConfig(locale, canonicalUrl),
     [locale, canonicalUrl]
   );
-
 
   return (
     <SessionProvider session={pageProps.session}>
