@@ -303,7 +303,6 @@ export function Header() {
                 width={240}
                 height={111}
                 priority
-                unoptimized
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
@@ -312,7 +311,6 @@ export function Header() {
                 width={240}
                 height={111}
                 priority
-                unoptimized
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
             </Link>

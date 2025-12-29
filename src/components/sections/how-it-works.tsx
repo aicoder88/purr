@@ -59,10 +59,10 @@ export function HowItWorks() {
       className="pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
       id="how-it-works"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-40 right-20 w-64 h-64 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Animated background elements - hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+        <div className="absolute top-40 right-20 w-64 h-64 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-xl sm:blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-xl sm:blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <Container className="relative z-10">
@@ -86,7 +86,7 @@ export function HowItWorks() {
               alt="Pure sustainable coconut shells for Purrify activated carbon cat litter"
               width={400}
               height={400}
-              priority={true}
+              loading="lazy"
               quality={90}
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
@@ -126,7 +126,7 @@ export function HowItWorks() {
                       alt={`Step ${step.number}: ${step.title} - ${step.description}`}
                       width={400}
                       height={400}
-                      priority={true}
+                      loading="lazy"
                       quality={90}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -38,15 +38,25 @@ interface HeroContentProps {
   locale: string;
 }
 
+// CSS-based avatars - no external API calls for better mobile performance
+const avatarColors = [
+  'from-purple-400 to-pink-400',
+  'from-blue-400 to-cyan-400',
+  'from-green-400 to-emerald-400',
+  'from-orange-400 to-amber-400',
+];
+
 const SocialProofAvatars = () => (
   <div className="flex -space-x-3">
-    {[1, 2, 3, 4].map((seed) => (
-      <div key={`avatar-${seed}`} className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-        <img
-          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}&backgroundColor=b6e3f4`}
-          alt="User avatar"
-          className="w-full h-full object-cover"
-        />
+    {avatarColors.map((gradient, index) => (
+      <div
+        key={`avatar-${index}`}
+        className={`w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gradient-to-br ${gradient} flex items-center justify-center`}
+        aria-hidden="true"
+      >
+        <svg className="w-6 h-6 text-white/80 dark:text-gray-100/80" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
       </div>
     ))}
   </div>

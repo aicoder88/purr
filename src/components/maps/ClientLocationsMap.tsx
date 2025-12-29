@@ -67,7 +67,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
               alt="Purrify Logo"
               width={160}
               height={53}
-              unoptimized
+              loading="lazy"
               className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
             />
             <Image
@@ -75,7 +75,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
               alt="Purrify Logo"
               width={160}
               height={53}
-              unoptimized
+              loading="lazy"
               className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
             />
           </div>

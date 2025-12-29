@@ -9,10 +9,10 @@ export function Hero() {
   return (
     <section className="relative w-full pt-24 pb-20 overflow-hidden bg-mesh-gradient transition-colors duration-300" style={{ willChange: 'auto' }}>
 
-      {/* Enhanced animated decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-white/20 dark:bg-white/5 rounded-full blur-3xl animate-pulse mix-blend-overlay"></div>
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-electric-indigo/20 dark:bg-electric-indigo/10 rounded-full blur-3xl animate-pulse mix-blend-overlay" style={{ animationDelay: '1s' }}></div>
+      {/* Animated decorative background - reduced blur on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-white/20 dark:bg-white/5 rounded-full blur-xl sm:blur-3xl animate-pulse mix-blend-overlay"></div>
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-electric-indigo/20 dark:bg-electric-indigo/10 rounded-full blur-xl sm:blur-3xl animate-pulse mix-blend-overlay" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <Container className="relative z-10">
