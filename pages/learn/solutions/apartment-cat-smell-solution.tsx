@@ -10,8 +10,8 @@ export default function ApartmentCatSmellSolutionPage() {
   const trialPrice = formatProductPrice('trial', locale);
   const riskFreeLabel = `Try Purrify Risk-Free - ${trialPrice} (shipping included)`;
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
-  const seoTitle = 'Apartment Cat Smell Solution | Purrify';
-  const seoDescription = 'Eliminate cat odors in apartments with activated carbon. Perfect for small spaces, works with any litter. Breathe easy again!';
+  const seoTitle = 'Best Litter for Apartments with No Ventilation (5 Proven Solutions)';
+  const seoDescription = 'How to get rid of cat litter smell in apartment with no ventilation? Activated carbon eliminates odors in studios and small spaces. Works even without windows.';
   const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
 
   // SEO optimized images
@@ -41,7 +41,7 @@ export default function ApartmentCatSmellSolutionPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'apartment cat smell solution, small space cat odor, urban cat litter, activated carbon odor control, apartment living with cats, rental pet policy, cat odor elimination',
+            content: 'best litter for apartments with no ventilation, how to get rid of cat litter smell in apartment, odor control cat litter small apartment, apartment cat smell solution, cat litter for small spaces',
           },
         ]}
       />
@@ -74,11 +74,11 @@ export default function ApartmentCatSmellSolutionPage() {
                 className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Apartment Cat Smell Solution
+                Best Litter for Apartments with No Ventilation
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
-                Transform your small living space into a fresh, odor-free environment with Purrify's activated carbon technology.
-                The perfect solution for apartment dwellers who love their cats but hate the smell.
+                Living in an apartment with no windows near the litter box? These 5 proven solutions eliminate cat odors
+                in studios and small spaces—even without proper ventilation.
               </p>
             </div>
 

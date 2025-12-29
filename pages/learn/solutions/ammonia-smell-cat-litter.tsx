@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ammoniasmellcatlitterPage() {
-  const seoTitle = 'Stop Cat Litter Ammonia Smell | Purrify';
-  const seoDescription = 'Sharp ammonia smell from litter box? Water-filter grade carbon destroys it instantly. No more holding your breath!';
+  const seoTitle = 'Cat Litter Smells Like Ammonia? Here\'s How to Stop It (Fast)';
+  const seoDescription = 'Why does your cat litter smell like ammonia? Bacteria breaking down urine. Fix it instantly with activated carbon that traps ammonia molecules permanently.';
 
   // Ammonia smell solution images
   const heroImage = '/images/solutions/ammonia-hero.png';
@@ -35,7 +35,7 @@ export default function ammoniasmellcatlitterPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'ammonia smell cat litter, litter box stink, cat urine odor, activated carbon deodorizer, eliminate ammonia smell instantly, water-filter grade carbon',
+            content: 'cat litter smells like ammonia, ammonia smell cat litter, cat litter ammonia smell, ammonia from cat litter, how to neutralize ammonia in cat litter, best cat litter for ammonia smell',
           },
         ]}
       />

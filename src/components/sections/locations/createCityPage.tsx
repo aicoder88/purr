@@ -62,12 +62,14 @@ const buildKeywordList = (
   englishQueries: string[],
   translationKeywords: string[] | undefined,
 ): string => {
+  // More specific cat-related keywords to avoid matching industrial odor control queries
   const baseKeywords = [
-    `cat litter ${cityName}`,
-    `cat litter odor ${cityName}`,
-    `cat litter odour ${cityName}`,
-    `cat litter smell ${provinceName}`,
-    `cat litter odor ${provinceCode}`,
+    `cat litter deodorizer ${cityName}`,
+    `cat litter smell ${cityName}`,
+    `best cat litter ${cityName}`,
+    `cat litter delivery ${provinceName}`,
+    `cat litter additive ${provinceCode}`,
+    `pet odor eliminator ${cityName}`,
   ];
 
   const localizedHeadTerms = (translationKeywords ?? []).map(
@@ -163,10 +165,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     ? `${profile.name}, ${provinceLabel}`
     : profile.name;
 
-  const seoTitle = `Cat Litter Odor Control - ${locationLabel} | Purrify`;
+  const seoTitle = `Cat Litter Deodorizer in ${profile.name} | Purrify Activated Carbon`;
   const seoDescription = populationLabel
-    ? `Eliminate cat litter odors in ${profile.name}, ${provinceName}. Fast shipping across ${provinceName}. Trusted by ${populationLabel}+ cat owners.`
-    : `Eliminate cat litter odors in ${profile.name}, ${provinceName}. Fast shipping across ${provinceName}. Trusted by cat owners nationwide.`;
+    ? `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Loved by ${populationLabel}+ cat owners.`
+    : `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Safe for cats & kittens.`;
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';

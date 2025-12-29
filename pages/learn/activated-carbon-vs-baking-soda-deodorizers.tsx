@@ -8,8 +8,8 @@ import { formatProductPrice } from '../../src/lib/pricing';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
   const { locale } = useTranslation();
-  const pageTitle = 'Activated Carbon vs Baking Soda Cat Litter Deodorizers: Complete Comparison';
-  const pageDescription = 'Compare activated carbon vs baking soda cat litter deodorizers. Learn which technology eliminates odors better, lasts longer, and provides safer odor control for your cats.';
+  const pageTitle = 'Does Baking Soda Help Cat Litter Smell? (Honest Answer + Better Alternative)';
+  const pageDescription = 'Does baking soda help with cat litter smell? Yes, but only for 1-2 days. Activated carbon works 3x longer. See our side-by-side test results and find what actually works.';
   const canonicalPath = '/learn/activated-carbon-vs-baking-soda-deodorizers';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -38,7 +38,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'activated carbon cat litter deodorizer, baking soda litter deodorizer, natural cat odor eliminator, fragrance free cat deodorizer, best cat litter deodorizer',
+            content: 'does baking soda help cat litter smell, is baking soda safe for cat litter, litter deodorizer vs baking soda, baking soda vs charcoal for odor, activated carbon cat litter deodorizer',
           },
         ]}
       />
