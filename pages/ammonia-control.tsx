@@ -226,8 +226,8 @@ export default function AmmoniaControl() {
         id="how-it-works"
         headline={ammonia.solution.headline}
         description={ammonia.solution.description}
-        diagramSrc="/images/how-it-works/zeolite-diagram.webp"
-        diagramAlt="How zeolite captures ammonia molecules"
+        diagramSrc="/images/how-it-works/activated-carbon-diagram.webp"
+        diagramAlt="How activated carbon captures ammonia molecules"
       />
 
       {/* Benefit Pillars */}

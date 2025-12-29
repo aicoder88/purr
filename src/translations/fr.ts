@@ -1568,12 +1568,12 @@ export const fr = {
   ammonia: {
     meta: {
       title: "Contrôle de l'Ammoniac pour Litière | Élimination Naturelle des Odeurs | Purrify",
-      description: "Éliminez l'odeur d'ammoniac de la litière avec la formule naturelle de zéolite Purrify. Contrôle les odeurs à la source pendant plus de 30 jours. Sans danger pour les chats."
+      description: "Éliminez l'odeur d'ammoniac de la litière avec la formule de charbon actif Purrify. Contrôle les odeurs à la source pendant 7+ jours. Sans danger pour les chats."
     },
     breadcrumb: "Contrôle de l'Ammoniac",
     hero: {
       headline: "Contrôle de l'Ammoniac: Éliminez les Odeurs de Litière à la Source",
-      subheadline: "La formule naturelle de zéolite de Purrify capture les molécules d'ammoniac avant qu'elles ne se dispersent dans l'air, gardant votre maison fraîche pendant plus de 30 jours.",
+      subheadline: "Le charbon actif de noix de coco de Purrify capture les molécules d'ammoniac avant qu'elles ne se dispersent dans l'air, gardant votre maison fraîche pendant 7+ jours.",
       cta: "Acheter Maintenant",
       secondaryCta: "Voir Comment Ça Marche"
     },
@@ -1597,17 +1597,17 @@ export const fr = {
     },
     solution: {
       headline: "La Science de la Vraie Élimination des Odeurs",
-      description: "La zéolite est un minéral volcanique naturel avec une structure microporeuse qui capture physiquement les molécules d'ammoniac. Contrairement aux agents masquants, la zéolite capture l'odeur au niveau moléculaire et la retient définitivement—vous ne la sentez plus jamais."
+      description: "Le charbon actif possède une structure microporeuse avec des millions de petits pores qui capturent physiquement les molécules d'ammoniac. Contrairement aux agents masquants, le charbon actif capture l'odeur au niveau moléculaire par adsorption—vous ne la sentez plus jamais."
     },
     benefits: {
       headline: "Pourquoi les Parents de Chats Choisissent Purrify",
       pillar1: {
         title: "Science Naturelle",
-        description: "100% zéolite naturelle et charbon actif. Aucun produit chimique, parfum ou additif pouvant nuire à votre chat."
+        description: "100% charbon actif naturel de noix de coco. Aucun produit chimique, parfum ou additif pouvant nuire à votre chat."
       },
       pillar2: {
         title: "Longue Durée",
-        description: "Une application protège pendant plus de 30 jours, réduisant les changements de litière jusqu'à 50% et vous faisant économiser."
+        description: "Une application protège pendant 7+ jours, réduisant les changements de litière et vous faisant économiser."
       },
       pillar3: {
         title: "Sûr & Doux",
@@ -1615,29 +1615,29 @@ export const fr = {
       }
     },
     stats: {
-      days: { value: "30+", label: "Jours de Fraîcheur" },
-      savings: { value: "50%", label: "Moins de Changements" },
+      days: { value: "7+", label: "Jours de Fraîcheur" },
+      savings: { value: "Moins", label: "de Changements" },
       customers: { value: "10 000+", label: "Chats Heureux" },
       rating: { value: "4,9★", label: "Note Client" }
     },
     faq: {
       headline: "Questions Courantes sur le Contrôle de l'Ammoniac",
       q1: "Comment Purrify contrôle-t-il l'ammoniac?",
-      a1: "Purrify utilise la zéolite naturelle, un minéral volcanique avec des millions de pores microscopiques qui capturent les molécules d'ammoniac. Contrairement au bicarbonate de soude ou aux parfums qui masquent les odeurs, la zéolite capture et retient physiquement l'ammoniac.",
-      q2: "La zéolite est-elle sans danger pour les chats?",
-      a2: "Oui, la zéolite est 100% naturelle et non toxique. C'est le même minéral utilisé dans les filtres à eau premium et utilisé en toute sécurité autour des animaux depuis des décennies. Purrify ne contient aucun produit chimique, parfum ou additif.",
+      a1: "Purrify utilise du charbon actif de noix de coco avec des millions de pores microscopiques qui capturent les molécules d'ammoniac par adsorption. Contrairement au bicarbonate de soude ou aux parfums qui masquent les odeurs, le charbon actif capture et retient physiquement l'ammoniac.",
+      q2: "Le charbon actif est-il sans danger pour les chats?",
+      a2: "Oui, le charbon actif est 100% naturel et non toxique. C'est le même matériau utilisé dans les filtres à eau et purificateurs d'air, et utilisé en toute sécurité autour des animaux depuis des décennies. Purrify ne contient aucun produit chimique, parfum ou additif.",
       q3: "Quelle quantité de Purrify dois-je utiliser?",
-      a3: "Saupoudrez simplement une fine couche sur la litière de votre chat et mélangez. Un sachet de 50g traite une litière standard pendant environ 30 jours. Pour plusieurs chats, utilisez notre format 120g.",
+      a3: "Saupoudrez simplement une fine couche sur la litière de votre chat et mélangez. Un sachet de 50g traite une litière standard pendant environ 7 jours. Pour plusieurs chats, utilisez notre format 120g.",
       q4: "Fonctionne-t-il avec tous les types de litière?",
       a4: "Oui! Purrify fonctionne avec l'argile agglomérante, non agglomérante, cristal, papier, bois et litières à base de maïs. Il améliore le contrôle des odeurs de n'importe quelle litière.",
       q5: "En quoi Purrify diffère-t-il du bicarbonate de soude?",
-      a5: "Le bicarbonate de soude ne neutralise que temporairement certaines odeurs et nécessite une réapplication constante. La zéolite capture physiquement et définitivement les molécules d'ammoniac, offrant des semaines de protection en une seule application.",
+      a5: "Le bicarbonate de soude ne neutralise que temporairement certaines odeurs et nécessite une réapplication constante. Le charbon actif capture physiquement les molécules d'ammoniac par adsorption, offrant 7+ jours de protection en une seule application.",
       q6: "Éliminera-t-il les odeurs existantes?",
-      a6: "Purrify commence immédiatement à absorber l'ammoniac dès que vous l'ajoutez. Les odeurs existantes disparaissent généralement dans les 24-48 heures à mesure que la zéolite les absorbe.",
+      a6: "Purrify commence immédiatement à absorber l'ammoniac dès que vous l'ajoutez. Les odeurs existantes disparaissent généralement dans les 24-48 heures à mesure que le charbon actif les absorbe.",
       q7: "Est-ce sans danger pour les chatons?",
       a7: "Absolument. Purrify est sûr pour les chats de tous âges. Il n'y a pas de produits chimiques ou de parfums qui pourraient irriter les jeunes chats ou les chats sensibles.",
       q8: "Combien de temps dure un sac?",
-      a8: "Le sachet de 50g dure environ 30 jours pour un chat. Le sachet de 120g dure 30 jours pour les foyers multi-chats (2-3 chats). La plupart des clients trouvent qu'ils doivent changer la litière moins souvent."
+      a8: "Le sachet de 50g dure environ 7 jours pour un chat. Le sachet de 120g dure environ 7 jours pour les foyers multi-chats (2-3 chats). La plupart des clients trouvent qu'ils doivent changer la litière moins souvent."
     },
     cta: {
       headline: "Prêt pour une Maison qui Sent Bon?",

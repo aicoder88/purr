@@ -143,6 +143,29 @@ No direct competitor comparisons. Use partnership positioning:
 
 ---
 
+## CRITICAL: Product Content Verification
+
+**BEFORE writing ANY marketing/product content, ALWAYS:**
+
+1. **Read existing product descriptions first:**
+   ```bash
+   grep -n "activated carbon\|coconut" src/translations/en.ts | head -20
+   ```
+
+2. **Verify product claims against existing content** - NEVER assume or invent:
+   - Purrify is **ACTIVATED CARBON** (coconut shell), NOT zeolite
+   - Protection lasts **7+ days**, not 30 days
+   - Made from **coconut shell activated carbon**
+
+3. **Cross-reference before creating new pages:**
+   - Check `siteDescription` in translations
+   - Check existing FAQ answers
+   - Check product descriptions
+
+**NEVER fabricate product ingredients, duration claims, or technical specs.**
+
+---
+
 ## Key Paths
 
 | Purpose | Path |
