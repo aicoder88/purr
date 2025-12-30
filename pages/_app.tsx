@@ -57,13 +57,6 @@ const AnalyticsComponent = dynamic(() => import('@vercel/analytics/next').then(m
   ssr: false,
 });
 
-const PerformanceMonitor = dynamic(() => import('../src/components/performance/PerformanceMonitor').then(mod => mod.PerformanceMonitor), {
-  ssr: false,
-});
-
-const CacheOptimizer = dynamic(() => import('../src/components/performance/CacheOptimizer').then(mod => mod.CacheOptimizer), {
-  ssr: false,
-});
 
 
 interface PageProps {
@@ -146,17 +139,6 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
               <Component {...pageProps} />
             </Layout>
           </div>
-
-          {/* Disabled - causing navigation crashes */}
-          {/* <PerformanceMonitor enabled sampleRate={0.1} /> */}
-          {/* <CacheOptimizer
-            enabled={true}
-            preloadRoutes={[]}
-            warmupDelay={5000}
-            maxCacheSize={15728640}
-          /> */}
-
-
 
           <Toaster />
           <ToastProvider />

@@ -321,11 +321,31 @@ const REDIRECTS = [
 
 const OPTIMIZE_PACKAGE_IMPORTS = [
   "lucide-react",
-  "@radix-ui/react-icons",
   "framer-motion",
+  "recharts",
+  // Radix UI packages
+  "@radix-ui/react-accordion",
+  "@radix-ui/react-alert-dialog",
+  "@radix-ui/react-aspect-ratio",
+  "@radix-ui/react-checkbox",
+  "@radix-ui/react-collapsible",
   "@radix-ui/react-dialog",
   "@radix-ui/react-dropdown-menu",
-  "recharts",
+  "@radix-ui/react-icons",
+  "@radix-ui/react-label",
+  "@radix-ui/react-navigation-menu",
+  "@radix-ui/react-popover",
+  "@radix-ui/react-progress",
+  "@radix-ui/react-radio-group",
+  "@radix-ui/react-scroll-area",
+  "@radix-ui/react-select",
+  "@radix-ui/react-separator",
+  "@radix-ui/react-slider",
+  "@radix-ui/react-switch",
+  "@radix-ui/react-tabs",
+  "@radix-ui/react-toast",
+  "@radix-ui/react-toggle",
+  "@radix-ui/react-tooltip",
 ];
 
 /** @type {import('next').NextConfig} */

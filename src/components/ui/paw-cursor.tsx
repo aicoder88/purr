@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { FaPaw } from "react-icons/fa";
+import { PawPrint } from "lucide-react";
 
 // Throttle function to limit how often a function can be called
 const throttle = <T extends (event: MouseEvent) => void>(
@@ -162,7 +162,7 @@ export function PawCursor() {
             transform: `translate(-50%, -50%) rotate(${paw.rotation}deg) scale(0.8)`,
           }}
         >
-          <FaPaw className="text-[#FF3131] w-4 h-4 opacity-70" />
+          <PawPrint className="text-brand-green-700 dark:text-brand-green-400 w-4 h-4 opacity-85" />
         </span>
       ))}
     </>
