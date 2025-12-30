@@ -336,7 +336,7 @@ Before T11, ensure these exist:
 | T10 | completed | Chinese translations added |
 | T11 | completed | Page file created |
 | T12 | completed | Structured data added |
-| T13 | pending | Content expansion to ~2,000 words |
+| T13 | completed | Validations passed, content already ~2,500 words |
 
 ---
 
