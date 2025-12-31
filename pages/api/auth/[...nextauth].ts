@@ -70,14 +70,11 @@ export const authOptions: NextAuthOptions = {
             return null;
           }
 
-          // For now, using environment variables for admin access
+          // Admin credentials from environment variables with fallbacks for development
           const adminEmail = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
           const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
           const editorEmail = process.env.EDITOR_EMAIL;
           const editorPassword = process.env.EDITOR_PASSWORD;
-
-          console.log('Login attempt for:', credentials?.email);
-          console.log('Admin email configured:', adminEmail);
 
           if (
             credentials.email === adminEmail &&

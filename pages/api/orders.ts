@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../src/lib/prisma';
 import { getSession } from 'next-auth/react';
+import { checkRateLimit } from '../../src/lib/security/rate-limit';
 
 interface CartItem {
   id: string;
@@ -8,12 +9,27 @@ interface CartItem {
   price: number;
 }
 
+// Rate limit for order creation: 10 per minute per IP
+const ORDER_RATE_LIMIT = {
+  windowMs: 60 * 1000,
+  maxRequests: 10,
+  message: 'Too many order attempts. Please try again later.'
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  // Apply rate limiting to prevent abuse
+  const { allowed, remaining } = checkRateLimit(req, ORDER_RATE_LIMIT);
+  res.setHeader('X-RateLimit-Remaining', remaining.toString());
+
+  if (!allowed) {
+    return res.status(429).json({ message: ORDER_RATE_LIMIT.message });
   }
 
   try {

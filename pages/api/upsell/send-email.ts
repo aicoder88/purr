@@ -3,6 +3,8 @@ import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '../../../src/lib/resend-config';
 import { UpsellDeclinedEmailHTML, getUpsellDeclinedEmailSubject } from '../../../src/emails/upsell-declined';
 import { UpsellExpiredEmailHTML, getUpsellExpiredEmailSubject } from '../../../src/emails/upsell-expired';
+import { requireAuth } from '../../../src/lib/auth/session';
+import { checkRateLimit } from '../../../src/lib/security/rate-limit';
 
 type EmailType = 'declined' | 'expired';
 
@@ -21,6 +23,13 @@ interface SendUpsellEmailResponse {
   emailId?: string;
 }
 
+// Strict rate limit for email sending: 5 per minute per IP
+const EMAIL_RATE_LIMIT = {
+  windowMs: 60 * 1000,
+  maxRequests: 5,
+  message: 'Too many email requests. Please try again later.'
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SendUpsellEmailResponse>
@@ -30,6 +39,33 @@ export default async function handler(
     return res.status(405).json({
       success: false,
       error: 'Method not allowed'
+    });
+  }
+
+  // Check authorization: require either admin auth OR internal API key
+  const authHeader = req.headers.authorization;
+  const internalSecret = process.env.CRON_SECRET;
+  const isInternalCall = internalSecret && authHeader === `Bearer ${internalSecret}`;
+
+  if (!isInternalCall) {
+    // Check for admin session
+    const { authorized } = await requireAuth(req, res, ['admin']);
+    if (!authorized) {
+      return res.status(401).json({
+        success: false,
+        error: 'Unauthorized'
+      });
+    }
+  }
+
+  // Apply rate limiting
+  const { allowed, remaining, resetTime } = checkRateLimit(req, EMAIL_RATE_LIMIT);
+  res.setHeader('X-RateLimit-Remaining', remaining.toString());
+
+  if (!allowed) {
+    return res.status(429).json({
+      success: false,
+      error: EMAIL_RATE_LIMIT.message
     });
   }
 

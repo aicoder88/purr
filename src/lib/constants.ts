@@ -1,4 +1,5 @@
 export const SITE_NAME = "Purrify";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.purrify.ca";
 export const SITE_DESCRIPTION =
   "Activated carbon cat litter additive that eliminates odors at the source.";
 

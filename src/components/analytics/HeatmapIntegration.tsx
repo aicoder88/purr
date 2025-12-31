@@ -22,6 +22,34 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
   useEffect(() => {
     if (!shouldLoad) return;
 
+    // Store references for cleanup
+    const cleanupHandlers: Array<{ element: Element; handler: EventListener }> = [];
+
+    // Shared click handler factory
+    const createClickHandler = (selector: string): EventListener => {
+      return () => {
+        if (typeof globalThis.window !== 'undefined') {
+          // Hotjar event
+          if (window.hj) {
+            window.hj('event', 'critical_interaction');
+          }
+
+          // Microsoft Clarity event
+          if (window.clarity) {
+            window.clarity('set', 'critical_interaction', selector);
+          }
+
+          // FullStory event
+          if (window.FS) {
+            window.FS.event('Critical Interaction', {
+              element: selector,
+              page: window.location.pathname
+            });
+          }
+        }
+      };
+    };
+
     // Initialize heatmap tracking events
     const trackHeatmapEvents = () => {
       // Track critical user interactions for heatmap analysis
@@ -36,28 +64,9 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
       criticalElements.forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(element => {
-          element.addEventListener('click', (_e) => {
-            // Send custom event to heatmap tools
-            if (typeof globalThis.window !== 'undefined') {
-              // Hotjar event
-              if (window.hj) {
-                window.hj('event', 'critical_interaction');
-              }
-              
-              // Microsoft Clarity event
-              if (window.clarity) {
-                window.clarity('set', 'critical_interaction', selector);
-              }
-              
-              // FullStory event
-              if (window.FS) {
-                window.FS.event('Critical Interaction', {
-                  element: selector,
-                  page: window.location.pathname
-                });
-              }
-            }
-          });
+          const handler = createClickHandler(selector);
+          element.addEventListener('click', handler);
+          cleanupHandlers.push({ element, handler });
         });
       });
     };
@@ -71,6 +80,10 @@ export const HeatmapIntegration: React.FC<HeatmapIntegrationProps> = ({
 
     return () => {
       document.removeEventListener('DOMContentLoaded', trackHeatmapEvents);
+      // Clean up all click listeners
+      cleanupHandlers.forEach(({ element, handler }) => {
+        element.removeEventListener('click', handler);
+      });
     };
   }, [shouldLoad]);
 

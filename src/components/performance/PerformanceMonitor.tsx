@@ -235,24 +235,27 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       });
     };
 
-    // Error Monitoring
-    const monitorErrors = () => {
-      window.addEventListener('error', (event) => {
-        gtmEvent('javascript_error', {
-          error_message: event.message,
-          error_filename: event.filename,
-          error_line: event.lineno,
-          error_column: event.colno,
-          page_path: window.location.pathname
-        });
+    // Error Monitoring handlers (stored for cleanup)
+    const handleError = (event: ErrorEvent) => {
+      gtmEvent('javascript_error', {
+        error_message: event.message,
+        error_filename: event.filename,
+        error_line: event.lineno,
+        error_column: event.colno,
+        page_path: window.location.pathname
       });
+    };
 
-      window.addEventListener('unhandledrejection', (event) => {
-        gtmEvent('promise_rejection', {
-          error_message: event.reason?.message || 'Unknown promise rejection',
-          page_path: window.location.pathname
-        });
+    const handleRejection = (event: PromiseRejectionEvent) => {
+      gtmEvent('promise_rejection', {
+        error_message: event.reason?.message || 'Unknown promise rejection',
+        page_path: window.location.pathname
       });
+    };
+
+    const monitorErrors = () => {
+      window.addEventListener('error', handleError);
+      window.addEventListener('unhandledrejection', handleRejection);
     };
 
     // Initialize monitoring
@@ -303,6 +306,9 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       if (reportTimeout) {
         clearInterval(reportTimeout);
       }
+      // Clean up error monitoring listeners
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleRejection);
     };
   }, [enabled, reportInterval, sampleRate]);
 

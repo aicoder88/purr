@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Container } from '../../src/components/ui/container';
-import { SITE_NAME } from '../../src/lib/constants';
+import { SITE_NAME, SITE_URL } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
@@ -285,13 +285,13 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={post.link} />
+        <meta property="twitter:url" content={`${SITE_URL}${post.link}`} />
         <meta property="twitter:title" content={post.title} />
         <meta property="twitter:description" content={post.excerpt} />
         <meta property="twitter:image" content={post.image} />
 
         {/* Canonical Link */}
-        <link rel="canonical" href={post.link} />
+        <link rel="canonical" href={`${SITE_URL}${post.link}`} />
 
         {/* Structured Data / JSON-LD */}
         <script
@@ -319,7 +319,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               'description': post.excerpt,
               'mainEntityOfPage': {
                 '@type': 'WebPage',
-                '@id': post.link
+                '@id': `${SITE_URL}${post.link}`
               }
             })
           }}

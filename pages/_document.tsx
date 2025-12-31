@@ -47,41 +47,7 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
           <meta name="googlebot" content="index, follow" />
           <meta name="video-description" content="Purrify activated carbon cat litter additive demonstration video showing how it eliminates odors at the molecular level" />
 
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: 'Purrify',
-                url: 'https://purrify.ca',
-                logo: 'https://purrify.ca/logo.png',
-                sameAs: [
-                  'https://x.com/PurrifyHQ',
-                  'https://www.instagram.com/purrifyhq/',
-                  'https://www.linkedin.com/company/purrify',
-                  'https://www.tiktok.com/@purrifyhq',
-                  'https://www.youtube.com/@PurrifyHQ',
-                  'https://www.trustpilot.com/review/purrify.ca',
-                  'https://share.google/S4ckzwuljW3gDUOqr',
-                  'https://g.page/r/CUB8bZ_ibMbwEBI/review',
-                  'https://www.crunchbase.com/organization/purrify',
-                  'https://www.bing.com/forbusiness/singleEntity?bizid=dc537d86-4d9b-47d2-9c8f-5019712edd9f',
-                  'https://biz.yelp.com/settings',
-                  'https://medium.com/@purrify',
-                  'https://whop.com/purrify',
-                  'https://www.producthunt.com/products/purrify',
-                  'https://wellfound.com/company/purrify'
-                ],
-                contactPoint: {
-                  '@type': 'ContactPoint',
-                  email: 'hello@purrify.ca',
-                  contactType: 'customer support',
-                  areaServed: ['CA', 'US'],
-                },
-              }),
-            }}
-          />
+          {/* Organization schema is in _app.tsx - do not duplicate here */}
 
           {/* Font-face rules handled by next/font */}
 
@@ -100,7 +66,7 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
             />
           )}
         </Head>
-        <body className="antialiased text-gray-900 dark:text-gray-50 dark:text-gray-50 bg-white dark:bg-gray-900">
+        <body className="antialiased text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-900">
           {/* Google Tag Manager (noscript) */}
           {enableGtm && (
             <noscript>
