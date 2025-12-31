@@ -52,8 +52,11 @@
     "test:e2e": "bash scripts/run-e2e-tests.sh",
     "test:e2e:security": "bash scripts/run-security-tests.sh",
     "e2e:web": "bash scripts/run-e2e-web.sh",
-    "test": "npm run test:translations",
-    "test:translations": "jest __tests__/translation-completeness.test.js"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:translations": "jest __tests__/translation-completeness.test.js",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
@@ -136,6 +139,9 @@
     "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.5.3",
     "@playwright/test": "^1.55.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/jest": "^30.0.0",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.9",
