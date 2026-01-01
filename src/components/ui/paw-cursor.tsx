@@ -94,12 +94,13 @@ export function PawCursor() {
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
       if (!isPawAnimationEnabled || isReducedMotion) return;
-      
+
       try {
         const { clientX: x, clientY: y } = e;
         const offsetX = Math.random() * 20 - 10;
         const offsetY = Math.random() * 20 - 10;
         const rotation = Math.random() * 30 - 15;
+        const newId = idRef.current++;
 
         setPaws((prev) => {
           const newPaws = [
@@ -108,11 +109,16 @@ export function PawCursor() {
               x: x + offsetX,
               y: y + offsetY,
               rotation,
-              id: idRef.current++,
+              id: newId,
             },
           ];
-          return newPaws.slice(-3);
+          return newPaws.slice(-8);
         });
+
+        // Remove paw after animation completes (1s)
+        setTimeout(() => {
+          setPaws((prev) => prev.filter((p) => p.id !== newId));
+        }, 1000);
       } catch (err) {
         setIsPawAnimationEnabled(false);
       }
@@ -155,14 +161,14 @@ export function PawCursor() {
       {paws.map((paw) => (
         <span
           key={paw.id}
-          className="fixed z-50 pointer-events-none will-change-transform"
+          className="fixed z-50 pointer-events-none will-change-transform animate-paw-fade"
           style={{
             top: paw.y,
             left: paw.x,
-            transform: `translate(-50%, -50%) rotate(${paw.rotation}deg) scale(0.8)`,
+            rotate: `${paw.rotation}deg`,
           }}
         >
-          <PawPrint className="text-brand-green-700 dark:text-brand-green-400 w-4 h-4 opacity-85" />
+          <PawPrint className="text-brand-green-700 dark:text-brand-green-400 w-4 h-4" />
         </span>
       ))}
     </>
