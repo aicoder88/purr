@@ -2,9 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { CategoryManager } from '@/lib/blog/category-manager';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { sanitizeText } from '@/lib/security/sanitize';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 import type { Tag } from '@/types/blog';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -42,8 +44,11 @@ export default async function handler(
         return res.status(200).json({ success: true });
       }
 
-      // Create new tag
-      const tag: Tag = req.body;
+      // Create new tag with sanitized name
+      const tag: Tag = {
+        ...req.body,
+        name: sanitizeText(req.body.name || ''),
+      };
       await categoryManager.createTag(tag);
 
       await logger.log({
@@ -60,8 +65,12 @@ export default async function handler(
 
     if (req.method === 'PUT') {
       const { id, ...updates } = req.body;
+      const sanitizedUpdates = {
+        ...updates,
+        ...(updates.name && { name: sanitizeText(updates.name) }),
+      };
 
-      await categoryManager.updateTag(id, updates);
+      await categoryManager.updateTag(id, sanitizedUpdates);
 
       await logger.log({
         userId: session.user?.email || 'unknown',
@@ -100,3 +109,6 @@ export default async function handler(
     });
   }
 }
+
+// Apply rate limiting
+export default withRateLimit(RATE_LIMITS.CREATE, handler);

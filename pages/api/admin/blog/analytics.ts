@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { AnalyticsService } from '@/lib/blog/analytics-service';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -51,3 +52,6 @@ export default async function handler(
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+// Apply rate limiting for analytics reads
+export default withRateLimit(RATE_LIMITS.READ, handler);

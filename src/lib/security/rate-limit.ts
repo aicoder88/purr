@@ -39,7 +39,7 @@ export const RATE_LIMITS = {
   // Moderate limits for content creation
   CREATE: {
     windowMs: 60 * 1000, // 1 minute
-    maxRequests: 30,
+    maxRequests: 10,
     message: 'Too many requests. Please slow down.',
   },
   // Lenient limits for reading
@@ -53,6 +53,18 @@ export const RATE_LIMITS = {
     windowMs: 60 * 1000, // 1 minute
     maxRequests: 15,
     message: 'Too many uploads. Please wait a moment.',
+  },
+  // Bulk operations - stricter limits
+  BULK: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 5,
+    message: 'Too many bulk operations. Please wait a moment.',
+  },
+  // Export operations - strict limits to prevent abuse
+  EXPORT: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 3,
+    message: 'Too many export requests. Please wait a moment.',
   },
 };
 

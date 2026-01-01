@@ -2,9 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import { CategoryManager } from '@/lib/blog/category-manager';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { sanitizeText } from '@/lib/security/sanitize';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 import type { Category } from '@/types/blog';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -31,7 +33,11 @@ export default async function handler(
     }
 
     if (req.method === 'POST') {
-      const category: Category = req.body;
+      const category: Category = {
+        ...req.body,
+        name: sanitizeText(req.body.name || ''),
+        description: sanitizeText(req.body.description || ''),
+      };
 
       await categoryManager.createCategory(category);
 
@@ -49,8 +55,13 @@ export default async function handler(
 
     if (req.method === 'PUT') {
       const { id, ...updates } = req.body;
+      const sanitizedUpdates = {
+        ...updates,
+        ...(updates.name && { name: sanitizeText(updates.name) }),
+        ...(updates.description && { description: sanitizeText(updates.description) }),
+      };
 
-      await categoryManager.updateCategory(id, updates);
+      await categoryManager.updateCategory(id, sanitizedUpdates);
 
       await logger.log({
         userId: session.user?.email || 'unknown',
@@ -89,3 +100,6 @@ export default async function handler(
     });
   }
 }
+
+// Apply rate limiting
+export default withRateLimit(RATE_LIMITS.CREATE, handler);

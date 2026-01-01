@@ -144,26 +144,53 @@ export class ImageOptimizer {
   }
 
   /**
-   * Validate image file
+   * Validate image file with comprehensive security checks
    */
   validateImage(file: File): { valid: boolean; error?: string } {
     const maxSize = 10 * 1024 * 1024; // 10MB
     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
     const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
-    const dangerousExtensions = ['.php', '.sh', '.exe', '.bat', '.cmd', '.com', '.pif', '.scr', '.vbs', '.js', '.jar', '.app'];
+    const dangerousExtensions = ['.php', '.sh', '.exe', '.bat', '.cmd', '.com', '.pif', '.scr', '.vbs', '.js', '.jar', '.app', '.svg'];
+    const dangerousMimeTypes = ['application/x-php', 'application/x-sh', 'application/x-executable', 'text/plain', 'image/svg+xml'];
 
-    // Check MIME type
+    const fileName = file.name.toLowerCase();
+
+    // Check for dangerous MIME types first (including SVG which can contain scripts)
+    if (dangerousMimeTypes.includes(file.type)) {
+      return {
+        valid: false,
+        error: 'Invalid file type. This file type is not allowed for security reasons.'
+      };
+    }
+
+    // Check allowed MIME type
     if (!allowedTypes.includes(file.type)) {
       return {
         valid: false,
-        error: 'Invalid file type. Only JPEG, PNG, and WebP are allowed.'
+        error: 'Invalid file type. Only JPEG, PNG, and WebP images are allowed.'
+      };
+    }
+
+    // Check for dangerous extensions anywhere in filename (double extension attack)
+    const hasDangerousExtension = dangerousExtensions.some(ext => fileName.includes(ext));
+    if (hasDangerousExtension) {
+      return {
+        valid: false,
+        error: 'Invalid file. File name contains a dangerous extension.'
+      };
+    }
+
+    // Check for multiple dots (potential double extension like image.jpg.php)
+    const parts = fileName.split('.');
+    if (parts.length > 2) {
+      return {
+        valid: false,
+        error: 'Invalid file name. Multiple extensions are not allowed.'
       };
     }
 
     // Check file extension
-    const fileName = file.name.toLowerCase();
     const hasAllowedExtension = allowedExtensions.some(ext => fileName.endsWith(ext));
-
     if (!hasAllowedExtension) {
       return {
         valid: false,
@@ -171,24 +198,7 @@ export class ImageOptimizer {
       };
     }
 
-    // Check for double extensions (e.g., .jpg.php)
-    const hasDangerousExtension = dangerousExtensions.some(ext => fileName.includes(ext));
-    if (hasDangerousExtension) {
-      return {
-        valid: false,
-        error: 'Invalid file name. File contains dangerous extension.'
-      };
-    }
-
-    // Check for multiple dots (potential double extension)
-    const parts = fileName.split('.');
-    if (parts.length > 2) {
-      return {
-        valid: false,
-        error: 'Invalid file name. Multiple extensions not allowed.'
-      };
-    }
-
+    // Check file size
     if (file.size > maxSize) {
       return {
         valid: false,

@@ -129,9 +129,9 @@ async function handler(
   }
 }
 
-// Apply security middleware (CSRF + rate limiting)
+// Apply security middleware (CSRF + stricter rate limiting for bulk ops)
 const withRateLimitMiddleware = (handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>) =>
-  withRateLimit(RATE_LIMITS.CREATE, handler);
+  withRateLimit(RATE_LIMITS.BULK, handler);
 
 export default combineMiddleware(
   withCSRFProtection,
