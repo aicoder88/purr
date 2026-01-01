@@ -1,14 +1,40 @@
 export const INTERNAL_LINK_OPTIONS = [
+  // Learn section
   { label: 'How Activated Carbon Eliminates Cat Litter Odor', url: '/learn/how-it-works' },
   { label: 'Science of Cat Litter Ammonia & VOCs', url: '/learn/science' },
   { label: 'Step-by-Step: How to Use Cat Litter Deodorizer', url: '/learn/how-to-use-deodorizer' },
   { label: 'Are Litter Deodorizers Safe for Kittens?', url: '/learn/using-deodorizers-with-kittens' },
+  { label: 'Complete Cat Litter Guide', url: '/learn/cat-litter-guide' },
+  { label: 'Activated Carbon vs Baking Soda', url: '/learn/activated-carbon-vs-baking-soda-deodorizers' },
+  { label: 'Benefits of Activated Carbon for Cat Owners', url: '/learn/activated-carbon-benefits' },
+  { label: 'Frequently Asked Questions', url: '/learn/faq' },
+  { label: 'Safety Information', url: '/learn/safety' },
+  // Solutions
+  { label: 'Fix Ammonia Smell in Cat Litter', url: '/learn/solutions/ammonia-smell-cat-litter' },
+  { label: 'Apartment Cat Odor Solutions', url: '/learn/solutions/apartment-cat-smell-solution' },
+  { label: 'Multiple Cats Odor Control', url: '/learn/solutions/multiple-cats-odor-control' },
+  { label: 'Natural Cat Litter Additive Guide', url: '/learn/solutions/natural-cat-litter-additive' },
+  // Blog posts
   { label: 'Most Powerful Odor Absorber for Cat Litter (2025 Guide)', url: '/blog/most-powerful-odor-absorber' },
   { label: 'Multi-Cat Litter Deodorizer Guide', url: '/blog/multi-cat-litter-deodorizer-guide' },
   { label: 'House Smells Like Cat Litter? 7 Proven Fixes', url: '/blog/house-smells-like-cat-litter-solutions' },
   { label: 'Tried Everything for Cat Litter Smell? Read This', url: '/blog/tried-everything-cat-litter-smell-solutions' },
+  { label: 'Why Cat Litter Smells Worse in Summer', url: '/blog/cat-litter-smell-worse-summer' },
+  { label: 'Why Cat Litter Smells Worse in Winter', url: '/blog/cat-litter-smell-worse-winter' },
+  { label: 'Strong Cat Urine Smell Solutions', url: '/blog/strong-cat-urine-smell-litter-box' },
+  { label: 'Embarrassed When Guests Visit?', url: '/blog/embarrassed-guests-visit-cat-litter-smell' },
+  { label: 'Best Litter Deodorizer for Small Apartments', url: '/blog/best-litter-odor-remover-small-apartments' },
+  { label: 'Activated Carbon vs Baking Soda Comparison', url: '/blog/activated-carbon-vs-baking-soda-comparison' },
+  { label: 'Using Deodorizers with Kittens', url: '/blog/using-deodorizers-with-kittens' },
+  { label: '90-Day Litter Deodorizer Test Results', url: '/blog/tried-every-litter-deodorizer-90-days-results' },
+  { label: 'Powder vs Spray Litter Deodorizer', url: '/blog/powder-vs-spray-litter-deodorizer' },
+  // Products
   { label: 'Shop the Standard Size Purrify Kit', url: '/products/standard' },
   { label: 'Shop the Family Pack for Multi-Cat Homes', url: '/products/family-pack' },
   { label: 'Shop the Trial Size Starter Kit', url: '/products/trial-size' },
-  { label: 'Customer Reviews & Before/After Photos', url: '/reviews' }
+  { label: 'Compare All Product Sizes', url: '/products' },
+  // Other
+  { label: 'Customer Reviews & Before/After Photos', url: '/reviews' },
+  { label: 'Our Story', url: '/about/our-story' },
+  { label: 'Contact Us', url: '/contact' },
 ];

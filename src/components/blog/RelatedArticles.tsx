@@ -59,6 +59,48 @@ const ALL_ARTICLES: Article[] = [
     alt: 'Natural odor control comparison setup'
   },
   {
+    title: 'Tried Everything for Cat Litter Smell?',
+    href: '/blog/tried-everything-cat-litter-smell-solutions',
+    image: '/optimized/tried-everything.webp',
+    alt: 'Frustrated cat owner seeking solutions'
+  },
+  {
+    title: 'Most Powerful Odor Absorber',
+    href: '/blog/most-powerful-odor-absorber',
+    image: '/optimized/odor-absorber.webp',
+    alt: 'Powerful activated carbon odor absorption'
+  },
+  {
+    title: 'Cat Litter Smells Worse in Summer',
+    href: '/blog/cat-litter-smell-worse-summer',
+    image: '/optimized/summer-litter.webp',
+    alt: 'Summer heat affecting litter odor'
+  },
+  {
+    title: 'Cat Litter Smells Worse in Winter',
+    href: '/blog/cat-litter-smell-worse-winter',
+    image: '/optimized/winter-litter.webp',
+    alt: 'Winter indoor air quality for cats'
+  },
+  {
+    title: 'Embarrassed When Guests Visit?',
+    href: '/blog/embarrassed-guests-visit-cat-litter-smell',
+    image: '/optimized/guests-visit.webp',
+    alt: 'Welcoming guests to a fresh home'
+  },
+  {
+    title: 'Powder vs Spray Litter Deodorizer',
+    href: '/blog/powder-vs-spray-litter-deodorizer',
+    image: '/optimized/powder-vs-spray.webp',
+    alt: 'Comparing deodorizer application methods'
+  },
+  {
+    title: '90 Days Testing Every Deodorizer',
+    href: '/blog/tried-every-litter-deodorizer-90-days-results',
+    image: '/optimized/90-day-test.webp',
+    alt: '90-day deodorizer comparison test'
+  },
+  {
     title: 'Ammonia Smell from Cat Litter Solution',
     href: '/learn/solutions/ammonia-smell-cat-litter',
     image: '/optimized/catonbed.avif',

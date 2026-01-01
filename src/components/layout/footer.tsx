@@ -302,55 +302,47 @@ export function Footer() {
 
             <div className="space-y-4">
               <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
-                Solutions
+                Popular Articles
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/solutions/ammonia-smell-cat-litter"
-                        : "/learn/solutions/ammonia-smell-cat-litter"
-                    }
+                    href="/blog/house-smells-like-cat-litter-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Ammonia Smell
+                    House Smells Like Cat Litter?
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/solutions/apartment-cat-smell-solution"
-                        : "/learn/solutions/apartment-cat-smell-solution"
-                    }
+                    href="/blog/multi-cat-litter-deodorizer-guide"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Apartment Living
+                    Multi-Cat Deodorizer Guide
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/solutions/multiple-cats-odor-control"
-                        : "/learn/solutions/multiple-cats-odor-control"
-                    }
+                    href="/blog/tried-everything-cat-litter-smell-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Multiple Cats
+                    Tried Everything for Cat Smell?
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/solutions/natural-cat-litter-additive"
-                        : "/learn/solutions/natural-cat-litter-additive"
-                    }
+                    href="/blog/most-powerful-odor-absorber"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Natural Additive
+                    Most Powerful Odor Absorber
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog/best-litter-odor-remover-small-apartments"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Best for Small Apartments
                   </Link>
                 </li>
               </ul>

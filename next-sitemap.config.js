@@ -36,6 +36,31 @@ module.exports = {
     '/fr/blog/*',
     '/zh/blog',
     '/zh/blog/*',
+    '/es/*', // Spanish pages are not a supported locale
+    // Pages that redirect - exclude to avoid canonical pointing to redirect issues
+    '/checkout',
+    '/cart-2',
+    '/products/compare',
+    '/comments/feed',
+    '/support/contact',
+    '/customers',
+    '/thank-you',
+    '/thank-you/*',
+    // Old product slugs that redirect
+    '/products/purrify-20g',
+    '/products/purrify-50g',
+    '/products/purrify-120g',
+    '/products/medium-size',
+    '/products/large-size',
+    '/products/family',
+    // Solutions pages that redirect to /learn/solutions
+    '/solutions',
+    '/solutions/*',
+    // Redirect pages that don't render content
+    '/customers/testimonials',
+    '/customers/case-studies',
+    '/support/subscription',
+    '/montreal', // Redirects to locations
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
@@ -63,18 +88,8 @@ module.exports = {
       priority: 0.8,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/checkout',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/thank-you',
-      changefreq: 'monthly',
-      priority: 0.5,
-      lastmod: new Date().toISOString(),
-    },
+    // Removed /checkout - it redirects to /products
+    // Removed /thank-you - post-purchase page shouldn't be in sitemap
     {
       loc: '/privacy-policy',
       changefreq: 'monthly',
@@ -105,14 +120,17 @@ module.exports = {
     { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
-    // Custom transformation for specific pages
-    if (path.startsWith('/blog/')) {
-      // Higher priority for blog posts
+    // Blog pages - English only hreflang (fr/zh blog not available)
+    if (path === '/blog' || path.startsWith('/blog/')) {
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.8,
         lastmod: new Date().toISOString(),
+        alternateRefs: [
+          { href: `https://www.purrify.ca${path}`, hreflang: 'en-CA' },
+          { href: `https://www.purrify.ca${path}`, hreflang: 'x-default' },
+        ],
       };
     }
 

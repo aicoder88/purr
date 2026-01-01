@@ -94,6 +94,10 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
 
         {/* Canonical Link */}
         <link rel="canonical" href="https://www.purrify.ca/blog" />
+
+        {/* Hreflang - English only since fr/zh blog pages are not available */}
+        <link rel="alternate" hrefLang="en-CA" href="https://www.purrify.ca/blog" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.purrify.ca/blog" />
       </Head>
 
       <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">

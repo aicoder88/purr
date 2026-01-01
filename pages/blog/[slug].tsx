@@ -293,6 +293,10 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         {/* Canonical Link */}
         <link rel="canonical" href={`${SITE_URL}${post.link}`} />
 
+        {/* Hreflang - English only since fr/zh blog posts are not available */}
+        <link rel="alternate" hrefLang="en-CA" href={`${SITE_URL}${post.link}`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}${post.link}`} />
+
         {/* Structured Data / JSON-LD */}
         <script
           type="application/ld+json"

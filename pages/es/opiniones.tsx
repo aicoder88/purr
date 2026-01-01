@@ -114,10 +114,13 @@ export default function OpinionesPage() {
         <meta name="twitter:description" content="Lee opiniones reales de dueños de gatos que eliminaron olores con Purrify." />
         <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
 
-        {/* Canonical & Language */}
-        <link rel="canonical" href="https://www.purrify.ca/es/opiniones" />
-        <link rel="alternate" hrefLang="en" href="https://www.purrify.ca/reviews" />
-        <link rel="alternate" hrefLang="es" href="https://www.purrify.ca/es/opiniones" />
+        {/* Canonical & Language - Point to English as canonical since es is not a supported locale */}
+        <link rel="canonical" href="https://www.purrify.ca/reviews" />
+        <link rel="alternate" hrefLang="en-CA" href="https://www.purrify.ca/reviews" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.purrify.ca/reviews" />
+
+        {/* Override HTML lang for this Spanish page */}
+        <meta httpEquiv="Content-Language" content="es" />
 
         {/* Schema.org structured data */}
         <script type="application/ld+json">
