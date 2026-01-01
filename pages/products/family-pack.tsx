@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
 import { useEffect, useRef } from 'react';
@@ -7,7 +8,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
@@ -16,7 +17,11 @@ import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
-export default function FamilyPackPage() {
+interface FamilyPackPageProps {
+  priceValidUntil: string;
+}
+
+export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps) {
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
 
@@ -146,6 +151,130 @@ export default function FamilyPackPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateFAQSchema(locale))
+        }}
+      />
+
+      {/* Product Schema for Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "@id": canonicalUrl,
+            "name": "Purrify Family Pack (120g) - Activated Carbon Litter Deodorizer",
+            "description": "120g coconut shell activated carbon cat litter additive. Perfect for multi-cat households. Two months of continuous odor control. Best value size. 100% natural, fragrance-free, and pet-friendly.",
+            "image": [
+              "https://www.purrify.ca/optimized/140g.webp"
+            ],
+            "brand": {
+              "@type": "Brand",
+              "name": "Purrify",
+              "logo": "https://www.purrify.ca/optimized/purrify-logo-icon.webp"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Purrify",
+              "url": "https://www.purrify.ca"
+            },
+            "category": "Pet Supplies > Cat Supplies > Cat Litter Additives",
+            "sku": "purrify-120g",
+            "mpn": "PURRIFY-120G",
+            "weight": {
+              "@type": "QuantitativeValue",
+              "value": "120",
+              "unitCode": "GRM"
+            },
+            "size": "120g",
+            "color": "Black",
+            "material": "Activated Carbon (Coconut Shell)",
+            "offers": {
+              "@type": "Offer",
+              "url": canonicalUrl,
+              "priceCurrency": "CAD",
+              "price": familyPriceAmount.toFixed(2),
+              "priceValidUntil": priceValidUntil,
+              "availability": buildAvailabilityUrl('InStock'),
+              "itemCondition": "https://schema.org/NewCondition",
+              "seller": {
+                "@type": "Organization",
+                "name": "Purrify"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "CAD"
+                },
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 2,
+                    "unitCode": "d"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "d"
+                  }
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CA"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 30,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/FreeReturn"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "127",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Pet Type",
+                "value": "Cat"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Main Ingredient",
+                "value": "Activated Carbon from Coconut Shells"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Usage Duration",
+                "value": "8-12 weeks per application"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Compatibility",
+                "value": "Works with all litter types"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Recommended For",
+                "value": "Multi-cat households (2-3 cats)"
+              }
+            ],
+            "audience": {
+              "@type": "Audience",
+              "name": "Multi-cat households"
+            },
+            "inLanguage": locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA'
+          })
         }}
       />
 
@@ -635,3 +764,16 @@ export default function FamilyPackPage() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<FamilyPackPageProps> = async () => {
+  // Calculate price valid date at build time to avoid hydration mismatch
+  const priceValidUntil = getPriceValidityDate(90);
+
+  return {
+    props: {
+      priceValidUntil,
+    },
+    // Revalidate every 24 hours to keep the date fresh
+    revalidate: 86400,
+  };
+};

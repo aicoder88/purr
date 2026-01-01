@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { GetStaticProps } from 'next';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -8,13 +9,17 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, ShieldCheck, Truck } 
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import { useEffect, useRef } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
-export default function StandardSizePage() {
+interface StandardSizePageProps {
+  priceValidUntil: string;
+}
+
+export default function StandardSizePage({ priceValidUntil }: StandardSizePageProps) {
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
 
@@ -109,6 +114,125 @@ export default function StandardSizePage() {
               type: 'image/webp'
             }
           ]
+        }}
+      />
+
+      {/* Product Schema for Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "@id": canonicalUrl,
+            "name": "Purrify Standard Size (50g) - Activated Carbon Litter Deodorizer",
+            "description": "50g coconut shell activated carbon cat litter additive. Ideal for single-cat households. 4-6 weeks of continuous odor control. 100% natural, fragrance-free, and pet-friendly.",
+            "image": [
+              "https://www.purrify.ca/optimized/60g.webp"
+            ],
+            "brand": {
+              "@type": "Brand",
+              "name": "Purrify",
+              "logo": "https://www.purrify.ca/optimized/purrify-logo-icon.webp"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Purrify",
+              "url": "https://www.purrify.ca"
+            },
+            "category": "Pet Supplies > Cat Supplies > Cat Litter Additives",
+            "sku": "purrify-50g",
+            "mpn": "PURRIFY-50G",
+            "weight": {
+              "@type": "QuantitativeValue",
+              "value": "50",
+              "unitCode": "GRM"
+            },
+            "size": "50g",
+            "color": "Black",
+            "material": "Activated Carbon (Coconut Shell)",
+            "offers": {
+              "@type": "Offer",
+              "url": canonicalUrl,
+              "priceCurrency": "CAD",
+              "price": numericPrice.toFixed(2),
+              "priceValidUntil": priceValidUntil,
+              "availability": buildAvailabilityUrl('InStock'),
+              "itemCondition": "https://schema.org/NewCondition",
+              "seller": {
+                "@type": "Organization",
+                "name": "Purrify"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "6.99",
+                  "currency": "CAD"
+                },
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 2,
+                    "unitCode": "d"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "d"
+                  }
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CA"
+                }
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/FreeReturn"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "138",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Pet Type",
+                "value": "Cat"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Main Ingredient",
+                "value": "Activated Carbon from Coconut Shells"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Usage Duration",
+                "value": "4-6 weeks per application"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Compatibility",
+                "value": "Works with all litter types"
+              }
+            ],
+            "audience": {
+              "@type": "Audience",
+              "name": "Single-cat households"
+            },
+            "inLanguage": locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA'
+          })
         }}
       />
 
@@ -408,3 +532,16 @@ export default function StandardSizePage() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<StandardSizePageProps> = async () => {
+  // Calculate price valid date at build time to avoid hydration mismatch
+  const priceValidUntil = getPriceValidityDate(90);
+
+  return {
+    props: {
+      priceValidUntil,
+    },
+    // Revalidate every 24 hours to keep the date fresh
+    revalidate: 86400,
+  };
+};
