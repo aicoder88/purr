@@ -16,6 +16,7 @@ import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { ToastProvider } from '../src/components/admin/Toast';
+import { captureUTM } from '../src/lib/tracking/utm';
 
 /**
  * Cleanup any stale service workers that may be causing cache issues.
@@ -49,6 +50,16 @@ function useServiceWorkerCleanup() {
   }, []);
 }
 
+/**
+ * Capture UTM parameters from URL on initial page load.
+ * Stores attribution data for ad spend optimization tracking.
+ */
+function useUTMCapture() {
+  useEffect(() => {
+    captureUTM();
+  }, []);
+}
+
 const Toaster = dynamic(() => import('../src/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
   ssr: false,
 });
@@ -72,6 +83,9 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
 
   // Cleanup stale service workers and caches on app load
   useServiceWorkerCleanup();
+
+  // Capture UTM parameters for attribution tracking
+  useUTMCapture();
 
   // Canonical site URL (use www domain to avoid redirects)
   const canonicalUrl = 'https://www.purrify.ca';
