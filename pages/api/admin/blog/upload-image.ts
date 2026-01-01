@@ -91,5 +91,5 @@ async function handler(
   }
 }
 
-// Apply CSRF protection and rate limiting for uploads
-export default withCSRFProtection(withRateLimit(RATE_LIMITS.UPLOAD, handler));
+// Apply rate limiting first, then CSRF protection for uploads
+export default withRateLimit(RATE_LIMITS.UPLOAD, withCSRFProtection(handler));

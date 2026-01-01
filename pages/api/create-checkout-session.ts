@@ -318,5 +318,5 @@ async function handler(
   );
 }
 
-// Apply CSRF protection and rate limiting middleware
-export default withCSRFProtection(withRateLimit(RATE_LIMITS.CREATE, handler));
+// Apply rate limiting first, then CSRF protection middleware
+export default withRateLimit(RATE_LIMITS.CREATE, withCSRFProtection(handler));

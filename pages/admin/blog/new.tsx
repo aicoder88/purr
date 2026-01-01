@@ -153,11 +153,13 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
       body: formData
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error('Failed to upload image');
+      // Throw the error message from the API so it can be displayed
+      throw new Error(data.error || 'Failed to upload image');
     }
 
-    const data = await response.json();
     return data.url;
   };
 
@@ -633,8 +635,9 @@ export default function NewPostPage({ categories, tags, locale }: Readonly<NewPo
                           const url = await handleImageUpload(file);
                           setFeaturedImage(url);
                           toast.success('Image uploaded');
-                        } catch {
-                          toast.error('Failed to upload image');
+                        } catch (error) {
+                          const errorMessage = error instanceof Error ? error.message : 'Failed to upload image';
+                          toast.error(errorMessage);
                         }
                       }
                     };
