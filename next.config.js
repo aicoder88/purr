@@ -390,7 +390,7 @@ const nextConfig = {
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
   },
-  serverExternalPackages: ["sharp"],
+  serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio"],
   staticPageGenerationTimeout: 120,
   turbopack: {
     rules: {
