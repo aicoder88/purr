@@ -23,6 +23,30 @@ const PAGE_SETTINGS = {
   default: { priority: '0.7', changefreq: 'monthly' },
 };
 
+// URLs to exclude from sitemap
+const EXCLUDE_PATTERNS = [
+  '/admin',
+  '/404',
+  '/sentry-example-page',
+  '/offline',
+  '/server-sitemap.xml',
+  '/free',
+  // Old province abbreviation URLs (redirect to /province/full-name)
+  '/locations/ab',
+  '/locations/bc',
+  '/locations/mb',
+  '/locations/nb',
+  '/locations/nl',
+  '/locations/ns',
+  '/locations/nt',
+  '/locations/nu',
+  '/locations/on',
+  '/locations/pe',
+  '/locations/qc',
+  '/locations/sk',
+  '/locations/yt',
+];
+
 // Get all pages (excluding API routes, _app, _document, etc.)
 function getPages() {
   const pages = glob.sync(`${PAGES_DIR}/**/*.{js,jsx,ts,tsx}`, {
@@ -32,6 +56,10 @@ function getPages() {
       '**/node_modules/**',
       '**/*.d.ts',
       '**/server-sitemap.xml.js',
+      '**/admin/**',
+      '**/404.{js,jsx,ts,tsx}',
+      '**/sentry-example-page.{js,jsx,ts,tsx}',
+      '**/offline.{js,jsx,ts,tsx}',
     ],
   });
 
@@ -64,8 +92,12 @@ async function generateSitemap() {
   const pages = getPages();
   const date = new Date().toISOString();
 
-  // Filter out dynamic routes for static sitemap (these will be handled by server-sitemap.xml.js)
-  const staticPages = pages.filter((page) => !page.isDynamic);
+  // Filter out dynamic routes and excluded patterns for static sitemap
+  const staticPages = pages.filter((page) => {
+    if (page.isDynamic) return false;
+    // Check if route matches any exclude pattern
+    return !EXCLUDE_PATTERNS.some(pattern => page.route.startsWith(pattern));
+  });
 
   // Create sitemap entries
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
