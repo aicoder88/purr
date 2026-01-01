@@ -787,7 +787,8 @@ export const zh = {
     // freeShipping: "免费配送", // TODO: Restore when free shipping is available
     skipAnytime: "随时跳过",
     highlyRated: "高度评价",
-    errorDetails: "错误详情"
+    errorDetails: "错误详情",
+    moneyBackGuarantee: "30天退款保证"
   },
 
   // Free Trial Page

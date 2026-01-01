@@ -940,6 +940,7 @@ export interface TranslationType {
     skipAnytime: string;
     highlyRated: string;
     errorDetails: string;
+    moneyBackGuarantee: string;
   };
 
   // Homepage specific translations

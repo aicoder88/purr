@@ -1274,7 +1274,8 @@ export const en = {
     // freeShipping: "Free Shipping", // TODO: Restore when free shipping is available
     skipAnytime: "Skip Anytime",
     highlyRated: "Highly Rated",
-    errorDetails: "Error Details"
+    errorDetails: "Error Details",
+    moneyBackGuarantee: "30-Day Money-Back Guarantee"
   },
 
   // Homepage specific translations

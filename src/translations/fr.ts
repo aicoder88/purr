@@ -786,7 +786,8 @@ export const fr = {
     // freeShipping: "Livraison Gratuite", // TODO: Restore when free shipping is available
     skipAnytime: "Ignorer à Tout Moment",
     highlyRated: "Très Bien Noté",
-    errorDetails: "Détails de l'Erreur"
+    errorDetails: "Détails de l'Erreur",
+    moneyBackGuarantee: "Garantie de remboursement de 30 jours"
   },
 
   // Free Trial Page
