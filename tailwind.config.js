@@ -220,9 +220,8 @@ module.exports = {
           '100%': { transform: 'translate(0px, 0px) scale(1)' },
         },
         "paw-fade": {
-          '0%': { opacity: '0.85', transform: 'translate(-50%, -50%) scale(0.8)' },
-          '50%': { opacity: '0.6', transform: 'translate(-50%, -50%) scale(1)' },
-          '100%': { opacity: '0', transform: 'translate(-50%, -50%) scale(0.5)' },
+          '0%': { opacity: '0.9' },
+          '100%': { opacity: '0' },
         },
       },
       animation: {
@@ -235,7 +234,7 @@ module.exports = {
         "bounce-subtle": "bounce-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "shimmer": "shimmer 3s linear infinite",
         "mesh-flow": "mesh-flow 10s ease-in-out infinite",
-        "paw-fade": "paw-fade 1s ease-out forwards",
+        "paw-fade": "paw-fade 0.8s ease-out forwards",
       },
     },
   },
