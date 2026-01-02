@@ -181,6 +181,10 @@ export function Header() {
           label: t.nav?.viewAllProducts || "View All Products",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/#products`,
         },
+        {
+          label: t.nav?.shipsToUSA || "Ships to USA",
+          href: "/us",
+        },
       ],
     },
     {

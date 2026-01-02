@@ -161,6 +161,8 @@ module.exports = {
     { loc: '/products/trial-size', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     { loc: '/products/standard', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    // USA landing page - important for US market expansion
+    { loc: '/us', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
     // Blog pages - English only hreflang (fr/zh blog not available)

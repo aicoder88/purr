@@ -62,7 +62,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   };
 
   const pageTitle = "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
-  const pageDescription = "Try our natural cat litter freshener FREE - just pay $4.76 shipping. Charcoal cat litter additive eliminates odors instantly. 87% upgrade within 7 days. Risk-free guarantee.";
+  const pageDescription = "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial');

@@ -303,16 +303,28 @@ See Sprint 3 Completion Status section at top for details.
 
 **Focus:** Foundation complete. Now focus on growth levers and fixing underperforming areas from GSC data.
 
-### Sprint 6A: USA Market Expansion (HIGH ROI) 🔜 NEXT
+### Sprint 6A: USA Market Expansion (HIGH ROI) ✅ COMPLETE
 
 **Problem:** USA has 2,143 impressions vs 1,690 Canada but only **0.37% CTR** (vs 1.07% Canada) - massive untapped opportunity.
 
-| Task | Priority | Notes |
-|------|----------|-------|
-| Create `/us` landing page | High | USA-specific messaging, USD pricing, US shipping info |
-| Add US-focused blog posts | High | "Best cat litter odor control USA", American terms |
-| Update meta descriptions for US queries | High | Test US-specific CTAs |
-| Add US retailer/availability info | Medium | Where to buy in USA |
+| Task | Status | Notes |
+|------|--------|-------|
+| Create `/us` landing page | ✅ Done | `pages/us.tsx` - USA-specific messaging, USD pricing, US shipping info |
+| Add US-focused blog posts | ✅ Done | 2 new posts: `cat-litter-odor-control-usa.json`, `apartment-litter-box-smell-solution.json` |
+| Update meta descriptions for US queries | ✅ Done | Added "Ships to USA & Canada" to siteDescription, product pages, SEO keywords |
+| Add US retailer/availability info | ✅ Done | Added "Ships to USA" nav link, updated sitemap, added nav translation |
+
+**Files Created:**
+- `pages/us.tsx` - Full USA landing page with US testimonials, FAQ, shipping info
+- `content/blog/en/cat-litter-odor-control-usa.json` - US-focused blog post
+- `content/blog/en/apartment-litter-box-smell-solution.json` - Apartment living blog post
+
+**Files Modified:**
+- `src/translations/en.ts` - Added US keywords, "Ships to USA & Canada" messaging
+- `src/components/layout/header.tsx` - Added "Ships to USA" nav dropdown item
+- `pages/products/standard.tsx` - Added "Ships to USA & Canada" to meta description
+- `pages/products/family-pack.tsx` - Added "Ships to USA & Canada" to meta description
+- `next-sitemap.config.js` - Added /us page with priority 0.85
 
 ### Sprint 6B: CTR & Meta Optimization
 
@@ -568,8 +580,8 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 | Sprint 5A | Product Page Enhancements | ✅ COMPLETE |
 | Sprint 5B | B2B Expansion | ✅ COMPLETE |
 | Sprint 5C | Satellite Site Expansion | ✅ COMPLETE |
-| Sprint 6A | USA Market Expansion | 🔜 NEXT |
-| Sprint 6B | CTR & Meta Optimization | 🔜 PENDING |
+| Sprint 6A | USA Market Expansion | ✅ COMPLETE |
+| Sprint 6B | CTR & Meta Optimization | 🔜 NEXT |
 | Sprint 6C | Referral & Social Proof | 🔜 PENDING |
 | Sprint 6D | Performance & Technical Debt | 🔜 PENDING |
 
@@ -618,4 +630,5 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 *Sprint 5A completed: January 2, 2026*
 *Sprint 5B completed: January 2, 2026*
 *Sprint 5C completed: January 2, 2026*
+*Sprint 6A completed: January 2, 2026*
 *Analysis by: 5 specialized agents (SEO, Frontend, UX, Backend, Performance)*

@@ -78,7 +78,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   }, [handleBuyClick]);
 
   const pageTitle = `${SITE_NAME} Family Pack - Best Cat Litter Freshener for Multi-Cat Homes`;
-  const pageDescription = "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter.";
+  const pageDescription = "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
   const canonicalPath = '/products/family-pack';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);

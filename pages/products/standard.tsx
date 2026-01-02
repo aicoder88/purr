@@ -77,7 +77,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   }, [handleBuyClick]);
 
   const pageTitle = `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
-  const pageDescription = "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter.";
+  const pageDescription = "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter. Ships to USA & Canada.";
 
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');

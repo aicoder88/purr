@@ -3,7 +3,7 @@ import { CONTACT_INFO } from '../lib/constants';
 export const en = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats.",
+  siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats. Ships to USA & Canada.",
 
   // Navigation
   nav: {
@@ -31,7 +31,8 @@ export const en = {
     retailers: "For Retailers",
     wholesalePricing: "Wholesale Pricing",
     becomePartner: "Become a Partner",
-    marketingSupport: "Marketing Support"
+    marketingSupport: "Marketing Support",
+    shipsToUSA: "Ships to USA"
   },
 
   locationsMenu: {
@@ -1303,7 +1304,7 @@ export const en = {
   homepage: {
     seo: {
       pageTitle: "Cat Litter Odor Control Additive",
-      keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, fragrance-free pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies Canada",
+      keywords: "cat litter odor control, activated carbon cat litter, natural cat litter additive, fragrance-free pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies USA, pet supplies Canada, ships to USA",
       openGraphImageAlt: "Premium Cat Litter Odor Control Solution",
       videoAlt: "Purrify Cat Litter Additive Effectiveness Demonstration",
       videoDescription: "Purrify Cat Litter Additive in Action - Before and After Demonstration",
@@ -1317,8 +1318,8 @@ export const en = {
       }
     },
     socialProof: {
-      nationalDelivery: "100% Natural • Made in Canada",
-      fastDelivery: "Fast delivery Canada-wide",
+      nationalDelivery: "100% Natural • Made in Canada • Ships to USA",
+      fastDelivery: "Fast delivery to USA & Canada",
       recentOrders: "orders this week"
     },
     hero: {

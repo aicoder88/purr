@@ -19,7 +19,6 @@ import {
   ArrowRight,
   Leaf,
   Globe,
-  Users,
   Package
 } from 'lucide-react';
 import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';

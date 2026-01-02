@@ -97,7 +97,7 @@ export default function Reviews() {
     <>
       <Head>
         <title>{`Customer Reviews - Verified Testimonials | ${SITE_NAME}`}</title>
-        <meta name="description" content="Read verified customer reviews of Purrify cat litter deodorizer. Real testimonials from Canadian cat owners who eliminated litter box odors naturally." />
+        <meta name="description" content="★ 4.9/5 Rating | 1,000+ cat owners eliminated litter box smell with Purrify. Read real reviews: 'Guests can't tell I have cats anymore.' Ships to USA & Canada." />
         <meta name="keywords" content="Purrify reviews, cat litter deodorizer reviews, customer testimonials, verified reviews, cat odor eliminator reviews" />
         
         {/* Open Graph */}

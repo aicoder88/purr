@@ -30,6 +30,7 @@ export interface TranslationType {
     wholesalePricing: string;
     becomePartner: string;
     marketingSupport: string;
+    shipsToUSA?: string;
   };
 
   // Locations Menu

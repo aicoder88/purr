@@ -60,7 +60,7 @@ export default function TryFreePage() {
   }, [numericPrice]);
 
   const pageTitle = 'FREE Purrify Trial - Just Pay Shipping | Eliminate Cat Litter Odor';
-  const pageDescription = 'Get your FREE 12g Purrify trial pack - just pay $4.76 shipping. Eliminate litter box odor in seconds using water-filter grade activated carbon. Limited offer.';
+  const pageDescription = 'FREE Purrify Trial | Just Pay $4.76 Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.';
   const canonicalUrl = getLocalizedUrl('/try-free', locale);
   const languageAlternates = buildLanguageAlternates('/try-free');
 
