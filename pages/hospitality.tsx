@@ -740,7 +740,7 @@ export default function Hospitality() {
 
         {/* Bulk Ordering Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-700 dark:to-orange-700 rounded-lg p-8 text-white">
+          <div className="bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-700 dark:to-orange-700 rounded-lg p-8 text-white dark:text-gray-100">
             <div className="max-w-3xl mx-auto text-center">
               <Package className="h-12 w-12 mx-auto mb-4" />
               <h2 className="font-heading text-3xl font-bold mb-4">
@@ -778,7 +778,7 @@ export default function Hospitality() {
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                  <p className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
+                  <p className="font-semibold text-gray-900 dark:text-white dark:text-gray-100">{testimonial.author}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
                 </div>
               </div>

@@ -127,7 +127,7 @@ export default function Results() {
               <div className="flex items-center justify-center gap-4 mb-8">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-6 h-6 text-yellow-400 dark:text-yellow-300 fill-current" />
                   ))}
                 </div>
                 <span className={`text-lg font-semibold ${COLORS.text.primary}`}>
@@ -259,7 +259,7 @@ export default function Results() {
                       </div>
                     </div>
                     <div className="ml-auto">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400" />
                     </div>
                   </div>
 
@@ -347,15 +347,15 @@ export default function Results() {
               {/* Trust indicators */}
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-green-500" />
+                  <Shield className="w-4 h-4 text-green-500 dark:text-green-400" />
                   <span className={COLORS.text.tertiary}>{r?.cta?.trust1 || '100% Natural'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
                   <span className={COLORS.text.tertiary}>{r?.cta?.trust2 || 'Made in Canada'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current" />
                   <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || '4.9/5 Rating'}</span>
                 </div>
               </div>
