@@ -132,7 +132,7 @@ export function B2BCaseStudies({
                 {/* Header */}
                 <div className="bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[#10B981] to-[#3694FF] flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[#10B981] to-[#3694FF] flex items-center justify-center text-white dark:text-gray-100">
                       {businessTypeIcons[benefit.businessType]}
                     </div>
                     <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">

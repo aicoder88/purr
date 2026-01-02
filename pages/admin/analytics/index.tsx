@@ -172,7 +172,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
 
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+            <Loader2 className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-500" />
           </div>
         ) : (
           <>
@@ -183,7 +183,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Total Revenue
                   </span>
-                  <DollarSign className="w-5 h-5 text-green-500" />
+                  <DollarSign className="w-5 h-5 text-green-500 dark:text-green-400" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {formatCurrency(utmData?.summary.totalRevenue || 0)}
@@ -198,7 +198,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attribution Rate
                   </span>
-                  <Target className="w-5 h-5 text-blue-500" />
+                  <Target className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {(utmData?.summary.attributionRate || 0).toFixed(1)}%
@@ -213,7 +213,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Total Customers
                   </span>
-                  <Users className="w-5 h-5 text-purple-500" />
+                  <Users className="w-5 h-5 text-purple-500 dark:text-purple-400" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {customerData?.summary.totalCustomers || 0}
@@ -243,7 +243,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
               {/* Traffic Sources */}
               <Card className="p-6 bg-white dark:bg-gray-800">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  <Activity className="w-5 h-5 mr-2 text-blue-500" />
+                  <Activity className="w-5 h-5 mr-2 text-blue-500 dark:text-blue-400" />
                   Top Traffic Sources
                 </h2>
                 <div className="space-y-3">
@@ -281,7 +281,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
               {/* Top Campaigns */}
               <Card className="p-6 bg-white dark:bg-gray-800">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
+                  <TrendingUp className="w-5 h-5 mr-2 text-green-500 dark:text-green-400" />
                   Top Campaigns
                 </h2>
                 <div className="space-y-3">
@@ -319,7 +319,7 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
               {/* Customer Segments */}
               <Card className="p-6 bg-white dark:bg-gray-800 lg:col-span-2">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  <Users className="w-5 h-5 mr-2 text-purple-500" />
+                  <Users className="w-5 h-5 mr-2 text-purple-500 dark:text-purple-400" />
                   Customer Segments
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

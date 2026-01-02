@@ -285,11 +285,11 @@ export default function ABTestsPage({ isAuthorized }: PageProps) {
         {/* Tests List */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+            <Loader2 className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-500" />
           </div>
         ) : tests.length === 0 ? (
           <Card className="p-12 text-center bg-white dark:bg-gray-800">
-            <Target className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <Target className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
             <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
               No A/B tests yet
             </h2>
