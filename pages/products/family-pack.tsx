@@ -1,8 +1,8 @@
 import { NextSeo } from 'next-seo';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
-import { useEffect, useRef, useCallback } from 'react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, Truck } from 'lucide-react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -16,6 +16,8 @@ import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
+import { QuantitySelector } from '../../src/components/product/QuantitySelector';
+import { GuaranteeBadge } from '../../src/components/ui/GuaranteeBadge';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface FamilyPackPageProps {
@@ -26,6 +28,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
+  const [quantity, setQuantity] = useState(1);
 
   const productKey = 'family';
   const productName = 'Purrify Family Pack (120g)';
@@ -453,6 +456,25 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">
                         {familyPrice}
                       </div>
+                      {quantity > 1 && (
+                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                          × {quantity} = ${(familyPriceAmount * quantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Quantity Selector */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {t.productsSection?.quantity || 'Quantity'}
+                      </span>
+                      <QuantitySelector
+                        quantity={quantity}
+                        onChange={setQuantity}
+                        min={1}
+                        max={10}
+                        size="md"
+                      />
                     </div>
 
                     {/* Shipping Cost Warning */}
@@ -469,7 +491,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       {t.pricing?.plusShipping || '+ shipping'} - One-time order
                     </p>
                     <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
-                      <Link href={checkoutUrl} onClick={() => handleBuyClick(false)} className="flex items-center justify-center gap-2">
+                      <Link href={checkoutUrl} onClick={() => handleBuyClick(false, quantity)} className="flex items-center justify-center gap-2">
                         <ShoppingCart className="w-5 h-5" />
                         {t.homepage.enhancedComparison.chooseThisSize}
                       </Link>
@@ -491,18 +513,17 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="border-t pt-6 space-y-2">
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    30-day money-back guarantee
+                <div className="border-t pt-6 space-y-4">
+                  <div className="flex flex-wrap gap-3">
+                    <GuaranteeBadge size="md" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800 rounded-md">
+                      <Truck className="w-4 h-4" />
+                      Ships within 24 hours
+                    </div>
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <Check className="w-4 h-4 text-[#03E46A] mr-2" />
                     Free shipping on autoship bundles
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <Check className="w-4 h-4 text-[#03E46A] mr-2" />
-                    Ships within 24 hours
                   </div>
                 </div>
               </div>

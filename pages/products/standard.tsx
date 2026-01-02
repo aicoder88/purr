@@ -5,15 +5,17 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
+import { QuantitySelector } from '../../src/components/product/QuantitySelector';
+import { GuaranteeBadge } from '../../src/components/ui/GuaranteeBadge';
 import { buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface StandardSizePageProps {
@@ -24,6 +26,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
+  const [quantity, setQuantity] = useState(1);
 
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
@@ -344,9 +347,27 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                     <h3 className="font-bold text-gray-900 dark:text-white mb-1">One-Time</h3>
                     <div className="mb-4">
                       <span className="text-3xl font-black text-gray-900 dark:text-white">{productPrice}</span>
+                      {quantity > 1 && (
+                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">
+                          × {quantity} = ${(numericPrice * quantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    {/* Quantity Selector */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {t.productsSection?.quantity || 'Quantity'}
+                      </span>
+                      <QuantitySelector
+                        quantity={quantity}
+                        onChange={setQuantity}
+                        min={1}
+                        max={10}
+                        size="md"
+                      />
                     </div>
                     <Button asChild variant="outline" className="w-full border-2 border-gray-900 dark:border-gray-200 hover:bg-gray-900 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-900 font-bold py-6 rounded-2xl">
-                      <a href={singleCheckoutUrl} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(false)}>
+                      <a href={singleCheckoutUrl} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(false, quantity)}>
                         Buy Now
                       </a>
                     </Button>
@@ -364,13 +385,10 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                 </div>
 
                 {/* Quick Trust */}
-                <div className="flex flex-wrap gap-6 pt-2">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
-                    30-Day Money Back
-                  </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    <Truck className="w-5 h-5 text-electric-indigo" />
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <GuaranteeBadge size="md" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800 rounded-md">
+                    <Truck className="w-4 h-4" />
                     Ships Next Business Day
                   </div>
                 </div>
