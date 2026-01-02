@@ -299,6 +299,54 @@ See Sprint 3 Completion Status section at top for details.
 
 ---
 
+## Sprint 6: Growth & Optimization
+
+**Focus:** Foundation complete. Now focus on growth levers and fixing underperforming areas from GSC data.
+
+### Sprint 6A: USA Market Expansion (HIGH ROI) 🔜 NEXT
+
+**Problem:** USA has 2,143 impressions vs 1,690 Canada but only **0.37% CTR** (vs 1.07% Canada) - massive untapped opportunity.
+
+| Task | Priority | Notes |
+|------|----------|-------|
+| Create `/us` landing page | High | USA-specific messaging, USD pricing, US shipping info |
+| Add US-focused blog posts | High | "Best cat litter odor control USA", American terms |
+| Update meta descriptions for US queries | High | Test US-specific CTAs |
+| Add US retailer/availability info | Medium | Where to buy in USA |
+
+### Sprint 6B: CTR & Meta Optimization
+
+**Problem:** Good positions but low CTR on key queries (e.g., "ammonia smell cat litter" - position 15, 0 clicks)
+
+| Task | Priority | Notes |
+|------|----------|-------|
+| Rewrite meta descriptions for top 10 pages | High | Focus on CTR, add power words |
+| Add FAQ schema to more pages | Medium | Rich snippets boost CTR |
+| Optimize /retailers page (position 35.9) | Medium | Better SEO, clearer value prop |
+| A/B test homepage title tags | Medium | Use existing A/B framework |
+
+### Sprint 6C: Referral & Social Proof
+
+**Problem:** No referral program, limited social proof beyond testimonials
+
+| Task | Priority | Notes |
+|------|----------|-------|
+| Build referral program | High | "Give $5, Get $5" or similar |
+| Add review collection to post-purchase flow | Medium | Integrate with Google Reviews |
+| Create social proof widgets | Medium | "X cats fresher today" counter |
+| UGC gallery from Instagram | Low | Customer photos |
+
+### Sprint 6D: Performance & Technical Debt
+
+| Task | Priority | Notes |
+|------|----------|-------|
+| Core Web Vitals audit | High | Check LCP, CLS, INP scores |
+| Fix remaining lint warnings (160 found) | Medium | Clean codebase |
+| Verify @emotion fully removed | Low | Confirm bundle savings |
+| Fix duplicate sitemap in GSC | Low | Mentioned but not confirmed |
+
+---
+
 ## Quick Stats
 
 | Metric | Value |
@@ -520,6 +568,10 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 | Sprint 5A | Product Page Enhancements | ✅ COMPLETE |
 | Sprint 5B | B2B Expansion | ✅ COMPLETE |
 | Sprint 5C | Satellite Site Expansion | ✅ COMPLETE |
+| Sprint 6A | USA Market Expansion | 🔜 NEXT |
+| Sprint 6B | CTR & Meta Optimization | 🔜 PENDING |
+| Sprint 6C | Referral & Social Proof | 🔜 PENDING |
+| Sprint 6D | Performance & Technical Debt | 🔜 PENDING |
 
 ---
 
