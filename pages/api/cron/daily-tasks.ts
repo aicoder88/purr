@@ -233,9 +233,6 @@ export default async function handler(
               lt: fourDaysFromNow
             },
             reminderSent: false
-          },
-          include: {
-            user: true
           }
         });
 
@@ -244,15 +241,15 @@ export default async function handler(
           const resend = new Resend(process.env.RESEND_API_KEY);
 
           for (const subscription of upcomingSubscriptions) {
-            if (subscription.user?.email) {
+            if (subscription.email) {
               try {
                 await resend.emails.send({
                   from: 'Purrify <hello@purrify.ca>',
-                  to: subscription.user.email,
+                  to: subscription.email,
                   subject: 'Your Purrify delivery is coming soon!',
                   html: `
                     <h2>Heads up!</h2>
-                    <p>Hi ${subscription.user.name || 'there'},</p>
+                    <p>Hi there,</p>
                     <p>Your next Purrify delivery is scheduled for ${subscription.nextDeliveryDate?.toLocaleDateString()}.</p>
                     <p>Need to make changes? You can update your subscription anytime.</p>
                     <a href="https://purrify.ca/account/subscriptions" style="display:inline-block;background:#7c3aed;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;">Manage Subscription</a>
