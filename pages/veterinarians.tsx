@@ -4,6 +4,8 @@ import { SITE_NAME } from '../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { VeterinarianHero } from '../src/components/sections/veterinarian-hero';
 import { VeterinarianBenefits } from '../src/components/sections/veterinarian-benefits';
+import { VeterinarianPartnership } from '../src/components/sections/veterinarian-partnership';
+import { VeterinarianContact } from '../src/components/sections/veterinarian-contact';
 
 export default function VeterinariansPage() {
   const { t, locale } = useTranslation();
@@ -50,6 +52,8 @@ export default function VeterinariansPage() {
       <main className="min-h-screen bg-white dark:bg-gray-900">
         <VeterinarianHero />
         <VeterinarianBenefits />
+        <VeterinarianPartnership />
+        <VeterinarianContact />
       </main>
     </>
   );

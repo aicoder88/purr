@@ -4,7 +4,7 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { formatProductPrice } from '../../src/lib/pricing';
-// import Image from 'next/image';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
 import Image from 'next/image';
@@ -15,7 +15,8 @@ export default function SciencePage() {
 
   const pageTitle = `How Activated Carbon Eliminates Cat Litter Odor: The Science`;
   const pageDescription = "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/science`;
+  const canonicalUrl = getLocalizedUrl('/learn/science', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/science');
 
   const scienceFacts = [
     {
@@ -69,6 +70,7 @@ export default function SciencePage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

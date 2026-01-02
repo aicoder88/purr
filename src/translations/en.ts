@@ -72,15 +72,15 @@ export const en = {
   products: {
     "purrify-12g": {
       name: "FREE Trial",
-      description: "Try Purrify FREE!\nJust $4.76 shipping & handling anywhere in Canada\n\nLimit one per customer"
+      description: "Try our cat litter freshener FREE!\nJust $4.76 shipping & handling anywhere in Canada\n\nNatural charcoal additive - Limit one per customer"
     },
     "purrify-50g": {
       name: "Purrify 50g Standard",
-      description: "Single Cat Fresh Air Solution\n🏆 Most Popular! One month of odor-free bliss for one cat. Stop dreading litter box duty - start enjoying fresh air again."
+      description: "Best Cat Litter Freshener for Single Cats\n🏆 Most Popular! Our activated charcoal cat litter additive gives one month of odor-free bliss. Stop dreading litter box duty."
     },
     "purrify-120g": {
       name: "Regular",
-      description: "Multiple Cats? Maximum Power!\nFor homes with 2+ cats. Double-strength formula eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
+      description: "Cat Litter Freshener for Multi-Cat Homes\nFor homes with 2+ cats. Our charcoal additive eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
     }
   },
 

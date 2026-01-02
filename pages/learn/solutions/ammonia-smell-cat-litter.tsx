@@ -1,10 +1,15 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from '../../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
 export default function ammoniasmellcatlitterPage() {
+  const { locale } = useTranslation();
   const seoTitle = 'Why Your Cat Litter Smells Like Ammonia (And How to Fix It)';
   const seoDescription = 'That sharp ammonia smell? Bacteria converting urine to gas. Baking soda can\'t neutralize it (both are alkaline). Here\'s what traps ammonia at the molecular level.';
+  const canonicalUrl = getLocalizedUrl('/learn/solutions/ammonia-smell-cat-litter', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/solutions/ammonia-smell-cat-litter');
 
   // Ammonia smell solution images
   const heroImage = '/images/solutions/ammonia-hero.png';
@@ -17,10 +22,11 @@ export default function ammoniasmellcatlitterPage() {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
-        canonical="https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter"
+        canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
-          url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
+          url: canonicalUrl,
           title: seoTitle,
           description: seoDescription,
           images: [

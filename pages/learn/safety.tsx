@@ -3,6 +3,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
@@ -13,7 +14,8 @@ export default function SafetyInformationPage() {
 
   const pageTitle = `${SITE_NAME} - Safety Information & Technical Specifications`;
   const pageDescription = "Comprehensive technical datasheet and safety information for Purrify™ Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/safety`;
+  const canonicalUrl = getLocalizedUrl('/learn/safety', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/safety');
 
   const specifications = [
     { property: "Iodine Number", value: "≥ 1000 mg/g" },
@@ -85,6 +87,7 @@ export default function SafetyInformationPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

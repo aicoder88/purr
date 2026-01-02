@@ -10,7 +10,7 @@ import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-r
 import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
-import { generateWebsiteSchema } from '../../src/lib/seo-utils';
+import { generateWebsiteSchema, buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
@@ -24,7 +24,8 @@ export default function HowItWorksPage() {
 
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`;
+  const canonicalUrl = getLocalizedUrl('/learn/how-it-works', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/how-it-works');
 
   const sciencePoints = [
     {
@@ -102,6 +103,7 @@ export default function HowItWorksPage() {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           title: pageTitle,
           description: pageDescription,

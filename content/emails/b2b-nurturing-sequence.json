@@ -1,0 +1,260 @@
+{
+  "sequence_name": "B2B Lead Nurturing",
+  "description": "Automated email sequence for B2B leads (veterinarians, retailers, cat cafes, etc.)",
+  "trigger": "b2b_form_submission",
+  "emails": [
+    {
+      "id": "b2b_welcome",
+      "name": "Welcome & Sample Kit Confirmation",
+      "delay_days": 0,
+      "subject": "Welcome to the Purrify Partner Program - Your Sample Kit is on the Way!",
+      "preview_text": "Thank you for your interest in partnering with Purrify",
+      "template": {
+        "header_image": "/optimized/purrify-logo-icon.webp",
+        "greeting": "Dear {{contact_name}},",
+        "body": [
+          "Thank you for your interest in the Purrify Partner Program! We're excited to have {{clinic_name}} consider joining our growing network of pet professionals.",
+          "Your complimentary sample kit is being prepared and will ship within 24-48 hours. Here's what's included:",
+          {
+            "type": "list",
+            "items": [
+              "5 x Trial Size (12g) sample units",
+              "2 x Standard Size (50g) demonstration products",
+              "Client education brochures (pack of 25)",
+              "Counter display stand",
+              "Quick-start guide for your team"
+            ]
+          },
+          "In the meantime, here are some resources to help you learn more about Purrify and how it can benefit your clients:"
+        ],
+        "cta": {
+          "text": "View Partner Resources",
+          "url": "https://www.purrify.ca/veterinarians"
+        },
+        "footer_text": "Questions? Reply to this email or call us at {{phone}}. We're here to help!"
+      }
+    },
+    {
+      "id": "b2b_education_1",
+      "name": "The Science Behind Purrify",
+      "delay_days": 3,
+      "subject": "Why Activated Carbon Works Better Than Scented Litters",
+      "preview_text": "The science your clients are asking about",
+      "template": {
+        "greeting": "Hi {{contact_name}},",
+        "body": [
+          "Now that your sample kit is on its way, we wanted to share some of the science that makes Purrify different from other odor solutions.",
+          {
+            "type": "heading",
+            "text": "Why Activated Carbon?"
+          },
+          "Unlike scented litters that mask odors with fragrances (which can irritate sensitive cats), Purrify uses molecular adsorption to actually trap and eliminate odor compounds.",
+          {
+            "type": "stats",
+            "items": [
+              { "value": "1g", "label": "of activated carbon has the surface area of a football field" },
+              { "value": "100%", "label": "natural - made from coconut shells" },
+              { "value": "Zero", "label": "fragrances, dyes, or synthetic chemicals" }
+            ]
+          },
+          "This is the same filtration technology used in:",
+          {
+            "type": "list",
+            "items": [
+              "Water purification systems",
+              "Hospital air filtration",
+              "NASA space station air systems",
+              "Medical-grade respirators"
+            ]
+          },
+          "Your clients with cats that have respiratory sensitivities, allergies, or asthma will especially appreciate a fragrance-free solution."
+        ],
+        "cta": {
+          "text": "Read the Full Science Guide",
+          "url": "https://www.purrify.ca/learn/science"
+        }
+      }
+    },
+    {
+      "id": "b2b_sample_followup",
+      "name": "Sample Kit Follow-Up",
+      "delay_days": 7,
+      "subject": "How are the Purrify samples working for you?",
+      "preview_text": "We'd love to hear your feedback",
+      "template": {
+        "greeting": "Hi {{contact_name}},",
+        "body": [
+          "Your sample kit should have arrived by now! We're curious to know what you think.",
+          {
+            "type": "heading",
+            "text": "Quick Tips for Testing"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Sprinkle one trial packet on your clinic's litter box",
+              "Test in a high-traffic or problem area first",
+              "Notice the difference within 60 seconds",
+              "Effects last 7+ days per application"
+            ]
+          },
+          "Many of our veterinary partners keep a litter box in their clinic to demonstrate the product to clients during appointments. It's a powerful visual that drives conversions.",
+          {
+            "type": "heading",
+            "text": "Ready to Order?"
+          },
+          "When you're ready, here are your partner pricing options:",
+          {
+            "type": "pricing_table",
+            "items": [
+              { "product": "Standard Size (50g)", "msrp": "$14.99", "wholesale": "$8.99", "margin": "40%" },
+              { "product": "Family Pack (120g)", "msrp": "$29.99", "wholesale": "$17.99", "margin": "40%" }
+            ]
+          }
+        ],
+        "cta": {
+          "text": "Schedule a Call to Discuss Partnership",
+          "url": "https://www.purrify.ca/veterinarians#vet-contact"
+        }
+      }
+    },
+    {
+      "id": "b2b_case_study",
+      "name": "Partner Success Story",
+      "delay_days": 14,
+      "subject": "How Dr. Sarah's clinic added $2,400/year with Purrify",
+      "preview_text": "A real success story from a veterinary partner",
+      "template": {
+        "greeting": "Hi {{contact_name}},",
+        "body": [
+          "We wanted to share a quick success story from one of our veterinary partners in Ontario.",
+          {
+            "type": "testimonial",
+            "quote": "We started recommending Purrify to clients who complained about litter box odor - which is honestly most of them. The product practically sells itself. We now move about 15 units a month just from word-of-mouth among our clients.",
+            "author": "Dr. Sarah L.",
+            "location": "Oakville Animal Hospital"
+          },
+          {
+            "type": "heading",
+            "text": "The Numbers"
+          },
+          {
+            "type": "list",
+            "items": [
+              "15 units/month average (Standard Size)",
+              "$6 profit per unit at 40% margin",
+              "$90/month = $1,080/year additional revenue",
+              "Many clinics report 20-30 units/month after 6 months"
+            ]
+          },
+          "The key to Dr. Sarah's success? She keeps a demonstration litter box in her waiting room with Purrify applied. Clients can smell the difference themselves.",
+          "We'd love to help you achieve similar results at {{clinic_name}}."
+        ],
+        "cta": {
+          "text": "Let's Discuss Your Partnership",
+          "url": "https://www.purrify.ca/veterinarians#vet-contact"
+        }
+      }
+    },
+    {
+      "id": "b2b_final_offer",
+      "name": "Exclusive Partner Offer",
+      "delay_days": 21,
+      "subject": "Special offer for new partners - 30% off your first order",
+      "preview_text": "Limited time: Extra discount on your first wholesale order",
+      "template": {
+        "greeting": "Hi {{contact_name}},",
+        "body": [
+          "It's been a few weeks since we sent your sample kit, and we wanted to reach out one more time with a special offer.",
+          {
+            "type": "offer_box",
+            "title": "New Partner Special",
+            "content": "Get 30% off your first wholesale order (instead of the standard 25%) when you place your order this week.",
+            "code": "NEWPARTNER30"
+          },
+          "This brings your cost down to:",
+          {
+            "type": "pricing_table",
+            "items": [
+              { "product": "Standard Size (50g)", "regular": "$8.99", "special": "$7.49", "savings": "$1.50/unit" },
+              { "product": "Family Pack (120g)", "regular": "$17.99", "special": "$14.99", "savings": "$3.00/unit" }
+            ]
+          },
+          "Plus, as a new partner you'll receive:",
+          {
+            "type": "list",
+            "items": [
+              "Free counter display stand",
+              "25 client brochures",
+              "Staff training video access",
+              "Priority restocking"
+            ]
+          },
+          "This offer expires in 7 days. If you have any questions or want to discuss a custom order, just reply to this email or give us a call."
+        ],
+        "cta": {
+          "text": "Claim Your 30% Discount",
+          "url": "https://www.purrify.ca/veterinarians#vet-contact"
+        },
+        "ps": "P.S. - Minimum order is just 12 units. Free shipping on orders over $200."
+      }
+    },
+    {
+      "id": "b2b_reengagement",
+      "name": "Re-engagement",
+      "delay_days": 45,
+      "subject": "Still interested in partnering with Purrify?",
+      "preview_text": "We haven't heard from you - can we help?",
+      "template": {
+        "greeting": "Hi {{contact_name}},",
+        "body": [
+          "It's been a while since we connected, and I wanted to check in personally.",
+          "I understand that evaluating new products for your clinic takes time. If there's anything holding you back from partnering with Purrify, I'd love to hear about it so we can help.",
+          {
+            "type": "heading",
+            "text": "Common Questions We Hear"
+          },
+          {
+            "type": "faq",
+            "items": [
+              {
+                "q": "What if my clients don't buy?",
+                "a": "We offer a 30-day return policy on unopened inventory. Zero risk."
+              },
+              {
+                "q": "Do I need to stock a lot of inventory?",
+                "a": "Minimum order is just 12 units. Most partners start with 24-36."
+              },
+              {
+                "q": "Is there training required?",
+                "a": "We provide a 15-minute video and one-page quick guide. That's all your team needs."
+              }
+            ]
+          },
+          "If Purrify isn't the right fit for {{clinic_name}} right now, no worries at all. But if you're still interested, just reply to this email and I'll personally help you get started."
+        ],
+        "cta": {
+          "text": "Yes, I'm Still Interested",
+          "url": "https://www.purrify.ca/veterinarians#vet-contact"
+        },
+        "signature": {
+          "name": "The Purrify Partnership Team",
+          "email": "partners@purrify.ca"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "from_name": "Purrify Partner Team",
+    "from_email": "partners@purrify.ca",
+    "reply_to": "partners@purrify.ca",
+    "unsubscribe_text": "If you no longer wish to receive these emails, click here to unsubscribe.",
+    "footer_address": "Purrify, 109-17680 Rue Charles, Mirabel, QC J7J 0T6, Canada"
+  },
+  "personalization_fields": [
+    "contact_name",
+    "clinic_name",
+    "phone",
+    "interest_type"
+  ]
+}

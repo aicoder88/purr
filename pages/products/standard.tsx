@@ -73,8 +73,8 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
     handleBuyClick(false, quantity);
   }, [handleBuyClick]);
 
-  const pageTitle = `${productName} - Ideal Odor Control for Single-Cat Homes`;
-  const pageDescription = t.products?.["purrify-50g"]?.description || "Perfect for homes with 1 cat. 50g Standard Size eliminates ammonia smells instantly using activated carbon.";
+  const pageTitle = `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
+  const pageDescription = "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter.";
 
   const canonicalUrl = getLocalizedUrl('/products/standard', locale);
   const languageAlternates = buildLanguageAlternates('/products/standard');
@@ -132,8 +132,8 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
             "@context": "https://schema.org",
             "@type": "Product",
             "@id": canonicalUrl,
-            "name": "Purrify Standard Size (50g) - Activated Carbon Litter Deodorizer",
-            "description": "50g coconut shell activated carbon cat litter additive. Ideal for single-cat households. 4-6 weeks of continuous odor control. 100% natural, fragrance-free, and pet-friendly.",
+            "name": "Purrify 50g - Natural Cat Litter Freshener & Charcoal Additive",
+            "description": "Best-selling cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive made from coconut shells. Eliminates ammonia for 4-6 weeks. 100% natural, fragrance-free deodorizer.",
             "image": [
               "https://www.purrify.ca/optimized/60g.webp"
             ],

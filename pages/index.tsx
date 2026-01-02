@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Hero } from '../src/components/sections/hero';
 import { ScienceSection } from '../src/components/sections/science-section';
 import { HowItWorks } from '../src/components/sections/how-it-works';
@@ -38,14 +39,17 @@ import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPric
 import { ScrollAnchor } from '../src/components/ui/scroll-anchor';
 import { Stores } from '../src/components/sections/stores';
 
-export default function Home() {
+interface HomePageProps {
+  priceValidUntil: string;
+}
+
+export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, locale } = useTranslation();
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
   const canonicalUrl = getLocalizedUrl('/', locale);
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const languageAlternates = buildLanguageAlternates('/');
-  const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
   const trialPriceValue = getProductPrice('trial').toFixed(2);
   const standardPriceValue = getProductPrice('standard').toFixed(2);
@@ -346,7 +350,7 @@ export default function Home() {
       </main>
 
       {/* Social Proof Components - Temporarily disabled */}
-      {/* <PurchaseNotifications 
+      {/* <PurchaseNotifications
         position="bottom-left"
         autoHide={true}
         hideDelay={5000}
@@ -354,3 +358,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  return {
+    props: {
+      priceValidUntil: getPriceValidityDate(),
+    },
+    // Revalidate every hour for ISR
+    revalidate: 3600,
+  };
+};

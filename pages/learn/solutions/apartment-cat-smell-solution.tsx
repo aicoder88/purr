@@ -4,6 +4,7 @@ import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
 export default function ApartmentCatSmellSolutionPage() {
   const { locale } = useTranslation();
@@ -12,7 +13,8 @@ export default function ApartmentCatSmellSolutionPage() {
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
   const seoTitle = 'Best Litter for Apartments with No Ventilation (5 Proven Solutions)';
   const seoDescription = 'How to get rid of cat litter smell in apartment with no ventilation? Activated carbon eliminates odors in studios and small spaces. Works even without windows.';
-  const canonicalUrl = 'https://www.purrify.ca/solutions/apartment-cat-smell-solution';
+  const canonicalUrl = getLocalizedUrl('/learn/solutions/apartment-cat-smell-solution', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/solutions/apartment-cat-smell-solution');
 
   // SEO optimized images
   const heroImage = '/images/solutions/apartment-hero.png';
@@ -24,6 +26,7 @@ export default function ApartmentCatSmellSolutionPage() {
         title={seoTitle}
         description={seoDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,

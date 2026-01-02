@@ -7,7 +7,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { NextSeo } from 'next-seo';
 import { formatProductPrice } from '../../src/lib/pricing';
-import { generateWebsiteSchema } from '../../src/lib/seo-utils';
+import { generateWebsiteSchema, buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import {
   Search,
   ChevronDown,
@@ -44,7 +44,8 @@ const FAQPage: NextPage = () => {
 
   const pageTitle = 'Frequently Asked Questions - Purrify Cat Litter Additive';
   const pageDescription = 'Get answers to common questions about Purrify activated carbon cat litter additive. Learn about usage, shipping, safety, and more.';
-  const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/learn/faq`;
+  const canonicalUrl = getLocalizedUrl('/learn/faq', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/faq');
 
   // FAQ page images - contextually relevant
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner with questions
@@ -238,6 +239,7 @@ const FAQPage: NextPage = () => {
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'website',
           url: canonicalUrl,

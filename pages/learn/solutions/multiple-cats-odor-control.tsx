@@ -4,6 +4,7 @@ import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
 export default function MultipleCatsOdorControlPage() {
   const { locale } = useTranslation();
@@ -12,7 +13,8 @@ export default function MultipleCatsOdorControlPage() {
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
   const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
   const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control';
+  const canonicalUrl = getLocalizedUrl('/learn/solutions/multiple-cats-odor-control', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/solutions/multiple-cats-odor-control');
 
   // SEO optimized images for multi-cat households
   const heroImage = '/optimized/multiple-cats-together.webp';
@@ -24,6 +26,7 @@ export default function MultipleCatsOdorControlPage() {
         title={seoTitle}
         description={seoDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,

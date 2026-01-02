@@ -3,11 +3,15 @@ import Link from 'next/link';
 import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import Image from 'next/image';
 import { formatProductPrice } from '../../../src/lib/pricing';
+import { useTranslation } from '../../../src/lib/translation-context';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
 export default function SeniorCatLitterSolutionsPage() {
+  const { locale } = useTranslation();
   const seoTitle = 'Senior Cat Litter Odor Solutions | Purrify';
   const seoDescription = 'Specialized litter solutions for senior cats. Gentle, fragrance-free odor control that works with age-related health issues and sensitive systems.';
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions';
+  const canonicalUrl = getLocalizedUrl('/learn/solutions/senior-cat-litter-solutions', locale);
+  const languageAlternates = buildLanguageAlternates('/learn/solutions/senior-cat-litter-solutions');
 
   // SEO optimized images for senior cat care
   const heroImage = '/images/solutions/ammonia-happy-cat.png';
@@ -20,6 +24,7 @@ export default function SeniorCatLitterSolutionsPage() {
         title={seoTitle}
         description={seoDescription}
         canonical={canonicalUrl}
+        languageAlternates={languageAlternates}
         openGraph={{
           type: 'article',
           url: canonicalUrl,

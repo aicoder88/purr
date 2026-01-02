@@ -61,8 +61,8 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     });
   };
 
-  const pageTitle = "FREE Purrify Trial - Just Pay Shipping | Limited Time Offer";
-  const pageDescription = "Get your FREE 12g Purrify trial - Just $4.76 shipping & handling anywhere in Canada. Limit one per customer. 87% of trial users upgrade within 7 days. Risk-free, money-back guarantee.";
+  const pageTitle = "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
+  const pageDescription = "Try our natural cat litter freshener FREE - just pay $4.76 shipping. Charcoal cat litter additive eliminates odors instantly. 87% upgrade within 7 days. Risk-free guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial');
@@ -107,8 +107,8 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
               {
                 "@type": "Product",
                 "@id": canonicalUrl,
-                "name": "Purrify 12g Trial Size - Cat Litter Odor Control",
-                "description": "Risk-free trial size perfect for testing Purrify's odor elimination power. Single-use sample for one litter box change. Experience molecular-level odor control.",
+                "name": "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
+                "description": "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
                 "image": [
                   "https://www.purrify.ca/optimized/17gpink.webp",
                   "https://www.purrify.ca/purrify-trial-17g.jpg"

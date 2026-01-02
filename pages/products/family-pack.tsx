@@ -74,8 +74,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
     handleBuyClick(false, quantity);
   }, [handleBuyClick]);
 
-  const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
-  const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
+  const pageTitle = `${SITE_NAME} Family Pack - Best Cat Litter Freshener for Multi-Cat Homes`;
+  const pageDescription = "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter.";
   const canonicalPath = '/products/family-pack';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -169,8 +169,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
             "@context": "https://schema.org",
             "@type": "Product",
             "@id": canonicalUrl,
-            "name": "Purrify Family Pack (120g) - Activated Carbon Litter Deodorizer",
-            "description": "120g coconut shell activated carbon cat litter additive. Perfect for multi-cat households. Two months of continuous odor control. Best value size. 100% natural, fragrance-free, and pet-friendly.",
+            "name": "Purrify 120g Family Pack - Cat Litter Freshener & Charcoal Additive",
+            "description": "Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. 2 months of odor control. 100% natural, fragrance-free, pet-friendly deodorizer.",
             "image": [
               "https://www.purrify.ca/optimized/140g.webp"
             ],
