@@ -45,6 +45,11 @@ export default async function handler(
         return res.status(405).json({ error: 'Method not allowed' });
       }
 
+      if (!prisma) {
+        sentryLogger.error('Prisma client not initialized');
+        return res.status(500).json({ error: 'Database connection unavailable' });
+      }
+
       const results: TaskResult[] = [];
       const now = new Date();
 
