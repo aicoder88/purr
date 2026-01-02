@@ -110,7 +110,7 @@ export default async function handler(
         const lowStockProducts = await prisma.product.findMany({
           where: {
             stockQuantity: { lte: 10 },
-            isActive: true
+            trackInventory: true
           },
           select: {
             id: true,
