@@ -180,6 +180,9 @@ export interface TranslationType {
     subscribeNow: string;
     adding: string;
     viewAllProducts: string;
+    stickyCart?: string;
+    decreaseQuantity?: string;
+    increaseQuantity?: string;
   };
 
   pricing?: {
@@ -1454,4 +1457,16 @@ export interface TranslationType {
       benefit2: string;
     };
   };
+
+  // B2B Vertical Pages (optional - fallbacks used when not provided)
+  veterinarians?: B2BPageType;
+  catCafes?: B2BPageType;
+  shelters?: B2BPageType;
+  groomers?: B2BPageType;
+  hospitality?: B2BPageType;
+  results?: B2BPageType;
 }
+
+// Common B2B page structure - permissive to allow fallback strings
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type B2BPageType = Record<string, any>;

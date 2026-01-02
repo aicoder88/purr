@@ -370,7 +370,7 @@ export default function GroomersPage() {
                   {groomers.addOnSale.description}
                 </p>
                 <ul className="space-y-4">
-                  {groomers.addOnSale.points.map((point, index) => (
+                  {groomers.addOnSale.points.map((point: string, index: number) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-6 w-6 text-green-500 dark:text-green-400 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700 dark:text-gray-300">{point}</span>
@@ -489,7 +489,7 @@ export default function GroomersPage() {
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-xl">
               <ul className="space-y-4 text-left max-w-md mx-auto">
-                {groomers.retailPackage.includes.map((item, index) => (
+                {groomers.retailPackage.includes.map((item: string, index: number) => (
                   <li key={index} className="flex items-center gap-3">
                     <CheckCircle className="h-6 w-6 text-purple-600 dark:text-purple-400 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-300 font-medium">{item}</span>
@@ -519,7 +519,7 @@ export default function GroomersPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {groomers.testimonials.items.map((testimonial, index) => (
+              {groomers.testimonials.items.map((testimonial: { author: string; role?: string; quote: string; location?: string; result?: string }, index: number) => (
                 <div key={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-4">

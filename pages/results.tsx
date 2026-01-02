@@ -11,7 +11,7 @@ import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
 
 export default function Results() {
   const { t, locale } = useTranslation();
-  const r = t.resultsPage;
+  const r = t.results || {};
 
   const canonicalUrl = getLocalizedUrl('/results', locale);
   const languageAlternates = buildLanguageAlternates('/results');
