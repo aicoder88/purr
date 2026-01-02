@@ -4,10 +4,10 @@ const glob = require('glob');
 const { execSync } = require('node:child_process');
 
 // Configuration
-const SRC_DIR = path.join(__dirname, '../src');
-const PAGES_DIR = path.join(__dirname, '../pages');
-const COMPONENTS_DIR = path.join(__dirname, '../components');
-const IMAGE_DIMENSIONS_PATH = path.join(__dirname, '../public/image-dimensions.json');
+const SRC_DIR = path.join(__dirname, '../../src');
+const PAGES_DIR = path.join(__dirname, '../../pages');
+const COMPONENTS_DIR = path.join(__dirname, '../../components');
+const IMAGE_DIMENSIONS_PATH = path.join(__dirname, '../../public/image-dimensions.json');
 
 // Load image dimensions from the JSON file
 function loadImageDimensions() {
