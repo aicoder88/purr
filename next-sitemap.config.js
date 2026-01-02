@@ -166,6 +166,7 @@ module.exports = {
   ],
   transform: async (config, path) => {
     // Blog pages - English only hreflang (fr/zh blog not available)
+    // Note: next-sitemap auto-appends the path to alternateRefs.href, so just provide base URL
     if (path === '/blog' || path.startsWith('/blog/')) {
       return {
         loc: path,
@@ -173,8 +174,8 @@ module.exports = {
         priority: 0.8,
         lastmod: new Date().toISOString(),
         alternateRefs: [
-          { href: `https://www.purrify.ca${path}`, hreflang: 'en-CA' },
-          { href: `https://www.purrify.ca${path}`, hreflang: 'x-default' },
+          { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
+          { href: 'https://www.purrify.ca', hreflang: 'x-default' },
         ],
       };
     }

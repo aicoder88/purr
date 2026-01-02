@@ -361,14 +361,20 @@ See Sprint 3 Completion Status section at top for details.
 | Create social proof widgets | Medium | "X cats fresher today" counter |
 | UGC gallery from Instagram | Low | Customer photos |
 
-### Sprint 6D: Performance & Technical Debt
+### Sprint 6D: Performance & Technical Debt ✅ PARTIALLY COMPLETE
 
-| Task | Priority | Notes |
-|------|----------|-------|
-| Core Web Vitals audit | High | Check LCP, CLS, INP scores |
-| Fix remaining lint warnings (160 found) | Medium | Clean codebase |
-| Verify @emotion fully removed | Low | Confirm bundle savings |
-| Fix duplicate sitemap in GSC | Low | Mentioned but not confirmed |
+| Task | Status | Notes |
+|------|--------|-------|
+| Core Web Vitals audit | 🔜 Pending | Run via PageSpeed Insights after deploy |
+| Fix remaining lint warnings | 🔜 Pending | ESLint config needs fix |
+| Remove @emotion packages | ✅ Done | Removed from package.json (was unused) |
+| Fix sitemap hreflang bug | ✅ Done | Fixed double-path bug in blog alternateRefs |
+| Remove orphan sitemap | ✅ Done | Deleted enhanced-sitemap.xml |
+
+**Files Modified:**
+- `package.json` - Removed unused @emotion/react and @emotion/styled
+- `next-sitemap.config.js` - Fixed alternateRefs to not include path (auto-appended)
+- `public/enhanced-sitemap.xml` - DELETED (orphan file, not referenced)
 
 ---
 
