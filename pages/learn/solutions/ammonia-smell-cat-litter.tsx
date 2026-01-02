@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
-export default function ammoniasmellcatlitterPage() {
+export default function AmmoniaSmellCatLitterPage() {
   const { locale } = useTranslation();
   const seoTitle = 'Why Your Cat Litter Smells Like Ammonia (And How to Fix It)';
   const seoDescription = 'That sharp ammonia smell? Bacteria converting urine to gas. Baking soda can\'t neutralize it (both are alkaline). Here\'s what traps ammonia at the molecular level.';

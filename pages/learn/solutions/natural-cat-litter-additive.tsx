@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
 
-export default function naturalcatlitteradditivePage() {
+export default function NaturalCatLitterAdditivePage() {
   const { locale } = useTranslation();
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
   const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';

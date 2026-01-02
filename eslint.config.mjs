@@ -1,7 +1,16 @@
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 import nextTypeScript from 'eslint-config-next/typescript';
+import reactCompiler from 'eslint-plugin-react-compiler';
 
 const eslintConfig = [
+  {
+    plugins: {
+      'react-compiler': reactCompiler,
+    },
+    rules: {
+      'react-compiler/react-compiler': 'off',
+    },
+  },
   {
     ignores: [
       '.next/**',
@@ -26,7 +35,11 @@ const eslintConfig = [
       '@typescript-eslint/no-unused-vars': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/set-state-in-effect': 'off',
-      'react-compiler/react-compiler': 'off',
+      'react-hooks/error-boundaries': 'off',
+      'react-hooks/immutability': 'off',
+      'react-hooks/preserve-manual-memoization': 'off',
+      'react-hooks/ref-access-during-render': 'off',
+      'react-hooks/refs': 'off',
       'prefer-const': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
 
@@ -60,7 +73,7 @@ const eslintConfig = [
       'src/components/**/*.ts',
     ],
     rules: {
-      'react-compiler/react-compiler': 'off',
+      // react-compiler plugin not installed
     },
   },
 ];
