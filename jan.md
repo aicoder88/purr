@@ -87,36 +87,35 @@ Deep analysis completed across SEO, conversion optimization, B2B/B2C strategy, a
 | /results page | ✅ Done | `ca32f3f` - Testimonials landing page |
 | /ammonia-control page | ✅ Existed | Enhanced previously |
 
-### Needs Refinement
+### Remaining Tasks (Sprint 5 Candidates)
 
 | Item | Issue | Priority |
 |------|-------|----------|
-| Veterinarians page | Missing VeterinarianPartnership + VeterinarianContact sections | Medium |
-| B2B pages translations | Using fallback strings only, no FR/ZH translations | Low |
-| Abandoned cart system | Has email template but missing cron trigger endpoint | High |
-| Sticky Add-to-Cart | Not yet integrated into product pages | High |
-| Guarantee Badge | Not yet added to all CTAs across site | Medium |
+| Sticky Add-to-Cart integration | Component exists, not integrated into product pages | High |
+| Guarantee Badge integration | Component exists, not added to all CTAs | Medium |
+| B2B pages translations | EN only, no FR/ZH translations | Medium |
+| Quantity selector | Not added to product pages | Medium |
+| Guarantee standardization | 7-day vs 30-day inconsistency | Low |
+| Remaining satellite sites | 5 sites need Purrify integration | Medium |
+| B2B case studies | Not created | Low |
 
-### Not Started
+### Completed (Previously Listed as Not Started)
 
-| Item | Notes | Sprint |
-|------|-------|--------|
-| Remove @emotion packages | Still in package.json (-15KB) | Sprint 2 |
-| Abandoned Cart CRON job | Need `pages/api/cron/abandoned-cart.ts` | Sprint 2 |
-| /try-free landing page | Only `/free` exists, need dedicated ad landing | Sprint 2 |
-| Hero simplification | Not fully simplified with pricing above fold | Sprint 2 |
-| Exit-intent email capture | Not implemented | Sprint 2 |
-| Quantity selector | Not added to product pages | Sprint 2 |
-| Guarantee standardization | 7-day vs 30-day inconsistency | Sprint 2 |
-| CTA button href fix | `cta.tsx` line 97 | Sprint 2 |
-| Weight mismatch fix | `standard.tsx` line 182 | Sprint 2 |
-| Dynamic import Leaflet | -40KB potential | Sprint 3 |
-| SSG for homepage | Not added | Sprint 3 |
-| B2B sell sheets/PDFs | Not created | Sprint 3 |
-| Lead nurturing sequence | Not built | Sprint 3 |
-| Low stock notifications | Not built | Sprint 4 |
-| Customer LTV tracking | Not built | Sprint 4 |
-| hreflang on product pages | Still incomplete | Sprint 3 |
+| Item | Status | Sprint |
+|------|--------|--------|
+| Remove @emotion packages | ✅ Done | Sprint 2 |
+| Abandoned Cart CRON job | ✅ Done | Sprint 2 |
+| /try-free landing page | ✅ Done | Sprint 2 |
+| Hero simplification | ✅ Done | Sprint 2 |
+| Exit-intent email capture | ✅ Done | Sprint 2 |
+| Dynamic import Leaflet | ✅ Removed (unused) | Sprint 3 |
+| SSG for homepage | ✅ Done | Sprint 3 |
+| B2B sell sheets/PDFs | ✅ Done | Sprint 3 |
+| Lead nurturing sequence | ✅ Done | Sprint 3 |
+| Low stock notifications | ✅ Done | Sprint 4A |
+| Customer LTV tracking | ✅ Done | Sprint 4A |
+| hreflang on product pages | ✅ Done | Sprint 3 |
+| Veterinarians page sections | ✅ Done | Sprint 3 |
 
 ---
 
@@ -237,6 +236,37 @@ See Sprint 3 Completion Status section at top for details.
 - 7 weeks of content planned (W02-W08)
 - Purrify linking strategy with UTM parameters
 - SEO and content guidelines documented
+
+---
+
+## Sprint 5: Polish & Integration (Proposed)
+
+### Sprint 5A: Product Page Enhancements
+
+| Task | Notes | Priority |
+|------|-------|----------|
+| Integrate Sticky Add-to-Cart | Add to `/products/standard` and `/products/family-pack` | High |
+| Add quantity selector | Allow customers to add multiples | High |
+| Integrate Guarantee Badge | Add to all product CTAs | Medium |
+| Standardize guarantee messaging | 30-day everywhere | Medium |
+
+### Sprint 5B: B2B Expansion
+
+| Task | Notes | Priority |
+|------|-------|----------|
+| B2B page translations | Add FR/ZH for all 5 B2B vertical pages | Medium |
+| Create case studies | 2-3 customer success stories | Medium |
+| B2B email automation | Connect nurturing sequence to form submissions | Low |
+
+### Sprint 5C: Satellite Site Expansion
+
+| Task | Notes | Priority |
+|------|-------|----------|
+| finepinecatlitter Purrify integration | Featured brand section | Medium |
+| healthycatlitter Purrify integration | Health-focused positioning | Medium |
+| premiumcatlitter Purrify integration | Premium positioning | Medium |
+| thenaturalcatlitter Purrify integration | Natural/organic positioning | Medium |
+| backtobasicscatlitter Purrify integration | Budget-friendly positioning | Medium |
 
 ---
 
@@ -458,6 +488,9 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 | Sprint 4A | Inventory & Operations | ✅ COMPLETE |
 | Sprint 4B | Advanced Analytics | ✅ COMPLETE |
 | Sprint 4C | Satellite Site Strategy | ✅ COMPLETE |
+| Sprint 5A | Product Page Enhancements | 🔜 NEXT |
+| Sprint 5B | B2B Expansion | 🔜 PENDING |
+| Sprint 5C | Satellite Site Expansion | 🔜 PENDING |
 
 ---
 
