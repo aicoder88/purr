@@ -192,10 +192,19 @@ model Product {
   wholesalePrice     Float? // Wholesale/retailer price
   minimumOrder       Int? // Minimum order quantity for retailers
   image              String
+  // Inventory tracking
+  stockQuantity      Int                 @default(0) // Current stock level
+  lowStockThreshold  Int                 @default(10) // Alert when below this
+  sku                String?             @unique // Stock keeping unit
+  trackInventory     Boolean             @default(true) // Enable inventory tracking
+  lastRestockedAt    DateTime? // When stock was last added
   createdAt          DateTime            @default(now())
   updatedAt          DateTime            @updatedAt
   orderItems         OrderItem[]
   retailerOrderItems RetailerOrderItem[]
+  subscriptionItems  SubscriptionItem[]
+
+  @@index([stockQuantity, lowStockThreshold]) // For low stock queries
 }
 
 model Order {
@@ -210,14 +219,26 @@ model Order {
   customer          Customer?
   items             OrderItem[]
   referral          Referral?
+  subscription      Subscription? @relation(fields: [subscriptionId], references: [id])
+  subscriptionId    String?
   // Review request tracking for post-purchase emails
   reviewRequestSent Boolean     @default(false)
   reviewRequestAt   DateTime?
+  // UTM Attribution tracking
+  utmSource         String? // Traffic source (google, facebook, etc.)
+  utmMedium         String? // Medium (cpc, email, social)
+  utmCampaign       String? // Campaign name
+  utmTerm           String? // Search keywords
+  utmContent        String? // Ad variant
+  utmLandingPage    String? // First page visited
+  utmCapturedAt     DateTime? // When UTM was captured
 
   @@index([status])
   @@index([createdAt])
   @@index([stripeSessionId])
   @@index([reviewRequestSent, status]) // For finding orders needing review requests
+  @@index([utmSource, utmCampaign]) // For UTM attribution queries
+  @@index([subscriptionId])
 }
 
 enum OrderStatus {
@@ -527,4 +548,139 @@ enum SubscriberStatus {
   ACTIVE // Active subscriber
   UNSUBSCRIBED // User unsubscribed
   BOUNCED // Email bounced
+}
+
+// ===== Customer LTV & Subscription Models =====
+
+// Customer metrics for LTV tracking and segmentation
+model CustomerMetrics {
+  id              String   @id @default(cuid())
+  email           String   @unique // Customer email as identifier
+  totalOrders     Int      @default(0) // Total number of orders
+  totalSpent      Float    @default(0) // Total amount spent in dollars
+  averageOrderValue Float  @default(0) // Average order value
+  firstOrderAt    DateTime? // Date of first order
+  lastOrderAt     DateTime? // Date of most recent order
+  daysSinceLastOrder Int?  // Calculated days since last order
+  predictedLTV    Float?   // Predicted lifetime value
+  segment         CustomerSegment @default(NEW) // Customer segment
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([segment])
+  @@index([totalSpent])
+  @@index([lastOrderAt])
+  @@map("customer_metrics")
+}
+
+enum CustomerSegment {
+  NEW // First-time customer
+  RETURNING // 2-3 orders
+  LOYAL // 4+ orders
+  VIP // High LTV customers
+  AT_RISK // Haven't ordered in 60+ days
+  CHURNED // Haven't ordered in 120+ days
+}
+
+// Subscription for recurring orders
+model Subscription {
+  id                 String             @id @default(cuid())
+  email              String // Customer email
+  status             SubscriptionStatus @default(ACTIVE)
+  // Subscription details
+  frequency          SubscriptionFrequency @default(MONTHLY)
+  nextDeliveryDate   DateTime // Next scheduled delivery
+  lastDeliveryDate   DateTime? // Last delivery date
+  // Product configuration
+  items              SubscriptionItem[]
+  // Payment
+  stripeSubscriptionId String? @unique // Stripe subscription ID
+  stripeCustomerId   String? // Stripe customer ID
+  // Notifications
+  reminderSent       Boolean  @default(false) // Has reminder been sent for next delivery
+  reminderSentAt     DateTime? // When reminder was sent
+  // Metadata
+  pausedAt           DateTime? // When subscription was paused
+  cancelledAt        DateTime? // When subscription was cancelled
+  cancellationReason String? // Why customer cancelled
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  orders             Order[] // Orders created from this subscription
+
+  @@index([status])
+  @@index([email])
+  @@index([nextDeliveryDate])
+  @@index([reminderSent, nextDeliveryDate]) // For finding subscriptions needing reminders
+  @@map("subscriptions")
+}
+
+model SubscriptionItem {
+  id             String       @id @default(cuid())
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  subscriptionId String
+  product        Product      @relation(fields: [productId], references: [id])
+  productId      String
+  quantity       Int
+  price          Float // Price at time of subscription
+  createdAt      DateTime     @default(now())
+
+  @@index([subscriptionId])
+  @@index([productId])
+  @@map("subscription_items")
+}
+
+enum SubscriptionStatus {
+  ACTIVE // Active and will renew
+  PAUSED // Temporarily paused
+  CANCELLED // Cancelled by customer
+  EXPIRED // Payment failed, subscription ended
+}
+
+enum SubscriptionFrequency {
+  WEEKLY // Every week
+  BIWEEKLY // Every 2 weeks
+  MONTHLY // Every month (most common for cat litter)
+  BIMONTHLY // Every 2 months
+}
+
+// ===== A/B Testing Models =====
+
+// A/B test experiments
+model ABTest {
+  id          String       @id @default(cuid())
+  name        String // Display name
+  slug        String       @unique // URL-friendly identifier
+  description String?
+  status      ABTestStatus @default(DRAFT)
+  // Test configuration
+  targetPage  String // Page path to test (e.g., "/try-free")
+  trafficSplit Float       @default(50) // Percentage to variant (0-100)
+  // Variants
+  controlName String       @default("Control")
+  variantName String       @default("Variant")
+  controlConfig Json?      // JSON config for control
+  variantConfig Json?      // JSON config for variant
+  // Results
+  controlViews      Int    @default(0)
+  variantViews      Int    @default(0)
+  controlConversions Int   @default(0)
+  variantConversions Int   @default(0)
+  // Dates
+  startedAt   DateTime?
+  endedAt     DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  createdBy   String? // Admin who created
+
+  @@index([status])
+  @@index([targetPage])
+  @@map("ab_tests")
+}
+
+enum ABTestStatus {
+  DRAFT // Not yet running
+  RUNNING // Currently active
+  PAUSED // Temporarily stopped
+  COMPLETED // Test finished, winner determined
+  ARCHIVED // Old test, no longer relevant
 }

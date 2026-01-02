@@ -154,29 +154,89 @@ See Sprint 3 Completion Status section at top for details.
 
 ## Sprint 4: Advanced Automation & Analytics
 
-### Sprint 4A: Inventory & Operations
+### Sprint 4A: Inventory & Operations ✅ COMPLETE
 
-| Task | Notes | Effort |
-|------|-------|--------|
-| Low stock notifications | Email when inventory < threshold | 4 hours |
-| Customer LTV tracking | Add to Order model, calculate | 6 hours |
-| Subscription reminder emails | Before renewal | 3 hours |
+| Task | Status | Files |
+|------|--------|-------|
+| Low stock notifications | ✅ Done | `pages/api/cron/low-stock-alerts.ts`, `src/emails/low-stock-alert.tsx`, `src/lib/inventory.ts` |
+| Customer LTV tracking | ✅ Done | `src/lib/customer-ltv.ts`, CustomerMetrics model in schema |
+| Subscription reminder emails | ✅ Done | `pages/api/cron/subscription-reminders.ts`, `src/emails/subscription-reminder.tsx` |
 
-### Sprint 4B: Advanced Analytics
+**New Database Models Added:**
+- `CustomerMetrics` - Tracks customer LTV, segments, order history
+- `Subscription` - Recurring order subscriptions with frequency options
+- `SubscriptionItem` - Products in a subscription
 
-| Task | Notes | Effort |
-|------|-------|--------|
-| UTM → Order attribution dashboard | Admin panel view | 4 hours |
-| Customer segmentation by LTV | Query + display | 3 hours |
-| A/B test framework setup | For landing pages | 6 hours |
+**Product Model Enhanced:**
+- `stockQuantity` - Current stock level
+- `lowStockThreshold` - Alert threshold
+- `sku` - Stock keeping unit
+- `trackInventory` - Enable/disable tracking
+- `lastRestockedAt` - Last restock timestamp
 
-### Sprint 4C: Satellite Site Strategy
+**Order Model Enhanced:**
+- UTM attribution fields (source, medium, campaign, term, content)
+- Subscription relation for recurring orders
 
-| Task | Notes | Effort |
-|------|-------|--------|
-| ecocatlitters → Purrify backlink | Featured brand section | 2 hours |
-| catlittersmell → problem/solution article | Link to Purrify | 3 hours |
-| Create content calendar for satellites | 1 post/week rotation | 2 hours |
+**Cron Jobs Added to vercel.json:**
+- `/api/cron/low-stock-alerts` - Daily at 9 AM
+- `/api/cron/subscription-reminders` - Daily at 10 AM
+
+### Sprint 4B: Advanced Analytics ✅ COMPLETE
+
+| Task | Status | Files |
+|------|--------|-------|
+| UTM → Order attribution dashboard | ✅ Done | `pages/api/admin/analytics/utm.ts`, `pages/admin/analytics/index.tsx` |
+| Customer segmentation by LTV | ✅ Done | `pages/api/admin/analytics/customers.ts`, `pages/admin/analytics/index.tsx` |
+| A/B test framework setup | ✅ Done | `src/lib/ab-testing.ts`, `pages/api/admin/ab-tests/*.ts`, `pages/admin/analytics/ab-tests.tsx` |
+
+**New APIs Created:**
+- `/api/admin/analytics/utm` - UTM attribution analytics (by source, medium, campaign, landing page)
+- `/api/admin/analytics/customers` - Customer segmentation and LTV data
+- `/api/admin/ab-tests` - A/B test CRUD operations
+- `/api/admin/ab-tests/[slug]` - Individual test management (start, pause, complete, reset)
+- `/api/ab-test/track` - Public endpoint for tracking views/conversions
+
+**New Admin Pages:**
+- `/admin/analytics` - Main analytics dashboard with UTM and customer segments
+- `/admin/analytics/ab-tests` - A/B test management with create form and stats
+
+**A/B Testing Framework Features:**
+- Cookie-based variant assignment
+- Traffic split configuration (0-100%)
+- Statistical significance calculation (z-test)
+- Automatic confidence level and winner detection
+- View and conversion tracking
+- Test lifecycle management (DRAFT → RUNNING → PAUSED → COMPLETED → ARCHIVED)
+
+### Sprint 4C: Satellite Site Strategy ✅ COMPLETE
+
+| Task | Status | Files |
+|------|--------|-------|
+| ecocatlitters → Purrify backlink | ✅ Done | `ecocatlitters/src/components/home/FeaturedBrand.tsx`, `ecocatlitters/src/app/page.tsx` |
+| catlittersmell → problem/solution article | ✅ Done | `catlittersmell/src/app/solve-litter-smell/page.tsx` |
+| Create content calendar for satellites | ✅ Done | `purr/content/satellite-sites/content-calendar.json` |
+
+**ecocatlitters Integration:**
+- Added FeaturedBrand component featuring Purrify as eco-friendly odor solution
+- Links to purrify.ca with UTM tracking (utm_source=ecocatlitters)
+- Positioned after SolutionsPreview section on homepage
+
+**catlittersmell Article:**
+- Created comprehensive 2000+ word article at `/solve-litter-smell`
+- Part 1: Why litter boxes smell (ammonia, VOCs science)
+- Part 2: Why common solutions fail
+- Part 3: Activated carbon solution + Purrify feature
+- Part 4: Implementation guide
+- Includes FAQ schema and opengraph image
+- Multiple contextual links to purrify.ca learn pages
+
+**Content Calendar:**
+- 7 satellite sites in rotation: ecocatlitters, catlittersmell, finepinecatlitter, healthycatlitter, premiumcatlitter, thenaturalcatlitter, backtobasicscatlitter
+- Weekly rotation (Monday publishing)
+- 7 weeks of content planned (W02-W08)
+- Purrify linking strategy with UTM parameters
+- SEO and content guidelines documented
 
 ---
 
@@ -395,7 +455,9 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 | Sprint 1 | Foundation (DB, components, pages) | ✅ COMPLETE |
 | Sprint 2 | Pre-advertising critical path | ✅ COMPLETE |
 | Sprint 3 | SEO + Content + B2B enhancement | ✅ COMPLETE |
-| Sprint 4 | Advanced automation + analytics | 🔜 NEXT |
+| Sprint 4A | Inventory & Operations | ✅ COMPLETE |
+| Sprint 4B | Advanced Analytics | ✅ COMPLETE |
+| Sprint 4C | Satellite Site Strategy | ✅ COMPLETE |
 
 ---
 
@@ -436,4 +498,7 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 *Sprint 1 completed: January 2, 2026*
 *Sprint 2 completed: January 2, 2026*
 *Sprint 3 completed: January 2, 2026*
+*Sprint 4A completed: January 2, 2026*
+*Sprint 4B completed: January 2, 2026*
+*Sprint 4C completed: January 2, 2026*
 *Analysis by: 5 specialized agents (SEO, Frontend, UX, Backend, Performance)*

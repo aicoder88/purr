@@ -1,0 +1,177 @@
+{
+  "description": "Weekly content calendar for Purrify satellite sites. One post per week, rotating through sites.",
+  "lastUpdated": "2026-01-02",
+  "sites": [
+    {
+      "name": "ecocatlitters",
+      "domain": "ecocatlitters.com",
+      "theme": "Eco-friendly and sustainable cat litter options",
+      "purrifyIntegration": "Featured brand section on homepage (completed Jan 2026)",
+      "topicFocus": ["sustainability", "environmental impact", "eco litter reviews", "switching guides"]
+    },
+    {
+      "name": "catlittersmell",
+      "domain": "catlittersmell.com",
+      "theme": "Solving cat litter odor problems",
+      "purrifyIntegration": "Featured solution on homepage + dedicated article /solve-litter-smell (completed Jan 2026)",
+      "topicFocus": ["odor elimination", "ammonia control", "quick fixes", "deep cleaning"]
+    },
+    {
+      "name": "finepinecatlitter",
+      "domain": "finepinecatlitter.com",
+      "theme": "Pine-based cat litter content",
+      "purrifyIntegration": "Pending",
+      "topicFocus": ["pine litter benefits", "natural deodorizing", "pine vs clay", "sustainability"]
+    },
+    {
+      "name": "healthycatlitter",
+      "domain": "healthycatlitter.com",
+      "theme": "Health-focused cat litter choices",
+      "purrifyIntegration": "Pending",
+      "topicFocus": ["respiratory health", "non-toxic options", "dust-free litters", "senior cats"]
+    },
+    {
+      "name": "premiumcatlitter",
+      "domain": "premiumcatlitter.com",
+      "theme": "High-end cat litter products",
+      "purrifyIntegration": "Pending",
+      "topicFocus": ["luxury litters", "performance reviews", "value analysis", "multi-cat solutions"]
+    },
+    {
+      "name": "thenaturalcatlitter",
+      "domain": "thenaturalcatlitter.com",
+      "theme": "Natural and organic cat litter options",
+      "purrifyIntegration": "Pending",
+      "topicFocus": ["natural ingredients", "biodegradable options", "chemical-free", "organic certification"]
+    },
+    {
+      "name": "backtobasicscatlitter",
+      "domain": "backtobasicscatlitter.com",
+      "theme": "Simple, no-fuss cat litter solutions",
+      "purrifyIntegration": "Pending",
+      "topicFocus": ["budget-friendly", "simple solutions", "traditional methods", "minimalist approach"]
+    }
+  ],
+  "weeklyRotation": [
+    { "week": 1, "site": "ecocatlitters", "dayOfWeek": "Monday" },
+    { "week": 2, "site": "catlittersmell", "dayOfWeek": "Monday" },
+    { "week": 3, "site": "finepinecatlitter", "dayOfWeek": "Monday" },
+    { "week": 4, "site": "healthycatlitter", "dayOfWeek": "Monday" },
+    { "week": 5, "site": "premiumcatlitter", "dayOfWeek": "Monday" },
+    { "week": 6, "site": "thenaturalcatlitter", "dayOfWeek": "Monday" },
+    { "week": 7, "site": "backtobasicscatlitter", "dayOfWeek": "Monday" }
+  ],
+  "upcomingContent": [
+    {
+      "site": "ecocatlitters",
+      "scheduledWeek": "2026-W02",
+      "title": "Tofu Cat Litter: The Complete Guide",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["tofu cat litter", "soy cat litter", "biodegradable litter"]
+    },
+    {
+      "site": "catlittersmell",
+      "scheduledWeek": "2026-W03",
+      "title": "Why Does My Cat's Litter Box Smell Like Ammonia?",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["ammonia smell cat litter", "cat urine smell", "litter box ammonia"]
+    },
+    {
+      "site": "finepinecatlitter",
+      "scheduledWeek": "2026-W04",
+      "title": "Pine Pellet Litter vs Clumping: Which is Better?",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["pine pellet litter", "pine vs clumping", "wood pellet cat litter"]
+    },
+    {
+      "site": "healthycatlitter",
+      "scheduledWeek": "2026-W05",
+      "title": "Best Cat Litter for Cats with Asthma",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["cat litter asthma", "low dust cat litter", "hypoallergenic cat litter"]
+    },
+    {
+      "site": "premiumcatlitter",
+      "scheduledWeek": "2026-W06",
+      "title": "Is Premium Cat Litter Worth the Cost?",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["premium cat litter", "expensive cat litter", "best cat litter value"]
+    },
+    {
+      "site": "thenaturalcatlitter",
+      "scheduledWeek": "2026-W07",
+      "title": "Grass Cat Litter: A Natural Alternative",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["grass cat litter", "natural cat litter", "plant-based cat litter"]
+    },
+    {
+      "site": "backtobasicscatlitter",
+      "scheduledWeek": "2026-W08",
+      "title": "The Cheapest Cat Litter That Actually Works",
+      "status": "planned",
+      "purrifyMention": true,
+      "targetKeywords": ["cheap cat litter", "budget cat litter", "affordable cat litter"]
+    }
+  ],
+  "publishedContent": [
+    {
+      "site": "ecocatlitters",
+      "publishDate": "2026-01-02",
+      "title": "Featured Brand: Purrify Activated Carbon",
+      "type": "homepage-section",
+      "url": "/"
+    },
+    {
+      "site": "catlittersmell",
+      "publishDate": "2026-01-02",
+      "title": "How to Solve Cat Litter Smell Permanently",
+      "type": "article",
+      "url": "/solve-litter-smell"
+    }
+  ],
+  "purrifyLinkingStrategy": {
+    "primaryCTAs": [
+      "https://purrify.ca/products/trial-size?utm_source={site}&utm_medium=article&utm_campaign=satellite",
+      "https://purrify.ca/products/family-pack?utm_source={site}&utm_medium=article&utm_campaign=satellite"
+    ],
+    "contextualLinks": [
+      "https://purrify.ca/learn/how-it-works",
+      "https://purrify.ca/learn/science",
+      "https://purrify.ca/learn/safety",
+      "https://purrify.ca/reviews",
+      "https://purrify.ca/learn/how-to-use-deodorizer",
+      "https://purrify.ca/learn/compatible-litters",
+      "https://purrify.ca/learn/activated-carbon-benefits"
+    ],
+    "guidelines": [
+      "Every article should include at least one contextual link to Purrify",
+      "Primary CTA should appear at end of article",
+      "Use UTM parameters for tracking: utm_source={site}&utm_medium=article&utm_campaign=satellite",
+      "Anchor text should be natural and varied, not always 'Purrify'",
+      "Link to relevant learn pages based on article topic"
+    ]
+  },
+  "contentGuidelines": {
+    "minWordCount": 800,
+    "maxWordCount": 2000,
+    "requiredSections": ["introduction", "main content", "purrify mention", "conclusion"],
+    "seoRequirements": [
+      "Meta title under 60 characters",
+      "Meta description 150-160 characters",
+      "H1 includes primary keyword",
+      "At least 2 internal links to other site pages",
+      "At least 1 link to purrify.ca with UTM"
+    ],
+    "imageRequirements": [
+      "Hero image for social sharing",
+      "Alt text on all images",
+      "Compressed for web (under 200KB)"
+    ]
+  }
+}
