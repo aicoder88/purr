@@ -187,6 +187,7 @@ export interface TranslationType {
     adding: string;
     viewAllProducts: string;
     stickyCart?: string;
+    quantity?: string;
     decreaseQuantity?: string;
     increaseQuantity?: string;
   };
@@ -1483,6 +1484,27 @@ export interface TranslationType {
   groomers?: B2BPageType;
   hospitality?: B2BPageType;
   results?: B2BPageType;
+
+  // B2B Case Studies Section
+  b2bCaseStudies?: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    cta: string;
+    ctaButton: string;
+    businessTypes: {
+      veterinarian: string;
+      catCafe: string;
+      shelter: string;
+      groomer: string;
+      hospitality: string;
+    };
+    labels: {
+      challenge: string;
+      solution: string;
+      catsServed: string;
+    };
+  };
 }
 
 // Common B2B page structure - permissive to allow fallback strings

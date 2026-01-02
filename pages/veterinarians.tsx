@@ -6,6 +6,7 @@ import { VeterinarianHero } from '../src/components/sections/veterinarian-hero';
 import { VeterinarianBenefits } from '../src/components/sections/veterinarian-benefits';
 import { VeterinarianPartnership } from '../src/components/sections/veterinarian-partnership';
 import { VeterinarianContact } from '../src/components/sections/veterinarian-contact';
+import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
 
 export default function VeterinariansPage() {
   const { t, locale } = useTranslation();
@@ -53,6 +54,7 @@ export default function VeterinariansPage() {
         <VeterinarianHero />
         <VeterinarianBenefits />
         <VeterinarianPartnership />
+        <B2BCaseStudies businessType="veterinarian" limit={1} />
         <VeterinarianContact />
       </main>
     </>

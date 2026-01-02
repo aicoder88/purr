@@ -16,14 +16,70 @@ import {
   Sparkles,
   HeartHandshake
 } from 'lucide-react';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, FormEvent } from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
+import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
 
 export default function SheltersPage() {
   const { t, locale } = useTranslation();
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const handleFormSubmit = useCallback(() => setFormSubmitted(true), []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Form data state
+  const [formData, setFormData] = useState({
+    businessName: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    location: '',
+    organizationType: '',
+    catCount: '',
+    charityNumber: '',
+    message: '',
+  });
+
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  }, []);
+
+  const handleFormSubmit = useCallback(async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact-b2b', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businessName: formData.businessName,
+          contactName: formData.contactName,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          businessType: 'shelter',
+          location: formData.location || undefined,
+          catCount: formData.catCount || undefined,
+          message: formData.message || undefined,
+          locale,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormSubmitted(true);
+      } else {
+        setErrorMessage(result.message || 'An error occurred. Please try again.');
+      }
+    } catch {
+      setErrorMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [formData, locale]);
 
   // Get translations with fallbacks
   const shelters = t.shelters || {};
@@ -370,6 +426,11 @@ export default function SheltersPage() {
           </div>
         </section>
 
+        {/* Case Studies */}
+        <div className="mb-16">
+          <B2BCaseStudies businessType="shelter" limit={1} />
+        </div>
+
         {/* Special Shelter Program */}
         <section className="mb-16 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-2xl p-8 md:p-12">
           <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
@@ -452,13 +513,16 @@ export default function SheltersPage() {
             </p>
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-sm">
               {!formSubmitted ? (
-                <form className="grid gap-6 md:grid-cols-2">
+                <form onSubmit={handleFormSubmit} className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       {form.shelterName || (locale === 'fr' ? 'Nom du refuge' : 'Shelter name')} *
                     </label>
                     <input
                       type="text"
+                      name="businessName"
+                      value={formData.businessName}
+                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
@@ -469,6 +533,9 @@ export default function SheltersPage() {
                     </label>
                     <input
                       type="text"
+                      name="contactName"
+                      value={formData.contactName}
+                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
@@ -479,52 +546,61 @@ export default function SheltersPage() {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      {form.phone || (locale === 'fr' ? 'Telephone' : 'Phone')} *
+                      {form.phone || (locale === 'fr' ? 'Téléphone' : 'Phone')}
                     </label>
                     <input
                       type="tel"
-                      required
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      {form.address || (locale === 'fr' ? 'Adresse du refuge' : 'Shelter address')} *
+                      {form.address || (locale === 'fr' ? 'Adresse du refuge' : 'Shelter address')}
                     </label>
                     <textarea
                       rows={2}
-                      required
+                      name="location"
+                      value={formData.location}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      {form.organizationType || (locale === 'fr' ? 'Type d\'organisation' : 'Organization type')} *
+                      {form.organizationType || (locale === 'fr' ? 'Type d\'organisation' : 'Organization type')}
                     </label>
                     <select
-                      required
+                      name="organizationType"
+                      value={formData.organizationType}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     >
                       <option value="">
-                        {locale === 'fr' ? 'Selectionner...' : 'Select...'}
+                        {locale === 'fr' ? 'Sélectionner...' : 'Select...'}
                       </option>
                       <option value="shelter">
-                        {locale === 'fr' ? 'Refuge enregistre' : 'Registered shelter'}
+                        {locale === 'fr' ? 'Refuge enregistré' : 'Registered shelter'}
                       </option>
                       <option value="rescue">
                         {locale === 'fr' ? 'Organisation de sauvetage' : 'Rescue organization'}
                       </option>
                       <option value="humane-society">
-                        {locale === 'fr' ? 'Societe humane' : 'Humane society'}
+                        {locale === 'fr' ? 'Société humane' : 'Humane society'}
                       </option>
                       <option value="foster-network">
-                        {locale === 'fr' ? 'Reseau de familles d\'accueil' : 'Foster network'}
+                        {locale === 'fr' ? 'Réseau de familles d\'accueil' : 'Foster network'}
                       </option>
                       <option value="other">
                         {locale === 'fr' ? 'Autre' : 'Other'}
@@ -533,14 +609,16 @@ export default function SheltersPage() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      {form.catCount || (locale === 'fr' ? 'Nombre de chats (approx.)' : 'Number of cats (approx.)')} *
+                      {form.catCount || (locale === 'fr' ? 'Nombre de chats (approx.)' : 'Number of cats (approx.)')}
                     </label>
                     <select
-                      required
+                      name="catCount"
+                      value={formData.catCount}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     >
                       <option value="">
-                        {locale === 'fr' ? 'Selectionner...' : 'Select...'}
+                        {locale === 'fr' ? 'Sélectionner...' : 'Select...'}
                       </option>
                       <option value="1-10">1-10</option>
                       <option value="11-25">11-25</option>
@@ -551,10 +629,13 @@ export default function SheltersPage() {
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      {form.charityNumber || (locale === 'fr' ? 'Numero d\'organisme de bienfaisance (si applicable)' : 'Charity registration number (if applicable)')}
+                      {form.charityNumber || (locale === 'fr' ? 'Numéro d\'organisme de bienfaisance (si applicable)' : 'Charity registration number (if applicable)')}
                     </label>
                     <input
                       type="text"
+                      name="charityNumber"
+                      value={formData.charityNumber}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
                   </div>
@@ -564,20 +645,31 @@ export default function SheltersPage() {
                     </label>
                     <textarea
                       rows={4}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       placeholder={locale === 'fr'
-                        ? 'Partagez votre mission, vos defis actuels avec le controle des odeurs, et comment Purrify pourrait vous aider...'
+                        ? 'Partagez votre mission, vos défis actuels avec le contrôle des odeurs, et comment Purrify pourrait vous aider...'
                         : 'Share your mission, current odor control challenges, and how Purrify might help...'
                       }
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent"
                     />
                   </div>
+                  {errorMessage && (
+                    <div className="md:col-span-2 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-4 rounded-lg text-sm">
+                      {errorMessage}
+                    </div>
+                  )}
                   <div className="md:col-span-2">
                     <button
-                      type="button"
-                      onClick={handleFormSubmit}
-                      className="w-full bg-pink-600 dark:bg-pink-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-pink-700 dark:hover:bg-pink-500 transition-colors"
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-pink-600 dark:bg-pink-600 text-white dark:text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-pink-700 dark:hover:bg-pink-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {form.submit || (locale === 'fr' ? 'Soumettre la Demande' : 'Submit Application')}
+                      {isSubmitting
+                        ? (locale === 'fr' ? 'Envoi en cours...' : 'Submitting...')
+                        : (form.submit || (locale === 'fr' ? 'Soumettre la Demande' : 'Submit Application'))
+                      }
                     </button>
                   </div>
                 </form>

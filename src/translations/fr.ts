@@ -276,7 +276,10 @@ export const fr = {
     buyNow: "Acheter Maintenant",
     subscribeNow: "S'abonner & Économiser",
     adding: "Ajout en cours...",
-    viewAllProducts: "VOIR TOUS LES PRODUITS"
+    viewAllProducts: "VOIR TOUS LES PRODUITS",
+    quantity: "Quantité",
+    decreaseQuantity: "Diminuer la quantité",
+    increaseQuantity: "Augmenter la quantité"
   },
 
   // Stores Section
@@ -1798,6 +1801,274 @@ export const fr = {
       secondaryButton: "Essayer le Format Découverte",
       benefit1: "Livraison gratuite dès 35$",
       benefit2: "Garantie satisfaction 30 jours"
+    }
+  },
+
+  // B2B Vertical Pages
+  veterinarians: {
+    seo: {
+      pageTitle: "Partenaires Cliniques Vétérinaires",
+      description: "Associez-vous à Purrify pour recommander une solution d'odeur naturelle et axée sur la santé à vos clients. Prix de gros, échantillons et formation inclus.",
+      keywords: "produits clinique vétérinaire, additif litière pour vétérinaires, produits santé animale gros, produits chat recommandés vétérinaire",
+      openGraphAlt: "Partenaires Vétérinaires"
+    },
+    hero: {
+      badge: "Programme de Partenariat Vétérinaire",
+      titleLine1: "Recommandez avec",
+      titleLine2: "Confiance",
+      description: "Offrez à vos clients une solution d'odeur axée sur la santé qui est",
+      highlight: "100% naturelle et sans parfum",
+      stats: {
+        natural: "Naturel",
+        chemicals: "Chimiques",
+        days: "Jours de Protection"
+      },
+      cta: {
+        primary: "Demander un Kit d'Échantillons",
+        secondary: "Voir les Options de Partenariat"
+      },
+      trustedBy: "Approuvé par les professionnels vétérinaires:",
+      badges: {
+        fragrance: "Sans Parfum",
+        natural: "Non Toxique",
+        sensitive: "Approuvé Chats Sensibles"
+      },
+      valueProps: {
+        health: {
+          title: "Formule Santé Prioritaire",
+          subtitle: "Sans parfum ni irritants",
+          description: "Charbon de noix de coco activé sans produits chimiques - idéal pour les chats souffrant de sensibilités respiratoires ou d'allergies."
+        },
+        ammonia: {
+          title: "Réduit l'Exposition à l'Ammoniac",
+          subtitle: "Meilleure qualité de l'air",
+          description: "Le charbon actif piège les molécules d'ammoniac à la source, réduisant l'irritation respiratoire pour les chats et leurs propriétaires."
+        },
+        revenue: {
+          title: "Source de Revenus Supplémentaire",
+          subtitle: "Marges élevées, achats répétés",
+          description: "Les clients font confiance à vos recommandations. Offrez une solution à la plainte #1 concernant la possession d'un chat."
+        }
+      }
+    }
+  },
+
+  catCafes: {
+    seo: {
+      pageTitle: "Solutions Odeurs Café à Chats",
+      description: "Gardez votre café à chats frais toute la journée. Le charbon actif Purrify élimine les odeurs de litière sans parfum.",
+      keywords: "contrôle odeur café à chats, fournitures café à chats, litière commerciale, fraîcheur café à chats",
+      openGraphAlt: "Partenaires Café à Chats"
+    },
+    hero: {
+      badge: "Partenariat Café à Chats",
+      titleLine1: "Gardez Votre Café à Chats",
+      titleLine2: "Frais Toute la Journée",
+      description: "Les emplacements à haute visibilité nécessitent une fraîcheur constante. Faites revenir les clients avec l'élimination des odeurs sans parfum de Purrify.",
+      stats: {
+        days: "Jours Frais",
+        fragrances: "Parfums",
+        natural: "Naturel"
+      },
+      cta: {
+        primary: "Demander Kit Échantillon Café",
+        secondary: "Voir Tarifs de Gros"
+      }
+    }
+  },
+
+  shelters: {
+    seo: {
+      pageTitle: "Solutions Refuges Animaliers",
+      description: "Gérez efficacement les odeurs de refuge. Purrify aide à créer un environnement accueillant pour les adoptants potentiels.",
+      keywords: "contrôle odeur refuge, fournitures refuge animalier, litière gros quantité, gestion odeurs refuge",
+      openGraphAlt: "Partenaires Refuges"
+    },
+    hero: {
+      badge: "Programme Partenariat Refuges",
+      titleLine1: "Créez un Environnement",
+      titleLine2: "Accueillant pour l'Adoption",
+      description: "Les premières impressions comptent pour les adoptants potentiels. Gardez votre refuge frais sans parfums agressifs.",
+      stats: {
+        cats: "Chats Aidés",
+        shelters: "Refuges Partenaires",
+        natural: "Naturel"
+      },
+      cta: {
+        primary: "Demander un Échantillon Refuge",
+        secondary: "Voir le Programme de Don"
+      }
+    }
+  },
+
+  groomers: {
+    seo: {
+      pageTitle: "Solutions Toiletteurs pour Chats",
+      description: "Maintenez un salon de toilettage frais. Purrify élimine les odeurs de litière pour une meilleure expérience client.",
+      keywords: "odeur salon toilettage, fournitures toilettage chat, fraîcheur salon, contrôle odeur toilettage",
+      openGraphAlt: "Partenaires Toiletteurs"
+    },
+    hero: {
+      badge: "Programme Partenariat Toiletteurs",
+      titleLine1: "Un Salon Frais",
+      titleLine2: "Des Clients Satisfaits",
+      description: "Offrez une expérience de toilettage premium avec un environnement frais et sans parfum.",
+      stats: {
+        freshness: "Fraîcheur",
+        clients: "Clients Satisfaits",
+        natural: "Naturel"
+      },
+      cta: {
+        primary: "Demander un Échantillon",
+        secondary: "Voir les Tarifs Pro"
+      }
+    },
+    cta: {
+      primary: "Commencer à Vendre Purrify",
+      secondary: "Demander des Informations"
+    },
+    opportunity: {
+      title: "L'Opportunité pour les Toiletteurs",
+      intro: "Chaque rendez-vous de toilettage est une opportunité de résoudre la plainte #1 de vos clients.",
+      points: {
+        clientsAsk: {
+          title: "Les Clients Demandent Déjà",
+          description: "Les propriétaires de chats mentionnent fréquemment les odeurs de litière lors des rendez-vous."
+        },
+        expertPosition: {
+          title: "Positionnez-vous en Expert",
+          description: "Quand vous recommandez Purrify, vous devenez le conseiller de confiance pour les soins félins."
+        },
+        repeatRevenue: {
+          title: "Revenus Récurrents",
+          description: "Purrify est un produit consommable. Les clients reviennent mensuellement."
+        },
+        easyDemo: {
+          title: "Résultats Démontrables",
+          description: "Montrez la différence dans votre salon. Une démo crée un client à vie."
+        }
+      }
+    },
+    addOnSale: {
+      title: "Vente Additionnelle Facile",
+      description: "Purrify se vend tout seul pendant les rendez-vous",
+      points: [
+        "Explication rapide de 30 secondes pendant le toilettage",
+        "Conversation naturelle sur les soins félins",
+        "Les clients font déjà confiance à vos recommandations",
+        "Pas de pression - le produit parle de lui-même"
+      ]
+    },
+    partnerBenefits: {
+      title: "Avantages Partenariat",
+      benefits: {
+        wholesale: {
+          title: "Tarifs de Gros",
+          description: "Marges premium sur chaque vente. Remises volume disponibles."
+        },
+        display: {
+          title: "Matériel d'Affichage",
+          description: "Présentoirs comptoir gratuits et matériel promotionnel."
+        },
+        training: {
+          title: "Formation Produit",
+          description: "Formation rapide sur les avantages du produit."
+        },
+        tracking: {
+          title: "Suivi des Ventes",
+          description: "Suivez vos ventes avec notre portail partenaire."
+        }
+      }
+    },
+    retailPackage: {
+      title: "Votre Pack Toiletteur",
+      subtitle: "Tout ce dont vous avez besoin pour commencer",
+      includes: [
+        "Présentoir comptoir",
+        "Échantillons pour démos",
+        "Matériel promotionnel",
+        "Guide de formation",
+        "Support marketing"
+      ]
+    },
+    testimonials: {
+      title: "Ce que Disent les Toiletteurs",
+      items: [
+        {
+          quote: "Mes clients adorent que j'aie une solution pour leurs problèmes d'odeur de litière.",
+          author: "Salon de Toilettage Chat",
+          location: "Montréal, QC",
+          result: "15+ unités/mois"
+        }
+      ]
+    },
+    form: {
+      title: "Demande de Partenariat",
+      businessName: "Nom de l'Entreprise",
+      contactName: "Nom du Contact",
+      email: "Courriel",
+      phone: "Téléphone",
+      location: "Emplacement",
+      monthlyClients: "Clients Chats Mensuels",
+      interest: "Parlez-nous de votre intérêt",
+      submit: "Envoyer la Demande",
+      success: {
+        title: "Demande Reçue!",
+        message: "Merci! Notre équipe vous contactera dans les 24-48 heures."
+      }
+    },
+    contact: {
+      title: "Questions? Parlons-en!",
+      description: "Notre équipe partenariat est là pour vous aider.",
+      callUs: "Appelez-nous",
+      emailUs: "Écrivez-nous",
+      moreInfo: "Besoin de Plus d'Informations?",
+      requestGuide: "Demandez notre guide détaillé"
+    }
+  },
+
+  hospitality: {
+    seo: {
+      pageTitle: "Solutions Hébergement Pet-Friendly",
+      description: "Gardez vos hébergements Airbnb et locations pet-friendly sans odeur. Solution discrète pour les propriétaires acceptant les animaux.",
+      keywords: "airbnb pet friendly, hébergement chat, location vacances animaux, contrôle odeur location",
+      openGraphAlt: "Partenaires Hébergement"
+    },
+    hero: {
+      badge: "Programme Partenariat Hébergement",
+      titleLine1: "Hébergements Pet-Friendly",
+      titleLine2: "Zéro Odeur",
+      description: "Acceptez les animaux sans compromettre la fraîcheur. Solution discrète entre les réservations.",
+      stats: {
+        reviews: "Avis 5 Étoiles",
+        bookings: "Réservations",
+        natural: "Naturel"
+      },
+      cta: {
+        primary: "Demander un Échantillon",
+        secondary: "Voir les Solutions Hôtes"
+      }
+    }
+  },
+
+  // B2B Case Studies Section
+  b2bCaseStudies: {
+    badge: "Résultats Concrets",
+    title: "Témoignages de Nos Partenaires",
+    subtitle: "Découvrez comment des entreprises comme la vôtre ont obtenu des résultats mesurables avec Purrify",
+    cta: "Prêt à voir des résultats similaires pour votre entreprise?",
+    ctaButton: "Contactez Notre Équipe Partenariat",
+    businessTypes: {
+      veterinarian: "Clinique Vétérinaire",
+      catCafe: "Café à Chats",
+      shelter: "Refuge Animalier",
+      groomer: "Salon de Toilettage",
+      hospitality: "Location Pet-Friendly"
+    },
+    labels: {
+      challenge: "Défi",
+      solution: "Solution",
+      catsServed: "chats servis"
     }
   }
 };

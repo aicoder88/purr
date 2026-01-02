@@ -6,6 +6,7 @@ import { Button } from '../src/components/ui/button';
 import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { scrollToSection } from '../src/lib/utils';
 import Link from 'next/link';
+import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
 
 export default function CatCafesPage() {
   const { t, locale } = useTranslation();
@@ -308,6 +309,9 @@ export default function CatCafesPage() {
             </div>
           </Container>
         </section>
+
+        {/* Case Studies */}
+        <B2BCaseStudies businessType="catCafe" limit={1} />
 
         {/* Partnership Benefits Section */}
         <section className="py-16 bg-gradient-to-br from-[#5B2EFF]/5 via-white to-[#3694FF]/5 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">

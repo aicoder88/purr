@@ -252,7 +252,10 @@ export const en = {
     buyNow: "Buy Now",
     subscribeNow: "Subscribe & Save",
     adding: "Adding...",
-    viewAllProducts: "VIEW ALL PRODUCTS"
+    viewAllProducts: "VIEW ALL PRODUCTS",
+    quantity: "Quantity",
+    decreaseQuantity: "Decrease quantity",
+    increaseQuantity: "Increase quantity"
   },
 
   // Stores Section
@@ -1968,6 +1971,27 @@ export const en = {
       natural: "100% Natural",
       fragrance: "Fragrance-Free",
       secure: "Secure Checkout"
+    }
+  },
+
+  // B2B Partner Benefits Section
+  b2bCaseStudies: {
+    badge: "Wholesale Program",
+    title: "Partner Benefits by Business Type",
+    subtitle: "See how Purrify helps businesses like yours",
+    cta: "Interested in wholesale pricing for your business?",
+    ctaButton: "Contact Our Partnership Team",
+    businessTypes: {
+      veterinarian: "Veterinary Clinics",
+      catCafe: "Cat Cafes",
+      shelter: "Animal Shelters",
+      groomer: "Grooming Salons",
+      hospitality: "Pet-Friendly Rentals"
+    },
+    labels: {
+      challenge: "The Challenge",
+      solution: "How Purrify Helps",
+      catsServed: "cats served"
     }
   }
 };

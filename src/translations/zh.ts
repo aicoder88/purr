@@ -281,7 +281,10 @@ export const zh = {
     buyNow: "立即购买",
     subscribeNow: "订阅享优惠",
     adding: "添加中...",
-    viewAllProducts: "查看所有产品"
+    viewAllProducts: "查看所有产品",
+    quantity: "数量",
+    decreaseQuantity: "减少数量",
+    increaseQuantity: "增加数量"
   },
 
   // Stores Section
@@ -1776,6 +1779,274 @@ export const zh = {
       secondaryButton: "免费试用",
       benefit1: "满35元免运费",
       benefit2: "30天满意保证"
+    }
+  },
+
+  // B2B垂直页面
+  veterinarians: {
+    seo: {
+      pageTitle: "宠物医院合作伙伴",
+      description: "与Purrify合作，向客户推荐天然健康的除臭解决方案。批发价格、样品套装和培训包含在内。",
+      keywords: "宠物医院产品, 猫砂添加剂兽医, 宠物健康产品批发, 兽医推荐猫用品",
+      openGraphAlt: "宠物医院合作伙伴"
+    },
+    hero: {
+      badge: "宠物医院合作计划",
+      titleLine1: "自信地",
+      titleLine2: "推荐",
+      description: "为您的客户提供以健康为导向的除臭解决方案，",
+      highlight: "100%天然无香精",
+      stats: {
+        natural: "天然",
+        chemicals: "无化学物质",
+        days: "天保护"
+      },
+      cta: {
+        primary: "申请样品套装",
+        secondary: "查看合作选项"
+      },
+      trustedBy: "获得兽医专业人士的信赖：",
+      badges: {
+        fragrance: "无香精",
+        natural: "无毒",
+        sensitive: "敏感猫咪适用"
+      },
+      valueProps: {
+        health: {
+          title: "健康优先配方",
+          subtitle: "无香精无刺激物",
+          description: "椰壳活性炭，零化学添加剂 - 非常适合有呼吸敏感或过敏的猫咪。"
+        },
+        ammonia: {
+          title: "减少氨气暴露",
+          subtitle: "更好的空气质量",
+          description: "活性炭从源头捕获氨气分子，减少对猫咪及其主人的呼吸道刺激。"
+        },
+        revenue: {
+          title: "额外收入来源",
+          subtitle: "高利润，重复购买",
+          description: "客户信任您的推荐。为养猫最大的困扰提供解决方案，建立忠诚度。"
+        }
+      }
+    }
+  },
+
+  catCafes: {
+    seo: {
+      pageTitle: "猫咖除臭解决方案",
+      description: "让您的猫咖全天保持清新。Purrify活性炭无香精消除猫砂异味。",
+      keywords: "猫咖除臭, 猫咖用品, 商用猫砂, 猫咖清新",
+      openGraphAlt: "猫咖合作伙伴"
+    },
+    hero: {
+      badge: "猫咖合作计划",
+      titleLine1: "让您的猫咖",
+      titleLine2: "全天清新",
+      description: "高流量场所需要持续的清新感。使用Purrify的无香精除臭让顾客不断回头。",
+      stats: {
+        days: "天清新",
+        fragrances: "香精",
+        natural: "天然"
+      },
+      cta: {
+        primary: "申请猫咖样品套装",
+        secondary: "查看批发价格"
+      }
+    }
+  },
+
+  shelters: {
+    seo: {
+      pageTitle: "动物收容所解决方案",
+      description: "有效管理收容所异味。Purrify帮助为潜在领养者创造温馨的环境。",
+      keywords: "收容所除臭, 动物收容所用品, 猫砂批发, 收容所异味管理",
+      openGraphAlt: "收容所合作伙伴"
+    },
+    hero: {
+      badge: "收容所合作计划",
+      titleLine1: "创造",
+      titleLine2: "温馨的领养环境",
+      description: "第一印象对潜在领养者很重要。保持收容所清新，不使用刺激性香精。",
+      stats: {
+        cats: "帮助的猫咪",
+        shelters: "合作收容所",
+        natural: "天然"
+      },
+      cta: {
+        primary: "申请收容所样品",
+        secondary: "查看捐赠计划"
+      }
+    }
+  },
+
+  groomers: {
+    seo: {
+      pageTitle: "猫咪美容师解决方案",
+      description: "保持美容沙龙的清新。Purrify消除猫砂异味，提供更好的客户体验。",
+      keywords: "美容沙龙除臭, 猫咪美容用品, 沙龙清新, 美容除臭",
+      openGraphAlt: "美容师合作伙伴"
+    },
+    hero: {
+      badge: "美容师合作计划",
+      titleLine1: "清新的沙龙",
+      titleLine2: "满意的客户",
+      description: "提供清新无香精环境的优质美容体验。",
+      stats: {
+        freshness: "清新度",
+        clients: "满意客户",
+        natural: "天然"
+      },
+      cta: {
+        primary: "申请样品",
+        secondary: "查看专业价格"
+      }
+    },
+    cta: {
+      primary: "开始销售Purrify",
+      secondary: "咨询信息"
+    },
+    opportunity: {
+      title: "美容师的机会",
+      intro: "每次猫咪美容预约都是解决客户#1投诉的机会。",
+      points: {
+        clientsAsk: {
+          title: "客户已经在问",
+          description: "猫主人在预约时经常提到猫砂异味问题。"
+        },
+        expertPosition: {
+          title: "成为专家",
+          description: "当您推荐Purrify时，您成为猫咪护理的可信顾问。"
+        },
+        repeatRevenue: {
+          title: "重复购买潜力",
+          description: "Purrify是消耗品。客户每月回购。"
+        },
+        easyDemo: {
+          title: "可展示的效果",
+          description: "在您的沙龙展示效果。一次演示创造终身客户。"
+        }
+      }
+    },
+    addOnSale: {
+      title: "轻松附加销售",
+      description: "Purrify在预约期间自然销售",
+      points: [
+        "美容时30秒快速解释",
+        "关于猫咪护理的自然对话",
+        "客户已经信任您的建议",
+        "无压力销售 - 产品说明一切"
+      ]
+    },
+    partnerBenefits: {
+      title: "合作福利",
+      benefits: {
+        wholesale: {
+          title: "批发价格",
+          description: "每笔销售的优质利润。提供批量折扣。"
+        },
+        display: {
+          title: "展示材料",
+          description: "免费柜台展示和促销材料。"
+        },
+        training: {
+          title: "产品培训",
+          description: "产品优势的快速培训。"
+        },
+        tracking: {
+          title: "销售跟踪",
+          description: "通过合作伙伴门户跟踪您的销售。"
+        }
+      }
+    },
+    retailPackage: {
+      title: "您的美容师零售包",
+      subtitle: "开始销售所需的一切",
+      includes: [
+        "柜台展示架",
+        "演示样品",
+        "促销材料",
+        "培训指南",
+        "营销支持"
+      ]
+    },
+    testimonials: {
+      title: "美容师怎么说",
+      items: [
+        {
+          quote: "我的客户很高兴我有解决他们猫砂异味问题的方案。",
+          author: "猫咪美容沙龙",
+          location: "多伦多, ON",
+          result: "每月15+单位"
+        }
+      ]
+    },
+    form: {
+      title: "合作咨询",
+      businessName: "企业名称",
+      contactName: "联系人姓名",
+      email: "电子邮件",
+      phone: "电话",
+      location: "位置",
+      monthlyClients: "每月猫咪客户",
+      interest: "告诉我们您的兴趣",
+      submit: "提交咨询",
+      success: {
+        title: "咨询已收到！",
+        message: "谢谢！我们的团队将在24-48小时内与您联系。"
+      }
+    },
+    contact: {
+      title: "有问题？让我们谈谈！",
+      description: "我们的合作团队随时为您提供帮助。",
+      callUs: "致电我们",
+      emailUs: "给我们发邮件",
+      moreInfo: "需要更多信息？",
+      requestGuide: "索取我们的详细指南"
+    }
+  },
+
+  hospitality: {
+    seo: {
+      pageTitle: "宠物友好住宿解决方案",
+      description: "让您的Airbnb和宠物友好住宿无异味。接受宠物的房东的低调解决方案。",
+      keywords: "宠物友好airbnb, 猫咪住宿, 度假租赁宠物, 租赁除臭",
+      openGraphAlt: "住宿合作伙伴"
+    },
+    hero: {
+      badge: "住宿合作计划",
+      titleLine1: "宠物友好住宿",
+      titleLine2: "零异味",
+      description: "接受宠物而不牺牲清新度。预订之间的低调解决方案。",
+      stats: {
+        reviews: "五星评价",
+        bookings: "预订量",
+        natural: "天然"
+      },
+      cta: {
+        primary: "申请样品",
+        secondary: "查看房东解决方案"
+      }
+    }
+  },
+
+  // B2B Case Studies Section
+  b2bCaseStudies: {
+    badge: "真实成果",
+    title: "合作伙伴成功案例",
+    subtitle: "了解像您这样的企业如何通过Purrify实现可衡量的成果",
+    cta: "准备好为您的企业获得类似的成果了吗？",
+    ctaButton: "联系我们的合作团队",
+    businessTypes: {
+      veterinarian: "宠物诊所",
+      catCafe: "猫咖",
+      shelter: "动物救助站",
+      groomer: "宠物美容",
+      hospitality: "宠物友好住宿"
+    },
+    labels: {
+      challenge: "挑战",
+      solution: "解决方案",
+      catsServed: "只猫服务"
     }
   }
 };
