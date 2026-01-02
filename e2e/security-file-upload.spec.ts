@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { tryLogin } from './test-utils';
 
 test.describe('Security: File Upload Security (Task 10.5)', () => {

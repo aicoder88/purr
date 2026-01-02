@@ -38,6 +38,14 @@ export interface DateRange {
   end: string;
 }
 
+interface ViewMetadata {
+  userAgent: string;
+  referrer: string;
+  country?: string;
+  device: 'mobile' | 'tablet' | 'desktop';
+  timestamp: string;
+}
+
 export class AnalyticsService {
   private analyticsDir = path.join(process.cwd(), 'content', 'analytics');
   private contentStore: ContentStore;
@@ -49,7 +57,7 @@ export class AnalyticsService {
   /**
    * Get analytics for a specific post
    */
-  async getPostAnalytics(slug: string, _dateRange: DateRange): Promise<PostAnalytics | null> {
+  async getPostAnalytics(slug: string, _dateRange?: DateRange): Promise<PostAnalytics | null> {
     try {
       // Try to load from cache first
       const cached = await this.loadCachedAnalytics(slug);
@@ -93,7 +101,7 @@ export class AnalyticsService {
   /**
    * Get dashboard metrics
    */
-  async getDashboardMetrics(_dateRange: DateRange): Promise<DashboardMetrics> {
+  async getDashboardMetrics(_dateRange?: DateRange): Promise<DashboardMetrics> {
     try {
       const posts = await this.contentStore.getAllPosts('en', false);
 
@@ -102,7 +110,7 @@ export class AnalyticsService {
       const totalPosts = posts.length;
 
       // Calculate average SEO score
-      const avgSEOScore = posts.reduce((sum, _post) => {
+      const avgSEOScore = posts.reduce((sum) => {
         // Mock SEO score calculation
         return sum + (Math.random() * 30 + 70);
       }, 0) / posts.length;
@@ -186,7 +194,7 @@ export class AnalyticsService {
       const viewsPath = path.join(this.analyticsDir, 'views', `${slug}.json`);
       await fs.mkdir(path.dirname(viewsPath), { recursive: true });
 
-      let views: any[] = [];
+      let views: ViewMetadata[] = [];
       try {
         const content = await fs.readFile(viewsPath, 'utf-8');
         views = JSON.parse(content);
@@ -224,9 +232,9 @@ export class AnalyticsService {
         const logs = content.split('\n')
           .filter(line => line.trim())
           .map(line => JSON.parse(line))
-          .filter(log => log.resourceType === 'post')
+          .filter((log: { resourceType: string }) => log.resourceType === 'post')
           .slice(-10)
-          .map(log => ({
+          .map((log: { action: string; timestamp: string; userEmail: string; details?: { title?: string }; resourceId: string }) => ({
             action: log.action,
             timestamp: log.timestamp,
             user: log.userEmail,

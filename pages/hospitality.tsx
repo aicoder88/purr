@@ -8,13 +8,13 @@ import {
   DollarSign,
   Clock,
   CheckCircle,
-  Shield,
+  
   Package,
   Phone,
   Mail,
   Users,
   Sparkles,
-  Calendar,
+  
   TrendingUp
 } from 'lucide-react';
 import { useCallback, useState } from 'react';

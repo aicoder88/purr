@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-import { SITE_NAME } from '../../src/lib/constants';
+// Unused: import { SITE_NAME } from '../../src/lib/constants';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import Link from 'next/link';

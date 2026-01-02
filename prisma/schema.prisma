@@ -24,6 +24,9 @@ model User {
   orders        Order[]
   referrals     Referral[] @relation("Referrer")
   referredBy    Referral[] @relation("Referee")
+  // Referral program relations
+  referralCode  ReferralCode?
+  referralRewards ReferralReward[]
 
   @@index([email])
   @@index([createdAt])
@@ -232,6 +235,9 @@ model Order {
   utmContent        String? // Ad variant
   utmLandingPage    String? // First page visited
   utmCapturedAt     DateTime? // When UTM was captured
+  // Referral discount tracking
+  referralCodeUsed  String? // Referral code applied at checkout
+  referralDiscount  Float?  // Discount amount from referral ($5)
 
   @@index([status])
   @@index([createdAt])
@@ -239,6 +245,7 @@ model Order {
   @@index([reviewRequestSent, status]) // For finding orders needing review requests
   @@index([utmSource, utmCampaign]) // For UTM attribution queries
   @@index([subscriptionId])
+  @@index([referralCodeUsed])
 }
 
 enum OrderStatus {
@@ -284,6 +291,7 @@ model OrderItem {
   @@index([productId])
 }
 
+// Legacy Referral model (keep for backward compatibility)
 model Referral {
   id         String         @id @default(cuid())
   code       String         @unique
@@ -310,6 +318,99 @@ enum ReferralStatus {
   EXPIRED
   DISABLED
   USED
+}
+
+// ===== Sprint 6C: Referral Program Models =====
+
+// ReferralCode - Unique shareable code per customer for "Give $5, Get $5" program
+model ReferralCode {
+  id            String   @id @default(cuid())
+  code          String   @unique // e.g., "SARAH15-PURR"
+  userId        String   @unique // One code per user
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime? // Optional expiration
+  // Stats (denormalized for performance)
+  totalClicks   Int      @default(0)
+  totalSignups  Int      @default(0)
+  totalOrders   Int      @default(0)
+  totalEarnings Float    @default(0) // Total $5 credits earned
+  // Redemptions
+  redemptions   ReferralRedemption[]
+
+  @@index([code])
+  @@index([isActive])
+  @@map("referral_codes")
+}
+
+// ReferralRedemption - Track when a referral code is used
+model ReferralRedemption {
+  id              String                   @id @default(cuid())
+  referralCode    ReferralCode             @relation(fields: [referralCodeId], references: [id], onDelete: Cascade)
+  referralCodeId  String
+  // Referee (person who used the code)
+  refereeEmail    String // Email of person who used the code
+  refereeOrderId  String? // Order where code was applied
+  // Status tracking
+  status          ReferralRedemptionStatus @default(PENDING)
+  // Rewards
+  refereeDiscount Float                    @default(5.00) // $5 discount for referee
+  referrerCredit  Float                    @default(5.00) // $5 credit for referrer
+  // Timestamps
+  clickedAt       DateTime? // When referral link was clicked
+  signedUpAt      DateTime? // When referee signed up
+  purchasedAt     DateTime? // When referee completed purchase
+  rewardIssuedAt  DateTime? // When reward was issued to referrer
+  createdAt       DateTime                 @default(now())
+  updatedAt       DateTime                 @updatedAt
+
+  @@index([referralCodeId])
+  @@index([refereeEmail])
+  @@index([status])
+  @@index([createdAt])
+  @@map("referral_redemptions")
+}
+
+enum ReferralRedemptionStatus {
+  PENDING // Link clicked, awaiting purchase
+  COMPLETED // Purchase completed, rewards issued
+  EXPIRED // Referral expired (no purchase within time limit)
+  CANCELLED // Referral cancelled (order refunded, etc.)
+}
+
+// ReferralReward - Track rewards/credits for referrers
+model ReferralReward {
+  id          String             @id @default(cuid())
+  userId      String
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Float              @default(5.00) // $5 credit
+  type        ReferralRewardType @default(REFERRAL_CREDIT)
+  description String? // e.g., "Referral from john@example.com"
+  status      ReferralRewardStatus @default(AVAILABLE)
+  // Usage tracking
+  usedOnOrderId String? // Order where reward was applied
+  usedAt        DateTime?
+  expiresAt     DateTime? // Optional expiration
+  createdAt     DateTime @default(now())
+
+  @@index([userId])
+  @@index([status])
+  @@index([expiresAt])
+  @@map("referral_rewards")
+}
+
+enum ReferralRewardType {
+  REFERRAL_CREDIT // $5 credit from successful referral
+  MILESTONE_BONUS // Bonus for reaching milestones (5, 10, 25 referrals)
+  PROMOTIONAL // Promotional credit
+}
+
+enum ReferralRewardStatus {
+  AVAILABLE // Can be used
+  USED // Already applied to an order
+  EXPIRED // Expired without being used
+  CANCELLED // Cancelled (fraud, etc.)
 }
 
 model AuditLog {
@@ -342,6 +443,8 @@ enum AuditAction {
   CUSTOMER_DATA_UPDATED
   REFERRAL_CREATED
   REFERRAL_USED
+  REFERRAL_CODE_GENERATED
+  REFERRAL_REWARD_ISSUED
   LOGIN_SUCCESS
   LOGIN_FAILED
   PASSWORD_RESET

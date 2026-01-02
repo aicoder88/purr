@@ -1,6 +1,14 @@
 import fs from 'fs/promises';
 import path from 'node:path';
 
+export interface AuditLogDetails {
+  title?: string;
+  slug?: string;
+  previousStatus?: string;
+  newStatus?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
 export interface AuditLog {
   timestamp: string;
   userId: string;
@@ -8,7 +16,7 @@ export interface AuditLog {
   action: 'create' | 'update' | 'delete' | 'publish' | 'unpublish' | 'bulk_delete' | 'bulk_status_change' | 'bulk_assign_categories' | 'bulk_assign_tags';
   resourceType: 'post' | 'category' | 'tag' | 'media';
   resourceId: string;
-  details?: Record<string, any>;
+  details?: AuditLogDetails;
 }
 
 export class AuditLogger {
@@ -79,7 +87,7 @@ export class AuditLogger {
 
     try {
       const files = await fs.readdir(this.logDir);
-      
+
       for (const file of files) {
         if (file.endsWith('.json')) {
           const content = await fs.readFile(path.join(this.logDir, file), 'utf-8');
@@ -95,7 +103,7 @@ export class AuditLogger {
       console.error('Failed to read audit logs:', error);
     }
 
-    return allLogs.sort((a, b) => 
+    return allLogs.sort((a, b) =>
       new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
   }

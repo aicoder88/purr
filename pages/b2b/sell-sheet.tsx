@@ -2,13 +2,13 @@ import { NextSeo } from 'next-seo';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { Container } from '../../src/components/ui/container';
+// Unused: import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import Image from 'next/image';
-import { Download, Printer, Check } from 'lucide-react';
+import { Printer, Check } from 'lucide-react';
 
 export default function SellSheetPage() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const pageTitle = `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`;
   const pageDescription = 'Download our B2B sell sheet with wholesale pricing, product specifications, and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.';
   const canonicalUrl = getLocalizedUrl('/b2b/sell-sheet', locale);

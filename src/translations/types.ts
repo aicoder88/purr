@@ -1506,6 +1506,77 @@ export interface TranslationType {
       catsServed: string;
     };
   };
+
+  // Referral Program - Sprint 6C
+  referral?: {
+    dashboard: {
+      title: string;
+      loginRequired: string;
+      signIn: string;
+      retry: string;
+      generateDescription: string;
+      generateButton: string;
+      generating: string;
+    };
+    stats: {
+      completedReferrals: string;
+      totalEarned: string;
+      availableCredit: string;
+      pending: string;
+    };
+    milestone: {
+      title: string;
+      referrals: string;
+      nextReward: string;
+    };
+    rewards: {
+      title: string;
+      credit: string;
+      available: string;
+    };
+    activity: {
+      title: string;
+      completed: string;
+      pending: string;
+    };
+    widget: {
+      title: string;
+      giveGet: string;
+      description: string;
+      shareDescription: string;
+      yourCode: string;
+      shareLink: string;
+      copy: string;
+      copyCode: string;
+      copyLink: string;
+      copied: string;
+      shareVia: string;
+      howItWorks: string;
+      step1: string;
+      step2: string;
+      step3: string;
+    };
+    share: {
+      email: string;
+      sms: string;
+      link: string;
+    };
+    checkout: {
+      haveCode: string;
+      enterReferralCode: string;
+      enterCode: string;
+      emailRequired: string;
+      invalidCode: string;
+      error: string;
+      apply: string;
+      applying: string;
+      applied: string;
+      referredBy: string;
+      off: string;
+      remove: string;
+      discountNote: string;
+    };
+  };
 }
 
 // Common B2B page structure - permissive to allow fallback strings

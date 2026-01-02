@@ -25,10 +25,22 @@ export interface TechnicalSEOReport {
   }>;
 }
 
+interface BrokenLinkReportData {
+  timestamp: string;
+  summary: {
+    totalLinks: number;
+    brokenLinks: number;
+    redirects: number;
+    validLinks: number;
+    healthScore: number;
+  };
+  brokenLinks: Array<BrokenLink & { severity: string }>;
+}
+
 export class ReportGenerator {
   generateBrokenLinkReport(result: LinkCheckResult, outputDir: string = 'reports'): void {
     const timestamp = new Date().toISOString();
-    const report = {
+    const report: BrokenLinkReportData = {
       timestamp,
       summary: {
         totalLinks: result.totalLinks,
@@ -56,13 +68,13 @@ export class ReportGenerator {
     const htmlPath = path.join(outputDir, `broken-links-${Date.now()}.html`);
     fs.writeFileSync(htmlPath, this.generateBrokenLinkHTML(report));
 
-    console.log(`\n✅ Reports generated:`);
+    console.log(`\nReports generated:`);
     console.log(`   JSON: ${jsonPath}`);
     console.log(`   HTML: ${htmlPath}`);
   }
 
-  private generateBrokenLinkHTML(report: any): string {
-    const brokenByStatus = report.brokenLinks.reduce((acc: any, link: BrokenLink) => {
+  private generateBrokenLinkHTML(report: BrokenLinkReportData): string {
+    const brokenByStatus = report.brokenLinks.reduce<Record<string, BrokenLink[]>>((acc, link) => {
       const status = link.statusCode.toString();
       if (!acc[status]) acc[status] = [];
       acc[status].push(link);
@@ -70,7 +82,7 @@ export class ReportGenerator {
     }, {});
 
     const statusSections = Object.entries(brokenByStatus)
-      .map(([status, links]: [string, any]) => `
+      .map(([status, links]) => `
         <div class="status-group">
           <h3>Status ${status} (${links.length} links)</h3>
           <table>
@@ -83,7 +95,7 @@ export class ReportGenerator {
               </tr>
             </thead>
             <tbody>
-              ${links.map((link: BrokenLink) => `
+              ${links.map((link) => `
                 <tr>
                   <td><a href="${link.sourceUrl}" target="_blank">${link.sourceUrl}</a></td>
                   <td><code>${link.targetUrl}</code></td>
@@ -132,9 +144,9 @@ export class ReportGenerator {
 </head>
 <body>
   <div class="container">
-    <h1>🔗 Broken Links Report</h1>
+    <h1>Broken Links Report</h1>
     <div class="timestamp">Generated: ${report.timestamp}</div>
-    
+
     <div class="summary">
       <div class="summary-card">
         <h3>Total Links</h3>
@@ -179,7 +191,7 @@ export class ReportGenerator {
     const htmlPath = path.join(outputDir, `seo-health-${Date.now()}.html`);
     fs.writeFileSync(htmlPath, this.generateTechnicalSEOHTML(report));
 
-    console.log(`\n✅ Technical SEO Reports generated:`);
+    console.log(`\nTechnical SEO Reports generated:`);
     console.log(`   JSON: ${jsonPath}`);
     console.log(`   HTML: ${htmlPath}`);
   }
@@ -222,9 +234,9 @@ export class ReportGenerator {
 </head>
 <body>
   <div class="container">
-    <h1>🔍 Technical SEO Health Report</h1>
+    <h1>Technical SEO Health Report</h1>
     <div class="timestamp">Generated: ${report.timestamp}</div>
-    
+
     <div class="summary">
       <div class="summary-card">
         <h3>Total URLs</h3>
@@ -252,7 +264,7 @@ export class ReportGenerator {
       </div>
     </div>
 
-    <h2>🔗 Broken Links</h2>
+    <h2>Broken Links</h2>
     ${report.brokenLinks.length > 0 ? `
       <table>
         <thead>
@@ -275,9 +287,9 @@ export class ReportGenerator {
         </tbody>
       </table>
       ${report.brokenLinks.length > 50 ? `<p><em>Showing first 50 of ${report.brokenLinks.length} broken links</em></p>` : ''}
-    ` : '<div class="empty-state">✅ No broken links found</div>'}
+    ` : '<div class="empty-state">No broken links found</div>'}
 
-    <h2>🔗 Canonical Issues</h2>
+    <h2>Canonical Issues</h2>
     ${report.canonicalIssues.length > 0 ? `
       <table>
         <thead>
@@ -299,9 +311,9 @@ export class ReportGenerator {
           `).join('')}
         </tbody>
       </table>
-    ` : '<div class="empty-state">✅ No canonical issues found</div>'}
+    ` : '<div class="empty-state">No canonical issues found</div>'}
 
-    <h2>↪️ Redirect Chains</h2>
+    <h2>Redirect Chains</h2>
     ${report.redirectChains.length > 0 ? `
       <table>
         <thead>
@@ -323,9 +335,9 @@ export class ReportGenerator {
           `).join('')}
         </tbody>
       </table>
-    ` : '<div class="empty-state">✅ No redirect chains found</div>'}
+    ` : '<div class="empty-state">No redirect chains found</div>'}
 
-    <h2>🗺️ Sitemap Issues</h2>
+    <h2>Sitemap Issues</h2>
     ${report.sitemapIssues.length > 0 ? `
       <table>
         <thead>
@@ -345,7 +357,7 @@ export class ReportGenerator {
           `).join('')}
         </tbody>
       </table>
-    ` : '<div class="empty-state">✅ No sitemap issues found</div>'}
+    ` : '<div class="empty-state">No sitemap issues found</div>'}
   </div>
 </body>
 </html>

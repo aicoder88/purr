@@ -63,11 +63,22 @@ export interface Tag {
 
 // Editor Types
 
+export interface BlockAttributes {
+  level?: number;
+  language?: string;
+  alt?: string;
+  src?: string;
+  width?: number;
+  height?: number;
+  listType?: 'ordered' | 'unordered';
+  [key: string]: string | number | boolean | undefined;
+}
+
 export interface Block {
   id: string;
   type: 'paragraph' | 'heading' | 'image' | 'list' | 'quote' | 'code';
   content: string;
-  attributes?: Record<string, any>;
+  attributes?: BlockAttributes;
 }
 
 // Image Optimization Types

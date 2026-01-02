@@ -1,4 +1,5 @@
 import DOMPurify from 'isomorphic-dompurify';
+import type { BlogPost } from '@/types/blog';
 
 /**
  * Sanitize HTML content to prevent XSS attacks
@@ -40,7 +41,7 @@ export function sanitizeHTML(dirty: string): string {
  */
 export function sanitizeText(dirty: string): string {
   if (!dirty) return '';
-  
+
   return DOMPurify.sanitize(dirty, {
     ALLOWED_TAGS: [],
     ALLOWED_ATTR: [],
@@ -52,7 +53,7 @@ export function sanitizeText(dirty: string): string {
  */
 export function sanitizeURL(url: string): string {
   if (!url) return '';
-  
+
   try {
     const parsed = new URL(url);
     // Only allow http, https, and mailto protocols
@@ -66,31 +67,57 @@ export function sanitizeURL(url: string): string {
   }
 }
 
+interface RawBlogPostInput {
+  title?: string;
+  excerpt?: string;
+  content?: string;
+  author?: {
+    name?: string;
+    avatar?: string;
+  };
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+    ogImage?: string;
+    canonical?: string;
+  };
+  featuredImage?: {
+    url?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  };
+  [key: string]: unknown;
+}
+
 /**
  * Sanitize blog post data before saving
  */
-export function sanitizeBlogPost(post: any): any {
+export function sanitizeBlogPost(post: RawBlogPostInput): Partial<BlogPost> {
   return {
     ...post,
     title: sanitizeText(post.title || ''),
     excerpt: sanitizeText(post.excerpt || ''),
     content: sanitizeHTML(post.content || ''),
     author: {
-      ...post.author,
       name: sanitizeText(post.author?.name || ''),
+      avatar: post.author?.avatar,
     },
     seo: {
-      ...post.seo,
       title: sanitizeText(post.seo?.title || ''),
       description: sanitizeText(post.seo?.description || ''),
-      keywords: Array.isArray(post.seo?.keywords) 
+      keywords: Array.isArray(post.seo?.keywords)
         ? post.seo.keywords.map((k: string) => sanitizeText(k))
         : [],
+      ogImage: post.seo?.ogImage,
+      canonical: post.seo?.canonical,
     },
     featuredImage: post.featuredImage ? {
-      ...post.featuredImage,
       url: sanitizeURL(post.featuredImage.url || ''),
       alt: sanitizeText(post.featuredImage.alt || ''),
+      width: post.featuredImage.width || 0,
+      height: post.featuredImage.height || 0,
     } : undefined,
   };
 }

@@ -70,7 +70,7 @@ export class CanonicalValidator {
               suggestion: `Update canonical to point directly to ${finalUrl}`
             });
           }
-        } catch (error) {
+        } catch {
           // Network error checking canonical
         }
 
@@ -99,7 +99,7 @@ export class CanonicalValidator {
             });
           }
         }
-      } catch (error) {
+      } catch {
         console.error(`Error validating canonical for ${pageUrl}:`, error instanceof Error ? error.message : error);
       }
     }
@@ -144,7 +144,7 @@ export class CanonicalValidator {
       }
 
       return null;
-    } catch (error) {
+    } catch {
       return {
         pageUrl,
         canonicalUrl,
@@ -214,7 +214,7 @@ export class CanonicalValidator {
       });
 
       return urls;
-    } catch (error) {
+    } catch {
       console.error('Error fetching sitemap:', error);
       return [];
     }

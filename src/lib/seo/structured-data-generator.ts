@@ -1,9 +1,149 @@
 /**
  * Structured Data Generator
- * 
+ *
  * Generates Schema.org JSON-LD markup for various content types
  * to enable rich snippets in search results.
  */
+
+// Schema types for structured data
+interface SchemaBase {
+  '@context': string;
+  '@type': string;
+}
+
+interface ProductSchema extends SchemaBase {
+  name: string;
+  description?: string;
+  image: string[];
+  brand?: { '@type': string; name: string };
+  sku?: string;
+  offers: {
+    '@type': string;
+    price: string;
+    priceCurrency: string;
+    availability: string;
+    url: string;
+  };
+  aggregateRating?: {
+    '@type': string;
+    ratingValue: number;
+    reviewCount: number;
+    bestRating: number;
+    worstRating: number;
+  };
+  review?: Array<{
+    '@type': string;
+    author: { '@type': string; name: string };
+    reviewRating: {
+      '@type': string;
+      ratingValue: number;
+      bestRating: number;
+      worstRating: number;
+    };
+    reviewBody: string;
+    datePublished: string;
+  }>;
+}
+
+interface BlogPostingSchema extends SchemaBase {
+  headline: string;
+  description?: string;
+  image: string[];
+  datePublished: string;
+  dateModified: string;
+  author: { '@type': string; name: string; image?: string };
+  publisher: {
+    '@type': string;
+    name: string;
+    logo: { '@type': string; url: string };
+  };
+  mainEntityOfPage: { '@type': string; '@id': string };
+  wordCount?: number;
+  keywords?: string;
+  articleSection?: string;
+}
+
+interface OrganizationSchema extends SchemaBase {
+  name: string;
+  url: string;
+  logo?: string;
+  description?: string;
+  contactPoint?: {
+    '@type': string;
+    contactType: string;
+    email?: string;
+    telephone?: string;
+  };
+  address?: {
+    '@type': string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  sameAs?: string[];
+  foundingDate?: string;
+}
+
+interface WebSiteSchema extends SchemaBase {
+  name: string;
+  url: string;
+  potentialAction?: {
+    '@type': string;
+    target: { '@type': string; urlTemplate: string };
+    'query-input': string;
+  };
+}
+
+interface LocalBusinessSchema extends SchemaBase {
+  name: string;
+  description: string;
+  url: string;
+  telephone: string;
+  email: string;
+  address: {
+    '@type': string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  image?: string;
+  openingHoursSpecification?: Array<{
+    '@type': string;
+    dayOfWeek: string;
+    opens: string;
+    closes: string;
+  }>;
+  priceRange?: string;
+}
+
+interface VideoObjectSchema extends SchemaBase {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  duration?: string;
+  contentUrl?: string;
+  embedUrl?: string;
+}
+
+interface HowToSchema extends SchemaBase {
+  name: string;
+  description: string;
+  image?: string;
+  totalTime?: string;
+  step: Array<{
+    '@type': string;
+    position: number;
+    name: string;
+    text: string;
+    image?: string;
+    url?: string;
+  }>;
+}
 
 export interface ProductData {
   name: string;
@@ -89,7 +229,7 @@ export class StructuredDataGenerator {
    * Generate Product schema
    */
   generateProduct(product: ProductData): string {
-    const schema: any = {
+    const schema: ProductSchema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: product.name,
@@ -152,7 +292,7 @@ export class StructuredDataGenerator {
    * Generate BlogPosting schema
    */
   generateBlogPosting(post: BlogPostData): string {
-    const schema: any = {
+    const schema: BlogPostingSchema = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: post.title,
@@ -214,7 +354,7 @@ export class StructuredDataGenerator {
    * Generate Organization schema
    */
   generateOrganization(org: OrganizationData): string {
-    const schema: any = {
+    const schema: OrganizationSchema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: org.name,
@@ -312,7 +452,7 @@ export class StructuredDataGenerator {
     url: string;
     searchUrl?: string;
   }): string {
-    const schema: any = {
+    const schema: WebSiteSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: config.name,
@@ -354,7 +494,7 @@ export class StructuredDataGenerator {
     priceRange?: string;
     image?: string;
   }): string {
-    const schema: any = {
+    const schema: LocalBusinessSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: business.name,
@@ -404,7 +544,7 @@ export class StructuredDataGenerator {
     contentUrl?: string;
     embedUrl?: string;
   }): string {
-    const schema: any = {
+    const schema: VideoObjectSchema = {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       name: video.name,
@@ -443,13 +583,13 @@ export class StructuredDataGenerator {
       url?: string;
     }>;
   }): string {
-    const schema: any = {
+    const schema: HowToSchema = {
       '@context': 'https://schema.org',
       '@type': 'HowTo',
       name: howTo.name,
       description: howTo.description,
       step: howTo.steps.map((step, index) => {
-        const stepSchema: any = {
+        const stepSchema: HowToSchema['step'][0] = {
           '@type': 'HowToStep',
           position: index + 1,
           name: step.name,
@@ -487,7 +627,7 @@ export class StructuredDataGenerator {
     const warnings: string[] = [];
 
     try {
-      const schema = JSON.parse(schemaJson);
+      const schema = JSON.parse(schemaJson) as Record<string, unknown>;
 
       // Check required fields
       if (!schema['@context']) {
@@ -499,19 +639,26 @@ export class StructuredDataGenerator {
       }
 
       // Validate @context
-      if (schema['@context'] && !schema['@context'].includes('schema.org')) {
+      if (schema['@context'] && typeof schema['@context'] === 'string' && !schema['@context'].includes('schema.org')) {
         errors.push('Invalid @context - must include schema.org');
       }
 
       // Type-specific validation
-      this.validateProductSchema(schema, errors, warnings);
-      this.validateBlogPostingSchema(schema, errors, warnings);
-      this.validateOrganizationSchema(schema, errors, warnings);
-      this.validateBreadcrumbSchema(schema, errors, warnings);
-      this.validateFAQSchema(schema, errors, warnings);
+      const schemaType = schema['@type'] as string;
+      if (schemaType === 'Product') {
+        this.validateProductSchema(schema, errors, warnings);
+      } else if (schemaType === 'BlogPosting' || schemaType === 'Article') {
+        this.validateBlogPostingSchema(schema, errors, warnings);
+      } else if (schemaType === 'Organization') {
+        this.validateOrganizationSchema(schema, errors, warnings);
+      } else if (schemaType === 'BreadcrumbList') {
+        this.validateBreadcrumbSchema(schema, errors);
+      } else if (schemaType === 'FAQPage') {
+        this.validateFAQSchema(schema, errors, warnings);
+      }
 
       // Validate data types
-      this.validateDataTypes(schema, errors, warnings);
+      this.validateDataTypes(schema, errors);
     } catch (error) {
       errors.push(`Invalid JSON: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
@@ -526,9 +673,7 @@ export class StructuredDataGenerator {
   /**
    * Validate Product schema
    */
-  private validateProductSchema(schema: any, errors: string[], warnings: string[]): void {
-    if (schema['@type'] !== 'Product') return;
-
+  private validateProductSchema(schema: Record<string, unknown>, errors: string[], warnings: string[]): void {
     // Required fields
     if (!schema.name) errors.push('Product missing required field: name');
     if (!schema.image) {
@@ -539,10 +684,11 @@ export class StructuredDataGenerator {
     if (!schema.offers) errors.push('Product missing required field: offers');
 
     // Validate offers
-    if (schema.offers) {
-      if (!schema.offers.price) errors.push('Product offers missing price');
-      if (!schema.offers.priceCurrency) errors.push('Product offers missing priceCurrency');
-      if (!schema.offers.availability) warnings.push('Product offers missing availability');
+    const offers = schema.offers as Record<string, unknown> | undefined;
+    if (offers) {
+      if (!offers.price) errors.push('Product offers missing price');
+      if (!offers.priceCurrency) errors.push('Product offers missing priceCurrency');
+      if (!offers.availability) warnings.push('Product offers missing availability');
     }
 
     // Recommended fields
@@ -551,14 +697,16 @@ export class StructuredDataGenerator {
     if (!schema.sku) warnings.push('Product missing recommended field: sku');
 
     // Validate aggregate rating if present
-    if (schema.aggregateRating) {
-      if (!schema.aggregateRating.ratingValue) {
+    const aggregateRating = schema.aggregateRating as Record<string, unknown> | undefined;
+    if (aggregateRating) {
+      if (!aggregateRating.ratingValue) {
         errors.push('AggregateRating missing ratingValue');
       }
-      if (!schema.aggregateRating.reviewCount) {
+      if (!aggregateRating.reviewCount) {
         errors.push('AggregateRating missing reviewCount');
       }
-      if (schema.aggregateRating.ratingValue > 5 || schema.aggregateRating.ratingValue < 0) {
+      const ratingValue = aggregateRating.ratingValue as number;
+      if (ratingValue > 5 || ratingValue < 0) {
         errors.push('AggregateRating ratingValue must be between 0 and 5');
       }
     }
@@ -567,9 +715,7 @@ export class StructuredDataGenerator {
   /**
    * Validate BlogPosting/Article schema
    */
-  private validateBlogPostingSchema(schema: any, errors: string[], warnings: string[]): void {
-    if (schema['@type'] !== 'BlogPosting' && schema['@type'] !== 'Article') return;
-
+  private validateBlogPostingSchema(schema: Record<string, unknown>, errors: string[], warnings: string[]): void {
     // Required fields
     if (!schema.headline) errors.push('BlogPosting/Article missing required field: headline');
     if (!schema.image) errors.push('BlogPosting/Article missing required field: image');
@@ -579,18 +725,21 @@ export class StructuredDataGenerator {
     if (!schema.author) errors.push('BlogPosting/Article missing required field: author');
 
     // Validate author
-    if (schema.author && !schema.author.name) {
+    const author = schema.author as Record<string, unknown> | undefined;
+    if (author && !author.name) {
       errors.push('Author missing name');
     }
 
     // Validate publisher
-    if (!schema.publisher) {
+    const publisher = schema.publisher as Record<string, unknown> | undefined;
+    if (!publisher) {
       errors.push('BlogPosting/Article missing required field: publisher');
     } else {
-      if (!schema.publisher.name) errors.push('Publisher missing name');
-      if (!schema.publisher.logo) {
+      if (!publisher.name) errors.push('Publisher missing name');
+      const logo = publisher.logo as Record<string, unknown> | undefined;
+      if (!logo) {
         errors.push('Publisher missing logo');
-      } else if (!schema.publisher.logo.url) {
+      } else if (!logo.url) {
         errors.push('Publisher logo missing url');
       }
     }
@@ -603,7 +752,8 @@ export class StructuredDataGenerator {
     if (!schema.dateModified) warnings.push('BlogPosting/Article missing recommended field: dateModified');
 
     // Validate headline length
-    if (schema.headline && schema.headline.length > 110) {
+    const headline = schema.headline as string;
+    if (headline && headline.length > 110) {
       warnings.push('Headline should be 110 characters or less for optimal display');
     }
   }
@@ -611,9 +761,7 @@ export class StructuredDataGenerator {
   /**
    * Validate Organization schema
    */
-  private validateOrganizationSchema(schema: any, errors: string[], warnings: string[]): void {
-    if (schema['@type'] !== 'Organization') return;
-
+  private validateOrganizationSchema(schema: Record<string, unknown>, errors: string[], warnings: string[]): void {
     // Required fields
     if (!schema.name) errors.push('Organization missing required field: name');
     if (!schema.url) errors.push('Organization missing required field: url');
@@ -624,7 +772,8 @@ export class StructuredDataGenerator {
     if (!schema.contactPoint) warnings.push('Organization missing recommended field: contactPoint');
 
     // Validate URL format
-    if (schema.url && !this.isValidUrl(schema.url)) {
+    const url = schema.url as string;
+    if (url && !this.isValidUrl(url)) {
       errors.push('Organization url is not a valid URL');
     }
   }
@@ -632,9 +781,7 @@ export class StructuredDataGenerator {
   /**
    * Validate BreadcrumbList schema
    */
-  private validateBreadcrumbSchema(schema: any, errors: string[], _warnings: string[]): void {
-    if (schema['@type'] !== 'BreadcrumbList') return;
-
+  private validateBreadcrumbSchema(schema: Record<string, unknown>, errors: string[]): void {
     // Required fields
     if (!schema.itemListElement) {
       errors.push('BreadcrumbList missing required field: itemListElement');
@@ -652,7 +799,7 @@ export class StructuredDataGenerator {
     }
 
     // Validate each item
-    schema.itemListElement.forEach((item: any, index: number) => {
+    (schema.itemListElement as Array<Record<string, unknown>>).forEach((item, index) => {
       if (!item['@type'] || item['@type'] !== 'ListItem') {
         errors.push(`BreadcrumbList item ${index} missing @type: ListItem`);
       }
@@ -671,9 +818,7 @@ export class StructuredDataGenerator {
   /**
    * Validate FAQ schema
    */
-  private validateFAQSchema(schema: any, errors: string[], warnings: string[]): void {
-    if (schema['@type'] !== 'FAQPage') return;
-
+  private validateFAQSchema(schema: Record<string, unknown>, errors: string[], warnings: string[]): void {
     // Required fields
     if (!schema.mainEntity) {
       errors.push('FAQPage missing required field: mainEntity');
@@ -691,20 +836,21 @@ export class StructuredDataGenerator {
     }
 
     // Validate each question
-    schema.mainEntity.forEach((item: any, index: number) => {
+    (schema.mainEntity as Array<Record<string, unknown>>).forEach((item, index) => {
       if (!item['@type'] || item['@type'] !== 'Question') {
         errors.push(`FAQ item ${index} missing @type: Question`);
       }
       if (!item.name) {
         errors.push(`FAQ item ${index} missing name (question)`);
       }
-      if (!item.acceptedAnswer) {
+      const acceptedAnswer = item.acceptedAnswer as Record<string, unknown> | undefined;
+      if (!acceptedAnswer) {
         errors.push(`FAQ item ${index} missing acceptedAnswer`);
       } else {
-        if (!item.acceptedAnswer['@type'] || item.acceptedAnswer['@type'] !== 'Answer') {
+        if (!acceptedAnswer['@type'] || acceptedAnswer['@type'] !== 'Answer') {
           errors.push(`FAQ item ${index} acceptedAnswer missing @type: Answer`);
         }
-        if (!item.acceptedAnswer.text) {
+        if (!acceptedAnswer.text) {
           errors.push(`FAQ item ${index} acceptedAnswer missing text`);
         }
       }
@@ -714,22 +860,25 @@ export class StructuredDataGenerator {
   /**
    * Validate data types
    */
-  private validateDataTypes(schema: any, errors: string[], _warnings: string[]): void {
+  private validateDataTypes(schema: Record<string, unknown>, errors: string[]): void {
     // Validate dates
-    if (schema.datePublished && !this.isValidDate(schema.datePublished)) {
+    const datePublished = schema.datePublished as string;
+    if (datePublished && !this.isValidDate(datePublished)) {
       errors.push('datePublished is not a valid ISO 8601 date');
     }
-    if (schema.dateModified && !this.isValidDate(schema.dateModified)) {
+    const dateModified = schema.dateModified as string;
+    if (dateModified && !this.isValidDate(dateModified)) {
       errors.push('dateModified is not a valid ISO 8601 date');
     }
 
     // Validate URLs
-    if (schema.url && !this.isValidUrl(schema.url)) {
+    const url = schema.url as string;
+    if (url && !this.isValidUrl(url)) {
       errors.push('url is not a valid URL');
     }
     if (schema.image) {
       const images = Array.isArray(schema.image) ? schema.image : [schema.image];
-      images.forEach((img: string, index: number) => {
+      images.forEach((img: unknown, index: number) => {
         if (typeof img === 'string' && !this.isValidUrl(img)) {
           errors.push(`image[${index}] is not a valid URL`);
         }
@@ -737,9 +886,10 @@ export class StructuredDataGenerator {
     }
 
     // Validate numbers
-    if (schema.offers && schema.offers.price) {
-      if (typeof schema.offers.price === 'string') {
-        const price = parseFloat(schema.offers.price);
+    const offers = schema.offers as Record<string, unknown> | undefined;
+    if (offers && offers.price) {
+      if (typeof offers.price === 'string') {
+        const price = parseFloat(offers.price);
         if (isNaN(price) || price < 0) {
           errors.push('offers.price must be a positive number');
         }

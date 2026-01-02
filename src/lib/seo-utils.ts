@@ -7,17 +7,19 @@ interface TranslatedContent {
   en: string;
   fr: string;
   zh: string;
+  es: string;
 }
 
 export type OfferAvailability = 'InStock' | 'OutOfStock' | 'PreOrder';
-type LocaleCode = 'en' | 'fr' | 'zh';
+type LocaleCode = 'en' | 'fr' | 'zh' | 'es';
 
 const DEFAULT_LOCALE: LocaleCode = 'en';
-const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh'];
+const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
 const LOCALE_HREFLANG_MAP: Record<LocaleCode, string> = {
   en: 'en-CA',
   fr: 'fr-CA',
   zh: 'zh-CN',
+  es: 'es',
 };
 const SCHEMA_ORG_BASE_URL = 'https://schema.org';
 const DEFAULT_PRICE_VALIDITY_DAYS = 365;
@@ -40,13 +42,15 @@ export const buildAvailabilityUrl = (availability: OfferAvailability = 'InStock'
 export const SEO_TRANSLATIONS = {
   siteDescription: {
     en: SITE_DESCRIPTION,
-    fr: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
-    zh: "活性炭猫砂添加剂，从源头消除异味。"
+    fr: "Additif de litiere pour chat a base de charbon actif qui elimine les odeurs a la source.",
+    zh: "活性炭猫砂添加剂，从源头消除异味。",
+    es: "Aditivo de carbon activado para arena de gatos que elimina los olores en la fuente."
   },
   organizationDescription: {
     en: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
-    fr: "Additif premium pour litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec des ingrédients naturels.",
-    zh: "优质活性炭猫砂添加剂，在分子级别消除异味。采用天然成分在加拿大制造。"
+    fr: "Additif premium pour litiere pour chat a base de charbon actif qui elimine les odeurs au niveau moleculaire. Fabrique au Canada avec des ingredients naturels.",
+    zh: "优质活性炭猫砂添加剂，在分子级别消除异味。采用天然成分在加拿大制造。",
+    es: "Aditivo premium de carbon activado para arena de gatos que elimina olores a nivel molecular. Fabricado en Canada con ingredientes naturales."
   },
   keywords: {
     en: [
@@ -60,13 +64,13 @@ export const SEO_TRANSLATIONS = {
       'cat care products'
     ],
     fr: [
-      'contrôle des odeurs de litière pour chat',
-      'litière pour chat au charbon actif',
-      'additif naturel pour litière de chat',
-      "contrôle des odeurs sans parfum pour animaux",
-      'désodorisant pour litière de chat',
-      'élimination des odeurs d\'animaux',
-      'contrôle moléculaire des odeurs',
+      'controle des odeurs de litiere pour chat',
+      'litiere pour chat au charbon actif',
+      'additif naturel pour litiere de chat',
+      "controle des odeurs sans parfum pour animaux",
+      'desodorisant pour litiere de chat',
+      'elimination des odeurs d\'animaux',
+      'controle moleculaire des odeurs',
       'produits de soins pour chats'
     ],
     zh: [
@@ -78,18 +82,28 @@ export const SEO_TRANSLATIONS = {
       '宠物异味消除',
       '分子级异味控制',
       '猫咪护理产品'
+    ],
+    es: [
+      'control de olores arena gatos',
+      'arena gatos carbon activado',
+      'aditivo natural arena gatos',
+      'control olores mascotas sin fragancia',
+      'desodorizante arena gatos',
+      'eliminacion olores mascotas',
+      'control molecular olores',
+      'productos cuidado gatos'
     ]
   },
   breadcrumbNames: {
-    home: { en: 'Home', fr: 'Accueil', zh: '首页' },
-    products: { en: 'Products', fr: 'Produits', zh: '产品' },
-    learn: { en: 'Learn', fr: 'Apprendre', zh: '了解' },
-    faq: { en: 'FAQ', fr: 'FAQ', zh: '常见问题' },
-    'trial-size': { en: 'Trial Size', fr: 'Taille d\'Essai', zh: '试用装' },
-    'activated-carbon-benefits': { en: 'Activated Carbon Benefits', fr: 'Avantages du Charbon Actif', zh: '活性炭的好处' },
-    'how-it-works': { en: 'How It Works', fr: 'Comment Ça Marche', zh: '工作原理' },
-    contact: { en: 'Contact', fr: 'Contact', zh: '联系我们' },
-    testimonials: { en: 'Testimonials', fr: 'Témoignages', zh: '客户评价' }
+    home: { en: 'Home', fr: 'Accueil', zh: '首页', es: 'Inicio' },
+    products: { en: 'Products', fr: 'Produits', zh: '产品', es: 'Productos' },
+    learn: { en: 'Learn', fr: 'Apprendre', zh: '了解', es: 'Aprender' },
+    faq: { en: 'FAQ', fr: 'FAQ', zh: '常见问题', es: 'FAQ' },
+    'trial-size': { en: 'Trial Size', fr: 'Taille d\'Essai', zh: '试用装', es: 'Prueba' },
+    'activated-carbon-benefits': { en: 'Activated Carbon Benefits', fr: 'Avantages du Charbon Actif', zh: '活性炭的好处', es: 'Beneficios del Carbon Activado' },
+    'how-it-works': { en: 'How It Works', fr: 'Comment Ca Marche', zh: '工作原理', es: 'Como Funciona' },
+    contact: { en: 'Contact', fr: 'Contact', zh: '联系我们', es: 'Contacto' },
+    testimonials: { en: 'Testimonials', fr: 'Temoignages', zh: '客户评价', es: 'Testimonios' }
   }
 };
 
@@ -167,7 +181,7 @@ export const getLocalizedKeywords = (localeInput: string): string[] => {
 
 const appendEllipsis = (value: string) => {
   const trimmed = value.trim();
-  return trimmed.endsWith('…') ? trimmed : `${trimmed}…`;
+  return trimmed.endsWith('...') ? trimmed : `${trimmed}...`;
 };
 
 const ensureSentenceTermination = (value: string) => {
@@ -229,61 +243,71 @@ export const generateLocalizedFAQs = (localeInput: string) => {
     {
       question: {
         en: 'What is Purrify and how does it work?',
-        fr: 'Qu\'est-ce que Purrify et comment ça marche ?',
-        zh: 'Purrify是什么，它是如何工作的？'
+        fr: 'Qu\'est-ce que Purrify et comment ca marche ?',
+        zh: 'Purrify是什么，它是如何工作的？',
+        es: 'Que es Purrify y como funciona?'
       },
       answer: {
         en: 'Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds.',
-        fr: 'Purrify est un additif au charbon actif pour litière de chat qui élimine les odeurs au niveau moléculaire. Le charbon actif contient des millions de pores microscopiques qui piègent et neutralisent les composés responsables des odeurs.',
-        zh: 'Purrify是一种用于猫砂的活性炭添加剂，在分子级别消除异味。活性炭含有数百万个微观孔隙，可以捕获和中和产生异味的化合物。'
+        fr: 'Purrify est un additif au charbon actif pour litiere de chat qui elimine les odeurs au niveau moleculaire. Le charbon actif contient des millions de pores microscopiques qui piegent et neutralisent les composes responsables des odeurs.',
+        zh: 'Purrify是一种用于猫砂的活性炭添加剂，在分子级别消除异味。活性炭含有数百万个微观孔隙，可以捕获和中和产生异味的化合物。',
+        es: 'Purrify es un aditivo de carbon activado para arena de gatos que elimina olores a nivel molecular. El carbon activado tiene millones de poros microscopicos que atrapan y neutralizan compuestos que causan olores.'
       }
     },
     {
       question: {
         en: 'Can Purrify be used around cats and people?',
-        fr: 'Peut-on utiliser Purrify près des chats et des personnes ?',
-        zh: 'Purrify可以在猫和人周围使用吗？'
+        fr: 'Peut-on utiliser Purrify pres des chats et des personnes ?',
+        zh: 'Purrify可以在猫和人周围使用吗？',
+        es: 'Se puede usar Purrify cerca de gatos y personas?'
       },
       answer: {
         en: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration and contains no added fragrances or dyes.',
-        fr: 'Purrify utilise le même type de charbon actif que l’on retrouve couramment dans les filtres à eau et à air domestiques, sans parfums ni colorants ajoutés.',
-        zh: 'Purrify采用与家用净水和空气过滤中常见的同类活性炭，不添加香精或染料。'
+        fr: 'Purrify utilise le meme type de charbon actif que l\'on retrouve couramment dans les filtres a eau et a air domestiques, sans parfums ni colorants ajoutes.',
+        zh: 'Purrify采用与家用净水和空气过滤中常见的同类活性炭，不添加香精或染料。',
+        es: 'Purrify usa el mismo tipo de carbon activado que se encuentra comunmente en filtros de agua y aire domesticos y no contiene fragancias ni colorantes agregados.'
       }
     },
     {
       question: {
         en: 'How much Purrify should I use?',
         fr: 'Combien de Purrify dois-je utiliser ?',
-        zh: '我应该使用多少Purrify？'
+        zh: '我应该使用多少Purrify？',
+        es: 'Cuanto Purrify debo usar?'
       },
       answer: {
         en: 'For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change.',
-        fr: 'Pour des résultats optimaux, utilisez environ 1 à 2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le soigneusement avec votre litière existante lors d\'un changement complet.',
-        zh: '为获得最佳效果，每个标准猫砂盆大约使用1-2汤匙Purrify。在完全更换时，将其与现有猫砂充分混合。'
+        fr: 'Pour des resultats optimaux, utilisez environ 1 a 2 cuilleres a soupe de Purrify par bac a litiere standard. Melangez-le soigneusement avec votre litiere existante lors d\'un changement complet.',
+        zh: '为获得最佳效果，每个标准猫砂盆大约使用1-2汤匙Purrify。在完全更换时，将其与现有猫砂充分混合。',
+        es: 'Para resultados optimos, usa aproximadamente 1-2 cucharadas de Purrify por caja de arena estandar. Mezclalo completamente con tu arena existente cuando hagas un cambio completo.'
       }
     },
     {
       question: {
         en: 'Does Purrify work with all types of litter?',
-        fr: 'Purrify fonctionne-t-il avec tous les types de litière ?',
-        zh: 'Purrify适用于所有类型的猫砂吗？'
+        fr: 'Purrify fonctionne-t-il avec tous les types de litiere ?',
+        zh: 'Purrify适用于所有类型的猫砂吗？',
+        es: 'Funciona Purrify con todos los tipos de arena?'
       },
       answer: {
         en: 'Yes! Purrify is designed to work with any type of cat litter - clay, clumping, crystal, natural, or biodegradable. It enhances the odor control properties of whatever litter you\'re already using.',
-        fr: 'Oui ! Purrify est conçu pour fonctionner avec tout type de litière pour chat - argile, agglomérante, cristal, naturelle ou biodégradable. Il améliore les propriétés de contrôle des odeurs de la litière que vous utilisez déjà.',
-        zh: '是的！Purrify设计为适用于任何类型的猫砂 - 黏土、结团、水晶、天然或可生物降解的。它增强了您已经使用的任何猫砂的异味控制特性。'
+        fr: 'Oui ! Purrify est concu pour fonctionner avec tout type de litiere pour chat - argile, agglomerante, cristal, naturelle ou biodegradable. Il ameliore les proprietes de controle des odeurs de la litiere que vous utilisez deja.',
+        zh: '是的！Purrify设计为适用于任何类型的猫砂 - 黏土、结团、水晶、天然或可生物降解的。它增强了您已经使用的任何猫砂的异味控制特性。',
+        es: 'Si! Purrify esta disenado para funcionar con cualquier tipo de arena para gatos - arcilla, aglomerante, cristal, natural o biodegradable. Mejora las propiedades de control de olores de cualquier arena que ya estes usando.'
       }
     },
     {
       question: {
         en: 'How long does Purrify last?',
         fr: 'Combien de temps dure Purrify ?',
-        zh: 'Purrify能持续多长时间？'
+        zh: 'Purrify能持续多长时间？',
+        es: 'Cuanto dura Purrify?'
       },
       answer: {
         en: 'Purrify extends the life of your litter by 2-3 times. Instead of changing litter weekly, you can typically go 2-3 weeks with the same litter when using Purrify, depending on usage frequency.',
-        fr: 'Purrify prolonge la durée de vie de votre litière de 2 à 3 fois. Au lieu de changer la litière chaque semaine, vous pouvez généralement utiliser la même litière pendant 2 à 3 semaines avec Purrify, selon la fréquence d\'utilisation.',
-        zh: 'Purrify可以将猫砂的使用寿命延长2-3倍。使用Purrify时，您通常可以使用同一批猫砂2-3周，而不是每周更换，具体取决于使用频率。'
+        fr: 'Purrify prolonge la duree de vie de votre litiere de 2 a 3 fois. Au lieu de changer la litiere chaque semaine, vous pouvez generalement utiliser la meme litiere pendant 2 a 3 semaines avec Purrify, selon la frequence d\'utilisation.',
+        zh: 'Purrify可以将猫砂的使用寿命延长2-3倍。使用Purrify时，您通常可以使用同一批猫砂2-3周，而不是每周更换，具体取决于使用频率。',
+        es: 'Purrify extiende la vida de tu arena por 2-3 veces. En lugar de cambiar la arena semanalmente, tipicamente puedes pasar 2-3 semanas con la misma arena usando Purrify, dependiendo de la frecuencia de uso.'
       }
     }
   ];
@@ -332,11 +356,11 @@ export const generateProductStructuredData = (productId: string, localeInput: st
       bestRating: '5',
       worstRating: '1'
     },
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA'
+    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA'
   };
 };
 
-// Generate article structured data with localization  
+// Generate article structured data with localization
 export const generateArticleStructuredData = (title: string, description: string, path: string, localeInput: string, options?: {
   author?: string;
   datePublished?: string;
@@ -347,7 +371,7 @@ export const generateArticleStructuredData = (title: string, description: string
 }) => {
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -372,7 +396,7 @@ export const generateArticleStructuredData = (title: string, description: string
     dateModified: options?.dateModified || new Date().toISOString(),
     articleSection: options?.category || 'Pet Care',
     keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
     about: {
       '@type': 'Thing',
       name: 'Cat Litter Odor Control'
@@ -384,7 +408,7 @@ export const generateArticleStructuredData = (title: string, description: string
 export const generateOrganizationSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -415,7 +439,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
       email: CONTACT_INFO.email,
       contactType: 'customer service',
       areaServed: ['CA', 'US'],
-      availableLanguage: ['English', 'French', 'Chinese']
+      availableLanguage: ['English', 'French', 'Chinese', 'Spanish']
     },
     sameAs: Object.values(SOCIAL_LINKS),
     knowsAbout: getLocalizedKeywords(locale),
@@ -432,7 +456,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
 export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const pathSegments = path.split('/').filter(segment => segment !== '' && segment !== locale);
-  
+
   const breadcrumbs = [
     {
       name: getLocalizedContent(SEO_TRANSLATIONS.breadcrumbNames.home, locale),
@@ -441,16 +465,16 @@ export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
   ];
 
   let currentPath = '';
-  
+
   pathSegments.forEach((segment) => {
     currentPath += `/${segment}`;
-    
+
     // Get localized name for common segments
     const segmentKey = segment as keyof typeof SEO_TRANSLATIONS.breadcrumbNames;
-    const localizedName = SEO_TRANSLATIONS.breadcrumbNames[segmentKey] 
+    const localizedName = SEO_TRANSLATIONS.breadcrumbNames[segmentKey]
       ? getLocalizedContent(SEO_TRANSLATIONS.breadcrumbNames[segmentKey], locale)
       : segment.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    
+
     breadcrumbs.push({
       name: localizedName,
       url: getLocalizedUrl(currentPath, locale)
@@ -474,7 +498,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl('', locale);
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -483,7 +507,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
     alternateName: `${SITE_NAME} - ${getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale)}`,
     url: localizedUrl || baseUrl,
     description: getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale),
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
     publisher: {
       '@id': `${baseUrl}/#organization`
     },
@@ -502,7 +526,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
 export const generateFAQSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const faqs = generateLocalizedFAQs(locale);
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -531,7 +555,7 @@ interface Product {
 export const generateOfferSchema = (product: Product, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const localizedUrl = getLocalizedUrl(`/products/${product.id}`, locale);
-  
+
   return {
     '@type': 'Offer',
     price: product.price.toString(),
@@ -589,9 +613,9 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     'Ottawa': { lat: '45.4215', lon: '-75.6972' },
     'Winnipeg': { lat: '49.8951', lon: '-97.1384' }
   };
-  
+
   const coords = cityCoordinates[cityName as keyof typeof cityCoordinates] || { lat: '45.4215', lon: '-75.6972' };
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'LocalBusiness'],
@@ -626,7 +650,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
       email: CONTACT_INFO.email,
       contactType: 'customer service',
       areaServed: 'CA',
-      availableLanguage: locale === 'fr' ? 'French' : locale === 'zh' ? 'Chinese' : 'English'
+      availableLanguage: locale === 'fr' ? 'French' : locale === 'zh' ? 'Chinese' : locale === 'es' ? 'Spanish' : 'English'
     },
     openingHoursSpecification: Object.entries(CONTACT_INFO.hours).map(([day, hours]) => ({
       '@type': 'OpeningHoursSpecification',
@@ -659,16 +683,16 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 export const generateHomepageSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
-  
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
       // Website Schema
       generateWebsiteSchema(locale),
-      
+
       // Organization Schema
       generateOrganizationSchema(locale),
-      
+
       // Product Collection
       {
         '@type': 'ItemList',
@@ -689,7 +713,7 @@ export const generateHomepageSchema = (localeInput: string) => {
           }
         }))
       },
-      
+
       // FAQ Schema for homepage FAQ section
       generateFAQSchema(locale)
     ]
@@ -701,10 +725,10 @@ export const generateProductPageSchema = (productId: string, localeInput: string
   const locale = normalizeLocale(localeInput);
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
-  
+
   const baseUrl = 'https://www.purrify.ca';
   const localizedUrl = getLocalizedUrl(`/products/${productId}`, locale);
-  
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -771,9 +795,9 @@ export const generateProductPageSchema = (productId: string, localeInput: string
           '@type': 'Audience',
           name: 'Cat Owners'
         },
-        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA'
+        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA'
       },
-      
+
       // Breadcrumb Schema
       generateBreadcrumbSchema(`/products/${productId}`, locale)
     ]
@@ -794,7 +818,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
   const baseUrl = 'https://www.purrify.ca';
-  
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -829,7 +853,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
         keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
         wordCount: options?.wordCount || 1500,
         timeRequired: options?.readingTime ? `PT${options.readingTime}M` : 'PT8M',
-        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA',
+        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
         about: {
           '@type': 'Thing',
           name: 'Cat Litter Odor Control',
@@ -849,10 +873,10 @@ export const generateArticlePageSchema = (title: string, description: string, pa
           target: url
         }
       },
-      
+
       // Breadcrumb Schema
       generateBreadcrumbSchema(path, locale),
-      
+
       // FAQ Schema if it's a how-to or benefits article
       ...(path.includes('benefits') || path.includes('how') ? [generateFAQSchema(locale)] : [])
     ]
@@ -863,13 +887,13 @@ export const generateArticlePageSchema = (title: string, description: string, pa
 export const generateLocationPageSchema = (cityName: string, province: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale);
-  
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
       // Local Business Schema
       generateLocalBusinessSchema(cityName, province, locale),
-      
+
       // Service Area Schema
       {
         '@type': 'Service',
@@ -886,7 +910,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
         serviceType: 'Pet Product Delivery',
         offers: PRODUCTS.map(product => generateOfferSchema(product, locale))
       },
-      
+
       // Breadcrumb Schema
       generateBreadcrumbSchema(`/locations/${cityName.toLowerCase()}`, locale)
     ]

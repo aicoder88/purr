@@ -1,4 +1,4 @@
-import { Page, expect, test } from '@playwright/test';
+import { Page, test } from '@playwright/test';
 
 /**
  * Attempts to login to the admin panel.
@@ -34,7 +34,7 @@ export async function tryLogin(page: Page): Promise<boolean> {
  * Skips the test if authentication is not available.
  * This is useful for security tests that require a logged-in state.
  */
-export function skipIfNoAuth(page: Page, testInstance: typeof test) {
+export function skipIfNoAuth(_page: Page, testInstance: typeof test) {
   testInstance.beforeEach(async ({ page: p }) => {
     const loggedIn = await tryLogin(p);
     if (!loggedIn) {

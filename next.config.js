@@ -411,7 +411,7 @@ const nextConfig = {
   },
   distDir: ".next",
   i18n: {
-    locales: ["en", "fr", "zh"],
+    locales: ["en", "fr", "zh", "es"],
     defaultLocale: "en",
     localeDetection: false,
     domains: [
@@ -426,6 +426,10 @@ const nextConfig = {
       {
         domain: "zh.purrify.ca",
         defaultLocale: "zh",
+      },
+      {
+        domain: "es.purrify.ca",
+        defaultLocale: "es",
       },
     ],
   },

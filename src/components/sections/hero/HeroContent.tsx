@@ -2,6 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
 import { heroTestimonials } from "@/data/hero-testimonials";
+import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 
 interface HeroContentProps {
   t: {
@@ -111,9 +112,24 @@ const StarRating = ({ rating = 5 }: { rating?: number }) => {
 };
 
 export const HeroContent = ({ t }: HeroContentProps) => {
+  // A/B Test: Homepage Hero Layout
+  const {
+    isVariant: isSimplifiedHero,
+    trackConversion: trackHeroConversion,
+  } = useABTestWithTracking(AB_TEST_SLUGS.HOMEPAGE_HERO);
+
+  // A/B Test: CTA Button Color
+  const {
+    isVariant: isOrangeButton,
+    trackConversion: trackCtaConversion,
+  } = useABTestWithTracking(AB_TEST_SLUGS.CTA_BUTTON_COLOR);
+
   const handleScrollToProducts = useCallback(() => {
+    // Track conversions for both tests when CTA is clicked
+    trackHeroConversion();
+    trackCtaConversion();
     scrollToSection("products");
-  }, []);
+  }, [trackHeroConversion, trackCtaConversion]);
 
   // Rotating testimonials - slowed down to 5 seconds for readability
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -137,6 +153,84 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const subheadline = t.hero.subheadline || t.hero.instantly;
 
+  // CTA Button classes based on A/B test
+  const ctaButtonClasses = isOrangeButton
+    ? "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-orange-500/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-orange-400/20"
+    : "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20";
+
+  // Simplified Hero Variant (A/B Test)
+  if (isSimplifiedHero) {
+    return (
+      <div className="space-y-4 md:space-y-6 relative z-10">
+        {/* Prominent Price Badge - text-white is OK here because bg is always green gradient */}
+        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white dark:text-gray-100 shadow-lg">
+          <span className="text-2xl font-black">FREE</span>
+          <span className="text-sm opacity-90">Just pay $4.76 shipping</span>
+        </div>
+
+        {/* Simplified Headline */}
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
+          <span className="block">No More</span>
+          <span className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">
+            Litter Box Smell
+          </span>
+        </h1>
+
+        {/* Short value prop */}
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-md">
+          Activated carbon eliminates odors at the source. Works with any litter.
+        </p>
+
+        {/* Large Pricing Display */}
+        <div className="flex flex-wrap items-end gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Trial Size</div>
+            <div className="flex items-baseline gap-1">
+              <span className="text-3xl font-black text-green-600 dark:text-green-400">FREE</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">+ S&H</span>
+            </div>
+          </div>
+          <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
+            <div className="text-xs text-gray-500 dark:text-gray-400">Standard</div>
+            <div className="text-xl font-bold text-gray-900 dark:text-white">$14.99</div>
+          </div>
+          <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
+            <div className="text-xs text-gray-500 dark:text-gray-400">Family Pack</div>
+            <div className="text-xl font-bold text-gray-900 dark:text-white">$24.99</div>
+          </div>
+        </div>
+
+        {/* Trust indicators */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <StarRating rating={5} />
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">4.9/5</span>
+          </div>
+          <span className="text-gray-300 dark:text-gray-600">|</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">30-Day Guarantee</span>
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <Button
+            onClick={handleScrollToProducts}
+            className={ctaButtonClasses}
+            aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
+          >
+            <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Get FREE Sample
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Control: Current Hero (with CTA color A/B test applied)
   return (
     <div className="space-y-3 md:space-y-4 relative z-10">
       {/* Social Proof Badge - Rotating Testimonials (slowed for readability) */}
@@ -208,11 +302,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </div>
       </div>
 
-      {/* Main CTA Button - Shortened and prominent FREE Trial emphasis */}
+      {/* Main CTA Button - with A/B tested color */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button
           onClick={handleScrollToProducts}
-          className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20"
+          className={ctaButtonClasses}
           aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
         >
           <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">

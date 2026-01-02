@@ -1,4 +1,4 @@
-/* eslint-disable react-compiler/react-compiler */
+ 
 import { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, MapPin, Clock, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';

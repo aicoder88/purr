@@ -23,15 +23,15 @@ export function TranslationProvider({
 
   // Validate and normalize locale to prevent hydration mismatches
   const normalizeLocale = useMemo(() => {
-    const validLocales: Locale[] = ['en', 'fr', 'zh'];
+    const validLocales: Locale[] = ['en', 'fr', 'zh', 'es'];
     const providedLocale = language as Locale;
-    
+
     // Server-side: Use provided language
     // Client-side: Validate against available translations
     if (validLocales.includes(providedLocale) && translations[providedLocale]) {
       return providedLocale;
     }
-    
+
     // Fallback to English if invalid locale
     return 'en' as Locale;
   }, [language]);
@@ -48,7 +48,7 @@ export function TranslationProvider({
   // Handle hydration
   useEffect(() => {
     // Mark as hydrated on first client-side render
-     
+
     setIsHydrated(true);
   }, []);
 
@@ -56,7 +56,7 @@ export function TranslationProvider({
   useEffect(() => {
     const newLocale = normalizeLocale;
     if (isHydrated && newLocale !== locale) {
-       
+
       setLocale(newLocale);
     }
   }, [normalizeLocale, locale, isHydrated]);
@@ -70,7 +70,7 @@ export function TranslationProvider({
       }
 
       // Validate locale before navigation
-      const validLocales: Locale[] = ['en', 'fr', 'zh'];
+      const validLocales: Locale[] = ['en', 'fr', 'zh', 'es'];
       if (!validLocales.includes(newLocale)) {
         console.warn(`Invalid locale: ${newLocale}. Using 'en' instead.`);
         newLocale = 'en';
@@ -78,8 +78,8 @@ export function TranslationProvider({
 
       try {
         router.push(
-          { pathname, query }, 
-          asPath, 
+          { pathname, query },
+          asPath,
           {
             locale: newLocale === 'en' ? false : newLocale,
             scroll: false, // Prevent scroll jump
@@ -109,11 +109,11 @@ export function TranslationProvider({
 
 export function useTranslation() {
   const context = useContext(TranslationContext);
-  
+
   if (context === undefined) {
     throw new Error('useTranslation must be used within a TranslationProvider');
   }
-  
+
   return context;
 }
 
@@ -122,7 +122,7 @@ export function useIsHydrated() {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-     
+
     setIsHydrated(true);
   }, []);
 

@@ -116,7 +116,8 @@ export function getUTM(): UTMData | null {
     }
 
     // Return UTMData without the internal expiresAt field
-    const { expiresAt: _expiresAt, ...utmData } = data;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { expiresAt, ...utmData } = data;
     return utmData;
   } catch (error) {
     console.debug('[UTM] Failed to retrieve UTM data:', error);

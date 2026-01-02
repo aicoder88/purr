@@ -24,6 +24,23 @@ export interface ValidationResult {
   keywordDensity: Record<string, number>;
 }
 
+interface RawKeywordData {
+  Keyword?: string;
+  keyword?: string;
+  Volume?: string;
+  'Search Volume'?: string;
+  search_volume?: string;
+  'Competitive Density'?: string;
+  Competition?: string;
+  competition?: string;
+  'Keyword Difficulty'?: string;
+  Difficulty?: string;
+  difficulty?: string;
+  Topic?: string;
+  Category?: string;
+  category?: string;
+}
+
 export class KeywordOptimizer {
   private keywords: Keyword[] = [];
   private keywordFilePath: string;
@@ -38,15 +55,15 @@ export class KeywordOptimizer {
   async loadKeywords(): Promise<Keyword[]> {
     try {
       const fileContent = await fs.readFile(this.keywordFilePath, 'utf-8');
-      const data = JSON.parse(fileContent);
+      const data: RawKeywordData[] = JSON.parse(fileContent);
 
-      this.keywords = data.map((row: any) => ({
+      this.keywords = data.map((row) => ({
         term: row['Keyword'] || row['keyword'] || '',
         searchVolume: parseInt(row['Volume'] || row['Search Volume'] || row['search_volume'] || '0'),
         competition: this.normalizeCompetition(row['Competitive Density'] || row['Competition'] || row['competition'] || 'medium'),
         difficulty: parseInt(row['Keyword Difficulty'] || row['Difficulty'] || row['difficulty'] || '50'),
         category: row['Topic'] || row['Category'] || row['category'] || 'general'
-      })).filter((k: Keyword) => k.term); // Filter out empty keywords
+      })).filter((k) => k.term); // Filter out empty keywords
 
       return this.keywords;
     } catch (error) {

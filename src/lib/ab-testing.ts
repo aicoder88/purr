@@ -4,6 +4,7 @@
  * Client-side and server-side utilities for running A/B tests.
  */
 
+import { useState, useEffect, useCallback, useRef } from 'react';
 import prisma from './prisma';
 
 export type ABVariant = 'control' | 'variant';
@@ -15,6 +16,7 @@ export interface ABTestResult {
 }
 
 const AB_COOKIE_PREFIX = 'purrify_ab_';
+const AB_VIEWED_PREFIX = 'purrify_ab_viewed_';
 
 /**
  * Check if code is running in browser
@@ -89,7 +91,7 @@ export function parseCookies(cookieHeader: string | undefined): Record<string, s
 }
 
 /**
- * Record a view for an A/B test
+ * Record a view for an A/B test (server-side)
  */
 export async function recordView(testSlug: string, variant: ABVariant): Promise<void> {
   if (!prisma) return;
@@ -112,7 +114,7 @@ export async function recordView(testSlug: string, variant: ABVariant): Promise<
 }
 
 /**
- * Record a conversion for an A/B test
+ * Record a conversion for an A/B test (server-side)
  */
 export async function recordConversion(testSlug: string, variant: ABVariant): Promise<void> {
   if (!prisma) return;
@@ -132,6 +134,43 @@ export async function recordConversion(testSlug: string, variant: ABVariant): Pr
   } catch {
     // Silently fail - don't break the page for tracking
   }
+}
+
+/**
+ * Track A/B test event via API (client-side)
+ */
+export async function trackABEvent(
+  testSlug: string,
+  variant: ABVariant,
+  type: 'view' | 'conversion'
+): Promise<void> {
+  if (!isBrowser()) return;
+
+  try {
+    await fetch('/api/ab-test/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ testSlug, variant, type }),
+    });
+  } catch {
+    // Silently fail
+  }
+}
+
+/**
+ * Check if view was already tracked for this session
+ */
+function hasTrackedView(testSlug: string): boolean {
+  if (!isBrowser()) return false;
+  return sessionStorage.getItem(`${AB_VIEWED_PREFIX}${testSlug}`) === 'true';
+}
+
+/**
+ * Mark view as tracked for this session
+ */
+function markViewTracked(testSlug: string): void {
+  if (!isBrowser()) return;
+  sessionStorage.setItem(`${AB_VIEWED_PREFIX}${testSlug}`, 'true');
 }
 
 /**
@@ -216,7 +255,7 @@ export function calculateSignificance(
 }
 
 /**
- * React hook for A/B testing (client-side)
+ * React hook for A/B testing (client-side) - basic version
  */
 export function useABTest(testSlug: string, trafficSplit: number = 50): {
   variant: ABVariant;
@@ -232,3 +271,56 @@ export function useABTest(testSlug: string, trafficSplit: number = 50): {
     isVariant: variant === 'variant',
   };
 }
+
+/**
+ * Enhanced React hook for A/B testing with automatic view tracking
+ */
+export function useABTestWithTracking(
+  testSlug: string,
+  trafficSplit: number = 50
+): {
+  variant: ABVariant;
+  isVariant: boolean;
+  trackConversion: () => void;
+  isLoaded: boolean;
+} {
+  const [variant, setVariant] = useState<ABVariant>('control');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const hasTrackedRef = useRef(false);
+
+  // Initialize variant and track view
+  useEffect(() => {
+    if (!isBrowser()) return;
+
+    const assignedVariant = getClientVariant(testSlug, trafficSplit);
+    setVariant(assignedVariant);
+    setIsLoaded(true);
+
+    // Track view once per session
+    if (!hasTrackedRef.current && !hasTrackedView(testSlug)) {
+      hasTrackedRef.current = true;
+      markViewTracked(testSlug);
+      trackABEvent(testSlug, assignedVariant, 'view');
+    }
+  }, [testSlug, trafficSplit]);
+
+  // Track conversion function
+  const trackConversion = useCallback(() => {
+    if (!isBrowser()) return;
+    trackABEvent(testSlug, variant, 'conversion');
+  }, [testSlug, variant]);
+
+  return {
+    variant,
+    isVariant: variant === 'variant',
+    trackConversion,
+    isLoaded,
+  };
+}
+
+// Test slugs as constants for type safety
+export const AB_TEST_SLUGS = {
+  HOMEPAGE_HERO: 'homepage-hero-test',
+  CTA_BUTTON_COLOR: 'cta-button-color-test',
+  SOCIAL_PROOF_POSITION: 'social-proof-position-test',
+} as const;

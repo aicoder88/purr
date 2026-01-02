@@ -77,11 +77,11 @@ export class ImageOptimizer {
   /**
    * Generate responsive image srcset string
    */
-  generateSrcSet(optimizedPaths: string[], _format: 'avif' | 'webp' | 'jpg'): string {
+  generateSrcSet(optimizedPaths: string[]): string {
     return optimizedPaths
-      .map((path, index) => {
+      .map((filePath, index) => {
         const size = this.sizes[index];
-        return `${path} ${size}w`;
+        return `${filePath} ${size}w`;
       })
       .join(', ');
   }
@@ -94,9 +94,9 @@ export class ImageOptimizer {
     alt: string,
     className?: string
   ): string {
-    const avifSrcSet = this.generateSrcSet(result.optimized.avif, 'avif');
-    const webpSrcSet = this.generateSrcSet(result.optimized.webp, 'webp');
-    const jpgSrcSet = this.generateSrcSet(result.optimized.jpg, 'jpg');
+    const avifSrcSet = this.generateSrcSet(result.optimized.avif);
+    const webpSrcSet = this.generateSrcSet(result.optimized.webp);
+    const jpgSrcSet = this.generateSrcSet(result.optimized.jpg);
     const fallbackSrc = result.optimized.jpg[result.optimized.jpg.length - 1];
 
     return `
@@ -104,10 +104,10 @@ export class ImageOptimizer {
   ${avifSrcSet ? `<source srcset="${avifSrcSet}" type="image/avif" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw" />` : ''}
   <source srcset="${webpSrcSet}" type="image/webp" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw" />
   <source srcset="${jpgSrcSet}" type="image/jpeg" sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-  <img 
-    src="${fallbackSrc}" 
-    alt="${alt}" 
-    width="${result.width}" 
+  <img
+    src="${fallbackSrc}"
+    alt="${alt}"
+    width="${result.width}"
     height="${result.height}"
     ${className ? `class="${className}"` : ''}
     loading="lazy"

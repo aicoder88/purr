@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 interface RateLimitStore {
   [key: string]: {
@@ -74,10 +74,10 @@ export const RATE_LIMITS = {
 function getClientId(req: NextApiRequest): string {
   // Try to get IP from various headers (for proxies/load balancers)
   const forwarded = req.headers['x-forwarded-for'];
-  const ip = forwarded 
+  const ip = forwarded
     ? (typeof forwarded === 'string' ? forwarded.split(',')[0] : forwarded[0])
     : req.socket.remoteAddress || 'unknown';
-  
+
   return ip;
 }
 
@@ -91,10 +91,10 @@ export function checkRateLimit(
   const clientId = getClientId(req);
   const key = `${req.url}:${clientId}`;
   const now = Date.now();
-  
+
   // Get or create entry
   let entry = store[key];
-  
+
   if (!entry || entry.resetTime < now) {
     // Create new entry
     entry = {
@@ -103,13 +103,13 @@ export function checkRateLimit(
     };
     store[key] = entry;
   }
-  
+
   // Increment count
   entry.count++;
-  
+
   const allowed = entry.count <= config.maxRequests;
   const remaining = Math.max(0, config.maxRequests - entry.count);
-  
+
   return {
     allowed,
     remaining,
@@ -117,28 +117,30 @@ export function checkRateLimit(
   };
 }
 
+type ApiHandler<T = NextApiRequest, R = NextApiResponse> = (req: T, res: R) => Promise<void>;
+
 /**
  * Middleware to apply rate limiting to API routes
  */
 export function withRateLimit(
   config: RateLimitConfig,
-  handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>
-) {
+  handler: ApiHandler
+): ApiHandler {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const { allowed, remaining, resetTime } = checkRateLimit(req, config);
-    
+
     // Set rate limit headers
     res.setHeader('X-RateLimit-Limit', config.maxRequests.toString());
     res.setHeader('X-RateLimit-Remaining', remaining.toString());
     res.setHeader('X-RateLimit-Reset', new Date(resetTime).toISOString());
-    
+
     if (!allowed) {
       return res.status(429).json({
         error: config.message || 'Too many requests',
         retryAfter: Math.ceil((resetTime - Date.now()) / 1000),
       });
     }
-    
+
     return handler(req, res);
   };
 }
@@ -147,9 +149,9 @@ export function withRateLimit(
  * Combine multiple middleware functions
  */
 export function combineMiddleware(
-  ...middlewares: Array<(handler: any) => any>
-) {
-  return (handler: any) => {
+  ...middlewares: Array<(handler: ApiHandler) => ApiHandler>
+): (handler: ApiHandler) => ApiHandler {
+  return (handler: ApiHandler) => {
     return middlewares.reduceRight((acc, middleware) => {
       return middleware(acc);
     }, handler);

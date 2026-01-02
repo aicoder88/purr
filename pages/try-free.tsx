@@ -15,7 +15,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import { trackTikTokClientEvent } from '../src/lib/tiktok-tracking';
 
 export default function TryFreePage() {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const viewTracked = useRef(false);
 
   const productKey = 'trial';

@@ -14,8 +14,6 @@ import {
   Target,
   BarChart3,
   DollarSign,
-  ArrowUpRight,
-  ArrowDownRight,
   Activity,
   Loader2,
 } from 'lucide-react';
@@ -89,8 +87,8 @@ export default function AnalyticsDashboard({ isAuthorized }: PageProps) {
         const customerJson = await customerRes.json();
         if (customerJson.success) setCustomerData(customerJson.data);
       }
-    } catch (error) {
-      console.error('Failed to fetch analytics:', error);
+    } catch (err) {
+      console.error('Failed to fetch analytics:', err);
     }
     setLoading(false);
   }, [dateRange]);

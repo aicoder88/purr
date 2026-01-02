@@ -36,7 +36,8 @@ module.exports = {
     '/fr/blog/*',
     '/zh/blog',
     '/zh/blog/*',
-    '/es/*', // Spanish pages are not a supported locale
+    '/es/blog',
+    '/es/blog/*',
     // Pages that redirect - exclude to avoid canonical pointing to redirect issues
     '/checkout',
     '/cart-2',
@@ -109,6 +110,7 @@ module.exports = {
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
     { href: 'https://www.purrify.ca/fr', hreflang: 'fr-CA' },
     { href: 'https://www.purrify.ca/zh', hreflang: 'zh-CN' },
+    { href: 'https://www.purrify.ca/es', hreflang: 'es' },
     { href: 'https://www.purrify.ca', hreflang: 'x-default' },
   ],
   // Explicitly define all important pages
@@ -121,6 +123,12 @@ module.exports = {
     },
     {
       loc: '/fr',
+      changefreq: 'daily',
+      priority: 0.9,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es',
       changefreq: 'daily',
       priority: 0.9,
       lastmod: new Date().toISOString(),
@@ -146,6 +154,12 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     {
+      loc: '/es/privacy-policy',
+      changefreq: 'monthly',
+      priority: 0.3,
+      lastmod: new Date().toISOString(),
+    },
+    {
       loc: '/terms',
       changefreq: 'monthly',
       priority: 0.3,
@@ -157,12 +171,20 @@ module.exports = {
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
+    {
+      loc: '/es/terms',
+      changefreq: 'monthly',
+      priority: 0.3,
+      lastmod: new Date().toISOString(),
+    },
     // Product pages (canonical slugs)
     { loc: '/products/trial-size', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     { loc: '/products/standard', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     // USA landing page - important for US market expansion
     { loc: '/us', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    // Spanish pages
+    { loc: '/es/opiniones', changefreq: 'weekly', priority: 0.7, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
     // Blog pages - English only hreflang (fr/zh blog not available)
@@ -187,6 +209,21 @@ module.exports = {
         changefreq: 'monthly',
         priority: 0.6,
         lastmod: new Date().toISOString(),
+      };
+    }
+
+    // Spanish pages - specific hreflang setup
+    if (path.startsWith('/es/')) {
+      return {
+        loc: path,
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+        alternateRefs: [
+          { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
+          { href: 'https://www.purrify.ca/es', hreflang: 'es' },
+          { href: 'https://www.purrify.ca', hreflang: 'x-default' },
+        ],
       };
     }
 

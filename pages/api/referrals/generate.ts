@@ -1,126 +1,170 @@
+/**
+ * POST /api/referrals/generate
+ * Generate a unique referral code for a user
+ *
+ * Sprint 6C: "Give $5, Get $5" Referral Program
+ */
+
 import { NextApiRequest, NextApiResponse } from 'next';
-import crypto from 'node:crypto';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]';
+import prisma from '../../../src/lib/prisma';
+import { withRateLimit, RATE_LIMITS } from '../../../src/lib/security/rate-limit';
+import { withCSRFProtection } from '../../../src/lib/security/csrf';
+import {
+  generateReferralCode,
+  generateShareUrls,
+  REFERRAL_CONFIG,
+} from '../../../src/lib/referral';
+import * as Sentry from '@sentry/nextjs';
 
-type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
-
-const getGtag = (): GtagFunction | undefined => {
-  if (typeof global === 'undefined') {
-    return undefined;
-  }
-  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
-  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
-};
-
-interface ReferralCode {
-  id: string;
-  userId: string;
-  code: string;
-  createdAt: string;
-  expiresAt: string;
-  maxUses: number;
-  currentUses: number;
-  isActive: boolean;
+interface GenerateReferralResponse {
+  success: boolean;
+  data?: {
+    code: string;
+    shareUrl: string;
+    shareUrls: ReturnType<typeof generateShareUrls>;
+    expiresAt?: string;
+    maxReferrals: number;
+  };
+  error?: string;
 }
 
-// In-memory storage for demo - replace with database in production
-const referralCodes = new Map<string, ReferralCode>();
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<GenerateReferralResponse>
+) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({
+      success: false,
+      error: 'Method not allowed',
+    });
   }
 
   try {
-    const { userId, userName, email } = req.body;
+    // Get session - user must be logged in
+    const session = await getServerSession(req, res, authOptions);
 
-    if (!userId || !userName) {
-      return res.status(400).json({ error: 'Missing required fields: userId, userName' });
-    }
-
-    // Email is optional but logged for tracking
-    console.log('Generating referral code for:', email || 'no email provided');
-
-    // Generate personalized referral code
-    const sanitizedName = userName.replaceAll(/[^a-zA-Z]/g, '').toUpperCase().substring(0, 8);
-    const randomSuffix = Math.floor(Math.random() * 99) + 1;
-    const code = `${sanitizedName}${randomSuffix}-CAT`;
-
-    // Create referral code object
-    const referralCode: ReferralCode = {
-      id: crypto.randomUUID(),
-      userId,
-      code,
-      createdAt: new Date().toISOString(),
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year
-      maxUses: 50, // Allow up to 50 referrals per user
-      currentUses: 0,
-      isActive: true
-    };
-
-    // Store referral code (replace with database insert)
-    referralCodes.set(code, referralCode);
-
-    // Track referral code generation
-    const gtag = getGtag();
-    if (gtag) {
-      gtag('event', 'referral_code_generated', {
-        event_category: 'referrals',
-        event_label: 'code_generation',
-        user_id: userId
+    if (!session?.user?.email) {
+      return res.status(401).json({
+        success: false,
+        error: 'You must be logged in to generate a referral code',
       });
     }
 
-    res.status(200).json({
+    if (!prisma) {
+      return res.status(503).json({
+        success: false,
+        error: 'Database not available',
+      });
+    }
+
+    const userEmail = session.user.email;
+    const userName = session.user.name || userEmail.split('@')[0];
+
+    // Find user by email
+    const user = await prisma.user.findUnique({
+      where: { email: userEmail },
+      include: { referralCode: true },
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found',
+      });
+    }
+
+    // Check if user already has a referral code
+    if (user.referralCode) {
+      const shareUrls = generateShareUrls(user.referralCode.code, userName);
+      return res.status(200).json({
+        success: true,
+        data: {
+          code: user.referralCode.code,
+          shareUrl: shareUrls.shareUrl,
+          shareUrls,
+          expiresAt: user.referralCode.expiresAt?.toISOString(),
+          maxReferrals: REFERRAL_CONFIG.MAX_REFERRALS_PER_USER,
+        },
+      });
+    }
+
+    // Generate new unique code
+    let code = generateReferralCode(userName);
+    let attempts = 0;
+    const maxAttempts = 10;
+
+    // Ensure code is unique
+    while (attempts < maxAttempts) {
+      const existingCode = await prisma.referralCode.findUnique({
+        where: { code },
+      });
+
+      if (!existingCode) {
+        break;
+      }
+
+      // Regenerate with different random suffix
+      code = generateReferralCode(userName);
+      attempts++;
+    }
+
+    if (attempts >= maxAttempts) {
+      // Fallback: use a completely random code
+      code = `REF${Date.now().toString(36).toUpperCase()}-PURR`;
+    }
+
+    // Create the referral code
+    const referralCode = await prisma.referralCode.create({
+      data: {
+        code,
+        userId: user.id,
+        isActive: true,
+        totalClicks: 0,
+        totalSignups: 0,
+        totalOrders: 0,
+        totalEarnings: 0,
+      },
+    });
+
+    // Log audit event
+    await prisma.auditLog.create({
+      data: {
+        action: 'REFERRAL_CODE_GENERATED',
+        entity: 'referral_codes',
+        entityId: referralCode.id,
+        userId: user.id,
+        ipAddress: req.headers['x-forwarded-for']?.toString().split(',')[0] || req.socket.remoteAddress,
+        userAgent: req.headers['user-agent'],
+        changes: {
+          code: referralCode.code,
+          generatedAt: new Date().toISOString(),
+        },
+      },
+    });
+
+    const shareUrls = generateShareUrls(code, userName);
+
+    return res.status(201).json({
       success: true,
       data: {
         code: referralCode.code,
-        shareUrl: `https://www.purrify.ca/refer/${referralCode.code}`,
-        expiresAt: referralCode.expiresAt,
-        maxUses: referralCode.maxUses,
-        currentUses: referralCode.currentUses
-      }
+        shareUrl: shareUrls.shareUrl,
+        shareUrls,
+        expiresAt: referralCode.expiresAt?.toISOString(),
+        maxReferrals: REFERRAL_CONFIG.MAX_REFERRALS_PER_USER,
+      },
     });
-
   } catch (error) {
     console.error('Error generating referral code:', error);
-    res.status(500).json({
-      error: 'Failed to generate referral code',
-      message: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
+    Sentry.captureException(error);
+
+    return res.status(500).json({
+      success: false,
+      error: 'Failed to generate referral code. Please try again.',
     });
   }
 }
 
-// Helper function to generate social sharing URLs
-export function generateSocialShareUrls(code: string, referrerName: string) {
-  const shareUrl = `https://www.purrify.ca/refer/${code}`;
-  const message = `Hey! I love this cat litter deodorizer that completely eliminates odors. ${referrerName} recommended it and you get a FREE trial! Check it out:`;
-
-  return {
-    email: {
-      subject: `${referrerName} recommends Purrify - Get your FREE trial!`,
-      body: `Hi!\n\n${message}\n\n${shareUrl}\n\nThis stuff actually works - no more embarrassing litter box smell!\n\nBest,\n${referrerName}`
-    },
-    sms: {
-      text: `${message} ${shareUrl}`
-    },
-    facebook: {
-      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(message)}`
-    },
-    twitter: {
-      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl} #CatOdorSolution #PurrifyWorks`)}`
-    },
-    whatsapp: {
-      url: `https://wa.me/?text=${encodeURIComponent(`${message} ${shareUrl}`)}`
-    },
-    linkedin: {
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
-    }
-  };
-}
-
-// Helper function to validate referral code format
-export function validateReferralCodeFormat(code: string): boolean {
-  // Format: NAME##-CAT (e.g., SARAH15-CAT)
-  const codeRegex = /^[A-Z]{1,8}\d{1,2}-CAT$/;
-  return codeRegex.test(code);
-}
+export default withRateLimit(RATE_LIMITS.CREATE, withCSRFProtection(handler));

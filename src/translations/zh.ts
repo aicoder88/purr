@@ -2048,5 +2048,76 @@ export const zh = {
       solution: "解决方案",
       catsServed: "只猫服务"
     }
+  },
+  // 推荐计划 - Sprint 6C
+  referral: {
+    dashboard: {
+      title: "推荐好友，双方各得5加元",
+      loginRequired: "登录以访问您的推荐仪表板并开始赚取奖励。",
+      signIn: "登录",
+      retry: "重试",
+      generateDescription: "生成您的专属推荐码并分享给朋友。他们首单可享5加元优惠，您在他们购买后可获得5加元积分！",
+      generateButton: "生成我的推荐码",
+      generating: "生成中..."
+    },
+    stats: {
+      completedReferrals: "已完成推荐",
+      totalEarned: "总收益",
+      availableCredit: "可用积分",
+      pending: "待处理"
+    },
+    milestone: {
+      title: "里程碑进度",
+      referrals: "次推荐",
+      nextReward: "下一个奖励"
+    },
+    rewards: {
+      title: "您的奖励",
+      credit: "积分",
+      available: "可用"
+    },
+    activity: {
+      title: "最近活动",
+      completed: "已完成",
+      pending: "待处理"
+    },
+    widget: {
+      title: "推荐好友，双方各得5加元",
+      giveGet: "推荐好友，双方各得5加元",
+      description: "与朋友分享您的推荐码。他们可享5加元优惠，您可获得5加元积分！",
+      shareDescription: "与朋友分享您的推荐码",
+      yourCode: "您的推荐码",
+      shareLink: "分享链接",
+      copy: "复制",
+      copyCode: "复制推荐码",
+      copyLink: "复制链接",
+      copied: "已复制！",
+      shareVia: "通过以下方式分享",
+      howItWorks: "如何运作",
+      step1: "与朋友分享您的推荐码或链接",
+      step2: "他们首单可享5加元优惠",
+      step3: "他们购买后您可获得5加元积分"
+    },
+    share: {
+      email: "邮件",
+      sms: "短信",
+      link: "链接"
+    },
+    checkout: {
+      haveCode: "有推荐码？点击这里",
+      enterReferralCode: "输入推荐码",
+      enterCode: "请输入推荐码",
+      emailRequired: "请先输入您的邮箱",
+      invalidCode: "无效的推荐码",
+      error: "应用推荐码失败。请重试。",
+      apply: "应用",
+      applying: "应用中...",
+      applied: "推荐码已应用！",
+      referredBy: "由 {name} 推荐",
+      off: "优惠",
+      remove: "移除",
+      discountNote: "使用朋友的推荐码可享5加元优惠"
+    }
   }
+
 };

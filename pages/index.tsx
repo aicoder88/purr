@@ -11,6 +11,9 @@ import { BlogPreview } from '../src/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '../src/components/sections/scrolling-announcement-bar';
 import { LazyLoad } from '../src/components/performance/LazyLoad';
 
+// A/B Testing
+import { useABTestWithTracking, AB_TEST_SLUGS } from '../src/lib/ab-testing';
+
 const sectionSkeleton = (height: string, rounding: string = 'rounded-2xl') => (
   <div
     className={`${height} ${rounding} bg-gray-50 dark:bg-gray-800/70 animate-pulse`}
@@ -55,6 +58,28 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
   const standardPriceValue = getProductPrice('standard').toFixed(2);
   const familyPriceValue = getProductPrice('family').toFixed(2);
   const priceRange = getPriceRange(locale);
+
+  // A/B Test: Social Proof Position
+  const {
+    isVariant: showSocialProofAboveFold,
+    trackConversion: trackSocialProofConversion,
+  } = useABTestWithTracking(AB_TEST_SLUGS.SOCIAL_PROOF_POSITION);
+
+  // Social Proof component for A/B testing
+  const SocialProofAboveFold = showSocialProofAboveFold ? (
+    <div className="cv-auto cis-480">
+      <ErrorBoundary>
+        <SocialProofBadges />
+      </ErrorBoundary>
+    </div>
+  ) : null;
+
+  // Social Proof component in original position (below fold)
+  const SocialProofBelowFold = !showSocialProofAboveFold ? (
+    <ErrorBoundary>
+      <SocialProofBadges />
+    </ErrorBoundary>
+  ) : null;
 
   return (
     <>
@@ -272,6 +297,9 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
+        {/* A/B Test: Social Proof Above Fold (Variant) */}
+        {SocialProofAboveFold}
+
         {/* Science Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
@@ -293,9 +321,9 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
           </ErrorBoundary>
         </div>
 
-        {/* Enhanced Product Comparison */}
+        {/* Enhanced Product Comparison - Track conversion when user scrolls here */}
         <div className="cv-auto cis-960">
-          <ScrollAnchor id="products" />
+          <ScrollAnchor id="products" onVisible={trackSocialProofConversion} />
           <ErrorBoundary>
             <LazyLoad placeholder={sectionSkeleton('h-96', 'rounded-lg')}>
               <EnhancedProductComparison />
@@ -310,10 +338,8 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
           </div>
         </section>
 
-        {/* Social Proof - Find Us On */}
-        <ErrorBoundary>
-          <SocialProofBadges />
-        </ErrorBoundary>
+        {/* A/B Test: Social Proof Below Fold (Control) */}
+        {SocialProofBelowFold}
 
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">

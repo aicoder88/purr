@@ -22,7 +22,7 @@ const languages: LanguageOption[] = [
   },
   {
     locale: 'fr',
-    name: 'Français',
+    name: 'Francais',
     flag: '/flags/fr.svg',
     alt: 'French Flag'
   },
@@ -31,6 +31,12 @@ const languages: LanguageOption[] = [
     name: '中文',
     flag: '/flags/zh.svg',
     alt: 'Chinese Flag'
+  },
+  {
+    locale: 'es',
+    name: 'Espanol',
+    flag: '/flags/es.svg',
+    alt: 'Spanish Flag'
   }
 ];
 

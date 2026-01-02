@@ -452,7 +452,7 @@ export class SEOScorer {
   private prioritizeSuggestion(message: string): SEOSuggestion['priority'] {
     const highPriority = ['title', 'keyword', 'meta description'];
     const lowPriority = ['consider', 'try', 'might'];
-    
+
     if (highPriority.some(word => message.toLowerCase().includes(word))) {
       return 'high';
     }
@@ -472,7 +472,7 @@ export class SEOScorer {
       'add internal links',
       'add meta description'
     ];
-    return autoFixablePatterns.some(pattern => 
+    return autoFixablePatterns.some(pattern =>
       message.toLowerCase().includes(pattern)
     );
   }
@@ -505,11 +505,11 @@ export class SEOScorer {
       .map(post => {
         const postKeywords = post.seo.keywords.map(k => k.toLowerCase());
         const currentKeywords = currentPost.seo.keywords.map(k => k.toLowerCase());
-        
+
         // Calculate relevance score
         const commonKeywords = postKeywords.filter(k => currentKeywords.includes(k));
         const relevanceScore = commonKeywords.length / Math.max(postKeywords.length, 1);
-        
+
         return {
           post,
           relevanceScore,
@@ -526,12 +526,12 @@ export class SEOScorer {
       for (const keyword of commonKeywords) {
         const regex = new RegExp(`\\b${keyword}\\b`, 'i');
         const match = content.match(regex);
-        
+
         if (match && match.index !== undefined) {
           const contextStart = Math.max(0, match.index - 50);
           const contextEnd = Math.min(content.length, match.index + keyword.length + 50);
           const context = content.substring(contextStart, contextEnd);
-          
+
           suggestions.push({
             anchor: keyword,
             suggestedPost: {
@@ -541,7 +541,7 @@ export class SEOScorer {
             },
             context: '...' + context + '...'
           });
-          
+
           break; // One suggestion per post
         }
       }
@@ -558,10 +558,10 @@ export class SEOScorer {
     allPosts: BlogPost[]
   ): Promise<KeywordCannibalization[]> {
     const cannibalization: KeywordCannibalization[] = [];
-    
+
     for (const keyword of currentPost.seo.keywords) {
       const competingPosts = allPosts
-        .filter(post => 
+        .filter(post =>
           post.slug !== currentPost.slug &&
           post.status === 'published' &&
           post.seo.keywords.some(k => k.toLowerCase() === keyword.toLowerCase())
@@ -571,7 +571,7 @@ export class SEOScorer {
           const titleMatch = post.title.toLowerCase().includes(keyword.toLowerCase());
           const contentMatches = (post.content.toLowerCase().match(new RegExp(keyword.toLowerCase(), 'g')) || []).length;
           const score = (titleMatch ? 50 : 0) + Math.min(contentMatches * 5, 50);
-          
+
           return {
             slug: post.slug,
             title: post.title,
@@ -595,7 +595,7 @@ export class SEOScorer {
   /**
    * Generate alt text for images using AI
    */
-  generateAltText(imageUrl: string, _context: string): string {
+  generateAltText(imageUrl: string): string {
     // Simple alt text generation (can be enhanced with AI)
     const filename = imageUrl.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image';
     const cleanFilename = filename.replaceAll(/[-_]/g, ' ');
@@ -609,27 +609,27 @@ export class SEOScorer {
   generateMetaDescription(content: string, keywords: string[]): string {
     // Remove HTML tags
     const text = content.replaceAll(/<[^>]*>/g, ' ').trim();
-    
+
     // Find first paragraph that contains a keyword
     const paragraphs = text.split(/\n\n+/);
     let bestParagraph = paragraphs[0];
-    
+
     for (const para of paragraphs) {
       if (keywords.some(k => para.toLowerCase().includes(k.toLowerCase()))) {
         bestParagraph = para;
         break;
       }
     }
-    
+
     // Trim to 150-160 characters
     let description = bestParagraph.substring(0, 157).trim();
-    
+
     // End at last complete word
     const lastSpace = description.lastIndexOf(' ');
     if (lastSpace > 140) {
       description = description.substring(0, lastSpace);
     }
-    
+
     return description + '...';
   }
 
@@ -638,18 +638,18 @@ export class SEOScorer {
    */
   optimizeTitle(title: string, keywords: string[]): string {
     let optimized = title;
-    
+
     // Ensure main keyword is present
     const mainKeyword = keywords[0];
     if (mainKeyword && !title.toLowerCase().includes(mainKeyword.toLowerCase())) {
       optimized = `${mainKeyword}: ${title}`;
     }
-    
+
     // Trim to ideal length (50-60 chars)
     if (optimized.length > 60) {
       optimized = optimized.substring(0, 57) + '...';
     }
-    
+
     return optimized;
   }
 
@@ -658,14 +658,14 @@ export class SEOScorer {
    */
   validateSchema(post: BlogPost): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
-    
+
     // Check required fields for Article schema
     if (!post.title) errors.push('Missing title');
     if (!post.excerpt) errors.push('Missing excerpt/description');
     if (!post.author.name) errors.push('Missing author name');
     if (!post.publishDate) errors.push('Missing publish date');
     if (!post.featuredImage.url) errors.push('Missing featured image');
-    
+
     // Check image requirements
     if (post.featuredImage.url) {
       if (!post.featuredImage.width || !post.featuredImage.height) {
@@ -675,7 +675,7 @@ export class SEOScorer {
         errors.push('Featured image should be at least 1200px wide');
       }
     }
-    
+
     return {
       valid: errors.length === 0,
       errors

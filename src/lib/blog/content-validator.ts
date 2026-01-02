@@ -9,7 +9,7 @@ export interface ValidationResult {
 export interface ValidationError {
   field: string;
   message: string;
-  value?: any;
+  value?: string | number;
 }
 
 export interface ValidationWarning {
@@ -290,7 +290,7 @@ export class ContentValidator {
    */
   async validateFeaturedImage(image: BlogPost['featuredImage']): Promise<ValidationResult> {
     const syncResult = this.validateFeaturedImageSync(image);
-    
+
     if (!syncResult.valid || !image.url) {
       return syncResult;
     }
@@ -326,7 +326,7 @@ export class ContentValidator {
    */
   containsTemplateVariables(text: string): boolean {
     if (!text) return false;
-    
+
     return TEMPLATE_VAR_PATTERNS.some(pattern => {
       pattern.lastIndex = 0; // Reset regex state
       return pattern.test(text);
@@ -354,10 +354,10 @@ export class ContentValidator {
    */
   isValidURL(url: string): boolean {
     if (!url) return false;
-    
+
     // Allow relative URLs
     if (url.startsWith('/')) return true;
-    
+
     // Check absolute URLs
     try {
       new URL(url);
@@ -384,17 +384,17 @@ export class ContentValidator {
    */
   checkDuplicate(title: string, existingTitles: string[]): boolean {
     const titleWords = title.toLowerCase().split(/\s+/).filter(word => word.length > 3);
-    
+
     for (const existingTitle of existingTitles) {
       const existingWords = existingTitle.toLowerCase().split(/\s+/).filter(word => word.length > 3);
       const commonWords = titleWords.filter(word => existingWords.includes(word));
-      
+
       // If more than 50% of significant words match, consider it a duplicate
       if (titleWords.length > 0 && commonWords.length / titleWords.length > 0.5) {
         return true;
       }
     }
-    
+
     return false;
   }
 
@@ -408,7 +408,7 @@ export class ContentValidator {
     // Word count check
     const textContent = this.stripHTML(post.content);
     const wordCount = textContent.split(/\s+/).length;
-    
+
     if (wordCount < 300) {
       warnings.push({
         field: 'content',
