@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
 import { useTranslation } from '@/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl, generateWebsiteSchema } from '@/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateWebsiteSchema, generateFAQSchema } from '@/lib/seo-utils';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
 
 type ResponseData = {
@@ -187,6 +187,12 @@ export default function ContactPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateWebsiteSchema(locale))
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateFAQSchema(faqs))
           }}
         />
       </Head>

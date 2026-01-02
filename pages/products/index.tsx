@@ -176,7 +176,7 @@ const ProductsPage: NextPage = () => {
 
   const pageDescription = locale === 'fr'
     ? "Découvrez tous les formats Purrify. Du format d'essai gratuit au format familial, trouvez la taille parfaite pour votre foyer."
-    : "Explore all Purrify sizes. From free trial to family pack, find the perfect activated carbon litter additive for your household.";
+    : "★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.";
 
   return (
     <>

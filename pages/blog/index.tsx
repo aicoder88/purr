@@ -72,7 +72,7 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
     <>
       <Head>
         <title>{`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}</title>
-        <meta name="description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
+        <meta name="description" content="Expert cat care guides: litter box odor solutions, multi-cat tips, apartment hacks. Learn why activated carbon beats baking soda. New articles weekly." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Noindex for empty French/Chinese blog pages - SEO fix 2025-12-26 */}

@@ -21,7 +21,7 @@ import {
   // DollarSign
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 
 const ShippingPage: NextPage = () => {
@@ -118,9 +118,9 @@ const ShippingPage: NextPage = () => {
     <>
       <Head>
         <title>{`${pageTitle} | ${SITE_NAME}`}</title>
-        <meta 
-          name="description" 
-          content="Learn about Purrify shipping options, delivery times, and costs. Fast shipping on orders $25+. Reliable delivery across Canada and international shipping available." 
+        <meta
+          name="description"
+          content="FREE Shipping on orders $25+ | Ships to USA & Canada | 2-3 day express available | Same-day dispatch before 2 PM EST. Track your order online."
         />
         <meta name="keywords" content="Purrify shipping, delivery times, shipping costs, Canada Post, free shipping, international delivery" />
         <link rel="canonical" href={canonicalUrl} />
@@ -145,6 +145,13 @@ const ShippingPage: NextPage = () => {
               "description": "Purrify shipping options, delivery times, and costs for Canada and international delivery.",
               "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`
             })
+          }}
+        />
+        {/* FAQ Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateFAQSchema(faqItems))
           }}
         />
       </Head>

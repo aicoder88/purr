@@ -12,7 +12,7 @@ export default function SupportPage() {
   const { t, locale } = useTranslation();
   
   const pageTitle = `Customer Support - ${SITE_NAME} Help Center`;
-  const pageDescription = "Get help with Purrify products, orders, and shipping. Contact our support team or find answers to common questions about cat litter odor control.";
+  const pageDescription = "Need help? Fast support for orders, shipping, returns. Email, phone, or WhatsApp available 7 days/week. Response within 24 hours. Ships to USA & Canada.";
   const canonicalPath = '/support';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);

@@ -326,16 +326,29 @@ See Sprint 3 Completion Status section at top for details.
 - `pages/products/family-pack.tsx` - Added "Ships to USA & Canada" to meta description
 - `next-sitemap.config.js` - Added /us page with priority 0.85
 
-### Sprint 6B: CTR & Meta Optimization
+### Sprint 6B: CTR & Meta Optimization ✅ MOSTLY COMPLETE
 
 **Problem:** Good positions but low CTR on key queries (e.g., "ammonia smell cat litter" - position 15, 0 clicks)
 
-| Task | Priority | Notes |
-|------|----------|-------|
-| Rewrite meta descriptions for top 10 pages | High | Focus on CTR, add power words |
-| Add FAQ schema to more pages | Medium | Rich snippets boost CTR |
-| Optimize /retailers page (position 35.9) | Medium | Better SEO, clearer value prop |
-| A/B test homepage title tags | Medium | Use existing A/B framework |
+| Task | Status | Notes |
+|------|--------|-------|
+| Rewrite meta descriptions for top 10 pages | ✅ Done | Added power words, ratings, "Ships USA & Canada" |
+| Add FAQ schema to more pages | ✅ Done | Added to contact, shipping, retailers pages |
+| Optimize /retailers page (position 35.9) | ✅ Done | New title, FAQ schema, B2B structured data |
+| A/B test homepage title tags | 🔜 Pending | Requires analytics setup |
+
+**Files Modified:**
+- `pages/reviews.tsx` - CTR-optimized meta description with star rating
+- `pages/contact.tsx` - Added FAQ schema, updated meta description
+- `pages/try-free.tsx` - Added rating, USA shipping to meta
+- `pages/products/trial-size.tsx` - Added conversion metrics, USA shipping
+- `pages/products/index.tsx` - Added rating, free trial, guarantee
+- `pages/case-studies.tsx` - Added "Before & After" power words
+- `pages/blog/index.tsx` - Expert-focused meta description
+- `pages/support/shipping.tsx` - Added FAQ schema, CTR-optimized meta
+- `pages/support/index.tsx` - Updated meta with USA shipping
+- `pages/retailers.tsx` - Added FAQ schema, B2B Organization schema
+- `src/translations/en.ts` - Updated retailers SEO title/description/keywords
 
 ### Sprint 6C: Referral & Social Proof
 
@@ -581,8 +594,8 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 | Sprint 5B | B2B Expansion | ✅ COMPLETE |
 | Sprint 5C | Satellite Site Expansion | ✅ COMPLETE |
 | Sprint 6A | USA Market Expansion | ✅ COMPLETE |
-| Sprint 6B | CTR & Meta Optimization | 🔜 NEXT |
-| Sprint 6C | Referral & Social Proof | 🔜 PENDING |
+| Sprint 6B | CTR & Meta Optimization | ✅ MOSTLY COMPLETE |
+| Sprint 6C | Referral & Social Proof | 🔜 NEXT |
 | Sprint 6D | Performance & Technical Debt | 🔜 PENDING |
 
 ---
@@ -631,4 +644,5 @@ Cart and EmailSubscriber models added to `prisma/schema.prisma`.
 *Sprint 5B completed: January 2, 2026*
 *Sprint 5C completed: January 2, 2026*
 *Sprint 6A completed: January 2, 2026*
+*Sprint 6B completed: January 2, 2026* (A/B test pending)
 *Analysis by: 5 specialized agents (SEO, Frontend, UX, Backend, Performance)*

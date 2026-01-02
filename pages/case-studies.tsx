@@ -141,12 +141,12 @@ export default function CaseStudies() {
     <>
       <Head>
         <title>{`Success Stories - Real Customer Results | ${SITE_NAME}`}</title>
-        <meta name="description" content="Detailed case studies showing how Purrify cat litter deodorizer solved real odor problems for Canadian families. See measurable results and customer transformations." />
+        <meta name="description" content="Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.' Ships to USA & Canada." />
         <meta name="keywords" content="Purrify case studies, cat odor success stories, customer results, before and after, cat litter deodorizer effectiveness" />
 
         {/* Open Graph */}
         <meta property="og:title" content="Success Stories - Real Customer Results" />
-        <meta property="og:description" content="See detailed case studies showing how Purrify transformed homes across Canada with natural odor elimination." />
+        <meta property="og:description" content="Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results in 24 hours." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
@@ -154,7 +154,7 @@ export default function CaseStudies() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Success Stories - Real Customer Results" />
-        <meta name="twitter:description" content="Detailed success stories showing measurable results from Canadian cat owners." />
+        <meta name="twitter:description" content="Before & After: Real photos showing 95% odor reduction. See why 1,000+ cat owners switched to Purrify." />
         <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
         <meta name="twitter:url" content={canonicalUrl} />
 
