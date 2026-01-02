@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/nextjs';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
 
 interface TaskResult {
