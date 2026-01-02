@@ -9,10 +9,11 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, ShieldCheck, Truck } 
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
+import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
 import { buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface StandardSizePageProps {
@@ -22,6 +23,7 @@ interface StandardSizePageProps {
 export default function StandardSizePage({ priceValidUntil }: StandardSizePageProps) {
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
+  const purchaseCardsRef = useRef<HTMLDivElement>(null);
 
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
@@ -43,7 +45,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   }, [productKey, productName, numericPrice]);
 
   // Track AddToCart + InitiateCheckout when user clicks buy
-  const handleBuyClick = (isAutoship: boolean) => {
+  const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
     const price = isAutoship ? getProductPrice('standardAutoship') : numericPrice;
     const name = isAutoship ? `${productName} - Autoship` : productName;
 
@@ -51,8 +53,8 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
       content_id: productKey,
       content_name: name,
       content_type: 'product',
-      quantity: 1,
-      value: price,
+      quantity: quantity,
+      value: price * quantity,
       currency: 'CAD',
     });
 
@@ -60,11 +62,16 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
       content_id: productKey,
       content_name: name,
       content_type: 'product',
-      quantity: 1,
-      value: price,
+      quantity: quantity,
+      value: price * quantity,
       currency: 'CAD',
     });
-  };
+  }, [numericPrice, productName, productKey]);
+
+  // Handler for sticky cart
+  const handleStickyAddToCart = useCallback((quantity: number) => {
+    handleBuyClick(false, quantity);
+  }, [handleBuyClick]);
 
   const pageTitle = `${productName} - Ideal Odor Control for Single-Cat Homes`;
   const pageDescription = t.products?.["purrify-50g"]?.description || "Perfect for homes with 1 cat. 50g Standard Size eliminates ammonia smells instantly using activated carbon.";
@@ -193,7 +200,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
               "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
                 "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
+                "merchantReturnDays": 30,
                 "returnMethod": "https://schema.org/ReturnByMail",
                 "returnFees": "https://schema.org/FreeReturn"
               }
@@ -303,12 +310,12 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                   </div>
 
                   <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
-                    The ultimate solution for multi-cat households. 120 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.
+                    The perfect solution for single-cat households. 50 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.
                   </p>
                 </div>
 
-                {/* Purchase Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Purchase Cards - This is the target element for sticky cart */}
+                <div ref={purchaseCardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Autoship Option */}
                   <div className="relative group overflow-hidden bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white dark:text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
@@ -360,7 +367,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                 <div className="flex flex-wrap gap-6 pt-2">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                     <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
-                    7-Day Money Back
+                    30-Day Money Back
                   </div>
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                     <Truck className="w-5 h-5 text-electric-indigo" />
@@ -529,6 +536,16 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
           </Container>
         </section>
       </main>
+
+      {/* Sticky Add to Cart */}
+      <StickyAddToCart
+        productName={productName}
+        productSize="50g"
+        price={productPrice}
+        checkoutUrl={singleCheckoutUrl}
+        onAddToCart={handleStickyAddToCart}
+        targetRef={purchaseCardsRef}
+      />
     </>
   );
 }

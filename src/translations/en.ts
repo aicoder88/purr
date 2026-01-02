@@ -589,7 +589,7 @@ export const en = {
     prioritySupport: "Priority Customer Support",
     tryRiskFree: "Try Risk-Free",
     chooseThisSize: "Choose This Size",
-    chosenByCustomers: "🔥 68% of customers choose this bundle",
+    chosenByCustomers: "68% of customers choose this bundle",
     whyChoosePurrify: "Why Choose Purrify?",
     joinThousands: "Join 1,000+ cat owners who trust Purrify",
     happyCustomers: "Happy Customers",
@@ -800,7 +800,7 @@ export const en = {
     ],
     testimonialsTestUsers: "What our beta testers say:",
     claimNow: "CLAIM YOUR FREE TRIAL NOW",
-    warningHighDemand: "⚠️ WARNING: Due to high demand, we cannot guarantee availability after the timer expires.",
+    warningHighDemand: "WARNING: Due to high demand, we cannot guarantee availability after the timer expires.",
     privacyNotice: "100% Free. No credit card required.",
     zeroCommitmentGift: "Zero commitment - this is our gift to you",
     instantOdorElimination: "Experience instant odor elimination magic",
@@ -1500,7 +1500,7 @@ export const en = {
   maps: {
     findNearYou: "Find Purrify Near You | Retail Store Locations",
     discoverWhere: "Discover where to buy Purrify across Canada. Each location represents a retail store where you can find our products.",
-    retailStores: "🗺️ Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more",
+    retailStores: "Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more",
     cities: {
       montreal: "Montreal",
       quebec: "Quebec City",
@@ -1721,8 +1721,8 @@ export const en = {
       },
       surface: {
         title: "Massive Surface Area",
-        stat: "1,150 m²/g",
-        comparison: "That's equivalent to 4 tennis courts of trapping surface in every teaspoon. Compare that to baking soda at just 0.2 m²/g—nearly 6,000 times less surface area.",
+        stat: "1,150 m2/g",
+        comparison: "That's equivalent to 4 tennis courts of trapping surface in every teaspoon. Compare that to baking soda at just 0.2 m2/g—nearly 6,000 times less surface area.",
         explanation: "This enormous surface area is why a small amount of activated carbon can capture so much ammonia over such a long period."
       }
     },
@@ -1834,7 +1834,7 @@ export const en = {
     stats: {
       days: { value: "7+", label: "Days of Freshness" },
       savings: { value: "50%", label: "Fewer Litter Changes" },
-      surfaceArea: { value: "1,150", label: "m²/g Surface Area" },
+      surfaceArea: { value: "1,150", label: "m2/g Surface Area" },
       natural: { value: "100%", label: "Natural Ingredients" }
     },
     faq: {
@@ -1863,6 +1863,93 @@ export const en = {
       secondaryButton: "Try Trial Size",
       benefit1: "Free shipping over $35",
       benefit2: "30-day satisfaction guarantee"
+    }
+  },
+
+  // Try Free Landing Page (for Ad Campaigns)
+  tryFreePage: {
+    meta: {
+      title: "Try Purrify Free - Just $4.76 Shipping | Cat Litter Odor Eliminator",
+      description: "Get your FREE Purrify trial - just pay $4.76 shipping. Eliminate litter box smell in 30 seconds. 138+ 5-star reviews. 30-day money-back guarantee."
+    },
+    hero: {
+      badge: "Limited Time Offer",
+      headline: "Try Purrify Free",
+      subheadline: "Just $4.76 Shipping",
+      description: "Discover why 1,000+ cat parents trust Purrify to eliminate litter box odor. Get your free trial today and experience the difference.",
+      cta: "Get My Free Trial",
+      shippingNote: "Ships anywhere in Canada"
+    },
+    problem: {
+      headline: "Tired of Holding Your Breath?",
+      subheadline: "We get it. That litter box smell is embarrassing.",
+      points: [
+        "Guests arriving and you rush to check the litter box",
+        "Opening windows in winter just to air out the smell",
+        "Constantly buying air fresheners that don't work",
+        "Worrying your home smells like a cat lives there"
+      ]
+    },
+    howItWorks: {
+      headline: "Fresh Air in 30 Seconds",
+      subheadline: "Simple as 1-2-3",
+      steps: [
+        {
+          number: "1",
+          title: "Sprinkle",
+          description: "Open the bag and sprinkle over your cat's litter"
+        },
+        {
+          number: "2",
+          title: "Trap",
+          description: "Activated carbon traps ammonia molecules instantly"
+        },
+        {
+          number: "3",
+          title: "Fresh",
+          description: "Enjoy 7+ days of odor-free freshness"
+        }
+      ]
+    },
+    socialProof: {
+      headline: "Join 1,000+ Happy Cat Parents",
+      rating: "4.9",
+      reviewCount: "138",
+      reviewLabel: "Verified Reviews",
+      testimonials: [
+        {
+          text: "I was skeptical, but within hours my entire apartment smelled fresh. My guests had no idea I had cats!",
+          author: "Sarah M.",
+          location: "Toronto, ON"
+        },
+        {
+          text: "Finally something that actually works. No more masking smells with air fresheners.",
+          author: "Mike R.",
+          location: "Vancouver, BC"
+        },
+        {
+          text: "The best $4.76 I ever spent. Already ordered the full size!",
+          author: "Jennifer K.",
+          location: "Montreal, QC"
+        }
+      ]
+    },
+    guarantee: {
+      headline: "30-Day Money-Back Guarantee",
+      description: "If you're not amazed by the results, we'll refund you. No questions asked.",
+      badge: "Risk-Free Trial"
+    },
+    finalCta: {
+      headline: "Ready to Breathe Easy?",
+      description: "Get your free Purrify trial today. Just pay $4.76 shipping.",
+      buttonText: "Get My Free Trial",
+      note: "Cancel anytime. No subscription required."
+    },
+    trust: {
+      madeInCanada: "Made in Canada",
+      natural: "100% Natural",
+      fragrance: "Fragrance-Free",
+      secure: "Secure Checkout"
     }
   }
 };

@@ -6,6 +6,8 @@ import { heroTestimonials } from "@/data/hero-testimonials";
 interface HeroContentProps {
   t: {
     hero: {
+      headline?: string;
+      subheadline?: string;
       eliminateCatOdors: string;
       instantly: string;
       description: string;
@@ -13,6 +15,11 @@ interface HeroContentProps {
         trustNumber: string;
         trustText: string;
         ratingText: string;
+      };
+      pricing?: {
+        trial: string;
+        standard: string;
+        family: string;
       };
       dualPath?: {
         consumer?: {
@@ -29,6 +36,7 @@ interface HeroContentProps {
       buttons: {
         reviews: string;
         learnMore?: string;
+        tryFree?: string;
       };
       ariaLabels: {
         reviews: string;
@@ -107,7 +115,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
     scrollToSection("products");
   }, []);
 
-  // Rotating testimonials - cycle every 1.5 seconds
+  // Rotating testimonials - slowed down to 5 seconds for readability
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -118,77 +126,63 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
         setIsTransitioning(false);
       }, 300); // Fade out duration
-    }, 1500); // Rotate every 1.5 seconds
+    }, 5000); // Rotate every 5 seconds (slowed from 1.5s)
 
     return () => clearInterval(interval);
   }, []);
 
   const currentTestimonial = heroTestimonials[currentTestimonialIndex];
 
-  const headlineRaw = t.hero.eliminateCatOdors;
-  const emphasisPhrase = 'And Why Cat Owners Care';
-  const emphasisIndex = headlineRaw.indexOf(emphasisPhrase);
-  const hasEmphasis = emphasisIndex >= 0;
-  const emphasisStart = hasEmphasis && emphasisIndex > 0 && headlineRaw[emphasisIndex - 1] === '('
-    ? emphasisIndex - 1
-    : emphasisIndex;
-  const headlinePrimary = hasEmphasis
-    ? headlineRaw.slice(0, emphasisStart).trimEnd()
-    : headlineRaw;
-  const emphasisLineText = hasEmphasis
-    ? headlineRaw.slice(emphasisStart).trim()
-    : '';
-  const descriptionRaw = t.hero.description;
-  const highlightSentence = 'one sprinkle drastically reduces litter box odour almost immediately and continues to last for up to  7 full days.';
-  const highlightIndex = descriptionRaw.indexOf(highlightSentence);
-  const hasHighlightSentence = highlightIndex >= 0;
-  const descriptionBeforeHighlight = hasHighlightSentence
-    ? descriptionRaw.slice(0, highlightIndex).trimEnd()
-    : '';
-  const descriptionAfterHighlight = hasHighlightSentence
-    ? descriptionRaw.slice(highlightIndex + highlightSentence.length).trimStart()
-    : '';
+  // Use new simplified headline structure or fallback to existing
+  const headline = t.hero.headline || t.hero.eliminateCatOdors;
+  const subheadline = t.hero.subheadline || t.hero.instantly;
 
   return (
-    <div className="space-y-2 md:space-y-3 relative z-10">
-      {/* Social Proof Badge - Rotating Testimonials */}
+    <div className="space-y-3 md:space-y-4 relative z-10">
+      {/* Social Proof Badge - Rotating Testimonials (slowed for readability) */}
       <div
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up transition-opacity duration-300"
-        style={{ opacity: isTransitioning ? 0.5 : 1 }}
+        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up transition-opacity duration-500"
+        style={{ opacity: isTransitioning ? 0.3 : 1 }}
       >
         <StarRating rating={currentTestimonial.stars} />
         <span className="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">
-          {currentTestimonial.rating} - '{currentTestimonial.quote}'
+          {currentTestimonial.rating} - &apos;{currentTestimonial.quote}&apos;
         </span>
       </div>
 
+      {/* Simplified Headline - outcome-focused */}
       <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
         <span className="block bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
-          {headlinePrimary}
+          {headline}
         </span>
-        {hasEmphasis && (
-          <span className="block mt-2 text-2xl sm:text-3xl md:text-5xl font-bold text-deep-coral">
-            {emphasisLineText}
-          </span>
-        )}
-        <span className="block mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl font-medium text-electric-indigo">
-          {t.hero.instantly}
+        <span className="block mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-medium text-electric-indigo">
+          {subheadline}
         </span>
       </h1>
 
-      <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed font-medium">
-        {hasHighlightSentence ? (
-          <>
-            {descriptionBeforeHighlight && <span>{descriptionBeforeHighlight} </span>}
-            <span className="text-gray-900 dark:text-white font-bold bg-deep-coral/10 px-1 rounded">
-              {highlightSentence}
-            </span>
-            {descriptionAfterHighlight && <span> {descriptionAfterHighlight}</span>}
-          </>
-        ) : (
-          descriptionRaw
-        )}
+      {/* Shortened description */}
+      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
+        {t.hero.description}
       </p>
+
+      {/* Pricing Above Fold - All 3 price points */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full border border-green-300 dark:border-green-700">
+          <span className="font-bold text-green-700 dark:text-green-300">
+            {t.hero.pricing?.trial || "Trial: $4.76 S&H"}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-600">
+          <span className="font-medium text-gray-700 dark:text-gray-300">
+            {t.hero.pricing?.standard || "50g: $14.99"}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-600">
+          <span className="font-medium text-gray-700 dark:text-gray-300">
+            {t.hero.pricing?.family || "120g: $24.99"}
+          </span>
+        </div>
+      </div>
 
       <div className="flex items-center gap-3 sm:gap-4">
         <SocialProofAvatars />
@@ -214,18 +208,18 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </div>
       </div>
 
-      {/* Main CTA Button */}
-      <div>
+      {/* Main CTA Button - Shortened and prominent FREE Trial emphasis */}
+      <div className="flex flex-col sm:flex-row gap-3">
         <Button
           onClick={handleScrollToProducts}
-          className="w-full sm:w-auto px-10 py-7 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-xl sm:text-2xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[72px] flex items-center justify-center gap-4 group border-2 border-deep-coral/20"
-          aria-label="Stop embarrassing cat odors forever"
+          className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20"
+          aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
         >
-          <svg className="w-8 h-8 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          Stop Embarrassing Cat Odors Forever
-          <svg className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {t.hero.buttons.tryFree || "Try FREE Sample"}
+          <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </Button>
@@ -246,14 +240,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           </svg>
           <span className="text-sm font-bold text-blue-700 dark:text-blue-300">Free Shipping Over $35</span>
         </div>
-      </div>
-
-      {/* Final Urgency Push */}
-      <div className="flex items-center sm:justify-start justify-center gap-2">
-        <svg className="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-        </svg>
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Winter special ends soon - most customers order 3+ bags auto shipment</span>
       </div>
     </div>
   );

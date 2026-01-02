@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -15,6 +15,7 @@ import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
+import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface FamilyPackPageProps {
@@ -24,6 +25,7 @@ interface FamilyPackPageProps {
 export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps) {
   const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
+  const purchaseCardsRef = useRef<HTMLDivElement>(null);
 
   const productKey = 'family';
   const productName = 'Purrify Family Pack (120g)';
@@ -44,7 +46,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   }, []);
 
   // Track AddToCart + InitiateCheckout when user clicks buy
-  const handleBuyClick = (isAutoship: boolean) => {
+  const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
     const price = isAutoship ? getProductPrice('familyAutoship') : getProductPrice(productKey);
     const name = isAutoship ? `${productName} - Autoship` : productName;
 
@@ -52,8 +54,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       content_id: productKey,
       content_name: name,
       content_type: 'product',
-      quantity: 1,
-      value: price,
+      quantity: quantity,
+      value: price * quantity,
       currency: 'CAD',
     });
 
@@ -61,11 +63,16 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       content_id: productKey,
       content_name: name,
       content_type: 'product',
-      quantity: 1,
-      value: price,
+      quantity: quantity,
+      value: price * quantity,
       currency: 'CAD',
     });
-  };
+  }, []);
+
+  // Handler for sticky cart
+  const handleStickyAddToCart = useCallback((quantity: number) => {
+    handleBuyClick(false, quantity);
+  }, [handleBuyClick]);
 
   const pageTitle = `${SITE_NAME} Family Pack - 120g Cat Litter Odor Control`;
   const pageDescription = "Perfect for multi-cat households. Two months of freshness with Purrify's 120g family pack litter deodorizer. Best value size.";
@@ -109,7 +116,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
     },
     {
       name: "Noor A., West Island",
-      text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again! 😂",
+      text: "Three cats in a small townhouse. You can imagine the chaos! The 120g size handles all three beautifully. My mother-in-law finally visits again!",
       rating: 5,
       petName: "Muffin, Simba & Cleo"
     }
@@ -360,8 +367,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                   ))}
                 </div>
 
-                {/* Purchase Options */}
-                <div className="space-y-5">
+                {/* Purchase Options - This is the target element for sticky cart */}
+                <div ref={purchaseCardsRef} className="space-y-5">
                   <div className="rounded-2xl border border-[#03E46A]/30 bg-white dark:bg-gray-900/40 p-6 shadow-lg relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/15 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
                     <div className="flex items-center justify-between mb-3 relative">
@@ -370,7 +377,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                           {t.subscriptionOfferExtended?.bestValueBadge || 'Best Value'}
                         </p>
                         <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-                          {t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × 120g'}
+                          {t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 x 120g'}
                         </h3>
                       </div>
                       <span className="inline-flex items-center bg-[#03E46A]/10 text-[#03E46A] px-3 py-1 rounded-full text-xs font-semibold">
@@ -386,17 +393,17 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       <div className="text-sm font-medium text-[#03E46A]">
                         {t.subscriptionOfferExtended?.perMonthLabel
                           ? t.subscriptionOfferExtended.perMonthLabel.replace('{price}', familyAutoshipPerMonth)
-                          : `≈ ${familyAutoshipPerMonth}/month effective`}
+                          : `= ${familyAutoshipPerMonth}/month effective`}
                       </div>
                     </div>
 
                     {/* Prominent Shipping Savings Callout */}
                     <div className="bg-green-100 dark:bg-green-900/50 border-2 border-green-500 dark:border-green-400 rounded-lg p-4 mb-4 relative">
                       <div className="flex items-center gap-3">
-                        <div className="text-2xl font-bold text-green-700 dark:text-green-300">✓ FREE SHIPPING</div>
+                        <div className="text-2xl font-bold text-green-700 dark:text-green-300">FREE SHIPPING</div>
                       </div>
                       <p className="text-sm font-semibold text-green-800 dark:text-green-200 mt-2">
-                        Save $15–$20+ per order vs single purchases
+                        Save $15-$20+ per order vs single purchases
                       </p>
                     </div>
 
@@ -406,7 +413,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5 relative">
                       <li className="flex gap-2">
                         <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × Regular size 120g packs (delivered together)'}
+                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 x Regular size 120g packs (delivered together)'}
                       </li>
                       <li className="flex gap-2">
                         <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
@@ -451,7 +458,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     {/* Shipping Cost Warning */}
                     <div className="bg-amber-100 dark:bg-amber-900/40 border-2 border-amber-500 dark:border-amber-400 rounded-lg p-3 mb-4 relative">
                       <p className="text-sm font-bold text-amber-900 dark:text-amber-200">
-                        + Shipping: $15–$20+
+                        + Shipping: $15-$20+
                       </p>
                       <p className="text-xs text-amber-800 dark:text-amber-300 mt-1">
                         Actual cost at checkout
@@ -459,7 +466,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     </div>
 
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {t.pricing?.plusShipping || '+ shipping'} · One-time order
+                      {t.pricing?.plusShipping || '+ shipping'} - One-time order
                     </p>
                     <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
                       <Link href={checkoutUrl} onClick={() => handleBuyClick(false)} className="flex items-center justify-center gap-2">
@@ -587,7 +594,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               <div className="mt-6 text-center">
                 <p className="text-lg font-bold text-gray-800 dark:text-gray-200">
                   {locale === 'fr'
-                    ? "Vous obtenez 20 % de produit en plus et économisez sur le prix au gramme !"
+                    ? "Vous obtenez 20 % de produit en plus et economisez sur le prix au gramme !"
                     : "You get 20% more product and save on price-per-gram!"}
                 </p>
               </div>
@@ -613,7 +620,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
                     ))}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">&quot;{testimonial.text}&quot;</p>
                   <p className="font-semibold text-gray-900 dark:text-gray-50">- {testimonial.name}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Pet parent to {testimonial.petName}</p>
                 </div>
@@ -670,7 +677,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping · Free with autoship</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping - Free with autoship</p>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
             </div>
@@ -761,6 +768,16 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
           </Container>
         </section>
       </main>
+
+      {/* Sticky Add to Cart */}
+      <StickyAddToCart
+        productName={productName}
+        productSize="120g"
+        price={familyPrice}
+        checkoutUrl={checkoutUrl}
+        onAddToCart={handleStickyAddToCart}
+        targetRef={purchaseCardsRef}
+      />
     </>
   );
 }
