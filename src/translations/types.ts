@@ -59,10 +59,16 @@ export interface TranslationType {
       trustText: string;
       ratingText: string;
     };
+    pricing?: {
+      trial: string;
+      standard: string;
+      family: string;
+    };
     buttons: {
       shopNow: string;
       reviews: string;
       learnMore?: string;
+      tryFree?: string;
     };
     ariaLabels: {
       shopNow: string;
@@ -944,6 +950,18 @@ export interface TranslationType {
     highlyRated: string;
     errorDetails: string;
     moneyBackGuarantee: string;
+  };
+
+  // Exit Intent Popup
+  exitPopup?: {
+    title: string;
+    subtitle: string;
+    description: string;
+    placeholder: string;
+    button: string;
+    noThanks: string;
+    successTitle: string;
+    successMessage: string;
   };
 
   // Homepage specific translations

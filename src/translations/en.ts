@@ -142,10 +142,16 @@ export const en = {
       trustText: "cat parents said goodbye to litter box smell",
       ratingText: "4.8/5 stars - 'My apartment doesn't stink anymore!'"
     },
+    pricing: {
+      trial: "FREE Trial (just pay $4.76 S&H)",
+      standard: "50g: $14.99",
+      family: "120g: $24.99"
+    },
     buttons: {
       shopNow: "Stop The Stink - Try Risk-Free $24.95",
       reviews: "⚗️ Proof It Works",
-      learnMore: "How It Kills Odor"
+      learnMore: "How It Kills Odor",
+      tryFree: "Try FREE Sample"
     },
     ariaLabels: {
       shopNow: "Shop Purrify products now",
@@ -1276,6 +1282,18 @@ export const en = {
     highlyRated: "Highly Rated",
     errorDetails: "Error Details",
     moneyBackGuarantee: "30-Day Money-Back Guarantee"
+  },
+
+  // Exit Intent Popup
+  exitPopup: {
+    title: "Wait! Don't leave empty-handed",
+    subtitle: "Get 10% off your first order",
+    description: "Join thousands of happy cat parents and get exclusive deals.",
+    placeholder: "Enter your email",
+    button: "Get My Discount",
+    noThanks: "No thanks, I prefer full price",
+    successTitle: "You're in!",
+    successMessage: "Use code WELCOME10 at checkout for 10% off!"
   },
 
   // Homepage specific translations

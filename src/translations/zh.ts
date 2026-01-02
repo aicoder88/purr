@@ -142,10 +142,16 @@ export const zh = {
       trustText: "猫主人信任Purrify",
       ratingText: "来自 138 条评论的 4.8/5 评分"
     },
+    pricing: {
+      trial: "免费试用 (仅需 $4.76 运费)",
+      standard: "50g: $14.99",
+      family: "120g: $24.99"
+    },
     buttons: {
       shopNow: "🛒 立即购买 - $24.95",
       reviews: "⭐ 138+ 评论",
-      learnMore: "了解工作原理"
+      learnMore: "了解工作原理",
+      tryFree: "免费试用"
     },
     ariaLabels: {
       shopNow: "立即购买Purrify产品",
@@ -789,6 +795,18 @@ export const zh = {
     highlyRated: "高度评价",
     errorDetails: "错误详情",
     moneyBackGuarantee: "30天退款保证"
+  },
+
+  // Exit Intent Popup
+  exitPopup: {
+    title: "等等！别空手离开",
+    subtitle: "首单享受10%折扣",
+    description: "加入数千名快乐的猫主人，获取独家优惠。",
+    placeholder: "输入您的邮箱",
+    button: "获取折扣",
+    noThanks: "不用了，我更喜欢原价",
+    successTitle: "成功订阅！",
+    successMessage: "结账时使用代码 WELCOME10 享受10%折扣！"
   },
 
   // Free Trial Page

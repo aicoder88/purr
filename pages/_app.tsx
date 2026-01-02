@@ -68,6 +68,10 @@ const AnalyticsComponent = dynamic(() => import('@vercel/analytics/next').then(m
   ssr: false,
 });
 
+const ExitIntentPopup = dynamic(() => import('../src/components/popups/ExitIntentPopup'), {
+  ssr: false,
+});
+
 
 
 interface PageProps {
@@ -157,6 +161,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <Toaster />
           <ToastProvider />
           <AnalyticsComponent />
+          <ExitIntentPopup />
         </TranslationProvider>
       </ThemeProvider>
     </SessionProvider>

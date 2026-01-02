@@ -142,10 +142,16 @@ export const fr = {
       trustText: "propriétaires de chats font confiance à Purrify",
       ratingText: "4,8/5 sur 138 avis"
     },
+    pricing: {
+      trial: "Essai GRATUIT (4,76 $ frais de port)",
+      standard: "50g: 14,99 $",
+      family: "120g: 24,99 $"
+    },
     buttons: {
       shopNow: "🛒 Acheter - 24,95 $",
       reviews: "⭐ 138+ Avis",
-      learnMore: "Comment ça marche"
+      learnMore: "Comment ça marche",
+      tryFree: "Essayer GRATUITEMENT"
     },
     ariaLabels: {
       shopNow: "Acheter les produits Purrify maintenant",
@@ -788,6 +794,18 @@ export const fr = {
     highlyRated: "Très Bien Noté",
     errorDetails: "Détails de l'Erreur",
     moneyBackGuarantee: "Garantie de remboursement de 30 jours"
+  },
+
+  // Exit Intent Popup
+  exitPopup: {
+    title: "Attendez ! Ne partez pas les mains vides",
+    subtitle: "Obtenez 10% de réduction sur votre première commande",
+    description: "Rejoignez des milliers de propriétaires de chats satisfaits et recevez des offres exclusives.",
+    placeholder: "Entrez votre email",
+    button: "Obtenir Ma Réduction",
+    noThanks: "Non merci, je préfère le plein tarif",
+    successTitle: "Vous êtes inscrit !",
+    successMessage: "Utilisez le code WELCOME10 à la caisse pour 10% de réduction !"
   },
 
   // Free Trial Page
