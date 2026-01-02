@@ -8,7 +8,7 @@ import { RetailerHero } from '../src/components/sections/retailer-hero';
 import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
-import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { Stores } from '../src/components/sections/stores';
 
 export default function RetailersPage() {
@@ -82,7 +82,18 @@ export default function RetailersPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateFAQSchema(retailerFaqs))
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: retailerFaqs.map(faq => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer
+                }
+              }))
+            })
           }}
         />
         {/* Organization Schema for B2B */}

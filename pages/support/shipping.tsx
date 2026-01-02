@@ -21,7 +21,7 @@ import {
   // DollarSign
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
+import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 
 const ShippingPage: NextPage = () => {
@@ -151,7 +151,18 @@ const ShippingPage: NextPage = () => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateFAQSchema(faqItems))
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map(faq => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer
+                }
+              }))
+            })
           }}
         />
       </Head>
