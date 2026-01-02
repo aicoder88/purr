@@ -41,7 +41,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       }
 
       // Sanitize post content to prevent XSS
-      post = sanitizeBlogPost(post);
+      post = sanitizeBlogPost(post as unknown as Parameters<typeof sanitizeBlogPost>[0]) as BlogPost;
 
       // Save post
       await store.savePost(post);
@@ -89,7 +89,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       }
 
       // Sanitize post content to prevent XSS
-      post = sanitizeBlogPost(post);
+      post = sanitizeBlogPost(post as unknown as Parameters<typeof sanitizeBlogPost>[0]) as BlogPost;
 
       // Update modified date
       post.modifiedDate = new Date().toISOString();

@@ -6,7 +6,7 @@ export interface AuditLogDetails {
   slug?: string;
   previousStatus?: string;
   newStatus?: string;
-  [key: string]: string | number | boolean | undefined;
+  [key: string]: string | number | boolean | string[] | undefined;
 }
 
 export interface AuditLog {

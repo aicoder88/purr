@@ -112,6 +112,10 @@ export interface TranslationType {
       title: string;
       description: string;
     };
+    natural: {
+      title: string;
+      description: string;
+    };
     worksWithAnyLitter: {
       title: string;
       description: string;
@@ -696,6 +700,7 @@ export interface TranslationType {
     quickAnswers: string;
     categories: string;
     questionsFound: string;
+    questionsFoundPlural?: string;
     clearSearch: string;
     noQuestionsFound: string;
     adjustSearchTerms: string;
@@ -714,12 +719,27 @@ export interface TranslationType {
     readyToTryPurrify: string;
     startWithRiskFreeTrial: string;
     compareAllSizes: string;
+    tryRiskFree?: string;
+    learnMoreAboutPurrify?: string;
+    howItWorks?: string;
+    learnScience?: string;
+    catLitterGuide?: string;
+    completeGuide?: string;
+    customerStories?: string;
+    realExperiences?: string;
+    popularTag?: string;
+    breadcrumbs?: {
+      home: string;
+      learn: string;
+      faq: string;
+    };
   };
 
   // Enhanced Product Comparison
   enhancedProductComparison?: {
     compareAndSave: string;
     chooseYourPerfectSize: string;
+    purrifySize?: string;
     subtitle: string;
     trial: string;
     mostPopular: string;
@@ -1387,6 +1407,7 @@ export interface TranslationType {
     };
     benefits: {
       headline: string;
+      intro?: string;
       pillar1: { title: string; intro?: string; description: string; detail?: string };
       pillar2: { title: string; intro?: string; description: string; detail?: string };
       pillar3: { title: string; intro?: string; description: string; detail?: string };
@@ -1577,6 +1598,10 @@ export interface TranslationType {
       discountNote: string;
     };
   };
+
+  // Try Free Page - Landing page for ad campaigns
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tryFreePage?: Record<string, any>;
 }
 
 // Common B2B page structure - permissive to allow fallback strings

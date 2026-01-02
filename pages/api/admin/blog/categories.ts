@@ -86,7 +86,7 @@ async function handler(
         action: 'delete',
         resourceType: 'category',
         resourceId: id as string,
-        details: { reassignTo }
+        details: { reassignTo: typeof reassignTo === 'string' ? reassignTo : undefined }
       });
 
       return res.status(200).json({ success: true });

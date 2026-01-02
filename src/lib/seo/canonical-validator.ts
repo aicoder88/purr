@@ -99,8 +99,8 @@ export class CanonicalValidator {
             });
           }
         }
-      } catch {
-        console.error(`Error validating canonical for ${pageUrl}:`, error instanceof Error ? error.message : error);
+      } catch (err) {
+        console.error(`Error validating canonical for ${pageUrl}:`, err instanceof Error ? err.message : err);
       }
     }
 
@@ -144,12 +144,12 @@ export class CanonicalValidator {
       }
 
       return null;
-    } catch {
+    } catch (err) {
       return {
         pageUrl,
         canonicalUrl,
         issueType: 'points-to-redirect',
-        suggestion: `Cannot reach canonical URL: ${error instanceof Error ? error.message : 'Unknown error'}`
+        suggestion: `Cannot reach canonical URL: ${err instanceof Error ? err.message : 'Unknown error'}`
       };
     }
   }
@@ -214,8 +214,8 @@ export class CanonicalValidator {
       });
 
       return urls;
-    } catch {
-      console.error('Error fetching sitemap:', error);
+    } catch (err) {
+      console.error('Error fetching sitemap:', err);
       return [];
     }
   }

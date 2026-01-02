@@ -31,7 +31,7 @@ export default async function handler(
 
     switch (action) {
       case 'generate-alt-text':
-        result = await scorer.generateAltText(data.imageUrl, data.context);
+        result = scorer.generateAltText(data.imageUrl);
         break;
 
       case 'generate-meta-description':
