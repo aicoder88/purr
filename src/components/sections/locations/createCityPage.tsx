@@ -93,30 +93,7 @@ export interface CityPageTemplateProps {
 
 export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
   const { t, locale } = useTranslation();
-  const cityRecord = getCityBySlug(citySlug);
-
-  if (!cityRecord) {
-    throw new Error(`Missing city profile for ${citySlug}`);
-  }
-
-  const { profile } = cityRecord;
-
-  // Use localized province name if available
-  const { PROVINCES } = require('../../../lib/locations/provinces');
-  const provinceData = PROVINCES[profile.provinceCode.toLowerCase()];
-  const provinceName = (locale === 'fr' && provinceData?.nameFr) ? provinceData.nameFr : (provinceData?.name || profile.province);
-
-  const populationLabel = profile.populationLabel !== 'n/a'
-    ? profile.populationLabel
-    : null;
-
-  const trustedAudience = formatTrustedAudience(profile.metroPopulation);
-  const keyFeatures = profile.housingHighlights.length > 0
-    ? profile.housingHighlights
-    : ['busy households', 'multi-cat families'];
-
-  const climateInsights = profile.climateConsiderations.slice(0, 3);
-  const scentPainPoints = profile.scentPainPoints.slice(0, 3);
+  const cityRecord = citySlug ? getCityBySlug(citySlug) : undefined;
 
   const [testimonials, setTestimonials] = useState<Array<{
     quote: string;
@@ -127,7 +104,38 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     helpfulCount: number;
   }>>([]);
 
+  // Get profile data (may be undefined if city not found)
+  const profile = cityRecord?.profile;
+
+  // Derive values from profile (with safe defaults for missing city case)
+  const { PROVINCES } = require('../../../lib/locations/provinces');
+  const provinceData = profile ? PROVINCES[profile.provinceCode.toLowerCase()] : undefined;
+  const provinceName = profile
+    ? ((locale === 'fr' && provinceData?.nameFr) ? provinceData.nameFr : (provinceData?.name || profile.province))
+    : '';
+
+  const populationLabel = profile && profile.populationLabel !== 'n/a'
+    ? profile.populationLabel
+    : null;
+
+  const trustedAudience = formatTrustedAudience(profile?.metroPopulation ?? null);
+  const keyFeatures = profile && profile.housingHighlights.length > 0
+    ? profile.housingHighlights
+    : ['busy households', 'multi-cat families'];
+
+  const climateInsights = profile?.climateConsiderations.slice(0, 3) ?? [];
+  const scentPainPoints = profile?.scentPainPoints.slice(0, 3) ?? [];
+
+  // Redirect effect for missing city (must be after all hooks)
   useEffect(() => {
+    if (!cityRecord && typeof window !== 'undefined') {
+      // Client-side: redirect to locations index for stale/missing city pages
+      window.location.href = '/locations';
+    }
+  }, [cityRecord]);
+
+  useEffect(() => {
+    if (!profile) return;
     const loadTestimonials = async () => {
       const housingHighlight = keyFeatures[0] ?? 'urban living';
       const climateHighlight = climateInsights[0] ?? 'daily routines';
@@ -141,34 +149,34 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       setTestimonials(generated);
     };
     loadTestimonials();
-  }, [keyFeatures, climateInsights, profile.name, profile.province, profile.slug]);
+  }, [profile, keyFeatures, climateInsights]);
 
   const keywordContent = useMemo(
-    () => buildKeywordList(
+    () => profile ? buildKeywordList(
       profile.name,
       provinceName,
       profile.provinceCode,
       profile.englishQueries,
       t.seoKeywords?.headTerms,
-    ),
+    ) : '',
     [
-      profile.name,
+      profile,
       provinceName,
-      profile.provinceCode,
-      profile.englishQueries,
       t.seoKeywords?.headTerms,
     ],
   );
 
-  const provinceLabel = profile.provinceCode?.trim() || profile.province;
+  const provinceLabel = profile?.provinceCode?.trim() || profile?.province || '';
   const locationLabel = provinceLabel
-    ? `${profile.name}, ${provinceLabel}`
-    : profile.name;
+    ? `${profile?.name ?? ''}, ${provinceLabel}`
+    : profile?.name ?? '';
 
-  const seoTitle = `Cat Litter Deodorizer in ${profile.name} | Purrify Activated Carbon`;
-  const seoDescription = populationLabel
-    ? `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Loved by ${populationLabel}+ cat owners.`
-    : `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Safe for cats & kittens.`;
+  const seoTitle = profile ? `Cat Litter Deodorizer in ${profile.name} | Purrify Activated Carbon` : '';
+  const seoDescription = profile
+    ? (populationLabel
+        ? `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Loved by ${populationLabel}+ cat owners.`
+        : `Cat litter smell in ${profile.name}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across ${provinceName}. Safe for cats & kittens.`)
+    : '';
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
@@ -183,6 +191,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     : 150;
 
   useEffect(() => {
+    if (!profile) return;
     safeTrackEvent('view_city_page', {
       event_category: 'city_page',
       city_slug: profile.slug,
@@ -190,7 +199,16 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       province: provinceName,
       province_code: profile.provinceCode,
     });
-  }, [profile.slug, profile.name, profile.province, profile.provinceCode]);
+  }, [profile, provinceName]);
+
+  // Handle missing city - show loading state while redirect happens
+  if (!profile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <p className="text-gray-600 dark:text-gray-400">Redirecting...</p>
+      </div>
+    );
+  }
 
   return (
     <>
