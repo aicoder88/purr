@@ -61,21 +61,28 @@ While scientifically accurate, technical chemistry terms can be off-putting to g
 
 **Usage:** Include in every piece of content discussing product safety or materials.
 
-### The NASA Connection (Authority Hook)
-> "Utilizing the same molecular trapping technology NASA relies on for breathable air in closed-loop environments like the ISS"
+### Real-World Authority Hooks (Primary)
+Use these applications to imply safety and effectiveness without making direct claims:
 
-**Why it works:**
-- Massive "cool factor"
-- Implies extreme performance standards
-- Scientifically accurate (activated carbon is used in spacecraft air systems)
-- Appeals to science-minded consumers
+**Municipal Water Treatment (Strongest Hook)**
+> "Made from the same high-purity activated carbon used in municipal water treatment systems worldwide"
 
-**Variations:**
-- "Space-station grade air purification"
-- "The same technology astronauts rely on"
-- "NASA-trusted molecular filtration"
+**Hospital/Medical Applications**
+> "The filtration technology used in hospital operating rooms and medical air purification systems"
 
-**Caution:** Don't claim NASA endorsement or partnership. State the technology connection only.
+**Home Air Purifiers**
+> "The same carbon filtration inside premium HEPA air purifiers"
+
+**Aquarium Use**
+> "Trusted by aquarium hobbyists to keep fish tanks crystal clear"
+
+**Why these work:**
+- Implies safety through everyday applications people trust
+- Factually accurate
+- Creates instant credibility
+- More relatable than space/military references
+
+**Usage:** Rotate these hooks across content. Use 1-2 per piece.
 
 ---
 
@@ -278,7 +285,9 @@ TECHNICAL TERMS:
 
 AUTHORITY HOOKS:
   Water Filter: "Same activated carbon as drinking water filters"
-  NASA: "Technology astronauts rely on for breathable air"
+  Municipal: "Used in water treatment systems worldwide"
+  Hospital: "Same filtration in hospital air systems"
+  Aquarium: "Trusted by aquarium hobbyists"
 
 BENEFIT ORDER:
   1. Cat-Friendly (no irritants)
