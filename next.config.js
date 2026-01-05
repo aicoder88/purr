@@ -236,6 +236,48 @@ const REDIRECTS = [
     destination: "/blog",
     permanent: true,
   },
+  {
+    source: "/feed",
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/wishlist",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/shopdsf",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/home-three",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/purrify-cat-litter-odor-eliminator-copy",
+    destination: "/products",
+    permanent: true,
+  },
+
+  // Legacy blog post redirects (old slugs that no longer exist)
+  {
+    source: "/blog/activated-carbon-science",
+    destination: "/blog/activated-carbon-litter-additive-benefits",
+    permanent: true,
+  },
+  {
+    source: "/blog/beyond-masking-odors",
+    destination: "/blog/most-powerful-odor-absorber",
+    permanent: true,
+  },
+  {
+    source: "/blog/fresh-home-multiple-cats",
+    destination: "/blog/multi-cat-litter-deodorizer-guide",
+    permanent: true,
+  },
 
   // WordPress legacy query parameters
   {
@@ -247,6 +289,30 @@ const REDIRECTS = [
   {
     source: "/",
     has: [{ type: "query", key: "p", value: "137" }],
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/",
+    has: [{ type: "query", key: "p", value: "130" }],
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/",
+    has: [{ type: "query", key: "p", value: "131" }],
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/",
+    has: [{ type: "query", key: "p", value: "132" }],
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/",
+    has: [{ type: "query", key: "p", value: "134" }],
     destination: "/blog",
     permanent: true,
   },
@@ -269,12 +335,12 @@ const REDIRECTS = [
   },
   {
     source: "/locations/nb",
-    destination: "/locations/province/new-brunswick",
+    destination: "/locations",
     permanent: true,
   },
   {
     source: "/locations/nl",
-    destination: "/locations/province/newfoundland-and-labrador",
+    destination: "/locations",
     permanent: true,
   },
   {
@@ -289,7 +355,7 @@ const REDIRECTS = [
   },
   {
     source: "/locations/pe",
-    destination: "/locations/province/prince-edward-island",
+    destination: "/locations",
     permanent: true,
   },
   {
@@ -304,17 +370,48 @@ const REDIRECTS = [
   },
   {
     source: "/locations/nt",
-    destination: "/locations/province/northwest-territories",
+    destination: "/locations",
     permanent: true,
   },
   {
     source: "/locations/nu",
-    destination: "/locations/province/nunavut",
+    destination: "/locations",
     permanent: true,
   },
   {
     source: "/locations/yt",
-    destination: "/locations/province/yukon",
+    destination: "/locations",
+    permanent: true,
+  },
+  // Non-existent province page redirects (provinces not in database)
+  {
+    source: "/locations/province/prince-edward-island",
+    destination: "/locations",
+    permanent: true,
+  },
+  {
+    source: "/locations/province/northwest-territories",
+    destination: "/locations",
+    permanent: true,
+  },
+  {
+    source: "/locations/province/nunavut",
+    destination: "/locations",
+    permanent: true,
+  },
+  {
+    source: "/locations/province/yukon",
+    destination: "/locations",
+    permanent: true,
+  },
+  {
+    source: "/locations/province/new-brunswick",
+    destination: "/locations",
+    permanent: true,
+  },
+  {
+    source: "/locations/province/newfoundland-and-labrador",
+    destination: "/locations",
     permanent: true,
   },
 ];
