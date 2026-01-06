@@ -383,6 +383,35 @@ const REDIRECTS = [
     destination: "/locations",
     permanent: true,
   },
+  // Fix broken /www. redirect from crystaldeodorantprotection.com domain
+  {
+    source: "/www.",
+    destination: "/",
+    permanent: true,
+  },
+
+  // Fix /purr/* URLs from external affiliate sites (EcoCatLitters, CatLitterSmell, etc.)
+  {
+    source: "/purr/trial",
+    destination: "/products/trial-size",
+    permanent: true,
+  },
+  {
+    source: "/purr/products",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/purr/how-it-works",
+    destination: "/learn/how-it-works",
+    permanent: true,
+  },
+  {
+    source: "/purr",
+    destination: "/products",
+    permanent: true,
+  },
+
   // Non-existent province page redirects (provinces not in database)
   {
     source: "/locations/province/prince-edward-island",

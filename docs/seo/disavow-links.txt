@@ -1,0 +1,31 @@
+# Google Disavow File for purrify.ca
+# Generated: 2026-01-05
+#
+# These domains are linking to purrify.ca through spam/low-quality sites
+# or via domain redirects that appear on spam aggregator pages.
+#
+# To use: Upload to Google Search Console > Links > Disavow Links
+# https://search.google.com/search-console/disavow-links
+#
+# Review periodically and update as needed.
+
+# Spam aggregator/roundup sites (DR 44-51 but purely spam content)
+domain:sitescooponline.com
+domain:bmwyng.com
+domain:sport-life.club
+domain:nettools.guru
+domain:getwebsiteworth.com
+
+# Marked as SPAM by Ahrefs
+domain:rankvance.website
+
+# Irrelevant low-quality sites linking via old domain redirects
+domain:storesonline.com
+domain:barleygreenstore.com
+domain:bodybuilding4u.com
+
+# Low-value listing/directory spam
+domain:theglobe.net
+domain:spherebrooke.com
+domain:netvetsupply.us
+domain:jeevanhealth.com
