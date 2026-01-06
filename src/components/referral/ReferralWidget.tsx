@@ -88,7 +88,7 @@ export function ReferralWidget({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <code className="bg-white/20 px-3 py-1 rounded font-mono text-lg text-white dark:text-gray-100">
+            <code className="bg-white/20 dark:bg-black/20 px-3 py-1 rounded font-mono text-lg text-white dark:text-gray-100">
               {code}
             </code>
             <Button
@@ -108,7 +108,7 @@ export function ReferralWidget({
   return (
     <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 overflow-hidden ${className}`}>
       {/* Header with gradient */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 p-6 text-white">
+      <div className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 p-6 text-white dark:text-gray-100">
         <CardTitle className="text-2xl text-white dark:text-gray-100">
           {t.referral?.widget?.title || 'Give $5, Get $5'}
         </CardTitle>
