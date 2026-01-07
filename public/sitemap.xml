@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://www.purrify.ca/sitemap-0.xml</loc></sitemap>
-<sitemap><loc>https://www.purrify.ca/server-sitemap.xml</loc></sitemap>
-<sitemap><loc>https://www.purrify.ca/sitemap-locations.xml</loc></sitemap>
+  <sitemap>
+    <loc>https://www.purrify.ca/sitemap-0.xml</loc>
+    <lastmod>2026-01-07T15:36:34.215Z</lastmod>
+  </sitemap>
 </sitemapindex>
