@@ -29,7 +29,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
     },
     {
       question: "Is this enough to see results?",
-      answer: "Absolutely! Most customers notice a significant difference within the first 24-48 hours. The trial size gives you enough product to experience the full odor-eliminating power of activated carbon."
+      answer: "Absolutely! Most customers notice a significant difference within the first 24-48 hours. The trial size gives you enough product to experience the full odor-eliminating power of Purrify."
     },
     {
       question: "How do I use Purrify?",

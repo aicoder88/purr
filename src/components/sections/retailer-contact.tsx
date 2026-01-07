@@ -4,33 +4,166 @@ import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
 
+// ============================================================================
+// Types
+// ============================================================================
+
+interface FormData {
+  businessName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  position: string;
+  businessType: string;
+  locations: string;
+  currentProducts: string;
+  message: string;
+}
+
+interface SubmitStatus {
+  success?: boolean;
+  message?: string;
+}
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const WHOLESALE_EMAIL = 'wholesale@purrify.ca';
+
+const INITIAL_FORM_DATA: FormData = {
+  businessName: '',
+  contactName: '',
+  email: '',
+  phone: '',
+  position: '',
+  businessType: '',
+  locations: '',
+  currentProducts: '',
+  message: ''
+};
+
+const GRADIENTS = {
+  successIcon: 'bg-gradient-to-br from-[#10B981] to-[#34D399]',
+  purpleBlue: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]',
+  redOrange: 'bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E]',
+  green: 'bg-gradient-to-r from-[#10B981] to-[#34D399]',
+  purpleBlueTint: 'from-[#5B2EFF]/10 to-[#3694FF]/10',
+  purpleBlueTintDark: 'dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20',
+  section: 'bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900',
+  formCard: 'bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900',
+} as const;
+
+const BUSINESS_TYPES = [
+  { value: '', label: 'Select Business Type' },
+  { value: 'independent-pet-store', label: 'Independent Pet Store' },
+  { value: 'pet-store-chain', label: 'Pet Store Chain' },
+  { value: 'veterinary-clinic', label: 'Veterinary Clinic' },
+  { value: 'grooming-salon', label: 'Grooming Salon' },
+  { value: 'distributor', label: 'Distributor' },
+  { value: 'other', label: 'Other' },
+] as const;
+
+// ============================================================================
+// Subcomponents
+// ============================================================================
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+function FormCheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    </svg>
+  );
+}
+
+function EmailIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  );
+}
+
+interface StepIndicatorProps {
+  step: number;
+  gradient: string;
+  title: string;
+  description: string;
+}
+
+function StepIndicator({ step, gradient, title, description }: StepIndicatorProps) {
+  return (
+    <div className="text-center">
+      <div className={`w-16 h-16 ${gradient} rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4`}>
+        {step}
+      </div>
+      <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{title}</h4>
+      <p className="text-sm text-gray-600 dark:text-gray-300">{description}</p>
+    </div>
+  );
+}
+
+interface SuccessStoryCardProps {
+  icon: string;
+  gradient: string;
+  businessName: string;
+  businessType: string;
+  quote: string;
+  metric: string;
+  metricColor: string;
+}
+
+function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, metric, metricColor }: SuccessStoryCardProps) {
+  return (
+    <div className="bg-white dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
+      <div className="flex items-center mb-4">
+        <div className={`w-12 h-12 ${gradient} rounded-full flex items-center justify-center text-white font-black text-lg mr-4`}>
+          {icon}
+        </div>
+        <div>
+          <div className="font-black text-gray-900 dark:text-gray-50">{businessName}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">{businessType}</div>
+        </div>
+      </div>
+      <p className="text-gray-700 dark:text-gray-200 italic mb-3">{quote}</p>
+      <div className={`text-2xl font-black ${metricColor}`}>{metric}</div>
+    </div>
+  );
+}
+
+// ============================================================================
+// Main Component
+// ============================================================================
+
 export function RetailerContact() {
-  const wholesaleEmail = 'wholesale@purrify.ca';
-  const [formData, setFormData] = useState({
-    businessName: '',
-    contactName: '',
-    email: '',
-    phone: '',
-    position: '',
-    businessType: '',
-    locations: '',
-    currentProducts: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success?: boolean;
-    message?: string;
-  }>({});
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
 
   const handleWholesaleEmailClick = useCallback(() => {
-    const mailtoLink = `mailto:${wholesaleEmail}`;
+    const mailtoLink = `mailto:${WHOLESALE_EMAIL}`;
     if (typeof globalThis.window !== 'undefined') {
       window.location.href = mailtoLink;
     }
-  }, [wholesaleEmail]);
+  }, []);
 
   const handleWholesaleEmailKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -47,7 +180,7 @@ export function RetailerContact() {
       event.stopPropagation();
       try {
         if (navigator?.clipboard?.writeText) {
-          await navigator.clipboard.writeText(wholesaleEmail);
+          await navigator.clipboard.writeText(WHOLESALE_EMAIL);
           setCopyStatus('copied');
         } else {
           throw new Error('Clipboard API unavailable');
@@ -56,7 +189,7 @@ export function RetailerContact() {
         setCopyStatus('failed');
       }
     },
-    [wholesaleEmail]
+    []
   );
 
   useEffect(() => {
@@ -132,17 +265,7 @@ export function RetailerContact() {
           });
 
           // Reset form
-          setFormData({
-            businessName: '',
-            contactName: '',
-            email: '',
-            phone: '',
-            position: '',
-            businessType: '',
-            locations: '',
-            currentProducts: '',
-            message: ''
-          });
+          setFormData(INITIAL_FORM_DATA);
 
         } catch (err) {
           Sentry.captureException(err);
@@ -167,10 +290,8 @@ export function RetailerContact() {
       <section id="retailer-contact" className="py-16 bg-gradient-to-br from-[#5B2EFF]/5 via-white to-[#3694FF]/5 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
-              <svg className="w-12 h-12 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-              </svg>
+            <div className={`w-24 h-24 ${GRADIENTS.successIcon} rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce`}>
+              <CheckIcon className="w-12 h-12 text-white dark:text-gray-100" />
             </div>
             <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-50 mb-6">
               🎉 Application Received!
@@ -183,24 +304,27 @@ export function RetailerContact() {
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 Your Next Steps</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">1</div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Application Review</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Our team reviews your store details</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">2</div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Partnership Call</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Discuss pricing, support & logistics</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4">3</div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Start Selling</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Receive inventory & launch</p>
-                </div>
+                <StepIndicator
+                  step={1}
+                  gradient={GRADIENTS.purpleBlue}
+                  title="Application Review"
+                  description="Our team reviews your store details"
+                />
+                <StepIndicator
+                  step={2}
+                  gradient={GRADIENTS.redOrange}
+                  title="Partnership Call"
+                  description="Discuss pricing, support & logistics"
+                />
+                <StepIndicator
+                  step={3}
+                  gradient={GRADIENTS.green}
+                  title="Start Selling"
+                  description="Receive inventory & launch"
+                />
               </div>
 
-              <div className="mt-8 p-6 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="mt-8 p-6 bg-white dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
                 <h4 className="font-black text-lg text-gray-900 dark:text-gray-50 mb-3">💰 Expected Timeline to Revenue</h4>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
@@ -276,10 +400,8 @@ export function RetailerContact() {
             {/* Contact Form */}
             <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className={`w-16 h-16 ${GRADIENTS.purpleBlue} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
+                  <FormCheckIcon className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
                   🚀 Partnership Application
@@ -456,7 +578,7 @@ export function RetailerContact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-white dark:text-white dark:text-white font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
+                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-gray-100 font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
                 >
                   {isSubmitting ? '⏳ Submitting...' : '🚀 Submit Partnership Application'}
                 </Button>
@@ -472,37 +594,25 @@ export function RetailerContact() {
                 </h3>
 
                 <div className="space-y-6">
-                  <div className="bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
-                        🏪
-                      </div>
-                      <div>
-                        <div className="font-black text-gray-900 dark:text-gray-50">Pet Palace Toronto</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Independent Pet Store</div>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-200 italic mb-3">
-                      "Added $800/month revenue in our first quarter. Customers love it and keep coming back!"
-                    </p>
-                    <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">+145% sales growth</div>
-                  </div>
+                  <SuccessStoryCard
+                    icon="🏪"
+                    gradient={GRADIENTS.green}
+                    businessName="Pet Palace Toronto"
+                    businessType="Independent Pet Store"
+                    quote="Added $800/month revenue in our first quarter. Customers love it and keep coming back!"
+                    metric="+145% sales growth"
+                    metricColor="text-[#10B981] dark:text-[#34D399]"
+                  />
 
-                  <div className="bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4">
-                        🏥
-                      </div>
-                      <div>
-                        <div className="font-black text-gray-900 dark:text-gray-50">Healthy Paws Vet</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Veterinary Clinic</div>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-200 italic mb-3">
-                      "Our clients trust our recommendation. Best margins in our retail section."
-                    </p>
-                    <div className="text-2xl font-black text-[#FF6B6B] dark:text-[#FF8E8E]">55% profit margin</div>
-                  </div>
+                  <SuccessStoryCard
+                    icon="🏥"
+                    gradient={GRADIENTS.redOrange}
+                    businessName="Healthy Paws Vet"
+                    businessType="Veterinary Clinic"
+                    quote="Our clients trust our recommendation. Best margins in our retail section."
+                    metric="55% profit margin"
+                    metricColor="text-[#FF6B6B] dark:text-[#FF8E8E]"
+                  />
                 </div>
               </div>
 
@@ -544,7 +654,7 @@ export function RetailerContact() {
                     onClick={handleWholesaleEmailClick}
                     onKeyDown={handleWholesaleEmailKeyDown}
                     className="flex items-center p-4 bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl hover:from-[#10B981]/20 hover:to-[#34D399]/20 dark:hover:from-[#10B981]/30 dark:hover:to-[#34D399]/30 transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10B981]"
-                    aria-label={`Email ${wholesaleEmail}`}
+                    aria-label={`Email ${WHOLESALE_EMAIL}`}
                   >
                     <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
                       <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -553,7 +663,7 @@ export function RetailerContact() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
-                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {wholesaleEmail}</div>
+                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {WHOLESALE_EMAIL}</div>
                         <button
                           type="button"
                           onClick={handleCopyWholesaleEmail}

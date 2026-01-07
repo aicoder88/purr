@@ -804,7 +804,7 @@ export const zh = {
   exitPopup: {
     title: "等等！别空手离开",
     subtitle: "首单享受10%折扣",
-    description: "加入数千名快乐的猫主人，获取独家优惠。",
+    description: "加入数千名快乐的猫主人，获取独家优惠。不适用于免费试用。",
     placeholder: "输入您的邮箱",
     button: "获取折扣",
     noThanks: "不用了，我更喜欢原价",

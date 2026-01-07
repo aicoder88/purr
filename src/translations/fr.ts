@@ -803,7 +803,7 @@ export const fr = {
   exitPopup: {
     title: "Attendez ! Ne partez pas les mains vides",
     subtitle: "Obtenez 10% de réduction sur votre première commande",
-    description: "Rejoignez des milliers de propriétaires de chats satisfaits et recevez des offres exclusives.",
+    description: "Rejoignez des milliers de propriétaires de chats satisfaits et recevez des offres exclusives. Exclut l'offre d'essai gratuit.",
     placeholder: "Entrez votre email",
     button: "Obtenir Ma Réduction",
     noThanks: "Non merci, je préfère le plein tarif",

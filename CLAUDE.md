@@ -1,84 +1,90 @@
 # CLAUDE.md
 
-## Build-Breaking Requirements
-
-**These will fail the build. No exceptions.**
+## Pre-Commit Checklist
 
 ```bash
-# Run before commit
 npm run lint && npm run check-types && npm run validate-dark-mode && npm run validate-images
 ```
 
-- **Dark mode on EVERY element** - pair light + dark variants
-- **TypeScript strict** - no `any` types, 0 errors
-- **ESLint clean** - 0 warnings
-- **Image limits enforced** - see limits below
+All four must pass. No exceptions.
 
 ---
 
-## When to Use Specs vs Just Do It
+## Quick Reference
 
-| Situation | Action |
-|-----------|--------|
-| Bug fix, typo, config change, single file | Just do it |
-| User gives explicit implementation details | Just do it |
-| New feature spanning multiple files | Use spec workflow |
-| Architecture changes | Use spec workflow |
-| Unclear requirements | Use spec workflow |
-
-**Spec workflow:** Requirements → Design → Tasks → Execute. Each phase needs approval before proceeding. Store specs in `.specs/[feature-name]/`. See `spec-driven-protocol.md` for full reference.
-
----
-
-## Tech Stack
-
-| Layer | Tech |
-|-------|------|
-| Framework | Next.js 16 (Pages Router) + React 19 + TypeScript |
-| Styling | Tailwind CSS + Radix UI (shadcn/ui) |
-| Database | PostgreSQL + Prisma ORM |
-| Auth | NextAuth.js (JWT, roles: admin/editor/user) |
-| Payments | Stripe |
-| Blog | TipTap + filesystem JSON (`/content/blog/{locale}/*.json`) |
-| Monitoring | Sentry |
-| Deploy | Vercel (Node.js 22.x) |
+| What | Where |
+|------|-------|
+| Components | `src/components/` (PascalCase: `MyComponent.tsx`) |
+| Pages | `pages/` (kebab-case: `my-page.tsx`) |
+| API routes | `pages/api/` (kebab-case: `my-endpoint.ts`) |
+| Translations | `src/translations/{en,fr,zh}.ts` |
+| Blog content | `/content/blog/{en,fr,zh}/*.json` |
+| Tests (unit) | `__tests__/**/*.test.ts` |
+| Tests (e2e) | `e2e/**/*.spec.ts` |
 
 ---
 
-## Dark Mode Reference
+## Commands
 
-```css
-text-gray-900 dark:text-gray-50        /* Headings */
-text-gray-700 dark:text-gray-200       /* Body */
-bg-white dark:bg-gray-900              /* Primary bg */
-bg-gray-50 dark:bg-gray-800            /* Secondary bg */
-border-gray-200 dark:border-gray-700   /* Borders */
-text-white dark:text-gray-100          /* CRITICAL: text-white always needs dark */
+```bash
+# Development
+npm run dev                       # Start dev server
+npm run predev                    # Clear cache (use if hot reload breaks)
+
+# Validation
+npm run lint                      # ESLint
+npm run check-types               # TypeScript strict
+npm run validate-dark-mode        # Check dark: variants
+npm run validate-images           # Check image size limits
+
+# Testing
+npm test                          # Jest unit tests
+npm run test:watch                # Jest watch mode
+npm run test:e2e                  # Playwright e2e tests
+npm run test:e2e:ui               # Playwright with UI
+
+# Build
+npm run build                     # Production build
+
+# Database
+npx prisma studio                 # Database GUI
+npx prisma migrate dev            # Run migrations
+
+# Debugging
+vercel logs <deployment-url>      # View production logs
 ```
 
 ---
 
-## Image Limits
+## Dark Mode (Required)
 
-| Directory | Max Size |
-|-----------|----------|
-| `public/optimized/blog/` | 800×800px (STRICT) |
-| `public/optimized/` | 3200×3200px |
-| `public/images/products/` | 1200×1800px |
+Every element needs both light and dark variants:
 
-Fix: `sips -Z 800 public/optimized/blog/*.jpg`
+```css
+/* Text */
+text-gray-900 dark:text-gray-50        /* Headings */
+text-gray-700 dark:text-gray-200       /* Body */
+text-white dark:text-gray-100          /* CRITICAL: text-white always needs dark */
+
+/* Backgrounds */
+bg-white dark:bg-gray-900              /* Primary */
+bg-gray-50 dark:bg-gray-800            /* Secondary */
+
+/* Borders */
+border-gray-200 dark:border-gray-700
+```
 
 ---
 
-## Key Patterns
+## Code Patterns
 
-**Translations** - no hardcoded text:
+**Translations** (no hardcoded text):
 ```typescript
 const { t, locale } = useTranslation();
 return <button>{t('addToCart')}</button>;
 ```
 
-**Protected API Route:**
+**Protected API route**:
 ```typescript
 import { requireAuth } from '@/lib/auth/session';
 import { withCSRFProtection } from '@/lib/security/csrf';
@@ -88,17 +94,17 @@ export default withRateLimit(RATE_LIMITS.CREATE,
   withCSRFProtection(async (req, res) => {
     const session = await requireAuth(req, res, ['admin', 'editor']);
     if (!session) return;
-    // Protected logic
+    // handler logic
   })
 );
 ```
 
-**Dynamic Import:**
+**Dynamic import** (for client-only components):
 ```typescript
-const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), { ssr: false });
+const Editor = dynamic(() => import('@/components/admin/RichTextEditor'), { ssr: false });
 ```
 
-**Sentry:**
+**Error logging**:
 ```typescript
 import * as Sentry from "@sentry/nextjs";
 Sentry.captureException(error);
@@ -106,133 +112,79 @@ Sentry.captureException(error);
 
 ---
 
-## Commands
+## Image Limits
 
-```bash
-npm run dev                    # Start dev server
-npm run predev                 # Clear cache if hot reload stuck
-npm run build                  # Production build
-npm run test:translations      # Check all locales complete
-npm run optimize-images:enhanced  # Auto-optimize images
-npx prisma studio              # Database GUI
-```
+| Directory | Max Size | Fix Command |
+|-----------|----------|-------------|
+| `public/optimized/blog/` | 800×800px | `sips -Z 800 public/optimized/blog/*.jpg` |
+| `public/optimized/` | 3200×3200px | `sips -Z 3200 <file>` |
+| `public/images/products/` | 1200×1800px | `sips -Z 1200 <file>` |
 
 ---
 
 ## Rate Limits
 
-| Type | Window | Max |
-|------|--------|-----|
-| AUTH | 15 min | 5 |
-| CREATE | 1 min | 10 |
-| UPLOAD | 1 min | 5 |
+Configured in `src/lib/security/rate-limit.ts`:
+
+| Type | Window | Max | Use For |
+|------|--------|-----|---------|
+| AUTH | 15 min | 5 | Login, password reset |
+| CREATE | 1 min | 10 | Form submissions, comments |
+| UPLOAD | 1 min | 5 | File uploads |
 
 ---
 
-## ASK FIRST
+## Spec Workflow
 
-PWA prompts, push notifications, popups/modals, new third-party integrations, browser permission requests, email capture modals.
+| Change Type | Action |
+|-------------|--------|
+| Bug fix, typo, config, single file | Just do it |
+| User gives explicit instructions | Just do it |
+| Multi-file feature, architecture, unclear requirements | Use spec workflow |
 
----
-
-## Content Rules
-
-No direct competitor comparisons. Use partnership positioning:
-- ❌ "Better than local pet stores"
-- ✅ "Ask your local pet store to stock Purrify"
+**Spec workflow**: Create `.specs/[feature-name]/` with requirements → design → tasks. Each phase needs approval.
 
 ---
 
-## CRITICAL: Content Writing Guidelines
+## Ask First
 
-**BEFORE writing ANY blog post, marketing copy, or product content, ALWAYS read:**
+These require explicit user approval before implementing:
+- PWA prompts or push notifications
+- Popups, modals, or interstitials
+- New third-party integrations
+- Browser permission requests
+- Email capture forms
 
-📖 **`/content/content-guidelines.md`** - Complete writing reference
-
-### Quick Reference (Full Details in Guidelines Doc)
-
-**Safety Language (NEVER use "safe"):**
-| Avoid | Use Instead |
-|-------|-------------|
-| Safe | Non-toxic, food-grade, pet-friendly |
-| Hypoallergenic | Fragrance-free, gentle |
-
-**Authority Hooks (Include in Every Post):**
-- Water Filter: "Same activated carbon as drinking water filters"
-- NASA: "Technology astronauts rely on for breathable air"
-- Football Field: "One gram = surface area of a football field"
-
-**Benefit Order (Always This Sequence):**
-1. Cat-Friendly (no irritants)
-2. High-Performance (filtration-grade)
-3. Simple (sprinkle on existing litter)
-
-**Core Message Framework:**
-- "Traps odor molecules, doesn't mask them"
-- "Works with any litter your cat already loves"
-- "100% natural coconut shell activated carbon"
-
-**Technical Terms for General Audiences:**
-| Avoid | Use Instead |
-|-------|-------------|
-| Mercaptans | Sulfur-based compounds |
-| Adsorption | Molecular trapping |
-| VOCs | Organic odor molecules |
+**Why**: These affect UX significantly and may have legal/privacy implications.
 
 ---
 
-## CRITICAL: Product Content Verification
+## Content Writing
 
-**BEFORE writing ANY marketing/product content, ALWAYS:**
+**Before writing ANY product content**, read: `/content/content-guidelines.md`
 
-1. **Read existing product descriptions first:**
-   ```bash
-   grep -n "activated carbon\|coconut" src/translations/en.ts | head -20
-   ```
-
-2. **Verify product claims against existing content** - NEVER assume or invent:
-   - Purrify is **ACTIVATED CARBON** (coconut shell), NOT zeolite
-   - Protection lasts **7+ days**, not 30 days
-   - Made from **coconut shell activated carbon**
-
-3. **Cross-reference before creating new pages:**
-   - Check `siteDescription` in translations
-   - Check existing FAQ answers
-   - Check product descriptions
-
-4. **NEVER fabricate statistics or social proof:**
-   - No invented review counts ("500 reviews")
-   - No invented customer counts ("10,000+ happy cats")
-   - No invented ratings ("4.9 stars")
-   - Use ONLY numbers that exist in the codebase, or omit the section entirely
-
-5. **NEVER reference images that don't exist:**
-   ```bash
-   # Before using any image path, verify it exists:
-   ls -la public/images/path/to/image.webp
-   ```
-   - Only use images already in the codebase
-   - If an image is needed but doesn't exist, note it as `[IMAGE NEEDED: description]`
-
-**NEVER fabricate product ingredients, duration claims, statistics, or image paths.**
-
----
-
-## Key Paths
-
-| Purpose | Path |
-|---------|------|
-| Blog content | `/content/blog/{en,fr,zh}/*.json` |
-| Translations | `src/translations/{en,fr,zh}.ts` |
-| Security middleware | `src/lib/security/` |
-| Auth utilities | `src/lib/auth/session.ts` |
-| Prisma schema | `prisma/schema.prisma` |
+Critical rules:
+- Never use "safe" → use "non-toxic", "food-grade", "pet-friendly"
+- Never fabricate statistics, reviews, or image paths
+- Product is **activated carbon** (coconut shell), lasts **7+ days**
+- No competitor comparisons → use partnership positioning
 
 ---
 
 ## Environment Variables
 
-Required: `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `RESEND_API_KEY`, `ANTHROPIC_API_KEY`, `CRON_SECRET`, `NEXT_PUBLIC_SITE_URL`
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `DATABASE_URL` | Yes | PostgreSQL connection string |
+| `NEXTAUTH_SECRET` | Yes | Session encryption key |
+| `NEXTAUTH_URL` | Yes | App URL for auth callbacks |
+| `STRIPE_SECRET_KEY` | Yes | Stripe API key |
+| `STRIPE_WEBHOOK_SECRET` | Yes | Stripe webhook verification |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Yes | Stripe client key |
+| `RESEND_API_KEY` | Yes | Email sending |
+| `ANTHROPIC_API_KEY` | Yes | AI content generation |
+| `CRON_SECRET` | Yes | Cron job authentication |
+| `NEXT_PUBLIC_SITE_URL` | Yes | Public site URL |
 
 ---
 
@@ -242,4 +194,13 @@ Required: `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `STRIPE_SECRET_KEY`
 |-------|-----|
 | Hot reload broken | `npm run predev && npm run dev` |
 | Dark mode validation failing | Add missing `dark:*` variants |
-| Translation missing | Add to all locale files in `src/translations/` |
+| Translation missing | Add key to all files in `src/translations/` |
+| Type errors after schema change | `npx prisma generate` |
+| E2E tests failing locally | Check `npm run dev` is running |
+| Stripe webhooks not working locally | Run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` |
+
+---
+
+## Tech Stack
+
+Next.js 16 (Pages Router) • React 19 • TypeScript • Tailwind CSS • Radix UI • PostgreSQL • Prisma • NextAuth.js • Stripe • TipTap • Sentry • Vercel

@@ -1292,7 +1292,7 @@ export const en = {
   exitPopup: {
     title: "Wait! Don't leave empty-handed",
     subtitle: "Get 10% off your first order",
-    description: "Join thousands of happy cat parents and get exclusive deals.",
+    description: "Join thousands of happy cat parents and get exclusive deals. Excludes free trial offer.",
     placeholder: "Enter your email",
     button: "Get My Discount",
     noThanks: "No thanks, I prefer full price",

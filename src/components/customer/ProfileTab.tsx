@@ -2,38 +2,195 @@ import { useState, useCallback } from 'react';
 import { formatCurrencyValue } from '@/lib/pricing';
 import type { Customer } from './customer-portal-types';
 
+// ============================================================================
+// Types
+// ============================================================================
+
 interface ProfileTabProps {
   customer: Customer;
 }
+
+interface ProfileData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
+interface AddressData {
+  street: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  country: string;
+}
+
+interface PasswordData {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+interface NotificationPreferences {
+  emailNotifications: boolean;
+  smsNotifications: boolean;
+  marketingEmails: boolean;
+  orderUpdates: boolean;
+}
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const INITIAL_PASSWORD_DATA: PasswordData = {
+  currentPassword: '',
+  newPassword: '',
+  confirmPassword: ''
+};
+
+const INITIAL_PREFERENCES: NotificationPreferences = {
+  emailNotifications: true,
+  smsNotifications: false,
+  marketingEmails: true,
+  orderUpdates: true
+};
+
+const CANADIAN_PROVINCES = [
+  { value: 'AB', label: 'Alberta' },
+  { value: 'BC', label: 'British Columbia' },
+  { value: 'MB', label: 'Manitoba' },
+  { value: 'NB', label: 'New Brunswick' },
+  { value: 'NL', label: 'Newfoundland and Labrador' },
+  { value: 'NS', label: 'Nova Scotia' },
+  { value: 'ON', label: 'Ontario' },
+  { value: 'PE', label: 'Prince Edward Island' },
+  { value: 'QC', label: 'Quebec' },
+  { value: 'SK', label: 'Saskatchewan' },
+  { value: 'NT', label: 'Northwest Territories' },
+  { value: 'NU', label: 'Nunavut' },
+  { value: 'YT', label: 'Yukon' },
+] as const;
+
+const COUNTRIES = [
+  { value: 'Canada', label: 'Canada' },
+  { value: 'United States', label: 'United States' },
+] as const;
+
+const INPUT_CLASSES = 'w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50';
+
+// ============================================================================
+// Subcomponents
+// ============================================================================
+
+interface ToggleSwitchProps {
+  checked: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string;
+  description: string;
+}
+
+function ToggleSwitch({ checked, onChange, label, description }: ToggleSwitchProps) {
+  return (
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium text-gray-900 dark:text-gray-50">{label}</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{description}</p>
+      </div>
+      <label className="relative inline-flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={onChange}
+          className="sr-only peer"
+        />
+        <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 dark:after:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+      </label>
+    </div>
+  );
+}
+
+interface FormSectionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+function FormSection({ title, children }: FormSectionProps) {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">{title}</h3>
+      </div>
+      <div className="p-6 space-y-4">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+interface ActionButtonsProps {
+  isEditing: boolean;
+  loading: boolean;
+  onSave: () => void;
+  onCancel: () => void;
+  onEdit: () => void;
+  saveLabel?: string;
+  editLabel?: string;
+}
+
+function ActionButtons({ isEditing, loading, onSave, onCancel, onEdit, saveLabel = 'Save Changes', editLabel = 'Edit' }: ActionButtonsProps) {
+  if (isEditing) {
+    return (
+      <div className="flex gap-3">
+        <button
+          onClick={onSave}
+          disabled={loading}
+          className="flex-1 px-4 py-2 bg-green-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+        >
+          {loading ? 'Saving...' : saveLabel}
+        </button>
+        <button
+          onClick={onCancel}
+          className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          Cancel
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      onClick={onEdit}
+      className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+    >
+      {editLabel}
+    </button>
+  );
+}
+
+// ============================================================================
+// Main Component
+// ============================================================================
 
 export function ProfileTab({ customer }: ProfileTabProps) {
   const [editingProfile, setEditingProfile] = useState(false);
   const [editingAddress, setEditingAddress] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [profileData, setProfileData] = useState({
+  const [profileData, setProfileData] = useState<ProfileData>({
     firstName: customer.firstName,
     lastName: customer.lastName,
     email: customer.email,
     phone: customer.phone || ''
   });
-  const [addressData, setAddressData] = useState({
+  const [addressData, setAddressData] = useState<AddressData>({
     street: customer.address.street,
     city: customer.address.city,
     province: customer.address.province,
     postalCode: customer.address.postalCode,
     country: customer.address.country
   });
-  const [passwordData, setPasswordData] = useState({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  });
-  const [preferences, setPreferences] = useState({
-    emailNotifications: true,
-    smsNotifications: false,
-    marketingEmails: true,
-    orderUpdates: true
-  });
+  const [passwordData, setPasswordData] = useState<PasswordData>(INITIAL_PASSWORD_DATA);
+  const [preferences, setPreferences] = useState<NotificationPreferences>(INITIAL_PREFERENCES);
   const [loading, setLoading] = useState(false);
 
   const handleProfileFieldChange = useCallback((field: keyof typeof profileData) => {
@@ -95,7 +252,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
 
   const handleCancelPasswordForm = useCallback(() => {
     setShowPasswordForm(false);
-    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    setPasswordData(INITIAL_PASSWORD_DATA);
   }, []);
 
   const handleProfileSave = useCallback(async () => {
@@ -139,7 +296,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setShowPasswordForm(false);
-      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      setPasswordData(INITIAL_PASSWORD_DATA);
       alert('Password updated successfully');
     } catch (error) {
       alert('Failed to change password');
@@ -288,22 +445,12 @@ export function ProfileTab({ customer }: ProfileTabProps) {
                 <select
                   value={addressData.province}
                   onChange={handleAddressFieldChange('province')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className={INPUT_CLASSES}
                   disabled={!editingAddress}
                 >
-                  <option value="AB">Alberta</option>
-                  <option value="BC">British Columbia</option>
-                  <option value="MB">Manitoba</option>
-                  <option value="NB">New Brunswick</option>
-                  <option value="NL">Newfoundland and Labrador</option>
-                  <option value="NS">Nova Scotia</option>
-                  <option value="ON">Ontario</option>
-                  <option value="PE">Prince Edward Island</option>
-                  <option value="QC">Quebec</option>
-                  <option value="SK">Saskatchewan</option>
-                  <option value="NT">Northwest Territories</option>
-                  <option value="NU">Nunavut</option>
-                  <option value="YT">Yukon</option>
+                  {CANADIAN_PROVINCES.map(province => (
+                    <option key={province.value} value={province.value}>{province.label}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -329,11 +476,12 @@ export function ProfileTab({ customer }: ProfileTabProps) {
                 <select
                   value={addressData.country}
                   onChange={handleAddressFieldChange('country')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className={INPUT_CLASSES}
                   disabled={!editingAddress}
                 >
-                  <option value="Canada">Canada</option>
-                  <option value="United States">United States</option>
+                  {COUNTRIES.map(country => (
+                    <option key={country.value} value={country.value}>{country.label}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -455,76 +603,32 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         </div>
 
         {/* Notification Preferences */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Notification Preferences</h3>
-          </div>
-          <div className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Email Notifications</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Receive updates via email</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={preferences.emailNotifications}
-                  onChange={handlePreferencesChange('emailNotifications')}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
-              </label>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">SMS Notifications</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Receive updates via text message</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={preferences.smsNotifications}
-                  onChange={handlePreferencesChange('smsNotifications')}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
-              </label>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Marketing Emails</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Receive promotional offers and news</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={preferences.marketingEmails}
-                  onChange={handlePreferencesChange('marketingEmails')}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
-              </label>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Order Updates</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Receive order and delivery notifications</p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={preferences.orderUpdates}
-                  onChange={handlePreferencesChange('orderUpdates')}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:border-gray-300 dark:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:bg-blue-600"></div>
-              </label>
-            </div>
-          </div>
-        </div>
+        <FormSection title="Notification Preferences">
+          <ToggleSwitch
+            checked={preferences.emailNotifications}
+            onChange={handlePreferencesChange('emailNotifications')}
+            label="Email Notifications"
+            description="Receive updates via email"
+          />
+          <ToggleSwitch
+            checked={preferences.smsNotifications}
+            onChange={handlePreferencesChange('smsNotifications')}
+            label="SMS Notifications"
+            description="Receive updates via text message"
+          />
+          <ToggleSwitch
+            checked={preferences.marketingEmails}
+            onChange={handlePreferencesChange('marketingEmails')}
+            label="Marketing Emails"
+            description="Receive promotional offers and news"
+          />
+          <ToggleSwitch
+            checked={preferences.orderUpdates}
+            onChange={handlePreferencesChange('orderUpdates')}
+            label="Order Updates"
+            description="Receive order and delivery notifications"
+          />
+        </FormSection>
       </div>
 
       {/* Account Summary */}

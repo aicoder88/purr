@@ -59,27 +59,10 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
   const familyPriceValue = getProductPrice('family').toFixed(2);
   const priceRange = getPriceRange(locale);
 
-  // A/B Test: Social Proof Position
+  // A/B Test: Social Proof Position (badges moved to bottom of page)
   const {
-    isVariant: showSocialProofAboveFold,
     trackConversion: trackSocialProofConversion,
   } = useABTestWithTracking(AB_TEST_SLUGS.SOCIAL_PROOF_POSITION);
-
-  // Social Proof component for A/B testing
-  const SocialProofAboveFold = showSocialProofAboveFold ? (
-    <div className="cv-auto cis-480">
-      <ErrorBoundary>
-        <SocialProofBadges />
-      </ErrorBoundary>
-    </div>
-  ) : null;
-
-  // Social Proof component in original position (below fold)
-  const SocialProofBelowFold = !showSocialProofAboveFold ? (
-    <ErrorBoundary>
-      <SocialProofBadges />
-    </ErrorBoundary>
-  ) : null;
 
   return (
     <>
@@ -297,9 +280,6 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
-        {/* A/B Test: Social Proof Above Fold (Variant) */}
-        {SocialProofAboveFold}
-
         {/* Science Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
@@ -338,9 +318,6 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
           </div>
         </section>
 
-        {/* A/B Test: Social Proof Below Fold (Control) */}
-        {SocialProofBelowFold}
-
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
@@ -373,6 +350,11 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
             <BlogPreview />
           </ErrorBoundary>
         </div>
+
+        {/* Social Proof Badges - Trusted & Verified */}
+        <ErrorBoundary>
+          <SocialProofBadges />
+        </ErrorBoundary>
       </main>
 
       {/* Social Proof Components - Temporarily disabled */}

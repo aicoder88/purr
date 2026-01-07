@@ -1,0 +1,302 @@
+{
+  "businessInfo": {
+    "name": "Purrify",
+    "description": "Natural activated carbon cat litter deodorizer made from coconut shells. Eliminates odors without fragrances or chemicals.",
+    "shortDescription": "Natural coconut shell activated carbon cat litter deodorizer",
+    "category": "Pet Supplies / Cat Products",
+    "website": "https://purrify.ca",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "city": "",
+    "province": "",
+    "postalCode": "",
+    "country": "Canada"
+  },
+  "directories": [
+    {
+      "name": "Google Business Profile",
+      "url": "https://business.google.com",
+      "priority": "critical",
+      "drValue": "High",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Essential for local SEO. Requires physical address or service area."
+    },
+    {
+      "name": "Bing Places",
+      "url": "https://www.bingplaces.com",
+      "priority": "high",
+      "drValue": "High",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Often overlooked, easy setup, can import from Google"
+    },
+    {
+      "name": "Apple Business Connect",
+      "url": "https://businessconnect.apple.com",
+      "priority": "high",
+      "drValue": "High",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Shows in Apple Maps and Siri results"
+    },
+    {
+      "name": "Yellow Pages Canada",
+      "url": "https://www.yellowpages.ca/business-centre",
+      "priority": "high",
+      "drValue": "DR 70+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Major Canadian directory, free listing available"
+    },
+    {
+      "name": "Canada411",
+      "url": "https://www.canada411.ca",
+      "priority": "medium",
+      "drValue": "DR 65+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Owned by Yellow Pages, submit through YP portal"
+    },
+    {
+      "name": "Yelp Canada",
+      "url": "https://biz.yelp.ca",
+      "priority": "high",
+      "drValue": "DR 90+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "High authority, good for reviews"
+    },
+    {
+      "name": "Better Business Bureau",
+      "url": "https://www.bbb.org/get-accredited",
+      "priority": "medium",
+      "drValue": "DR 85+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Paid accreditation, but free basic listing possible"
+    },
+    {
+      "name": "Manta",
+      "url": "https://www.manta.com/claim",
+      "priority": "medium",
+      "drValue": "DR 75+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Free business listing"
+    },
+    {
+      "name": "Crunchbase",
+      "url": "https://www.crunchbase.com/add-new",
+      "priority": "medium",
+      "drValue": "DR 90+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Good for startup/company profiles"
+    },
+    {
+      "name": "Product Hunt",
+      "url": "https://www.producthunt.com/posts/new",
+      "priority": "high",
+      "drValue": "DR 90+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Great for product launches, high visibility"
+    },
+    {
+      "name": "AngelList / Wellfound",
+      "url": "https://wellfound.com/companies/new",
+      "priority": "low",
+      "drValue": "DR 85+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Startup directory"
+    },
+    {
+      "name": "F6S",
+      "url": "https://www.f6s.com/company/create",
+      "priority": "low",
+      "drValue": "DR 70+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Startup ecosystem directory"
+    },
+    {
+      "name": "Clutch.co",
+      "url": "https://clutch.co/vendors/apply",
+      "priority": "low",
+      "drValue": "DR 80+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "B2B focus but accepts product companies"
+    },
+    {
+      "name": "AlternativeTo",
+      "url": "https://alternativeto.net/submit/",
+      "priority": "medium",
+      "drValue": "DR 80+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Submit as alternative to other cat deodorizers"
+    },
+    {
+      "name": "Shopify App Store / Partners",
+      "url": "https://www.shopify.com/partners",
+      "priority": "low",
+      "drValue": "DR 90+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "If you have Shopify integration"
+    },
+    {
+      "name": "Made in Canada Directory",
+      "url": "https://madeincanadadirectory.ca",
+      "priority": "high",
+      "drValue": "DR 30+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Relevant for Canadian-made products"
+    },
+    {
+      "name": "Canadian Business Directory",
+      "url": "https://www.canadianbusinessdirectory.ca",
+      "priority": "medium",
+      "drValue": "DR 40+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "General Canadian business listing"
+    },
+    {
+      "name": "PetBusiness.com",
+      "url": "https://www.petbusiness.com",
+      "priority": "high",
+      "drValue": "DR 50+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Industry-specific, check for supplier directory"
+    },
+    {
+      "name": "Pet Industry Federation",
+      "url": "https://petfed.ca",
+      "priority": "high",
+      "drValue": "DR 30+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Canadian pet industry association"
+    },
+    {
+      "name": "LinkedIn Company Page",
+      "url": "https://www.linkedin.com/company/setup/new/",
+      "priority": "high",
+      "drValue": "DR 98",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Essential business presence"
+    },
+    {
+      "name": "Pinterest Business",
+      "url": "https://business.pinterest.com",
+      "priority": "medium",
+      "drValue": "DR 95+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Good for product pins, pet content performs well"
+    },
+    {
+      "name": "Hotfrog",
+      "url": "https://www.hotfrog.ca",
+      "priority": "low",
+      "drValue": "DR 60+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Free Canadian business directory"
+    },
+    {
+      "name": "Cylex Canada",
+      "url": "https://www.cylex-canada.ca/add-company.html",
+      "priority": "low",
+      "drValue": "DR 50+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Free business listing"
+    },
+    {
+      "name": "n49",
+      "url": "https://www.n49.com",
+      "priority": "low",
+      "drValue": "DR 45+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "Canadian local business directory"
+    },
+    {
+      "name": "iGlobal",
+      "url": "https://ca.iglobal.co",
+      "priority": "low",
+      "drValue": "DR 55+",
+      "status": "pending",
+      "submittedDate": null,
+      "approvedDate": null,
+      "profileUrl": null,
+      "notes": "International business directory"
+    }
+  ],
+  "submissionTips": [
+    "Use consistent NAP (Name, Address, Phone) across all listings",
+    "Upload high-quality product images to each profile",
+    "Write unique descriptions for each directory (don't copy-paste)",
+    "Include relevant keywords naturally in descriptions",
+    "Add business hours if applicable",
+    "Request reviews from customers on Google and Yelp first",
+    "Set calendar reminders to check/update listings quarterly"
+  ]
+}

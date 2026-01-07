@@ -4,8 +4,88 @@ import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";
 import { useState } from "react";
 
-// Store data - Complete list of pet stores carrying Purrify
-const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/translation-context').useTranslation>['t']) => [
+// ============================================================================
+// Types
+// ============================================================================
+
+interface Store {
+  name: string;
+  location: string;
+  address: string;
+  phone: string;
+  url: string;
+  description: string;
+}
+
+interface LogoConfig {
+  src: string;
+  alt: string;
+  className: string;
+  width: number;
+  height: number;
+}
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const GRADIENTS = {
+  section: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900',
+  redButton: 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]',
+  redIcon: 'bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80',
+} as const;
+
+const DEFAULT_LOGO_CONFIG = {
+  className: 'w-16 h-16 object-contain',
+  width: 64,
+  height: 64,
+} as const;
+
+// Logo lookup map - more efficient than if/else chain
+const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'height'>> = {
+  'Chico': { src: '/optimized/chico-logo.svg', alt: 'Chico - Boutique d\'animaux Logo' },
+  'Pattes et Griffes': { src: '/optimized/pattes.webp', alt: 'Pattes et Griffes Logo' },
+  'GIGI': { src: '/optimized/gigi.webp', alt: 'Animal Shop GIGI - Pet Store Logo' },
+  'Pitou Minou': { src: '/optimized/pitou-minou.webp', alt: 'Pitou Minou & Compagnons - Pet Store Logo' },
+  'Doghaus': { src: '/optimized/doghaus.webp', alt: 'Doghaus Montreal - Premium Pet Store Logo' },
+  'Kong': { src: '/optimized/kong-animalerie.webp', alt: 'KONG ANIMALERIE - Montreal Pet Store Logo' },
+  'Coquette': { src: '/optimized/coquette-finegueule.webp', alt: 'Coquette et Finegueule - Pet Store with Grooming Logo' },
+  'Animalerie Mamiwouff': { src: '/optimized/animalerie-mamiwouff.webp', alt: 'Animalerie Mamiwouff - Family-Owned Pet Store Logo' },
+  'Animalerie Lamifidel': { src: '/optimized/lamifidel.avif', alt: 'Animalerie Lamifidel - Complete Pet Care and Supplies Logo' },
+  'Animalerie Petmobile Nathamo': { src: '/optimized/nathamo.avif', alt: 'Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo' },
+  'Animalerie Club Wouf Miaou': { src: '/optimized/woofmiao-logo.webp', alt: 'Animalerie Club Wouf Miaou - Pet Store Logo' },
+  'K&K Pet Foods': { src: '/optimized/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
+  'Viva Pets': { src: '/optimized/viva-pets.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
+  'Little Bit Western': { src: '/optimized/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
+};
+
+// List of stores that should have white background for their logo
+const WHITE_BG_STORES = Object.keys(STORE_LOGOS);
+
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+const getStoreLogo = (storeName: string): LogoConfig | null => {
+  const matchingKey = Object.keys(STORE_LOGOS).find(key => storeName.includes(key));
+  if (!matchingKey) return null;
+
+  const logoData = STORE_LOGOS[matchingKey];
+  return {
+    ...logoData,
+    ...DEFAULT_LOGO_CONFIG,
+  };
+};
+
+const hasWhiteBackground = (storeName: string): boolean => {
+  return WHITE_BG_STORES.some(key => storeName.includes(key));
+};
+
+// ============================================================================
+// Store Data
+// ============================================================================
+
+const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/translation-context').useTranslation>['t']): Store[] => [
   {
     name: "Pattes et Griffes (Sainte‑Thérèse)",
     location: "Sainte‑Thérèse, QC J7E 2X5",
@@ -192,182 +272,66 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
   },
 ];
 
-// Helper function to get store logo configuration - all logos served locally for optimization
-const getStoreLogo = (storeName: string) => {
-  if (storeName.includes('Chico')) {
-    return {
-      src: "/optimized/chico-logo.svg",
-      alt: "Chico - Boutique d'animaux Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Pattes et Griffes')) {
-    return {
-      src: "/optimized/pattes.webp",
-      alt: "Pattes et Griffes Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('GIGI')) {
-    return {
-      src: "/optimized/gigi.webp",
-      alt: "Animal Shop GIGI - Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Pitou Minou')) {
-    return {
-      src: "/optimized/pitou-minou.webp",
-      alt: "Pitou Minou & Compagnons - Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Doghaus')) {
-    return {
-      src: "/optimized/doghaus.webp",
-      alt: "Doghaus Montreal - Premium Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Kong')) {
-    return {
-      src: "/optimized/kong-animalerie.webp",
-      alt: "KONG ANIMALERIE - Montreal Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Coquette')) {
-    return {
-      src: "/optimized/coquette-finegueule.webp",
-      alt: "Coquette et Finegueule - Pet Store with Grooming Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Animalerie Mamiwouff')) {
-    return {
-      src: "/optimized/animalerie-mamiwouff.webp",
-      alt: "Animalerie Mamiwouff - Family-Owned Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Animalerie Lamifidel')) {
-    return {
-      src: "/optimized/lamifidel.avif",
-      alt: "Animalerie Lamifidel - Complete Pet Care and Supplies Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Animalerie Petmobile Nathamo')) {
-    return {
-      src: "/optimized/nathamo.avif",
-      alt: "Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Animalerie Club Wouf Miaou')) {
-    return {
-      src: "/optimized/woofmiao-logo.webp",
-      alt: "Animalerie Club Wouf Miaou - Pet Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('K&K Pet Foods')) {
-    return {
-      src: "/optimized/kk.avif",
-      alt: "K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Viva Pets')) {
-    return {
-      src: "/optimized/viva-pets.avif",
-      alt: "Viva Pets - Premium Pet Products & Supplies Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  if (storeName.includes('Little Bit Western')) {
-    return {
-      src: "/optimized/little-bit-western.avif",
-      alt: "Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo",
-      className: "w-16 h-16 object-contain",
-      width: 64,
-      height: 64
-    };
-  }
-  return null;
-};
+// ============================================================================
+// Subcomponents
+// ============================================================================
 
-// Helper function to check if store should have white background
-const hasWhiteBackground = (storeName: string) => {
-  return storeName.includes('Chico') ||
-    storeName.includes('Pattes et Griffes') ||
-    storeName.includes('GIGI') ||
-    storeName.includes('Pitou Minou') ||
-    storeName.includes('Doghaus') ||
-    storeName.includes('Kong') ||
-    storeName.includes('Coquette') ||
-    storeName.includes('Animalerie Mamiwouff') ||
-    storeName.includes('Animalerie Lamifidel') ||
-    storeName.includes('Animalerie Petmobile') ||
-    storeName.includes('Animalerie Club Wouf Miaou') ||
-    storeName.includes('K&K Pet Foods') ||
-    storeName.includes('Viva Pets') ||
-    storeName.includes('Little Bit Western');
-};
+function StoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+      />
+    </svg>
+  );
+}
+
+function WebsiteIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 4v1m0 14v1m8-8h-1M5 12H4m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      />
+    </svg>
+  );
+}
 
 // Component to handle logo display with fallback
-const StoreLogoImage = ({
+function StoreLogoImage({
   logoConfig,
   storeName
 }: {
-  logoConfig: ReturnType<typeof getStoreLogo>;
+  logoConfig: LogoConfig | null;
   storeName: string;
-}) => {
+}) {
   const [hasError, setHasError] = useState(false);
 
   if (!logoConfig || hasError) {
-    // Fallback SVG icon for stores without logos or when logos fail to load
-    return (
-      <svg
-        className="w-6 h-6 text-white dark:text-gray-100"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-        />
-      </svg>
-    );
+    return <StoreIcon className="w-6 h-6 text-white dark:text-gray-100" />;
   }
 
   return (
@@ -382,7 +346,7 @@ const StoreLogoImage = ({
       }}
     />
   );
-};
+}
 
 export function Stores() {
   const { t } = useTranslation();
@@ -433,10 +397,10 @@ export function Stores() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <SectionHeader text={t.storesSection?.availableInStores || "AVAILABLE IN STORES"} />
-          <h2 className="font-heading text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent text-gray-900 dark:text-gray-50 dark:text-gray-100">
+          <h2 className="font-heading text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             {t.storesSection?.soldInFollowingStores || "SOLD IN THE FOLLOWING STORES"}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-xl max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
             {t.storesSection?.subtitle || "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive."}
           </p>
         </div>
@@ -471,7 +435,7 @@ export function Stores() {
                       {store.location}
                     </p>
                     {store.description && (
-                      <p className="text-gray-500 dark:text-gray-400 dark:text-gray-400 text-xs mb-2 italic">
+                      <p className="text-gray-500 dark:text-gray-400 text-xs mb-2 italic">
                         {store.description}
                       </p>
                     )}
@@ -484,19 +448,7 @@ export function Stores() {
                           href={`tel:${store.phone}`}
                           className="inline-flex items-center text-sm text-[#FF3131] hover:text-[#FF3131]/80 transition-colors duration-200 mb-1"
                         >
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                            />
-                          </svg>
+                          <PhoneIcon className="w-4 h-4 mr-1" />
                           {store.phone}
                         </a>
                       )}
@@ -505,21 +457,9 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 dark:text-blue-300 hover:text-blue-800 dark:text-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ml-2"
+                          className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 ml-2"
                         >
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M12 4v1m0 14v1m8-8h-1M5 12H4m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                            />
-                          </svg>
+                          <WebsiteIcon className="w-4 h-4 mr-1" />
                           Website
                         </a>
                       )}

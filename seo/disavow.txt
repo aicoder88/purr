@@ -1,0 +1,70 @@
+# Google Disavow File for Purrify
+# Generated: 2026-01-01
+# Upload to: https://search.google.com/search-console/disavow-links
+#
+# Instructions:
+# 1. Go to Google Search Console
+# 2. Select your property (purrify.ca or whichever)
+# 3. Navigate to: Links > External Links > Export
+# 4. Then go to: https://search.google.com/search-console/disavow-links
+# 5. Upload this file
+#
+# These domains show clear spam/PBN signals:
+# - Link farm domains (SEO in name, selling backlinks)
+# - Impossible traffic numbers (397M+ linked domains)
+# - Zero DR with suspicious link patterns
+# - Known link scheme networks
+
+# Link farms / Link selling sites
+domain:primeseo.xyz
+domain:seo-backlink.agency
+domain:rankyour.website
+domain:rank-fast.agency
+domain:seolexo.com
+domain:rankvancebacklinks.pro
+domain:rankvance.website
+domain:exlinko.net
+
+# Spam networks (impossible metrics - 397M+ linked domains)
+domain:sport-life.club
+domain:qhtycw.com
+domain:sitescooponline.com
+domain:bmwyng.com
+domain:nettools.guru
+domain:getwebsiteworth.com
+
+# Low-quality PBN / doorway sites
+domain:byteshort.xyz
+domain:bye.fyi
+
+# NOT DISAVOWED - Owner's properties (legitimate cross-links):
+# crystaldeodorantprotection.com
+# catlittersmell.com
+# reviewcatlitter.com
+# healthycatlitter.com
+# ecocatlitters.com
+# allnaturalcatlitter.com
+# premiumcatlitter.com
+# finepinecatlitter.com
+# backtobasicscatlitter.com
+
+# Suspicious pattern sites (evaluate manually, uncomment if needed)
+# domain:bounceme.net
+# domain:theglobe.net
+# domain:the-globe.com
+# domain:theglobe.org
+
+# KEEP THESE - Potentially legitimate:
+# itxoft.com - DR 83, real traffic
+# tntcode.com - DR 59, real traffic/keywords
+# fluther.com - DR 55, legitimate Q&A site
+# dogdog.org - DR 48, pet-related, relevant
+# storesonline.com - DR 46, e-commerce directory
+# luke.lol - DR 45, appears legitimate
+# squidalicious.com - DR 29, real site
+# thewildrose.net - legitimate small site
+# spherebrooke.com - small but real
+# animaleriemamiwouff.com - pet store, relevant!
+# healthycatlitter.com - highly relevant niche site
+# catlittersmell.com - relevant (if real content)
+# reviewcatlitter.com - relevant review site

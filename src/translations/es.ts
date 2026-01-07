@@ -1287,7 +1287,7 @@ export const es: TranslationType = {
   exitPopup: {
     title: "Espera! No te vayas con las manos vacias",
     subtitle: "Obtiene 10% de descuento en tu primera orden",
-    description: "Unete a miles de padres de gatos felices y obtiene ofertas exclusivas.",
+    description: "Unete a miles de padres de gatos felices y obtiene ofertas exclusivas. Excluye la oferta de prueba gratuita.",
     placeholder: "Ingresa tu correo",
     button: "Obtener Mi Descuento",
     noThanks: "No gracias, prefiero precio completo",
