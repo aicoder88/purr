@@ -1602,6 +1602,162 @@ export interface TranslationType {
   // Try Free Page - Landing page for ad campaigns
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tryFreePage?: Record<string, any>;
+
+  // City Page Translations (for location-based SEO pages)
+  cityPage?: {
+    seo: {
+      title: string;
+      descriptionWithPopulation: string;
+      descriptionDefault: string;
+    };
+    loading: string;
+    hero: {
+      heading: string;
+      subheading: string;
+    };
+    whyChoose: {
+      heading: string;
+      perfectFor: string;
+      fastShipping: string;
+      worksWithAllBrands: string;
+    };
+    cta: {
+      tryInCity: string;
+      seeHowItWorks: string;
+      shopOnline: string;
+      submitVideo: string;
+      writeReview: string;
+      exploreTestimonials: string;
+    };
+    whereToFind: {
+      heading: string;
+      localStore: {
+        heading: string;
+        description: string;
+        tip: string;
+      };
+      orderDirect: {
+        heading: string;
+        description: string;
+      };
+    };
+    playbook: {
+      heading: string;
+      step1: string;
+      step2: string;
+      step3: string;
+    };
+    testimonials: {
+      heading: string;
+      wasHelpful: string;
+      shareStory: {
+        heading: string;
+        description: string;
+      };
+    };
+    provinceWide: {
+      heading: string;
+      description: string;
+      averageRating: string;
+      happyHomes: string;
+      fastShipping: string;
+    };
+    faq: {
+      heading: string;
+      delivery: {
+        question: string;
+        answer: string;
+      };
+      painPoint: {
+        question: string;
+        answer: string;
+      };
+      litterBrands: {
+        question: string;
+        answer: string;
+      };
+      climate: {
+        question: string;
+        answer: string;
+      };
+      stores: {
+        question: string;
+        answer: string;
+      };
+      multiCat: {
+        question: string;
+        answer: string;
+      };
+    };
+  };
+
+  // Locations Hub and Province Pages
+  locations?: {
+    hub: {
+      badge: string;
+      heading: string;
+      description: string;
+      selectProvince: string;
+      whyChoose: string;
+      benefit1: string;
+      benefit2: string;
+      benefit3: string;
+    };
+    province: {
+      badge: string;
+      heading: string;
+      description: string;
+      citiesHeading: string;
+      viewCityGuide: string;
+      exploreOther: string;
+      orderOnline: string;
+      orderDescription: string;
+    };
+  };
+
+  // Thank You / Order Confirmation Page
+  thankYou?: {
+    heading: string;
+    subheading: string;
+    orderConfirmed: string;
+    orderNumber: string;
+    product: string;
+    quantity: string;
+    total: string;
+    expectedDelivery: string;
+    deliveryCA: string;
+    deliveryUS: string;
+    deliveryIntl: string;
+    trackingInfo: string;
+    questionsHeading: string;
+    questionsDescription: string;
+    contactSupport: string;
+    continueShopping: string;
+    referralCta: {
+      heading: string;
+      description: string;
+      button: string;
+    };
+  };
+
+  // Reviews Page
+  reviews?: {
+    heading: string;
+    subheading: string;
+    verifiedPurchase: string;
+    helpful: string;
+    writeReview: string;
+    filterBy: string;
+    allRatings: string;
+    sortBy: string;
+    mostRecent: string;
+    mostHelpful: string;
+    highestRated: string;
+    lowestRated: string;
+    showingReviews: string;
+    noReviews: string;
+    loadMore: string;
+  };
 }
 
 // Common B2B page structure - permissive to allow fallback strings
