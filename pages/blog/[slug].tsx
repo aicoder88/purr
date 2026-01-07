@@ -83,7 +83,8 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         content: blogPost.content,
         locale: blogPost.locale as 'en' | 'fr' | 'zh',
         // Include howTo data if present (for step-by-step tutorials)
-        howTo: (blogPost as { howTo?: BlogPost['howTo'] }).howTo
+        // Use null fallback to avoid JSON serialization error with undefined
+        howTo: (blogPost as { howTo?: BlogPost['howTo'] }).howTo ?? null
       };
 
       return {
