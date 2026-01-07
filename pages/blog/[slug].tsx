@@ -81,7 +81,9 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         heroImageAlt: blogPost.featuredImage.alt,
         link: `/blog/${blogPost.slug}`,
         content: blogPost.content,
-        locale: blogPost.locale as 'en' | 'fr' | 'zh'
+        locale: blogPost.locale as 'en' | 'fr' | 'zh',
+        // Include howTo data if present (for step-by-step tutorials)
+        howTo: (blogPost as { howTo?: BlogPost['howTo'] }).howTo
       };
 
       return {
@@ -327,6 +329,48 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             })
           }}
         />
+
+        {/* HowTo Schema for tutorial posts */}
+        {post.howTo && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'HowTo',
+                'name': post.howTo.name,
+                'description': post.howTo.description,
+                ...(post.howTo.totalTime && { 'totalTime': post.howTo.totalTime }),
+                ...(post.howTo.estimatedCost && {
+                  'estimatedCost': {
+                    '@type': 'MonetaryAmount',
+                    'currency': post.howTo.estimatedCost.currency,
+                    'value': post.howTo.estimatedCost.value
+                  }
+                }),
+                ...(post.howTo.supply && {
+                  'supply': post.howTo.supply.map(item => ({
+                    '@type': 'HowToSupply',
+                    'name': item
+                  }))
+                }),
+                ...(post.howTo.tool && {
+                  'tool': post.howTo.tool.map(item => ({
+                    '@type': 'HowToTool',
+                    'name': item
+                  }))
+                }),
+                'step': post.howTo.steps.map(step => ({
+                  '@type': 'HowToStep',
+                  'name': step.name,
+                  'text': step.text,
+                  'position': step.position,
+                  ...(step.image && { 'image': step.image })
+                }))
+              })
+            }}
+          />
+        )}
       </Head>
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">

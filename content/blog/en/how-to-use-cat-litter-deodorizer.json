@@ -41,5 +41,50 @@
     "ogImage": "/optimized/before-after.webp",
     "canonical": "https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer"
   },
-  "readingTime": 4
+  "readingTime": 4,
+  "howTo": {
+    "name": "How to Use Cat Litter Deodorizer Additive",
+    "description": "Learn the proper way to apply activated carbon cat litter deodorizer for maximum odor control. This step-by-step guide covers the complete application process from start to finish.",
+    "totalTime": "PT5M",
+    "estimatedCost": {
+      "currency": "CAD",
+      "value": "5-15"
+    },
+    "supply": [
+      "Cat litter deodorizer (activated carbon)",
+      "Fresh cat litter",
+      "Clean litter box"
+    ],
+    "tool": [
+      "Litter scoop",
+      "Measuring spoon (tablespoon)"
+    ],
+    "steps": [
+      {
+        "name": "Start with a Clean Litter Box",
+        "text": "Begin with a completely clean, empty litter box. Remove all old litter and wash the box with mild soap and water. Dry thoroughly before proceeding. A clean starting surface ensures maximum contact between the deodorizer and odor-causing compounds.",
+        "position": 1
+      },
+      {
+        "name": "Add Base Layer of Litter",
+        "text": "Pour 2-3 inches of your regular cat litter into the clean box. This creates the foundation layer that will work with your deodorizer additive. Use your cat's preferred litter type, ensure even distribution across the box, and don't overfill - leave room for mixing.",
+        "position": 2
+      },
+      {
+        "name": "Sprinkle Deodorizer Evenly",
+        "text": "Sprinkle the activated carbon litter additive evenly across the entire litter surface. Use 1 tablespoon for small litter boxes, 1.5 tablespoons for medium boxes, 2 tablespoons for large boxes, and add 0.5 tablespoon per additional cat in multi-cat households.",
+        "position": 3
+      },
+      {
+        "name": "Add Final Litter Layer",
+        "text": "Add another 1-2 inches of litter on top of the deodorizer. This creates a sandwich effect that maximizes odor control while keeping the additive in place. The layered approach ensures the deodorizer contacts odors from both above and below.",
+        "position": 4
+      },
+      {
+        "name": "Mix Gently (Optional)",
+        "text": "Lightly mix the top layer with a clean scoop to distribute the deodorizer throughout the litter. Be gentle to avoid creating dust clouds. Some cats prefer unmixed litter, so observe your cat's preferences.",
+        "position": 5
+      }
+    ]
+  }
 }

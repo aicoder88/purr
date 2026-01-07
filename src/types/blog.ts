@@ -28,6 +28,7 @@ export interface BlogPost {
   };
   seo: SEOMetadata;
   readingTime: number; // minutes
+  howTo?: HowToData; // For step-by-step tutorial posts
 }
 
 export interface SEOMetadata {
@@ -36,6 +37,27 @@ export interface SEOMetadata {
   keywords: string[];
   ogImage?: string;
   canonical?: string;
+}
+
+// HowTo Schema Types for step-by-step tutorials
+export interface HowToStep {
+  name: string;
+  text: string;
+  position: number;
+  image?: string;
+}
+
+export interface HowToData {
+  name: string;
+  description: string;
+  totalTime?: string; // ISO 8601 duration format (e.g., "PT5M" for 5 minutes)
+  estimatedCost?: {
+    currency: string;
+    value: string;
+  };
+  supply?: string[];
+  tool?: string[];
+  steps: HowToStep[];
 }
 
 export interface Category {

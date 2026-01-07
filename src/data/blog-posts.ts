@@ -1,4 +1,24 @@
 // Sample blog posts data
+export type HowToStep = {
+  name: string;
+  text: string;
+  position: number;
+  image?: string;
+};
+
+export type HowToData = {
+  name: string;
+  description: string;
+  totalTime?: string; // ISO 8601 duration format (e.g., "PT5M" for 5 minutes)
+  estimatedCost?: {
+    currency: string;
+    value: string;
+  };
+  supply?: string[];
+  tool?: string[];
+  steps: HowToStep[];
+};
+
 export type BlogPost = {
   title: string;
   excerpt: string;
@@ -20,6 +40,7 @@ export type BlogPost = {
   toc?: Array<{ title: string; id: string }>;
   faq?: Array<{ question: string; answerHtml: string }>;
   cta?: { text: string; url: string };
+  howTo?: HowToData;
 };
 
 // Generate dynamic blog posts based on actual blog pages
