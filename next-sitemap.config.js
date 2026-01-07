@@ -15,7 +15,6 @@ module.exports = {
     ],
     additionalSitemaps: [
       'https://www.purrify.ca/server-sitemap.xml', // For dynamically generated content
-      'https://www.purrify.ca/sitemap-locations.xml', // Location pages
     ],
     host: 'https://www.purrify.ca',
   },
@@ -213,16 +212,18 @@ module.exports = {
     }
 
     // Spanish pages - specific hreflang setup
+    // Extract the path without locale prefix for proper hreflang generation
     if (path.startsWith('/es/')) {
+      const pathWithoutLocale = path.replace(/^\/es/, '');
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
         alternateRefs: [
-          { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
-          { href: 'https://www.purrify.ca/es', hreflang: 'es' },
-          { href: 'https://www.purrify.ca', hreflang: 'x-default' },
+          { href: `https://www.purrify.ca${pathWithoutLocale}`, hreflang: 'en-CA' },
+          { href: `https://www.purrify.ca/es${pathWithoutLocale}`, hreflang: 'es' },
+          { href: `https://www.purrify.ca${pathWithoutLocale}`, hreflang: 'x-default' },
         ],
       };
     }
