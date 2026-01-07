@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, CheckCircle, Filter, SortAsc } from 'lucide-react';
 import Script from 'next/script';
+import { Button } from '../ui/button';
+
+// ============================================================================
+// Types & Interfaces
+// ============================================================================
 
 type SortOption = 'newest' | 'oldest' | 'highest' | 'lowest' | 'helpful';
-import { Button } from '../ui/button';
 
 interface Review {
   id: string;
@@ -30,6 +34,24 @@ interface ReviewSystemProps {
   maxReviews?: number;
   compact?: boolean;
 }
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const STAR_SIZE_CLASSES = {
+  sm: 'w-4 h-4',
+  md: 'w-5 h-5',
+  lg: 'w-6 h-6',
+} as const;
+
+const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
 
 const SAMPLE_REVIEWS: Review[] = [
   {
@@ -132,6 +154,10 @@ const SAMPLE_REVIEWS: Review[] = [
 
 const DISPLAY_REVIEW_COUNT = 138;
 
+// ============================================================================
+// Component
+// ============================================================================
+
 export const ReviewSystem: React.FC<ReviewSystemProps> = ({ 
   showFilters = true, 
   maxReviews, 
@@ -193,34 +219,20 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   }, [reviews, sortBy, filterRating, filterSize, maxReviews]);
 
   const renderStars = (rating: number, size: 'sm' | 'md' | 'lg' = 'md') => {
-    const sizeClasses = {
-      sm: 'w-4 h-4',
-      md: 'w-5 h-5',
-      lg: 'w-6 h-6'
-    };
-
     return (
       <div className="flex items-center">
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`${sizeClasses[size]} ${
-              star <= rating 
-                ? 'text-yellow-400 dark:text-yellow-300 dark:text-yellow-400 fill-current' 
+            className={`${STAR_SIZE_CLASSES[size]} ${
+              star <= rating
+                ? 'text-yellow-400 dark:text-yellow-300 fill-current'
                 : 'text-gray-300 dark:text-gray-600'
             }`}
           />
         ))}
       </div>
     );
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
   };
 
   // Generate structured data for reviews

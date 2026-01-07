@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { MessageCircle, Plus, Eye, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// ============================================================================
+// Types & Interfaces
+// ============================================================================
+
 interface SupportTicket {
   id: string;
   subject: string;
@@ -25,6 +29,46 @@ interface SupportMessage {
 interface CustomerSupportProps {
   customerId: string;
 }
+
+// ============================================================================
+// Constants & Utility Functions
+// ============================================================================
+
+const STATUS_COLORS = {
+  open: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
+  'in-progress': 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
+  resolved: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
+  closed: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
+} as const;
+
+const PRIORITY_COLORS = {
+  low: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
+  medium: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
+  high: 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300',
+  urgent: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300',
+} as const;
+
+const getStatusColor = (status: string): string => {
+  return STATUS_COLORS[status as keyof typeof STATUS_COLORS] || STATUS_COLORS.open;
+};
+
+const getPriorityColor = (priority: string): string => {
+  return PRIORITY_COLORS[priority as keyof typeof PRIORITY_COLORS] || PRIORITY_COLORS.medium;
+};
+
+const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString('en-CA', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+};
+
+// ============================================================================
+// Components
+// ============================================================================
 
 export function CustomerSupport({ customerId }: CustomerSupportProps) {
   const [tickets, setTickets] = useState<SupportTicket[]>([]);
@@ -166,36 +210,6 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
     } catch (error) {
       // Silently fail
     }
-  };
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      open: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
-      'in-progress': 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
-      resolved: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
-      closed: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
-    };
-    return colors[status as keyof typeof colors] || colors.open;
-  };
-
-  const getPriorityColor = (priority: string) => {
-    const colors = {
-      low: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
-      medium: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
-      high: 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300',
-      urgent: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300'
-    };
-    return colors[priority as keyof typeof colors] || colors.medium;
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-CA', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
   };
 
   if (loading) {
@@ -421,26 +435,6 @@ function TicketView({ ticket, onBack, onAddMessage }: {
       onAddMessage(ticket.id, newMessage);
       setNewMessage('');
     }
-  };
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      open: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
-      'in-progress': 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
-      resolved: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
-      closed: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
-    };
-    return colors[status as keyof typeof colors] || colors.open;
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-CA', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
   };
 
   return (

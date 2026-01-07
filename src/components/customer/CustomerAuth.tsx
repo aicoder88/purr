@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// ============================================================================
+// Types & Interfaces
+// ============================================================================
+
 interface CustomerAuthProps {
   onLogin: (customer: { id: string; email: string }) => void;
 }
@@ -25,6 +29,36 @@ interface RegisterForm {
     postalCode: string;
   };
 }
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const CANADIAN_PROVINCES = [
+  { code: 'AB', name: 'Alberta' },
+  { code: 'BC', name: 'British Columbia' },
+  { code: 'MB', name: 'Manitoba' },
+  { code: 'NB', name: 'New Brunswick' },
+  { code: 'NL', name: 'Newfoundland and Labrador' },
+  { code: 'NS', name: 'Nova Scotia' },
+  { code: 'ON', name: 'Ontario' },
+  { code: 'PE', name: 'Prince Edward Island' },
+  { code: 'QC', name: 'Quebec' },
+  { code: 'SK', name: 'Saskatchewan' },
+  { code: 'NT', name: 'Northwest Territories' },
+  { code: 'NU', name: 'Nunavut' },
+  { code: 'YT', name: 'Yukon' },
+] as const;
+
+const INPUT_CLASSES = 'appearance-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700';
+
+const INPUT_WITH_ICON_CLASSES = 'appearance-none relative block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700';
+
+const PASSWORD_INPUT_CLASSES = 'appearance-none relative block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700';
+
+// ============================================================================
+// Component
+// ============================================================================
 
 export function CustomerAuth({ onLogin }: CustomerAuthProps) {
   const [isLogin, setIsLogin] = useState(true);
@@ -110,22 +144,6 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
       setLoading(false);
     }
   };
-
-  const canadianProvinces = [
-    { code: 'AB', name: 'Alberta' },
-    { code: 'BC', name: 'British Columbia' },
-    { code: 'MB', name: 'Manitoba' },
-    { code: 'NB', name: 'New Brunswick' },
-    { code: 'NL', name: 'Newfoundland and Labrador' },
-    { code: 'NS', name: 'Nova Scotia' },
-    { code: 'ON', name: 'Ontario' },
-    { code: 'PE', name: 'Prince Edward Island' },
-    { code: 'QC', name: 'Quebec' },
-    { code: 'SK', name: 'Saskatchewan' },
-    { code: 'NT', name: 'Northwest Territories' },
-    { code: 'NU', name: 'Nunavut' },
-    { code: 'YT', name: 'Yukon' }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -248,7 +266,7 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
                 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
                 loading
                   ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
-                  : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200'
+                  : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700'
               )}
             >
               {loading ? (
@@ -411,7 +429,7 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
                         })}
                       >
                         <option value="">Select Province</option>
-                        {canadianProvinces.map((province) => (
+                        {CANADIAN_PROVINCES.map((province) => (
                           <option key={province.code} value={province.code}>
                             {province.name}
                           </option>
@@ -518,7 +536,7 @@ export function CustomerAuth({ onLogin }: CustomerAuthProps) {
                 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
                 loading
                   ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
-                  : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200'
+                  : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700'
               )}
             >
               {loading ? (

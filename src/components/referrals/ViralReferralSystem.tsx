@@ -250,7 +250,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <h1 className="font-heading text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
           Earn Money Helping Cat Parents
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">
+        <p className="text-xl text-gray-600 dark:text-gray-300">
           Get paid for every friend you help eliminate cat odors forever
         </p>
       </div>
@@ -260,9 +260,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <Users className="w-8 h-8 mx-auto mb-2 text-blue-500 dark:text-blue-400 dark:text-blue-300" />
+              <Users className="w-8 h-8 mx-auto mb-2 text-blue-500 dark:text-blue-400" />
               <p className="text-2xl font-bold">{stats.totalReferrals}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">Total Referrals</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Total Referrals</p>
             </div>
           </CardContent>
         </Card>
@@ -320,7 +320,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                 <p className="text-sm text-gray-600 dark:text-gray-300">
                   {nextTier.requiresReferrals - stats.totalReferrals} more referrals to unlock:
                 </p>
-                <ul className="text-sm text-green-600 dark:text-green-400 dark:text-green-400 mt-2">
+                <ul className="text-sm text-green-600 dark:text-green-400 mt-2">
                   {nextTier.perks.map((perk, index) => (
                     <li key={index}>• {perk}</li>
                   ))}
@@ -383,9 +383,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
-                  <Button 
+                  <Button
                     onClick={() => shareToSocial('instagram')}
-                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white dark:text-gray-100 dark:text-gray-100"
+                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white dark:text-gray-100"
                   >
                     📷 Instagram
                   </Button>

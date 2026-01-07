@@ -9,9 +9,125 @@ import { useTranslation } from '../../../lib/translation-context';
 import { safeTrackEvent } from '../../../lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
 
-// Dynamic imports for below-fold components (performance optimization)
+// ============================================================================
+// Types & Interfaces
+// ============================================================================
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  stars: number;
+  timeAgo: string;
+  badge: string;
+  helpfulCount: number;
+}
+
+interface TestimonialCardProps {
+  testimonial: Testimonial;
+}
+
+interface FAQItemProps {
+  question: string;
+  answer: string;
+}
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const GRADIENTS = {
+  pageBackground: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800',
+  ctaButton: 'bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600',
+  headingText: 'bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent',
+  blueSection: 'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20',
+  purpleSection: 'bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20',
+  testimonialCard: 'bg-gradient-to-br from-gray-50 to-white dark:from-gray-700/70 dark:to-gray-700/50',
+  videoCta: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20',
+} as const;
+
+const CTA_BUTTON_CLASSES = `inline-flex items-center justify-center ${GRADIENTS.ctaButton} text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg transition-all`;
+
+// ============================================================================
+// Subcomponents
+// ============================================================================
+
+function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const fullStars = Math.floor(testimonial.stars);
+  const hasHalfStar = testimonial.stars % 1 !== 0;
+
+  return (
+    <div className={`${GRADIENTS.testimonialCard} p-6 rounded-xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col`}>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-1">
+          {[...Array(fullStars)].map((_, i) => (
+            <span key={i} className="text-yellow-400 dark:text-yellow-300 text-lg">★</span>
+          ))}
+          {hasHalfStar && (
+            <span className="text-yellow-400 dark:text-yellow-300 text-lg">½</span>
+          )}
+          {[...Array(5 - Math.ceil(testimonial.stars))].map((_, i) => (
+            <span key={`empty-${i}`} className="text-gray-300 dark:text-gray-500 text-lg">★</span>
+          ))}
+        </div>
+        <span className="text-xs text-gray-500 dark:text-gray-400">{testimonial.timeAgo}</span>
+      </div>
+
+      <div className="mb-3">
+        <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-700">
+          ✓ {testimonial.badge}
+        </span>
+      </div>
+
+      <p className="italic mb-4 text-gray-700 dark:text-gray-200 flex-grow leading-relaxed">
+        &quot;{testimonial.quote}&quot;
+      </p>
+
+      <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-auto">
+        <p className="font-semibold text-gray-900 dark:text-gray-50 mb-3 text-sm">
+          {testimonial.author}
+        </p>
+
+        <div className="flex items-center justify-between text-sm">
+          <span className="text-gray-600 dark:text-gray-400">Was this helpful?</span>
+          <div className="flex items-center gap-3">
+            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <span>👍</span>
+              <span className="text-xs font-medium">{testimonial.helpfulCount}</span>
+            </button>
+            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+              <span>👎</span>
+              <span className="text-xs font-medium">{Math.floor(testimonial.helpfulCount / 8)}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FAQItem({ question, answer }: FAQItemProps) {
+  return (
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+      <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
+        {question}
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200">
+        {answer}
+      </p>
+    </div>
+  );
+}
+
+// ============================================================================
+// Dynamic Imports
+// ============================================================================
+
 const CityInterlinkSection = dynamic(() => import('./CityInterlinkSection').then(mod => ({ default: mod.CityInterlinkSection })), { ssr: true });
 const LocalShippingUrgency = dynamic(() => import('./LocalShippingUrgency').then(mod => ({ default: mod.LocalShippingUrgency })), { ssr: true });
+
+// ============================================================================
+// Utility Functions
+// ============================================================================
 
 const numberFormatter = new Intl.NumberFormat('en-CA');
 const compactNumberFormatter = new Intl.NumberFormat('en-CA', {
@@ -95,14 +211,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
   const { t, locale } = useTranslation();
   const cityRecord = citySlug ? getCityBySlug(citySlug) : undefined;
 
-  const [testimonials, setTestimonials] = useState<Array<{
-    quote: string;
-    author: string;
-    stars: number;
-    timeAgo: string;
-    badge: string;
-    helpfulCount: number;
-  }>>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   // Get profile data (may be undefined if city not found)
   const profile = cityRecord?.profile;
@@ -273,10 +382,10 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+      <div className={`min-h-screen ${GRADIENTS.pageBackground}`}>
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className={`font-heading text-4xl md:text-6xl font-bold mb-6 ${GRADIENTS.headingText}`}>
               Best Cat Litter Odor Eliminator in {profile.name}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
@@ -311,7 +420,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/products/trial-size"
-                  className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                  className={CTA_BUTTON_CLASSES}
                 >
                   Try Purrify in {profile.name}
                 </Link>
@@ -340,7 +449,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
           provinceCode={profile.provinceCode}
         />
 
-        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+        <section className={`py-16 px-4 ${GRADIENTS.blueSection}`}>
           <div className="max-w-5xl mx-auto">
             <div className="grid gap-10 lg:grid-cols-2 items-start">
               <div className="order-2 lg:order-1">
@@ -368,7 +477,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                     </p>
                     <Link
                       href="/products/trial-size"
-                      className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
+                      className={CTA_BUTTON_CLASSES}
                     >
                       Shop Online Now
                     </Link>
@@ -406,67 +515,14 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               What {profile.name} Cat Owners Say
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, _index) => {
-                const fullStars = Math.floor(testimonial.stars);
-                const hasHalfStar = testimonial.stars % 1 !== 0;
-
-                return (
-                  <div
-                    key={testimonial.author}
-                    className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700/70 dark:to-gray-700/50 p-6 rounded-xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-1">
-                        {[...Array(fullStars)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 dark:text-yellow-300 text-lg">★</span>
-                        ))}
-                        {hasHalfStar && (
-                          <span className="text-yellow-400 dark:text-yellow-300 text-lg">½</span>
-                        )}
-                        {[...Array(5 - Math.ceil(testimonial.stars))].map((_, i) => (
-                          <span key={`empty-${i}`} className="text-gray-300 dark:text-gray-500 text-lg">★</span>
-                        ))}
-                      </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">{testimonial.timeAgo}</span>
-                    </div>
-
-                    <div className="mb-3">
-                      <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-700">
-                        ✓ {testimonial.badge}
-                      </span>
-                    </div>
-
-                    <p className="italic mb-4 text-gray-700 dark:text-gray-200 flex-grow leading-relaxed">
-                      &quot;{testimonial.quote}&quot;
-                    </p>
-
-                    <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-auto">
-                      <p className="font-semibold text-gray-900 dark:text-gray-50 mb-3 text-sm">
-                        {testimonial.author}
-                      </p>
-
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">Was this helpful?</span>
-                        <div className="flex items-center gap-3">
-                          <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                            <span>👍</span>
-                            <span className="text-xs font-medium">{testimonial.helpfulCount}</span>
-                          </button>
-                          <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                            <span>👎</span>
-                            <span className="text-xs font-medium">{Math.floor(testimonial.helpfulCount / 8)}</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.author} testimonial={testimonial} />
+              ))}
             </div>
 
             {/* Video Testimonial CTA */}
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 rounded-xl p-8 border-2 border-dashed border-orange-300 dark:border-orange-700">
+              <div className={`${GRADIENTS.videoCta} rounded-xl p-8 border-2 border-dashed border-orange-300 dark:border-orange-700`}>
                 <h3 className="font-heading text-2xl font-bold mb-3 text-gray-900 dark:text-gray-50">
                   Share Your {profile.name} Success Story
                 </h3>
@@ -476,7 +532,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl"
+                    className={`${CTA_BUTTON_CLASSES} shadow-lg hover:shadow-xl`}
                   >
                     📹 Submit Your Video Review
                   </Link>
@@ -493,7 +549,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         </section>
 
         {/* Related City Success Stories */}
-        <section className="py-16 px-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+        <section className={`py-16 px-4 ${GRADIENTS.purpleSection}`}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               Cat Owners Across {provinceName} Love Purrify
@@ -529,59 +585,30 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
               {profile.name} FAQ
             </h2>
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  Do you deliver to {profile.name}, {provinceName}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Yes! Fast shipping across {provinceName}, including every neighbourhood in {profile.name}. Orders arrive within 2-3 business days.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How does Purrify support homes dealing with {painPoint.toLowerCase()}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Sprinkle Purrify on top of your usual litter. The activated carbon bonds to ammonia molecules, even when {painPoint.toLowerCase()}. Fresh air without changing your cat's routine.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  Which litter brands work best with Purrify in {profile.name}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {profile.name} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  How does Purrify handle {seasonalTip.toLowerCase()} in {provinceName}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {seasonalTip.toLowerCase()} in {profile.name}, Purrify's molecular odor capture continues 24/7. Perfect for {keyFeatures[0]?.toLowerCase() || 'busy households'} facing {provinceName}'s climate challenges.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  Can I find Purrify at pet stores in {profile.name}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Many independent retailers in {profile.name} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {provinceName}.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-                  Is Purrify safe for multi-cat households in {profile.name}?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Absolutely! Purrify is completely safe for homes with multiple cats. Many {profile.name} families use it across 2-4 litter boxes. The activated carbon is non-toxic, fragrance-free, and won't irritate sensitive cats. Perfect for {keyFeatures[1]?.toLowerCase() || 'multi-cat families'}.
-                </p>
-              </div>
+              <FAQItem
+                question={`Do you deliver to ${profile.name}, ${provinceName}?`}
+                answer={`Yes! Fast shipping across ${provinceName}, including every neighbourhood in ${profile.name}. Orders arrive within 2-3 business days.`}
+              />
+              <FAQItem
+                question={`How does Purrify support homes dealing with ${painPoint.toLowerCase()}?`}
+                answer={`Sprinkle Purrify on top of your usual litter. The activated carbon bonds to ammonia molecules, even when ${painPoint.toLowerCase()}. Fresh air without changing your cat's routine.`}
+              />
+              <FAQItem
+                question={`Which litter brands work best with Purrify in ${profile.name}?`}
+                answer={`Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. ${profile.name} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences.`}
+              />
+              <FAQItem
+                question={`How does Purrify handle ${seasonalTip.toLowerCase()} in ${provinceName}?`}
+                answer={`The activated carbon technology works independently of temperature and humidity. Whether you're dealing with ${seasonalTip.toLowerCase()} in ${profile.name}, Purrify's molecular odor capture continues 24/7. Perfect for ${keyFeatures[0]?.toLowerCase() || 'busy households'} facing ${provinceName}'s climate challenges.`}
+              />
+              <FAQItem
+                question={`Can I find Purrify at pet stores in ${profile.name}?`}
+                answer={`Many independent retailers in ${profile.name} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in ${provinceName}.`}
+              />
+              <FAQItem
+                question={`Is Purrify safe for multi-cat households in ${profile.name}?`}
+                answer={`Absolutely! Purrify is completely safe for homes with multiple cats. Many ${profile.name} families use it across 2-4 litter boxes. The activated carbon is non-toxic, fragrance-free, and won't irritate sensitive cats. Perfect for ${keyFeatures[1]?.toLowerCase() || 'multi-cat families'}.`}
+              />
             </div>
           </div>
         </section>
