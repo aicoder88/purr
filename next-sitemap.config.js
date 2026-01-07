@@ -104,6 +104,13 @@ module.exports = {
     '/zh/locations/qc',
     '/zh/locations/sk',
     '/zh/locations/yt',
+    // Exclude ALL non-English location pages (noindexed to prevent thin content)
+    '/fr/locations',
+    '/fr/locations/*',
+    '/zh/locations',
+    '/zh/locations/*',
+    '/es/locations',
+    '/es/locations/*',
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },

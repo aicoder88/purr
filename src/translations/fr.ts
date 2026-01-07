@@ -2140,6 +2140,162 @@ export const fr = {
       remove: "Retirer",
       discountNote: "Obtenez 5$ de rabais avec le code de parrainage d'un ami"
     }
+  },
+
+  // City Page Translations (for location-based SEO pages)
+  cityPage: {
+    seo: {
+      title: "Désodorisant pour litière à {{city}} | Purrify Charbon Actif",
+      descriptionWithPopulation: "Odeur de litière à {{city}}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {{province}}. Aimé par {{population}}+ propriétaires de chats.",
+      descriptionDefault: "Odeur de litière à {{city}}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {{province}}. Sans danger pour les chats et chatons."
+    },
+    loading: "Redirection en cours...",
+    hero: {
+      heading: "Meilleur éliminateur d'odeurs de litière à {{city}}",
+      subheading: "Fait confiance par {{audience}}+ propriétaires de chats à {{city}} et partout au {{province}}"
+    },
+    whyChoose: {
+      heading: "Pourquoi les parents de chats de {{city}} choisissent Purrify",
+      perfectFor: "Parfait pour {{feature}}",
+      fastShipping: "Livraison rapide partout au {{province}}",
+      worksWithAllBrands: "Fonctionne avec toutes les marques de litière que vous aimez déjà"
+    },
+    cta: {
+      tryInCity: "Essayez Purrify à {{city}}",
+      seeHowItWorks: "Découvrez comment fonctionne la technologie au carbone →",
+      shopOnline: "Acheter en ligne maintenant",
+      submitVideo: "📹 Soumettez votre vidéo",
+      writeReview: "✍️ Écrire un avis",
+      exploreTestimonials: "Explorer plus de témoignages du {{province}} →"
+    },
+    whereToFind: {
+      heading: "Où trouver Purrify à {{city}}",
+      localStore: {
+        heading: "Demandez à votre animalerie locale",
+        description: "Les animaleries indépendantes de {{city}} vendent l'éliminateur d'odeurs dont parlent les parents de chats.",
+        tip: "Commencez par votre boutique de quartier préférée ou dites-leur que vous voulez voir Purrify sur les tablettes."
+      },
+      orderDirect: {
+        heading: "Commandez directement avec livraison rapide",
+        description: "Vous préférez la livraison à domicile? Commandez en ligne et recevez de l'air frais en 2-3 jours ouvrables partout au {{province}}."
+      }
+    },
+    playbook: {
+      heading: "Guide d'air frais pour {{city}}",
+      step1: "Saupoudrez 2 cuillères à soupe sur le dessus de votre litière après chaque nettoyage.",
+      step2: "Rafraîchissez tous les deux jours si votre maison fait face à {{painPoint}}.",
+      step3: "Remplacez votre litière comme d'habitude—Purrify fonctionne avec les litières agglomérantes, d'argile et naturelles."
+    },
+    testimonials: {
+      heading: "Ce que disent les propriétaires de chats de {{city}}",
+      wasHelpful: "Cela vous a-t-il été utile?",
+      shareStory: {
+        heading: "Partagez votre succès à {{city}}",
+        description: "Êtes-vous un propriétaire de chat de {{city}} qui adore Purrify? Nous aimerions présenter votre histoire et aider d'autres parents de chats locaux à découvrir une vie sans odeurs."
+      }
+    },
+    provinceWide: {
+      heading: "Les propriétaires de chats partout au {{province}} adorent Purrify",
+      description: "Rejoignez des milliers de parents de chats satisfaits au {{province}} qui ont éliminé les odeurs de litière pour de bon.",
+      averageRating: "⭐ Note moyenne de 4.8/5",
+      happyHomes: "🏠 {{audience}}+ foyers heureux",
+      fastShipping: "🚚 Livraison rapide au {{province}}"
+    },
+    faq: {
+      heading: "FAQ de {{city}}",
+      delivery: {
+        question: "Livrez-vous à {{city}}, {{province}}?",
+        answer: "Oui! Livraison rapide partout au {{province}}, incluant tous les quartiers de {{city}}. Les commandes arrivent en 2-3 jours ouvrables."
+      },
+      painPoint: {
+        question: "Comment Purrify aide-t-il les maisons confrontées à {{painPoint}}?",
+        answer: "Saupoudrez Purrify sur votre litière habituelle. Le charbon actif se lie aux molécules d'ammoniaque, même quand {{painPoint}}. De l'air frais sans changer la routine de votre chat."
+      },
+      litterBrands: {
+        question: "Quelles marques de litière fonctionnent le mieux avec Purrify à {{city}}?",
+        answer: "Purrify fonctionne avec tous les types de litière—argile agglomérante, cristal, pin naturel, maïs, blé et litières de tofu. Les propriétaires de chats de {{city}} l'associent aux marques qu'ils achètent déjà dans les animaleries indépendantes, et il les améliore toutes sans changer les préférences de votre chat."
+      },
+      climate: {
+        question: "Comment Purrify gère-t-il {{seasonalTip}} au {{province}}?",
+        answer: "La technologie au charbon actif fonctionne indépendamment de la température et de l'humidité. Que vous fassiez face à {{seasonalTip}} à {{city}}, la capture moléculaire des odeurs de Purrify continue 24/7. Parfait pour {{keyFeature}} confrontés aux défis climatiques du {{province}}."
+      },
+      stores: {
+        question: "Puis-je trouver Purrify dans les animaleries de {{city}}?",
+        answer: "De nombreux détaillants indépendants à {{city}} vendent Purrify. Appelez à l'avance pour vérifier la disponibilité, ou commandez en ligne pour une livraison garantie en 2-3 jours partout au {{province}}."
+      },
+      multiCat: {
+        question: "Purrify est-il sécuritaire pour les foyers multi-chats à {{city}}?",
+        answer: "Absolument! Purrify est complètement sécuritaire pour les maisons avec plusieurs chats. De nombreuses familles de {{city}} l'utilisent sur 2-4 litières. Le charbon actif est non toxique, sans parfum et n'irrite pas les chats sensibles. Parfait pour {{keyFeature}}."
+      }
+    }
+  },
+
+  // Locations Hub and Province Pages
+  locations: {
+    hub: {
+      badge: "Couverture nationale",
+      heading: "Contrôle des odeurs de litière partout au Canada",
+      description: "Découvrez les emplacements Purrify à travers le Canada. Trouvez des détaillants locaux ou commandez en ligne pour une livraison rapide dans votre ville.",
+      selectProvince: "Sélectionnez votre province",
+      whyChoose: "Pourquoi choisir Purrify?",
+      benefit1: "Technologie naturelle au charbon actif",
+      benefit2: "Fonctionne avec tous les types de litière",
+      benefit3: "Livraison rapide partout au Canada"
+    },
+    province: {
+      badge: "Guide provincial",
+      heading: "Contrôle des odeurs de litière au {{province}}",
+      description: "Trouvez des détaillants Purrify et des options de livraison rapide partout au {{province}}. Fait confiance par les propriétaires de chats dans toutes les grandes villes.",
+      citiesHeading: "Villes que nous desservons au {{province}}",
+      viewCityGuide: "Voir le guide de la ville",
+      exploreOther: "Explorer d'autres provinces",
+      orderOnline: "Commandez en ligne pour une livraison rapide",
+      orderDescription: "Vous ne trouvez pas de magasin local? Faites-vous livrer Purrify à votre porte en 2-3 jours ouvrables partout au {{province}}."
+    }
+  },
+
+  // Thank You / Order Confirmation Page
+  thankYou: {
+    heading: "Merci!",
+    subheading: "Votre commande a été confirmée.",
+    orderConfirmed: "Commande confirmée",
+    orderNumber: "Numéro de commande",
+    product: "Produit",
+    quantity: "Quantité",
+    total: "Total",
+    expectedDelivery: "Livraison prévue",
+    deliveryCA: "7-10 jours ouvrables au Canada",
+    deliveryUS: "10-14 jours ouvrables aux États-Unis",
+    deliveryIntl: "14-21 jours ouvrables international",
+    trackingInfo: "Les informations de suivi seront envoyées à votre courriel une fois votre commande expédiée.",
+    questionsHeading: "Des questions sur votre commande?",
+    questionsDescription: "Contactez notre équipe de support et nous serons heureux de vous aider.",
+    contactSupport: "Contacter le support",
+    continueShopping: "Continuer les achats",
+    referralCta: {
+      heading: "Vous aimez Purrify?",
+      description: "Partagez avec vos amis et gagnez 5$ de crédit pour chaque parrainage!",
+      button: "Obtenir mon lien de parrainage"
+    }
+  },
+
+  // Reviews Page
+  reviews: {
+    heading: "Ce que disent les propriétaires de chats",
+    subheading: "De vrais avis de vrais clients",
+    verifiedPurchase: "Achat vérifié",
+    helpful: "Utile",
+    writeReview: "Écrire un avis",
+    filterBy: "Filtrer par",
+    allRatings: "Toutes les notes",
+    sortBy: "Trier par",
+    mostRecent: "Plus récent",
+    mostHelpful: "Plus utile",
+    highestRated: "Mieux noté",
+    lowestRated: "Moins bien noté",
+    showingReviews: "Affichage de {{count}} avis",
+    noReviews: "Aucun avis pour le moment. Soyez le premier à partager votre expérience!",
+    loadMore: "Charger plus d'avis"
   }
 
 };

@@ -2064,6 +2064,162 @@ export const en = {
       remove: "Remove",
       discountNote: "Get $5 off your order with a friend's referral code"
     }
+  },
+
+  // City Page Translations (for location-based SEO pages)
+  cityPage: {
+    seo: {
+      title: "Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon",
+      descriptionWithPopulation: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.",
+      descriptionDefault: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens."
+    },
+    loading: "Redirecting...",
+    hero: {
+      heading: "Best Cat Litter Odor Eliminator in {{city}}",
+      subheading: "Trusted by {{audience}}+ cat owners in {{city}} and across {{province}}"
+    },
+    whyChoose: {
+      heading: "Why {{city}} Cat Parents Choose Purrify",
+      perfectFor: "Perfect for {{feature}}",
+      fastShipping: "Fast shipping across {{province}}",
+      worksWithAllBrands: "Works with every litter brand you already love"
+    },
+    cta: {
+      tryInCity: "Try Purrify in {{city}}",
+      seeHowItWorks: "See how the carbon technology works →",
+      shopOnline: "Shop Online Now",
+      submitVideo: "📹 Submit Your Video Review",
+      writeReview: "✍️ Write a Review",
+      exploreTestimonials: "Explore more {{province}} testimonials →"
+    },
+    whereToFind: {
+      heading: "Where to Find Purrify in {{city}}",
+      localStore: {
+        heading: "Ask Your Local Pet Store",
+        description: "Independent pet stores across {{city}} stock the odor eliminator cat parents talk about.",
+        tip: "Start with your favourite neighbourhood shop or tell them you want to see Purrify on the shelf."
+      },
+      orderDirect: {
+        heading: "Order Direct With Fast Shipping",
+        description: "Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}."
+      }
+    },
+    playbook: {
+      heading: "Fresh Air Playbook for {{city}}",
+      step1: "Sprinkle 2 tablespoons on top of your litter box after every scoop.",
+      step2: "Refresh every other day if your home deals with {{painPoint}}.",
+      step3: "Replace your litter box as usual—Purrify works with clumping, clay, and natural litters."
+    },
+    testimonials: {
+      heading: "What {{city}} Cat Owners Say",
+      wasHelpful: "Was this helpful?",
+      shareStory: {
+        heading: "Share Your {{city}} Success Story",
+        description: "Are you a {{city}} cat owner who loves Purrify? We'd love to feature your story and help other local cat parents discover odor-free living."
+      }
+    },
+    provinceWide: {
+      heading: "Cat Owners Across {{province}} Love Purrify",
+      description: "Join thousands of satisfied cat parents in {{province}} who've eliminated litter box odors for good.",
+      averageRating: "⭐ 4.8/5 Average Rating",
+      happyHomes: "🏠 {{audience}}+ Happy Homes",
+      fastShipping: "🚚 Fast {{province}} Shipping"
+    },
+    faq: {
+      heading: "{{city}} FAQ",
+      delivery: {
+        question: "Do you deliver to {{city}}, {{province}}?",
+        answer: "Yes! Fast shipping across {{province}}, including every neighbourhood in {{city}}. Orders arrive within 2-3 business days."
+      },
+      painPoint: {
+        question: "How does Purrify support homes dealing with {{painPoint}}?",
+        answer: "Sprinkle Purrify on top of your usual litter. The activated carbon bonds to ammonia molecules, even when {{painPoint}}. Fresh air without changing your cat's routine."
+      },
+      litterBrands: {
+        question: "Which litter brands work best with Purrify in {{city}}?",
+        answer: "Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {{city}} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences."
+      },
+      climate: {
+        question: "How does Purrify handle {{seasonalTip}} in {{province}}?",
+        answer: "The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {{seasonalTip}} in {{city}}, Purrify's molecular odor capture continues 24/7. Perfect for {{keyFeature}} facing {{province}}'s climate challenges."
+      },
+      stores: {
+        question: "Can I find Purrify at pet stores in {{city}}?",
+        answer: "Many independent retailers in {{city}} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {{province}}."
+      },
+      multiCat: {
+        question: "Is Purrify safe for multi-cat households in {{city}}?",
+        answer: "Absolutely! Purrify is completely safe for homes with multiple cats. Many {{city}} families use it across 2-4 litter boxes. The activated carbon is non-toxic, fragrance-free, and won't irritate sensitive cats. Perfect for {{keyFeature}}."
+      }
+    }
+  },
+
+  // Locations Hub and Province Pages
+  locations: {
+    hub: {
+      badge: "Nationwide Coverage",
+      heading: "Cat Litter Odor Control Across Canada",
+      description: "Discover Purrify locations throughout Canada. Find local retailers or order online for fast delivery to your city.",
+      selectProvince: "Select Your Province",
+      whyChoose: "Why Choose Purrify?",
+      benefit1: "Natural activated carbon technology",
+      benefit2: "Works with all litter types",
+      benefit3: "Fast shipping across Canada"
+    },
+    province: {
+      badge: "Province Guide",
+      heading: "Cat Litter Odor Control in {{province}}",
+      description: "Find Purrify retailers and fast shipping options across {{province}}. Trusted by cat owners in every major city.",
+      citiesHeading: "Cities We Serve in {{province}}",
+      viewCityGuide: "View City Guide",
+      exploreOther: "Explore Other Provinces",
+      orderOnline: "Order Online for Fast Delivery",
+      orderDescription: "Can't find a local store? Get Purrify delivered to your door in 2-3 business days anywhere in {{province}}."
+    }
+  },
+
+  // Thank You / Order Confirmation Page
+  thankYou: {
+    heading: "Thank You!",
+    subheading: "Your order has been confirmed.",
+    orderConfirmed: "Order Confirmed",
+    orderNumber: "Order Number",
+    product: "Product",
+    quantity: "Quantity",
+    total: "Total",
+    expectedDelivery: "Expected Delivery",
+    deliveryCA: "7-10 business days within Canada",
+    deliveryUS: "10-14 business days to the United States",
+    deliveryIntl: "14-21 business days international",
+    trackingInfo: "Tracking information will be sent to your email once your order ships.",
+    questionsHeading: "Questions About Your Order?",
+    questionsDescription: "Contact our support team and we'll be happy to help.",
+    contactSupport: "Contact Support",
+    continueShopping: "Continue Shopping",
+    referralCta: {
+      heading: "Love Purrify?",
+      description: "Share with friends and earn $5 credit for each referral!",
+      button: "Get My Referral Link"
+    }
+  },
+
+  // Reviews Page
+  reviews: {
+    heading: "What Cat Owners Say",
+    subheading: "Real reviews from real customers",
+    verifiedPurchase: "Verified Purchase",
+    helpful: "Helpful",
+    writeReview: "Write a Review",
+    filterBy: "Filter by",
+    allRatings: "All Ratings",
+    sortBy: "Sort by",
+    mostRecent: "Most Recent",
+    mostHelpful: "Most Helpful",
+    highestRated: "Highest Rated",
+    lowestRated: "Lowest Rated",
+    showingReviews: "Showing {{count}} reviews",
+    noReviews: "No reviews yet. Be the first to share your experience!",
+    loadMore: "Load More Reviews"
   }
 
 };
