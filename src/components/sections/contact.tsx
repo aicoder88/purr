@@ -1,13 +1,48 @@
 import { Container } from "@/components/ui/container";
 import { CONTACT_INFO } from "@/lib/constants";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, LucideIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useTranslation } from "@/lib/translation-context";
+import { ReactNode } from "react";
 
 // Dynamically import the ContactForm component
 const ContactForm = dynamic(() => import("../../../components/ContactForm"), {
   ssr: true,
 });
+
+// Shared class constants
+const CARD_BASE_CLASSES = "flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group";
+
+// Color schemes for contact cards
+const COLOR_SCHEMES = {
+  red: {
+    gradient: "from-[#FF3131] to-[#FF3131]/80",
+    title: "text-[#FF3131] dark:text-[#FF5050]",
+  },
+  purple: {
+    gradient: "from-[#5B2EFF] to-[#5B2EFF]/80",
+    title: "text-[#5B2EFF] dark:text-[#3694FF]",
+  },
+} as const;
+
+// Contact info card component
+interface ContactCardProps {
+  icon: LucideIcon;
+  colorScheme: keyof typeof COLOR_SCHEMES;
+  children: ReactNode;
+}
+
+function ContactCard({ icon: Icon, colorScheme, children }: ContactCardProps) {
+  const scheme = COLOR_SCHEMES[colorScheme];
+  return (
+    <div className={CARD_BASE_CLASSES}>
+      <div className={`bg-gradient-to-r ${scheme.gradient} p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300`}>
+        <Icon className="h-5 w-5 text-white dark:text-gray-100" />
+      </div>
+      {children}
+    </div>
+  );
+}
 
 export function Contact() {
   const { t } = useTranslation();
@@ -24,31 +59,25 @@ export function Contact() {
           <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
             {t.contact.title}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
             {t.contact.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
           <div className="space-y-4 sm:space-y-8">
-            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="h-5 w-5 text-white dark:text-gray-100" />
-              </div>
+            <ContactCard icon={MapPin} colorScheme="red">
               <div>
-                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
+                <h3 className={`font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 ${COLOR_SCHEMES.red.title}`}>
                   {t.contactSection.ourLocation}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{CONTACT_INFO.address}</p>
               </div>
-            </div>
+            </ContactCard>
 
-            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#5B2EFF] to-[#5B2EFF]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-5 w-5 text-white dark:text-gray-100" />
-              </div>
+            <ContactCard icon={Phone} colorScheme="purple">
               <div className="space-y-2">
-                <h3 className="font-heading font-bold text-lg sm:text-xl text-[#5B2EFF] dark:text-[#3694FF]">
+                <h3 className={`font-heading font-bold text-lg sm:text-xl ${COLOR_SCHEMES.purple.title}`}>
                   {t.contactSection.phoneNumber}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
@@ -56,19 +85,16 @@ export function Contact() {
                 </p>
                 <a
                   href={CONTACT_INFO.phoneHref}
-                  className="inline-block font-semibold text-[#5B2EFF] dark:text-[#3694FF] text-sm sm:text-base hover:underline"
+                  className={`inline-block font-semibold ${COLOR_SCHEMES.purple.title} text-sm sm:text-base hover:underline`}
                 >
                   {CONTACT_INFO.phone}
                 </a>
               </div>
-            </div>
+            </ContactCard>
 
-            <div className="flex items-start space-x-3 sm:space-x-4 bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl shadow-md border border-[#E0EFC7] dark:border-gray-800 transition-all duration-300 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30 hover:-translate-y-1 group">
-              <div className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 p-2 sm:p-3 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Clock className="h-5 w-5 text-white dark:text-gray-100" />
-              </div>
+            <ContactCard icon={Clock} colorScheme="red">
               <div>
-                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 text-[#FF3131] dark:text-[#FF5050]">
+                <h3 className={`font-heading font-bold text-lg sm:text-xl mb-1 sm:mb-2 ${COLOR_SCHEMES.red.title}`}>
                   {t.contactSection.openingHours}
                 </h3>
                 <ul className="text-gray-600 dark:text-gray-300 text-sm sm:text-base space-y-1 sm:space-y-2">
@@ -86,7 +112,7 @@ export function Contact() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </ContactCard>
           </div>
 
           <div className="bg-[#FFFFFF]/90 dark:bg-gray-900/90 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-xl border border-[#E0EFC7] dark:border-gray-800 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#3694FF]/30">

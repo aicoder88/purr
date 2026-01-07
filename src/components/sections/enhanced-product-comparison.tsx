@@ -9,6 +9,37 @@ import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
 import { cn } from "@/lib/utils";
 
+// Feature label configurations
+const FEATURE_LABELS = {
+  trial: {
+    odorControl: '1 Week Odor Control',
+    naturalIngredients: '100% Natural',
+    easyApplication: 'Easy Application',
+    moneyBackGuarantee: '30-Day Guarantee',
+    freeShipping: 'Shipping Included',
+    bulkDiscount: 'Bulk Discount',
+    prioritySupport: 'Priority Support',
+  },
+  standard: {
+    odorControl: '3 months of Odor Control',
+    naturalIngredients: '100% Natural',
+    easyApplication: 'Easy Application',
+    moneyBackGuarantee: '30-Day Guarantee',
+    freeShipping: 'Free Shipping',
+    bulkDiscount: 'Bulk Discount',
+    prioritySupport: 'Priority Support',
+  },
+} as const;
+
+// Pure utility function for savings calculation
+function computeQuarterlySavings(oneTimePrice: number, subscriptionPrice: number): number {
+  if (oneTimePrice <= 0 || subscriptionPrice <= 0) return 0;
+  const baseline = oneTimePrice * 3;
+  if (baseline <= 0) return 0;
+  const savingsRatio = 1 - subscriptionPrice / baseline;
+  return Math.max(0, Math.round(savingsRatio * 100));
+}
+
 type PurchaseAction = 'link' | 'cart';
 
 type PurchaseOption = {
@@ -61,14 +92,6 @@ export function EnhancedProductComparison() {
 
   const familyPriceAmount = getProductPrice('family');
   const familyAutoshipPriceAmount = getProductPrice('familyAutoship');
-
-  const computeQuarterlySavings = (oneTimePrice: number, subscriptionPrice: number) => {
-    if (oneTimePrice <= 0 || subscriptionPrice <= 0) return 0;
-    const baseline = oneTimePrice * 3;
-    if (baseline <= 0) return 0;
-    const savingsRatio = 1 - subscriptionPrice / baseline;
-    return Math.max(0, Math.round(savingsRatio * 100));
-  };
 
   const formatSavingsLabel = (percentage: number) => {
     const template = t.pricing?.saveVsOneTime || 'Save {percent}%';
@@ -193,26 +216,7 @@ export function EnhancedProductComparison() {
   ];
 
   const getFeatureLabels = (productId: string) => {
-    if (productId === 'purrify-12g') {
-      return {
-        odorControl: '1 Week Odor Control',
-        naturalIngredients: '100% Natural',
-        easyApplication: 'Easy Application',
-        moneyBackGuarantee: '30-Day Guarantee',
-        freeShipping: 'Shipping Included',
-        bulkDiscount: 'Bulk Discount',
-        prioritySupport: 'Priority Support'
-      };
-    }
-    return {
-      odorControl: '3 months of Odor Control',
-      naturalIngredients: '100% Natural',
-      easyApplication: 'Easy Application',
-      moneyBackGuarantee: '30-Day Guarantee',
-      freeShipping: 'Free Shipping',
-      bulkDiscount: 'Bulk Discount',
-      prioritySupport: 'Priority Support'
-    };
+    return productId === 'purrify-12g' ? FEATURE_LABELS.trial : FEATURE_LABELS.standard;
   };
 
   return (

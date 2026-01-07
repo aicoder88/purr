@@ -1,10 +1,27 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, ReactNode } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
 import { Leaf, Car, TreePine, Cat, DollarSign, Clock } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
+// Color constants
+const COLORS = {
+  purple: '#5B2EFF',
+  green: '#03E46A',
+  red: '#FF3131',
+  border: '#E0EFC7',
+} as const;
+
+// Gradient classes
+const GRADIENTS = {
+  purpleGreen: `from-[${COLORS.purple}] to-[${COLORS.green}]`,
+  greenPurple: `from-[${COLORS.green}] to-[${COLORS.purple}]`,
+  purpleGreenBg: `from-[${COLORS.purple}]/10 to-[${COLORS.green}]/10`,
+  greenPurpleBg: `from-[${COLORS.green}]/10 to-[${COLORS.purple}]/10`,
+} as const;
+
+// Types
 interface CostCalculatorProps {
   className?: string;
 }
@@ -14,6 +31,53 @@ interface EnvironmentalImpact {
   treesEquivalent: number;
   carsRemoved: number;
   catsSaved: number;
+}
+
+interface ImpactMetric {
+  title: string;
+  value: string | number;
+  unit: string;
+  icon: ReactNode;
+  description: string;
+  color: string;
+}
+
+// Generate impact metrics from environmental data
+function createImpactMetrics(impact: EnvironmentalImpact): ImpactMetric[] {
+  return [
+    {
+      title: "Carbon Saved",
+      value: impact.carbonSaved.toFixed(2),
+      unit: "kg",
+      icon: <Leaf className="h-5 w-5 text-green-500 dark:text-green-400" />,
+      description: "CO₂ not released into the atmosphere",
+      color: "bg-green-500",
+    },
+    {
+      title: "Trees Equivalent",
+      value: impact.treesEquivalent.toFixed(2),
+      unit: "",
+      icon: <TreePine className="h-5 w-5 text-emerald-600" />,
+      description: "As if you planted this many trees",
+      color: "bg-emerald-500",
+    },
+    {
+      title: "Cars Removed",
+      value: impact.carsRemoved.toFixed(3),
+      unit: "",
+      icon: <Car className="h-5 w-5 text-blue-500 dark:text-blue-400" />,
+      description: "Equivalent to removing cars from the road",
+      color: "bg-blue-500",
+    },
+    {
+      title: "Cats Helped",
+      value: impact.catsSaved,
+      unit: "",
+      icon: <Cat className="h-5 w-5 text-purple-500 dark:text-purple-400" />,
+      description: "Shelter cats that could be helped with your savings",
+      color: "bg-purple-500",
+    },
+  ];
 }
 
 export function CostCalculator({ className }: CostCalculatorProps) {
@@ -107,75 +171,9 @@ export function CostCalculator({ className }: CostCalculatorProps) {
 
   const savingsData = generateSavingsData();
 
-  const yearlyImpactMetrics = [
-    {
-      title: "Carbon Saved",
-      value: environmentalImpact.carbonSaved.toFixed(2),
-      unit: "kg",
-      icon: <Leaf className="h-5 w-5 text-green-500 dark:text-green-400" />,
-      description: "CO₂ not released into the atmosphere",
-      color: "bg-green-500",
-    },
-    {
-      title: "Trees Equivalent",
-      value: environmentalImpact.treesEquivalent.toFixed(2),
-      unit: "",
-      icon: <TreePine className="h-5 w-5 text-emerald-600" />,
-      description: "As if you planted this many trees",
-      color: "bg-emerald-500",
-    },
-    {
-      title: "Cars Removed",
-      value: environmentalImpact.carsRemoved.toFixed(3),
-      unit: "",
-      icon: <Car className="h-5 w-5 text-blue-500 dark:text-blue-400 dark:text-blue-300" />,
-      description: "Equivalent to removing cars from the road",
-      color: "bg-blue-500",
-    },
-    {
-      title: "Cats Helped",
-      value: environmentalImpact.catsSaved,
-      unit: "",
-      icon: <Cat className="h-5 w-5 text-purple-500 dark:text-purple-400" />,
-      description: "Shelter cats that could be helped with your savings",
-      color: "bg-purple-500",
-    },
-  ];
-
-  const tenYearImpactMetrics = [
-    {
-      title: "Carbon Saved",
-      value: tenYearEnvironmentalImpact.carbonSaved.toFixed(2),
-      unit: "kg",
-      icon: <Leaf className="h-5 w-5 text-green-500 dark:text-green-400" />,
-      description: "CO₂ not released into the atmosphere",
-      color: "bg-green-500",
-    },
-    {
-      title: "Trees Equivalent",
-      value: tenYearEnvironmentalImpact.treesEquivalent.toFixed(2),
-      unit: "",
-      icon: <TreePine className="h-5 w-5 text-emerald-600" />,
-      description: "As if you planted this many trees",
-      color: "bg-emerald-500",
-    },
-    {
-      title: "Cars Removed",
-      value: tenYearEnvironmentalImpact.carsRemoved.toFixed(3),
-      unit: "",
-      icon: <Car className="h-5 w-5 text-blue-500 dark:text-blue-400 dark:text-blue-300" />,
-      description: "Equivalent to removing cars from the road",
-      color: "bg-blue-500",
-    },
-    {
-      title: "Cats Helped",
-      value: tenYearEnvironmentalImpact.catsSaved,
-      unit: "",
-      icon: <Cat className="h-5 w-5 text-purple-500 dark:text-purple-400" />,
-      description: "Shelter cats that could be helped with your savings",
-      color: "bg-purple-500",
-    },
-  ];
+  // Generate metrics from environmental impact data
+  const yearlyImpactMetrics = createImpactMetrics(environmentalImpact);
+  const tenYearImpactMetrics = createImpactMetrics(tenYearEnvironmentalImpact);
 
   return (
     <div
@@ -202,7 +200,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
             <div className="flex justify-center mb-2">
               <Cat className="h-5 w-5 text-[#5B2EFF]" />
             </div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 dark:text-gray-200 text-center">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 text-center">
               Number of Cats: {catsCount}
             </label>
             <Slider
@@ -274,12 +272,12 @@ export function CostCalculator({ className }: CostCalculatorProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Annual Savings */}
             <div className="bg-white dark:bg-gray-800/70 p-4 rounded-lg shadow-sm border border-[#E0EFC7]/50 text-center">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-2">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
                 Annual Savings
               </p>
               <div className="flex items-center justify-center mb-2">
                 <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] flex items-center justify-center text-white dark:text-gray-100 dark:text-gray-100 text-xl font-bold"
+                  className="w-20 h-20 rounded-full bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] flex items-center justify-center text-white dark:text-gray-100 text-xl font-bold"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{
@@ -295,7 +293,7 @@ export function CostCalculator({ className }: CostCalculatorProps) {
               <p className="text-2xl font-bold text-[#03E46A]">
                 ${annualSavings.toFixed(2)}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 That&apos;s like getting {Math.round(annualSavings / litterCost)}{" "}
                 free litter changes per year!
               </p>

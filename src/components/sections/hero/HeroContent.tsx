@@ -4,6 +4,29 @@ import { scrollToSection } from "@/lib/utils";
 import { heroTestimonials } from "@/data/hero-testimonials";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 
+// Icon components - extracted to avoid repetition
+function LightningIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={`w-6 h-6 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  );
+}
+
+function ArrowIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={`w-5 h-5 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  );
+}
+
+// CTA button class variants for A/B testing
+const CTA_BUTTON_VARIANTS = {
+  orange: "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-orange-500/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-orange-400/20",
+  coral: "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20",
+} as const;
+
 interface HeroContentProps {
   t: {
     hero: {
@@ -155,8 +178,8 @@ export const HeroContent = ({ t }: HeroContentProps) => {
 
   // CTA Button classes based on A/B test
   const ctaButtonClasses = isOrangeButton
-    ? "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-orange-500/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-orange-400/20"
-    : "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20";
+    ? CTA_BUTTON_VARIANTS.orange
+    : CTA_BUTTON_VARIANTS.coral;
 
   // Simplified Hero Variant (A/B Test)
   if (isSimplifiedHero) {
@@ -217,13 +240,9 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             className={ctaButtonClasses}
             aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
           >
-            <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
             Get FREE Sample
-            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>
       </div>
@@ -309,13 +328,9 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           className={ctaButtonClasses}
           aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
         >
-          <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+          <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
           {t.hero.buttons.tryFree || "Try FREE Sample"}
-          <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+          <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
       </div>
 
