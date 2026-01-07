@@ -1988,5 +1988,161 @@ export const es: TranslationType = {
       solution: "Como Ayuda Purrify",
       catsServed: "gatos atendidos"
     }
+  },
+
+  // City Page Translations (for location-based SEO pages)
+  cityPage: {
+    seo: {
+      title: "Desodorizante para Arena de Gato en {{city}} | Purrify Carbón Activado",
+      descriptionWithPopulation: "¿Mal olor de arena en {{city}}? El carbón activado Purrify elimina naturalmente los olores de amoníaco. Envío rápido en toda {{province}}. Amado por {{population}}+ dueños de gatos.",
+      descriptionDefault: "¿Mal olor de arena en {{city}}? El carbón activado Purrify elimina naturalmente los olores de amoníaco. Envío rápido en toda {{province}}. Seguro para gatos y gatitos."
+    },
+    loading: "Redirigiendo...",
+    hero: {
+      heading: "Mejor Eliminador de Olores de Arena en {{city}}",
+      subheading: "Confiado por {{audience}}+ dueños de gatos en {{city}} y toda {{province}}"
+    },
+    whyChoose: {
+      heading: "Por Qué los Padres de Gatos de {{city}} Eligen Purrify",
+      perfectFor: "Perfecto para {{feature}}",
+      fastShipping: "Envío rápido en toda {{province}}",
+      worksWithAllBrands: "Funciona con todas las marcas de arena que ya amas"
+    },
+    cta: {
+      tryInCity: "Prueba Purrify en {{city}}",
+      seeHowItWorks: "Ve cómo funciona la tecnología de carbón →",
+      shopOnline: "Comprar Ahora en Línea",
+      submitVideo: "📹 Envía Tu Video Reseña",
+      writeReview: "✍️ Escribe una Reseña",
+      exploreTestimonials: "Explora más testimonios de {{province}} →"
+    },
+    whereToFind: {
+      heading: "Dónde Encontrar Purrify en {{city}}",
+      localStore: {
+        heading: "Pregunta en Tu Tienda de Mascotas Local",
+        description: "Las tiendas de mascotas independientes en {{city}} venden el eliminador de olores del que hablan los padres de gatos.",
+        tip: "Comienza con tu tienda de barrio favorita o diles que quieres ver Purrify en las estanterías."
+      },
+      orderDirect: {
+        heading: "Ordena Directo con Envío Rápido",
+        description: "¿Prefieres entrega a domicilio? Ordena en línea y recibe aire fresco en 2-3 días hábiles en cualquier lugar de {{province}}."
+      }
+    },
+    playbook: {
+      heading: "Guía de Aire Fresco para {{city}}",
+      step1: "Espolvorea 2 cucharadas sobre tu caja de arena después de cada limpieza.",
+      step2: "Refresca cada dos días si tu hogar enfrenta {{painPoint}}.",
+      step3: "Cambia tu caja de arena como siempre—Purrify funciona con arenas aglomerantes, de arcilla y naturales."
+    },
+    testimonials: {
+      heading: "Lo Que Dicen los Dueños de Gatos de {{city}}",
+      wasHelpful: "¿Fue útil esto?",
+      shareStory: {
+        heading: "Comparte Tu Historia de Éxito en {{city}}",
+        description: "¿Eres un dueño de gato de {{city}} que ama Purrify? Nos encantaría presentar tu historia y ayudar a otros padres de gatos locales a descubrir una vida sin olores."
+      }
+    },
+    provinceWide: {
+      heading: "Los Dueños de Gatos en Todo {{province}} Aman Purrify",
+      description: "Únete a miles de padres de gatos satisfechos en {{province}} que han eliminado los olores de arena para siempre.",
+      averageRating: "⭐ Calificación Promedio 4.8/5",
+      happyHomes: "🏠 {{audience}}+ Hogares Felices",
+      fastShipping: "🚚 Envío Rápido a {{province}}"
+    },
+    faq: {
+      heading: "Preguntas Frecuentes de {{city}}",
+      delivery: {
+        question: "¿Entregan a {{city}}, {{province}}?",
+        answer: "¡Sí! Envío rápido en toda {{province}}, incluyendo todos los barrios de {{city}}. Los pedidos llegan en 2-3 días hábiles."
+      },
+      painPoint: {
+        question: "¿Cómo ayuda Purrify a los hogares que enfrentan {{painPoint}}?",
+        answer: "Espolvorea Purrify sobre tu arena habitual. El carbón activado se une a las moléculas de amoníaco, incluso cuando {{painPoint}}. Aire fresco sin cambiar la rutina de tu gato."
+      },
+      litterBrands: {
+        question: "¿Qué marcas de arena funcionan mejor con Purrify en {{city}}?",
+        answer: "Purrify funciona con todos los tipos de arena—arcilla aglomerante, cristal, pino natural, maíz, trigo y arenas de tofu. Los dueños de gatos de {{city}} lo combinan con las marcas que ya compran en tiendas de mascotas independientes, y mejora todas sin cambiar las preferencias de tu gato."
+      },
+      climate: {
+        question: "¿Cómo maneja Purrify {{seasonalTip}} en {{province}}?",
+        answer: "La tecnología de carbón activado funciona independientemente de la temperatura y humedad. Ya sea que enfrentes {{seasonalTip}} en {{city}}, la captura molecular de olores de Purrify continúa 24/7. Perfecto para {{keyFeature}} que enfrentan los desafíos climáticos de {{province}}."
+      },
+      stores: {
+        question: "¿Puedo encontrar Purrify en tiendas de mascotas en {{city}}?",
+        answer: "Muchos minoristas independientes en {{city}} tienen Purrify en stock. Llama antes para verificar disponibilidad, o ordena en línea para entrega garantizada en 2-3 días en cualquier lugar de {{province}}."
+      },
+      multiCat: {
+        question: "¿Es Purrify seguro para hogares con múltiples gatos en {{city}}?",
+        answer: "¡Absolutamente! Purrify es completamente seguro para hogares con múltiples gatos. Muchas familias de {{city}} lo usan en 2-4 cajas de arena. El carbón activado es no tóxico, sin fragancia y no irritará a gatos sensibles. Perfecto para {{keyFeature}}."
+      }
+    }
+  },
+
+  // Locations Hub and Province Pages
+  locations: {
+    hub: {
+      badge: "Cobertura Nacional",
+      heading: "Control de Olores de Arena en Todo Canadá",
+      description: "Descubre ubicaciones de Purrify en todo Canadá. Encuentra minoristas locales u ordena en línea para entrega rápida a tu ciudad.",
+      selectProvince: "Selecciona Tu Provincia",
+      whyChoose: "¿Por Qué Elegir Purrify?",
+      benefit1: "Tecnología natural de carbón activado",
+      benefit2: "Funciona con todos los tipos de arena",
+      benefit3: "Envío rápido en todo Canadá"
+    },
+    province: {
+      badge: "Guía Provincial",
+      heading: "Control de Olores de Arena en {{province}}",
+      description: "Encuentra minoristas de Purrify y opciones de envío rápido en toda {{province}}. Confiado por dueños de gatos en todas las ciudades principales.",
+      citiesHeading: "Ciudades que Servimos en {{province}}",
+      viewCityGuide: "Ver Guía de la Ciudad",
+      exploreOther: "Explorar Otras Provincias",
+      orderOnline: "Ordena en Línea para Entrega Rápida",
+      orderDescription: "¿No encuentras una tienda local? Recibe Purrify en tu puerta en 2-3 días hábiles en cualquier lugar de {{province}}."
+    }
+  },
+
+  // Thank You / Order Confirmation Page
+  thankYou: {
+    heading: "¡Gracias!",
+    subheading: "Tu pedido ha sido confirmado.",
+    orderConfirmed: "Pedido Confirmado",
+    orderNumber: "Número de Pedido",
+    product: "Producto",
+    quantity: "Cantidad",
+    total: "Total",
+    expectedDelivery: "Entrega Esperada",
+    deliveryCA: "7-10 días hábiles dentro de Canadá",
+    deliveryUS: "10-14 días hábiles a Estados Unidos",
+    deliveryIntl: "14-21 días hábiles internacional",
+    trackingInfo: "La información de seguimiento se enviará a tu correo cuando tu pedido sea enviado.",
+    questionsHeading: "¿Preguntas Sobre Tu Pedido?",
+    questionsDescription: "Contacta a nuestro equipo de soporte y estaremos felices de ayudar.",
+    contactSupport: "Contactar Soporte",
+    continueShopping: "Continuar Comprando",
+    referralCta: {
+      heading: "¿Te Encanta Purrify?",
+      description: "¡Comparte con amigos y gana $5 de crédito por cada referido!",
+      button: "Obtener Mi Link de Referido"
+    }
+  },
+
+  // Reviews Page
+  reviews: {
+    heading: "Lo Que Dicen los Dueños de Gatos",
+    subheading: "Reseñas reales de clientes reales",
+    verifiedPurchase: "Compra Verificada",
+    helpful: "Útil",
+    writeReview: "Escribir una Reseña",
+    filterBy: "Filtrar por",
+    allRatings: "Todas las Calificaciones",
+    sortBy: "Ordenar por",
+    mostRecent: "Más Reciente",
+    mostHelpful: "Más Útil",
+    highestRated: "Mayor Calificación",
+    lowestRated: "Menor Calificación",
+    showingReviews: "Mostrando {{count}} reseñas",
+    noReviews: "Aún no hay reseñas. ¡Sé el primero en compartir tu experiencia!",
+    loadMore: "Cargar Más Reseñas"
   }
 };

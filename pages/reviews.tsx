@@ -3,8 +3,13 @@ import { Container } from '../src/components/ui/container';
 import { SITE_NAME } from '../src/lib/constants';
 import Link from 'next/link';
 import { Star, Quote, CheckCircle, Users, Calendar, MapPin } from 'lucide-react';
+import { useTranslation } from '../src/lib/translation-context';
+import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
 
 export default function Reviews() {
+  const { locale } = useTranslation();
+  const canonicalUrl = getLocalizedUrl('/reviews', locale);
+  const languageAlternates = buildLanguageAlternates('/reviews');
   const reviews = [
     {
       id: 1,
@@ -104,17 +109,20 @@ export default function Reviews() {
         <meta property="og:title" content="Customer Reviews - Verified Testimonials" />
         <meta property="og:description" content="Read verified customer reviews from Canadian cat owners who eliminated litter box odors with Purrify's natural activated carbon formula." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.purrify.ca/reviews" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Customer Reviews - Verified Testimonials" />
         <meta name="twitter:description" content="See why 1,000+ Canadian cat owners choose Purrify for natural odor elimination." />
         <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-        
-        {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/reviews" />
+
+        {/* Canonical and Language Alternates */}
+        <link rel="canonical" href={canonicalUrl} />
+        {languageAlternates.map((alt) => (
+          <link key={alt.hrefLang} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
+        ))}
         
         {/* Schema.org structured data */}
         <script type="application/ld+json">
@@ -124,17 +132,17 @@ export default function Reviews() {
             "name": "Purrify Cat Litter Deodorizer",
             "aggregateRating": {
               "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "500",
-              "bestRating": "5",
-              "worstRating": "1"
+              "ratingValue": 4.9,
+              "reviewCount": 138,
+              "bestRating": 5,
+              "worstRating": 1
             },
             "review": reviews.slice(0, 3).map(review => ({
               "@type": "Review",
               "reviewRating": {
                 "@type": "Rating",
                 "ratingValue": review.rating,
-                "bestRating": "5"
+                "bestRating": 5
               },
               "author": {
                 "@type": "Person",

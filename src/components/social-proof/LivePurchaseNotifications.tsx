@@ -241,7 +241,7 @@ export function LivePurchaseNotifications({
             {/* Product Icon */}
             <div className="flex-shrink-0">
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                <ShoppingBag className="w-5 h-5 text-white dark:text-gray-100 dark:text-gray-100" />
+                <ShoppingBag className="w-5 h-5 text-white dark:text-gray-100" />
               </div>
             </div>
 
@@ -250,7 +250,7 @@ export function LivePurchaseNotifications({
               <div className="flex items-center space-x-1 mb-1">
                 <p
                   id={`notification-${notification.id}-customer`}
-                  className="text-sm font-medium text-gray-900 dark:text-gray-50 dark:text-gray-100"
+                  className="text-sm font-medium text-gray-900 dark:text-gray-100"
                 >
                   {notification.customerName}
                 </p>
@@ -263,14 +263,14 @@ export function LivePurchaseNotifications({
               
               <p
                 id={`notification-${notification.id}-product`}
-                className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-1"
+                className="text-sm text-gray-600 dark:text-gray-300 mb-1"
               >
                 purchased <span className="font-medium">{notification.product}</span>
               </p>
               
               <div
                 id={`notification-${notification.id}-meta`}
-                className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400"
+                className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
               >
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-3 h-3" />
@@ -338,7 +338,7 @@ export function LiveVisitorCounter() {
   return (
     <div className="fixed bottom-4 right-4 z-40 bg-gradient-to-r from-purple-500 to-pink-500 text-white dark:text-gray-100 px-4 py-2 rounded-full shadow-lg animate-in slide-in-from-bottom-2 fade-in-0">
       <div className="flex items-center space-x-2 text-sm font-medium">
-        <div className="w-2 h-2 bg-green-400 dark:bg-green-500 dark:bg-green-600 rounded-full animate-pulse"></div>
+        <div className="w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full animate-pulse"></div>
         <span>{visitorCount} people viewing this page</span>
       </div>
     </div>

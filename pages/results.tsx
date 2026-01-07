@@ -98,6 +98,38 @@ export default function Results() {
         {languageAlternates.map((alt) => (
           <link key={alt.hrefLang} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
         ))}
+
+        {/* Structured Data - AggregateRating */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Product',
+              name: 'Purrify Cat Litter Deodorizer',
+              description: 'Activated carbon cat litter additive that eliminates odors naturally',
+              brand: {
+                '@type': 'Brand',
+                name: 'Purrify',
+              },
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.9',
+                reviewCount: '138',
+                bestRating: '5',
+                worstRating: '1',
+              },
+              offers: {
+                '@type': 'AggregateOffer',
+                priceCurrency: 'CAD',
+                lowPrice: '4.76',
+                highPrice: '34.99',
+                offerCount: '3',
+                availability: 'https://schema.org/InStock',
+              },
+            }),
+          }}
+        />
       </Head>
 
       <main className={createSectionClasses('light')}>

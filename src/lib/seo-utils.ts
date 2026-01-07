@@ -351,10 +351,10 @@ export const generateProductStructuredData = (productId: string, localeInput: st
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1'
+      ratingValue: 4.9,
+      reviewCount: 138,
+      bestRating: 5,
+      worstRating: 1
     },
     inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA'
   };
@@ -389,7 +389,9 @@ export const generateArticleStructuredData = (title: string, description: string
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/purrify-logo.png'
+        url: 'https://www.purrify.ca/purrify-logo.png',
+        width: 400,
+        height: 400
       }
     },
     datePublished: options?.datePublished || new Date().toISOString(),
@@ -652,12 +654,14 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
       areaServed: 'CA',
       availableLanguage: locale === 'fr' ? 'French' : locale === 'zh' ? 'Chinese' : locale === 'es' ? 'Spanish' : 'English'
     },
-    openingHoursSpecification: Object.entries(CONTACT_INFO.hours).map(([day, hours]) => ({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: `https://schema.org/${day.charAt(0).toUpperCase() + day.slice(1)}`,
-      opens: hours === 'Closed' ? undefined : hours.split(' - ')[0],
-      closes: hours === 'Closed' ? undefined : hours.split(' - ')[1]
-    })).filter(spec => spec.opens && spec.closes),
+    openingHoursSpecification: Object.entries(CONTACT_INFO.hours)
+      .filter(([, hours]) => hours !== 'Closed')
+      .map(([day, hours]) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: day.charAt(0).toUpperCase() + day.slice(1),
+        opens: hours.split(' - ')[0],
+        closes: hours.split(' - ')[1]
+      })),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Cat Litter Odor Control Products',
@@ -839,13 +843,13 @@ export const generateArticlePageSchema = (title: string, description: string, pa
         publisher: {
           '@type': 'Organization',
           name: SITE_NAME,
+          url: baseUrl,
           logo: {
             '@type': 'ImageObject',
             url: `${baseUrl}/purrify-logo.png`,
             width: 400,
             height: 400
-          },
-          url: baseUrl
+          }
         },
         datePublished: options?.datePublished || new Date().toISOString(),
         dateModified: options?.dateModified || new Date().toISOString(),
