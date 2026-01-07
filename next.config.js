@@ -443,6 +443,114 @@ const REDIRECTS = [
     destination: "/locations",
     permanent: true,
   },
+
+  // Localized province redirects (provinces without stores)
+  {
+    source: "/:locale(fr|zh|es)/locations/province/prince-edward-island",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/locations/province/northwest-territories",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/locations/province/nunavut",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/locations/province/yukon",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/locations/province/new-brunswick",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/locations/province/newfoundland-and-labrador",
+    destination: "/:locale/locations",
+    permanent: true,
+  },
+
+  // Legacy URL redirects (Ahrefs 404 report - Jan 2026)
+  {
+    source: "/shop",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/tos",
+    destination: "/terms",
+    permanent: true,
+  },
+  {
+    source: "/privacy",
+    destination: "/privacy-policy",
+    permanent: true,
+  },
+  {
+    source: "/my-account",
+    destination: "/customer/portal",
+    permanent: true,
+  },
+  {
+    source: "/purrify-odor-eliminator",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/services-two-2",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/dn",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/checkout-2",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/my-account-2",
+    destination: "/customer/portal",
+    permanent: true,
+  },
+  {
+    source: "/test",
+    destination: "/",
+    permanent: false,
+  },
+
+  // Localized checkout redirects
+  {
+    source: "/:locale(fr|zh|es)/checkout",
+    destination: "/:locale/products",
+    permanent: true,
+  },
+
+  // Localized old blog slug redirects
+  {
+    source: "/:locale(fr|zh|es)/blog/activated-carbon-science",
+    destination: "/blog/activated-carbon-litter-additive-benefits",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/fresh-home-multiple-cats",
+    destination: "/blog/multi-cat-litter-deodorizer-guide",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/beyond-masking-odors",
+    destination: "/blog/most-powerful-odor-absorber",
+    permanent: true,
+  },
 ];
 
 const OPTIMIZE_PACKAGE_IMPORTS = [
