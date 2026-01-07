@@ -292,7 +292,7 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:bg-gray-800/85 dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300"
+      className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300"
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
@@ -413,7 +413,7 @@ export function Header() {
             )}
             <Button
               onClick={scrollToProducts}
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               {t.nav?.buyNow || "Buy Now!"}
@@ -453,7 +453,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-800/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item) => (
                 <div key={item.id}>
@@ -523,7 +523,7 @@ export function Header() {
                 )}
                 <Button
                   onClick={handleBuyNowMobile}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {t.nav?.buyNow || "Buy Now!"}
