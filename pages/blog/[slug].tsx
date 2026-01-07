@@ -84,7 +84,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         locale: blogPost.locale as 'en' | 'fr' | 'zh',
         // Include howTo data if present (for step-by-step tutorials)
         // Use null fallback to avoid JSON serialization error with undefined
-        howTo: (blogPost as { howTo?: BlogPost['howTo'] }).howTo ?? null
+        howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null
       };
 
       return {
@@ -128,6 +128,7 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
             link: `/blog/${dbPost.slug}`,
             content: dbPost.content,
             locale: (dbPost.locale as 'en' | 'fr' | 'zh' | undefined) ?? 'en',
+            howTo: null, // Database posts don't have howTo schema data
           },
         },
         revalidate: 21600,
@@ -157,7 +158,8 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
       }
 
       // Create a copy of the post to avoid modifying the original
-      const post = { ...foundPost };
+      // Ensure howTo is null instead of undefined to avoid JSON serialization errors
+      const post = { ...foundPost, howTo: foundPost.howTo ?? null };
 
       // Add content to the post
       post.content = getBlogPostContent();
@@ -198,7 +200,8 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
       image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
       link: `/blog/${wpPost.slug}`,
       content: wpPost.content.rendered,
-      locale: 'en'
+      locale: 'en',
+      howTo: null, // WordPress posts don't have howTo schema data
     };
 
     // Return the post data as props
@@ -224,7 +227,8 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         };
       }
 
-      const post = { ...foundPost };
+      // Ensure howTo is null instead of undefined to avoid JSON serialization errors
+      const post = { ...foundPost, howTo: foundPost.howTo ?? null };
       post.content = getBlogPostContent();
 
       return {

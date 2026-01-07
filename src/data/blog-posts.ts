@@ -40,7 +40,7 @@ export type BlogPost = {
   toc?: Array<{ title: string; id: string }>;
   faq?: Array<{ question: string; answerHtml: string }>;
   cta?: { text: string; url: string };
-  howTo?: HowToData;
+  howTo?: HowToData | null;
 };
 
 // Generate dynamic blog posts based on actual blog pages
