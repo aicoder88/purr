@@ -185,7 +185,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
                 Products
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
@@ -241,7 +241,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
                 Learn
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
@@ -301,7 +301,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
                 Popular Articles
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
@@ -349,7 +349,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-white dark:text-gray-100">
+              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
                 Company
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">

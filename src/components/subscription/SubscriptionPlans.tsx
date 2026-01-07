@@ -197,12 +197,12 @@ export function SubscriptionPlans({
           <h2 className="font-heading text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
             Never Run Out of Odor Control
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-6">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
             Save money and ensure fresh litter 24/7 with automatic deliveries
           </p>
           
           {/* Trust indicators */}
-          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-8">
+          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 mb-8">
             <div className="flex items-center">
               <Truck className="w-4 h-4 mr-2" />
               Fast shipping
@@ -270,7 +270,7 @@ export function SubscriptionPlans({
                       <span className="text-lg text-gray-400 dark:text-gray-500 line-through">
                         {formatCurrencyValue(plan.originalPrice)}
                       </span>
-                      <Badge variant="secondary" className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200 dark:text-green-200">
+                      <Badge variant="secondary" className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200">
                         Save {plan.discount}%
                       </Badge>
                     </div>
@@ -279,7 +279,7 @@ export function SubscriptionPlans({
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{plan.intervalLabel}</p>
                   
                   {showAnnualSavings && (
-                    <p className="text-lg font-semibold text-green-600 dark:text-green-400 dark:text-green-400 mt-2">
+                    <p className="text-lg font-semibold text-green-600 dark:text-green-400 mt-2">
                       {plan.savings}
                     </p>
                   )}
@@ -361,7 +361,7 @@ export function SubscriptionPlans({
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
+                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <h4 className="font-semibold mb-2">Never Run Out</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">

@@ -308,7 +308,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   return (
     <div className={`space-y-4 ${className}`}>
       <div className="text-center mb-6">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Choose Payment Method
         </h3>
         <div className="text-2xl font-bold text-[#5B2EFF]">
@@ -354,10 +354,10 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl grayscale">{payment.icon}</span>
                   <div className="text-left">
-                    <div className="font-semibold text-gray-600 dark:text-gray-300 dark:text-gray-400">
+                    <div className="font-semibold text-gray-600 dark:text-gray-400">
                       {payment.name} (Not Available)
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-500 dark:text-gray-400">
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
                       Not supported on this device/browser
                     </div>
                   </div>
@@ -369,12 +369,12 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       </div>
 
       {/* Security Notice */}
-      <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-        <div className="flex items-center space-x-2 text-green-800 dark:text-green-200 dark:text-green-200">
+      <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+        <div className="flex items-center space-x-2 text-green-800 dark:text-green-200">
           <Shield className="w-5 h-5" />
           <span className="font-semibold">{t.paymentSecurity?.securePayment || 'Secure Payment'}</span>
         </div>
-        <p className="text-green-700 dark:text-green-300 dark:text-green-400 text-sm mt-1">
+        <p className="text-green-700 dark:text-green-400 text-sm mt-1">
           {t.paymentSecurity?.sslEncryptedCheckout || 'Your payment information is encrypted and secure. We never store your payment details.'}
         </p>
       </div>
