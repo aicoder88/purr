@@ -27,7 +27,8 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
   const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
   const seoTitle = `Cat Litter Odor Control - ${displayName} (${province.code}) | Purrify`;
   const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Fast shipping across the province with reliable delivery.`;
-  const canonicalUrl = `https://www.purrify.ca${locale === 'en' ? '' : `/${locale}`}/locations/province/${province.slug}`;
+  // Canonical always points to English version for SEO consolidation
+  const canonicalUrl = `https://www.purrify.ca/locations/province/${province.slug}`;
 
   return (
     <>
@@ -35,6 +36,8 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
         title={seoTitle}
         description={seoDescription}
         canonical={canonicalUrl}
+        noindex={locale !== 'en'}
+        nofollow={false}
         openGraph={{
           title: seoTitle,
           description: seoDescription,

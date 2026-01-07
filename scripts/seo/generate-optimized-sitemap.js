@@ -30,7 +30,7 @@ const PROVINCES = [
 
 // Locales for different page types
 const ALL_LOCALES = ['en', 'fr', 'zh', 'es'];
-const LOCATION_LOCALES = ['en', 'fr', 'zh']; // es doesn't have location pages
+const LOCATION_LOCALES = ['en']; // Only index English location pages to avoid thin content penalty
 const BLOG_LOCALES = ['en']; // Blog is English only
 
 // Static pages with their locale support

@@ -324,7 +324,9 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
-        canonical={`https://www.purrify.ca${locale === 'en' ? '' : `/${locale}`}/locations/${profile.slug}`}
+        canonical={`https://www.purrify.ca/locations/${profile.slug}`}
+        noindex={locale !== 'en'}
+        nofollow={false}
         additionalMetaTags={[
           {
             name: 'keywords',
