@@ -2083,12 +2083,28 @@ export const es: TranslationType = {
     hub: {
       badge: "Cobertura Nacional",
       heading: "Control de Olores de Arena en Todo Canadá",
-      description: "Descubre ubicaciones de Purrify en todo Canadá. Encuentra minoristas locales u ordena en línea para entrega rápida a tu ciudad.",
+      description: "Descubre ubicaciones de Purrify en todo Canadá. Selecciona tu provincia para encontrar guías específicas de tu ciudad, información de envío y recursos locales para dueños de gatos.",
       selectProvince: "Selecciona Tu Provincia",
       whyChoose: "¿Por Qué Elegir Purrify?",
       benefit1: "Tecnología natural de carbón activado",
       benefit2: "Funciona con todos los tipos de arena",
-      benefit3: "Envío rápido en todo Canadá"
+      benefit3: "Envío rápido en todo Canadá",
+      shopCta: "Comprar Purrify",
+      citiesAvailable: "{{count}} ciudades disponibles",
+      cityAvailable: "1 ciudad disponible",
+      viewGuide: "Ver guía provincial →",
+      fastShipping: {
+        title: "Envío Rápido",
+        description: "Entrega confiable en todas las provincias con seguimiento"
+      },
+      naturalSolution: {
+        title: "Solución Natural",
+        description: "Tecnología de carbón activado para un control superior de olores"
+      },
+      localSupport: {
+        title: "Soporte Local",
+        description: "Guías específicas de tu ciudad adaptadas a tu clima"
+      }
     },
     province: {
       badge: "Guía Provincial",
@@ -2105,7 +2121,9 @@ export const es: TranslationType = {
   // Thank You / Order Confirmation Page
   thankYou: {
     heading: "¡Gracias!",
+    headingWithName: "¡Gracias, {{name}}!",
     subheading: "Tu pedido ha sido confirmado.",
+    subheadingExtended: "Tu pedido ha sido confirmado. ¡Prepárate para experimentar el hogar más fresco que jamás hayas tenido!",
     orderConfirmed: "Pedido Confirmado",
     orderNumber: "Número de Pedido",
     product: "Producto",
@@ -2115,7 +2133,47 @@ export const es: TranslationType = {
     deliveryCA: "7-10 días hábiles dentro de Canadá",
     deliveryUS: "10-14 días hábiles a Estados Unidos",
     deliveryIntl: "14-21 días hábiles internacional",
+    shipsWithin: "Se envía en 1-2 días hábiles",
+    confirmationSent: "Correo de confirmación enviado a",
+    checkSpam: "Revisa tu carpeta de spam si no lo ves en 5 minutos",
     trackingInfo: "La información de seguimiento se enviará a tu correo cuando tu pedido sea enviado.",
+    whatToExpect: {
+      heading: "Qué Esperar",
+      step1Title: "Recibe Tu Purrify",
+      step1Desc: "Tu paquete llegará en un empaque discreto y ecológico. Cada contenedor está sellado para mantener la frescura.",
+      step2Title: "Instrucciones de Primer Uso",
+      step2Desc: "Para mejores resultados, comienza con una caja de arena limpia:",
+      step2Item1: "Limpia y refresca tu caja de arena",
+      step2Item2: "Espolvorea una capa fina de Purrify encima",
+      step2Item3: "No necesitas mezclar - funciona desde la superficie",
+      step2Item4: "Vuelve a aplicar después de cada cambio de arena",
+      step3Title: "Experimenta la Diferencia",
+      step3Desc: "¡La mayoría de los clientes notan la diferencia en 60 segundos! El carbón activado atrapa las moléculas de amoníaco instantáneamente - sin enmascarar, solo eliminación real de olores.",
+      proTip: "Consejo Pro:",
+      proTipText: "¡Un poco rinde mucho! Usa solo lo suficiente para cubrir ligeramente la superficie. Usar de más no hará daño, pero no es necesario."
+    },
+    shareSection: {
+      heading: "Comparte la Frescura",
+      description: "¿Conoces a alguien con una caja de arena maloliente? ¡Comparte tu enlace de referido y obtendrán una prueba GRATIS!",
+      generating: "Generando tu enlace de referido personal...",
+      whatsapp: "WhatsApp",
+      facebook: "Facebook",
+      email: "Correo"
+    },
+    autoshipCta: {
+      heading: "Nunca Te Quedes Sin",
+      saveBadge: "AHORRA 30%",
+      description: "Suscríbete a Autoship y ahorra 30% en cada pedido, además de envío GRATIS. Cancela cuando quieras.",
+      savings: "Ahorro",
+      shipping: "Envío",
+      cancel: "Cancelar",
+      button: "Actualizar a Autoship"
+    },
+    helpSection: {
+      question: "¿Preguntas?",
+      weAreHere: "¡Estamos aquí para ayudar!",
+      returnHome: "Volver al Inicio"
+    },
     questionsHeading: "¿Preguntas Sobre Tu Pedido?",
     questionsDescription: "Contacta a nuestro equipo de soporte y estaremos felices de ayudar.",
     contactSupport: "Contactar Soporte",
@@ -2144,6 +2202,57 @@ export const es: TranslationType = {
     showingReviews: "Mostrando {{count}} reseñas",
     noReviews: "Aún no hay reseñas. ¡Sé el primero en compartir tu experiencia!",
     loadMore: "Cargar Más Reseñas"
+  },
+
+  // Reviews Page (Full Page)
+  reviewsPage: {
+    pageTitle: "Reseñas de Clientes - Testimonios Verificados",
+    metaDescription: "★ Calificación de 4.9/5 | Más de 1,000 dueños de gatos eliminaron el olor de la caja de arena con Purrify. Lee reseñas reales. Envíos a EE.UU. y Canadá.",
+    badge: "Reseñas de Clientes",
+    heading: "Historias Reales de Dueños de Gatos Felices",
+    description: "Descubre por qué más de 1,000 dueños de gatos canadienses confían en Purrify para eliminar naturalmente los olores de la caja de arena. Lee reseñas verificadas de clientes reales en todo Canadá.",
+    breadcrumb: {
+      home: "Inicio",
+      reviews: "Reseñas"
+    },
+    stats: {
+      averageRating: "Calificación Promedio",
+      verifiedReviews: "Reseñas Verificadas",
+      happyCustomers: "Clientes Satisfechos",
+      monthsInMarket: "Meses en el Mercado"
+    },
+    reviewCard: {
+      verified: "Verificado",
+      product: "Producto",
+      cats: "Gatos",
+      useCase: "Caso de Uso"
+    },
+    trustSection: {
+      heading: "Por Qué los Clientes Confían en Purrify",
+      verifiedTitle: "Reseñas Verificadas",
+      verifiedDesc: "Todas las reseñas son de compradores verificados que han usado productos Purrify.",
+      ratingTitle: "Calificación de 4.9/5",
+      ratingDesc: "Calificaciones consistentemente altas en todos los tamaños de productos y tipos de clientes.",
+      customersTitle: "Más de 1,000 Clientes",
+      customersDesc: "Una comunidad creciente de dueños de gatos satisfechos en todo Canadá."
+    },
+    ctaSection: {
+      heading: "Únete a Más de 1,000 Dueños de Gatos Felices",
+      description: "Experimenta los mismos resultados que nuestros clientes verificados. Prueba Purrify sin riesgo y descubre por qué es el desodorizante natural para arena más confiable de Canadá.",
+      shopNow: "Comprar Ahora",
+      tryFreeSample: "Probar Muestra Gratis"
+    },
+    relatedLinks: {
+      heading: "Más Información Sobre Purrify",
+      comparison: "Comparación de Productos",
+      comparisonDesc: "Ver cómo se compara Purrify",
+      caseStudies: "Casos de Estudio",
+      caseStudiesDesc: "Historias de éxito detalladas",
+      usageInfo: "Información de Uso",
+      usageInfoDesc: "Uso con gatos y gatitos",
+      storeLocations: "Ubicaciones de Tiendas",
+      storeLocationsDesc: "Encuentra Purrify cerca de ti"
+    }
   },
 
   // Related Articles Section

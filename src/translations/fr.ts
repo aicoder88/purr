@@ -2235,12 +2235,28 @@ export const fr = {
     hub: {
       badge: "Couverture nationale",
       heading: "Contrôle des odeurs de litière partout au Canada",
-      description: "Découvrez les emplacements Purrify à travers le Canada. Trouvez des détaillants locaux ou commandez en ligne pour une livraison rapide dans votre ville.",
+      description: "Découvrez les emplacements Purrify à travers le Canada. Sélectionnez votre province pour trouver des guides spécifiques à votre ville, des informations de livraison et des ressources locales pour les propriétaires de chats.",
       selectProvince: "Sélectionnez votre province",
       whyChoose: "Pourquoi choisir Purrify?",
       benefit1: "Technologie naturelle au charbon actif",
       benefit2: "Fonctionne avec tous les types de litière",
-      benefit3: "Livraison rapide partout au Canada"
+      benefit3: "Livraison rapide partout au Canada",
+      shopCta: "Acheter Purrify",
+      citiesAvailable: "{{count}} villes disponibles",
+      cityAvailable: "1 ville disponible",
+      viewGuide: "Voir le guide provincial →",
+      fastShipping: {
+        title: "Livraison rapide",
+        description: "Livraison fiable dans toutes les provinces avec suivi"
+      },
+      naturalSolution: {
+        title: "Solution naturelle",
+        description: "Technologie au charbon actif pour un contrôle supérieur des odeurs"
+      },
+      localSupport: {
+        title: "Support local",
+        description: "Guides spécifiques à votre ville adaptés à votre climat"
+      }
     },
     province: {
       badge: "Guide provincial",
@@ -2257,7 +2273,9 @@ export const fr = {
   // Thank You / Order Confirmation Page
   thankYou: {
     heading: "Merci!",
+    headingWithName: "Merci, {{name}}!",
     subheading: "Votre commande a été confirmée.",
+    subheadingExtended: "Votre commande a été confirmée. Préparez-vous à découvrir la maison la plus fraîche que vous ayez jamais eue!",
     orderConfirmed: "Commande confirmée",
     orderNumber: "Numéro de commande",
     product: "Produit",
@@ -2267,7 +2285,47 @@ export const fr = {
     deliveryCA: "7-10 jours ouvrables au Canada",
     deliveryUS: "10-14 jours ouvrables aux États-Unis",
     deliveryIntl: "14-21 jours ouvrables international",
+    shipsWithin: "Expédition dans 1-2 jours ouvrables",
+    confirmationSent: "Courriel de confirmation envoyé à",
+    checkSpam: "Vérifiez vos courriels indésirables si vous ne le voyez pas dans 5 minutes",
     trackingInfo: "Les informations de suivi seront envoyées à votre courriel une fois votre commande expédiée.",
+    whatToExpect: {
+      heading: "À quoi s'attendre",
+      step1Title: "Recevez votre Purrify",
+      step1Desc: "Votre colis arrivera dans un emballage discret et écologique. Chaque contenant est scellé pour la fraîcheur.",
+      step2Title: "Instructions de première utilisation",
+      step2Desc: "Pour de meilleurs résultats, commencez avec une litière propre:",
+      step2Item1: "Nettoyez et rafraîchissez votre bac à litière",
+      step2Item2: "Saupoudrez une fine couche de Purrify sur le dessus",
+      step2Item3: "Pas besoin de mélanger - ça fonctionne depuis la surface",
+      step2Item4: "Réappliquez après chaque changement de litière",
+      step3Title: "Vivez la différence",
+      step3Desc: "La plupart des clients remarquent une différence en 60 secondes! Le charbon actif piège instantanément les molécules d'ammoniac - pas de masquage, juste une vraie élimination des odeurs.",
+      proTip: "Conseil pro:",
+      proTipText: "Un peu suffit! Utilisez juste assez pour couvrir légèrement la surface. Une application excessive ne nuira pas, mais n'est pas nécessaire."
+    },
+    shareSection: {
+      heading: "Partagez la fraîcheur",
+      description: "Connaissez-vous quelqu'un avec une litière malodorante? Partagez votre lien de parrainage et ils recevront un essai GRATUIT!",
+      generating: "Génération de votre lien de parrainage personnel...",
+      whatsapp: "WhatsApp",
+      facebook: "Facebook",
+      email: "Courriel"
+    },
+    autoshipCta: {
+      heading: "Ne manquez plus jamais",
+      saveBadge: "ÉCONOMISEZ 30%",
+      description: "Abonnez-vous à l'expédition automatique et économisez 30% sur chaque commande, plus la livraison GRATUITE. Annulez à tout moment.",
+      savings: "Économies",
+      shipping: "Livraison",
+      cancel: "Annulation",
+      button: "Passer à l'expédition automatique"
+    },
+    helpSection: {
+      question: "Questions?",
+      weAreHere: "Nous sommes là pour vous aider!",
+      returnHome: "Retour à l'accueil"
+    },
     questionsHeading: "Des questions sur votre commande?",
     questionsDescription: "Contactez notre équipe de support et nous serons heureux de vous aider.",
     contactSupport: "Contacter le support",
@@ -2296,6 +2354,57 @@ export const fr = {
     showingReviews: "Affichage de {{count}} avis",
     noReviews: "Aucun avis pour le moment. Soyez le premier à partager votre expérience!",
     loadMore: "Charger plus d'avis"
+  },
+
+  // Reviews Page (Full Page)
+  reviewsPage: {
+    pageTitle: "Avis Clients - Témoignages Vérifiés",
+    metaDescription: "★ Note de 4.9/5 | Plus de 1 000 propriétaires de chats ont éliminé les odeurs de litière avec Purrify. Lisez de vrais avis. Livraison aux États-Unis et au Canada.",
+    badge: "Avis Clients",
+    heading: "Vraies Histoires de Propriétaires de Chats Heureux",
+    description: "Découvrez pourquoi plus de 1 000 propriétaires de chats canadiens font confiance à Purrify pour éliminer naturellement les odeurs de litière. Lisez les avis vérifiés de vrais clients à travers le Canada.",
+    breadcrumb: {
+      home: "Accueil",
+      reviews: "Avis"
+    },
+    stats: {
+      averageRating: "Note Moyenne",
+      verifiedReviews: "Avis Vérifiés",
+      happyCustomers: "Clients Satisfaits",
+      monthsInMarket: "Mois sur le Marché"
+    },
+    reviewCard: {
+      verified: "Vérifié",
+      product: "Produit",
+      cats: "Chats",
+      useCase: "Cas d'Usage"
+    },
+    trustSection: {
+      heading: "Pourquoi les Clients Font Confiance à Purrify",
+      verifiedTitle: "Avis Vérifiés",
+      verifiedDesc: "Tous les avis proviennent d'acheteurs vérifiés qui ont utilisé les produits Purrify.",
+      ratingTitle: "Note de 4.9/5",
+      ratingDesc: "Notes constamment élevées pour toutes les tailles de produits et types de clients.",
+      customersTitle: "Plus de 1 000 Clients",
+      customersDesc: "Une communauté grandissante de propriétaires de chats satisfaits à travers le Canada."
+    },
+    ctaSection: {
+      heading: "Rejoignez Plus de 1 000 Propriétaires de Chats Heureux",
+      description: "Obtenez les mêmes résultats que nos clients vérifiés. Essayez Purrify sans risque et découvrez pourquoi c'est le désodorisant pour litière naturel le plus fiable au Canada.",
+      shopNow: "Acheter Maintenant",
+      tryFreeSample: "Essayer un Échantillon Gratuit"
+    },
+    relatedLinks: {
+      heading: "En Savoir Plus sur Purrify",
+      comparison: "Comparaison de Produits",
+      comparisonDesc: "Voir comment Purrify se compare",
+      caseStudies: "Études de Cas",
+      caseStudiesDesc: "Histoires de succès détaillées",
+      usageInfo: "Informations d'Utilisation",
+      usageInfoDesc: "Utilisation avec les chats et chatons",
+      storeLocations: "Points de Vente",
+      storeLocationsDesc: "Trouver Purrify près de chez vous"
+    }
   },
 
   // Related Articles Section

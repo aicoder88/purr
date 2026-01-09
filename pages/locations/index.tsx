@@ -3,15 +3,20 @@ import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import { Container } from '@/components/ui/container';
 import { locationsByProvince, Province } from '@/data/locations';
+import { useTranslation } from '@/lib/translation-context';
+import { getLocalizedUrl, buildLanguageAlternates } from '@/lib/seo-utils';
 
 interface LocationsIndexProps {
   provinces: Province[];
 }
 
 const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
-  const seoTitle = 'Cat Litter Odor Control - All Locations in Canada | Purrify';
-  const seoDescription = 'Find Purrify activated carbon cat litter additive in your province. Explore our comprehensive guides for cities across Canada with fast, reliable shipping.';
-  const canonicalUrl = 'https://www.purrify.ca/locations';
+  const { t, locale } = useTranslation();
+  const locations = t.locations!; // Non-null assertion - all translations have this
+  const canonicalUrl = getLocalizedUrl('/locations', locale);
+  const languageAlternates = buildLanguageAlternates('/locations');
+  const seoTitle = `${locations.hub.heading} | Purrify`;
+  const seoDescription = locations.hub.description;
 
   return (
     <>
@@ -24,6 +29,7 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
           description: seoDescription,
           url: canonicalUrl,
         }}
+        languageAlternates={languageAlternates}
       />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
@@ -32,20 +38,20 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
           <Container>
             <div className="max-w-5xl mx-auto text-center space-y-6">
               <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">
-                Nationwide Coverage
+                {locations.hub.badge}
               </span>
               <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
-                Cat Litter Odor Control Across Canada
+                {locations.hub.heading}
               </h1>
               <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
-                Discover Purrify locations throughout Canada. Select your province to find city-specific guides, shipping information, and local resources for cat owners.
+                {locations.hub.description}
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link
                   href="/products/trial-size"
                   className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
                 >
-                  Shop Purrify
+                  {locations.hub.shopCta}
                 </Link>
               </div>
             </div>
@@ -57,7 +63,7 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
           <Container>
             <div className="max-w-5xl mx-auto">
               <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
-                Select Your Province
+                {locations.hub.selectProvince}
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {provinces.map((province) => (
@@ -75,11 +81,13 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
                       </span>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {province.cities.length} {province.cities.length === 1 ? 'city' : 'cities'} available
+                      {province.cities.length === 1
+                        ? locations.hub.cityAvailable
+                        : locations.hub.citiesAvailable.replace('{{count}}', String(province.cities.length))}
                     </p>
                     <div className="mt-auto">
                       <span className="inline-flex items-center text-sm font-medium text-orange-600 dark:text-orange-300 group-hover:text-orange-700 dark:group-hover:text-orange-200">
-                        View province guide →
+                        {locations.hub.viewGuide}
                       </span>
                     </div>
                   </Link>
@@ -94,7 +102,7 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
           <Container>
             <div className="max-w-4xl mx-auto">
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
-                Why Choose Purrify?
+                {locations.hub.whyChoose}
               </h2>
               <div className="grid gap-8 md:grid-cols-3">
                 <div className="text-center space-y-3">
@@ -103,9 +111,9 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Fast Shipping</h3>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.fastShipping.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Reliable delivery across all provinces with tracking
+                    {locations.hub.fastShipping.description}
                   </p>
                 </div>
                 <div className="text-center space-y-3">
@@ -114,9 +122,9 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Natural Solution</h3>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.naturalSolution.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Activated carbon technology for superior odor control
+                    {locations.hub.naturalSolution.description}
                   </p>
                 </div>
                 <div className="text-center space-y-3">
@@ -125,9 +133,9 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">Local Support</h3>
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.localSupport.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    City-specific guides tailored to your climate
+                    {locations.hub.localSupport.description}
                   </p>
                 </div>
               </div>

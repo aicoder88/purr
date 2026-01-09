@@ -7,7 +7,8 @@ import { useTranslation } from '../src/lib/translation-context';
 import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
 
 export default function Reviews() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
+  const reviewsPage = t.reviewsPage!; // Non-null assertion - all translations have this
   const canonicalUrl = getLocalizedUrl('/reviews', locale);
   const languageAlternates = buildLanguageAlternates('/reviews');
   const reviews = [
@@ -92,17 +93,17 @@ export default function Reviews() {
   ];
 
   const stats = [
-    { label: "Average Rating", value: "4.9/5", icon: Star },
-    { label: "Verified Reviews", value: "138", icon: CheckCircle },
-    { label: "Happy Customers", value: "1,000+", icon: Users },
-    { label: "Months in Market", value: "18", icon: Calendar }
+    { label: reviewsPage.stats.averageRating, value: "4.9/5", icon: Star },
+    { label: reviewsPage.stats.verifiedReviews, value: "138", icon: CheckCircle },
+    { label: reviewsPage.stats.happyCustomers, value: "1,000+", icon: Users },
+    { label: reviewsPage.stats.monthsInMarket, value: "18", icon: Calendar }
   ];
 
   return (
     <>
       <Head>
-        <title>{`Customer Reviews - Verified Testimonials | ${SITE_NAME}`}</title>
-        <meta name="description" content="★ 4.9/5 Rating | 1,000+ cat owners eliminated litter box smell with Purrify. Read real reviews: 'Guests can't tell I have cats anymore.' Ships to USA & Canada." />
+        <title>{`${reviewsPage.pageTitle} | ${SITE_NAME}`}</title>
+        <meta name="description" content={reviewsPage.metaDescription} />
         <meta name="keywords" content="Purrify reviews, cat litter deodorizer reviews, customer testimonials, verified reviews, cat odor eliminator reviews" />
         
         {/* Open Graph */}
@@ -161,23 +162,22 @@ export default function Reviews() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131]">{reviewsPage.breadcrumb.home}</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">Reviews</li>
+                <li className="text-[#FF3131]">{reviewsPage.breadcrumb.reviews}</li>
               </ol>
             </nav>
 
             {/* Header */}
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-                Customer Reviews
+                {reviewsPage.badge}
               </div>
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
-                Real Stories from Happy Cat Owners
+                {reviewsPage.heading}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                See why 1,000+ Canadian cat owners trust Purrify to eliminate litter box odors naturally. 
-                Read verified reviews from real customers across Canada.
+                {reviewsPage.description}
               </p>
               
               {/* Stats */}
@@ -220,7 +220,7 @@ export default function Reviews() {
                     {review.verified && (
                       <div className="flex items-center text-green-600 dark:text-green-400 text-xs">
                         <CheckCircle className="h-4 w-4 mr-1" />
-                        Verified
+                        {reviewsPage.reviewCard.verified}
                       </div>
                     )}
                   </div>
@@ -251,9 +251,9 @@ export default function Reviews() {
 
                   {/* Product Details */}
                   <div className="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-2 text-xs text-gray-600 dark:text-gray-300">
-                    <div><strong>Product:</strong> {review.productUsed}</div>
-                    <div><strong>Cats:</strong> {review.catsOwned}</div>
-                    <div><strong>Use Case:</strong> {review.useCase}</div>
+                    <div><strong>{reviewsPage.reviewCard.product}:</strong> {review.productUsed}</div>
+                    <div><strong>{reviewsPage.reviewCard.cats}:</strong> {review.catsOwned}</div>
+                    <div><strong>{reviewsPage.reviewCard.useCase}:</strong> {review.useCase}</div>
                   </div>
                 </div>
               ))}
@@ -262,22 +262,22 @@ export default function Reviews() {
             {/* Trust Indicators */}
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-8 mb-16 cv-auto cis-480">
               <div className="text-center">
-                <h2 className="font-heading text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">Why Customers Trust Purrify</h2>
+                <h2 className="font-heading text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">{reviewsPage.trustSection.heading}</h2>
                 <div className="grid md:grid-cols-3 gap-6 text-blue-800 dark:text-blue-200">
                   <div className="text-center">
                     <CheckCircle className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-heading font-semibold mb-2">Verified Reviews</h3>
-                    <p className="text-sm">All reviews are from verified purchasers who have used Purrify products.</p>
+                    <h3 className="font-heading font-semibold mb-2">{reviewsPage.trustSection.verifiedTitle}</h3>
+                    <p className="text-sm">{reviewsPage.trustSection.verifiedDesc}</p>
                   </div>
                   <div className="text-center">
                     <Star className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-heading font-semibold mb-2">4.9/5 Rating</h3>
-                    <p className="text-sm">Consistently high ratings across all product sizes and customer types.</p>
+                    <h3 className="font-heading font-semibold mb-2">{reviewsPage.trustSection.ratingTitle}</h3>
+                    <p className="text-sm">{reviewsPage.trustSection.ratingDesc}</p>
                   </div>
                   <div className="text-center">
                     <Users className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-                    <h3 className="font-heading font-semibold mb-2">1,000+ Customers</h3>
-                    <p className="text-sm">Growing community of satisfied cat owners across Canada.</p>
+                    <h3 className="font-heading font-semibold mb-2">{reviewsPage.trustSection.customersTitle}</h3>
+                    <p className="text-sm">{reviewsPage.trustSection.customersDesc}</p>
                   </div>
                 </div>
               </div>
@@ -287,24 +287,23 @@ export default function Reviews() {
             <div className="text-center cv-auto cis-480">
               <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
                 <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                  Join 1,000+ Happy Cat Owners
+                  {reviewsPage.ctaSection.heading}
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                  Experience the same results as our verified customers. Try Purrify risk-free 
-                  and see why it's Canada's most trusted natural cat litter deodorizer.
+                  {reviewsPage.ctaSection.description}
                 </p>
                 <div className="space-x-4">
-                <Link 
-                    href="/products" 
+                <Link
+                    href="/products"
                     className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
-                    Shop Now
+                    {reviewsPage.ctaSection.shopNow}
                   </Link>
-                  <Link 
-                    href="/free" 
+                  <Link
+                    href="/free"
                     className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
                   >
-                    Try Free Sample
+                    {reviewsPage.ctaSection.tryFreeSample}
                   </Link>
                 </div>
               </div>
@@ -312,23 +311,23 @@ export default function Reviews() {
 
             {/* Related Links */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
-              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More About Purrify</h3>
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{reviewsPage.relatedLinks.heading}</h3>
               <div className="grid md:grid-cols-4 gap-4">
                 <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{reviewsPage.relatedLinks.comparison}</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{reviewsPage.relatedLinks.comparisonDesc}</p>
                 </Link>
                 <Link href="/case-studies" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Detailed success stories</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{reviewsPage.relatedLinks.caseStudies}</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{reviewsPage.relatedLinks.caseStudiesDesc}</p>
                 </Link>
                 <Link href="/blog/using-deodorizers-with-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Usage Information</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Using around cats and kittens</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{reviewsPage.relatedLinks.usageInfo}</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{reviewsPage.relatedLinks.usageInfoDesc}</p>
                 </Link>
                 <Link href="/locations/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Store Locations</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Find Purrify near you</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{reviewsPage.relatedLinks.storeLocations}</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{reviewsPage.relatedLinks.storeLocationsDesc}</p>
                 </Link>
               </div>
             </div>

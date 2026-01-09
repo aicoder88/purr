@@ -1818,6 +1818,22 @@ export interface TranslationType {
       benefit1: string;
       benefit2: string;
       benefit3: string;
+      shopCta: string;
+      citiesAvailable: string;
+      cityAvailable: string;
+      viewGuide: string;
+      fastShipping: {
+        title: string;
+        description: string;
+      };
+      naturalSolution: {
+        title: string;
+        description: string;
+      };
+      localSupport: {
+        title: string;
+        description: string;
+      };
     };
     province: {
       badge: string;
@@ -1834,7 +1850,9 @@ export interface TranslationType {
   // Thank You / Order Confirmation Page
   thankYou?: {
     heading: string;
+    headingWithName: string;
     subheading: string;
+    subheadingExtended: string;
     orderConfirmed: string;
     orderNumber: string;
     product: string;
@@ -1844,7 +1862,47 @@ export interface TranslationType {
     deliveryCA: string;
     deliveryUS: string;
     deliveryIntl: string;
+    shipsWithin: string;
+    confirmationSent: string;
+    checkSpam: string;
     trackingInfo: string;
+    whatToExpect: {
+      heading: string;
+      step1Title: string;
+      step1Desc: string;
+      step2Title: string;
+      step2Desc: string;
+      step2Item1: string;
+      step2Item2: string;
+      step2Item3: string;
+      step2Item4: string;
+      step3Title: string;
+      step3Desc: string;
+      proTip: string;
+      proTipText: string;
+    };
+    shareSection: {
+      heading: string;
+      description: string;
+      generating: string;
+      whatsapp: string;
+      facebook: string;
+      email: string;
+    };
+    autoshipCta: {
+      heading: string;
+      saveBadge: string;
+      description: string;
+      savings: string;
+      shipping: string;
+      cancel: string;
+      button: string;
+    };
+    helpSection: {
+      question: string;
+      weAreHere: string;
+      returnHome: string;
+    };
     questionsHeading: string;
     questionsDescription: string;
     contactSupport: string;
@@ -1873,6 +1931,57 @@ export interface TranslationType {
     showingReviews: string;
     noReviews: string;
     loadMore: string;
+  };
+
+  // Reviews Page (Full Page)
+  reviewsPage?: {
+    pageTitle: string;
+    metaDescription: string;
+    badge: string;
+    heading: string;
+    description: string;
+    breadcrumb: {
+      home: string;
+      reviews: string;
+    };
+    stats: {
+      averageRating: string;
+      verifiedReviews: string;
+      happyCustomers: string;
+      monthsInMarket: string;
+    };
+    reviewCard: {
+      verified: string;
+      product: string;
+      cats: string;
+      useCase: string;
+    };
+    trustSection: {
+      heading: string;
+      verifiedTitle: string;
+      verifiedDesc: string;
+      ratingTitle: string;
+      ratingDesc: string;
+      customersTitle: string;
+      customersDesc: string;
+    };
+    ctaSection: {
+      heading: string;
+      description: string;
+      shopNow: string;
+      tryFreeSample: string;
+    };
+    relatedLinks: {
+      heading: string;
+      comparison: string;
+      comparisonDesc: string;
+      caseStudies: string;
+      caseStudiesDesc: string;
+      usageInfo: string;
+      usageInfoDesc: string;
+      storeLocations: string;
+      storeLocationsDesc: string;
+    };
   };
 
   // Related Articles Section

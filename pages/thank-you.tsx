@@ -19,6 +19,7 @@ import { GetServerSideProps } from 'next';
 import Stripe from 'stripe';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
+import { useTranslation } from '../src/lib/translation-context';
 
 const getStripeInstance = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -119,6 +120,8 @@ export const getServerSideProps: GetServerSideProps<ThankYouPageProps> = async (
 };
 
 const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
+  const { t } = useTranslation();
+  const thankYou = t.thankYou!; // Non-null assertion - all translations have this
   const formattedAmount = orderDetails?.amount ? (orderDetails.amount / 100).toFixed(2) : null;
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -173,11 +176,11 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
   const getDeliveryTimeline = () => {
     const country = orderDetails?.shippingCountry?.toUpperCase();
     if (country === 'CA') {
-      return { time: '7-10 business days', region: 'within Canada' };
+      return { time: thankYou.deliveryCA, region: '' };
     } else if (country === 'US') {
-      return { time: '10-14 business days', region: 'to the United States' };
+      return { time: thankYou.deliveryUS, region: '' };
     }
-    return { time: '10-14 business days', region: '' };
+    return { time: thankYou.deliveryIntl || '10-14 business days', region: '' };
   };
 
   const deliveryInfo = getDeliveryTimeline();
@@ -241,11 +244,13 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
               </div>
 
               <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-[#03E46A]">
-                Thank You{firstName !== 'there' ? `, ${firstName}` : ''}!
+                {firstName !== 'there'
+                  ? thankYou.headingWithName.replace('{{name}}', firstName)
+                  : thankYou.heading}
               </h1>
 
               <p className="text-xl text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
-                Your order has been confirmed. Get ready to experience the freshest home you've ever had!
+                {thankYou.subheadingExtended}
               </p>
             </div>
 
@@ -260,32 +265,32 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100 dark:border-gray-700">
                 <h2 className="font-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3">
                   <Package className="w-6 h-6 text-[#03E46A]" />
-                  Order Confirmed
+                  {thankYou.orderConfirmed}
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="space-y-4">
                     {orderDetails.orderNumber && (
                       <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                        <span className="text-gray-600 dark:text-gray-400">Order Number</span>
+                        <span className="text-gray-600 dark:text-gray-400">{thankYou.orderNumber}</span>
                         <span className="font-semibold text-gray-900 dark:text-gray-100 font-mono">#{orderDetails.orderNumber}</span>
                       </div>
                     )}
                     {orderDetails.productName && (
                       <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                        <span className="text-gray-600 dark:text-gray-400">Product</span>
+                        <span className="text-gray-600 dark:text-gray-400">{thankYou.product}</span>
                         <span className="font-semibold text-gray-900 dark:text-gray-100">{orderDetails.productName}</span>
                       </div>
                     )}
                     {orderDetails.quantity && orderDetails.quantity > 1 && (
                       <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                        <span className="text-gray-600 dark:text-gray-400">Quantity</span>
+                        <span className="text-gray-600 dark:text-gray-400">{thankYou.quantity}</span>
                         <span className="font-semibold text-gray-900 dark:text-gray-100">{orderDetails.quantity}</span>
                       </div>
                     )}
                     {formattedAmount && (
                       <div className="flex justify-between py-3 border-t-2 border-gray-200 dark:border-gray-600 mt-2">
-                        <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">Total</span>
+                        <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">{thankYou.total}</span>
                         <span className="text-lg font-bold text-[#03E46A]">${formattedAmount} CAD</span>
                       </div>
                     )}
@@ -296,13 +301,13 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                     <div className="flex items-start gap-3">
                       <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Expected Delivery</h3>
+                        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">{thankYou.expectedDelivery}</h3>
                         <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">{deliveryInfo.time}</p>
                         {deliveryInfo.region && (
                           <p className="text-sm text-gray-600 dark:text-gray-400">{deliveryInfo.region}</p>
                         )}
                         <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-                          Ships within 1-2 business days
+                          {thankYou.shipsWithin}
                         </p>
                       </div>
                     </div>
@@ -314,10 +319,10 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                     <Mail className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-700 dark:text-gray-300">
-                        Confirmation email sent to <strong>{orderDetails.customerEmail}</strong>
+                        {thankYou.confirmationSent} <strong>{orderDetails.customerEmail}</strong>
                       </p>
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                        Check your spam folder if you don't see it within 5 minutes
+                        {thankYou.checkSpam}
                       </p>
                     </div>
                   </div>
@@ -329,7 +334,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100 dark:border-gray-700">
               <h2 className="font-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3">
                 <Sparkles className="w-6 h-6 text-purple-500 dark:text-purple-400" />
-                What to Expect
+                {thankYou.whatToExpect.heading}
               </h2>
 
               <div className="space-y-6">
@@ -339,10 +344,10 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                      Receive Your Purrify
+                      {thankYou.whatToExpect.step1Title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Your package will arrive in discrete, eco-friendly packaging. Each container is sealed for freshness.
+                      {thankYou.whatToExpect.step1Desc}
                     </p>
                   </div>
                 </div>
@@ -353,16 +358,16 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                      First Use Instructions
+                      {thankYou.whatToExpect.step2Title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-3">
-                      For best results, start with a clean litter box:
+                      {thankYou.whatToExpect.step2Desc}
                     </p>
                     <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 ml-2">
-                      <li>Clean and refresh your litter box</li>
-                      <li>Sprinkle a thin layer of Purrify on top</li>
-                      <li>No need to mix - it works from the surface</li>
-                      <li>Reapply after each litter change</li>
+                      <li>{thankYou.whatToExpect.step2Item1}</li>
+                      <li>{thankYou.whatToExpect.step2Item2}</li>
+                      <li>{thankYou.whatToExpect.step2Item3}</li>
+                      <li>{thankYou.whatToExpect.step2Item4}</li>
                     </ul>
                   </div>
                 </div>
@@ -373,10 +378,10 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                      Experience the Difference
+                      {thankYou.whatToExpect.step3Title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Most customers notice a difference within 60 seconds! The activated carbon traps ammonia molecules instantly - no masking, just real odor elimination.
+                      {thankYou.whatToExpect.step3Desc}
                     </p>
                   </div>
                 </div>
@@ -384,7 +389,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
 
               <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
                 <p className="text-sm text-amber-900 dark:text-amber-200">
-                  <strong>Pro Tip:</strong> A little goes a long way! Use just enough to lightly cover the surface. Over-application won't hurt, but it's not necessary.
+                  <strong>{thankYou.whatToExpect.proTip}</strong> {thankYou.whatToExpect.proTipText}
                 </p>
               </div>
             </div>
@@ -396,16 +401,16 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   <Gift className="w-6 h-6 text-white dark:text-white" />
                 </div>
                 <div>
-                  <h2 className="font-heading text-2xl font-bold mb-2">Share the Freshness</h2>
+                  <h2 className="font-heading text-2xl font-bold mb-2">{thankYou.shareSection.heading}</h2>
                   <p className="text-purple-100 dark:text-purple-200">
-                    Know someone with a stinky litter box? Share your referral link and they'll get a FREE trial!
+                    {thankYou.shareSection.description}
                   </p>
                 </div>
               </div>
 
               {referralLoading ? (
                 <div className="bg-white/10 dark:bg-white/5 rounded-xl p-4 text-center">
-                  <p className="text-purple-100 dark:text-purple-200">Generating your personal referral link...</p>
+                  <p className="text-purple-100 dark:text-purple-200">{thankYou.shareSection.generating}</p>
                 </div>
               ) : (
                 <>
@@ -435,7 +440,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                       className="flex items-center gap-2 bg-green-500 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-500 text-white dark:text-white px-4 py-2 rounded-lg transition-colors"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      WhatsApp
+                      {thankYou.shareSection.whatsapp}
                     </a>
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
@@ -444,14 +449,14 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                       className="flex items-center gap-2 bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-600 text-white dark:text-white px-4 py-2 rounded-lg transition-colors"
                     >
                       <Facebook className="w-4 h-4" />
-                      Facebook
+                      {thankYou.shareSection.facebook}
                     </a>
                     <a
                       href={`mailto:?subject=You NEED this for your cat's litter box!&body=Hey! I just ordered Purrify and wanted to share - it eliminates litter box odor completely using activated carbon. You can get a FREE trial here: ${shareUrl}`}
                       className="flex items-center gap-2 bg-gray-700 dark:bg-gray-600 hover:bg-gray-800 dark:hover:bg-gray-500 text-white dark:text-white px-4 py-2 rounded-lg transition-colors"
                     >
                       <Mail className="w-4 h-4" />
-                      Email
+                      {thankYou.shareSection.email}
                     </a>
                   </div>
                 </>
@@ -468,14 +473,14 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
-                        Never Run Out Again
+                        {thankYou.autoshipCta.heading}
                       </h2>
                       <span className="bg-[#03E46A] text-white dark:text-gray-900 text-xs font-bold px-2 py-1 rounded-full">
-                        SAVE 30%
+                        {thankYou.autoshipCta.saveBadge}
                       </span>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Subscribe to Autoship and save 30% on every order, plus get FREE shipping. Cancel anytime.
+                      {thankYou.autoshipCta.description}
                     </p>
                   </div>
                 </div>
@@ -483,21 +488,21 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
                     <p className="text-2xl font-bold text-[#03E46A]">30%</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Savings</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.savings}</p>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
                     <p className="text-2xl font-bold text-[#03E46A]">FREE</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Shipping</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.shipping}</p>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
                     <p className="text-2xl font-bold text-[#03E46A]">Anytime</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Cancel</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.cancel}</p>
                   </div>
                 </div>
 
                 <Link href="/#products">
                   <Button className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold py-4 text-lg">
-                    Upgrade to Autoship <ArrowRight className="w-5 h-5 ml-2" />
+                    {thankYou.autoshipCta.button} <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
               </div>
@@ -506,7 +511,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
             {/* Help Section */}
             <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-700">
               <p className="text-gray-700 dark:text-gray-200 mb-4">
-                <strong>Questions?</strong> We're here to help!
+                <strong>{thankYou.helpSection.question}</strong> {thankYou.helpSection.weAreHere}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -520,7 +525,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                   href="/"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-white dark:text-gray-900 bg-[#03E46A] hover:bg-[#02C55A] transition-colors"
                 >
-                  Return to Home
+                  {thankYou.helpSection.returnHome}
                 </Link>
               </div>
             </div>

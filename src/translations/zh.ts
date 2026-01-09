@@ -2213,12 +2213,28 @@ export const zh = {
     hub: {
       badge: "全国覆盖",
       heading: "加拿大全境猫砂异味控制",
-      description: "发现加拿大各地的Purrify销售点。找到当地零售商或在线订购，快速配送到您的城市。",
+      description: "发现加拿大各地的Purrify销售点。选择您的省份，查找城市专属指南、配送信息和当地猫主人资源。",
       selectProvince: "选择您的省份",
       whyChoose: "为什么选择Purrify？",
       benefit1: "天然活性炭技术",
       benefit2: "适用于所有猫砂类型",
-      benefit3: "加拿大全境快速配送"
+      benefit3: "加拿大全境快速配送",
+      shopCta: "购买Purrify",
+      citiesAvailable: "{{count}}个城市可用",
+      cityAvailable: "1个城市可用",
+      viewGuide: "查看省份指南 →",
+      fastShipping: {
+        title: "快速配送",
+        description: "全省可靠配送，可追踪物流"
+      },
+      naturalSolution: {
+        title: "天然解决方案",
+        description: "活性炭技术，卓越异味控制"
+      },
+      localSupport: {
+        title: "本地支持",
+        description: "根据您的气候定制的城市专属指南"
+      }
     },
     province: {
       badge: "省份指南",
@@ -2235,7 +2251,9 @@ export const zh = {
   // Thank You / Order Confirmation Page
   thankYou: {
     heading: "谢谢您！",
+    headingWithName: "谢谢您，{{name}}！",
     subheading: "您的订单已确认。",
+    subheadingExtended: "您的订单已确认。准备好体验您拥有过的最清新的家吧！",
     orderConfirmed: "订单已确认",
     orderNumber: "订单号",
     product: "产品",
@@ -2245,7 +2263,47 @@ export const zh = {
     deliveryCA: "加拿大境内7-10个工作日",
     deliveryUS: "美国10-14个工作日",
     deliveryIntl: "国际14-21个工作日",
+    shipsWithin: "1-2个工作日内发货",
+    confirmationSent: "确认邮件已发送至",
+    checkSpam: "如果5分钟内未收到，请检查垃圾邮件文件夹",
     trackingInfo: "订单发货后，物流信息将发送到您的邮箱。",
+    whatToExpect: {
+      heading: "期待什么",
+      step1Title: "收到您的Purrify",
+      step1Desc: "您的包裹将以环保的隐蔽包装送达。每个容器都已密封以保持新鲜。",
+      step2Title: "首次使用说明",
+      step2Desc: "为获得最佳效果，请从干净的猫砂盆开始：",
+      step2Item1: "清洁并更换猫砂盆",
+      step2Item2: "在表面撒上薄薄一层Purrify",
+      step2Item3: "无需混合 - 从表面起作用",
+      step2Item4: "每次更换猫砂后重新使用",
+      step3Title: "体验不同",
+      step3Desc: "大多数客户在60秒内就能感受到差异！活性炭瞬间捕捉氨分子 - 不是遮盖，而是真正消除异味。",
+      proTip: "专业提示：",
+      proTipText: "少量即可！只需轻轻覆盖表面即可。过量使用不会造成伤害，但没有必要。"
+    },
+    shareSection: {
+      heading: "分享清新",
+      description: "认识有臭猫砂盆的人吗？分享您的推荐链接，他们将获得免费试用！",
+      generating: "正在生成您的个人推荐链接...",
+      whatsapp: "WhatsApp",
+      facebook: "Facebook",
+      email: "邮件"
+    },
+    autoshipCta: {
+      heading: "再也不会断货",
+      saveBadge: "节省30%",
+      description: "订阅自动配送，每次订单节省30%，加上免费送货。随时取消。",
+      savings: "节省",
+      shipping: "配送",
+      cancel: "取消",
+      button: "升级至自动配送"
+    },
+    helpSection: {
+      question: "问题？",
+      weAreHere: "我们随时为您服务！",
+      returnHome: "返回首页"
+    },
     questionsHeading: "对订单有疑问？",
     questionsDescription: "联系我们的客服团队，我们很乐意为您提供帮助。",
     contactSupport: "联系客服",
@@ -2274,6 +2332,57 @@ export const zh = {
     showingReviews: "显示{{count}}条评价",
     noReviews: "暂无评价。成为第一个分享体验的人！",
     loadMore: "加载更多评价"
+  },
+
+  // Reviews Page (Full Page)
+  reviewsPage: {
+    pageTitle: "客户评价 - 真实见证",
+    metaDescription: "★ 4.9/5评分 | 超过1,000名猫主人使用Purrify消除了猫砂盆异味。阅读真实评价。配送至美国和加拿大。",
+    badge: "客户评价",
+    heading: "来自快乐猫主人的真实故事",
+    description: "了解为什么超过1,000名加拿大猫主人信任Purrify来自然消除猫砂盆异味。阅读来自加拿大各地真实客户的验证评价。",
+    breadcrumb: {
+      home: "首页",
+      reviews: "评价"
+    },
+    stats: {
+      averageRating: "平均评分",
+      verifiedReviews: "已验证评价",
+      happyCustomers: "满意客户",
+      monthsInMarket: "上市月数"
+    },
+    reviewCard: {
+      verified: "已验证",
+      product: "产品",
+      cats: "猫咪数量",
+      useCase: "使用场景"
+    },
+    trustSection: {
+      heading: "为什么客户信任Purrify",
+      verifiedTitle: "已验证评价",
+      verifiedDesc: "所有评价均来自使用过Purrify产品的验证购买者。",
+      ratingTitle: "4.9/5评分",
+      ratingDesc: "所有产品尺寸和客户类型均保持高评分。",
+      customersTitle: "超过1,000名客户",
+      customersDesc: "不断壮大的加拿大满意猫主人社区。"
+    },
+    ctaSection: {
+      heading: "加入超过1,000名快乐猫主人",
+      description: "获得与我们验证客户相同的效果。无风险试用Purrify，了解为什么它是加拿大最值得信赖的天然猫砂除臭剂。",
+      shopNow: "立即购买",
+      tryFreeSample: "试用免费样品"
+    },
+    relatedLinks: {
+      heading: "了解更多关于Purrify",
+      comparison: "产品比较",
+      comparisonDesc: "查看Purrify的对比",
+      caseStudies: "案例研究",
+      caseStudiesDesc: "详细的成功故事",
+      usageInfo: "使用信息",
+      usageInfoDesc: "与猫和小猫一起使用",
+      storeLocations: "门店位置",
+      storeLocationsDesc: "查找附近的Purrify"
+    }
   },
 
   // Related Articles Section

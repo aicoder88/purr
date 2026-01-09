@@ -2296,12 +2296,28 @@ export const en = {
     hub: {
       badge: "Nationwide Coverage",
       heading: "Cat Litter Odor Control Across Canada",
-      description: "Discover Purrify locations throughout Canada. Find local retailers or order online for fast delivery to your city.",
+      description: "Discover Purrify locations throughout Canada. Select your province to find city-specific guides, shipping information, and local resources for cat owners.",
       selectProvince: "Select Your Province",
       whyChoose: "Why Choose Purrify?",
       benefit1: "Natural activated carbon technology",
       benefit2: "Works with all litter types",
-      benefit3: "Fast shipping across Canada"
+      benefit3: "Fast shipping across Canada",
+      shopCta: "Shop Purrify",
+      citiesAvailable: "{{count}} cities available",
+      cityAvailable: "1 city available",
+      viewGuide: "View province guide →",
+      fastShipping: {
+        title: "Fast Shipping",
+        description: "Reliable delivery across all provinces with tracking"
+      },
+      naturalSolution: {
+        title: "Natural Solution",
+        description: "Activated carbon technology for superior odor control"
+      },
+      localSupport: {
+        title: "Local Support",
+        description: "City-specific guides tailored to your climate"
+      }
     },
     province: {
       badge: "Province Guide",
@@ -2318,7 +2334,9 @@ export const en = {
   // Thank You / Order Confirmation Page
   thankYou: {
     heading: "Thank You!",
+    headingWithName: "Thank You, {{name}}!",
     subheading: "Your order has been confirmed.",
+    subheadingExtended: "Your order has been confirmed. Get ready to experience the freshest home you've ever had!",
     orderConfirmed: "Order Confirmed",
     orderNumber: "Order Number",
     product: "Product",
@@ -2328,7 +2346,47 @@ export const en = {
     deliveryCA: "7-10 business days within Canada",
     deliveryUS: "10-14 business days to the United States",
     deliveryIntl: "14-21 business days international",
+    shipsWithin: "Ships within 1-2 business days",
+    confirmationSent: "Confirmation email sent to",
+    checkSpam: "Check your spam folder if you don't see it within 5 minutes",
     trackingInfo: "Tracking information will be sent to your email once your order ships.",
+    whatToExpect: {
+      heading: "What to Expect",
+      step1Title: "Receive Your Purrify",
+      step1Desc: "Your package will arrive in discrete, eco-friendly packaging. Each container is sealed for freshness.",
+      step2Title: "First Use Instructions",
+      step2Desc: "For best results, start with a clean litter box:",
+      step2Item1: "Clean and refresh your litter box",
+      step2Item2: "Sprinkle a thin layer of Purrify on top",
+      step2Item3: "No need to mix - it works from the surface",
+      step2Item4: "Reapply after each litter change",
+      step3Title: "Experience the Difference",
+      step3Desc: "Most customers notice a difference within 60 seconds! The activated carbon traps ammonia molecules instantly - no masking, just real odor elimination.",
+      proTip: "Pro Tip:",
+      proTipText: "A little goes a long way! Use just enough to lightly cover the surface. Over-application won't hurt, but it's not necessary."
+    },
+    shareSection: {
+      heading: "Share the Freshness",
+      description: "Know someone with a stinky litter box? Share your referral link and they'll get a FREE trial!",
+      generating: "Generating your personal referral link...",
+      whatsapp: "WhatsApp",
+      facebook: "Facebook",
+      email: "Email"
+    },
+    autoshipCta: {
+      heading: "Never Run Out Again",
+      saveBadge: "SAVE 30%",
+      description: "Subscribe to Autoship and save 30% on every order, plus get FREE shipping. Cancel anytime.",
+      savings: "Savings",
+      shipping: "Shipping",
+      cancel: "Cancel",
+      button: "Upgrade to Autoship"
+    },
+    helpSection: {
+      question: "Questions?",
+      weAreHere: "We're here to help!",
+      returnHome: "Return to Home"
+    },
     questionsHeading: "Questions About Your Order?",
     questionsDescription: "Contact our support team and we'll be happy to help.",
     contactSupport: "Contact Support",
@@ -2357,6 +2415,57 @@ export const en = {
     showingReviews: "Showing {{count}} reviews",
     noReviews: "No reviews yet. Be the first to share your experience!",
     loadMore: "Load More Reviews"
+  },
+
+  // Reviews Page (Full Page)
+  reviewsPage: {
+    pageTitle: "Customer Reviews - Verified Testimonials",
+    metaDescription: "★ 4.9/5 Rating | 1,000+ cat owners eliminated litter box smell with Purrify. Read real reviews. Ships to USA & Canada.",
+    badge: "Customer Reviews",
+    heading: "Real Stories from Happy Cat Owners",
+    description: "See why 1,000+ Canadian cat owners trust Purrify to eliminate litter box odors naturally. Read verified reviews from real customers across Canada.",
+    breadcrumb: {
+      home: "Home",
+      reviews: "Reviews"
+    },
+    stats: {
+      averageRating: "Average Rating",
+      verifiedReviews: "Verified Reviews",
+      happyCustomers: "Happy Customers",
+      monthsInMarket: "Months in Market"
+    },
+    reviewCard: {
+      verified: "Verified",
+      product: "Product",
+      cats: "Cats",
+      useCase: "Use Case"
+    },
+    trustSection: {
+      heading: "Why Customers Trust Purrify",
+      verifiedTitle: "Verified Reviews",
+      verifiedDesc: "All reviews are from verified purchasers who have used Purrify products.",
+      ratingTitle: "4.9/5 Rating",
+      ratingDesc: "Consistently high ratings across all product sizes and customer types.",
+      customersTitle: "1,000+ Customers",
+      customersDesc: "Growing community of satisfied cat owners across Canada."
+    },
+    ctaSection: {
+      heading: "Join 1,000+ Happy Cat Owners",
+      description: "Experience the same results as our verified customers. Try Purrify risk-free and see why it's Canada's most trusted natural cat litter deodorizer.",
+      shopNow: "Shop Now",
+      tryFreeSample: "Try Free Sample"
+    },
+    relatedLinks: {
+      heading: "Learn More About Purrify",
+      comparison: "Product Comparison",
+      comparisonDesc: "See how Purrify compares",
+      caseStudies: "Case Studies",
+      caseStudiesDesc: "Detailed success stories",
+      usageInfo: "Usage Information",
+      usageInfoDesc: "Using around cats and kittens",
+      storeLocations: "Store Locations",
+      storeLocationsDesc: "Find Purrify near you"
+    }
   },
 
   // Related Articles Section
