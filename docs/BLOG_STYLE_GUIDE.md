@@ -197,32 +197,9 @@ SAFETY LANGUAGE:
 
 ### Image Sourcing Priority
 
-1. **First**: Check `/public/optimized/blog/` for existing assets
-2. **Second**: Use Unsplash with proper attribution
-3. **Third**: AI generation (Midjourney/DALL-E)
-4. **Fallback**: `/optimized/purrify-product.webp`
-
-### Stock Photo Search Terms
-
-| Image Type | Search Terms |
-|------------|--------------|
-| Hero | "cat owner apartment modern", "clean home cat" |
-| Problem | "frustrated pet owner", "holding nose" |
-| Science | "water filter carbon", "air purifier" |
-| Result | "happy cat home", "fresh apartment" |
-
-### AI Generation Prompts
-
-```
-Hero: "Lifestyle photo of happy cat owner in modern bright apartment,
-       cat nearby, clean minimalist interior, natural lighting, 16:9"
-
-Problem: "Person looking frustrated near litter box, soft focus
-          background, warm lighting, editorial style"
-
-Solution: "Fresh clean home interior with cat relaxing, sunlight
-           streaming in, scandinavian design, peaceful atmosphere"
-```
+1. **First**: AI generation (Fal.ai api, Google NanoBanana). Generate an appropriate prompt based on the page/post and the content before/after it so the image ADDS quality/understanding/emotion/etc to teh post. 
+2. **Second**: Use Unsplash, pexels, etc. with proper attribution
+3. **Third**: Check `/public/optimized/blog/` for existing assets
 
 ---
 
@@ -244,32 +221,8 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 - **Primary keyword**: 1.5-2%
 - **Secondary/LSI keywords**: Distributed naturally throughout
 
-### Primary Keywords (Use in Every Post)
-
-- Activated carbon cat litter
-- Cat litter odor control
-- Litter deodorizer
-- Cat litter smell
-
-### Secondary Keywords (Use 2-3 Per Post)
-
-- Ammonia odor elimination
-- Natural litter additive
-- Fragrance-free deodorizer
-- Multi-cat odor control
-
-### Long-Tail Opportunities
-
-- "Why does my house smell like cat litter"
-- "Best odor control for small apartments"
-- "Cat litter smell worse in summer/winter"
-- "Activated carbon vs baking soda"
 
 ### Internal Linking (4-6 per post)
-
-- `/learn/activated-carbon-vs-baking-soda`
-- `/learn/how-it-works`
-- `/products/standard`
 - Related blog posts
 - Use descriptive anchor text with keywords
 
@@ -301,20 +254,16 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 
 ### Voice & Tone
 
-- **Conversational, first-person** where appropriate
-- **Clinical but warm** - professionals who understand cat parents
+- **Conversational, first-person, charming, humorous** where appropriate
+- **Clinical but warm** - we are professionals who understand cat parents, but we want this to engender warmth, happiness, social sharing, positive emotions, sales.
 - **Canadian spelling**: colour, odour, favourite
 - **No fluff** - every sentence adds value
+- get inspired by famous writers and copywriters.
 
 ### Technical Terms Translation
 
 | Avoid (Technical) | Use Instead (Accessible) |
 |-------------------|--------------------------|
-| Mercaptans | Sulfur-based compounds |
-| Volatile organic compounds | Organic waste molecules |
-| Adsorption | Molecular trapping |
-| Microporous structure | Microscopic tunnels/pores |
-
 **Exception**: Use technical terms for cleaning enthusiasts or science-minded readers, then explain simply.
 
 ### Sensitive Topics Language
@@ -323,7 +272,6 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 |-------|-------------|
 | Poo, poop | Solid waste, organic matter |
 | Pee, urine (overuse) | Liquid waste, ammonia sources |
-| Stink, stench | Odor, smell |
 | Gross, disgusting | Unpleasant, problematic |
 
 ### Formatting Standards
@@ -332,7 +280,7 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 - **Bullet points**: For lists of 3+ items
 - **Bold key phrases**: For scannability
 - **Specific data**: Numbers, percentages, timeframes
-- **Proper heading hierarchy**: H1 → H2 → H3
+- **Proper heading hierarchy**: H1 → H2 → H3 to maximized SEO and AIO impact.
 
 ### Storytelling Frameworks
 
@@ -358,19 +306,19 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 
 ## 6. Product Positioning
 
-### Core Messaging (Always Include)
+### Core Messaging 
 
 1. **Cat-Friendly First** - No scents or chemicals to irritate paws or noses
 2. **High-Performance** - Same standards as water and air filtration
 3. **Simple to Use** - Just a sprinkle on top of existing litter
 
-### Secondary Messaging (Include When Space Allows)
+### Secondary Messaging 
 
 4. **Long-Lasting** - 7+ days of freshness
 5. **Works with Any Litter** - Clay, crystal, natural, whatever your cat prefers
 6. **Eco-Conscious** - Made from renewable coconut shells
 
-### Authority Hooks (Rotate 1-2 Per Post)
+### Authority Hooks 
 
 ```
 "Same activated carbon as municipal water treatment systems"
@@ -384,7 +332,7 @@ Solution: "Fresh clean home interior with cat relaxing, sunlight
 
 > "One gram of activated carbon has the surface area of a football field, filled with microscopic tunnels that trap odor molecules on contact"
 
-**Use whenever explaining how activated carbon works.**
+**Use something similar whenever explaining how activated carbon works.**
 
 ### Purrify Mentions
 
@@ -560,16 +508,6 @@ npm run blog:auto:generate
 # Validate images
 npm run validate-images
 ```
-
----
-
-## Related Documentation
-
-- `content/content-guidelines.md` - Core writing principles
-- `docs/blog/BLOG_SYSTEM_GUIDE.md` - Admin interface & system overview
-- `docs/blog/BLOG_QUALITY_SYSTEM.md` - Validation system details
-- `docs/automations/blog-writer.md` - Automated generation pipeline
-- `.specs/seo-blog-content-plan/blog-generation-prompts.md` - AI generation prompts
 
 ---
 
