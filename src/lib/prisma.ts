@@ -18,9 +18,12 @@ const isDatabaseConfigured = !!process.env.DATABASE_URL;
 let prisma: PrismaClient | null = null;
 
 if (isDatabaseConfigured) {
-  prisma = global.prisma || new PrismaClient();
-
-  if (process.env.NODE_ENV !== 'production') {
+  if (global.prisma) {
+    prisma = global.prisma;
+  } else {
+    prisma = new PrismaClient({
+      log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    });
     global.prisma = prisma;
   }
 } else {
