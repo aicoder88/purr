@@ -182,7 +182,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
         setIsTransitioning(false);
       }, 300); // Fade out duration
-    }, 5000); // Rotate every 5 seconds (slowed from 1.5s)
+    }, 2500); // Rotate every 2.5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -276,7 +276,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       >
         <StarRating rating={currentTestimonial.stars} />
         <span className="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">
-          {currentTestimonial.rating} - &apos;{currentTestimonial.quote}&apos;
+          &apos;{currentTestimonial.quote}&apos;
         </span>
       </div>
 
