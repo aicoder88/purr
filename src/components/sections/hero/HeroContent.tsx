@@ -182,7 +182,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
         setIsTransitioning(false);
       }, 300); // Fade out duration
-    }, 2500); // Rotate every 2.5 seconds
+    }, 2000); // Rotate every 2 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -295,21 +295,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         {t.hero.description}
       </p>
 
-      {/* Pricing Above Fold - All 3 price points */}
+      {/* Pricing Above Fold - Trial only */}
       <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base">
         <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full border border-green-300 dark:border-green-700">
           <span className="font-bold text-green-700 dark:text-green-300">
             {t.hero.pricing?.trial || "Trial: $4.76 S&H"}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-600">
-          <span className="font-medium text-gray-700 dark:text-gray-300">
-            {t.hero.pricing?.standard || "50g: $14.99"}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-600">
-          <span className="font-medium text-gray-700 dark:text-gray-300">
-            {t.hero.pricing?.family || "120g: $24.99"}
           </span>
         </div>
       </div>
