@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-// Unused: import Image from 'next/image';
+import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
@@ -75,11 +75,46 @@ const ProductsPage: NextPage = () => {
     large: getPaymentLink('jumboAutoship'),
   };
 
+  // Product images matching the homepage
+  const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
+    trial: { src: '/optimized/17gpink.avif', size: 'sm' },
+    regular: { src: '/optimized/60g.avif', size: 'md' },
+    large: { src: '/optimized/140g.avif', size: 'lg' },
+  };
+
+  // Display names that de-emphasize grams
+  const productDisplayNames: Record<string, { name: string; nameFr: string; subtitle: string; subtitleFr: string }> = {
+    trial: {
+      name: 'Trial Bag',
+      nameFr: 'Format Essai',
+      subtitle: '12g · Perfect for trying',
+      subtitleFr: '12g · Parfait pour essayer'
+    },
+    regular: {
+      name: 'Regular Bag',
+      nameFr: 'Format Régulier',
+      subtitle: '120g · Most Popular',
+      subtitleFr: '120g · Le plus populaire'
+    },
+    large: {
+      name: 'Large Bag',
+      nameFr: 'Grand Format',
+      subtitle: '240g · Best Value',
+      subtitleFr: '240g · Meilleur rapport qualité-prix'
+    },
+  };
+
   const products = t.productComparison.products.map((product) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
+    const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
+    const imageData = productImages[product.id] || { src: '/optimized/60g.avif', size: 'md' as const };
 
     return {
       ...product,
+      displayName: locale === 'fr' ? displayName.nameFr : displayName.name,
+      displaySubtitle: locale === 'fr' ? displayName.subtitleFr : displayName.subtitle,
+      image: imageData.src,
+      imageSize: imageData.size,
       price: priceDetails[priceKey].price,
       originalPrice: priceDetails[priceKey].originalPrice,
       savings: priceDetails[priceKey].savings,
@@ -129,23 +164,23 @@ const ProductsPage: NextPage = () => {
   // Quick decision helper data
   const quickPicks = [
     {
-      question: "Just want to try it?",
-      answer: "FREE Trial",
-      detail: "Pay only shipping. See results in days.",
+      question: locale === 'fr' ? "Vous voulez essayer ?" : "Just want to try it?",
+      answer: locale === 'fr' ? "Format Essai GRATUIT" : "FREE Trial Bag",
+      detail: locale === 'fr' ? "Payez seulement les frais de port. Résultats visibles en quelques jours." : "Pay only shipping. See results in days.",
       productId: "trial",
       icon: <Sparkles className="w-6 h-6" />,
     },
     {
-      question: "1-2 cats at home?",
-      answer: "120g Regular",
-      detail: "3 months of freshness. Most popular choice.",
+      question: locale === 'fr' ? "1-2 chats à la maison ?" : "1-2 cats at home?",
+      answer: locale === 'fr' ? "Format Régulier" : "Regular Bag",
+      detail: locale === 'fr' ? "3 mois de fraîcheur. Le choix le plus populaire." : "3 months of freshness. Most popular choice.",
       productId: "regular",
       icon: <Cat className="w-6 h-6" />,
     },
     {
-      question: "Multi-cat household?",
-      answer: "240g Large",
-      detail: "Best value per gram. Free shipping.",
+      question: locale === 'fr' ? "Plusieurs chats ?" : "Multi-cat household?",
+      answer: locale === 'fr' ? "Grand Format" : "Large Bag",
+      detail: locale === 'fr' ? "Meilleur rapport qualité-prix. Livraison gratuite." : "Best value. Free shipping.",
       productId: "large",
       icon: <Users className="w-6 h-6" />,
     },
@@ -368,19 +403,38 @@ const ProductsPage: NextPage = () => {
                     </div>
                   )}
 
-                  {/* Header */}
-                  <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
-                    <h3 className="font-heading text-2xl font-bold mb-2">{product.name}</h3>
-                    <p className="opacity-90 mb-4">{product.subtitle}</p>
-                    <div className="flex items-baseline">
-                      <span className="text-4xl font-bold">{product.price}</span>
-                      {product.originalPrice && (
-                        <span className="ml-2 text-lg line-through opacity-70">{product.originalPrice}</span>
-                      )}
+                  {/* Header with Image */}
+                  <div className={`bg-gradient-to-r ${product.color} p-6 text-white dark:text-gray-100`}>
+                    <div className="flex items-center gap-4">
+                      {/* Product Image */}
+                      <div className={`relative flex-shrink-0 ${
+                        product.imageSize === 'sm' ? 'w-20 h-24' :
+                        product.imageSize === 'md' ? 'w-24 h-28' :
+                        'w-28 h-32'
+                      }`}>
+                        <Image
+                          src={product.image}
+                          alt={product.displayName}
+                          fill
+                          className="object-contain drop-shadow-lg"
+                          sizes="(max-width: 768px) 80px, 112px"
+                        />
+                      </div>
+                      {/* Product Info */}
+                      <div className="flex-1">
+                        <h3 className="font-heading text-2xl font-bold mb-1">{product.displayName}</h3>
+                        <p className="text-sm opacity-80 mb-3">{product.displaySubtitle}</p>
+                        <div className="flex items-baseline">
+                          <span className="text-3xl font-bold">{product.price}</span>
+                          {product.originalPrice && (
+                            <span className="ml-2 text-sm line-through opacity-70">{product.originalPrice}</span>
+                          )}
+                        </div>
+                        {product.savings && (
+                          <p className="text-sm mt-1 opacity-90">Save {product.savings}</p>
+                        )}
+                      </div>
                     </div>
-                    {product.savings && (
-                      <p className="text-sm mt-1 opacity-90">Save {product.savings}</p>
-                    )}
                   </div>
 
                   {/* Content */}
@@ -577,9 +631,9 @@ const ProductsPage: NextPage = () => {
                     <tr>
                       <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
                       <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.trial}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.regular}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.tableHeaders.large}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Format Essai' : 'Trial Bag'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Format Régulier' : 'Regular Bag'}</th>
+                      <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand Format' : 'Large Bag'}</th>
                     </tr>
                   </thead>
                   <tbody>
