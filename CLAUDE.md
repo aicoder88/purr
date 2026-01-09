@@ -3,7 +3,7 @@
 ## Pre-Commit Checklist
 
 ```bash
-npm run lint && npm run check-types && npm run validate-dark-mode && npm run validate-images
+pnpm lint && pnpm check-types && pnpm validate-dark-mode && pnpm validate-images
 ```
 
 All four must pass. No exceptions.
@@ -28,27 +28,27 @@ All four must pass. No exceptions.
 
 ```bash
 # Development
-npm run dev                       # Start dev server
-npm run predev                    # Clear cache (use if hot reload breaks)
+pnpm dev                          # Start dev server
+pnpm predev                       # Clear cache (use if hot reload breaks)
 
 # Validation
-npm run lint                      # ESLint
-npm run check-types               # TypeScript strict
-npm run validate-dark-mode        # Check dark: variants
-npm run validate-images           # Check image size limits
+pnpm lint                         # ESLint
+pnpm check-types                  # TypeScript strict
+pnpm validate-dark-mode           # Check dark: variants
+pnpm validate-images              # Check image size limits
 
 # Testing
-npm test                          # Jest unit tests
-npm run test:watch                # Jest watch mode
-npm run test:e2e                  # Playwright e2e tests
-npm run test:e2e:ui               # Playwright with UI
+pnpm test                         # Jest unit tests
+pnpm test:watch                   # Jest watch mode
+pnpm test:e2e                     # Playwright e2e tests
+pnpm test:e2e:ui                  # Playwright with UI
 
 # Build
-npm run build                     # Production build
+pnpm build                        # Production build
 
 # Database
-npx prisma studio                 # Database GUI
-npx prisma migrate dev            # Run migrations
+pnpm dlx prisma studio            # Database GUI
+pnpm dlx prisma migrate dev       # Run migrations
 
 # Debugging
 vercel logs <deployment-url>      # View production logs
@@ -72,6 +72,28 @@ bg-gray-50 dark:bg-gray-800            /* Secondary */
 
 /* Borders */
 border-gray-200 dark:border-gray-700
+
+/* Interactive states */
+hover:bg-gray-100 dark:hover:bg-gray-700
+focus:ring-blue-500 dark:focus:ring-blue-400
+```
+
+---
+
+## Accessibility
+
+```tsx
+/* Focus visible for keyboard navigation */
+focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+
+/* Interactive elements need labels */
+<button aria-label="Close menu">
+  <XIcon className="h-5 w-5" />
+</button>
+
+/* Form inputs need associated labels */
+<label htmlFor="email">Email</label>
+<input id="email" type="email" />
 ```
 
 ---
@@ -104,10 +126,47 @@ export default withRateLimit(RATE_LIMITS.CREATE,
 const Editor = dynamic(() => import('@/components/admin/RichTextEditor'), { ssr: false });
 ```
 
-**Error logging**:
+**Error handling**:
 ```typescript
 import * as Sentry from "@sentry/nextjs";
-Sentry.captureException(error);
+
+try {
+  await riskyOperation();
+} catch (error) {
+  Sentry.captureException(error);
+  return res.status(500).json({ error: 'Something went wrong' });
+}
+```
+
+---
+
+## Testing Patterns
+
+**Unit test structure**:
+```typescript
+describe('ComponentName', () => {
+  it('should render correctly', () => {
+    render(<ComponentName />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  it('should handle user interaction', async () => {
+    const onSubmit = jest.fn();
+    render(<ComponentName onSubmit={onSubmit} />);
+    await userEvent.click(screen.getByRole('button'));
+    expect(onSubmit).toHaveBeenCalled();
+  });
+});
+```
+
+**E2E test structure**:
+```typescript
+test('user can complete checkout', async ({ page }) => {
+  await page.goto('/products');
+  await page.click('[data-testid="add-to-cart"]');
+  await page.click('[data-testid="checkout"]');
+  await expect(page.locator('h1')).toContainText('Order Confirmed');
+});
 ```
 
 ---
@@ -142,7 +201,7 @@ Configured in `src/lib/security/rate-limit.ts`:
 | User gives explicit instructions | Just do it |
 | Multi-file feature, architecture, unclear requirements | Use spec workflow |
 
-**Spec workflow**: Create `.specs/[feature-name]/` with requirements → design → tasks. Each phase needs approval.
+**Spec workflow**: Create `.specs/[feature-name]/` with requirements → design → tasks. Each phase needs approval. See parent `CLAUDE.md` for full protocol.
 
 ---
 
@@ -161,7 +220,7 @@ These require explicit user approval before implementing:
 
 ## Content Writing
 
-**Before writing ANY product content**, read: `/content/content-guidelines.md`
+**Before writing ANY product content**, read: `/docs/BLOG_STYLE_GUIDE.md`
 
 Critical rules:
 - Never use "safe" → use "non-toxic", "food-grade", "pet-friendly"
@@ -192,12 +251,13 @@ Critical rules:
 
 | Issue | Fix |
 |-------|-----|
-| Hot reload broken | `npm run predev && npm run dev` |
+| Hot reload broken | `pnpm predev && pnpm dev` |
 | Dark mode validation failing | Add missing `dark:*` variants |
 | Translation missing | Add key to all files in `src/translations/` |
-| Type errors after schema change | `npx prisma generate` |
-| E2E tests failing locally | Check `npm run dev` is running |
+| Type errors after schema change | `pnpm dlx prisma generate` |
+| E2E tests failing locally | Check `pnpm dev` is running |
 | Stripe webhooks not working locally | Run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` |
+| Module not found after install | `pnpm install --force` |
 
 ---
 
