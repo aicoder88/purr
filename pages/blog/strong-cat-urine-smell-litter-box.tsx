@@ -424,7 +424,7 @@ export default function StrongCatUrineSmell() {
 
             {/* Related Articles */}
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-              <RelatedArticles />
+              <RelatedArticles currentPath="/blog/strong-cat-urine-smell-litter-box" />
             </div>
           </div>
         </Container>
