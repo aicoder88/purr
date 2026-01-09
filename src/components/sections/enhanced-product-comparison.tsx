@@ -119,7 +119,7 @@ export function EnhancedProductComparison() {
         bulkDiscount: false,
         prioritySupport: false
       },
-      image: '/optimized/17gpink.avif',
+      image: '/images/17gpink.png',
       imageSize: 'sm',
       purchaseOptions: [
         {
@@ -155,7 +155,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/60g.avif',
+      image: '/images/60g.png',
       imageSize: 'md',
       purchaseOptions: [
         {
@@ -194,7 +194,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/140g_transparent.webp',
+      image: '/images/140g.png',
       imageSize: 'lg',
       purchaseOptions: [
         {

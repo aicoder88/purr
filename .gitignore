@@ -68,3 +68,4 @@ playwright-report/
 # Misc generated
 *.tsbuildinfo
 sitemap.xml
+.env.vercel

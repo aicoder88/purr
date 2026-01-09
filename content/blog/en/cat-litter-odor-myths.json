@@ -14,7 +14,12 @@
     "science",
     "money-saving"
   ],
-  "featuredImage": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80",
+  "featuredImage": {
+    "url": "/optimized/benefits-hero-science.webp",
+    "alt": "Cat litter odor myths debunked with science",
+    "width": 1200,
+    "height": 630
+  },
   "seo": {
     "metaTitle": "10 Cat Litter Odor Myths Costing You Money (Science-Backed)",
     "metaDescription": "I tested 10 cat litter odor myths including baking soda, coffee grounds, and essential oils. Only activated carbon worked. Here's what actually eliminates ammonia smell.",

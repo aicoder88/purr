@@ -86,9 +86,9 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
   // Optimized images
-  const heroImage = "/optimized/60g.webp";
+  const heroImage = "/images/60g.png";
   const solutionImage = "/optimized/regular_size_solution.webp";
-  const productImage = "/optimized/60g.webp";
+  const productImage = "/images/60g.png";
 
   const benefits = [
     "Ideal for single-cat households",
@@ -138,7 +138,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
             "name": "Purrify 50g - Natural Cat Litter Freshener & Charcoal Additive",
             "description": "Best-selling cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive made from coconut shells. Eliminates ammonia for 4-6 weeks. 100% natural, fragrance-free deodorizer.",
             "image": [
-              "https://www.purrify.ca/optimized/60g.webp"
+              "https://www.purrify.ca/images/60g.png"
             ],
             "brand": {
               "@type": "Brand",
