@@ -95,7 +95,7 @@ export default function SafetyInformationPage() {
           type: 'article',
           images: [
             {
-              url: 'https://www.purrify.ca/optimized/140g.webp',
+              url: 'https://www.purrify.ca/optimized/140g_transparent.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify Activated Carbon Technical Specifications',

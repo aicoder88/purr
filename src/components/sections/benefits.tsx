@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import { createColorClasses, createCardClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
+import { useTranslation } from "../../lib/translation-context";
 
 interface BenefitProps {
   title: string;
@@ -81,29 +82,31 @@ const DollarIcon = () => (
   </svg>
 );
 
-const benefits = [
+// Default benefits for fallback
+const defaultBenefits = [
   {
     title: "Odor Elimination",
     description: "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source. Say goodbye to the lingering smells that can permeate your home and welcome a fresher, more inviting environment for both you and your furry friend.",
-    icon: <ShieldIcon />,
-    colorScheme: 'green' as const
   },
   {
     title: "Simple",
     description: "Purrify is formulated with simple coconut shells, activated to soak up odor. You can trust that you're providing your cat with a clean smelling box environment without exposing them to chemicals or toxins.",
-    icon: <LightningIcon />,
-    colorScheme: 'purple' as const
   },
   {
     title: "Cost-Effective",
     description: "Purrify helps extend the life of your cat's litter by preventing odor buildup, which means you'll need to change the litter less frequently. This not only saves you money but also reduces waste, making it a win-win for both your wallet and the environment.",
-    icon: <DollarIcon />,
-    colorScheme: 'red' as const
   }
 ];
 
+const benefitIcons = [<ShieldIcon key="shield" />, <LightningIcon key="lightning" />, <DollarIcon key="dollar" />];
+const benefitColors: Array<'green' | 'purple' | 'red'> = ['green', 'purple', 'red'];
+
 export function Benefits() {
+  const { t } = useTranslation();
   const sectionClasses = createSectionClasses('light');
+
+  // Use translated benefits if available, otherwise use defaults
+  const benefitItems = t.benefitsSection?.items || defaultBenefits;
 
   return (
     <section
@@ -112,24 +115,23 @@ export function Benefits() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text="Turn Cat Odor Problems Into a Thing of the Past" />
+          <SectionHeader text={t.benefitsSection?.sectionHeader || "Turn Cat Odor Problems Into a Thing of the Past"} />
           <h2 className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
-            Benefits of Purrify
+            {t.benefitsSection?.title || "Benefits of Purrify"}
           </h2>
           <p className={`${COLORS.text.tertiary} text-xl`}>
-            Discover why Purrify is the perfect solution for cat owners who want
-            a fresh-smelling home.
+            {t.benefitsSection?.subtitle || "Discover why Purrify is the perfect solution for cat owners who want a fresh-smelling home."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
+          {benefitItems.map((benefit, index) => (
             <BenefitCard
               key={index}
               title={benefit.title}
               description={benefit.description}
-              icon={benefit.icon}
-              colorScheme={benefit.colorScheme}
+              icon={benefitIcons[index] || benefitIcons[0]}
+              colorScheme={benefitColors[index] || 'green'}
             />
           ))}
         </div>

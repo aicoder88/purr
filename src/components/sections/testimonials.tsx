@@ -71,7 +71,7 @@ export function Testimonials() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text=" Customer Love" />
+          <SectionHeader text={t.testimonialsSection?.customerLove || "Customer Love"} />
           <h2 id="testimonials-heading" className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
             {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
           </h2>

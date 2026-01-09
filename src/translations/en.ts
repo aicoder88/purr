@@ -170,6 +170,23 @@ export const en = {
         description: "Wholesale pricing, bulk orders, marketing support",
         cta: "Wholesale Portal"
       }
+    },
+    simplified: {
+      free: "FREE",
+      justPayShipping: "Just pay $4.76 shipping",
+      noMore: "No More",
+      litterBoxSmell: "Litter Box Smell",
+      valueProposition: "Activated carbon eliminates odors at the source. Works with any litter.",
+      trialSize: "Trial Size",
+      standard: "Standard",
+      familyPack: "Family Pack",
+      plusSH: "+ S&H",
+      thirtyDayGuarantee: "30-Day Guarantee",
+      getFreeSample: "Get FREE Sample",
+      soldThisWeek: "87 sold this week",
+      limitedStock: "Limited winter stock",
+      moneyBackGuarantee: "30-Day Money-Back Guarantee",
+      freeShippingOver: "Free Shipping Over $35"
     }
   },
 
@@ -235,7 +252,10 @@ export const en = {
       natural: "NATURAL",
       clay: "CLAY",
       nonClumping: "NON-CLUMPING"
-    }
+    },
+    learnTheScience: "Learn the science",
+    compareSizes: "compare our sizes",
+    coconutDescription: "Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules."
   },
 
   // Products Section
@@ -299,6 +319,7 @@ export const en = {
     stillHaveQuestions: "Still have questions?",
     contactTeam: "Contact our team",
     forMoreInfo: "for more information.",
+    learnMore: "Learn more",
     items: [
       {
         question: "What is Purrify?",
@@ -375,6 +396,9 @@ export const en = {
     buttonText: "Subscribe",
     successMessage: "Thank you for subscribing!",
     errorMessage: "An error occurred. Please try again.",
+    errorInvalidEmail: "Please enter a valid email address",
+    errorGeneric: "Something went wrong. Please try again.",
+    privacyText: "No spam, unsubscribe anytime. We respect your privacy.",
     joinFamily: {
       title: "Join the Purrify Family",
       subtitle: "Get 10% off your first order plus exclusive cat care tips",
@@ -391,11 +415,29 @@ export const en = {
       emailPlaceholder: "Enter your email address",
       ctaButton: "Get 10% Off Your First Order",
       joinText: "Join 1,000+ happy customers • No spam, unsubscribe anytime",
+      welcomeMessage: "Welcome to Purrify!",
       features: {
         weeklyTips: "✓ Weekly tips",
         exclusiveOffers: "✓ Exclusive offers",
         earlyAccessProducts: "✓ Early access"
       }
+    },
+    popup: {
+      title: "Get {discount}% Off Your First Order!",
+      description: "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.",
+      buttonText: "Get {discount}% Off Now"
+    },
+    footer: {
+      title: "Stay Updated with Purrify",
+      description: "Get cat care tips and exclusive offers delivered to your inbox.",
+      placeholder: "Your email",
+      buttonText: "Subscribe"
+    },
+    inline: {
+      title: "Join the Purrify Community",
+      description: "Get expert cat care tips and exclusive offers straight to your inbox.",
+      buttonText: "Subscribe for Free",
+      successText: "Successfully Subscribed!"
     }
   },
 
@@ -413,6 +455,21 @@ export const en = {
     errorMessage: "Failed to submit your request. Please try again.",
     errorGeneric: "An error occurred. Please try again later.",
     privacyNotice: "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."
+  },
+
+  // 404 Not Found Page
+  notFoundPage: {
+    title: "404 - Page Not Found",
+    description: "Oops! The page you are looking for might have been moved, deleted, or perhaps never existed.",
+    lookingFor: "You might be looking for:",
+    returnHome: "Return to Home Page",
+    suggestedPages: {
+      home: { title: "Home", description: "Return to our homepage" },
+      products: { title: "Products", description: "Browse our cat litter additives" },
+      howItWorks: { title: "How It Works", description: "Learn how Purrify eliminates odors" },
+      blog: { title: "Blog", description: "Read our latest articles on cat care" },
+      contact: { title: "Contact", description: "Get in touch with our team" }
+    }
   },
 
   // SEO
@@ -550,6 +607,86 @@ export const en = {
       title: "Highly Rated",
       description: "Loved by cat parents across Canada\nFast shipping in Canada"
     }
+  },
+
+  // Benefits Section (homepage component)
+  benefitsSection: {
+    sectionHeader: "Turn Cat Odor Problems Into a Thing of the Past",
+    title: "Benefits of Purrify",
+    subtitle: "Discover why Purrify is the perfect solution for cat owners who want a fresh-smelling home.",
+    items: [
+      {
+        title: "Odor Elimination",
+        description: "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source. Say goodbye to the lingering smells that can permeate your home and welcome a fresher, more inviting environment for both you and your furry friend."
+      },
+      {
+        title: "Simple",
+        description: "Purrify is formulated with simple coconut shells, activated to soak up odor. You can trust that you're providing your cat with a clean smelling box environment without exposing them to chemicals or toxins."
+      },
+      {
+        title: "Cost-Effective",
+        description: "Purrify helps extend the life of your cat's litter by preventing odor buildup, which means you'll need to change the litter less frequently. This not only saves you money but also reduces waste, making it a win-win for both your wallet and the environment."
+      }
+    ]
+  },
+
+  // Science Section (homepage component)
+  scienceSection: {
+    badge: "The Science Behind Purrify",
+    headline: "How Activated Carbon",
+    headlineHighlight: "Eliminates Odors",
+    description: "Unlike sprays that mask odors with heavy perfumes, Purrify uses activated carbon to physically trap and neutralize odor-causing molecules at the microscopic level.",
+    learnMore: "Learn More About The Science",
+    features: [
+      {
+        title: "Micro-Pore Technology",
+        description: "Millions of microscopic pores trap odor molecules instantly upon contact."
+      },
+      {
+        title: "Safe & Non-Toxic",
+        description: "100% natural activated carbon. Safe for pets and humans."
+      },
+      {
+        title: "Eco-Friendly",
+        description: "Sustainable materials that are biodegradable and earth-safe."
+      }
+    ],
+    floatingLabel: {
+      title: "Microscopic View",
+      description: "Porous structure traps ammonia molecules instantly."
+    },
+    naturalBadge: {
+      title: "100% Natural",
+      subtitle: "No chemicals"
+    }
+  },
+
+  // Features Section (homepage component)
+  featuresSection: {
+    badge: "The Purrify Difference",
+    title: "Why do Cats and Pet Parents Love Purrify?",
+    paragraph1: "You love your cat, but let's be real—litter box odor is a problem. You've tried scented litter, air fresheners, and baking soda—but they only mask the problem, not fix it.",
+    paragraph2: "Imagine walking into your home and smelling… nothing. Just clean air, no lingering odors, and no embarrassing smells when guests visit.",
+    tagline: "That's exactly what Purrify does...",
+    learnMore: "Learn more"
+  },
+
+  // Calculator Section (homepage component)
+  calculatorSection: {
+    title: "Save Money While Keeping Your Home Fresh",
+    description: "Purrify extends the life of your cat litter by up to 50%, saving you money while eliminating odors. See how much you could save with our calculator below."
+  },
+
+  // Section Header highlights
+  sectionHeaderHighlights: [
+    "7 Days of Fresh Air Guaranteed",
+    "Fresh Air in 60 Seconds - Simple as 1-2-3"
+  ],
+
+  // Trust Bar
+  trustBar: {
+    happyCats: "happy cats",
+    reviews: "reviews"
   },
 
   about: {
@@ -2220,6 +2357,55 @@ export const en = {
     showingReviews: "Showing {{count}} reviews",
     noReviews: "No reviews yet. Be the first to share your experience!",
     loadMore: "Load More Reviews"
+  },
+
+  // Related Articles Section
+  relatedArticles: {
+    title: "Related Articles",
+    readMore: "Read more"
+  },
+
+  // Review System Component
+  reviewSystem: {
+    customerReviews: "Customer Reviews",
+    reviews: "reviews",
+    basedOn: "Based on",
+    wouldRecommend: "would recommend",
+    verifiedPurchases: "verified purchases",
+    viewAllReviews: "View All Reviews",
+    loadMoreReviews: "Load More Reviews",
+    filters: {
+      allRatings: "All Ratings",
+      stars: "Stars",
+      star: "Star",
+      allSizes: "All Sizes",
+      trial: "12g Trial",
+      regular: "50g Regular",
+      large: "120g Large"
+    },
+    sort: {
+      newestFirst: "Newest First",
+      oldestFirst: "Oldest First",
+      highestRated: "Highest Rated",
+      lowestRated: "Lowest Rated",
+      mostHelpful: "Most Helpful"
+    },
+    review: {
+      verifiedPurchase: "Verified Purchase",
+      size: "Size",
+      cat: "cat",
+      cats: "cats",
+      usingFor: "Using for",
+      helpful: "Helpful",
+      recommendsProduct: "Recommends this product"
+    }
+  },
+
+  // Social Follow CTA
+  socialFollow: {
+    headline: "Follow us for more tips",
+    description: "Join our community for cat care tips and exclusive offers.",
+    followOn: "Follow Purrify on"
   }
 
 };

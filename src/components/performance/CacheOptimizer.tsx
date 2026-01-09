@@ -48,10 +48,10 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Cache management
   const cache = useCallback(() => {
     if (typeof globalThis.window === 'undefined') return null;
-    
+
     const CACHE_KEY = 'purrify_cache';
     const STATS_KEY = 'purrify_cache_stats';
-    
+
     // Helper functions
     const updateStats = (type: 'hit' | 'miss'): void => {
       try {
@@ -62,11 +62,11 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         console.warn('Stats update error:', err);
       }
     };
-    
+
     const getCurrentCacheSize = (): number => {
       let totalSize = 0;
       const keys = Object.keys(localStorage);
-      
+
       keys.forEach(key => {
         if (key.startsWith(CACHE_KEY)) {
           try {
@@ -81,15 +81,15 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           }
         }
       });
-      
+
       return totalSize;
     };
-    
+
     const updateCacheStats = (): void => {
       const keys = Object.keys(localStorage);
       let totalSize = 0;
       let entryCount = 0;
-      
+
       keys.forEach(key => {
         if (key.startsWith(CACHE_KEY)) {
           try {
@@ -104,11 +104,11 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           }
         }
       });
-      
+
       const stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"hits": 0, "misses": 0}');
       const totalRequests = stats.hits + stats.misses;
       const hitRate = totalRequests > 0 ? (stats.hits / totalRequests) * 100 : 0;
-      
+
       setCacheStats({
         totalSize,
         entryCount,
@@ -117,12 +117,12 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         totalMisses: stats.misses
       });
     };
-    
+
     const evictLeastUsed = (): void => {
       const keys = Object.keys(localStorage);
       let leastUsedKey = '';
       let leastHits = Infinity;
-      
+
       keys.forEach(key => {
         if (key.startsWith(CACHE_KEY)) {
           try {
@@ -137,12 +137,12 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
           }
         }
       });
-      
+
       if (leastUsedKey) {
         localStorage.removeItem(leastUsedKey);
       }
     };
-    
+
     return {
       get: (key: string): unknown => {
         try {
@@ -151,38 +151,38 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
             updateStats('miss');
             return null;
           }
-          
+
           const entry: CacheEntry = JSON.parse(cached);
-          
+
           // Check expiration
           if (Date.now() > entry.expires) {
             localStorage.removeItem(`${CACHE_KEY}_${key}`);
             updateStats('miss');
             return null;
           }
-          
+
           // Update hit count
           entry.hits++;
           localStorage.setItem(`${CACHE_KEY}_${key}`, JSON.stringify(entry));
           updateStats('hit');
-          
+
           return entry.data;
         } catch (error) {
           console.warn('Cache get error:', error);
           return null;
         }
       },
-      
+
       set: (key: string, data: unknown, ttl: number = 300000): boolean => {
         try {
           const serialized = JSON.stringify(data);
           const size = new Blob([serialized]).size;
-          
+
           // Check if adding this would exceed max cache size
           if (getCurrentCacheSize() + size > maxCacheSize) {
             evictLeastUsed();
           }
-          
+
           const entry: CacheEntry = {
             data,
             timestamp: Date.now(),
@@ -190,22 +190,22 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
             size,
             hits: 0
           };
-          
+
           localStorage.setItem(`${CACHE_KEY}_${key}`, JSON.stringify(entry));
           updateCacheStats();
-          
+
           return true;
         } catch (error) {
           console.warn('Cache set error:', error);
           return false;
         }
       },
-      
+
       delete: (key: string): void => {
         localStorage.removeItem(`${CACHE_KEY}_${key}`);
         updateCacheStats();
       },
-      
+
       clear: (): void => {
         const keys = Object.keys(localStorage);
         keys.forEach(key => {
@@ -215,14 +215,14 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         });
         updateCacheStats();
       },
-      
 
-      
+
+
       evictLeastUsed: (): void => {
         const keys = Object.keys(localStorage);
         let leastUsedKey = '';
         let leastHits = Infinity;
-        
+
         keys.forEach(key => {
           if (key.startsWith(CACHE_KEY)) {
             try {
@@ -240,12 +240,12 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
             }
           }
         });
-        
+
         if (leastUsedKey) {
           localStorage.removeItem(leastUsedKey);
         }
       },
-      
+
       updateCacheStats: updateCacheStats,
       getCurrentCacheSize: getCurrentCacheSize
     };
@@ -295,23 +295,23 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Cache warming strategy
   const warmupCache = useCallback(() => {
     if (!enabled) return;
-    
+
     setTimeout(() => {
       preloadResources();
-      
+
       // Warm up critical images
       const criticalImages = [
         '/optimized/17gpink.webp',
         '/optimized/60g.webp',
-        '/optimized/140g.webp',
+        '/optimized/140g_transparent.webp',
         '/hero-cat.webp'
       ];
-      
+
       criticalImages.forEach(src => {
         const img = new Image();
         img.src = src;
       });
-      
+
       gtmEvent('cache_warmup', {
         routes_preloaded: preloadRoutes.length,
         images_preloaded: criticalImages.length,
@@ -323,14 +323,14 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Cache performance monitoring
   const monitorCachePerformance = useCallback(() => {
     if (!enabled || typeof globalThis.window === 'undefined') return;
-    
+
     const cacheInstance = cache();
     if (!cacheInstance) return;
-    
+
     // Update stats periodically
     const interval = setInterval(() => {
       cacheInstance.updateCacheStats();
-      
+
       // Report to GTM every 5 minutes
       if (cacheStats.totalHits + cacheStats.totalMisses > 0) {
         gtmEvent('cache_performance', {
@@ -342,7 +342,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         });
       }
     }, 300000); // 5 minutes
-    
+
     return () => clearInterval(interval);
   }, [enabled, cache, cacheStats]);
 
@@ -365,7 +365,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Cleanup expired entries on visibility change
   useEffect(() => {
     if (!enabled || typeof globalThis.window === 'undefined') return;
-    
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
         const cacheInstance = cache();
@@ -388,7 +388,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
         }
       }
     };
-    
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, [enabled, cache]);

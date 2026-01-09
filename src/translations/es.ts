@@ -2144,5 +2144,54 @@ export const es: TranslationType = {
     showingReviews: "Mostrando {{count}} reseñas",
     noReviews: "Aún no hay reseñas. ¡Sé el primero en compartir tu experiencia!",
     loadMore: "Cargar Más Reseñas"
+  },
+
+  // Related Articles Section
+  relatedArticles: {
+    title: "Artículos Relacionados",
+    readMore: "Leer más"
+  },
+
+  // Review System Component
+  reviewSystem: {
+    customerReviews: "Reseñas de Clientes",
+    reviews: "reseñas",
+    basedOn: "Basado en",
+    wouldRecommend: "lo recomendarían",
+    verifiedPurchases: "compras verificadas",
+    viewAllReviews: "Ver Todas las Reseñas",
+    loadMoreReviews: "Cargar Más Reseñas",
+    filters: {
+      allRatings: "Todas las Calificaciones",
+      stars: "Estrellas",
+      star: "Estrella",
+      allSizes: "Todos los Tamaños",
+      trial: "12g Prueba",
+      regular: "50g Regular",
+      large: "120g Grande"
+    },
+    sort: {
+      newestFirst: "Más Reciente",
+      oldestFirst: "Más Antiguo",
+      highestRated: "Mayor Calificación",
+      lowestRated: "Menor Calificación",
+      mostHelpful: "Más Útil"
+    },
+    review: {
+      verifiedPurchase: "Compra Verificada",
+      size: "Tamaño",
+      cat: "gato",
+      cats: "gatos",
+      usingFor: "Usando durante",
+      helpful: "Útil",
+      recommendsProduct: "Recomienda este producto"
+    }
+  },
+
+  // Social Follow CTA
+  socialFollow: {
+    headline: "Síguenos para más consejos",
+    description: "Únete a nuestra comunidad para consejos de cuidado de gatos y ofertas exclusivas.",
+    followOn: "Sigue a Purrify en"
   }
 };

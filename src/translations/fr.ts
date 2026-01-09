@@ -2296,6 +2296,55 @@ export const fr = {
     showingReviews: "Affichage de {{count}} avis",
     noReviews: "Aucun avis pour le moment. Soyez le premier à partager votre expérience!",
     loadMore: "Charger plus d'avis"
+  },
+
+  // Related Articles Section
+  relatedArticles: {
+    title: "Articles connexes",
+    readMore: "Lire la suite"
+  },
+
+  // Review System Component
+  reviewSystem: {
+    customerReviews: "Avis clients",
+    reviews: "avis",
+    basedOn: "Basé sur",
+    wouldRecommend: "recommanderaient",
+    verifiedPurchases: "achats vérifiés",
+    viewAllReviews: "Voir tous les avis",
+    loadMoreReviews: "Charger plus d'avis",
+    filters: {
+      allRatings: "Toutes les notes",
+      stars: "Étoiles",
+      star: "Étoile",
+      allSizes: "Toutes les tailles",
+      trial: "12g Essai",
+      regular: "50g Standard",
+      large: "120g Grand"
+    },
+    sort: {
+      newestFirst: "Plus récent",
+      oldestFirst: "Plus ancien",
+      highestRated: "Mieux noté",
+      lowestRated: "Moins bien noté",
+      mostHelpful: "Plus utile"
+    },
+    review: {
+      verifiedPurchase: "Achat vérifié",
+      size: "Taille",
+      cat: "chat",
+      cats: "chats",
+      usingFor: "Utilisé depuis",
+      helpful: "Utile",
+      recommendsProduct: "Recommande ce produit"
+    }
+  },
+
+  // Social Follow CTA
+  socialFollow: {
+    headline: "Suivez-nous pour plus de conseils",
+    description: "Rejoignez notre communauté pour des conseils de soins pour chats et des offres exclusives.",
+    followOn: "Suivre Purrify sur"
   }
 
 };

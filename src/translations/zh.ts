@@ -2274,6 +2274,55 @@ export const zh = {
     showingReviews: "显示{{count}}条评价",
     noReviews: "暂无评价。成为第一个分享体验的人！",
     loadMore: "加载更多评价"
+  },
+
+  // Related Articles Section
+  relatedArticles: {
+    title: "相关文章",
+    readMore: "阅读更多"
+  },
+
+  // Review System Component
+  reviewSystem: {
+    customerReviews: "客户评价",
+    reviews: "条评价",
+    basedOn: "基于",
+    wouldRecommend: "会推荐",
+    verifiedPurchases: "已验证购买",
+    viewAllReviews: "查看所有评价",
+    loadMoreReviews: "加载更多评价",
+    filters: {
+      allRatings: "所有评分",
+      stars: "星",
+      star: "星",
+      allSizes: "所有尺寸",
+      trial: "12g 试用装",
+      regular: "50g 标准装",
+      large: "120g 大号装"
+    },
+    sort: {
+      newestFirst: "最新优先",
+      oldestFirst: "最早优先",
+      highestRated: "评分最高",
+      lowestRated: "评分最低",
+      mostHelpful: "最有帮助"
+    },
+    review: {
+      verifiedPurchase: "已验证购买",
+      size: "尺寸",
+      cat: "只猫",
+      cats: "只猫",
+      usingFor: "使用时长",
+      helpful: "有帮助",
+      recommendsProduct: "推荐此产品"
+    }
+  },
+
+  // Social Follow CTA
+  socialFollow: {
+    headline: "关注我们获取更多技巧",
+    description: "加入我们的社区，获取猫咪护理技巧和独家优惠。",
+    followOn: "关注Purrify于"
   }
 
 };

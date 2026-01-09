@@ -1,8 +1,14 @@
+import { useTranslation } from "../../lib/translation-context";
+
+// Default highlight texts for fallback
+const defaultHighlightTexts = [
+  '7 Days of Fresh Air Guaranteed',
+  'Fresh Air in 60 Seconds - Simple as 1-2-3'
+];
+
 const SectionHeader = ({ text }: { text: string }) => {
-  const highlightTexts = [
-    '7 Days of Fresh Air Guaranteed',
-    'Fresh Air in 60 Seconds - Simple as 1-2-3'
-  ];
+  const { t } = useTranslation();
+  const highlightTexts = t.sectionHeaderHighlights || defaultHighlightTexts;
   const normalized = text.trim();
   const isHighlighted = highlightTexts.includes(normalized);
 

@@ -15,7 +15,7 @@ const iconMap = {
 };
 
 export function Features() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
   const localePrefix = locale === 'fr' ? '/fr' : locale === 'zh' ? '/zh' : '';
   const learnMoreHref = `${localePrefix}/learn/how-it-works`;
 
@@ -26,25 +26,18 @@ export function Features() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          {/* <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
-            The Purrify Difference
-          </div> */}
-          <SectionHeader text="The Purrify Difference" />
+          <SectionHeader text={t.featuresSection?.badge || "The Purrify Difference"} />
           <h2 className="font-heading text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
-            Why do Cats and Pet Parents Love Purrify?
+            {t.featuresSection?.title || "Why do Cats and Pet Parents Love Purrify?"}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">
-            You love your cat, but let&apos;s be real—litter box odor is a problem.
-            You&apos;ve tried scented litter, air fresheners, and baking soda—but
-            they only mask the problem, not fix it.
+            {t.featuresSection?.paragraph1 || "You love your cat, but let's be real—litter box odor is a problem. You've tried scented litter, air fresheners, and baking soda—but they only mask the problem, not fix it."}
           </p>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-4 text-lg dark:text-gray-300">
-            Imagine walking into your home and smelling… nothing. Just clean
-            air, no lingering odors, and no embarrassing smells when guests
-            visit.
+            {t.featuresSection?.paragraph2 || "Imagine walking into your home and smelling… nothing. Just clean air, no lingering odors, and no embarrassing smells when guests visit."}
           </p>
           <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl dark:text-foreground">
-            That&apos;s exactly what Purrify does...
+            {t.featuresSection?.tagline || "That's exactly what Purrify does..."}
           </p>
         </div>
 
@@ -95,7 +88,7 @@ export function Features() {
                         : "text-[#03E46A] group-hover:text-[#03E46A]/80"
                     }`}
                   >
-                    Learn more
+                    {t.featuresSection?.learnMore || "Learn more"}
                     <svg
                       className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"

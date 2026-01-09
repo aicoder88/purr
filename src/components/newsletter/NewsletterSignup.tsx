@@ -28,7 +28,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
     
     if (!email || !email.includes('@')) {
       setStatus('error');
-      setErrorMessage('Please enter a valid email address');
+      setErrorMessage(t.newsletter?.errorInvalidEmail || 'Please enter a valid email address');
       return;
     }
 
@@ -48,7 +48,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err) {
       setStatus('error');
-      setErrorMessage('Something went wrong. Please try again.');
+      setErrorMessage(t.newsletter?.errorGeneric || 'Something went wrong. Please try again.');
       setTimeout(() => setStatus('idle'), 3000);
     }
   };
@@ -95,10 +95,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               <Mail className="w-8 h-8 text-white dark:text-white" />
             </div>
             <h3 className={`text-2xl font-bold ${COLORS.text.primary} mb-2`}>
-              Get {discount}% Off Your First Order!
+              {(t.newsletter?.popup?.title || `Get {discount}% Off Your First Order!`).replace('{discount}', discount.toString())}
             </h3>
             <p className={COLORS.text.tertiary}>
-              Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.
+              {t.newsletter?.popup?.description || "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products."}
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               {status === 'loading' && <LoadingSpinner size="w-5 h-5" />}
               {status === 'success' && <CheckIcon size="w-5 h-5" />}
               <span className={status === 'loading' || status === 'success' ? 'ml-2' : ''}>
-                {status === 'success' ? 'Welcome to Purrify!' : `Get ${discount}% Off Now`}
+                {status === 'success' ? (t.newsletter?.joinFamily?.welcomeMessage || 'Welcome to Purrify!') : (t.newsletter?.popup?.buttonText || `Get {discount}% Off Now`).replace('{discount}', discount.toString())}
               </span>
             </Button>
 
@@ -133,7 +133,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           </form>
 
           <p className={`text-xs ${COLORS.text.muted} text-center mt-4`}>
-            No spam, unsubscribe anytime. We respect your privacy.
+            {t.newsletter?.privacyText || "No spam, unsubscribe anytime. We respect your privacy."}
           </p>
         </div>
       </div>
@@ -149,10 +149,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left dark:text-center dark:md:text-left">
             <h3 className={`text-lg font-semibold ${COLORS.text.primary} mb-1`}>
-              Stay Updated with Purrify
+              {t.newsletter?.footer?.title || "Stay Updated with Purrify"}
             </h3>
             <p className={`${COLORS.text.tertiary} text-sm dark:text-sm`}>
-              Get cat care tips and exclusive offers delivered to your inbox.
+              {t.newsletter?.footer?.description || "Get cat care tips and exclusive offers delivered to your inbox."}
             </p>
           </div>
 
@@ -161,7 +161,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email"
+              placeholder={t.newsletter?.footer?.placeholder || "Your email"}
               className={`flex-1 md:w-64 px-4 py-2 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -172,7 +172,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
             >
               {status === 'loading' && <LoadingSpinner size="w-4 h-4" />}
               {status === 'success' && <CheckIcon size="w-4 h-4" />}
-              {status === 'idle' && 'Subscribe'}
+              {status === 'idle' && (t.newsletter?.footer?.buttonText || 'Subscribe')}
             </Button>
           </form>
         </div>
@@ -192,10 +192,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         <div className="text-center mb-6">
           <Mail className={`w-12 h-12 ${COLORS.text.purple} mx-auto mb-4`} />
           <h3 className={`text-xl font-bold ${COLORS.text.primary} mb-2`}>
-            Join the Purrify Community
+            {t.newsletter?.inline?.title || "Join the Purrify Community"}
           </h3>
           <p className={COLORS.text.tertiary}>
-            Get expert cat care tips and exclusive offers straight to your inbox.
+            {t.newsletter?.inline?.description || "Get expert cat care tips and exclusive offers straight to your inbox."}
           </p>
         </div>
 
@@ -219,7 +219,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
             {status === 'loading' && <LoadingSpinner size="w-5 h-5" />}
             {status === 'success' && <CheckIcon size="w-5 h-5" />}
             <span className={status === 'loading' || status === 'success' ? 'ml-2' : ''}>
-              {status === 'success' ? 'Successfully Subscribed!' : 'Subscribe for Free'}
+              {status === 'success' ? (t.newsletter?.inline?.successText || 'Successfully Subscribed!') : (t.newsletter?.inline?.buttonText || 'Subscribe for Free')}
             </span>
           </Button>
 

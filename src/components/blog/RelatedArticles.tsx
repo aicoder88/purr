@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
+import { useTranslation } from '@/lib/translation-context';
 
 type Article = {
   title: string;
@@ -145,6 +146,7 @@ const ALL_ARTICLES: Article[] = [
 ];
 
 export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: string; limit?: number }) {
+  const { t } = useTranslation();
   const items = ALL_ARTICLES.filter(a => a.href !== currentPath).slice(0, limit);
 
   if (items.length === 0) return null;
@@ -152,7 +154,9 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
   return (
     <section aria-label="Related articles" className="py-12">
       <Container>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Related Articles</h2>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          {t.relatedArticles?.title || "Related Articles"}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item) => (
             <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
@@ -164,7 +168,9 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
                   <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">Read more →</p>
+                  <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">
+                    {t.relatedArticles?.readMore || "Read more"} →
+                  </p>
                 </div>
               </Link>
             </article>

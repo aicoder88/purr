@@ -58,19 +58,10 @@ const socialLinks = [
 ];
 
 export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFollowCTAProps) {
-  const { locale } = useTranslation();
+  const { t } = useTranslation();
 
-  const headlineText = locale === 'fr'
-    ? 'Suivez-nous pour plus de conseils'
-    : locale === 'zh'
-    ? '关注我们获取更多提示'
-    : 'Follow us for more tips';
-
-  const descriptionText = locale === 'fr'
-    ? 'Rejoignez notre communauté pour des conseils de soins pour chats et des offres exclusives.'
-    : locale === 'zh'
-    ? '加入我们的社区，获取猫咪护理技巧和独家优惠。'
-    : 'Join our community for cat care tips and exclusive offers.';
+  const headlineText = t.socialFollow?.headline || 'Follow us for more tips';
+  const descriptionText = t.socialFollow?.description || 'Join our community for cat care tips and exclusive offers.';
 
   if (variant === 'inline') {
     return (

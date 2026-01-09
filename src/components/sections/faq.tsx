@@ -141,7 +141,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
                       <>
                         {' '}
                         <Link href={faq.link} className={`${COLORS.text.purple} font-medium hover:opacity-80 transition-colors underline`}>
-                          Learn more →
+                          {t.faq?.learnMore || "Learn more"} →
                         </Link>
                       </>
                     )}

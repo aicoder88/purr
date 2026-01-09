@@ -55,6 +55,8 @@ export interface TranslationType {
     eliminateCatOdors: string;
     instantly: string;
     description: string;
+    headline?: string;
+    subheadline?: string;
     socialProof: {
       trustNumber: string;
       trustText: string;
@@ -87,6 +89,23 @@ export interface TranslationType {
         description: string;
         cta: string;
       };
+    };
+    simplified?: {
+      free: string;
+      justPayShipping: string;
+      noMore: string;
+      litterBoxSmell: string;
+      valueProposition: string;
+      trialSize: string;
+      standard: string;
+      familyPack: string;
+      plusSH: string;
+      thirtyDayGuarantee: string;
+      getFreeSample: string;
+      soldThisWeek: string;
+      limitedStock: string;
+      moneyBackGuarantee: string;
+      freeShippingOver: string;
     };
   };
 
@@ -158,6 +177,63 @@ export interface TranslationType {
     };
   };
 
+  // Benefits Section (homepage benefits component)
+  benefitsSection?: {
+    sectionHeader: string;
+    title: string;
+    subtitle: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+
+  // Science Section (homepage component)
+  scienceSection?: {
+    badge: string;
+    headline: string;
+    headlineHighlight: string;
+    description: string;
+    learnMore: string;
+    features: Array<{
+      title: string;
+      description: string;
+    }>;
+    floatingLabel: {
+      title: string;
+      description: string;
+    };
+    naturalBadge: {
+      title: string;
+      subtitle: string;
+    };
+  };
+
+  // Features Section (homepage component)
+  featuresSection?: {
+    badge: string;
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+    tagline: string;
+    learnMore: string;
+  };
+
+  // Calculator Section (homepage component)
+  calculatorSection?: {
+    title: string;
+    description: string;
+  };
+
+  // Section Header highlights
+  sectionHeaderHighlights?: string[];
+
+  // Trust Bar
+  trustBar?: {
+    happyCats: string;
+    reviews: string;
+  };
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
@@ -173,6 +249,9 @@ export interface TranslationType {
       clay: string;
       nonClumping: string;
     };
+    learnTheScience?: string;
+    compareSizes?: string;
+    coconutDescription?: string;
   };
 
   // Products Section
@@ -281,6 +360,7 @@ export interface TranslationType {
     stillHaveQuestions?: string;
     contactTeam?: string;
     forMoreInfo?: string;
+    learnMore?: string;
     items: {
       question: string;
       answer: string;
@@ -321,6 +401,9 @@ export interface TranslationType {
     buttonText: string;
     successMessage: string;
     errorMessage: string;
+    errorInvalidEmail?: string;
+    errorGeneric?: string;
+    privacyText?: string;
     joinFamily?: {
       title: string;
       subtitle: string;
@@ -337,11 +420,29 @@ export interface TranslationType {
       emailPlaceholder: string;
       ctaButton: string;
       joinText: string;
+      welcomeMessage?: string;
       features: {
         weeklyTips: string;
         exclusiveOffers: string;
         earlyAccessProducts: string;
       };
+    };
+    popup?: {
+      title: string;
+      description: string;
+      buttonText: string;
+    };
+    footer?: {
+      title: string;
+      description: string;
+      placeholder: string;
+      buttonText: string;
+    };
+    inline?: {
+      title: string;
+      description: string;
+      buttonText: string;
+      successText: string;
     };
   };
 
@@ -359,6 +460,21 @@ export interface TranslationType {
     errorMessage: string;
     errorGeneric: string;
     privacyNotice: string;
+  };
+
+  // 404 Not Found Page
+  notFoundPage?: {
+    title: string;
+    description: string;
+    lookingFor: string;
+    returnHome: string;
+    suggestedPages: {
+      home: { title: string; description: string };
+      products: { title: string; description: string };
+      howItWorks: { title: string; description: string };
+      blog: { title: string; description: string };
+      contact: { title: string; description: string };
+    };
   };
 
   // SEO
@@ -1758,6 +1874,56 @@ export interface TranslationType {
     noReviews: string;
     loadMore: string;
   };
+
+  // Related Articles Section
+  relatedArticles?: {
+    title: string;
+    readMore: string;
+  };
+
+  // Review System Component
+  reviewSystem?: {
+    customerReviews: string;
+    reviews: string;
+    basedOn: string;
+    wouldRecommend: string;
+    verifiedPurchases: string;
+    viewAllReviews: string;
+    loadMoreReviews: string;
+    filters: {
+      allRatings: string;
+      stars: string;
+      star: string;
+      allSizes: string;
+      trial: string;
+      regular: string;
+      large: string;
+    };
+    sort: {
+      newestFirst: string;
+      oldestFirst: string;
+      highestRated: string;
+      lowestRated: string;
+      mostHelpful: string;
+    };
+    review: {
+      verifiedPurchase: string;
+      size: string;
+      cat: string;
+      cats: string;
+      usingFor: string;
+      helpful: string;
+      recommendsProduct: string;
+    };
+  };
+
+  // Social Follow CTA
+  socialFollow?: {
+    headline: string;
+    description: string;
+    followOn: string;
+  };
+
 }
 
 // Common B2B page structure - permissive to allow fallback strings

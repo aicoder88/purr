@@ -63,7 +63,7 @@ export default function CaseStudies() {
       situation: "Multi-Cat Family Home",
       timeframe: "90 Days",
       cats: 4,
-      image: "/optimized/140g.webp",
+      image: "/optimized/140g_transparent.webp",
       challenge: {
         description: "The Johnson family struggled with odor control for their 4 cats while maintaining a child-friendly environment. Previous solutions contained harsh chemicals or strong fragrances that concerned them.",
         painPoints: [
