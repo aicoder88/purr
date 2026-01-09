@@ -119,7 +119,7 @@ export function EnhancedProductComparison() {
         bulkDiscount: false,
         prioritySupport: false
       },
-      image: '/images/17gpink.png',
+      image: '/optimized/17gpink.webp',
       imageSize: 'sm',
       purchaseOptions: [
         {
@@ -155,7 +155,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/images/60g.png',
+      image: '/optimized/140g.webp',
       imageSize: 'md',
       purchaseOptions: [
         {

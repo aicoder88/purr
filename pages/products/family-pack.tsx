@@ -139,18 +139,18 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
           type: 'product',
           images: [
             {
-              url: 'https://www.purrify.ca/images/140g.png',
+              url: 'https://www.purrify.ca/optimized/140g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify 120g Family Pack Package (Optimized)',
-              type: 'image/png'
+              type: 'image/webp'
             },
             {
-              url: 'https://www.purrify.ca/images/140g.png',
+              url: 'https://www.purrify.ca/optimized/140g.webp',
               width: 1200,
               height: 630,
               alt: 'Purrify 120g Family Pack Package',
-              type: 'image/png'
+              type: 'image/webp'
             }
           ]
         }}
@@ -175,7 +175,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
             "name": "Purrify 120g Family Pack - Cat Litter Freshener & Charcoal Additive",
             "description": "Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. 2 months of odor control. 100% natural, fragrance-free, pet-friendly deodorizer.",
             "image": [
-              "https://www.purrify.ca/images/140g.png"
+              "https://www.purrify.ca/optimized/140g.webp"
             ],
             "brand": {
               "@type": "Brand",
@@ -319,7 +319,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <Image
-                    src="/images/140g.png"
+                    src="/optimized/140g.webp"
                     alt="Purrify 120g Family Pack"
                     width={400}
                     height={400}
