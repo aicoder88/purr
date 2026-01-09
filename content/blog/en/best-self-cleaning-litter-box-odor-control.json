@@ -12,13 +12,24 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh.webp",
+    "url": "/optimized/catcoco-1080w.jpg",
     "alt": "Best self-cleaning automatic litter boxes for odor control comparison with activated carbon enhancement",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Litter Boxes", "Odour Control", "Product Reviews"],
-  "tags": ["self-cleaning litter box", "automatic litter box", "litter robot odor", "cat litter box odor control", "activated carbon litter", "automatic cat box smell"],
+  "categories": [
+    "Litter Boxes",
+    "Odour Control",
+    "Product Reviews"
+  ],
+  "tags": [
+    "self-cleaning litter box",
+    "automatic litter box",
+    "litter robot odor",
+    "cat litter box odor control",
+    "activated carbon litter",
+    "automatic cat box smell"
+  ],
   "locale": "en",
   "translations": {
     "fr": "meilleure-litiere-auto-nettoyante-odeur",
@@ -28,7 +39,13 @@
     "metaTitle": "Best Self-Cleaning Litter Boxes for Odor Control (2026)",
     "metaDescription": "Compare top automatic litter boxes for odour control. Learn why self-cleaning alone isn't enough and how activated carbon technology completes the solution.",
     "canonicalUrl": "/blog/best-self-cleaning-litter-box-odor-control",
-    "keywords": ["self-cleaning litter box odor control", "automatic litter box smell", "litter robot odor", "best automatic cat box", "cat litter box deodorizer"]
+    "keywords": [
+      "self-cleaning litter box odor control",
+      "automatic litter box smell",
+      "litter robot odor",
+      "best automatic cat box",
+      "cat litter box deodorizer"
+    ]
   },
   "readingTime": 11
 }

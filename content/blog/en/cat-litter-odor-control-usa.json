@@ -12,12 +12,15 @@
   "modifiedDate": "2026-01-02T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh.webp",
+    "url": "/optimized/happy-owner.webp",
     "alt": "Cat litter odor control for US customers",
     "width": 1600,
     "height": 1067
   },
-  "categories": ["Odor Control", "US Customers"],
+  "categories": [
+    "Odor Control",
+    "US Customers"
+  ],
   "tags": [
     "cat litter odor control USA",
     "best cat litter deodorizer",

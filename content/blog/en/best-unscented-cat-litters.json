@@ -12,13 +12,24 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh.webp",
+    "url": "/optimized/ventilation.webp",
     "alt": "Best unscented fragrance-free cat litters for sensitive cats with natural odour control",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Cat Litter", "Odour Control", "Cat Health"],
-  "tags": ["unscented cat litter", "fragrance-free litter", "sensitive cat litter", "natural cat litter", "cat litter odor control", "activated carbon litter"],
+  "categories": [
+    "Cat Litter",
+    "Odour Control",
+    "Cat Health"
+  ],
+  "tags": [
+    "unscented cat litter",
+    "fragrance-free litter",
+    "sensitive cat litter",
+    "natural cat litter",
+    "cat litter odor control",
+    "activated carbon litter"
+  ],
   "locale": "en",
   "translations": {
     "fr": "meilleure-litiere-non-parfumee",
@@ -28,7 +39,14 @@
     "metaTitle": "Best Unscented Cat Litters for Sensitive Cats (2026 Guide)",
     "metaDescription": "Find the best fragrance-free cat litters that still control odour. Reviews of unscented options plus how activated carbon provides odour elimination without perfume.",
     "canonicalUrl": "/blog/best-unscented-cat-litters",
-    "keywords": ["unscented cat litter", "fragrance-free cat litter", "sensitive cat litter", "best unscented litter", "cat litter no fragrance", "odorless cat litter"]
+    "keywords": [
+      "unscented cat litter",
+      "fragrance-free cat litter",
+      "sensitive cat litter",
+      "best unscented litter",
+      "cat litter no fragrance",
+      "odorless cat litter"
+    ]
   },
   "readingTime": 10
 }

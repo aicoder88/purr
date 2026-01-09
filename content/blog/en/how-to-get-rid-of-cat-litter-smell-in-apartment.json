@@ -12,13 +12,24 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/small-apartment-odor-control.webp",
+    "url": "/optimized/blog/tried-relief.jpg",
     "alt": "Apartment cat owner with fresh-smelling small space showing litter odor control solutions",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Odour Control", "Apartment Living", "Cat Care"],
-  "tags": ["cat litter smell apartment", "apartment cat odor", "small space litter box", "cat smell removal", "apartment cat tips", "litter box odor control"],
+  "categories": [
+    "Odour Control",
+    "Apartment Living",
+    "Cat Care"
+  ],
+  "tags": [
+    "cat litter smell apartment",
+    "apartment cat odor",
+    "small space litter box",
+    "cat smell removal",
+    "apartment cat tips",
+    "litter box odor control"
+  ],
   "locale": "en",
   "translations": {
     "fr": "eliminer-odeur-litiere-appartement",
@@ -28,7 +39,14 @@
     "metaTitle": "How to Get Rid of Cat Litter Smell in Apartment (Complete Guide)",
     "metaDescription": "Living in a small space with a cat? Learn apartment-specific strategies to eliminate—not mask—cat litter smell using molecular trapping technology.",
     "canonicalUrl": "/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
-    "keywords": ["cat litter smell apartment", "apartment cat odor", "remove cat smell small space", "litter box apartment", "apartment cat tips", "small space litter box"]
+    "keywords": [
+      "cat litter smell apartment",
+      "apartment cat odor",
+      "remove cat smell small space",
+      "litter box apartment",
+      "apartment cat tips",
+      "small space litter box"
+    ]
   },
   "readingTime": 11
 }

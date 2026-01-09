@@ -12,12 +12,15 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/activated-carbon-benefits.webp",
+    "url": "/optimized/carbon-828w.webp",
     "alt": "Activated carbon granules used for cat litter odor control",
     "width": 1600,
     "height": 1101
   },
-  "categories": ["Science & Education", "Product Education"],
+  "categories": [
+    "Science & Education",
+    "Product Education"
+  ],
   "tags": [
     "activated carbon",
     "cat litter deodorizer",

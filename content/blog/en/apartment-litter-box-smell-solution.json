@@ -12,12 +12,15 @@
   "modifiedDate": "2026-01-02T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh.webp",
+    "url": "/optimized/catonbed-1080w.webp",
     "alt": "Apartment litter box odor solution",
-    "width": 1600,
-    "height": 1067
+    "width": 1080,
+    "height": 720
   },
-  "categories": ["Odor Control", "Small Spaces"],
+  "categories": [
+    "Odor Control",
+    "Small Spaces"
+  ],
   "tags": [
     "apartment litter box smell",
     "small space cat odor",

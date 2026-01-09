@@ -12,12 +12,15 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/embarrassed-hero.jpg",
+    "url": "/optimized/blog/embarrassed-relief.jpg",
     "alt": "Cat owner concerned about litter box odor in home",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Cat Care", "Science & Education"],
+  "categories": [
+    "Cat Care",
+    "Science & Education"
+  ],
   "tags": [
     "cat litter smell",
     "litter box odor",

@@ -12,13 +12,24 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/cat-clean-home.jpg",
+    "url": "/optimized/cat_rose_thumbnail.webp",
     "alt": "Best covered and enclosed litter boxes for odor control with activated carbon enhancement",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Litter Boxes", "Odour Control", "Product Reviews"],
-  "tags": ["covered litter box", "hooded litter box", "enclosed litter box", "top-entry litter box", "litter box odor control", "cat litter box smell"],
+  "categories": [
+    "Litter Boxes",
+    "Odour Control",
+    "Product Reviews"
+  ],
+  "tags": [
+    "covered litter box",
+    "hooded litter box",
+    "enclosed litter box",
+    "top-entry litter box",
+    "litter box odor control",
+    "cat litter box smell"
+  ],
   "locale": "en",
   "translations": {
     "fr": "meilleure-litiere-couverte-odeur",
@@ -28,7 +39,13 @@
     "metaTitle": "Best Covered Litter Boxes for Odor Control (2026 Guide)",
     "metaDescription": "Compare hooded, top-entry, and enclosed litter boxes for odour control. Learn why covering alone isn't enough and how activated carbon solves the concentration problem.",
     "canonicalUrl": "/blog/best-covered-litter-boxes-odor-control",
-    "keywords": ["covered litter box odor control", "hooded litter box smell", "enclosed cat litter box", "top entry litter box odor", "best covered litter box"]
+    "keywords": [
+      "covered litter box odor control",
+      "hooded litter box smell",
+      "enclosed cat litter box",
+      "top entry litter box odor",
+      "best covered litter box"
+    ]
   },
   "readingTime": 11
 }

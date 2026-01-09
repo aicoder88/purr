@@ -12,13 +12,25 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh.webp",
+    "url": "/optimized/standard-happy-cat.avif",
     "alt": "Best cat litter for smell control comparison showing different litter types and activated carbon technology",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Cat Litter", "Odour Control", "Product Reviews"],
-  "tags": ["best cat litter for smell", "cat litter odour control", "activated carbon litter", "litter deodorizer", "cat odour elimination", "unscented cat litter", "multi-cat litter"],
+  "categories": [
+    "Cat Litter",
+    "Odour Control",
+    "Product Reviews"
+  ],
+  "tags": [
+    "best cat litter for smell",
+    "cat litter odour control",
+    "activated carbon litter",
+    "litter deodorizer",
+    "cat odour elimination",
+    "unscented cat litter",
+    "multi-cat litter"
+  ],
   "locale": "en",
   "translations": {
     "fr": "meilleure-litiere-chat-odeur",
@@ -28,7 +40,15 @@
     "metaTitle": "Best Cat Litter for Smell: What Actually Works (2026 Reviews)",
     "metaDescription": "Discover which cat litters truly eliminate odour vs just mask it. Honest reviews of clay, natural, and activated carbon options for real smell control.",
     "canonicalUrl": "/blog/best-cat-litter-for-smell",
-    "keywords": ["best cat litter for smell", "cat litter odour control", "activated carbon cat litter", "litter box smell", "cat odour elimination", "unscented cat litter", "best litter for multi-cat"]
+    "keywords": [
+      "best cat litter for smell",
+      "cat litter odour control",
+      "activated carbon cat litter",
+      "litter box smell",
+      "cat odour elimination",
+      "unscented cat litter",
+      "best litter for multi-cat"
+    ]
   },
   "readingTime": 10
 }

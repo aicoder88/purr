@@ -12,12 +12,15 @@
   "modifiedDate": "2026-01-03T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/cat-clean-home.jpg",
+    "url": "/optimized/cat-litter-deodorizer-guide.webp",
     "alt": "Cat Litter Odour Control Tips - Complete Guide to Eliminating Litter Box Smell",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Odour Control", "Tips & Guides"],
+  "categories": [
+    "Odour Control",
+    "Tips & Guides"
+  ],
   "tags": [
     "cat litter odour control",
     "cat litter odour control tips",

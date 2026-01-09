@@ -12,13 +12,24 @@
   "modifiedDate": "2026-01-03",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/house-smells-cat-litter.webp",
+    "url": "/optimized/cat_long_lasting_freshness_800x500.webp",
     "alt": "Home with litter box showing why house smells like cat litter and how to fix it",
     "width": 1200,
     "height": 630
   },
-  "categories": ["Odour Control", "Cat Care", "Home Tips"],
-  "tags": ["house smells like cat litter", "litter box smell", "cat odor in house", "eliminate cat smell", "home odor control", "activated carbon"],
+  "categories": [
+    "Odour Control",
+    "Cat Care",
+    "Home Tips"
+  ],
+  "tags": [
+    "house smells like cat litter",
+    "litter box smell",
+    "cat odor in house",
+    "eliminate cat smell",
+    "home odor control",
+    "activated carbon"
+  ],
   "locale": "en",
   "translations": {
     "fr": "pourquoi-maison-sent-litiere-chat",
@@ -28,7 +39,14 @@
     "metaTitle": "Why Does My House Smell Like Cat Litter? Complete Fix Guide",
     "metaDescription": "Discover why cat litter smell spreads throughout your home and learn science-backed solutions that actually work. Stop masking odour and start eliminating it.",
     "canonicalUrl": "/blog/why-does-my-house-smell-like-cat-litter",
-    "keywords": ["house smells like cat litter", "cat litter smell in house", "litter box odor", "eliminate cat smell", "cat odor removal", "home smells like cat"]
+    "keywords": [
+      "house smells like cat litter",
+      "cat litter smell in house",
+      "litter box odor",
+      "eliminate cat smell",
+      "cat odor removal",
+      "home smells like cat"
+    ]
   },
   "readingTime": 11
 }

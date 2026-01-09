@@ -12,12 +12,16 @@
   "modifiedDate": "2025-01-02T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/house-smells-cat-litter.webp",
+    "url": "/optimized/pet-safety-home.webp",
     "alt": "How to Reduce Litter Box Odor: Complete Guide",
     "width": 1600,
     "height": 1067
   },
-  "categories": ["Tips", "Odor Control", "Cat Care"],
+  "categories": [
+    "Tips",
+    "Odor Control",
+    "Cat Care"
+  ],
   "tags": [
     "how to reduce litter box odor",
     "litter box smell",
