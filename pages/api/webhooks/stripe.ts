@@ -10,7 +10,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-08-27.basil',
 });
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecretLive = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecretTest = process.env.STRIPE_WEBHOOK_SECRET_TEST;
 
 // Initialize Resend for sending emails directly
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -237,20 +238,33 @@ export default async function handler(
       const buf = await buffer(req);
       const sig = req.headers['stripe-signature']!;
 
-      let event: Stripe.Event;
+      // Try live secret first, then test secret
+      const secretsToTry = [webhookSecretLive, webhookSecretTest].filter(Boolean) as string[];
+      let event: Stripe.Event | null = null;
+      let lastError: Error | null = null;
 
-      try {
-        event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
-        span.setAttribute('eventType', event.type);
-        span.setAttribute('eventId', event.id);
-        logger.info('Stripe webhook received', {
-          eventType: event.type,
-          eventId: event.id
-        });
-      } catch (err) {
-        Sentry.captureException(err);
+      for (const secret of secretsToTry) {
+        try {
+          event = stripe.webhooks.constructEvent(buf, sig, secret);
+          span.setAttribute('eventType', event.type);
+          span.setAttribute('eventId', event.id);
+          span.setAttribute('webhookMode', secret === webhookSecretLive ? 'live' : 'test');
+          logger.info('Stripe webhook received', {
+            eventType: event.type,
+            eventId: event.id,
+            mode: secret === webhookSecretLive ? 'live' : 'test'
+          });
+          break;
+        } catch (err) {
+          lastError = err instanceof Error ? err : new Error('Unknown error');
+          // Continue to try next secret
+        }
+      }
+
+      if (!event) {
+        Sentry.captureException(lastError);
         logger.error('Webhook signature verification failed', {
-          error: err instanceof Error ? err.message : 'Unknown error'
+          error: lastError?.message || 'Unknown error'
         });
         return res.status(400).send('Webhook signature verification failed');
       }
