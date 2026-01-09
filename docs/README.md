@@ -54,6 +54,48 @@ This project uses a streamlined documentation approach:
 - Review: `docs/REVENUE_STRATEGY.md` (growth plan)
 - Check: `docs/B2B_RETAILERS.md` (B2B program)
 
+## Local Development Setup
+
+### MCP Server Configuration (Claude Code)
+
+The project uses MCP (Model Context Protocol) servers for AI-assisted development. The `.mcp.json` file contains placeholder values that need to be configured locally.
+
+#### Supabase MCP Setup
+
+1. Get your Supabase project reference from your [Supabase dashboard](https://supabase.com/dashboard)
+2. Generate a personal access token at [Supabase Access Tokens](https://supabase.com/dashboard/account/tokens)
+3. Update your local `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=YOUR_PROJECT_REF"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_ACCESS_TOKEN"
+      }
+    }
+  }
+}
+```
+
+**Important:** Never commit actual credentials to `.mcp.json`. The repository version contains placeholders.
+
+#### Database Connection
+
+The `DATABASE_URL` environment variable connects to Supabase PostgreSQL:
+- Format: `postgresql://postgres.[project-ref]@aws-0-[region].pooler.supabase.com:5432/postgres`
+- Set in `.env.local` for local development
+- Set in Vercel environment variables for production
+
+---
+
 ## Recent Changes (June 2024)
 
 - Improved language switcher visibility in dark mode.
